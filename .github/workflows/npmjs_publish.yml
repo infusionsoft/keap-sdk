@@ -1,0 +1,40 @@
+name: Publish Node Package to npmjs
+on:
+  release:
+    types: [published]
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+      secrets: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          registry-url: 'https://registry.npmjs.org'
+
+      # Javascript
+      - name: Install Javascript dependencies
+        working-directory: sdks/core/javascript
+        run: npm ci
+
+      - name: Publish Core Javascript package to npmjs
+        run: npm publish --provenance --access public
+        working-directory: sdks/core/javascript
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      # Typescript
+      - name: Install Typescript dependencies
+        working-directory: sdks/core/typescript
+        run: npm ci
+
+      - name: Publish Core Typescript package to npmjs
+        run: npm publish --provenance --access public
+        working-directory: sdks/core/typescript
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
