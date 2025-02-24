@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo><!-- setting GenerateAssemblyInfo to false causes this bug https://github.com/dotnet/project-system/issues/3934 -->
+    <TargetFramework>net8.0</TargetFramework>
+    <AssemblyName>Keap.Core.V2</AssemblyName>
+    <PackageId>Keap.Core.V2</PackageId>
+    <OutputType>Library</OutputType>
+    <Authors>Keap Engineering</Authors>
+    <Company>Keap</Company>
+    <AssemblyTitle>Keap.Core.V2</AssemblyTitle>
+    <Description>Keap.Core.V2 SDK</Description>
+    <Copyright>2025</Copyright>
+    <RootNamespace>Keap.Core.V2</RootNamespace>
+    <Version>0.0.2</Version>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Keap.Core.V2.xml</DocumentationFile>
+    <RepositoryUrl>https://github.com/infusionsoft/keap-sdk.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageReleaseNotes>Minor update</PackageReleaseNotes>
+    <Nullable>annotations</Nullable>
+    <ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="JsonSubTypes" Version="2.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="RestSharp" Version="112.0.0" />
+    <PackageReference Include="Polly" Version="8.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>

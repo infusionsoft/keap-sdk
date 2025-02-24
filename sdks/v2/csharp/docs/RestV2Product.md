@@ -1,0 +1,27 @@
+# Keap.Core.V2.Model.RestV2Product
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Active** | **bool** | True means active, False means inactive | [optional] 
+**Categories** | **List&lt;string&gt;** | List of category ids to indicate which categories this product will belong to. Can be empty. | [optional] 
+**CityTaxable** | **bool** | If city-based taxes should be applied to this product | [optional] 
+**CountryTaxable** | **bool** | If country-based taxes should be applied to this product | [optional] 
+**Description** | **string** | Product long description | [optional] 
+**Id** | **string** | The product ID | [optional] 
+**Inventory** | [**ProductInventory**](ProductInventory.md) |  | [optional] 
+**Name** | **string** | Product name | [optional] 
+**Options** | [**List&lt;ProductOptions&gt;**](ProductOptions.md) | List of product options. Can be empty. | [optional] 
+**Price** | [**CurrencyValue**](CurrencyValue.md) |  | [optional] 
+**ShortDescription** | **string** | Product short description | [optional] 
+**Sku** | **string** | Product SKU | [optional] 
+**StateTaxable** | **bool** | If state-based taxes should be applied to this product | [optional] 
+**StorefrontHidden** | **bool** | If the product should not be shown in the storefront | [optional] 
+**SubscriptionOnly** | **bool** | If the product is a subscription-only product | [optional] 
+**SubscriptionPlans** | [**List&lt;SubscriptionPlan&gt;**](SubscriptionPlan.md) | List of subscription plans associated with the product. Can be empty. | [optional] 
+**Taxable** | **bool** | Whether or not the product should be taxed | [optional] 
+**Weight** | **double** | Product weight | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+

@@ -1,0 +1,27 @@
+{
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "keap/sdk-v2",
+                "version": "Add your version here",
+                "dist": {
+                    "url": "Add your version here",
+                    "type": "phar"
+                },
+                "autoload": {
+                    "psr-4": {
+                        "Keap\\Core\\V2\\": "lib/"
+                    }
+                }
+            }
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.5",
+        "keap/sdk-v2": "Add your version here"
+    }
+}
