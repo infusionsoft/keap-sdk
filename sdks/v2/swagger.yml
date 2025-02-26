@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   description: Keap REST Core Service
-  version: 2.70.0.778988
+  version: 2.70.0.781449
   title: Keap REST API
   termsOfService: https://keap.com/legal
   contact:
@@ -7569,6 +7569,13 @@ components:
         incurred_time:
           type: string
           description: The date the expense was incurred.
+        lead_source_id:
+          type: string
+          description: The ID of the lead source this expense belongs to
+        lead_source_recurring_expense_id:
+          type: string
+          description: If this expense was incurred from a recurring expense, this
+            is the ID of that recurring expense
         notes:
           type: string
           description: The notes for the expense.
@@ -7702,6 +7709,8 @@ components:
           type: array
           items:
             type: string
+        next_page_token:
+          type: string
       title: ListAutomationIdsResponse
     ListAutomationResponse:
       type: object
@@ -7796,6 +7805,8 @@ components:
           description: A key-value pair of country code and country name.
           items:
             $ref: '#/components/schemas/Country'
+        next_page_token:
+          type: string
       title: ListCountriesResponse
     ListFilesResponse:
       type: object
@@ -7831,6 +7842,16 @@ components:
         next_page_token:
           type: string
       title: ListLeadSourceCategoriesResponse
+    ListLeadSourceExpensesResponse:
+      type: object
+      properties:
+        lead_source_expenses:
+          type: array
+          items:
+            $ref: '#/components/schemas/LeadSourceExpense'
+        next_page_token:
+          type: string
+      title: ListLeadSourceExpensesResponse
     ListLeadSourcesResponse:
       type: object
       properties:
@@ -7946,6 +7967,8 @@ components:
       required:
       - provinces
       properties:
+        next_page_token:
+          type: string
         provinces:
           type: array
           description: A key-value pair of province code and province name.
@@ -8098,6 +8121,8 @@ components:
     ListUserResponse:
       type: object
       properties:
+        next_page_token:
+          type: string
         users:
           type: array
           items:
@@ -10342,6 +10367,30 @@ components:
         product_id:
           type: string
       title: UpdateProductCommissionProgramRequest
+    UpdateProductDiscountRequest:
+      type: object
+      properties:
+        apply_to_commissions:
+          type: boolean
+        criteria:
+          type: array
+          items:
+            $ref: '#/components/schemas/DiscountCriteria'
+        description:
+          type: string
+        discount_type:
+          type: string
+          enum:
+          - AMOUNT
+          - PERCENT
+        discount_value:
+          type: number
+          format: double
+        name:
+          type: string
+        product_id:
+          type: string
+      title: UpdateProductDiscountRequest
     UpdateProductInterestBundleRequest:
       type: object
       properties:

@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **countries** | [**List[Country]**](Country.md) | A key-value pair of country code and country name. | 
+**next_page_token** | **str** |  | [optional] 
 
 ## Example
 

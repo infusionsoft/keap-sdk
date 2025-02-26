@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**next_page_token** | **str** |  | [optional] 
 **provinces** | [**List[Provinces]**](Provinces.md) | A key-value pair of province code and province name. | 
 
 ## Example

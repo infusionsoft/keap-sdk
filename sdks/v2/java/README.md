@@ -2,7 +2,7 @@
 
 Keap REST API
 
-- API version: 2.70.0.778988
+- API version: 2.70.0.781449
 
 - Generator version: 7.10.0
 
@@ -480,6 +480,7 @@ Class | Method | HTTP request | Description
  - [ListFilesResponse](docs/ListFilesResponse.md)
  - [ListLandingPagesResponse](docs/ListLandingPagesResponse.md)
  - [ListLeadSourceCategoriesResponse](docs/ListLeadSourceCategoriesResponse.md)
+ - [ListLeadSourceExpensesResponse](docs/ListLeadSourceExpensesResponse.md)
  - [ListLeadSourcesResponse](docs/ListLeadSourcesResponse.md)
  - [ListNoteTemplateResponse](docs/ListNoteTemplateResponse.md)
  - [ListNotesResponse](docs/ListNotesResponse.md)
@@ -609,6 +610,7 @@ Class | Method | HTTP request | Description
  - [UpdatePipelineRequest](docs/UpdatePipelineRequest.md)
  - [UpdateProductCategoryRequest](docs/UpdateProductCategoryRequest.md)
  - [UpdateProductCommissionProgramRequest](docs/UpdateProductCommissionProgramRequest.md)
+ - [UpdateProductDiscountRequest](docs/UpdateProductDiscountRequest.md)
  - [UpdateProductInterestBundleRequest](docs/UpdateProductInterestBundleRequest.md)
  - [UpdateProductInventoryRequest](docs/UpdateProductInventoryRequest.md)
  - [UpdateProductRequest](docs/UpdateProductRequest.md)

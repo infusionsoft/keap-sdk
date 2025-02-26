@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **automation_ids** | **List[str]** |  | [optional] 
 **locked_automation_ids** | **List[str]** |  | [optional] 
+**next_page_token** | **str** |  | [optional] 
 
 ## Example
 

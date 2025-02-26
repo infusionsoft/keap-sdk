@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**next_page_token** | **str** |  | [optional] 
 **users** | [**List[User]**](User.md) |  | [optional] 
 
 ## Example

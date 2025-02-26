@@ -181,6 +181,7 @@ export * from '../models/ListCountriesResponse';
 export * from '../models/ListFilesResponse';
 export * from '../models/ListLandingPagesResponse';
 export * from '../models/ListLeadSourceCategoriesResponse';
+export * from '../models/ListLeadSourceExpensesResponse';
 export * from '../models/ListLeadSourcesResponse';
 export * from '../models/ListNoteTemplateResponse';
 export * from '../models/ListNotesResponse';
@@ -311,6 +312,7 @@ export * from '../models/UpdateOutcomeLabelsRequest';
 export * from '../models/UpdatePipelineRequest';
 export * from '../models/UpdateProductCategoryRequest';
 export * from '../models/UpdateProductCommissionProgramRequest';
+export * from '../models/UpdateProductDiscountRequest';
 export * from '../models/UpdateProductInterestBundleRequest';
 export * from '../models/UpdateProductInventoryRequest';
 export * from '../models/UpdateProductRequest';
@@ -508,6 +510,7 @@ import { ListCountriesResponse } from '../models/ListCountriesResponse';
 import { ListFilesResponse } from '../models/ListFilesResponse';
 import { ListLandingPagesResponse } from '../models/ListLandingPagesResponse';
 import { ListLeadSourceCategoriesResponse } from '../models/ListLeadSourceCategoriesResponse';
+import { ListLeadSourceExpensesResponse } from '../models/ListLeadSourceExpensesResponse';
 import { ListLeadSourcesResponse } from '../models/ListLeadSourcesResponse';
 import { ListNoteTemplateResponse } from '../models/ListNoteTemplateResponse';
 import { ListNotesResponse } from '../models/ListNotesResponse';
@@ -638,6 +641,7 @@ import { UpdateOutcomeLabelsRequest } from '../models/UpdateOutcomeLabelsRequest
 import { UpdatePipelineRequest } from '../models/UpdatePipelineRequest';
 import { UpdateProductCategoryRequest } from '../models/UpdateProductCategoryRequest';
 import { UpdateProductCommissionProgramRequest } from '../models/UpdateProductCommissionProgramRequest';
+import { UpdateProductDiscountRequest   , UpdateProductDiscountRequestDiscountTypeEnum      } from '../models/UpdateProductDiscountRequest';
 import { UpdateProductInterestBundleRequest } from '../models/UpdateProductInterestBundleRequest';
 import { UpdateProductInventoryRequest , UpdateProductInventoryRequestTypeEnum   } from '../models/UpdateProductInventoryRequest';
 import { UpdateProductRequest } from '../models/UpdateProductRequest';
@@ -729,6 +733,7 @@ let enumsMap: Set<string> = new Set<string>([
     "UpdateOrderRequestOrderTypeEnum",
     "UpdateOrderTotalDiscountRequestDiscountStrategyEnum",
     "UpdateOrderTotalDiscountRequestDiscountTypeEnum",
+    "UpdateProductDiscountRequestDiscountTypeEnum",
     "UpdateProductInventoryRequestTypeEnum",
     "UpdateShippingDiscountRequestDiscountTypeEnum",
     "UpdateSubscriptionPlanRequestCycleTypeEnum",
@@ -921,6 +926,7 @@ let typeMap: {[index: string]: any} = {
     "ListFilesResponse": ListFilesResponse,
     "ListLandingPagesResponse": ListLandingPagesResponse,
     "ListLeadSourceCategoriesResponse": ListLeadSourceCategoriesResponse,
+    "ListLeadSourceExpensesResponse": ListLeadSourceExpensesResponse,
     "ListLeadSourcesResponse": ListLeadSourcesResponse,
     "ListNoteTemplateResponse": ListNoteTemplateResponse,
     "ListNotesResponse": ListNotesResponse,
@@ -1051,6 +1057,7 @@ let typeMap: {[index: string]: any} = {
     "UpdatePipelineRequest": UpdatePipelineRequest,
     "UpdateProductCategoryRequest": UpdateProductCategoryRequest,
     "UpdateProductCommissionProgramRequest": UpdateProductCommissionProgramRequest,
+    "UpdateProductDiscountRequest": UpdateProductDiscountRequest,
     "UpdateProductInterestBundleRequest": UpdateProductInterestBundleRequest,
     "UpdateProductInventoryRequest": UpdateProductInventoryRequest,
     "UpdateProductRequest": UpdateProductRequest,
