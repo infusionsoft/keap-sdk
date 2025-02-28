@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   description: Keap REST Core Service
-  version: 2.70.0.781449
+  version: 2.70.0.784405-hf-202502271519
   title: Keap REST API
   termsOfService: https://keap.com/legal
   contact:
