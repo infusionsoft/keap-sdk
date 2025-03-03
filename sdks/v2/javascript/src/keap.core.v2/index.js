@@ -391,7 +391,7 @@ import TagsApi from './api/TagsApi';
 * </pre>
 * </p>
 * @module keap.core.v2/index
-* @version 0.0.5
+* @version 0.0.6
 */
 export {
     /**
