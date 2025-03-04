@@ -23,12 +23,12 @@ jobs:
         pip install setuptools wheel twine
 
     - name: Build Core package
-      working-directory: sdks/core/python
+      working-directory: sdks/v2/python
       run: python setup.py sdist bdist_wheel
 
     - name: Publish Core package to PyPI
       env:
         TWINE_USERNAME: __token__
         TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
-      working-directory: sdks/core/python
+      working-directory: sdks/v2/python
       run: twine upload dist/*
