@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**leadsources** | [**[LeadSource]**](LeadSource.md) |  | [optional] 
+**leadSources** | [**[LeadSource]**](LeadSource.md) |  | [optional] 
 **nextPageToken** | **String** |  | [optional] 
 
 

@@ -9,6 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 |**contactId** | **String** |  |  |
 |**leadAffiliateId** | **String** |  |  [optional] |
+|**notes** | **String** |  |  [optional] |
 |**orderItems** | [**List&lt;CreateRestOrderItemRequest&gt;**](CreateRestOrderItemRequest.md) |  |  |
 |**orderTime** | **String** |  |  |
 |**orderTitle** | **String** |  |  |
@@ -16,6 +17,7 @@
 |**promoCodes** | **List&lt;String&gt;** | Uses multiple strings as promo codes. The corresponding discount will be applied to the order. |  [optional] |
 |**salesAffiliateId** | **String** |  |  [optional] |
 |**shippingAddress** | [**AddressInformation**](AddressInformation.md) |  |  [optional] |
+|**terms** | **String** |  |  [optional] |
 
 
 

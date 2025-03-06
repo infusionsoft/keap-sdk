@@ -7,12 +7,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **contact_id** | **str** |  | [optional] 
 **lead_affiliate_id** | **str** |  | [optional] 
+**notes** | **str** |  | [optional] 
 **order_time** | **str** |  | [optional] 
 **order_title** | **str** |  | [optional] 
 **order_type** | **str** |  | [optional] 
 **promo_codes** | **List[str]** | Uses multiple strings as promo codes. The corresponding discount will be applied to the order. | [optional] 
 **sales_affiliate_id** | **str** |  | [optional] 
 **shipping_address** | [**AddressInformation**](AddressInformation.md) |  | [optional] 
+**terms** | **str** |  | [optional] 
 
 ## Example
 

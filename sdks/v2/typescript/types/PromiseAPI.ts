@@ -3,6 +3,7 @@ import { Configuration} from '../configuration'
 
 import { AddContactsToSequenceRequest } from '../models/AddContactsToSequenceRequest';
 import { AddContactsToSequenceResponse } from '../models/AddContactsToSequenceResponse';
+import { AddProductInterestRequest } from '../models/AddProductInterestRequest';
 import { AddToAutomationSequenceRequest } from '../models/AddToAutomationSequenceRequest';
 import { AddToAutomationSequenceResponse } from '../models/AddToAutomationSequenceResponse';
 import { Address } from '../models/Address';
@@ -55,7 +56,6 @@ import { BusinessProfileAddressRequest } from '../models/BusinessProfileAddressR
 import { BusinessProfileAddressResponse } from '../models/BusinessProfileAddressResponse';
 import { Campaign } from '../models/Campaign';
 import { CancelSubscriptionsRequest } from '../models/CancelSubscriptionsRequest';
-import { CardInfo } from '../models/CardInfo';
 import { CategoryDiscount } from '../models/CategoryDiscount';
 import { CategoryReference } from '../models/CategoryReference';
 import { CheckListItemDetails } from '../models/CheckListItemDetails';
@@ -136,6 +136,7 @@ import { EmailAddress } from '../models/EmailAddress';
 import { EmailAddressRequest } from '../models/EmailAddressRequest';
 import { EmailSendRequest } from '../models/EmailSendRequest';
 import { EmailSendRequestAttachment } from '../models/EmailSendRequestAttachment';
+import { EmailSendTemplateRequest } from '../models/EmailSendTemplateRequest';
 import { EmailSentCreateError } from '../models/EmailSentCreateError';
 import { EmailSentWithContent } from '../models/EmailSentWithContent';
 import { EmailTemplate } from '../models/EmailTemplate';
@@ -164,6 +165,7 @@ import { LeadSource } from '../models/LeadSource';
 import { LeadSourceCategory } from '../models/LeadSourceCategory';
 import { LeadSourceExpense } from '../models/LeadSourceExpense';
 import { LeadSourceRecurringExpense } from '../models/LeadSourceRecurringExpense';
+import { LeadSourceRecurringExpenseUpdateRequest } from '../models/LeadSourceRecurringExpenseUpdateRequest';
 import { Link } from '../models/Link';
 import { LinkContactsRequest } from '../models/LinkContactsRequest';
 import { ListAffiliateCommissionProgramsResponse } from '../models/ListAffiliateCommissionProgramsResponse';
@@ -185,6 +187,7 @@ import { ListFilesResponse } from '../models/ListFilesResponse';
 import { ListLandingPagesResponse } from '../models/ListLandingPagesResponse';
 import { ListLeadSourceCategoriesResponse } from '../models/ListLeadSourceCategoriesResponse';
 import { ListLeadSourceExpensesResponse } from '../models/ListLeadSourceExpensesResponse';
+import { ListLeadSourceRecurringExpensesResponse } from '../models/ListLeadSourceRecurringExpensesResponse';
 import { ListLeadSourcesResponse } from '../models/ListLeadSourcesResponse';
 import { ListNoteTemplateResponse } from '../models/ListNoteTemplateResponse';
 import { ListNotesResponse } from '../models/ListNotesResponse';
@@ -194,6 +197,7 @@ import { ListOrderPaymentsResponse } from '../models/ListOrderPaymentsResponse';
 import { ListOrderTotalDiscountsResponse } from '../models/ListOrderTotalDiscountsResponse';
 import { ListOrders } from '../models/ListOrders';
 import { ListProductCategoriesResponse } from '../models/ListProductCategoriesResponse';
+import { ListProductDiscountsResponse } from '../models/ListProductDiscountsResponse';
 import { ListProductInterestBundleResponse } from '../models/ListProductInterestBundleResponse';
 import { ListProductsResponse } from '../models/ListProductsResponse';
 import { ListProvincesResponse } from '../models/ListProvincesResponse';
@@ -224,7 +228,6 @@ import { Origin } from '../models/Origin';
 import { OriginRequest } from '../models/OriginRequest';
 import { Owner } from '../models/Owner';
 import { PaymentMethodConfig } from '../models/PaymentMethodConfig';
-import { PaymentMethodList } from '../models/PaymentMethodList';
 import { PaymentPlan } from '../models/PaymentPlan';
 import { PaymentResult } from '../models/PaymentResult';
 import { PhoneNumber } from '../models/PhoneNumber';
@@ -258,7 +261,6 @@ import { RestCreateOrderRequest } from '../models/RestCreateOrderRequest';
 import { RestEmailAddress } from '../models/RestEmailAddress';
 import { RestOpportunityStage } from '../models/RestOpportunityStage';
 import { RestPaymentGateway } from '../models/RestPaymentGateway';
-import { RestPaymentMethod } from '../models/RestPaymentMethod';
 import { RestProductOption } from '../models/RestProductOption';
 import { RestProductOptionValue } from '../models/RestProductOptionValue';
 import { RestSubscriptionPlan } from '../models/RestSubscriptionPlan';
@@ -1188,26 +1190,6 @@ export class PromiseContactApi {
     }
 
     /**
-     * List all Payment Methods for a Contact.
-     * Retrieve Payment Methods
-     * @param contactId contact_id
-     */
-    public listPaymentMethodsUsingGETWithHttpInfo(contactId: number, _options?: Configuration): Promise<HttpInfo<PaymentMethodList>> {
-        const result = this.api.listPaymentMethodsUsingGETWithHttpInfo(contactId, _options);
-        return result.toPromise();
-    }
-
-    /**
-     * List all Payment Methods for a Contact.
-     * Retrieve Payment Methods
-     * @param contactId contact_id
-     */
-    public listPaymentMethodsUsingGET(contactId: number, _options?: Configuration): Promise<PaymentMethodList> {
-        const result = this.api.listPaymentMethodsUsingGET(contactId, _options);
-        return result.toPromise();
-    }
-
-    /**
      * Get the custom fields and optional properties for the Contact object
      * Retrieve Contact Model
      */
@@ -1496,26 +1478,6 @@ export class PromiseEmailApi {
      */
     public deleteEmailsUsingPOST1(deleteEmailsRequest: DeleteEmailsRequest, _options?: Configuration): Promise<DeleteEmailsResponse> {
         const result = this.api.deleteEmailsUsingPOST1(deleteEmailsRequest, _options);
-        return result.toPromise();
-    }
-
-    /**
-     * Pre-Release
-     * Retrieve an email template
-     * @param emailTemplateId email_template_id
-     */
-    public getEmailTemplateUsingGETWithHttpInfo(emailTemplateId: string, _options?: Configuration): Promise<HttpInfo<EmailTemplate>> {
-        const result = this.api.getEmailTemplateUsingGETWithHttpInfo(emailTemplateId, _options);
-        return result.toPromise();
-    }
-
-    /**
-     * Pre-Release
-     * Retrieve an email template
-     * @param emailTemplateId email_template_id
-     */
-    public getEmailTemplateUsingGET(emailTemplateId: string, _options?: Configuration): Promise<EmailTemplate> {
-        const result = this.api.getEmailTemplateUsingGET(emailTemplateId, _options);
         return result.toPromise();
     }
 

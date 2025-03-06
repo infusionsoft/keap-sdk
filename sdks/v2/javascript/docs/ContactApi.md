@@ -12,7 +12,6 @@ Method | HTTP request | Description
 [**listContactLinkTypesUsingGET**](ContactApi.md#listContactLinkTypesUsingGET) | **GET** /v2/contacts/links/types | List Contact Link types
 [**listContactLinksUsingGET**](ContactApi.md#listContactLinksUsingGET) | **GET** /v2/contacts/{contact_id}/links | List Linked Contacts
 [**listContactsUsingGET1**](ContactApi.md#listContactsUsingGET1) | **GET** /v2/contacts | List Contacts
-[**listPaymentMethodsUsingGET**](ContactApi.md#listPaymentMethodsUsingGET) | **GET** /v2/contacts/{contact_id}/paymentMethods | Retrieve Payment Methods
 [**retrieveContactModelUsingGET1**](ContactApi.md#retrieveContactModelUsingGET1) | **GET** /v2/contacts/model | Retrieve Contact Model
 [**unlinkContactsUsingPOST**](ContactApi.md#unlinkContactsUsingPOST) | **POST** /v2/contacts:unlink | Delete Link between two Contacts
 [**updateContactUsingPATCH**](ContactApi.md#updateContactUsingPATCH) | **PATCH** /v2/contacts/{contact_id} | Update a Contact
@@ -384,50 +383,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ListContactsResponse**](ListContactsResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## listPaymentMethodsUsingGET
-
-> PaymentMethodList listPaymentMethodsUsingGET(contactId)
-
-Retrieve Payment Methods
-
-List all Payment Methods for a Contact.
-
-### Example
-
-```javascript
-import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
-
-let apiInstance = new KeapCoreServiceV2Sdk.ContactApi();
-let contactId = 789; // Number | contact_id
-apiInstance.listPaymentMethodsUsingGET(contactId).then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
-  console.error(error);
-});
-
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **contactId** | **Number**| contact_id | 
-
-### Return type
-
-[**PaymentMethodList**](PaymentMethodList.md)
 
 ### Authorization
 

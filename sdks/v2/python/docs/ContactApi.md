@@ -12,7 +12,6 @@ Method | HTTP request | Description
 [**list_contact_link_types_using_get**](ContactApi.md#list_contact_link_types_using_get) | **GET** /v2/contacts/links/types | List Contact Link types
 [**list_contact_links_using_get**](ContactApi.md#list_contact_links_using_get) | **GET** /v2/contacts/{contact_id}/links | List Linked Contacts
 [**list_contacts_using_get1**](ContactApi.md#list_contacts_using_get1) | **GET** /v2/contacts | List Contacts
-[**list_payment_methods_using_get**](ContactApi.md#list_payment_methods_using_get) | **GET** /v2/contacts/{contact_id}/paymentMethods | Retrieve Payment Methods
 [**retrieve_contact_model_using_get1**](ContactApi.md#retrieve_contact_model_using_get1) | **GET** /v2/contacts/model | Retrieve Contact Model
 [**unlink_contacts_using_post**](ContactApi.md#unlink_contacts_using_post) | **POST** /v2/contacts:unlink | Delete Link between two Contacts
 [**update_contact_using_patch**](ContactApi.md#update_contact_using_patch) | **PATCH** /v2/contacts/{contact_id} | Update a Contact
@@ -562,75 +561,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ListContactsResponse**](ListContactsResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-**401** | Unauthorized |  -  |
-**403** | Forbidden |  -  |
-**404** | Not Found |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **list_payment_methods_using_get**
-> PaymentMethodList list_payment_methods_using_get(contact_id)
-
-Retrieve Payment Methods
-
-List all Payment Methods for a Contact.
-
-### Example
-
-
-```python
-import keap_core_v2_client
-from keap_core_v2_client.models.payment_method_list import PaymentMethodList
-from keap_core_v2_client.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
-# See configuration.py for a list of all supported configuration parameters.
-configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
-)
-
-# Enter a context with an instance of the API client
-with keap_core_v2_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = keap_core_v2_client.ContactApi(api_client)
-    contact_id = 56 # int | contact_id
-
-    try:
-        # Retrieve Payment Methods
-        api_response = api_instance.list_payment_methods_using_get(contact_id)
-        print("The response of ContactApi->list_payment_methods_using_get:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling ContactApi->list_payment_methods_using_get: %s\n" % e)
-```
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **contact_id** | **int**| contact_id | 
-
-### Return type
-
-[**PaymentMethodList**](PaymentMethodList.md)
 
 ### Authorization
 

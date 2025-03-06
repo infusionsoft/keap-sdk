@@ -8,7 +8,6 @@ All URIs are relative to https://api.keap.com/crm/rest, except if the operation 
 | [**createEmailsUsingPOST1()**](EmailApi.md#createEmailsUsingPOST1) | **POST** /v2/emails:batchAdd | Create a set of Email Records |
 | [**deleteEmailUsingDELETE1()**](EmailApi.md#deleteEmailUsingDELETE1) | **DELETE** /v2/emails/{id} | Delete an Email Record |
 | [**deleteEmailsUsingPOST1()**](EmailApi.md#deleteEmailsUsingPOST1) | **POST** /v2/emails:batchRemove | Remove a set of Email Records |
-| [**getEmailTemplateUsingGET()**](EmailApi.md#getEmailTemplateUsingGET) | **GET** /v2/emails/templates/{email_template_id} | Retrieve an email template |
 | [**getEmailUsingGET1()**](EmailApi.md#getEmailUsingGET1) | **GET** /v2/emails/{id} | Retrieve an Email |
 | [**sendEmailUsingPOST1()**](EmailApi.md#sendEmailUsingPOST1) | **POST** /v2/emails:send | Send an Email |
 
@@ -226,61 +225,6 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `getEmailTemplateUsingGET()`
-
-```php
-getEmailTemplateUsingGET($email_template_id): \Keap\Core\V2\Model\EmailTemplate
-```
-
-Retrieve an email template
-
-Pre-Release
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-$apiInstance = new Keap\Core\V2\Api\EmailApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
-);
-$email_template_id = 'email_template_id_example'; // string | email_template_id
-
-try {
-    $result = $apiInstance->getEmailTemplateUsingGET($email_template_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling EmailApi->getEmailTemplateUsingGET: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **email_template_id** | **string**| email_template_id | |
-
-### Return type
-
-[**\Keap\Core\V2\Model\EmailTemplate**](../Model/EmailTemplate.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

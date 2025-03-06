@@ -12,7 +12,6 @@ Method | HTTP request | Description
 [**listContactLinkTypesUsingGET**](ContactApi.md#listContactLinkTypesUsingGET) | **GET** /v2/contacts/links/types | List Contact Link types
 [**listContactLinksUsingGET**](ContactApi.md#listContactLinksUsingGET) | **GET** /v2/contacts/{contact_id}/links | List Linked Contacts
 [**listContactsUsingGET1**](ContactApi.md#listContactsUsingGET1) | **GET** /v2/contacts | List Contacts
-[**listPaymentMethodsUsingGET**](ContactApi.md#listPaymentMethodsUsingGET) | **GET** /v2/contacts/{contact_id}/paymentMethods | Retrieve Payment Methods
 [**retrieveContactModelUsingGET1**](ContactApi.md#retrieveContactModelUsingGET1) | **GET** /v2/contacts/model | Retrieve Contact Model
 [**unlinkContactsUsingPOST**](ContactApi.md#unlinkContactsUsingPOST) | **POST** /v2/contacts:unlink | Delete Link between two Contacts
 [**updateContactUsingPATCH**](ContactApi.md#updateContactUsingPATCH) | **PATCH** /v2/contacts/{contact_id} | Update a Contact
@@ -561,62 +560,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 **ListContactsResponse**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-**401** | Unauthorized |  -  |
-**403** | Forbidden |  -  |
-**404** | Not Found |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-# **listPaymentMethodsUsingGET**
-> PaymentMethodList listPaymentMethodsUsingGET()
-
-List all Payment Methods for a Contact.
-
-### Example
-
-
-```typescript
-import { createConfiguration, ContactApi } from '';
-import type { ContactApiListPaymentMethodsUsingGETRequest } from '';
-
-const configuration = createConfiguration();
-const apiInstance = new ContactApi(configuration);
-
-const request: ContactApiListPaymentMethodsUsingGETRequest = {
-    // contact_id
-  contactId: 1,
-};
-
-const data = await apiInstance.listPaymentMethodsUsingGET(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **contactId** | [**number**] | contact_id | defaults to undefined
-
-
-### Return type
-
-**PaymentMethodList**
 
 ### Authorization
 

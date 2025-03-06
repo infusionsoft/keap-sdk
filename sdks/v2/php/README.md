@@ -105,7 +105,6 @@ Class | Method | HTTP request | Description
 *ContactApi* | [**listContactLinkTypesUsingGET**](docs/Api/ContactApi.md#listcontactlinktypesusingget) | **GET** /v2/contacts/links/types | List Contact Link types
 *ContactApi* | [**listContactLinksUsingGET**](docs/Api/ContactApi.md#listcontactlinksusingget) | **GET** /v2/contacts/{contact_id}/links | List Linked Contacts
 *ContactApi* | [**listContactsUsingGET1**](docs/Api/ContactApi.md#listcontactsusingget1) | **GET** /v2/contacts | List Contacts
-*ContactApi* | [**listPaymentMethodsUsingGET**](docs/Api/ContactApi.md#listpaymentmethodsusingget) | **GET** /v2/contacts/{contact_id}/paymentMethods | Retrieve Payment Methods
 *ContactApi* | [**retrieveContactModelUsingGET1**](docs/Api/ContactApi.md#retrievecontactmodelusingget1) | **GET** /v2/contacts/model | Retrieve Contact Model
 *ContactApi* | [**unlinkContactsUsingPOST**](docs/Api/ContactApi.md#unlinkcontactsusingpost) | **POST** /v2/contacts:unlink | Delete Link between two Contacts
 *ContactApi* | [**updateContactUsingPATCH**](docs/Api/ContactApi.md#updatecontactusingpatch) | **PATCH** /v2/contacts/{contact_id} | Update a Contact
@@ -118,7 +117,6 @@ Class | Method | HTTP request | Description
 *EmailApi* | [**createEmailsUsingPOST1**](docs/Api/EmailApi.md#createemailsusingpost1) | **POST** /v2/emails:batchAdd | Create a set of Email Records
 *EmailApi* | [**deleteEmailUsingDELETE1**](docs/Api/EmailApi.md#deleteemailusingdelete1) | **DELETE** /v2/emails/{id} | Delete an Email Record
 *EmailApi* | [**deleteEmailsUsingPOST1**](docs/Api/EmailApi.md#deleteemailsusingpost1) | **POST** /v2/emails:batchRemove | Remove a set of Email Records
-*EmailApi* | [**getEmailTemplateUsingGET**](docs/Api/EmailApi.md#getemailtemplateusingget) | **GET** /v2/emails/templates/{email_template_id} | Retrieve an email template
 *EmailApi* | [**getEmailUsingGET1**](docs/Api/EmailApi.md#getemailusingget1) | **GET** /v2/emails/{id} | Retrieve an Email
 *EmailApi* | [**sendEmailUsingPOST1**](docs/Api/EmailApi.md#sendemailusingpost1) | **POST** /v2/emails:send | Send an Email
 *EmailAddressApi* | [**getEmailAddressStatusUsingGET**](docs/Api/EmailAddressApi.md#getemailaddressstatususingget) | **GET** /v2/emailAddresses/{email} | Retrieve an Email Address status
@@ -169,6 +167,7 @@ Class | Method | HTTP request | Description
 
 - [AddContactsToSequenceRequest](docs/Model/AddContactsToSequenceRequest.md)
 - [AddContactsToSequenceResponse](docs/Model/AddContactsToSequenceResponse.md)
+- [AddProductInterestRequest](docs/Model/AddProductInterestRequest.md)
 - [AddToAutomationSequenceRequest](docs/Model/AddToAutomationSequenceRequest.md)
 - [AddToAutomationSequenceResponse](docs/Model/AddToAutomationSequenceResponse.md)
 - [Address](docs/Model/Address.md)
@@ -221,7 +220,6 @@ Class | Method | HTTP request | Description
 - [BusinessProfileAddressResponse](docs/Model/BusinessProfileAddressResponse.md)
 - [Campaign](docs/Model/Campaign.md)
 - [CancelSubscriptionsRequest](docs/Model/CancelSubscriptionsRequest.md)
-- [CardInfo](docs/Model/CardInfo.md)
 - [CategoryDiscount](docs/Model/CategoryDiscount.md)
 - [CategoryReference](docs/Model/CategoryReference.md)
 - [CheckListItemDetails](docs/Model/CheckListItemDetails.md)
@@ -302,6 +300,7 @@ Class | Method | HTTP request | Description
 - [EmailAddressRequest](docs/Model/EmailAddressRequest.md)
 - [EmailSendRequest](docs/Model/EmailSendRequest.md)
 - [EmailSendRequestAttachment](docs/Model/EmailSendRequestAttachment.md)
+- [EmailSendTemplateRequest](docs/Model/EmailSendTemplateRequest.md)
 - [EmailSentCreateError](docs/Model/EmailSentCreateError.md)
 - [EmailSentWithContent](docs/Model/EmailSentWithContent.md)
 - [EmailTemplate](docs/Model/EmailTemplate.md)
@@ -332,6 +331,7 @@ Class | Method | HTTP request | Description
 - [LeadSourceCategory](docs/Model/LeadSourceCategory.md)
 - [LeadSourceExpense](docs/Model/LeadSourceExpense.md)
 - [LeadSourceRecurringExpense](docs/Model/LeadSourceRecurringExpense.md)
+- [LeadSourceRecurringExpenseUpdateRequest](docs/Model/LeadSourceRecurringExpenseUpdateRequest.md)
 - [Link](docs/Model/Link.md)
 - [LinkContactsRequest](docs/Model/LinkContactsRequest.md)
 - [ListAffiliateCommissionProgramsResponse](docs/Model/ListAffiliateCommissionProgramsResponse.md)
@@ -353,6 +353,7 @@ Class | Method | HTTP request | Description
 - [ListLandingPagesResponse](docs/Model/ListLandingPagesResponse.md)
 - [ListLeadSourceCategoriesResponse](docs/Model/ListLeadSourceCategoriesResponse.md)
 - [ListLeadSourceExpensesResponse](docs/Model/ListLeadSourceExpensesResponse.md)
+- [ListLeadSourceRecurringExpensesResponse](docs/Model/ListLeadSourceRecurringExpensesResponse.md)
 - [ListLeadSourcesResponse](docs/Model/ListLeadSourcesResponse.md)
 - [ListNoteTemplateResponse](docs/Model/ListNoteTemplateResponse.md)
 - [ListNotesResponse](docs/Model/ListNotesResponse.md)
@@ -362,6 +363,7 @@ Class | Method | HTTP request | Description
 - [ListOrderTotalDiscountsResponse](docs/Model/ListOrderTotalDiscountsResponse.md)
 - [ListOrders](docs/Model/ListOrders.md)
 - [ListProductCategoriesResponse](docs/Model/ListProductCategoriesResponse.md)
+- [ListProductDiscountsResponse](docs/Model/ListProductDiscountsResponse.md)
 - [ListProductInterestBundleResponse](docs/Model/ListProductInterestBundleResponse.md)
 - [ListProductsResponse](docs/Model/ListProductsResponse.md)
 - [ListProvincesResponse](docs/Model/ListProvincesResponse.md)
@@ -390,7 +392,6 @@ Class | Method | HTTP request | Description
 - [OriginRequest](docs/Model/OriginRequest.md)
 - [Owner](docs/Model/Owner.md)
 - [PaymentMethodConfig](docs/Model/PaymentMethodConfig.md)
-- [PaymentMethodList](docs/Model/PaymentMethodList.md)
 - [PaymentPlan](docs/Model/PaymentPlan.md)
 - [PaymentResult](docs/Model/PaymentResult.md)
 - [PhoneNumber](docs/Model/PhoneNumber.md)
@@ -424,7 +425,6 @@ Class | Method | HTTP request | Description
 - [RestEmailAddress](docs/Model/RestEmailAddress.md)
 - [RestOpportunityStage](docs/Model/RestOpportunityStage.md)
 - [RestPaymentGateway](docs/Model/RestPaymentGateway.md)
-- [RestPaymentMethod](docs/Model/RestPaymentMethod.md)
 - [RestProductOption](docs/Model/RestProductOption.md)
 - [RestProductOptionValue](docs/Model/RestProductOptionValue.md)
 - [RestSubscriptionPlan](docs/Model/RestSubscriptionPlan.md)
@@ -523,7 +523,7 @@ api@keap.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `2.70.0.784405-hf-202502271519`
-    - Package version: `0.0.9`
+- API version: `2.70.0.784947`
+    - Package version: `0.0.10`
     - Generator version: `7.10.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

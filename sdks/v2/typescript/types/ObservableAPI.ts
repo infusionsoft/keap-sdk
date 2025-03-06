@@ -4,6 +4,7 @@ import { Observable, of, from } from '../rxjsStub';
 import {mergeMap, map} from  '../rxjsStub';
 import { AddContactsToSequenceRequest } from '../models/AddContactsToSequenceRequest';
 import { AddContactsToSequenceResponse } from '../models/AddContactsToSequenceResponse';
+import { AddProductInterestRequest } from '../models/AddProductInterestRequest';
 import { AddToAutomationSequenceRequest } from '../models/AddToAutomationSequenceRequest';
 import { AddToAutomationSequenceResponse } from '../models/AddToAutomationSequenceResponse';
 import { Address } from '../models/Address';
@@ -56,7 +57,6 @@ import { BusinessProfileAddressRequest } from '../models/BusinessProfileAddressR
 import { BusinessProfileAddressResponse } from '../models/BusinessProfileAddressResponse';
 import { Campaign } from '../models/Campaign';
 import { CancelSubscriptionsRequest } from '../models/CancelSubscriptionsRequest';
-import { CardInfo } from '../models/CardInfo';
 import { CategoryDiscount } from '../models/CategoryDiscount';
 import { CategoryReference } from '../models/CategoryReference';
 import { CheckListItemDetails } from '../models/CheckListItemDetails';
@@ -137,6 +137,7 @@ import { EmailAddress } from '../models/EmailAddress';
 import { EmailAddressRequest } from '../models/EmailAddressRequest';
 import { EmailSendRequest } from '../models/EmailSendRequest';
 import { EmailSendRequestAttachment } from '../models/EmailSendRequestAttachment';
+import { EmailSendTemplateRequest } from '../models/EmailSendTemplateRequest';
 import { EmailSentCreateError } from '../models/EmailSentCreateError';
 import { EmailSentWithContent } from '../models/EmailSentWithContent';
 import { EmailTemplate } from '../models/EmailTemplate';
@@ -165,6 +166,7 @@ import { LeadSource } from '../models/LeadSource';
 import { LeadSourceCategory } from '../models/LeadSourceCategory';
 import { LeadSourceExpense } from '../models/LeadSourceExpense';
 import { LeadSourceRecurringExpense } from '../models/LeadSourceRecurringExpense';
+import { LeadSourceRecurringExpenseUpdateRequest } from '../models/LeadSourceRecurringExpenseUpdateRequest';
 import { Link } from '../models/Link';
 import { LinkContactsRequest } from '../models/LinkContactsRequest';
 import { ListAffiliateCommissionProgramsResponse } from '../models/ListAffiliateCommissionProgramsResponse';
@@ -186,6 +188,7 @@ import { ListFilesResponse } from '../models/ListFilesResponse';
 import { ListLandingPagesResponse } from '../models/ListLandingPagesResponse';
 import { ListLeadSourceCategoriesResponse } from '../models/ListLeadSourceCategoriesResponse';
 import { ListLeadSourceExpensesResponse } from '../models/ListLeadSourceExpensesResponse';
+import { ListLeadSourceRecurringExpensesResponse } from '../models/ListLeadSourceRecurringExpensesResponse';
 import { ListLeadSourcesResponse } from '../models/ListLeadSourcesResponse';
 import { ListNoteTemplateResponse } from '../models/ListNoteTemplateResponse';
 import { ListNotesResponse } from '../models/ListNotesResponse';
@@ -195,6 +198,7 @@ import { ListOrderPaymentsResponse } from '../models/ListOrderPaymentsResponse';
 import { ListOrderTotalDiscountsResponse } from '../models/ListOrderTotalDiscountsResponse';
 import { ListOrders } from '../models/ListOrders';
 import { ListProductCategoriesResponse } from '../models/ListProductCategoriesResponse';
+import { ListProductDiscountsResponse } from '../models/ListProductDiscountsResponse';
 import { ListProductInterestBundleResponse } from '../models/ListProductInterestBundleResponse';
 import { ListProductsResponse } from '../models/ListProductsResponse';
 import { ListProvincesResponse } from '../models/ListProvincesResponse';
@@ -225,7 +229,6 @@ import { Origin } from '../models/Origin';
 import { OriginRequest } from '../models/OriginRequest';
 import { Owner } from '../models/Owner';
 import { PaymentMethodConfig } from '../models/PaymentMethodConfig';
-import { PaymentMethodList } from '../models/PaymentMethodList';
 import { PaymentPlan } from '../models/PaymentPlan';
 import { PaymentResult } from '../models/PaymentResult';
 import { PhoneNumber } from '../models/PhoneNumber';
@@ -259,7 +262,6 @@ import { RestCreateOrderRequest } from '../models/RestCreateOrderRequest';
 import { RestEmailAddress } from '../models/RestEmailAddress';
 import { RestOpportunityStage } from '../models/RestOpportunityStage';
 import { RestPaymentGateway } from '../models/RestPaymentGateway';
-import { RestPaymentMethod } from '../models/RestPaymentMethod';
 import { RestProductOption } from '../models/RestProductOption';
 import { RestProductOptionValue } from '../models/RestProductOptionValue';
 import { RestSubscriptionPlan } from '../models/RestSubscriptionPlan';
@@ -1615,39 +1617,6 @@ export class ObservableContactApi {
     }
 
     /**
-     * List all Payment Methods for a Contact.
-     * Retrieve Payment Methods
-     * @param contactId contact_id
-     */
-    public listPaymentMethodsUsingGETWithHttpInfo(contactId: number, _options?: Configuration): Observable<HttpInfo<PaymentMethodList>> {
-        const requestContextPromise = this.requestFactory.listPaymentMethodsUsingGET(contactId, _options);
-
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of this.configuration.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of this.configuration.middleware) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listPaymentMethodsUsingGETWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * List all Payment Methods for a Contact.
-     * Retrieve Payment Methods
-     * @param contactId contact_id
-     */
-    public listPaymentMethodsUsingGET(contactId: number, _options?: Configuration): Observable<PaymentMethodList> {
-        return this.listPaymentMethodsUsingGETWithHttpInfo(contactId, _options).pipe(map((apiResponse: HttpInfo<PaymentMethodList>) => apiResponse.data));
-    }
-
-    /**
      * Get the custom fields and optional properties for the Contact object
      * Retrieve Contact Model
      */
@@ -2091,39 +2060,6 @@ export class ObservableEmailApi {
      */
     public deleteEmailsUsingPOST1(deleteEmailsRequest: DeleteEmailsRequest, _options?: Configuration): Observable<DeleteEmailsResponse> {
         return this.deleteEmailsUsingPOST1WithHttpInfo(deleteEmailsRequest, _options).pipe(map((apiResponse: HttpInfo<DeleteEmailsResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Pre-Release
-     * Retrieve an email template
-     * @param emailTemplateId email_template_id
-     */
-    public getEmailTemplateUsingGETWithHttpInfo(emailTemplateId: string, _options?: Configuration): Observable<HttpInfo<EmailTemplate>> {
-        const requestContextPromise = this.requestFactory.getEmailTemplateUsingGET(emailTemplateId, _options);
-
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of this.configuration.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of this.configuration.middleware) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getEmailTemplateUsingGETWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Pre-Release
-     * Retrieve an email template
-     * @param emailTemplateId email_template_id
-     */
-    public getEmailTemplateUsingGET(emailTemplateId: string, _options?: Configuration): Observable<EmailTemplate> {
-        return this.getEmailTemplateUsingGETWithHttpInfo(emailTemplateId, _options).pipe(map((apiResponse: HttpInfo<EmailTemplate>) => apiResponse.data));
     }
 
     /**

@@ -18,7 +18,6 @@ import { ListContactLinkTypesResponse } from '../models/ListContactLinkTypesResp
 import { ListContactLinksResponse } from '../models/ListContactLinksResponse';
 import { ListContactsResponse } from '../models/ListContactsResponse';
 import { ObjectModel } from '../models/ObjectModel';
-import { PaymentMethodList } from '../models/PaymentMethodList';
 
 /**
  * no description
@@ -355,38 +354,6 @@ export class ContactApiRequestFactory extends BaseAPIRequestFactory {
         if (pageToken !== undefined) {
             requestContext.setQueryParam("page_token", ObjectSerializer.serialize(pageToken, "string", ""));
         }
-
-
-        
-        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-
-        return requestContext;
-    }
-
-    /**
-     * List all Payment Methods for a Contact.
-     * Retrieve Payment Methods
-     * @param contactId contact_id
-     */
-    public async listPaymentMethodsUsingGET(contactId: number, _options?: Configuration): Promise<RequestContext> {
-        let _config = _options || this.configuration;
-
-        // verify required parameter 'contactId' is not null or undefined
-        if (contactId === null || contactId === undefined) {
-            throw new RequiredError("ContactApi", "listPaymentMethodsUsingGET", "contactId");
-        }
-
-
-        // Path Params
-        const localVarPath = '/v2/contacts/{contact_id}/paymentMethods'
-            .replace('{' + 'contact_id' + '}', encodeURIComponent(String(contactId)));
-
-        // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
 
 
         
@@ -892,56 +859,6 @@ export class ContactApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "ListContactsResponse", ""
             ) as ListContactsResponse;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-
-        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
-    }
-
-    /**
-     * Unwraps the actual response sent by the server from the response context and deserializes the response content
-     * to the expected objects
-     *
-     * @params response Response returned by the server for a request to listPaymentMethodsUsingGET
-     * @throws ApiException if the response code was not in [200, 299]
-     */
-     public async listPaymentMethodsUsingGETWithHttpInfo(response: ResponseContext): Promise<HttpInfo<PaymentMethodList >> {
-        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: PaymentMethodList = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "PaymentMethodList", ""
-            ) as PaymentMethodList;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-        if (isCodeInRange("401", response.httpStatusCode)) {
-            const body: Error = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "Error", ""
-            ) as Error;
-            throw new ApiException<Error>(response.httpStatusCode, "Unauthorized", body, response.headers);
-        }
-        if (isCodeInRange("403", response.httpStatusCode)) {
-            const body: Error = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "Error", ""
-            ) as Error;
-            throw new ApiException<Error>(response.httpStatusCode, "Forbidden", body, response.headers);
-        }
-        if (isCodeInRange("404", response.httpStatusCode)) {
-            const body: Error = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "Error", ""
-            ) as Error;
-            throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
-        }
-
-        // Work around for missing responses in specification, e.g. for petstore.yaml
-        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: PaymentMethodList = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "PaymentMethodList", ""
-            ) as PaymentMethodList;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

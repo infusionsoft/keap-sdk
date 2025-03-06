@@ -2,7 +2,7 @@
 
 Keap REST API
 
-- API version: 2.70.0.784405-hf-202502271519
+- API version: 2.70.0.784947
 
 - Generator version: 7.10.0
 
@@ -43,7 +43,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.keap.core</groupId>
   <artifactId>core-service-v2-java-sdk</artifactId>
-  <version>0.0.9</version>
+  <version>0.0.10</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.keap.core:core-service-v2-java-sdk:0.0.9"
+compile "com.keap.core:core-service-v2-java-sdk:0.0.10"
 ```
 
 ### Others
@@ -66,7 +66,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/core-service-v2-java-sdk-0.0.9.jar`
+- `target/core-service-v2-java-sdk-0.0.10.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -174,8 +174,6 @@ Class | Method | HTTP request | Description
 *ContactApi* | [**listContactLinksUsingGETWithHttpInfo**](docs/ContactApi.md#listContactLinksUsingGETWithHttpInfo) | **GET** /v2/contacts/{contact_id}/links | List Linked Contacts
 *ContactApi* | [**listContactsUsingGET1**](docs/ContactApi.md#listContactsUsingGET1) | **GET** /v2/contacts | List Contacts
 *ContactApi* | [**listContactsUsingGET1WithHttpInfo**](docs/ContactApi.md#listContactsUsingGET1WithHttpInfo) | **GET** /v2/contacts | List Contacts
-*ContactApi* | [**listPaymentMethodsUsingGET**](docs/ContactApi.md#listPaymentMethodsUsingGET) | **GET** /v2/contacts/{contact_id}/paymentMethods | Retrieve Payment Methods
-*ContactApi* | [**listPaymentMethodsUsingGETWithHttpInfo**](docs/ContactApi.md#listPaymentMethodsUsingGETWithHttpInfo) | **GET** /v2/contacts/{contact_id}/paymentMethods | Retrieve Payment Methods
 *ContactApi* | [**retrieveContactModelUsingGET1**](docs/ContactApi.md#retrieveContactModelUsingGET1) | **GET** /v2/contacts/model | Retrieve Contact Model
 *ContactApi* | [**retrieveContactModelUsingGET1WithHttpInfo**](docs/ContactApi.md#retrieveContactModelUsingGET1WithHttpInfo) | **GET** /v2/contacts/model | Retrieve Contact Model
 *ContactApi* | [**unlinkContactsUsingPOST**](docs/ContactApi.md#unlinkContactsUsingPOST) | **POST** /v2/contacts:unlink | Delete Link between two Contacts
@@ -200,8 +198,6 @@ Class | Method | HTTP request | Description
 *EmailApi* | [**deleteEmailUsingDELETE1WithHttpInfo**](docs/EmailApi.md#deleteEmailUsingDELETE1WithHttpInfo) | **DELETE** /v2/emails/{id} | Delete an Email Record
 *EmailApi* | [**deleteEmailsUsingPOST1**](docs/EmailApi.md#deleteEmailsUsingPOST1) | **POST** /v2/emails:batchRemove | Remove a set of Email Records
 *EmailApi* | [**deleteEmailsUsingPOST1WithHttpInfo**](docs/EmailApi.md#deleteEmailsUsingPOST1WithHttpInfo) | **POST** /v2/emails:batchRemove | Remove a set of Email Records
-*EmailApi* | [**getEmailTemplateUsingGET**](docs/EmailApi.md#getEmailTemplateUsingGET) | **GET** /v2/emails/templates/{email_template_id} | Retrieve an email template
-*EmailApi* | [**getEmailTemplateUsingGETWithHttpInfo**](docs/EmailApi.md#getEmailTemplateUsingGETWithHttpInfo) | **GET** /v2/emails/templates/{email_template_id} | Retrieve an email template
 *EmailApi* | [**getEmailUsingGET1**](docs/EmailApi.md#getEmailUsingGET1) | **GET** /v2/emails/{id} | Retrieve an Email
 *EmailApi* | [**getEmailUsingGET1WithHttpInfo**](docs/EmailApi.md#getEmailUsingGET1WithHttpInfo) | **GET** /v2/emails/{id} | Retrieve an Email
 *EmailApi* | [**sendEmailUsingPOST1**](docs/EmailApi.md#sendEmailUsingPOST1) | **POST** /v2/emails:send | Send an Email
@@ -298,6 +294,7 @@ Class | Method | HTTP request | Description
 
  - [AddContactsToSequenceRequest](docs/AddContactsToSequenceRequest.md)
  - [AddContactsToSequenceResponse](docs/AddContactsToSequenceResponse.md)
+ - [AddProductInterestRequest](docs/AddProductInterestRequest.md)
  - [AddToAutomationSequenceRequest](docs/AddToAutomationSequenceRequest.md)
  - [AddToAutomationSequenceResponse](docs/AddToAutomationSequenceResponse.md)
  - [Address](docs/Address.md)
@@ -350,7 +347,6 @@ Class | Method | HTTP request | Description
  - [BusinessProfileAddressResponse](docs/BusinessProfileAddressResponse.md)
  - [Campaign](docs/Campaign.md)
  - [CancelSubscriptionsRequest](docs/CancelSubscriptionsRequest.md)
- - [CardInfo](docs/CardInfo.md)
  - [CategoryDiscount](docs/CategoryDiscount.md)
  - [CategoryReference](docs/CategoryReference.md)
  - [CheckListItemDetails](docs/CheckListItemDetails.md)
@@ -431,6 +427,7 @@ Class | Method | HTTP request | Description
  - [EmailAddressRequest](docs/EmailAddressRequest.md)
  - [EmailSendRequest](docs/EmailSendRequest.md)
  - [EmailSendRequestAttachment](docs/EmailSendRequestAttachment.md)
+ - [EmailSendTemplateRequest](docs/EmailSendTemplateRequest.md)
  - [EmailSentCreateError](docs/EmailSentCreateError.md)
  - [EmailSentWithContent](docs/EmailSentWithContent.md)
  - [EmailTemplate](docs/EmailTemplate.md)
@@ -460,6 +457,7 @@ Class | Method | HTTP request | Description
  - [LeadSourceCategory](docs/LeadSourceCategory.md)
  - [LeadSourceExpense](docs/LeadSourceExpense.md)
  - [LeadSourceRecurringExpense](docs/LeadSourceRecurringExpense.md)
+ - [LeadSourceRecurringExpenseUpdateRequest](docs/LeadSourceRecurringExpenseUpdateRequest.md)
  - [Link](docs/Link.md)
  - [LinkContactsRequest](docs/LinkContactsRequest.md)
  - [ListAffiliateCommissionProgramsResponse](docs/ListAffiliateCommissionProgramsResponse.md)
@@ -481,6 +479,7 @@ Class | Method | HTTP request | Description
  - [ListLandingPagesResponse](docs/ListLandingPagesResponse.md)
  - [ListLeadSourceCategoriesResponse](docs/ListLeadSourceCategoriesResponse.md)
  - [ListLeadSourceExpensesResponse](docs/ListLeadSourceExpensesResponse.md)
+ - [ListLeadSourceRecurringExpensesResponse](docs/ListLeadSourceRecurringExpensesResponse.md)
  - [ListLeadSourcesResponse](docs/ListLeadSourcesResponse.md)
  - [ListNoteTemplateResponse](docs/ListNoteTemplateResponse.md)
  - [ListNotesResponse](docs/ListNotesResponse.md)
@@ -490,6 +489,7 @@ Class | Method | HTTP request | Description
  - [ListOrderTotalDiscountsResponse](docs/ListOrderTotalDiscountsResponse.md)
  - [ListOrders](docs/ListOrders.md)
  - [ListProductCategoriesResponse](docs/ListProductCategoriesResponse.md)
+ - [ListProductDiscountsResponse](docs/ListProductDiscountsResponse.md)
  - [ListProductInterestBundleResponse](docs/ListProductInterestBundleResponse.md)
  - [ListProductsResponse](docs/ListProductsResponse.md)
  - [ListProvincesResponse](docs/ListProvincesResponse.md)
@@ -519,7 +519,6 @@ Class | Method | HTTP request | Description
  - [OriginRequest](docs/OriginRequest.md)
  - [Owner](docs/Owner.md)
  - [PaymentMethodConfig](docs/PaymentMethodConfig.md)
- - [PaymentMethodList](docs/PaymentMethodList.md)
  - [PaymentPlan](docs/PaymentPlan.md)
  - [PaymentResult](docs/PaymentResult.md)
  - [PhoneNumber](docs/PhoneNumber.md)
@@ -553,7 +552,6 @@ Class | Method | HTTP request | Description
  - [RestEmailAddress](docs/RestEmailAddress.md)
  - [RestOpportunityStage](docs/RestOpportunityStage.md)
  - [RestPaymentGateway](docs/RestPaymentGateway.md)
- - [RestPaymentMethod](docs/RestPaymentMethod.md)
  - [RestProductOption](docs/RestProductOption.md)
  - [RestProductOptionValue](docs/RestProductOptionValue.md)
  - [RestSubscriptionPlan](docs/RestSubscriptionPlan.md)

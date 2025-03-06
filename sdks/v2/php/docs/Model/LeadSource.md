@@ -4,15 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**description** | **string** |  | [optional]
-**end_time** | **string** |  | [optional]
-**id** | **string** |  | [optional]
-**lead_source_category_id** | **string** |  | [optional]
-**medium** | **string** |  | [optional]
-**message** | **string** |  | [optional]
-**name** | **string** |  | [optional]
-**start_time** | **string** |  | [optional]
-**status** | **string** |  | [optional]
-**vendor** | **string** |  | [optional]
+**create_time** | **string** | The time that this lead source was created | [optional]
+**description** | **string** | The description of this lead source | [optional]
+**end_time** | **string** | The time that this lead source will end | [optional]
+**id** | **string** | The unique identifier for thia lead source | [optional]
+**lead_source_category_id** | **string** | The ID of of the category that this lead source belongs to | [optional]
+**medium** | **string** | The medium of the lead source | [optional]
+**message** | **string** | The message/content of the lead source | [optional]
+**name** | **string** | The name of this lead source | [optional]
+**start_time** | **string** | The time that this lead source started | [optional]
+**status** | **string** | The status of this lead source | [optional]
+**update_time** | **string** | The time that this lead source was last updated | [optional]
+**vendor** | **string** | The vendor of the lead source | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

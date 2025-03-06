@@ -12,7 +12,6 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 | [**ListContactLinkTypesUsingGET**](ContactApi.md#listcontactlinktypesusingget) | **GET** /v2/contacts/links/types | List Contact Link types |
 | [**ListContactLinksUsingGET**](ContactApi.md#listcontactlinksusingget) | **GET** /v2/contacts/{contact_id}/links | List Linked Contacts |
 | [**ListContactsUsingGET1**](ContactApi.md#listcontactsusingget1) | **GET** /v2/contacts | List Contacts |
-| [**ListPaymentMethodsUsingGET**](ContactApi.md#listpaymentmethodsusingget) | **GET** /v2/contacts/{contact_id}/paymentMethods | Retrieve Payment Methods |
 | [**RetrieveContactModelUsingGET1**](ContactApi.md#retrievecontactmodelusingget1) | **GET** /v2/contacts/model | Retrieve Contact Model |
 | [**UnlinkContactsUsingPOST**](ContactApi.md#unlinkcontactsusingpost) | **POST** /v2/contacts:unlink | Delete Link between two Contacts |
 | [**UpdateContactUsingPATCH**](ContactApi.md#updatecontactusingpatch) | **PATCH** /v2/contacts/{contact_id} | Update a Contact |
@@ -757,100 +756,6 @@ catch (ApiException e)
 ### Return type
 
 [**ListContactsResponse**](ListContactsResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a id="listpaymentmethodsusingget"></a>
-# **ListPaymentMethodsUsingGET**
-> PaymentMethodList ListPaymentMethodsUsingGET (long contactId)
-
-Retrieve Payment Methods
-
-List all Payment Methods for a Contact.
-
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using Keap.Core.V2.Api;
-using Keap.Core.V2.Client;
-using Keap.Core.V2.Model;
-
-namespace Example
-{
-    public class ListPaymentMethodsUsingGETExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
-            var apiInstance = new ContactApi(config);
-            var contactId = 789L;  // long | contact_id
-
-            try
-            {
-                // Retrieve Payment Methods
-                PaymentMethodList result = apiInstance.ListPaymentMethodsUsingGET(contactId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling ContactApi.ListPaymentMethodsUsingGET: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the ListPaymentMethodsUsingGETWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieve Payment Methods
-    ApiResponse<PaymentMethodList> response = apiInstance.ListPaymentMethodsUsingGETWithHttpInfo(contactId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling ContactApi.ListPaymentMethodsUsingGETWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| **contactId** | **long** | contact_id |  |
-
-### Return type
-
-[**PaymentMethodList**](PaymentMethodList.md)
 
 ### Authorization
 

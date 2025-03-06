@@ -8,7 +8,6 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 | [**CreateEmailsUsingPOST1**](EmailApi.md#createemailsusingpost1) | **POST** /v2/emails:batchAdd | Create a set of Email Records |
 | [**DeleteEmailUsingDELETE1**](EmailApi.md#deleteemailusingdelete1) | **DELETE** /v2/emails/{id} | Delete an Email Record |
 | [**DeleteEmailsUsingPOST1**](EmailApi.md#deleteemailsusingpost1) | **POST** /v2/emails:batchRemove | Remove a set of Email Records |
-| [**GetEmailTemplateUsingGET**](EmailApi.md#getemailtemplateusingget) | **GET** /v2/emails/templates/{email_template_id} | Retrieve an email template |
 | [**GetEmailUsingGET1**](EmailApi.md#getemailusingget1) | **GET** /v2/emails/{id} | Retrieve an Email |
 | [**SendEmailUsingPOST1**](EmailApi.md#sendemailusingpost1) | **POST** /v2/emails:send | Send an Email |
 
@@ -378,100 +377,6 @@ No authorization required
 | **200** | OK |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a id="getemailtemplateusingget"></a>
-# **GetEmailTemplateUsingGET**
-> EmailTemplate GetEmailTemplateUsingGET (string emailTemplateId)
-
-Retrieve an email template
-
-Pre-Release
-
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using Keap.Core.V2.Api;
-using Keap.Core.V2.Client;
-using Keap.Core.V2.Model;
-
-namespace Example
-{
-    public class GetEmailTemplateUsingGETExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
-            var apiInstance = new EmailApi(config);
-            var emailTemplateId = "emailTemplateId_example";  // string | email_template_id
-
-            try
-            {
-                // Retrieve an email template
-                EmailTemplate result = apiInstance.GetEmailTemplateUsingGET(emailTemplateId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EmailApi.GetEmailTemplateUsingGET: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetEmailTemplateUsingGETWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieve an email template
-    ApiResponse<EmailTemplate> response = apiInstance.GetEmailTemplateUsingGETWithHttpInfo(emailTemplateId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EmailApi.GetEmailTemplateUsingGETWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| **emailTemplateId** | **string** | email_template_id |  |
-
-### Return type
-
-[**EmailTemplate**](EmailTemplate.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

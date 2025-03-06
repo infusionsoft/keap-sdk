@@ -1,5 +1,6 @@
 export * from '../models/AddContactsToSequenceRequest';
 export * from '../models/AddContactsToSequenceResponse';
+export * from '../models/AddProductInterestRequest';
 export * from '../models/AddToAutomationSequenceRequest';
 export * from '../models/AddToAutomationSequenceResponse';
 export * from '../models/Address';
@@ -52,7 +53,6 @@ export * from '../models/BusinessProfileAddressRequest';
 export * from '../models/BusinessProfileAddressResponse';
 export * from '../models/Campaign';
 export * from '../models/CancelSubscriptionsRequest';
-export * from '../models/CardInfo';
 export * from '../models/CategoryDiscount';
 export * from '../models/CategoryReference';
 export * from '../models/CheckListItemDetails';
@@ -133,6 +133,7 @@ export * from '../models/EmailAddress';
 export * from '../models/EmailAddressRequest';
 export * from '../models/EmailSendRequest';
 export * from '../models/EmailSendRequestAttachment';
+export * from '../models/EmailSendTemplateRequest';
 export * from '../models/EmailSentCreateError';
 export * from '../models/EmailSentWithContent';
 export * from '../models/EmailTemplate';
@@ -161,6 +162,7 @@ export * from '../models/LeadSource';
 export * from '../models/LeadSourceCategory';
 export * from '../models/LeadSourceExpense';
 export * from '../models/LeadSourceRecurringExpense';
+export * from '../models/LeadSourceRecurringExpenseUpdateRequest';
 export * from '../models/Link';
 export * from '../models/LinkContactsRequest';
 export * from '../models/ListAffiliateCommissionProgramsResponse';
@@ -182,6 +184,7 @@ export * from '../models/ListFilesResponse';
 export * from '../models/ListLandingPagesResponse';
 export * from '../models/ListLeadSourceCategoriesResponse';
 export * from '../models/ListLeadSourceExpensesResponse';
+export * from '../models/ListLeadSourceRecurringExpensesResponse';
 export * from '../models/ListLeadSourcesResponse';
 export * from '../models/ListNoteTemplateResponse';
 export * from '../models/ListNotesResponse';
@@ -191,6 +194,7 @@ export * from '../models/ListOrderPaymentsResponse';
 export * from '../models/ListOrderTotalDiscountsResponse';
 export * from '../models/ListOrders';
 export * from '../models/ListProductCategoriesResponse';
+export * from '../models/ListProductDiscountsResponse';
 export * from '../models/ListProductInterestBundleResponse';
 export * from '../models/ListProductsResponse';
 export * from '../models/ListProvincesResponse';
@@ -221,7 +225,6 @@ export * from '../models/Origin';
 export * from '../models/OriginRequest';
 export * from '../models/Owner';
 export * from '../models/PaymentMethodConfig';
-export * from '../models/PaymentMethodList';
 export * from '../models/PaymentPlan';
 export * from '../models/PaymentResult';
 export * from '../models/PhoneNumber';
@@ -255,7 +258,6 @@ export * from '../models/RestCreateOrderRequest';
 export * from '../models/RestEmailAddress';
 export * from '../models/RestOpportunityStage';
 export * from '../models/RestPaymentGateway';
-export * from '../models/RestPaymentMethod';
 export * from '../models/RestProductOption';
 export * from '../models/RestProductOptionValue';
 export * from '../models/RestSubscriptionPlan';
@@ -329,6 +331,7 @@ export * from '../models/User';
 
 import { AddContactsToSequenceRequest } from '../models/AddContactsToSequenceRequest';
 import { AddContactsToSequenceResponse } from '../models/AddContactsToSequenceResponse';
+import { AddProductInterestRequest    , AddProductInterestRequestTypeEnum   } from '../models/AddProductInterestRequest';
 import { AddToAutomationSequenceRequest } from '../models/AddToAutomationSequenceRequest';
 import { AddToAutomationSequenceResponse } from '../models/AddToAutomationSequenceResponse';
 import { Address  , AddressFieldEnum           } from '../models/Address';
@@ -381,7 +384,6 @@ import { BusinessProfileAddressRequest } from '../models/BusinessProfileAddressR
 import { BusinessProfileAddressResponse } from '../models/BusinessProfileAddressResponse';
 import { Campaign } from '../models/Campaign';
 import { CancelSubscriptionsRequest } from '../models/CancelSubscriptionsRequest';
-import { CardInfo } from '../models/CardInfo';
 import { CategoryDiscount } from '../models/CategoryDiscount';
 import { CategoryReference } from '../models/CategoryReference';
 import { CheckListItemDetails } from '../models/CheckListItemDetails';
@@ -462,6 +464,7 @@ import { EmailAddress , EmailAddressEmailOptStatusEnum  , EmailAddressFieldEnum 
 import { EmailAddressRequest , EmailAddressRequestFieldEnum    } from '../models/EmailAddressRequest';
 import { EmailSendRequest } from '../models/EmailSendRequest';
 import { EmailSendRequestAttachment } from '../models/EmailSendRequestAttachment';
+import { EmailSendTemplateRequest } from '../models/EmailSendTemplateRequest';
 import { EmailSentCreateError } from '../models/EmailSentCreateError';
 import { EmailSentWithContent      , EmailSentWithContentOriginalProviderEnum              } from '../models/EmailSentWithContent';
 import { EmailTemplate   , EmailTemplateContentTypeEnum          } from '../models/EmailTemplate';
@@ -486,10 +489,11 @@ import { InvoiceOrderPayment     , InvoiceOrderPaymentPayStatusEnum       } from
 import { Item    , ItemTypeEnum   } from '../models/Item';
 import { LandingPage } from '../models/LandingPage';
 import { LeadScore } from '../models/LeadScore';
-import { LeadSource        , LeadSourceStatusEnum    } from '../models/LeadSource';
+import { LeadSource         , LeadSourceStatusEnum     } from '../models/LeadSource';
 import { LeadSourceCategory } from '../models/LeadSourceCategory';
 import { LeadSourceExpense } from '../models/LeadSourceExpense';
 import { LeadSourceRecurringExpense } from '../models/LeadSourceRecurringExpense';
+import { LeadSourceRecurringExpenseUpdateRequest } from '../models/LeadSourceRecurringExpenseUpdateRequest';
 import { Link } from '../models/Link';
 import { LinkContactsRequest } from '../models/LinkContactsRequest';
 import { ListAffiliateCommissionProgramsResponse } from '../models/ListAffiliateCommissionProgramsResponse';
@@ -511,6 +515,7 @@ import { ListFilesResponse } from '../models/ListFilesResponse';
 import { ListLandingPagesResponse } from '../models/ListLandingPagesResponse';
 import { ListLeadSourceCategoriesResponse } from '../models/ListLeadSourceCategoriesResponse';
 import { ListLeadSourceExpensesResponse } from '../models/ListLeadSourceExpensesResponse';
+import { ListLeadSourceRecurringExpensesResponse } from '../models/ListLeadSourceRecurringExpensesResponse';
 import { ListLeadSourcesResponse } from '../models/ListLeadSourcesResponse';
 import { ListNoteTemplateResponse } from '../models/ListNoteTemplateResponse';
 import { ListNotesResponse } from '../models/ListNotesResponse';
@@ -520,6 +525,7 @@ import { ListOrderPaymentsResponse } from '../models/ListOrderPaymentsResponse';
 import { ListOrderTotalDiscountsResponse } from '../models/ListOrderTotalDiscountsResponse';
 import { ListOrders } from '../models/ListOrders';
 import { ListProductCategoriesResponse } from '../models/ListProductCategoriesResponse';
+import { ListProductDiscountsResponse } from '../models/ListProductDiscountsResponse';
 import { ListProductInterestBundleResponse } from '../models/ListProductInterestBundleResponse';
 import { ListProductsResponse } from '../models/ListProductsResponse';
 import { ListProvincesResponse } from '../models/ListProvincesResponse';
@@ -550,7 +556,6 @@ import { Origin } from '../models/Origin';
 import { OriginRequest } from '../models/OriginRequest';
 import { Owner } from '../models/Owner';
 import { PaymentMethodConfig } from '../models/PaymentMethodConfig';
-import { PaymentMethodList } from '../models/PaymentMethodList';
 import { PaymentPlan } from '../models/PaymentPlan';
 import { PaymentResult } from '../models/PaymentResult';
 import { PhoneNumber , PhoneNumberFieldEnum      } from '../models/PhoneNumber';
@@ -580,11 +585,10 @@ import { ReportEntryValue } from '../models/ReportEntryValue';
 import { ReportExecutionResult } from '../models/ReportExecutionResult';
 import { Resource } from '../models/Resource';
 import { RestAffiliate    , RestAffiliateStatusEnum    } from '../models/RestAffiliate';
-import { RestCreateOrderRequest     , RestCreateOrderRequestOrderTypeEnum      } from '../models/RestCreateOrderRequest';
+import { RestCreateOrderRequest      , RestCreateOrderRequestOrderTypeEnum       } from '../models/RestCreateOrderRequest';
 import { RestEmailAddress  , RestEmailAddressStatusEnum   } from '../models/RestEmailAddress';
 import { RestOpportunityStage } from '../models/RestOpportunityStage';
 import { RestPaymentGateway } from '../models/RestPaymentGateway';
-import { RestPaymentMethod } from '../models/RestPaymentMethod';
 import { RestProductOption               , RestProductOptionTypeEnum    } from '../models/RestProductOption';
 import { RestProductOptionValue } from '../models/RestProductOptionValue';
 import { RestSubscriptionPlan , RestSubscriptionPlanCycleEnum         } from '../models/RestSubscriptionPlan';
@@ -635,7 +639,7 @@ import { UpdateOpportunityRequestV2 } from '../models/UpdateOpportunityRequestV2
 import { UpdateOpportunityStageChecklistItem } from '../models/UpdateOpportunityStageChecklistItem';
 import { UpdateOpportunityStageRequest } from '../models/UpdateOpportunityStageRequest';
 import { UpdateOrderItemRequest       , UpdateOrderItemRequestTypeEnum   } from '../models/UpdateOrderItemRequest';
-import { UpdateOrderRequest    , UpdateOrderRequestOrderTypeEnum      } from '../models/UpdateOrderRequest';
+import { UpdateOrderRequest     , UpdateOrderRequestOrderTypeEnum       } from '../models/UpdateOrderRequest';
 import { UpdateOrderTotalDiscountRequest   , UpdateOrderTotalDiscountRequestDiscountStrategyEnum  , UpdateOrderTotalDiscountRequestDiscountTypeEnum     } from '../models/UpdateOrderTotalDiscountRequest';
 import { UpdateOutcomeLabelsRequest } from '../models/UpdateOutcomeLabelsRequest';
 import { UpdatePipelineRequest } from '../models/UpdatePipelineRequest';
@@ -669,6 +673,7 @@ let primitives = [
                  ];
 
 let enumsMap: Set<string> = new Set<string>([
+    "AddProductInterestRequestTypeEnum",
     "AddressFieldEnum",
     "ContactSourceTypeEnum",
     "CreateAffiliateRequestStatusEnum",
@@ -746,6 +751,7 @@ let enumsMap: Set<string> = new Set<string>([
 let typeMap: {[index: string]: any} = {
     "AddContactsToSequenceRequest": AddContactsToSequenceRequest,
     "AddContactsToSequenceResponse": AddContactsToSequenceResponse,
+    "AddProductInterestRequest": AddProductInterestRequest,
     "AddToAutomationSequenceRequest": AddToAutomationSequenceRequest,
     "AddToAutomationSequenceResponse": AddToAutomationSequenceResponse,
     "Address": Address,
@@ -798,7 +804,6 @@ let typeMap: {[index: string]: any} = {
     "BusinessProfileAddressResponse": BusinessProfileAddressResponse,
     "Campaign": Campaign,
     "CancelSubscriptionsRequest": CancelSubscriptionsRequest,
-    "CardInfo": CardInfo,
     "CategoryDiscount": CategoryDiscount,
     "CategoryReference": CategoryReference,
     "CheckListItemDetails": CheckListItemDetails,
@@ -878,6 +883,7 @@ let typeMap: {[index: string]: any} = {
     "EmailAddressRequest": EmailAddressRequest,
     "EmailSendRequest": EmailSendRequest,
     "EmailSendRequestAttachment": EmailSendRequestAttachment,
+    "EmailSendTemplateRequest": EmailSendTemplateRequest,
     "EmailSentCreateError": EmailSentCreateError,
     "EmailSentWithContent": EmailSentWithContent,
     "EmailTemplate": EmailTemplate,
@@ -906,6 +912,7 @@ let typeMap: {[index: string]: any} = {
     "LeadSourceCategory": LeadSourceCategory,
     "LeadSourceExpense": LeadSourceExpense,
     "LeadSourceRecurringExpense": LeadSourceRecurringExpense,
+    "LeadSourceRecurringExpenseUpdateRequest": LeadSourceRecurringExpenseUpdateRequest,
     "Link": Link,
     "LinkContactsRequest": LinkContactsRequest,
     "ListAffiliateCommissionProgramsResponse": ListAffiliateCommissionProgramsResponse,
@@ -927,6 +934,7 @@ let typeMap: {[index: string]: any} = {
     "ListLandingPagesResponse": ListLandingPagesResponse,
     "ListLeadSourceCategoriesResponse": ListLeadSourceCategoriesResponse,
     "ListLeadSourceExpensesResponse": ListLeadSourceExpensesResponse,
+    "ListLeadSourceRecurringExpensesResponse": ListLeadSourceRecurringExpensesResponse,
     "ListLeadSourcesResponse": ListLeadSourcesResponse,
     "ListNoteTemplateResponse": ListNoteTemplateResponse,
     "ListNotesResponse": ListNotesResponse,
@@ -936,6 +944,7 @@ let typeMap: {[index: string]: any} = {
     "ListOrderTotalDiscountsResponse": ListOrderTotalDiscountsResponse,
     "ListOrders": ListOrders,
     "ListProductCategoriesResponse": ListProductCategoriesResponse,
+    "ListProductDiscountsResponse": ListProductDiscountsResponse,
     "ListProductInterestBundleResponse": ListProductInterestBundleResponse,
     "ListProductsResponse": ListProductsResponse,
     "ListProvincesResponse": ListProvincesResponse,
@@ -966,7 +975,6 @@ let typeMap: {[index: string]: any} = {
     "OriginRequest": OriginRequest,
     "Owner": Owner,
     "PaymentMethodConfig": PaymentMethodConfig,
-    "PaymentMethodList": PaymentMethodList,
     "PaymentPlan": PaymentPlan,
     "PaymentResult": PaymentResult,
     "PhoneNumber": PhoneNumber,
@@ -1000,7 +1008,6 @@ let typeMap: {[index: string]: any} = {
     "RestEmailAddress": RestEmailAddress,
     "RestOpportunityStage": RestOpportunityStage,
     "RestPaymentGateway": RestPaymentGateway,
-    "RestPaymentMethod": RestPaymentMethod,
     "RestProductOption": RestProductOption,
     "RestProductOptionValue": RestProductOptionValue,
     "RestSubscriptionPlan": RestSubscriptionPlan,

@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**discounts** | [**List[CategoryDiscount]**](CategoryDiscount.md) |  | [optional] 
+**category_discounts** | [**List[CategoryDiscount]**](CategoryDiscount.md) |  | [optional] 
 **next_page_token** | **str** |  | [optional] 
 
 ## Example

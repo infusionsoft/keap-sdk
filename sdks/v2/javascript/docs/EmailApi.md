@@ -8,7 +8,6 @@ Method | HTTP request | Description
 [**createEmailsUsingPOST1**](EmailApi.md#createEmailsUsingPOST1) | **POST** /v2/emails:batchAdd | Create a set of Email Records
 [**deleteEmailUsingDELETE1**](EmailApi.md#deleteEmailUsingDELETE1) | **DELETE** /v2/emails/{id} | Delete an Email Record
 [**deleteEmailsUsingPOST1**](EmailApi.md#deleteEmailsUsingPOST1) | **POST** /v2/emails:batchRemove | Remove a set of Email Records
-[**getEmailTemplateUsingGET**](EmailApi.md#getEmailTemplateUsingGET) | **GET** /v2/emails/templates/{email_template_id} | Retrieve an email template
 [**getEmailUsingGET1**](EmailApi.md#getEmailUsingGET1) | **GET** /v2/emails/{id} | Retrieve an Email
 [**sendEmailUsingPOST1**](EmailApi.md#sendEmailUsingPOST1) | **POST** /v2/emails:send | Send an Email
 
@@ -189,50 +188,6 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## getEmailTemplateUsingGET
-
-> EmailTemplate getEmailTemplateUsingGET(emailTemplateId)
-
-Retrieve an email template
-
-Pre-Release
-
-### Example
-
-```javascript
-import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
-
-let apiInstance = new KeapCoreServiceV2Sdk.EmailApi();
-let emailTemplateId = "emailTemplateId_example"; // String | email_template_id
-apiInstance.getEmailTemplateUsingGET(emailTemplateId).then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
-  console.error(error);
-});
-
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **emailTemplateId** | **String**| email_template_id | 
-
-### Return type
-
-[**EmailTemplate**](EmailTemplate.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
 - **Accept**: application/json
 
 

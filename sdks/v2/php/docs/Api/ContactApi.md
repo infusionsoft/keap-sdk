@@ -12,7 +12,6 @@ All URIs are relative to https://api.keap.com/crm/rest, except if the operation 
 | [**listContactLinkTypesUsingGET()**](ContactApi.md#listContactLinkTypesUsingGET) | **GET** /v2/contacts/links/types | List Contact Link types |
 | [**listContactLinksUsingGET()**](ContactApi.md#listContactLinksUsingGET) | **GET** /v2/contacts/{contact_id}/links | List Linked Contacts |
 | [**listContactsUsingGET1()**](ContactApi.md#listContactsUsingGET1) | **GET** /v2/contacts | List Contacts |
-| [**listPaymentMethodsUsingGET()**](ContactApi.md#listPaymentMethodsUsingGET) | **GET** /v2/contacts/{contact_id}/paymentMethods | Retrieve Payment Methods |
 | [**retrieveContactModelUsingGET1()**](ContactApi.md#retrieveContactModelUsingGET1) | **GET** /v2/contacts/model | Retrieve Contact Model |
 | [**unlinkContactsUsingPOST()**](ContactApi.md#unlinkContactsUsingPOST) | **POST** /v2/contacts:unlink | Delete Link between two Contacts |
 | [**updateContactUsingPATCH()**](ContactApi.md#updateContactUsingPATCH) | **PATCH** /v2/contacts/{contact_id} | Update a Contact |
@@ -459,61 +458,6 @@ try {
 ### Return type
 
 [**\Keap\Core\V2\Model\ListContactsResponse**](../Model/ListContactsResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `listPaymentMethodsUsingGET()`
-
-```php
-listPaymentMethodsUsingGET($contact_id): \Keap\Core\V2\Model\PaymentMethodList
-```
-
-Retrieve Payment Methods
-
-List all Payment Methods for a Contact.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-$apiInstance = new Keap\Core\V2\Api\ContactApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
-);
-$contact_id = 56; // int | contact_id
-
-try {
-    $result = $apiInstance->listPaymentMethodsUsingGET($contact_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling ContactApi->listPaymentMethodsUsingGET: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **contact_id** | **int**| contact_id | |
-
-### Return type
-
-[**\Keap\Core\V2\Model\PaymentMethodList**](../Model/PaymentMethodList.md)
 
 ### Authorization
 

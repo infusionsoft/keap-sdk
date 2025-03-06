@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   description: Keap REST Core Service
-  version: 2.70.0.784405-hf-202502271519
+  version: 2.70.0.784947
   title: Keap REST API
   termsOfService: https://keap.com/legal
   contact:
@@ -2084,47 +2084,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
       deprecated: false
-  /v2/contacts/{contact_id}/paymentMethods:
-    get:
-      tags:
-      - Contact
-      summary: Retrieve Payment Methods
-      description: List all Payment Methods for a Contact.
-      operationId: listPaymentMethodsUsingGET
-      parameters:
-      - name: contact_id
-        in: path
-        description: contact_id
-        required: true
-        schema:
-          type: integer
-          format: int64
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PaymentMethodList'
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '403':
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '404':
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-      deprecated: false
   /v2/contacts:link:
     post:
       tags:
@@ -2454,46 +2413,6 @@ paths:
                 $ref: '#/components/schemas/Error'
         '403':
           description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-      deprecated: false
-  /v2/emails/templates/{email_template_id}:
-    get:
-      tags:
-      - Email
-      summary: Retrieve an email template
-      description: Pre-Release
-      operationId: getEmailTemplateUsingGET
-      parameters:
-      - name: email_template_id
-        in: path
-        description: email_template_id
-        required: true
-        schema:
-          type: string
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EmailTemplate'
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '403':
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '404':
-          description: Not Found
           content:
             application/json:
               schema:
@@ -4297,6 +4216,33 @@ components:
           additionalProperties:
             type: string
       title: AddContactsToSequenceResponse
+    AddProductInterestRequest:
+      type: object
+      required:
+      - entity_id
+      - price
+      - type
+      properties:
+        discount_percent:
+          type: integer
+          format: int32
+        entity_id:
+          type: string
+          description: |
+            The `product_id` (when the `type` is set to `PRODUCT`)
+             or the `subscription_id` (when the `type` is set to `SUBSCRIPTION_PLAN`).
+        price:
+          type: number
+          format: double
+        quantity:
+          type: integer
+          format: int32
+        type:
+          type: string
+          enum:
+          - PRODUCT
+          - SUBSCRIPTION_PLAN
+      title: AddProductInterestRequest
     AddToAutomationSequenceRequest:
       type: object
       properties:
@@ -5025,20 +4971,6 @@ components:
         reason:
           type: string
       title: CancelSubscriptionsRequest
-    CardInfo:
-      type: object
-      properties:
-        brand:
-          type: string
-        cardType:
-          type: string
-        expirationMonth:
-          type: string
-        expirationYear:
-          type: string
-        lastFour:
-          type: string
-      title: CardInfo
     CategoryDiscount:
       type: object
       properties:
@@ -6841,6 +6773,26 @@ components:
           type: string
           description: The filename of the attached file, including extension
       title: EmailSendRequestAttachment
+    EmailSendTemplateRequest:
+      type: object
+      properties:
+        address_field:
+          type: string
+          description: Email field of each Contact record to address the email to,
+            such as 'Email', 'EmailAddress2', 'EmailAddress3' or '_CustomFieldName',
+            defaulting to the contact's primary email
+        contact_ids:
+          type: array
+          description: List of contacts to send
+          items:
+            type: string
+        template_id:
+          type: string
+          description: Template ID
+        user_id:
+          type: string
+          description: user id sending the email
+      title: EmailSendTemplateRequest
     EmailSentCreateError:
       type: object
       properties:
@@ -7521,29 +7473,45 @@ components:
     LeadSource:
       type: object
       properties:
+        create_time:
+          type: string
+          description: The time that this lead source was created
         description:
           type: string
+          description: The description of this lead source
         end_time:
           type: string
+          description: The time that this lead source will end
         id:
           type: string
+          description: The unique identifier for thia lead source
         lead_source_category_id:
           type: string
+          description: The ID of of the category that this lead source belongs to
         medium:
           type: string
+          description: The medium of the lead source
         message:
           type: string
+          description: The message/content of the lead source
         name:
           type: string
+          description: The name of this lead source
         start_time:
           type: string
+          description: The time that this lead source started
         status:
           type: string
+          description: The status of this lead source
           enum:
           - ACTIVE
           - INACTIVE
+        update_time:
+          type: string
+          description: The time that this lead source was last updated
         vendor:
           type: string
+          description: The vendor of the lead source
       title: LeadSource
     LeadSourceCategory:
       type: object
@@ -7617,6 +7585,30 @@ components:
           type: string
           description: The time this lead source recurring expense was last updated
       title: LeadSourceRecurringExpense
+    LeadSourceRecurringExpenseUpdateRequest:
+      type: object
+      properties:
+        amount:
+          type: integer
+          format: int64
+          description: |-
+            The monthly cost of this lead source recurring expense.
+             The value should be in the smallest unit of currency for your currency locale.
+             For example, if your currency locale is USD, then the smallest unit of currency is
+             in cents, $225.50 would be provided in the request as 22550.
+        end_time:
+          type: string
+          description: The time this lead source recurring expense ends
+        notes:
+          type: string
+          description: The notes for the lead source recurring expense
+        start_time:
+          type: string
+          description: The time this lead source recurring expense starts
+        title:
+          type: string
+          description: The title of the lead source recurring expense
+      title: LeadSourceRecurringExpenseUpdateRequest
     Link:
       type: object
       properties:
@@ -7748,7 +7740,7 @@ components:
     ListCategoryDiscountsResponse:
       type: object
       properties:
-        discounts:
+        category_discounts:
           type: array
           items:
             $ref: '#/components/schemas/CategoryDiscount'
@@ -7852,10 +7844,20 @@ components:
         next_page_token:
           type: string
       title: ListLeadSourceExpensesResponse
+    ListLeadSourceRecurringExpensesResponse:
+      type: object
+      properties:
+        lead_source_recurring_expenses:
+          type: array
+          items:
+            $ref: '#/components/schemas/LeadSourceRecurringExpense'
+        next_page_token:
+          type: string
+      title: ListLeadSourceRecurringExpensesResponse
     ListLeadSourcesResponse:
       type: object
       properties:
-        leadsources:
+        lead_sources:
           type: array
           items:
             $ref: '#/components/schemas/LeadSource'
@@ -7942,6 +7944,16 @@ components:
           items:
             $ref: '#/components/schemas/ProductCategory'
       title: ListProductCategoriesResponse
+    ListProductDiscountsResponse:
+      type: object
+      properties:
+        next_page_token:
+          type: string
+        product_discounts:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductDiscount'
+      title: ListProductDiscountsResponse
     ListProductInterestBundleResponse:
       type: object
       properties:
@@ -7987,34 +7999,13 @@ components:
         type:
           type: string
           enum:
-          - USE_DEFAULT
-          - PAY_PAL
-          - PAY_PAL_PAYFLOW_PRO
-          - PAYPAL_COMMERCE
-          - PAYPAL_COMMERCE_UCC
-          - GATEWAY_PAYFLOW_PRO
+          - PAYPAL
+          - UNSUPPORTED
           - AUTHORIZE
-          - AUTHORIZE_CARD_PRESENT
-          - POWER_PAY
-          - CART_CONNECT
-          - SAGE_PAY
           - E_WAY
-          - USA_E_PAY
-          - MONERIS
-          - DPS
-          - DUMMY
-          - INTERNET_SECURE
-          - EASY_PAY_DIRECT
-          - NEXUS
-          - INF_PAY
-          - FLEXPAY
-          - STRIPE
-          - STRIPE_ELEMENTS
-          - WORLD_PAY
-          - RAINFOREST
           - WEPAY
-          - KEAPPAY
-          - MANUAL
+          - STRIPE
+          - KEAP_PAY
       title: ListRestMerchantAccountResponse
     ListRestMerchantResponse:
       type: object
@@ -8369,16 +8360,6 @@ components:
           description: A temporary session key required for rendering Keap's payment
             component.
       title: PaymentMethodConfig
-    PaymentMethodList:
-      type: object
-      properties:
-        next_page_token:
-          type: string
-        records:
-          type: array
-          items:
-            $ref: '#/components/schemas/RestPaymentMethod'
-      title: PaymentMethodList
     PaymentPlan:
       type: object
       required:
@@ -8652,9 +8633,12 @@ components:
             a whole number, for example 10 is 10%
         id:
           type: string
-          description: The product ID
+          description: The product interest ID
         price:
           $ref: '#/components/schemas/CurrencyValue'
+        product_id:
+          type: string
+          description: The product ID
         quantity:
           type: integer
           format: int32
@@ -8897,6 +8881,8 @@ components:
           type: string
         lead_affiliate_id:
           type: string
+        notes:
+          type: string
         order_items:
           type: array
           items:
@@ -8920,6 +8906,8 @@ components:
           type: string
         shipping_address:
           $ref: '#/components/schemas/AddressInformation'
+        terms:
+          type: string
       title: RestCreateOrderRequest
     RestEmailAddress:
       type: object
@@ -8988,24 +8976,6 @@ components:
         use_default:
           type: boolean
       title: RestPaymentGateway
-    RestPaymentMethod:
-      type: object
-      properties:
-        cardInfo:
-          $ref: '#/components/schemas/CardInfo'
-        dateCreated:
-          type: string
-          format: date-time
-        id:
-          type: string
-        paymentMethodType:
-          type: string
-        processorId:
-          type: string
-          format: uuid
-        processorType:
-          type: string
-      title: RestPaymentMethod
     RestProductOption:
       type: object
       properties:
@@ -9721,13 +9691,16 @@ components:
             a whole number, for example 10 is 10%
         id:
           type: string
-          description: The product ID
+          description: The product interest ID
         price:
           $ref: '#/components/schemas/CurrencyValue'
         quantity:
           type: integer
           format: int32
           description: The quantity of product.
+        subscription_plan_id:
+          type: string
+          description: The ID of the Subscription Plan
       title: SubscriptionPlanInterest
     Tag:
       type: object
@@ -10277,6 +10250,8 @@ components:
           type: string
         lead_affiliate_id:
           type: string
+        notes:
+          type: string
         order_time:
           type: string
         order_title:
@@ -10296,6 +10271,8 @@ components:
           type: string
         shipping_address:
           $ref: '#/components/schemas/AddressInformation'
+        terms:
+          type: string
       title: UpdateOrderRequest
     UpdateOrderTotalDiscountRequest:
       type: object
