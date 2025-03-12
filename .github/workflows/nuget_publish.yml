@@ -16,7 +16,7 @@ jobs:
           dotnet-version: '9.0.x'
 
       - name: Restore dependencies
-        run: dotnet restore sdks/v2/csharp/src/Keap.Core.V2/Keap.Core.V2.csproj
+        run: dotnet restore sdks/v2/csharp/Keap.Core.V2.sln
 
       - name: Get version from Git tags
         id: get_version
@@ -26,12 +26,12 @@ jobs:
         run: |
           echo "Packaging version ${{ steps.get_version.outputs.VERSION }}"
 
-          dotnet pack sdks/v2/csharp/src/Keap.Core.V2/Keap.Core.V2.csproj \
+          dotnet pack sdks/v2/csharp/Keap.Core.V2.sln \
             --configuration Release \
             --output ./nupkgs \
             -p:PackageVersion=${{ steps.get_version.outputs.VERSION }}
 
-      - name: Push package to NuGet (Dry Run)
+      - name: Push package to NuGet
         run: |
           dotnet nuget push "./nupkgs/*.nupkg" \
             --api-key ${{ secrets.NUGET_API_KEY }} \
