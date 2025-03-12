@@ -1,4 +1,4 @@
-const { ContactApi, ApiClient } = require('keap-core-service-v2-sdk');
+const { ContactApi, ApiClient } = require('keap-core-service-v2-sdk-js');
 
 test('listContactsSucceeds', async () => {
     const apiKey = process.env.KEAP_REST_API_SERVICE_ACCESS_TOKEN;

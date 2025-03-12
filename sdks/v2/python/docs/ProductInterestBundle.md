@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **id** | **str** | The product interest bundle ID | [optional] 
 **name** | **str** | Product interest bundle name | [optional] 
 **product_interests** | [**List[ProductInterest]**](ProductInterest.md) | Product interests | [optional] 
-**subscription_plan_interests** | [**List[SubscriptionPlanInterest]**](SubscriptionPlanInterest.md) | Subscription plan interests | [optional] 
+**subscription_plan_interests** | [**List[ProductInterest]**](ProductInterest.md) | Subscription plan interests | [optional] 
 
 ## Example
 

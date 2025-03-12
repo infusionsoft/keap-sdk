@@ -2,7 +2,7 @@ import {
     ContactApi,
     createConfiguration,
     Oauth2Authentication
-} from 'keap-core-service-v2-sdk';
+} from 'keap-core-service-v2-sdk-ts';
 
 test('listContactsSucceeds', async () => {
     const apiKey = process.env.KEAP_REST_API_SERVICE_ACCESS_TOKEN;

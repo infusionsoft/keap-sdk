@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   description: Keap REST Core Service
-  version: 2.70.0.784947
+  version: 2.70.0.789938-hf-202503111611
   title: Keap REST API
   termsOfService: https://keap.com/legal
   contact:
@@ -7040,6 +7040,14 @@ components:
         updated_time:
           type: string
       title: FileMetadata
+    FileOperationRequest:
+      type: object
+      required:
+      - file_id
+      properties:
+        file_id:
+          type: string
+      title: FileOperationRequest
     FunnelIntegrationAction:
       type: object
       properties:
@@ -8634,15 +8642,21 @@ components:
         id:
           type: string
           description: The product interest ID
+        interest_id:
+          type: string
+          description: The interest ID
         price:
           $ref: '#/components/schemas/CurrencyValue'
-        product_id:
-          type: string
-          description: The product ID
         quantity:
           type: integer
           format: int32
           description: The quantity of product.
+        type:
+          type: string
+          description: The product interest type
+          enum:
+          - PRODUCT
+          - SUBSCRIPTION_PLAN
       title: ProductInterest
     ProductInterestBundle:
       type: object
@@ -8665,7 +8679,7 @@ components:
           type: array
           description: Subscription plan interests
           items:
-            $ref: '#/components/schemas/SubscriptionPlanInterest'
+            $ref: '#/components/schemas/ProductInterest'
       title: ProductInterestBundle
     ProductInventory:
       type: object
@@ -9681,27 +9695,6 @@ components:
           description: Total number of cycles the plan will run before ending. Value
             of 0 indicates plan will never end.
       title: SubscriptionPlan
-    SubscriptionPlanInterest:
-      type: object
-      properties:
-        discount_percent:
-          type: integer
-          format: int32
-          description: The percent to discount the product. Percent represented in
-            a whole number, for example 10 is 10%
-        id:
-          type: string
-          description: The product interest ID
-        price:
-          $ref: '#/components/schemas/CurrencyValue'
-        quantity:
-          type: integer
-          format: int32
-          description: The quantity of product.
-        subscription_plan_id:
-          type: string
-          description: The ID of the Subscription Plan
-      title: SubscriptionPlanInterest
     Tag:
       type: object
       properties:
@@ -10378,6 +10371,19 @@ components:
           type: string
           description: Product interest bundle name
       title: UpdateProductInterestBundleRequest
+    UpdateProductInterestRequest:
+      type: object
+      properties:
+        discount_percent:
+          type: integer
+          format: int32
+        price:
+          type: number
+          format: double
+        quantity:
+          type: integer
+          format: int32
+      title: UpdateProductInterestRequest
     UpdateProductInventoryRequest:
       type: object
       properties:

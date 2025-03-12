@@ -140,6 +140,7 @@ export * from '../models/EmailTemplate';
 export * from '../models/EmailsSentList';
 export * from '../models/FaxNumber';
 export * from '../models/FileMetadata';
+export * from '../models/FileOperationRequest';
 export * from '../models/FunnelIntegrationAction';
 export * from '../models/FunnelIntegrationHttpRequest';
 export * from '../models/FunnelIntegrationSchemaField';
@@ -284,7 +285,6 @@ export * from '../models/StageListResponse';
 export * from '../models/SubscriptionCommission';
 export * from '../models/SubscriptionCommissionProgram';
 export * from '../models/SubscriptionPlan';
-export * from '../models/SubscriptionPlanInterest';
 export * from '../models/Tag';
 export * from '../models/TaggedCompany';
 export * from '../models/Task';
@@ -316,6 +316,7 @@ export * from '../models/UpdateProductCategoryRequest';
 export * from '../models/UpdateProductCommissionProgramRequest';
 export * from '../models/UpdateProductDiscountRequest';
 export * from '../models/UpdateProductInterestBundleRequest';
+export * from '../models/UpdateProductInterestRequest';
 export * from '../models/UpdateProductInventoryRequest';
 export * from '../models/UpdateProductRequest';
 export * from '../models/UpdateShippingDiscountRequest';
@@ -471,6 +472,7 @@ import { EmailTemplate   , EmailTemplateContentTypeEnum          } from '../mode
 import { EmailsSentList } from '../models/EmailsSentList';
 import { FaxNumber, FaxNumberFieldEnum     } from '../models/FaxNumber';
 import { FileMetadata, FileMetadataCategoryEnum     , FileMetadataFileBoxTypeEnum         } from '../models/FileMetadata';
+import { FileOperationRequest } from '../models/FileOperationRequest';
 import { FunnelIntegrationAction } from '../models/FunnelIntegrationAction';
 import { FunnelIntegrationHttpRequest } from '../models/FunnelIntegrationHttpRequest';
 import { FunnelIntegrationSchemaField } from '../models/FunnelIntegrationSchemaField';
@@ -571,7 +573,7 @@ import { ProductCommission } from '../models/ProductCommission';
 import { ProductCommissionProgram } from '../models/ProductCommissionProgram';
 import { ProductDiscount    , ProductDiscountDiscountTypeEnum      } from '../models/ProductDiscount';
 import { ProductFixedOption } from '../models/ProductFixedOption';
-import { ProductInterest } from '../models/ProductInterest';
+import { ProductInterest     , ProductInterestTypeEnum   } from '../models/ProductInterest';
 import { ProductInterestBundle } from '../models/ProductInterestBundle';
 import { ProductInventory } from '../models/ProductInventory';
 import { ProductOptions   , ProductOptionsTypeEnum    } from '../models/ProductOptions';
@@ -615,7 +617,6 @@ import { StageListResponse } from '../models/StageListResponse';
 import { SubscriptionCommission } from '../models/SubscriptionCommission';
 import { SubscriptionCommissionProgram } from '../models/SubscriptionCommissionProgram';
 import { SubscriptionPlan  , SubscriptionPlanCycleTypeEnum         } from '../models/SubscriptionPlan';
-import { SubscriptionPlanInterest } from '../models/SubscriptionPlanInterest';
 import { Tag } from '../models/Tag';
 import { TaggedCompany } from '../models/TaggedCompany';
 import { Task          , TaskPriorityEnum    , TaskTypeEnum   } from '../models/Task';
@@ -647,6 +648,7 @@ import { UpdateProductCategoryRequest } from '../models/UpdateProductCategoryReq
 import { UpdateProductCommissionProgramRequest } from '../models/UpdateProductCommissionProgramRequest';
 import { UpdateProductDiscountRequest   , UpdateProductDiscountRequestDiscountTypeEnum      } from '../models/UpdateProductDiscountRequest';
 import { UpdateProductInterestBundleRequest } from '../models/UpdateProductInterestBundleRequest';
+import { UpdateProductInterestRequest } from '../models/UpdateProductInterestRequest';
 import { UpdateProductInventoryRequest , UpdateProductInventoryRequestTypeEnum   } from '../models/UpdateProductInventoryRequest';
 import { UpdateProductRequest } from '../models/UpdateProductRequest';
 import { UpdateShippingDiscountRequest  , UpdateShippingDiscountRequestDiscountTypeEnum     } from '../models/UpdateShippingDiscountRequest';
@@ -717,6 +719,7 @@ let enumsMap: Set<string> = new Set<string>([
     "OrderTotalDiscountDiscountTypeEnum",
     "PhoneNumberFieldEnum",
     "ProductDiscountDiscountTypeEnum",
+    "ProductInterestTypeEnum",
     "ProductOptionsTypeEnum",
     "ReferralReferralTypeEnum",
     "RestAffiliateStatusEnum",
@@ -890,6 +893,7 @@ let typeMap: {[index: string]: any} = {
     "EmailsSentList": EmailsSentList,
     "FaxNumber": FaxNumber,
     "FileMetadata": FileMetadata,
+    "FileOperationRequest": FileOperationRequest,
     "FunnelIntegrationAction": FunnelIntegrationAction,
     "FunnelIntegrationHttpRequest": FunnelIntegrationHttpRequest,
     "FunnelIntegrationSchemaField": FunnelIntegrationSchemaField,
@@ -1034,7 +1038,6 @@ let typeMap: {[index: string]: any} = {
     "SubscriptionCommission": SubscriptionCommission,
     "SubscriptionCommissionProgram": SubscriptionCommissionProgram,
     "SubscriptionPlan": SubscriptionPlan,
-    "SubscriptionPlanInterest": SubscriptionPlanInterest,
     "Tag": Tag,
     "TaggedCompany": TaggedCompany,
     "Task": Task,
@@ -1066,6 +1069,7 @@ let typeMap: {[index: string]: any} = {
     "UpdateProductCommissionProgramRequest": UpdateProductCommissionProgramRequest,
     "UpdateProductDiscountRequest": UpdateProductDiscountRequest,
     "UpdateProductInterestBundleRequest": UpdateProductInterestBundleRequest,
+    "UpdateProductInterestRequest": UpdateProductInterestRequest,
     "UpdateProductInventoryRequest": UpdateProductInventoryRequest,
     "UpdateProductRequest": UpdateProductRequest,
     "UpdateShippingDiscountRequest": UpdateShippingDiscountRequest,

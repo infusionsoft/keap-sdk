@@ -2,7 +2,7 @@
 
 Keap REST API
 
-- API version: 2.70.0.784947
+- API version: 2.70.0.789938-hf-202503111611
 
 - Generator version: 7.10.0
 
@@ -43,7 +43,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.keap.core</groupId>
   <artifactId>core-service-v2-java-sdk</artifactId>
-  <version>0.0.17</version>
+  <version>0.0.18</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.keap.core:core-service-v2-java-sdk:0.0.17"
+compile "com.keap.core:core-service-v2-java-sdk:0.0.18"
 ```
 
 ### Others
@@ -66,7 +66,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/core-service-v2-java-sdk-0.0.17.jar`
+- `target/core-service-v2-java-sdk-0.0.18.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -435,6 +435,7 @@ Class | Method | HTTP request | Description
  - [Error](docs/Error.md)
  - [FaxNumber](docs/FaxNumber.md)
  - [FileMetadata](docs/FileMetadata.md)
+ - [FileOperationRequest](docs/FileOperationRequest.md)
  - [FunnelIntegrationAction](docs/FunnelIntegrationAction.md)
  - [FunnelIntegrationHttpRequest](docs/FunnelIntegrationHttpRequest.md)
  - [FunnelIntegrationSchemaField](docs/FunnelIntegrationSchemaField.md)
@@ -578,7 +579,6 @@ Class | Method | HTTP request | Description
  - [SubscriptionCommission](docs/SubscriptionCommission.md)
  - [SubscriptionCommissionProgram](docs/SubscriptionCommissionProgram.md)
  - [SubscriptionPlan](docs/SubscriptionPlan.md)
- - [SubscriptionPlanInterest](docs/SubscriptionPlanInterest.md)
  - [Tag](docs/Tag.md)
  - [TaggedCompany](docs/TaggedCompany.md)
  - [Task](docs/Task.md)
@@ -610,6 +610,7 @@ Class | Method | HTTP request | Description
  - [UpdateProductCommissionProgramRequest](docs/UpdateProductCommissionProgramRequest.md)
  - [UpdateProductDiscountRequest](docs/UpdateProductDiscountRequest.md)
  - [UpdateProductInterestBundleRequest](docs/UpdateProductInterestBundleRequest.md)
+ - [UpdateProductInterestRequest](docs/UpdateProductInterestRequest.md)
  - [UpdateProductInventoryRequest](docs/UpdateProductInventoryRequest.md)
  - [UpdateProductRequest](docs/UpdateProductRequest.md)
  - [UpdateShippingDiscountRequest](docs/UpdateShippingDiscountRequest.md)
