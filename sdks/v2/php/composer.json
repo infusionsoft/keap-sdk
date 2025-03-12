@@ -1,6 +1,6 @@
 {
     "name": "keap/keap-sdk",
-    "version": "0.0.19",
+    "version": "0.0.20",
     "description": "Keap REST Core Service",
     "keywords": [
         "openapitools",
@@ -12,7 +12,7 @@
         "api"
     ],
     "homepage": "https://github.com/infusionsoft/keap-sdk.git",
-    "license": "Apache 2.0",
+    "license": "Apache-2.0",
     "authors": [
         {
             "name": "Keap Engineering",
