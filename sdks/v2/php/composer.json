@@ -1,6 +1,6 @@
 {
-    "name": "infusionsoft/keap-sdk",
-    "version": "0.0.18",
+    "name": "keap/keap-sdk",
+    "version": "0.0.19",
     "description": "Keap REST Core Service",
     "keywords": [
         "openapitools",
@@ -32,9 +32,13 @@
         "friendsofphp/php-cs-fixer": "^3.5"
     },
     "autoload": {
-        "psr-4": { "Keap\\Core\\V2\\" : "lib/" }
+        "psr-4": {
+            "Keap\\Core\\V2\\": "lib/"
+        }
     },
     "autoload-dev": {
-        "psr-4": { "Keap\\Core\\V2\\Test\\" : "test/" }
+        "psr-4": {
+            "Keap\\Core\\V2\\Test\\": "test/"
+        }
     }
 }
