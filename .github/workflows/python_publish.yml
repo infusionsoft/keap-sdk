@@ -7,6 +7,9 @@ on:
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
+    environment:
+      name: ${{ github.event.release.tag_name }}
+      url: "https://pypi.org/project/keap-core-v2-sdk/${{ github.event.release.tag_name }}/"
     permissions:
       contents: read
       id-token: write
