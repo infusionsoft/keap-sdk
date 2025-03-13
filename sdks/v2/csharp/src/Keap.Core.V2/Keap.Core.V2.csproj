@@ -12,7 +12,7 @@
     <Description>Keap.Core.V2 SDK</Description>
     <Copyright>2025</Copyright>
     <RootNamespace>Keap.Core.V2</RootNamespace>
-    <Version>0.0.24</Version>
+    <Version>0.0.25</Version>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Keap.Core.V2.xml</DocumentationFile>
     <RepositoryUrl>https://github.com/infusionsoft/keap-sdk.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
