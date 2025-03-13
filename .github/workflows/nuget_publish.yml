@@ -18,18 +18,16 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore sdks/v2/csharp/Keap.Core.V2.sln
 
-      - name: Get version from Git tags
-        id: get_version
-        run: echo "::set-output name=VERSION::$(git describe --tags --abbrev=0)"
-
       - name: Pack NuGet package
         run: |
-          echo "Packaging version ${{ steps.get_version.outputs.VERSION }}"
+          VERSION=$(git describe --tags --abbrev=0)
+          
+          echo "Packaging version $VERSION"
 
           dotnet pack sdks/v2/csharp/Keap.Core.V2.sln \
             --configuration Release \
             --output ./nupkgs \
-            -p:PackageVersion=${{ steps.get_version.outputs.VERSION }}
+            -p:PackageVersion=$VERSION
 
       - name: Push package to NuGet
         run: |
