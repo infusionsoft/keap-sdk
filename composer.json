@@ -1,6 +1,6 @@
 {
     "name": "keap/keap-sdk",
-    "version": "0.0.30",
+    "version": "0.0.31",
     "description": "Keap REST Core Service",
     "keywords": [
         "openapitools",
