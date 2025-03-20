@@ -306,8 +306,8 @@ import io.github.resilience4j.retry.Retry;
    * @param newStageId the new stage identifier, can be null (optional)
    * @throws ApiException if fails to make API call
    */
-  public void delete(String id, Boolean allowCleanup, String newStageId) throws ApiException {
-    deleteWithHttpInfo(id, allowCleanup, newStageId);
+  public void delete1(String id, Boolean allowCleanup, String newStageId) throws ApiException {
+    delete1WithHttpInfo(id, allowCleanup, newStageId);
   }
 
   /**
@@ -319,8 +319,8 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> deleteWithHttpInfo(String id, Boolean allowCleanup, String newStageId) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = deleteRequestBuilder(id, allowCleanup, newStageId);
+  public ApiResponse<Void> delete1WithHttpInfo(String id, Boolean allowCleanup, String newStageId) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = delete1RequestBuilder(id, allowCleanup, newStageId);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
       memberVarHttpClient.send(
@@ -336,7 +336,7 @@ import io.github.resilience4j.retry.Retry;
       }
       try {
         if (localVarResponse.statusCode()/ 100 != 2) {
-          throw getApiException("delete", localVarResponse);
+          throw getApiException("delete1", localVarResponse);
         }
         return new ApiResponse<Void>(
           localVarResponse.statusCode(),
@@ -365,10 +365,10 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder deleteRequestBuilder(String id, Boolean allowCleanup, String newStageId) throws ApiException {
+  private HttpRequest.Builder delete1RequestBuilder(String id, Boolean allowCleanup, String newStageId) throws ApiException {
     // verify the required parameter 'id' is set
     if (id == null) {
-      throw new ApiException(400, "Missing the required parameter 'id' when calling delete");
+      throw new ApiException(400, "Missing the required parameter 'id' when calling delete1");
     }
 
     HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
@@ -939,8 +939,8 @@ import io.github.resilience4j.retry.Retry;
    * @return Pipeline
    * @throws ApiException if fails to make API call
    */
-  public Pipeline update(String id, List<String> updateMask, UpdatePipelineRequest updatePipelineRequest) throws ApiException {
-    ApiResponse<Pipeline> localVarResponse = updateWithHttpInfo(id, updateMask, updatePipelineRequest);
+  public Pipeline update1(String id, List<String> updateMask, UpdatePipelineRequest updatePipelineRequest) throws ApiException {
+    ApiResponse<Pipeline> localVarResponse = update1WithHttpInfo(id, updateMask, updatePipelineRequest);
     return localVarResponse.getData();
   }
 
@@ -953,8 +953,8 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;Pipeline&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Pipeline> updateWithHttpInfo(String id, List<String> updateMask, UpdatePipelineRequest updatePipelineRequest) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = updateRequestBuilder(id, updateMask, updatePipelineRequest);
+  public ApiResponse<Pipeline> update1WithHttpInfo(String id, List<String> updateMask, UpdatePipelineRequest updatePipelineRequest) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = update1RequestBuilder(id, updateMask, updatePipelineRequest);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
       memberVarHttpClient.send(
@@ -970,7 +970,7 @@ import io.github.resilience4j.retry.Retry;
       }
       try {
         if (localVarResponse.statusCode()/ 100 != 2) {
-          throw getApiException("update", localVarResponse);
+          throw getApiException("update1", localVarResponse);
         }
         return new ApiResponse<Pipeline>(
           localVarResponse.statusCode(),
@@ -994,18 +994,18 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateRequestBuilder(String id, List<String> updateMask, UpdatePipelineRequest updatePipelineRequest) throws ApiException {
+  private HttpRequest.Builder update1RequestBuilder(String id, List<String> updateMask, UpdatePipelineRequest updatePipelineRequest) throws ApiException {
     // verify the required parameter 'id' is set
     if (id == null) {
-      throw new ApiException(400, "Missing the required parameter 'id' when calling update");
+      throw new ApiException(400, "Missing the required parameter 'id' when calling update1");
     }
     // verify the required parameter 'updateMask' is set
     if (updateMask == null) {
-      throw new ApiException(400, "Missing the required parameter 'updateMask' when calling update");
+      throw new ApiException(400, "Missing the required parameter 'updateMask' when calling update1");
     }
     // verify the required parameter 'updatePipelineRequest' is set
     if (updatePipelineRequest == null) {
-      throw new ApiException(400, "Missing the required parameter 'updatePipelineRequest' when calling update");
+      throw new ApiException(400, "Missing the required parameter 'updatePipelineRequest' when calling update1");
     }
 
     HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();

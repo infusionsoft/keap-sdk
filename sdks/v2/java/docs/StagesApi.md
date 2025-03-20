@@ -6,16 +6,16 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 |------------- | ------------- | -------------|
 | [**create1**](StagesApi.md#create1) | **POST** /v2/stages | Creates a new entity. |
 | [**create1WithHttpInfo**](StagesApi.md#create1WithHttpInfo) | **POST** /v2/stages | Creates a new entity. |
-| [**delete1**](StagesApi.md#delete1) | **DELETE** /v2/stages/{id} | Deletes a stage by its identifier for a given tenant. |
-| [**delete1WithHttpInfo**](StagesApi.md#delete1WithHttpInfo) | **DELETE** /v2/stages/{id} | Deletes a stage by its identifier for a given tenant. |
+| [**delete2**](StagesApi.md#delete2) | **DELETE** /v2/stages/{id} | Deletes a stage by its identifier for a given tenant. |
+| [**delete2WithHttpInfo**](StagesApi.md#delete2WithHttpInfo) | **DELETE** /v2/stages/{id} | Deletes a stage by its identifier for a given tenant. |
 | [**get1**](StagesApi.md#get1) | **GET** /v2/stages/{id} | Retrieves an entity by its identifier. |
 | [**get1WithHttpInfo**](StagesApi.md#get1WithHttpInfo) | **GET** /v2/stages/{id} | Retrieves an entity by its identifier. |
 | [**list1**](StagesApi.md#list1) | **GET** /v2/stages | Lists entities based on the provided ListCommand. |
 | [**list1WithHttpInfo**](StagesApi.md#list1WithHttpInfo) | **GET** /v2/stages | Lists entities based on the provided ListCommand. |
 | [**listStages1**](StagesApi.md#listStages1) | **GET** /v2/stages/{id}/deals | Retrieves a list of deals for a specific stage. |
 | [**listStages1WithHttpInfo**](StagesApi.md#listStages1WithHttpInfo) | **GET** /v2/stages/{id}/deals | Retrieves a list of deals for a specific stage. |
-| [**update1**](StagesApi.md#update1) | **PATCH** /v2/stages/{id} | Updates an existing entity. |
-| [**update1WithHttpInfo**](StagesApi.md#update1WithHttpInfo) | **PATCH** /v2/stages/{id} | Updates an existing entity. |
+| [**update2**](StagesApi.md#update2) | **PATCH** /v2/stages/{id} | Updates an existing entity. |
+| [**update2WithHttpInfo**](StagesApi.md#update2WithHttpInfo) | **PATCH** /v2/stages/{id} | Updates an existing entity. |
 
 
 
@@ -153,9 +153,9 @@ No authorization required
 | **200** | The create_1d entity |  -  |
 
 
-## delete1
+## delete2
 
-> void delete1(id, newStageId)
+> void delete2(id, newStageId)
 
 Deletes a stage by its identifier for a given tenant.
 
@@ -180,9 +180,9 @@ public class Example {
         String id = "id_example"; // String | the stage identifier
         String newStageId = "newStageId_example"; // String | the new stage identifier, can be null
         try {
-            apiInstance.delete1(id, newStageId);
+            apiInstance.delete2(id, newStageId);
         } catch (ApiException e) {
-            System.err.println("Exception when calling StagesApi#delete1");
+            System.err.println("Exception when calling StagesApi#delete2");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -219,9 +219,9 @@ No authorization required
 |-------------|-------------|------------------|
 | **204** | A response indicating no content |  -  |
 
-## delete1WithHttpInfo
+## delete2WithHttpInfo
 
-> ApiResponse<Void> delete1 delete1WithHttpInfo(id, newStageId)
+> ApiResponse<Void> delete2 delete2WithHttpInfo(id, newStageId)
 
 Deletes a stage by its identifier for a given tenant.
 
@@ -247,11 +247,11 @@ public class Example {
         String id = "id_example"; // String | the stage identifier
         String newStageId = "newStageId_example"; // String | the new stage identifier, can be null
         try {
-            ApiResponse<Void> response = apiInstance.delete1WithHttpInfo(id, newStageId);
+            ApiResponse<Void> response = apiInstance.delete2WithHttpInfo(id, newStageId);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
-            System.err.println("Exception when calling StagesApi#delete1");
+            System.err.println("Exception when calling StagesApi#delete2");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -719,9 +719,9 @@ No authorization required
 | **200** | the response containing the list of deals and the next page token |  -  |
 
 
-## update1
+## update2
 
-> Stage update1(id, updateMask, updateStageRequest)
+> Stage update2(id, updateMask, updateStageRequest)
 
 Updates an existing entity.
 
@@ -747,10 +747,10 @@ public class Example {
         List<String> updateMask = Arrays.asList(); // List<String> | the fields to update
         UpdateStageRequest updateStageRequest = new UpdateStageRequest(); // UpdateStageRequest | the update request
         try {
-            Stage result = apiInstance.update1(id, updateMask, updateStageRequest);
+            Stage result = apiInstance.update2(id, updateMask, updateStageRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling StagesApi#update1");
+            System.err.println("Exception when calling StagesApi#update2");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -786,11 +786,11 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | The update_1d entity |  -  |
+| **200** | The update_2d entity |  -  |
 
-## update1WithHttpInfo
+## update2WithHttpInfo
 
-> ApiResponse<Stage> update1 update1WithHttpInfo(id, updateMask, updateStageRequest)
+> ApiResponse<Stage> update2 update2WithHttpInfo(id, updateMask, updateStageRequest)
 
 Updates an existing entity.
 
@@ -817,12 +817,12 @@ public class Example {
         List<String> updateMask = Arrays.asList(); // List<String> | the fields to update
         UpdateStageRequest updateStageRequest = new UpdateStageRequest(); // UpdateStageRequest | the update request
         try {
-            ApiResponse<Stage> response = apiInstance.update1WithHttpInfo(id, updateMask, updateStageRequest);
+            ApiResponse<Stage> response = apiInstance.update2WithHttpInfo(id, updateMask, updateStageRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling StagesApi#update1");
+            System.err.println("Exception when calling StagesApi#update2");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -858,5 +858,5 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | The update_1d entity |  -  |
+| **200** | The update_2d entity |  -  |
 

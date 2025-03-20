@@ -1682,6 +1682,16 @@ export class ObjectContactApi {
 import { ObservableDealsApi } from "./ObservableAPI";
 import { DealsApiRequestFactory, DealsApiResponseProcessor} from "../apis/DealsApi";
 
+export interface DealsApiDeleteRequest {
+    /**
+     * the ID of the note to delete
+     * Defaults to: undefined
+     * @type string
+     * @memberof DealsApi_delete
+     */
+    noteId: string
+}
+
 export interface DealsApiCreateNoteRequest {
     /**
      * the deal ID to associate the new note with
@@ -1696,16 +1706,6 @@ export interface DealsApiCreateNoteRequest {
      * @memberof DealsApicreateNote
      */
     createDealNoteRequest: CreateDealNoteRequest
-}
-
-export interface DealsApiDeleteNoteRequest {
-    /**
-     * the ID of the note to delete
-     * Defaults to: undefined
-     * @type string
-     * @memberof DealsApideleteNote
-     */
-    noteId: string
 }
 
 export interface DealsApiGetNoteRequest {
@@ -1758,18 +1758,18 @@ export interface DealsApiListNotesRequest {
     pageSize?: number
 }
 
-export interface DealsApiUpdateNoteRequest {
+export interface DealsApiUpdateRequest {
     /**
      * the ID of the note to update
      * Defaults to: undefined
      * @type string
-     * @memberof DealsApiupdateNote
+     * @memberof DealsApiupdate
      */
     noteId: string
     /**
      * the request body containing updated note details
      * @type UpdateDealNoteRequest
-     * @memberof DealsApiupdateNote
+     * @memberof DealsApiupdate
      */
     updateDealNoteRequest: UpdateDealNoteRequest
 }
@@ -1779,6 +1779,24 @@ export class ObjectDealsApi {
 
     public constructor(configuration: Configuration, requestFactory?: DealsApiRequestFactory, responseProcessor?: DealsApiResponseProcessor) {
         this.api = new ObservableDealsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Deletes a specific deal note by its ID.
+     * Deletes a specific deal note by its ID.
+     * @param param the request object
+     */
+    public _deleteWithHttpInfo(param: DealsApiDeleteRequest, options?: Configuration): Promise<HttpInfo<void>> {
+        return this.api._deleteWithHttpInfo(param.noteId,  options).toPromise();
+    }
+
+    /**
+     * Deletes a specific deal note by its ID.
+     * Deletes a specific deal note by its ID.
+     * @param param the request object
+     */
+    public _delete(param: DealsApiDeleteRequest, options?: Configuration): Promise<void> {
+        return this.api._delete(param.noteId,  options).toPromise();
     }
 
     /**
@@ -1797,24 +1815,6 @@ export class ObjectDealsApi {
      */
     public createNote(param: DealsApiCreateNoteRequest, options?: Configuration): Promise<DealNote> {
         return this.api.createNote(param.id, param.createDealNoteRequest,  options).toPromise();
-    }
-
-    /**
-     * Deletes a specific deal note by its ID.
-     * Deletes a specific deal note by its ID.
-     * @param param the request object
-     */
-    public deleteNoteWithHttpInfo(param: DealsApiDeleteNoteRequest, options?: Configuration): Promise<HttpInfo<void>> {
-        return this.api.deleteNoteWithHttpInfo(param.noteId,  options).toPromise();
-    }
-
-    /**
-     * Deletes a specific deal note by its ID.
-     * Deletes a specific deal note by its ID.
-     * @param param the request object
-     */
-    public deleteNote(param: DealsApiDeleteNoteRequest, options?: Configuration): Promise<void> {
-        return this.api.deleteNote(param.noteId,  options).toPromise();
     }
 
     /**
@@ -1858,8 +1858,8 @@ export class ObjectDealsApi {
      * Updates a specific deal note by its ID.
      * @param param the request object
      */
-    public updateNoteWithHttpInfo(param: DealsApiUpdateNoteRequest, options?: Configuration): Promise<HttpInfo<DealNote>> {
-        return this.api.updateNoteWithHttpInfo(param.noteId, param.updateDealNoteRequest,  options).toPromise();
+    public updateWithHttpInfo(param: DealsApiUpdateRequest, options?: Configuration): Promise<HttpInfo<DealNote>> {
+        return this.api.updateWithHttpInfo(param.noteId, param.updateDealNoteRequest,  options).toPromise();
     }
 
     /**
@@ -1867,8 +1867,8 @@ export class ObjectDealsApi {
      * Updates a specific deal note by its ID.
      * @param param the request object
      */
-    public updateNote(param: DealsApiUpdateNoteRequest, options?: Configuration): Promise<DealNote> {
-        return this.api.updateNote(param.noteId, param.updateDealNoteRequest,  options).toPromise();
+    public update(param: DealsApiUpdateRequest, options?: Configuration): Promise<DealNote> {
+        return this.api.update(param.noteId, param.updateDealNoteRequest,  options).toPromise();
     }
 
 }
@@ -2387,30 +2387,6 @@ export class ObjectPaymentMethodConfigsApi {
 import { ObservablePipelinesApi } from "./ObservableAPI";
 import { PipelinesApiRequestFactory, PipelinesApiResponseProcessor} from "../apis/PipelinesApi";
 
-export interface PipelinesApiDeleteRequest {
-    /**
-     * the pipeline identifier
-     * Defaults to: undefined
-     * @type string
-     * @memberof PipelinesApi_delete
-     */
-    id: string
-    /**
-     * flag indicating whether cleanup is allowed, can be null
-     * Defaults to: undefined
-     * @type boolean
-     * @memberof PipelinesApi_delete
-     */
-    allowCleanup?: boolean
-    /**
-     * the new stage identifier, can be null
-     * Defaults to: undefined
-     * @type string
-     * @memberof PipelinesApi_delete
-     */
-    newStageId?: string
-}
-
 export interface PipelinesApiCreateRequest {
     /**
      * the create request
@@ -2418,6 +2394,30 @@ export interface PipelinesApiCreateRequest {
      * @memberof PipelinesApicreate
      */
     createPipelineRequest: CreatePipelineRequest
+}
+
+export interface PipelinesApiDelete1Request {
+    /**
+     * the pipeline identifier
+     * Defaults to: undefined
+     * @type string
+     * @memberof PipelinesApidelete1
+     */
+    id: string
+    /**
+     * flag indicating whether cleanup is allowed, can be null
+     * Defaults to: undefined
+     * @type boolean
+     * @memberof PipelinesApidelete1
+     */
+    allowCleanup?: boolean
+    /**
+     * the new stage identifier, can be null
+     * Defaults to: undefined
+     * @type string
+     * @memberof PipelinesApidelete1
+     */
+    newStageId?: string
 }
 
 export interface PipelinesApiGetRequest {
@@ -2592,25 +2592,25 @@ export interface PipelinesApiSetOutcomeLabelsRequest {
     updateOutcomeLabelsRequest: UpdateOutcomeLabelsRequest
 }
 
-export interface PipelinesApiUpdateRequest {
+export interface PipelinesApiUpdate1Request {
     /**
      * the entity identifier
      * Defaults to: undefined
      * @type string
-     * @memberof PipelinesApiupdate
+     * @memberof PipelinesApiupdate1
      */
     id: string
     /**
      * the fields to update
      * Defaults to: undefined
      * @type Array&lt;string&gt;
-     * @memberof PipelinesApiupdate
+     * @memberof PipelinesApiupdate1
      */
     updateMask: Array<string>
     /**
      * the update request
      * @type UpdatePipelineRequest
-     * @memberof PipelinesApiupdate
+     * @memberof PipelinesApiupdate1
      */
     updatePipelineRequest: UpdatePipelineRequest
 }
@@ -2620,24 +2620,6 @@ export class ObjectPipelinesApi {
 
     public constructor(configuration: Configuration, requestFactory?: PipelinesApiRequestFactory, responseProcessor?: PipelinesApiResponseProcessor) {
         this.api = new ObservablePipelinesApi(configuration, requestFactory, responseProcessor);
-    }
-
-    /**
-     * Deletes a pipeline.
-     * Deletes a pipeline.
-     * @param param the request object
-     */
-    public _deleteWithHttpInfo(param: PipelinesApiDeleteRequest, options?: Configuration): Promise<HttpInfo<void>> {
-        return this.api._deleteWithHttpInfo(param.id, param.allowCleanup, param.newStageId,  options).toPromise();
-    }
-
-    /**
-     * Deletes a pipeline.
-     * Deletes a pipeline.
-     * @param param the request object
-     */
-    public _delete(param: PipelinesApiDeleteRequest, options?: Configuration): Promise<void> {
-        return this.api._delete(param.id, param.allowCleanup, param.newStageId,  options).toPromise();
     }
 
     /**
@@ -2656,6 +2638,24 @@ export class ObjectPipelinesApi {
      */
     public create(param: PipelinesApiCreateRequest, options?: Configuration): Promise<Pipeline> {
         return this.api.create(param.createPipelineRequest,  options).toPromise();
+    }
+
+    /**
+     * Deletes a pipeline.
+     * Deletes a pipeline.
+     * @param param the request object
+     */
+    public delete1WithHttpInfo(param: PipelinesApiDelete1Request, options?: Configuration): Promise<HttpInfo<void>> {
+        return this.api.delete1WithHttpInfo(param.id, param.allowCleanup, param.newStageId,  options).toPromise();
+    }
+
+    /**
+     * Deletes a pipeline.
+     * Deletes a pipeline.
+     * @param param the request object
+     */
+    public delete1(param: PipelinesApiDelete1Request, options?: Configuration): Promise<void> {
+        return this.api.delete1(param.id, param.allowCleanup, param.newStageId,  options).toPromise();
     }
 
     /**
@@ -2771,8 +2771,8 @@ export class ObjectPipelinesApi {
      * Updates an existing entity.
      * @param param the request object
      */
-    public updateWithHttpInfo(param: PipelinesApiUpdateRequest, options?: Configuration): Promise<HttpInfo<Pipeline>> {
-        return this.api.updateWithHttpInfo(param.id, param.updateMask, param.updatePipelineRequest,  options).toPromise();
+    public update1WithHttpInfo(param: PipelinesApiUpdate1Request, options?: Configuration): Promise<HttpInfo<Pipeline>> {
+        return this.api.update1WithHttpInfo(param.id, param.updateMask, param.updatePipelineRequest,  options).toPromise();
     }
 
     /**
@@ -2780,8 +2780,8 @@ export class ObjectPipelinesApi {
      * Updates an existing entity.
      * @param param the request object
      */
-    public update(param: PipelinesApiUpdateRequest, options?: Configuration): Promise<Pipeline> {
-        return this.api.update(param.id, param.updateMask, param.updatePipelineRequest,  options).toPromise();
+    public update1(param: PipelinesApiUpdate1Request, options?: Configuration): Promise<Pipeline> {
+        return this.api.update1(param.id, param.updateMask, param.updatePipelineRequest,  options).toPromise();
     }
 
 }
@@ -3041,19 +3041,19 @@ export interface StagesApiCreate1Request {
     createStageRequest: CreateStageRequest
 }
 
-export interface StagesApiDelete1Request {
+export interface StagesApiDelete2Request {
     /**
      * the stage identifier
      * Defaults to: undefined
      * @type string
-     * @memberof StagesApidelete1
+     * @memberof StagesApidelete2
      */
     id: string
     /**
      * the new stage identifier, can be null
      * Defaults to: undefined
      * @type string
-     * @memberof StagesApidelete1
+     * @memberof StagesApidelete2
      */
     newStageId?: string
 }
@@ -3141,25 +3141,25 @@ export interface StagesApiListStages1Request {
     pageSize?: number
 }
 
-export interface StagesApiUpdate1Request {
+export interface StagesApiUpdate2Request {
     /**
      * the entity identifier
      * Defaults to: undefined
      * @type string
-     * @memberof StagesApiupdate1
+     * @memberof StagesApiupdate2
      */
     id: string
     /**
      * the fields to update
      * Defaults to: undefined
      * @type Array&lt;string&gt;
-     * @memberof StagesApiupdate1
+     * @memberof StagesApiupdate2
      */
     updateMask: Array<string>
     /**
      * the update request
      * @type UpdateStageRequest
-     * @memberof StagesApiupdate1
+     * @memberof StagesApiupdate2
      */
     updateStageRequest: UpdateStageRequest
 }
@@ -3194,8 +3194,8 @@ export class ObjectStagesApi {
      * Deletes a stage by its identifier for a given tenant.
      * @param param the request object
      */
-    public delete1WithHttpInfo(param: StagesApiDelete1Request, options?: Configuration): Promise<HttpInfo<void>> {
-        return this.api.delete1WithHttpInfo(param.id, param.newStageId,  options).toPromise();
+    public delete2WithHttpInfo(param: StagesApiDelete2Request, options?: Configuration): Promise<HttpInfo<void>> {
+        return this.api.delete2WithHttpInfo(param.id, param.newStageId,  options).toPromise();
     }
 
     /**
@@ -3203,8 +3203,8 @@ export class ObjectStagesApi {
      * Deletes a stage by its identifier for a given tenant.
      * @param param the request object
      */
-    public delete1(param: StagesApiDelete1Request, options?: Configuration): Promise<void> {
-        return this.api.delete1(param.id, param.newStageId,  options).toPromise();
+    public delete2(param: StagesApiDelete2Request, options?: Configuration): Promise<void> {
+        return this.api.delete2(param.id, param.newStageId,  options).toPromise();
     }
 
     /**
@@ -3266,8 +3266,8 @@ export class ObjectStagesApi {
      * Updates an existing entity.
      * @param param the request object
      */
-    public update1WithHttpInfo(param: StagesApiUpdate1Request, options?: Configuration): Promise<HttpInfo<Stage>> {
-        return this.api.update1WithHttpInfo(param.id, param.updateMask, param.updateStageRequest,  options).toPromise();
+    public update2WithHttpInfo(param: StagesApiUpdate2Request, options?: Configuration): Promise<HttpInfo<Stage>> {
+        return this.api.update2WithHttpInfo(param.id, param.updateMask, param.updateStageRequest,  options).toPromise();
     }
 
     /**
@@ -3275,8 +3275,8 @@ export class ObjectStagesApi {
      * Updates an existing entity.
      * @param param the request object
      */
-    public update1(param: StagesApiUpdate1Request, options?: Configuration): Promise<Stage> {
-        return this.api.update1(param.id, param.updateMask, param.updateStageRequest,  options).toPromise();
+    public update2(param: StagesApiUpdate2Request, options?: Configuration): Promise<Stage> {
+        return this.api.update2(param.id, param.updateMask, param.updateStageRequest,  options).toPromise();
     }
 
 }

@@ -19,6 +19,38 @@ import { UpdateDealNoteRequest } from '../models/UpdateDealNoteRequest';
 export class DealsApiRequestFactory extends BaseAPIRequestFactory {
 
     /**
+     * Deletes a specific deal note by its ID.
+     * Deletes a specific deal note by its ID.
+     * @param noteId the ID of the note to delete
+     */
+    public async _delete(noteId: string, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'noteId' is not null or undefined
+        if (noteId === null || noteId === undefined) {
+            throw new RequiredError("DealsApi", "_delete", "noteId");
+        }
+
+
+        // Path Params
+        const localVarPath = '/v2/deals/-/notes/{note_id}'
+            .replace('{' + 'note_id' + '}', encodeURIComponent(String(noteId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.DELETE);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
      * Creates a new note for a specific deal.
      * Creates a new note for a specific deal.
      * @param id the deal ID to associate the new note with
@@ -58,38 +90,6 @@ export class DealsApiRequestFactory extends BaseAPIRequestFactory {
             contentType
         );
         requestContext.setBody(serializedBody);
-
-        
-        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-
-        return requestContext;
-    }
-
-    /**
-     * Deletes a specific deal note by its ID.
-     * Deletes a specific deal note by its ID.
-     * @param noteId the ID of the note to delete
-     */
-    public async deleteNote(noteId: string, _options?: Configuration): Promise<RequestContext> {
-        let _config = _options || this.configuration;
-
-        // verify required parameter 'noteId' is not null or undefined
-        if (noteId === null || noteId === undefined) {
-            throw new RequiredError("DealsApi", "deleteNote", "noteId");
-        }
-
-
-        // Path Params
-        const localVarPath = '/v2/deals/-/notes/{note_id}'
-            .replace('{' + 'note_id' + '}', encodeURIComponent(String(noteId)));
-
-        // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.DELETE);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
 
         
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
@@ -198,18 +198,18 @@ export class DealsApiRequestFactory extends BaseAPIRequestFactory {
      * @param noteId the ID of the note to update
      * @param updateDealNoteRequest the request body containing updated note details
      */
-    public async updateNote(noteId: string, updateDealNoteRequest: UpdateDealNoteRequest, _options?: Configuration): Promise<RequestContext> {
+    public async update(noteId: string, updateDealNoteRequest: UpdateDealNoteRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'noteId' is not null or undefined
         if (noteId === null || noteId === undefined) {
-            throw new RequiredError("DealsApi", "updateNote", "noteId");
+            throw new RequiredError("DealsApi", "update", "noteId");
         }
 
 
         // verify required parameter 'updateDealNoteRequest' is not null or undefined
         if (updateDealNoteRequest === null || updateDealNoteRequest === undefined) {
-            throw new RequiredError("DealsApi", "updateNote", "updateDealNoteRequest");
+            throw new RequiredError("DealsApi", "update", "updateDealNoteRequest");
         }
 
 
@@ -250,6 +250,31 @@ export class DealsApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
+     * @params response Response returned by the server for a request to _delete
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async _deleteWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("204", response.httpStatusCode)) {
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: void = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "void", ""
+            ) as void;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
      * @params response Response returned by the server for a request to createNote
      * @throws ApiException if the response code was not in [200, 299]
      */
@@ -269,31 +294,6 @@ export class DealsApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "DealNote", ""
             ) as DealNote;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-
-        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
-    }
-
-    /**
-     * Unwraps the actual response sent by the server from the response context and deserializes the response content
-     * to the expected objects
-     *
-     * @params response Response returned by the server for a request to deleteNote
-     * @throws ApiException if the response code was not in [200, 299]
-     */
-     public async deleteNoteWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
-        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("204", response.httpStatusCode)) {
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
-        }
-
-        // Work around for missing responses in specification, e.g. for petstore.yaml
-        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: void = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "void", ""
-            ) as void;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -362,10 +362,10 @@ export class DealsApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to updateNote
+     * @params response Response returned by the server for a request to update
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async updateNoteWithHttpInfo(response: ResponseContext): Promise<HttpInfo<DealNote >> {
+     public async updateWithHttpInfo(response: ResponseContext): Promise<HttpInfo<DealNote >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: DealNote = ObjectSerializer.deserialize(

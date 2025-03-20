@@ -23,52 +23,6 @@ import { UpdatePipelineRequest } from '../models/UpdatePipelineRequest';
 export class PipelinesApiRequestFactory extends BaseAPIRequestFactory {
 
     /**
-     * Deletes a pipeline.
-     * Deletes a pipeline.
-     * @param id the pipeline identifier
-     * @param allowCleanup flag indicating whether cleanup is allowed, can be null
-     * @param newStageId the new stage identifier, can be null
-     */
-    public async _delete(id: string, allowCleanup?: boolean, newStageId?: string, _options?: Configuration): Promise<RequestContext> {
-        let _config = _options || this.configuration;
-
-        // verify required parameter 'id' is not null or undefined
-        if (id === null || id === undefined) {
-            throw new RequiredError("PipelinesApi", "_delete", "id");
-        }
-
-
-
-
-        // Path Params
-        const localVarPath = '/v2/pipelines/{id}'
-            .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
-
-        // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.DELETE);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-        // Query Params
-        if (allowCleanup !== undefined) {
-            requestContext.setQueryParam("allow_cleanup", ObjectSerializer.serialize(allowCleanup, "boolean", ""));
-        }
-
-        // Query Params
-        if (newStageId !== undefined) {
-            requestContext.setQueryParam("new_stage_id", ObjectSerializer.serialize(newStageId, "string", ""));
-        }
-
-
-        
-        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-
-        return requestContext;
-    }
-
-    /**
      * Creates a new entity.
      * Creates a new entity.
      * @param createPipelineRequest the create request
@@ -100,6 +54,52 @@ export class PipelinesApiRequestFactory extends BaseAPIRequestFactory {
             contentType
         );
         requestContext.setBody(serializedBody);
+
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * Deletes a pipeline.
+     * Deletes a pipeline.
+     * @param id the pipeline identifier
+     * @param allowCleanup flag indicating whether cleanup is allowed, can be null
+     * @param newStageId the new stage identifier, can be null
+     */
+    public async delete1(id: string, allowCleanup?: boolean, newStageId?: string, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'id' is not null or undefined
+        if (id === null || id === undefined) {
+            throw new RequiredError("PipelinesApi", "delete1", "id");
+        }
+
+
+
+
+        // Path Params
+        const localVarPath = '/v2/pipelines/{id}'
+            .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.DELETE);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Query Params
+        if (allowCleanup !== undefined) {
+            requestContext.setQueryParam("allow_cleanup", ObjectSerializer.serialize(allowCleanup, "boolean", ""));
+        }
+
+        // Query Params
+        if (newStageId !== undefined) {
+            requestContext.setQueryParam("new_stage_id", ObjectSerializer.serialize(newStageId, "string", ""));
+        }
+
 
         
         const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
@@ -423,24 +423,24 @@ export class PipelinesApiRequestFactory extends BaseAPIRequestFactory {
      * @param updateMask the fields to update
      * @param updatePipelineRequest the update request
      */
-    public async update(id: string, updateMask: Array<string>, updatePipelineRequest: UpdatePipelineRequest, _options?: Configuration): Promise<RequestContext> {
+    public async update1(id: string, updateMask: Array<string>, updatePipelineRequest: UpdatePipelineRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'id' is not null or undefined
         if (id === null || id === undefined) {
-            throw new RequiredError("PipelinesApi", "update", "id");
+            throw new RequiredError("PipelinesApi", "update1", "id");
         }
 
 
         // verify required parameter 'updateMask' is not null or undefined
         if (updateMask === null || updateMask === undefined) {
-            throw new RequiredError("PipelinesApi", "update", "updateMask");
+            throw new RequiredError("PipelinesApi", "update1", "updateMask");
         }
 
 
         // verify required parameter 'updatePipelineRequest' is not null or undefined
         if (updatePipelineRequest === null || updatePipelineRequest === undefined) {
-            throw new RequiredError("PipelinesApi", "update", "updatePipelineRequest");
+            throw new RequiredError("PipelinesApi", "update1", "updatePipelineRequest");
         }
 
 
@@ -489,31 +489,6 @@ export class PipelinesApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to _delete
-     * @throws ApiException if the response code was not in [200, 299]
-     */
-     public async _deleteWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
-        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("204", response.httpStatusCode)) {
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
-        }
-
-        // Work around for missing responses in specification, e.g. for petstore.yaml
-        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: void = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "void", ""
-            ) as void;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-
-        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
-    }
-
-    /**
-     * Unwraps the actual response sent by the server from the response context and deserializes the response content
-     * to the expected objects
-     *
      * @params response Response returned by the server for a request to create
      * @throws ApiException if the response code was not in [200, 299]
      */
@@ -533,6 +508,31 @@ export class PipelinesApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "Pipeline", ""
             ) as Pipeline;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to delete1
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async delete1WithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("204", response.httpStatusCode)) {
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: void = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "void", ""
+            ) as void;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -717,10 +717,10 @@ export class PipelinesApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to update
+     * @params response Response returned by the server for a request to update1
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async updateWithHttpInfo(response: ResponseContext): Promise<HttpInfo<Pipeline >> {
+     public async update1WithHttpInfo(response: ResponseContext): Promise<HttpInfo<Pipeline >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: Pipeline = ObjectSerializer.deserialize(

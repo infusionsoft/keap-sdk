@@ -4,12 +4,65 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**_delete**](DealsApi.md#_delete) | **DELETE** /v2/deals/-/notes/{note_id} | Deletes a specific deal note by its ID.
 [**createNote**](DealsApi.md#createNote) | **POST** /v2/deals/{id}/notes | Creates a new note for a specific deal.
-[**deleteNote**](DealsApi.md#deleteNote) | **DELETE** /v2/deals/-/notes/{note_id} | Deletes a specific deal note by its ID.
 [**getNote**](DealsApi.md#getNote) | **GET** /v2/deals/-/notes/{note_id} | Retrieves a specific deal note by its ID.
 [**listNotes**](DealsApi.md#listNotes) | **GET** /v2/deals/{id}/notes | Lists all notes associated with a specific deal.
-[**updateNote**](DealsApi.md#updateNote) | **PATCH** /v2/deals/-/notes/{note_id} | Updates a specific deal note by its ID.
+[**update**](DealsApi.md#update) | **PATCH** /v2/deals/-/notes/{note_id} | Updates a specific deal note by its ID.
 
+
+# **_delete**
+> void _delete()
+
+Deletes a specific deal note by its ID.
+
+### Example
+
+
+```typescript
+import { createConfiguration, DealsApi } from '';
+import type { DealsApiDeleteRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new DealsApi(configuration);
+
+const request: DealsApiDeleteRequest = {
+    // the ID of the note to delete
+  noteId: "note_id_example",
+};
+
+const data = await apiInstance._delete(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **noteId** | [**string**] | the ID of the note to delete | defaults to undefined
+
+
+### Return type
+
+**void**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | a HttpResponse indicating the result of the delete operation |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **createNote**
 > DealNote createNote(createDealNoteRequest)
@@ -67,59 +120,6 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | the created DealNote |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-# **deleteNote**
-> void deleteNote()
-
-Deletes a specific deal note by its ID.
-
-### Example
-
-
-```typescript
-import { createConfiguration, DealsApi } from '';
-import type { DealsApiDeleteNoteRequest } from '';
-
-const configuration = createConfiguration();
-const apiInstance = new DealsApi(configuration);
-
-const request: DealsApiDeleteNoteRequest = {
-    // the ID of the note to delete
-  noteId: "note_id_example",
-};
-
-const data = await apiInstance.deleteNote(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **noteId** | [**string**] | the ID of the note to delete | defaults to undefined
-
-
-### Return type
-
-**void**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**204** | a HttpResponse indicating the result of the delete operation |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -241,8 +241,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **updateNote**
-> DealNote updateNote(updateDealNoteRequest)
+# **update**
+> DealNote update(updateDealNoteRequest)
 
 Updates a specific deal note by its ID.
 
@@ -251,12 +251,12 @@ Updates a specific deal note by its ID.
 
 ```typescript
 import { createConfiguration, DealsApi } from '';
-import type { DealsApiUpdateNoteRequest } from '';
+import type { DealsApiUpdateRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new DealsApi(configuration);
 
-const request: DealsApiUpdateNoteRequest = {
+const request: DealsApiUpdateRequest = {
     // the ID of the note to update
   noteId: "note_id_example",
     // the request body containing updated note details
@@ -265,7 +265,7 @@ const request: DealsApiUpdateNoteRequest = {
   },
 };
 
-const data = await apiInstance.updateNote(request);
+const data = await apiInstance.update(request);
 console.log('API called successfully. Returned data:', data);
 ```
 

@@ -317,7 +317,7 @@ class StagesApi:
 
 
     @validate_call
-    def delete1(
+    def delete2(
         self,
         id: Annotated[StrictStr, Field(description="the stage identifier")],
         new_stage_id: Annotated[Optional[StrictStr], Field(description="the new stage identifier, can be null")] = None,
@@ -364,7 +364,7 @@ class StagesApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete1_serialize(
+        _param = self._delete2_serialize(
             id=id,
             new_stage_id=new_stage_id,
             _request_auth=_request_auth,
@@ -388,7 +388,7 @@ class StagesApi:
 
 
     @validate_call
-    def delete1_with_http_info(
+    def delete2_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="the stage identifier")],
         new_stage_id: Annotated[Optional[StrictStr], Field(description="the new stage identifier, can be null")] = None,
@@ -435,7 +435,7 @@ class StagesApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete1_serialize(
+        _param = self._delete2_serialize(
             id=id,
             new_stage_id=new_stage_id,
             _request_auth=_request_auth,
@@ -459,7 +459,7 @@ class StagesApi:
 
 
     @validate_call
-    def delete1_without_preload_content(
+    def delete2_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="the stage identifier")],
         new_stage_id: Annotated[Optional[StrictStr], Field(description="the new stage identifier, can be null")] = None,
@@ -506,7 +506,7 @@ class StagesApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete1_serialize(
+        _param = self._delete2_serialize(
             id=id,
             new_stage_id=new_stage_id,
             _request_auth=_request_auth,
@@ -525,7 +525,7 @@ class StagesApi:
         return response_data.response
 
 
-    def _delete1_serialize(
+    def _delete2_serialize(
         self,
         id,
         new_stage_id,
@@ -1488,7 +1488,7 @@ class StagesApi:
 
 
     @validate_call
-    def update1(
+    def update2(
         self,
         id: Annotated[StrictStr, Field(description="the entity identifier")],
         update_mask: Annotated[List[StrictStr], Field(description="the fields to update")],
@@ -1538,7 +1538,7 @@ class StagesApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._update1_serialize(
+        _param = self._update2_serialize(
             id=id,
             update_mask=update_mask,
             update_stage_request=update_stage_request,
@@ -1563,7 +1563,7 @@ class StagesApi:
 
 
     @validate_call
-    def update1_with_http_info(
+    def update2_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="the entity identifier")],
         update_mask: Annotated[List[StrictStr], Field(description="the fields to update")],
@@ -1613,7 +1613,7 @@ class StagesApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._update1_serialize(
+        _param = self._update2_serialize(
             id=id,
             update_mask=update_mask,
             update_stage_request=update_stage_request,
@@ -1638,7 +1638,7 @@ class StagesApi:
 
 
     @validate_call
-    def update1_without_preload_content(
+    def update2_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="the entity identifier")],
         update_mask: Annotated[List[StrictStr], Field(description="the fields to update")],
@@ -1688,7 +1688,7 @@ class StagesApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._update1_serialize(
+        _param = self._update2_serialize(
             id=id,
             update_mask=update_mask,
             update_stage_request=update_stage_request,
@@ -1708,7 +1708,7 @@ class StagesApi:
         return response_data.response
 
 
-    def _update1_serialize(
+    def _update2_serialize(
         self,
         id,
         update_mask,

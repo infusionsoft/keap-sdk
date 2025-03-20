@@ -320,7 +320,7 @@ class PipelinesApi:
 
 
     @validate_call
-    def delete(
+    def delete1(
         self,
         id: Annotated[StrictStr, Field(description="the pipeline identifier")],
         allow_cleanup: Annotated[Optional[StrictBool], Field(description="flag indicating whether cleanup is allowed, can be null")] = None,
@@ -370,7 +370,7 @@ class PipelinesApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_serialize(
+        _param = self._delete1_serialize(
             id=id,
             allow_cleanup=allow_cleanup,
             new_stage_id=new_stage_id,
@@ -395,7 +395,7 @@ class PipelinesApi:
 
 
     @validate_call
-    def delete_with_http_info(
+    def delete1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="the pipeline identifier")],
         allow_cleanup: Annotated[Optional[StrictBool], Field(description="flag indicating whether cleanup is allowed, can be null")] = None,
@@ -445,7 +445,7 @@ class PipelinesApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_serialize(
+        _param = self._delete1_serialize(
             id=id,
             allow_cleanup=allow_cleanup,
             new_stage_id=new_stage_id,
@@ -470,7 +470,7 @@ class PipelinesApi:
 
 
     @validate_call
-    def delete_without_preload_content(
+    def delete1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="the pipeline identifier")],
         allow_cleanup: Annotated[Optional[StrictBool], Field(description="flag indicating whether cleanup is allowed, can be null")] = None,
@@ -520,7 +520,7 @@ class PipelinesApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._delete_serialize(
+        _param = self._delete1_serialize(
             id=id,
             allow_cleanup=allow_cleanup,
             new_stage_id=new_stage_id,
@@ -540,7 +540,7 @@ class PipelinesApi:
         return response_data.response
 
 
-    def _delete_serialize(
+    def _delete1_serialize(
         self,
         id,
         allow_cleanup,
@@ -2437,7 +2437,7 @@ class PipelinesApi:
 
 
     @validate_call
-    def update(
+    def update1(
         self,
         id: Annotated[StrictStr, Field(description="the entity identifier")],
         update_mask: Annotated[List[StrictStr], Field(description="the fields to update")],
@@ -2487,7 +2487,7 @@ class PipelinesApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._update_serialize(
+        _param = self._update1_serialize(
             id=id,
             update_mask=update_mask,
             update_pipeline_request=update_pipeline_request,
@@ -2512,7 +2512,7 @@ class PipelinesApi:
 
 
     @validate_call
-    def update_with_http_info(
+    def update1_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="the entity identifier")],
         update_mask: Annotated[List[StrictStr], Field(description="the fields to update")],
@@ -2562,7 +2562,7 @@ class PipelinesApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._update_serialize(
+        _param = self._update1_serialize(
             id=id,
             update_mask=update_mask,
             update_pipeline_request=update_pipeline_request,
@@ -2587,7 +2587,7 @@ class PipelinesApi:
 
 
     @validate_call
-    def update_without_preload_content(
+    def update1_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="the entity identifier")],
         update_mask: Annotated[List[StrictStr], Field(description="the fields to update")],
@@ -2637,7 +2637,7 @@ class PipelinesApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._update_serialize(
+        _param = self._update1_serialize(
             id=id,
             update_mask=update_mask,
             update_pipeline_request=update_pipeline_request,
@@ -2657,7 +2657,7 @@ class PipelinesApi:
         return response_data.response
 
 
-    def _update_serialize(
+    def _update1_serialize(
         self,
         id,
         update_mask,

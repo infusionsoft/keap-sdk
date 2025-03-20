@@ -43,7 +43,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.keap.core</groupId>
   <artifactId>core-service-v2-java-sdk</artifactId>
-  <version>0.0.32</version>
+  <version>0.0.33</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.keap.core:core-service-v2-java-sdk:0.0.32"
+compile "com.keap.core:core-service-v2-java-sdk:0.0.33"
 ```
 
 ### Others
@@ -66,7 +66,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/core-service-v2-java-sdk-0.0.32.jar`
+- `target/core-service-v2-java-sdk-0.0.33.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -182,14 +182,14 @@ Class | Method | HTTP request | Description
 *ContactApi* | [**updateContactUsingPATCHWithHttpInfo**](docs/ContactApi.md#updateContactUsingPATCHWithHttpInfo) | **PATCH** /v2/contacts/{contact_id} | Update a Contact
 *DealsApi* | [**createNote**](docs/DealsApi.md#createNote) | **POST** /v2/deals/{id}/notes | Creates a new note for a specific deal.
 *DealsApi* | [**createNoteWithHttpInfo**](docs/DealsApi.md#createNoteWithHttpInfo) | **POST** /v2/deals/{id}/notes | Creates a new note for a specific deal.
-*DealsApi* | [**deleteNote**](docs/DealsApi.md#deleteNote) | **DELETE** /v2/deals/-/notes/{note_id} | Deletes a specific deal note by its ID.
-*DealsApi* | [**deleteNoteWithHttpInfo**](docs/DealsApi.md#deleteNoteWithHttpInfo) | **DELETE** /v2/deals/-/notes/{note_id} | Deletes a specific deal note by its ID.
+*DealsApi* | [**delete**](docs/DealsApi.md#delete) | **DELETE** /v2/deals/-/notes/{note_id} | Deletes a specific deal note by its ID.
+*DealsApi* | [**deleteWithHttpInfo**](docs/DealsApi.md#deleteWithHttpInfo) | **DELETE** /v2/deals/-/notes/{note_id} | Deletes a specific deal note by its ID.
 *DealsApi* | [**getNote**](docs/DealsApi.md#getNote) | **GET** /v2/deals/-/notes/{note_id} | Retrieves a specific deal note by its ID.
 *DealsApi* | [**getNoteWithHttpInfo**](docs/DealsApi.md#getNoteWithHttpInfo) | **GET** /v2/deals/-/notes/{note_id} | Retrieves a specific deal note by its ID.
 *DealsApi* | [**listNotes**](docs/DealsApi.md#listNotes) | **GET** /v2/deals/{id}/notes | Lists all notes associated with a specific deal.
 *DealsApi* | [**listNotesWithHttpInfo**](docs/DealsApi.md#listNotesWithHttpInfo) | **GET** /v2/deals/{id}/notes | Lists all notes associated with a specific deal.
-*DealsApi* | [**updateNote**](docs/DealsApi.md#updateNote) | **PATCH** /v2/deals/-/notes/{note_id} | Updates a specific deal note by its ID.
-*DealsApi* | [**updateNoteWithHttpInfo**](docs/DealsApi.md#updateNoteWithHttpInfo) | **PATCH** /v2/deals/-/notes/{note_id} | Updates a specific deal note by its ID.
+*DealsApi* | [**update**](docs/DealsApi.md#update) | **PATCH** /v2/deals/-/notes/{note_id} | Updates a specific deal note by its ID.
+*DealsApi* | [**updateWithHttpInfo**](docs/DealsApi.md#updateWithHttpInfo) | **PATCH** /v2/deals/-/notes/{note_id} | Updates a specific deal note by its ID.
 *EmailApi* | [**createEmailUsingPOST1**](docs/EmailApi.md#createEmailUsingPOST1) | **POST** /v2/emails | Create an Email Record
 *EmailApi* | [**createEmailUsingPOST1WithHttpInfo**](docs/EmailApi.md#createEmailUsingPOST1WithHttpInfo) | **POST** /v2/emails | Create an Email Record
 *EmailApi* | [**createEmailsUsingPOST1**](docs/EmailApi.md#createEmailsUsingPOST1) | **POST** /v2/emails:batchAdd | Create a set of Email Records
@@ -222,8 +222,8 @@ Class | Method | HTTP request | Description
 *PipelinesApi* | [**callListWithHttpInfo**](docs/PipelinesApi.md#callListWithHttpInfo) | **GET** /v2/pipelines | Lists entities based on the provided ListCommand.
 *PipelinesApi* | [**create**](docs/PipelinesApi.md#create) | **POST** /v2/pipelines | Creates a new entity.
 *PipelinesApi* | [**createWithHttpInfo**](docs/PipelinesApi.md#createWithHttpInfo) | **POST** /v2/pipelines | Creates a new entity.
-*PipelinesApi* | [**delete**](docs/PipelinesApi.md#delete) | **DELETE** /v2/pipelines/{id} | Deletes a pipeline.
-*PipelinesApi* | [**deleteWithHttpInfo**](docs/PipelinesApi.md#deleteWithHttpInfo) | **DELETE** /v2/pipelines/{id} | Deletes a pipeline.
+*PipelinesApi* | [**delete1**](docs/PipelinesApi.md#delete1) | **DELETE** /v2/pipelines/{id} | Deletes a pipeline.
+*PipelinesApi* | [**delete1WithHttpInfo**](docs/PipelinesApi.md#delete1WithHttpInfo) | **DELETE** /v2/pipelines/{id} | Deletes a pipeline.
 *PipelinesApi* | [**get**](docs/PipelinesApi.md#get) | **GET** /v2/pipelines/{id} | Retrieves an entity by its identifier.
 *PipelinesApi* | [**getWithHttpInfo**](docs/PipelinesApi.md#getWithHttpInfo) | **GET** /v2/pipelines/{id} | Retrieves an entity by its identifier.
 *PipelinesApi* | [**getOutcomeLabels**](docs/PipelinesApi.md#getOutcomeLabels) | **GET** /v2/pipelines/{id}/outcomes | Gets the outcome labels for a pipeline.
@@ -234,8 +234,8 @@ Class | Method | HTTP request | Description
 *PipelinesApi* | [**listSummariesWithHttpInfo**](docs/PipelinesApi.md#listSummariesWithHttpInfo) | **GET** /v2/pipelines/summaries | Retrieves a list of pipeline summaries.
 *PipelinesApi* | [**setOutcomeLabels**](docs/PipelinesApi.md#setOutcomeLabels) | **PATCH** /v2/pipelines/{id}/outcomes | Sets the outcome labels for a pipeline.
 *PipelinesApi* | [**setOutcomeLabelsWithHttpInfo**](docs/PipelinesApi.md#setOutcomeLabelsWithHttpInfo) | **PATCH** /v2/pipelines/{id}/outcomes | Sets the outcome labels for a pipeline.
-*PipelinesApi* | [**update**](docs/PipelinesApi.md#update) | **PATCH** /v2/pipelines/{id} | Updates an existing entity.
-*PipelinesApi* | [**updateWithHttpInfo**](docs/PipelinesApi.md#updateWithHttpInfo) | **PATCH** /v2/pipelines/{id} | Updates an existing entity.
+*PipelinesApi* | [**update1**](docs/PipelinesApi.md#update1) | **PATCH** /v2/pipelines/{id} | Updates an existing entity.
+*PipelinesApi* | [**update1WithHttpInfo**](docs/PipelinesApi.md#update1WithHttpInfo) | **PATCH** /v2/pipelines/{id} | Updates an existing entity.
 *ReportingApi* | [**listReportsUsingGET**](docs/ReportingApi.md#listReportsUsingGET) | **GET** /v2/reporting/reports | List Reports
 *ReportingApi* | [**listReportsUsingGETWithHttpInfo**](docs/ReportingApi.md#listReportsUsingGETWithHttpInfo) | **GET** /v2/reporting/reports | List Reports
 *ReportingApi* | [**runReportUsingPOST**](docs/ReportingApi.md#runReportUsingPOST) | **POST** /v2/reporting/reports/{report_id}:run | Run a Report
@@ -250,16 +250,16 @@ Class | Method | HTTP request | Description
 *SettingsApi* | [**isApplicationEnabledUsingGETWithHttpInfo**](docs/SettingsApi.md#isApplicationEnabledUsingGETWithHttpInfo) | **GET** /v2/settings/applications:isEnabled | Get Application Status
 *StagesApi* | [**create1**](docs/StagesApi.md#create1) | **POST** /v2/stages | Creates a new entity.
 *StagesApi* | [**create1WithHttpInfo**](docs/StagesApi.md#create1WithHttpInfo) | **POST** /v2/stages | Creates a new entity.
-*StagesApi* | [**delete1**](docs/StagesApi.md#delete1) | **DELETE** /v2/stages/{id} | Deletes a stage by its identifier for a given tenant.
-*StagesApi* | [**delete1WithHttpInfo**](docs/StagesApi.md#delete1WithHttpInfo) | **DELETE** /v2/stages/{id} | Deletes a stage by its identifier for a given tenant.
+*StagesApi* | [**delete2**](docs/StagesApi.md#delete2) | **DELETE** /v2/stages/{id} | Deletes a stage by its identifier for a given tenant.
+*StagesApi* | [**delete2WithHttpInfo**](docs/StagesApi.md#delete2WithHttpInfo) | **DELETE** /v2/stages/{id} | Deletes a stage by its identifier for a given tenant.
 *StagesApi* | [**get1**](docs/StagesApi.md#get1) | **GET** /v2/stages/{id} | Retrieves an entity by its identifier.
 *StagesApi* | [**get1WithHttpInfo**](docs/StagesApi.md#get1WithHttpInfo) | **GET** /v2/stages/{id} | Retrieves an entity by its identifier.
 *StagesApi* | [**list1**](docs/StagesApi.md#list1) | **GET** /v2/stages | Lists entities based on the provided ListCommand.
 *StagesApi* | [**list1WithHttpInfo**](docs/StagesApi.md#list1WithHttpInfo) | **GET** /v2/stages | Lists entities based on the provided ListCommand.
 *StagesApi* | [**listStages1**](docs/StagesApi.md#listStages1) | **GET** /v2/stages/{id}/deals | Retrieves a list of deals for a specific stage.
 *StagesApi* | [**listStages1WithHttpInfo**](docs/StagesApi.md#listStages1WithHttpInfo) | **GET** /v2/stages/{id}/deals | Retrieves a list of deals for a specific stage.
-*StagesApi* | [**update1**](docs/StagesApi.md#update1) | **PATCH** /v2/stages/{id} | Updates an existing entity.
-*StagesApi* | [**update1WithHttpInfo**](docs/StagesApi.md#update1WithHttpInfo) | **PATCH** /v2/stages/{id} | Updates an existing entity.
+*StagesApi* | [**update2**](docs/StagesApi.md#update2) | **PATCH** /v2/stages/{id} | Updates an existing entity.
+*StagesApi* | [**update2WithHttpInfo**](docs/StagesApi.md#update2WithHttpInfo) | **PATCH** /v2/stages/{id} | Updates an existing entity.
 *SubscriptionsApi* | [**createSubscriptionV2UsingPOST**](docs/SubscriptionsApi.md#createSubscriptionV2UsingPOST) | **POST** /v2/subscriptions | Create Subscription
 *SubscriptionsApi* | [**createSubscriptionV2UsingPOSTWithHttpInfo**](docs/SubscriptionsApi.md#createSubscriptionV2UsingPOSTWithHttpInfo) | **POST** /v2/subscriptions | Create Subscription
 *TagsApi* | [**applyTagsUsingPOST**](docs/TagsApi.md#applyTagsUsingPOST) | **POST** /v2/tags/{tag_id}/contacts:applyTags | Apply Tag

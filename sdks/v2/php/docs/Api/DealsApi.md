@@ -5,10 +5,10 @@ All URIs are relative to https://api.keap.com/crm/rest, except if the operation 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**createNote()**](DealsApi.md#createNote) | **POST** /v2/deals/{id}/notes | Creates a new note for a specific deal. |
-| [**deleteNote()**](DealsApi.md#deleteNote) | **DELETE** /v2/deals/-/notes/{note_id} | Deletes a specific deal note by its ID. |
+| [**delete()**](DealsApi.md#delete) | **DELETE** /v2/deals/-/notes/{note_id} | Deletes a specific deal note by its ID. |
 | [**getNote()**](DealsApi.md#getNote) | **GET** /v2/deals/-/notes/{note_id} | Retrieves a specific deal note by its ID. |
 | [**listNotes()**](DealsApi.md#listNotes) | **GET** /v2/deals/{id}/notes | Lists all notes associated with a specific deal. |
-| [**updateNote()**](DealsApi.md#updateNote) | **PATCH** /v2/deals/-/notes/{note_id} | Updates a specific deal note by its ID. |
+| [**update()**](DealsApi.md#update) | **PATCH** /v2/deals/-/notes/{note_id} | Updates a specific deal note by its ID. |
 
 
 ## `createNote()`
@@ -68,10 +68,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `deleteNote()`
+## `delete()`
 
 ```php
-deleteNote($note_id)
+delete($note_id)
 ```
 
 Deletes a specific deal note by its ID.
@@ -93,9 +93,9 @@ $apiInstance = new Keap\Core\V2\Api\DealsApi(
 $note_id = 'note_id_example'; // string | the ID of the note to delete
 
 try {
-    $apiInstance->deleteNote($note_id);
+    $apiInstance->delete($note_id);
 } catch (Exception $e) {
-    echo 'Exception when calling DealsApi->deleteNote: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DealsApi->delete: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -240,10 +240,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `updateNote()`
+## `update()`
 
 ```php
-updateNote($note_id, $update_deal_note_request): \Keap\Core\V2\Model\DealNote
+update($note_id, $update_deal_note_request): \Keap\Core\V2\Model\DealNote
 ```
 
 Updates a specific deal note by its ID.
@@ -266,10 +266,10 @@ $note_id = 'note_id_example'; // string | the ID of the note to update
 $update_deal_note_request = new \Keap\Core\V2\Model\UpdateDealNoteRequest(); // \Keap\Core\V2\Model\UpdateDealNoteRequest | the request body containing updated note details
 
 try {
-    $result = $apiInstance->updateNote($note_id, $update_deal_note_request);
+    $result = $apiInstance->update($note_id, $update_deal_note_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling DealsApi->updateNote: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DealsApi->update: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

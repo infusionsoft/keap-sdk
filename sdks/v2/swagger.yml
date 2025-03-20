@@ -2164,7 +2164,7 @@ paths:
       - Deals
       summary: Deletes a specific deal note by its ID.
       description: Deletes a specific deal note by its ID.
-      operationId: deleteNote
+      operationId: delete
       parameters:
       - name: note_id
         in: path
@@ -2180,7 +2180,7 @@ paths:
       - Deals
       summary: Updates a specific deal note by its ID.
       description: Updates a specific deal note by its ID.
-      operationId: updateNote
+      operationId: update
       parameters:
       - name: note_id
         in: path
@@ -2670,7 +2670,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/PipelineListResponse'
       security:
-      - BearerAuth: [
+      - bearerAuth: [
           ]
     post:
       tags:
@@ -2693,7 +2693,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Pipeline'
       security:
-      - BearerAuth: [
+      - bearerAuth: [
           ]
   /v2/pipelines/summaries:
     get:
@@ -2742,7 +2742,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/PipelineSummariesListResponse'
       security:
-      - BearerAuth: [
+      - bearerAuth: [
           ]
   /v2/pipelines/{id}:
     get:
@@ -2766,14 +2766,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/Pipeline'
       security:
-      - BearerAuth: [
+      - bearerAuth: [
           ]
     delete:
       tags:
       - Pipelines
       summary: Deletes a pipeline.
       description: Deletes a pipeline.
-      operationId: delete
+      operationId: delete_1
       parameters:
       - name: id
         in: path
@@ -2797,14 +2797,14 @@ paths:
         '204':
           description: A response indicating no content
       security:
-      - BearerAuth: [
+      - bearerAuth: [
           ]
     patch:
       tags:
       - Pipelines
       summary: Updates an existing entity.
       description: Updates an existing entity.
-      operationId: update
+      operationId: update_1
       parameters:
       - name: id
         in: path
@@ -2829,13 +2829,13 @@ paths:
         required: true
       responses:
         '200':
-          description: The updated entity
+          description: The update_1d entity
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Pipeline'
       security:
-      - BearerAuth: [
+      - bearerAuth: [
           ]
   /v2/pipelines/{id}/outcomes:
     get:
@@ -2889,7 +2889,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/PipelineOutcomeLabelListResponse'
       security:
-      - BearerAuth: [
+      - bearerAuth: [
           ]
     patch:
       tags:
@@ -2919,7 +2919,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/PipelineOutcomeLabelListResponse'
       security:
-      - BearerAuth: [
+      - bearerAuth: [
           ]
   /v2/pipelines/{id}/stages:
     get:
@@ -2974,7 +2974,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/PipelineStageListResponse'
       security:
-      - BearerAuth: [
+      - bearerAuth: [
           ]
   /v2/reporting/reports:
     get:
@@ -3340,7 +3340,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/StageListResponse'
       security:
-      - BearerAuth: [
+      - bearerAuth: [
           ]
     post:
       tags:
@@ -3363,7 +3363,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Stage'
       security:
-      - BearerAuth: [
+      - bearerAuth: [
           ]
   /v2/stages/{id}:
     get:
@@ -3387,14 +3387,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/Stage'
       security:
-      - BearerAuth: [
+      - bearerAuth: [
           ]
     delete:
       tags:
       - Stages
       summary: Deletes a stage by its identifier for a given tenant.
       description: Deletes a stage by its identifier for a given tenant.
-      operationId: delete_1
+      operationId: delete_2
       parameters:
       - name: id
         in: path
@@ -3412,14 +3412,14 @@ paths:
         '204':
           description: A response indicating no content
       security:
-      - BearerAuth: [
+      - bearerAuth: [
           ]
     patch:
       tags:
       - Stages
       summary: Updates an existing entity.
       description: Updates an existing entity.
-      operationId: update_1
+      operationId: update_2
       parameters:
       - name: id
         in: path
@@ -3444,13 +3444,13 @@ paths:
         required: true
       responses:
         '200':
-          description: The update_1d entity
+          description: The update_2d entity
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Stage'
       security:
-      - BearerAuth: [
+      - bearerAuth: [
           ]
   /v2/stages/{id}/deals:
     get:
@@ -3505,7 +3505,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/StageDealListResponse'
       security:
-      - BearerAuth: [
+      - bearerAuth: [
           ]
   /v2/subscriptions:
     post:

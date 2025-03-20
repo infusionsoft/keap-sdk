@@ -6,14 +6,14 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 |------------- | ------------- | -------------|
 | [**createNote**](DealsApi.md#createNote) | **POST** /v2/deals/{id}/notes | Creates a new note for a specific deal. |
 | [**createNoteWithHttpInfo**](DealsApi.md#createNoteWithHttpInfo) | **POST** /v2/deals/{id}/notes | Creates a new note for a specific deal. |
-| [**deleteNote**](DealsApi.md#deleteNote) | **DELETE** /v2/deals/-/notes/{note_id} | Deletes a specific deal note by its ID. |
-| [**deleteNoteWithHttpInfo**](DealsApi.md#deleteNoteWithHttpInfo) | **DELETE** /v2/deals/-/notes/{note_id} | Deletes a specific deal note by its ID. |
+| [**delete**](DealsApi.md#delete) | **DELETE** /v2/deals/-/notes/{note_id} | Deletes a specific deal note by its ID. |
+| [**deleteWithHttpInfo**](DealsApi.md#deleteWithHttpInfo) | **DELETE** /v2/deals/-/notes/{note_id} | Deletes a specific deal note by its ID. |
 | [**getNote**](DealsApi.md#getNote) | **GET** /v2/deals/-/notes/{note_id} | Retrieves a specific deal note by its ID. |
 | [**getNoteWithHttpInfo**](DealsApi.md#getNoteWithHttpInfo) | **GET** /v2/deals/-/notes/{note_id} | Retrieves a specific deal note by its ID. |
 | [**listNotes**](DealsApi.md#listNotes) | **GET** /v2/deals/{id}/notes | Lists all notes associated with a specific deal. |
 | [**listNotesWithHttpInfo**](DealsApi.md#listNotesWithHttpInfo) | **GET** /v2/deals/{id}/notes | Lists all notes associated with a specific deal. |
-| [**updateNote**](DealsApi.md#updateNote) | **PATCH** /v2/deals/-/notes/{note_id} | Updates a specific deal note by its ID. |
-| [**updateNoteWithHttpInfo**](DealsApi.md#updateNoteWithHttpInfo) | **PATCH** /v2/deals/-/notes/{note_id} | Updates a specific deal note by its ID. |
+| [**update**](DealsApi.md#update) | **PATCH** /v2/deals/-/notes/{note_id} | Updates a specific deal note by its ID. |
+| [**updateWithHttpInfo**](DealsApi.md#updateWithHttpInfo) | **PATCH** /v2/deals/-/notes/{note_id} | Updates a specific deal note by its ID. |
 
 
 
@@ -155,9 +155,9 @@ No authorization required
 | **200** | the created DealNote |  -  |
 
 
-## deleteNote
+## delete
 
-> void deleteNote(noteId)
+> void delete(noteId)
 
 Deletes a specific deal note by its ID.
 
@@ -181,9 +181,9 @@ public class Example {
         DealsApi apiInstance = new DealsApi(defaultClient);
         String noteId = "noteId_example"; // String | the ID of the note to delete
         try {
-            apiInstance.deleteNote(noteId);
+            apiInstance.delete(noteId);
         } catch (ApiException e) {
-            System.err.println("Exception when calling DealsApi#deleteNote");
+            System.err.println("Exception when calling DealsApi#delete");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -219,9 +219,9 @@ No authorization required
 |-------------|-------------|------------------|
 | **204** | a HttpResponse indicating the result of the delete operation |  -  |
 
-## deleteNoteWithHttpInfo
+## deleteWithHttpInfo
 
-> ApiResponse<Void> deleteNote deleteNoteWithHttpInfo(noteId)
+> ApiResponse<Void> delete deleteWithHttpInfo(noteId)
 
 Deletes a specific deal note by its ID.
 
@@ -246,11 +246,11 @@ public class Example {
         DealsApi apiInstance = new DealsApi(defaultClient);
         String noteId = "noteId_example"; // String | the ID of the note to delete
         try {
-            ApiResponse<Void> response = apiInstance.deleteNoteWithHttpInfo(noteId);
+            ApiResponse<Void> response = apiInstance.deleteWithHttpInfo(noteId);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
-            System.err.println("Exception when calling DealsApi#deleteNote");
+            System.err.println("Exception when calling DealsApi#delete");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -571,9 +571,9 @@ No authorization required
 | **200** | a list of deal notes wrapped in a DealNoteListResponse |  -  |
 
 
-## updateNote
+## update
 
-> DealNote updateNote(noteId, updateDealNoteRequest)
+> DealNote update(noteId, updateDealNoteRequest)
 
 Updates a specific deal note by its ID.
 
@@ -598,10 +598,10 @@ public class Example {
         String noteId = "noteId_example"; // String | the ID of the note to update
         UpdateDealNoteRequest updateDealNoteRequest = new UpdateDealNoteRequest(); // UpdateDealNoteRequest | the request body containing updated note details
         try {
-            DealNote result = apiInstance.updateNote(noteId, updateDealNoteRequest);
+            DealNote result = apiInstance.update(noteId, updateDealNoteRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling DealsApi#updateNote");
+            System.err.println("Exception when calling DealsApi#update");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -638,9 +638,9 @@ No authorization required
 |-------------|-------------|------------------|
 | **200** | the updated DealNote |  -  |
 
-## updateNoteWithHttpInfo
+## updateWithHttpInfo
 
-> ApiResponse<DealNote> updateNote updateNoteWithHttpInfo(noteId, updateDealNoteRequest)
+> ApiResponse<DealNote> update updateWithHttpInfo(noteId, updateDealNoteRequest)
 
 Updates a specific deal note by its ID.
 
@@ -666,12 +666,12 @@ public class Example {
         String noteId = "noteId_example"; // String | the ID of the note to update
         UpdateDealNoteRequest updateDealNoteRequest = new UpdateDealNoteRequest(); // UpdateDealNoteRequest | the request body containing updated note details
         try {
-            ApiResponse<DealNote> response = apiInstance.updateNoteWithHttpInfo(noteId, updateDealNoteRequest);
+            ApiResponse<DealNote> response = apiInstance.updateWithHttpInfo(noteId, updateDealNoteRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling DealsApi#updateNote");
+            System.err.println("Exception when calling DealsApi#update");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());

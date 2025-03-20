@@ -42,63 +42,6 @@ export default class PipelinesApi {
 
 
     /**
-     * Deletes a pipeline.
-     * Deletes a pipeline.
-     * @param {String} id the pipeline identifier
-     * @param {Object} opts Optional parameters
-     * @param {Boolean} [allowCleanup] flag indicating whether cleanup is allowed, can be null
-     * @param {String} [newStageId] the new stage identifier, can be null
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
-     */
-    callDeleteWithHttpInfo(id, opts) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling callDelete");
-      }
-
-      let pathParams = {
-        'id': id
-      };
-      let queryParams = {
-        'allow_cleanup': opts['allowCleanup'],
-        'new_stage_id': opts['newStageId']
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = [];
-      let contentTypes = [];
-      let accepts = [];
-      let returnType = null;
-      return this.apiClient.callApi(
-        '/v2/pipelines/{id}', 'DELETE',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null
-      );
-    }
-
-    /**
-     * Deletes a pipeline.
-     * Deletes a pipeline.
-     * @param {String} id the pipeline identifier
-     * @param {Object} opts Optional parameters
-     * @param {Boolean} opts.allowCleanup flag indicating whether cleanup is allowed, can be null
-     * @param {String} opts.newStageId the new stage identifier, can be null
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
-     */
-    callDelete(id, opts) {
-      return this.callDeleteWithHttpInfo(id, opts)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
      * Creates a new entity.
      * Creates a new entity.
      * @param {module:keap.core.v2/model/CreatePipelineRequest} createPipelineRequest the create request
@@ -139,6 +82,63 @@ export default class PipelinesApi {
      */
     create(createPipelineRequest) {
       return this.createWithHttpInfo(createPipelineRequest)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Deletes a pipeline.
+     * Deletes a pipeline.
+     * @param {String} id the pipeline identifier
+     * @param {Object} opts Optional parameters
+     * @param {Boolean} [allowCleanup] flag indicating whether cleanup is allowed, can be null
+     * @param {String} [newStageId] the new stage identifier, can be null
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+    delete1WithHttpInfo(id, opts) {
+      opts = opts || {};
+      let postBody = null;
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling delete1");
+      }
+
+      let pathParams = {
+        'id': id
+      };
+      let queryParams = {
+        'allow_cleanup': opts['allowCleanup'],
+        'new_stage_id': opts['newStageId']
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = [];
+      let contentTypes = [];
+      let accepts = [];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/v2/pipelines/{id}', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Deletes a pipeline.
+     * Deletes a pipeline.
+     * @param {String} id the pipeline identifier
+     * @param {Object} opts Optional parameters
+     * @param {Boolean} opts.allowCleanup flag indicating whether cleanup is allowed, can be null
+     * @param {String} opts.newStageId the new stage identifier, can be null
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+    delete1(id, opts) {
+      return this.delete1WithHttpInfo(id, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -493,19 +493,19 @@ export default class PipelinesApi {
      * @param {module:keap.core.v2/model/UpdatePipelineRequest} updatePipelineRequest the update request
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/Pipeline} and HTTP response
      */
-    updateWithHttpInfo(id, updateMask, updatePipelineRequest) {
+    update1WithHttpInfo(id, updateMask, updatePipelineRequest) {
       let postBody = updatePipelineRequest;
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling update");
+        throw new Error("Missing the required parameter 'id' when calling update1");
       }
       // verify the required parameter 'updateMask' is set
       if (updateMask === undefined || updateMask === null) {
-        throw new Error("Missing the required parameter 'updateMask' when calling update");
+        throw new Error("Missing the required parameter 'updateMask' when calling update1");
       }
       // verify the required parameter 'updatePipelineRequest' is set
       if (updatePipelineRequest === undefined || updatePipelineRequest === null) {
-        throw new Error("Missing the required parameter 'updatePipelineRequest' when calling update");
+        throw new Error("Missing the required parameter 'updatePipelineRequest' when calling update1");
       }
 
       let pathParams = {
@@ -538,8 +538,8 @@ export default class PipelinesApi {
      * @param {module:keap.core.v2/model/UpdatePipelineRequest} updatePipelineRequest the update request
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/Pipeline}
      */
-    update(id, updateMask, updatePipelineRequest) {
-      return this.updateWithHttpInfo(id, updateMask, updatePipelineRequest)
+    update1(id, updateMask, updatePipelineRequest) {
+      return this.update1WithHttpInfo(id, updateMask, updatePipelineRequest)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

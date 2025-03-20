@@ -5,11 +5,11 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create1**](StagesApi.md#create1) | **POST** /v2/stages | Creates a new entity.
-[**delete1**](StagesApi.md#delete1) | **DELETE** /v2/stages/{id} | Deletes a stage by its identifier for a given tenant.
+[**delete2**](StagesApi.md#delete2) | **DELETE** /v2/stages/{id} | Deletes a stage by its identifier for a given tenant.
 [**get1**](StagesApi.md#get1) | **GET** /v2/stages/{id} | Retrieves an entity by its identifier.
 [**list1**](StagesApi.md#list1) | **GET** /v2/stages | Lists entities based on the provided ListCommand.
 [**listStages1**](StagesApi.md#listStages1) | **GET** /v2/stages/{id}/deals | Retrieves a list of deals for a specific stage.
-[**update1**](StagesApi.md#update1) | **PATCH** /v2/stages/{id} | Updates an existing entity.
+[**update2**](StagesApi.md#update2) | **PATCH** /v2/stages/{id} | Updates an existing entity.
 
 
 # **create1**
@@ -68,8 +68,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **delete1**
-> void delete1()
+# **delete2**
+> void delete2()
 
 Deletes a stage by its identifier for a given tenant.
 
@@ -78,19 +78,19 @@ Deletes a stage by its identifier for a given tenant.
 
 ```typescript
 import { createConfiguration, StagesApi } from '';
-import type { StagesApiDelete1Request } from '';
+import type { StagesApiDelete2Request } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new StagesApi(configuration);
 
-const request: StagesApiDelete1Request = {
+const request: StagesApiDelete2Request = {
     // the stage identifier
   id: "id_example",
     // the new stage identifier, can be null (optional)
   newStageId: "new_stage_id_example",
 };
 
-const data = await apiInstance.delete1(request);
+const data = await apiInstance.delete2(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -304,8 +304,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **update1**
-> Stage update1(updateStageRequest)
+# **update2**
+> Stage update2(updateStageRequest)
 
 Updates an existing entity.
 
@@ -314,12 +314,12 @@ Updates an existing entity.
 
 ```typescript
 import { createConfiguration, StagesApi } from '';
-import type { StagesApiUpdate1Request } from '';
+import type { StagesApiUpdate2Request } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new StagesApi(configuration);
 
-const request: StagesApiUpdate1Request = {
+const request: StagesApiUpdate2Request = {
     // the entity identifier
   id: "id_example",
     // the fields to update
@@ -335,7 +335,7 @@ const request: StagesApiUpdate1Request = {
   },
 };
 
-const data = await apiInstance.update1(request);
+const data = await apiInstance.update2(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -366,7 +366,7 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The update_1d entity |  -  |
+**200** | The update_2d entity |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

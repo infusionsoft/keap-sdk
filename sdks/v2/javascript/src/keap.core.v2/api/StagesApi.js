@@ -93,12 +93,12 @@ export default class StagesApi {
      * @param {String} [newStageId] the new stage identifier, can be null
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    delete1WithHttpInfo(id, opts) {
+    delete2WithHttpInfo(id, opts) {
       opts = opts || {};
       let postBody = null;
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling delete1");
+        throw new Error("Missing the required parameter 'id' when calling delete2");
       }
 
       let pathParams = {
@@ -131,8 +131,8 @@ export default class StagesApi {
      * @param {String} opts.newStageId the new stage identifier, can be null
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
-    delete1(id, opts) {
-      return this.delete1WithHttpInfo(id, opts)
+    delete2(id, opts) {
+      return this.delete2WithHttpInfo(id, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -314,19 +314,19 @@ export default class StagesApi {
      * @param {module:keap.core.v2/model/UpdateStageRequest} updateStageRequest the update request
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/Stage} and HTTP response
      */
-    update1WithHttpInfo(id, updateMask, updateStageRequest) {
+    update2WithHttpInfo(id, updateMask, updateStageRequest) {
       let postBody = updateStageRequest;
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling update1");
+        throw new Error("Missing the required parameter 'id' when calling update2");
       }
       // verify the required parameter 'updateMask' is set
       if (updateMask === undefined || updateMask === null) {
-        throw new Error("Missing the required parameter 'updateMask' when calling update1");
+        throw new Error("Missing the required parameter 'updateMask' when calling update2");
       }
       // verify the required parameter 'updateStageRequest' is set
       if (updateStageRequest === undefined || updateStageRequest === null) {
-        throw new Error("Missing the required parameter 'updateStageRequest' when calling update1");
+        throw new Error("Missing the required parameter 'updateStageRequest' when calling update2");
       }
 
       let pathParams = {
@@ -359,8 +359,8 @@ export default class StagesApi {
      * @param {module:keap.core.v2/model/UpdateStageRequest} updateStageRequest the update request
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/Stage}
      */
-    update1(id, updateMask, updateStageRequest) {
-      return this.update1WithHttpInfo(id, updateMask, updateStageRequest)
+    update2(id, updateMask, updateStageRequest) {
+      return this.update2WithHttpInfo(id, updateMask, updateStageRequest)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

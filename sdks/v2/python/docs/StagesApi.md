@@ -5,11 +5,11 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create1**](StagesApi.md#create1) | **POST** /v2/stages | Creates a new entity.
-[**delete1**](StagesApi.md#delete1) | **DELETE** /v2/stages/{id} | Deletes a stage by its identifier for a given tenant.
+[**delete2**](StagesApi.md#delete2) | **DELETE** /v2/stages/{id} | Deletes a stage by its identifier for a given tenant.
 [**get1**](StagesApi.md#get1) | **GET** /v2/stages/{id} | Retrieves an entity by its identifier.
 [**list1**](StagesApi.md#list1) | **GET** /v2/stages | Lists entities based on the provided ListCommand.
 [**list_stages1**](StagesApi.md#list_stages1) | **GET** /v2/stages/{id}/deals | Retrieves a list of deals for a specific stage.
-[**update1**](StagesApi.md#update1) | **PATCH** /v2/stages/{id} | Updates an existing entity.
+[**update2**](StagesApi.md#update2) | **PATCH** /v2/stages/{id} | Updates an existing entity.
 
 
 # **create1**
@@ -79,8 +79,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **delete1**
-> delete1(id, new_stage_id=new_stage_id)
+# **delete2**
+> delete2(id, new_stage_id=new_stage_id)
 
 Deletes a stage by its identifier for a given tenant.
 
@@ -109,9 +109,9 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Deletes a stage by its identifier for a given tenant.
-        api_instance.delete1(id, new_stage_id=new_stage_id)
+        api_instance.delete2(id, new_stage_id=new_stage_id)
     except Exception as e:
-        print("Exception when calling StagesApi->delete1: %s\n" % e)
+        print("Exception when calling StagesApi->delete2: %s\n" % e)
 ```
 
 
@@ -356,8 +356,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **update1**
-> Stage update1(id, update_mask, update_stage_request)
+# **update2**
+> Stage update2(id, update_mask, update_stage_request)
 
 Updates an existing entity.
 
@@ -389,11 +389,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Updates an existing entity.
-        api_response = api_instance.update1(id, update_mask, update_stage_request)
-        print("The response of StagesApi->update1:\n")
+        api_response = api_instance.update2(id, update_mask, update_stage_request)
+        print("The response of StagesApi->update2:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling StagesApi->update1: %s\n" % e)
+        print("Exception when calling StagesApi->update2: %s\n" % e)
 ```
 
 
@@ -423,7 +423,7 @@ No authorization required
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The update_1d entity |  -  |
+**200** | The update_2d entity |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

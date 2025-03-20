@@ -199,8 +199,8 @@ import io.github.resilience4j.retry.Retry;
    * @param noteId the ID of the note to delete (required)
    * @throws ApiException if fails to make API call
    */
-  public void deleteNote(String noteId) throws ApiException {
-    deleteNoteWithHttpInfo(noteId);
+  public void delete(String noteId) throws ApiException {
+    deleteWithHttpInfo(noteId);
   }
 
   /**
@@ -210,8 +210,8 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> deleteNoteWithHttpInfo(String noteId) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = deleteNoteRequestBuilder(noteId);
+  public ApiResponse<Void> deleteWithHttpInfo(String noteId) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = deleteRequestBuilder(noteId);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
       memberVarHttpClient.send(
@@ -227,7 +227,7 @@ import io.github.resilience4j.retry.Retry;
       }
       try {
         if (localVarResponse.statusCode()/ 100 != 2) {
-          throw getApiException("deleteNote", localVarResponse);
+          throw getApiException("delete", localVarResponse);
         }
         return new ApiResponse<Void>(
           localVarResponse.statusCode(),
@@ -256,10 +256,10 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder deleteNoteRequestBuilder(String noteId) throws ApiException {
+  private HttpRequest.Builder deleteRequestBuilder(String noteId) throws ApiException {
     // verify the required parameter 'noteId' is set
     if (noteId == null) {
-      throw new ApiException(400, "Missing the required parameter 'noteId' when calling deleteNote");
+      throw new ApiException(400, "Missing the required parameter 'noteId' when calling delete");
     }
 
     HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
@@ -491,8 +491,8 @@ import io.github.resilience4j.retry.Retry;
    * @return DealNote
    * @throws ApiException if fails to make API call
    */
-  public DealNote updateNote(String noteId, UpdateDealNoteRequest updateDealNoteRequest) throws ApiException {
-    ApiResponse<DealNote> localVarResponse = updateNoteWithHttpInfo(noteId, updateDealNoteRequest);
+  public DealNote update(String noteId, UpdateDealNoteRequest updateDealNoteRequest) throws ApiException {
+    ApiResponse<DealNote> localVarResponse = updateWithHttpInfo(noteId, updateDealNoteRequest);
     return localVarResponse.getData();
   }
 
@@ -504,8 +504,8 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;DealNote&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<DealNote> updateNoteWithHttpInfo(String noteId, UpdateDealNoteRequest updateDealNoteRequest) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = updateNoteRequestBuilder(noteId, updateDealNoteRequest);
+  public ApiResponse<DealNote> updateWithHttpInfo(String noteId, UpdateDealNoteRequest updateDealNoteRequest) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = updateRequestBuilder(noteId, updateDealNoteRequest);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
       memberVarHttpClient.send(
@@ -521,7 +521,7 @@ import io.github.resilience4j.retry.Retry;
       }
       try {
         if (localVarResponse.statusCode()/ 100 != 2) {
-          throw getApiException("updateNote", localVarResponse);
+          throw getApiException("update", localVarResponse);
         }
         return new ApiResponse<DealNote>(
           localVarResponse.statusCode(),
@@ -545,14 +545,14 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateNoteRequestBuilder(String noteId, UpdateDealNoteRequest updateDealNoteRequest) throws ApiException {
+  private HttpRequest.Builder updateRequestBuilder(String noteId, UpdateDealNoteRequest updateDealNoteRequest) throws ApiException {
     // verify the required parameter 'noteId' is set
     if (noteId == null) {
-      throw new ApiException(400, "Missing the required parameter 'noteId' when calling updateNote");
+      throw new ApiException(400, "Missing the required parameter 'noteId' when calling update");
     }
     // verify the required parameter 'updateDealNoteRequest' is set
     if (updateDealNoteRequest == null) {
-      throw new ApiException(400, "Missing the required parameter 'updateDealNoteRequest' when calling updateNote");
+      throw new ApiException(400, "Missing the required parameter 'updateDealNoteRequest' when calling update");
     }
 
     HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();

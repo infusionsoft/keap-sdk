@@ -4,66 +4,16 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**callDelete**](PipelinesApi.md#callDelete) | **DELETE** /v2/pipelines/{id} | Deletes a pipeline.
 [**create**](PipelinesApi.md#create) | **POST** /v2/pipelines | Creates a new entity.
+[**delete1**](PipelinesApi.md#delete1) | **DELETE** /v2/pipelines/{id} | Deletes a pipeline.
 [**get**](PipelinesApi.md#get) | **GET** /v2/pipelines/{id} | Retrieves an entity by its identifier.
 [**getOutcomeLabels**](PipelinesApi.md#getOutcomeLabels) | **GET** /v2/pipelines/{id}/outcomes | Gets the outcome labels for a pipeline.
 [**list**](PipelinesApi.md#list) | **GET** /v2/pipelines | Lists entities based on the provided ListCommand.
 [**listStages**](PipelinesApi.md#listStages) | **GET** /v2/pipelines/{id}/stages | Retrieves a list of stages for a specific pipeline.
 [**listSummaries**](PipelinesApi.md#listSummaries) | **GET** /v2/pipelines/summaries | Retrieves a list of pipeline summaries.
 [**setOutcomeLabels**](PipelinesApi.md#setOutcomeLabels) | **PATCH** /v2/pipelines/{id}/outcomes | Sets the outcome labels for a pipeline.
-[**update**](PipelinesApi.md#update) | **PATCH** /v2/pipelines/{id} | Updates an existing entity.
+[**update1**](PipelinesApi.md#update1) | **PATCH** /v2/pipelines/{id} | Updates an existing entity.
 
-
-
-## callDelete
-
-> callDelete(id, opts)
-
-Deletes a pipeline.
-
-Deletes a pipeline.
-
-### Example
-
-```javascript
-import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
-
-let apiInstance = new KeapCoreServiceV2Sdk.PipelinesApi();
-let id = "id_example"; // String | the pipeline identifier
-let opts = {
-  'allowCleanup': true, // Boolean | flag indicating whether cleanup is allowed, can be null
-  'newStageId': "newStageId_example" // String | the new stage identifier, can be null
-};
-apiInstance.callDelete(id, opts).then(() => {
-  console.log('API called successfully.');
-}, (error) => {
-  console.error(error);
-});
-
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**| the pipeline identifier | 
- **allowCleanup** | **Boolean**| flag indicating whether cleanup is allowed, can be null | [optional] 
- **newStageId** | **String**| the new stage identifier, can be null | [optional] 
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
 
 
 ## create
@@ -108,6 +58,56 @@ No authorization required
 
 - **Content-Type**: application/json
 - **Accept**: application/json
+
+
+## delete1
+
+> delete1(id, opts)
+
+Deletes a pipeline.
+
+Deletes a pipeline.
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+
+let apiInstance = new KeapCoreServiceV2Sdk.PipelinesApi();
+let id = "id_example"; // String | the pipeline identifier
+let opts = {
+  'allowCleanup': true, // Boolean | flag indicating whether cleanup is allowed, can be null
+  'newStageId': "newStageId_example" // String | the new stage identifier, can be null
+};
+apiInstance.delete1(id, opts).then(() => {
+  console.log('API called successfully.');
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| the pipeline identifier | 
+ **allowCleanup** | **Boolean**| flag indicating whether cleanup is allowed, can be null | [optional] 
+ **newStageId** | **String**| the new stage identifier, can be null | [optional] 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
 
 ## get
@@ -412,9 +412,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## update
+## update1
 
-> Pipeline update(id, updateMask, updatePipelineRequest)
+> Pipeline update1(id, updateMask, updatePipelineRequest)
 
 Updates an existing entity.
 
@@ -429,7 +429,7 @@ let apiInstance = new KeapCoreServiceV2Sdk.PipelinesApi();
 let id = "id_example"; // String | the entity identifier
 let updateMask = ["null"]; // [String] | the fields to update
 let updatePipelineRequest = new KeapCoreServiceV2Sdk.UpdatePipelineRequest(); // UpdatePipelineRequest | the update request
-apiInstance.update(id, updateMask, updatePipelineRequest).then((data) => {
+apiInstance.update1(id, updateMask, updatePipelineRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);

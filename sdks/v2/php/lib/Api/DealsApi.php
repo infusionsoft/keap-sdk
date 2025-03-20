@@ -74,7 +74,7 @@ class DealsApi
         'createNote' => [
             'application/json',
         ],
-        'deleteNote' => [
+        'delete' => [
             'application/json',
         ],
         'getNote' => [
@@ -83,7 +83,7 @@ class DealsApi
         'listNotes' => [
             'application/json',
         ],
-        'updateNote' => [
+        'update' => [
             'application/json',
         ],
     ];
@@ -462,37 +462,37 @@ class DealsApi
     }
 
     /**
-     * Operation deleteNote
+     * Operation delete
      *
      * Deletes a specific deal note by its ID.
      *
      * @param  string $note_id the ID of the note to delete (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteNote'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['delete'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function deleteNote($note_id, string $contentType = self::contentTypes['deleteNote'][0])
+    public function delete($note_id, string $contentType = self::contentTypes['delete'][0])
     {
-        $this->deleteNoteWithHttpInfo($note_id, $contentType);
+        $this->deleteWithHttpInfo($note_id, $contentType);
     }
 
     /**
-     * Operation deleteNoteWithHttpInfo
+     * Operation deleteWithHttpInfo
      *
      * Deletes a specific deal note by its ID.
      *
      * @param  string $note_id the ID of the note to delete (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteNote'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['delete'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteNoteWithHttpInfo($note_id, string $contentType = self::contentTypes['deleteNote'][0])
+    public function deleteWithHttpInfo($note_id, string $contentType = self::contentTypes['delete'][0])
     {
-        $request = $this->deleteNoteRequest($note_id, $contentType);
+        $request = $this->deleteRequest($note_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -527,19 +527,19 @@ class DealsApi
     }
 
     /**
-     * Operation deleteNoteAsync
+     * Operation deleteAsync
      *
      * Deletes a specific deal note by its ID.
      *
      * @param  string $note_id the ID of the note to delete (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteNote'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['delete'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteNoteAsync($note_id, string $contentType = self::contentTypes['deleteNote'][0])
+    public function deleteAsync($note_id, string $contentType = self::contentTypes['delete'][0])
     {
-        return $this->deleteNoteAsyncWithHttpInfo($note_id, $contentType)
+        return $this->deleteAsyncWithHttpInfo($note_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -548,20 +548,20 @@ class DealsApi
     }
 
     /**
-     * Operation deleteNoteAsyncWithHttpInfo
+     * Operation deleteAsyncWithHttpInfo
      *
      * Deletes a specific deal note by its ID.
      *
      * @param  string $note_id the ID of the note to delete (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteNote'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['delete'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteNoteAsyncWithHttpInfo($note_id, string $contentType = self::contentTypes['deleteNote'][0])
+    public function deleteAsyncWithHttpInfo($note_id, string $contentType = self::contentTypes['delete'][0])
     {
         $returnType = '';
-        $request = $this->deleteNoteRequest($note_id, $contentType);
+        $request = $this->deleteRequest($note_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -587,21 +587,21 @@ class DealsApi
     }
 
     /**
-     * Create request for operation 'deleteNote'
+     * Create request for operation 'delete'
      *
      * @param  string $note_id the ID of the note to delete (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteNote'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['delete'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteNoteRequest($note_id, string $contentType = self::contentTypes['deleteNote'][0])
+    public function deleteRequest($note_id, string $contentType = self::contentTypes['delete'][0])
     {
 
         // verify the required parameter 'note_id' is set
         if ($note_id === null || (is_array($note_id) && count($note_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $note_id when calling deleteNote'
+                'Missing the required parameter $note_id when calling delete'
             );
         }
 
@@ -1361,40 +1361,40 @@ class DealsApi
     }
 
     /**
-     * Operation updateNote
+     * Operation update
      *
      * Updates a specific deal note by its ID.
      *
      * @param  string $note_id the ID of the note to update (required)
      * @param  \Keap\Core\V2\Model\UpdateDealNoteRequest $update_deal_note_request the request body containing updated note details (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateNote'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Keap\Core\V2\Model\DealNote
      */
-    public function updateNote($note_id, $update_deal_note_request, string $contentType = self::contentTypes['updateNote'][0])
+    public function update($note_id, $update_deal_note_request, string $contentType = self::contentTypes['update'][0])
     {
-        list($response) = $this->updateNoteWithHttpInfo($note_id, $update_deal_note_request, $contentType);
+        list($response) = $this->updateWithHttpInfo($note_id, $update_deal_note_request, $contentType);
         return $response;
     }
 
     /**
-     * Operation updateNoteWithHttpInfo
+     * Operation updateWithHttpInfo
      *
      * Updates a specific deal note by its ID.
      *
      * @param  string $note_id the ID of the note to update (required)
      * @param  \Keap\Core\V2\Model\UpdateDealNoteRequest $update_deal_note_request the request body containing updated note details (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateNote'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Keap\Core\V2\Model\DealNote, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateNoteWithHttpInfo($note_id, $update_deal_note_request, string $contentType = self::contentTypes['updateNote'][0])
+    public function updateWithHttpInfo($note_id, $update_deal_note_request, string $contentType = self::contentTypes['update'][0])
     {
-        $request = $this->updateNoteRequest($note_id, $update_deal_note_request, $contentType);
+        $request = $this->updateRequest($note_id, $update_deal_note_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1506,20 +1506,20 @@ class DealsApi
     }
 
     /**
-     * Operation updateNoteAsync
+     * Operation updateAsync
      *
      * Updates a specific deal note by its ID.
      *
      * @param  string $note_id the ID of the note to update (required)
      * @param  \Keap\Core\V2\Model\UpdateDealNoteRequest $update_deal_note_request the request body containing updated note details (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateNote'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateNoteAsync($note_id, $update_deal_note_request, string $contentType = self::contentTypes['updateNote'][0])
+    public function updateAsync($note_id, $update_deal_note_request, string $contentType = self::contentTypes['update'][0])
     {
-        return $this->updateNoteAsyncWithHttpInfo($note_id, $update_deal_note_request, $contentType)
+        return $this->updateAsyncWithHttpInfo($note_id, $update_deal_note_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1528,21 +1528,21 @@ class DealsApi
     }
 
     /**
-     * Operation updateNoteAsyncWithHttpInfo
+     * Operation updateAsyncWithHttpInfo
      *
      * Updates a specific deal note by its ID.
      *
      * @param  string $note_id the ID of the note to update (required)
      * @param  \Keap\Core\V2\Model\UpdateDealNoteRequest $update_deal_note_request the request body containing updated note details (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateNote'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateNoteAsyncWithHttpInfo($note_id, $update_deal_note_request, string $contentType = self::contentTypes['updateNote'][0])
+    public function updateAsyncWithHttpInfo($note_id, $update_deal_note_request, string $contentType = self::contentTypes['update'][0])
     {
         $returnType = '\Keap\Core\V2\Model\DealNote';
-        $request = $this->updateNoteRequest($note_id, $update_deal_note_request, $contentType);
+        $request = $this->updateRequest($note_id, $update_deal_note_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1581,29 +1581,29 @@ class DealsApi
     }
 
     /**
-     * Create request for operation 'updateNote'
+     * Create request for operation 'update'
      *
      * @param  string $note_id the ID of the note to update (required)
      * @param  \Keap\Core\V2\Model\UpdateDealNoteRequest $update_deal_note_request the request body containing updated note details (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateNote'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateNoteRequest($note_id, $update_deal_note_request, string $contentType = self::contentTypes['updateNote'][0])
+    public function updateRequest($note_id, $update_deal_note_request, string $contentType = self::contentTypes['update'][0])
     {
 
         // verify the required parameter 'note_id' is set
         if ($note_id === null || (is_array($note_id) && count($note_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $note_id when calling updateNote'
+                'Missing the required parameter $note_id when calling update'
             );
         }
 
         // verify the required parameter 'update_deal_note_request' is set
         if ($update_deal_note_request === null || (is_array($update_deal_note_request) && count($update_deal_note_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $update_deal_note_request when calling updateNote'
+                'Missing the required parameter $update_deal_note_request when calling update'
             );
         }
 

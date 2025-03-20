@@ -109,10 +109,10 @@ Class | Method | HTTP request | Description
 *ContactApi* | [**unlinkContactsUsingPOST**](docs/Api/ContactApi.md#unlinkcontactsusingpost) | **POST** /v2/contacts:unlink | Delete Link between two Contacts
 *ContactApi* | [**updateContactUsingPATCH**](docs/Api/ContactApi.md#updatecontactusingpatch) | **PATCH** /v2/contacts/{contact_id} | Update a Contact
 *DealsApi* | [**createNote**](docs/Api/DealsApi.md#createnote) | **POST** /v2/deals/{id}/notes | Creates a new note for a specific deal.
-*DealsApi* | [**deleteNote**](docs/Api/DealsApi.md#deletenote) | **DELETE** /v2/deals/-/notes/{note_id} | Deletes a specific deal note by its ID.
+*DealsApi* | [**delete**](docs/Api/DealsApi.md#delete) | **DELETE** /v2/deals/-/notes/{note_id} | Deletes a specific deal note by its ID.
 *DealsApi* | [**getNote**](docs/Api/DealsApi.md#getnote) | **GET** /v2/deals/-/notes/{note_id} | Retrieves a specific deal note by its ID.
 *DealsApi* | [**listNotes**](docs/Api/DealsApi.md#listnotes) | **GET** /v2/deals/{id}/notes | Lists all notes associated with a specific deal.
-*DealsApi* | [**updateNote**](docs/Api/DealsApi.md#updatenote) | **PATCH** /v2/deals/-/notes/{note_id} | Updates a specific deal note by its ID.
+*DealsApi* | [**update**](docs/Api/DealsApi.md#update) | **PATCH** /v2/deals/-/notes/{note_id} | Updates a specific deal note by its ID.
 *EmailApi* | [**createEmailUsingPOST1**](docs/Api/EmailApi.md#createemailusingpost1) | **POST** /v2/emails | Create an Email Record
 *EmailApi* | [**createEmailsUsingPOST1**](docs/Api/EmailApi.md#createemailsusingpost1) | **POST** /v2/emails:batchAdd | Create a set of Email Records
 *EmailApi* | [**deleteEmailUsingDELETE1**](docs/Api/EmailApi.md#deleteemailusingdelete1) | **DELETE** /v2/emails/{id} | Delete an Email Record
@@ -129,13 +129,13 @@ Class | Method | HTTP request | Description
 *PaymentMethodConfigsApi* | [**createPaymentMethodConfigUsingPOST**](docs/Api/PaymentMethodConfigsApi.md#createpaymentmethodconfigusingpost) | **POST** /v2/paymentMethodConfigs | Create Payment Method Configuration
 *PipelinesApi* | [**callList**](docs/Api/PipelinesApi.md#calllist) | **GET** /v2/pipelines | Lists entities based on the provided ListCommand.
 *PipelinesApi* | [**create**](docs/Api/PipelinesApi.md#create) | **POST** /v2/pipelines | Creates a new entity.
-*PipelinesApi* | [**delete**](docs/Api/PipelinesApi.md#delete) | **DELETE** /v2/pipelines/{id} | Deletes a pipeline.
+*PipelinesApi* | [**delete1**](docs/Api/PipelinesApi.md#delete1) | **DELETE** /v2/pipelines/{id} | Deletes a pipeline.
 *PipelinesApi* | [**get**](docs/Api/PipelinesApi.md#get) | **GET** /v2/pipelines/{id} | Retrieves an entity by its identifier.
 *PipelinesApi* | [**getOutcomeLabels**](docs/Api/PipelinesApi.md#getoutcomelabels) | **GET** /v2/pipelines/{id}/outcomes | Gets the outcome labels for a pipeline.
 *PipelinesApi* | [**listStages**](docs/Api/PipelinesApi.md#liststages) | **GET** /v2/pipelines/{id}/stages | Retrieves a list of stages for a specific pipeline.
 *PipelinesApi* | [**listSummaries**](docs/Api/PipelinesApi.md#listsummaries) | **GET** /v2/pipelines/summaries | Retrieves a list of pipeline summaries.
 *PipelinesApi* | [**setOutcomeLabels**](docs/Api/PipelinesApi.md#setoutcomelabels) | **PATCH** /v2/pipelines/{id}/outcomes | Sets the outcome labels for a pipeline.
-*PipelinesApi* | [**update**](docs/Api/PipelinesApi.md#update) | **PATCH** /v2/pipelines/{id} | Updates an existing entity.
+*PipelinesApi* | [**update1**](docs/Api/PipelinesApi.md#update1) | **PATCH** /v2/pipelines/{id} | Updates an existing entity.
 *ReportingApi* | [**listReportsUsingGET**](docs/Api/ReportingApi.md#listreportsusingget) | **GET** /v2/reporting/reports | List Reports
 *ReportingApi* | [**runReportUsingPOST**](docs/Api/ReportingApi.md#runreportusingpost) | **POST** /v2/reporting/reports/{report_id}:run | Run a Report
 *SalesApi* | [**setMerchantGatewayAsDefaultUsingPOST**](docs/Api/SalesApi.md#setmerchantgatewayasdefaultusingpost) | **POST** /v2/sales/merchants/{id}:setDefault | Set default Merchant Account
@@ -143,11 +143,11 @@ Class | Method | HTTP request | Description
 *SettingsApi* | [**getContactOptionTypesUsingGET1**](docs/Api/SettingsApi.md#getcontactoptiontypesusingget1) | **GET** /v2/settings/contactOptionTypes | Get Contact Option types
 *SettingsApi* | [**isApplicationEnabledUsingGET**](docs/Api/SettingsApi.md#isapplicationenabledusingget) | **GET** /v2/settings/applications:isEnabled | Get Application Status
 *StagesApi* | [**create1**](docs/Api/StagesApi.md#create1) | **POST** /v2/stages | Creates a new entity.
-*StagesApi* | [**delete1**](docs/Api/StagesApi.md#delete1) | **DELETE** /v2/stages/{id} | Deletes a stage by its identifier for a given tenant.
+*StagesApi* | [**delete2**](docs/Api/StagesApi.md#delete2) | **DELETE** /v2/stages/{id} | Deletes a stage by its identifier for a given tenant.
 *StagesApi* | [**get1**](docs/Api/StagesApi.md#get1) | **GET** /v2/stages/{id} | Retrieves an entity by its identifier.
 *StagesApi* | [**list1**](docs/Api/StagesApi.md#list1) | **GET** /v2/stages | Lists entities based on the provided ListCommand.
 *StagesApi* | [**listStages1**](docs/Api/StagesApi.md#liststages1) | **GET** /v2/stages/{id}/deals | Retrieves a list of deals for a specific stage.
-*StagesApi* | [**update1**](docs/Api/StagesApi.md#update1) | **PATCH** /v2/stages/{id} | Updates an existing entity.
+*StagesApi* | [**update2**](docs/Api/StagesApi.md#update2) | **PATCH** /v2/stages/{id} | Updates an existing entity.
 *SubscriptionsApi* | [**createSubscriptionV2UsingPOST**](docs/Api/SubscriptionsApi.md#createsubscriptionv2usingpost) | **POST** /v2/subscriptions | Create Subscription
 *TagsApi* | [**applyTagsUsingPOST**](docs/Api/TagsApi.md#applytagsusingpost) | **POST** /v2/tags/{tag_id}/contacts:applyTags | Apply Tag
 *TagsApi* | [**createTagCategoryUsingPOST1**](docs/Api/TagsApi.md#createtagcategoryusingpost1) | **POST** /v2/tags/categories | Create Tag Category
@@ -535,6 +535,6 @@ api@keap.com
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
 - API version: `2.70.0.790985`
-    - Package version: `0.0.32`
+    - Package version: `0.0.33`
     - Generator version: `7.10.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

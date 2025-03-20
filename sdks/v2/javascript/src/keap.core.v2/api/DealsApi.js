@@ -38,6 +38,54 @@ export default class DealsApi {
 
 
     /**
+     * Deletes a specific deal note by its ID.
+     * Deletes a specific deal note by its ID.
+     * @param {String} noteId the ID of the note to delete
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+    callDeleteWithHttpInfo(noteId) {
+      let postBody = null;
+      // verify the required parameter 'noteId' is set
+      if (noteId === undefined || noteId === null) {
+        throw new Error("Missing the required parameter 'noteId' when calling callDelete");
+      }
+
+      let pathParams = {
+        'note_id': noteId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = [];
+      let contentTypes = [];
+      let accepts = [];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/v2/deals/-/notes/{note_id}', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Deletes a specific deal note by its ID.
+     * Deletes a specific deal note by its ID.
+     * @param {String} noteId the ID of the note to delete
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+    callDelete(noteId) {
+      return this.callDeleteWithHttpInfo(noteId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Creates a new note for a specific deal.
      * Creates a new note for a specific deal.
      * @param {String} id the deal ID to associate the new note with
@@ -85,54 +133,6 @@ export default class DealsApi {
      */
     createNote(id, createDealNoteRequest) {
       return this.createNoteWithHttpInfo(id, createDealNoteRequest)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * Deletes a specific deal note by its ID.
-     * Deletes a specific deal note by its ID.
-     * @param {String} noteId the ID of the note to delete
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
-     */
-    deleteNoteWithHttpInfo(noteId) {
-      let postBody = null;
-      // verify the required parameter 'noteId' is set
-      if (noteId === undefined || noteId === null) {
-        throw new Error("Missing the required parameter 'noteId' when calling deleteNote");
-      }
-
-      let pathParams = {
-        'note_id': noteId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = [];
-      let contentTypes = [];
-      let accepts = [];
-      let returnType = null;
-      return this.apiClient.callApi(
-        '/v2/deals/-/notes/{note_id}', 'DELETE',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null
-      );
-    }
-
-    /**
-     * Deletes a specific deal note by its ID.
-     * Deletes a specific deal note by its ID.
-     * @param {String} noteId the ID of the note to delete
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
-     */
-    deleteNote(noteId) {
-      return this.deleteNoteWithHttpInfo(noteId)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -257,15 +257,15 @@ export default class DealsApi {
      * @param {module:keap.core.v2/model/UpdateDealNoteRequest} updateDealNoteRequest the request body containing updated note details
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/DealNote} and HTTP response
      */
-    updateNoteWithHttpInfo(noteId, updateDealNoteRequest) {
+    updateWithHttpInfo(noteId, updateDealNoteRequest) {
       let postBody = updateDealNoteRequest;
       // verify the required parameter 'noteId' is set
       if (noteId === undefined || noteId === null) {
-        throw new Error("Missing the required parameter 'noteId' when calling updateNote");
+        throw new Error("Missing the required parameter 'noteId' when calling update");
       }
       // verify the required parameter 'updateDealNoteRequest' is set
       if (updateDealNoteRequest === undefined || updateDealNoteRequest === null) {
-        throw new Error("Missing the required parameter 'updateDealNoteRequest' when calling updateNote");
+        throw new Error("Missing the required parameter 'updateDealNoteRequest' when calling update");
       }
 
       let pathParams = {
@@ -296,8 +296,8 @@ export default class DealsApi {
      * @param {module:keap.core.v2/model/UpdateDealNoteRequest} updateDealNoteRequest the request body containing updated note details
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/DealNote}
      */
-    updateNote(noteId, updateDealNoteRequest) {
-      return this.updateNoteWithHttpInfo(noteId, updateDealNoteRequest)
+    update(noteId, updateDealNoteRequest) {
+      return this.updateWithHttpInfo(noteId, updateDealNoteRequest)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

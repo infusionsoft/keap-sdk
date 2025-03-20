@@ -5,14 +5,14 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
 | [**Create**](PipelinesApi.md#create) | **POST** /v2/pipelines | Creates a new entity. |
-| [**Delete**](PipelinesApi.md#delete) | **DELETE** /v2/pipelines/{id} | Deletes a pipeline. |
+| [**Delete1**](PipelinesApi.md#delete1) | **DELETE** /v2/pipelines/{id} | Deletes a pipeline. |
 | [**Get**](PipelinesApi.md#get) | **GET** /v2/pipelines/{id} | Retrieves an entity by its identifier. |
 | [**GetOutcomeLabels**](PipelinesApi.md#getoutcomelabels) | **GET** /v2/pipelines/{id}/outcomes | Gets the outcome labels for a pipeline. |
 | [**List**](PipelinesApi.md#list) | **GET** /v2/pipelines | Lists entities based on the provided ListCommand. |
 | [**ListStages**](PipelinesApi.md#liststages) | **GET** /v2/pipelines/{id}/stages | Retrieves a list of stages for a specific pipeline. |
 | [**ListSummaries**](PipelinesApi.md#listsummaries) | **GET** /v2/pipelines/summaries | Retrieves a list of pipeline summaries. |
 | [**SetOutcomeLabels**](PipelinesApi.md#setoutcomelabels) | **PATCH** /v2/pipelines/{id}/outcomes | Sets the outcome labels for a pipeline. |
-| [**Update**](PipelinesApi.md#update) | **PATCH** /v2/pipelines/{id} | Updates an existing entity. |
+| [**Update1**](PipelinesApi.md#update1) | **PATCH** /v2/pipelines/{id} | Updates an existing entity. |
 
 <a id="create"></a>
 # **Create**
@@ -105,9 +105,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="delete"></a>
-# **Delete**
-> void Delete (string id, bool? allowCleanup = null, string? newStageId = null)
+<a id="delete1"></a>
+# **Delete1**
+> void Delete1 (string id, bool? allowCleanup = null, string? newStageId = null)
 
 Deletes a pipeline.
 
@@ -123,7 +123,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class DeleteExample
+    public class Delete1Example
     {
         public static void Main()
         {
@@ -137,11 +137,11 @@ namespace Example
             try
             {
                 // Deletes a pipeline.
-                apiInstance.Delete(id, allowCleanup, newStageId);
+                apiInstance.Delete1(id, allowCleanup, newStageId);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling PipelinesApi.Delete: " + e.Message);
+                Debug.Print("Exception when calling PipelinesApi.Delete1: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -150,18 +150,18 @@ namespace Example
 }
 ```
 
-#### Using the DeleteWithHttpInfo variant
+#### Using the Delete1WithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Deletes a pipeline.
-    apiInstance.DeleteWithHttpInfo(id, allowCleanup, newStageId);
+    apiInstance.Delete1WithHttpInfo(id, allowCleanup, newStageId);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling PipelinesApi.DeleteWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling PipelinesApi.Delete1WithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -772,9 +772,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="update"></a>
-# **Update**
-> Pipeline Update (string id, List<string> updateMask, UpdatePipelineRequest updatePipelineRequest)
+<a id="update1"></a>
+# **Update1**
+> Pipeline Update1 (string id, List<string> updateMask, UpdatePipelineRequest updatePipelineRequest)
 
 Updates an existing entity.
 
@@ -790,7 +790,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class UpdateExample
+    public class Update1Example
     {
         public static void Main()
         {
@@ -804,12 +804,12 @@ namespace Example
             try
             {
                 // Updates an existing entity.
-                Pipeline result = apiInstance.Update(id, updateMask, updatePipelineRequest);
+                Pipeline result = apiInstance.Update1(id, updateMask, updatePipelineRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling PipelinesApi.Update: " + e.Message);
+                Debug.Print("Exception when calling PipelinesApi.Update1: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -818,21 +818,21 @@ namespace Example
 }
 ```
 
-#### Using the UpdateWithHttpInfo variant
+#### Using the Update1WithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Updates an existing entity.
-    ApiResponse<Pipeline> response = apiInstance.UpdateWithHttpInfo(id, updateMask, updatePipelineRequest);
+    ApiResponse<Pipeline> response = apiInstance.Update1WithHttpInfo(id, updateMask, updatePipelineRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling PipelinesApi.UpdateWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling PipelinesApi.Update1WithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -863,7 +863,7 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | The updated entity |  -  |
+| **200** | The update_1d entity |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

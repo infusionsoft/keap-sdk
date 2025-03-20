@@ -1281,6 +1281,26 @@ export class PromiseDealsApi {
     }
 
     /**
+     * Deletes a specific deal note by its ID.
+     * Deletes a specific deal note by its ID.
+     * @param noteId the ID of the note to delete
+     */
+    public _deleteWithHttpInfo(noteId: string, _options?: Configuration): Promise<HttpInfo<void>> {
+        const result = this.api._deleteWithHttpInfo(noteId, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a specific deal note by its ID.
+     * Deletes a specific deal note by its ID.
+     * @param noteId the ID of the note to delete
+     */
+    public _delete(noteId: string, _options?: Configuration): Promise<void> {
+        const result = this.api._delete(noteId, _options);
+        return result.toPromise();
+    }
+
+    /**
      * Creates a new note for a specific deal.
      * Creates a new note for a specific deal.
      * @param id the deal ID to associate the new note with
@@ -1299,26 +1319,6 @@ export class PromiseDealsApi {
      */
     public createNote(id: string, createDealNoteRequest: CreateDealNoteRequest, _options?: Configuration): Promise<DealNote> {
         const result = this.api.createNote(id, createDealNoteRequest, _options);
-        return result.toPromise();
-    }
-
-    /**
-     * Deletes a specific deal note by its ID.
-     * Deletes a specific deal note by its ID.
-     * @param noteId the ID of the note to delete
-     */
-    public deleteNoteWithHttpInfo(noteId: string, _options?: Configuration): Promise<HttpInfo<void>> {
-        const result = this.api.deleteNoteWithHttpInfo(noteId, _options);
-        return result.toPromise();
-    }
-
-    /**
-     * Deletes a specific deal note by its ID.
-     * Deletes a specific deal note by its ID.
-     * @param noteId the ID of the note to delete
-     */
-    public deleteNote(noteId: string, _options?: Configuration): Promise<void> {
-        const result = this.api.deleteNote(noteId, _options);
         return result.toPromise();
     }
 
@@ -1376,8 +1376,8 @@ export class PromiseDealsApi {
      * @param noteId the ID of the note to update
      * @param updateDealNoteRequest the request body containing updated note details
      */
-    public updateNoteWithHttpInfo(noteId: string, updateDealNoteRequest: UpdateDealNoteRequest, _options?: Configuration): Promise<HttpInfo<DealNote>> {
-        const result = this.api.updateNoteWithHttpInfo(noteId, updateDealNoteRequest, _options);
+    public updateWithHttpInfo(noteId: string, updateDealNoteRequest: UpdateDealNoteRequest, _options?: Configuration): Promise<HttpInfo<DealNote>> {
+        const result = this.api.updateWithHttpInfo(noteId, updateDealNoteRequest, _options);
         return result.toPromise();
     }
 
@@ -1387,8 +1387,8 @@ export class PromiseDealsApi {
      * @param noteId the ID of the note to update
      * @param updateDealNoteRequest the request body containing updated note details
      */
-    public updateNote(noteId: string, updateDealNoteRequest: UpdateDealNoteRequest, _options?: Configuration): Promise<DealNote> {
-        const result = this.api.updateNote(noteId, updateDealNoteRequest, _options);
+    public update(noteId: string, updateDealNoteRequest: UpdateDealNoteRequest, _options?: Configuration): Promise<DealNote> {
+        const result = this.api.update(noteId, updateDealNoteRequest, _options);
         return result.toPromise();
     }
 
@@ -1790,30 +1790,6 @@ export class PromisePipelinesApi {
     }
 
     /**
-     * Deletes a pipeline.
-     * Deletes a pipeline.
-     * @param id the pipeline identifier
-     * @param [allowCleanup] flag indicating whether cleanup is allowed, can be null
-     * @param [newStageId] the new stage identifier, can be null
-     */
-    public _deleteWithHttpInfo(id: string, allowCleanup?: boolean, newStageId?: string, _options?: Configuration): Promise<HttpInfo<void>> {
-        const result = this.api._deleteWithHttpInfo(id, allowCleanup, newStageId, _options);
-        return result.toPromise();
-    }
-
-    /**
-     * Deletes a pipeline.
-     * Deletes a pipeline.
-     * @param id the pipeline identifier
-     * @param [allowCleanup] flag indicating whether cleanup is allowed, can be null
-     * @param [newStageId] the new stage identifier, can be null
-     */
-    public _delete(id: string, allowCleanup?: boolean, newStageId?: string, _options?: Configuration): Promise<void> {
-        const result = this.api._delete(id, allowCleanup, newStageId, _options);
-        return result.toPromise();
-    }
-
-    /**
      * Creates a new entity.
      * Creates a new entity.
      * @param createPipelineRequest the create request
@@ -1830,6 +1806,30 @@ export class PromisePipelinesApi {
      */
     public create(createPipelineRequest: CreatePipelineRequest, _options?: Configuration): Promise<Pipeline> {
         const result = this.api.create(createPipelineRequest, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a pipeline.
+     * Deletes a pipeline.
+     * @param id the pipeline identifier
+     * @param [allowCleanup] flag indicating whether cleanup is allowed, can be null
+     * @param [newStageId] the new stage identifier, can be null
+     */
+    public delete1WithHttpInfo(id: string, allowCleanup?: boolean, newStageId?: string, _options?: Configuration): Promise<HttpInfo<void>> {
+        const result = this.api.delete1WithHttpInfo(id, allowCleanup, newStageId, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a pipeline.
+     * Deletes a pipeline.
+     * @param id the pipeline identifier
+     * @param [allowCleanup] flag indicating whether cleanup is allowed, can be null
+     * @param [newStageId] the new stage identifier, can be null
+     */
+    public delete1(id: string, allowCleanup?: boolean, newStageId?: string, _options?: Configuration): Promise<void> {
+        const result = this.api.delete1(id, allowCleanup, newStageId, _options);
         return result.toPromise();
     }
 
@@ -1990,8 +1990,8 @@ export class PromisePipelinesApi {
      * @param updateMask the fields to update
      * @param updatePipelineRequest the update request
      */
-    public updateWithHttpInfo(id: string, updateMask: Array<string>, updatePipelineRequest: UpdatePipelineRequest, _options?: Configuration): Promise<HttpInfo<Pipeline>> {
-        const result = this.api.updateWithHttpInfo(id, updateMask, updatePipelineRequest, _options);
+    public update1WithHttpInfo(id: string, updateMask: Array<string>, updatePipelineRequest: UpdatePipelineRequest, _options?: Configuration): Promise<HttpInfo<Pipeline>> {
+        const result = this.api.update1WithHttpInfo(id, updateMask, updatePipelineRequest, _options);
         return result.toPromise();
     }
 
@@ -2002,8 +2002,8 @@ export class PromisePipelinesApi {
      * @param updateMask the fields to update
      * @param updatePipelineRequest the update request
      */
-    public update(id: string, updateMask: Array<string>, updatePipelineRequest: UpdatePipelineRequest, _options?: Configuration): Promise<Pipeline> {
-        const result = this.api.update(id, updateMask, updatePipelineRequest, _options);
+    public update1(id: string, updateMask: Array<string>, updatePipelineRequest: UpdatePipelineRequest, _options?: Configuration): Promise<Pipeline> {
+        const result = this.api.update1(id, updateMask, updatePipelineRequest, _options);
         return result.toPromise();
     }
 
@@ -2239,8 +2239,8 @@ export class PromiseStagesApi {
      * @param id the stage identifier
      * @param [newStageId] the new stage identifier, can be null
      */
-    public delete1WithHttpInfo(id: string, newStageId?: string, _options?: Configuration): Promise<HttpInfo<void>> {
-        const result = this.api.delete1WithHttpInfo(id, newStageId, _options);
+    public delete2WithHttpInfo(id: string, newStageId?: string, _options?: Configuration): Promise<HttpInfo<void>> {
+        const result = this.api.delete2WithHttpInfo(id, newStageId, _options);
         return result.toPromise();
     }
 
@@ -2250,8 +2250,8 @@ export class PromiseStagesApi {
      * @param id the stage identifier
      * @param [newStageId] the new stage identifier, can be null
      */
-    public delete1(id: string, newStageId?: string, _options?: Configuration): Promise<void> {
-        const result = this.api.delete1(id, newStageId, _options);
+    public delete2(id: string, newStageId?: string, _options?: Configuration): Promise<void> {
+        const result = this.api.delete2(id, newStageId, _options);
         return result.toPromise();
     }
 
@@ -2336,8 +2336,8 @@ export class PromiseStagesApi {
      * @param updateMask the fields to update
      * @param updateStageRequest the update request
      */
-    public update1WithHttpInfo(id: string, updateMask: Array<string>, updateStageRequest: UpdateStageRequest, _options?: Configuration): Promise<HttpInfo<Stage>> {
-        const result = this.api.update1WithHttpInfo(id, updateMask, updateStageRequest, _options);
+    public update2WithHttpInfo(id: string, updateMask: Array<string>, updateStageRequest: UpdateStageRequest, _options?: Configuration): Promise<HttpInfo<Stage>> {
+        const result = this.api.update2WithHttpInfo(id, updateMask, updateStageRequest, _options);
         return result.toPromise();
     }
 
@@ -2348,8 +2348,8 @@ export class PromiseStagesApi {
      * @param updateMask the fields to update
      * @param updateStageRequest the update request
      */
-    public update1(id: string, updateMask: Array<string>, updateStageRequest: UpdateStageRequest, _options?: Configuration): Promise<Stage> {
-        const result = this.api.update1(id, updateMask, updateStageRequest, _options);
+    public update2(id: string, updateMask: Array<string>, updateStageRequest: UpdateStageRequest, _options?: Configuration): Promise<Stage> {
+        const result = this.api.update2(id, updateMask, updateStageRequest, _options);
         return result.toPromise();
     }
 
