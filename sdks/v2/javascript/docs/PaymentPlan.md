@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **autoCharge** | **Boolean** |  | [optional] 
-**creditCardId** | **String** |  | [optional] 
 **daysBetweenPayments** | **Number** |  | 
-**initialPaymentAmount** | **Number** |  | [optional] 
+**daysBetweenRetries** | **Number** |  | [optional] 
+**initialPaymentAmount** | [**CurrencyValue**](CurrencyValue.md) |  | [optional] 
 **initialPaymentDate** | **String** |  | [optional] 
 **initialPaymentPercent** | **Number** |  | [optional] 
+**maxChargeAttempts** | **Number** |  | [optional] 
 **numberOfPayments** | **Number** |  | 
-**paymentGateway** | [**RestPaymentGateway**](RestPaymentGateway.md) |  | [optional] 
 **paymentMethodId** | **String** |  | [optional] 
 **planStartDate** | **String** |  | 
 

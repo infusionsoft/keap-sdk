@@ -6,13 +6,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **auto_charge** | **bool** |  | [optional] 
-**credit_card_id** | **str** |  | [optional] 
 **days_between_payments** | **int** |  | 
-**initial_payment_amount** | **float** |  | [optional] 
+**days_between_retries** | **int** |  | [optional] 
+**initial_payment_amount** | [**CurrencyValue**](CurrencyValue.md) |  | [optional] 
 **initial_payment_date** | **str** |  | [optional] 
 **initial_payment_percent** | **float** |  | [optional] 
+**max_charge_attempts** | **int** |  | [optional] 
 **number_of_payments** | **int** |  | 
-**payment_gateway** | [**RestPaymentGateway**](RestPaymentGateway.md) |  | [optional] 
 **payment_method_id** | **str** |  | [optional] 
 **plan_start_date** | **str** |  | 
 

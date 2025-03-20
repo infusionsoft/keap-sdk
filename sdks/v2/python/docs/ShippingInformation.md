@@ -5,13 +5,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**addresses** | [**List[Address]**](Address.md) |  | [optional] 
-**company** | [**BasicCompany**](BasicCompany.md) |  | [optional] 
+**address** | [**Address**](Address.md) |  | [optional] 
+**company** | **str** |  | [optional] 
 **family_name** | **str** |  | [optional] 
 **given_name** | **str** |  | [optional] 
 **id** | **str** |  | [optional] 
 **invoice_to_company** | **bool** |  | [optional] 
-**phone_numbers** | [**List[PhoneNumber]**](PhoneNumber.md) |  | [optional] 
+**phone_number** | **str** |  | [optional] 
 
 ## Example
 

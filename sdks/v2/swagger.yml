@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   description: Keap REST Core Service
-  version: 2.70.0.789938-hf-202503111611
+  version: 2.70.0.790985
   title: Keap REST API
   termsOfService: https://keap.com/legal
   contact:
@@ -22,7 +22,7 @@ tags:
   description: Rest Business Profile Controller
 - name: Campaign
   description: Rest Campaign Controller
-- name: Category Discount
+- name: Category Discounts
   description: Rest Category Discount Controller
 - name: Company
   description: Rest Company Controller
@@ -34,7 +34,7 @@ tags:
   description: Rest Api Email Address Controller
 - name: Files
   description: Rest File Controller
-- name: Free Trial Discount
+- name: Free Trial Discounts
   description: Rest Free Trial Discount Controller
 - name: FunnelIntegration
   description: Rest Funnel Integration Endpoint
@@ -52,28 +52,28 @@ tags:
   description: Rest Contact Lead Score Controller
 - name: Locale
   description: Rest Locale Controller
-- name: Merchant
+- name: Merchants
   description: Rest Merchant Controller
 - name: Note
   description: Rest Note Controller
 - name: Opportunity
   description: Rest Opportunity Controller
-- name: Order Total Discount
+- name: Order Total Discounts
   description: Rest Order Total Discount Controller
 - name: Orders
   description: Rest Order Controller
+- name: Payment Method Configs
+  description: Rest Payment Method Config Controller
 - name: Payment Methods
   description: Rest Payment Method Controller
-- name: PaymentMethodConfig
-  description: Rest Payment Method Config Controller
-- name: Product
-  description: Rest Product Controller
 - name: Product Categories
   description: Rest Product Category Controller
-- name: Product Discount
+- name: Product Discounts
   description: Rest Product Discount Controller
-- name: ProductInterestBundle
+- name: Product Interest Bundles
   description: Rest Product Interest Bundle Controller
+- name: Products
+  description: Rest Product Controller
 - name: Referral
   description: Rest Referral Controller
 - name: Reporting
@@ -84,7 +84,7 @@ tags:
   description: Rest Setting Controller
 - name: Shipping
   description: Rest Shipping Methods Controller
-- name: Shipping Discount
+- name: Shipping Discounts
   description: Rest Shipping Discount Controller
 - name: Subscription Plans
   description: Rest Subscription Plan Controller
@@ -2164,7 +2164,7 @@ paths:
       - Deals
       summary: Deletes a specific deal note by its ID.
       description: Deletes a specific deal note by its ID.
-      operationId: delete
+      operationId: deleteNote
       parameters:
       - name: note_id
         in: path
@@ -2180,7 +2180,7 @@ paths:
       - Deals
       summary: Updates a specific deal note by its ID.
       description: Updates a specific deal note by its ID.
-      operationId: update
+      operationId: updateNote
       parameters:
       - name: note_id
         in: path
@@ -2593,7 +2593,7 @@ paths:
   /v2/paymentMethodConfigs:
     post:
       tags:
-      - PaymentMethodConfig
+      - Payment Method Configs
       summary: Create Payment Method Configuration
       description: Creates configuration details for rendering payment method components
       operationId: createPaymentMethodConfigUsingPOST
@@ -2773,7 +2773,7 @@ paths:
       - Pipelines
       summary: Deletes a pipeline.
       description: Deletes a pipeline.
-      operationId: delete_1
+      operationId: delete
       parameters:
       - name: id
         in: path
@@ -2804,7 +2804,7 @@ paths:
       - Pipelines
       summary: Updates an existing entity.
       description: Updates an existing entity.
-      operationId: update_1
+      operationId: update
       parameters:
       - name: id
         in: path
@@ -2829,7 +2829,7 @@ paths:
         required: true
       responses:
         '200':
-          description: The update_1d entity
+          description: The updated entity
           content:
             application/json:
               schema:
@@ -2976,6 +2976,89 @@ paths:
       security:
       - BearerAuth: [
           ]
+  /v2/reporting/reports:
+    get:
+      tags:
+      - Reporting
+      summary: List Reports
+      description: Retrieves a list of Reports as defined in the application (identified
+        as Saved Search)<br/><span style='color:red'>Deprecated as of v2</span>
+      operationId: listReportsUsingGET
+      parameters:
+      - name: filter
+        in: query
+        description: |
+          Filter to apply, allowed fields are:
+          - (String) `name`
+          - (DateTime) `since_created_time`
+          - (DateTime) `until_created_time`
+
+          You will need to apply the `==` operator to check the equality of one of the filters with your searched
+           word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:
+          - `filter=given_name%3D%3DMary`
+          - `filter=company_id%3D%3D123`
+          - `filter=company_id%3D%3D123%3Bfamily_name%3D%3DSmith`
+        required: false
+        schema:
+          type: string
+      - name: order_by
+        in: query
+        description: |-
+          Attribute and direction to order items.
+          One of the following fields:
+          - `name`
+          - `created_time`
+
+          One of the following directions:
+          - `asc`
+          - `desc`
+        required: false
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: Total number of items to return per page
+        required: false
+        example: 0
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 1000
+          exclusiveMinimum: false
+          exclusiveMaximum: false
+      - name: page_token
+        in: query
+        description: Page token
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListReportsResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
   /v2/reporting/reports/{report_id}:run:
     post:
       tags:
@@ -3311,7 +3394,7 @@ paths:
       - Stages
       summary: Deletes a stage by its identifier for a given tenant.
       description: Deletes a stage by its identifier for a given tenant.
-      operationId: delete_2
+      operationId: delete_1
       parameters:
       - name: id
         in: path
@@ -3336,7 +3419,7 @@ paths:
       - Stages
       summary: Updates an existing entity.
       description: Updates an existing entity.
-      operationId: update_2
+      operationId: update_1
       parameters:
       - name: id
         in: path
@@ -3361,7 +3444,7 @@ paths:
         required: true
       responses:
         '200':
-          description: The update_2d entity
+          description: The update_1d entity
           content:
             application/json:
               schema:
@@ -5523,6 +5606,30 @@ components:
           items:
             $ref: '#/components/schemas/CreateEmailSentRequest'
       title: CreateEmailsSentRequest
+    CreateFreeTrialDiscountRequest:
+      type: object
+      required:
+      - name
+      - subscription_plan_id
+      properties:
+        criteria:
+          type: array
+          items:
+            $ref: '#/components/schemas/DiscountCriteria'
+        description:
+          type: string
+        free_trial_days:
+          type: integer
+          format: int32
+          description: The number of free trial days. Must be a positive number. Defaults
+            to 0.
+        hide_price:
+          type: boolean
+        name:
+          type: string
+        subscription_plan_id:
+          type: string
+      title: CreateFreeTrialDiscountRequest
     CreateFunnelIntegrationRequest:
       type: object
       properties:
@@ -5567,12 +5674,19 @@ components:
       properties:
         amount:
           type: string
+          description: The monthly cost of this lead source recurring expense. The
+            value should be in the smallest unit of currency for your currency locale.
+            For example, if your currency locale is USD, then the smallest unit of
+            currency is in cents, $225.50 would be provided in the request as 22550
         incurred_time:
           type: string
+          description: The time that this lead source expense was incurred.
         notes:
           type: string
+          description: The notes for the lead source expense
         title:
           type: string
+          description: The title of the lead source expense
       title: CreateLeadSourceExpenseRequest
     CreateLeadSourceRecurringExpenseRequest:
       type: object
@@ -5962,6 +6076,28 @@ components:
       properties:
         description:
           type: string
+        item_type:
+          type: string
+          description: The type of this line item. For now only [PRODUCT] is supported.
+            Will default to [PRODUCT] if omitted.
+          enum:
+          - UNKNOWN
+          - SHIPPING
+          - TAX
+          - SERVICE
+          - PRODUCT
+          - UPSELL
+          - FINANCE_CHARGE
+          - DISCOUNT
+          - PROGRAM
+          - SUBSCRIPTION
+          - DISCOUNT_FREE_TRIAL
+          - DISCOUNT_ORDER_TOTAL
+          - DISCOUNT_PRODUCT
+          - DISCOUNT_PRODUCT_CATEGORY
+          - DISCOUNT_SHIPPING
+          - TIP
+          - OTHER
         price:
           type: number
           format: double
@@ -5970,11 +6106,6 @@ components:
         product_id:
           type: string
           description: The id of the product to be added to the order.
-        product_type:
-          type: string
-          enum:
-          - PRODUCT
-          - DIGITAL
         quantity:
           type: integer
           format: int32
@@ -7048,6 +7179,27 @@ components:
         file_id:
           type: string
       title: FileOperationRequest
+    FreeTrialDiscount:
+      type: object
+      properties:
+        criteria:
+          type: array
+          items:
+            $ref: '#/components/schemas/DiscountCriteria'
+        description:
+          type: string
+        discount_id:
+          type: string
+        free_trial_days:
+          type: integer
+          format: int32
+        hide_price:
+          type: boolean
+        name:
+          type: string
+        subscription_plan_id:
+          type: string
+      title: FreeTrialDiscount
     FunnelIntegrationAction:
       type: object
       properties:
@@ -7374,6 +7526,12 @@ components:
     InputStream:
       type: object
       title: InputStream
+    InvoiceFile:
+      type: object
+      properties:
+        file_id:
+          type: string
+      title: InvoiceFile
     InvoiceOrderPayment:
       type: object
       properties:
@@ -7818,6 +7976,16 @@ components:
         next_page_token:
           type: string
       title: ListFilesResponse
+    ListFreeTrialDiscountsResponse:
+      type: object
+      properties:
+        free_trial_discounts:
+          type: array
+          items:
+            $ref: '#/components/schemas/FreeTrialDiscount'
+        next_page_token:
+          type: string
+      title: ListFreeTrialDiscountsResponse
     ListLandingPagesResponse:
       type: object
       properties:
@@ -7995,6 +8163,16 @@ components:
           items:
             $ref: '#/components/schemas/Provinces'
       title: ListProvincesResponse
+    ListReportsResponse:
+      type: object
+      properties:
+        next_page_token:
+          type: string
+        reports:
+          type: array
+          items:
+            $ref: '#/components/schemas/Report'
+      title: ListReportsResponse
     ListRestMerchantAccountResponse:
       type: object
       properties:
@@ -8010,7 +8188,7 @@ components:
           - PAYPAL
           - UNSUPPORTED
           - AUTHORIZE
-          - E_WAY
+          - EWAY
           - WEPAY
           - STRIPE
           - KEAP_PAY
@@ -8117,6 +8295,16 @@ components:
           items:
             $ref: '#/components/schemas/Task'
       title: ListTasksResponse
+    ListTransactionsResponse:
+      type: object
+      properties:
+        next_page_token:
+          type: string
+        transactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Transaction'
+      title: ListTransactionsResponse
     ListUserResponse:
       type: object
       properties:
@@ -8249,6 +8437,8 @@ components:
     OrderItemProduct:
       type: object
       properties:
+        active:
+          type: boolean
         created_time:
           type: string
         description:
@@ -8272,11 +8462,6 @@ components:
           type: boolean
         sku:
           type: string
-        status:
-          type: string
-          enum:
-          - INACTIVE
-          - ACTIVE
         subscription_only:
           type: boolean
         subscription_plans:
@@ -8377,24 +8562,25 @@ components:
       properties:
         auto_charge:
           type: boolean
-        credit_card_id:
-          type: string
         days_between_payments:
           type: integer
           format: int64
+        days_between_retries:
+          type: integer
+          format: int64
         initial_payment_amount:
-          type: number
-          format: double
+          $ref: '#/components/schemas/CurrencyValue'
         initial_payment_date:
           type: string
         initial_payment_percent:
           type: number
           format: double
+        max_charge_attempts:
+          type: integer
+          format: int64
         number_of_payments:
           type: integer
           format: int64
-        payment_gateway:
-          $ref: '#/components/schemas/RestPaymentGateway'
         payment_method_id:
           type: string
         plan_start_date:
@@ -8805,6 +8991,24 @@ components:
           additionalProperties:
             type: string
       title: RemoveContactsFromSequenceResponse
+    Report:
+      type: object
+      properties:
+        created_time:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        updated_time:
+          type: string
+        user_ids:
+          type: array
+          description: A list of Users who have access to this Saved Search, or ALL_USERS
+            if visible to all
+          items:
+            type: string
+      title: Report
     ReportEntryRecord:
       type: object
       properties:
@@ -8882,6 +9086,32 @@ components:
           example: 123456
           description: The Affiliate PortalSite Id
       title: RestAffiliate
+    RestApplyCommissionRequest:
+      type: object
+      required:
+      - payout_type
+      - referral_partner_id
+      properties:
+        commission_amount:
+          type: number
+          format: double
+        commission_date:
+          type: string
+        description:
+          type: string
+        pay_percent:
+          type: number
+          format: double
+        payout_type:
+          type: string
+          description: The payout type
+          enum:
+          - UPFRONT
+          - PAYMENT_RECEIVED
+        referral_partner_id:
+          type: string
+          description: The referral partner id
+      title: RestApplyCommissionRequest
     RestCreateOrderRequest:
       type: object
       required:
@@ -8980,16 +9210,6 @@ components:
         updated_time:
           type: string
       title: RestOpportunityStage
-    RestPaymentGateway:
-      type: object
-      properties:
-        merchant_account_id:
-          type: string
-        merchant_account_name:
-          type: string
-        use_default:
-          type: boolean
-      title: RestPaymentGateway
     RestProductOption:
       type: object
       properties:
@@ -9080,8 +9300,7 @@ components:
           type: integer
           format: int32
         plan_price:
-          type: number
-          format: double
+          $ref: '#/components/schemas/CurrencyValue'
         subscription_plan_index:
           type: integer
           format: int32
@@ -9185,20 +9404,35 @@ components:
       properties:
         allow_payment:
           type: boolean
+          description: Whether or not card-related payments should be allowed on this
+            order. Applies only to Keap Pro/Max edition.
         allow_paypal:
           type: boolean
+          description: Whether or not PayPal payments should be allowed on this order.
+            Applies only to Keap Pro/Max edition.
         contact:
           $ref: '#/components/schemas/BasicContact'
         creation_time:
           type: string
+          description: When this order was originally created. In ISO-8601 format
+            (e.g. 2024-05-21T23:00:00Z)
+        files:
+          type: array
+          description: A list of attached files to this order. Applies only to Keap
+            Pro/Max edition.
+          items:
+            $ref: '#/components/schemas/InvoiceFile'
         id:
           type: string
         invoice_number:
           type: string
+          description: The associated invoice identifier. Applies only to Keap Pro/Max
+            edition. Feature not yet supported.
         lead_affiliate_id:
           type: string
         modification_time:
           type: string
+          description: When this order was changed. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
         notes:
           type: string
         order_items:
@@ -9207,105 +9441,65 @@ components:
             $ref: '#/components/schemas/RestV2OrderItem'
         order_time:
           type: string
+          description: A user-defined date and time of the order. In ISO-8601 format
+            (e.g. 2024-05-21T23:00:00Z)
         order_type:
           type: string
+          description: 'The order type. Valid values are: ONLINE, OFFLINE.'
+          enum:
+          - OFFLINE
+          - ONLINE
+          - UNKNOWN
         payment_plan:
           $ref: '#/components/schemas/PaymentPlan'
-        recurring:
-          type: boolean
         refund_total:
-          type: number
-          format: double
+          $ref: '#/components/schemas/CurrencyValue'
         sales_affiliate_id:
           type: string
         shipping_information:
           $ref: '#/components/schemas/ShippingInformation'
         source_type:
           type: string
+          description: 'The source where the order was created. Valid values include:
+            API, CHECKOUT_FORM, INVOICE, MANUAL_PAYMENT, QUICKBOOKS, UNKNOWN.'
           enum:
           - INVOICE
           - API
           - CHECKOUT_FORM
           - MANUAL_PAYMENT
+          - QUICKBOOKS
           - UNKNOWN
-          - QBO_SYNC
         status:
           type: string
+          description: 'The order status. Valid values are: DRAFT, SENT, VIEWED, PAID.'
+          enum:
+          - DRAFT
+          - PAID
+          - SENT
+          - VIEWED
         terms:
           type: string
         title:
           type: string
         total:
-          type: number
-          format: double
+          $ref: '#/components/schemas/CurrencyValue'
         total_due:
-          type: number
-          format: double
+          $ref: '#/components/schemas/CurrencyValue'
         total_paid:
-          type: number
-          format: double
+          $ref: '#/components/schemas/CurrencyValue'
       title: RestV2Order
     RestV2OrderItem:
       type: object
       properties:
-        billing_cycle:
-          type: integer
-          format: int32
         cost:
-          type: number
-          format: double
-        cycle:
-          type: string
-          example: YEARLY
-          description: The interval at which the customer is charged for the subscription.
-          enum:
-          - DAILY
-          - WEEKLY
-          - MONTHLY
-          - YEARLY
+          $ref: '#/components/schemas/CurrencyValue'
         description:
           type: string
         discount:
-          type: number
-          format: double
-        frequency:
-          type: integer
-          format: int32
-          example: 2
-          description: Interval at which a customer receives a product or service
-            as part of a subscription plan.
+          $ref: '#/components/schemas/CurrencyValue'
         id:
           type: string
-        name:
-          type: string
-        notes:
-          type: string
-        number_of_payments:
-          type: integer
-          format: int32
-        order_item_taxes:
-          type: array
-          items:
-            $ref: '#/components/schemas/OrderItemTax'
-        price:
-          type: number
-          format: double
-        product:
-          $ref: '#/components/schemas/OrderItemProduct'
-        quantity:
-          type: integer
-          format: int32
-        special:
-          $ref: '#/components/schemas/Discount'
-        subscription:
-          $ref: '#/components/schemas/RestV2Subscription'
-        subscription_based:
-          type: boolean
-        subscription_id:
-          type: string
-        subscription_plan:
-          $ref: '#/components/schemas/RestSubscriptionPlan'
-        type:
+        item_type:
           type: string
           enum:
           - UNKNOWN
@@ -9315,16 +9509,39 @@ components:
           - PRODUCT
           - UPSELL
           - FINANCE_CHARGE
-          - SPECIAL
+          - DISCOUNT
           - PROGRAM
           - SUBSCRIPTION
-          - SPECIAL_FREE_TRIAL_DAYS
-          - SPECIAL_ORDER_TOTAL
-          - SPECIAL_PRODUCT
-          - SPECIAL_CATEGORY
-          - SPECIAL_SHIPPING
+          - DISCOUNT_FREE_TRIAL
+          - DISCOUNT_ORDER_TOTAL
+          - DISCOUNT_PRODUCT
+          - DISCOUNT_PRODUCT_CATEGORY
+          - DISCOUNT_SHIPPING
           - TIP
           - OTHER
+        name:
+          type: string
+        notes:
+          type: string
+        order_item_taxes:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderItemTax'
+        price:
+          $ref: '#/components/schemas/CurrencyValue'
+        product:
+          $ref: '#/components/schemas/OrderItemProduct'
+        quantity:
+          type: integer
+          format: int32
+        special:
+          $ref: '#/components/schemas/Discount'
+        subscription:
+          $ref: '#/components/schemas/RestV2Subscription'
+        subscription_id:
+          type: string
+        subscription_plan:
+          $ref: '#/components/schemas/RestSubscriptionPlan'
       title: RestV2OrderItem
     RestV2Product:
       type: object
@@ -9490,12 +9707,10 @@ components:
     ShippingInformation:
       type: object
       properties:
-        addresses:
-          type: array
-          items:
-            $ref: '#/components/schemas/Address'
+        address:
+          $ref: '#/components/schemas/Address'
         company:
-          $ref: '#/components/schemas/BasicCompany'
+          type: string
         family_name:
           type: string
         given_name:
@@ -9504,10 +9719,8 @@ components:
           type: string
         invoice_to_company:
           type: boolean
-        phone_numbers:
-          type: array
-          items:
-            $ref: '#/components/schemas/PhoneNumber'
+        phone_number:
+          type: string
       title: ShippingInformation
     ShippingMethod:
       type: object
@@ -9805,16 +10018,21 @@ components:
           type: string
           description: Reference to the payment processor to where the transaction
             attempt was made.
-        payment_gateway_type:
-          type: string
-          description: 'The type of payment processor. Possible values are: PAYPAL,
-            STRIPE, KEAP_PAY, AUTHORIZE, EWAY, OTHER. For transactions that did got
-            go through a processor/gateway, value is MANUAL'
         payment_id:
           type: string
           example: 1
           description: Reference to the payment record that on successful transactions.
             No reference if the transaction failed.
+        payment_processor_type:
+          type: string
+          enum:
+          - PAYPAL
+          - UNSUPPORTED
+          - AUTHORIZE
+          - EWAY
+          - WEPAY
+          - STRIPE
+          - KEAP_PAY
         transaction_amount:
           $ref: '#/components/schemas/CurrencyValue'
         transaction_time:
@@ -10076,6 +10294,26 @@ components:
         reason:
           type: string
       title: UpdateEmailAddress
+    UpdateLeadSourceExpenseRequest:
+      type: object
+      properties:
+        amount:
+          type: integer
+          format: int64
+          description: The monthly cost of this lead source recurring expense. The
+            value should be in the smallest unit of currency for your currency locale.
+            For example, if your currency locale is USD, then the smallest unit of
+            currency is in cents, $225.50 would be provided in the request as 22550
+        incurred_time:
+          type: string
+          description: The time that this lead source expense was incurred.
+        notes:
+          type: string
+          description: The notes for the lead source expense
+        title:
+          type: string
+          description: The title of the lead source expense
+      title: UpdateLeadSourceExpenseRequest
     UpdateNoteRequest:
       type: object
       required:
@@ -10225,14 +10463,14 @@ components:
           - PRODUCT
           - UPSELL
           - FINANCE_CHARGE
-          - SPECIAL
+          - DISCOUNT
           - PROGRAM
           - SUBSCRIPTION
-          - SPECIAL_FREE_TRIAL_DAYS
-          - SPECIAL_ORDER_TOTAL
-          - SPECIAL_PRODUCT
-          - SPECIAL_CATEGORY
-          - SPECIAL_SHIPPING
+          - DISCOUNT_FREE_TRIAL
+          - DISCOUNT_ORDER_TOTAL
+          - DISCOUNT_PRODUCT
+          - DISCOUNT_PRODUCT_CATEGORY
+          - DISCOUNT_SHIPPING
           - TIP
           - OTHER
       title: UpdateOrderItemRequest
@@ -10247,6 +10485,7 @@ components:
           type: string
         order_time:
           type: string
+          description: ISO date-time of the transaction. e.g 2024-04-28 11:25:44
         order_title:
           type: string
         order_type:
@@ -10254,6 +10493,8 @@ components:
           enum:
           - OFFLINE
           - ONLINE
+        payment_plan:
+          $ref: '#/components/schemas/UpdatedPaymentPlan'
         promo_codes:
           type: array
           description: Uses multiple strings as promo codes. The corresponding discount
@@ -10689,6 +10930,35 @@ components:
         website:
           type: string
       title: UpdateUserRequest
+    UpdatedPaymentPlan:
+      type: object
+      properties:
+        auto_charge:
+          type: boolean
+        days_between_payments:
+          type: integer
+          format: int64
+        days_between_retries:
+          type: integer
+          format: int64
+        initial_payment_amount:
+          type: number
+          format: double
+        initial_payment_date:
+          type: string
+          description: ISO date of the initial payment in pay plan. e.g 2024-04-28
+        max_charge_attempts:
+          type: integer
+          format: int64
+        number_of_payments:
+          type: integer
+          format: int64
+        payment_method_id:
+          type: string
+        plan_start_date:
+          type: string
+          description: ISO date of the start of pay plan. e.g 2024-04-28
+      title: UpdatedPaymentPlan
     User:
       type: object
       properties:

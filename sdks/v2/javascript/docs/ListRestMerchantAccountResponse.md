@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 * `AUTHORIZE` (value: `"AUTHORIZE"`)
 
-* `E_WAY` (value: `"E_WAY"`)
+* `EWAY` (value: `"EWAY"`)
 
 * `WEPAY` (value: `"WEPAY"`)
 

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **frequency** | **int** | Interval at which a customer receives a product or service as part of a subscription plan. | [optional]
 **id** | **string** |  | [optional]
 **number_of_cycles** | **int** |  | [optional]
-**plan_price** | **float** |  | [optional]
+**plan_price** | [**\Keap\Core\V2\Model\CurrencyValue**](CurrencyValue.md) |  | [optional]
 **subscription_plan_index** | **int** | Subscription plan identifier. | [optional]
 **subscription_plan_name** | **string** |  | [optional]
 

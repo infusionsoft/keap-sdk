@@ -10,9 +10,10 @@
 |**contactId** | **String** |  |  [optional] |
 |**leadAffiliateId** | **String** |  |  [optional] |
 |**notes** | **String** |  |  [optional] |
-|**orderTime** | **String** |  |  [optional] |
+|**orderTime** | **String** | ISO date-time of the transaction. e.g 2024-04-28 11:25:44 |  [optional] |
 |**orderTitle** | **String** |  |  [optional] |
 |**orderType** | [**OrderTypeEnum**](#OrderTypeEnum) |  |  [optional] |
+|**paymentPlan** | [**UpdatedPaymentPlan**](UpdatedPaymentPlan.md) |  |  [optional] |
 |**promoCodes** | **List&lt;String&gt;** | Uses multiple strings as promo codes. The corresponding discount will be applied to the order. |  [optional] |
 |**salesAffiliateId** | **String** |  |  [optional] |
 |**shippingAddress** | [**AddressInformation**](AddressInformation.md) |  |  [optional] |

@@ -5,10 +5,10 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
 | [**CreateNote**](DealsApi.md#createnote) | **POST** /v2/deals/{id}/notes | Creates a new note for a specific deal. |
-| [**Delete**](DealsApi.md#delete) | **DELETE** /v2/deals/-/notes/{note_id} | Deletes a specific deal note by its ID. |
+| [**DeleteNote**](DealsApi.md#deletenote) | **DELETE** /v2/deals/-/notes/{note_id} | Deletes a specific deal note by its ID. |
 | [**GetNote**](DealsApi.md#getnote) | **GET** /v2/deals/-/notes/{note_id} | Retrieves a specific deal note by its ID. |
 | [**ListNotes**](DealsApi.md#listnotes) | **GET** /v2/deals/{id}/notes | Lists all notes associated with a specific deal. |
-| [**Update**](DealsApi.md#update) | **PATCH** /v2/deals/-/notes/{note_id} | Updates a specific deal note by its ID. |
+| [**UpdateNote**](DealsApi.md#updatenote) | **PATCH** /v2/deals/-/notes/{note_id} | Updates a specific deal note by its ID. |
 
 <a id="createnote"></a>
 # **CreateNote**
@@ -103,9 +103,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="delete"></a>
-# **Delete**
-> void Delete (string noteId)
+<a id="deletenote"></a>
+# **DeleteNote**
+> void DeleteNote (string noteId)
 
 Deletes a specific deal note by its ID.
 
@@ -121,7 +121,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class DeleteExample
+    public class DeleteNoteExample
     {
         public static void Main()
         {
@@ -133,11 +133,11 @@ namespace Example
             try
             {
                 // Deletes a specific deal note by its ID.
-                apiInstance.Delete(noteId);
+                apiInstance.DeleteNote(noteId);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling DealsApi.Delete: " + e.Message);
+                Debug.Print("Exception when calling DealsApi.DeleteNote: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -146,18 +146,18 @@ namespace Example
 }
 ```
 
-#### Using the DeleteWithHttpInfo variant
+#### Using the DeleteNoteWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Deletes a specific deal note by its ID.
-    apiInstance.DeleteWithHttpInfo(noteId);
+    apiInstance.DeleteNoteWithHttpInfo(noteId);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling DealsApi.DeleteWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling DealsApi.DeleteNoteWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -380,9 +380,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="update"></a>
-# **Update**
-> DealNote Update (string noteId, UpdateDealNoteRequest updateDealNoteRequest)
+<a id="updatenote"></a>
+# **UpdateNote**
+> DealNote UpdateNote (string noteId, UpdateDealNoteRequest updateDealNoteRequest)
 
 Updates a specific deal note by its ID.
 
@@ -398,7 +398,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class UpdateExample
+    public class UpdateNoteExample
     {
         public static void Main()
         {
@@ -411,12 +411,12 @@ namespace Example
             try
             {
                 // Updates a specific deal note by its ID.
-                DealNote result = apiInstance.Update(noteId, updateDealNoteRequest);
+                DealNote result = apiInstance.UpdateNote(noteId, updateDealNoteRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling DealsApi.Update: " + e.Message);
+                Debug.Print("Exception when calling DealsApi.UpdateNote: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -425,21 +425,21 @@ namespace Example
 }
 ```
 
-#### Using the UpdateWithHttpInfo variant
+#### Using the UpdateNoteWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Updates a specific deal note by its ID.
-    ApiResponse<DealNote> response = apiInstance.UpdateWithHttpInfo(noteId, updateDealNoteRequest);
+    ApiResponse<DealNote> response = apiInstance.UpdateNoteWithHttpInfo(noteId, updateDealNoteRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling DealsApi.UpdateWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling DealsApi.UpdateNoteWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }

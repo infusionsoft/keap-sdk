@@ -5,11 +5,11 @@ All URIs are relative to https://api.keap.com/crm/rest, except if the operation 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**create1()**](StagesApi.md#create1) | **POST** /v2/stages | Creates a new entity. |
-| [**delete2()**](StagesApi.md#delete2) | **DELETE** /v2/stages/{id} | Deletes a stage by its identifier for a given tenant. |
+| [**delete1()**](StagesApi.md#delete1) | **DELETE** /v2/stages/{id} | Deletes a stage by its identifier for a given tenant. |
 | [**get1()**](StagesApi.md#get1) | **GET** /v2/stages/{id} | Retrieves an entity by its identifier. |
 | [**list1()**](StagesApi.md#list1) | **GET** /v2/stages | Lists entities based on the provided ListCommand. |
 | [**listStages1()**](StagesApi.md#listStages1) | **GET** /v2/stages/{id}/deals | Retrieves a list of deals for a specific stage. |
-| [**update2()**](StagesApi.md#update2) | **PATCH** /v2/stages/{id} | Updates an existing entity. |
+| [**update1()**](StagesApi.md#update1) | **PATCH** /v2/stages/{id} | Updates an existing entity. |
 
 
 ## `create1()`
@@ -67,10 +67,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `delete2()`
+## `delete1()`
 
 ```php
-delete2($id, $new_stage_id)
+delete1($id, $new_stage_id)
 ```
 
 Deletes a stage by its identifier for a given tenant.
@@ -93,9 +93,9 @@ $id = 'id_example'; // string | the stage identifier
 $new_stage_id = 'new_stage_id_example'; // string | the new stage identifier, can be null
 
 try {
-    $apiInstance->delete2($id, $new_stage_id);
+    $apiInstance->delete1($id, $new_stage_id);
 } catch (Exception $e) {
-    echo 'Exception when calling StagesApi->delete2: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling StagesApi->delete1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -302,10 +302,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `update2()`
+## `update1()`
 
 ```php
-update2($id, $update_mask, $update_stage_request): \Keap\Core\V2\Model\Stage
+update1($id, $update_mask, $update_stage_request): \Keap\Core\V2\Model\Stage
 ```
 
 Updates an existing entity.
@@ -329,10 +329,10 @@ $update_mask = array('update_mask_example'); // string[] | the fields to update
 $update_stage_request = new \Keap\Core\V2\Model\UpdateStageRequest(); // \Keap\Core\V2\Model\UpdateStageRequest | the update request
 
 try {
-    $result = $apiInstance->update2($id, $update_mask, $update_stage_request);
+    $result = $apiInstance->update1($id, $update_mask, $update_stage_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling StagesApi->update2: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling StagesApi->update1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

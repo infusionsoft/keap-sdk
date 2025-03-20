@@ -5,26 +5,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**billing_cycle** | **int** |  | [optional] 
-**cost** | **float** |  | [optional] 
-**cycle** | **str** | The interval at which the customer is charged for the subscription. | [optional] 
+**cost** | [**CurrencyValue**](CurrencyValue.md) |  | [optional] 
 **description** | **str** |  | [optional] 
-**discount** | **float** |  | [optional] 
-**frequency** | **int** | Interval at which a customer receives a product or service as part of a subscription plan. | [optional] 
+**discount** | [**CurrencyValue**](CurrencyValue.md) |  | [optional] 
 **id** | **str** |  | [optional] 
+**item_type** | **str** |  | [optional] 
 **name** | **str** |  | [optional] 
 **notes** | **str** |  | [optional] 
-**number_of_payments** | **int** |  | [optional] 
 **order_item_taxes** | [**List[OrderItemTax]**](OrderItemTax.md) |  | [optional] 
-**price** | **float** |  | [optional] 
+**price** | [**CurrencyValue**](CurrencyValue.md) |  | [optional] 
 **product** | [**OrderItemProduct**](OrderItemProduct.md) |  | [optional] 
 **quantity** | **int** |  | [optional] 
 **special** | [**Discount**](Discount.md) |  | [optional] 
 **subscription** | [**RestV2Subscription**](RestV2Subscription.md) |  | [optional] 
-**subscription_based** | **bool** |  | [optional] 
 **subscription_id** | **str** |  | [optional] 
 **subscription_plan** | [**RestSubscriptionPlan**](RestSubscriptionPlan.md) |  | [optional] 
-**type** | **str** |  | [optional] 
 
 ## Example
 

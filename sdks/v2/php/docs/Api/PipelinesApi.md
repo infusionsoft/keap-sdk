@@ -6,13 +6,13 @@ All URIs are relative to https://api.keap.com/crm/rest, except if the operation 
 | ------------- | ------------- | ------------- |
 | [**callList()**](PipelinesApi.md#callList) | **GET** /v2/pipelines | Lists entities based on the provided ListCommand. |
 | [**create()**](PipelinesApi.md#create) | **POST** /v2/pipelines | Creates a new entity. |
-| [**delete1()**](PipelinesApi.md#delete1) | **DELETE** /v2/pipelines/{id} | Deletes a pipeline. |
+| [**delete()**](PipelinesApi.md#delete) | **DELETE** /v2/pipelines/{id} | Deletes a pipeline. |
 | [**get()**](PipelinesApi.md#get) | **GET** /v2/pipelines/{id} | Retrieves an entity by its identifier. |
 | [**getOutcomeLabels()**](PipelinesApi.md#getOutcomeLabels) | **GET** /v2/pipelines/{id}/outcomes | Gets the outcome labels for a pipeline. |
 | [**listStages()**](PipelinesApi.md#listStages) | **GET** /v2/pipelines/{id}/stages | Retrieves a list of stages for a specific pipeline. |
 | [**listSummaries()**](PipelinesApi.md#listSummaries) | **GET** /v2/pipelines/summaries | Retrieves a list of pipeline summaries. |
 | [**setOutcomeLabels()**](PipelinesApi.md#setOutcomeLabels) | **PATCH** /v2/pipelines/{id}/outcomes | Sets the outcome labels for a pipeline. |
-| [**update1()**](PipelinesApi.md#update1) | **PATCH** /v2/pipelines/{id} | Updates an existing entity. |
+| [**update()**](PipelinesApi.md#update) | **PATCH** /v2/pipelines/{id} | Updates an existing entity. |
 
 
 ## `callList()`
@@ -131,10 +131,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `delete1()`
+## `delete()`
 
 ```php
-delete1($id, $allow_cleanup, $new_stage_id)
+delete($id, $allow_cleanup, $new_stage_id)
 ```
 
 Deletes a pipeline.
@@ -158,9 +158,9 @@ $allow_cleanup = True; // bool | flag indicating whether cleanup is allowed, can
 $new_stage_id = 'new_stage_id_example'; // string | the new stage identifier, can be null
 
 try {
-    $apiInstance->delete1($id, $allow_cleanup, $new_stage_id);
+    $apiInstance->delete($id, $allow_cleanup, $new_stage_id);
 } catch (Exception $e) {
-    echo 'Exception when calling PipelinesApi->delete1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling PipelinesApi->delete: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -488,10 +488,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `update1()`
+## `update()`
 
 ```php
-update1($id, $update_mask, $update_pipeline_request): \Keap\Core\V2\Model\Pipeline
+update($id, $update_mask, $update_pipeline_request): \Keap\Core\V2\Model\Pipeline
 ```
 
 Updates an existing entity.
@@ -515,10 +515,10 @@ $update_mask = array('update_mask_example'); // string[] | the fields to update
 $update_pipeline_request = new \Keap\Core\V2\Model\UpdatePipelineRequest(); // \Keap\Core\V2\Model\UpdatePipelineRequest | the update request
 
 try {
-    $result = $apiInstance->update1($id, $update_mask, $update_pipeline_request);
+    $result = $apiInstance->update($id, $update_mask, $update_pipeline_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling PipelinesApi->update1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling PipelinesApi->update: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

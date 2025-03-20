@@ -8,13 +8,13 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**autoCharge** | **Boolean** |  |  [optional] |
-|**creditCardId** | **String** |  |  [optional] |
 |**daysBetweenPayments** | **Long** |  |  |
-|**initialPaymentAmount** | **Double** |  |  [optional] |
+|**daysBetweenRetries** | **Long** |  |  [optional] |
+|**initialPaymentAmount** | [**CurrencyValue**](CurrencyValue.md) |  |  [optional] |
 |**initialPaymentDate** | **String** |  |  [optional] |
 |**initialPaymentPercent** | **Double** |  |  [optional] |
+|**maxChargeAttempts** | **Long** |  |  [optional] |
 |**numberOfPayments** | **Long** |  |  |
-|**paymentGateway** | [**RestPaymentGateway**](RestPaymentGateway.md) |  |  [optional] |
 |**paymentMethodId** | **String** |  |  [optional] |
 |**planStartDate** | **String** |  |  |
 

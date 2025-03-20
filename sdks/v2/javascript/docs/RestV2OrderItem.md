@@ -4,47 +4,25 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**billingCycle** | **Number** |  | [optional] 
-**cost** | **Number** |  | [optional] 
-**cycle** | **String** | The interval at which the customer is charged for the subscription. | [optional] 
+**cost** | [**CurrencyValue**](CurrencyValue.md) |  | [optional] 
 **description** | **String** |  | [optional] 
-**discount** | **Number** |  | [optional] 
-**frequency** | **Number** | Interval at which a customer receives a product or service as part of a subscription plan. | [optional] 
+**discount** | [**CurrencyValue**](CurrencyValue.md) |  | [optional] 
 **id** | **String** |  | [optional] 
+**itemType** | **String** |  | [optional] 
 **name** | **String** |  | [optional] 
 **notes** | **String** |  | [optional] 
-**numberOfPayments** | **Number** |  | [optional] 
 **orderItemTaxes** | [**[OrderItemTax]**](OrderItemTax.md) |  | [optional] 
-**price** | **Number** |  | [optional] 
+**price** | [**CurrencyValue**](CurrencyValue.md) |  | [optional] 
 **product** | [**OrderItemProduct**](OrderItemProduct.md) |  | [optional] 
 **quantity** | **Number** |  | [optional] 
 **special** | [**Discount**](Discount.md) |  | [optional] 
 **subscription** | [**RestV2Subscription**](RestV2Subscription.md) |  | [optional] 
-**subscriptionBased** | **Boolean** |  | [optional] 
 **subscriptionId** | **String** |  | [optional] 
 **subscriptionPlan** | [**RestSubscriptionPlan**](RestSubscriptionPlan.md) |  | [optional] 
-**type** | **String** |  | [optional] 
 
 
 
-## Enum: CycleEnum
-
-
-* `DAILY` (value: `"DAILY"`)
-
-* `WEEKLY` (value: `"WEEKLY"`)
-
-* `MONTHLY` (value: `"MONTHLY"`)
-
-* `YEARLY` (value: `"YEARLY"`)
-
-* `unknown_default_open_api` (value: `"unknown_default_open_api"`)
-
-
-
-
-
-## Enum: TypeEnum
+## Enum: ItemTypeEnum
 
 
 * `UNKNOWN` (value: `"UNKNOWN"`)
@@ -61,21 +39,21 @@ Name | Type | Description | Notes
 
 * `FINANCE_CHARGE` (value: `"FINANCE_CHARGE"`)
 
-* `SPECIAL` (value: `"SPECIAL"`)
+* `DISCOUNT` (value: `"DISCOUNT"`)
 
 * `PROGRAM` (value: `"PROGRAM"`)
 
 * `SUBSCRIPTION` (value: `"SUBSCRIPTION"`)
 
-* `SPECIAL_FREE_TRIAL_DAYS` (value: `"SPECIAL_FREE_TRIAL_DAYS"`)
+* `DISCOUNT_FREE_TRIAL` (value: `"DISCOUNT_FREE_TRIAL"`)
 
-* `SPECIAL_ORDER_TOTAL` (value: `"SPECIAL_ORDER_TOTAL"`)
+* `DISCOUNT_ORDER_TOTAL` (value: `"DISCOUNT_ORDER_TOTAL"`)
 
-* `SPECIAL_PRODUCT` (value: `"SPECIAL_PRODUCT"`)
+* `DISCOUNT_PRODUCT` (value: `"DISCOUNT_PRODUCT"`)
 
-* `SPECIAL_CATEGORY` (value: `"SPECIAL_CATEGORY"`)
+* `DISCOUNT_PRODUCT_CATEGORY` (value: `"DISCOUNT_PRODUCT_CATEGORY"`)
 
-* `SPECIAL_SHIPPING` (value: `"SPECIAL_SHIPPING"`)
+* `DISCOUNT_SHIPPING` (value: `"DISCOUNT_SHIPPING"`)
 
 * `TIP` (value: `"TIP"`)
 

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**active** | **bool** |  | [optional]
 **created_time** | **string** |  | [optional]
 **description** | **string** |  | [optional]
 **id** | **string** |  | [optional]
@@ -14,7 +15,6 @@ Name | Type | Description | Notes
 **product_short_description** | **string** |  | [optional]
 **shippable** | **bool** |  | [optional]
 **sku** | **string** |  | [optional]
-**status** | **string** |  | [optional]
 **subscription_only** | **bool** |  | [optional]
 **subscription_plans** | [**\Keap\Core\V2\Model\RestSubscriptionPlan[]**](RestSubscriptionPlan.md) |  | [optional]
 **taxable** | **bool** |  | [optional]

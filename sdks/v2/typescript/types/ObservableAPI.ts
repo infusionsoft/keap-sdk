@@ -81,6 +81,7 @@ import { CreateDealNoteRequest } from '../models/CreateDealNoteRequest';
 import { CreateDefaultCommissionProgramRequest } from '../models/CreateDefaultCommissionProgramRequest';
 import { CreateEmailSentRequest } from '../models/CreateEmailSentRequest';
 import { CreateEmailsSentRequest } from '../models/CreateEmailsSentRequest';
+import { CreateFreeTrialDiscountRequest } from '../models/CreateFreeTrialDiscountRequest';
 import { CreateFunnelIntegrationRequest } from '../models/CreateFunnelIntegrationRequest';
 import { CreateFunnelIntegrationTriggerEvents } from '../models/CreateFunnelIntegrationTriggerEvents';
 import { CreateLeadSourceExpenseRequest } from '../models/CreateLeadSourceExpenseRequest';
@@ -145,6 +146,7 @@ import { EmailsSentList } from '../models/EmailsSentList';
 import { FaxNumber } from '../models/FaxNumber';
 import { FileMetadata } from '../models/FileMetadata';
 import { FileOperationRequest } from '../models/FileOperationRequest';
+import { FreeTrialDiscount } from '../models/FreeTrialDiscount';
 import { FunnelIntegrationAction } from '../models/FunnelIntegrationAction';
 import { FunnelIntegrationHttpRequest } from '../models/FunnelIntegrationHttpRequest';
 import { FunnelIntegrationSchemaField } from '../models/FunnelIntegrationSchemaField';
@@ -159,6 +161,7 @@ import { GetTagCategoryResponse } from '../models/GetTagCategoryResponse';
 import { GetUserInfoResponse } from '../models/GetUserInfoResponse';
 import { Goal } from '../models/Goal';
 import { HistoricalCounts } from '../models/HistoricalCounts';
+import { InvoiceFile } from '../models/InvoiceFile';
 import { InvoiceOrderPayment } from '../models/InvoiceOrderPayment';
 import { Item } from '../models/Item';
 import { LandingPage } from '../models/LandingPage';
@@ -186,6 +189,7 @@ import { ListContactLinksResponse } from '../models/ListContactLinksResponse';
 import { ListContactsResponse } from '../models/ListContactsResponse';
 import { ListCountriesResponse } from '../models/ListCountriesResponse';
 import { ListFilesResponse } from '../models/ListFilesResponse';
+import { ListFreeTrialDiscountsResponse } from '../models/ListFreeTrialDiscountsResponse';
 import { ListLandingPagesResponse } from '../models/ListLandingPagesResponse';
 import { ListLeadSourceCategoriesResponse } from '../models/ListLeadSourceCategoriesResponse';
 import { ListLeadSourceExpensesResponse } from '../models/ListLeadSourceExpensesResponse';
@@ -203,6 +207,7 @@ import { ListProductDiscountsResponse } from '../models/ListProductDiscountsResp
 import { ListProductInterestBundleResponse } from '../models/ListProductInterestBundleResponse';
 import { ListProductsResponse } from '../models/ListProductsResponse';
 import { ListProvincesResponse } from '../models/ListProvincesResponse';
+import { ListReportsResponse } from '../models/ListReportsResponse';
 import { ListRestMerchantAccountResponse } from '../models/ListRestMerchantAccountResponse';
 import { ListRestMerchantResponse } from '../models/ListRestMerchantResponse';
 import { ListRestShippingMethodsResponse } from '../models/ListRestShippingMethodsResponse';
@@ -214,6 +219,7 @@ import { ListTaggedCompaniesResponse } from '../models/ListTaggedCompaniesRespon
 import { ListTaggedContactsResponse } from '../models/ListTaggedContactsResponse';
 import { ListTagsResponse } from '../models/ListTagsResponse';
 import { ListTasksResponse } from '../models/ListTasksResponse';
+import { ListTransactionsResponse } from '../models/ListTransactionsResponse';
 import { ListUserResponse } from '../models/ListUserResponse';
 import { ModelError } from '../models/ModelError';
 import { ModelFile } from '../models/ModelFile';
@@ -254,15 +260,16 @@ import { Provinces } from '../models/Provinces';
 import { Referral } from '../models/Referral';
 import { RemoveContactsFromSequenceRequest } from '../models/RemoveContactsFromSequenceRequest';
 import { RemoveContactsFromSequenceResponse } from '../models/RemoveContactsFromSequenceResponse';
+import { Report } from '../models/Report';
 import { ReportEntryRecord } from '../models/ReportEntryRecord';
 import { ReportEntryValue } from '../models/ReportEntryValue';
 import { ReportExecutionResult } from '../models/ReportExecutionResult';
 import { Resource } from '../models/Resource';
 import { RestAffiliate } from '../models/RestAffiliate';
+import { RestApplyCommissionRequest } from '../models/RestApplyCommissionRequest';
 import { RestCreateOrderRequest } from '../models/RestCreateOrderRequest';
 import { RestEmailAddress } from '../models/RestEmailAddress';
 import { RestOpportunityStage } from '../models/RestOpportunityStage';
-import { RestPaymentGateway } from '../models/RestPaymentGateway';
 import { RestProductOption } from '../models/RestProductOption';
 import { RestProductOptionValue } from '../models/RestProductOptionValue';
 import { RestSubscriptionPlan } from '../models/RestSubscriptionPlan';
@@ -306,6 +313,7 @@ import { UpdateCustomFieldMetaDataRequest } from '../models/UpdateCustomFieldMet
 import { UpdateDealNoteRequest } from '../models/UpdateDealNoteRequest';
 import { UpdateDefaultCommissionProgramRequest } from '../models/UpdateDefaultCommissionProgramRequest';
 import { UpdateEmailAddress } from '../models/UpdateEmailAddress';
+import { UpdateLeadSourceExpenseRequest } from '../models/UpdateLeadSourceExpenseRequest';
 import { UpdateNoteRequest } from '../models/UpdateNoteRequest';
 import { UpdateNoteResponse } from '../models/UpdateNoteResponse';
 import { UpdateOpportunityRequestV2 } from '../models/UpdateOpportunityRequestV2';
@@ -332,6 +340,7 @@ import { UpdateTagCategoryResponse } from '../models/UpdateTagCategoryResponse';
 import { UpdateTagResponse } from '../models/UpdateTagResponse';
 import { UpdateTaskResponse } from '../models/UpdateTaskResponse';
 import { UpdateUserRequest } from '../models/UpdateUserRequest';
+import { UpdatedPaymentPlan } from '../models/UpdatedPaymentPlan';
 import { User } from '../models/User';
 
 import { AffiliateApiRequestFactory, AffiliateApiResponseProcessor} from "../apis/AffiliateApi";
@@ -1737,39 +1746,6 @@ export class ObservableDealsApi {
     }
 
     /**
-     * Deletes a specific deal note by its ID.
-     * Deletes a specific deal note by its ID.
-     * @param noteId the ID of the note to delete
-     */
-    public _deleteWithHttpInfo(noteId: string, _options?: Configuration): Observable<HttpInfo<void>> {
-        const requestContextPromise = this.requestFactory._delete(noteId, _options);
-
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of this.configuration.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of this.configuration.middleware) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor._deleteWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Deletes a specific deal note by its ID.
-     * Deletes a specific deal note by its ID.
-     * @param noteId the ID of the note to delete
-     */
-    public _delete(noteId: string, _options?: Configuration): Observable<void> {
-        return this._deleteWithHttpInfo(noteId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
-    }
-
-    /**
      * Creates a new note for a specific deal.
      * Creates a new note for a specific deal.
      * @param id the deal ID to associate the new note with
@@ -1802,6 +1778,39 @@ export class ObservableDealsApi {
      */
     public createNote(id: string, createDealNoteRequest: CreateDealNoteRequest, _options?: Configuration): Observable<DealNote> {
         return this.createNoteWithHttpInfo(id, createDealNoteRequest, _options).pipe(map((apiResponse: HttpInfo<DealNote>) => apiResponse.data));
+    }
+
+    /**
+     * Deletes a specific deal note by its ID.
+     * Deletes a specific deal note by its ID.
+     * @param noteId the ID of the note to delete
+     */
+    public deleteNoteWithHttpInfo(noteId: string, _options?: Configuration): Observable<HttpInfo<void>> {
+        const requestContextPromise = this.requestFactory.deleteNote(noteId, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteNoteWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Deletes a specific deal note by its ID.
+     * Deletes a specific deal note by its ID.
+     * @param noteId the ID of the note to delete
+     */
+    public deleteNote(noteId: string, _options?: Configuration): Observable<void> {
+        return this.deleteNoteWithHttpInfo(noteId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
@@ -1884,8 +1893,8 @@ export class ObservableDealsApi {
      * @param noteId the ID of the note to update
      * @param updateDealNoteRequest the request body containing updated note details
      */
-    public updateWithHttpInfo(noteId: string, updateDealNoteRequest: UpdateDealNoteRequest, _options?: Configuration): Observable<HttpInfo<DealNote>> {
-        const requestContextPromise = this.requestFactory.update(noteId, updateDealNoteRequest, _options);
+    public updateNoteWithHttpInfo(noteId: string, updateDealNoteRequest: UpdateDealNoteRequest, _options?: Configuration): Observable<HttpInfo<DealNote>> {
+        const requestContextPromise = this.requestFactory.updateNote(noteId, updateDealNoteRequest, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
@@ -1899,7 +1908,7 @@ export class ObservableDealsApi {
                 for (const middleware of this.configuration.middleware) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateNoteWithHttpInfo(rsp)));
             }));
     }
 
@@ -1909,8 +1918,8 @@ export class ObservableDealsApi {
      * @param noteId the ID of the note to update
      * @param updateDealNoteRequest the request body containing updated note details
      */
-    public update(noteId: string, updateDealNoteRequest: UpdateDealNoteRequest, _options?: Configuration): Observable<DealNote> {
-        return this.updateWithHttpInfo(noteId, updateDealNoteRequest, _options).pipe(map((apiResponse: HttpInfo<DealNote>) => apiResponse.data));
+    public updateNote(noteId: string, updateDealNoteRequest: UpdateDealNoteRequest, _options?: Configuration): Observable<DealNote> {
+        return this.updateNoteWithHttpInfo(noteId, updateDealNoteRequest, _options).pipe(map((apiResponse: HttpInfo<DealNote>) => apiResponse.data));
     }
 
 }
@@ -2420,20 +2429,20 @@ export class ObservableNoteApi {
 
 }
 
-import { PaymentMethodConfigApiRequestFactory, PaymentMethodConfigApiResponseProcessor} from "../apis/PaymentMethodConfigApi";
-export class ObservablePaymentMethodConfigApi {
-    private requestFactory: PaymentMethodConfigApiRequestFactory;
-    private responseProcessor: PaymentMethodConfigApiResponseProcessor;
+import { PaymentMethodConfigsApiRequestFactory, PaymentMethodConfigsApiResponseProcessor} from "../apis/PaymentMethodConfigsApi";
+export class ObservablePaymentMethodConfigsApi {
+    private requestFactory: PaymentMethodConfigsApiRequestFactory;
+    private responseProcessor: PaymentMethodConfigsApiResponseProcessor;
     private configuration: Configuration;
 
     public constructor(
         configuration: Configuration,
-        requestFactory?: PaymentMethodConfigApiRequestFactory,
-        responseProcessor?: PaymentMethodConfigApiResponseProcessor
+        requestFactory?: PaymentMethodConfigsApiRequestFactory,
+        responseProcessor?: PaymentMethodConfigsApiResponseProcessor
     ) {
         this.configuration = configuration;
-        this.requestFactory = requestFactory || new PaymentMethodConfigApiRequestFactory(configuration);
-        this.responseProcessor = responseProcessor || new PaymentMethodConfigApiResponseProcessor();
+        this.requestFactory = requestFactory || new PaymentMethodConfigsApiRequestFactory(configuration);
+        this.responseProcessor = responseProcessor || new PaymentMethodConfigsApiResponseProcessor();
     }
 
     /**
@@ -2488,6 +2497,43 @@ export class ObservablePipelinesApi {
     }
 
     /**
+     * Deletes a pipeline.
+     * Deletes a pipeline.
+     * @param id the pipeline identifier
+     * @param [allowCleanup] flag indicating whether cleanup is allowed, can be null
+     * @param [newStageId] the new stage identifier, can be null
+     */
+    public _deleteWithHttpInfo(id: string, allowCleanup?: boolean, newStageId?: string, _options?: Configuration): Observable<HttpInfo<void>> {
+        const requestContextPromise = this.requestFactory._delete(id, allowCleanup, newStageId, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor._deleteWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Deletes a pipeline.
+     * Deletes a pipeline.
+     * @param id the pipeline identifier
+     * @param [allowCleanup] flag indicating whether cleanup is allowed, can be null
+     * @param [newStageId] the new stage identifier, can be null
+     */
+    public _delete(id: string, allowCleanup?: boolean, newStageId?: string, _options?: Configuration): Observable<void> {
+        return this._deleteWithHttpInfo(id, allowCleanup, newStageId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+    /**
      * Creates a new entity.
      * Creates a new entity.
      * @param createPipelineRequest the create request
@@ -2518,43 +2564,6 @@ export class ObservablePipelinesApi {
      */
     public create(createPipelineRequest: CreatePipelineRequest, _options?: Configuration): Observable<Pipeline> {
         return this.createWithHttpInfo(createPipelineRequest, _options).pipe(map((apiResponse: HttpInfo<Pipeline>) => apiResponse.data));
-    }
-
-    /**
-     * Deletes a pipeline.
-     * Deletes a pipeline.
-     * @param id the pipeline identifier
-     * @param [allowCleanup] flag indicating whether cleanup is allowed, can be null
-     * @param [newStageId] the new stage identifier, can be null
-     */
-    public delete1WithHttpInfo(id: string, allowCleanup?: boolean, newStageId?: string, _options?: Configuration): Observable<HttpInfo<void>> {
-        const requestContextPromise = this.requestFactory.delete1(id, allowCleanup, newStageId, _options);
-
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of this.configuration.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of this.configuration.middleware) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.delete1WithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Deletes a pipeline.
-     * Deletes a pipeline.
-     * @param id the pipeline identifier
-     * @param [allowCleanup] flag indicating whether cleanup is allowed, can be null
-     * @param [newStageId] the new stage identifier, can be null
-     */
-    public delete1(id: string, allowCleanup?: boolean, newStageId?: string, _options?: Configuration): Observable<void> {
-        return this.delete1WithHttpInfo(id, allowCleanup, newStageId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
@@ -2792,8 +2801,8 @@ export class ObservablePipelinesApi {
      * @param updateMask the fields to update
      * @param updatePipelineRequest the update request
      */
-    public update1WithHttpInfo(id: string, updateMask: Array<string>, updatePipelineRequest: UpdatePipelineRequest, _options?: Configuration): Observable<HttpInfo<Pipeline>> {
-        const requestContextPromise = this.requestFactory.update1(id, updateMask, updatePipelineRequest, _options);
+    public updateWithHttpInfo(id: string, updateMask: Array<string>, updatePipelineRequest: UpdatePipelineRequest, _options?: Configuration): Observable<HttpInfo<Pipeline>> {
+        const requestContextPromise = this.requestFactory.update(id, updateMask, updatePipelineRequest, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
@@ -2807,7 +2816,7 @@ export class ObservablePipelinesApi {
                 for (const middleware of this.configuration.middleware) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.update1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateWithHttpInfo(rsp)));
             }));
     }
 
@@ -2818,8 +2827,8 @@ export class ObservablePipelinesApi {
      * @param updateMask the fields to update
      * @param updatePipelineRequest the update request
      */
-    public update1(id: string, updateMask: Array<string>, updatePipelineRequest: UpdatePipelineRequest, _options?: Configuration): Observable<Pipeline> {
-        return this.update1WithHttpInfo(id, updateMask, updatePipelineRequest, _options).pipe(map((apiResponse: HttpInfo<Pipeline>) => apiResponse.data));
+    public update(id: string, updateMask: Array<string>, updatePipelineRequest: UpdatePipelineRequest, _options?: Configuration): Observable<Pipeline> {
+        return this.updateWithHttpInfo(id, updateMask, updatePipelineRequest, _options).pipe(map((apiResponse: HttpInfo<Pipeline>) => apiResponse.data));
     }
 
 }
@@ -2838,6 +2847,45 @@ export class ObservableReportingApi {
         this.configuration = configuration;
         this.requestFactory = requestFactory || new ReportingApiRequestFactory(configuration);
         this.responseProcessor = responseProcessor || new ReportingApiResponseProcessor();
+    }
+
+    /**
+     * Retrieves a list of Reports as defined in the application (identified as Saved Search)<br/><span style=\'color:red\'>Deprecated as of v2</span>
+     * List Reports
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (DateTime) &#x60;since_created_time&#x60; - (DateTime) &#x60;until_created_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched  word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;created_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listReportsUsingGETWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Observable<HttpInfo<ListReportsResponse>> {
+        const requestContextPromise = this.requestFactory.listReportsUsingGET(filter, orderBy, pageSize, pageToken, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listReportsUsingGETWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a list of Reports as defined in the application (identified as Saved Search)<br/><span style=\'color:red\'>Deprecated as of v2</span>
+     * List Reports
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (DateTime) &#x60;since_created_time&#x60; - (DateTime) &#x60;until_created_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched  word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;created_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listReportsUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Observable<ListReportsResponse> {
+        return this.listReportsUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListReportsResponse>) => apiResponse.data));
     }
 
     /**
@@ -3102,8 +3150,8 @@ export class ObservableStagesApi {
      * @param id the stage identifier
      * @param [newStageId] the new stage identifier, can be null
      */
-    public delete2WithHttpInfo(id: string, newStageId?: string, _options?: Configuration): Observable<HttpInfo<void>> {
-        const requestContextPromise = this.requestFactory.delete2(id, newStageId, _options);
+    public delete1WithHttpInfo(id: string, newStageId?: string, _options?: Configuration): Observable<HttpInfo<void>> {
+        const requestContextPromise = this.requestFactory.delete1(id, newStageId, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
@@ -3117,7 +3165,7 @@ export class ObservableStagesApi {
                 for (const middleware of this.configuration.middleware) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.delete2WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.delete1WithHttpInfo(rsp)));
             }));
     }
 
@@ -3127,8 +3175,8 @@ export class ObservableStagesApi {
      * @param id the stage identifier
      * @param [newStageId] the new stage identifier, can be null
      */
-    public delete2(id: string, newStageId?: string, _options?: Configuration): Observable<void> {
-        return this.delete2WithHttpInfo(id, newStageId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public delete1(id: string, newStageId?: string, _options?: Configuration): Observable<void> {
+        return this.delete1WithHttpInfo(id, newStageId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
@@ -3251,8 +3299,8 @@ export class ObservableStagesApi {
      * @param updateMask the fields to update
      * @param updateStageRequest the update request
      */
-    public update2WithHttpInfo(id: string, updateMask: Array<string>, updateStageRequest: UpdateStageRequest, _options?: Configuration): Observable<HttpInfo<Stage>> {
-        const requestContextPromise = this.requestFactory.update2(id, updateMask, updateStageRequest, _options);
+    public update1WithHttpInfo(id: string, updateMask: Array<string>, updateStageRequest: UpdateStageRequest, _options?: Configuration): Observable<HttpInfo<Stage>> {
+        const requestContextPromise = this.requestFactory.update1(id, updateMask, updateStageRequest, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
@@ -3266,7 +3314,7 @@ export class ObservableStagesApi {
                 for (const middleware of this.configuration.middleware) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.update2WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.update1WithHttpInfo(rsp)));
             }));
     }
 
@@ -3277,8 +3325,8 @@ export class ObservableStagesApi {
      * @param updateMask the fields to update
      * @param updateStageRequest the update request
      */
-    public update2(id: string, updateMask: Array<string>, updateStageRequest: UpdateStageRequest, _options?: Configuration): Observable<Stage> {
-        return this.update2WithHttpInfo(id, updateMask, updateStageRequest, _options).pipe(map((apiResponse: HttpInfo<Stage>) => apiResponse.data));
+    public update1(id: string, updateMask: Array<string>, updateStageRequest: UpdateStageRequest, _options?: Configuration): Observable<Stage> {
+        return this.update1WithHttpInfo(id, updateMask, updateStageRequest, _options).pipe(map((apiResponse: HttpInfo<Stage>) => apiResponse.data));
     }
 
 }

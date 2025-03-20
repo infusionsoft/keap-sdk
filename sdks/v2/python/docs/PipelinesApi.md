@@ -5,14 +5,14 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create**](PipelinesApi.md#create) | **POST** /v2/pipelines | Creates a new entity.
-[**delete1**](PipelinesApi.md#delete1) | **DELETE** /v2/pipelines/{id} | Deletes a pipeline.
+[**delete**](PipelinesApi.md#delete) | **DELETE** /v2/pipelines/{id} | Deletes a pipeline.
 [**get**](PipelinesApi.md#get) | **GET** /v2/pipelines/{id} | Retrieves an entity by its identifier.
 [**get_outcome_labels**](PipelinesApi.md#get_outcome_labels) | **GET** /v2/pipelines/{id}/outcomes | Gets the outcome labels for a pipeline.
 [**list**](PipelinesApi.md#list) | **GET** /v2/pipelines | Lists entities based on the provided ListCommand.
 [**list_stages**](PipelinesApi.md#list_stages) | **GET** /v2/pipelines/{id}/stages | Retrieves a list of stages for a specific pipeline.
 [**list_summaries**](PipelinesApi.md#list_summaries) | **GET** /v2/pipelines/summaries | Retrieves a list of pipeline summaries.
 [**set_outcome_labels**](PipelinesApi.md#set_outcome_labels) | **PATCH** /v2/pipelines/{id}/outcomes | Sets the outcome labels for a pipeline.
-[**update1**](PipelinesApi.md#update1) | **PATCH** /v2/pipelines/{id} | Updates an existing entity.
+[**update**](PipelinesApi.md#update) | **PATCH** /v2/pipelines/{id} | Updates an existing entity.
 
 
 # **create**
@@ -82,8 +82,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **delete1**
-> delete1(id, allow_cleanup=allow_cleanup, new_stage_id=new_stage_id)
+# **delete**
+> delete(id, allow_cleanup=allow_cleanup, new_stage_id=new_stage_id)
 
 Deletes a pipeline.
 
@@ -113,9 +113,9 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Deletes a pipeline.
-        api_instance.delete1(id, allow_cleanup=allow_cleanup, new_stage_id=new_stage_id)
+        api_instance.delete(id, allow_cleanup=allow_cleanup, new_stage_id=new_stage_id)
     except Exception as e:
-        print("Exception when calling PipelinesApi->delete1: %s\n" % e)
+        print("Exception when calling PipelinesApi->delete: %s\n" % e)
 ```
 
 
@@ -576,8 +576,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **update1**
-> Pipeline update1(id, update_mask, update_pipeline_request)
+# **update**
+> Pipeline update(id, update_mask, update_pipeline_request)
 
 Updates an existing entity.
 
@@ -609,11 +609,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Updates an existing entity.
-        api_response = api_instance.update1(id, update_mask, update_pipeline_request)
-        print("The response of PipelinesApi->update1:\n")
+        api_response = api_instance.update(id, update_mask, update_pipeline_request)
+        print("The response of PipelinesApi->update:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling PipelinesApi->update1: %s\n" % e)
+        print("Exception when calling PipelinesApi->update: %s\n" % e)
 ```
 
 
@@ -643,7 +643,7 @@ No authorization required
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The update_1d entity |  -  |
+**200** | The updated entity |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

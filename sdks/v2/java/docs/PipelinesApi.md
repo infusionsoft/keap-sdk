@@ -8,8 +8,8 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 | [**callListWithHttpInfo**](PipelinesApi.md#callListWithHttpInfo) | **GET** /v2/pipelines | Lists entities based on the provided ListCommand. |
 | [**create**](PipelinesApi.md#create) | **POST** /v2/pipelines | Creates a new entity. |
 | [**createWithHttpInfo**](PipelinesApi.md#createWithHttpInfo) | **POST** /v2/pipelines | Creates a new entity. |
-| [**delete1**](PipelinesApi.md#delete1) | **DELETE** /v2/pipelines/{id} | Deletes a pipeline. |
-| [**delete1WithHttpInfo**](PipelinesApi.md#delete1WithHttpInfo) | **DELETE** /v2/pipelines/{id} | Deletes a pipeline. |
+| [**delete**](PipelinesApi.md#delete) | **DELETE** /v2/pipelines/{id} | Deletes a pipeline. |
+| [**deleteWithHttpInfo**](PipelinesApi.md#deleteWithHttpInfo) | **DELETE** /v2/pipelines/{id} | Deletes a pipeline. |
 | [**get**](PipelinesApi.md#get) | **GET** /v2/pipelines/{id} | Retrieves an entity by its identifier. |
 | [**getWithHttpInfo**](PipelinesApi.md#getWithHttpInfo) | **GET** /v2/pipelines/{id} | Retrieves an entity by its identifier. |
 | [**getOutcomeLabels**](PipelinesApi.md#getOutcomeLabels) | **GET** /v2/pipelines/{id}/outcomes | Gets the outcome labels for a pipeline. |
@@ -20,8 +20,8 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 | [**listSummariesWithHttpInfo**](PipelinesApi.md#listSummariesWithHttpInfo) | **GET** /v2/pipelines/summaries | Retrieves a list of pipeline summaries. |
 | [**setOutcomeLabels**](PipelinesApi.md#setOutcomeLabels) | **PATCH** /v2/pipelines/{id}/outcomes | Sets the outcome labels for a pipeline. |
 | [**setOutcomeLabelsWithHttpInfo**](PipelinesApi.md#setOutcomeLabelsWithHttpInfo) | **PATCH** /v2/pipelines/{id}/outcomes | Sets the outcome labels for a pipeline. |
-| [**update1**](PipelinesApi.md#update1) | **PATCH** /v2/pipelines/{id} | Updates an existing entity. |
-| [**update1WithHttpInfo**](PipelinesApi.md#update1WithHttpInfo) | **PATCH** /v2/pipelines/{id} | Updates an existing entity. |
+| [**update**](PipelinesApi.md#update) | **PATCH** /v2/pipelines/{id} | Updates an existing entity. |
+| [**updateWithHttpInfo**](PipelinesApi.md#updateWithHttpInfo) | **PATCH** /v2/pipelines/{id} | Updates an existing entity. |
 
 
 
@@ -305,9 +305,9 @@ No authorization required
 | **200** | The created entity |  -  |
 
 
-## delete1
+## delete
 
-> void delete1(id, allowCleanup, newStageId)
+> void delete(id, allowCleanup, newStageId)
 
 Deletes a pipeline.
 
@@ -333,9 +333,9 @@ public class Example {
         Boolean allowCleanup = true; // Boolean | flag indicating whether cleanup is allowed, can be null
         String newStageId = "newStageId_example"; // String | the new stage identifier, can be null
         try {
-            apiInstance.delete1(id, allowCleanup, newStageId);
+            apiInstance.delete(id, allowCleanup, newStageId);
         } catch (ApiException e) {
-            System.err.println("Exception when calling PipelinesApi#delete1");
+            System.err.println("Exception when calling PipelinesApi#delete");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -373,9 +373,9 @@ No authorization required
 |-------------|-------------|------------------|
 | **204** | A response indicating no content |  -  |
 
-## delete1WithHttpInfo
+## deleteWithHttpInfo
 
-> ApiResponse<Void> delete1 delete1WithHttpInfo(id, allowCleanup, newStageId)
+> ApiResponse<Void> delete deleteWithHttpInfo(id, allowCleanup, newStageId)
 
 Deletes a pipeline.
 
@@ -402,11 +402,11 @@ public class Example {
         Boolean allowCleanup = true; // Boolean | flag indicating whether cleanup is allowed, can be null
         String newStageId = "newStageId_example"; // String | the new stage identifier, can be null
         try {
-            ApiResponse<Void> response = apiInstance.delete1WithHttpInfo(id, allowCleanup, newStageId);
+            ApiResponse<Void> response = apiInstance.deleteWithHttpInfo(id, allowCleanup, newStageId);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
-            System.err.println("Exception when calling PipelinesApi#delete1");
+            System.err.println("Exception when calling PipelinesApi#delete");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -1163,9 +1163,9 @@ No authorization required
 | **200** | the updated list of the pipeline&#39;s outcome labels |  -  |
 
 
-## update1
+## update
 
-> Pipeline update1(id, updateMask, updatePipelineRequest)
+> Pipeline update(id, updateMask, updatePipelineRequest)
 
 Updates an existing entity.
 
@@ -1191,10 +1191,10 @@ public class Example {
         List<String> updateMask = Arrays.asList(); // List<String> | the fields to update
         UpdatePipelineRequest updatePipelineRequest = new UpdatePipelineRequest(); // UpdatePipelineRequest | the update request
         try {
-            Pipeline result = apiInstance.update1(id, updateMask, updatePipelineRequest);
+            Pipeline result = apiInstance.update(id, updateMask, updatePipelineRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling PipelinesApi#update1");
+            System.err.println("Exception when calling PipelinesApi#update");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -1230,11 +1230,11 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | The update_1d entity |  -  |
+| **200** | The updated entity |  -  |
 
-## update1WithHttpInfo
+## updateWithHttpInfo
 
-> ApiResponse<Pipeline> update1 update1WithHttpInfo(id, updateMask, updatePipelineRequest)
+> ApiResponse<Pipeline> update updateWithHttpInfo(id, updateMask, updatePipelineRequest)
 
 Updates an existing entity.
 
@@ -1261,12 +1261,12 @@ public class Example {
         List<String> updateMask = Arrays.asList(); // List<String> | the fields to update
         UpdatePipelineRequest updatePipelineRequest = new UpdatePipelineRequest(); // UpdatePipelineRequest | the update request
         try {
-            ApiResponse<Pipeline> response = apiInstance.update1WithHttpInfo(id, updateMask, updatePipelineRequest);
+            ApiResponse<Pipeline> response = apiInstance.updateWithHttpInfo(id, updateMask, updatePipelineRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling PipelinesApi#update1");
+            System.err.println("Exception when calling PipelinesApi#update");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -1302,5 +1302,5 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | The update_1d entity |  -  |
+| **200** | The updated entity |  -  |
 

@@ -67,12 +67,12 @@ export class StagesApiRequestFactory extends BaseAPIRequestFactory {
      * @param id the stage identifier
      * @param newStageId the new stage identifier, can be null
      */
-    public async delete2(id: string, newStageId?: string, _options?: Configuration): Promise<RequestContext> {
+    public async delete1(id: string, newStageId?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'id' is not null or undefined
         if (id === null || id === undefined) {
-            throw new RequiredError("StagesApi", "delete2", "id");
+            throw new RequiredError("StagesApi", "delete1", "id");
         }
 
 
@@ -251,24 +251,24 @@ export class StagesApiRequestFactory extends BaseAPIRequestFactory {
      * @param updateMask the fields to update
      * @param updateStageRequest the update request
      */
-    public async update2(id: string, updateMask: Array<string>, updateStageRequest: UpdateStageRequest, _options?: Configuration): Promise<RequestContext> {
+    public async update1(id: string, updateMask: Array<string>, updateStageRequest: UpdateStageRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'id' is not null or undefined
         if (id === null || id === undefined) {
-            throw new RequiredError("StagesApi", "update2", "id");
+            throw new RequiredError("StagesApi", "update1", "id");
         }
 
 
         // verify required parameter 'updateMask' is not null or undefined
         if (updateMask === null || updateMask === undefined) {
-            throw new RequiredError("StagesApi", "update2", "updateMask");
+            throw new RequiredError("StagesApi", "update1", "updateMask");
         }
 
 
         // verify required parameter 'updateStageRequest' is not null or undefined
         if (updateStageRequest === null || updateStageRequest === undefined) {
-            throw new RequiredError("StagesApi", "update2", "updateStageRequest");
+            throw new RequiredError("StagesApi", "update1", "updateStageRequest");
         }
 
 
@@ -346,10 +346,10 @@ export class StagesApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to delete2
+     * @params response Response returned by the server for a request to delete1
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async delete2WithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async delete1WithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("204", response.httpStatusCode)) {
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
@@ -458,10 +458,10 @@ export class StagesApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to update2
+     * @params response Response returned by the server for a request to update1
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async update2WithHttpInfo(response: ResponseContext): Promise<HttpInfo<Stage >> {
+     public async update1WithHttpInfo(response: ResponseContext): Promise<HttpInfo<Stage >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: Stage = ObjectSerializer.deserialize(

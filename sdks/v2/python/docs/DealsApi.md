@@ -5,10 +5,10 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_note**](DealsApi.md#create_note) | **POST** /v2/deals/{id}/notes | Creates a new note for a specific deal.
-[**delete**](DealsApi.md#delete) | **DELETE** /v2/deals/-/notes/{note_id} | Deletes a specific deal note by its ID.
+[**delete_note**](DealsApi.md#delete_note) | **DELETE** /v2/deals/-/notes/{note_id} | Deletes a specific deal note by its ID.
 [**get_note**](DealsApi.md#get_note) | **GET** /v2/deals/-/notes/{note_id} | Retrieves a specific deal note by its ID.
 [**list_notes**](DealsApi.md#list_notes) | **GET** /v2/deals/{id}/notes | Lists all notes associated with a specific deal.
-[**update**](DealsApi.md#update) | **PATCH** /v2/deals/-/notes/{note_id} | Updates a specific deal note by its ID.
+[**update_note**](DealsApi.md#update_note) | **PATCH** /v2/deals/-/notes/{note_id} | Updates a specific deal note by its ID.
 
 
 # **create_note**
@@ -80,8 +80,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **delete**
-> delete(note_id)
+# **delete_note**
+> delete_note(note_id)
 
 Deletes a specific deal note by its ID.
 
@@ -109,9 +109,9 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Deletes a specific deal note by its ID.
-        api_instance.delete(note_id)
+        api_instance.delete_note(note_id)
     except Exception as e:
-        print("Exception when calling DealsApi->delete: %s\n" % e)
+        print("Exception when calling DealsApi->delete_note: %s\n" % e)
 ```
 
 
@@ -283,8 +283,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **update**
-> DealNote update(note_id, update_deal_note_request)
+# **update_note**
+> DealNote update_note(note_id, update_deal_note_request)
 
 Updates a specific deal note by its ID.
 
@@ -315,11 +315,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Updates a specific deal note by its ID.
-        api_response = api_instance.update(note_id, update_deal_note_request)
-        print("The response of DealsApi->update:\n")
+        api_response = api_instance.update_note(note_id, update_deal_note_request)
+        print("The response of DealsApi->update_note:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling DealsApi->update: %s\n" % e)
+        print("Exception when calling DealsApi->update_note: %s\n" % e)
 ```
 
 

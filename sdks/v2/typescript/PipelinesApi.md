@@ -4,16 +4,75 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**_delete**](PipelinesApi.md#_delete) | **DELETE** /v2/pipelines/{id} | Deletes a pipeline.
 [**create**](PipelinesApi.md#create) | **POST** /v2/pipelines | Creates a new entity.
-[**delete1**](PipelinesApi.md#delete1) | **DELETE** /v2/pipelines/{id} | Deletes a pipeline.
 [**get**](PipelinesApi.md#get) | **GET** /v2/pipelines/{id} | Retrieves an entity by its identifier.
 [**getOutcomeLabels**](PipelinesApi.md#getOutcomeLabels) | **GET** /v2/pipelines/{id}/outcomes | Gets the outcome labels for a pipeline.
 [**list**](PipelinesApi.md#list) | **GET** /v2/pipelines | Lists entities based on the provided ListCommand.
 [**listStages**](PipelinesApi.md#listStages) | **GET** /v2/pipelines/{id}/stages | Retrieves a list of stages for a specific pipeline.
 [**listSummaries**](PipelinesApi.md#listSummaries) | **GET** /v2/pipelines/summaries | Retrieves a list of pipeline summaries.
 [**setOutcomeLabels**](PipelinesApi.md#setOutcomeLabels) | **PATCH** /v2/pipelines/{id}/outcomes | Sets the outcome labels for a pipeline.
-[**update1**](PipelinesApi.md#update1) | **PATCH** /v2/pipelines/{id} | Updates an existing entity.
+[**update**](PipelinesApi.md#update) | **PATCH** /v2/pipelines/{id} | Updates an existing entity.
 
+
+# **_delete**
+> void _delete()
+
+Deletes a pipeline.
+
+### Example
+
+
+```typescript
+import { createConfiguration, PipelinesApi } from '';
+import type { PipelinesApiDeleteRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new PipelinesApi(configuration);
+
+const request: PipelinesApiDeleteRequest = {
+    // the pipeline identifier
+  id: "id_example",
+    // flag indicating whether cleanup is allowed, can be null (optional)
+  allowCleanup: true,
+    // the new stage identifier, can be null (optional)
+  newStageId: "new_stage_id_example",
+};
+
+const data = await apiInstance._delete(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | [**string**] | the pipeline identifier | defaults to undefined
+ **allowCleanup** | [**boolean**] | flag indicating whether cleanup is allowed, can be null | (optional) defaults to undefined
+ **newStageId** | [**string**] | the new stage identifier, can be null | (optional) defaults to undefined
+
+
+### Return type
+
+**void**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | A response indicating no content |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **create**
 > Pipeline create(createPipelineRequest)
@@ -70,65 +129,6 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | The created entity |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-# **delete1**
-> void delete1()
-
-Deletes a pipeline.
-
-### Example
-
-
-```typescript
-import { createConfiguration, PipelinesApi } from '';
-import type { PipelinesApiDelete1Request } from '';
-
-const configuration = createConfiguration();
-const apiInstance = new PipelinesApi(configuration);
-
-const request: PipelinesApiDelete1Request = {
-    // the pipeline identifier
-  id: "id_example",
-    // flag indicating whether cleanup is allowed, can be null (optional)
-  allowCleanup: true,
-    // the new stage identifier, can be null (optional)
-  newStageId: "new_stage_id_example",
-};
-
-const data = await apiInstance.delete1(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | [**string**] | the pipeline identifier | defaults to undefined
- **allowCleanup** | [**boolean**] | flag indicating whether cleanup is allowed, can be null | (optional) defaults to undefined
- **newStageId** | [**string**] | the new stage identifier, can be null | (optional) defaults to undefined
-
-
-### Return type
-
-**void**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**204** | A response indicating no content |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -502,8 +502,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **update1**
-> Pipeline update1(updatePipelineRequest)
+# **update**
+> Pipeline update(updatePipelineRequest)
 
 Updates an existing entity.
 
@@ -512,12 +512,12 @@ Updates an existing entity.
 
 ```typescript
 import { createConfiguration, PipelinesApi } from '';
-import type { PipelinesApiUpdate1Request } from '';
+import type { PipelinesApiUpdateRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new PipelinesApi(configuration);
 
-const request: PipelinesApiUpdate1Request = {
+const request: PipelinesApiUpdateRequest = {
     // the entity identifier
   id: "id_example",
     // the fields to update
@@ -530,7 +530,7 @@ const request: PipelinesApiUpdate1Request = {
   },
 };
 
-const data = await apiInstance.update1(request);
+const data = await apiInstance.update(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -561,7 +561,7 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The update_1d entity |  -  |
+**200** | The updated entity |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

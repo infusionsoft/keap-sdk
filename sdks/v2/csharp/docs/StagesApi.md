@@ -5,11 +5,11 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
 | [**Create1**](StagesApi.md#create1) | **POST** /v2/stages | Creates a new entity. |
-| [**Delete2**](StagesApi.md#delete2) | **DELETE** /v2/stages/{id} | Deletes a stage by its identifier for a given tenant. |
+| [**Delete1**](StagesApi.md#delete1) | **DELETE** /v2/stages/{id} | Deletes a stage by its identifier for a given tenant. |
 | [**Get1**](StagesApi.md#get1) | **GET** /v2/stages/{id} | Retrieves an entity by its identifier. |
 | [**List1**](StagesApi.md#list1) | **GET** /v2/stages | Lists entities based on the provided ListCommand. |
 | [**ListStages1**](StagesApi.md#liststages1) | **GET** /v2/stages/{id}/deals | Retrieves a list of deals for a specific stage. |
-| [**Update2**](StagesApi.md#update2) | **PATCH** /v2/stages/{id} | Updates an existing entity. |
+| [**Update1**](StagesApi.md#update1) | **PATCH** /v2/stages/{id} | Updates an existing entity. |
 
 <a id="create1"></a>
 # **Create1**
@@ -102,9 +102,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="delete2"></a>
-# **Delete2**
-> void Delete2 (string id, string? newStageId = null)
+<a id="delete1"></a>
+# **Delete1**
+> void Delete1 (string id, string? newStageId = null)
 
 Deletes a stage by its identifier for a given tenant.
 
@@ -120,7 +120,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class Delete2Example
+    public class Delete1Example
     {
         public static void Main()
         {
@@ -133,11 +133,11 @@ namespace Example
             try
             {
                 // Deletes a stage by its identifier for a given tenant.
-                apiInstance.Delete2(id, newStageId);
+                apiInstance.Delete1(id, newStageId);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling StagesApi.Delete2: " + e.Message);
+                Debug.Print("Exception when calling StagesApi.Delete1: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -146,18 +146,18 @@ namespace Example
 }
 ```
 
-#### Using the Delete2WithHttpInfo variant
+#### Using the Delete1WithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Deletes a stage by its identifier for a given tenant.
-    apiInstance.Delete2WithHttpInfo(id, newStageId);
+    apiInstance.Delete1WithHttpInfo(id, newStageId);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling StagesApi.Delete2WithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling StagesApi.Delete1WithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -478,9 +478,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="update2"></a>
-# **Update2**
-> Stage Update2 (string id, List<string> updateMask, UpdateStageRequest updateStageRequest)
+<a id="update1"></a>
+# **Update1**
+> Stage Update1 (string id, List<string> updateMask, UpdateStageRequest updateStageRequest)
 
 Updates an existing entity.
 
@@ -496,7 +496,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class Update2Example
+    public class Update1Example
     {
         public static void Main()
         {
@@ -510,12 +510,12 @@ namespace Example
             try
             {
                 // Updates an existing entity.
-                Stage result = apiInstance.Update2(id, updateMask, updateStageRequest);
+                Stage result = apiInstance.Update1(id, updateMask, updateStageRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling StagesApi.Update2: " + e.Message);
+                Debug.Print("Exception when calling StagesApi.Update1: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -524,21 +524,21 @@ namespace Example
 }
 ```
 
-#### Using the Update2WithHttpInfo variant
+#### Using the Update1WithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Updates an existing entity.
-    ApiResponse<Stage> response = apiInstance.Update2WithHttpInfo(id, updateMask, updateStageRequest);
+    ApiResponse<Stage> response = apiInstance.Update1WithHttpInfo(id, updateMask, updateStageRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling StagesApi.Update2WithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling StagesApi.Update1WithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -569,7 +569,7 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | The update_2d entity |  -  |
+| **200** | The update_1d entity |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

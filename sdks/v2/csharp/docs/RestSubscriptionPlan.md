@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Frequency** | **int** | Interval at which a customer receives a product or service as part of a subscription plan. | [optional] 
 **Id** | **string** |  | [optional] 
 **NumberOfCycles** | **int** |  | [optional] 
-**PlanPrice** | **double** |  | [optional] 
+**PlanPrice** | [**CurrencyValue**](CurrencyValue.md) |  | [optional] 
 **SubscriptionPlanIndex** | **int** | Subscription plan identifier. | [optional] 
 **SubscriptionPlanName** | **string** |  | [optional] 
 

@@ -2,7 +2,7 @@
 
 Keap REST API
 
-- API version: 2.70.0.789938-hf-202503111611
+- API version: 2.70.0.790985
 
 - Generator version: 7.10.0
 
@@ -43,7 +43,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.keap.core</groupId>
   <artifactId>core-service-v2-java-sdk</artifactId>
-  <version>0.0.31</version>
+  <version>0.0.32</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.keap.core:core-service-v2-java-sdk:0.0.31"
+compile "com.keap.core:core-service-v2-java-sdk:0.0.32"
 ```
 
 ### Others
@@ -66,7 +66,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/core-service-v2-java-sdk-0.0.31.jar`
+- `target/core-service-v2-java-sdk-0.0.32.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -182,14 +182,14 @@ Class | Method | HTTP request | Description
 *ContactApi* | [**updateContactUsingPATCHWithHttpInfo**](docs/ContactApi.md#updateContactUsingPATCHWithHttpInfo) | **PATCH** /v2/contacts/{contact_id} | Update a Contact
 *DealsApi* | [**createNote**](docs/DealsApi.md#createNote) | **POST** /v2/deals/{id}/notes | Creates a new note for a specific deal.
 *DealsApi* | [**createNoteWithHttpInfo**](docs/DealsApi.md#createNoteWithHttpInfo) | **POST** /v2/deals/{id}/notes | Creates a new note for a specific deal.
-*DealsApi* | [**delete**](docs/DealsApi.md#delete) | **DELETE** /v2/deals/-/notes/{note_id} | Deletes a specific deal note by its ID.
-*DealsApi* | [**deleteWithHttpInfo**](docs/DealsApi.md#deleteWithHttpInfo) | **DELETE** /v2/deals/-/notes/{note_id} | Deletes a specific deal note by its ID.
+*DealsApi* | [**deleteNote**](docs/DealsApi.md#deleteNote) | **DELETE** /v2/deals/-/notes/{note_id} | Deletes a specific deal note by its ID.
+*DealsApi* | [**deleteNoteWithHttpInfo**](docs/DealsApi.md#deleteNoteWithHttpInfo) | **DELETE** /v2/deals/-/notes/{note_id} | Deletes a specific deal note by its ID.
 *DealsApi* | [**getNote**](docs/DealsApi.md#getNote) | **GET** /v2/deals/-/notes/{note_id} | Retrieves a specific deal note by its ID.
 *DealsApi* | [**getNoteWithHttpInfo**](docs/DealsApi.md#getNoteWithHttpInfo) | **GET** /v2/deals/-/notes/{note_id} | Retrieves a specific deal note by its ID.
 *DealsApi* | [**listNotes**](docs/DealsApi.md#listNotes) | **GET** /v2/deals/{id}/notes | Lists all notes associated with a specific deal.
 *DealsApi* | [**listNotesWithHttpInfo**](docs/DealsApi.md#listNotesWithHttpInfo) | **GET** /v2/deals/{id}/notes | Lists all notes associated with a specific deal.
-*DealsApi* | [**update**](docs/DealsApi.md#update) | **PATCH** /v2/deals/-/notes/{note_id} | Updates a specific deal note by its ID.
-*DealsApi* | [**updateWithHttpInfo**](docs/DealsApi.md#updateWithHttpInfo) | **PATCH** /v2/deals/-/notes/{note_id} | Updates a specific deal note by its ID.
+*DealsApi* | [**updateNote**](docs/DealsApi.md#updateNote) | **PATCH** /v2/deals/-/notes/{note_id} | Updates a specific deal note by its ID.
+*DealsApi* | [**updateNoteWithHttpInfo**](docs/DealsApi.md#updateNoteWithHttpInfo) | **PATCH** /v2/deals/-/notes/{note_id} | Updates a specific deal note by its ID.
 *EmailApi* | [**createEmailUsingPOST1**](docs/EmailApi.md#createEmailUsingPOST1) | **POST** /v2/emails | Create an Email Record
 *EmailApi* | [**createEmailUsingPOST1WithHttpInfo**](docs/EmailApi.md#createEmailUsingPOST1WithHttpInfo) | **POST** /v2/emails | Create an Email Record
 *EmailApi* | [**createEmailsUsingPOST1**](docs/EmailApi.md#createEmailsUsingPOST1) | **POST** /v2/emails:batchAdd | Create a set of Email Records
@@ -216,14 +216,14 @@ Class | Method | HTTP request | Description
 *NoteApi* | [**listNotesUsingGET1WithHttpInfo**](docs/NoteApi.md#listNotesUsingGET1WithHttpInfo) | **GET** /v2/contacts/{contact_id}/notes | List Notes
 *NoteApi* | [**updateNoteUsingPATCH**](docs/NoteApi.md#updateNoteUsingPATCH) | **PATCH** /v2/contacts/{contact_id}/notes/{note_id} | Update a Note
 *NoteApi* | [**updateNoteUsingPATCHWithHttpInfo**](docs/NoteApi.md#updateNoteUsingPATCHWithHttpInfo) | **PATCH** /v2/contacts/{contact_id}/notes/{note_id} | Update a Note
-*PaymentMethodConfigApi* | [**createPaymentMethodConfigUsingPOST**](docs/PaymentMethodConfigApi.md#createPaymentMethodConfigUsingPOST) | **POST** /v2/paymentMethodConfigs | Create Payment Method Configuration
-*PaymentMethodConfigApi* | [**createPaymentMethodConfigUsingPOSTWithHttpInfo**](docs/PaymentMethodConfigApi.md#createPaymentMethodConfigUsingPOSTWithHttpInfo) | **POST** /v2/paymentMethodConfigs | Create Payment Method Configuration
+*PaymentMethodConfigsApi* | [**createPaymentMethodConfigUsingPOST**](docs/PaymentMethodConfigsApi.md#createPaymentMethodConfigUsingPOST) | **POST** /v2/paymentMethodConfigs | Create Payment Method Configuration
+*PaymentMethodConfigsApi* | [**createPaymentMethodConfigUsingPOSTWithHttpInfo**](docs/PaymentMethodConfigsApi.md#createPaymentMethodConfigUsingPOSTWithHttpInfo) | **POST** /v2/paymentMethodConfigs | Create Payment Method Configuration
 *PipelinesApi* | [**callList**](docs/PipelinesApi.md#callList) | **GET** /v2/pipelines | Lists entities based on the provided ListCommand.
 *PipelinesApi* | [**callListWithHttpInfo**](docs/PipelinesApi.md#callListWithHttpInfo) | **GET** /v2/pipelines | Lists entities based on the provided ListCommand.
 *PipelinesApi* | [**create**](docs/PipelinesApi.md#create) | **POST** /v2/pipelines | Creates a new entity.
 *PipelinesApi* | [**createWithHttpInfo**](docs/PipelinesApi.md#createWithHttpInfo) | **POST** /v2/pipelines | Creates a new entity.
-*PipelinesApi* | [**delete1**](docs/PipelinesApi.md#delete1) | **DELETE** /v2/pipelines/{id} | Deletes a pipeline.
-*PipelinesApi* | [**delete1WithHttpInfo**](docs/PipelinesApi.md#delete1WithHttpInfo) | **DELETE** /v2/pipelines/{id} | Deletes a pipeline.
+*PipelinesApi* | [**delete**](docs/PipelinesApi.md#delete) | **DELETE** /v2/pipelines/{id} | Deletes a pipeline.
+*PipelinesApi* | [**deleteWithHttpInfo**](docs/PipelinesApi.md#deleteWithHttpInfo) | **DELETE** /v2/pipelines/{id} | Deletes a pipeline.
 *PipelinesApi* | [**get**](docs/PipelinesApi.md#get) | **GET** /v2/pipelines/{id} | Retrieves an entity by its identifier.
 *PipelinesApi* | [**getWithHttpInfo**](docs/PipelinesApi.md#getWithHttpInfo) | **GET** /v2/pipelines/{id} | Retrieves an entity by its identifier.
 *PipelinesApi* | [**getOutcomeLabels**](docs/PipelinesApi.md#getOutcomeLabels) | **GET** /v2/pipelines/{id}/outcomes | Gets the outcome labels for a pipeline.
@@ -234,8 +234,10 @@ Class | Method | HTTP request | Description
 *PipelinesApi* | [**listSummariesWithHttpInfo**](docs/PipelinesApi.md#listSummariesWithHttpInfo) | **GET** /v2/pipelines/summaries | Retrieves a list of pipeline summaries.
 *PipelinesApi* | [**setOutcomeLabels**](docs/PipelinesApi.md#setOutcomeLabels) | **PATCH** /v2/pipelines/{id}/outcomes | Sets the outcome labels for a pipeline.
 *PipelinesApi* | [**setOutcomeLabelsWithHttpInfo**](docs/PipelinesApi.md#setOutcomeLabelsWithHttpInfo) | **PATCH** /v2/pipelines/{id}/outcomes | Sets the outcome labels for a pipeline.
-*PipelinesApi* | [**update1**](docs/PipelinesApi.md#update1) | **PATCH** /v2/pipelines/{id} | Updates an existing entity.
-*PipelinesApi* | [**update1WithHttpInfo**](docs/PipelinesApi.md#update1WithHttpInfo) | **PATCH** /v2/pipelines/{id} | Updates an existing entity.
+*PipelinesApi* | [**update**](docs/PipelinesApi.md#update) | **PATCH** /v2/pipelines/{id} | Updates an existing entity.
+*PipelinesApi* | [**updateWithHttpInfo**](docs/PipelinesApi.md#updateWithHttpInfo) | **PATCH** /v2/pipelines/{id} | Updates an existing entity.
+*ReportingApi* | [**listReportsUsingGET**](docs/ReportingApi.md#listReportsUsingGET) | **GET** /v2/reporting/reports | List Reports
+*ReportingApi* | [**listReportsUsingGETWithHttpInfo**](docs/ReportingApi.md#listReportsUsingGETWithHttpInfo) | **GET** /v2/reporting/reports | List Reports
 *ReportingApi* | [**runReportUsingPOST**](docs/ReportingApi.md#runReportUsingPOST) | **POST** /v2/reporting/reports/{report_id}:run | Run a Report
 *ReportingApi* | [**runReportUsingPOSTWithHttpInfo**](docs/ReportingApi.md#runReportUsingPOSTWithHttpInfo) | **POST** /v2/reporting/reports/{report_id}:run | Run a Report
 *SalesApi* | [**setMerchantGatewayAsDefaultUsingPOST**](docs/SalesApi.md#setMerchantGatewayAsDefaultUsingPOST) | **POST** /v2/sales/merchants/{id}:setDefault | Set default Merchant Account
@@ -248,16 +250,16 @@ Class | Method | HTTP request | Description
 *SettingsApi* | [**isApplicationEnabledUsingGETWithHttpInfo**](docs/SettingsApi.md#isApplicationEnabledUsingGETWithHttpInfo) | **GET** /v2/settings/applications:isEnabled | Get Application Status
 *StagesApi* | [**create1**](docs/StagesApi.md#create1) | **POST** /v2/stages | Creates a new entity.
 *StagesApi* | [**create1WithHttpInfo**](docs/StagesApi.md#create1WithHttpInfo) | **POST** /v2/stages | Creates a new entity.
-*StagesApi* | [**delete2**](docs/StagesApi.md#delete2) | **DELETE** /v2/stages/{id} | Deletes a stage by its identifier for a given tenant.
-*StagesApi* | [**delete2WithHttpInfo**](docs/StagesApi.md#delete2WithHttpInfo) | **DELETE** /v2/stages/{id} | Deletes a stage by its identifier for a given tenant.
+*StagesApi* | [**delete1**](docs/StagesApi.md#delete1) | **DELETE** /v2/stages/{id} | Deletes a stage by its identifier for a given tenant.
+*StagesApi* | [**delete1WithHttpInfo**](docs/StagesApi.md#delete1WithHttpInfo) | **DELETE** /v2/stages/{id} | Deletes a stage by its identifier for a given tenant.
 *StagesApi* | [**get1**](docs/StagesApi.md#get1) | **GET** /v2/stages/{id} | Retrieves an entity by its identifier.
 *StagesApi* | [**get1WithHttpInfo**](docs/StagesApi.md#get1WithHttpInfo) | **GET** /v2/stages/{id} | Retrieves an entity by its identifier.
 *StagesApi* | [**list1**](docs/StagesApi.md#list1) | **GET** /v2/stages | Lists entities based on the provided ListCommand.
 *StagesApi* | [**list1WithHttpInfo**](docs/StagesApi.md#list1WithHttpInfo) | **GET** /v2/stages | Lists entities based on the provided ListCommand.
 *StagesApi* | [**listStages1**](docs/StagesApi.md#listStages1) | **GET** /v2/stages/{id}/deals | Retrieves a list of deals for a specific stage.
 *StagesApi* | [**listStages1WithHttpInfo**](docs/StagesApi.md#listStages1WithHttpInfo) | **GET** /v2/stages/{id}/deals | Retrieves a list of deals for a specific stage.
-*StagesApi* | [**update2**](docs/StagesApi.md#update2) | **PATCH** /v2/stages/{id} | Updates an existing entity.
-*StagesApi* | [**update2WithHttpInfo**](docs/StagesApi.md#update2WithHttpInfo) | **PATCH** /v2/stages/{id} | Updates an existing entity.
+*StagesApi* | [**update1**](docs/StagesApi.md#update1) | **PATCH** /v2/stages/{id} | Updates an existing entity.
+*StagesApi* | [**update1WithHttpInfo**](docs/StagesApi.md#update1WithHttpInfo) | **PATCH** /v2/stages/{id} | Updates an existing entity.
 *SubscriptionsApi* | [**createSubscriptionV2UsingPOST**](docs/SubscriptionsApi.md#createSubscriptionV2UsingPOST) | **POST** /v2/subscriptions | Create Subscription
 *SubscriptionsApi* | [**createSubscriptionV2UsingPOSTWithHttpInfo**](docs/SubscriptionsApi.md#createSubscriptionV2UsingPOSTWithHttpInfo) | **POST** /v2/subscriptions | Create Subscription
 *TagsApi* | [**applyTagsUsingPOST**](docs/TagsApi.md#applyTagsUsingPOST) | **POST** /v2/tags/{tag_id}/contacts:applyTags | Apply Tag
@@ -371,6 +373,7 @@ Class | Method | HTTP request | Description
  - [CreateDefaultCommissionProgramRequest](docs/CreateDefaultCommissionProgramRequest.md)
  - [CreateEmailSentRequest](docs/CreateEmailSentRequest.md)
  - [CreateEmailsSentRequest](docs/CreateEmailsSentRequest.md)
+ - [CreateFreeTrialDiscountRequest](docs/CreateFreeTrialDiscountRequest.md)
  - [CreateFunnelIntegrationRequest](docs/CreateFunnelIntegrationRequest.md)
  - [CreateFunnelIntegrationTriggerEvents](docs/CreateFunnelIntegrationTriggerEvents.md)
  - [CreateLeadSourceExpenseRequest](docs/CreateLeadSourceExpenseRequest.md)
@@ -436,6 +439,7 @@ Class | Method | HTTP request | Description
  - [FaxNumber](docs/FaxNumber.md)
  - [FileMetadata](docs/FileMetadata.md)
  - [FileOperationRequest](docs/FileOperationRequest.md)
+ - [FreeTrialDiscount](docs/FreeTrialDiscount.md)
  - [FunnelIntegrationAction](docs/FunnelIntegrationAction.md)
  - [FunnelIntegrationHttpRequest](docs/FunnelIntegrationHttpRequest.md)
  - [FunnelIntegrationSchemaField](docs/FunnelIntegrationSchemaField.md)
@@ -450,6 +454,7 @@ Class | Method | HTTP request | Description
  - [GetUserInfoResponse](docs/GetUserInfoResponse.md)
  - [Goal](docs/Goal.md)
  - [HistoricalCounts](docs/HistoricalCounts.md)
+ - [InvoiceFile](docs/InvoiceFile.md)
  - [InvoiceOrderPayment](docs/InvoiceOrderPayment.md)
  - [Item](docs/Item.md)
  - [LandingPage](docs/LandingPage.md)
@@ -477,6 +482,7 @@ Class | Method | HTTP request | Description
  - [ListContactsResponse](docs/ListContactsResponse.md)
  - [ListCountriesResponse](docs/ListCountriesResponse.md)
  - [ListFilesResponse](docs/ListFilesResponse.md)
+ - [ListFreeTrialDiscountsResponse](docs/ListFreeTrialDiscountsResponse.md)
  - [ListLandingPagesResponse](docs/ListLandingPagesResponse.md)
  - [ListLeadSourceCategoriesResponse](docs/ListLeadSourceCategoriesResponse.md)
  - [ListLeadSourceExpensesResponse](docs/ListLeadSourceExpensesResponse.md)
@@ -494,6 +500,7 @@ Class | Method | HTTP request | Description
  - [ListProductInterestBundleResponse](docs/ListProductInterestBundleResponse.md)
  - [ListProductsResponse](docs/ListProductsResponse.md)
  - [ListProvincesResponse](docs/ListProvincesResponse.md)
+ - [ListReportsResponse](docs/ListReportsResponse.md)
  - [ListRestMerchantAccountResponse](docs/ListRestMerchantAccountResponse.md)
  - [ListRestMerchantResponse](docs/ListRestMerchantResponse.md)
  - [ListRestShippingMethodsResponse](docs/ListRestShippingMethodsResponse.md)
@@ -505,6 +512,7 @@ Class | Method | HTTP request | Description
  - [ListTaggedContactsResponse](docs/ListTaggedContactsResponse.md)
  - [ListTagsResponse](docs/ListTagsResponse.md)
  - [ListTasksResponse](docs/ListTasksResponse.md)
+ - [ListTransactionsResponse](docs/ListTransactionsResponse.md)
  - [ListUserResponse](docs/ListUserResponse.md)
  - [ModelFile](docs/ModelFile.md)
  - [Money](docs/Money.md)
@@ -544,15 +552,16 @@ Class | Method | HTTP request | Description
  - [Referral](docs/Referral.md)
  - [RemoveContactsFromSequenceRequest](docs/RemoveContactsFromSequenceRequest.md)
  - [RemoveContactsFromSequenceResponse](docs/RemoveContactsFromSequenceResponse.md)
+ - [Report](docs/Report.md)
  - [ReportEntryRecord](docs/ReportEntryRecord.md)
  - [ReportEntryValue](docs/ReportEntryValue.md)
  - [ReportExecutionResult](docs/ReportExecutionResult.md)
  - [Resource](docs/Resource.md)
  - [RestAffiliate](docs/RestAffiliate.md)
+ - [RestApplyCommissionRequest](docs/RestApplyCommissionRequest.md)
  - [RestCreateOrderRequest](docs/RestCreateOrderRequest.md)
  - [RestEmailAddress](docs/RestEmailAddress.md)
  - [RestOpportunityStage](docs/RestOpportunityStage.md)
- - [RestPaymentGateway](docs/RestPaymentGateway.md)
  - [RestProductOption](docs/RestProductOption.md)
  - [RestProductOptionValue](docs/RestProductOptionValue.md)
  - [RestSubscriptionPlan](docs/RestSubscriptionPlan.md)
@@ -596,6 +605,7 @@ Class | Method | HTTP request | Description
  - [UpdateDealNoteRequest](docs/UpdateDealNoteRequest.md)
  - [UpdateDefaultCommissionProgramRequest](docs/UpdateDefaultCommissionProgramRequest.md)
  - [UpdateEmailAddress](docs/UpdateEmailAddress.md)
+ - [UpdateLeadSourceExpenseRequest](docs/UpdateLeadSourceExpenseRequest.md)
  - [UpdateNoteRequest](docs/UpdateNoteRequest.md)
  - [UpdateNoteResponse](docs/UpdateNoteResponse.md)
  - [UpdateOpportunityRequestV2](docs/UpdateOpportunityRequestV2.md)
@@ -622,6 +632,7 @@ Class | Method | HTTP request | Description
  - [UpdateTagResponse](docs/UpdateTagResponse.md)
  - [UpdateTaskResponse](docs/UpdateTaskResponse.md)
  - [UpdateUserRequest](docs/UpdateUserRequest.md)
+ - [UpdatedPaymentPlan](docs/UpdatedPaymentPlan.md)
  - [User](docs/User.md)
 
 

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**active** | **Boolean** |  | [optional] 
 **createdTime** | **String** |  | [optional] 
 **description** | **String** |  | [optional] 
 **id** | **String** |  | [optional] 
@@ -14,23 +15,9 @@ Name | Type | Description | Notes
 **productShortDescription** | **String** |  | [optional] 
 **shippable** | **Boolean** |  | [optional] 
 **sku** | **String** |  | [optional] 
-**status** | **String** |  | [optional] 
 **subscriptionOnly** | **Boolean** |  | [optional] 
 **subscriptionPlans** | [**[RestSubscriptionPlan]**](RestSubscriptionPlan.md) |  | [optional] 
 **taxable** | **Boolean** |  | [optional] 
 **url** | **String** | The url is the permalink to the resource | [optional] 
-
-
-
-## Enum: StatusEnum
-
-
-* `INACTIVE` (value: `"INACTIVE"`)
-
-* `ACTIVE` (value: `"ACTIVE"`)
-
-* `unknown_default_open_api` (value: `"unknown_default_open_api"`)
-
-
 
 

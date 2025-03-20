@@ -12,7 +12,7 @@
 |**frequency** | **Integer** | Interval at which a customer receives a product or service as part of a subscription plan. |  [optional] |
 |**id** | **String** |  |  [optional] |
 |**numberOfCycles** | **Integer** |  |  [optional] |
-|**planPrice** | **Double** |  |  [optional] |
+|**planPrice** | [**CurrencyValue**](CurrencyValue.md) |  |  [optional] |
 |**subscriptionPlanIndex** | **Integer** | Subscription plan identifier. |  [optional] |
 |**subscriptionPlanName** | **String** |  |  [optional] |
 

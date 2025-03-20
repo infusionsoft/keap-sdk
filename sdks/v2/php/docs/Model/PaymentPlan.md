@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **auto_charge** | **bool** |  | [optional]
-**credit_card_id** | **string** |  | [optional]
 **days_between_payments** | **int** |  |
-**initial_payment_amount** | **float** |  | [optional]
+**days_between_retries** | **int** |  | [optional]
+**initial_payment_amount** | [**\Keap\Core\V2\Model\CurrencyValue**](CurrencyValue.md) |  | [optional]
 **initial_payment_date** | **string** |  | [optional]
 **initial_payment_percent** | **float** |  | [optional]
+**max_charge_attempts** | **int** |  | [optional]
 **number_of_payments** | **int** |  |
-**payment_gateway** | [**\Keap\Core\V2\Model\RestPaymentGateway**](RestPaymentGateway.md) |  | [optional]
 **payment_method_id** | **string** |  | [optional]
 **plan_start_date** | **string** |  |
 

@@ -12,7 +12,7 @@ from keap_core_v2_client.api.deals_api import DealsApi
 from keap_core_v2_client.api.email_api import EmailApi
 from keap_core_v2_client.api.email_address_api import EmailAddressApi
 from keap_core_v2_client.api.note_api import NoteApi
-from keap_core_v2_client.api.payment_method_config_api import PaymentMethodConfigApi
+from keap_core_v2_client.api.payment_method_configs_api import PaymentMethodConfigsApi
 from keap_core_v2_client.api.pipelines_api import PipelinesApi
 from keap_core_v2_client.api.reporting_api import ReportingApi
 from keap_core_v2_client.api.sales_api import SalesApi

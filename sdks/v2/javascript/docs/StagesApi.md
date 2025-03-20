@@ -5,11 +5,11 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create1**](StagesApi.md#create1) | **POST** /v2/stages | Creates a new entity.
-[**delete2**](StagesApi.md#delete2) | **DELETE** /v2/stages/{id} | Deletes a stage by its identifier for a given tenant.
+[**delete1**](StagesApi.md#delete1) | **DELETE** /v2/stages/{id} | Deletes a stage by its identifier for a given tenant.
 [**get1**](StagesApi.md#get1) | **GET** /v2/stages/{id} | Retrieves an entity by its identifier.
 [**list1**](StagesApi.md#list1) | **GET** /v2/stages | Lists entities based on the provided ListCommand.
 [**listStages1**](StagesApi.md#listStages1) | **GET** /v2/stages/{id}/deals | Retrieves a list of deals for a specific stage.
-[**update2**](StagesApi.md#update2) | **PATCH** /v2/stages/{id} | Updates an existing entity.
+[**update1**](StagesApi.md#update1) | **PATCH** /v2/stages/{id} | Updates an existing entity.
 
 
 
@@ -57,9 +57,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## delete2
+## delete1
 
-> delete2(id, opts)
+> delete1(id, opts)
 
 Deletes a stage by its identifier for a given tenant.
 
@@ -75,7 +75,7 @@ let id = "id_example"; // String | the stage identifier
 let opts = {
   'newStageId': "newStageId_example" // String | the new stage identifier, can be null
 };
-apiInstance.delete2(id, opts).then(() => {
+apiInstance.delete1(id, opts).then(() => {
   console.log('API called successfully.');
 }, (error) => {
   console.error(error);
@@ -255,9 +255,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## update2
+## update1
 
-> Stage update2(id, updateMask, updateStageRequest)
+> Stage update1(id, updateMask, updateStageRequest)
 
 Updates an existing entity.
 
@@ -272,7 +272,7 @@ let apiInstance = new KeapCoreServiceV2Sdk.StagesApi();
 let id = "id_example"; // String | the entity identifier
 let updateMask = ["null"]; // [String] | the fields to update
 let updateStageRequest = new KeapCoreServiceV2Sdk.UpdateStageRequest(); // UpdateStageRequest | the update request
-apiInstance.update2(id, updateMask, updateStageRequest).then((data) => {
+apiInstance.update1(id, updateMask, updateStageRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);

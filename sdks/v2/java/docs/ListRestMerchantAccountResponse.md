@@ -21,7 +21,7 @@
 | PAYPAL | &quot;PAYPAL&quot; |
 | UNSUPPORTED | &quot;UNSUPPORTED&quot; |
 | AUTHORIZE | &quot;AUTHORIZE&quot; |
-| E_WAY | &quot;E_WAY&quot; |
+| EWAY | &quot;EWAY&quot; |
 | WEPAY | &quot;WEPAY&quot; |
 | STRIPE | &quot;STRIPE&quot; |
 | KEAP_PAY | &quot;KEAP_PAY&quot; |

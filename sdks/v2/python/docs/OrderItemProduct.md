@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**active** | **bool** |  | [optional] 
 **created_time** | **str** |  | [optional] 
 **description** | **str** |  | [optional] 
 **id** | **str** |  | [optional] 
@@ -15,7 +16,6 @@ Name | Type | Description | Notes
 **product_short_description** | **str** |  | [optional] 
 **shippable** | **bool** |  | [optional] 
 **sku** | **str** |  | [optional] 
-**status** | **str** |  | [optional] 
 **subscription_only** | **bool** |  | [optional] 
 **subscription_plans** | [**List[RestSubscriptionPlan]**](RestSubscriptionPlan.md) |  | [optional] 
 **taxable** | **bool** |  | [optional] 
