@@ -5,10 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ApplyToCommissions** | **bool** |  | [optional] 
-**CategoryId** | **string** |  | [optional] 
 **Criteria** | [**List&lt;DiscountCriteria&gt;**](DiscountCriteria.md) |  | [optional] 
 **Description** | **string** |  | [optional] 
 **DiscountPercent** | **double** |  | [optional] 
+**Id** | **string** |  | [optional] 
 **Name** | **string** |  | [optional] 
 **ProductCategories** | **List&lt;string&gt;** |  | [optional] 
 

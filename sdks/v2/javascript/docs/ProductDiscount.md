@@ -7,9 +7,9 @@ Name | Type | Description | Notes
 **applyToCommissions** | **Boolean** |  | [optional] 
 **criteria** | [**[DiscountCriteria]**](DiscountCriteria.md) |  | [optional] 
 **description** | **String** |  | [optional] 
-**discountId** | **String** |  | [optional] 
 **discountType** | **String** |  | [optional] 
 **discountValue** | **Number** |  | [optional] 
+**id** | **String** |  | [optional] 
 **name** | **String** |  | [optional] 
 **productId** | **String** |  | [optional] 
 

@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**freeTrialDiscounts** | [**List&lt;FreeTrialDiscount&gt;**](FreeTrialDiscount.md) |  |  [optional] |
+|**discounts** | [**List&lt;FreeTrialDiscount&gt;**](FreeTrialDiscount.md) |  |  [optional] |
 |**nextPageToken** | **String** |  |  [optional] |
 
 

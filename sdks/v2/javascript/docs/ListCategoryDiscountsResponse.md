@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**categoryDiscounts** | [**[CategoryDiscount]**](CategoryDiscount.md) |  | [optional] 
+**discounts** | [**[CategoryDiscount]**](CategoryDiscount.md) |  | [optional] 
 **nextPageToken** | **String** |  | [optional] 
 
 

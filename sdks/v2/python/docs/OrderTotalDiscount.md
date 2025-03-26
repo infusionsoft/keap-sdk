@@ -8,10 +8,10 @@ Name | Type | Description | Notes
 **apply_to_commissions** | **bool** |  | [optional] 
 **criteria** | [**List[DiscountCriteria]**](DiscountCriteria.md) |  | [optional] 
 **description** | **str** |  | [optional] 
-**discount_id** | **str** |  | [optional] 
 **discount_strategy** | **str** |  | [optional] 
 **discount_type** | **str** |  | [optional] 
 **discount_value** | **float** |  | [optional] 
+**id** | **str** |  | [optional] 
 **name** | **str** |  | [optional] 
 
 ## Example

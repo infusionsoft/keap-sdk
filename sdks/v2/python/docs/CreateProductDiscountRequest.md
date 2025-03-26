@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **description** | **str** |  | [optional] 
 **discount_type** | **str** |  | 
 **discount_value** | **float** |  | 
-**name** | **str** |  | [optional] 
+**name** | **str** |  | 
 **product_id** | **str** |  | 
 
 ## Example

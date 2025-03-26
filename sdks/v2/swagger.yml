@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   description: Keap REST Core Service
-  version: 2.70.0.790985
+  version: 2.70.0.794081
   title: Keap REST API
   termsOfService: https://keap.com/legal
   contact:
@@ -3059,6 +3059,48 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
       deprecated: false
+  /v2/reporting/reports/{report_id}:
+    get:
+      tags:
+      - Reporting
+      summary: Retrieve Report
+      description: Retrieves information about a Report as defined in the application
+        (identified as Saved Search)<br/><span style='color:red'>Deprecated as of
+        v2</span>
+      operationId: retrieveReportUsingGET
+      parameters:
+      - name: report_id
+        in: path
+        description: report_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Report'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
   /v2/reporting/reports/{report_id}:run:
     post:
       tags:
@@ -4225,6 +4267,19 @@ servers:
 - url: https://api.keap.com/crm/rest
 components:
   requestBodies:
+    createImageFileUsingPOST:
+      content:
+        multipart/form-data:
+          schema:
+            type: object
+            properties:
+              file:
+                description: File to upload
+                type: string
+                format: binary
+            required:
+            - file
+      required: true
     CreateLeadSourceRequest:
       content:
         application/json:
@@ -5054,13 +5109,30 @@ components:
         reason:
           type: string
       title: CancelSubscriptionsRequest
+    CardInfo:
+      type: object
+      properties:
+        brand:
+          type: string
+        card_type:
+          type: string
+          enum:
+          - CREDIT
+          - DEBIT
+          - PREPAID
+          - ACH
+        expiration_month:
+          type: string
+        expiration_year:
+          type: string
+        last_four:
+          type: string
+      title: CardInfo
     CategoryDiscount:
       type: object
       properties:
         apply_to_commissions:
           type: boolean
-        category_id:
-          type: string
         criteria:
           type: array
           items:
@@ -5070,6 +5142,8 @@ components:
         discount_percent:
           type: number
           format: double
+        id:
+          type: string
         name:
           type: string
         product_categories:
@@ -5965,6 +6039,7 @@ components:
       required:
       - discount_type
       - discount_value
+      - name
       - product_id
       properties:
         apply_to_commissions:
@@ -7188,13 +7263,13 @@ components:
             $ref: '#/components/schemas/DiscountCriteria'
         description:
           type: string
-        discount_id:
-          type: string
         free_trial_days:
           type: integer
           format: int32
         hide_price:
           type: boolean
+        id:
+          type: string
         name:
           type: string
         subscription_plan_id:
@@ -7906,7 +7981,7 @@ components:
     ListCategoryDiscountsResponse:
       type: object
       properties:
-        category_discounts:
+        discounts:
           type: array
           items:
             $ref: '#/components/schemas/CategoryDiscount'
@@ -7979,7 +8054,7 @@ components:
     ListFreeTrialDiscountsResponse:
       type: object
       properties:
-        free_trial_discounts:
+        discounts:
           type: array
           items:
             $ref: '#/components/schemas/FreeTrialDiscount'
@@ -8093,12 +8168,12 @@ components:
     ListOrderTotalDiscountsResponse:
       type: object
       properties:
-        next_page_token:
-          type: string
-        order_total_discounts:
+        discounts:
           type: array
           items:
             $ref: '#/components/schemas/OrderTotalDiscount'
+        next_page_token:
+          type: string
       title: ListOrderTotalDiscountsResponse
     ListOrders:
       type: object
@@ -8110,6 +8185,16 @@ components:
           items:
             $ref: '#/components/schemas/RestV2Order'
       title: ListOrders
+    ListPaymentMethodsResponse:
+      type: object
+      properties:
+        next_page_token:
+          type: string
+        records:
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentMethod'
+      title: ListPaymentMethodsResponse
     ListProductCategoriesResponse:
       type: object
       properties:
@@ -8123,12 +8208,12 @@ components:
     ListProductDiscountsResponse:
       type: object
       properties:
-        next_page_token:
-          type: string
-        product_discounts:
+        discounts:
           type: array
           items:
             $ref: '#/components/schemas/ProductDiscount'
+        next_page_token:
+          type: string
       title: ListProductDiscountsResponse
     ListProductInterestBundleResponse:
       type: object
@@ -8218,12 +8303,12 @@ components:
     ListShippingDiscountsResponse:
       type: object
       properties:
-        next_page_token:
-          type: string
-        shipping_discounts:
+        discounts:
           type: array
           items:
             $ref: '#/components/schemas/ShippingDiscount'
+        next_page_token:
+          type: string
       title: ListShippingDiscountsResponse
     ListSubscriptionPlansResponse:
       type: object
@@ -8506,8 +8591,6 @@ components:
             $ref: '#/components/schemas/DiscountCriteria'
         description:
           type: string
-        discount_id:
-          type: string
         discount_strategy:
           type: string
           enum:
@@ -8521,6 +8604,8 @@ components:
         discount_value:
           type: number
           format: double
+        id:
+          type: string
         name:
           type: string
       title: OrderTotalDiscount
@@ -8545,6 +8630,34 @@ components:
           type: string
           description: Unique identifier for the model.
       description: Represents an owner entity in the system.
+    PaymentMethod:
+      type: object
+      properties:
+        card_info:
+          $ref: '#/components/schemas/CardInfo'
+        contact_id:
+          type: string
+        created_time:
+          type: string
+        payment_gateway_id:
+          type: string
+        payment_method_id:
+          type: string
+        payment_method_type:
+          type: string
+          enum:
+          - CARD
+        payment_processor_type:
+          type: string
+          enum:
+          - PAYPAL
+          - UNSUPPORTED
+          - AUTHORIZE
+          - EWAY
+          - WEPAY
+          - STRIPE
+          - KEAP_PAY
+      title: PaymentMethod
     PaymentMethodConfig:
       type: object
       properties:
@@ -8787,8 +8900,6 @@ components:
             $ref: '#/components/schemas/DiscountCriteria'
         description:
           type: string
-        discount_id:
-          type: string
         discount_type:
           type: string
           enum:
@@ -8797,6 +8908,8 @@ components:
         discount_value:
           type: number
           format: double
+        id:
+          type: string
         name:
           type: string
         product_id:
@@ -9691,8 +9804,6 @@ components:
             $ref: '#/components/schemas/DiscountCriteria'
         description:
           type: string
-        discount_id:
-          type: string
         discount_type:
           type: string
           enum:
@@ -9701,6 +9812,8 @@ components:
         discount_value:
           type: number
           format: double
+        id:
+          type: string
         name:
           type: string
       title: ShippingDiscount
@@ -10294,6 +10407,25 @@ components:
         reason:
           type: string
       title: UpdateEmailAddress
+    UpdateFreeTrialDiscountRequest:
+      type: object
+      properties:
+        criteria:
+          type: array
+          items:
+            $ref: '#/components/schemas/DiscountCriteria'
+        description:
+          type: string
+        free_trial_days:
+          type: integer
+          format: int32
+        hide_price:
+          type: boolean
+        name:
+          type: string
+        subscription_plan_id:
+          type: string
+      title: UpdateFreeTrialDiscountRequest
     UpdateLeadSourceExpenseRequest:
       type: object
       properties:

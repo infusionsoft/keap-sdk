@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**FreeTrialDiscounts** | [**List&lt;FreeTrialDiscount&gt;**](FreeTrialDiscount.md) |  | [optional] 
+**Discounts** | [**List&lt;FreeTrialDiscount&gt;**](FreeTrialDiscount.md) |  | [optional] 
 **NextPageToken** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

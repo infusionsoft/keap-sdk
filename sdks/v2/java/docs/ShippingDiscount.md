@@ -9,9 +9,9 @@
 |------------ | ------------- | ------------- | -------------|
 |**criteria** | [**List&lt;DiscountCriteria&gt;**](DiscountCriteria.md) |  |  [optional] |
 |**description** | **String** |  |  [optional] |
-|**discountId** | **String** |  |  [optional] |
 |**discountType** | [**DiscountTypeEnum**](#DiscountTypeEnum) |  |  [optional] |
 |**discountValue** | **Double** |  |  [optional] |
+|**id** | **String** |  |  [optional] |
 |**name** | **String** |  |  [optional] |
 
 

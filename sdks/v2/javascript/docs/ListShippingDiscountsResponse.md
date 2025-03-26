@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**discounts** | [**[ShippingDiscount]**](ShippingDiscount.md) |  | [optional] 
 **nextPageToken** | **String** |  | [optional] 
-**shippingDiscounts** | [**[ShippingDiscount]**](ShippingDiscount.md) |  | [optional] 
 
 

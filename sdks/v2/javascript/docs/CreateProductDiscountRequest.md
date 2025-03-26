@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **description** | **String** |  | [optional] 
 **discountType** | **String** |  | 
 **discountValue** | **Number** |  | 
-**name** | **String** |  | [optional] 
+**name** | **String** |  | 
 **productId** | **String** |  | 
 
 

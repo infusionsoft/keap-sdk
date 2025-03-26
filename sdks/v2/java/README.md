@@ -2,7 +2,7 @@
 
 Keap REST API
 
-- API version: 2.70.0.790985
+- API version: 2.70.0.794081
 
 - Generator version: 7.10.0
 
@@ -43,7 +43,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.keap.core</groupId>
   <artifactId>core-service-v2-java-sdk</artifactId>
-  <version>0.0.39</version>
+  <version>0.0.40</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.keap.core:core-service-v2-java-sdk:0.0.39"
+compile "com.keap.core:core-service-v2-java-sdk:0.0.40"
 ```
 
 ### Others
@@ -66,7 +66,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/core-service-v2-java-sdk-0.0.39.jar`
+- `target/core-service-v2-java-sdk-0.0.40.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -238,6 +238,8 @@ Class | Method | HTTP request | Description
 *PipelinesApi* | [**update1WithHttpInfo**](docs/PipelinesApi.md#update1WithHttpInfo) | **PATCH** /v2/pipelines/{id} | Updates an existing entity.
 *ReportingApi* | [**listReportsUsingGET**](docs/ReportingApi.md#listReportsUsingGET) | **GET** /v2/reporting/reports | List Reports
 *ReportingApi* | [**listReportsUsingGETWithHttpInfo**](docs/ReportingApi.md#listReportsUsingGETWithHttpInfo) | **GET** /v2/reporting/reports | List Reports
+*ReportingApi* | [**retrieveReportUsingGET**](docs/ReportingApi.md#retrieveReportUsingGET) | **GET** /v2/reporting/reports/{report_id} | Retrieve Report
+*ReportingApi* | [**retrieveReportUsingGETWithHttpInfo**](docs/ReportingApi.md#retrieveReportUsingGETWithHttpInfo) | **GET** /v2/reporting/reports/{report_id} | Retrieve Report
 *ReportingApi* | [**runReportUsingPOST**](docs/ReportingApi.md#runReportUsingPOST) | **POST** /v2/reporting/reports/{report_id}:run | Run a Report
 *ReportingApi* | [**runReportUsingPOSTWithHttpInfo**](docs/ReportingApi.md#runReportUsingPOSTWithHttpInfo) | **POST** /v2/reporting/reports/{report_id}:run | Run a Report
 *SalesApi* | [**setMerchantGatewayAsDefaultUsingPOST**](docs/SalesApi.md#setMerchantGatewayAsDefaultUsingPOST) | **POST** /v2/sales/merchants/{id}:setDefault | Set default Merchant Account
@@ -349,6 +351,7 @@ Class | Method | HTTP request | Description
  - [BusinessProfileAddressResponse](docs/BusinessProfileAddressResponse.md)
  - [Campaign](docs/Campaign.md)
  - [CancelSubscriptionsRequest](docs/CancelSubscriptionsRequest.md)
+ - [CardInfo](docs/CardInfo.md)
  - [CategoryDiscount](docs/CategoryDiscount.md)
  - [CategoryReference](docs/CategoryReference.md)
  - [CheckListItemDetails](docs/CheckListItemDetails.md)
@@ -495,6 +498,7 @@ Class | Method | HTTP request | Description
  - [ListOrderPaymentsResponse](docs/ListOrderPaymentsResponse.md)
  - [ListOrderTotalDiscountsResponse](docs/ListOrderTotalDiscountsResponse.md)
  - [ListOrders](docs/ListOrders.md)
+ - [ListPaymentMethodsResponse](docs/ListPaymentMethodsResponse.md)
  - [ListProductCategoriesResponse](docs/ListProductCategoriesResponse.md)
  - [ListProductDiscountsResponse](docs/ListProductDiscountsResponse.md)
  - [ListProductInterestBundleResponse](docs/ListProductInterestBundleResponse.md)
@@ -527,6 +531,7 @@ Class | Method | HTTP request | Description
  - [Origin](docs/Origin.md)
  - [OriginRequest](docs/OriginRequest.md)
  - [Owner](docs/Owner.md)
+ - [PaymentMethod](docs/PaymentMethod.md)
  - [PaymentMethodConfig](docs/PaymentMethodConfig.md)
  - [PaymentPlan](docs/PaymentPlan.md)
  - [PaymentResult](docs/PaymentResult.md)
@@ -605,6 +610,7 @@ Class | Method | HTTP request | Description
  - [UpdateDealNoteRequest](docs/UpdateDealNoteRequest.md)
  - [UpdateDefaultCommissionProgramRequest](docs/UpdateDefaultCommissionProgramRequest.md)
  - [UpdateEmailAddress](docs/UpdateEmailAddress.md)
+ - [UpdateFreeTrialDiscountRequest](docs/UpdateFreeTrialDiscountRequest.md)
  - [UpdateLeadSourceExpenseRequest](docs/UpdateLeadSourceExpenseRequest.md)
  - [UpdateNoteRequest](docs/UpdateNoteRequest.md)
  - [UpdateNoteResponse](docs/UpdateNoteResponse.md)

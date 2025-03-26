@@ -56,6 +56,7 @@ import { BusinessProfileAddressRequest } from '../models/BusinessProfileAddressR
 import { BusinessProfileAddressResponse } from '../models/BusinessProfileAddressResponse';
 import { Campaign } from '../models/Campaign';
 import { CancelSubscriptionsRequest } from '../models/CancelSubscriptionsRequest';
+import { CardInfo } from '../models/CardInfo';
 import { CategoryDiscount } from '../models/CategoryDiscount';
 import { CategoryReference } from '../models/CategoryReference';
 import { CheckListItemDetails } from '../models/CheckListItemDetails';
@@ -201,6 +202,7 @@ import { ListOpportunityStagesResponse } from '../models/ListOpportunityStagesRe
 import { ListOrderPaymentsResponse } from '../models/ListOrderPaymentsResponse';
 import { ListOrderTotalDiscountsResponse } from '../models/ListOrderTotalDiscountsResponse';
 import { ListOrders } from '../models/ListOrders';
+import { ListPaymentMethodsResponse } from '../models/ListPaymentMethodsResponse';
 import { ListProductCategoriesResponse } from '../models/ListProductCategoriesResponse';
 import { ListProductDiscountsResponse } from '../models/ListProductDiscountsResponse';
 import { ListProductInterestBundleResponse } from '../models/ListProductInterestBundleResponse';
@@ -234,6 +236,7 @@ import { OrderTotalDiscount } from '../models/OrderTotalDiscount';
 import { Origin } from '../models/Origin';
 import { OriginRequest } from '../models/OriginRequest';
 import { Owner } from '../models/Owner';
+import { PaymentMethod } from '../models/PaymentMethod';
 import { PaymentMethodConfig } from '../models/PaymentMethodConfig';
 import { PaymentPlan } from '../models/PaymentPlan';
 import { PaymentResult } from '../models/PaymentResult';
@@ -312,6 +315,7 @@ import { UpdateCustomFieldMetaDataRequest } from '../models/UpdateCustomFieldMet
 import { UpdateDealNoteRequest } from '../models/UpdateDealNoteRequest';
 import { UpdateDefaultCommissionProgramRequest } from '../models/UpdateDefaultCommissionProgramRequest';
 import { UpdateEmailAddress } from '../models/UpdateEmailAddress';
+import { UpdateFreeTrialDiscountRequest } from '../models/UpdateFreeTrialDiscountRequest';
 import { UpdateLeadSourceExpenseRequest } from '../models/UpdateLeadSourceExpenseRequest';
 import { UpdateNoteRequest } from '../models/UpdateNoteRequest';
 import { UpdateNoteResponse } from '../models/UpdateNoteResponse';
@@ -2049,6 +2053,26 @@ export class PromiseReportingApi {
      */
     public listReportsUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<ListReportsResponse> {
         const result = this.api.listReportsUsingGET(filter, orderBy, pageSize, pageToken, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves information about a Report as defined in the application (identified as Saved Search)<br/><span style=\'color:red\'>Deprecated as of v2</span>
+     * Retrieve Report
+     * @param reportId report_id
+     */
+    public retrieveReportUsingGETWithHttpInfo(reportId: string, _options?: Configuration): Promise<HttpInfo<Report>> {
+        const result = this.api.retrieveReportUsingGETWithHttpInfo(reportId, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves information about a Report as defined in the application (identified as Saved Search)<br/><span style=\'color:red\'>Deprecated as of v2</span>
+     * Retrieve Report
+     * @param reportId report_id
+     */
+    public retrieveReportUsingGET(reportId: string, _options?: Configuration): Promise<Report> {
+        const result = this.api.retrieveReportUsingGET(reportId, _options);
         return result.toPromise();
     }
 

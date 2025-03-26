@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**discounts** | [**List[ShippingDiscount]**](ShippingDiscount.md) |  | [optional] 
 **next_page_token** | **str** |  | [optional] 
-**shipping_discounts** | [**List[ShippingDiscount]**](ShippingDiscount.md) |  | [optional] 
 
 ## Example
 

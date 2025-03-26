@@ -5,6 +5,7 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**listReportsUsingGET**](ReportingApi.md#listReportsUsingGET) | **GET** /v2/reporting/reports | List Reports
+[**retrieveReportUsingGET**](ReportingApi.md#retrieveReportUsingGET) | **GET** /v2/reporting/reports/{report_id} | Retrieve Report
 [**runReportUsingPOST**](ReportingApi.md#runReportUsingPOST) | **POST** /v2/reporting/reports/{report_id}:run | Run a Report
 
 
@@ -50,6 +51,50 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ListReportsResponse**](ListReportsResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## retrieveReportUsingGET
+
+> Report retrieveReportUsingGET(reportId)
+
+Retrieve Report
+
+Retrieves information about a Report as defined in the application (identified as Saved Search)&lt;br/&gt;&lt;span style&#x3D;&#39;color:red&#39;&gt;Deprecated as of v2&lt;/span&gt;
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+
+let apiInstance = new KeapCoreServiceV2Sdk.ReportingApi();
+let reportId = "reportId_example"; // String | report_id
+apiInstance.retrieveReportUsingGET(reportId).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **reportId** | **String**| report_id | 
+
+### Return type
+
+[**Report**](Report.md)
 
 ### Authorization
 

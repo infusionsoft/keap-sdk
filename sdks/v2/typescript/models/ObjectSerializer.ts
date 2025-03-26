@@ -53,6 +53,7 @@ export * from '../models/BusinessProfileAddressRequest';
 export * from '../models/BusinessProfileAddressResponse';
 export * from '../models/Campaign';
 export * from '../models/CancelSubscriptionsRequest';
+export * from '../models/CardInfo';
 export * from '../models/CategoryDiscount';
 export * from '../models/CategoryReference';
 export * from '../models/CheckListItemDetails';
@@ -198,6 +199,7 @@ export * from '../models/ListOpportunityStagesResponse';
 export * from '../models/ListOrderPaymentsResponse';
 export * from '../models/ListOrderTotalDiscountsResponse';
 export * from '../models/ListOrders';
+export * from '../models/ListPaymentMethodsResponse';
 export * from '../models/ListProductCategoriesResponse';
 export * from '../models/ListProductDiscountsResponse';
 export * from '../models/ListProductInterestBundleResponse';
@@ -231,6 +233,7 @@ export * from '../models/OrderTotalDiscount';
 export * from '../models/Origin';
 export * from '../models/OriginRequest';
 export * from '../models/Owner';
+export * from '../models/PaymentMethod';
 export * from '../models/PaymentMethodConfig';
 export * from '../models/PaymentPlan';
 export * from '../models/PaymentResult';
@@ -309,6 +312,7 @@ export * from '../models/UpdateCustomFieldMetaDataRequest';
 export * from '../models/UpdateDealNoteRequest';
 export * from '../models/UpdateDefaultCommissionProgramRequest';
 export * from '../models/UpdateEmailAddress';
+export * from '../models/UpdateFreeTrialDiscountRequest';
 export * from '../models/UpdateLeadSourceExpenseRequest';
 export * from '../models/UpdateNoteRequest';
 export * from '../models/UpdateNoteResponse';
@@ -394,6 +398,7 @@ import { BusinessProfileAddressRequest } from '../models/BusinessProfileAddressR
 import { BusinessProfileAddressResponse } from '../models/BusinessProfileAddressResponse';
 import { Campaign } from '../models/Campaign';
 import { CancelSubscriptionsRequest } from '../models/CancelSubscriptionsRequest';
+import { CardInfo , CardInfoCardTypeEnum      } from '../models/CardInfo';
 import { CategoryDiscount } from '../models/CategoryDiscount';
 import { CategoryReference } from '../models/CategoryReference';
 import { CheckListItemDetails } from '../models/CheckListItemDetails';
@@ -539,6 +544,7 @@ import { ListOpportunityStagesResponse } from '../models/ListOpportunityStagesRe
 import { ListOrderPaymentsResponse } from '../models/ListOrderPaymentsResponse';
 import { ListOrderTotalDiscountsResponse } from '../models/ListOrderTotalDiscountsResponse';
 import { ListOrders } from '../models/ListOrders';
+import { ListPaymentMethodsResponse } from '../models/ListPaymentMethodsResponse';
 import { ListProductCategoriesResponse } from '../models/ListProductCategoriesResponse';
 import { ListProductDiscountsResponse } from '../models/ListProductDiscountsResponse';
 import { ListProductInterestBundleResponse } from '../models/ListProductInterestBundleResponse';
@@ -568,10 +574,11 @@ import { OpportunityContact } from '../models/OpportunityContact';
 import { OpportunityStage } from '../models/OpportunityStage';
 import { OrderItemProduct } from '../models/OrderItemProduct';
 import { OrderItemTax } from '../models/OrderItemTax';
-import { OrderTotalDiscount    , OrderTotalDiscountDiscountStrategyEnum  , OrderTotalDiscountDiscountTypeEnum     } from '../models/OrderTotalDiscount';
+import { OrderTotalDiscount   , OrderTotalDiscountDiscountStrategyEnum  , OrderTotalDiscountDiscountTypeEnum      } from '../models/OrderTotalDiscount';
 import { Origin } from '../models/Origin';
 import { OriginRequest } from '../models/OriginRequest';
 import { Owner } from '../models/Owner';
+import { PaymentMethod     , PaymentMethodPaymentMethodTypeEnum  , PaymentMethodPaymentProcessorTypeEnum   } from '../models/PaymentMethod';
 import { PaymentMethodConfig } from '../models/PaymentMethodConfig';
 import { PaymentPlan } from '../models/PaymentPlan';
 import { PaymentResult } from '../models/PaymentResult';
@@ -586,7 +593,7 @@ import { PipelineSummary } from '../models/PipelineSummary';
 import { ProductCategory } from '../models/ProductCategory';
 import { ProductCommission } from '../models/ProductCommission';
 import { ProductCommissionProgram } from '../models/ProductCommissionProgram';
-import { ProductDiscount    , ProductDiscountDiscountTypeEnum      } from '../models/ProductDiscount';
+import { ProductDiscount   , ProductDiscountDiscountTypeEnum       } from '../models/ProductDiscount';
 import { ProductFixedOption } from '../models/ProductFixedOption';
 import { ProductInterest     , ProductInterestTypeEnum   } from '../models/ProductInterest';
 import { ProductInterestBundle } from '../models/ProductInterestBundle';
@@ -621,7 +628,7 @@ import { SaveAutomationCategoryRequest } from '../models/SaveAutomationCategoryR
 import { Sequence } from '../models/Sequence';
 import { SequencePath } from '../models/SequencePath';
 import { SetDefaultCommissionProgramResponse } from '../models/SetDefaultCommissionProgramResponse';
-import { ShippingDiscount   , ShippingDiscountDiscountTypeEnum     } from '../models/ShippingDiscount';
+import { ShippingDiscount  , ShippingDiscountDiscountTypeEnum      } from '../models/ShippingDiscount';
 import { ShippingInformation } from '../models/ShippingInformation';
 import { ShippingMethod } from '../models/ShippingMethod';
 import { SocialAccount , SocialAccountTypeEnum   } from '../models/SocialAccount';
@@ -650,6 +657,7 @@ import { UpdateCustomFieldMetaDataRequest } from '../models/UpdateCustomFieldMet
 import { UpdateDealNoteRequest } from '../models/UpdateDealNoteRequest';
 import { UpdateDefaultCommissionProgramRequest } from '../models/UpdateDefaultCommissionProgramRequest';
 import { UpdateEmailAddress } from '../models/UpdateEmailAddress';
+import { UpdateFreeTrialDiscountRequest } from '../models/UpdateFreeTrialDiscountRequest';
 import { UpdateLeadSourceExpenseRequest } from '../models/UpdateLeadSourceExpenseRequest';
 import { UpdateNoteRequest } from '../models/UpdateNoteRequest';
 import { UpdateNoteResponse } from '../models/UpdateNoteResponse';
@@ -695,6 +703,7 @@ let primitives = [
 let enumsMap: Set<string> = new Set<string>([
     "AddProductInterestRequestTypeEnum",
     "AddressFieldEnum",
+    "CardInfoCardTypeEnum",
     "ContactSourceTypeEnum",
     "CreateAffiliateRequestStatusEnum",
     "CreateCustomFieldRequestFieldTypeEnum",
@@ -734,6 +743,8 @@ let enumsMap: Set<string> = new Set<string>([
     "NoteTemplateActionTypeEnum",
     "OrderTotalDiscountDiscountStrategyEnum",
     "OrderTotalDiscountDiscountTypeEnum",
+    "PaymentMethodPaymentMethodTypeEnum",
+    "PaymentMethodPaymentProcessorTypeEnum",
     "PhoneNumberFieldEnum",
     "ProductDiscountDiscountTypeEnum",
     "ProductInterestTypeEnum",
@@ -827,6 +838,7 @@ let typeMap: {[index: string]: any} = {
     "BusinessProfileAddressResponse": BusinessProfileAddressResponse,
     "Campaign": Campaign,
     "CancelSubscriptionsRequest": CancelSubscriptionsRequest,
+    "CardInfo": CardInfo,
     "CategoryDiscount": CategoryDiscount,
     "CategoryReference": CategoryReference,
     "CheckListItemDetails": CheckListItemDetails,
@@ -971,6 +983,7 @@ let typeMap: {[index: string]: any} = {
     "ListOrderPaymentsResponse": ListOrderPaymentsResponse,
     "ListOrderTotalDiscountsResponse": ListOrderTotalDiscountsResponse,
     "ListOrders": ListOrders,
+    "ListPaymentMethodsResponse": ListPaymentMethodsResponse,
     "ListProductCategoriesResponse": ListProductCategoriesResponse,
     "ListProductDiscountsResponse": ListProductDiscountsResponse,
     "ListProductInterestBundleResponse": ListProductInterestBundleResponse,
@@ -1004,6 +1017,7 @@ let typeMap: {[index: string]: any} = {
     "Origin": Origin,
     "OriginRequest": OriginRequest,
     "Owner": Owner,
+    "PaymentMethod": PaymentMethod,
     "PaymentMethodConfig": PaymentMethodConfig,
     "PaymentPlan": PaymentPlan,
     "PaymentResult": PaymentResult,
@@ -1082,6 +1096,7 @@ let typeMap: {[index: string]: any} = {
     "UpdateDealNoteRequest": UpdateDealNoteRequest,
     "UpdateDefaultCommissionProgramRequest": UpdateDefaultCommissionProgramRequest,
     "UpdateEmailAddress": UpdateEmailAddress,
+    "UpdateFreeTrialDiscountRequest": UpdateFreeTrialDiscountRequest,
     "UpdateLeadSourceExpenseRequest": UpdateLeadSourceExpenseRequest,
     "UpdateNoteRequest": UpdateNoteRequest,
     "UpdateNoteResponse": UpdateNoteResponse,

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**discounts** | [**[OrderTotalDiscount]**](OrderTotalDiscount.md) |  | [optional] 
 **nextPageToken** | **String** |  | [optional] 
-**orderTotalDiscounts** | [**[OrderTotalDiscount]**](OrderTotalDiscount.md) |  | [optional] 
 
 

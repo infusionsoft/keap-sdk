@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**categoryDiscounts** | [**List&lt;CategoryDiscount&gt;**](CategoryDiscount.md) |  |  [optional] |
+|**discounts** | [**List&lt;CategoryDiscount&gt;**](CategoryDiscount.md) |  |  [optional] |
 |**nextPageToken** | **String** |  |  [optional] |
 
 

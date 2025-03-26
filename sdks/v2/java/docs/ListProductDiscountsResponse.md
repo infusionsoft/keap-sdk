@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+|**discounts** | [**List&lt;ProductDiscount&gt;**](ProductDiscount.md) |  |  [optional] |
 |**nextPageToken** | **String** |  |  [optional] |
-|**productDiscounts** | [**List&lt;ProductDiscount&gt;**](ProductDiscount.md) |  |  [optional] |
 
 
 ## Implemented Interfaces

@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+|**discounts** | [**List&lt;OrderTotalDiscount&gt;**](OrderTotalDiscount.md) |  |  [optional] |
 |**nextPageToken** | **String** |  |  [optional] |
-|**orderTotalDiscounts** | [**List&lt;OrderTotalDiscount&gt;**](OrderTotalDiscount.md) |  |  [optional] |
 
 
 ## Implemented Interfaces

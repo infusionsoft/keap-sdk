@@ -12,7 +12,7 @@
 |**description** | **String** |  |  [optional] |
 |**discountType** | [**DiscountTypeEnum**](#DiscountTypeEnum) |  |  |
 |**discountValue** | **Double** |  |  |
-|**name** | **String** |  |  [optional] |
+|**name** | **String** |  |  |
 |**productId** | **String** |  |  |
 
 

@@ -9,9 +9,9 @@
 |------------ | ------------- | ------------- | -------------|
 |**criteria** | [**List&lt;DiscountCriteria&gt;**](DiscountCriteria.md) |  |  [optional] |
 |**description** | **String** |  |  [optional] |
-|**discountId** | **String** |  |  [optional] |
 |**freeTrialDays** | **Integer** |  |  [optional] |
 |**hidePrice** | **Boolean** |  |  [optional] |
+|**id** | **String** |  |  [optional] |
 |**name** | **String** |  |  [optional] |
 |**subscriptionPlanId** | **String** |  |  [optional] |
 

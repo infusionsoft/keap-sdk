@@ -6,9 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **criteria** | [**[DiscountCriteria]**](DiscountCriteria.md) |  | [optional] 
 **description** | **String** |  | [optional] 
-**discountId** | **String** |  | [optional] 
 **discountType** | **String** |  | [optional] 
 **discountValue** | **Number** |  | [optional] 
+**id** | **String** |  | [optional] 
 **name** | **String** |  | [optional] 
 
 

@@ -5,6 +5,7 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**list_reports_using_get**](ReportingApi.md#list_reports_using_get) | **GET** /v2/reporting/reports | List Reports
+[**retrieve_report_using_get**](ReportingApi.md#retrieve_report_using_get) | **GET** /v2/reporting/reports/{report_id} | Retrieve Report
 [**run_report_using_post**](ReportingApi.md#run_report_using_post) | **POST** /v2/reporting/reports/{report_id}:run | Run a Report
 
 
@@ -62,6 +63,75 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ListReportsResponse**](ListReportsResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **retrieve_report_using_get**
+> Report retrieve_report_using_get(report_id)
+
+Retrieve Report
+
+Retrieves information about a Report as defined in the application (identified as Saved Search)<br/><span style='color:red'>Deprecated as of v2</span>
+
+### Example
+
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.report import Report
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm/rest"
+)
+
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.ReportingApi(api_client)
+    report_id = 'report_id_example' # str | report_id
+
+    try:
+        # Retrieve Report
+        api_response = api_instance.retrieve_report_using_get(report_id)
+        print("The response of ReportingApi->retrieve_report_using_get:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ReportingApi->retrieve_report_using_get: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **report_id** | **str**| report_id | 
+
+### Return type
+
+[**Report**](Report.md)
 
 ### Authorization
 

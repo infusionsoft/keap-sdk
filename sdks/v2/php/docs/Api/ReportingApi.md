@@ -5,6 +5,7 @@ All URIs are relative to https://api.keap.com/crm/rest, except if the operation 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**listReportsUsingGET()**](ReportingApi.md#listReportsUsingGET) | **GET** /v2/reporting/reports | List Reports |
+| [**retrieveReportUsingGET()**](ReportingApi.md#retrieveReportUsingGET) | **GET** /v2/reporting/reports/{report_id} | Retrieve Report |
 | [**runReportUsingPOST()**](ReportingApi.md#runReportUsingPOST) | **POST** /v2/reporting/reports/{report_id}:run | Run a Report |
 
 
@@ -55,6 +56,61 @@ try {
 ### Return type
 
 [**\Keap\Core\V2\Model\ListReportsResponse**](../Model/ListReportsResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `retrieveReportUsingGET()`
+
+```php
+retrieveReportUsingGET($report_id): \Keap\Core\V2\Model\Report
+```
+
+Retrieve Report
+
+Retrieves information about a Report as defined in the application (identified as Saved Search)<br/><span style='color:red'>Deprecated as of v2</span>
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+$apiInstance = new Keap\Core\V2\Api\ReportingApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$report_id = 'report_id_example'; // string | report_id
+
+try {
+    $result = $apiInstance->retrieveReportUsingGET($report_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ReportingApi->retrieveReportUsingGET: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **report_id** | **string**| report_id | |
+
+### Return type
+
+[**\Keap\Core\V2\Model\Report**](../Model/Report.md)
 
 ### Authorization
 

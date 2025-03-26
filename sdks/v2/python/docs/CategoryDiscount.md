@@ -6,10 +6,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **apply_to_commissions** | **bool** |  | [optional] 
-**category_id** | **str** |  | [optional] 
 **criteria** | [**List[DiscountCriteria]**](DiscountCriteria.md) |  | [optional] 
 **description** | **str** |  | [optional] 
 **discount_percent** | **float** |  | [optional] 
+**id** | **str** |  | [optional] 
 **name** | **str** |  | [optional] 
 **product_categories** | **List[str]** |  | [optional] 
 

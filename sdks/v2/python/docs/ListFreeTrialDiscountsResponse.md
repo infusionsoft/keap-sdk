@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**free_trial_discounts** | [**List[FreeTrialDiscount]**](FreeTrialDiscount.md) |  | [optional] 
+**discounts** | [**List[FreeTrialDiscount]**](FreeTrialDiscount.md) |  | [optional] 
 **next_page_token** | **str** |  | [optional] 
 
 ## Example

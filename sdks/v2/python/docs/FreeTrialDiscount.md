@@ -7,9 +7,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **criteria** | [**List[DiscountCriteria]**](DiscountCriteria.md) |  | [optional] 
 **description** | **str** |  | [optional] 
-**discount_id** | **str** |  | [optional] 
 **free_trial_days** | **int** |  | [optional] 
 **hide_price** | **bool** |  | [optional] 
+**id** | **str** |  | [optional] 
 **name** | **str** |  | [optional] 
 **subscription_plan_id** | **str** |  | [optional] 
 

@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**discounts** | [**List[ProductDiscount]**](ProductDiscount.md) |  | [optional] 
 **next_page_token** | **str** |  | [optional] 
-**product_discounts** | [**List[ProductDiscount]**](ProductDiscount.md) |  | [optional] 
 
 ## Example
 

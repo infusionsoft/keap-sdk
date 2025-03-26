@@ -5,6 +5,7 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
 | [**ListReportsUsingGET**](ReportingApi.md#listreportsusingget) | **GET** /v2/reporting/reports | List Reports |
+| [**RetrieveReportUsingGET**](ReportingApi.md#retrievereportusingget) | **GET** /v2/reporting/reports/{report_id} | Retrieve Report |
 | [**RunReportUsingPOST**](ReportingApi.md#runreportusingpost) | **POST** /v2/reporting/reports/{report_id}:run | Run a Report |
 
 <a id="listreportsusingget"></a>
@@ -86,6 +87,100 @@ catch (ApiException e)
 ### Return type
 
 [**ListReportsResponse**](ListReportsResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="retrievereportusingget"></a>
+# **RetrieveReportUsingGET**
+> Report RetrieveReportUsingGET (string reportId)
+
+Retrieve Report
+
+Retrieves information about a Report as defined in the application (identified as Saved Search)<br/><span style='color:red'>Deprecated as of v2</span>
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class RetrieveReportUsingGETExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm/rest";
+            var apiInstance = new ReportingApi(config);
+            var reportId = "reportId_example";  // string | report_id
+
+            try
+            {
+                // Retrieve Report
+                Report result = apiInstance.RetrieveReportUsingGET(reportId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ReportingApi.RetrieveReportUsingGET: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the RetrieveReportUsingGETWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Retrieve Report
+    ApiResponse<Report> response = apiInstance.RetrieveReportUsingGETWithHttpInfo(reportId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ReportingApi.RetrieveReportUsingGETWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **reportId** | **string** | report_id |  |
+
+### Return type
+
+[**Report**](Report.md)
 
 ### Authorization
 

@@ -5,6 +5,7 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**listReportsUsingGET**](ReportingApi.md#listReportsUsingGET) | **GET** /v2/reporting/reports | List Reports
+[**retrieveReportUsingGET**](ReportingApi.md#retrieveReportUsingGET) | **GET** /v2/reporting/reports/{report_id} | Retrieve Report
 [**runReportUsingPOST**](ReportingApi.md#runReportUsingPOST) | **POST** /v2/reporting/reports/{report_id}:run | Run a Report
 
 
@@ -52,6 +53,62 @@ Name | Type | Description  | Notes
 ### Return type
 
 **ListReportsResponse**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **retrieveReportUsingGET**
+> Report retrieveReportUsingGET()
+
+Retrieves information about a Report as defined in the application (identified as Saved Search)<br/><span style=\'color:red\'>Deprecated as of v2</span>
+
+### Example
+
+
+```typescript
+import { createConfiguration, ReportingApi } from '';
+import type { ReportingApiRetrieveReportUsingGETRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new ReportingApi(configuration);
+
+const request: ReportingApiRetrieveReportUsingGETRequest = {
+    // report_id
+  reportId: "report_id_example",
+};
+
+const data = await apiInstance.retrieveReportUsingGET(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **reportId** | [**string**] | report_id | defaults to undefined
+
+
+### Return type
+
+**Report**
 
 ### Authorization
 

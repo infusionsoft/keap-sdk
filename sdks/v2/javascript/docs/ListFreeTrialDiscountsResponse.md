@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**freeTrialDiscounts** | [**[FreeTrialDiscount]**](FreeTrialDiscount.md) |  | [optional] 
+**discounts** | [**[FreeTrialDiscount]**](FreeTrialDiscount.md) |  | [optional] 
 **nextPageToken** | **String** |  | [optional] 
 
 

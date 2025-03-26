@@ -6,6 +6,8 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 |------------- | ------------- | -------------|
 | [**listReportsUsingGET**](ReportingApi.md#listReportsUsingGET) | **GET** /v2/reporting/reports | List Reports |
 | [**listReportsUsingGETWithHttpInfo**](ReportingApi.md#listReportsUsingGETWithHttpInfo) | **GET** /v2/reporting/reports | List Reports |
+| [**retrieveReportUsingGET**](ReportingApi.md#retrieveReportUsingGET) | **GET** /v2/reporting/reports/{report_id} | Retrieve Report |
+| [**retrieveReportUsingGETWithHttpInfo**](ReportingApi.md#retrieveReportUsingGETWithHttpInfo) | **GET** /v2/reporting/reports/{report_id} | Retrieve Report |
 | [**runReportUsingPOST**](ReportingApi.md#runReportUsingPOST) | **POST** /v2/reporting/reports/{report_id}:run | Run a Report |
 | [**runReportUsingPOSTWithHttpInfo**](ReportingApi.md#runReportUsingPOSTWithHttpInfo) | **POST** /v2/reporting/reports/{report_id}:run | Run a Report |
 
@@ -143,6 +145,146 @@ public class Example {
 ### Return type
 
 ApiResponse<[**ListReportsResponse**](ListReportsResponse.md)>
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+
+
+## retrieveReportUsingGET
+
+> Report retrieveReportUsingGET(reportId)
+
+Retrieve Report
+
+Retrieves information about a Report as defined in the application (identified as Saved Search)&lt;br/&gt;&lt;span style&#x3D;&#39;color:red&#39;&gt;Deprecated as of v2&lt;/span&gt;
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.ReportingApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+
+        ReportingApi apiInstance = new ReportingApi(defaultClient);
+        String reportId = "reportId_example"; // String | report_id
+        try {
+            Report result = apiInstance.retrieveReportUsingGET(reportId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ReportingApi#retrieveReportUsingGET");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **reportId** | **String**| report_id | |
+
+### Return type
+
+[**Report**](Report.md)
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+
+## retrieveReportUsingGETWithHttpInfo
+
+> ApiResponse<Report> retrieveReportUsingGET retrieveReportUsingGETWithHttpInfo(reportId)
+
+Retrieve Report
+
+Retrieves information about a Report as defined in the application (identified as Saved Search)&lt;br/&gt;&lt;span style&#x3D;&#39;color:red&#39;&gt;Deprecated as of v2&lt;/span&gt;
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.ReportingApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+
+        ReportingApi apiInstance = new ReportingApi(defaultClient);
+        String reportId = "reportId_example"; // String | report_id
+        try {
+            ApiResponse<Report> response = apiInstance.retrieveReportUsingGETWithHttpInfo(reportId);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ReportingApi#retrieveReportUsingGET");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **reportId** | **String**| report_id | |
+
+### Return type
+
+ApiResponse<[**Report**](Report.md)>
 
 
 ### Authorization

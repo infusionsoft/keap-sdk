@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **description** | **string** |  | [optional]
 **discount_type** | **string** |  |
 **discount_value** | **float** |  |
-**name** | **string** |  | [optional]
+**name** | **string** |  |
 **product_id** | **string** |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

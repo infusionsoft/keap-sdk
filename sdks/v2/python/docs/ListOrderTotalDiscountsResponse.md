@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**discounts** | [**List[OrderTotalDiscount]**](OrderTotalDiscount.md) |  | [optional] 
 **next_page_token** | **str** |  | [optional] 
-**order_total_discounts** | [**List[OrderTotalDiscount]**](OrderTotalDiscount.md) |  | [optional] 
 
 ## Example
 

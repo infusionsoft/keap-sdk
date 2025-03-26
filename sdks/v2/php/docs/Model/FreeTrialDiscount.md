@@ -6,9 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **criteria** | [**\Keap\Core\V2\Model\DiscountCriteria[]**](DiscountCriteria.md) |  | [optional]
 **description** | **string** |  | [optional]
-**discount_id** | **string** |  | [optional]
 **free_trial_days** | **int** |  | [optional]
 **hide_price** | **bool** |  | [optional]
+**id** | **string** |  | [optional]
 **name** | **string** |  | [optional]
 **subscription_plan_id** | **string** |  | [optional]
 
