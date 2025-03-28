@@ -44,11 +44,6 @@ import { AssignProductsRequest } from '../models/AssignProductsRequest';
 import { Automation } from '../models/Automation';
 import { AutomationCategory } from '../models/AutomationCategory';
 import { AutomationLockStatus } from '../models/AutomationLockStatus';
-import { BaseListResponseDeal } from '../models/BaseListResponseDeal';
-import { BaseListResponseDealNote } from '../models/BaseListResponseDealNote';
-import { BaseListResponsePipeline } from '../models/BaseListResponsePipeline';
-import { BaseListResponsePipelineSummary } from '../models/BaseListResponsePipelineSummary';
-import { BaseListResponseStage } from '../models/BaseListResponseStage';
 import { BasicCompany } from '../models/BasicCompany';
 import { BasicContact } from '../models/BasicContact';
 import { BasicUser } from '../models/BasicUser';
@@ -77,7 +72,6 @@ import { CreateContactUtmPropertiesRequest } from '../models/CreateContactUtmPro
 import { CreateCustomFieldOptionRequest } from '../models/CreateCustomFieldOptionRequest';
 import { CreateCustomFieldRequest } from '../models/CreateCustomFieldRequest';
 import { CreateCustomFieldResponse } from '../models/CreateCustomFieldResponse';
-import { CreateDealNoteRequest } from '../models/CreateDealNoteRequest';
 import { CreateDefaultCommissionProgramRequest } from '../models/CreateDefaultCommissionProgramRequest';
 import { CreateEmailSentRequest } from '../models/CreateEmailSentRequest';
 import { CreateEmailsSentRequest } from '../models/CreateEmailsSentRequest';
@@ -95,7 +89,6 @@ import { CreateOrUpdateAffiliateLinkRequest } from '../models/CreateOrUpdateAffi
 import { CreateOrderTotalDiscountRequest } from '../models/CreateOrderTotalDiscountRequest';
 import { CreatePaymentMethodConfigRequest } from '../models/CreatePaymentMethodConfigRequest';
 import { CreatePaymentRequest } from '../models/CreatePaymentRequest';
-import { CreatePipelineRequest } from '../models/CreatePipelineRequest';
 import { CreateProductCategoryRequest } from '../models/CreateProductCategoryRequest';
 import { CreateProductCommissionProgramRequest } from '../models/CreateProductCommissionProgramRequest';
 import { CreateProductDiscountRequest } from '../models/CreateProductDiscountRequest';
@@ -104,7 +97,6 @@ import { CreateProductRequest } from '../models/CreateProductRequest';
 import { CreateReferralRequest } from '../models/CreateReferralRequest';
 import { CreateRestOrderItemRequest } from '../models/CreateRestOrderItemRequest';
 import { CreateShippingDiscountRequest } from '../models/CreateShippingDiscountRequest';
-import { CreateStageRequest } from '../models/CreateStageRequest';
 import { CreateSubscriptionCommissionProgramRequest } from '../models/CreateSubscriptionCommissionProgramRequest';
 import { CreateSubscriptionPlanRequest } from '../models/CreateSubscriptionPlanRequest';
 import { CreateSubscriptionV2 } from '../models/CreateSubscriptionV2';
@@ -120,13 +112,6 @@ import { CustomField } from '../models/CustomField';
 import { CustomFieldMetaData } from '../models/CustomFieldMetaData';
 import { CustomFieldOption } from '../models/CustomFieldOption';
 import { CustomFieldValue } from '../models/CustomFieldValue';
-import { Deal } from '../models/Deal';
-import { DealContact } from '../models/DealContact';
-import { DealNote } from '../models/DealNote';
-import { DealNoteListResponse } from '../models/DealNoteListResponse';
-import { DealStage } from '../models/DealStage';
-import { DealStatus } from '../models/DealStatus';
-import { DealValue } from '../models/DealValue';
 import { DefaultCommission } from '../models/DefaultCommission';
 import { DeleteEmailsRequest } from '../models/DeleteEmailsRequest';
 import { DeleteEmailsResponse } from '../models/DeleteEmailsResponse';
@@ -224,7 +209,6 @@ import { ListTransactionsResponse } from '../models/ListTransactionsResponse';
 import { ListUserResponse } from '../models/ListUserResponse';
 import { ModelError } from '../models/ModelError';
 import { ModelFile } from '../models/ModelFile';
-import { Money } from '../models/Money';
 import { Note } from '../models/Note';
 import { NoteTemplate } from '../models/NoteTemplate';
 import { ObjectModel } from '../models/ObjectModel';
@@ -235,19 +219,11 @@ import { OrderItemTax } from '../models/OrderItemTax';
 import { OrderTotalDiscount } from '../models/OrderTotalDiscount';
 import { Origin } from '../models/Origin';
 import { OriginRequest } from '../models/OriginRequest';
-import { Owner } from '../models/Owner';
 import { PaymentMethod } from '../models/PaymentMethod';
 import { PaymentMethodConfig } from '../models/PaymentMethodConfig';
 import { PaymentPlan } from '../models/PaymentPlan';
 import { PaymentResult } from '../models/PaymentResult';
 import { PhoneNumber } from '../models/PhoneNumber';
-import { Pipeline } from '../models/Pipeline';
-import { PipelineListResponse } from '../models/PipelineListResponse';
-import { PipelineOutcomeLabel } from '../models/PipelineOutcomeLabel';
-import { PipelineOutcomeLabelListResponse } from '../models/PipelineOutcomeLabelListResponse';
-import { PipelineStageListResponse } from '../models/PipelineStageListResponse';
-import { PipelineSummariesListResponse } from '../models/PipelineSummariesListResponse';
-import { PipelineSummary } from '../models/PipelineSummary';
 import { ProductCategory } from '../models/ProductCategory';
 import { ProductCommission } from '../models/ProductCommission';
 import { ProductCommissionProgram } from '../models/ProductCommissionProgram';
@@ -291,10 +267,7 @@ import { ShippingInformation } from '../models/ShippingInformation';
 import { ShippingMethod } from '../models/ShippingMethod';
 import { SocialAccount } from '../models/SocialAccount';
 import { StackTraceElement } from '../models/StackTraceElement';
-import { Stage } from '../models/Stage';
-import { StageDealListResponse } from '../models/StageDealListResponse';
 import { StageDetails } from '../models/StageDetails';
-import { StageListResponse } from '../models/StageListResponse';
 import { SubscriptionCommission } from '../models/SubscriptionCommission';
 import { SubscriptionCommissionProgram } from '../models/SubscriptionCommissionProgram';
 import { SubscriptionPlan } from '../models/SubscriptionPlan';
@@ -312,7 +285,6 @@ import { UpdateCategoryDiscountRequest } from '../models/UpdateCategoryDiscountR
 import { UpdateCommissionProgramRequest } from '../models/UpdateCommissionProgramRequest';
 import { UpdateCompanyRequest } from '../models/UpdateCompanyRequest';
 import { UpdateCustomFieldMetaDataRequest } from '../models/UpdateCustomFieldMetaDataRequest';
-import { UpdateDealNoteRequest } from '../models/UpdateDealNoteRequest';
 import { UpdateDefaultCommissionProgramRequest } from '../models/UpdateDefaultCommissionProgramRequest';
 import { UpdateEmailAddress } from '../models/UpdateEmailAddress';
 import { UpdateFreeTrialDiscountRequest } from '../models/UpdateFreeTrialDiscountRequest';
@@ -325,8 +297,6 @@ import { UpdateOpportunityStageRequest } from '../models/UpdateOpportunityStageR
 import { UpdateOrderItemRequest } from '../models/UpdateOrderItemRequest';
 import { UpdateOrderRequest } from '../models/UpdateOrderRequest';
 import { UpdateOrderTotalDiscountRequest } from '../models/UpdateOrderTotalDiscountRequest';
-import { UpdateOutcomeLabelsRequest } from '../models/UpdateOutcomeLabelsRequest';
-import { UpdatePipelineRequest } from '../models/UpdatePipelineRequest';
 import { UpdateProductCategoryRequest } from '../models/UpdateProductCategoryRequest';
 import { UpdateProductCommissionProgramRequest } from '../models/UpdateProductCommissionProgramRequest';
 import { UpdateProductDiscountRequest } from '../models/UpdateProductDiscountRequest';
@@ -335,7 +305,6 @@ import { UpdateProductInterestRequest } from '../models/UpdateProductInterestReq
 import { UpdateProductInventoryRequest } from '../models/UpdateProductInventoryRequest';
 import { UpdateProductRequest } from '../models/UpdateProductRequest';
 import { UpdateShippingDiscountRequest } from '../models/UpdateShippingDiscountRequest';
-import { UpdateStageRequest } from '../models/UpdateStageRequest';
 import { UpdateSubscriptionCommissionProgramRequest } from '../models/UpdateSubscriptionCommissionProgramRequest';
 import { UpdateSubscriptionPlanRequest } from '../models/UpdateSubscriptionPlanRequest';
 import { UpdateSubscriptionRequest } from '../models/UpdateSubscriptionRequest';
@@ -1683,200 +1652,6 @@ export class ObjectContactApi {
 
 }
 
-import { ObservableDealsApi } from "./ObservableAPI";
-import { DealsApiRequestFactory, DealsApiResponseProcessor} from "../apis/DealsApi";
-
-export interface DealsApiDeleteRequest {
-    /**
-     * the ID of the note to delete
-     * Defaults to: undefined
-     * @type string
-     * @memberof DealsApi_delete
-     */
-    noteId: string
-}
-
-export interface DealsApiCreateNoteRequest {
-    /**
-     * the deal ID to associate the new note with
-     * Defaults to: undefined
-     * @type string
-     * @memberof DealsApicreateNote
-     */
-    id: string
-    /**
-     * the request body containing note details
-     * @type CreateDealNoteRequest
-     * @memberof DealsApicreateNote
-     */
-    createDealNoteRequest: CreateDealNoteRequest
-}
-
-export interface DealsApiGetNoteRequest {
-    /**
-     * the ID of the note to retrieve
-     * Defaults to: undefined
-     * @type string
-     * @memberof DealsApigetNote
-     */
-    noteId: string
-}
-
-export interface DealsApiListNotesRequest {
-    /**
-     * the deal ID to list notes for
-     * Defaults to: undefined
-     * @type string
-     * @memberof DealsApilistNotes
-     */
-    id: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof DealsApilistNotes
-     */
-    filter?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof DealsApilistNotes
-     */
-    pageToken?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof DealsApilistNotes
-     */
-    orderBy?: string
-    /**
-     * 
-     * Minimum: 1
-     * Maximum: 1000
-     * Defaults to: 1000
-     * @type number
-     * @memberof DealsApilistNotes
-     */
-    pageSize?: number
-}
-
-export interface DealsApiUpdateRequest {
-    /**
-     * the ID of the note to update
-     * Defaults to: undefined
-     * @type string
-     * @memberof DealsApiupdate
-     */
-    noteId: string
-    /**
-     * the request body containing updated note details
-     * @type UpdateDealNoteRequest
-     * @memberof DealsApiupdate
-     */
-    updateDealNoteRequest: UpdateDealNoteRequest
-}
-
-export class ObjectDealsApi {
-    private api: ObservableDealsApi
-
-    public constructor(configuration: Configuration, requestFactory?: DealsApiRequestFactory, responseProcessor?: DealsApiResponseProcessor) {
-        this.api = new ObservableDealsApi(configuration, requestFactory, responseProcessor);
-    }
-
-    /**
-     * Deletes a specific deal note by its ID.
-     * Deletes a specific deal note by its ID.
-     * @param param the request object
-     */
-    public _deleteWithHttpInfo(param: DealsApiDeleteRequest, options?: Configuration): Promise<HttpInfo<void>> {
-        return this.api._deleteWithHttpInfo(param.noteId,  options).toPromise();
-    }
-
-    /**
-     * Deletes a specific deal note by its ID.
-     * Deletes a specific deal note by its ID.
-     * @param param the request object
-     */
-    public _delete(param: DealsApiDeleteRequest, options?: Configuration): Promise<void> {
-        return this.api._delete(param.noteId,  options).toPromise();
-    }
-
-    /**
-     * Creates a new note for a specific deal.
-     * Creates a new note for a specific deal.
-     * @param param the request object
-     */
-    public createNoteWithHttpInfo(param: DealsApiCreateNoteRequest, options?: Configuration): Promise<HttpInfo<DealNote>> {
-        return this.api.createNoteWithHttpInfo(param.id, param.createDealNoteRequest,  options).toPromise();
-    }
-
-    /**
-     * Creates a new note for a specific deal.
-     * Creates a new note for a specific deal.
-     * @param param the request object
-     */
-    public createNote(param: DealsApiCreateNoteRequest, options?: Configuration): Promise<DealNote> {
-        return this.api.createNote(param.id, param.createDealNoteRequest,  options).toPromise();
-    }
-
-    /**
-     * Retrieves a specific deal note by its ID.
-     * Retrieves a specific deal note by its ID.
-     * @param param the request object
-     */
-    public getNoteWithHttpInfo(param: DealsApiGetNoteRequest, options?: Configuration): Promise<HttpInfo<DealNote>> {
-        return this.api.getNoteWithHttpInfo(param.noteId,  options).toPromise();
-    }
-
-    /**
-     * Retrieves a specific deal note by its ID.
-     * Retrieves a specific deal note by its ID.
-     * @param param the request object
-     */
-    public getNote(param: DealsApiGetNoteRequest, options?: Configuration): Promise<DealNote> {
-        return this.api.getNote(param.noteId,  options).toPromise();
-    }
-
-    /**
-     * Lists all notes associated with a specific deal.
-     * Lists all notes associated with a specific deal.
-     * @param param the request object
-     */
-    public listNotesWithHttpInfo(param: DealsApiListNotesRequest, options?: Configuration): Promise<HttpInfo<DealNoteListResponse>> {
-        return this.api.listNotesWithHttpInfo(param.id, param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
-    }
-
-    /**
-     * Lists all notes associated with a specific deal.
-     * Lists all notes associated with a specific deal.
-     * @param param the request object
-     */
-    public listNotes(param: DealsApiListNotesRequest, options?: Configuration): Promise<DealNoteListResponse> {
-        return this.api.listNotes(param.id, param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
-    }
-
-    /**
-     * Updates a specific deal note by its ID.
-     * Updates a specific deal note by its ID.
-     * @param param the request object
-     */
-    public updateWithHttpInfo(param: DealsApiUpdateRequest, options?: Configuration): Promise<HttpInfo<DealNote>> {
-        return this.api.updateWithHttpInfo(param.noteId, param.updateDealNoteRequest,  options).toPromise();
-    }
-
-    /**
-     * Updates a specific deal note by its ID.
-     * Updates a specific deal note by its ID.
-     * @param param the request object
-     */
-    public update(param: DealsApiUpdateRequest, options?: Configuration): Promise<DealNote> {
-        return this.api.update(param.noteId, param.updateDealNoteRequest,  options).toPromise();
-    }
-
-}
-
 import { ObservableEmailApi } from "./ObservableAPI";
 import { EmailApiRequestFactory, EmailApiResponseProcessor} from "../apis/EmailApi";
 
@@ -2388,408 +2163,6 @@ export class ObjectPaymentMethodConfigsApi {
 
 }
 
-import { ObservablePipelinesApi } from "./ObservableAPI";
-import { PipelinesApiRequestFactory, PipelinesApiResponseProcessor} from "../apis/PipelinesApi";
-
-export interface PipelinesApiCreateRequest {
-    /**
-     * the create request
-     * @type CreatePipelineRequest
-     * @memberof PipelinesApicreate
-     */
-    createPipelineRequest: CreatePipelineRequest
-}
-
-export interface PipelinesApiDelete1Request {
-    /**
-     * the pipeline identifier
-     * Defaults to: undefined
-     * @type string
-     * @memberof PipelinesApidelete1
-     */
-    id: string
-    /**
-     * flag indicating whether cleanup is allowed, can be null
-     * Defaults to: undefined
-     * @type boolean
-     * @memberof PipelinesApidelete1
-     */
-    allowCleanup?: boolean
-    /**
-     * the new stage identifier, can be null
-     * Defaults to: undefined
-     * @type string
-     * @memberof PipelinesApidelete1
-     */
-    newStageId?: string
-}
-
-export interface PipelinesApiGetRequest {
-    /**
-     * the entity identifier
-     * Defaults to: undefined
-     * @type string
-     * @memberof PipelinesApiget
-     */
-    id: string
-}
-
-export interface PipelinesApiGetOutcomeLabelsRequest {
-    /**
-     * the pipeline identifier
-     * Defaults to: undefined
-     * @type string
-     * @memberof PipelinesApigetOutcomeLabels
-     */
-    id: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof PipelinesApigetOutcomeLabels
-     */
-    filter?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof PipelinesApigetOutcomeLabels
-     */
-    pageToken?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof PipelinesApigetOutcomeLabels
-     */
-    orderBy?: string
-    /**
-     * 
-     * Minimum: 1
-     * Maximum: 1000
-     * Defaults to: 1000
-     * @type number
-     * @memberof PipelinesApigetOutcomeLabels
-     */
-    pageSize?: number
-}
-
-export interface PipelinesApiListRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof PipelinesApilist
-     */
-    filter?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof PipelinesApilist
-     */
-    pageToken?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof PipelinesApilist
-     */
-    orderBy?: string
-    /**
-     * 
-     * Minimum: 1
-     * Maximum: 1000
-     * Defaults to: 1000
-     * @type number
-     * @memberof PipelinesApilist
-     */
-    pageSize?: number
-}
-
-export interface PipelinesApiListStagesRequest {
-    /**
-     * the pipeline identifier
-     * Defaults to: undefined
-     * @type string
-     * @memberof PipelinesApilistStages
-     */
-    id: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof PipelinesApilistStages
-     */
-    filter?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof PipelinesApilistStages
-     */
-    pageToken?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof PipelinesApilistStages
-     */
-    orderBy?: string
-    /**
-     * 
-     * Minimum: 1
-     * Maximum: 1000
-     * Defaults to: 1000
-     * @type number
-     * @memberof PipelinesApilistStages
-     */
-    pageSize?: number
-}
-
-export interface PipelinesApiListSummariesRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof PipelinesApilistSummaries
-     */
-    filter?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof PipelinesApilistSummaries
-     */
-    pageToken?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof PipelinesApilistSummaries
-     */
-    orderBy?: string
-    /**
-     * 
-     * Minimum: 1
-     * Maximum: 1000
-     * Defaults to: 1000
-     * @type number
-     * @memberof PipelinesApilistSummaries
-     */
-    pageSize?: number
-}
-
-export interface PipelinesApiSetOutcomeLabelsRequest {
-    /**
-     * the pipeline identifier
-     * Defaults to: undefined
-     * @type string
-     * @memberof PipelinesApisetOutcomeLabels
-     */
-    id: string
-    /**
-     * the request containing the new outcome labels
-     * @type UpdateOutcomeLabelsRequest
-     * @memberof PipelinesApisetOutcomeLabels
-     */
-    updateOutcomeLabelsRequest: UpdateOutcomeLabelsRequest
-}
-
-export interface PipelinesApiUpdate1Request {
-    /**
-     * the entity identifier
-     * Defaults to: undefined
-     * @type string
-     * @memberof PipelinesApiupdate1
-     */
-    id: string
-    /**
-     * the fields to update
-     * Defaults to: undefined
-     * @type Array&lt;string&gt;
-     * @memberof PipelinesApiupdate1
-     */
-    updateMask: Array<string>
-    /**
-     * the update request
-     * @type UpdatePipelineRequest
-     * @memberof PipelinesApiupdate1
-     */
-    updatePipelineRequest: UpdatePipelineRequest
-}
-
-export class ObjectPipelinesApi {
-    private api: ObservablePipelinesApi
-
-    public constructor(configuration: Configuration, requestFactory?: PipelinesApiRequestFactory, responseProcessor?: PipelinesApiResponseProcessor) {
-        this.api = new ObservablePipelinesApi(configuration, requestFactory, responseProcessor);
-    }
-
-    /**
-     * Creates a new entity.
-     * Creates a new entity.
-     * @param param the request object
-     */
-    public createWithHttpInfo(param: PipelinesApiCreateRequest, options?: Configuration): Promise<HttpInfo<Pipeline>> {
-        return this.api.createWithHttpInfo(param.createPipelineRequest,  options).toPromise();
-    }
-
-    /**
-     * Creates a new entity.
-     * Creates a new entity.
-     * @param param the request object
-     */
-    public create(param: PipelinesApiCreateRequest, options?: Configuration): Promise<Pipeline> {
-        return this.api.create(param.createPipelineRequest,  options).toPromise();
-    }
-
-    /**
-     * Deletes a pipeline.
-     * Deletes a pipeline.
-     * @param param the request object
-     */
-    public delete1WithHttpInfo(param: PipelinesApiDelete1Request, options?: Configuration): Promise<HttpInfo<void>> {
-        return this.api.delete1WithHttpInfo(param.id, param.allowCleanup, param.newStageId,  options).toPromise();
-    }
-
-    /**
-     * Deletes a pipeline.
-     * Deletes a pipeline.
-     * @param param the request object
-     */
-    public delete1(param: PipelinesApiDelete1Request, options?: Configuration): Promise<void> {
-        return this.api.delete1(param.id, param.allowCleanup, param.newStageId,  options).toPromise();
-    }
-
-    /**
-     * Retrieves an entity by its identifier.
-     * Retrieves an entity by its identifier.
-     * @param param the request object
-     */
-    public getWithHttpInfo(param: PipelinesApiGetRequest, options?: Configuration): Promise<HttpInfo<Pipeline>> {
-        return this.api.getWithHttpInfo(param.id,  options).toPromise();
-    }
-
-    /**
-     * Retrieves an entity by its identifier.
-     * Retrieves an entity by its identifier.
-     * @param param the request object
-     */
-    public get(param: PipelinesApiGetRequest, options?: Configuration): Promise<Pipeline> {
-        return this.api.get(param.id,  options).toPromise();
-    }
-
-    /**
-     * Gets the outcome labels for a pipeline.
-     * Gets the outcome labels for a pipeline.
-     * @param param the request object
-     */
-    public getOutcomeLabelsWithHttpInfo(param: PipelinesApiGetOutcomeLabelsRequest, options?: Configuration): Promise<HttpInfo<PipelineOutcomeLabelListResponse>> {
-        return this.api.getOutcomeLabelsWithHttpInfo(param.id, param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
-    }
-
-    /**
-     * Gets the outcome labels for a pipeline.
-     * Gets the outcome labels for a pipeline.
-     * @param param the request object
-     */
-    public getOutcomeLabels(param: PipelinesApiGetOutcomeLabelsRequest, options?: Configuration): Promise<PipelineOutcomeLabelListResponse> {
-        return this.api.getOutcomeLabels(param.id, param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
-    }
-
-    /**
-     * Lists entities based on the provided ListCommand.
-     * Lists entities based on the provided ListCommand.
-     * @param param the request object
-     */
-    public listWithHttpInfo(param: PipelinesApiListRequest = {}, options?: Configuration): Promise<HttpInfo<PipelineListResponse>> {
-        return this.api.listWithHttpInfo(param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
-    }
-
-    /**
-     * Lists entities based on the provided ListCommand.
-     * Lists entities based on the provided ListCommand.
-     * @param param the request object
-     */
-    public list(param: PipelinesApiListRequest = {}, options?: Configuration): Promise<PipelineListResponse> {
-        return this.api.list(param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
-    }
-
-    /**
-     * Retrieves a list of stages for a specific pipeline.
-     * Retrieves a list of stages for a specific pipeline.
-     * @param param the request object
-     */
-    public listStagesWithHttpInfo(param: PipelinesApiListStagesRequest, options?: Configuration): Promise<HttpInfo<PipelineStageListResponse>> {
-        return this.api.listStagesWithHttpInfo(param.id, param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
-    }
-
-    /**
-     * Retrieves a list of stages for a specific pipeline.
-     * Retrieves a list of stages for a specific pipeline.
-     * @param param the request object
-     */
-    public listStages(param: PipelinesApiListStagesRequest, options?: Configuration): Promise<PipelineStageListResponse> {
-        return this.api.listStages(param.id, param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
-    }
-
-    /**
-     * Retrieves a list of pipeline summaries.
-     * Retrieves a list of pipeline summaries.
-     * @param param the request object
-     */
-    public listSummariesWithHttpInfo(param: PipelinesApiListSummariesRequest = {}, options?: Configuration): Promise<HttpInfo<PipelineSummariesListResponse>> {
-        return this.api.listSummariesWithHttpInfo(param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
-    }
-
-    /**
-     * Retrieves a list of pipeline summaries.
-     * Retrieves a list of pipeline summaries.
-     * @param param the request object
-     */
-    public listSummaries(param: PipelinesApiListSummariesRequest = {}, options?: Configuration): Promise<PipelineSummariesListResponse> {
-        return this.api.listSummaries(param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
-    }
-
-    /**
-     * Sets the outcome labels for a pipeline.
-     * Sets the outcome labels for a pipeline.
-     * @param param the request object
-     */
-    public setOutcomeLabelsWithHttpInfo(param: PipelinesApiSetOutcomeLabelsRequest, options?: Configuration): Promise<HttpInfo<PipelineOutcomeLabelListResponse>> {
-        return this.api.setOutcomeLabelsWithHttpInfo(param.id, param.updateOutcomeLabelsRequest,  options).toPromise();
-    }
-
-    /**
-     * Sets the outcome labels for a pipeline.
-     * Sets the outcome labels for a pipeline.
-     * @param param the request object
-     */
-    public setOutcomeLabels(param: PipelinesApiSetOutcomeLabelsRequest, options?: Configuration): Promise<PipelineOutcomeLabelListResponse> {
-        return this.api.setOutcomeLabels(param.id, param.updateOutcomeLabelsRequest,  options).toPromise();
-    }
-
-    /**
-     * Updates an existing entity.
-     * Updates an existing entity.
-     * @param param the request object
-     */
-    public update1WithHttpInfo(param: PipelinesApiUpdate1Request, options?: Configuration): Promise<HttpInfo<Pipeline>> {
-        return this.api.update1WithHttpInfo(param.id, param.updateMask, param.updatePipelineRequest,  options).toPromise();
-    }
-
-    /**
-     * Updates an existing entity.
-     * Updates an existing entity.
-     * @param param the request object
-     */
-    public update1(param: PipelinesApiUpdate1Request, options?: Configuration): Promise<Pipeline> {
-        return this.api.update1(param.id, param.updateMask, param.updatePipelineRequest,  options).toPromise();
-    }
-
-}
-
 import { ObservableReportingApi } from "./ObservableAPI";
 import { ReportingApiRequestFactory, ReportingApiResponseProcessor} from "../apis/ReportingApi";
 
@@ -3057,258 +2430,6 @@ export class ObjectSettingsApi {
      */
     public isApplicationEnabledUsingGET(param: SettingsApiIsApplicationEnabledUsingGETRequest = {}, options?: Configuration): Promise<GetApplicationEnabledStatusResponse> {
         return this.api.isApplicationEnabledUsingGET( options).toPromise();
-    }
-
-}
-
-import { ObservableStagesApi } from "./ObservableAPI";
-import { StagesApiRequestFactory, StagesApiResponseProcessor} from "../apis/StagesApi";
-
-export interface StagesApiCreate1Request {
-    /**
-     * the create request
-     * @type CreateStageRequest
-     * @memberof StagesApicreate1
-     */
-    createStageRequest: CreateStageRequest
-}
-
-export interface StagesApiDelete2Request {
-    /**
-     * the stage identifier
-     * Defaults to: undefined
-     * @type string
-     * @memberof StagesApidelete2
-     */
-    id: string
-    /**
-     * the new stage identifier, can be null
-     * Defaults to: undefined
-     * @type string
-     * @memberof StagesApidelete2
-     */
-    newStageId?: string
-}
-
-export interface StagesApiGet1Request {
-    /**
-     * the entity identifier
-     * Defaults to: undefined
-     * @type string
-     * @memberof StagesApiget1
-     */
-    id: string
-}
-
-export interface StagesApiList1Request {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof StagesApilist1
-     */
-    filter?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof StagesApilist1
-     */
-    pageToken?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof StagesApilist1
-     */
-    orderBy?: string
-    /**
-     * 
-     * Minimum: 1
-     * Maximum: 1000
-     * Defaults to: 1000
-     * @type number
-     * @memberof StagesApilist1
-     */
-    pageSize?: number
-}
-
-export interface StagesApiListStages1Request {
-    /**
-     * the stage identifier
-     * Defaults to: undefined
-     * @type string
-     * @memberof StagesApilistStages1
-     */
-    id: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof StagesApilistStages1
-     */
-    filter?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof StagesApilistStages1
-     */
-    pageToken?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof StagesApilistStages1
-     */
-    orderBy?: string
-    /**
-     * 
-     * Minimum: 1
-     * Maximum: 1000
-     * Defaults to: 1000
-     * @type number
-     * @memberof StagesApilistStages1
-     */
-    pageSize?: number
-}
-
-export interface StagesApiUpdate2Request {
-    /**
-     * the entity identifier
-     * Defaults to: undefined
-     * @type string
-     * @memberof StagesApiupdate2
-     */
-    id: string
-    /**
-     * the fields to update
-     * Defaults to: undefined
-     * @type Array&lt;string&gt;
-     * @memberof StagesApiupdate2
-     */
-    updateMask: Array<string>
-    /**
-     * the update request
-     * @type UpdateStageRequest
-     * @memberof StagesApiupdate2
-     */
-    updateStageRequest: UpdateStageRequest
-}
-
-export class ObjectStagesApi {
-    private api: ObservableStagesApi
-
-    public constructor(configuration: Configuration, requestFactory?: StagesApiRequestFactory, responseProcessor?: StagesApiResponseProcessor) {
-        this.api = new ObservableStagesApi(configuration, requestFactory, responseProcessor);
-    }
-
-    /**
-     * Creates a new entity.
-     * Creates a new entity.
-     * @param param the request object
-     */
-    public create1WithHttpInfo(param: StagesApiCreate1Request, options?: Configuration): Promise<HttpInfo<Stage>> {
-        return this.api.create1WithHttpInfo(param.createStageRequest,  options).toPromise();
-    }
-
-    /**
-     * Creates a new entity.
-     * Creates a new entity.
-     * @param param the request object
-     */
-    public create1(param: StagesApiCreate1Request, options?: Configuration): Promise<Stage> {
-        return this.api.create1(param.createStageRequest,  options).toPromise();
-    }
-
-    /**
-     * Deletes a stage by its identifier for a given tenant.
-     * Deletes a stage by its identifier for a given tenant.
-     * @param param the request object
-     */
-    public delete2WithHttpInfo(param: StagesApiDelete2Request, options?: Configuration): Promise<HttpInfo<void>> {
-        return this.api.delete2WithHttpInfo(param.id, param.newStageId,  options).toPromise();
-    }
-
-    /**
-     * Deletes a stage by its identifier for a given tenant.
-     * Deletes a stage by its identifier for a given tenant.
-     * @param param the request object
-     */
-    public delete2(param: StagesApiDelete2Request, options?: Configuration): Promise<void> {
-        return this.api.delete2(param.id, param.newStageId,  options).toPromise();
-    }
-
-    /**
-     * Retrieves an entity by its identifier.
-     * Retrieves an entity by its identifier.
-     * @param param the request object
-     */
-    public get1WithHttpInfo(param: StagesApiGet1Request, options?: Configuration): Promise<HttpInfo<Stage>> {
-        return this.api.get1WithHttpInfo(param.id,  options).toPromise();
-    }
-
-    /**
-     * Retrieves an entity by its identifier.
-     * Retrieves an entity by its identifier.
-     * @param param the request object
-     */
-    public get1(param: StagesApiGet1Request, options?: Configuration): Promise<Stage> {
-        return this.api.get1(param.id,  options).toPromise();
-    }
-
-    /**
-     * Lists entities based on the provided ListCommand.
-     * Lists entities based on the provided ListCommand.
-     * @param param the request object
-     */
-    public list1WithHttpInfo(param: StagesApiList1Request = {}, options?: Configuration): Promise<HttpInfo<StageListResponse>> {
-        return this.api.list1WithHttpInfo(param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
-    }
-
-    /**
-     * Lists entities based on the provided ListCommand.
-     * Lists entities based on the provided ListCommand.
-     * @param param the request object
-     */
-    public list1(param: StagesApiList1Request = {}, options?: Configuration): Promise<StageListResponse> {
-        return this.api.list1(param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
-    }
-
-    /**
-     * Retrieves a list of deals for a specific stage.
-     * Retrieves a list of deals for a specific stage.
-     * @param param the request object
-     */
-    public listStages1WithHttpInfo(param: StagesApiListStages1Request, options?: Configuration): Promise<HttpInfo<StageDealListResponse>> {
-        return this.api.listStages1WithHttpInfo(param.id, param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
-    }
-
-    /**
-     * Retrieves a list of deals for a specific stage.
-     * Retrieves a list of deals for a specific stage.
-     * @param param the request object
-     */
-    public listStages1(param: StagesApiListStages1Request, options?: Configuration): Promise<StageDealListResponse> {
-        return this.api.listStages1(param.id, param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
-    }
-
-    /**
-     * Updates an existing entity.
-     * Updates an existing entity.
-     * @param param the request object
-     */
-    public update2WithHttpInfo(param: StagesApiUpdate2Request, options?: Configuration): Promise<HttpInfo<Stage>> {
-        return this.api.update2WithHttpInfo(param.id, param.updateMask, param.updateStageRequest,  options).toPromise();
-    }
-
-    /**
-     * Updates an existing entity.
-     * Updates an existing entity.
-     * @param param the request object
-     */
-    public update2(param: StagesApiUpdate2Request, options?: Configuration): Promise<Stage> {
-        return this.api.update2(param.id, param.updateMask, param.updateStageRequest,  options).toPromise();
     }
 
 }
