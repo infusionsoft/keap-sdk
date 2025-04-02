@@ -1,4 +1,4 @@
-## keap-core-service-v2-sdk@0.0.48
+## keap-core-service-v2-sdk@0.0.49
 
 This generator creates TypeScript/JavaScript client that utilizes fetch-api.
 
@@ -21,7 +21,7 @@ Navigate to the folder of your consuming project and run one of the following co
 _published:_
 
 ```
-npm install keap-core-service-v2-sdk@0.0.48 --save
+npm install keap-core-service-v2-sdk@0.0.49 --save
 ```
 
 _unPublished (not recommended):_
