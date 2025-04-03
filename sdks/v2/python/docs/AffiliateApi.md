@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**add_affiliate_using_post**](AffiliateApi.md#add_affiliate_using_post) | **POST** /v2/affiliates | Create an Affiliate
 [**get_affiliate_using_get1**](AffiliateApi.md#get_affiliate_using_get1) | **GET** /v2/affiliates/{id} | Retrieve an Affiliate
 [**update_affiliate_using_patch**](AffiliateApi.md#update_affiliate_using_patch) | **PATCH** /v2/affiliates/{id} | Update an Affiliate
-[**update_commission_program_using_patch**](AffiliateApi.md#update_commission_program_using_patch) | **PATCH** /v2/affiliates/commissionPrograms/{commission_program_id} | Update a Affiliate Commission Program
+[**update_commission_program_using_patch**](AffiliateApi.md#update_commission_program_using_patch) | **PATCH** /v2/affiliates/commissionPrograms/{commission_program_id} | Update an Affiliate Commission Program
 
 
 # **add_affiliate_using_post**
@@ -76,6 +76,7 @@ No authorization required
 **201** | Created |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**500** | Internal Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -145,6 +146,7 @@ No authorization required
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**500** | Internal Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -217,13 +219,14 @@ No authorization required
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**500** | Internal Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_commission_program_using_patch**
 > AffiliateCommissionProgramResponse update_commission_program_using_patch(commission_program_id, update_commission_program_request, update_mask=update_mask)
 
-Update a Affiliate Commission Program
+Update an Affiliate Commission Program
 
 Updates the properties of an Affiliate Commission Program
 
@@ -252,7 +255,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
     update_mask = ['update_mask_example'] # List[str] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
 
     try:
-        # Update a Affiliate Commission Program
+        # Update an Affiliate Commission Program
         api_response = api_instance.update_commission_program_using_patch(commission_program_id, update_commission_program_request, update_mask=update_mask)
         print("The response of AffiliateApi->update_commission_program_using_patch:\n")
         pprint(api_response)
@@ -291,6 +294,7 @@ No authorization required
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**500** | Internal Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

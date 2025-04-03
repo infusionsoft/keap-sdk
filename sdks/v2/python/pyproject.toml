@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "keap_core_v2_client"
-version = "0.0.49"
+version = "0.0.50"
 description = "Keap REST API"
 authors = ["Keap <api@keap.com>"]
 license = "Apache 2.0"

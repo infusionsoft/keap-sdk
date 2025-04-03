@@ -103,6 +103,7 @@ No authorization required
 | **200** | OK |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **500** | Internal Server Error |  -  |
 
 ## applyTagsUsingPOSTWithHttpInfo
 
@@ -175,6 +176,7 @@ No authorization required
 | **200** | OK |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **500** | Internal Server Error |  -  |
 
 
 ## createTagCategoryUsingPOST1
@@ -243,6 +245,7 @@ No authorization required
 | **201** | Created |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **500** | Internal Server Error |  -  |
 
 ## createTagCategoryUsingPOST1WithHttpInfo
 
@@ -313,6 +316,7 @@ No authorization required
 | **201** | Created |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **500** | Internal Server Error |  -  |
 
 
 ## createTagUsingPOST1
@@ -381,6 +385,7 @@ No authorization required
 | **201** | Created |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **500** | Internal Server Error |  -  |
 
 ## createTagUsingPOST1WithHttpInfo
 
@@ -451,6 +456,7 @@ No authorization required
 | **201** | Created |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **500** | Internal Server Error |  -  |
 
 
 ## deleteTagCategoryUsingDELETE
@@ -519,6 +525,7 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
 
 ## deleteTagCategoryUsingDELETEWithHttpInfo
 
@@ -589,6 +596,7 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
 
 
 ## deleteTagUsingDELETE
@@ -657,6 +665,7 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
 
 ## deleteTagUsingDELETEWithHttpInfo
 
@@ -727,6 +736,7 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
 
 
 ## getCategoryUsingGET
@@ -796,6 +806,7 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
 
 ## getCategoryUsingGETWithHttpInfo
 
@@ -867,6 +878,7 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
 
 
 ## getTagUsingGET1
@@ -936,6 +948,7 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
 
 ## getTagUsingGET1WithHttpInfo
 
@@ -1007,6 +1020,7 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
 
 
 ## listCompaniesForTagIdUsingGET1
@@ -1084,6 +1098,7 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
 
 ## listCompaniesForTagIdUsingGET1WithHttpInfo
 
@@ -1163,6 +1178,7 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
 
 
 ## listContactsWithTagIdUsingGET
@@ -1240,6 +1256,7 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
 
 ## listContactsWithTagIdUsingGETWithHttpInfo
 
@@ -1319,6 +1336,7 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
 
 
 ## listTagCategoriesUsingGET
@@ -1394,6 +1412,7 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
 
 ## listTagCategoriesUsingGETWithHttpInfo
 
@@ -1471,6 +1490,7 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
 
 
 ## listTagsUsingGET1
@@ -1546,6 +1566,7 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
 
 ## listTagsUsingGET1WithHttpInfo
 
@@ -1623,6 +1644,7 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
 
 
 ## removeTagsUsingPOST
@@ -1692,6 +1714,7 @@ No authorization required
 | **204** | No Content |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **500** | Internal Server Error |  -  |
 
 ## removeTagsUsingPOSTWithHttpInfo
 
@@ -1763,6 +1786,7 @@ No authorization required
 | **204** | No Content |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **500** | Internal Server Error |  -  |
 
 
 ## updateTagCategoryUsingPATCH
@@ -1836,6 +1860,7 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
 
 ## updateTagCategoryUsingPATCHWithHttpInfo
 
@@ -1911,6 +1936,7 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
 
 
 ## updateTagUsingPATCH
@@ -1984,6 +2010,7 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
 
 ## updateTagUsingPATCHWithHttpInfo
 
@@ -2059,4 +2086,5 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
 

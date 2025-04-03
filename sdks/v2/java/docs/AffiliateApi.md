@@ -10,8 +10,8 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 | [**getAffiliateUsingGET1WithHttpInfo**](AffiliateApi.md#getAffiliateUsingGET1WithHttpInfo) | **GET** /v2/affiliates/{id} | Retrieve an Affiliate |
 | [**updateAffiliateUsingPATCH**](AffiliateApi.md#updateAffiliateUsingPATCH) | **PATCH** /v2/affiliates/{id} | Update an Affiliate |
 | [**updateAffiliateUsingPATCHWithHttpInfo**](AffiliateApi.md#updateAffiliateUsingPATCHWithHttpInfo) | **PATCH** /v2/affiliates/{id} | Update an Affiliate |
-| [**updateCommissionProgramUsingPATCH**](AffiliateApi.md#updateCommissionProgramUsingPATCH) | **PATCH** /v2/affiliates/commissionPrograms/{commission_program_id} | Update a Affiliate Commission Program |
-| [**updateCommissionProgramUsingPATCHWithHttpInfo**](AffiliateApi.md#updateCommissionProgramUsingPATCHWithHttpInfo) | **PATCH** /v2/affiliates/commissionPrograms/{commission_program_id} | Update a Affiliate Commission Program |
+| [**updateCommissionProgramUsingPATCH**](AffiliateApi.md#updateCommissionProgramUsingPATCH) | **PATCH** /v2/affiliates/commissionPrograms/{commission_program_id} | Update an Affiliate Commission Program |
+| [**updateCommissionProgramUsingPATCHWithHttpInfo**](AffiliateApi.md#updateCommissionProgramUsingPATCHWithHttpInfo) | **PATCH** /v2/affiliates/commissionPrograms/{commission_program_id} | Update an Affiliate Commission Program |
 
 
 
@@ -81,6 +81,7 @@ No authorization required
 | **201** | Created |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **500** | Internal Server Error |  -  |
 
 ## addAffiliateUsingPOSTWithHttpInfo
 
@@ -151,6 +152,7 @@ No authorization required
 | **201** | Created |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **500** | Internal Server Error |  -  |
 
 
 ## getAffiliateUsingGET1
@@ -220,6 +222,7 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
 
 ## getAffiliateUsingGET1WithHttpInfo
 
@@ -291,6 +294,7 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
 
 
 ## updateAffiliateUsingPATCH
@@ -362,6 +366,7 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
 
 ## updateAffiliateUsingPATCHWithHttpInfo
 
@@ -435,13 +440,14 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
 
 
 ## updateCommissionProgramUsingPATCH
 
 > AffiliateCommissionProgramResponse updateCommissionProgramUsingPATCH(commissionProgramId, updateCommissionProgramRequest, updateMask)
 
-Update a Affiliate Commission Program
+Update an Affiliate Commission Program
 
 Updates the properties of an Affiliate Commission Program
 
@@ -508,12 +514,13 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
 
 ## updateCommissionProgramUsingPATCHWithHttpInfo
 
 > ApiResponse<AffiliateCommissionProgramResponse> updateCommissionProgramUsingPATCH updateCommissionProgramUsingPATCHWithHttpInfo(commissionProgramId, updateCommissionProgramRequest, updateMask)
 
-Update a Affiliate Commission Program
+Update an Affiliate Commission Program
 
 Updates the properties of an Affiliate Commission Program
 
@@ -583,4 +590,5 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
 

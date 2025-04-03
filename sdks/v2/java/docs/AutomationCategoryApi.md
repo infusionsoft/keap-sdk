@@ -81,6 +81,7 @@ No authorization required
 | **201** | Created |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **500** | Internal Server Error |  -  |
 
 ## createCategoryUsingPOSTWithHttpInfo
 
@@ -151,6 +152,7 @@ No authorization required
 | **201** | Created |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **500** | Internal Server Error |  -  |
 
 
 ## deleteCategoriesUsingDELETE
@@ -219,6 +221,7 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
 
 ## deleteCategoriesUsingDELETEWithHttpInfo
 
@@ -289,6 +292,7 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
 
 
 ## listCategoriesUsingGET
@@ -354,6 +358,7 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
 
 ## listCategoriesUsingGETWithHttpInfo
 
@@ -421,6 +426,7 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
 
 
 ## saveCategoryUsingPUT
@@ -490,6 +496,7 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
 
 ## saveCategoryUsingPUTWithHttpInfo
 
@@ -561,4 +568,5 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
 

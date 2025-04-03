@@ -85,6 +85,7 @@ No authorization required
 | **201** | Created |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **500** | Internal Server Error |  -  |
 
 ## createEmailUsingPOST1WithHttpInfo
 
@@ -155,6 +156,7 @@ No authorization required
 | **201** | Created |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **500** | Internal Server Error |  -  |
 
 
 ## createEmailsUsingPOST1
@@ -223,6 +225,7 @@ No authorization required
 | **201** | Created |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **500** | Internal Server Error |  -  |
 
 ## createEmailsUsingPOST1WithHttpInfo
 
@@ -293,6 +296,7 @@ No authorization required
 | **201** | Created |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **500** | Internal Server Error |  -  |
 
 
 ## deleteEmailUsingDELETE1
@@ -361,6 +365,7 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
 
 ## deleteEmailUsingDELETE1WithHttpInfo
 
@@ -431,6 +436,7 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
 
 
 ## deleteEmailsUsingPOST1
@@ -499,6 +505,7 @@ No authorization required
 | **200** | OK |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **500** | Internal Server Error |  -  |
 
 ## deleteEmailsUsingPOST1WithHttpInfo
 
@@ -569,6 +576,7 @@ No authorization required
 | **200** | OK |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **500** | Internal Server Error |  -  |
 
 
 ## getEmailUsingGET1
@@ -638,6 +646,7 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
 
 ## getEmailUsingGET1WithHttpInfo
 
@@ -709,6 +718,7 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
 
 
 ## sendEmailUsingPOST1
@@ -776,6 +786,7 @@ No authorization required
 | **202** | Accepted |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **500** | Internal Server Error |  -  |
 
 ## sendEmailUsingPOST1WithHttpInfo
 
@@ -845,4 +856,5 @@ No authorization required
 | **202** | Accepted |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **500** | Internal Server Error |  -  |
 

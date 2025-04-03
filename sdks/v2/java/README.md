@@ -2,7 +2,7 @@
 
 Keap REST API
 
-- API version: 2.70.0.794081
+- API version: 2.70.0.795685
 
 - Generator version: 7.10.0
 
@@ -43,7 +43,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.keap.core</groupId>
   <artifactId>core-service-v2-java-sdk</artifactId>
-  <version>0.0.49</version>
+  <version>0.0.50</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.keap.core:core-service-v2-java-sdk:0.0.49"
+compile "com.keap.core:core-service-v2-java-sdk:0.0.50"
 ```
 
 ### Others
@@ -66,7 +66,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/core-service-v2-java-sdk-0.0.49.jar`
+- `target/core-service-v2-java-sdk-0.0.50.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -114,8 +114,8 @@ Class | Method | HTTP request | Description
 *AffiliateApi* | [**getAffiliateUsingGET1WithHttpInfo**](docs/AffiliateApi.md#getAffiliateUsingGET1WithHttpInfo) | **GET** /v2/affiliates/{id} | Retrieve an Affiliate
 *AffiliateApi* | [**updateAffiliateUsingPATCH**](docs/AffiliateApi.md#updateAffiliateUsingPATCH) | **PATCH** /v2/affiliates/{id} | Update an Affiliate
 *AffiliateApi* | [**updateAffiliateUsingPATCHWithHttpInfo**](docs/AffiliateApi.md#updateAffiliateUsingPATCHWithHttpInfo) | **PATCH** /v2/affiliates/{id} | Update an Affiliate
-*AffiliateApi* | [**updateCommissionProgramUsingPATCH**](docs/AffiliateApi.md#updateCommissionProgramUsingPATCH) | **PATCH** /v2/affiliates/commissionPrograms/{commission_program_id} | Update a Affiliate Commission Program
-*AffiliateApi* | [**updateCommissionProgramUsingPATCHWithHttpInfo**](docs/AffiliateApi.md#updateCommissionProgramUsingPATCHWithHttpInfo) | **PATCH** /v2/affiliates/commissionPrograms/{commission_program_id} | Update a Affiliate Commission Program
+*AffiliateApi* | [**updateCommissionProgramUsingPATCH**](docs/AffiliateApi.md#updateCommissionProgramUsingPATCH) | **PATCH** /v2/affiliates/commissionPrograms/{commission_program_id} | Update an Affiliate Commission Program
+*AffiliateApi* | [**updateCommissionProgramUsingPATCHWithHttpInfo**](docs/AffiliateApi.md#updateCommissionProgramUsingPATCHWithHttpInfo) | **PATCH** /v2/affiliates/commissionPrograms/{commission_program_id} | Update an Affiliate Commission Program
 *AutomationApi* | [**addContactsToAutomationSequenceUsingPOST**](docs/AutomationApi.md#addContactsToAutomationSequenceUsingPOST) | **POST** /v2/automations/{automation_id}/sequences/{sequence_id}:addContacts | Add Contacts to an Automation Sequence
 *AutomationApi* | [**addContactsToAutomationSequenceUsingPOSTWithHttpInfo**](docs/AutomationApi.md#addContactsToAutomationSequenceUsingPOSTWithHttpInfo) | **POST** /v2/automations/{automation_id}/sequences/{sequence_id}:addContacts | Add Contacts to an Automation Sequence
 *AutomationApi* | [**deleteAutomationUsingDELETE**](docs/AutomationApi.md#deleteAutomationUsingDELETE) | **DELETE** /v2/automations | Delete an Automation

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**description** | **String** | Product interest bundle description | [optional] 
-**name** | **String** | Product interest bundle name | [optional] 
+**description** | **String** | Product interest bundle description | 
+**name** | **String** | Product interest bundle name | 
 
 

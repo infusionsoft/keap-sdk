@@ -7,7 +7,7 @@ All URIs are relative to https://api.keap.com/crm/rest, except if the operation 
 | [**addAffiliateUsingPOST()**](AffiliateApi.md#addAffiliateUsingPOST) | **POST** /v2/affiliates | Create an Affiliate |
 | [**getAffiliateUsingGET1()**](AffiliateApi.md#getAffiliateUsingGET1) | **GET** /v2/affiliates/{id} | Retrieve an Affiliate |
 | [**updateAffiliateUsingPATCH()**](AffiliateApi.md#updateAffiliateUsingPATCH) | **PATCH** /v2/affiliates/{id} | Update an Affiliate |
-| [**updateCommissionProgramUsingPATCH()**](AffiliateApi.md#updateCommissionProgramUsingPATCH) | **PATCH** /v2/affiliates/commissionPrograms/{commission_program_id} | Update a Affiliate Commission Program |
+| [**updateCommissionProgramUsingPATCH()**](AffiliateApi.md#updateCommissionProgramUsingPATCH) | **PATCH** /v2/affiliates/commissionPrograms/{commission_program_id} | Update an Affiliate Commission Program |
 
 
 ## `addAffiliateUsingPOST()`
@@ -183,7 +183,7 @@ No authorization required
 updateCommissionProgramUsingPATCH($commission_program_id, $update_commission_program_request, $update_mask): \Keap\Core\V2\Model\AffiliateCommissionProgramResponse
 ```
 
-Update a Affiliate Commission Program
+Update an Affiliate Commission Program
 
 Updates the properties of an Affiliate Commission Program
 

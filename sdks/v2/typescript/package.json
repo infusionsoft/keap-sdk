@@ -1,6 +1,6 @@
 {
     "name": "keap-core-service-v2-sdk-ts",
-    "version": "0.0.49",
+    "version": "0.0.50",
     "description": "SDK for keap-core-service-v2-sdk",
     "author": "Keap Engineering",
     "repository": {

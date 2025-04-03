@@ -439,7 +439,7 @@ export class ObjectAffiliateApi {
 
     /**
      * Updates the properties of an Affiliate Commission Program
-     * Update a Affiliate Commission Program
+     * Update an Affiliate Commission Program
      * @param param the request object
      */
     public updateCommissionProgramUsingPATCHWithHttpInfo(param: AffiliateApiUpdateCommissionProgramUsingPATCHRequest, options?: Configuration): Promise<HttpInfo<AffiliateCommissionProgramResponse>> {
@@ -448,7 +448,7 @@ export class ObjectAffiliateApi {
 
     /**
      * Updates the properties of an Affiliate Commission Program
-     * Update a Affiliate Commission Program
+     * Update an Affiliate Commission Program
      * @param param the request object
      */
     public updateCommissionProgramUsingPATCH(param: AffiliateApiUpdateCommissionProgramUsingPATCHRequest, options?: Configuration): Promise<AffiliateCommissionProgramResponse> {

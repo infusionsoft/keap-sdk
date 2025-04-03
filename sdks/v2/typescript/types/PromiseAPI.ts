@@ -392,7 +392,7 @@ export class PromiseAffiliateApi {
 
     /**
      * Updates the properties of an Affiliate Commission Program
-     * Update a Affiliate Commission Program
+     * Update an Affiliate Commission Program
      * @param commissionProgramId commission_program_id
      * @param updateCommissionProgramRequest updateCommissionProgramRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
@@ -404,7 +404,7 @@ export class PromiseAffiliateApi {
 
     /**
      * Updates the properties of an Affiliate Commission Program
-     * Update a Affiliate Commission Program
+     * Update an Affiliate Commission Program
      * @param commissionProgramId commission_program_id
      * @param updateCommissionProgramRequest updateCommissionProgramRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
