@@ -118,6 +118,7 @@ export * from '../models/Discount';
 export * from '../models/DiscountCriteria';
 export * from '../models/EmailAddress';
 export * from '../models/EmailAddressRequest';
+export * from '../models/EmailAddressStatus';
 export * from '../models/EmailSendRequest';
 export * from '../models/EmailSendRequestAttachment';
 export * from '../models/EmailSendTemplateRequest';
@@ -125,6 +126,7 @@ export * from '../models/EmailSentCreateError';
 export * from '../models/EmailSentWithContent';
 export * from '../models/EmailTemplate';
 export * from '../models/EmailsSentList';
+export * from '../models/ErrorDetails';
 export * from '../models/FaxNumber';
 export * from '../models/FileMetadata';
 export * from '../models/FileOperationRequest';
@@ -432,6 +434,7 @@ import { Discount , DiscountDiscountMethodEnum     } from '../models/Discount';
 import { DiscountCriteria  , DiscountCriteriaOperatorEnum          , DiscountCriteriaTypeEnum   } from '../models/DiscountCriteria';
 import { EmailAddress , EmailAddressEmailOptStatusEnum  , EmailAddressFieldEnum     } from '../models/EmailAddress';
 import { EmailAddressRequest , EmailAddressRequestFieldEnum    } from '../models/EmailAddressRequest';
+import { EmailAddressStatus  , EmailAddressStatusStatusEnum   } from '../models/EmailAddressStatus';
 import { EmailSendRequest } from '../models/EmailSendRequest';
 import { EmailSendRequestAttachment } from '../models/EmailSendRequestAttachment';
 import { EmailSendTemplateRequest } from '../models/EmailSendTemplateRequest';
@@ -439,6 +442,7 @@ import { EmailSentCreateError } from '../models/EmailSentCreateError';
 import { EmailSentWithContent      , EmailSentWithContentOriginalProviderEnum              } from '../models/EmailSentWithContent';
 import { EmailTemplate   , EmailTemplateContentTypeEnum          } from '../models/EmailTemplate';
 import { EmailsSentList } from '../models/EmailsSentList';
+import { ErrorDetails } from '../models/ErrorDetails';
 import { FaxNumber, FaxNumberFieldEnum     } from '../models/FaxNumber';
 import { FileMetadata, FileMetadataCategoryEnum     , FileMetadataFileBoxTypeEnum         } from '../models/FileMetadata';
 import { FileOperationRequest } from '../models/FileOperationRequest';
@@ -667,6 +671,7 @@ let enumsMap: Set<string> = new Set<string>([
     "EmailAddressEmailOptStatusEnum",
     "EmailAddressFieldEnum",
     "EmailAddressRequestFieldEnum",
+    "EmailAddressStatusStatusEnum",
     "EmailSentWithContentOriginalProviderEnum",
     "EmailTemplateContentTypeEnum",
     "FaxNumberFieldEnum",
@@ -840,6 +845,7 @@ let typeMap: {[index: string]: any} = {
     "DiscountCriteria": DiscountCriteria,
     "EmailAddress": EmailAddress,
     "EmailAddressRequest": EmailAddressRequest,
+    "EmailAddressStatus": EmailAddressStatus,
     "EmailSendRequest": EmailSendRequest,
     "EmailSendRequestAttachment": EmailSendRequestAttachment,
     "EmailSendTemplateRequest": EmailSendTemplateRequest,
@@ -847,6 +853,7 @@ let typeMap: {[index: string]: any} = {
     "EmailSentWithContent": EmailSentWithContent,
     "EmailTemplate": EmailTemplate,
     "EmailsSentList": EmailsSentList,
+    "ErrorDetails": ErrorDetails,
     "FaxNumber": FaxNumber,
     "FileMetadata": FileMetadata,
     "FileOperationRequest": FileOperationRequest,

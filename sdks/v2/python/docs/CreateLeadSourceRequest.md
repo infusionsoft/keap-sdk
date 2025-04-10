@@ -5,15 +5,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**description** | **str** |  | [optional] 
-**end_time** | **str** |  | [optional] 
-**lead_source_category_id** | **str** |  | [optional] 
-**medium** | **str** |  | [optional] 
-**message** | **str** |  | [optional] 
-**name** | **str** |  | [optional] 
-**start_time** | **str** |  | [optional] 
-**status** | **str** |  | [optional] 
-**vendor** | **str** |  | [optional] 
+**description** | **str** | A description of the lead source | [optional] 
+**end_time** | **str** | When the lead source ends | [optional] 
+**lead_source_category_id** | **str** | The lead source category that the lead source belongs to | [optional] 
+**medium** | **str** | The medium of the lead source | [optional] 
+**message** | **str** | A message on the lead source | [optional] 
+**name** | **str** | The name of the lead source | [optional] 
+**start_time** | **str** | When the lead source starts | [optional] 
+**status** | **str** | The status of the lead source | [optional] 
+**vendor** | **str** | The vendor of the lead source | [optional] 
 
 ## Example
 

@@ -121,6 +121,7 @@ import { Discount } from '../models/Discount';
 import { DiscountCriteria } from '../models/DiscountCriteria';
 import { EmailAddress } from '../models/EmailAddress';
 import { EmailAddressRequest } from '../models/EmailAddressRequest';
+import { EmailAddressStatus } from '../models/EmailAddressStatus';
 import { EmailSendRequest } from '../models/EmailSendRequest';
 import { EmailSendRequestAttachment } from '../models/EmailSendRequestAttachment';
 import { EmailSendTemplateRequest } from '../models/EmailSendTemplateRequest';
@@ -128,6 +129,7 @@ import { EmailSentCreateError } from '../models/EmailSentCreateError';
 import { EmailSentWithContent } from '../models/EmailSentWithContent';
 import { EmailTemplate } from '../models/EmailTemplate';
 import { EmailsSentList } from '../models/EmailsSentList';
+import { ErrorDetails } from '../models/ErrorDetails';
 import { FaxNumber } from '../models/FaxNumber';
 import { FileMetadata } from '../models/FileMetadata';
 import { FileOperationRequest } from '../models/FileOperationRequest';
@@ -1692,6 +1694,16 @@ export interface EmailApiDeleteEmailsUsingPOST1Request {
     deleteEmailsRequest: DeleteEmailsRequest
 }
 
+export interface EmailApiGetEmailTemplateUsingGETRequest {
+    /**
+     * email_template_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof EmailApigetEmailTemplateUsingGET
+     */
+    emailTemplateId: string
+}
+
 export interface EmailApiGetEmailUsingGET1Request {
     /**
      * id
@@ -1700,6 +1712,15 @@ export interface EmailApiGetEmailUsingGET1Request {
      * @memberof EmailApigetEmailUsingGET1
      */
     id: string
+}
+
+export interface EmailApiSendEmailTemplateUsingPOSTRequest {
+    /**
+     * Use a template to send an email to a list of contacts 
+     * @type EmailSendTemplateRequest
+     * @memberof EmailApisendEmailTemplateUsingPOST
+     */
+    emailSendTemplateRequest?: EmailSendTemplateRequest
 }
 
 export interface EmailApiSendEmailUsingPOST1Request {
@@ -1791,6 +1812,24 @@ export class ObjectEmailApi {
     }
 
     /**
+     * Retrieve an email template
+     * Retrieve an email template
+     * @param param the request object
+     */
+    public getEmailTemplateUsingGETWithHttpInfo(param: EmailApiGetEmailTemplateUsingGETRequest, options?: Configuration): Promise<HttpInfo<EmailTemplate>> {
+        return this.api.getEmailTemplateUsingGETWithHttpInfo(param.emailTemplateId,  options).toPromise();
+    }
+
+    /**
+     * Retrieve an email template
+     * Retrieve an email template
+     * @param param the request object
+     */
+    public getEmailTemplateUsingGET(param: EmailApiGetEmailTemplateUsingGETRequest, options?: Configuration): Promise<EmailTemplate> {
+        return this.api.getEmailTemplateUsingGET(param.emailTemplateId,  options).toPromise();
+    }
+
+    /**
      * Retrieves a single Email that has been sent
      * Retrieve an Email
      * @param param the request object
@@ -1809,6 +1848,24 @@ export class ObjectEmailApi {
     }
 
     /**
+     * Send an email based on a template
+     * Send an email based on a template
+     * @param param the request object
+     */
+    public sendEmailTemplateUsingPOSTWithHttpInfo(param: EmailApiSendEmailTemplateUsingPOSTRequest = {}, options?: Configuration): Promise<HttpInfo<void>> {
+        return this.api.sendEmailTemplateUsingPOSTWithHttpInfo(param.emailSendTemplateRequest,  options).toPromise();
+    }
+
+    /**
+     * Send an email based on a template
+     * Send an email based on a template
+     * @param param the request object
+     */
+    public sendEmailTemplateUsingPOST(param: EmailApiSendEmailTemplateUsingPOSTRequest = {}, options?: Configuration): Promise<void> {
+        return this.api.sendEmailTemplateUsingPOST(param.emailSendTemplateRequest,  options).toPromise();
+    }
+
+    /**
      * Sends an Email to a list of Contacts
      * Send an Email
      * @param param the request object
@@ -1824,80 +1881,6 @@ export class ObjectEmailApi {
      */
     public sendEmailUsingPOST1(param: EmailApiSendEmailUsingPOST1Request = {}, options?: Configuration): Promise<void> {
         return this.api.sendEmailUsingPOST1(param.emailSendRequest,  options).toPromise();
-    }
-
-}
-
-import { ObservableEmailAddressApi } from "./ObservableAPI";
-import { EmailAddressApiRequestFactory, EmailAddressApiResponseProcessor} from "../apis/EmailAddressApi";
-
-export interface EmailAddressApiGetEmailAddressStatusUsingGETRequest {
-    /**
-     * email
-     * Defaults to: undefined
-     * @type string
-     * @memberof EmailAddressApigetEmailAddressStatusUsingGET
-     */
-    email: string
-}
-
-export interface EmailAddressApiUpdateEmailAddressOptStatusUsingPUTRequest {
-    /**
-     * email
-     * Defaults to: undefined
-     * @type string
-     * @memberof EmailAddressApiupdateEmailAddressOptStatusUsingPUT
-     */
-    email: string
-    /**
-     * updateEmailAddress
-     * @type UpdateEmailAddress
-     * @memberof EmailAddressApiupdateEmailAddressOptStatusUsingPUT
-     */
-    updateEmailAddress: UpdateEmailAddress
-}
-
-export class ObjectEmailAddressApi {
-    private api: ObservableEmailAddressApi
-
-    public constructor(configuration: Configuration, requestFactory?: EmailAddressApiRequestFactory, responseProcessor?: EmailAddressApiResponseProcessor) {
-        this.api = new ObservableEmailAddressApi(configuration, requestFactory, responseProcessor);
-    }
-
-    /**
-     * Retrieves the opt-in status for given Email Address
-     * Retrieve an Email Address status
-     * @param param the request object
-     */
-    public getEmailAddressStatusUsingGETWithHttpInfo(param: EmailAddressApiGetEmailAddressStatusUsingGETRequest, options?: Configuration): Promise<HttpInfo<RestEmailAddress>> {
-        return this.api.getEmailAddressStatusUsingGETWithHttpInfo(param.email,  options).toPromise();
-    }
-
-    /**
-     * Retrieves the opt-in status for given Email Address
-     * Retrieve an Email Address status
-     * @param param the request object
-     */
-    public getEmailAddressStatusUsingGET(param: EmailAddressApiGetEmailAddressStatusUsingGETRequest, options?: Configuration): Promise<RestEmailAddress> {
-        return this.api.getEmailAddressStatusUsingGET(param.email,  options).toPromise();
-    }
-
-    /**
-     * Updates an Email Address opt-in status  You may opt-in or mark an email address as _Marketable_ by including the following field in the request JSON with an opt-in reason. (This field is also shown in the complete request body sample.) The reason you provide here will help with compliance. Example reasons: \"Customer opted-in through webform\", \"Company gave explicit permission.\"  ```json \"opt_in_reason\": \"your reason for opt-in\" ``` Note that the email address status will only be updated to `Unconfirmed` (marketable) for email addresses that are currently in the following states: - `Unengaged Marketable` - `Unengaged Non-Marketable` - `Non-Marketable` - `Opt-Out: Manual`  All other existing statuses e.g. `List Unsubscribe`, `Opt-Out`, `System` etc will remain non-marketable and in their existing state.
-     * Update an Email Address opt-in status
-     * @param param the request object
-     */
-    public updateEmailAddressOptStatusUsingPUTWithHttpInfo(param: EmailAddressApiUpdateEmailAddressOptStatusUsingPUTRequest, options?: Configuration): Promise<HttpInfo<RestEmailAddress>> {
-        return this.api.updateEmailAddressOptStatusUsingPUTWithHttpInfo(param.email, param.updateEmailAddress,  options).toPromise();
-    }
-
-    /**
-     * Updates an Email Address opt-in status  You may opt-in or mark an email address as _Marketable_ by including the following field in the request JSON with an opt-in reason. (This field is also shown in the complete request body sample.) The reason you provide here will help with compliance. Example reasons: \"Customer opted-in through webform\", \"Company gave explicit permission.\"  ```json \"opt_in_reason\": \"your reason for opt-in\" ``` Note that the email address status will only be updated to `Unconfirmed` (marketable) for email addresses that are currently in the following states: - `Unengaged Marketable` - `Unengaged Non-Marketable` - `Non-Marketable` - `Opt-Out: Manual`  All other existing statuses e.g. `List Unsubscribe`, `Opt-Out`, `System` etc will remain non-marketable and in their existing state.
-     * Update an Email Address opt-in status
-     * @param param the request object
-     */
-    public updateEmailAddressOptStatusUsingPUT(param: EmailAddressApiUpdateEmailAddressOptStatusUsingPUTRequest, options?: Configuration): Promise<RestEmailAddress> {
-        return this.api.updateEmailAddressOptStatusUsingPUT(param.email, param.updateEmailAddress,  options).toPromise();
     }
 
 }

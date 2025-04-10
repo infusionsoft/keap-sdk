@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**description** | **String** |  | [optional] 
-**name** | **String** |  | [optional] 
+**description** | **String** | The description of the category | [optional] 
+**name** | **String** | The name of the category, must be unique | [optional] 
 
 

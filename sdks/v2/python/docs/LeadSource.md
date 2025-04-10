@@ -6,15 +6,15 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **create_time** | **str** | The time that this lead source was created | [optional] 
-**description** | **str** | The description of this lead source | [optional] 
+**description** | **str** | The description of the lead source | [optional] 
 **end_time** | **str** | The time that this lead source will end | [optional] 
 **id** | **str** | The unique identifier for thia lead source | [optional] 
-**lead_source_category_id** | **str** | The ID of of the category that this lead source belongs to | [optional] 
+**lead_source_category_id** | **str** | The ID of the category that the lead source belongs to | [optional] 
 **medium** | **str** | The medium of the lead source | [optional] 
 **message** | **str** | The message/content of the lead source | [optional] 
-**name** | **str** | The name of this lead source | [optional] 
+**name** | **str** | The name of the lead source | [optional] 
 **start_time** | **str** | The time that this lead source started | [optional] 
-**status** | **str** | The status of this lead source | [optional] 
+**status** | **str** | The status of the lead source | [optional] 
 **update_time** | **str** | The time that this lead source was last updated | [optional] 
 **vendor** | **str** | The vendor of the lead source | [optional] 
 

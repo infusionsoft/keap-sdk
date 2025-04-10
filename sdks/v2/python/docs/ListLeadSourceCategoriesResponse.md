@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**lead_source_categories** | [**List[LeadSourceCategory]**](LeadSourceCategory.md) |  | [optional] 
+**lead_source_categories** | [**List[LeadSourceCategory]**](LeadSourceCategory.md) | The lead source categories in the current page | [optional] 
 **next_page_token** | **str** |  | [optional] 
 
 ## Example

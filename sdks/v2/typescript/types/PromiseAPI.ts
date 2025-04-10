@@ -121,6 +121,7 @@ import { Discount } from '../models/Discount';
 import { DiscountCriteria } from '../models/DiscountCriteria';
 import { EmailAddress } from '../models/EmailAddress';
 import { EmailAddressRequest } from '../models/EmailAddressRequest';
+import { EmailAddressStatus } from '../models/EmailAddressStatus';
 import { EmailSendRequest } from '../models/EmailSendRequest';
 import { EmailSendRequestAttachment } from '../models/EmailSendRequestAttachment';
 import { EmailSendTemplateRequest } from '../models/EmailSendTemplateRequest';
@@ -128,6 +129,7 @@ import { EmailSentCreateError } from '../models/EmailSentCreateError';
 import { EmailSentWithContent } from '../models/EmailSentWithContent';
 import { EmailTemplate } from '../models/EmailTemplate';
 import { EmailsSentList } from '../models/EmailsSentList';
+import { ErrorDetails } from '../models/ErrorDetails';
 import { FaxNumber } from '../models/FaxNumber';
 import { FileMetadata } from '../models/FileMetadata';
 import { FileOperationRequest } from '../models/FileOperationRequest';
@@ -1334,6 +1336,26 @@ export class PromiseEmailApi {
     }
 
     /**
+     * Retrieve an email template
+     * Retrieve an email template
+     * @param emailTemplateId email_template_id
+     */
+    public getEmailTemplateUsingGETWithHttpInfo(emailTemplateId: string, _options?: Configuration): Promise<HttpInfo<EmailTemplate>> {
+        const result = this.api.getEmailTemplateUsingGETWithHttpInfo(emailTemplateId, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieve an email template
+     * Retrieve an email template
+     * @param emailTemplateId email_template_id
+     */
+    public getEmailTemplateUsingGET(emailTemplateId: string, _options?: Configuration): Promise<EmailTemplate> {
+        const result = this.api.getEmailTemplateUsingGET(emailTemplateId, _options);
+        return result.toPromise();
+    }
+
+    /**
      * Retrieves a single Email that has been sent
      * Retrieve an Email
      * @param id id
@@ -1354,6 +1376,26 @@ export class PromiseEmailApi {
     }
 
     /**
+     * Send an email based on a template
+     * Send an email based on a template
+     * @param [emailSendTemplateRequest] Use a template to send an email to a list of contacts 
+     */
+    public sendEmailTemplateUsingPOSTWithHttpInfo(emailSendTemplateRequest?: EmailSendTemplateRequest, _options?: Configuration): Promise<HttpInfo<void>> {
+        const result = this.api.sendEmailTemplateUsingPOSTWithHttpInfo(emailSendTemplateRequest, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * Send an email based on a template
+     * Send an email based on a template
+     * @param [emailSendTemplateRequest] Use a template to send an email to a list of contacts 
+     */
+    public sendEmailTemplateUsingPOST(emailSendTemplateRequest?: EmailSendTemplateRequest, _options?: Configuration): Promise<void> {
+        const result = this.api.sendEmailTemplateUsingPOST(emailSendTemplateRequest, _options);
+        return result.toPromise();
+    }
+
+    /**
      * Sends an Email to a list of Contacts
      * Send an Email
      * @param [emailSendRequest] emailSendRequest
@@ -1370,67 +1412,6 @@ export class PromiseEmailApi {
      */
     public sendEmailUsingPOST1(emailSendRequest?: EmailSendRequest, _options?: Configuration): Promise<void> {
         const result = this.api.sendEmailUsingPOST1(emailSendRequest, _options);
-        return result.toPromise();
-    }
-
-
-}
-
-
-
-import { ObservableEmailAddressApi } from './ObservableAPI';
-
-import { EmailAddressApiRequestFactory, EmailAddressApiResponseProcessor} from "../apis/EmailAddressApi";
-export class PromiseEmailAddressApi {
-    private api: ObservableEmailAddressApi
-
-    public constructor(
-        configuration: Configuration,
-        requestFactory?: EmailAddressApiRequestFactory,
-        responseProcessor?: EmailAddressApiResponseProcessor
-    ) {
-        this.api = new ObservableEmailAddressApi(configuration, requestFactory, responseProcessor);
-    }
-
-    /**
-     * Retrieves the opt-in status for given Email Address
-     * Retrieve an Email Address status
-     * @param email email
-     */
-    public getEmailAddressStatusUsingGETWithHttpInfo(email: string, _options?: Configuration): Promise<HttpInfo<RestEmailAddress>> {
-        const result = this.api.getEmailAddressStatusUsingGETWithHttpInfo(email, _options);
-        return result.toPromise();
-    }
-
-    /**
-     * Retrieves the opt-in status for given Email Address
-     * Retrieve an Email Address status
-     * @param email email
-     */
-    public getEmailAddressStatusUsingGET(email: string, _options?: Configuration): Promise<RestEmailAddress> {
-        const result = this.api.getEmailAddressStatusUsingGET(email, _options);
-        return result.toPromise();
-    }
-
-    /**
-     * Updates an Email Address opt-in status  You may opt-in or mark an email address as _Marketable_ by including the following field in the request JSON with an opt-in reason. (This field is also shown in the complete request body sample.) The reason you provide here will help with compliance. Example reasons: \"Customer opted-in through webform\", \"Company gave explicit permission.\"  ```json \"opt_in_reason\": \"your reason for opt-in\" ``` Note that the email address status will only be updated to `Unconfirmed` (marketable) for email addresses that are currently in the following states: - `Unengaged Marketable` - `Unengaged Non-Marketable` - `Non-Marketable` - `Opt-Out: Manual`  All other existing statuses e.g. `List Unsubscribe`, `Opt-Out`, `System` etc will remain non-marketable and in their existing state.
-     * Update an Email Address opt-in status
-     * @param email email
-     * @param updateEmailAddress updateEmailAddress
-     */
-    public updateEmailAddressOptStatusUsingPUTWithHttpInfo(email: string, updateEmailAddress: UpdateEmailAddress, _options?: Configuration): Promise<HttpInfo<RestEmailAddress>> {
-        const result = this.api.updateEmailAddressOptStatusUsingPUTWithHttpInfo(email, updateEmailAddress, _options);
-        return result.toPromise();
-    }
-
-    /**
-     * Updates an Email Address opt-in status  You may opt-in or mark an email address as _Marketable_ by including the following field in the request JSON with an opt-in reason. (This field is also shown in the complete request body sample.) The reason you provide here will help with compliance. Example reasons: \"Customer opted-in through webform\", \"Company gave explicit permission.\"  ```json \"opt_in_reason\": \"your reason for opt-in\" ``` Note that the email address status will only be updated to `Unconfirmed` (marketable) for email addresses that are currently in the following states: - `Unengaged Marketable` - `Unengaged Non-Marketable` - `Non-Marketable` - `Opt-Out: Manual`  All other existing statuses e.g. `List Unsubscribe`, `Opt-Out`, `System` etc will remain non-marketable and in their existing state.
-     * Update an Email Address opt-in status
-     * @param email email
-     * @param updateEmailAddress updateEmailAddress
-     */
-    public updateEmailAddressOptStatusUsingPUT(email: string, updateEmailAddress: UpdateEmailAddress, _options?: Configuration): Promise<RestEmailAddress> {
-        const result = this.api.updateEmailAddressOptStatusUsingPUT(email, updateEmailAddress, _options);
         return result.toPromise();
     }
 

@@ -7,9 +7,9 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**description** | **String** |  |  [optional] |
-|**id** | **String** |  |  [optional] |
-|**name** | **String** |  |  [optional] |
+|**description** | **String** | The description of the category |  [optional] |
+|**id** | **String** | The unique identifier for the category |  [optional] |
+|**name** | **String** | The name of the category |  [optional] |
 
 
 ## Implemented Interfaces

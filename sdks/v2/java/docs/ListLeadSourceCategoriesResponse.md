@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**leadSourceCategories** | [**List&lt;LeadSourceCategory&gt;**](LeadSourceCategory.md) |  |  [optional] |
+|**leadSourceCategories** | [**List&lt;LeadSourceCategory&gt;**](LeadSourceCategory.md) | The lead source categories in the current page |  [optional] |
 |**nextPageToken** | **String** |  |  [optional] |
 
 

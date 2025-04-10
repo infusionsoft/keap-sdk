@@ -122,6 +122,7 @@ import { Discount } from '../models/Discount';
 import { DiscountCriteria } from '../models/DiscountCriteria';
 import { EmailAddress } from '../models/EmailAddress';
 import { EmailAddressRequest } from '../models/EmailAddressRequest';
+import { EmailAddressStatus } from '../models/EmailAddressStatus';
 import { EmailSendRequest } from '../models/EmailSendRequest';
 import { EmailSendRequestAttachment } from '../models/EmailSendRequestAttachment';
 import { EmailSendTemplateRequest } from '../models/EmailSendTemplateRequest';
@@ -129,6 +130,7 @@ import { EmailSentCreateError } from '../models/EmailSentCreateError';
 import { EmailSentWithContent } from '../models/EmailSentWithContent';
 import { EmailTemplate } from '../models/EmailTemplate';
 import { EmailsSentList } from '../models/EmailsSentList';
+import { ErrorDetails } from '../models/ErrorDetails';
 import { FaxNumber } from '../models/FaxNumber';
 import { FileMetadata } from '../models/FileMetadata';
 import { FileOperationRequest } from '../models/FileOperationRequest';
@@ -1851,6 +1853,39 @@ export class ObservableEmailApi {
     }
 
     /**
+     * Retrieve an email template
+     * Retrieve an email template
+     * @param emailTemplateId email_template_id
+     */
+    public getEmailTemplateUsingGETWithHttpInfo(emailTemplateId: string, _options?: Configuration): Observable<HttpInfo<EmailTemplate>> {
+        const requestContextPromise = this.requestFactory.getEmailTemplateUsingGET(emailTemplateId, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getEmailTemplateUsingGETWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieve an email template
+     * Retrieve an email template
+     * @param emailTemplateId email_template_id
+     */
+    public getEmailTemplateUsingGET(emailTemplateId: string, _options?: Configuration): Observable<EmailTemplate> {
+        return this.getEmailTemplateUsingGETWithHttpInfo(emailTemplateId, _options).pipe(map((apiResponse: HttpInfo<EmailTemplate>) => apiResponse.data));
+    }
+
+    /**
      * Retrieves a single Email that has been sent
      * Retrieve an Email
      * @param id id
@@ -1884,6 +1919,39 @@ export class ObservableEmailApi {
     }
 
     /**
+     * Send an email based on a template
+     * Send an email based on a template
+     * @param [emailSendTemplateRequest] Use a template to send an email to a list of contacts 
+     */
+    public sendEmailTemplateUsingPOSTWithHttpInfo(emailSendTemplateRequest?: EmailSendTemplateRequest, _options?: Configuration): Observable<HttpInfo<void>> {
+        const requestContextPromise = this.requestFactory.sendEmailTemplateUsingPOST(emailSendTemplateRequest, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.sendEmailTemplateUsingPOSTWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Send an email based on a template
+     * Send an email based on a template
+     * @param [emailSendTemplateRequest] Use a template to send an email to a list of contacts 
+     */
+    public sendEmailTemplateUsingPOST(emailSendTemplateRequest?: EmailSendTemplateRequest, _options?: Configuration): Observable<void> {
+        return this.sendEmailTemplateUsingPOSTWithHttpInfo(emailSendTemplateRequest, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+    /**
      * Sends an Email to a list of Contacts
      * Send an Email
      * @param [emailSendRequest] emailSendRequest
@@ -1914,92 +1982,6 @@ export class ObservableEmailApi {
      */
     public sendEmailUsingPOST1(emailSendRequest?: EmailSendRequest, _options?: Configuration): Observable<void> {
         return this.sendEmailUsingPOST1WithHttpInfo(emailSendRequest, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
-    }
-
-}
-
-import { EmailAddressApiRequestFactory, EmailAddressApiResponseProcessor} from "../apis/EmailAddressApi";
-export class ObservableEmailAddressApi {
-    private requestFactory: EmailAddressApiRequestFactory;
-    private responseProcessor: EmailAddressApiResponseProcessor;
-    private configuration: Configuration;
-
-    public constructor(
-        configuration: Configuration,
-        requestFactory?: EmailAddressApiRequestFactory,
-        responseProcessor?: EmailAddressApiResponseProcessor
-    ) {
-        this.configuration = configuration;
-        this.requestFactory = requestFactory || new EmailAddressApiRequestFactory(configuration);
-        this.responseProcessor = responseProcessor || new EmailAddressApiResponseProcessor();
-    }
-
-    /**
-     * Retrieves the opt-in status for given Email Address
-     * Retrieve an Email Address status
-     * @param email email
-     */
-    public getEmailAddressStatusUsingGETWithHttpInfo(email: string, _options?: Configuration): Observable<HttpInfo<RestEmailAddress>> {
-        const requestContextPromise = this.requestFactory.getEmailAddressStatusUsingGET(email, _options);
-
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of this.configuration.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of this.configuration.middleware) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getEmailAddressStatusUsingGETWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Retrieves the opt-in status for given Email Address
-     * Retrieve an Email Address status
-     * @param email email
-     */
-    public getEmailAddressStatusUsingGET(email: string, _options?: Configuration): Observable<RestEmailAddress> {
-        return this.getEmailAddressStatusUsingGETWithHttpInfo(email, _options).pipe(map((apiResponse: HttpInfo<RestEmailAddress>) => apiResponse.data));
-    }
-
-    /**
-     * Updates an Email Address opt-in status  You may opt-in or mark an email address as _Marketable_ by including the following field in the request JSON with an opt-in reason. (This field is also shown in the complete request body sample.) The reason you provide here will help with compliance. Example reasons: \"Customer opted-in through webform\", \"Company gave explicit permission.\"  ```json \"opt_in_reason\": \"your reason for opt-in\" ``` Note that the email address status will only be updated to `Unconfirmed` (marketable) for email addresses that are currently in the following states: - `Unengaged Marketable` - `Unengaged Non-Marketable` - `Non-Marketable` - `Opt-Out: Manual`  All other existing statuses e.g. `List Unsubscribe`, `Opt-Out`, `System` etc will remain non-marketable and in their existing state.
-     * Update an Email Address opt-in status
-     * @param email email
-     * @param updateEmailAddress updateEmailAddress
-     */
-    public updateEmailAddressOptStatusUsingPUTWithHttpInfo(email: string, updateEmailAddress: UpdateEmailAddress, _options?: Configuration): Observable<HttpInfo<RestEmailAddress>> {
-        const requestContextPromise = this.requestFactory.updateEmailAddressOptStatusUsingPUT(email, updateEmailAddress, _options);
-
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of this.configuration.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of this.configuration.middleware) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateEmailAddressOptStatusUsingPUTWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Updates an Email Address opt-in status  You may opt-in or mark an email address as _Marketable_ by including the following field in the request JSON with an opt-in reason. (This field is also shown in the complete request body sample.) The reason you provide here will help with compliance. Example reasons: \"Customer opted-in through webform\", \"Company gave explicit permission.\"  ```json \"opt_in_reason\": \"your reason for opt-in\" ``` Note that the email address status will only be updated to `Unconfirmed` (marketable) for email addresses that are currently in the following states: - `Unengaged Marketable` - `Unengaged Non-Marketable` - `Non-Marketable` - `Opt-Out: Manual`  All other existing statuses e.g. `List Unsubscribe`, `Opt-Out`, `System` etc will remain non-marketable and in their existing state.
-     * Update an Email Address opt-in status
-     * @param email email
-     * @param updateEmailAddress updateEmailAddress
-     */
-    public updateEmailAddressOptStatusUsingPUT(email: string, updateEmailAddress: UpdateEmailAddress, _options?: Configuration): Observable<RestEmailAddress> {
-        return this.updateEmailAddressOptStatusUsingPUTWithHttpInfo(email, updateEmailAddress, _options).pipe(map((apiResponse: HttpInfo<RestEmailAddress>) => apiResponse.data));
     }
 
 }

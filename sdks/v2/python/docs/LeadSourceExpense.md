@@ -6,14 +6,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **amount** | [**CurrencyValue**](CurrencyValue.md) |  | [optional] 
-**create_time** | **str** | The date the expense was created. | [optional] 
-**id** | **str** | The unique identifier for the expense. | [optional] 
-**incurred_time** | **str** | The date the expense was incurred. | [optional] 
+**create_time** | **str** | The date the expense was created | [optional] 
+**id** | **str** | The unique identifier for the expense | [optional] 
+**incurred_time** | **str** | The date the expense was incurred | [optional] 
 **lead_source_id** | **str** | The ID of the lead source this expense belongs to | [optional] 
 **lead_source_recurring_expense_id** | **str** | If this expense was incurred from a recurring expense, this is the ID of that recurring expense | [optional] 
-**notes** | **str** | The notes for the expense. | [optional] 
-**title** | **str** | The title of the expense. | [optional] 
-**update_time** | **str** | The date the expense was last updated. | [optional] 
+**notes** | **str** | The notes for the expense | [optional] 
+**title** | **str** | The title of the expense | [optional] 
+**update_time** | **str** | The date the expense was last updated | [optional] 
 
 ## Example
 

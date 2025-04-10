@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**discount_percent** | **int** |  | [optional] 
-**entity_id** | **str** | The &#x60;product_id&#x60; (when the &#x60;type&#x60; is set to &#x60;PRODUCT&#x60;)  or the &#x60;subscription_id&#x60; (when the &#x60;type&#x60; is set to &#x60;SUBSCRIPTION_PLAN&#x60;).  | 
+**discount_percent** | **int** | Defaults to &#x60;0&#x60;. | [optional] 
+**entity_id** | **str** | The &#x60;product_id&#x60; (when the &#x60;type&#x60; is set to &#x60;PRODUCT&#x60;)  or the &#x60;subscription_plan_id&#x60; (when the &#x60;type&#x60; is set to &#x60;SUBSCRIPTION_PLAN&#x60;).  | 
 **price** | **float** |  | 
-**quantity** | **int** |  | [optional] 
+**quantity** | **int** | Defaults to &#x60;1&#x60;. | [optional] 
 **type** | **str** |  | 
 
 ## Example

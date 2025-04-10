@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**amount** | **int** | The monthly cost of this lead source recurring expense.  The value should be in the smallest unit of currency for your currency locale.  For example, if your currency locale is USD, then the smallest unit of currency is  in cents, $225.50 would be provided in the request as 22550. | [optional] 
-**end_time** | **str** | The time this lead source recurring expense ends | [optional] 
+**amount** | **int** | The monthly cost of the lead source recurring expense.  The value should be in the smallest unit of currency for your currency locale.  For example, if your currency locale is USD, then the smallest unit of currency is  in cents, $225.50 would be provided in the request as 22550. | [optional] 
+**end_time** | **str** | The time the lead source recurring expense ends | [optional] 
 **notes** | **str** | The notes for the lead source recurring expense | [optional] 
-**start_time** | **str** | The time this lead source recurring expense starts | [optional] 
+**start_time** | **str** | The time the lead source recurring expense starts | [optional] 
 **title** | **str** | The title of the lead source recurring expense | [optional] 
 
 ## Example

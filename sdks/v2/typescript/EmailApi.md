@@ -8,7 +8,9 @@ Method | HTTP request | Description
 [**createEmailsUsingPOST1**](EmailApi.md#createEmailsUsingPOST1) | **POST** /v2/emails:batchAdd | Create a set of Email Records
 [**deleteEmailUsingDELETE1**](EmailApi.md#deleteEmailUsingDELETE1) | **DELETE** /v2/emails/{id} | Delete an Email Record
 [**deleteEmailsUsingPOST1**](EmailApi.md#deleteEmailsUsingPOST1) | **POST** /v2/emails:batchRemove | Remove a set of Email Records
+[**getEmailTemplateUsingGET**](EmailApi.md#getEmailTemplateUsingGET) | **GET** /v2/emails/templates/{email_template_id} | Retrieve an email template
 [**getEmailUsingGET1**](EmailApi.md#getEmailUsingGET1) | **GET** /v2/emails/{id} | Retrieve an Email
+[**sendEmailTemplateUsingPOST**](EmailApi.md#sendEmailTemplateUsingPOST) | **POST** /v2/emails/templates:send | Send an email based on a template
 [**sendEmailUsingPOST1**](EmailApi.md#sendEmailUsingPOST1) | **POST** /v2/emails:send | Send an Email
 
 
@@ -289,6 +291,63 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **getEmailTemplateUsingGET**
+> EmailTemplate getEmailTemplateUsingGET()
+
+Retrieve an email template
+
+### Example
+
+
+```typescript
+import { createConfiguration, EmailApi } from '';
+import type { EmailApiGetEmailTemplateUsingGETRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new EmailApi(configuration);
+
+const request: EmailApiGetEmailTemplateUsingGETRequest = {
+    // email_template_id
+  emailTemplateId: "email_template_id_example",
+};
+
+const data = await apiInstance.getEmailTemplateUsingGET(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **emailTemplateId** | [**string**] | email_template_id | defaults to undefined
+
+
+### Return type
+
+**EmailTemplate**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **getEmailUsingGET1**
 > EmailSentWithContent getEmailUsingGET1()
 
@@ -342,6 +401,69 @@ No authorization required
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **sendEmailTemplateUsingPOST**
+> void sendEmailTemplateUsingPOST()
+
+Send an email based on a template
+
+### Example
+
+
+```typescript
+import { createConfiguration, EmailApi } from '';
+import type { EmailApiSendEmailTemplateUsingPOSTRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new EmailApi(configuration);
+
+const request: EmailApiSendEmailTemplateUsingPOSTRequest = {
+    // Use a template to send an email to a list of contacts  (optional)
+  emailSendTemplateRequest: {
+    addressField: "addressField_example",
+    contactIds: [
+      "contactIds_example",
+    ],
+    templateId: "templateId_example",
+    userId: "userId_example",
+  },
+};
+
+const data = await apiInstance.sendEmailTemplateUsingPOST(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **emailSendTemplateRequest** | **EmailSendTemplateRequest**| Use a template to send an email to a list of contacts  |
+
+
+### Return type
+
+**void**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** | Accepted |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
 **500** | Internal Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)

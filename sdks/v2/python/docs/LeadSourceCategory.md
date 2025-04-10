@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**description** | **str** |  | [optional] 
-**id** | **str** |  | [optional] 
-**name** | **str** |  | [optional] 
+**description** | **str** | The description of the category | [optional] 
+**id** | **str** | The unique identifier for the category | [optional] 
+**name** | **str** | The name of the category | [optional] 
 
 ## Example
 

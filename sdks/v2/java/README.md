@@ -2,7 +2,7 @@
 
 Keap REST API
 
-- API version: 2.70.0.795685
+- API version: 2.70.0.798982-hf-202504081948
 
 - Generator version: 7.10.0
 
@@ -43,7 +43,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.keap.core</groupId>
   <artifactId>core-service-v2-java-sdk</artifactId>
-  <version>0.0.51</version>
+  <version>0.0.52</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.keap.core:core-service-v2-java-sdk:0.0.51"
+compile "com.keap.core:core-service-v2-java-sdk:0.0.52"
 ```
 
 ### Others
@@ -66,7 +66,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/core-service-v2-java-sdk-0.0.51.jar`
+- `target/core-service-v2-java-sdk-0.0.52.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -188,14 +188,14 @@ Class | Method | HTTP request | Description
 *EmailApi* | [**deleteEmailUsingDELETE1WithHttpInfo**](docs/EmailApi.md#deleteEmailUsingDELETE1WithHttpInfo) | **DELETE** /v2/emails/{id} | Delete an Email Record
 *EmailApi* | [**deleteEmailsUsingPOST1**](docs/EmailApi.md#deleteEmailsUsingPOST1) | **POST** /v2/emails:batchRemove | Remove a set of Email Records
 *EmailApi* | [**deleteEmailsUsingPOST1WithHttpInfo**](docs/EmailApi.md#deleteEmailsUsingPOST1WithHttpInfo) | **POST** /v2/emails:batchRemove | Remove a set of Email Records
+*EmailApi* | [**getEmailTemplateUsingGET**](docs/EmailApi.md#getEmailTemplateUsingGET) | **GET** /v2/emails/templates/{email_template_id} | Retrieve an email template
+*EmailApi* | [**getEmailTemplateUsingGETWithHttpInfo**](docs/EmailApi.md#getEmailTemplateUsingGETWithHttpInfo) | **GET** /v2/emails/templates/{email_template_id} | Retrieve an email template
 *EmailApi* | [**getEmailUsingGET1**](docs/EmailApi.md#getEmailUsingGET1) | **GET** /v2/emails/{id} | Retrieve an Email
 *EmailApi* | [**getEmailUsingGET1WithHttpInfo**](docs/EmailApi.md#getEmailUsingGET1WithHttpInfo) | **GET** /v2/emails/{id} | Retrieve an Email
+*EmailApi* | [**sendEmailTemplateUsingPOST**](docs/EmailApi.md#sendEmailTemplateUsingPOST) | **POST** /v2/emails/templates:send | Send an email based on a template
+*EmailApi* | [**sendEmailTemplateUsingPOSTWithHttpInfo**](docs/EmailApi.md#sendEmailTemplateUsingPOSTWithHttpInfo) | **POST** /v2/emails/templates:send | Send an email based on a template
 *EmailApi* | [**sendEmailUsingPOST1**](docs/EmailApi.md#sendEmailUsingPOST1) | **POST** /v2/emails:send | Send an Email
 *EmailApi* | [**sendEmailUsingPOST1WithHttpInfo**](docs/EmailApi.md#sendEmailUsingPOST1WithHttpInfo) | **POST** /v2/emails:send | Send an Email
-*EmailAddressApi* | [**getEmailAddressStatusUsingGET**](docs/EmailAddressApi.md#getEmailAddressStatusUsingGET) | **GET** /v2/emailAddresses/{email} | Retrieve an Email Address status
-*EmailAddressApi* | [**getEmailAddressStatusUsingGETWithHttpInfo**](docs/EmailAddressApi.md#getEmailAddressStatusUsingGETWithHttpInfo) | **GET** /v2/emailAddresses/{email} | Retrieve an Email Address status
-*EmailAddressApi* | [**updateEmailAddressOptStatusUsingPUT**](docs/EmailAddressApi.md#updateEmailAddressOptStatusUsingPUT) | **PUT** /v2/emailAddresses/{email} | Update an Email Address opt-in status
-*EmailAddressApi* | [**updateEmailAddressOptStatusUsingPUTWithHttpInfo**](docs/EmailAddressApi.md#updateEmailAddressOptStatusUsingPUTWithHttpInfo) | **PUT** /v2/emailAddresses/{email} | Update an Email Address opt-in status
 *NoteApi* | [**createNoteUsingPOST1**](docs/NoteApi.md#createNoteUsingPOST1) | **POST** /v2/contacts/{contact_id}/notes | Create a Note
 *NoteApi* | [**createNoteUsingPOST1WithHttpInfo**](docs/NoteApi.md#createNoteUsingPOST1WithHttpInfo) | **POST** /v2/contacts/{contact_id}/notes | Create a Note
 *NoteApi* | [**deleteNoteUsingDELETE1**](docs/NoteApi.md#deleteNoteUsingDELETE1) | **DELETE** /v2/contacts/{contact_id}/notes/{note_id} | Delete a Note
@@ -376,6 +376,7 @@ Class | Method | HTTP request | Description
  - [DiscountCriteria](docs/DiscountCriteria.md)
  - [EmailAddress](docs/EmailAddress.md)
  - [EmailAddressRequest](docs/EmailAddressRequest.md)
+ - [EmailAddressStatus](docs/EmailAddressStatus.md)
  - [EmailSendRequest](docs/EmailSendRequest.md)
  - [EmailSendRequestAttachment](docs/EmailSendRequestAttachment.md)
  - [EmailSendTemplateRequest](docs/EmailSendTemplateRequest.md)
@@ -384,6 +385,7 @@ Class | Method | HTTP request | Description
  - [EmailTemplate](docs/EmailTemplate.md)
  - [EmailsSentList](docs/EmailsSentList.md)
  - [Error](docs/Error.md)
+ - [ErrorDetails](docs/ErrorDetails.md)
  - [FaxNumber](docs/FaxNumber.md)
  - [FileMetadata](docs/FileMetadata.md)
  - [FileOperationRequest](docs/FileOperationRequest.md)

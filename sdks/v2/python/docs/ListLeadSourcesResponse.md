@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**lead_sources** | [**List[LeadSource]**](LeadSource.md) |  | [optional] 
+**lead_sources** | [**List[LeadSource]**](LeadSource.md) | The lead sources in the current page | [optional] 
 **next_page_token** | **str** |  | [optional] 
 
 ## Example

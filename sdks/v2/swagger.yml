@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   description: Keap REST Core Service
-  version: 2.70.0.795685
+  version: 2.70.0.798982-hf-202504081948
   title: Keap REST API
   termsOfService: https://keap.com/legal
   contact:
@@ -2384,122 +2384,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
       deprecated: false
-  /v2/emailAddresses/{email}:
-    get:
-      tags:
-      - Email Address
-      summary: Retrieve an Email Address status
-      description: Retrieves the opt-in status for given Email Address
-      operationId: getEmailAddressStatusUsingGET
-      parameters:
-      - name: email
-        in: path
-        description: email
-        required: true
-        schema:
-          type: string
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RestEmailAddress'
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '403':
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '404':
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '500':
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-      deprecated: false
-    put:
-      tags:
-      - Email Address
-      summary: Update an Email Address opt-in status
-      description: |-
-        Updates an Email Address opt-in status
-
-        You may opt-in or mark an email address as _Marketable_ by including the following field in the request JSON
-        with an opt-in reason. (This field is also shown in the complete request body sample.)
-        The reason you provide here will help with compliance.
-        Example reasons: "Customer opted-in through webform", "Company gave explicit permission."
-
-        ```json
-        "opt_in_reason": "your reason for opt-in"
-        ```
-        Note that the email address status will only be updated to `Unconfirmed` (marketable) for email addresses
-        that are currently in the following states:
-        - `Unengaged Marketable`
-        - `Unengaged Non-Marketable`
-        - `Non-Marketable`
-        - `Opt-Out: Manual`
-
-        All other existing statuses e.g. `List Unsubscribe`, `Opt-Out`, `System` etc will remain non-marketable and in their existing state.
-      operationId: updateEmailAddressOptStatusUsingPUT
-      parameters:
-      - name: email
-        in: path
-        description: email
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UpdateEmailAddress'
-        description: updateEmailAddress
-        required: true
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RestEmailAddress'
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '403':
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '404':
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '500':
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-      deprecated: false
   /v2/emails:
     post:
       tags:
@@ -2521,6 +2405,87 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EmailSentWithContent'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/emails/templates/{email_template_id}:
+    get:
+      tags:
+      - Email
+      summary: Retrieve an email template
+      description: Retrieve an email template
+      operationId: getEmailTemplateUsingGET
+      parameters:
+      - name: email_template_id
+        in: path
+        description: email_template_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailTemplate'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/emails/templates:send:
+    post:
+      tags:
+      - Email
+      summary: Send an email based on a template
+      description: Send an email based on a template
+      operationId: sendEmailTemplateUsingPOST
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailSendTemplateRequest'
+        description: 'Use a template to send an email to a list of contacts '
+      responses:
+        '202':
+          description: Accepted
         '401':
           description: Unauthorized
           content:
@@ -4005,13 +3970,6 @@ components:
             required:
             - file
       required: true
-    CreateLeadSourceRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CreateLeadSourceRequest'
-      description: request
-      required: true
     CreateUpdateContactRequest:
       content:
         application/json:
@@ -4045,6 +4003,13 @@ components:
           schema:
             $ref: '#/components/schemas/CreateOrUpdateAffiliateLinkRequest'
       description: request
+      required: true
+    UpdateEmailAddress:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UpdateEmailAddress'
+      description: updateEmailAddress
       required: true
     ApplyRemoveTagRequest:
       content:
@@ -4089,17 +4054,19 @@ components:
         discount_percent:
           type: integer
           format: int32
+          description: Defaults to `0`.
         entity_id:
           type: string
           description: |
             The `product_id` (when the `type` is set to `PRODUCT`)
-             or the `subscription_id` (when the `type` is set to `SUBSCRIPTION_PLAN`).
+             or the `subscription_plan_id` (when the `type` is set to `SUBSCRIPTION_PLAN`).
         price:
           type: number
           format: double
         quantity:
           type: integer
           format: int32
+          description: Defaults to `1`.
         type:
           type: string
           enum:
@@ -5419,13 +5386,13 @@ components:
       properties:
         amount:
           type: string
-          description: The monthly cost of this lead source recurring expense. The
+          description: The monthly cost of the lead source recurring expense. The
             value should be in the smallest unit of currency for your currency locale.
             For example, if your currency locale is USD, then the smallest unit of
-            currency is in cents, $225.50 would be provided in the request as 22550
+            currency is in cents, $225.50 would be provided in the request as 22550.
         incurred_time:
           type: string
-          description: The time that this lead source expense was incurred.
+          description: The time that the lead source expense was incurred.
         notes:
           type: string
           description: The notes for the lead source expense
@@ -5439,19 +5406,19 @@ components:
         amount:
           type: integer
           format: int64
-          description: The monthly cost of this lead source recurring expense. The
+          description: The monthly cost of the lead source recurring expense. The
             value should be in the smallest unit of currency for your currency locale.
             For example, if your currency locale is USD, then the smallest unit of
-            currency is in cents, $225.50 would be provided in the request as 22550
+            currency is in cents, $225.50 would be provided in the request as 22550.
         end_time:
           type: string
-          description: The time this lead source recurring expense ends
+          description: The time the lead source recurring expense ends
         notes:
           type: string
           description: The notes for the lead source recurring expense
         start_time:
           type: string
-          description: The time this lead source recurring expense starts
+          description: The time the lead source recurring expense starts
         title:
           type: string
           description: The title of the lead source recurring expense
@@ -5461,25 +5428,34 @@ components:
       properties:
         description:
           type: string
+          description: A description of the lead source
         end_time:
           type: string
+          description: When the lead source ends
         lead_source_category_id:
           type: string
+          description: The lead source category that the lead source belongs to
         medium:
           type: string
+          description: The medium of the lead source
         message:
           type: string
+          description: A message on the lead source
         name:
           type: string
+          description: The name of the lead source
         start_time:
           type: string
+          description: When the lead source starts
         status:
           type: string
+          description: The status of the lead source
           enum:
           - ACTIVE
           - INACTIVE
         vendor:
           type: string
+          description: The vendor of the lead source
       title: CreateLeadSourceRequest
     CreateNoteRequest:
       type: object
@@ -6095,8 +6071,10 @@ components:
       properties:
         description:
           type: string
+          description: The description of the category
         name:
           type: string
+          description: The name of the category, must be unique
       title: CreateUpdateLeadSourceCategoryRequest
     CreateUpdateTagCategoryRequest:
       type: object
@@ -6433,6 +6411,38 @@ components:
         opt_in_reason:
           type: string
       title: EmailAddressRequest
+    EmailAddressStatus:
+      type: object
+      required:
+      - email
+      - opted_in
+      - status
+      properties:
+        email:
+          type: string
+        opted_in:
+          type: boolean
+        status:
+          type: string
+          enum:
+          - UNENGAGED_MARKETABLE
+          - SINGLE_OPT_IN
+          - DOUBLE_OPT_IN
+          - CONFIRMED
+          - UNENGAGED_NON_MARKETABLE
+          - NON_MARKETABLE
+          - LOCKDOWN
+          - BOUNCE
+          - HARD_BOUNCE
+          - MANUAL
+          - ADMIN
+          - SYSTEM
+          - LIST_UNSUBSCRIBE
+          - FEEDBACK
+          - SPAM
+          - INVALID
+          - DEACTIVATED
+      title: EmailAddressStatus
     EmailSendRequest:
       type: object
       required:
@@ -6631,6 +6641,14 @@ components:
           items:
             $ref: '#/components/schemas/Throwable'
       title: Error
+    ErrorDetails:
+      type: object
+      properties:
+        domain:
+          type: string
+        resource:
+          type: string
+      title: ErrorDetails
     FaxNumber:
       type: object
       properties:
@@ -7219,7 +7237,7 @@ components:
           description: The time that this lead source was created
         description:
           type: string
-          description: The description of this lead source
+          description: The description of the lead source
         end_time:
           type: string
           description: The time that this lead source will end
@@ -7228,7 +7246,7 @@ components:
           description: The unique identifier for thia lead source
         lead_source_category_id:
           type: string
-          description: The ID of of the category that this lead source belongs to
+          description: The ID of the category that the lead source belongs to
         medium:
           type: string
           description: The medium of the lead source
@@ -7237,13 +7255,13 @@ components:
           description: The message/content of the lead source
         name:
           type: string
-          description: The name of this lead source
+          description: The name of the lead source
         start_time:
           type: string
           description: The time that this lead source started
         status:
           type: string
-          description: The status of this lead source
+          description: The status of the lead source
           enum:
           - ACTIVE
           - INACTIVE
@@ -7259,10 +7277,13 @@ components:
       properties:
         description:
           type: string
+          description: The description of the category
         id:
           type: string
+          description: The unique identifier for the category
         name:
           type: string
+          description: The name of the category
       title: LeadSourceCategory
     LeadSourceExpense:
       type: object
@@ -7271,13 +7292,13 @@ components:
           $ref: '#/components/schemas/CurrencyValue'
         create_time:
           type: string
-          description: The date the expense was created.
+          description: The date the expense was created
         id:
           type: string
-          description: The unique identifier for the expense.
+          description: The unique identifier for the expense
         incurred_time:
           type: string
-          description: The date the expense was incurred.
+          description: The date the expense was incurred
         lead_source_id:
           type: string
           description: The ID of the lead source this expense belongs to
@@ -7287,13 +7308,13 @@ components:
             is the ID of that recurring expense
         notes:
           type: string
-          description: The notes for the expense.
+          description: The notes for the expense
         title:
           type: string
-          description: The title of the expense.
+          description: The title of the expense
         update_time:
           type: string
-          description: The date the expense was last updated.
+          description: The date the expense was last updated
       title: LeadSourceExpense
     LeadSourceRecurringExpense:
       type: object
@@ -7333,19 +7354,19 @@ components:
           type: integer
           format: int64
           description: |-
-            The monthly cost of this lead source recurring expense.
+            The monthly cost of the lead source recurring expense.
              The value should be in the smallest unit of currency for your currency locale.
              For example, if your currency locale is USD, then the smallest unit of currency is
              in cents, $225.50 would be provided in the request as 22550.
         end_time:
           type: string
-          description: The time this lead source recurring expense ends
+          description: The time the lead source recurring expense ends
         notes:
           type: string
           description: The notes for the lead source recurring expense
         start_time:
           type: string
-          description: The time this lead source recurring expense starts
+          description: The time the lead source recurring expense starts
         title:
           type: string
           description: The title of the lead source recurring expense
@@ -7580,6 +7601,7 @@ components:
       properties:
         lead_source_categories:
           type: array
+          description: The lead source categories in the current page
           items:
             $ref: '#/components/schemas/LeadSourceCategory'
         next_page_token:
@@ -7590,6 +7612,7 @@ components:
       properties:
         lead_source_expenses:
           type: array
+          description: The lead source expenses in the current page
           items:
             $ref: '#/components/schemas/LeadSourceExpense'
         next_page_token:
@@ -7600,6 +7623,7 @@ components:
       properties:
         lead_source_recurring_expenses:
           type: array
+          description: The lead source recurring expenses in the current page
           items:
             $ref: '#/components/schemas/LeadSourceRecurringExpense'
         next_page_token:
@@ -7610,6 +7634,7 @@ components:
       properties:
         lead_sources:
           type: array
+          description: The lead sources in the current page
           items:
             $ref: '#/components/schemas/LeadSource'
         next_page_token:
@@ -9742,13 +9767,13 @@ components:
         amount:
           type: integer
           format: int64
-          description: The monthly cost of this lead source recurring expense. The
+          description: The monthly cost of the lead source recurring expense. The
             value should be in the smallest unit of currency for your currency locale.
             For example, if your currency locale is USD, then the smallest unit of
-            currency is in cents, $225.50 would be provided in the request as 22550
+            currency is in cents, $225.50 would be provided in the request as 22550.
         incurred_time:
           type: string
-          description: The time that this lead source expense was incurred.
+          description: The time that the lead source expense was incurred
         notes:
           type: string
           description: The notes for the lead source expense
