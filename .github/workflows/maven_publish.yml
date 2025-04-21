@@ -3,10 +3,6 @@ name: Publish Java SDK to Maven Central
 on:
   release:
     types: [published]
-  # Test
-  push:
-    branches:
-      - main
 
 jobs:
   publish:
