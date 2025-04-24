@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   description: Keap REST Core Service
-  version: 2.70.0.798982-hf-202504081948
+  version: 2.70.0.800521
   title: Keap REST API
   termsOfService: https://keap.com/legal
   contact:
@@ -2747,6 +2747,445 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
       deprecated: false
+  /v2/productInterestBundles:
+    get:
+      tags:
+      - Product Interest Bundles
+      summary: List Product Interest Bundles
+      description: Retrieves a list of Product Interest Bundles
+      operationId: listProductInterestBundlesUsingGET
+      parameters:
+      - name: filter
+        in: query
+        description: |
+          Filter to apply, allowed fields are:
+          - (String) `name`
+        required: false
+        schema:
+          type: string
+      - name: order_by
+        in: query
+        description: |
+          Attribute and direction to order items.
+          One of the following fields:
+          - `name`
+
+          One of the following directions:
+          - `asc`
+          - `desc`
+        required: false
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: Total number of items to return per page
+        required: false
+        example: 0
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 1000
+          exclusiveMinimum: false
+          exclusiveMaximum: false
+      - name: page_token
+        in: query
+        description: Page token
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListProductInterestBundleResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    post:
+      tags:
+      - Product Interest Bundles
+      summary: Create a Product Interest Bundle
+      description: Creates a new Product Interest Bundle.
+      operationId: createProductInterestBundleUsingPOST
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateProductInterestBundleRequest'
+        description: createProductInterestBundleRequest
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductInterestBundle'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/productInterestBundles/{id}:
+    get:
+      tags:
+      - Product Interest Bundles
+      summary: Get a Product Interest Bundle
+      description: Gets a single Product Interest Bundle.
+      operationId: getProductInterestBundleUsingGET
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductInterestBundle'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    delete:
+      tags:
+      - Product Interest Bundles
+      summary: Delete a Product Interest Bundle
+      description: Deletes an existing Product Interest Bundle.
+      operationId: deleteProductInterestBundleUsingDELETE
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    patch:
+      tags:
+      - Product Interest Bundles
+      summary: Update a Product Interest Bundle
+      description: Updates an existing Product Interest Bundle.
+      operationId: updateProductInterestBundleUsingPATCH
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        schema:
+          type: string
+      - name: update_mask
+        in: query
+        description: An optional list of properties to be updated. If set, only the
+          provided properties will be updated and others will be skipped.
+        required: false
+        allowEmptyValue: false
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+          enum:
+          - name
+          - description
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateProductInterestBundleRequest'
+        description: updateProductInterestBundleRequest
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductInterestBundle'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/productInterestBundles/{id}/interests:
+    post:
+      tags:
+      - Product Interest Bundles
+      summary: Create a Product Interest in an existing Bundle
+      description: Creates a new Product Interest in an existing Bundle.
+      operationId: addProductInterestUsingPOST
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddProductInterestRequest'
+        description: request
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductInterest'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/productInterestBundles/{id}/interests/{interest_id}:
+    delete:
+      tags:
+      - Product Interest Bundles
+      summary: Delete a Product Interest from an existing Bundle
+      description: Deletes an existing Product Interest from an existing Bundle.
+      operationId: removeProductInterestUsingDELETE
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        schema:
+          type: string
+      - name: interest_id
+        in: path
+        description: interest_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    patch:
+      tags:
+      - Product Interest Bundles
+      summary: Update a Product Interest in an existing Bundle
+      description: Updates an existing Product Interest in an existing Bundle.
+      operationId: updateProductInterestUsingPATCH
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        schema:
+          type: string
+      - name: interest_id
+        in: path
+        description: interest_id
+        required: true
+        schema:
+          type: string
+      - name: update_mask
+        in: query
+        description: An optional list of properties to be updated. If set, only the
+          provided properties will be updated and others will be skipped.
+        required: false
+        allowEmptyValue: false
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+          enum:
+          - quantity
+          - price
+          - discount_percent
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateProductInterestRequest'
+        description: updateProductInterestRequest
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductInterest'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
   /v2/reporting/reports:
     get:
       tags:
@@ -5385,7 +5824,8 @@ components:
       type: object
       properties:
         amount:
-          type: string
+          type: integer
+          format: int64
           description: The monthly cost of the lead source recurring expense. The
             value should be in the smallest unit of currency for your currency locale.
             For example, if your currency locale is USD, then the smallest unit of
@@ -5450,9 +5890,6 @@ components:
         status:
           type: string
           description: The status of the lead source
-          enum:
-          - ACTIVE
-          - INACTIVE
         vendor:
           type: string
           description: The vendor of the lead source
@@ -7275,6 +7712,9 @@ components:
     LeadSourceCategory:
       type: object
       properties:
+        create_time:
+          type: string
+          description: The date the category was created
         description:
           type: string
           description: The description of the category
@@ -7284,6 +7724,9 @@ components:
         name:
           type: string
           description: The name of the category
+        update_time:
+          type: string
+          description: The date the category was last updated
       title: LeadSourceCategory
     LeadSourceExpense:
       type: object
@@ -7329,7 +7772,10 @@ components:
           description: The time this lead source recurring expense end
         id:
           type: string
-          description: ID of the lead source recurring expense
+          description: The ID of the lead source recurring expense
+        lead_source_id:
+          type: string
+          description: The ID of the lead source the recurring expense belongs to
         next_expense_time:
           type: string
           description: The time this lead source recurring expense will incur a new

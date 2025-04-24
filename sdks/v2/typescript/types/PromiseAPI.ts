@@ -1598,6 +1598,205 @@ export class PromisePaymentMethodConfigsApi {
 
 
 
+import { ObservableProductInterestBundlesApi } from './ObservableAPI';
+
+import { ProductInterestBundlesApiRequestFactory, ProductInterestBundlesApiResponseProcessor} from "../apis/ProductInterestBundlesApi";
+export class PromiseProductInterestBundlesApi {
+    private api: ObservableProductInterestBundlesApi
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: ProductInterestBundlesApiRequestFactory,
+        responseProcessor?: ProductInterestBundlesApiResponseProcessor
+    ) {
+        this.api = new ObservableProductInterestBundlesApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Creates a new Product Interest in an existing Bundle.
+     * Create a Product Interest in an existing Bundle
+     * @param id id
+     * @param addProductInterestRequest request
+     */
+    public addProductInterestUsingPOSTWithHttpInfo(id: string, addProductInterestRequest: AddProductInterestRequest, _options?: Configuration): Promise<HttpInfo<ProductInterest>> {
+        const result = this.api.addProductInterestUsingPOSTWithHttpInfo(id, addProductInterestRequest, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a new Product Interest in an existing Bundle.
+     * Create a Product Interest in an existing Bundle
+     * @param id id
+     * @param addProductInterestRequest request
+     */
+    public addProductInterestUsingPOST(id: string, addProductInterestRequest: AddProductInterestRequest, _options?: Configuration): Promise<ProductInterest> {
+        const result = this.api.addProductInterestUsingPOST(id, addProductInterestRequest, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a new Product Interest Bundle.
+     * Create a Product Interest Bundle
+     * @param createProductInterestBundleRequest createProductInterestBundleRequest
+     */
+    public createProductInterestBundleUsingPOSTWithHttpInfo(createProductInterestBundleRequest: CreateProductInterestBundleRequest, _options?: Configuration): Promise<HttpInfo<ProductInterestBundle>> {
+        const result = this.api.createProductInterestBundleUsingPOSTWithHttpInfo(createProductInterestBundleRequest, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a new Product Interest Bundle.
+     * Create a Product Interest Bundle
+     * @param createProductInterestBundleRequest createProductInterestBundleRequest
+     */
+    public createProductInterestBundleUsingPOST(createProductInterestBundleRequest: CreateProductInterestBundleRequest, _options?: Configuration): Promise<ProductInterestBundle> {
+        const result = this.api.createProductInterestBundleUsingPOST(createProductInterestBundleRequest, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes an existing Product Interest Bundle.
+     * Delete a Product Interest Bundle
+     * @param id id
+     */
+    public deleteProductInterestBundleUsingDELETEWithHttpInfo(id: string, _options?: Configuration): Promise<HttpInfo<void>> {
+        const result = this.api.deleteProductInterestBundleUsingDELETEWithHttpInfo(id, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes an existing Product Interest Bundle.
+     * Delete a Product Interest Bundle
+     * @param id id
+     */
+    public deleteProductInterestBundleUsingDELETE(id: string, _options?: Configuration): Promise<void> {
+        const result = this.api.deleteProductInterestBundleUsingDELETE(id, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * Gets a single Product Interest Bundle.
+     * Get a Product Interest Bundle
+     * @param id id
+     */
+    public getProductInterestBundleUsingGETWithHttpInfo(id: string, _options?: Configuration): Promise<HttpInfo<ProductInterestBundle>> {
+        const result = this.api.getProductInterestBundleUsingGETWithHttpInfo(id, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * Gets a single Product Interest Bundle.
+     * Get a Product Interest Bundle
+     * @param id id
+     */
+    public getProductInterestBundleUsingGET(id: string, _options?: Configuration): Promise<ProductInterestBundle> {
+        const result = this.api.getProductInterestBundleUsingGET(id, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of Product Interest Bundles
+     * List Product Interest Bundles
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;name&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;name&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; 
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listProductInterestBundlesUsingGETWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<HttpInfo<ListProductInterestBundleResponse>> {
+        const result = this.api.listProductInterestBundlesUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of Product Interest Bundles
+     * List Product Interest Bundles
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;name&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;name&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; 
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listProductInterestBundlesUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<ListProductInterestBundleResponse> {
+        const result = this.api.listProductInterestBundlesUsingGET(filter, orderBy, pageSize, pageToken, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes an existing Product Interest from an existing Bundle.
+     * Delete a Product Interest from an existing Bundle
+     * @param id id
+     * @param interestId interest_id
+     */
+    public removeProductInterestUsingDELETEWithHttpInfo(id: string, interestId: string, _options?: Configuration): Promise<HttpInfo<void>> {
+        const result = this.api.removeProductInterestUsingDELETEWithHttpInfo(id, interestId, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes an existing Product Interest from an existing Bundle.
+     * Delete a Product Interest from an existing Bundle
+     * @param id id
+     * @param interestId interest_id
+     */
+    public removeProductInterestUsingDELETE(id: string, interestId: string, _options?: Configuration): Promise<void> {
+        const result = this.api.removeProductInterestUsingDELETE(id, interestId, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates an existing Product Interest Bundle.
+     * Update a Product Interest Bundle
+     * @param id id
+     * @param updateProductInterestBundleRequest updateProductInterestBundleRequest
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateProductInterestBundleUsingPATCHWithHttpInfo(id: string, updateProductInterestBundleRequest: UpdateProductInterestBundleRequest, updateMask?: Array<string>, _options?: Configuration): Promise<HttpInfo<ProductInterestBundle>> {
+        const result = this.api.updateProductInterestBundleUsingPATCHWithHttpInfo(id, updateProductInterestBundleRequest, updateMask, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates an existing Product Interest Bundle.
+     * Update a Product Interest Bundle
+     * @param id id
+     * @param updateProductInterestBundleRequest updateProductInterestBundleRequest
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateProductInterestBundleUsingPATCH(id: string, updateProductInterestBundleRequest: UpdateProductInterestBundleRequest, updateMask?: Array<string>, _options?: Configuration): Promise<ProductInterestBundle> {
+        const result = this.api.updateProductInterestBundleUsingPATCH(id, updateProductInterestBundleRequest, updateMask, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates an existing Product Interest in an existing Bundle.
+     * Update a Product Interest in an existing Bundle
+     * @param id id
+     * @param interestId interest_id
+     * @param updateProductInterestRequest updateProductInterestRequest
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateProductInterestUsingPATCHWithHttpInfo(id: string, interestId: string, updateProductInterestRequest: UpdateProductInterestRequest, updateMask?: Array<string>, _options?: Configuration): Promise<HttpInfo<ProductInterest>> {
+        const result = this.api.updateProductInterestUsingPATCHWithHttpInfo(id, interestId, updateProductInterestRequest, updateMask, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates an existing Product Interest in an existing Bundle.
+     * Update a Product Interest in an existing Bundle
+     * @param id id
+     * @param interestId interest_id
+     * @param updateProductInterestRequest updateProductInterestRequest
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateProductInterestUsingPATCH(id: string, interestId: string, updateProductInterestRequest: UpdateProductInterestRequest, updateMask?: Array<string>, _options?: Configuration): Promise<ProductInterest> {
+        const result = this.api.updateProductInterestUsingPATCH(id, interestId, updateProductInterestRequest, updateMask, _options);
+        return result.toPromise();
+    }
+
+
+}
+
+
+
 import { ObservableReportingApi } from './ObservableAPI';
 
 import { ReportingApiRequestFactory, ReportingApiResponseProcessor} from "../apis/ReportingApi";

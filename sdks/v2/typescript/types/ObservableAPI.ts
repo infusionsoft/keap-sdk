@@ -2240,6 +2240,308 @@ export class ObservablePaymentMethodConfigsApi {
 
 }
 
+import { ProductInterestBundlesApiRequestFactory, ProductInterestBundlesApiResponseProcessor} from "../apis/ProductInterestBundlesApi";
+export class ObservableProductInterestBundlesApi {
+    private requestFactory: ProductInterestBundlesApiRequestFactory;
+    private responseProcessor: ProductInterestBundlesApiResponseProcessor;
+    private configuration: Configuration;
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: ProductInterestBundlesApiRequestFactory,
+        responseProcessor?: ProductInterestBundlesApiResponseProcessor
+    ) {
+        this.configuration = configuration;
+        this.requestFactory = requestFactory || new ProductInterestBundlesApiRequestFactory(configuration);
+        this.responseProcessor = responseProcessor || new ProductInterestBundlesApiResponseProcessor();
+    }
+
+    /**
+     * Creates a new Product Interest in an existing Bundle.
+     * Create a Product Interest in an existing Bundle
+     * @param id id
+     * @param addProductInterestRequest request
+     */
+    public addProductInterestUsingPOSTWithHttpInfo(id: string, addProductInterestRequest: AddProductInterestRequest, _options?: Configuration): Observable<HttpInfo<ProductInterest>> {
+        const requestContextPromise = this.requestFactory.addProductInterestUsingPOST(id, addProductInterestRequest, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.addProductInterestUsingPOSTWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Creates a new Product Interest in an existing Bundle.
+     * Create a Product Interest in an existing Bundle
+     * @param id id
+     * @param addProductInterestRequest request
+     */
+    public addProductInterestUsingPOST(id: string, addProductInterestRequest: AddProductInterestRequest, _options?: Configuration): Observable<ProductInterest> {
+        return this.addProductInterestUsingPOSTWithHttpInfo(id, addProductInterestRequest, _options).pipe(map((apiResponse: HttpInfo<ProductInterest>) => apiResponse.data));
+    }
+
+    /**
+     * Creates a new Product Interest Bundle.
+     * Create a Product Interest Bundle
+     * @param createProductInterestBundleRequest createProductInterestBundleRequest
+     */
+    public createProductInterestBundleUsingPOSTWithHttpInfo(createProductInterestBundleRequest: CreateProductInterestBundleRequest, _options?: Configuration): Observable<HttpInfo<ProductInterestBundle>> {
+        const requestContextPromise = this.requestFactory.createProductInterestBundleUsingPOST(createProductInterestBundleRequest, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createProductInterestBundleUsingPOSTWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Creates a new Product Interest Bundle.
+     * Create a Product Interest Bundle
+     * @param createProductInterestBundleRequest createProductInterestBundleRequest
+     */
+    public createProductInterestBundleUsingPOST(createProductInterestBundleRequest: CreateProductInterestBundleRequest, _options?: Configuration): Observable<ProductInterestBundle> {
+        return this.createProductInterestBundleUsingPOSTWithHttpInfo(createProductInterestBundleRequest, _options).pipe(map((apiResponse: HttpInfo<ProductInterestBundle>) => apiResponse.data));
+    }
+
+    /**
+     * Deletes an existing Product Interest Bundle.
+     * Delete a Product Interest Bundle
+     * @param id id
+     */
+    public deleteProductInterestBundleUsingDELETEWithHttpInfo(id: string, _options?: Configuration): Observable<HttpInfo<void>> {
+        const requestContextPromise = this.requestFactory.deleteProductInterestBundleUsingDELETE(id, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteProductInterestBundleUsingDELETEWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Deletes an existing Product Interest Bundle.
+     * Delete a Product Interest Bundle
+     * @param id id
+     */
+    public deleteProductInterestBundleUsingDELETE(id: string, _options?: Configuration): Observable<void> {
+        return this.deleteProductInterestBundleUsingDELETEWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+    /**
+     * Gets a single Product Interest Bundle.
+     * Get a Product Interest Bundle
+     * @param id id
+     */
+    public getProductInterestBundleUsingGETWithHttpInfo(id: string, _options?: Configuration): Observable<HttpInfo<ProductInterestBundle>> {
+        const requestContextPromise = this.requestFactory.getProductInterestBundleUsingGET(id, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getProductInterestBundleUsingGETWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Gets a single Product Interest Bundle.
+     * Get a Product Interest Bundle
+     * @param id id
+     */
+    public getProductInterestBundleUsingGET(id: string, _options?: Configuration): Observable<ProductInterestBundle> {
+        return this.getProductInterestBundleUsingGETWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<ProductInterestBundle>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves a list of Product Interest Bundles
+     * List Product Interest Bundles
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;name&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;name&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; 
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listProductInterestBundlesUsingGETWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Observable<HttpInfo<ListProductInterestBundleResponse>> {
+        const requestContextPromise = this.requestFactory.listProductInterestBundlesUsingGET(filter, orderBy, pageSize, pageToken, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listProductInterestBundlesUsingGETWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a list of Product Interest Bundles
+     * List Product Interest Bundles
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;name&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;name&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; 
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listProductInterestBundlesUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Observable<ListProductInterestBundleResponse> {
+        return this.listProductInterestBundlesUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListProductInterestBundleResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Deletes an existing Product Interest from an existing Bundle.
+     * Delete a Product Interest from an existing Bundle
+     * @param id id
+     * @param interestId interest_id
+     */
+    public removeProductInterestUsingDELETEWithHttpInfo(id: string, interestId: string, _options?: Configuration): Observable<HttpInfo<void>> {
+        const requestContextPromise = this.requestFactory.removeProductInterestUsingDELETE(id, interestId, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.removeProductInterestUsingDELETEWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Deletes an existing Product Interest from an existing Bundle.
+     * Delete a Product Interest from an existing Bundle
+     * @param id id
+     * @param interestId interest_id
+     */
+    public removeProductInterestUsingDELETE(id: string, interestId: string, _options?: Configuration): Observable<void> {
+        return this.removeProductInterestUsingDELETEWithHttpInfo(id, interestId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+    /**
+     * Updates an existing Product Interest Bundle.
+     * Update a Product Interest Bundle
+     * @param id id
+     * @param updateProductInterestBundleRequest updateProductInterestBundleRequest
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateProductInterestBundleUsingPATCHWithHttpInfo(id: string, updateProductInterestBundleRequest: UpdateProductInterestBundleRequest, updateMask?: Array<string>, _options?: Configuration): Observable<HttpInfo<ProductInterestBundle>> {
+        const requestContextPromise = this.requestFactory.updateProductInterestBundleUsingPATCH(id, updateProductInterestBundleRequest, updateMask, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateProductInterestBundleUsingPATCHWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Updates an existing Product Interest Bundle.
+     * Update a Product Interest Bundle
+     * @param id id
+     * @param updateProductInterestBundleRequest updateProductInterestBundleRequest
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateProductInterestBundleUsingPATCH(id: string, updateProductInterestBundleRequest: UpdateProductInterestBundleRequest, updateMask?: Array<string>, _options?: Configuration): Observable<ProductInterestBundle> {
+        return this.updateProductInterestBundleUsingPATCHWithHttpInfo(id, updateProductInterestBundleRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<ProductInterestBundle>) => apiResponse.data));
+    }
+
+    /**
+     * Updates an existing Product Interest in an existing Bundle.
+     * Update a Product Interest in an existing Bundle
+     * @param id id
+     * @param interestId interest_id
+     * @param updateProductInterestRequest updateProductInterestRequest
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateProductInterestUsingPATCHWithHttpInfo(id: string, interestId: string, updateProductInterestRequest: UpdateProductInterestRequest, updateMask?: Array<string>, _options?: Configuration): Observable<HttpInfo<ProductInterest>> {
+        const requestContextPromise = this.requestFactory.updateProductInterestUsingPATCH(id, interestId, updateProductInterestRequest, updateMask, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateProductInterestUsingPATCHWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Updates an existing Product Interest in an existing Bundle.
+     * Update a Product Interest in an existing Bundle
+     * @param id id
+     * @param interestId interest_id
+     * @param updateProductInterestRequest updateProductInterestRequest
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateProductInterestUsingPATCH(id: string, interestId: string, updateProductInterestRequest: UpdateProductInterestRequest, updateMask?: Array<string>, _options?: Configuration): Observable<ProductInterest> {
+        return this.updateProductInterestUsingPATCHWithHttpInfo(id, interestId, updateProductInterestRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<ProductInterest>) => apiResponse.data));
+    }
+
+}
+
 import { ReportingApiRequestFactory, ReportingApiResponseProcessor} from "../apis/ReportingApi";
 export class ObservableReportingApi {
     private requestFactory: ReportingApiRequestFactory;

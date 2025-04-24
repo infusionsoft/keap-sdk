@@ -13,7 +13,7 @@ publishing {
 }
 
 group = 'com.keap.core'
-version = '0.0.52'
+version = '0.0.53'
 
 repositories {
     mavenLocal()

@@ -11,6 +11,7 @@ from keap_core_v2_client.api.contact_api import ContactApi
 from keap_core_v2_client.api.email_api import EmailApi
 from keap_core_v2_client.api.note_api import NoteApi
 from keap_core_v2_client.api.payment_method_configs_api import PaymentMethodConfigsApi
+from keap_core_v2_client.api.product_interest_bundles_api import ProductInterestBundlesApi
 from keap_core_v2_client.api.reporting_api import ReportingApi
 from keap_core_v2_client.api.sales_api import SalesApi
 from keap_core_v2_client.api.settings_api import SettingsApi

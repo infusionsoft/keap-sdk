@@ -393,7 +393,7 @@ import { CreateFunnelIntegrationRequest } from '../models/CreateFunnelIntegratio
 import { CreateFunnelIntegrationTriggerEvents } from '../models/CreateFunnelIntegrationTriggerEvents';
 import { CreateLeadSourceExpenseRequest } from '../models/CreateLeadSourceExpenseRequest';
 import { CreateLeadSourceRecurringExpenseRequest } from '../models/CreateLeadSourceRecurringExpenseRequest';
-import { CreateLeadSourceRequest       , CreateLeadSourceRequestStatusEnum    } from '../models/CreateLeadSourceRequest';
+import { CreateLeadSourceRequest } from '../models/CreateLeadSourceRequest';
 import { CreateNoteRequest } from '../models/CreateNoteRequest';
 import { CreateOpportunityRequest } from '../models/CreateOpportunityRequest';
 import { CreateOpportunityStageChecklistItem } from '../models/CreateOpportunityStageChecklistItem';
@@ -650,7 +650,6 @@ let enumsMap: Set<string> = new Set<string>([
     "CreateAffiliateRequestStatusEnum",
     "CreateCustomFieldRequestFieldTypeEnum",
     "CreateEmailSentRequestOriginalProviderEnum",
-    "CreateLeadSourceRequestStatusEnum",
     "CreateOrderTotalDiscountRequestDiscountStrategyEnum",
     "CreateOrderTotalDiscountRequestDiscountTypeEnum",
     "CreateProductDiscountRequestDiscountTypeEnum",

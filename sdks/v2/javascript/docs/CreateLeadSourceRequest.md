@@ -15,16 +15,3 @@ Name | Type | Description | Notes
 **vendor** | **String** | The vendor of the lead source | [optional] 
 
 
-
-## Enum: StatusEnum
-
-
-* `ACTIVE` (value: `"ACTIVE"`)
-
-* `INACTIVE` (value: `"INACTIVE"`)
-
-* `unknown_default_open_api` (value: `"unknown_default_open_api"`)
-
-
-
-

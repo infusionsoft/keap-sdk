@@ -2,7 +2,7 @@
 
 Keap REST API
 
-- API version: 2.70.0.798982-hf-202504081948
+- API version: 2.70.0.800521
 
 - Generator version: 7.10.0
 
@@ -43,7 +43,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.keap.core</groupId>
   <artifactId>core-service-v2-java-sdk</artifactId>
-  <version>0.0.52</version>
+  <version>0.0.53</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.keap.core:core-service-v2-java-sdk:0.0.52"
+compile "com.keap.core:core-service-v2-java-sdk:0.0.53"
 ```
 
 ### Others
@@ -66,7 +66,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/core-service-v2-java-sdk-0.0.52.jar`
+- `target/core-service-v2-java-sdk-0.0.53.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -208,6 +208,22 @@ Class | Method | HTTP request | Description
 *NoteApi* | [**updateNoteUsingPATCHWithHttpInfo**](docs/NoteApi.md#updateNoteUsingPATCHWithHttpInfo) | **PATCH** /v2/contacts/{contact_id}/notes/{note_id} | Update a Note
 *PaymentMethodConfigsApi* | [**createPaymentMethodConfigUsingPOST**](docs/PaymentMethodConfigsApi.md#createPaymentMethodConfigUsingPOST) | **POST** /v2/paymentMethodConfigs | Create Payment Method Configuration
 *PaymentMethodConfigsApi* | [**createPaymentMethodConfigUsingPOSTWithHttpInfo**](docs/PaymentMethodConfigsApi.md#createPaymentMethodConfigUsingPOSTWithHttpInfo) | **POST** /v2/paymentMethodConfigs | Create Payment Method Configuration
+*ProductInterestBundlesApi* | [**addProductInterestUsingPOST**](docs/ProductInterestBundlesApi.md#addProductInterestUsingPOST) | **POST** /v2/productInterestBundles/{id}/interests | Create a Product Interest in an existing Bundle
+*ProductInterestBundlesApi* | [**addProductInterestUsingPOSTWithHttpInfo**](docs/ProductInterestBundlesApi.md#addProductInterestUsingPOSTWithHttpInfo) | **POST** /v2/productInterestBundles/{id}/interests | Create a Product Interest in an existing Bundle
+*ProductInterestBundlesApi* | [**createProductInterestBundleUsingPOST**](docs/ProductInterestBundlesApi.md#createProductInterestBundleUsingPOST) | **POST** /v2/productInterestBundles | Create a Product Interest Bundle
+*ProductInterestBundlesApi* | [**createProductInterestBundleUsingPOSTWithHttpInfo**](docs/ProductInterestBundlesApi.md#createProductInterestBundleUsingPOSTWithHttpInfo) | **POST** /v2/productInterestBundles | Create a Product Interest Bundle
+*ProductInterestBundlesApi* | [**deleteProductInterestBundleUsingDELETE**](docs/ProductInterestBundlesApi.md#deleteProductInterestBundleUsingDELETE) | **DELETE** /v2/productInterestBundles/{id} | Delete a Product Interest Bundle
+*ProductInterestBundlesApi* | [**deleteProductInterestBundleUsingDELETEWithHttpInfo**](docs/ProductInterestBundlesApi.md#deleteProductInterestBundleUsingDELETEWithHttpInfo) | **DELETE** /v2/productInterestBundles/{id} | Delete a Product Interest Bundle
+*ProductInterestBundlesApi* | [**getProductInterestBundleUsingGET**](docs/ProductInterestBundlesApi.md#getProductInterestBundleUsingGET) | **GET** /v2/productInterestBundles/{id} | Get a Product Interest Bundle
+*ProductInterestBundlesApi* | [**getProductInterestBundleUsingGETWithHttpInfo**](docs/ProductInterestBundlesApi.md#getProductInterestBundleUsingGETWithHttpInfo) | **GET** /v2/productInterestBundles/{id} | Get a Product Interest Bundle
+*ProductInterestBundlesApi* | [**listProductInterestBundlesUsingGET**](docs/ProductInterestBundlesApi.md#listProductInterestBundlesUsingGET) | **GET** /v2/productInterestBundles | List Product Interest Bundles
+*ProductInterestBundlesApi* | [**listProductInterestBundlesUsingGETWithHttpInfo**](docs/ProductInterestBundlesApi.md#listProductInterestBundlesUsingGETWithHttpInfo) | **GET** /v2/productInterestBundles | List Product Interest Bundles
+*ProductInterestBundlesApi* | [**removeProductInterestUsingDELETE**](docs/ProductInterestBundlesApi.md#removeProductInterestUsingDELETE) | **DELETE** /v2/productInterestBundles/{id}/interests/{interest_id} | Delete a Product Interest from an existing Bundle
+*ProductInterestBundlesApi* | [**removeProductInterestUsingDELETEWithHttpInfo**](docs/ProductInterestBundlesApi.md#removeProductInterestUsingDELETEWithHttpInfo) | **DELETE** /v2/productInterestBundles/{id}/interests/{interest_id} | Delete a Product Interest from an existing Bundle
+*ProductInterestBundlesApi* | [**updateProductInterestBundleUsingPATCH**](docs/ProductInterestBundlesApi.md#updateProductInterestBundleUsingPATCH) | **PATCH** /v2/productInterestBundles/{id} | Update a Product Interest Bundle
+*ProductInterestBundlesApi* | [**updateProductInterestBundleUsingPATCHWithHttpInfo**](docs/ProductInterestBundlesApi.md#updateProductInterestBundleUsingPATCHWithHttpInfo) | **PATCH** /v2/productInterestBundles/{id} | Update a Product Interest Bundle
+*ProductInterestBundlesApi* | [**updateProductInterestUsingPATCH**](docs/ProductInterestBundlesApi.md#updateProductInterestUsingPATCH) | **PATCH** /v2/productInterestBundles/{id}/interests/{interest_id} | Update a Product Interest in an existing Bundle
+*ProductInterestBundlesApi* | [**updateProductInterestUsingPATCHWithHttpInfo**](docs/ProductInterestBundlesApi.md#updateProductInterestUsingPATCHWithHttpInfo) | **PATCH** /v2/productInterestBundles/{id}/interests/{interest_id} | Update a Product Interest in an existing Bundle
 *ReportingApi* | [**listReportsUsingGET**](docs/ReportingApi.md#listReportsUsingGET) | **GET** /v2/reporting/reports | List Reports
 *ReportingApi* | [**listReportsUsingGETWithHttpInfo**](docs/ReportingApi.md#listReportsUsingGETWithHttpInfo) | **GET** /v2/reporting/reports | List Reports
 *ReportingApi* | [**retrieveReportUsingGET**](docs/ReportingApi.md#retrieveReportUsingGET) | **GET** /v2/reporting/reports/{report_id} | Retrieve Report

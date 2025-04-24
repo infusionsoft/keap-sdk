@@ -5,9 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**create_time** | **str** | The date the category was created | [optional] 
 **description** | **str** | The description of the category | [optional] 
 **id** | **str** | The unique identifier for the category | [optional] 
 **name** | **str** | The name of the category | [optional] 
+**update_time** | **str** | The date the category was last updated | [optional] 
 
 ## Example
 
