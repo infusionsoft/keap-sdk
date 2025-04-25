@@ -15,6 +15,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         
+      ######################################################
+      ### Java and Gradle
+      ######################################################
+
       - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
@@ -29,11 +33,22 @@ jobs:
         working-directory: sdks/v2/java
         run: |
           gradle wrapper
-          chmod +x ./gradlew
 
       - name: Make gradlew executable
         working-directory: sdks/v2/java
         run: chmod +x ./gradlew
+
+      - name: Build Java SDK
+        working-directory: sdks/v2/java
+        run: ./gradlew build
+
+      - name: Publish Java SDK
+        working-directory: sdks/v2/java
+        run: ./gradlew publishToMavenLocal
+
+      ######################################################
+      ### GPG
+      ######################################################
 
       - name: Import GPG key
         uses: crazy-max/ghaction-import-gpg@v5
@@ -41,13 +56,140 @@ jobs:
           gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
           passphrase: ${{ secrets.GPG_PASSPHRASE }}
 
-      - name: Publish to Maven Central
-        working-directory: sdks/v2/java
-        # run: ./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository
-        run: ./gradlew publish
+      - name: GPG Sign Artifacts
+        run: |
+          echo "Signing files in sdks/v2/java/build ..."
+          for file in $(find sdks/v2/java/build -type f \( -name "*.jar" -o -name "*.pom" \)); do
+            echo "Signing $file"
+            gpg --batch --yes --pinentry-mode loopback \
+              --local-user "$GPG_KEY_ID" \
+              --passphrase "$GPG_PASSPHRASE" \
+              --armor --output "$file.asc" --detach-sign "$file"
+          done
+
+          echo "Signing POM file in $HOME/.m2/repository/com/keap/core/keap-sdk-core-v2/$VERSION ..."
+          for file in sdks/v2/java/build/libs/keap-sdk-core-v2-*.jar; do
+            if [[ "$file" != *-javadoc.jar && "$file" != *-sources.jar ]]; then
+              VERSION=$(basename "$file" | sed 's/keap-sdk-core-v2-//; s/.jar//')
+              break
+            fi
+          done
+          POM_PATH="$HOME/.m2/repository/com/keap/core/keap-sdk-core-v2/$VERSION/keap-sdk-core-v2-$VERSION.pom"
+          gpg --batch --yes --pinentry-mode loopback \
+            --local-user "$GPG_KEY_ID" \
+            --passphrase "$GPG_PASSPHRASE" \
+            --armor --output "$POM_PATH.asc" --detach-sign "$POM_PATH"
+
+        env:
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+          GPG_KEY_ID: ${{ secrets.GPG_KEY_ID }}
+
+      ######################################################
+      ### Create and upload bundle
+      ######################################################
+
+      - name: Create bundle structure and zip
+        run: |
+          for file in sdks/v2/java/build/libs/keap-sdk-core-v2-*.jar; do
+            if [[ "$file" != *-javadoc.jar && "$file" != *-sources.jar ]]; then
+              VERSION=$(basename "$file" | sed 's/keap-sdk-core-v2-//; s/.jar//')
+              break
+            fi
+          done
+          BUNDLE_PATH="bundle/com/keap/core/keap-sdk-core-v2/$VERSION"
+          mkdir -p "$BUNDLE_PATH"
+
+          # Copy all .jar files and their .asc signatures
+          for jar in sdks/v2/java/build/libs/keap-sdk-core-v2-$VERSION*.jar; do
+            base=$(basename "$jar")
+            cp "$jar" "$BUNDLE_PATH/$base"
+            cp "$jar.asc" "$BUNDLE_PATH/$base.asc"
+          done
+
+          # Copy and rename the .pom and .asc
+          cp ~/.m2/repository/com/keap/core/keap-sdk-core-v2/$VERSION/keap-sdk-core-v2-$VERSION.pom "$BUNDLE_PATH/keap-sdk-core-v2-$VERSION.pom"
+          cp ~/.m2/repository/com/keap/core/keap-sdk-core-v2/$VERSION/keap-sdk-core-v2-$VERSION.pom.asc "$BUNDLE_PATH/keap-sdk-core-v2-$VERSION.pom.asc"
+
+          cd bundle
+          for f in $(find . -type f \( -name "*.jar" -o -name "*.pom" \)); do
+            md5sum "$f" | awk '{ print $1 }' > "$f.md5"
+            shasum -a 1 "$f" | awk '{ print $1 }' > "$f.sha1"
+          done
+
+          zip -r ../central-bundle.zip com
+
+      # Following steps defined in https://central.sonatype.org/publish/publish-portal-api/#uploading-a-deployment-bundle
+      - name: Upload bundle to Sonatype Central API
+        run: |
+          AUTH=$(printf "$SONATYPE_USERNAME:$SONATYPE_PASSWORD" | base64)
+
+          # Upload the bundle and capture the deploymentId
+          DEPLOY_ID=$(curl --silent --request POST \
+            --header "Authorization: Bearer $AUTH" \
+            --form bundle=@central-bundle.zip \
+            "https://central.sonatype.com/api/v1/publisher/upload")
+          
+          if [[ "$DEPLOY_ID" == "null" || -z "$DEPLOY_ID" ]]; then
+            echo "❌ Failed to retrieve deploymentId"
+            exit 1
+          fi
+          echo "Deployment: $DEPLOY_ID"
+
+          # Verify the deployment status
+          for i in {1..10}; do
+            STATUS=$(curl --silent --request POST \
+              --header "Authorization: Bearer $AUTH" \
+              "https://central.sonatype.com/api/v1/publisher/status?id=$DEPLOY_ID")
+            echo "Status:" $(echo $STATUS | jq)
+
+            DEPLOYMENT_STATUS=$(echo $STATUS | jq -r '.deploymentState')
+
+            echo "Attempt $i: Deployment status = $DEPLOYMENT_STATUS"
+
+            if [[ "$DEPLOYMENT_STATUS" == "PUBLISHED" ]]; then
+              echo "✅ Deployment published successful!"
+              echo "   https://central.sonatype.com/artifact/com.keap.core/keap-sdk-core-v2/$VERSION"
+              exit 0
+            elif [[ "$DEPLOYMENT_STATUS" == "VALIDATED" ]]; then
+              echo "✅ Deployment validation successful!"
+              break
+            elif [[ "$DEPLOYMENT_STATUS" == "FAILED" ]]; then
+              echo "❌ Deployment failed"
+              exit 1
+            fi
+
+            sleep 15
+          done
+
+          if [[ "$DEPLOYMENT_STATUS" == "VALIDATED" ]]; then
+            echo "Triggering publish for deployment ID: $DEPLOY_ID from status $DEPLOYMENT_STATUS"
+            curl --silent --request POST \
+              --header "Authorization: Bearer $AUTH" \
+              "https://central.sonatype.com/api/v1/publisher/deployment/$DEPLOY_ID"
+        
+            # Poll for deployment status
+            for i in {1..30}; do
+              STATUS=$(curl --silent --request POST \
+                --header "Authorization: Bearer $AUTH" \
+                "https://central.sonatype.com/api/v1/publisher/status?id=$DEPLOY_ID")
+              DEPLOYMENT_STATE=$(echo $STATUS | jq -r '.deploymentState')
+              echo "Attempt $i: Deployment state = $DEPLOYMENT_STATE"
+        
+              if [[ "$DEPLOYMENT_STATE" == "PUBLISHED" ]]; then
+                echo "✅ Deployment successfully published!"
+                echo "   https://central.sonatype.com/artifact/com.keap.core/keap-sdk-core-v2/$VERSION"
+                exit 0
+              elif [[ "$DEPLOYMENT_STATE" == "FAILED" ]]; then
+                echo "❌ Deployment failed to publish."
+                exit 1
+              fi
+              sleep 15
+            done
+          fi
+      
+          echo "❌ Deployment did not reach PUBLISHED state in time."
+          exit 1
+
         env:
           SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
           SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
-          GPG_KEY_ID: ${{ secrets.GPG_KEY_ID }}
-          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
-          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
