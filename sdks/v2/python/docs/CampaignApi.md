@@ -15,7 +15,8 @@ Method | HTTP request | Description
 
 Add Contacts to Campaign Sequence
 
-Adds a list of contacts to a campaign sequence Response contains a map of the provided list of Contact Ids related to their individual result.
+Adds a list of contacts to a campaign sequence
+Response contains a map of the provided list of Contact Ids related to their individual result.
 
 ### Example
 
@@ -237,7 +238,8 @@ No authorization required
 
 Remove Contacts from Campaign Sequence
 
-Removes a list of contacts from a campaign sequence Response contains a map of the provided list of Contact Ids related to their individual result.
+Removes a list of contacts from a campaign sequence
+Response contains a map of the provided list of Contact Ids related to their individual result.
 
 ### Example
 

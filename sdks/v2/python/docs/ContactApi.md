@@ -92,7 +92,8 @@ No authorization required
 
 Create a Contact
 
-Creates a new Contact. *Note:* Contact must contain at least one item in `email_addresses` or `phone_numbers` and `country_code` is required if `region` is specified.
+Creates a new Contact.
+*Note:* Contact must contain at least one item in `email_addresses` or `phone_numbers` and `country_code` is required if `region` is specified.
 
 ### Example
 

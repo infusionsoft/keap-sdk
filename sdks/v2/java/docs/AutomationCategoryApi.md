@@ -10,6 +10,8 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 | [**deleteCategoriesUsingDELETEWithHttpInfo**](AutomationCategoryApi.md#deleteCategoriesUsingDELETEWithHttpInfo) | **DELETE** /v2/automationCategory | Delete automation category |
 | [**listCategoriesUsingGET**](AutomationCategoryApi.md#listCategoriesUsingGET) | **GET** /v2/automationCategory | List automation categories |
 | [**listCategoriesUsingGETWithHttpInfo**](AutomationCategoryApi.md#listCategoriesUsingGETWithHttpInfo) | **GET** /v2/automationCategory | List automation categories |
+| [**patchCategoryUsingPATCH**](AutomationCategoryApi.md#patchCategoryUsingPATCH) | **PATCH** /v2/automationCategory/{id} | Update automation category |
+| [**patchCategoryUsingPATCHWithHttpInfo**](AutomationCategoryApi.md#patchCategoryUsingPATCHWithHttpInfo) | **PATCH** /v2/automationCategory/{id} | Update automation category |
 | [**saveCategoryUsingPUT**](AutomationCategoryApi.md#saveCategoryUsingPUT) | **PUT** /v2/automationCategory | Save automation category |
 | [**saveCategoryUsingPUTWithHttpInfo**](AutomationCategoryApi.md#saveCategoryUsingPUTWithHttpInfo) | **PUT** /v2/automationCategory | Save automation category |
 
@@ -417,6 +419,152 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
+
+
+## patchCategoryUsingPATCH
+
+> AutomationCategory patchCategoryUsingPATCH(id, patchAutomationCategoryRequest)
+
+Update automation category
+
+Updates part of a single automation category
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.AutomationCategoryApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+
+        AutomationCategoryApi apiInstance = new AutomationCategoryApi(defaultClient);
+        String id = "id_example"; // String | id
+        PatchAutomationCategoryRequest patchAutomationCategoryRequest = new PatchAutomationCategoryRequest(); // PatchAutomationCategoryRequest | patchAutomationCategoryRequest
+        try {
+            AutomationCategory result = apiInstance.patchCategoryUsingPATCH(id, patchAutomationCategoryRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AutomationCategoryApi#patchCategoryUsingPATCH");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | **String**| id | |
+| **patchAutomationCategoryRequest** | [**PatchAutomationCategoryRequest**](PatchAutomationCategoryRequest.md)| patchAutomationCategoryRequest | |
+
+### Return type
+
+[**AutomationCategory**](AutomationCategory.md)
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
+
+## patchCategoryUsingPATCHWithHttpInfo
+
+> ApiResponse<AutomationCategory> patchCategoryUsingPATCH patchCategoryUsingPATCHWithHttpInfo(id, patchAutomationCategoryRequest)
+
+Update automation category
+
+Updates part of a single automation category
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.AutomationCategoryApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+
+        AutomationCategoryApi apiInstance = new AutomationCategoryApi(defaultClient);
+        String id = "id_example"; // String | id
+        PatchAutomationCategoryRequest patchAutomationCategoryRequest = new PatchAutomationCategoryRequest(); // PatchAutomationCategoryRequest | patchAutomationCategoryRequest
+        try {
+            ApiResponse<AutomationCategory> response = apiInstance.patchCategoryUsingPATCHWithHttpInfo(id, patchAutomationCategoryRequest);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AutomationCategoryApi#patchCategoryUsingPATCH");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | **String**| id | |
+| **patchAutomationCategoryRequest** | [**PatchAutomationCategoryRequest**](PatchAutomationCategoryRequest.md)| patchAutomationCategoryRequest | |
+
+### Return type
+
+ApiResponse<[**AutomationCategory**](AutomationCategory.md)>
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 ### HTTP response details

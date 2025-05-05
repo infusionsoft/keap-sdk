@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **id** | **String** |  | [optional] 
 **locked** | **Boolean** |  | [optional] 
 **name** | **String** |  | [optional] 
+**publicationDate** | **String** |  | [optional] 
 **publishedDate** | **Date** |  | [optional] 
 **publishedStatus** | **Boolean** |  | [optional] 
 **publishedTimeZone** | **String** |  | [optional] 

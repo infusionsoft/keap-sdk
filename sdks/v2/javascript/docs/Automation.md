@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **errorMessage** | **String** |  | [optional] 
 **id** | **String** |  | [optional] 
 **locked** | **Boolean** |  | [optional] 
+**publicationDate** | **String** |  | [optional] 
 **publishedBy** | **String** |  | [optional] 
 **publishedDate** | **Date** |  | [optional] 
 **publishedTimezone** | **String** |  | [optional] 

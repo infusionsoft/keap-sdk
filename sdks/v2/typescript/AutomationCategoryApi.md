@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**createCategoryUsingPOST**](AutomationCategoryApi.md#createCategoryUsingPOST) | **POST** /v2/automationCategory | Create automation category
 [**deleteCategoriesUsingDELETE**](AutomationCategoryApi.md#deleteCategoriesUsingDELETE) | **DELETE** /v2/automationCategory | Delete automation category
 [**listCategoriesUsingGET**](AutomationCategoryApi.md#listCategoriesUsingGET) | **GET** /v2/automationCategory | List automation categories
+[**patchCategoryUsingPATCH**](AutomationCategoryApi.md#patchCategoryUsingPATCH) | **PATCH** /v2/automationCategory/{id} | Update automation category
 [**saveCategoryUsingPUT**](AutomationCategoryApi.md#saveCategoryUsingPUT) | **PUT** /v2/automationCategory | Save automation category
 
 
@@ -163,6 +164,68 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **patchCategoryUsingPATCH**
+> AutomationCategory patchCategoryUsingPATCH(patchAutomationCategoryRequest)
+
+Updates part of a single automation category
+
+### Example
+
+
+```typescript
+import { createConfiguration, AutomationCategoryApi } from '';
+import type { AutomationCategoryApiPatchCategoryUsingPATCHRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new AutomationCategoryApi(configuration);
+
+const request: AutomationCategoryApiPatchCategoryUsingPATCHRequest = {
+    // id
+  id: "id_example",
+    // patchAutomationCategoryRequest
+  patchAutomationCategoryRequest: {
+    name: "name_example",
+  },
+};
+
+const data = await apiInstance.patchCategoryUsingPATCH(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **patchAutomationCategoryRequest** | **PatchAutomationCategoryRequest**| patchAutomationCategoryRequest |
+ **id** | [**string**] | id | defaults to undefined
+
+
+### Return type
+
+**AutomationCategory**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

@@ -17,7 +17,8 @@ Method | HTTP request | Description
 
 Add Contacts to an Automation Sequence
 
-Adds a list of contacts to an automation sequence Response contains a map of the provided list of Contact Ids and their individual result.
+Adds a list of contacts to an automation sequence
+Response contains a map of the provided list of Contact Ids and their individual result.
 
 ### Example
 

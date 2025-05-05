@@ -7,6 +7,7 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 | [**CreateCategoryUsingPOST**](AutomationCategoryApi.md#createcategoryusingpost) | **POST** /v2/automationCategory | Create automation category |
 | [**DeleteCategoriesUsingDELETE**](AutomationCategoryApi.md#deletecategoriesusingdelete) | **DELETE** /v2/automationCategory | Delete automation category |
 | [**ListCategoriesUsingGET**](AutomationCategoryApi.md#listcategoriesusingget) | **GET** /v2/automationCategory | List automation categories |
+| [**PatchCategoryUsingPATCH**](AutomationCategoryApi.md#patchcategoryusingpatch) | **PATCH** /v2/automationCategory/{id} | Update automation category |
 | [**SaveCategoryUsingPUT**](AutomationCategoryApi.md#savecategoryusingput) | **PUT** /v2/automationCategory | Save automation category |
 
 <a id="createcategoryusingpost"></a>
@@ -270,6 +271,103 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="patchcategoryusingpatch"></a>
+# **PatchCategoryUsingPATCH**
+> AutomationCategory PatchCategoryUsingPATCH (string id, PatchAutomationCategoryRequest patchAutomationCategoryRequest)
+
+Update automation category
+
+Updates part of a single automation category
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class PatchCategoryUsingPATCHExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm/rest";
+            var apiInstance = new AutomationCategoryApi(config);
+            var id = "id_example";  // string | id
+            var patchAutomationCategoryRequest = new PatchAutomationCategoryRequest(); // PatchAutomationCategoryRequest | patchAutomationCategoryRequest
+
+            try
+            {
+                // Update automation category
+                AutomationCategory result = apiInstance.PatchCategoryUsingPATCH(id, patchAutomationCategoryRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling AutomationCategoryApi.PatchCategoryUsingPATCH: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the PatchCategoryUsingPATCHWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Update automation category
+    ApiResponse<AutomationCategory> response = apiInstance.PatchCategoryUsingPATCHWithHttpInfo(id, patchAutomationCategoryRequest);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling AutomationCategoryApi.PatchCategoryUsingPATCHWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **id** | **string** | id |  |
+| **patchAutomationCategoryRequest** | [**PatchAutomationCategoryRequest**](PatchAutomationCategoryRequest.md) | patchAutomationCategoryRequest |  |
+
+### Return type
+
+[**AutomationCategory**](AutomationCategory.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

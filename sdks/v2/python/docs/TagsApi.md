@@ -511,7 +511,8 @@ No authorization required
 
 List Tagged Companies
 
-Retrieves a list of Companies that have the given Tag applied. To search for `null` or empty fields use `filter==NONE`
+Retrieves a list of Companies that have the given Tag applied.
+To search for `null` or empty fields use `filter==NONE`
 
 ### Example
 
@@ -589,7 +590,8 @@ No authorization required
 
 List Tagged Contacts
 
-Retrieves a list of Contacts with the specified Tag To search for `null` or empty fields use `filter==NONE`
+Retrieves a list of Contacts with the specified Tag
+To search for `null` or empty fields use `filter==NONE`
 
 ### Example
 
@@ -667,7 +669,8 @@ No authorization required
 
 List Tag Categories
 
-Retrieves a list of defined Tag Categories To search for `null` or empty fields use `filter==NONE`
+Retrieves a list of defined Tag Categories
+To search for `null` or empty fields use `filter==NONE`
 
 ### Example
 
@@ -743,7 +746,8 @@ No authorization required
 
 List Tags
 
-Retrieves a list of Tags defined in the application To search for `null` or empty fields use `filter==NONE`
+Retrieves a list of Tags defined in the application
+To search for `null` or empty fields use `filter==NONE`
 
 ### Example
 

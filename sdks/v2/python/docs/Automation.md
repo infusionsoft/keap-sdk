@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **error_message** | **str** |  | [optional] 
 **id** | **str** |  | [optional] 
 **locked** | **bool** |  | [optional] 
+**publication_date** | **str** |  | [optional] 
 **published_by** | **str** |  | [optional] 
 **published_date** | **datetime** |  | [optional] 
 **published_timezone** | **str** |  | [optional] 

@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**create_category_using_post**](AutomationCategoryApi.md#create_category_using_post) | **POST** /v2/automationCategory | Create automation category
 [**delete_categories_using_delete**](AutomationCategoryApi.md#delete_categories_using_delete) | **DELETE** /v2/automationCategory | Delete automation category
 [**list_categories_using_get**](AutomationCategoryApi.md#list_categories_using_get) | **GET** /v2/automationCategory | List automation categories
+[**patch_category_using_patch**](AutomationCategoryApi.md#patch_category_using_patch) | **PATCH** /v2/automationCategory/{id} | Update automation category
 [**save_category_using_put**](AutomationCategoryApi.md#save_category_using_put) | **PUT** /v2/automationCategory | Save automation category
 
 
@@ -199,6 +200,79 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patch_category_using_patch**
+> AutomationCategory patch_category_using_patch(id, patch_automation_category_request)
+
+Update automation category
+
+Updates part of a single automation category
+
+### Example
+
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.automation_category import AutomationCategory
+from keap_core_v2_client.models.patch_automation_category_request import PatchAutomationCategoryRequest
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm/rest"
+)
+
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.AutomationCategoryApi(api_client)
+    id = 'id_example' # str | id
+    patch_automation_category_request = keap_core_v2_client.PatchAutomationCategoryRequest() # PatchAutomationCategoryRequest | patchAutomationCategoryRequest
+
+    try:
+        # Update automation category
+        api_response = api_instance.patch_category_using_patch(id, patch_automation_category_request)
+        print("The response of AutomationCategoryApi->patch_category_using_patch:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AutomationCategoryApi->patch_category_using_patch: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**| id | 
+ **patch_automation_category_request** | [**PatchAutomationCategoryRequest**](PatchAutomationCategoryRequest.md)| patchAutomationCategoryRequest | 
+
+### Return type
+
+[**AutomationCategory**](AutomationCategory.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details

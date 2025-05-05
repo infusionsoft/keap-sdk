@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **id** | **str** |  | [optional] 
 **locked** | **bool** |  | [optional] 
 **name** | **str** |  | [optional] 
+**publication_date** | **str** |  | [optional] 
 **published_date** | **datetime** |  | [optional] 
 **published_status** | **bool** |  | [optional] 
 **published_time_zone** | **str** |  | [optional] 

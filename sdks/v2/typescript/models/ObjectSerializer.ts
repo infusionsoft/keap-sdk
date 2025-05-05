@@ -113,6 +113,7 @@ export * from '../models/DefaultCommission';
 export * from '../models/DeleteEmailsRequest';
 export * from '../models/DeleteEmailsResponse';
 export * from '../models/DeleteFunnelIntegrationRequest';
+export * from '../models/DeleteProgramCommissionRequest';
 export * from '../models/DeleteSubscriptionPlanCommissionRequest';
 export * from '../models/Discount';
 export * from '../models/DiscountCriteria';
@@ -218,6 +219,7 @@ export * from '../models/OrderItemTax';
 export * from '../models/OrderTotalDiscount';
 export * from '../models/Origin';
 export * from '../models/OriginRequest';
+export * from '../models/PatchAutomationCategoryRequest';
 export * from '../models/PaymentMethod';
 export * from '../models/PaymentMethodConfig';
 export * from '../models/PaymentPlan';
@@ -429,6 +431,7 @@ import { DefaultCommission } from '../models/DefaultCommission';
 import { DeleteEmailsRequest } from '../models/DeleteEmailsRequest';
 import { DeleteEmailsResponse } from '../models/DeleteEmailsResponse';
 import { DeleteFunnelIntegrationRequest } from '../models/DeleteFunnelIntegrationRequest';
+import { DeleteProgramCommissionRequest } from '../models/DeleteProgramCommissionRequest';
 import { DeleteSubscriptionPlanCommissionRequest } from '../models/DeleteSubscriptionPlanCommissionRequest';
 import { Discount , DiscountDiscountMethodEnum     } from '../models/Discount';
 import { DiscountCriteria  , DiscountCriteriaOperatorEnum          , DiscountCriteriaTypeEnum   } from '../models/DiscountCriteria';
@@ -534,6 +537,7 @@ import { OrderItemTax } from '../models/OrderItemTax';
 import { OrderTotalDiscount   , OrderTotalDiscountDiscountStrategyEnum  , OrderTotalDiscountDiscountTypeEnum      } from '../models/OrderTotalDiscount';
 import { Origin } from '../models/Origin';
 import { OriginRequest } from '../models/OriginRequest';
+import { PatchAutomationCategoryRequest } from '../models/PatchAutomationCategoryRequest';
 import { PaymentMethod     , PaymentMethodPaymentMethodTypeEnum  , PaymentMethodPaymentProcessorTypeEnum   } from '../models/PaymentMethod';
 import { PaymentMethodConfig } from '../models/PaymentMethodConfig';
 import { PaymentPlan } from '../models/PaymentPlan';
@@ -839,6 +843,7 @@ let typeMap: {[index: string]: any} = {
     "DeleteEmailsRequest": DeleteEmailsRequest,
     "DeleteEmailsResponse": DeleteEmailsResponse,
     "DeleteFunnelIntegrationRequest": DeleteFunnelIntegrationRequest,
+    "DeleteProgramCommissionRequest": DeleteProgramCommissionRequest,
     "DeleteSubscriptionPlanCommissionRequest": DeleteSubscriptionPlanCommissionRequest,
     "Discount": Discount,
     "DiscountCriteria": DiscountCriteria,
@@ -944,6 +949,7 @@ let typeMap: {[index: string]: any} = {
     "OrderTotalDiscount": OrderTotalDiscount,
     "Origin": Origin,
     "OriginRequest": OriginRequest,
+    "PatchAutomationCategoryRequest": PatchAutomationCategoryRequest,
     "PaymentMethod": PaymentMethod,
     "PaymentMethodConfig": PaymentMethodConfig,
     "PaymentPlan": PaymentPlan,
@@ -1279,7 +1285,7 @@ export class ObjectSerializer {
             return "application/json";
         }
 
-        const normalMediaTypes = mediaTypes.map(this.normalizeMediaType);
+        const normalMediaTypes = mediaTypes.map(ObjectSerializer.normalizeMediaType);
 
         for (const predicate of supportedMimeTypePredicatesWithPriority) {
             for (const mediaType of normalMediaTypes) {

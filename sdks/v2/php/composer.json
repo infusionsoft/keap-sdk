@@ -1,6 +1,6 @@
 {
     "name": "keap/keap-sdk",
-    "version": "0.0.53",
+    "version": "0.0.54",
     "description": "Keap REST Core Service",
     "keywords": [
         "openapitools",
@@ -11,7 +11,7 @@
         "rest",
         "api"
     ],
-    "homepage": "https://github.com/infusionsoft/keap-sdk.git",
+    "homepage": "https://github.com/infusionsoft/keap-sdk",
     "license": "Apache-2.0",
     "authors": [
         {
@@ -20,7 +20,7 @@
         }
     ],
     "require": {
-        "php": "^7.4 || ^8.0",
+        "php": "^8.1",
         "ext-curl": "*",
         "ext-json": "*",
         "ext-mbstring": "*",

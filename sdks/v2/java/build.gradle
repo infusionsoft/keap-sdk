@@ -4,16 +4,59 @@ plugins {
     id 'maven-publish'
 }
 
+task sourcesJar(type: Jar) {
+    from sourceSets.main.allSource
+    archiveClassifier.set('sources')
+}
+
+task javadocJar(type: Jar) {
+    from javadoc
+    archiveClassifier.set('javadoc')
+}
+
 publishing {
     publications {
         mavenJava(MavenPublication) {
             from components.java
+            artifact sourcesJar
+            artifact javadocJar
+
+            pom {
+                name = 'Core Service v2 Java SDK'
+                description = 'Java SDK for Keap Core Service v2 API'
+                url = 'https://github.com/infusionsoft/keap-sdk'
+
+                licenses {
+                    license {
+                        name = 'Apache 2.0'
+                        url = 'https://www.apache.org/licenses/LICENSE-2.0'
+                        distribution = 'repo'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id = 'keap'
+                        name = 'Keap Engineering'
+                        email = 'api@keap.com'
+                        organization = 'Keap Engineering'
+                        organizationUrl = 'https://developer.keap.com'
+                    }
+                }
+
+                scm {
+                    connection = 'scm:git:git://github.com/infusionsoft/keap-sdk.git'
+                    developerConnection = 'scm:git:ssh://github.com/infusionsoft/keap-sdk.git'
+                    url = 'https://github.com/infusionsoft/keap-sdk'
+                }
+            }
         }
     }
 }
 
 group = 'com.keap.core'
-version = '0.0.53'
+version = '0.0.54'
+description = 'Java SDK for Keap Core Service v2 API'
 
 repositories {
     mavenLocal()
@@ -29,12 +72,13 @@ ext {
     jakarta_validation_version = "3.1.1"
     junit_version = "5.10.2"
     swagger_annotations_version = "2.2.28"
+    apache_http_client_version = "4.5.14"
 }
 
 dependencies {
     implementation "io.swagger.core.v3:swagger-annotations:${swagger_annotations_version}"
     implementation "com.google.code.findbugs:jsr305:${findbugs_version}"
-    
+
     implementation "com.fasterxml.jackson.core:jackson-core:${jackson_version}"
     implementation "com.fasterxml.jackson.core:jackson-annotations:${jackson_version}"
     implementation "com.fasterxml.jackson.core:jackson-databind:${jackson_version}"
@@ -45,6 +89,9 @@ dependencies {
 
     implementation "jakarta.annotation:jakarta.annotation-api:${jakarta_annotation_version}"
     implementation "jakarta.validation:jakarta.validation-api:${jakarta_validation_version}"
+
+    implementation "org.apache.httpcomponents:httpclient:${apache_http_client_version}"
+    implementation "org.apache.httpcomponents:httpmime:${apache_http_client_version}"
 
     testImplementation "org.junit.jupiter:junit-jupiter-api:${junit_version}"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junit_version}"

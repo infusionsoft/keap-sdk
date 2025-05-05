@@ -1,5 +1,6 @@
 import { ResponseContext, RequestContext, HttpFile, HttpInfo } from '../http/http';
-import { Configuration} from '../configuration'
+import { Configuration, PromiseConfigurationOptions, wrapOptions } from '../configuration'
+import { PromiseMiddleware, Middleware, PromiseMiddlewareWrapper } from '../middleware';
 
 import { AddContactsToSequenceRequest } from '../models/AddContactsToSequenceRequest';
 import { AddContactsToSequenceResponse } from '../models/AddContactsToSequenceResponse';
@@ -116,6 +117,7 @@ import { DefaultCommission } from '../models/DefaultCommission';
 import { DeleteEmailsRequest } from '../models/DeleteEmailsRequest';
 import { DeleteEmailsResponse } from '../models/DeleteEmailsResponse';
 import { DeleteFunnelIntegrationRequest } from '../models/DeleteFunnelIntegrationRequest';
+import { DeleteProgramCommissionRequest } from '../models/DeleteProgramCommissionRequest';
 import { DeleteSubscriptionPlanCommissionRequest } from '../models/DeleteSubscriptionPlanCommissionRequest';
 import { Discount } from '../models/Discount';
 import { DiscountCriteria } from '../models/DiscountCriteria';
@@ -221,6 +223,7 @@ import { OrderItemTax } from '../models/OrderItemTax';
 import { OrderTotalDiscount } from '../models/OrderTotalDiscount';
 import { Origin } from '../models/Origin';
 import { OriginRequest } from '../models/OriginRequest';
+import { PatchAutomationCategoryRequest } from '../models/PatchAutomationCategoryRequest';
 import { PaymentMethod } from '../models/PaymentMethod';
 import { PaymentMethodConfig } from '../models/PaymentMethodConfig';
 import { PaymentPlan } from '../models/PaymentPlan';
@@ -331,12 +334,26 @@ export class PromiseAffiliateApi {
     }
 
     /**
-     * Creates a single Affiliate
-     * Create an Affiliate
-     * @param [createAffiliateRequest] Affiliate request to insert
+     * Assigns an Affiliate to Commission Program
+     * Assign Affiliate to Commission program
+     * @param id id
+     * @param affiliateAddToProgramRequest affiliateAddToProgramRequest
      */
-    public addAffiliateUsingPOSTWithHttpInfo(createAffiliateRequest?: CreateAffiliateRequest, _options?: Configuration): Promise<HttpInfo<RestAffiliate>> {
-        const result = this.api.addAffiliateUsingPOSTWithHttpInfo(createAffiliateRequest, _options);
+    public addAffiliateToProgramUsingPOSTWithHttpInfo(id: string, affiliateAddToProgramRequest: AffiliateAddToProgramRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.addAffiliateToProgramUsingPOSTWithHttpInfo(id, affiliateAddToProgramRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Assigns an Affiliate to Commission Program
+     * Assign Affiliate to Commission program
+     * @param id id
+     * @param affiliateAddToProgramRequest affiliateAddToProgramRequest
+     */
+    public addAffiliateToProgramUsingPOST(id: string, affiliateAddToProgramRequest: AffiliateAddToProgramRequest, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.addAffiliateToProgramUsingPOST(id, affiliateAddToProgramRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -345,8 +362,254 @@ export class PromiseAffiliateApi {
      * Create an Affiliate
      * @param [createAffiliateRequest] Affiliate request to insert
      */
-    public addAffiliateUsingPOST(createAffiliateRequest?: CreateAffiliateRequest, _options?: Configuration): Promise<RestAffiliate> {
-        const result = this.api.addAffiliateUsingPOST(createAffiliateRequest, _options);
+    public addAffiliateUsingPOSTWithHttpInfo(createAffiliateRequest?: CreateAffiliateRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<RestAffiliate>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.addAffiliateUsingPOSTWithHttpInfo(createAffiliateRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a single Affiliate
+     * Create an Affiliate
+     * @param [createAffiliateRequest] Affiliate request to insert
+     */
+    public addAffiliateUsingPOST(createAffiliateRequest?: CreateAffiliateRequest, _options?: PromiseConfigurationOptions): Promise<RestAffiliate> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.addAffiliateUsingPOST(createAffiliateRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates an Affiliate Commission Program
+     * Create an Affiliate Commission Program
+     * @param [createCommissionProgramRequest] Commission Program to insert
+     */
+    public addCommissionProgramUsingPOSTWithHttpInfo(createCommissionProgramRequest?: CreateCommissionProgramRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AffiliateCommissionProgramResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.addCommissionProgramUsingPOSTWithHttpInfo(createCommissionProgramRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates an Affiliate Commission Program
+     * Create an Affiliate Commission Program
+     * @param [createCommissionProgramRequest] Commission Program to insert
+     */
+    public addCommissionProgramUsingPOST(createCommissionProgramRequest?: CreateCommissionProgramRequest, _options?: PromiseConfigurationOptions): Promise<AffiliateCommissionProgramResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.addCommissionProgramUsingPOST(createCommissionProgramRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Assigns a Product Commission Program to a Product
+     * Assign a Product Commission Program
+     * @param commissionProgramId commission_program_id
+     * @param [createProductCommissionProgramRequest] Product Commission Program
+     */
+    public assignProductCommissionProgramUsingPOSTWithHttpInfo(commissionProgramId: string, createProductCommissionProgramRequest?: CreateProductCommissionProgramRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ProductCommissionProgram>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.assignProductCommissionProgramUsingPOSTWithHttpInfo(commissionProgramId, createProductCommissionProgramRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Assigns a Product Commission Program to a Product
+     * Assign a Product Commission Program
+     * @param commissionProgramId commission_program_id
+     * @param [createProductCommissionProgramRequest] Product Commission Program
+     */
+    public assignProductCommissionProgramUsingPOST(commissionProgramId: string, createProductCommissionProgramRequest?: CreateProductCommissionProgramRequest, _options?: PromiseConfigurationOptions): Promise<ProductCommissionProgram> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.assignProductCommissionProgramUsingPOST(commissionProgramId, createProductCommissionProgramRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Assigns a Subscription Commission Program to a Subscription
+     * Assign a Subscription Commission Program
+     * @param commissionProgramId commission_program_id
+     * @param [createSubscriptionCommissionProgramRequest] Subscription Commission Program
+     */
+    public assignSubscriptionCommissionProgramUsingPOSTWithHttpInfo(commissionProgramId: string, createSubscriptionCommissionProgramRequest?: CreateSubscriptionCommissionProgramRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<SubscriptionCommissionProgram>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.assignSubscriptionCommissionProgramUsingPOSTWithHttpInfo(commissionProgramId, createSubscriptionCommissionProgramRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Assigns a Subscription Commission Program to a Subscription
+     * Assign a Subscription Commission Program
+     * @param commissionProgramId commission_program_id
+     * @param [createSubscriptionCommissionProgramRequest] Subscription Commission Program
+     */
+    public assignSubscriptionCommissionProgramUsingPOST(commissionProgramId: string, createSubscriptionCommissionProgramRequest?: CreateSubscriptionCommissionProgramRequest, _options?: PromiseConfigurationOptions): Promise<SubscriptionCommissionProgram> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.assignSubscriptionCommissionProgramUsingPOST(commissionProgramId, createSubscriptionCommissionProgramRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a Default Commission Program
+     * Create a Default Commission Program
+     * @param commissionProgramId commission_program_id
+     * @param [createDefaultCommissionProgramRequest] Values of the Default Commission Program
+     */
+    public createDefaultCommissionProgramUsingPOSTWithHttpInfo(commissionProgramId: string, createDefaultCommissionProgramRequest?: CreateDefaultCommissionProgramRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<SetDefaultCommissionProgramResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createDefaultCommissionProgramUsingPOSTWithHttpInfo(commissionProgramId, createDefaultCommissionProgramRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a Default Commission Program
+     * Create a Default Commission Program
+     * @param commissionProgramId commission_program_id
+     * @param [createDefaultCommissionProgramRequest] Values of the Default Commission Program
+     */
+    public createDefaultCommissionProgramUsingPOST(commissionProgramId: string, createDefaultCommissionProgramRequest?: CreateDefaultCommissionProgramRequest, _options?: PromiseConfigurationOptions): Promise<SetDefaultCommissionProgramResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createDefaultCommissionProgramUsingPOST(commissionProgramId, createDefaultCommissionProgramRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a single Affiliate Link
+     * Create an Affiliate Link
+     * @param createOrUpdateAffiliateLinkRequest request
+     */
+    public createRedirectLinkUsingPOSTWithHttpInfo(createOrUpdateAffiliateLinkRequest: CreateOrUpdateAffiliateLinkRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AffiliateLink>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createRedirectLinkUsingPOSTWithHttpInfo(createOrUpdateAffiliateLinkRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a single Affiliate Link
+     * Create an Affiliate Link
+     * @param createOrUpdateAffiliateLinkRequest request
+     */
+    public createRedirectLinkUsingPOST(createOrUpdateAffiliateLinkRequest: CreateOrUpdateAffiliateLinkRequest, _options?: PromiseConfigurationOptions): Promise<AffiliateLink> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createRedirectLinkUsingPOST(createOrUpdateAffiliateLinkRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a Commission Program
+     * Delete a Commission Program
+     * @param commissionProgramId commission_program_id
+     */
+    public deleteAffiliateCommissionProgramUsingDELETEWithHttpInfo(commissionProgramId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteAffiliateCommissionProgramUsingDELETEWithHttpInfo(commissionProgramId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a Commission Program
+     * Delete a Commission Program
+     * @param commissionProgramId commission_program_id
+     */
+    public deleteAffiliateCommissionProgramUsingDELETE(commissionProgramId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteAffiliateCommissionProgramUsingDELETE(commissionProgramId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes the specified Affiliate
+     * Delete Affiliate
+     * @param id id
+     */
+    public deleteAffiliateUsingDELETEWithHttpInfo(id: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteAffiliateUsingDELETEWithHttpInfo(id, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes the specified Affiliate
+     * Delete Affiliate
+     * @param id id
+     */
+    public deleteAffiliateUsingDELETE(id: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteAffiliateUsingDELETE(id, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes an Affiliate Link
+     * Delete an Affiliate Link
+     * @param redirectId redirect_id
+     */
+    public deleteRedirectLinkUsingDELETEWithHttpInfo(redirectId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteRedirectLinkUsingDELETEWithHttpInfo(redirectId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes an Affiliate Link
+     * Delete an Affiliate Link
+     * @param redirectId redirect_id
+     */
+    public deleteRedirectLinkUsingDELETE(redirectId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteRedirectLinkUsingDELETE(redirectId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Get the Affiliate Commission Earned and View LedgerURl for portal
+     * Retrieve Affiliate Commission Earned and View LedgerURl for portal
+     * @param affiliateId affiliate_id
+     */
+    public getAffiliateCommissionTotalUsingGETWithHttpInfo(affiliateId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AffiliateCommissionEarned>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getAffiliateCommissionTotalUsingGETWithHttpInfo(affiliateId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Get the Affiliate Commission Earned and View LedgerURl for portal
+     * Retrieve Affiliate Commission Earned and View LedgerURl for portal
+     * @param affiliateId affiliate_id
+     */
+    public getAffiliateCommissionTotalUsingGET(affiliateId: string, _options?: PromiseConfigurationOptions): Promise<AffiliateCommissionEarned> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getAffiliateCommissionTotalUsingGET(affiliateId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieve a list of Affiliate\'s Commissions and Clawbacks
+     * Retrieve Affiliate Commission and Clawbacks
+     * @param affiliateId affiliate_id
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;affiliateId&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched  word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;since_time%3D%3D2024-09-17T-15:50+00&#x60;  - &#x60;filter&#x3D;until_time%3D%3D2024-09-17T-15:50+00&#x60;  - &#x60;filter&#x3D;affiliateId%3D%3D123&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;invoice_id&#x60; - &#x60;affowed_id&#x60; - &#x60;date_earned&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public getAffiliateCommissionsUsingGETWithHttpInfo(affiliateId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListAffiliateCommissionsResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getAffiliateCommissionsUsingGETWithHttpInfo(affiliateId, filter, orderBy, pageSize, pageToken, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieve a list of Affiliate\'s Commissions and Clawbacks
+     * Retrieve Affiliate Commission and Clawbacks
+     * @param affiliateId affiliate_id
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;affiliateId&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched  word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;since_time%3D%3D2024-09-17T-15:50+00&#x60;  - &#x60;filter&#x3D;until_time%3D%3D2024-09-17T-15:50+00&#x60;  - &#x60;filter&#x3D;affiliateId%3D%3D123&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;invoice_id&#x60; - &#x60;affowed_id&#x60; - &#x60;date_earned&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public getAffiliateCommissionsUsingGET(affiliateId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<ListAffiliateCommissionsResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getAffiliateCommissionsUsingGET(affiliateId, filter, orderBy, pageSize, pageToken, observableOptions);
         return result.toPromise();
     }
 
@@ -355,8 +618,9 @@ export class PromiseAffiliateApi {
      * Retrieve an Affiliate
      * @param id id
      */
-    public getAffiliateUsingGET1WithHttpInfo(id: string, _options?: Configuration): Promise<HttpInfo<RestAffiliate>> {
-        const result = this.api.getAffiliateUsingGET1WithHttpInfo(id, _options);
+    public getAffiliateUsingGET1WithHttpInfo(id: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<RestAffiliate>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getAffiliateUsingGET1WithHttpInfo(id, observableOptions);
         return result.toPromise();
     }
 
@@ -365,8 +629,209 @@ export class PromiseAffiliateApi {
      * Retrieve an Affiliate
      * @param id id
      */
-    public getAffiliateUsingGET1(id: string, _options?: Configuration): Promise<RestAffiliate> {
-        const result = this.api.getAffiliateUsingGET1(id, _options);
+    public getAffiliateUsingGET1(id: string, _options?: PromiseConfigurationOptions): Promise<RestAffiliate> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getAffiliateUsingGET1(id, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a single Commission Program
+     * Retrieve a Commission Program
+     * @param commissionProgramId commission_program_id
+     */
+    public getCommissionProgramUsingGETWithHttpInfo(commissionProgramId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AffiliateProgramV2>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getCommissionProgramUsingGETWithHttpInfo(commissionProgramId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a single Commission Program
+     * Retrieve a Commission Program
+     * @param commissionProgramId commission_program_id
+     */
+    public getCommissionProgramUsingGET(commissionProgramId: string, _options?: PromiseConfigurationOptions): Promise<AffiliateProgramV2> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getCommissionProgramUsingGET(commissionProgramId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves information about a single Affiliate Link
+     * Retrieve an Affiliate Link
+     * @param redirectId redirect_id
+     */
+    public getRedirectLinkUsingGETWithHttpInfo(redirectId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AffiliateLink>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getRedirectLinkUsingGETWithHttpInfo(redirectId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves information about a single Affiliate Link
+     * Retrieve an Affiliate Link
+     * @param redirectId redirect_id
+     */
+    public getRedirectLinkUsingGET(redirectId: string, _options?: PromiseConfigurationOptions): Promise<AffiliateLink> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getRedirectLinkUsingGET(redirectId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of Affiliate Commission Programs
+     * List Affiliate Commission Programs
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (String) &#x60;affiliate_id&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;date_created&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listAffiliateCommissionProgramsUsingGETWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListAffiliateCommissionProgramsResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listAffiliateCommissionProgramsUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of Affiliate Commission Programs
+     * List Affiliate Commission Programs
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (String) &#x60;affiliate_id&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;date_created&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listAffiliateCommissionProgramsUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<ListAffiliateCommissionProgramsResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listAffiliateCommissionProgramsUsingGET(filter, orderBy, pageSize, pageToken, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of Affiliate Links
+     * List Affiliate Links
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (String) &#x60;affiliate_id&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;date_created&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listAffiliateLinksUsingGETWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListAffiliateLinksResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listAffiliateLinksUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of Affiliate Links
+     * List Affiliate Links
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (String) &#x60;affiliate_id&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;date_created&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listAffiliateLinksUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<ListAffiliateLinksResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listAffiliateLinksUsingGET(filter, orderBy, pageSize, pageToken, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of Affiliate Summaries
+     * List Affiliate Summaries
+     * @param [filter] Filter to apply, allowed fields are: - (List[String]) &#x60;affiliate_ids&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched  word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;since_time%3D%3D2024-09-17T-15:50+00&#x60;  - &#x60;filter&#x3D;until_time%3D%3D2024-09-17T-15:50+00&#x60;  - &#x60;filter&#x3D;affiliate_ids%3D%3D123,456,789&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;affiliate_id&#x60; - &#x60;amount_earned&#x60; - &#x60;balance&#x60; - &#x60;clawbacks&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listSummariesUsingGET1WithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListAffiliateSummariesResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listSummariesUsingGET1WithHttpInfo(filter, orderBy, pageSize, pageToken, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of Affiliate Summaries
+     * List Affiliate Summaries
+     * @param [filter] Filter to apply, allowed fields are: - (List[String]) &#x60;affiliate_ids&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched  word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;since_time%3D%3D2024-09-17T-15:50+00&#x60;  - &#x60;filter&#x3D;until_time%3D%3D2024-09-17T-15:50+00&#x60;  - &#x60;filter&#x3D;affiliate_ids%3D%3D123,456,789&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;affiliate_id&#x60; - &#x60;amount_earned&#x60; - &#x60;balance&#x60; - &#x60;clawbacks&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listSummariesUsingGET1(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<ListAffiliateSummariesResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listSummariesUsingGET1(filter, orderBy, pageSize, pageToken, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Removes an Affiliate from a Commission Program
+     * Remove an Affiliate from a Commission Program
+     * @param id id
+     * @param affiliateRemoveFromProgramRequest removeFromProgramRequest
+     */
+    public removeAffiliateFromProgramUsingPOSTWithHttpInfo(id: string, affiliateRemoveFromProgramRequest: AffiliateRemoveFromProgramRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.removeAffiliateFromProgramUsingPOSTWithHttpInfo(id, affiliateRemoveFromProgramRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Removes an Affiliate from a Commission Program
+     * Remove an Affiliate from a Commission Program
+     * @param id id
+     * @param affiliateRemoveFromProgramRequest removeFromProgramRequest
+     */
+    public removeAffiliateFromProgramUsingPOST(id: string, affiliateRemoveFromProgramRequest: AffiliateRemoveFromProgramRequest, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.removeAffiliateFromProgramUsingPOST(id, affiliateRemoveFromProgramRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Removes a Product from a Commission Program
+     * Remove a Product from a Commission Program
+     * @param commissionId commission_id
+     * @param deleteProgramCommissionRequest deleteProgramCommissionRequest
+     */
+    public removeProductCommissionFromCommissionsUsingPOSTWithHttpInfo(commissionId: string, deleteProgramCommissionRequest: DeleteProgramCommissionRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.removeProductCommissionFromCommissionsUsingPOSTWithHttpInfo(commissionId, deleteProgramCommissionRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Removes a Product from a Commission Program
+     * Remove a Product from a Commission Program
+     * @param commissionId commission_id
+     * @param deleteProgramCommissionRequest deleteProgramCommissionRequest
+     */
+    public removeProductCommissionFromCommissionsUsingPOST(commissionId: string, deleteProgramCommissionRequest: DeleteProgramCommissionRequest, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.removeProductCommissionFromCommissionsUsingPOST(commissionId, deleteProgramCommissionRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Removes a Subscription from a Commission Program
+     * Remove a Subscription from a Commission Program
+     * @param commissionId commission_id
+     * @param deleteSubscriptionPlanCommissionRequest deleteSubscriptionPlanCommissionRequest
+     */
+    public removeSubscriptionPlanCommissionFromCommissionsUsingPOSTWithHttpInfo(commissionId: string, deleteSubscriptionPlanCommissionRequest: DeleteSubscriptionPlanCommissionRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.removeSubscriptionPlanCommissionFromCommissionsUsingPOSTWithHttpInfo(commissionId, deleteSubscriptionPlanCommissionRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Removes a Subscription from a Commission Program
+     * Remove a Subscription from a Commission Program
+     * @param commissionId commission_id
+     * @param deleteSubscriptionPlanCommissionRequest deleteSubscriptionPlanCommissionRequest
+     */
+    public removeSubscriptionPlanCommissionFromCommissionsUsingPOST(commissionId: string, deleteSubscriptionPlanCommissionRequest: DeleteSubscriptionPlanCommissionRequest, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.removeSubscriptionPlanCommissionFromCommissionsUsingPOST(commissionId, deleteSubscriptionPlanCommissionRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -376,8 +841,9 @@ export class PromiseAffiliateApi {
      * @param id id
      * @param [updateAffiliateRequest] Request to update an affiliate
      */
-    public updateAffiliateUsingPATCHWithHttpInfo(id: string, updateAffiliateRequest?: UpdateAffiliateRequest, _options?: Configuration): Promise<HttpInfo<RestAffiliate>> {
-        const result = this.api.updateAffiliateUsingPATCHWithHttpInfo(id, updateAffiliateRequest, _options);
+    public updateAffiliateUsingPATCHWithHttpInfo(id: string, updateAffiliateRequest?: UpdateAffiliateRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<RestAffiliate>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateAffiliateUsingPATCHWithHttpInfo(id, updateAffiliateRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -387,8 +853,9 @@ export class PromiseAffiliateApi {
      * @param id id
      * @param [updateAffiliateRequest] Request to update an affiliate
      */
-    public updateAffiliateUsingPATCH(id: string, updateAffiliateRequest?: UpdateAffiliateRequest, _options?: Configuration): Promise<RestAffiliate> {
-        const result = this.api.updateAffiliateUsingPATCH(id, updateAffiliateRequest, _options);
+    public updateAffiliateUsingPATCH(id: string, updateAffiliateRequest?: UpdateAffiliateRequest, _options?: PromiseConfigurationOptions): Promise<RestAffiliate> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateAffiliateUsingPATCH(id, updateAffiliateRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -399,8 +866,9 @@ export class PromiseAffiliateApi {
      * @param updateCommissionProgramRequest updateCommissionProgramRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateCommissionProgramUsingPATCHWithHttpInfo(commissionProgramId: string, updateCommissionProgramRequest: UpdateCommissionProgramRequest, updateMask?: Array<string>, _options?: Configuration): Promise<HttpInfo<AffiliateCommissionProgramResponse>> {
-        const result = this.api.updateCommissionProgramUsingPATCHWithHttpInfo(commissionProgramId, updateCommissionProgramRequest, updateMask, _options);
+    public updateCommissionProgramUsingPATCHWithHttpInfo(commissionProgramId: string, updateCommissionProgramRequest: UpdateCommissionProgramRequest, updateMask?: Array<string>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AffiliateCommissionProgramResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateCommissionProgramUsingPATCHWithHttpInfo(commissionProgramId, updateCommissionProgramRequest, updateMask, observableOptions);
         return result.toPromise();
     }
 
@@ -411,8 +879,111 @@ export class PromiseAffiliateApi {
      * @param updateCommissionProgramRequest updateCommissionProgramRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateCommissionProgramUsingPATCH(commissionProgramId: string, updateCommissionProgramRequest: UpdateCommissionProgramRequest, updateMask?: Array<string>, _options?: Configuration): Promise<AffiliateCommissionProgramResponse> {
-        const result = this.api.updateCommissionProgramUsingPATCH(commissionProgramId, updateCommissionProgramRequest, updateMask, _options);
+    public updateCommissionProgramUsingPATCH(commissionProgramId: string, updateCommissionProgramRequest: UpdateCommissionProgramRequest, updateMask?: Array<string>, _options?: PromiseConfigurationOptions): Promise<AffiliateCommissionProgramResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateCommissionProgramUsingPATCH(commissionProgramId, updateCommissionProgramRequest, updateMask, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates a Default Commission Program
+     * Update a Default Commission Program
+     * @param commissionProgramId commission_program_id
+     * @param [updateMask] update_mask
+     * @param [updateDefaultCommissionProgramRequest] Values of the default Commission Program
+     */
+    public updateDefaultCommissionProgramUsingPATCHWithHttpInfo(commissionProgramId: string, updateMask?: Array<string>, updateDefaultCommissionProgramRequest?: UpdateDefaultCommissionProgramRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<SetDefaultCommissionProgramResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateDefaultCommissionProgramUsingPATCHWithHttpInfo(commissionProgramId, updateMask, updateDefaultCommissionProgramRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates a Default Commission Program
+     * Update a Default Commission Program
+     * @param commissionProgramId commission_program_id
+     * @param [updateMask] update_mask
+     * @param [updateDefaultCommissionProgramRequest] Values of the default Commission Program
+     */
+    public updateDefaultCommissionProgramUsingPATCH(commissionProgramId: string, updateMask?: Array<string>, updateDefaultCommissionProgramRequest?: UpdateDefaultCommissionProgramRequest, _options?: PromiseConfigurationOptions): Promise<SetDefaultCommissionProgramResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateDefaultCommissionProgramUsingPATCH(commissionProgramId, updateMask, updateDefaultCommissionProgramRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates a Product Commission Program
+     * Update a Product Commission Program
+     * @param commissionProgramId commission_program_id
+     * @param [updateMask] update_mask
+     * @param [updateProductCommissionProgramRequest] Values of the product Commission Program
+     */
+    public updateProductCommissionProgramUsingPATCHWithHttpInfo(commissionProgramId: string, updateMask?: Array<string>, updateProductCommissionProgramRequest?: UpdateProductCommissionProgramRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ProductCommissionProgram>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateProductCommissionProgramUsingPATCHWithHttpInfo(commissionProgramId, updateMask, updateProductCommissionProgramRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates a Product Commission Program
+     * Update a Product Commission Program
+     * @param commissionProgramId commission_program_id
+     * @param [updateMask] update_mask
+     * @param [updateProductCommissionProgramRequest] Values of the product Commission Program
+     */
+    public updateProductCommissionProgramUsingPATCH(commissionProgramId: string, updateMask?: Array<string>, updateProductCommissionProgramRequest?: UpdateProductCommissionProgramRequest, _options?: PromiseConfigurationOptions): Promise<ProductCommissionProgram> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateProductCommissionProgramUsingPATCH(commissionProgramId, updateMask, updateProductCommissionProgramRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates an Affiliate Link
+     * Update an Affiliate Link
+     * @param redirectId redirect_id
+     * @param createOrUpdateAffiliateLinkRequest request
+     */
+    public updateRedirectLinkUsingPATCHWithHttpInfo(redirectId: string, createOrUpdateAffiliateLinkRequest: CreateOrUpdateAffiliateLinkRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AffiliateLink>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateRedirectLinkUsingPATCHWithHttpInfo(redirectId, createOrUpdateAffiliateLinkRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates an Affiliate Link
+     * Update an Affiliate Link
+     * @param redirectId redirect_id
+     * @param createOrUpdateAffiliateLinkRequest request
+     */
+    public updateRedirectLinkUsingPATCH(redirectId: string, createOrUpdateAffiliateLinkRequest: CreateOrUpdateAffiliateLinkRequest, _options?: PromiseConfigurationOptions): Promise<AffiliateLink> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateRedirectLinkUsingPATCH(redirectId, createOrUpdateAffiliateLinkRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates a Subscription Commission Program
+     * Update a Subscription Commission Program
+     * @param commissionProgramId commission_program_id
+     * @param [updateMask] update_mask
+     * @param [updateSubscriptionCommissionProgramRequest] Values of the subscription Commission Program
+     */
+    public updateSubscriptionCommissionProgramUsingPATCHWithHttpInfo(commissionProgramId: string, updateMask?: Array<string>, updateSubscriptionCommissionProgramRequest?: UpdateSubscriptionCommissionProgramRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<SubscriptionCommissionProgram>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateSubscriptionCommissionProgramUsingPATCHWithHttpInfo(commissionProgramId, updateMask, updateSubscriptionCommissionProgramRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates a Subscription Commission Program
+     * Update a Subscription Commission Program
+     * @param commissionProgramId commission_program_id
+     * @param [updateMask] update_mask
+     * @param [updateSubscriptionCommissionProgramRequest] Values of the subscription Commission Program
+     */
+    public updateSubscriptionCommissionProgramUsingPATCH(commissionProgramId: string, updateMask?: Array<string>, updateSubscriptionCommissionProgramRequest?: UpdateSubscriptionCommissionProgramRequest, _options?: PromiseConfigurationOptions): Promise<SubscriptionCommissionProgram> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateSubscriptionCommissionProgramUsingPATCH(commissionProgramId, updateMask, updateSubscriptionCommissionProgramRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -442,8 +1013,9 @@ export class PromiseAutomationApi {
      * @param sequenceId sequence_id
      * @param addToAutomationSequenceRequest addToAutomationSequenceRequest
      */
-    public addContactsToAutomationSequenceUsingPOSTWithHttpInfo(automationId: string, sequenceId: string, addToAutomationSequenceRequest: AddToAutomationSequenceRequest, _options?: Configuration): Promise<HttpInfo<AddToAutomationSequenceResponse>> {
-        const result = this.api.addContactsToAutomationSequenceUsingPOSTWithHttpInfo(automationId, sequenceId, addToAutomationSequenceRequest, _options);
+    public addContactsToAutomationSequenceUsingPOSTWithHttpInfo(automationId: string, sequenceId: string, addToAutomationSequenceRequest: AddToAutomationSequenceRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AddToAutomationSequenceResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.addContactsToAutomationSequenceUsingPOSTWithHttpInfo(automationId, sequenceId, addToAutomationSequenceRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -454,8 +1026,9 @@ export class PromiseAutomationApi {
      * @param sequenceId sequence_id
      * @param addToAutomationSequenceRequest addToAutomationSequenceRequest
      */
-    public addContactsToAutomationSequenceUsingPOST(automationId: string, sequenceId: string, addToAutomationSequenceRequest: AddToAutomationSequenceRequest, _options?: Configuration): Promise<AddToAutomationSequenceResponse> {
-        const result = this.api.addContactsToAutomationSequenceUsingPOST(automationId, sequenceId, addToAutomationSequenceRequest, _options);
+    public addContactsToAutomationSequenceUsingPOST(automationId: string, sequenceId: string, addToAutomationSequenceRequest: AddToAutomationSequenceRequest, _options?: PromiseConfigurationOptions): Promise<AddToAutomationSequenceResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.addContactsToAutomationSequenceUsingPOST(automationId, sequenceId, addToAutomationSequenceRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -464,8 +1037,9 @@ export class PromiseAutomationApi {
      * Delete an Automation
      * @param automationIds automation_ids
      */
-    public deleteAutomationUsingDELETEWithHttpInfo(automationIds: Array<number>, _options?: Configuration): Promise<HttpInfo<void>> {
-        const result = this.api.deleteAutomationUsingDELETEWithHttpInfo(automationIds, _options);
+    public deleteAutomationUsingDELETEWithHttpInfo(automationIds: Array<number>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteAutomationUsingDELETEWithHttpInfo(automationIds, observableOptions);
         return result.toPromise();
     }
 
@@ -474,8 +1048,9 @@ export class PromiseAutomationApi {
      * Delete an Automation
      * @param automationIds automation_ids
      */
-    public deleteAutomationUsingDELETE(automationIds: Array<number>, _options?: Configuration): Promise<void> {
-        const result = this.api.deleteAutomationUsingDELETE(automationIds, _options);
+    public deleteAutomationUsingDELETE(automationIds: Array<number>, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteAutomationUsingDELETE(automationIds, observableOptions);
         return result.toPromise();
     }
 
@@ -484,8 +1059,9 @@ export class PromiseAutomationApi {
      * Retrieve an Automation
      * @param automationId automation_id
      */
-    public getAutomationUsingGETWithHttpInfo(automationId: string, _options?: Configuration): Promise<HttpInfo<Automation>> {
-        const result = this.api.getAutomationUsingGETWithHttpInfo(automationId, _options);
+    public getAutomationUsingGETWithHttpInfo(automationId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Automation>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getAutomationUsingGETWithHttpInfo(automationId, observableOptions);
         return result.toPromise();
     }
 
@@ -494,8 +1070,9 @@ export class PromiseAutomationApi {
      * Retrieve an Automation
      * @param automationId automation_id
      */
-    public getAutomationUsingGET(automationId: string, _options?: Configuration): Promise<Automation> {
-        const result = this.api.getAutomationUsingGET(automationId, _options);
+    public getAutomationUsingGET(automationId: string, _options?: PromiseConfigurationOptions): Promise<Automation> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getAutomationUsingGET(automationId, observableOptions);
         return result.toPromise();
     }
 
@@ -508,8 +1085,9 @@ export class PromiseAutomationApi {
      * @param [pageToken] Page token
      * @param [stats]
      */
-    public listAllAutomationIdsUsingGETWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, stats?: boolean, _options?: Configuration): Promise<HttpInfo<ListAutomationIdsResponse>> {
-        const result = this.api.listAllAutomationIdsUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken, stats, _options);
+    public listAllAutomationIdsUsingGETWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, stats?: boolean, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListAutomationIdsResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listAllAutomationIdsUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken, stats, observableOptions);
         return result.toPromise();
     }
 
@@ -522,8 +1100,9 @@ export class PromiseAutomationApi {
      * @param [pageToken] Page token
      * @param [stats]
      */
-    public listAllAutomationIdsUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, stats?: boolean, _options?: Configuration): Promise<ListAutomationIdsResponse> {
-        const result = this.api.listAllAutomationIdsUsingGET(filter, orderBy, pageSize, pageToken, stats, _options);
+    public listAllAutomationIdsUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, stats?: boolean, _options?: PromiseConfigurationOptions): Promise<ListAutomationIdsResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listAllAutomationIdsUsingGET(filter, orderBy, pageSize, pageToken, stats, observableOptions);
         return result.toPromise();
     }
 
@@ -536,8 +1115,9 @@ export class PromiseAutomationApi {
      * @param [pageToken] Page token
      * @param [stats]
      */
-    public listAutomationsUsingGETWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, stats?: boolean, _options?: Configuration): Promise<HttpInfo<ListAutomationResponse>> {
-        const result = this.api.listAutomationsUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken, stats, _options);
+    public listAutomationsUsingGETWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, stats?: boolean, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListAutomationResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listAutomationsUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken, stats, observableOptions);
         return result.toPromise();
     }
 
@@ -550,8 +1130,9 @@ export class PromiseAutomationApi {
      * @param [pageToken] Page token
      * @param [stats]
      */
-    public listAutomationsUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, stats?: boolean, _options?: Configuration): Promise<ListAutomationResponse> {
-        const result = this.api.listAutomationsUsingGET(filter, orderBy, pageSize, pageToken, stats, _options);
+    public listAutomationsUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, stats?: boolean, _options?: PromiseConfigurationOptions): Promise<ListAutomationResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listAutomationsUsingGET(filter, orderBy, pageSize, pageToken, stats, observableOptions);
         return result.toPromise();
     }
 
@@ -560,8 +1141,9 @@ export class PromiseAutomationApi {
      * Update an Automation\'s Category
      * @param updateAutomationCategoryRequest updateAutomationCategoryRequest
      */
-    public updateAutomationCategoryUsingPUTWithHttpInfo(updateAutomationCategoryRequest: UpdateAutomationCategoryRequest, _options?: Configuration): Promise<HttpInfo<void>> {
-        const result = this.api.updateAutomationCategoryUsingPUTWithHttpInfo(updateAutomationCategoryRequest, _options);
+    public updateAutomationCategoryUsingPUTWithHttpInfo(updateAutomationCategoryRequest: UpdateAutomationCategoryRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateAutomationCategoryUsingPUTWithHttpInfo(updateAutomationCategoryRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -570,8 +1152,9 @@ export class PromiseAutomationApi {
      * Update an Automation\'s Category
      * @param updateAutomationCategoryRequest updateAutomationCategoryRequest
      */
-    public updateAutomationCategoryUsingPUT(updateAutomationCategoryRequest: UpdateAutomationCategoryRequest, _options?: Configuration): Promise<void> {
-        const result = this.api.updateAutomationCategoryUsingPUT(updateAutomationCategoryRequest, _options);
+    public updateAutomationCategoryUsingPUT(updateAutomationCategoryRequest: UpdateAutomationCategoryRequest, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateAutomationCategoryUsingPUT(updateAutomationCategoryRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -599,8 +1182,9 @@ export class PromiseAutomationCategoryApi {
      * Create automation category
      * @param createAutomationCategoryRequest createAutomationCategoryRequest
      */
-    public createCategoryUsingPOSTWithHttpInfo(createAutomationCategoryRequest: CreateAutomationCategoryRequest, _options?: Configuration): Promise<HttpInfo<AutomationCategory>> {
-        const result = this.api.createCategoryUsingPOSTWithHttpInfo(createAutomationCategoryRequest, _options);
+    public createCategoryUsingPOSTWithHttpInfo(createAutomationCategoryRequest: CreateAutomationCategoryRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AutomationCategory>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createCategoryUsingPOSTWithHttpInfo(createAutomationCategoryRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -609,8 +1193,9 @@ export class PromiseAutomationCategoryApi {
      * Create automation category
      * @param createAutomationCategoryRequest createAutomationCategoryRequest
      */
-    public createCategoryUsingPOST(createAutomationCategoryRequest: CreateAutomationCategoryRequest, _options?: Configuration): Promise<AutomationCategory> {
-        const result = this.api.createCategoryUsingPOST(createAutomationCategoryRequest, _options);
+    public createCategoryUsingPOST(createAutomationCategoryRequest: CreateAutomationCategoryRequest, _options?: PromiseConfigurationOptions): Promise<AutomationCategory> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createCategoryUsingPOST(createAutomationCategoryRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -619,8 +1204,9 @@ export class PromiseAutomationCategoryApi {
      * Delete automation category
      * @param ids ids
      */
-    public deleteCategoriesUsingDELETEWithHttpInfo(ids: Array<number>, _options?: Configuration): Promise<HttpInfo<void>> {
-        const result = this.api.deleteCategoriesUsingDELETEWithHttpInfo(ids, _options);
+    public deleteCategoriesUsingDELETEWithHttpInfo(ids: Array<number>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteCategoriesUsingDELETEWithHttpInfo(ids, observableOptions);
         return result.toPromise();
     }
 
@@ -629,8 +1215,9 @@ export class PromiseAutomationCategoryApi {
      * Delete automation category
      * @param ids ids
      */
-    public deleteCategoriesUsingDELETE(ids: Array<number>, _options?: Configuration): Promise<void> {
-        const result = this.api.deleteCategoriesUsingDELETE(ids, _options);
+    public deleteCategoriesUsingDELETE(ids: Array<number>, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteCategoriesUsingDELETE(ids, observableOptions);
         return result.toPromise();
     }
 
@@ -638,8 +1225,9 @@ export class PromiseAutomationCategoryApi {
      * Retrieves a list of automation categories
      * List automation categories
      */
-    public listCategoriesUsingGETWithHttpInfo(_options?: Configuration): Promise<HttpInfo<ListAutomationCategoryResponse>> {
-        const result = this.api.listCategoriesUsingGETWithHttpInfo(_options);
+    public listCategoriesUsingGETWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<ListAutomationCategoryResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listCategoriesUsingGETWithHttpInfo(observableOptions);
         return result.toPromise();
     }
 
@@ -647,8 +1235,33 @@ export class PromiseAutomationCategoryApi {
      * Retrieves a list of automation categories
      * List automation categories
      */
-    public listCategoriesUsingGET(_options?: Configuration): Promise<ListAutomationCategoryResponse> {
-        const result = this.api.listCategoriesUsingGET(_options);
+    public listCategoriesUsingGET(_options?: PromiseConfigurationOptions): Promise<ListAutomationCategoryResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listCategoriesUsingGET(observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates part of a single automation category
+     * Update automation category
+     * @param id id
+     * @param patchAutomationCategoryRequest patchAutomationCategoryRequest
+     */
+    public patchCategoryUsingPATCHWithHttpInfo(id: string, patchAutomationCategoryRequest: PatchAutomationCategoryRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AutomationCategory>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.patchCategoryUsingPATCHWithHttpInfo(id, patchAutomationCategoryRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates part of a single automation category
+     * Update automation category
+     * @param id id
+     * @param patchAutomationCategoryRequest patchAutomationCategoryRequest
+     */
+    public patchCategoryUsingPATCH(id: string, patchAutomationCategoryRequest: PatchAutomationCategoryRequest, _options?: PromiseConfigurationOptions): Promise<AutomationCategory> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.patchCategoryUsingPATCH(id, patchAutomationCategoryRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -657,8 +1270,9 @@ export class PromiseAutomationCategoryApi {
      * Save automation category
      * @param saveAutomationCategoryRequest saveAutomationCategoryRequest
      */
-    public saveCategoryUsingPUTWithHttpInfo(saveAutomationCategoryRequest: SaveAutomationCategoryRequest, _options?: Configuration): Promise<HttpInfo<AutomationCategory>> {
-        const result = this.api.saveCategoryUsingPUTWithHttpInfo(saveAutomationCategoryRequest, _options);
+    public saveCategoryUsingPUTWithHttpInfo(saveAutomationCategoryRequest: SaveAutomationCategoryRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AutomationCategory>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.saveCategoryUsingPUTWithHttpInfo(saveAutomationCategoryRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -667,8 +1281,9 @@ export class PromiseAutomationCategoryApi {
      * Save automation category
      * @param saveAutomationCategoryRequest saveAutomationCategoryRequest
      */
-    public saveCategoryUsingPUT(saveAutomationCategoryRequest: SaveAutomationCategoryRequest, _options?: Configuration): Promise<AutomationCategory> {
-        const result = this.api.saveCategoryUsingPUT(saveAutomationCategoryRequest, _options);
+    public saveCategoryUsingPUT(saveAutomationCategoryRequest: SaveAutomationCategoryRequest, _options?: PromiseConfigurationOptions): Promise<AutomationCategory> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.saveCategoryUsingPUT(saveAutomationCategoryRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -695,8 +1310,9 @@ export class PromiseBusinessProfileApi {
      * Retrieves Business Profile information.
      * Retrieve Business Profile
      */
-    public getBusinessProfileUsingGETWithHttpInfo(_options?: Configuration): Promise<HttpInfo<GetBusinessProfileResponse>> {
-        const result = this.api.getBusinessProfileUsingGETWithHttpInfo(_options);
+    public getBusinessProfileUsingGETWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<GetBusinessProfileResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getBusinessProfileUsingGETWithHttpInfo(observableOptions);
         return result.toPromise();
     }
 
@@ -704,8 +1320,9 @@ export class PromiseBusinessProfileApi {
      * Retrieves Business Profile information.
      * Retrieve Business Profile
      */
-    public getBusinessProfileUsingGET(_options?: Configuration): Promise<GetBusinessProfileResponse> {
-        const result = this.api.getBusinessProfileUsingGET(_options);
+    public getBusinessProfileUsingGET(_options?: PromiseConfigurationOptions): Promise<GetBusinessProfileResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getBusinessProfileUsingGET(observableOptions);
         return result.toPromise();
     }
 
@@ -715,8 +1332,9 @@ export class PromiseBusinessProfileApi {
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @param [updateBusinessProfileRequest] businessProfile
      */
-    public updateBusinessProfileUsingPATCHWithHttpInfo(updateMask?: Array<string>, updateBusinessProfileRequest?: UpdateBusinessProfileRequest, _options?: Configuration): Promise<HttpInfo<GetBusinessProfileResponse>> {
-        const result = this.api.updateBusinessProfileUsingPATCHWithHttpInfo(updateMask, updateBusinessProfileRequest, _options);
+    public updateBusinessProfileUsingPATCHWithHttpInfo(updateMask?: Array<string>, updateBusinessProfileRequest?: UpdateBusinessProfileRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<GetBusinessProfileResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateBusinessProfileUsingPATCHWithHttpInfo(updateMask, updateBusinessProfileRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -726,8 +1344,9 @@ export class PromiseBusinessProfileApi {
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @param [updateBusinessProfileRequest] businessProfile
      */
-    public updateBusinessProfileUsingPATCH(updateMask?: Array<string>, updateBusinessProfileRequest?: UpdateBusinessProfileRequest, _options?: Configuration): Promise<GetBusinessProfileResponse> {
-        const result = this.api.updateBusinessProfileUsingPATCH(updateMask, updateBusinessProfileRequest, _options);
+    public updateBusinessProfileUsingPATCH(updateMask?: Array<string>, updateBusinessProfileRequest?: UpdateBusinessProfileRequest, _options?: PromiseConfigurationOptions): Promise<GetBusinessProfileResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateBusinessProfileUsingPATCH(updateMask, updateBusinessProfileRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -757,8 +1376,9 @@ export class PromiseCampaignApi {
      * @param sequenceId sequence_id
      * @param addContactsToSequenceRequest addContactsToSequenceRequest
      */
-    public addContactsToCampaignSequenceUsingPOST1WithHttpInfo(campaignId: string, sequenceId: string, addContactsToSequenceRequest: AddContactsToSequenceRequest, _options?: Configuration): Promise<HttpInfo<AddContactsToSequenceResponse>> {
-        const result = this.api.addContactsToCampaignSequenceUsingPOST1WithHttpInfo(campaignId, sequenceId, addContactsToSequenceRequest, _options);
+    public addContactsToCampaignSequenceUsingPOST1WithHttpInfo(campaignId: string, sequenceId: string, addContactsToSequenceRequest: AddContactsToSequenceRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AddContactsToSequenceResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.addContactsToCampaignSequenceUsingPOST1WithHttpInfo(campaignId, sequenceId, addContactsToSequenceRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -769,8 +1389,9 @@ export class PromiseCampaignApi {
      * @param sequenceId sequence_id
      * @param addContactsToSequenceRequest addContactsToSequenceRequest
      */
-    public addContactsToCampaignSequenceUsingPOST1(campaignId: string, sequenceId: string, addContactsToSequenceRequest: AddContactsToSequenceRequest, _options?: Configuration): Promise<AddContactsToSequenceResponse> {
-        const result = this.api.addContactsToCampaignSequenceUsingPOST1(campaignId, sequenceId, addContactsToSequenceRequest, _options);
+    public addContactsToCampaignSequenceUsingPOST1(campaignId: string, sequenceId: string, addContactsToSequenceRequest: AddContactsToSequenceRequest, _options?: PromiseConfigurationOptions): Promise<AddContactsToSequenceResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.addContactsToCampaignSequenceUsingPOST1(campaignId, sequenceId, addContactsToSequenceRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -779,8 +1400,9 @@ export class PromiseCampaignApi {
      * Retrieve a Campaign
      * @param campaignId campaign_id
      */
-    public getCampaignUsingGET1WithHttpInfo(campaignId: string, _options?: Configuration): Promise<HttpInfo<Campaign>> {
-        const result = this.api.getCampaignUsingGET1WithHttpInfo(campaignId, _options);
+    public getCampaignUsingGET1WithHttpInfo(campaignId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Campaign>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getCampaignUsingGET1WithHttpInfo(campaignId, observableOptions);
         return result.toPromise();
     }
 
@@ -789,8 +1411,9 @@ export class PromiseCampaignApi {
      * Retrieve a Campaign
      * @param campaignId campaign_id
      */
-    public getCampaignUsingGET1(campaignId: string, _options?: Configuration): Promise<Campaign> {
-        const result = this.api.getCampaignUsingGET1(campaignId, _options);
+    public getCampaignUsingGET1(campaignId: string, _options?: PromiseConfigurationOptions): Promise<Campaign> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getCampaignUsingGET1(campaignId, observableOptions);
         return result.toPromise();
     }
 
@@ -803,8 +1426,9 @@ export class PromiseCampaignApi {
      * @param [pageToken] Page token
      * @param [stats]
      */
-    public listCampaignsUsingGET1WithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, stats?: boolean, _options?: Configuration): Promise<HttpInfo<ListCampaignsResponse>> {
-        const result = this.api.listCampaignsUsingGET1WithHttpInfo(filter, orderBy, pageSize, pageToken, stats, _options);
+    public listCampaignsUsingGET1WithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, stats?: boolean, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListCampaignsResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listCampaignsUsingGET1WithHttpInfo(filter, orderBy, pageSize, pageToken, stats, observableOptions);
         return result.toPromise();
     }
 
@@ -817,8 +1441,9 @@ export class PromiseCampaignApi {
      * @param [pageToken] Page token
      * @param [stats]
      */
-    public listCampaignsUsingGET1(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, stats?: boolean, _options?: Configuration): Promise<ListCampaignsResponse> {
-        const result = this.api.listCampaignsUsingGET1(filter, orderBy, pageSize, pageToken, stats, _options);
+    public listCampaignsUsingGET1(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, stats?: boolean, _options?: PromiseConfigurationOptions): Promise<ListCampaignsResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listCampaignsUsingGET1(filter, orderBy, pageSize, pageToken, stats, observableOptions);
         return result.toPromise();
     }
 
@@ -829,8 +1454,9 @@ export class PromiseCampaignApi {
      * @param sequenceId sequence_id
      * @param removeContactsFromSequenceRequest removeContactsFromSequenceRequest
      */
-    public removeContactsFromCampaignSequenceUsingPOSTWithHttpInfo(campaignId: string, sequenceId: string, removeContactsFromSequenceRequest: RemoveContactsFromSequenceRequest, _options?: Configuration): Promise<HttpInfo<RemoveContactsFromSequenceResponse>> {
-        const result = this.api.removeContactsFromCampaignSequenceUsingPOSTWithHttpInfo(campaignId, sequenceId, removeContactsFromSequenceRequest, _options);
+    public removeContactsFromCampaignSequenceUsingPOSTWithHttpInfo(campaignId: string, sequenceId: string, removeContactsFromSequenceRequest: RemoveContactsFromSequenceRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<RemoveContactsFromSequenceResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.removeContactsFromCampaignSequenceUsingPOSTWithHttpInfo(campaignId, sequenceId, removeContactsFromSequenceRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -841,8 +1467,9 @@ export class PromiseCampaignApi {
      * @param sequenceId sequence_id
      * @param removeContactsFromSequenceRequest removeContactsFromSequenceRequest
      */
-    public removeContactsFromCampaignSequenceUsingPOST(campaignId: string, sequenceId: string, removeContactsFromSequenceRequest: RemoveContactsFromSequenceRequest, _options?: Configuration): Promise<RemoveContactsFromSequenceResponse> {
-        const result = this.api.removeContactsFromCampaignSequenceUsingPOST(campaignId, sequenceId, removeContactsFromSequenceRequest, _options);
+    public removeContactsFromCampaignSequenceUsingPOST(campaignId: string, sequenceId: string, removeContactsFromSequenceRequest: RemoveContactsFromSequenceRequest, _options?: PromiseConfigurationOptions): Promise<RemoveContactsFromSequenceResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.removeContactsFromCampaignSequenceUsingPOST(campaignId, sequenceId, removeContactsFromSequenceRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -870,8 +1497,9 @@ export class PromiseCompanyApi {
      * Create a Company
      * @param [createCompanyRequest] company
      */
-    public createCompanyUsingPOST1WithHttpInfo(createCompanyRequest?: CreateCompanyRequest, _options?: Configuration): Promise<HttpInfo<Company>> {
-        const result = this.api.createCompanyUsingPOST1WithHttpInfo(createCompanyRequest, _options);
+    public createCompanyUsingPOST1WithHttpInfo(createCompanyRequest?: CreateCompanyRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Company>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createCompanyUsingPOST1WithHttpInfo(createCompanyRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -880,8 +1508,9 @@ export class PromiseCompanyApi {
      * Create a Company
      * @param [createCompanyRequest] company
      */
-    public createCompanyUsingPOST1(createCompanyRequest?: CreateCompanyRequest, _options?: Configuration): Promise<Company> {
-        const result = this.api.createCompanyUsingPOST1(createCompanyRequest, _options);
+    public createCompanyUsingPOST1(createCompanyRequest?: CreateCompanyRequest, _options?: PromiseConfigurationOptions): Promise<Company> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createCompanyUsingPOST1(createCompanyRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -890,8 +1519,9 @@ export class PromiseCompanyApi {
      * Delete a Company
      * @param companyId company_id
      */
-    public deleteCompanyUsingDELETEWithHttpInfo(companyId: string, _options?: Configuration): Promise<HttpInfo<void>> {
-        const result = this.api.deleteCompanyUsingDELETEWithHttpInfo(companyId, _options);
+    public deleteCompanyUsingDELETEWithHttpInfo(companyId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteCompanyUsingDELETEWithHttpInfo(companyId, observableOptions);
         return result.toPromise();
     }
 
@@ -900,8 +1530,9 @@ export class PromiseCompanyApi {
      * Delete a Company
      * @param companyId company_id
      */
-    public deleteCompanyUsingDELETE(companyId: string, _options?: Configuration): Promise<void> {
-        const result = this.api.deleteCompanyUsingDELETE(companyId, _options);
+    public deleteCompanyUsingDELETE(companyId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteCompanyUsingDELETE(companyId, observableOptions);
         return result.toPromise();
     }
 
@@ -911,8 +1542,9 @@ export class PromiseCompanyApi {
      * @param companyId company_id
      * @param [fields] Comma-delimited list of Company properties to include in the response. (Available fields are: &#x60;company_name&#x60;, &#x60;address&#x60;, &#x60;custom_fields&#x60;, &#x60;email_address&#x60;, &#x60;fax_number&#x60;, &#x60;phone_number&#x60;, &#x60;website&#x60;, &#x60;notes&#x60;)
      */
-    public getCompanyUsingGET1WithHttpInfo(companyId: string, fields?: Array<string>, _options?: Configuration): Promise<HttpInfo<Company>> {
-        const result = this.api.getCompanyUsingGET1WithHttpInfo(companyId, fields, _options);
+    public getCompanyUsingGET1WithHttpInfo(companyId: string, fields?: Array<string>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Company>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getCompanyUsingGET1WithHttpInfo(companyId, fields, observableOptions);
         return result.toPromise();
     }
 
@@ -922,8 +1554,9 @@ export class PromiseCompanyApi {
      * @param companyId company_id
      * @param [fields] Comma-delimited list of Company properties to include in the response. (Available fields are: &#x60;company_name&#x60;, &#x60;address&#x60;, &#x60;custom_fields&#x60;, &#x60;email_address&#x60;, &#x60;fax_number&#x60;, &#x60;phone_number&#x60;, &#x60;website&#x60;, &#x60;notes&#x60;)
      */
-    public getCompanyUsingGET1(companyId: string, fields?: Array<string>, _options?: Configuration): Promise<Company> {
-        const result = this.api.getCompanyUsingGET1(companyId, fields, _options);
+    public getCompanyUsingGET1(companyId: string, fields?: Array<string>, _options?: PromiseConfigurationOptions): Promise<Company> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getCompanyUsingGET1(companyId, fields, observableOptions);
         return result.toPromise();
     }
 
@@ -936,8 +1569,9 @@ export class PromiseCompanyApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listCompaniesUsingGET1WithHttpInfo(fields?: Array<string>, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<HttpInfo<ListCompaniesResponse>> {
-        const result = this.api.listCompaniesUsingGET1WithHttpInfo(fields, filter, orderBy, pageSize, pageToken, _options);
+    public listCompaniesUsingGET1WithHttpInfo(fields?: Array<string>, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListCompaniesResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listCompaniesUsingGET1WithHttpInfo(fields, filter, orderBy, pageSize, pageToken, observableOptions);
         return result.toPromise();
     }
 
@@ -950,8 +1584,9 @@ export class PromiseCompanyApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listCompaniesUsingGET1(fields?: Array<string>, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<ListCompaniesResponse> {
-        const result = this.api.listCompaniesUsingGET1(fields, filter, orderBy, pageSize, pageToken, _options);
+    public listCompaniesUsingGET1(fields?: Array<string>, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<ListCompaniesResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listCompaniesUsingGET1(fields, filter, orderBy, pageSize, pageToken, observableOptions);
         return result.toPromise();
     }
 
@@ -962,8 +1597,9 @@ export class PromiseCompanyApi {
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @param [updateCompanyRequest] company
      */
-    public updateCompanyUsingPATCH1WithHttpInfo(companyId: string, updateMask?: Array<string>, updateCompanyRequest?: UpdateCompanyRequest, _options?: Configuration): Promise<HttpInfo<Company>> {
-        const result = this.api.updateCompanyUsingPATCH1WithHttpInfo(companyId, updateMask, updateCompanyRequest, _options);
+    public updateCompanyUsingPATCH1WithHttpInfo(companyId: string, updateMask?: Array<string>, updateCompanyRequest?: UpdateCompanyRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Company>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateCompanyUsingPATCH1WithHttpInfo(companyId, updateMask, updateCompanyRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -974,8 +1610,9 @@ export class PromiseCompanyApi {
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @param [updateCompanyRequest] company
      */
-    public updateCompanyUsingPATCH1(companyId: string, updateMask?: Array<string>, updateCompanyRequest?: UpdateCompanyRequest, _options?: Configuration): Promise<Company> {
-        const result = this.api.updateCompanyUsingPATCH1(companyId, updateMask, updateCompanyRequest, _options);
+    public updateCompanyUsingPATCH1(companyId: string, updateMask?: Array<string>, updateCompanyRequest?: UpdateCompanyRequest, _options?: PromiseConfigurationOptions): Promise<Company> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateCompanyUsingPATCH1(companyId, updateMask, updateCompanyRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -1003,8 +1640,9 @@ export class PromiseContactApi {
      * Create a Contact Link type
      * @param createContactLinkTypeRequest request
      */
-    public createContactLinkTypeUsingPOSTWithHttpInfo(createContactLinkTypeRequest: CreateContactLinkTypeRequest, _options?: Configuration): Promise<HttpInfo<ContactLinkType>> {
-        const result = this.api.createContactLinkTypeUsingPOSTWithHttpInfo(createContactLinkTypeRequest, _options);
+    public createContactLinkTypeUsingPOSTWithHttpInfo(createContactLinkTypeRequest: CreateContactLinkTypeRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ContactLinkType>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createContactLinkTypeUsingPOSTWithHttpInfo(createContactLinkTypeRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -1013,8 +1651,9 @@ export class PromiseContactApi {
      * Create a Contact Link type
      * @param createContactLinkTypeRequest request
      */
-    public createContactLinkTypeUsingPOST(createContactLinkTypeRequest: CreateContactLinkTypeRequest, _options?: Configuration): Promise<ContactLinkType> {
-        const result = this.api.createContactLinkTypeUsingPOST(createContactLinkTypeRequest, _options);
+    public createContactLinkTypeUsingPOST(createContactLinkTypeRequest: CreateContactLinkTypeRequest, _options?: PromiseConfigurationOptions): Promise<ContactLinkType> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createContactLinkTypeUsingPOST(createContactLinkTypeRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -1023,8 +1662,9 @@ export class PromiseContactApi {
      * Create a Contact
      * @param [createUpdateContactRequest] contact
      */
-    public createContactUsingPOST1WithHttpInfo(createUpdateContactRequest?: CreateUpdateContactRequest, _options?: Configuration): Promise<HttpInfo<Contact>> {
-        const result = this.api.createContactUsingPOST1WithHttpInfo(createUpdateContactRequest, _options);
+    public createContactUsingPOST1WithHttpInfo(createUpdateContactRequest?: CreateUpdateContactRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Contact>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createContactUsingPOST1WithHttpInfo(createUpdateContactRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -1033,8 +1673,9 @@ export class PromiseContactApi {
      * Create a Contact
      * @param [createUpdateContactRequest] contact
      */
-    public createContactUsingPOST1(createUpdateContactRequest?: CreateUpdateContactRequest, _options?: Configuration): Promise<Contact> {
-        const result = this.api.createContactUsingPOST1(createUpdateContactRequest, _options);
+    public createContactUsingPOST1(createUpdateContactRequest?: CreateUpdateContactRequest, _options?: PromiseConfigurationOptions): Promise<Contact> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createContactUsingPOST1(createUpdateContactRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -1043,8 +1684,9 @@ export class PromiseContactApi {
      * Delete a Contact
      * @param contactId contact_id
      */
-    public deleteContactUsingDELETE1WithHttpInfo(contactId: string, _options?: Configuration): Promise<HttpInfo<void>> {
-        const result = this.api.deleteContactUsingDELETE1WithHttpInfo(contactId, _options);
+    public deleteContactUsingDELETE1WithHttpInfo(contactId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteContactUsingDELETE1WithHttpInfo(contactId, observableOptions);
         return result.toPromise();
     }
 
@@ -1053,8 +1695,9 @@ export class PromiseContactApi {
      * Delete a Contact
      * @param contactId contact_id
      */
-    public deleteContactUsingDELETE1(contactId: string, _options?: Configuration): Promise<void> {
-        const result = this.api.deleteContactUsingDELETE1(contactId, _options);
+    public deleteContactUsingDELETE1(contactId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteContactUsingDELETE1(contactId, observableOptions);
         return result.toPromise();
     }
 
@@ -1064,8 +1707,9 @@ export class PromiseContactApi {
      * @param contactId contact_id
      * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_date,update_time,utm_parameters,website)
      */
-    public getContactUsingGET1WithHttpInfo(contactId: string, fields?: Array<string>, _options?: Configuration): Promise<HttpInfo<Contact>> {
-        const result = this.api.getContactUsingGET1WithHttpInfo(contactId, fields, _options);
+    public getContactUsingGET1WithHttpInfo(contactId: string, fields?: Array<string>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Contact>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getContactUsingGET1WithHttpInfo(contactId, fields, observableOptions);
         return result.toPromise();
     }
 
@@ -1075,8 +1719,9 @@ export class PromiseContactApi {
      * @param contactId contact_id
      * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_date,update_time,utm_parameters,website)
      */
-    public getContactUsingGET1(contactId: string, fields?: Array<string>, _options?: Configuration): Promise<Contact> {
-        const result = this.api.getContactUsingGET1(contactId, fields, _options);
+    public getContactUsingGET1(contactId: string, fields?: Array<string>, _options?: PromiseConfigurationOptions): Promise<Contact> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getContactUsingGET1(contactId, fields, observableOptions);
         return result.toPromise();
     }
 
@@ -1085,8 +1730,9 @@ export class PromiseContactApi {
      * Link Contacts
      * @param linkContactsRequest linkContactsRequest
      */
-    public linkContactsUsingPOSTWithHttpInfo(linkContactsRequest: LinkContactsRequest, _options?: Configuration): Promise<HttpInfo<ContactLink>> {
-        const result = this.api.linkContactsUsingPOSTWithHttpInfo(linkContactsRequest, _options);
+    public linkContactsUsingPOSTWithHttpInfo(linkContactsRequest: LinkContactsRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ContactLink>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.linkContactsUsingPOSTWithHttpInfo(linkContactsRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -1095,8 +1741,9 @@ export class PromiseContactApi {
      * Link Contacts
      * @param linkContactsRequest linkContactsRequest
      */
-    public linkContactsUsingPOST(linkContactsRequest: LinkContactsRequest, _options?: Configuration): Promise<ContactLink> {
-        const result = this.api.linkContactsUsingPOST(linkContactsRequest, _options);
+    public linkContactsUsingPOST(linkContactsRequest: LinkContactsRequest, _options?: PromiseConfigurationOptions): Promise<ContactLink> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.linkContactsUsingPOST(linkContactsRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -1108,8 +1755,9 @@ export class PromiseContactApi {
      * @param [pageSize]
      * @param [pageToken]
      */
-    public listContactLinkTypesUsingGETWithHttpInfo(filter?: 'name', orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<HttpInfo<ListContactLinkTypesResponse>> {
-        const result = this.api.listContactLinkTypesUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken, _options);
+    public listContactLinkTypesUsingGETWithHttpInfo(filter?: 'name', orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListContactLinkTypesResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listContactLinkTypesUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken, observableOptions);
         return result.toPromise();
     }
 
@@ -1121,8 +1769,9 @@ export class PromiseContactApi {
      * @param [pageSize]
      * @param [pageToken]
      */
-    public listContactLinkTypesUsingGET(filter?: 'name', orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<ListContactLinkTypesResponse> {
-        const result = this.api.listContactLinkTypesUsingGET(filter, orderBy, pageSize, pageToken, _options);
+    public listContactLinkTypesUsingGET(filter?: 'name', orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<ListContactLinkTypesResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listContactLinkTypesUsingGET(filter, orderBy, pageSize, pageToken, observableOptions);
         return result.toPromise();
     }
 
@@ -1131,8 +1780,9 @@ export class PromiseContactApi {
      * List Linked Contacts
      * @param contactId contact_id
      */
-    public listContactLinksUsingGETWithHttpInfo(contactId: string, _options?: Configuration): Promise<HttpInfo<ListContactLinksResponse>> {
-        const result = this.api.listContactLinksUsingGETWithHttpInfo(contactId, _options);
+    public listContactLinksUsingGETWithHttpInfo(contactId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListContactLinksResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listContactLinksUsingGETWithHttpInfo(contactId, observableOptions);
         return result.toPromise();
     }
 
@@ -1141,8 +1791,9 @@ export class PromiseContactApi {
      * List Linked Contacts
      * @param contactId contact_id
      */
-    public listContactLinksUsingGET(contactId: string, _options?: Configuration): Promise<ListContactLinksResponse> {
-        const result = this.api.listContactLinksUsingGET(contactId, _options);
+    public listContactLinksUsingGET(contactId: string, _options?: PromiseConfigurationOptions): Promise<ListContactLinksResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listContactLinksUsingGET(contactId, observableOptions);
         return result.toPromise();
     }
 
@@ -1155,8 +1806,9 @@ export class PromiseContactApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listContactsUsingGET1WithHttpInfo(fields?: Array<string>, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<HttpInfo<ListContactsResponse>> {
-        const result = this.api.listContactsUsingGET1WithHttpInfo(fields, filter, orderBy, pageSize, pageToken, _options);
+    public listContactsUsingGET1WithHttpInfo(fields?: Array<string>, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListContactsResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listContactsUsingGET1WithHttpInfo(fields, filter, orderBy, pageSize, pageToken, observableOptions);
         return result.toPromise();
     }
 
@@ -1169,8 +1821,9 @@ export class PromiseContactApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listContactsUsingGET1(fields?: Array<string>, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<ListContactsResponse> {
-        const result = this.api.listContactsUsingGET1(fields, filter, orderBy, pageSize, pageToken, _options);
+    public listContactsUsingGET1(fields?: Array<string>, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<ListContactsResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listContactsUsingGET1(fields, filter, orderBy, pageSize, pageToken, observableOptions);
         return result.toPromise();
     }
 
@@ -1178,8 +1831,9 @@ export class PromiseContactApi {
      * Get the custom fields and optional properties for the Contact object
      * Retrieve Contact Model
      */
-    public retrieveContactModelUsingGET1WithHttpInfo(_options?: Configuration): Promise<HttpInfo<ObjectModel>> {
-        const result = this.api.retrieveContactModelUsingGET1WithHttpInfo(_options);
+    public retrieveContactModelUsingGET1WithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<ObjectModel>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.retrieveContactModelUsingGET1WithHttpInfo(observableOptions);
         return result.toPromise();
     }
 
@@ -1187,8 +1841,9 @@ export class PromiseContactApi {
      * Get the custom fields and optional properties for the Contact object
      * Retrieve Contact Model
      */
-    public retrieveContactModelUsingGET1(_options?: Configuration): Promise<ObjectModel> {
-        const result = this.api.retrieveContactModelUsingGET1(_options);
+    public retrieveContactModelUsingGET1(_options?: PromiseConfigurationOptions): Promise<ObjectModel> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.retrieveContactModelUsingGET1(observableOptions);
         return result.toPromise();
     }
 
@@ -1197,8 +1852,9 @@ export class PromiseContactApi {
      * Delete Link between two Contacts
      * @param linkContactsRequest linkContactsRequest
      */
-    public unlinkContactsUsingPOSTWithHttpInfo(linkContactsRequest: LinkContactsRequest, _options?: Configuration): Promise<HttpInfo<void>> {
-        const result = this.api.unlinkContactsUsingPOSTWithHttpInfo(linkContactsRequest, _options);
+    public unlinkContactsUsingPOSTWithHttpInfo(linkContactsRequest: LinkContactsRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.unlinkContactsUsingPOSTWithHttpInfo(linkContactsRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -1207,8 +1863,9 @@ export class PromiseContactApi {
      * Delete Link between two Contacts
      * @param linkContactsRequest linkContactsRequest
      */
-    public unlinkContactsUsingPOST(linkContactsRequest: LinkContactsRequest, _options?: Configuration): Promise<void> {
-        const result = this.api.unlinkContactsUsingPOST(linkContactsRequest, _options);
+    public unlinkContactsUsingPOST(linkContactsRequest: LinkContactsRequest, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.unlinkContactsUsingPOST(linkContactsRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -1219,8 +1876,9 @@ export class PromiseContactApi {
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @param [createUpdateContactRequest] contact
      */
-    public updateContactUsingPATCHWithHttpInfo(contactId: string, updateMask?: Array<string>, createUpdateContactRequest?: CreateUpdateContactRequest, _options?: Configuration): Promise<HttpInfo<Contact>> {
-        const result = this.api.updateContactUsingPATCHWithHttpInfo(contactId, updateMask, createUpdateContactRequest, _options);
+    public updateContactUsingPATCHWithHttpInfo(contactId: string, updateMask?: Array<string>, createUpdateContactRequest?: CreateUpdateContactRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Contact>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateContactUsingPATCHWithHttpInfo(contactId, updateMask, createUpdateContactRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -1231,8 +1889,9 @@ export class PromiseContactApi {
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @param [createUpdateContactRequest] contact
      */
-    public updateContactUsingPATCH(contactId: string, updateMask?: Array<string>, createUpdateContactRequest?: CreateUpdateContactRequest, _options?: Configuration): Promise<Contact> {
-        const result = this.api.updateContactUsingPATCH(contactId, updateMask, createUpdateContactRequest, _options);
+    public updateContactUsingPATCH(contactId: string, updateMask?: Array<string>, createUpdateContactRequest?: CreateUpdateContactRequest, _options?: PromiseConfigurationOptions): Promise<Contact> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateContactUsingPATCH(contactId, updateMask, createUpdateContactRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -1260,8 +1919,9 @@ export class PromiseEmailApi {
      * Create an Email Record
      * @param createEmailSentRequest emailWithContent
      */
-    public createEmailUsingPOST1WithHttpInfo(createEmailSentRequest: CreateEmailSentRequest, _options?: Configuration): Promise<HttpInfo<EmailSentWithContent>> {
-        const result = this.api.createEmailUsingPOST1WithHttpInfo(createEmailSentRequest, _options);
+    public createEmailUsingPOST1WithHttpInfo(createEmailSentRequest: CreateEmailSentRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<EmailSentWithContent>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createEmailUsingPOST1WithHttpInfo(createEmailSentRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -1270,8 +1930,9 @@ export class PromiseEmailApi {
      * Create an Email Record
      * @param createEmailSentRequest emailWithContent
      */
-    public createEmailUsingPOST1(createEmailSentRequest: CreateEmailSentRequest, _options?: Configuration): Promise<EmailSentWithContent> {
-        const result = this.api.createEmailUsingPOST1(createEmailSentRequest, _options);
+    public createEmailUsingPOST1(createEmailSentRequest: CreateEmailSentRequest, _options?: PromiseConfigurationOptions): Promise<EmailSentWithContent> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createEmailUsingPOST1(createEmailSentRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -1280,8 +1941,9 @@ export class PromiseEmailApi {
      * Create a set of Email Records
      * @param [createEmailsSentRequest] Email records to persist, with content.
      */
-    public createEmailsUsingPOST1WithHttpInfo(createEmailsSentRequest?: CreateEmailsSentRequest, _options?: Configuration): Promise<HttpInfo<EmailsSentList>> {
-        const result = this.api.createEmailsUsingPOST1WithHttpInfo(createEmailsSentRequest, _options);
+    public createEmailsUsingPOST1WithHttpInfo(createEmailsSentRequest?: CreateEmailsSentRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<EmailsSentList>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createEmailsUsingPOST1WithHttpInfo(createEmailsSentRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -1290,8 +1952,9 @@ export class PromiseEmailApi {
      * Create a set of Email Records
      * @param [createEmailsSentRequest] Email records to persist, with content.
      */
-    public createEmailsUsingPOST1(createEmailsSentRequest?: CreateEmailsSentRequest, _options?: Configuration): Promise<EmailsSentList> {
-        const result = this.api.createEmailsUsingPOST1(createEmailsSentRequest, _options);
+    public createEmailsUsingPOST1(createEmailsSentRequest?: CreateEmailsSentRequest, _options?: PromiseConfigurationOptions): Promise<EmailsSentList> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createEmailsUsingPOST1(createEmailsSentRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -1300,8 +1963,9 @@ export class PromiseEmailApi {
      * Delete an Email Record
      * @param id id
      */
-    public deleteEmailUsingDELETE1WithHttpInfo(id: string, _options?: Configuration): Promise<HttpInfo<void>> {
-        const result = this.api.deleteEmailUsingDELETE1WithHttpInfo(id, _options);
+    public deleteEmailUsingDELETE1WithHttpInfo(id: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteEmailUsingDELETE1WithHttpInfo(id, observableOptions);
         return result.toPromise();
     }
 
@@ -1310,8 +1974,9 @@ export class PromiseEmailApi {
      * Delete an Email Record
      * @param id id
      */
-    public deleteEmailUsingDELETE1(id: string, _options?: Configuration): Promise<void> {
-        const result = this.api.deleteEmailUsingDELETE1(id, _options);
+    public deleteEmailUsingDELETE1(id: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteEmailUsingDELETE1(id, observableOptions);
         return result.toPromise();
     }
 
@@ -1320,8 +1985,9 @@ export class PromiseEmailApi {
      * Remove a set of Email Records
      * @param deleteEmailsRequest deleteEmailsRequest
      */
-    public deleteEmailsUsingPOST1WithHttpInfo(deleteEmailsRequest: DeleteEmailsRequest, _options?: Configuration): Promise<HttpInfo<DeleteEmailsResponse>> {
-        const result = this.api.deleteEmailsUsingPOST1WithHttpInfo(deleteEmailsRequest, _options);
+    public deleteEmailsUsingPOST1WithHttpInfo(deleteEmailsRequest: DeleteEmailsRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<DeleteEmailsResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteEmailsUsingPOST1WithHttpInfo(deleteEmailsRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -1330,8 +1996,9 @@ export class PromiseEmailApi {
      * Remove a set of Email Records
      * @param deleteEmailsRequest deleteEmailsRequest
      */
-    public deleteEmailsUsingPOST1(deleteEmailsRequest: DeleteEmailsRequest, _options?: Configuration): Promise<DeleteEmailsResponse> {
-        const result = this.api.deleteEmailsUsingPOST1(deleteEmailsRequest, _options);
+    public deleteEmailsUsingPOST1(deleteEmailsRequest: DeleteEmailsRequest, _options?: PromiseConfigurationOptions): Promise<DeleteEmailsResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteEmailsUsingPOST1(deleteEmailsRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -1340,8 +2007,9 @@ export class PromiseEmailApi {
      * Retrieve an email template
      * @param emailTemplateId email_template_id
      */
-    public getEmailTemplateUsingGETWithHttpInfo(emailTemplateId: string, _options?: Configuration): Promise<HttpInfo<EmailTemplate>> {
-        const result = this.api.getEmailTemplateUsingGETWithHttpInfo(emailTemplateId, _options);
+    public getEmailTemplateUsingGETWithHttpInfo(emailTemplateId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<EmailTemplate>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getEmailTemplateUsingGETWithHttpInfo(emailTemplateId, observableOptions);
         return result.toPromise();
     }
 
@@ -1350,8 +2018,9 @@ export class PromiseEmailApi {
      * Retrieve an email template
      * @param emailTemplateId email_template_id
      */
-    public getEmailTemplateUsingGET(emailTemplateId: string, _options?: Configuration): Promise<EmailTemplate> {
-        const result = this.api.getEmailTemplateUsingGET(emailTemplateId, _options);
+    public getEmailTemplateUsingGET(emailTemplateId: string, _options?: PromiseConfigurationOptions): Promise<EmailTemplate> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getEmailTemplateUsingGET(emailTemplateId, observableOptions);
         return result.toPromise();
     }
 
@@ -1360,8 +2029,9 @@ export class PromiseEmailApi {
      * Retrieve an Email
      * @param id id
      */
-    public getEmailUsingGET1WithHttpInfo(id: string, _options?: Configuration): Promise<HttpInfo<EmailSentWithContent>> {
-        const result = this.api.getEmailUsingGET1WithHttpInfo(id, _options);
+    public getEmailUsingGET1WithHttpInfo(id: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<EmailSentWithContent>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getEmailUsingGET1WithHttpInfo(id, observableOptions);
         return result.toPromise();
     }
 
@@ -1370,8 +2040,9 @@ export class PromiseEmailApi {
      * Retrieve an Email
      * @param id id
      */
-    public getEmailUsingGET1(id: string, _options?: Configuration): Promise<EmailSentWithContent> {
-        const result = this.api.getEmailUsingGET1(id, _options);
+    public getEmailUsingGET1(id: string, _options?: PromiseConfigurationOptions): Promise<EmailSentWithContent> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getEmailUsingGET1(id, observableOptions);
         return result.toPromise();
     }
 
@@ -1380,8 +2051,9 @@ export class PromiseEmailApi {
      * Send an email based on a template
      * @param [emailSendTemplateRequest] Use a template to send an email to a list of contacts 
      */
-    public sendEmailTemplateUsingPOSTWithHttpInfo(emailSendTemplateRequest?: EmailSendTemplateRequest, _options?: Configuration): Promise<HttpInfo<void>> {
-        const result = this.api.sendEmailTemplateUsingPOSTWithHttpInfo(emailSendTemplateRequest, _options);
+    public sendEmailTemplateUsingPOSTWithHttpInfo(emailSendTemplateRequest?: EmailSendTemplateRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.sendEmailTemplateUsingPOSTWithHttpInfo(emailSendTemplateRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -1390,8 +2062,9 @@ export class PromiseEmailApi {
      * Send an email based on a template
      * @param [emailSendTemplateRequest] Use a template to send an email to a list of contacts 
      */
-    public sendEmailTemplateUsingPOST(emailSendTemplateRequest?: EmailSendTemplateRequest, _options?: Configuration): Promise<void> {
-        const result = this.api.sendEmailTemplateUsingPOST(emailSendTemplateRequest, _options);
+    public sendEmailTemplateUsingPOST(emailSendTemplateRequest?: EmailSendTemplateRequest, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.sendEmailTemplateUsingPOST(emailSendTemplateRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -1400,8 +2073,9 @@ export class PromiseEmailApi {
      * Send an Email
      * @param [emailSendRequest] emailSendRequest
      */
-    public sendEmailUsingPOST1WithHttpInfo(emailSendRequest?: EmailSendRequest, _options?: Configuration): Promise<HttpInfo<void>> {
-        const result = this.api.sendEmailUsingPOST1WithHttpInfo(emailSendRequest, _options);
+    public sendEmailUsingPOST1WithHttpInfo(emailSendRequest?: EmailSendRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.sendEmailUsingPOST1WithHttpInfo(emailSendRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -1410,8 +2084,790 @@ export class PromiseEmailApi {
      * Send an Email
      * @param [emailSendRequest] emailSendRequest
      */
-    public sendEmailUsingPOST1(emailSendRequest?: EmailSendRequest, _options?: Configuration): Promise<void> {
-        const result = this.api.sendEmailUsingPOST1(emailSendRequest, _options);
+    public sendEmailUsingPOST1(emailSendRequest?: EmailSendRequest, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.sendEmailUsingPOST1(emailSendRequest, observableOptions);
+        return result.toPromise();
+    }
+
+
+}
+
+
+
+import { ObservableFilesApi } from './ObservableAPI';
+
+import { FilesApiRequestFactory, FilesApiResponseProcessor} from "../apis/FilesApi";
+export class PromiseFilesApi {
+    private api: ObservableFilesApi
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: FilesApiRequestFactory,
+        responseProcessor?: FilesApiResponseProcessor
+    ) {
+        this.api = new ObservableFilesApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Creates a file and uploads it
+     * Create a file
+     * @param file File to upload. This is a file sent as multi-part (not a string)
+     * @param fileAssociation File association
+     * @param fileName File name
+     * @param isPublic Is public
+     * @param [contactId] Contact ID
+     */
+    public createFileUsingPOST1WithHttpInfo(file: string, fileAssociation: string, fileName: string, isPublic: boolean, contactId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<FileMetadata>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createFileUsingPOST1WithHttpInfo(file, fileAssociation, fileName, isPublic, contactId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a file and uploads it
+     * Create a file
+     * @param file File to upload. This is a file sent as multi-part (not a string)
+     * @param fileAssociation File association
+     * @param fileName File name
+     * @param isPublic Is public
+     * @param [contactId] Contact ID
+     */
+    public createFileUsingPOST1(file: string, fileAssociation: string, fileName: string, isPublic: boolean, contactId?: string, _options?: PromiseConfigurationOptions): Promise<FileMetadata> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createFileUsingPOST1(file, fileAssociation, fileName, isPublic, contactId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a specified file
+     * Delete a file
+     * @param fileId file_id
+     */
+    public deleteFileUsingDELETE1WithHttpInfo(fileId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteFileUsingDELETE1WithHttpInfo(fileId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a specified file
+     * Delete a file
+     * @param fileId file_id
+     */
+    public deleteFileUsingDELETE1(fileId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteFileUsingDELETE1(fileId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a file\'s data
+     * Retrieve a file\'s data
+     * @param fileId file_id
+     */
+    public getFileDataUsingGETWithHttpInfo(fileId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<string>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getFileDataUsingGETWithHttpInfo(fileId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a file\'s data
+     * Retrieve a file\'s data
+     * @param fileId file_id
+     */
+    public getFileDataUsingGET(fileId: string, _options?: PromiseConfigurationOptions): Promise<string> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getFileDataUsingGET(fileId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a file
+     * Retrieve a file
+     * @param fileId file_id
+     */
+    public getFileUsingGET1WithHttpInfo(fileId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<FileMetadata>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getFileUsingGET1WithHttpInfo(fileId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a file
+     * Retrieve a file
+     * @param fileId file_id
+     */
+    public getFileUsingGET1(fileId: string, _options?: PromiseConfigurationOptions): Promise<FileMetadata> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getFileUsingGET1(fileId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of files
+     * List all files
+     * @param [filter] Filter to apply, allowed fields are: - (Boolean) &#x60;is_public&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;user_id&#x60; - (FileBoxCategory) &#x60;category&#x60; - (FileBoxType) &#x60;file_box_type&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;category%3D%3DATTACHMENTS&#x60; - &#x60;filter&#x3D;file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;file_name&#x60; - &#x60;updated_time&#x60; - ...  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; 
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listFilesUsingGET1WithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListFilesResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listFilesUsingGET1WithHttpInfo(filter, orderBy, pageSize, pageToken, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of files
+     * List all files
+     * @param [filter] Filter to apply, allowed fields are: - (Boolean) &#x60;is_public&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;user_id&#x60; - (FileBoxCategory) &#x60;category&#x60; - (FileBoxType) &#x60;file_box_type&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;category%3D%3DATTACHMENTS&#x60; - &#x60;filter&#x3D;file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;file_name&#x60; - &#x60;updated_time&#x60; - ...  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; 
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listFilesUsingGET1(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<ListFilesResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listFilesUsingGET1(filter, orderBy, pageSize, pageToken, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates a file. Note that this endpoint is using a POST method instead of PATCH.
+     * Update a file
+     * @param fileId file_id
+     * @param [file] File to upload. This is a file sent as multi-part (not a string)
+     * @param [fileName] File name
+     * @param [isPublic] Is public
+     * @param [updateMask] Update Mask
+     */
+    public updateFileUsingPOSTWithHttpInfo(fileId: string, file?: string, fileName?: string, isPublic?: boolean, updateMask?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<FileMetadata>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateFileUsingPOSTWithHttpInfo(fileId, file, fileName, isPublic, updateMask, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates a file. Note that this endpoint is using a POST method instead of PATCH.
+     * Update a file
+     * @param fileId file_id
+     * @param [file] File to upload. This is a file sent as multi-part (not a string)
+     * @param [fileName] File name
+     * @param [isPublic] Is public
+     * @param [updateMask] Update Mask
+     */
+    public updateFileUsingPOST(fileId: string, file?: string, fileName?: string, isPublic?: boolean, updateMask?: string, _options?: PromiseConfigurationOptions): Promise<FileMetadata> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateFileUsingPOST(fileId, file, fileName, isPublic, updateMask, observableOptions);
+        return result.toPromise();
+    }
+
+
+}
+
+
+
+import { ObservableLeadSourceCategoriesApi } from './ObservableAPI';
+
+import { LeadSourceCategoriesApiRequestFactory, LeadSourceCategoriesApiResponseProcessor} from "../apis/LeadSourceCategoriesApi";
+export class PromiseLeadSourceCategoriesApi {
+    private api: ObservableLeadSourceCategoriesApi
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: LeadSourceCategoriesApiRequestFactory,
+        responseProcessor?: LeadSourceCategoriesApiResponseProcessor
+    ) {
+        this.api = new ObservableLeadSourceCategoriesApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Creates a new Lead Source Category
+     * Create a Lead Source Category
+     * @param createUpdateLeadSourceCategoryRequest The request object to create a new lead source category
+     */
+    public createLeadSourceCategoryUsingPOSTWithHttpInfo(createUpdateLeadSourceCategoryRequest: CreateUpdateLeadSourceCategoryRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<LeadSourceCategory>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createLeadSourceCategoryUsingPOSTWithHttpInfo(createUpdateLeadSourceCategoryRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a new Lead Source Category
+     * Create a Lead Source Category
+     * @param createUpdateLeadSourceCategoryRequest The request object to create a new lead source category
+     */
+    public createLeadSourceCategoryUsingPOST(createUpdateLeadSourceCategoryRequest: CreateUpdateLeadSourceCategoryRequest, _options?: PromiseConfigurationOptions): Promise<LeadSourceCategory> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createLeadSourceCategoryUsingPOST(createUpdateLeadSourceCategoryRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes the specified Lead Source Category
+     * Delete a Lead Source Category
+     * @param leadSourceCategoryId The ID of a lead source category
+     */
+    public deleteLeadSourceCategoryUsingDELETEWithHttpInfo(leadSourceCategoryId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteLeadSourceCategoryUsingDELETEWithHttpInfo(leadSourceCategoryId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes the specified Lead Source Category
+     * Delete a Lead Source Category
+     * @param leadSourceCategoryId The ID of a lead source category
+     */
+    public deleteLeadSourceCategoryUsingDELETE(leadSourceCategoryId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteLeadSourceCategoryUsingDELETE(leadSourceCategoryId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a single Lead Source Category for a given ID
+     * Retrieve a Lead Source Category
+     * @param leadSourceCategoryId The ID of a lead source category
+     */
+    public getLeadSourceCategoryUsingGETWithHttpInfo(leadSourceCategoryId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<LeadSourceCategory>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getLeadSourceCategoryUsingGETWithHttpInfo(leadSourceCategoryId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a single Lead Source Category for a given ID
+     * Retrieve a Lead Source Category
+     * @param leadSourceCategoryId The ID of a lead source category
+     */
+    public getLeadSourceCategoryUsingGET(leadSourceCategoryId: string, _options?: PromiseConfigurationOptions): Promise<LeadSourceCategory> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getLeadSourceCategoryUsingGET(leadSourceCategoryId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of Lead Source Categories
+     * List Lead Source Categories
+     * @param [filter] Filter to apply, allowed fields are:  - (String) &#x60;name&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here is an example:  - &#x60;filter&#x3D;name%3D%3Dexample&#x60;
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;name&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listCategoriesUsingGET1WithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListLeadSourceCategoriesResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listCategoriesUsingGET1WithHttpInfo(filter, orderBy, pageSize, pageToken, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of Lead Source Categories
+     * List Lead Source Categories
+     * @param [filter] Filter to apply, allowed fields are:  - (String) &#x60;name&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here is an example:  - &#x60;filter&#x3D;name%3D%3Dexample&#x60;
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;name&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listCategoriesUsingGET1(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<ListLeadSourceCategoriesResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listCategoriesUsingGET1(filter, orderBy, pageSize, pageToken, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates a Lead Source Category
+     * Update a Lead Source Category
+     * @param leadSourceCategoryId The ID of a lead source category
+     * @param createUpdateLeadSourceCategoryRequest The request object to update a lead source category
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateLeadSourceCategoryUsingPATCHWithHttpInfo(leadSourceCategoryId: string, createUpdateLeadSourceCategoryRequest: CreateUpdateLeadSourceCategoryRequest, updateMask?: Array<string>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<LeadSourceCategory>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateLeadSourceCategoryUsingPATCHWithHttpInfo(leadSourceCategoryId, createUpdateLeadSourceCategoryRequest, updateMask, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates a Lead Source Category
+     * Update a Lead Source Category
+     * @param leadSourceCategoryId The ID of a lead source category
+     * @param createUpdateLeadSourceCategoryRequest The request object to update a lead source category
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateLeadSourceCategoryUsingPATCH(leadSourceCategoryId: string, createUpdateLeadSourceCategoryRequest: CreateUpdateLeadSourceCategoryRequest, updateMask?: Array<string>, _options?: PromiseConfigurationOptions): Promise<LeadSourceCategory> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateLeadSourceCategoryUsingPATCH(leadSourceCategoryId, createUpdateLeadSourceCategoryRequest, updateMask, observableOptions);
+        return result.toPromise();
+    }
+
+
+}
+
+
+
+import { ObservableLeadSourceExpensesApi } from './ObservableAPI';
+
+import { LeadSourceExpensesApiRequestFactory, LeadSourceExpensesApiResponseProcessor} from "../apis/LeadSourceExpensesApi";
+export class PromiseLeadSourceExpensesApi {
+    private api: ObservableLeadSourceExpensesApi
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: LeadSourceExpensesApiRequestFactory,
+        responseProcessor?: LeadSourceExpensesApiResponseProcessor
+    ) {
+        this.api = new ObservableLeadSourceExpensesApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Creates a new Lead Source Expense
+     * Create a Lead Source Expense
+     * @param leadSourceId The ID of the lead source this expense belongs to
+     * @param createLeadSourceExpenseRequest The request object to create a new lead source expense
+     */
+    public createLeadSourceExpenseUsingPOSTWithHttpInfo(leadSourceId: string, createLeadSourceExpenseRequest: CreateLeadSourceExpenseRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<LeadSourceExpense>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createLeadSourceExpenseUsingPOSTWithHttpInfo(leadSourceId, createLeadSourceExpenseRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a new Lead Source Expense
+     * Create a Lead Source Expense
+     * @param leadSourceId The ID of the lead source this expense belongs to
+     * @param createLeadSourceExpenseRequest The request object to create a new lead source expense
+     */
+    public createLeadSourceExpenseUsingPOST(leadSourceId: string, createLeadSourceExpenseRequest: CreateLeadSourceExpenseRequest, _options?: PromiseConfigurationOptions): Promise<LeadSourceExpense> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createLeadSourceExpenseUsingPOST(leadSourceId, createLeadSourceExpenseRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a lead source expense by ID
+     * Delete a lead source expense
+     * @param leadSourceExpenseId The ID of a lead source expense
+     * @param leadSourceId The ID of the lead source this expense belongs to
+     */
+    public deleteLeadSourceUsingDELETE1WithHttpInfo(leadSourceExpenseId: string, leadSourceId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteLeadSourceUsingDELETE1WithHttpInfo(leadSourceExpenseId, leadSourceId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a lead source expense by ID
+     * Delete a lead source expense
+     * @param leadSourceExpenseId The ID of a lead source expense
+     * @param leadSourceId The ID of the lead source this expense belongs to
+     */
+    public deleteLeadSourceUsingDELETE1(leadSourceExpenseId: string, leadSourceId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteLeadSourceUsingDELETE1(leadSourceExpenseId, leadSourceId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a single Lead Source Expense for a given ID
+     * Retrieve a Lead Source Expense
+     * @param leadSourceExpenseId The ID of a lead source expense
+     * @param leadSourceId The ID of the lead source this expense belongs to
+     */
+    public getLeadSourceExpenseUsingGETWithHttpInfo(leadSourceExpenseId: string, leadSourceId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<LeadSourceExpense>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getLeadSourceExpenseUsingGETWithHttpInfo(leadSourceExpenseId, leadSourceId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a single Lead Source Expense for a given ID
+     * Retrieve a Lead Source Expense
+     * @param leadSourceExpenseId The ID of a lead source expense
+     * @param leadSourceId The ID of the lead source this expense belongs to
+     */
+    public getLeadSourceExpenseUsingGET(leadSourceExpenseId: string, leadSourceId: string, _options?: PromiseConfigurationOptions): Promise<LeadSourceExpense> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getLeadSourceExpenseUsingGET(leadSourceExpenseId, leadSourceId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of lead source expenses
+     * List Lead Source Expenses
+     * @param leadSourceId The ID of the lead source this expense belongs to
+     * @param [filter] Filter to apply, allowed fields are:  - (String) &#x60;title&#x60; - (Long) &#x60;amount&#x60; - (String) &#x60;incurred_time&#x60; - (String) &#x60;create_time&#x60; - (String) &#x60;update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;amount%3D%3D2500&#x60; - &#x60;filter&#x3D;incurred_time%3D%3D2024-12-22T01:00:00.000Z&#x60;
+     * @param [orderBy] Attribute and direction to order items. One of the following fields:  - &#x60;title&#x60; - &#x60;amount&#x60; - &#x60;incurred_time&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listLeadSourceExpensesUsingGETWithHttpInfo(leadSourceId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListLeadSourceExpensesResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listLeadSourceExpensesUsingGETWithHttpInfo(leadSourceId, filter, orderBy, pageSize, pageToken, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of lead source expenses
+     * List Lead Source Expenses
+     * @param leadSourceId The ID of the lead source this expense belongs to
+     * @param [filter] Filter to apply, allowed fields are:  - (String) &#x60;title&#x60; - (Long) &#x60;amount&#x60; - (String) &#x60;incurred_time&#x60; - (String) &#x60;create_time&#x60; - (String) &#x60;update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;amount%3D%3D2500&#x60; - &#x60;filter&#x3D;incurred_time%3D%3D2024-12-22T01:00:00.000Z&#x60;
+     * @param [orderBy] Attribute and direction to order items. One of the following fields:  - &#x60;title&#x60; - &#x60;amount&#x60; - &#x60;incurred_time&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listLeadSourceExpensesUsingGET(leadSourceId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<ListLeadSourceExpensesResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listLeadSourceExpensesUsingGET(leadSourceId, filter, orderBy, pageSize, pageToken, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates a new Lead Source Expense
+     * Update a Lead Source Expense
+     * @param leadSourceExpenseId The ID of a lead source expense
+     * @param leadSourceId The ID of the lead source this expense belongs to
+     * @param updateLeadSourceExpenseRequest The request object to update a lead source expense
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateLeadSourceExpenseUsingPATCHWithHttpInfo(leadSourceExpenseId: string, leadSourceId: string, updateLeadSourceExpenseRequest: UpdateLeadSourceExpenseRequest, updateMask?: Array<string>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<LeadSourceExpense>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateLeadSourceExpenseUsingPATCHWithHttpInfo(leadSourceExpenseId, leadSourceId, updateLeadSourceExpenseRequest, updateMask, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates a new Lead Source Expense
+     * Update a Lead Source Expense
+     * @param leadSourceExpenseId The ID of a lead source expense
+     * @param leadSourceId The ID of the lead source this expense belongs to
+     * @param updateLeadSourceExpenseRequest The request object to update a lead source expense
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateLeadSourceExpenseUsingPATCH(leadSourceExpenseId: string, leadSourceId: string, updateLeadSourceExpenseRequest: UpdateLeadSourceExpenseRequest, updateMask?: Array<string>, _options?: PromiseConfigurationOptions): Promise<LeadSourceExpense> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateLeadSourceExpenseUsingPATCH(leadSourceExpenseId, leadSourceId, updateLeadSourceExpenseRequest, updateMask, observableOptions);
+        return result.toPromise();
+    }
+
+
+}
+
+
+
+import { ObservableLeadSourceRecurringExpensesApi } from './ObservableAPI';
+
+import { LeadSourceRecurringExpensesApiRequestFactory, LeadSourceRecurringExpensesApiResponseProcessor} from "../apis/LeadSourceRecurringExpensesApi";
+export class PromiseLeadSourceRecurringExpensesApi {
+    private api: ObservableLeadSourceRecurringExpensesApi
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: LeadSourceRecurringExpensesApiRequestFactory,
+        responseProcessor?: LeadSourceRecurringExpensesApiResponseProcessor
+    ) {
+        this.api = new ObservableLeadSourceRecurringExpensesApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Creates a new Lead Source Recurring Expense
+     * Create a Lead Source Recurring Expense
+     * @param leadSourceId The ID of the lead source this recurring expense belongs to
+     * @param createLeadSourceRecurringExpenseRequest The request object to create a new lead source recurring expense
+     */
+    public createLeadSourceRecurringExpenseUsingPOSTWithHttpInfo(leadSourceId: string, createLeadSourceRecurringExpenseRequest: CreateLeadSourceRecurringExpenseRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<LeadSourceRecurringExpense>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createLeadSourceRecurringExpenseUsingPOSTWithHttpInfo(leadSourceId, createLeadSourceRecurringExpenseRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a new Lead Source Recurring Expense
+     * Create a Lead Source Recurring Expense
+     * @param leadSourceId The ID of the lead source this recurring expense belongs to
+     * @param createLeadSourceRecurringExpenseRequest The request object to create a new lead source recurring expense
+     */
+    public createLeadSourceRecurringExpenseUsingPOST(leadSourceId: string, createLeadSourceRecurringExpenseRequest: CreateLeadSourceRecurringExpenseRequest, _options?: PromiseConfigurationOptions): Promise<LeadSourceRecurringExpense> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createLeadSourceRecurringExpenseUsingPOST(leadSourceId, createLeadSourceRecurringExpenseRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a new Lead Source Recurring Expense that belongs to a Lead Source
+     * Delete a Lead Source Recurring Expense
+     * @param leadSourceId The ID of the lead source this recurring expense belongs to
+     * @param leadSourceRecurringExpenseId The ID of a lead source recurring expense
+     */
+    public deleteLeadSourceRecurringExpenseUsingDELETEWithHttpInfo(leadSourceId: string, leadSourceRecurringExpenseId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteLeadSourceRecurringExpenseUsingDELETEWithHttpInfo(leadSourceId, leadSourceRecurringExpenseId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a new Lead Source Recurring Expense that belongs to a Lead Source
+     * Delete a Lead Source Recurring Expense
+     * @param leadSourceId The ID of the lead source this recurring expense belongs to
+     * @param leadSourceRecurringExpenseId The ID of a lead source recurring expense
+     */
+    public deleteLeadSourceRecurringExpenseUsingDELETE(leadSourceId: string, leadSourceRecurringExpenseId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteLeadSourceRecurringExpenseUsingDELETE(leadSourceId, leadSourceRecurringExpenseId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a Lead Source Recurring Expense using leadSourceId and leadSourceRecurringExpenseId
+     * Retrieve a Lead Source Recurring Expense
+     * @param leadSourceId The ID of the lead source this recurring expense belongs to
+     * @param leadSourceRecurringExpenseId The ID of a lead source recurring expense
+     */
+    public getLeadSourceRecurringExpenseUsingGETWithHttpInfo(leadSourceId: string, leadSourceRecurringExpenseId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<LeadSourceRecurringExpense>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getLeadSourceRecurringExpenseUsingGETWithHttpInfo(leadSourceId, leadSourceRecurringExpenseId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a Lead Source Recurring Expense using leadSourceId and leadSourceRecurringExpenseId
+     * Retrieve a Lead Source Recurring Expense
+     * @param leadSourceId The ID of the lead source this recurring expense belongs to
+     * @param leadSourceRecurringExpenseId The ID of a lead source recurring expense
+     */
+    public getLeadSourceRecurringExpenseUsingGET(leadSourceId: string, leadSourceRecurringExpenseId: string, _options?: PromiseConfigurationOptions): Promise<LeadSourceRecurringExpense> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getLeadSourceRecurringExpenseUsingGET(leadSourceId, leadSourceRecurringExpenseId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of expenses incurred from a recurring expense
+     * Retrieves a list of expenses incurred from a recurring expense
+     * @param leadSourceId The ID of the lead source this recurring expense belongs to
+     * @param leadSourceRecurringExpenseId The ID of a lead source recurring expense
+     * @param [filter] Filter to apply, allowed fields are:  - (String) &#x60;title&#x60; - (Long) &#x60;amount&#x60; - (String) &#x60;incurred_time&#x60; - (String) &#x60;create_time&#x60; - (String) &#x60;update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;amount%3D%3D2500&#x60; - &#x60;filter&#x3D;incurred_time%3D%3D2024-12-22T01:00:00.000Z&#x60;
+     * @param [orderBy] Attribute and direction to order items. One of the following fields:  - &#x60;title&#x60; - &#x60;amount&#x60; - &#x60;incurred_time&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listExpensesIncurredFromLeadSourceRecurringExpenseUsingGETWithHttpInfo(leadSourceId: string, leadSourceRecurringExpenseId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListLeadSourceExpensesResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listExpensesIncurredFromLeadSourceRecurringExpenseUsingGETWithHttpInfo(leadSourceId, leadSourceRecurringExpenseId, filter, orderBy, pageSize, pageToken, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of expenses incurred from a recurring expense
+     * Retrieves a list of expenses incurred from a recurring expense
+     * @param leadSourceId The ID of the lead source this recurring expense belongs to
+     * @param leadSourceRecurringExpenseId The ID of a lead source recurring expense
+     * @param [filter] Filter to apply, allowed fields are:  - (String) &#x60;title&#x60; - (Long) &#x60;amount&#x60; - (String) &#x60;incurred_time&#x60; - (String) &#x60;create_time&#x60; - (String) &#x60;update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;amount%3D%3D2500&#x60; - &#x60;filter&#x3D;incurred_time%3D%3D2024-12-22T01:00:00.000Z&#x60;
+     * @param [orderBy] Attribute and direction to order items. One of the following fields:  - &#x60;title&#x60; - &#x60;amount&#x60; - &#x60;incurred_time&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listExpensesIncurredFromLeadSourceRecurringExpenseUsingGET(leadSourceId: string, leadSourceRecurringExpenseId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<ListLeadSourceExpensesResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listExpensesIncurredFromLeadSourceRecurringExpenseUsingGET(leadSourceId, leadSourceRecurringExpenseId, filter, orderBy, pageSize, pageToken, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of recurring expenses with lead_source_id and optional \'filter\' query param
+     * Retrieves a list of lead source recurring expenses
+     * @param leadSourceId The ID of the lead source this recurring expense belongs to
+     * @param [filter] Filter to apply, allowed fields are:  - (String) &#x60;title&#x60; - (Long) &#x60;amount&#x60; - (String) &#x60;start_time&#x60; - (String) &#x60;end_time&#x60; - (String) &#x60;next_expense_time&#x60; - (String) &#x60;create_time&#x60; - (String) &#x60;update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;amount%3D%3D2500&#x60; - &#x60;filter&#x3D;next_expense_time%3D%3D2024-12-22T01:00:00.000Z&#x60;
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;title&#x60; - &#x60;amount&#x60; - &#x60;start_time&#x60; - &#x60;end_time&#x60; - &#x60;next_expense_time&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listLeadSourceRecurringExpensesUsingGETWithHttpInfo(leadSourceId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListLeadSourceRecurringExpensesResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listLeadSourceRecurringExpensesUsingGETWithHttpInfo(leadSourceId, filter, orderBy, pageSize, pageToken, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of recurring expenses with lead_source_id and optional \'filter\' query param
+     * Retrieves a list of lead source recurring expenses
+     * @param leadSourceId The ID of the lead source this recurring expense belongs to
+     * @param [filter] Filter to apply, allowed fields are:  - (String) &#x60;title&#x60; - (Long) &#x60;amount&#x60; - (String) &#x60;start_time&#x60; - (String) &#x60;end_time&#x60; - (String) &#x60;next_expense_time&#x60; - (String) &#x60;create_time&#x60; - (String) &#x60;update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;amount%3D%3D2500&#x60; - &#x60;filter&#x3D;next_expense_time%3D%3D2024-12-22T01:00:00.000Z&#x60;
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;title&#x60; - &#x60;amount&#x60; - &#x60;start_time&#x60; - &#x60;end_time&#x60; - &#x60;next_expense_time&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listLeadSourceRecurringExpensesUsingGET(leadSourceId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<ListLeadSourceRecurringExpensesResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listLeadSourceRecurringExpensesUsingGET(leadSourceId, filter, orderBy, pageSize, pageToken, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates a Lead Source Recurring Expense
+     * Update a Lead Source Recurring Expense
+     * @param leadSourceId The ID of the lead source this recurring expense belongs to
+     * @param leadSourceRecurringExpenseId The ID of a lead source recurring expense
+     * @param leadSourceRecurringExpenseUpdateRequest The request object to update a lead source recurring expense
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateLeadSourceRecurringExpenseUsingPATCHWithHttpInfo(leadSourceId: string, leadSourceRecurringExpenseId: string, leadSourceRecurringExpenseUpdateRequest: LeadSourceRecurringExpenseUpdateRequest, updateMask?: Array<string>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<LeadSourceRecurringExpense>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateLeadSourceRecurringExpenseUsingPATCHWithHttpInfo(leadSourceId, leadSourceRecurringExpenseId, leadSourceRecurringExpenseUpdateRequest, updateMask, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates a Lead Source Recurring Expense
+     * Update a Lead Source Recurring Expense
+     * @param leadSourceId The ID of the lead source this recurring expense belongs to
+     * @param leadSourceRecurringExpenseId The ID of a lead source recurring expense
+     * @param leadSourceRecurringExpenseUpdateRequest The request object to update a lead source recurring expense
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateLeadSourceRecurringExpenseUsingPATCH(leadSourceId: string, leadSourceRecurringExpenseId: string, leadSourceRecurringExpenseUpdateRequest: LeadSourceRecurringExpenseUpdateRequest, updateMask?: Array<string>, _options?: PromiseConfigurationOptions): Promise<LeadSourceRecurringExpense> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateLeadSourceRecurringExpenseUsingPATCH(leadSourceId, leadSourceRecurringExpenseId, leadSourceRecurringExpenseUpdateRequest, updateMask, observableOptions);
+        return result.toPromise();
+    }
+
+
+}
+
+
+
+import { ObservableLeadSourcesApi } from './ObservableAPI';
+
+import { LeadSourcesApiRequestFactory, LeadSourcesApiResponseProcessor} from "../apis/LeadSourcesApi";
+export class PromiseLeadSourcesApi {
+    private api: ObservableLeadSourcesApi
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: LeadSourcesApiRequestFactory,
+        responseProcessor?: LeadSourcesApiResponseProcessor
+    ) {
+        this.api = new ObservableLeadSourcesApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Creates a new Lead Source
+     * Create a Lead Source
+     * @param createLeadSourceRequest The request object to create a new lead source
+     */
+    public createLeadSourceUsingPOSTWithHttpInfo(createLeadSourceRequest: CreateLeadSourceRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<LeadSource>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createLeadSourceUsingPOSTWithHttpInfo(createLeadSourceRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a new Lead Source
+     * Create a Lead Source
+     * @param createLeadSourceRequest The request object to create a new lead source
+     */
+    public createLeadSourceUsingPOST(createLeadSourceRequest: CreateLeadSourceRequest, _options?: PromiseConfigurationOptions): Promise<LeadSource> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createLeadSourceUsingPOST(createLeadSourceRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a Lead Source by ID
+     * Delete a Lead Source
+     * @param leadSourceId The ID of a lead source
+     */
+    public deleteLeadSourceUsingDELETEWithHttpInfo(leadSourceId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteLeadSourceUsingDELETEWithHttpInfo(leadSourceId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a Lead Source by ID
+     * Delete a Lead Source
+     * @param leadSourceId The ID of a lead source
+     */
+    public deleteLeadSourceUsingDELETE(leadSourceId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteLeadSourceUsingDELETE(leadSourceId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a Lead Source by ID
+     * Retrieve a Lead Source
+     * @param leadSourceId The ID of a lead source
+     */
+    public getLeadSourceUsingGETWithHttpInfo(leadSourceId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<LeadSource>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getLeadSourceUsingGETWithHttpInfo(leadSourceId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a Lead Source by ID
+     * Retrieve a Lead Source
+     * @param leadSourceId The ID of a lead source
+     */
+    public getLeadSourceUsingGET(leadSourceId: string, _options?: PromiseConfigurationOptions): Promise<LeadSource> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getLeadSourceUsingGET(leadSourceId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of Lead Sources
+     * List Lead Sources
+     * @param [filter] Filter to apply, allowed fields are:  - (String) &#x60;name&#x60; - (String) &#x60;status&#x60; - (String) &#x60;lead_source_category_id&#x60; - (String) &#x60;vendor&#x60; - (String) &#x60;medium&#x60; - (String) &#x60;start_time&#x60; - (String) &#x60;end_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;name%3D%3Dexample&#x60; - &#x60;filter&#x3D;start_time%3D%3D2024-12-22T01:00:00.000Z&#x60;
+     * @param [orderBy] Attribute and direction to order items. One of the following fields:  - &#x60;name&#x60; - &#x60;status&#x60; - &#x60;vendor&#x60; - &#x60;medium&#x60; - &#x60;start_time&#x60; - &#x60;end_time&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions:  - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listLeadSourcesUsingGETWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListLeadSourcesResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listLeadSourcesUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of Lead Sources
+     * List Lead Sources
+     * @param [filter] Filter to apply, allowed fields are:  - (String) &#x60;name&#x60; - (String) &#x60;status&#x60; - (String) &#x60;lead_source_category_id&#x60; - (String) &#x60;vendor&#x60; - (String) &#x60;medium&#x60; - (String) &#x60;start_time&#x60; - (String) &#x60;end_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;name%3D%3Dexample&#x60; - &#x60;filter&#x3D;start_time%3D%3D2024-12-22T01:00:00.000Z&#x60;
+     * @param [orderBy] Attribute and direction to order items. One of the following fields:  - &#x60;name&#x60; - &#x60;status&#x60; - &#x60;vendor&#x60; - &#x60;medium&#x60; - &#x60;start_time&#x60; - &#x60;end_time&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions:  - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listLeadSourcesUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<ListLeadSourcesResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listLeadSourcesUsingGET(filter, orderBy, pageSize, pageToken, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates a Lead Source with only the values provided in the request
+     * Update a Lead Source
+     * @param leadSourceId The ID of a lead source
+     * @param createLeadSourceRequest The request object to update a lead source
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateLeadSourceUsingPATCHWithHttpInfo(leadSourceId: string, createLeadSourceRequest: CreateLeadSourceRequest, updateMask?: Array<string>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<LeadSource>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateLeadSourceUsingPATCHWithHttpInfo(leadSourceId, createLeadSourceRequest, updateMask, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates a Lead Source with only the values provided in the request
+     * Update a Lead Source
+     * @param leadSourceId The ID of a lead source
+     * @param createLeadSourceRequest The request object to update a lead source
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateLeadSourceUsingPATCH(leadSourceId: string, createLeadSourceRequest: CreateLeadSourceRequest, updateMask?: Array<string>, _options?: PromiseConfigurationOptions): Promise<LeadSource> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateLeadSourceUsingPATCH(leadSourceId, createLeadSourceRequest, updateMask, observableOptions);
         return result.toPromise();
     }
 
@@ -1440,8 +2896,9 @@ export class PromiseNoteApi {
      * @param contactId contact_id
      * @param createNoteRequest request
      */
-    public createNoteUsingPOST1WithHttpInfo(contactId: string, createNoteRequest: CreateNoteRequest, _options?: Configuration): Promise<HttpInfo<Note>> {
-        const result = this.api.createNoteUsingPOST1WithHttpInfo(contactId, createNoteRequest, _options);
+    public createNoteUsingPOST1WithHttpInfo(contactId: string, createNoteRequest: CreateNoteRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Note>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createNoteUsingPOST1WithHttpInfo(contactId, createNoteRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -1451,8 +2908,9 @@ export class PromiseNoteApi {
      * @param contactId contact_id
      * @param createNoteRequest request
      */
-    public createNoteUsingPOST1(contactId: string, createNoteRequest: CreateNoteRequest, _options?: Configuration): Promise<Note> {
-        const result = this.api.createNoteUsingPOST1(contactId, createNoteRequest, _options);
+    public createNoteUsingPOST1(contactId: string, createNoteRequest: CreateNoteRequest, _options?: PromiseConfigurationOptions): Promise<Note> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createNoteUsingPOST1(contactId, createNoteRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -1462,8 +2920,9 @@ export class PromiseNoteApi {
      * @param contactId contact_id
      * @param noteId note_id
      */
-    public deleteNoteUsingDELETE1WithHttpInfo(contactId: string, noteId: string, _options?: Configuration): Promise<HttpInfo<void>> {
-        const result = this.api.deleteNoteUsingDELETE1WithHttpInfo(contactId, noteId, _options);
+    public deleteNoteUsingDELETE1WithHttpInfo(contactId: string, noteId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteNoteUsingDELETE1WithHttpInfo(contactId, noteId, observableOptions);
         return result.toPromise();
     }
 
@@ -1473,8 +2932,9 @@ export class PromiseNoteApi {
      * @param contactId contact_id
      * @param noteId note_id
      */
-    public deleteNoteUsingDELETE1(contactId: string, noteId: string, _options?: Configuration): Promise<void> {
-        const result = this.api.deleteNoteUsingDELETE1(contactId, noteId, _options);
+    public deleteNoteUsingDELETE1(contactId: string, noteId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteNoteUsingDELETE1(contactId, noteId, observableOptions);
         return result.toPromise();
     }
 
@@ -1484,8 +2944,9 @@ export class PromiseNoteApi {
      * @param contactId contact_id
      * @param noteId note_id
      */
-    public getNoteUsingGET1WithHttpInfo(contactId: string, noteId: string, _options?: Configuration): Promise<HttpInfo<GetNoteResponse>> {
-        const result = this.api.getNoteUsingGET1WithHttpInfo(contactId, noteId, _options);
+    public getNoteUsingGET1WithHttpInfo(contactId: string, noteId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<GetNoteResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getNoteUsingGET1WithHttpInfo(contactId, noteId, observableOptions);
         return result.toPromise();
     }
 
@@ -1495,8 +2956,9 @@ export class PromiseNoteApi {
      * @param contactId contact_id
      * @param noteId note_id
      */
-    public getNoteUsingGET1(contactId: string, noteId: string, _options?: Configuration): Promise<GetNoteResponse> {
-        const result = this.api.getNoteUsingGET1(contactId, noteId, _options);
+    public getNoteUsingGET1(contactId: string, noteId: string, _options?: PromiseConfigurationOptions): Promise<GetNoteResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getNoteUsingGET1(contactId, noteId, observableOptions);
         return result.toPromise();
     }
 
@@ -1509,8 +2971,9 @@ export class PromiseNoteApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listNotesUsingGET1WithHttpInfo(contactId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<HttpInfo<ListNotesResponse>> {
-        const result = this.api.listNotesUsingGET1WithHttpInfo(contactId, filter, orderBy, pageSize, pageToken, _options);
+    public listNotesUsingGET1WithHttpInfo(contactId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListNotesResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listNotesUsingGET1WithHttpInfo(contactId, filter, orderBy, pageSize, pageToken, observableOptions);
         return result.toPromise();
     }
 
@@ -1523,8 +2986,9 @@ export class PromiseNoteApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listNotesUsingGET1(contactId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<ListNotesResponse> {
-        const result = this.api.listNotesUsingGET1(contactId, filter, orderBy, pageSize, pageToken, _options);
+    public listNotesUsingGET1(contactId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<ListNotesResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listNotesUsingGET1(contactId, filter, orderBy, pageSize, pageToken, observableOptions);
         return result.toPromise();
     }
 
@@ -1536,8 +3000,9 @@ export class PromiseNoteApi {
      * @param updateNoteRequest updateNoteRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateNoteUsingPATCHWithHttpInfo(contactId: string, noteId: string, updateNoteRequest: UpdateNoteRequest, updateMask?: Array<string>, _options?: Configuration): Promise<HttpInfo<UpdateNoteResponse>> {
-        const result = this.api.updateNoteUsingPATCHWithHttpInfo(contactId, noteId, updateNoteRequest, updateMask, _options);
+    public updateNoteUsingPATCHWithHttpInfo(contactId: string, noteId: string, updateNoteRequest: UpdateNoteRequest, updateMask?: Array<string>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<UpdateNoteResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateNoteUsingPATCHWithHttpInfo(contactId, noteId, updateNoteRequest, updateMask, observableOptions);
         return result.toPromise();
     }
 
@@ -1549,8 +3014,9 @@ export class PromiseNoteApi {
      * @param updateNoteRequest updateNoteRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateNoteUsingPATCH(contactId: string, noteId: string, updateNoteRequest: UpdateNoteRequest, updateMask?: Array<string>, _options?: Configuration): Promise<UpdateNoteResponse> {
-        const result = this.api.updateNoteUsingPATCH(contactId, noteId, updateNoteRequest, updateMask, _options);
+    public updateNoteUsingPATCH(contactId: string, noteId: string, updateNoteRequest: UpdateNoteRequest, updateMask?: Array<string>, _options?: PromiseConfigurationOptions): Promise<UpdateNoteResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateNoteUsingPATCH(contactId, noteId, updateNoteRequest, updateMask, observableOptions);
         return result.toPromise();
     }
 
@@ -1578,8 +3044,9 @@ export class PromisePaymentMethodConfigsApi {
      * Create Payment Method Configuration
      * @param createPaymentMethodConfigRequest request
      */
-    public createPaymentMethodConfigUsingPOSTWithHttpInfo(createPaymentMethodConfigRequest: CreatePaymentMethodConfigRequest, _options?: Configuration): Promise<HttpInfo<PaymentMethodConfig>> {
-        const result = this.api.createPaymentMethodConfigUsingPOSTWithHttpInfo(createPaymentMethodConfigRequest, _options);
+    public createPaymentMethodConfigUsingPOSTWithHttpInfo(createPaymentMethodConfigRequest: CreatePaymentMethodConfigRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<PaymentMethodConfig>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createPaymentMethodConfigUsingPOSTWithHttpInfo(createPaymentMethodConfigRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -1588,8 +3055,9 @@ export class PromisePaymentMethodConfigsApi {
      * Create Payment Method Configuration
      * @param createPaymentMethodConfigRequest request
      */
-    public createPaymentMethodConfigUsingPOST(createPaymentMethodConfigRequest: CreatePaymentMethodConfigRequest, _options?: Configuration): Promise<PaymentMethodConfig> {
-        const result = this.api.createPaymentMethodConfigUsingPOST(createPaymentMethodConfigRequest, _options);
+    public createPaymentMethodConfigUsingPOST(createPaymentMethodConfigRequest: CreatePaymentMethodConfigRequest, _options?: PromiseConfigurationOptions): Promise<PaymentMethodConfig> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createPaymentMethodConfigUsingPOST(createPaymentMethodConfigRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -1618,8 +3086,9 @@ export class PromiseProductInterestBundlesApi {
      * @param id id
      * @param addProductInterestRequest request
      */
-    public addProductInterestUsingPOSTWithHttpInfo(id: string, addProductInterestRequest: AddProductInterestRequest, _options?: Configuration): Promise<HttpInfo<ProductInterest>> {
-        const result = this.api.addProductInterestUsingPOSTWithHttpInfo(id, addProductInterestRequest, _options);
+    public addProductInterestUsingPOSTWithHttpInfo(id: string, addProductInterestRequest: AddProductInterestRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ProductInterest>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.addProductInterestUsingPOSTWithHttpInfo(id, addProductInterestRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -1629,8 +3098,9 @@ export class PromiseProductInterestBundlesApi {
      * @param id id
      * @param addProductInterestRequest request
      */
-    public addProductInterestUsingPOST(id: string, addProductInterestRequest: AddProductInterestRequest, _options?: Configuration): Promise<ProductInterest> {
-        const result = this.api.addProductInterestUsingPOST(id, addProductInterestRequest, _options);
+    public addProductInterestUsingPOST(id: string, addProductInterestRequest: AddProductInterestRequest, _options?: PromiseConfigurationOptions): Promise<ProductInterest> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.addProductInterestUsingPOST(id, addProductInterestRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -1639,8 +3109,9 @@ export class PromiseProductInterestBundlesApi {
      * Create a Product Interest Bundle
      * @param createProductInterestBundleRequest createProductInterestBundleRequest
      */
-    public createProductInterestBundleUsingPOSTWithHttpInfo(createProductInterestBundleRequest: CreateProductInterestBundleRequest, _options?: Configuration): Promise<HttpInfo<ProductInterestBundle>> {
-        const result = this.api.createProductInterestBundleUsingPOSTWithHttpInfo(createProductInterestBundleRequest, _options);
+    public createProductInterestBundleUsingPOSTWithHttpInfo(createProductInterestBundleRequest: CreateProductInterestBundleRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ProductInterestBundle>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createProductInterestBundleUsingPOSTWithHttpInfo(createProductInterestBundleRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -1649,8 +3120,9 @@ export class PromiseProductInterestBundlesApi {
      * Create a Product Interest Bundle
      * @param createProductInterestBundleRequest createProductInterestBundleRequest
      */
-    public createProductInterestBundleUsingPOST(createProductInterestBundleRequest: CreateProductInterestBundleRequest, _options?: Configuration): Promise<ProductInterestBundle> {
-        const result = this.api.createProductInterestBundleUsingPOST(createProductInterestBundleRequest, _options);
+    public createProductInterestBundleUsingPOST(createProductInterestBundleRequest: CreateProductInterestBundleRequest, _options?: PromiseConfigurationOptions): Promise<ProductInterestBundle> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createProductInterestBundleUsingPOST(createProductInterestBundleRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -1659,8 +3131,9 @@ export class PromiseProductInterestBundlesApi {
      * Delete a Product Interest Bundle
      * @param id id
      */
-    public deleteProductInterestBundleUsingDELETEWithHttpInfo(id: string, _options?: Configuration): Promise<HttpInfo<void>> {
-        const result = this.api.deleteProductInterestBundleUsingDELETEWithHttpInfo(id, _options);
+    public deleteProductInterestBundleUsingDELETEWithHttpInfo(id: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteProductInterestBundleUsingDELETEWithHttpInfo(id, observableOptions);
         return result.toPromise();
     }
 
@@ -1669,8 +3142,9 @@ export class PromiseProductInterestBundlesApi {
      * Delete a Product Interest Bundle
      * @param id id
      */
-    public deleteProductInterestBundleUsingDELETE(id: string, _options?: Configuration): Promise<void> {
-        const result = this.api.deleteProductInterestBundleUsingDELETE(id, _options);
+    public deleteProductInterestBundleUsingDELETE(id: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteProductInterestBundleUsingDELETE(id, observableOptions);
         return result.toPromise();
     }
 
@@ -1679,8 +3153,9 @@ export class PromiseProductInterestBundlesApi {
      * Get a Product Interest Bundle
      * @param id id
      */
-    public getProductInterestBundleUsingGETWithHttpInfo(id: string, _options?: Configuration): Promise<HttpInfo<ProductInterestBundle>> {
-        const result = this.api.getProductInterestBundleUsingGETWithHttpInfo(id, _options);
+    public getProductInterestBundleUsingGETWithHttpInfo(id: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ProductInterestBundle>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getProductInterestBundleUsingGETWithHttpInfo(id, observableOptions);
         return result.toPromise();
     }
 
@@ -1689,8 +3164,9 @@ export class PromiseProductInterestBundlesApi {
      * Get a Product Interest Bundle
      * @param id id
      */
-    public getProductInterestBundleUsingGET(id: string, _options?: Configuration): Promise<ProductInterestBundle> {
-        const result = this.api.getProductInterestBundleUsingGET(id, _options);
+    public getProductInterestBundleUsingGET(id: string, _options?: PromiseConfigurationOptions): Promise<ProductInterestBundle> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getProductInterestBundleUsingGET(id, observableOptions);
         return result.toPromise();
     }
 
@@ -1702,8 +3178,9 @@ export class PromiseProductInterestBundlesApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listProductInterestBundlesUsingGETWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<HttpInfo<ListProductInterestBundleResponse>> {
-        const result = this.api.listProductInterestBundlesUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken, _options);
+    public listProductInterestBundlesUsingGETWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListProductInterestBundleResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listProductInterestBundlesUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken, observableOptions);
         return result.toPromise();
     }
 
@@ -1715,8 +3192,9 @@ export class PromiseProductInterestBundlesApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listProductInterestBundlesUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<ListProductInterestBundleResponse> {
-        const result = this.api.listProductInterestBundlesUsingGET(filter, orderBy, pageSize, pageToken, _options);
+    public listProductInterestBundlesUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<ListProductInterestBundleResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listProductInterestBundlesUsingGET(filter, orderBy, pageSize, pageToken, observableOptions);
         return result.toPromise();
     }
 
@@ -1726,8 +3204,9 @@ export class PromiseProductInterestBundlesApi {
      * @param id id
      * @param interestId interest_id
      */
-    public removeProductInterestUsingDELETEWithHttpInfo(id: string, interestId: string, _options?: Configuration): Promise<HttpInfo<void>> {
-        const result = this.api.removeProductInterestUsingDELETEWithHttpInfo(id, interestId, _options);
+    public removeProductInterestUsingDELETEWithHttpInfo(id: string, interestId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.removeProductInterestUsingDELETEWithHttpInfo(id, interestId, observableOptions);
         return result.toPromise();
     }
 
@@ -1737,8 +3216,9 @@ export class PromiseProductInterestBundlesApi {
      * @param id id
      * @param interestId interest_id
      */
-    public removeProductInterestUsingDELETE(id: string, interestId: string, _options?: Configuration): Promise<void> {
-        const result = this.api.removeProductInterestUsingDELETE(id, interestId, _options);
+    public removeProductInterestUsingDELETE(id: string, interestId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.removeProductInterestUsingDELETE(id, interestId, observableOptions);
         return result.toPromise();
     }
 
@@ -1749,8 +3229,9 @@ export class PromiseProductInterestBundlesApi {
      * @param updateProductInterestBundleRequest updateProductInterestBundleRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateProductInterestBundleUsingPATCHWithHttpInfo(id: string, updateProductInterestBundleRequest: UpdateProductInterestBundleRequest, updateMask?: Array<string>, _options?: Configuration): Promise<HttpInfo<ProductInterestBundle>> {
-        const result = this.api.updateProductInterestBundleUsingPATCHWithHttpInfo(id, updateProductInterestBundleRequest, updateMask, _options);
+    public updateProductInterestBundleUsingPATCHWithHttpInfo(id: string, updateProductInterestBundleRequest: UpdateProductInterestBundleRequest, updateMask?: Array<string>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ProductInterestBundle>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateProductInterestBundleUsingPATCHWithHttpInfo(id, updateProductInterestBundleRequest, updateMask, observableOptions);
         return result.toPromise();
     }
 
@@ -1761,8 +3242,9 @@ export class PromiseProductInterestBundlesApi {
      * @param updateProductInterestBundleRequest updateProductInterestBundleRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateProductInterestBundleUsingPATCH(id: string, updateProductInterestBundleRequest: UpdateProductInterestBundleRequest, updateMask?: Array<string>, _options?: Configuration): Promise<ProductInterestBundle> {
-        const result = this.api.updateProductInterestBundleUsingPATCH(id, updateProductInterestBundleRequest, updateMask, _options);
+    public updateProductInterestBundleUsingPATCH(id: string, updateProductInterestBundleRequest: UpdateProductInterestBundleRequest, updateMask?: Array<string>, _options?: PromiseConfigurationOptions): Promise<ProductInterestBundle> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateProductInterestBundleUsingPATCH(id, updateProductInterestBundleRequest, updateMask, observableOptions);
         return result.toPromise();
     }
 
@@ -1774,8 +3256,9 @@ export class PromiseProductInterestBundlesApi {
      * @param updateProductInterestRequest updateProductInterestRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateProductInterestUsingPATCHWithHttpInfo(id: string, interestId: string, updateProductInterestRequest: UpdateProductInterestRequest, updateMask?: Array<string>, _options?: Configuration): Promise<HttpInfo<ProductInterest>> {
-        const result = this.api.updateProductInterestUsingPATCHWithHttpInfo(id, interestId, updateProductInterestRequest, updateMask, _options);
+    public updateProductInterestUsingPATCHWithHttpInfo(id: string, interestId: string, updateProductInterestRequest: UpdateProductInterestRequest, updateMask?: Array<string>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ProductInterest>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateProductInterestUsingPATCHWithHttpInfo(id, interestId, updateProductInterestRequest, updateMask, observableOptions);
         return result.toPromise();
     }
 
@@ -1787,8 +3270,9 @@ export class PromiseProductInterestBundlesApi {
      * @param updateProductInterestRequest updateProductInterestRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateProductInterestUsingPATCH(id: string, interestId: string, updateProductInterestRequest: UpdateProductInterestRequest, updateMask?: Array<string>, _options?: Configuration): Promise<ProductInterest> {
-        const result = this.api.updateProductInterestUsingPATCH(id, interestId, updateProductInterestRequest, updateMask, _options);
+    public updateProductInterestUsingPATCH(id: string, interestId: string, updateProductInterestRequest: UpdateProductInterestRequest, updateMask?: Array<string>, _options?: PromiseConfigurationOptions): Promise<ProductInterest> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateProductInterestUsingPATCH(id, interestId, updateProductInterestRequest, updateMask, observableOptions);
         return result.toPromise();
     }
 
@@ -1819,8 +3303,9 @@ export class PromiseReportingApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listReportsUsingGETWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<HttpInfo<ListReportsResponse>> {
-        const result = this.api.listReportsUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken, _options);
+    public listReportsUsingGETWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListReportsResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listReportsUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken, observableOptions);
         return result.toPromise();
     }
 
@@ -1832,8 +3317,9 @@ export class PromiseReportingApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listReportsUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<ListReportsResponse> {
-        const result = this.api.listReportsUsingGET(filter, orderBy, pageSize, pageToken, _options);
+    public listReportsUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<ListReportsResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listReportsUsingGET(filter, orderBy, pageSize, pageToken, observableOptions);
         return result.toPromise();
     }
 
@@ -1842,8 +3328,9 @@ export class PromiseReportingApi {
      * Retrieve Report
      * @param reportId report_id
      */
-    public retrieveReportUsingGETWithHttpInfo(reportId: string, _options?: Configuration): Promise<HttpInfo<Report>> {
-        const result = this.api.retrieveReportUsingGETWithHttpInfo(reportId, _options);
+    public retrieveReportUsingGETWithHttpInfo(reportId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Report>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.retrieveReportUsingGETWithHttpInfo(reportId, observableOptions);
         return result.toPromise();
     }
 
@@ -1852,8 +3339,9 @@ export class PromiseReportingApi {
      * Retrieve Report
      * @param reportId report_id
      */
-    public retrieveReportUsingGET(reportId: string, _options?: Configuration): Promise<Report> {
-        const result = this.api.retrieveReportUsingGET(reportId, _options);
+    public retrieveReportUsingGET(reportId: string, _options?: PromiseConfigurationOptions): Promise<Report> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.retrieveReportUsingGET(reportId, observableOptions);
         return result.toPromise();
     }
 
@@ -1866,8 +3354,9 @@ export class PromiseReportingApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Representation of the last row retrieved from the previous page. An empty value implies a request for the first page.
      */
-    public runReportUsingPOSTWithHttpInfo(reportId: string, fields?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<HttpInfo<ReportExecutionResult>> {
-        const result = this.api.runReportUsingPOSTWithHttpInfo(reportId, fields, orderBy, pageSize, pageToken, _options);
+    public runReportUsingPOSTWithHttpInfo(reportId: string, fields?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ReportExecutionResult>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.runReportUsingPOSTWithHttpInfo(reportId, fields, orderBy, pageSize, pageToken, observableOptions);
         return result.toPromise();
     }
 
@@ -1880,8 +3369,9 @@ export class PromiseReportingApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Representation of the last row retrieved from the previous page. An empty value implies a request for the first page.
      */
-    public runReportUsingPOST(reportId: string, fields?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<ReportExecutionResult> {
-        const result = this.api.runReportUsingPOST(reportId, fields, orderBy, pageSize, pageToken, _options);
+    public runReportUsingPOST(reportId: string, fields?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<ReportExecutionResult> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.runReportUsingPOST(reportId, fields, orderBy, pageSize, pageToken, observableOptions);
         return result.toPromise();
     }
 
@@ -1909,8 +3399,9 @@ export class PromiseSalesApi {
      * Set default Merchant Account
      * @param id id
      */
-    public setMerchantGatewayAsDefaultUsingPOSTWithHttpInfo(id: string, _options?: Configuration): Promise<HttpInfo<void>> {
-        const result = this.api.setMerchantGatewayAsDefaultUsingPOSTWithHttpInfo(id, _options);
+    public setMerchantGatewayAsDefaultUsingPOSTWithHttpInfo(id: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.setMerchantGatewayAsDefaultUsingPOSTWithHttpInfo(id, observableOptions);
         return result.toPromise();
     }
 
@@ -1919,8 +3410,9 @@ export class PromiseSalesApi {
      * Set default Merchant Account
      * @param id id
      */
-    public setMerchantGatewayAsDefaultUsingPOST(id: string, _options?: Configuration): Promise<void> {
-        const result = this.api.setMerchantGatewayAsDefaultUsingPOST(id, _options);
+    public setMerchantGatewayAsDefaultUsingPOST(id: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.setMerchantGatewayAsDefaultUsingPOST(id, observableOptions);
         return result.toPromise();
     }
 
@@ -1948,8 +3440,9 @@ export class PromiseSettingsApi {
      * Get Application Configuration
      * @param [fields] By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query.
      */
-    public getApplicationConfigurationsUsingGETWithHttpInfo(fields?: Array<'AFFILIATE' | 'APPOINTMENT' | 'CONTACT' | 'ECOMMERCE' | 'EMAIL' | 'FORMS' | 'FULFILLMENT' | 'INVOICE' | 'NOTE' | 'OPPORTUNITY' | 'TASK' | 'TEMPLATE'>, _options?: Configuration): Promise<HttpInfo<GetSettingsResponse>> {
-        const result = this.api.getApplicationConfigurationsUsingGETWithHttpInfo(fields, _options);
+    public getApplicationConfigurationsUsingGETWithHttpInfo(fields?: Array<'AFFILIATE' | 'APPOINTMENT' | 'CONTACT' | 'ECOMMERCE' | 'EMAIL' | 'FORMS' | 'FULFILLMENT' | 'INVOICE' | 'NOTE' | 'OPPORTUNITY' | 'TASK' | 'TEMPLATE'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<GetSettingsResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getApplicationConfigurationsUsingGETWithHttpInfo(fields, observableOptions);
         return result.toPromise();
     }
 
@@ -1958,8 +3451,9 @@ export class PromiseSettingsApi {
      * Get Application Configuration
      * @param [fields] By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query.
      */
-    public getApplicationConfigurationsUsingGET(fields?: Array<'AFFILIATE' | 'APPOINTMENT' | 'CONTACT' | 'ECOMMERCE' | 'EMAIL' | 'FORMS' | 'FULFILLMENT' | 'INVOICE' | 'NOTE' | 'OPPORTUNITY' | 'TASK' | 'TEMPLATE'>, _options?: Configuration): Promise<GetSettingsResponse> {
-        const result = this.api.getApplicationConfigurationsUsingGET(fields, _options);
+    public getApplicationConfigurationsUsingGET(fields?: Array<'AFFILIATE' | 'APPOINTMENT' | 'CONTACT' | 'ECOMMERCE' | 'EMAIL' | 'FORMS' | 'FULFILLMENT' | 'INVOICE' | 'NOTE' | 'OPPORTUNITY' | 'TASK' | 'TEMPLATE'>, _options?: PromiseConfigurationOptions): Promise<GetSettingsResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getApplicationConfigurationsUsingGET(fields, observableOptions);
         return result.toPromise();
     }
 
@@ -1967,8 +3461,9 @@ export class PromiseSettingsApi {
      * Gets a list of Contact Option types.
      * Get Contact Option types
      */
-    public getContactOptionTypesUsingGET1WithHttpInfo(_options?: Configuration): Promise<HttpInfo<GetContactOptionTypesResponse>> {
-        const result = this.api.getContactOptionTypesUsingGET1WithHttpInfo(_options);
+    public getContactOptionTypesUsingGET1WithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<GetContactOptionTypesResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getContactOptionTypesUsingGET1WithHttpInfo(observableOptions);
         return result.toPromise();
     }
 
@@ -1976,8 +3471,9 @@ export class PromiseSettingsApi {
      * Gets a list of Contact Option types.
      * Get Contact Option types
      */
-    public getContactOptionTypesUsingGET1(_options?: Configuration): Promise<GetContactOptionTypesResponse> {
-        const result = this.api.getContactOptionTypesUsingGET1(_options);
+    public getContactOptionTypesUsingGET1(_options?: PromiseConfigurationOptions): Promise<GetContactOptionTypesResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getContactOptionTypesUsingGET1(observableOptions);
         return result.toPromise();
     }
 
@@ -1985,8 +3481,9 @@ export class PromiseSettingsApi {
      * Check if the application is enabled or not
      * Get Application Status
      */
-    public isApplicationEnabledUsingGETWithHttpInfo(_options?: Configuration): Promise<HttpInfo<GetApplicationEnabledStatusResponse>> {
-        const result = this.api.isApplicationEnabledUsingGETWithHttpInfo(_options);
+    public isApplicationEnabledUsingGETWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<GetApplicationEnabledStatusResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.isApplicationEnabledUsingGETWithHttpInfo(observableOptions);
         return result.toPromise();
     }
 
@@ -1994,8 +3491,9 @@ export class PromiseSettingsApi {
      * Check if the application is enabled or not
      * Get Application Status
      */
-    public isApplicationEnabledUsingGET(_options?: Configuration): Promise<GetApplicationEnabledStatusResponse> {
-        const result = this.api.isApplicationEnabledUsingGET(_options);
+    public isApplicationEnabledUsingGET(_options?: PromiseConfigurationOptions): Promise<GetApplicationEnabledStatusResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.isApplicationEnabledUsingGET(observableOptions);
         return result.toPromise();
     }
 
@@ -2019,12 +3517,24 @@ export class PromiseSubscriptionsApi {
     }
 
     /**
-     * Creates a subscription with the specified product and product subscription id.
-     * Create Subscription
-     * @param createSubscriptionV2 createSubscriptionV2
+     * Creates a custom field of the specified type and options to the Subscription object
+     * Create a Subscription Custom Field
+     * @param createCustomFieldRequest customField
      */
-    public createSubscriptionV2UsingPOSTWithHttpInfo(createSubscriptionV2: CreateSubscriptionV2, _options?: Configuration): Promise<HttpInfo<RestSubscriptionV2>> {
-        const result = this.api.createSubscriptionV2UsingPOSTWithHttpInfo(createSubscriptionV2, _options);
+    public createSubscriptionCustomFieldUsingPOSTWithHttpInfo(createCustomFieldRequest: CreateCustomFieldRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createSubscriptionCustomFieldUsingPOSTWithHttpInfo(createCustomFieldRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a custom field of the specified type and options to the Subscription object
+     * Create a Subscription Custom Field
+     * @param createCustomFieldRequest customField
+     */
+    public createSubscriptionCustomFieldUsingPOST(createCustomFieldRequest: CreateCustomFieldRequest, _options?: PromiseConfigurationOptions): Promise<CustomFieldMetaData> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createSubscriptionCustomFieldUsingPOST(createCustomFieldRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -2033,8 +3543,88 @@ export class PromiseSubscriptionsApi {
      * Create Subscription
      * @param createSubscriptionV2 createSubscriptionV2
      */
-    public createSubscriptionV2UsingPOST(createSubscriptionV2: CreateSubscriptionV2, _options?: Configuration): Promise<RestSubscriptionV2> {
-        const result = this.api.createSubscriptionV2UsingPOST(createSubscriptionV2, _options);
+    public createSubscriptionV2UsingPOSTWithHttpInfo(createSubscriptionV2: CreateSubscriptionV2, _options?: PromiseConfigurationOptions): Promise<HttpInfo<RestSubscriptionV2>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createSubscriptionV2UsingPOSTWithHttpInfo(createSubscriptionV2, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a subscription with the specified product and product subscription id.
+     * Create Subscription
+     * @param createSubscriptionV2 createSubscriptionV2
+     */
+    public createSubscriptionV2UsingPOST(createSubscriptionV2: CreateSubscriptionV2, _options?: PromiseConfigurationOptions): Promise<RestSubscriptionV2> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createSubscriptionV2UsingPOST(createSubscriptionV2, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a custom field from the Subscription object
+     * Delete a Subscription Custom Field
+     * @param customFieldId custom_field_id
+     */
+    public deleteSubscriptionCustomFieldUsingDELETEWithHttpInfo(customFieldId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteSubscriptionCustomFieldUsingDELETEWithHttpInfo(customFieldId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a custom field from the Subscription object
+     * Delete a Subscription Custom Field
+     * @param customFieldId custom_field_id
+     */
+    public deleteSubscriptionCustomFieldUsingDELETE(customFieldId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteSubscriptionCustomFieldUsingDELETE(customFieldId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Get the custom fields for the Subscription object
+     * Retrieve Subscription Custom Field Model
+     */
+    public retrieveSubscriptionCustomFieldModelUsingGETWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<ObjectModel>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.retrieveSubscriptionCustomFieldModelUsingGETWithHttpInfo(observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Get the custom fields for the Subscription object
+     * Retrieve Subscription Custom Field Model
+     */
+    public retrieveSubscriptionCustomFieldModelUsingGET(_options?: PromiseConfigurationOptions): Promise<ObjectModel> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.retrieveSubscriptionCustomFieldModelUsingGET(observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates a custom field of the specified type and options to the Subscription object
+     * Update a Subscription Custom Field
+     * @param customFieldId custom_field_id
+     * @param updateCustomFieldMetaDataRequest request
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateSubscriptionCustomFieldUsingPATCHWithHttpInfo(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Array<string>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateSubscriptionCustomFieldUsingPATCHWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates a custom field of the specified type and options to the Subscription object
+     * Update a Subscription Custom Field
+     * @param customFieldId custom_field_id
+     * @param updateCustomFieldMetaDataRequest request
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateSubscriptionCustomFieldUsingPATCH(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Array<string>, _options?: PromiseConfigurationOptions): Promise<CustomFieldMetaData> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateSubscriptionCustomFieldUsingPATCH(customFieldId, updateCustomFieldMetaDataRequest, updateMask, observableOptions);
         return result.toPromise();
     }
 
@@ -2063,8 +3653,9 @@ export class PromiseTagsApi {
      * @param tagId tag_id
      * @param applyRemoveTagRequest applyRemoveTagRequest
      */
-    public applyTagsUsingPOSTWithHttpInfo(tagId: string, applyRemoveTagRequest: ApplyRemoveTagRequest, _options?: Configuration): Promise<HttpInfo<ApplyTagsResponse>> {
-        const result = this.api.applyTagsUsingPOSTWithHttpInfo(tagId, applyRemoveTagRequest, _options);
+    public applyTagsUsingPOSTWithHttpInfo(tagId: string, applyRemoveTagRequest: ApplyRemoveTagRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ApplyTagsResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.applyTagsUsingPOSTWithHttpInfo(tagId, applyRemoveTagRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -2074,8 +3665,9 @@ export class PromiseTagsApi {
      * @param tagId tag_id
      * @param applyRemoveTagRequest applyRemoveTagRequest
      */
-    public applyTagsUsingPOST(tagId: string, applyRemoveTagRequest: ApplyRemoveTagRequest, _options?: Configuration): Promise<ApplyTagsResponse> {
-        const result = this.api.applyTagsUsingPOST(tagId, applyRemoveTagRequest, _options);
+    public applyTagsUsingPOST(tagId: string, applyRemoveTagRequest: ApplyRemoveTagRequest, _options?: PromiseConfigurationOptions): Promise<ApplyTagsResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.applyTagsUsingPOST(tagId, applyRemoveTagRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -2084,8 +3676,9 @@ export class PromiseTagsApi {
      * Create Tag Category
      * @param createUpdateTagCategoryRequest request
      */
-    public createTagCategoryUsingPOST1WithHttpInfo(createUpdateTagCategoryRequest: CreateUpdateTagCategoryRequest, _options?: Configuration): Promise<HttpInfo<Tag>> {
-        const result = this.api.createTagCategoryUsingPOST1WithHttpInfo(createUpdateTagCategoryRequest, _options);
+    public createTagCategoryUsingPOST1WithHttpInfo(createUpdateTagCategoryRequest: CreateUpdateTagCategoryRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Tag>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createTagCategoryUsingPOST1WithHttpInfo(createUpdateTagCategoryRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -2094,8 +3687,9 @@ export class PromiseTagsApi {
      * Create Tag Category
      * @param createUpdateTagCategoryRequest request
      */
-    public createTagCategoryUsingPOST1(createUpdateTagCategoryRequest: CreateUpdateTagCategoryRequest, _options?: Configuration): Promise<Tag> {
-        const result = this.api.createTagCategoryUsingPOST1(createUpdateTagCategoryRequest, _options);
+    public createTagCategoryUsingPOST1(createUpdateTagCategoryRequest: CreateUpdateTagCategoryRequest, _options?: PromiseConfigurationOptions): Promise<Tag> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createTagCategoryUsingPOST1(createUpdateTagCategoryRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -2104,8 +3698,9 @@ export class PromiseTagsApi {
      * Create Tag
      * @param createUpdateTagRequest tag
      */
-    public createTagUsingPOST1WithHttpInfo(createUpdateTagRequest: CreateUpdateTagRequest, _options?: Configuration): Promise<HttpInfo<Tag>> {
-        const result = this.api.createTagUsingPOST1WithHttpInfo(createUpdateTagRequest, _options);
+    public createTagUsingPOST1WithHttpInfo(createUpdateTagRequest: CreateUpdateTagRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Tag>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createTagUsingPOST1WithHttpInfo(createUpdateTagRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -2114,8 +3709,9 @@ export class PromiseTagsApi {
      * Create Tag
      * @param createUpdateTagRequest tag
      */
-    public createTagUsingPOST1(createUpdateTagRequest: CreateUpdateTagRequest, _options?: Configuration): Promise<Tag> {
-        const result = this.api.createTagUsingPOST1(createUpdateTagRequest, _options);
+    public createTagUsingPOST1(createUpdateTagRequest: CreateUpdateTagRequest, _options?: PromiseConfigurationOptions): Promise<Tag> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createTagUsingPOST1(createUpdateTagRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -2124,8 +3720,9 @@ export class PromiseTagsApi {
      * Delete Tag Category
      * @param tagCategoryId tag_category_id
      */
-    public deleteTagCategoryUsingDELETEWithHttpInfo(tagCategoryId: string, _options?: Configuration): Promise<HttpInfo<void>> {
-        const result = this.api.deleteTagCategoryUsingDELETEWithHttpInfo(tagCategoryId, _options);
+    public deleteTagCategoryUsingDELETEWithHttpInfo(tagCategoryId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteTagCategoryUsingDELETEWithHttpInfo(tagCategoryId, observableOptions);
         return result.toPromise();
     }
 
@@ -2134,8 +3731,9 @@ export class PromiseTagsApi {
      * Delete Tag Category
      * @param tagCategoryId tag_category_id
      */
-    public deleteTagCategoryUsingDELETE(tagCategoryId: string, _options?: Configuration): Promise<void> {
-        const result = this.api.deleteTagCategoryUsingDELETE(tagCategoryId, _options);
+    public deleteTagCategoryUsingDELETE(tagCategoryId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteTagCategoryUsingDELETE(tagCategoryId, observableOptions);
         return result.toPromise();
     }
 
@@ -2144,8 +3742,9 @@ export class PromiseTagsApi {
      * Delete Tag
      * @param tagId tag_id
      */
-    public deleteTagUsingDELETEWithHttpInfo(tagId: string, _options?: Configuration): Promise<HttpInfo<void>> {
-        const result = this.api.deleteTagUsingDELETEWithHttpInfo(tagId, _options);
+    public deleteTagUsingDELETEWithHttpInfo(tagId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteTagUsingDELETEWithHttpInfo(tagId, observableOptions);
         return result.toPromise();
     }
 
@@ -2154,8 +3753,9 @@ export class PromiseTagsApi {
      * Delete Tag
      * @param tagId tag_id
      */
-    public deleteTagUsingDELETE(tagId: string, _options?: Configuration): Promise<void> {
-        const result = this.api.deleteTagUsingDELETE(tagId, _options);
+    public deleteTagUsingDELETE(tagId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteTagUsingDELETE(tagId, observableOptions);
         return result.toPromise();
     }
 
@@ -2164,8 +3764,9 @@ export class PromiseTagsApi {
      * Retrieve a Tag Category
      * @param tagCategoryId tag_category_id
      */
-    public getCategoryUsingGETWithHttpInfo(tagCategoryId: string, _options?: Configuration): Promise<HttpInfo<GetTagCategoryResponse>> {
-        const result = this.api.getCategoryUsingGETWithHttpInfo(tagCategoryId, _options);
+    public getCategoryUsingGETWithHttpInfo(tagCategoryId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<GetTagCategoryResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getCategoryUsingGETWithHttpInfo(tagCategoryId, observableOptions);
         return result.toPromise();
     }
 
@@ -2174,8 +3775,9 @@ export class PromiseTagsApi {
      * Retrieve a Tag Category
      * @param tagCategoryId tag_category_id
      */
-    public getCategoryUsingGET(tagCategoryId: string, _options?: Configuration): Promise<GetTagCategoryResponse> {
-        const result = this.api.getCategoryUsingGET(tagCategoryId, _options);
+    public getCategoryUsingGET(tagCategoryId: string, _options?: PromiseConfigurationOptions): Promise<GetTagCategoryResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getCategoryUsingGET(tagCategoryId, observableOptions);
         return result.toPromise();
     }
 
@@ -2184,8 +3786,9 @@ export class PromiseTagsApi {
      * Retrieve a Tag
      * @param tagId tag_id
      */
-    public getTagUsingGET1WithHttpInfo(tagId: string, _options?: Configuration): Promise<HttpInfo<Tag>> {
-        const result = this.api.getTagUsingGET1WithHttpInfo(tagId, _options);
+    public getTagUsingGET1WithHttpInfo(tagId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Tag>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getTagUsingGET1WithHttpInfo(tagId, observableOptions);
         return result.toPromise();
     }
 
@@ -2194,8 +3797,9 @@ export class PromiseTagsApi {
      * Retrieve a Tag
      * @param tagId tag_id
      */
-    public getTagUsingGET1(tagId: string, _options?: Configuration): Promise<Tag> {
-        const result = this.api.getTagUsingGET1(tagId, _options);
+    public getTagUsingGET1(tagId: string, _options?: PromiseConfigurationOptions): Promise<Tag> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getTagUsingGET1(tagId, observableOptions);
         return result.toPromise();
     }
 
@@ -2208,8 +3812,9 @@ export class PromiseTagsApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listCompaniesForTagIdUsingGET1WithHttpInfo(tagId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<HttpInfo<ListTaggedCompaniesResponse>> {
-        const result = this.api.listCompaniesForTagIdUsingGET1WithHttpInfo(tagId, filter, orderBy, pageSize, pageToken, _options);
+    public listCompaniesForTagIdUsingGET1WithHttpInfo(tagId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListTaggedCompaniesResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listCompaniesForTagIdUsingGET1WithHttpInfo(tagId, filter, orderBy, pageSize, pageToken, observableOptions);
         return result.toPromise();
     }
 
@@ -2222,8 +3827,9 @@ export class PromiseTagsApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listCompaniesForTagIdUsingGET1(tagId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<ListTaggedCompaniesResponse> {
-        const result = this.api.listCompaniesForTagIdUsingGET1(tagId, filter, orderBy, pageSize, pageToken, _options);
+    public listCompaniesForTagIdUsingGET1(tagId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<ListTaggedCompaniesResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listCompaniesForTagIdUsingGET1(tagId, filter, orderBy, pageSize, pageToken, observableOptions);
         return result.toPromise();
     }
 
@@ -2236,8 +3842,9 @@ export class PromiseTagsApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listContactsWithTagIdUsingGETWithHttpInfo(tagId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<HttpInfo<ListTaggedContactsResponse>> {
-        const result = this.api.listContactsWithTagIdUsingGETWithHttpInfo(tagId, filter, orderBy, pageSize, pageToken, _options);
+    public listContactsWithTagIdUsingGETWithHttpInfo(tagId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListTaggedContactsResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listContactsWithTagIdUsingGETWithHttpInfo(tagId, filter, orderBy, pageSize, pageToken, observableOptions);
         return result.toPromise();
     }
 
@@ -2250,8 +3857,9 @@ export class PromiseTagsApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listContactsWithTagIdUsingGET(tagId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<ListTaggedContactsResponse> {
-        const result = this.api.listContactsWithTagIdUsingGET(tagId, filter, orderBy, pageSize, pageToken, _options);
+    public listContactsWithTagIdUsingGET(tagId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<ListTaggedContactsResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listContactsWithTagIdUsingGET(tagId, filter, orderBy, pageSize, pageToken, observableOptions);
         return result.toPromise();
     }
 
@@ -2263,8 +3871,9 @@ export class PromiseTagsApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listTagCategoriesUsingGETWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<HttpInfo<ListTagCategoriesResponse>> {
-        const result = this.api.listTagCategoriesUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken, _options);
+    public listTagCategoriesUsingGETWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListTagCategoriesResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listTagCategoriesUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken, observableOptions);
         return result.toPromise();
     }
 
@@ -2276,8 +3885,9 @@ export class PromiseTagsApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listTagCategoriesUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<ListTagCategoriesResponse> {
-        const result = this.api.listTagCategoriesUsingGET(filter, orderBy, pageSize, pageToken, _options);
+    public listTagCategoriesUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<ListTagCategoriesResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listTagCategoriesUsingGET(filter, orderBy, pageSize, pageToken, observableOptions);
         return result.toPromise();
     }
 
@@ -2289,8 +3899,9 @@ export class PromiseTagsApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listTagsUsingGET1WithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<HttpInfo<ListTagsResponse>> {
-        const result = this.api.listTagsUsingGET1WithHttpInfo(filter, orderBy, pageSize, pageToken, _options);
+    public listTagsUsingGET1WithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListTagsResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listTagsUsingGET1WithHttpInfo(filter, orderBy, pageSize, pageToken, observableOptions);
         return result.toPromise();
     }
 
@@ -2302,8 +3913,9 @@ export class PromiseTagsApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listTagsUsingGET1(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<ListTagsResponse> {
-        const result = this.api.listTagsUsingGET1(filter, orderBy, pageSize, pageToken, _options);
+    public listTagsUsingGET1(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<ListTagsResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listTagsUsingGET1(filter, orderBy, pageSize, pageToken, observableOptions);
         return result.toPromise();
     }
 
@@ -2313,8 +3925,9 @@ export class PromiseTagsApi {
      * @param tagId tag_id
      * @param applyRemoveTagRequest applyRemoveTagRequest
      */
-    public removeTagsUsingPOSTWithHttpInfo(tagId: string, applyRemoveTagRequest: ApplyRemoveTagRequest, _options?: Configuration): Promise<HttpInfo<void>> {
-        const result = this.api.removeTagsUsingPOSTWithHttpInfo(tagId, applyRemoveTagRequest, _options);
+    public removeTagsUsingPOSTWithHttpInfo(tagId: string, applyRemoveTagRequest: ApplyRemoveTagRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.removeTagsUsingPOSTWithHttpInfo(tagId, applyRemoveTagRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -2324,8 +3937,9 @@ export class PromiseTagsApi {
      * @param tagId tag_id
      * @param applyRemoveTagRequest applyRemoveTagRequest
      */
-    public removeTagsUsingPOST(tagId: string, applyRemoveTagRequest: ApplyRemoveTagRequest, _options?: Configuration): Promise<void> {
-        const result = this.api.removeTagsUsingPOST(tagId, applyRemoveTagRequest, _options);
+    public removeTagsUsingPOST(tagId: string, applyRemoveTagRequest: ApplyRemoveTagRequest, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.removeTagsUsingPOST(tagId, applyRemoveTagRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -2336,8 +3950,9 @@ export class PromiseTagsApi {
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @param [createUpdateTagCategoryRequest] tagCategory
      */
-    public updateTagCategoryUsingPATCHWithHttpInfo(tagCategoryId: string, updateMask?: Array<string>, createUpdateTagCategoryRequest?: CreateUpdateTagCategoryRequest, _options?: Configuration): Promise<HttpInfo<UpdateTagCategoryResponse>> {
-        const result = this.api.updateTagCategoryUsingPATCHWithHttpInfo(tagCategoryId, updateMask, createUpdateTagCategoryRequest, _options);
+    public updateTagCategoryUsingPATCHWithHttpInfo(tagCategoryId: string, updateMask?: Array<string>, createUpdateTagCategoryRequest?: CreateUpdateTagCategoryRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<UpdateTagCategoryResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateTagCategoryUsingPATCHWithHttpInfo(tagCategoryId, updateMask, createUpdateTagCategoryRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -2348,8 +3963,9 @@ export class PromiseTagsApi {
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @param [createUpdateTagCategoryRequest] tagCategory
      */
-    public updateTagCategoryUsingPATCH(tagCategoryId: string, updateMask?: Array<string>, createUpdateTagCategoryRequest?: CreateUpdateTagCategoryRequest, _options?: Configuration): Promise<UpdateTagCategoryResponse> {
-        const result = this.api.updateTagCategoryUsingPATCH(tagCategoryId, updateMask, createUpdateTagCategoryRequest, _options);
+    public updateTagCategoryUsingPATCH(tagCategoryId: string, updateMask?: Array<string>, createUpdateTagCategoryRequest?: CreateUpdateTagCategoryRequest, _options?: PromiseConfigurationOptions): Promise<UpdateTagCategoryResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateTagCategoryUsingPATCH(tagCategoryId, updateMask, createUpdateTagCategoryRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -2360,8 +3976,9 @@ export class PromiseTagsApi {
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @param [createUpdateTagRequest] tag
      */
-    public updateTagUsingPATCHWithHttpInfo(tagId: string, updateMask?: Array<string>, createUpdateTagRequest?: CreateUpdateTagRequest, _options?: Configuration): Promise<HttpInfo<UpdateTagResponse>> {
-        const result = this.api.updateTagUsingPATCHWithHttpInfo(tagId, updateMask, createUpdateTagRequest, _options);
+    public updateTagUsingPATCHWithHttpInfo(tagId: string, updateMask?: Array<string>, createUpdateTagRequest?: CreateUpdateTagRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<UpdateTagResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateTagUsingPATCHWithHttpInfo(tagId, updateMask, createUpdateTagRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -2372,8 +3989,9 @@ export class PromiseTagsApi {
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @param [createUpdateTagRequest] tag
      */
-    public updateTagUsingPATCH(tagId: string, updateMask?: Array<string>, createUpdateTagRequest?: CreateUpdateTagRequest, _options?: Configuration): Promise<UpdateTagResponse> {
-        const result = this.api.updateTagUsingPATCH(tagId, updateMask, createUpdateTagRequest, _options);
+    public updateTagUsingPATCH(tagId: string, updateMask?: Array<string>, createUpdateTagRequest?: CreateUpdateTagRequest, _options?: PromiseConfigurationOptions): Promise<UpdateTagResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateTagUsingPATCH(tagId, updateMask, createUpdateTagRequest, observableOptions);
         return result.toPromise();
     }
 

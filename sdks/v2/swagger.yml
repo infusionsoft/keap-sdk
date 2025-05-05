@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   description: Keap REST Core Service
-  version: 2.70.0.800521
+  version: 2.70.0.803777-hf-202504281900
   title: Keap REST API
   termsOfService: https://keap.com/legal
   contact:
@@ -138,7 +138,619 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
       deprecated: false
+  /v2/affiliates/commissionPrograms:
+    get:
+      tags:
+      - Affiliate
+      summary: List Affiliate Commission Programs
+      description: Retrieves a list of Affiliate Commission Programs
+      operationId: listAffiliateCommissionProgramsUsingGET
+      parameters:
+      - name: filter
+        in: query
+        description: |
+          Filter to apply, allowed fields are:
+          - (String) `name`
+          - (String) `affiliate_id`
+        required: false
+        schema:
+          type: string
+      - name: order_by
+        in: query
+        description: |-
+          Attribute and direction to order items.
+          One of the following fields:
+          - `name`
+          - `date_created`
+
+          One of the following directions:
+          - `asc`
+          - `desc`
+        required: false
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: Total number of items to return per page
+        required: false
+        example: 0
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 1000
+          exclusiveMinimum: false
+          exclusiveMaximum: false
+      - name: page_token
+        in: query
+        description: Page token
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListAffiliateCommissionProgramsResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    post:
+      tags:
+      - Affiliate
+      summary: Create an Affiliate Commission Program
+      description: Creates an Affiliate Commission Program
+      operationId: addCommissionProgramUsingPOST
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCommissionProgramRequest'
+        description: Commission Program to insert
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AffiliateCommissionProgramResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/affiliates/commissionPrograms/defaultCommissionProgram/{commission_program_id}:
+    post:
+      tags:
+      - Affiliate
+      summary: Create a Default Commission Program
+      description: Creates a Default Commission Program
+      operationId: createDefaultCommissionProgramUsingPOST
+      parameters:
+      - name: commission_program_id
+        in: path
+        description: commission_program_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateDefaultCommissionProgramRequest'
+        description: Values of the Default Commission Program
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SetDefaultCommissionProgramResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id}:
+    patch:
+      tags:
+      - Affiliate
+      summary: Update a Default Commission Program
+      description: Updates a Default Commission Program
+      operationId: updateDefaultCommissionProgramUsingPATCH
+      parameters:
+      - name: commission_program_id
+        in: path
+        description: commission_program_id
+        required: true
+        schema:
+          type: string
+      - name: update_mask
+        in: query
+        description: update_mask
+        required: false
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateDefaultCommissionProgramRequest'
+        description: Values of the default Commission Program
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SetDefaultCommissionProgramResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/affiliates/commissionPrograms/productCommissionProgram/{commission_program_id}:
+    post:
+      tags:
+      - Affiliate
+      summary: Assign a Product Commission Program
+      description: Assigns a Product Commission Program to a Product
+      operationId: assignProductCommissionProgramUsingPOST
+      parameters:
+      - name: commission_program_id
+        in: path
+        description: commission_program_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateProductCommissionProgramRequest'
+        description: Product Commission Program
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductCommissionProgram'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id}:
+    patch:
+      tags:
+      - Affiliate
+      summary: Update a Product Commission Program
+      description: Updates a Product Commission Program
+      operationId: updateProductCommissionProgramUsingPATCH
+      parameters:
+      - name: commission_program_id
+        in: path
+        description: commission_program_id
+        required: true
+        schema:
+          type: string
+      - name: update_mask
+        in: query
+        description: update_mask
+        required: false
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateProductCommissionProgramRequest'
+        description: Values of the product Commission Program
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductCommissionProgram'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/affiliates/commissionPrograms/subscriptionCommissionProgram/{commission_program_id}:
+    post:
+      tags:
+      - Affiliate
+      summary: Assign a Subscription Commission Program
+      description: Assigns a Subscription Commission Program to a Subscription
+      operationId: assignSubscriptionCommissionProgramUsingPOST
+      parameters:
+      - name: commission_program_id
+        in: path
+        description: commission_program_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSubscriptionCommissionProgramRequest'
+        description: Subscription Commission Program
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionCommissionProgram'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id}:
+    patch:
+      tags:
+      - Affiliate
+      summary: Update a Subscription Commission Program
+      description: Updates a Subscription Commission Program
+      operationId: updateSubscriptionCommissionProgramUsingPATCH
+      parameters:
+      - name: commission_program_id
+        in: path
+        description: commission_program_id
+        required: true
+        schema:
+          type: string
+      - name: update_mask
+        in: query
+        description: update_mask
+        required: false
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateSubscriptionCommissionProgramRequest'
+        description: Values of the subscription Commission Program
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionCommissionProgram'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/affiliates/commissionPrograms/{commission_id}:removeProductCommission:
+    post:
+      tags:
+      - Affiliate
+      summary: Remove a Product from a Commission Program
+      description: Removes a Product from a Commission Program
+      operationId: removeProductCommissionFromCommissionsUsingPOST
+      parameters:
+      - name: commission_id
+        in: path
+        description: commission_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeleteProgramCommissionRequest'
+        description: deleteProgramCommissionRequest
+        required: true
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/affiliates/commissionPrograms/{commission_id}:removeSubscriptionCommission:
+    post:
+      tags:
+      - Affiliate
+      summary: Remove a Subscription from a Commission Program
+      description: Removes a Subscription from a Commission Program
+      operationId: removeSubscriptionPlanCommissionFromCommissionsUsingPOST
+      parameters:
+      - name: commission_id
+        in: path
+        description: commission_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeleteSubscriptionPlanCommissionRequest'
+        description: deleteSubscriptionPlanCommissionRequest
+        required: true
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
   /v2/affiliates/commissionPrograms/{commission_program_id}:
+    get:
+      tags:
+      - Affiliate
+      summary: Retrieve a Commission Program
+      description: Retrieves a single Commission Program
+      operationId: getCommissionProgramUsingGET
+      parameters:
+      - name: commission_program_id
+        in: path
+        description: commission_program_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AffiliateProgramV2'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    delete:
+      tags:
+      - Affiliate
+      summary: Delete a Commission Program
+      description: Deletes a Commission Program
+      operationId: deleteAffiliateCommissionProgramUsingDELETE
+      parameters:
+      - name: commission_program_id
+        in: path
+        description: commission_program_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
     patch:
       tags:
       - Affiliate
@@ -181,6 +793,484 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AffiliateCommissionProgramResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/affiliates/redirects:
+    get:
+      tags:
+      - Affiliate
+      summary: List Affiliate Links
+      description: Retrieves a list of Affiliate Links
+      operationId: listAffiliateLinksUsingGET
+      parameters:
+      - name: filter
+        in: query
+        description: |
+          Filter to apply, allowed fields are:
+          - (String) `name`
+          - (String) `affiliate_id`
+        required: false
+        schema:
+          type: string
+      - name: order_by
+        in: query
+        description: |-
+          Attribute and direction to order items.
+          One of the following fields:
+          - `name`
+          - `date_created`
+
+          One of the following directions:
+          - `asc`
+          - `desc`
+        required: false
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: Total number of items to return per page
+        required: false
+        example: 0
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 1000
+          exclusiveMinimum: false
+          exclusiveMaximum: false
+      - name: page_token
+        in: query
+        description: Page token
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListAffiliateLinksResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    post:
+      tags:
+      - Affiliate
+      summary: Create an Affiliate Link
+      description: Creates a single Affiliate Link
+      operationId: createRedirectLinkUsingPOST
+      requestBody:
+        $ref: '#/components/requestBodies/CreateOrUpdateAffiliateLinkRequest'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AffiliateLink'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/affiliates/redirects/{redirect_id}:
+    get:
+      tags:
+      - Affiliate
+      summary: Retrieve an Affiliate Link
+      description: Retrieves information about a single Affiliate Link
+      operationId: getRedirectLinkUsingGET
+      parameters:
+      - name: redirect_id
+        in: path
+        description: redirect_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AffiliateLink'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    delete:
+      tags:
+      - Affiliate
+      summary: Delete an Affiliate Link
+      description: Deletes an Affiliate Link
+      operationId: deleteRedirectLinkUsingDELETE
+      parameters:
+      - name: redirect_id
+        in: path
+        description: redirect_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    patch:
+      tags:
+      - Affiliate
+      summary: Update an Affiliate Link
+      description: Updates an Affiliate Link
+      operationId: updateRedirectLinkUsingPATCH
+      parameters:
+      - name: redirect_id
+        in: path
+        description: redirect_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/CreateOrUpdateAffiliateLinkRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AffiliateLink'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/affiliates/summaries:
+    get:
+      tags:
+      - Affiliate
+      summary: List Affiliate Summaries
+      description: Retrieves a list of Affiliate Summaries
+      operationId: listSummariesUsingGET_1
+      parameters:
+      - name: filter
+        in: query
+        description: |
+          Filter to apply, allowed fields are:
+          - (List[String]) `affiliate_ids`
+          - (String) `since_time`
+          - (String) `until_time`
+          You will need to apply the `==` operator to check the equality of one of the filters with your searched
+           word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:
+           - `filter=since_time%3D%3D2024-09-17T-15:50+00`
+           - `filter=until_time%3D%3D2024-09-17T-15:50+00`
+           - `filter=affiliate_ids%3D%3D123,456,789`
+        required: false
+        schema:
+          type: string
+      - name: order_by
+        in: query
+        description: |-
+          Attribute and direction to order items.
+          One of the following fields:
+          - `affiliate_id`
+          - `amount_earned`
+          - `balance`
+          - `clawbacks`
+
+          One of the following directions:
+          - `asc`
+          - `desc`
+        required: false
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: Total number of items to return per page
+        required: false
+        example: 0
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 1000
+          exclusiveMinimum: false
+          exclusiveMaximum: false
+      - name: page_token
+        in: query
+        description: Page token
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListAffiliateSummariesResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/affiliates/{affiliate_id}/commissionTotal:
+    get:
+      tags:
+      - Affiliate
+      summary: Retrieve Affiliate Commission Earned and View LedgerURl for portal
+      description: Get the Affiliate Commission Earned and View LedgerURl for portal
+      operationId: getAffiliateCommissionTotalUsingGET
+      parameters:
+      - name: affiliate_id
+        in: path
+        description: affiliate_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AffiliateCommissionEarned'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/affiliates/{affiliate_id}:commissions:
+    get:
+      tags:
+      - Affiliate
+      summary: Retrieve Affiliate Commission and Clawbacks
+      description: Retrieve a list of Affiliate's Commissions and Clawbacks
+      operationId: getAffiliateCommissionsUsingGET
+      parameters:
+      - name: affiliate_id
+        in: path
+        description: affiliate_id
+        required: true
+        schema:
+          type: string
+      - name: filter
+        in: query
+        description: |
+          Filter to apply, allowed fields are:
+          - (String) `affiliateId`
+          - (String) `since_time`
+          - (String) `until_time`
+          You will need to apply the `==` operator to check the equality of one of the filters with your searched
+           word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:
+           - `filter=since_time%3D%3D2024-09-17T-15:50+00`
+           - `filter=until_time%3D%3D2024-09-17T-15:50+00`
+           - `filter=affiliateId%3D%3D123`
+        required: false
+        schema:
+          type: string
+      - name: order_by
+        in: query
+        description: |-
+          Attribute and direction to order items.
+          One of the following fields:
+          - `invoice_id`
+          - `affowed_id`
+          - `date_earned`
+
+          One of the following directions:
+          - `asc`
+          - `desc`
+        required: false
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: Total number of items to return per page
+        required: false
+        example: 0
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 1000
+          exclusiveMinimum: false
+          exclusiveMaximum: false
+      - name: page_token
+        in: query
+        description: Page token
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListAffiliateCommissionsResponse'
         '401':
           description: Unauthorized
           content:
@@ -252,6 +1342,47 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
       deprecated: false
+    delete:
+      tags:
+      - Affiliate
+      summary: Delete Affiliate
+      description: Deletes the specified Affiliate
+      operationId: deleteAffiliateUsingDELETE
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
     patch:
       tags:
       - Affiliate
@@ -292,6 +1423,92 @@ paths:
                 $ref: '#/components/schemas/Error'
         '404':
           description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/affiliates/{id}:assignToProgram:
+    post:
+      tags:
+      - Affiliate
+      summary: Assign Affiliate to Commission program
+      description: Assigns an Affiliate to Commission Program
+      operationId: addAffiliateToProgramUsingPOST
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AffiliateAddToProgramRequest'
+        description: affiliateAddToProgramRequest
+        required: true
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/affiliates/{id}:removeFromProgram:
+    post:
+      tags:
+      - Affiliate
+      summary: Remove an Affiliate from a Commission Program
+      description: Removes an Affiliate from a Commission Program
+      operationId: removeAffiliateFromProgramUsingPOST
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AffiliateRemoveFromProgramRequest'
+        description: removeFromProgramRequest
+        required: true
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
           content:
             application/json:
               schema:
@@ -447,6 +1664,59 @@ paths:
       responses:
         '204':
           description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/automationCategory/{id}:
+    patch:
+      tags:
+      - AutomationCategory
+      summary: Update automation category
+      description: Updates part of a single automation category
+      operationId: patchCategoryUsingPATCH
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchAutomationCategoryRequest'
+        description: patchAutomationCategoryRequest
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AutomationCategory'
         '401':
           description: Unauthorized
           content:
@@ -2707,6 +3977,1772 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
       deprecated: false
+  /v2/files:
+    get:
+      tags:
+      - Files
+      summary: List all files
+      description: Retrieves a list of files
+      operationId: listFilesUsingGET_1
+      parameters:
+      - name: filter
+        in: query
+        description: |
+          Filter to apply, allowed fields are:
+          - (Boolean) `is_public`
+          - (String) `contact_id`
+          - (String) `user_id`
+          - (FileBoxCategory) `category`
+          - (FileBoxType) `file_box_type`
+
+          You will need to apply the `==` operator to check the equality of one of the filters with your searched
+          word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:
+          - `filter=contact_id%3D%3D123`
+          - `filter=category%3D%3DATTACHMENTS`
+          - `filter=file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS`
+        required: false
+        schema:
+          type: string
+      - name: order_by
+        in: query
+        description: |
+          Attribute and direction to order items.
+          One of the following fields:
+          - `file_name`
+          - `updated_time`
+          - ...
+
+          One of the following directions:
+          - `asc`
+          - `desc`
+        required: false
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: Total number of items to return per page
+        required: false
+        example: 0
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 1000
+          exclusiveMinimum: false
+          exclusiveMaximum: false
+      - name: page_token
+        in: query
+        description: Page token
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListFilesResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    post:
+      tags:
+      - Files
+      summary: Create a file
+      description: Creates a file and uploads it
+      operationId: createFileUsingPOST_1
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                contact_id:
+                  description: Contact ID
+                  type: string
+                file:
+                  description: File to upload. This is a file sent as multi-part (not
+                    a string)
+                  type: string
+                file_association:
+                  description: File association
+                  type: string
+                  enum:
+                  - CONTACT
+                  - USER
+                  - COMPANY
+                file_name:
+                  description: File name
+                  type: string
+                is_public:
+                  description: Is public
+                  type: boolean
+              required:
+              - file
+              - file_association
+              - file_name
+              - is_public
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FileMetadata'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/files/{file_id}:
+    get:
+      tags:
+      - Files
+      summary: Retrieve a file
+      description: Retrieves a file
+      operationId: getFileUsingGET_1
+      parameters:
+      - name: file_id
+        in: path
+        description: file_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FileMetadata'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    post:
+      tags:
+      - Files
+      summary: Update a file
+      description: Updates a file. Note that this endpoint is using a POST method
+        instead of PATCH.
+      operationId: updateFileUsingPOST
+      parameters:
+      - name: file_id
+        in: path
+        description: file_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  description: File to upload. This is a file sent as multi-part (not
+                    a string)
+                  type: string
+                file_name:
+                  description: File name
+                  type: string
+                is_public:
+                  description: Is public
+                  type: boolean
+                update_mask:
+                  description: Update Mask
+                  type: string
+                  enum:
+                  - file
+                  - file_name
+                  - is_public
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FileMetadata'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    delete:
+      tags:
+      - Files
+      summary: Delete a file
+      description: Deletes a specified file
+      operationId: deleteFileUsingDELETE_1
+      parameters:
+      - name: file_id
+        in: path
+        description: file_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/files/{file_id}:data:
+    get:
+      tags:
+      - Files
+      summary: Retrieve a file's data
+      description: Retrieves a file's data
+      operationId: getFileDataUsingGET
+      parameters:
+      - name: file_id
+        in: path
+        description: file_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                format: byte
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/leadSourceCategories:
+    get:
+      tags:
+      - Lead Source Categories
+      summary: List Lead Source Categories
+      description: Retrieves a list of Lead Source Categories
+      operationId: listCategoriesUsingGET_1
+      parameters:
+      - name: filter
+        in: query
+        description: |-
+          Filter to apply, allowed fields are:
+
+          - (String) `name`
+
+          You will need to apply the `==` operator to check the equality of one of the filters with your searched
+          word, in the encoded form `%3D%3D`. For the filters listed above, here is an example:
+
+          - `filter=name%3D%3Dexample`
+        required: false
+        schema:
+          type: string
+      - name: order_by
+        in: query
+        description: |-
+          Attribute and direction to order items.
+          One of the following fields:
+          - `name`
+
+          One of the following directions:
+          - `asc`
+          - `desc`
+        required: false
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: Total number of items to return per page
+        required: false
+        example: 0
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 1000
+          exclusiveMinimum: false
+          exclusiveMaximum: false
+      - name: page_token
+        in: query
+        description: Page token
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListLeadSourceCategoriesResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    post:
+      tags:
+      - Lead Source Categories
+      summary: Create a Lead Source Category
+      description: Creates a new Lead Source Category
+      operationId: createLeadSourceCategoryUsingPOST
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUpdateLeadSourceCategoryRequest'
+        description: The request object to create a new lead source category
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LeadSourceCategory'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/leadSourceCategories/{lead_source_category_id}:
+    get:
+      tags:
+      - Lead Source Categories
+      summary: Retrieve a Lead Source Category
+      description: Retrieves a single Lead Source Category for a given ID
+      operationId: getLeadSourceCategoryUsingGET
+      parameters:
+      - name: lead_source_category_id
+        in: path
+        description: The ID of a lead source category
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LeadSourceCategory'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    delete:
+      tags:
+      - Lead Source Categories
+      summary: Delete a Lead Source Category
+      description: Deletes the specified Lead Source Category
+      operationId: deleteLeadSourceCategoryUsingDELETE
+      parameters:
+      - name: lead_source_category_id
+        in: path
+        description: The ID of a lead source category
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    patch:
+      tags:
+      - Lead Source Categories
+      summary: Update a Lead Source Category
+      description: Updates a Lead Source Category
+      operationId: updateLeadSourceCategoryUsingPATCH
+      parameters:
+      - name: lead_source_category_id
+        in: path
+        description: The ID of a lead source category
+        required: true
+        schema:
+          type: string
+      - name: update_mask
+        in: query
+        description: An optional list of properties to be updated. If set, only the
+          provided properties will be updated and others will be skipped.
+        required: false
+        allowEmptyValue: false
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+          enum:
+          - name
+          - description
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUpdateLeadSourceCategoryRequest'
+        description: The request object to update a lead source category
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LeadSourceCategory'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/leadSources:
+    get:
+      tags:
+      - Lead Sources
+      summary: List Lead Sources
+      description: Retrieves a list of Lead Sources
+      operationId: listLeadSourcesUsingGET
+      parameters:
+      - name: filter
+        in: query
+        description: |-
+          Filter to apply, allowed fields are:
+
+          - (String) `name`
+          - (String) `status`
+          - (String) `lead_source_category_id`
+          - (String) `vendor`
+          - (String) `medium`
+          - (String) `start_time`
+          - (String) `end_time`
+
+          You will need to apply the `==` operator to check the equality of one of the filters with your searched
+          word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:
+
+          - `filter=name%3D%3Dexample`
+          - `filter=start_time%3D%3D2024-12-22T01:00:00.000Z`
+        required: false
+        schema:
+          type: string
+      - name: order_by
+        in: query
+        description: |-
+          Attribute and direction to order items.
+          One of the following fields:
+
+          - `name`
+          - `status`
+          - `vendor`
+          - `medium`
+          - `start_time`
+          - `end_time`
+          - `create_time`
+          - `update_time`
+
+          One of the following directions:
+
+          - `asc`
+          - `desc`
+        required: false
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: Total number of items to return per page
+        required: false
+        example: 0
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 1000
+          exclusiveMinimum: false
+          exclusiveMaximum: false
+      - name: page_token
+        in: query
+        description: Page token
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListLeadSourcesResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    post:
+      tags:
+      - Lead Sources
+      summary: Create a Lead Source
+      description: Creates a new Lead Source
+      operationId: createLeadSourceUsingPOST
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateLeadSourceRequest'
+        description: The request object to create a new lead source
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LeadSource'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/leadSources/{lead_source_id}:
+    get:
+      tags:
+      - Lead Sources
+      summary: Retrieve a Lead Source
+      description: Retrieves a Lead Source by ID
+      operationId: getLeadSourceUsingGET
+      parameters:
+      - name: lead_source_id
+        in: path
+        description: The ID of a lead source
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LeadSource'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    delete:
+      tags:
+      - Lead Sources
+      summary: Delete a Lead Source
+      description: Deletes a Lead Source by ID
+      operationId: deleteLeadSourceUsingDELETE
+      parameters:
+      - name: lead_source_id
+        in: path
+        description: The ID of a lead source
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    patch:
+      tags:
+      - Lead Sources
+      summary: Update a Lead Source
+      description: Updates a Lead Source with only the values provided in the request
+      operationId: updateLeadSourceUsingPATCH
+      parameters:
+      - name: lead_source_id
+        in: path
+        description: The ID of a lead source
+        required: true
+        schema:
+          type: string
+      - name: update_mask
+        in: query
+        description: An optional list of properties to be updated. If set, only the
+          provided properties will be updated and others will be skipped.
+        required: false
+        allowEmptyValue: false
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+          enum:
+          - name
+          - description
+          - vendor
+          - medium
+          - message
+          - start_time
+          - end_time
+          - status
+          - lead_source_category_id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateLeadSourceRequest'
+        description: The request object to update a lead source
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LeadSource'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/leadSources/{lead_source_id}/expenses:
+    get:
+      tags:
+      - Lead Source Expenses
+      summary: List Lead Source Expenses
+      description: Retrieves a list of lead source expenses
+      operationId: listLeadSourceExpensesUsingGET
+      parameters:
+      - name: filter
+        in: query
+        description: |-
+          Filter to apply, allowed fields are:
+
+          - (String) `title`
+          - (Long) `amount`
+          - (String) `incurred_time`
+          - (String) `create_time`
+          - (String) `update_time`
+
+          You will need to apply the `==` operator to check the equality of one of the filters with your searched
+          word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:
+
+          - `filter=amount%3D%3D2500`
+          - `filter=incurred_time%3D%3D2024-12-22T01:00:00.000Z`
+        required: false
+        schema:
+          type: string
+      - name: lead_source_id
+        in: path
+        description: The ID of the lead source this expense belongs to
+        required: true
+        schema:
+          type: string
+      - name: order_by
+        in: query
+        description: |-
+          Attribute and direction to order items.
+          One of the following fields:
+
+          - `title`
+          - `amount`
+          - `incurred_time`
+          - `create_time`
+          - `update_time`
+
+          One of the following directions:
+          - `asc`
+          - `desc`
+        required: false
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: Total number of items to return per page
+        required: false
+        example: 0
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 1000
+          exclusiveMinimum: false
+          exclusiveMaximum: false
+      - name: page_token
+        in: query
+        description: Page token
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListLeadSourceExpensesResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    post:
+      tags:
+      - Lead Source Expenses
+      summary: Create a Lead Source Expense
+      description: Creates a new Lead Source Expense
+      operationId: createLeadSourceExpenseUsingPOST
+      parameters:
+      - name: lead_source_id
+        in: path
+        description: The ID of the lead source this expense belongs to
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateLeadSourceExpenseRequest'
+        description: The request object to create a new lead source expense
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LeadSourceExpense'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id}:
+    get:
+      tags:
+      - Lead Source Expenses
+      summary: Retrieve a Lead Source Expense
+      description: Retrieves a single Lead Source Expense for a given ID
+      operationId: getLeadSourceExpenseUsingGET
+      parameters:
+      - name: lead_source_expense_id
+        in: path
+        description: The ID of a lead source expense
+        required: true
+        schema:
+          type: string
+      - name: lead_source_id
+        in: path
+        description: The ID of the lead source this expense belongs to
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LeadSourceExpense'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    delete:
+      tags:
+      - Lead Source Expenses
+      summary: Delete a lead source expense
+      description: Deletes a lead source expense by ID
+      operationId: deleteLeadSourceUsingDELETE_1
+      parameters:
+      - name: lead_source_expense_id
+        in: path
+        description: The ID of a lead source expense
+        required: true
+        schema:
+          type: string
+      - name: lead_source_id
+        in: path
+        description: The ID of the lead source this expense belongs to
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    patch:
+      tags:
+      - Lead Source Expenses
+      summary: Update a Lead Source Expense
+      description: Updates a new Lead Source Expense
+      operationId: updateLeadSourceExpenseUsingPATCH
+      parameters:
+      - name: lead_source_expense_id
+        in: path
+        description: The ID of a lead source expense
+        required: true
+        schema:
+          type: string
+      - name: lead_source_id
+        in: path
+        description: The ID of the lead source this expense belongs to
+        required: true
+        schema:
+          type: string
+      - name: update_mask
+        in: query
+        description: An optional list of properties to be updated. If set, only the
+          provided properties will be updated and others will be skipped.
+        required: false
+        allowEmptyValue: false
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+          enum:
+          - title
+          - notes
+          - amount
+          - incurred_time
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateLeadSourceExpenseRequest'
+        description: The request object to update a lead source expense
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LeadSourceExpense'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/leadSources/{lead_source_id}/recurringExpenses:
+    get:
+      tags:
+      - Lead Source Recurring Expenses
+      summary: Retrieves a list of lead source recurring expenses
+      description: Retrieves a list of recurring expenses with lead_source_id and
+        optional 'filter' query param
+      operationId: listLeadSourceRecurringExpensesUsingGET
+      parameters:
+      - name: filter
+        in: query
+        description: |-
+          Filter to apply, allowed fields are:
+
+          - (String) `title`
+          - (Long) `amount`
+          - (String) `start_time`
+          - (String) `end_time`
+          - (String) `next_expense_time`
+          - (String) `create_time`
+          - (String) `update_time`
+
+          You will need to apply the `==` operator to check the equality of one of the filters with your searched
+          word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:
+
+          - `filter=amount%3D%3D2500`
+          - `filter=next_expense_time%3D%3D2024-12-22T01:00:00.000Z`
+        required: false
+        schema:
+          type: string
+      - name: lead_source_id
+        in: path
+        description: The ID of the lead source this recurring expense belongs to
+        required: true
+        schema:
+          type: string
+      - name: order_by
+        in: query
+        description: |-
+          Attribute and direction to order items.
+          One of the following fields:
+          - `title`
+          - `amount`
+          - `start_time`
+          - `end_time`
+          - `next_expense_time`
+          - `create_time`
+          - `update_time`
+
+          One of the following directions:
+          - `asc`
+          - `desc`
+        required: false
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: Total number of items to return per page
+        required: false
+        example: 0
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 1000
+          exclusiveMinimum: false
+          exclusiveMaximum: false
+      - name: page_token
+        in: query
+        description: Page token
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListLeadSourceRecurringExpensesResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    post:
+      tags:
+      - Lead Source Recurring Expenses
+      summary: Create a Lead Source Recurring Expense
+      description: Creates a new Lead Source Recurring Expense
+      operationId: createLeadSourceRecurringExpenseUsingPOST
+      parameters:
+      - name: lead_source_id
+        in: path
+        description: The ID of the lead source this recurring expense belongs to
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateLeadSourceRecurringExpenseRequest'
+        description: The request object to create a new lead source recurring expense
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LeadSourceRecurringExpense'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id}:
+    get:
+      tags:
+      - Lead Source Recurring Expenses
+      summary: Retrieve a Lead Source Recurring Expense
+      description: Retrieves a Lead Source Recurring Expense using leadSourceId and
+        leadSourceRecurringExpenseId
+      operationId: getLeadSourceRecurringExpenseUsingGET
+      parameters:
+      - name: lead_source_id
+        in: path
+        description: The ID of the lead source this recurring expense belongs to
+        required: true
+        schema:
+          type: string
+      - name: lead_source_recurring_expense_id
+        in: path
+        description: The ID of a lead source recurring expense
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LeadSourceRecurringExpense'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    delete:
+      tags:
+      - Lead Source Recurring Expenses
+      summary: Delete a Lead Source Recurring Expense
+      description: Deletes a new Lead Source Recurring Expense that belongs to a Lead
+        Source
+      operationId: deleteLeadSourceRecurringExpenseUsingDELETE
+      parameters:
+      - name: lead_source_id
+        in: path
+        description: The ID of the lead source this recurring expense belongs to
+        required: true
+        schema:
+          type: string
+      - name: lead_source_recurring_expense_id
+        in: path
+        description: The ID of a lead source recurring expense
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    patch:
+      tags:
+      - Lead Source Recurring Expenses
+      summary: Update a Lead Source Recurring Expense
+      description: Updates a Lead Source Recurring Expense
+      operationId: updateLeadSourceRecurringExpenseUsingPATCH
+      parameters:
+      - name: lead_source_id
+        in: path
+        description: The ID of the lead source this recurring expense belongs to
+        required: true
+        schema:
+          type: string
+      - name: lead_source_recurring_expense_id
+        in: path
+        description: The ID of a lead source recurring expense
+        required: true
+        schema:
+          type: string
+      - name: update_mask
+        in: query
+        description: An optional list of properties to be updated. If set, only the
+          provided properties will be updated and others will be skipped.
+        required: false
+        allowEmptyValue: false
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+          enum:
+          - title
+          - notes
+          - amount
+          - start_time
+          - end_time
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LeadSourceRecurringExpenseUpdateRequest'
+        description: The request object to update a lead source recurring expense
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LeadSourceRecurringExpense'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id}/expenses:
+    get:
+      tags:
+      - Lead Source Recurring Expenses
+      summary: Retrieves a list of expenses incurred from a recurring expense
+      description: Retrieves a list of expenses incurred from a recurring expense
+      operationId: listExpensesIncurredFromLeadSourceRecurringExpenseUsingGET
+      parameters:
+      - name: filter
+        in: query
+        description: |-
+          Filter to apply, allowed fields are:
+
+          - (String) `title`
+          - (Long) `amount`
+          - (String) `incurred_time`
+          - (String) `create_time`
+          - (String) `update_time`
+
+          You will need to apply the `==` operator to check the equality of one of the filters with your searched
+          word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:
+
+          - `filter=amount%3D%3D2500`
+          - `filter=incurred_time%3D%3D2024-12-22T01:00:00.000Z`
+        required: false
+        schema:
+          type: string
+      - name: lead_source_id
+        in: path
+        description: The ID of the lead source this recurring expense belongs to
+        required: true
+        schema:
+          type: string
+      - name: lead_source_recurring_expense_id
+        in: path
+        description: The ID of a lead source recurring expense
+        required: true
+        schema:
+          type: string
+      - name: order_by
+        in: query
+        description: |-
+          Attribute and direction to order items.
+          One of the following fields:
+
+          - `title`
+          - `amount`
+          - `incurred_time`
+          - `create_time`
+          - `update_time`
+
+          One of the following directions:
+          - `asc`
+          - `desc`
+        required: false
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: Total number of items to return per page
+        required: false
+        example: 0
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 1000
+          exclusiveMinimum: false
+          exclusiveMaximum: false
+      - name: page_token
+        in: query
+        description: Page token
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListLeadSourceExpensesResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
   /v2/paymentMethodConfigs:
     post:
       tags:
@@ -3618,6 +6654,186 @@ paths:
                 $ref: '#/components/schemas/Error'
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/subscriptions/model:
+    get:
+      tags:
+      - Subscriptions
+      summary: Retrieve Subscription Custom Field Model
+      description: Get the custom fields for the Subscription object
+      operationId: retrieveSubscriptionCustomFieldModelUsingGET
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectModel'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/subscriptions/model/customFields:
+    post:
+      tags:
+      - Subscriptions
+      summary: Create a Subscription Custom Field
+      description: Creates a custom field of the specified type and options to the
+        Subscription object
+      operationId: createSubscriptionCustomFieldUsingPOST
+      requestBody:
+        $ref: '#/components/requestBodies/CreateCustomFieldRequest'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldMetaData'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/subscriptions/model/customFields/{custom_field_id}:
+    delete:
+      tags:
+      - Subscriptions
+      summary: Delete a Subscription Custom Field
+      description: Deletes a custom field from the Subscription object
+      operationId: deleteSubscriptionCustomFieldUsingDELETE
+      parameters:
+      - name: custom_field_id
+        in: path
+        description: custom_field_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    patch:
+      tags:
+      - Subscriptions
+      summary: Update a Subscription Custom Field
+      description: Updates a custom field of the specified type and options to the
+        Subscription object
+      operationId: updateSubscriptionCustomFieldUsingPATCH
+      parameters:
+      - name: custom_field_id
+        in: path
+        description: custom_field_id
+        required: true
+        schema:
+          type: string
+      - name: update_mask
+        in: query
+        description: An optional list of properties to be updated. If set, only the
+          provided properties will be updated and others will be skipped.
+        required: false
+        allowEmptyValue: false
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+          enum:
+          - group_id
+          - label
+          - options
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateCustomFieldMetaDataRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldMetaData'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
           content:
             application/json:
               schema:
@@ -5042,6 +8258,8 @@ components:
           type: string
         locked:
           type: boolean
+        publication_date:
+          type: string
         published_by:
           type: string
         published_date:
@@ -5184,6 +8402,8 @@ components:
         locked:
           type: boolean
         name:
+          type: string
+        publication_date:
           type: string
         published_date:
           type: string
@@ -6727,6 +9947,12 @@ components:
           items:
             type: string
       title: DeleteFunnelIntegrationRequest
+    DeleteProgramCommissionRequest:
+      type: object
+      properties:
+        product_id:
+          type: string
+      title: DeleteProgramCommissionRequest
     DeleteSubscriptionPlanCommissionRequest:
       type: object
       properties:
@@ -8580,6 +11806,12 @@ components:
         ip_address:
           type: string
       title: OriginRequest
+    PatchAutomationCategoryRequest:
+      type: object
+      properties:
+        name:
+          type: string
+      title: PatchAutomationCategoryRequest
     PaymentMethod:
       type: object
       properties:

@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **id** | **string** |  | [optional]
 **locked** | **bool** |  | [optional]
 **name** | **string** |  | [optional]
+**publication_date** | **string** |  | [optional]
 **published_date** | **\DateTime** |  | [optional]
 **published_status** | **bool** |  | [optional]
 **published_time_zone** | **string** |  | [optional]

@@ -13,6 +13,7 @@
 |**errorMessage** | **String** |  |  [optional] |
 |**id** | **String** |  |  [optional] |
 |**locked** | **Boolean** |  |  [optional] |
+|**publicationDate** | **String** |  |  [optional] |
 |**publishedBy** | **String** |  |  [optional] |
 |**publishedDate** | **ZonedDateTime** |  |  [optional] |
 |**publishedTimezone** | **String** |  |  [optional] |

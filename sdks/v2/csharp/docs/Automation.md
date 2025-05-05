@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **ErrorMessage** | **string** |  | [optional] 
 **Id** | **string** |  | [optional] 
 **Locked** | **bool** |  | [optional] 
+**PublicationDate** | **string** |  | [optional] 
 **PublishedBy** | **string** |  | [optional] 
 **PublishedDate** | **DateTime** |  | [optional] 
 **PublishedTimezone** | **string** |  | [optional] 

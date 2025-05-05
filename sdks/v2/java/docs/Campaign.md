@@ -16,6 +16,7 @@
 |**id** | **String** |  |  [optional] |
 |**locked** | **Boolean** |  |  [optional] |
 |**name** | **String** |  |  [optional] |
+|**publicationDate** | **String** |  |  [optional] |
 |**publishedDate** | **ZonedDateTime** |  |  [optional] |
 |**publishedStatus** | **Boolean** |  |  [optional] |
 |**publishedTimeZone** | **String** |  |  [optional] |
