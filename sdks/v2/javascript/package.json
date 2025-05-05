@@ -1,6 +1,6 @@
 {
     "name": "keap-core-service-v2-sdk-js",
-    "version": "0.0.54",
+    "version": "1.0.1",
     "description": "Keap REST Core Service",
     "license": "Apache 2.0",
     "main": "dist/keap.core.v2/index.js",
