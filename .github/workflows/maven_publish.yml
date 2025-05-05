@@ -67,7 +67,7 @@ jobs:
               --armor --output "$file.asc" --detach-sign "$file"
           done
 
-          echo "Signing POM file in $HOME/.m2/repository/com/keap/core/keap-sdk-core-v2/$VERSION ..."
+          echo "Signing POM file in sdks/v2/java/build/libs/keap-sdk-core-v2-*.jar ..."
           for file in sdks/v2/java/build/libs/keap-sdk-core-v2-*.jar; do
             if [[ "$file" != *-javadoc.jar && "$file" != *-sources.jar ]]; then
               VERSION=$(basename "$file" | sed 's/keap-sdk-core-v2-//; s/.jar//')
@@ -183,7 +183,7 @@ jobs:
                 echo "❌ Deployment failed to publish."
                 exit 1
               fi
-              sleep 15
+              sleep 30
             done
           fi
       
