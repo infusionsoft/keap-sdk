@@ -2,7 +2,7 @@
 
 Keap REST API
 
-- API version: 2.70.0.803777-hf-202504281900
+- API version: 2.70.0.804890
 
 - Generator version: 7.13.0
 
@@ -43,7 +43,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.keap.core</groupId>
   <artifactId>core-service-v2-java-sdk</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.2</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.keap.core:core-service-v2-java-sdk:1.0.1"
+compile "com.keap.core:core-service-v2-java-sdk:1.0.2"
 ```
 
 ### Others
@@ -66,7 +66,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/core-service-v2-java-sdk-1.0.1.jar`
+- `target/core-service-v2-java-sdk-1.0.2.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -308,6 +308,14 @@ Class | Method | HTTP request | Description
 *NoteApi* | [**listNotesUsingGET1WithHttpInfo**](docs/NoteApi.md#listNotesUsingGET1WithHttpInfo) | **GET** /v2/contacts/{contact_id}/notes | List Notes
 *NoteApi* | [**updateNoteUsingPATCH**](docs/NoteApi.md#updateNoteUsingPATCH) | **PATCH** /v2/contacts/{contact_id}/notes/{note_id} | Update a Note
 *NoteApi* | [**updateNoteUsingPATCHWithHttpInfo**](docs/NoteApi.md#updateNoteUsingPATCHWithHttpInfo) | **PATCH** /v2/contacts/{contact_id}/notes/{note_id} | Update a Note
+*OrdersApi* | [**createOrderCustomFieldUsingPOST**](docs/OrdersApi.md#createOrderCustomFieldUsingPOST) | **POST** /v2/orders/model/customFields | Create an Order Custom Field
+*OrdersApi* | [**createOrderCustomFieldUsingPOSTWithHttpInfo**](docs/OrdersApi.md#createOrderCustomFieldUsingPOSTWithHttpInfo) | **POST** /v2/orders/model/customFields | Create an Order Custom Field
+*OrdersApi* | [**deleteOrderCustomFieldUsingDELETE**](docs/OrdersApi.md#deleteOrderCustomFieldUsingDELETE) | **DELETE** /v2/orders/model/customFields/{custom_field_id} | Delete an Order Custom Field
+*OrdersApi* | [**deleteOrderCustomFieldUsingDELETEWithHttpInfo**](docs/OrdersApi.md#deleteOrderCustomFieldUsingDELETEWithHttpInfo) | **DELETE** /v2/orders/model/customFields/{custom_field_id} | Delete an Order Custom Field
+*OrdersApi* | [**retrieveOrderCustomFieldModelUsingGET**](docs/OrdersApi.md#retrieveOrderCustomFieldModelUsingGET) | **GET** /v2/orders/model | Retrieve Order Custom Field Model
+*OrdersApi* | [**retrieveOrderCustomFieldModelUsingGETWithHttpInfo**](docs/OrdersApi.md#retrieveOrderCustomFieldModelUsingGETWithHttpInfo) | **GET** /v2/orders/model | Retrieve Order Custom Field Model
+*OrdersApi* | [**updateOrderCustomFieldUsingPATCH**](docs/OrdersApi.md#updateOrderCustomFieldUsingPATCH) | **PATCH** /v2/orders/model/customFields/{custom_field_id} | Update an Order Custom Field
+*OrdersApi* | [**updateOrderCustomFieldUsingPATCHWithHttpInfo**](docs/OrdersApi.md#updateOrderCustomFieldUsingPATCHWithHttpInfo) | **PATCH** /v2/orders/model/customFields/{custom_field_id} | Update an Order Custom Field
 *PaymentMethodConfigsApi* | [**createPaymentMethodConfigUsingPOST**](docs/PaymentMethodConfigsApi.md#createPaymentMethodConfigUsingPOST) | **POST** /v2/paymentMethodConfigs | Create Payment Method Configuration
 *PaymentMethodConfigsApi* | [**createPaymentMethodConfigUsingPOSTWithHttpInfo**](docs/PaymentMethodConfigsApi.md#createPaymentMethodConfigUsingPOSTWithHttpInfo) | **POST** /v2/paymentMethodConfigs | Create Payment Method Configuration
 *ProductInterestBundlesApi* | [**addProductInterestUsingPOST**](docs/ProductInterestBundlesApi.md#addProductInterestUsingPOST) | **POST** /v2/productInterestBundles/{id}/interests | Create a Product Interest in an existing Bundle

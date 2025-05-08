@@ -4114,6 +4114,135 @@ export class ObjectNoteApi {
 
 }
 
+import { ObservableOrdersApi } from "./ObservableAPI";
+import { OrdersApiRequestFactory, OrdersApiResponseProcessor} from "../apis/OrdersApi";
+
+export interface OrdersApiCreateOrderCustomFieldUsingPOSTRequest {
+    /**
+     * customField
+     * @type CreateCustomFieldRequest
+     * @memberof OrdersApicreateOrderCustomFieldUsingPOST
+     */
+    createCustomFieldRequest: CreateCustomFieldRequest
+}
+
+export interface OrdersApiDeleteOrderCustomFieldUsingDELETERequest {
+    /**
+     * custom_field_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof OrdersApideleteOrderCustomFieldUsingDELETE
+     */
+    customFieldId: string
+}
+
+export interface OrdersApiRetrieveOrderCustomFieldModelUsingGETRequest {
+}
+
+export interface OrdersApiUpdateOrderCustomFieldUsingPATCHRequest {
+    /**
+     * custom_field_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof OrdersApiupdateOrderCustomFieldUsingPATCH
+     */
+    customFieldId: string
+    /**
+     * request
+     * @type UpdateCustomFieldMetaDataRequest
+     * @memberof OrdersApiupdateOrderCustomFieldUsingPATCH
+     */
+    updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest
+    /**
+     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * Defaults to: undefined
+     * @type Array&lt;string&gt;
+     * @memberof OrdersApiupdateOrderCustomFieldUsingPATCH
+     */
+    updateMask?: Array<string>
+}
+
+export class ObjectOrdersApi {
+    private api: ObservableOrdersApi
+
+    public constructor(configuration: Configuration, requestFactory?: OrdersApiRequestFactory, responseProcessor?: OrdersApiResponseProcessor) {
+        this.api = new ObservableOrdersApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Creates a custom field of the specified type and options to the Order object
+     * Create an Order Custom Field
+     * @param param the request object
+     */
+    public createOrderCustomFieldUsingPOSTWithHttpInfo(param: OrdersApiCreateOrderCustomFieldUsingPOSTRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
+        return this.api.createOrderCustomFieldUsingPOSTWithHttpInfo(param.createCustomFieldRequest,  options).toPromise();
+    }
+
+    /**
+     * Creates a custom field of the specified type and options to the Order object
+     * Create an Order Custom Field
+     * @param param the request object
+     */
+    public createOrderCustomFieldUsingPOST(param: OrdersApiCreateOrderCustomFieldUsingPOSTRequest, options?: ConfigurationOptions): Promise<CustomFieldMetaData> {
+        return this.api.createOrderCustomFieldUsingPOST(param.createCustomFieldRequest,  options).toPromise();
+    }
+
+    /**
+     * Deletes a Custom Field from the Order object
+     * Delete an Order Custom Field
+     * @param param the request object
+     */
+    public deleteOrderCustomFieldUsingDELETEWithHttpInfo(param: OrdersApiDeleteOrderCustomFieldUsingDELETERequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteOrderCustomFieldUsingDELETEWithHttpInfo(param.customFieldId,  options).toPromise();
+    }
+
+    /**
+     * Deletes a Custom Field from the Order object
+     * Delete an Order Custom Field
+     * @param param the request object
+     */
+    public deleteOrderCustomFieldUsingDELETE(param: OrdersApiDeleteOrderCustomFieldUsingDELETERequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteOrderCustomFieldUsingDELETE(param.customFieldId,  options).toPromise();
+    }
+
+    /**
+     * Gets the custom fields for the Order object
+     * Retrieve Order Custom Field Model
+     * @param param the request object
+     */
+    public retrieveOrderCustomFieldModelUsingGETWithHttpInfo(param: OrdersApiRetrieveOrderCustomFieldModelUsingGETRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ObjectModel>> {
+        return this.api.retrieveOrderCustomFieldModelUsingGETWithHttpInfo( options).toPromise();
+    }
+
+    /**
+     * Gets the custom fields for the Order object
+     * Retrieve Order Custom Field Model
+     * @param param the request object
+     */
+    public retrieveOrderCustomFieldModelUsingGET(param: OrdersApiRetrieveOrderCustomFieldModelUsingGETRequest = {}, options?: ConfigurationOptions): Promise<ObjectModel> {
+        return this.api.retrieveOrderCustomFieldModelUsingGET( options).toPromise();
+    }
+
+    /**
+     * Updates a custom field of the specified type and options to the Order object
+     * Update an Order Custom Field
+     * @param param the request object
+     */
+    public updateOrderCustomFieldUsingPATCHWithHttpInfo(param: OrdersApiUpdateOrderCustomFieldUsingPATCHRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
+        return this.api.updateOrderCustomFieldUsingPATCHWithHttpInfo(param.customFieldId, param.updateCustomFieldMetaDataRequest, param.updateMask,  options).toPromise();
+    }
+
+    /**
+     * Updates a custom field of the specified type and options to the Order object
+     * Update an Order Custom Field
+     * @param param the request object
+     */
+    public updateOrderCustomFieldUsingPATCH(param: OrdersApiUpdateOrderCustomFieldUsingPATCHRequest, options?: ConfigurationOptions): Promise<CustomFieldMetaData> {
+        return this.api.updateOrderCustomFieldUsingPATCH(param.customFieldId, param.updateCustomFieldMetaDataRequest, param.updateMask,  options).toPromise();
+    }
+
+}
+
 import { ObservablePaymentMethodConfigsApi } from "./ObservableAPI";
 import { PaymentMethodConfigsApiRequestFactory, PaymentMethodConfigsApiResponseProcessor} from "../apis/PaymentMethodConfigsApi";
 

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **apply_to_commissions** | **bool** |  | 
 **criteria** | [**List[DiscountCriteria]**](DiscountCriteria.md) |  | [optional] 
 **description** | **str** |  | [optional] 
-**discount_percent** | **float** |  | 
+**discount_percent** | **float** | The discount percent. Must be greater than or equal to 0. | 
 **name** | **str** |  | 
 **product_category_ids** | **List[str]** |  | 
 

@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   description: Keap REST Core Service
-  version: 2.70.0.803777-hf-202504281900
+  version: 2.70.0.804890
   title: Keap REST API
   termsOfService: https://keap.com/legal
   contact:
@@ -5743,6 +5743,186 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
       deprecated: false
+  /v2/orders/model:
+    get:
+      tags:
+      - Orders
+      summary: Retrieve Order Custom Field Model
+      description: Gets the custom fields for the Order object
+      operationId: retrieveOrderCustomFieldModelUsingGET
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectModel'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/orders/model/customFields:
+    post:
+      tags:
+      - Orders
+      summary: Create an Order Custom Field
+      description: Creates a custom field of the specified type and options to the
+        Order object
+      operationId: createOrderCustomFieldUsingPOST
+      requestBody:
+        $ref: '#/components/requestBodies/CreateCustomFieldRequest'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldMetaData'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/orders/model/customFields/{custom_field_id}:
+    delete:
+      tags:
+      - Orders
+      summary: Delete an Order Custom Field
+      description: Deletes a Custom Field from the Order object
+      operationId: deleteOrderCustomFieldUsingDELETE
+      parameters:
+      - name: custom_field_id
+        in: path
+        description: custom_field_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    patch:
+      tags:
+      - Orders
+      summary: Update an Order Custom Field
+      description: Updates a custom field of the specified type and options to the
+        Order object
+      operationId: updateOrderCustomFieldUsingPATCH
+      parameters:
+      - name: custom_field_id
+        in: path
+        description: custom_field_id
+        required: true
+        schema:
+          type: string
+      - name: update_mask
+        in: query
+        description: An optional list of properties to be updated. If set, only the
+          provided properties will be updated and others will be skipped.
+        required: false
+        allowEmptyValue: false
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+          enum:
+          - group_id
+          - label
+          - options
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateCustomFieldMetaDataRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldMetaData'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
   /v2/paymentMethodConfigs:
     post:
       tags:
@@ -7659,13 +7839,6 @@ components:
             $ref: '#/components/schemas/CreateOrUpdateAffiliateLinkRequest'
       description: request
       required: true
-    UpdateEmailAddress:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateEmailAddress'
-      description: updateEmailAddress
-      required: true
     ApplyRemoveTagRequest:
       content:
         application/json:
@@ -8751,6 +8924,7 @@ components:
         discount_percent:
           type: number
           format: double
+          description: The discount percent. Must be greater than or equal to 0.
         name:
           type: string
         product_category_ids:
@@ -9535,12 +9709,13 @@ components:
         frequency:
           type: integer
           format: int32
-          description: The frequency of the subscription plan.
+          description: The frequency of the subscription plan. Must be greater than
+            0. Default is 1.
         plan_price:
           type: number
           format: double
           description: The price of the subscription plan in the smallest currency
-            unit.
+            unit. Must be greater than or equal to 0.
         total_cycles:
           type: integer
           format: int32
@@ -13339,6 +13514,7 @@ components:
         discount_percent:
           type: number
           format: double
+          description: The discount percent. Must be greater than or equal to 0.
         name:
           type: string
         product_category_ids:
@@ -13863,16 +14039,17 @@ components:
         frequency:
           type: integer
           format: int32
-          description: The frequency of the subscription plan.
+          description: The frequency of the subscription plan. Must be greater than
+            0.
         plan_price:
           type: number
           format: double
           description: The price of the subscription plan in the smallest currency
-            unit.
+            unit. Must be greater than or equal to 0.
         total_cycles:
           type: integer
           format: int32
-          description: How many cycles the subscription plan will have.  0 means infinite.
+          description: How many cycles the subscription plan will have. 0 means infinite.
       title: UpdateSubscriptionPlanRequest
     UpdateSubscriptionRequest:
       type: object

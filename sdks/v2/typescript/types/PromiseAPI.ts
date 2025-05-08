@@ -3025,6 +3025,115 @@ export class PromiseNoteApi {
 
 
 
+import { ObservableOrdersApi } from './ObservableAPI';
+
+import { OrdersApiRequestFactory, OrdersApiResponseProcessor} from "../apis/OrdersApi";
+export class PromiseOrdersApi {
+    private api: ObservableOrdersApi
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: OrdersApiRequestFactory,
+        responseProcessor?: OrdersApiResponseProcessor
+    ) {
+        this.api = new ObservableOrdersApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Creates a custom field of the specified type and options to the Order object
+     * Create an Order Custom Field
+     * @param createCustomFieldRequest customField
+     */
+    public createOrderCustomFieldUsingPOSTWithHttpInfo(createCustomFieldRequest: CreateCustomFieldRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createOrderCustomFieldUsingPOSTWithHttpInfo(createCustomFieldRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a custom field of the specified type and options to the Order object
+     * Create an Order Custom Field
+     * @param createCustomFieldRequest customField
+     */
+    public createOrderCustomFieldUsingPOST(createCustomFieldRequest: CreateCustomFieldRequest, _options?: PromiseConfigurationOptions): Promise<CustomFieldMetaData> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createOrderCustomFieldUsingPOST(createCustomFieldRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a Custom Field from the Order object
+     * Delete an Order Custom Field
+     * @param customFieldId custom_field_id
+     */
+    public deleteOrderCustomFieldUsingDELETEWithHttpInfo(customFieldId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteOrderCustomFieldUsingDELETEWithHttpInfo(customFieldId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a Custom Field from the Order object
+     * Delete an Order Custom Field
+     * @param customFieldId custom_field_id
+     */
+    public deleteOrderCustomFieldUsingDELETE(customFieldId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteOrderCustomFieldUsingDELETE(customFieldId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Gets the custom fields for the Order object
+     * Retrieve Order Custom Field Model
+     */
+    public retrieveOrderCustomFieldModelUsingGETWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<ObjectModel>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.retrieveOrderCustomFieldModelUsingGETWithHttpInfo(observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Gets the custom fields for the Order object
+     * Retrieve Order Custom Field Model
+     */
+    public retrieveOrderCustomFieldModelUsingGET(_options?: PromiseConfigurationOptions): Promise<ObjectModel> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.retrieveOrderCustomFieldModelUsingGET(observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates a custom field of the specified type and options to the Order object
+     * Update an Order Custom Field
+     * @param customFieldId custom_field_id
+     * @param updateCustomFieldMetaDataRequest request
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateOrderCustomFieldUsingPATCHWithHttpInfo(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Array<string>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateOrderCustomFieldUsingPATCHWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates a custom field of the specified type and options to the Order object
+     * Update an Order Custom Field
+     * @param customFieldId custom_field_id
+     * @param updateCustomFieldMetaDataRequest request
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateOrderCustomFieldUsingPATCH(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Array<string>, _options?: PromiseConfigurationOptions): Promise<CustomFieldMetaData> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateOrderCustomFieldUsingPATCH(customFieldId, updateCustomFieldMetaDataRequest, updateMask, observableOptions);
+        return result.toPromise();
+    }
+
+
+}
+
+
+
 import { ObservablePaymentMethodConfigsApi } from './ObservableAPI';
 
 import { PaymentMethodConfigsApiRequestFactory, PaymentMethodConfigsApiResponseProcessor} from "../apis/PaymentMethodConfigsApi";

@@ -9,8 +9,8 @@ Name | Type | Description | Notes
 **allow_prorating** | **bool** | Allow prorating of the subscription plan. | [optional] 
 **cycle_type** | **str** | The cycle type of the subscription plan. | 
 **display_order_index** | **int** | The order that this plan will be displayed to the user. | [optional] 
-**frequency** | **int** | The frequency of the subscription plan. | [optional] 
-**plan_price** | **float** | The price of the subscription plan in the smallest currency unit. | 
+**frequency** | **int** | The frequency of the subscription plan. Must be greater than 0. Default is 1. | [optional] 
+**plan_price** | **float** | The price of the subscription plan in the smallest currency unit. Must be greater than or equal to 0. | 
 **total_cycles** | **int** | How many cycles the subscription plan will have.  0 means infinite. | [optional] 
 
 ## Example

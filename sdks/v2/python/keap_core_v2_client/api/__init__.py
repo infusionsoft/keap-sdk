@@ -15,6 +15,7 @@ from keap_core_v2_client.api.lead_source_expenses_api import LeadSourceExpensesA
 from keap_core_v2_client.api.lead_source_recurring_expenses_api import LeadSourceRecurringExpensesApi
 from keap_core_v2_client.api.lead_sources_api import LeadSourcesApi
 from keap_core_v2_client.api.note_api import NoteApi
+from keap_core_v2_client.api.orders_api import OrdersApi
 from keap_core_v2_client.api.payment_method_configs_api import PaymentMethodConfigsApi
 from keap_core_v2_client.api.product_interest_bundles_api import ProductInterestBundlesApi
 from keap_core_v2_client.api.reporting_api import ReportingApi

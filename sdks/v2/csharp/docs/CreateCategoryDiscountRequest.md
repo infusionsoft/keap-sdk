@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **ApplyToCommissions** | **bool** |  | 
 **Criteria** | [**List&lt;DiscountCriteria&gt;**](DiscountCriteria.md) |  | [optional] 
 **Description** | **string** |  | [optional] 
-**DiscountPercent** | **double** |  | 
+**DiscountPercent** | **double** | The discount percent. Must be greater than or equal to 0. | 
 **Name** | **string** |  | 
 **ProductCategoryIds** | **List&lt;string&gt;** |  | 
 
