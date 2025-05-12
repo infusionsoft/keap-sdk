@@ -1,12 +1,8 @@
 name: Deploy PHP SDK to keap-sdk-php
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'sdks/v2/php/**'
-  workflow_dispatch:
+  release:
+    types: [published]
 
 jobs:
   deploy:
