@@ -1,0 +1,31 @@
+name: Deploy PHP SDK to keap-sdk-php
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'sdks/v2/php/**'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source repo
+        uses: actions/checkout@v4
+
+      - name: Copy PHP SDK to temp dir
+        run: |
+          mkdir php-sdk
+          cp -r sdks/v2/php/* php-sdk/
+
+      - name: Push to keap-sdk-php repo
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.PHP_SDK_DEPLOY_TOKEN }}
+          publish_dir: ./php-sdk
+          external_repository: infusionsoft/keap-sdk-php
+          publish_branch: main
+          force_orphan: true
