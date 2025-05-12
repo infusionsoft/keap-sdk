@@ -19,7 +19,7 @@ jobs:
       - name: Push to keap-sdk-php repo
         uses: peaceiris/actions-gh-pages@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          personal_token: ${{ secrets.PHP_SDK_DEPLOY_TOKEN }}
           publish_dir: ./sdks/v2/php
           external_repository: infusionsoft/keap-sdk-php
           publish_branch: main
