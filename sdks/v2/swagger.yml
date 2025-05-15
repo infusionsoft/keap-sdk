@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   description: Keap REST Core Service
-  version: 2.70.0.804890
+  version: 2.70.0.807403
   title: Keap REST API
   termsOfService: https://keap.com/legal
   contact:
@@ -5743,6 +5743,883 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
       deprecated: false
+  /v2/notes/model:
+    get:
+      tags:
+      - Note
+      summary: Retrieve Note Model
+      description: 'Gets the custom fields for the Note object<br/>Note: Custom Fields
+        for Tasks, Classic Appointments and Notes are combined.'
+      operationId: retrieveNoteModelUsingGET_1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectModel'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/notes/model/customFields:
+    post:
+      tags:
+      - Note
+      summary: Create a Custom Field
+      description: 'Creates a custom field of the specified type and options to the
+        Note object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes
+        are combined.'
+      operationId: createNoteCustomFieldUsingPOST_1
+      requestBody:
+        $ref: '#/components/requestBodies/CreateCustomFieldRequest'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldMetaData'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/notes/model/customFields/{custom_field_id}:
+    patch:
+      tags:
+      - Note
+      summary: Update a Custom Field
+      description: 'Updates a custom field of the specified type and options to the
+        Note object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes
+        are combined.'
+      operationId: updateNotesCustomFieldUsingPATCH
+      parameters:
+      - name: custom_field_id
+        in: path
+        description: custom_field_id
+        required: true
+        schema:
+          type: string
+      - name: update_mask
+        in: query
+        description: An optional list of properties to be updated. If set, only the
+          provided properties will be updated and others will be skipped.
+        required: false
+        allowEmptyValue: false
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+          enum:
+          - group_id
+          - label
+          - options
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateCustomFieldMetaDataRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldMetaData'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/notes/templates:
+    get:
+      tags:
+      - Note
+      summary: Retrieve Note Templates
+      description: Retrieves a list of Note Templates
+      operationId: listNoteTemplatesUsingGET
+      parameters:
+      - name: filter
+        in: query
+        description: Search filter to apply to results
+        required: false
+        schema:
+          type: string
+      - name: order_by
+        in: query
+        description: Attribute and direction to order items by. E.g. `given_name desc`
+        required: false
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: Total number of items to return per page
+        required: false
+        example: 0
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 1000
+          exclusiveMinimum: false
+          exclusiveMaximum: false
+      - name: page_token
+        in: query
+        description: Page token
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListNoteTemplateResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/opportunities:
+    get:
+      tags:
+      - Opportunity
+      summary: List Opportunities
+      description: Retrieves a list of all Opportunities.
+      operationId: listOpportunitiesUsingGET_1
+      parameters:
+      - name: fields
+        in: query
+        description: fields
+        required: false
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: filter
+        in: query
+        description: |
+          Filter to apply, allowed fields are:
+          - (String) `stage_id`
+          - (String) `user_id`
+        required: false
+        schema:
+          type: string
+      - name: order_by
+        in: query
+        description: |-
+          Attribute and direction to opportunities items.
+          One of the following fields:
+          - `next_action_time`
+          - `contact_name`
+          - `opportunity_name`
+          - `created_time`
+
+          One of the following directions:
+          - `asc`
+          - `desc`
+        required: false
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: Total number of items to return per page
+        required: false
+        example: 0
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 1000
+          exclusiveMinimum: false
+          exclusiveMaximum: false
+      - name: page_token
+        in: query
+        description: Page token
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListOpportunitiesResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    post:
+      tags:
+      - Opportunity
+      summary: Create an Opportunity
+      description: Creates a new opportunity as the authenticated user.
+      operationId: createOpportunityUsingPOST_1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOpportunityRequest'
+        description: opportunity
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestV2Opportunity'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/opportunities/model/customFields:
+    post:
+      tags:
+      - Opportunity
+      summary: Create an Opportunity Custom Field
+      description: Creates a custom field of the specified type and options to the
+        Opportunity object
+      operationId: createOpportunityCustomFieldsUsingPOST
+      requestBody:
+        $ref: '#/components/requestBodies/CreateCustomFieldRequest'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldMetaData'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/opportunities/model/customFields/{custom_field_id}:
+    patch:
+      tags:
+      - Opportunity
+      summary: Update a Opportunity's Custom Field
+      description: Updates a custom field of the specified type and options to the
+        Opportunity object.
+      operationId: updateOpportunityCustomFieldUsingPATCH
+      parameters:
+      - name: custom_field_id
+        in: path
+        description: custom_field_id
+        required: true
+        schema:
+          type: string
+      - name: update_mask
+        in: query
+        description: An optional list of properties to be updated. If set, only the
+          provided properties will be updated and others will be skipped.
+        required: false
+        allowEmptyValue: false
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+          enum:
+          - group_id
+          - label
+          - options
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateCustomFieldMetaDataRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldMetaData'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/opportunities/stages:
+    get:
+      tags:
+      - Opportunity
+      summary: List of Opportunity Stages
+      description: Retrieves a list of Opportunity Stages.
+      operationId: listOpportunityStagesUsingGET
+      parameters:
+      - name: filter
+        in: query
+        description: Search filter to apply to results
+        required: false
+        schema:
+          type: string
+      - name: order_by
+        in: query
+        description: |-
+          Attribute and direction to order stage items.
+          One of the following fields:
+          - `stage_order`
+
+          One of the following directions:
+          - `asc`
+          - `desc`
+        required: false
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: Total number of items to return per page
+        required: false
+        example: 0
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 1000
+          exclusiveMinimum: false
+          exclusiveMaximum: false
+      - name: page_token
+        in: query
+        description: Page token
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListOpportunityStagesResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    post:
+      tags:
+      - Opportunity
+      summary: Create an Opportunity Stage
+      description: Creates a new Opportunity Stage
+      operationId: createOpportunityStageUsingPOST
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOpportunityStageRequest'
+        description: opportunity
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestOpportunityStage'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/opportunities/stages/{stage_id}:
+    get:
+      tags:
+      - Opportunity
+      summary: Retrieve an Opportunity Stage
+      description: Retrieves the specified Opportunity Stage
+      operationId: getOpportunityStageUsingGET
+      parameters:
+      - name: stage_id
+        in: path
+        description: stage_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestOpportunityStage'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    delete:
+      tags:
+      - Opportunity
+      summary: Delete an Opportunity Stage
+      description: Deletes the specified Opportunity Stage
+      operationId: deleteOpportunityStageUsingDELETE
+      parameters:
+      - name: stage_id
+        in: path
+        description: stage_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    patch:
+      tags:
+      - Opportunity
+      summary: Update an Opportunity Stage
+      description: Updates specified values of a given Opportunity Stage
+      operationId: updateOpportunityStageUsingPATCH
+      parameters:
+      - name: stage_id
+        in: path
+        description: stage_id
+        required: true
+        schema:
+          type: string
+      - name: update_mask
+        in: query
+        description: An optional list of properties to be updated. If set, only the
+          provided properties will be updated and others will be skipped.
+        required: false
+        allowEmptyValue: false
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+          enum:
+          - name
+          - order
+          - target_number_days
+          - probability
+          - checklist_items
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateOpportunityStageRequest'
+        description: request
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestOpportunityStage'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/opportunities/{opportunity_id}:
+    get:
+      tags:
+      - Opportunity
+      summary: Retrieve a Opportunity
+      description: Retrieves the specified Opportunity
+      operationId: getOpportunityUsingGET_1
+      parameters:
+      - name: opportunity_id
+        in: path
+        description: opportunity_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestV2Opportunity'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    delete:
+      tags:
+      - Opportunity
+      summary: Delete an Opportunity
+      description: Deletes the specified Opportunity
+      operationId: deleteOpportunityUsingDELETE
+      parameters:
+      - name: opportunity_id
+        in: path
+        description: opportunity_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    patch:
+      tags:
+      - Opportunity
+      summary: Update an opportunity
+      description: Updates specified values of a given opportunity
+      operationId: updateOpportunityUsingPATCH
+      parameters:
+      - name: opportunity_id
+        in: path
+        description: opportunity_id
+        required: true
+        schema:
+          type: string
+      - name: update_mask
+        in: query
+        description: An optional list of properties to be updated. If set, only the
+          provided properties will be updated and others will be skipped.
+        required: false
+        allowEmptyValue: false
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+          enum:
+          - opportunity_title
+          - next_action_time
+          - next_action_notes
+          - opportunity_notes
+          - estimated_close_time
+          - include_in_forecast
+          - projected_revenue_low
+          - projected_revenue_high
+          - contact_id
+          - stage_id
+          - user_id
+          - custom_fields
+          - affiliate_id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateOpportunityRequestV2'
+        description: request
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestV2Opportunity'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
   /v2/orders/model:
     get:
       tags:
@@ -7777,6 +8654,472 @@ paths:
                 $ref: '#/components/schemas/Error'
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/tasks:
+    get:
+      tags:
+      - Task
+      summary: List Tasks
+      description: Retrieves a list of tasks based on the provided filter. Tasks which
+        are not assigned to a User may be queried with user_id==UNASSIGNED.
+      operationId: listTasksUsingGET_1
+      parameters:
+      - name: end_due_time
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: filter
+        in: query
+        description: Search filter to apply to results
+        required: false
+        schema:
+          type: string
+      - name: order_by
+        in: query
+        description: Attribute and direction to order items by. E.g. `given_name desc`
+        required: false
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: Total number of items to return per page
+        required: false
+        example: 0
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 1000
+          exclusiveMinimum: false
+          exclusiveMaximum: false
+      - name: page_token
+        in: query
+        description: Page token
+        required: false
+        schema:
+          type: string
+      - name: start_due_time
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListTasksResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    post:
+      tags:
+      - Task
+      summary: Create a Task
+      description: "Creates a new task as the authenticated user.  \nThis endpoint\
+        \ does not currently support setting Custom Field values."
+      operationId: createTaskUsingPOST_1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateTaskRequest'
+        description: task
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/tasks/model:
+    get:
+      tags:
+      - Task
+      summary: Retrieve Task Model
+      description: 'Get the custom fields for the Task object<br/>Note: Custom Fields
+        for Tasks, Classic Appointments and Notes are combined.'
+      operationId: retrieveTaskModelUsingGET_1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectModel'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/tasks/model/customFields:
+    post:
+      tags:
+      - Task
+      summary: Create a Custom Field
+      description: 'Creates a custom field of the specified type and options to the
+        Task object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes
+        are combined.'
+      operationId: createTaskCustomFieldUsingPOST_1
+      requestBody:
+        $ref: '#/components/requestBodies/CreateCustomFieldRequest'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateCustomFieldResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/tasks/model/customFields/{custom_field_id}:
+    delete:
+      tags:
+      - Task
+      summary: Delete a Custom Field
+      description: 'Deletes a Custom Field from the Task object<br/>Note: Custom Fields
+        for Tasks, Classic Appointments and Notes are combined.'
+      operationId: deleteTaskCustomFieldUsingDELETE
+      parameters:
+      - name: custom_field_id
+        in: path
+        description: custom_field_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    patch:
+      tags:
+      - Task
+      summary: Update a Task's Custom Field
+      description: 'Updates a custom field of the specified type and options to the
+        Task object.<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes
+        are combined.'
+      operationId: updateTaskCustomFieldUsingPATCH
+      parameters:
+      - name: custom_field_id
+        in: path
+        description: custom_field_id
+        required: true
+        schema:
+          type: string
+      - name: update_mask
+        in: query
+        description: An optional list of properties to be updated. If set, only the
+          provided properties will be updated and others will be skipped.
+        required: false
+        allowEmptyValue: false
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+          enum:
+          - group_id
+          - label
+          - options
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateCustomFieldMetaDataRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldMetaData'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/tasks/{task_id}:
+    get:
+      tags:
+      - Task
+      summary: Retrieve a Task
+      description: Retrieves a single task
+      operationId: getTaskUsingGET_1
+      parameters:
+      - name: task_id
+        in: path
+        description: task_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    delete:
+      tags:
+      - Task
+      summary: Delete a Task
+      description: Deletes a single task
+      operationId: deleteTaskUsingDELETE_1
+      parameters:
+      - name: task_id
+        in: path
+        description: task_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    patch:
+      tags:
+      - Task
+      summary: Update a Task
+      description: "Updates a task with only the values provided in the request. \n\
+        This endpoint does not currently support updating Custom Field values."
+      operationId: updateTaskUsingPATCH
+      parameters:
+      - name: task_id
+        in: path
+        description: task_id
+        required: true
+        schema:
+          type: string
+      - name: update_mask
+        in: query
+        description: An optional list of properties to be updated. If set, only the
+          provided properties will be updated and others will be skipped.
+        required: false
+        allowEmptyValue: false
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+          enum:
+          - id
+          - title
+          - description
+          - type
+          - priority
+          - completion_time
+          - due_time
+          - remind_time_mins
+          - assigned_to_user_id
+          - contact_id
+          - completed
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUpdateTaskRequest'
+        description: task
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateTaskResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
           content:
             application/json:
               schema:
@@ -11762,7 +13105,7 @@ components:
           items:
             $ref: '#/components/schemas/Transaction'
       title: ListTransactionsResponse
-    ListUserResponse:
+    ListUsersPaginatedResponse:
       type: object
       properties:
         next_page_token:
@@ -11771,7 +13114,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/User'
-      title: ListUserResponse
+      title: ListUsersPaginatedResponse
     Note:
       type: object
       properties:

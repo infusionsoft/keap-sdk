@@ -166,11 +166,27 @@ Class | Method | HTTP request | Description
 *LeadSourcesApi* | [**getLeadSourceUsingGET**](docs/Api/LeadSourcesApi.md#getleadsourceusingget) | **GET** /v2/leadSources/{lead_source_id} | Retrieve a Lead Source
 *LeadSourcesApi* | [**listLeadSourcesUsingGET**](docs/Api/LeadSourcesApi.md#listleadsourcesusingget) | **GET** /v2/leadSources | List Lead Sources
 *LeadSourcesApi* | [**updateLeadSourceUsingPATCH**](docs/Api/LeadSourcesApi.md#updateleadsourceusingpatch) | **PATCH** /v2/leadSources/{lead_source_id} | Update a Lead Source
+*NoteApi* | [**createNoteCustomFieldUsingPOST1**](docs/Api/NoteApi.md#createnotecustomfieldusingpost1) | **POST** /v2/notes/model/customFields | Create a Custom Field
 *NoteApi* | [**createNoteUsingPOST1**](docs/Api/NoteApi.md#createnoteusingpost1) | **POST** /v2/contacts/{contact_id}/notes | Create a Note
 *NoteApi* | [**deleteNoteUsingDELETE1**](docs/Api/NoteApi.md#deletenoteusingdelete1) | **DELETE** /v2/contacts/{contact_id}/notes/{note_id} | Delete a Note
 *NoteApi* | [**getNoteUsingGET1**](docs/Api/NoteApi.md#getnoteusingget1) | **GET** /v2/contacts/{contact_id}/notes/{note_id} | Retrieve a Note
+*NoteApi* | [**listNoteTemplatesUsingGET**](docs/Api/NoteApi.md#listnotetemplatesusingget) | **GET** /v2/notes/templates | Retrieve Note Templates
 *NoteApi* | [**listNotesUsingGET1**](docs/Api/NoteApi.md#listnotesusingget1) | **GET** /v2/contacts/{contact_id}/notes | List Notes
+*NoteApi* | [**retrieveNoteModelUsingGET1**](docs/Api/NoteApi.md#retrievenotemodelusingget1) | **GET** /v2/notes/model | Retrieve Note Model
 *NoteApi* | [**updateNoteUsingPATCH**](docs/Api/NoteApi.md#updatenoteusingpatch) | **PATCH** /v2/contacts/{contact_id}/notes/{note_id} | Update a Note
+*NoteApi* | [**updateNotesCustomFieldUsingPATCH**](docs/Api/NoteApi.md#updatenotescustomfieldusingpatch) | **PATCH** /v2/notes/model/customFields/{custom_field_id} | Update a Custom Field
+*OpportunityApi* | [**createOpportunityCustomFieldsUsingPOST**](docs/Api/OpportunityApi.md#createopportunitycustomfieldsusingpost) | **POST** /v2/opportunities/model/customFields | Create an Opportunity Custom Field
+*OpportunityApi* | [**createOpportunityStageUsingPOST**](docs/Api/OpportunityApi.md#createopportunitystageusingpost) | **POST** /v2/opportunities/stages | Create an Opportunity Stage
+*OpportunityApi* | [**createOpportunityUsingPOST1**](docs/Api/OpportunityApi.md#createopportunityusingpost1) | **POST** /v2/opportunities | Create an Opportunity
+*OpportunityApi* | [**deleteOpportunityStageUsingDELETE**](docs/Api/OpportunityApi.md#deleteopportunitystageusingdelete) | **DELETE** /v2/opportunities/stages/{stage_id} | Delete an Opportunity Stage
+*OpportunityApi* | [**deleteOpportunityUsingDELETE**](docs/Api/OpportunityApi.md#deleteopportunityusingdelete) | **DELETE** /v2/opportunities/{opportunity_id} | Delete an Opportunity
+*OpportunityApi* | [**getOpportunityStageUsingGET**](docs/Api/OpportunityApi.md#getopportunitystageusingget) | **GET** /v2/opportunities/stages/{stage_id} | Retrieve an Opportunity Stage
+*OpportunityApi* | [**getOpportunityUsingGET1**](docs/Api/OpportunityApi.md#getopportunityusingget1) | **GET** /v2/opportunities/{opportunity_id} | Retrieve a Opportunity
+*OpportunityApi* | [**listOpportunitiesUsingGET1**](docs/Api/OpportunityApi.md#listopportunitiesusingget1) | **GET** /v2/opportunities | List Opportunities
+*OpportunityApi* | [**listOpportunityStagesUsingGET**](docs/Api/OpportunityApi.md#listopportunitystagesusingget) | **GET** /v2/opportunities/stages | List of Opportunity Stages
+*OpportunityApi* | [**updateOpportunityCustomFieldUsingPATCH**](docs/Api/OpportunityApi.md#updateopportunitycustomfieldusingpatch) | **PATCH** /v2/opportunities/model/customFields/{custom_field_id} | Update a Opportunity&#39;s Custom Field
+*OpportunityApi* | [**updateOpportunityStageUsingPATCH**](docs/Api/OpportunityApi.md#updateopportunitystageusingpatch) | **PATCH** /v2/opportunities/stages/{stage_id} | Update an Opportunity Stage
+*OpportunityApi* | [**updateOpportunityUsingPATCH**](docs/Api/OpportunityApi.md#updateopportunityusingpatch) | **PATCH** /v2/opportunities/{opportunity_id} | Update an opportunity
 *OrdersApi* | [**createOrderCustomFieldUsingPOST**](docs/Api/OrdersApi.md#createordercustomfieldusingpost) | **POST** /v2/orders/model/customFields | Create an Order Custom Field
 *OrdersApi* | [**deleteOrderCustomFieldUsingDELETE**](docs/Api/OrdersApi.md#deleteordercustomfieldusingdelete) | **DELETE** /v2/orders/model/customFields/{custom_field_id} | Delete an Order Custom Field
 *OrdersApi* | [**retrieveOrderCustomFieldModelUsingGET**](docs/Api/OrdersApi.md#retrieveordercustomfieldmodelusingget) | **GET** /v2/orders/model | Retrieve Order Custom Field Model
@@ -210,6 +226,15 @@ Class | Method | HTTP request | Description
 *TagsApi* | [**removeTagsUsingPOST**](docs/Api/TagsApi.md#removetagsusingpost) | **POST** /v2/tags/{tag_id}/contacts:removeTags | Remove Tags
 *TagsApi* | [**updateTagCategoryUsingPATCH**](docs/Api/TagsApi.md#updatetagcategoryusingpatch) | **PATCH** /v2/tags/categories/{tag_category_id} | Update a Tag Category
 *TagsApi* | [**updateTagUsingPATCH**](docs/Api/TagsApi.md#updatetagusingpatch) | **PATCH** /v2/tags/{tag_id} | Update a Tag
+*TaskApi* | [**createTaskCustomFieldUsingPOST1**](docs/Api/TaskApi.md#createtaskcustomfieldusingpost1) | **POST** /v2/tasks/model/customFields | Create a Custom Field
+*TaskApi* | [**createTaskUsingPOST1**](docs/Api/TaskApi.md#createtaskusingpost1) | **POST** /v2/tasks | Create a Task
+*TaskApi* | [**deleteTaskCustomFieldUsingDELETE**](docs/Api/TaskApi.md#deletetaskcustomfieldusingdelete) | **DELETE** /v2/tasks/model/customFields/{custom_field_id} | Delete a Custom Field
+*TaskApi* | [**deleteTaskUsingDELETE1**](docs/Api/TaskApi.md#deletetaskusingdelete1) | **DELETE** /v2/tasks/{task_id} | Delete a Task
+*TaskApi* | [**getTaskUsingGET1**](docs/Api/TaskApi.md#gettaskusingget1) | **GET** /v2/tasks/{task_id} | Retrieve a Task
+*TaskApi* | [**listTasksUsingGET1**](docs/Api/TaskApi.md#listtasksusingget1) | **GET** /v2/tasks | List Tasks
+*TaskApi* | [**retrieveTaskModelUsingGET1**](docs/Api/TaskApi.md#retrievetaskmodelusingget1) | **GET** /v2/tasks/model | Retrieve Task Model
+*TaskApi* | [**updateTaskCustomFieldUsingPATCH**](docs/Api/TaskApi.md#updatetaskcustomfieldusingpatch) | **PATCH** /v2/tasks/model/customFields/{custom_field_id} | Update a Task&#39;s Custom Field
+*TaskApi* | [**updateTaskUsingPATCH**](docs/Api/TaskApi.md#updatetaskusingpatch) | **PATCH** /v2/tasks/{task_id} | Update a Task
 
 ## Models
 
@@ -423,7 +448,7 @@ Class | Method | HTTP request | Description
 - [ListTagsResponse](docs/Model/ListTagsResponse.md)
 - [ListTasksResponse](docs/Model/ListTasksResponse.md)
 - [ListTransactionsResponse](docs/Model/ListTransactionsResponse.md)
-- [ListUserResponse](docs/Model/ListUserResponse.md)
+- [ListUsersPaginatedResponse](docs/Model/ListUsersPaginatedResponse.md)
 - [Note](docs/Model/Note.md)
 - [NoteTemplate](docs/Model/NoteTemplate.md)
 - [ObjectModel](docs/Model/ObjectModel.md)
@@ -558,7 +583,7 @@ api@keap.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `2.70.0.804890`
-    - Package version: `1.0.4`
+- API version: `2.70.0.807403`
+    - Package version: `1.0.5`
     - Generator version: `7.13.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

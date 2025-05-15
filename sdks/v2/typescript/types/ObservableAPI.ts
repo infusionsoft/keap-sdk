@@ -211,7 +211,7 @@ import { ListTaggedContactsResponse } from '../models/ListTaggedContactsResponse
 import { ListTagsResponse } from '../models/ListTagsResponse';
 import { ListTasksResponse } from '../models/ListTasksResponse';
 import { ListTransactionsResponse } from '../models/ListTransactionsResponse';
-import { ListUserResponse } from '../models/ListUserResponse';
+import { ListUsersPaginatedResponse } from '../models/ListUsersPaginatedResponse';
 import { ModelError } from '../models/ModelError';
 import { ModelFile } from '../models/ModelFile';
 import { Note } from '../models/Note';
@@ -4022,6 +4022,40 @@ export class ObservableNoteApi {
     }
 
     /**
+     * Creates a custom field of the specified type and options to the Note object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+     * Create a Custom Field
+     * @param createCustomFieldRequest customField
+     */
+    public createNoteCustomFieldUsingPOST1WithHttpInfo(createCustomFieldRequest: CreateCustomFieldRequest, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldMetaData>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.createNoteCustomFieldUsingPOST1(createCustomFieldRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createNoteCustomFieldUsingPOST1WithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Creates a custom field of the specified type and options to the Note object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+     * Create a Custom Field
+     * @param createCustomFieldRequest customField
+     */
+    public createNoteCustomFieldUsingPOST1(createCustomFieldRequest: CreateCustomFieldRequest, _options?: ConfigurationOptions): Observable<CustomFieldMetaData> {
+        return this.createNoteCustomFieldUsingPOST1WithHttpInfo(createCustomFieldRequest, _options).pipe(map((apiResponse: HttpInfo<CustomFieldMetaData>) => apiResponse.data));
+    }
+
+    /**
      * Creates a new Note.
      * Create a Note
      * @param contactId contact_id
@@ -4130,6 +4164,46 @@ export class ObservableNoteApi {
     }
 
     /**
+     * Retrieves a list of Note Templates
+     * Retrieve Note Templates
+     * @param [filter] Search filter to apply to results
+     * @param [orderBy] Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listNoteTemplatesUsingGETWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListNoteTemplateResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.listNoteTemplatesUsingGET(filter, orderBy, pageSize, pageToken, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listNoteTemplatesUsingGETWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a list of Note Templates
+     * Retrieve Note Templates
+     * @param [filter] Search filter to apply to results
+     * @param [orderBy] Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listNoteTemplatesUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListNoteTemplateResponse> {
+        return this.listNoteTemplatesUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListNoteTemplateResponse>) => apiResponse.data));
+    }
+
+    /**
      * Retrieves a list of Notes
      * List Notes
      * @param contactId contact_id
@@ -4172,6 +4246,38 @@ export class ObservableNoteApi {
     }
 
     /**
+     * Gets the custom fields for the Note object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+     * Retrieve Note Model
+     */
+    public retrieveNoteModelUsingGET1WithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<ObjectModel>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.retrieveNoteModelUsingGET1(_config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.retrieveNoteModelUsingGET1WithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Gets the custom fields for the Note object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+     * Retrieve Note Model
+     */
+    public retrieveNoteModelUsingGET1(_options?: ConfigurationOptions): Observable<ObjectModel> {
+        return this.retrieveNoteModelUsingGET1WithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<ObjectModel>) => apiResponse.data));
+    }
+
+    /**
      * Updates a Note for a Contact
      * Update a Note
      * @param contactId contact_id
@@ -4209,6 +4315,496 @@ export class ObservableNoteApi {
      */
     public updateNoteUsingPATCH(contactId: string, noteId: string, updateNoteRequest: UpdateNoteRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<UpdateNoteResponse> {
         return this.updateNoteUsingPATCHWithHttpInfo(contactId, noteId, updateNoteRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<UpdateNoteResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Updates a custom field of the specified type and options to the Note object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+     * Update a Custom Field
+     * @param customFieldId custom_field_id
+     * @param updateCustomFieldMetaDataRequest request
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateNotesCustomFieldUsingPATCHWithHttpInfo(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldMetaData>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.updateNotesCustomFieldUsingPATCH(customFieldId, updateCustomFieldMetaDataRequest, updateMask, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateNotesCustomFieldUsingPATCHWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Updates a custom field of the specified type and options to the Note object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+     * Update a Custom Field
+     * @param customFieldId custom_field_id
+     * @param updateCustomFieldMetaDataRequest request
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateNotesCustomFieldUsingPATCH(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<CustomFieldMetaData> {
+        return this.updateNotesCustomFieldUsingPATCHWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<CustomFieldMetaData>) => apiResponse.data));
+    }
+
+}
+
+import { OpportunityApiRequestFactory, OpportunityApiResponseProcessor} from "../apis/OpportunityApi";
+export class ObservableOpportunityApi {
+    private requestFactory: OpportunityApiRequestFactory;
+    private responseProcessor: OpportunityApiResponseProcessor;
+    private configuration: Configuration;
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: OpportunityApiRequestFactory,
+        responseProcessor?: OpportunityApiResponseProcessor
+    ) {
+        this.configuration = configuration;
+        this.requestFactory = requestFactory || new OpportunityApiRequestFactory(configuration);
+        this.responseProcessor = responseProcessor || new OpportunityApiResponseProcessor();
+    }
+
+    /**
+     * Creates a custom field of the specified type and options to the Opportunity object
+     * Create an Opportunity Custom Field
+     * @param createCustomFieldRequest customField
+     */
+    public createOpportunityCustomFieldsUsingPOSTWithHttpInfo(createCustomFieldRequest: CreateCustomFieldRequest, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldMetaData>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.createOpportunityCustomFieldsUsingPOST(createCustomFieldRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createOpportunityCustomFieldsUsingPOSTWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Creates a custom field of the specified type and options to the Opportunity object
+     * Create an Opportunity Custom Field
+     * @param createCustomFieldRequest customField
+     */
+    public createOpportunityCustomFieldsUsingPOST(createCustomFieldRequest: CreateCustomFieldRequest, _options?: ConfigurationOptions): Observable<CustomFieldMetaData> {
+        return this.createOpportunityCustomFieldsUsingPOSTWithHttpInfo(createCustomFieldRequest, _options).pipe(map((apiResponse: HttpInfo<CustomFieldMetaData>) => apiResponse.data));
+    }
+
+    /**
+     * Creates a new Opportunity Stage
+     * Create an Opportunity Stage
+     * @param [createOpportunityStageRequest] opportunity
+     */
+    public createOpportunityStageUsingPOSTWithHttpInfo(createOpportunityStageRequest?: CreateOpportunityStageRequest, _options?: ConfigurationOptions): Observable<HttpInfo<RestOpportunityStage>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.createOpportunityStageUsingPOST(createOpportunityStageRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createOpportunityStageUsingPOSTWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Creates a new Opportunity Stage
+     * Create an Opportunity Stage
+     * @param [createOpportunityStageRequest] opportunity
+     */
+    public createOpportunityStageUsingPOST(createOpportunityStageRequest?: CreateOpportunityStageRequest, _options?: ConfigurationOptions): Observable<RestOpportunityStage> {
+        return this.createOpportunityStageUsingPOSTWithHttpInfo(createOpportunityStageRequest, _options).pipe(map((apiResponse: HttpInfo<RestOpportunityStage>) => apiResponse.data));
+    }
+
+    /**
+     * Creates a new opportunity as the authenticated user.
+     * Create an Opportunity
+     * @param [createOpportunityRequest] opportunity
+     */
+    public createOpportunityUsingPOST1WithHttpInfo(createOpportunityRequest?: CreateOpportunityRequest, _options?: ConfigurationOptions): Observable<HttpInfo<RestV2Opportunity>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.createOpportunityUsingPOST1(createOpportunityRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createOpportunityUsingPOST1WithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Creates a new opportunity as the authenticated user.
+     * Create an Opportunity
+     * @param [createOpportunityRequest] opportunity
+     */
+    public createOpportunityUsingPOST1(createOpportunityRequest?: CreateOpportunityRequest, _options?: ConfigurationOptions): Observable<RestV2Opportunity> {
+        return this.createOpportunityUsingPOST1WithHttpInfo(createOpportunityRequest, _options).pipe(map((apiResponse: HttpInfo<RestV2Opportunity>) => apiResponse.data));
+    }
+
+    /**
+     * Deletes the specified Opportunity Stage
+     * Delete an Opportunity Stage
+     * @param stageId stage_id
+     */
+    public deleteOpportunityStageUsingDELETEWithHttpInfo(stageId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.deleteOpportunityStageUsingDELETE(stageId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteOpportunityStageUsingDELETEWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Deletes the specified Opportunity Stage
+     * Delete an Opportunity Stage
+     * @param stageId stage_id
+     */
+    public deleteOpportunityStageUsingDELETE(stageId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteOpportunityStageUsingDELETEWithHttpInfo(stageId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+    /**
+     * Deletes the specified Opportunity
+     * Delete an Opportunity
+     * @param opportunityId opportunity_id
+     */
+    public deleteOpportunityUsingDELETEWithHttpInfo(opportunityId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.deleteOpportunityUsingDELETE(opportunityId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteOpportunityUsingDELETEWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Deletes the specified Opportunity
+     * Delete an Opportunity
+     * @param opportunityId opportunity_id
+     */
+    public deleteOpportunityUsingDELETE(opportunityId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteOpportunityUsingDELETEWithHttpInfo(opportunityId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves the specified Opportunity Stage
+     * Retrieve an Opportunity Stage
+     * @param stageId stage_id
+     */
+    public getOpportunityStageUsingGETWithHttpInfo(stageId: string, _options?: ConfigurationOptions): Observable<HttpInfo<RestOpportunityStage>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getOpportunityStageUsingGET(stageId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getOpportunityStageUsingGETWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves the specified Opportunity Stage
+     * Retrieve an Opportunity Stage
+     * @param stageId stage_id
+     */
+    public getOpportunityStageUsingGET(stageId: string, _options?: ConfigurationOptions): Observable<RestOpportunityStage> {
+        return this.getOpportunityStageUsingGETWithHttpInfo(stageId, _options).pipe(map((apiResponse: HttpInfo<RestOpportunityStage>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves the specified Opportunity
+     * Retrieve a Opportunity
+     * @param opportunityId opportunity_id
+     */
+    public getOpportunityUsingGET1WithHttpInfo(opportunityId: string, _options?: ConfigurationOptions): Observable<HttpInfo<RestV2Opportunity>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getOpportunityUsingGET1(opportunityId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getOpportunityUsingGET1WithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves the specified Opportunity
+     * Retrieve a Opportunity
+     * @param opportunityId opportunity_id
+     */
+    public getOpportunityUsingGET1(opportunityId: string, _options?: ConfigurationOptions): Observable<RestV2Opportunity> {
+        return this.getOpportunityUsingGET1WithHttpInfo(opportunityId, _options).pipe(map((apiResponse: HttpInfo<RestV2Opportunity>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves a list of all Opportunities.
+     * List Opportunities
+     * @param [fields] fields
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; 
+     * @param [orderBy] Attribute and direction to opportunities items. One of the following fields: - &#x60;next_action_time&#x60; - &#x60;contact_name&#x60; - &#x60;opportunity_name&#x60; - &#x60;created_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listOpportunitiesUsingGET1WithHttpInfo(fields?: Array<string>, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListOpportunitiesResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.listOpportunitiesUsingGET1(fields, filter, orderBy, pageSize, pageToken, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listOpportunitiesUsingGET1WithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a list of all Opportunities.
+     * List Opportunities
+     * @param [fields] fields
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; 
+     * @param [orderBy] Attribute and direction to opportunities items. One of the following fields: - &#x60;next_action_time&#x60; - &#x60;contact_name&#x60; - &#x60;opportunity_name&#x60; - &#x60;created_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listOpportunitiesUsingGET1(fields?: Array<string>, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListOpportunitiesResponse> {
+        return this.listOpportunitiesUsingGET1WithHttpInfo(fields, filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListOpportunitiesResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves a list of Opportunity Stages.
+     * List of Opportunity Stages
+     * @param [filter] Search filter to apply to results
+     * @param [orderBy] Attribute and direction to order stage items. One of the following fields: - &#x60;stage_order&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listOpportunityStagesUsingGETWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListOpportunityStagesResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.listOpportunityStagesUsingGET(filter, orderBy, pageSize, pageToken, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listOpportunityStagesUsingGETWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a list of Opportunity Stages.
+     * List of Opportunity Stages
+     * @param [filter] Search filter to apply to results
+     * @param [orderBy] Attribute and direction to order stage items. One of the following fields: - &#x60;stage_order&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listOpportunityStagesUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListOpportunityStagesResponse> {
+        return this.listOpportunityStagesUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListOpportunityStagesResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Updates a custom field of the specified type and options to the Opportunity object.
+     * Update a Opportunity\'s Custom Field
+     * @param customFieldId custom_field_id
+     * @param updateCustomFieldMetaDataRequest request
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateOpportunityCustomFieldUsingPATCHWithHttpInfo(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldMetaData>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.updateOpportunityCustomFieldUsingPATCH(customFieldId, updateCustomFieldMetaDataRequest, updateMask, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateOpportunityCustomFieldUsingPATCHWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Updates a custom field of the specified type and options to the Opportunity object.
+     * Update a Opportunity\'s Custom Field
+     * @param customFieldId custom_field_id
+     * @param updateCustomFieldMetaDataRequest request
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateOpportunityCustomFieldUsingPATCH(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<CustomFieldMetaData> {
+        return this.updateOpportunityCustomFieldUsingPATCHWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<CustomFieldMetaData>) => apiResponse.data));
+    }
+
+    /**
+     * Updates specified values of a given Opportunity Stage
+     * Update an Opportunity Stage
+     * @param stageId stage_id
+     * @param updateOpportunityStageRequest request
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateOpportunityStageUsingPATCHWithHttpInfo(stageId: string, updateOpportunityStageRequest: UpdateOpportunityStageRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<RestOpportunityStage>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.updateOpportunityStageUsingPATCH(stageId, updateOpportunityStageRequest, updateMask, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateOpportunityStageUsingPATCHWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Updates specified values of a given Opportunity Stage
+     * Update an Opportunity Stage
+     * @param stageId stage_id
+     * @param updateOpportunityStageRequest request
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateOpportunityStageUsingPATCH(stageId: string, updateOpportunityStageRequest: UpdateOpportunityStageRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<RestOpportunityStage> {
+        return this.updateOpportunityStageUsingPATCHWithHttpInfo(stageId, updateOpportunityStageRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<RestOpportunityStage>) => apiResponse.data));
+    }
+
+    /**
+     * Updates specified values of a given opportunity
+     * Update an opportunity
+     * @param opportunityId opportunity_id
+     * @param updateOpportunityRequestV2 request
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateOpportunityUsingPATCHWithHttpInfo(opportunityId: string, updateOpportunityRequestV2: UpdateOpportunityRequestV2, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<RestV2Opportunity>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.updateOpportunityUsingPATCH(opportunityId, updateOpportunityRequestV2, updateMask, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateOpportunityUsingPATCHWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Updates specified values of a given opportunity
+     * Update an opportunity
+     * @param opportunityId opportunity_id
+     * @param updateOpportunityRequestV2 request
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateOpportunityUsingPATCH(opportunityId: string, updateOpportunityRequestV2: UpdateOpportunityRequestV2, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<RestV2Opportunity> {
+        return this.updateOpportunityUsingPATCHWithHttpInfo(opportunityId, updateOpportunityRequestV2, updateMask, _options).pipe(map((apiResponse: HttpInfo<RestV2Opportunity>) => apiResponse.data));
     }
 
 }
@@ -5753,6 +6349,346 @@ export class ObservableTagsApi {
      */
     public updateTagUsingPATCH(tagId: string, updateMask?: Array<string>, createUpdateTagRequest?: CreateUpdateTagRequest, _options?: ConfigurationOptions): Observable<UpdateTagResponse> {
         return this.updateTagUsingPATCHWithHttpInfo(tagId, updateMask, createUpdateTagRequest, _options).pipe(map((apiResponse: HttpInfo<UpdateTagResponse>) => apiResponse.data));
+    }
+
+}
+
+import { TaskApiRequestFactory, TaskApiResponseProcessor} from "../apis/TaskApi";
+export class ObservableTaskApi {
+    private requestFactory: TaskApiRequestFactory;
+    private responseProcessor: TaskApiResponseProcessor;
+    private configuration: Configuration;
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: TaskApiRequestFactory,
+        responseProcessor?: TaskApiResponseProcessor
+    ) {
+        this.configuration = configuration;
+        this.requestFactory = requestFactory || new TaskApiRequestFactory(configuration);
+        this.responseProcessor = responseProcessor || new TaskApiResponseProcessor();
+    }
+
+    /**
+     * Creates a custom field of the specified type and options to the Task object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+     * Create a Custom Field
+     * @param createCustomFieldRequest customField
+     */
+    public createTaskCustomFieldUsingPOST1WithHttpInfo(createCustomFieldRequest: CreateCustomFieldRequest, _options?: ConfigurationOptions): Observable<HttpInfo<CreateCustomFieldResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.createTaskCustomFieldUsingPOST1(createCustomFieldRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createTaskCustomFieldUsingPOST1WithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Creates a custom field of the specified type and options to the Task object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+     * Create a Custom Field
+     * @param createCustomFieldRequest customField
+     */
+    public createTaskCustomFieldUsingPOST1(createCustomFieldRequest: CreateCustomFieldRequest, _options?: ConfigurationOptions): Observable<CreateCustomFieldResponse> {
+        return this.createTaskCustomFieldUsingPOST1WithHttpInfo(createCustomFieldRequest, _options).pipe(map((apiResponse: HttpInfo<CreateCustomFieldResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Creates a new task as the authenticated user.   This endpoint does not currently support setting Custom Field values.
+     * Create a Task
+     * @param [createTaskRequest] task
+     */
+    public createTaskUsingPOST1WithHttpInfo(createTaskRequest?: CreateTaskRequest, _options?: ConfigurationOptions): Observable<HttpInfo<Task>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.createTaskUsingPOST1(createTaskRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createTaskUsingPOST1WithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Creates a new task as the authenticated user.   This endpoint does not currently support setting Custom Field values.
+     * Create a Task
+     * @param [createTaskRequest] task
+     */
+    public createTaskUsingPOST1(createTaskRequest?: CreateTaskRequest, _options?: ConfigurationOptions): Observable<Task> {
+        return this.createTaskUsingPOST1WithHttpInfo(createTaskRequest, _options).pipe(map((apiResponse: HttpInfo<Task>) => apiResponse.data));
+    }
+
+    /**
+     * Deletes a Custom Field from the Task object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+     * Delete a Custom Field
+     * @param customFieldId custom_field_id
+     */
+    public deleteTaskCustomFieldUsingDELETEWithHttpInfo(customFieldId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.deleteTaskCustomFieldUsingDELETE(customFieldId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteTaskCustomFieldUsingDELETEWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Deletes a Custom Field from the Task object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+     * Delete a Custom Field
+     * @param customFieldId custom_field_id
+     */
+    public deleteTaskCustomFieldUsingDELETE(customFieldId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteTaskCustomFieldUsingDELETEWithHttpInfo(customFieldId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+    /**
+     * Deletes a single task
+     * Delete a Task
+     * @param taskId task_id
+     */
+    public deleteTaskUsingDELETE1WithHttpInfo(taskId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.deleteTaskUsingDELETE1(taskId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteTaskUsingDELETE1WithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Deletes a single task
+     * Delete a Task
+     * @param taskId task_id
+     */
+    public deleteTaskUsingDELETE1(taskId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteTaskUsingDELETE1WithHttpInfo(taskId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves a single task
+     * Retrieve a Task
+     * @param taskId task_id
+     */
+    public getTaskUsingGET1WithHttpInfo(taskId: string, _options?: ConfigurationOptions): Observable<HttpInfo<Task>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getTaskUsingGET1(taskId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getTaskUsingGET1WithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a single task
+     * Retrieve a Task
+     * @param taskId task_id
+     */
+    public getTaskUsingGET1(taskId: string, _options?: ConfigurationOptions): Observable<Task> {
+        return this.getTaskUsingGET1WithHttpInfo(taskId, _options).pipe(map((apiResponse: HttpInfo<Task>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves a list of tasks based on the provided filter. Tasks which are not assigned to a User may be queried with user_id==UNASSIGNED.
+     * List Tasks
+     * @param [endDueTime]
+     * @param [filter] Search filter to apply to results
+     * @param [orderBy] Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     * @param [startDueTime]
+     */
+    public listTasksUsingGET1WithHttpInfo(endDueTime?: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, startDueTime?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListTasksResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.listTasksUsingGET1(endDueTime, filter, orderBy, pageSize, pageToken, startDueTime, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listTasksUsingGET1WithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a list of tasks based on the provided filter. Tasks which are not assigned to a User may be queried with user_id==UNASSIGNED.
+     * List Tasks
+     * @param [endDueTime]
+     * @param [filter] Search filter to apply to results
+     * @param [orderBy] Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     * @param [startDueTime]
+     */
+    public listTasksUsingGET1(endDueTime?: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, startDueTime?: string, _options?: ConfigurationOptions): Observable<ListTasksResponse> {
+        return this.listTasksUsingGET1WithHttpInfo(endDueTime, filter, orderBy, pageSize, pageToken, startDueTime, _options).pipe(map((apiResponse: HttpInfo<ListTasksResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Get the custom fields for the Task object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+     * Retrieve Task Model
+     */
+    public retrieveTaskModelUsingGET1WithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<ObjectModel>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.retrieveTaskModelUsingGET1(_config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.retrieveTaskModelUsingGET1WithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Get the custom fields for the Task object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+     * Retrieve Task Model
+     */
+    public retrieveTaskModelUsingGET1(_options?: ConfigurationOptions): Observable<ObjectModel> {
+        return this.retrieveTaskModelUsingGET1WithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<ObjectModel>) => apiResponse.data));
+    }
+
+    /**
+     * Updates a custom field of the specified type and options to the Task object.<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+     * Update a Task\'s Custom Field
+     * @param customFieldId custom_field_id
+     * @param updateCustomFieldMetaDataRequest request
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateTaskCustomFieldUsingPATCHWithHttpInfo(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldMetaData>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.updateTaskCustomFieldUsingPATCH(customFieldId, updateCustomFieldMetaDataRequest, updateMask, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateTaskCustomFieldUsingPATCHWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Updates a custom field of the specified type and options to the Task object.<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+     * Update a Task\'s Custom Field
+     * @param customFieldId custom_field_id
+     * @param updateCustomFieldMetaDataRequest request
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateTaskCustomFieldUsingPATCH(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<CustomFieldMetaData> {
+        return this.updateTaskCustomFieldUsingPATCHWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<CustomFieldMetaData>) => apiResponse.data));
+    }
+
+    /**
+     * Updates a task with only the values provided in the request.  This endpoint does not currently support updating Custom Field values.
+     * Update a Task
+     * @param taskId task_id
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param [createUpdateTaskRequest] task
+     */
+    public updateTaskUsingPATCHWithHttpInfo(taskId: string, updateMask?: Array<string>, createUpdateTaskRequest?: CreateUpdateTaskRequest, _options?: ConfigurationOptions): Observable<HttpInfo<UpdateTaskResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.updateTaskUsingPATCH(taskId, updateMask, createUpdateTaskRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateTaskUsingPATCHWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Updates a task with only the values provided in the request.  This endpoint does not currently support updating Custom Field values.
+     * Update a Task
+     * @param taskId task_id
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param [createUpdateTaskRequest] task
+     */
+    public updateTaskUsingPATCH(taskId: string, updateMask?: Array<string>, createUpdateTaskRequest?: CreateUpdateTaskRequest, _options?: ConfigurationOptions): Observable<UpdateTaskResponse> {
+        return this.updateTaskUsingPATCHWithHttpInfo(taskId, updateMask, createUpdateTaskRequest, _options).pipe(map((apiResponse: HttpInfo<UpdateTaskResponse>) => apiResponse.data));
     }
 
 }

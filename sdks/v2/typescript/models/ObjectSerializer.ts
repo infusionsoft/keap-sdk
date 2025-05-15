@@ -206,7 +206,7 @@ export * from '../models/ListTaggedContactsResponse';
 export * from '../models/ListTagsResponse';
 export * from '../models/ListTasksResponse';
 export * from '../models/ListTransactionsResponse';
-export * from '../models/ListUserResponse';
+export * from '../models/ListUsersPaginatedResponse';
 export * from '../models/ModelError';
 export * from '../models/ModelFile';
 export * from '../models/Note';
@@ -524,7 +524,7 @@ import { ListTaggedContactsResponse } from '../models/ListTaggedContactsResponse
 import { ListTagsResponse } from '../models/ListTagsResponse';
 import { ListTasksResponse } from '../models/ListTasksResponse';
 import { ListTransactionsResponse } from '../models/ListTransactionsResponse';
-import { ListUserResponse } from '../models/ListUserResponse';
+import { ListUsersPaginatedResponse } from '../models/ListUsersPaginatedResponse';
 import { ModelError } from '../models/ModelError';
 import { ModelFile } from '../models/ModelFile';
 import { Note } from '../models/Note';
@@ -936,7 +936,7 @@ let typeMap: {[index: string]: any} = {
     "ListTagsResponse": ListTagsResponse,
     "ListTasksResponse": ListTasksResponse,
     "ListTransactionsResponse": ListTransactionsResponse,
-    "ListUserResponse": ListUserResponse,
+    "ListUsersPaginatedResponse": ListUsersPaginatedResponse,
     "ModelError": ModelError,
     "ModelFile": ModelFile,
     "Note": Note,

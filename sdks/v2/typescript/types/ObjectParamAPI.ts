@@ -210,7 +210,7 @@ import { ListTaggedContactsResponse } from '../models/ListTaggedContactsResponse
 import { ListTagsResponse } from '../models/ListTagsResponse';
 import { ListTasksResponse } from '../models/ListTasksResponse';
 import { ListTransactionsResponse } from '../models/ListTransactionsResponse';
-import { ListUserResponse } from '../models/ListUserResponse';
+import { ListUsersPaginatedResponse } from '../models/ListUsersPaginatedResponse';
 import { ModelError } from '../models/ModelError';
 import { ModelFile } from '../models/ModelFile';
 import { Note } from '../models/Note';
@@ -3895,6 +3895,15 @@ export class ObjectLeadSourcesApi {
 import { ObservableNoteApi } from "./ObservableAPI";
 import { NoteApiRequestFactory, NoteApiResponseProcessor} from "../apis/NoteApi";
 
+export interface NoteApiCreateNoteCustomFieldUsingPOST1Request {
+    /**
+     * customField
+     * @type CreateCustomFieldRequest
+     * @memberof NoteApicreateNoteCustomFieldUsingPOST1
+     */
+    createCustomFieldRequest: CreateCustomFieldRequest
+}
+
 export interface NoteApiCreateNoteUsingPOST1Request {
     /**
      * contact_id
@@ -3945,6 +3954,39 @@ export interface NoteApiGetNoteUsingGET1Request {
     noteId: string
 }
 
+export interface NoteApiListNoteTemplatesUsingGETRequest {
+    /**
+     * Search filter to apply to results
+     * Defaults to: undefined
+     * @type string
+     * @memberof NoteApilistNoteTemplatesUsingGET
+     */
+    filter?: string
+    /**
+     * Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60;
+     * Defaults to: undefined
+     * @type string
+     * @memberof NoteApilistNoteTemplatesUsingGET
+     */
+    orderBy?: string
+    /**
+     * Total number of items to return per page
+     * Minimum: 1
+     * Maximum: 1000
+     * Defaults to: undefined
+     * @type number
+     * @memberof NoteApilistNoteTemplatesUsingGET
+     */
+    pageSize?: number
+    /**
+     * Page token
+     * Defaults to: undefined
+     * @type string
+     * @memberof NoteApilistNoteTemplatesUsingGET
+     */
+    pageToken?: string
+}
+
 export interface NoteApiListNotesUsingGET1Request {
     /**
      * contact_id
@@ -3985,6 +4027,9 @@ export interface NoteApiListNotesUsingGET1Request {
     pageToken?: string
 }
 
+export interface NoteApiRetrieveNoteModelUsingGET1Request {
+}
+
 export interface NoteApiUpdateNoteUsingPATCHRequest {
     /**
      * contact_id
@@ -4015,11 +4060,52 @@ export interface NoteApiUpdateNoteUsingPATCHRequest {
     updateMask?: Array<string>
 }
 
+export interface NoteApiUpdateNotesCustomFieldUsingPATCHRequest {
+    /**
+     * custom_field_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof NoteApiupdateNotesCustomFieldUsingPATCH
+     */
+    customFieldId: string
+    /**
+     * request
+     * @type UpdateCustomFieldMetaDataRequest
+     * @memberof NoteApiupdateNotesCustomFieldUsingPATCH
+     */
+    updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest
+    /**
+     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * Defaults to: undefined
+     * @type Array&lt;string&gt;
+     * @memberof NoteApiupdateNotesCustomFieldUsingPATCH
+     */
+    updateMask?: Array<string>
+}
+
 export class ObjectNoteApi {
     private api: ObservableNoteApi
 
     public constructor(configuration: Configuration, requestFactory?: NoteApiRequestFactory, responseProcessor?: NoteApiResponseProcessor) {
         this.api = new ObservableNoteApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Creates a custom field of the specified type and options to the Note object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+     * Create a Custom Field
+     * @param param the request object
+     */
+    public createNoteCustomFieldUsingPOST1WithHttpInfo(param: NoteApiCreateNoteCustomFieldUsingPOST1Request, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
+        return this.api.createNoteCustomFieldUsingPOST1WithHttpInfo(param.createCustomFieldRequest,  options).toPromise();
+    }
+
+    /**
+     * Creates a custom field of the specified type and options to the Note object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+     * Create a Custom Field
+     * @param param the request object
+     */
+    public createNoteCustomFieldUsingPOST1(param: NoteApiCreateNoteCustomFieldUsingPOST1Request, options?: ConfigurationOptions): Promise<CustomFieldMetaData> {
+        return this.api.createNoteCustomFieldUsingPOST1(param.createCustomFieldRequest,  options).toPromise();
     }
 
     /**
@@ -4077,6 +4163,24 @@ export class ObjectNoteApi {
     }
 
     /**
+     * Retrieves a list of Note Templates
+     * Retrieve Note Templates
+     * @param param the request object
+     */
+    public listNoteTemplatesUsingGETWithHttpInfo(param: NoteApiListNoteTemplatesUsingGETRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListNoteTemplateResponse>> {
+        return this.api.listNoteTemplatesUsingGETWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of Note Templates
+     * Retrieve Note Templates
+     * @param param the request object
+     */
+    public listNoteTemplatesUsingGET(param: NoteApiListNoteTemplatesUsingGETRequest = {}, options?: ConfigurationOptions): Promise<ListNoteTemplateResponse> {
+        return this.api.listNoteTemplatesUsingGET(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    }
+
+    /**
      * Retrieves a list of Notes
      * List Notes
      * @param param the request object
@@ -4095,6 +4199,24 @@ export class ObjectNoteApi {
     }
 
     /**
+     * Gets the custom fields for the Note object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+     * Retrieve Note Model
+     * @param param the request object
+     */
+    public retrieveNoteModelUsingGET1WithHttpInfo(param: NoteApiRetrieveNoteModelUsingGET1Request = {}, options?: ConfigurationOptions): Promise<HttpInfo<ObjectModel>> {
+        return this.api.retrieveNoteModelUsingGET1WithHttpInfo( options).toPromise();
+    }
+
+    /**
+     * Gets the custom fields for the Note object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+     * Retrieve Note Model
+     * @param param the request object
+     */
+    public retrieveNoteModelUsingGET1(param: NoteApiRetrieveNoteModelUsingGET1Request = {}, options?: ConfigurationOptions): Promise<ObjectModel> {
+        return this.api.retrieveNoteModelUsingGET1( options).toPromise();
+    }
+
+    /**
      * Updates a Note for a Contact
      * Update a Note
      * @param param the request object
@@ -4110,6 +4232,461 @@ export class ObjectNoteApi {
      */
     public updateNoteUsingPATCH(param: NoteApiUpdateNoteUsingPATCHRequest, options?: ConfigurationOptions): Promise<UpdateNoteResponse> {
         return this.api.updateNoteUsingPATCH(param.contactId, param.noteId, param.updateNoteRequest, param.updateMask,  options).toPromise();
+    }
+
+    /**
+     * Updates a custom field of the specified type and options to the Note object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+     * Update a Custom Field
+     * @param param the request object
+     */
+    public updateNotesCustomFieldUsingPATCHWithHttpInfo(param: NoteApiUpdateNotesCustomFieldUsingPATCHRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
+        return this.api.updateNotesCustomFieldUsingPATCHWithHttpInfo(param.customFieldId, param.updateCustomFieldMetaDataRequest, param.updateMask,  options).toPromise();
+    }
+
+    /**
+     * Updates a custom field of the specified type and options to the Note object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+     * Update a Custom Field
+     * @param param the request object
+     */
+    public updateNotesCustomFieldUsingPATCH(param: NoteApiUpdateNotesCustomFieldUsingPATCHRequest, options?: ConfigurationOptions): Promise<CustomFieldMetaData> {
+        return this.api.updateNotesCustomFieldUsingPATCH(param.customFieldId, param.updateCustomFieldMetaDataRequest, param.updateMask,  options).toPromise();
+    }
+
+}
+
+import { ObservableOpportunityApi } from "./ObservableAPI";
+import { OpportunityApiRequestFactory, OpportunityApiResponseProcessor} from "../apis/OpportunityApi";
+
+export interface OpportunityApiCreateOpportunityCustomFieldsUsingPOSTRequest {
+    /**
+     * customField
+     * @type CreateCustomFieldRequest
+     * @memberof OpportunityApicreateOpportunityCustomFieldsUsingPOST
+     */
+    createCustomFieldRequest: CreateCustomFieldRequest
+}
+
+export interface OpportunityApiCreateOpportunityStageUsingPOSTRequest {
+    /**
+     * opportunity
+     * @type CreateOpportunityStageRequest
+     * @memberof OpportunityApicreateOpportunityStageUsingPOST
+     */
+    createOpportunityStageRequest?: CreateOpportunityStageRequest
+}
+
+export interface OpportunityApiCreateOpportunityUsingPOST1Request {
+    /**
+     * opportunity
+     * @type CreateOpportunityRequest
+     * @memberof OpportunityApicreateOpportunityUsingPOST1
+     */
+    createOpportunityRequest?: CreateOpportunityRequest
+}
+
+export interface OpportunityApiDeleteOpportunityStageUsingDELETERequest {
+    /**
+     * stage_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof OpportunityApideleteOpportunityStageUsingDELETE
+     */
+    stageId: string
+}
+
+export interface OpportunityApiDeleteOpportunityUsingDELETERequest {
+    /**
+     * opportunity_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof OpportunityApideleteOpportunityUsingDELETE
+     */
+    opportunityId: string
+}
+
+export interface OpportunityApiGetOpportunityStageUsingGETRequest {
+    /**
+     * stage_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof OpportunityApigetOpportunityStageUsingGET
+     */
+    stageId: string
+}
+
+export interface OpportunityApiGetOpportunityUsingGET1Request {
+    /**
+     * opportunity_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof OpportunityApigetOpportunityUsingGET1
+     */
+    opportunityId: string
+}
+
+export interface OpportunityApiListOpportunitiesUsingGET1Request {
+    /**
+     * fields
+     * Defaults to: undefined
+     * @type Array&lt;string&gt;
+     * @memberof OpportunityApilistOpportunitiesUsingGET1
+     */
+    fields?: Array<string>
+    /**
+     * Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; 
+     * Defaults to: undefined
+     * @type string
+     * @memberof OpportunityApilistOpportunitiesUsingGET1
+     */
+    filter?: string
+    /**
+     * Attribute and direction to opportunities items. One of the following fields: - &#x60;next_action_time&#x60; - &#x60;contact_name&#x60; - &#x60;opportunity_name&#x60; - &#x60;created_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * Defaults to: undefined
+     * @type string
+     * @memberof OpportunityApilistOpportunitiesUsingGET1
+     */
+    orderBy?: string
+    /**
+     * Total number of items to return per page
+     * Minimum: 1
+     * Maximum: 1000
+     * Defaults to: undefined
+     * @type number
+     * @memberof OpportunityApilistOpportunitiesUsingGET1
+     */
+    pageSize?: number
+    /**
+     * Page token
+     * Defaults to: undefined
+     * @type string
+     * @memberof OpportunityApilistOpportunitiesUsingGET1
+     */
+    pageToken?: string
+}
+
+export interface OpportunityApiListOpportunityStagesUsingGETRequest {
+    /**
+     * Search filter to apply to results
+     * Defaults to: undefined
+     * @type string
+     * @memberof OpportunityApilistOpportunityStagesUsingGET
+     */
+    filter?: string
+    /**
+     * Attribute and direction to order stage items. One of the following fields: - &#x60;stage_order&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * Defaults to: undefined
+     * @type string
+     * @memberof OpportunityApilistOpportunityStagesUsingGET
+     */
+    orderBy?: string
+    /**
+     * Total number of items to return per page
+     * Minimum: 1
+     * Maximum: 1000
+     * Defaults to: undefined
+     * @type number
+     * @memberof OpportunityApilistOpportunityStagesUsingGET
+     */
+    pageSize?: number
+    /**
+     * Page token
+     * Defaults to: undefined
+     * @type string
+     * @memberof OpportunityApilistOpportunityStagesUsingGET
+     */
+    pageToken?: string
+}
+
+export interface OpportunityApiUpdateOpportunityCustomFieldUsingPATCHRequest {
+    /**
+     * custom_field_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof OpportunityApiupdateOpportunityCustomFieldUsingPATCH
+     */
+    customFieldId: string
+    /**
+     * request
+     * @type UpdateCustomFieldMetaDataRequest
+     * @memberof OpportunityApiupdateOpportunityCustomFieldUsingPATCH
+     */
+    updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest
+    /**
+     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * Defaults to: undefined
+     * @type Array&lt;string&gt;
+     * @memberof OpportunityApiupdateOpportunityCustomFieldUsingPATCH
+     */
+    updateMask?: Array<string>
+}
+
+export interface OpportunityApiUpdateOpportunityStageUsingPATCHRequest {
+    /**
+     * stage_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof OpportunityApiupdateOpportunityStageUsingPATCH
+     */
+    stageId: string
+    /**
+     * request
+     * @type UpdateOpportunityStageRequest
+     * @memberof OpportunityApiupdateOpportunityStageUsingPATCH
+     */
+    updateOpportunityStageRequest: UpdateOpportunityStageRequest
+    /**
+     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * Defaults to: undefined
+     * @type Array&lt;string&gt;
+     * @memberof OpportunityApiupdateOpportunityStageUsingPATCH
+     */
+    updateMask?: Array<string>
+}
+
+export interface OpportunityApiUpdateOpportunityUsingPATCHRequest {
+    /**
+     * opportunity_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof OpportunityApiupdateOpportunityUsingPATCH
+     */
+    opportunityId: string
+    /**
+     * request
+     * @type UpdateOpportunityRequestV2
+     * @memberof OpportunityApiupdateOpportunityUsingPATCH
+     */
+    updateOpportunityRequestV2: UpdateOpportunityRequestV2
+    /**
+     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * Defaults to: undefined
+     * @type Array&lt;string&gt;
+     * @memberof OpportunityApiupdateOpportunityUsingPATCH
+     */
+    updateMask?: Array<string>
+}
+
+export class ObjectOpportunityApi {
+    private api: ObservableOpportunityApi
+
+    public constructor(configuration: Configuration, requestFactory?: OpportunityApiRequestFactory, responseProcessor?: OpportunityApiResponseProcessor) {
+        this.api = new ObservableOpportunityApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Creates a custom field of the specified type and options to the Opportunity object
+     * Create an Opportunity Custom Field
+     * @param param the request object
+     */
+    public createOpportunityCustomFieldsUsingPOSTWithHttpInfo(param: OpportunityApiCreateOpportunityCustomFieldsUsingPOSTRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
+        return this.api.createOpportunityCustomFieldsUsingPOSTWithHttpInfo(param.createCustomFieldRequest,  options).toPromise();
+    }
+
+    /**
+     * Creates a custom field of the specified type and options to the Opportunity object
+     * Create an Opportunity Custom Field
+     * @param param the request object
+     */
+    public createOpportunityCustomFieldsUsingPOST(param: OpportunityApiCreateOpportunityCustomFieldsUsingPOSTRequest, options?: ConfigurationOptions): Promise<CustomFieldMetaData> {
+        return this.api.createOpportunityCustomFieldsUsingPOST(param.createCustomFieldRequest,  options).toPromise();
+    }
+
+    /**
+     * Creates a new Opportunity Stage
+     * Create an Opportunity Stage
+     * @param param the request object
+     */
+    public createOpportunityStageUsingPOSTWithHttpInfo(param: OpportunityApiCreateOpportunityStageUsingPOSTRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<RestOpportunityStage>> {
+        return this.api.createOpportunityStageUsingPOSTWithHttpInfo(param.createOpportunityStageRequest,  options).toPromise();
+    }
+
+    /**
+     * Creates a new Opportunity Stage
+     * Create an Opportunity Stage
+     * @param param the request object
+     */
+    public createOpportunityStageUsingPOST(param: OpportunityApiCreateOpportunityStageUsingPOSTRequest = {}, options?: ConfigurationOptions): Promise<RestOpportunityStage> {
+        return this.api.createOpportunityStageUsingPOST(param.createOpportunityStageRequest,  options).toPromise();
+    }
+
+    /**
+     * Creates a new opportunity as the authenticated user.
+     * Create an Opportunity
+     * @param param the request object
+     */
+    public createOpportunityUsingPOST1WithHttpInfo(param: OpportunityApiCreateOpportunityUsingPOST1Request = {}, options?: ConfigurationOptions): Promise<HttpInfo<RestV2Opportunity>> {
+        return this.api.createOpportunityUsingPOST1WithHttpInfo(param.createOpportunityRequest,  options).toPromise();
+    }
+
+    /**
+     * Creates a new opportunity as the authenticated user.
+     * Create an Opportunity
+     * @param param the request object
+     */
+    public createOpportunityUsingPOST1(param: OpportunityApiCreateOpportunityUsingPOST1Request = {}, options?: ConfigurationOptions): Promise<RestV2Opportunity> {
+        return this.api.createOpportunityUsingPOST1(param.createOpportunityRequest,  options).toPromise();
+    }
+
+    /**
+     * Deletes the specified Opportunity Stage
+     * Delete an Opportunity Stage
+     * @param param the request object
+     */
+    public deleteOpportunityStageUsingDELETEWithHttpInfo(param: OpportunityApiDeleteOpportunityStageUsingDELETERequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteOpportunityStageUsingDELETEWithHttpInfo(param.stageId,  options).toPromise();
+    }
+
+    /**
+     * Deletes the specified Opportunity Stage
+     * Delete an Opportunity Stage
+     * @param param the request object
+     */
+    public deleteOpportunityStageUsingDELETE(param: OpportunityApiDeleteOpportunityStageUsingDELETERequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteOpportunityStageUsingDELETE(param.stageId,  options).toPromise();
+    }
+
+    /**
+     * Deletes the specified Opportunity
+     * Delete an Opportunity
+     * @param param the request object
+     */
+    public deleteOpportunityUsingDELETEWithHttpInfo(param: OpportunityApiDeleteOpportunityUsingDELETERequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteOpportunityUsingDELETEWithHttpInfo(param.opportunityId,  options).toPromise();
+    }
+
+    /**
+     * Deletes the specified Opportunity
+     * Delete an Opportunity
+     * @param param the request object
+     */
+    public deleteOpportunityUsingDELETE(param: OpportunityApiDeleteOpportunityUsingDELETERequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteOpportunityUsingDELETE(param.opportunityId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves the specified Opportunity Stage
+     * Retrieve an Opportunity Stage
+     * @param param the request object
+     */
+    public getOpportunityStageUsingGETWithHttpInfo(param: OpportunityApiGetOpportunityStageUsingGETRequest, options?: ConfigurationOptions): Promise<HttpInfo<RestOpportunityStage>> {
+        return this.api.getOpportunityStageUsingGETWithHttpInfo(param.stageId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves the specified Opportunity Stage
+     * Retrieve an Opportunity Stage
+     * @param param the request object
+     */
+    public getOpportunityStageUsingGET(param: OpportunityApiGetOpportunityStageUsingGETRequest, options?: ConfigurationOptions): Promise<RestOpportunityStage> {
+        return this.api.getOpportunityStageUsingGET(param.stageId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves the specified Opportunity
+     * Retrieve a Opportunity
+     * @param param the request object
+     */
+    public getOpportunityUsingGET1WithHttpInfo(param: OpportunityApiGetOpportunityUsingGET1Request, options?: ConfigurationOptions): Promise<HttpInfo<RestV2Opportunity>> {
+        return this.api.getOpportunityUsingGET1WithHttpInfo(param.opportunityId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves the specified Opportunity
+     * Retrieve a Opportunity
+     * @param param the request object
+     */
+    public getOpportunityUsingGET1(param: OpportunityApiGetOpportunityUsingGET1Request, options?: ConfigurationOptions): Promise<RestV2Opportunity> {
+        return this.api.getOpportunityUsingGET1(param.opportunityId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of all Opportunities.
+     * List Opportunities
+     * @param param the request object
+     */
+    public listOpportunitiesUsingGET1WithHttpInfo(param: OpportunityApiListOpportunitiesUsingGET1Request = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListOpportunitiesResponse>> {
+        return this.api.listOpportunitiesUsingGET1WithHttpInfo(param.fields, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of all Opportunities.
+     * List Opportunities
+     * @param param the request object
+     */
+    public listOpportunitiesUsingGET1(param: OpportunityApiListOpportunitiesUsingGET1Request = {}, options?: ConfigurationOptions): Promise<ListOpportunitiesResponse> {
+        return this.api.listOpportunitiesUsingGET1(param.fields, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of Opportunity Stages.
+     * List of Opportunity Stages
+     * @param param the request object
+     */
+    public listOpportunityStagesUsingGETWithHttpInfo(param: OpportunityApiListOpportunityStagesUsingGETRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListOpportunityStagesResponse>> {
+        return this.api.listOpportunityStagesUsingGETWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of Opportunity Stages.
+     * List of Opportunity Stages
+     * @param param the request object
+     */
+    public listOpportunityStagesUsingGET(param: OpportunityApiListOpportunityStagesUsingGETRequest = {}, options?: ConfigurationOptions): Promise<ListOpportunityStagesResponse> {
+        return this.api.listOpportunityStagesUsingGET(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    }
+
+    /**
+     * Updates a custom field of the specified type and options to the Opportunity object.
+     * Update a Opportunity\'s Custom Field
+     * @param param the request object
+     */
+    public updateOpportunityCustomFieldUsingPATCHWithHttpInfo(param: OpportunityApiUpdateOpportunityCustomFieldUsingPATCHRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
+        return this.api.updateOpportunityCustomFieldUsingPATCHWithHttpInfo(param.customFieldId, param.updateCustomFieldMetaDataRequest, param.updateMask,  options).toPromise();
+    }
+
+    /**
+     * Updates a custom field of the specified type and options to the Opportunity object.
+     * Update a Opportunity\'s Custom Field
+     * @param param the request object
+     */
+    public updateOpportunityCustomFieldUsingPATCH(param: OpportunityApiUpdateOpportunityCustomFieldUsingPATCHRequest, options?: ConfigurationOptions): Promise<CustomFieldMetaData> {
+        return this.api.updateOpportunityCustomFieldUsingPATCH(param.customFieldId, param.updateCustomFieldMetaDataRequest, param.updateMask,  options).toPromise();
+    }
+
+    /**
+     * Updates specified values of a given Opportunity Stage
+     * Update an Opportunity Stage
+     * @param param the request object
+     */
+    public updateOpportunityStageUsingPATCHWithHttpInfo(param: OpportunityApiUpdateOpportunityStageUsingPATCHRequest, options?: ConfigurationOptions): Promise<HttpInfo<RestOpportunityStage>> {
+        return this.api.updateOpportunityStageUsingPATCHWithHttpInfo(param.stageId, param.updateOpportunityStageRequest, param.updateMask,  options).toPromise();
+    }
+
+    /**
+     * Updates specified values of a given Opportunity Stage
+     * Update an Opportunity Stage
+     * @param param the request object
+     */
+    public updateOpportunityStageUsingPATCH(param: OpportunityApiUpdateOpportunityStageUsingPATCHRequest, options?: ConfigurationOptions): Promise<RestOpportunityStage> {
+        return this.api.updateOpportunityStageUsingPATCH(param.stageId, param.updateOpportunityStageRequest, param.updateMask,  options).toPromise();
+    }
+
+    /**
+     * Updates specified values of a given opportunity
+     * Update an opportunity
+     * @param param the request object
+     */
+    public updateOpportunityUsingPATCHWithHttpInfo(param: OpportunityApiUpdateOpportunityUsingPATCHRequest, options?: ConfigurationOptions): Promise<HttpInfo<RestV2Opportunity>> {
+        return this.api.updateOpportunityUsingPATCHWithHttpInfo(param.opportunityId, param.updateOpportunityRequestV2, param.updateMask,  options).toPromise();
+    }
+
+    /**
+     * Updates specified values of a given opportunity
+     * Update an opportunity
+     * @param param the request object
+     */
+    public updateOpportunityUsingPATCH(param: OpportunityApiUpdateOpportunityUsingPATCHRequest, options?: ConfigurationOptions): Promise<RestV2Opportunity> {
+        return this.api.updateOpportunityUsingPATCH(param.opportunityId, param.updateOpportunityRequestV2, param.updateMask,  options).toPromise();
     }
 
 }
@@ -5555,6 +6132,324 @@ export class ObjectTagsApi {
      */
     public updateTagUsingPATCH(param: TagsApiUpdateTagUsingPATCHRequest, options?: ConfigurationOptions): Promise<UpdateTagResponse> {
         return this.api.updateTagUsingPATCH(param.tagId, param.updateMask, param.createUpdateTagRequest,  options).toPromise();
+    }
+
+}
+
+import { ObservableTaskApi } from "./ObservableAPI";
+import { TaskApiRequestFactory, TaskApiResponseProcessor} from "../apis/TaskApi";
+
+export interface TaskApiCreateTaskCustomFieldUsingPOST1Request {
+    /**
+     * customField
+     * @type CreateCustomFieldRequest
+     * @memberof TaskApicreateTaskCustomFieldUsingPOST1
+     */
+    createCustomFieldRequest: CreateCustomFieldRequest
+}
+
+export interface TaskApiCreateTaskUsingPOST1Request {
+    /**
+     * task
+     * @type CreateTaskRequest
+     * @memberof TaskApicreateTaskUsingPOST1
+     */
+    createTaskRequest?: CreateTaskRequest
+}
+
+export interface TaskApiDeleteTaskCustomFieldUsingDELETERequest {
+    /**
+     * custom_field_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof TaskApideleteTaskCustomFieldUsingDELETE
+     */
+    customFieldId: string
+}
+
+export interface TaskApiDeleteTaskUsingDELETE1Request {
+    /**
+     * task_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof TaskApideleteTaskUsingDELETE1
+     */
+    taskId: string
+}
+
+export interface TaskApiGetTaskUsingGET1Request {
+    /**
+     * task_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof TaskApigetTaskUsingGET1
+     */
+    taskId: string
+}
+
+export interface TaskApiListTasksUsingGET1Request {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof TaskApilistTasksUsingGET1
+     */
+    endDueTime?: string
+    /**
+     * Search filter to apply to results
+     * Defaults to: undefined
+     * @type string
+     * @memberof TaskApilistTasksUsingGET1
+     */
+    filter?: string
+    /**
+     * Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60;
+     * Defaults to: undefined
+     * @type string
+     * @memberof TaskApilistTasksUsingGET1
+     */
+    orderBy?: string
+    /**
+     * Total number of items to return per page
+     * Minimum: 1
+     * Maximum: 1000
+     * Defaults to: undefined
+     * @type number
+     * @memberof TaskApilistTasksUsingGET1
+     */
+    pageSize?: number
+    /**
+     * Page token
+     * Defaults to: undefined
+     * @type string
+     * @memberof TaskApilistTasksUsingGET1
+     */
+    pageToken?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof TaskApilistTasksUsingGET1
+     */
+    startDueTime?: string
+}
+
+export interface TaskApiRetrieveTaskModelUsingGET1Request {
+}
+
+export interface TaskApiUpdateTaskCustomFieldUsingPATCHRequest {
+    /**
+     * custom_field_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof TaskApiupdateTaskCustomFieldUsingPATCH
+     */
+    customFieldId: string
+    /**
+     * request
+     * @type UpdateCustomFieldMetaDataRequest
+     * @memberof TaskApiupdateTaskCustomFieldUsingPATCH
+     */
+    updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest
+    /**
+     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * Defaults to: undefined
+     * @type Array&lt;string&gt;
+     * @memberof TaskApiupdateTaskCustomFieldUsingPATCH
+     */
+    updateMask?: Array<string>
+}
+
+export interface TaskApiUpdateTaskUsingPATCHRequest {
+    /**
+     * task_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof TaskApiupdateTaskUsingPATCH
+     */
+    taskId: string
+    /**
+     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * Defaults to: undefined
+     * @type Array&lt;string&gt;
+     * @memberof TaskApiupdateTaskUsingPATCH
+     */
+    updateMask?: Array<string>
+    /**
+     * task
+     * @type CreateUpdateTaskRequest
+     * @memberof TaskApiupdateTaskUsingPATCH
+     */
+    createUpdateTaskRequest?: CreateUpdateTaskRequest
+}
+
+export class ObjectTaskApi {
+    private api: ObservableTaskApi
+
+    public constructor(configuration: Configuration, requestFactory?: TaskApiRequestFactory, responseProcessor?: TaskApiResponseProcessor) {
+        this.api = new ObservableTaskApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Creates a custom field of the specified type and options to the Task object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+     * Create a Custom Field
+     * @param param the request object
+     */
+    public createTaskCustomFieldUsingPOST1WithHttpInfo(param: TaskApiCreateTaskCustomFieldUsingPOST1Request, options?: ConfigurationOptions): Promise<HttpInfo<CreateCustomFieldResponse>> {
+        return this.api.createTaskCustomFieldUsingPOST1WithHttpInfo(param.createCustomFieldRequest,  options).toPromise();
+    }
+
+    /**
+     * Creates a custom field of the specified type and options to the Task object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+     * Create a Custom Field
+     * @param param the request object
+     */
+    public createTaskCustomFieldUsingPOST1(param: TaskApiCreateTaskCustomFieldUsingPOST1Request, options?: ConfigurationOptions): Promise<CreateCustomFieldResponse> {
+        return this.api.createTaskCustomFieldUsingPOST1(param.createCustomFieldRequest,  options).toPromise();
+    }
+
+    /**
+     * Creates a new task as the authenticated user.   This endpoint does not currently support setting Custom Field values.
+     * Create a Task
+     * @param param the request object
+     */
+    public createTaskUsingPOST1WithHttpInfo(param: TaskApiCreateTaskUsingPOST1Request = {}, options?: ConfigurationOptions): Promise<HttpInfo<Task>> {
+        return this.api.createTaskUsingPOST1WithHttpInfo(param.createTaskRequest,  options).toPromise();
+    }
+
+    /**
+     * Creates a new task as the authenticated user.   This endpoint does not currently support setting Custom Field values.
+     * Create a Task
+     * @param param the request object
+     */
+    public createTaskUsingPOST1(param: TaskApiCreateTaskUsingPOST1Request = {}, options?: ConfigurationOptions): Promise<Task> {
+        return this.api.createTaskUsingPOST1(param.createTaskRequest,  options).toPromise();
+    }
+
+    /**
+     * Deletes a Custom Field from the Task object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+     * Delete a Custom Field
+     * @param param the request object
+     */
+    public deleteTaskCustomFieldUsingDELETEWithHttpInfo(param: TaskApiDeleteTaskCustomFieldUsingDELETERequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteTaskCustomFieldUsingDELETEWithHttpInfo(param.customFieldId,  options).toPromise();
+    }
+
+    /**
+     * Deletes a Custom Field from the Task object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+     * Delete a Custom Field
+     * @param param the request object
+     */
+    public deleteTaskCustomFieldUsingDELETE(param: TaskApiDeleteTaskCustomFieldUsingDELETERequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteTaskCustomFieldUsingDELETE(param.customFieldId,  options).toPromise();
+    }
+
+    /**
+     * Deletes a single task
+     * Delete a Task
+     * @param param the request object
+     */
+    public deleteTaskUsingDELETE1WithHttpInfo(param: TaskApiDeleteTaskUsingDELETE1Request, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteTaskUsingDELETE1WithHttpInfo(param.taskId,  options).toPromise();
+    }
+
+    /**
+     * Deletes a single task
+     * Delete a Task
+     * @param param the request object
+     */
+    public deleteTaskUsingDELETE1(param: TaskApiDeleteTaskUsingDELETE1Request, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteTaskUsingDELETE1(param.taskId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a single task
+     * Retrieve a Task
+     * @param param the request object
+     */
+    public getTaskUsingGET1WithHttpInfo(param: TaskApiGetTaskUsingGET1Request, options?: ConfigurationOptions): Promise<HttpInfo<Task>> {
+        return this.api.getTaskUsingGET1WithHttpInfo(param.taskId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a single task
+     * Retrieve a Task
+     * @param param the request object
+     */
+    public getTaskUsingGET1(param: TaskApiGetTaskUsingGET1Request, options?: ConfigurationOptions): Promise<Task> {
+        return this.api.getTaskUsingGET1(param.taskId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of tasks based on the provided filter. Tasks which are not assigned to a User may be queried with user_id==UNASSIGNED.
+     * List Tasks
+     * @param param the request object
+     */
+    public listTasksUsingGET1WithHttpInfo(param: TaskApiListTasksUsingGET1Request = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListTasksResponse>> {
+        return this.api.listTasksUsingGET1WithHttpInfo(param.endDueTime, param.filter, param.orderBy, param.pageSize, param.pageToken, param.startDueTime,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of tasks based on the provided filter. Tasks which are not assigned to a User may be queried with user_id==UNASSIGNED.
+     * List Tasks
+     * @param param the request object
+     */
+    public listTasksUsingGET1(param: TaskApiListTasksUsingGET1Request = {}, options?: ConfigurationOptions): Promise<ListTasksResponse> {
+        return this.api.listTasksUsingGET1(param.endDueTime, param.filter, param.orderBy, param.pageSize, param.pageToken, param.startDueTime,  options).toPromise();
+    }
+
+    /**
+     * Get the custom fields for the Task object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+     * Retrieve Task Model
+     * @param param the request object
+     */
+    public retrieveTaskModelUsingGET1WithHttpInfo(param: TaskApiRetrieveTaskModelUsingGET1Request = {}, options?: ConfigurationOptions): Promise<HttpInfo<ObjectModel>> {
+        return this.api.retrieveTaskModelUsingGET1WithHttpInfo( options).toPromise();
+    }
+
+    /**
+     * Get the custom fields for the Task object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+     * Retrieve Task Model
+     * @param param the request object
+     */
+    public retrieveTaskModelUsingGET1(param: TaskApiRetrieveTaskModelUsingGET1Request = {}, options?: ConfigurationOptions): Promise<ObjectModel> {
+        return this.api.retrieveTaskModelUsingGET1( options).toPromise();
+    }
+
+    /**
+     * Updates a custom field of the specified type and options to the Task object.<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+     * Update a Task\'s Custom Field
+     * @param param the request object
+     */
+    public updateTaskCustomFieldUsingPATCHWithHttpInfo(param: TaskApiUpdateTaskCustomFieldUsingPATCHRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
+        return this.api.updateTaskCustomFieldUsingPATCHWithHttpInfo(param.customFieldId, param.updateCustomFieldMetaDataRequest, param.updateMask,  options).toPromise();
+    }
+
+    /**
+     * Updates a custom field of the specified type and options to the Task object.<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+     * Update a Task\'s Custom Field
+     * @param param the request object
+     */
+    public updateTaskCustomFieldUsingPATCH(param: TaskApiUpdateTaskCustomFieldUsingPATCHRequest, options?: ConfigurationOptions): Promise<CustomFieldMetaData> {
+        return this.api.updateTaskCustomFieldUsingPATCH(param.customFieldId, param.updateCustomFieldMetaDataRequest, param.updateMask,  options).toPromise();
+    }
+
+    /**
+     * Updates a task with only the values provided in the request.  This endpoint does not currently support updating Custom Field values.
+     * Update a Task
+     * @param param the request object
+     */
+    public updateTaskUsingPATCHWithHttpInfo(param: TaskApiUpdateTaskUsingPATCHRequest, options?: ConfigurationOptions): Promise<HttpInfo<UpdateTaskResponse>> {
+        return this.api.updateTaskUsingPATCHWithHttpInfo(param.taskId, param.updateMask, param.createUpdateTaskRequest,  options).toPromise();
+    }
+
+    /**
+     * Updates a task with only the values provided in the request.  This endpoint does not currently support updating Custom Field values.
+     * Update a Task
+     * @param param the request object
+     */
+    public updateTaskUsingPATCH(param: TaskApiUpdateTaskUsingPATCHRequest, options?: ConfigurationOptions): Promise<UpdateTaskResponse> {
+        return this.api.updateTaskUsingPATCH(param.taskId, param.updateMask, param.createUpdateTaskRequest,  options).toPromise();
     }
 
 }

@@ -1,4 +1,4 @@
-# Keap.Core.V2.Model.ListUserResponse
+# Keap.Core.V2.Model.ListUsersPaginatedResponse
 
 ## Properties
 

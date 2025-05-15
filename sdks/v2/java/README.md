@@ -2,7 +2,7 @@
 
 Keap REST API
 
-- API version: 2.70.0.804890
+- API version: 2.70.0.807403
 
 - Generator version: 7.13.0
 
@@ -43,7 +43,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.keap.core</groupId>
   <artifactId>core-service-v2-java-sdk</artifactId>
-  <version>1.0.4</version>
+  <version>1.0.5</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.keap.core:core-service-v2-java-sdk:1.0.4"
+compile "com.keap.core:core-service-v2-java-sdk:1.0.5"
 ```
 
 ### Others
@@ -66,7 +66,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/core-service-v2-java-sdk-1.0.4.jar`
+- `target/core-service-v2-java-sdk-1.0.5.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -298,16 +298,48 @@ Class | Method | HTTP request | Description
 *LeadSourcesApi* | [**listLeadSourcesUsingGETWithHttpInfo**](docs/LeadSourcesApi.md#listLeadSourcesUsingGETWithHttpInfo) | **GET** /v2/leadSources | List Lead Sources
 *LeadSourcesApi* | [**updateLeadSourceUsingPATCH**](docs/LeadSourcesApi.md#updateLeadSourceUsingPATCH) | **PATCH** /v2/leadSources/{lead_source_id} | Update a Lead Source
 *LeadSourcesApi* | [**updateLeadSourceUsingPATCHWithHttpInfo**](docs/LeadSourcesApi.md#updateLeadSourceUsingPATCHWithHttpInfo) | **PATCH** /v2/leadSources/{lead_source_id} | Update a Lead Source
+*NoteApi* | [**createNoteCustomFieldUsingPOST1**](docs/NoteApi.md#createNoteCustomFieldUsingPOST1) | **POST** /v2/notes/model/customFields | Create a Custom Field
+*NoteApi* | [**createNoteCustomFieldUsingPOST1WithHttpInfo**](docs/NoteApi.md#createNoteCustomFieldUsingPOST1WithHttpInfo) | **POST** /v2/notes/model/customFields | Create a Custom Field
 *NoteApi* | [**createNoteUsingPOST1**](docs/NoteApi.md#createNoteUsingPOST1) | **POST** /v2/contacts/{contact_id}/notes | Create a Note
 *NoteApi* | [**createNoteUsingPOST1WithHttpInfo**](docs/NoteApi.md#createNoteUsingPOST1WithHttpInfo) | **POST** /v2/contacts/{contact_id}/notes | Create a Note
 *NoteApi* | [**deleteNoteUsingDELETE1**](docs/NoteApi.md#deleteNoteUsingDELETE1) | **DELETE** /v2/contacts/{contact_id}/notes/{note_id} | Delete a Note
 *NoteApi* | [**deleteNoteUsingDELETE1WithHttpInfo**](docs/NoteApi.md#deleteNoteUsingDELETE1WithHttpInfo) | **DELETE** /v2/contacts/{contact_id}/notes/{note_id} | Delete a Note
 *NoteApi* | [**getNoteUsingGET1**](docs/NoteApi.md#getNoteUsingGET1) | **GET** /v2/contacts/{contact_id}/notes/{note_id} | Retrieve a Note
 *NoteApi* | [**getNoteUsingGET1WithHttpInfo**](docs/NoteApi.md#getNoteUsingGET1WithHttpInfo) | **GET** /v2/contacts/{contact_id}/notes/{note_id} | Retrieve a Note
+*NoteApi* | [**listNoteTemplatesUsingGET**](docs/NoteApi.md#listNoteTemplatesUsingGET) | **GET** /v2/notes/templates | Retrieve Note Templates
+*NoteApi* | [**listNoteTemplatesUsingGETWithHttpInfo**](docs/NoteApi.md#listNoteTemplatesUsingGETWithHttpInfo) | **GET** /v2/notes/templates | Retrieve Note Templates
 *NoteApi* | [**listNotesUsingGET1**](docs/NoteApi.md#listNotesUsingGET1) | **GET** /v2/contacts/{contact_id}/notes | List Notes
 *NoteApi* | [**listNotesUsingGET1WithHttpInfo**](docs/NoteApi.md#listNotesUsingGET1WithHttpInfo) | **GET** /v2/contacts/{contact_id}/notes | List Notes
+*NoteApi* | [**retrieveNoteModelUsingGET1**](docs/NoteApi.md#retrieveNoteModelUsingGET1) | **GET** /v2/notes/model | Retrieve Note Model
+*NoteApi* | [**retrieveNoteModelUsingGET1WithHttpInfo**](docs/NoteApi.md#retrieveNoteModelUsingGET1WithHttpInfo) | **GET** /v2/notes/model | Retrieve Note Model
 *NoteApi* | [**updateNoteUsingPATCH**](docs/NoteApi.md#updateNoteUsingPATCH) | **PATCH** /v2/contacts/{contact_id}/notes/{note_id} | Update a Note
 *NoteApi* | [**updateNoteUsingPATCHWithHttpInfo**](docs/NoteApi.md#updateNoteUsingPATCHWithHttpInfo) | **PATCH** /v2/contacts/{contact_id}/notes/{note_id} | Update a Note
+*NoteApi* | [**updateNotesCustomFieldUsingPATCH**](docs/NoteApi.md#updateNotesCustomFieldUsingPATCH) | **PATCH** /v2/notes/model/customFields/{custom_field_id} | Update a Custom Field
+*NoteApi* | [**updateNotesCustomFieldUsingPATCHWithHttpInfo**](docs/NoteApi.md#updateNotesCustomFieldUsingPATCHWithHttpInfo) | **PATCH** /v2/notes/model/customFields/{custom_field_id} | Update a Custom Field
+*OpportunityApi* | [**createOpportunityCustomFieldsUsingPOST**](docs/OpportunityApi.md#createOpportunityCustomFieldsUsingPOST) | **POST** /v2/opportunities/model/customFields | Create an Opportunity Custom Field
+*OpportunityApi* | [**createOpportunityCustomFieldsUsingPOSTWithHttpInfo**](docs/OpportunityApi.md#createOpportunityCustomFieldsUsingPOSTWithHttpInfo) | **POST** /v2/opportunities/model/customFields | Create an Opportunity Custom Field
+*OpportunityApi* | [**createOpportunityStageUsingPOST**](docs/OpportunityApi.md#createOpportunityStageUsingPOST) | **POST** /v2/opportunities/stages | Create an Opportunity Stage
+*OpportunityApi* | [**createOpportunityStageUsingPOSTWithHttpInfo**](docs/OpportunityApi.md#createOpportunityStageUsingPOSTWithHttpInfo) | **POST** /v2/opportunities/stages | Create an Opportunity Stage
+*OpportunityApi* | [**createOpportunityUsingPOST1**](docs/OpportunityApi.md#createOpportunityUsingPOST1) | **POST** /v2/opportunities | Create an Opportunity
+*OpportunityApi* | [**createOpportunityUsingPOST1WithHttpInfo**](docs/OpportunityApi.md#createOpportunityUsingPOST1WithHttpInfo) | **POST** /v2/opportunities | Create an Opportunity
+*OpportunityApi* | [**deleteOpportunityStageUsingDELETE**](docs/OpportunityApi.md#deleteOpportunityStageUsingDELETE) | **DELETE** /v2/opportunities/stages/{stage_id} | Delete an Opportunity Stage
+*OpportunityApi* | [**deleteOpportunityStageUsingDELETEWithHttpInfo**](docs/OpportunityApi.md#deleteOpportunityStageUsingDELETEWithHttpInfo) | **DELETE** /v2/opportunities/stages/{stage_id} | Delete an Opportunity Stage
+*OpportunityApi* | [**deleteOpportunityUsingDELETE**](docs/OpportunityApi.md#deleteOpportunityUsingDELETE) | **DELETE** /v2/opportunities/{opportunity_id} | Delete an Opportunity
+*OpportunityApi* | [**deleteOpportunityUsingDELETEWithHttpInfo**](docs/OpportunityApi.md#deleteOpportunityUsingDELETEWithHttpInfo) | **DELETE** /v2/opportunities/{opportunity_id} | Delete an Opportunity
+*OpportunityApi* | [**getOpportunityStageUsingGET**](docs/OpportunityApi.md#getOpportunityStageUsingGET) | **GET** /v2/opportunities/stages/{stage_id} | Retrieve an Opportunity Stage
+*OpportunityApi* | [**getOpportunityStageUsingGETWithHttpInfo**](docs/OpportunityApi.md#getOpportunityStageUsingGETWithHttpInfo) | **GET** /v2/opportunities/stages/{stage_id} | Retrieve an Opportunity Stage
+*OpportunityApi* | [**getOpportunityUsingGET1**](docs/OpportunityApi.md#getOpportunityUsingGET1) | **GET** /v2/opportunities/{opportunity_id} | Retrieve a Opportunity
+*OpportunityApi* | [**getOpportunityUsingGET1WithHttpInfo**](docs/OpportunityApi.md#getOpportunityUsingGET1WithHttpInfo) | **GET** /v2/opportunities/{opportunity_id} | Retrieve a Opportunity
+*OpportunityApi* | [**listOpportunitiesUsingGET1**](docs/OpportunityApi.md#listOpportunitiesUsingGET1) | **GET** /v2/opportunities | List Opportunities
+*OpportunityApi* | [**listOpportunitiesUsingGET1WithHttpInfo**](docs/OpportunityApi.md#listOpportunitiesUsingGET1WithHttpInfo) | **GET** /v2/opportunities | List Opportunities
+*OpportunityApi* | [**listOpportunityStagesUsingGET**](docs/OpportunityApi.md#listOpportunityStagesUsingGET) | **GET** /v2/opportunities/stages | List of Opportunity Stages
+*OpportunityApi* | [**listOpportunityStagesUsingGETWithHttpInfo**](docs/OpportunityApi.md#listOpportunityStagesUsingGETWithHttpInfo) | **GET** /v2/opportunities/stages | List of Opportunity Stages
+*OpportunityApi* | [**updateOpportunityCustomFieldUsingPATCH**](docs/OpportunityApi.md#updateOpportunityCustomFieldUsingPATCH) | **PATCH** /v2/opportunities/model/customFields/{custom_field_id} | Update a Opportunity&#39;s Custom Field
+*OpportunityApi* | [**updateOpportunityCustomFieldUsingPATCHWithHttpInfo**](docs/OpportunityApi.md#updateOpportunityCustomFieldUsingPATCHWithHttpInfo) | **PATCH** /v2/opportunities/model/customFields/{custom_field_id} | Update a Opportunity&#39;s Custom Field
+*OpportunityApi* | [**updateOpportunityStageUsingPATCH**](docs/OpportunityApi.md#updateOpportunityStageUsingPATCH) | **PATCH** /v2/opportunities/stages/{stage_id} | Update an Opportunity Stage
+*OpportunityApi* | [**updateOpportunityStageUsingPATCHWithHttpInfo**](docs/OpportunityApi.md#updateOpportunityStageUsingPATCHWithHttpInfo) | **PATCH** /v2/opportunities/stages/{stage_id} | Update an Opportunity Stage
+*OpportunityApi* | [**updateOpportunityUsingPATCH**](docs/OpportunityApi.md#updateOpportunityUsingPATCH) | **PATCH** /v2/opportunities/{opportunity_id} | Update an opportunity
+*OpportunityApi* | [**updateOpportunityUsingPATCHWithHttpInfo**](docs/OpportunityApi.md#updateOpportunityUsingPATCHWithHttpInfo) | **PATCH** /v2/opportunities/{opportunity_id} | Update an opportunity
 *OrdersApi* | [**createOrderCustomFieldUsingPOST**](docs/OrdersApi.md#createOrderCustomFieldUsingPOST) | **POST** /v2/orders/model/customFields | Create an Order Custom Field
 *OrdersApi* | [**createOrderCustomFieldUsingPOSTWithHttpInfo**](docs/OrdersApi.md#createOrderCustomFieldUsingPOSTWithHttpInfo) | **POST** /v2/orders/model/customFields | Create an Order Custom Field
 *OrdersApi* | [**deleteOrderCustomFieldUsingDELETE**](docs/OrdersApi.md#deleteOrderCustomFieldUsingDELETE) | **DELETE** /v2/orders/model/customFields/{custom_field_id} | Delete an Order Custom Field
@@ -386,6 +418,24 @@ Class | Method | HTTP request | Description
 *TagsApi* | [**updateTagCategoryUsingPATCHWithHttpInfo**](docs/TagsApi.md#updateTagCategoryUsingPATCHWithHttpInfo) | **PATCH** /v2/tags/categories/{tag_category_id} | Update a Tag Category
 *TagsApi* | [**updateTagUsingPATCH**](docs/TagsApi.md#updateTagUsingPATCH) | **PATCH** /v2/tags/{tag_id} | Update a Tag
 *TagsApi* | [**updateTagUsingPATCHWithHttpInfo**](docs/TagsApi.md#updateTagUsingPATCHWithHttpInfo) | **PATCH** /v2/tags/{tag_id} | Update a Tag
+*TaskApi* | [**createTaskCustomFieldUsingPOST1**](docs/TaskApi.md#createTaskCustomFieldUsingPOST1) | **POST** /v2/tasks/model/customFields | Create a Custom Field
+*TaskApi* | [**createTaskCustomFieldUsingPOST1WithHttpInfo**](docs/TaskApi.md#createTaskCustomFieldUsingPOST1WithHttpInfo) | **POST** /v2/tasks/model/customFields | Create a Custom Field
+*TaskApi* | [**createTaskUsingPOST1**](docs/TaskApi.md#createTaskUsingPOST1) | **POST** /v2/tasks | Create a Task
+*TaskApi* | [**createTaskUsingPOST1WithHttpInfo**](docs/TaskApi.md#createTaskUsingPOST1WithHttpInfo) | **POST** /v2/tasks | Create a Task
+*TaskApi* | [**deleteTaskCustomFieldUsingDELETE**](docs/TaskApi.md#deleteTaskCustomFieldUsingDELETE) | **DELETE** /v2/tasks/model/customFields/{custom_field_id} | Delete a Custom Field
+*TaskApi* | [**deleteTaskCustomFieldUsingDELETEWithHttpInfo**](docs/TaskApi.md#deleteTaskCustomFieldUsingDELETEWithHttpInfo) | **DELETE** /v2/tasks/model/customFields/{custom_field_id} | Delete a Custom Field
+*TaskApi* | [**deleteTaskUsingDELETE1**](docs/TaskApi.md#deleteTaskUsingDELETE1) | **DELETE** /v2/tasks/{task_id} | Delete a Task
+*TaskApi* | [**deleteTaskUsingDELETE1WithHttpInfo**](docs/TaskApi.md#deleteTaskUsingDELETE1WithHttpInfo) | **DELETE** /v2/tasks/{task_id} | Delete a Task
+*TaskApi* | [**getTaskUsingGET1**](docs/TaskApi.md#getTaskUsingGET1) | **GET** /v2/tasks/{task_id} | Retrieve a Task
+*TaskApi* | [**getTaskUsingGET1WithHttpInfo**](docs/TaskApi.md#getTaskUsingGET1WithHttpInfo) | **GET** /v2/tasks/{task_id} | Retrieve a Task
+*TaskApi* | [**listTasksUsingGET1**](docs/TaskApi.md#listTasksUsingGET1) | **GET** /v2/tasks | List Tasks
+*TaskApi* | [**listTasksUsingGET1WithHttpInfo**](docs/TaskApi.md#listTasksUsingGET1WithHttpInfo) | **GET** /v2/tasks | List Tasks
+*TaskApi* | [**retrieveTaskModelUsingGET1**](docs/TaskApi.md#retrieveTaskModelUsingGET1) | **GET** /v2/tasks/model | Retrieve Task Model
+*TaskApi* | [**retrieveTaskModelUsingGET1WithHttpInfo**](docs/TaskApi.md#retrieveTaskModelUsingGET1WithHttpInfo) | **GET** /v2/tasks/model | Retrieve Task Model
+*TaskApi* | [**updateTaskCustomFieldUsingPATCH**](docs/TaskApi.md#updateTaskCustomFieldUsingPATCH) | **PATCH** /v2/tasks/model/customFields/{custom_field_id} | Update a Task&#39;s Custom Field
+*TaskApi* | [**updateTaskCustomFieldUsingPATCHWithHttpInfo**](docs/TaskApi.md#updateTaskCustomFieldUsingPATCHWithHttpInfo) | **PATCH** /v2/tasks/model/customFields/{custom_field_id} | Update a Task&#39;s Custom Field
+*TaskApi* | [**updateTaskUsingPATCH**](docs/TaskApi.md#updateTaskUsingPATCH) | **PATCH** /v2/tasks/{task_id} | Update a Task
+*TaskApi* | [**updateTaskUsingPATCHWithHttpInfo**](docs/TaskApi.md#updateTaskUsingPATCHWithHttpInfo) | **PATCH** /v2/tasks/{task_id} | Update a Task
 
 
 ## Documentation for Models
@@ -599,7 +649,7 @@ Class | Method | HTTP request | Description
  - [ListTagsResponse](docs/ListTagsResponse.md)
  - [ListTasksResponse](docs/ListTasksResponse.md)
  - [ListTransactionsResponse](docs/ListTransactionsResponse.md)
- - [ListUserResponse](docs/ListUserResponse.md)
+ - [ListUsersPaginatedResponse](docs/ListUsersPaginatedResponse.md)
  - [ModelFile](docs/ModelFile.md)
  - [Note](docs/Note.md)
  - [NoteTemplate](docs/NoteTemplate.md)

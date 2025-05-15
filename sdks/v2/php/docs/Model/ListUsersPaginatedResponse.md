@@ -1,4 +1,4 @@
-# # ListUserResponse
+# # ListUsersPaginatedResponse
 
 ## Properties
 

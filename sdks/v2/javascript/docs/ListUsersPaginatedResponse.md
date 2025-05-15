@@ -1,4 +1,4 @@
-# KeapCoreServiceV2Sdk.ListUserResponse
+# KeapCoreServiceV2Sdk.ListUsersPaginatedResponse
 
 ## Properties
 
