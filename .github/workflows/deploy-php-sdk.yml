@@ -19,4 +19,6 @@ jobs:
           publish_dir: ./sdks/v2/php
           external_repository: infusionsoft/keap-sdk-php
           publish_branch: main
+          tag_name: ${{ github.event.release.tag_name }}
+          tag_message: 'Release ${{ github.event.release.tag_name }}'
           force_orphan: true
