@@ -385,7 +385,7 @@ import TaskApi from './api/TaskApi';
 * </pre>
 * </p>
 * @module keap.core.v2/index
-* @version 1.0.5
+* @version 1.0.6
 */
 export {
     /**
