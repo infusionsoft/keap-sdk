@@ -41,14 +41,24 @@ import { ApplicationConfigurationModuleTemplate } from '../models/ApplicationCon
 import { ApplicationFeaturesEnabled } from '../models/ApplicationFeaturesEnabled';
 import { ApplyRemoveTagRequest } from '../models/ApplyRemoveTagRequest';
 import { ApplyTagsResponse } from '../models/ApplyTagsResponse';
+import { AssignAutomationCategoryRequest } from '../models/AssignAutomationCategoryRequest';
 import { AssignProductCategoriesRequest } from '../models/AssignProductCategoriesRequest';
 import { AssignProductsRequest } from '../models/AssignProductsRequest';
 import { Automation } from '../models/Automation';
 import { AutomationCategory } from '../models/AutomationCategory';
 import { AutomationLockStatus } from '../models/AutomationLockStatus';
+import { BaseListResponseDeal } from '../models/BaseListResponseDeal';
+import { BaseListResponseDealNote } from '../models/BaseListResponseDealNote';
+import { BaseListResponsePipeline } from '../models/BaseListResponsePipeline';
+import { BaseListResponsePipelineSummary } from '../models/BaseListResponsePipelineSummary';
+import { BaseListResponseStage } from '../models/BaseListResponseStage';
 import { BasicCompany } from '../models/BasicCompany';
 import { BasicContact } from '../models/BasicContact';
 import { BasicUser } from '../models/BasicUser';
+import { BulkCreateDealNoteRequest } from '../models/BulkCreateDealNoteRequest';
+import { BulkCreateDealNoteResponse } from '../models/BulkCreateDealNoteResponse';
+import { BulkCreateDealNotesRequest } from '../models/BulkCreateDealNotesRequest';
+import { BulkCreateDealNotesResponse } from '../models/BulkCreateDealNotesResponse';
 import { BusinessProfileAddressRequest } from '../models/BusinessProfileAddressRequest';
 import { BusinessProfileAddressResponse } from '../models/BusinessProfileAddressResponse';
 import { Campaign } from '../models/Campaign';
@@ -74,6 +84,8 @@ import { CreateContactUtmPropertiesRequest } from '../models/CreateContactUtmPro
 import { CreateCustomFieldOptionRequest } from '../models/CreateCustomFieldOptionRequest';
 import { CreateCustomFieldRequest } from '../models/CreateCustomFieldRequest';
 import { CreateCustomFieldResponse } from '../models/CreateCustomFieldResponse';
+import { CreateDealNoteRequest } from '../models/CreateDealNoteRequest';
+import { CreateDealRequest } from '../models/CreateDealRequest';
 import { CreateDefaultCommissionProgramRequest } from '../models/CreateDefaultCommissionProgramRequest';
 import { CreateEmailSentRequest } from '../models/CreateEmailSentRequest';
 import { CreateEmailsSentRequest } from '../models/CreateEmailsSentRequest';
@@ -91,6 +103,7 @@ import { CreateOrUpdateAffiliateLinkRequest } from '../models/CreateOrUpdateAffi
 import { CreateOrderTotalDiscountRequest } from '../models/CreateOrderTotalDiscountRequest';
 import { CreatePaymentMethodConfigRequest } from '../models/CreatePaymentMethodConfigRequest';
 import { CreatePaymentRequest } from '../models/CreatePaymentRequest';
+import { CreatePipelineRequest } from '../models/CreatePipelineRequest';
 import { CreateProductCategoryRequest } from '../models/CreateProductCategoryRequest';
 import { CreateProductCommissionProgramRequest } from '../models/CreateProductCommissionProgramRequest';
 import { CreateProductDiscountRequest } from '../models/CreateProductDiscountRequest';
@@ -99,6 +112,7 @@ import { CreateProductRequest } from '../models/CreateProductRequest';
 import { CreateReferralRequest } from '../models/CreateReferralRequest';
 import { CreateRestOrderItemRequest } from '../models/CreateRestOrderItemRequest';
 import { CreateShippingDiscountRequest } from '../models/CreateShippingDiscountRequest';
+import { CreateStageRequest } from '../models/CreateStageRequest';
 import { CreateSubscriptionCommissionProgramRequest } from '../models/CreateSubscriptionCommissionProgramRequest';
 import { CreateSubscriptionPlanRequest } from '../models/CreateSubscriptionPlanRequest';
 import { CreateSubscriptionV2 } from '../models/CreateSubscriptionV2';
@@ -114,6 +128,14 @@ import { CustomField } from '../models/CustomField';
 import { CustomFieldMetaData } from '../models/CustomFieldMetaData';
 import { CustomFieldOption } from '../models/CustomFieldOption';
 import { CustomFieldValue } from '../models/CustomFieldValue';
+import { DateExpression } from '../models/DateExpression';
+import { DateExpressionResponse } from '../models/DateExpressionResponse';
+import { Deal } from '../models/Deal';
+import { DealContact } from '../models/DealContact';
+import { DealListResponse } from '../models/DealListResponse';
+import { DealNote } from '../models/DealNote';
+import { DealNoteListResponse } from '../models/DealNoteListResponse';
+import { DealStatus } from '../models/DealStatus';
 import { DefaultCommission } from '../models/DefaultCommission';
 import { DeleteEmailsRequest } from '../models/DeleteEmailsRequest';
 import { DeleteEmailsResponse } from '../models/DeleteEmailsResponse';
@@ -122,6 +144,10 @@ import { DeleteProgramCommissionRequest } from '../models/DeleteProgramCommissio
 import { DeleteSubscriptionPlanCommissionRequest } from '../models/DeleteSubscriptionPlanCommissionRequest';
 import { Discount } from '../models/Discount';
 import { DiscountCriteria } from '../models/DiscountCriteria';
+import { DisplayForm } from '../models/DisplayForm';
+import { DisplayGroup } from '../models/DisplayGroup';
+import { DisplayProperty } from '../models/DisplayProperty';
+import { DisplayPropertySource } from '../models/DisplayPropertySource';
 import { EmailAddress } from '../models/EmailAddress';
 import { EmailAddressRequest } from '../models/EmailAddressRequest';
 import { EmailAddressStatus } from '../models/EmailAddressStatus';
@@ -212,8 +238,10 @@ import { ListTagsResponse } from '../models/ListTagsResponse';
 import { ListTasksResponse } from '../models/ListTasksResponse';
 import { ListTransactionsResponse } from '../models/ListTransactionsResponse';
 import { ListUsersPaginatedResponse } from '../models/ListUsersPaginatedResponse';
+import { LogicalDate } from '../models/LogicalDate';
 import { ModelError } from '../models/ModelError';
 import { ModelFile } from '../models/ModelFile';
+import { Money } from '../models/Money';
 import { Note } from '../models/Note';
 import { NoteTemplate } from '../models/NoteTemplate';
 import { ObjectModel } from '../models/ObjectModel';
@@ -224,12 +252,49 @@ import { OrderItemTax } from '../models/OrderItemTax';
 import { OrderTotalDiscount } from '../models/OrderTotalDiscount';
 import { Origin } from '../models/Origin';
 import { OriginRequest } from '../models/OriginRequest';
+import { Owner } from '../models/Owner';
 import { PatchAutomationCategoryRequest } from '../models/PatchAutomationCategoryRequest';
 import { PaymentMethod } from '../models/PaymentMethod';
 import { PaymentMethodConfig } from '../models/PaymentMethodConfig';
 import { PaymentPlan } from '../models/PaymentPlan';
 import { PaymentResult } from '../models/PaymentResult';
 import { PhoneNumber } from '../models/PhoneNumber';
+import { Pipeline } from '../models/Pipeline';
+import { PipelineCustomField } from '../models/PipelineCustomField';
+import { PipelineCustomFieldArrayDisplayOptions } from '../models/PipelineCustomFieldArrayDisplayOptions';
+import { PipelineCustomFieldArrayPropertyType } from '../models/PipelineCustomFieldArrayPropertyType';
+import { PipelineCustomFieldBooleanDisplayOptions } from '../models/PipelineCustomFieldBooleanDisplayOptions';
+import { PipelineCustomFieldBooleanDisplayType } from '../models/PipelineCustomFieldBooleanDisplayType';
+import { PipelineCustomFieldCardDisplayOptions } from '../models/PipelineCustomFieldCardDisplayOptions';
+import { PipelineCustomFieldCardProperty } from '../models/PipelineCustomFieldCardProperty';
+import { PipelineCustomFieldDateTimeOptions } from '../models/PipelineCustomFieldDateTimeOptions';
+import { PipelineCustomFieldDisplayOptions } from '../models/PipelineCustomFieldDisplayOptions';
+import { PipelineCustomFieldDisplayOptionsType } from '../models/PipelineCustomFieldDisplayOptionsType';
+import { PipelineCustomFieldDisplayStyle } from '../models/PipelineCustomFieldDisplayStyle';
+import { PipelineCustomFieldDurationDisplayOptions } from '../models/PipelineCustomFieldDurationDisplayOptions';
+import { PipelineCustomFieldDurationOptionsDurationUnit } from '../models/PipelineCustomFieldDurationOptionsDurationUnit';
+import { PipelineCustomFieldEmptyStateContent } from '../models/PipelineCustomFieldEmptyStateContent';
+import { PipelineCustomFieldModelPropertyTypeDiscriminator } from '../models/PipelineCustomFieldModelPropertyTypeDiscriminator';
+import { PipelineCustomFieldOption } from '../models/PipelineCustomFieldOption';
+import { PipelineCustomFieldOptionDisplayType } from '../models/PipelineCustomFieldOptionDisplayType';
+import { PipelineCustomFieldOptionGroup } from '../models/PipelineCustomFieldOptionGroup';
+import { PipelineCustomFieldOptions } from '../models/PipelineCustomFieldOptions';
+import { PipelineCustomFieldPrimitiveType } from '../models/PipelineCustomFieldPrimitiveType';
+import { PipelineCustomFieldPropertyValidator } from '../models/PipelineCustomFieldPropertyValidator';
+import { PipelineCustomFieldRefDisplayOptions } from '../models/PipelineCustomFieldRefDisplayOptions';
+import { PipelineCustomFieldRefDisplayType } from '../models/PipelineCustomFieldRefDisplayType';
+import { PipelineCustomFieldRefPropertyType } from '../models/PipelineCustomFieldRefPropertyType';
+import { PipelineCustomFieldRefType } from '../models/PipelineCustomFieldRefType';
+import { PipelineCustomFieldSizeValidationType } from '../models/PipelineCustomFieldSizeValidationType';
+import { PipelineCustomFieldSizeValidator } from '../models/PipelineCustomFieldSizeValidator';
+import { PipelineCustomFieldType } from '../models/PipelineCustomFieldType';
+import { PipelineCustomFields } from '../models/PipelineCustomFields';
+import { PipelineListResponse } from '../models/PipelineListResponse';
+import { PipelineOutcomeLabel } from '../models/PipelineOutcomeLabel';
+import { PipelineOutcomeLabelListResponse } from '../models/PipelineOutcomeLabelListResponse';
+import { PipelineStageListResponse } from '../models/PipelineStageListResponse';
+import { PipelineSummariesListResponse } from '../models/PipelineSummariesListResponse';
+import { PipelineSummary } from '../models/PipelineSummary';
 import { ProductCategory } from '../models/ProductCategory';
 import { ProductCommission } from '../models/ProductCommission';
 import { ProductCommissionProgram } from '../models/ProductCommissionProgram';
@@ -273,7 +338,10 @@ import { ShippingInformation } from '../models/ShippingInformation';
 import { ShippingMethod } from '../models/ShippingMethod';
 import { SocialAccount } from '../models/SocialAccount';
 import { StackTraceElement } from '../models/StackTraceElement';
+import { Stage } from '../models/Stage';
+import { StageDealListResponse } from '../models/StageDealListResponse';
 import { StageDetails } from '../models/StageDetails';
+import { StageListResponse } from '../models/StageListResponse';
 import { SubscriptionCommission } from '../models/SubscriptionCommission';
 import { SubscriptionCommissionProgram } from '../models/SubscriptionCommissionProgram';
 import { SubscriptionPlan } from '../models/SubscriptionPlan';
@@ -291,7 +359,11 @@ import { UpdateCategoryDiscountRequest } from '../models/UpdateCategoryDiscountR
 import { UpdateCommissionProgramRequest } from '../models/UpdateCommissionProgramRequest';
 import { UpdateCompanyRequest } from '../models/UpdateCompanyRequest';
 import { UpdateCustomFieldMetaDataRequest } from '../models/UpdateCustomFieldMetaDataRequest';
+import { UpdateDealNoteRequest } from '../models/UpdateDealNoteRequest';
 import { UpdateDefaultCommissionProgramRequest } from '../models/UpdateDefaultCommissionProgramRequest';
+import { UpdateDisplayFormRequest } from '../models/UpdateDisplayFormRequest';
+import { UpdateDisplayGroupRequest } from '../models/UpdateDisplayGroupRequest';
+import { UpdateDisplayPropertyRequest } from '../models/UpdateDisplayPropertyRequest';
 import { UpdateEmailAddress } from '../models/UpdateEmailAddress';
 import { UpdateFreeTrialDiscountRequest } from '../models/UpdateFreeTrialDiscountRequest';
 import { UpdateLeadSourceExpenseRequest } from '../models/UpdateLeadSourceExpenseRequest';
@@ -303,6 +375,8 @@ import { UpdateOpportunityStageRequest } from '../models/UpdateOpportunityStageR
 import { UpdateOrderItemRequest } from '../models/UpdateOrderItemRequest';
 import { UpdateOrderRequest } from '../models/UpdateOrderRequest';
 import { UpdateOrderTotalDiscountRequest } from '../models/UpdateOrderTotalDiscountRequest';
+import { UpdateOutcomeLabelsRequest } from '../models/UpdateOutcomeLabelsRequest';
+import { UpdatePipelineRequest } from '../models/UpdatePipelineRequest';
 import { UpdateProductCategoryRequest } from '../models/UpdateProductCategoryRequest';
 import { UpdateProductCommissionProgramRequest } from '../models/UpdateProductCommissionProgramRequest';
 import { UpdateProductDiscountRequest } from '../models/UpdateProductDiscountRequest';
@@ -311,6 +385,7 @@ import { UpdateProductInterestRequest } from '../models/UpdateProductInterestReq
 import { UpdateProductInventoryRequest } from '../models/UpdateProductInventoryRequest';
 import { UpdateProductRequest } from '../models/UpdateProductRequest';
 import { UpdateShippingDiscountRequest } from '../models/UpdateShippingDiscountRequest';
+import { UpdateStageRequest } from '../models/UpdateStageRequest';
 import { UpdateSubscriptionCommissionProgramRequest } from '../models/UpdateSubscriptionCommissionProgramRequest';
 import { UpdateSubscriptionPlanRequest } from '../models/UpdateSubscriptionPlanRequest';
 import { UpdateSubscriptionRequest } from '../models/UpdateSubscriptionRequest';
@@ -1369,6 +1444,40 @@ export class ObservableAutomationApi {
      */
     public addContactsToAutomationSequenceUsingPOST(automationId: string, sequenceId: string, addToAutomationSequenceRequest: AddToAutomationSequenceRequest, _options?: ConfigurationOptions): Observable<AddToAutomationSequenceResponse> {
         return this.addContactsToAutomationSequenceUsingPOSTWithHttpInfo(automationId, sequenceId, addToAutomationSequenceRequest, _options).pipe(map((apiResponse: HttpInfo<AddToAutomationSequenceResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Bulk updates the categories of one or more automations
+     * Bulk update for Automations Categories
+     * @param assignAutomationCategoryRequest assignAutomationCategoryRequest
+     */
+    public bulkAssignmentAutomationsCategoriesUsingPOSTWithHttpInfo(assignAutomationCategoryRequest: AssignAutomationCategoryRequest, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.bulkAssignmentAutomationsCategoriesUsingPOST(assignAutomationCategoryRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.bulkAssignmentAutomationsCategoriesUsingPOSTWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Bulk updates the categories of one or more automations
+     * Bulk update for Automations Categories
+     * @param assignAutomationCategoryRequest assignAutomationCategoryRequest
+     */
+    public bulkAssignmentAutomationsCategoriesUsingPOST(assignAutomationCategoryRequest: AssignAutomationCategoryRequest, _options?: ConfigurationOptions): Observable<void> {
+        return this.bulkAssignmentAutomationsCategoriesUsingPOSTWithHttpInfo(assignAutomationCategoryRequest, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
@@ -2611,6 +2720,538 @@ export class ObservableContactApi {
      */
     public updateContactUsingPATCH(contactId: string, updateMask?: Array<string>, createUpdateContactRequest?: CreateUpdateContactRequest, _options?: ConfigurationOptions): Observable<Contact> {
         return this.updateContactUsingPATCHWithHttpInfo(contactId, updateMask, createUpdateContactRequest, _options).pipe(map((apiResponse: HttpInfo<Contact>) => apiResponse.data));
+    }
+
+}
+
+import { CustomFieldsApiRequestFactory, CustomFieldsApiResponseProcessor} from "../apis/CustomFieldsApi";
+export class ObservableCustomFieldsApi {
+    private requestFactory: CustomFieldsApiRequestFactory;
+    private responseProcessor: CustomFieldsApiResponseProcessor;
+    private configuration: Configuration;
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: CustomFieldsApiRequestFactory,
+        responseProcessor?: CustomFieldsApiResponseProcessor
+    ) {
+        this.configuration = configuration;
+        this.requestFactory = requestFactory || new CustomFieldsApiRequestFactory(configuration);
+        this.responseProcessor = responseProcessor || new CustomFieldsApiResponseProcessor();
+    }
+
+    /**
+     * Retrieves a list of custom fields in a tenant.
+     * Retrieves a list of custom fields in a tenant.
+     */
+    public getCustomFieldsWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<PipelineCustomFields>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getCustomFields(_config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getCustomFieldsWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a list of custom fields in a tenant.
+     * Retrieves a list of custom fields in a tenant.
+     */
+    public getCustomFields(_options?: ConfigurationOptions): Observable<PipelineCustomFields> {
+        return this.getCustomFieldsWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<PipelineCustomFields>) => apiResponse.data));
+    }
+
+}
+
+import { DateExpressionApiRequestFactory, DateExpressionApiResponseProcessor} from "../apis/DateExpressionApi";
+export class ObservableDateExpressionApi {
+    private requestFactory: DateExpressionApiRequestFactory;
+    private responseProcessor: DateExpressionApiResponseProcessor;
+    private configuration: Configuration;
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: DateExpressionApiRequestFactory,
+        responseProcessor?: DateExpressionApiResponseProcessor
+    ) {
+        this.configuration = configuration;
+        this.requestFactory = requestFactory || new DateExpressionApiRequestFactory(configuration);
+        this.responseProcessor = responseProcessor || new DateExpressionApiResponseProcessor();
+    }
+
+    /**
+     * @param [timeZone]
+     * @param [query]
+     */
+    public queryDateExpressionsWithHttpInfo(timeZone?: string, query?: string, _options?: ConfigurationOptions): Observable<HttpInfo<DateExpressionResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.queryDateExpressions(timeZone, query, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.queryDateExpressionsWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * @param [timeZone]
+     * @param [query]
+     */
+    public queryDateExpressions(timeZone?: string, query?: string, _options?: ConfigurationOptions): Observable<DateExpressionResponse> {
+        return this.queryDateExpressionsWithHttpInfo(timeZone, query, _options).pipe(map((apiResponse: HttpInfo<DateExpressionResponse>) => apiResponse.data));
+    }
+
+}
+
+import { DealsApiRequestFactory, DealsApiResponseProcessor} from "../apis/DealsApi";
+export class ObservableDealsApi {
+    private requestFactory: DealsApiRequestFactory;
+    private responseProcessor: DealsApiResponseProcessor;
+    private configuration: Configuration;
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: DealsApiRequestFactory,
+        responseProcessor?: DealsApiResponseProcessor
+    ) {
+        this.configuration = configuration;
+        this.requestFactory = requestFactory || new DealsApiRequestFactory(configuration);
+        this.responseProcessor = responseProcessor || new DealsApiResponseProcessor();
+    }
+
+    /**
+     * Creates a new deal.
+     * Creates a new deal.
+     * @param createDealRequest the request body containing deal details
+     */
+    public createDealWithHttpInfo(createDealRequest: CreateDealRequest, _options?: ConfigurationOptions): Observable<HttpInfo<Deal>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.createDeal(createDealRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createDealWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Creates a new deal.
+     * Creates a new deal.
+     * @param createDealRequest the request body containing deal details
+     */
+    public createDeal(createDealRequest: CreateDealRequest, _options?: ConfigurationOptions): Observable<Deal> {
+        return this.createDealWithHttpInfo(createDealRequest, _options).pipe(map((apiResponse: HttpInfo<Deal>) => apiResponse.data));
+    }
+
+    /**
+     * Creates a new note for a specific deal.
+     * Creates a new note for a specific deal.
+     * @param id the deal ID to associate the new note with
+     * @param createDealNoteRequest the request body containing note details
+     */
+    public createNoteWithHttpInfo(id: string, createDealNoteRequest: CreateDealNoteRequest, _options?: ConfigurationOptions): Observable<HttpInfo<DealNote>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.createNote(id, createDealNoteRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createNoteWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Creates a new note for a specific deal.
+     * Creates a new note for a specific deal.
+     * @param id the deal ID to associate the new note with
+     * @param createDealNoteRequest the request body containing note details
+     */
+    public createNote(id: string, createDealNoteRequest: CreateDealNoteRequest, _options?: ConfigurationOptions): Observable<DealNote> {
+        return this.createNoteWithHttpInfo(id, createDealNoteRequest, _options).pipe(map((apiResponse: HttpInfo<DealNote>) => apiResponse.data));
+    }
+
+    /**
+     * Creates new notes in bulk.
+     * Creates new notes in bulk.
+     * @param bulkCreateDealNotesRequest the request body containing note details
+     */
+    public createNotesBulkWithHttpInfo(bulkCreateDealNotesRequest: BulkCreateDealNotesRequest, _options?: ConfigurationOptions): Observable<HttpInfo<BulkCreateDealNotesResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.createNotesBulk(bulkCreateDealNotesRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createNotesBulkWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Creates new notes in bulk.
+     * Creates new notes in bulk.
+     * @param bulkCreateDealNotesRequest the request body containing note details
+     */
+    public createNotesBulk(bulkCreateDealNotesRequest: BulkCreateDealNotesRequest, _options?: ConfigurationOptions): Observable<BulkCreateDealNotesResponse> {
+        return this.createNotesBulkWithHttpInfo(bulkCreateDealNotesRequest, _options).pipe(map((apiResponse: HttpInfo<BulkCreateDealNotesResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Deletes a specific deal note by its ID.
+     * Deletes a specific deal note by its ID.
+     * @param noteId the ID of the note to delete
+     */
+    public deleteNoteWithHttpInfo(noteId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.deleteNote(noteId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteNoteWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Deletes a specific deal note by its ID.
+     * Deletes a specific deal note by its ID.
+     * @param noteId the ID of the note to delete
+     */
+    public deleteNote(noteId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteNoteWithHttpInfo(noteId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves a specific deal by its ID.
+     * Retrieves a specific deal by its ID.
+     * @param dealId the ID of the deal to retrieve
+     */
+    public getDealWithHttpInfo(dealId: string, _options?: ConfigurationOptions): Observable<HttpInfo<Deal>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getDeal(dealId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getDealWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a specific deal by its ID.
+     * Retrieves a specific deal by its ID.
+     * @param dealId the ID of the deal to retrieve
+     */
+    public getDeal(dealId: string, _options?: ConfigurationOptions): Observable<Deal> {
+        return this.getDealWithHttpInfo(dealId, _options).pipe(map((apiResponse: HttpInfo<Deal>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves a specific deal note by its ID.
+     * Retrieves a specific deal note by its ID.
+     * @param noteId the ID of the note to retrieve
+     */
+    public getNoteWithHttpInfo(noteId: string, _options?: ConfigurationOptions): Observable<HttpInfo<DealNote>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getNote(noteId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getNoteWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a specific deal note by its ID.
+     * Retrieves a specific deal note by its ID.
+     * @param noteId the ID of the note to retrieve
+     */
+    public getNote(noteId: string, _options?: ConfigurationOptions): Observable<DealNote> {
+        return this.getNoteWithHttpInfo(noteId, _options).pipe(map((apiResponse: HttpInfo<DealNote>) => apiResponse.data));
+    }
+
+    /**
+     * Lists all deals associated with a specific contact.
+     * Lists all deals associated with a specific contact.
+     * @param contactId the contact ID to list deals for
+     * @param [filter]
+     * @param [pageToken]
+     * @param [orderBy]
+     * @param [pageSize]
+     */
+    public listDealsWithHttpInfo(contactId: string, filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: ConfigurationOptions): Observable<HttpInfo<DealListResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.listDeals(contactId, filter, pageToken, orderBy, pageSize, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listDealsWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Lists all deals associated with a specific contact.
+     * Lists all deals associated with a specific contact.
+     * @param contactId the contact ID to list deals for
+     * @param [filter]
+     * @param [pageToken]
+     * @param [orderBy]
+     * @param [pageSize]
+     */
+    public listDeals(contactId: string, filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: ConfigurationOptions): Observable<DealListResponse> {
+        return this.listDealsWithHttpInfo(contactId, filter, pageToken, orderBy, pageSize, _options).pipe(map((apiResponse: HttpInfo<DealListResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Lists all notes associated with a specific deal.
+     * Lists all notes associated with a specific deal.
+     * @param id the deal ID to list notes for
+     * @param [filter]
+     * @param [pageToken]
+     * @param [orderBy]
+     * @param [pageSize]
+     */
+    public listNotesWithHttpInfo(id: string, filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: ConfigurationOptions): Observable<HttpInfo<DealNoteListResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.listNotes(id, filter, pageToken, orderBy, pageSize, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listNotesWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Lists all notes associated with a specific deal.
+     * Lists all notes associated with a specific deal.
+     * @param id the deal ID to list notes for
+     * @param [filter]
+     * @param [pageToken]
+     * @param [orderBy]
+     * @param [pageSize]
+     */
+    public listNotes(id: string, filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: ConfigurationOptions): Observable<DealNoteListResponse> {
+        return this.listNotesWithHttpInfo(id, filter, pageToken, orderBy, pageSize, _options).pipe(map((apiResponse: HttpInfo<DealNoteListResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Updates a specific deal note by its ID.
+     * Updates a specific deal note by its ID.
+     * @param noteId the ID of the note to update
+     * @param updateDealNoteRequest the request body containing updated note details
+     */
+    public updateNoteWithHttpInfo(noteId: string, updateDealNoteRequest: UpdateDealNoteRequest, _options?: ConfigurationOptions): Observable<HttpInfo<DealNote>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.updateNote(noteId, updateDealNoteRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateNoteWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Updates a specific deal note by its ID.
+     * Updates a specific deal note by its ID.
+     * @param noteId the ID of the note to update
+     * @param updateDealNoteRequest the request body containing updated note details
+     */
+    public updateNote(noteId: string, updateDealNoteRequest: UpdateDealNoteRequest, _options?: ConfigurationOptions): Observable<DealNote> {
+        return this.updateNoteWithHttpInfo(noteId, updateDealNoteRequest, _options).pipe(map((apiResponse: HttpInfo<DealNote>) => apiResponse.data));
+    }
+
+}
+
+import { DisplayFormsApiRequestFactory, DisplayFormsApiResponseProcessor} from "../apis/DisplayFormsApi";
+export class ObservableDisplayFormsApi {
+    private requestFactory: DisplayFormsApiRequestFactory;
+    private responseProcessor: DisplayFormsApiResponseProcessor;
+    private configuration: Configuration;
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: DisplayFormsApiRequestFactory,
+        responseProcessor?: DisplayFormsApiResponseProcessor
+    ) {
+        this.configuration = configuration;
+        this.requestFactory = requestFactory || new DisplayFormsApiRequestFactory(configuration);
+        this.responseProcessor = responseProcessor || new DisplayFormsApiResponseProcessor();
+    }
+
+    /**
+     * Retrieves a specific display form by a pipeline ID.
+     * Retrieves a specific display form by a pipeline ID.
+     * @param pipelineId the ID of the pipeline containing the form
+     */
+    public getDisplayFormWithHttpInfo(pipelineId: string, _options?: ConfigurationOptions): Observable<HttpInfo<DisplayForm>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getDisplayForm(pipelineId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getDisplayFormWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a specific display form by a pipeline ID.
+     * Retrieves a specific display form by a pipeline ID.
+     * @param pipelineId the ID of the pipeline containing the form
+     */
+    public getDisplayForm(pipelineId: string, _options?: ConfigurationOptions): Observable<DisplayForm> {
+        return this.getDisplayFormWithHttpInfo(pipelineId, _options).pipe(map((apiResponse: HttpInfo<DisplayForm>) => apiResponse.data));
+    }
+
+    /**
+     * Updates a display form
+     * Updates a display form
+     * @param pipelineId the ID of the pipeline containing the form
+     * @param updateDisplayFormRequest the request body containing updated display form details
+     */
+    public updateDisplayFormWithHttpInfo(pipelineId: string, updateDisplayFormRequest: UpdateDisplayFormRequest, _options?: ConfigurationOptions): Observable<HttpInfo<DisplayForm>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.updateDisplayForm(pipelineId, updateDisplayFormRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateDisplayFormWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Updates a display form
+     * Updates a display form
+     * @param pipelineId the ID of the pipeline containing the form
+     * @param updateDisplayFormRequest the request body containing updated display form details
+     */
+    public updateDisplayForm(pipelineId: string, updateDisplayFormRequest: UpdateDisplayFormRequest, _options?: ConfigurationOptions): Observable<DisplayForm> {
+        return this.updateDisplayFormWithHttpInfo(pipelineId, updateDisplayFormRequest, _options).pipe(map((apiResponse: HttpInfo<DisplayForm>) => apiResponse.data));
     }
 
 }
@@ -5017,6 +5658,410 @@ export class ObservablePaymentMethodConfigsApi {
 
 }
 
+import { PipelinesApiRequestFactory, PipelinesApiResponseProcessor} from "../apis/PipelinesApi";
+export class ObservablePipelinesApi {
+    private requestFactory: PipelinesApiRequestFactory;
+    private responseProcessor: PipelinesApiResponseProcessor;
+    private configuration: Configuration;
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: PipelinesApiRequestFactory,
+        responseProcessor?: PipelinesApiResponseProcessor
+    ) {
+        this.configuration = configuration;
+        this.requestFactory = requestFactory || new PipelinesApiRequestFactory(configuration);
+        this.responseProcessor = responseProcessor || new PipelinesApiResponseProcessor();
+    }
+
+    /**
+     * Deletes a pipeline.
+     * Deletes a pipeline.
+     * @param id the pipeline identifier
+     * @param [allowCleanup] flag indicating whether cleanup is allowed, can be null
+     * @param [newStageId] the new stage identifier, can be null
+     */
+    public _deleteWithHttpInfo(id: string, allowCleanup?: boolean, newStageId?: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory._delete(id, allowCleanup, newStageId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor._deleteWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Deletes a pipeline.
+     * Deletes a pipeline.
+     * @param id the pipeline identifier
+     * @param [allowCleanup] flag indicating whether cleanup is allowed, can be null
+     * @param [newStageId] the new stage identifier, can be null
+     */
+    public _delete(id: string, allowCleanup?: boolean, newStageId?: string, _options?: ConfigurationOptions): Observable<void> {
+        return this._deleteWithHttpInfo(id, allowCleanup, newStageId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+    /**
+     * Creates a new entity.
+     * Creates a new entity.
+     * @param createPipelineRequest the create request
+     */
+    public createWithHttpInfo(createPipelineRequest: CreatePipelineRequest, _options?: ConfigurationOptions): Observable<HttpInfo<Pipeline>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.create(createPipelineRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Creates a new entity.
+     * Creates a new entity.
+     * @param createPipelineRequest the create request
+     */
+    public create(createPipelineRequest: CreatePipelineRequest, _options?: ConfigurationOptions): Observable<Pipeline> {
+        return this.createWithHttpInfo(createPipelineRequest, _options).pipe(map((apiResponse: HttpInfo<Pipeline>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves an entity by its identifier.
+     * Retrieves an entity by its identifier.
+     * @param id the entity identifier
+     */
+    public getWithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<Pipeline>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.get(id, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves an entity by its identifier.
+     * Retrieves an entity by its identifier.
+     * @param id the entity identifier
+     */
+    public get(id: string, _options?: ConfigurationOptions): Observable<Pipeline> {
+        return this.getWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<Pipeline>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves the count of deals for a specific pipeline.
+     * Retrieves the count of deals for a specific pipeline.
+     * @param id the pipeline identifier
+     * @param [filter]
+     * @param [pageToken]
+     * @param [orderBy]
+     * @param [pageSize]
+     */
+    public getDealCountWithHttpInfo(id: string, filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: ConfigurationOptions): Observable<HttpInfo<number>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getDealCount(id, filter, pageToken, orderBy, pageSize, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getDealCountWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves the count of deals for a specific pipeline.
+     * Retrieves the count of deals for a specific pipeline.
+     * @param id the pipeline identifier
+     * @param [filter]
+     * @param [pageToken]
+     * @param [orderBy]
+     * @param [pageSize]
+     */
+    public getDealCount(id: string, filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: ConfigurationOptions): Observable<number> {
+        return this.getDealCountWithHttpInfo(id, filter, pageToken, orderBy, pageSize, _options).pipe(map((apiResponse: HttpInfo<number>) => apiResponse.data));
+    }
+
+    /**
+     * Gets the outcome labels for a pipeline.
+     * Gets the outcome labels for a pipeline.
+     * @param id the pipeline identifier
+     * @param [filter]
+     * @param [pageToken]
+     * @param [orderBy]
+     * @param [pageSize]
+     */
+    public getOutcomeLabelsWithHttpInfo(id: string, filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: ConfigurationOptions): Observable<HttpInfo<PipelineOutcomeLabelListResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getOutcomeLabels(id, filter, pageToken, orderBy, pageSize, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getOutcomeLabelsWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Gets the outcome labels for a pipeline.
+     * Gets the outcome labels for a pipeline.
+     * @param id the pipeline identifier
+     * @param [filter]
+     * @param [pageToken]
+     * @param [orderBy]
+     * @param [pageSize]
+     */
+    public getOutcomeLabels(id: string, filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: ConfigurationOptions): Observable<PipelineOutcomeLabelListResponse> {
+        return this.getOutcomeLabelsWithHttpInfo(id, filter, pageToken, orderBy, pageSize, _options).pipe(map((apiResponse: HttpInfo<PipelineOutcomeLabelListResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Lists entities based on the provided ListCommand.
+     * Lists entities based on the provided ListCommand.
+     * @param [filter]
+     * @param [pageToken]
+     * @param [orderBy]
+     * @param [pageSize]
+     */
+    public listWithHttpInfo(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: ConfigurationOptions): Observable<HttpInfo<PipelineListResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.list(filter, pageToken, orderBy, pageSize, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Lists entities based on the provided ListCommand.
+     * Lists entities based on the provided ListCommand.
+     * @param [filter]
+     * @param [pageToken]
+     * @param [orderBy]
+     * @param [pageSize]
+     */
+    public list(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: ConfigurationOptions): Observable<PipelineListResponse> {
+        return this.listWithHttpInfo(filter, pageToken, orderBy, pageSize, _options).pipe(map((apiResponse: HttpInfo<PipelineListResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves a list of stages for a specific pipeline.
+     * Retrieves a list of stages for a specific pipeline.
+     * @param id the pipeline identifier
+     * @param [filter]
+     * @param [pageToken]
+     * @param [orderBy]
+     * @param [pageSize]
+     */
+    public listStagesWithHttpInfo(id: string, filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: ConfigurationOptions): Observable<HttpInfo<PipelineStageListResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.listStages(id, filter, pageToken, orderBy, pageSize, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listStagesWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a list of stages for a specific pipeline.
+     * Retrieves a list of stages for a specific pipeline.
+     * @param id the pipeline identifier
+     * @param [filter]
+     * @param [pageToken]
+     * @param [orderBy]
+     * @param [pageSize]
+     */
+    public listStages(id: string, filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: ConfigurationOptions): Observable<PipelineStageListResponse> {
+        return this.listStagesWithHttpInfo(id, filter, pageToken, orderBy, pageSize, _options).pipe(map((apiResponse: HttpInfo<PipelineStageListResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves a list of pipeline summaries.
+     * Retrieves a list of pipeline summaries.
+     * @param [filter]
+     * @param [pageToken]
+     * @param [orderBy]
+     * @param [pageSize]
+     */
+    public listSummariesWithHttpInfo(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: ConfigurationOptions): Observable<HttpInfo<PipelineSummariesListResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.listSummaries(filter, pageToken, orderBy, pageSize, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listSummariesWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a list of pipeline summaries.
+     * Retrieves a list of pipeline summaries.
+     * @param [filter]
+     * @param [pageToken]
+     * @param [orderBy]
+     * @param [pageSize]
+     */
+    public listSummaries(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: ConfigurationOptions): Observable<PipelineSummariesListResponse> {
+        return this.listSummariesWithHttpInfo(filter, pageToken, orderBy, pageSize, _options).pipe(map((apiResponse: HttpInfo<PipelineSummariesListResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Sets the outcome labels for a pipeline.
+     * Sets the outcome labels for a pipeline.
+     * @param id the pipeline identifier
+     * @param updateOutcomeLabelsRequest the request containing the new outcome labels
+     */
+    public setOutcomeLabelsWithHttpInfo(id: string, updateOutcomeLabelsRequest: UpdateOutcomeLabelsRequest, _options?: ConfigurationOptions): Observable<HttpInfo<PipelineOutcomeLabelListResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.setOutcomeLabels(id, updateOutcomeLabelsRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.setOutcomeLabelsWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Sets the outcome labels for a pipeline.
+     * Sets the outcome labels for a pipeline.
+     * @param id the pipeline identifier
+     * @param updateOutcomeLabelsRequest the request containing the new outcome labels
+     */
+    public setOutcomeLabels(id: string, updateOutcomeLabelsRequest: UpdateOutcomeLabelsRequest, _options?: ConfigurationOptions): Observable<PipelineOutcomeLabelListResponse> {
+        return this.setOutcomeLabelsWithHttpInfo(id, updateOutcomeLabelsRequest, _options).pipe(map((apiResponse: HttpInfo<PipelineOutcomeLabelListResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Updates an existing entity.
+     * Updates an existing entity.
+     * @param id the entity identifier
+     * @param updateMask the fields to update
+     * @param updatePipelineRequest the update request
+     */
+    public updateWithHttpInfo(id: string, updateMask: Array<string>, updatePipelineRequest: UpdatePipelineRequest, _options?: ConfigurationOptions): Observable<HttpInfo<Pipeline>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.update(id, updateMask, updatePipelineRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Updates an existing entity.
+     * Updates an existing entity.
+     * @param id the entity identifier
+     * @param updateMask the fields to update
+     * @param updatePipelineRequest the update request
+     */
+    public update(id: string, updateMask: Array<string>, updatePipelineRequest: UpdatePipelineRequest, _options?: ConfigurationOptions): Observable<Pipeline> {
+        return this.updateWithHttpInfo(id, updateMask, updatePipelineRequest, _options).pipe(map((apiResponse: HttpInfo<Pipeline>) => apiResponse.data));
+    }
+
+}
+
 import { ProductInterestBundlesApiRequestFactory, ProductInterestBundlesApiResponseProcessor} from "../apis/ProductInterestBundlesApi";
 export class ObservableProductInterestBundlesApi {
     private requestFactory: ProductInterestBundlesApiRequestFactory;
@@ -5625,6 +6670,282 @@ export class ObservableSettingsApi {
      */
     public isApplicationEnabledUsingGET(_options?: ConfigurationOptions): Observable<GetApplicationEnabledStatusResponse> {
         return this.isApplicationEnabledUsingGETWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<GetApplicationEnabledStatusResponse>) => apiResponse.data));
+    }
+
+}
+
+import { StagesApiRequestFactory, StagesApiResponseProcessor} from "../apis/StagesApi";
+export class ObservableStagesApi {
+    private requestFactory: StagesApiRequestFactory;
+    private responseProcessor: StagesApiResponseProcessor;
+    private configuration: Configuration;
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: StagesApiRequestFactory,
+        responseProcessor?: StagesApiResponseProcessor
+    ) {
+        this.configuration = configuration;
+        this.requestFactory = requestFactory || new StagesApiRequestFactory(configuration);
+        this.responseProcessor = responseProcessor || new StagesApiResponseProcessor();
+    }
+
+    /**
+     * Counts the number of deals in a specific stage.
+     * Counts the number of deals in a specific stage.
+     * @param id the stage identifier
+     */
+    public countDealsInStageWithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<number>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.countDealsInStage(id, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.countDealsInStageWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Counts the number of deals in a specific stage.
+     * Counts the number of deals in a specific stage.
+     * @param id the stage identifier
+     */
+    public countDealsInStage(id: string, _options?: ConfigurationOptions): Observable<number> {
+        return this.countDealsInStageWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<number>) => apiResponse.data));
+    }
+
+    /**
+     * Creates a new entity.
+     * Creates a new entity.
+     * @param createStageRequest the create request
+     */
+    public create1WithHttpInfo(createStageRequest: CreateStageRequest, _options?: ConfigurationOptions): Observable<HttpInfo<Stage>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.create1(createStageRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.create1WithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Creates a new entity.
+     * Creates a new entity.
+     * @param createStageRequest the create request
+     */
+    public create1(createStageRequest: CreateStageRequest, _options?: ConfigurationOptions): Observable<Stage> {
+        return this.create1WithHttpInfo(createStageRequest, _options).pipe(map((apiResponse: HttpInfo<Stage>) => apiResponse.data));
+    }
+
+    /**
+     * Deletes a stage by its identifier for a given tenant.
+     * Deletes a stage by its identifier for a given tenant.
+     * @param id the stage identifier
+     * @param [newStageId] the new stage identifier, can be null
+     */
+    public delete1WithHttpInfo(id: string, newStageId?: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.delete1(id, newStageId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.delete1WithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Deletes a stage by its identifier for a given tenant.
+     * Deletes a stage by its identifier for a given tenant.
+     * @param id the stage identifier
+     * @param [newStageId] the new stage identifier, can be null
+     */
+    public delete1(id: string, newStageId?: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.delete1WithHttpInfo(id, newStageId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves an entity by its identifier.
+     * Retrieves an entity by its identifier.
+     * @param id the entity identifier
+     */
+    public get1WithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<Stage>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.get1(id, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.get1WithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves an entity by its identifier.
+     * Retrieves an entity by its identifier.
+     * @param id the entity identifier
+     */
+    public get1(id: string, _options?: ConfigurationOptions): Observable<Stage> {
+        return this.get1WithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<Stage>) => apiResponse.data));
+    }
+
+    /**
+     * Lists entities based on the provided ListCommand.
+     * Lists entities based on the provided ListCommand.
+     * @param [filter]
+     * @param [pageToken]
+     * @param [orderBy]
+     * @param [pageSize]
+     */
+    public list1WithHttpInfo(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: ConfigurationOptions): Observable<HttpInfo<StageListResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.list1(filter, pageToken, orderBy, pageSize, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.list1WithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Lists entities based on the provided ListCommand.
+     * Lists entities based on the provided ListCommand.
+     * @param [filter]
+     * @param [pageToken]
+     * @param [orderBy]
+     * @param [pageSize]
+     */
+    public list1(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: ConfigurationOptions): Observable<StageListResponse> {
+        return this.list1WithHttpInfo(filter, pageToken, orderBy, pageSize, _options).pipe(map((apiResponse: HttpInfo<StageListResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves a list of deals for a specific stage.
+     * Retrieves a list of deals for a specific stage.
+     * @param id the stage identifier
+     * @param [filter]
+     * @param [pageToken]
+     * @param [orderBy]
+     * @param [pageSize]
+     */
+    public listStageDealsWithHttpInfo(id: string, filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: ConfigurationOptions): Observable<HttpInfo<StageDealListResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.listStageDeals(id, filter, pageToken, orderBy, pageSize, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listStageDealsWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a list of deals for a specific stage.
+     * Retrieves a list of deals for a specific stage.
+     * @param id the stage identifier
+     * @param [filter]
+     * @param [pageToken]
+     * @param [orderBy]
+     * @param [pageSize]
+     */
+    public listStageDeals(id: string, filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: ConfigurationOptions): Observable<StageDealListResponse> {
+        return this.listStageDealsWithHttpInfo(id, filter, pageToken, orderBy, pageSize, _options).pipe(map((apiResponse: HttpInfo<StageDealListResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Updates an existing entity.
+     * Updates an existing entity.
+     * @param id the entity identifier
+     * @param updateMask the fields to update
+     * @param updateStageRequest the update request
+     */
+    public update1WithHttpInfo(id: string, updateMask: Array<string>, updateStageRequest: UpdateStageRequest, _options?: ConfigurationOptions): Observable<HttpInfo<Stage>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.update1(id, updateMask, updateStageRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.update1WithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Updates an existing entity.
+     * Updates an existing entity.
+     * @param id the entity identifier
+     * @param updateMask the fields to update
+     * @param updateStageRequest the update request
+     */
+    public update1(id: string, updateMask: Array<string>, updateStageRequest: UpdateStageRequest, _options?: ConfigurationOptions): Observable<Stage> {
+        return this.update1WithHttpInfo(id, updateMask, updateStageRequest, _options).pipe(map((apiResponse: HttpInfo<Stage>) => apiResponse.data));
     }
 
 }
@@ -6689,6 +8010,64 @@ export class ObservableTaskApi {
      */
     public updateTaskUsingPATCH(taskId: string, updateMask?: Array<string>, createUpdateTaskRequest?: CreateUpdateTaskRequest, _options?: ConfigurationOptions): Observable<UpdateTaskResponse> {
         return this.updateTaskUsingPATCHWithHttpInfo(taskId, updateMask, createUpdateTaskRequest, _options).pipe(map((apiResponse: HttpInfo<UpdateTaskResponse>) => apiResponse.data));
+    }
+
+}
+
+import { UsersApiRequestFactory, UsersApiResponseProcessor} from "../apis/UsersApi";
+export class ObservableUsersApi {
+    private requestFactory: UsersApiRequestFactory;
+    private responseProcessor: UsersApiResponseProcessor;
+    private configuration: Configuration;
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: UsersApiRequestFactory,
+        responseProcessor?: UsersApiResponseProcessor
+    ) {
+        this.configuration = configuration;
+        this.requestFactory = requestFactory || new UsersApiRequestFactory(configuration);
+        this.responseProcessor = responseProcessor || new UsersApiResponseProcessor();
+    }
+
+    /**
+     * Retrieves a list of users
+     * List Users
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;email&#x60; - (String) &#x60;given_name&#x60; - (Boolean) &#x60;include_inactive&#x60; - (Boolean) &#x60;include_partners&#x60; - (Set[String]) &#x60;user_ids&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;user_ids%3D%3D123%3Bgiven_name%3D%3DSmith&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;date_created&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listPaginatedUsersUsingGETWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListUsersPaginatedResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.listPaginatedUsersUsingGET(filter, orderBy, pageSize, pageToken, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listPaginatedUsersUsingGETWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a list of users
+     * List Users
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;email&#x60; - (String) &#x60;given_name&#x60; - (Boolean) &#x60;include_inactive&#x60; - (Boolean) &#x60;include_partners&#x60; - (Set[String]) &#x60;user_ids&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;user_ids%3D%3D123%3Bgiven_name%3D%3DSmith&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;date_created&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listPaginatedUsersUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListUsersPaginatedResponse> {
+        return this.listPaginatedUsersUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListUsersPaginatedResponse>) => apiResponse.data));
     }
 
 }

@@ -6,6 +6,8 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 |------------- | ------------- | -------------|
 | [**addContactsToAutomationSequenceUsingPOST**](AutomationApi.md#addContactsToAutomationSequenceUsingPOST) | **POST** /v2/automations/{automation_id}/sequences/{sequence_id}:addContacts | Add Contacts to an Automation Sequence |
 | [**addContactsToAutomationSequenceUsingPOSTWithHttpInfo**](AutomationApi.md#addContactsToAutomationSequenceUsingPOSTWithHttpInfo) | **POST** /v2/automations/{automation_id}/sequences/{sequence_id}:addContacts | Add Contacts to an Automation Sequence |
+| [**bulkAssignmentAutomationsCategoriesUsingPOST**](AutomationApi.md#bulkAssignmentAutomationsCategoriesUsingPOST) | **POST** /v2/automations/categories/batchAssign | Bulk update for Automations Categories |
+| [**bulkAssignmentAutomationsCategoriesUsingPOSTWithHttpInfo**](AutomationApi.md#bulkAssignmentAutomationsCategoriesUsingPOSTWithHttpInfo) | **POST** /v2/automations/categories/batchAssign | Bulk update for Automations Categories |
 | [**deleteAutomationUsingDELETE**](AutomationApi.md#deleteAutomationUsingDELETE) | **DELETE** /v2/automations | Delete an Automation |
 | [**deleteAutomationUsingDELETEWithHttpInfo**](AutomationApi.md#deleteAutomationUsingDELETEWithHttpInfo) | **DELETE** /v2/automations | Delete an Automation |
 | [**getAutomationUsingGET**](AutomationApi.md#getAutomationUsingGET) | **GET** /v2/automations/{automation_id} | Retrieve an Automation |
@@ -148,6 +150,144 @@ public class Example {
 
 ApiResponse<[**AddToAutomationSequenceResponse**](AddToAutomationSequenceResponse.md)>
 
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **500** | Internal Server Error |  -  |
+
+
+## bulkAssignmentAutomationsCategoriesUsingPOST
+
+> void bulkAssignmentAutomationsCategoriesUsingPOST(assignAutomationCategoryRequest)
+
+Bulk update for Automations Categories
+
+Bulk updates the categories of one or more automations
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.AutomationApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+
+        AutomationApi apiInstance = new AutomationApi(defaultClient);
+        AssignAutomationCategoryRequest assignAutomationCategoryRequest = new AssignAutomationCategoryRequest(); // AssignAutomationCategoryRequest | assignAutomationCategoryRequest
+        try {
+            apiInstance.bulkAssignmentAutomationsCategoriesUsingPOST(assignAutomationCategoryRequest);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AutomationApi#bulkAssignmentAutomationsCategoriesUsingPOST");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **assignAutomationCategoryRequest** | [**AssignAutomationCategoryRequest**](AssignAutomationCategoryRequest.md)| assignAutomationCategoryRequest | |
+
+### Return type
+
+
+null (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **500** | Internal Server Error |  -  |
+
+## bulkAssignmentAutomationsCategoriesUsingPOSTWithHttpInfo
+
+> ApiResponse<Void> bulkAssignmentAutomationsCategoriesUsingPOST bulkAssignmentAutomationsCategoriesUsingPOSTWithHttpInfo(assignAutomationCategoryRequest)
+
+Bulk update for Automations Categories
+
+Bulk updates the categories of one or more automations
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.AutomationApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+
+        AutomationApi apiInstance = new AutomationApi(defaultClient);
+        AssignAutomationCategoryRequest assignAutomationCategoryRequest = new AssignAutomationCategoryRequest(); // AssignAutomationCategoryRequest | assignAutomationCategoryRequest
+        try {
+            ApiResponse<Void> response = apiInstance.bulkAssignmentAutomationsCategoriesUsingPOSTWithHttpInfo(assignAutomationCategoryRequest);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AutomationApi#bulkAssignmentAutomationsCategoriesUsingPOST");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **assignAutomationCategoryRequest** | [**AssignAutomationCategoryRequest**](AssignAutomationCategoryRequest.md)| assignAutomationCategoryRequest | |
+
+### Return type
+
+
+ApiResponse<Void>
 
 ### Authorization
 

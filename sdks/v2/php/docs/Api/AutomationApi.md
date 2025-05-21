@@ -5,6 +5,7 @@ All URIs are relative to https://api.keap.com/crm/rest, except if the operation 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**addContactsToAutomationSequenceUsingPOST()**](AutomationApi.md#addContactsToAutomationSequenceUsingPOST) | **POST** /v2/automations/{automation_id}/sequences/{sequence_id}:addContacts | Add Contacts to an Automation Sequence |
+| [**bulkAssignmentAutomationsCategoriesUsingPOST()**](AutomationApi.md#bulkAssignmentAutomationsCategoriesUsingPOST) | **POST** /v2/automations/categories/batchAssign | Bulk update for Automations Categories |
 | [**deleteAutomationUsingDELETE()**](AutomationApi.md#deleteAutomationUsingDELETE) | **DELETE** /v2/automations | Delete an Automation |
 | [**getAutomationUsingGET()**](AutomationApi.md#getAutomationUsingGET) | **GET** /v2/automations/{automation_id} | Retrieve an Automation |
 | [**listAllAutomationIdsUsingGET()**](AutomationApi.md#listAllAutomationIdsUsingGET) | **GET** /v2/automations/ids | List Automations Ids |
@@ -57,6 +58,60 @@ try {
 ### Return type
 
 [**\Keap\Core\V2\Model\AddToAutomationSequenceResponse**](../Model/AddToAutomationSequenceResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `bulkAssignmentAutomationsCategoriesUsingPOST()`
+
+```php
+bulkAssignmentAutomationsCategoriesUsingPOST($assign_automation_category_request)
+```
+
+Bulk update for Automations Categories
+
+Bulk updates the categories of one or more automations
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+$apiInstance = new Keap\Core\V2\Api\AutomationApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$assign_automation_category_request = new \Keap\Core\V2\Model\AssignAutomationCategoryRequest(); // \Keap\Core\V2\Model\AssignAutomationCategoryRequest | assignAutomationCategoryRequest
+
+try {
+    $apiInstance->bulkAssignmentAutomationsCategoriesUsingPOST($assign_automation_category_request);
+} catch (Exception $e) {
+    echo 'Exception when calling AutomationApi->bulkAssignmentAutomationsCategoriesUsingPOST: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **assign_automation_category_request** | [**\Keap\Core\V2\Model\AssignAutomationCategoryRequest**](../Model/AssignAutomationCategoryRequest.md)| assignAutomationCategoryRequest | |
+
+### Return type
+
+void (empty response body)
 
 ### Authorization
 

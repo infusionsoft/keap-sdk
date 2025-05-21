@@ -5,6 +5,7 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**addContactsToAutomationSequenceUsingPOST**](AutomationApi.md#addContactsToAutomationSequenceUsingPOST) | **POST** /v2/automations/{automation_id}/sequences/{sequence_id}:addContacts | Add Contacts to an Automation Sequence
+[**bulkAssignmentAutomationsCategoriesUsingPOST**](AutomationApi.md#bulkAssignmentAutomationsCategoriesUsingPOST) | **POST** /v2/automations/categories/batchAssign | Bulk update for Automations Categories
 [**deleteAutomationUsingDELETE**](AutomationApi.md#deleteAutomationUsingDELETE) | **DELETE** /v2/automations | Delete an Automation
 [**getAutomationUsingGET**](AutomationApi.md#getAutomationUsingGET) | **GET** /v2/automations/{automation_id} | Retrieve an Automation
 [**listAllAutomationIdsUsingGET**](AutomationApi.md#listAllAutomationIdsUsingGET) | **GET** /v2/automations/ids | List Automations Ids
@@ -50,6 +51,50 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AddToAutomationSequenceResponse**](AddToAutomationSequenceResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## bulkAssignmentAutomationsCategoriesUsingPOST
+
+> bulkAssignmentAutomationsCategoriesUsingPOST(assignAutomationCategoryRequest)
+
+Bulk update for Automations Categories
+
+Bulk updates the categories of one or more automations
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+
+let apiInstance = new KeapCoreServiceV2Sdk.AutomationApi();
+let assignAutomationCategoryRequest = new KeapCoreServiceV2Sdk.AssignAutomationCategoryRequest(); // AssignAutomationCategoryRequest | assignAutomationCategoryRequest
+apiInstance.bulkAssignmentAutomationsCategoriesUsingPOST(assignAutomationCategoryRequest).then(() => {
+  console.log('API called successfully.');
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **assignAutomationCategoryRequest** | [**AssignAutomationCategoryRequest**](AssignAutomationCategoryRequest.md)| assignAutomationCategoryRequest | 
+
+### Return type
+
+null (empty response body)
 
 ### Authorization
 

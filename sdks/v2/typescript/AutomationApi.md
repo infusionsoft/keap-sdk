@@ -5,6 +5,7 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**addContactsToAutomationSequenceUsingPOST**](AutomationApi.md#addContactsToAutomationSequenceUsingPOST) | **POST** /v2/automations/{automation_id}/sequences/{sequence_id}:addContacts | Add Contacts to an Automation Sequence
+[**bulkAssignmentAutomationsCategoriesUsingPOST**](AutomationApi.md#bulkAssignmentAutomationsCategoriesUsingPOST) | **POST** /v2/automations/categories/batchAssign | Bulk update for Automations Categories
 [**deleteAutomationUsingDELETE**](AutomationApi.md#deleteAutomationUsingDELETE) | **DELETE** /v2/automations | Delete an Automation
 [**getAutomationUsingGET**](AutomationApi.md#getAutomationUsingGET) | **GET** /v2/automations/{automation_id} | Retrieve an Automation
 [**listAllAutomationIdsUsingGET**](AutomationApi.md#listAllAutomationIdsUsingGET) | **GET** /v2/automations/ids | List Automations Ids
@@ -57,6 +58,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 **AddToAutomationSequenceResponse**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **bulkAssignmentAutomationsCategoriesUsingPOST**
+> void bulkAssignmentAutomationsCategoriesUsingPOST(assignAutomationCategoryRequest)
+
+Bulk updates the categories of one or more automations
+
+### Example
+
+
+```typescript
+import { createConfiguration, AutomationApi } from '';
+import type { AutomationApiBulkAssignmentAutomationsCategoriesUsingPOSTRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new AutomationApi(configuration);
+
+const request: AutomationApiBulkAssignmentAutomationsCategoriesUsingPOSTRequest = {
+    // assignAutomationCategoryRequest
+  assignAutomationCategoryRequest: {
+    applyCategory: true,
+    automationIds: [
+      "automationIds_example",
+    ],
+    categoryIds: [
+      "categoryIds_example",
+    ],
+  },
+};
+
+const data = await apiInstance.bulkAssignmentAutomationsCategoriesUsingPOST(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **assignAutomationCategoryRequest** | **AssignAutomationCategoryRequest**| assignAutomationCategoryRequest |
+
+
+### Return type
+
+**void**
 
 ### Authorization
 

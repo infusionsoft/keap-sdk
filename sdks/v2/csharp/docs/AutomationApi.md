@@ -5,6 +5,7 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
 | [**AddContactsToAutomationSequenceUsingPOST**](AutomationApi.md#addcontactstoautomationsequenceusingpost) | **POST** /v2/automations/{automation_id}/sequences/{sequence_id}:addContacts | Add Contacts to an Automation Sequence |
+| [**BulkAssignmentAutomationsCategoriesUsingPOST**](AutomationApi.md#bulkassignmentautomationscategoriesusingpost) | **POST** /v2/automations/categories/batchAssign | Bulk update for Automations Categories |
 | [**DeleteAutomationUsingDELETE**](AutomationApi.md#deleteautomationusingdelete) | **DELETE** /v2/automations | Delete an Automation |
 | [**GetAutomationUsingGET**](AutomationApi.md#getautomationusingget) | **GET** /v2/automations/{automation_id} | Retrieve an Automation |
 | [**ListAllAutomationIdsUsingGET**](AutomationApi.md#listallautomationidsusingget) | **GET** /v2/automations/ids | List Automations Ids |
@@ -88,6 +89,96 @@ catch (ApiException e)
 ### Return type
 
 [**AddToAutomationSequenceResponse**](AddToAutomationSequenceResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="bulkassignmentautomationscategoriesusingpost"></a>
+# **BulkAssignmentAutomationsCategoriesUsingPOST**
+> void BulkAssignmentAutomationsCategoriesUsingPOST (AssignAutomationCategoryRequest assignAutomationCategoryRequest)
+
+Bulk update for Automations Categories
+
+Bulk updates the categories of one or more automations
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class BulkAssignmentAutomationsCategoriesUsingPOSTExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm/rest";
+            var apiInstance = new AutomationApi(config);
+            var assignAutomationCategoryRequest = new AssignAutomationCategoryRequest(); // AssignAutomationCategoryRequest | assignAutomationCategoryRequest
+
+            try
+            {
+                // Bulk update for Automations Categories
+                apiInstance.BulkAssignmentAutomationsCategoriesUsingPOST(assignAutomationCategoryRequest);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling AutomationApi.BulkAssignmentAutomationsCategoriesUsingPOST: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the BulkAssignmentAutomationsCategoriesUsingPOSTWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Bulk update for Automations Categories
+    apiInstance.BulkAssignmentAutomationsCategoriesUsingPOSTWithHttpInfo(assignAutomationCategoryRequest);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling AutomationApi.BulkAssignmentAutomationsCategoriesUsingPOSTWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **assignAutomationCategoryRequest** | [**AssignAutomationCategoryRequest**](AssignAutomationCategoryRequest.md) | assignAutomationCategoryRequest |  |
+
+### Return type
+
+void (empty response body)
 
 ### Authorization
 
