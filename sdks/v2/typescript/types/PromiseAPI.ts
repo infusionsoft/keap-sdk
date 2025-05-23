@@ -358,6 +358,7 @@ import { UpdateCategoryDiscountRequest } from '../models/UpdateCategoryDiscountR
 import { UpdateCommissionProgramRequest } from '../models/UpdateCommissionProgramRequest';
 import { UpdateCompanyRequest } from '../models/UpdateCompanyRequest';
 import { UpdateCustomFieldMetaDataRequest } from '../models/UpdateCustomFieldMetaDataRequest';
+import { UpdateCustomFieldRequest } from '../models/UpdateCustomFieldRequest';
 import { UpdateDealNoteRequest } from '../models/UpdateDealNoteRequest';
 import { UpdateDefaultCommissionProgramRequest } from '../models/UpdateDefaultCommissionProgramRequest';
 import { UpdateDisplayFormRequest } from '../models/UpdateDisplayFormRequest';
@@ -2031,6 +2032,30 @@ export class PromiseCustomFieldsApi {
         return result.toPromise();
     }
 
+    /**
+     * Updates a custom field
+     * Updates a custom field
+     * @param customFieldId the identifier of the custom field to update
+     * @param updateCustomFieldRequest the request body containing updated custom field details
+     */
+    public updateCustomFieldWithHttpInfo(customFieldId: string, updateCustomFieldRequest: UpdateCustomFieldRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<PipelineCustomField>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateCustomFieldWithHttpInfo(customFieldId, updateCustomFieldRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates a custom field
+     * Updates a custom field
+     * @param customFieldId the identifier of the custom field to update
+     * @param updateCustomFieldRequest the request body containing updated custom field details
+     */
+    public updateCustomField(customFieldId: string, updateCustomFieldRequest: UpdateCustomFieldRequest, _options?: PromiseConfigurationOptions): Promise<PipelineCustomField> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateCustomField(customFieldId, updateCustomFieldRequest, observableOptions);
+        return result.toPromise();
+    }
+
 
 }
 
@@ -2154,6 +2179,28 @@ export class PromiseDealsApi {
     public createNotesBulk(bulkCreateDealNotesRequest: BulkCreateDealNotesRequest, _options?: PromiseConfigurationOptions): Promise<BulkCreateDealNotesResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.createNotesBulk(bulkCreateDealNotesRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a specific deal by its ID.
+     * Deletes a specific deal by its ID.
+     * @param id the ID of the deal to delete
+     */
+    public deleteDealWithHttpInfo(id: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteDealWithHttpInfo(id, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a specific deal by its ID.
+     * Deletes a specific deal by its ID.
+     * @param id the ID of the deal to delete
+     */
+    public deleteDeal(id: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteDeal(id, observableOptions);
         return result.toPromise();
     }
 

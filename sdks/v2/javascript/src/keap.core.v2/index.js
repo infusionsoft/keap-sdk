@@ -369,6 +369,7 @@ import UpdateCategoryDiscountRequest from './model/UpdateCategoryDiscountRequest
 import UpdateCommissionProgramRequest from './model/UpdateCommissionProgramRequest';
 import UpdateCompanyRequest from './model/UpdateCompanyRequest';
 import UpdateCustomFieldMetaDataRequest from './model/UpdateCustomFieldMetaDataRequest';
+import UpdateCustomFieldRequest from './model/UpdateCustomFieldRequest';
 import UpdateDealNoteRequest from './model/UpdateDealNoteRequest';
 import UpdateDefaultCommissionProgramRequest from './model/UpdateDefaultCommissionProgramRequest';
 import UpdateDisplayFormRequest from './model/UpdateDisplayFormRequest';
@@ -467,7 +468,7 @@ import UsersApi from './api/UsersApi';
 * </pre>
 * </p>
 * @module keap.core.v2/index
-* @version 1.0.9
+* @version 1.0.10
 */
 export {
     /**
@@ -2611,6 +2612,12 @@ export {
      * @property {module:keap.core.v2/model/UpdateCustomFieldMetaDataRequest}
      */
     UpdateCustomFieldMetaDataRequest,
+
+    /**
+     * The UpdateCustomFieldRequest model constructor.
+     * @property {module:keap.core.v2/model/UpdateCustomFieldRequest}
+     */
+    UpdateCustomFieldRequest,
 
     /**
      * The UpdateDealNoteRequest model constructor.

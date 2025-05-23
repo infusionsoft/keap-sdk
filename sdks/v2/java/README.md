@@ -43,7 +43,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.keap.core</groupId>
   <artifactId>core-service-v2-java-sdk</artifactId>
-  <version>1.0.9</version>
+  <version>1.0.10</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.keap.core:core-service-v2-java-sdk:1.0.9"
+compile "com.keap.core:core-service-v2-java-sdk:1.0.10"
 ```
 
 ### Others
@@ -66,7 +66,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/core-service-v2-java-sdk-1.0.9.jar`
+- `target/core-service-v2-java-sdk-1.0.10.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -232,6 +232,8 @@ Class | Method | HTTP request | Description
 *ContactApi* | [**updateContactUsingPATCHWithHttpInfo**](docs/ContactApi.md#updateContactUsingPATCHWithHttpInfo) | **PATCH** /v2/contacts/{contact_id} | Update a Contact
 *CustomFieldsApi* | [**getCustomFields**](docs/CustomFieldsApi.md#getCustomFields) | **GET** /v2/customFields | Retrieves a list of custom fields in a tenant.
 *CustomFieldsApi* | [**getCustomFieldsWithHttpInfo**](docs/CustomFieldsApi.md#getCustomFieldsWithHttpInfo) | **GET** /v2/customFields | Retrieves a list of custom fields in a tenant.
+*CustomFieldsApi* | [**updateCustomField**](docs/CustomFieldsApi.md#updateCustomField) | **PATCH** /v2/customFields/{custom_field_id} | Updates a custom field
+*CustomFieldsApi* | [**updateCustomFieldWithHttpInfo**](docs/CustomFieldsApi.md#updateCustomFieldWithHttpInfo) | **PATCH** /v2/customFields/{custom_field_id} | Updates a custom field
 *DateExpressionApi* | [**queryDateExpressions**](docs/DateExpressionApi.md#queryDateExpressions) | **GET** /v2/dateExpressions | 
 *DateExpressionApi* | [**queryDateExpressionsWithHttpInfo**](docs/DateExpressionApi.md#queryDateExpressionsWithHttpInfo) | **GET** /v2/dateExpressions | 
 *DealsApi* | [**createDeal**](docs/DealsApi.md#createDeal) | **POST** /v2/deals | Creates a new deal.
@@ -240,6 +242,8 @@ Class | Method | HTTP request | Description
 *DealsApi* | [**createNoteWithHttpInfo**](docs/DealsApi.md#createNoteWithHttpInfo) | **POST** /v2/deals/{id}/notes | Creates a new note for a specific deal.
 *DealsApi* | [**createNotesBulk**](docs/DealsApi.md#createNotesBulk) | **POST** /v2/deals/-/notes | Creates new notes in bulk.
 *DealsApi* | [**createNotesBulkWithHttpInfo**](docs/DealsApi.md#createNotesBulkWithHttpInfo) | **POST** /v2/deals/-/notes | Creates new notes in bulk.
+*DealsApi* | [**deleteDeal**](docs/DealsApi.md#deleteDeal) | **DELETE** /v2/deals/{id} | Deletes a specific deal by its ID.
+*DealsApi* | [**deleteDealWithHttpInfo**](docs/DealsApi.md#deleteDealWithHttpInfo) | **DELETE** /v2/deals/{id} | Deletes a specific deal by its ID.
 *DealsApi* | [**deleteNote**](docs/DealsApi.md#deleteNote) | **DELETE** /v2/deals/-/notes/{note_id} | Deletes a specific deal note by its ID.
 *DealsApi* | [**deleteNoteWithHttpInfo**](docs/DealsApi.md#deleteNoteWithHttpInfo) | **DELETE** /v2/deals/-/notes/{note_id} | Deletes a specific deal note by its ID.
 *DealsApi* | [**getDeal**](docs/DealsApi.md#getDeal) | **GET** /v2/deals/{deal_id} | Retrieves a specific deal by its ID.
@@ -860,6 +864,7 @@ Class | Method | HTTP request | Description
  - [UpdateCommissionProgramRequest](docs/UpdateCommissionProgramRequest.md)
  - [UpdateCompanyRequest](docs/UpdateCompanyRequest.md)
  - [UpdateCustomFieldMetaDataRequest](docs/UpdateCustomFieldMetaDataRequest.md)
+ - [UpdateCustomFieldRequest](docs/UpdateCustomFieldRequest.md)
  - [UpdateDealNoteRequest](docs/UpdateDealNoteRequest.md)
  - [UpdateDefaultCommissionProgramRequest](docs/UpdateDefaultCommissionProgramRequest.md)
  - [UpdateDisplayFormRequest](docs/UpdateDisplayFormRequest.md)

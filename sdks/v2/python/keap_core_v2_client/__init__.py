@@ -14,7 +14,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-__version__ = "1.0.9"
+__version__ = "1.0.10"
 
 # import apis into sdk package
 from keap_core_v2_client.api.affiliate_api import AffiliateApi
@@ -417,6 +417,7 @@ from keap_core_v2_client.models.update_category_discount_request import UpdateCa
 from keap_core_v2_client.models.update_commission_program_request import UpdateCommissionProgramRequest
 from keap_core_v2_client.models.update_company_request import UpdateCompanyRequest
 from keap_core_v2_client.models.update_custom_field_meta_data_request import UpdateCustomFieldMetaDataRequest
+from keap_core_v2_client.models.update_custom_field_request import UpdateCustomFieldRequest
 from keap_core_v2_client.models.update_deal_note_request import UpdateDealNoteRequest
 from keap_core_v2_client.models.update_default_commission_program_request import UpdateDefaultCommissionProgramRequest
 from keap_core_v2_client.models.update_display_form_request import UpdateDisplayFormRequest

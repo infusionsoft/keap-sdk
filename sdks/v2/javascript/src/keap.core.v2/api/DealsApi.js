@@ -191,6 +191,54 @@ export default class DealsApi {
 
 
     /**
+     * Deletes a specific deal by its ID.
+     * Deletes a specific deal by its ID.
+     * @param {String} id the ID of the deal to delete
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+    deleteDealWithHttpInfo(id) {
+      let postBody = null;
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling deleteDeal");
+      }
+
+      let pathParams = {
+        'id': id
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = [];
+      let contentTypes = [];
+      let accepts = [];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/v2/deals/{id}', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Deletes a specific deal by its ID.
+     * Deletes a specific deal by its ID.
+     * @param {String} id the ID of the deal to delete
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+    deleteDeal(id) {
+      return this.deleteDealWithHttpInfo(id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Deletes a specific deal note by its ID.
      * Deletes a specific deal note by its ID.
      * @param {String} noteId the ID of the note to delete

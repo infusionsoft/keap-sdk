@@ -49,6 +49,31 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PipelineCustomFields</returns>
         ApiResponse<PipelineCustomFields> GetCustomFieldsWithHttpInfo(int operationIndex = 0);
+        /// <summary>
+        /// Updates a custom field
+        /// </summary>
+        /// <remarks>
+        /// Updates a custom field
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="customFieldId">the identifier of the custom field to update</param>
+        /// <param name="updateCustomFieldRequest">the request body containing updated custom field details</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>PipelineCustomField</returns>
+        PipelineCustomField UpdateCustomField(string customFieldId, UpdateCustomFieldRequest updateCustomFieldRequest, int operationIndex = 0);
+
+        /// <summary>
+        /// Updates a custom field
+        /// </summary>
+        /// <remarks>
+        /// Updates a custom field
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="customFieldId">the identifier of the custom field to update</param>
+        /// <param name="updateCustomFieldRequest">the request body containing updated custom field details</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of PipelineCustomField</returns>
+        ApiResponse<PipelineCustomField> UpdateCustomFieldWithHttpInfo(string customFieldId, UpdateCustomFieldRequest updateCustomFieldRequest, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -81,6 +106,33 @@ namespace Keap.Core.V2.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (PipelineCustomFields)</returns>
         System.Threading.Tasks.Task<ApiResponse<PipelineCustomFields>> GetCustomFieldsWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Updates a custom field
+        /// </summary>
+        /// <remarks>
+        /// Updates a custom field
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="customFieldId">the identifier of the custom field to update</param>
+        /// <param name="updateCustomFieldRequest">the request body containing updated custom field details</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of PipelineCustomField</returns>
+        System.Threading.Tasks.Task<PipelineCustomField> UpdateCustomFieldAsync(string customFieldId, UpdateCustomFieldRequest updateCustomFieldRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Updates a custom field
+        /// </summary>
+        /// <remarks>
+        /// Updates a custom field
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="customFieldId">the identifier of the custom field to update</param>
+        /// <param name="updateCustomFieldRequest">the request body containing updated custom field details</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (PipelineCustomField)</returns>
+        System.Threading.Tasks.Task<ApiResponse<PipelineCustomField>> UpdateCustomFieldWithHttpInfoAsync(string customFieldId, UpdateCustomFieldRequest updateCustomFieldRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -319,6 +371,171 @@ namespace Keap.Core.V2.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetCustomFields", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Updates a custom field Updates a custom field
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="customFieldId">the identifier of the custom field to update</param>
+        /// <param name="updateCustomFieldRequest">the request body containing updated custom field details</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>PipelineCustomField</returns>
+        public PipelineCustomField UpdateCustomField(string customFieldId, UpdateCustomFieldRequest updateCustomFieldRequest, int operationIndex = 0)
+        {
+            Keap.Core.V2.Client.ApiResponse<PipelineCustomField> localVarResponse = UpdateCustomFieldWithHttpInfo(customFieldId, updateCustomFieldRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Updates a custom field Updates a custom field
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="customFieldId">the identifier of the custom field to update</param>
+        /// <param name="updateCustomFieldRequest">the request body containing updated custom field details</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of PipelineCustomField</returns>
+        public Keap.Core.V2.Client.ApiResponse<PipelineCustomField> UpdateCustomFieldWithHttpInfo(string customFieldId, UpdateCustomFieldRequest updateCustomFieldRequest, int operationIndex = 0)
+        {
+            // verify the required parameter 'customFieldId' is set
+            if (customFieldId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'customFieldId' when calling CustomFieldsApi->UpdateCustomField");
+            }
+
+            // verify the required parameter 'updateCustomFieldRequest' is set
+            if (updateCustomFieldRequest == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'updateCustomFieldRequest' when calling CustomFieldsApi->UpdateCustomField");
+            }
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("custom_field_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(customFieldId)); // path parameter
+            localVarRequestOptions.Data = updateCustomFieldRequest;
+
+            localVarRequestOptions.Operation = "CustomFieldsApi.UpdateCustomField";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Patch<PipelineCustomField>("/v2/customFields/{custom_field_id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateCustomField", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Updates a custom field Updates a custom field
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="customFieldId">the identifier of the custom field to update</param>
+        /// <param name="updateCustomFieldRequest">the request body containing updated custom field details</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of PipelineCustomField</returns>
+        public async System.Threading.Tasks.Task<PipelineCustomField> UpdateCustomFieldAsync(string customFieldId, UpdateCustomFieldRequest updateCustomFieldRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            Keap.Core.V2.Client.ApiResponse<PipelineCustomField> localVarResponse = await UpdateCustomFieldWithHttpInfoAsync(customFieldId, updateCustomFieldRequest, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Updates a custom field Updates a custom field
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="customFieldId">the identifier of the custom field to update</param>
+        /// <param name="updateCustomFieldRequest">the request body containing updated custom field details</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (PipelineCustomField)</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<PipelineCustomField>> UpdateCustomFieldWithHttpInfoAsync(string customFieldId, UpdateCustomFieldRequest updateCustomFieldRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'customFieldId' is set
+            if (customFieldId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'customFieldId' when calling CustomFieldsApi->UpdateCustomField");
+            }
+
+            // verify the required parameter 'updateCustomFieldRequest' is set
+            if (updateCustomFieldRequest == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'updateCustomFieldRequest' when calling CustomFieldsApi->UpdateCustomField");
+            }
+
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("custom_field_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(customFieldId)); // path parameter
+            localVarRequestOptions.Data = updateCustomFieldRequest;
+
+            localVarRequestOptions.Operation = "CustomFieldsApi.UpdateCustomField";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PatchAsync<PipelineCustomField>("/v2/customFields/{custom_field_id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateCustomField", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

@@ -17,7 +17,9 @@ import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Pair;
 
+import com.keap.core.sdk.model.PipelineCustomField;
 import com.keap.core.sdk.model.PipelineCustomFields;
+import com.keap.core.sdk.model.UpdateCustomFieldRequest;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -162,6 +164,104 @@ import io.github.resilience4j.retry.Retry;
     localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
 
     localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Updates a custom field
+   * Updates a custom field
+   * @param customFieldId the identifier of the custom field to update (required)
+   * @param updateCustomFieldRequest the request body containing updated custom field details (required)
+   * @return PipelineCustomField
+   * @throws ApiException if fails to make API call
+   */
+  public PipelineCustomField updateCustomField(String customFieldId, UpdateCustomFieldRequest updateCustomFieldRequest) throws ApiException {
+    ApiResponse<PipelineCustomField> localVarResponse = updateCustomFieldWithHttpInfo(customFieldId, updateCustomFieldRequest);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Updates a custom field
+   * Updates a custom field
+   * @param customFieldId the identifier of the custom field to update (required)
+   * @param updateCustomFieldRequest the request body containing updated custom field details (required)
+   * @return ApiResponse&lt;PipelineCustomField&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<PipelineCustomField> updateCustomFieldWithHttpInfo(String customFieldId, UpdateCustomFieldRequest updateCustomFieldRequest) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = updateCustomFieldRequestBuilder(customFieldId, updateCustomFieldRequest);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("updateCustomField", localVarResponse);
+        }
+        return new ApiResponse<PipelineCustomField>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<PipelineCustomField>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder updateCustomFieldRequestBuilder(String customFieldId, UpdateCustomFieldRequest updateCustomFieldRequest) throws ApiException {
+    // verify the required parameter 'customFieldId' is set
+    if (customFieldId == null) {
+      throw new ApiException(400, "Missing the required parameter 'customFieldId' when calling updateCustomField");
+    }
+    // verify the required parameter 'updateCustomFieldRequest' is set
+    if (updateCustomFieldRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'updateCustomFieldRequest' when calling updateCustomField");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/v2/customFields/{custom_field_id}"
+        .replace("{custom_field_id}", ApiClient.urlEncode(customFieldId.toString()));
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(updateCustomFieldRequest);
+      localVarRequestBuilder.method("PATCH", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
     if (memberVarReadTimeout != null) {
       localVarRequestBuilder.timeout(memberVarReadTimeout);
     }

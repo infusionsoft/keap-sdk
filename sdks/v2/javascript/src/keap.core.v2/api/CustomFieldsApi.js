@@ -13,7 +13,9 @@
 
 
 import ApiClient from "../ApiClient";
+import PipelineCustomField from '../model/PipelineCustomField';
 import PipelineCustomFields from '../model/PipelineCustomFields';
+import UpdateCustomFieldRequest from '../model/UpdateCustomFieldRequest';
 
 /**
 * CustomFields service.
@@ -69,6 +71,60 @@ export default class CustomFieldsApi {
      */
     getCustomFields() {
       return this.getCustomFieldsWithHttpInfo()
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Updates a custom field
+     * Updates a custom field
+     * @param {String} customFieldId the identifier of the custom field to update
+     * @param {module:keap.core.v2/model/UpdateCustomFieldRequest} updateCustomFieldRequest the request body containing updated custom field details
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/PipelineCustomField} and HTTP response
+     */
+    updateCustomFieldWithHttpInfo(customFieldId, updateCustomFieldRequest) {
+      let postBody = updateCustomFieldRequest;
+      // verify the required parameter 'customFieldId' is set
+      if (customFieldId === undefined || customFieldId === null) {
+        throw new Error("Missing the required parameter 'customFieldId' when calling updateCustomField");
+      }
+      // verify the required parameter 'updateCustomFieldRequest' is set
+      if (updateCustomFieldRequest === undefined || updateCustomFieldRequest === null) {
+        throw new Error("Missing the required parameter 'updateCustomFieldRequest' when calling updateCustomField");
+      }
+
+      let pathParams = {
+        'custom_field_id': customFieldId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = [];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = PipelineCustomField;
+      return this.apiClient.callApi(
+        '/v2/customFields/{custom_field_id}', 'PATCH',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Updates a custom field
+     * Updates a custom field
+     * @param {String} customFieldId the identifier of the custom field to update
+     * @param {module:keap.core.v2/model/UpdateCustomFieldRequest} updateCustomFieldRequest the request body containing updated custom field details
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/PipelineCustomField}
+     */
+    updateCustomField(customFieldId, updateCustomFieldRequest) {
+      return this.updateCustomFieldWithHttpInfo(customFieldId, updateCustomFieldRequest)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

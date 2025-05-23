@@ -354,6 +354,7 @@ export * from '../models/UpdateCategoryDiscountRequest';
 export * from '../models/UpdateCommissionProgramRequest';
 export * from '../models/UpdateCompanyRequest';
 export * from '../models/UpdateCustomFieldMetaDataRequest';
+export * from '../models/UpdateCustomFieldRequest';
 export * from '../models/UpdateDealNoteRequest';
 export * from '../models/UpdateDefaultCommissionProgramRequest';
 export * from '../models/UpdateDisplayFormRequest';
@@ -747,6 +748,7 @@ import { UpdateCategoryDiscountRequest } from '../models/UpdateCategoryDiscountR
 import { UpdateCommissionProgramRequest } from '../models/UpdateCommissionProgramRequest';
 import { UpdateCompanyRequest } from '../models/UpdateCompanyRequest';
 import { UpdateCustomFieldMetaDataRequest } from '../models/UpdateCustomFieldMetaDataRequest';
+import { UpdateCustomFieldRequest } from '../models/UpdateCustomFieldRequest';
 import { UpdateDealNoteRequest } from '../models/UpdateDealNoteRequest';
 import { UpdateDefaultCommissionProgramRequest } from '../models/UpdateDefaultCommissionProgramRequest';
 import { UpdateDisplayFormRequest } from '../models/UpdateDisplayFormRequest';
@@ -1234,6 +1236,7 @@ let typeMap: {[index: string]: any} = {
     "UpdateCommissionProgramRequest": UpdateCommissionProgramRequest,
     "UpdateCompanyRequest": UpdateCompanyRequest,
     "UpdateCustomFieldMetaDataRequest": UpdateCustomFieldMetaDataRequest,
+    "UpdateCustomFieldRequest": UpdateCustomFieldRequest,
     "UpdateDealNoteRequest": UpdateDealNoteRequest,
     "UpdateDefaultCommissionProgramRequest": UpdateDefaultCommissionProgramRequest,
     "UpdateDisplayFormRequest": UpdateDisplayFormRequest,

@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**create_deal**](DealsApi.md#create_deal) | **POST** /v2/deals | Creates a new deal.
 [**create_note**](DealsApi.md#create_note) | **POST** /v2/deals/{id}/notes | Creates a new note for a specific deal.
 [**create_notes_bulk**](DealsApi.md#create_notes_bulk) | **POST** /v2/deals/-/notes | Creates new notes in bulk.
+[**delete_deal**](DealsApi.md#delete_deal) | **DELETE** /v2/deals/{id} | Deletes a specific deal by its ID.
 [**delete_note**](DealsApi.md#delete_note) | **DELETE** /v2/deals/-/notes/{note_id} | Deletes a specific deal note by its ID.
 [**get_deal**](DealsApi.md#get_deal) | **GET** /v2/deals/{deal_id} | Retrieves a specific deal by its ID.
 [**get_note**](DealsApi.md#get_note) | **GET** /v2/deals/-/notes/{note_id} | Retrieves a specific deal note by its ID.
@@ -215,6 +216,69 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | the created DealNote |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_deal**
+> delete_deal(id)
+
+Deletes a specific deal by its ID.
+
+Deletes a specific deal by its ID.
+
+### Example
+
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm/rest"
+)
+
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.DealsApi(api_client)
+    id = 'id_example' # str | the ID of the deal to delete
+
+    try:
+        # Deletes a specific deal by its ID.
+        api_instance.delete_deal(id)
+    except Exception as e:
+        print("Exception when calling DealsApi->delete_deal: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**| the ID of the deal to delete | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | deleteDeal 204 response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

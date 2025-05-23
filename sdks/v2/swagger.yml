@@ -3704,6 +3704,34 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PipelineCustomFields'
+  /v2/customFields/{custom_field_id}:
+    patch:
+      tags:
+      - Custom Fields
+      summary: Updates a custom field
+      description: Updates a custom field
+      operationId: updateCustomField
+      parameters:
+      - name: custom_field_id
+        in: path
+        description: the identifier of the custom field to update
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: the request body containing updated custom field details
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCustomFieldRequest'
+        required: true
+      responses:
+        '200':
+          description: the updated PipelineCustomField
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PipelineCustomField'
   /v2/dateExpressions:
     get:
       tags:
@@ -3908,6 +3936,23 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Deal'
+  /v2/deals/{id}:
+    delete:
+      tags:
+      - Deals
+      summary: Deletes a specific deal by its ID.
+      description: Deletes a specific deal by its ID.
+      operationId: deleteDeal
+      parameters:
+      - name: id
+        in: path
+        description: the ID of the deal to delete
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: deleteDeal 204 response
   /v2/deals/{id}/notes:
     get:
       tags:
@@ -17253,6 +17298,54 @@ components:
           items:
             $ref: '#/components/schemas/CustomFieldOption'
       title: UpdateCustomFieldMetaDataRequest
+    UpdateCustomFieldRequest:
+      required:
+      - default_value
+      - deleted
+      - description
+      - display_options
+      - helper_text
+      - hint
+      - label
+      - options
+      - validators
+      type: object
+      properties:
+        label:
+          type: string
+          description: The label of the custom field.
+        description:
+          type: string
+          description: The description of the custom field.
+        hint:
+          type: string
+          description: The hint for the custom field.
+        helper_text:
+          type: string
+          description: The helper text for the custom field.
+        default_value:
+          type: object
+          description: The default value of the custom field.
+        display_options:
+          description: The display options for the custom field.
+          allOf:
+          - $ref: '#/components/schemas/PipelineCustomFieldDisplayOptions'
+          - description: ''
+        options:
+          description: The options for the custom field.
+          allOf:
+          - $ref: '#/components/schemas/PipelineCustomFieldOptions'
+          - description: ''
+        validators:
+          type: array
+          description: The validators for the custom field.
+          items:
+            $ref: '#/components/schemas/PipelineCustomFieldPropertyValidator'
+        deleted:
+          type: boolean
+          description: Indicates whether the custom field is deleted.
+          deprecated: true
+      description: Represents a request to update a custom field.
     UpdateDealNoteRequest:
       required:
       - body

@@ -77,6 +77,9 @@ class CustomFieldsApi
         'getCustomFields' => [
             'application/json',
         ],
+        'updateCustomField' => [
+            'application/json',
+        ],
     ];
 
     /**
@@ -367,6 +370,293 @@ class CustomFieldsApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateCustomField
+     *
+     * Updates a custom field
+     *
+     * @param  string $custom_field_id the identifier of the custom field to update (required)
+     * @param  \Keap\Core\V2\Model\UpdateCustomFieldRequest $update_custom_field_request the request body containing updated custom field details (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomField'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Keap\Core\V2\Model\PipelineCustomField
+     */
+    public function updateCustomField($custom_field_id, $update_custom_field_request, string $contentType = self::contentTypes['updateCustomField'][0])
+    {
+        list($response) = $this->updateCustomFieldWithHttpInfo($custom_field_id, $update_custom_field_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation updateCustomFieldWithHttpInfo
+     *
+     * Updates a custom field
+     *
+     * @param  string $custom_field_id the identifier of the custom field to update (required)
+     * @param  \Keap\Core\V2\Model\UpdateCustomFieldRequest $update_custom_field_request the request body containing updated custom field details (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomField'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Keap\Core\V2\Model\PipelineCustomField, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateCustomFieldWithHttpInfo($custom_field_id, $update_custom_field_request, string $contentType = self::contentTypes['updateCustomField'][0])
+    {
+        $request = $this->updateCustomFieldRequest($custom_field_id, $update_custom_field_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\PipelineCustomField',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Keap\Core\V2\Model\PipelineCustomField',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\PipelineCustomField',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateCustomFieldAsync
+     *
+     * Updates a custom field
+     *
+     * @param  string $custom_field_id the identifier of the custom field to update (required)
+     * @param  \Keap\Core\V2\Model\UpdateCustomFieldRequest $update_custom_field_request the request body containing updated custom field details (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomField'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateCustomFieldAsync($custom_field_id, $update_custom_field_request, string $contentType = self::contentTypes['updateCustomField'][0])
+    {
+        return $this->updateCustomFieldAsyncWithHttpInfo($custom_field_id, $update_custom_field_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateCustomFieldAsyncWithHttpInfo
+     *
+     * Updates a custom field
+     *
+     * @param  string $custom_field_id the identifier of the custom field to update (required)
+     * @param  \Keap\Core\V2\Model\UpdateCustomFieldRequest $update_custom_field_request the request body containing updated custom field details (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomField'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateCustomFieldAsyncWithHttpInfo($custom_field_id, $update_custom_field_request, string $contentType = self::contentTypes['updateCustomField'][0])
+    {
+        $returnType = '\Keap\Core\V2\Model\PipelineCustomField';
+        $request = $this->updateCustomFieldRequest($custom_field_id, $update_custom_field_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateCustomField'
+     *
+     * @param  string $custom_field_id the identifier of the custom field to update (required)
+     * @param  \Keap\Core\V2\Model\UpdateCustomFieldRequest $update_custom_field_request the request body containing updated custom field details (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomField'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateCustomFieldRequest($custom_field_id, $update_custom_field_request, string $contentType = self::contentTypes['updateCustomField'][0])
+    {
+
+        // verify the required parameter 'custom_field_id' is set
+        if ($custom_field_id === null || (is_array($custom_field_id) && count($custom_field_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $custom_field_id when calling updateCustomField'
+            );
+        }
+
+        // verify the required parameter 'update_custom_field_request' is set
+        if ($update_custom_field_request === null || (is_array($update_custom_field_request) && count($update_custom_field_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $update_custom_field_request when calling updateCustomField'
+            );
+        }
+
+
+        $resourcePath = '/v2/customFields/{custom_field_id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($custom_field_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'custom_field_id' . '}',
+                ObjectSerializer::toPathValue($custom_field_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($update_custom_field_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_custom_field_request));
+            } else {
+                $httpBody = $update_custom_field_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PATCH',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

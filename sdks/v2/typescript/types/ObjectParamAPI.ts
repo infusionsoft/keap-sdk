@@ -358,6 +358,7 @@ import { UpdateCategoryDiscountRequest } from '../models/UpdateCategoryDiscountR
 import { UpdateCommissionProgramRequest } from '../models/UpdateCommissionProgramRequest';
 import { UpdateCompanyRequest } from '../models/UpdateCompanyRequest';
 import { UpdateCustomFieldMetaDataRequest } from '../models/UpdateCustomFieldMetaDataRequest';
+import { UpdateCustomFieldRequest } from '../models/UpdateCustomFieldRequest';
 import { UpdateDealNoteRequest } from '../models/UpdateDealNoteRequest';
 import { UpdateDefaultCommissionProgramRequest } from '../models/UpdateDefaultCommissionProgramRequest';
 import { UpdateDisplayFormRequest } from '../models/UpdateDisplayFormRequest';
@@ -2627,6 +2628,22 @@ import { CustomFieldsApiRequestFactory, CustomFieldsApiResponseProcessor} from "
 export interface CustomFieldsApiGetCustomFieldsRequest {
 }
 
+export interface CustomFieldsApiUpdateCustomFieldRequest {
+    /**
+     * the identifier of the custom field to update
+     * Defaults to: undefined
+     * @type string
+     * @memberof CustomFieldsApiupdateCustomField
+     */
+    customFieldId: string
+    /**
+     * the request body containing updated custom field details
+     * @type UpdateCustomFieldRequest
+     * @memberof CustomFieldsApiupdateCustomField
+     */
+    updateCustomFieldRequest: UpdateCustomFieldRequest
+}
+
 export class ObjectCustomFieldsApi {
     private api: ObservableCustomFieldsApi
 
@@ -2650,6 +2667,24 @@ export class ObjectCustomFieldsApi {
      */
     public getCustomFields(param: CustomFieldsApiGetCustomFieldsRequest = {}, options?: ConfigurationOptions): Promise<PipelineCustomFields> {
         return this.api.getCustomFields( options).toPromise();
+    }
+
+    /**
+     * Updates a custom field
+     * Updates a custom field
+     * @param param the request object
+     */
+    public updateCustomFieldWithHttpInfo(param: CustomFieldsApiUpdateCustomFieldRequest, options?: ConfigurationOptions): Promise<HttpInfo<PipelineCustomField>> {
+        return this.api.updateCustomFieldWithHttpInfo(param.customFieldId, param.updateCustomFieldRequest,  options).toPromise();
+    }
+
+    /**
+     * Updates a custom field
+     * Updates a custom field
+     * @param param the request object
+     */
+    public updateCustomField(param: CustomFieldsApiUpdateCustomFieldRequest, options?: ConfigurationOptions): Promise<PipelineCustomField> {
+        return this.api.updateCustomField(param.customFieldId, param.updateCustomFieldRequest,  options).toPromise();
     }
 
 }
@@ -2732,6 +2767,16 @@ export interface DealsApiCreateNotesBulkRequest {
      * @memberof DealsApicreateNotesBulk
      */
     bulkCreateDealNotesRequest: BulkCreateDealNotesRequest
+}
+
+export interface DealsApiDeleteDealRequest {
+    /**
+     * the ID of the deal to delete
+     * Defaults to: undefined
+     * @type string
+     * @memberof DealsApideleteDeal
+     */
+    id: string
 }
 
 export interface DealsApiDeleteNoteRequest {
@@ -2919,6 +2964,24 @@ export class ObjectDealsApi {
      */
     public createNotesBulk(param: DealsApiCreateNotesBulkRequest, options?: ConfigurationOptions): Promise<BulkCreateDealNotesResponse> {
         return this.api.createNotesBulk(param.bulkCreateDealNotesRequest,  options).toPromise();
+    }
+
+    /**
+     * Deletes a specific deal by its ID.
+     * Deletes a specific deal by its ID.
+     * @param param the request object
+     */
+    public deleteDealWithHttpInfo(param: DealsApiDeleteDealRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteDealWithHttpInfo(param.id,  options).toPromise();
+    }
+
+    /**
+     * Deletes a specific deal by its ID.
+     * Deletes a specific deal by its ID.
+     * @param param the request object
+     */
+    public deleteDeal(param: DealsApiDeleteDealRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteDeal(param.id,  options).toPromise();
     }
 
     /**

@@ -7,6 +7,7 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 | [**CreateDeal**](DealsApi.md#createdeal) | **POST** /v2/deals | Creates a new deal. |
 | [**CreateNote**](DealsApi.md#createnote) | **POST** /v2/deals/{id}/notes | Creates a new note for a specific deal. |
 | [**CreateNotesBulk**](DealsApi.md#createnotesbulk) | **POST** /v2/deals/-/notes | Creates new notes in bulk. |
+| [**DeleteDeal**](DealsApi.md#deletedeal) | **DELETE** /v2/deals/{id} | Deletes a specific deal by its ID. |
 | [**DeleteNote**](DealsApi.md#deletenote) | **DELETE** /v2/deals/-/notes/{note_id} | Deletes a specific deal note by its ID. |
 | [**GetDeal**](DealsApi.md#getdeal) | **GET** /v2/deals/{deal_id} | Retrieves a specific deal by its ID. |
 | [**GetNote**](DealsApi.md#getnote) | **GET** /v2/deals/-/notes/{note_id} | Retrieves a specific deal note by its ID. |
@@ -286,6 +287,93 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | the created DealNote |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="deletedeal"></a>
+# **DeleteDeal**
+> void DeleteDeal (string id)
+
+Deletes a specific deal by its ID.
+
+Deletes a specific deal by its ID.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class DeleteDealExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm/rest";
+            var apiInstance = new DealsApi(config);
+            var id = "id_example";  // string | the ID of the deal to delete
+
+            try
+            {
+                // Deletes a specific deal by its ID.
+                apiInstance.DeleteDeal(id);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling DealsApi.DeleteDeal: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the DeleteDealWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Deletes a specific deal by its ID.
+    apiInstance.DeleteDealWithHttpInfo(id);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling DealsApi.DeleteDealWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **id** | **string** | the ID of the deal to delete |  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | deleteDeal 204 response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

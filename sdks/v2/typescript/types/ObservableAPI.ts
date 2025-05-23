@@ -359,6 +359,7 @@ import { UpdateCategoryDiscountRequest } from '../models/UpdateCategoryDiscountR
 import { UpdateCommissionProgramRequest } from '../models/UpdateCommissionProgramRequest';
 import { UpdateCompanyRequest } from '../models/UpdateCompanyRequest';
 import { UpdateCustomFieldMetaDataRequest } from '../models/UpdateCustomFieldMetaDataRequest';
+import { UpdateCustomFieldRequest } from '../models/UpdateCustomFieldRequest';
 import { UpdateDealNoteRequest } from '../models/UpdateDealNoteRequest';
 import { UpdateDefaultCommissionProgramRequest } from '../models/UpdateDefaultCommissionProgramRequest';
 import { UpdateDisplayFormRequest } from '../models/UpdateDisplayFormRequest';
@@ -2772,6 +2773,42 @@ export class ObservableCustomFieldsApi {
         return this.getCustomFieldsWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<PipelineCustomFields>) => apiResponse.data));
     }
 
+    /**
+     * Updates a custom field
+     * Updates a custom field
+     * @param customFieldId the identifier of the custom field to update
+     * @param updateCustomFieldRequest the request body containing updated custom field details
+     */
+    public updateCustomFieldWithHttpInfo(customFieldId: string, updateCustomFieldRequest: UpdateCustomFieldRequest, _options?: ConfigurationOptions): Observable<HttpInfo<PipelineCustomField>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.updateCustomField(customFieldId, updateCustomFieldRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateCustomFieldWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Updates a custom field
+     * Updates a custom field
+     * @param customFieldId the identifier of the custom field to update
+     * @param updateCustomFieldRequest the request body containing updated custom field details
+     */
+    public updateCustomField(customFieldId: string, updateCustomFieldRequest: UpdateCustomFieldRequest, _options?: ConfigurationOptions): Observable<PipelineCustomField> {
+        return this.updateCustomFieldWithHttpInfo(customFieldId, updateCustomFieldRequest, _options).pipe(map((apiResponse: HttpInfo<PipelineCustomField>) => apiResponse.data));
+    }
+
 }
 
 import { DateExpressionApiRequestFactory, DateExpressionApiResponseProcessor} from "../apis/DateExpressionApi";
@@ -2942,6 +2979,40 @@ export class ObservableDealsApi {
      */
     public createNotesBulk(bulkCreateDealNotesRequest: BulkCreateDealNotesRequest, _options?: ConfigurationOptions): Observable<BulkCreateDealNotesResponse> {
         return this.createNotesBulkWithHttpInfo(bulkCreateDealNotesRequest, _options).pipe(map((apiResponse: HttpInfo<BulkCreateDealNotesResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Deletes a specific deal by its ID.
+     * Deletes a specific deal by its ID.
+     * @param id the ID of the deal to delete
+     */
+    public deleteDealWithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.deleteDeal(id, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteDealWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Deletes a specific deal by its ID.
+     * Deletes a specific deal by its ID.
+     * @param id the ID of the deal to delete
+     */
+    public deleteDeal(id: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteDealWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
