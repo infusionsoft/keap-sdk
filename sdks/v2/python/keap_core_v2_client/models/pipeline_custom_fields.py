@@ -17,8 +17,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field
-from typing import Any, ClassVar, Dict, List
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from keap_core_v2_client.models.pipeline_custom_field import PipelineCustomField
 from typing import Optional, Set
 from typing_extensions import Self
@@ -27,9 +27,10 @@ class PipelineCustomFields(BaseModel):
     """
     Represents a list of custom fields in the system.
     """ # noqa: E501
+    next_page_token: Optional[StrictStr] = Field(default=None, description="Token for the next page of results.")
     custom_fields: List[PipelineCustomField] = Field(description="The list of custom fields.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["custom_fields"]
+    __properties: ClassVar[List[str]] = ["next_page_token", "custom_fields"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -96,6 +97,7 @@ class PipelineCustomFields(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "next_page_token": obj.get("next_page_token"),
             "custom_fields": [PipelineCustomField.from_dict(_item) for _item in obj["custom_fields"]] if obj.get("custom_fields") is not None else None
         })
         # store additional fields in additional_properties

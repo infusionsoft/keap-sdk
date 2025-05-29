@@ -9,10 +9,11 @@ All URIs are relative to https://api.keap.com/crm/rest, except if the operation 
 | [**createNotesBulk()**](DealsApi.md#createNotesBulk) | **POST** /v2/deals/-/notes | Creates new notes in bulk. |
 | [**deleteDeal()**](DealsApi.md#deleteDeal) | **DELETE** /v2/deals/{id} | Deletes a specific deal by its ID. |
 | [**deleteNote()**](DealsApi.md#deleteNote) | **DELETE** /v2/deals/-/notes/{note_id} | Deletes a specific deal note by its ID. |
-| [**getDeal()**](DealsApi.md#getDeal) | **GET** /v2/deals/{deal_id} | Retrieves a specific deal by its ID. |
+| [**getDeal()**](DealsApi.md#getDeal) | **GET** /v2/deals/{id} | Retrieves a specific deal by its ID. |
 | [**getNote()**](DealsApi.md#getNote) | **GET** /v2/deals/-/notes/{note_id} | Retrieves a specific deal note by its ID. |
 | [**listDeals()**](DealsApi.md#listDeals) | **GET** /v2/deals/-/contacts/{contact_id} | Lists all deals associated with a specific contact. |
 | [**listNotes()**](DealsApi.md#listNotes) | **GET** /v2/deals/{id}/notes | Lists all notes associated with a specific deal. |
+| [**moveDealsForContacts()**](DealsApi.md#moveDealsForContacts) | **POST** /v2/deals/moveByContactIds | Moves the active deals of specified contacts from one stage to another, in bulk. |
 | [**updateNote()**](DealsApi.md#updateNote) | **PATCH** /v2/deals/-/notes/{note_id} | Updates a specific deal note by its ID. |
 
 
@@ -294,7 +295,7 @@ No authorization required
 ## `getDeal()`
 
 ```php
-getDeal($deal_id): \Keap\Core\V2\Model\Deal
+getDeal($id): \Keap\Core\V2\Model\Deal
 ```
 
 Retrieves a specific deal by its ID.
@@ -313,10 +314,10 @@ $apiInstance = new Keap\Core\V2\Api\DealsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$deal_id = 'deal_id_example'; // string | the ID of the deal to retrieve
+$id = 'id_example'; // string | the ID of the deal to retrieve
 
 try {
-    $result = $apiInstance->getDeal($deal_id);
+    $result = $apiInstance->getDeal($id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DealsApi->getDeal: ', $e->getMessage(), PHP_EOL;
@@ -327,7 +328,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **deal_id** | **string**| the ID of the deal to retrieve | |
+| **id** | **string**| the ID of the deal to retrieve | |
 
 ### Return type
 
@@ -521,6 +522,61 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `moveDealsForContacts()`
+
+```php
+moveDealsForContacts($move_deals_for_contacts_request): \Keap\Core\V2\Model\MoveDealsForContactsResponse
+```
+
+Moves the active deals of specified contacts from one stage to another, in bulk.
+
+Moves the active deals of specified contacts from one stage to another, in bulk.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+$apiInstance = new Keap\Core\V2\Api\DealsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$move_deals_for_contacts_request = new \Keap\Core\V2\Model\MoveDealsForContactsRequest(); // \Keap\Core\V2\Model\MoveDealsForContactsRequest | the request body containing move details
+
+try {
+    $result = $apiInstance->moveDealsForContacts($move_deals_for_contacts_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DealsApi->moveDealsForContacts: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **move_deals_for_contacts_request** | [**\Keap\Core\V2\Model\MoveDealsForContactsRequest**](../Model/MoveDealsForContactsRequest.md)| the request body containing move details | |
+
+### Return type
+
+[**\Keap\Core\V2\Model\MoveDealsForContactsResponse**](../Model/MoveDealsForContactsResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

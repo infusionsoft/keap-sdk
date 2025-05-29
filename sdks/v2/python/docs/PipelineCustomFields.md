@@ -6,6 +6,7 @@ Represents a list of custom fields in the system.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**next_page_token** | **str** | Token for the next page of results. | [optional] 
 **custom_fields** | [**List[PipelineCustomField]**](PipelineCustomField.md) | The list of custom fields. | 
 
 ## Example

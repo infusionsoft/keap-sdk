@@ -49,6 +49,7 @@ import { AutomationLockStatus } from '../models/AutomationLockStatus';
 import { BaseListResponseDeal } from '../models/BaseListResponseDeal';
 import { BaseListResponseDealNote } from '../models/BaseListResponseDealNote';
 import { BaseListResponsePipeline } from '../models/BaseListResponsePipeline';
+import { BaseListResponsePipelineCustomField } from '../models/BaseListResponsePipelineCustomField';
 import { BaseListResponsePipelineSummary } from '../models/BaseListResponsePipelineSummary';
 import { BaseListResponseStage } from '../models/BaseListResponseStage';
 import { BasicCompany } from '../models/BasicCompany';
@@ -240,6 +241,8 @@ import { LogicalDate } from '../models/LogicalDate';
 import { ModelError } from '../models/ModelError';
 import { ModelFile } from '../models/ModelFile';
 import { Money } from '../models/Money';
+import { MoveDealsForContactsRequest } from '../models/MoveDealsForContactsRequest';
+import { MoveDealsForContactsResponse } from '../models/MoveDealsForContactsResponse';
 import { Note } from '../models/Note';
 import { NoteTemplate } from '../models/NoteTemplate';
 import { ObjectModel } from '../models/ObjectModel';
@@ -2624,6 +2627,36 @@ import { ObservableCustomFieldsApi } from "./ObservableAPI";
 import { CustomFieldsApiRequestFactory, CustomFieldsApiResponseProcessor} from "../apis/CustomFieldsApi";
 
 export interface CustomFieldsApiGetCustomFieldsRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof CustomFieldsApigetCustomFields
+     */
+    filter?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof CustomFieldsApigetCustomFields
+     */
+    pageToken?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof CustomFieldsApigetCustomFields
+     */
+    orderBy?: string
+    /**
+     * 
+     * Minimum: 1
+     * Maximum: 1000
+     * Defaults to: 1000
+     * @type number
+     * @memberof CustomFieldsApigetCustomFields
+     */
+    pageSize?: number
 }
 
 export interface CustomFieldsApiUpdateCustomFieldRequest {
@@ -2633,7 +2666,7 @@ export interface CustomFieldsApiUpdateCustomFieldRequest {
      * @type string
      * @memberof CustomFieldsApiupdateCustomField
      */
-    customFieldId: string
+    id: string
     /**
      * the request body containing updated custom field details
      * @type UpdateCustomFieldRequest
@@ -2655,7 +2688,7 @@ export class ObjectCustomFieldsApi {
      * @param param the request object
      */
     public getCustomFieldsWithHttpInfo(param: CustomFieldsApiGetCustomFieldsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<PipelineCustomFields>> {
-        return this.api.getCustomFieldsWithHttpInfo( options).toPromise();
+        return this.api.getCustomFieldsWithHttpInfo(param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
     }
 
     /**
@@ -2664,7 +2697,7 @@ export class ObjectCustomFieldsApi {
      * @param param the request object
      */
     public getCustomFields(param: CustomFieldsApiGetCustomFieldsRequest = {}, options?: ConfigurationOptions): Promise<PipelineCustomFields> {
-        return this.api.getCustomFields( options).toPromise();
+        return this.api.getCustomFields(param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
     }
 
     /**
@@ -2673,7 +2706,7 @@ export class ObjectCustomFieldsApi {
      * @param param the request object
      */
     public updateCustomFieldWithHttpInfo(param: CustomFieldsApiUpdateCustomFieldRequest, options?: ConfigurationOptions): Promise<HttpInfo<PipelineCustomField>> {
-        return this.api.updateCustomFieldWithHttpInfo(param.customFieldId, param.updateCustomFieldRequest,  options).toPromise();
+        return this.api.updateCustomFieldWithHttpInfo(param.id, param.updateCustomFieldRequest,  options).toPromise();
     }
 
     /**
@@ -2682,7 +2715,7 @@ export class ObjectCustomFieldsApi {
      * @param param the request object
      */
     public updateCustomField(param: CustomFieldsApiUpdateCustomFieldRequest, options?: ConfigurationOptions): Promise<PipelineCustomField> {
-        return this.api.updateCustomField(param.customFieldId, param.updateCustomFieldRequest,  options).toPromise();
+        return this.api.updateCustomField(param.id, param.updateCustomFieldRequest,  options).toPromise();
     }
 
 }
@@ -2794,7 +2827,7 @@ export interface DealsApiGetDealRequest {
      * @type string
      * @memberof DealsApigetDeal
      */
-    dealId: string
+    id: string
 }
 
 export interface DealsApiGetNoteRequest {
@@ -2885,6 +2918,15 @@ export interface DealsApiListNotesRequest {
      * @memberof DealsApilistNotes
      */
     pageSize?: number
+}
+
+export interface DealsApiMoveDealsForContactsRequest {
+    /**
+     * the request body containing move details
+     * @type MoveDealsForContactsRequest
+     * @memberof DealsApimoveDealsForContacts
+     */
+    moveDealsForContactsRequest: MoveDealsForContactsRequest
 }
 
 export interface DealsApiUpdateNoteRequest {
@@ -3006,7 +3048,7 @@ export class ObjectDealsApi {
      * @param param the request object
      */
     public getDealWithHttpInfo(param: DealsApiGetDealRequest, options?: ConfigurationOptions): Promise<HttpInfo<Deal>> {
-        return this.api.getDealWithHttpInfo(param.dealId,  options).toPromise();
+        return this.api.getDealWithHttpInfo(param.id,  options).toPromise();
     }
 
     /**
@@ -3015,7 +3057,7 @@ export class ObjectDealsApi {
      * @param param the request object
      */
     public getDeal(param: DealsApiGetDealRequest, options?: ConfigurationOptions): Promise<Deal> {
-        return this.api.getDeal(param.dealId,  options).toPromise();
+        return this.api.getDeal(param.id,  options).toPromise();
     }
 
     /**
@@ -3073,6 +3115,24 @@ export class ObjectDealsApi {
     }
 
     /**
+     * Moves the active deals of specified contacts from one stage to another, in bulk.
+     * Moves the active deals of specified contacts from one stage to another, in bulk.
+     * @param param the request object
+     */
+    public moveDealsForContactsWithHttpInfo(param: DealsApiMoveDealsForContactsRequest, options?: ConfigurationOptions): Promise<HttpInfo<MoveDealsForContactsResponse>> {
+        return this.api.moveDealsForContactsWithHttpInfo(param.moveDealsForContactsRequest,  options).toPromise();
+    }
+
+    /**
+     * Moves the active deals of specified contacts from one stage to another, in bulk.
+     * Moves the active deals of specified contacts from one stage to another, in bulk.
+     * @param param the request object
+     */
+    public moveDealsForContacts(param: DealsApiMoveDealsForContactsRequest, options?: ConfigurationOptions): Promise<MoveDealsForContactsResponse> {
+        return this.api.moveDealsForContacts(param.moveDealsForContactsRequest,  options).toPromise();
+    }
+
+    /**
      * Updates a specific deal note by its ID.
      * Updates a specific deal note by its ID.
      * @param param the request object
@@ -3102,7 +3162,7 @@ export interface DisplayFormsApiGetDisplayFormRequest {
      * @type string
      * @memberof DisplayFormsApigetDisplayForm
      */
-    pipelineId: string
+    id: string
 }
 
 export interface DisplayFormsApiUpdateDisplayFormRequest {
@@ -3112,7 +3172,7 @@ export interface DisplayFormsApiUpdateDisplayFormRequest {
      * @type string
      * @memberof DisplayFormsApiupdateDisplayForm
      */
-    pipelineId: string
+    id: string
     /**
      * the request body containing updated display form details
      * @type UpdateDisplayFormRequest
@@ -3134,7 +3194,7 @@ export class ObjectDisplayFormsApi {
      * @param param the request object
      */
     public getDisplayFormWithHttpInfo(param: DisplayFormsApiGetDisplayFormRequest, options?: ConfigurationOptions): Promise<HttpInfo<DisplayForm>> {
-        return this.api.getDisplayFormWithHttpInfo(param.pipelineId,  options).toPromise();
+        return this.api.getDisplayFormWithHttpInfo(param.id,  options).toPromise();
     }
 
     /**
@@ -3143,7 +3203,7 @@ export class ObjectDisplayFormsApi {
      * @param param the request object
      */
     public getDisplayForm(param: DisplayFormsApiGetDisplayFormRequest, options?: ConfigurationOptions): Promise<DisplayForm> {
-        return this.api.getDisplayForm(param.pipelineId,  options).toPromise();
+        return this.api.getDisplayForm(param.id,  options).toPromise();
     }
 
     /**
@@ -3152,7 +3212,7 @@ export class ObjectDisplayFormsApi {
      * @param param the request object
      */
     public updateDisplayFormWithHttpInfo(param: DisplayFormsApiUpdateDisplayFormRequest, options?: ConfigurationOptions): Promise<HttpInfo<DisplayForm>> {
-        return this.api.updateDisplayFormWithHttpInfo(param.pipelineId, param.updateDisplayFormRequest,  options).toPromise();
+        return this.api.updateDisplayFormWithHttpInfo(param.id, param.updateDisplayFormRequest,  options).toPromise();
     }
 
     /**
@@ -3161,7 +3221,7 @@ export class ObjectDisplayFormsApi {
      * @param param the request object
      */
     public updateDisplayForm(param: DisplayFormsApiUpdateDisplayFormRequest, options?: ConfigurationOptions): Promise<DisplayForm> {
-        return this.api.updateDisplayForm(param.pipelineId, param.updateDisplayFormRequest,  options).toPromise();
+        return this.api.updateDisplayForm(param.id, param.updateDisplayFormRequest,  options).toPromise();
     }
 
 }

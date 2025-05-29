@@ -35,10 +35,10 @@ namespace Keap.Core.V2.Api
         /// Retrieves a specific display form by a pipeline ID.
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pipelineId">the ID of the pipeline containing the form</param>
+        /// <param name="id">the ID of the pipeline containing the form</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DisplayForm</returns>
-        DisplayForm GetDisplayForm(string pipelineId, int operationIndex = 0);
+        DisplayForm GetDisplayForm(string id, int operationIndex = 0);
 
         /// <summary>
         /// Retrieves a specific display form by a pipeline ID.
@@ -47,10 +47,10 @@ namespace Keap.Core.V2.Api
         /// Retrieves a specific display form by a pipeline ID.
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pipelineId">the ID of the pipeline containing the form</param>
+        /// <param name="id">the ID of the pipeline containing the form</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DisplayForm</returns>
-        ApiResponse<DisplayForm> GetDisplayFormWithHttpInfo(string pipelineId, int operationIndex = 0);
+        ApiResponse<DisplayForm> GetDisplayFormWithHttpInfo(string id, int operationIndex = 0);
         /// <summary>
         /// Updates a display form
         /// </summary>
@@ -58,11 +58,11 @@ namespace Keap.Core.V2.Api
         /// Updates a display form
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pipelineId">the ID of the pipeline containing the form</param>
+        /// <param name="id">the ID of the pipeline containing the form</param>
         /// <param name="updateDisplayFormRequest">the request body containing updated display form details</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DisplayForm</returns>
-        DisplayForm UpdateDisplayForm(string pipelineId, UpdateDisplayFormRequest updateDisplayFormRequest, int operationIndex = 0);
+        DisplayForm UpdateDisplayForm(string id, UpdateDisplayFormRequest updateDisplayFormRequest, int operationIndex = 0);
 
         /// <summary>
         /// Updates a display form
@@ -71,11 +71,11 @@ namespace Keap.Core.V2.Api
         /// Updates a display form
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pipelineId">the ID of the pipeline containing the form</param>
+        /// <param name="id">the ID of the pipeline containing the form</param>
         /// <param name="updateDisplayFormRequest">the request body containing updated display form details</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DisplayForm</returns>
-        ApiResponse<DisplayForm> UpdateDisplayFormWithHttpInfo(string pipelineId, UpdateDisplayFormRequest updateDisplayFormRequest, int operationIndex = 0);
+        ApiResponse<DisplayForm> UpdateDisplayFormWithHttpInfo(string id, UpdateDisplayFormRequest updateDisplayFormRequest, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -92,11 +92,11 @@ namespace Keap.Core.V2.Api
         /// Retrieves a specific display form by a pipeline ID.
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pipelineId">the ID of the pipeline containing the form</param>
+        /// <param name="id">the ID of the pipeline containing the form</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DisplayForm</returns>
-        System.Threading.Tasks.Task<DisplayForm> GetDisplayFormAsync(string pipelineId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<DisplayForm> GetDisplayFormAsync(string id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a specific display form by a pipeline ID.
@@ -105,11 +105,11 @@ namespace Keap.Core.V2.Api
         /// Retrieves a specific display form by a pipeline ID.
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pipelineId">the ID of the pipeline containing the form</param>
+        /// <param name="id">the ID of the pipeline containing the form</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DisplayForm)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DisplayForm>> GetDisplayFormWithHttpInfoAsync(string pipelineId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<DisplayForm>> GetDisplayFormWithHttpInfoAsync(string id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Updates a display form
         /// </summary>
@@ -117,12 +117,12 @@ namespace Keap.Core.V2.Api
         /// Updates a display form
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pipelineId">the ID of the pipeline containing the form</param>
+        /// <param name="id">the ID of the pipeline containing the form</param>
         /// <param name="updateDisplayFormRequest">the request body containing updated display form details</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DisplayForm</returns>
-        System.Threading.Tasks.Task<DisplayForm> UpdateDisplayFormAsync(string pipelineId, UpdateDisplayFormRequest updateDisplayFormRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<DisplayForm> UpdateDisplayFormAsync(string id, UpdateDisplayFormRequest updateDisplayFormRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Updates a display form
@@ -131,12 +131,12 @@ namespace Keap.Core.V2.Api
         /// Updates a display form
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pipelineId">the ID of the pipeline containing the form</param>
+        /// <param name="id">the ID of the pipeline containing the form</param>
         /// <param name="updateDisplayFormRequest">the request body containing updated display form details</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DisplayForm)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DisplayForm>> UpdateDisplayFormWithHttpInfoAsync(string pipelineId, UpdateDisplayFormRequest updateDisplayFormRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<DisplayForm>> UpdateDisplayFormWithHttpInfoAsync(string id, UpdateDisplayFormRequest updateDisplayFormRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -261,12 +261,12 @@ namespace Keap.Core.V2.Api
         /// Retrieves a specific display form by a pipeline ID. Retrieves a specific display form by a pipeline ID.
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pipelineId">the ID of the pipeline containing the form</param>
+        /// <param name="id">the ID of the pipeline containing the form</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DisplayForm</returns>
-        public DisplayForm GetDisplayForm(string pipelineId, int operationIndex = 0)
+        public DisplayForm GetDisplayForm(string id, int operationIndex = 0)
         {
-            Keap.Core.V2.Client.ApiResponse<DisplayForm> localVarResponse = GetDisplayFormWithHttpInfo(pipelineId);
+            Keap.Core.V2.Client.ApiResponse<DisplayForm> localVarResponse = GetDisplayFormWithHttpInfo(id);
             return localVarResponse.Data;
         }
 
@@ -274,15 +274,15 @@ namespace Keap.Core.V2.Api
         /// Retrieves a specific display form by a pipeline ID. Retrieves a specific display form by a pipeline ID.
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pipelineId">the ID of the pipeline containing the form</param>
+        /// <param name="id">the ID of the pipeline containing the form</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DisplayForm</returns>
-        public Keap.Core.V2.Client.ApiResponse<DisplayForm> GetDisplayFormWithHttpInfo(string pipelineId, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<DisplayForm> GetDisplayFormWithHttpInfo(string id, int operationIndex = 0)
         {
-            // verify the required parameter 'pipelineId' is set
-            if (pipelineId == null)
+            // verify the required parameter 'id' is set
+            if (id == null)
             {
-                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'pipelineId' when calling DisplayFormsApi->GetDisplayForm");
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'id' when calling DisplayFormsApi->GetDisplayForm");
             }
 
             Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
@@ -308,14 +308,14 @@ namespace Keap.Core.V2.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.PathParameters.Add("pipeline_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(pipelineId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("id", Keap.Core.V2.Client.ClientUtils.ParameterToString(id)); // path parameter
 
             localVarRequestOptions.Operation = "DisplayFormsApi.GetDisplayForm";
             localVarRequestOptions.OperationIndex = operationIndex;
 
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<DisplayForm>("/v2/pipelines/{pipeline_id}/form", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<DisplayForm>("/v2/pipelines/{id}/form", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetDisplayForm", localVarResponse);
@@ -332,13 +332,13 @@ namespace Keap.Core.V2.Api
         /// Retrieves a specific display form by a pipeline ID. Retrieves a specific display form by a pipeline ID.
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pipelineId">the ID of the pipeline containing the form</param>
+        /// <param name="id">the ID of the pipeline containing the form</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DisplayForm</returns>
-        public async System.Threading.Tasks.Task<DisplayForm> GetDisplayFormAsync(string pipelineId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<DisplayForm> GetDisplayFormAsync(string id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            Keap.Core.V2.Client.ApiResponse<DisplayForm> localVarResponse = await GetDisplayFormWithHttpInfoAsync(pipelineId, operationIndex, cancellationToken).ConfigureAwait(false);
+            Keap.Core.V2.Client.ApiResponse<DisplayForm> localVarResponse = await GetDisplayFormWithHttpInfoAsync(id, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -346,16 +346,16 @@ namespace Keap.Core.V2.Api
         /// Retrieves a specific display form by a pipeline ID. Retrieves a specific display form by a pipeline ID.
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pipelineId">the ID of the pipeline containing the form</param>
+        /// <param name="id">the ID of the pipeline containing the form</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DisplayForm)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<DisplayForm>> GetDisplayFormWithHttpInfoAsync(string pipelineId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<DisplayForm>> GetDisplayFormWithHttpInfoAsync(string id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            // verify the required parameter 'pipelineId' is set
-            if (pipelineId == null)
+            // verify the required parameter 'id' is set
+            if (id == null)
             {
-                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'pipelineId' when calling DisplayFormsApi->GetDisplayForm");
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'id' when calling DisplayFormsApi->GetDisplayForm");
             }
 
 
@@ -381,14 +381,14 @@ namespace Keap.Core.V2.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.PathParameters.Add("pipeline_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(pipelineId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("id", Keap.Core.V2.Client.ClientUtils.ParameterToString(id)); // path parameter
 
             localVarRequestOptions.Operation = "DisplayFormsApi.GetDisplayForm";
             localVarRequestOptions.OperationIndex = operationIndex;
 
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<DisplayForm>("/v2/pipelines/{pipeline_id}/form", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<DisplayForm>("/v2/pipelines/{id}/form", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -406,13 +406,13 @@ namespace Keap.Core.V2.Api
         /// Updates a display form Updates a display form
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pipelineId">the ID of the pipeline containing the form</param>
+        /// <param name="id">the ID of the pipeline containing the form</param>
         /// <param name="updateDisplayFormRequest">the request body containing updated display form details</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DisplayForm</returns>
-        public DisplayForm UpdateDisplayForm(string pipelineId, UpdateDisplayFormRequest updateDisplayFormRequest, int operationIndex = 0)
+        public DisplayForm UpdateDisplayForm(string id, UpdateDisplayFormRequest updateDisplayFormRequest, int operationIndex = 0)
         {
-            Keap.Core.V2.Client.ApiResponse<DisplayForm> localVarResponse = UpdateDisplayFormWithHttpInfo(pipelineId, updateDisplayFormRequest);
+            Keap.Core.V2.Client.ApiResponse<DisplayForm> localVarResponse = UpdateDisplayFormWithHttpInfo(id, updateDisplayFormRequest);
             return localVarResponse.Data;
         }
 
@@ -420,16 +420,16 @@ namespace Keap.Core.V2.Api
         /// Updates a display form Updates a display form
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pipelineId">the ID of the pipeline containing the form</param>
+        /// <param name="id">the ID of the pipeline containing the form</param>
         /// <param name="updateDisplayFormRequest">the request body containing updated display form details</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DisplayForm</returns>
-        public Keap.Core.V2.Client.ApiResponse<DisplayForm> UpdateDisplayFormWithHttpInfo(string pipelineId, UpdateDisplayFormRequest updateDisplayFormRequest, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<DisplayForm> UpdateDisplayFormWithHttpInfo(string id, UpdateDisplayFormRequest updateDisplayFormRequest, int operationIndex = 0)
         {
-            // verify the required parameter 'pipelineId' is set
-            if (pipelineId == null)
+            // verify the required parameter 'id' is set
+            if (id == null)
             {
-                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'pipelineId' when calling DisplayFormsApi->UpdateDisplayForm");
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'id' when calling DisplayFormsApi->UpdateDisplayForm");
             }
 
             // verify the required parameter 'updateDisplayFormRequest' is set
@@ -462,7 +462,7 @@ namespace Keap.Core.V2.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.PathParameters.Add("pipeline_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(pipelineId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("id", Keap.Core.V2.Client.ClientUtils.ParameterToString(id)); // path parameter
             localVarRequestOptions.Data = updateDisplayFormRequest;
 
             localVarRequestOptions.Operation = "DisplayFormsApi.UpdateDisplayForm";
@@ -470,7 +470,7 @@ namespace Keap.Core.V2.Api
 
 
             // make the HTTP request
-            var localVarResponse = this.Client.Patch<DisplayForm>("/v2/pipelines/{pipeline_id}/form", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Patch<DisplayForm>("/v2/pipelines/{id}/form", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateDisplayForm", localVarResponse);
@@ -487,14 +487,14 @@ namespace Keap.Core.V2.Api
         /// Updates a display form Updates a display form
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pipelineId">the ID of the pipeline containing the form</param>
+        /// <param name="id">the ID of the pipeline containing the form</param>
         /// <param name="updateDisplayFormRequest">the request body containing updated display form details</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DisplayForm</returns>
-        public async System.Threading.Tasks.Task<DisplayForm> UpdateDisplayFormAsync(string pipelineId, UpdateDisplayFormRequest updateDisplayFormRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<DisplayForm> UpdateDisplayFormAsync(string id, UpdateDisplayFormRequest updateDisplayFormRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            Keap.Core.V2.Client.ApiResponse<DisplayForm> localVarResponse = await UpdateDisplayFormWithHttpInfoAsync(pipelineId, updateDisplayFormRequest, operationIndex, cancellationToken).ConfigureAwait(false);
+            Keap.Core.V2.Client.ApiResponse<DisplayForm> localVarResponse = await UpdateDisplayFormWithHttpInfoAsync(id, updateDisplayFormRequest, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -502,17 +502,17 @@ namespace Keap.Core.V2.Api
         /// Updates a display form Updates a display form
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pipelineId">the ID of the pipeline containing the form</param>
+        /// <param name="id">the ID of the pipeline containing the form</param>
         /// <param name="updateDisplayFormRequest">the request body containing updated display form details</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DisplayForm)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<DisplayForm>> UpdateDisplayFormWithHttpInfoAsync(string pipelineId, UpdateDisplayFormRequest updateDisplayFormRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<DisplayForm>> UpdateDisplayFormWithHttpInfoAsync(string id, UpdateDisplayFormRequest updateDisplayFormRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            // verify the required parameter 'pipelineId' is set
-            if (pipelineId == null)
+            // verify the required parameter 'id' is set
+            if (id == null)
             {
-                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'pipelineId' when calling DisplayFormsApi->UpdateDisplayForm");
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'id' when calling DisplayFormsApi->UpdateDisplayForm");
             }
 
             // verify the required parameter 'updateDisplayFormRequest' is set
@@ -545,7 +545,7 @@ namespace Keap.Core.V2.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.PathParameters.Add("pipeline_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(pipelineId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("id", Keap.Core.V2.Client.ClientUtils.ParameterToString(id)); // path parameter
             localVarRequestOptions.Data = updateDisplayFormRequest;
 
             localVarRequestOptions.Operation = "DisplayFormsApi.UpdateDisplayForm";
@@ -553,7 +553,7 @@ namespace Keap.Core.V2.Api
 
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PatchAsync<DisplayForm>("/v2/pipelines/{pipeline_id}/form", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PatchAsync<DisplayForm>("/v2/pipelines/{id}/form", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {

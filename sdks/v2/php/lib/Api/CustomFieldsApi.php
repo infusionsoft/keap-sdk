@@ -133,15 +133,19 @@ class CustomFieldsApi
      *
      * Retrieves a list of custom fields in a tenant.
      *
+     * @param  string|null $filter filter (optional)
+     * @param  string|null $page_token page_token (optional)
+     * @param  string|null $order_by order_by (optional)
+     * @param  int|null $page_size page_size (optional, default to 1000)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomFields'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Keap\Core\V2\Model\PipelineCustomFields
      */
-    public function getCustomFields(string $contentType = self::contentTypes['getCustomFields'][0])
+    public function getCustomFields($filter = null, $page_token = null, $order_by = null, $page_size = 1000, string $contentType = self::contentTypes['getCustomFields'][0])
     {
-        list($response) = $this->getCustomFieldsWithHttpInfo($contentType);
+        list($response) = $this->getCustomFieldsWithHttpInfo($filter, $page_token, $order_by, $page_size, $contentType);
         return $response;
     }
 
@@ -150,15 +154,19 @@ class CustomFieldsApi
      *
      * Retrieves a list of custom fields in a tenant.
      *
+     * @param  string|null $filter (optional)
+     * @param  string|null $page_token (optional)
+     * @param  string|null $order_by (optional)
+     * @param  int|null $page_size (optional, default to 1000)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomFields'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Keap\Core\V2\Model\PipelineCustomFields, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getCustomFieldsWithHttpInfo(string $contentType = self::contentTypes['getCustomFields'][0])
+    public function getCustomFieldsWithHttpInfo($filter = null, $page_token = null, $order_by = null, $page_size = 1000, string $contentType = self::contentTypes['getCustomFields'][0])
     {
-        $request = $this->getCustomFieldsRequest($contentType);
+        $request = $this->getCustomFieldsRequest($filter, $page_token, $order_by, $page_size, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -234,14 +242,18 @@ class CustomFieldsApi
      *
      * Retrieves a list of custom fields in a tenant.
      *
+     * @param  string|null $filter (optional)
+     * @param  string|null $page_token (optional)
+     * @param  string|null $order_by (optional)
+     * @param  int|null $page_size (optional, default to 1000)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomFields'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCustomFieldsAsync(string $contentType = self::contentTypes['getCustomFields'][0])
+    public function getCustomFieldsAsync($filter = null, $page_token = null, $order_by = null, $page_size = 1000, string $contentType = self::contentTypes['getCustomFields'][0])
     {
-        return $this->getCustomFieldsAsyncWithHttpInfo($contentType)
+        return $this->getCustomFieldsAsyncWithHttpInfo($filter, $page_token, $order_by, $page_size, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -254,15 +266,19 @@ class CustomFieldsApi
      *
      * Retrieves a list of custom fields in a tenant.
      *
+     * @param  string|null $filter (optional)
+     * @param  string|null $page_token (optional)
+     * @param  string|null $order_by (optional)
+     * @param  int|null $page_size (optional, default to 1000)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomFields'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCustomFieldsAsyncWithHttpInfo(string $contentType = self::contentTypes['getCustomFields'][0])
+    public function getCustomFieldsAsyncWithHttpInfo($filter = null, $page_token = null, $order_by = null, $page_size = 1000, string $contentType = self::contentTypes['getCustomFields'][0])
     {
         $returnType = '\Keap\Core\V2\Model\PipelineCustomFields';
-        $request = $this->getCustomFieldsRequest($contentType);
+        $request = $this->getCustomFieldsRequest($filter, $page_token, $order_by, $page_size, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -303,14 +319,28 @@ class CustomFieldsApi
     /**
      * Create request for operation 'getCustomFields'
      *
+     * @param  string|null $filter (optional)
+     * @param  string|null $page_token (optional)
+     * @param  string|null $order_by (optional)
+     * @param  int|null $page_size (optional, default to 1000)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomFields'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getCustomFieldsRequest(string $contentType = self::contentTypes['getCustomFields'][0])
+    public function getCustomFieldsRequest($filter = null, $page_token = null, $order_by = null, $page_size = 1000, string $contentType = self::contentTypes['getCustomFields'][0])
     {
 
+
+
+
+        if ($page_size !== null && $page_size > 1000) {
+            throw new \InvalidArgumentException('invalid value for "$page_size" when calling CustomFieldsApi.getCustomFields, must be smaller than or equal to 1000.');
+        }
+        if ($page_size !== null && $page_size < 1) {
+            throw new \InvalidArgumentException('invalid value for "$page_size" when calling CustomFieldsApi.getCustomFields, must be bigger than or equal to 1.');
+        }
+        
 
         $resourcePath = '/v2/customFields';
         $formParams = [];
@@ -319,6 +349,42 @@ class CustomFieldsApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $filter,
+            'filter', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $page_token,
+            'page_token', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $order_by,
+            'order_by', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $page_size,
+            'page_size', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
 
 
 
@@ -381,7 +447,7 @@ class CustomFieldsApi
      *
      * Updates a custom field
      *
-     * @param  string $custom_field_id the identifier of the custom field to update (required)
+     * @param  string $id the identifier of the custom field to update (required)
      * @param  \Keap\Core\V2\Model\UpdateCustomFieldRequest $update_custom_field_request the request body containing updated custom field details (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomField'] to see the possible values for this operation
      *
@@ -389,9 +455,9 @@ class CustomFieldsApi
      * @throws \InvalidArgumentException
      * @return \Keap\Core\V2\Model\PipelineCustomField
      */
-    public function updateCustomField($custom_field_id, $update_custom_field_request, string $contentType = self::contentTypes['updateCustomField'][0])
+    public function updateCustomField($id, $update_custom_field_request, string $contentType = self::contentTypes['updateCustomField'][0])
     {
-        list($response) = $this->updateCustomFieldWithHttpInfo($custom_field_id, $update_custom_field_request, $contentType);
+        list($response) = $this->updateCustomFieldWithHttpInfo($id, $update_custom_field_request, $contentType);
         return $response;
     }
 
@@ -400,7 +466,7 @@ class CustomFieldsApi
      *
      * Updates a custom field
      *
-     * @param  string $custom_field_id the identifier of the custom field to update (required)
+     * @param  string $id the identifier of the custom field to update (required)
      * @param  \Keap\Core\V2\Model\UpdateCustomFieldRequest $update_custom_field_request the request body containing updated custom field details (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomField'] to see the possible values for this operation
      *
@@ -408,9 +474,9 @@ class CustomFieldsApi
      * @throws \InvalidArgumentException
      * @return array of \Keap\Core\V2\Model\PipelineCustomField, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateCustomFieldWithHttpInfo($custom_field_id, $update_custom_field_request, string $contentType = self::contentTypes['updateCustomField'][0])
+    public function updateCustomFieldWithHttpInfo($id, $update_custom_field_request, string $contentType = self::contentTypes['updateCustomField'][0])
     {
-        $request = $this->updateCustomFieldRequest($custom_field_id, $update_custom_field_request, $contentType);
+        $request = $this->updateCustomFieldRequest($id, $update_custom_field_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -486,16 +552,16 @@ class CustomFieldsApi
      *
      * Updates a custom field
      *
-     * @param  string $custom_field_id the identifier of the custom field to update (required)
+     * @param  string $id the identifier of the custom field to update (required)
      * @param  \Keap\Core\V2\Model\UpdateCustomFieldRequest $update_custom_field_request the request body containing updated custom field details (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomField'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCustomFieldAsync($custom_field_id, $update_custom_field_request, string $contentType = self::contentTypes['updateCustomField'][0])
+    public function updateCustomFieldAsync($id, $update_custom_field_request, string $contentType = self::contentTypes['updateCustomField'][0])
     {
-        return $this->updateCustomFieldAsyncWithHttpInfo($custom_field_id, $update_custom_field_request, $contentType)
+        return $this->updateCustomFieldAsyncWithHttpInfo($id, $update_custom_field_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -508,17 +574,17 @@ class CustomFieldsApi
      *
      * Updates a custom field
      *
-     * @param  string $custom_field_id the identifier of the custom field to update (required)
+     * @param  string $id the identifier of the custom field to update (required)
      * @param  \Keap\Core\V2\Model\UpdateCustomFieldRequest $update_custom_field_request the request body containing updated custom field details (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomField'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCustomFieldAsyncWithHttpInfo($custom_field_id, $update_custom_field_request, string $contentType = self::contentTypes['updateCustomField'][0])
+    public function updateCustomFieldAsyncWithHttpInfo($id, $update_custom_field_request, string $contentType = self::contentTypes['updateCustomField'][0])
     {
         $returnType = '\Keap\Core\V2\Model\PipelineCustomField';
-        $request = $this->updateCustomFieldRequest($custom_field_id, $update_custom_field_request, $contentType);
+        $request = $this->updateCustomFieldRequest($id, $update_custom_field_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -559,20 +625,20 @@ class CustomFieldsApi
     /**
      * Create request for operation 'updateCustomField'
      *
-     * @param  string $custom_field_id the identifier of the custom field to update (required)
+     * @param  string $id the identifier of the custom field to update (required)
      * @param  \Keap\Core\V2\Model\UpdateCustomFieldRequest $update_custom_field_request the request body containing updated custom field details (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomField'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateCustomFieldRequest($custom_field_id, $update_custom_field_request, string $contentType = self::contentTypes['updateCustomField'][0])
+    public function updateCustomFieldRequest($id, $update_custom_field_request, string $contentType = self::contentTypes['updateCustomField'][0])
     {
 
-        // verify the required parameter 'custom_field_id' is set
-        if ($custom_field_id === null || (is_array($custom_field_id) && count($custom_field_id) === 0)) {
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $custom_field_id when calling updateCustomField'
+                'Missing the required parameter $id when calling updateCustomField'
             );
         }
 
@@ -584,7 +650,7 @@ class CustomFieldsApi
         }
 
 
-        $resourcePath = '/v2/customFields/{custom_field_id}';
+        $resourcePath = '/v2/customFields/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -594,10 +660,10 @@ class CustomFieldsApi
 
 
         // path params
-        if ($custom_field_id !== null) {
+        if ($id !== null) {
             $resourcePath = str_replace(
-                '{' . 'custom_field_id' . '}',
-                ObjectSerializer::toPathValue($custom_field_id),
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
                 $resourcePath
             );
         }

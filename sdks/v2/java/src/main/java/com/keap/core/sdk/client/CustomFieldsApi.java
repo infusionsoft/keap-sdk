@@ -97,22 +97,30 @@ import io.github.resilience4j.retry.Retry;
   /**
    * Retrieves a list of custom fields in a tenant.
    * Retrieves a list of custom fields in a tenant.
+   * @param filter  (optional)
+   * @param pageToken  (optional)
+   * @param orderBy  (optional)
+   * @param pageSize  (optional, default to 1000)
    * @return PipelineCustomFields
    * @throws ApiException if fails to make API call
    */
-  public PipelineCustomFields getCustomFields() throws ApiException {
-    ApiResponse<PipelineCustomFields> localVarResponse = getCustomFieldsWithHttpInfo();
+  public PipelineCustomFields getCustomFields(String filter, String pageToken, String orderBy, Integer pageSize) throws ApiException {
+    ApiResponse<PipelineCustomFields> localVarResponse = getCustomFieldsWithHttpInfo(filter, pageToken, orderBy, pageSize);
     return localVarResponse.getData();
   }
 
   /**
    * Retrieves a list of custom fields in a tenant.
    * Retrieves a list of custom fields in a tenant.
+   * @param filter  (optional)
+   * @param pageToken  (optional)
+   * @param orderBy  (optional)
+   * @param pageSize  (optional, default to 1000)
    * @return ApiResponse&lt;PipelineCustomFields&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<PipelineCustomFields> getCustomFieldsWithHttpInfo() throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = getCustomFieldsRequestBuilder();
+  public ApiResponse<PipelineCustomFields> getCustomFieldsWithHttpInfo(String filter, String pageToken, String orderBy, Integer pageSize) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getCustomFieldsRequestBuilder(filter, pageToken, orderBy, pageSize);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
       memberVarHttpClient.send(
@@ -152,13 +160,34 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder getCustomFieldsRequestBuilder() throws ApiException {
+  private HttpRequest.Builder getCustomFieldsRequestBuilder(String filter, String pageToken, String orderBy, Integer pageSize) throws ApiException {
 
     HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
 
     String localVarPath = "/v2/customFields";
 
-    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "filter";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("filter", filter));
+    localVarQueryParameterBaseName = "page_token";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("page_token", pageToken));
+    localVarQueryParameterBaseName = "order_by";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("order_by", orderBy));
+    localVarQueryParameterBaseName = "page_size";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("page_size", pageSize));
+
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
 
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
@@ -176,26 +205,26 @@ import io.github.resilience4j.retry.Retry;
   /**
    * Updates a custom field
    * Updates a custom field
-   * @param customFieldId the identifier of the custom field to update (required)
+   * @param id the identifier of the custom field to update (required)
    * @param updateCustomFieldRequest the request body containing updated custom field details (required)
    * @return PipelineCustomField
    * @throws ApiException if fails to make API call
    */
-  public PipelineCustomField updateCustomField(String customFieldId, UpdateCustomFieldRequest updateCustomFieldRequest) throws ApiException {
-    ApiResponse<PipelineCustomField> localVarResponse = updateCustomFieldWithHttpInfo(customFieldId, updateCustomFieldRequest);
+  public PipelineCustomField updateCustomField(String id, UpdateCustomFieldRequest updateCustomFieldRequest) throws ApiException {
+    ApiResponse<PipelineCustomField> localVarResponse = updateCustomFieldWithHttpInfo(id, updateCustomFieldRequest);
     return localVarResponse.getData();
   }
 
   /**
    * Updates a custom field
    * Updates a custom field
-   * @param customFieldId the identifier of the custom field to update (required)
+   * @param id the identifier of the custom field to update (required)
    * @param updateCustomFieldRequest the request body containing updated custom field details (required)
    * @return ApiResponse&lt;PipelineCustomField&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<PipelineCustomField> updateCustomFieldWithHttpInfo(String customFieldId, UpdateCustomFieldRequest updateCustomFieldRequest) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = updateCustomFieldRequestBuilder(customFieldId, updateCustomFieldRequest);
+  public ApiResponse<PipelineCustomField> updateCustomFieldWithHttpInfo(String id, UpdateCustomFieldRequest updateCustomFieldRequest) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = updateCustomFieldRequestBuilder(id, updateCustomFieldRequest);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
       memberVarHttpClient.send(
@@ -235,10 +264,10 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateCustomFieldRequestBuilder(String customFieldId, UpdateCustomFieldRequest updateCustomFieldRequest) throws ApiException {
-    // verify the required parameter 'customFieldId' is set
-    if (customFieldId == null) {
-      throw new ApiException(400, "Missing the required parameter 'customFieldId' when calling updateCustomField");
+  private HttpRequest.Builder updateCustomFieldRequestBuilder(String id, UpdateCustomFieldRequest updateCustomFieldRequest) throws ApiException {
+    // verify the required parameter 'id' is set
+    if (id == null) {
+      throw new ApiException(400, "Missing the required parameter 'id' when calling updateCustomField");
     }
     // verify the required parameter 'updateCustomFieldRequest' is set
     if (updateCustomFieldRequest == null) {
@@ -247,8 +276,8 @@ import io.github.resilience4j.retry.Retry;
 
     HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
 
-    String localVarPath = "/v2/customFields/{custom_field_id}"
-        .replace("{custom_field_id}", ApiClient.urlEncode(customFieldId.toString()));
+    String localVarPath = "/v2/customFields/{id}"
+        .replace("{id}", ApiClient.urlEncode(id.toString()));
 
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
 

@@ -4,8 +4,8 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getDisplayForm**](DisplayFormsApi.md#getDisplayForm) | **GET** /v2/pipelines/{pipeline_id}/form | Retrieves a specific display form by a pipeline ID.
-[**updateDisplayForm**](DisplayFormsApi.md#updateDisplayForm) | **PATCH** /v2/pipelines/{pipeline_id}/form | Updates a display form
+[**getDisplayForm**](DisplayFormsApi.md#getDisplayForm) | **GET** /v2/pipelines/{id}/form | Retrieves a specific display form by a pipeline ID.
+[**updateDisplayForm**](DisplayFormsApi.md#updateDisplayForm) | **PATCH** /v2/pipelines/{id}/form | Updates a display form
 
 
 # **getDisplayForm**
@@ -25,7 +25,7 @@ const apiInstance = new DisplayFormsApi(configuration);
 
 const request: DisplayFormsApiGetDisplayFormRequest = {
     // the ID of the pipeline containing the form
-  pipelineId: "pipeline_id_example",
+  id: "id_example",
 };
 
 const data = await apiInstance.getDisplayForm(request);
@@ -37,7 +37,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pipelineId** | [**string**] | the ID of the pipeline containing the form | defaults to undefined
+ **id** | [**string**] | the ID of the pipeline containing the form | defaults to undefined
 
 
 ### Return type
@@ -78,7 +78,7 @@ const apiInstance = new DisplayFormsApi(configuration);
 
 const request: DisplayFormsApiUpdateDisplayFormRequest = {
     // the ID of the pipeline containing the form
-  pipelineId: "pipeline_id_example",
+  id: "id_example",
     // the request body containing updated display form details
   updateDisplayFormRequest: {
     groups: [
@@ -115,7 +115,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateDisplayFormRequest** | **UpdateDisplayFormRequest**| the request body containing updated display form details |
- **pipelineId** | [**string**] | the ID of the pipeline containing the form | defaults to undefined
+ **id** | [**string**] | the ID of the pipeline containing the form | defaults to undefined
 
 
 ### Return type

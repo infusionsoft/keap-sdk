@@ -5,7 +5,7 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getCustomFields**](CustomFieldsApi.md#getCustomFields) | **GET** /v2/customFields | Retrieves a list of custom fields in a tenant.
-[**updateCustomField**](CustomFieldsApi.md#updateCustomField) | **PATCH** /v2/customFields/{custom_field_id} | Updates a custom field
+[**updateCustomField**](CustomFieldsApi.md#updateCustomField) | **PATCH** /v2/customFields/{id} | Updates a custom field
 
 
 # **getCustomFields**
@@ -18,11 +18,21 @@ Retrieves a list of custom fields in a tenant.
 
 ```typescript
 import { createConfiguration, CustomFieldsApi } from '';
+import type { CustomFieldsApiGetCustomFieldsRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new CustomFieldsApi(configuration);
 
-const request = {};
+const request: CustomFieldsApiGetCustomFieldsRequest = {
+  
+  filter: "filter_example",
+  
+  pageToken: "page_token_example",
+  
+  orderBy: "order_by_example",
+  
+  pageSize: 100,
+};
 
 const data = await apiInstance.getCustomFields(request);
 console.log('API called successfully. Returned data:', data);
@@ -30,7 +40,13 @@ console.log('API called successfully. Returned data:', data);
 
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **filter** | [**string**] |  | (optional) defaults to undefined
+ **pageToken** | [**string**] |  | (optional) defaults to undefined
+ **orderBy** | [**string**] |  | (optional) defaults to undefined
+ **pageSize** | [**number**] |  | (optional) defaults to 1000
 
 
 ### Return type
@@ -71,7 +87,7 @@ const apiInstance = new CustomFieldsApi(configuration);
 
 const request: CustomFieldsApiUpdateCustomFieldRequest = {
     // the identifier of the custom field to update
-  customFieldId: "custom_field_id_example",
+  id: "id_example",
     // the request body containing updated custom field details
   updateCustomFieldRequest: {
     label: "label_example",
@@ -101,7 +117,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateCustomFieldRequest** | **UpdateCustomFieldRequest**| the request body containing updated custom field details |
- **customFieldId** | [**string**] | the identifier of the custom field to update | defaults to undefined
+ **id** | [**string**] | the identifier of the custom field to update | defaults to undefined
 
 
 ### Return type

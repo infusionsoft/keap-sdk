@@ -6,14 +6,14 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 |------------- | ------------- | -------------|
 | [**getCustomFields**](CustomFieldsApi.md#getCustomFields) | **GET** /v2/customFields | Retrieves a list of custom fields in a tenant. |
 | [**getCustomFieldsWithHttpInfo**](CustomFieldsApi.md#getCustomFieldsWithHttpInfo) | **GET** /v2/customFields | Retrieves a list of custom fields in a tenant. |
-| [**updateCustomField**](CustomFieldsApi.md#updateCustomField) | **PATCH** /v2/customFields/{custom_field_id} | Updates a custom field |
-| [**updateCustomFieldWithHttpInfo**](CustomFieldsApi.md#updateCustomFieldWithHttpInfo) | **PATCH** /v2/customFields/{custom_field_id} | Updates a custom field |
+| [**updateCustomField**](CustomFieldsApi.md#updateCustomField) | **PATCH** /v2/customFields/{id} | Updates a custom field |
+| [**updateCustomFieldWithHttpInfo**](CustomFieldsApi.md#updateCustomFieldWithHttpInfo) | **PATCH** /v2/customFields/{id} | Updates a custom field |
 
 
 
 ## getCustomFields
 
-> PipelineCustomFields getCustomFields()
+> PipelineCustomFields getCustomFields(filter, pageToken, orderBy, pageSize)
 
 Retrieves a list of custom fields in a tenant.
 
@@ -35,8 +35,12 @@ public class Example {
         defaultClient.setBasePath("https://api.keap.com/crm/rest");
 
         CustomFieldsApi apiInstance = new CustomFieldsApi(defaultClient);
+        String filter = "filter_example"; // String | 
+        String pageToken = "pageToken_example"; // String | 
+        String orderBy = "orderBy_example"; // String | 
+        Integer pageSize = 1000; // Integer | 
         try {
-            PipelineCustomFields result = apiInstance.getCustomFields();
+            PipelineCustomFields result = apiInstance.getCustomFields(filter, pageToken, orderBy, pageSize);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CustomFieldsApi#getCustomFields");
@@ -51,7 +55,13 @@ public class Example {
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **filter** | **String**|  | [optional] |
+| **pageToken** | **String**|  | [optional] |
+| **orderBy** | **String**|  | [optional] |
+| **pageSize** | **Integer**|  | [optional] [default to 1000] |
 
 ### Return type
 
@@ -74,7 +84,7 @@ No authorization required
 
 ## getCustomFieldsWithHttpInfo
 
-> ApiResponse<PipelineCustomFields> getCustomFields getCustomFieldsWithHttpInfo()
+> ApiResponse<PipelineCustomFields> getCustomFields getCustomFieldsWithHttpInfo(filter, pageToken, orderBy, pageSize)
 
 Retrieves a list of custom fields in a tenant.
 
@@ -97,8 +107,12 @@ public class Example {
         defaultClient.setBasePath("https://api.keap.com/crm/rest");
 
         CustomFieldsApi apiInstance = new CustomFieldsApi(defaultClient);
+        String filter = "filter_example"; // String | 
+        String pageToken = "pageToken_example"; // String | 
+        String orderBy = "orderBy_example"; // String | 
+        Integer pageSize = 1000; // Integer | 
         try {
-            ApiResponse<PipelineCustomFields> response = apiInstance.getCustomFieldsWithHttpInfo();
+            ApiResponse<PipelineCustomFields> response = apiInstance.getCustomFieldsWithHttpInfo(filter, pageToken, orderBy, pageSize);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -115,7 +129,13 @@ public class Example {
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **filter** | **String**|  | [optional] |
+| **pageToken** | **String**|  | [optional] |
+| **orderBy** | **String**|  | [optional] |
+| **pageSize** | **Integer**|  | [optional] [default to 1000] |
 
 ### Return type
 
@@ -139,7 +159,7 @@ No authorization required
 
 ## updateCustomField
 
-> PipelineCustomField updateCustomField(customFieldId, updateCustomFieldRequest)
+> PipelineCustomField updateCustomField(id, updateCustomFieldRequest)
 
 Updates a custom field
 
@@ -161,10 +181,10 @@ public class Example {
         defaultClient.setBasePath("https://api.keap.com/crm/rest");
 
         CustomFieldsApi apiInstance = new CustomFieldsApi(defaultClient);
-        String customFieldId = "customFieldId_example"; // String | the identifier of the custom field to update
+        String id = "id_example"; // String | the identifier of the custom field to update
         UpdateCustomFieldRequest updateCustomFieldRequest = new UpdateCustomFieldRequest(); // UpdateCustomFieldRequest | the request body containing updated custom field details
         try {
-            PipelineCustomField result = apiInstance.updateCustomField(customFieldId, updateCustomFieldRequest);
+            PipelineCustomField result = apiInstance.updateCustomField(id, updateCustomFieldRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CustomFieldsApi#updateCustomField");
@@ -182,7 +202,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customFieldId** | **String**| the identifier of the custom field to update | |
+| **id** | **String**| the identifier of the custom field to update | |
 | **updateCustomFieldRequest** | [**UpdateCustomFieldRequest**](UpdateCustomFieldRequest.md)| the request body containing updated custom field details | |
 
 ### Return type
@@ -206,7 +226,7 @@ No authorization required
 
 ## updateCustomFieldWithHttpInfo
 
-> ApiResponse<PipelineCustomField> updateCustomField updateCustomFieldWithHttpInfo(customFieldId, updateCustomFieldRequest)
+> ApiResponse<PipelineCustomField> updateCustomField updateCustomFieldWithHttpInfo(id, updateCustomFieldRequest)
 
 Updates a custom field
 
@@ -229,10 +249,10 @@ public class Example {
         defaultClient.setBasePath("https://api.keap.com/crm/rest");
 
         CustomFieldsApi apiInstance = new CustomFieldsApi(defaultClient);
-        String customFieldId = "customFieldId_example"; // String | the identifier of the custom field to update
+        String id = "id_example"; // String | the identifier of the custom field to update
         UpdateCustomFieldRequest updateCustomFieldRequest = new UpdateCustomFieldRequest(); // UpdateCustomFieldRequest | the request body containing updated custom field details
         try {
-            ApiResponse<PipelineCustomField> response = apiInstance.updateCustomFieldWithHttpInfo(customFieldId, updateCustomFieldRequest);
+            ApiResponse<PipelineCustomField> response = apiInstance.updateCustomFieldWithHttpInfo(id, updateCustomFieldRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -252,7 +272,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customFieldId** | **String**| the identifier of the custom field to update | |
+| **id** | **String**| the identifier of the custom field to update | |
 | **updateCustomFieldRequest** | [**UpdateCustomFieldRequest**](UpdateCustomFieldRequest.md)| the request body containing updated custom field details | |
 
 ### Return type

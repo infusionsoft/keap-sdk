@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import BaseListResponsePipelineCustomField from './BaseListResponsePipelineCustomField';
 import PipelineCustomField from './PipelineCustomField';
 
 /**
@@ -23,10 +24,11 @@ class PipelineCustomFields {
      * Constructs a new <code>PipelineCustomFields</code>.
      * Represents a list of custom fields in the system.
      * @alias module:keap.core.v2/model/PipelineCustomFields
+     * @implements module:keap.core.v2/model/BaseListResponsePipelineCustomField
      * @param customFields {Array.<module:keap.core.v2/model/PipelineCustomField>} The list of custom fields.
      */
     constructor(customFields) { 
-        
+        BaseListResponsePipelineCustomField.initialize(this);
         PipelineCustomFields.initialize(this, customFields);
     }
 
@@ -49,7 +51,11 @@ class PipelineCustomFields {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new PipelineCustomFields();
+            BaseListResponsePipelineCustomField.constructFromObject(data, obj);
 
+            if (data.hasOwnProperty('next_page_token')) {
+                obj['next_page_token'] = ApiClient.convertToType(data['next_page_token'], 'String');
+            }
             if (data.hasOwnProperty('custom_fields')) {
                 obj['custom_fields'] = ApiClient.convertToType(data['custom_fields'], [PipelineCustomField]);
             }
@@ -68,6 +74,10 @@ class PipelineCustomFields {
             if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
+        }
+        // ensure the json data is a string
+        if (data['next_page_token'] && !(typeof data['next_page_token'] === 'string' || data['next_page_token'] instanceof String)) {
+            throw new Error("Expected the field `next_page_token` to be a primitive type in the JSON string but got " + data['next_page_token']);
         }
         if (data['custom_fields']) { // data not null
             // ensure the json data is an array
@@ -89,12 +99,24 @@ class PipelineCustomFields {
 PipelineCustomFields.RequiredProperties = ["custom_fields"];
 
 /**
+ * Token for the next page of results.
+ * @member {String} next_page_token
+ */
+PipelineCustomFields.prototype['next_page_token'] = undefined;
+
+/**
  * The list of custom fields.
  * @member {Array.<module:keap.core.v2/model/PipelineCustomField>} custom_fields
  */
 PipelineCustomFields.prototype['custom_fields'] = undefined;
 
 
+// Implement BaseListResponsePipelineCustomField interface:
+/**
+ * Token for the next page of results.
+ * @member {String} next_page_token
+ */
+BaseListResponsePipelineCustomField.prototype['next_page_token'] = undefined;
 
 
 

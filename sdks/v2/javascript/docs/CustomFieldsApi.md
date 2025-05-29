@@ -5,13 +5,13 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getCustomFields**](CustomFieldsApi.md#getCustomFields) | **GET** /v2/customFields | Retrieves a list of custom fields in a tenant.
-[**updateCustomField**](CustomFieldsApi.md#updateCustomField) | **PATCH** /v2/customFields/{custom_field_id} | Updates a custom field
+[**updateCustomField**](CustomFieldsApi.md#updateCustomField) | **PATCH** /v2/customFields/{id} | Updates a custom field
 
 
 
 ## getCustomFields
 
-> PipelineCustomFields getCustomFields()
+> PipelineCustomFields getCustomFields(opts)
 
 Retrieves a list of custom fields in a tenant.
 
@@ -23,7 +23,13 @@ Retrieves a list of custom fields in a tenant.
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.CustomFieldsApi();
-apiInstance.getCustomFields().then((data) => {
+let opts = {
+  'filter': "filter_example", // String | 
+  'pageToken': "pageToken_example", // String | 
+  'orderBy': "orderBy_example", // String | 
+  'pageSize': 100 // Number | 
+};
+apiInstance.getCustomFields(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -33,7 +39,13 @@ apiInstance.getCustomFields().then((data) => {
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **filter** | **String**|  | [optional] 
+ **pageToken** | **String**|  | [optional] 
+ **orderBy** | **String**|  | [optional] 
+ **pageSize** | **Number**|  | [optional] [default to 1000]
 
 ### Return type
 
@@ -51,7 +63,7 @@ No authorization required
 
 ## updateCustomField
 
-> PipelineCustomField updateCustomField(customFieldId, updateCustomFieldRequest)
+> PipelineCustomField updateCustomField(id, updateCustomFieldRequest)
 
 Updates a custom field
 
@@ -63,9 +75,9 @@ Updates a custom field
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.CustomFieldsApi();
-let customFieldId = "customFieldId_example"; // String | the identifier of the custom field to update
+let id = "id_example"; // String | the identifier of the custom field to update
 let updateCustomFieldRequest = new KeapCoreServiceV2Sdk.UpdateCustomFieldRequest(); // UpdateCustomFieldRequest | the request body containing updated custom field details
-apiInstance.updateCustomField(customFieldId, updateCustomFieldRequest).then((data) => {
+apiInstance.updateCustomField(id, updateCustomFieldRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -78,7 +90,7 @@ apiInstance.updateCustomField(customFieldId, updateCustomFieldRequest).then((dat
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **customFieldId** | **String**| the identifier of the custom field to update | 
+ **id** | **String**| the identifier of the custom field to update | 
  **updateCustomFieldRequest** | [**UpdateCustomFieldRequest**](UpdateCustomFieldRequest.md)| the request body containing updated custom field details | 
 
 ### Return type

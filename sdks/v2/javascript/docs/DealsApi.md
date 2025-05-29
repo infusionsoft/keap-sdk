@@ -9,10 +9,11 @@ Method | HTTP request | Description
 [**createNotesBulk**](DealsApi.md#createNotesBulk) | **POST** /v2/deals/-/notes | Creates new notes in bulk.
 [**deleteDeal**](DealsApi.md#deleteDeal) | **DELETE** /v2/deals/{id} | Deletes a specific deal by its ID.
 [**deleteNote**](DealsApi.md#deleteNote) | **DELETE** /v2/deals/-/notes/{note_id} | Deletes a specific deal note by its ID.
-[**getDeal**](DealsApi.md#getDeal) | **GET** /v2/deals/{deal_id} | Retrieves a specific deal by its ID.
+[**getDeal**](DealsApi.md#getDeal) | **GET** /v2/deals/{id} | Retrieves a specific deal by its ID.
 [**getNote**](DealsApi.md#getNote) | **GET** /v2/deals/-/notes/{note_id} | Retrieves a specific deal note by its ID.
 [**listDeals**](DealsApi.md#listDeals) | **GET** /v2/deals/-/contacts/{contact_id} | Lists all deals associated with a specific contact.
 [**listNotes**](DealsApi.md#listNotes) | **GET** /v2/deals/{id}/notes | Lists all notes associated with a specific deal.
+[**moveDealsForContacts**](DealsApi.md#moveDealsForContacts) | **POST** /v2/deals/moveByContactIds | Moves the active deals of specified contacts from one stage to another, in bulk.
 [**updateNote**](DealsApi.md#updateNote) | **PATCH** /v2/deals/-/notes/{note_id} | Updates a specific deal note by its ID.
 
 
@@ -241,7 +242,7 @@ No authorization required
 
 ## getDeal
 
-> Deal getDeal(dealId)
+> Deal getDeal(id)
 
 Retrieves a specific deal by its ID.
 
@@ -253,8 +254,8 @@ Retrieves a specific deal by its ID.
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.DealsApi();
-let dealId = "dealId_example"; // String | the ID of the deal to retrieve
-apiInstance.getDeal(dealId).then((data) => {
+let id = "id_example"; // String | the ID of the deal to retrieve
+apiInstance.getDeal(id).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -267,7 +268,7 @@ apiInstance.getDeal(dealId).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **dealId** | **String**| the ID of the deal to retrieve | 
+ **id** | **String**| the ID of the deal to retrieve | 
 
 ### Return type
 
@@ -432,6 +433,50 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## moveDealsForContacts
+
+> MoveDealsForContactsResponse moveDealsForContacts(moveDealsForContactsRequest)
+
+Moves the active deals of specified contacts from one stage to another, in bulk.
+
+Moves the active deals of specified contacts from one stage to another, in bulk.
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+
+let apiInstance = new KeapCoreServiceV2Sdk.DealsApi();
+let moveDealsForContactsRequest = new KeapCoreServiceV2Sdk.MoveDealsForContactsRequest(); // MoveDealsForContactsRequest | the request body containing move details
+apiInstance.moveDealsForContacts(moveDealsForContactsRequest).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **moveDealsForContactsRequest** | [**MoveDealsForContactsRequest**](MoveDealsForContactsRequest.md)| the request body containing move details | 
+
+### Return type
+
+[**MoveDealsForContactsResponse**](MoveDealsForContactsResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 

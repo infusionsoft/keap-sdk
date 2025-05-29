@@ -9,10 +9,11 @@ Method | HTTP request | Description
 [**create_notes_bulk**](DealsApi.md#create_notes_bulk) | **POST** /v2/deals/-/notes | Creates new notes in bulk.
 [**delete_deal**](DealsApi.md#delete_deal) | **DELETE** /v2/deals/{id} | Deletes a specific deal by its ID.
 [**delete_note**](DealsApi.md#delete_note) | **DELETE** /v2/deals/-/notes/{note_id} | Deletes a specific deal note by its ID.
-[**get_deal**](DealsApi.md#get_deal) | **GET** /v2/deals/{deal_id} | Retrieves a specific deal by its ID.
+[**get_deal**](DealsApi.md#get_deal) | **GET** /v2/deals/{id} | Retrieves a specific deal by its ID.
 [**get_note**](DealsApi.md#get_note) | **GET** /v2/deals/-/notes/{note_id} | Retrieves a specific deal note by its ID.
 [**list_deals**](DealsApi.md#list_deals) | **GET** /v2/deals/-/contacts/{contact_id} | Lists all deals associated with a specific contact.
 [**list_notes**](DealsApi.md#list_notes) | **GET** /v2/deals/{id}/notes | Lists all notes associated with a specific deal.
+[**move_deals_for_contacts**](DealsApi.md#move_deals_for_contacts) | **POST** /v2/deals/moveByContactIds | Moves the active deals of specified contacts from one stage to another, in bulk.
 [**update_note**](DealsApi.md#update_note) | **PATCH** /v2/deals/-/notes/{note_id} | Updates a specific deal note by its ID.
 
 
@@ -346,7 +347,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_deal**
-> Deal get_deal(deal_id)
+> Deal get_deal(id)
 
 Retrieves a specific deal by its ID.
 
@@ -371,11 +372,11 @@ configuration = keap_core_v2_client.Configuration(
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.DealsApi(api_client)
-    deal_id = 'deal_id_example' # str | the ID of the deal to retrieve
+    id = 'id_example' # str | the ID of the deal to retrieve
 
     try:
         # Retrieves a specific deal by its ID.
-        api_response = api_instance.get_deal(deal_id)
+        api_response = api_instance.get_deal(id)
         print("The response of DealsApi->get_deal:\n")
         pprint(api_response)
     except Exception as e:
@@ -388,7 +389,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **deal_id** | **str**| the ID of the deal to retrieve | 
+ **id** | **str**| the ID of the deal to retrieve | 
 
 ### Return type
 
@@ -622,6 +623,73 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | a list of deal notes wrapped in a DealNoteListResponse |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **move_deals_for_contacts**
+> MoveDealsForContactsResponse move_deals_for_contacts(move_deals_for_contacts_request)
+
+Moves the active deals of specified contacts from one stage to another, in bulk.
+
+Moves the active deals of specified contacts from one stage to another, in bulk.
+
+### Example
+
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.move_deals_for_contacts_request import MoveDealsForContactsRequest
+from keap_core_v2_client.models.move_deals_for_contacts_response import MoveDealsForContactsResponse
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm/rest"
+)
+
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.DealsApi(api_client)
+    move_deals_for_contacts_request = keap_core_v2_client.MoveDealsForContactsRequest() # MoveDealsForContactsRequest | the request body containing move details
+
+    try:
+        # Moves the active deals of specified contacts from one stage to another, in bulk.
+        api_response = api_instance.move_deals_for_contacts(move_deals_for_contacts_request)
+        print("The response of DealsApi->move_deals_for_contacts:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DealsApi->move_deals_for_contacts: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **move_deals_for_contacts_request** | [**MoveDealsForContactsRequest**](MoveDealsForContactsRequest.md)| the request body containing move details | 
+
+### Return type
+
+[**MoveDealsForContactsResponse**](MoveDealsForContactsResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | the IDs of the Deals moved |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

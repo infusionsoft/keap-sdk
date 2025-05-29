@@ -43,18 +43,17 @@ namespace Keap.Core.V2.Model
         /// <param name="id">Unique identifier for the model..</param>
         /// <param name="name">The name of the deal. This field is required and must have at least one character. (required).</param>
         /// <param name="value">The monetary value of the deal. This field is required and must be valid. (required).</param>
-        /// <param name="contacts">The list of contacts associated with the deal. This field is required. (required).</param>
-        /// <param name="stage">The stage of the deal. This field is required and must be valid. (required).</param>
+        /// <param name="contactIds">The list of IDs of contacts associated with the deal. This field is required. (required).</param>
+        /// <param name="stageId">The stage of the deal. This field is required and must be valid. (required).</param>
         /// <param name="stageAssignmentTime">The time when the deal was assigned to the current stage. This field is required. (required).</param>
-        /// <param name="owners">The list of owners of the deal. This field is required. (required).</param>
-        /// <param name="ownerId">The ID of the owner of the deal. This field is optional..</param>
+        /// <param name="ownerIds">The list of IDs of owners of the deal. This field is required..</param>
         /// <param name="taskIds">The list of task IDs associated with the deal. This field is required. (required).</param>
         /// <param name="orderId">The order of the deal. This field is optional..</param>
         /// <param name="status">The status of the deal. This field is required. (required).</param>
         /// <param name="estimatedCloseTime">The estimated close time of the deal. This field is optional..</param>
         /// <param name="closedTime">The actual close time of the deal. This field is optional..</param>
         /// <param name="customFields">The custom fields associated with the deal. This field is optional..</param>
-        public Deal(string id = default, string name = default, Money value = default, List<DealContact> contacts = default, Stage stage = default, DateTime stageAssignmentTime = default, List<Owner> owners = default, string ownerId = default, List<string> taskIds = default, string orderId = default, string status = default, DateTime? estimatedCloseTime = default, DateTime? closedTime = default, Dictionary<string, Object> customFields = default)
+        public Deal(string id = default, string name = default, Money value = default, List<string> contactIds = default, string stageId = default, DateTime stageAssignmentTime = default, List<string> ownerIds = default, List<string> taskIds = default, string orderId = default, string status = default, DateTime? estimatedCloseTime = default, DateTime? closedTime = default, Dictionary<string, Object> customFields = default)
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -68,25 +67,19 @@ namespace Keap.Core.V2.Model
                 throw new ArgumentNullException("value is a required property for Deal and cannot be null");
             }
             this.Value = value;
-            // to ensure "contacts" is required (not null)
-            if (contacts == null)
+            // to ensure "contactIds" is required (not null)
+            if (contactIds == null)
             {
-                throw new ArgumentNullException("contacts is a required property for Deal and cannot be null");
+                throw new ArgumentNullException("contactIds is a required property for Deal and cannot be null");
             }
-            this.Contacts = contacts;
-            // to ensure "stage" is required (not null)
-            if (stage == null)
+            this.ContactIds = contactIds;
+            // to ensure "stageId" is required (not null)
+            if (stageId == null)
             {
-                throw new ArgumentNullException("stage is a required property for Deal and cannot be null");
+                throw new ArgumentNullException("stageId is a required property for Deal and cannot be null");
             }
-            this.Stage = stage;
+            this.StageId = stageId;
             this.StageAssignmentTime = stageAssignmentTime;
-            // to ensure "owners" is required (not null)
-            if (owners == null)
-            {
-                throw new ArgumentNullException("owners is a required property for Deal and cannot be null");
-            }
-            this.Owners = owners;
             // to ensure "taskIds" is required (not null)
             if (taskIds == null)
             {
@@ -100,7 +93,7 @@ namespace Keap.Core.V2.Model
             }
             this.Status = status;
             this.Id = id;
-            this.OwnerId = ownerId;
+            this.OwnerIds = ownerIds;
             this.OrderId = orderId;
             this.EstimatedCloseTime = estimatedCloseTime;
             this.ClosedTime = closedTime;
@@ -129,18 +122,18 @@ namespace Keap.Core.V2.Model
         public Money Value { get; set; }
 
         /// <summary>
-        /// The list of contacts associated with the deal. This field is required.
+        /// The list of IDs of contacts associated with the deal. This field is required.
         /// </summary>
-        /// <value>The list of contacts associated with the deal. This field is required.</value>
-        [DataMember(Name = "contacts", IsRequired = true, EmitDefaultValue = true)]
-        public List<DealContact> Contacts { get; set; }
+        /// <value>The list of IDs of contacts associated with the deal. This field is required.</value>
+        [DataMember(Name = "contact_ids", IsRequired = true, EmitDefaultValue = true)]
+        public List<string> ContactIds { get; set; }
 
         /// <summary>
         /// The stage of the deal. This field is required and must be valid.
         /// </summary>
         /// <value>The stage of the deal. This field is required and must be valid.</value>
-        [DataMember(Name = "stage", IsRequired = true, EmitDefaultValue = true)]
-        public Stage Stage { get; set; }
+        [DataMember(Name = "stage_id", IsRequired = true, EmitDefaultValue = true)]
+        public string StageId { get; set; }
 
         /// <summary>
         /// The time when the deal was assigned to the current stage. This field is required.
@@ -150,18 +143,11 @@ namespace Keap.Core.V2.Model
         public DateTime StageAssignmentTime { get; set; }
 
         /// <summary>
-        /// The list of owners of the deal. This field is required.
+        /// The list of IDs of owners of the deal. This field is required.
         /// </summary>
-        /// <value>The list of owners of the deal. This field is required.</value>
-        [DataMember(Name = "owners", IsRequired = true, EmitDefaultValue = true)]
-        public List<Owner> Owners { get; set; }
-
-        /// <summary>
-        /// The ID of the owner of the deal. This field is optional.
-        /// </summary>
-        /// <value>The ID of the owner of the deal. This field is optional.</value>
-        [DataMember(Name = "owner_id", EmitDefaultValue = true)]
-        public string OwnerId { get; set; }
+        /// <value>The list of IDs of owners of the deal. This field is required.</value>
+        [DataMember(Name = "owner_ids", EmitDefaultValue = true)]
+        public List<string> OwnerIds { get; set; }
 
         /// <summary>
         /// The list of task IDs associated with the deal. This field is required.
@@ -216,11 +202,10 @@ namespace Keap.Core.V2.Model
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Value: ").Append(Value).Append("\n");
-            sb.Append("  Contacts: ").Append(Contacts).Append("\n");
-            sb.Append("  Stage: ").Append(Stage).Append("\n");
+            sb.Append("  ContactIds: ").Append(ContactIds).Append("\n");
+            sb.Append("  StageId: ").Append(StageId).Append("\n");
             sb.Append("  StageAssignmentTime: ").Append(StageAssignmentTime).Append("\n");
-            sb.Append("  Owners: ").Append(Owners).Append("\n");
-            sb.Append("  OwnerId: ").Append(OwnerId).Append("\n");
+            sb.Append("  OwnerIds: ").Append(OwnerIds).Append("\n");
             sb.Append("  TaskIds: ").Append(TaskIds).Append("\n");
             sb.Append("  OrderId: ").Append(OrderId).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");

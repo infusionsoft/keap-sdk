@@ -21,10 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.keap.core.sdk.model.DealContact;
 import com.keap.core.sdk.model.Money;
-import com.keap.core.sdk.model.Owner;
-import com.keap.core.sdk.model.Stage;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
@@ -46,11 +43,10 @@ import jakarta.validation.Valid;
   Deal.JSON_PROPERTY_ID,
   Deal.JSON_PROPERTY_NAME,
   Deal.JSON_PROPERTY_VALUE,
-  Deal.JSON_PROPERTY_CONTACTS,
-  Deal.JSON_PROPERTY_STAGE,
+  Deal.JSON_PROPERTY_CONTACT_IDS,
+  Deal.JSON_PROPERTY_STAGE_ID,
   Deal.JSON_PROPERTY_STAGE_ASSIGNMENT_TIME,
-  Deal.JSON_PROPERTY_OWNERS,
-  Deal.JSON_PROPERTY_OWNER_ID,
+  Deal.JSON_PROPERTY_OWNER_IDS,
   Deal.JSON_PROPERTY_TASK_IDS,
   Deal.JSON_PROPERTY_ORDER_ID,
   Deal.JSON_PROPERTY_STATUS,
@@ -71,20 +67,17 @@ public class Deal implements Serializable {
   public static final String JSON_PROPERTY_VALUE = "value";
   @jakarta.annotation.Nonnull  private Money value;
 
-  public static final String JSON_PROPERTY_CONTACTS = "contacts";
-  @jakarta.annotation.Nonnull  private List<@Valid DealContact> contacts = new ArrayList<>();
+  public static final String JSON_PROPERTY_CONTACT_IDS = "contact_ids";
+  @jakarta.annotation.Nonnull  private List<String> contactIds = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_STAGE = "stage";
-  @jakarta.annotation.Nonnull  private Stage stage;
+  public static final String JSON_PROPERTY_STAGE_ID = "stage_id";
+  @jakarta.annotation.Nonnull  private String stageId;
 
   public static final String JSON_PROPERTY_STAGE_ASSIGNMENT_TIME = "stage_assignment_time";
   @jakarta.annotation.Nonnull  private ZonedDateTime stageAssignmentTime;
 
-  public static final String JSON_PROPERTY_OWNERS = "owners";
-  @jakarta.annotation.Nonnull  private List<@Valid Owner> owners = new ArrayList<>();
-
-  public static final String JSON_PROPERTY_OWNER_ID = "owner_id";
-  @jakarta.annotation.Nullable  private String ownerId;
+  public static final String JSON_PROPERTY_OWNER_IDS = "owner_ids";
+  @jakarta.annotation.Nullable  private List<String> ownerIds;
 
   public static final String JSON_PROPERTY_TASK_IDS = "task_ids";
   @jakarta.annotation.Nonnull  private List<String> taskIds = new ArrayList<>();
@@ -182,63 +175,61 @@ public class Deal implements Serializable {
   }
 
 
-  public Deal contacts(@jakarta.annotation.Nonnull List<@Valid DealContact> contacts) {
-    this.contacts = contacts;
+  public Deal contactIds(@jakarta.annotation.Nonnull List<String> contactIds) {
+    this.contactIds = contactIds;
     return this;
   }
 
-  public Deal addContactsItem(DealContact contactsItem) {
-    if (this.contacts == null) {
-      this.contacts = new ArrayList<>();
+  public Deal addContactIdsItem(String contactIdsItem) {
+    if (this.contactIds == null) {
+      this.contactIds = new ArrayList<>();
     }
-    this.contacts.add(contactsItem);
+    this.contactIds.add(contactIdsItem);
     return this;
   }
 
   /**
-   * The list of contacts associated with the deal. This field is required.
-   * @return contacts
+   * The list of IDs of contacts associated with the deal. This field is required.
+   * @return contactIds
    */
   @jakarta.annotation.Nonnull  @NotNull
-  @Valid
-  @Schema(requiredMode = Schema.RequiredMode.REQUIRED, description = "The list of contacts associated with the deal. This field is required.")
-  @JsonProperty(JSON_PROPERTY_CONTACTS)
+  @Schema(requiredMode = Schema.RequiredMode.REQUIRED, description = "The list of IDs of contacts associated with the deal. This field is required.")
+  @JsonProperty(JSON_PROPERTY_CONTACT_IDS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public List<@Valid DealContact> getContacts() {
-    return contacts;
+  public List<String> getContactIds() {
+    return contactIds;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CONTACTS)
+  @JsonProperty(JSON_PROPERTY_CONTACT_IDS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setContacts(@jakarta.annotation.Nonnull List<@Valid DealContact> contacts) {
-    this.contacts = contacts;
+  public void setContactIds(@jakarta.annotation.Nonnull List<String> contactIds) {
+    this.contactIds = contactIds;
   }
 
 
-  public Deal stage(@jakarta.annotation.Nonnull Stage stage) {
-    this.stage = stage;
+  public Deal stageId(@jakarta.annotation.Nonnull String stageId) {
+    this.stageId = stageId;
     return this;
   }
 
   /**
    * The stage of the deal. This field is required and must be valid.
-   * @return stage
+   * @return stageId
    */
   @jakarta.annotation.Nonnull  @NotNull
-  @Valid
   @Schema(requiredMode = Schema.RequiredMode.REQUIRED, description = "The stage of the deal. This field is required and must be valid.")
-  @JsonProperty(JSON_PROPERTY_STAGE)
+  @JsonProperty(JSON_PROPERTY_STAGE_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public Stage getStage() {
-    return stage;
+  public String getStageId() {
+    return stageId;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_STAGE)
+  @JsonProperty(JSON_PROPERTY_STAGE_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setStage(@jakarta.annotation.Nonnull Stage stage) {
-    this.stage = stage;
+  public void setStageId(@jakarta.annotation.Nonnull String stageId) {
+    this.stageId = stageId;
   }
 
 
@@ -268,61 +259,35 @@ public class Deal implements Serializable {
   }
 
 
-  public Deal owners(@jakarta.annotation.Nonnull List<@Valid Owner> owners) {
-    this.owners = owners;
+  public Deal ownerIds(@jakarta.annotation.Nullable List<String> ownerIds) {
+    this.ownerIds = ownerIds;
     return this;
   }
 
-  public Deal addOwnersItem(Owner ownersItem) {
-    if (this.owners == null) {
-      this.owners = new ArrayList<>();
+  public Deal addOwnerIdsItem(String ownerIdsItem) {
+    if (this.ownerIds == null) {
+      this.ownerIds = new ArrayList<>();
     }
-    this.owners.add(ownersItem);
+    this.ownerIds.add(ownerIdsItem);
     return this;
   }
 
   /**
-   * The list of owners of the deal. This field is required.
-   * @return owners
+   * The list of IDs of owners of the deal. This field is required.
+   * @return ownerIds
    */
-  @jakarta.annotation.Nonnull  @NotNull
-  @Valid
-  @Schema(requiredMode = Schema.RequiredMode.REQUIRED, description = "The list of owners of the deal. This field is required.")
-  @JsonProperty(JSON_PROPERTY_OWNERS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public List<@Valid Owner> getOwners() {
-    return owners;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_OWNERS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setOwners(@jakarta.annotation.Nonnull List<@Valid Owner> owners) {
-    this.owners = owners;
-  }
-
-
-  public Deal ownerId(@jakarta.annotation.Nullable String ownerId) {
-    this.ownerId = ownerId;
-    return this;
-  }
-
-  /**
-   * The ID of the owner of the deal. This field is optional.
-   * @return ownerId
-   */
-  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The ID of the owner of the deal. This field is optional.")
-  @JsonProperty(JSON_PROPERTY_OWNER_ID)
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The list of IDs of owners of the deal. This field is required.")
+  @JsonProperty(JSON_PROPERTY_OWNER_IDS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getOwnerId() {
-    return ownerId;
+  public List<String> getOwnerIds() {
+    return ownerIds;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_OWNER_ID)
+  @JsonProperty(JSON_PROPERTY_OWNER_IDS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOwnerId(@jakarta.annotation.Nullable String ownerId) {
-    this.ownerId = ownerId;
+  public void setOwnerIds(@jakarta.annotation.Nullable List<String> ownerIds) {
+    this.ownerIds = ownerIds;
   }
 
 
@@ -504,11 +469,10 @@ public class Deal implements Serializable {
     return Objects.equals(this.id, deal.id) &&
         Objects.equals(this.name, deal.name) &&
         Objects.equals(this.value, deal.value) &&
-        Objects.equals(this.contacts, deal.contacts) &&
-        Objects.equals(this.stage, deal.stage) &&
+        Objects.equals(this.contactIds, deal.contactIds) &&
+        Objects.equals(this.stageId, deal.stageId) &&
         Objects.equals(this.stageAssignmentTime, deal.stageAssignmentTime) &&
-        Objects.equals(this.owners, deal.owners) &&
-        Objects.equals(this.ownerId, deal.ownerId) &&
+        Objects.equals(this.ownerIds, deal.ownerIds) &&
         Objects.equals(this.taskIds, deal.taskIds) &&
         Objects.equals(this.orderId, deal.orderId) &&
         Objects.equals(this.status, deal.status) &&
@@ -519,7 +483,7 @@ public class Deal implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, value, contacts, stage, stageAssignmentTime, owners, ownerId, taskIds, orderId, status, estimatedCloseTime, closedTime, customFields);
+    return Objects.hash(id, name, value, contactIds, stageId, stageAssignmentTime, ownerIds, taskIds, orderId, status, estimatedCloseTime, closedTime, customFields);
   }
 
   @Override
@@ -529,11 +493,10 @@ public class Deal implements Serializable {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
-    sb.append("    contacts: ").append(toIndentedString(contacts)).append("\n");
-    sb.append("    stage: ").append(toIndentedString(stage)).append("\n");
+    sb.append("    contactIds: ").append(toIndentedString(contactIds)).append("\n");
+    sb.append("    stageId: ").append(toIndentedString(stageId)).append("\n");
     sb.append("    stageAssignmentTime: ").append(toIndentedString(stageAssignmentTime)).append("\n");
-    sb.append("    owners: ").append(toIndentedString(owners)).append("\n");
-    sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
+    sb.append("    ownerIds: ").append(toIndentedString(ownerIds)).append("\n");
     sb.append("    taskIds: ").append(toIndentedString(taskIds)).append("\n");
     sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
@@ -579,24 +542,20 @@ public class Deal implements Serializable {
               this.instance.value = value;
           return this;
         }
-            public Deal.Builder contacts(List<DealContact> contacts) {
-              this.instance.contacts = contacts;
+            public Deal.Builder contactIds(List<String> contactIds) {
+              this.instance.contactIds = contactIds;
           return this;
         }
-            public Deal.Builder stage(Stage stage) {
-              this.instance.stage = stage;
+            public Deal.Builder stageId(String stageId) {
+              this.instance.stageId = stageId;
           return this;
         }
             public Deal.Builder stageAssignmentTime(ZonedDateTime stageAssignmentTime) {
               this.instance.stageAssignmentTime = stageAssignmentTime;
           return this;
         }
-            public Deal.Builder owners(List<Owner> owners) {
-              this.instance.owners = owners;
-          return this;
-        }
-            public Deal.Builder ownerId(String ownerId) {
-              this.instance.ownerId = ownerId;
+            public Deal.Builder ownerIds(List<String> ownerIds) {
+              this.instance.ownerIds = ownerIds;
           return this;
         }
             public Deal.Builder taskIds(List<String> taskIds) {
@@ -660,11 +619,10 @@ public class Deal implements Serializable {
           .id(getId())
           .name(getName())
           .value(getValue())
-          .contacts(getContacts())
-          .stage(getStage())
+          .contactIds(getContactIds())
+          .stageId(getStageId())
           .stageAssignmentTime(getStageAssignmentTime())
-          .owners(getOwners())
-          .ownerId(getOwnerId())
+          .ownerIds(getOwnerIds())
           .taskIds(getTaskIds())
           .orderId(getOrderId())
           .status(getStatus())

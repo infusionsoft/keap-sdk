@@ -60,6 +60,7 @@ import AutomationLockStatus from './model/AutomationLockStatus';
 import BaseListResponseDeal from './model/BaseListResponseDeal';
 import BaseListResponseDealNote from './model/BaseListResponseDealNote';
 import BaseListResponsePipeline from './model/BaseListResponsePipeline';
+import BaseListResponsePipelineCustomField from './model/BaseListResponsePipelineCustomField';
 import BaseListResponsePipelineSummary from './model/BaseListResponsePipelineSummary';
 import BaseListResponseStage from './model/BaseListResponseStage';
 import BasicCompany from './model/BasicCompany';
@@ -251,6 +252,8 @@ import ListTasksResponse from './model/ListTasksResponse';
 import ListUsersPaginatedResponse from './model/ListUsersPaginatedResponse';
 import LogicalDate from './model/LogicalDate';
 import Money from './model/Money';
+import MoveDealsForContactsRequest from './model/MoveDealsForContactsRequest';
+import MoveDealsForContactsResponse from './model/MoveDealsForContactsResponse';
 import Note from './model/Note';
 import NoteTemplate from './model/NoteTemplate';
 import ObjectModel from './model/ObjectModel';
@@ -470,7 +473,7 @@ import UsersApi from './api/UsersApi';
 * </pre>
 * </p>
 * @module keap.core.v2/index
-* @version 1.0.17
+* @version 1.0.18
 */
 export {
     /**
@@ -760,6 +763,12 @@ export {
      * @property {module:keap.core.v2/model/BaseListResponsePipeline}
      */
     BaseListResponsePipeline,
+
+    /**
+     * The BaseListResponsePipelineCustomField model constructor.
+     * @property {module:keap.core.v2/model/BaseListResponsePipelineCustomField}
+     */
+    BaseListResponsePipelineCustomField,
 
     /**
      * The BaseListResponsePipelineSummary model constructor.
@@ -1906,6 +1915,18 @@ export {
      * @property {module:keap.core.v2/model/Money}
      */
     Money,
+
+    /**
+     * The MoveDealsForContactsRequest model constructor.
+     * @property {module:keap.core.v2/model/MoveDealsForContactsRequest}
+     */
+    MoveDealsForContactsRequest,
+
+    /**
+     * The MoveDealsForContactsResponse model constructor.
+     * @property {module:keap.core.v2/model/MoveDealsForContactsResponse}
+     */
+    MoveDealsForContactsResponse,
 
     /**
      * The Note model constructor.

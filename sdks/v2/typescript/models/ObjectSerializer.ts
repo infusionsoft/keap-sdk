@@ -45,6 +45,7 @@ export * from '../models/AutomationLockStatus';
 export * from '../models/BaseListResponseDeal';
 export * from '../models/BaseListResponseDealNote';
 export * from '../models/BaseListResponsePipeline';
+export * from '../models/BaseListResponsePipelineCustomField';
 export * from '../models/BaseListResponsePipelineSummary';
 export * from '../models/BaseListResponseStage';
 export * from '../models/BasicCompany';
@@ -236,6 +237,8 @@ export * from '../models/LogicalDate';
 export * from '../models/ModelError';
 export * from '../models/ModelFile';
 export * from '../models/Money';
+export * from '../models/MoveDealsForContactsRequest';
+export * from '../models/MoveDealsForContactsResponse';
 export * from '../models/Note';
 export * from '../models/NoteTemplate';
 export * from '../models/ObjectModel';
@@ -437,6 +440,7 @@ import { AutomationLockStatus } from '../models/AutomationLockStatus';
 import { BaseListResponseDeal } from '../models/BaseListResponseDeal';
 import { BaseListResponseDealNote } from '../models/BaseListResponseDealNote';
 import { BaseListResponsePipeline } from '../models/BaseListResponsePipeline';
+import { BaseListResponsePipelineCustomField } from '../models/BaseListResponsePipelineCustomField';
 import { BaseListResponsePipelineSummary } from '../models/BaseListResponsePipelineSummary';
 import { BaseListResponseStage } from '../models/BaseListResponseStage';
 import { BasicCompany } from '../models/BasicCompany';
@@ -628,6 +632,8 @@ import { LogicalDate } from '../models/LogicalDate';
 import { ModelError } from '../models/ModelError';
 import { ModelFile } from '../models/ModelFile';
 import { Money } from '../models/Money';
+import { MoveDealsForContactsRequest } from '../models/MoveDealsForContactsRequest';
+import { MoveDealsForContactsResponse } from '../models/MoveDealsForContactsResponse';
 import { Note } from '../models/Note';
 import { NoteTemplate, NoteTemplateActionTypeEnum        } from '../models/NoteTemplate';
 import { ObjectModel } from '../models/ObjectModel';
@@ -933,6 +939,7 @@ let typeMap: {[index: string]: any} = {
     "BaseListResponseDeal": BaseListResponseDeal,
     "BaseListResponseDealNote": BaseListResponseDealNote,
     "BaseListResponsePipeline": BaseListResponsePipeline,
+    "BaseListResponsePipelineCustomField": BaseListResponsePipelineCustomField,
     "BaseListResponsePipelineSummary": BaseListResponsePipelineSummary,
     "BaseListResponseStage": BaseListResponseStage,
     "BasicCompany": BasicCompany,
@@ -1122,6 +1129,8 @@ let typeMap: {[index: string]: any} = {
     "ModelError": ModelError,
     "ModelFile": ModelFile,
     "Money": Money,
+    "MoveDealsForContactsRequest": MoveDealsForContactsRequest,
+    "MoveDealsForContactsResponse": MoveDealsForContactsResponse,
     "Note": Note,
     "NoteTemplate": NoteTemplate,
     "ObjectModel": ObjectModel,

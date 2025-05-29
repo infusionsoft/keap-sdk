@@ -9,10 +9,11 @@ Method | HTTP request | Description
 [**createNotesBulk**](DealsApi.md#createNotesBulk) | **POST** /v2/deals/-/notes | Creates new notes in bulk.
 [**deleteDeal**](DealsApi.md#deleteDeal) | **DELETE** /v2/deals/{id} | Deletes a specific deal by its ID.
 [**deleteNote**](DealsApi.md#deleteNote) | **DELETE** /v2/deals/-/notes/{note_id} | Deletes a specific deal note by its ID.
-[**getDeal**](DealsApi.md#getDeal) | **GET** /v2/deals/{deal_id} | Retrieves a specific deal by its ID.
+[**getDeal**](DealsApi.md#getDeal) | **GET** /v2/deals/{id} | Retrieves a specific deal by its ID.
 [**getNote**](DealsApi.md#getNote) | **GET** /v2/deals/-/notes/{note_id} | Retrieves a specific deal note by its ID.
 [**listDeals**](DealsApi.md#listDeals) | **GET** /v2/deals/-/contacts/{contact_id} | Lists all deals associated with a specific contact.
 [**listNotes**](DealsApi.md#listNotes) | **GET** /v2/deals/{id}/notes | Lists all notes associated with a specific deal.
+[**moveDealsForContacts**](DealsApi.md#moveDealsForContacts) | **POST** /v2/deals/moveByContactIds | Moves the active deals of specified contacts from one stage to another, in bulk.
 [**updateNote**](DealsApi.md#updateNote) | **PATCH** /v2/deals/-/notes/{note_id} | Updates a specific deal note by its ID.
 
 
@@ -334,7 +335,7 @@ const apiInstance = new DealsApi(configuration);
 
 const request: DealsApiGetDealRequest = {
     // the ID of the deal to retrieve
-  dealId: "deal_id_example",
+  id: "id_example",
 };
 
 const data = await apiInstance.getDeal(request);
@@ -346,7 +347,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **dealId** | [**string**] | the ID of the deal to retrieve | defaults to undefined
+ **id** | [**string**] | the ID of the deal to retrieve | defaults to undefined
 
 
 ### Return type
@@ -550,6 +551,65 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | a list of deal notes wrapped in a DealNoteListResponse |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **moveDealsForContacts**
+> MoveDealsForContactsResponse moveDealsForContacts(moveDealsForContactsRequest)
+
+Moves the active deals of specified contacts from one stage to another, in bulk.
+
+### Example
+
+
+```typescript
+import { createConfiguration, DealsApi } from '';
+import type { DealsApiMoveDealsForContactsRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new DealsApi(configuration);
+
+const request: DealsApiMoveDealsForContactsRequest = {
+    // the request body containing move details
+  moveDealsForContactsRequest: {
+    contactIds: [
+      "contactIds_example",
+    ],
+    fromStage: "fromStage_example",
+    toStage: "toStage_example",
+  },
+};
+
+const data = await apiInstance.moveDealsForContacts(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **moveDealsForContactsRequest** | **MoveDealsForContactsRequest**| the request body containing move details |
+
+
+### Return type
+
+**MoveDealsForContactsResponse**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | the IDs of the Deals moved |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

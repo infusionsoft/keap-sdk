@@ -10,10 +10,7 @@
  * Do not edit the class manually.
  */
 
-import { DealContact } from '../models/DealContact';
 import { Money } from '../models/Money';
-import { Owner } from '../models/Owner';
-import { Stage } from '../models/Stage';
 import { HttpFile } from '../http/http';
 
 /**
@@ -33,25 +30,21 @@ export class Deal {
     */
     'value': Money;
     /**
-    * The list of contacts associated with the deal. This field is required.
+    * The list of IDs of contacts associated with the deal. This field is required.
     */
-    'contacts': Array<DealContact>;
+    'contactIds': Array<string>;
     /**
     * The stage of the deal. This field is required and must be valid.
     */
-    'stage': Stage;
+    'stageId': string;
     /**
     * The time when the deal was assigned to the current stage. This field is required.
     */
     'stageAssignmentTime': Date;
     /**
-    * The list of owners of the deal. This field is required.
+    * The list of IDs of owners of the deal. This field is required.
     */
-    'owners': Array<Owner>;
-    /**
-    * The ID of the owner of the deal. This field is optional.
-    */
-    'ownerId'?: string | null;
+    'ownerIds'?: Array<string> | null;
     /**
     * The list of task IDs associated with the deal. This field is required.
     */
@@ -101,15 +94,15 @@ export class Deal {
             "format": ""
         },
         {
-            "name": "contacts",
-            "baseName": "contacts",
-            "type": "Array<DealContact>",
+            "name": "contactIds",
+            "baseName": "contact_ids",
+            "type": "Array<string>",
             "format": ""
         },
         {
-            "name": "stage",
-            "baseName": "stage",
-            "type": "Stage",
+            "name": "stageId",
+            "baseName": "stage_id",
+            "type": "string",
             "format": ""
         },
         {
@@ -119,15 +112,9 @@ export class Deal {
             "format": "date-time"
         },
         {
-            "name": "owners",
-            "baseName": "owners",
-            "type": "Array<Owner>",
-            "format": ""
-        },
-        {
-            "name": "ownerId",
-            "baseName": "owner_id",
-            "type": "string",
+            "name": "ownerIds",
+            "baseName": "owner_ids",
+            "type": "Array<string>",
             "format": ""
         },
         {

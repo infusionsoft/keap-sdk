@@ -152,10 +152,10 @@ namespace Keap.Core.V2.Api
         /// Retrieves a specific deal by its ID.
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="dealId">the ID of the deal to retrieve</param>
+        /// <param name="id">the ID of the deal to retrieve</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Deal</returns>
-        Deal GetDeal(string dealId, int operationIndex = 0);
+        Deal GetDeal(string id, int operationIndex = 0);
 
         /// <summary>
         /// Retrieves a specific deal by its ID.
@@ -164,10 +164,10 @@ namespace Keap.Core.V2.Api
         /// Retrieves a specific deal by its ID.
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="dealId">the ID of the deal to retrieve</param>
+        /// <param name="id">the ID of the deal to retrieve</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Deal</returns>
-        ApiResponse<Deal> GetDealWithHttpInfo(string dealId, int operationIndex = 0);
+        ApiResponse<Deal> GetDealWithHttpInfo(string id, int operationIndex = 0);
         /// <summary>
         /// Retrieves a specific deal note by its ID.
         /// </summary>
@@ -253,6 +253,29 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DealNoteListResponse</returns>
         ApiResponse<DealNoteListResponse> ListNotesWithHttpInfo(string id, string? filter = default, string? pageToken = default, string? orderBy = default, int? pageSize = default, int operationIndex = 0);
+        /// <summary>
+        /// Moves the active deals of specified contacts from one stage to another, in bulk.
+        /// </summary>
+        /// <remarks>
+        /// Moves the active deals of specified contacts from one stage to another, in bulk.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="moveDealsForContactsRequest">the request body containing move details</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>MoveDealsForContactsResponse</returns>
+        MoveDealsForContactsResponse MoveDealsForContacts(MoveDealsForContactsRequest moveDealsForContactsRequest, int operationIndex = 0);
+
+        /// <summary>
+        /// Moves the active deals of specified contacts from one stage to another, in bulk.
+        /// </summary>
+        /// <remarks>
+        /// Moves the active deals of specified contacts from one stage to another, in bulk.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="moveDealsForContactsRequest">the request body containing move details</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of MoveDealsForContactsResponse</returns>
+        ApiResponse<MoveDealsForContactsResponse> MoveDealsForContactsWithHttpInfo(MoveDealsForContactsRequest moveDealsForContactsRequest, int operationIndex = 0);
         /// <summary>
         /// Updates a specific deal note by its ID.
         /// </summary>
@@ -421,11 +444,11 @@ namespace Keap.Core.V2.Api
         /// Retrieves a specific deal by its ID.
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="dealId">the ID of the deal to retrieve</param>
+        /// <param name="id">the ID of the deal to retrieve</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Deal</returns>
-        System.Threading.Tasks.Task<Deal> GetDealAsync(string dealId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<Deal> GetDealAsync(string id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a specific deal by its ID.
@@ -434,11 +457,11 @@ namespace Keap.Core.V2.Api
         /// Retrieves a specific deal by its ID.
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="dealId">the ID of the deal to retrieve</param>
+        /// <param name="id">the ID of the deal to retrieve</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Deal)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Deal>> GetDealWithHttpInfoAsync(string dealId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Deal>> GetDealWithHttpInfoAsync(string id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves a specific deal note by its ID.
         /// </summary>
@@ -530,6 +553,31 @@ namespace Keap.Core.V2.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DealNoteListResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<DealNoteListResponse>> ListNotesWithHttpInfoAsync(string id, string? filter = default, string? pageToken = default, string? orderBy = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Moves the active deals of specified contacts from one stage to another, in bulk.
+        /// </summary>
+        /// <remarks>
+        /// Moves the active deals of specified contacts from one stage to another, in bulk.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="moveDealsForContactsRequest">the request body containing move details</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of MoveDealsForContactsResponse</returns>
+        System.Threading.Tasks.Task<MoveDealsForContactsResponse> MoveDealsForContactsAsync(MoveDealsForContactsRequest moveDealsForContactsRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Moves the active deals of specified contacts from one stage to another, in bulk.
+        /// </summary>
+        /// <remarks>
+        /// Moves the active deals of specified contacts from one stage to another, in bulk.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="moveDealsForContactsRequest">the request body containing move details</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (MoveDealsForContactsResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<MoveDealsForContactsResponse>> MoveDealsForContactsWithHttpInfoAsync(MoveDealsForContactsRequest moveDealsForContactsRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Updates a specific deal note by its ID.
         /// </summary>
@@ -1422,12 +1470,12 @@ namespace Keap.Core.V2.Api
         /// Retrieves a specific deal by its ID. Retrieves a specific deal by its ID.
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="dealId">the ID of the deal to retrieve</param>
+        /// <param name="id">the ID of the deal to retrieve</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Deal</returns>
-        public Deal GetDeal(string dealId, int operationIndex = 0)
+        public Deal GetDeal(string id, int operationIndex = 0)
         {
-            Keap.Core.V2.Client.ApiResponse<Deal> localVarResponse = GetDealWithHttpInfo(dealId);
+            Keap.Core.V2.Client.ApiResponse<Deal> localVarResponse = GetDealWithHttpInfo(id);
             return localVarResponse.Data;
         }
 
@@ -1435,15 +1483,15 @@ namespace Keap.Core.V2.Api
         /// Retrieves a specific deal by its ID. Retrieves a specific deal by its ID.
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="dealId">the ID of the deal to retrieve</param>
+        /// <param name="id">the ID of the deal to retrieve</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Deal</returns>
-        public Keap.Core.V2.Client.ApiResponse<Deal> GetDealWithHttpInfo(string dealId, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<Deal> GetDealWithHttpInfo(string id, int operationIndex = 0)
         {
-            // verify the required parameter 'dealId' is set
-            if (dealId == null)
+            // verify the required parameter 'id' is set
+            if (id == null)
             {
-                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'dealId' when calling DealsApi->GetDeal");
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'id' when calling DealsApi->GetDeal");
             }
 
             Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
@@ -1469,14 +1517,14 @@ namespace Keap.Core.V2.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.PathParameters.Add("deal_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(dealId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("id", Keap.Core.V2.Client.ClientUtils.ParameterToString(id)); // path parameter
 
             localVarRequestOptions.Operation = "DealsApi.GetDeal";
             localVarRequestOptions.OperationIndex = operationIndex;
 
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<Deal>("/v2/deals/{deal_id}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<Deal>("/v2/deals/{id}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetDeal", localVarResponse);
@@ -1493,13 +1541,13 @@ namespace Keap.Core.V2.Api
         /// Retrieves a specific deal by its ID. Retrieves a specific deal by its ID.
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="dealId">the ID of the deal to retrieve</param>
+        /// <param name="id">the ID of the deal to retrieve</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Deal</returns>
-        public async System.Threading.Tasks.Task<Deal> GetDealAsync(string dealId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Deal> GetDealAsync(string id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            Keap.Core.V2.Client.ApiResponse<Deal> localVarResponse = await GetDealWithHttpInfoAsync(dealId, operationIndex, cancellationToken).ConfigureAwait(false);
+            Keap.Core.V2.Client.ApiResponse<Deal> localVarResponse = await GetDealWithHttpInfoAsync(id, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1507,16 +1555,16 @@ namespace Keap.Core.V2.Api
         /// Retrieves a specific deal by its ID. Retrieves a specific deal by its ID.
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="dealId">the ID of the deal to retrieve</param>
+        /// <param name="id">the ID of the deal to retrieve</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Deal)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<Deal>> GetDealWithHttpInfoAsync(string dealId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<Deal>> GetDealWithHttpInfoAsync(string id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            // verify the required parameter 'dealId' is set
-            if (dealId == null)
+            // verify the required parameter 'id' is set
+            if (id == null)
             {
-                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'dealId' when calling DealsApi->GetDeal");
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'id' when calling DealsApi->GetDeal");
             }
 
 
@@ -1542,14 +1590,14 @@ namespace Keap.Core.V2.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.PathParameters.Add("deal_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(dealId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("id", Keap.Core.V2.Client.ClientUtils.ParameterToString(id)); // path parameter
 
             localVarRequestOptions.Operation = "DealsApi.GetDeal";
             localVarRequestOptions.OperationIndex = operationIndex;
 
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<Deal>("/v2/deals/{deal_id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<Deal>("/v2/deals/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -2085,6 +2133,153 @@ namespace Keap.Core.V2.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("ListNotes", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Moves the active deals of specified contacts from one stage to another, in bulk. Moves the active deals of specified contacts from one stage to another, in bulk.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="moveDealsForContactsRequest">the request body containing move details</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>MoveDealsForContactsResponse</returns>
+        public MoveDealsForContactsResponse MoveDealsForContacts(MoveDealsForContactsRequest moveDealsForContactsRequest, int operationIndex = 0)
+        {
+            Keap.Core.V2.Client.ApiResponse<MoveDealsForContactsResponse> localVarResponse = MoveDealsForContactsWithHttpInfo(moveDealsForContactsRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Moves the active deals of specified contacts from one stage to another, in bulk. Moves the active deals of specified contacts from one stage to another, in bulk.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="moveDealsForContactsRequest">the request body containing move details</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of MoveDealsForContactsResponse</returns>
+        public Keap.Core.V2.Client.ApiResponse<MoveDealsForContactsResponse> MoveDealsForContactsWithHttpInfo(MoveDealsForContactsRequest moveDealsForContactsRequest, int operationIndex = 0)
+        {
+            // verify the required parameter 'moveDealsForContactsRequest' is set
+            if (moveDealsForContactsRequest == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'moveDealsForContactsRequest' when calling DealsApi->MoveDealsForContacts");
+            }
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = moveDealsForContactsRequest;
+
+            localVarRequestOptions.Operation = "DealsApi.MoveDealsForContacts";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<MoveDealsForContactsResponse>("/v2/deals/moveByContactIds", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("MoveDealsForContacts", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Moves the active deals of specified contacts from one stage to another, in bulk. Moves the active deals of specified contacts from one stage to another, in bulk.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="moveDealsForContactsRequest">the request body containing move details</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of MoveDealsForContactsResponse</returns>
+        public async System.Threading.Tasks.Task<MoveDealsForContactsResponse> MoveDealsForContactsAsync(MoveDealsForContactsRequest moveDealsForContactsRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            Keap.Core.V2.Client.ApiResponse<MoveDealsForContactsResponse> localVarResponse = await MoveDealsForContactsWithHttpInfoAsync(moveDealsForContactsRequest, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Moves the active deals of specified contacts from one stage to another, in bulk. Moves the active deals of specified contacts from one stage to another, in bulk.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="moveDealsForContactsRequest">the request body containing move details</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (MoveDealsForContactsResponse)</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<MoveDealsForContactsResponse>> MoveDealsForContactsWithHttpInfoAsync(MoveDealsForContactsRequest moveDealsForContactsRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'moveDealsForContactsRequest' is set
+            if (moveDealsForContactsRequest == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'moveDealsForContactsRequest' when calling DealsApi->MoveDealsForContacts");
+            }
+
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = moveDealsForContactsRequest;
+
+            localVarRequestOptions.Operation = "DealsApi.MoveDealsForContacts";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<MoveDealsForContactsResponse>("/v2/deals/moveByContactIds", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("MoveDealsForContacts", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

@@ -14,7 +14,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-__version__ = "1.0.17"
+__version__ = "1.0.18"
 
 # import apis into sdk package
 from keap_core_v2_client.api.affiliate_api import AffiliateApi
@@ -112,6 +112,7 @@ from keap_core_v2_client.models.automation_lock_status import AutomationLockStat
 from keap_core_v2_client.models.base_list_response_deal import BaseListResponseDeal
 from keap_core_v2_client.models.base_list_response_deal_note import BaseListResponseDealNote
 from keap_core_v2_client.models.base_list_response_pipeline import BaseListResponsePipeline
+from keap_core_v2_client.models.base_list_response_pipeline_custom_field import BaseListResponsePipelineCustomField
 from keap_core_v2_client.models.base_list_response_pipeline_summary import BaseListResponsePipelineSummary
 from keap_core_v2_client.models.base_list_response_stage import BaseListResponseStage
 from keap_core_v2_client.models.basic_company import BasicCompany
@@ -303,6 +304,8 @@ from keap_core_v2_client.models.list_tasks_response import ListTasksResponse
 from keap_core_v2_client.models.list_users_paginated_response import ListUsersPaginatedResponse
 from keap_core_v2_client.models.logical_date import LogicalDate
 from keap_core_v2_client.models.money import Money
+from keap_core_v2_client.models.move_deals_for_contacts_request import MoveDealsForContactsRequest
+from keap_core_v2_client.models.move_deals_for_contacts_response import MoveDealsForContactsResponse
 from keap_core_v2_client.models.note import Note
 from keap_core_v2_client.models.note_template import NoteTemplate
 from keap_core_v2_client.models.object_model import ObjectModel

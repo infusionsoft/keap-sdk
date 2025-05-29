@@ -5,13 +5,13 @@ All URIs are relative to https://api.keap.com/crm/rest, except if the operation 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**getCustomFields()**](CustomFieldsApi.md#getCustomFields) | **GET** /v2/customFields | Retrieves a list of custom fields in a tenant. |
-| [**updateCustomField()**](CustomFieldsApi.md#updateCustomField) | **PATCH** /v2/customFields/{custom_field_id} | Updates a custom field |
+| [**updateCustomField()**](CustomFieldsApi.md#updateCustomField) | **PATCH** /v2/customFields/{id} | Updates a custom field |
 
 
 ## `getCustomFields()`
 
 ```php
-getCustomFields(): \Keap\Core\V2\Model\PipelineCustomFields
+getCustomFields($filter, $page_token, $order_by, $page_size): \Keap\Core\V2\Model\PipelineCustomFields
 ```
 
 Retrieves a list of custom fields in a tenant.
@@ -30,9 +30,13 @@ $apiInstance = new Keap\Core\V2\Api\CustomFieldsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+$filter = 'filter_example'; // string
+$page_token = 'page_token_example'; // string
+$order_by = 'order_by_example'; // string
+$page_size = 100; // int
 
 try {
-    $result = $apiInstance->getCustomFields();
+    $result = $apiInstance->getCustomFields($filter, $page_token, $order_by, $page_size);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CustomFieldsApi->getCustomFields: ', $e->getMessage(), PHP_EOL;
@@ -41,7 +45,12 @@ try {
 
 ### Parameters
 
-This endpoint does not need any parameter.
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **filter** | **string**|  | [optional] |
+| **page_token** | **string**|  | [optional] |
+| **order_by** | **string**|  | [optional] |
+| **page_size** | **int**|  | [optional] [default to 1000] |
 
 ### Return type
 
@@ -63,7 +72,7 @@ No authorization required
 ## `updateCustomField()`
 
 ```php
-updateCustomField($custom_field_id, $update_custom_field_request): \Keap\Core\V2\Model\PipelineCustomField
+updateCustomField($id, $update_custom_field_request): \Keap\Core\V2\Model\PipelineCustomField
 ```
 
 Updates a custom field
@@ -82,11 +91,11 @@ $apiInstance = new Keap\Core\V2\Api\CustomFieldsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$custom_field_id = 'custom_field_id_example'; // string | the identifier of the custom field to update
+$id = 'id_example'; // string | the identifier of the custom field to update
 $update_custom_field_request = new \Keap\Core\V2\Model\UpdateCustomFieldRequest(); // \Keap\Core\V2\Model\UpdateCustomFieldRequest | the request body containing updated custom field details
 
 try {
-    $result = $apiInstance->updateCustomField($custom_field_id, $update_custom_field_request);
+    $result = $apiInstance->updateCustomField($id, $update_custom_field_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CustomFieldsApi->updateCustomField: ', $e->getMessage(), PHP_EOL;
@@ -97,7 +106,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **custom_field_id** | **string**| the identifier of the custom field to update | |
+| **id** | **string**| the identifier of the custom field to update | |
 | **update_custom_field_request** | [**\Keap\Core\V2\Model\UpdateCustomFieldRequest**](../Model/UpdateCustomFieldRequest.md)| the request body containing updated custom field details | |
 
 ### Return type

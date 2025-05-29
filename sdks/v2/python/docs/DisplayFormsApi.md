@@ -4,12 +4,12 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_display_form**](DisplayFormsApi.md#get_display_form) | **GET** /v2/pipelines/{pipeline_id}/form | Retrieves a specific display form by a pipeline ID.
-[**update_display_form**](DisplayFormsApi.md#update_display_form) | **PATCH** /v2/pipelines/{pipeline_id}/form | Updates a display form
+[**get_display_form**](DisplayFormsApi.md#get_display_form) | **GET** /v2/pipelines/{id}/form | Retrieves a specific display form by a pipeline ID.
+[**update_display_form**](DisplayFormsApi.md#update_display_form) | **PATCH** /v2/pipelines/{id}/form | Updates a display form
 
 
 # **get_display_form**
-> DisplayForm get_display_form(pipeline_id)
+> DisplayForm get_display_form(id)
 
 Retrieves a specific display form by a pipeline ID.
 
@@ -34,11 +34,11 @@ configuration = keap_core_v2_client.Configuration(
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.DisplayFormsApi(api_client)
-    pipeline_id = 'pipeline_id_example' # str | the ID of the pipeline containing the form
+    id = 'id_example' # str | the ID of the pipeline containing the form
 
     try:
         # Retrieves a specific display form by a pipeline ID.
-        api_response = api_instance.get_display_form(pipeline_id)
+        api_response = api_instance.get_display_form(id)
         print("The response of DisplayFormsApi->get_display_form:\n")
         pprint(api_response)
     except Exception as e:
@@ -51,7 +51,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pipeline_id** | **str**| the ID of the pipeline containing the form | 
+ **id** | **str**| the ID of the pipeline containing the form | 
 
 ### Return type
 
@@ -75,7 +75,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_display_form**
-> DisplayForm update_display_form(pipeline_id, update_display_form_request)
+> DisplayForm update_display_form(id, update_display_form_request)
 
 Updates a display form
 
@@ -101,12 +101,12 @@ configuration = keap_core_v2_client.Configuration(
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.DisplayFormsApi(api_client)
-    pipeline_id = 'pipeline_id_example' # str | the ID of the pipeline containing the form
+    id = 'id_example' # str | the ID of the pipeline containing the form
     update_display_form_request = keap_core_v2_client.UpdateDisplayFormRequest() # UpdateDisplayFormRequest | the request body containing updated display form details
 
     try:
         # Updates a display form
-        api_response = api_instance.update_display_form(pipeline_id, update_display_form_request)
+        api_response = api_instance.update_display_form(id, update_display_form_request)
         print("The response of DisplayFormsApi->update_display_form:\n")
         pprint(api_response)
     except Exception as e:
@@ -119,7 +119,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pipeline_id** | **str**| the ID of the pipeline containing the form | 
+ **id** | **str**| the ID of the pipeline containing the form | 
  **update_display_form_request** | [**UpdateDisplayFormRequest**](UpdateDisplayFormRequest.md)| the request body containing updated display form details | 
 
 ### Return type

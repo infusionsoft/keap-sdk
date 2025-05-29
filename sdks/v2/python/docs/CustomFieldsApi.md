@@ -5,11 +5,11 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**get_custom_fields**](CustomFieldsApi.md#get_custom_fields) | **GET** /v2/customFields | Retrieves a list of custom fields in a tenant.
-[**update_custom_field**](CustomFieldsApi.md#update_custom_field) | **PATCH** /v2/customFields/{custom_field_id} | Updates a custom field
+[**update_custom_field**](CustomFieldsApi.md#update_custom_field) | **PATCH** /v2/customFields/{id} | Updates a custom field
 
 
 # **get_custom_fields**
-> PipelineCustomFields get_custom_fields()
+> PipelineCustomFields get_custom_fields(filter=filter, page_token=page_token, order_by=order_by, page_size=page_size)
 
 Retrieves a list of custom fields in a tenant.
 
@@ -34,10 +34,14 @@ configuration = keap_core_v2_client.Configuration(
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.CustomFieldsApi(api_client)
+    filter = 'filter_example' # str |  (optional)
+    page_token = 'page_token_example' # str |  (optional)
+    order_by = 'order_by_example' # str |  (optional)
+    page_size = 1000 # int |  (optional) (default to 1000)
 
     try:
         # Retrieves a list of custom fields in a tenant.
-        api_response = api_instance.get_custom_fields()
+        api_response = api_instance.get_custom_fields(filter=filter, page_token=page_token, order_by=order_by, page_size=page_size)
         print("The response of CustomFieldsApi->get_custom_fields:\n")
         pprint(api_response)
     except Exception as e:
@@ -47,7 +51,13 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **filter** | **str**|  | [optional] 
+ **page_token** | **str**|  | [optional] 
+ **order_by** | **str**|  | [optional] 
+ **page_size** | **int**|  | [optional] [default to 1000]
 
 ### Return type
 
@@ -71,7 +81,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_custom_field**
-> PipelineCustomField update_custom_field(custom_field_id, update_custom_field_request)
+> PipelineCustomField update_custom_field(id, update_custom_field_request)
 
 Updates a custom field
 
@@ -97,12 +107,12 @@ configuration = keap_core_v2_client.Configuration(
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.CustomFieldsApi(api_client)
-    custom_field_id = 'custom_field_id_example' # str | the identifier of the custom field to update
+    id = 'id_example' # str | the identifier of the custom field to update
     update_custom_field_request = keap_core_v2_client.UpdateCustomFieldRequest() # UpdateCustomFieldRequest | the request body containing updated custom field details
 
     try:
         # Updates a custom field
-        api_response = api_instance.update_custom_field(custom_field_id, update_custom_field_request)
+        api_response = api_instance.update_custom_field(id, update_custom_field_request)
         print("The response of CustomFieldsApi->update_custom_field:\n")
         pprint(api_response)
     except Exception as e:
@@ -115,7 +125,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **custom_field_id** | **str**| the identifier of the custom field to update | 
+ **id** | **str**| the identifier of the custom field to update | 
  **update_custom_field_request** | [**UpdateCustomFieldRequest**](UpdateCustomFieldRequest.md)| the request body containing updated custom field details | 
 
 ### Return type

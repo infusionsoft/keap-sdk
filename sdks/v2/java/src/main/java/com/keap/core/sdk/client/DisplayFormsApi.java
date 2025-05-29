@@ -96,24 +96,24 @@ import io.github.resilience4j.retry.Retry;
   /**
    * Retrieves a specific display form by a pipeline ID.
    * Retrieves a specific display form by a pipeline ID.
-   * @param pipelineId the ID of the pipeline containing the form (required)
+   * @param id the ID of the pipeline containing the form (required)
    * @return DisplayForm
    * @throws ApiException if fails to make API call
    */
-  public DisplayForm getDisplayForm(String pipelineId) throws ApiException {
-    ApiResponse<DisplayForm> localVarResponse = getDisplayFormWithHttpInfo(pipelineId);
+  public DisplayForm getDisplayForm(String id) throws ApiException {
+    ApiResponse<DisplayForm> localVarResponse = getDisplayFormWithHttpInfo(id);
     return localVarResponse.getData();
   }
 
   /**
    * Retrieves a specific display form by a pipeline ID.
    * Retrieves a specific display form by a pipeline ID.
-   * @param pipelineId the ID of the pipeline containing the form (required)
+   * @param id the ID of the pipeline containing the form (required)
    * @return ApiResponse&lt;DisplayForm&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<DisplayForm> getDisplayFormWithHttpInfo(String pipelineId) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = getDisplayFormRequestBuilder(pipelineId);
+  public ApiResponse<DisplayForm> getDisplayFormWithHttpInfo(String id) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getDisplayFormRequestBuilder(id);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
       memberVarHttpClient.send(
@@ -153,16 +153,16 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder getDisplayFormRequestBuilder(String pipelineId) throws ApiException {
-    // verify the required parameter 'pipelineId' is set
-    if (pipelineId == null) {
-      throw new ApiException(400, "Missing the required parameter 'pipelineId' when calling getDisplayForm");
+  private HttpRequest.Builder getDisplayFormRequestBuilder(String id) throws ApiException {
+    // verify the required parameter 'id' is set
+    if (id == null) {
+      throw new ApiException(400, "Missing the required parameter 'id' when calling getDisplayForm");
     }
 
     HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
 
-    String localVarPath = "/v2/pipelines/{pipeline_id}/form"
-        .replace("{pipeline_id}", ApiClient.urlEncode(pipelineId.toString()));
+    String localVarPath = "/v2/pipelines/{id}/form"
+        .replace("{id}", ApiClient.urlEncode(id.toString()));
 
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
 
@@ -182,26 +182,26 @@ import io.github.resilience4j.retry.Retry;
   /**
    * Updates a display form
    * Updates a display form
-   * @param pipelineId the ID of the pipeline containing the form (required)
+   * @param id the ID of the pipeline containing the form (required)
    * @param updateDisplayFormRequest the request body containing updated display form details (required)
    * @return DisplayForm
    * @throws ApiException if fails to make API call
    */
-  public DisplayForm updateDisplayForm(String pipelineId, UpdateDisplayFormRequest updateDisplayFormRequest) throws ApiException {
-    ApiResponse<DisplayForm> localVarResponse = updateDisplayFormWithHttpInfo(pipelineId, updateDisplayFormRequest);
+  public DisplayForm updateDisplayForm(String id, UpdateDisplayFormRequest updateDisplayFormRequest) throws ApiException {
+    ApiResponse<DisplayForm> localVarResponse = updateDisplayFormWithHttpInfo(id, updateDisplayFormRequest);
     return localVarResponse.getData();
   }
 
   /**
    * Updates a display form
    * Updates a display form
-   * @param pipelineId the ID of the pipeline containing the form (required)
+   * @param id the ID of the pipeline containing the form (required)
    * @param updateDisplayFormRequest the request body containing updated display form details (required)
    * @return ApiResponse&lt;DisplayForm&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<DisplayForm> updateDisplayFormWithHttpInfo(String pipelineId, UpdateDisplayFormRequest updateDisplayFormRequest) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = updateDisplayFormRequestBuilder(pipelineId, updateDisplayFormRequest);
+  public ApiResponse<DisplayForm> updateDisplayFormWithHttpInfo(String id, UpdateDisplayFormRequest updateDisplayFormRequest) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = updateDisplayFormRequestBuilder(id, updateDisplayFormRequest);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
       memberVarHttpClient.send(
@@ -241,10 +241,10 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder updateDisplayFormRequestBuilder(String pipelineId, UpdateDisplayFormRequest updateDisplayFormRequest) throws ApiException {
-    // verify the required parameter 'pipelineId' is set
-    if (pipelineId == null) {
-      throw new ApiException(400, "Missing the required parameter 'pipelineId' when calling updateDisplayForm");
+  private HttpRequest.Builder updateDisplayFormRequestBuilder(String id, UpdateDisplayFormRequest updateDisplayFormRequest) throws ApiException {
+    // verify the required parameter 'id' is set
+    if (id == null) {
+      throw new ApiException(400, "Missing the required parameter 'id' when calling updateDisplayForm");
     }
     // verify the required parameter 'updateDisplayFormRequest' is set
     if (updateDisplayFormRequest == null) {
@@ -253,8 +253,8 @@ import io.github.resilience4j.retry.Retry;
 
     HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
 
-    String localVarPath = "/v2/pipelines/{pipeline_id}/form"
-        .replace("{pipeline_id}", ApiClient.urlEncode(pipelineId.toString()));
+    String localVarPath = "/v2/pipelines/{id}/form"
+        .replace("{id}", ApiClient.urlEncode(id.toString()));
 
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
 

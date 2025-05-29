@@ -12,10 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
-import DealContact from './DealContact';
 import Money from './Money';
-import Owner from './Owner';
-import Stage from './Stage';
 
 /**
  * The Deal model module.
@@ -28,16 +25,15 @@ class Deal {
      * @alias module:keap.core.v2/model/Deal
      * @param name {String} The name of the deal. This field is required and must have at least one character.
      * @param value {module:keap.core.v2/model/Money} The monetary value of the deal. This field is required and must be valid.
-     * @param contacts {Array.<module:keap.core.v2/model/DealContact>} The list of contacts associated with the deal. This field is required.
-     * @param stage {module:keap.core.v2/model/Stage} The stage of the deal. This field is required and must be valid.
+     * @param contactIds {Array.<String>} The list of IDs of contacts associated with the deal. This field is required.
+     * @param stageId {String} The stage of the deal. This field is required and must be valid.
      * @param stageAssignmentTime {Date} The time when the deal was assigned to the current stage. This field is required.
-     * @param owners {Array.<module:keap.core.v2/model/Owner>} The list of owners of the deal. This field is required.
      * @param taskIds {Array.<String>} The list of task IDs associated with the deal. This field is required.
      * @param status {String} The status of the deal. This field is required.
      */
-    constructor(name, value, contacts, stage, stageAssignmentTime, owners, taskIds, status) { 
+    constructor(name, value, contactIds, stageId, stageAssignmentTime, taskIds, status) { 
         
-        Deal.initialize(this, name, value, contacts, stage, stageAssignmentTime, owners, taskIds, status);
+        Deal.initialize(this, name, value, contactIds, stageId, stageAssignmentTime, taskIds, status);
     }
 
     /**
@@ -45,13 +41,12 @@ class Deal {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, name, value, contacts, stage, stageAssignmentTime, owners, taskIds, status) { 
+    static initialize(obj, name, value, contactIds, stageId, stageAssignmentTime, taskIds, status) { 
         obj['name'] = name;
         obj['value'] = value;
-        obj['contacts'] = contacts;
-        obj['stage'] = stage;
+        obj['contact_ids'] = contactIds;
+        obj['stage_id'] = stageId;
         obj['stage_assignment_time'] = stageAssignmentTime;
-        obj['owners'] = owners;
         obj['task_ids'] = taskIds;
         obj['status'] = status;
     }
@@ -76,20 +71,17 @@ class Deal {
             if (data.hasOwnProperty('value')) {
                 obj['value'] = ApiClient.convertToType(data['value'], Money);
             }
-            if (data.hasOwnProperty('contacts')) {
-                obj['contacts'] = ApiClient.convertToType(data['contacts'], [DealContact]);
+            if (data.hasOwnProperty('contact_ids')) {
+                obj['contact_ids'] = ApiClient.convertToType(data['contact_ids'], ['String']);
             }
-            if (data.hasOwnProperty('stage')) {
-                obj['stage'] = ApiClient.convertToType(data['stage'], Stage);
+            if (data.hasOwnProperty('stage_id')) {
+                obj['stage_id'] = ApiClient.convertToType(data['stage_id'], 'String');
             }
             if (data.hasOwnProperty('stage_assignment_time')) {
                 obj['stage_assignment_time'] = ApiClient.convertToType(data['stage_assignment_time'], 'Date');
             }
-            if (data.hasOwnProperty('owners')) {
-                obj['owners'] = ApiClient.convertToType(data['owners'], [Owner]);
-            }
-            if (data.hasOwnProperty('owner_id')) {
-                obj['owner_id'] = ApiClient.convertToType(data['owner_id'], 'String');
+            if (data.hasOwnProperty('owner_ids')) {
+                obj['owner_ids'] = ApiClient.convertToType(data['owner_ids'], ['String']);
             }
             if (data.hasOwnProperty('task_ids')) {
                 obj['task_ids'] = ApiClient.convertToType(data['task_ids'], ['String']);
@@ -137,33 +129,17 @@ class Deal {
         if (data['value']) { // data not null
           Money.validateJSON(data['value']);
         }
-        if (data['contacts']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['contacts'])) {
-                throw new Error("Expected the field `contacts` to be an array in the JSON data but got " + data['contacts']);
-            }
-            // validate the optional field `contacts` (array)
-            for (const item of data['contacts']) {
-                DealContact.validateJSON(item);
-            };
-        }
-        // validate the optional field `stage`
-        if (data['stage']) { // data not null
-          Stage.validateJSON(data['stage']);
-        }
-        if (data['owners']) { // data not null
-            // ensure the json data is an array
-            if (!Array.isArray(data['owners'])) {
-                throw new Error("Expected the field `owners` to be an array in the JSON data but got " + data['owners']);
-            }
-            // validate the optional field `owners` (array)
-            for (const item of data['owners']) {
-                Owner.validateJSON(item);
-            };
+        // ensure the json data is an array
+        if (!Array.isArray(data['contact_ids'])) {
+            throw new Error("Expected the field `contact_ids` to be an array in the JSON data but got " + data['contact_ids']);
         }
         // ensure the json data is a string
-        if (data['owner_id'] && !(typeof data['owner_id'] === 'string' || data['owner_id'] instanceof String)) {
-            throw new Error("Expected the field `owner_id` to be a primitive type in the JSON string but got " + data['owner_id']);
+        if (data['stage_id'] && !(typeof data['stage_id'] === 'string' || data['stage_id'] instanceof String)) {
+            throw new Error("Expected the field `stage_id` to be a primitive type in the JSON string but got " + data['stage_id']);
+        }
+        // ensure the json data is an array
+        if (!Array.isArray(data['owner_ids'])) {
+            throw new Error("Expected the field `owner_ids` to be an array in the JSON data but got " + data['owner_ids']);
         }
         // ensure the json data is an array
         if (!Array.isArray(data['task_ids'])) {
@@ -184,7 +160,7 @@ class Deal {
 
 }
 
-Deal.RequiredProperties = ["name", "value", "contacts", "stage", "stage_assignment_time", "owners", "task_ids", "status"];
+Deal.RequiredProperties = ["name", "value", "contact_ids", "stage_id", "stage_assignment_time", "task_ids", "status"];
 
 /**
  * Unique identifier for the model.
@@ -205,16 +181,16 @@ Deal.prototype['name'] = undefined;
 Deal.prototype['value'] = undefined;
 
 /**
- * The list of contacts associated with the deal. This field is required.
- * @member {Array.<module:keap.core.v2/model/DealContact>} contacts
+ * The list of IDs of contacts associated with the deal. This field is required.
+ * @member {Array.<String>} contact_ids
  */
-Deal.prototype['contacts'] = undefined;
+Deal.prototype['contact_ids'] = undefined;
 
 /**
  * The stage of the deal. This field is required and must be valid.
- * @member {module:keap.core.v2/model/Stage} stage
+ * @member {String} stage_id
  */
-Deal.prototype['stage'] = undefined;
+Deal.prototype['stage_id'] = undefined;
 
 /**
  * The time when the deal was assigned to the current stage. This field is required.
@@ -223,16 +199,10 @@ Deal.prototype['stage'] = undefined;
 Deal.prototype['stage_assignment_time'] = undefined;
 
 /**
- * The list of owners of the deal. This field is required.
- * @member {Array.<module:keap.core.v2/model/Owner>} owners
+ * The list of IDs of owners of the deal. This field is required.
+ * @member {Array.<String>} owner_ids
  */
-Deal.prototype['owners'] = undefined;
-
-/**
- * The ID of the owner of the deal. This field is optional.
- * @member {String} owner_id
- */
-Deal.prototype['owner_id'] = undefined;
+Deal.prototype['owner_ids'] = undefined;
 
 /**
  * The list of task IDs associated with the deal. This field is required.

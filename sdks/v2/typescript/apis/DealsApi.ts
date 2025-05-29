@@ -16,6 +16,8 @@ import { Deal } from '../models/Deal';
 import { DealListResponse } from '../models/DealListResponse';
 import { DealNote } from '../models/DealNote';
 import { DealNoteListResponse } from '../models/DealNoteListResponse';
+import { MoveDealsForContactsRequest } from '../models/MoveDealsForContactsRequest';
+import { MoveDealsForContactsResponse } from '../models/MoveDealsForContactsResponse';
 import { UpdateDealNoteRequest } from '../models/UpdateDealNoteRequest';
 
 /**
@@ -224,20 +226,20 @@ export class DealsApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Retrieves a specific deal by its ID.
      * Retrieves a specific deal by its ID.
-     * @param dealId the ID of the deal to retrieve
+     * @param id the ID of the deal to retrieve
      */
-    public async getDeal(dealId: string, _options?: Configuration): Promise<RequestContext> {
+    public async getDeal(id: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
-        // verify required parameter 'dealId' is not null or undefined
-        if (dealId === null || dealId === undefined) {
-            throw new RequiredError("DealsApi", "getDeal", "dealId");
+        // verify required parameter 'id' is not null or undefined
+        if (id === null || id === undefined) {
+            throw new RequiredError("DealsApi", "getDeal", "id");
         }
 
 
         // Path Params
-        const localVarPath = '/v2/deals/{deal_id}'
-            .replace('{' + 'deal_id' + '}', encodeURIComponent(String(dealId)));
+        const localVarPath = '/v2/deals/{id}'
+            .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
@@ -395,6 +397,48 @@ export class DealsApiRequestFactory extends BaseAPIRequestFactory {
             requestContext.setQueryParam("page_size", ObjectSerializer.serialize(pageSize, "number", "int32"));
         }
 
+
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * Moves the active deals of specified contacts from one stage to another, in bulk.
+     * Moves the active deals of specified contacts from one stage to another, in bulk.
+     * @param moveDealsForContactsRequest the request body containing move details
+     */
+    public async moveDealsForContacts(moveDealsForContactsRequest: MoveDealsForContactsRequest, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'moveDealsForContactsRequest' is not null or undefined
+        if (moveDealsForContactsRequest === null || moveDealsForContactsRequest === undefined) {
+            throw new RequiredError("DealsApi", "moveDealsForContacts", "moveDealsForContactsRequest");
+        }
+
+
+        // Path Params
+        const localVarPath = '/v2/deals/moveByContactIds';
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        // Body Params
+        const contentType = ObjectSerializer.getPreferredMediaType([
+            "application/json"
+        ]);
+        requestContext.setHeaderParam("Content-Type", contentType);
+        const serializedBody = ObjectSerializer.stringify(
+            ObjectSerializer.serialize(moveDealsForContactsRequest, "MoveDealsForContactsRequest", ""),
+            contentType
+        );
+        requestContext.setBody(serializedBody);
 
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
@@ -706,6 +750,35 @@ export class DealsApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "DealNoteListResponse", ""
             ) as DealNoteListResponse;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to moveDealsForContacts
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async moveDealsForContactsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<MoveDealsForContactsResponse >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: MoveDealsForContactsResponse = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "MoveDealsForContactsResponse", ""
+            ) as MoveDealsForContactsResponse;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: MoveDealsForContactsResponse = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "MoveDealsForContactsResponse", ""
+            ) as MoveDealsForContactsResponse;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

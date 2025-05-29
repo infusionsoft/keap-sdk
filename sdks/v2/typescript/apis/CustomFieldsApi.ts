@@ -20,9 +20,17 @@ export class CustomFieldsApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Retrieves a list of custom fields in a tenant.
      * Retrieves a list of custom fields in a tenant.
+     * @param filter 
+     * @param pageToken 
+     * @param orderBy 
+     * @param pageSize 
      */
-    public async getCustomFields(_options?: Configuration): Promise<RequestContext> {
+    public async getCustomFields(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
+
+
+
+
 
         // Path Params
         const localVarPath = '/v2/customFields';
@@ -30,6 +38,26 @@ export class CustomFieldsApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Query Params
+        if (filter !== undefined) {
+            requestContext.setQueryParam("filter", ObjectSerializer.serialize(filter, "string", ""));
+        }
+
+        // Query Params
+        if (pageToken !== undefined) {
+            requestContext.setQueryParam("page_token", ObjectSerializer.serialize(pageToken, "string", ""));
+        }
+
+        // Query Params
+        if (orderBy !== undefined) {
+            requestContext.setQueryParam("order_by", ObjectSerializer.serialize(orderBy, "string", ""));
+        }
+
+        // Query Params
+        if (pageSize !== undefined) {
+            requestContext.setQueryParam("page_size", ObjectSerializer.serialize(pageSize, "number", "int32"));
+        }
 
 
         
@@ -44,15 +72,15 @@ export class CustomFieldsApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Updates a custom field
      * Updates a custom field
-     * @param customFieldId the identifier of the custom field to update
+     * @param id the identifier of the custom field to update
      * @param updateCustomFieldRequest the request body containing updated custom field details
      */
-    public async updateCustomField(customFieldId: string, updateCustomFieldRequest: UpdateCustomFieldRequest, _options?: Configuration): Promise<RequestContext> {
+    public async updateCustomField(id: string, updateCustomFieldRequest: UpdateCustomFieldRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
-        // verify required parameter 'customFieldId' is not null or undefined
-        if (customFieldId === null || customFieldId === undefined) {
-            throw new RequiredError("CustomFieldsApi", "updateCustomField", "customFieldId");
+        // verify required parameter 'id' is not null or undefined
+        if (id === null || id === undefined) {
+            throw new RequiredError("CustomFieldsApi", "updateCustomField", "id");
         }
 
 
@@ -63,8 +91,8 @@ export class CustomFieldsApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/v2/customFields/{custom_field_id}'
-            .replace('{' + 'custom_field_id' + '}', encodeURIComponent(String(customFieldId)));
+        const localVarPath = '/v2/customFields/{id}'
+            .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.PATCH);

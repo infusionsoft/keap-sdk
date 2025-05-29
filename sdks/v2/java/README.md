@@ -43,7 +43,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.keap.core</groupId>
   <artifactId>core-service-v2-java-sdk</artifactId>
-  <version>1.0.17</version>
+  <version>1.0.18</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.keap.core:core-service-v2-java-sdk:1.0.17"
+compile "com.keap.core:core-service-v2-java-sdk:1.0.18"
 ```
 
 ### Others
@@ -66,7 +66,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/core-service-v2-java-sdk-1.0.17.jar`
+- `target/core-service-v2-java-sdk-1.0.18.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -232,8 +232,8 @@ Class | Method | HTTP request | Description
 *ContactApi* | [**updateContactUsingPATCHWithHttpInfo**](docs/ContactApi.md#updateContactUsingPATCHWithHttpInfo) | **PATCH** /v2/contacts/{contact_id} | Update a Contact
 *CustomFieldsApi* | [**getCustomFields**](docs/CustomFieldsApi.md#getCustomFields) | **GET** /v2/customFields | Retrieves a list of custom fields in a tenant.
 *CustomFieldsApi* | [**getCustomFieldsWithHttpInfo**](docs/CustomFieldsApi.md#getCustomFieldsWithHttpInfo) | **GET** /v2/customFields | Retrieves a list of custom fields in a tenant.
-*CustomFieldsApi* | [**updateCustomField**](docs/CustomFieldsApi.md#updateCustomField) | **PATCH** /v2/customFields/{custom_field_id} | Updates a custom field
-*CustomFieldsApi* | [**updateCustomFieldWithHttpInfo**](docs/CustomFieldsApi.md#updateCustomFieldWithHttpInfo) | **PATCH** /v2/customFields/{custom_field_id} | Updates a custom field
+*CustomFieldsApi* | [**updateCustomField**](docs/CustomFieldsApi.md#updateCustomField) | **PATCH** /v2/customFields/{id} | Updates a custom field
+*CustomFieldsApi* | [**updateCustomFieldWithHttpInfo**](docs/CustomFieldsApi.md#updateCustomFieldWithHttpInfo) | **PATCH** /v2/customFields/{id} | Updates a custom field
 *DateExpressionApi* | [**queryDateExpressions**](docs/DateExpressionApi.md#queryDateExpressions) | **GET** /v2/dateExpressions | 
 *DateExpressionApi* | [**queryDateExpressionsWithHttpInfo**](docs/DateExpressionApi.md#queryDateExpressionsWithHttpInfo) | **GET** /v2/dateExpressions | 
 *DealsApi* | [**createDeal**](docs/DealsApi.md#createDeal) | **POST** /v2/deals | Creates a new deal.
@@ -246,20 +246,22 @@ Class | Method | HTTP request | Description
 *DealsApi* | [**deleteDealWithHttpInfo**](docs/DealsApi.md#deleteDealWithHttpInfo) | **DELETE** /v2/deals/{id} | Deletes a specific deal by its ID.
 *DealsApi* | [**deleteNote**](docs/DealsApi.md#deleteNote) | **DELETE** /v2/deals/-/notes/{note_id} | Deletes a specific deal note by its ID.
 *DealsApi* | [**deleteNoteWithHttpInfo**](docs/DealsApi.md#deleteNoteWithHttpInfo) | **DELETE** /v2/deals/-/notes/{note_id} | Deletes a specific deal note by its ID.
-*DealsApi* | [**getDeal**](docs/DealsApi.md#getDeal) | **GET** /v2/deals/{deal_id} | Retrieves a specific deal by its ID.
-*DealsApi* | [**getDealWithHttpInfo**](docs/DealsApi.md#getDealWithHttpInfo) | **GET** /v2/deals/{deal_id} | Retrieves a specific deal by its ID.
+*DealsApi* | [**getDeal**](docs/DealsApi.md#getDeal) | **GET** /v2/deals/{id} | Retrieves a specific deal by its ID.
+*DealsApi* | [**getDealWithHttpInfo**](docs/DealsApi.md#getDealWithHttpInfo) | **GET** /v2/deals/{id} | Retrieves a specific deal by its ID.
 *DealsApi* | [**getNote**](docs/DealsApi.md#getNote) | **GET** /v2/deals/-/notes/{note_id} | Retrieves a specific deal note by its ID.
 *DealsApi* | [**getNoteWithHttpInfo**](docs/DealsApi.md#getNoteWithHttpInfo) | **GET** /v2/deals/-/notes/{note_id} | Retrieves a specific deal note by its ID.
 *DealsApi* | [**listDeals**](docs/DealsApi.md#listDeals) | **GET** /v2/deals/-/contacts/{contact_id} | Lists all deals associated with a specific contact.
 *DealsApi* | [**listDealsWithHttpInfo**](docs/DealsApi.md#listDealsWithHttpInfo) | **GET** /v2/deals/-/contacts/{contact_id} | Lists all deals associated with a specific contact.
 *DealsApi* | [**listNotes**](docs/DealsApi.md#listNotes) | **GET** /v2/deals/{id}/notes | Lists all notes associated with a specific deal.
 *DealsApi* | [**listNotesWithHttpInfo**](docs/DealsApi.md#listNotesWithHttpInfo) | **GET** /v2/deals/{id}/notes | Lists all notes associated with a specific deal.
+*DealsApi* | [**moveDealsForContacts**](docs/DealsApi.md#moveDealsForContacts) | **POST** /v2/deals/moveByContactIds | Moves the active deals of specified contacts from one stage to another, in bulk.
+*DealsApi* | [**moveDealsForContactsWithHttpInfo**](docs/DealsApi.md#moveDealsForContactsWithHttpInfo) | **POST** /v2/deals/moveByContactIds | Moves the active deals of specified contacts from one stage to another, in bulk.
 *DealsApi* | [**updateNote**](docs/DealsApi.md#updateNote) | **PATCH** /v2/deals/-/notes/{note_id} | Updates a specific deal note by its ID.
 *DealsApi* | [**updateNoteWithHttpInfo**](docs/DealsApi.md#updateNoteWithHttpInfo) | **PATCH** /v2/deals/-/notes/{note_id} | Updates a specific deal note by its ID.
-*DisplayFormsApi* | [**getDisplayForm**](docs/DisplayFormsApi.md#getDisplayForm) | **GET** /v2/pipelines/{pipeline_id}/form | Retrieves a specific display form by a pipeline ID.
-*DisplayFormsApi* | [**getDisplayFormWithHttpInfo**](docs/DisplayFormsApi.md#getDisplayFormWithHttpInfo) | **GET** /v2/pipelines/{pipeline_id}/form | Retrieves a specific display form by a pipeline ID.
-*DisplayFormsApi* | [**updateDisplayForm**](docs/DisplayFormsApi.md#updateDisplayForm) | **PATCH** /v2/pipelines/{pipeline_id}/form | Updates a display form
-*DisplayFormsApi* | [**updateDisplayFormWithHttpInfo**](docs/DisplayFormsApi.md#updateDisplayFormWithHttpInfo) | **PATCH** /v2/pipelines/{pipeline_id}/form | Updates a display form
+*DisplayFormsApi* | [**getDisplayForm**](docs/DisplayFormsApi.md#getDisplayForm) | **GET** /v2/pipelines/{id}/form | Retrieves a specific display form by a pipeline ID.
+*DisplayFormsApi* | [**getDisplayFormWithHttpInfo**](docs/DisplayFormsApi.md#getDisplayFormWithHttpInfo) | **GET** /v2/pipelines/{id}/form | Retrieves a specific display form by a pipeline ID.
+*DisplayFormsApi* | [**updateDisplayForm**](docs/DisplayFormsApi.md#updateDisplayForm) | **PATCH** /v2/pipelines/{id}/form | Updates a display form
+*DisplayFormsApi* | [**updateDisplayFormWithHttpInfo**](docs/DisplayFormsApi.md#updateDisplayFormWithHttpInfo) | **PATCH** /v2/pipelines/{id}/form | Updates a display form
 *EmailApi* | [**createEmailUsingPOST1**](docs/EmailApi.md#createEmailUsingPOST1) | **POST** /v2/emails | Create an Email Record
 *EmailApi* | [**createEmailUsingPOST1WithHttpInfo**](docs/EmailApi.md#createEmailUsingPOST1WithHttpInfo) | **POST** /v2/emails | Create an Email Record
 *EmailApi* | [**createEmailsUsingPOST1**](docs/EmailApi.md#createEmailsUsingPOST1) | **POST** /v2/emails:batchAdd | Create a set of Email Records
@@ -595,6 +597,7 @@ Class | Method | HTTP request | Description
  - [BaseListResponseDeal](docs/BaseListResponseDeal.md)
  - [BaseListResponseDealNote](docs/BaseListResponseDealNote.md)
  - [BaseListResponsePipeline](docs/BaseListResponsePipeline.md)
+ - [BaseListResponsePipelineCustomField](docs/BaseListResponsePipelineCustomField.md)
  - [BaseListResponsePipelineSummary](docs/BaseListResponsePipelineSummary.md)
  - [BaseListResponseStage](docs/BaseListResponseStage.md)
  - [BasicCompany](docs/BasicCompany.md)
@@ -786,6 +789,8 @@ Class | Method | HTTP request | Description
  - [LogicalDate](docs/LogicalDate.md)
  - [ModelFile](docs/ModelFile.md)
  - [Money](docs/Money.md)
+ - [MoveDealsForContactsRequest](docs/MoveDealsForContactsRequest.md)
+ - [MoveDealsForContactsResponse](docs/MoveDealsForContactsResponse.md)
  - [Note](docs/Note.md)
  - [NoteTemplate](docs/NoteTemplate.md)
  - [ObjectModel](docs/ObjectModel.md)

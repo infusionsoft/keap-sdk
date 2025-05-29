@@ -49,6 +49,7 @@ import { AutomationLockStatus } from '../models/AutomationLockStatus';
 import { BaseListResponseDeal } from '../models/BaseListResponseDeal';
 import { BaseListResponseDealNote } from '../models/BaseListResponseDealNote';
 import { BaseListResponsePipeline } from '../models/BaseListResponsePipeline';
+import { BaseListResponsePipelineCustomField } from '../models/BaseListResponsePipelineCustomField';
 import { BaseListResponsePipelineSummary } from '../models/BaseListResponsePipelineSummary';
 import { BaseListResponseStage } from '../models/BaseListResponseStage';
 import { BasicCompany } from '../models/BasicCompany';
@@ -240,6 +241,8 @@ import { LogicalDate } from '../models/LogicalDate';
 import { ModelError } from '../models/ModelError';
 import { ModelFile } from '../models/ModelFile';
 import { Money } from '../models/Money';
+import { MoveDealsForContactsRequest } from '../models/MoveDealsForContactsRequest';
+import { MoveDealsForContactsResponse } from '../models/MoveDealsForContactsResponse';
 import { Note } from '../models/Note';
 import { NoteTemplate } from '../models/NoteTemplate';
 import { ObjectModel } from '../models/ObjectModel';
@@ -2013,44 +2016,52 @@ export class PromiseCustomFieldsApi {
     /**
      * Retrieves a list of custom fields in a tenant.
      * Retrieves a list of custom fields in a tenant.
+     * @param [filter]
+     * @param [pageToken]
+     * @param [orderBy]
+     * @param [pageSize]
      */
-    public getCustomFieldsWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<PipelineCustomFields>> {
+    public getCustomFieldsWithHttpInfo(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<PipelineCustomFields>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getCustomFieldsWithHttpInfo(observableOptions);
+        const result = this.api.getCustomFieldsWithHttpInfo(filter, pageToken, orderBy, pageSize, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Retrieves a list of custom fields in a tenant.
      * Retrieves a list of custom fields in a tenant.
+     * @param [filter]
+     * @param [pageToken]
+     * @param [orderBy]
+     * @param [pageSize]
      */
-    public getCustomFields(_options?: PromiseConfigurationOptions): Promise<PipelineCustomFields> {
+    public getCustomFields(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<PipelineCustomFields> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getCustomFields(observableOptions);
+        const result = this.api.getCustomFields(filter, pageToken, orderBy, pageSize, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Updates a custom field
      * Updates a custom field
-     * @param customFieldId the identifier of the custom field to update
+     * @param id the identifier of the custom field to update
      * @param updateCustomFieldRequest the request body containing updated custom field details
      */
-    public updateCustomFieldWithHttpInfo(customFieldId: string, updateCustomFieldRequest: UpdateCustomFieldRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<PipelineCustomField>> {
+    public updateCustomFieldWithHttpInfo(id: string, updateCustomFieldRequest: UpdateCustomFieldRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<PipelineCustomField>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.updateCustomFieldWithHttpInfo(customFieldId, updateCustomFieldRequest, observableOptions);
+        const result = this.api.updateCustomFieldWithHttpInfo(id, updateCustomFieldRequest, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Updates a custom field
      * Updates a custom field
-     * @param customFieldId the identifier of the custom field to update
+     * @param id the identifier of the custom field to update
      * @param updateCustomFieldRequest the request body containing updated custom field details
      */
-    public updateCustomField(customFieldId: string, updateCustomFieldRequest: UpdateCustomFieldRequest, _options?: PromiseConfigurationOptions): Promise<PipelineCustomField> {
+    public updateCustomField(id: string, updateCustomFieldRequest: UpdateCustomFieldRequest, _options?: PromiseConfigurationOptions): Promise<PipelineCustomField> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.updateCustomField(customFieldId, updateCustomFieldRequest, observableOptions);
+        const result = this.api.updateCustomField(id, updateCustomFieldRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -2227,22 +2238,22 @@ export class PromiseDealsApi {
     /**
      * Retrieves a specific deal by its ID.
      * Retrieves a specific deal by its ID.
-     * @param dealId the ID of the deal to retrieve
+     * @param id the ID of the deal to retrieve
      */
-    public getDealWithHttpInfo(dealId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Deal>> {
+    public getDealWithHttpInfo(id: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Deal>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getDealWithHttpInfo(dealId, observableOptions);
+        const result = this.api.getDealWithHttpInfo(id, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Retrieves a specific deal by its ID.
      * Retrieves a specific deal by its ID.
-     * @param dealId the ID of the deal to retrieve
+     * @param id the ID of the deal to retrieve
      */
-    public getDeal(dealId: string, _options?: PromiseConfigurationOptions): Promise<Deal> {
+    public getDeal(id: string, _options?: PromiseConfigurationOptions): Promise<Deal> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getDeal(dealId, observableOptions);
+        const result = this.api.getDeal(id, observableOptions);
         return result.toPromise();
     }
 
@@ -2329,6 +2340,28 @@ export class PromiseDealsApi {
     }
 
     /**
+     * Moves the active deals of specified contacts from one stage to another, in bulk.
+     * Moves the active deals of specified contacts from one stage to another, in bulk.
+     * @param moveDealsForContactsRequest the request body containing move details
+     */
+    public moveDealsForContactsWithHttpInfo(moveDealsForContactsRequest: MoveDealsForContactsRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<MoveDealsForContactsResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.moveDealsForContactsWithHttpInfo(moveDealsForContactsRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Moves the active deals of specified contacts from one stage to another, in bulk.
+     * Moves the active deals of specified contacts from one stage to another, in bulk.
+     * @param moveDealsForContactsRequest the request body containing move details
+     */
+    public moveDealsForContacts(moveDealsForContactsRequest: MoveDealsForContactsRequest, _options?: PromiseConfigurationOptions): Promise<MoveDealsForContactsResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.moveDealsForContacts(moveDealsForContactsRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Updates a specific deal note by its ID.
      * Updates a specific deal note by its ID.
      * @param noteId the ID of the note to update
@@ -2374,46 +2407,46 @@ export class PromiseDisplayFormsApi {
     /**
      * Retrieves a specific display form by a pipeline ID.
      * Retrieves a specific display form by a pipeline ID.
-     * @param pipelineId the ID of the pipeline containing the form
+     * @param id the ID of the pipeline containing the form
      */
-    public getDisplayFormWithHttpInfo(pipelineId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<DisplayForm>> {
+    public getDisplayFormWithHttpInfo(id: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<DisplayForm>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getDisplayFormWithHttpInfo(pipelineId, observableOptions);
+        const result = this.api.getDisplayFormWithHttpInfo(id, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Retrieves a specific display form by a pipeline ID.
      * Retrieves a specific display form by a pipeline ID.
-     * @param pipelineId the ID of the pipeline containing the form
+     * @param id the ID of the pipeline containing the form
      */
-    public getDisplayForm(pipelineId: string, _options?: PromiseConfigurationOptions): Promise<DisplayForm> {
+    public getDisplayForm(id: string, _options?: PromiseConfigurationOptions): Promise<DisplayForm> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getDisplayForm(pipelineId, observableOptions);
+        const result = this.api.getDisplayForm(id, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Updates a display form
      * Updates a display form
-     * @param pipelineId the ID of the pipeline containing the form
+     * @param id the ID of the pipeline containing the form
      * @param updateDisplayFormRequest the request body containing updated display form details
      */
-    public updateDisplayFormWithHttpInfo(pipelineId: string, updateDisplayFormRequest: UpdateDisplayFormRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<DisplayForm>> {
+    public updateDisplayFormWithHttpInfo(id: string, updateDisplayFormRequest: UpdateDisplayFormRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<DisplayForm>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.updateDisplayFormWithHttpInfo(pipelineId, updateDisplayFormRequest, observableOptions);
+        const result = this.api.updateDisplayFormWithHttpInfo(id, updateDisplayFormRequest, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Updates a display form
      * Updates a display form
-     * @param pipelineId the ID of the pipeline containing the form
+     * @param id the ID of the pipeline containing the form
      * @param updateDisplayFormRequest the request body containing updated display form details
      */
-    public updateDisplayForm(pipelineId: string, updateDisplayFormRequest: UpdateDisplayFormRequest, _options?: PromiseConfigurationOptions): Promise<DisplayForm> {
+    public updateDisplayForm(id: string, updateDisplayFormRequest: UpdateDisplayFormRequest, _options?: PromiseConfigurationOptions): Promise<DisplayForm> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.updateDisplayForm(pipelineId, updateDisplayFormRequest, observableOptions);
+        const result = this.api.updateDisplayForm(id, updateDisplayFormRequest, observableOptions);
         return result.toPromise();
     }
 

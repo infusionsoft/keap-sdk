@@ -4,12 +4,12 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**GetDisplayForm**](DisplayFormsApi.md#getdisplayform) | **GET** /v2/pipelines/{pipeline_id}/form | Retrieves a specific display form by a pipeline ID. |
-| [**UpdateDisplayForm**](DisplayFormsApi.md#updatedisplayform) | **PATCH** /v2/pipelines/{pipeline_id}/form | Updates a display form |
+| [**GetDisplayForm**](DisplayFormsApi.md#getdisplayform) | **GET** /v2/pipelines/{id}/form | Retrieves a specific display form by a pipeline ID. |
+| [**UpdateDisplayForm**](DisplayFormsApi.md#updatedisplayform) | **PATCH** /v2/pipelines/{id}/form | Updates a display form |
 
 <a id="getdisplayform"></a>
 # **GetDisplayForm**
-> DisplayForm GetDisplayForm (string pipelineId)
+> DisplayForm GetDisplayForm (string id)
 
 Retrieves a specific display form by a pipeline ID.
 
@@ -32,12 +32,12 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://api.keap.com/crm/rest";
             var apiInstance = new DisplayFormsApi(config);
-            var pipelineId = "pipelineId_example";  // string | the ID of the pipeline containing the form
+            var id = "id_example";  // string | the ID of the pipeline containing the form
 
             try
             {
                 // Retrieves a specific display form by a pipeline ID.
-                DisplayForm result = apiInstance.GetDisplayForm(pipelineId);
+                DisplayForm result = apiInstance.GetDisplayForm(id);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -58,7 +58,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Retrieves a specific display form by a pipeline ID.
-    ApiResponse<DisplayForm> response = apiInstance.GetDisplayFormWithHttpInfo(pipelineId);
+    ApiResponse<DisplayForm> response = apiInstance.GetDisplayFormWithHttpInfo(id);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -75,7 +75,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **pipelineId** | **string** | the ID of the pipeline containing the form |  |
+| **id** | **string** | the ID of the pipeline containing the form |  |
 
 ### Return type
 
@@ -100,7 +100,7 @@ No authorization required
 
 <a id="updatedisplayform"></a>
 # **UpdateDisplayForm**
-> DisplayForm UpdateDisplayForm (string pipelineId, UpdateDisplayFormRequest updateDisplayFormRequest)
+> DisplayForm UpdateDisplayForm (string id, UpdateDisplayFormRequest updateDisplayFormRequest)
 
 Updates a display form
 
@@ -123,13 +123,13 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://api.keap.com/crm/rest";
             var apiInstance = new DisplayFormsApi(config);
-            var pipelineId = "pipelineId_example";  // string | the ID of the pipeline containing the form
+            var id = "id_example";  // string | the ID of the pipeline containing the form
             var updateDisplayFormRequest = new UpdateDisplayFormRequest(); // UpdateDisplayFormRequest | the request body containing updated display form details
 
             try
             {
                 // Updates a display form
-                DisplayForm result = apiInstance.UpdateDisplayForm(pipelineId, updateDisplayFormRequest);
+                DisplayForm result = apiInstance.UpdateDisplayForm(id, updateDisplayFormRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -150,7 +150,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Updates a display form
-    ApiResponse<DisplayForm> response = apiInstance.UpdateDisplayFormWithHttpInfo(pipelineId, updateDisplayFormRequest);
+    ApiResponse<DisplayForm> response = apiInstance.UpdateDisplayFormWithHttpInfo(id, updateDisplayFormRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -167,7 +167,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **pipelineId** | **string** | the ID of the pipeline containing the form |  |
+| **id** | **string** | the ID of the pipeline containing the form |  |
 | **updateDisplayFormRequest** | [**UpdateDisplayFormRequest**](UpdateDisplayFormRequest.md) | the request body containing updated display form details |  |
 
 ### Return type

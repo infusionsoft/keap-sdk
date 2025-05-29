@@ -101,6 +101,9 @@ class DealsApi
         'listNotes' => [
             'application/json',
         ],
+        'moveDealsForContacts' => [
+            'application/json',
+        ],
         'updateNote' => [
             'application/json',
         ],
@@ -1414,16 +1417,16 @@ class DealsApi
      *
      * Retrieves a specific deal by its ID.
      *
-     * @param  string $deal_id the ID of the deal to retrieve (required)
+     * @param  string $id the ID of the deal to retrieve (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDeal'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Keap\Core\V2\Model\Deal
      */
-    public function getDeal($deal_id, string $contentType = self::contentTypes['getDeal'][0])
+    public function getDeal($id, string $contentType = self::contentTypes['getDeal'][0])
     {
-        list($response) = $this->getDealWithHttpInfo($deal_id, $contentType);
+        list($response) = $this->getDealWithHttpInfo($id, $contentType);
         return $response;
     }
 
@@ -1432,16 +1435,16 @@ class DealsApi
      *
      * Retrieves a specific deal by its ID.
      *
-     * @param  string $deal_id the ID of the deal to retrieve (required)
+     * @param  string $id the ID of the deal to retrieve (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDeal'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Keap\Core\V2\Model\Deal, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getDealWithHttpInfo($deal_id, string $contentType = self::contentTypes['getDeal'][0])
+    public function getDealWithHttpInfo($id, string $contentType = self::contentTypes['getDeal'][0])
     {
-        $request = $this->getDealRequest($deal_id, $contentType);
+        $request = $this->getDealRequest($id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1517,15 +1520,15 @@ class DealsApi
      *
      * Retrieves a specific deal by its ID.
      *
-     * @param  string $deal_id the ID of the deal to retrieve (required)
+     * @param  string $id the ID of the deal to retrieve (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDeal'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getDealAsync($deal_id, string $contentType = self::contentTypes['getDeal'][0])
+    public function getDealAsync($id, string $contentType = self::contentTypes['getDeal'][0])
     {
-        return $this->getDealAsyncWithHttpInfo($deal_id, $contentType)
+        return $this->getDealAsyncWithHttpInfo($id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1538,16 +1541,16 @@ class DealsApi
      *
      * Retrieves a specific deal by its ID.
      *
-     * @param  string $deal_id the ID of the deal to retrieve (required)
+     * @param  string $id the ID of the deal to retrieve (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDeal'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getDealAsyncWithHttpInfo($deal_id, string $contentType = self::contentTypes['getDeal'][0])
+    public function getDealAsyncWithHttpInfo($id, string $contentType = self::contentTypes['getDeal'][0])
     {
         $returnType = '\Keap\Core\V2\Model\Deal';
-        $request = $this->getDealRequest($deal_id, $contentType);
+        $request = $this->getDealRequest($id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1588,24 +1591,24 @@ class DealsApi
     /**
      * Create request for operation 'getDeal'
      *
-     * @param  string $deal_id the ID of the deal to retrieve (required)
+     * @param  string $id the ID of the deal to retrieve (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDeal'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getDealRequest($deal_id, string $contentType = self::contentTypes['getDeal'][0])
+    public function getDealRequest($id, string $contentType = self::contentTypes['getDeal'][0])
     {
 
-        // verify the required parameter 'deal_id' is set
-        if ($deal_id === null || (is_array($deal_id) && count($deal_id) === 0)) {
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $deal_id when calling getDeal'
+                'Missing the required parameter $id when calling getDeal'
             );
         }
 
 
-        $resourcePath = '/v2/deals/{deal_id}';
+        $resourcePath = '/v2/deals/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1615,10 +1618,10 @@ class DealsApi
 
 
         // path params
-        if ($deal_id !== null) {
+        if ($id !== null) {
             $resourcePath = str_replace(
-                '{' . 'deal_id' . '}',
-                ObjectSerializer::toPathValue($deal_id),
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
                 $resourcePath
             );
         }
@@ -2607,6 +2610,273 @@ class DealsApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation moveDealsForContacts
+     *
+     * Moves the active deals of specified contacts from one stage to another, in bulk.
+     *
+     * @param  \Keap\Core\V2\Model\MoveDealsForContactsRequest $move_deals_for_contacts_request the request body containing move details (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['moveDealsForContacts'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Keap\Core\V2\Model\MoveDealsForContactsResponse
+     */
+    public function moveDealsForContacts($move_deals_for_contacts_request, string $contentType = self::contentTypes['moveDealsForContacts'][0])
+    {
+        list($response) = $this->moveDealsForContactsWithHttpInfo($move_deals_for_contacts_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation moveDealsForContactsWithHttpInfo
+     *
+     * Moves the active deals of specified contacts from one stage to another, in bulk.
+     *
+     * @param  \Keap\Core\V2\Model\MoveDealsForContactsRequest $move_deals_for_contacts_request the request body containing move details (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['moveDealsForContacts'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Keap\Core\V2\Model\MoveDealsForContactsResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function moveDealsForContactsWithHttpInfo($move_deals_for_contacts_request, string $contentType = self::contentTypes['moveDealsForContacts'][0])
+    {
+        $request = $this->moveDealsForContactsRequest($move_deals_for_contacts_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\MoveDealsForContactsResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Keap\Core\V2\Model\MoveDealsForContactsResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\MoveDealsForContactsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation moveDealsForContactsAsync
+     *
+     * Moves the active deals of specified contacts from one stage to another, in bulk.
+     *
+     * @param  \Keap\Core\V2\Model\MoveDealsForContactsRequest $move_deals_for_contacts_request the request body containing move details (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['moveDealsForContacts'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function moveDealsForContactsAsync($move_deals_for_contacts_request, string $contentType = self::contentTypes['moveDealsForContacts'][0])
+    {
+        return $this->moveDealsForContactsAsyncWithHttpInfo($move_deals_for_contacts_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation moveDealsForContactsAsyncWithHttpInfo
+     *
+     * Moves the active deals of specified contacts from one stage to another, in bulk.
+     *
+     * @param  \Keap\Core\V2\Model\MoveDealsForContactsRequest $move_deals_for_contacts_request the request body containing move details (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['moveDealsForContacts'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function moveDealsForContactsAsyncWithHttpInfo($move_deals_for_contacts_request, string $contentType = self::contentTypes['moveDealsForContacts'][0])
+    {
+        $returnType = '\Keap\Core\V2\Model\MoveDealsForContactsResponse';
+        $request = $this->moveDealsForContactsRequest($move_deals_for_contacts_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'moveDealsForContacts'
+     *
+     * @param  \Keap\Core\V2\Model\MoveDealsForContactsRequest $move_deals_for_contacts_request the request body containing move details (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['moveDealsForContacts'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function moveDealsForContactsRequest($move_deals_for_contacts_request, string $contentType = self::contentTypes['moveDealsForContacts'][0])
+    {
+
+        // verify the required parameter 'move_deals_for_contacts_request' is set
+        if ($move_deals_for_contacts_request === null || (is_array($move_deals_for_contacts_request) && count($move_deals_for_contacts_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $move_deals_for_contacts_request when calling moveDealsForContacts'
+            );
+        }
+
+
+        $resourcePath = '/v2/deals/moveByContactIds';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($move_deals_for_contacts_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($move_deals_for_contacts_request));
+            } else {
+                $httpBody = $move_deals_for_contacts_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

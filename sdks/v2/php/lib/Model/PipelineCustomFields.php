@@ -58,6 +58,7 @@ class PipelineCustomFields implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
+        'next_page_token' => 'string',
         'custom_fields' => '\Keap\Core\V2\Model\PipelineCustomField[]'
     ];
 
@@ -69,6 +70,7 @@ class PipelineCustomFields implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'next_page_token' => null,
         'custom_fields' => null
     ];
 
@@ -78,6 +80,7 @@ class PipelineCustomFields implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'next_page_token' => false,
         'custom_fields' => false
     ];
 
@@ -167,6 +170,7 @@ class PipelineCustomFields implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
+        'next_page_token' => 'next_page_token',
         'custom_fields' => 'custom_fields'
     ];
 
@@ -176,6 +180,7 @@ class PipelineCustomFields implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
+        'next_page_token' => 'setNextPageToken',
         'custom_fields' => 'setCustomFields'
     ];
 
@@ -185,6 +190,7 @@ class PipelineCustomFields implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
+        'next_page_token' => 'getNextPageToken',
         'custom_fields' => 'getCustomFields'
     ];
 
@@ -245,6 +251,7 @@ class PipelineCustomFields implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('next_page_token', $data ?? [], null);
         $this->setIfExists('custom_fields', $data ?? [], null);
     }
 
@@ -292,6 +299,33 @@ class PipelineCustomFields implements ModelInterface, ArrayAccess, \JsonSerializ
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets next_page_token
+     *
+     * @return string|null
+     */
+    public function getNextPageToken()
+    {
+        return $this->container['next_page_token'];
+    }
+
+    /**
+     * Sets next_page_token
+     *
+     * @param string|null $next_page_token Token for the next page of results.
+     *
+     * @return self
+     */
+    public function setNextPageToken($next_page_token)
+    {
+        if (is_null($next_page_token)) {
+            throw new \InvalidArgumentException('non-nullable next_page_token cannot be null');
+        }
+        $this->container['next_page_token'] = $next_page_token;
+
+        return $this;
+    }
 
     /**
      * Gets custom_fields

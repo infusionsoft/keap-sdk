@@ -4,14 +4,14 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getDisplayForm**](DisplayFormsApi.md#getDisplayForm) | **GET** /v2/pipelines/{pipeline_id}/form | Retrieves a specific display form by a pipeline ID.
-[**updateDisplayForm**](DisplayFormsApi.md#updateDisplayForm) | **PATCH** /v2/pipelines/{pipeline_id}/form | Updates a display form
+[**getDisplayForm**](DisplayFormsApi.md#getDisplayForm) | **GET** /v2/pipelines/{id}/form | Retrieves a specific display form by a pipeline ID.
+[**updateDisplayForm**](DisplayFormsApi.md#updateDisplayForm) | **PATCH** /v2/pipelines/{id}/form | Updates a display form
 
 
 
 ## getDisplayForm
 
-> DisplayForm getDisplayForm(pipelineId)
+> DisplayForm getDisplayForm(id)
 
 Retrieves a specific display form by a pipeline ID.
 
@@ -23,8 +23,8 @@ Retrieves a specific display form by a pipeline ID.
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.DisplayFormsApi();
-let pipelineId = "pipelineId_example"; // String | the ID of the pipeline containing the form
-apiInstance.getDisplayForm(pipelineId).then((data) => {
+let id = "id_example"; // String | the ID of the pipeline containing the form
+apiInstance.getDisplayForm(id).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -37,7 +37,7 @@ apiInstance.getDisplayForm(pipelineId).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pipelineId** | **String**| the ID of the pipeline containing the form | 
+ **id** | **String**| the ID of the pipeline containing the form | 
 
 ### Return type
 
@@ -55,7 +55,7 @@ No authorization required
 
 ## updateDisplayForm
 
-> DisplayForm updateDisplayForm(pipelineId, updateDisplayFormRequest)
+> DisplayForm updateDisplayForm(id, updateDisplayFormRequest)
 
 Updates a display form
 
@@ -67,9 +67,9 @@ Updates a display form
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.DisplayFormsApi();
-let pipelineId = "pipelineId_example"; // String | the ID of the pipeline containing the form
+let id = "id_example"; // String | the ID of the pipeline containing the form
 let updateDisplayFormRequest = new KeapCoreServiceV2Sdk.UpdateDisplayFormRequest(); // UpdateDisplayFormRequest | the request body containing updated display form details
-apiInstance.updateDisplayForm(pipelineId, updateDisplayFormRequest).then((data) => {
+apiInstance.updateDisplayForm(id, updateDisplayFormRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -82,7 +82,7 @@ apiInstance.updateDisplayForm(pipelineId, updateDisplayFormRequest).then((data) 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pipelineId** | **String**| the ID of the pipeline containing the form | 
+ **id** | **String**| the ID of the pipeline containing the form | 
  **updateDisplayFormRequest** | [**UpdateDisplayFormRequest**](UpdateDisplayFormRequest.md)| the request body containing updated display form details | 
 
 ### Return type

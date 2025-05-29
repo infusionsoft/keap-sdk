@@ -61,11 +61,10 @@ class Deal implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'string',
         'name' => 'string',
         'value' => '\Keap\Core\V2\Model\Money',
-        'contacts' => '\Keap\Core\V2\Model\DealContact[]',
-        'stage' => '\Keap\Core\V2\Model\Stage',
+        'contact_ids' => 'string[]',
+        'stage_id' => 'string',
         'stage_assignment_time' => '\DateTime',
-        'owners' => '\Keap\Core\V2\Model\Owner[]',
-        'owner_id' => 'string',
+        'owner_ids' => 'string[]',
         'task_ids' => 'string[]',
         'order_id' => 'string',
         'status' => 'string',
@@ -85,11 +84,10 @@ class Deal implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => null,
         'name' => null,
         'value' => null,
-        'contacts' => null,
-        'stage' => null,
+        'contact_ids' => null,
+        'stage_id' => null,
         'stage_assignment_time' => 'date-time',
-        'owners' => null,
-        'owner_id' => null,
+        'owner_ids' => null,
         'task_ids' => null,
         'order_id' => null,
         'status' => null,
@@ -107,11 +105,10 @@ class Deal implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => false,
         'name' => false,
         'value' => false,
-        'contacts' => false,
-        'stage' => false,
+        'contact_ids' => false,
+        'stage_id' => false,
         'stage_assignment_time' => false,
-        'owners' => false,
-        'owner_id' => true,
+        'owner_ids' => true,
         'task_ids' => false,
         'order_id' => true,
         'status' => false,
@@ -209,11 +206,10 @@ class Deal implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'id',
         'name' => 'name',
         'value' => 'value',
-        'contacts' => 'contacts',
-        'stage' => 'stage',
+        'contact_ids' => 'contact_ids',
+        'stage_id' => 'stage_id',
         'stage_assignment_time' => 'stage_assignment_time',
-        'owners' => 'owners',
-        'owner_id' => 'owner_id',
+        'owner_ids' => 'owner_ids',
         'task_ids' => 'task_ids',
         'order_id' => 'order_id',
         'status' => 'status',
@@ -231,11 +227,10 @@ class Deal implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'setId',
         'name' => 'setName',
         'value' => 'setValue',
-        'contacts' => 'setContacts',
-        'stage' => 'setStage',
+        'contact_ids' => 'setContactIds',
+        'stage_id' => 'setStageId',
         'stage_assignment_time' => 'setStageAssignmentTime',
-        'owners' => 'setOwners',
-        'owner_id' => 'setOwnerId',
+        'owner_ids' => 'setOwnerIds',
         'task_ids' => 'setTaskIds',
         'order_id' => 'setOrderId',
         'status' => 'setStatus',
@@ -253,11 +248,10 @@ class Deal implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'getId',
         'name' => 'getName',
         'value' => 'getValue',
-        'contacts' => 'getContacts',
-        'stage' => 'getStage',
+        'contact_ids' => 'getContactIds',
+        'stage_id' => 'getStageId',
         'stage_assignment_time' => 'getStageAssignmentTime',
-        'owners' => 'getOwners',
-        'owner_id' => 'getOwnerId',
+        'owner_ids' => 'getOwnerIds',
         'task_ids' => 'getTaskIds',
         'order_id' => 'getOrderId',
         'status' => 'getStatus',
@@ -326,11 +320,10 @@ class Deal implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('value', $data ?? [], null);
-        $this->setIfExists('contacts', $data ?? [], null);
-        $this->setIfExists('stage', $data ?? [], null);
+        $this->setIfExists('contact_ids', $data ?? [], null);
+        $this->setIfExists('stage_id', $data ?? [], null);
         $this->setIfExists('stage_assignment_time', $data ?? [], null);
-        $this->setIfExists('owners', $data ?? [], null);
-        $this->setIfExists('owner_id', $data ?? [], null);
+        $this->setIfExists('owner_ids', $data ?? [], null);
         $this->setIfExists('task_ids', $data ?? [], null);
         $this->setIfExists('order_id', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
@@ -376,17 +369,14 @@ class Deal implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['value'] === null) {
             $invalidProperties[] = "'value' can't be null";
         }
-        if ($this->container['contacts'] === null) {
-            $invalidProperties[] = "'contacts' can't be null";
+        if ($this->container['contact_ids'] === null) {
+            $invalidProperties[] = "'contact_ids' can't be null";
         }
-        if ($this->container['stage'] === null) {
-            $invalidProperties[] = "'stage' can't be null";
+        if ($this->container['stage_id'] === null) {
+            $invalidProperties[] = "'stage_id' can't be null";
         }
         if ($this->container['stage_assignment_time'] === null) {
             $invalidProperties[] = "'stage_assignment_time' can't be null";
-        }
-        if ($this->container['owners'] === null) {
-            $invalidProperties[] = "'owners' can't be null";
         }
         if ($this->container['task_ids'] === null) {
             $invalidProperties[] = "'task_ids' can't be null";
@@ -496,55 +486,55 @@ class Deal implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets contacts
+     * Gets contact_ids
      *
-     * @return \Keap\Core\V2\Model\DealContact[]
+     * @return string[]
      */
-    public function getContacts()
+    public function getContactIds()
     {
-        return $this->container['contacts'];
+        return $this->container['contact_ids'];
     }
 
     /**
-     * Sets contacts
+     * Sets contact_ids
      *
-     * @param \Keap\Core\V2\Model\DealContact[] $contacts The list of contacts associated with the deal. This field is required.
+     * @param string[] $contact_ids The list of IDs of contacts associated with the deal. This field is required.
      *
      * @return self
      */
-    public function setContacts($contacts)
+    public function setContactIds($contact_ids)
     {
-        if (is_null($contacts)) {
-            throw new \InvalidArgumentException('non-nullable contacts cannot be null');
+        if (is_null($contact_ids)) {
+            throw new \InvalidArgumentException('non-nullable contact_ids cannot be null');
         }
-        $this->container['contacts'] = $contacts;
+        $this->container['contact_ids'] = $contact_ids;
 
         return $this;
     }
 
     /**
-     * Gets stage
+     * Gets stage_id
      *
-     * @return \Keap\Core\V2\Model\Stage
+     * @return string
      */
-    public function getStage()
+    public function getStageId()
     {
-        return $this->container['stage'];
+        return $this->container['stage_id'];
     }
 
     /**
-     * Sets stage
+     * Sets stage_id
      *
-     * @param \Keap\Core\V2\Model\Stage $stage The stage of the deal. This field is required and must be valid.
+     * @param string $stage_id The stage of the deal. This field is required and must be valid.
      *
      * @return self
      */
-    public function setStage($stage)
+    public function setStageId($stage_id)
     {
-        if (is_null($stage)) {
-            throw new \InvalidArgumentException('non-nullable stage cannot be null');
+        if (is_null($stage_id)) {
+            throw new \InvalidArgumentException('non-nullable stage_id cannot be null');
         }
-        $this->container['stage'] = $stage;
+        $this->container['stage_id'] = $stage_id;
 
         return $this;
     }
@@ -577,62 +567,35 @@ class Deal implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets owners
+     * Gets owner_ids
      *
-     * @return \Keap\Core\V2\Model\Owner[]
+     * @return string[]|null
      */
-    public function getOwners()
+    public function getOwnerIds()
     {
-        return $this->container['owners'];
+        return $this->container['owner_ids'];
     }
 
     /**
-     * Sets owners
+     * Sets owner_ids
      *
-     * @param \Keap\Core\V2\Model\Owner[] $owners The list of owners of the deal. This field is required.
+     * @param string[]|null $owner_ids The list of IDs of owners of the deal. This field is required.
      *
      * @return self
      */
-    public function setOwners($owners)
+    public function setOwnerIds($owner_ids)
     {
-        if (is_null($owners)) {
-            throw new \InvalidArgumentException('non-nullable owners cannot be null');
-        }
-        $this->container['owners'] = $owners;
-
-        return $this;
-    }
-
-    /**
-     * Gets owner_id
-     *
-     * @return string|null
-     */
-    public function getOwnerId()
-    {
-        return $this->container['owner_id'];
-    }
-
-    /**
-     * Sets owner_id
-     *
-     * @param string|null $owner_id The ID of the owner of the deal. This field is optional.
-     *
-     * @return self
-     */
-    public function setOwnerId($owner_id)
-    {
-        if (is_null($owner_id)) {
-            array_push($this->openAPINullablesSetToNull, 'owner_id');
+        if (is_null($owner_ids)) {
+            array_push($this->openAPINullablesSetToNull, 'owner_ids');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('owner_id', $nullablesSetToNull);
+            $index = array_search('owner_ids', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['owner_id'] = $owner_id;
+        $this->container['owner_ids'] = $owner_ids;
 
         return $this;
     }

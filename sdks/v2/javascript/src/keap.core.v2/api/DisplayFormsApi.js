@@ -38,18 +38,18 @@ export default class DisplayFormsApi {
     /**
      * Retrieves a specific display form by a pipeline ID.
      * Retrieves a specific display form by a pipeline ID.
-     * @param {String} pipelineId the ID of the pipeline containing the form
+     * @param {String} id the ID of the pipeline containing the form
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/DisplayForm} and HTTP response
      */
-    getDisplayFormWithHttpInfo(pipelineId) {
+    getDisplayFormWithHttpInfo(id) {
       let postBody = null;
-      // verify the required parameter 'pipelineId' is set
-      if (pipelineId === undefined || pipelineId === null) {
-        throw new Error("Missing the required parameter 'pipelineId' when calling getDisplayForm");
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling getDisplayForm");
       }
 
       let pathParams = {
-        'pipeline_id': pipelineId
+        'id': id
       };
       let queryParams = {
       };
@@ -63,7 +63,7 @@ export default class DisplayFormsApi {
       let accepts = ['application/json'];
       let returnType = DisplayForm;
       return this.apiClient.callApi(
-        '/v2/pipelines/{pipeline_id}/form', 'GET',
+        '/v2/pipelines/{id}/form', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null
       );
@@ -72,11 +72,11 @@ export default class DisplayFormsApi {
     /**
      * Retrieves a specific display form by a pipeline ID.
      * Retrieves a specific display form by a pipeline ID.
-     * @param {String} pipelineId the ID of the pipeline containing the form
+     * @param {String} id the ID of the pipeline containing the form
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/DisplayForm}
      */
-    getDisplayForm(pipelineId) {
-      return this.getDisplayFormWithHttpInfo(pipelineId)
+    getDisplayForm(id) {
+      return this.getDisplayFormWithHttpInfo(id)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -86,15 +86,15 @@ export default class DisplayFormsApi {
     /**
      * Updates a display form
      * Updates a display form
-     * @param {String} pipelineId the ID of the pipeline containing the form
+     * @param {String} id the ID of the pipeline containing the form
      * @param {module:keap.core.v2/model/UpdateDisplayFormRequest} updateDisplayFormRequest the request body containing updated display form details
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/DisplayForm} and HTTP response
      */
-    updateDisplayFormWithHttpInfo(pipelineId, updateDisplayFormRequest) {
+    updateDisplayFormWithHttpInfo(id, updateDisplayFormRequest) {
       let postBody = updateDisplayFormRequest;
-      // verify the required parameter 'pipelineId' is set
-      if (pipelineId === undefined || pipelineId === null) {
-        throw new Error("Missing the required parameter 'pipelineId' when calling updateDisplayForm");
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling updateDisplayForm");
       }
       // verify the required parameter 'updateDisplayFormRequest' is set
       if (updateDisplayFormRequest === undefined || updateDisplayFormRequest === null) {
@@ -102,7 +102,7 @@ export default class DisplayFormsApi {
       }
 
       let pathParams = {
-        'pipeline_id': pipelineId
+        'id': id
       };
       let queryParams = {
       };
@@ -116,7 +116,7 @@ export default class DisplayFormsApi {
       let accepts = ['application/json'];
       let returnType = DisplayForm;
       return this.apiClient.callApi(
-        '/v2/pipelines/{pipeline_id}/form', 'PATCH',
+        '/v2/pipelines/{id}/form', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null
       );
@@ -125,12 +125,12 @@ export default class DisplayFormsApi {
     /**
      * Updates a display form
      * Updates a display form
-     * @param {String} pipelineId the ID of the pipeline containing the form
+     * @param {String} id the ID of the pipeline containing the form
      * @param {module:keap.core.v2/model/UpdateDisplayFormRequest} updateDisplayFormRequest the request body containing updated display form details
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/DisplayForm}
      */
-    updateDisplayForm(pipelineId, updateDisplayFormRequest) {
-      return this.updateDisplayFormWithHttpInfo(pipelineId, updateDisplayFormRequest)
+    updateDisplayForm(id, updateDisplayFormRequest) {
+      return this.updateDisplayFormWithHttpInfo(id, updateDisplayFormRequest)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

@@ -21,6 +21,8 @@ import Deal from '../model/Deal';
 import DealListResponse from '../model/DealListResponse';
 import DealNote from '../model/DealNote';
 import DealNoteListResponse from '../model/DealNoteListResponse';
+import MoveDealsForContactsRequest from '../model/MoveDealsForContactsRequest';
+import MoveDealsForContactsResponse from '../model/MoveDealsForContactsResponse';
 import UpdateDealNoteRequest from '../model/UpdateDealNoteRequest';
 
 /**
@@ -289,18 +291,18 @@ export default class DealsApi {
     /**
      * Retrieves a specific deal by its ID.
      * Retrieves a specific deal by its ID.
-     * @param {String} dealId the ID of the deal to retrieve
+     * @param {String} id the ID of the deal to retrieve
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/Deal} and HTTP response
      */
-    getDealWithHttpInfo(dealId) {
+    getDealWithHttpInfo(id) {
       let postBody = null;
-      // verify the required parameter 'dealId' is set
-      if (dealId === undefined || dealId === null) {
-        throw new Error("Missing the required parameter 'dealId' when calling getDeal");
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling getDeal");
       }
 
       let pathParams = {
-        'deal_id': dealId
+        'id': id
       };
       let queryParams = {
       };
@@ -314,7 +316,7 @@ export default class DealsApi {
       let accepts = ['application/json'];
       let returnType = Deal;
       return this.apiClient.callApi(
-        '/v2/deals/{deal_id}', 'GET',
+        '/v2/deals/{id}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null
       );
@@ -323,11 +325,11 @@ export default class DealsApi {
     /**
      * Retrieves a specific deal by its ID.
      * Retrieves a specific deal by its ID.
-     * @param {String} dealId the ID of the deal to retrieve
+     * @param {String} id the ID of the deal to retrieve
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/Deal}
      */
-    getDeal(dealId) {
-      return this.getDealWithHttpInfo(dealId)
+    getDeal(id) {
+      return this.getDealWithHttpInfo(id)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -502,6 +504,53 @@ export default class DealsApi {
      */
     listNotes(id, opts) {
       return this.listNotesWithHttpInfo(id, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Moves the active deals of specified contacts from one stage to another, in bulk.
+     * Moves the active deals of specified contacts from one stage to another, in bulk.
+     * @param {module:keap.core.v2/model/MoveDealsForContactsRequest} moveDealsForContactsRequest the request body containing move details
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/MoveDealsForContactsResponse} and HTTP response
+     */
+    moveDealsForContactsWithHttpInfo(moveDealsForContactsRequest) {
+      let postBody = moveDealsForContactsRequest;
+      // verify the required parameter 'moveDealsForContactsRequest' is set
+      if (moveDealsForContactsRequest === undefined || moveDealsForContactsRequest === null) {
+        throw new Error("Missing the required parameter 'moveDealsForContactsRequest' when calling moveDealsForContacts");
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = [];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = MoveDealsForContactsResponse;
+      return this.apiClient.callApi(
+        '/v2/deals/moveByContactIds', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Moves the active deals of specified contacts from one stage to another, in bulk.
+     * Moves the active deals of specified contacts from one stage to another, in bulk.
+     * @param {module:keap.core.v2/model/MoveDealsForContactsRequest} moveDealsForContactsRequest the request body containing move details
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/MoveDealsForContactsResponse}
+     */
+    moveDealsForContacts(moveDealsForContactsRequest) {
+      return this.moveDealsForContactsWithHttpInfo(moveDealsForContactsRequest)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

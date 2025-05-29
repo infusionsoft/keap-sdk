@@ -4,16 +4,16 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getDisplayForm**](DisplayFormsApi.md#getDisplayForm) | **GET** /v2/pipelines/{pipeline_id}/form | Retrieves a specific display form by a pipeline ID. |
-| [**getDisplayFormWithHttpInfo**](DisplayFormsApi.md#getDisplayFormWithHttpInfo) | **GET** /v2/pipelines/{pipeline_id}/form | Retrieves a specific display form by a pipeline ID. |
-| [**updateDisplayForm**](DisplayFormsApi.md#updateDisplayForm) | **PATCH** /v2/pipelines/{pipeline_id}/form | Updates a display form |
-| [**updateDisplayFormWithHttpInfo**](DisplayFormsApi.md#updateDisplayFormWithHttpInfo) | **PATCH** /v2/pipelines/{pipeline_id}/form | Updates a display form |
+| [**getDisplayForm**](DisplayFormsApi.md#getDisplayForm) | **GET** /v2/pipelines/{id}/form | Retrieves a specific display form by a pipeline ID. |
+| [**getDisplayFormWithHttpInfo**](DisplayFormsApi.md#getDisplayFormWithHttpInfo) | **GET** /v2/pipelines/{id}/form | Retrieves a specific display form by a pipeline ID. |
+| [**updateDisplayForm**](DisplayFormsApi.md#updateDisplayForm) | **PATCH** /v2/pipelines/{id}/form | Updates a display form |
+| [**updateDisplayFormWithHttpInfo**](DisplayFormsApi.md#updateDisplayFormWithHttpInfo) | **PATCH** /v2/pipelines/{id}/form | Updates a display form |
 
 
 
 ## getDisplayForm
 
-> DisplayForm getDisplayForm(pipelineId)
+> DisplayForm getDisplayForm(id)
 
 Retrieves a specific display form by a pipeline ID.
 
@@ -35,9 +35,9 @@ public class Example {
         defaultClient.setBasePath("https://api.keap.com/crm/rest");
 
         DisplayFormsApi apiInstance = new DisplayFormsApi(defaultClient);
-        String pipelineId = "pipelineId_example"; // String | the ID of the pipeline containing the form
+        String id = "id_example"; // String | the ID of the pipeline containing the form
         try {
-            DisplayForm result = apiInstance.getDisplayForm(pipelineId);
+            DisplayForm result = apiInstance.getDisplayForm(id);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DisplayFormsApi#getDisplayForm");
@@ -55,7 +55,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pipelineId** | **String**| the ID of the pipeline containing the form | |
+| **id** | **String**| the ID of the pipeline containing the form | |
 
 ### Return type
 
@@ -78,7 +78,7 @@ No authorization required
 
 ## getDisplayFormWithHttpInfo
 
-> ApiResponse<DisplayForm> getDisplayForm getDisplayFormWithHttpInfo(pipelineId)
+> ApiResponse<DisplayForm> getDisplayForm getDisplayFormWithHttpInfo(id)
 
 Retrieves a specific display form by a pipeline ID.
 
@@ -101,9 +101,9 @@ public class Example {
         defaultClient.setBasePath("https://api.keap.com/crm/rest");
 
         DisplayFormsApi apiInstance = new DisplayFormsApi(defaultClient);
-        String pipelineId = "pipelineId_example"; // String | the ID of the pipeline containing the form
+        String id = "id_example"; // String | the ID of the pipeline containing the form
         try {
-            ApiResponse<DisplayForm> response = apiInstance.getDisplayFormWithHttpInfo(pipelineId);
+            ApiResponse<DisplayForm> response = apiInstance.getDisplayFormWithHttpInfo(id);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -123,7 +123,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pipelineId** | **String**| the ID of the pipeline containing the form | |
+| **id** | **String**| the ID of the pipeline containing the form | |
 
 ### Return type
 
@@ -147,7 +147,7 @@ No authorization required
 
 ## updateDisplayForm
 
-> DisplayForm updateDisplayForm(pipelineId, updateDisplayFormRequest)
+> DisplayForm updateDisplayForm(id, updateDisplayFormRequest)
 
 Updates a display form
 
@@ -169,10 +169,10 @@ public class Example {
         defaultClient.setBasePath("https://api.keap.com/crm/rest");
 
         DisplayFormsApi apiInstance = new DisplayFormsApi(defaultClient);
-        String pipelineId = "pipelineId_example"; // String | the ID of the pipeline containing the form
+        String id = "id_example"; // String | the ID of the pipeline containing the form
         UpdateDisplayFormRequest updateDisplayFormRequest = new UpdateDisplayFormRequest(); // UpdateDisplayFormRequest | the request body containing updated display form details
         try {
-            DisplayForm result = apiInstance.updateDisplayForm(pipelineId, updateDisplayFormRequest);
+            DisplayForm result = apiInstance.updateDisplayForm(id, updateDisplayFormRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DisplayFormsApi#updateDisplayForm");
@@ -190,7 +190,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pipelineId** | **String**| the ID of the pipeline containing the form | |
+| **id** | **String**| the ID of the pipeline containing the form | |
 | **updateDisplayFormRequest** | [**UpdateDisplayFormRequest**](UpdateDisplayFormRequest.md)| the request body containing updated display form details | |
 
 ### Return type
@@ -214,7 +214,7 @@ No authorization required
 
 ## updateDisplayFormWithHttpInfo
 
-> ApiResponse<DisplayForm> updateDisplayForm updateDisplayFormWithHttpInfo(pipelineId, updateDisplayFormRequest)
+> ApiResponse<DisplayForm> updateDisplayForm updateDisplayFormWithHttpInfo(id, updateDisplayFormRequest)
 
 Updates a display form
 
@@ -237,10 +237,10 @@ public class Example {
         defaultClient.setBasePath("https://api.keap.com/crm/rest");
 
         DisplayFormsApi apiInstance = new DisplayFormsApi(defaultClient);
-        String pipelineId = "pipelineId_example"; // String | the ID of the pipeline containing the form
+        String id = "id_example"; // String | the ID of the pipeline containing the form
         UpdateDisplayFormRequest updateDisplayFormRequest = new UpdateDisplayFormRequest(); // UpdateDisplayFormRequest | the request body containing updated display form details
         try {
-            ApiResponse<DisplayForm> response = apiInstance.updateDisplayFormWithHttpInfo(pipelineId, updateDisplayFormRequest);
+            ApiResponse<DisplayForm> response = apiInstance.updateDisplayFormWithHttpInfo(id, updateDisplayFormRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -260,7 +260,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pipelineId** | **String**| the ID of the pipeline containing the form | |
+| **id** | **String**| the ID of the pipeline containing the form | |
 | **updateDisplayFormRequest** | [**UpdateDisplayFormRequest**](UpdateDisplayFormRequest.md)| the request body containing updated display form details | |
 
 ### Return type

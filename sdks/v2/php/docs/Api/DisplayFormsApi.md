@@ -4,14 +4,14 @@ All URIs are relative to https://api.keap.com/crm/rest, except if the operation 
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**getDisplayForm()**](DisplayFormsApi.md#getDisplayForm) | **GET** /v2/pipelines/{pipeline_id}/form | Retrieves a specific display form by a pipeline ID. |
-| [**updateDisplayForm()**](DisplayFormsApi.md#updateDisplayForm) | **PATCH** /v2/pipelines/{pipeline_id}/form | Updates a display form |
+| [**getDisplayForm()**](DisplayFormsApi.md#getDisplayForm) | **GET** /v2/pipelines/{id}/form | Retrieves a specific display form by a pipeline ID. |
+| [**updateDisplayForm()**](DisplayFormsApi.md#updateDisplayForm) | **PATCH** /v2/pipelines/{id}/form | Updates a display form |
 
 
 ## `getDisplayForm()`
 
 ```php
-getDisplayForm($pipeline_id): \Keap\Core\V2\Model\DisplayForm
+getDisplayForm($id): \Keap\Core\V2\Model\DisplayForm
 ```
 
 Retrieves a specific display form by a pipeline ID.
@@ -30,10 +30,10 @@ $apiInstance = new Keap\Core\V2\Api\DisplayFormsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$pipeline_id = 'pipeline_id_example'; // string | the ID of the pipeline containing the form
+$id = 'id_example'; // string | the ID of the pipeline containing the form
 
 try {
-    $result = $apiInstance->getDisplayForm($pipeline_id);
+    $result = $apiInstance->getDisplayForm($id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DisplayFormsApi->getDisplayForm: ', $e->getMessage(), PHP_EOL;
@@ -44,7 +44,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **pipeline_id** | **string**| the ID of the pipeline containing the form | |
+| **id** | **string**| the ID of the pipeline containing the form | |
 
 ### Return type
 
@@ -66,7 +66,7 @@ No authorization required
 ## `updateDisplayForm()`
 
 ```php
-updateDisplayForm($pipeline_id, $update_display_form_request): \Keap\Core\V2\Model\DisplayForm
+updateDisplayForm($id, $update_display_form_request): \Keap\Core\V2\Model\DisplayForm
 ```
 
 Updates a display form
@@ -85,11 +85,11 @@ $apiInstance = new Keap\Core\V2\Api\DisplayFormsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$pipeline_id = 'pipeline_id_example'; // string | the ID of the pipeline containing the form
+$id = 'id_example'; // string | the ID of the pipeline containing the form
 $update_display_form_request = new \Keap\Core\V2\Model\UpdateDisplayFormRequest(); // \Keap\Core\V2\Model\UpdateDisplayFormRequest | the request body containing updated display form details
 
 try {
-    $result = $apiInstance->updateDisplayForm($pipeline_id, $update_display_form_request);
+    $result = $apiInstance->updateDisplayForm($id, $update_display_form_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DisplayFormsApi->updateDisplayForm: ', $e->getMessage(), PHP_EOL;
@@ -100,7 +100,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **pipeline_id** | **string**| the ID of the pipeline containing the form | |
+| **id** | **string**| the ID of the pipeline containing the form | |
 | **update_display_form_request** | [**\Keap\Core\V2\Model\UpdateDisplayFormRequest**](../Model/UpdateDisplayFormRequest.md)| the request body containing updated display form details | |
 
 ### Return type

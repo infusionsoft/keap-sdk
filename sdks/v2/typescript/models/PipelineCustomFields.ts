@@ -18,6 +18,10 @@ import { HttpFile } from '../http/http';
 */
 export class PipelineCustomFields {
     /**
+    * Token for the next page of results.
+    */
+    'nextPageToken'?: string;
+    /**
     * The list of custom fields.
     */
     'customFields': Array<PipelineCustomField>;
@@ -27,6 +31,12 @@ export class PipelineCustomFields {
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "nextPageToken",
+            "baseName": "next_page_token",
+            "type": "string",
+            "format": ""
+        },
         {
             "name": "customFields",
             "baseName": "custom_fields",

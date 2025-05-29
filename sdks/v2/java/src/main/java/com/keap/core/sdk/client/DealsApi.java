@@ -25,6 +25,8 @@ import com.keap.core.sdk.model.Deal;
 import com.keap.core.sdk.model.DealListResponse;
 import com.keap.core.sdk.model.DealNote;
 import com.keap.core.sdk.model.DealNoteListResponse;
+import com.keap.core.sdk.model.MoveDealsForContactsRequest;
+import com.keap.core.sdk.model.MoveDealsForContactsResponse;
 import com.keap.core.sdk.model.UpdateDealNoteRequest;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -561,24 +563,24 @@ import io.github.resilience4j.retry.Retry;
   /**
    * Retrieves a specific deal by its ID.
    * Retrieves a specific deal by its ID.
-   * @param dealId the ID of the deal to retrieve (required)
+   * @param id the ID of the deal to retrieve (required)
    * @return Deal
    * @throws ApiException if fails to make API call
    */
-  public Deal getDeal(String dealId) throws ApiException {
-    ApiResponse<Deal> localVarResponse = getDealWithHttpInfo(dealId);
+  public Deal getDeal(String id) throws ApiException {
+    ApiResponse<Deal> localVarResponse = getDealWithHttpInfo(id);
     return localVarResponse.getData();
   }
 
   /**
    * Retrieves a specific deal by its ID.
    * Retrieves a specific deal by its ID.
-   * @param dealId the ID of the deal to retrieve (required)
+   * @param id the ID of the deal to retrieve (required)
    * @return ApiResponse&lt;Deal&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Deal> getDealWithHttpInfo(String dealId) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = getDealRequestBuilder(dealId);
+  public ApiResponse<Deal> getDealWithHttpInfo(String id) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getDealRequestBuilder(id);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
       memberVarHttpClient.send(
@@ -618,16 +620,16 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder getDealRequestBuilder(String dealId) throws ApiException {
-    // verify the required parameter 'dealId' is set
-    if (dealId == null) {
-      throw new ApiException(400, "Missing the required parameter 'dealId' when calling getDeal");
+  private HttpRequest.Builder getDealRequestBuilder(String id) throws ApiException {
+    // verify the required parameter 'id' is set
+    if (id == null) {
+      throw new ApiException(400, "Missing the required parameter 'id' when calling getDeal");
     }
 
     HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
 
-    String localVarPath = "/v2/deals/{deal_id}"
-        .replace("{deal_id}", ApiClient.urlEncode(dealId.toString()));
+    String localVarPath = "/v2/deals/{id}"
+        .replace("{id}", ApiClient.urlEncode(id.toString()));
 
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
 
@@ -951,6 +953,97 @@ import io.github.resilience4j.retry.Retry;
     localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
 
     localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Moves the active deals of specified contacts from one stage to another, in bulk.
+   * Moves the active deals of specified contacts from one stage to another, in bulk.
+   * @param moveDealsForContactsRequest the request body containing move details (required)
+   * @return MoveDealsForContactsResponse
+   * @throws ApiException if fails to make API call
+   */
+  public MoveDealsForContactsResponse moveDealsForContacts(MoveDealsForContactsRequest moveDealsForContactsRequest) throws ApiException {
+    ApiResponse<MoveDealsForContactsResponse> localVarResponse = moveDealsForContactsWithHttpInfo(moveDealsForContactsRequest);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Moves the active deals of specified contacts from one stage to another, in bulk.
+   * Moves the active deals of specified contacts from one stage to another, in bulk.
+   * @param moveDealsForContactsRequest the request body containing move details (required)
+   * @return ApiResponse&lt;MoveDealsForContactsResponse&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<MoveDealsForContactsResponse> moveDealsForContactsWithHttpInfo(MoveDealsForContactsRequest moveDealsForContactsRequest) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = moveDealsForContactsRequestBuilder(moveDealsForContactsRequest);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("moveDealsForContacts", localVarResponse);
+        }
+        return new ApiResponse<MoveDealsForContactsResponse>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<MoveDealsForContactsResponse>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder moveDealsForContactsRequestBuilder(MoveDealsForContactsRequest moveDealsForContactsRequest) throws ApiException {
+    // verify the required parameter 'moveDealsForContactsRequest' is set
+    if (moveDealsForContactsRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'moveDealsForContactsRequest' when calling moveDealsForContacts");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/v2/deals/moveByContactIds";
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(moveDealsForContactsRequest);
+      localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
     if (memberVarReadTimeout != null) {
       localVarRequestBuilder.timeout(memberVarReadTimeout);
     }

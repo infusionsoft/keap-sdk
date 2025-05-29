@@ -42,7 +42,7 @@ class DisplayFormsApi:
     @validate_call
     def get_display_form(
         self,
-        pipeline_id: Annotated[StrictStr, Field(description="the ID of the pipeline containing the form")],
+        id: Annotated[StrictStr, Field(description="the ID of the pipeline containing the form")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -60,8 +60,8 @@ class DisplayFormsApi:
 
         Retrieves a specific display form by a pipeline ID.
 
-        :param pipeline_id: the ID of the pipeline containing the form (required)
-        :type pipeline_id: str
+        :param id: the ID of the pipeline containing the form (required)
+        :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -85,7 +85,7 @@ class DisplayFormsApi:
         """ # noqa: E501
 
         _param = self._get_display_form_serialize(
-            pipeline_id=pipeline_id,
+            id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -109,7 +109,7 @@ class DisplayFormsApi:
     @validate_call
     def get_display_form_with_http_info(
         self,
-        pipeline_id: Annotated[StrictStr, Field(description="the ID of the pipeline containing the form")],
+        id: Annotated[StrictStr, Field(description="the ID of the pipeline containing the form")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -127,8 +127,8 @@ class DisplayFormsApi:
 
         Retrieves a specific display form by a pipeline ID.
 
-        :param pipeline_id: the ID of the pipeline containing the form (required)
-        :type pipeline_id: str
+        :param id: the ID of the pipeline containing the form (required)
+        :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -152,7 +152,7 @@ class DisplayFormsApi:
         """ # noqa: E501
 
         _param = self._get_display_form_serialize(
-            pipeline_id=pipeline_id,
+            id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -176,7 +176,7 @@ class DisplayFormsApi:
     @validate_call
     def get_display_form_without_preload_content(
         self,
-        pipeline_id: Annotated[StrictStr, Field(description="the ID of the pipeline containing the form")],
+        id: Annotated[StrictStr, Field(description="the ID of the pipeline containing the form")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -194,8 +194,8 @@ class DisplayFormsApi:
 
         Retrieves a specific display form by a pipeline ID.
 
-        :param pipeline_id: the ID of the pipeline containing the form (required)
-        :type pipeline_id: str
+        :param id: the ID of the pipeline containing the form (required)
+        :type id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -219,7 +219,7 @@ class DisplayFormsApi:
         """ # noqa: E501
 
         _param = self._get_display_form_serialize(
-            pipeline_id=pipeline_id,
+            id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -238,7 +238,7 @@ class DisplayFormsApi:
 
     def _get_display_form_serialize(
         self,
-        pipeline_id,
+        id,
         _request_auth,
         _content_type,
         _headers,
@@ -260,8 +260,8 @@ class DisplayFormsApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if pipeline_id is not None:
-            _path_params['pipeline_id'] = pipeline_id
+        if id is not None:
+            _path_params['id'] = id
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -283,7 +283,7 @@ class DisplayFormsApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/v2/pipelines/{pipeline_id}/form',
+            resource_path='/v2/pipelines/{id}/form',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -302,7 +302,7 @@ class DisplayFormsApi:
     @validate_call
     def update_display_form(
         self,
-        pipeline_id: Annotated[StrictStr, Field(description="the ID of the pipeline containing the form")],
+        id: Annotated[StrictStr, Field(description="the ID of the pipeline containing the form")],
         update_display_form_request: Annotated[UpdateDisplayFormRequest, Field(description="the request body containing updated display form details")],
         _request_timeout: Union[
             None,
@@ -321,8 +321,8 @@ class DisplayFormsApi:
 
         Updates a display form
 
-        :param pipeline_id: the ID of the pipeline containing the form (required)
-        :type pipeline_id: str
+        :param id: the ID of the pipeline containing the form (required)
+        :type id: str
         :param update_display_form_request: the request body containing updated display form details (required)
         :type update_display_form_request: UpdateDisplayFormRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -348,7 +348,7 @@ class DisplayFormsApi:
         """ # noqa: E501
 
         _param = self._update_display_form_serialize(
-            pipeline_id=pipeline_id,
+            id=id,
             update_display_form_request=update_display_form_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -373,7 +373,7 @@ class DisplayFormsApi:
     @validate_call
     def update_display_form_with_http_info(
         self,
-        pipeline_id: Annotated[StrictStr, Field(description="the ID of the pipeline containing the form")],
+        id: Annotated[StrictStr, Field(description="the ID of the pipeline containing the form")],
         update_display_form_request: Annotated[UpdateDisplayFormRequest, Field(description="the request body containing updated display form details")],
         _request_timeout: Union[
             None,
@@ -392,8 +392,8 @@ class DisplayFormsApi:
 
         Updates a display form
 
-        :param pipeline_id: the ID of the pipeline containing the form (required)
-        :type pipeline_id: str
+        :param id: the ID of the pipeline containing the form (required)
+        :type id: str
         :param update_display_form_request: the request body containing updated display form details (required)
         :type update_display_form_request: UpdateDisplayFormRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -419,7 +419,7 @@ class DisplayFormsApi:
         """ # noqa: E501
 
         _param = self._update_display_form_serialize(
-            pipeline_id=pipeline_id,
+            id=id,
             update_display_form_request=update_display_form_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -444,7 +444,7 @@ class DisplayFormsApi:
     @validate_call
     def update_display_form_without_preload_content(
         self,
-        pipeline_id: Annotated[StrictStr, Field(description="the ID of the pipeline containing the form")],
+        id: Annotated[StrictStr, Field(description="the ID of the pipeline containing the form")],
         update_display_form_request: Annotated[UpdateDisplayFormRequest, Field(description="the request body containing updated display form details")],
         _request_timeout: Union[
             None,
@@ -463,8 +463,8 @@ class DisplayFormsApi:
 
         Updates a display form
 
-        :param pipeline_id: the ID of the pipeline containing the form (required)
-        :type pipeline_id: str
+        :param id: the ID of the pipeline containing the form (required)
+        :type id: str
         :param update_display_form_request: the request body containing updated display form details (required)
         :type update_display_form_request: UpdateDisplayFormRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -490,7 +490,7 @@ class DisplayFormsApi:
         """ # noqa: E501
 
         _param = self._update_display_form_serialize(
-            pipeline_id=pipeline_id,
+            id=id,
             update_display_form_request=update_display_form_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -510,7 +510,7 @@ class DisplayFormsApi:
 
     def _update_display_form_serialize(
         self,
-        pipeline_id,
+        id,
         update_display_form_request,
         _request_auth,
         _content_type,
@@ -533,8 +533,8 @@ class DisplayFormsApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if pipeline_id is not None:
-            _path_params['pipeline_id'] = pipeline_id
+        if id is not None:
+            _path_params['id'] = id
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -571,7 +571,7 @@ class DisplayFormsApi:
 
         return self.api_client.param_serialize(
             method='PATCH',
-            resource_path='/v2/pipelines/{pipeline_id}/form',
+            resource_path='/v2/pipelines/{id}/form',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

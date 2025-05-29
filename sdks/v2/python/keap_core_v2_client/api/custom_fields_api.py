@@ -17,6 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictStr
+from typing import Optional
 from typing_extensions import Annotated
 from keap_core_v2_client.models.pipeline_custom_field import PipelineCustomField
 from keap_core_v2_client.models.pipeline_custom_fields import PipelineCustomFields
@@ -43,6 +44,10 @@ class CustomFieldsApi:
     @validate_call
     def get_custom_fields(
         self,
+        filter: Optional[StrictStr] = None,
+        page_token: Optional[StrictStr] = None,
+        order_by: Optional[StrictStr] = None,
+        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -60,6 +65,14 @@ class CustomFieldsApi:
 
         Retrieves a list of custom fields in a tenant.
 
+        :param filter:
+        :type filter: str
+        :param page_token:
+        :type page_token: str
+        :param order_by:
+        :type order_by: str
+        :param page_size:
+        :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -83,6 +96,10 @@ class CustomFieldsApi:
         """ # noqa: E501
 
         _param = self._get_custom_fields_serialize(
+            filter=filter,
+            page_token=page_token,
+            order_by=order_by,
+            page_size=page_size,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -106,6 +123,10 @@ class CustomFieldsApi:
     @validate_call
     def get_custom_fields_with_http_info(
         self,
+        filter: Optional[StrictStr] = None,
+        page_token: Optional[StrictStr] = None,
+        order_by: Optional[StrictStr] = None,
+        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -123,6 +144,14 @@ class CustomFieldsApi:
 
         Retrieves a list of custom fields in a tenant.
 
+        :param filter:
+        :type filter: str
+        :param page_token:
+        :type page_token: str
+        :param order_by:
+        :type order_by: str
+        :param page_size:
+        :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -146,6 +175,10 @@ class CustomFieldsApi:
         """ # noqa: E501
 
         _param = self._get_custom_fields_serialize(
+            filter=filter,
+            page_token=page_token,
+            order_by=order_by,
+            page_size=page_size,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -169,6 +202,10 @@ class CustomFieldsApi:
     @validate_call
     def get_custom_fields_without_preload_content(
         self,
+        filter: Optional[StrictStr] = None,
+        page_token: Optional[StrictStr] = None,
+        order_by: Optional[StrictStr] = None,
+        page_size: Optional[Annotated[int, Field(le=1000, strict=True, ge=1)]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -186,6 +223,14 @@ class CustomFieldsApi:
 
         Retrieves a list of custom fields in a tenant.
 
+        :param filter:
+        :type filter: str
+        :param page_token:
+        :type page_token: str
+        :param order_by:
+        :type order_by: str
+        :param page_size:
+        :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -209,6 +254,10 @@ class CustomFieldsApi:
         """ # noqa: E501
 
         _param = self._get_custom_fields_serialize(
+            filter=filter,
+            page_token=page_token,
+            order_by=order_by,
+            page_size=page_size,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -227,6 +276,10 @@ class CustomFieldsApi:
 
     def _get_custom_fields_serialize(
         self,
+        filter,
+        page_token,
+        order_by,
+        page_size,
         _request_auth,
         _content_type,
         _headers,
@@ -249,6 +302,22 @@ class CustomFieldsApi:
 
         # process the path parameters
         # process the query parameters
+        if filter is not None:
+            
+            _query_params.append(('filter', filter))
+            
+        if page_token is not None:
+            
+            _query_params.append(('page_token', page_token))
+            
+        if order_by is not None:
+            
+            _query_params.append(('order_by', order_by))
+            
+        if page_size is not None:
+            
+            _query_params.append(('page_size', page_size))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -288,7 +357,7 @@ class CustomFieldsApi:
     @validate_call
     def update_custom_field(
         self,
-        custom_field_id: Annotated[StrictStr, Field(description="the identifier of the custom field to update")],
+        id: Annotated[StrictStr, Field(description="the identifier of the custom field to update")],
         update_custom_field_request: Annotated[UpdateCustomFieldRequest, Field(description="the request body containing updated custom field details")],
         _request_timeout: Union[
             None,
@@ -307,8 +376,8 @@ class CustomFieldsApi:
 
         Updates a custom field
 
-        :param custom_field_id: the identifier of the custom field to update (required)
-        :type custom_field_id: str
+        :param id: the identifier of the custom field to update (required)
+        :type id: str
         :param update_custom_field_request: the request body containing updated custom field details (required)
         :type update_custom_field_request: UpdateCustomFieldRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -334,7 +403,7 @@ class CustomFieldsApi:
         """ # noqa: E501
 
         _param = self._update_custom_field_serialize(
-            custom_field_id=custom_field_id,
+            id=id,
             update_custom_field_request=update_custom_field_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -359,7 +428,7 @@ class CustomFieldsApi:
     @validate_call
     def update_custom_field_with_http_info(
         self,
-        custom_field_id: Annotated[StrictStr, Field(description="the identifier of the custom field to update")],
+        id: Annotated[StrictStr, Field(description="the identifier of the custom field to update")],
         update_custom_field_request: Annotated[UpdateCustomFieldRequest, Field(description="the request body containing updated custom field details")],
         _request_timeout: Union[
             None,
@@ -378,8 +447,8 @@ class CustomFieldsApi:
 
         Updates a custom field
 
-        :param custom_field_id: the identifier of the custom field to update (required)
-        :type custom_field_id: str
+        :param id: the identifier of the custom field to update (required)
+        :type id: str
         :param update_custom_field_request: the request body containing updated custom field details (required)
         :type update_custom_field_request: UpdateCustomFieldRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -405,7 +474,7 @@ class CustomFieldsApi:
         """ # noqa: E501
 
         _param = self._update_custom_field_serialize(
-            custom_field_id=custom_field_id,
+            id=id,
             update_custom_field_request=update_custom_field_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -430,7 +499,7 @@ class CustomFieldsApi:
     @validate_call
     def update_custom_field_without_preload_content(
         self,
-        custom_field_id: Annotated[StrictStr, Field(description="the identifier of the custom field to update")],
+        id: Annotated[StrictStr, Field(description="the identifier of the custom field to update")],
         update_custom_field_request: Annotated[UpdateCustomFieldRequest, Field(description="the request body containing updated custom field details")],
         _request_timeout: Union[
             None,
@@ -449,8 +518,8 @@ class CustomFieldsApi:
 
         Updates a custom field
 
-        :param custom_field_id: the identifier of the custom field to update (required)
-        :type custom_field_id: str
+        :param id: the identifier of the custom field to update (required)
+        :type id: str
         :param update_custom_field_request: the request body containing updated custom field details (required)
         :type update_custom_field_request: UpdateCustomFieldRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -476,7 +545,7 @@ class CustomFieldsApi:
         """ # noqa: E501
 
         _param = self._update_custom_field_serialize(
-            custom_field_id=custom_field_id,
+            id=id,
             update_custom_field_request=update_custom_field_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -496,7 +565,7 @@ class CustomFieldsApi:
 
     def _update_custom_field_serialize(
         self,
-        custom_field_id,
+        id,
         update_custom_field_request,
         _request_auth,
         _content_type,
@@ -519,8 +588,8 @@ class CustomFieldsApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if custom_field_id is not None:
-            _path_params['custom_field_id'] = custom_field_id
+        if id is not None:
+            _path_params['id'] = id
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -557,7 +626,7 @@ class CustomFieldsApi:
 
         return self.api_client.param_serialize(
             method='PATCH',
-            resource_path='/v2/customFields/{custom_field_id}',
+            resource_path='/v2/customFields/{id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

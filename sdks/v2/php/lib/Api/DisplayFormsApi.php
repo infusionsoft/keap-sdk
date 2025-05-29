@@ -133,16 +133,16 @@ class DisplayFormsApi
      *
      * Retrieves a specific display form by a pipeline ID.
      *
-     * @param  string $pipeline_id the ID of the pipeline containing the form (required)
+     * @param  string $id the ID of the pipeline containing the form (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDisplayForm'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Keap\Core\V2\Model\DisplayForm
      */
-    public function getDisplayForm($pipeline_id, string $contentType = self::contentTypes['getDisplayForm'][0])
+    public function getDisplayForm($id, string $contentType = self::contentTypes['getDisplayForm'][0])
     {
-        list($response) = $this->getDisplayFormWithHttpInfo($pipeline_id, $contentType);
+        list($response) = $this->getDisplayFormWithHttpInfo($id, $contentType);
         return $response;
     }
 
@@ -151,16 +151,16 @@ class DisplayFormsApi
      *
      * Retrieves a specific display form by a pipeline ID.
      *
-     * @param  string $pipeline_id the ID of the pipeline containing the form (required)
+     * @param  string $id the ID of the pipeline containing the form (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDisplayForm'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Keap\Core\V2\Model\DisplayForm, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getDisplayFormWithHttpInfo($pipeline_id, string $contentType = self::contentTypes['getDisplayForm'][0])
+    public function getDisplayFormWithHttpInfo($id, string $contentType = self::contentTypes['getDisplayForm'][0])
     {
-        $request = $this->getDisplayFormRequest($pipeline_id, $contentType);
+        $request = $this->getDisplayFormRequest($id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -236,15 +236,15 @@ class DisplayFormsApi
      *
      * Retrieves a specific display form by a pipeline ID.
      *
-     * @param  string $pipeline_id the ID of the pipeline containing the form (required)
+     * @param  string $id the ID of the pipeline containing the form (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDisplayForm'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getDisplayFormAsync($pipeline_id, string $contentType = self::contentTypes['getDisplayForm'][0])
+    public function getDisplayFormAsync($id, string $contentType = self::contentTypes['getDisplayForm'][0])
     {
-        return $this->getDisplayFormAsyncWithHttpInfo($pipeline_id, $contentType)
+        return $this->getDisplayFormAsyncWithHttpInfo($id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -257,16 +257,16 @@ class DisplayFormsApi
      *
      * Retrieves a specific display form by a pipeline ID.
      *
-     * @param  string $pipeline_id the ID of the pipeline containing the form (required)
+     * @param  string $id the ID of the pipeline containing the form (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDisplayForm'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getDisplayFormAsyncWithHttpInfo($pipeline_id, string $contentType = self::contentTypes['getDisplayForm'][0])
+    public function getDisplayFormAsyncWithHttpInfo($id, string $contentType = self::contentTypes['getDisplayForm'][0])
     {
         $returnType = '\Keap\Core\V2\Model\DisplayForm';
-        $request = $this->getDisplayFormRequest($pipeline_id, $contentType);
+        $request = $this->getDisplayFormRequest($id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -307,24 +307,24 @@ class DisplayFormsApi
     /**
      * Create request for operation 'getDisplayForm'
      *
-     * @param  string $pipeline_id the ID of the pipeline containing the form (required)
+     * @param  string $id the ID of the pipeline containing the form (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDisplayForm'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getDisplayFormRequest($pipeline_id, string $contentType = self::contentTypes['getDisplayForm'][0])
+    public function getDisplayFormRequest($id, string $contentType = self::contentTypes['getDisplayForm'][0])
     {
 
-        // verify the required parameter 'pipeline_id' is set
-        if ($pipeline_id === null || (is_array($pipeline_id) && count($pipeline_id) === 0)) {
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $pipeline_id when calling getDisplayForm'
+                'Missing the required parameter $id when calling getDisplayForm'
             );
         }
 
 
-        $resourcePath = '/v2/pipelines/{pipeline_id}/form';
+        $resourcePath = '/v2/pipelines/{id}/form';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -334,10 +334,10 @@ class DisplayFormsApi
 
 
         // path params
-        if ($pipeline_id !== null) {
+        if ($id !== null) {
             $resourcePath = str_replace(
-                '{' . 'pipeline_id' . '}',
-                ObjectSerializer::toPathValue($pipeline_id),
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
                 $resourcePath
             );
         }
@@ -401,7 +401,7 @@ class DisplayFormsApi
      *
      * Updates a display form
      *
-     * @param  string $pipeline_id the ID of the pipeline containing the form (required)
+     * @param  string $id the ID of the pipeline containing the form (required)
      * @param  \Keap\Core\V2\Model\UpdateDisplayFormRequest $update_display_form_request the request body containing updated display form details (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateDisplayForm'] to see the possible values for this operation
      *
@@ -409,9 +409,9 @@ class DisplayFormsApi
      * @throws \InvalidArgumentException
      * @return \Keap\Core\V2\Model\DisplayForm
      */
-    public function updateDisplayForm($pipeline_id, $update_display_form_request, string $contentType = self::contentTypes['updateDisplayForm'][0])
+    public function updateDisplayForm($id, $update_display_form_request, string $contentType = self::contentTypes['updateDisplayForm'][0])
     {
-        list($response) = $this->updateDisplayFormWithHttpInfo($pipeline_id, $update_display_form_request, $contentType);
+        list($response) = $this->updateDisplayFormWithHttpInfo($id, $update_display_form_request, $contentType);
         return $response;
     }
 
@@ -420,7 +420,7 @@ class DisplayFormsApi
      *
      * Updates a display form
      *
-     * @param  string $pipeline_id the ID of the pipeline containing the form (required)
+     * @param  string $id the ID of the pipeline containing the form (required)
      * @param  \Keap\Core\V2\Model\UpdateDisplayFormRequest $update_display_form_request the request body containing updated display form details (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateDisplayForm'] to see the possible values for this operation
      *
@@ -428,9 +428,9 @@ class DisplayFormsApi
      * @throws \InvalidArgumentException
      * @return array of \Keap\Core\V2\Model\DisplayForm, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateDisplayFormWithHttpInfo($pipeline_id, $update_display_form_request, string $contentType = self::contentTypes['updateDisplayForm'][0])
+    public function updateDisplayFormWithHttpInfo($id, $update_display_form_request, string $contentType = self::contentTypes['updateDisplayForm'][0])
     {
-        $request = $this->updateDisplayFormRequest($pipeline_id, $update_display_form_request, $contentType);
+        $request = $this->updateDisplayFormRequest($id, $update_display_form_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -506,16 +506,16 @@ class DisplayFormsApi
      *
      * Updates a display form
      *
-     * @param  string $pipeline_id the ID of the pipeline containing the form (required)
+     * @param  string $id the ID of the pipeline containing the form (required)
      * @param  \Keap\Core\V2\Model\UpdateDisplayFormRequest $update_display_form_request the request body containing updated display form details (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateDisplayForm'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateDisplayFormAsync($pipeline_id, $update_display_form_request, string $contentType = self::contentTypes['updateDisplayForm'][0])
+    public function updateDisplayFormAsync($id, $update_display_form_request, string $contentType = self::contentTypes['updateDisplayForm'][0])
     {
-        return $this->updateDisplayFormAsyncWithHttpInfo($pipeline_id, $update_display_form_request, $contentType)
+        return $this->updateDisplayFormAsyncWithHttpInfo($id, $update_display_form_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -528,17 +528,17 @@ class DisplayFormsApi
      *
      * Updates a display form
      *
-     * @param  string $pipeline_id the ID of the pipeline containing the form (required)
+     * @param  string $id the ID of the pipeline containing the form (required)
      * @param  \Keap\Core\V2\Model\UpdateDisplayFormRequest $update_display_form_request the request body containing updated display form details (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateDisplayForm'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateDisplayFormAsyncWithHttpInfo($pipeline_id, $update_display_form_request, string $contentType = self::contentTypes['updateDisplayForm'][0])
+    public function updateDisplayFormAsyncWithHttpInfo($id, $update_display_form_request, string $contentType = self::contentTypes['updateDisplayForm'][0])
     {
         $returnType = '\Keap\Core\V2\Model\DisplayForm';
-        $request = $this->updateDisplayFormRequest($pipeline_id, $update_display_form_request, $contentType);
+        $request = $this->updateDisplayFormRequest($id, $update_display_form_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -579,20 +579,20 @@ class DisplayFormsApi
     /**
      * Create request for operation 'updateDisplayForm'
      *
-     * @param  string $pipeline_id the ID of the pipeline containing the form (required)
+     * @param  string $id the ID of the pipeline containing the form (required)
      * @param  \Keap\Core\V2\Model\UpdateDisplayFormRequest $update_display_form_request the request body containing updated display form details (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateDisplayForm'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateDisplayFormRequest($pipeline_id, $update_display_form_request, string $contentType = self::contentTypes['updateDisplayForm'][0])
+    public function updateDisplayFormRequest($id, $update_display_form_request, string $contentType = self::contentTypes['updateDisplayForm'][0])
     {
 
-        // verify the required parameter 'pipeline_id' is set
-        if ($pipeline_id === null || (is_array($pipeline_id) && count($pipeline_id) === 0)) {
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $pipeline_id when calling updateDisplayForm'
+                'Missing the required parameter $id when calling updateDisplayForm'
             );
         }
 
@@ -604,7 +604,7 @@ class DisplayFormsApi
         }
 
 
-        $resourcePath = '/v2/pipelines/{pipeline_id}/form';
+        $resourcePath = '/v2/pipelines/{id}/form';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -614,10 +614,10 @@ class DisplayFormsApi
 
 
         // path params
-        if ($pipeline_id !== null) {
+        if ($id !== null) {
             $resourcePath = str_replace(
-                '{' . 'pipeline_id' . '}',
-                ObjectSerializer::toPathValue($pipeline_id),
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
                 $resourcePath
             );
         }

@@ -14,14 +14,16 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 | [**deleteDealWithHttpInfo**](DealsApi.md#deleteDealWithHttpInfo) | **DELETE** /v2/deals/{id} | Deletes a specific deal by its ID. |
 | [**deleteNote**](DealsApi.md#deleteNote) | **DELETE** /v2/deals/-/notes/{note_id} | Deletes a specific deal note by its ID. |
 | [**deleteNoteWithHttpInfo**](DealsApi.md#deleteNoteWithHttpInfo) | **DELETE** /v2/deals/-/notes/{note_id} | Deletes a specific deal note by its ID. |
-| [**getDeal**](DealsApi.md#getDeal) | **GET** /v2/deals/{deal_id} | Retrieves a specific deal by its ID. |
-| [**getDealWithHttpInfo**](DealsApi.md#getDealWithHttpInfo) | **GET** /v2/deals/{deal_id} | Retrieves a specific deal by its ID. |
+| [**getDeal**](DealsApi.md#getDeal) | **GET** /v2/deals/{id} | Retrieves a specific deal by its ID. |
+| [**getDealWithHttpInfo**](DealsApi.md#getDealWithHttpInfo) | **GET** /v2/deals/{id} | Retrieves a specific deal by its ID. |
 | [**getNote**](DealsApi.md#getNote) | **GET** /v2/deals/-/notes/{note_id} | Retrieves a specific deal note by its ID. |
 | [**getNoteWithHttpInfo**](DealsApi.md#getNoteWithHttpInfo) | **GET** /v2/deals/-/notes/{note_id} | Retrieves a specific deal note by its ID. |
 | [**listDeals**](DealsApi.md#listDeals) | **GET** /v2/deals/-/contacts/{contact_id} | Lists all deals associated with a specific contact. |
 | [**listDealsWithHttpInfo**](DealsApi.md#listDealsWithHttpInfo) | **GET** /v2/deals/-/contacts/{contact_id} | Lists all deals associated with a specific contact. |
 | [**listNotes**](DealsApi.md#listNotes) | **GET** /v2/deals/{id}/notes | Lists all notes associated with a specific deal. |
 | [**listNotesWithHttpInfo**](DealsApi.md#listNotesWithHttpInfo) | **GET** /v2/deals/{id}/notes | Lists all notes associated with a specific deal. |
+| [**moveDealsForContacts**](DealsApi.md#moveDealsForContacts) | **POST** /v2/deals/moveByContactIds | Moves the active deals of specified contacts from one stage to another, in bulk. |
+| [**moveDealsForContactsWithHttpInfo**](DealsApi.md#moveDealsForContactsWithHttpInfo) | **POST** /v2/deals/moveByContactIds | Moves the active deals of specified contacts from one stage to another, in bulk. |
 | [**updateNote**](DealsApi.md#updateNote) | **PATCH** /v2/deals/-/notes/{note_id} | Updates a specific deal note by its ID. |
 | [**updateNoteWithHttpInfo**](DealsApi.md#updateNoteWithHttpInfo) | **PATCH** /v2/deals/-/notes/{note_id} | Updates a specific deal note by its ID. |
 
@@ -699,7 +701,7 @@ No authorization required
 
 ## getDeal
 
-> Deal getDeal(dealId)
+> Deal getDeal(id)
 
 Retrieves a specific deal by its ID.
 
@@ -721,9 +723,9 @@ public class Example {
         defaultClient.setBasePath("https://api.keap.com/crm/rest");
 
         DealsApi apiInstance = new DealsApi(defaultClient);
-        String dealId = "dealId_example"; // String | the ID of the deal to retrieve
+        String id = "id_example"; // String | the ID of the deal to retrieve
         try {
-            Deal result = apiInstance.getDeal(dealId);
+            Deal result = apiInstance.getDeal(id);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DealsApi#getDeal");
@@ -741,7 +743,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **dealId** | **String**| the ID of the deal to retrieve | |
+| **id** | **String**| the ID of the deal to retrieve | |
 
 ### Return type
 
@@ -764,7 +766,7 @@ No authorization required
 
 ## getDealWithHttpInfo
 
-> ApiResponse<Deal> getDeal getDealWithHttpInfo(dealId)
+> ApiResponse<Deal> getDeal getDealWithHttpInfo(id)
 
 Retrieves a specific deal by its ID.
 
@@ -787,9 +789,9 @@ public class Example {
         defaultClient.setBasePath("https://api.keap.com/crm/rest");
 
         DealsApi apiInstance = new DealsApi(defaultClient);
-        String dealId = "dealId_example"; // String | the ID of the deal to retrieve
+        String id = "id_example"; // String | the ID of the deal to retrieve
         try {
-            ApiResponse<Deal> response = apiInstance.getDealWithHttpInfo(dealId);
+            ApiResponse<Deal> response = apiInstance.getDealWithHttpInfo(id);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -809,7 +811,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **dealId** | **String**| the ID of the deal to retrieve | |
+| **id** | **String**| the ID of the deal to retrieve | |
 
 ### Return type
 
@@ -1263,6 +1265,140 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | a list of deal notes wrapped in a DealNoteListResponse |  -  |
+
+
+## moveDealsForContacts
+
+> MoveDealsForContactsResponse moveDealsForContacts(moveDealsForContactsRequest)
+
+Moves the active deals of specified contacts from one stage to another, in bulk.
+
+Moves the active deals of specified contacts from one stage to another, in bulk.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.DealsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+
+        DealsApi apiInstance = new DealsApi(defaultClient);
+        MoveDealsForContactsRequest moveDealsForContactsRequest = new MoveDealsForContactsRequest(); // MoveDealsForContactsRequest | the request body containing move details
+        try {
+            MoveDealsForContactsResponse result = apiInstance.moveDealsForContacts(moveDealsForContactsRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DealsApi#moveDealsForContacts");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **moveDealsForContactsRequest** | [**MoveDealsForContactsRequest**](MoveDealsForContactsRequest.md)| the request body containing move details | |
+
+### Return type
+
+[**MoveDealsForContactsResponse**](MoveDealsForContactsResponse.md)
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | the IDs of the Deals moved |  -  |
+
+## moveDealsForContactsWithHttpInfo
+
+> ApiResponse<MoveDealsForContactsResponse> moveDealsForContacts moveDealsForContactsWithHttpInfo(moveDealsForContactsRequest)
+
+Moves the active deals of specified contacts from one stage to another, in bulk.
+
+Moves the active deals of specified contacts from one stage to another, in bulk.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.DealsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+
+        DealsApi apiInstance = new DealsApi(defaultClient);
+        MoveDealsForContactsRequest moveDealsForContactsRequest = new MoveDealsForContactsRequest(); // MoveDealsForContactsRequest | the request body containing move details
+        try {
+            ApiResponse<MoveDealsForContactsResponse> response = apiInstance.moveDealsForContactsWithHttpInfo(moveDealsForContactsRequest);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DealsApi#moveDealsForContacts");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **moveDealsForContactsRequest** | [**MoveDealsForContactsRequest**](MoveDealsForContactsRequest.md)| the request body containing move details | |
+
+### Return type
+
+ApiResponse<[**MoveDealsForContactsResponse**](MoveDealsForContactsResponse.md)>
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | the IDs of the Deals moved |  -  |
 
 
 ## updateNote

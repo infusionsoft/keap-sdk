@@ -19,20 +19,20 @@ export class DisplayFormsApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Retrieves a specific display form by a pipeline ID.
      * Retrieves a specific display form by a pipeline ID.
-     * @param pipelineId the ID of the pipeline containing the form
+     * @param id the ID of the pipeline containing the form
      */
-    public async getDisplayForm(pipelineId: string, _options?: Configuration): Promise<RequestContext> {
+    public async getDisplayForm(id: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
-        // verify required parameter 'pipelineId' is not null or undefined
-        if (pipelineId === null || pipelineId === undefined) {
-            throw new RequiredError("DisplayFormsApi", "getDisplayForm", "pipelineId");
+        // verify required parameter 'id' is not null or undefined
+        if (id === null || id === undefined) {
+            throw new RequiredError("DisplayFormsApi", "getDisplayForm", "id");
         }
 
 
         // Path Params
-        const localVarPath = '/v2/pipelines/{pipeline_id}/form'
-            .replace('{' + 'pipeline_id' + '}', encodeURIComponent(String(pipelineId)));
+        const localVarPath = '/v2/pipelines/{id}/form'
+            .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
@@ -51,15 +51,15 @@ export class DisplayFormsApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Updates a display form
      * Updates a display form
-     * @param pipelineId the ID of the pipeline containing the form
+     * @param id the ID of the pipeline containing the form
      * @param updateDisplayFormRequest the request body containing updated display form details
      */
-    public async updateDisplayForm(pipelineId: string, updateDisplayFormRequest: UpdateDisplayFormRequest, _options?: Configuration): Promise<RequestContext> {
+    public async updateDisplayForm(id: string, updateDisplayFormRequest: UpdateDisplayFormRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
-        // verify required parameter 'pipelineId' is not null or undefined
-        if (pipelineId === null || pipelineId === undefined) {
-            throw new RequiredError("DisplayFormsApi", "updateDisplayForm", "pipelineId");
+        // verify required parameter 'id' is not null or undefined
+        if (id === null || id === undefined) {
+            throw new RequiredError("DisplayFormsApi", "updateDisplayForm", "id");
         }
 
 
@@ -70,8 +70,8 @@ export class DisplayFormsApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/v2/pipelines/{pipeline_id}/form'
-            .replace('{' + 'pipeline_id' + '}', encodeURIComponent(String(pipelineId)));
+        const localVarPath = '/v2/pipelines/{id}/form'
+            .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.PATCH);

@@ -50,6 +50,7 @@ import { AutomationLockStatus } from '../models/AutomationLockStatus';
 import { BaseListResponseDeal } from '../models/BaseListResponseDeal';
 import { BaseListResponseDealNote } from '../models/BaseListResponseDealNote';
 import { BaseListResponsePipeline } from '../models/BaseListResponsePipeline';
+import { BaseListResponsePipelineCustomField } from '../models/BaseListResponsePipelineCustomField';
 import { BaseListResponsePipelineSummary } from '../models/BaseListResponsePipelineSummary';
 import { BaseListResponseStage } from '../models/BaseListResponseStage';
 import { BasicCompany } from '../models/BasicCompany';
@@ -241,6 +242,8 @@ import { LogicalDate } from '../models/LogicalDate';
 import { ModelError } from '../models/ModelError';
 import { ModelFile } from '../models/ModelFile';
 import { Money } from '../models/Money';
+import { MoveDealsForContactsRequest } from '../models/MoveDealsForContactsRequest';
+import { MoveDealsForContactsResponse } from '../models/MoveDealsForContactsResponse';
 import { Note } from '../models/Note';
 import { NoteTemplate } from '../models/NoteTemplate';
 import { ObjectModel } from '../models/ObjectModel';
@@ -2742,11 +2745,15 @@ export class ObservableCustomFieldsApi {
     /**
      * Retrieves a list of custom fields in a tenant.
      * Retrieves a list of custom fields in a tenant.
+     * @param [filter]
+     * @param [pageToken]
+     * @param [orderBy]
+     * @param [pageSize]
      */
-    public getCustomFieldsWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<PipelineCustomFields>> {
+    public getCustomFieldsWithHttpInfo(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: ConfigurationOptions): Observable<HttpInfo<PipelineCustomFields>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getCustomFields(_config);
+        const requestContextPromise = this.requestFactory.getCustomFields(filter, pageToken, orderBy, pageSize, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2766,21 +2773,25 @@ export class ObservableCustomFieldsApi {
     /**
      * Retrieves a list of custom fields in a tenant.
      * Retrieves a list of custom fields in a tenant.
+     * @param [filter]
+     * @param [pageToken]
+     * @param [orderBy]
+     * @param [pageSize]
      */
-    public getCustomFields(_options?: ConfigurationOptions): Observable<PipelineCustomFields> {
-        return this.getCustomFieldsWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<PipelineCustomFields>) => apiResponse.data));
+    public getCustomFields(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: ConfigurationOptions): Observable<PipelineCustomFields> {
+        return this.getCustomFieldsWithHttpInfo(filter, pageToken, orderBy, pageSize, _options).pipe(map((apiResponse: HttpInfo<PipelineCustomFields>) => apiResponse.data));
     }
 
     /**
      * Updates a custom field
      * Updates a custom field
-     * @param customFieldId the identifier of the custom field to update
+     * @param id the identifier of the custom field to update
      * @param updateCustomFieldRequest the request body containing updated custom field details
      */
-    public updateCustomFieldWithHttpInfo(customFieldId: string, updateCustomFieldRequest: UpdateCustomFieldRequest, _options?: ConfigurationOptions): Observable<HttpInfo<PipelineCustomField>> {
+    public updateCustomFieldWithHttpInfo(id: string, updateCustomFieldRequest: UpdateCustomFieldRequest, _options?: ConfigurationOptions): Observable<HttpInfo<PipelineCustomField>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.updateCustomField(customFieldId, updateCustomFieldRequest, _config);
+        const requestContextPromise = this.requestFactory.updateCustomField(id, updateCustomFieldRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2800,11 +2811,11 @@ export class ObservableCustomFieldsApi {
     /**
      * Updates a custom field
      * Updates a custom field
-     * @param customFieldId the identifier of the custom field to update
+     * @param id the identifier of the custom field to update
      * @param updateCustomFieldRequest the request body containing updated custom field details
      */
-    public updateCustomField(customFieldId: string, updateCustomFieldRequest: UpdateCustomFieldRequest, _options?: ConfigurationOptions): Observable<PipelineCustomField> {
-        return this.updateCustomFieldWithHttpInfo(customFieldId, updateCustomFieldRequest, _options).pipe(map((apiResponse: HttpInfo<PipelineCustomField>) => apiResponse.data));
+    public updateCustomField(id: string, updateCustomFieldRequest: UpdateCustomFieldRequest, _options?: ConfigurationOptions): Observable<PipelineCustomField> {
+        return this.updateCustomFieldWithHttpInfo(id, updateCustomFieldRequest, _options).pipe(map((apiResponse: HttpInfo<PipelineCustomField>) => apiResponse.data));
     }
 
 }
@@ -3050,12 +3061,12 @@ export class ObservableDealsApi {
     /**
      * Retrieves a specific deal by its ID.
      * Retrieves a specific deal by its ID.
-     * @param dealId the ID of the deal to retrieve
+     * @param id the ID of the deal to retrieve
      */
-    public getDealWithHttpInfo(dealId: string, _options?: ConfigurationOptions): Observable<HttpInfo<Deal>> {
+    public getDealWithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<Deal>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getDeal(dealId, _config);
+        const requestContextPromise = this.requestFactory.getDeal(id, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -3075,10 +3086,10 @@ export class ObservableDealsApi {
     /**
      * Retrieves a specific deal by its ID.
      * Retrieves a specific deal by its ID.
-     * @param dealId the ID of the deal to retrieve
+     * @param id the ID of the deal to retrieve
      */
-    public getDeal(dealId: string, _options?: ConfigurationOptions): Observable<Deal> {
-        return this.getDealWithHttpInfo(dealId, _options).pipe(map((apiResponse: HttpInfo<Deal>) => apiResponse.data));
+    public getDeal(id: string, _options?: ConfigurationOptions): Observable<Deal> {
+        return this.getDealWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<Deal>) => apiResponse.data));
     }
 
     /**
@@ -3200,6 +3211,40 @@ export class ObservableDealsApi {
     }
 
     /**
+     * Moves the active deals of specified contacts from one stage to another, in bulk.
+     * Moves the active deals of specified contacts from one stage to another, in bulk.
+     * @param moveDealsForContactsRequest the request body containing move details
+     */
+    public moveDealsForContactsWithHttpInfo(moveDealsForContactsRequest: MoveDealsForContactsRequest, _options?: ConfigurationOptions): Observable<HttpInfo<MoveDealsForContactsResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.moveDealsForContacts(moveDealsForContactsRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.moveDealsForContactsWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Moves the active deals of specified contacts from one stage to another, in bulk.
+     * Moves the active deals of specified contacts from one stage to another, in bulk.
+     * @param moveDealsForContactsRequest the request body containing move details
+     */
+    public moveDealsForContacts(moveDealsForContactsRequest: MoveDealsForContactsRequest, _options?: ConfigurationOptions): Observable<MoveDealsForContactsResponse> {
+        return this.moveDealsForContactsWithHttpInfo(moveDealsForContactsRequest, _options).pipe(map((apiResponse: HttpInfo<MoveDealsForContactsResponse>) => apiResponse.data));
+    }
+
+    /**
      * Updates a specific deal note by its ID.
      * Updates a specific deal note by its ID.
      * @param noteId the ID of the note to update
@@ -3256,12 +3301,12 @@ export class ObservableDisplayFormsApi {
     /**
      * Retrieves a specific display form by a pipeline ID.
      * Retrieves a specific display form by a pipeline ID.
-     * @param pipelineId the ID of the pipeline containing the form
+     * @param id the ID of the pipeline containing the form
      */
-    public getDisplayFormWithHttpInfo(pipelineId: string, _options?: ConfigurationOptions): Observable<HttpInfo<DisplayForm>> {
+    public getDisplayFormWithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<DisplayForm>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getDisplayForm(pipelineId, _config);
+        const requestContextPromise = this.requestFactory.getDisplayForm(id, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -3281,22 +3326,22 @@ export class ObservableDisplayFormsApi {
     /**
      * Retrieves a specific display form by a pipeline ID.
      * Retrieves a specific display form by a pipeline ID.
-     * @param pipelineId the ID of the pipeline containing the form
+     * @param id the ID of the pipeline containing the form
      */
-    public getDisplayForm(pipelineId: string, _options?: ConfigurationOptions): Observable<DisplayForm> {
-        return this.getDisplayFormWithHttpInfo(pipelineId, _options).pipe(map((apiResponse: HttpInfo<DisplayForm>) => apiResponse.data));
+    public getDisplayForm(id: string, _options?: ConfigurationOptions): Observable<DisplayForm> {
+        return this.getDisplayFormWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<DisplayForm>) => apiResponse.data));
     }
 
     /**
      * Updates a display form
      * Updates a display form
-     * @param pipelineId the ID of the pipeline containing the form
+     * @param id the ID of the pipeline containing the form
      * @param updateDisplayFormRequest the request body containing updated display form details
      */
-    public updateDisplayFormWithHttpInfo(pipelineId: string, updateDisplayFormRequest: UpdateDisplayFormRequest, _options?: ConfigurationOptions): Observable<HttpInfo<DisplayForm>> {
+    public updateDisplayFormWithHttpInfo(id: string, updateDisplayFormRequest: UpdateDisplayFormRequest, _options?: ConfigurationOptions): Observable<HttpInfo<DisplayForm>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.updateDisplayForm(pipelineId, updateDisplayFormRequest, _config);
+        const requestContextPromise = this.requestFactory.updateDisplayForm(id, updateDisplayFormRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -3316,11 +3361,11 @@ export class ObservableDisplayFormsApi {
     /**
      * Updates a display form
      * Updates a display form
-     * @param pipelineId the ID of the pipeline containing the form
+     * @param id the ID of the pipeline containing the form
      * @param updateDisplayFormRequest the request body containing updated display form details
      */
-    public updateDisplayForm(pipelineId: string, updateDisplayFormRequest: UpdateDisplayFormRequest, _options?: ConfigurationOptions): Observable<DisplayForm> {
-        return this.updateDisplayFormWithHttpInfo(pipelineId, updateDisplayFormRequest, _options).pipe(map((apiResponse: HttpInfo<DisplayForm>) => apiResponse.data));
+    public updateDisplayForm(id: string, updateDisplayFormRequest: UpdateDisplayFormRequest, _options?: ConfigurationOptions): Observable<DisplayForm> {
+        return this.updateDisplayFormWithHttpInfo(id, updateDisplayFormRequest, _options).pipe(map((apiResponse: HttpInfo<DisplayForm>) => apiResponse.data));
     }
 
 }

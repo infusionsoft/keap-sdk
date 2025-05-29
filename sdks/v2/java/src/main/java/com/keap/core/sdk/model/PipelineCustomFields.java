@@ -37,17 +37,45 @@ import jakarta.validation.Valid;
  */
 @Schema(description = "Represents a list of custom fields in the system.")
 @JsonPropertyOrder({
+  PipelineCustomFields.JSON_PROPERTY_NEXT_PAGE_TOKEN,
   PipelineCustomFields.JSON_PROPERTY_CUSTOM_FIELDS
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class PipelineCustomFields implements Serializable {
   private static final long serialVersionUID = 1L;
 
+  public static final String JSON_PROPERTY_NEXT_PAGE_TOKEN = "next_page_token";
+  @jakarta.annotation.Nullable  private String nextPageToken;
+
   public static final String JSON_PROPERTY_CUSTOM_FIELDS = "custom_fields";
   @jakarta.annotation.Nonnull  private List<@Valid PipelineCustomField> customFields = new ArrayList<>();
 
   public PipelineCustomFields() { 
   }
+
+  public PipelineCustomFields nextPageToken(@jakarta.annotation.Nullable String nextPageToken) {
+    this.nextPageToken = nextPageToken;
+    return this;
+  }
+
+  /**
+   * Token for the next page of results.
+   * @return nextPageToken
+   */
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Token for the next page of results.")
+  @JsonProperty(JSON_PROPERTY_NEXT_PAGE_TOKEN)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getNextPageToken() {
+    return nextPageToken;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_NEXT_PAGE_TOKEN)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setNextPageToken(@jakarta.annotation.Nullable String nextPageToken) {
+    this.nextPageToken = nextPageToken;
+  }
+
 
   public PipelineCustomFields customFields(@jakarta.annotation.Nonnull List<@Valid PipelineCustomField> customFields) {
     this.customFields = customFields;
@@ -94,18 +122,20 @@ public class PipelineCustomFields implements Serializable {
       return false;
     }
     PipelineCustomFields pipelineCustomFields = (PipelineCustomFields) o;
-    return Objects.equals(this.customFields, pipelineCustomFields.customFields);
+    return Objects.equals(this.nextPageToken, pipelineCustomFields.nextPageToken) &&
+        Objects.equals(this.customFields, pipelineCustomFields.customFields);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(customFields);
+    return Objects.hash(nextPageToken, customFields);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PipelineCustomFields {\n");
+    sb.append("    nextPageToken: ").append(toIndentedString(nextPageToken)).append("\n");
     sb.append("    customFields: ").append(toIndentedString(customFields)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -134,7 +164,11 @@ public class PipelineCustomFields implements Serializable {
           this.instance = instance;
         }
     
-        public PipelineCustomFields.Builder customFields(List<PipelineCustomField> customFields) {
+        public PipelineCustomFields.Builder nextPageToken(String nextPageToken) {
+              this.instance.nextPageToken = nextPageToken;
+          return this;
+        }
+            public PipelineCustomFields.Builder customFields(List<PipelineCustomField> customFields) {
               this.instance.customFields = customFields;
           return this;
         }
@@ -172,6 +206,7 @@ public class PipelineCustomFields implements Serializable {
       */
       public PipelineCustomFields.Builder toBuilder() {
         return new PipelineCustomFields.Builder()
+          .nextPageToken(getNextPageToken())
           .customFields(getCustomFields());
       }
 }

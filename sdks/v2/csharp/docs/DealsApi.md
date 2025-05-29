@@ -9,10 +9,11 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 | [**CreateNotesBulk**](DealsApi.md#createnotesbulk) | **POST** /v2/deals/-/notes | Creates new notes in bulk. |
 | [**DeleteDeal**](DealsApi.md#deletedeal) | **DELETE** /v2/deals/{id} | Deletes a specific deal by its ID. |
 | [**DeleteNote**](DealsApi.md#deletenote) | **DELETE** /v2/deals/-/notes/{note_id} | Deletes a specific deal note by its ID. |
-| [**GetDeal**](DealsApi.md#getdeal) | **GET** /v2/deals/{deal_id} | Retrieves a specific deal by its ID. |
+| [**GetDeal**](DealsApi.md#getdeal) | **GET** /v2/deals/{id} | Retrieves a specific deal by its ID. |
 | [**GetNote**](DealsApi.md#getnote) | **GET** /v2/deals/-/notes/{note_id} | Retrieves a specific deal note by its ID. |
 | [**ListDeals**](DealsApi.md#listdeals) | **GET** /v2/deals/-/contacts/{contact_id} | Lists all deals associated with a specific contact. |
 | [**ListNotes**](DealsApi.md#listnotes) | **GET** /v2/deals/{id}/notes | Lists all notes associated with a specific deal. |
+| [**MoveDealsForContacts**](DealsApi.md#movedealsforcontacts) | **POST** /v2/deals/moveByContactIds | Moves the active deals of specified contacts from one stage to another, in bulk. |
 | [**UpdateNote**](DealsApi.md#updatenote) | **PATCH** /v2/deals/-/notes/{note_id} | Updates a specific deal note by its ID. |
 
 <a id="createdeal"></a>
@@ -466,7 +467,7 @@ No authorization required
 
 <a id="getdeal"></a>
 # **GetDeal**
-> Deal GetDeal (string dealId)
+> Deal GetDeal (string id)
 
 Retrieves a specific deal by its ID.
 
@@ -489,12 +490,12 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://api.keap.com/crm/rest";
             var apiInstance = new DealsApi(config);
-            var dealId = "dealId_example";  // string | the ID of the deal to retrieve
+            var id = "id_example";  // string | the ID of the deal to retrieve
 
             try
             {
                 // Retrieves a specific deal by its ID.
-                Deal result = apiInstance.GetDeal(dealId);
+                Deal result = apiInstance.GetDeal(id);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -515,7 +516,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Retrieves a specific deal by its ID.
-    ApiResponse<Deal> response = apiInstance.GetDealWithHttpInfo(dealId);
+    ApiResponse<Deal> response = apiInstance.GetDealWithHttpInfo(id);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -532,7 +533,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **dealId** | **string** | the ID of the deal to retrieve |  |
+| **id** | **string** | the ID of the deal to retrieve |  |
 
 ### Return type
 
@@ -841,6 +842,97 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | a list of deal notes wrapped in a DealNoteListResponse |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="movedealsforcontacts"></a>
+# **MoveDealsForContacts**
+> MoveDealsForContactsResponse MoveDealsForContacts (MoveDealsForContactsRequest moveDealsForContactsRequest)
+
+Moves the active deals of specified contacts from one stage to another, in bulk.
+
+Moves the active deals of specified contacts from one stage to another, in bulk.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class MoveDealsForContactsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm/rest";
+            var apiInstance = new DealsApi(config);
+            var moveDealsForContactsRequest = new MoveDealsForContactsRequest(); // MoveDealsForContactsRequest | the request body containing move details
+
+            try
+            {
+                // Moves the active deals of specified contacts from one stage to another, in bulk.
+                MoveDealsForContactsResponse result = apiInstance.MoveDealsForContacts(moveDealsForContactsRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling DealsApi.MoveDealsForContacts: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the MoveDealsForContactsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Moves the active deals of specified contacts from one stage to another, in bulk.
+    ApiResponse<MoveDealsForContactsResponse> response = apiInstance.MoveDealsForContactsWithHttpInfo(moveDealsForContactsRequest);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling DealsApi.MoveDealsForContactsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **moveDealsForContactsRequest** | [**MoveDealsForContactsRequest**](MoveDealsForContactsRequest.md) | the request body containing move details |  |
+
+### Return type
+
+[**MoveDealsForContactsResponse**](MoveDealsForContactsResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | the IDs of the Deals moved |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

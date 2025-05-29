@@ -40,8 +40,9 @@ namespace Keap.Core.V2.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="PipelineCustomFields" /> class.
         /// </summary>
+        /// <param name="nextPageToken">Token for the next page of results..</param>
         /// <param name="customFields">The list of custom fields. (required).</param>
-        public PipelineCustomFields(List<PipelineCustomField> customFields = default)
+        public PipelineCustomFields(string nextPageToken = default, List<PipelineCustomField> customFields = default)
         {
             // to ensure "customFields" is required (not null)
             if (customFields == null)
@@ -49,7 +50,15 @@ namespace Keap.Core.V2.Model
                 throw new ArgumentNullException("customFields is a required property for PipelineCustomFields and cannot be null");
             }
             this.CustomFields = customFields;
+            this.NextPageToken = nextPageToken;
         }
+
+        /// <summary>
+        /// Token for the next page of results.
+        /// </summary>
+        /// <value>Token for the next page of results.</value>
+        [DataMember(Name = "next_page_token", EmitDefaultValue = false)]
+        public string NextPageToken { get; set; }
 
         /// <summary>
         /// The list of custom fields.
@@ -66,6 +75,7 @@ namespace Keap.Core.V2.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class PipelineCustomFields {\n");
+            sb.Append("  NextPageToken: ").Append(NextPageToken).Append("\n");
             sb.Append("  CustomFields: ").Append(CustomFields).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
