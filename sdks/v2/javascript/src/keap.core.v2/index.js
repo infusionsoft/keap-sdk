@@ -468,7 +468,7 @@ import UsersApi from './api/UsersApi';
 * </pre>
 * </p>
 * @module keap.core.v2/index
-* @version 1.0.15
+* @version 1.0.16
 */
 export {
     /**
