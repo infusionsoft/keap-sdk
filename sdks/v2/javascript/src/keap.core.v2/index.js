@@ -57,19 +57,9 @@ import AssignProductsRequest from './model/AssignProductsRequest';
 import Automation from './model/Automation';
 import AutomationCategory from './model/AutomationCategory';
 import AutomationLockStatus from './model/AutomationLockStatus';
-import BaseListResponseDeal from './model/BaseListResponseDeal';
-import BaseListResponseDealNote from './model/BaseListResponseDealNote';
-import BaseListResponsePipeline from './model/BaseListResponsePipeline';
-import BaseListResponsePipelineCustomField from './model/BaseListResponsePipelineCustomField';
-import BaseListResponsePipelineSummary from './model/BaseListResponsePipelineSummary';
-import BaseListResponseStage from './model/BaseListResponseStage';
 import BasicCompany from './model/BasicCompany';
 import BasicContact from './model/BasicContact';
 import BasicUser from './model/BasicUser';
-import BulkCreateDealNoteRequest from './model/BulkCreateDealNoteRequest';
-import BulkCreateDealNoteResponse from './model/BulkCreateDealNoteResponse';
-import BulkCreateDealNotesRequest from './model/BulkCreateDealNotesRequest';
-import BulkCreateDealNotesResponse from './model/BulkCreateDealNotesResponse';
 import BusinessProfileAddressRequest from './model/BusinessProfileAddressRequest';
 import BusinessProfileAddressResponse from './model/BusinessProfileAddressResponse';
 import Campaign from './model/Campaign';
@@ -95,8 +85,6 @@ import CreateContactUtmPropertiesRequest from './model/CreateContactUtmPropertie
 import CreateCustomFieldOptionRequest from './model/CreateCustomFieldOptionRequest';
 import CreateCustomFieldRequest from './model/CreateCustomFieldRequest';
 import CreateCustomFieldResponse from './model/CreateCustomFieldResponse';
-import CreateDealNoteRequest from './model/CreateDealNoteRequest';
-import CreateDealRequest from './model/CreateDealRequest';
 import CreateDefaultCommissionProgramRequest from './model/CreateDefaultCommissionProgramRequest';
 import CreateEmailSentRequest from './model/CreateEmailSentRequest';
 import CreateEmailsSentRequest from './model/CreateEmailsSentRequest';
@@ -114,7 +102,6 @@ import CreateOrUpdateAffiliateLinkRequest from './model/CreateOrUpdateAffiliateL
 import CreateOrderTotalDiscountRequest from './model/CreateOrderTotalDiscountRequest';
 import CreatePaymentMethodConfigRequest from './model/CreatePaymentMethodConfigRequest';
 import CreatePaymentRequest from './model/CreatePaymentRequest';
-import CreatePipelineRequest from './model/CreatePipelineRequest';
 import CreateProductCategoryRequest from './model/CreateProductCategoryRequest';
 import CreateProductCommissionProgramRequest from './model/CreateProductCommissionProgramRequest';
 import CreateProductDiscountRequest from './model/CreateProductDiscountRequest';
@@ -123,7 +110,6 @@ import CreateProductRequest from './model/CreateProductRequest';
 import CreateReferralRequest from './model/CreateReferralRequest';
 import CreateRestOrderItemRequest from './model/CreateRestOrderItemRequest';
 import CreateShippingDiscountRequest from './model/CreateShippingDiscountRequest';
-import CreateStageRequest from './model/CreateStageRequest';
 import CreateSubscriptionCommissionProgramRequest from './model/CreateSubscriptionCommissionProgramRequest';
 import CreateSubscriptionPlanRequest from './model/CreateSubscriptionPlanRequest';
 import CreateSubscriptionV2 from './model/CreateSubscriptionV2';
@@ -139,14 +125,6 @@ import CustomField from './model/CustomField';
 import CustomFieldMetaData from './model/CustomFieldMetaData';
 import CustomFieldOption from './model/CustomFieldOption';
 import CustomFieldValue from './model/CustomFieldValue';
-import DateExpression from './model/DateExpression';
-import DateExpressionResponse from './model/DateExpressionResponse';
-import Deal from './model/Deal';
-import DealContact from './model/DealContact';
-import DealListResponse from './model/DealListResponse';
-import DealNote from './model/DealNote';
-import DealNoteListResponse from './model/DealNoteListResponse';
-import DealStatus from './model/DealStatus';
 import DefaultCommission from './model/DefaultCommission';
 import DeleteEmailsRequest from './model/DeleteEmailsRequest';
 import DeleteEmailsResponse from './model/DeleteEmailsResponse';
@@ -155,10 +133,6 @@ import DeleteProgramCommissionRequest from './model/DeleteProgramCommissionReque
 import DeleteSubscriptionPlanCommissionRequest from './model/DeleteSubscriptionPlanCommissionRequest';
 import Discount from './model/Discount';
 import DiscountCriteria from './model/DiscountCriteria';
-import DisplayForm from './model/DisplayForm';
-import DisplayGroup from './model/DisplayGroup';
-import DisplayProperty from './model/DisplayProperty';
-import DisplayPropertySource from './model/DisplayPropertySource';
 import EmailAddress from './model/EmailAddress';
 import EmailAddressRequest from './model/EmailAddressRequest';
 import EmailAddressStatus from './model/EmailAddressStatus';
@@ -250,10 +224,6 @@ import ListTaggedContactsResponse from './model/ListTaggedContactsResponse';
 import ListTagsResponse from './model/ListTagsResponse';
 import ListTasksResponse from './model/ListTasksResponse';
 import ListUsersPaginatedResponse from './model/ListUsersPaginatedResponse';
-import LogicalDate from './model/LogicalDate';
-import Money from './model/Money';
-import MoveDealsForContactsRequest from './model/MoveDealsForContactsRequest';
-import MoveDealsForContactsResponse from './model/MoveDealsForContactsResponse';
 import Note from './model/Note';
 import NoteTemplate from './model/NoteTemplate';
 import ObjectModel from './model/ObjectModel';
@@ -264,49 +234,12 @@ import OrderItemTax from './model/OrderItemTax';
 import OrderTotalDiscount from './model/OrderTotalDiscount';
 import Origin from './model/Origin';
 import OriginRequest from './model/OriginRequest';
-import Owner from './model/Owner';
 import PatchAutomationCategoryRequest from './model/PatchAutomationCategoryRequest';
 import PaymentMethod from './model/PaymentMethod';
 import PaymentMethodConfig from './model/PaymentMethodConfig';
 import PaymentPlan from './model/PaymentPlan';
 import PaymentResult from './model/PaymentResult';
 import PhoneNumber from './model/PhoneNumber';
-import Pipeline from './model/Pipeline';
-import PipelineCustomField from './model/PipelineCustomField';
-import PipelineCustomFieldArrayDisplayOptions from './model/PipelineCustomFieldArrayDisplayOptions';
-import PipelineCustomFieldArrayPropertyType from './model/PipelineCustomFieldArrayPropertyType';
-import PipelineCustomFieldBooleanDisplayOptions from './model/PipelineCustomFieldBooleanDisplayOptions';
-import PipelineCustomFieldBooleanDisplayType from './model/PipelineCustomFieldBooleanDisplayType';
-import PipelineCustomFieldCardDisplayOptions from './model/PipelineCustomFieldCardDisplayOptions';
-import PipelineCustomFieldCardProperty from './model/PipelineCustomFieldCardProperty';
-import PipelineCustomFieldDateTimeOptions from './model/PipelineCustomFieldDateTimeOptions';
-import PipelineCustomFieldDisplayOptions from './model/PipelineCustomFieldDisplayOptions';
-import PipelineCustomFieldDisplayOptionsType from './model/PipelineCustomFieldDisplayOptionsType';
-import PipelineCustomFieldDisplayStyle from './model/PipelineCustomFieldDisplayStyle';
-import PipelineCustomFieldDurationDisplayOptions from './model/PipelineCustomFieldDurationDisplayOptions';
-import PipelineCustomFieldDurationOptionsDurationUnit from './model/PipelineCustomFieldDurationOptionsDurationUnit';
-import PipelineCustomFieldEmptyStateContent from './model/PipelineCustomFieldEmptyStateContent';
-import PipelineCustomFieldModelPropertyTypeDiscriminator from './model/PipelineCustomFieldModelPropertyTypeDiscriminator';
-import PipelineCustomFieldOption from './model/PipelineCustomFieldOption';
-import PipelineCustomFieldOptionDisplayType from './model/PipelineCustomFieldOptionDisplayType';
-import PipelineCustomFieldOptionGroup from './model/PipelineCustomFieldOptionGroup';
-import PipelineCustomFieldOptions from './model/PipelineCustomFieldOptions';
-import PipelineCustomFieldPrimitiveType from './model/PipelineCustomFieldPrimitiveType';
-import PipelineCustomFieldPropertyValidator from './model/PipelineCustomFieldPropertyValidator';
-import PipelineCustomFieldRefDisplayOptions from './model/PipelineCustomFieldRefDisplayOptions';
-import PipelineCustomFieldRefDisplayType from './model/PipelineCustomFieldRefDisplayType';
-import PipelineCustomFieldRefPropertyType from './model/PipelineCustomFieldRefPropertyType';
-import PipelineCustomFieldRefType from './model/PipelineCustomFieldRefType';
-import PipelineCustomFieldSizeValidationType from './model/PipelineCustomFieldSizeValidationType';
-import PipelineCustomFieldSizeValidator from './model/PipelineCustomFieldSizeValidator';
-import PipelineCustomFieldType from './model/PipelineCustomFieldType';
-import PipelineCustomFields from './model/PipelineCustomFields';
-import PipelineListResponse from './model/PipelineListResponse';
-import PipelineOutcomeLabel from './model/PipelineOutcomeLabel';
-import PipelineOutcomeLabelListResponse from './model/PipelineOutcomeLabelListResponse';
-import PipelineStageListResponse from './model/PipelineStageListResponse';
-import PipelineSummariesListResponse from './model/PipelineSummariesListResponse';
-import PipelineSummary from './model/PipelineSummary';
 import ProductCategory from './model/ProductCategory';
 import ProductCommission from './model/ProductCommission';
 import ProductCommissionProgram from './model/ProductCommissionProgram';
@@ -350,10 +283,7 @@ import ShippingInformation from './model/ShippingInformation';
 import ShippingMethod from './model/ShippingMethod';
 import SocialAccount from './model/SocialAccount';
 import StackTraceElement from './model/StackTraceElement';
-import Stage from './model/Stage';
-import StageDealListResponse from './model/StageDealListResponse';
 import StageDetails from './model/StageDetails';
-import StageListResponse from './model/StageListResponse';
 import SubscriptionCommission from './model/SubscriptionCommission';
 import SubscriptionCommissionProgram from './model/SubscriptionCommissionProgram';
 import SubscriptionPlan from './model/SubscriptionPlan';
@@ -370,12 +300,7 @@ import UpdateCategoryDiscountRequest from './model/UpdateCategoryDiscountRequest
 import UpdateCommissionProgramRequest from './model/UpdateCommissionProgramRequest';
 import UpdateCompanyRequest from './model/UpdateCompanyRequest';
 import UpdateCustomFieldMetaDataRequest from './model/UpdateCustomFieldMetaDataRequest';
-import UpdateCustomFieldRequest from './model/UpdateCustomFieldRequest';
-import UpdateDealNoteRequest from './model/UpdateDealNoteRequest';
 import UpdateDefaultCommissionProgramRequest from './model/UpdateDefaultCommissionProgramRequest';
-import UpdateDisplayFormRequest from './model/UpdateDisplayFormRequest';
-import UpdateDisplayGroupRequest from './model/UpdateDisplayGroupRequest';
-import UpdateDisplayPropertyRequest from './model/UpdateDisplayPropertyRequest';
 import UpdateEmailAddress from './model/UpdateEmailAddress';
 import UpdateFreeTrialDiscountRequest from './model/UpdateFreeTrialDiscountRequest';
 import UpdateLeadSourceExpenseRequest from './model/UpdateLeadSourceExpenseRequest';
@@ -387,8 +312,6 @@ import UpdateOpportunityStageRequest from './model/UpdateOpportunityStageRequest
 import UpdateOrderItemRequest from './model/UpdateOrderItemRequest';
 import UpdateOrderRequest from './model/UpdateOrderRequest';
 import UpdateOrderTotalDiscountRequest from './model/UpdateOrderTotalDiscountRequest';
-import UpdateOutcomeLabelsRequest from './model/UpdateOutcomeLabelsRequest';
-import UpdatePipelineRequest from './model/UpdatePipelineRequest';
 import UpdateProductCategoryRequest from './model/UpdateProductCategoryRequest';
 import UpdateProductCommissionProgramRequest from './model/UpdateProductCommissionProgramRequest';
 import UpdateProductDiscountRequest from './model/UpdateProductDiscountRequest';
@@ -397,7 +320,6 @@ import UpdateProductInterestRequest from './model/UpdateProductInterestRequest';
 import UpdateProductInventoryRequest from './model/UpdateProductInventoryRequest';
 import UpdateProductRequest from './model/UpdateProductRequest';
 import UpdateShippingDiscountRequest from './model/UpdateShippingDiscountRequest';
-import UpdateStageRequest from './model/UpdateStageRequest';
 import UpdateSubscriptionCommissionProgramRequest from './model/UpdateSubscriptionCommissionProgramRequest';
 import UpdateSubscriptionPlanRequest from './model/UpdateSubscriptionPlanRequest';
 import UpdateSubscriptionRequest from './model/UpdateSubscriptionRequest';
@@ -414,10 +336,6 @@ import BusinessProfileApi from './api/BusinessProfileApi';
 import CampaignApi from './api/CampaignApi';
 import CompanyApi from './api/CompanyApi';
 import ContactApi from './api/ContactApi';
-import CustomFieldsApi from './api/CustomFieldsApi';
-import DateExpressionApi from './api/DateExpressionApi';
-import DealsApi from './api/DealsApi';
-import DisplayFormsApi from './api/DisplayFormsApi';
 import EmailApi from './api/EmailApi';
 import FilesApi from './api/FilesApi';
 import FreeTrialDiscountsApi from './api/FreeTrialDiscountsApi';
@@ -430,14 +348,12 @@ import OpportunityApi from './api/OpportunityApi';
 import OrderTotalDiscountsApi from './api/OrderTotalDiscountsApi';
 import OrdersApi from './api/OrdersApi';
 import PaymentMethodConfigsApi from './api/PaymentMethodConfigsApi';
-import PipelinesApi from './api/PipelinesApi';
 import ProductDiscountsApi from './api/ProductDiscountsApi';
 import ProductInterestBundlesApi from './api/ProductInterestBundlesApi';
 import ReportingApi from './api/ReportingApi';
 import SalesApi from './api/SalesApi';
 import SettingsApi from './api/SettingsApi';
 import ShippingDiscountsApi from './api/ShippingDiscountsApi';
-import StagesApi from './api/StagesApi';
 import SubscriptionsApi from './api/SubscriptionsApi';
 import TagsApi from './api/TagsApi';
 import TaskApi from './api/TaskApi';
@@ -473,7 +389,7 @@ import UsersApi from './api/UsersApi';
 * </pre>
 * </p>
 * @module keap.core.v2/index
-* @version 1.0.18
+* @version 1.0.19
 */
 export {
     /**
@@ -747,42 +663,6 @@ export {
     AutomationLockStatus,
 
     /**
-     * The BaseListResponseDeal model constructor.
-     * @property {module:keap.core.v2/model/BaseListResponseDeal}
-     */
-    BaseListResponseDeal,
-
-    /**
-     * The BaseListResponseDealNote model constructor.
-     * @property {module:keap.core.v2/model/BaseListResponseDealNote}
-     */
-    BaseListResponseDealNote,
-
-    /**
-     * The BaseListResponsePipeline model constructor.
-     * @property {module:keap.core.v2/model/BaseListResponsePipeline}
-     */
-    BaseListResponsePipeline,
-
-    /**
-     * The BaseListResponsePipelineCustomField model constructor.
-     * @property {module:keap.core.v2/model/BaseListResponsePipelineCustomField}
-     */
-    BaseListResponsePipelineCustomField,
-
-    /**
-     * The BaseListResponsePipelineSummary model constructor.
-     * @property {module:keap.core.v2/model/BaseListResponsePipelineSummary}
-     */
-    BaseListResponsePipelineSummary,
-
-    /**
-     * The BaseListResponseStage model constructor.
-     * @property {module:keap.core.v2/model/BaseListResponseStage}
-     */
-    BaseListResponseStage,
-
-    /**
      * The BasicCompany model constructor.
      * @property {module:keap.core.v2/model/BasicCompany}
      */
@@ -799,30 +679,6 @@ export {
      * @property {module:keap.core.v2/model/BasicUser}
      */
     BasicUser,
-
-    /**
-     * The BulkCreateDealNoteRequest model constructor.
-     * @property {module:keap.core.v2/model/BulkCreateDealNoteRequest}
-     */
-    BulkCreateDealNoteRequest,
-
-    /**
-     * The BulkCreateDealNoteResponse model constructor.
-     * @property {module:keap.core.v2/model/BulkCreateDealNoteResponse}
-     */
-    BulkCreateDealNoteResponse,
-
-    /**
-     * The BulkCreateDealNotesRequest model constructor.
-     * @property {module:keap.core.v2/model/BulkCreateDealNotesRequest}
-     */
-    BulkCreateDealNotesRequest,
-
-    /**
-     * The BulkCreateDealNotesResponse model constructor.
-     * @property {module:keap.core.v2/model/BulkCreateDealNotesResponse}
-     */
-    BulkCreateDealNotesResponse,
 
     /**
      * The BusinessProfileAddressRequest model constructor.
@@ -975,18 +831,6 @@ export {
     CreateCustomFieldResponse,
 
     /**
-     * The CreateDealNoteRequest model constructor.
-     * @property {module:keap.core.v2/model/CreateDealNoteRequest}
-     */
-    CreateDealNoteRequest,
-
-    /**
-     * The CreateDealRequest model constructor.
-     * @property {module:keap.core.v2/model/CreateDealRequest}
-     */
-    CreateDealRequest,
-
-    /**
      * The CreateDefaultCommissionProgramRequest model constructor.
      * @property {module:keap.core.v2/model/CreateDefaultCommissionProgramRequest}
      */
@@ -1089,12 +933,6 @@ export {
     CreatePaymentRequest,
 
     /**
-     * The CreatePipelineRequest model constructor.
-     * @property {module:keap.core.v2/model/CreatePipelineRequest}
-     */
-    CreatePipelineRequest,
-
-    /**
      * The CreateProductCategoryRequest model constructor.
      * @property {module:keap.core.v2/model/CreateProductCategoryRequest}
      */
@@ -1141,12 +979,6 @@ export {
      * @property {module:keap.core.v2/model/CreateShippingDiscountRequest}
      */
     CreateShippingDiscountRequest,
-
-    /**
-     * The CreateStageRequest model constructor.
-     * @property {module:keap.core.v2/model/CreateStageRequest}
-     */
-    CreateStageRequest,
 
     /**
      * The CreateSubscriptionCommissionProgramRequest model constructor.
@@ -1239,54 +1071,6 @@ export {
     CustomFieldValue,
 
     /**
-     * The DateExpression model constructor.
-     * @property {module:keap.core.v2/model/DateExpression}
-     */
-    DateExpression,
-
-    /**
-     * The DateExpressionResponse model constructor.
-     * @property {module:keap.core.v2/model/DateExpressionResponse}
-     */
-    DateExpressionResponse,
-
-    /**
-     * The Deal model constructor.
-     * @property {module:keap.core.v2/model/Deal}
-     */
-    Deal,
-
-    /**
-     * The DealContact model constructor.
-     * @property {module:keap.core.v2/model/DealContact}
-     */
-    DealContact,
-
-    /**
-     * The DealListResponse model constructor.
-     * @property {module:keap.core.v2/model/DealListResponse}
-     */
-    DealListResponse,
-
-    /**
-     * The DealNote model constructor.
-     * @property {module:keap.core.v2/model/DealNote}
-     */
-    DealNote,
-
-    /**
-     * The DealNoteListResponse model constructor.
-     * @property {module:keap.core.v2/model/DealNoteListResponse}
-     */
-    DealNoteListResponse,
-
-    /**
-     * The DealStatus model constructor.
-     * @property {module:keap.core.v2/model/DealStatus}
-     */
-    DealStatus,
-
-    /**
      * The DefaultCommission model constructor.
      * @property {module:keap.core.v2/model/DefaultCommission}
      */
@@ -1333,30 +1117,6 @@ export {
      * @property {module:keap.core.v2/model/DiscountCriteria}
      */
     DiscountCriteria,
-
-    /**
-     * The DisplayForm model constructor.
-     * @property {module:keap.core.v2/model/DisplayForm}
-     */
-    DisplayForm,
-
-    /**
-     * The DisplayGroup model constructor.
-     * @property {module:keap.core.v2/model/DisplayGroup}
-     */
-    DisplayGroup,
-
-    /**
-     * The DisplayProperty model constructor.
-     * @property {module:keap.core.v2/model/DisplayProperty}
-     */
-    DisplayProperty,
-
-    /**
-     * The DisplayPropertySource model constructor.
-     * @property {module:keap.core.v2/model/DisplayPropertySource}
-     */
-    DisplayPropertySource,
 
     /**
      * The EmailAddress model constructor.
@@ -1905,30 +1665,6 @@ export {
     ListUsersPaginatedResponse,
 
     /**
-     * The LogicalDate model constructor.
-     * @property {module:keap.core.v2/model/LogicalDate}
-     */
-    LogicalDate,
-
-    /**
-     * The Money model constructor.
-     * @property {module:keap.core.v2/model/Money}
-     */
-    Money,
-
-    /**
-     * The MoveDealsForContactsRequest model constructor.
-     * @property {module:keap.core.v2/model/MoveDealsForContactsRequest}
-     */
-    MoveDealsForContactsRequest,
-
-    /**
-     * The MoveDealsForContactsResponse model constructor.
-     * @property {module:keap.core.v2/model/MoveDealsForContactsResponse}
-     */
-    MoveDealsForContactsResponse,
-
-    /**
      * The Note model constructor.
      * @property {module:keap.core.v2/model/Note}
      */
@@ -1989,12 +1725,6 @@ export {
     OriginRequest,
 
     /**
-     * The Owner model constructor.
-     * @property {module:keap.core.v2/model/Owner}
-     */
-    Owner,
-
-    /**
      * The PatchAutomationCategoryRequest model constructor.
      * @property {module:keap.core.v2/model/PatchAutomationCategoryRequest}
      */
@@ -2029,222 +1759,6 @@ export {
      * @property {module:keap.core.v2/model/PhoneNumber}
      */
     PhoneNumber,
-
-    /**
-     * The Pipeline model constructor.
-     * @property {module:keap.core.v2/model/Pipeline}
-     */
-    Pipeline,
-
-    /**
-     * The PipelineCustomField model constructor.
-     * @property {module:keap.core.v2/model/PipelineCustomField}
-     */
-    PipelineCustomField,
-
-    /**
-     * The PipelineCustomFieldArrayDisplayOptions model constructor.
-     * @property {module:keap.core.v2/model/PipelineCustomFieldArrayDisplayOptions}
-     */
-    PipelineCustomFieldArrayDisplayOptions,
-
-    /**
-     * The PipelineCustomFieldArrayPropertyType model constructor.
-     * @property {module:keap.core.v2/model/PipelineCustomFieldArrayPropertyType}
-     */
-    PipelineCustomFieldArrayPropertyType,
-
-    /**
-     * The PipelineCustomFieldBooleanDisplayOptions model constructor.
-     * @property {module:keap.core.v2/model/PipelineCustomFieldBooleanDisplayOptions}
-     */
-    PipelineCustomFieldBooleanDisplayOptions,
-
-    /**
-     * The PipelineCustomFieldBooleanDisplayType model constructor.
-     * @property {module:keap.core.v2/model/PipelineCustomFieldBooleanDisplayType}
-     */
-    PipelineCustomFieldBooleanDisplayType,
-
-    /**
-     * The PipelineCustomFieldCardDisplayOptions model constructor.
-     * @property {module:keap.core.v2/model/PipelineCustomFieldCardDisplayOptions}
-     */
-    PipelineCustomFieldCardDisplayOptions,
-
-    /**
-     * The PipelineCustomFieldCardProperty model constructor.
-     * @property {module:keap.core.v2/model/PipelineCustomFieldCardProperty}
-     */
-    PipelineCustomFieldCardProperty,
-
-    /**
-     * The PipelineCustomFieldDateTimeOptions model constructor.
-     * @property {module:keap.core.v2/model/PipelineCustomFieldDateTimeOptions}
-     */
-    PipelineCustomFieldDateTimeOptions,
-
-    /**
-     * The PipelineCustomFieldDisplayOptions model constructor.
-     * @property {module:keap.core.v2/model/PipelineCustomFieldDisplayOptions}
-     */
-    PipelineCustomFieldDisplayOptions,
-
-    /**
-     * The PipelineCustomFieldDisplayOptionsType model constructor.
-     * @property {module:keap.core.v2/model/PipelineCustomFieldDisplayOptionsType}
-     */
-    PipelineCustomFieldDisplayOptionsType,
-
-    /**
-     * The PipelineCustomFieldDisplayStyle model constructor.
-     * @property {module:keap.core.v2/model/PipelineCustomFieldDisplayStyle}
-     */
-    PipelineCustomFieldDisplayStyle,
-
-    /**
-     * The PipelineCustomFieldDurationDisplayOptions model constructor.
-     * @property {module:keap.core.v2/model/PipelineCustomFieldDurationDisplayOptions}
-     */
-    PipelineCustomFieldDurationDisplayOptions,
-
-    /**
-     * The PipelineCustomFieldDurationOptionsDurationUnit model constructor.
-     * @property {module:keap.core.v2/model/PipelineCustomFieldDurationOptionsDurationUnit}
-     */
-    PipelineCustomFieldDurationOptionsDurationUnit,
-
-    /**
-     * The PipelineCustomFieldEmptyStateContent model constructor.
-     * @property {module:keap.core.v2/model/PipelineCustomFieldEmptyStateContent}
-     */
-    PipelineCustomFieldEmptyStateContent,
-
-    /**
-     * The PipelineCustomFieldModelPropertyTypeDiscriminator model constructor.
-     * @property {module:keap.core.v2/model/PipelineCustomFieldModelPropertyTypeDiscriminator}
-     */
-    PipelineCustomFieldModelPropertyTypeDiscriminator,
-
-    /**
-     * The PipelineCustomFieldOption model constructor.
-     * @property {module:keap.core.v2/model/PipelineCustomFieldOption}
-     */
-    PipelineCustomFieldOption,
-
-    /**
-     * The PipelineCustomFieldOptionDisplayType model constructor.
-     * @property {module:keap.core.v2/model/PipelineCustomFieldOptionDisplayType}
-     */
-    PipelineCustomFieldOptionDisplayType,
-
-    /**
-     * The PipelineCustomFieldOptionGroup model constructor.
-     * @property {module:keap.core.v2/model/PipelineCustomFieldOptionGroup}
-     */
-    PipelineCustomFieldOptionGroup,
-
-    /**
-     * The PipelineCustomFieldOptions model constructor.
-     * @property {module:keap.core.v2/model/PipelineCustomFieldOptions}
-     */
-    PipelineCustomFieldOptions,
-
-    /**
-     * The PipelineCustomFieldPrimitiveType model constructor.
-     * @property {module:keap.core.v2/model/PipelineCustomFieldPrimitiveType}
-     */
-    PipelineCustomFieldPrimitiveType,
-
-    /**
-     * The PipelineCustomFieldPropertyValidator model constructor.
-     * @property {module:keap.core.v2/model/PipelineCustomFieldPropertyValidator}
-     */
-    PipelineCustomFieldPropertyValidator,
-
-    /**
-     * The PipelineCustomFieldRefDisplayOptions model constructor.
-     * @property {module:keap.core.v2/model/PipelineCustomFieldRefDisplayOptions}
-     */
-    PipelineCustomFieldRefDisplayOptions,
-
-    /**
-     * The PipelineCustomFieldRefDisplayType model constructor.
-     * @property {module:keap.core.v2/model/PipelineCustomFieldRefDisplayType}
-     */
-    PipelineCustomFieldRefDisplayType,
-
-    /**
-     * The PipelineCustomFieldRefPropertyType model constructor.
-     * @property {module:keap.core.v2/model/PipelineCustomFieldRefPropertyType}
-     */
-    PipelineCustomFieldRefPropertyType,
-
-    /**
-     * The PipelineCustomFieldRefType model constructor.
-     * @property {module:keap.core.v2/model/PipelineCustomFieldRefType}
-     */
-    PipelineCustomFieldRefType,
-
-    /**
-     * The PipelineCustomFieldSizeValidationType model constructor.
-     * @property {module:keap.core.v2/model/PipelineCustomFieldSizeValidationType}
-     */
-    PipelineCustomFieldSizeValidationType,
-
-    /**
-     * The PipelineCustomFieldSizeValidator model constructor.
-     * @property {module:keap.core.v2/model/PipelineCustomFieldSizeValidator}
-     */
-    PipelineCustomFieldSizeValidator,
-
-    /**
-     * The PipelineCustomFieldType model constructor.
-     * @property {module:keap.core.v2/model/PipelineCustomFieldType}
-     */
-    PipelineCustomFieldType,
-
-    /**
-     * The PipelineCustomFields model constructor.
-     * @property {module:keap.core.v2/model/PipelineCustomFields}
-     */
-    PipelineCustomFields,
-
-    /**
-     * The PipelineListResponse model constructor.
-     * @property {module:keap.core.v2/model/PipelineListResponse}
-     */
-    PipelineListResponse,
-
-    /**
-     * The PipelineOutcomeLabel model constructor.
-     * @property {module:keap.core.v2/model/PipelineOutcomeLabel}
-     */
-    PipelineOutcomeLabel,
-
-    /**
-     * The PipelineOutcomeLabelListResponse model constructor.
-     * @property {module:keap.core.v2/model/PipelineOutcomeLabelListResponse}
-     */
-    PipelineOutcomeLabelListResponse,
-
-    /**
-     * The PipelineStageListResponse model constructor.
-     * @property {module:keap.core.v2/model/PipelineStageListResponse}
-     */
-    PipelineStageListResponse,
-
-    /**
-     * The PipelineSummariesListResponse model constructor.
-     * @property {module:keap.core.v2/model/PipelineSummariesListResponse}
-     */
-    PipelineSummariesListResponse,
-
-    /**
-     * The PipelineSummary model constructor.
-     * @property {module:keap.core.v2/model/PipelineSummary}
-     */
-    PipelineSummary,
 
     /**
      * The ProductCategory model constructor.
@@ -2505,28 +2019,10 @@ export {
     StackTraceElement,
 
     /**
-     * The Stage model constructor.
-     * @property {module:keap.core.v2/model/Stage}
-     */
-    Stage,
-
-    /**
-     * The StageDealListResponse model constructor.
-     * @property {module:keap.core.v2/model/StageDealListResponse}
-     */
-    StageDealListResponse,
-
-    /**
      * The StageDetails model constructor.
      * @property {module:keap.core.v2/model/StageDetails}
      */
     StageDetails,
-
-    /**
-     * The StageListResponse model constructor.
-     * @property {module:keap.core.v2/model/StageListResponse}
-     */
-    StageListResponse,
 
     /**
      * The SubscriptionCommission model constructor.
@@ -2625,40 +2121,10 @@ export {
     UpdateCustomFieldMetaDataRequest,
 
     /**
-     * The UpdateCustomFieldRequest model constructor.
-     * @property {module:keap.core.v2/model/UpdateCustomFieldRequest}
-     */
-    UpdateCustomFieldRequest,
-
-    /**
-     * The UpdateDealNoteRequest model constructor.
-     * @property {module:keap.core.v2/model/UpdateDealNoteRequest}
-     */
-    UpdateDealNoteRequest,
-
-    /**
      * The UpdateDefaultCommissionProgramRequest model constructor.
      * @property {module:keap.core.v2/model/UpdateDefaultCommissionProgramRequest}
      */
     UpdateDefaultCommissionProgramRequest,
-
-    /**
-     * The UpdateDisplayFormRequest model constructor.
-     * @property {module:keap.core.v2/model/UpdateDisplayFormRequest}
-     */
-    UpdateDisplayFormRequest,
-
-    /**
-     * The UpdateDisplayGroupRequest model constructor.
-     * @property {module:keap.core.v2/model/UpdateDisplayGroupRequest}
-     */
-    UpdateDisplayGroupRequest,
-
-    /**
-     * The UpdateDisplayPropertyRequest model constructor.
-     * @property {module:keap.core.v2/model/UpdateDisplayPropertyRequest}
-     */
-    UpdateDisplayPropertyRequest,
 
     /**
      * The UpdateEmailAddress model constructor.
@@ -2727,18 +2193,6 @@ export {
     UpdateOrderTotalDiscountRequest,
 
     /**
-     * The UpdateOutcomeLabelsRequest model constructor.
-     * @property {module:keap.core.v2/model/UpdateOutcomeLabelsRequest}
-     */
-    UpdateOutcomeLabelsRequest,
-
-    /**
-     * The UpdatePipelineRequest model constructor.
-     * @property {module:keap.core.v2/model/UpdatePipelineRequest}
-     */
-    UpdatePipelineRequest,
-
-    /**
      * The UpdateProductCategoryRequest model constructor.
      * @property {module:keap.core.v2/model/UpdateProductCategoryRequest}
      */
@@ -2785,12 +2239,6 @@ export {
      * @property {module:keap.core.v2/model/UpdateShippingDiscountRequest}
      */
     UpdateShippingDiscountRequest,
-
-    /**
-     * The UpdateStageRequest model constructor.
-     * @property {module:keap.core.v2/model/UpdateStageRequest}
-     */
-    UpdateStageRequest,
 
     /**
      * The UpdateSubscriptionCommissionProgramRequest model constructor.
@@ -2889,30 +2337,6 @@ export {
     ContactApi,
 
     /**
-    * The CustomFieldsApi service constructor.
-    * @property {module:keap.core.v2/api/CustomFieldsApi}
-    */
-    CustomFieldsApi,
-
-    /**
-    * The DateExpressionApi service constructor.
-    * @property {module:keap.core.v2/api/DateExpressionApi}
-    */
-    DateExpressionApi,
-
-    /**
-    * The DealsApi service constructor.
-    * @property {module:keap.core.v2/api/DealsApi}
-    */
-    DealsApi,
-
-    /**
-    * The DisplayFormsApi service constructor.
-    * @property {module:keap.core.v2/api/DisplayFormsApi}
-    */
-    DisplayFormsApi,
-
-    /**
     * The EmailApi service constructor.
     * @property {module:keap.core.v2/api/EmailApi}
     */
@@ -2985,12 +2409,6 @@ export {
     PaymentMethodConfigsApi,
 
     /**
-    * The PipelinesApi service constructor.
-    * @property {module:keap.core.v2/api/PipelinesApi}
-    */
-    PipelinesApi,
-
-    /**
     * The ProductDiscountsApi service constructor.
     * @property {module:keap.core.v2/api/ProductDiscountsApi}
     */
@@ -3025,12 +2443,6 @@ export {
     * @property {module:keap.core.v2/api/ShippingDiscountsApi}
     */
     ShippingDiscountsApi,
-
-    /**
-    * The StagesApi service constructor.
-    * @property {module:keap.core.v2/api/StagesApi}
-    */
-    StagesApi,
 
     /**
     * The SubscriptionsApi service constructor.
