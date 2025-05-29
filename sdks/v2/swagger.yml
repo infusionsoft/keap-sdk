@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   description: Keap REST Core Service
-  version: 2.70.0.809589
+  version: 2.70.0.812056
   title: Keap REST API
   termsOfService: https://keap.com/legal
   contact:
@@ -94,8 +94,6 @@ tags:
   description: Rest Tag Controller
 - name: Task
   description: Rest Task Controller
-- name: Transactions
-  description: Rest Transaction Controller
 - name: Users
   description: Rest User Controller
 paths:
@@ -2816,7 +2814,7 @@ paths:
           custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id,
           links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix,
           referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone,
-          update_date,update_time,utm_parameters,website)
+          update_time,utm_parameters,website)
         required: false
         explode: true
         schema:
@@ -3108,7 +3106,7 @@ paths:
           custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id,
           links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix,
           referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone,
-          update_date,update_time,utm_parameters,website)
+          update_time,utm_parameters,website)
         required: false
         explode: true
         schema:
@@ -3244,7 +3242,6 @@ paths:
           - suffix
           - tag_ids
           - time_zone
-          - update_date
           - update_time
           - utm_parameters
           - website
@@ -4031,6 +4028,1159 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DealNote'
+  /v2/discounts/freeTrials:
+    get:
+      tags:
+      - Free Trial Discounts
+      summary: List all Subscription Free Trial Discounts
+      description: Retrieves a list of Subscription Free Trial Discounts
+      operationId: listFreeTrialsUsingGET
+      parameters:
+      - name: filter
+        in: query
+        description: |
+          Filter to apply, allowed fields are:
+          - (Integer) `free_trial_days`
+          - (Boolean) `hide_price`
+          - (String) `subscription_plan_id`
+
+          You will need to apply the `==` operator to check the equality of one of the filters with your searched
+          word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:
+          - `filter=free_trial_days%3D%3D14`
+          - `filter=hide_price%3D%3DTrue`
+          - `filter=subscription_plan_id%3D%3DmySubscriptionPlanId`
+          - `filter=free_trial_days%3D%3D14%3Bhide_price%3D%3DFalse`
+        required: false
+        schema:
+          type: string
+      - name: order_by
+        in: query
+        description: |-
+          Attribute and direction to order items.
+          One of the following fields:
+          - `free_trial_days`
+          - `hide_price`
+          - `id`
+          - `name`
+          - `subscription_plan_id`
+
+          One of the following directions:
+          - `asc`
+          - `desc`
+        required: false
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: Total number of items to return per page
+        required: false
+        example: 0
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 1000
+          exclusiveMinimum: false
+          exclusiveMaximum: false
+      - name: page_token
+        in: query
+        description: Page token
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListFreeTrialDiscountsResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    post:
+      tags:
+      - Free Trial Discounts
+      summary: Create a Subscription Free Trial Discount
+      description: Creates a Subscription Free Trial Discount
+      operationId: createDiscountUsingPOST_1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateFreeTrialDiscountRequest'
+        description: createFreeTrialDiscountRequest
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FreeTrialDiscount'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/discounts/freeTrials/{discount_id}:
+    get:
+      tags:
+      - Free Trial Discounts
+      summary: Retrieve a Subscription Free Trial Discount
+      description: Retrieves a Subscription Free Trial Discount
+      operationId: getDiscountUsingGET_1
+      parameters:
+      - name: discount_id
+        in: path
+        description: discount_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FreeTrialDiscount'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    delete:
+      tags:
+      - Free Trial Discounts
+      summary: Delete a Subscription Free Trial Discount
+      description: Deletes a specified Subscription Free Trial Discount
+      operationId: deleteDiscountUsingDELETE_1
+      parameters:
+      - name: discount_id
+        in: path
+        description: discount_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    patch:
+      tags:
+      - Free Trial Discounts
+      summary: Update a Subscription Free Trial Discount
+      description: Updates a Subscription Free Trial Discount
+      operationId: updateDiscountUsingPATCH_1
+      parameters:
+      - name: discount_id
+        in: path
+        description: discount_id
+        required: true
+        schema:
+          type: string
+      - name: update_mask
+        in: query
+        description: An optional list of properties to be updated. If set, only the
+          provided properties will be updated and others will be skipped.
+        required: false
+        allowEmptyValue: false
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+          enum:
+          - name
+          - description
+          - free_trial_days
+          - hide_price
+          - subscription_plan_id
+          - criteria
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateFreeTrialDiscountRequest'
+        description: request
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FreeTrialDiscount'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/discounts/orderTotals:
+    get:
+      tags:
+      - Order Total Discounts
+      summary: List all Order Total Discounts
+      description: Retrieves a list of Order Total Discounts
+      operationId: listOrderTotalDiscountsUsingGET
+      parameters:
+      - name: filter
+        in: query
+        description: |
+          Filter to apply, allowed fields are:
+          - (Boolean) `apply_to_commissions`
+          - (DiscountStrategy) `discount_strategy`: GROSS or NET
+          - (DiscountType) `discount_type`: AMOUNT or PERCENT
+          - (Double) `discount_value`
+
+          You will need to apply the `==` operator to check the equality of one of the filters with your searched
+          word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:
+          - `filter=apply_to_commissions%3D%3Dtrue`
+          - `filter=discount_strategy%3D%3DGROSS`
+          - `filter=discount_type%3D%3DAMOUNT`
+          - `filter=discount_value%3D%3D10.0`
+          - `filter=discount_type%3D%3DAMOUNT%3Bdiscount_strategy%3D%3DNET`
+        required: false
+        schema:
+          type: string
+      - name: order_by
+        in: query
+        description: |-
+          Attribute and direction to order items.
+          One of the following fields:
+          - `apply_to_commissions`
+          - `discount_strategy`
+          - `discount_type`
+          - `discount_value`
+          - `id`
+
+          One of the following directions:
+          - `asc`
+          - `desc`
+        required: false
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: Total number of items to return per page
+        required: false
+        example: 0
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 1000
+          exclusiveMinimum: false
+          exclusiveMaximum: false
+      - name: page_token
+        in: query
+        description: Page token
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListOrderTotalDiscountsResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    post:
+      tags:
+      - Order Total Discounts
+      summary: Create an Order Total Discount
+      description: Creates an Order Total Discount
+      operationId: createOrderTotalDiscountUsingPOST
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOrderTotalDiscountRequest'
+        description: request
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderTotalDiscount'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/discounts/orderTotals/{discount_id}:
+    get:
+      tags:
+      - Order Total Discounts
+      summary: Retrieve an Order Total Discount
+      description: Retrieves an Order Total Discount
+      operationId: getOrderTotalDiscountUsingGET
+      parameters:
+      - name: discount_id
+        in: path
+        description: discount_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderTotalDiscount'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    delete:
+      tags:
+      - Order Total Discounts
+      summary: Delete an Order Total Discount
+      description: Deletes a specified Order Total Discount
+      operationId: deleteOrderTotalDiscountUsingDELETE
+      parameters:
+      - name: discount_id
+        in: path
+        description: discount_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    patch:
+      tags:
+      - Order Total Discounts
+      summary: Update an Order Total Discount
+      description: Updates an Order Total Discount
+      operationId: updateOrderTotalDiscountUsingPATCH
+      parameters:
+      - name: discount_id
+        in: path
+        description: discount_id
+        required: true
+        schema:
+          type: string
+      - name: update_mask
+        in: query
+        description: An optional list of properties to be updated. If set, only the
+          provided properties will be updated and others will be skipped.
+        required: false
+        allowEmptyValue: false
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+          enum:
+          - name
+          - description
+          - apply_to_commissions
+          - discount_type
+          - discount_value
+          - discount_strategy
+          - criteria
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateOrderTotalDiscountRequest'
+        description: request
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderTotalDiscount'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/discounts/products:
+    get:
+      tags:
+      - Product Discounts
+      summary: List all Product Discounts
+      description: Retrieves a list of Product Discounts
+      operationId: listDiscountsUsingGET
+      parameters:
+      - name: filter
+        in: query
+        description: |
+          Filter to apply, allowed fields are:
+          - (Boolean) `apply_to_commissions`
+          - (DiscountType) `discount_type`: AMOUNT or PERCENT
+          - (Double) `discount_value`
+          - (String) `product_id`
+
+          You will need to apply the `==` operator to check the equality of one of the filters with your searched
+          word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:
+          - `filter=apply_to_commissions%3D%3Dtrue`
+          - `filter=discount_type%3D%3DAMOUNT`
+          - `filter=discount_value%3D%3D10.0`
+          - `filter=product_id%3D%3D2`
+          - `filter=discount_type%3D%3DAMOUNT%3Bdiscount_value%3D%3D10.0`
+        required: false
+        schema:
+          type: string
+      - name: order_by
+        in: query
+        description: |-
+          Attribute and direction to order items.
+          One of the following fields:
+          - `apply_to_commissions`
+          - `discount_type`
+          - `discount_value`
+          - `id`
+          - `product_id`
+
+          One of the following directions:
+          - `asc`
+          - `desc`
+        required: false
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: Total number of items to return per page
+        required: false
+        example: 0
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 1000
+          exclusiveMinimum: false
+          exclusiveMaximum: false
+      - name: page_token
+        in: query
+        description: Page token
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListProductDiscountsResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    post:
+      tags:
+      - Product Discounts
+      summary: Create a Product Discount
+      description: Creates a Product Discount
+      operationId: createDiscountUsingPOST_2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateProductDiscountRequest'
+        description: request
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductDiscount'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/discounts/products/{discount_id}:
+    get:
+      tags:
+      - Product Discounts
+      summary: Retrieve a Product Discount
+      description: Retrieves a Product Discount
+      operationId: getDiscountUsingGET_2
+      parameters:
+      - name: discount_id
+        in: path
+        description: discount_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductDiscount'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    delete:
+      tags:
+      - Product Discounts
+      summary: Delete a Product Discount
+      description: Deletes a specified Product Discount
+      operationId: deleteDiscountUsingDELETE_2
+      parameters:
+      - name: discount_id
+        in: path
+        description: discount_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    patch:
+      tags:
+      - Product Discounts
+      summary: Update a Product Discount
+      description: Updates a Product Discount
+      operationId: updateDiscountUsingPATCH_2
+      parameters:
+      - name: discount_id
+        in: path
+        description: discount_id
+        required: true
+        schema:
+          type: string
+      - name: update_mask
+        in: query
+        description: An optional list of properties to be updated. If set, only the
+          provided properties will be updated and others will be skipped.
+        required: false
+        allowEmptyValue: false
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+          enum:
+          - name
+          - description
+          - apply_to_commissions
+          - discount_type
+          - discount_value
+          - product_id
+          - criteria
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateProductDiscountRequest'
+        description: request
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductDiscount'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/discounts/shipping:
+    get:
+      tags:
+      - Shipping Discounts
+      summary: List all Shipping Discounts
+      description: Retrieves a list of Shipping Discounts
+      operationId: listDiscountsUsingGET_1
+      parameters:
+      - name: filter
+        in: query
+        description: |
+          Filter to apply, allowed fields are:
+          - (DiscountType) `discount_type`: AMOUNT or PERCENT
+          - (Double) `discount_value`
+
+          You will need to apply the `==` operator to check the equality of one of the filters with your searched
+          word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:
+          - `filter=discount_type%3D%3DAMOUNT`
+          - `filter=discount_value%3D%3D4.5`
+          - `filter=discount_type%3D%3DAMOUNT%3Bdiscount_value%3D%3D4.5`
+        required: false
+        schema:
+          type: string
+      - name: order_by
+        in: query
+        description: |-
+          Attribute and direction to order items.
+          One of the following fields:
+          - `discount_type`
+          - `discount_value`
+          - `id`
+
+          One of the following directions:
+          - `asc`
+          - `desc`
+        required: false
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: Total number of items to return per page
+        required: false
+        example: 0
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 1000
+          exclusiveMinimum: false
+          exclusiveMaximum: false
+      - name: page_token
+        in: query
+        description: Page token
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListShippingDiscountsResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    post:
+      tags:
+      - Shipping Discounts
+      summary: Create a Shipping Discount
+      description: Creates a Shipping Discount
+      operationId: createDiscountUsingPOST_3
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateShippingDiscountRequest'
+        description: request
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShippingDiscount'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/discounts/shipping/{discount_id}:
+    get:
+      tags:
+      - Shipping Discounts
+      summary: Retrieve a Shipping Discount
+      description: Retrieves a Shipping Discount
+      operationId: getDiscountUsingGET_3
+      parameters:
+      - name: discount_id
+        in: path
+        description: discount_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShippingDiscount'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    delete:
+      tags:
+      - Shipping Discounts
+      summary: Delete a Shipping Discount
+      description: Deletes a specified Shipping Discount
+      operationId: deleteDiscountUsingDELETE_3
+      parameters:
+      - name: discount_id
+        in: path
+        description: discount_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    patch:
+      tags:
+      - Shipping Discounts
+      summary: Update a Shipping Discount
+      description: Updates a Shipping Discount
+      operationId: updateDiscountUsingPATCH_3
+      parameters:
+      - name: discount_id
+        in: path
+        description: discount_id
+        required: true
+        schema:
+          type: string
+      - name: update_mask
+        in: query
+        description: An optional list of properties to be updated. If set, only the
+          provided properties will be updated and others will be skipped.
+        required: false
+        allowEmptyValue: false
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+          enum:
+          - name
+          - description
+          - discount_type
+          - discount_value
+          - criteria
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateShippingDiscountRequest'
+        description: request
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShippingDiscount'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
   /v2/emails:
     post:
       tags:
@@ -14785,16 +15935,6 @@ components:
           items:
             $ref: '#/components/schemas/Task'
       title: ListTasksResponse
-    ListTransactionsResponse:
-      type: object
-      properties:
-        next_page_token:
-          type: string
-        transactions:
-          type: array
-          items:
-            $ref: '#/components/schemas/Transaction'
-      title: ListTransactionsResponse
     ListUsersPaginatedResponse:
       type: object
       properties:
@@ -17026,57 +18166,6 @@ components:
           items:
             $ref: '#/components/schemas/Throwable'
       title: Throwable
-    Transaction:
-      type: object
-      properties:
-        contact_id:
-          type: string
-          example: 1
-          description: Reference to the contact the transaction was for.
-        id:
-          type: string
-          description: The unique identifier of the transaction.
-        is_live:
-          type: boolean
-          description: true if this is a live transaction, false if the transaction
-            is a test or sandbox transaction.
-        is_successful:
-          type: boolean
-          description: true if the transaction resulted in a success, false if the
-            transaction resulted in a failure or error.
-        order_id:
-          type: string
-          example: 1
-          description: Reference to the order this transaction was for
-        payment_gateway_id:
-          type: string
-          description: Reference to the payment processor to where the transaction
-            attempt was made.
-        payment_id:
-          type: string
-          example: 1
-          description: Reference to the payment record that on successful transactions.
-            No reference if the transaction failed.
-        payment_processor_type:
-          type: string
-          enum:
-          - PAYPAL
-          - UNSUPPORTED
-          - AUTHORIZE
-          - EWAY
-          - WEPAY
-          - STRIPE
-          - KEAP_PAY
-        transaction_amount:
-          $ref: '#/components/schemas/CurrencyValue'
-        transaction_time:
-          type: string
-          description: ISO date-time of the transaction. e.g 2024-04-28 11:25:44
-        transaction_type:
-          type: string
-          description: 'The type of transaction. Possible values: CAPTURE, VOID, REFUND,
-            CREDIT, APPROVAL'
-      title: Transaction
     URI:
       type: object
       properties:
@@ -17805,12 +18894,18 @@ components:
       title: UpdateProductInterestRequest
     UpdateProductInventoryRequest:
       type: object
+      required:
+      - quantity
+      - type
       properties:
         quantity:
           type: integer
           format: int32
+          description: The amount to increment or decrement by. Must be greater than
+            or equal to 0.
         type:
           type: string
+          description: The direction to alter the quantity in
           enum:
           - INCREASE
           - DECREASE

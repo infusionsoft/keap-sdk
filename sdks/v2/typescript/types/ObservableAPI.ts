@@ -236,7 +236,6 @@ import { ListTaggedCompaniesResponse } from '../models/ListTaggedCompaniesRespon
 import { ListTaggedContactsResponse } from '../models/ListTaggedContactsResponse';
 import { ListTagsResponse } from '../models/ListTagsResponse';
 import { ListTasksResponse } from '../models/ListTasksResponse';
-import { ListTransactionsResponse } from '../models/ListTransactionsResponse';
 import { ListUsersPaginatedResponse } from '../models/ListUsersPaginatedResponse';
 import { LogicalDate } from '../models/LogicalDate';
 import { ModelError } from '../models/ModelError';
@@ -349,7 +348,6 @@ import { Tag } from '../models/Tag';
 import { TaggedCompany } from '../models/TaggedCompany';
 import { Task } from '../models/Task';
 import { Throwable } from '../models/Throwable';
-import { Transaction } from '../models/Transaction';
 import { URI } from '../models/URI';
 import { URL } from '../models/URL';
 import { UpdateAffiliateRequest } from '../models/UpdateAffiliateRequest';
@@ -2437,7 +2435,7 @@ export class ObservableContactApi {
      * Retrieves a single Contact
      * Retrieve a Contact
      * @param contactId contact_id
-     * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_date,update_time,utm_parameters,website)
+     * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
      */
     public getContactUsingGET1WithHttpInfo(contactId: string, fields?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<Contact>> {
         const _config = mergeConfiguration(this.configuration, _options);
@@ -2463,7 +2461,7 @@ export class ObservableContactApi {
      * Retrieves a single Contact
      * Retrieve a Contact
      * @param contactId contact_id
-     * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_date,update_time,utm_parameters,website)
+     * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
      */
     public getContactUsingGET1(contactId: string, fields?: Array<string>, _options?: ConfigurationOptions): Observable<Contact> {
         return this.getContactUsingGET1WithHttpInfo(contactId, fields, _options).pipe(map((apiResponse: HttpInfo<Contact>) => apiResponse.data));
@@ -2580,7 +2578,7 @@ export class ObservableContactApi {
     /**
      * Retrieves a list of Contacts
      * List Contacts
-     * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_date,update_time,utm_parameters,website)
+     * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
      * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;email&#x60; - (String) &#x60;given_name&#x60; - (String) &#x60;family_name&#x60; - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; 
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;date_created&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
@@ -2609,7 +2607,7 @@ export class ObservableContactApi {
     /**
      * Retrieves a list of Contacts
      * List Contacts
-     * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_date,update_time,utm_parameters,website)
+     * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
      * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;email&#x60; - (String) &#x60;given_name&#x60; - (String) &#x60;family_name&#x60; - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; 
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;date_created&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
@@ -3857,6 +3855,204 @@ export class ObservableFilesApi {
      */
     public updateFileUsingPOST(fileId: string, file?: string, fileName?: string, isPublic?: boolean, updateMask?: string, _options?: ConfigurationOptions): Observable<FileMetadata> {
         return this.updateFileUsingPOSTWithHttpInfo(fileId, file, fileName, isPublic, updateMask, _options).pipe(map((apiResponse: HttpInfo<FileMetadata>) => apiResponse.data));
+    }
+
+}
+
+import { FreeTrialDiscountsApiRequestFactory, FreeTrialDiscountsApiResponseProcessor} from "../apis/FreeTrialDiscountsApi";
+export class ObservableFreeTrialDiscountsApi {
+    private requestFactory: FreeTrialDiscountsApiRequestFactory;
+    private responseProcessor: FreeTrialDiscountsApiResponseProcessor;
+    private configuration: Configuration;
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: FreeTrialDiscountsApiRequestFactory,
+        responseProcessor?: FreeTrialDiscountsApiResponseProcessor
+    ) {
+        this.configuration = configuration;
+        this.requestFactory = requestFactory || new FreeTrialDiscountsApiRequestFactory(configuration);
+        this.responseProcessor = responseProcessor || new FreeTrialDiscountsApiResponseProcessor();
+    }
+
+    /**
+     * Creates a Subscription Free Trial Discount
+     * Create a Subscription Free Trial Discount
+     * @param createFreeTrialDiscountRequest createFreeTrialDiscountRequest
+     */
+    public createDiscountUsingPOST1WithHttpInfo(createFreeTrialDiscountRequest: CreateFreeTrialDiscountRequest, _options?: ConfigurationOptions): Observable<HttpInfo<FreeTrialDiscount>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.createDiscountUsingPOST1(createFreeTrialDiscountRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createDiscountUsingPOST1WithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Creates a Subscription Free Trial Discount
+     * Create a Subscription Free Trial Discount
+     * @param createFreeTrialDiscountRequest createFreeTrialDiscountRequest
+     */
+    public createDiscountUsingPOST1(createFreeTrialDiscountRequest: CreateFreeTrialDiscountRequest, _options?: ConfigurationOptions): Observable<FreeTrialDiscount> {
+        return this.createDiscountUsingPOST1WithHttpInfo(createFreeTrialDiscountRequest, _options).pipe(map((apiResponse: HttpInfo<FreeTrialDiscount>) => apiResponse.data));
+    }
+
+    /**
+     * Deletes a specified Subscription Free Trial Discount
+     * Delete a Subscription Free Trial Discount
+     * @param discountId discount_id
+     */
+    public deleteDiscountUsingDELETE1WithHttpInfo(discountId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.deleteDiscountUsingDELETE1(discountId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteDiscountUsingDELETE1WithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Deletes a specified Subscription Free Trial Discount
+     * Delete a Subscription Free Trial Discount
+     * @param discountId discount_id
+     */
+    public deleteDiscountUsingDELETE1(discountId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteDiscountUsingDELETE1WithHttpInfo(discountId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves a Subscription Free Trial Discount
+     * Retrieve a Subscription Free Trial Discount
+     * @param discountId discount_id
+     */
+    public getDiscountUsingGET1WithHttpInfo(discountId: string, _options?: ConfigurationOptions): Observable<HttpInfo<FreeTrialDiscount>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getDiscountUsingGET1(discountId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getDiscountUsingGET1WithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a Subscription Free Trial Discount
+     * Retrieve a Subscription Free Trial Discount
+     * @param discountId discount_id
+     */
+    public getDiscountUsingGET1(discountId: string, _options?: ConfigurationOptions): Observable<FreeTrialDiscount> {
+        return this.getDiscountUsingGET1WithHttpInfo(discountId, _options).pipe(map((apiResponse: HttpInfo<FreeTrialDiscount>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves a list of Subscription Free Trial Discounts
+     * List all Subscription Free Trial Discounts
+     * @param [filter] Filter to apply, allowed fields are: - (Integer) &#x60;free_trial_days&#x60; - (Boolean) &#x60;hide_price&#x60; - (String) &#x60;subscription_plan_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;free_trial_days%3D%3D14&#x60; - &#x60;filter&#x3D;hide_price%3D%3DTrue&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3DmySubscriptionPlanId&#x60; - &#x60;filter&#x3D;free_trial_days%3D%3D14%3Bhide_price%3D%3DFalse&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;free_trial_days&#x60; - &#x60;hide_price&#x60; - &#x60;id&#x60; - &#x60;name&#x60; - &#x60;subscription_plan_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listFreeTrialsUsingGETWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListFreeTrialDiscountsResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.listFreeTrialsUsingGET(filter, orderBy, pageSize, pageToken, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listFreeTrialsUsingGETWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a list of Subscription Free Trial Discounts
+     * List all Subscription Free Trial Discounts
+     * @param [filter] Filter to apply, allowed fields are: - (Integer) &#x60;free_trial_days&#x60; - (Boolean) &#x60;hide_price&#x60; - (String) &#x60;subscription_plan_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;free_trial_days%3D%3D14&#x60; - &#x60;filter&#x3D;hide_price%3D%3DTrue&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3DmySubscriptionPlanId&#x60; - &#x60;filter&#x3D;free_trial_days%3D%3D14%3Bhide_price%3D%3DFalse&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;free_trial_days&#x60; - &#x60;hide_price&#x60; - &#x60;id&#x60; - &#x60;name&#x60; - &#x60;subscription_plan_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listFreeTrialsUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListFreeTrialDiscountsResponse> {
+        return this.listFreeTrialsUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListFreeTrialDiscountsResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Updates a Subscription Free Trial Discount
+     * Update a Subscription Free Trial Discount
+     * @param discountId discount_id
+     * @param updateFreeTrialDiscountRequest request
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateDiscountUsingPATCH1WithHttpInfo(discountId: string, updateFreeTrialDiscountRequest: UpdateFreeTrialDiscountRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<FreeTrialDiscount>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.updateDiscountUsingPATCH1(discountId, updateFreeTrialDiscountRequest, updateMask, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateDiscountUsingPATCH1WithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Updates a Subscription Free Trial Discount
+     * Update a Subscription Free Trial Discount
+     * @param discountId discount_id
+     * @param updateFreeTrialDiscountRequest request
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateDiscountUsingPATCH1(discountId: string, updateFreeTrialDiscountRequest: UpdateFreeTrialDiscountRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<FreeTrialDiscount> {
+        return this.updateDiscountUsingPATCH1WithHttpInfo(discountId, updateFreeTrialDiscountRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<FreeTrialDiscount>) => apiResponse.data));
     }
 
 }
@@ -5521,6 +5717,204 @@ export class ObservableOpportunityApi {
 
 }
 
+import { OrderTotalDiscountsApiRequestFactory, OrderTotalDiscountsApiResponseProcessor} from "../apis/OrderTotalDiscountsApi";
+export class ObservableOrderTotalDiscountsApi {
+    private requestFactory: OrderTotalDiscountsApiRequestFactory;
+    private responseProcessor: OrderTotalDiscountsApiResponseProcessor;
+    private configuration: Configuration;
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: OrderTotalDiscountsApiRequestFactory,
+        responseProcessor?: OrderTotalDiscountsApiResponseProcessor
+    ) {
+        this.configuration = configuration;
+        this.requestFactory = requestFactory || new OrderTotalDiscountsApiRequestFactory(configuration);
+        this.responseProcessor = responseProcessor || new OrderTotalDiscountsApiResponseProcessor();
+    }
+
+    /**
+     * Creates an Order Total Discount
+     * Create an Order Total Discount
+     * @param createOrderTotalDiscountRequest request
+     */
+    public createOrderTotalDiscountUsingPOSTWithHttpInfo(createOrderTotalDiscountRequest: CreateOrderTotalDiscountRequest, _options?: ConfigurationOptions): Observable<HttpInfo<OrderTotalDiscount>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.createOrderTotalDiscountUsingPOST(createOrderTotalDiscountRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createOrderTotalDiscountUsingPOSTWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Creates an Order Total Discount
+     * Create an Order Total Discount
+     * @param createOrderTotalDiscountRequest request
+     */
+    public createOrderTotalDiscountUsingPOST(createOrderTotalDiscountRequest: CreateOrderTotalDiscountRequest, _options?: ConfigurationOptions): Observable<OrderTotalDiscount> {
+        return this.createOrderTotalDiscountUsingPOSTWithHttpInfo(createOrderTotalDiscountRequest, _options).pipe(map((apiResponse: HttpInfo<OrderTotalDiscount>) => apiResponse.data));
+    }
+
+    /**
+     * Deletes a specified Order Total Discount
+     * Delete an Order Total Discount
+     * @param discountId discount_id
+     */
+    public deleteOrderTotalDiscountUsingDELETEWithHttpInfo(discountId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.deleteOrderTotalDiscountUsingDELETE(discountId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteOrderTotalDiscountUsingDELETEWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Deletes a specified Order Total Discount
+     * Delete an Order Total Discount
+     * @param discountId discount_id
+     */
+    public deleteOrderTotalDiscountUsingDELETE(discountId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteOrderTotalDiscountUsingDELETEWithHttpInfo(discountId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves an Order Total Discount
+     * Retrieve an Order Total Discount
+     * @param discountId discount_id
+     */
+    public getOrderTotalDiscountUsingGETWithHttpInfo(discountId: string, _options?: ConfigurationOptions): Observable<HttpInfo<OrderTotalDiscount>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getOrderTotalDiscountUsingGET(discountId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getOrderTotalDiscountUsingGETWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves an Order Total Discount
+     * Retrieve an Order Total Discount
+     * @param discountId discount_id
+     */
+    public getOrderTotalDiscountUsingGET(discountId: string, _options?: ConfigurationOptions): Observable<OrderTotalDiscount> {
+        return this.getOrderTotalDiscountUsingGETWithHttpInfo(discountId, _options).pipe(map((apiResponse: HttpInfo<OrderTotalDiscount>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves a list of Order Total Discounts
+     * List all Order Total Discounts
+     * @param [filter] Filter to apply, allowed fields are: - (Boolean) &#x60;apply_to_commissions&#x60; - (DiscountStrategy) &#x60;discount_strategy&#x60;: GROSS or NET - (DiscountType) &#x60;discount_type&#x60;: AMOUNT or PERCENT - (Double) &#x60;discount_value&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;apply_to_commissions%3D%3Dtrue&#x60; - &#x60;filter&#x3D;discount_strategy%3D%3DGROSS&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT&#x60; - &#x60;filter&#x3D;discount_value%3D%3D10.0&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT%3Bdiscount_strategy%3D%3DNET&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;apply_to_commissions&#x60; - &#x60;discount_strategy&#x60; - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listOrderTotalDiscountsUsingGETWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListOrderTotalDiscountsResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.listOrderTotalDiscountsUsingGET(filter, orderBy, pageSize, pageToken, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listOrderTotalDiscountsUsingGETWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a list of Order Total Discounts
+     * List all Order Total Discounts
+     * @param [filter] Filter to apply, allowed fields are: - (Boolean) &#x60;apply_to_commissions&#x60; - (DiscountStrategy) &#x60;discount_strategy&#x60;: GROSS or NET - (DiscountType) &#x60;discount_type&#x60;: AMOUNT or PERCENT - (Double) &#x60;discount_value&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;apply_to_commissions%3D%3Dtrue&#x60; - &#x60;filter&#x3D;discount_strategy%3D%3DGROSS&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT&#x60; - &#x60;filter&#x3D;discount_value%3D%3D10.0&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT%3Bdiscount_strategy%3D%3DNET&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;apply_to_commissions&#x60; - &#x60;discount_strategy&#x60; - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listOrderTotalDiscountsUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListOrderTotalDiscountsResponse> {
+        return this.listOrderTotalDiscountsUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListOrderTotalDiscountsResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Updates an Order Total Discount
+     * Update an Order Total Discount
+     * @param discountId discount_id
+     * @param updateOrderTotalDiscountRequest request
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateOrderTotalDiscountUsingPATCHWithHttpInfo(discountId: string, updateOrderTotalDiscountRequest: UpdateOrderTotalDiscountRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<OrderTotalDiscount>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.updateOrderTotalDiscountUsingPATCH(discountId, updateOrderTotalDiscountRequest, updateMask, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateOrderTotalDiscountUsingPATCHWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Updates an Order Total Discount
+     * Update an Order Total Discount
+     * @param discountId discount_id
+     * @param updateOrderTotalDiscountRequest request
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateOrderTotalDiscountUsingPATCH(discountId: string, updateOrderTotalDiscountRequest: UpdateOrderTotalDiscountRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<OrderTotalDiscount> {
+        return this.updateOrderTotalDiscountUsingPATCHWithHttpInfo(discountId, updateOrderTotalDiscountRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<OrderTotalDiscount>) => apiResponse.data));
+    }
+
+}
+
 import { OrdersApiRequestFactory, OrdersApiResponseProcessor} from "../apis/OrdersApi";
 export class ObservableOrdersApi {
     private requestFactory: OrdersApiRequestFactory;
@@ -6133,6 +6527,204 @@ export class ObservablePipelinesApi {
 
 }
 
+import { ProductDiscountsApiRequestFactory, ProductDiscountsApiResponseProcessor} from "../apis/ProductDiscountsApi";
+export class ObservableProductDiscountsApi {
+    private requestFactory: ProductDiscountsApiRequestFactory;
+    private responseProcessor: ProductDiscountsApiResponseProcessor;
+    private configuration: Configuration;
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: ProductDiscountsApiRequestFactory,
+        responseProcessor?: ProductDiscountsApiResponseProcessor
+    ) {
+        this.configuration = configuration;
+        this.requestFactory = requestFactory || new ProductDiscountsApiRequestFactory(configuration);
+        this.responseProcessor = responseProcessor || new ProductDiscountsApiResponseProcessor();
+    }
+
+    /**
+     * Creates a Product Discount
+     * Create a Product Discount
+     * @param createProductDiscountRequest request
+     */
+    public createDiscountUsingPOST2WithHttpInfo(createProductDiscountRequest: CreateProductDiscountRequest, _options?: ConfigurationOptions): Observable<HttpInfo<ProductDiscount>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.createDiscountUsingPOST2(createProductDiscountRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createDiscountUsingPOST2WithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Creates a Product Discount
+     * Create a Product Discount
+     * @param createProductDiscountRequest request
+     */
+    public createDiscountUsingPOST2(createProductDiscountRequest: CreateProductDiscountRequest, _options?: ConfigurationOptions): Observable<ProductDiscount> {
+        return this.createDiscountUsingPOST2WithHttpInfo(createProductDiscountRequest, _options).pipe(map((apiResponse: HttpInfo<ProductDiscount>) => apiResponse.data));
+    }
+
+    /**
+     * Deletes a specified Product Discount
+     * Delete a Product Discount
+     * @param discountId discount_id
+     */
+    public deleteDiscountUsingDELETE2WithHttpInfo(discountId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.deleteDiscountUsingDELETE2(discountId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteDiscountUsingDELETE2WithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Deletes a specified Product Discount
+     * Delete a Product Discount
+     * @param discountId discount_id
+     */
+    public deleteDiscountUsingDELETE2(discountId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteDiscountUsingDELETE2WithHttpInfo(discountId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves a Product Discount
+     * Retrieve a Product Discount
+     * @param discountId discount_id
+     */
+    public getDiscountUsingGET2WithHttpInfo(discountId: string, _options?: ConfigurationOptions): Observable<HttpInfo<ProductDiscount>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getDiscountUsingGET2(discountId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getDiscountUsingGET2WithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a Product Discount
+     * Retrieve a Product Discount
+     * @param discountId discount_id
+     */
+    public getDiscountUsingGET2(discountId: string, _options?: ConfigurationOptions): Observable<ProductDiscount> {
+        return this.getDiscountUsingGET2WithHttpInfo(discountId, _options).pipe(map((apiResponse: HttpInfo<ProductDiscount>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves a list of Product Discounts
+     * List all Product Discounts
+     * @param [filter] Filter to apply, allowed fields are: - (Boolean) &#x60;apply_to_commissions&#x60; - (DiscountType) &#x60;discount_type&#x60;: AMOUNT or PERCENT - (Double) &#x60;discount_value&#x60; - (String) &#x60;product_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;apply_to_commissions%3D%3Dtrue&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT&#x60; - &#x60;filter&#x3D;discount_value%3D%3D10.0&#x60; - &#x60;filter&#x3D;product_id%3D%3D2&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT%3Bdiscount_value%3D%3D10.0&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;apply_to_commissions&#x60; - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60; - &#x60;product_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listDiscountsUsingGETWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListProductDiscountsResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.listDiscountsUsingGET(filter, orderBy, pageSize, pageToken, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listDiscountsUsingGETWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a list of Product Discounts
+     * List all Product Discounts
+     * @param [filter] Filter to apply, allowed fields are: - (Boolean) &#x60;apply_to_commissions&#x60; - (DiscountType) &#x60;discount_type&#x60;: AMOUNT or PERCENT - (Double) &#x60;discount_value&#x60; - (String) &#x60;product_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;apply_to_commissions%3D%3Dtrue&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT&#x60; - &#x60;filter&#x3D;discount_value%3D%3D10.0&#x60; - &#x60;filter&#x3D;product_id%3D%3D2&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT%3Bdiscount_value%3D%3D10.0&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;apply_to_commissions&#x60; - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60; - &#x60;product_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listDiscountsUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListProductDiscountsResponse> {
+        return this.listDiscountsUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListProductDiscountsResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Updates a Product Discount
+     * Update a Product Discount
+     * @param discountId discount_id
+     * @param updateProductDiscountRequest request
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateDiscountUsingPATCH2WithHttpInfo(discountId: string, updateProductDiscountRequest: UpdateProductDiscountRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<ProductDiscount>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.updateDiscountUsingPATCH2(discountId, updateProductDiscountRequest, updateMask, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateDiscountUsingPATCH2WithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Updates a Product Discount
+     * Update a Product Discount
+     * @param discountId discount_id
+     * @param updateProductDiscountRequest request
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateDiscountUsingPATCH2(discountId: string, updateProductDiscountRequest: UpdateProductDiscountRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<ProductDiscount> {
+        return this.updateDiscountUsingPATCH2WithHttpInfo(discountId, updateProductDiscountRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<ProductDiscount>) => apiResponse.data));
+    }
+
+}
+
 import { ProductInterestBundlesApiRequestFactory, ProductInterestBundlesApiResponseProcessor} from "../apis/ProductInterestBundlesApi";
 export class ObservableProductInterestBundlesApi {
     private requestFactory: ProductInterestBundlesApiRequestFactory;
@@ -6741,6 +7333,204 @@ export class ObservableSettingsApi {
      */
     public isApplicationEnabledUsingGET(_options?: ConfigurationOptions): Observable<GetApplicationEnabledStatusResponse> {
         return this.isApplicationEnabledUsingGETWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<GetApplicationEnabledStatusResponse>) => apiResponse.data));
+    }
+
+}
+
+import { ShippingDiscountsApiRequestFactory, ShippingDiscountsApiResponseProcessor} from "../apis/ShippingDiscountsApi";
+export class ObservableShippingDiscountsApi {
+    private requestFactory: ShippingDiscountsApiRequestFactory;
+    private responseProcessor: ShippingDiscountsApiResponseProcessor;
+    private configuration: Configuration;
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: ShippingDiscountsApiRequestFactory,
+        responseProcessor?: ShippingDiscountsApiResponseProcessor
+    ) {
+        this.configuration = configuration;
+        this.requestFactory = requestFactory || new ShippingDiscountsApiRequestFactory(configuration);
+        this.responseProcessor = responseProcessor || new ShippingDiscountsApiResponseProcessor();
+    }
+
+    /**
+     * Creates a Shipping Discount
+     * Create a Shipping Discount
+     * @param createShippingDiscountRequest request
+     */
+    public createDiscountUsingPOST3WithHttpInfo(createShippingDiscountRequest: CreateShippingDiscountRequest, _options?: ConfigurationOptions): Observable<HttpInfo<ShippingDiscount>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.createDiscountUsingPOST3(createShippingDiscountRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createDiscountUsingPOST3WithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Creates a Shipping Discount
+     * Create a Shipping Discount
+     * @param createShippingDiscountRequest request
+     */
+    public createDiscountUsingPOST3(createShippingDiscountRequest: CreateShippingDiscountRequest, _options?: ConfigurationOptions): Observable<ShippingDiscount> {
+        return this.createDiscountUsingPOST3WithHttpInfo(createShippingDiscountRequest, _options).pipe(map((apiResponse: HttpInfo<ShippingDiscount>) => apiResponse.data));
+    }
+
+    /**
+     * Deletes a specified Shipping Discount
+     * Delete a Shipping Discount
+     * @param discountId discount_id
+     */
+    public deleteDiscountUsingDELETE3WithHttpInfo(discountId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.deleteDiscountUsingDELETE3(discountId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteDiscountUsingDELETE3WithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Deletes a specified Shipping Discount
+     * Delete a Shipping Discount
+     * @param discountId discount_id
+     */
+    public deleteDiscountUsingDELETE3(discountId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteDiscountUsingDELETE3WithHttpInfo(discountId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves a Shipping Discount
+     * Retrieve a Shipping Discount
+     * @param discountId discount_id
+     */
+    public getDiscountUsingGET3WithHttpInfo(discountId: string, _options?: ConfigurationOptions): Observable<HttpInfo<ShippingDiscount>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getDiscountUsingGET3(discountId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getDiscountUsingGET3WithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a Shipping Discount
+     * Retrieve a Shipping Discount
+     * @param discountId discount_id
+     */
+    public getDiscountUsingGET3(discountId: string, _options?: ConfigurationOptions): Observable<ShippingDiscount> {
+        return this.getDiscountUsingGET3WithHttpInfo(discountId, _options).pipe(map((apiResponse: HttpInfo<ShippingDiscount>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves a list of Shipping Discounts
+     * List all Shipping Discounts
+     * @param [filter] Filter to apply, allowed fields are: - (DiscountType) &#x60;discount_type&#x60;: AMOUNT or PERCENT - (Double) &#x60;discount_value&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT&#x60; - &#x60;filter&#x3D;discount_value%3D%3D4.5&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT%3Bdiscount_value%3D%3D4.5&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listDiscountsUsingGET1WithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListShippingDiscountsResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.listDiscountsUsingGET1(filter, orderBy, pageSize, pageToken, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listDiscountsUsingGET1WithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a list of Shipping Discounts
+     * List all Shipping Discounts
+     * @param [filter] Filter to apply, allowed fields are: - (DiscountType) &#x60;discount_type&#x60;: AMOUNT or PERCENT - (Double) &#x60;discount_value&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT&#x60; - &#x60;filter&#x3D;discount_value%3D%3D4.5&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT%3Bdiscount_value%3D%3D4.5&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listDiscountsUsingGET1(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListShippingDiscountsResponse> {
+        return this.listDiscountsUsingGET1WithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListShippingDiscountsResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Updates a Shipping Discount
+     * Update a Shipping Discount
+     * @param discountId discount_id
+     * @param updateShippingDiscountRequest request
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateDiscountUsingPATCH3WithHttpInfo(discountId: string, updateShippingDiscountRequest: UpdateShippingDiscountRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<ShippingDiscount>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.updateDiscountUsingPATCH3(discountId, updateShippingDiscountRequest, updateMask, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateDiscountUsingPATCH3WithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Updates a Shipping Discount
+     * Update a Shipping Discount
+     * @param discountId discount_id
+     * @param updateShippingDiscountRequest request
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateDiscountUsingPATCH3(discountId: string, updateShippingDiscountRequest: UpdateShippingDiscountRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<ShippingDiscount> {
+        return this.updateDiscountUsingPATCH3WithHttpInfo(discountId, updateShippingDiscountRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<ShippingDiscount>) => apiResponse.data));
     }
 
 }

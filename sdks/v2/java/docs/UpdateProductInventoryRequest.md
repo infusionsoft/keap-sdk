@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**quantity** | **Integer** |  |  [optional] |
-|**type** | [**TypeEnum**](#TypeEnum) |  |  [optional] |
+|**quantity** | **Integer** | The amount to increment or decrement by. Must be greater than or equal to 0. |  |
+|**type** | [**TypeEnum**](#TypeEnum) | The direction to alter the quantity in |  |
 
 
 

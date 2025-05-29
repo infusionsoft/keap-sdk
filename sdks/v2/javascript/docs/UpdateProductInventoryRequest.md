@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**quantity** | **Number** |  | [optional] 
-**type** | **String** |  | [optional] 
+**quantity** | **Number** | The amount to increment or decrement by. Must be greater than or equal to 0. | 
+**type** | **String** | The direction to alter the quantity in | 
 
 
 

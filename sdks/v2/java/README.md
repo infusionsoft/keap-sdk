@@ -2,7 +2,7 @@
 
 Keap REST API
 
-- API version: 2.70.0.809589
+- API version: 2.70.0.812056
 
 - Generator version: 7.13.0
 
@@ -43,7 +43,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.keap.core</groupId>
   <artifactId>core-service-v2-java-sdk</artifactId>
-  <version>1.0.16</version>
+  <version>1.0.17</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.keap.core:core-service-v2-java-sdk:1.0.16"
+compile "com.keap.core:core-service-v2-java-sdk:1.0.17"
 ```
 
 ### Others
@@ -66,7 +66,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/core-service-v2-java-sdk-1.0.16.jar`
+- `target/core-service-v2-java-sdk-1.0.17.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -288,6 +288,16 @@ Class | Method | HTTP request | Description
 *FilesApi* | [**listFilesUsingGET1WithHttpInfo**](docs/FilesApi.md#listFilesUsingGET1WithHttpInfo) | **GET** /v2/files | List all files
 *FilesApi* | [**updateFileUsingPOST**](docs/FilesApi.md#updateFileUsingPOST) | **POST** /v2/files/{file_id} | Update a file
 *FilesApi* | [**updateFileUsingPOSTWithHttpInfo**](docs/FilesApi.md#updateFileUsingPOSTWithHttpInfo) | **POST** /v2/files/{file_id} | Update a file
+*FreeTrialDiscountsApi* | [**createDiscountUsingPOST1**](docs/FreeTrialDiscountsApi.md#createDiscountUsingPOST1) | **POST** /v2/discounts/freeTrials | Create a Subscription Free Trial Discount
+*FreeTrialDiscountsApi* | [**createDiscountUsingPOST1WithHttpInfo**](docs/FreeTrialDiscountsApi.md#createDiscountUsingPOST1WithHttpInfo) | **POST** /v2/discounts/freeTrials | Create a Subscription Free Trial Discount
+*FreeTrialDiscountsApi* | [**deleteDiscountUsingDELETE1**](docs/FreeTrialDiscountsApi.md#deleteDiscountUsingDELETE1) | **DELETE** /v2/discounts/freeTrials/{discount_id} | Delete a Subscription Free Trial Discount
+*FreeTrialDiscountsApi* | [**deleteDiscountUsingDELETE1WithHttpInfo**](docs/FreeTrialDiscountsApi.md#deleteDiscountUsingDELETE1WithHttpInfo) | **DELETE** /v2/discounts/freeTrials/{discount_id} | Delete a Subscription Free Trial Discount
+*FreeTrialDiscountsApi* | [**getDiscountUsingGET1**](docs/FreeTrialDiscountsApi.md#getDiscountUsingGET1) | **GET** /v2/discounts/freeTrials/{discount_id} | Retrieve a Subscription Free Trial Discount
+*FreeTrialDiscountsApi* | [**getDiscountUsingGET1WithHttpInfo**](docs/FreeTrialDiscountsApi.md#getDiscountUsingGET1WithHttpInfo) | **GET** /v2/discounts/freeTrials/{discount_id} | Retrieve a Subscription Free Trial Discount
+*FreeTrialDiscountsApi* | [**listFreeTrialsUsingGET**](docs/FreeTrialDiscountsApi.md#listFreeTrialsUsingGET) | **GET** /v2/discounts/freeTrials | List all Subscription Free Trial Discounts
+*FreeTrialDiscountsApi* | [**listFreeTrialsUsingGETWithHttpInfo**](docs/FreeTrialDiscountsApi.md#listFreeTrialsUsingGETWithHttpInfo) | **GET** /v2/discounts/freeTrials | List all Subscription Free Trial Discounts
+*FreeTrialDiscountsApi* | [**updateDiscountUsingPATCH1**](docs/FreeTrialDiscountsApi.md#updateDiscountUsingPATCH1) | **PATCH** /v2/discounts/freeTrials/{discount_id} | Update a Subscription Free Trial Discount
+*FreeTrialDiscountsApi* | [**updateDiscountUsingPATCH1WithHttpInfo**](docs/FreeTrialDiscountsApi.md#updateDiscountUsingPATCH1WithHttpInfo) | **PATCH** /v2/discounts/freeTrials/{discount_id} | Update a Subscription Free Trial Discount
 *LeadSourceCategoriesApi* | [**createLeadSourceCategoryUsingPOST**](docs/LeadSourceCategoriesApi.md#createLeadSourceCategoryUsingPOST) | **POST** /v2/leadSourceCategories | Create a Lead Source Category
 *LeadSourceCategoriesApi* | [**createLeadSourceCategoryUsingPOSTWithHttpInfo**](docs/LeadSourceCategoriesApi.md#createLeadSourceCategoryUsingPOSTWithHttpInfo) | **POST** /v2/leadSourceCategories | Create a Lead Source Category
 *LeadSourceCategoriesApi* | [**deleteLeadSourceCategoryUsingDELETE**](docs/LeadSourceCategoriesApi.md#deleteLeadSourceCategoryUsingDELETE) | **DELETE** /v2/leadSourceCategories/{lead_source_category_id} | Delete a Lead Source Category
@@ -372,6 +382,16 @@ Class | Method | HTTP request | Description
 *OpportunityApi* | [**updateOpportunityStageUsingPATCHWithHttpInfo**](docs/OpportunityApi.md#updateOpportunityStageUsingPATCHWithHttpInfo) | **PATCH** /v2/opportunities/stages/{stage_id} | Update an Opportunity Stage
 *OpportunityApi* | [**updateOpportunityUsingPATCH**](docs/OpportunityApi.md#updateOpportunityUsingPATCH) | **PATCH** /v2/opportunities/{opportunity_id} | Update an opportunity
 *OpportunityApi* | [**updateOpportunityUsingPATCHWithHttpInfo**](docs/OpportunityApi.md#updateOpportunityUsingPATCHWithHttpInfo) | **PATCH** /v2/opportunities/{opportunity_id} | Update an opportunity
+*OrderTotalDiscountsApi* | [**createOrderTotalDiscountUsingPOST**](docs/OrderTotalDiscountsApi.md#createOrderTotalDiscountUsingPOST) | **POST** /v2/discounts/orderTotals | Create an Order Total Discount
+*OrderTotalDiscountsApi* | [**createOrderTotalDiscountUsingPOSTWithHttpInfo**](docs/OrderTotalDiscountsApi.md#createOrderTotalDiscountUsingPOSTWithHttpInfo) | **POST** /v2/discounts/orderTotals | Create an Order Total Discount
+*OrderTotalDiscountsApi* | [**deleteOrderTotalDiscountUsingDELETE**](docs/OrderTotalDiscountsApi.md#deleteOrderTotalDiscountUsingDELETE) | **DELETE** /v2/discounts/orderTotals/{discount_id} | Delete an Order Total Discount
+*OrderTotalDiscountsApi* | [**deleteOrderTotalDiscountUsingDELETEWithHttpInfo**](docs/OrderTotalDiscountsApi.md#deleteOrderTotalDiscountUsingDELETEWithHttpInfo) | **DELETE** /v2/discounts/orderTotals/{discount_id} | Delete an Order Total Discount
+*OrderTotalDiscountsApi* | [**getOrderTotalDiscountUsingGET**](docs/OrderTotalDiscountsApi.md#getOrderTotalDiscountUsingGET) | **GET** /v2/discounts/orderTotals/{discount_id} | Retrieve an Order Total Discount
+*OrderTotalDiscountsApi* | [**getOrderTotalDiscountUsingGETWithHttpInfo**](docs/OrderTotalDiscountsApi.md#getOrderTotalDiscountUsingGETWithHttpInfo) | **GET** /v2/discounts/orderTotals/{discount_id} | Retrieve an Order Total Discount
+*OrderTotalDiscountsApi* | [**listOrderTotalDiscountsUsingGET**](docs/OrderTotalDiscountsApi.md#listOrderTotalDiscountsUsingGET) | **GET** /v2/discounts/orderTotals | List all Order Total Discounts
+*OrderTotalDiscountsApi* | [**listOrderTotalDiscountsUsingGETWithHttpInfo**](docs/OrderTotalDiscountsApi.md#listOrderTotalDiscountsUsingGETWithHttpInfo) | **GET** /v2/discounts/orderTotals | List all Order Total Discounts
+*OrderTotalDiscountsApi* | [**updateOrderTotalDiscountUsingPATCH**](docs/OrderTotalDiscountsApi.md#updateOrderTotalDiscountUsingPATCH) | **PATCH** /v2/discounts/orderTotals/{discount_id} | Update an Order Total Discount
+*OrderTotalDiscountsApi* | [**updateOrderTotalDiscountUsingPATCHWithHttpInfo**](docs/OrderTotalDiscountsApi.md#updateOrderTotalDiscountUsingPATCHWithHttpInfo) | **PATCH** /v2/discounts/orderTotals/{discount_id} | Update an Order Total Discount
 *OrdersApi* | [**createOrderCustomFieldUsingPOST**](docs/OrdersApi.md#createOrderCustomFieldUsingPOST) | **POST** /v2/orders/model/customFields | Create an Order Custom Field
 *OrdersApi* | [**createOrderCustomFieldUsingPOSTWithHttpInfo**](docs/OrdersApi.md#createOrderCustomFieldUsingPOSTWithHttpInfo) | **POST** /v2/orders/model/customFields | Create an Order Custom Field
 *OrdersApi* | [**deleteOrderCustomFieldUsingDELETE**](docs/OrdersApi.md#deleteOrderCustomFieldUsingDELETE) | **DELETE** /v2/orders/model/customFields/{custom_field_id} | Delete an Order Custom Field
@@ -402,6 +422,16 @@ Class | Method | HTTP request | Description
 *PipelinesApi* | [**setOutcomeLabelsWithHttpInfo**](docs/PipelinesApi.md#setOutcomeLabelsWithHttpInfo) | **PATCH** /v2/pipelines/{id}/outcomes | Sets the outcome labels for a pipeline.
 *PipelinesApi* | [**update**](docs/PipelinesApi.md#update) | **PATCH** /v2/pipelines/{id} | Updates an existing entity.
 *PipelinesApi* | [**updateWithHttpInfo**](docs/PipelinesApi.md#updateWithHttpInfo) | **PATCH** /v2/pipelines/{id} | Updates an existing entity.
+*ProductDiscountsApi* | [**createDiscountUsingPOST2**](docs/ProductDiscountsApi.md#createDiscountUsingPOST2) | **POST** /v2/discounts/products | Create a Product Discount
+*ProductDiscountsApi* | [**createDiscountUsingPOST2WithHttpInfo**](docs/ProductDiscountsApi.md#createDiscountUsingPOST2WithHttpInfo) | **POST** /v2/discounts/products | Create a Product Discount
+*ProductDiscountsApi* | [**deleteDiscountUsingDELETE2**](docs/ProductDiscountsApi.md#deleteDiscountUsingDELETE2) | **DELETE** /v2/discounts/products/{discount_id} | Delete a Product Discount
+*ProductDiscountsApi* | [**deleteDiscountUsingDELETE2WithHttpInfo**](docs/ProductDiscountsApi.md#deleteDiscountUsingDELETE2WithHttpInfo) | **DELETE** /v2/discounts/products/{discount_id} | Delete a Product Discount
+*ProductDiscountsApi* | [**getDiscountUsingGET2**](docs/ProductDiscountsApi.md#getDiscountUsingGET2) | **GET** /v2/discounts/products/{discount_id} | Retrieve a Product Discount
+*ProductDiscountsApi* | [**getDiscountUsingGET2WithHttpInfo**](docs/ProductDiscountsApi.md#getDiscountUsingGET2WithHttpInfo) | **GET** /v2/discounts/products/{discount_id} | Retrieve a Product Discount
+*ProductDiscountsApi* | [**listDiscountsUsingGET**](docs/ProductDiscountsApi.md#listDiscountsUsingGET) | **GET** /v2/discounts/products | List all Product Discounts
+*ProductDiscountsApi* | [**listDiscountsUsingGETWithHttpInfo**](docs/ProductDiscountsApi.md#listDiscountsUsingGETWithHttpInfo) | **GET** /v2/discounts/products | List all Product Discounts
+*ProductDiscountsApi* | [**updateDiscountUsingPATCH2**](docs/ProductDiscountsApi.md#updateDiscountUsingPATCH2) | **PATCH** /v2/discounts/products/{discount_id} | Update a Product Discount
+*ProductDiscountsApi* | [**updateDiscountUsingPATCH2WithHttpInfo**](docs/ProductDiscountsApi.md#updateDiscountUsingPATCH2WithHttpInfo) | **PATCH** /v2/discounts/products/{discount_id} | Update a Product Discount
 *ProductInterestBundlesApi* | [**addProductInterestUsingPOST**](docs/ProductInterestBundlesApi.md#addProductInterestUsingPOST) | **POST** /v2/productInterestBundles/{id}/interests | Create a Product Interest in an existing Bundle
 *ProductInterestBundlesApi* | [**addProductInterestUsingPOSTWithHttpInfo**](docs/ProductInterestBundlesApi.md#addProductInterestUsingPOSTWithHttpInfo) | **POST** /v2/productInterestBundles/{id}/interests | Create a Product Interest in an existing Bundle
 *ProductInterestBundlesApi* | [**createProductInterestBundleUsingPOST**](docs/ProductInterestBundlesApi.md#createProductInterestBundleUsingPOST) | **POST** /v2/productInterestBundles | Create a Product Interest Bundle
@@ -432,6 +462,16 @@ Class | Method | HTTP request | Description
 *SettingsApi* | [**getContactOptionTypesUsingGET1WithHttpInfo**](docs/SettingsApi.md#getContactOptionTypesUsingGET1WithHttpInfo) | **GET** /v2/settings/contactOptionTypes | Get Contact Option types
 *SettingsApi* | [**isApplicationEnabledUsingGET**](docs/SettingsApi.md#isApplicationEnabledUsingGET) | **GET** /v2/settings/applications:isEnabled | Get Application Status
 *SettingsApi* | [**isApplicationEnabledUsingGETWithHttpInfo**](docs/SettingsApi.md#isApplicationEnabledUsingGETWithHttpInfo) | **GET** /v2/settings/applications:isEnabled | Get Application Status
+*ShippingDiscountsApi* | [**createDiscountUsingPOST3**](docs/ShippingDiscountsApi.md#createDiscountUsingPOST3) | **POST** /v2/discounts/shipping | Create a Shipping Discount
+*ShippingDiscountsApi* | [**createDiscountUsingPOST3WithHttpInfo**](docs/ShippingDiscountsApi.md#createDiscountUsingPOST3WithHttpInfo) | **POST** /v2/discounts/shipping | Create a Shipping Discount
+*ShippingDiscountsApi* | [**deleteDiscountUsingDELETE3**](docs/ShippingDiscountsApi.md#deleteDiscountUsingDELETE3) | **DELETE** /v2/discounts/shipping/{discount_id} | Delete a Shipping Discount
+*ShippingDiscountsApi* | [**deleteDiscountUsingDELETE3WithHttpInfo**](docs/ShippingDiscountsApi.md#deleteDiscountUsingDELETE3WithHttpInfo) | **DELETE** /v2/discounts/shipping/{discount_id} | Delete a Shipping Discount
+*ShippingDiscountsApi* | [**getDiscountUsingGET3**](docs/ShippingDiscountsApi.md#getDiscountUsingGET3) | **GET** /v2/discounts/shipping/{discount_id} | Retrieve a Shipping Discount
+*ShippingDiscountsApi* | [**getDiscountUsingGET3WithHttpInfo**](docs/ShippingDiscountsApi.md#getDiscountUsingGET3WithHttpInfo) | **GET** /v2/discounts/shipping/{discount_id} | Retrieve a Shipping Discount
+*ShippingDiscountsApi* | [**listDiscountsUsingGET1**](docs/ShippingDiscountsApi.md#listDiscountsUsingGET1) | **GET** /v2/discounts/shipping | List all Shipping Discounts
+*ShippingDiscountsApi* | [**listDiscountsUsingGET1WithHttpInfo**](docs/ShippingDiscountsApi.md#listDiscountsUsingGET1WithHttpInfo) | **GET** /v2/discounts/shipping | List all Shipping Discounts
+*ShippingDiscountsApi* | [**updateDiscountUsingPATCH3**](docs/ShippingDiscountsApi.md#updateDiscountUsingPATCH3) | **PATCH** /v2/discounts/shipping/{discount_id} | Update a Shipping Discount
+*ShippingDiscountsApi* | [**updateDiscountUsingPATCH3WithHttpInfo**](docs/ShippingDiscountsApi.md#updateDiscountUsingPATCH3WithHttpInfo) | **PATCH** /v2/discounts/shipping/{discount_id} | Update a Shipping Discount
 *StagesApi* | [**countDealsInStage**](docs/StagesApi.md#countDealsInStage) | **GET** /v2/stages/{id}/dealCount | Counts the number of deals in a specific stage.
 *StagesApi* | [**countDealsInStageWithHttpInfo**](docs/StagesApi.md#countDealsInStageWithHttpInfo) | **GET** /v2/stages/{id}/dealCount | Counts the number of deals in a specific stage.
 *StagesApi* | [**create1**](docs/StagesApi.md#create1) | **POST** /v2/stages | Creates a new entity.
@@ -742,7 +782,6 @@ Class | Method | HTTP request | Description
  - [ListTaggedContactsResponse](docs/ListTaggedContactsResponse.md)
  - [ListTagsResponse](docs/ListTagsResponse.md)
  - [ListTasksResponse](docs/ListTasksResponse.md)
- - [ListTransactionsResponse](docs/ListTransactionsResponse.md)
  - [ListUsersPaginatedResponse](docs/ListUsersPaginatedResponse.md)
  - [LogicalDate](docs/LogicalDate.md)
  - [ModelFile](docs/ModelFile.md)
@@ -854,7 +893,6 @@ Class | Method | HTTP request | Description
  - [TaggedCompany](docs/TaggedCompany.md)
  - [Task](docs/Task.md)
  - [Throwable](docs/Throwable.md)
- - [Transaction](docs/Transaction.md)
  - [URI](docs/URI.md)
  - [URL](docs/URL.md)
  - [UpdateAffiliateRequest](docs/UpdateAffiliateRequest.md)

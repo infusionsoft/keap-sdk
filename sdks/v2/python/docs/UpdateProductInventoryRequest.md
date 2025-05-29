@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**quantity** | **int** |  | [optional] 
-**type** | **str** |  | [optional] 
+**quantity** | **int** | The amount to increment or decrement by. Must be greater than or equal to 0. | 
+**type** | **str** | The direction to alter the quantity in | 
 
 ## Example
 

@@ -235,7 +235,6 @@ import { ListTaggedCompaniesResponse } from '../models/ListTaggedCompaniesRespon
 import { ListTaggedContactsResponse } from '../models/ListTaggedContactsResponse';
 import { ListTagsResponse } from '../models/ListTagsResponse';
 import { ListTasksResponse } from '../models/ListTasksResponse';
-import { ListTransactionsResponse } from '../models/ListTransactionsResponse';
 import { ListUsersPaginatedResponse } from '../models/ListUsersPaginatedResponse';
 import { LogicalDate } from '../models/LogicalDate';
 import { ModelError } from '../models/ModelError';
@@ -348,7 +347,6 @@ import { Tag } from '../models/Tag';
 import { TaggedCompany } from '../models/TaggedCompany';
 import { Task } from '../models/Task';
 import { Throwable } from '../models/Throwable';
-import { Transaction } from '../models/Transaction';
 import { URI } from '../models/URI';
 import { URL } from '../models/URL';
 import { UpdateAffiliateRequest } from '../models/UpdateAffiliateRequest';
@@ -2282,7 +2280,7 @@ export interface ContactApiGetContactUsingGET1Request {
      */
     contactId: string
     /**
-     * Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_date,update_time,utm_parameters,website)
+     * Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
      * Defaults to: undefined
      * @type Array&lt;string&gt;
      * @memberof ContactApigetContactUsingGET1
@@ -2342,7 +2340,7 @@ export interface ContactApiListContactLinksUsingGETRequest {
 
 export interface ContactApiListContactsUsingGET1Request {
     /**
-     * Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_date,update_time,utm_parameters,website)
+     * Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
      * Defaults to: undefined
      * @type Array&lt;string&gt;
      * @memberof ContactApilistContactsUsingGET1
@@ -3654,6 +3652,193 @@ export class ObjectFilesApi {
      */
     public updateFileUsingPOST(param: FilesApiUpdateFileUsingPOSTRequest, options?: ConfigurationOptions): Promise<FileMetadata> {
         return this.api.updateFileUsingPOST(param.fileId, param.file, param.fileName, param.isPublic, param.updateMask,  options).toPromise();
+    }
+
+}
+
+import { ObservableFreeTrialDiscountsApi } from "./ObservableAPI";
+import { FreeTrialDiscountsApiRequestFactory, FreeTrialDiscountsApiResponseProcessor} from "../apis/FreeTrialDiscountsApi";
+
+export interface FreeTrialDiscountsApiCreateDiscountUsingPOST1Request {
+    /**
+     * createFreeTrialDiscountRequest
+     * @type CreateFreeTrialDiscountRequest
+     * @memberof FreeTrialDiscountsApicreateDiscountUsingPOST1
+     */
+    createFreeTrialDiscountRequest: CreateFreeTrialDiscountRequest
+}
+
+export interface FreeTrialDiscountsApiDeleteDiscountUsingDELETE1Request {
+    /**
+     * discount_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof FreeTrialDiscountsApideleteDiscountUsingDELETE1
+     */
+    discountId: string
+}
+
+export interface FreeTrialDiscountsApiGetDiscountUsingGET1Request {
+    /**
+     * discount_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof FreeTrialDiscountsApigetDiscountUsingGET1
+     */
+    discountId: string
+}
+
+export interface FreeTrialDiscountsApiListFreeTrialsUsingGETRequest {
+    /**
+     * Filter to apply, allowed fields are: - (Integer) &#x60;free_trial_days&#x60; - (Boolean) &#x60;hide_price&#x60; - (String) &#x60;subscription_plan_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;free_trial_days%3D%3D14&#x60; - &#x60;filter&#x3D;hide_price%3D%3DTrue&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3DmySubscriptionPlanId&#x60; - &#x60;filter&#x3D;free_trial_days%3D%3D14%3Bhide_price%3D%3DFalse&#x60; 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FreeTrialDiscountsApilistFreeTrialsUsingGET
+     */
+    filter?: string
+    /**
+     * Attribute and direction to order items. One of the following fields: - &#x60;free_trial_days&#x60; - &#x60;hide_price&#x60; - &#x60;id&#x60; - &#x60;name&#x60; - &#x60;subscription_plan_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * Defaults to: undefined
+     * @type string
+     * @memberof FreeTrialDiscountsApilistFreeTrialsUsingGET
+     */
+    orderBy?: string
+    /**
+     * Total number of items to return per page
+     * Minimum: 1
+     * Maximum: 1000
+     * Defaults to: undefined
+     * @type number
+     * @memberof FreeTrialDiscountsApilistFreeTrialsUsingGET
+     */
+    pageSize?: number
+    /**
+     * Page token
+     * Defaults to: undefined
+     * @type string
+     * @memberof FreeTrialDiscountsApilistFreeTrialsUsingGET
+     */
+    pageToken?: string
+}
+
+export interface FreeTrialDiscountsApiUpdateDiscountUsingPATCH1Request {
+    /**
+     * discount_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof FreeTrialDiscountsApiupdateDiscountUsingPATCH1
+     */
+    discountId: string
+    /**
+     * request
+     * @type UpdateFreeTrialDiscountRequest
+     * @memberof FreeTrialDiscountsApiupdateDiscountUsingPATCH1
+     */
+    updateFreeTrialDiscountRequest: UpdateFreeTrialDiscountRequest
+    /**
+     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * Defaults to: undefined
+     * @type Array&lt;string&gt;
+     * @memberof FreeTrialDiscountsApiupdateDiscountUsingPATCH1
+     */
+    updateMask?: Array<string>
+}
+
+export class ObjectFreeTrialDiscountsApi {
+    private api: ObservableFreeTrialDiscountsApi
+
+    public constructor(configuration: Configuration, requestFactory?: FreeTrialDiscountsApiRequestFactory, responseProcessor?: FreeTrialDiscountsApiResponseProcessor) {
+        this.api = new ObservableFreeTrialDiscountsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Creates a Subscription Free Trial Discount
+     * Create a Subscription Free Trial Discount
+     * @param param the request object
+     */
+    public createDiscountUsingPOST1WithHttpInfo(param: FreeTrialDiscountsApiCreateDiscountUsingPOST1Request, options?: ConfigurationOptions): Promise<HttpInfo<FreeTrialDiscount>> {
+        return this.api.createDiscountUsingPOST1WithHttpInfo(param.createFreeTrialDiscountRequest,  options).toPromise();
+    }
+
+    /**
+     * Creates a Subscription Free Trial Discount
+     * Create a Subscription Free Trial Discount
+     * @param param the request object
+     */
+    public createDiscountUsingPOST1(param: FreeTrialDiscountsApiCreateDiscountUsingPOST1Request, options?: ConfigurationOptions): Promise<FreeTrialDiscount> {
+        return this.api.createDiscountUsingPOST1(param.createFreeTrialDiscountRequest,  options).toPromise();
+    }
+
+    /**
+     * Deletes a specified Subscription Free Trial Discount
+     * Delete a Subscription Free Trial Discount
+     * @param param the request object
+     */
+    public deleteDiscountUsingDELETE1WithHttpInfo(param: FreeTrialDiscountsApiDeleteDiscountUsingDELETE1Request, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteDiscountUsingDELETE1WithHttpInfo(param.discountId,  options).toPromise();
+    }
+
+    /**
+     * Deletes a specified Subscription Free Trial Discount
+     * Delete a Subscription Free Trial Discount
+     * @param param the request object
+     */
+    public deleteDiscountUsingDELETE1(param: FreeTrialDiscountsApiDeleteDiscountUsingDELETE1Request, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteDiscountUsingDELETE1(param.discountId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a Subscription Free Trial Discount
+     * Retrieve a Subscription Free Trial Discount
+     * @param param the request object
+     */
+    public getDiscountUsingGET1WithHttpInfo(param: FreeTrialDiscountsApiGetDiscountUsingGET1Request, options?: ConfigurationOptions): Promise<HttpInfo<FreeTrialDiscount>> {
+        return this.api.getDiscountUsingGET1WithHttpInfo(param.discountId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a Subscription Free Trial Discount
+     * Retrieve a Subscription Free Trial Discount
+     * @param param the request object
+     */
+    public getDiscountUsingGET1(param: FreeTrialDiscountsApiGetDiscountUsingGET1Request, options?: ConfigurationOptions): Promise<FreeTrialDiscount> {
+        return this.api.getDiscountUsingGET1(param.discountId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of Subscription Free Trial Discounts
+     * List all Subscription Free Trial Discounts
+     * @param param the request object
+     */
+    public listFreeTrialsUsingGETWithHttpInfo(param: FreeTrialDiscountsApiListFreeTrialsUsingGETRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListFreeTrialDiscountsResponse>> {
+        return this.api.listFreeTrialsUsingGETWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of Subscription Free Trial Discounts
+     * List all Subscription Free Trial Discounts
+     * @param param the request object
+     */
+    public listFreeTrialsUsingGET(param: FreeTrialDiscountsApiListFreeTrialsUsingGETRequest = {}, options?: ConfigurationOptions): Promise<ListFreeTrialDiscountsResponse> {
+        return this.api.listFreeTrialsUsingGET(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    }
+
+    /**
+     * Updates a Subscription Free Trial Discount
+     * Update a Subscription Free Trial Discount
+     * @param param the request object
+     */
+    public updateDiscountUsingPATCH1WithHttpInfo(param: FreeTrialDiscountsApiUpdateDiscountUsingPATCH1Request, options?: ConfigurationOptions): Promise<HttpInfo<FreeTrialDiscount>> {
+        return this.api.updateDiscountUsingPATCH1WithHttpInfo(param.discountId, param.updateFreeTrialDiscountRequest, param.updateMask,  options).toPromise();
+    }
+
+    /**
+     * Updates a Subscription Free Trial Discount
+     * Update a Subscription Free Trial Discount
+     * @param param the request object
+     */
+    public updateDiscountUsingPATCH1(param: FreeTrialDiscountsApiUpdateDiscountUsingPATCH1Request, options?: ConfigurationOptions): Promise<FreeTrialDiscount> {
+        return this.api.updateDiscountUsingPATCH1(param.discountId, param.updateFreeTrialDiscountRequest, param.updateMask,  options).toPromise();
     }
 
 }
@@ -5340,6 +5525,193 @@ export class ObjectOpportunityApi {
 
 }
 
+import { ObservableOrderTotalDiscountsApi } from "./ObservableAPI";
+import { OrderTotalDiscountsApiRequestFactory, OrderTotalDiscountsApiResponseProcessor} from "../apis/OrderTotalDiscountsApi";
+
+export interface OrderTotalDiscountsApiCreateOrderTotalDiscountUsingPOSTRequest {
+    /**
+     * request
+     * @type CreateOrderTotalDiscountRequest
+     * @memberof OrderTotalDiscountsApicreateOrderTotalDiscountUsingPOST
+     */
+    createOrderTotalDiscountRequest: CreateOrderTotalDiscountRequest
+}
+
+export interface OrderTotalDiscountsApiDeleteOrderTotalDiscountUsingDELETERequest {
+    /**
+     * discount_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof OrderTotalDiscountsApideleteOrderTotalDiscountUsingDELETE
+     */
+    discountId: string
+}
+
+export interface OrderTotalDiscountsApiGetOrderTotalDiscountUsingGETRequest {
+    /**
+     * discount_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof OrderTotalDiscountsApigetOrderTotalDiscountUsingGET
+     */
+    discountId: string
+}
+
+export interface OrderTotalDiscountsApiListOrderTotalDiscountsUsingGETRequest {
+    /**
+     * Filter to apply, allowed fields are: - (Boolean) &#x60;apply_to_commissions&#x60; - (DiscountStrategy) &#x60;discount_strategy&#x60;: GROSS or NET - (DiscountType) &#x60;discount_type&#x60;: AMOUNT or PERCENT - (Double) &#x60;discount_value&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;apply_to_commissions%3D%3Dtrue&#x60; - &#x60;filter&#x3D;discount_strategy%3D%3DGROSS&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT&#x60; - &#x60;filter&#x3D;discount_value%3D%3D10.0&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT%3Bdiscount_strategy%3D%3DNET&#x60; 
+     * Defaults to: undefined
+     * @type string
+     * @memberof OrderTotalDiscountsApilistOrderTotalDiscountsUsingGET
+     */
+    filter?: string
+    /**
+     * Attribute and direction to order items. One of the following fields: - &#x60;apply_to_commissions&#x60; - &#x60;discount_strategy&#x60; - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * Defaults to: undefined
+     * @type string
+     * @memberof OrderTotalDiscountsApilistOrderTotalDiscountsUsingGET
+     */
+    orderBy?: string
+    /**
+     * Total number of items to return per page
+     * Minimum: 1
+     * Maximum: 1000
+     * Defaults to: undefined
+     * @type number
+     * @memberof OrderTotalDiscountsApilistOrderTotalDiscountsUsingGET
+     */
+    pageSize?: number
+    /**
+     * Page token
+     * Defaults to: undefined
+     * @type string
+     * @memberof OrderTotalDiscountsApilistOrderTotalDiscountsUsingGET
+     */
+    pageToken?: string
+}
+
+export interface OrderTotalDiscountsApiUpdateOrderTotalDiscountUsingPATCHRequest {
+    /**
+     * discount_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof OrderTotalDiscountsApiupdateOrderTotalDiscountUsingPATCH
+     */
+    discountId: string
+    /**
+     * request
+     * @type UpdateOrderTotalDiscountRequest
+     * @memberof OrderTotalDiscountsApiupdateOrderTotalDiscountUsingPATCH
+     */
+    updateOrderTotalDiscountRequest: UpdateOrderTotalDiscountRequest
+    /**
+     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * Defaults to: undefined
+     * @type Array&lt;string&gt;
+     * @memberof OrderTotalDiscountsApiupdateOrderTotalDiscountUsingPATCH
+     */
+    updateMask?: Array<string>
+}
+
+export class ObjectOrderTotalDiscountsApi {
+    private api: ObservableOrderTotalDiscountsApi
+
+    public constructor(configuration: Configuration, requestFactory?: OrderTotalDiscountsApiRequestFactory, responseProcessor?: OrderTotalDiscountsApiResponseProcessor) {
+        this.api = new ObservableOrderTotalDiscountsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Creates an Order Total Discount
+     * Create an Order Total Discount
+     * @param param the request object
+     */
+    public createOrderTotalDiscountUsingPOSTWithHttpInfo(param: OrderTotalDiscountsApiCreateOrderTotalDiscountUsingPOSTRequest, options?: ConfigurationOptions): Promise<HttpInfo<OrderTotalDiscount>> {
+        return this.api.createOrderTotalDiscountUsingPOSTWithHttpInfo(param.createOrderTotalDiscountRequest,  options).toPromise();
+    }
+
+    /**
+     * Creates an Order Total Discount
+     * Create an Order Total Discount
+     * @param param the request object
+     */
+    public createOrderTotalDiscountUsingPOST(param: OrderTotalDiscountsApiCreateOrderTotalDiscountUsingPOSTRequest, options?: ConfigurationOptions): Promise<OrderTotalDiscount> {
+        return this.api.createOrderTotalDiscountUsingPOST(param.createOrderTotalDiscountRequest,  options).toPromise();
+    }
+
+    /**
+     * Deletes a specified Order Total Discount
+     * Delete an Order Total Discount
+     * @param param the request object
+     */
+    public deleteOrderTotalDiscountUsingDELETEWithHttpInfo(param: OrderTotalDiscountsApiDeleteOrderTotalDiscountUsingDELETERequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteOrderTotalDiscountUsingDELETEWithHttpInfo(param.discountId,  options).toPromise();
+    }
+
+    /**
+     * Deletes a specified Order Total Discount
+     * Delete an Order Total Discount
+     * @param param the request object
+     */
+    public deleteOrderTotalDiscountUsingDELETE(param: OrderTotalDiscountsApiDeleteOrderTotalDiscountUsingDELETERequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteOrderTotalDiscountUsingDELETE(param.discountId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves an Order Total Discount
+     * Retrieve an Order Total Discount
+     * @param param the request object
+     */
+    public getOrderTotalDiscountUsingGETWithHttpInfo(param: OrderTotalDiscountsApiGetOrderTotalDiscountUsingGETRequest, options?: ConfigurationOptions): Promise<HttpInfo<OrderTotalDiscount>> {
+        return this.api.getOrderTotalDiscountUsingGETWithHttpInfo(param.discountId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves an Order Total Discount
+     * Retrieve an Order Total Discount
+     * @param param the request object
+     */
+    public getOrderTotalDiscountUsingGET(param: OrderTotalDiscountsApiGetOrderTotalDiscountUsingGETRequest, options?: ConfigurationOptions): Promise<OrderTotalDiscount> {
+        return this.api.getOrderTotalDiscountUsingGET(param.discountId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of Order Total Discounts
+     * List all Order Total Discounts
+     * @param param the request object
+     */
+    public listOrderTotalDiscountsUsingGETWithHttpInfo(param: OrderTotalDiscountsApiListOrderTotalDiscountsUsingGETRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListOrderTotalDiscountsResponse>> {
+        return this.api.listOrderTotalDiscountsUsingGETWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of Order Total Discounts
+     * List all Order Total Discounts
+     * @param param the request object
+     */
+    public listOrderTotalDiscountsUsingGET(param: OrderTotalDiscountsApiListOrderTotalDiscountsUsingGETRequest = {}, options?: ConfigurationOptions): Promise<ListOrderTotalDiscountsResponse> {
+        return this.api.listOrderTotalDiscountsUsingGET(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    }
+
+    /**
+     * Updates an Order Total Discount
+     * Update an Order Total Discount
+     * @param param the request object
+     */
+    public updateOrderTotalDiscountUsingPATCHWithHttpInfo(param: OrderTotalDiscountsApiUpdateOrderTotalDiscountUsingPATCHRequest, options?: ConfigurationOptions): Promise<HttpInfo<OrderTotalDiscount>> {
+        return this.api.updateOrderTotalDiscountUsingPATCHWithHttpInfo(param.discountId, param.updateOrderTotalDiscountRequest, param.updateMask,  options).toPromise();
+    }
+
+    /**
+     * Updates an Order Total Discount
+     * Update an Order Total Discount
+     * @param param the request object
+     */
+    public updateOrderTotalDiscountUsingPATCH(param: OrderTotalDiscountsApiUpdateOrderTotalDiscountUsingPATCHRequest, options?: ConfigurationOptions): Promise<OrderTotalDiscount> {
+        return this.api.updateOrderTotalDiscountUsingPATCH(param.discountId, param.updateOrderTotalDiscountRequest, param.updateMask,  options).toPromise();
+    }
+
+}
+
 import { ObservableOrdersApi } from "./ObservableAPI";
 import { OrdersApiRequestFactory, OrdersApiResponseProcessor} from "../apis/OrdersApi";
 
@@ -5968,6 +6340,193 @@ export class ObjectPipelinesApi {
 
 }
 
+import { ObservableProductDiscountsApi } from "./ObservableAPI";
+import { ProductDiscountsApiRequestFactory, ProductDiscountsApiResponseProcessor} from "../apis/ProductDiscountsApi";
+
+export interface ProductDiscountsApiCreateDiscountUsingPOST2Request {
+    /**
+     * request
+     * @type CreateProductDiscountRequest
+     * @memberof ProductDiscountsApicreateDiscountUsingPOST2
+     */
+    createProductDiscountRequest: CreateProductDiscountRequest
+}
+
+export interface ProductDiscountsApiDeleteDiscountUsingDELETE2Request {
+    /**
+     * discount_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof ProductDiscountsApideleteDiscountUsingDELETE2
+     */
+    discountId: string
+}
+
+export interface ProductDiscountsApiGetDiscountUsingGET2Request {
+    /**
+     * discount_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof ProductDiscountsApigetDiscountUsingGET2
+     */
+    discountId: string
+}
+
+export interface ProductDiscountsApiListDiscountsUsingGETRequest {
+    /**
+     * Filter to apply, allowed fields are: - (Boolean) &#x60;apply_to_commissions&#x60; - (DiscountType) &#x60;discount_type&#x60;: AMOUNT or PERCENT - (Double) &#x60;discount_value&#x60; - (String) &#x60;product_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;apply_to_commissions%3D%3Dtrue&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT&#x60; - &#x60;filter&#x3D;discount_value%3D%3D10.0&#x60; - &#x60;filter&#x3D;product_id%3D%3D2&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT%3Bdiscount_value%3D%3D10.0&#x60; 
+     * Defaults to: undefined
+     * @type string
+     * @memberof ProductDiscountsApilistDiscountsUsingGET
+     */
+    filter?: string
+    /**
+     * Attribute and direction to order items. One of the following fields: - &#x60;apply_to_commissions&#x60; - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60; - &#x60;product_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * Defaults to: undefined
+     * @type string
+     * @memberof ProductDiscountsApilistDiscountsUsingGET
+     */
+    orderBy?: string
+    /**
+     * Total number of items to return per page
+     * Minimum: 1
+     * Maximum: 1000
+     * Defaults to: undefined
+     * @type number
+     * @memberof ProductDiscountsApilistDiscountsUsingGET
+     */
+    pageSize?: number
+    /**
+     * Page token
+     * Defaults to: undefined
+     * @type string
+     * @memberof ProductDiscountsApilistDiscountsUsingGET
+     */
+    pageToken?: string
+}
+
+export interface ProductDiscountsApiUpdateDiscountUsingPATCH2Request {
+    /**
+     * discount_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof ProductDiscountsApiupdateDiscountUsingPATCH2
+     */
+    discountId: string
+    /**
+     * request
+     * @type UpdateProductDiscountRequest
+     * @memberof ProductDiscountsApiupdateDiscountUsingPATCH2
+     */
+    updateProductDiscountRequest: UpdateProductDiscountRequest
+    /**
+     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * Defaults to: undefined
+     * @type Array&lt;string&gt;
+     * @memberof ProductDiscountsApiupdateDiscountUsingPATCH2
+     */
+    updateMask?: Array<string>
+}
+
+export class ObjectProductDiscountsApi {
+    private api: ObservableProductDiscountsApi
+
+    public constructor(configuration: Configuration, requestFactory?: ProductDiscountsApiRequestFactory, responseProcessor?: ProductDiscountsApiResponseProcessor) {
+        this.api = new ObservableProductDiscountsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Creates a Product Discount
+     * Create a Product Discount
+     * @param param the request object
+     */
+    public createDiscountUsingPOST2WithHttpInfo(param: ProductDiscountsApiCreateDiscountUsingPOST2Request, options?: ConfigurationOptions): Promise<HttpInfo<ProductDiscount>> {
+        return this.api.createDiscountUsingPOST2WithHttpInfo(param.createProductDiscountRequest,  options).toPromise();
+    }
+
+    /**
+     * Creates a Product Discount
+     * Create a Product Discount
+     * @param param the request object
+     */
+    public createDiscountUsingPOST2(param: ProductDiscountsApiCreateDiscountUsingPOST2Request, options?: ConfigurationOptions): Promise<ProductDiscount> {
+        return this.api.createDiscountUsingPOST2(param.createProductDiscountRequest,  options).toPromise();
+    }
+
+    /**
+     * Deletes a specified Product Discount
+     * Delete a Product Discount
+     * @param param the request object
+     */
+    public deleteDiscountUsingDELETE2WithHttpInfo(param: ProductDiscountsApiDeleteDiscountUsingDELETE2Request, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteDiscountUsingDELETE2WithHttpInfo(param.discountId,  options).toPromise();
+    }
+
+    /**
+     * Deletes a specified Product Discount
+     * Delete a Product Discount
+     * @param param the request object
+     */
+    public deleteDiscountUsingDELETE2(param: ProductDiscountsApiDeleteDiscountUsingDELETE2Request, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteDiscountUsingDELETE2(param.discountId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a Product Discount
+     * Retrieve a Product Discount
+     * @param param the request object
+     */
+    public getDiscountUsingGET2WithHttpInfo(param: ProductDiscountsApiGetDiscountUsingGET2Request, options?: ConfigurationOptions): Promise<HttpInfo<ProductDiscount>> {
+        return this.api.getDiscountUsingGET2WithHttpInfo(param.discountId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a Product Discount
+     * Retrieve a Product Discount
+     * @param param the request object
+     */
+    public getDiscountUsingGET2(param: ProductDiscountsApiGetDiscountUsingGET2Request, options?: ConfigurationOptions): Promise<ProductDiscount> {
+        return this.api.getDiscountUsingGET2(param.discountId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of Product Discounts
+     * List all Product Discounts
+     * @param param the request object
+     */
+    public listDiscountsUsingGETWithHttpInfo(param: ProductDiscountsApiListDiscountsUsingGETRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListProductDiscountsResponse>> {
+        return this.api.listDiscountsUsingGETWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of Product Discounts
+     * List all Product Discounts
+     * @param param the request object
+     */
+    public listDiscountsUsingGET(param: ProductDiscountsApiListDiscountsUsingGETRequest = {}, options?: ConfigurationOptions): Promise<ListProductDiscountsResponse> {
+        return this.api.listDiscountsUsingGET(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    }
+
+    /**
+     * Updates a Product Discount
+     * Update a Product Discount
+     * @param param the request object
+     */
+    public updateDiscountUsingPATCH2WithHttpInfo(param: ProductDiscountsApiUpdateDiscountUsingPATCH2Request, options?: ConfigurationOptions): Promise<HttpInfo<ProductDiscount>> {
+        return this.api.updateDiscountUsingPATCH2WithHttpInfo(param.discountId, param.updateProductDiscountRequest, param.updateMask,  options).toPromise();
+    }
+
+    /**
+     * Updates a Product Discount
+     * Update a Product Discount
+     * @param param the request object
+     */
+    public updateDiscountUsingPATCH2(param: ProductDiscountsApiUpdateDiscountUsingPATCH2Request, options?: ConfigurationOptions): Promise<ProductDiscount> {
+        return this.api.updateDiscountUsingPATCH2(param.discountId, param.updateProductDiscountRequest, param.updateMask,  options).toPromise();
+    }
+
+}
+
 import { ObservableProductInterestBundlesApi } from "./ObservableAPI";
 import { ProductInterestBundlesApiRequestFactory, ProductInterestBundlesApiResponseProcessor} from "../apis/ProductInterestBundlesApi";
 
@@ -6539,6 +7098,193 @@ export class ObjectSettingsApi {
      */
     public isApplicationEnabledUsingGET(param: SettingsApiIsApplicationEnabledUsingGETRequest = {}, options?: ConfigurationOptions): Promise<GetApplicationEnabledStatusResponse> {
         return this.api.isApplicationEnabledUsingGET( options).toPromise();
+    }
+
+}
+
+import { ObservableShippingDiscountsApi } from "./ObservableAPI";
+import { ShippingDiscountsApiRequestFactory, ShippingDiscountsApiResponseProcessor} from "../apis/ShippingDiscountsApi";
+
+export interface ShippingDiscountsApiCreateDiscountUsingPOST3Request {
+    /**
+     * request
+     * @type CreateShippingDiscountRequest
+     * @memberof ShippingDiscountsApicreateDiscountUsingPOST3
+     */
+    createShippingDiscountRequest: CreateShippingDiscountRequest
+}
+
+export interface ShippingDiscountsApiDeleteDiscountUsingDELETE3Request {
+    /**
+     * discount_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof ShippingDiscountsApideleteDiscountUsingDELETE3
+     */
+    discountId: string
+}
+
+export interface ShippingDiscountsApiGetDiscountUsingGET3Request {
+    /**
+     * discount_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof ShippingDiscountsApigetDiscountUsingGET3
+     */
+    discountId: string
+}
+
+export interface ShippingDiscountsApiListDiscountsUsingGET1Request {
+    /**
+     * Filter to apply, allowed fields are: - (DiscountType) &#x60;discount_type&#x60;: AMOUNT or PERCENT - (Double) &#x60;discount_value&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT&#x60; - &#x60;filter&#x3D;discount_value%3D%3D4.5&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT%3Bdiscount_value%3D%3D4.5&#x60; 
+     * Defaults to: undefined
+     * @type string
+     * @memberof ShippingDiscountsApilistDiscountsUsingGET1
+     */
+    filter?: string
+    /**
+     * Attribute and direction to order items. One of the following fields: - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * Defaults to: undefined
+     * @type string
+     * @memberof ShippingDiscountsApilistDiscountsUsingGET1
+     */
+    orderBy?: string
+    /**
+     * Total number of items to return per page
+     * Minimum: 1
+     * Maximum: 1000
+     * Defaults to: undefined
+     * @type number
+     * @memberof ShippingDiscountsApilistDiscountsUsingGET1
+     */
+    pageSize?: number
+    /**
+     * Page token
+     * Defaults to: undefined
+     * @type string
+     * @memberof ShippingDiscountsApilistDiscountsUsingGET1
+     */
+    pageToken?: string
+}
+
+export interface ShippingDiscountsApiUpdateDiscountUsingPATCH3Request {
+    /**
+     * discount_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof ShippingDiscountsApiupdateDiscountUsingPATCH3
+     */
+    discountId: string
+    /**
+     * request
+     * @type UpdateShippingDiscountRequest
+     * @memberof ShippingDiscountsApiupdateDiscountUsingPATCH3
+     */
+    updateShippingDiscountRequest: UpdateShippingDiscountRequest
+    /**
+     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * Defaults to: undefined
+     * @type Array&lt;string&gt;
+     * @memberof ShippingDiscountsApiupdateDiscountUsingPATCH3
+     */
+    updateMask?: Array<string>
+}
+
+export class ObjectShippingDiscountsApi {
+    private api: ObservableShippingDiscountsApi
+
+    public constructor(configuration: Configuration, requestFactory?: ShippingDiscountsApiRequestFactory, responseProcessor?: ShippingDiscountsApiResponseProcessor) {
+        this.api = new ObservableShippingDiscountsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Creates a Shipping Discount
+     * Create a Shipping Discount
+     * @param param the request object
+     */
+    public createDiscountUsingPOST3WithHttpInfo(param: ShippingDiscountsApiCreateDiscountUsingPOST3Request, options?: ConfigurationOptions): Promise<HttpInfo<ShippingDiscount>> {
+        return this.api.createDiscountUsingPOST3WithHttpInfo(param.createShippingDiscountRequest,  options).toPromise();
+    }
+
+    /**
+     * Creates a Shipping Discount
+     * Create a Shipping Discount
+     * @param param the request object
+     */
+    public createDiscountUsingPOST3(param: ShippingDiscountsApiCreateDiscountUsingPOST3Request, options?: ConfigurationOptions): Promise<ShippingDiscount> {
+        return this.api.createDiscountUsingPOST3(param.createShippingDiscountRequest,  options).toPromise();
+    }
+
+    /**
+     * Deletes a specified Shipping Discount
+     * Delete a Shipping Discount
+     * @param param the request object
+     */
+    public deleteDiscountUsingDELETE3WithHttpInfo(param: ShippingDiscountsApiDeleteDiscountUsingDELETE3Request, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteDiscountUsingDELETE3WithHttpInfo(param.discountId,  options).toPromise();
+    }
+
+    /**
+     * Deletes a specified Shipping Discount
+     * Delete a Shipping Discount
+     * @param param the request object
+     */
+    public deleteDiscountUsingDELETE3(param: ShippingDiscountsApiDeleteDiscountUsingDELETE3Request, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteDiscountUsingDELETE3(param.discountId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a Shipping Discount
+     * Retrieve a Shipping Discount
+     * @param param the request object
+     */
+    public getDiscountUsingGET3WithHttpInfo(param: ShippingDiscountsApiGetDiscountUsingGET3Request, options?: ConfigurationOptions): Promise<HttpInfo<ShippingDiscount>> {
+        return this.api.getDiscountUsingGET3WithHttpInfo(param.discountId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a Shipping Discount
+     * Retrieve a Shipping Discount
+     * @param param the request object
+     */
+    public getDiscountUsingGET3(param: ShippingDiscountsApiGetDiscountUsingGET3Request, options?: ConfigurationOptions): Promise<ShippingDiscount> {
+        return this.api.getDiscountUsingGET3(param.discountId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of Shipping Discounts
+     * List all Shipping Discounts
+     * @param param the request object
+     */
+    public listDiscountsUsingGET1WithHttpInfo(param: ShippingDiscountsApiListDiscountsUsingGET1Request = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListShippingDiscountsResponse>> {
+        return this.api.listDiscountsUsingGET1WithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of Shipping Discounts
+     * List all Shipping Discounts
+     * @param param the request object
+     */
+    public listDiscountsUsingGET1(param: ShippingDiscountsApiListDiscountsUsingGET1Request = {}, options?: ConfigurationOptions): Promise<ListShippingDiscountsResponse> {
+        return this.api.listDiscountsUsingGET1(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    }
+
+    /**
+     * Updates a Shipping Discount
+     * Update a Shipping Discount
+     * @param param the request object
+     */
+    public updateDiscountUsingPATCH3WithHttpInfo(param: ShippingDiscountsApiUpdateDiscountUsingPATCH3Request, options?: ConfigurationOptions): Promise<HttpInfo<ShippingDiscount>> {
+        return this.api.updateDiscountUsingPATCH3WithHttpInfo(param.discountId, param.updateShippingDiscountRequest, param.updateMask,  options).toPromise();
+    }
+
+    /**
+     * Updates a Shipping Discount
+     * Update a Shipping Discount
+     * @param param the request object
+     */
+    public updateDiscountUsingPATCH3(param: ShippingDiscountsApiUpdateDiscountUsingPATCH3Request, options?: ConfigurationOptions): Promise<ShippingDiscount> {
+        return this.api.updateDiscountUsingPATCH3(param.discountId, param.updateShippingDiscountRequest, param.updateMask,  options).toPromise();
     }
 
 }

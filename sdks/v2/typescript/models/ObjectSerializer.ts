@@ -231,7 +231,6 @@ export * from '../models/ListTaggedCompaniesResponse';
 export * from '../models/ListTaggedContactsResponse';
 export * from '../models/ListTagsResponse';
 export * from '../models/ListTasksResponse';
-export * from '../models/ListTransactionsResponse';
 export * from '../models/ListUsersPaginatedResponse';
 export * from '../models/LogicalDate';
 export * from '../models/ModelError';
@@ -344,7 +343,6 @@ export * from '../models/Tag';
 export * from '../models/TaggedCompany';
 export * from '../models/Task';
 export * from '../models/Throwable';
-export * from '../models/Transaction';
 export * from '../models/URI';
 export * from '../models/URL';
 export * from '../models/UpdateAffiliateRequest';
@@ -625,7 +623,6 @@ import { ListTaggedCompaniesResponse } from '../models/ListTaggedCompaniesRespon
 import { ListTaggedContactsResponse } from '../models/ListTaggedContactsResponse';
 import { ListTagsResponse } from '../models/ListTagsResponse';
 import { ListTasksResponse } from '../models/ListTasksResponse';
-import { ListTransactionsResponse } from '../models/ListTransactionsResponse';
 import { ListUsersPaginatedResponse } from '../models/ListUsersPaginatedResponse';
 import { LogicalDate } from '../models/LogicalDate';
 import { ModelError } from '../models/ModelError';
@@ -738,7 +735,6 @@ import { Tag } from '../models/Tag';
 import { TaggedCompany } from '../models/TaggedCompany';
 import { Task          , TaskPriorityEnum    , TaskTypeEnum   } from '../models/Task';
 import { Throwable } from '../models/Throwable';
-import { Transaction       , TransactionPaymentProcessorTypeEnum      } from '../models/Transaction';
 import { URI } from '../models/URI';
 import { URL } from '../models/URL';
 import { UpdateAffiliateRequest   , UpdateAffiliateRequestStatusEnum   } from '../models/UpdateAffiliateRequest';
@@ -874,7 +870,6 @@ let enumsMap: Set<string> = new Set<string>([
     "SubscriptionPlanCycleTypeEnum",
     "TaskPriorityEnum",
     "TaskTypeEnum",
-    "TransactionPaymentProcessorTypeEnum",
     "UpdateAffiliateRequestStatusEnum",
     "UpdateOrderItemRequestTypeEnum",
     "UpdateOrderRequestOrderTypeEnum",
@@ -1122,7 +1117,6 @@ let typeMap: {[index: string]: any} = {
     "ListTaggedContactsResponse": ListTaggedContactsResponse,
     "ListTagsResponse": ListTagsResponse,
     "ListTasksResponse": ListTasksResponse,
-    "ListTransactionsResponse": ListTransactionsResponse,
     "ListUsersPaginatedResponse": ListUsersPaginatedResponse,
     "LogicalDate": LogicalDate,
     "ModelError": ModelError,
@@ -1226,7 +1220,6 @@ let typeMap: {[index: string]: any} = {
     "TaggedCompany": TaggedCompany,
     "Task": Task,
     "Throwable": Throwable,
-    "Transaction": Transaction,
     "URI": URI,
     "URL": URL,
     "UpdateAffiliateRequest": UpdateAffiliateRequest,

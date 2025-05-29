@@ -235,7 +235,6 @@ import { ListTaggedCompaniesResponse } from '../models/ListTaggedCompaniesRespon
 import { ListTaggedContactsResponse } from '../models/ListTaggedContactsResponse';
 import { ListTagsResponse } from '../models/ListTagsResponse';
 import { ListTasksResponse } from '../models/ListTasksResponse';
-import { ListTransactionsResponse } from '../models/ListTransactionsResponse';
 import { ListUsersPaginatedResponse } from '../models/ListUsersPaginatedResponse';
 import { LogicalDate } from '../models/LogicalDate';
 import { ModelError } from '../models/ModelError';
@@ -348,7 +347,6 @@ import { Tag } from '../models/Tag';
 import { TaggedCompany } from '../models/TaggedCompany';
 import { Task } from '../models/Task';
 import { Throwable } from '../models/Throwable';
-import { Transaction } from '../models/Transaction';
 import { URI } from '../models/URI';
 import { URL } from '../models/URL';
 import { UpdateAffiliateRequest } from '../models/UpdateAffiliateRequest';
@@ -1803,7 +1801,7 @@ export class PromiseContactApi {
      * Retrieves a single Contact
      * Retrieve a Contact
      * @param contactId contact_id
-     * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_date,update_time,utm_parameters,website)
+     * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
      */
     public getContactUsingGET1WithHttpInfo(contactId: string, fields?: Array<string>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Contact>> {
         const observableOptions = wrapOptions(_options);
@@ -1815,7 +1813,7 @@ export class PromiseContactApi {
      * Retrieves a single Contact
      * Retrieve a Contact
      * @param contactId contact_id
-     * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_date,update_time,utm_parameters,website)
+     * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
      */
     public getContactUsingGET1(contactId: string, fields?: Array<string>, _options?: PromiseConfigurationOptions): Promise<Contact> {
         const observableOptions = wrapOptions(_options);
@@ -1898,7 +1896,7 @@ export class PromiseContactApi {
     /**
      * Retrieves a list of Contacts
      * List Contacts
-     * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_date,update_time,utm_parameters,website)
+     * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
      * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;email&#x60; - (String) &#x60;given_name&#x60; - (String) &#x60;family_name&#x60; - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; 
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;date_created&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
@@ -1913,7 +1911,7 @@ export class PromiseContactApi {
     /**
      * Retrieves a list of Contacts
      * List Contacts
-     * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_date,update_time,utm_parameters,website)
+     * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
      * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;email&#x60; - (String) &#x60;given_name&#x60; - (String) &#x60;family_name&#x60; - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; 
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;date_created&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
@@ -2784,6 +2782,145 @@ export class PromiseFilesApi {
     public updateFileUsingPOST(fileId: string, file?: string, fileName?: string, isPublic?: boolean, updateMask?: string, _options?: PromiseConfigurationOptions): Promise<FileMetadata> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateFileUsingPOST(fileId, file, fileName, isPublic, updateMask, observableOptions);
+        return result.toPromise();
+    }
+
+
+}
+
+
+
+import { ObservableFreeTrialDiscountsApi } from './ObservableAPI';
+
+import { FreeTrialDiscountsApiRequestFactory, FreeTrialDiscountsApiResponseProcessor} from "../apis/FreeTrialDiscountsApi";
+export class PromiseFreeTrialDiscountsApi {
+    private api: ObservableFreeTrialDiscountsApi
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: FreeTrialDiscountsApiRequestFactory,
+        responseProcessor?: FreeTrialDiscountsApiResponseProcessor
+    ) {
+        this.api = new ObservableFreeTrialDiscountsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Creates a Subscription Free Trial Discount
+     * Create a Subscription Free Trial Discount
+     * @param createFreeTrialDiscountRequest createFreeTrialDiscountRequest
+     */
+    public createDiscountUsingPOST1WithHttpInfo(createFreeTrialDiscountRequest: CreateFreeTrialDiscountRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<FreeTrialDiscount>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createDiscountUsingPOST1WithHttpInfo(createFreeTrialDiscountRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a Subscription Free Trial Discount
+     * Create a Subscription Free Trial Discount
+     * @param createFreeTrialDiscountRequest createFreeTrialDiscountRequest
+     */
+    public createDiscountUsingPOST1(createFreeTrialDiscountRequest: CreateFreeTrialDiscountRequest, _options?: PromiseConfigurationOptions): Promise<FreeTrialDiscount> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createDiscountUsingPOST1(createFreeTrialDiscountRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a specified Subscription Free Trial Discount
+     * Delete a Subscription Free Trial Discount
+     * @param discountId discount_id
+     */
+    public deleteDiscountUsingDELETE1WithHttpInfo(discountId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteDiscountUsingDELETE1WithHttpInfo(discountId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a specified Subscription Free Trial Discount
+     * Delete a Subscription Free Trial Discount
+     * @param discountId discount_id
+     */
+    public deleteDiscountUsingDELETE1(discountId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteDiscountUsingDELETE1(discountId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a Subscription Free Trial Discount
+     * Retrieve a Subscription Free Trial Discount
+     * @param discountId discount_id
+     */
+    public getDiscountUsingGET1WithHttpInfo(discountId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<FreeTrialDiscount>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getDiscountUsingGET1WithHttpInfo(discountId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a Subscription Free Trial Discount
+     * Retrieve a Subscription Free Trial Discount
+     * @param discountId discount_id
+     */
+    public getDiscountUsingGET1(discountId: string, _options?: PromiseConfigurationOptions): Promise<FreeTrialDiscount> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getDiscountUsingGET1(discountId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of Subscription Free Trial Discounts
+     * List all Subscription Free Trial Discounts
+     * @param [filter] Filter to apply, allowed fields are: - (Integer) &#x60;free_trial_days&#x60; - (Boolean) &#x60;hide_price&#x60; - (String) &#x60;subscription_plan_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;free_trial_days%3D%3D14&#x60; - &#x60;filter&#x3D;hide_price%3D%3DTrue&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3DmySubscriptionPlanId&#x60; - &#x60;filter&#x3D;free_trial_days%3D%3D14%3Bhide_price%3D%3DFalse&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;free_trial_days&#x60; - &#x60;hide_price&#x60; - &#x60;id&#x60; - &#x60;name&#x60; - &#x60;subscription_plan_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listFreeTrialsUsingGETWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListFreeTrialDiscountsResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listFreeTrialsUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of Subscription Free Trial Discounts
+     * List all Subscription Free Trial Discounts
+     * @param [filter] Filter to apply, allowed fields are: - (Integer) &#x60;free_trial_days&#x60; - (Boolean) &#x60;hide_price&#x60; - (String) &#x60;subscription_plan_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;free_trial_days%3D%3D14&#x60; - &#x60;filter&#x3D;hide_price%3D%3DTrue&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3DmySubscriptionPlanId&#x60; - &#x60;filter&#x3D;free_trial_days%3D%3D14%3Bhide_price%3D%3DFalse&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;free_trial_days&#x60; - &#x60;hide_price&#x60; - &#x60;id&#x60; - &#x60;name&#x60; - &#x60;subscription_plan_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listFreeTrialsUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<ListFreeTrialDiscountsResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listFreeTrialsUsingGET(filter, orderBy, pageSize, pageToken, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates a Subscription Free Trial Discount
+     * Update a Subscription Free Trial Discount
+     * @param discountId discount_id
+     * @param updateFreeTrialDiscountRequest request
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateDiscountUsingPATCH1WithHttpInfo(discountId: string, updateFreeTrialDiscountRequest: UpdateFreeTrialDiscountRequest, updateMask?: Array<string>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<FreeTrialDiscount>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateDiscountUsingPATCH1WithHttpInfo(discountId, updateFreeTrialDiscountRequest, updateMask, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates a Subscription Free Trial Discount
+     * Update a Subscription Free Trial Discount
+     * @param discountId discount_id
+     * @param updateFreeTrialDiscountRequest request
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateDiscountUsingPATCH1(discountId: string, updateFreeTrialDiscountRequest: UpdateFreeTrialDiscountRequest, updateMask?: Array<string>, _options?: PromiseConfigurationOptions): Promise<FreeTrialDiscount> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateDiscountUsingPATCH1(discountId, updateFreeTrialDiscountRequest, updateMask, observableOptions);
         return result.toPromise();
     }
 
@@ -3954,6 +4091,145 @@ export class PromiseOpportunityApi {
 
 
 
+import { ObservableOrderTotalDiscountsApi } from './ObservableAPI';
+
+import { OrderTotalDiscountsApiRequestFactory, OrderTotalDiscountsApiResponseProcessor} from "../apis/OrderTotalDiscountsApi";
+export class PromiseOrderTotalDiscountsApi {
+    private api: ObservableOrderTotalDiscountsApi
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: OrderTotalDiscountsApiRequestFactory,
+        responseProcessor?: OrderTotalDiscountsApiResponseProcessor
+    ) {
+        this.api = new ObservableOrderTotalDiscountsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Creates an Order Total Discount
+     * Create an Order Total Discount
+     * @param createOrderTotalDiscountRequest request
+     */
+    public createOrderTotalDiscountUsingPOSTWithHttpInfo(createOrderTotalDiscountRequest: CreateOrderTotalDiscountRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OrderTotalDiscount>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createOrderTotalDiscountUsingPOSTWithHttpInfo(createOrderTotalDiscountRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates an Order Total Discount
+     * Create an Order Total Discount
+     * @param createOrderTotalDiscountRequest request
+     */
+    public createOrderTotalDiscountUsingPOST(createOrderTotalDiscountRequest: CreateOrderTotalDiscountRequest, _options?: PromiseConfigurationOptions): Promise<OrderTotalDiscount> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createOrderTotalDiscountUsingPOST(createOrderTotalDiscountRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a specified Order Total Discount
+     * Delete an Order Total Discount
+     * @param discountId discount_id
+     */
+    public deleteOrderTotalDiscountUsingDELETEWithHttpInfo(discountId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteOrderTotalDiscountUsingDELETEWithHttpInfo(discountId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a specified Order Total Discount
+     * Delete an Order Total Discount
+     * @param discountId discount_id
+     */
+    public deleteOrderTotalDiscountUsingDELETE(discountId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteOrderTotalDiscountUsingDELETE(discountId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves an Order Total Discount
+     * Retrieve an Order Total Discount
+     * @param discountId discount_id
+     */
+    public getOrderTotalDiscountUsingGETWithHttpInfo(discountId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OrderTotalDiscount>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getOrderTotalDiscountUsingGETWithHttpInfo(discountId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves an Order Total Discount
+     * Retrieve an Order Total Discount
+     * @param discountId discount_id
+     */
+    public getOrderTotalDiscountUsingGET(discountId: string, _options?: PromiseConfigurationOptions): Promise<OrderTotalDiscount> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getOrderTotalDiscountUsingGET(discountId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of Order Total Discounts
+     * List all Order Total Discounts
+     * @param [filter] Filter to apply, allowed fields are: - (Boolean) &#x60;apply_to_commissions&#x60; - (DiscountStrategy) &#x60;discount_strategy&#x60;: GROSS or NET - (DiscountType) &#x60;discount_type&#x60;: AMOUNT or PERCENT - (Double) &#x60;discount_value&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;apply_to_commissions%3D%3Dtrue&#x60; - &#x60;filter&#x3D;discount_strategy%3D%3DGROSS&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT&#x60; - &#x60;filter&#x3D;discount_value%3D%3D10.0&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT%3Bdiscount_strategy%3D%3DNET&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;apply_to_commissions&#x60; - &#x60;discount_strategy&#x60; - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listOrderTotalDiscountsUsingGETWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListOrderTotalDiscountsResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listOrderTotalDiscountsUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of Order Total Discounts
+     * List all Order Total Discounts
+     * @param [filter] Filter to apply, allowed fields are: - (Boolean) &#x60;apply_to_commissions&#x60; - (DiscountStrategy) &#x60;discount_strategy&#x60;: GROSS or NET - (DiscountType) &#x60;discount_type&#x60;: AMOUNT or PERCENT - (Double) &#x60;discount_value&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;apply_to_commissions%3D%3Dtrue&#x60; - &#x60;filter&#x3D;discount_strategy%3D%3DGROSS&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT&#x60; - &#x60;filter&#x3D;discount_value%3D%3D10.0&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT%3Bdiscount_strategy%3D%3DNET&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;apply_to_commissions&#x60; - &#x60;discount_strategy&#x60; - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listOrderTotalDiscountsUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<ListOrderTotalDiscountsResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listOrderTotalDiscountsUsingGET(filter, orderBy, pageSize, pageToken, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates an Order Total Discount
+     * Update an Order Total Discount
+     * @param discountId discount_id
+     * @param updateOrderTotalDiscountRequest request
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateOrderTotalDiscountUsingPATCHWithHttpInfo(discountId: string, updateOrderTotalDiscountRequest: UpdateOrderTotalDiscountRequest, updateMask?: Array<string>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OrderTotalDiscount>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateOrderTotalDiscountUsingPATCHWithHttpInfo(discountId, updateOrderTotalDiscountRequest, updateMask, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates an Order Total Discount
+     * Update an Order Total Discount
+     * @param discountId discount_id
+     * @param updateOrderTotalDiscountRequest request
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateOrderTotalDiscountUsingPATCH(discountId: string, updateOrderTotalDiscountRequest: UpdateOrderTotalDiscountRequest, updateMask?: Array<string>, _options?: PromiseConfigurationOptions): Promise<OrderTotalDiscount> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateOrderTotalDiscountUsingPATCH(discountId, updateOrderTotalDiscountRequest, updateMask, observableOptions);
+        return result.toPromise();
+    }
+
+
+}
+
+
+
 import { ObservableOrdersApi } from './ObservableAPI';
 
 import { OrdersApiRequestFactory, OrdersApiResponseProcessor} from "../apis/OrdersApi";
@@ -4381,6 +4657,145 @@ export class PromisePipelinesApi {
     public update(id: string, updateMask: Array<string>, updatePipelineRequest: UpdatePipelineRequest, _options?: PromiseConfigurationOptions): Promise<Pipeline> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.update(id, updateMask, updatePipelineRequest, observableOptions);
+        return result.toPromise();
+    }
+
+
+}
+
+
+
+import { ObservableProductDiscountsApi } from './ObservableAPI';
+
+import { ProductDiscountsApiRequestFactory, ProductDiscountsApiResponseProcessor} from "../apis/ProductDiscountsApi";
+export class PromiseProductDiscountsApi {
+    private api: ObservableProductDiscountsApi
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: ProductDiscountsApiRequestFactory,
+        responseProcessor?: ProductDiscountsApiResponseProcessor
+    ) {
+        this.api = new ObservableProductDiscountsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Creates a Product Discount
+     * Create a Product Discount
+     * @param createProductDiscountRequest request
+     */
+    public createDiscountUsingPOST2WithHttpInfo(createProductDiscountRequest: CreateProductDiscountRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ProductDiscount>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createDiscountUsingPOST2WithHttpInfo(createProductDiscountRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a Product Discount
+     * Create a Product Discount
+     * @param createProductDiscountRequest request
+     */
+    public createDiscountUsingPOST2(createProductDiscountRequest: CreateProductDiscountRequest, _options?: PromiseConfigurationOptions): Promise<ProductDiscount> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createDiscountUsingPOST2(createProductDiscountRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a specified Product Discount
+     * Delete a Product Discount
+     * @param discountId discount_id
+     */
+    public deleteDiscountUsingDELETE2WithHttpInfo(discountId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteDiscountUsingDELETE2WithHttpInfo(discountId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a specified Product Discount
+     * Delete a Product Discount
+     * @param discountId discount_id
+     */
+    public deleteDiscountUsingDELETE2(discountId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteDiscountUsingDELETE2(discountId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a Product Discount
+     * Retrieve a Product Discount
+     * @param discountId discount_id
+     */
+    public getDiscountUsingGET2WithHttpInfo(discountId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ProductDiscount>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getDiscountUsingGET2WithHttpInfo(discountId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a Product Discount
+     * Retrieve a Product Discount
+     * @param discountId discount_id
+     */
+    public getDiscountUsingGET2(discountId: string, _options?: PromiseConfigurationOptions): Promise<ProductDiscount> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getDiscountUsingGET2(discountId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of Product Discounts
+     * List all Product Discounts
+     * @param [filter] Filter to apply, allowed fields are: - (Boolean) &#x60;apply_to_commissions&#x60; - (DiscountType) &#x60;discount_type&#x60;: AMOUNT or PERCENT - (Double) &#x60;discount_value&#x60; - (String) &#x60;product_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;apply_to_commissions%3D%3Dtrue&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT&#x60; - &#x60;filter&#x3D;discount_value%3D%3D10.0&#x60; - &#x60;filter&#x3D;product_id%3D%3D2&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT%3Bdiscount_value%3D%3D10.0&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;apply_to_commissions&#x60; - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60; - &#x60;product_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listDiscountsUsingGETWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListProductDiscountsResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listDiscountsUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of Product Discounts
+     * List all Product Discounts
+     * @param [filter] Filter to apply, allowed fields are: - (Boolean) &#x60;apply_to_commissions&#x60; - (DiscountType) &#x60;discount_type&#x60;: AMOUNT or PERCENT - (Double) &#x60;discount_value&#x60; - (String) &#x60;product_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;apply_to_commissions%3D%3Dtrue&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT&#x60; - &#x60;filter&#x3D;discount_value%3D%3D10.0&#x60; - &#x60;filter&#x3D;product_id%3D%3D2&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT%3Bdiscount_value%3D%3D10.0&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;apply_to_commissions&#x60; - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60; - &#x60;product_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listDiscountsUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<ListProductDiscountsResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listDiscountsUsingGET(filter, orderBy, pageSize, pageToken, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates a Product Discount
+     * Update a Product Discount
+     * @param discountId discount_id
+     * @param updateProductDiscountRequest request
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateDiscountUsingPATCH2WithHttpInfo(discountId: string, updateProductDiscountRequest: UpdateProductDiscountRequest, updateMask?: Array<string>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ProductDiscount>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateDiscountUsingPATCH2WithHttpInfo(discountId, updateProductDiscountRequest, updateMask, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates a Product Discount
+     * Update a Product Discount
+     * @param discountId discount_id
+     * @param updateProductDiscountRequest request
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateDiscountUsingPATCH2(discountId: string, updateProductDiscountRequest: UpdateProductDiscountRequest, updateMask?: Array<string>, _options?: PromiseConfigurationOptions): Promise<ProductDiscount> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateDiscountUsingPATCH2(discountId, updateProductDiscountRequest, updateMask, observableOptions);
         return result.toPromise();
     }
 
@@ -4817,6 +5232,145 @@ export class PromiseSettingsApi {
     public isApplicationEnabledUsingGET(_options?: PromiseConfigurationOptions): Promise<GetApplicationEnabledStatusResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.isApplicationEnabledUsingGET(observableOptions);
+        return result.toPromise();
+    }
+
+
+}
+
+
+
+import { ObservableShippingDiscountsApi } from './ObservableAPI';
+
+import { ShippingDiscountsApiRequestFactory, ShippingDiscountsApiResponseProcessor} from "../apis/ShippingDiscountsApi";
+export class PromiseShippingDiscountsApi {
+    private api: ObservableShippingDiscountsApi
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: ShippingDiscountsApiRequestFactory,
+        responseProcessor?: ShippingDiscountsApiResponseProcessor
+    ) {
+        this.api = new ObservableShippingDiscountsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Creates a Shipping Discount
+     * Create a Shipping Discount
+     * @param createShippingDiscountRequest request
+     */
+    public createDiscountUsingPOST3WithHttpInfo(createShippingDiscountRequest: CreateShippingDiscountRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ShippingDiscount>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createDiscountUsingPOST3WithHttpInfo(createShippingDiscountRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a Shipping Discount
+     * Create a Shipping Discount
+     * @param createShippingDiscountRequest request
+     */
+    public createDiscountUsingPOST3(createShippingDiscountRequest: CreateShippingDiscountRequest, _options?: PromiseConfigurationOptions): Promise<ShippingDiscount> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createDiscountUsingPOST3(createShippingDiscountRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a specified Shipping Discount
+     * Delete a Shipping Discount
+     * @param discountId discount_id
+     */
+    public deleteDiscountUsingDELETE3WithHttpInfo(discountId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteDiscountUsingDELETE3WithHttpInfo(discountId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a specified Shipping Discount
+     * Delete a Shipping Discount
+     * @param discountId discount_id
+     */
+    public deleteDiscountUsingDELETE3(discountId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteDiscountUsingDELETE3(discountId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a Shipping Discount
+     * Retrieve a Shipping Discount
+     * @param discountId discount_id
+     */
+    public getDiscountUsingGET3WithHttpInfo(discountId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ShippingDiscount>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getDiscountUsingGET3WithHttpInfo(discountId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a Shipping Discount
+     * Retrieve a Shipping Discount
+     * @param discountId discount_id
+     */
+    public getDiscountUsingGET3(discountId: string, _options?: PromiseConfigurationOptions): Promise<ShippingDiscount> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getDiscountUsingGET3(discountId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of Shipping Discounts
+     * List all Shipping Discounts
+     * @param [filter] Filter to apply, allowed fields are: - (DiscountType) &#x60;discount_type&#x60;: AMOUNT or PERCENT - (Double) &#x60;discount_value&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT&#x60; - &#x60;filter&#x3D;discount_value%3D%3D4.5&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT%3Bdiscount_value%3D%3D4.5&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listDiscountsUsingGET1WithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListShippingDiscountsResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listDiscountsUsingGET1WithHttpInfo(filter, orderBy, pageSize, pageToken, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of Shipping Discounts
+     * List all Shipping Discounts
+     * @param [filter] Filter to apply, allowed fields are: - (DiscountType) &#x60;discount_type&#x60;: AMOUNT or PERCENT - (Double) &#x60;discount_value&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT&#x60; - &#x60;filter&#x3D;discount_value%3D%3D4.5&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT%3Bdiscount_value%3D%3D4.5&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listDiscountsUsingGET1(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<ListShippingDiscountsResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listDiscountsUsingGET1(filter, orderBy, pageSize, pageToken, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates a Shipping Discount
+     * Update a Shipping Discount
+     * @param discountId discount_id
+     * @param updateShippingDiscountRequest request
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateDiscountUsingPATCH3WithHttpInfo(discountId: string, updateShippingDiscountRequest: UpdateShippingDiscountRequest, updateMask?: Array<string>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ShippingDiscount>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateDiscountUsingPATCH3WithHttpInfo(discountId, updateShippingDiscountRequest, updateMask, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates a Shipping Discount
+     * Update a Shipping Discount
+     * @param discountId discount_id
+     * @param updateShippingDiscountRequest request
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateDiscountUsingPATCH3(discountId: string, updateShippingDiscountRequest: UpdateShippingDiscountRequest, updateMask?: Array<string>, _options?: PromiseConfigurationOptions): Promise<ShippingDiscount> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateDiscountUsingPATCH3(discountId, updateShippingDiscountRequest, updateMask, observableOptions);
         return result.toPromise();
     }
 
