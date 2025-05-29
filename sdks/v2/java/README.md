@@ -43,7 +43,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.keap.core</groupId>
   <artifactId>core-service-v2-java-sdk</artifactId>
-  <version>1.0.19</version>
+  <version>1.0.20</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.keap.core:core-service-v2-java-sdk:1.0.19"
+compile "com.keap.core:core-service-v2-java-sdk:1.0.20"
 ```
 
 ### Others
@@ -66,7 +66,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/core-service-v2-java-sdk-1.0.19.jar`
+- `target/core-service-v2-java-sdk-1.0.20.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -230,6 +230,38 @@ Class | Method | HTTP request | Description
 *ContactApi* | [**unlinkContactsUsingPOSTWithHttpInfo**](docs/ContactApi.md#unlinkContactsUsingPOSTWithHttpInfo) | **POST** /v2/contacts:unlink | Delete Link between two Contacts
 *ContactApi* | [**updateContactUsingPATCH**](docs/ContactApi.md#updateContactUsingPATCH) | **PATCH** /v2/contacts/{contact_id} | Update a Contact
 *ContactApi* | [**updateContactUsingPATCHWithHttpInfo**](docs/ContactApi.md#updateContactUsingPATCHWithHttpInfo) | **PATCH** /v2/contacts/{contact_id} | Update a Contact
+*CustomFieldsApi* | [**getCustomFields**](docs/CustomFieldsApi.md#getCustomFields) | **GET** /v2/customFields | Retrieves a list of custom fields in a tenant.
+*CustomFieldsApi* | [**getCustomFieldsWithHttpInfo**](docs/CustomFieldsApi.md#getCustomFieldsWithHttpInfo) | **GET** /v2/customFields | Retrieves a list of custom fields in a tenant.
+*CustomFieldsApi* | [**updateCustomField**](docs/CustomFieldsApi.md#updateCustomField) | **PATCH** /v2/customFields/{id} | Updates a custom field
+*CustomFieldsApi* | [**updateCustomFieldWithHttpInfo**](docs/CustomFieldsApi.md#updateCustomFieldWithHttpInfo) | **PATCH** /v2/customFields/{id} | Updates a custom field
+*DateExpressionApi* | [**queryDateExpressions**](docs/DateExpressionApi.md#queryDateExpressions) | **GET** /v2/dateExpressions | 
+*DateExpressionApi* | [**queryDateExpressionsWithHttpInfo**](docs/DateExpressionApi.md#queryDateExpressionsWithHttpInfo) | **GET** /v2/dateExpressions | 
+*DealsApi* | [**createDeal**](docs/DealsApi.md#createDeal) | **POST** /v2/deals | Creates a new deal.
+*DealsApi* | [**createDealWithHttpInfo**](docs/DealsApi.md#createDealWithHttpInfo) | **POST** /v2/deals | Creates a new deal.
+*DealsApi* | [**createNote**](docs/DealsApi.md#createNote) | **POST** /v2/deals/{id}/notes | Creates a new note for a specific deal.
+*DealsApi* | [**createNoteWithHttpInfo**](docs/DealsApi.md#createNoteWithHttpInfo) | **POST** /v2/deals/{id}/notes | Creates a new note for a specific deal.
+*DealsApi* | [**createNotesBulk**](docs/DealsApi.md#createNotesBulk) | **POST** /v2/deals/-/notes | Creates new notes in bulk.
+*DealsApi* | [**createNotesBulkWithHttpInfo**](docs/DealsApi.md#createNotesBulkWithHttpInfo) | **POST** /v2/deals/-/notes | Creates new notes in bulk.
+*DealsApi* | [**deleteDeal**](docs/DealsApi.md#deleteDeal) | **DELETE** /v2/deals/{id} | Deletes a specific deal by its ID.
+*DealsApi* | [**deleteDealWithHttpInfo**](docs/DealsApi.md#deleteDealWithHttpInfo) | **DELETE** /v2/deals/{id} | Deletes a specific deal by its ID.
+*DealsApi* | [**deleteNote**](docs/DealsApi.md#deleteNote) | **DELETE** /v2/deals/-/notes/{note_id} | Deletes a specific deal note by its ID.
+*DealsApi* | [**deleteNoteWithHttpInfo**](docs/DealsApi.md#deleteNoteWithHttpInfo) | **DELETE** /v2/deals/-/notes/{note_id} | Deletes a specific deal note by its ID.
+*DealsApi* | [**getDeal**](docs/DealsApi.md#getDeal) | **GET** /v2/deals/{id} | Retrieves a specific deal by its ID.
+*DealsApi* | [**getDealWithHttpInfo**](docs/DealsApi.md#getDealWithHttpInfo) | **GET** /v2/deals/{id} | Retrieves a specific deal by its ID.
+*DealsApi* | [**getNote**](docs/DealsApi.md#getNote) | **GET** /v2/deals/-/notes/{note_id} | Retrieves a specific deal note by its ID.
+*DealsApi* | [**getNoteWithHttpInfo**](docs/DealsApi.md#getNoteWithHttpInfo) | **GET** /v2/deals/-/notes/{note_id} | Retrieves a specific deal note by its ID.
+*DealsApi* | [**listDeals**](docs/DealsApi.md#listDeals) | **GET** /v2/deals/-/contacts/{contact_id} | Lists all deals associated with a specific contact.
+*DealsApi* | [**listDealsWithHttpInfo**](docs/DealsApi.md#listDealsWithHttpInfo) | **GET** /v2/deals/-/contacts/{contact_id} | Lists all deals associated with a specific contact.
+*DealsApi* | [**listNotes**](docs/DealsApi.md#listNotes) | **GET** /v2/deals/{id}/notes | Lists all notes associated with a specific deal.
+*DealsApi* | [**listNotesWithHttpInfo**](docs/DealsApi.md#listNotesWithHttpInfo) | **GET** /v2/deals/{id}/notes | Lists all notes associated with a specific deal.
+*DealsApi* | [**moveDealsForContacts**](docs/DealsApi.md#moveDealsForContacts) | **POST** /v2/deals/moveByContactIds | Moves the active deals of specified contacts from one stage to another, in bulk.
+*DealsApi* | [**moveDealsForContactsWithHttpInfo**](docs/DealsApi.md#moveDealsForContactsWithHttpInfo) | **POST** /v2/deals/moveByContactIds | Moves the active deals of specified contacts from one stage to another, in bulk.
+*DealsApi* | [**updateNote**](docs/DealsApi.md#updateNote) | **PATCH** /v2/deals/-/notes/{note_id} | Updates a specific deal note by its ID.
+*DealsApi* | [**updateNoteWithHttpInfo**](docs/DealsApi.md#updateNoteWithHttpInfo) | **PATCH** /v2/deals/-/notes/{note_id} | Updates a specific deal note by its ID.
+*DisplayFormsApi* | [**getDisplayForm**](docs/DisplayFormsApi.md#getDisplayForm) | **GET** /v2/pipelines/{id}/form | Retrieves a specific display form by a pipeline ID.
+*DisplayFormsApi* | [**getDisplayFormWithHttpInfo**](docs/DisplayFormsApi.md#getDisplayFormWithHttpInfo) | **GET** /v2/pipelines/{id}/form | Retrieves a specific display form by a pipeline ID.
+*DisplayFormsApi* | [**updateDisplayForm**](docs/DisplayFormsApi.md#updateDisplayForm) | **PATCH** /v2/pipelines/{id}/form | Updates a display form
+*DisplayFormsApi* | [**updateDisplayFormWithHttpInfo**](docs/DisplayFormsApi.md#updateDisplayFormWithHttpInfo) | **PATCH** /v2/pipelines/{id}/form | Updates a display form
 *EmailApi* | [**createEmailUsingPOST1**](docs/EmailApi.md#createEmailUsingPOST1) | **POST** /v2/emails | Create an Email Record
 *EmailApi* | [**createEmailUsingPOST1WithHttpInfo**](docs/EmailApi.md#createEmailUsingPOST1WithHttpInfo) | **POST** /v2/emails | Create an Email Record
 *EmailApi* | [**createEmailsUsingPOST1**](docs/EmailApi.md#createEmailsUsingPOST1) | **POST** /v2/emails:batchAdd | Create a set of Email Records
@@ -372,6 +404,26 @@ Class | Method | HTTP request | Description
 *OrdersApi* | [**updateOrderCustomFieldUsingPATCHWithHttpInfo**](docs/OrdersApi.md#updateOrderCustomFieldUsingPATCHWithHttpInfo) | **PATCH** /v2/orders/model/customFields/{custom_field_id} | Update an Order Custom Field
 *PaymentMethodConfigsApi* | [**createPaymentMethodConfigUsingPOST**](docs/PaymentMethodConfigsApi.md#createPaymentMethodConfigUsingPOST) | **POST** /v2/paymentMethodConfigs | Create Payment Method Configuration
 *PaymentMethodConfigsApi* | [**createPaymentMethodConfigUsingPOSTWithHttpInfo**](docs/PaymentMethodConfigsApi.md#createPaymentMethodConfigUsingPOSTWithHttpInfo) | **POST** /v2/paymentMethodConfigs | Create Payment Method Configuration
+*PipelinesApi* | [**callList**](docs/PipelinesApi.md#callList) | **GET** /v2/pipelines | Lists entities based on the provided ListCommand.
+*PipelinesApi* | [**callListWithHttpInfo**](docs/PipelinesApi.md#callListWithHttpInfo) | **GET** /v2/pipelines | Lists entities based on the provided ListCommand.
+*PipelinesApi* | [**create**](docs/PipelinesApi.md#create) | **POST** /v2/pipelines | Creates a new entity.
+*PipelinesApi* | [**createWithHttpInfo**](docs/PipelinesApi.md#createWithHttpInfo) | **POST** /v2/pipelines | Creates a new entity.
+*PipelinesApi* | [**delete**](docs/PipelinesApi.md#delete) | **DELETE** /v2/pipelines/{id} | Deletes a pipeline.
+*PipelinesApi* | [**deleteWithHttpInfo**](docs/PipelinesApi.md#deleteWithHttpInfo) | **DELETE** /v2/pipelines/{id} | Deletes a pipeline.
+*PipelinesApi* | [**get**](docs/PipelinesApi.md#get) | **GET** /v2/pipelines/{id} | Retrieves an entity by its identifier.
+*PipelinesApi* | [**getWithHttpInfo**](docs/PipelinesApi.md#getWithHttpInfo) | **GET** /v2/pipelines/{id} | Retrieves an entity by its identifier.
+*PipelinesApi* | [**getDealCount**](docs/PipelinesApi.md#getDealCount) | **GET** /v2/pipelines/{id}:dealsCount | Retrieves the count of deals for a specific pipeline.
+*PipelinesApi* | [**getDealCountWithHttpInfo**](docs/PipelinesApi.md#getDealCountWithHttpInfo) | **GET** /v2/pipelines/{id}:dealsCount | Retrieves the count of deals for a specific pipeline.
+*PipelinesApi* | [**getOutcomeLabels**](docs/PipelinesApi.md#getOutcomeLabels) | **GET** /v2/pipelines/{id}/outcomes | Gets the outcome labels for a pipeline.
+*PipelinesApi* | [**getOutcomeLabelsWithHttpInfo**](docs/PipelinesApi.md#getOutcomeLabelsWithHttpInfo) | **GET** /v2/pipelines/{id}/outcomes | Gets the outcome labels for a pipeline.
+*PipelinesApi* | [**listStages**](docs/PipelinesApi.md#listStages) | **GET** /v2/pipelines/{id}/stages | Retrieves a list of stages for a specific pipeline.
+*PipelinesApi* | [**listStagesWithHttpInfo**](docs/PipelinesApi.md#listStagesWithHttpInfo) | **GET** /v2/pipelines/{id}/stages | Retrieves a list of stages for a specific pipeline.
+*PipelinesApi* | [**listSummaries**](docs/PipelinesApi.md#listSummaries) | **GET** /v2/pipelines/summaries | Retrieves a list of pipeline summaries.
+*PipelinesApi* | [**listSummariesWithHttpInfo**](docs/PipelinesApi.md#listSummariesWithHttpInfo) | **GET** /v2/pipelines/summaries | Retrieves a list of pipeline summaries.
+*PipelinesApi* | [**setOutcomeLabels**](docs/PipelinesApi.md#setOutcomeLabels) | **PATCH** /v2/pipelines/{id}/outcomes | Sets the outcome labels for a pipeline.
+*PipelinesApi* | [**setOutcomeLabelsWithHttpInfo**](docs/PipelinesApi.md#setOutcomeLabelsWithHttpInfo) | **PATCH** /v2/pipelines/{id}/outcomes | Sets the outcome labels for a pipeline.
+*PipelinesApi* | [**update**](docs/PipelinesApi.md#update) | **PATCH** /v2/pipelines/{id} | Updates an existing entity.
+*PipelinesApi* | [**updateWithHttpInfo**](docs/PipelinesApi.md#updateWithHttpInfo) | **PATCH** /v2/pipelines/{id} | Updates an existing entity.
 *ProductDiscountsApi* | [**createDiscountUsingPOST2**](docs/ProductDiscountsApi.md#createDiscountUsingPOST2) | **POST** /v2/discounts/products | Create a Product Discount
 *ProductDiscountsApi* | [**createDiscountUsingPOST2WithHttpInfo**](docs/ProductDiscountsApi.md#createDiscountUsingPOST2WithHttpInfo) | **POST** /v2/discounts/products | Create a Product Discount
 *ProductDiscountsApi* | [**deleteDiscountUsingDELETE2**](docs/ProductDiscountsApi.md#deleteDiscountUsingDELETE2) | **DELETE** /v2/discounts/products/{discount_id} | Delete a Product Discount
@@ -422,6 +474,20 @@ Class | Method | HTTP request | Description
 *ShippingDiscountsApi* | [**listDiscountsUsingGET1WithHttpInfo**](docs/ShippingDiscountsApi.md#listDiscountsUsingGET1WithHttpInfo) | **GET** /v2/discounts/shipping | List all Shipping Discounts
 *ShippingDiscountsApi* | [**updateDiscountUsingPATCH3**](docs/ShippingDiscountsApi.md#updateDiscountUsingPATCH3) | **PATCH** /v2/discounts/shipping/{discount_id} | Update a Shipping Discount
 *ShippingDiscountsApi* | [**updateDiscountUsingPATCH3WithHttpInfo**](docs/ShippingDiscountsApi.md#updateDiscountUsingPATCH3WithHttpInfo) | **PATCH** /v2/discounts/shipping/{discount_id} | Update a Shipping Discount
+*StagesApi* | [**countDealsInStage**](docs/StagesApi.md#countDealsInStage) | **GET** /v2/stages/{id}/dealCount | Counts the number of deals in a specific stage.
+*StagesApi* | [**countDealsInStageWithHttpInfo**](docs/StagesApi.md#countDealsInStageWithHttpInfo) | **GET** /v2/stages/{id}/dealCount | Counts the number of deals in a specific stage.
+*StagesApi* | [**create1**](docs/StagesApi.md#create1) | **POST** /v2/stages | Creates a new entity.
+*StagesApi* | [**create1WithHttpInfo**](docs/StagesApi.md#create1WithHttpInfo) | **POST** /v2/stages | Creates a new entity.
+*StagesApi* | [**delete1**](docs/StagesApi.md#delete1) | **DELETE** /v2/stages/{id} | Deletes a stage by its identifier for a given tenant.
+*StagesApi* | [**delete1WithHttpInfo**](docs/StagesApi.md#delete1WithHttpInfo) | **DELETE** /v2/stages/{id} | Deletes a stage by its identifier for a given tenant.
+*StagesApi* | [**get1**](docs/StagesApi.md#get1) | **GET** /v2/stages/{id} | Retrieves an entity by its identifier.
+*StagesApi* | [**get1WithHttpInfo**](docs/StagesApi.md#get1WithHttpInfo) | **GET** /v2/stages/{id} | Retrieves an entity by its identifier.
+*StagesApi* | [**list1**](docs/StagesApi.md#list1) | **GET** /v2/stages | Lists entities based on the provided ListCommand.
+*StagesApi* | [**list1WithHttpInfo**](docs/StagesApi.md#list1WithHttpInfo) | **GET** /v2/stages | Lists entities based on the provided ListCommand.
+*StagesApi* | [**listStageDeals**](docs/StagesApi.md#listStageDeals) | **GET** /v2/stages/{id}/deals | Retrieves a list of deals for a specific stage.
+*StagesApi* | [**listStageDealsWithHttpInfo**](docs/StagesApi.md#listStageDealsWithHttpInfo) | **GET** /v2/stages/{id}/deals | Retrieves a list of deals for a specific stage.
+*StagesApi* | [**update1**](docs/StagesApi.md#update1) | **PATCH** /v2/stages/{id} | Updates an existing entity.
+*StagesApi* | [**update1WithHttpInfo**](docs/StagesApi.md#update1WithHttpInfo) | **PATCH** /v2/stages/{id} | Updates an existing entity.
 *SubscriptionsApi* | [**createSubscriptionCustomFieldUsingPOST**](docs/SubscriptionsApi.md#createSubscriptionCustomFieldUsingPOST) | **POST** /v2/subscriptions/model/customFields | Create a Subscription Custom Field
 *SubscriptionsApi* | [**createSubscriptionCustomFieldUsingPOSTWithHttpInfo**](docs/SubscriptionsApi.md#createSubscriptionCustomFieldUsingPOSTWithHttpInfo) | **POST** /v2/subscriptions/model/customFields | Create a Subscription Custom Field
 *SubscriptionsApi* | [**createSubscriptionV2UsingPOST**](docs/SubscriptionsApi.md#createSubscriptionV2UsingPOST) | **POST** /v2/subscriptions | Create Subscription
@@ -528,9 +594,19 @@ Class | Method | HTTP request | Description
  - [Automation](docs/Automation.md)
  - [AutomationCategory](docs/AutomationCategory.md)
  - [AutomationLockStatus](docs/AutomationLockStatus.md)
+ - [BaseListResponseDeal](docs/BaseListResponseDeal.md)
+ - [BaseListResponseDealNote](docs/BaseListResponseDealNote.md)
+ - [BaseListResponsePipeline](docs/BaseListResponsePipeline.md)
+ - [BaseListResponsePipelineCustomField](docs/BaseListResponsePipelineCustomField.md)
+ - [BaseListResponsePipelineSummary](docs/BaseListResponsePipelineSummary.md)
+ - [BaseListResponseStage](docs/BaseListResponseStage.md)
  - [BasicCompany](docs/BasicCompany.md)
  - [BasicContact](docs/BasicContact.md)
  - [BasicUser](docs/BasicUser.md)
+ - [BulkCreateDealNoteRequest](docs/BulkCreateDealNoteRequest.md)
+ - [BulkCreateDealNoteResponse](docs/BulkCreateDealNoteResponse.md)
+ - [BulkCreateDealNotesRequest](docs/BulkCreateDealNotesRequest.md)
+ - [BulkCreateDealNotesResponse](docs/BulkCreateDealNotesResponse.md)
  - [BusinessProfileAddressRequest](docs/BusinessProfileAddressRequest.md)
  - [BusinessProfileAddressResponse](docs/BusinessProfileAddressResponse.md)
  - [Campaign](docs/Campaign.md)
@@ -556,6 +632,8 @@ Class | Method | HTTP request | Description
  - [CreateCustomFieldOptionRequest](docs/CreateCustomFieldOptionRequest.md)
  - [CreateCustomFieldRequest](docs/CreateCustomFieldRequest.md)
  - [CreateCustomFieldResponse](docs/CreateCustomFieldResponse.md)
+ - [CreateDealNoteRequest](docs/CreateDealNoteRequest.md)
+ - [CreateDealRequest](docs/CreateDealRequest.md)
  - [CreateDefaultCommissionProgramRequest](docs/CreateDefaultCommissionProgramRequest.md)
  - [CreateEmailSentRequest](docs/CreateEmailSentRequest.md)
  - [CreateEmailsSentRequest](docs/CreateEmailsSentRequest.md)
@@ -573,6 +651,7 @@ Class | Method | HTTP request | Description
  - [CreateOrderTotalDiscountRequest](docs/CreateOrderTotalDiscountRequest.md)
  - [CreatePaymentMethodConfigRequest](docs/CreatePaymentMethodConfigRequest.md)
  - [CreatePaymentRequest](docs/CreatePaymentRequest.md)
+ - [CreatePipelineRequest](docs/CreatePipelineRequest.md)
  - [CreateProductCategoryRequest](docs/CreateProductCategoryRequest.md)
  - [CreateProductCommissionProgramRequest](docs/CreateProductCommissionProgramRequest.md)
  - [CreateProductDiscountRequest](docs/CreateProductDiscountRequest.md)
@@ -581,6 +660,7 @@ Class | Method | HTTP request | Description
  - [CreateReferralRequest](docs/CreateReferralRequest.md)
  - [CreateRestOrderItemRequest](docs/CreateRestOrderItemRequest.md)
  - [CreateShippingDiscountRequest](docs/CreateShippingDiscountRequest.md)
+ - [CreateStageRequest](docs/CreateStageRequest.md)
  - [CreateSubscriptionCommissionProgramRequest](docs/CreateSubscriptionCommissionProgramRequest.md)
  - [CreateSubscriptionPlanRequest](docs/CreateSubscriptionPlanRequest.md)
  - [CreateSubscriptionV2](docs/CreateSubscriptionV2.md)
@@ -596,6 +676,14 @@ Class | Method | HTTP request | Description
  - [CustomFieldMetaData](docs/CustomFieldMetaData.md)
  - [CustomFieldOption](docs/CustomFieldOption.md)
  - [CustomFieldValue](docs/CustomFieldValue.md)
+ - [DateExpression](docs/DateExpression.md)
+ - [DateExpressionResponse](docs/DateExpressionResponse.md)
+ - [Deal](docs/Deal.md)
+ - [DealContact](docs/DealContact.md)
+ - [DealListResponse](docs/DealListResponse.md)
+ - [DealNote](docs/DealNote.md)
+ - [DealNoteListResponse](docs/DealNoteListResponse.md)
+ - [DealStatus](docs/DealStatus.md)
  - [DefaultCommission](docs/DefaultCommission.md)
  - [DeleteEmailsRequest](docs/DeleteEmailsRequest.md)
  - [DeleteEmailsResponse](docs/DeleteEmailsResponse.md)
@@ -604,6 +692,10 @@ Class | Method | HTTP request | Description
  - [DeleteSubscriptionPlanCommissionRequest](docs/DeleteSubscriptionPlanCommissionRequest.md)
  - [Discount](docs/Discount.md)
  - [DiscountCriteria](docs/DiscountCriteria.md)
+ - [DisplayForm](docs/DisplayForm.md)
+ - [DisplayGroup](docs/DisplayGroup.md)
+ - [DisplayProperty](docs/DisplayProperty.md)
+ - [DisplayPropertySource](docs/DisplayPropertySource.md)
  - [EmailAddress](docs/EmailAddress.md)
  - [EmailAddressRequest](docs/EmailAddressRequest.md)
  - [EmailAddressStatus](docs/EmailAddressStatus.md)
@@ -694,7 +786,11 @@ Class | Method | HTTP request | Description
  - [ListTagsResponse](docs/ListTagsResponse.md)
  - [ListTasksResponse](docs/ListTasksResponse.md)
  - [ListUsersPaginatedResponse](docs/ListUsersPaginatedResponse.md)
+ - [LogicalDate](docs/LogicalDate.md)
  - [ModelFile](docs/ModelFile.md)
+ - [Money](docs/Money.md)
+ - [MoveDealsForContactsRequest](docs/MoveDealsForContactsRequest.md)
+ - [MoveDealsForContactsResponse](docs/MoveDealsForContactsResponse.md)
  - [Note](docs/Note.md)
  - [NoteTemplate](docs/NoteTemplate.md)
  - [ObjectModel](docs/ObjectModel.md)
@@ -705,12 +801,49 @@ Class | Method | HTTP request | Description
  - [OrderTotalDiscount](docs/OrderTotalDiscount.md)
  - [Origin](docs/Origin.md)
  - [OriginRequest](docs/OriginRequest.md)
+ - [Owner](docs/Owner.md)
  - [PatchAutomationCategoryRequest](docs/PatchAutomationCategoryRequest.md)
  - [PaymentMethod](docs/PaymentMethod.md)
  - [PaymentMethodConfig](docs/PaymentMethodConfig.md)
  - [PaymentPlan](docs/PaymentPlan.md)
  - [PaymentResult](docs/PaymentResult.md)
  - [PhoneNumber](docs/PhoneNumber.md)
+ - [Pipeline](docs/Pipeline.md)
+ - [PipelineCustomField](docs/PipelineCustomField.md)
+ - [PipelineCustomFieldArrayDisplayOptions](docs/PipelineCustomFieldArrayDisplayOptions.md)
+ - [PipelineCustomFieldArrayPropertyType](docs/PipelineCustomFieldArrayPropertyType.md)
+ - [PipelineCustomFieldBooleanDisplayOptions](docs/PipelineCustomFieldBooleanDisplayOptions.md)
+ - [PipelineCustomFieldBooleanDisplayType](docs/PipelineCustomFieldBooleanDisplayType.md)
+ - [PipelineCustomFieldCardDisplayOptions](docs/PipelineCustomFieldCardDisplayOptions.md)
+ - [PipelineCustomFieldCardProperty](docs/PipelineCustomFieldCardProperty.md)
+ - [PipelineCustomFieldDateTimeOptions](docs/PipelineCustomFieldDateTimeOptions.md)
+ - [PipelineCustomFieldDisplayOptions](docs/PipelineCustomFieldDisplayOptions.md)
+ - [PipelineCustomFieldDisplayOptionsType](docs/PipelineCustomFieldDisplayOptionsType.md)
+ - [PipelineCustomFieldDisplayStyle](docs/PipelineCustomFieldDisplayStyle.md)
+ - [PipelineCustomFieldDurationDisplayOptions](docs/PipelineCustomFieldDurationDisplayOptions.md)
+ - [PipelineCustomFieldDurationOptionsDurationUnit](docs/PipelineCustomFieldDurationOptionsDurationUnit.md)
+ - [PipelineCustomFieldEmptyStateContent](docs/PipelineCustomFieldEmptyStateContent.md)
+ - [PipelineCustomFieldModelPropertyTypeDiscriminator](docs/PipelineCustomFieldModelPropertyTypeDiscriminator.md)
+ - [PipelineCustomFieldOption](docs/PipelineCustomFieldOption.md)
+ - [PipelineCustomFieldOptionDisplayType](docs/PipelineCustomFieldOptionDisplayType.md)
+ - [PipelineCustomFieldOptionGroup](docs/PipelineCustomFieldOptionGroup.md)
+ - [PipelineCustomFieldOptions](docs/PipelineCustomFieldOptions.md)
+ - [PipelineCustomFieldPrimitiveType](docs/PipelineCustomFieldPrimitiveType.md)
+ - [PipelineCustomFieldPropertyValidator](docs/PipelineCustomFieldPropertyValidator.md)
+ - [PipelineCustomFieldRefDisplayOptions](docs/PipelineCustomFieldRefDisplayOptions.md)
+ - [PipelineCustomFieldRefDisplayType](docs/PipelineCustomFieldRefDisplayType.md)
+ - [PipelineCustomFieldRefPropertyType](docs/PipelineCustomFieldRefPropertyType.md)
+ - [PipelineCustomFieldRefType](docs/PipelineCustomFieldRefType.md)
+ - [PipelineCustomFieldSizeValidationType](docs/PipelineCustomFieldSizeValidationType.md)
+ - [PipelineCustomFieldSizeValidator](docs/PipelineCustomFieldSizeValidator.md)
+ - [PipelineCustomFieldType](docs/PipelineCustomFieldType.md)
+ - [PipelineCustomFields](docs/PipelineCustomFields.md)
+ - [PipelineListResponse](docs/PipelineListResponse.md)
+ - [PipelineOutcomeLabel](docs/PipelineOutcomeLabel.md)
+ - [PipelineOutcomeLabelListResponse](docs/PipelineOutcomeLabelListResponse.md)
+ - [PipelineStageListResponse](docs/PipelineStageListResponse.md)
+ - [PipelineSummariesListResponse](docs/PipelineSummariesListResponse.md)
+ - [PipelineSummary](docs/PipelineSummary.md)
  - [ProductCategory](docs/ProductCategory.md)
  - [ProductCommission](docs/ProductCommission.md)
  - [ProductCommissionProgram](docs/ProductCommissionProgram.md)
@@ -754,7 +887,10 @@ Class | Method | HTTP request | Description
  - [ShippingMethod](docs/ShippingMethod.md)
  - [SocialAccount](docs/SocialAccount.md)
  - [StackTraceElement](docs/StackTraceElement.md)
+ - [Stage](docs/Stage.md)
+ - [StageDealListResponse](docs/StageDealListResponse.md)
  - [StageDetails](docs/StageDetails.md)
+ - [StageListResponse](docs/StageListResponse.md)
  - [SubscriptionCommission](docs/SubscriptionCommission.md)
  - [SubscriptionCommissionProgram](docs/SubscriptionCommissionProgram.md)
  - [SubscriptionPlan](docs/SubscriptionPlan.md)
@@ -771,7 +907,12 @@ Class | Method | HTTP request | Description
  - [UpdateCommissionProgramRequest](docs/UpdateCommissionProgramRequest.md)
  - [UpdateCompanyRequest](docs/UpdateCompanyRequest.md)
  - [UpdateCustomFieldMetaDataRequest](docs/UpdateCustomFieldMetaDataRequest.md)
+ - [UpdateCustomFieldRequest](docs/UpdateCustomFieldRequest.md)
+ - [UpdateDealNoteRequest](docs/UpdateDealNoteRequest.md)
  - [UpdateDefaultCommissionProgramRequest](docs/UpdateDefaultCommissionProgramRequest.md)
+ - [UpdateDisplayFormRequest](docs/UpdateDisplayFormRequest.md)
+ - [UpdateDisplayGroupRequest](docs/UpdateDisplayGroupRequest.md)
+ - [UpdateDisplayPropertyRequest](docs/UpdateDisplayPropertyRequest.md)
  - [UpdateEmailAddress](docs/UpdateEmailAddress.md)
  - [UpdateFreeTrialDiscountRequest](docs/UpdateFreeTrialDiscountRequest.md)
  - [UpdateLeadSourceExpenseRequest](docs/UpdateLeadSourceExpenseRequest.md)
@@ -783,6 +924,8 @@ Class | Method | HTTP request | Description
  - [UpdateOrderItemRequest](docs/UpdateOrderItemRequest.md)
  - [UpdateOrderRequest](docs/UpdateOrderRequest.md)
  - [UpdateOrderTotalDiscountRequest](docs/UpdateOrderTotalDiscountRequest.md)
+ - [UpdateOutcomeLabelsRequest](docs/UpdateOutcomeLabelsRequest.md)
+ - [UpdatePipelineRequest](docs/UpdatePipelineRequest.md)
  - [UpdateProductCategoryRequest](docs/UpdateProductCategoryRequest.md)
  - [UpdateProductCommissionProgramRequest](docs/UpdateProductCommissionProgramRequest.md)
  - [UpdateProductDiscountRequest](docs/UpdateProductDiscountRequest.md)
@@ -791,6 +934,7 @@ Class | Method | HTTP request | Description
  - [UpdateProductInventoryRequest](docs/UpdateProductInventoryRequest.md)
  - [UpdateProductRequest](docs/UpdateProductRequest.md)
  - [UpdateShippingDiscountRequest](docs/UpdateShippingDiscountRequest.md)
+ - [UpdateStageRequest](docs/UpdateStageRequest.md)
  - [UpdateSubscriptionCommissionProgramRequest](docs/UpdateSubscriptionCommissionProgramRequest.md)
  - [UpdateSubscriptionPlanRequest](docs/UpdateSubscriptionPlanRequest.md)
  - [UpdateSubscriptionRequest](docs/UpdateSubscriptionRequest.md)

@@ -46,9 +46,19 @@ import { AssignProductsRequest } from '../models/AssignProductsRequest';
 import { Automation } from '../models/Automation';
 import { AutomationCategory } from '../models/AutomationCategory';
 import { AutomationLockStatus } from '../models/AutomationLockStatus';
+import { BaseListResponseDeal } from '../models/BaseListResponseDeal';
+import { BaseListResponseDealNote } from '../models/BaseListResponseDealNote';
+import { BaseListResponsePipeline } from '../models/BaseListResponsePipeline';
+import { BaseListResponsePipelineCustomField } from '../models/BaseListResponsePipelineCustomField';
+import { BaseListResponsePipelineSummary } from '../models/BaseListResponsePipelineSummary';
+import { BaseListResponseStage } from '../models/BaseListResponseStage';
 import { BasicCompany } from '../models/BasicCompany';
 import { BasicContact } from '../models/BasicContact';
 import { BasicUser } from '../models/BasicUser';
+import { BulkCreateDealNoteRequest } from '../models/BulkCreateDealNoteRequest';
+import { BulkCreateDealNoteResponse } from '../models/BulkCreateDealNoteResponse';
+import { BulkCreateDealNotesRequest } from '../models/BulkCreateDealNotesRequest';
+import { BulkCreateDealNotesResponse } from '../models/BulkCreateDealNotesResponse';
 import { BusinessProfileAddressRequest } from '../models/BusinessProfileAddressRequest';
 import { BusinessProfileAddressResponse } from '../models/BusinessProfileAddressResponse';
 import { Campaign } from '../models/Campaign';
@@ -74,6 +84,8 @@ import { CreateContactUtmPropertiesRequest } from '../models/CreateContactUtmPro
 import { CreateCustomFieldOptionRequest } from '../models/CreateCustomFieldOptionRequest';
 import { CreateCustomFieldRequest } from '../models/CreateCustomFieldRequest';
 import { CreateCustomFieldResponse } from '../models/CreateCustomFieldResponse';
+import { CreateDealNoteRequest } from '../models/CreateDealNoteRequest';
+import { CreateDealRequest } from '../models/CreateDealRequest';
 import { CreateDefaultCommissionProgramRequest } from '../models/CreateDefaultCommissionProgramRequest';
 import { CreateEmailSentRequest } from '../models/CreateEmailSentRequest';
 import { CreateEmailsSentRequest } from '../models/CreateEmailsSentRequest';
@@ -91,6 +103,7 @@ import { CreateOrUpdateAffiliateLinkRequest } from '../models/CreateOrUpdateAffi
 import { CreateOrderTotalDiscountRequest } from '../models/CreateOrderTotalDiscountRequest';
 import { CreatePaymentMethodConfigRequest } from '../models/CreatePaymentMethodConfigRequest';
 import { CreatePaymentRequest } from '../models/CreatePaymentRequest';
+import { CreatePipelineRequest } from '../models/CreatePipelineRequest';
 import { CreateProductCategoryRequest } from '../models/CreateProductCategoryRequest';
 import { CreateProductCommissionProgramRequest } from '../models/CreateProductCommissionProgramRequest';
 import { CreateProductDiscountRequest } from '../models/CreateProductDiscountRequest';
@@ -99,6 +112,7 @@ import { CreateProductRequest } from '../models/CreateProductRequest';
 import { CreateReferralRequest } from '../models/CreateReferralRequest';
 import { CreateRestOrderItemRequest } from '../models/CreateRestOrderItemRequest';
 import { CreateShippingDiscountRequest } from '../models/CreateShippingDiscountRequest';
+import { CreateStageRequest } from '../models/CreateStageRequest';
 import { CreateSubscriptionCommissionProgramRequest } from '../models/CreateSubscriptionCommissionProgramRequest';
 import { CreateSubscriptionPlanRequest } from '../models/CreateSubscriptionPlanRequest';
 import { CreateSubscriptionV2 } from '../models/CreateSubscriptionV2';
@@ -114,6 +128,14 @@ import { CustomField } from '../models/CustomField';
 import { CustomFieldMetaData } from '../models/CustomFieldMetaData';
 import { CustomFieldOption } from '../models/CustomFieldOption';
 import { CustomFieldValue } from '../models/CustomFieldValue';
+import { DateExpression } from '../models/DateExpression';
+import { DateExpressionResponse } from '../models/DateExpressionResponse';
+import { Deal } from '../models/Deal';
+import { DealContact } from '../models/DealContact';
+import { DealListResponse } from '../models/DealListResponse';
+import { DealNote } from '../models/DealNote';
+import { DealNoteListResponse } from '../models/DealNoteListResponse';
+import { DealStatus } from '../models/DealStatus';
 import { DefaultCommission } from '../models/DefaultCommission';
 import { DeleteEmailsRequest } from '../models/DeleteEmailsRequest';
 import { DeleteEmailsResponse } from '../models/DeleteEmailsResponse';
@@ -122,6 +144,10 @@ import { DeleteProgramCommissionRequest } from '../models/DeleteProgramCommissio
 import { DeleteSubscriptionPlanCommissionRequest } from '../models/DeleteSubscriptionPlanCommissionRequest';
 import { Discount } from '../models/Discount';
 import { DiscountCriteria } from '../models/DiscountCriteria';
+import { DisplayForm } from '../models/DisplayForm';
+import { DisplayGroup } from '../models/DisplayGroup';
+import { DisplayProperty } from '../models/DisplayProperty';
+import { DisplayPropertySource } from '../models/DisplayPropertySource';
 import { EmailAddress } from '../models/EmailAddress';
 import { EmailAddressRequest } from '../models/EmailAddressRequest';
 import { EmailAddressStatus } from '../models/EmailAddressStatus';
@@ -211,8 +237,12 @@ import { ListTaggedContactsResponse } from '../models/ListTaggedContactsResponse
 import { ListTagsResponse } from '../models/ListTagsResponse';
 import { ListTasksResponse } from '../models/ListTasksResponse';
 import { ListUsersPaginatedResponse } from '../models/ListUsersPaginatedResponse';
+import { LogicalDate } from '../models/LogicalDate';
 import { ModelError } from '../models/ModelError';
 import { ModelFile } from '../models/ModelFile';
+import { Money } from '../models/Money';
+import { MoveDealsForContactsRequest } from '../models/MoveDealsForContactsRequest';
+import { MoveDealsForContactsResponse } from '../models/MoveDealsForContactsResponse';
 import { Note } from '../models/Note';
 import { NoteTemplate } from '../models/NoteTemplate';
 import { ObjectModel } from '../models/ObjectModel';
@@ -223,12 +253,49 @@ import { OrderItemTax } from '../models/OrderItemTax';
 import { OrderTotalDiscount } from '../models/OrderTotalDiscount';
 import { Origin } from '../models/Origin';
 import { OriginRequest } from '../models/OriginRequest';
+import { Owner } from '../models/Owner';
 import { PatchAutomationCategoryRequest } from '../models/PatchAutomationCategoryRequest';
 import { PaymentMethod } from '../models/PaymentMethod';
 import { PaymentMethodConfig } from '../models/PaymentMethodConfig';
 import { PaymentPlan } from '../models/PaymentPlan';
 import { PaymentResult } from '../models/PaymentResult';
 import { PhoneNumber } from '../models/PhoneNumber';
+import { Pipeline } from '../models/Pipeline';
+import { PipelineCustomField } from '../models/PipelineCustomField';
+import { PipelineCustomFieldArrayDisplayOptions } from '../models/PipelineCustomFieldArrayDisplayOptions';
+import { PipelineCustomFieldArrayPropertyType } from '../models/PipelineCustomFieldArrayPropertyType';
+import { PipelineCustomFieldBooleanDisplayOptions } from '../models/PipelineCustomFieldBooleanDisplayOptions';
+import { PipelineCustomFieldBooleanDisplayType } from '../models/PipelineCustomFieldBooleanDisplayType';
+import { PipelineCustomFieldCardDisplayOptions } from '../models/PipelineCustomFieldCardDisplayOptions';
+import { PipelineCustomFieldCardProperty } from '../models/PipelineCustomFieldCardProperty';
+import { PipelineCustomFieldDateTimeOptions } from '../models/PipelineCustomFieldDateTimeOptions';
+import { PipelineCustomFieldDisplayOptions } from '../models/PipelineCustomFieldDisplayOptions';
+import { PipelineCustomFieldDisplayOptionsType } from '../models/PipelineCustomFieldDisplayOptionsType';
+import { PipelineCustomFieldDisplayStyle } from '../models/PipelineCustomFieldDisplayStyle';
+import { PipelineCustomFieldDurationDisplayOptions } from '../models/PipelineCustomFieldDurationDisplayOptions';
+import { PipelineCustomFieldDurationOptionsDurationUnit } from '../models/PipelineCustomFieldDurationOptionsDurationUnit';
+import { PipelineCustomFieldEmptyStateContent } from '../models/PipelineCustomFieldEmptyStateContent';
+import { PipelineCustomFieldModelPropertyTypeDiscriminator } from '../models/PipelineCustomFieldModelPropertyTypeDiscriminator';
+import { PipelineCustomFieldOption } from '../models/PipelineCustomFieldOption';
+import { PipelineCustomFieldOptionDisplayType } from '../models/PipelineCustomFieldOptionDisplayType';
+import { PipelineCustomFieldOptionGroup } from '../models/PipelineCustomFieldOptionGroup';
+import { PipelineCustomFieldOptions } from '../models/PipelineCustomFieldOptions';
+import { PipelineCustomFieldPrimitiveType } from '../models/PipelineCustomFieldPrimitiveType';
+import { PipelineCustomFieldPropertyValidator } from '../models/PipelineCustomFieldPropertyValidator';
+import { PipelineCustomFieldRefDisplayOptions } from '../models/PipelineCustomFieldRefDisplayOptions';
+import { PipelineCustomFieldRefDisplayType } from '../models/PipelineCustomFieldRefDisplayType';
+import { PipelineCustomFieldRefPropertyType } from '../models/PipelineCustomFieldRefPropertyType';
+import { PipelineCustomFieldRefType } from '../models/PipelineCustomFieldRefType';
+import { PipelineCustomFieldSizeValidationType } from '../models/PipelineCustomFieldSizeValidationType';
+import { PipelineCustomFieldSizeValidator } from '../models/PipelineCustomFieldSizeValidator';
+import { PipelineCustomFieldType } from '../models/PipelineCustomFieldType';
+import { PipelineCustomFields } from '../models/PipelineCustomFields';
+import { PipelineListResponse } from '../models/PipelineListResponse';
+import { PipelineOutcomeLabel } from '../models/PipelineOutcomeLabel';
+import { PipelineOutcomeLabelListResponse } from '../models/PipelineOutcomeLabelListResponse';
+import { PipelineStageListResponse } from '../models/PipelineStageListResponse';
+import { PipelineSummariesListResponse } from '../models/PipelineSummariesListResponse';
+import { PipelineSummary } from '../models/PipelineSummary';
 import { ProductCategory } from '../models/ProductCategory';
 import { ProductCommission } from '../models/ProductCommission';
 import { ProductCommissionProgram } from '../models/ProductCommissionProgram';
@@ -272,7 +339,10 @@ import { ShippingInformation } from '../models/ShippingInformation';
 import { ShippingMethod } from '../models/ShippingMethod';
 import { SocialAccount } from '../models/SocialAccount';
 import { StackTraceElement } from '../models/StackTraceElement';
+import { Stage } from '../models/Stage';
+import { StageDealListResponse } from '../models/StageDealListResponse';
 import { StageDetails } from '../models/StageDetails';
+import { StageListResponse } from '../models/StageListResponse';
 import { SubscriptionCommission } from '../models/SubscriptionCommission';
 import { SubscriptionCommissionProgram } from '../models/SubscriptionCommissionProgram';
 import { SubscriptionPlan } from '../models/SubscriptionPlan';
@@ -289,7 +359,12 @@ import { UpdateCategoryDiscountRequest } from '../models/UpdateCategoryDiscountR
 import { UpdateCommissionProgramRequest } from '../models/UpdateCommissionProgramRequest';
 import { UpdateCompanyRequest } from '../models/UpdateCompanyRequest';
 import { UpdateCustomFieldMetaDataRequest } from '../models/UpdateCustomFieldMetaDataRequest';
+import { UpdateCustomFieldRequest } from '../models/UpdateCustomFieldRequest';
+import { UpdateDealNoteRequest } from '../models/UpdateDealNoteRequest';
 import { UpdateDefaultCommissionProgramRequest } from '../models/UpdateDefaultCommissionProgramRequest';
+import { UpdateDisplayFormRequest } from '../models/UpdateDisplayFormRequest';
+import { UpdateDisplayGroupRequest } from '../models/UpdateDisplayGroupRequest';
+import { UpdateDisplayPropertyRequest } from '../models/UpdateDisplayPropertyRequest';
 import { UpdateEmailAddress } from '../models/UpdateEmailAddress';
 import { UpdateFreeTrialDiscountRequest } from '../models/UpdateFreeTrialDiscountRequest';
 import { UpdateLeadSourceExpenseRequest } from '../models/UpdateLeadSourceExpenseRequest';
@@ -301,6 +376,8 @@ import { UpdateOpportunityStageRequest } from '../models/UpdateOpportunityStageR
 import { UpdateOrderItemRequest } from '../models/UpdateOrderItemRequest';
 import { UpdateOrderRequest } from '../models/UpdateOrderRequest';
 import { UpdateOrderTotalDiscountRequest } from '../models/UpdateOrderTotalDiscountRequest';
+import { UpdateOutcomeLabelsRequest } from '../models/UpdateOutcomeLabelsRequest';
+import { UpdatePipelineRequest } from '../models/UpdatePipelineRequest';
 import { UpdateProductCategoryRequest } from '../models/UpdateProductCategoryRequest';
 import { UpdateProductCommissionProgramRequest } from '../models/UpdateProductCommissionProgramRequest';
 import { UpdateProductDiscountRequest } from '../models/UpdateProductDiscountRequest';
@@ -309,6 +386,7 @@ import { UpdateProductInterestRequest } from '../models/UpdateProductInterestReq
 import { UpdateProductInventoryRequest } from '../models/UpdateProductInventoryRequest';
 import { UpdateProductRequest } from '../models/UpdateProductRequest';
 import { UpdateShippingDiscountRequest } from '../models/UpdateShippingDiscountRequest';
+import { UpdateStageRequest } from '../models/UpdateStageRequest';
 import { UpdateSubscriptionCommissionProgramRequest } from '../models/UpdateSubscriptionCommissionProgramRequest';
 import { UpdateSubscriptionPlanRequest } from '../models/UpdateSubscriptionPlanRequest';
 import { UpdateSubscriptionRequest } from '../models/UpdateSubscriptionRequest';
@@ -1913,6 +1991,462 @@ export class PromiseContactApi {
     public updateContactUsingPATCH(contactId: string, updateMask?: Array<string>, createUpdateContactRequest?: CreateUpdateContactRequest, _options?: PromiseConfigurationOptions): Promise<Contact> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateContactUsingPATCH(contactId, updateMask, createUpdateContactRequest, observableOptions);
+        return result.toPromise();
+    }
+
+
+}
+
+
+
+import { ObservableCustomFieldsApi } from './ObservableAPI';
+
+import { CustomFieldsApiRequestFactory, CustomFieldsApiResponseProcessor} from "../apis/CustomFieldsApi";
+export class PromiseCustomFieldsApi {
+    private api: ObservableCustomFieldsApi
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: CustomFieldsApiRequestFactory,
+        responseProcessor?: CustomFieldsApiResponseProcessor
+    ) {
+        this.api = new ObservableCustomFieldsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Retrieves a list of custom fields in a tenant.
+     * Retrieves a list of custom fields in a tenant.
+     * @param [filter]
+     * @param [pageToken]
+     * @param [orderBy]
+     * @param [pageSize]
+     */
+    public getCustomFieldsWithHttpInfo(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<PipelineCustomFields>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getCustomFieldsWithHttpInfo(filter, pageToken, orderBy, pageSize, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of custom fields in a tenant.
+     * Retrieves a list of custom fields in a tenant.
+     * @param [filter]
+     * @param [pageToken]
+     * @param [orderBy]
+     * @param [pageSize]
+     */
+    public getCustomFields(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<PipelineCustomFields> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getCustomFields(filter, pageToken, orderBy, pageSize, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates a custom field
+     * Updates a custom field
+     * @param id the identifier of the custom field to update
+     * @param updateCustomFieldRequest the request body containing updated custom field details
+     */
+    public updateCustomFieldWithHttpInfo(id: string, updateCustomFieldRequest: UpdateCustomFieldRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<PipelineCustomField>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateCustomFieldWithHttpInfo(id, updateCustomFieldRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates a custom field
+     * Updates a custom field
+     * @param id the identifier of the custom field to update
+     * @param updateCustomFieldRequest the request body containing updated custom field details
+     */
+    public updateCustomField(id: string, updateCustomFieldRequest: UpdateCustomFieldRequest, _options?: PromiseConfigurationOptions): Promise<PipelineCustomField> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateCustomField(id, updateCustomFieldRequest, observableOptions);
+        return result.toPromise();
+    }
+
+
+}
+
+
+
+import { ObservableDateExpressionApi } from './ObservableAPI';
+
+import { DateExpressionApiRequestFactory, DateExpressionApiResponseProcessor} from "../apis/DateExpressionApi";
+export class PromiseDateExpressionApi {
+    private api: ObservableDateExpressionApi
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: DateExpressionApiRequestFactory,
+        responseProcessor?: DateExpressionApiResponseProcessor
+    ) {
+        this.api = new ObservableDateExpressionApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * @param [timeZone]
+     * @param [query]
+     */
+    public queryDateExpressionsWithHttpInfo(timeZone?: string, query?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<DateExpressionResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.queryDateExpressionsWithHttpInfo(timeZone, query, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * @param [timeZone]
+     * @param [query]
+     */
+    public queryDateExpressions(timeZone?: string, query?: string, _options?: PromiseConfigurationOptions): Promise<DateExpressionResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.queryDateExpressions(timeZone, query, observableOptions);
+        return result.toPromise();
+    }
+
+
+}
+
+
+
+import { ObservableDealsApi } from './ObservableAPI';
+
+import { DealsApiRequestFactory, DealsApiResponseProcessor} from "../apis/DealsApi";
+export class PromiseDealsApi {
+    private api: ObservableDealsApi
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: DealsApiRequestFactory,
+        responseProcessor?: DealsApiResponseProcessor
+    ) {
+        this.api = new ObservableDealsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Creates a new deal.
+     * Creates a new deal.
+     * @param createDealRequest the request body containing deal details
+     */
+    public createDealWithHttpInfo(createDealRequest: CreateDealRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Deal>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createDealWithHttpInfo(createDealRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a new deal.
+     * Creates a new deal.
+     * @param createDealRequest the request body containing deal details
+     */
+    public createDeal(createDealRequest: CreateDealRequest, _options?: PromiseConfigurationOptions): Promise<Deal> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createDeal(createDealRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a new note for a specific deal.
+     * Creates a new note for a specific deal.
+     * @param id the deal ID to associate the new note with
+     * @param createDealNoteRequest the request body containing note details
+     */
+    public createNoteWithHttpInfo(id: string, createDealNoteRequest: CreateDealNoteRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<DealNote>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createNoteWithHttpInfo(id, createDealNoteRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a new note for a specific deal.
+     * Creates a new note for a specific deal.
+     * @param id the deal ID to associate the new note with
+     * @param createDealNoteRequest the request body containing note details
+     */
+    public createNote(id: string, createDealNoteRequest: CreateDealNoteRequest, _options?: PromiseConfigurationOptions): Promise<DealNote> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createNote(id, createDealNoteRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates new notes in bulk.
+     * Creates new notes in bulk.
+     * @param bulkCreateDealNotesRequest the request body containing note details
+     */
+    public createNotesBulkWithHttpInfo(bulkCreateDealNotesRequest: BulkCreateDealNotesRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BulkCreateDealNotesResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createNotesBulkWithHttpInfo(bulkCreateDealNotesRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates new notes in bulk.
+     * Creates new notes in bulk.
+     * @param bulkCreateDealNotesRequest the request body containing note details
+     */
+    public createNotesBulk(bulkCreateDealNotesRequest: BulkCreateDealNotesRequest, _options?: PromiseConfigurationOptions): Promise<BulkCreateDealNotesResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createNotesBulk(bulkCreateDealNotesRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a specific deal by its ID.
+     * Deletes a specific deal by its ID.
+     * @param id the ID of the deal to delete
+     */
+    public deleteDealWithHttpInfo(id: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteDealWithHttpInfo(id, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a specific deal by its ID.
+     * Deletes a specific deal by its ID.
+     * @param id the ID of the deal to delete
+     */
+    public deleteDeal(id: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteDeal(id, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a specific deal note by its ID.
+     * Deletes a specific deal note by its ID.
+     * @param noteId the ID of the note to delete
+     */
+    public deleteNoteWithHttpInfo(noteId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteNoteWithHttpInfo(noteId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a specific deal note by its ID.
+     * Deletes a specific deal note by its ID.
+     * @param noteId the ID of the note to delete
+     */
+    public deleteNote(noteId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteNote(noteId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a specific deal by its ID.
+     * Retrieves a specific deal by its ID.
+     * @param id the ID of the deal to retrieve
+     */
+    public getDealWithHttpInfo(id: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Deal>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getDealWithHttpInfo(id, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a specific deal by its ID.
+     * Retrieves a specific deal by its ID.
+     * @param id the ID of the deal to retrieve
+     */
+    public getDeal(id: string, _options?: PromiseConfigurationOptions): Promise<Deal> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getDeal(id, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a specific deal note by its ID.
+     * Retrieves a specific deal note by its ID.
+     * @param noteId the ID of the note to retrieve
+     */
+    public getNoteWithHttpInfo(noteId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<DealNote>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getNoteWithHttpInfo(noteId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a specific deal note by its ID.
+     * Retrieves a specific deal note by its ID.
+     * @param noteId the ID of the note to retrieve
+     */
+    public getNote(noteId: string, _options?: PromiseConfigurationOptions): Promise<DealNote> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getNote(noteId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Lists all deals associated with a specific contact.
+     * Lists all deals associated with a specific contact.
+     * @param contactId the contact ID to list deals for
+     * @param [filter]
+     * @param [pageToken]
+     * @param [orderBy]
+     * @param [pageSize]
+     */
+    public listDealsWithHttpInfo(contactId: string, filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<DealListResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listDealsWithHttpInfo(contactId, filter, pageToken, orderBy, pageSize, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Lists all deals associated with a specific contact.
+     * Lists all deals associated with a specific contact.
+     * @param contactId the contact ID to list deals for
+     * @param [filter]
+     * @param [pageToken]
+     * @param [orderBy]
+     * @param [pageSize]
+     */
+    public listDeals(contactId: string, filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<DealListResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listDeals(contactId, filter, pageToken, orderBy, pageSize, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Lists all notes associated with a specific deal.
+     * Lists all notes associated with a specific deal.
+     * @param id the deal ID to list notes for
+     * @param [filter]
+     * @param [pageToken]
+     * @param [orderBy]
+     * @param [pageSize]
+     */
+    public listNotesWithHttpInfo(id: string, filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<DealNoteListResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listNotesWithHttpInfo(id, filter, pageToken, orderBy, pageSize, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Lists all notes associated with a specific deal.
+     * Lists all notes associated with a specific deal.
+     * @param id the deal ID to list notes for
+     * @param [filter]
+     * @param [pageToken]
+     * @param [orderBy]
+     * @param [pageSize]
+     */
+    public listNotes(id: string, filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<DealNoteListResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listNotes(id, filter, pageToken, orderBy, pageSize, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Moves the active deals of specified contacts from one stage to another, in bulk.
+     * Moves the active deals of specified contacts from one stage to another, in bulk.
+     * @param moveDealsForContactsRequest the request body containing move details
+     */
+    public moveDealsForContactsWithHttpInfo(moveDealsForContactsRequest: MoveDealsForContactsRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<MoveDealsForContactsResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.moveDealsForContactsWithHttpInfo(moveDealsForContactsRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Moves the active deals of specified contacts from one stage to another, in bulk.
+     * Moves the active deals of specified contacts from one stage to another, in bulk.
+     * @param moveDealsForContactsRequest the request body containing move details
+     */
+    public moveDealsForContacts(moveDealsForContactsRequest: MoveDealsForContactsRequest, _options?: PromiseConfigurationOptions): Promise<MoveDealsForContactsResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.moveDealsForContacts(moveDealsForContactsRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates a specific deal note by its ID.
+     * Updates a specific deal note by its ID.
+     * @param noteId the ID of the note to update
+     * @param updateDealNoteRequest the request body containing updated note details
+     */
+    public updateNoteWithHttpInfo(noteId: string, updateDealNoteRequest: UpdateDealNoteRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<DealNote>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateNoteWithHttpInfo(noteId, updateDealNoteRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates a specific deal note by its ID.
+     * Updates a specific deal note by its ID.
+     * @param noteId the ID of the note to update
+     * @param updateDealNoteRequest the request body containing updated note details
+     */
+    public updateNote(noteId: string, updateDealNoteRequest: UpdateDealNoteRequest, _options?: PromiseConfigurationOptions): Promise<DealNote> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateNote(noteId, updateDealNoteRequest, observableOptions);
+        return result.toPromise();
+    }
+
+
+}
+
+
+
+import { ObservableDisplayFormsApi } from './ObservableAPI';
+
+import { DisplayFormsApiRequestFactory, DisplayFormsApiResponseProcessor} from "../apis/DisplayFormsApi";
+export class PromiseDisplayFormsApi {
+    private api: ObservableDisplayFormsApi
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: DisplayFormsApiRequestFactory,
+        responseProcessor?: DisplayFormsApiResponseProcessor
+    ) {
+        this.api = new ObservableDisplayFormsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Retrieves a specific display form by a pipeline ID.
+     * Retrieves a specific display form by a pipeline ID.
+     * @param id the ID of the pipeline containing the form
+     */
+    public getDisplayFormWithHttpInfo(id: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<DisplayForm>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getDisplayFormWithHttpInfo(id, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a specific display form by a pipeline ID.
+     * Retrieves a specific display form by a pipeline ID.
+     * @param id the ID of the pipeline containing the form
+     */
+    public getDisplayForm(id: string, _options?: PromiseConfigurationOptions): Promise<DisplayForm> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getDisplayForm(id, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates a display form
+     * Updates a display form
+     * @param id the ID of the pipeline containing the form
+     * @param updateDisplayFormRequest the request body containing updated display form details
+     */
+    public updateDisplayFormWithHttpInfo(id: string, updateDisplayFormRequest: UpdateDisplayFormRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<DisplayForm>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateDisplayFormWithHttpInfo(id, updateDisplayFormRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates a display form
+     * Updates a display form
+     * @param id the ID of the pipeline containing the form
+     * @param updateDisplayFormRequest the request body containing updated display form details
+     */
+    public updateDisplayForm(id: string, updateDisplayFormRequest: UpdateDisplayFormRequest, _options?: PromiseConfigurationOptions): Promise<DisplayForm> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateDisplayForm(id, updateDisplayFormRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -3879,6 +4413,291 @@ export class PromisePaymentMethodConfigsApi {
 
 
 
+import { ObservablePipelinesApi } from './ObservableAPI';
+
+import { PipelinesApiRequestFactory, PipelinesApiResponseProcessor} from "../apis/PipelinesApi";
+export class PromisePipelinesApi {
+    private api: ObservablePipelinesApi
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: PipelinesApiRequestFactory,
+        responseProcessor?: PipelinesApiResponseProcessor
+    ) {
+        this.api = new ObservablePipelinesApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Deletes a pipeline.
+     * Deletes a pipeline.
+     * @param id the pipeline identifier
+     * @param [allowCleanup] flag indicating whether cleanup is allowed, can be null
+     * @param [newStageId] the new stage identifier, can be null
+     */
+    public _deleteWithHttpInfo(id: string, allowCleanup?: boolean, newStageId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api._deleteWithHttpInfo(id, allowCleanup, newStageId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a pipeline.
+     * Deletes a pipeline.
+     * @param id the pipeline identifier
+     * @param [allowCleanup] flag indicating whether cleanup is allowed, can be null
+     * @param [newStageId] the new stage identifier, can be null
+     */
+    public _delete(id: string, allowCleanup?: boolean, newStageId?: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api._delete(id, allowCleanup, newStageId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a new entity.
+     * Creates a new entity.
+     * @param createPipelineRequest the create request
+     */
+    public createWithHttpInfo(createPipelineRequest: CreatePipelineRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Pipeline>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createWithHttpInfo(createPipelineRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a new entity.
+     * Creates a new entity.
+     * @param createPipelineRequest the create request
+     */
+    public create(createPipelineRequest: CreatePipelineRequest, _options?: PromiseConfigurationOptions): Promise<Pipeline> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.create(createPipelineRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves an entity by its identifier.
+     * Retrieves an entity by its identifier.
+     * @param id the entity identifier
+     */
+    public getWithHttpInfo(id: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Pipeline>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getWithHttpInfo(id, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves an entity by its identifier.
+     * Retrieves an entity by its identifier.
+     * @param id the entity identifier
+     */
+    public get(id: string, _options?: PromiseConfigurationOptions): Promise<Pipeline> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.get(id, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves the count of deals for a specific pipeline.
+     * Retrieves the count of deals for a specific pipeline.
+     * @param id the pipeline identifier
+     * @param [filter]
+     * @param [pageToken]
+     * @param [orderBy]
+     * @param [pageSize]
+     */
+    public getDealCountWithHttpInfo(id: string, filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<number>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getDealCountWithHttpInfo(id, filter, pageToken, orderBy, pageSize, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves the count of deals for a specific pipeline.
+     * Retrieves the count of deals for a specific pipeline.
+     * @param id the pipeline identifier
+     * @param [filter]
+     * @param [pageToken]
+     * @param [orderBy]
+     * @param [pageSize]
+     */
+    public getDealCount(id: string, filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<number> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getDealCount(id, filter, pageToken, orderBy, pageSize, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Gets the outcome labels for a pipeline.
+     * Gets the outcome labels for a pipeline.
+     * @param id the pipeline identifier
+     * @param [filter]
+     * @param [pageToken]
+     * @param [orderBy]
+     * @param [pageSize]
+     */
+    public getOutcomeLabelsWithHttpInfo(id: string, filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<PipelineOutcomeLabelListResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getOutcomeLabelsWithHttpInfo(id, filter, pageToken, orderBy, pageSize, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Gets the outcome labels for a pipeline.
+     * Gets the outcome labels for a pipeline.
+     * @param id the pipeline identifier
+     * @param [filter]
+     * @param [pageToken]
+     * @param [orderBy]
+     * @param [pageSize]
+     */
+    public getOutcomeLabels(id: string, filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<PipelineOutcomeLabelListResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getOutcomeLabels(id, filter, pageToken, orderBy, pageSize, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Lists entities based on the provided ListCommand.
+     * Lists entities based on the provided ListCommand.
+     * @param [filter]
+     * @param [pageToken]
+     * @param [orderBy]
+     * @param [pageSize]
+     */
+    public listWithHttpInfo(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<PipelineListResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listWithHttpInfo(filter, pageToken, orderBy, pageSize, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Lists entities based on the provided ListCommand.
+     * Lists entities based on the provided ListCommand.
+     * @param [filter]
+     * @param [pageToken]
+     * @param [orderBy]
+     * @param [pageSize]
+     */
+    public list(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<PipelineListResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.list(filter, pageToken, orderBy, pageSize, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of stages for a specific pipeline.
+     * Retrieves a list of stages for a specific pipeline.
+     * @param id the pipeline identifier
+     * @param [filter]
+     * @param [pageToken]
+     * @param [orderBy]
+     * @param [pageSize]
+     */
+    public listStagesWithHttpInfo(id: string, filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<PipelineStageListResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listStagesWithHttpInfo(id, filter, pageToken, orderBy, pageSize, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of stages for a specific pipeline.
+     * Retrieves a list of stages for a specific pipeline.
+     * @param id the pipeline identifier
+     * @param [filter]
+     * @param [pageToken]
+     * @param [orderBy]
+     * @param [pageSize]
+     */
+    public listStages(id: string, filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<PipelineStageListResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listStages(id, filter, pageToken, orderBy, pageSize, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of pipeline summaries.
+     * Retrieves a list of pipeline summaries.
+     * @param [filter]
+     * @param [pageToken]
+     * @param [orderBy]
+     * @param [pageSize]
+     */
+    public listSummariesWithHttpInfo(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<PipelineSummariesListResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listSummariesWithHttpInfo(filter, pageToken, orderBy, pageSize, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of pipeline summaries.
+     * Retrieves a list of pipeline summaries.
+     * @param [filter]
+     * @param [pageToken]
+     * @param [orderBy]
+     * @param [pageSize]
+     */
+    public listSummaries(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<PipelineSummariesListResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listSummaries(filter, pageToken, orderBy, pageSize, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Sets the outcome labels for a pipeline.
+     * Sets the outcome labels for a pipeline.
+     * @param id the pipeline identifier
+     * @param updateOutcomeLabelsRequest the request containing the new outcome labels
+     */
+    public setOutcomeLabelsWithHttpInfo(id: string, updateOutcomeLabelsRequest: UpdateOutcomeLabelsRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<PipelineOutcomeLabelListResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.setOutcomeLabelsWithHttpInfo(id, updateOutcomeLabelsRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Sets the outcome labels for a pipeline.
+     * Sets the outcome labels for a pipeline.
+     * @param id the pipeline identifier
+     * @param updateOutcomeLabelsRequest the request containing the new outcome labels
+     */
+    public setOutcomeLabels(id: string, updateOutcomeLabelsRequest: UpdateOutcomeLabelsRequest, _options?: PromiseConfigurationOptions): Promise<PipelineOutcomeLabelListResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.setOutcomeLabels(id, updateOutcomeLabelsRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates an existing entity.
+     * Updates an existing entity.
+     * @param id the entity identifier
+     * @param updateMask the fields to update
+     * @param updatePipelineRequest the update request
+     */
+    public updateWithHttpInfo(id: string, updateMask: Array<string>, updatePipelineRequest: UpdatePipelineRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Pipeline>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateWithHttpInfo(id, updateMask, updatePipelineRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates an existing entity.
+     * Updates an existing entity.
+     * @param id the entity identifier
+     * @param updateMask the fields to update
+     * @param updatePipelineRequest the update request
+     */
+    public update(id: string, updateMask: Array<string>, updatePipelineRequest: UpdatePipelineRequest, _options?: PromiseConfigurationOptions): Promise<Pipeline> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.update(id, updateMask, updatePipelineRequest, observableOptions);
+        return result.toPromise();
+    }
+
+
+}
+
+
+
 import { ObservableProductDiscountsApi } from './ObservableAPI';
 
 import { ProductDiscountsApiRequestFactory, ProductDiscountsApiResponseProcessor} from "../apis/ProductDiscountsApi";
@@ -4585,6 +5404,199 @@ export class PromiseShippingDiscountsApi {
     public updateDiscountUsingPATCH3(discountId: string, updateShippingDiscountRequest: UpdateShippingDiscountRequest, updateMask?: Array<string>, _options?: PromiseConfigurationOptions): Promise<ShippingDiscount> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateDiscountUsingPATCH3(discountId, updateShippingDiscountRequest, updateMask, observableOptions);
+        return result.toPromise();
+    }
+
+
+}
+
+
+
+import { ObservableStagesApi } from './ObservableAPI';
+
+import { StagesApiRequestFactory, StagesApiResponseProcessor} from "../apis/StagesApi";
+export class PromiseStagesApi {
+    private api: ObservableStagesApi
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: StagesApiRequestFactory,
+        responseProcessor?: StagesApiResponseProcessor
+    ) {
+        this.api = new ObservableStagesApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Counts the number of deals in a specific stage.
+     * Counts the number of deals in a specific stage.
+     * @param id the stage identifier
+     */
+    public countDealsInStageWithHttpInfo(id: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<number>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.countDealsInStageWithHttpInfo(id, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Counts the number of deals in a specific stage.
+     * Counts the number of deals in a specific stage.
+     * @param id the stage identifier
+     */
+    public countDealsInStage(id: string, _options?: PromiseConfigurationOptions): Promise<number> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.countDealsInStage(id, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a new entity.
+     * Creates a new entity.
+     * @param createStageRequest the create request
+     */
+    public create1WithHttpInfo(createStageRequest: CreateStageRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Stage>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.create1WithHttpInfo(createStageRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a new entity.
+     * Creates a new entity.
+     * @param createStageRequest the create request
+     */
+    public create1(createStageRequest: CreateStageRequest, _options?: PromiseConfigurationOptions): Promise<Stage> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.create1(createStageRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a stage by its identifier for a given tenant.
+     * Deletes a stage by its identifier for a given tenant.
+     * @param id the stage identifier
+     * @param [newStageId] the new stage identifier, can be null
+     */
+    public delete1WithHttpInfo(id: string, newStageId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.delete1WithHttpInfo(id, newStageId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a stage by its identifier for a given tenant.
+     * Deletes a stage by its identifier for a given tenant.
+     * @param id the stage identifier
+     * @param [newStageId] the new stage identifier, can be null
+     */
+    public delete1(id: string, newStageId?: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.delete1(id, newStageId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves an entity by its identifier.
+     * Retrieves an entity by its identifier.
+     * @param id the entity identifier
+     */
+    public get1WithHttpInfo(id: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Stage>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.get1WithHttpInfo(id, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves an entity by its identifier.
+     * Retrieves an entity by its identifier.
+     * @param id the entity identifier
+     */
+    public get1(id: string, _options?: PromiseConfigurationOptions): Promise<Stage> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.get1(id, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Lists entities based on the provided ListCommand.
+     * Lists entities based on the provided ListCommand.
+     * @param [filter]
+     * @param [pageToken]
+     * @param [orderBy]
+     * @param [pageSize]
+     */
+    public list1WithHttpInfo(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<StageListResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.list1WithHttpInfo(filter, pageToken, orderBy, pageSize, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Lists entities based on the provided ListCommand.
+     * Lists entities based on the provided ListCommand.
+     * @param [filter]
+     * @param [pageToken]
+     * @param [orderBy]
+     * @param [pageSize]
+     */
+    public list1(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<StageListResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.list1(filter, pageToken, orderBy, pageSize, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of deals for a specific stage.
+     * Retrieves a list of deals for a specific stage.
+     * @param id the stage identifier
+     * @param [filter]
+     * @param [pageToken]
+     * @param [orderBy]
+     * @param [pageSize]
+     */
+    public listStageDealsWithHttpInfo(id: string, filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<StageDealListResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listStageDealsWithHttpInfo(id, filter, pageToken, orderBy, pageSize, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of deals for a specific stage.
+     * Retrieves a list of deals for a specific stage.
+     * @param id the stage identifier
+     * @param [filter]
+     * @param [pageToken]
+     * @param [orderBy]
+     * @param [pageSize]
+     */
+    public listStageDeals(id: string, filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<StageDealListResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listStageDeals(id, filter, pageToken, orderBy, pageSize, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates an existing entity.
+     * Updates an existing entity.
+     * @param id the entity identifier
+     * @param updateMask the fields to update
+     * @param updateStageRequest the update request
+     */
+    public update1WithHttpInfo(id: string, updateMask: Array<string>, updateStageRequest: UpdateStageRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Stage>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.update1WithHttpInfo(id, updateMask, updateStageRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates an existing entity.
+     * Updates an existing entity.
+     * @param id the entity identifier
+     * @param updateMask the fields to update
+     * @param updateStageRequest the update request
+     */
+    public update1(id: string, updateMask: Array<string>, updateStageRequest: UpdateStageRequest, _options?: PromiseConfigurationOptions): Promise<Stage> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.update1(id, updateMask, updateStageRequest, observableOptions);
         return result.toPromise();
     }
 
