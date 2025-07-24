@@ -4,17 +4,17 @@ All URIs are relative to https://api.keap.com/crm/rest, except if the operation 
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createLeadSourceCategoryUsingPOST()**](LeadSourceCategoriesApi.md#createLeadSourceCategoryUsingPOST) | **POST** /v2/leadSourceCategories | Create a Lead Source Category |
-| [**deleteLeadSourceCategoryUsingDELETE()**](LeadSourceCategoriesApi.md#deleteLeadSourceCategoryUsingDELETE) | **DELETE** /v2/leadSourceCategories/{lead_source_category_id} | Delete a Lead Source Category |
-| [**getLeadSourceCategoryUsingGET()**](LeadSourceCategoriesApi.md#getLeadSourceCategoryUsingGET) | **GET** /v2/leadSourceCategories/{lead_source_category_id} | Retrieve a Lead Source Category |
-| [**listCategoriesUsingGET1()**](LeadSourceCategoriesApi.md#listCategoriesUsingGET1) | **GET** /v2/leadSourceCategories | List Lead Source Categories |
-| [**updateLeadSourceCategoryUsingPATCH()**](LeadSourceCategoriesApi.md#updateLeadSourceCategoryUsingPATCH) | **PATCH** /v2/leadSourceCategories/{lead_source_category_id} | Update a Lead Source Category |
+| [**createLeadSourceCategory()**](LeadSourceCategoriesApi.md#createLeadSourceCategory) | **POST** /v2/leadSourceCategories | Create a Lead Source Category |
+| [**deleteLeadSourceCategory()**](LeadSourceCategoriesApi.md#deleteLeadSourceCategory) | **DELETE** /v2/leadSourceCategories/{lead_source_category_id} | Delete a Lead Source Category |
+| [**getLeadSourceCategory()**](LeadSourceCategoriesApi.md#getLeadSourceCategory) | **GET** /v2/leadSourceCategories/{lead_source_category_id} | Retrieve a Lead Source Category |
+| [**listLeadSourceCategories()**](LeadSourceCategoriesApi.md#listLeadSourceCategories) | **GET** /v2/leadSourceCategories | List Lead Source Categories |
+| [**updateLeadSourceCategory()**](LeadSourceCategoriesApi.md#updateLeadSourceCategory) | **PATCH** /v2/leadSourceCategories/{lead_source_category_id} | Update a Lead Source Category |
 
 
-## `createLeadSourceCategoryUsingPOST()`
+## `createLeadSourceCategory()`
 
 ```php
-createLeadSourceCategoryUsingPOST($create_update_lead_source_category_request): \Keap\Core\V2\Model\LeadSourceCategory
+createLeadSourceCategory($create_update_lead_source_category_request): \Keap\Core\V2\Model\LeadSourceCategory
 ```
 
 Create a Lead Source Category
@@ -36,10 +36,10 @@ $apiInstance = new Keap\Core\V2\Api\LeadSourceCategoriesApi(
 $create_update_lead_source_category_request = new \Keap\Core\V2\Model\CreateUpdateLeadSourceCategoryRequest(); // \Keap\Core\V2\Model\CreateUpdateLeadSourceCategoryRequest | The request object to create a new lead source category
 
 try {
-    $result = $apiInstance->createLeadSourceCategoryUsingPOST($create_update_lead_source_category_request);
+    $result = $apiInstance->createLeadSourceCategory($create_update_lead_source_category_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling LeadSourceCategoriesApi->createLeadSourceCategoryUsingPOST: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling LeadSourceCategoriesApi->createLeadSourceCategory: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -66,10 +66,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `deleteLeadSourceCategoryUsingDELETE()`
+## `deleteLeadSourceCategory()`
 
 ```php
-deleteLeadSourceCategoryUsingDELETE($lead_source_category_id)
+deleteLeadSourceCategory($lead_source_category_id)
 ```
 
 Delete a Lead Source Category
@@ -91,9 +91,9 @@ $apiInstance = new Keap\Core\V2\Api\LeadSourceCategoriesApi(
 $lead_source_category_id = 'lead_source_category_id_example'; // string | The ID of a lead source category
 
 try {
-    $apiInstance->deleteLeadSourceCategoryUsingDELETE($lead_source_category_id);
+    $apiInstance->deleteLeadSourceCategory($lead_source_category_id);
 } catch (Exception $e) {
-    echo 'Exception when calling LeadSourceCategoriesApi->deleteLeadSourceCategoryUsingDELETE: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling LeadSourceCategoriesApi->deleteLeadSourceCategory: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -120,10 +120,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getLeadSourceCategoryUsingGET()`
+## `getLeadSourceCategory()`
 
 ```php
-getLeadSourceCategoryUsingGET($lead_source_category_id): \Keap\Core\V2\Model\LeadSourceCategory
+getLeadSourceCategory($lead_source_category_id): \Keap\Core\V2\Model\LeadSourceCategory
 ```
 
 Retrieve a Lead Source Category
@@ -145,10 +145,10 @@ $apiInstance = new Keap\Core\V2\Api\LeadSourceCategoriesApi(
 $lead_source_category_id = 'lead_source_category_id_example'; // string | The ID of a lead source category
 
 try {
-    $result = $apiInstance->getLeadSourceCategoryUsingGET($lead_source_category_id);
+    $result = $apiInstance->getLeadSourceCategory($lead_source_category_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling LeadSourceCategoriesApi->getLeadSourceCategoryUsingGET: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling LeadSourceCategoriesApi->getLeadSourceCategory: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -175,10 +175,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `listCategoriesUsingGET1()`
+## `listLeadSourceCategories()`
 
 ```php
-listCategoriesUsingGET1($filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListLeadSourceCategoriesResponse
+listLeadSourceCategories($filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListLeadSourceCategoriesResponse
 ```
 
 List Lead Source Categories
@@ -203,10 +203,10 @@ $page_size = 0; // int | Total number of items to return per page
 $page_token = 'page_token_example'; // string | Page token
 
 try {
-    $result = $apiInstance->listCategoriesUsingGET1($filter, $order_by, $page_size, $page_token);
+    $result = $apiInstance->listLeadSourceCategories($filter, $order_by, $page_size, $page_token);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling LeadSourceCategoriesApi->listCategoriesUsingGET1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling LeadSourceCategoriesApi->listLeadSourceCategories: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -236,10 +236,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `updateLeadSourceCategoryUsingPATCH()`
+## `updateLeadSourceCategory()`
 
 ```php
-updateLeadSourceCategoryUsingPATCH($lead_source_category_id, $create_update_lead_source_category_request, $update_mask): \Keap\Core\V2\Model\LeadSourceCategory
+updateLeadSourceCategory($lead_source_category_id, $create_update_lead_source_category_request, $update_mask): \Keap\Core\V2\Model\LeadSourceCategory
 ```
 
 Update a Lead Source Category
@@ -263,10 +263,10 @@ $create_update_lead_source_category_request = new \Keap\Core\V2\Model\CreateUpda
 $update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
-    $result = $apiInstance->updateLeadSourceCategoryUsingPATCH($lead_source_category_id, $create_update_lead_source_category_request, $update_mask);
+    $result = $apiInstance->updateLeadSourceCategory($lead_source_category_id, $create_update_lead_source_category_request, $update_mask);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling LeadSourceCategoriesApi->updateLeadSourceCategoryUsingPATCH: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling LeadSourceCategoriesApi->updateLeadSourceCategory: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

@@ -20,7 +20,7 @@ export class BusinessProfileApiRequestFactory extends BaseAPIRequestFactory {
      * Retrieves Business Profile information.
      * Retrieve Business Profile
      */
-    public async getBusinessProfileUsingGET(_options?: Configuration): Promise<RequestContext> {
+    public async getBusinessProfile(_options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // Path Params
@@ -46,7 +46,7 @@ export class BusinessProfileApiRequestFactory extends BaseAPIRequestFactory {
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @param updateBusinessProfileRequest businessProfile
      */
-    public async updateBusinessProfileUsingPATCH(updateMask?: Array<string>, updateBusinessProfileRequest?: UpdateBusinessProfileRequest, _options?: Configuration): Promise<RequestContext> {
+    public async updateBusinessProfile(updateMask?: Array<string>, updateBusinessProfileRequest?: UpdateBusinessProfileRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
 
@@ -95,10 +95,10 @@ export class BusinessProfileApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to getBusinessProfileUsingGET
+     * @params response Response returned by the server for a request to getBusinessProfile
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getBusinessProfileUsingGETWithHttpInfo(response: ResponseContext): Promise<HttpInfo<GetBusinessProfileResponse >> {
+     public async getBusinessProfileWithHttpInfo(response: ResponseContext): Promise<HttpInfo<GetBusinessProfileResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: GetBusinessProfileResponse = ObjectSerializer.deserialize(
@@ -152,10 +152,10 @@ export class BusinessProfileApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to updateBusinessProfileUsingPATCH
+     * @params response Response returned by the server for a request to updateBusinessProfile
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async updateBusinessProfileUsingPATCHWithHttpInfo(response: ResponseContext): Promise<HttpInfo<GetBusinessProfileResponse >> {
+     public async updateBusinessProfileWithHttpInfo(response: ResponseContext): Promise<HttpInfo<GetBusinessProfileResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: GetBusinessProfileResponse = ObjectSerializer.deserialize(

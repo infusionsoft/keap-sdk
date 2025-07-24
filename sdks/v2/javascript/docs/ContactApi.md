@@ -4,67 +4,23 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createContactLinkTypeUsingPOST**](ContactApi.md#createContactLinkTypeUsingPOST) | **POST** /v2/contacts/links/types | Create a Contact Link type
-[**createContactUsingPOST1**](ContactApi.md#createContactUsingPOST1) | **POST** /v2/contacts | Create a Contact
-[**deleteContactUsingDELETE1**](ContactApi.md#deleteContactUsingDELETE1) | **DELETE** /v2/contacts/{contact_id} | Delete a Contact
-[**getContactUsingGET1**](ContactApi.md#getContactUsingGET1) | **GET** /v2/contacts/{contact_id} | Retrieve a Contact
-[**linkContactsUsingPOST**](ContactApi.md#linkContactsUsingPOST) | **POST** /v2/contacts:link | Link Contacts
-[**listContactLinkTypesUsingGET**](ContactApi.md#listContactLinkTypesUsingGET) | **GET** /v2/contacts/links/types | List Contact Link types
-[**listContactLinksUsingGET**](ContactApi.md#listContactLinksUsingGET) | **GET** /v2/contacts/{contact_id}/links | List Linked Contacts
-[**listContactsUsingGET1**](ContactApi.md#listContactsUsingGET1) | **GET** /v2/contacts | List Contacts
-[**retrieveContactModelUsingGET1**](ContactApi.md#retrieveContactModelUsingGET1) | **GET** /v2/contacts/model | Retrieve Contact Model
-[**unlinkContactsUsingPOST**](ContactApi.md#unlinkContactsUsingPOST) | **POST** /v2/contacts:unlink | Delete Link between two Contacts
-[**updateContactUsingPATCH**](ContactApi.md#updateContactUsingPATCH) | **PATCH** /v2/contacts/{contact_id} | Update a Contact
+[**createContact**](ContactApi.md#createContact) | **POST** /v2/contacts | Create a Contact
+[**createContactLinkType**](ContactApi.md#createContactLinkType) | **POST** /v2/contacts/links/types | Create a Contact Link type
+[**deleteContact**](ContactApi.md#deleteContact) | **DELETE** /v2/contacts/{contact_id} | Delete a Contact
+[**getContact**](ContactApi.md#getContact) | **GET** /v2/contacts/{contact_id} | Retrieve a Contact
+[**linkContacts**](ContactApi.md#linkContacts) | **POST** /v2/contacts:link | Link Contacts
+[**listContactLinkTypes**](ContactApi.md#listContactLinkTypes) | **GET** /v2/contacts/links/types | List Contact Link types
+[**listContactLinks**](ContactApi.md#listContactLinks) | **GET** /v2/contacts/{contact_id}/links | List Linked Contacts
+[**listContacts**](ContactApi.md#listContacts) | **GET** /v2/contacts | List Contacts
+[**retrieveContactModel**](ContactApi.md#retrieveContactModel) | **GET** /v2/contacts/model | Retrieve Contact Model
+[**unlinkContacts**](ContactApi.md#unlinkContacts) | **POST** /v2/contacts:unlink | Delete Link between two Contacts
+[**updateContact**](ContactApi.md#updateContact) | **PATCH** /v2/contacts/{contact_id} | Update a Contact
 
 
 
-## createContactLinkTypeUsingPOST
+## createContact
 
-> ContactLinkType createContactLinkTypeUsingPOST(createContactLinkTypeRequest)
-
-Create a Contact Link type
-
-Creates a new type of Contact Link
-
-### Example
-
-```javascript
-import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
-
-let apiInstance = new KeapCoreServiceV2Sdk.ContactApi();
-let createContactLinkTypeRequest = new KeapCoreServiceV2Sdk.CreateContactLinkTypeRequest(); // CreateContactLinkTypeRequest | request
-apiInstance.createContactLinkTypeUsingPOST(createContactLinkTypeRequest).then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
-  console.error(error);
-});
-
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **createContactLinkTypeRequest** | [**CreateContactLinkTypeRequest**](CreateContactLinkTypeRequest.md)| request | 
-
-### Return type
-
-[**ContactLinkType**](ContactLinkType.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## createContactUsingPOST1
-
-> Contact createContactUsingPOST1(opts)
+> Contact createContact(opts)
 
 Create a Contact
 
@@ -79,7 +35,7 @@ let apiInstance = new KeapCoreServiceV2Sdk.ContactApi();
 let opts = {
   'createUpdateContactRequest': new KeapCoreServiceV2Sdk.CreateUpdateContactRequest() // CreateUpdateContactRequest | contact
 };
-apiInstance.createContactUsingPOST1(opts).then((data) => {
+apiInstance.createContact(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -108,9 +64,53 @@ No authorization required
 - **Accept**: application/json
 
 
-## deleteContactUsingDELETE1
+## createContactLinkType
 
-> deleteContactUsingDELETE1(contactId)
+> ContactLinkType createContactLinkType(createContactLinkTypeRequest)
+
+Create a Contact Link type
+
+Creates a new type of Contact Link
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+
+let apiInstance = new KeapCoreServiceV2Sdk.ContactApi();
+let createContactLinkTypeRequest = new KeapCoreServiceV2Sdk.CreateContactLinkTypeRequest(); // CreateContactLinkTypeRequest | request
+apiInstance.createContactLinkType(createContactLinkTypeRequest).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createContactLinkTypeRequest** | [**CreateContactLinkTypeRequest**](CreateContactLinkTypeRequest.md)| request | 
+
+### Return type
+
+[**ContactLinkType**](ContactLinkType.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## deleteContact
+
+> deleteContact(contactId)
 
 Delete a Contact
 
@@ -123,7 +123,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.ContactApi();
 let contactId = "contactId_example"; // String | contact_id
-apiInstance.deleteContactUsingDELETE1(contactId).then(() => {
+apiInstance.deleteContact(contactId).then(() => {
   console.log('API called successfully.');
 }, (error) => {
   console.error(error);
@@ -152,9 +152,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## getContactUsingGET1
+## getContact
 
-> Contact getContactUsingGET1(contactId, opts)
+> Contact getContact(contactId, opts)
 
 Retrieve a Contact
 
@@ -170,7 +170,7 @@ let contactId = "contactId_example"; // String | contact_id
 let opts = {
   'fields': ["null"] // [String] | Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
 };
-apiInstance.getContactUsingGET1(contactId, opts).then((data) => {
+apiInstance.getContact(contactId, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -200,9 +200,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## linkContactsUsingPOST
+## linkContacts
 
-> ContactLink linkContactsUsingPOST(linkContactsRequest)
+> ContactLink linkContacts(linkContactsRequest)
 
 Link Contacts
 
@@ -215,7 +215,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.ContactApi();
 let linkContactsRequest = new KeapCoreServiceV2Sdk.LinkContactsRequest(); // LinkContactsRequest | linkContactsRequest
-apiInstance.linkContactsUsingPOST(linkContactsRequest).then((data) => {
+apiInstance.linkContacts(linkContactsRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -244,9 +244,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## listContactLinkTypesUsingGET
+## listContactLinkTypes
 
-> ListContactLinkTypesResponse listContactLinkTypesUsingGET(opts)
+> ListContactLinkTypesResponse listContactLinkTypes(opts)
 
 List Contact Link types
 
@@ -259,12 +259,12 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.ContactApi();
 let opts = {
-  'filter': "filter_example", // String | Search filter to apply to results. Formatted as (unencoded) ?filter=name==expectedValue
-  'orderBy': "orderBy_example", // String | 
-  'pageSize': 56, // Number | 
-  'pageToken': "pageToken_example" // String | 
+  'filter': "filter_example", // String | Filter to apply, allowed fields are: - (String) `name` You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=name%3D%3DexpectedValue` 
+  'orderBy': "orderBy_example", // String | Attribute and direction to order items. One of the following fields: - `name` - `max_links` - `create_time`  One of the following directions: - `asc` - `desc` 
+  'pageSize': 0, // Number | Total number of items to return per page
+  'pageToken': "pageToken_example" // String | Page token
 };
-apiInstance.listContactLinkTypesUsingGET(opts).then((data) => {
+apiInstance.listContactLinkTypes(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -277,10 +277,10 @@ apiInstance.listContactLinkTypesUsingGET(opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filter** | **String**| Search filter to apply to results. Formatted as (unencoded) ?filter&#x3D;name&#x3D;&#x3D;expectedValue | [optional] 
- **orderBy** | **String**|  | [optional] 
- **pageSize** | **Number**|  | [optional] 
- **pageToken** | **String**|  | [optional] 
+ **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;name&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3DexpectedValue&#x60;  | [optional] 
+ **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;max_links&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  | [optional] 
+ **pageSize** | **Number**| Total number of items to return per page | [optional] 
+ **pageToken** | **String**| Page token | [optional] 
 
 ### Return type
 
@@ -296,9 +296,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## listContactLinksUsingGET
+## listContactLinks
 
-> ListContactLinksResponse listContactLinksUsingGET(contactId)
+> ListContactLinksResponse listContactLinks(contactId)
 
 List Linked Contacts
 
@@ -311,7 +311,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.ContactApi();
 let contactId = "contactId_example"; // String | contact_id
-apiInstance.listContactLinksUsingGET(contactId).then((data) => {
+apiInstance.listContactLinks(contactId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -340,9 +340,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## listContactsUsingGET1
+## listContacts
 
-> ListContactsResponse listContactsUsingGET1(opts)
+> ListContactsResponse listContacts(opts)
 
 List Contacts
 
@@ -361,7 +361,7 @@ let opts = {
   'pageSize': 0, // Number | Total number of items to return per page
   'pageToken': "pageToken_example" // String | Page token
 };
-apiInstance.listContactsUsingGET1(opts).then((data) => {
+apiInstance.listContacts(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -394,9 +394,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## retrieveContactModelUsingGET1
+## retrieveContactModel
 
-> ObjectModel retrieveContactModelUsingGET1()
+> ObjectModel retrieveContactModel()
 
 Retrieve Contact Model
 
@@ -408,7 +408,7 @@ Get the custom fields and optional properties for the Contact object
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.ContactApi();
-apiInstance.retrieveContactModelUsingGET1().then((data) => {
+apiInstance.retrieveContactModel().then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -434,9 +434,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## unlinkContactsUsingPOST
+## unlinkContacts
 
-> unlinkContactsUsingPOST(linkContactsRequest)
+> unlinkContacts(linkContactsRequest)
 
 Delete Link between two Contacts
 
@@ -449,7 +449,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.ContactApi();
 let linkContactsRequest = new KeapCoreServiceV2Sdk.LinkContactsRequest(); // LinkContactsRequest | linkContactsRequest
-apiInstance.unlinkContactsUsingPOST(linkContactsRequest).then(() => {
+apiInstance.unlinkContacts(linkContactsRequest).then(() => {
   console.log('API called successfully.');
 }, (error) => {
   console.error(error);
@@ -478,9 +478,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## updateContactUsingPATCH
+## updateContact
 
-> Contact updateContactUsingPATCH(contactId, opts)
+> Contact updateContact(contactId, opts)
 
 Update a Contact
 
@@ -497,7 +497,7 @@ let opts = {
   'updateMask': ["null"], // [String] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
   'createUpdateContactRequest': new KeapCoreServiceV2Sdk.CreateUpdateContactRequest() // CreateUpdateContactRequest | contact
 };
-apiInstance.updateContactUsingPATCH(contactId, opts).then((data) => {
+apiInstance.updateContact(contactId, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);

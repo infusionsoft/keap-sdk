@@ -4,15 +4,15 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getApplicationConfigurationsUsingGET**](SettingsApi.md#getApplicationConfigurationsUsingGET) | **GET** /v2/settings/applications:getConfiguration | Get Application Configuration
-[**getContactOptionTypesUsingGET1**](SettingsApi.md#getContactOptionTypesUsingGET1) | **GET** /v2/settings/contactOptionTypes | Get Contact Option types
-[**isApplicationEnabledUsingGET**](SettingsApi.md#isApplicationEnabledUsingGET) | **GET** /v2/settings/applications:isEnabled | Get Application Status
+[**getApplicationConfigurations**](SettingsApi.md#getApplicationConfigurations) | **GET** /v2/settings/applications:getConfiguration | Get Application Configuration
+[**getContactOptionTypes**](SettingsApi.md#getContactOptionTypes) | **GET** /v2/settings/contactOptionTypes | Get Contact Option types
+[**isApplicationEnabled**](SettingsApi.md#isApplicationEnabled) | **GET** /v2/settings/applications:isEnabled | Get Application Status
 
 
 
-## getApplicationConfigurationsUsingGET
+## getApplicationConfigurations
 
-> GetSettingsResponse getApplicationConfigurationsUsingGET(opts)
+> GetSettingsResponse getApplicationConfigurations(opts)
 
 Get Application Configuration
 
@@ -27,7 +27,7 @@ let apiInstance = new KeapCoreServiceV2Sdk.SettingsApi();
 let opts = {
   'fields': ["null"] // [String] | By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query.
 };
-apiInstance.getApplicationConfigurationsUsingGET(opts).then((data) => {
+apiInstance.getApplicationConfigurations(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -56,9 +56,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## getContactOptionTypesUsingGET1
+## getContactOptionTypes
 
-> GetContactOptionTypesResponse getContactOptionTypesUsingGET1()
+> GetContactOptionTypesResponse getContactOptionTypes()
 
 Get Contact Option types
 
@@ -70,7 +70,7 @@ Gets a list of Contact Option types.
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.SettingsApi();
-apiInstance.getContactOptionTypesUsingGET1().then((data) => {
+apiInstance.getContactOptionTypes().then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -96,9 +96,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## isApplicationEnabledUsingGET
+## isApplicationEnabled
 
-> GetApplicationEnabledStatusResponse isApplicationEnabledUsingGET()
+> GetApplicationEnabledStatusResponse isApplicationEnabled()
 
 Get Application Status
 
@@ -110,7 +110,7 @@ Check if the application is enabled or not
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.SettingsApi();
-apiInstance.isApplicationEnabledUsingGET().then((data) => {
+apiInstance.isApplicationEnabled().then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);

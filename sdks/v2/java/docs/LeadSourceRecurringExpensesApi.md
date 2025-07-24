@@ -4,24 +4,24 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createLeadSourceRecurringExpenseUsingPOST**](LeadSourceRecurringExpensesApi.md#createLeadSourceRecurringExpenseUsingPOST) | **POST** /v2/leadSources/{lead_source_id}/recurringExpenses | Create a Lead Source Recurring Expense |
-| [**createLeadSourceRecurringExpenseUsingPOSTWithHttpInfo**](LeadSourceRecurringExpensesApi.md#createLeadSourceRecurringExpenseUsingPOSTWithHttpInfo) | **POST** /v2/leadSources/{lead_source_id}/recurringExpenses | Create a Lead Source Recurring Expense |
-| [**deleteLeadSourceRecurringExpenseUsingDELETE**](LeadSourceRecurringExpensesApi.md#deleteLeadSourceRecurringExpenseUsingDELETE) | **DELETE** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Delete a Lead Source Recurring Expense |
-| [**deleteLeadSourceRecurringExpenseUsingDELETEWithHttpInfo**](LeadSourceRecurringExpensesApi.md#deleteLeadSourceRecurringExpenseUsingDELETEWithHttpInfo) | **DELETE** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Delete a Lead Source Recurring Expense |
-| [**getLeadSourceRecurringExpenseUsingGET**](LeadSourceRecurringExpensesApi.md#getLeadSourceRecurringExpenseUsingGET) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Retrieve a Lead Source Recurring Expense |
-| [**getLeadSourceRecurringExpenseUsingGETWithHttpInfo**](LeadSourceRecurringExpensesApi.md#getLeadSourceRecurringExpenseUsingGETWithHttpInfo) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Retrieve a Lead Source Recurring Expense |
-| [**listExpensesIncurredFromLeadSourceRecurringExpenseUsingGET**](LeadSourceRecurringExpensesApi.md#listExpensesIncurredFromLeadSourceRecurringExpenseUsingGET) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id}/expenses | Retrieves a list of expenses incurred from a recurring expense |
-| [**listExpensesIncurredFromLeadSourceRecurringExpenseUsingGETWithHttpInfo**](LeadSourceRecurringExpensesApi.md#listExpensesIncurredFromLeadSourceRecurringExpenseUsingGETWithHttpInfo) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id}/expenses | Retrieves a list of expenses incurred from a recurring expense |
-| [**listLeadSourceRecurringExpensesUsingGET**](LeadSourceRecurringExpensesApi.md#listLeadSourceRecurringExpensesUsingGET) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses | Retrieves a list of lead source recurring expenses |
-| [**listLeadSourceRecurringExpensesUsingGETWithHttpInfo**](LeadSourceRecurringExpensesApi.md#listLeadSourceRecurringExpensesUsingGETWithHttpInfo) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses | Retrieves a list of lead source recurring expenses |
-| [**updateLeadSourceRecurringExpenseUsingPATCH**](LeadSourceRecurringExpensesApi.md#updateLeadSourceRecurringExpenseUsingPATCH) | **PATCH** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Update a Lead Source Recurring Expense |
-| [**updateLeadSourceRecurringExpenseUsingPATCHWithHttpInfo**](LeadSourceRecurringExpensesApi.md#updateLeadSourceRecurringExpenseUsingPATCHWithHttpInfo) | **PATCH** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Update a Lead Source Recurring Expense |
+| [**createLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#createLeadSourceRecurringExpense) | **POST** /v2/leadSources/{lead_source_id}/recurringExpenses | Create a Lead Source Recurring Expense |
+| [**createLeadSourceRecurringExpenseWithHttpInfo**](LeadSourceRecurringExpensesApi.md#createLeadSourceRecurringExpenseWithHttpInfo) | **POST** /v2/leadSources/{lead_source_id}/recurringExpenses | Create a Lead Source Recurring Expense |
+| [**deleteLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#deleteLeadSourceRecurringExpense) | **DELETE** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Delete a Lead Source Recurring Expense |
+| [**deleteLeadSourceRecurringExpenseWithHttpInfo**](LeadSourceRecurringExpensesApi.md#deleteLeadSourceRecurringExpenseWithHttpInfo) | **DELETE** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Delete a Lead Source Recurring Expense |
+| [**getLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#getLeadSourceRecurringExpense) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Retrieve a Lead Source Recurring Expense |
+| [**getLeadSourceRecurringExpenseWithHttpInfo**](LeadSourceRecurringExpensesApi.md#getLeadSourceRecurringExpenseWithHttpInfo) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Retrieve a Lead Source Recurring Expense |
+| [**listExpensesIncurredFromLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#listExpensesIncurredFromLeadSourceRecurringExpense) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id}/expenses | Retrieves a list of expenses incurred from a recurring expense |
+| [**listExpensesIncurredFromLeadSourceRecurringExpenseWithHttpInfo**](LeadSourceRecurringExpensesApi.md#listExpensesIncurredFromLeadSourceRecurringExpenseWithHttpInfo) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id}/expenses | Retrieves a list of expenses incurred from a recurring expense |
+| [**listLeadSourceRecurringExpenses**](LeadSourceRecurringExpensesApi.md#listLeadSourceRecurringExpenses) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses | Retrieves a list of lead source recurring expenses |
+| [**listLeadSourceRecurringExpensesWithHttpInfo**](LeadSourceRecurringExpensesApi.md#listLeadSourceRecurringExpensesWithHttpInfo) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses | Retrieves a list of lead source recurring expenses |
+| [**updateLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#updateLeadSourceRecurringExpense) | **PATCH** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Update a Lead Source Recurring Expense |
+| [**updateLeadSourceRecurringExpenseWithHttpInfo**](LeadSourceRecurringExpensesApi.md#updateLeadSourceRecurringExpenseWithHttpInfo) | **PATCH** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Update a Lead Source Recurring Expense |
 
 
 
-## createLeadSourceRecurringExpenseUsingPOST
+## createLeadSourceRecurringExpense
 
-> LeadSourceRecurringExpense createLeadSourceRecurringExpenseUsingPOST(leadSourceId, createLeadSourceRecurringExpenseRequest)
+> LeadSourceRecurringExpense createLeadSourceRecurringExpense(leadSourceId, createLeadSourceRecurringExpenseRequest)
 
 Create a Lead Source Recurring Expense
 
@@ -46,10 +46,10 @@ public class Example {
         String leadSourceId = "leadSourceId_example"; // String | The ID of the lead source this recurring expense belongs to
         CreateLeadSourceRecurringExpenseRequest createLeadSourceRecurringExpenseRequest = new CreateLeadSourceRecurringExpenseRequest(); // CreateLeadSourceRecurringExpenseRequest | The request object to create a new lead source recurring expense
         try {
-            LeadSourceRecurringExpense result = apiInstance.createLeadSourceRecurringExpenseUsingPOST(leadSourceId, createLeadSourceRecurringExpenseRequest);
+            LeadSourceRecurringExpense result = apiInstance.createLeadSourceRecurringExpense(leadSourceId, createLeadSourceRecurringExpenseRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling LeadSourceRecurringExpensesApi#createLeadSourceRecurringExpenseUsingPOST");
+            System.err.println("Exception when calling LeadSourceRecurringExpensesApi#createLeadSourceRecurringExpense");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -90,9 +90,9 @@ No authorization required
 | **403** | Forbidden |  -  |
 | **500** | Internal Server Error |  -  |
 
-## createLeadSourceRecurringExpenseUsingPOSTWithHttpInfo
+## createLeadSourceRecurringExpenseWithHttpInfo
 
-> ApiResponse<LeadSourceRecurringExpense> createLeadSourceRecurringExpenseUsingPOST createLeadSourceRecurringExpenseUsingPOSTWithHttpInfo(leadSourceId, createLeadSourceRecurringExpenseRequest)
+> ApiResponse<LeadSourceRecurringExpense> createLeadSourceRecurringExpense createLeadSourceRecurringExpenseWithHttpInfo(leadSourceId, createLeadSourceRecurringExpenseRequest)
 
 Create a Lead Source Recurring Expense
 
@@ -118,12 +118,12 @@ public class Example {
         String leadSourceId = "leadSourceId_example"; // String | The ID of the lead source this recurring expense belongs to
         CreateLeadSourceRecurringExpenseRequest createLeadSourceRecurringExpenseRequest = new CreateLeadSourceRecurringExpenseRequest(); // CreateLeadSourceRecurringExpenseRequest | The request object to create a new lead source recurring expense
         try {
-            ApiResponse<LeadSourceRecurringExpense> response = apiInstance.createLeadSourceRecurringExpenseUsingPOSTWithHttpInfo(leadSourceId, createLeadSourceRecurringExpenseRequest);
+            ApiResponse<LeadSourceRecurringExpense> response = apiInstance.createLeadSourceRecurringExpenseWithHttpInfo(leadSourceId, createLeadSourceRecurringExpenseRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling LeadSourceRecurringExpensesApi#createLeadSourceRecurringExpenseUsingPOST");
+            System.err.println("Exception when calling LeadSourceRecurringExpensesApi#createLeadSourceRecurringExpense");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -165,9 +165,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## deleteLeadSourceRecurringExpenseUsingDELETE
+## deleteLeadSourceRecurringExpense
 
-> void deleteLeadSourceRecurringExpenseUsingDELETE(leadSourceId, leadSourceRecurringExpenseId)
+> void deleteLeadSourceRecurringExpense(leadSourceId, leadSourceRecurringExpenseId)
 
 Delete a Lead Source Recurring Expense
 
@@ -192,9 +192,9 @@ public class Example {
         String leadSourceId = "leadSourceId_example"; // String | The ID of the lead source this recurring expense belongs to
         String leadSourceRecurringExpenseId = "leadSourceRecurringExpenseId_example"; // String | The ID of a lead source recurring expense
         try {
-            apiInstance.deleteLeadSourceRecurringExpenseUsingDELETE(leadSourceId, leadSourceRecurringExpenseId);
+            apiInstance.deleteLeadSourceRecurringExpense(leadSourceId, leadSourceRecurringExpenseId);
         } catch (ApiException e) {
-            System.err.println("Exception when calling LeadSourceRecurringExpensesApi#deleteLeadSourceRecurringExpenseUsingDELETE");
+            System.err.println("Exception when calling LeadSourceRecurringExpensesApi#deleteLeadSourceRecurringExpense");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -235,9 +235,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## deleteLeadSourceRecurringExpenseUsingDELETEWithHttpInfo
+## deleteLeadSourceRecurringExpenseWithHttpInfo
 
-> ApiResponse<Void> deleteLeadSourceRecurringExpenseUsingDELETE deleteLeadSourceRecurringExpenseUsingDELETEWithHttpInfo(leadSourceId, leadSourceRecurringExpenseId)
+> ApiResponse<Void> deleteLeadSourceRecurringExpense deleteLeadSourceRecurringExpenseWithHttpInfo(leadSourceId, leadSourceRecurringExpenseId)
 
 Delete a Lead Source Recurring Expense
 
@@ -263,11 +263,11 @@ public class Example {
         String leadSourceId = "leadSourceId_example"; // String | The ID of the lead source this recurring expense belongs to
         String leadSourceRecurringExpenseId = "leadSourceRecurringExpenseId_example"; // String | The ID of a lead source recurring expense
         try {
-            ApiResponse<Void> response = apiInstance.deleteLeadSourceRecurringExpenseUsingDELETEWithHttpInfo(leadSourceId, leadSourceRecurringExpenseId);
+            ApiResponse<Void> response = apiInstance.deleteLeadSourceRecurringExpenseWithHttpInfo(leadSourceId, leadSourceRecurringExpenseId);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
-            System.err.println("Exception when calling LeadSourceRecurringExpensesApi#deleteLeadSourceRecurringExpenseUsingDELETE");
+            System.err.println("Exception when calling LeadSourceRecurringExpensesApi#deleteLeadSourceRecurringExpense");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -309,9 +309,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## getLeadSourceRecurringExpenseUsingGET
+## getLeadSourceRecurringExpense
 
-> LeadSourceRecurringExpense getLeadSourceRecurringExpenseUsingGET(leadSourceId, leadSourceRecurringExpenseId)
+> LeadSourceRecurringExpense getLeadSourceRecurringExpense(leadSourceId, leadSourceRecurringExpenseId)
 
 Retrieve a Lead Source Recurring Expense
 
@@ -336,10 +336,10 @@ public class Example {
         String leadSourceId = "leadSourceId_example"; // String | The ID of the lead source this recurring expense belongs to
         String leadSourceRecurringExpenseId = "leadSourceRecurringExpenseId_example"; // String | The ID of a lead source recurring expense
         try {
-            LeadSourceRecurringExpense result = apiInstance.getLeadSourceRecurringExpenseUsingGET(leadSourceId, leadSourceRecurringExpenseId);
+            LeadSourceRecurringExpense result = apiInstance.getLeadSourceRecurringExpense(leadSourceId, leadSourceRecurringExpenseId);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling LeadSourceRecurringExpensesApi#getLeadSourceRecurringExpenseUsingGET");
+            System.err.println("Exception when calling LeadSourceRecurringExpensesApi#getLeadSourceRecurringExpense");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -380,9 +380,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## getLeadSourceRecurringExpenseUsingGETWithHttpInfo
+## getLeadSourceRecurringExpenseWithHttpInfo
 
-> ApiResponse<LeadSourceRecurringExpense> getLeadSourceRecurringExpenseUsingGET getLeadSourceRecurringExpenseUsingGETWithHttpInfo(leadSourceId, leadSourceRecurringExpenseId)
+> ApiResponse<LeadSourceRecurringExpense> getLeadSourceRecurringExpense getLeadSourceRecurringExpenseWithHttpInfo(leadSourceId, leadSourceRecurringExpenseId)
 
 Retrieve a Lead Source Recurring Expense
 
@@ -408,12 +408,12 @@ public class Example {
         String leadSourceId = "leadSourceId_example"; // String | The ID of the lead source this recurring expense belongs to
         String leadSourceRecurringExpenseId = "leadSourceRecurringExpenseId_example"; // String | The ID of a lead source recurring expense
         try {
-            ApiResponse<LeadSourceRecurringExpense> response = apiInstance.getLeadSourceRecurringExpenseUsingGETWithHttpInfo(leadSourceId, leadSourceRecurringExpenseId);
+            ApiResponse<LeadSourceRecurringExpense> response = apiInstance.getLeadSourceRecurringExpenseWithHttpInfo(leadSourceId, leadSourceRecurringExpenseId);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling LeadSourceRecurringExpensesApi#getLeadSourceRecurringExpenseUsingGET");
+            System.err.println("Exception when calling LeadSourceRecurringExpensesApi#getLeadSourceRecurringExpense");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -455,9 +455,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## listExpensesIncurredFromLeadSourceRecurringExpenseUsingGET
+## listExpensesIncurredFromLeadSourceRecurringExpense
 
-> ListLeadSourceExpensesResponse listExpensesIncurredFromLeadSourceRecurringExpenseUsingGET(leadSourceId, leadSourceRecurringExpenseId, filter, orderBy, pageSize, pageToken)
+> ListLeadSourceExpensesResponse listExpensesIncurredFromLeadSourceRecurringExpense(leadSourceId, leadSourceRecurringExpenseId, filter, orderBy, pageSize, pageToken)
 
 Retrieves a list of expenses incurred from a recurring expense
 
@@ -486,10 +486,10 @@ public class Example {
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
         try {
-            ListLeadSourceExpensesResponse result = apiInstance.listExpensesIncurredFromLeadSourceRecurringExpenseUsingGET(leadSourceId, leadSourceRecurringExpenseId, filter, orderBy, pageSize, pageToken);
+            ListLeadSourceExpensesResponse result = apiInstance.listExpensesIncurredFromLeadSourceRecurringExpense(leadSourceId, leadSourceRecurringExpenseId, filter, orderBy, pageSize, pageToken);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling LeadSourceRecurringExpensesApi#listExpensesIncurredFromLeadSourceRecurringExpenseUsingGET");
+            System.err.println("Exception when calling LeadSourceRecurringExpensesApi#listExpensesIncurredFromLeadSourceRecurringExpense");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -535,9 +535,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## listExpensesIncurredFromLeadSourceRecurringExpenseUsingGETWithHttpInfo
+## listExpensesIncurredFromLeadSourceRecurringExpenseWithHttpInfo
 
-> ApiResponse<ListLeadSourceExpensesResponse> listExpensesIncurredFromLeadSourceRecurringExpenseUsingGET listExpensesIncurredFromLeadSourceRecurringExpenseUsingGETWithHttpInfo(leadSourceId, leadSourceRecurringExpenseId, filter, orderBy, pageSize, pageToken)
+> ApiResponse<ListLeadSourceExpensesResponse> listExpensesIncurredFromLeadSourceRecurringExpense listExpensesIncurredFromLeadSourceRecurringExpenseWithHttpInfo(leadSourceId, leadSourceRecurringExpenseId, filter, orderBy, pageSize, pageToken)
 
 Retrieves a list of expenses incurred from a recurring expense
 
@@ -567,12 +567,12 @@ public class Example {
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
         try {
-            ApiResponse<ListLeadSourceExpensesResponse> response = apiInstance.listExpensesIncurredFromLeadSourceRecurringExpenseUsingGETWithHttpInfo(leadSourceId, leadSourceRecurringExpenseId, filter, orderBy, pageSize, pageToken);
+            ApiResponse<ListLeadSourceExpensesResponse> response = apiInstance.listExpensesIncurredFromLeadSourceRecurringExpenseWithHttpInfo(leadSourceId, leadSourceRecurringExpenseId, filter, orderBy, pageSize, pageToken);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling LeadSourceRecurringExpensesApi#listExpensesIncurredFromLeadSourceRecurringExpenseUsingGET");
+            System.err.println("Exception when calling LeadSourceRecurringExpensesApi#listExpensesIncurredFromLeadSourceRecurringExpense");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -619,9 +619,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## listLeadSourceRecurringExpensesUsingGET
+## listLeadSourceRecurringExpenses
 
-> ListLeadSourceRecurringExpensesResponse listLeadSourceRecurringExpensesUsingGET(leadSourceId, filter, orderBy, pageSize, pageToken)
+> ListLeadSourceRecurringExpensesResponse listLeadSourceRecurringExpenses(leadSourceId, filter, orderBy, pageSize, pageToken)
 
 Retrieves a list of lead source recurring expenses
 
@@ -649,10 +649,10 @@ public class Example {
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
         try {
-            ListLeadSourceRecurringExpensesResponse result = apiInstance.listLeadSourceRecurringExpensesUsingGET(leadSourceId, filter, orderBy, pageSize, pageToken);
+            ListLeadSourceRecurringExpensesResponse result = apiInstance.listLeadSourceRecurringExpenses(leadSourceId, filter, orderBy, pageSize, pageToken);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling LeadSourceRecurringExpensesApi#listLeadSourceRecurringExpensesUsingGET");
+            System.err.println("Exception when calling LeadSourceRecurringExpensesApi#listLeadSourceRecurringExpenses");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -697,9 +697,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## listLeadSourceRecurringExpensesUsingGETWithHttpInfo
+## listLeadSourceRecurringExpensesWithHttpInfo
 
-> ApiResponse<ListLeadSourceRecurringExpensesResponse> listLeadSourceRecurringExpensesUsingGET listLeadSourceRecurringExpensesUsingGETWithHttpInfo(leadSourceId, filter, orderBy, pageSize, pageToken)
+> ApiResponse<ListLeadSourceRecurringExpensesResponse> listLeadSourceRecurringExpenses listLeadSourceRecurringExpensesWithHttpInfo(leadSourceId, filter, orderBy, pageSize, pageToken)
 
 Retrieves a list of lead source recurring expenses
 
@@ -728,12 +728,12 @@ public class Example {
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
         try {
-            ApiResponse<ListLeadSourceRecurringExpensesResponse> response = apiInstance.listLeadSourceRecurringExpensesUsingGETWithHttpInfo(leadSourceId, filter, orderBy, pageSize, pageToken);
+            ApiResponse<ListLeadSourceRecurringExpensesResponse> response = apiInstance.listLeadSourceRecurringExpensesWithHttpInfo(leadSourceId, filter, orderBy, pageSize, pageToken);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling LeadSourceRecurringExpensesApi#listLeadSourceRecurringExpensesUsingGET");
+            System.err.println("Exception when calling LeadSourceRecurringExpensesApi#listLeadSourceRecurringExpenses");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -779,9 +779,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## updateLeadSourceRecurringExpenseUsingPATCH
+## updateLeadSourceRecurringExpense
 
-> LeadSourceRecurringExpense updateLeadSourceRecurringExpenseUsingPATCH(leadSourceId, leadSourceRecurringExpenseId, leadSourceRecurringExpenseUpdateRequest, updateMask)
+> LeadSourceRecurringExpense updateLeadSourceRecurringExpense(leadSourceId, leadSourceRecurringExpenseId, leadSourceRecurringExpenseUpdateRequest, updateMask)
 
 Update a Lead Source Recurring Expense
 
@@ -808,10 +808,10 @@ public class Example {
         LeadSourceRecurringExpenseUpdateRequest leadSourceRecurringExpenseUpdateRequest = new LeadSourceRecurringExpenseUpdateRequest(); // LeadSourceRecurringExpenseUpdateRequest | The request object to update a lead source recurring expense
         List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
-            LeadSourceRecurringExpense result = apiInstance.updateLeadSourceRecurringExpenseUsingPATCH(leadSourceId, leadSourceRecurringExpenseId, leadSourceRecurringExpenseUpdateRequest, updateMask);
+            LeadSourceRecurringExpense result = apiInstance.updateLeadSourceRecurringExpense(leadSourceId, leadSourceRecurringExpenseId, leadSourceRecurringExpenseUpdateRequest, updateMask);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling LeadSourceRecurringExpensesApi#updateLeadSourceRecurringExpenseUsingPATCH");
+            System.err.println("Exception when calling LeadSourceRecurringExpensesApi#updateLeadSourceRecurringExpense");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -855,9 +855,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## updateLeadSourceRecurringExpenseUsingPATCHWithHttpInfo
+## updateLeadSourceRecurringExpenseWithHttpInfo
 
-> ApiResponse<LeadSourceRecurringExpense> updateLeadSourceRecurringExpenseUsingPATCH updateLeadSourceRecurringExpenseUsingPATCHWithHttpInfo(leadSourceId, leadSourceRecurringExpenseId, leadSourceRecurringExpenseUpdateRequest, updateMask)
+> ApiResponse<LeadSourceRecurringExpense> updateLeadSourceRecurringExpense updateLeadSourceRecurringExpenseWithHttpInfo(leadSourceId, leadSourceRecurringExpenseId, leadSourceRecurringExpenseUpdateRequest, updateMask)
 
 Update a Lead Source Recurring Expense
 
@@ -885,12 +885,12 @@ public class Example {
         LeadSourceRecurringExpenseUpdateRequest leadSourceRecurringExpenseUpdateRequest = new LeadSourceRecurringExpenseUpdateRequest(); // LeadSourceRecurringExpenseUpdateRequest | The request object to update a lead source recurring expense
         List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
-            ApiResponse<LeadSourceRecurringExpense> response = apiInstance.updateLeadSourceRecurringExpenseUsingPATCHWithHttpInfo(leadSourceId, leadSourceRecurringExpenseId, leadSourceRecurringExpenseUpdateRequest, updateMask);
+            ApiResponse<LeadSourceRecurringExpense> response = apiInstance.updateLeadSourceRecurringExpenseWithHttpInfo(leadSourceId, leadSourceRecurringExpenseId, leadSourceRecurringExpenseUpdateRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling LeadSourceRecurringExpensesApi#updateLeadSourceRecurringExpenseUsingPATCH");
+            System.err.println("Exception when calling LeadSourceRecurringExpensesApi#updateLeadSourceRecurringExpense");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());

@@ -4,18 +4,18 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getApplicationConfigurationsUsingGET**](SettingsApi.md#getApplicationConfigurationsUsingGET) | **GET** /v2/settings/applications:getConfiguration | Get Application Configuration |
-| [**getApplicationConfigurationsUsingGETWithHttpInfo**](SettingsApi.md#getApplicationConfigurationsUsingGETWithHttpInfo) | **GET** /v2/settings/applications:getConfiguration | Get Application Configuration |
-| [**getContactOptionTypesUsingGET1**](SettingsApi.md#getContactOptionTypesUsingGET1) | **GET** /v2/settings/contactOptionTypes | Get Contact Option types |
-| [**getContactOptionTypesUsingGET1WithHttpInfo**](SettingsApi.md#getContactOptionTypesUsingGET1WithHttpInfo) | **GET** /v2/settings/contactOptionTypes | Get Contact Option types |
-| [**isApplicationEnabledUsingGET**](SettingsApi.md#isApplicationEnabledUsingGET) | **GET** /v2/settings/applications:isEnabled | Get Application Status |
-| [**isApplicationEnabledUsingGETWithHttpInfo**](SettingsApi.md#isApplicationEnabledUsingGETWithHttpInfo) | **GET** /v2/settings/applications:isEnabled | Get Application Status |
+| [**getApplicationConfigurations**](SettingsApi.md#getApplicationConfigurations) | **GET** /v2/settings/applications:getConfiguration | Get Application Configuration |
+| [**getApplicationConfigurationsWithHttpInfo**](SettingsApi.md#getApplicationConfigurationsWithHttpInfo) | **GET** /v2/settings/applications:getConfiguration | Get Application Configuration |
+| [**getContactOptionTypes**](SettingsApi.md#getContactOptionTypes) | **GET** /v2/settings/contactOptionTypes | Get Contact Option types |
+| [**getContactOptionTypesWithHttpInfo**](SettingsApi.md#getContactOptionTypesWithHttpInfo) | **GET** /v2/settings/contactOptionTypes | Get Contact Option types |
+| [**isApplicationEnabled**](SettingsApi.md#isApplicationEnabled) | **GET** /v2/settings/applications:isEnabled | Get Application Status |
+| [**isApplicationEnabledWithHttpInfo**](SettingsApi.md#isApplicationEnabledWithHttpInfo) | **GET** /v2/settings/applications:isEnabled | Get Application Status |
 
 
 
-## getApplicationConfigurationsUsingGET
+## getApplicationConfigurations
 
-> GetSettingsResponse getApplicationConfigurationsUsingGET(fields)
+> GetSettingsResponse getApplicationConfigurations(fields)
 
 Get Application Configuration
 
@@ -39,10 +39,10 @@ public class Example {
         SettingsApi apiInstance = new SettingsApi(defaultClient);
         List<String> fields = Arrays.asList(); // List<String> | By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query.
         try {
-            GetSettingsResponse result = apiInstance.getApplicationConfigurationsUsingGET(fields);
+            GetSettingsResponse result = apiInstance.getApplicationConfigurations(fields);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling SettingsApi#getApplicationConfigurationsUsingGET");
+            System.err.println("Exception when calling SettingsApi#getApplicationConfigurations");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -82,9 +82,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## getApplicationConfigurationsUsingGETWithHttpInfo
+## getApplicationConfigurationsWithHttpInfo
 
-> ApiResponse<GetSettingsResponse> getApplicationConfigurationsUsingGET getApplicationConfigurationsUsingGETWithHttpInfo(fields)
+> ApiResponse<GetSettingsResponse> getApplicationConfigurations getApplicationConfigurationsWithHttpInfo(fields)
 
 Get Application Configuration
 
@@ -109,12 +109,12 @@ public class Example {
         SettingsApi apiInstance = new SettingsApi(defaultClient);
         List<String> fields = Arrays.asList(); // List<String> | By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query.
         try {
-            ApiResponse<GetSettingsResponse> response = apiInstance.getApplicationConfigurationsUsingGETWithHttpInfo(fields);
+            ApiResponse<GetSettingsResponse> response = apiInstance.getApplicationConfigurationsWithHttpInfo(fields);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling SettingsApi#getApplicationConfigurationsUsingGET");
+            System.err.println("Exception when calling SettingsApi#getApplicationConfigurations");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -155,9 +155,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## getContactOptionTypesUsingGET1
+## getContactOptionTypes
 
-> GetContactOptionTypesResponse getContactOptionTypesUsingGET1()
+> GetContactOptionTypesResponse getContactOptionTypes()
 
 Get Contact Option types
 
@@ -180,10 +180,10 @@ public class Example {
 
         SettingsApi apiInstance = new SettingsApi(defaultClient);
         try {
-            GetContactOptionTypesResponse result = apiInstance.getContactOptionTypesUsingGET1();
+            GetContactOptionTypesResponse result = apiInstance.getContactOptionTypes();
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling SettingsApi#getContactOptionTypesUsingGET1");
+            System.err.println("Exception when calling SettingsApi#getContactOptionTypes");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -220,9 +220,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## getContactOptionTypesUsingGET1WithHttpInfo
+## getContactOptionTypesWithHttpInfo
 
-> ApiResponse<GetContactOptionTypesResponse> getContactOptionTypesUsingGET1 getContactOptionTypesUsingGET1WithHttpInfo()
+> ApiResponse<GetContactOptionTypesResponse> getContactOptionTypes getContactOptionTypesWithHttpInfo()
 
 Get Contact Option types
 
@@ -246,12 +246,12 @@ public class Example {
 
         SettingsApi apiInstance = new SettingsApi(defaultClient);
         try {
-            ApiResponse<GetContactOptionTypesResponse> response = apiInstance.getContactOptionTypesUsingGET1WithHttpInfo();
+            ApiResponse<GetContactOptionTypesResponse> response = apiInstance.getContactOptionTypesWithHttpInfo();
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling SettingsApi#getContactOptionTypesUsingGET1");
+            System.err.println("Exception when calling SettingsApi#getContactOptionTypes");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -289,9 +289,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## isApplicationEnabledUsingGET
+## isApplicationEnabled
 
-> GetApplicationEnabledStatusResponse isApplicationEnabledUsingGET()
+> GetApplicationEnabledStatusResponse isApplicationEnabled()
 
 Get Application Status
 
@@ -314,10 +314,10 @@ public class Example {
 
         SettingsApi apiInstance = new SettingsApi(defaultClient);
         try {
-            GetApplicationEnabledStatusResponse result = apiInstance.isApplicationEnabledUsingGET();
+            GetApplicationEnabledStatusResponse result = apiInstance.isApplicationEnabled();
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling SettingsApi#isApplicationEnabledUsingGET");
+            System.err.println("Exception when calling SettingsApi#isApplicationEnabled");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -354,9 +354,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## isApplicationEnabledUsingGETWithHttpInfo
+## isApplicationEnabledWithHttpInfo
 
-> ApiResponse<GetApplicationEnabledStatusResponse> isApplicationEnabledUsingGET isApplicationEnabledUsingGETWithHttpInfo()
+> ApiResponse<GetApplicationEnabledStatusResponse> isApplicationEnabled isApplicationEnabledWithHttpInfo()
 
 Get Application Status
 
@@ -380,12 +380,12 @@ public class Example {
 
         SettingsApi apiInstance = new SettingsApi(defaultClient);
         try {
-            ApiResponse<GetApplicationEnabledStatusResponse> response = apiInstance.isApplicationEnabledUsingGETWithHttpInfo();
+            ApiResponse<GetApplicationEnabledStatusResponse> response = apiInstance.isApplicationEnabledWithHttpInfo();
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling SettingsApi#isApplicationEnabledUsingGET");
+            System.err.println("Exception when calling SettingsApi#isApplicationEnabled");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());

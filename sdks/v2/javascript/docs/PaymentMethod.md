@@ -7,25 +7,14 @@ Name | Type | Description | Notes
 **cardInfo** | [**CardInfo**](CardInfo.md) |  | [optional] 
 **contactId** | **String** |  | [optional] 
 **createdTime** | **String** |  | [optional] 
-**paymentGatewayId** | **String** |  | [optional] 
+**merchantAccountId** | **String** |  | [optional] 
+**merchantAccountType** | **String** |  | [optional] 
 **paymentMethodId** | **String** |  | [optional] 
 **paymentMethodType** | **String** |  | [optional] 
-**paymentProcessorType** | **String** |  | [optional] 
 
 
 
-## Enum: PaymentMethodTypeEnum
-
-
-* `CARD` (value: `"CARD"`)
-
-* `unknown_default_open_api` (value: `"unknown_default_open_api"`)
-
-
-
-
-
-## Enum: PaymentProcessorTypeEnum
+## Enum: MerchantAccountTypeEnum
 
 
 * `PAYPAL` (value: `"PAYPAL"`)
@@ -41,6 +30,17 @@ Name | Type | Description | Notes
 * `STRIPE` (value: `"STRIPE"`)
 
 * `KEAP_PAY` (value: `"KEAP_PAY"`)
+
+* `unknown_default_open_api` (value: `"unknown_default_open_api"`)
+
+
+
+
+
+## Enum: PaymentMethodTypeEnum
+
+
+* `CARD` (value: `"CARD"`)
 
 * `unknown_default_open_api` (value: `"unknown_default_open_api"`)
 

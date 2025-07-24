@@ -4,16 +4,16 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createOrderCustomFieldUsingPOST**](OrdersApi.md#createOrderCustomFieldUsingPOST) | **POST** /v2/orders/model/customFields | Create an Order Custom Field
-[**deleteOrderCustomFieldUsingDELETE**](OrdersApi.md#deleteOrderCustomFieldUsingDELETE) | **DELETE** /v2/orders/model/customFields/{custom_field_id} | Delete an Order Custom Field
-[**retrieveOrderCustomFieldModelUsingGET**](OrdersApi.md#retrieveOrderCustomFieldModelUsingGET) | **GET** /v2/orders/model | Retrieve Order Custom Field Model
-[**updateOrderCustomFieldUsingPATCH**](OrdersApi.md#updateOrderCustomFieldUsingPATCH) | **PATCH** /v2/orders/model/customFields/{custom_field_id} | Update an Order Custom Field
+[**createOrderCustomField**](OrdersApi.md#createOrderCustomField) | **POST** /v2/orders/model/customFields | Create an Order Custom Field
+[**deleteOrderCustomField**](OrdersApi.md#deleteOrderCustomField) | **DELETE** /v2/orders/model/customFields/{custom_field_id} | Delete an Order Custom Field
+[**retrieveOrderCustomFieldModel**](OrdersApi.md#retrieveOrderCustomFieldModel) | **GET** /v2/orders/model | Retrieve Order Custom Field Model
+[**updateOrderCustomField**](OrdersApi.md#updateOrderCustomField) | **PATCH** /v2/orders/model/customFields/{custom_field_id} | Update an Order Custom Field
 
 
 
-## createOrderCustomFieldUsingPOST
+## createOrderCustomField
 
-> CustomFieldMetaData createOrderCustomFieldUsingPOST(createCustomFieldRequest)
+> CustomFieldMetaData createOrderCustomField(createCustomFieldRequest)
 
 Create an Order Custom Field
 
@@ -26,7 +26,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.OrdersApi();
 let createCustomFieldRequest = new KeapCoreServiceV2Sdk.CreateCustomFieldRequest(); // CreateCustomFieldRequest | customField
-apiInstance.createOrderCustomFieldUsingPOST(createCustomFieldRequest).then((data) => {
+apiInstance.createOrderCustomField(createCustomFieldRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -55,9 +55,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## deleteOrderCustomFieldUsingDELETE
+## deleteOrderCustomField
 
-> deleteOrderCustomFieldUsingDELETE(customFieldId)
+> deleteOrderCustomField(customFieldId)
 
 Delete an Order Custom Field
 
@@ -70,7 +70,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.OrdersApi();
 let customFieldId = "customFieldId_example"; // String | custom_field_id
-apiInstance.deleteOrderCustomFieldUsingDELETE(customFieldId).then(() => {
+apiInstance.deleteOrderCustomField(customFieldId).then(() => {
   console.log('API called successfully.');
 }, (error) => {
   console.error(error);
@@ -99,9 +99,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## retrieveOrderCustomFieldModelUsingGET
+## retrieveOrderCustomFieldModel
 
-> ObjectModel retrieveOrderCustomFieldModelUsingGET()
+> ObjectModel retrieveOrderCustomFieldModel()
 
 Retrieve Order Custom Field Model
 
@@ -113,7 +113,7 @@ Gets the custom fields for the Order object
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.OrdersApi();
-apiInstance.retrieveOrderCustomFieldModelUsingGET().then((data) => {
+apiInstance.retrieveOrderCustomFieldModel().then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -139,9 +139,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## updateOrderCustomFieldUsingPATCH
+## updateOrderCustomField
 
-> CustomFieldMetaData updateOrderCustomFieldUsingPATCH(customFieldId, updateCustomFieldMetaDataRequest, opts)
+> CustomFieldMetaData updateOrderCustomField(customFieldId, updateCustomFieldMetaDataRequest, opts)
 
 Update an Order Custom Field
 
@@ -158,7 +158,7 @@ let updateCustomFieldMetaDataRequest = new KeapCoreServiceV2Sdk.UpdateCustomFiel
 let opts = {
   'updateMask': ["null"] // [String] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
-apiInstance.updateOrderCustomFieldUsingPATCH(customFieldId, updateCustomFieldMetaDataRequest, opts).then((data) => {
+apiInstance.updateOrderCustomField(customFieldId, updateCustomFieldMetaDataRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);

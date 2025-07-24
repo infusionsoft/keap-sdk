@@ -4,114 +4,24 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createOpportunityCustomFieldsUsingPOST**](OpportunityApi.md#createOpportunityCustomFieldsUsingPOST) | **POST** /v2/opportunities/model/customFields | Create an Opportunity Custom Field
-[**createOpportunityStageUsingPOST**](OpportunityApi.md#createOpportunityStageUsingPOST) | **POST** /v2/opportunities/stages | Create an Opportunity Stage
-[**createOpportunityUsingPOST1**](OpportunityApi.md#createOpportunityUsingPOST1) | **POST** /v2/opportunities | Create an Opportunity
-[**deleteOpportunityStageUsingDELETE**](OpportunityApi.md#deleteOpportunityStageUsingDELETE) | **DELETE** /v2/opportunities/stages/{stage_id} | Delete an Opportunity Stage
-[**deleteOpportunityUsingDELETE**](OpportunityApi.md#deleteOpportunityUsingDELETE) | **DELETE** /v2/opportunities/{opportunity_id} | Delete an Opportunity
-[**getOpportunityStageUsingGET**](OpportunityApi.md#getOpportunityStageUsingGET) | **GET** /v2/opportunities/stages/{stage_id} | Retrieve an Opportunity Stage
-[**getOpportunityUsingGET1**](OpportunityApi.md#getOpportunityUsingGET1) | **GET** /v2/opportunities/{opportunity_id} | Retrieve a Opportunity
-[**listOpportunitiesUsingGET1**](OpportunityApi.md#listOpportunitiesUsingGET1) | **GET** /v2/opportunities | List Opportunities
-[**listOpportunityStagesUsingGET**](OpportunityApi.md#listOpportunityStagesUsingGET) | **GET** /v2/opportunities/stages | List of Opportunity Stages
-[**updateOpportunityCustomFieldUsingPATCH**](OpportunityApi.md#updateOpportunityCustomFieldUsingPATCH) | **PATCH** /v2/opportunities/model/customFields/{custom_field_id} | Update a Opportunity&#39;s Custom Field
-[**updateOpportunityStageUsingPATCH**](OpportunityApi.md#updateOpportunityStageUsingPATCH) | **PATCH** /v2/opportunities/stages/{stage_id} | Update an Opportunity Stage
-[**updateOpportunityUsingPATCH**](OpportunityApi.md#updateOpportunityUsingPATCH) | **PATCH** /v2/opportunities/{opportunity_id} | Update an opportunity
+[**createOpportunity**](OpportunityApi.md#createOpportunity) | **POST** /v2/opportunities | Create an Opportunity
+[**createOpportunityCustomFields**](OpportunityApi.md#createOpportunityCustomFields) | **POST** /v2/opportunities/model/customFields | Create an Opportunity Custom Field
+[**createOpportunityStage**](OpportunityApi.md#createOpportunityStage) | **POST** /v2/opportunities/stages | Create an Opportunity Stage
+[**deleteOpportunity**](OpportunityApi.md#deleteOpportunity) | **DELETE** /v2/opportunities/{opportunity_id} | Delete an Opportunity
+[**deleteOpportunityStage**](OpportunityApi.md#deleteOpportunityStage) | **DELETE** /v2/opportunities/stages/{stage_id} | Delete an Opportunity Stage
+[**getOpportunity**](OpportunityApi.md#getOpportunity) | **GET** /v2/opportunities/{opportunity_id} | Retrieve a Opportunity
+[**getOpportunityStage**](OpportunityApi.md#getOpportunityStage) | **GET** /v2/opportunities/stages/{stage_id} | Retrieve an Opportunity Stage
+[**listOpportunities**](OpportunityApi.md#listOpportunities) | **GET** /v2/opportunities | List Opportunities
+[**listOpportunityStages**](OpportunityApi.md#listOpportunityStages) | **GET** /v2/opportunities/stages | List of Opportunity Stages
+[**updateOpportunity**](OpportunityApi.md#updateOpportunity) | **PATCH** /v2/opportunities/{opportunity_id} | Update an opportunity
+[**updateOpportunityCustomField**](OpportunityApi.md#updateOpportunityCustomField) | **PATCH** /v2/opportunities/model/customFields/{custom_field_id} | Update a Opportunity&#39;s Custom Field
+[**updateOpportunityStage**](OpportunityApi.md#updateOpportunityStage) | **PATCH** /v2/opportunities/stages/{stage_id} | Update an Opportunity Stage
 
 
 
-## createOpportunityCustomFieldsUsingPOST
+## createOpportunity
 
-> CustomFieldMetaData createOpportunityCustomFieldsUsingPOST(createCustomFieldRequest)
-
-Create an Opportunity Custom Field
-
-Creates a custom field of the specified type and options to the Opportunity object
-
-### Example
-
-```javascript
-import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
-
-let apiInstance = new KeapCoreServiceV2Sdk.OpportunityApi();
-let createCustomFieldRequest = new KeapCoreServiceV2Sdk.CreateCustomFieldRequest(); // CreateCustomFieldRequest | customField
-apiInstance.createOpportunityCustomFieldsUsingPOST(createCustomFieldRequest).then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
-  console.error(error);
-});
-
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **createCustomFieldRequest** | [**CreateCustomFieldRequest**](CreateCustomFieldRequest.md)| customField | 
-
-### Return type
-
-[**CustomFieldMetaData**](CustomFieldMetaData.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## createOpportunityStageUsingPOST
-
-> RestOpportunityStage createOpportunityStageUsingPOST(opts)
-
-Create an Opportunity Stage
-
-Creates a new Opportunity Stage
-
-### Example
-
-```javascript
-import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
-
-let apiInstance = new KeapCoreServiceV2Sdk.OpportunityApi();
-let opts = {
-  'createOpportunityStageRequest': new KeapCoreServiceV2Sdk.CreateOpportunityStageRequest() // CreateOpportunityStageRequest | opportunity
-};
-apiInstance.createOpportunityStageUsingPOST(opts).then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
-  console.error(error);
-});
-
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **createOpportunityStageRequest** | [**CreateOpportunityStageRequest**](CreateOpportunityStageRequest.md)| opportunity | [optional] 
-
-### Return type
-
-[**RestOpportunityStage**](RestOpportunityStage.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## createOpportunityUsingPOST1
-
-> RestV2Opportunity createOpportunityUsingPOST1(opts)
+> RestV2Opportunity createOpportunity(opts)
 
 Create an Opportunity
 
@@ -126,7 +36,7 @@ let apiInstance = new KeapCoreServiceV2Sdk.OpportunityApi();
 let opts = {
   'createOpportunityRequest': new KeapCoreServiceV2Sdk.CreateOpportunityRequest() // CreateOpportunityRequest | opportunity
 };
-apiInstance.createOpportunityUsingPOST1(opts).then((data) => {
+apiInstance.createOpportunity(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -155,13 +65,13 @@ No authorization required
 - **Accept**: application/json
 
 
-## deleteOpportunityStageUsingDELETE
+## createOpportunityCustomFields
 
-> deleteOpportunityStageUsingDELETE(stageId)
+> CustomFieldMetaData createOpportunityCustomFields(createCustomFieldRequest)
 
-Delete an Opportunity Stage
+Create an Opportunity Custom Field
 
-Deletes the specified Opportunity Stage
+Creates a custom field of the specified type and options to the Opportunity object
 
 ### Example
 
@@ -169,9 +79,9 @@ Deletes the specified Opportunity Stage
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.OpportunityApi();
-let stageId = "stageId_example"; // String | stage_id
-apiInstance.deleteOpportunityStageUsingDELETE(stageId).then(() => {
-  console.log('API called successfully.');
+let createCustomFieldRequest = new KeapCoreServiceV2Sdk.CreateCustomFieldRequest(); // CreateCustomFieldRequest | customField
+apiInstance.createOpportunityCustomFields(createCustomFieldRequest).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
 });
@@ -183,11 +93,11 @@ apiInstance.deleteOpportunityStageUsingDELETE(stageId).then(() => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **stageId** | **String**| stage_id | 
+ **createCustomFieldRequest** | [**CreateCustomFieldRequest**](CreateCustomFieldRequest.md)| customField | 
 
 ### Return type
 
-null (empty response body)
+[**CustomFieldMetaData**](CustomFieldMetaData.md)
 
 ### Authorization
 
@@ -195,13 +105,59 @@ No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 
-## deleteOpportunityUsingDELETE
+## createOpportunityStage
 
-> deleteOpportunityUsingDELETE(opportunityId)
+> RestOpportunityStage createOpportunityStage(opts)
+
+Create an Opportunity Stage
+
+Creates a new Opportunity Stage
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+
+let apiInstance = new KeapCoreServiceV2Sdk.OpportunityApi();
+let opts = {
+  'createOpportunityStageRequest': new KeapCoreServiceV2Sdk.CreateOpportunityStageRequest() // CreateOpportunityStageRequest | opportunity
+};
+apiInstance.createOpportunityStage(opts).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createOpportunityStageRequest** | [**CreateOpportunityStageRequest**](CreateOpportunityStageRequest.md)| opportunity | [optional] 
+
+### Return type
+
+[**RestOpportunityStage**](RestOpportunityStage.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## deleteOpportunity
+
+> deleteOpportunity(opportunityId)
 
 Delete an Opportunity
 
@@ -214,7 +170,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.OpportunityApi();
 let opportunityId = "opportunityId_example"; // String | opportunity_id
-apiInstance.deleteOpportunityUsingDELETE(opportunityId).then(() => {
+apiInstance.deleteOpportunity(opportunityId).then(() => {
   console.log('API called successfully.');
 }, (error) => {
   console.error(error);
@@ -243,13 +199,13 @@ No authorization required
 - **Accept**: application/json
 
 
-## getOpportunityStageUsingGET
+## deleteOpportunityStage
 
-> RestOpportunityStage getOpportunityStageUsingGET(stageId)
+> deleteOpportunityStage(stageId)
 
-Retrieve an Opportunity Stage
+Delete an Opportunity Stage
 
-Retrieves the specified Opportunity Stage
+Deletes the specified Opportunity Stage
 
 ### Example
 
@@ -258,8 +214,8 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.OpportunityApi();
 let stageId = "stageId_example"; // String | stage_id
-apiInstance.getOpportunityStageUsingGET(stageId).then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
+apiInstance.deleteOpportunityStage(stageId).then(() => {
+  console.log('API called successfully.');
 }, (error) => {
   console.error(error);
 });
@@ -275,7 +231,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**RestOpportunityStage**](RestOpportunityStage.md)
+null (empty response body)
 
 ### Authorization
 
@@ -287,9 +243,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## getOpportunityUsingGET1
+## getOpportunity
 
-> RestV2Opportunity getOpportunityUsingGET1(opportunityId)
+> RestV2Opportunity getOpportunity(opportunityId)
 
 Retrieve a Opportunity
 
@@ -302,7 +258,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.OpportunityApi();
 let opportunityId = "opportunityId_example"; // String | opportunity_id
-apiInstance.getOpportunityUsingGET1(opportunityId).then((data) => {
+apiInstance.getOpportunity(opportunityId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -331,9 +287,53 @@ No authorization required
 - **Accept**: application/json
 
 
-## listOpportunitiesUsingGET1
+## getOpportunityStage
 
-> ListOpportunitiesResponse listOpportunitiesUsingGET1(opts)
+> RestOpportunityStage getOpportunityStage(stageId)
+
+Retrieve an Opportunity Stage
+
+Retrieves the specified Opportunity Stage
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+
+let apiInstance = new KeapCoreServiceV2Sdk.OpportunityApi();
+let stageId = "stageId_example"; // String | stage_id
+apiInstance.getOpportunityStage(stageId).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **stageId** | **String**| stage_id | 
+
+### Return type
+
+[**RestOpportunityStage**](RestOpportunityStage.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## listOpportunities
+
+> ListOpportunitiesResponse listOpportunities(opts)
 
 List Opportunities
 
@@ -352,7 +352,7 @@ let opts = {
   'pageSize': 0, // Number | Total number of items to return per page
   'pageToken': "pageToken_example" // String | Page token
 };
-apiInstance.listOpportunitiesUsingGET1(opts).then((data) => {
+apiInstance.listOpportunities(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -385,9 +385,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## listOpportunityStagesUsingGET
+## listOpportunityStages
 
-> ListOpportunityStagesResponse listOpportunityStagesUsingGET(opts)
+> ListOpportunityStagesResponse listOpportunityStages(opts)
 
 List of Opportunity Stages
 
@@ -405,7 +405,7 @@ let opts = {
   'pageSize': 0, // Number | Total number of items to return per page
   'pageToken': "pageToken_example" // String | Page token
 };
-apiInstance.listOpportunityStagesUsingGET(opts).then((data) => {
+apiInstance.listOpportunityStages(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -437,9 +437,59 @@ No authorization required
 - **Accept**: application/json
 
 
-## updateOpportunityCustomFieldUsingPATCH
+## updateOpportunity
 
-> CustomFieldMetaData updateOpportunityCustomFieldUsingPATCH(customFieldId, updateCustomFieldMetaDataRequest, opts)
+> RestV2Opportunity updateOpportunity(opportunityId, updateOpportunityRequestV2, opts)
+
+Update an opportunity
+
+Updates specified values of a given opportunity
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+
+let apiInstance = new KeapCoreServiceV2Sdk.OpportunityApi();
+let opportunityId = "opportunityId_example"; // String | opportunity_id
+let updateOpportunityRequestV2 = new KeapCoreServiceV2Sdk.UpdateOpportunityRequestV2(); // UpdateOpportunityRequestV2 | request
+let opts = {
+  'updateMask': ["null"] // [String] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+};
+apiInstance.updateOpportunity(opportunityId, updateOpportunityRequestV2, opts).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **opportunityId** | **String**| opportunity_id | 
+ **updateOpportunityRequestV2** | [**UpdateOpportunityRequestV2**](UpdateOpportunityRequestV2.md)| request | 
+ **updateMask** | [**[String]**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+
+### Return type
+
+[**RestV2Opportunity**](RestV2Opportunity.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## updateOpportunityCustomField
+
+> CustomFieldMetaData updateOpportunityCustomField(customFieldId, updateCustomFieldMetaDataRequest, opts)
 
 Update a Opportunity&#39;s Custom Field
 
@@ -456,7 +506,7 @@ let updateCustomFieldMetaDataRequest = new KeapCoreServiceV2Sdk.UpdateCustomFiel
 let opts = {
   'updateMask': ["null"] // [String] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
-apiInstance.updateOpportunityCustomFieldUsingPATCH(customFieldId, updateCustomFieldMetaDataRequest, opts).then((data) => {
+apiInstance.updateOpportunityCustomField(customFieldId, updateCustomFieldMetaDataRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -487,9 +537,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## updateOpportunityStageUsingPATCH
+## updateOpportunityStage
 
-> RestOpportunityStage updateOpportunityStageUsingPATCH(stageId, updateOpportunityStageRequest, opts)
+> RestOpportunityStage updateOpportunityStage(stageId, updateOpportunityStageRequest, opts)
 
 Update an Opportunity Stage
 
@@ -506,7 +556,7 @@ let updateOpportunityStageRequest = new KeapCoreServiceV2Sdk.UpdateOpportunitySt
 let opts = {
   'updateMask': ["null"] // [String] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
-apiInstance.updateOpportunityStageUsingPATCH(stageId, updateOpportunityStageRequest, opts).then((data) => {
+apiInstance.updateOpportunityStage(stageId, updateOpportunityStageRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -526,56 +576,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**RestOpportunityStage**](RestOpportunityStage.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## updateOpportunityUsingPATCH
-
-> RestV2Opportunity updateOpportunityUsingPATCH(opportunityId, updateOpportunityRequestV2, opts)
-
-Update an opportunity
-
-Updates specified values of a given opportunity
-
-### Example
-
-```javascript
-import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
-
-let apiInstance = new KeapCoreServiceV2Sdk.OpportunityApi();
-let opportunityId = "opportunityId_example"; // String | opportunity_id
-let updateOpportunityRequestV2 = new KeapCoreServiceV2Sdk.UpdateOpportunityRequestV2(); // UpdateOpportunityRequestV2 | request
-let opts = {
-  'updateMask': ["null"] // [String] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-};
-apiInstance.updateOpportunityUsingPATCH(opportunityId, updateOpportunityRequestV2, opts).then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
-  console.error(error);
-});
-
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **opportunityId** | **String**| opportunity_id | 
- **updateOpportunityRequestV2** | [**UpdateOpportunityRequestV2**](UpdateOpportunityRequestV2.md)| request | 
- **updateMask** | [**[String]**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
-
-### Return type
-
-[**RestV2Opportunity**](RestV2Opportunity.md)
 
 ### Authorization
 

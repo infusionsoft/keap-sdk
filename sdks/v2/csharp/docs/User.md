@@ -20,7 +20,6 @@ Name | Type | Description | Notes
 **PhoneNumbers** | [**List&lt;PhoneNumber&gt;**](PhoneNumber.md) |  | [optional] 
 **SocialAccounts** | [**List&lt;SocialAccount&gt;**](SocialAccount.md) |  | [optional] 
 **Status** | **string** |  | [optional] 
-**VarTimeZone** | **string** |  | [optional] 
 **Title** | **string** |  | [optional] 
 **UpdateTime** | **string** |  | [optional] 
 **UpdatedBy** | **long** |  | [optional] 

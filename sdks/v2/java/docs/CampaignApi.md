@@ -4,20 +4,20 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**addContactsToCampaignSequenceUsingPOST1**](CampaignApi.md#addContactsToCampaignSequenceUsingPOST1) | **POST** /v2/campaigns/{campaign_id}/sequences/{sequence_id}:addContacts | Add Contacts to Campaign Sequence |
-| [**addContactsToCampaignSequenceUsingPOST1WithHttpInfo**](CampaignApi.md#addContactsToCampaignSequenceUsingPOST1WithHttpInfo) | **POST** /v2/campaigns/{campaign_id}/sequences/{sequence_id}:addContacts | Add Contacts to Campaign Sequence |
-| [**getCampaignUsingGET1**](CampaignApi.md#getCampaignUsingGET1) | **GET** /v2/campaigns/{campaign_id} | Retrieve a Campaign |
-| [**getCampaignUsingGET1WithHttpInfo**](CampaignApi.md#getCampaignUsingGET1WithHttpInfo) | **GET** /v2/campaigns/{campaign_id} | Retrieve a Campaign |
-| [**listCampaignsUsingGET1**](CampaignApi.md#listCampaignsUsingGET1) | **GET** /v2/campaigns | List Campaigns |
-| [**listCampaignsUsingGET1WithHttpInfo**](CampaignApi.md#listCampaignsUsingGET1WithHttpInfo) | **GET** /v2/campaigns | List Campaigns |
-| [**removeContactsFromCampaignSequenceUsingPOST**](CampaignApi.md#removeContactsFromCampaignSequenceUsingPOST) | **POST** /v2/campaigns/{campaign_id}/sequences/{sequence_id}:removeContacts | Remove Contacts from Campaign Sequence |
-| [**removeContactsFromCampaignSequenceUsingPOSTWithHttpInfo**](CampaignApi.md#removeContactsFromCampaignSequenceUsingPOSTWithHttpInfo) | **POST** /v2/campaigns/{campaign_id}/sequences/{sequence_id}:removeContacts | Remove Contacts from Campaign Sequence |
+| [**addContactsToCampaignSequence**](CampaignApi.md#addContactsToCampaignSequence) | **POST** /v2/campaigns/{campaign_id}/sequences/{sequence_id}:addContacts | Add Contacts to Campaign Sequence |
+| [**addContactsToCampaignSequenceWithHttpInfo**](CampaignApi.md#addContactsToCampaignSequenceWithHttpInfo) | **POST** /v2/campaigns/{campaign_id}/sequences/{sequence_id}:addContacts | Add Contacts to Campaign Sequence |
+| [**getCampaign**](CampaignApi.md#getCampaign) | **GET** /v2/campaigns/{campaign_id} | Retrieve a Campaign |
+| [**getCampaignWithHttpInfo**](CampaignApi.md#getCampaignWithHttpInfo) | **GET** /v2/campaigns/{campaign_id} | Retrieve a Campaign |
+| [**listCampaigns**](CampaignApi.md#listCampaigns) | **GET** /v2/campaigns | List Campaigns |
+| [**listCampaignsWithHttpInfo**](CampaignApi.md#listCampaignsWithHttpInfo) | **GET** /v2/campaigns | List Campaigns |
+| [**removeContactsFromCampaignSequence**](CampaignApi.md#removeContactsFromCampaignSequence) | **POST** /v2/campaigns/{campaign_id}/sequences/{sequence_id}:removeContacts | Remove Contacts from Campaign Sequence |
+| [**removeContactsFromCampaignSequenceWithHttpInfo**](CampaignApi.md#removeContactsFromCampaignSequenceWithHttpInfo) | **POST** /v2/campaigns/{campaign_id}/sequences/{sequence_id}:removeContacts | Remove Contacts from Campaign Sequence |
 
 
 
-## addContactsToCampaignSequenceUsingPOST1
+## addContactsToCampaignSequence
 
-> AddContactsToSequenceResponse addContactsToCampaignSequenceUsingPOST1(campaignId, sequenceId, addContactsToSequenceRequest)
+> AddContactsToSequenceResponse addContactsToCampaignSequence(campaignId, sequenceId, addContactsToSequenceRequest)
 
 Add Contacts to Campaign Sequence
 
@@ -43,10 +43,10 @@ public class Example {
         String sequenceId = "sequenceId_example"; // String | sequence_id
         AddContactsToSequenceRequest addContactsToSequenceRequest = new AddContactsToSequenceRequest(); // AddContactsToSequenceRequest | addContactsToSequenceRequest
         try {
-            AddContactsToSequenceResponse result = apiInstance.addContactsToCampaignSequenceUsingPOST1(campaignId, sequenceId, addContactsToSequenceRequest);
+            AddContactsToSequenceResponse result = apiInstance.addContactsToCampaignSequence(campaignId, sequenceId, addContactsToSequenceRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#addContactsToCampaignSequenceUsingPOST1");
+            System.err.println("Exception when calling CampaignApi#addContactsToCampaignSequence");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -87,9 +87,9 @@ No authorization required
 | **403** | Forbidden |  -  |
 | **500** | Internal Server Error |  -  |
 
-## addContactsToCampaignSequenceUsingPOST1WithHttpInfo
+## addContactsToCampaignSequenceWithHttpInfo
 
-> ApiResponse<AddContactsToSequenceResponse> addContactsToCampaignSequenceUsingPOST1 addContactsToCampaignSequenceUsingPOST1WithHttpInfo(campaignId, sequenceId, addContactsToSequenceRequest)
+> ApiResponse<AddContactsToSequenceResponse> addContactsToCampaignSequence addContactsToCampaignSequenceWithHttpInfo(campaignId, sequenceId, addContactsToSequenceRequest)
 
 Add Contacts to Campaign Sequence
 
@@ -116,12 +116,12 @@ public class Example {
         String sequenceId = "sequenceId_example"; // String | sequence_id
         AddContactsToSequenceRequest addContactsToSequenceRequest = new AddContactsToSequenceRequest(); // AddContactsToSequenceRequest | addContactsToSequenceRequest
         try {
-            ApiResponse<AddContactsToSequenceResponse> response = apiInstance.addContactsToCampaignSequenceUsingPOST1WithHttpInfo(campaignId, sequenceId, addContactsToSequenceRequest);
+            ApiResponse<AddContactsToSequenceResponse> response = apiInstance.addContactsToCampaignSequenceWithHttpInfo(campaignId, sequenceId, addContactsToSequenceRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#addContactsToCampaignSequenceUsingPOST1");
+            System.err.println("Exception when calling CampaignApi#addContactsToCampaignSequence");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -163,9 +163,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## getCampaignUsingGET1
+## getCampaign
 
-> Campaign getCampaignUsingGET1(campaignId)
+> Campaign getCampaign(campaignId)
 
 Retrieve a Campaign
 
@@ -189,10 +189,10 @@ public class Example {
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         String campaignId = "campaignId_example"; // String | campaign_id
         try {
-            Campaign result = apiInstance.getCampaignUsingGET1(campaignId);
+            Campaign result = apiInstance.getCampaign(campaignId);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#getCampaignUsingGET1");
+            System.err.println("Exception when calling CampaignApi#getCampaign");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -232,9 +232,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## getCampaignUsingGET1WithHttpInfo
+## getCampaignWithHttpInfo
 
-> ApiResponse<Campaign> getCampaignUsingGET1 getCampaignUsingGET1WithHttpInfo(campaignId)
+> ApiResponse<Campaign> getCampaign getCampaignWithHttpInfo(campaignId)
 
 Retrieve a Campaign
 
@@ -259,12 +259,12 @@ public class Example {
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         String campaignId = "campaignId_example"; // String | campaign_id
         try {
-            ApiResponse<Campaign> response = apiInstance.getCampaignUsingGET1WithHttpInfo(campaignId);
+            ApiResponse<Campaign> response = apiInstance.getCampaignWithHttpInfo(campaignId);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#getCampaignUsingGET1");
+            System.err.println("Exception when calling CampaignApi#getCampaign");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -305,9 +305,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## listCampaignsUsingGET1
+## listCampaigns
 
-> ListCampaignsResponse listCampaignsUsingGET1(filter, orderBy, pageSize, pageToken, stats)
+> ListCampaignsResponse listCampaigns(filter, orderBy, pageSize, pageToken, stats)
 
 List Campaigns
 
@@ -335,10 +335,10 @@ public class Example {
         String pageToken = "pageToken_example"; // String | Page token
         Boolean stats = true; // Boolean | 
         try {
-            ListCampaignsResponse result = apiInstance.listCampaignsUsingGET1(filter, orderBy, pageSize, pageToken, stats);
+            ListCampaignsResponse result = apiInstance.listCampaigns(filter, orderBy, pageSize, pageToken, stats);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#listCampaignsUsingGET1");
+            System.err.println("Exception when calling CampaignApi#listCampaigns");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -382,9 +382,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## listCampaignsUsingGET1WithHttpInfo
+## listCampaignsWithHttpInfo
 
-> ApiResponse<ListCampaignsResponse> listCampaignsUsingGET1 listCampaignsUsingGET1WithHttpInfo(filter, orderBy, pageSize, pageToken, stats)
+> ApiResponse<ListCampaignsResponse> listCampaigns listCampaignsWithHttpInfo(filter, orderBy, pageSize, pageToken, stats)
 
 List Campaigns
 
@@ -413,12 +413,12 @@ public class Example {
         String pageToken = "pageToken_example"; // String | Page token
         Boolean stats = true; // Boolean | 
         try {
-            ApiResponse<ListCampaignsResponse> response = apiInstance.listCampaignsUsingGET1WithHttpInfo(filter, orderBy, pageSize, pageToken, stats);
+            ApiResponse<ListCampaignsResponse> response = apiInstance.listCampaignsWithHttpInfo(filter, orderBy, pageSize, pageToken, stats);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#listCampaignsUsingGET1");
+            System.err.println("Exception when calling CampaignApi#listCampaigns");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -463,9 +463,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## removeContactsFromCampaignSequenceUsingPOST
+## removeContactsFromCampaignSequence
 
-> RemoveContactsFromSequenceResponse removeContactsFromCampaignSequenceUsingPOST(campaignId, sequenceId, removeContactsFromSequenceRequest)
+> RemoveContactsFromSequenceResponse removeContactsFromCampaignSequence(campaignId, sequenceId, removeContactsFromSequenceRequest)
 
 Remove Contacts from Campaign Sequence
 
@@ -491,10 +491,10 @@ public class Example {
         String sequenceId = "sequenceId_example"; // String | sequence_id
         RemoveContactsFromSequenceRequest removeContactsFromSequenceRequest = new RemoveContactsFromSequenceRequest(); // RemoveContactsFromSequenceRequest | removeContactsFromSequenceRequest
         try {
-            RemoveContactsFromSequenceResponse result = apiInstance.removeContactsFromCampaignSequenceUsingPOST(campaignId, sequenceId, removeContactsFromSequenceRequest);
+            RemoveContactsFromSequenceResponse result = apiInstance.removeContactsFromCampaignSequence(campaignId, sequenceId, removeContactsFromSequenceRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#removeContactsFromCampaignSequenceUsingPOST");
+            System.err.println("Exception when calling CampaignApi#removeContactsFromCampaignSequence");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -535,9 +535,9 @@ No authorization required
 | **403** | Forbidden |  -  |
 | **500** | Internal Server Error |  -  |
 
-## removeContactsFromCampaignSequenceUsingPOSTWithHttpInfo
+## removeContactsFromCampaignSequenceWithHttpInfo
 
-> ApiResponse<RemoveContactsFromSequenceResponse> removeContactsFromCampaignSequenceUsingPOST removeContactsFromCampaignSequenceUsingPOSTWithHttpInfo(campaignId, sequenceId, removeContactsFromSequenceRequest)
+> ApiResponse<RemoveContactsFromSequenceResponse> removeContactsFromCampaignSequence removeContactsFromCampaignSequenceWithHttpInfo(campaignId, sequenceId, removeContactsFromSequenceRequest)
 
 Remove Contacts from Campaign Sequence
 
@@ -564,12 +564,12 @@ public class Example {
         String sequenceId = "sequenceId_example"; // String | sequence_id
         RemoveContactsFromSequenceRequest removeContactsFromSequenceRequest = new RemoveContactsFromSequenceRequest(); // RemoveContactsFromSequenceRequest | removeContactsFromSequenceRequest
         try {
-            ApiResponse<RemoveContactsFromSequenceResponse> response = apiInstance.removeContactsFromCampaignSequenceUsingPOSTWithHttpInfo(campaignId, sequenceId, removeContactsFromSequenceRequest);
+            ApiResponse<RemoveContactsFromSequenceResponse> response = apiInstance.removeContactsFromCampaignSequenceWithHttpInfo(campaignId, sequenceId, removeContactsFromSequenceRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#removeContactsFromCampaignSequenceUsingPOST");
+            System.err.println("Exception when calling CampaignApi#removeContactsFromCampaignSequence");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());

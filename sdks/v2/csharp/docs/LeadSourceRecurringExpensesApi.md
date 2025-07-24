@@ -4,16 +4,16 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**CreateLeadSourceRecurringExpenseUsingPOST**](LeadSourceRecurringExpensesApi.md#createleadsourcerecurringexpenseusingpost) | **POST** /v2/leadSources/{lead_source_id}/recurringExpenses | Create a Lead Source Recurring Expense |
-| [**DeleteLeadSourceRecurringExpenseUsingDELETE**](LeadSourceRecurringExpensesApi.md#deleteleadsourcerecurringexpenseusingdelete) | **DELETE** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Delete a Lead Source Recurring Expense |
-| [**GetLeadSourceRecurringExpenseUsingGET**](LeadSourceRecurringExpensesApi.md#getleadsourcerecurringexpenseusingget) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Retrieve a Lead Source Recurring Expense |
-| [**ListExpensesIncurredFromLeadSourceRecurringExpenseUsingGET**](LeadSourceRecurringExpensesApi.md#listexpensesincurredfromleadsourcerecurringexpenseusingget) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id}/expenses | Retrieves a list of expenses incurred from a recurring expense |
-| [**ListLeadSourceRecurringExpensesUsingGET**](LeadSourceRecurringExpensesApi.md#listleadsourcerecurringexpensesusingget) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses | Retrieves a list of lead source recurring expenses |
-| [**UpdateLeadSourceRecurringExpenseUsingPATCH**](LeadSourceRecurringExpensesApi.md#updateleadsourcerecurringexpenseusingpatch) | **PATCH** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Update a Lead Source Recurring Expense |
+| [**CreateLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#createleadsourcerecurringexpense) | **POST** /v2/leadSources/{lead_source_id}/recurringExpenses | Create a Lead Source Recurring Expense |
+| [**DeleteLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#deleteleadsourcerecurringexpense) | **DELETE** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Delete a Lead Source Recurring Expense |
+| [**GetLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#getleadsourcerecurringexpense) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Retrieve a Lead Source Recurring Expense |
+| [**ListExpensesIncurredFromLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#listexpensesincurredfromleadsourcerecurringexpense) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id}/expenses | Retrieves a list of expenses incurred from a recurring expense |
+| [**ListLeadSourceRecurringExpenses**](LeadSourceRecurringExpensesApi.md#listleadsourcerecurringexpenses) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses | Retrieves a list of lead source recurring expenses |
+| [**UpdateLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#updateleadsourcerecurringexpense) | **PATCH** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Update a Lead Source Recurring Expense |
 
-<a id="createleadsourcerecurringexpenseusingpost"></a>
-# **CreateLeadSourceRecurringExpenseUsingPOST**
-> LeadSourceRecurringExpense CreateLeadSourceRecurringExpenseUsingPOST (string leadSourceId, CreateLeadSourceRecurringExpenseRequest createLeadSourceRecurringExpenseRequest)
+<a id="createleadsourcerecurringexpense"></a>
+# **CreateLeadSourceRecurringExpense**
+> LeadSourceRecurringExpense CreateLeadSourceRecurringExpense (string leadSourceId, CreateLeadSourceRecurringExpenseRequest createLeadSourceRecurringExpenseRequest)
 
 Create a Lead Source Recurring Expense
 
@@ -29,7 +29,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class CreateLeadSourceRecurringExpenseUsingPOSTExample
+    public class CreateLeadSourceRecurringExpenseExample
     {
         public static void Main()
         {
@@ -42,12 +42,12 @@ namespace Example
             try
             {
                 // Create a Lead Source Recurring Expense
-                LeadSourceRecurringExpense result = apiInstance.CreateLeadSourceRecurringExpenseUsingPOST(leadSourceId, createLeadSourceRecurringExpenseRequest);
+                LeadSourceRecurringExpense result = apiInstance.CreateLeadSourceRecurringExpense(leadSourceId, createLeadSourceRecurringExpenseRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling LeadSourceRecurringExpensesApi.CreateLeadSourceRecurringExpenseUsingPOST: " + e.Message);
+                Debug.Print("Exception when calling LeadSourceRecurringExpensesApi.CreateLeadSourceRecurringExpense: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -56,21 +56,21 @@ namespace Example
 }
 ```
 
-#### Using the CreateLeadSourceRecurringExpenseUsingPOSTWithHttpInfo variant
+#### Using the CreateLeadSourceRecurringExpenseWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Create a Lead Source Recurring Expense
-    ApiResponse<LeadSourceRecurringExpense> response = apiInstance.CreateLeadSourceRecurringExpenseUsingPOSTWithHttpInfo(leadSourceId, createLeadSourceRecurringExpenseRequest);
+    ApiResponse<LeadSourceRecurringExpense> response = apiInstance.CreateLeadSourceRecurringExpenseWithHttpInfo(leadSourceId, createLeadSourceRecurringExpenseRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling LeadSourceRecurringExpensesApi.CreateLeadSourceRecurringExpenseUsingPOSTWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling LeadSourceRecurringExpensesApi.CreateLeadSourceRecurringExpenseWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -108,9 +108,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="deleteleadsourcerecurringexpenseusingdelete"></a>
-# **DeleteLeadSourceRecurringExpenseUsingDELETE**
-> void DeleteLeadSourceRecurringExpenseUsingDELETE (string leadSourceId, string leadSourceRecurringExpenseId)
+<a id="deleteleadsourcerecurringexpense"></a>
+# **DeleteLeadSourceRecurringExpense**
+> void DeleteLeadSourceRecurringExpense (string leadSourceId, string leadSourceRecurringExpenseId)
 
 Delete a Lead Source Recurring Expense
 
@@ -126,7 +126,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class DeleteLeadSourceRecurringExpenseUsingDELETEExample
+    public class DeleteLeadSourceRecurringExpenseExample
     {
         public static void Main()
         {
@@ -139,11 +139,11 @@ namespace Example
             try
             {
                 // Delete a Lead Source Recurring Expense
-                apiInstance.DeleteLeadSourceRecurringExpenseUsingDELETE(leadSourceId, leadSourceRecurringExpenseId);
+                apiInstance.DeleteLeadSourceRecurringExpense(leadSourceId, leadSourceRecurringExpenseId);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling LeadSourceRecurringExpensesApi.DeleteLeadSourceRecurringExpenseUsingDELETE: " + e.Message);
+                Debug.Print("Exception when calling LeadSourceRecurringExpensesApi.DeleteLeadSourceRecurringExpense: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -152,18 +152,18 @@ namespace Example
 }
 ```
 
-#### Using the DeleteLeadSourceRecurringExpenseUsingDELETEWithHttpInfo variant
+#### Using the DeleteLeadSourceRecurringExpenseWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Delete a Lead Source Recurring Expense
-    apiInstance.DeleteLeadSourceRecurringExpenseUsingDELETEWithHttpInfo(leadSourceId, leadSourceRecurringExpenseId);
+    apiInstance.DeleteLeadSourceRecurringExpenseWithHttpInfo(leadSourceId, leadSourceRecurringExpenseId);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling LeadSourceRecurringExpensesApi.DeleteLeadSourceRecurringExpenseUsingDELETEWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling LeadSourceRecurringExpensesApi.DeleteLeadSourceRecurringExpenseWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -201,9 +201,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="getleadsourcerecurringexpenseusingget"></a>
-# **GetLeadSourceRecurringExpenseUsingGET**
-> LeadSourceRecurringExpense GetLeadSourceRecurringExpenseUsingGET (string leadSourceId, string leadSourceRecurringExpenseId)
+<a id="getleadsourcerecurringexpense"></a>
+# **GetLeadSourceRecurringExpense**
+> LeadSourceRecurringExpense GetLeadSourceRecurringExpense (string leadSourceId, string leadSourceRecurringExpenseId)
 
 Retrieve a Lead Source Recurring Expense
 
@@ -219,7 +219,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class GetLeadSourceRecurringExpenseUsingGETExample
+    public class GetLeadSourceRecurringExpenseExample
     {
         public static void Main()
         {
@@ -232,12 +232,12 @@ namespace Example
             try
             {
                 // Retrieve a Lead Source Recurring Expense
-                LeadSourceRecurringExpense result = apiInstance.GetLeadSourceRecurringExpenseUsingGET(leadSourceId, leadSourceRecurringExpenseId);
+                LeadSourceRecurringExpense result = apiInstance.GetLeadSourceRecurringExpense(leadSourceId, leadSourceRecurringExpenseId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling LeadSourceRecurringExpensesApi.GetLeadSourceRecurringExpenseUsingGET: " + e.Message);
+                Debug.Print("Exception when calling LeadSourceRecurringExpensesApi.GetLeadSourceRecurringExpense: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -246,21 +246,21 @@ namespace Example
 }
 ```
 
-#### Using the GetLeadSourceRecurringExpenseUsingGETWithHttpInfo variant
+#### Using the GetLeadSourceRecurringExpenseWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Retrieve a Lead Source Recurring Expense
-    ApiResponse<LeadSourceRecurringExpense> response = apiInstance.GetLeadSourceRecurringExpenseUsingGETWithHttpInfo(leadSourceId, leadSourceRecurringExpenseId);
+    ApiResponse<LeadSourceRecurringExpense> response = apiInstance.GetLeadSourceRecurringExpenseWithHttpInfo(leadSourceId, leadSourceRecurringExpenseId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling LeadSourceRecurringExpensesApi.GetLeadSourceRecurringExpenseUsingGETWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling LeadSourceRecurringExpensesApi.GetLeadSourceRecurringExpenseWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -298,9 +298,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="listexpensesincurredfromleadsourcerecurringexpenseusingget"></a>
-# **ListExpensesIncurredFromLeadSourceRecurringExpenseUsingGET**
-> ListLeadSourceExpensesResponse ListExpensesIncurredFromLeadSourceRecurringExpenseUsingGET (string leadSourceId, string leadSourceRecurringExpenseId, string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
+<a id="listexpensesincurredfromleadsourcerecurringexpense"></a>
+# **ListExpensesIncurredFromLeadSourceRecurringExpense**
+> ListLeadSourceExpensesResponse ListExpensesIncurredFromLeadSourceRecurringExpense (string leadSourceId, string leadSourceRecurringExpenseId, string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
 
 Retrieves a list of expenses incurred from a recurring expense
 
@@ -316,7 +316,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class ListExpensesIncurredFromLeadSourceRecurringExpenseUsingGETExample
+    public class ListExpensesIncurredFromLeadSourceRecurringExpenseExample
     {
         public static void Main()
         {
@@ -333,12 +333,12 @@ namespace Example
             try
             {
                 // Retrieves a list of expenses incurred from a recurring expense
-                ListLeadSourceExpensesResponse result = apiInstance.ListExpensesIncurredFromLeadSourceRecurringExpenseUsingGET(leadSourceId, leadSourceRecurringExpenseId, filter, orderBy, pageSize, pageToken);
+                ListLeadSourceExpensesResponse result = apiInstance.ListExpensesIncurredFromLeadSourceRecurringExpense(leadSourceId, leadSourceRecurringExpenseId, filter, orderBy, pageSize, pageToken);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling LeadSourceRecurringExpensesApi.ListExpensesIncurredFromLeadSourceRecurringExpenseUsingGET: " + e.Message);
+                Debug.Print("Exception when calling LeadSourceRecurringExpensesApi.ListExpensesIncurredFromLeadSourceRecurringExpense: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -347,21 +347,21 @@ namespace Example
 }
 ```
 
-#### Using the ListExpensesIncurredFromLeadSourceRecurringExpenseUsingGETWithHttpInfo variant
+#### Using the ListExpensesIncurredFromLeadSourceRecurringExpenseWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Retrieves a list of expenses incurred from a recurring expense
-    ApiResponse<ListLeadSourceExpensesResponse> response = apiInstance.ListExpensesIncurredFromLeadSourceRecurringExpenseUsingGETWithHttpInfo(leadSourceId, leadSourceRecurringExpenseId, filter, orderBy, pageSize, pageToken);
+    ApiResponse<ListLeadSourceExpensesResponse> response = apiInstance.ListExpensesIncurredFromLeadSourceRecurringExpenseWithHttpInfo(leadSourceId, leadSourceRecurringExpenseId, filter, orderBy, pageSize, pageToken);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling LeadSourceRecurringExpensesApi.ListExpensesIncurredFromLeadSourceRecurringExpenseUsingGETWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling LeadSourceRecurringExpensesApi.ListExpensesIncurredFromLeadSourceRecurringExpenseWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -404,9 +404,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="listleadsourcerecurringexpensesusingget"></a>
-# **ListLeadSourceRecurringExpensesUsingGET**
-> ListLeadSourceRecurringExpensesResponse ListLeadSourceRecurringExpensesUsingGET (string leadSourceId, string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
+<a id="listleadsourcerecurringexpenses"></a>
+# **ListLeadSourceRecurringExpenses**
+> ListLeadSourceRecurringExpensesResponse ListLeadSourceRecurringExpenses (string leadSourceId, string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
 
 Retrieves a list of lead source recurring expenses
 
@@ -422,7 +422,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class ListLeadSourceRecurringExpensesUsingGETExample
+    public class ListLeadSourceRecurringExpensesExample
     {
         public static void Main()
         {
@@ -438,12 +438,12 @@ namespace Example
             try
             {
                 // Retrieves a list of lead source recurring expenses
-                ListLeadSourceRecurringExpensesResponse result = apiInstance.ListLeadSourceRecurringExpensesUsingGET(leadSourceId, filter, orderBy, pageSize, pageToken);
+                ListLeadSourceRecurringExpensesResponse result = apiInstance.ListLeadSourceRecurringExpenses(leadSourceId, filter, orderBy, pageSize, pageToken);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling LeadSourceRecurringExpensesApi.ListLeadSourceRecurringExpensesUsingGET: " + e.Message);
+                Debug.Print("Exception when calling LeadSourceRecurringExpensesApi.ListLeadSourceRecurringExpenses: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -452,21 +452,21 @@ namespace Example
 }
 ```
 
-#### Using the ListLeadSourceRecurringExpensesUsingGETWithHttpInfo variant
+#### Using the ListLeadSourceRecurringExpensesWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Retrieves a list of lead source recurring expenses
-    ApiResponse<ListLeadSourceRecurringExpensesResponse> response = apiInstance.ListLeadSourceRecurringExpensesUsingGETWithHttpInfo(leadSourceId, filter, orderBy, pageSize, pageToken);
+    ApiResponse<ListLeadSourceRecurringExpensesResponse> response = apiInstance.ListLeadSourceRecurringExpensesWithHttpInfo(leadSourceId, filter, orderBy, pageSize, pageToken);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling LeadSourceRecurringExpensesApi.ListLeadSourceRecurringExpensesUsingGETWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling LeadSourceRecurringExpensesApi.ListLeadSourceRecurringExpensesWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -508,9 +508,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="updateleadsourcerecurringexpenseusingpatch"></a>
-# **UpdateLeadSourceRecurringExpenseUsingPATCH**
-> LeadSourceRecurringExpense UpdateLeadSourceRecurringExpenseUsingPATCH (string leadSourceId, string leadSourceRecurringExpenseId, LeadSourceRecurringExpenseUpdateRequest leadSourceRecurringExpenseUpdateRequest, List<string>? updateMask = null)
+<a id="updateleadsourcerecurringexpense"></a>
+# **UpdateLeadSourceRecurringExpense**
+> LeadSourceRecurringExpense UpdateLeadSourceRecurringExpense (string leadSourceId, string leadSourceRecurringExpenseId, LeadSourceRecurringExpenseUpdateRequest leadSourceRecurringExpenseUpdateRequest, List<string>? updateMask = null)
 
 Update a Lead Source Recurring Expense
 
@@ -526,7 +526,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class UpdateLeadSourceRecurringExpenseUsingPATCHExample
+    public class UpdateLeadSourceRecurringExpenseExample
     {
         public static void Main()
         {
@@ -541,12 +541,12 @@ namespace Example
             try
             {
                 // Update a Lead Source Recurring Expense
-                LeadSourceRecurringExpense result = apiInstance.UpdateLeadSourceRecurringExpenseUsingPATCH(leadSourceId, leadSourceRecurringExpenseId, leadSourceRecurringExpenseUpdateRequest, updateMask);
+                LeadSourceRecurringExpense result = apiInstance.UpdateLeadSourceRecurringExpense(leadSourceId, leadSourceRecurringExpenseId, leadSourceRecurringExpenseUpdateRequest, updateMask);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling LeadSourceRecurringExpensesApi.UpdateLeadSourceRecurringExpenseUsingPATCH: " + e.Message);
+                Debug.Print("Exception when calling LeadSourceRecurringExpensesApi.UpdateLeadSourceRecurringExpense: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -555,21 +555,21 @@ namespace Example
 }
 ```
 
-#### Using the UpdateLeadSourceRecurringExpenseUsingPATCHWithHttpInfo variant
+#### Using the UpdateLeadSourceRecurringExpenseWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Update a Lead Source Recurring Expense
-    ApiResponse<LeadSourceRecurringExpense> response = apiInstance.UpdateLeadSourceRecurringExpenseUsingPATCHWithHttpInfo(leadSourceId, leadSourceRecurringExpenseId, leadSourceRecurringExpenseUpdateRequest, updateMask);
+    ApiResponse<LeadSourceRecurringExpense> response = apiInstance.UpdateLeadSourceRecurringExpenseWithHttpInfo(leadSourceId, leadSourceRecurringExpenseId, leadSourceRecurringExpenseUpdateRequest, updateMask);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling LeadSourceRecurringExpensesApi.UpdateLeadSourceRecurringExpenseUsingPATCHWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling LeadSourceRecurringExpensesApi.UpdateLeadSourceRecurringExpenseWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }

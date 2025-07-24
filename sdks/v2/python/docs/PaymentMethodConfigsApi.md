@@ -4,11 +4,11 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_payment_method_config_using_post**](PaymentMethodConfigsApi.md#create_payment_method_config_using_post) | **POST** /v2/paymentMethodConfigs | Create Payment Method Configuration
+[**create_payment_method_config**](PaymentMethodConfigsApi.md#create_payment_method_config) | **POST** /v2/paymentMethodConfigs | Create Payment Method Configuration
 
 
-# **create_payment_method_config_using_post**
-> PaymentMethodConfig create_payment_method_config_using_post(create_payment_method_config_request)
+# **create_payment_method_config**
+> PaymentMethodConfig create_payment_method_config(create_payment_method_config_request)
 
 Create Payment Method Configuration
 
@@ -38,11 +38,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Create Payment Method Configuration
-        api_response = api_instance.create_payment_method_config_using_post(create_payment_method_config_request)
-        print("The response of PaymentMethodConfigsApi->create_payment_method_config_using_post:\n")
+        api_response = api_instance.create_payment_method_config(create_payment_method_config_request)
+        print("The response of PaymentMethodConfigsApi->create_payment_method_config:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling PaymentMethodConfigsApi->create_payment_method_config_using_post: %s\n" % e)
+        print("Exception when calling PaymentMethodConfigsApi->create_payment_method_config: %s\n" % e)
 ```
 
 

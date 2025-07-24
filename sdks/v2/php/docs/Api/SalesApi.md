@@ -4,13 +4,13 @@ All URIs are relative to https://api.keap.com/crm/rest, except if the operation 
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**setMerchantGatewayAsDefaultUsingPOST()**](SalesApi.md#setMerchantGatewayAsDefaultUsingPOST) | **POST** /v2/sales/merchants/{id}:setDefault | Set default Merchant Account |
+| [**setMerchantGatewayAsDefault()**](SalesApi.md#setMerchantGatewayAsDefault) | **POST** /v2/sales/merchants/{id}:setDefault | Set default Merchant Account |
 
 
-## `setMerchantGatewayAsDefaultUsingPOST()`
+## `setMerchantGatewayAsDefault()`
 
 ```php
-setMerchantGatewayAsDefaultUsingPOST($id)
+setMerchantGatewayAsDefault($id)
 ```
 
 Set default Merchant Account
@@ -32,9 +32,9 @@ $apiInstance = new Keap\Core\V2\Api\SalesApi(
 $id = 'id_example'; // string | id
 
 try {
-    $apiInstance->setMerchantGatewayAsDefaultUsingPOST($id);
+    $apiInstance->setMerchantGatewayAsDefault($id);
 } catch (Exception $e) {
-    echo 'Exception when calling SalesApi->setMerchantGatewayAsDefaultUsingPOST: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling SalesApi->setMerchantGatewayAsDefault: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

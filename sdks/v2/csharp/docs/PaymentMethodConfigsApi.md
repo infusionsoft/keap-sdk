@@ -4,11 +4,11 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**CreatePaymentMethodConfigUsingPOST**](PaymentMethodConfigsApi.md#createpaymentmethodconfigusingpost) | **POST** /v2/paymentMethodConfigs | Create Payment Method Configuration |
+| [**CreatePaymentMethodConfig**](PaymentMethodConfigsApi.md#createpaymentmethodconfig) | **POST** /v2/paymentMethodConfigs | Create Payment Method Configuration |
 
-<a id="createpaymentmethodconfigusingpost"></a>
-# **CreatePaymentMethodConfigUsingPOST**
-> PaymentMethodConfig CreatePaymentMethodConfigUsingPOST (CreatePaymentMethodConfigRequest createPaymentMethodConfigRequest)
+<a id="createpaymentmethodconfig"></a>
+# **CreatePaymentMethodConfig**
+> PaymentMethodConfig CreatePaymentMethodConfig (CreatePaymentMethodConfigRequest createPaymentMethodConfigRequest)
 
 Create Payment Method Configuration
 
@@ -24,7 +24,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class CreatePaymentMethodConfigUsingPOSTExample
+    public class CreatePaymentMethodConfigExample
     {
         public static void Main()
         {
@@ -36,12 +36,12 @@ namespace Example
             try
             {
                 // Create Payment Method Configuration
-                PaymentMethodConfig result = apiInstance.CreatePaymentMethodConfigUsingPOST(createPaymentMethodConfigRequest);
+                PaymentMethodConfig result = apiInstance.CreatePaymentMethodConfig(createPaymentMethodConfigRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling PaymentMethodConfigsApi.CreatePaymentMethodConfigUsingPOST: " + e.Message);
+                Debug.Print("Exception when calling PaymentMethodConfigsApi.CreatePaymentMethodConfig: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -50,21 +50,21 @@ namespace Example
 }
 ```
 
-#### Using the CreatePaymentMethodConfigUsingPOSTWithHttpInfo variant
+#### Using the CreatePaymentMethodConfigWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Create Payment Method Configuration
-    ApiResponse<PaymentMethodConfig> response = apiInstance.CreatePaymentMethodConfigUsingPOSTWithHttpInfo(createPaymentMethodConfigRequest);
+    ApiResponse<PaymentMethodConfig> response = apiInstance.CreatePaymentMethodConfigWithHttpInfo(createPaymentMethodConfigRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling PaymentMethodConfigsApi.CreatePaymentMethodConfigUsingPOSTWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling PaymentMethodConfigsApi.CreatePaymentMethodConfigWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }

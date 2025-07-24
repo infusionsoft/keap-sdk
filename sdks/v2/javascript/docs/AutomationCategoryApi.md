@@ -4,17 +4,16 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createCategoryUsingPOST**](AutomationCategoryApi.md#createCategoryUsingPOST) | **POST** /v2/automationCategory | Create automation category
-[**deleteCategoriesUsingDELETE**](AutomationCategoryApi.md#deleteCategoriesUsingDELETE) | **DELETE** /v2/automationCategory | Delete automation category
-[**listCategoriesUsingGET**](AutomationCategoryApi.md#listCategoriesUsingGET) | **GET** /v2/automationCategory | List automation categories
-[**patchCategoryUsingPATCH**](AutomationCategoryApi.md#patchCategoryUsingPATCH) | **PATCH** /v2/automationCategory/{id} | Update automation category
-[**saveCategoryUsingPUT**](AutomationCategoryApi.md#saveCategoryUsingPUT) | **PUT** /v2/automationCategory | Save automation category
+[**createCategory**](AutomationCategoryApi.md#createCategory) | **POST** /v2/automationCategory | Create automation category
+[**deleteCategories**](AutomationCategoryApi.md#deleteCategories) | **DELETE** /v2/automationCategory | Delete automation category
+[**listCategories**](AutomationCategoryApi.md#listCategories) | **GET** /v2/automationCategory | List automation categories
+[**patchCategory**](AutomationCategoryApi.md#patchCategory) | **PATCH** /v2/automationCategory/{id} | Update automation category
 
 
 
-## createCategoryUsingPOST
+## createCategory
 
-> AutomationCategory createCategoryUsingPOST(createAutomationCategoryRequest)
+> AutomationCategory createCategory(createAutomationCategoryRequest)
 
 Create automation category
 
@@ -27,7 +26,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AutomationCategoryApi();
 let createAutomationCategoryRequest = new KeapCoreServiceV2Sdk.CreateAutomationCategoryRequest(); // CreateAutomationCategoryRequest | createAutomationCategoryRequest
-apiInstance.createCategoryUsingPOST(createAutomationCategoryRequest).then((data) => {
+apiInstance.createCategory(createAutomationCategoryRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -56,9 +55,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## deleteCategoriesUsingDELETE
+## deleteCategories
 
-> deleteCategoriesUsingDELETE(ids)
+> deleteCategories(ids)
 
 Delete automation category
 
@@ -71,7 +70,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AutomationCategoryApi();
 let ids = [null]; // [Number] | ids
-apiInstance.deleteCategoriesUsingDELETE(ids).then(() => {
+apiInstance.deleteCategories(ids).then(() => {
   console.log('API called successfully.');
 }, (error) => {
   console.error(error);
@@ -100,9 +99,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## listCategoriesUsingGET
+## listCategories
 
-> ListAutomationCategoryResponse listCategoriesUsingGET()
+> ListAutomationCategoryResponse listCategories()
 
 List automation categories
 
@@ -114,7 +113,7 @@ Retrieves a list of automation categories
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AutomationCategoryApi();
-apiInstance.listCategoriesUsingGET().then((data) => {
+apiInstance.listCategories().then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -140,9 +139,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## patchCategoryUsingPATCH
+## patchCategory
 
-> AutomationCategory patchCategoryUsingPATCH(id, patchAutomationCategoryRequest)
+> AutomationCategory patchCategory(id, patchAutomationCategoryRequest)
 
 Update automation category
 
@@ -156,7 +155,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 let apiInstance = new KeapCoreServiceV2Sdk.AutomationCategoryApi();
 let id = "id_example"; // String | id
 let patchAutomationCategoryRequest = new KeapCoreServiceV2Sdk.PatchAutomationCategoryRequest(); // PatchAutomationCategoryRequest | patchAutomationCategoryRequest
-apiInstance.patchCategoryUsingPATCH(id, patchAutomationCategoryRequest).then((data) => {
+apiInstance.patchCategory(id, patchAutomationCategoryRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -171,50 +170,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| id | 
  **patchAutomationCategoryRequest** | [**PatchAutomationCategoryRequest**](PatchAutomationCategoryRequest.md)| patchAutomationCategoryRequest | 
-
-### Return type
-
-[**AutomationCategory**](AutomationCategory.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## saveCategoryUsingPUT
-
-> AutomationCategory saveCategoryUsingPUT(saveAutomationCategoryRequest)
-
-Save automation category
-
-Creates or updates a single automation category
-
-### Example
-
-```javascript
-import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
-
-let apiInstance = new KeapCoreServiceV2Sdk.AutomationCategoryApi();
-let saveAutomationCategoryRequest = new KeapCoreServiceV2Sdk.SaveAutomationCategoryRequest(); // SaveAutomationCategoryRequest | saveAutomationCategoryRequest
-apiInstance.saveCategoryUsingPUT(saveAutomationCategoryRequest).then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
-  console.error(error);
-});
-
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **saveAutomationCategoryRequest** | [**SaveAutomationCategoryRequest**](SaveAutomationCategoryRequest.md)| saveAutomationCategoryRequest | 
 
 ### Return type
 

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **CreateTime** | **string** | The time that this lead source was created | [optional] 
 **Description** | **string** | The description of the lead source | [optional] 
 **EndTime** | **string** | The time that this lead source will end | [optional] 
-**Id** | **string** | The unique identifier for thia lead source | [optional] 
+**Id** | **string** | The unique identifier for this lead source | [optional] 
 **LeadSourceCategoryId** | **string** | The ID of the category that the lead source belongs to | [optional] 
 **Medium** | **string** | The medium of the lead source | [optional] 
 **Message** | **string** | The message/content of the lead source | [optional] 

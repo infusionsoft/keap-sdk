@@ -4,11 +4,11 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**set_merchant_gateway_as_default_using_post**](SalesApi.md#set_merchant_gateway_as_default_using_post) | **POST** /v2/sales/merchants/{id}:setDefault | Set default Merchant Account
+[**set_merchant_gateway_as_default**](SalesApi.md#set_merchant_gateway_as_default) | **POST** /v2/sales/merchants/{id}:setDefault | Set default Merchant Account
 
 
-# **set_merchant_gateway_as_default_using_post**
-> set_merchant_gateway_as_default_using_post(id)
+# **set_merchant_gateway_as_default**
+> set_merchant_gateway_as_default(id)
 
 Set default Merchant Account
 
@@ -36,9 +36,9 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Set default Merchant Account
-        api_instance.set_merchant_gateway_as_default_using_post(id)
+        api_instance.set_merchant_gateway_as_default(id)
     except Exception as e:
-        print("Exception when calling SalesApi->set_merchant_gateway_as_default_using_post: %s\n" % e)
+        print("Exception when calling SalesApi->set_merchant_gateway_as_default: %s\n" % e)
 ```
 
 

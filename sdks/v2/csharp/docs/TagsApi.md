@@ -4,24 +4,24 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**ApplyTagsUsingPOST**](TagsApi.md#applytagsusingpost) | **POST** /v2/tags/{tag_id}/contacts:applyTags | Apply Tag |
-| [**CreateTagCategoryUsingPOST1**](TagsApi.md#createtagcategoryusingpost1) | **POST** /v2/tags/categories | Create Tag Category |
-| [**CreateTagUsingPOST1**](TagsApi.md#createtagusingpost1) | **POST** /v2/tags | Create Tag |
-| [**DeleteTagCategoryUsingDELETE**](TagsApi.md#deletetagcategoryusingdelete) | **DELETE** /v2/tags/categories/{tag_category_id} | Delete Tag Category |
-| [**DeleteTagUsingDELETE**](TagsApi.md#deletetagusingdelete) | **DELETE** /v2/tags/{tag_id} | Delete Tag |
-| [**GetCategoryUsingGET**](TagsApi.md#getcategoryusingget) | **GET** /v2/tags/categories/{tag_category_id} | Retrieve a Tag Category |
-| [**GetTagUsingGET1**](TagsApi.md#gettagusingget1) | **GET** /v2/tags/{tag_id} | Retrieve a Tag |
-| [**ListCompaniesForTagIdUsingGET1**](TagsApi.md#listcompaniesfortagidusingget1) | **GET** /v2/tags/{tag_id}/companies | List Tagged Companies |
-| [**ListContactsWithTagIdUsingGET**](TagsApi.md#listcontactswithtagidusingget) | **GET** /v2/tags/{tag_id}/contacts | List Tagged Contacts |
-| [**ListTagCategoriesUsingGET**](TagsApi.md#listtagcategoriesusingget) | **GET** /v2/tags/categories | List Tag Categories |
-| [**ListTagsUsingGET1**](TagsApi.md#listtagsusingget1) | **GET** /v2/tags | List Tags |
-| [**RemoveTagsUsingPOST**](TagsApi.md#removetagsusingpost) | **POST** /v2/tags/{tag_id}/contacts:removeTags | Remove Tags |
-| [**UpdateTagCategoryUsingPATCH**](TagsApi.md#updatetagcategoryusingpatch) | **PATCH** /v2/tags/categories/{tag_category_id} | Update a Tag Category |
-| [**UpdateTagUsingPATCH**](TagsApi.md#updatetagusingpatch) | **PATCH** /v2/tags/{tag_id} | Update a Tag |
+| [**ApplyTags**](TagsApi.md#applytags) | **POST** /v2/tags/{tag_id}/contacts:applyTags | Apply Tag |
+| [**CreateTag**](TagsApi.md#createtag) | **POST** /v2/tags | Create Tag |
+| [**CreateTagCategory**](TagsApi.md#createtagcategory) | **POST** /v2/tags/categories | Create Tag Category |
+| [**DeleteTag**](TagsApi.md#deletetag) | **DELETE** /v2/tags/{tag_id} | Delete Tag |
+| [**DeleteTagCategory**](TagsApi.md#deletetagcategory) | **DELETE** /v2/tags/categories/{tag_category_id} | Delete Tag Category |
+| [**GetCategory**](TagsApi.md#getcategory) | **GET** /v2/tags/categories/{tag_category_id} | Retrieve a Tag Category |
+| [**GetTag**](TagsApi.md#gettag) | **GET** /v2/tags/{tag_id} | Retrieve a Tag |
+| [**ListCompaniesForTagId**](TagsApi.md#listcompaniesfortagid) | **GET** /v2/tags/{tag_id}/companies | List Tagged Companies |
+| [**ListContactsWithTagId**](TagsApi.md#listcontactswithtagid) | **GET** /v2/tags/{tag_id}/contacts | List Tagged Contacts |
+| [**ListTagCategories**](TagsApi.md#listtagcategories) | **GET** /v2/tags/categories | List Tag Categories |
+| [**ListTags**](TagsApi.md#listtags) | **GET** /v2/tags | List Tags |
+| [**RemoveTags**](TagsApi.md#removetags) | **POST** /v2/tags/{tag_id}/contacts:removeTags | Remove Tags |
+| [**UpdateTag**](TagsApi.md#updatetag) | **PATCH** /v2/tags/{tag_id} | Update a Tag |
+| [**UpdateTagCategory**](TagsApi.md#updatetagcategory) | **PATCH** /v2/tags/categories/{tag_category_id} | Update a Tag Category |
 
-<a id="applytagsusingpost"></a>
-# **ApplyTagsUsingPOST**
-> ApplyTagsResponse ApplyTagsUsingPOST (string tagId, ApplyRemoveTagRequest applyRemoveTagRequest)
+<a id="applytags"></a>
+# **ApplyTags**
+> ApplyTagsResponse ApplyTags (string tagId, ApplyRemoveTagRequest applyRemoveTagRequest)
 
 Apply Tag
 
@@ -37,7 +37,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class ApplyTagsUsingPOSTExample
+    public class ApplyTagsExample
     {
         public static void Main()
         {
@@ -50,12 +50,12 @@ namespace Example
             try
             {
                 // Apply Tag
-                ApplyTagsResponse result = apiInstance.ApplyTagsUsingPOST(tagId, applyRemoveTagRequest);
+                ApplyTagsResponse result = apiInstance.ApplyTags(tagId, applyRemoveTagRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling TagsApi.ApplyTagsUsingPOST: " + e.Message);
+                Debug.Print("Exception when calling TagsApi.ApplyTags: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -64,21 +64,21 @@ namespace Example
 }
 ```
 
-#### Using the ApplyTagsUsingPOSTWithHttpInfo variant
+#### Using the ApplyTagsWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Apply Tag
-    ApiResponse<ApplyTagsResponse> response = apiInstance.ApplyTagsUsingPOSTWithHttpInfo(tagId, applyRemoveTagRequest);
+    ApiResponse<ApplyTagsResponse> response = apiInstance.ApplyTagsWithHttpInfo(tagId, applyRemoveTagRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling TagsApi.ApplyTagsUsingPOSTWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling TagsApi.ApplyTagsWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -115,103 +115,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="createtagcategoryusingpost1"></a>
-# **CreateTagCategoryUsingPOST1**
-> Tag CreateTagCategoryUsingPOST1 (CreateUpdateTagCategoryRequest createUpdateTagCategoryRequest)
-
-Create Tag Category
-
-Creates a new Tag Category.
-
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using Keap.Core.V2.Api;
-using Keap.Core.V2.Client;
-using Keap.Core.V2.Model;
-
-namespace Example
-{
-    public class CreateTagCategoryUsingPOST1Example
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
-            var apiInstance = new TagsApi(config);
-            var createUpdateTagCategoryRequest = new CreateUpdateTagCategoryRequest(); // CreateUpdateTagCategoryRequest | request
-
-            try
-            {
-                // Create Tag Category
-                Tag result = apiInstance.CreateTagCategoryUsingPOST1(createUpdateTagCategoryRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling TagsApi.CreateTagCategoryUsingPOST1: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the CreateTagCategoryUsingPOST1WithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Create Tag Category
-    ApiResponse<Tag> response = apiInstance.CreateTagCategoryUsingPOST1WithHttpInfo(createUpdateTagCategoryRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling TagsApi.CreateTagCategoryUsingPOST1WithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| **createUpdateTagCategoryRequest** | [**CreateUpdateTagCategoryRequest**](CreateUpdateTagCategoryRequest.md) | request |  |
-
-### Return type
-
-[**Tag**](Tag.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **201** | Created |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **500** | Internal Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a id="createtagusingpost1"></a>
-# **CreateTagUsingPOST1**
-> Tag CreateTagUsingPOST1 (CreateUpdateTagRequest createUpdateTagRequest)
+<a id="createtag"></a>
+# **CreateTag**
+> Tag CreateTag (CreateUpdateTagRequest createUpdateTagRequest)
 
 Create Tag
 
@@ -227,7 +133,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class CreateTagUsingPOST1Example
+    public class CreateTagExample
     {
         public static void Main()
         {
@@ -239,12 +145,12 @@ namespace Example
             try
             {
                 // Create Tag
-                Tag result = apiInstance.CreateTagUsingPOST1(createUpdateTagRequest);
+                Tag result = apiInstance.CreateTag(createUpdateTagRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling TagsApi.CreateTagUsingPOST1: " + e.Message);
+                Debug.Print("Exception when calling TagsApi.CreateTag: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -253,21 +159,21 @@ namespace Example
 }
 ```
 
-#### Using the CreateTagUsingPOST1WithHttpInfo variant
+#### Using the CreateTagWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Create Tag
-    ApiResponse<Tag> response = apiInstance.CreateTagUsingPOST1WithHttpInfo(createUpdateTagRequest);
+    ApiResponse<Tag> response = apiInstance.CreateTagWithHttpInfo(createUpdateTagRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling TagsApi.CreateTagUsingPOST1WithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling TagsApi.CreateTagWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -303,13 +209,13 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="deletetagcategoryusingdelete"></a>
-# **DeleteTagCategoryUsingDELETE**
-> void DeleteTagCategoryUsingDELETE (string tagCategoryId)
+<a id="createtagcategory"></a>
+# **CreateTagCategory**
+> Tag CreateTagCategory (CreateUpdateTagCategoryRequest createUpdateTagCategoryRequest)
 
-Delete Tag Category
+Create Tag Category
 
-Deletes the specified Tag Category
+Creates a new Tag Category.
 
 ### Example
 ```csharp
@@ -321,23 +227,24 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class DeleteTagCategoryUsingDELETEExample
+    public class CreateTagCategoryExample
     {
         public static void Main()
         {
             Configuration config = new Configuration();
             config.BasePath = "https://api.keap.com/crm/rest";
             var apiInstance = new TagsApi(config);
-            var tagCategoryId = "tagCategoryId_example";  // string | tag_category_id
+            var createUpdateTagCategoryRequest = new CreateUpdateTagCategoryRequest(); // CreateUpdateTagCategoryRequest | request
 
             try
             {
-                // Delete Tag Category
-                apiInstance.DeleteTagCategoryUsingDELETE(tagCategoryId);
+                // Create Tag Category
+                Tag result = apiInstance.CreateTagCategory(createUpdateTagCategoryRequest);
+                Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling TagsApi.DeleteTagCategoryUsingDELETE: " + e.Message);
+                Debug.Print("Exception when calling TagsApi.CreateTagCategory: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -346,18 +253,21 @@ namespace Example
 }
 ```
 
-#### Using the DeleteTagCategoryUsingDELETEWithHttpInfo variant
+#### Using the CreateTagCategoryWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    // Delete Tag Category
-    apiInstance.DeleteTagCategoryUsingDELETEWithHttpInfo(tagCategoryId);
+    // Create Tag Category
+    ApiResponse<Tag> response = apiInstance.CreateTagCategoryWithHttpInfo(createUpdateTagCategoryRequest);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling TagsApi.DeleteTagCategoryUsingDELETEWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling TagsApi.CreateTagCategoryWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -367,11 +277,11 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **tagCategoryId** | **string** | tag_category_id |  |
+| **createUpdateTagCategoryRequest** | [**CreateUpdateTagCategoryRequest**](CreateUpdateTagCategoryRequest.md) | request |  |
 
 ### Return type
 
-void (empty response body)
+[**Tag**](Tag.md)
 
 ### Authorization
 
@@ -379,24 +289,23 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **204** | No Content |  -  |
+| **201** | Created |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="deletetagusingdelete"></a>
-# **DeleteTagUsingDELETE**
-> void DeleteTagUsingDELETE (string tagId)
+<a id="deletetag"></a>
+# **DeleteTag**
+> void DeleteTag (string tagId)
 
 Delete Tag
 
@@ -412,7 +321,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class DeleteTagUsingDELETEExample
+    public class DeleteTagExample
     {
         public static void Main()
         {
@@ -424,11 +333,11 @@ namespace Example
             try
             {
                 // Delete Tag
-                apiInstance.DeleteTagUsingDELETE(tagId);
+                apiInstance.DeleteTag(tagId);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling TagsApi.DeleteTagUsingDELETE: " + e.Message);
+                Debug.Print("Exception when calling TagsApi.DeleteTag: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -437,18 +346,18 @@ namespace Example
 }
 ```
 
-#### Using the DeleteTagUsingDELETEWithHttpInfo variant
+#### Using the DeleteTagWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Delete Tag
-    apiInstance.DeleteTagUsingDELETEWithHttpInfo(tagId);
+    apiInstance.DeleteTagWithHttpInfo(tagId);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling TagsApi.DeleteTagUsingDELETEWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling TagsApi.DeleteTagWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -485,9 +394,100 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="getcategoryusingget"></a>
-# **GetCategoryUsingGET**
-> GetTagCategoryResponse GetCategoryUsingGET (string tagCategoryId)
+<a id="deletetagcategory"></a>
+# **DeleteTagCategory**
+> void DeleteTagCategory (string tagCategoryId)
+
+Delete Tag Category
+
+Deletes the specified Tag Category
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class DeleteTagCategoryExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm/rest";
+            var apiInstance = new TagsApi(config);
+            var tagCategoryId = "tagCategoryId_example";  // string | tag_category_id
+
+            try
+            {
+                // Delete Tag Category
+                apiInstance.DeleteTagCategory(tagCategoryId);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling TagsApi.DeleteTagCategory: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the DeleteTagCategoryWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Delete Tag Category
+    apiInstance.DeleteTagCategoryWithHttpInfo(tagCategoryId);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling TagsApi.DeleteTagCategoryWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tagCategoryId** | **string** | tag_category_id |  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="getcategory"></a>
+# **GetCategory**
+> GetTagCategoryResponse GetCategory (string tagCategoryId)
 
 Retrieve a Tag Category
 
@@ -503,7 +503,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class GetCategoryUsingGETExample
+    public class GetCategoryExample
     {
         public static void Main()
         {
@@ -515,12 +515,12 @@ namespace Example
             try
             {
                 // Retrieve a Tag Category
-                GetTagCategoryResponse result = apiInstance.GetCategoryUsingGET(tagCategoryId);
+                GetTagCategoryResponse result = apiInstance.GetCategory(tagCategoryId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling TagsApi.GetCategoryUsingGET: " + e.Message);
+                Debug.Print("Exception when calling TagsApi.GetCategory: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -529,21 +529,21 @@ namespace Example
 }
 ```
 
-#### Using the GetCategoryUsingGETWithHttpInfo variant
+#### Using the GetCategoryWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Retrieve a Tag Category
-    ApiResponse<GetTagCategoryResponse> response = apiInstance.GetCategoryUsingGETWithHttpInfo(tagCategoryId);
+    ApiResponse<GetTagCategoryResponse> response = apiInstance.GetCategoryWithHttpInfo(tagCategoryId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling TagsApi.GetCategoryUsingGETWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling TagsApi.GetCategoryWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -580,9 +580,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="gettagusingget1"></a>
-# **GetTagUsingGET1**
-> Tag GetTagUsingGET1 (string tagId)
+<a id="gettag"></a>
+# **GetTag**
+> Tag GetTag (string tagId)
 
 Retrieve a Tag
 
@@ -598,7 +598,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class GetTagUsingGET1Example
+    public class GetTagExample
     {
         public static void Main()
         {
@@ -610,12 +610,12 @@ namespace Example
             try
             {
                 // Retrieve a Tag
-                Tag result = apiInstance.GetTagUsingGET1(tagId);
+                Tag result = apiInstance.GetTag(tagId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling TagsApi.GetTagUsingGET1: " + e.Message);
+                Debug.Print("Exception when calling TagsApi.GetTag: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -624,21 +624,21 @@ namespace Example
 }
 ```
 
-#### Using the GetTagUsingGET1WithHttpInfo variant
+#### Using the GetTagWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Retrieve a Tag
-    ApiResponse<Tag> response = apiInstance.GetTagUsingGET1WithHttpInfo(tagId);
+    ApiResponse<Tag> response = apiInstance.GetTagWithHttpInfo(tagId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling TagsApi.GetTagUsingGET1WithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling TagsApi.GetTagWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -675,9 +675,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="listcompaniesfortagidusingget1"></a>
-# **ListCompaniesForTagIdUsingGET1**
-> ListTaggedCompaniesResponse ListCompaniesForTagIdUsingGET1 (string tagId, string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
+<a id="listcompaniesfortagid"></a>
+# **ListCompaniesForTagId**
+> ListTaggedCompaniesResponse ListCompaniesForTagId (string tagId, string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
 
 List Tagged Companies
 
@@ -693,7 +693,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class ListCompaniesForTagIdUsingGET1Example
+    public class ListCompaniesForTagIdExample
     {
         public static void Main()
         {
@@ -701,20 +701,20 @@ namespace Example
             config.BasePath = "https://api.keap.com/crm/rest";
             var apiInstance = new TagsApi(config);
             var tagId = "tagId_example";  // string | tag_id
-            var filter = "filter_example";  // string? | Search filter to apply to results (optional) 
-            var orderBy = "orderBy_example";  // string? | Attribute and direction to order items by. E.g. `given_name desc` (optional) 
+            var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (String) `company_name` - (String) `email` - (String) `since_time` - (String) `until_time` You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=company_name%3D%3DCompany` - `filter=email%3D%3Dtest@gmail.com` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;`  (optional) 
+            var orderBy = "orderBy_example";  // string? | Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `name` - `email`  One of the following directions: - `asc` - `desc` (optional) 
             var pageSize = 0;  // int? | Total number of items to return per page (optional) 
             var pageToken = "pageToken_example";  // string? | Page token (optional) 
 
             try
             {
                 // List Tagged Companies
-                ListTaggedCompaniesResponse result = apiInstance.ListCompaniesForTagIdUsingGET1(tagId, filter, orderBy, pageSize, pageToken);
+                ListTaggedCompaniesResponse result = apiInstance.ListCompaniesForTagId(tagId, filter, orderBy, pageSize, pageToken);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling TagsApi.ListCompaniesForTagIdUsingGET1: " + e.Message);
+                Debug.Print("Exception when calling TagsApi.ListCompaniesForTagId: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -723,21 +723,21 @@ namespace Example
 }
 ```
 
-#### Using the ListCompaniesForTagIdUsingGET1WithHttpInfo variant
+#### Using the ListCompaniesForTagIdWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // List Tagged Companies
-    ApiResponse<ListTaggedCompaniesResponse> response = apiInstance.ListCompaniesForTagIdUsingGET1WithHttpInfo(tagId, filter, orderBy, pageSize, pageToken);
+    ApiResponse<ListTaggedCompaniesResponse> response = apiInstance.ListCompaniesForTagIdWithHttpInfo(tagId, filter, orderBy, pageSize, pageToken);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling TagsApi.ListCompaniesForTagIdUsingGET1WithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling TagsApi.ListCompaniesForTagIdWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -748,8 +748,8 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **tagId** | **string** | tag_id |  |
-| **filter** | **string?** | Search filter to apply to results | [optional]  |
-| **orderBy** | **string?** | Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60; | [optional]  |
+| **filter** | **string?** | Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  | [optional]  |
+| **orderBy** | **string?** | Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;name&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional]  |
 | **pageSize** | **int?** | Total number of items to return per page | [optional]  |
 | **pageToken** | **string?** | Page token | [optional]  |
 
@@ -778,9 +778,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="listcontactswithtagidusingget"></a>
-# **ListContactsWithTagIdUsingGET**
-> ListTaggedContactsResponse ListContactsWithTagIdUsingGET (string tagId, string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
+<a id="listcontactswithtagid"></a>
+# **ListContactsWithTagId**
+> ListTaggedContactsResponse ListContactsWithTagId (string tagId, string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
 
 List Tagged Contacts
 
@@ -796,7 +796,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class ListContactsWithTagIdUsingGETExample
+    public class ListContactsWithTagIdExample
     {
         public static void Main()
         {
@@ -812,12 +812,12 @@ namespace Example
             try
             {
                 // List Tagged Contacts
-                ListTaggedContactsResponse result = apiInstance.ListContactsWithTagIdUsingGET(tagId, filter, orderBy, pageSize, pageToken);
+                ListTaggedContactsResponse result = apiInstance.ListContactsWithTagId(tagId, filter, orderBy, pageSize, pageToken);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling TagsApi.ListContactsWithTagIdUsingGET: " + e.Message);
+                Debug.Print("Exception when calling TagsApi.ListContactsWithTagId: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -826,21 +826,21 @@ namespace Example
 }
 ```
 
-#### Using the ListContactsWithTagIdUsingGETWithHttpInfo variant
+#### Using the ListContactsWithTagIdWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // List Tagged Contacts
-    ApiResponse<ListTaggedContactsResponse> response = apiInstance.ListContactsWithTagIdUsingGETWithHttpInfo(tagId, filter, orderBy, pageSize, pageToken);
+    ApiResponse<ListTaggedContactsResponse> response = apiInstance.ListContactsWithTagIdWithHttpInfo(tagId, filter, orderBy, pageSize, pageToken);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling TagsApi.ListContactsWithTagIdUsingGETWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling TagsApi.ListContactsWithTagIdWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -881,9 +881,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="listtagcategoriesusingget"></a>
-# **ListTagCategoriesUsingGET**
-> ListTagCategoriesResponse ListTagCategoriesUsingGET (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
+<a id="listtagcategories"></a>
+# **ListTagCategories**
+> ListTagCategoriesResponse ListTagCategories (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
 
 List Tag Categories
 
@@ -899,7 +899,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class ListTagCategoriesUsingGETExample
+    public class ListTagCategoriesExample
     {
         public static void Main()
         {
@@ -914,12 +914,12 @@ namespace Example
             try
             {
                 // List Tag Categories
-                ListTagCategoriesResponse result = apiInstance.ListTagCategoriesUsingGET(filter, orderBy, pageSize, pageToken);
+                ListTagCategoriesResponse result = apiInstance.ListTagCategories(filter, orderBy, pageSize, pageToken);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling TagsApi.ListTagCategoriesUsingGET: " + e.Message);
+                Debug.Print("Exception when calling TagsApi.ListTagCategories: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -928,21 +928,21 @@ namespace Example
 }
 ```
 
-#### Using the ListTagCategoriesUsingGETWithHttpInfo variant
+#### Using the ListTagCategoriesWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // List Tag Categories
-    ApiResponse<ListTagCategoriesResponse> response = apiInstance.ListTagCategoriesUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken);
+    ApiResponse<ListTagCategoriesResponse> response = apiInstance.ListTagCategoriesWithHttpInfo(filter, orderBy, pageSize, pageToken);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling TagsApi.ListTagCategoriesUsingGETWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling TagsApi.ListTagCategoriesWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -982,9 +982,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="listtagsusingget1"></a>
-# **ListTagsUsingGET1**
-> ListTagsResponse ListTagsUsingGET1 (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
+<a id="listtags"></a>
+# **ListTags**
+> ListTagsResponse ListTags (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
 
 List Tags
 
@@ -1000,27 +1000,27 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class ListTagsUsingGET1Example
+    public class ListTagsExample
     {
         public static void Main()
         {
             Configuration config = new Configuration();
             config.BasePath = "https://api.keap.com/crm/rest";
             var apiInstance = new TagsApi(config);
-            var filter = "filter_example";  // string? | Search filter to apply to results (optional) 
-            var orderBy = "orderBy_example";  // string? | Attribute and direction to order items by. E.g. `given_name desc` (optional) 
+            var filter = "filter_example";  // string? | Filter to apply, allowed fields are:  - (String) `name` - (String) `description` - (String) `category_id` - (String) `since_create_time` - (String) `until_create_time` - (String) `since_update_time` - (String) `until_update_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. If NONE is passed in for `category_id` or `description`, it will check for the non-existence of that field. For the filters listed above, here are some examples:  - `filter=name%3D%3Dmy-tag` - `filter=category_id%3D%3DNONE` - `filter=description%3D%3DNONE` - `filter=since_create_time%3D%3D2024-12-22T01:00:00.000Z;until_create_time%3D%3D2025-01-01T00:00:00.000Z;` (optional) 
+            var orderBy = "orderBy_example";  // string? | Attribute and direction to order items. One of the following fields:  - `name` - `create_time` - `update_time`  One of the following directions: - `asc` - `desc` (optional) 
             var pageSize = 0;  // int? | Total number of items to return per page (optional) 
             var pageToken = "pageToken_example";  // string? | Page token (optional) 
 
             try
             {
                 // List Tags
-                ListTagsResponse result = apiInstance.ListTagsUsingGET1(filter, orderBy, pageSize, pageToken);
+                ListTagsResponse result = apiInstance.ListTags(filter, orderBy, pageSize, pageToken);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling TagsApi.ListTagsUsingGET1: " + e.Message);
+                Debug.Print("Exception when calling TagsApi.ListTags: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -1029,21 +1029,21 @@ namespace Example
 }
 ```
 
-#### Using the ListTagsUsingGET1WithHttpInfo variant
+#### Using the ListTagsWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // List Tags
-    ApiResponse<ListTagsResponse> response = apiInstance.ListTagsUsingGET1WithHttpInfo(filter, orderBy, pageSize, pageToken);
+    ApiResponse<ListTagsResponse> response = apiInstance.ListTagsWithHttpInfo(filter, orderBy, pageSize, pageToken);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling TagsApi.ListTagsUsingGET1WithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling TagsApi.ListTagsWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -1053,8 +1053,8 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **filter** | **string?** | Search filter to apply to results | [optional]  |
-| **orderBy** | **string?** | Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60; | [optional]  |
+| **filter** | **string?** | Filter to apply, allowed fields are:  - (String) &#x60;name&#x60; - (String) &#x60;description&#x60; - (String) &#x60;category_id&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. If NONE is passed in for &#x60;category_id&#x60; or &#x60;description&#x60;, it will check for the non-existence of that field. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;name%3D%3Dmy-tag&#x60; - &#x60;filter&#x3D;category_id%3D%3DNONE&#x60; - &#x60;filter&#x3D;description%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_create_time%3D%3D2024-12-22T01:00:00.000Z;until_create_time%3D%3D2025-01-01T00:00:00.000Z;&#x60; | [optional]  |
+| **orderBy** | **string?** | Attribute and direction to order items. One of the following fields:  - &#x60;name&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional]  |
 | **pageSize** | **int?** | Total number of items to return per page | [optional]  |
 | **pageToken** | **string?** | Page token | [optional]  |
 
@@ -1083,9 +1083,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="removetagsusingpost"></a>
-# **RemoveTagsUsingPOST**
-> void RemoveTagsUsingPOST (string tagId, ApplyRemoveTagRequest applyRemoveTagRequest)
+<a id="removetags"></a>
+# **RemoveTags**
+> void RemoveTags (string tagId, ApplyRemoveTagRequest applyRemoveTagRequest)
 
 Remove Tags
 
@@ -1101,7 +1101,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class RemoveTagsUsingPOSTExample
+    public class RemoveTagsExample
     {
         public static void Main()
         {
@@ -1114,11 +1114,11 @@ namespace Example
             try
             {
                 // Remove Tags
-                apiInstance.RemoveTagsUsingPOST(tagId, applyRemoveTagRequest);
+                apiInstance.RemoveTags(tagId, applyRemoveTagRequest);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling TagsApi.RemoveTagsUsingPOST: " + e.Message);
+                Debug.Print("Exception when calling TagsApi.RemoveTags: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -1127,18 +1127,18 @@ namespace Example
 }
 ```
 
-#### Using the RemoveTagsUsingPOSTWithHttpInfo variant
+#### Using the RemoveTagsWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Remove Tags
-    apiInstance.RemoveTagsUsingPOSTWithHttpInfo(tagId, applyRemoveTagRequest);
+    apiInstance.RemoveTagsWithHttpInfo(tagId, applyRemoveTagRequest);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling TagsApi.RemoveTagsUsingPOSTWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling TagsApi.RemoveTagsWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -1175,13 +1175,13 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="updatetagcategoryusingpatch"></a>
-# **UpdateTagCategoryUsingPATCH**
-> UpdateTagCategoryResponse UpdateTagCategoryUsingPATCH (string tagCategoryId, List<string>? updateMask = null, CreateUpdateTagCategoryRequest? createUpdateTagCategoryRequest = null)
+<a id="updatetag"></a>
+# **UpdateTag**
+> UpdateTagResponse UpdateTag (string tagId, List<string>? updateMask = null, CreateUpdateTagRequest? createUpdateTagRequest = null)
 
-Update a Tag Category
+Update a Tag
 
-Updates a Tag Category with only the values provided in the request
+Updates a Tag with only the values provided in the request
 
 ### Example
 ```csharp
@@ -1193,26 +1193,26 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class UpdateTagCategoryUsingPATCHExample
+    public class UpdateTagExample
     {
         public static void Main()
         {
             Configuration config = new Configuration();
             config.BasePath = "https://api.keap.com/crm/rest";
             var apiInstance = new TagsApi(config);
-            var tagCategoryId = "tagCategoryId_example";  // string | tag_category_id
+            var tagId = "tagId_example";  // string | tag_id
             var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
-            var createUpdateTagCategoryRequest = new CreateUpdateTagCategoryRequest?(); // CreateUpdateTagCategoryRequest? | tagCategory (optional) 
+            var createUpdateTagRequest = new CreateUpdateTagRequest?(); // CreateUpdateTagRequest? | tag (optional) 
 
             try
             {
-                // Update a Tag Category
-                UpdateTagCategoryResponse result = apiInstance.UpdateTagCategoryUsingPATCH(tagCategoryId, updateMask, createUpdateTagCategoryRequest);
+                // Update a Tag
+                UpdateTagResponse result = apiInstance.UpdateTag(tagId, updateMask, createUpdateTagRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling TagsApi.UpdateTagCategoryUsingPATCH: " + e.Message);
+                Debug.Print("Exception when calling TagsApi.UpdateTag: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -1221,21 +1221,21 @@ namespace Example
 }
 ```
 
-#### Using the UpdateTagCategoryUsingPATCHWithHttpInfo variant
+#### Using the UpdateTagWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    // Update a Tag Category
-    ApiResponse<UpdateTagCategoryResponse> response = apiInstance.UpdateTagCategoryUsingPATCHWithHttpInfo(tagCategoryId, updateMask, createUpdateTagCategoryRequest);
+    // Update a Tag
+    ApiResponse<UpdateTagResponse> response = apiInstance.UpdateTagWithHttpInfo(tagId, updateMask, createUpdateTagRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling TagsApi.UpdateTagCategoryUsingPATCHWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling TagsApi.UpdateTagWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -1245,13 +1245,13 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **tagCategoryId** | **string** | tag_category_id |  |
+| **tagId** | **string** | tag_id |  |
 | **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
-| **createUpdateTagCategoryRequest** | [**CreateUpdateTagCategoryRequest?**](CreateUpdateTagCategoryRequest?.md) | tagCategory | [optional]  |
+| **createUpdateTagRequest** | [**CreateUpdateTagRequest?**](CreateUpdateTagRequest?.md) | tag | [optional]  |
 
 ### Return type
 
-[**UpdateTagCategoryResponse**](UpdateTagCategoryResponse.md)
+[**UpdateTagResponse**](UpdateTagResponse.md)
 
 ### Authorization
 
@@ -1274,13 +1274,13 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="updatetagusingpatch"></a>
-# **UpdateTagUsingPATCH**
-> UpdateTagResponse UpdateTagUsingPATCH (string tagId, List<string>? updateMask = null, CreateUpdateTagRequest? createUpdateTagRequest = null)
+<a id="updatetagcategory"></a>
+# **UpdateTagCategory**
+> UpdateTagCategoryResponse UpdateTagCategory (string tagCategoryId, List<string>? updateMask = null, CreateUpdateTagCategoryRequest? createUpdateTagCategoryRequest = null)
 
-Update a Tag
+Update a Tag Category
 
-Updates a Tag with only the values provided in the request
+Updates a Tag Category with only the values provided in the request
 
 ### Example
 ```csharp
@@ -1292,26 +1292,26 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class UpdateTagUsingPATCHExample
+    public class UpdateTagCategoryExample
     {
         public static void Main()
         {
             Configuration config = new Configuration();
             config.BasePath = "https://api.keap.com/crm/rest";
             var apiInstance = new TagsApi(config);
-            var tagId = "tagId_example";  // string | tag_id
+            var tagCategoryId = "tagCategoryId_example";  // string | tag_category_id
             var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
-            var createUpdateTagRequest = new CreateUpdateTagRequest?(); // CreateUpdateTagRequest? | tag (optional) 
+            var createUpdateTagCategoryRequest = new CreateUpdateTagCategoryRequest?(); // CreateUpdateTagCategoryRequest? | tagCategory (optional) 
 
             try
             {
-                // Update a Tag
-                UpdateTagResponse result = apiInstance.UpdateTagUsingPATCH(tagId, updateMask, createUpdateTagRequest);
+                // Update a Tag Category
+                UpdateTagCategoryResponse result = apiInstance.UpdateTagCategory(tagCategoryId, updateMask, createUpdateTagCategoryRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling TagsApi.UpdateTagUsingPATCH: " + e.Message);
+                Debug.Print("Exception when calling TagsApi.UpdateTagCategory: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -1320,21 +1320,21 @@ namespace Example
 }
 ```
 
-#### Using the UpdateTagUsingPATCHWithHttpInfo variant
+#### Using the UpdateTagCategoryWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    // Update a Tag
-    ApiResponse<UpdateTagResponse> response = apiInstance.UpdateTagUsingPATCHWithHttpInfo(tagId, updateMask, createUpdateTagRequest);
+    // Update a Tag Category
+    ApiResponse<UpdateTagCategoryResponse> response = apiInstance.UpdateTagCategoryWithHttpInfo(tagCategoryId, updateMask, createUpdateTagCategoryRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling TagsApi.UpdateTagUsingPATCHWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling TagsApi.UpdateTagCategoryWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -1344,13 +1344,13 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **tagId** | **string** | tag_id |  |
+| **tagCategoryId** | **string** | tag_category_id |  |
 | **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
-| **createUpdateTagRequest** | [**CreateUpdateTagRequest?**](CreateUpdateTagRequest?.md) | tag | [optional]  |
+| **createUpdateTagCategoryRequest** | [**CreateUpdateTagCategoryRequest?**](CreateUpdateTagCategoryRequest?.md) | tagCategory | [optional]  |
 
 ### Return type
 
-[**UpdateTagResponse**](UpdateTagResponse.md)
+[**UpdateTagCategoryResponse**](UpdateTagCategoryResponse.md)
 
 ### Authorization
 

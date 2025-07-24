@@ -6,9 +6,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **category** | [**CategoryReference**](CategoryReference.md) |  | [optional] 
-**description** | **str** |  | [optional] 
-**id** | **str** |  | [optional] 
-**name** | **str** |  | [optional] 
+**create_time** | **str** | The time this tag was created, in ISO 8601 format | [optional] 
+**description** | **str** | A description of this tag | [optional] 
+**id** | **str** | The unique identifier for this tag | [optional] 
+**name** | **str** | The unique name of this tag | [optional] 
+**update_time** | **str** | The time this tag was last updated, in ISO 8601 format | [optional] 
 
 ## Example
 

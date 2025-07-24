@@ -4,86 +4,19 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createNoteCustomFieldUsingPOST1**](NoteApi.md#createNoteCustomFieldUsingPOST1) | **POST** /v2/notes/model/customFields | Create a Custom Field
-[**createNoteUsingPOST1**](NoteApi.md#createNoteUsingPOST1) | **POST** /v2/contacts/{contact_id}/notes | Create a Note
-[**deleteNoteUsingDELETE1**](NoteApi.md#deleteNoteUsingDELETE1) | **DELETE** /v2/contacts/{contact_id}/notes/{note_id} | Delete a Note
-[**getNoteUsingGET1**](NoteApi.md#getNoteUsingGET1) | **GET** /v2/contacts/{contact_id}/notes/{note_id} | Retrieve a Note
-[**listNoteTemplatesUsingGET**](NoteApi.md#listNoteTemplatesUsingGET) | **GET** /v2/notes/templates | Retrieve Note Templates
-[**listNotesUsingGET1**](NoteApi.md#listNotesUsingGET1) | **GET** /v2/contacts/{contact_id}/notes | List Notes
-[**retrieveNoteModelUsingGET1**](NoteApi.md#retrieveNoteModelUsingGET1) | **GET** /v2/notes/model | Retrieve Note Model
-[**updateNoteUsingPATCH**](NoteApi.md#updateNoteUsingPATCH) | **PATCH** /v2/contacts/{contact_id}/notes/{note_id} | Update a Note
-[**updateNotesCustomFieldUsingPATCH**](NoteApi.md#updateNotesCustomFieldUsingPATCH) | **PATCH** /v2/notes/model/customFields/{custom_field_id} | Update a Custom Field
+[**createNote**](NoteApi.md#createNote) | **POST** /v2/contacts/{contact_id}/notes | Create a Note
+[**createNoteCustomField**](NoteApi.md#createNoteCustomField) | **POST** /v2/notes/model/customFields | Create a Custom Field
+[**deleteNote**](NoteApi.md#deleteNote) | **DELETE** /v2/contacts/{contact_id}/notes/{note_id} | Delete a Note
+[**getNote**](NoteApi.md#getNote) | **GET** /v2/contacts/{contact_id}/notes/{note_id} | Retrieve a Note
+[**listNoteTemplates**](NoteApi.md#listNoteTemplates) | **GET** /v2/notes/templates | Retrieve Note Templates
+[**listNotes**](NoteApi.md#listNotes) | **GET** /v2/contacts/{contact_id}/notes | List Notes
+[**retrieveNoteModel**](NoteApi.md#retrieveNoteModel) | **GET** /v2/notes/model | Retrieve Note Model
+[**updateNote**](NoteApi.md#updateNote) | **PATCH** /v2/contacts/{contact_id}/notes/{note_id} | Update a Note
+[**updateNotesCustomField**](NoteApi.md#updateNotesCustomField) | **PATCH** /v2/notes/model/customFields/{custom_field_id} | Update a Custom Field
 
 
-# **createNoteCustomFieldUsingPOST1**
-> CustomFieldMetaData createNoteCustomFieldUsingPOST1(createCustomFieldRequest)
-
-Creates a custom field of the specified type and options to the Note object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
-
-### Example
-
-
-```typescript
-import { createConfiguration, NoteApi } from '';
-import type { NoteApiCreateNoteCustomFieldUsingPOST1Request } from '';
-
-const configuration = createConfiguration();
-const apiInstance = new NoteApi(configuration);
-
-const request: NoteApiCreateNoteCustomFieldUsingPOST1Request = {
-    // customField
-  createCustomFieldRequest: {
-    fieldType: "CURRENCY",
-    groupId: "groupId_example",
-    label: "label_example",
-    options: [
-      {
-        label: "label_example",
-        options: [],
-      },
-    ],
-    userGroupId: "userGroupId_example",
-  },
-};
-
-const data = await apiInstance.createNoteCustomFieldUsingPOST1(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **createCustomFieldRequest** | **CreateCustomFieldRequest**| customField |
-
-
-### Return type
-
-**CustomFieldMetaData**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** | Created |  -  |
-**401** | Unauthorized |  -  |
-**403** | Forbidden |  -  |
-**500** | Internal Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-# **createNoteUsingPOST1**
-> Note createNoteUsingPOST1(createNoteRequest)
+# **createNote**
+> Note createNote(createNoteRequest)
 
 Creates a new Note.
 
@@ -92,12 +25,12 @@ Creates a new Note.
 
 ```typescript
 import { createConfiguration, NoteApi } from '';
-import type { NoteApiCreateNoteUsingPOST1Request } from '';
+import type { NoteApiCreateNoteRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new NoteApi(configuration);
 
-const request: NoteApiCreateNoteUsingPOST1Request = {
+const request: NoteApiCreateNoteRequest = {
     // contact_id
   contactId: "contact_id_example",
     // request
@@ -110,7 +43,7 @@ const request: NoteApiCreateNoteUsingPOST1Request = {
   },
 };
 
-const data = await apiInstance.createNoteUsingPOST1(request);
+const data = await apiInstance.createNote(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -147,8 +80,75 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **deleteNoteUsingDELETE1**
-> void deleteNoteUsingDELETE1()
+# **createNoteCustomField**
+> CustomFieldMetaData createNoteCustomField(createCustomFieldRequest)
+
+Creates a custom field of the specified type and options to the Note object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+
+
+```typescript
+import { createConfiguration, NoteApi } from '';
+import type { NoteApiCreateNoteCustomFieldRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new NoteApi(configuration);
+
+const request: NoteApiCreateNoteCustomFieldRequest = {
+    // customField
+  createCustomFieldRequest: {
+    fieldType: "CURRENCY",
+    groupId: "groupId_example",
+    label: "label_example",
+    options: [
+      {
+        label: "label_example",
+        options: [],
+      },
+    ],
+    userGroupId: "userGroupId_example",
+  },
+};
+
+const data = await apiInstance.createNoteCustomField(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCustomFieldRequest** | **CreateCustomFieldRequest**| customField |
+
+
+### Return type
+
+**CustomFieldMetaData**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **deleteNote**
+> void deleteNote()
 
 Deletes the specified Note
 
@@ -157,19 +157,19 @@ Deletes the specified Note
 
 ```typescript
 import { createConfiguration, NoteApi } from '';
-import type { NoteApiDeleteNoteUsingDELETE1Request } from '';
+import type { NoteApiDeleteNoteRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new NoteApi(configuration);
 
-const request: NoteApiDeleteNoteUsingDELETE1Request = {
+const request: NoteApiDeleteNoteRequest = {
     // contact_id
   contactId: "contact_id_example",
     // note_id
   noteId: "note_id_example",
 };
 
-const data = await apiInstance.deleteNoteUsingDELETE1(request);
+const data = await apiInstance.deleteNote(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -207,8 +207,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **getNoteUsingGET1**
-> GetNoteResponse getNoteUsingGET1()
+# **getNote**
+> GetNoteResponse getNote()
 
 Retrieves the specified Note
 
@@ -217,19 +217,19 @@ Retrieves the specified Note
 
 ```typescript
 import { createConfiguration, NoteApi } from '';
-import type { NoteApiGetNoteUsingGET1Request } from '';
+import type { NoteApiGetNoteRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new NoteApi(configuration);
 
-const request: NoteApiGetNoteUsingGET1Request = {
+const request: NoteApiGetNoteRequest = {
     // contact_id
   contactId: "contact_id_example",
     // note_id
   noteId: "note_id_example",
 };
 
-const data = await apiInstance.getNoteUsingGET1(request);
+const data = await apiInstance.getNote(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -267,8 +267,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **listNoteTemplatesUsingGET**
-> ListNoteTemplateResponse listNoteTemplatesUsingGET()
+# **listNoteTemplates**
+> ListNoteTemplateResponse listNoteTemplates()
 
 Retrieves a list of Note Templates
 
@@ -277,12 +277,12 @@ Retrieves a list of Note Templates
 
 ```typescript
 import { createConfiguration, NoteApi } from '';
-import type { NoteApiListNoteTemplatesUsingGETRequest } from '';
+import type { NoteApiListNoteTemplatesRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new NoteApi(configuration);
 
-const request: NoteApiListNoteTemplatesUsingGETRequest = {
+const request: NoteApiListNoteTemplatesRequest = {
     // Search filter to apply to results (optional)
   filter: "filter_example",
     // Attribute and direction to order items by. E.g. `given_name desc` (optional)
@@ -293,7 +293,7 @@ const request: NoteApiListNoteTemplatesUsingGETRequest = {
   pageToken: "page_token_example",
 };
 
-const data = await apiInstance.listNoteTemplatesUsingGET(request);
+const data = await apiInstance.listNoteTemplates(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -333,8 +333,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **listNotesUsingGET1**
-> ListNotesResponse listNotesUsingGET1()
+# **listNotes**
+> ListNotesResponse listNotes()
 
 Retrieves a list of Notes
 
@@ -343,17 +343,17 @@ Retrieves a list of Notes
 
 ```typescript
 import { createConfiguration, NoteApi } from '';
-import type { NoteApiListNotesUsingGET1Request } from '';
+import type { NoteApiListNotesRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new NoteApi(configuration);
 
-const request: NoteApiListNotesUsingGET1Request = {
+const request: NoteApiListNotesRequest = {
     // contact_id
   contactId: "contact_id_example",
-    // Search filter to apply to results (optional)
+    // Filter to apply, allowed fields are: - (String) `assigned_to_user_id` - (String) `title` - (String) `since_time` - (String) `until_time` You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=assigned_to_user_id%3D%3DUserId` - `filter=title%3D%3DexpectedTitle` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;`  (optional)
   filter: "filter_example",
-    // Attribute and direction to order items by. E.g. `given_name desc` (optional)
+    // Attribute and direction to order items. One of the following fields: - `id` - `create_time`  One of the following directions: - `asc` - `desc` (optional)
   orderBy: "order_by_example",
     // Total number of items to return per page (optional)
   pageSize: 0,
@@ -361,7 +361,7 @@ const request: NoteApiListNotesUsingGET1Request = {
   pageToken: "page_token_example",
 };
 
-const data = await apiInstance.listNotesUsingGET1(request);
+const data = await apiInstance.listNotes(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -371,8 +371,8 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contactId** | [**string**] | contact_id | defaults to undefined
- **filter** | [**string**] | Search filter to apply to results | (optional) defaults to undefined
- **orderBy** | [**string**] | Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60; | (optional) defaults to undefined
+ **filter** | [**string**] | Filter to apply, allowed fields are: - (String) &#x60;assigned_to_user_id&#x60; - (String) &#x60;title&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;assigned_to_user_id%3D%3DUserId&#x60; - &#x60;filter&#x3D;title%3D%3DexpectedTitle&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  | (optional) defaults to undefined
+ **orderBy** | [**string**] | Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | (optional) defaults to undefined
  **pageSize** | [**number**] | Total number of items to return per page | (optional) defaults to undefined
  **pageToken** | [**string**] | Page token | (optional) defaults to undefined
 
@@ -402,8 +402,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **retrieveNoteModelUsingGET1**
-> ObjectModel retrieveNoteModelUsingGET1()
+# **retrieveNoteModel**
+> ObjectModel retrieveNoteModel()
 
 Gets the custom fields for the Note object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
 
@@ -418,7 +418,7 @@ const apiInstance = new NoteApi(configuration);
 
 const request = {};
 
-const data = await apiInstance.retrieveNoteModelUsingGET1(request);
+const data = await apiInstance.retrieveNoteModel(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -452,8 +452,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **updateNoteUsingPATCH**
-> UpdateNoteResponse updateNoteUsingPATCH(updateNoteRequest)
+# **updateNote**
+> UpdateNoteResponse updateNote(updateNoteRequest)
 
 Updates a Note for a Contact
 
@@ -462,12 +462,12 @@ Updates a Note for a Contact
 
 ```typescript
 import { createConfiguration, NoteApi } from '';
-import type { NoteApiUpdateNoteUsingPATCHRequest } from '';
+import type { NoteApiUpdateNoteRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new NoteApi(configuration);
 
-const request: NoteApiUpdateNoteUsingPATCHRequest = {
+const request: NoteApiUpdateNoteRequest = {
     // contact_id
   contactId: "contact_id_example",
     // note_id
@@ -487,7 +487,7 @@ const request: NoteApiUpdateNoteUsingPATCHRequest = {
   ],
 };
 
-const data = await apiInstance.updateNoteUsingPATCH(request);
+const data = await apiInstance.updateNote(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -527,8 +527,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **updateNotesCustomFieldUsingPATCH**
-> CustomFieldMetaData updateNotesCustomFieldUsingPATCH(updateCustomFieldMetaDataRequest)
+# **updateNotesCustomField**
+> CustomFieldMetaData updateNotesCustomField(updateCustomFieldMetaDataRequest)
 
 Updates a custom field of the specified type and options to the Note object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
 
@@ -537,12 +537,12 @@ Updates a custom field of the specified type and options to the Note object<br/>
 
 ```typescript
 import { createConfiguration, NoteApi } from '';
-import type { NoteApiUpdateNotesCustomFieldUsingPATCHRequest } from '';
+import type { NoteApiUpdateNotesCustomFieldRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new NoteApi(configuration);
 
-const request: NoteApiUpdateNotesCustomFieldUsingPATCHRequest = {
+const request: NoteApiUpdateNotesCustomFieldRequest = {
     // custom_field_id
   customFieldId: "custom_field_id_example",
     // request
@@ -563,7 +563,7 @@ const request: NoteApiUpdateNotesCustomFieldUsingPATCHRequest = {
   ],
 };
 
-const data = await apiInstance.updateNotesCustomFieldUsingPATCH(request);
+const data = await apiInstance.updateNotesCustomField(request);
 console.log('API called successfully. Returned data:', data);
 ```
 

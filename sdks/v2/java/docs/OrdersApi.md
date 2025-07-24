@@ -4,20 +4,20 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createOrderCustomFieldUsingPOST**](OrdersApi.md#createOrderCustomFieldUsingPOST) | **POST** /v2/orders/model/customFields | Create an Order Custom Field |
-| [**createOrderCustomFieldUsingPOSTWithHttpInfo**](OrdersApi.md#createOrderCustomFieldUsingPOSTWithHttpInfo) | **POST** /v2/orders/model/customFields | Create an Order Custom Field |
-| [**deleteOrderCustomFieldUsingDELETE**](OrdersApi.md#deleteOrderCustomFieldUsingDELETE) | **DELETE** /v2/orders/model/customFields/{custom_field_id} | Delete an Order Custom Field |
-| [**deleteOrderCustomFieldUsingDELETEWithHttpInfo**](OrdersApi.md#deleteOrderCustomFieldUsingDELETEWithHttpInfo) | **DELETE** /v2/orders/model/customFields/{custom_field_id} | Delete an Order Custom Field |
-| [**retrieveOrderCustomFieldModelUsingGET**](OrdersApi.md#retrieveOrderCustomFieldModelUsingGET) | **GET** /v2/orders/model | Retrieve Order Custom Field Model |
-| [**retrieveOrderCustomFieldModelUsingGETWithHttpInfo**](OrdersApi.md#retrieveOrderCustomFieldModelUsingGETWithHttpInfo) | **GET** /v2/orders/model | Retrieve Order Custom Field Model |
-| [**updateOrderCustomFieldUsingPATCH**](OrdersApi.md#updateOrderCustomFieldUsingPATCH) | **PATCH** /v2/orders/model/customFields/{custom_field_id} | Update an Order Custom Field |
-| [**updateOrderCustomFieldUsingPATCHWithHttpInfo**](OrdersApi.md#updateOrderCustomFieldUsingPATCHWithHttpInfo) | **PATCH** /v2/orders/model/customFields/{custom_field_id} | Update an Order Custom Field |
+| [**createOrderCustomField**](OrdersApi.md#createOrderCustomField) | **POST** /v2/orders/model/customFields | Create an Order Custom Field |
+| [**createOrderCustomFieldWithHttpInfo**](OrdersApi.md#createOrderCustomFieldWithHttpInfo) | **POST** /v2/orders/model/customFields | Create an Order Custom Field |
+| [**deleteOrderCustomField**](OrdersApi.md#deleteOrderCustomField) | **DELETE** /v2/orders/model/customFields/{custom_field_id} | Delete an Order Custom Field |
+| [**deleteOrderCustomFieldWithHttpInfo**](OrdersApi.md#deleteOrderCustomFieldWithHttpInfo) | **DELETE** /v2/orders/model/customFields/{custom_field_id} | Delete an Order Custom Field |
+| [**retrieveOrderCustomFieldModel**](OrdersApi.md#retrieveOrderCustomFieldModel) | **GET** /v2/orders/model | Retrieve Order Custom Field Model |
+| [**retrieveOrderCustomFieldModelWithHttpInfo**](OrdersApi.md#retrieveOrderCustomFieldModelWithHttpInfo) | **GET** /v2/orders/model | Retrieve Order Custom Field Model |
+| [**updateOrderCustomField**](OrdersApi.md#updateOrderCustomField) | **PATCH** /v2/orders/model/customFields/{custom_field_id} | Update an Order Custom Field |
+| [**updateOrderCustomFieldWithHttpInfo**](OrdersApi.md#updateOrderCustomFieldWithHttpInfo) | **PATCH** /v2/orders/model/customFields/{custom_field_id} | Update an Order Custom Field |
 
 
 
-## createOrderCustomFieldUsingPOST
+## createOrderCustomField
 
-> CustomFieldMetaData createOrderCustomFieldUsingPOST(createCustomFieldRequest)
+> CustomFieldMetaData createOrderCustomField(createCustomFieldRequest)
 
 Create an Order Custom Field
 
@@ -41,10 +41,10 @@ public class Example {
         OrdersApi apiInstance = new OrdersApi(defaultClient);
         CreateCustomFieldRequest createCustomFieldRequest = new CreateCustomFieldRequest(); // CreateCustomFieldRequest | customField
         try {
-            CustomFieldMetaData result = apiInstance.createOrderCustomFieldUsingPOST(createCustomFieldRequest);
+            CustomFieldMetaData result = apiInstance.createOrderCustomField(createCustomFieldRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling OrdersApi#createOrderCustomFieldUsingPOST");
+            System.err.println("Exception when calling OrdersApi#createOrderCustomField");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -83,9 +83,9 @@ No authorization required
 | **403** | Forbidden |  -  |
 | **500** | Internal Server Error |  -  |
 
-## createOrderCustomFieldUsingPOSTWithHttpInfo
+## createOrderCustomFieldWithHttpInfo
 
-> ApiResponse<CustomFieldMetaData> createOrderCustomFieldUsingPOST createOrderCustomFieldUsingPOSTWithHttpInfo(createCustomFieldRequest)
+> ApiResponse<CustomFieldMetaData> createOrderCustomField createOrderCustomFieldWithHttpInfo(createCustomFieldRequest)
 
 Create an Order Custom Field
 
@@ -110,12 +110,12 @@ public class Example {
         OrdersApi apiInstance = new OrdersApi(defaultClient);
         CreateCustomFieldRequest createCustomFieldRequest = new CreateCustomFieldRequest(); // CreateCustomFieldRequest | customField
         try {
-            ApiResponse<CustomFieldMetaData> response = apiInstance.createOrderCustomFieldUsingPOSTWithHttpInfo(createCustomFieldRequest);
+            ApiResponse<CustomFieldMetaData> response = apiInstance.createOrderCustomFieldWithHttpInfo(createCustomFieldRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling OrdersApi#createOrderCustomFieldUsingPOST");
+            System.err.println("Exception when calling OrdersApi#createOrderCustomField");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -155,9 +155,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## deleteOrderCustomFieldUsingDELETE
+## deleteOrderCustomField
 
-> void deleteOrderCustomFieldUsingDELETE(customFieldId)
+> void deleteOrderCustomField(customFieldId)
 
 Delete an Order Custom Field
 
@@ -181,9 +181,9 @@ public class Example {
         OrdersApi apiInstance = new OrdersApi(defaultClient);
         String customFieldId = "customFieldId_example"; // String | custom_field_id
         try {
-            apiInstance.deleteOrderCustomFieldUsingDELETE(customFieldId);
+            apiInstance.deleteOrderCustomField(customFieldId);
         } catch (ApiException e) {
-            System.err.println("Exception when calling OrdersApi#deleteOrderCustomFieldUsingDELETE");
+            System.err.println("Exception when calling OrdersApi#deleteOrderCustomField");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -223,9 +223,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## deleteOrderCustomFieldUsingDELETEWithHttpInfo
+## deleteOrderCustomFieldWithHttpInfo
 
-> ApiResponse<Void> deleteOrderCustomFieldUsingDELETE deleteOrderCustomFieldUsingDELETEWithHttpInfo(customFieldId)
+> ApiResponse<Void> deleteOrderCustomField deleteOrderCustomFieldWithHttpInfo(customFieldId)
 
 Delete an Order Custom Field
 
@@ -250,11 +250,11 @@ public class Example {
         OrdersApi apiInstance = new OrdersApi(defaultClient);
         String customFieldId = "customFieldId_example"; // String | custom_field_id
         try {
-            ApiResponse<Void> response = apiInstance.deleteOrderCustomFieldUsingDELETEWithHttpInfo(customFieldId);
+            ApiResponse<Void> response = apiInstance.deleteOrderCustomFieldWithHttpInfo(customFieldId);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
-            System.err.println("Exception when calling OrdersApi#deleteOrderCustomFieldUsingDELETE");
+            System.err.println("Exception when calling OrdersApi#deleteOrderCustomField");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -295,9 +295,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## retrieveOrderCustomFieldModelUsingGET
+## retrieveOrderCustomFieldModel
 
-> ObjectModel retrieveOrderCustomFieldModelUsingGET()
+> ObjectModel retrieveOrderCustomFieldModel()
 
 Retrieve Order Custom Field Model
 
@@ -320,10 +320,10 @@ public class Example {
 
         OrdersApi apiInstance = new OrdersApi(defaultClient);
         try {
-            ObjectModel result = apiInstance.retrieveOrderCustomFieldModelUsingGET();
+            ObjectModel result = apiInstance.retrieveOrderCustomFieldModel();
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling OrdersApi#retrieveOrderCustomFieldModelUsingGET");
+            System.err.println("Exception when calling OrdersApi#retrieveOrderCustomFieldModel");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -360,9 +360,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## retrieveOrderCustomFieldModelUsingGETWithHttpInfo
+## retrieveOrderCustomFieldModelWithHttpInfo
 
-> ApiResponse<ObjectModel> retrieveOrderCustomFieldModelUsingGET retrieveOrderCustomFieldModelUsingGETWithHttpInfo()
+> ApiResponse<ObjectModel> retrieveOrderCustomFieldModel retrieveOrderCustomFieldModelWithHttpInfo()
 
 Retrieve Order Custom Field Model
 
@@ -386,12 +386,12 @@ public class Example {
 
         OrdersApi apiInstance = new OrdersApi(defaultClient);
         try {
-            ApiResponse<ObjectModel> response = apiInstance.retrieveOrderCustomFieldModelUsingGETWithHttpInfo();
+            ApiResponse<ObjectModel> response = apiInstance.retrieveOrderCustomFieldModelWithHttpInfo();
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling OrdersApi#retrieveOrderCustomFieldModelUsingGET");
+            System.err.println("Exception when calling OrdersApi#retrieveOrderCustomFieldModel");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -429,9 +429,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## updateOrderCustomFieldUsingPATCH
+## updateOrderCustomField
 
-> CustomFieldMetaData updateOrderCustomFieldUsingPATCH(customFieldId, updateCustomFieldMetaDataRequest, updateMask)
+> CustomFieldMetaData updateOrderCustomField(customFieldId, updateCustomFieldMetaDataRequest, updateMask)
 
 Update an Order Custom Field
 
@@ -457,10 +457,10 @@ public class Example {
         UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest = new UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | request
         List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
-            CustomFieldMetaData result = apiInstance.updateOrderCustomFieldUsingPATCH(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
+            CustomFieldMetaData result = apiInstance.updateOrderCustomField(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling OrdersApi#updateOrderCustomFieldUsingPATCH");
+            System.err.println("Exception when calling OrdersApi#updateOrderCustomField");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -502,9 +502,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## updateOrderCustomFieldUsingPATCHWithHttpInfo
+## updateOrderCustomFieldWithHttpInfo
 
-> ApiResponse<CustomFieldMetaData> updateOrderCustomFieldUsingPATCH updateOrderCustomFieldUsingPATCHWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask)
+> ApiResponse<CustomFieldMetaData> updateOrderCustomField updateOrderCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask)
 
 Update an Order Custom Field
 
@@ -531,12 +531,12 @@ public class Example {
         UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest = new UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | request
         List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
-            ApiResponse<CustomFieldMetaData> response = apiInstance.updateOrderCustomFieldUsingPATCHWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
+            ApiResponse<CustomFieldMetaData> response = apiInstance.updateOrderCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling OrdersApi#updateOrderCustomFieldUsingPATCH");
+            System.err.println("Exception when calling OrdersApi#updateOrderCustomField");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());

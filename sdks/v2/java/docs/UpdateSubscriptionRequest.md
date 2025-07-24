@@ -7,26 +7,24 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**active** | **Boolean** |  |  [optional] |
-|**allowTax** | **Boolean** |  |  [optional] |
-|**autoCharge** | **Boolean** |  |  [optional] |
-|**billingAmount** | **Double** |  |  [optional] |
-|**billingCycle** | [**BillingCycleEnum**](#BillingCycleEnum) |  |  [optional] |
-|**billingFrequency** | **Integer** |  |  [optional] |
-|**contactId** | **String** |  |  [optional] |
-|**daysBetweenRetries** | **Integer** |  |  [optional] |
-|**endBillDate** | **String** |  |  [optional] |
-|**leadAffiliateId** | **String** |  |  [optional] |
-|**maxChargeAttempts** | **Integer** |  |  [optional] |
-|**nextBillDate** | **String** |  |  [optional] |
-|**paymentMethodId** | **String** |  |  [optional] |
-|**previousBillDate** | **String** |  |  [optional] |
+|**active** | **Boolean** | If the subscription is active or not. |  [optional] |
+|**allowTax** | **Boolean** | Only works if the product associated with the product subscription is taxable. |  [optional] |
+|**autoCharge** | **Boolean** | If the subscription should auto charge on the next billing date. |  [optional] |
+|**billingAmount** | **Double** | The billing amount. Must be 0 or greater. |  [optional] |
+|**billingCycle** | [**BillingCycleEnum**](#BillingCycleEnum) | The billing cycle for the subscription. |  [optional] |
+|**billingFrequency** | **Integer** | The number of days between billing cycles. Must be 1 or greater. |  [optional] |
+|**contactId** | **String** | Id of the contact to create the subscription for. |  |
+|**daysBetweenRetries** | **Integer** | Number of days between charge attempts. Must be 1 or greater. |  [optional] |
+|**endDate** | **String** | The date the subscription will end. Must not be in the past. |  [optional] |
+|**leadAffiliateId** | **String** | The affiliate id for the lead of the subscription. |  [optional] |
+|**maxChargeAttempts** | **Integer** | Maximum number of charge attempts. Must be 1 or greater. |  [optional] |
+|**nextBillDate** | **String** | The next date the subscription will bill. Must not be in the past. |  [optional] |
+|**paymentMethodId** | **String** | Id associated with the payment method. |  [optional] |
 |**productId** | **String** |  |  [optional] |
-|**quantity** | **Integer** |  |  [optional] |
-|**saleAffiliateId** | **String** |  |  [optional] |
+|**quantity** | **Integer** | The subscription quantity. Must be 1 or greater. |  [optional] |
+|**saleAffiliateId** | **String** | The affiliate id for the sale of the subscription. |  [optional] |
 |**shippingAddress** | [**Address**](Address.md) |  |  [optional] |
-|**startDate** | **String** |  |  [optional] |
-|**subscriptionPlanId** | **String** |  |  [optional] |
+|**subscriptionPlanId** | **String** | Id of the product subscription plan. |  [optional] |
 
 
 

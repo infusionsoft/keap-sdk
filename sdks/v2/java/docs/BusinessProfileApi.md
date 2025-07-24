@@ -4,16 +4,16 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getBusinessProfileUsingGET**](BusinessProfileApi.md#getBusinessProfileUsingGET) | **GET** /v2/businessProfile | Retrieve Business Profile |
-| [**getBusinessProfileUsingGETWithHttpInfo**](BusinessProfileApi.md#getBusinessProfileUsingGETWithHttpInfo) | **GET** /v2/businessProfile | Retrieve Business Profile |
-| [**updateBusinessProfileUsingPATCH**](BusinessProfileApi.md#updateBusinessProfileUsingPATCH) | **PATCH** /v2/businessProfile | Update Business Profile |
-| [**updateBusinessProfileUsingPATCHWithHttpInfo**](BusinessProfileApi.md#updateBusinessProfileUsingPATCHWithHttpInfo) | **PATCH** /v2/businessProfile | Update Business Profile |
+| [**getBusinessProfile**](BusinessProfileApi.md#getBusinessProfile) | **GET** /v2/businessProfile | Retrieve Business Profile |
+| [**getBusinessProfileWithHttpInfo**](BusinessProfileApi.md#getBusinessProfileWithHttpInfo) | **GET** /v2/businessProfile | Retrieve Business Profile |
+| [**updateBusinessProfile**](BusinessProfileApi.md#updateBusinessProfile) | **PATCH** /v2/businessProfile | Update Business Profile |
+| [**updateBusinessProfileWithHttpInfo**](BusinessProfileApi.md#updateBusinessProfileWithHttpInfo) | **PATCH** /v2/businessProfile | Update Business Profile |
 
 
 
-## getBusinessProfileUsingGET
+## getBusinessProfile
 
-> GetBusinessProfileResponse getBusinessProfileUsingGET()
+> GetBusinessProfileResponse getBusinessProfile()
 
 Retrieve Business Profile
 
@@ -36,10 +36,10 @@ public class Example {
 
         BusinessProfileApi apiInstance = new BusinessProfileApi(defaultClient);
         try {
-            GetBusinessProfileResponse result = apiInstance.getBusinessProfileUsingGET();
+            GetBusinessProfileResponse result = apiInstance.getBusinessProfile();
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling BusinessProfileApi#getBusinessProfileUsingGET");
+            System.err.println("Exception when calling BusinessProfileApi#getBusinessProfile");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -76,9 +76,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## getBusinessProfileUsingGETWithHttpInfo
+## getBusinessProfileWithHttpInfo
 
-> ApiResponse<GetBusinessProfileResponse> getBusinessProfileUsingGET getBusinessProfileUsingGETWithHttpInfo()
+> ApiResponse<GetBusinessProfileResponse> getBusinessProfile getBusinessProfileWithHttpInfo()
 
 Retrieve Business Profile
 
@@ -102,12 +102,12 @@ public class Example {
 
         BusinessProfileApi apiInstance = new BusinessProfileApi(defaultClient);
         try {
-            ApiResponse<GetBusinessProfileResponse> response = apiInstance.getBusinessProfileUsingGETWithHttpInfo();
+            ApiResponse<GetBusinessProfileResponse> response = apiInstance.getBusinessProfileWithHttpInfo();
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling BusinessProfileApi#getBusinessProfileUsingGET");
+            System.err.println("Exception when calling BusinessProfileApi#getBusinessProfile");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -145,9 +145,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## updateBusinessProfileUsingPATCH
+## updateBusinessProfile
 
-> GetBusinessProfileResponse updateBusinessProfileUsingPATCH(updateMask, updateBusinessProfileRequest)
+> GetBusinessProfileResponse updateBusinessProfile(updateMask, updateBusinessProfileRequest)
 
 Update Business Profile
 
@@ -172,10 +172,10 @@ public class Example {
         List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         UpdateBusinessProfileRequest updateBusinessProfileRequest = new UpdateBusinessProfileRequest(); // UpdateBusinessProfileRequest | businessProfile
         try {
-            GetBusinessProfileResponse result = apiInstance.updateBusinessProfileUsingPATCH(updateMask, updateBusinessProfileRequest);
+            GetBusinessProfileResponse result = apiInstance.updateBusinessProfile(updateMask, updateBusinessProfileRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling BusinessProfileApi#updateBusinessProfileUsingPATCH");
+            System.err.println("Exception when calling BusinessProfileApi#updateBusinessProfile");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -216,9 +216,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## updateBusinessProfileUsingPATCHWithHttpInfo
+## updateBusinessProfileWithHttpInfo
 
-> ApiResponse<GetBusinessProfileResponse> updateBusinessProfileUsingPATCH updateBusinessProfileUsingPATCHWithHttpInfo(updateMask, updateBusinessProfileRequest)
+> ApiResponse<GetBusinessProfileResponse> updateBusinessProfile updateBusinessProfileWithHttpInfo(updateMask, updateBusinessProfileRequest)
 
 Update Business Profile
 
@@ -244,12 +244,12 @@ public class Example {
         List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         UpdateBusinessProfileRequest updateBusinessProfileRequest = new UpdateBusinessProfileRequest(); // UpdateBusinessProfileRequest | businessProfile
         try {
-            ApiResponse<GetBusinessProfileResponse> response = apiInstance.updateBusinessProfileUsingPATCHWithHttpInfo(updateMask, updateBusinessProfileRequest);
+            ApiResponse<GetBusinessProfileResponse> response = apiInstance.updateBusinessProfileWithHttpInfo(updateMask, updateBusinessProfileRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling BusinessProfileApi#updateBusinessProfileUsingPATCH");
+            System.err.println("Exception when calling BusinessProfileApi#updateBusinessProfile");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());

@@ -14,7 +14,6 @@ import { AssignAutomationCategoryRequest } from '../models/AssignAutomationCateg
 import { Automation } from '../models/Automation';
 import { ListAutomationIdsResponse } from '../models/ListAutomationIdsResponse';
 import { ListAutomationResponse } from '../models/ListAutomationResponse';
-import { UpdateAutomationCategoryRequest } from '../models/UpdateAutomationCategoryRequest';
 
 /**
  * no description
@@ -28,24 +27,24 @@ export class AutomationApiRequestFactory extends BaseAPIRequestFactory {
      * @param sequenceId sequence_id
      * @param addToAutomationSequenceRequest addToAutomationSequenceRequest
      */
-    public async addContactsToAutomationSequenceUsingPOST(automationId: string, sequenceId: string, addToAutomationSequenceRequest: AddToAutomationSequenceRequest, _options?: Configuration): Promise<RequestContext> {
+    public async addContactsToAutomationSequence(automationId: string, sequenceId: string, addToAutomationSequenceRequest: AddToAutomationSequenceRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'automationId' is not null or undefined
         if (automationId === null || automationId === undefined) {
-            throw new RequiredError("AutomationApi", "addContactsToAutomationSequenceUsingPOST", "automationId");
+            throw new RequiredError("AutomationApi", "addContactsToAutomationSequence", "automationId");
         }
 
 
         // verify required parameter 'sequenceId' is not null or undefined
         if (sequenceId === null || sequenceId === undefined) {
-            throw new RequiredError("AutomationApi", "addContactsToAutomationSequenceUsingPOST", "sequenceId");
+            throw new RequiredError("AutomationApi", "addContactsToAutomationSequence", "sequenceId");
         }
 
 
         // verify required parameter 'addToAutomationSequenceRequest' is not null or undefined
         if (addToAutomationSequenceRequest === null || addToAutomationSequenceRequest === undefined) {
-            throw new RequiredError("AutomationApi", "addContactsToAutomationSequenceUsingPOST", "addToAutomationSequenceRequest");
+            throw new RequiredError("AutomationApi", "addContactsToAutomationSequence", "addToAutomationSequenceRequest");
         }
 
 
@@ -84,12 +83,12 @@ export class AutomationApiRequestFactory extends BaseAPIRequestFactory {
      * Bulk update for Automations Categories
      * @param assignAutomationCategoryRequest assignAutomationCategoryRequest
      */
-    public async bulkAssignmentAutomationsCategoriesUsingPOST(assignAutomationCategoryRequest: AssignAutomationCategoryRequest, _options?: Configuration): Promise<RequestContext> {
+    public async bulkAssignmentAutomationsCategories(assignAutomationCategoryRequest: AssignAutomationCategoryRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'assignAutomationCategoryRequest' is not null or undefined
         if (assignAutomationCategoryRequest === null || assignAutomationCategoryRequest === undefined) {
-            throw new RequiredError("AutomationApi", "bulkAssignmentAutomationsCategoriesUsingPOST", "assignAutomationCategoryRequest");
+            throw new RequiredError("AutomationApi", "bulkAssignmentAutomationsCategories", "assignAutomationCategoryRequest");
         }
 
 
@@ -126,12 +125,12 @@ export class AutomationApiRequestFactory extends BaseAPIRequestFactory {
      * Delete an Automation
      * @param automationIds automation_ids
      */
-    public async deleteAutomationUsingDELETE(automationIds: Array<number>, _options?: Configuration): Promise<RequestContext> {
+    public async deleteAutomation(automationIds: Array<number>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'automationIds' is not null or undefined
         if (automationIds === null || automationIds === undefined) {
-            throw new RequiredError("AutomationApi", "deleteAutomationUsingDELETE", "automationIds");
+            throw new RequiredError("AutomationApi", "deleteAutomation", "automationIds");
         }
 
 
@@ -165,12 +164,12 @@ export class AutomationApiRequestFactory extends BaseAPIRequestFactory {
      * Retrieve an Automation
      * @param automationId automation_id
      */
-    public async getAutomationUsingGET(automationId: string, _options?: Configuration): Promise<RequestContext> {
+    public async getAutomation(automationId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'automationId' is not null or undefined
         if (automationId === null || automationId === undefined) {
-            throw new RequiredError("AutomationApi", "getAutomationUsingGET", "automationId");
+            throw new RequiredError("AutomationApi", "getAutomation", "automationId");
         }
 
 
@@ -201,7 +200,7 @@ export class AutomationApiRequestFactory extends BaseAPIRequestFactory {
      * @param pageToken Page token
      * @param stats 
      */
-    public async listAllAutomationIdsUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, stats?: boolean, _options?: Configuration): Promise<RequestContext> {
+    public async listAllAutomationIds(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, stats?: boolean, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
 
@@ -260,7 +259,7 @@ export class AutomationApiRequestFactory extends BaseAPIRequestFactory {
      * @param pageToken Page token
      * @param stats 
      */
-    public async listAutomationsUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, stats?: boolean, _options?: Configuration): Promise<RequestContext> {
+    public async listAutomations(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, stats?: boolean, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
 
@@ -310,48 +309,6 @@ export class AutomationApiRequestFactory extends BaseAPIRequestFactory {
         return requestContext;
     }
 
-    /**
-     * Updates the category of one or more automations
-     * Update an Automation\'s Category
-     * @param updateAutomationCategoryRequest updateAutomationCategoryRequest
-     */
-    public async updateAutomationCategoryUsingPUT(updateAutomationCategoryRequest: UpdateAutomationCategoryRequest, _options?: Configuration): Promise<RequestContext> {
-        let _config = _options || this.configuration;
-
-        // verify required parameter 'updateAutomationCategoryRequest' is not null or undefined
-        if (updateAutomationCategoryRequest === null || updateAutomationCategoryRequest === undefined) {
-            throw new RequiredError("AutomationApi", "updateAutomationCategoryUsingPUT", "updateAutomationCategoryRequest");
-        }
-
-
-        // Path Params
-        const localVarPath = '/v2/automations/category';
-
-        // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.PUT);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-
-        // Body Params
-        const contentType = ObjectSerializer.getPreferredMediaType([
-            "application/json"
-        ]);
-        requestContext.setHeaderParam("Content-Type", contentType);
-        const serializedBody = ObjectSerializer.stringify(
-            ObjectSerializer.serialize(updateAutomationCategoryRequest, "UpdateAutomationCategoryRequest", ""),
-            contentType
-        );
-        requestContext.setBody(serializedBody);
-
-        
-        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-
-        return requestContext;
-    }
-
 }
 
 export class AutomationApiResponseProcessor {
@@ -360,10 +317,10 @@ export class AutomationApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to addContactsToAutomationSequenceUsingPOST
+     * @params response Response returned by the server for a request to addContactsToAutomationSequence
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async addContactsToAutomationSequenceUsingPOSTWithHttpInfo(response: ResponseContext): Promise<HttpInfo<AddToAutomationSequenceResponse >> {
+     public async addContactsToAutomationSequenceWithHttpInfo(response: ResponseContext): Promise<HttpInfo<AddToAutomationSequenceResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: AddToAutomationSequenceResponse = ObjectSerializer.deserialize(
@@ -410,10 +367,10 @@ export class AutomationApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to bulkAssignmentAutomationsCategoriesUsingPOST
+     * @params response Response returned by the server for a request to bulkAssignmentAutomationsCategories
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async bulkAssignmentAutomationsCategoriesUsingPOSTWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async bulkAssignmentAutomationsCategoriesWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
@@ -456,10 +413,10 @@ export class AutomationApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to deleteAutomationUsingDELETE
+     * @params response Response returned by the server for a request to deleteAutomation
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async deleteAutomationUsingDELETEWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async deleteAutomationWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("204", response.httpStatusCode)) {
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
@@ -509,10 +466,10 @@ export class AutomationApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to getAutomationUsingGET
+     * @params response Response returned by the server for a request to getAutomation
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getAutomationUsingGETWithHttpInfo(response: ResponseContext): Promise<HttpInfo<Automation >> {
+     public async getAutomationWithHttpInfo(response: ResponseContext): Promise<HttpInfo<Automation >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: Automation = ObjectSerializer.deserialize(
@@ -566,10 +523,10 @@ export class AutomationApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to listAllAutomationIdsUsingGET
+     * @params response Response returned by the server for a request to listAllAutomationIds
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async listAllAutomationIdsUsingGETWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListAutomationIdsResponse >> {
+     public async listAllAutomationIdsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListAutomationIdsResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: ListAutomationIdsResponse = ObjectSerializer.deserialize(
@@ -623,10 +580,10 @@ export class AutomationApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to listAutomationsUsingGET
+     * @params response Response returned by the server for a request to listAutomations
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async listAutomationsUsingGETWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListAutomationResponse >> {
+     public async listAutomationsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListAutomationResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: ListAutomationResponse = ObjectSerializer.deserialize(
@@ -670,59 +627,6 @@ export class AutomationApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "ListAutomationResponse", ""
             ) as ListAutomationResponse;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-
-        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
-    }
-
-    /**
-     * Unwraps the actual response sent by the server from the response context and deserializes the response content
-     * to the expected objects
-     *
-     * @params response Response returned by the server for a request to updateAutomationCategoryUsingPUT
-     * @throws ApiException if the response code was not in [200, 299]
-     */
-     public async updateAutomationCategoryUsingPUTWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
-        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("200", response.httpStatusCode)) {
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
-        }
-        if (isCodeInRange("401", response.httpStatusCode)) {
-            const body: Error = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "Error", ""
-            ) as Error;
-            throw new ApiException<Error>(response.httpStatusCode, "Unauthorized", body, response.headers);
-        }
-        if (isCodeInRange("403", response.httpStatusCode)) {
-            const body: Error = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "Error", ""
-            ) as Error;
-            throw new ApiException<Error>(response.httpStatusCode, "Forbidden", body, response.headers);
-        }
-        if (isCodeInRange("404", response.httpStatusCode)) {
-            const body: Error = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "Error", ""
-            ) as Error;
-            throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
-        }
-        if (isCodeInRange("500", response.httpStatusCode)) {
-            const body: Error = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "Error", ""
-            ) as Error;
-            throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
-        }
-
-        // Work around for missing responses in specification, e.g. for petstore.yaml
-        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: void = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "void", ""
-            ) as void;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

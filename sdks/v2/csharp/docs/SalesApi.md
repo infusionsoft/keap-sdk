@@ -4,11 +4,11 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**SetMerchantGatewayAsDefaultUsingPOST**](SalesApi.md#setmerchantgatewayasdefaultusingpost) | **POST** /v2/sales/merchants/{id}:setDefault | Set default Merchant Account |
+| [**SetMerchantGatewayAsDefault**](SalesApi.md#setmerchantgatewayasdefault) | **POST** /v2/sales/merchants/{id}:setDefault | Set default Merchant Account |
 
-<a id="setmerchantgatewayasdefaultusingpost"></a>
-# **SetMerchantGatewayAsDefaultUsingPOST**
-> void SetMerchantGatewayAsDefaultUsingPOST (string id)
+<a id="setmerchantgatewayasdefault"></a>
+# **SetMerchantGatewayAsDefault**
+> void SetMerchantGatewayAsDefault (string id)
 
 Set default Merchant Account
 
@@ -24,7 +24,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class SetMerchantGatewayAsDefaultUsingPOSTExample
+    public class SetMerchantGatewayAsDefaultExample
     {
         public static void Main()
         {
@@ -36,11 +36,11 @@ namespace Example
             try
             {
                 // Set default Merchant Account
-                apiInstance.SetMerchantGatewayAsDefaultUsingPOST(id);
+                apiInstance.SetMerchantGatewayAsDefault(id);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling SalesApi.SetMerchantGatewayAsDefaultUsingPOST: " + e.Message);
+                Debug.Print("Exception when calling SalesApi.SetMerchantGatewayAsDefault: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -49,18 +49,18 @@ namespace Example
 }
 ```
 
-#### Using the SetMerchantGatewayAsDefaultUsingPOSTWithHttpInfo variant
+#### Using the SetMerchantGatewayAsDefaultWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Set default Merchant Account
-    apiInstance.SetMerchantGatewayAsDefaultUsingPOSTWithHttpInfo(id);
+    apiInstance.SetMerchantGatewayAsDefaultWithHttpInfo(id);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling SalesApi.SetMerchantGatewayAsDefaultUsingPOSTWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling SalesApi.SetMerchantGatewayAsDefaultWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }

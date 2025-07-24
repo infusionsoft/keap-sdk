@@ -4,17 +4,17 @@ All URIs are relative to https://api.keap.com/crm/rest, except if the operation 
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createLeadSourceExpenseUsingPOST()**](LeadSourceExpensesApi.md#createLeadSourceExpenseUsingPOST) | **POST** /v2/leadSources/{lead_source_id}/expenses | Create a Lead Source Expense |
-| [**deleteLeadSourceUsingDELETE1()**](LeadSourceExpensesApi.md#deleteLeadSourceUsingDELETE1) | **DELETE** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Delete a lead source expense |
-| [**getLeadSourceExpenseUsingGET()**](LeadSourceExpensesApi.md#getLeadSourceExpenseUsingGET) | **GET** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Retrieve a Lead Source Expense |
-| [**listLeadSourceExpensesUsingGET()**](LeadSourceExpensesApi.md#listLeadSourceExpensesUsingGET) | **GET** /v2/leadSources/{lead_source_id}/expenses | List Lead Source Expenses |
-| [**updateLeadSourceExpenseUsingPATCH()**](LeadSourceExpensesApi.md#updateLeadSourceExpenseUsingPATCH) | **PATCH** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Update a Lead Source Expense |
+| [**createLeadSourceExpense()**](LeadSourceExpensesApi.md#createLeadSourceExpense) | **POST** /v2/leadSources/{lead_source_id}/expenses | Create a Lead Source Expense |
+| [**deleteLeadSourceExpense()**](LeadSourceExpensesApi.md#deleteLeadSourceExpense) | **DELETE** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Delete a lead source expense |
+| [**getLeadSourceExpense()**](LeadSourceExpensesApi.md#getLeadSourceExpense) | **GET** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Retrieve a Lead Source Expense |
+| [**listLeadSourceExpenses()**](LeadSourceExpensesApi.md#listLeadSourceExpenses) | **GET** /v2/leadSources/{lead_source_id}/expenses | List Lead Source Expenses |
+| [**updateLeadSourceExpense()**](LeadSourceExpensesApi.md#updateLeadSourceExpense) | **PATCH** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Update a Lead Source Expense |
 
 
-## `createLeadSourceExpenseUsingPOST()`
+## `createLeadSourceExpense()`
 
 ```php
-createLeadSourceExpenseUsingPOST($lead_source_id, $create_lead_source_expense_request): \Keap\Core\V2\Model\LeadSourceExpense
+createLeadSourceExpense($lead_source_id, $create_lead_source_expense_request): \Keap\Core\V2\Model\LeadSourceExpense
 ```
 
 Create a Lead Source Expense
@@ -37,10 +37,10 @@ $lead_source_id = 'lead_source_id_example'; // string | The ID of the lead sourc
 $create_lead_source_expense_request = new \Keap\Core\V2\Model\CreateLeadSourceExpenseRequest(); // \Keap\Core\V2\Model\CreateLeadSourceExpenseRequest | The request object to create a new lead source expense
 
 try {
-    $result = $apiInstance->createLeadSourceExpenseUsingPOST($lead_source_id, $create_lead_source_expense_request);
+    $result = $apiInstance->createLeadSourceExpense($lead_source_id, $create_lead_source_expense_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling LeadSourceExpensesApi->createLeadSourceExpenseUsingPOST: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling LeadSourceExpensesApi->createLeadSourceExpense: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -68,10 +68,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `deleteLeadSourceUsingDELETE1()`
+## `deleteLeadSourceExpense()`
 
 ```php
-deleteLeadSourceUsingDELETE1($lead_source_expense_id, $lead_source_id)
+deleteLeadSourceExpense($lead_source_expense_id, $lead_source_id)
 ```
 
 Delete a lead source expense
@@ -94,9 +94,9 @@ $lead_source_expense_id = 'lead_source_expense_id_example'; // string | The ID o
 $lead_source_id = 'lead_source_id_example'; // string | The ID of the lead source this expense belongs to
 
 try {
-    $apiInstance->deleteLeadSourceUsingDELETE1($lead_source_expense_id, $lead_source_id);
+    $apiInstance->deleteLeadSourceExpense($lead_source_expense_id, $lead_source_id);
 } catch (Exception $e) {
-    echo 'Exception when calling LeadSourceExpensesApi->deleteLeadSourceUsingDELETE1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling LeadSourceExpensesApi->deleteLeadSourceExpense: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -124,10 +124,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getLeadSourceExpenseUsingGET()`
+## `getLeadSourceExpense()`
 
 ```php
-getLeadSourceExpenseUsingGET($lead_source_expense_id, $lead_source_id): \Keap\Core\V2\Model\LeadSourceExpense
+getLeadSourceExpense($lead_source_expense_id, $lead_source_id): \Keap\Core\V2\Model\LeadSourceExpense
 ```
 
 Retrieve a Lead Source Expense
@@ -150,10 +150,10 @@ $lead_source_expense_id = 'lead_source_expense_id_example'; // string | The ID o
 $lead_source_id = 'lead_source_id_example'; // string | The ID of the lead source this expense belongs to
 
 try {
-    $result = $apiInstance->getLeadSourceExpenseUsingGET($lead_source_expense_id, $lead_source_id);
+    $result = $apiInstance->getLeadSourceExpense($lead_source_expense_id, $lead_source_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling LeadSourceExpensesApi->getLeadSourceExpenseUsingGET: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling LeadSourceExpensesApi->getLeadSourceExpense: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -181,10 +181,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `listLeadSourceExpensesUsingGET()`
+## `listLeadSourceExpenses()`
 
 ```php
-listLeadSourceExpensesUsingGET($lead_source_id, $filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListLeadSourceExpensesResponse
+listLeadSourceExpenses($lead_source_id, $filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListLeadSourceExpensesResponse
 ```
 
 List Lead Source Expenses
@@ -210,10 +210,10 @@ $page_size = 0; // int | Total number of items to return per page
 $page_token = 'page_token_example'; // string | Page token
 
 try {
-    $result = $apiInstance->listLeadSourceExpensesUsingGET($lead_source_id, $filter, $order_by, $page_size, $page_token);
+    $result = $apiInstance->listLeadSourceExpenses($lead_source_id, $filter, $order_by, $page_size, $page_token);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling LeadSourceExpensesApi->listLeadSourceExpensesUsingGET: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling LeadSourceExpensesApi->listLeadSourceExpenses: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -244,10 +244,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `updateLeadSourceExpenseUsingPATCH()`
+## `updateLeadSourceExpense()`
 
 ```php
-updateLeadSourceExpenseUsingPATCH($lead_source_expense_id, $lead_source_id, $update_lead_source_expense_request, $update_mask): \Keap\Core\V2\Model\LeadSourceExpense
+updateLeadSourceExpense($lead_source_expense_id, $lead_source_id, $update_lead_source_expense_request, $update_mask): \Keap\Core\V2\Model\LeadSourceExpense
 ```
 
 Update a Lead Source Expense
@@ -272,10 +272,10 @@ $update_lead_source_expense_request = new \Keap\Core\V2\Model\UpdateLeadSourceEx
 $update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
-    $result = $apiInstance->updateLeadSourceExpenseUsingPATCH($lead_source_expense_id, $lead_source_id, $update_lead_source_expense_request, $update_mask);
+    $result = $apiInstance->updateLeadSourceExpense($lead_source_expense_id, $lead_source_id, $update_lead_source_expense_request, $update_mask);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling LeadSourceExpensesApi->updateLeadSourceExpenseUsingPATCH: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling LeadSourceExpensesApi->updateLeadSourceExpense: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**code** | **str** |  | [optional] 
+**codes** | [**CountryCodes**](CountryCodes.md) |  | [optional] 
 **name** | **str** |  | [optional] 
 
 ## Example

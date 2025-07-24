@@ -16,8 +16,7 @@
 |**id** | **String** |  |  [optional] |
 |**locked** | **Boolean** |  |  [optional] |
 |**name** | **String** |  |  [optional] |
-|**publicationDate** | **String** |  |  [optional] |
-|**publishedDate** | **ZonedDateTime** |  |  [optional] |
+|**publishedDate** | **String** |  |  [optional] |
 |**publishedStatus** | **Boolean** |  |  [optional] |
 |**publishedTimeZone** | **String** |  |  [optional] |
 |**sequences** | [**List&lt;Sequence&gt;**](Sequence.md) |  |  [optional] |

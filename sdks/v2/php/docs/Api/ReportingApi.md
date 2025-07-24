@@ -4,15 +4,15 @@ All URIs are relative to https://api.keap.com/crm/rest, except if the operation 
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**listReportsUsingGET()**](ReportingApi.md#listReportsUsingGET) | **GET** /v2/reporting/reports | List Reports |
-| [**retrieveReportUsingGET()**](ReportingApi.md#retrieveReportUsingGET) | **GET** /v2/reporting/reports/{report_id} | Retrieve Report |
-| [**runReportUsingPOST()**](ReportingApi.md#runReportUsingPOST) | **POST** /v2/reporting/reports/{report_id}:run | Run a Report |
+| [**listReports()**](ReportingApi.md#listReports) | **GET** /v2/reporting/reports | List Reports |
+| [**retrieveReport()**](ReportingApi.md#retrieveReport) | **GET** /v2/reporting/reports/{report_id} | Retrieve Report |
+| [**runReport()**](ReportingApi.md#runReport) | **POST** /v2/reporting/reports/{report_id}:run | Run a Report |
 
 
-## `listReportsUsingGET()`
+## `listReports()`
 
 ```php
-listReportsUsingGET($filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListReportsResponse
+listReports($filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListReportsResponse
 ```
 
 List Reports
@@ -37,10 +37,10 @@ $page_size = 0; // int | Total number of items to return per page
 $page_token = 'page_token_example'; // string | Page token
 
 try {
-    $result = $apiInstance->listReportsUsingGET($filter, $order_by, $page_size, $page_token);
+    $result = $apiInstance->listReports($filter, $order_by, $page_size, $page_token);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ReportingApi->listReportsUsingGET: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ReportingApi->listReports: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -70,10 +70,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `retrieveReportUsingGET()`
+## `retrieveReport()`
 
 ```php
-retrieveReportUsingGET($report_id): \Keap\Core\V2\Model\Report
+retrieveReport($report_id): \Keap\Core\V2\Model\Report
 ```
 
 Retrieve Report
@@ -95,10 +95,10 @@ $apiInstance = new Keap\Core\V2\Api\ReportingApi(
 $report_id = 'report_id_example'; // string | report_id
 
 try {
-    $result = $apiInstance->retrieveReportUsingGET($report_id);
+    $result = $apiInstance->retrieveReport($report_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ReportingApi->retrieveReportUsingGET: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ReportingApi->retrieveReport: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -125,10 +125,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `runReportUsingPOST()`
+## `runReport()`
 
 ```php
-runReportUsingPOST($report_id, $fields, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ReportExecutionResult
+runReport($report_id, $fields, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ReportExecutionResult
 ```
 
 Run a Report
@@ -154,10 +154,10 @@ $page_size = 0; // int | Total number of items to return per page
 $page_token = 'page_token_example'; // string | Representation of the last row retrieved from the previous page. An empty value implies a request for the first page.
 
 try {
-    $result = $apiInstance->runReportUsingPOST($report_id, $fields, $order_by, $page_size, $page_token);
+    $result = $apiInstance->runReport($report_id, $fields, $order_by, $page_size, $page_token);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ReportingApi->runReportUsingPOST: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ReportingApi->runReport: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

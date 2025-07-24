@@ -4,16 +4,16 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createFileUsingPOST1**](FilesApi.md#createFileUsingPOST1) | **POST** /v2/files | Create a file
-[**deleteFileUsingDELETE1**](FilesApi.md#deleteFileUsingDELETE1) | **DELETE** /v2/files/{file_id} | Delete a file
-[**getFileDataUsingGET**](FilesApi.md#getFileDataUsingGET) | **GET** /v2/files/{file_id}:data | Retrieve a file\&#39;s data
-[**getFileUsingGET1**](FilesApi.md#getFileUsingGET1) | **GET** /v2/files/{file_id} | Retrieve a file
-[**listFilesUsingGET1**](FilesApi.md#listFilesUsingGET1) | **GET** /v2/files | List all files
-[**updateFileUsingPOST**](FilesApi.md#updateFileUsingPOST) | **POST** /v2/files/{file_id} | Update a file
+[**createFile**](FilesApi.md#createFile) | **POST** /v2/files | Create a file
+[**deleteFile**](FilesApi.md#deleteFile) | **DELETE** /v2/files/{file_id} | Delete a file
+[**getFile**](FilesApi.md#getFile) | **GET** /v2/files/{file_id} | Retrieve a file
+[**getFileData**](FilesApi.md#getFileData) | **GET** /v2/files/{file_id}:data | Retrieve a file\&#39;s data
+[**listFiles**](FilesApi.md#listFiles) | **GET** /v2/files | List all files
+[**updateFile**](FilesApi.md#updateFile) | **POST** /v2/files/{file_id} | Update a file
 
 
-# **createFileUsingPOST1**
-> FileMetadata createFileUsingPOST1()
+# **createFile**
+> FileMetadata createFile()
 
 Creates a file and uploads it
 
@@ -22,12 +22,12 @@ Creates a file and uploads it
 
 ```typescript
 import { createConfiguration, FilesApi } from '';
-import type { FilesApiCreateFileUsingPOST1Request } from '';
+import type { FilesApiCreateFileRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new FilesApi(configuration);
 
-const request: FilesApiCreateFileUsingPOST1Request = {
+const request: FilesApiCreateFileRequest = {
     // File to upload. This is a file sent as multi-part (not a string)
   file: "file_example",
     // File association
@@ -40,7 +40,7 @@ const request: FilesApiCreateFileUsingPOST1Request = {
   contactId: "contactId_example",
 };
 
-const data = await apiInstance.createFileUsingPOST1(request);
+const data = await apiInstance.createFile(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -80,8 +80,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **deleteFileUsingDELETE1**
-> void deleteFileUsingDELETE1()
+# **deleteFile**
+> void deleteFile()
 
 Deletes a specified file
 
@@ -90,17 +90,17 @@ Deletes a specified file
 
 ```typescript
 import { createConfiguration, FilesApi } from '';
-import type { FilesApiDeleteFileUsingDELETE1Request } from '';
+import type { FilesApiDeleteFileRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new FilesApi(configuration);
 
-const request: FilesApiDeleteFileUsingDELETE1Request = {
+const request: FilesApiDeleteFileRequest = {
     // file_id
   fileId: "file_id_example",
 };
 
-const data = await apiInstance.deleteFileUsingDELETE1(request);
+const data = await apiInstance.deleteFile(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -137,65 +137,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **getFileDataUsingGET**
-> string getFileDataUsingGET()
-
-Retrieves a file\'s data
-
-### Example
-
-
-```typescript
-import { createConfiguration, FilesApi } from '';
-import type { FilesApiGetFileDataUsingGETRequest } from '';
-
-const configuration = createConfiguration();
-const apiInstance = new FilesApi(configuration);
-
-const request: FilesApiGetFileDataUsingGETRequest = {
-    // file_id
-  fileId: "file_id_example",
-};
-
-const data = await apiInstance.getFileDataUsingGET(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **fileId** | [**string**] | file_id | defaults to undefined
-
-
-### Return type
-
-**string**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-**401** | Unauthorized |  -  |
-**403** | Forbidden |  -  |
-**404** | Not Found |  -  |
-**500** | Internal Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-# **getFileUsingGET1**
-> FileMetadata getFileUsingGET1()
+# **getFile**
+> FileMetadata getFile()
 
 Retrieves a file
 
@@ -204,17 +147,17 @@ Retrieves a file
 
 ```typescript
 import { createConfiguration, FilesApi } from '';
-import type { FilesApiGetFileUsingGET1Request } from '';
+import type { FilesApiGetFileRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new FilesApi(configuration);
 
-const request: FilesApiGetFileUsingGET1Request = {
+const request: FilesApiGetFileRequest = {
     // file_id
   fileId: "file_id_example",
 };
 
-const data = await apiInstance.getFileUsingGET1(request);
+const data = await apiInstance.getFile(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -251,8 +194,65 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **listFilesUsingGET1**
-> ListFilesResponse listFilesUsingGET1()
+# **getFileData**
+> string getFileData()
+
+Retrieves a file\'s data
+
+### Example
+
+
+```typescript
+import { createConfiguration, FilesApi } from '';
+import type { FilesApiGetFileDataRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new FilesApi(configuration);
+
+const request: FilesApiGetFileDataRequest = {
+    // file_id
+  fileId: "file_id_example",
+};
+
+const data = await apiInstance.getFileData(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **fileId** | [**string**] | file_id | defaults to undefined
+
+
+### Return type
+
+**string**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **listFiles**
+> ListFilesResponse listFiles()
 
 Retrieves a list of files
 
@@ -261,12 +261,12 @@ Retrieves a list of files
 
 ```typescript
 import { createConfiguration, FilesApi } from '';
-import type { FilesApiListFilesUsingGET1Request } from '';
+import type { FilesApiListFilesRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new FilesApi(configuration);
 
-const request: FilesApiListFilesUsingGET1Request = {
+const request: FilesApiListFilesRequest = {
     // Filter to apply, allowed fields are: - (Boolean) `is_public` - (String) `contact_id` - (String) `user_id` - (FileBoxCategory) `category` - (FileBoxType) `file_box_type`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=category%3D%3DATTACHMENTS` - `filter=file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS`  (optional)
   filter: "filter_example",
     // Attribute and direction to order items. One of the following fields: - `file_name` - `updated_time` - ...  One of the following directions: - `asc` - `desc`  (optional)
@@ -277,7 +277,7 @@ const request: FilesApiListFilesUsingGET1Request = {
   pageToken: "page_token_example",
 };
 
-const data = await apiInstance.listFilesUsingGET1(request);
+const data = await apiInstance.listFiles(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -317,8 +317,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **updateFileUsingPOST**
-> FileMetadata updateFileUsingPOST()
+# **updateFile**
+> FileMetadata updateFile()
 
 Updates a file. Note that this endpoint is using a POST method instead of PATCH.
 
@@ -327,12 +327,12 @@ Updates a file. Note that this endpoint is using a POST method instead of PATCH.
 
 ```typescript
 import { createConfiguration, FilesApi } from '';
-import type { FilesApiUpdateFileUsingPOSTRequest } from '';
+import type { FilesApiUpdateFileRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new FilesApi(configuration);
 
-const request: FilesApiUpdateFileUsingPOSTRequest = {
+const request: FilesApiUpdateFileRequest = {
     // file_id
   fileId: "file_id_example",
     // File to upload. This is a file sent as multi-part (not a string) (optional)
@@ -345,7 +345,7 @@ const request: FilesApiUpdateFileUsingPOSTRequest = {
   updateMask: "file",
 };
 
-const data = await apiInstance.updateFileUsingPOST(request);
+const data = await apiInstance.updateFile(request);
 console.log('API called successfully. Returned data:', data);
 ```
 

@@ -4,15 +4,15 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createLeadSourceUsingPOST**](LeadSourcesApi.md#createLeadSourceUsingPOST) | **POST** /v2/leadSources | Create a Lead Source
-[**deleteLeadSourceUsingDELETE**](LeadSourcesApi.md#deleteLeadSourceUsingDELETE) | **DELETE** /v2/leadSources/{lead_source_id} | Delete a Lead Source
-[**getLeadSourceUsingGET**](LeadSourcesApi.md#getLeadSourceUsingGET) | **GET** /v2/leadSources/{lead_source_id} | Retrieve a Lead Source
-[**listLeadSourcesUsingGET**](LeadSourcesApi.md#listLeadSourcesUsingGET) | **GET** /v2/leadSources | List Lead Sources
-[**updateLeadSourceUsingPATCH**](LeadSourcesApi.md#updateLeadSourceUsingPATCH) | **PATCH** /v2/leadSources/{lead_source_id} | Update a Lead Source
+[**createLeadSource**](LeadSourcesApi.md#createLeadSource) | **POST** /v2/leadSources | Create a Lead Source
+[**deleteLeadSource**](LeadSourcesApi.md#deleteLeadSource) | **DELETE** /v2/leadSources/{lead_source_id} | Delete a Lead Source
+[**getLeadSource**](LeadSourcesApi.md#getLeadSource) | **GET** /v2/leadSources/{lead_source_id} | Retrieve a Lead Source
+[**listLeadSources**](LeadSourcesApi.md#listLeadSources) | **GET** /v2/leadSources | List Lead Sources
+[**updateLeadSource**](LeadSourcesApi.md#updateLeadSource) | **PATCH** /v2/leadSources/{lead_source_id} | Update a Lead Source
 
 
-# **createLeadSourceUsingPOST**
-> LeadSource createLeadSourceUsingPOST(createLeadSourceRequest)
+# **createLeadSource**
+> LeadSource createLeadSource(createLeadSourceRequest)
 
 Creates a new Lead Source
 
@@ -21,12 +21,12 @@ Creates a new Lead Source
 
 ```typescript
 import { createConfiguration, LeadSourcesApi } from '';
-import type { LeadSourcesApiCreateLeadSourceUsingPOSTRequest } from '';
+import type { LeadSourcesApiCreateLeadSourceRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new LeadSourcesApi(configuration);
 
-const request: LeadSourcesApiCreateLeadSourceUsingPOSTRequest = {
+const request: LeadSourcesApiCreateLeadSourceRequest = {
     // The request object to create a new lead source
   createLeadSourceRequest: {
     description: "description_example",
@@ -41,7 +41,7 @@ const request: LeadSourcesApiCreateLeadSourceUsingPOSTRequest = {
   },
 };
 
-const data = await apiInstance.createLeadSourceUsingPOST(request);
+const data = await apiInstance.createLeadSource(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -78,8 +78,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **deleteLeadSourceUsingDELETE**
-> void deleteLeadSourceUsingDELETE()
+# **deleteLeadSource**
+> void deleteLeadSource()
 
 Deletes a Lead Source by ID
 
@@ -88,17 +88,17 @@ Deletes a Lead Source by ID
 
 ```typescript
 import { createConfiguration, LeadSourcesApi } from '';
-import type { LeadSourcesApiDeleteLeadSourceUsingDELETERequest } from '';
+import type { LeadSourcesApiDeleteLeadSourceRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new LeadSourcesApi(configuration);
 
-const request: LeadSourcesApiDeleteLeadSourceUsingDELETERequest = {
+const request: LeadSourcesApiDeleteLeadSourceRequest = {
     // The ID of a lead source
   leadSourceId: "lead_source_id_example",
 };
 
-const data = await apiInstance.deleteLeadSourceUsingDELETE(request);
+const data = await apiInstance.deleteLeadSource(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -135,8 +135,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **getLeadSourceUsingGET**
-> LeadSource getLeadSourceUsingGET()
+# **getLeadSource**
+> LeadSource getLeadSource()
 
 Retrieves a Lead Source by ID
 
@@ -145,17 +145,17 @@ Retrieves a Lead Source by ID
 
 ```typescript
 import { createConfiguration, LeadSourcesApi } from '';
-import type { LeadSourcesApiGetLeadSourceUsingGETRequest } from '';
+import type { LeadSourcesApiGetLeadSourceRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new LeadSourcesApi(configuration);
 
-const request: LeadSourcesApiGetLeadSourceUsingGETRequest = {
+const request: LeadSourcesApiGetLeadSourceRequest = {
     // The ID of a lead source
   leadSourceId: "lead_source_id_example",
 };
 
-const data = await apiInstance.getLeadSourceUsingGET(request);
+const data = await apiInstance.getLeadSource(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -192,8 +192,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **listLeadSourcesUsingGET**
-> ListLeadSourcesResponse listLeadSourcesUsingGET()
+# **listLeadSources**
+> ListLeadSourcesResponse listLeadSources()
 
 Retrieves a list of Lead Sources
 
@@ -202,12 +202,12 @@ Retrieves a list of Lead Sources
 
 ```typescript
 import { createConfiguration, LeadSourcesApi } from '';
-import type { LeadSourcesApiListLeadSourcesUsingGETRequest } from '';
+import type { LeadSourcesApiListLeadSourcesRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new LeadSourcesApi(configuration);
 
-const request: LeadSourcesApiListLeadSourcesUsingGETRequest = {
+const request: LeadSourcesApiListLeadSourcesRequest = {
     // Filter to apply, allowed fields are:  - (String) `name` - (String) `status` - (String) `lead_source_category_id` - (String) `vendor` - (String) `medium` - (String) `start_time` - (String) `end_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:  - `filter=name%3D%3Dexample` - `filter=start_time%3D%3D2024-12-22T01:00:00.000Z` (optional)
   filter: "filter_example",
     // Attribute and direction to order items. One of the following fields:  - `name` - `status` - `vendor` - `medium` - `start_time` - `end_time` - `create_time` - `update_time`  One of the following directions:  - `asc` - `desc` (optional)
@@ -218,7 +218,7 @@ const request: LeadSourcesApiListLeadSourcesUsingGETRequest = {
   pageToken: "page_token_example",
 };
 
-const data = await apiInstance.listLeadSourcesUsingGET(request);
+const data = await apiInstance.listLeadSources(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -259,8 +259,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **updateLeadSourceUsingPATCH**
-> LeadSource updateLeadSourceUsingPATCH(createLeadSourceRequest)
+# **updateLeadSource**
+> LeadSource updateLeadSource(createLeadSourceRequest)
 
 Updates a Lead Source with only the values provided in the request
 
@@ -269,12 +269,12 @@ Updates a Lead Source with only the values provided in the request
 
 ```typescript
 import { createConfiguration, LeadSourcesApi } from '';
-import type { LeadSourcesApiUpdateLeadSourceUsingPATCHRequest } from '';
+import type { LeadSourcesApiUpdateLeadSourceRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new LeadSourcesApi(configuration);
 
-const request: LeadSourcesApiUpdateLeadSourceUsingPATCHRequest = {
+const request: LeadSourcesApiUpdateLeadSourceRequest = {
     // The ID of a lead source
   leadSourceId: "lead_source_id_example",
     // The request object to update a lead source
@@ -295,7 +295,7 @@ const request: LeadSourcesApiUpdateLeadSourceUsingPATCHRequest = {
   ],
 };
 
-const data = await apiInstance.updateLeadSourceUsingPATCH(request);
+const data = await apiInstance.updateLeadSource(request);
 console.log('API called successfully. Returned data:', data);
 ```
 

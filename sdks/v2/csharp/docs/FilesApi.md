@@ -4,16 +4,16 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**CreateFileUsingPOST1**](FilesApi.md#createfileusingpost1) | **POST** /v2/files | Create a file |
-| [**DeleteFileUsingDELETE1**](FilesApi.md#deletefileusingdelete1) | **DELETE** /v2/files/{file_id} | Delete a file |
-| [**GetFileDataUsingGET**](FilesApi.md#getfiledatausingget) | **GET** /v2/files/{file_id}:data | Retrieve a file&#39;s data |
-| [**GetFileUsingGET1**](FilesApi.md#getfileusingget1) | **GET** /v2/files/{file_id} | Retrieve a file |
-| [**ListFilesUsingGET1**](FilesApi.md#listfilesusingget1) | **GET** /v2/files | List all files |
-| [**UpdateFileUsingPOST**](FilesApi.md#updatefileusingpost) | **POST** /v2/files/{file_id} | Update a file |
+| [**CreateFile**](FilesApi.md#createfile) | **POST** /v2/files | Create a file |
+| [**DeleteFile**](FilesApi.md#deletefile) | **DELETE** /v2/files/{file_id} | Delete a file |
+| [**GetFile**](FilesApi.md#getfile) | **GET** /v2/files/{file_id} | Retrieve a file |
+| [**GetFileData**](FilesApi.md#getfiledata) | **GET** /v2/files/{file_id}:data | Retrieve a file&#39;s data |
+| [**ListFiles**](FilesApi.md#listfiles) | **GET** /v2/files | List all files |
+| [**UpdateFile**](FilesApi.md#updatefile) | **POST** /v2/files/{file_id} | Update a file |
 
-<a id="createfileusingpost1"></a>
-# **CreateFileUsingPOST1**
-> FileMetadata CreateFileUsingPOST1 (string file, string fileAssociation, string fileName, bool isPublic, string? contactId = null)
+<a id="createfile"></a>
+# **CreateFile**
+> FileMetadata CreateFile (string file, string fileAssociation, string fileName, bool isPublic, string? contactId = null)
 
 Create a file
 
@@ -29,7 +29,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class CreateFileUsingPOST1Example
+    public class CreateFileExample
     {
         public static void Main()
         {
@@ -45,12 +45,12 @@ namespace Example
             try
             {
                 // Create a file
-                FileMetadata result = apiInstance.CreateFileUsingPOST1(file, fileAssociation, fileName, isPublic, contactId);
+                FileMetadata result = apiInstance.CreateFile(file, fileAssociation, fileName, isPublic, contactId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling FilesApi.CreateFileUsingPOST1: " + e.Message);
+                Debug.Print("Exception when calling FilesApi.CreateFile: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -59,21 +59,21 @@ namespace Example
 }
 ```
 
-#### Using the CreateFileUsingPOST1WithHttpInfo variant
+#### Using the CreateFileWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Create a file
-    ApiResponse<FileMetadata> response = apiInstance.CreateFileUsingPOST1WithHttpInfo(file, fileAssociation, fileName, isPublic, contactId);
+    ApiResponse<FileMetadata> response = apiInstance.CreateFileWithHttpInfo(file, fileAssociation, fileName, isPublic, contactId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling FilesApi.CreateFileUsingPOST1WithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling FilesApi.CreateFileWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -113,9 +113,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="deletefileusingdelete1"></a>
-# **DeleteFileUsingDELETE1**
-> void DeleteFileUsingDELETE1 (string fileId)
+<a id="deletefile"></a>
+# **DeleteFile**
+> void DeleteFile (string fileId)
 
 Delete a file
 
@@ -131,7 +131,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class DeleteFileUsingDELETE1Example
+    public class DeleteFileExample
     {
         public static void Main()
         {
@@ -143,11 +143,11 @@ namespace Example
             try
             {
                 // Delete a file
-                apiInstance.DeleteFileUsingDELETE1(fileId);
+                apiInstance.DeleteFile(fileId);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling FilesApi.DeleteFileUsingDELETE1: " + e.Message);
+                Debug.Print("Exception when calling FilesApi.DeleteFile: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -156,18 +156,18 @@ namespace Example
 }
 ```
 
-#### Using the DeleteFileUsingDELETE1WithHttpInfo variant
+#### Using the DeleteFileWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Delete a file
-    apiInstance.DeleteFileUsingDELETE1WithHttpInfo(fileId);
+    apiInstance.DeleteFileWithHttpInfo(fileId);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling FilesApi.DeleteFileUsingDELETE1WithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling FilesApi.DeleteFileWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -204,104 +204,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="getfiledatausingget"></a>
-# **GetFileDataUsingGET**
-> byte[] GetFileDataUsingGET (string fileId)
-
-Retrieve a file's data
-
-Retrieves a file's data
-
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using Keap.Core.V2.Api;
-using Keap.Core.V2.Client;
-using Keap.Core.V2.Model;
-
-namespace Example
-{
-    public class GetFileDataUsingGETExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
-            var apiInstance = new FilesApi(config);
-            var fileId = "fileId_example";  // string | file_id
-
-            try
-            {
-                // Retrieve a file's data
-                byte[] result = apiInstance.GetFileDataUsingGET(fileId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling FilesApi.GetFileDataUsingGET: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetFileDataUsingGETWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieve a file's data
-    ApiResponse<byte[]> response = apiInstance.GetFileDataUsingGETWithHttpInfo(fileId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling FilesApi.GetFileDataUsingGETWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| **fileId** | **string** | file_id |  |
-
-### Return type
-
-**byte[]**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **500** | Internal Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a id="getfileusingget1"></a>
-# **GetFileUsingGET1**
-> FileMetadata GetFileUsingGET1 (string fileId)
+<a id="getfile"></a>
+# **GetFile**
+> FileMetadata GetFile (string fileId)
 
 Retrieve a file
 
@@ -317,7 +222,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class GetFileUsingGET1Example
+    public class GetFileExample
     {
         public static void Main()
         {
@@ -329,12 +234,12 @@ namespace Example
             try
             {
                 // Retrieve a file
-                FileMetadata result = apiInstance.GetFileUsingGET1(fileId);
+                FileMetadata result = apiInstance.GetFile(fileId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling FilesApi.GetFileUsingGET1: " + e.Message);
+                Debug.Print("Exception when calling FilesApi.GetFile: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -343,21 +248,21 @@ namespace Example
 }
 ```
 
-#### Using the GetFileUsingGET1WithHttpInfo variant
+#### Using the GetFileWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Retrieve a file
-    ApiResponse<FileMetadata> response = apiInstance.GetFileUsingGET1WithHttpInfo(fileId);
+    ApiResponse<FileMetadata> response = apiInstance.GetFileWithHttpInfo(fileId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling FilesApi.GetFileUsingGET1WithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling FilesApi.GetFileWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -394,9 +299,104 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="listfilesusingget1"></a>
-# **ListFilesUsingGET1**
-> ListFilesResponse ListFilesUsingGET1 (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
+<a id="getfiledata"></a>
+# **GetFileData**
+> byte[] GetFileData (string fileId)
+
+Retrieve a file's data
+
+Retrieves a file's data
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class GetFileDataExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm/rest";
+            var apiInstance = new FilesApi(config);
+            var fileId = "fileId_example";  // string | file_id
+
+            try
+            {
+                // Retrieve a file's data
+                byte[] result = apiInstance.GetFileData(fileId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling FilesApi.GetFileData: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GetFileDataWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Retrieve a file's data
+    ApiResponse<byte[]> response = apiInstance.GetFileDataWithHttpInfo(fileId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling FilesApi.GetFileDataWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **fileId** | **string** | file_id |  |
+
+### Return type
+
+**byte[]**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="listfiles"></a>
+# **ListFiles**
+> ListFilesResponse ListFiles (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
 
 List all files
 
@@ -412,7 +412,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class ListFilesUsingGET1Example
+    public class ListFilesExample
     {
         public static void Main()
         {
@@ -427,12 +427,12 @@ namespace Example
             try
             {
                 // List all files
-                ListFilesResponse result = apiInstance.ListFilesUsingGET1(filter, orderBy, pageSize, pageToken);
+                ListFilesResponse result = apiInstance.ListFiles(filter, orderBy, pageSize, pageToken);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling FilesApi.ListFilesUsingGET1: " + e.Message);
+                Debug.Print("Exception when calling FilesApi.ListFiles: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -441,21 +441,21 @@ namespace Example
 }
 ```
 
-#### Using the ListFilesUsingGET1WithHttpInfo variant
+#### Using the ListFilesWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // List all files
-    ApiResponse<ListFilesResponse> response = apiInstance.ListFilesUsingGET1WithHttpInfo(filter, orderBy, pageSize, pageToken);
+    ApiResponse<ListFilesResponse> response = apiInstance.ListFilesWithHttpInfo(filter, orderBy, pageSize, pageToken);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling FilesApi.ListFilesUsingGET1WithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling FilesApi.ListFilesWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -495,9 +495,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="updatefileusingpost"></a>
-# **UpdateFileUsingPOST**
-> FileMetadata UpdateFileUsingPOST (string fileId, string? file = null, string? fileName = null, bool? isPublic = null, string? updateMask = null)
+<a id="updatefile"></a>
+# **UpdateFile**
+> FileMetadata UpdateFile (string fileId, string? file = null, string? fileName = null, bool? isPublic = null, string? updateMask = null)
 
 Update a file
 
@@ -513,7 +513,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class UpdateFileUsingPOSTExample
+    public class UpdateFileExample
     {
         public static void Main()
         {
@@ -529,12 +529,12 @@ namespace Example
             try
             {
                 // Update a file
-                FileMetadata result = apiInstance.UpdateFileUsingPOST(fileId, file, fileName, isPublic, updateMask);
+                FileMetadata result = apiInstance.UpdateFile(fileId, file, fileName, isPublic, updateMask);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling FilesApi.UpdateFileUsingPOST: " + e.Message);
+                Debug.Print("Exception when calling FilesApi.UpdateFile: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -543,21 +543,21 @@ namespace Example
 }
 ```
 
-#### Using the UpdateFileUsingPOSTWithHttpInfo variant
+#### Using the UpdateFileWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Update a file
-    ApiResponse<FileMetadata> response = apiInstance.UpdateFileUsingPOSTWithHttpInfo(fileId, file, fileName, isPublic, updateMask);
+    ApiResponse<FileMetadata> response = apiInstance.UpdateFileWithHttpInfo(fileId, file, fileName, isPublic, updateMask);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling FilesApi.UpdateFileUsingPOSTWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling FilesApi.UpdateFileWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }

@@ -4,13 +4,13 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_application_configurations_using_get**](SettingsApi.md#get_application_configurations_using_get) | **GET** /v2/settings/applications:getConfiguration | Get Application Configuration
-[**get_contact_option_types_using_get1**](SettingsApi.md#get_contact_option_types_using_get1) | **GET** /v2/settings/contactOptionTypes | Get Contact Option types
-[**is_application_enabled_using_get**](SettingsApi.md#is_application_enabled_using_get) | **GET** /v2/settings/applications:isEnabled | Get Application Status
+[**get_application_configurations**](SettingsApi.md#get_application_configurations) | **GET** /v2/settings/applications:getConfiguration | Get Application Configuration
+[**get_contact_option_types**](SettingsApi.md#get_contact_option_types) | **GET** /v2/settings/contactOptionTypes | Get Contact Option types
+[**is_application_enabled**](SettingsApi.md#is_application_enabled) | **GET** /v2/settings/applications:isEnabled | Get Application Status
 
 
-# **get_application_configurations_using_get**
-> GetSettingsResponse get_application_configurations_using_get(fields=fields)
+# **get_application_configurations**
+> GetSettingsResponse get_application_configurations(fields=fields)
 
 Get Application Configuration
 
@@ -39,11 +39,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Get Application Configuration
-        api_response = api_instance.get_application_configurations_using_get(fields=fields)
-        print("The response of SettingsApi->get_application_configurations_using_get:\n")
+        api_response = api_instance.get_application_configurations(fields=fields)
+        print("The response of SettingsApi->get_application_configurations:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling SettingsApi->get_application_configurations_using_get: %s\n" % e)
+        print("Exception when calling SettingsApi->get_application_configurations: %s\n" % e)
 ```
 
 
@@ -79,8 +79,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_contact_option_types_using_get1**
-> GetContactOptionTypesResponse get_contact_option_types_using_get1()
+# **get_contact_option_types**
+> GetContactOptionTypesResponse get_contact_option_types()
 
 Get Contact Option types
 
@@ -108,11 +108,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Get Contact Option types
-        api_response = api_instance.get_contact_option_types_using_get1()
-        print("The response of SettingsApi->get_contact_option_types_using_get1:\n")
+        api_response = api_instance.get_contact_option_types()
+        print("The response of SettingsApi->get_contact_option_types:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling SettingsApi->get_contact_option_types_using_get1: %s\n" % e)
+        print("Exception when calling SettingsApi->get_contact_option_types: %s\n" % e)
 ```
 
 
@@ -145,8 +145,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **is_application_enabled_using_get**
-> GetApplicationEnabledStatusResponse is_application_enabled_using_get()
+# **is_application_enabled**
+> GetApplicationEnabledStatusResponse is_application_enabled()
 
 Get Application Status
 
@@ -174,11 +174,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Get Application Status
-        api_response = api_instance.is_application_enabled_using_get()
-        print("The response of SettingsApi->is_application_enabled_using_get:\n")
+        api_response = api_instance.is_application_enabled()
+        print("The response of SettingsApi->is_application_enabled:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling SettingsApi->is_application_enabled_using_get: %s\n" % e)
+        print("Exception when calling SettingsApi->is_application_enabled: %s\n" % e)
 ```
 
 

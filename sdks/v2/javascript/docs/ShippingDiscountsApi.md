@@ -4,17 +4,17 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createDiscountUsingPOST3**](ShippingDiscountsApi.md#createDiscountUsingPOST3) | **POST** /v2/discounts/shipping | Create a Shipping Discount
-[**deleteDiscountUsingDELETE3**](ShippingDiscountsApi.md#deleteDiscountUsingDELETE3) | **DELETE** /v2/discounts/shipping/{discount_id} | Delete a Shipping Discount
-[**getDiscountUsingGET3**](ShippingDiscountsApi.md#getDiscountUsingGET3) | **GET** /v2/discounts/shipping/{discount_id} | Retrieve a Shipping Discount
-[**listDiscountsUsingGET1**](ShippingDiscountsApi.md#listDiscountsUsingGET1) | **GET** /v2/discounts/shipping | List all Shipping Discounts
-[**updateDiscountUsingPATCH3**](ShippingDiscountsApi.md#updateDiscountUsingPATCH3) | **PATCH** /v2/discounts/shipping/{discount_id} | Update a Shipping Discount
+[**createShippingDiscount**](ShippingDiscountsApi.md#createShippingDiscount) | **POST** /v2/discounts/shipping | Create a Shipping Discount
+[**deleteShippingDiscount**](ShippingDiscountsApi.md#deleteShippingDiscount) | **DELETE** /v2/discounts/shipping/{discount_id} | Delete a Shipping Discount
+[**getShippingDiscount**](ShippingDiscountsApi.md#getShippingDiscount) | **GET** /v2/discounts/shipping/{discount_id} | Retrieve a Shipping Discount
+[**listShippingDiscounts**](ShippingDiscountsApi.md#listShippingDiscounts) | **GET** /v2/discounts/shipping | List all Shipping Discounts
+[**updateShippingDiscount**](ShippingDiscountsApi.md#updateShippingDiscount) | **PATCH** /v2/discounts/shipping/{discount_id} | Update a Shipping Discount
 
 
 
-## createDiscountUsingPOST3
+## createShippingDiscount
 
-> ShippingDiscount createDiscountUsingPOST3(createShippingDiscountRequest)
+> ShippingDiscount createShippingDiscount(createShippingDiscountRequest)
 
 Create a Shipping Discount
 
@@ -27,7 +27,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.ShippingDiscountsApi();
 let createShippingDiscountRequest = new KeapCoreServiceV2Sdk.CreateShippingDiscountRequest(); // CreateShippingDiscountRequest | request
-apiInstance.createDiscountUsingPOST3(createShippingDiscountRequest).then((data) => {
+apiInstance.createShippingDiscount(createShippingDiscountRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -56,9 +56,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## deleteDiscountUsingDELETE3
+## deleteShippingDiscount
 
-> deleteDiscountUsingDELETE3(discountId)
+> deleteShippingDiscount(discountId)
 
 Delete a Shipping Discount
 
@@ -71,7 +71,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.ShippingDiscountsApi();
 let discountId = "discountId_example"; // String | discount_id
-apiInstance.deleteDiscountUsingDELETE3(discountId).then(() => {
+apiInstance.deleteShippingDiscount(discountId).then(() => {
   console.log('API called successfully.');
 }, (error) => {
   console.error(error);
@@ -100,9 +100,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## getDiscountUsingGET3
+## getShippingDiscount
 
-> ShippingDiscount getDiscountUsingGET3(discountId)
+> ShippingDiscount getShippingDiscount(discountId)
 
 Retrieve a Shipping Discount
 
@@ -115,7 +115,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.ShippingDiscountsApi();
 let discountId = "discountId_example"; // String | discount_id
-apiInstance.getDiscountUsingGET3(discountId).then((data) => {
+apiInstance.getShippingDiscount(discountId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -144,9 +144,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## listDiscountsUsingGET1
+## listShippingDiscounts
 
-> ListShippingDiscountsResponse listDiscountsUsingGET1(opts)
+> ListShippingDiscountsResponse listShippingDiscounts(opts)
 
 List all Shipping Discounts
 
@@ -160,11 +160,11 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 let apiInstance = new KeapCoreServiceV2Sdk.ShippingDiscountsApi();
 let opts = {
   'filter': "filter_example", // String | Filter to apply, allowed fields are: - (DiscountType) `discount_type`: AMOUNT or PERCENT - (Double) `discount_value`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=discount_type%3D%3DAMOUNT` - `filter=discount_value%3D%3D4.5` - `filter=discount_type%3D%3DAMOUNT%3Bdiscount_value%3D%3D4.5` 
-  'orderBy': "orderBy_example", // String | Attribute and direction to order items. One of the following fields: - `discount_type` - `discount_value` - `id`  One of the following directions: - `asc` - `desc`
+  'orderBy': "orderBy_example", // String | Attribute and direction to order items. One of the following fields: - `discount_type` - `discount_value` - `id` - `name`  One of the following directions: - `asc` - `desc`
   'pageSize': 0, // Number | Total number of items to return per page
   'pageToken': "pageToken_example" // String | Page token
 };
-apiInstance.listDiscountsUsingGET1(opts).then((data) => {
+apiInstance.listShippingDiscounts(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -178,7 +178,7 @@ apiInstance.listDiscountsUsingGET1(opts).then((data) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **filter** | **String**| Filter to apply, allowed fields are: - (DiscountType) &#x60;discount_type&#x60;: AMOUNT or PERCENT - (Double) &#x60;discount_value&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT&#x60; - &#x60;filter&#x3D;discount_value%3D%3D4.5&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT%3Bdiscount_value%3D%3D4.5&#x60;  | [optional] 
- **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] 
+ **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60; - &#x60;name&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] 
  **pageSize** | **Number**| Total number of items to return per page | [optional] 
  **pageToken** | **String**| Page token | [optional] 
 
@@ -196,9 +196,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## updateDiscountUsingPATCH3
+## updateShippingDiscount
 
-> ShippingDiscount updateDiscountUsingPATCH3(discountId, updateShippingDiscountRequest, opts)
+> ShippingDiscount updateShippingDiscount(discountId, updateShippingDiscountRequest, opts)
 
 Update a Shipping Discount
 
@@ -215,7 +215,7 @@ let updateShippingDiscountRequest = new KeapCoreServiceV2Sdk.UpdateShippingDisco
 let opts = {
   'updateMask': ["null"] // [String] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
-apiInstance.updateDiscountUsingPATCH3(discountId, updateShippingDiscountRequest, opts).then((data) => {
+apiInstance.updateShippingDiscount(discountId, updateShippingDiscountRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);

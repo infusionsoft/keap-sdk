@@ -4,13 +4,13 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createPaymentMethodConfigUsingPOST**](PaymentMethodConfigsApi.md#createPaymentMethodConfigUsingPOST) | **POST** /v2/paymentMethodConfigs | Create Payment Method Configuration
+[**createPaymentMethodConfig**](PaymentMethodConfigsApi.md#createPaymentMethodConfig) | **POST** /v2/paymentMethodConfigs | Create Payment Method Configuration
 
 
 
-## createPaymentMethodConfigUsingPOST
+## createPaymentMethodConfig
 
-> PaymentMethodConfig createPaymentMethodConfigUsingPOST(createPaymentMethodConfigRequest)
+> PaymentMethodConfig createPaymentMethodConfig(createPaymentMethodConfigRequest)
 
 Create Payment Method Configuration
 
@@ -23,7 +23,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.PaymentMethodConfigsApi();
 let createPaymentMethodConfigRequest = new KeapCoreServiceV2Sdk.CreatePaymentMethodConfigRequest(); // CreatePaymentMethodConfigRequest | request
-apiInstance.createPaymentMethodConfigUsingPOST(createPaymentMethodConfigRequest).then((data) => {
+apiInstance.createPaymentMethodConfig(createPaymentMethodConfigRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);

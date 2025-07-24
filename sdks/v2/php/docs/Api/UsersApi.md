@@ -4,13 +4,13 @@ All URIs are relative to https://api.keap.com/crm/rest, except if the operation 
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**listPaginatedUsersUsingGET()**](UsersApi.md#listPaginatedUsersUsingGET) | **GET** /v2/users | List Users |
+| [**listPaginatedUsers()**](UsersApi.md#listPaginatedUsers) | **GET** /v2/users | List Users |
 
 
-## `listPaginatedUsersUsingGET()`
+## `listPaginatedUsers()`
 
 ```php
-listPaginatedUsersUsingGET($filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListUsersPaginatedResponse
+listPaginatedUsers($filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListUsersPaginatedResponse
 ```
 
 List Users
@@ -31,14 +31,14 @@ $apiInstance = new Keap\Core\V2\Api\UsersApi(
 );
 $filter = 'filter_example'; // string | Filter to apply, allowed fields are: - (String) `email` - (String) `given_name` - (Boolean) `include_inactive` - (Boolean) `include_partners` - (Set[String]) `user_ids`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=given_name%3D%3DMary` - `filter=user_ids%3D%3D123%3Bgiven_name%3D%3DSmith`
 $order_by = 'order_by_example'; // string | Attribute and direction to order items. One of the following fields: - `date_created` - `email`  One of the following directions: - `asc` - `desc`
-$page_size = 0; // int | Total number of items to return per page
+$page_size = 10; // int | Total number of items to return per page
 $page_token = 'page_token_example'; // string | Page token
 
 try {
-    $result = $apiInstance->listPaginatedUsersUsingGET($filter, $order_by, $page_size, $page_token);
+    $result = $apiInstance->listPaginatedUsers($filter, $order_by, $page_size, $page_token);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling UsersApi->listPaginatedUsersUsingGET: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling UsersApi->listPaginatedUsers: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

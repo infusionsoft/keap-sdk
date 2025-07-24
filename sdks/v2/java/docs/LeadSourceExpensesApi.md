@@ -4,22 +4,22 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createLeadSourceExpenseUsingPOST**](LeadSourceExpensesApi.md#createLeadSourceExpenseUsingPOST) | **POST** /v2/leadSources/{lead_source_id}/expenses | Create a Lead Source Expense |
-| [**createLeadSourceExpenseUsingPOSTWithHttpInfo**](LeadSourceExpensesApi.md#createLeadSourceExpenseUsingPOSTWithHttpInfo) | **POST** /v2/leadSources/{lead_source_id}/expenses | Create a Lead Source Expense |
-| [**deleteLeadSourceUsingDELETE1**](LeadSourceExpensesApi.md#deleteLeadSourceUsingDELETE1) | **DELETE** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Delete a lead source expense |
-| [**deleteLeadSourceUsingDELETE1WithHttpInfo**](LeadSourceExpensesApi.md#deleteLeadSourceUsingDELETE1WithHttpInfo) | **DELETE** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Delete a lead source expense |
-| [**getLeadSourceExpenseUsingGET**](LeadSourceExpensesApi.md#getLeadSourceExpenseUsingGET) | **GET** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Retrieve a Lead Source Expense |
-| [**getLeadSourceExpenseUsingGETWithHttpInfo**](LeadSourceExpensesApi.md#getLeadSourceExpenseUsingGETWithHttpInfo) | **GET** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Retrieve a Lead Source Expense |
-| [**listLeadSourceExpensesUsingGET**](LeadSourceExpensesApi.md#listLeadSourceExpensesUsingGET) | **GET** /v2/leadSources/{lead_source_id}/expenses | List Lead Source Expenses |
-| [**listLeadSourceExpensesUsingGETWithHttpInfo**](LeadSourceExpensesApi.md#listLeadSourceExpensesUsingGETWithHttpInfo) | **GET** /v2/leadSources/{lead_source_id}/expenses | List Lead Source Expenses |
-| [**updateLeadSourceExpenseUsingPATCH**](LeadSourceExpensesApi.md#updateLeadSourceExpenseUsingPATCH) | **PATCH** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Update a Lead Source Expense |
-| [**updateLeadSourceExpenseUsingPATCHWithHttpInfo**](LeadSourceExpensesApi.md#updateLeadSourceExpenseUsingPATCHWithHttpInfo) | **PATCH** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Update a Lead Source Expense |
+| [**createLeadSourceExpense**](LeadSourceExpensesApi.md#createLeadSourceExpense) | **POST** /v2/leadSources/{lead_source_id}/expenses | Create a Lead Source Expense |
+| [**createLeadSourceExpenseWithHttpInfo**](LeadSourceExpensesApi.md#createLeadSourceExpenseWithHttpInfo) | **POST** /v2/leadSources/{lead_source_id}/expenses | Create a Lead Source Expense |
+| [**deleteLeadSourceExpense**](LeadSourceExpensesApi.md#deleteLeadSourceExpense) | **DELETE** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Delete a lead source expense |
+| [**deleteLeadSourceExpenseWithHttpInfo**](LeadSourceExpensesApi.md#deleteLeadSourceExpenseWithHttpInfo) | **DELETE** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Delete a lead source expense |
+| [**getLeadSourceExpense**](LeadSourceExpensesApi.md#getLeadSourceExpense) | **GET** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Retrieve a Lead Source Expense |
+| [**getLeadSourceExpenseWithHttpInfo**](LeadSourceExpensesApi.md#getLeadSourceExpenseWithHttpInfo) | **GET** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Retrieve a Lead Source Expense |
+| [**listLeadSourceExpenses**](LeadSourceExpensesApi.md#listLeadSourceExpenses) | **GET** /v2/leadSources/{lead_source_id}/expenses | List Lead Source Expenses |
+| [**listLeadSourceExpensesWithHttpInfo**](LeadSourceExpensesApi.md#listLeadSourceExpensesWithHttpInfo) | **GET** /v2/leadSources/{lead_source_id}/expenses | List Lead Source Expenses |
+| [**updateLeadSourceExpense**](LeadSourceExpensesApi.md#updateLeadSourceExpense) | **PATCH** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Update a Lead Source Expense |
+| [**updateLeadSourceExpenseWithHttpInfo**](LeadSourceExpensesApi.md#updateLeadSourceExpenseWithHttpInfo) | **PATCH** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Update a Lead Source Expense |
 
 
 
-## createLeadSourceExpenseUsingPOST
+## createLeadSourceExpense
 
-> LeadSourceExpense createLeadSourceExpenseUsingPOST(leadSourceId, createLeadSourceExpenseRequest)
+> LeadSourceExpense createLeadSourceExpense(leadSourceId, createLeadSourceExpenseRequest)
 
 Create a Lead Source Expense
 
@@ -44,10 +44,10 @@ public class Example {
         String leadSourceId = "leadSourceId_example"; // String | The ID of the lead source this expense belongs to
         CreateLeadSourceExpenseRequest createLeadSourceExpenseRequest = new CreateLeadSourceExpenseRequest(); // CreateLeadSourceExpenseRequest | The request object to create a new lead source expense
         try {
-            LeadSourceExpense result = apiInstance.createLeadSourceExpenseUsingPOST(leadSourceId, createLeadSourceExpenseRequest);
+            LeadSourceExpense result = apiInstance.createLeadSourceExpense(leadSourceId, createLeadSourceExpenseRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling LeadSourceExpensesApi#createLeadSourceExpenseUsingPOST");
+            System.err.println("Exception when calling LeadSourceExpensesApi#createLeadSourceExpense");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -89,9 +89,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## createLeadSourceExpenseUsingPOSTWithHttpInfo
+## createLeadSourceExpenseWithHttpInfo
 
-> ApiResponse<LeadSourceExpense> createLeadSourceExpenseUsingPOST createLeadSourceExpenseUsingPOSTWithHttpInfo(leadSourceId, createLeadSourceExpenseRequest)
+> ApiResponse<LeadSourceExpense> createLeadSourceExpense createLeadSourceExpenseWithHttpInfo(leadSourceId, createLeadSourceExpenseRequest)
 
 Create a Lead Source Expense
 
@@ -117,12 +117,12 @@ public class Example {
         String leadSourceId = "leadSourceId_example"; // String | The ID of the lead source this expense belongs to
         CreateLeadSourceExpenseRequest createLeadSourceExpenseRequest = new CreateLeadSourceExpenseRequest(); // CreateLeadSourceExpenseRequest | The request object to create a new lead source expense
         try {
-            ApiResponse<LeadSourceExpense> response = apiInstance.createLeadSourceExpenseUsingPOSTWithHttpInfo(leadSourceId, createLeadSourceExpenseRequest);
+            ApiResponse<LeadSourceExpense> response = apiInstance.createLeadSourceExpenseWithHttpInfo(leadSourceId, createLeadSourceExpenseRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling LeadSourceExpensesApi#createLeadSourceExpenseUsingPOST");
+            System.err.println("Exception when calling LeadSourceExpensesApi#createLeadSourceExpense");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -165,9 +165,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## deleteLeadSourceUsingDELETE1
+## deleteLeadSourceExpense
 
-> void deleteLeadSourceUsingDELETE1(leadSourceExpenseId, leadSourceId)
+> void deleteLeadSourceExpense(leadSourceExpenseId, leadSourceId)
 
 Delete a lead source expense
 
@@ -192,9 +192,9 @@ public class Example {
         String leadSourceExpenseId = "leadSourceExpenseId_example"; // String | The ID of a lead source expense
         String leadSourceId = "leadSourceId_example"; // String | The ID of the lead source this expense belongs to
         try {
-            apiInstance.deleteLeadSourceUsingDELETE1(leadSourceExpenseId, leadSourceId);
+            apiInstance.deleteLeadSourceExpense(leadSourceExpenseId, leadSourceId);
         } catch (ApiException e) {
-            System.err.println("Exception when calling LeadSourceExpensesApi#deleteLeadSourceUsingDELETE1");
+            System.err.println("Exception when calling LeadSourceExpensesApi#deleteLeadSourceExpense");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -235,9 +235,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## deleteLeadSourceUsingDELETE1WithHttpInfo
+## deleteLeadSourceExpenseWithHttpInfo
 
-> ApiResponse<Void> deleteLeadSourceUsingDELETE1 deleteLeadSourceUsingDELETE1WithHttpInfo(leadSourceExpenseId, leadSourceId)
+> ApiResponse<Void> deleteLeadSourceExpense deleteLeadSourceExpenseWithHttpInfo(leadSourceExpenseId, leadSourceId)
 
 Delete a lead source expense
 
@@ -263,11 +263,11 @@ public class Example {
         String leadSourceExpenseId = "leadSourceExpenseId_example"; // String | The ID of a lead source expense
         String leadSourceId = "leadSourceId_example"; // String | The ID of the lead source this expense belongs to
         try {
-            ApiResponse<Void> response = apiInstance.deleteLeadSourceUsingDELETE1WithHttpInfo(leadSourceExpenseId, leadSourceId);
+            ApiResponse<Void> response = apiInstance.deleteLeadSourceExpenseWithHttpInfo(leadSourceExpenseId, leadSourceId);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
-            System.err.println("Exception when calling LeadSourceExpensesApi#deleteLeadSourceUsingDELETE1");
+            System.err.println("Exception when calling LeadSourceExpensesApi#deleteLeadSourceExpense");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -309,9 +309,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## getLeadSourceExpenseUsingGET
+## getLeadSourceExpense
 
-> LeadSourceExpense getLeadSourceExpenseUsingGET(leadSourceExpenseId, leadSourceId)
+> LeadSourceExpense getLeadSourceExpense(leadSourceExpenseId, leadSourceId)
 
 Retrieve a Lead Source Expense
 
@@ -336,10 +336,10 @@ public class Example {
         String leadSourceExpenseId = "leadSourceExpenseId_example"; // String | The ID of a lead source expense
         String leadSourceId = "leadSourceId_example"; // String | The ID of the lead source this expense belongs to
         try {
-            LeadSourceExpense result = apiInstance.getLeadSourceExpenseUsingGET(leadSourceExpenseId, leadSourceId);
+            LeadSourceExpense result = apiInstance.getLeadSourceExpense(leadSourceExpenseId, leadSourceId);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling LeadSourceExpensesApi#getLeadSourceExpenseUsingGET");
+            System.err.println("Exception when calling LeadSourceExpensesApi#getLeadSourceExpense");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -380,9 +380,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## getLeadSourceExpenseUsingGETWithHttpInfo
+## getLeadSourceExpenseWithHttpInfo
 
-> ApiResponse<LeadSourceExpense> getLeadSourceExpenseUsingGET getLeadSourceExpenseUsingGETWithHttpInfo(leadSourceExpenseId, leadSourceId)
+> ApiResponse<LeadSourceExpense> getLeadSourceExpense getLeadSourceExpenseWithHttpInfo(leadSourceExpenseId, leadSourceId)
 
 Retrieve a Lead Source Expense
 
@@ -408,12 +408,12 @@ public class Example {
         String leadSourceExpenseId = "leadSourceExpenseId_example"; // String | The ID of a lead source expense
         String leadSourceId = "leadSourceId_example"; // String | The ID of the lead source this expense belongs to
         try {
-            ApiResponse<LeadSourceExpense> response = apiInstance.getLeadSourceExpenseUsingGETWithHttpInfo(leadSourceExpenseId, leadSourceId);
+            ApiResponse<LeadSourceExpense> response = apiInstance.getLeadSourceExpenseWithHttpInfo(leadSourceExpenseId, leadSourceId);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling LeadSourceExpensesApi#getLeadSourceExpenseUsingGET");
+            System.err.println("Exception when calling LeadSourceExpensesApi#getLeadSourceExpense");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -455,9 +455,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## listLeadSourceExpensesUsingGET
+## listLeadSourceExpenses
 
-> ListLeadSourceExpensesResponse listLeadSourceExpensesUsingGET(leadSourceId, filter, orderBy, pageSize, pageToken)
+> ListLeadSourceExpensesResponse listLeadSourceExpenses(leadSourceId, filter, orderBy, pageSize, pageToken)
 
 List Lead Source Expenses
 
@@ -485,10 +485,10 @@ public class Example {
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
         try {
-            ListLeadSourceExpensesResponse result = apiInstance.listLeadSourceExpensesUsingGET(leadSourceId, filter, orderBy, pageSize, pageToken);
+            ListLeadSourceExpensesResponse result = apiInstance.listLeadSourceExpenses(leadSourceId, filter, orderBy, pageSize, pageToken);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling LeadSourceExpensesApi#listLeadSourceExpensesUsingGET");
+            System.err.println("Exception when calling LeadSourceExpensesApi#listLeadSourceExpenses");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -533,9 +533,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## listLeadSourceExpensesUsingGETWithHttpInfo
+## listLeadSourceExpensesWithHttpInfo
 
-> ApiResponse<ListLeadSourceExpensesResponse> listLeadSourceExpensesUsingGET listLeadSourceExpensesUsingGETWithHttpInfo(leadSourceId, filter, orderBy, pageSize, pageToken)
+> ApiResponse<ListLeadSourceExpensesResponse> listLeadSourceExpenses listLeadSourceExpensesWithHttpInfo(leadSourceId, filter, orderBy, pageSize, pageToken)
 
 List Lead Source Expenses
 
@@ -564,12 +564,12 @@ public class Example {
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
         try {
-            ApiResponse<ListLeadSourceExpensesResponse> response = apiInstance.listLeadSourceExpensesUsingGETWithHttpInfo(leadSourceId, filter, orderBy, pageSize, pageToken);
+            ApiResponse<ListLeadSourceExpensesResponse> response = apiInstance.listLeadSourceExpensesWithHttpInfo(leadSourceId, filter, orderBy, pageSize, pageToken);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling LeadSourceExpensesApi#listLeadSourceExpensesUsingGET");
+            System.err.println("Exception when calling LeadSourceExpensesApi#listLeadSourceExpenses");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -615,9 +615,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## updateLeadSourceExpenseUsingPATCH
+## updateLeadSourceExpense
 
-> LeadSourceExpense updateLeadSourceExpenseUsingPATCH(leadSourceExpenseId, leadSourceId, updateLeadSourceExpenseRequest, updateMask)
+> LeadSourceExpense updateLeadSourceExpense(leadSourceExpenseId, leadSourceId, updateLeadSourceExpenseRequest, updateMask)
 
 Update a Lead Source Expense
 
@@ -644,10 +644,10 @@ public class Example {
         UpdateLeadSourceExpenseRequest updateLeadSourceExpenseRequest = new UpdateLeadSourceExpenseRequest(); // UpdateLeadSourceExpenseRequest | The request object to update a lead source expense
         List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
-            LeadSourceExpense result = apiInstance.updateLeadSourceExpenseUsingPATCH(leadSourceExpenseId, leadSourceId, updateLeadSourceExpenseRequest, updateMask);
+            LeadSourceExpense result = apiInstance.updateLeadSourceExpense(leadSourceExpenseId, leadSourceId, updateLeadSourceExpenseRequest, updateMask);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling LeadSourceExpensesApi#updateLeadSourceExpenseUsingPATCH");
+            System.err.println("Exception when calling LeadSourceExpensesApi#updateLeadSourceExpense");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -691,9 +691,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## updateLeadSourceExpenseUsingPATCHWithHttpInfo
+## updateLeadSourceExpenseWithHttpInfo
 
-> ApiResponse<LeadSourceExpense> updateLeadSourceExpenseUsingPATCH updateLeadSourceExpenseUsingPATCHWithHttpInfo(leadSourceExpenseId, leadSourceId, updateLeadSourceExpenseRequest, updateMask)
+> ApiResponse<LeadSourceExpense> updateLeadSourceExpense updateLeadSourceExpenseWithHttpInfo(leadSourceExpenseId, leadSourceId, updateLeadSourceExpenseRequest, updateMask)
 
 Update a Lead Source Expense
 
@@ -721,12 +721,12 @@ public class Example {
         UpdateLeadSourceExpenseRequest updateLeadSourceExpenseRequest = new UpdateLeadSourceExpenseRequest(); // UpdateLeadSourceExpenseRequest | The request object to update a lead source expense
         List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
-            ApiResponse<LeadSourceExpense> response = apiInstance.updateLeadSourceExpenseUsingPATCHWithHttpInfo(leadSourceExpenseId, leadSourceId, updateLeadSourceExpenseRequest, updateMask);
+            ApiResponse<LeadSourceExpense> response = apiInstance.updateLeadSourceExpenseWithHttpInfo(leadSourceExpenseId, leadSourceId, updateLeadSourceExpenseRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling LeadSourceExpensesApi#updateLeadSourceExpenseUsingPATCH");
+            System.err.println("Exception when calling LeadSourceExpensesApi#updateLeadSourceExpense");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());

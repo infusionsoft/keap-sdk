@@ -4,15 +4,15 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_company_using_post1**](CompanyApi.md#create_company_using_post1) | **POST** /v2/companies | Create a Company
-[**delete_company_using_delete**](CompanyApi.md#delete_company_using_delete) | **DELETE** /v2/companies/{company_id} | Delete a Company
-[**get_company_using_get1**](CompanyApi.md#get_company_using_get1) | **GET** /v2/companies/{company_id} | Retrieve a Company
-[**list_companies_using_get1**](CompanyApi.md#list_companies_using_get1) | **GET** /v2/companies | List Companies
-[**update_company_using_patch1**](CompanyApi.md#update_company_using_patch1) | **PATCH** /v2/companies/{company_id} | Update a Company
+[**create_company**](CompanyApi.md#create_company) | **POST** /v2/companies | Create a Company
+[**delete_company**](CompanyApi.md#delete_company) | **DELETE** /v2/companies/{company_id} | Delete a Company
+[**get_company**](CompanyApi.md#get_company) | **GET** /v2/companies/{company_id} | Retrieve a Company
+[**list_companies**](CompanyApi.md#list_companies) | **GET** /v2/companies | List Companies
+[**update_company**](CompanyApi.md#update_company) | **PATCH** /v2/companies/{company_id} | Update a Company
 
 
-# **create_company_using_post1**
-> Company create_company_using_post1(create_company_request=create_company_request)
+# **create_company**
+> Company create_company(create_company_request=create_company_request)
 
 Create a Company
 
@@ -42,11 +42,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Create a Company
-        api_response = api_instance.create_company_using_post1(create_company_request=create_company_request)
-        print("The response of CompanyApi->create_company_using_post1:\n")
+        api_response = api_instance.create_company(create_company_request=create_company_request)
+        print("The response of CompanyApi->create_company:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling CompanyApi->create_company_using_post1: %s\n" % e)
+        print("Exception when calling CompanyApi->create_company: %s\n" % e)
 ```
 
 
@@ -81,8 +81,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **delete_company_using_delete**
-> delete_company_using_delete(company_id)
+# **delete_company**
+> delete_company(company_id)
 
 Delete a Company
 
@@ -110,9 +110,9 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Delete a Company
-        api_instance.delete_company_using_delete(company_id)
+        api_instance.delete_company(company_id)
     except Exception as e:
-        print("Exception when calling CompanyApi->delete_company_using_delete: %s\n" % e)
+        print("Exception when calling CompanyApi->delete_company: %s\n" % e)
 ```
 
 
@@ -148,8 +148,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_company_using_get1**
-> Company get_company_using_get1(company_id, fields=fields)
+# **get_company**
+> Company get_company(company_id, fields=fields)
 
 Retrieve a Company
 
@@ -179,11 +179,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieve a Company
-        api_response = api_instance.get_company_using_get1(company_id, fields=fields)
-        print("The response of CompanyApi->get_company_using_get1:\n")
+        api_response = api_instance.get_company(company_id, fields=fields)
+        print("The response of CompanyApi->get_company:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling CompanyApi->get_company_using_get1: %s\n" % e)
+        print("Exception when calling CompanyApi->get_company: %s\n" % e)
 ```
 
 
@@ -220,12 +220,12 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **list_companies_using_get1**
-> ListCompaniesResponse list_companies_using_get1(fields=fields, filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
+# **list_companies**
+> ListCompaniesResponse list_companies(fields=fields, filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
 
 List Companies
 
-Retrieves a list of all Companies
+Retrieves a list of all Companies.<br/><br/>If the feature flag is <b>enabled</b>, the endpoint returns the <span style='color:red'>legacy</span> non-paginated list of all companies.<br/>If the flag is <b>disabled</b>, it returns a paginated list using the v2-compliant implementation.<br/><br/><span style='color:red'>Deprecated as of v2</span>: The legacy behavior will be removed after the transition period.
 
 ### Example
 
@@ -246,19 +246,19 @@ configuration = keap_core_v2_client.Configuration(
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.CompanyApi(api_client)
-    fields = ['fields_example'] # List[str] | Comma-delimited list of Company properties to include in the response. (Fields such as `notes`, `fax_number` and `custom_fields` aren't included, by default.) (optional)
-    filter = 'filter_example' # str | Search filter to apply to results (optional)
-    order_by = 'order_by_example' # str | Attribute and direction to order items by. E.g. `given_name desc` (optional)
+    fields = ['fields_example'] # List[str] | Comma-delimited list of Company properties to include in the response. (Fields such as `notes`, `fax_number`, `email_address`, `phone_number`, `update_time`, `create_time` and `custom_fields` aren't included, by default.) (optional)
+    filter = 'filter_example' # str | Filter to apply, allowed fields are: - (String) `company_name` - (String) `email` - (String) `since_time` - (String) `until_time` You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=company_name%3D%3DCompany` - `filter=email%3D%3Dtest@gmail.com` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;`  (optional)
+    order_by = 'order_by_example' # str | Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `name` - `email`  One of the following directions: - `asc` - `desc` (optional)
     page_size = 0 # int | Total number of items to return per page (optional)
     page_token = 'page_token_example' # str | Page token (optional)
 
     try:
         # List Companies
-        api_response = api_instance.list_companies_using_get1(fields=fields, filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
-        print("The response of CompanyApi->list_companies_using_get1:\n")
+        api_response = api_instance.list_companies(fields=fields, filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
+        print("The response of CompanyApi->list_companies:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling CompanyApi->list_companies_using_get1: %s\n" % e)
+        print("Exception when calling CompanyApi->list_companies: %s\n" % e)
 ```
 
 
@@ -267,9 +267,9 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **fields** | [**List[str]**](str.md)| Comma-delimited list of Company properties to include in the response. (Fields such as &#x60;notes&#x60;, &#x60;fax_number&#x60; and &#x60;custom_fields&#x60; aren&#39;t included, by default.) | [optional] 
- **filter** | **str**| Search filter to apply to results | [optional] 
- **order_by** | **str**| Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60; | [optional] 
+ **fields** | [**List[str]**](str.md)| Comma-delimited list of Company properties to include in the response. (Fields such as &#x60;notes&#x60;, &#x60;fax_number&#x60;, &#x60;email_address&#x60;, &#x60;phone_number&#x60;, &#x60;update_time&#x60;, &#x60;create_time&#x60; and &#x60;custom_fields&#x60; aren&#39;t included, by default.) | [optional] 
+ **filter** | **str**| Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  | [optional] 
+ **order_by** | **str**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;name&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] 
  **page_size** | **int**| Total number of items to return per page | [optional] 
  **page_token** | **str**| Page token | [optional] 
 
@@ -298,8 +298,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **update_company_using_patch1**
-> Company update_company_using_patch1(company_id, update_mask=update_mask, update_company_request=update_company_request)
+# **update_company**
+> Company update_company(company_id, update_mask=update_mask, update_company_request=update_company_request)
 
 Update a Company
 
@@ -331,11 +331,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Update a Company
-        api_response = api_instance.update_company_using_patch1(company_id, update_mask=update_mask, update_company_request=update_company_request)
-        print("The response of CompanyApi->update_company_using_patch1:\n")
+        api_response = api_instance.update_company(company_id, update_mask=update_mask, update_company_request=update_company_request)
+        print("The response of CompanyApi->update_company:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling CompanyApi->update_company_using_patch1: %s\n" % e)
+        print("Exception when calling CompanyApi->update_company: %s\n" % e)
 ```
 
 

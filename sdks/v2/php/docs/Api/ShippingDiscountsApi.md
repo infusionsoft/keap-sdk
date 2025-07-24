@@ -4,17 +4,17 @@ All URIs are relative to https://api.keap.com/crm/rest, except if the operation 
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createDiscountUsingPOST3()**](ShippingDiscountsApi.md#createDiscountUsingPOST3) | **POST** /v2/discounts/shipping | Create a Shipping Discount |
-| [**deleteDiscountUsingDELETE3()**](ShippingDiscountsApi.md#deleteDiscountUsingDELETE3) | **DELETE** /v2/discounts/shipping/{discount_id} | Delete a Shipping Discount |
-| [**getDiscountUsingGET3()**](ShippingDiscountsApi.md#getDiscountUsingGET3) | **GET** /v2/discounts/shipping/{discount_id} | Retrieve a Shipping Discount |
-| [**listDiscountsUsingGET1()**](ShippingDiscountsApi.md#listDiscountsUsingGET1) | **GET** /v2/discounts/shipping | List all Shipping Discounts |
-| [**updateDiscountUsingPATCH3()**](ShippingDiscountsApi.md#updateDiscountUsingPATCH3) | **PATCH** /v2/discounts/shipping/{discount_id} | Update a Shipping Discount |
+| [**createShippingDiscount()**](ShippingDiscountsApi.md#createShippingDiscount) | **POST** /v2/discounts/shipping | Create a Shipping Discount |
+| [**deleteShippingDiscount()**](ShippingDiscountsApi.md#deleteShippingDiscount) | **DELETE** /v2/discounts/shipping/{discount_id} | Delete a Shipping Discount |
+| [**getShippingDiscount()**](ShippingDiscountsApi.md#getShippingDiscount) | **GET** /v2/discounts/shipping/{discount_id} | Retrieve a Shipping Discount |
+| [**listShippingDiscounts()**](ShippingDiscountsApi.md#listShippingDiscounts) | **GET** /v2/discounts/shipping | List all Shipping Discounts |
+| [**updateShippingDiscount()**](ShippingDiscountsApi.md#updateShippingDiscount) | **PATCH** /v2/discounts/shipping/{discount_id} | Update a Shipping Discount |
 
 
-## `createDiscountUsingPOST3()`
+## `createShippingDiscount()`
 
 ```php
-createDiscountUsingPOST3($create_shipping_discount_request): \Keap\Core\V2\Model\ShippingDiscount
+createShippingDiscount($create_shipping_discount_request): \Keap\Core\V2\Model\ShippingDiscount
 ```
 
 Create a Shipping Discount
@@ -36,10 +36,10 @@ $apiInstance = new Keap\Core\V2\Api\ShippingDiscountsApi(
 $create_shipping_discount_request = new \Keap\Core\V2\Model\CreateShippingDiscountRequest(); // \Keap\Core\V2\Model\CreateShippingDiscountRequest | request
 
 try {
-    $result = $apiInstance->createDiscountUsingPOST3($create_shipping_discount_request);
+    $result = $apiInstance->createShippingDiscount($create_shipping_discount_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ShippingDiscountsApi->createDiscountUsingPOST3: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ShippingDiscountsApi->createShippingDiscount: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -66,10 +66,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `deleteDiscountUsingDELETE3()`
+## `deleteShippingDiscount()`
 
 ```php
-deleteDiscountUsingDELETE3($discount_id)
+deleteShippingDiscount($discount_id)
 ```
 
 Delete a Shipping Discount
@@ -91,9 +91,9 @@ $apiInstance = new Keap\Core\V2\Api\ShippingDiscountsApi(
 $discount_id = 'discount_id_example'; // string | discount_id
 
 try {
-    $apiInstance->deleteDiscountUsingDELETE3($discount_id);
+    $apiInstance->deleteShippingDiscount($discount_id);
 } catch (Exception $e) {
-    echo 'Exception when calling ShippingDiscountsApi->deleteDiscountUsingDELETE3: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ShippingDiscountsApi->deleteShippingDiscount: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -120,10 +120,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getDiscountUsingGET3()`
+## `getShippingDiscount()`
 
 ```php
-getDiscountUsingGET3($discount_id): \Keap\Core\V2\Model\ShippingDiscount
+getShippingDiscount($discount_id): \Keap\Core\V2\Model\ShippingDiscount
 ```
 
 Retrieve a Shipping Discount
@@ -145,10 +145,10 @@ $apiInstance = new Keap\Core\V2\Api\ShippingDiscountsApi(
 $discount_id = 'discount_id_example'; // string | discount_id
 
 try {
-    $result = $apiInstance->getDiscountUsingGET3($discount_id);
+    $result = $apiInstance->getShippingDiscount($discount_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ShippingDiscountsApi->getDiscountUsingGET3: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ShippingDiscountsApi->getShippingDiscount: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -175,10 +175,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `listDiscountsUsingGET1()`
+## `listShippingDiscounts()`
 
 ```php
-listDiscountsUsingGET1($filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListShippingDiscountsResponse
+listShippingDiscounts($filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListShippingDiscountsResponse
 ```
 
 List all Shipping Discounts
@@ -198,15 +198,15 @@ $apiInstance = new Keap\Core\V2\Api\ShippingDiscountsApi(
     new GuzzleHttp\Client()
 );
 $filter = 'filter_example'; // string | Filter to apply, allowed fields are: - (DiscountType) `discount_type`: AMOUNT or PERCENT - (Double) `discount_value`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=discount_type%3D%3DAMOUNT` - `filter=discount_value%3D%3D4.5` - `filter=discount_type%3D%3DAMOUNT%3Bdiscount_value%3D%3D4.5`
-$order_by = 'order_by_example'; // string | Attribute and direction to order items. One of the following fields: - `discount_type` - `discount_value` - `id`  One of the following directions: - `asc` - `desc`
+$order_by = 'order_by_example'; // string | Attribute and direction to order items. One of the following fields: - `discount_type` - `discount_value` - `id` - `name`  One of the following directions: - `asc` - `desc`
 $page_size = 0; // int | Total number of items to return per page
 $page_token = 'page_token_example'; // string | Page token
 
 try {
-    $result = $apiInstance->listDiscountsUsingGET1($filter, $order_by, $page_size, $page_token);
+    $result = $apiInstance->listShippingDiscounts($filter, $order_by, $page_size, $page_token);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ShippingDiscountsApi->listDiscountsUsingGET1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ShippingDiscountsApi->listShippingDiscounts: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -215,7 +215,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **filter** | **string**| Filter to apply, allowed fields are: - (DiscountType) &#x60;discount_type&#x60;: AMOUNT or PERCENT - (Double) &#x60;discount_value&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT&#x60; - &#x60;filter&#x3D;discount_value%3D%3D4.5&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT%3Bdiscount_value%3D%3D4.5&#x60; | [optional] |
-| **order_by** | **string**| Attribute and direction to order items. One of the following fields: - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
+| **order_by** | **string**| Attribute and direction to order items. One of the following fields: - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60; - &#x60;name&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **page_size** | **int**| Total number of items to return per page | [optional] |
 | **page_token** | **string**| Page token | [optional] |
 
@@ -236,10 +236,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `updateDiscountUsingPATCH3()`
+## `updateShippingDiscount()`
 
 ```php
-updateDiscountUsingPATCH3($discount_id, $update_shipping_discount_request, $update_mask): \Keap\Core\V2\Model\ShippingDiscount
+updateShippingDiscount($discount_id, $update_shipping_discount_request, $update_mask): \Keap\Core\V2\Model\ShippingDiscount
 ```
 
 Update a Shipping Discount
@@ -263,10 +263,10 @@ $update_shipping_discount_request = new \Keap\Core\V2\Model\UpdateShippingDiscou
 $update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
-    $result = $apiInstance->updateDiscountUsingPATCH3($discount_id, $update_shipping_discount_request, $update_mask);
+    $result = $apiInstance->updateShippingDiscount($discount_id, $update_shipping_discount_request, $update_mask);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ShippingDiscountsApi->updateDiscountUsingPATCH3: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ShippingDiscountsApi->updateShippingDiscount: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

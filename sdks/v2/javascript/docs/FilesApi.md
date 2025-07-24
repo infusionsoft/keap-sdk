@@ -4,18 +4,18 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createFileUsingPOST1**](FilesApi.md#createFileUsingPOST1) | **POST** /v2/files | Create a file
-[**deleteFileUsingDELETE1**](FilesApi.md#deleteFileUsingDELETE1) | **DELETE** /v2/files/{file_id} | Delete a file
-[**getFileDataUsingGET**](FilesApi.md#getFileDataUsingGET) | **GET** /v2/files/{file_id}:data | Retrieve a file&#39;s data
-[**getFileUsingGET1**](FilesApi.md#getFileUsingGET1) | **GET** /v2/files/{file_id} | Retrieve a file
-[**listFilesUsingGET1**](FilesApi.md#listFilesUsingGET1) | **GET** /v2/files | List all files
-[**updateFileUsingPOST**](FilesApi.md#updateFileUsingPOST) | **POST** /v2/files/{file_id} | Update a file
+[**createFile**](FilesApi.md#createFile) | **POST** /v2/files | Create a file
+[**deleteFile**](FilesApi.md#deleteFile) | **DELETE** /v2/files/{file_id} | Delete a file
+[**getFile**](FilesApi.md#getFile) | **GET** /v2/files/{file_id} | Retrieve a file
+[**getFileData**](FilesApi.md#getFileData) | **GET** /v2/files/{file_id}:data | Retrieve a file&#39;s data
+[**listFiles**](FilesApi.md#listFiles) | **GET** /v2/files | List all files
+[**updateFile**](FilesApi.md#updateFile) | **POST** /v2/files/{file_id} | Update a file
 
 
 
-## createFileUsingPOST1
+## createFile
 
-> FileMetadata createFileUsingPOST1(file, fileAssociation, fileName, isPublic, opts)
+> FileMetadata createFile(file, fileAssociation, fileName, isPublic, opts)
 
 Create a file
 
@@ -34,7 +34,7 @@ let isPublic = true; // Boolean | Is public
 let opts = {
   'contactId': "contactId_example" // String | Contact ID
 };
-apiInstance.createFileUsingPOST1(file, fileAssociation, fileName, isPublic, opts).then((data) => {
+apiInstance.createFile(file, fileAssociation, fileName, isPublic, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -67,9 +67,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## deleteFileUsingDELETE1
+## deleteFile
 
-> deleteFileUsingDELETE1(fileId)
+> deleteFile(fileId)
 
 Delete a file
 
@@ -82,7 +82,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.FilesApi();
 let fileId = "fileId_example"; // String | file_id
-apiInstance.deleteFileUsingDELETE1(fileId).then(() => {
+apiInstance.deleteFile(fileId).then(() => {
   console.log('API called successfully.');
 }, (error) => {
   console.error(error);
@@ -111,53 +111,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## getFileDataUsingGET
+## getFile
 
-> Blob getFileDataUsingGET(fileId)
-
-Retrieve a file&#39;s data
-
-Retrieves a file&#39;s data
-
-### Example
-
-```javascript
-import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
-
-let apiInstance = new KeapCoreServiceV2Sdk.FilesApi();
-let fileId = "fileId_example"; // String | file_id
-apiInstance.getFileDataUsingGET(fileId).then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
-  console.error(error);
-});
-
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **fileId** | **String**| file_id | 
-
-### Return type
-
-**Blob**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## getFileUsingGET1
-
-> FileMetadata getFileUsingGET1(fileId)
+> FileMetadata getFile(fileId)
 
 Retrieve a file
 
@@ -170,7 +126,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.FilesApi();
 let fileId = "fileId_example"; // String | file_id
-apiInstance.getFileUsingGET1(fileId).then((data) => {
+apiInstance.getFile(fileId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -199,9 +155,53 @@ No authorization required
 - **Accept**: application/json
 
 
-## listFilesUsingGET1
+## getFileData
 
-> ListFilesResponse listFilesUsingGET1(opts)
+> Blob getFileData(fileId)
+
+Retrieve a file&#39;s data
+
+Retrieves a file&#39;s data
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+
+let apiInstance = new KeapCoreServiceV2Sdk.FilesApi();
+let fileId = "fileId_example"; // String | file_id
+apiInstance.getFileData(fileId).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **fileId** | **String**| file_id | 
+
+### Return type
+
+**Blob**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## listFiles
+
+> ListFilesResponse listFiles(opts)
 
 List all files
 
@@ -219,7 +219,7 @@ let opts = {
   'pageSize': 0, // Number | Total number of items to return per page
   'pageToken': "pageToken_example" // String | Page token
 };
-apiInstance.listFilesUsingGET1(opts).then((data) => {
+apiInstance.listFiles(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -251,9 +251,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## updateFileUsingPOST
+## updateFile
 
-> FileMetadata updateFileUsingPOST(fileId, opts)
+> FileMetadata updateFile(fileId, opts)
 
 Update a file
 
@@ -272,7 +272,7 @@ let opts = {
   'isPublic': true, // Boolean | Is public
   'updateMask': "updateMask_example" // String | Update Mask
 };
-apiInstance.updateFileUsingPOST(fileId, opts).then((data) => {
+apiInstance.updateFile(fileId, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);

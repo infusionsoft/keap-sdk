@@ -23,7 +23,7 @@ class ContactsTest {
         ContactApi contactApi = new ContactApi(apiClient);
 
         Assertions.assertNotNull(contactApi, "contactApi should not be null");
-        ListContactsResponse response = contactApi.listContactsUsingGET1(
+        ListContactsResponse response = contactApi.listContacts(
           null, // List.of("preferred_name","create_time"),
           null,
           null, // "date_created ASC",

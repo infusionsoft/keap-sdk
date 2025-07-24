@@ -32,18 +32,18 @@ export class TagsApiRequestFactory extends BaseAPIRequestFactory {
      * @param tagId tag_id
      * @param applyRemoveTagRequest applyRemoveTagRequest
      */
-    public async applyTagsUsingPOST(tagId: string, applyRemoveTagRequest: ApplyRemoveTagRequest, _options?: Configuration): Promise<RequestContext> {
+    public async applyTags(tagId: string, applyRemoveTagRequest: ApplyRemoveTagRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'tagId' is not null or undefined
         if (tagId === null || tagId === undefined) {
-            throw new RequiredError("TagsApi", "applyTagsUsingPOST", "tagId");
+            throw new RequiredError("TagsApi", "applyTags", "tagId");
         }
 
 
         // verify required parameter 'applyRemoveTagRequest' is not null or undefined
         if (applyRemoveTagRequest === null || applyRemoveTagRequest === undefined) {
-            throw new RequiredError("TagsApi", "applyTagsUsingPOST", "applyRemoveTagRequest");
+            throw new RequiredError("TagsApi", "applyTags", "applyRemoveTagRequest");
         }
 
 
@@ -77,58 +77,16 @@ export class TagsApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Creates a new Tag Category.
-     * Create Tag Category
-     * @param createUpdateTagCategoryRequest request
-     */
-    public async createTagCategoryUsingPOST1(createUpdateTagCategoryRequest: CreateUpdateTagCategoryRequest, _options?: Configuration): Promise<RequestContext> {
-        let _config = _options || this.configuration;
-
-        // verify required parameter 'createUpdateTagCategoryRequest' is not null or undefined
-        if (createUpdateTagCategoryRequest === null || createUpdateTagCategoryRequest === undefined) {
-            throw new RequiredError("TagsApi", "createTagCategoryUsingPOST1", "createUpdateTagCategoryRequest");
-        }
-
-
-        // Path Params
-        const localVarPath = '/v2/tags/categories';
-
-        // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-
-        // Body Params
-        const contentType = ObjectSerializer.getPreferredMediaType([
-            "application/json"
-        ]);
-        requestContext.setHeaderParam("Content-Type", contentType);
-        const serializedBody = ObjectSerializer.stringify(
-            ObjectSerializer.serialize(createUpdateTagCategoryRequest, "CreateUpdateTagCategoryRequest", ""),
-            contentType
-        );
-        requestContext.setBody(serializedBody);
-
-        
-        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-
-        return requestContext;
-    }
-
-    /**
      * Creates a new Tag
      * Create Tag
      * @param createUpdateTagRequest tag
      */
-    public async createTagUsingPOST1(createUpdateTagRequest: CreateUpdateTagRequest, _options?: Configuration): Promise<RequestContext> {
+    public async createTag(createUpdateTagRequest: CreateUpdateTagRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'createUpdateTagRequest' is not null or undefined
         if (createUpdateTagRequest === null || createUpdateTagRequest === undefined) {
-            throw new RequiredError("TagsApi", "createTagUsingPOST1", "createUpdateTagRequest");
+            throw new RequiredError("TagsApi", "createTag", "createUpdateTagRequest");
         }
 
 
@@ -161,27 +119,37 @@ export class TagsApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Deletes the specified Tag Category
-     * Delete Tag Category
-     * @param tagCategoryId tag_category_id
+     * Creates a new Tag Category.
+     * Create Tag Category
+     * @param createUpdateTagCategoryRequest request
      */
-    public async deleteTagCategoryUsingDELETE(tagCategoryId: string, _options?: Configuration): Promise<RequestContext> {
+    public async createTagCategory(createUpdateTagCategoryRequest: CreateUpdateTagCategoryRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
-        // verify required parameter 'tagCategoryId' is not null or undefined
-        if (tagCategoryId === null || tagCategoryId === undefined) {
-            throw new RequiredError("TagsApi", "deleteTagCategoryUsingDELETE", "tagCategoryId");
+        // verify required parameter 'createUpdateTagCategoryRequest' is not null or undefined
+        if (createUpdateTagCategoryRequest === null || createUpdateTagCategoryRequest === undefined) {
+            throw new RequiredError("TagsApi", "createTagCategory", "createUpdateTagCategoryRequest");
         }
 
 
         // Path Params
-        const localVarPath = '/v2/tags/categories/{tag_category_id}'
-            .replace('{' + 'tag_category_id' + '}', encodeURIComponent(String(tagCategoryId)));
+        const localVarPath = '/v2/tags/categories';
 
         // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.DELETE);
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
 
+
+        // Body Params
+        const contentType = ObjectSerializer.getPreferredMediaType([
+            "application/json"
+        ]);
+        requestContext.setHeaderParam("Content-Type", contentType);
+        const serializedBody = ObjectSerializer.stringify(
+            ObjectSerializer.serialize(createUpdateTagCategoryRequest, "CreateUpdateTagCategoryRequest", ""),
+            contentType
+        );
+        requestContext.setBody(serializedBody);
 
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
@@ -197,12 +165,12 @@ export class TagsApiRequestFactory extends BaseAPIRequestFactory {
      * Delete Tag
      * @param tagId tag_id
      */
-    public async deleteTagUsingDELETE(tagId: string, _options?: Configuration): Promise<RequestContext> {
+    public async deleteTag(tagId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'tagId' is not null or undefined
         if (tagId === null || tagId === undefined) {
-            throw new RequiredError("TagsApi", "deleteTagUsingDELETE", "tagId");
+            throw new RequiredError("TagsApi", "deleteTag", "tagId");
         }
 
 
@@ -225,16 +193,48 @@ export class TagsApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Returns information about the specified Tag Category
-     * Retrieve a Tag Category
+     * Deletes the specified Tag Category
+     * Delete Tag Category
      * @param tagCategoryId tag_category_id
      */
-    public async getCategoryUsingGET(tagCategoryId: string, _options?: Configuration): Promise<RequestContext> {
+    public async deleteTagCategory(tagCategoryId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'tagCategoryId' is not null or undefined
         if (tagCategoryId === null || tagCategoryId === undefined) {
-            throw new RequiredError("TagsApi", "getCategoryUsingGET", "tagCategoryId");
+            throw new RequiredError("TagsApi", "deleteTagCategory", "tagCategoryId");
+        }
+
+
+        // Path Params
+        const localVarPath = '/v2/tags/categories/{tag_category_id}'
+            .replace('{' + 'tag_category_id' + '}', encodeURIComponent(String(tagCategoryId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.DELETE);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * Returns information about the specified Tag Category
+     * Retrieve a Tag Category
+     * @param tagCategoryId tag_category_id
+     */
+    public async getCategory(tagCategoryId: string, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'tagCategoryId' is not null or undefined
+        if (tagCategoryId === null || tagCategoryId === undefined) {
+            throw new RequiredError("TagsApi", "getCategory", "tagCategoryId");
         }
 
 
@@ -261,12 +261,12 @@ export class TagsApiRequestFactory extends BaseAPIRequestFactory {
      * Retrieve a Tag
      * @param tagId tag_id
      */
-    public async getTagUsingGET1(tagId: string, _options?: Configuration): Promise<RequestContext> {
+    public async getTag(tagId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'tagId' is not null or undefined
         if (tagId === null || tagId === undefined) {
-            throw new RequiredError("TagsApi", "getTagUsingGET1", "tagId");
+            throw new RequiredError("TagsApi", "getTag", "tagId");
         }
 
 
@@ -292,17 +292,17 @@ export class TagsApiRequestFactory extends BaseAPIRequestFactory {
      * Retrieves a list of Companies that have the given Tag applied. To search for `null` or empty fields use `filter==NONE`
      * List Tagged Companies
      * @param tagId tag_id
-     * @param filter Search filter to apply to results
-     * @param orderBy Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60;
+     * @param filter Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; 
+     * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;name&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param pageSize Total number of items to return per page
      * @param pageToken Page token
      */
-    public async listCompaniesForTagIdUsingGET1(tagId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
+    public async listCompaniesForTagId(tagId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'tagId' is not null or undefined
         if (tagId === null || tagId === undefined) {
-            throw new RequiredError("TagsApi", "listCompaniesForTagIdUsingGET1", "tagId");
+            throw new RequiredError("TagsApi", "listCompaniesForTagId", "tagId");
         }
 
 
@@ -357,12 +357,12 @@ export class TagsApiRequestFactory extends BaseAPIRequestFactory {
      * @param pageSize Total number of items to return per page
      * @param pageToken Page token
      */
-    public async listContactsWithTagIdUsingGET(tagId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
+    public async listContactsWithTagId(tagId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'tagId' is not null or undefined
         if (tagId === null || tagId === undefined) {
-            throw new RequiredError("TagsApi", "listContactsWithTagIdUsingGET", "tagId");
+            throw new RequiredError("TagsApi", "listContactsWithTagId", "tagId");
         }
 
 
@@ -416,7 +416,7 @@ export class TagsApiRequestFactory extends BaseAPIRequestFactory {
      * @param pageSize Total number of items to return per page
      * @param pageToken Page token
      */
-    public async listTagCategoriesUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
+    public async listTagCategories(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
 
@@ -463,12 +463,12 @@ export class TagsApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Retrieves a list of Tags defined in the application To search for `null` or empty fields use `filter==NONE`
      * List Tags
-     * @param filter Search filter to apply to results
-     * @param orderBy Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60;
+     * @param filter Filter to apply, allowed fields are:  - (String) &#x60;name&#x60; - (String) &#x60;description&#x60; - (String) &#x60;category_id&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. If NONE is passed in for &#x60;category_id&#x60; or &#x60;description&#x60;, it will check for the non-existence of that field. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;name%3D%3Dmy-tag&#x60; - &#x60;filter&#x3D;category_id%3D%3DNONE&#x60; - &#x60;filter&#x3D;description%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_create_time%3D%3D2024-12-22T01:00:00.000Z;until_create_time%3D%3D2025-01-01T00:00:00.000Z;&#x60;
+     * @param orderBy Attribute and direction to order items. One of the following fields:  - &#x60;name&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param pageSize Total number of items to return per page
      * @param pageToken Page token
      */
-    public async listTagsUsingGET1(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
+    public async listTags(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
 
@@ -518,18 +518,18 @@ export class TagsApiRequestFactory extends BaseAPIRequestFactory {
      * @param tagId tag_id
      * @param applyRemoveTagRequest applyRemoveTagRequest
      */
-    public async removeTagsUsingPOST(tagId: string, applyRemoveTagRequest: ApplyRemoveTagRequest, _options?: Configuration): Promise<RequestContext> {
+    public async removeTags(tagId: string, applyRemoveTagRequest: ApplyRemoveTagRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'tagId' is not null or undefined
         if (tagId === null || tagId === undefined) {
-            throw new RequiredError("TagsApi", "removeTagsUsingPOST", "tagId");
+            throw new RequiredError("TagsApi", "removeTags", "tagId");
         }
 
 
         // verify required parameter 'applyRemoveTagRequest' is not null or undefined
         if (applyRemoveTagRequest === null || applyRemoveTagRequest === undefined) {
-            throw new RequiredError("TagsApi", "removeTagsUsingPOST", "applyRemoveTagRequest");
+            throw new RequiredError("TagsApi", "removeTags", "applyRemoveTagRequest");
         }
 
 
@@ -563,73 +563,18 @@ export class TagsApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Updates a Tag Category with only the values provided in the request
-     * Update a Tag Category
-     * @param tagCategoryId tag_category_id
-     * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-     * @param createUpdateTagCategoryRequest tagCategory
-     */
-    public async updateTagCategoryUsingPATCH(tagCategoryId: string, updateMask?: Array<string>, createUpdateTagCategoryRequest?: CreateUpdateTagCategoryRequest, _options?: Configuration): Promise<RequestContext> {
-        let _config = _options || this.configuration;
-
-        // verify required parameter 'tagCategoryId' is not null or undefined
-        if (tagCategoryId === null || tagCategoryId === undefined) {
-            throw new RequiredError("TagsApi", "updateTagCategoryUsingPATCH", "tagCategoryId");
-        }
-
-
-
-
-        // Path Params
-        const localVarPath = '/v2/tags/categories/{tag_category_id}'
-            .replace('{' + 'tag_category_id' + '}', encodeURIComponent(String(tagCategoryId)));
-
-        // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.PATCH);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-        // Query Params
-        if (updateMask !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(updateMask, "Array<string>", "");
-            for (const serializedParam of serializedParams) {
-                requestContext.appendQueryParam("update_mask", serializedParam);
-            }
-        }
-
-
-        // Body Params
-        const contentType = ObjectSerializer.getPreferredMediaType([
-            "application/json"
-        ]);
-        requestContext.setHeaderParam("Content-Type", contentType);
-        const serializedBody = ObjectSerializer.stringify(
-            ObjectSerializer.serialize(createUpdateTagCategoryRequest, "CreateUpdateTagCategoryRequest", ""),
-            contentType
-        );
-        requestContext.setBody(serializedBody);
-
-        
-        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-
-        return requestContext;
-    }
-
-    /**
      * Updates a Tag with only the values provided in the request
      * Update a Tag
      * @param tagId tag_id
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @param createUpdateTagRequest tag
      */
-    public async updateTagUsingPATCH(tagId: string, updateMask?: Array<string>, createUpdateTagRequest?: CreateUpdateTagRequest, _options?: Configuration): Promise<RequestContext> {
+    public async updateTag(tagId: string, updateMask?: Array<string>, createUpdateTagRequest?: CreateUpdateTagRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'tagId' is not null or undefined
         if (tagId === null || tagId === undefined) {
-            throw new RequiredError("TagsApi", "updateTagUsingPATCH", "tagId");
+            throw new RequiredError("TagsApi", "updateTag", "tagId");
         }
 
 
@@ -672,6 +617,61 @@ export class TagsApiRequestFactory extends BaseAPIRequestFactory {
         return requestContext;
     }
 
+    /**
+     * Updates a Tag Category with only the values provided in the request
+     * Update a Tag Category
+     * @param tagCategoryId tag_category_id
+     * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param createUpdateTagCategoryRequest tagCategory
+     */
+    public async updateTagCategory(tagCategoryId: string, updateMask?: Array<string>, createUpdateTagCategoryRequest?: CreateUpdateTagCategoryRequest, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'tagCategoryId' is not null or undefined
+        if (tagCategoryId === null || tagCategoryId === undefined) {
+            throw new RequiredError("TagsApi", "updateTagCategory", "tagCategoryId");
+        }
+
+
+
+
+        // Path Params
+        const localVarPath = '/v2/tags/categories/{tag_category_id}'
+            .replace('{' + 'tag_category_id' + '}', encodeURIComponent(String(tagCategoryId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.PATCH);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Query Params
+        if (updateMask !== undefined) {
+            const serializedParams = ObjectSerializer.serialize(updateMask, "Array<string>", "");
+            for (const serializedParam of serializedParams) {
+                requestContext.appendQueryParam("update_mask", serializedParam);
+            }
+        }
+
+
+        // Body Params
+        const contentType = ObjectSerializer.getPreferredMediaType([
+            "application/json"
+        ]);
+        requestContext.setHeaderParam("Content-Type", contentType);
+        const serializedBody = ObjectSerializer.stringify(
+            ObjectSerializer.serialize(createUpdateTagCategoryRequest, "CreateUpdateTagCategoryRequest", ""),
+            contentType
+        );
+        requestContext.setBody(serializedBody);
+
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
 }
 
 export class TagsApiResponseProcessor {
@@ -680,10 +680,10 @@ export class TagsApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to applyTagsUsingPOST
+     * @params response Response returned by the server for a request to applyTags
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async applyTagsUsingPOSTWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ApplyTagsResponse >> {
+     public async applyTagsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ApplyTagsResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: ApplyTagsResponse = ObjectSerializer.deserialize(
@@ -730,10 +730,10 @@ export class TagsApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to createTagCategoryUsingPOST1
+     * @params response Response returned by the server for a request to createTag
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async createTagCategoryUsingPOST1WithHttpInfo(response: ResponseContext): Promise<HttpInfo<Tag >> {
+     public async createTagWithHttpInfo(response: ResponseContext): Promise<HttpInfo<Tag >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("201", response.httpStatusCode)) {
             const body: Tag = ObjectSerializer.deserialize(
@@ -780,10 +780,10 @@ export class TagsApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to createTagUsingPOST1
+     * @params response Response returned by the server for a request to createTagCategory
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async createTagUsingPOST1WithHttpInfo(response: ResponseContext): Promise<HttpInfo<Tag >> {
+     public async createTagCategoryWithHttpInfo(response: ResponseContext): Promise<HttpInfo<Tag >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("201", response.httpStatusCode)) {
             const body: Tag = ObjectSerializer.deserialize(
@@ -830,10 +830,10 @@ export class TagsApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to deleteTagCategoryUsingDELETE
+     * @params response Response returned by the server for a request to deleteTag
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async deleteTagCategoryUsingDELETEWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async deleteTagWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("204", response.httpStatusCode)) {
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
@@ -883,10 +883,10 @@ export class TagsApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to deleteTagUsingDELETE
+     * @params response Response returned by the server for a request to deleteTagCategory
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async deleteTagUsingDELETEWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async deleteTagCategoryWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("204", response.httpStatusCode)) {
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
@@ -936,10 +936,10 @@ export class TagsApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to getCategoryUsingGET
+     * @params response Response returned by the server for a request to getCategory
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getCategoryUsingGETWithHttpInfo(response: ResponseContext): Promise<HttpInfo<GetTagCategoryResponse >> {
+     public async getCategoryWithHttpInfo(response: ResponseContext): Promise<HttpInfo<GetTagCategoryResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: GetTagCategoryResponse = ObjectSerializer.deserialize(
@@ -993,10 +993,10 @@ export class TagsApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to getTagUsingGET1
+     * @params response Response returned by the server for a request to getTag
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getTagUsingGET1WithHttpInfo(response: ResponseContext): Promise<HttpInfo<Tag >> {
+     public async getTagWithHttpInfo(response: ResponseContext): Promise<HttpInfo<Tag >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: Tag = ObjectSerializer.deserialize(
@@ -1050,10 +1050,10 @@ export class TagsApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to listCompaniesForTagIdUsingGET1
+     * @params response Response returned by the server for a request to listCompaniesForTagId
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async listCompaniesForTagIdUsingGET1WithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListTaggedCompaniesResponse >> {
+     public async listCompaniesForTagIdWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListTaggedCompaniesResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: ListTaggedCompaniesResponse = ObjectSerializer.deserialize(
@@ -1107,10 +1107,10 @@ export class TagsApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to listContactsWithTagIdUsingGET
+     * @params response Response returned by the server for a request to listContactsWithTagId
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async listContactsWithTagIdUsingGETWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListTaggedContactsResponse >> {
+     public async listContactsWithTagIdWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListTaggedContactsResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: ListTaggedContactsResponse = ObjectSerializer.deserialize(
@@ -1164,10 +1164,10 @@ export class TagsApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to listTagCategoriesUsingGET
+     * @params response Response returned by the server for a request to listTagCategories
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async listTagCategoriesUsingGETWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListTagCategoriesResponse >> {
+     public async listTagCategoriesWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListTagCategoriesResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: ListTagCategoriesResponse = ObjectSerializer.deserialize(
@@ -1221,10 +1221,10 @@ export class TagsApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to listTagsUsingGET1
+     * @params response Response returned by the server for a request to listTags
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async listTagsUsingGET1WithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListTagsResponse >> {
+     public async listTagsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListTagsResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: ListTagsResponse = ObjectSerializer.deserialize(
@@ -1278,10 +1278,10 @@ export class TagsApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to removeTagsUsingPOST
+     * @params response Response returned by the server for a request to removeTags
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async removeTagsUsingPOSTWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async removeTagsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("204", response.httpStatusCode)) {
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
@@ -1324,16 +1324,16 @@ export class TagsApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to updateTagCategoryUsingPATCH
+     * @params response Response returned by the server for a request to updateTag
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async updateTagCategoryUsingPATCHWithHttpInfo(response: ResponseContext): Promise<HttpInfo<UpdateTagCategoryResponse >> {
+     public async updateTagWithHttpInfo(response: ResponseContext): Promise<HttpInfo<UpdateTagResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: UpdateTagCategoryResponse = ObjectSerializer.deserialize(
+            const body: UpdateTagResponse = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "UpdateTagCategoryResponse", ""
-            ) as UpdateTagCategoryResponse;
+                "UpdateTagResponse", ""
+            ) as UpdateTagResponse;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("401", response.httpStatusCode)) {
@@ -1367,10 +1367,10 @@ export class TagsApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: UpdateTagCategoryResponse = ObjectSerializer.deserialize(
+            const body: UpdateTagResponse = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "UpdateTagCategoryResponse", ""
-            ) as UpdateTagCategoryResponse;
+                "UpdateTagResponse", ""
+            ) as UpdateTagResponse;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -1381,16 +1381,16 @@ export class TagsApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to updateTagUsingPATCH
+     * @params response Response returned by the server for a request to updateTagCategory
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async updateTagUsingPATCHWithHttpInfo(response: ResponseContext): Promise<HttpInfo<UpdateTagResponse >> {
+     public async updateTagCategoryWithHttpInfo(response: ResponseContext): Promise<HttpInfo<UpdateTagCategoryResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: UpdateTagResponse = ObjectSerializer.deserialize(
+            const body: UpdateTagCategoryResponse = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "UpdateTagResponse", ""
-            ) as UpdateTagResponse;
+                "UpdateTagCategoryResponse", ""
+            ) as UpdateTagCategoryResponse;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("401", response.httpStatusCode)) {
@@ -1424,10 +1424,10 @@ export class TagsApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: UpdateTagResponse = ObjectSerializer.deserialize(
+            const body: UpdateTagCategoryResponse = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "UpdateTagResponse", ""
-            ) as UpdateTagResponse;
+                "UpdateTagCategoryResponse", ""
+            ) as UpdateTagCategoryResponse;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

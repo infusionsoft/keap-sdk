@@ -4,22 +4,22 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createOrderTotalDiscountUsingPOST**](OrderTotalDiscountsApi.md#createOrderTotalDiscountUsingPOST) | **POST** /v2/discounts/orderTotals | Create an Order Total Discount |
-| [**createOrderTotalDiscountUsingPOSTWithHttpInfo**](OrderTotalDiscountsApi.md#createOrderTotalDiscountUsingPOSTWithHttpInfo) | **POST** /v2/discounts/orderTotals | Create an Order Total Discount |
-| [**deleteOrderTotalDiscountUsingDELETE**](OrderTotalDiscountsApi.md#deleteOrderTotalDiscountUsingDELETE) | **DELETE** /v2/discounts/orderTotals/{discount_id} | Delete an Order Total Discount |
-| [**deleteOrderTotalDiscountUsingDELETEWithHttpInfo**](OrderTotalDiscountsApi.md#deleteOrderTotalDiscountUsingDELETEWithHttpInfo) | **DELETE** /v2/discounts/orderTotals/{discount_id} | Delete an Order Total Discount |
-| [**getOrderTotalDiscountUsingGET**](OrderTotalDiscountsApi.md#getOrderTotalDiscountUsingGET) | **GET** /v2/discounts/orderTotals/{discount_id} | Retrieve an Order Total Discount |
-| [**getOrderTotalDiscountUsingGETWithHttpInfo**](OrderTotalDiscountsApi.md#getOrderTotalDiscountUsingGETWithHttpInfo) | **GET** /v2/discounts/orderTotals/{discount_id} | Retrieve an Order Total Discount |
-| [**listOrderTotalDiscountsUsingGET**](OrderTotalDiscountsApi.md#listOrderTotalDiscountsUsingGET) | **GET** /v2/discounts/orderTotals | List all Order Total Discounts |
-| [**listOrderTotalDiscountsUsingGETWithHttpInfo**](OrderTotalDiscountsApi.md#listOrderTotalDiscountsUsingGETWithHttpInfo) | **GET** /v2/discounts/orderTotals | List all Order Total Discounts |
-| [**updateOrderTotalDiscountUsingPATCH**](OrderTotalDiscountsApi.md#updateOrderTotalDiscountUsingPATCH) | **PATCH** /v2/discounts/orderTotals/{discount_id} | Update an Order Total Discount |
-| [**updateOrderTotalDiscountUsingPATCHWithHttpInfo**](OrderTotalDiscountsApi.md#updateOrderTotalDiscountUsingPATCHWithHttpInfo) | **PATCH** /v2/discounts/orderTotals/{discount_id} | Update an Order Total Discount |
+| [**createOrderTotalDiscount**](OrderTotalDiscountsApi.md#createOrderTotalDiscount) | **POST** /v2/discounts/orderTotals | Create an Order Total Discount |
+| [**createOrderTotalDiscountWithHttpInfo**](OrderTotalDiscountsApi.md#createOrderTotalDiscountWithHttpInfo) | **POST** /v2/discounts/orderTotals | Create an Order Total Discount |
+| [**deleteOrderTotalDiscount**](OrderTotalDiscountsApi.md#deleteOrderTotalDiscount) | **DELETE** /v2/discounts/orderTotals/{discount_id} | Delete an Order Total Discount |
+| [**deleteOrderTotalDiscountWithHttpInfo**](OrderTotalDiscountsApi.md#deleteOrderTotalDiscountWithHttpInfo) | **DELETE** /v2/discounts/orderTotals/{discount_id} | Delete an Order Total Discount |
+| [**getOrderTotalDiscount**](OrderTotalDiscountsApi.md#getOrderTotalDiscount) | **GET** /v2/discounts/orderTotals/{discount_id} | Retrieve an Order Total Discount |
+| [**getOrderTotalDiscountWithHttpInfo**](OrderTotalDiscountsApi.md#getOrderTotalDiscountWithHttpInfo) | **GET** /v2/discounts/orderTotals/{discount_id} | Retrieve an Order Total Discount |
+| [**listOrderTotalDiscounts**](OrderTotalDiscountsApi.md#listOrderTotalDiscounts) | **GET** /v2/discounts/orderTotals | List all Order Total Discounts |
+| [**listOrderTotalDiscountsWithHttpInfo**](OrderTotalDiscountsApi.md#listOrderTotalDiscountsWithHttpInfo) | **GET** /v2/discounts/orderTotals | List all Order Total Discounts |
+| [**updateOrderTotalDiscount**](OrderTotalDiscountsApi.md#updateOrderTotalDiscount) | **PATCH** /v2/discounts/orderTotals/{discount_id} | Update an Order Total Discount |
+| [**updateOrderTotalDiscountWithHttpInfo**](OrderTotalDiscountsApi.md#updateOrderTotalDiscountWithHttpInfo) | **PATCH** /v2/discounts/orderTotals/{discount_id} | Update an Order Total Discount |
 
 
 
-## createOrderTotalDiscountUsingPOST
+## createOrderTotalDiscount
 
-> OrderTotalDiscount createOrderTotalDiscountUsingPOST(createOrderTotalDiscountRequest)
+> OrderTotalDiscount createOrderTotalDiscount(createOrderTotalDiscountRequest)
 
 Create an Order Total Discount
 
@@ -43,10 +43,10 @@ public class Example {
         OrderTotalDiscountsApi apiInstance = new OrderTotalDiscountsApi(defaultClient);
         CreateOrderTotalDiscountRequest createOrderTotalDiscountRequest = new CreateOrderTotalDiscountRequest(); // CreateOrderTotalDiscountRequest | request
         try {
-            OrderTotalDiscount result = apiInstance.createOrderTotalDiscountUsingPOST(createOrderTotalDiscountRequest);
+            OrderTotalDiscount result = apiInstance.createOrderTotalDiscount(createOrderTotalDiscountRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling OrderTotalDiscountsApi#createOrderTotalDiscountUsingPOST");
+            System.err.println("Exception when calling OrderTotalDiscountsApi#createOrderTotalDiscount");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -85,9 +85,9 @@ No authorization required
 | **403** | Forbidden |  -  |
 | **500** | Internal Server Error |  -  |
 
-## createOrderTotalDiscountUsingPOSTWithHttpInfo
+## createOrderTotalDiscountWithHttpInfo
 
-> ApiResponse<OrderTotalDiscount> createOrderTotalDiscountUsingPOST createOrderTotalDiscountUsingPOSTWithHttpInfo(createOrderTotalDiscountRequest)
+> ApiResponse<OrderTotalDiscount> createOrderTotalDiscount createOrderTotalDiscountWithHttpInfo(createOrderTotalDiscountRequest)
 
 Create an Order Total Discount
 
@@ -112,12 +112,12 @@ public class Example {
         OrderTotalDiscountsApi apiInstance = new OrderTotalDiscountsApi(defaultClient);
         CreateOrderTotalDiscountRequest createOrderTotalDiscountRequest = new CreateOrderTotalDiscountRequest(); // CreateOrderTotalDiscountRequest | request
         try {
-            ApiResponse<OrderTotalDiscount> response = apiInstance.createOrderTotalDiscountUsingPOSTWithHttpInfo(createOrderTotalDiscountRequest);
+            ApiResponse<OrderTotalDiscount> response = apiInstance.createOrderTotalDiscountWithHttpInfo(createOrderTotalDiscountRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling OrderTotalDiscountsApi#createOrderTotalDiscountUsingPOST");
+            System.err.println("Exception when calling OrderTotalDiscountsApi#createOrderTotalDiscount");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -157,9 +157,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## deleteOrderTotalDiscountUsingDELETE
+## deleteOrderTotalDiscount
 
-> void deleteOrderTotalDiscountUsingDELETE(discountId)
+> void deleteOrderTotalDiscount(discountId)
 
 Delete an Order Total Discount
 
@@ -183,9 +183,9 @@ public class Example {
         OrderTotalDiscountsApi apiInstance = new OrderTotalDiscountsApi(defaultClient);
         String discountId = "discountId_example"; // String | discount_id
         try {
-            apiInstance.deleteOrderTotalDiscountUsingDELETE(discountId);
+            apiInstance.deleteOrderTotalDiscount(discountId);
         } catch (ApiException e) {
-            System.err.println("Exception when calling OrderTotalDiscountsApi#deleteOrderTotalDiscountUsingDELETE");
+            System.err.println("Exception when calling OrderTotalDiscountsApi#deleteOrderTotalDiscount");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -225,9 +225,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## deleteOrderTotalDiscountUsingDELETEWithHttpInfo
+## deleteOrderTotalDiscountWithHttpInfo
 
-> ApiResponse<Void> deleteOrderTotalDiscountUsingDELETE deleteOrderTotalDiscountUsingDELETEWithHttpInfo(discountId)
+> ApiResponse<Void> deleteOrderTotalDiscount deleteOrderTotalDiscountWithHttpInfo(discountId)
 
 Delete an Order Total Discount
 
@@ -252,11 +252,11 @@ public class Example {
         OrderTotalDiscountsApi apiInstance = new OrderTotalDiscountsApi(defaultClient);
         String discountId = "discountId_example"; // String | discount_id
         try {
-            ApiResponse<Void> response = apiInstance.deleteOrderTotalDiscountUsingDELETEWithHttpInfo(discountId);
+            ApiResponse<Void> response = apiInstance.deleteOrderTotalDiscountWithHttpInfo(discountId);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
-            System.err.println("Exception when calling OrderTotalDiscountsApi#deleteOrderTotalDiscountUsingDELETE");
+            System.err.println("Exception when calling OrderTotalDiscountsApi#deleteOrderTotalDiscount");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -297,9 +297,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## getOrderTotalDiscountUsingGET
+## getOrderTotalDiscount
 
-> OrderTotalDiscount getOrderTotalDiscountUsingGET(discountId)
+> OrderTotalDiscount getOrderTotalDiscount(discountId)
 
 Retrieve an Order Total Discount
 
@@ -323,10 +323,10 @@ public class Example {
         OrderTotalDiscountsApi apiInstance = new OrderTotalDiscountsApi(defaultClient);
         String discountId = "discountId_example"; // String | discount_id
         try {
-            OrderTotalDiscount result = apiInstance.getOrderTotalDiscountUsingGET(discountId);
+            OrderTotalDiscount result = apiInstance.getOrderTotalDiscount(discountId);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling OrderTotalDiscountsApi#getOrderTotalDiscountUsingGET");
+            System.err.println("Exception when calling OrderTotalDiscountsApi#getOrderTotalDiscount");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -366,9 +366,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## getOrderTotalDiscountUsingGETWithHttpInfo
+## getOrderTotalDiscountWithHttpInfo
 
-> ApiResponse<OrderTotalDiscount> getOrderTotalDiscountUsingGET getOrderTotalDiscountUsingGETWithHttpInfo(discountId)
+> ApiResponse<OrderTotalDiscount> getOrderTotalDiscount getOrderTotalDiscountWithHttpInfo(discountId)
 
 Retrieve an Order Total Discount
 
@@ -393,12 +393,12 @@ public class Example {
         OrderTotalDiscountsApi apiInstance = new OrderTotalDiscountsApi(defaultClient);
         String discountId = "discountId_example"; // String | discount_id
         try {
-            ApiResponse<OrderTotalDiscount> response = apiInstance.getOrderTotalDiscountUsingGETWithHttpInfo(discountId);
+            ApiResponse<OrderTotalDiscount> response = apiInstance.getOrderTotalDiscountWithHttpInfo(discountId);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling OrderTotalDiscountsApi#getOrderTotalDiscountUsingGET");
+            System.err.println("Exception when calling OrderTotalDiscountsApi#getOrderTotalDiscount");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -439,9 +439,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## listOrderTotalDiscountsUsingGET
+## listOrderTotalDiscounts
 
-> ListOrderTotalDiscountsResponse listOrderTotalDiscountsUsingGET(filter, orderBy, pageSize, pageToken)
+> ListOrderTotalDiscountsResponse listOrderTotalDiscounts(filter, orderBy, pageSize, pageToken)
 
 List all Order Total Discounts
 
@@ -464,14 +464,14 @@ public class Example {
 
         OrderTotalDiscountsApi apiInstance = new OrderTotalDiscountsApi(defaultClient);
         String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (Boolean) `apply_to_commissions` - (DiscountStrategy) `discount_strategy`: GROSS or NET - (DiscountType) `discount_type`: AMOUNT or PERCENT - (Double) `discount_value`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=apply_to_commissions%3D%3Dtrue` - `filter=discount_strategy%3D%3DGROSS` - `filter=discount_type%3D%3DAMOUNT` - `filter=discount_value%3D%3D10.0` - `filter=discount_type%3D%3DAMOUNT%3Bdiscount_strategy%3D%3DNET` 
-        String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `apply_to_commissions` - `discount_strategy` - `discount_type` - `discount_value` - `id`  One of the following directions: - `asc` - `desc`
+        String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `apply_to_commissions` - `discount_strategy` - `discount_type` - `discount_value` - `id` - `name`  One of the following directions: - `asc` - `desc`
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
         try {
-            ListOrderTotalDiscountsResponse result = apiInstance.listOrderTotalDiscountsUsingGET(filter, orderBy, pageSize, pageToken);
+            ListOrderTotalDiscountsResponse result = apiInstance.listOrderTotalDiscounts(filter, orderBy, pageSize, pageToken);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling OrderTotalDiscountsApi#listOrderTotalDiscountsUsingGET");
+            System.err.println("Exception when calling OrderTotalDiscountsApi#listOrderTotalDiscounts");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -487,7 +487,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **filter** | **String**| Filter to apply, allowed fields are: - (Boolean) &#x60;apply_to_commissions&#x60; - (DiscountStrategy) &#x60;discount_strategy&#x60;: GROSS or NET - (DiscountType) &#x60;discount_type&#x60;: AMOUNT or PERCENT - (Double) &#x60;discount_value&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;apply_to_commissions%3D%3Dtrue&#x60; - &#x60;filter&#x3D;discount_strategy%3D%3DGROSS&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT&#x60; - &#x60;filter&#x3D;discount_value%3D%3D10.0&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT%3Bdiscount_strategy%3D%3DNET&#x60;  | [optional] |
-| **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;apply_to_commissions&#x60; - &#x60;discount_strategy&#x60; - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
+| **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;apply_to_commissions&#x60; - &#x60;discount_strategy&#x60; - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60; - &#x60;name&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **pageSize** | **Integer**| Total number of items to return per page | [optional] |
 | **pageToken** | **String**| Page token | [optional] |
 
@@ -514,9 +514,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## listOrderTotalDiscountsUsingGETWithHttpInfo
+## listOrderTotalDiscountsWithHttpInfo
 
-> ApiResponse<ListOrderTotalDiscountsResponse> listOrderTotalDiscountsUsingGET listOrderTotalDiscountsUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken)
+> ApiResponse<ListOrderTotalDiscountsResponse> listOrderTotalDiscounts listOrderTotalDiscountsWithHttpInfo(filter, orderBy, pageSize, pageToken)
 
 List all Order Total Discounts
 
@@ -540,16 +540,16 @@ public class Example {
 
         OrderTotalDiscountsApi apiInstance = new OrderTotalDiscountsApi(defaultClient);
         String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (Boolean) `apply_to_commissions` - (DiscountStrategy) `discount_strategy`: GROSS or NET - (DiscountType) `discount_type`: AMOUNT or PERCENT - (Double) `discount_value`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=apply_to_commissions%3D%3Dtrue` - `filter=discount_strategy%3D%3DGROSS` - `filter=discount_type%3D%3DAMOUNT` - `filter=discount_value%3D%3D10.0` - `filter=discount_type%3D%3DAMOUNT%3Bdiscount_strategy%3D%3DNET` 
-        String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `apply_to_commissions` - `discount_strategy` - `discount_type` - `discount_value` - `id`  One of the following directions: - `asc` - `desc`
+        String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `apply_to_commissions` - `discount_strategy` - `discount_type` - `discount_value` - `id` - `name`  One of the following directions: - `asc` - `desc`
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
         try {
-            ApiResponse<ListOrderTotalDiscountsResponse> response = apiInstance.listOrderTotalDiscountsUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken);
+            ApiResponse<ListOrderTotalDiscountsResponse> response = apiInstance.listOrderTotalDiscountsWithHttpInfo(filter, orderBy, pageSize, pageToken);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling OrderTotalDiscountsApi#listOrderTotalDiscountsUsingGET");
+            System.err.println("Exception when calling OrderTotalDiscountsApi#listOrderTotalDiscounts");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -565,7 +565,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **filter** | **String**| Filter to apply, allowed fields are: - (Boolean) &#x60;apply_to_commissions&#x60; - (DiscountStrategy) &#x60;discount_strategy&#x60;: GROSS or NET - (DiscountType) &#x60;discount_type&#x60;: AMOUNT or PERCENT - (Double) &#x60;discount_value&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;apply_to_commissions%3D%3Dtrue&#x60; - &#x60;filter&#x3D;discount_strategy%3D%3DGROSS&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT&#x60; - &#x60;filter&#x3D;discount_value%3D%3D10.0&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT%3Bdiscount_strategy%3D%3DNET&#x60;  | [optional] |
-| **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;apply_to_commissions&#x60; - &#x60;discount_strategy&#x60; - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
+| **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;apply_to_commissions&#x60; - &#x60;discount_strategy&#x60; - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60; - &#x60;name&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **pageSize** | **Integer**| Total number of items to return per page | [optional] |
 | **pageToken** | **String**| Page token | [optional] |
 
@@ -593,9 +593,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## updateOrderTotalDiscountUsingPATCH
+## updateOrderTotalDiscount
 
-> OrderTotalDiscount updateOrderTotalDiscountUsingPATCH(discountId, updateOrderTotalDiscountRequest, updateMask)
+> OrderTotalDiscount updateOrderTotalDiscount(discountId, updateOrderTotalDiscountRequest, updateMask)
 
 Update an Order Total Discount
 
@@ -621,10 +621,10 @@ public class Example {
         UpdateOrderTotalDiscountRequest updateOrderTotalDiscountRequest = new UpdateOrderTotalDiscountRequest(); // UpdateOrderTotalDiscountRequest | request
         List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
-            OrderTotalDiscount result = apiInstance.updateOrderTotalDiscountUsingPATCH(discountId, updateOrderTotalDiscountRequest, updateMask);
+            OrderTotalDiscount result = apiInstance.updateOrderTotalDiscount(discountId, updateOrderTotalDiscountRequest, updateMask);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling OrderTotalDiscountsApi#updateOrderTotalDiscountUsingPATCH");
+            System.err.println("Exception when calling OrderTotalDiscountsApi#updateOrderTotalDiscount");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -666,9 +666,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## updateOrderTotalDiscountUsingPATCHWithHttpInfo
+## updateOrderTotalDiscountWithHttpInfo
 
-> ApiResponse<OrderTotalDiscount> updateOrderTotalDiscountUsingPATCH updateOrderTotalDiscountUsingPATCHWithHttpInfo(discountId, updateOrderTotalDiscountRequest, updateMask)
+> ApiResponse<OrderTotalDiscount> updateOrderTotalDiscount updateOrderTotalDiscountWithHttpInfo(discountId, updateOrderTotalDiscountRequest, updateMask)
 
 Update an Order Total Discount
 
@@ -695,12 +695,12 @@ public class Example {
         UpdateOrderTotalDiscountRequest updateOrderTotalDiscountRequest = new UpdateOrderTotalDiscountRequest(); // UpdateOrderTotalDiscountRequest | request
         List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
-            ApiResponse<OrderTotalDiscount> response = apiInstance.updateOrderTotalDiscountUsingPATCHWithHttpInfo(discountId, updateOrderTotalDiscountRequest, updateMask);
+            ApiResponse<OrderTotalDiscount> response = apiInstance.updateOrderTotalDiscountWithHttpInfo(discountId, updateOrderTotalDiscountRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling OrderTotalDiscountsApi#updateOrderTotalDiscountUsingPATCH");
+            System.err.println("Exception when calling OrderTotalDiscountsApi#updateOrderTotalDiscount");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());

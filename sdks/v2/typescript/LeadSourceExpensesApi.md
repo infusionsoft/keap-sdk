@@ -4,15 +4,15 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createLeadSourceExpenseUsingPOST**](LeadSourceExpensesApi.md#createLeadSourceExpenseUsingPOST) | **POST** /v2/leadSources/{lead_source_id}/expenses | Create a Lead Source Expense
-[**deleteLeadSourceUsingDELETE1**](LeadSourceExpensesApi.md#deleteLeadSourceUsingDELETE1) | **DELETE** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Delete a lead source expense
-[**getLeadSourceExpenseUsingGET**](LeadSourceExpensesApi.md#getLeadSourceExpenseUsingGET) | **GET** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Retrieve a Lead Source Expense
-[**listLeadSourceExpensesUsingGET**](LeadSourceExpensesApi.md#listLeadSourceExpensesUsingGET) | **GET** /v2/leadSources/{lead_source_id}/expenses | List Lead Source Expenses
-[**updateLeadSourceExpenseUsingPATCH**](LeadSourceExpensesApi.md#updateLeadSourceExpenseUsingPATCH) | **PATCH** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Update a Lead Source Expense
+[**createLeadSourceExpense**](LeadSourceExpensesApi.md#createLeadSourceExpense) | **POST** /v2/leadSources/{lead_source_id}/expenses | Create a Lead Source Expense
+[**deleteLeadSourceExpense**](LeadSourceExpensesApi.md#deleteLeadSourceExpense) | **DELETE** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Delete a lead source expense
+[**getLeadSourceExpense**](LeadSourceExpensesApi.md#getLeadSourceExpense) | **GET** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Retrieve a Lead Source Expense
+[**listLeadSourceExpenses**](LeadSourceExpensesApi.md#listLeadSourceExpenses) | **GET** /v2/leadSources/{lead_source_id}/expenses | List Lead Source Expenses
+[**updateLeadSourceExpense**](LeadSourceExpensesApi.md#updateLeadSourceExpense) | **PATCH** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Update a Lead Source Expense
 
 
-# **createLeadSourceExpenseUsingPOST**
-> LeadSourceExpense createLeadSourceExpenseUsingPOST(createLeadSourceExpenseRequest)
+# **createLeadSourceExpense**
+> LeadSourceExpense createLeadSourceExpense(createLeadSourceExpenseRequest)
 
 Creates a new Lead Source Expense
 
@@ -21,12 +21,12 @@ Creates a new Lead Source Expense
 
 ```typescript
 import { createConfiguration, LeadSourceExpensesApi } from '';
-import type { LeadSourceExpensesApiCreateLeadSourceExpenseUsingPOSTRequest } from '';
+import type { LeadSourceExpensesApiCreateLeadSourceExpenseRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new LeadSourceExpensesApi(configuration);
 
-const request: LeadSourceExpensesApiCreateLeadSourceExpenseUsingPOSTRequest = {
+const request: LeadSourceExpensesApiCreateLeadSourceExpenseRequest = {
     // The ID of the lead source this expense belongs to
   leadSourceId: "lead_source_id_example",
     // The request object to create a new lead source expense
@@ -38,7 +38,7 @@ const request: LeadSourceExpensesApiCreateLeadSourceExpenseUsingPOSTRequest = {
   },
 };
 
-const data = await apiInstance.createLeadSourceExpenseUsingPOST(request);
+const data = await apiInstance.createLeadSourceExpense(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -77,8 +77,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **deleteLeadSourceUsingDELETE1**
-> void deleteLeadSourceUsingDELETE1()
+# **deleteLeadSourceExpense**
+> void deleteLeadSourceExpense()
 
 Deletes a lead source expense by ID
 
@@ -87,19 +87,19 @@ Deletes a lead source expense by ID
 
 ```typescript
 import { createConfiguration, LeadSourceExpensesApi } from '';
-import type { LeadSourceExpensesApiDeleteLeadSourceUsingDELETE1Request } from '';
+import type { LeadSourceExpensesApiDeleteLeadSourceExpenseRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new LeadSourceExpensesApi(configuration);
 
-const request: LeadSourceExpensesApiDeleteLeadSourceUsingDELETE1Request = {
+const request: LeadSourceExpensesApiDeleteLeadSourceExpenseRequest = {
     // The ID of a lead source expense
   leadSourceExpenseId: "lead_source_expense_id_example",
     // The ID of the lead source this expense belongs to
   leadSourceId: "lead_source_id_example",
 };
 
-const data = await apiInstance.deleteLeadSourceUsingDELETE1(request);
+const data = await apiInstance.deleteLeadSourceExpense(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -137,8 +137,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **getLeadSourceExpenseUsingGET**
-> LeadSourceExpense getLeadSourceExpenseUsingGET()
+# **getLeadSourceExpense**
+> LeadSourceExpense getLeadSourceExpense()
 
 Retrieves a single Lead Source Expense for a given ID
 
@@ -147,19 +147,19 @@ Retrieves a single Lead Source Expense for a given ID
 
 ```typescript
 import { createConfiguration, LeadSourceExpensesApi } from '';
-import type { LeadSourceExpensesApiGetLeadSourceExpenseUsingGETRequest } from '';
+import type { LeadSourceExpensesApiGetLeadSourceExpenseRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new LeadSourceExpensesApi(configuration);
 
-const request: LeadSourceExpensesApiGetLeadSourceExpenseUsingGETRequest = {
+const request: LeadSourceExpensesApiGetLeadSourceExpenseRequest = {
     // The ID of a lead source expense
   leadSourceExpenseId: "lead_source_expense_id_example",
     // The ID of the lead source this expense belongs to
   leadSourceId: "lead_source_id_example",
 };
 
-const data = await apiInstance.getLeadSourceExpenseUsingGET(request);
+const data = await apiInstance.getLeadSourceExpense(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -197,8 +197,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **listLeadSourceExpensesUsingGET**
-> ListLeadSourceExpensesResponse listLeadSourceExpensesUsingGET()
+# **listLeadSourceExpenses**
+> ListLeadSourceExpensesResponse listLeadSourceExpenses()
 
 Retrieves a list of lead source expenses
 
@@ -207,12 +207,12 @@ Retrieves a list of lead source expenses
 
 ```typescript
 import { createConfiguration, LeadSourceExpensesApi } from '';
-import type { LeadSourceExpensesApiListLeadSourceExpensesUsingGETRequest } from '';
+import type { LeadSourceExpensesApiListLeadSourceExpensesRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new LeadSourceExpensesApi(configuration);
 
-const request: LeadSourceExpensesApiListLeadSourceExpensesUsingGETRequest = {
+const request: LeadSourceExpensesApiListLeadSourceExpensesRequest = {
     // The ID of the lead source this expense belongs to
   leadSourceId: "lead_source_id_example",
     // Filter to apply, allowed fields are:  - (String) `title` - (Long) `amount` - (String) `incurred_time` - (String) `create_time` - (String) `update_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:  - `filter=amount%3D%3D2500` - `filter=incurred_time%3D%3D2024-12-22T01:00:00.000Z` (optional)
@@ -225,7 +225,7 @@ const request: LeadSourceExpensesApiListLeadSourceExpensesUsingGETRequest = {
   pageToken: "page_token_example",
 };
 
-const data = await apiInstance.listLeadSourceExpensesUsingGET(request);
+const data = await apiInstance.listLeadSourceExpenses(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -267,8 +267,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **updateLeadSourceExpenseUsingPATCH**
-> LeadSourceExpense updateLeadSourceExpenseUsingPATCH(updateLeadSourceExpenseRequest)
+# **updateLeadSourceExpense**
+> LeadSourceExpense updateLeadSourceExpense(updateLeadSourceExpenseRequest)
 
 Updates a new Lead Source Expense
 
@@ -277,12 +277,12 @@ Updates a new Lead Source Expense
 
 ```typescript
 import { createConfiguration, LeadSourceExpensesApi } from '';
-import type { LeadSourceExpensesApiUpdateLeadSourceExpenseUsingPATCHRequest } from '';
+import type { LeadSourceExpensesApiUpdateLeadSourceExpenseRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new LeadSourceExpensesApi(configuration);
 
-const request: LeadSourceExpensesApiUpdateLeadSourceExpenseUsingPATCHRequest = {
+const request: LeadSourceExpensesApiUpdateLeadSourceExpenseRequest = {
     // The ID of a lead source expense
   leadSourceExpenseId: "lead_source_expense_id_example",
     // The ID of the lead source this expense belongs to
@@ -300,7 +300,7 @@ const request: LeadSourceExpensesApiUpdateLeadSourceExpenseUsingPATCHRequest = {
   ],
 };
 
-const data = await apiInstance.updateLeadSourceExpenseUsingPATCH(request);
+const data = await apiInstance.updateLeadSourceExpense(request);
 console.log('API called successfully. Returned data:', data);
 ```
 

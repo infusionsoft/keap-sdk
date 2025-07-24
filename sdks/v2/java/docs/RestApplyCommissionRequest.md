@@ -7,12 +7,12 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+|**affiliateId** | **String** | The affiliate id |  |
 |**commissionAmount** | **Double** |  |  [optional] |
 |**commissionDate** | **String** |  |  [optional] |
 |**description** | **String** |  |  [optional] |
 |**payPercent** | **Double** |  |  [optional] |
 |**payoutType** | [**PayoutTypeEnum**](#PayoutTypeEnum) | The payout type |  |
-|**referralPartnerId** | **String** | The referral partner id |  |
 
 
 

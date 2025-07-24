@@ -4,11 +4,11 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**setMerchantGatewayAsDefaultUsingPOST**](SalesApi.md#setMerchantGatewayAsDefaultUsingPOST) | **POST** /v2/sales/merchants/{id}:setDefault | Set default Merchant Account
+[**setMerchantGatewayAsDefault**](SalesApi.md#setMerchantGatewayAsDefault) | **POST** /v2/sales/merchants/{id}:setDefault | Set default Merchant Account
 
 
-# **setMerchantGatewayAsDefaultUsingPOST**
-> void setMerchantGatewayAsDefaultUsingPOST()
+# **setMerchantGatewayAsDefault**
+> void setMerchantGatewayAsDefault()
 
 Sets the specified Merchant Account as the default Merchant Account.
 
@@ -17,17 +17,17 @@ Sets the specified Merchant Account as the default Merchant Account.
 
 ```typescript
 import { createConfiguration, SalesApi } from '';
-import type { SalesApiSetMerchantGatewayAsDefaultUsingPOSTRequest } from '';
+import type { SalesApiSetMerchantGatewayAsDefaultRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new SalesApi(configuration);
 
-const request: SalesApiSetMerchantGatewayAsDefaultUsingPOSTRequest = {
+const request: SalesApiSetMerchantGatewayAsDefaultRequest = {
     // id
   id: "id_example",
 };
 
-const data = await apiInstance.setMerchantGatewayAsDefaultUsingPOST(request);
+const data = await apiInstance.setMerchantGatewayAsDefault(request);
 console.log('API called successfully. Returned data:', data);
 ```
 

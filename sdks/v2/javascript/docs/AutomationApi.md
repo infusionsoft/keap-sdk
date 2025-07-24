@@ -4,19 +4,18 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**addContactsToAutomationSequenceUsingPOST**](AutomationApi.md#addContactsToAutomationSequenceUsingPOST) | **POST** /v2/automations/{automation_id}/sequences/{sequence_id}:addContacts | Add Contacts to an Automation Sequence
-[**bulkAssignmentAutomationsCategoriesUsingPOST**](AutomationApi.md#bulkAssignmentAutomationsCategoriesUsingPOST) | **POST** /v2/automations/categories/batchAssign | Bulk update for Automations Categories
-[**deleteAutomationUsingDELETE**](AutomationApi.md#deleteAutomationUsingDELETE) | **DELETE** /v2/automations | Delete an Automation
-[**getAutomationUsingGET**](AutomationApi.md#getAutomationUsingGET) | **GET** /v2/automations/{automation_id} | Retrieve an Automation
-[**listAllAutomationIdsUsingGET**](AutomationApi.md#listAllAutomationIdsUsingGET) | **GET** /v2/automations/ids | List Automations Ids
-[**listAutomationsUsingGET**](AutomationApi.md#listAutomationsUsingGET) | **GET** /v2/automations | List Automations
-[**updateAutomationCategoryUsingPUT**](AutomationApi.md#updateAutomationCategoryUsingPUT) | **PUT** /v2/automations/category | Update an Automation&#39;s Category
+[**addContactsToAutomationSequence**](AutomationApi.md#addContactsToAutomationSequence) | **POST** /v2/automations/{automation_id}/sequences/{sequence_id}:addContacts | Add Contacts to an Automation Sequence
+[**bulkAssignmentAutomationsCategories**](AutomationApi.md#bulkAssignmentAutomationsCategories) | **POST** /v2/automations/categories/batchAssign | Bulk update for Automations Categories
+[**deleteAutomation**](AutomationApi.md#deleteAutomation) | **DELETE** /v2/automations | Delete an Automation
+[**getAutomation**](AutomationApi.md#getAutomation) | **GET** /v2/automations/{automation_id} | Retrieve an Automation
+[**listAllAutomationIds**](AutomationApi.md#listAllAutomationIds) | **GET** /v2/automations/ids | List Automations Ids
+[**listAutomations**](AutomationApi.md#listAutomations) | **GET** /v2/automations | List Automations
 
 
 
-## addContactsToAutomationSequenceUsingPOST
+## addContactsToAutomationSequence
 
-> AddToAutomationSequenceResponse addContactsToAutomationSequenceUsingPOST(automationId, sequenceId, addToAutomationSequenceRequest)
+> AddToAutomationSequenceResponse addContactsToAutomationSequence(automationId, sequenceId, addToAutomationSequenceRequest)
 
 Add Contacts to an Automation Sequence
 
@@ -31,7 +30,7 @@ let apiInstance = new KeapCoreServiceV2Sdk.AutomationApi();
 let automationId = "automationId_example"; // String | automation_id
 let sequenceId = "sequenceId_example"; // String | sequence_id
 let addToAutomationSequenceRequest = new KeapCoreServiceV2Sdk.AddToAutomationSequenceRequest(); // AddToAutomationSequenceRequest | addToAutomationSequenceRequest
-apiInstance.addContactsToAutomationSequenceUsingPOST(automationId, sequenceId, addToAutomationSequenceRequest).then((data) => {
+apiInstance.addContactsToAutomationSequence(automationId, sequenceId, addToAutomationSequenceRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -62,9 +61,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## bulkAssignmentAutomationsCategoriesUsingPOST
+## bulkAssignmentAutomationsCategories
 
-> bulkAssignmentAutomationsCategoriesUsingPOST(assignAutomationCategoryRequest)
+> bulkAssignmentAutomationsCategories(assignAutomationCategoryRequest)
 
 Bulk update for Automations Categories
 
@@ -77,7 +76,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AutomationApi();
 let assignAutomationCategoryRequest = new KeapCoreServiceV2Sdk.AssignAutomationCategoryRequest(); // AssignAutomationCategoryRequest | assignAutomationCategoryRequest
-apiInstance.bulkAssignmentAutomationsCategoriesUsingPOST(assignAutomationCategoryRequest).then(() => {
+apiInstance.bulkAssignmentAutomationsCategories(assignAutomationCategoryRequest).then(() => {
   console.log('API called successfully.');
 }, (error) => {
   console.error(error);
@@ -106,9 +105,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## deleteAutomationUsingDELETE
+## deleteAutomation
 
-> deleteAutomationUsingDELETE(automationIds)
+> deleteAutomation(automationIds)
 
 Delete an Automation
 
@@ -121,7 +120,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AutomationApi();
 let automationIds = [null]; // [Number] | automation_ids
-apiInstance.deleteAutomationUsingDELETE(automationIds).then(() => {
+apiInstance.deleteAutomation(automationIds).then(() => {
   console.log('API called successfully.');
 }, (error) => {
   console.error(error);
@@ -150,9 +149,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## getAutomationUsingGET
+## getAutomation
 
-> Automation getAutomationUsingGET(automationId)
+> Automation getAutomation(automationId)
 
 Retrieve an Automation
 
@@ -165,7 +164,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AutomationApi();
 let automationId = "automationId_example"; // String | automation_id
-apiInstance.getAutomationUsingGET(automationId).then((data) => {
+apiInstance.getAutomation(automationId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -194,9 +193,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## listAllAutomationIdsUsingGET
+## listAllAutomationIds
 
-> ListAutomationIdsResponse listAllAutomationIdsUsingGET(opts)
+> ListAutomationIdsResponse listAllAutomationIds(opts)
 
 List Automations Ids
 
@@ -215,7 +214,7 @@ let opts = {
   'pageToken': "pageToken_example", // String | Page token
   'stats': true // Boolean | 
 };
-apiInstance.listAllAutomationIdsUsingGET(opts).then((data) => {
+apiInstance.listAllAutomationIds(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -248,9 +247,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## listAutomationsUsingGET
+## listAutomations
 
-> ListAutomationResponse listAutomationsUsingGET(opts)
+> ListAutomationResponse listAutomations(opts)
 
 List Automations
 
@@ -269,7 +268,7 @@ let opts = {
   'pageToken': "pageToken_example", // String | Page token
   'stats': true // Boolean | 
 };
-apiInstance.listAutomationsUsingGET(opts).then((data) => {
+apiInstance.listAutomations(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -299,49 +298,5 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## updateAutomationCategoryUsingPUT
-
-> updateAutomationCategoryUsingPUT(updateAutomationCategoryRequest)
-
-Update an Automation&#39;s Category
-
-Updates the category of one or more automations
-
-### Example
-
-```javascript
-import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
-
-let apiInstance = new KeapCoreServiceV2Sdk.AutomationApi();
-let updateAutomationCategoryRequest = new KeapCoreServiceV2Sdk.UpdateAutomationCategoryRequest(); // UpdateAutomationCategoryRequest | updateAutomationCategoryRequest
-apiInstance.updateAutomationCategoryUsingPUT(updateAutomationCategoryRequest).then(() => {
-  console.log('API called successfully.');
-}, (error) => {
-  console.error(error);
-});
-
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **updateAutomationCategoryRequest** | [**UpdateAutomationCategoryRequest**](UpdateAutomationCategoryRequest.md)| updateAutomationCategoryRequest | 
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
 - **Accept**: application/json
 

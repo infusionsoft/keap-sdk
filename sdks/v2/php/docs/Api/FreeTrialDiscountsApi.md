@@ -4,17 +4,17 @@ All URIs are relative to https://api.keap.com/crm/rest, except if the operation 
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createDiscountUsingPOST1()**](FreeTrialDiscountsApi.md#createDiscountUsingPOST1) | **POST** /v2/discounts/freeTrials | Create a Subscription Free Trial Discount |
-| [**deleteDiscountUsingDELETE1()**](FreeTrialDiscountsApi.md#deleteDiscountUsingDELETE1) | **DELETE** /v2/discounts/freeTrials/{discount_id} | Delete a Subscription Free Trial Discount |
-| [**getDiscountUsingGET1()**](FreeTrialDiscountsApi.md#getDiscountUsingGET1) | **GET** /v2/discounts/freeTrials/{discount_id} | Retrieve a Subscription Free Trial Discount |
-| [**listFreeTrialsUsingGET()**](FreeTrialDiscountsApi.md#listFreeTrialsUsingGET) | **GET** /v2/discounts/freeTrials | List all Subscription Free Trial Discounts |
-| [**updateDiscountUsingPATCH1()**](FreeTrialDiscountsApi.md#updateDiscountUsingPATCH1) | **PATCH** /v2/discounts/freeTrials/{discount_id} | Update a Subscription Free Trial Discount |
+| [**createFreeTrialDiscount()**](FreeTrialDiscountsApi.md#createFreeTrialDiscount) | **POST** /v2/discounts/freeTrials | Create a Subscription Free Trial Discount |
+| [**deleteFreeTrialDiscount()**](FreeTrialDiscountsApi.md#deleteFreeTrialDiscount) | **DELETE** /v2/discounts/freeTrials/{discount_id} | Delete a Subscription Free Trial Discount |
+| [**getFreeTrialDiscount()**](FreeTrialDiscountsApi.md#getFreeTrialDiscount) | **GET** /v2/discounts/freeTrials/{discount_id} | Retrieve a Subscription Free Trial Discount |
+| [**listFreeTrialDiscounts()**](FreeTrialDiscountsApi.md#listFreeTrialDiscounts) | **GET** /v2/discounts/freeTrials | List all Subscription Free Trial Discounts |
+| [**updateFreeTrialDiscount()**](FreeTrialDiscountsApi.md#updateFreeTrialDiscount) | **PATCH** /v2/discounts/freeTrials/{discount_id} | Update a Subscription Free Trial Discount |
 
 
-## `createDiscountUsingPOST1()`
+## `createFreeTrialDiscount()`
 
 ```php
-createDiscountUsingPOST1($create_free_trial_discount_request): \Keap\Core\V2\Model\FreeTrialDiscount
+createFreeTrialDiscount($create_free_trial_discount_request): \Keap\Core\V2\Model\FreeTrialDiscount
 ```
 
 Create a Subscription Free Trial Discount
@@ -36,10 +36,10 @@ $apiInstance = new Keap\Core\V2\Api\FreeTrialDiscountsApi(
 $create_free_trial_discount_request = new \Keap\Core\V2\Model\CreateFreeTrialDiscountRequest(); // \Keap\Core\V2\Model\CreateFreeTrialDiscountRequest | createFreeTrialDiscountRequest
 
 try {
-    $result = $apiInstance->createDiscountUsingPOST1($create_free_trial_discount_request);
+    $result = $apiInstance->createFreeTrialDiscount($create_free_trial_discount_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling FreeTrialDiscountsApi->createDiscountUsingPOST1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling FreeTrialDiscountsApi->createFreeTrialDiscount: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -66,10 +66,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `deleteDiscountUsingDELETE1()`
+## `deleteFreeTrialDiscount()`
 
 ```php
-deleteDiscountUsingDELETE1($discount_id)
+deleteFreeTrialDiscount($discount_id)
 ```
 
 Delete a Subscription Free Trial Discount
@@ -91,9 +91,9 @@ $apiInstance = new Keap\Core\V2\Api\FreeTrialDiscountsApi(
 $discount_id = 'discount_id_example'; // string | discount_id
 
 try {
-    $apiInstance->deleteDiscountUsingDELETE1($discount_id);
+    $apiInstance->deleteFreeTrialDiscount($discount_id);
 } catch (Exception $e) {
-    echo 'Exception when calling FreeTrialDiscountsApi->deleteDiscountUsingDELETE1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling FreeTrialDiscountsApi->deleteFreeTrialDiscount: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -120,10 +120,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getDiscountUsingGET1()`
+## `getFreeTrialDiscount()`
 
 ```php
-getDiscountUsingGET1($discount_id): \Keap\Core\V2\Model\FreeTrialDiscount
+getFreeTrialDiscount($discount_id): \Keap\Core\V2\Model\FreeTrialDiscount
 ```
 
 Retrieve a Subscription Free Trial Discount
@@ -145,10 +145,10 @@ $apiInstance = new Keap\Core\V2\Api\FreeTrialDiscountsApi(
 $discount_id = 'discount_id_example'; // string | discount_id
 
 try {
-    $result = $apiInstance->getDiscountUsingGET1($discount_id);
+    $result = $apiInstance->getFreeTrialDiscount($discount_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling FreeTrialDiscountsApi->getDiscountUsingGET1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling FreeTrialDiscountsApi->getFreeTrialDiscount: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -175,10 +175,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `listFreeTrialsUsingGET()`
+## `listFreeTrialDiscounts()`
 
 ```php
-listFreeTrialsUsingGET($filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListFreeTrialDiscountsResponse
+listFreeTrialDiscounts($filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListFreeTrialDiscountsResponse
 ```
 
 List all Subscription Free Trial Discounts
@@ -203,10 +203,10 @@ $page_size = 0; // int | Total number of items to return per page
 $page_token = 'page_token_example'; // string | Page token
 
 try {
-    $result = $apiInstance->listFreeTrialsUsingGET($filter, $order_by, $page_size, $page_token);
+    $result = $apiInstance->listFreeTrialDiscounts($filter, $order_by, $page_size, $page_token);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling FreeTrialDiscountsApi->listFreeTrialsUsingGET: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling FreeTrialDiscountsApi->listFreeTrialDiscounts: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -236,10 +236,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `updateDiscountUsingPATCH1()`
+## `updateFreeTrialDiscount()`
 
 ```php
-updateDiscountUsingPATCH1($discount_id, $update_free_trial_discount_request, $update_mask): \Keap\Core\V2\Model\FreeTrialDiscount
+updateFreeTrialDiscount($discount_id, $update_free_trial_discount_request, $update_mask): \Keap\Core\V2\Model\FreeTrialDiscount
 ```
 
 Update a Subscription Free Trial Discount
@@ -263,10 +263,10 @@ $update_free_trial_discount_request = new \Keap\Core\V2\Model\UpdateFreeTrialDis
 $update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
-    $result = $apiInstance->updateDiscountUsingPATCH1($discount_id, $update_free_trial_discount_request, $update_mask);
+    $result = $apiInstance->updateFreeTrialDiscount($discount_id, $update_free_trial_discount_request, $update_mask);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling FreeTrialDiscountsApi->updateDiscountUsingPATCH1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling FreeTrialDiscountsApi->updateFreeTrialDiscount: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

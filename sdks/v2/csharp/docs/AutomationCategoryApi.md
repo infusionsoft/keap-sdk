@@ -4,15 +4,14 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**CreateCategoryUsingPOST**](AutomationCategoryApi.md#createcategoryusingpost) | **POST** /v2/automationCategory | Create automation category |
-| [**DeleteCategoriesUsingDELETE**](AutomationCategoryApi.md#deletecategoriesusingdelete) | **DELETE** /v2/automationCategory | Delete automation category |
-| [**ListCategoriesUsingGET**](AutomationCategoryApi.md#listcategoriesusingget) | **GET** /v2/automationCategory | List automation categories |
-| [**PatchCategoryUsingPATCH**](AutomationCategoryApi.md#patchcategoryusingpatch) | **PATCH** /v2/automationCategory/{id} | Update automation category |
-| [**SaveCategoryUsingPUT**](AutomationCategoryApi.md#savecategoryusingput) | **PUT** /v2/automationCategory | Save automation category |
+| [**CreateCategory**](AutomationCategoryApi.md#createcategory) | **POST** /v2/automationCategory | Create automation category |
+| [**DeleteCategories**](AutomationCategoryApi.md#deletecategories) | **DELETE** /v2/automationCategory | Delete automation category |
+| [**ListCategories**](AutomationCategoryApi.md#listcategories) | **GET** /v2/automationCategory | List automation categories |
+| [**PatchCategory**](AutomationCategoryApi.md#patchcategory) | **PATCH** /v2/automationCategory/{id} | Update automation category |
 
-<a id="createcategoryusingpost"></a>
-# **CreateCategoryUsingPOST**
-> AutomationCategory CreateCategoryUsingPOST (CreateAutomationCategoryRequest createAutomationCategoryRequest)
+<a id="createcategory"></a>
+# **CreateCategory**
+> AutomationCategory CreateCategory (CreateAutomationCategoryRequest createAutomationCategoryRequest)
 
 Create automation category
 
@@ -28,7 +27,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class CreateCategoryUsingPOSTExample
+    public class CreateCategoryExample
     {
         public static void Main()
         {
@@ -40,12 +39,12 @@ namespace Example
             try
             {
                 // Create automation category
-                AutomationCategory result = apiInstance.CreateCategoryUsingPOST(createAutomationCategoryRequest);
+                AutomationCategory result = apiInstance.CreateCategory(createAutomationCategoryRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling AutomationCategoryApi.CreateCategoryUsingPOST: " + e.Message);
+                Debug.Print("Exception when calling AutomationCategoryApi.CreateCategory: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -54,21 +53,21 @@ namespace Example
 }
 ```
 
-#### Using the CreateCategoryUsingPOSTWithHttpInfo variant
+#### Using the CreateCategoryWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Create automation category
-    ApiResponse<AutomationCategory> response = apiInstance.CreateCategoryUsingPOSTWithHttpInfo(createAutomationCategoryRequest);
+    ApiResponse<AutomationCategory> response = apiInstance.CreateCategoryWithHttpInfo(createAutomationCategoryRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling AutomationCategoryApi.CreateCategoryUsingPOSTWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling AutomationCategoryApi.CreateCategoryWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -104,9 +103,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="deletecategoriesusingdelete"></a>
-# **DeleteCategoriesUsingDELETE**
-> void DeleteCategoriesUsingDELETE (List<long> ids)
+<a id="deletecategories"></a>
+# **DeleteCategories**
+> void DeleteCategories (List<long> ids)
 
 Delete automation category
 
@@ -122,7 +121,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class DeleteCategoriesUsingDELETEExample
+    public class DeleteCategoriesExample
     {
         public static void Main()
         {
@@ -134,11 +133,11 @@ namespace Example
             try
             {
                 // Delete automation category
-                apiInstance.DeleteCategoriesUsingDELETE(ids);
+                apiInstance.DeleteCategories(ids);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling AutomationCategoryApi.DeleteCategoriesUsingDELETE: " + e.Message);
+                Debug.Print("Exception when calling AutomationCategoryApi.DeleteCategories: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -147,18 +146,18 @@ namespace Example
 }
 ```
 
-#### Using the DeleteCategoriesUsingDELETEWithHttpInfo variant
+#### Using the DeleteCategoriesWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Delete automation category
-    apiInstance.DeleteCategoriesUsingDELETEWithHttpInfo(ids);
+    apiInstance.DeleteCategoriesWithHttpInfo(ids);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling AutomationCategoryApi.DeleteCategoriesUsingDELETEWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling AutomationCategoryApi.DeleteCategoriesWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -195,9 +194,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="listcategoriesusingget"></a>
-# **ListCategoriesUsingGET**
-> ListAutomationCategoryResponse ListCategoriesUsingGET ()
+<a id="listcategories"></a>
+# **ListCategories**
+> ListAutomationCategoryResponse ListCategories ()
 
 List automation categories
 
@@ -213,7 +212,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class ListCategoriesUsingGETExample
+    public class ListCategoriesExample
     {
         public static void Main()
         {
@@ -224,12 +223,12 @@ namespace Example
             try
             {
                 // List automation categories
-                ListAutomationCategoryResponse result = apiInstance.ListCategoriesUsingGET();
+                ListAutomationCategoryResponse result = apiInstance.ListCategories();
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling AutomationCategoryApi.ListCategoriesUsingGET: " + e.Message);
+                Debug.Print("Exception when calling AutomationCategoryApi.ListCategories: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -238,21 +237,21 @@ namespace Example
 }
 ```
 
-#### Using the ListCategoriesUsingGETWithHttpInfo variant
+#### Using the ListCategoriesWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // List automation categories
-    ApiResponse<ListAutomationCategoryResponse> response = apiInstance.ListCategoriesUsingGETWithHttpInfo();
+    ApiResponse<ListAutomationCategoryResponse> response = apiInstance.ListCategoriesWithHttpInfo();
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling AutomationCategoryApi.ListCategoriesUsingGETWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling AutomationCategoryApi.ListCategoriesWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -285,9 +284,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="patchcategoryusingpatch"></a>
-# **PatchCategoryUsingPATCH**
-> AutomationCategory PatchCategoryUsingPATCH (string id, PatchAutomationCategoryRequest patchAutomationCategoryRequest)
+<a id="patchcategory"></a>
+# **PatchCategory**
+> AutomationCategory PatchCategory (string id, PatchAutomationCategoryRequest patchAutomationCategoryRequest)
 
 Update automation category
 
@@ -303,7 +302,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class PatchCategoryUsingPATCHExample
+    public class PatchCategoryExample
     {
         public static void Main()
         {
@@ -316,12 +315,12 @@ namespace Example
             try
             {
                 // Update automation category
-                AutomationCategory result = apiInstance.PatchCategoryUsingPATCH(id, patchAutomationCategoryRequest);
+                AutomationCategory result = apiInstance.PatchCategory(id, patchAutomationCategoryRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling AutomationCategoryApi.PatchCategoryUsingPATCH: " + e.Message);
+                Debug.Print("Exception when calling AutomationCategoryApi.PatchCategory: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -330,21 +329,21 @@ namespace Example
 }
 ```
 
-#### Using the PatchCategoryUsingPATCHWithHttpInfo variant
+#### Using the PatchCategoryWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Update automation category
-    ApiResponse<AutomationCategory> response = apiInstance.PatchCategoryUsingPATCHWithHttpInfo(id, patchAutomationCategoryRequest);
+    ApiResponse<AutomationCategory> response = apiInstance.PatchCategoryWithHttpInfo(id, patchAutomationCategoryRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling AutomationCategoryApi.PatchCategoryUsingPATCHWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling AutomationCategoryApi.PatchCategoryWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -356,101 +355,6 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **id** | **string** | id |  |
 | **patchAutomationCategoryRequest** | [**PatchAutomationCategoryRequest**](PatchAutomationCategoryRequest.md) | patchAutomationCategoryRequest |  |
-
-### Return type
-
-[**AutomationCategory**](AutomationCategory.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **500** | Internal Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a id="savecategoryusingput"></a>
-# **SaveCategoryUsingPUT**
-> AutomationCategory SaveCategoryUsingPUT (SaveAutomationCategoryRequest saveAutomationCategoryRequest)
-
-Save automation category
-
-Creates or updates a single automation category
-
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using Keap.Core.V2.Api;
-using Keap.Core.V2.Client;
-using Keap.Core.V2.Model;
-
-namespace Example
-{
-    public class SaveCategoryUsingPUTExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
-            var apiInstance = new AutomationCategoryApi(config);
-            var saveAutomationCategoryRequest = new SaveAutomationCategoryRequest(); // SaveAutomationCategoryRequest | saveAutomationCategoryRequest
-
-            try
-            {
-                // Save automation category
-                AutomationCategory result = apiInstance.SaveCategoryUsingPUT(saveAutomationCategoryRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling AutomationCategoryApi.SaveCategoryUsingPUT: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the SaveCategoryUsingPUTWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Save automation category
-    ApiResponse<AutomationCategory> response = apiInstance.SaveCategoryUsingPUTWithHttpInfo(saveAutomationCategoryRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling AutomationCategoryApi.SaveCategoryUsingPUTWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| **saveAutomationCategoryRequest** | [**SaveAutomationCategoryRequest**](SaveAutomationCategoryRequest.md) | saveAutomationCategoryRequest |  |
 
 ### Return type
 

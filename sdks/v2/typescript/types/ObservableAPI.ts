@@ -42,28 +42,17 @@ import { ApplicationFeaturesEnabled } from '../models/ApplicationFeaturesEnabled
 import { ApplyRemoveTagRequest } from '../models/ApplyRemoveTagRequest';
 import { ApplyTagsResponse } from '../models/ApplyTagsResponse';
 import { AssignAutomationCategoryRequest } from '../models/AssignAutomationCategoryRequest';
-import { AssignProductCategoriesRequest } from '../models/AssignProductCategoriesRequest';
 import { AssignProductsRequest } from '../models/AssignProductsRequest';
 import { Automation } from '../models/Automation';
 import { AutomationCategory } from '../models/AutomationCategory';
 import { AutomationLockStatus } from '../models/AutomationLockStatus';
-import { BaseListResponseDeal } from '../models/BaseListResponseDeal';
-import { BaseListResponseDealNote } from '../models/BaseListResponseDealNote';
-import { BaseListResponsePipeline } from '../models/BaseListResponsePipeline';
-import { BaseListResponsePipelineCustomField } from '../models/BaseListResponsePipelineCustomField';
-import { BaseListResponsePipelineSummary } from '../models/BaseListResponsePipelineSummary';
-import { BaseListResponseStage } from '../models/BaseListResponseStage';
 import { BasicCompany } from '../models/BasicCompany';
 import { BasicContact } from '../models/BasicContact';
 import { BasicUser } from '../models/BasicUser';
-import { BulkCreateDealNoteRequest } from '../models/BulkCreateDealNoteRequest';
-import { BulkCreateDealNoteResponse } from '../models/BulkCreateDealNoteResponse';
-import { BulkCreateDealNotesRequest } from '../models/BulkCreateDealNotesRequest';
-import { BulkCreateDealNotesResponse } from '../models/BulkCreateDealNotesResponse';
 import { BusinessProfileAddressRequest } from '../models/BusinessProfileAddressRequest';
 import { BusinessProfileAddressResponse } from '../models/BusinessProfileAddressResponse';
 import { Campaign } from '../models/Campaign';
-import { CancelSubscriptionsRequest } from '../models/CancelSubscriptionsRequest';
+import { CancelSubscriptionRequest } from '../models/CancelSubscriptionRequest';
 import { CardInfo } from '../models/CardInfo';
 import { CategoryDiscount } from '../models/CategoryDiscount';
 import { CategoryReference } from '../models/CategoryReference';
@@ -75,6 +64,7 @@ import { ContactLink } from '../models/ContactLink';
 import { ContactLinkType } from '../models/ContactLinkType';
 import { ContactUtmResponse } from '../models/ContactUtmResponse';
 import { Country } from '../models/Country';
+import { CountryCodes } from '../models/CountryCodes';
 import { CreateAffiliateRequest } from '../models/CreateAffiliateRequest';
 import { CreateAutomationCategoryRequest } from '../models/CreateAutomationCategoryRequest';
 import { CreateCategoryDiscountRequest } from '../models/CreateCategoryDiscountRequest';
@@ -85,8 +75,6 @@ import { CreateContactUtmPropertiesRequest } from '../models/CreateContactUtmPro
 import { CreateCustomFieldOptionRequest } from '../models/CreateCustomFieldOptionRequest';
 import { CreateCustomFieldRequest } from '../models/CreateCustomFieldRequest';
 import { CreateCustomFieldResponse } from '../models/CreateCustomFieldResponse';
-import { CreateDealNoteRequest } from '../models/CreateDealNoteRequest';
-import { CreateDealRequest } from '../models/CreateDealRequest';
 import { CreateDefaultCommissionProgramRequest } from '../models/CreateDefaultCommissionProgramRequest';
 import { CreateEmailSentRequest } from '../models/CreateEmailSentRequest';
 import { CreateEmailsSentRequest } from '../models/CreateEmailsSentRequest';
@@ -104,7 +92,6 @@ import { CreateOrUpdateAffiliateLinkRequest } from '../models/CreateOrUpdateAffi
 import { CreateOrderTotalDiscountRequest } from '../models/CreateOrderTotalDiscountRequest';
 import { CreatePaymentMethodConfigRequest } from '../models/CreatePaymentMethodConfigRequest';
 import { CreatePaymentRequest } from '../models/CreatePaymentRequest';
-import { CreatePipelineRequest } from '../models/CreatePipelineRequest';
 import { CreateProductCategoryRequest } from '../models/CreateProductCategoryRequest';
 import { CreateProductCommissionProgramRequest } from '../models/CreateProductCommissionProgramRequest';
 import { CreateProductDiscountRequest } from '../models/CreateProductDiscountRequest';
@@ -113,10 +100,9 @@ import { CreateProductRequest } from '../models/CreateProductRequest';
 import { CreateReferralRequest } from '../models/CreateReferralRequest';
 import { CreateRestOrderItemRequest } from '../models/CreateRestOrderItemRequest';
 import { CreateShippingDiscountRequest } from '../models/CreateShippingDiscountRequest';
-import { CreateStageRequest } from '../models/CreateStageRequest';
 import { CreateSubscriptionCommissionProgramRequest } from '../models/CreateSubscriptionCommissionProgramRequest';
 import { CreateSubscriptionPlanRequest } from '../models/CreateSubscriptionPlanRequest';
-import { CreateSubscriptionV2 } from '../models/CreateSubscriptionV2';
+import { CreateSubscriptionRequest } from '../models/CreateSubscriptionRequest';
 import { CreateTaskRequest } from '../models/CreateTaskRequest';
 import { CreateUpdateContactRequest } from '../models/CreateUpdateContactRequest';
 import { CreateUpdateLeadSourceCategoryRequest } from '../models/CreateUpdateLeadSourceCategoryRequest';
@@ -129,14 +115,6 @@ import { CustomField } from '../models/CustomField';
 import { CustomFieldMetaData } from '../models/CustomFieldMetaData';
 import { CustomFieldOption } from '../models/CustomFieldOption';
 import { CustomFieldValue } from '../models/CustomFieldValue';
-import { DateExpression } from '../models/DateExpression';
-import { DateExpressionResponse } from '../models/DateExpressionResponse';
-import { Deal } from '../models/Deal';
-import { DealContact } from '../models/DealContact';
-import { DealListResponse } from '../models/DealListResponse';
-import { DealNote } from '../models/DealNote';
-import { DealNoteListResponse } from '../models/DealNoteListResponse';
-import { DealStatus } from '../models/DealStatus';
 import { DefaultCommission } from '../models/DefaultCommission';
 import { DeleteEmailsRequest } from '../models/DeleteEmailsRequest';
 import { DeleteEmailsResponse } from '../models/DeleteEmailsResponse';
@@ -145,16 +123,13 @@ import { DeleteProgramCommissionRequest } from '../models/DeleteProgramCommissio
 import { DeleteSubscriptionPlanCommissionRequest } from '../models/DeleteSubscriptionPlanCommissionRequest';
 import { Discount } from '../models/Discount';
 import { DiscountCriteria } from '../models/DiscountCriteria';
-import { DisplayForm } from '../models/DisplayForm';
-import { DisplayGroup } from '../models/DisplayGroup';
-import { DisplayProperty } from '../models/DisplayProperty';
-import { DisplayPropertySource } from '../models/DisplayPropertySource';
 import { EmailAddress } from '../models/EmailAddress';
 import { EmailAddressRequest } from '../models/EmailAddressRequest';
 import { EmailAddressStatus } from '../models/EmailAddressStatus';
 import { EmailSendRequest } from '../models/EmailSendRequest';
 import { EmailSendRequestAttachment } from '../models/EmailSendRequestAttachment';
 import { EmailSendTemplateRequest } from '../models/EmailSendTemplateRequest';
+import { EmailSent } from '../models/EmailSent';
 import { EmailSentCreateError } from '../models/EmailSentCreateError';
 import { EmailSentWithContent } from '../models/EmailSentWithContent';
 import { EmailTemplate } from '../models/EmailTemplate';
@@ -194,6 +169,7 @@ import { ListAffiliateCommissionProgramsResponse } from '../models/ListAffiliate
 import { ListAffiliateCommissionsResponse } from '../models/ListAffiliateCommissionsResponse';
 import { ListAffiliateLinksResponse } from '../models/ListAffiliateLinksResponse';
 import { ListAffiliateSummariesResponse } from '../models/ListAffiliateSummariesResponse';
+import { ListAffiliatesResponse } from '../models/ListAffiliatesResponse';
 import { ListAutomationCategoryResponse } from '../models/ListAutomationCategoryResponse';
 import { ListAutomationIdsResponse } from '../models/ListAutomationIdsResponse';
 import { ListAutomationResponse } from '../models/ListAutomationResponse';
@@ -205,6 +181,7 @@ import { ListContactLinkTypesResponse } from '../models/ListContactLinkTypesResp
 import { ListContactLinksResponse } from '../models/ListContactLinksResponse';
 import { ListContactsResponse } from '../models/ListContactsResponse';
 import { ListCountriesResponse } from '../models/ListCountriesResponse';
+import { ListEmailsSentResponse } from '../models/ListEmailsSentResponse';
 import { ListFilesResponse } from '../models/ListFilesResponse';
 import { ListFreeTrialDiscountsResponse } from '../models/ListFreeTrialDiscountsResponse';
 import { ListLandingPagesResponse } from '../models/ListLandingPagesResponse';
@@ -212,6 +189,8 @@ import { ListLeadSourceCategoriesResponse } from '../models/ListLeadSourceCatego
 import { ListLeadSourceExpensesResponse } from '../models/ListLeadSourceExpensesResponse';
 import { ListLeadSourceRecurringExpensesResponse } from '../models/ListLeadSourceRecurringExpensesResponse';
 import { ListLeadSourcesResponse } from '../models/ListLeadSourcesResponse';
+import { ListMerchantAccountResponse } from '../models/ListMerchantAccountResponse';
+import { ListMerchantsResponse } from '../models/ListMerchantsResponse';
 import { ListNoteTemplateResponse } from '../models/ListNoteTemplateResponse';
 import { ListNotesResponse } from '../models/ListNotesResponse';
 import { ListOpportunitiesResponse } from '../models/ListOpportunitiesResponse';
@@ -226,8 +205,6 @@ import { ListProductInterestBundleResponse } from '../models/ListProductInterest
 import { ListProductsResponse } from '../models/ListProductsResponse';
 import { ListProvincesResponse } from '../models/ListProvincesResponse';
 import { ListReportsResponse } from '../models/ListReportsResponse';
-import { ListRestMerchantAccountResponse } from '../models/ListRestMerchantAccountResponse';
-import { ListRestMerchantResponse } from '../models/ListRestMerchantResponse';
 import { ListRestShippingMethodsResponse } from '../models/ListRestShippingMethodsResponse';
 import { ListShippingDiscountsResponse } from '../models/ListShippingDiscountsResponse';
 import { ListSubscriptionPlansResponse } from '../models/ListSubscriptionPlansResponse';
@@ -238,12 +215,8 @@ import { ListTaggedContactsResponse } from '../models/ListTaggedContactsResponse
 import { ListTagsResponse } from '../models/ListTagsResponse';
 import { ListTasksResponse } from '../models/ListTasksResponse';
 import { ListUsersPaginatedResponse } from '../models/ListUsersPaginatedResponse';
-import { LogicalDate } from '../models/LogicalDate';
 import { ModelError } from '../models/ModelError';
 import { ModelFile } from '../models/ModelFile';
-import { Money } from '../models/Money';
-import { MoveDealsForContactsRequest } from '../models/MoveDealsForContactsRequest';
-import { MoveDealsForContactsResponse } from '../models/MoveDealsForContactsResponse';
 import { Note } from '../models/Note';
 import { NoteTemplate } from '../models/NoteTemplate';
 import { ObjectModel } from '../models/ObjectModel';
@@ -254,49 +227,12 @@ import { OrderItemTax } from '../models/OrderItemTax';
 import { OrderTotalDiscount } from '../models/OrderTotalDiscount';
 import { Origin } from '../models/Origin';
 import { OriginRequest } from '../models/OriginRequest';
-import { Owner } from '../models/Owner';
 import { PatchAutomationCategoryRequest } from '../models/PatchAutomationCategoryRequest';
 import { PaymentMethod } from '../models/PaymentMethod';
 import { PaymentMethodConfig } from '../models/PaymentMethodConfig';
 import { PaymentPlan } from '../models/PaymentPlan';
 import { PaymentResult } from '../models/PaymentResult';
 import { PhoneNumber } from '../models/PhoneNumber';
-import { Pipeline } from '../models/Pipeline';
-import { PipelineCustomField } from '../models/PipelineCustomField';
-import { PipelineCustomFieldArrayDisplayOptions } from '../models/PipelineCustomFieldArrayDisplayOptions';
-import { PipelineCustomFieldArrayPropertyType } from '../models/PipelineCustomFieldArrayPropertyType';
-import { PipelineCustomFieldBooleanDisplayOptions } from '../models/PipelineCustomFieldBooleanDisplayOptions';
-import { PipelineCustomFieldBooleanDisplayType } from '../models/PipelineCustomFieldBooleanDisplayType';
-import { PipelineCustomFieldCardDisplayOptions } from '../models/PipelineCustomFieldCardDisplayOptions';
-import { PipelineCustomFieldCardProperty } from '../models/PipelineCustomFieldCardProperty';
-import { PipelineCustomFieldDateTimeOptions } from '../models/PipelineCustomFieldDateTimeOptions';
-import { PipelineCustomFieldDisplayOptions } from '../models/PipelineCustomFieldDisplayOptions';
-import { PipelineCustomFieldDisplayOptionsType } from '../models/PipelineCustomFieldDisplayOptionsType';
-import { PipelineCustomFieldDisplayStyle } from '../models/PipelineCustomFieldDisplayStyle';
-import { PipelineCustomFieldDurationDisplayOptions } from '../models/PipelineCustomFieldDurationDisplayOptions';
-import { PipelineCustomFieldDurationOptionsDurationUnit } from '../models/PipelineCustomFieldDurationOptionsDurationUnit';
-import { PipelineCustomFieldEmptyStateContent } from '../models/PipelineCustomFieldEmptyStateContent';
-import { PipelineCustomFieldModelPropertyTypeDiscriminator } from '../models/PipelineCustomFieldModelPropertyTypeDiscriminator';
-import { PipelineCustomFieldOption } from '../models/PipelineCustomFieldOption';
-import { PipelineCustomFieldOptionDisplayType } from '../models/PipelineCustomFieldOptionDisplayType';
-import { PipelineCustomFieldOptionGroup } from '../models/PipelineCustomFieldOptionGroup';
-import { PipelineCustomFieldOptions } from '../models/PipelineCustomFieldOptions';
-import { PipelineCustomFieldPrimitiveType } from '../models/PipelineCustomFieldPrimitiveType';
-import { PipelineCustomFieldPropertyValidator } from '../models/PipelineCustomFieldPropertyValidator';
-import { PipelineCustomFieldRefDisplayOptions } from '../models/PipelineCustomFieldRefDisplayOptions';
-import { PipelineCustomFieldRefDisplayType } from '../models/PipelineCustomFieldRefDisplayType';
-import { PipelineCustomFieldRefPropertyType } from '../models/PipelineCustomFieldRefPropertyType';
-import { PipelineCustomFieldRefType } from '../models/PipelineCustomFieldRefType';
-import { PipelineCustomFieldSizeValidationType } from '../models/PipelineCustomFieldSizeValidationType';
-import { PipelineCustomFieldSizeValidator } from '../models/PipelineCustomFieldSizeValidator';
-import { PipelineCustomFieldType } from '../models/PipelineCustomFieldType';
-import { PipelineCustomFields } from '../models/PipelineCustomFields';
-import { PipelineListResponse } from '../models/PipelineListResponse';
-import { PipelineOutcomeLabel } from '../models/PipelineOutcomeLabel';
-import { PipelineOutcomeLabelListResponse } from '../models/PipelineOutcomeLabelListResponse';
-import { PipelineStageListResponse } from '../models/PipelineStageListResponse';
-import { PipelineSummariesListResponse } from '../models/PipelineSummariesListResponse';
-import { PipelineSummary } from '../models/PipelineSummary';
 import { ProductCategory } from '../models/ProductCategory';
 import { ProductCommission } from '../models/ProductCommission';
 import { ProductCommissionProgram } from '../models/ProductCommissionProgram';
@@ -307,7 +243,7 @@ import { ProductInterestBundle } from '../models/ProductInterestBundle';
 import { ProductInventory } from '../models/ProductInventory';
 import { ProductOptions } from '../models/ProductOptions';
 import { ProductVariableSetting } from '../models/ProductVariableSetting';
-import { Provinces } from '../models/Provinces';
+import { Province } from '../models/Province';
 import { Referral } from '../models/Referral';
 import { RemoveContactsFromSequenceRequest } from '../models/RemoveContactsFromSequenceRequest';
 import { RemoveContactsFromSequenceResponse } from '../models/RemoveContactsFromSequenceResponse';
@@ -324,14 +260,12 @@ import { RestOpportunityStage } from '../models/RestOpportunityStage';
 import { RestProductOption } from '../models/RestProductOption';
 import { RestProductOptionValue } from '../models/RestProductOptionValue';
 import { RestSubscriptionPlan } from '../models/RestSubscriptionPlan';
-import { RestSubscriptionV2 } from '../models/RestSubscriptionV2';
 import { RestV2Opportunity } from '../models/RestV2Opportunity';
 import { RestV2Order } from '../models/RestV2Order';
 import { RestV2OrderItem } from '../models/RestV2OrderItem';
 import { RestV2Product } from '../models/RestV2Product';
 import { RestV2Subscription } from '../models/RestV2Subscription';
 import { RestV2User } from '../models/RestV2User';
-import { SaveAutomationCategoryRequest } from '../models/SaveAutomationCategoryRequest';
 import { Sequence } from '../models/Sequence';
 import { SequencePath } from '../models/SequencePath';
 import { SetDefaultCommissionProgramResponse } from '../models/SetDefaultCommissionProgramResponse';
@@ -340,10 +274,8 @@ import { ShippingInformation } from '../models/ShippingInformation';
 import { ShippingMethod } from '../models/ShippingMethod';
 import { SocialAccount } from '../models/SocialAccount';
 import { StackTraceElement } from '../models/StackTraceElement';
-import { Stage } from '../models/Stage';
-import { StageDealListResponse } from '../models/StageDealListResponse';
 import { StageDetails } from '../models/StageDetails';
-import { StageListResponse } from '../models/StageListResponse';
+import { Subscription } from '../models/Subscription';
 import { SubscriptionCommission } from '../models/SubscriptionCommission';
 import { SubscriptionCommissionProgram } from '../models/SubscriptionCommissionProgram';
 import { SubscriptionPlan } from '../models/SubscriptionPlan';
@@ -354,18 +286,12 @@ import { Throwable } from '../models/Throwable';
 import { URI } from '../models/URI';
 import { URL } from '../models/URL';
 import { UpdateAffiliateRequest } from '../models/UpdateAffiliateRequest';
-import { UpdateAutomationCategoryRequest } from '../models/UpdateAutomationCategoryRequest';
 import { UpdateBusinessProfileRequest } from '../models/UpdateBusinessProfileRequest';
 import { UpdateCategoryDiscountRequest } from '../models/UpdateCategoryDiscountRequest';
 import { UpdateCommissionProgramRequest } from '../models/UpdateCommissionProgramRequest';
 import { UpdateCompanyRequest } from '../models/UpdateCompanyRequest';
 import { UpdateCustomFieldMetaDataRequest } from '../models/UpdateCustomFieldMetaDataRequest';
-import { UpdateCustomFieldRequest } from '../models/UpdateCustomFieldRequest';
-import { UpdateDealNoteRequest } from '../models/UpdateDealNoteRequest';
 import { UpdateDefaultCommissionProgramRequest } from '../models/UpdateDefaultCommissionProgramRequest';
-import { UpdateDisplayFormRequest } from '../models/UpdateDisplayFormRequest';
-import { UpdateDisplayGroupRequest } from '../models/UpdateDisplayGroupRequest';
-import { UpdateDisplayPropertyRequest } from '../models/UpdateDisplayPropertyRequest';
 import { UpdateEmailAddress } from '../models/UpdateEmailAddress';
 import { UpdateFreeTrialDiscountRequest } from '../models/UpdateFreeTrialDiscountRequest';
 import { UpdateLeadSourceExpenseRequest } from '../models/UpdateLeadSourceExpenseRequest';
@@ -377,8 +303,6 @@ import { UpdateOpportunityStageRequest } from '../models/UpdateOpportunityStageR
 import { UpdateOrderItemRequest } from '../models/UpdateOrderItemRequest';
 import { UpdateOrderRequest } from '../models/UpdateOrderRequest';
 import { UpdateOrderTotalDiscountRequest } from '../models/UpdateOrderTotalDiscountRequest';
-import { UpdateOutcomeLabelsRequest } from '../models/UpdateOutcomeLabelsRequest';
-import { UpdatePipelineRequest } from '../models/UpdatePipelineRequest';
 import { UpdateProductCategoryRequest } from '../models/UpdateProductCategoryRequest';
 import { UpdateProductCommissionProgramRequest } from '../models/UpdateProductCommissionProgramRequest';
 import { UpdateProductDiscountRequest } from '../models/UpdateProductDiscountRequest';
@@ -387,7 +311,6 @@ import { UpdateProductInterestRequest } from '../models/UpdateProductInterestReq
 import { UpdateProductInventoryRequest } from '../models/UpdateProductInventoryRequest';
 import { UpdateProductRequest } from '../models/UpdateProductRequest';
 import { UpdateShippingDiscountRequest } from '../models/UpdateShippingDiscountRequest';
-import { UpdateStageRequest } from '../models/UpdateStageRequest';
 import { UpdateSubscriptionCommissionProgramRequest } from '../models/UpdateSubscriptionCommissionProgramRequest';
 import { UpdateSubscriptionPlanRequest } from '../models/UpdateSubscriptionPlanRequest';
 import { UpdateSubscriptionRequest } from '../models/UpdateSubscriptionRequest';
@@ -415,50 +338,14 @@ export class ObservableAffiliateApi {
     }
 
     /**
-     * Assigns an Affiliate to Commission Program
-     * Assign Affiliate to Commission program
-     * @param id id
-     * @param affiliateAddToProgramRequest affiliateAddToProgramRequest
-     */
-    public addAffiliateToProgramUsingPOSTWithHttpInfo(id: string, affiliateAddToProgramRequest: AffiliateAddToProgramRequest, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.addAffiliateToProgramUsingPOST(id, affiliateAddToProgramRequest, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.addAffiliateToProgramUsingPOSTWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Assigns an Affiliate to Commission Program
-     * Assign Affiliate to Commission program
-     * @param id id
-     * @param affiliateAddToProgramRequest affiliateAddToProgramRequest
-     */
-    public addAffiliateToProgramUsingPOST(id: string, affiliateAddToProgramRequest: AffiliateAddToProgramRequest, _options?: ConfigurationOptions): Observable<void> {
-        return this.addAffiliateToProgramUsingPOSTWithHttpInfo(id, affiliateAddToProgramRequest, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
-    }
-
-    /**
      * Creates a single Affiliate
      * Create an Affiliate
      * @param [createAffiliateRequest] Affiliate request to insert
      */
-    public addAffiliateUsingPOSTWithHttpInfo(createAffiliateRequest?: CreateAffiliateRequest, _options?: ConfigurationOptions): Observable<HttpInfo<RestAffiliate>> {
+    public addAffiliateWithHttpInfo(createAffiliateRequest?: CreateAffiliateRequest, _options?: ConfigurationOptions): Observable<HttpInfo<RestAffiliate>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.addAffiliateUsingPOST(createAffiliateRequest, _config);
+        const requestContextPromise = this.requestFactory.addAffiliate(createAffiliateRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -471,7 +358,7 @@ export class ObservableAffiliateApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.addAffiliateUsingPOSTWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.addAffiliateWithHttpInfo(rsp)));
             }));
     }
 
@@ -480,19 +367,20 @@ export class ObservableAffiliateApi {
      * Create an Affiliate
      * @param [createAffiliateRequest] Affiliate request to insert
      */
-    public addAffiliateUsingPOST(createAffiliateRequest?: CreateAffiliateRequest, _options?: ConfigurationOptions): Observable<RestAffiliate> {
-        return this.addAffiliateUsingPOSTWithHttpInfo(createAffiliateRequest, _options).pipe(map((apiResponse: HttpInfo<RestAffiliate>) => apiResponse.data));
+    public addAffiliate(createAffiliateRequest?: CreateAffiliateRequest, _options?: ConfigurationOptions): Observable<RestAffiliate> {
+        return this.addAffiliateWithHttpInfo(createAffiliateRequest, _options).pipe(map((apiResponse: HttpInfo<RestAffiliate>) => apiResponse.data));
     }
 
     /**
-     * Creates an Affiliate Commission Program
-     * Create an Affiliate Commission Program
-     * @param [createCommissionProgramRequest] Commission Program to insert
+     * Assigns an Affiliate to Commission Program
+     * Assign Affiliate to Commission program
+     * @param id id
+     * @param affiliateAddToProgramRequest affiliateAddToProgramRequest
      */
-    public addCommissionProgramUsingPOSTWithHttpInfo(createCommissionProgramRequest?: CreateCommissionProgramRequest, _options?: ConfigurationOptions): Observable<HttpInfo<AffiliateCommissionProgramResponse>> {
+    public addAffiliateToProgramWithHttpInfo(id: string, affiliateAddToProgramRequest: AffiliateAddToProgramRequest, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.addCommissionProgramUsingPOST(createCommissionProgramRequest, _config);
+        const requestContextPromise = this.requestFactory.addAffiliateToProgram(id, affiliateAddToProgramRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -505,7 +393,42 @@ export class ObservableAffiliateApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.addCommissionProgramUsingPOSTWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.addAffiliateToProgramWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Assigns an Affiliate to Commission Program
+     * Assign Affiliate to Commission program
+     * @param id id
+     * @param affiliateAddToProgramRequest affiliateAddToProgramRequest
+     */
+    public addAffiliateToProgram(id: string, affiliateAddToProgramRequest: AffiliateAddToProgramRequest, _options?: ConfigurationOptions): Observable<void> {
+        return this.addAffiliateToProgramWithHttpInfo(id, affiliateAddToProgramRequest, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+    /**
+     * Creates an Affiliate Commission Program
+     * Create an Affiliate Commission Program
+     * @param [createCommissionProgramRequest] Commission Program to insert
+     */
+    public addCommissionProgramWithHttpInfo(createCommissionProgramRequest?: CreateCommissionProgramRequest, _options?: ConfigurationOptions): Observable<HttpInfo<AffiliateCommissionProgramResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.addCommissionProgram(createCommissionProgramRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.addCommissionProgramWithHttpInfo(rsp)));
             }));
     }
 
@@ -514,8 +437,8 @@ export class ObservableAffiliateApi {
      * Create an Affiliate Commission Program
      * @param [createCommissionProgramRequest] Commission Program to insert
      */
-    public addCommissionProgramUsingPOST(createCommissionProgramRequest?: CreateCommissionProgramRequest, _options?: ConfigurationOptions): Observable<AffiliateCommissionProgramResponse> {
-        return this.addCommissionProgramUsingPOSTWithHttpInfo(createCommissionProgramRequest, _options).pipe(map((apiResponse: HttpInfo<AffiliateCommissionProgramResponse>) => apiResponse.data));
+    public addCommissionProgram(createCommissionProgramRequest?: CreateCommissionProgramRequest, _options?: ConfigurationOptions): Observable<AffiliateCommissionProgramResponse> {
+        return this.addCommissionProgramWithHttpInfo(createCommissionProgramRequest, _options).pipe(map((apiResponse: HttpInfo<AffiliateCommissionProgramResponse>) => apiResponse.data));
     }
 
     /**
@@ -524,10 +447,10 @@ export class ObservableAffiliateApi {
      * @param commissionProgramId commission_program_id
      * @param [createProductCommissionProgramRequest] Product Commission Program
      */
-    public assignProductCommissionProgramUsingPOSTWithHttpInfo(commissionProgramId: string, createProductCommissionProgramRequest?: CreateProductCommissionProgramRequest, _options?: ConfigurationOptions): Observable<HttpInfo<ProductCommissionProgram>> {
+    public assignProductCommissionProgramWithHttpInfo(commissionProgramId: string, createProductCommissionProgramRequest?: CreateProductCommissionProgramRequest, _options?: ConfigurationOptions): Observable<HttpInfo<ProductCommissionProgram>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.assignProductCommissionProgramUsingPOST(commissionProgramId, createProductCommissionProgramRequest, _config);
+        const requestContextPromise = this.requestFactory.assignProductCommissionProgram(commissionProgramId, createProductCommissionProgramRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -540,7 +463,7 @@ export class ObservableAffiliateApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.assignProductCommissionProgramUsingPOSTWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.assignProductCommissionProgramWithHttpInfo(rsp)));
             }));
     }
 
@@ -550,8 +473,8 @@ export class ObservableAffiliateApi {
      * @param commissionProgramId commission_program_id
      * @param [createProductCommissionProgramRequest] Product Commission Program
      */
-    public assignProductCommissionProgramUsingPOST(commissionProgramId: string, createProductCommissionProgramRequest?: CreateProductCommissionProgramRequest, _options?: ConfigurationOptions): Observable<ProductCommissionProgram> {
-        return this.assignProductCommissionProgramUsingPOSTWithHttpInfo(commissionProgramId, createProductCommissionProgramRequest, _options).pipe(map((apiResponse: HttpInfo<ProductCommissionProgram>) => apiResponse.data));
+    public assignProductCommissionProgram(commissionProgramId: string, createProductCommissionProgramRequest?: CreateProductCommissionProgramRequest, _options?: ConfigurationOptions): Observable<ProductCommissionProgram> {
+        return this.assignProductCommissionProgramWithHttpInfo(commissionProgramId, createProductCommissionProgramRequest, _options).pipe(map((apiResponse: HttpInfo<ProductCommissionProgram>) => apiResponse.data));
     }
 
     /**
@@ -560,10 +483,10 @@ export class ObservableAffiliateApi {
      * @param commissionProgramId commission_program_id
      * @param [createSubscriptionCommissionProgramRequest] Subscription Commission Program
      */
-    public assignSubscriptionCommissionProgramUsingPOSTWithHttpInfo(commissionProgramId: string, createSubscriptionCommissionProgramRequest?: CreateSubscriptionCommissionProgramRequest, _options?: ConfigurationOptions): Observable<HttpInfo<SubscriptionCommissionProgram>> {
+    public assignSubscriptionCommissionProgramWithHttpInfo(commissionProgramId: string, createSubscriptionCommissionProgramRequest?: CreateSubscriptionCommissionProgramRequest, _options?: ConfigurationOptions): Observable<HttpInfo<SubscriptionCommissionProgram>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.assignSubscriptionCommissionProgramUsingPOST(commissionProgramId, createSubscriptionCommissionProgramRequest, _config);
+        const requestContextPromise = this.requestFactory.assignSubscriptionCommissionProgram(commissionProgramId, createSubscriptionCommissionProgramRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -576,7 +499,7 @@ export class ObservableAffiliateApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.assignSubscriptionCommissionProgramUsingPOSTWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.assignSubscriptionCommissionProgramWithHttpInfo(rsp)));
             }));
     }
 
@@ -586,8 +509,8 @@ export class ObservableAffiliateApi {
      * @param commissionProgramId commission_program_id
      * @param [createSubscriptionCommissionProgramRequest] Subscription Commission Program
      */
-    public assignSubscriptionCommissionProgramUsingPOST(commissionProgramId: string, createSubscriptionCommissionProgramRequest?: CreateSubscriptionCommissionProgramRequest, _options?: ConfigurationOptions): Observable<SubscriptionCommissionProgram> {
-        return this.assignSubscriptionCommissionProgramUsingPOSTWithHttpInfo(commissionProgramId, createSubscriptionCommissionProgramRequest, _options).pipe(map((apiResponse: HttpInfo<SubscriptionCommissionProgram>) => apiResponse.data));
+    public assignSubscriptionCommissionProgram(commissionProgramId: string, createSubscriptionCommissionProgramRequest?: CreateSubscriptionCommissionProgramRequest, _options?: ConfigurationOptions): Observable<SubscriptionCommissionProgram> {
+        return this.assignSubscriptionCommissionProgramWithHttpInfo(commissionProgramId, createSubscriptionCommissionProgramRequest, _options).pipe(map((apiResponse: HttpInfo<SubscriptionCommissionProgram>) => apiResponse.data));
     }
 
     /**
@@ -596,10 +519,10 @@ export class ObservableAffiliateApi {
      * @param commissionProgramId commission_program_id
      * @param [createDefaultCommissionProgramRequest] Values of the Default Commission Program
      */
-    public createDefaultCommissionProgramUsingPOSTWithHttpInfo(commissionProgramId: string, createDefaultCommissionProgramRequest?: CreateDefaultCommissionProgramRequest, _options?: ConfigurationOptions): Observable<HttpInfo<SetDefaultCommissionProgramResponse>> {
+    public createDefaultCommissionProgramWithHttpInfo(commissionProgramId: string, createDefaultCommissionProgramRequest?: CreateDefaultCommissionProgramRequest, _options?: ConfigurationOptions): Observable<HttpInfo<SetDefaultCommissionProgramResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.createDefaultCommissionProgramUsingPOST(commissionProgramId, createDefaultCommissionProgramRequest, _config);
+        const requestContextPromise = this.requestFactory.createDefaultCommissionProgram(commissionProgramId, createDefaultCommissionProgramRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -612,7 +535,7 @@ export class ObservableAffiliateApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createDefaultCommissionProgramUsingPOSTWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createDefaultCommissionProgramWithHttpInfo(rsp)));
             }));
     }
 
@@ -622,8 +545,8 @@ export class ObservableAffiliateApi {
      * @param commissionProgramId commission_program_id
      * @param [createDefaultCommissionProgramRequest] Values of the Default Commission Program
      */
-    public createDefaultCommissionProgramUsingPOST(commissionProgramId: string, createDefaultCommissionProgramRequest?: CreateDefaultCommissionProgramRequest, _options?: ConfigurationOptions): Observable<SetDefaultCommissionProgramResponse> {
-        return this.createDefaultCommissionProgramUsingPOSTWithHttpInfo(commissionProgramId, createDefaultCommissionProgramRequest, _options).pipe(map((apiResponse: HttpInfo<SetDefaultCommissionProgramResponse>) => apiResponse.data));
+    public createDefaultCommissionProgram(commissionProgramId: string, createDefaultCommissionProgramRequest?: CreateDefaultCommissionProgramRequest, _options?: ConfigurationOptions): Observable<SetDefaultCommissionProgramResponse> {
+        return this.createDefaultCommissionProgramWithHttpInfo(commissionProgramId, createDefaultCommissionProgramRequest, _options).pipe(map((apiResponse: HttpInfo<SetDefaultCommissionProgramResponse>) => apiResponse.data));
     }
 
     /**
@@ -631,10 +554,10 @@ export class ObservableAffiliateApi {
      * Create an Affiliate Link
      * @param createOrUpdateAffiliateLinkRequest request
      */
-    public createRedirectLinkUsingPOSTWithHttpInfo(createOrUpdateAffiliateLinkRequest: CreateOrUpdateAffiliateLinkRequest, _options?: ConfigurationOptions): Observable<HttpInfo<AffiliateLink>> {
+    public createRedirectLinkWithHttpInfo(createOrUpdateAffiliateLinkRequest: CreateOrUpdateAffiliateLinkRequest, _options?: ConfigurationOptions): Observable<HttpInfo<AffiliateLink>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.createRedirectLinkUsingPOST(createOrUpdateAffiliateLinkRequest, _config);
+        const requestContextPromise = this.requestFactory.createRedirectLink(createOrUpdateAffiliateLinkRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -647,7 +570,7 @@ export class ObservableAffiliateApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createRedirectLinkUsingPOSTWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createRedirectLinkWithHttpInfo(rsp)));
             }));
     }
 
@@ -656,42 +579,8 @@ export class ObservableAffiliateApi {
      * Create an Affiliate Link
      * @param createOrUpdateAffiliateLinkRequest request
      */
-    public createRedirectLinkUsingPOST(createOrUpdateAffiliateLinkRequest: CreateOrUpdateAffiliateLinkRequest, _options?: ConfigurationOptions): Observable<AffiliateLink> {
-        return this.createRedirectLinkUsingPOSTWithHttpInfo(createOrUpdateAffiliateLinkRequest, _options).pipe(map((apiResponse: HttpInfo<AffiliateLink>) => apiResponse.data));
-    }
-
-    /**
-     * Deletes a Commission Program
-     * Delete a Commission Program
-     * @param commissionProgramId commission_program_id
-     */
-    public deleteAffiliateCommissionProgramUsingDELETEWithHttpInfo(commissionProgramId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.deleteAffiliateCommissionProgramUsingDELETE(commissionProgramId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteAffiliateCommissionProgramUsingDELETEWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Deletes a Commission Program
-     * Delete a Commission Program
-     * @param commissionProgramId commission_program_id
-     */
-    public deleteAffiliateCommissionProgramUsingDELETE(commissionProgramId: string, _options?: ConfigurationOptions): Observable<void> {
-        return this.deleteAffiliateCommissionProgramUsingDELETEWithHttpInfo(commissionProgramId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public createRedirectLink(createOrUpdateAffiliateLinkRequest: CreateOrUpdateAffiliateLinkRequest, _options?: ConfigurationOptions): Observable<AffiliateLink> {
+        return this.createRedirectLinkWithHttpInfo(createOrUpdateAffiliateLinkRequest, _options).pipe(map((apiResponse: HttpInfo<AffiliateLink>) => apiResponse.data));
     }
 
     /**
@@ -699,10 +588,10 @@ export class ObservableAffiliateApi {
      * Delete Affiliate
      * @param id id
      */
-    public deleteAffiliateUsingDELETEWithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public deleteAffiliateWithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.deleteAffiliateUsingDELETE(id, _config);
+        const requestContextPromise = this.requestFactory.deleteAffiliate(id, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -715,7 +604,7 @@ export class ObservableAffiliateApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteAffiliateUsingDELETEWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteAffiliateWithHttpInfo(rsp)));
             }));
     }
 
@@ -724,19 +613,19 @@ export class ObservableAffiliateApi {
      * Delete Affiliate
      * @param id id
      */
-    public deleteAffiliateUsingDELETE(id: string, _options?: ConfigurationOptions): Observable<void> {
-        return this.deleteAffiliateUsingDELETEWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public deleteAffiliate(id: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteAffiliateWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
-     * Deletes an Affiliate Link
-     * Delete an Affiliate Link
-     * @param redirectId redirect_id
+     * Deletes a Commission Program
+     * Delete a Commission Program
+     * @param commissionProgramId commission_program_id
      */
-    public deleteRedirectLinkUsingDELETEWithHttpInfo(redirectId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public deleteAffiliateCommissionProgramWithHttpInfo(commissionProgramId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.deleteRedirectLinkUsingDELETE(redirectId, _config);
+        const requestContextPromise = this.requestFactory.deleteAffiliateCommissionProgram(commissionProgramId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -749,8 +638,17 @@ export class ObservableAffiliateApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteRedirectLinkUsingDELETEWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteAffiliateCommissionProgramWithHttpInfo(rsp)));
             }));
+    }
+
+    /**
+     * Deletes a Commission Program
+     * Delete a Commission Program
+     * @param commissionProgramId commission_program_id
+     */
+    public deleteAffiliateCommissionProgram(commissionProgramId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteAffiliateCommissionProgramWithHttpInfo(commissionProgramId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
@@ -758,19 +656,10 @@ export class ObservableAffiliateApi {
      * Delete an Affiliate Link
      * @param redirectId redirect_id
      */
-    public deleteRedirectLinkUsingDELETE(redirectId: string, _options?: ConfigurationOptions): Observable<void> {
-        return this.deleteRedirectLinkUsingDELETEWithHttpInfo(redirectId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
-    }
-
-    /**
-     * Get the Affiliate Commission Earned and View LedgerURl for portal
-     * Retrieve Affiliate Commission Earned and View LedgerURl for portal
-     * @param affiliateId affiliate_id
-     */
-    public getAffiliateCommissionTotalUsingGETWithHttpInfo(affiliateId: string, _options?: ConfigurationOptions): Observable<HttpInfo<AffiliateCommissionEarned>> {
+    public deleteRedirectLinkWithHttpInfo(redirectId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getAffiliateCommissionTotalUsingGET(affiliateId, _config);
+        const requestContextPromise = this.requestFactory.deleteRedirectLink(redirectId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -783,7 +672,75 @@ export class ObservableAffiliateApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getAffiliateCommissionTotalUsingGETWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteRedirectLinkWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Deletes an Affiliate Link
+     * Delete an Affiliate Link
+     * @param redirectId redirect_id
+     */
+    public deleteRedirectLink(redirectId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteRedirectLinkWithHttpInfo(redirectId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves a single Affiliate
+     * Retrieve an Affiliate
+     * @param id id
+     */
+    public getAffiliateWithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<RestAffiliate>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getAffiliate(id, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getAffiliateWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a single Affiliate
+     * Retrieve an Affiliate
+     * @param id id
+     */
+    public getAffiliate(id: string, _options?: ConfigurationOptions): Observable<RestAffiliate> {
+        return this.getAffiliateWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<RestAffiliate>) => apiResponse.data));
+    }
+
+    /**
+     * Get the Affiliate Commission Earned and View LedgerURl for portal
+     * Retrieve Affiliate Commission Earned and View LedgerURl for portal
+     * @param affiliateId affiliate_id
+     */
+    public getAffiliateCommissionTotalWithHttpInfo(affiliateId: string, _options?: ConfigurationOptions): Observable<HttpInfo<AffiliateCommissionEarned>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getAffiliateCommissionTotal(affiliateId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getAffiliateCommissionTotalWithHttpInfo(rsp)));
             }));
     }
 
@@ -792,8 +749,8 @@ export class ObservableAffiliateApi {
      * Retrieve Affiliate Commission Earned and View LedgerURl for portal
      * @param affiliateId affiliate_id
      */
-    public getAffiliateCommissionTotalUsingGET(affiliateId: string, _options?: ConfigurationOptions): Observable<AffiliateCommissionEarned> {
-        return this.getAffiliateCommissionTotalUsingGETWithHttpInfo(affiliateId, _options).pipe(map((apiResponse: HttpInfo<AffiliateCommissionEarned>) => apiResponse.data));
+    public getAffiliateCommissionTotal(affiliateId: string, _options?: ConfigurationOptions): Observable<AffiliateCommissionEarned> {
+        return this.getAffiliateCommissionTotalWithHttpInfo(affiliateId, _options).pipe(map((apiResponse: HttpInfo<AffiliateCommissionEarned>) => apiResponse.data));
     }
 
     /**
@@ -805,10 +762,10 @@ export class ObservableAffiliateApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public getAffiliateCommissionsUsingGETWithHttpInfo(affiliateId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListAffiliateCommissionsResponse>> {
+    public getAffiliateCommissionsWithHttpInfo(affiliateId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListAffiliateCommissionsResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getAffiliateCommissionsUsingGET(affiliateId, filter, orderBy, pageSize, pageToken, _config);
+        const requestContextPromise = this.requestFactory.getAffiliateCommissions(affiliateId, filter, orderBy, pageSize, pageToken, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -821,7 +778,7 @@ export class ObservableAffiliateApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getAffiliateCommissionsUsingGETWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getAffiliateCommissionsWithHttpInfo(rsp)));
             }));
     }
 
@@ -834,42 +791,8 @@ export class ObservableAffiliateApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public getAffiliateCommissionsUsingGET(affiliateId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListAffiliateCommissionsResponse> {
-        return this.getAffiliateCommissionsUsingGETWithHttpInfo(affiliateId, filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListAffiliateCommissionsResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Retrieves a single Affiliate
-     * Retrieve an Affiliate
-     * @param id id
-     */
-    public getAffiliateUsingGET1WithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<RestAffiliate>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getAffiliateUsingGET1(id, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getAffiliateUsingGET1WithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Retrieves a single Affiliate
-     * Retrieve an Affiliate
-     * @param id id
-     */
-    public getAffiliateUsingGET1(id: string, _options?: ConfigurationOptions): Observable<RestAffiliate> {
-        return this.getAffiliateUsingGET1WithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<RestAffiliate>) => apiResponse.data));
+    public getAffiliateCommissions(affiliateId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListAffiliateCommissionsResponse> {
+        return this.getAffiliateCommissionsWithHttpInfo(affiliateId, filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListAffiliateCommissionsResponse>) => apiResponse.data));
     }
 
     /**
@@ -877,10 +800,10 @@ export class ObservableAffiliateApi {
      * Retrieve a Commission Program
      * @param commissionProgramId commission_program_id
      */
-    public getCommissionProgramUsingGETWithHttpInfo(commissionProgramId: string, _options?: ConfigurationOptions): Observable<HttpInfo<AffiliateProgramV2>> {
+    public getCommissionProgramWithHttpInfo(commissionProgramId: string, _options?: ConfigurationOptions): Observable<HttpInfo<AffiliateProgramV2>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getCommissionProgramUsingGET(commissionProgramId, _config);
+        const requestContextPromise = this.requestFactory.getCommissionProgram(commissionProgramId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -893,7 +816,7 @@ export class ObservableAffiliateApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getCommissionProgramUsingGETWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getCommissionProgramWithHttpInfo(rsp)));
             }));
     }
 
@@ -902,8 +825,8 @@ export class ObservableAffiliateApi {
      * Retrieve a Commission Program
      * @param commissionProgramId commission_program_id
      */
-    public getCommissionProgramUsingGET(commissionProgramId: string, _options?: ConfigurationOptions): Observable<AffiliateProgramV2> {
-        return this.getCommissionProgramUsingGETWithHttpInfo(commissionProgramId, _options).pipe(map((apiResponse: HttpInfo<AffiliateProgramV2>) => apiResponse.data));
+    public getCommissionProgram(commissionProgramId: string, _options?: ConfigurationOptions): Observable<AffiliateProgramV2> {
+        return this.getCommissionProgramWithHttpInfo(commissionProgramId, _options).pipe(map((apiResponse: HttpInfo<AffiliateProgramV2>) => apiResponse.data));
     }
 
     /**
@@ -911,10 +834,10 @@ export class ObservableAffiliateApi {
      * Retrieve an Affiliate Link
      * @param redirectId redirect_id
      */
-    public getRedirectLinkUsingGETWithHttpInfo(redirectId: string, _options?: ConfigurationOptions): Observable<HttpInfo<AffiliateLink>> {
+    public getRedirectLinkWithHttpInfo(redirectId: string, _options?: ConfigurationOptions): Observable<HttpInfo<AffiliateLink>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getRedirectLinkUsingGET(redirectId, _config);
+        const requestContextPromise = this.requestFactory.getRedirectLink(redirectId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -927,7 +850,7 @@ export class ObservableAffiliateApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getRedirectLinkUsingGETWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getRedirectLinkWithHttpInfo(rsp)));
             }));
     }
 
@@ -936,8 +859,8 @@ export class ObservableAffiliateApi {
      * Retrieve an Affiliate Link
      * @param redirectId redirect_id
      */
-    public getRedirectLinkUsingGET(redirectId: string, _options?: ConfigurationOptions): Observable<AffiliateLink> {
-        return this.getRedirectLinkUsingGETWithHttpInfo(redirectId, _options).pipe(map((apiResponse: HttpInfo<AffiliateLink>) => apiResponse.data));
+    public getRedirectLink(redirectId: string, _options?: ConfigurationOptions): Observable<AffiliateLink> {
+        return this.getRedirectLinkWithHttpInfo(redirectId, _options).pipe(map((apiResponse: HttpInfo<AffiliateLink>) => apiResponse.data));
     }
 
     /**
@@ -948,10 +871,10 @@ export class ObservableAffiliateApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listAffiliateCommissionProgramsUsingGETWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListAffiliateCommissionProgramsResponse>> {
+    public listAffiliateCommissionProgramsWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListAffiliateCommissionProgramsResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.listAffiliateCommissionProgramsUsingGET(filter, orderBy, pageSize, pageToken, _config);
+        const requestContextPromise = this.requestFactory.listAffiliateCommissionPrograms(filter, orderBy, pageSize, pageToken, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -964,7 +887,7 @@ export class ObservableAffiliateApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listAffiliateCommissionProgramsUsingGETWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listAffiliateCommissionProgramsWithHttpInfo(rsp)));
             }));
     }
 
@@ -976,8 +899,8 @@ export class ObservableAffiliateApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listAffiliateCommissionProgramsUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListAffiliateCommissionProgramsResponse> {
-        return this.listAffiliateCommissionProgramsUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListAffiliateCommissionProgramsResponse>) => apiResponse.data));
+    public listAffiliateCommissionPrograms(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListAffiliateCommissionProgramsResponse> {
+        return this.listAffiliateCommissionProgramsWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListAffiliateCommissionProgramsResponse>) => apiResponse.data));
     }
 
     /**
@@ -988,10 +911,10 @@ export class ObservableAffiliateApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listAffiliateLinksUsingGETWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListAffiliateLinksResponse>> {
+    public listAffiliateLinksWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListAffiliateLinksResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.listAffiliateLinksUsingGET(filter, orderBy, pageSize, pageToken, _config);
+        const requestContextPromise = this.requestFactory.listAffiliateLinks(filter, orderBy, pageSize, pageToken, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1004,7 +927,7 @@ export class ObservableAffiliateApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listAffiliateLinksUsingGETWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listAffiliateLinksWithHttpInfo(rsp)));
             }));
     }
 
@@ -1016,8 +939,8 @@ export class ObservableAffiliateApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listAffiliateLinksUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListAffiliateLinksResponse> {
-        return this.listAffiliateLinksUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListAffiliateLinksResponse>) => apiResponse.data));
+    public listAffiliateLinks(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListAffiliateLinksResponse> {
+        return this.listAffiliateLinksWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListAffiliateLinksResponse>) => apiResponse.data));
     }
 
     /**
@@ -1028,10 +951,10 @@ export class ObservableAffiliateApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listSummariesUsingGET1WithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListAffiliateSummariesResponse>> {
+    public listSummariesWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListAffiliateSummariesResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.listSummariesUsingGET1(filter, orderBy, pageSize, pageToken, _config);
+        const requestContextPromise = this.requestFactory.listSummaries(filter, orderBy, pageSize, pageToken, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1044,7 +967,7 @@ export class ObservableAffiliateApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listSummariesUsingGET1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listSummariesWithHttpInfo(rsp)));
             }));
     }
 
@@ -1056,8 +979,8 @@ export class ObservableAffiliateApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listSummariesUsingGET1(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListAffiliateSummariesResponse> {
-        return this.listSummariesUsingGET1WithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListAffiliateSummariesResponse>) => apiResponse.data));
+    public listSummaries(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListAffiliateSummariesResponse> {
+        return this.listSummariesWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListAffiliateSummariesResponse>) => apiResponse.data));
     }
 
     /**
@@ -1066,10 +989,10 @@ export class ObservableAffiliateApi {
      * @param id id
      * @param affiliateRemoveFromProgramRequest removeFromProgramRequest
      */
-    public removeAffiliateFromProgramUsingPOSTWithHttpInfo(id: string, affiliateRemoveFromProgramRequest: AffiliateRemoveFromProgramRequest, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public removeAffiliateFromProgramWithHttpInfo(id: string, affiliateRemoveFromProgramRequest: AffiliateRemoveFromProgramRequest, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.removeAffiliateFromProgramUsingPOST(id, affiliateRemoveFromProgramRequest, _config);
+        const requestContextPromise = this.requestFactory.removeAffiliateFromProgram(id, affiliateRemoveFromProgramRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1082,7 +1005,7 @@ export class ObservableAffiliateApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.removeAffiliateFromProgramUsingPOSTWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.removeAffiliateFromProgramWithHttpInfo(rsp)));
             }));
     }
 
@@ -1092,8 +1015,8 @@ export class ObservableAffiliateApi {
      * @param id id
      * @param affiliateRemoveFromProgramRequest removeFromProgramRequest
      */
-    public removeAffiliateFromProgramUsingPOST(id: string, affiliateRemoveFromProgramRequest: AffiliateRemoveFromProgramRequest, _options?: ConfigurationOptions): Observable<void> {
-        return this.removeAffiliateFromProgramUsingPOSTWithHttpInfo(id, affiliateRemoveFromProgramRequest, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public removeAffiliateFromProgram(id: string, affiliateRemoveFromProgramRequest: AffiliateRemoveFromProgramRequest, _options?: ConfigurationOptions): Observable<void> {
+        return this.removeAffiliateFromProgramWithHttpInfo(id, affiliateRemoveFromProgramRequest, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
@@ -1102,10 +1025,10 @@ export class ObservableAffiliateApi {
      * @param commissionId commission_id
      * @param deleteProgramCommissionRequest deleteProgramCommissionRequest
      */
-    public removeProductCommissionFromCommissionsUsingPOSTWithHttpInfo(commissionId: string, deleteProgramCommissionRequest: DeleteProgramCommissionRequest, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public removeProductCommissionFromCommissionsWithHttpInfo(commissionId: string, deleteProgramCommissionRequest: DeleteProgramCommissionRequest, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.removeProductCommissionFromCommissionsUsingPOST(commissionId, deleteProgramCommissionRequest, _config);
+        const requestContextPromise = this.requestFactory.removeProductCommissionFromCommissions(commissionId, deleteProgramCommissionRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1118,7 +1041,7 @@ export class ObservableAffiliateApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.removeProductCommissionFromCommissionsUsingPOSTWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.removeProductCommissionFromCommissionsWithHttpInfo(rsp)));
             }));
     }
 
@@ -1128,8 +1051,8 @@ export class ObservableAffiliateApi {
      * @param commissionId commission_id
      * @param deleteProgramCommissionRequest deleteProgramCommissionRequest
      */
-    public removeProductCommissionFromCommissionsUsingPOST(commissionId: string, deleteProgramCommissionRequest: DeleteProgramCommissionRequest, _options?: ConfigurationOptions): Observable<void> {
-        return this.removeProductCommissionFromCommissionsUsingPOSTWithHttpInfo(commissionId, deleteProgramCommissionRequest, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public removeProductCommissionFromCommissions(commissionId: string, deleteProgramCommissionRequest: DeleteProgramCommissionRequest, _options?: ConfigurationOptions): Observable<void> {
+        return this.removeProductCommissionFromCommissionsWithHttpInfo(commissionId, deleteProgramCommissionRequest, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
@@ -1138,10 +1061,10 @@ export class ObservableAffiliateApi {
      * @param commissionId commission_id
      * @param deleteSubscriptionPlanCommissionRequest deleteSubscriptionPlanCommissionRequest
      */
-    public removeSubscriptionPlanCommissionFromCommissionsUsingPOSTWithHttpInfo(commissionId: string, deleteSubscriptionPlanCommissionRequest: DeleteSubscriptionPlanCommissionRequest, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public removeSubscriptionPlanCommissionFromCommissionsWithHttpInfo(commissionId: string, deleteSubscriptionPlanCommissionRequest: DeleteSubscriptionPlanCommissionRequest, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.removeSubscriptionPlanCommissionFromCommissionsUsingPOST(commissionId, deleteSubscriptionPlanCommissionRequest, _config);
+        const requestContextPromise = this.requestFactory.removeSubscriptionPlanCommissionFromCommissions(commissionId, deleteSubscriptionPlanCommissionRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1154,7 +1077,7 @@ export class ObservableAffiliateApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.removeSubscriptionPlanCommissionFromCommissionsUsingPOSTWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.removeSubscriptionPlanCommissionFromCommissionsWithHttpInfo(rsp)));
             }));
     }
 
@@ -1164,8 +1087,8 @@ export class ObservableAffiliateApi {
      * @param commissionId commission_id
      * @param deleteSubscriptionPlanCommissionRequest deleteSubscriptionPlanCommissionRequest
      */
-    public removeSubscriptionPlanCommissionFromCommissionsUsingPOST(commissionId: string, deleteSubscriptionPlanCommissionRequest: DeleteSubscriptionPlanCommissionRequest, _options?: ConfigurationOptions): Observable<void> {
-        return this.removeSubscriptionPlanCommissionFromCommissionsUsingPOSTWithHttpInfo(commissionId, deleteSubscriptionPlanCommissionRequest, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public removeSubscriptionPlanCommissionFromCommissions(commissionId: string, deleteSubscriptionPlanCommissionRequest: DeleteSubscriptionPlanCommissionRequest, _options?: ConfigurationOptions): Observable<void> {
+        return this.removeSubscriptionPlanCommissionFromCommissionsWithHttpInfo(commissionId, deleteSubscriptionPlanCommissionRequest, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
@@ -1174,10 +1097,10 @@ export class ObservableAffiliateApi {
      * @param id id
      * @param [updateAffiliateRequest] Request to update an affiliate
      */
-    public updateAffiliateUsingPATCHWithHttpInfo(id: string, updateAffiliateRequest?: UpdateAffiliateRequest, _options?: ConfigurationOptions): Observable<HttpInfo<RestAffiliate>> {
+    public updateAffiliateWithHttpInfo(id: string, updateAffiliateRequest?: UpdateAffiliateRequest, _options?: ConfigurationOptions): Observable<HttpInfo<RestAffiliate>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.updateAffiliateUsingPATCH(id, updateAffiliateRequest, _config);
+        const requestContextPromise = this.requestFactory.updateAffiliate(id, updateAffiliateRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1190,7 +1113,7 @@ export class ObservableAffiliateApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateAffiliateUsingPATCHWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateAffiliateWithHttpInfo(rsp)));
             }));
     }
 
@@ -1200,8 +1123,8 @@ export class ObservableAffiliateApi {
      * @param id id
      * @param [updateAffiliateRequest] Request to update an affiliate
      */
-    public updateAffiliateUsingPATCH(id: string, updateAffiliateRequest?: UpdateAffiliateRequest, _options?: ConfigurationOptions): Observable<RestAffiliate> {
-        return this.updateAffiliateUsingPATCHWithHttpInfo(id, updateAffiliateRequest, _options).pipe(map((apiResponse: HttpInfo<RestAffiliate>) => apiResponse.data));
+    public updateAffiliate(id: string, updateAffiliateRequest?: UpdateAffiliateRequest, _options?: ConfigurationOptions): Observable<RestAffiliate> {
+        return this.updateAffiliateWithHttpInfo(id, updateAffiliateRequest, _options).pipe(map((apiResponse: HttpInfo<RestAffiliate>) => apiResponse.data));
     }
 
     /**
@@ -1211,10 +1134,10 @@ export class ObservableAffiliateApi {
      * @param updateCommissionProgramRequest updateCommissionProgramRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateCommissionProgramUsingPATCHWithHttpInfo(commissionProgramId: string, updateCommissionProgramRequest: UpdateCommissionProgramRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<AffiliateCommissionProgramResponse>> {
+    public updateCommissionProgramWithHttpInfo(commissionProgramId: string, updateCommissionProgramRequest: UpdateCommissionProgramRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<AffiliateCommissionProgramResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.updateCommissionProgramUsingPATCH(commissionProgramId, updateCommissionProgramRequest, updateMask, _config);
+        const requestContextPromise = this.requestFactory.updateCommissionProgram(commissionProgramId, updateCommissionProgramRequest, updateMask, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1227,7 +1150,7 @@ export class ObservableAffiliateApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateCommissionProgramUsingPATCHWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateCommissionProgramWithHttpInfo(rsp)));
             }));
     }
 
@@ -1238,8 +1161,8 @@ export class ObservableAffiliateApi {
      * @param updateCommissionProgramRequest updateCommissionProgramRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateCommissionProgramUsingPATCH(commissionProgramId: string, updateCommissionProgramRequest: UpdateCommissionProgramRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<AffiliateCommissionProgramResponse> {
-        return this.updateCommissionProgramUsingPATCHWithHttpInfo(commissionProgramId, updateCommissionProgramRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<AffiliateCommissionProgramResponse>) => apiResponse.data));
+    public updateCommissionProgram(commissionProgramId: string, updateCommissionProgramRequest: UpdateCommissionProgramRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<AffiliateCommissionProgramResponse> {
+        return this.updateCommissionProgramWithHttpInfo(commissionProgramId, updateCommissionProgramRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<AffiliateCommissionProgramResponse>) => apiResponse.data));
     }
 
     /**
@@ -1249,10 +1172,10 @@ export class ObservableAffiliateApi {
      * @param [updateMask] update_mask
      * @param [updateDefaultCommissionProgramRequest] Values of the default Commission Program
      */
-    public updateDefaultCommissionProgramUsingPATCHWithHttpInfo(commissionProgramId: string, updateMask?: Array<string>, updateDefaultCommissionProgramRequest?: UpdateDefaultCommissionProgramRequest, _options?: ConfigurationOptions): Observable<HttpInfo<SetDefaultCommissionProgramResponse>> {
+    public updateDefaultCommissionProgramWithHttpInfo(commissionProgramId: string, updateMask?: Array<string>, updateDefaultCommissionProgramRequest?: UpdateDefaultCommissionProgramRequest, _options?: ConfigurationOptions): Observable<HttpInfo<SetDefaultCommissionProgramResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.updateDefaultCommissionProgramUsingPATCH(commissionProgramId, updateMask, updateDefaultCommissionProgramRequest, _config);
+        const requestContextPromise = this.requestFactory.updateDefaultCommissionProgram(commissionProgramId, updateMask, updateDefaultCommissionProgramRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1265,7 +1188,7 @@ export class ObservableAffiliateApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateDefaultCommissionProgramUsingPATCHWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateDefaultCommissionProgramWithHttpInfo(rsp)));
             }));
     }
 
@@ -1276,8 +1199,8 @@ export class ObservableAffiliateApi {
      * @param [updateMask] update_mask
      * @param [updateDefaultCommissionProgramRequest] Values of the default Commission Program
      */
-    public updateDefaultCommissionProgramUsingPATCH(commissionProgramId: string, updateMask?: Array<string>, updateDefaultCommissionProgramRequest?: UpdateDefaultCommissionProgramRequest, _options?: ConfigurationOptions): Observable<SetDefaultCommissionProgramResponse> {
-        return this.updateDefaultCommissionProgramUsingPATCHWithHttpInfo(commissionProgramId, updateMask, updateDefaultCommissionProgramRequest, _options).pipe(map((apiResponse: HttpInfo<SetDefaultCommissionProgramResponse>) => apiResponse.data));
+    public updateDefaultCommissionProgram(commissionProgramId: string, updateMask?: Array<string>, updateDefaultCommissionProgramRequest?: UpdateDefaultCommissionProgramRequest, _options?: ConfigurationOptions): Observable<SetDefaultCommissionProgramResponse> {
+        return this.updateDefaultCommissionProgramWithHttpInfo(commissionProgramId, updateMask, updateDefaultCommissionProgramRequest, _options).pipe(map((apiResponse: HttpInfo<SetDefaultCommissionProgramResponse>) => apiResponse.data));
     }
 
     /**
@@ -1287,10 +1210,10 @@ export class ObservableAffiliateApi {
      * @param [updateMask] update_mask
      * @param [updateProductCommissionProgramRequest] Values of the product Commission Program
      */
-    public updateProductCommissionProgramUsingPATCHWithHttpInfo(commissionProgramId: string, updateMask?: Array<string>, updateProductCommissionProgramRequest?: UpdateProductCommissionProgramRequest, _options?: ConfigurationOptions): Observable<HttpInfo<ProductCommissionProgram>> {
+    public updateProductCommissionProgramWithHttpInfo(commissionProgramId: string, updateMask?: Array<string>, updateProductCommissionProgramRequest?: UpdateProductCommissionProgramRequest, _options?: ConfigurationOptions): Observable<HttpInfo<ProductCommissionProgram>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.updateProductCommissionProgramUsingPATCH(commissionProgramId, updateMask, updateProductCommissionProgramRequest, _config);
+        const requestContextPromise = this.requestFactory.updateProductCommissionProgram(commissionProgramId, updateMask, updateProductCommissionProgramRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1303,7 +1226,7 @@ export class ObservableAffiliateApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateProductCommissionProgramUsingPATCHWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateProductCommissionProgramWithHttpInfo(rsp)));
             }));
     }
 
@@ -1314,8 +1237,8 @@ export class ObservableAffiliateApi {
      * @param [updateMask] update_mask
      * @param [updateProductCommissionProgramRequest] Values of the product Commission Program
      */
-    public updateProductCommissionProgramUsingPATCH(commissionProgramId: string, updateMask?: Array<string>, updateProductCommissionProgramRequest?: UpdateProductCommissionProgramRequest, _options?: ConfigurationOptions): Observable<ProductCommissionProgram> {
-        return this.updateProductCommissionProgramUsingPATCHWithHttpInfo(commissionProgramId, updateMask, updateProductCommissionProgramRequest, _options).pipe(map((apiResponse: HttpInfo<ProductCommissionProgram>) => apiResponse.data));
+    public updateProductCommissionProgram(commissionProgramId: string, updateMask?: Array<string>, updateProductCommissionProgramRequest?: UpdateProductCommissionProgramRequest, _options?: ConfigurationOptions): Observable<ProductCommissionProgram> {
+        return this.updateProductCommissionProgramWithHttpInfo(commissionProgramId, updateMask, updateProductCommissionProgramRequest, _options).pipe(map((apiResponse: HttpInfo<ProductCommissionProgram>) => apiResponse.data));
     }
 
     /**
@@ -1324,10 +1247,10 @@ export class ObservableAffiliateApi {
      * @param redirectId redirect_id
      * @param createOrUpdateAffiliateLinkRequest request
      */
-    public updateRedirectLinkUsingPATCHWithHttpInfo(redirectId: string, createOrUpdateAffiliateLinkRequest: CreateOrUpdateAffiliateLinkRequest, _options?: ConfigurationOptions): Observable<HttpInfo<AffiliateLink>> {
+    public updateRedirectLinkWithHttpInfo(redirectId: string, createOrUpdateAffiliateLinkRequest: CreateOrUpdateAffiliateLinkRequest, _options?: ConfigurationOptions): Observable<HttpInfo<AffiliateLink>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.updateRedirectLinkUsingPATCH(redirectId, createOrUpdateAffiliateLinkRequest, _config);
+        const requestContextPromise = this.requestFactory.updateRedirectLink(redirectId, createOrUpdateAffiliateLinkRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1340,7 +1263,7 @@ export class ObservableAffiliateApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateRedirectLinkUsingPATCHWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateRedirectLinkWithHttpInfo(rsp)));
             }));
     }
 
@@ -1350,8 +1273,8 @@ export class ObservableAffiliateApi {
      * @param redirectId redirect_id
      * @param createOrUpdateAffiliateLinkRequest request
      */
-    public updateRedirectLinkUsingPATCH(redirectId: string, createOrUpdateAffiliateLinkRequest: CreateOrUpdateAffiliateLinkRequest, _options?: ConfigurationOptions): Observable<AffiliateLink> {
-        return this.updateRedirectLinkUsingPATCHWithHttpInfo(redirectId, createOrUpdateAffiliateLinkRequest, _options).pipe(map((apiResponse: HttpInfo<AffiliateLink>) => apiResponse.data));
+    public updateRedirectLink(redirectId: string, createOrUpdateAffiliateLinkRequest: CreateOrUpdateAffiliateLinkRequest, _options?: ConfigurationOptions): Observable<AffiliateLink> {
+        return this.updateRedirectLinkWithHttpInfo(redirectId, createOrUpdateAffiliateLinkRequest, _options).pipe(map((apiResponse: HttpInfo<AffiliateLink>) => apiResponse.data));
     }
 
     /**
@@ -1361,10 +1284,10 @@ export class ObservableAffiliateApi {
      * @param [updateMask] update_mask
      * @param [updateSubscriptionCommissionProgramRequest] Values of the subscription Commission Program
      */
-    public updateSubscriptionCommissionProgramUsingPATCHWithHttpInfo(commissionProgramId: string, updateMask?: Array<string>, updateSubscriptionCommissionProgramRequest?: UpdateSubscriptionCommissionProgramRequest, _options?: ConfigurationOptions): Observable<HttpInfo<SubscriptionCommissionProgram>> {
+    public updateSubscriptionCommissionProgramWithHttpInfo(commissionProgramId: string, updateMask?: Array<string>, updateSubscriptionCommissionProgramRequest?: UpdateSubscriptionCommissionProgramRequest, _options?: ConfigurationOptions): Observable<HttpInfo<SubscriptionCommissionProgram>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.updateSubscriptionCommissionProgramUsingPATCH(commissionProgramId, updateMask, updateSubscriptionCommissionProgramRequest, _config);
+        const requestContextPromise = this.requestFactory.updateSubscriptionCommissionProgram(commissionProgramId, updateMask, updateSubscriptionCommissionProgramRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1377,7 +1300,7 @@ export class ObservableAffiliateApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateSubscriptionCommissionProgramUsingPATCHWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateSubscriptionCommissionProgramWithHttpInfo(rsp)));
             }));
     }
 
@@ -1388,8 +1311,8 @@ export class ObservableAffiliateApi {
      * @param [updateMask] update_mask
      * @param [updateSubscriptionCommissionProgramRequest] Values of the subscription Commission Program
      */
-    public updateSubscriptionCommissionProgramUsingPATCH(commissionProgramId: string, updateMask?: Array<string>, updateSubscriptionCommissionProgramRequest?: UpdateSubscriptionCommissionProgramRequest, _options?: ConfigurationOptions): Observable<SubscriptionCommissionProgram> {
-        return this.updateSubscriptionCommissionProgramUsingPATCHWithHttpInfo(commissionProgramId, updateMask, updateSubscriptionCommissionProgramRequest, _options).pipe(map((apiResponse: HttpInfo<SubscriptionCommissionProgram>) => apiResponse.data));
+    public updateSubscriptionCommissionProgram(commissionProgramId: string, updateMask?: Array<string>, updateSubscriptionCommissionProgramRequest?: UpdateSubscriptionCommissionProgramRequest, _options?: ConfigurationOptions): Observable<SubscriptionCommissionProgram> {
+        return this.updateSubscriptionCommissionProgramWithHttpInfo(commissionProgramId, updateMask, updateSubscriptionCommissionProgramRequest, _options).pipe(map((apiResponse: HttpInfo<SubscriptionCommissionProgram>) => apiResponse.data));
     }
 
 }
@@ -1417,10 +1340,10 @@ export class ObservableAutomationApi {
      * @param sequenceId sequence_id
      * @param addToAutomationSequenceRequest addToAutomationSequenceRequest
      */
-    public addContactsToAutomationSequenceUsingPOSTWithHttpInfo(automationId: string, sequenceId: string, addToAutomationSequenceRequest: AddToAutomationSequenceRequest, _options?: ConfigurationOptions): Observable<HttpInfo<AddToAutomationSequenceResponse>> {
+    public addContactsToAutomationSequenceWithHttpInfo(automationId: string, sequenceId: string, addToAutomationSequenceRequest: AddToAutomationSequenceRequest, _options?: ConfigurationOptions): Observable<HttpInfo<AddToAutomationSequenceResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.addContactsToAutomationSequenceUsingPOST(automationId, sequenceId, addToAutomationSequenceRequest, _config);
+        const requestContextPromise = this.requestFactory.addContactsToAutomationSequence(automationId, sequenceId, addToAutomationSequenceRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1433,7 +1356,7 @@ export class ObservableAutomationApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.addContactsToAutomationSequenceUsingPOSTWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.addContactsToAutomationSequenceWithHttpInfo(rsp)));
             }));
     }
 
@@ -1444,8 +1367,8 @@ export class ObservableAutomationApi {
      * @param sequenceId sequence_id
      * @param addToAutomationSequenceRequest addToAutomationSequenceRequest
      */
-    public addContactsToAutomationSequenceUsingPOST(automationId: string, sequenceId: string, addToAutomationSequenceRequest: AddToAutomationSequenceRequest, _options?: ConfigurationOptions): Observable<AddToAutomationSequenceResponse> {
-        return this.addContactsToAutomationSequenceUsingPOSTWithHttpInfo(automationId, sequenceId, addToAutomationSequenceRequest, _options).pipe(map((apiResponse: HttpInfo<AddToAutomationSequenceResponse>) => apiResponse.data));
+    public addContactsToAutomationSequence(automationId: string, sequenceId: string, addToAutomationSequenceRequest: AddToAutomationSequenceRequest, _options?: ConfigurationOptions): Observable<AddToAutomationSequenceResponse> {
+        return this.addContactsToAutomationSequenceWithHttpInfo(automationId, sequenceId, addToAutomationSequenceRequest, _options).pipe(map((apiResponse: HttpInfo<AddToAutomationSequenceResponse>) => apiResponse.data));
     }
 
     /**
@@ -1453,10 +1376,10 @@ export class ObservableAutomationApi {
      * Bulk update for Automations Categories
      * @param assignAutomationCategoryRequest assignAutomationCategoryRequest
      */
-    public bulkAssignmentAutomationsCategoriesUsingPOSTWithHttpInfo(assignAutomationCategoryRequest: AssignAutomationCategoryRequest, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public bulkAssignmentAutomationsCategoriesWithHttpInfo(assignAutomationCategoryRequest: AssignAutomationCategoryRequest, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.bulkAssignmentAutomationsCategoriesUsingPOST(assignAutomationCategoryRequest, _config);
+        const requestContextPromise = this.requestFactory.bulkAssignmentAutomationsCategories(assignAutomationCategoryRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1469,7 +1392,7 @@ export class ObservableAutomationApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.bulkAssignmentAutomationsCategoriesUsingPOSTWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.bulkAssignmentAutomationsCategoriesWithHttpInfo(rsp)));
             }));
     }
 
@@ -1478,8 +1401,8 @@ export class ObservableAutomationApi {
      * Bulk update for Automations Categories
      * @param assignAutomationCategoryRequest assignAutomationCategoryRequest
      */
-    public bulkAssignmentAutomationsCategoriesUsingPOST(assignAutomationCategoryRequest: AssignAutomationCategoryRequest, _options?: ConfigurationOptions): Observable<void> {
-        return this.bulkAssignmentAutomationsCategoriesUsingPOSTWithHttpInfo(assignAutomationCategoryRequest, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public bulkAssignmentAutomationsCategories(assignAutomationCategoryRequest: AssignAutomationCategoryRequest, _options?: ConfigurationOptions): Observable<void> {
+        return this.bulkAssignmentAutomationsCategoriesWithHttpInfo(assignAutomationCategoryRequest, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
@@ -1487,10 +1410,10 @@ export class ObservableAutomationApi {
      * Delete an Automation
      * @param automationIds automation_ids
      */
-    public deleteAutomationUsingDELETEWithHttpInfo(automationIds: Array<number>, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public deleteAutomationWithHttpInfo(automationIds: Array<number>, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.deleteAutomationUsingDELETE(automationIds, _config);
+        const requestContextPromise = this.requestFactory.deleteAutomation(automationIds, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1503,7 +1426,7 @@ export class ObservableAutomationApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteAutomationUsingDELETEWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteAutomationWithHttpInfo(rsp)));
             }));
     }
 
@@ -1512,8 +1435,8 @@ export class ObservableAutomationApi {
      * Delete an Automation
      * @param automationIds automation_ids
      */
-    public deleteAutomationUsingDELETE(automationIds: Array<number>, _options?: ConfigurationOptions): Observable<void> {
-        return this.deleteAutomationUsingDELETEWithHttpInfo(automationIds, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public deleteAutomation(automationIds: Array<number>, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteAutomationWithHttpInfo(automationIds, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
@@ -1521,10 +1444,10 @@ export class ObservableAutomationApi {
      * Retrieve an Automation
      * @param automationId automation_id
      */
-    public getAutomationUsingGETWithHttpInfo(automationId: string, _options?: ConfigurationOptions): Observable<HttpInfo<Automation>> {
+    public getAutomationWithHttpInfo(automationId: string, _options?: ConfigurationOptions): Observable<HttpInfo<Automation>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getAutomationUsingGET(automationId, _config);
+        const requestContextPromise = this.requestFactory.getAutomation(automationId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1537,7 +1460,7 @@ export class ObservableAutomationApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getAutomationUsingGETWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getAutomationWithHttpInfo(rsp)));
             }));
     }
 
@@ -1546,8 +1469,8 @@ export class ObservableAutomationApi {
      * Retrieve an Automation
      * @param automationId automation_id
      */
-    public getAutomationUsingGET(automationId: string, _options?: ConfigurationOptions): Observable<Automation> {
-        return this.getAutomationUsingGETWithHttpInfo(automationId, _options).pipe(map((apiResponse: HttpInfo<Automation>) => apiResponse.data));
+    public getAutomation(automationId: string, _options?: ConfigurationOptions): Observable<Automation> {
+        return this.getAutomationWithHttpInfo(automationId, _options).pipe(map((apiResponse: HttpInfo<Automation>) => apiResponse.data));
     }
 
     /**
@@ -1559,10 +1482,10 @@ export class ObservableAutomationApi {
      * @param [pageToken] Page token
      * @param [stats]
      */
-    public listAllAutomationIdsUsingGETWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, stats?: boolean, _options?: ConfigurationOptions): Observable<HttpInfo<ListAutomationIdsResponse>> {
+    public listAllAutomationIdsWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, stats?: boolean, _options?: ConfigurationOptions): Observable<HttpInfo<ListAutomationIdsResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.listAllAutomationIdsUsingGET(filter, orderBy, pageSize, pageToken, stats, _config);
+        const requestContextPromise = this.requestFactory.listAllAutomationIds(filter, orderBy, pageSize, pageToken, stats, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1575,7 +1498,7 @@ export class ObservableAutomationApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listAllAutomationIdsUsingGETWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listAllAutomationIdsWithHttpInfo(rsp)));
             }));
     }
 
@@ -1588,8 +1511,8 @@ export class ObservableAutomationApi {
      * @param [pageToken] Page token
      * @param [stats]
      */
-    public listAllAutomationIdsUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, stats?: boolean, _options?: ConfigurationOptions): Observable<ListAutomationIdsResponse> {
-        return this.listAllAutomationIdsUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken, stats, _options).pipe(map((apiResponse: HttpInfo<ListAutomationIdsResponse>) => apiResponse.data));
+    public listAllAutomationIds(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, stats?: boolean, _options?: ConfigurationOptions): Observable<ListAutomationIdsResponse> {
+        return this.listAllAutomationIdsWithHttpInfo(filter, orderBy, pageSize, pageToken, stats, _options).pipe(map((apiResponse: HttpInfo<ListAutomationIdsResponse>) => apiResponse.data));
     }
 
     /**
@@ -1601,10 +1524,10 @@ export class ObservableAutomationApi {
      * @param [pageToken] Page token
      * @param [stats]
      */
-    public listAutomationsUsingGETWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, stats?: boolean, _options?: ConfigurationOptions): Observable<HttpInfo<ListAutomationResponse>> {
+    public listAutomationsWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, stats?: boolean, _options?: ConfigurationOptions): Observable<HttpInfo<ListAutomationResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.listAutomationsUsingGET(filter, orderBy, pageSize, pageToken, stats, _config);
+        const requestContextPromise = this.requestFactory.listAutomations(filter, orderBy, pageSize, pageToken, stats, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1617,7 +1540,7 @@ export class ObservableAutomationApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listAutomationsUsingGETWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listAutomationsWithHttpInfo(rsp)));
             }));
     }
 
@@ -1630,42 +1553,8 @@ export class ObservableAutomationApi {
      * @param [pageToken] Page token
      * @param [stats]
      */
-    public listAutomationsUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, stats?: boolean, _options?: ConfigurationOptions): Observable<ListAutomationResponse> {
-        return this.listAutomationsUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken, stats, _options).pipe(map((apiResponse: HttpInfo<ListAutomationResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Updates the category of one or more automations
-     * Update an Automation\'s Category
-     * @param updateAutomationCategoryRequest updateAutomationCategoryRequest
-     */
-    public updateAutomationCategoryUsingPUTWithHttpInfo(updateAutomationCategoryRequest: UpdateAutomationCategoryRequest, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.updateAutomationCategoryUsingPUT(updateAutomationCategoryRequest, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateAutomationCategoryUsingPUTWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Updates the category of one or more automations
-     * Update an Automation\'s Category
-     * @param updateAutomationCategoryRequest updateAutomationCategoryRequest
-     */
-    public updateAutomationCategoryUsingPUT(updateAutomationCategoryRequest: UpdateAutomationCategoryRequest, _options?: ConfigurationOptions): Observable<void> {
-        return this.updateAutomationCategoryUsingPUTWithHttpInfo(updateAutomationCategoryRequest, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public listAutomations(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, stats?: boolean, _options?: ConfigurationOptions): Observable<ListAutomationResponse> {
+        return this.listAutomationsWithHttpInfo(filter, orderBy, pageSize, pageToken, stats, _options).pipe(map((apiResponse: HttpInfo<ListAutomationResponse>) => apiResponse.data));
     }
 
 }
@@ -1691,10 +1580,10 @@ export class ObservableAutomationCategoryApi {
      * Create automation category
      * @param createAutomationCategoryRequest createAutomationCategoryRequest
      */
-    public createCategoryUsingPOSTWithHttpInfo(createAutomationCategoryRequest: CreateAutomationCategoryRequest, _options?: ConfigurationOptions): Observable<HttpInfo<AutomationCategory>> {
+    public createCategoryWithHttpInfo(createAutomationCategoryRequest: CreateAutomationCategoryRequest, _options?: ConfigurationOptions): Observable<HttpInfo<AutomationCategory>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.createCategoryUsingPOST(createAutomationCategoryRequest, _config);
+        const requestContextPromise = this.requestFactory.createCategory(createAutomationCategoryRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1707,7 +1596,7 @@ export class ObservableAutomationCategoryApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createCategoryUsingPOSTWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createCategoryWithHttpInfo(rsp)));
             }));
     }
 
@@ -1716,8 +1605,8 @@ export class ObservableAutomationCategoryApi {
      * Create automation category
      * @param createAutomationCategoryRequest createAutomationCategoryRequest
      */
-    public createCategoryUsingPOST(createAutomationCategoryRequest: CreateAutomationCategoryRequest, _options?: ConfigurationOptions): Observable<AutomationCategory> {
-        return this.createCategoryUsingPOSTWithHttpInfo(createAutomationCategoryRequest, _options).pipe(map((apiResponse: HttpInfo<AutomationCategory>) => apiResponse.data));
+    public createCategory(createAutomationCategoryRequest: CreateAutomationCategoryRequest, _options?: ConfigurationOptions): Observable<AutomationCategory> {
+        return this.createCategoryWithHttpInfo(createAutomationCategoryRequest, _options).pipe(map((apiResponse: HttpInfo<AutomationCategory>) => apiResponse.data));
     }
 
     /**
@@ -1725,10 +1614,10 @@ export class ObservableAutomationCategoryApi {
      * Delete automation category
      * @param ids ids
      */
-    public deleteCategoriesUsingDELETEWithHttpInfo(ids: Array<number>, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public deleteCategoriesWithHttpInfo(ids: Array<number>, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.deleteCategoriesUsingDELETE(ids, _config);
+        const requestContextPromise = this.requestFactory.deleteCategories(ids, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1741,7 +1630,7 @@ export class ObservableAutomationCategoryApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteCategoriesUsingDELETEWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteCategoriesWithHttpInfo(rsp)));
             }));
     }
 
@@ -1750,18 +1639,18 @@ export class ObservableAutomationCategoryApi {
      * Delete automation category
      * @param ids ids
      */
-    public deleteCategoriesUsingDELETE(ids: Array<number>, _options?: ConfigurationOptions): Observable<void> {
-        return this.deleteCategoriesUsingDELETEWithHttpInfo(ids, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public deleteCategories(ids: Array<number>, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteCategoriesWithHttpInfo(ids, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
      * Retrieves a list of automation categories
      * List automation categories
      */
-    public listCategoriesUsingGETWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<ListAutomationCategoryResponse>> {
+    public listCategoriesWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<ListAutomationCategoryResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.listCategoriesUsingGET(_config);
+        const requestContextPromise = this.requestFactory.listCategories(_config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1774,7 +1663,7 @@ export class ObservableAutomationCategoryApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listCategoriesUsingGETWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listCategoriesWithHttpInfo(rsp)));
             }));
     }
 
@@ -1782,8 +1671,8 @@ export class ObservableAutomationCategoryApi {
      * Retrieves a list of automation categories
      * List automation categories
      */
-    public listCategoriesUsingGET(_options?: ConfigurationOptions): Observable<ListAutomationCategoryResponse> {
-        return this.listCategoriesUsingGETWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<ListAutomationCategoryResponse>) => apiResponse.data));
+    public listCategories(_options?: ConfigurationOptions): Observable<ListAutomationCategoryResponse> {
+        return this.listCategoriesWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<ListAutomationCategoryResponse>) => apiResponse.data));
     }
 
     /**
@@ -1792,10 +1681,10 @@ export class ObservableAutomationCategoryApi {
      * @param id id
      * @param patchAutomationCategoryRequest patchAutomationCategoryRequest
      */
-    public patchCategoryUsingPATCHWithHttpInfo(id: string, patchAutomationCategoryRequest: PatchAutomationCategoryRequest, _options?: ConfigurationOptions): Observable<HttpInfo<AutomationCategory>> {
+    public patchCategoryWithHttpInfo(id: string, patchAutomationCategoryRequest: PatchAutomationCategoryRequest, _options?: ConfigurationOptions): Observable<HttpInfo<AutomationCategory>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.patchCategoryUsingPATCH(id, patchAutomationCategoryRequest, _config);
+        const requestContextPromise = this.requestFactory.patchCategory(id, patchAutomationCategoryRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1808,7 +1697,7 @@ export class ObservableAutomationCategoryApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.patchCategoryUsingPATCHWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.patchCategoryWithHttpInfo(rsp)));
             }));
     }
 
@@ -1818,42 +1707,8 @@ export class ObservableAutomationCategoryApi {
      * @param id id
      * @param patchAutomationCategoryRequest patchAutomationCategoryRequest
      */
-    public patchCategoryUsingPATCH(id: string, patchAutomationCategoryRequest: PatchAutomationCategoryRequest, _options?: ConfigurationOptions): Observable<AutomationCategory> {
-        return this.patchCategoryUsingPATCHWithHttpInfo(id, patchAutomationCategoryRequest, _options).pipe(map((apiResponse: HttpInfo<AutomationCategory>) => apiResponse.data));
-    }
-
-    /**
-     * Creates or updates a single automation category
-     * Save automation category
-     * @param saveAutomationCategoryRequest saveAutomationCategoryRequest
-     */
-    public saveCategoryUsingPUTWithHttpInfo(saveAutomationCategoryRequest: SaveAutomationCategoryRequest, _options?: ConfigurationOptions): Observable<HttpInfo<AutomationCategory>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.saveCategoryUsingPUT(saveAutomationCategoryRequest, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.saveCategoryUsingPUTWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Creates or updates a single automation category
-     * Save automation category
-     * @param saveAutomationCategoryRequest saveAutomationCategoryRequest
-     */
-    public saveCategoryUsingPUT(saveAutomationCategoryRequest: SaveAutomationCategoryRequest, _options?: ConfigurationOptions): Observable<AutomationCategory> {
-        return this.saveCategoryUsingPUTWithHttpInfo(saveAutomationCategoryRequest, _options).pipe(map((apiResponse: HttpInfo<AutomationCategory>) => apiResponse.data));
+    public patchCategory(id: string, patchAutomationCategoryRequest: PatchAutomationCategoryRequest, _options?: ConfigurationOptions): Observable<AutomationCategory> {
+        return this.patchCategoryWithHttpInfo(id, patchAutomationCategoryRequest, _options).pipe(map((apiResponse: HttpInfo<AutomationCategory>) => apiResponse.data));
     }
 
 }
@@ -1878,10 +1733,10 @@ export class ObservableBusinessProfileApi {
      * Retrieves Business Profile information.
      * Retrieve Business Profile
      */
-    public getBusinessProfileUsingGETWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<GetBusinessProfileResponse>> {
+    public getBusinessProfileWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<GetBusinessProfileResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getBusinessProfileUsingGET(_config);
+        const requestContextPromise = this.requestFactory.getBusinessProfile(_config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1894,7 +1749,7 @@ export class ObservableBusinessProfileApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getBusinessProfileUsingGETWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getBusinessProfileWithHttpInfo(rsp)));
             }));
     }
 
@@ -1902,8 +1757,8 @@ export class ObservableBusinessProfileApi {
      * Retrieves Business Profile information.
      * Retrieve Business Profile
      */
-    public getBusinessProfileUsingGET(_options?: ConfigurationOptions): Observable<GetBusinessProfileResponse> {
-        return this.getBusinessProfileUsingGETWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<GetBusinessProfileResponse>) => apiResponse.data));
+    public getBusinessProfile(_options?: ConfigurationOptions): Observable<GetBusinessProfileResponse> {
+        return this.getBusinessProfileWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<GetBusinessProfileResponse>) => apiResponse.data));
     }
 
     /**
@@ -1912,10 +1767,10 @@ export class ObservableBusinessProfileApi {
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @param [updateBusinessProfileRequest] businessProfile
      */
-    public updateBusinessProfileUsingPATCHWithHttpInfo(updateMask?: Array<string>, updateBusinessProfileRequest?: UpdateBusinessProfileRequest, _options?: ConfigurationOptions): Observable<HttpInfo<GetBusinessProfileResponse>> {
+    public updateBusinessProfileWithHttpInfo(updateMask?: Array<string>, updateBusinessProfileRequest?: UpdateBusinessProfileRequest, _options?: ConfigurationOptions): Observable<HttpInfo<GetBusinessProfileResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.updateBusinessProfileUsingPATCH(updateMask, updateBusinessProfileRequest, _config);
+        const requestContextPromise = this.requestFactory.updateBusinessProfile(updateMask, updateBusinessProfileRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1928,7 +1783,7 @@ export class ObservableBusinessProfileApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateBusinessProfileUsingPATCHWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateBusinessProfileWithHttpInfo(rsp)));
             }));
     }
 
@@ -1938,8 +1793,8 @@ export class ObservableBusinessProfileApi {
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @param [updateBusinessProfileRequest] businessProfile
      */
-    public updateBusinessProfileUsingPATCH(updateMask?: Array<string>, updateBusinessProfileRequest?: UpdateBusinessProfileRequest, _options?: ConfigurationOptions): Observable<GetBusinessProfileResponse> {
-        return this.updateBusinessProfileUsingPATCHWithHttpInfo(updateMask, updateBusinessProfileRequest, _options).pipe(map((apiResponse: HttpInfo<GetBusinessProfileResponse>) => apiResponse.data));
+    public updateBusinessProfile(updateMask?: Array<string>, updateBusinessProfileRequest?: UpdateBusinessProfileRequest, _options?: ConfigurationOptions): Observable<GetBusinessProfileResponse> {
+        return this.updateBusinessProfileWithHttpInfo(updateMask, updateBusinessProfileRequest, _options).pipe(map((apiResponse: HttpInfo<GetBusinessProfileResponse>) => apiResponse.data));
     }
 
 }
@@ -1967,10 +1822,10 @@ export class ObservableCampaignApi {
      * @param sequenceId sequence_id
      * @param addContactsToSequenceRequest addContactsToSequenceRequest
      */
-    public addContactsToCampaignSequenceUsingPOST1WithHttpInfo(campaignId: string, sequenceId: string, addContactsToSequenceRequest: AddContactsToSequenceRequest, _options?: ConfigurationOptions): Observable<HttpInfo<AddContactsToSequenceResponse>> {
+    public addContactsToCampaignSequenceWithHttpInfo(campaignId: string, sequenceId: string, addContactsToSequenceRequest: AddContactsToSequenceRequest, _options?: ConfigurationOptions): Observable<HttpInfo<AddContactsToSequenceResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.addContactsToCampaignSequenceUsingPOST1(campaignId, sequenceId, addContactsToSequenceRequest, _config);
+        const requestContextPromise = this.requestFactory.addContactsToCampaignSequence(campaignId, sequenceId, addContactsToSequenceRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1983,7 +1838,7 @@ export class ObservableCampaignApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.addContactsToCampaignSequenceUsingPOST1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.addContactsToCampaignSequenceWithHttpInfo(rsp)));
             }));
     }
 
@@ -1994,8 +1849,8 @@ export class ObservableCampaignApi {
      * @param sequenceId sequence_id
      * @param addContactsToSequenceRequest addContactsToSequenceRequest
      */
-    public addContactsToCampaignSequenceUsingPOST1(campaignId: string, sequenceId: string, addContactsToSequenceRequest: AddContactsToSequenceRequest, _options?: ConfigurationOptions): Observable<AddContactsToSequenceResponse> {
-        return this.addContactsToCampaignSequenceUsingPOST1WithHttpInfo(campaignId, sequenceId, addContactsToSequenceRequest, _options).pipe(map((apiResponse: HttpInfo<AddContactsToSequenceResponse>) => apiResponse.data));
+    public addContactsToCampaignSequence(campaignId: string, sequenceId: string, addContactsToSequenceRequest: AddContactsToSequenceRequest, _options?: ConfigurationOptions): Observable<AddContactsToSequenceResponse> {
+        return this.addContactsToCampaignSequenceWithHttpInfo(campaignId, sequenceId, addContactsToSequenceRequest, _options).pipe(map((apiResponse: HttpInfo<AddContactsToSequenceResponse>) => apiResponse.data));
     }
 
     /**
@@ -2003,10 +1858,10 @@ export class ObservableCampaignApi {
      * Retrieve a Campaign
      * @param campaignId campaign_id
      */
-    public getCampaignUsingGET1WithHttpInfo(campaignId: string, _options?: ConfigurationOptions): Observable<HttpInfo<Campaign>> {
+    public getCampaignWithHttpInfo(campaignId: string, _options?: ConfigurationOptions): Observable<HttpInfo<Campaign>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getCampaignUsingGET1(campaignId, _config);
+        const requestContextPromise = this.requestFactory.getCampaign(campaignId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2019,7 +1874,7 @@ export class ObservableCampaignApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getCampaignUsingGET1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getCampaignWithHttpInfo(rsp)));
             }));
     }
 
@@ -2028,8 +1883,8 @@ export class ObservableCampaignApi {
      * Retrieve a Campaign
      * @param campaignId campaign_id
      */
-    public getCampaignUsingGET1(campaignId: string, _options?: ConfigurationOptions): Observable<Campaign> {
-        return this.getCampaignUsingGET1WithHttpInfo(campaignId, _options).pipe(map((apiResponse: HttpInfo<Campaign>) => apiResponse.data));
+    public getCampaign(campaignId: string, _options?: ConfigurationOptions): Observable<Campaign> {
+        return this.getCampaignWithHttpInfo(campaignId, _options).pipe(map((apiResponse: HttpInfo<Campaign>) => apiResponse.data));
     }
 
     /**
@@ -2041,10 +1896,10 @@ export class ObservableCampaignApi {
      * @param [pageToken] Page token
      * @param [stats]
      */
-    public listCampaignsUsingGET1WithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, stats?: boolean, _options?: ConfigurationOptions): Observable<HttpInfo<ListCampaignsResponse>> {
+    public listCampaignsWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, stats?: boolean, _options?: ConfigurationOptions): Observable<HttpInfo<ListCampaignsResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.listCampaignsUsingGET1(filter, orderBy, pageSize, pageToken, stats, _config);
+        const requestContextPromise = this.requestFactory.listCampaigns(filter, orderBy, pageSize, pageToken, stats, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2057,7 +1912,7 @@ export class ObservableCampaignApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listCampaignsUsingGET1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listCampaignsWithHttpInfo(rsp)));
             }));
     }
 
@@ -2070,8 +1925,8 @@ export class ObservableCampaignApi {
      * @param [pageToken] Page token
      * @param [stats]
      */
-    public listCampaignsUsingGET1(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, stats?: boolean, _options?: ConfigurationOptions): Observable<ListCampaignsResponse> {
-        return this.listCampaignsUsingGET1WithHttpInfo(filter, orderBy, pageSize, pageToken, stats, _options).pipe(map((apiResponse: HttpInfo<ListCampaignsResponse>) => apiResponse.data));
+    public listCampaigns(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, stats?: boolean, _options?: ConfigurationOptions): Observable<ListCampaignsResponse> {
+        return this.listCampaignsWithHttpInfo(filter, orderBy, pageSize, pageToken, stats, _options).pipe(map((apiResponse: HttpInfo<ListCampaignsResponse>) => apiResponse.data));
     }
 
     /**
@@ -2081,10 +1936,10 @@ export class ObservableCampaignApi {
      * @param sequenceId sequence_id
      * @param removeContactsFromSequenceRequest removeContactsFromSequenceRequest
      */
-    public removeContactsFromCampaignSequenceUsingPOSTWithHttpInfo(campaignId: string, sequenceId: string, removeContactsFromSequenceRequest: RemoveContactsFromSequenceRequest, _options?: ConfigurationOptions): Observable<HttpInfo<RemoveContactsFromSequenceResponse>> {
+    public removeContactsFromCampaignSequenceWithHttpInfo(campaignId: string, sequenceId: string, removeContactsFromSequenceRequest: RemoveContactsFromSequenceRequest, _options?: ConfigurationOptions): Observable<HttpInfo<RemoveContactsFromSequenceResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.removeContactsFromCampaignSequenceUsingPOST(campaignId, sequenceId, removeContactsFromSequenceRequest, _config);
+        const requestContextPromise = this.requestFactory.removeContactsFromCampaignSequence(campaignId, sequenceId, removeContactsFromSequenceRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2097,7 +1952,7 @@ export class ObservableCampaignApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.removeContactsFromCampaignSequenceUsingPOSTWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.removeContactsFromCampaignSequenceWithHttpInfo(rsp)));
             }));
     }
 
@@ -2108,8 +1963,206 @@ export class ObservableCampaignApi {
      * @param sequenceId sequence_id
      * @param removeContactsFromSequenceRequest removeContactsFromSequenceRequest
      */
-    public removeContactsFromCampaignSequenceUsingPOST(campaignId: string, sequenceId: string, removeContactsFromSequenceRequest: RemoveContactsFromSequenceRequest, _options?: ConfigurationOptions): Observable<RemoveContactsFromSequenceResponse> {
-        return this.removeContactsFromCampaignSequenceUsingPOSTWithHttpInfo(campaignId, sequenceId, removeContactsFromSequenceRequest, _options).pipe(map((apiResponse: HttpInfo<RemoveContactsFromSequenceResponse>) => apiResponse.data));
+    public removeContactsFromCampaignSequence(campaignId: string, sequenceId: string, removeContactsFromSequenceRequest: RemoveContactsFromSequenceRequest, _options?: ConfigurationOptions): Observable<RemoveContactsFromSequenceResponse> {
+        return this.removeContactsFromCampaignSequenceWithHttpInfo(campaignId, sequenceId, removeContactsFromSequenceRequest, _options).pipe(map((apiResponse: HttpInfo<RemoveContactsFromSequenceResponse>) => apiResponse.data));
+    }
+
+}
+
+import { CategoryDiscountsApiRequestFactory, CategoryDiscountsApiResponseProcessor} from "../apis/CategoryDiscountsApi";
+export class ObservableCategoryDiscountsApi {
+    private requestFactory: CategoryDiscountsApiRequestFactory;
+    private responseProcessor: CategoryDiscountsApiResponseProcessor;
+    private configuration: Configuration;
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: CategoryDiscountsApiRequestFactory,
+        responseProcessor?: CategoryDiscountsApiResponseProcessor
+    ) {
+        this.configuration = configuration;
+        this.requestFactory = requestFactory || new CategoryDiscountsApiRequestFactory(configuration);
+        this.responseProcessor = responseProcessor || new CategoryDiscountsApiResponseProcessor();
+    }
+
+    /**
+     * Creates a Category Discount
+     * Create a Category Discount
+     * @param createCategoryDiscountRequest request
+     */
+    public createCategoryDiscountWithHttpInfo(createCategoryDiscountRequest: CreateCategoryDiscountRequest, _options?: ConfigurationOptions): Observable<HttpInfo<CategoryDiscount>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.createCategoryDiscount(createCategoryDiscountRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createCategoryDiscountWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Creates a Category Discount
+     * Create a Category Discount
+     * @param createCategoryDiscountRequest request
+     */
+    public createCategoryDiscount(createCategoryDiscountRequest: CreateCategoryDiscountRequest, _options?: ConfigurationOptions): Observable<CategoryDiscount> {
+        return this.createCategoryDiscountWithHttpInfo(createCategoryDiscountRequest, _options).pipe(map((apiResponse: HttpInfo<CategoryDiscount>) => apiResponse.data));
+    }
+
+    /**
+     * Deletes a specified Category Discount
+     * Delete a Category Discount
+     * @param discountId discount_id
+     */
+    public deleteCategoryDiscountWithHttpInfo(discountId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.deleteCategoryDiscount(discountId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteCategoryDiscountWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Deletes a specified Category Discount
+     * Delete a Category Discount
+     * @param discountId discount_id
+     */
+    public deleteCategoryDiscount(discountId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteCategoryDiscountWithHttpInfo(discountId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves a single Category Discount
+     * Retrieve a Category Discount
+     * @param discountId discount_id
+     */
+    public getCategoryDiscountWithHttpInfo(discountId: string, _options?: ConfigurationOptions): Observable<HttpInfo<CategoryDiscount>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getCategoryDiscount(discountId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getCategoryDiscountWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a single Category Discount
+     * Retrieve a Category Discount
+     * @param discountId discount_id
+     */
+    public getCategoryDiscount(discountId: string, _options?: ConfigurationOptions): Observable<CategoryDiscount> {
+        return this.getCategoryDiscountWithHttpInfo(discountId, _options).pipe(map((apiResponse: HttpInfo<CategoryDiscount>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves a list of Category Discounts
+     * List Category Discounts
+     * @param [filter] Filter to apply, the allowed field is: - (String) &#x60;product_category_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of the filter with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_category_id%3D%3D4&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;name&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listCategoryDiscountsWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListCategoryDiscountsResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.listCategoryDiscounts(filter, orderBy, pageSize, pageToken, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listCategoryDiscountsWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a list of Category Discounts
+     * List Category Discounts
+     * @param [filter] Filter to apply, the allowed field is: - (String) &#x60;product_category_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of the filter with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_category_id%3D%3D4&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;name&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listCategoryDiscounts(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListCategoryDiscountsResponse> {
+        return this.listCategoryDiscountsWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListCategoryDiscountsResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Updates a Category Discount
+     * Update a Category Discount
+     * @param discountId discount_id
+     * @param updateCategoryDiscountRequest request
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateCategoryDiscountWithHttpInfo(discountId: string, updateCategoryDiscountRequest: UpdateCategoryDiscountRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<CategoryDiscount>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.updateCategoryDiscount(discountId, updateCategoryDiscountRequest, updateMask, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateCategoryDiscountWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Updates a Category Discount
+     * Update a Category Discount
+     * @param discountId discount_id
+     * @param updateCategoryDiscountRequest request
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateCategoryDiscount(discountId: string, updateCategoryDiscountRequest: UpdateCategoryDiscountRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<CategoryDiscount> {
+        return this.updateCategoryDiscountWithHttpInfo(discountId, updateCategoryDiscountRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<CategoryDiscount>) => apiResponse.data));
     }
 
 }
@@ -2135,10 +2188,10 @@ export class ObservableCompanyApi {
      * Create a Company
      * @param [createCompanyRequest] company
      */
-    public createCompanyUsingPOST1WithHttpInfo(createCompanyRequest?: CreateCompanyRequest, _options?: ConfigurationOptions): Observable<HttpInfo<Company>> {
+    public createCompanyWithHttpInfo(createCompanyRequest?: CreateCompanyRequest, _options?: ConfigurationOptions): Observable<HttpInfo<Company>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.createCompanyUsingPOST1(createCompanyRequest, _config);
+        const requestContextPromise = this.requestFactory.createCompany(createCompanyRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2151,7 +2204,7 @@ export class ObservableCompanyApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createCompanyUsingPOST1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createCompanyWithHttpInfo(rsp)));
             }));
     }
 
@@ -2160,8 +2213,8 @@ export class ObservableCompanyApi {
      * Create a Company
      * @param [createCompanyRequest] company
      */
-    public createCompanyUsingPOST1(createCompanyRequest?: CreateCompanyRequest, _options?: ConfigurationOptions): Observable<Company> {
-        return this.createCompanyUsingPOST1WithHttpInfo(createCompanyRequest, _options).pipe(map((apiResponse: HttpInfo<Company>) => apiResponse.data));
+    public createCompany(createCompanyRequest?: CreateCompanyRequest, _options?: ConfigurationOptions): Observable<Company> {
+        return this.createCompanyWithHttpInfo(createCompanyRequest, _options).pipe(map((apiResponse: HttpInfo<Company>) => apiResponse.data));
     }
 
     /**
@@ -2169,10 +2222,10 @@ export class ObservableCompanyApi {
      * Delete a Company
      * @param companyId company_id
      */
-    public deleteCompanyUsingDELETEWithHttpInfo(companyId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public deleteCompanyWithHttpInfo(companyId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.deleteCompanyUsingDELETE(companyId, _config);
+        const requestContextPromise = this.requestFactory.deleteCompany(companyId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2185,7 +2238,7 @@ export class ObservableCompanyApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteCompanyUsingDELETEWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteCompanyWithHttpInfo(rsp)));
             }));
     }
 
@@ -2194,8 +2247,8 @@ export class ObservableCompanyApi {
      * Delete a Company
      * @param companyId company_id
      */
-    public deleteCompanyUsingDELETE(companyId: string, _options?: ConfigurationOptions): Observable<void> {
-        return this.deleteCompanyUsingDELETEWithHttpInfo(companyId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public deleteCompany(companyId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteCompanyWithHttpInfo(companyId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
@@ -2204,10 +2257,10 @@ export class ObservableCompanyApi {
      * @param companyId company_id
      * @param [fields] Comma-delimited list of Company properties to include in the response. (Available fields are: &#x60;company_name&#x60;, &#x60;address&#x60;, &#x60;custom_fields&#x60;, &#x60;email_address&#x60;, &#x60;fax_number&#x60;, &#x60;phone_number&#x60;, &#x60;website&#x60;, &#x60;notes&#x60;)
      */
-    public getCompanyUsingGET1WithHttpInfo(companyId: string, fields?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<Company>> {
+    public getCompanyWithHttpInfo(companyId: string, fields?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<Company>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getCompanyUsingGET1(companyId, fields, _config);
+        const requestContextPromise = this.requestFactory.getCompany(companyId, fields, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2220,7 +2273,7 @@ export class ObservableCompanyApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getCompanyUsingGET1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getCompanyWithHttpInfo(rsp)));
             }));
     }
 
@@ -2230,23 +2283,23 @@ export class ObservableCompanyApi {
      * @param companyId company_id
      * @param [fields] Comma-delimited list of Company properties to include in the response. (Available fields are: &#x60;company_name&#x60;, &#x60;address&#x60;, &#x60;custom_fields&#x60;, &#x60;email_address&#x60;, &#x60;fax_number&#x60;, &#x60;phone_number&#x60;, &#x60;website&#x60;, &#x60;notes&#x60;)
      */
-    public getCompanyUsingGET1(companyId: string, fields?: Array<string>, _options?: ConfigurationOptions): Observable<Company> {
-        return this.getCompanyUsingGET1WithHttpInfo(companyId, fields, _options).pipe(map((apiResponse: HttpInfo<Company>) => apiResponse.data));
+    public getCompany(companyId: string, fields?: Array<string>, _options?: ConfigurationOptions): Observable<Company> {
+        return this.getCompanyWithHttpInfo(companyId, fields, _options).pipe(map((apiResponse: HttpInfo<Company>) => apiResponse.data));
     }
 
     /**
-     * Retrieves a list of all Companies
+     * Retrieves a list of all Companies.<br/><br/>If the feature flag is <b>enabled</b>, the endpoint returns the <span style=\'color:red\'>legacy</span> non-paginated list of all companies.<br/>If the flag is <b>disabled</b>, it returns a paginated list using the v2-compliant implementation.<br/><br/><span style=\'color:red\'>Deprecated as of v2</span>: The legacy behavior will be removed after the transition period.
      * List Companies
-     * @param [fields] Comma-delimited list of Company properties to include in the response. (Fields such as &#x60;notes&#x60;, &#x60;fax_number&#x60; and &#x60;custom_fields&#x60; aren\&#39;t included, by default.)
-     * @param [filter] Search filter to apply to results
-     * @param [orderBy] Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60;
+     * @param [fields] Comma-delimited list of Company properties to include in the response. (Fields such as &#x60;notes&#x60;, &#x60;fax_number&#x60;, &#x60;email_address&#x60;, &#x60;phone_number&#x60;, &#x60;update_time&#x60;, &#x60;create_time&#x60; and &#x60;custom_fields&#x60; aren\&#39;t included, by default.)
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;name&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listCompaniesUsingGET1WithHttpInfo(fields?: Array<string>, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListCompaniesResponse>> {
+    public listCompaniesWithHttpInfo(fields?: Array<string>, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListCompaniesResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.listCompaniesUsingGET1(fields, filter, orderBy, pageSize, pageToken, _config);
+        const requestContextPromise = this.requestFactory.listCompanies(fields, filter, orderBy, pageSize, pageToken, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2259,21 +2312,21 @@ export class ObservableCompanyApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listCompaniesUsingGET1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listCompaniesWithHttpInfo(rsp)));
             }));
     }
 
     /**
-     * Retrieves a list of all Companies
+     * Retrieves a list of all Companies.<br/><br/>If the feature flag is <b>enabled</b>, the endpoint returns the <span style=\'color:red\'>legacy</span> non-paginated list of all companies.<br/>If the flag is <b>disabled</b>, it returns a paginated list using the v2-compliant implementation.<br/><br/><span style=\'color:red\'>Deprecated as of v2</span>: The legacy behavior will be removed after the transition period.
      * List Companies
-     * @param [fields] Comma-delimited list of Company properties to include in the response. (Fields such as &#x60;notes&#x60;, &#x60;fax_number&#x60; and &#x60;custom_fields&#x60; aren\&#39;t included, by default.)
-     * @param [filter] Search filter to apply to results
-     * @param [orderBy] Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60;
+     * @param [fields] Comma-delimited list of Company properties to include in the response. (Fields such as &#x60;notes&#x60;, &#x60;fax_number&#x60;, &#x60;email_address&#x60;, &#x60;phone_number&#x60;, &#x60;update_time&#x60;, &#x60;create_time&#x60; and &#x60;custom_fields&#x60; aren\&#39;t included, by default.)
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;name&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listCompaniesUsingGET1(fields?: Array<string>, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListCompaniesResponse> {
-        return this.listCompaniesUsingGET1WithHttpInfo(fields, filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListCompaniesResponse>) => apiResponse.data));
+    public listCompanies(fields?: Array<string>, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListCompaniesResponse> {
+        return this.listCompaniesWithHttpInfo(fields, filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListCompaniesResponse>) => apiResponse.data));
     }
 
     /**
@@ -2283,10 +2336,10 @@ export class ObservableCompanyApi {
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @param [updateCompanyRequest] company
      */
-    public updateCompanyUsingPATCH1WithHttpInfo(companyId: string, updateMask?: Array<string>, updateCompanyRequest?: UpdateCompanyRequest, _options?: ConfigurationOptions): Observable<HttpInfo<Company>> {
+    public updateCompanyWithHttpInfo(companyId: string, updateMask?: Array<string>, updateCompanyRequest?: UpdateCompanyRequest, _options?: ConfigurationOptions): Observable<HttpInfo<Company>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.updateCompanyUsingPATCH1(companyId, updateMask, updateCompanyRequest, _config);
+        const requestContextPromise = this.requestFactory.updateCompany(companyId, updateMask, updateCompanyRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2299,7 +2352,7 @@ export class ObservableCompanyApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateCompanyUsingPATCH1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateCompanyWithHttpInfo(rsp)));
             }));
     }
 
@@ -2310,8 +2363,8 @@ export class ObservableCompanyApi {
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @param [updateCompanyRequest] company
      */
-    public updateCompanyUsingPATCH1(companyId: string, updateMask?: Array<string>, updateCompanyRequest?: UpdateCompanyRequest, _options?: ConfigurationOptions): Observable<Company> {
-        return this.updateCompanyUsingPATCH1WithHttpInfo(companyId, updateMask, updateCompanyRequest, _options).pipe(map((apiResponse: HttpInfo<Company>) => apiResponse.data));
+    public updateCompany(companyId: string, updateMask?: Array<string>, updateCompanyRequest?: UpdateCompanyRequest, _options?: ConfigurationOptions): Observable<Company> {
+        return this.updateCompanyWithHttpInfo(companyId, updateMask, updateCompanyRequest, _options).pipe(map((apiResponse: HttpInfo<Company>) => apiResponse.data));
     }
 
 }
@@ -2333,48 +2386,14 @@ export class ObservableContactApi {
     }
 
     /**
-     * Creates a new type of Contact Link
-     * Create a Contact Link type
-     * @param createContactLinkTypeRequest request
-     */
-    public createContactLinkTypeUsingPOSTWithHttpInfo(createContactLinkTypeRequest: CreateContactLinkTypeRequest, _options?: ConfigurationOptions): Observable<HttpInfo<ContactLinkType>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.createContactLinkTypeUsingPOST(createContactLinkTypeRequest, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createContactLinkTypeUsingPOSTWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Creates a new type of Contact Link
-     * Create a Contact Link type
-     * @param createContactLinkTypeRequest request
-     */
-    public createContactLinkTypeUsingPOST(createContactLinkTypeRequest: CreateContactLinkTypeRequest, _options?: ConfigurationOptions): Observable<ContactLinkType> {
-        return this.createContactLinkTypeUsingPOSTWithHttpInfo(createContactLinkTypeRequest, _options).pipe(map((apiResponse: HttpInfo<ContactLinkType>) => apiResponse.data));
-    }
-
-    /**
      * Creates a new Contact. *Note:* Contact must contain at least one item in `email_addresses` or `phone_numbers` and `country_code` is required if `region` is specified.
      * Create a Contact
      * @param [createUpdateContactRequest] contact
      */
-    public createContactUsingPOST1WithHttpInfo(createUpdateContactRequest?: CreateUpdateContactRequest, _options?: ConfigurationOptions): Observable<HttpInfo<Contact>> {
+    public createContactWithHttpInfo(createUpdateContactRequest?: CreateUpdateContactRequest, _options?: ConfigurationOptions): Observable<HttpInfo<Contact>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.createContactUsingPOST1(createUpdateContactRequest, _config);
+        const requestContextPromise = this.requestFactory.createContact(createUpdateContactRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2387,7 +2406,7 @@ export class ObservableContactApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createContactUsingPOST1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createContactWithHttpInfo(rsp)));
             }));
     }
 
@@ -2396,19 +2415,19 @@ export class ObservableContactApi {
      * Create a Contact
      * @param [createUpdateContactRequest] contact
      */
-    public createContactUsingPOST1(createUpdateContactRequest?: CreateUpdateContactRequest, _options?: ConfigurationOptions): Observable<Contact> {
-        return this.createContactUsingPOST1WithHttpInfo(createUpdateContactRequest, _options).pipe(map((apiResponse: HttpInfo<Contact>) => apiResponse.data));
+    public createContact(createUpdateContactRequest?: CreateUpdateContactRequest, _options?: ConfigurationOptions): Observable<Contact> {
+        return this.createContactWithHttpInfo(createUpdateContactRequest, _options).pipe(map((apiResponse: HttpInfo<Contact>) => apiResponse.data));
     }
 
     /**
-     * Deletes the specified Contact
-     * Delete a Contact
-     * @param contactId contact_id
+     * Creates a new type of Contact Link
+     * Create a Contact Link type
+     * @param createContactLinkTypeRequest request
      */
-    public deleteContactUsingDELETE1WithHttpInfo(contactId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public createContactLinkTypeWithHttpInfo(createContactLinkTypeRequest: CreateContactLinkTypeRequest, _options?: ConfigurationOptions): Observable<HttpInfo<ContactLinkType>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.deleteContactUsingDELETE1(contactId, _config);
+        const requestContextPromise = this.requestFactory.createContactLinkType(createContactLinkTypeRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2421,7 +2440,41 @@ export class ObservableContactApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteContactUsingDELETE1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createContactLinkTypeWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Creates a new type of Contact Link
+     * Create a Contact Link type
+     * @param createContactLinkTypeRequest request
+     */
+    public createContactLinkType(createContactLinkTypeRequest: CreateContactLinkTypeRequest, _options?: ConfigurationOptions): Observable<ContactLinkType> {
+        return this.createContactLinkTypeWithHttpInfo(createContactLinkTypeRequest, _options).pipe(map((apiResponse: HttpInfo<ContactLinkType>) => apiResponse.data));
+    }
+
+    /**
+     * Deletes the specified Contact
+     * Delete a Contact
+     * @param contactId contact_id
+     */
+    public deleteContactWithHttpInfo(contactId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.deleteContact(contactId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteContactWithHttpInfo(rsp)));
             }));
     }
 
@@ -2430,8 +2483,8 @@ export class ObservableContactApi {
      * Delete a Contact
      * @param contactId contact_id
      */
-    public deleteContactUsingDELETE1(contactId: string, _options?: ConfigurationOptions): Observable<void> {
-        return this.deleteContactUsingDELETE1WithHttpInfo(contactId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public deleteContact(contactId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteContactWithHttpInfo(contactId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
@@ -2440,10 +2493,10 @@ export class ObservableContactApi {
      * @param contactId contact_id
      * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
      */
-    public getContactUsingGET1WithHttpInfo(contactId: string, fields?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<Contact>> {
+    public getContactWithHttpInfo(contactId: string, fields?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<Contact>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getContactUsingGET1(contactId, fields, _config);
+        const requestContextPromise = this.requestFactory.getContact(contactId, fields, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2456,7 +2509,7 @@ export class ObservableContactApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getContactUsingGET1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getContactWithHttpInfo(rsp)));
             }));
     }
 
@@ -2466,8 +2519,8 @@ export class ObservableContactApi {
      * @param contactId contact_id
      * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
      */
-    public getContactUsingGET1(contactId: string, fields?: Array<string>, _options?: ConfigurationOptions): Observable<Contact> {
-        return this.getContactUsingGET1WithHttpInfo(contactId, fields, _options).pipe(map((apiResponse: HttpInfo<Contact>) => apiResponse.data));
+    public getContact(contactId: string, fields?: Array<string>, _options?: ConfigurationOptions): Observable<Contact> {
+        return this.getContactWithHttpInfo(contactId, fields, _options).pipe(map((apiResponse: HttpInfo<Contact>) => apiResponse.data));
     }
 
     /**
@@ -2475,10 +2528,10 @@ export class ObservableContactApi {
      * Link Contacts
      * @param linkContactsRequest linkContactsRequest
      */
-    public linkContactsUsingPOSTWithHttpInfo(linkContactsRequest: LinkContactsRequest, _options?: ConfigurationOptions): Observable<HttpInfo<ContactLink>> {
+    public linkContactsWithHttpInfo(linkContactsRequest: LinkContactsRequest, _options?: ConfigurationOptions): Observable<HttpInfo<ContactLink>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.linkContactsUsingPOST(linkContactsRequest, _config);
+        const requestContextPromise = this.requestFactory.linkContacts(linkContactsRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2491,7 +2544,7 @@ export class ObservableContactApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.linkContactsUsingPOSTWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.linkContactsWithHttpInfo(rsp)));
             }));
     }
 
@@ -2500,22 +2553,22 @@ export class ObservableContactApi {
      * Link Contacts
      * @param linkContactsRequest linkContactsRequest
      */
-    public linkContactsUsingPOST(linkContactsRequest: LinkContactsRequest, _options?: ConfigurationOptions): Observable<ContactLink> {
-        return this.linkContactsUsingPOSTWithHttpInfo(linkContactsRequest, _options).pipe(map((apiResponse: HttpInfo<ContactLink>) => apiResponse.data));
+    public linkContacts(linkContactsRequest: LinkContactsRequest, _options?: ConfigurationOptions): Observable<ContactLink> {
+        return this.linkContactsWithHttpInfo(linkContactsRequest, _options).pipe(map((apiResponse: HttpInfo<ContactLink>) => apiResponse.data));
     }
 
     /**
      * Retrieves a list of Contact Link types.
      * List Contact Link types
-     * @param [filter] Search filter to apply to results. Formatted as (unencoded) ?filter&#x3D;name&#x3D;&#x3D;expectedValue
-     * @param [orderBy]
-     * @param [pageSize]
-     * @param [pageToken]
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;name&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3DexpectedValue&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;max_links&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; 
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
      */
-    public listContactLinkTypesUsingGETWithHttpInfo(filter?: 'name', orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListContactLinkTypesResponse>> {
+    public listContactLinkTypesWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListContactLinkTypesResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.listContactLinkTypesUsingGET(filter, orderBy, pageSize, pageToken, _config);
+        const requestContextPromise = this.requestFactory.listContactLinkTypes(filter, orderBy, pageSize, pageToken, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2528,20 +2581,20 @@ export class ObservableContactApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listContactLinkTypesUsingGETWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listContactLinkTypesWithHttpInfo(rsp)));
             }));
     }
 
     /**
      * Retrieves a list of Contact Link types.
      * List Contact Link types
-     * @param [filter] Search filter to apply to results. Formatted as (unencoded) ?filter&#x3D;name&#x3D;&#x3D;expectedValue
-     * @param [orderBy]
-     * @param [pageSize]
-     * @param [pageToken]
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;name&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3DexpectedValue&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;max_links&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; 
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
      */
-    public listContactLinkTypesUsingGET(filter?: 'name', orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListContactLinkTypesResponse> {
-        return this.listContactLinkTypesUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListContactLinkTypesResponse>) => apiResponse.data));
+    public listContactLinkTypes(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListContactLinkTypesResponse> {
+        return this.listContactLinkTypesWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListContactLinkTypesResponse>) => apiResponse.data));
     }
 
     /**
@@ -2549,10 +2602,10 @@ export class ObservableContactApi {
      * List Linked Contacts
      * @param contactId contact_id
      */
-    public listContactLinksUsingGETWithHttpInfo(contactId: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListContactLinksResponse>> {
+    public listContactLinksWithHttpInfo(contactId: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListContactLinksResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.listContactLinksUsingGET(contactId, _config);
+        const requestContextPromise = this.requestFactory.listContactLinks(contactId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2565,7 +2618,7 @@ export class ObservableContactApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listContactLinksUsingGETWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listContactLinksWithHttpInfo(rsp)));
             }));
     }
 
@@ -2574,8 +2627,8 @@ export class ObservableContactApi {
      * List Linked Contacts
      * @param contactId contact_id
      */
-    public listContactLinksUsingGET(contactId: string, _options?: ConfigurationOptions): Observable<ListContactLinksResponse> {
-        return this.listContactLinksUsingGETWithHttpInfo(contactId, _options).pipe(map((apiResponse: HttpInfo<ListContactLinksResponse>) => apiResponse.data));
+    public listContactLinks(contactId: string, _options?: ConfigurationOptions): Observable<ListContactLinksResponse> {
+        return this.listContactLinksWithHttpInfo(contactId, _options).pipe(map((apiResponse: HttpInfo<ListContactLinksResponse>) => apiResponse.data));
     }
 
     /**
@@ -2587,10 +2640,10 @@ export class ObservableContactApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listContactsUsingGET1WithHttpInfo(fields?: Array<string>, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListContactsResponse>> {
+    public listContactsWithHttpInfo(fields?: Array<string>, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListContactsResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.listContactsUsingGET1(fields, filter, orderBy, pageSize, pageToken, _config);
+        const requestContextPromise = this.requestFactory.listContacts(fields, filter, orderBy, pageSize, pageToken, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2603,7 +2656,7 @@ export class ObservableContactApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listContactsUsingGET1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listContactsWithHttpInfo(rsp)));
             }));
     }
 
@@ -2616,18 +2669,18 @@ export class ObservableContactApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listContactsUsingGET1(fields?: Array<string>, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListContactsResponse> {
-        return this.listContactsUsingGET1WithHttpInfo(fields, filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListContactsResponse>) => apiResponse.data));
+    public listContacts(fields?: Array<string>, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListContactsResponse> {
+        return this.listContactsWithHttpInfo(fields, filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListContactsResponse>) => apiResponse.data));
     }
 
     /**
      * Get the custom fields and optional properties for the Contact object
      * Retrieve Contact Model
      */
-    public retrieveContactModelUsingGET1WithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<ObjectModel>> {
+    public retrieveContactModelWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<ObjectModel>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.retrieveContactModelUsingGET1(_config);
+        const requestContextPromise = this.requestFactory.retrieveContactModel(_config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2640,7 +2693,7 @@ export class ObservableContactApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.retrieveContactModelUsingGET1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.retrieveContactModelWithHttpInfo(rsp)));
             }));
     }
 
@@ -2648,8 +2701,8 @@ export class ObservableContactApi {
      * Get the custom fields and optional properties for the Contact object
      * Retrieve Contact Model
      */
-    public retrieveContactModelUsingGET1(_options?: ConfigurationOptions): Observable<ObjectModel> {
-        return this.retrieveContactModelUsingGET1WithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<ObjectModel>) => apiResponse.data));
+    public retrieveContactModel(_options?: ConfigurationOptions): Observable<ObjectModel> {
+        return this.retrieveContactModelWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<ObjectModel>) => apiResponse.data));
     }
 
     /**
@@ -2657,10 +2710,10 @@ export class ObservableContactApi {
      * Delete Link between two Contacts
      * @param linkContactsRequest linkContactsRequest
      */
-    public unlinkContactsUsingPOSTWithHttpInfo(linkContactsRequest: LinkContactsRequest, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public unlinkContactsWithHttpInfo(linkContactsRequest: LinkContactsRequest, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.unlinkContactsUsingPOST(linkContactsRequest, _config);
+        const requestContextPromise = this.requestFactory.unlinkContacts(linkContactsRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2673,7 +2726,7 @@ export class ObservableContactApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.unlinkContactsUsingPOSTWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.unlinkContactsWithHttpInfo(rsp)));
             }));
     }
 
@@ -2682,8 +2735,8 @@ export class ObservableContactApi {
      * Delete Link between two Contacts
      * @param linkContactsRequest linkContactsRequest
      */
-    public unlinkContactsUsingPOST(linkContactsRequest: LinkContactsRequest, _options?: ConfigurationOptions): Observable<void> {
-        return this.unlinkContactsUsingPOSTWithHttpInfo(linkContactsRequest, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public unlinkContacts(linkContactsRequest: LinkContactsRequest, _options?: ConfigurationOptions): Observable<void> {
+        return this.unlinkContactsWithHttpInfo(linkContactsRequest, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
@@ -2693,10 +2746,10 @@ export class ObservableContactApi {
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @param [createUpdateContactRequest] contact
      */
-    public updateContactUsingPATCHWithHttpInfo(contactId: string, updateMask?: Array<string>, createUpdateContactRequest?: CreateUpdateContactRequest, _options?: ConfigurationOptions): Observable<HttpInfo<Contact>> {
+    public updateContactWithHttpInfo(contactId: string, updateMask?: Array<string>, createUpdateContactRequest?: CreateUpdateContactRequest, _options?: ConfigurationOptions): Observable<HttpInfo<Contact>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.updateContactUsingPATCH(contactId, updateMask, createUpdateContactRequest, _config);
+        const requestContextPromise = this.requestFactory.updateContact(contactId, updateMask, createUpdateContactRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2709,7 +2762,7 @@ export class ObservableContactApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateContactUsingPATCHWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateContactWithHttpInfo(rsp)));
             }));
     }
 
@@ -2720,652 +2773,8 @@ export class ObservableContactApi {
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @param [createUpdateContactRequest] contact
      */
-    public updateContactUsingPATCH(contactId: string, updateMask?: Array<string>, createUpdateContactRequest?: CreateUpdateContactRequest, _options?: ConfigurationOptions): Observable<Contact> {
-        return this.updateContactUsingPATCHWithHttpInfo(contactId, updateMask, createUpdateContactRequest, _options).pipe(map((apiResponse: HttpInfo<Contact>) => apiResponse.data));
-    }
-
-}
-
-import { CustomFieldsApiRequestFactory, CustomFieldsApiResponseProcessor} from "../apis/CustomFieldsApi";
-export class ObservableCustomFieldsApi {
-    private requestFactory: CustomFieldsApiRequestFactory;
-    private responseProcessor: CustomFieldsApiResponseProcessor;
-    private configuration: Configuration;
-
-    public constructor(
-        configuration: Configuration,
-        requestFactory?: CustomFieldsApiRequestFactory,
-        responseProcessor?: CustomFieldsApiResponseProcessor
-    ) {
-        this.configuration = configuration;
-        this.requestFactory = requestFactory || new CustomFieldsApiRequestFactory(configuration);
-        this.responseProcessor = responseProcessor || new CustomFieldsApiResponseProcessor();
-    }
-
-    /**
-     * Retrieves a list of custom fields in a tenant.
-     * Retrieves a list of custom fields in a tenant.
-     * @param [filter]
-     * @param [pageToken]
-     * @param [orderBy]
-     * @param [pageSize]
-     */
-    public getCustomFieldsWithHttpInfo(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: ConfigurationOptions): Observable<HttpInfo<PipelineCustomFields>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getCustomFields(filter, pageToken, orderBy, pageSize, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getCustomFieldsWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Retrieves a list of custom fields in a tenant.
-     * Retrieves a list of custom fields in a tenant.
-     * @param [filter]
-     * @param [pageToken]
-     * @param [orderBy]
-     * @param [pageSize]
-     */
-    public getCustomFields(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: ConfigurationOptions): Observable<PipelineCustomFields> {
-        return this.getCustomFieldsWithHttpInfo(filter, pageToken, orderBy, pageSize, _options).pipe(map((apiResponse: HttpInfo<PipelineCustomFields>) => apiResponse.data));
-    }
-
-    /**
-     * Updates a custom field
-     * Updates a custom field
-     * @param id the identifier of the custom field to update
-     * @param updateCustomFieldRequest the request body containing updated custom field details
-     */
-    public updateCustomFieldWithHttpInfo(id: string, updateCustomFieldRequest: UpdateCustomFieldRequest, _options?: ConfigurationOptions): Observable<HttpInfo<PipelineCustomField>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.updateCustomField(id, updateCustomFieldRequest, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateCustomFieldWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Updates a custom field
-     * Updates a custom field
-     * @param id the identifier of the custom field to update
-     * @param updateCustomFieldRequest the request body containing updated custom field details
-     */
-    public updateCustomField(id: string, updateCustomFieldRequest: UpdateCustomFieldRequest, _options?: ConfigurationOptions): Observable<PipelineCustomField> {
-        return this.updateCustomFieldWithHttpInfo(id, updateCustomFieldRequest, _options).pipe(map((apiResponse: HttpInfo<PipelineCustomField>) => apiResponse.data));
-    }
-
-}
-
-import { DateExpressionApiRequestFactory, DateExpressionApiResponseProcessor} from "../apis/DateExpressionApi";
-export class ObservableDateExpressionApi {
-    private requestFactory: DateExpressionApiRequestFactory;
-    private responseProcessor: DateExpressionApiResponseProcessor;
-    private configuration: Configuration;
-
-    public constructor(
-        configuration: Configuration,
-        requestFactory?: DateExpressionApiRequestFactory,
-        responseProcessor?: DateExpressionApiResponseProcessor
-    ) {
-        this.configuration = configuration;
-        this.requestFactory = requestFactory || new DateExpressionApiRequestFactory(configuration);
-        this.responseProcessor = responseProcessor || new DateExpressionApiResponseProcessor();
-    }
-
-    /**
-     * @param [timeZone]
-     * @param [query]
-     */
-    public queryDateExpressionsWithHttpInfo(timeZone?: string, query?: string, _options?: ConfigurationOptions): Observable<HttpInfo<DateExpressionResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.queryDateExpressions(timeZone, query, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.queryDateExpressionsWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * @param [timeZone]
-     * @param [query]
-     */
-    public queryDateExpressions(timeZone?: string, query?: string, _options?: ConfigurationOptions): Observable<DateExpressionResponse> {
-        return this.queryDateExpressionsWithHttpInfo(timeZone, query, _options).pipe(map((apiResponse: HttpInfo<DateExpressionResponse>) => apiResponse.data));
-    }
-
-}
-
-import { DealsApiRequestFactory, DealsApiResponseProcessor} from "../apis/DealsApi";
-export class ObservableDealsApi {
-    private requestFactory: DealsApiRequestFactory;
-    private responseProcessor: DealsApiResponseProcessor;
-    private configuration: Configuration;
-
-    public constructor(
-        configuration: Configuration,
-        requestFactory?: DealsApiRequestFactory,
-        responseProcessor?: DealsApiResponseProcessor
-    ) {
-        this.configuration = configuration;
-        this.requestFactory = requestFactory || new DealsApiRequestFactory(configuration);
-        this.responseProcessor = responseProcessor || new DealsApiResponseProcessor();
-    }
-
-    /**
-     * Creates a new deal.
-     * Creates a new deal.
-     * @param createDealRequest the request body containing deal details
-     */
-    public createDealWithHttpInfo(createDealRequest: CreateDealRequest, _options?: ConfigurationOptions): Observable<HttpInfo<Deal>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.createDeal(createDealRequest, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createDealWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Creates a new deal.
-     * Creates a new deal.
-     * @param createDealRequest the request body containing deal details
-     */
-    public createDeal(createDealRequest: CreateDealRequest, _options?: ConfigurationOptions): Observable<Deal> {
-        return this.createDealWithHttpInfo(createDealRequest, _options).pipe(map((apiResponse: HttpInfo<Deal>) => apiResponse.data));
-    }
-
-    /**
-     * Creates a new note for a specific deal.
-     * Creates a new note for a specific deal.
-     * @param id the deal ID to associate the new note with
-     * @param createDealNoteRequest the request body containing note details
-     */
-    public createNoteWithHttpInfo(id: string, createDealNoteRequest: CreateDealNoteRequest, _options?: ConfigurationOptions): Observable<HttpInfo<DealNote>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.createNote(id, createDealNoteRequest, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createNoteWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Creates a new note for a specific deal.
-     * Creates a new note for a specific deal.
-     * @param id the deal ID to associate the new note with
-     * @param createDealNoteRequest the request body containing note details
-     */
-    public createNote(id: string, createDealNoteRequest: CreateDealNoteRequest, _options?: ConfigurationOptions): Observable<DealNote> {
-        return this.createNoteWithHttpInfo(id, createDealNoteRequest, _options).pipe(map((apiResponse: HttpInfo<DealNote>) => apiResponse.data));
-    }
-
-    /**
-     * Creates new notes in bulk.
-     * Creates new notes in bulk.
-     * @param bulkCreateDealNotesRequest the request body containing note details
-     */
-    public createNotesBulkWithHttpInfo(bulkCreateDealNotesRequest: BulkCreateDealNotesRequest, _options?: ConfigurationOptions): Observable<HttpInfo<BulkCreateDealNotesResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.createNotesBulk(bulkCreateDealNotesRequest, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createNotesBulkWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Creates new notes in bulk.
-     * Creates new notes in bulk.
-     * @param bulkCreateDealNotesRequest the request body containing note details
-     */
-    public createNotesBulk(bulkCreateDealNotesRequest: BulkCreateDealNotesRequest, _options?: ConfigurationOptions): Observable<BulkCreateDealNotesResponse> {
-        return this.createNotesBulkWithHttpInfo(bulkCreateDealNotesRequest, _options).pipe(map((apiResponse: HttpInfo<BulkCreateDealNotesResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Deletes a specific deal by its ID.
-     * Deletes a specific deal by its ID.
-     * @param id the ID of the deal to delete
-     */
-    public deleteDealWithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.deleteDeal(id, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteDealWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Deletes a specific deal by its ID.
-     * Deletes a specific deal by its ID.
-     * @param id the ID of the deal to delete
-     */
-    public deleteDeal(id: string, _options?: ConfigurationOptions): Observable<void> {
-        return this.deleteDealWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
-    }
-
-    /**
-     * Deletes a specific deal note by its ID.
-     * Deletes a specific deal note by its ID.
-     * @param noteId the ID of the note to delete
-     */
-    public deleteNoteWithHttpInfo(noteId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.deleteNote(noteId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteNoteWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Deletes a specific deal note by its ID.
-     * Deletes a specific deal note by its ID.
-     * @param noteId the ID of the note to delete
-     */
-    public deleteNote(noteId: string, _options?: ConfigurationOptions): Observable<void> {
-        return this.deleteNoteWithHttpInfo(noteId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
-    }
-
-    /**
-     * Retrieves a specific deal by its ID.
-     * Retrieves a specific deal by its ID.
-     * @param id the ID of the deal to retrieve
-     */
-    public getDealWithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<Deal>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getDeal(id, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getDealWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Retrieves a specific deal by its ID.
-     * Retrieves a specific deal by its ID.
-     * @param id the ID of the deal to retrieve
-     */
-    public getDeal(id: string, _options?: ConfigurationOptions): Observable<Deal> {
-        return this.getDealWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<Deal>) => apiResponse.data));
-    }
-
-    /**
-     * Retrieves a specific deal note by its ID.
-     * Retrieves a specific deal note by its ID.
-     * @param noteId the ID of the note to retrieve
-     */
-    public getNoteWithHttpInfo(noteId: string, _options?: ConfigurationOptions): Observable<HttpInfo<DealNote>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getNote(noteId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getNoteWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Retrieves a specific deal note by its ID.
-     * Retrieves a specific deal note by its ID.
-     * @param noteId the ID of the note to retrieve
-     */
-    public getNote(noteId: string, _options?: ConfigurationOptions): Observable<DealNote> {
-        return this.getNoteWithHttpInfo(noteId, _options).pipe(map((apiResponse: HttpInfo<DealNote>) => apiResponse.data));
-    }
-
-    /**
-     * Lists all deals associated with a specific contact.
-     * Lists all deals associated with a specific contact.
-     * @param contactId the contact ID to list deals for
-     * @param [filter]
-     * @param [pageToken]
-     * @param [orderBy]
-     * @param [pageSize]
-     */
-    public listDealsWithHttpInfo(contactId: string, filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: ConfigurationOptions): Observable<HttpInfo<DealListResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.listDeals(contactId, filter, pageToken, orderBy, pageSize, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listDealsWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Lists all deals associated with a specific contact.
-     * Lists all deals associated with a specific contact.
-     * @param contactId the contact ID to list deals for
-     * @param [filter]
-     * @param [pageToken]
-     * @param [orderBy]
-     * @param [pageSize]
-     */
-    public listDeals(contactId: string, filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: ConfigurationOptions): Observable<DealListResponse> {
-        return this.listDealsWithHttpInfo(contactId, filter, pageToken, orderBy, pageSize, _options).pipe(map((apiResponse: HttpInfo<DealListResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Lists all notes associated with a specific deal.
-     * Lists all notes associated with a specific deal.
-     * @param id the deal ID to list notes for
-     * @param [filter]
-     * @param [pageToken]
-     * @param [orderBy]
-     * @param [pageSize]
-     */
-    public listNotesWithHttpInfo(id: string, filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: ConfigurationOptions): Observable<HttpInfo<DealNoteListResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.listNotes(id, filter, pageToken, orderBy, pageSize, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listNotesWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Lists all notes associated with a specific deal.
-     * Lists all notes associated with a specific deal.
-     * @param id the deal ID to list notes for
-     * @param [filter]
-     * @param [pageToken]
-     * @param [orderBy]
-     * @param [pageSize]
-     */
-    public listNotes(id: string, filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: ConfigurationOptions): Observable<DealNoteListResponse> {
-        return this.listNotesWithHttpInfo(id, filter, pageToken, orderBy, pageSize, _options).pipe(map((apiResponse: HttpInfo<DealNoteListResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Moves the active deals of specified contacts from one stage to another, in bulk.
-     * Moves the active deals of specified contacts from one stage to another, in bulk.
-     * @param moveDealsForContactsRequest the request body containing move details
-     */
-    public moveDealsForContactsWithHttpInfo(moveDealsForContactsRequest: MoveDealsForContactsRequest, _options?: ConfigurationOptions): Observable<HttpInfo<MoveDealsForContactsResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.moveDealsForContacts(moveDealsForContactsRequest, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.moveDealsForContactsWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Moves the active deals of specified contacts from one stage to another, in bulk.
-     * Moves the active deals of specified contacts from one stage to another, in bulk.
-     * @param moveDealsForContactsRequest the request body containing move details
-     */
-    public moveDealsForContacts(moveDealsForContactsRequest: MoveDealsForContactsRequest, _options?: ConfigurationOptions): Observable<MoveDealsForContactsResponse> {
-        return this.moveDealsForContactsWithHttpInfo(moveDealsForContactsRequest, _options).pipe(map((apiResponse: HttpInfo<MoveDealsForContactsResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Updates a specific deal note by its ID.
-     * Updates a specific deal note by its ID.
-     * @param noteId the ID of the note to update
-     * @param updateDealNoteRequest the request body containing updated note details
-     */
-    public updateNoteWithHttpInfo(noteId: string, updateDealNoteRequest: UpdateDealNoteRequest, _options?: ConfigurationOptions): Observable<HttpInfo<DealNote>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.updateNote(noteId, updateDealNoteRequest, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateNoteWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Updates a specific deal note by its ID.
-     * Updates a specific deal note by its ID.
-     * @param noteId the ID of the note to update
-     * @param updateDealNoteRequest the request body containing updated note details
-     */
-    public updateNote(noteId: string, updateDealNoteRequest: UpdateDealNoteRequest, _options?: ConfigurationOptions): Observable<DealNote> {
-        return this.updateNoteWithHttpInfo(noteId, updateDealNoteRequest, _options).pipe(map((apiResponse: HttpInfo<DealNote>) => apiResponse.data));
-    }
-
-}
-
-import { DisplayFormsApiRequestFactory, DisplayFormsApiResponseProcessor} from "../apis/DisplayFormsApi";
-export class ObservableDisplayFormsApi {
-    private requestFactory: DisplayFormsApiRequestFactory;
-    private responseProcessor: DisplayFormsApiResponseProcessor;
-    private configuration: Configuration;
-
-    public constructor(
-        configuration: Configuration,
-        requestFactory?: DisplayFormsApiRequestFactory,
-        responseProcessor?: DisplayFormsApiResponseProcessor
-    ) {
-        this.configuration = configuration;
-        this.requestFactory = requestFactory || new DisplayFormsApiRequestFactory(configuration);
-        this.responseProcessor = responseProcessor || new DisplayFormsApiResponseProcessor();
-    }
-
-    /**
-     * Retrieves a specific display form by a pipeline ID.
-     * Retrieves a specific display form by a pipeline ID.
-     * @param id the ID of the pipeline containing the form
-     */
-    public getDisplayFormWithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<DisplayForm>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getDisplayForm(id, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getDisplayFormWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Retrieves a specific display form by a pipeline ID.
-     * Retrieves a specific display form by a pipeline ID.
-     * @param id the ID of the pipeline containing the form
-     */
-    public getDisplayForm(id: string, _options?: ConfigurationOptions): Observable<DisplayForm> {
-        return this.getDisplayFormWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<DisplayForm>) => apiResponse.data));
-    }
-
-    /**
-     * Updates a display form
-     * Updates a display form
-     * @param id the ID of the pipeline containing the form
-     * @param updateDisplayFormRequest the request body containing updated display form details
-     */
-    public updateDisplayFormWithHttpInfo(id: string, updateDisplayFormRequest: UpdateDisplayFormRequest, _options?: ConfigurationOptions): Observable<HttpInfo<DisplayForm>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.updateDisplayForm(id, updateDisplayFormRequest, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateDisplayFormWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Updates a display form
-     * Updates a display form
-     * @param id the ID of the pipeline containing the form
-     * @param updateDisplayFormRequest the request body containing updated display form details
-     */
-    public updateDisplayForm(id: string, updateDisplayFormRequest: UpdateDisplayFormRequest, _options?: ConfigurationOptions): Observable<DisplayForm> {
-        return this.updateDisplayFormWithHttpInfo(id, updateDisplayFormRequest, _options).pipe(map((apiResponse: HttpInfo<DisplayForm>) => apiResponse.data));
+    public updateContact(contactId: string, updateMask?: Array<string>, createUpdateContactRequest?: CreateUpdateContactRequest, _options?: ConfigurationOptions): Observable<Contact> {
+        return this.updateContactWithHttpInfo(contactId, updateMask, createUpdateContactRequest, _options).pipe(map((apiResponse: HttpInfo<Contact>) => apiResponse.data));
     }
 
 }
@@ -3391,10 +2800,10 @@ export class ObservableEmailApi {
      * Create an Email Record
      * @param createEmailSentRequest emailWithContent
      */
-    public createEmailUsingPOST1WithHttpInfo(createEmailSentRequest: CreateEmailSentRequest, _options?: ConfigurationOptions): Observable<HttpInfo<EmailSentWithContent>> {
+    public createEmailWithHttpInfo(createEmailSentRequest: CreateEmailSentRequest, _options?: ConfigurationOptions): Observable<HttpInfo<EmailSentWithContent>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.createEmailUsingPOST1(createEmailSentRequest, _config);
+        const requestContextPromise = this.requestFactory.createEmail(createEmailSentRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -3407,7 +2816,7 @@ export class ObservableEmailApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createEmailUsingPOST1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createEmailWithHttpInfo(rsp)));
             }));
     }
 
@@ -3416,8 +2825,8 @@ export class ObservableEmailApi {
      * Create an Email Record
      * @param createEmailSentRequest emailWithContent
      */
-    public createEmailUsingPOST1(createEmailSentRequest: CreateEmailSentRequest, _options?: ConfigurationOptions): Observable<EmailSentWithContent> {
-        return this.createEmailUsingPOST1WithHttpInfo(createEmailSentRequest, _options).pipe(map((apiResponse: HttpInfo<EmailSentWithContent>) => apiResponse.data));
+    public createEmail(createEmailSentRequest: CreateEmailSentRequest, _options?: ConfigurationOptions): Observable<EmailSentWithContent> {
+        return this.createEmailWithHttpInfo(createEmailSentRequest, _options).pipe(map((apiResponse: HttpInfo<EmailSentWithContent>) => apiResponse.data));
     }
 
     /**
@@ -3425,10 +2834,10 @@ export class ObservableEmailApi {
      * Create a set of Email Records
      * @param [createEmailsSentRequest] Email records to persist, with content.
      */
-    public createEmailsUsingPOST1WithHttpInfo(createEmailsSentRequest?: CreateEmailsSentRequest, _options?: ConfigurationOptions): Observable<HttpInfo<EmailsSentList>> {
+    public createEmailsWithHttpInfo(createEmailsSentRequest?: CreateEmailsSentRequest, _options?: ConfigurationOptions): Observable<HttpInfo<EmailsSentList>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.createEmailsUsingPOST1(createEmailsSentRequest, _config);
+        const requestContextPromise = this.requestFactory.createEmails(createEmailsSentRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -3441,7 +2850,7 @@ export class ObservableEmailApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createEmailsUsingPOST1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createEmailsWithHttpInfo(rsp)));
             }));
     }
 
@@ -3450,8 +2859,8 @@ export class ObservableEmailApi {
      * Create a set of Email Records
      * @param [createEmailsSentRequest] Email records to persist, with content.
      */
-    public createEmailsUsingPOST1(createEmailsSentRequest?: CreateEmailsSentRequest, _options?: ConfigurationOptions): Observable<EmailsSentList> {
-        return this.createEmailsUsingPOST1WithHttpInfo(createEmailsSentRequest, _options).pipe(map((apiResponse: HttpInfo<EmailsSentList>) => apiResponse.data));
+    public createEmails(createEmailsSentRequest?: CreateEmailsSentRequest, _options?: ConfigurationOptions): Observable<EmailsSentList> {
+        return this.createEmailsWithHttpInfo(createEmailsSentRequest, _options).pipe(map((apiResponse: HttpInfo<EmailsSentList>) => apiResponse.data));
     }
 
     /**
@@ -3459,10 +2868,10 @@ export class ObservableEmailApi {
      * Delete an Email Record
      * @param id id
      */
-    public deleteEmailUsingDELETE1WithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public deleteEmailWithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.deleteEmailUsingDELETE1(id, _config);
+        const requestContextPromise = this.requestFactory.deleteEmail(id, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -3475,7 +2884,7 @@ export class ObservableEmailApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteEmailUsingDELETE1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteEmailWithHttpInfo(rsp)));
             }));
     }
 
@@ -3484,8 +2893,8 @@ export class ObservableEmailApi {
      * Delete an Email Record
      * @param id id
      */
-    public deleteEmailUsingDELETE1(id: string, _options?: ConfigurationOptions): Observable<void> {
-        return this.deleteEmailUsingDELETE1WithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public deleteEmail(id: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteEmailWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
@@ -3493,10 +2902,10 @@ export class ObservableEmailApi {
      * Remove a set of Email Records
      * @param deleteEmailsRequest deleteEmailsRequest
      */
-    public deleteEmailsUsingPOST1WithHttpInfo(deleteEmailsRequest: DeleteEmailsRequest, _options?: ConfigurationOptions): Observable<HttpInfo<DeleteEmailsResponse>> {
+    public deleteEmailsWithHttpInfo(deleteEmailsRequest: DeleteEmailsRequest, _options?: ConfigurationOptions): Observable<HttpInfo<DeleteEmailsResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.deleteEmailsUsingPOST1(deleteEmailsRequest, _config);
+        const requestContextPromise = this.requestFactory.deleteEmails(deleteEmailsRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -3509,7 +2918,7 @@ export class ObservableEmailApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteEmailsUsingPOST1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteEmailsWithHttpInfo(rsp)));
             }));
     }
 
@@ -3518,42 +2927,8 @@ export class ObservableEmailApi {
      * Remove a set of Email Records
      * @param deleteEmailsRequest deleteEmailsRequest
      */
-    public deleteEmailsUsingPOST1(deleteEmailsRequest: DeleteEmailsRequest, _options?: ConfigurationOptions): Observable<DeleteEmailsResponse> {
-        return this.deleteEmailsUsingPOST1WithHttpInfo(deleteEmailsRequest, _options).pipe(map((apiResponse: HttpInfo<DeleteEmailsResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Retrieve an email template
-     * Retrieve an email template
-     * @param emailTemplateId email_template_id
-     */
-    public getEmailTemplateUsingGETWithHttpInfo(emailTemplateId: string, _options?: ConfigurationOptions): Observable<HttpInfo<EmailTemplate>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getEmailTemplateUsingGET(emailTemplateId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getEmailTemplateUsingGETWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Retrieve an email template
-     * Retrieve an email template
-     * @param emailTemplateId email_template_id
-     */
-    public getEmailTemplateUsingGET(emailTemplateId: string, _options?: ConfigurationOptions): Observable<EmailTemplate> {
-        return this.getEmailTemplateUsingGETWithHttpInfo(emailTemplateId, _options).pipe(map((apiResponse: HttpInfo<EmailTemplate>) => apiResponse.data));
+    public deleteEmails(deleteEmailsRequest: DeleteEmailsRequest, _options?: ConfigurationOptions): Observable<DeleteEmailsResponse> {
+        return this.deleteEmailsWithHttpInfo(deleteEmailsRequest, _options).pipe(map((apiResponse: HttpInfo<DeleteEmailsResponse>) => apiResponse.data));
     }
 
     /**
@@ -3561,10 +2936,10 @@ export class ObservableEmailApi {
      * Retrieve an Email
      * @param id id
      */
-    public getEmailUsingGET1WithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<EmailSentWithContent>> {
+    public getEmailWithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<EmailSentWithContent>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getEmailUsingGET1(id, _config);
+        const requestContextPromise = this.requestFactory.getEmail(id, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -3577,7 +2952,7 @@ export class ObservableEmailApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getEmailUsingGET1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getEmailWithHttpInfo(rsp)));
             }));
     }
 
@@ -3586,19 +2961,19 @@ export class ObservableEmailApi {
      * Retrieve an Email
      * @param id id
      */
-    public getEmailUsingGET1(id: string, _options?: ConfigurationOptions): Observable<EmailSentWithContent> {
-        return this.getEmailUsingGET1WithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<EmailSentWithContent>) => apiResponse.data));
+    public getEmail(id: string, _options?: ConfigurationOptions): Observable<EmailSentWithContent> {
+        return this.getEmailWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<EmailSentWithContent>) => apiResponse.data));
     }
 
     /**
-     * Send an email based on a template
-     * Send an email based on a template
-     * @param [emailSendTemplateRequest] Use a template to send an email to a list of contacts 
+     * Retrieve an email template
+     * Retrieve an email template
+     * @param emailTemplateId email_template_id
      */
-    public sendEmailTemplateUsingPOSTWithHttpInfo(emailSendTemplateRequest?: EmailSendTemplateRequest, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public getEmailTemplateWithHttpInfo(emailTemplateId: string, _options?: ConfigurationOptions): Observable<HttpInfo<EmailTemplate>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.sendEmailTemplateUsingPOST(emailSendTemplateRequest, _config);
+        const requestContextPromise = this.requestFactory.getEmailTemplate(emailTemplateId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -3611,17 +2986,17 @@ export class ObservableEmailApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.sendEmailTemplateUsingPOSTWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getEmailTemplateWithHttpInfo(rsp)));
             }));
     }
 
     /**
-     * Send an email based on a template
-     * Send an email based on a template
-     * @param [emailSendTemplateRequest] Use a template to send an email to a list of contacts 
+     * Retrieve an email template
+     * Retrieve an email template
+     * @param emailTemplateId email_template_id
      */
-    public sendEmailTemplateUsingPOST(emailSendTemplateRequest?: EmailSendTemplateRequest, _options?: ConfigurationOptions): Observable<void> {
-        return this.sendEmailTemplateUsingPOSTWithHttpInfo(emailSendTemplateRequest, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public getEmailTemplate(emailTemplateId: string, _options?: ConfigurationOptions): Observable<EmailTemplate> {
+        return this.getEmailTemplateWithHttpInfo(emailTemplateId, _options).pipe(map((apiResponse: HttpInfo<EmailTemplate>) => apiResponse.data));
     }
 
     /**
@@ -3629,10 +3004,10 @@ export class ObservableEmailApi {
      * Send an Email
      * @param [emailSendRequest] emailSendRequest
      */
-    public sendEmailUsingPOST1WithHttpInfo(emailSendRequest?: EmailSendRequest, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public sendEmailWithHttpInfo(emailSendRequest?: EmailSendRequest, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.sendEmailUsingPOST1(emailSendRequest, _config);
+        const requestContextPromise = this.requestFactory.sendEmail(emailSendRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -3645,7 +3020,7 @@ export class ObservableEmailApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.sendEmailUsingPOST1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.sendEmailWithHttpInfo(rsp)));
             }));
     }
 
@@ -3654,8 +3029,42 @@ export class ObservableEmailApi {
      * Send an Email
      * @param [emailSendRequest] emailSendRequest
      */
-    public sendEmailUsingPOST1(emailSendRequest?: EmailSendRequest, _options?: ConfigurationOptions): Observable<void> {
-        return this.sendEmailUsingPOST1WithHttpInfo(emailSendRequest, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public sendEmail(emailSendRequest?: EmailSendRequest, _options?: ConfigurationOptions): Observable<void> {
+        return this.sendEmailWithHttpInfo(emailSendRequest, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+    /**
+     * Send an email based on a template
+     * Send an email based on a template
+     * @param [emailSendTemplateRequest] Use a template to send an email to a list of contacts 
+     */
+    public sendEmailTemplateWithHttpInfo(emailSendTemplateRequest?: EmailSendTemplateRequest, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.sendEmailTemplate(emailSendTemplateRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.sendEmailTemplateWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Send an email based on a template
+     * Send an email based on a template
+     * @param [emailSendTemplateRequest] Use a template to send an email to a list of contacts 
+     */
+    public sendEmailTemplate(emailSendTemplateRequest?: EmailSendTemplateRequest, _options?: ConfigurationOptions): Observable<void> {
+        return this.sendEmailTemplateWithHttpInfo(emailSendTemplateRequest, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
 }
@@ -3685,10 +3094,10 @@ export class ObservableFilesApi {
      * @param isPublic Is public
      * @param [contactId] Contact ID
      */
-    public createFileUsingPOST1WithHttpInfo(file: string, fileAssociation: string, fileName: string, isPublic: boolean, contactId?: string, _options?: ConfigurationOptions): Observable<HttpInfo<FileMetadata>> {
+    public createFileWithHttpInfo(file: string, fileAssociation: string, fileName: string, isPublic: boolean, contactId?: string, _options?: ConfigurationOptions): Observable<HttpInfo<FileMetadata>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.createFileUsingPOST1(file, fileAssociation, fileName, isPublic, contactId, _config);
+        const requestContextPromise = this.requestFactory.createFile(file, fileAssociation, fileName, isPublic, contactId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -3701,7 +3110,7 @@ export class ObservableFilesApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createFileUsingPOST1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createFileWithHttpInfo(rsp)));
             }));
     }
 
@@ -3714,8 +3123,8 @@ export class ObservableFilesApi {
      * @param isPublic Is public
      * @param [contactId] Contact ID
      */
-    public createFileUsingPOST1(file: string, fileAssociation: string, fileName: string, isPublic: boolean, contactId?: string, _options?: ConfigurationOptions): Observable<FileMetadata> {
-        return this.createFileUsingPOST1WithHttpInfo(file, fileAssociation, fileName, isPublic, contactId, _options).pipe(map((apiResponse: HttpInfo<FileMetadata>) => apiResponse.data));
+    public createFile(file: string, fileAssociation: string, fileName: string, isPublic: boolean, contactId?: string, _options?: ConfigurationOptions): Observable<FileMetadata> {
+        return this.createFileWithHttpInfo(file, fileAssociation, fileName, isPublic, contactId, _options).pipe(map((apiResponse: HttpInfo<FileMetadata>) => apiResponse.data));
     }
 
     /**
@@ -3723,10 +3132,10 @@ export class ObservableFilesApi {
      * Delete a file
      * @param fileId file_id
      */
-    public deleteFileUsingDELETE1WithHttpInfo(fileId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public deleteFileWithHttpInfo(fileId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.deleteFileUsingDELETE1(fileId, _config);
+        const requestContextPromise = this.requestFactory.deleteFile(fileId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -3739,7 +3148,7 @@ export class ObservableFilesApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteFileUsingDELETE1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteFileWithHttpInfo(rsp)));
             }));
     }
 
@@ -3748,42 +3157,8 @@ export class ObservableFilesApi {
      * Delete a file
      * @param fileId file_id
      */
-    public deleteFileUsingDELETE1(fileId: string, _options?: ConfigurationOptions): Observable<void> {
-        return this.deleteFileUsingDELETE1WithHttpInfo(fileId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
-    }
-
-    /**
-     * Retrieves a file\'s data
-     * Retrieve a file\'s data
-     * @param fileId file_id
-     */
-    public getFileDataUsingGETWithHttpInfo(fileId: string, _options?: ConfigurationOptions): Observable<HttpInfo<string>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getFileDataUsingGET(fileId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getFileDataUsingGETWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Retrieves a file\'s data
-     * Retrieve a file\'s data
-     * @param fileId file_id
-     */
-    public getFileDataUsingGET(fileId: string, _options?: ConfigurationOptions): Observable<string> {
-        return this.getFileDataUsingGETWithHttpInfo(fileId, _options).pipe(map((apiResponse: HttpInfo<string>) => apiResponse.data));
+    public deleteFile(fileId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteFileWithHttpInfo(fileId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
@@ -3791,10 +3166,10 @@ export class ObservableFilesApi {
      * Retrieve a file
      * @param fileId file_id
      */
-    public getFileUsingGET1WithHttpInfo(fileId: string, _options?: ConfigurationOptions): Observable<HttpInfo<FileMetadata>> {
+    public getFileWithHttpInfo(fileId: string, _options?: ConfigurationOptions): Observable<HttpInfo<FileMetadata>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getFileUsingGET1(fileId, _config);
+        const requestContextPromise = this.requestFactory.getFile(fileId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -3807,7 +3182,7 @@ export class ObservableFilesApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getFileUsingGET1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getFileWithHttpInfo(rsp)));
             }));
     }
 
@@ -3816,8 +3191,42 @@ export class ObservableFilesApi {
      * Retrieve a file
      * @param fileId file_id
      */
-    public getFileUsingGET1(fileId: string, _options?: ConfigurationOptions): Observable<FileMetadata> {
-        return this.getFileUsingGET1WithHttpInfo(fileId, _options).pipe(map((apiResponse: HttpInfo<FileMetadata>) => apiResponse.data));
+    public getFile(fileId: string, _options?: ConfigurationOptions): Observable<FileMetadata> {
+        return this.getFileWithHttpInfo(fileId, _options).pipe(map((apiResponse: HttpInfo<FileMetadata>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves a file\'s data
+     * Retrieve a file\'s data
+     * @param fileId file_id
+     */
+    public getFileDataWithHttpInfo(fileId: string, _options?: ConfigurationOptions): Observable<HttpInfo<string>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getFileData(fileId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getFileDataWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a file\'s data
+     * Retrieve a file\'s data
+     * @param fileId file_id
+     */
+    public getFileData(fileId: string, _options?: ConfigurationOptions): Observable<string> {
+        return this.getFileDataWithHttpInfo(fileId, _options).pipe(map((apiResponse: HttpInfo<string>) => apiResponse.data));
     }
 
     /**
@@ -3828,10 +3237,10 @@ export class ObservableFilesApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listFilesUsingGET1WithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListFilesResponse>> {
+    public listFilesWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListFilesResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.listFilesUsingGET1(filter, orderBy, pageSize, pageToken, _config);
+        const requestContextPromise = this.requestFactory.listFiles(filter, orderBy, pageSize, pageToken, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -3844,7 +3253,7 @@ export class ObservableFilesApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listFilesUsingGET1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listFilesWithHttpInfo(rsp)));
             }));
     }
 
@@ -3856,8 +3265,8 @@ export class ObservableFilesApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listFilesUsingGET1(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListFilesResponse> {
-        return this.listFilesUsingGET1WithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListFilesResponse>) => apiResponse.data));
+    public listFiles(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListFilesResponse> {
+        return this.listFilesWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListFilesResponse>) => apiResponse.data));
     }
 
     /**
@@ -3869,10 +3278,10 @@ export class ObservableFilesApi {
      * @param [isPublic] Is public
      * @param [updateMask] Update Mask
      */
-    public updateFileUsingPOSTWithHttpInfo(fileId: string, file?: string, fileName?: string, isPublic?: boolean, updateMask?: string, _options?: ConfigurationOptions): Observable<HttpInfo<FileMetadata>> {
+    public updateFileWithHttpInfo(fileId: string, file?: string, fileName?: string, isPublic?: boolean, updateMask?: string, _options?: ConfigurationOptions): Observable<HttpInfo<FileMetadata>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.updateFileUsingPOST(fileId, file, fileName, isPublic, updateMask, _config);
+        const requestContextPromise = this.requestFactory.updateFile(fileId, file, fileName, isPublic, updateMask, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -3885,7 +3294,7 @@ export class ObservableFilesApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateFileUsingPOSTWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateFileWithHttpInfo(rsp)));
             }));
     }
 
@@ -3898,8 +3307,8 @@ export class ObservableFilesApi {
      * @param [isPublic] Is public
      * @param [updateMask] Update Mask
      */
-    public updateFileUsingPOST(fileId: string, file?: string, fileName?: string, isPublic?: boolean, updateMask?: string, _options?: ConfigurationOptions): Observable<FileMetadata> {
-        return this.updateFileUsingPOSTWithHttpInfo(fileId, file, fileName, isPublic, updateMask, _options).pipe(map((apiResponse: HttpInfo<FileMetadata>) => apiResponse.data));
+    public updateFile(fileId: string, file?: string, fileName?: string, isPublic?: boolean, updateMask?: string, _options?: ConfigurationOptions): Observable<FileMetadata> {
+        return this.updateFileWithHttpInfo(fileId, file, fileName, isPublic, updateMask, _options).pipe(map((apiResponse: HttpInfo<FileMetadata>) => apiResponse.data));
     }
 
 }
@@ -3925,10 +3334,10 @@ export class ObservableFreeTrialDiscountsApi {
      * Create a Subscription Free Trial Discount
      * @param createFreeTrialDiscountRequest createFreeTrialDiscountRequest
      */
-    public createDiscountUsingPOST1WithHttpInfo(createFreeTrialDiscountRequest: CreateFreeTrialDiscountRequest, _options?: ConfigurationOptions): Observable<HttpInfo<FreeTrialDiscount>> {
+    public createFreeTrialDiscountWithHttpInfo(createFreeTrialDiscountRequest: CreateFreeTrialDiscountRequest, _options?: ConfigurationOptions): Observable<HttpInfo<FreeTrialDiscount>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.createDiscountUsingPOST1(createFreeTrialDiscountRequest, _config);
+        const requestContextPromise = this.requestFactory.createFreeTrialDiscount(createFreeTrialDiscountRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -3941,7 +3350,7 @@ export class ObservableFreeTrialDiscountsApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createDiscountUsingPOST1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createFreeTrialDiscountWithHttpInfo(rsp)));
             }));
     }
 
@@ -3950,8 +3359,8 @@ export class ObservableFreeTrialDiscountsApi {
      * Create a Subscription Free Trial Discount
      * @param createFreeTrialDiscountRequest createFreeTrialDiscountRequest
      */
-    public createDiscountUsingPOST1(createFreeTrialDiscountRequest: CreateFreeTrialDiscountRequest, _options?: ConfigurationOptions): Observable<FreeTrialDiscount> {
-        return this.createDiscountUsingPOST1WithHttpInfo(createFreeTrialDiscountRequest, _options).pipe(map((apiResponse: HttpInfo<FreeTrialDiscount>) => apiResponse.data));
+    public createFreeTrialDiscount(createFreeTrialDiscountRequest: CreateFreeTrialDiscountRequest, _options?: ConfigurationOptions): Observable<FreeTrialDiscount> {
+        return this.createFreeTrialDiscountWithHttpInfo(createFreeTrialDiscountRequest, _options).pipe(map((apiResponse: HttpInfo<FreeTrialDiscount>) => apiResponse.data));
     }
 
     /**
@@ -3959,10 +3368,10 @@ export class ObservableFreeTrialDiscountsApi {
      * Delete a Subscription Free Trial Discount
      * @param discountId discount_id
      */
-    public deleteDiscountUsingDELETE1WithHttpInfo(discountId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public deleteFreeTrialDiscountWithHttpInfo(discountId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.deleteDiscountUsingDELETE1(discountId, _config);
+        const requestContextPromise = this.requestFactory.deleteFreeTrialDiscount(discountId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -3975,7 +3384,7 @@ export class ObservableFreeTrialDiscountsApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteDiscountUsingDELETE1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteFreeTrialDiscountWithHttpInfo(rsp)));
             }));
     }
 
@@ -3984,8 +3393,8 @@ export class ObservableFreeTrialDiscountsApi {
      * Delete a Subscription Free Trial Discount
      * @param discountId discount_id
      */
-    public deleteDiscountUsingDELETE1(discountId: string, _options?: ConfigurationOptions): Observable<void> {
-        return this.deleteDiscountUsingDELETE1WithHttpInfo(discountId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public deleteFreeTrialDiscount(discountId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteFreeTrialDiscountWithHttpInfo(discountId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
@@ -3993,10 +3402,10 @@ export class ObservableFreeTrialDiscountsApi {
      * Retrieve a Subscription Free Trial Discount
      * @param discountId discount_id
      */
-    public getDiscountUsingGET1WithHttpInfo(discountId: string, _options?: ConfigurationOptions): Observable<HttpInfo<FreeTrialDiscount>> {
+    public getFreeTrialDiscountWithHttpInfo(discountId: string, _options?: ConfigurationOptions): Observable<HttpInfo<FreeTrialDiscount>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getDiscountUsingGET1(discountId, _config);
+        const requestContextPromise = this.requestFactory.getFreeTrialDiscount(discountId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -4009,7 +3418,7 @@ export class ObservableFreeTrialDiscountsApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getDiscountUsingGET1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getFreeTrialDiscountWithHttpInfo(rsp)));
             }));
     }
 
@@ -4018,8 +3427,8 @@ export class ObservableFreeTrialDiscountsApi {
      * Retrieve a Subscription Free Trial Discount
      * @param discountId discount_id
      */
-    public getDiscountUsingGET1(discountId: string, _options?: ConfigurationOptions): Observable<FreeTrialDiscount> {
-        return this.getDiscountUsingGET1WithHttpInfo(discountId, _options).pipe(map((apiResponse: HttpInfo<FreeTrialDiscount>) => apiResponse.data));
+    public getFreeTrialDiscount(discountId: string, _options?: ConfigurationOptions): Observable<FreeTrialDiscount> {
+        return this.getFreeTrialDiscountWithHttpInfo(discountId, _options).pipe(map((apiResponse: HttpInfo<FreeTrialDiscount>) => apiResponse.data));
     }
 
     /**
@@ -4030,10 +3439,10 @@ export class ObservableFreeTrialDiscountsApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listFreeTrialsUsingGETWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListFreeTrialDiscountsResponse>> {
+    public listFreeTrialDiscountsWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListFreeTrialDiscountsResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.listFreeTrialsUsingGET(filter, orderBy, pageSize, pageToken, _config);
+        const requestContextPromise = this.requestFactory.listFreeTrialDiscounts(filter, orderBy, pageSize, pageToken, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -4046,7 +3455,7 @@ export class ObservableFreeTrialDiscountsApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listFreeTrialsUsingGETWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listFreeTrialDiscountsWithHttpInfo(rsp)));
             }));
     }
 
@@ -4058,8 +3467,8 @@ export class ObservableFreeTrialDiscountsApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listFreeTrialsUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListFreeTrialDiscountsResponse> {
-        return this.listFreeTrialsUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListFreeTrialDiscountsResponse>) => apiResponse.data));
+    public listFreeTrialDiscounts(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListFreeTrialDiscountsResponse> {
+        return this.listFreeTrialDiscountsWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListFreeTrialDiscountsResponse>) => apiResponse.data));
     }
 
     /**
@@ -4069,10 +3478,10 @@ export class ObservableFreeTrialDiscountsApi {
      * @param updateFreeTrialDiscountRequest request
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateDiscountUsingPATCH1WithHttpInfo(discountId: string, updateFreeTrialDiscountRequest: UpdateFreeTrialDiscountRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<FreeTrialDiscount>> {
+    public updateFreeTrialDiscountWithHttpInfo(discountId: string, updateFreeTrialDiscountRequest: UpdateFreeTrialDiscountRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<FreeTrialDiscount>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.updateDiscountUsingPATCH1(discountId, updateFreeTrialDiscountRequest, updateMask, _config);
+        const requestContextPromise = this.requestFactory.updateFreeTrialDiscount(discountId, updateFreeTrialDiscountRequest, updateMask, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -4085,7 +3494,7 @@ export class ObservableFreeTrialDiscountsApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateDiscountUsingPATCH1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateFreeTrialDiscountWithHttpInfo(rsp)));
             }));
     }
 
@@ -4096,8 +3505,8 @@ export class ObservableFreeTrialDiscountsApi {
      * @param updateFreeTrialDiscountRequest request
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateDiscountUsingPATCH1(discountId: string, updateFreeTrialDiscountRequest: UpdateFreeTrialDiscountRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<FreeTrialDiscount> {
-        return this.updateDiscountUsingPATCH1WithHttpInfo(discountId, updateFreeTrialDiscountRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<FreeTrialDiscount>) => apiResponse.data));
+    public updateFreeTrialDiscount(discountId: string, updateFreeTrialDiscountRequest: UpdateFreeTrialDiscountRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<FreeTrialDiscount> {
+        return this.updateFreeTrialDiscountWithHttpInfo(discountId, updateFreeTrialDiscountRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<FreeTrialDiscount>) => apiResponse.data));
     }
 
 }
@@ -4123,10 +3532,10 @@ export class ObservableLeadSourceCategoriesApi {
      * Create a Lead Source Category
      * @param createUpdateLeadSourceCategoryRequest The request object to create a new lead source category
      */
-    public createLeadSourceCategoryUsingPOSTWithHttpInfo(createUpdateLeadSourceCategoryRequest: CreateUpdateLeadSourceCategoryRequest, _options?: ConfigurationOptions): Observable<HttpInfo<LeadSourceCategory>> {
+    public createLeadSourceCategoryWithHttpInfo(createUpdateLeadSourceCategoryRequest: CreateUpdateLeadSourceCategoryRequest, _options?: ConfigurationOptions): Observable<HttpInfo<LeadSourceCategory>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.createLeadSourceCategoryUsingPOST(createUpdateLeadSourceCategoryRequest, _config);
+        const requestContextPromise = this.requestFactory.createLeadSourceCategory(createUpdateLeadSourceCategoryRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -4139,7 +3548,7 @@ export class ObservableLeadSourceCategoriesApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createLeadSourceCategoryUsingPOSTWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createLeadSourceCategoryWithHttpInfo(rsp)));
             }));
     }
 
@@ -4148,8 +3557,8 @@ export class ObservableLeadSourceCategoriesApi {
      * Create a Lead Source Category
      * @param createUpdateLeadSourceCategoryRequest The request object to create a new lead source category
      */
-    public createLeadSourceCategoryUsingPOST(createUpdateLeadSourceCategoryRequest: CreateUpdateLeadSourceCategoryRequest, _options?: ConfigurationOptions): Observable<LeadSourceCategory> {
-        return this.createLeadSourceCategoryUsingPOSTWithHttpInfo(createUpdateLeadSourceCategoryRequest, _options).pipe(map((apiResponse: HttpInfo<LeadSourceCategory>) => apiResponse.data));
+    public createLeadSourceCategory(createUpdateLeadSourceCategoryRequest: CreateUpdateLeadSourceCategoryRequest, _options?: ConfigurationOptions): Observable<LeadSourceCategory> {
+        return this.createLeadSourceCategoryWithHttpInfo(createUpdateLeadSourceCategoryRequest, _options).pipe(map((apiResponse: HttpInfo<LeadSourceCategory>) => apiResponse.data));
     }
 
     /**
@@ -4157,10 +3566,10 @@ export class ObservableLeadSourceCategoriesApi {
      * Delete a Lead Source Category
      * @param leadSourceCategoryId The ID of a lead source category
      */
-    public deleteLeadSourceCategoryUsingDELETEWithHttpInfo(leadSourceCategoryId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public deleteLeadSourceCategoryWithHttpInfo(leadSourceCategoryId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.deleteLeadSourceCategoryUsingDELETE(leadSourceCategoryId, _config);
+        const requestContextPromise = this.requestFactory.deleteLeadSourceCategory(leadSourceCategoryId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -4173,7 +3582,7 @@ export class ObservableLeadSourceCategoriesApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteLeadSourceCategoryUsingDELETEWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteLeadSourceCategoryWithHttpInfo(rsp)));
             }));
     }
 
@@ -4182,8 +3591,8 @@ export class ObservableLeadSourceCategoriesApi {
      * Delete a Lead Source Category
      * @param leadSourceCategoryId The ID of a lead source category
      */
-    public deleteLeadSourceCategoryUsingDELETE(leadSourceCategoryId: string, _options?: ConfigurationOptions): Observable<void> {
-        return this.deleteLeadSourceCategoryUsingDELETEWithHttpInfo(leadSourceCategoryId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public deleteLeadSourceCategory(leadSourceCategoryId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteLeadSourceCategoryWithHttpInfo(leadSourceCategoryId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
@@ -4191,10 +3600,10 @@ export class ObservableLeadSourceCategoriesApi {
      * Retrieve a Lead Source Category
      * @param leadSourceCategoryId The ID of a lead source category
      */
-    public getLeadSourceCategoryUsingGETWithHttpInfo(leadSourceCategoryId: string, _options?: ConfigurationOptions): Observable<HttpInfo<LeadSourceCategory>> {
+    public getLeadSourceCategoryWithHttpInfo(leadSourceCategoryId: string, _options?: ConfigurationOptions): Observable<HttpInfo<LeadSourceCategory>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getLeadSourceCategoryUsingGET(leadSourceCategoryId, _config);
+        const requestContextPromise = this.requestFactory.getLeadSourceCategory(leadSourceCategoryId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -4207,7 +3616,7 @@ export class ObservableLeadSourceCategoriesApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getLeadSourceCategoryUsingGETWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getLeadSourceCategoryWithHttpInfo(rsp)));
             }));
     }
 
@@ -4216,8 +3625,8 @@ export class ObservableLeadSourceCategoriesApi {
      * Retrieve a Lead Source Category
      * @param leadSourceCategoryId The ID of a lead source category
      */
-    public getLeadSourceCategoryUsingGET(leadSourceCategoryId: string, _options?: ConfigurationOptions): Observable<LeadSourceCategory> {
-        return this.getLeadSourceCategoryUsingGETWithHttpInfo(leadSourceCategoryId, _options).pipe(map((apiResponse: HttpInfo<LeadSourceCategory>) => apiResponse.data));
+    public getLeadSourceCategory(leadSourceCategoryId: string, _options?: ConfigurationOptions): Observable<LeadSourceCategory> {
+        return this.getLeadSourceCategoryWithHttpInfo(leadSourceCategoryId, _options).pipe(map((apiResponse: HttpInfo<LeadSourceCategory>) => apiResponse.data));
     }
 
     /**
@@ -4228,10 +3637,10 @@ export class ObservableLeadSourceCategoriesApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listCategoriesUsingGET1WithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListLeadSourceCategoriesResponse>> {
+    public listLeadSourceCategoriesWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListLeadSourceCategoriesResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.listCategoriesUsingGET1(filter, orderBy, pageSize, pageToken, _config);
+        const requestContextPromise = this.requestFactory.listLeadSourceCategories(filter, orderBy, pageSize, pageToken, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -4244,7 +3653,7 @@ export class ObservableLeadSourceCategoriesApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listCategoriesUsingGET1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listLeadSourceCategoriesWithHttpInfo(rsp)));
             }));
     }
 
@@ -4256,8 +3665,8 @@ export class ObservableLeadSourceCategoriesApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listCategoriesUsingGET1(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListLeadSourceCategoriesResponse> {
-        return this.listCategoriesUsingGET1WithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListLeadSourceCategoriesResponse>) => apiResponse.data));
+    public listLeadSourceCategories(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListLeadSourceCategoriesResponse> {
+        return this.listLeadSourceCategoriesWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListLeadSourceCategoriesResponse>) => apiResponse.data));
     }
 
     /**
@@ -4267,10 +3676,10 @@ export class ObservableLeadSourceCategoriesApi {
      * @param createUpdateLeadSourceCategoryRequest The request object to update a lead source category
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateLeadSourceCategoryUsingPATCHWithHttpInfo(leadSourceCategoryId: string, createUpdateLeadSourceCategoryRequest: CreateUpdateLeadSourceCategoryRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<LeadSourceCategory>> {
+    public updateLeadSourceCategoryWithHttpInfo(leadSourceCategoryId: string, createUpdateLeadSourceCategoryRequest: CreateUpdateLeadSourceCategoryRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<LeadSourceCategory>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.updateLeadSourceCategoryUsingPATCH(leadSourceCategoryId, createUpdateLeadSourceCategoryRequest, updateMask, _config);
+        const requestContextPromise = this.requestFactory.updateLeadSourceCategory(leadSourceCategoryId, createUpdateLeadSourceCategoryRequest, updateMask, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -4283,7 +3692,7 @@ export class ObservableLeadSourceCategoriesApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateLeadSourceCategoryUsingPATCHWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateLeadSourceCategoryWithHttpInfo(rsp)));
             }));
     }
 
@@ -4294,8 +3703,8 @@ export class ObservableLeadSourceCategoriesApi {
      * @param createUpdateLeadSourceCategoryRequest The request object to update a lead source category
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateLeadSourceCategoryUsingPATCH(leadSourceCategoryId: string, createUpdateLeadSourceCategoryRequest: CreateUpdateLeadSourceCategoryRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<LeadSourceCategory> {
-        return this.updateLeadSourceCategoryUsingPATCHWithHttpInfo(leadSourceCategoryId, createUpdateLeadSourceCategoryRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<LeadSourceCategory>) => apiResponse.data));
+    public updateLeadSourceCategory(leadSourceCategoryId: string, createUpdateLeadSourceCategoryRequest: CreateUpdateLeadSourceCategoryRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<LeadSourceCategory> {
+        return this.updateLeadSourceCategoryWithHttpInfo(leadSourceCategoryId, createUpdateLeadSourceCategoryRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<LeadSourceCategory>) => apiResponse.data));
     }
 
 }
@@ -4322,10 +3731,10 @@ export class ObservableLeadSourceExpensesApi {
      * @param leadSourceId The ID of the lead source this expense belongs to
      * @param createLeadSourceExpenseRequest The request object to create a new lead source expense
      */
-    public createLeadSourceExpenseUsingPOSTWithHttpInfo(leadSourceId: string, createLeadSourceExpenseRequest: CreateLeadSourceExpenseRequest, _options?: ConfigurationOptions): Observable<HttpInfo<LeadSourceExpense>> {
+    public createLeadSourceExpenseWithHttpInfo(leadSourceId: string, createLeadSourceExpenseRequest: CreateLeadSourceExpenseRequest, _options?: ConfigurationOptions): Observable<HttpInfo<LeadSourceExpense>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.createLeadSourceExpenseUsingPOST(leadSourceId, createLeadSourceExpenseRequest, _config);
+        const requestContextPromise = this.requestFactory.createLeadSourceExpense(leadSourceId, createLeadSourceExpenseRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -4338,7 +3747,7 @@ export class ObservableLeadSourceExpensesApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createLeadSourceExpenseUsingPOSTWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createLeadSourceExpenseWithHttpInfo(rsp)));
             }));
     }
 
@@ -4348,8 +3757,8 @@ export class ObservableLeadSourceExpensesApi {
      * @param leadSourceId The ID of the lead source this expense belongs to
      * @param createLeadSourceExpenseRequest The request object to create a new lead source expense
      */
-    public createLeadSourceExpenseUsingPOST(leadSourceId: string, createLeadSourceExpenseRequest: CreateLeadSourceExpenseRequest, _options?: ConfigurationOptions): Observable<LeadSourceExpense> {
-        return this.createLeadSourceExpenseUsingPOSTWithHttpInfo(leadSourceId, createLeadSourceExpenseRequest, _options).pipe(map((apiResponse: HttpInfo<LeadSourceExpense>) => apiResponse.data));
+    public createLeadSourceExpense(leadSourceId: string, createLeadSourceExpenseRequest: CreateLeadSourceExpenseRequest, _options?: ConfigurationOptions): Observable<LeadSourceExpense> {
+        return this.createLeadSourceExpenseWithHttpInfo(leadSourceId, createLeadSourceExpenseRequest, _options).pipe(map((apiResponse: HttpInfo<LeadSourceExpense>) => apiResponse.data));
     }
 
     /**
@@ -4358,10 +3767,10 @@ export class ObservableLeadSourceExpensesApi {
      * @param leadSourceExpenseId The ID of a lead source expense
      * @param leadSourceId The ID of the lead source this expense belongs to
      */
-    public deleteLeadSourceUsingDELETE1WithHttpInfo(leadSourceExpenseId: string, leadSourceId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public deleteLeadSourceExpenseWithHttpInfo(leadSourceExpenseId: string, leadSourceId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.deleteLeadSourceUsingDELETE1(leadSourceExpenseId, leadSourceId, _config);
+        const requestContextPromise = this.requestFactory.deleteLeadSourceExpense(leadSourceExpenseId, leadSourceId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -4374,7 +3783,7 @@ export class ObservableLeadSourceExpensesApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteLeadSourceUsingDELETE1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteLeadSourceExpenseWithHttpInfo(rsp)));
             }));
     }
 
@@ -4384,8 +3793,8 @@ export class ObservableLeadSourceExpensesApi {
      * @param leadSourceExpenseId The ID of a lead source expense
      * @param leadSourceId The ID of the lead source this expense belongs to
      */
-    public deleteLeadSourceUsingDELETE1(leadSourceExpenseId: string, leadSourceId: string, _options?: ConfigurationOptions): Observable<void> {
-        return this.deleteLeadSourceUsingDELETE1WithHttpInfo(leadSourceExpenseId, leadSourceId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public deleteLeadSourceExpense(leadSourceExpenseId: string, leadSourceId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteLeadSourceExpenseWithHttpInfo(leadSourceExpenseId, leadSourceId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
@@ -4394,10 +3803,10 @@ export class ObservableLeadSourceExpensesApi {
      * @param leadSourceExpenseId The ID of a lead source expense
      * @param leadSourceId The ID of the lead source this expense belongs to
      */
-    public getLeadSourceExpenseUsingGETWithHttpInfo(leadSourceExpenseId: string, leadSourceId: string, _options?: ConfigurationOptions): Observable<HttpInfo<LeadSourceExpense>> {
+    public getLeadSourceExpenseWithHttpInfo(leadSourceExpenseId: string, leadSourceId: string, _options?: ConfigurationOptions): Observable<HttpInfo<LeadSourceExpense>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getLeadSourceExpenseUsingGET(leadSourceExpenseId, leadSourceId, _config);
+        const requestContextPromise = this.requestFactory.getLeadSourceExpense(leadSourceExpenseId, leadSourceId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -4410,7 +3819,7 @@ export class ObservableLeadSourceExpensesApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getLeadSourceExpenseUsingGETWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getLeadSourceExpenseWithHttpInfo(rsp)));
             }));
     }
 
@@ -4420,8 +3829,8 @@ export class ObservableLeadSourceExpensesApi {
      * @param leadSourceExpenseId The ID of a lead source expense
      * @param leadSourceId The ID of the lead source this expense belongs to
      */
-    public getLeadSourceExpenseUsingGET(leadSourceExpenseId: string, leadSourceId: string, _options?: ConfigurationOptions): Observable<LeadSourceExpense> {
-        return this.getLeadSourceExpenseUsingGETWithHttpInfo(leadSourceExpenseId, leadSourceId, _options).pipe(map((apiResponse: HttpInfo<LeadSourceExpense>) => apiResponse.data));
+    public getLeadSourceExpense(leadSourceExpenseId: string, leadSourceId: string, _options?: ConfigurationOptions): Observable<LeadSourceExpense> {
+        return this.getLeadSourceExpenseWithHttpInfo(leadSourceExpenseId, leadSourceId, _options).pipe(map((apiResponse: HttpInfo<LeadSourceExpense>) => apiResponse.data));
     }
 
     /**
@@ -4433,10 +3842,10 @@ export class ObservableLeadSourceExpensesApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listLeadSourceExpensesUsingGETWithHttpInfo(leadSourceId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListLeadSourceExpensesResponse>> {
+    public listLeadSourceExpensesWithHttpInfo(leadSourceId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListLeadSourceExpensesResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.listLeadSourceExpensesUsingGET(leadSourceId, filter, orderBy, pageSize, pageToken, _config);
+        const requestContextPromise = this.requestFactory.listLeadSourceExpenses(leadSourceId, filter, orderBy, pageSize, pageToken, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -4449,7 +3858,7 @@ export class ObservableLeadSourceExpensesApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listLeadSourceExpensesUsingGETWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listLeadSourceExpensesWithHttpInfo(rsp)));
             }));
     }
 
@@ -4462,8 +3871,8 @@ export class ObservableLeadSourceExpensesApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listLeadSourceExpensesUsingGET(leadSourceId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListLeadSourceExpensesResponse> {
-        return this.listLeadSourceExpensesUsingGETWithHttpInfo(leadSourceId, filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListLeadSourceExpensesResponse>) => apiResponse.data));
+    public listLeadSourceExpenses(leadSourceId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListLeadSourceExpensesResponse> {
+        return this.listLeadSourceExpensesWithHttpInfo(leadSourceId, filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListLeadSourceExpensesResponse>) => apiResponse.data));
     }
 
     /**
@@ -4474,10 +3883,10 @@ export class ObservableLeadSourceExpensesApi {
      * @param updateLeadSourceExpenseRequest The request object to update a lead source expense
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateLeadSourceExpenseUsingPATCHWithHttpInfo(leadSourceExpenseId: string, leadSourceId: string, updateLeadSourceExpenseRequest: UpdateLeadSourceExpenseRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<LeadSourceExpense>> {
+    public updateLeadSourceExpenseWithHttpInfo(leadSourceExpenseId: string, leadSourceId: string, updateLeadSourceExpenseRequest: UpdateLeadSourceExpenseRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<LeadSourceExpense>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.updateLeadSourceExpenseUsingPATCH(leadSourceExpenseId, leadSourceId, updateLeadSourceExpenseRequest, updateMask, _config);
+        const requestContextPromise = this.requestFactory.updateLeadSourceExpense(leadSourceExpenseId, leadSourceId, updateLeadSourceExpenseRequest, updateMask, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -4490,7 +3899,7 @@ export class ObservableLeadSourceExpensesApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateLeadSourceExpenseUsingPATCHWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateLeadSourceExpenseWithHttpInfo(rsp)));
             }));
     }
 
@@ -4502,8 +3911,8 @@ export class ObservableLeadSourceExpensesApi {
      * @param updateLeadSourceExpenseRequest The request object to update a lead source expense
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateLeadSourceExpenseUsingPATCH(leadSourceExpenseId: string, leadSourceId: string, updateLeadSourceExpenseRequest: UpdateLeadSourceExpenseRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<LeadSourceExpense> {
-        return this.updateLeadSourceExpenseUsingPATCHWithHttpInfo(leadSourceExpenseId, leadSourceId, updateLeadSourceExpenseRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<LeadSourceExpense>) => apiResponse.data));
+    public updateLeadSourceExpense(leadSourceExpenseId: string, leadSourceId: string, updateLeadSourceExpenseRequest: UpdateLeadSourceExpenseRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<LeadSourceExpense> {
+        return this.updateLeadSourceExpenseWithHttpInfo(leadSourceExpenseId, leadSourceId, updateLeadSourceExpenseRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<LeadSourceExpense>) => apiResponse.data));
     }
 
 }
@@ -4530,10 +3939,10 @@ export class ObservableLeadSourceRecurringExpensesApi {
      * @param leadSourceId The ID of the lead source this recurring expense belongs to
      * @param createLeadSourceRecurringExpenseRequest The request object to create a new lead source recurring expense
      */
-    public createLeadSourceRecurringExpenseUsingPOSTWithHttpInfo(leadSourceId: string, createLeadSourceRecurringExpenseRequest: CreateLeadSourceRecurringExpenseRequest, _options?: ConfigurationOptions): Observable<HttpInfo<LeadSourceRecurringExpense>> {
+    public createLeadSourceRecurringExpenseWithHttpInfo(leadSourceId: string, createLeadSourceRecurringExpenseRequest: CreateLeadSourceRecurringExpenseRequest, _options?: ConfigurationOptions): Observable<HttpInfo<LeadSourceRecurringExpense>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.createLeadSourceRecurringExpenseUsingPOST(leadSourceId, createLeadSourceRecurringExpenseRequest, _config);
+        const requestContextPromise = this.requestFactory.createLeadSourceRecurringExpense(leadSourceId, createLeadSourceRecurringExpenseRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -4546,7 +3955,7 @@ export class ObservableLeadSourceRecurringExpensesApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createLeadSourceRecurringExpenseUsingPOSTWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createLeadSourceRecurringExpenseWithHttpInfo(rsp)));
             }));
     }
 
@@ -4556,8 +3965,8 @@ export class ObservableLeadSourceRecurringExpensesApi {
      * @param leadSourceId The ID of the lead source this recurring expense belongs to
      * @param createLeadSourceRecurringExpenseRequest The request object to create a new lead source recurring expense
      */
-    public createLeadSourceRecurringExpenseUsingPOST(leadSourceId: string, createLeadSourceRecurringExpenseRequest: CreateLeadSourceRecurringExpenseRequest, _options?: ConfigurationOptions): Observable<LeadSourceRecurringExpense> {
-        return this.createLeadSourceRecurringExpenseUsingPOSTWithHttpInfo(leadSourceId, createLeadSourceRecurringExpenseRequest, _options).pipe(map((apiResponse: HttpInfo<LeadSourceRecurringExpense>) => apiResponse.data));
+    public createLeadSourceRecurringExpense(leadSourceId: string, createLeadSourceRecurringExpenseRequest: CreateLeadSourceRecurringExpenseRequest, _options?: ConfigurationOptions): Observable<LeadSourceRecurringExpense> {
+        return this.createLeadSourceRecurringExpenseWithHttpInfo(leadSourceId, createLeadSourceRecurringExpenseRequest, _options).pipe(map((apiResponse: HttpInfo<LeadSourceRecurringExpense>) => apiResponse.data));
     }
 
     /**
@@ -4566,10 +3975,10 @@ export class ObservableLeadSourceRecurringExpensesApi {
      * @param leadSourceId The ID of the lead source this recurring expense belongs to
      * @param leadSourceRecurringExpenseId The ID of a lead source recurring expense
      */
-    public deleteLeadSourceRecurringExpenseUsingDELETEWithHttpInfo(leadSourceId: string, leadSourceRecurringExpenseId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public deleteLeadSourceRecurringExpenseWithHttpInfo(leadSourceId: string, leadSourceRecurringExpenseId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.deleteLeadSourceRecurringExpenseUsingDELETE(leadSourceId, leadSourceRecurringExpenseId, _config);
+        const requestContextPromise = this.requestFactory.deleteLeadSourceRecurringExpense(leadSourceId, leadSourceRecurringExpenseId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -4582,7 +3991,7 @@ export class ObservableLeadSourceRecurringExpensesApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteLeadSourceRecurringExpenseUsingDELETEWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteLeadSourceRecurringExpenseWithHttpInfo(rsp)));
             }));
     }
 
@@ -4592,8 +4001,8 @@ export class ObservableLeadSourceRecurringExpensesApi {
      * @param leadSourceId The ID of the lead source this recurring expense belongs to
      * @param leadSourceRecurringExpenseId The ID of a lead source recurring expense
      */
-    public deleteLeadSourceRecurringExpenseUsingDELETE(leadSourceId: string, leadSourceRecurringExpenseId: string, _options?: ConfigurationOptions): Observable<void> {
-        return this.deleteLeadSourceRecurringExpenseUsingDELETEWithHttpInfo(leadSourceId, leadSourceRecurringExpenseId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public deleteLeadSourceRecurringExpense(leadSourceId: string, leadSourceRecurringExpenseId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteLeadSourceRecurringExpenseWithHttpInfo(leadSourceId, leadSourceRecurringExpenseId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
@@ -4602,10 +4011,10 @@ export class ObservableLeadSourceRecurringExpensesApi {
      * @param leadSourceId The ID of the lead source this recurring expense belongs to
      * @param leadSourceRecurringExpenseId The ID of a lead source recurring expense
      */
-    public getLeadSourceRecurringExpenseUsingGETWithHttpInfo(leadSourceId: string, leadSourceRecurringExpenseId: string, _options?: ConfigurationOptions): Observable<HttpInfo<LeadSourceRecurringExpense>> {
+    public getLeadSourceRecurringExpenseWithHttpInfo(leadSourceId: string, leadSourceRecurringExpenseId: string, _options?: ConfigurationOptions): Observable<HttpInfo<LeadSourceRecurringExpense>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getLeadSourceRecurringExpenseUsingGET(leadSourceId, leadSourceRecurringExpenseId, _config);
+        const requestContextPromise = this.requestFactory.getLeadSourceRecurringExpense(leadSourceId, leadSourceRecurringExpenseId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -4618,7 +4027,7 @@ export class ObservableLeadSourceRecurringExpensesApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getLeadSourceRecurringExpenseUsingGETWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getLeadSourceRecurringExpenseWithHttpInfo(rsp)));
             }));
     }
 
@@ -4628,8 +4037,8 @@ export class ObservableLeadSourceRecurringExpensesApi {
      * @param leadSourceId The ID of the lead source this recurring expense belongs to
      * @param leadSourceRecurringExpenseId The ID of a lead source recurring expense
      */
-    public getLeadSourceRecurringExpenseUsingGET(leadSourceId: string, leadSourceRecurringExpenseId: string, _options?: ConfigurationOptions): Observable<LeadSourceRecurringExpense> {
-        return this.getLeadSourceRecurringExpenseUsingGETWithHttpInfo(leadSourceId, leadSourceRecurringExpenseId, _options).pipe(map((apiResponse: HttpInfo<LeadSourceRecurringExpense>) => apiResponse.data));
+    public getLeadSourceRecurringExpense(leadSourceId: string, leadSourceRecurringExpenseId: string, _options?: ConfigurationOptions): Observable<LeadSourceRecurringExpense> {
+        return this.getLeadSourceRecurringExpenseWithHttpInfo(leadSourceId, leadSourceRecurringExpenseId, _options).pipe(map((apiResponse: HttpInfo<LeadSourceRecurringExpense>) => apiResponse.data));
     }
 
     /**
@@ -4642,10 +4051,10 @@ export class ObservableLeadSourceRecurringExpensesApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listExpensesIncurredFromLeadSourceRecurringExpenseUsingGETWithHttpInfo(leadSourceId: string, leadSourceRecurringExpenseId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListLeadSourceExpensesResponse>> {
+    public listExpensesIncurredFromLeadSourceRecurringExpenseWithHttpInfo(leadSourceId: string, leadSourceRecurringExpenseId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListLeadSourceExpensesResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.listExpensesIncurredFromLeadSourceRecurringExpenseUsingGET(leadSourceId, leadSourceRecurringExpenseId, filter, orderBy, pageSize, pageToken, _config);
+        const requestContextPromise = this.requestFactory.listExpensesIncurredFromLeadSourceRecurringExpense(leadSourceId, leadSourceRecurringExpenseId, filter, orderBy, pageSize, pageToken, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -4658,7 +4067,7 @@ export class ObservableLeadSourceRecurringExpensesApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listExpensesIncurredFromLeadSourceRecurringExpenseUsingGETWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listExpensesIncurredFromLeadSourceRecurringExpenseWithHttpInfo(rsp)));
             }));
     }
 
@@ -4672,8 +4081,8 @@ export class ObservableLeadSourceRecurringExpensesApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listExpensesIncurredFromLeadSourceRecurringExpenseUsingGET(leadSourceId: string, leadSourceRecurringExpenseId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListLeadSourceExpensesResponse> {
-        return this.listExpensesIncurredFromLeadSourceRecurringExpenseUsingGETWithHttpInfo(leadSourceId, leadSourceRecurringExpenseId, filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListLeadSourceExpensesResponse>) => apiResponse.data));
+    public listExpensesIncurredFromLeadSourceRecurringExpense(leadSourceId: string, leadSourceRecurringExpenseId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListLeadSourceExpensesResponse> {
+        return this.listExpensesIncurredFromLeadSourceRecurringExpenseWithHttpInfo(leadSourceId, leadSourceRecurringExpenseId, filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListLeadSourceExpensesResponse>) => apiResponse.data));
     }
 
     /**
@@ -4685,10 +4094,10 @@ export class ObservableLeadSourceRecurringExpensesApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listLeadSourceRecurringExpensesUsingGETWithHttpInfo(leadSourceId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListLeadSourceRecurringExpensesResponse>> {
+    public listLeadSourceRecurringExpensesWithHttpInfo(leadSourceId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListLeadSourceRecurringExpensesResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.listLeadSourceRecurringExpensesUsingGET(leadSourceId, filter, orderBy, pageSize, pageToken, _config);
+        const requestContextPromise = this.requestFactory.listLeadSourceRecurringExpenses(leadSourceId, filter, orderBy, pageSize, pageToken, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -4701,7 +4110,7 @@ export class ObservableLeadSourceRecurringExpensesApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listLeadSourceRecurringExpensesUsingGETWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listLeadSourceRecurringExpensesWithHttpInfo(rsp)));
             }));
     }
 
@@ -4714,8 +4123,8 @@ export class ObservableLeadSourceRecurringExpensesApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listLeadSourceRecurringExpensesUsingGET(leadSourceId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListLeadSourceRecurringExpensesResponse> {
-        return this.listLeadSourceRecurringExpensesUsingGETWithHttpInfo(leadSourceId, filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListLeadSourceRecurringExpensesResponse>) => apiResponse.data));
+    public listLeadSourceRecurringExpenses(leadSourceId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListLeadSourceRecurringExpensesResponse> {
+        return this.listLeadSourceRecurringExpensesWithHttpInfo(leadSourceId, filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListLeadSourceRecurringExpensesResponse>) => apiResponse.data));
     }
 
     /**
@@ -4726,10 +4135,10 @@ export class ObservableLeadSourceRecurringExpensesApi {
      * @param leadSourceRecurringExpenseUpdateRequest The request object to update a lead source recurring expense
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateLeadSourceRecurringExpenseUsingPATCHWithHttpInfo(leadSourceId: string, leadSourceRecurringExpenseId: string, leadSourceRecurringExpenseUpdateRequest: LeadSourceRecurringExpenseUpdateRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<LeadSourceRecurringExpense>> {
+    public updateLeadSourceRecurringExpenseWithHttpInfo(leadSourceId: string, leadSourceRecurringExpenseId: string, leadSourceRecurringExpenseUpdateRequest: LeadSourceRecurringExpenseUpdateRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<LeadSourceRecurringExpense>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.updateLeadSourceRecurringExpenseUsingPATCH(leadSourceId, leadSourceRecurringExpenseId, leadSourceRecurringExpenseUpdateRequest, updateMask, _config);
+        const requestContextPromise = this.requestFactory.updateLeadSourceRecurringExpense(leadSourceId, leadSourceRecurringExpenseId, leadSourceRecurringExpenseUpdateRequest, updateMask, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -4742,7 +4151,7 @@ export class ObservableLeadSourceRecurringExpensesApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateLeadSourceRecurringExpenseUsingPATCHWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateLeadSourceRecurringExpenseWithHttpInfo(rsp)));
             }));
     }
 
@@ -4754,8 +4163,8 @@ export class ObservableLeadSourceRecurringExpensesApi {
      * @param leadSourceRecurringExpenseUpdateRequest The request object to update a lead source recurring expense
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateLeadSourceRecurringExpenseUsingPATCH(leadSourceId: string, leadSourceRecurringExpenseId: string, leadSourceRecurringExpenseUpdateRequest: LeadSourceRecurringExpenseUpdateRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<LeadSourceRecurringExpense> {
-        return this.updateLeadSourceRecurringExpenseUsingPATCHWithHttpInfo(leadSourceId, leadSourceRecurringExpenseId, leadSourceRecurringExpenseUpdateRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<LeadSourceRecurringExpense>) => apiResponse.data));
+    public updateLeadSourceRecurringExpense(leadSourceId: string, leadSourceRecurringExpenseId: string, leadSourceRecurringExpenseUpdateRequest: LeadSourceRecurringExpenseUpdateRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<LeadSourceRecurringExpense> {
+        return this.updateLeadSourceRecurringExpenseWithHttpInfo(leadSourceId, leadSourceRecurringExpenseId, leadSourceRecurringExpenseUpdateRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<LeadSourceRecurringExpense>) => apiResponse.data));
     }
 
 }
@@ -4781,10 +4190,10 @@ export class ObservableLeadSourcesApi {
      * Create a Lead Source
      * @param createLeadSourceRequest The request object to create a new lead source
      */
-    public createLeadSourceUsingPOSTWithHttpInfo(createLeadSourceRequest: CreateLeadSourceRequest, _options?: ConfigurationOptions): Observable<HttpInfo<LeadSource>> {
+    public createLeadSourceWithHttpInfo(createLeadSourceRequest: CreateLeadSourceRequest, _options?: ConfigurationOptions): Observable<HttpInfo<LeadSource>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.createLeadSourceUsingPOST(createLeadSourceRequest, _config);
+        const requestContextPromise = this.requestFactory.createLeadSource(createLeadSourceRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -4797,7 +4206,7 @@ export class ObservableLeadSourcesApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createLeadSourceUsingPOSTWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createLeadSourceWithHttpInfo(rsp)));
             }));
     }
 
@@ -4806,8 +4215,8 @@ export class ObservableLeadSourcesApi {
      * Create a Lead Source
      * @param createLeadSourceRequest The request object to create a new lead source
      */
-    public createLeadSourceUsingPOST(createLeadSourceRequest: CreateLeadSourceRequest, _options?: ConfigurationOptions): Observable<LeadSource> {
-        return this.createLeadSourceUsingPOSTWithHttpInfo(createLeadSourceRequest, _options).pipe(map((apiResponse: HttpInfo<LeadSource>) => apiResponse.data));
+    public createLeadSource(createLeadSourceRequest: CreateLeadSourceRequest, _options?: ConfigurationOptions): Observable<LeadSource> {
+        return this.createLeadSourceWithHttpInfo(createLeadSourceRequest, _options).pipe(map((apiResponse: HttpInfo<LeadSource>) => apiResponse.data));
     }
 
     /**
@@ -4815,10 +4224,10 @@ export class ObservableLeadSourcesApi {
      * Delete a Lead Source
      * @param leadSourceId The ID of a lead source
      */
-    public deleteLeadSourceUsingDELETEWithHttpInfo(leadSourceId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public deleteLeadSourceWithHttpInfo(leadSourceId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.deleteLeadSourceUsingDELETE(leadSourceId, _config);
+        const requestContextPromise = this.requestFactory.deleteLeadSource(leadSourceId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -4831,7 +4240,7 @@ export class ObservableLeadSourcesApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteLeadSourceUsingDELETEWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteLeadSourceWithHttpInfo(rsp)));
             }));
     }
 
@@ -4840,8 +4249,8 @@ export class ObservableLeadSourcesApi {
      * Delete a Lead Source
      * @param leadSourceId The ID of a lead source
      */
-    public deleteLeadSourceUsingDELETE(leadSourceId: string, _options?: ConfigurationOptions): Observable<void> {
-        return this.deleteLeadSourceUsingDELETEWithHttpInfo(leadSourceId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public deleteLeadSource(leadSourceId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteLeadSourceWithHttpInfo(leadSourceId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
@@ -4849,10 +4258,10 @@ export class ObservableLeadSourcesApi {
      * Retrieve a Lead Source
      * @param leadSourceId The ID of a lead source
      */
-    public getLeadSourceUsingGETWithHttpInfo(leadSourceId: string, _options?: ConfigurationOptions): Observable<HttpInfo<LeadSource>> {
+    public getLeadSourceWithHttpInfo(leadSourceId: string, _options?: ConfigurationOptions): Observable<HttpInfo<LeadSource>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getLeadSourceUsingGET(leadSourceId, _config);
+        const requestContextPromise = this.requestFactory.getLeadSource(leadSourceId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -4865,7 +4274,7 @@ export class ObservableLeadSourcesApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getLeadSourceUsingGETWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getLeadSourceWithHttpInfo(rsp)));
             }));
     }
 
@@ -4874,8 +4283,8 @@ export class ObservableLeadSourcesApi {
      * Retrieve a Lead Source
      * @param leadSourceId The ID of a lead source
      */
-    public getLeadSourceUsingGET(leadSourceId: string, _options?: ConfigurationOptions): Observable<LeadSource> {
-        return this.getLeadSourceUsingGETWithHttpInfo(leadSourceId, _options).pipe(map((apiResponse: HttpInfo<LeadSource>) => apiResponse.data));
+    public getLeadSource(leadSourceId: string, _options?: ConfigurationOptions): Observable<LeadSource> {
+        return this.getLeadSourceWithHttpInfo(leadSourceId, _options).pipe(map((apiResponse: HttpInfo<LeadSource>) => apiResponse.data));
     }
 
     /**
@@ -4886,10 +4295,10 @@ export class ObservableLeadSourcesApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listLeadSourcesUsingGETWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListLeadSourcesResponse>> {
+    public listLeadSourcesWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListLeadSourcesResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.listLeadSourcesUsingGET(filter, orderBy, pageSize, pageToken, _config);
+        const requestContextPromise = this.requestFactory.listLeadSources(filter, orderBy, pageSize, pageToken, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -4902,7 +4311,7 @@ export class ObservableLeadSourcesApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listLeadSourcesUsingGETWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listLeadSourcesWithHttpInfo(rsp)));
             }));
     }
 
@@ -4914,8 +4323,8 @@ export class ObservableLeadSourcesApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listLeadSourcesUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListLeadSourcesResponse> {
-        return this.listLeadSourcesUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListLeadSourcesResponse>) => apiResponse.data));
+    public listLeadSources(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListLeadSourcesResponse> {
+        return this.listLeadSourcesWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListLeadSourcesResponse>) => apiResponse.data));
     }
 
     /**
@@ -4925,10 +4334,10 @@ export class ObservableLeadSourcesApi {
      * @param createLeadSourceRequest The request object to update a lead source
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateLeadSourceUsingPATCHWithHttpInfo(leadSourceId: string, createLeadSourceRequest: CreateLeadSourceRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<LeadSource>> {
+    public updateLeadSourceWithHttpInfo(leadSourceId: string, createLeadSourceRequest: CreateLeadSourceRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<LeadSource>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.updateLeadSourceUsingPATCH(leadSourceId, createLeadSourceRequest, updateMask, _config);
+        const requestContextPromise = this.requestFactory.updateLeadSource(leadSourceId, createLeadSourceRequest, updateMask, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -4941,7 +4350,7 @@ export class ObservableLeadSourcesApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateLeadSourceUsingPATCHWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateLeadSourceWithHttpInfo(rsp)));
             }));
     }
 
@@ -4952,8 +4361,220 @@ export class ObservableLeadSourcesApi {
      * @param createLeadSourceRequest The request object to update a lead source
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateLeadSourceUsingPATCH(leadSourceId: string, createLeadSourceRequest: CreateLeadSourceRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<LeadSource> {
-        return this.updateLeadSourceUsingPATCHWithHttpInfo(leadSourceId, createLeadSourceRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<LeadSource>) => apiResponse.data));
+    public updateLeadSource(leadSourceId: string, createLeadSourceRequest: CreateLeadSourceRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<LeadSource> {
+        return this.updateLeadSourceWithHttpInfo(leadSourceId, createLeadSourceRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<LeadSource>) => apiResponse.data));
+    }
+
+}
+
+import { LocaleApiRequestFactory, LocaleApiResponseProcessor} from "../apis/LocaleApi";
+export class ObservableLocaleApi {
+    private requestFactory: LocaleApiRequestFactory;
+    private responseProcessor: LocaleApiResponseProcessor;
+    private configuration: Configuration;
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: LocaleApiRequestFactory,
+        responseProcessor?: LocaleApiResponseProcessor
+    ) {
+        this.configuration = configuration;
+        this.requestFactory = requestFactory || new LocaleApiRequestFactory(configuration);
+        this.responseProcessor = responseProcessor || new LocaleApiResponseProcessor();
+    }
+
+    /**
+     * Gets a country by its code or name
+     * Get Country
+     * @param countryCode The ISO 3166-2 alpha-2 code, alpha-3 code, or name of the country to be retrieved
+     */
+    public getCountryByCodeWithHttpInfo(countryCode: string, _options?: ConfigurationOptions): Observable<HttpInfo<Country>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getCountryByCode(countryCode, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getCountryByCodeWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Gets a country by its code or name
+     * Get Country
+     * @param countryCode The ISO 3166-2 alpha-2 code, alpha-3 code, or name of the country to be retrieved
+     */
+    public getCountryByCode(countryCode: string, _options?: ConfigurationOptions): Observable<Country> {
+        return this.getCountryByCodeWithHttpInfo(countryCode, _options).pipe(map((apiResponse: HttpInfo<Country>) => apiResponse.data));
+    }
+
+    /**
+     * Get a province by its code or name
+     * Get Province
+     * @param countryCode The ISO 3166-1 alpha-2 code, alpha-3 code, or name of the country to be retrieved
+     * @param provinceCode The ISO 3166-2 code or name of the province to be retrieved
+     */
+    public getProvinceByCodeWithHttpInfo(countryCode: string, provinceCode: string, _options?: ConfigurationOptions): Observable<HttpInfo<Province>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getProvinceByCode(countryCode, provinceCode, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getProvinceByCodeWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Get a province by its code or name
+     * Get Province
+     * @param countryCode The ISO 3166-1 alpha-2 code, alpha-3 code, or name of the country to be retrieved
+     * @param provinceCode The ISO 3166-2 code or name of the province to be retrieved
+     */
+    public getProvinceByCode(countryCode: string, provinceCode: string, _options?: ConfigurationOptions): Observable<Province> {
+        return this.getProvinceByCodeWithHttpInfo(countryCode, provinceCode, _options).pipe(map((apiResponse: HttpInfo<Province>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves a list of countries
+     * List Countries
+     */
+    public listCountriesWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<ListCountriesResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.listCountries(_config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listCountriesWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a list of countries
+     * List Countries
+     */
+    public listCountries(_options?: ConfigurationOptions): Observable<ListCountriesResponse> {
+        return this.listCountriesWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<ListCountriesResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves a list of provinces for a given country
+     * List a Country\'s Province
+     * @param countryCode country_code
+     */
+    public listProvincesForCountryWithHttpInfo(countryCode: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListProvincesResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.listProvincesForCountry(countryCode, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listProvincesForCountryWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a list of provinces for a given country
+     * List a Country\'s Province
+     * @param countryCode country_code
+     */
+    public listProvincesForCountry(countryCode: string, _options?: ConfigurationOptions): Observable<ListProvincesResponse> {
+        return this.listProvincesForCountryWithHttpInfo(countryCode, _options).pipe(map((apiResponse: HttpInfo<ListProvincesResponse>) => apiResponse.data));
+    }
+
+}
+
+import { MerchantsApiRequestFactory, MerchantsApiResponseProcessor} from "../apis/MerchantsApi";
+export class ObservableMerchantsApi {
+    private requestFactory: MerchantsApiRequestFactory;
+    private responseProcessor: MerchantsApiResponseProcessor;
+    private configuration: Configuration;
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: MerchantsApiRequestFactory,
+        responseProcessor?: MerchantsApiResponseProcessor
+    ) {
+        this.configuration = configuration;
+        this.requestFactory = requestFactory || new MerchantsApiRequestFactory(configuration);
+        this.responseProcessor = responseProcessor || new MerchantsApiResponseProcessor();
+    }
+
+    /**
+     * Retrieves a list of Merchant accounts
+     * List Merchant accounts
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - (String) &#x60;name&#x60; - (String) &#x60;type&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;id%3D%3D123&#x60; - &#x60;filter&#x3D;name%3D%3Dabc&#x60; - &#x60;filter&#x3D;id%3D%3D123%3Bname%3D%3Dabc&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;name&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listMerchantsWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListMerchantsResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.listMerchants(filter, orderBy, pageSize, pageToken, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listMerchantsWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a list of Merchant accounts
+     * List Merchant accounts
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - (String) &#x60;name&#x60; - (String) &#x60;type&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;id%3D%3D123&#x60; - &#x60;filter&#x3D;name%3D%3Dabc&#x60; - &#x60;filter&#x3D;id%3D%3D123%3Bname%3D%3Dabc&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;name&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listMerchants(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListMerchantsResponse> {
+        return this.listMerchantsWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListMerchantsResponse>) => apiResponse.data));
     }
 
 }
@@ -4975,49 +4596,15 @@ export class ObservableNoteApi {
     }
 
     /**
-     * Creates a custom field of the specified type and options to the Note object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
-     * Create a Custom Field
-     * @param createCustomFieldRequest customField
-     */
-    public createNoteCustomFieldUsingPOST1WithHttpInfo(createCustomFieldRequest: CreateCustomFieldRequest, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldMetaData>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.createNoteCustomFieldUsingPOST1(createCustomFieldRequest, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createNoteCustomFieldUsingPOST1WithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Creates a custom field of the specified type and options to the Note object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
-     * Create a Custom Field
-     * @param createCustomFieldRequest customField
-     */
-    public createNoteCustomFieldUsingPOST1(createCustomFieldRequest: CreateCustomFieldRequest, _options?: ConfigurationOptions): Observable<CustomFieldMetaData> {
-        return this.createNoteCustomFieldUsingPOST1WithHttpInfo(createCustomFieldRequest, _options).pipe(map((apiResponse: HttpInfo<CustomFieldMetaData>) => apiResponse.data));
-    }
-
-    /**
      * Creates a new Note.
      * Create a Note
      * @param contactId contact_id
      * @param createNoteRequest request
      */
-    public createNoteUsingPOST1WithHttpInfo(contactId: string, createNoteRequest: CreateNoteRequest, _options?: ConfigurationOptions): Observable<HttpInfo<Note>> {
+    public createNoteWithHttpInfo(contactId: string, createNoteRequest: CreateNoteRequest, _options?: ConfigurationOptions): Observable<HttpInfo<Note>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.createNoteUsingPOST1(contactId, createNoteRequest, _config);
+        const requestContextPromise = this.requestFactory.createNote(contactId, createNoteRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -5030,7 +4617,7 @@ export class ObservableNoteApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createNoteUsingPOST1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createNoteWithHttpInfo(rsp)));
             }));
     }
 
@@ -5040,20 +4627,19 @@ export class ObservableNoteApi {
      * @param contactId contact_id
      * @param createNoteRequest request
      */
-    public createNoteUsingPOST1(contactId: string, createNoteRequest: CreateNoteRequest, _options?: ConfigurationOptions): Observable<Note> {
-        return this.createNoteUsingPOST1WithHttpInfo(contactId, createNoteRequest, _options).pipe(map((apiResponse: HttpInfo<Note>) => apiResponse.data));
+    public createNote(contactId: string, createNoteRequest: CreateNoteRequest, _options?: ConfigurationOptions): Observable<Note> {
+        return this.createNoteWithHttpInfo(contactId, createNoteRequest, _options).pipe(map((apiResponse: HttpInfo<Note>) => apiResponse.data));
     }
 
     /**
-     * Deletes the specified Note
-     * Delete a Note
-     * @param contactId contact_id
-     * @param noteId note_id
+     * Creates a custom field of the specified type and options to the Note object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+     * Create a Custom Field
+     * @param createCustomFieldRequest customField
      */
-    public deleteNoteUsingDELETE1WithHttpInfo(contactId: string, noteId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public createNoteCustomFieldWithHttpInfo(createCustomFieldRequest: CreateCustomFieldRequest, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldMetaData>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.deleteNoteUsingDELETE1(contactId, noteId, _config);
+        const requestContextPromise = this.requestFactory.createNoteCustomField(createCustomFieldRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -5066,8 +4652,17 @@ export class ObservableNoteApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteNoteUsingDELETE1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createNoteCustomFieldWithHttpInfo(rsp)));
             }));
+    }
+
+    /**
+     * Creates a custom field of the specified type and options to the Note object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+     * Create a Custom Field
+     * @param createCustomFieldRequest customField
+     */
+    public createNoteCustomField(createCustomFieldRequest: CreateCustomFieldRequest, _options?: ConfigurationOptions): Observable<CustomFieldMetaData> {
+        return this.createNoteCustomFieldWithHttpInfo(createCustomFieldRequest, _options).pipe(map((apiResponse: HttpInfo<CustomFieldMetaData>) => apiResponse.data));
     }
 
     /**
@@ -5076,20 +4671,10 @@ export class ObservableNoteApi {
      * @param contactId contact_id
      * @param noteId note_id
      */
-    public deleteNoteUsingDELETE1(contactId: string, noteId: string, _options?: ConfigurationOptions): Observable<void> {
-        return this.deleteNoteUsingDELETE1WithHttpInfo(contactId, noteId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
-    }
-
-    /**
-     * Retrieves the specified Note
-     * Retrieve a Note
-     * @param contactId contact_id
-     * @param noteId note_id
-     */
-    public getNoteUsingGET1WithHttpInfo(contactId: string, noteId: string, _options?: ConfigurationOptions): Observable<HttpInfo<GetNoteResponse>> {
+    public deleteNoteWithHttpInfo(contactId: string, noteId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getNoteUsingGET1(contactId, noteId, _config);
+        const requestContextPromise = this.requestFactory.deleteNote(contactId, noteId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -5102,7 +4687,43 @@ export class ObservableNoteApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getNoteUsingGET1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteNoteWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Deletes the specified Note
+     * Delete a Note
+     * @param contactId contact_id
+     * @param noteId note_id
+     */
+    public deleteNote(contactId: string, noteId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteNoteWithHttpInfo(contactId, noteId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves the specified Note
+     * Retrieve a Note
+     * @param contactId contact_id
+     * @param noteId note_id
+     */
+    public getNoteWithHttpInfo(contactId: string, noteId: string, _options?: ConfigurationOptions): Observable<HttpInfo<GetNoteResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getNote(contactId, noteId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getNoteWithHttpInfo(rsp)));
             }));
     }
 
@@ -5112,8 +4733,8 @@ export class ObservableNoteApi {
      * @param contactId contact_id
      * @param noteId note_id
      */
-    public getNoteUsingGET1(contactId: string, noteId: string, _options?: ConfigurationOptions): Observable<GetNoteResponse> {
-        return this.getNoteUsingGET1WithHttpInfo(contactId, noteId, _options).pipe(map((apiResponse: HttpInfo<GetNoteResponse>) => apiResponse.data));
+    public getNote(contactId: string, noteId: string, _options?: ConfigurationOptions): Observable<GetNoteResponse> {
+        return this.getNoteWithHttpInfo(contactId, noteId, _options).pipe(map((apiResponse: HttpInfo<GetNoteResponse>) => apiResponse.data));
     }
 
     /**
@@ -5124,10 +4745,10 @@ export class ObservableNoteApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listNoteTemplatesUsingGETWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListNoteTemplateResponse>> {
+    public listNoteTemplatesWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListNoteTemplateResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.listNoteTemplatesUsingGET(filter, orderBy, pageSize, pageToken, _config);
+        const requestContextPromise = this.requestFactory.listNoteTemplates(filter, orderBy, pageSize, pageToken, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -5140,7 +4761,7 @@ export class ObservableNoteApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listNoteTemplatesUsingGETWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listNoteTemplatesWithHttpInfo(rsp)));
             }));
     }
 
@@ -5152,23 +4773,23 @@ export class ObservableNoteApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listNoteTemplatesUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListNoteTemplateResponse> {
-        return this.listNoteTemplatesUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListNoteTemplateResponse>) => apiResponse.data));
+    public listNoteTemplates(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListNoteTemplateResponse> {
+        return this.listNoteTemplatesWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListNoteTemplateResponse>) => apiResponse.data));
     }
 
     /**
      * Retrieves a list of Notes
      * List Notes
      * @param contactId contact_id
-     * @param [filter] Search filter to apply to results
-     * @param [orderBy] Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60;
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;assigned_to_user_id&#x60; - (String) &#x60;title&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;assigned_to_user_id%3D%3DUserId&#x60; - &#x60;filter&#x3D;title%3D%3DexpectedTitle&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listNotesUsingGET1WithHttpInfo(contactId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListNotesResponse>> {
+    public listNotesWithHttpInfo(contactId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListNotesResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.listNotesUsingGET1(contactId, filter, orderBy, pageSize, pageToken, _config);
+        const requestContextPromise = this.requestFactory.listNotes(contactId, filter, orderBy, pageSize, pageToken, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -5181,7 +4802,7 @@ export class ObservableNoteApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listNotesUsingGET1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listNotesWithHttpInfo(rsp)));
             }));
     }
 
@@ -5189,23 +4810,23 @@ export class ObservableNoteApi {
      * Retrieves a list of Notes
      * List Notes
      * @param contactId contact_id
-     * @param [filter] Search filter to apply to results
-     * @param [orderBy] Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60;
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;assigned_to_user_id&#x60; - (String) &#x60;title&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;assigned_to_user_id%3D%3DUserId&#x60; - &#x60;filter&#x3D;title%3D%3DexpectedTitle&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listNotesUsingGET1(contactId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListNotesResponse> {
-        return this.listNotesUsingGET1WithHttpInfo(contactId, filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListNotesResponse>) => apiResponse.data));
+    public listNotes(contactId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListNotesResponse> {
+        return this.listNotesWithHttpInfo(contactId, filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListNotesResponse>) => apiResponse.data));
     }
 
     /**
      * Gets the custom fields for the Note object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
      * Retrieve Note Model
      */
-    public retrieveNoteModelUsingGET1WithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<ObjectModel>> {
+    public retrieveNoteModelWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<ObjectModel>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.retrieveNoteModelUsingGET1(_config);
+        const requestContextPromise = this.requestFactory.retrieveNoteModel(_config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -5218,7 +4839,7 @@ export class ObservableNoteApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.retrieveNoteModelUsingGET1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.retrieveNoteModelWithHttpInfo(rsp)));
             }));
     }
 
@@ -5226,8 +4847,8 @@ export class ObservableNoteApi {
      * Gets the custom fields for the Note object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
      * Retrieve Note Model
      */
-    public retrieveNoteModelUsingGET1(_options?: ConfigurationOptions): Observable<ObjectModel> {
-        return this.retrieveNoteModelUsingGET1WithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<ObjectModel>) => apiResponse.data));
+    public retrieveNoteModel(_options?: ConfigurationOptions): Observable<ObjectModel> {
+        return this.retrieveNoteModelWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<ObjectModel>) => apiResponse.data));
     }
 
     /**
@@ -5238,10 +4859,10 @@ export class ObservableNoteApi {
      * @param updateNoteRequest updateNoteRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateNoteUsingPATCHWithHttpInfo(contactId: string, noteId: string, updateNoteRequest: UpdateNoteRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<UpdateNoteResponse>> {
+    public updateNoteWithHttpInfo(contactId: string, noteId: string, updateNoteRequest: UpdateNoteRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<UpdateNoteResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.updateNoteUsingPATCH(contactId, noteId, updateNoteRequest, updateMask, _config);
+        const requestContextPromise = this.requestFactory.updateNote(contactId, noteId, updateNoteRequest, updateMask, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -5254,7 +4875,7 @@ export class ObservableNoteApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateNoteUsingPATCHWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateNoteWithHttpInfo(rsp)));
             }));
     }
 
@@ -5266,8 +4887,8 @@ export class ObservableNoteApi {
      * @param updateNoteRequest updateNoteRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateNoteUsingPATCH(contactId: string, noteId: string, updateNoteRequest: UpdateNoteRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<UpdateNoteResponse> {
-        return this.updateNoteUsingPATCHWithHttpInfo(contactId, noteId, updateNoteRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<UpdateNoteResponse>) => apiResponse.data));
+    public updateNote(contactId: string, noteId: string, updateNoteRequest: UpdateNoteRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<UpdateNoteResponse> {
+        return this.updateNoteWithHttpInfo(contactId, noteId, updateNoteRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<UpdateNoteResponse>) => apiResponse.data));
     }
 
     /**
@@ -5277,10 +4898,10 @@ export class ObservableNoteApi {
      * @param updateCustomFieldMetaDataRequest request
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateNotesCustomFieldUsingPATCHWithHttpInfo(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldMetaData>> {
+    public updateNotesCustomFieldWithHttpInfo(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldMetaData>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.updateNotesCustomFieldUsingPATCH(customFieldId, updateCustomFieldMetaDataRequest, updateMask, _config);
+        const requestContextPromise = this.requestFactory.updateNotesCustomField(customFieldId, updateCustomFieldMetaDataRequest, updateMask, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -5293,7 +4914,7 @@ export class ObservableNoteApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateNotesCustomFieldUsingPATCHWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateNotesCustomFieldWithHttpInfo(rsp)));
             }));
     }
 
@@ -5304,8 +4925,8 @@ export class ObservableNoteApi {
      * @param updateCustomFieldMetaDataRequest request
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateNotesCustomFieldUsingPATCH(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<CustomFieldMetaData> {
-        return this.updateNotesCustomFieldUsingPATCHWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<CustomFieldMetaData>) => apiResponse.data));
+    public updateNotesCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<CustomFieldMetaData> {
+        return this.updateNotesCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<CustomFieldMetaData>) => apiResponse.data));
     }
 
 }
@@ -5327,82 +4948,14 @@ export class ObservableOpportunityApi {
     }
 
     /**
-     * Creates a custom field of the specified type and options to the Opportunity object
-     * Create an Opportunity Custom Field
-     * @param createCustomFieldRequest customField
-     */
-    public createOpportunityCustomFieldsUsingPOSTWithHttpInfo(createCustomFieldRequest: CreateCustomFieldRequest, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldMetaData>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.createOpportunityCustomFieldsUsingPOST(createCustomFieldRequest, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createOpportunityCustomFieldsUsingPOSTWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Creates a custom field of the specified type and options to the Opportunity object
-     * Create an Opportunity Custom Field
-     * @param createCustomFieldRequest customField
-     */
-    public createOpportunityCustomFieldsUsingPOST(createCustomFieldRequest: CreateCustomFieldRequest, _options?: ConfigurationOptions): Observable<CustomFieldMetaData> {
-        return this.createOpportunityCustomFieldsUsingPOSTWithHttpInfo(createCustomFieldRequest, _options).pipe(map((apiResponse: HttpInfo<CustomFieldMetaData>) => apiResponse.data));
-    }
-
-    /**
-     * Creates a new Opportunity Stage
-     * Create an Opportunity Stage
-     * @param [createOpportunityStageRequest] opportunity
-     */
-    public createOpportunityStageUsingPOSTWithHttpInfo(createOpportunityStageRequest?: CreateOpportunityStageRequest, _options?: ConfigurationOptions): Observable<HttpInfo<RestOpportunityStage>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.createOpportunityStageUsingPOST(createOpportunityStageRequest, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createOpportunityStageUsingPOSTWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Creates a new Opportunity Stage
-     * Create an Opportunity Stage
-     * @param [createOpportunityStageRequest] opportunity
-     */
-    public createOpportunityStageUsingPOST(createOpportunityStageRequest?: CreateOpportunityStageRequest, _options?: ConfigurationOptions): Observable<RestOpportunityStage> {
-        return this.createOpportunityStageUsingPOSTWithHttpInfo(createOpportunityStageRequest, _options).pipe(map((apiResponse: HttpInfo<RestOpportunityStage>) => apiResponse.data));
-    }
-
-    /**
      * Creates a new opportunity as the authenticated user.
      * Create an Opportunity
      * @param [createOpportunityRequest] opportunity
      */
-    public createOpportunityUsingPOST1WithHttpInfo(createOpportunityRequest?: CreateOpportunityRequest, _options?: ConfigurationOptions): Observable<HttpInfo<RestV2Opportunity>> {
+    public createOpportunityWithHttpInfo(createOpportunityRequest?: CreateOpportunityRequest, _options?: ConfigurationOptions): Observable<HttpInfo<RestV2Opportunity>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.createOpportunityUsingPOST1(createOpportunityRequest, _config);
+        const requestContextPromise = this.requestFactory.createOpportunity(createOpportunityRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -5415,7 +4968,7 @@ export class ObservableOpportunityApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createOpportunityUsingPOST1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createOpportunityWithHttpInfo(rsp)));
             }));
     }
 
@@ -5424,19 +4977,19 @@ export class ObservableOpportunityApi {
      * Create an Opportunity
      * @param [createOpportunityRequest] opportunity
      */
-    public createOpportunityUsingPOST1(createOpportunityRequest?: CreateOpportunityRequest, _options?: ConfigurationOptions): Observable<RestV2Opportunity> {
-        return this.createOpportunityUsingPOST1WithHttpInfo(createOpportunityRequest, _options).pipe(map((apiResponse: HttpInfo<RestV2Opportunity>) => apiResponse.data));
+    public createOpportunity(createOpportunityRequest?: CreateOpportunityRequest, _options?: ConfigurationOptions): Observable<RestV2Opportunity> {
+        return this.createOpportunityWithHttpInfo(createOpportunityRequest, _options).pipe(map((apiResponse: HttpInfo<RestV2Opportunity>) => apiResponse.data));
     }
 
     /**
-     * Deletes the specified Opportunity Stage
-     * Delete an Opportunity Stage
-     * @param stageId stage_id
+     * Creates a custom field of the specified type and options to the Opportunity object
+     * Create an Opportunity Custom Field
+     * @param createCustomFieldRequest customField
      */
-    public deleteOpportunityStageUsingDELETEWithHttpInfo(stageId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public createOpportunityCustomFieldsWithHttpInfo(createCustomFieldRequest: CreateCustomFieldRequest, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldMetaData>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.deleteOpportunityStageUsingDELETE(stageId, _config);
+        const requestContextPromise = this.requestFactory.createOpportunityCustomFields(createCustomFieldRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -5449,17 +5002,51 @@ export class ObservableOpportunityApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteOpportunityStageUsingDELETEWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createOpportunityCustomFieldsWithHttpInfo(rsp)));
             }));
     }
 
     /**
-     * Deletes the specified Opportunity Stage
-     * Delete an Opportunity Stage
-     * @param stageId stage_id
+     * Creates a custom field of the specified type and options to the Opportunity object
+     * Create an Opportunity Custom Field
+     * @param createCustomFieldRequest customField
      */
-    public deleteOpportunityStageUsingDELETE(stageId: string, _options?: ConfigurationOptions): Observable<void> {
-        return this.deleteOpportunityStageUsingDELETEWithHttpInfo(stageId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public createOpportunityCustomFields(createCustomFieldRequest: CreateCustomFieldRequest, _options?: ConfigurationOptions): Observable<CustomFieldMetaData> {
+        return this.createOpportunityCustomFieldsWithHttpInfo(createCustomFieldRequest, _options).pipe(map((apiResponse: HttpInfo<CustomFieldMetaData>) => apiResponse.data));
+    }
+
+    /**
+     * Creates a new Opportunity Stage
+     * Create an Opportunity Stage
+     * @param [createOpportunityStageRequest] opportunity
+     */
+    public createOpportunityStageWithHttpInfo(createOpportunityStageRequest?: CreateOpportunityStageRequest, _options?: ConfigurationOptions): Observable<HttpInfo<RestOpportunityStage>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.createOpportunityStage(createOpportunityStageRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createOpportunityStageWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Creates a new Opportunity Stage
+     * Create an Opportunity Stage
+     * @param [createOpportunityStageRequest] opportunity
+     */
+    public createOpportunityStage(createOpportunityStageRequest?: CreateOpportunityStageRequest, _options?: ConfigurationOptions): Observable<RestOpportunityStage> {
+        return this.createOpportunityStageWithHttpInfo(createOpportunityStageRequest, _options).pipe(map((apiResponse: HttpInfo<RestOpportunityStage>) => apiResponse.data));
     }
 
     /**
@@ -5467,10 +5054,10 @@ export class ObservableOpportunityApi {
      * Delete an Opportunity
      * @param opportunityId opportunity_id
      */
-    public deleteOpportunityUsingDELETEWithHttpInfo(opportunityId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public deleteOpportunityWithHttpInfo(opportunityId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.deleteOpportunityUsingDELETE(opportunityId, _config);
+        const requestContextPromise = this.requestFactory.deleteOpportunity(opportunityId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -5483,7 +5070,7 @@ export class ObservableOpportunityApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteOpportunityUsingDELETEWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteOpportunityWithHttpInfo(rsp)));
             }));
     }
 
@@ -5492,19 +5079,19 @@ export class ObservableOpportunityApi {
      * Delete an Opportunity
      * @param opportunityId opportunity_id
      */
-    public deleteOpportunityUsingDELETE(opportunityId: string, _options?: ConfigurationOptions): Observable<void> {
-        return this.deleteOpportunityUsingDELETEWithHttpInfo(opportunityId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public deleteOpportunity(opportunityId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteOpportunityWithHttpInfo(opportunityId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
-     * Retrieves the specified Opportunity Stage
-     * Retrieve an Opportunity Stage
+     * Deletes the specified Opportunity Stage
+     * Delete an Opportunity Stage
      * @param stageId stage_id
      */
-    public getOpportunityStageUsingGETWithHttpInfo(stageId: string, _options?: ConfigurationOptions): Observable<HttpInfo<RestOpportunityStage>> {
+    public deleteOpportunityStageWithHttpInfo(stageId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getOpportunityStageUsingGET(stageId, _config);
+        const requestContextPromise = this.requestFactory.deleteOpportunityStage(stageId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -5517,17 +5104,17 @@ export class ObservableOpportunityApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getOpportunityStageUsingGETWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteOpportunityStageWithHttpInfo(rsp)));
             }));
     }
 
     /**
-     * Retrieves the specified Opportunity Stage
-     * Retrieve an Opportunity Stage
+     * Deletes the specified Opportunity Stage
+     * Delete an Opportunity Stage
      * @param stageId stage_id
      */
-    public getOpportunityStageUsingGET(stageId: string, _options?: ConfigurationOptions): Observable<RestOpportunityStage> {
-        return this.getOpportunityStageUsingGETWithHttpInfo(stageId, _options).pipe(map((apiResponse: HttpInfo<RestOpportunityStage>) => apiResponse.data));
+    public deleteOpportunityStage(stageId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteOpportunityStageWithHttpInfo(stageId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
@@ -5535,10 +5122,10 @@ export class ObservableOpportunityApi {
      * Retrieve a Opportunity
      * @param opportunityId opportunity_id
      */
-    public getOpportunityUsingGET1WithHttpInfo(opportunityId: string, _options?: ConfigurationOptions): Observable<HttpInfo<RestV2Opportunity>> {
+    public getOpportunityWithHttpInfo(opportunityId: string, _options?: ConfigurationOptions): Observable<HttpInfo<RestV2Opportunity>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getOpportunityUsingGET1(opportunityId, _config);
+        const requestContextPromise = this.requestFactory.getOpportunity(opportunityId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -5551,7 +5138,7 @@ export class ObservableOpportunityApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getOpportunityUsingGET1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getOpportunityWithHttpInfo(rsp)));
             }));
     }
 
@@ -5560,8 +5147,42 @@ export class ObservableOpportunityApi {
      * Retrieve a Opportunity
      * @param opportunityId opportunity_id
      */
-    public getOpportunityUsingGET1(opportunityId: string, _options?: ConfigurationOptions): Observable<RestV2Opportunity> {
-        return this.getOpportunityUsingGET1WithHttpInfo(opportunityId, _options).pipe(map((apiResponse: HttpInfo<RestV2Opportunity>) => apiResponse.data));
+    public getOpportunity(opportunityId: string, _options?: ConfigurationOptions): Observable<RestV2Opportunity> {
+        return this.getOpportunityWithHttpInfo(opportunityId, _options).pipe(map((apiResponse: HttpInfo<RestV2Opportunity>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves the specified Opportunity Stage
+     * Retrieve an Opportunity Stage
+     * @param stageId stage_id
+     */
+    public getOpportunityStageWithHttpInfo(stageId: string, _options?: ConfigurationOptions): Observable<HttpInfo<RestOpportunityStage>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getOpportunityStage(stageId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getOpportunityStageWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves the specified Opportunity Stage
+     * Retrieve an Opportunity Stage
+     * @param stageId stage_id
+     */
+    public getOpportunityStage(stageId: string, _options?: ConfigurationOptions): Observable<RestOpportunityStage> {
+        return this.getOpportunityStageWithHttpInfo(stageId, _options).pipe(map((apiResponse: HttpInfo<RestOpportunityStage>) => apiResponse.data));
     }
 
     /**
@@ -5573,10 +5194,10 @@ export class ObservableOpportunityApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listOpportunitiesUsingGET1WithHttpInfo(fields?: Array<string>, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListOpportunitiesResponse>> {
+    public listOpportunitiesWithHttpInfo(fields?: Array<string>, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListOpportunitiesResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.listOpportunitiesUsingGET1(fields, filter, orderBy, pageSize, pageToken, _config);
+        const requestContextPromise = this.requestFactory.listOpportunities(fields, filter, orderBy, pageSize, pageToken, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -5589,7 +5210,7 @@ export class ObservableOpportunityApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listOpportunitiesUsingGET1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listOpportunitiesWithHttpInfo(rsp)));
             }));
     }
 
@@ -5602,8 +5223,8 @@ export class ObservableOpportunityApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listOpportunitiesUsingGET1(fields?: Array<string>, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListOpportunitiesResponse> {
-        return this.listOpportunitiesUsingGET1WithHttpInfo(fields, filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListOpportunitiesResponse>) => apiResponse.data));
+    public listOpportunities(fields?: Array<string>, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListOpportunitiesResponse> {
+        return this.listOpportunitiesWithHttpInfo(fields, filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListOpportunitiesResponse>) => apiResponse.data));
     }
 
     /**
@@ -5614,10 +5235,10 @@ export class ObservableOpportunityApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listOpportunityStagesUsingGETWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListOpportunityStagesResponse>> {
+    public listOpportunityStagesWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListOpportunityStagesResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.listOpportunityStagesUsingGET(filter, orderBy, pageSize, pageToken, _config);
+        const requestContextPromise = this.requestFactory.listOpportunityStages(filter, orderBy, pageSize, pageToken, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -5630,7 +5251,7 @@ export class ObservableOpportunityApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listOpportunityStagesUsingGETWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listOpportunityStagesWithHttpInfo(rsp)));
             }));
     }
 
@@ -5642,84 +5263,8 @@ export class ObservableOpportunityApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listOpportunityStagesUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListOpportunityStagesResponse> {
-        return this.listOpportunityStagesUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListOpportunityStagesResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Updates a custom field of the specified type and options to the Opportunity object.
-     * Update a Opportunity\'s Custom Field
-     * @param customFieldId custom_field_id
-     * @param updateCustomFieldMetaDataRequest request
-     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-     */
-    public updateOpportunityCustomFieldUsingPATCHWithHttpInfo(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldMetaData>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.updateOpportunityCustomFieldUsingPATCH(customFieldId, updateCustomFieldMetaDataRequest, updateMask, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateOpportunityCustomFieldUsingPATCHWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Updates a custom field of the specified type and options to the Opportunity object.
-     * Update a Opportunity\'s Custom Field
-     * @param customFieldId custom_field_id
-     * @param updateCustomFieldMetaDataRequest request
-     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-     */
-    public updateOpportunityCustomFieldUsingPATCH(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<CustomFieldMetaData> {
-        return this.updateOpportunityCustomFieldUsingPATCHWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<CustomFieldMetaData>) => apiResponse.data));
-    }
-
-    /**
-     * Updates specified values of a given Opportunity Stage
-     * Update an Opportunity Stage
-     * @param stageId stage_id
-     * @param updateOpportunityStageRequest request
-     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-     */
-    public updateOpportunityStageUsingPATCHWithHttpInfo(stageId: string, updateOpportunityStageRequest: UpdateOpportunityStageRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<RestOpportunityStage>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.updateOpportunityStageUsingPATCH(stageId, updateOpportunityStageRequest, updateMask, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateOpportunityStageUsingPATCHWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Updates specified values of a given Opportunity Stage
-     * Update an Opportunity Stage
-     * @param stageId stage_id
-     * @param updateOpportunityStageRequest request
-     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-     */
-    public updateOpportunityStageUsingPATCH(stageId: string, updateOpportunityStageRequest: UpdateOpportunityStageRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<RestOpportunityStage> {
-        return this.updateOpportunityStageUsingPATCHWithHttpInfo(stageId, updateOpportunityStageRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<RestOpportunityStage>) => apiResponse.data));
+    public listOpportunityStages(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListOpportunityStagesResponse> {
+        return this.listOpportunityStagesWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListOpportunityStagesResponse>) => apiResponse.data));
     }
 
     /**
@@ -5729,10 +5274,10 @@ export class ObservableOpportunityApi {
      * @param updateOpportunityRequestV2 request
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateOpportunityUsingPATCHWithHttpInfo(opportunityId: string, updateOpportunityRequestV2: UpdateOpportunityRequestV2, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<RestV2Opportunity>> {
+    public updateOpportunityWithHttpInfo(opportunityId: string, updateOpportunityRequestV2: UpdateOpportunityRequestV2, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<RestV2Opportunity>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.updateOpportunityUsingPATCH(opportunityId, updateOpportunityRequestV2, updateMask, _config);
+        const requestContextPromise = this.requestFactory.updateOpportunity(opportunityId, updateOpportunityRequestV2, updateMask, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -5745,7 +5290,7 @@ export class ObservableOpportunityApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateOpportunityUsingPATCHWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateOpportunityWithHttpInfo(rsp)));
             }));
     }
 
@@ -5756,8 +5301,84 @@ export class ObservableOpportunityApi {
      * @param updateOpportunityRequestV2 request
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateOpportunityUsingPATCH(opportunityId: string, updateOpportunityRequestV2: UpdateOpportunityRequestV2, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<RestV2Opportunity> {
-        return this.updateOpportunityUsingPATCHWithHttpInfo(opportunityId, updateOpportunityRequestV2, updateMask, _options).pipe(map((apiResponse: HttpInfo<RestV2Opportunity>) => apiResponse.data));
+    public updateOpportunity(opportunityId: string, updateOpportunityRequestV2: UpdateOpportunityRequestV2, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<RestV2Opportunity> {
+        return this.updateOpportunityWithHttpInfo(opportunityId, updateOpportunityRequestV2, updateMask, _options).pipe(map((apiResponse: HttpInfo<RestV2Opportunity>) => apiResponse.data));
+    }
+
+    /**
+     * Updates a custom field of the specified type and options to the Opportunity object.
+     * Update a Opportunity\'s Custom Field
+     * @param customFieldId custom_field_id
+     * @param updateCustomFieldMetaDataRequest request
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateOpportunityCustomFieldWithHttpInfo(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldMetaData>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.updateOpportunityCustomField(customFieldId, updateCustomFieldMetaDataRequest, updateMask, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateOpportunityCustomFieldWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Updates a custom field of the specified type and options to the Opportunity object.
+     * Update a Opportunity\'s Custom Field
+     * @param customFieldId custom_field_id
+     * @param updateCustomFieldMetaDataRequest request
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateOpportunityCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<CustomFieldMetaData> {
+        return this.updateOpportunityCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<CustomFieldMetaData>) => apiResponse.data));
+    }
+
+    /**
+     * Updates specified values of a given Opportunity Stage
+     * Update an Opportunity Stage
+     * @param stageId stage_id
+     * @param updateOpportunityStageRequest request
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateOpportunityStageWithHttpInfo(stageId: string, updateOpportunityStageRequest: UpdateOpportunityStageRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<RestOpportunityStage>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.updateOpportunityStage(stageId, updateOpportunityStageRequest, updateMask, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateOpportunityStageWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Updates specified values of a given Opportunity Stage
+     * Update an Opportunity Stage
+     * @param stageId stage_id
+     * @param updateOpportunityStageRequest request
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateOpportunityStage(stageId: string, updateOpportunityStageRequest: UpdateOpportunityStageRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<RestOpportunityStage> {
+        return this.updateOpportunityStageWithHttpInfo(stageId, updateOpportunityStageRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<RestOpportunityStage>) => apiResponse.data));
     }
 
 }
@@ -5783,10 +5404,10 @@ export class ObservableOrderTotalDiscountsApi {
      * Create an Order Total Discount
      * @param createOrderTotalDiscountRequest request
      */
-    public createOrderTotalDiscountUsingPOSTWithHttpInfo(createOrderTotalDiscountRequest: CreateOrderTotalDiscountRequest, _options?: ConfigurationOptions): Observable<HttpInfo<OrderTotalDiscount>> {
+    public createOrderTotalDiscountWithHttpInfo(createOrderTotalDiscountRequest: CreateOrderTotalDiscountRequest, _options?: ConfigurationOptions): Observable<HttpInfo<OrderTotalDiscount>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.createOrderTotalDiscountUsingPOST(createOrderTotalDiscountRequest, _config);
+        const requestContextPromise = this.requestFactory.createOrderTotalDiscount(createOrderTotalDiscountRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -5799,7 +5420,7 @@ export class ObservableOrderTotalDiscountsApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createOrderTotalDiscountUsingPOSTWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createOrderTotalDiscountWithHttpInfo(rsp)));
             }));
     }
 
@@ -5808,8 +5429,8 @@ export class ObservableOrderTotalDiscountsApi {
      * Create an Order Total Discount
      * @param createOrderTotalDiscountRequest request
      */
-    public createOrderTotalDiscountUsingPOST(createOrderTotalDiscountRequest: CreateOrderTotalDiscountRequest, _options?: ConfigurationOptions): Observable<OrderTotalDiscount> {
-        return this.createOrderTotalDiscountUsingPOSTWithHttpInfo(createOrderTotalDiscountRequest, _options).pipe(map((apiResponse: HttpInfo<OrderTotalDiscount>) => apiResponse.data));
+    public createOrderTotalDiscount(createOrderTotalDiscountRequest: CreateOrderTotalDiscountRequest, _options?: ConfigurationOptions): Observable<OrderTotalDiscount> {
+        return this.createOrderTotalDiscountWithHttpInfo(createOrderTotalDiscountRequest, _options).pipe(map((apiResponse: HttpInfo<OrderTotalDiscount>) => apiResponse.data));
     }
 
     /**
@@ -5817,10 +5438,10 @@ export class ObservableOrderTotalDiscountsApi {
      * Delete an Order Total Discount
      * @param discountId discount_id
      */
-    public deleteOrderTotalDiscountUsingDELETEWithHttpInfo(discountId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public deleteOrderTotalDiscountWithHttpInfo(discountId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.deleteOrderTotalDiscountUsingDELETE(discountId, _config);
+        const requestContextPromise = this.requestFactory.deleteOrderTotalDiscount(discountId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -5833,7 +5454,7 @@ export class ObservableOrderTotalDiscountsApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteOrderTotalDiscountUsingDELETEWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteOrderTotalDiscountWithHttpInfo(rsp)));
             }));
     }
 
@@ -5842,8 +5463,8 @@ export class ObservableOrderTotalDiscountsApi {
      * Delete an Order Total Discount
      * @param discountId discount_id
      */
-    public deleteOrderTotalDiscountUsingDELETE(discountId: string, _options?: ConfigurationOptions): Observable<void> {
-        return this.deleteOrderTotalDiscountUsingDELETEWithHttpInfo(discountId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public deleteOrderTotalDiscount(discountId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteOrderTotalDiscountWithHttpInfo(discountId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
@@ -5851,10 +5472,10 @@ export class ObservableOrderTotalDiscountsApi {
      * Retrieve an Order Total Discount
      * @param discountId discount_id
      */
-    public getOrderTotalDiscountUsingGETWithHttpInfo(discountId: string, _options?: ConfigurationOptions): Observable<HttpInfo<OrderTotalDiscount>> {
+    public getOrderTotalDiscountWithHttpInfo(discountId: string, _options?: ConfigurationOptions): Observable<HttpInfo<OrderTotalDiscount>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getOrderTotalDiscountUsingGET(discountId, _config);
+        const requestContextPromise = this.requestFactory.getOrderTotalDiscount(discountId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -5867,7 +5488,7 @@ export class ObservableOrderTotalDiscountsApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getOrderTotalDiscountUsingGETWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getOrderTotalDiscountWithHttpInfo(rsp)));
             }));
     }
 
@@ -5876,22 +5497,22 @@ export class ObservableOrderTotalDiscountsApi {
      * Retrieve an Order Total Discount
      * @param discountId discount_id
      */
-    public getOrderTotalDiscountUsingGET(discountId: string, _options?: ConfigurationOptions): Observable<OrderTotalDiscount> {
-        return this.getOrderTotalDiscountUsingGETWithHttpInfo(discountId, _options).pipe(map((apiResponse: HttpInfo<OrderTotalDiscount>) => apiResponse.data));
+    public getOrderTotalDiscount(discountId: string, _options?: ConfigurationOptions): Observable<OrderTotalDiscount> {
+        return this.getOrderTotalDiscountWithHttpInfo(discountId, _options).pipe(map((apiResponse: HttpInfo<OrderTotalDiscount>) => apiResponse.data));
     }
 
     /**
      * Retrieves a list of Order Total Discounts
      * List all Order Total Discounts
      * @param [filter] Filter to apply, allowed fields are: - (Boolean) &#x60;apply_to_commissions&#x60; - (DiscountStrategy) &#x60;discount_strategy&#x60;: GROSS or NET - (DiscountType) &#x60;discount_type&#x60;: AMOUNT or PERCENT - (Double) &#x60;discount_value&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;apply_to_commissions%3D%3Dtrue&#x60; - &#x60;filter&#x3D;discount_strategy%3D%3DGROSS&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT&#x60; - &#x60;filter&#x3D;discount_value%3D%3D10.0&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT%3Bdiscount_strategy%3D%3DNET&#x60; 
-     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;apply_to_commissions&#x60; - &#x60;discount_strategy&#x60; - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;apply_to_commissions&#x60; - &#x60;discount_strategy&#x60; - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60; - &#x60;name&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listOrderTotalDiscountsUsingGETWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListOrderTotalDiscountsResponse>> {
+    public listOrderTotalDiscountsWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListOrderTotalDiscountsResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.listOrderTotalDiscountsUsingGET(filter, orderBy, pageSize, pageToken, _config);
+        const requestContextPromise = this.requestFactory.listOrderTotalDiscounts(filter, orderBy, pageSize, pageToken, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -5904,7 +5525,7 @@ export class ObservableOrderTotalDiscountsApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listOrderTotalDiscountsUsingGETWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listOrderTotalDiscountsWithHttpInfo(rsp)));
             }));
     }
 
@@ -5912,12 +5533,12 @@ export class ObservableOrderTotalDiscountsApi {
      * Retrieves a list of Order Total Discounts
      * List all Order Total Discounts
      * @param [filter] Filter to apply, allowed fields are: - (Boolean) &#x60;apply_to_commissions&#x60; - (DiscountStrategy) &#x60;discount_strategy&#x60;: GROSS or NET - (DiscountType) &#x60;discount_type&#x60;: AMOUNT or PERCENT - (Double) &#x60;discount_value&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;apply_to_commissions%3D%3Dtrue&#x60; - &#x60;filter&#x3D;discount_strategy%3D%3DGROSS&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT&#x60; - &#x60;filter&#x3D;discount_value%3D%3D10.0&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT%3Bdiscount_strategy%3D%3DNET&#x60; 
-     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;apply_to_commissions&#x60; - &#x60;discount_strategy&#x60; - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;apply_to_commissions&#x60; - &#x60;discount_strategy&#x60; - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60; - &#x60;name&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listOrderTotalDiscountsUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListOrderTotalDiscountsResponse> {
-        return this.listOrderTotalDiscountsUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListOrderTotalDiscountsResponse>) => apiResponse.data));
+    public listOrderTotalDiscounts(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListOrderTotalDiscountsResponse> {
+        return this.listOrderTotalDiscountsWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListOrderTotalDiscountsResponse>) => apiResponse.data));
     }
 
     /**
@@ -5927,10 +5548,10 @@ export class ObservableOrderTotalDiscountsApi {
      * @param updateOrderTotalDiscountRequest request
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateOrderTotalDiscountUsingPATCHWithHttpInfo(discountId: string, updateOrderTotalDiscountRequest: UpdateOrderTotalDiscountRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<OrderTotalDiscount>> {
+    public updateOrderTotalDiscountWithHttpInfo(discountId: string, updateOrderTotalDiscountRequest: UpdateOrderTotalDiscountRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<OrderTotalDiscount>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.updateOrderTotalDiscountUsingPATCH(discountId, updateOrderTotalDiscountRequest, updateMask, _config);
+        const requestContextPromise = this.requestFactory.updateOrderTotalDiscount(discountId, updateOrderTotalDiscountRequest, updateMask, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -5943,7 +5564,7 @@ export class ObservableOrderTotalDiscountsApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateOrderTotalDiscountUsingPATCHWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateOrderTotalDiscountWithHttpInfo(rsp)));
             }));
     }
 
@@ -5954,8 +5575,8 @@ export class ObservableOrderTotalDiscountsApi {
      * @param updateOrderTotalDiscountRequest request
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateOrderTotalDiscountUsingPATCH(discountId: string, updateOrderTotalDiscountRequest: UpdateOrderTotalDiscountRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<OrderTotalDiscount> {
-        return this.updateOrderTotalDiscountUsingPATCHWithHttpInfo(discountId, updateOrderTotalDiscountRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<OrderTotalDiscount>) => apiResponse.data));
+    public updateOrderTotalDiscount(discountId: string, updateOrderTotalDiscountRequest: UpdateOrderTotalDiscountRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<OrderTotalDiscount> {
+        return this.updateOrderTotalDiscountWithHttpInfo(discountId, updateOrderTotalDiscountRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<OrderTotalDiscount>) => apiResponse.data));
     }
 
 }
@@ -5981,10 +5602,10 @@ export class ObservableOrdersApi {
      * Create an Order Custom Field
      * @param createCustomFieldRequest customField
      */
-    public createOrderCustomFieldUsingPOSTWithHttpInfo(createCustomFieldRequest: CreateCustomFieldRequest, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldMetaData>> {
+    public createOrderCustomFieldWithHttpInfo(createCustomFieldRequest: CreateCustomFieldRequest, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldMetaData>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.createOrderCustomFieldUsingPOST(createCustomFieldRequest, _config);
+        const requestContextPromise = this.requestFactory.createOrderCustomField(createCustomFieldRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -5997,7 +5618,7 @@ export class ObservableOrdersApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createOrderCustomFieldUsingPOSTWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createOrderCustomFieldWithHttpInfo(rsp)));
             }));
     }
 
@@ -6006,8 +5627,8 @@ export class ObservableOrdersApi {
      * Create an Order Custom Field
      * @param createCustomFieldRequest customField
      */
-    public createOrderCustomFieldUsingPOST(createCustomFieldRequest: CreateCustomFieldRequest, _options?: ConfigurationOptions): Observable<CustomFieldMetaData> {
-        return this.createOrderCustomFieldUsingPOSTWithHttpInfo(createCustomFieldRequest, _options).pipe(map((apiResponse: HttpInfo<CustomFieldMetaData>) => apiResponse.data));
+    public createOrderCustomField(createCustomFieldRequest: CreateCustomFieldRequest, _options?: ConfigurationOptions): Observable<CustomFieldMetaData> {
+        return this.createOrderCustomFieldWithHttpInfo(createCustomFieldRequest, _options).pipe(map((apiResponse: HttpInfo<CustomFieldMetaData>) => apiResponse.data));
     }
 
     /**
@@ -6015,10 +5636,10 @@ export class ObservableOrdersApi {
      * Delete an Order Custom Field
      * @param customFieldId custom_field_id
      */
-    public deleteOrderCustomFieldUsingDELETEWithHttpInfo(customFieldId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public deleteOrderCustomFieldWithHttpInfo(customFieldId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.deleteOrderCustomFieldUsingDELETE(customFieldId, _config);
+        const requestContextPromise = this.requestFactory.deleteOrderCustomField(customFieldId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -6031,7 +5652,7 @@ export class ObservableOrdersApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteOrderCustomFieldUsingDELETEWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteOrderCustomFieldWithHttpInfo(rsp)));
             }));
     }
 
@@ -6040,18 +5661,18 @@ export class ObservableOrdersApi {
      * Delete an Order Custom Field
      * @param customFieldId custom_field_id
      */
-    public deleteOrderCustomFieldUsingDELETE(customFieldId: string, _options?: ConfigurationOptions): Observable<void> {
-        return this.deleteOrderCustomFieldUsingDELETEWithHttpInfo(customFieldId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public deleteOrderCustomField(customFieldId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteOrderCustomFieldWithHttpInfo(customFieldId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
      * Gets the custom fields for the Order object
      * Retrieve Order Custom Field Model
      */
-    public retrieveOrderCustomFieldModelUsingGETWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<ObjectModel>> {
+    public retrieveOrderCustomFieldModelWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<ObjectModel>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.retrieveOrderCustomFieldModelUsingGET(_config);
+        const requestContextPromise = this.requestFactory.retrieveOrderCustomFieldModel(_config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -6064,7 +5685,7 @@ export class ObservableOrdersApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.retrieveOrderCustomFieldModelUsingGETWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.retrieveOrderCustomFieldModelWithHttpInfo(rsp)));
             }));
     }
 
@@ -6072,8 +5693,8 @@ export class ObservableOrdersApi {
      * Gets the custom fields for the Order object
      * Retrieve Order Custom Field Model
      */
-    public retrieveOrderCustomFieldModelUsingGET(_options?: ConfigurationOptions): Observable<ObjectModel> {
-        return this.retrieveOrderCustomFieldModelUsingGETWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<ObjectModel>) => apiResponse.data));
+    public retrieveOrderCustomFieldModel(_options?: ConfigurationOptions): Observable<ObjectModel> {
+        return this.retrieveOrderCustomFieldModelWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<ObjectModel>) => apiResponse.data));
     }
 
     /**
@@ -6083,10 +5704,10 @@ export class ObservableOrdersApi {
      * @param updateCustomFieldMetaDataRequest request
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateOrderCustomFieldUsingPATCHWithHttpInfo(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldMetaData>> {
+    public updateOrderCustomFieldWithHttpInfo(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldMetaData>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.updateOrderCustomFieldUsingPATCH(customFieldId, updateCustomFieldMetaDataRequest, updateMask, _config);
+        const requestContextPromise = this.requestFactory.updateOrderCustomField(customFieldId, updateCustomFieldMetaDataRequest, updateMask, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -6099,7 +5720,7 @@ export class ObservableOrdersApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateOrderCustomFieldUsingPATCHWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateOrderCustomFieldWithHttpInfo(rsp)));
             }));
     }
 
@@ -6110,8 +5731,8 @@ export class ObservableOrdersApi {
      * @param updateCustomFieldMetaDataRequest request
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateOrderCustomFieldUsingPATCH(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<CustomFieldMetaData> {
-        return this.updateOrderCustomFieldUsingPATCHWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<CustomFieldMetaData>) => apiResponse.data));
+    public updateOrderCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<CustomFieldMetaData> {
+        return this.updateOrderCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<CustomFieldMetaData>) => apiResponse.data));
     }
 
 }
@@ -6137,10 +5758,10 @@ export class ObservablePaymentMethodConfigsApi {
      * Create Payment Method Configuration
      * @param createPaymentMethodConfigRequest request
      */
-    public createPaymentMethodConfigUsingPOSTWithHttpInfo(createPaymentMethodConfigRequest: CreatePaymentMethodConfigRequest, _options?: ConfigurationOptions): Observable<HttpInfo<PaymentMethodConfig>> {
+    public createPaymentMethodConfigWithHttpInfo(createPaymentMethodConfigRequest: CreatePaymentMethodConfigRequest, _options?: ConfigurationOptions): Observable<HttpInfo<PaymentMethodConfig>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.createPaymentMethodConfigUsingPOST(createPaymentMethodConfigRequest, _config);
+        const requestContextPromise = this.requestFactory.createPaymentMethodConfig(createPaymentMethodConfigRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -6153,7 +5774,7 @@ export class ObservablePaymentMethodConfigsApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createPaymentMethodConfigUsingPOSTWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createPaymentMethodConfigWithHttpInfo(rsp)));
             }));
     }
 
@@ -6162,39 +5783,38 @@ export class ObservablePaymentMethodConfigsApi {
      * Create Payment Method Configuration
      * @param createPaymentMethodConfigRequest request
      */
-    public createPaymentMethodConfigUsingPOST(createPaymentMethodConfigRequest: CreatePaymentMethodConfigRequest, _options?: ConfigurationOptions): Observable<PaymentMethodConfig> {
-        return this.createPaymentMethodConfigUsingPOSTWithHttpInfo(createPaymentMethodConfigRequest, _options).pipe(map((apiResponse: HttpInfo<PaymentMethodConfig>) => apiResponse.data));
+    public createPaymentMethodConfig(createPaymentMethodConfigRequest: CreatePaymentMethodConfigRequest, _options?: ConfigurationOptions): Observable<PaymentMethodConfig> {
+        return this.createPaymentMethodConfigWithHttpInfo(createPaymentMethodConfigRequest, _options).pipe(map((apiResponse: HttpInfo<PaymentMethodConfig>) => apiResponse.data));
     }
 
 }
 
-import { PipelinesApiRequestFactory, PipelinesApiResponseProcessor} from "../apis/PipelinesApi";
-export class ObservablePipelinesApi {
-    private requestFactory: PipelinesApiRequestFactory;
-    private responseProcessor: PipelinesApiResponseProcessor;
+import { ProductCategoriesApiRequestFactory, ProductCategoriesApiResponseProcessor} from "../apis/ProductCategoriesApi";
+export class ObservableProductCategoriesApi {
+    private requestFactory: ProductCategoriesApiRequestFactory;
+    private responseProcessor: ProductCategoriesApiResponseProcessor;
     private configuration: Configuration;
 
     public constructor(
         configuration: Configuration,
-        requestFactory?: PipelinesApiRequestFactory,
-        responseProcessor?: PipelinesApiResponseProcessor
+        requestFactory?: ProductCategoriesApiRequestFactory,
+        responseProcessor?: ProductCategoriesApiResponseProcessor
     ) {
         this.configuration = configuration;
-        this.requestFactory = requestFactory || new PipelinesApiRequestFactory(configuration);
-        this.responseProcessor = responseProcessor || new PipelinesApiResponseProcessor();
+        this.requestFactory = requestFactory || new ProductCategoriesApiRequestFactory(configuration);
+        this.responseProcessor = responseProcessor || new ProductCategoriesApiResponseProcessor();
     }
 
     /**
-     * Deletes a pipeline.
-     * Deletes a pipeline.
-     * @param id the pipeline identifier
-     * @param [allowCleanup] flag indicating whether cleanup is allowed, can be null
-     * @param [newStageId] the new stage identifier, can be null
+     * Assigns products to a Product Category
+     * Assign Products to a Product Category
+     * @param categoryId category_id
+     * @param assignProductsRequest request
      */
-    public _deleteWithHttpInfo(id: string, allowCleanup?: boolean, newStageId?: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public assignProductsToCategoryWithHttpInfo(categoryId: string, assignProductsRequest: AssignProductsRequest, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory._delete(id, allowCleanup, newStageId, _config);
+        const requestContextPromise = this.requestFactory.assignProductsToCategory(categoryId, assignProductsRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -6207,30 +5827,30 @@ export class ObservablePipelinesApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor._deleteWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.assignProductsToCategoryWithHttpInfo(rsp)));
             }));
     }
 
     /**
-     * Deletes a pipeline.
-     * Deletes a pipeline.
-     * @param id the pipeline identifier
-     * @param [allowCleanup] flag indicating whether cleanup is allowed, can be null
-     * @param [newStageId] the new stage identifier, can be null
+     * Assigns products to a Product Category
+     * Assign Products to a Product Category
+     * @param categoryId category_id
+     * @param assignProductsRequest request
      */
-    public _delete(id: string, allowCleanup?: boolean, newStageId?: string, _options?: ConfigurationOptions): Observable<void> {
-        return this._deleteWithHttpInfo(id, allowCleanup, newStageId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public assignProductsToCategory(categoryId: string, assignProductsRequest: AssignProductsRequest, _options?: ConfigurationOptions): Observable<void> {
+        return this.assignProductsToCategoryWithHttpInfo(categoryId, assignProductsRequest, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
-     * Creates a new entity.
-     * Creates a new entity.
-     * @param createPipelineRequest the create request
+     * Creates the product category image file and uploads it to the specified product category
+     * Create the product category image file
+     * @param categoryId category_id
+     * @param file File to upload
      */
-    public createWithHttpInfo(createPipelineRequest: CreatePipelineRequest, _options?: ConfigurationOptions): Observable<HttpInfo<Pipeline>> {
+    public createImageFileWithHttpInfo(categoryId: string, file: HttpFile, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.create(createPipelineRequest, _config);
+        const requestContextPromise = this.requestFactory.createImageFile(categoryId, file, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -6243,28 +5863,29 @@ export class ObservablePipelinesApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createImageFileWithHttpInfo(rsp)));
             }));
     }
 
     /**
-     * Creates a new entity.
-     * Creates a new entity.
-     * @param createPipelineRequest the create request
+     * Creates the product category image file and uploads it to the specified product category
+     * Create the product category image file
+     * @param categoryId category_id
+     * @param file File to upload
      */
-    public create(createPipelineRequest: CreatePipelineRequest, _options?: ConfigurationOptions): Observable<Pipeline> {
-        return this.createWithHttpInfo(createPipelineRequest, _options).pipe(map((apiResponse: HttpInfo<Pipeline>) => apiResponse.data));
+    public createImageFile(categoryId: string, file: HttpFile, _options?: ConfigurationOptions): Observable<void> {
+        return this.createImageFileWithHttpInfo(categoryId, file, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
-     * Retrieves an entity by its identifier.
-     * Retrieves an entity by its identifier.
-     * @param id the entity identifier
+     * Creates a new Product Category
+     * Create a Product Category
+     * @param [createProductCategoryRequest] productCategory
      */
-    public getWithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<Pipeline>> {
+    public createProductCategoryWithHttpInfo(createProductCategoryRequest?: CreateProductCategoryRequest, _options?: ConfigurationOptions): Observable<HttpInfo<ProductCategory>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.get(id, _config);
+        const requestContextPromise = this.requestFactory.createProductCategory(createProductCategoryRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -6277,32 +5898,28 @@ export class ObservablePipelinesApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createProductCategoryWithHttpInfo(rsp)));
             }));
     }
 
     /**
-     * Retrieves an entity by its identifier.
-     * Retrieves an entity by its identifier.
-     * @param id the entity identifier
+     * Creates a new Product Category
+     * Create a Product Category
+     * @param [createProductCategoryRequest] productCategory
      */
-    public get(id: string, _options?: ConfigurationOptions): Observable<Pipeline> {
-        return this.getWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<Pipeline>) => apiResponse.data));
+    public createProductCategory(createProductCategoryRequest?: CreateProductCategoryRequest, _options?: ConfigurationOptions): Observable<ProductCategory> {
+        return this.createProductCategoryWithHttpInfo(createProductCategoryRequest, _options).pipe(map((apiResponse: HttpInfo<ProductCategory>) => apiResponse.data));
     }
 
     /**
-     * Retrieves the count of deals for a specific pipeline.
-     * Retrieves the count of deals for a specific pipeline.
-     * @param id the pipeline identifier
-     * @param [filter]
-     * @param [pageToken]
-     * @param [orderBy]
-     * @param [pageSize]
+     * Deletes the image from the specified product category
+     * Delete the image from a product category
+     * @param categoryId category_id
      */
-    public getDealCountWithHttpInfo(id: string, filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: ConfigurationOptions): Observable<HttpInfo<number>> {
+    public deleteImageFileWithHttpInfo(categoryId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getDealCount(id, filter, pageToken, orderBy, pageSize, _config);
+        const requestContextPromise = this.requestFactory.deleteImageFile(categoryId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -6315,36 +5932,28 @@ export class ObservablePipelinesApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getDealCountWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteImageFileWithHttpInfo(rsp)));
             }));
     }
 
     /**
-     * Retrieves the count of deals for a specific pipeline.
-     * Retrieves the count of deals for a specific pipeline.
-     * @param id the pipeline identifier
-     * @param [filter]
-     * @param [pageToken]
-     * @param [orderBy]
-     * @param [pageSize]
+     * Deletes the image from the specified product category
+     * Delete the image from a product category
+     * @param categoryId category_id
      */
-    public getDealCount(id: string, filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: ConfigurationOptions): Observable<number> {
-        return this.getDealCountWithHttpInfo(id, filter, pageToken, orderBy, pageSize, _options).pipe(map((apiResponse: HttpInfo<number>) => apiResponse.data));
+    public deleteImageFile(categoryId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteImageFileWithHttpInfo(categoryId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
-     * Gets the outcome labels for a pipeline.
-     * Gets the outcome labels for a pipeline.
-     * @param id the pipeline identifier
-     * @param [filter]
-     * @param [pageToken]
-     * @param [orderBy]
-     * @param [pageSize]
+     * Deletes the specified Product Category, its sub-categories, and removes products from it
+     * Delete a Product Category
+     * @param categoryId category_id
      */
-    public getOutcomeLabelsWithHttpInfo(id: string, filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: ConfigurationOptions): Observable<HttpInfo<PipelineOutcomeLabelListResponse>> {
+    public deleteProductCategoryWithHttpInfo(categoryId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getOutcomeLabels(id, filter, pageToken, orderBy, pageSize, _config);
+        const requestContextPromise = this.requestFactory.deleteProductCategory(categoryId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -6357,35 +5966,28 @@ export class ObservablePipelinesApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getOutcomeLabelsWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteProductCategoryWithHttpInfo(rsp)));
             }));
     }
 
     /**
-     * Gets the outcome labels for a pipeline.
-     * Gets the outcome labels for a pipeline.
-     * @param id the pipeline identifier
-     * @param [filter]
-     * @param [pageToken]
-     * @param [orderBy]
-     * @param [pageSize]
+     * Deletes the specified Product Category, its sub-categories, and removes products from it
+     * Delete a Product Category
+     * @param categoryId category_id
      */
-    public getOutcomeLabels(id: string, filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: ConfigurationOptions): Observable<PipelineOutcomeLabelListResponse> {
-        return this.getOutcomeLabelsWithHttpInfo(id, filter, pageToken, orderBy, pageSize, _options).pipe(map((apiResponse: HttpInfo<PipelineOutcomeLabelListResponse>) => apiResponse.data));
+    public deleteProductCategory(categoryId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteProductCategoryWithHttpInfo(categoryId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
-     * Lists entities based on the provided ListCommand.
-     * Lists entities based on the provided ListCommand.
-     * @param [filter]
-     * @param [pageToken]
-     * @param [orderBy]
-     * @param [pageSize]
+     * Gets a single Product Category
+     * Get a Product Category
+     * @param categoryId category_id
      */
-    public listWithHttpInfo(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: ConfigurationOptions): Observable<HttpInfo<PipelineListResponse>> {
+    public getProductCategoryWithHttpInfo(categoryId: string, _options?: ConfigurationOptions): Observable<HttpInfo<ProductCategory>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.list(filter, pageToken, orderBy, pageSize, _config);
+        const requestContextPromise = this.requestFactory.getProductCategory(categoryId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -6398,35 +6000,31 @@ export class ObservablePipelinesApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getProductCategoryWithHttpInfo(rsp)));
             }));
     }
 
     /**
-     * Lists entities based on the provided ListCommand.
-     * Lists entities based on the provided ListCommand.
-     * @param [filter]
-     * @param [pageToken]
-     * @param [orderBy]
-     * @param [pageSize]
+     * Gets a single Product Category
+     * Get a Product Category
+     * @param categoryId category_id
      */
-    public list(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: ConfigurationOptions): Observable<PipelineListResponse> {
-        return this.listWithHttpInfo(filter, pageToken, orderBy, pageSize, _options).pipe(map((apiResponse: HttpInfo<PipelineListResponse>) => apiResponse.data));
+    public getProductCategory(categoryId: string, _options?: ConfigurationOptions): Observable<ProductCategory> {
+        return this.getProductCategoryWithHttpInfo(categoryId, _options).pipe(map((apiResponse: HttpInfo<ProductCategory>) => apiResponse.data));
     }
 
     /**
-     * Retrieves a list of stages for a specific pipeline.
-     * Retrieves a list of stages for a specific pipeline.
-     * @param id the pipeline identifier
-     * @param [filter]
-     * @param [pageToken]
-     * @param [orderBy]
-     * @param [pageSize]
+     * Retrieves a list of Product Categories
+     * List all Product Categories
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D29&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
      */
-    public listStagesWithHttpInfo(id: string, filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: ConfigurationOptions): Observable<HttpInfo<PipelineStageListResponse>> {
+    public listProductCategoriesWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListProductCategoriesResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.listStages(id, filter, pageToken, orderBy, pageSize, _config);
+        const requestContextPromise = this.requestFactory.listProductCategories(filter, orderBy, pageSize, pageToken, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -6439,35 +6037,33 @@ export class ObservablePipelinesApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listStagesWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listProductCategoriesWithHttpInfo(rsp)));
             }));
     }
 
     /**
-     * Retrieves a list of stages for a specific pipeline.
-     * Retrieves a list of stages for a specific pipeline.
-     * @param id the pipeline identifier
-     * @param [filter]
-     * @param [pageToken]
-     * @param [orderBy]
-     * @param [pageSize]
+     * Retrieves a list of Product Categories
+     * List all Product Categories
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D29&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
      */
-    public listStages(id: string, filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: ConfigurationOptions): Observable<PipelineStageListResponse> {
-        return this.listStagesWithHttpInfo(id, filter, pageToken, orderBy, pageSize, _options).pipe(map((apiResponse: HttpInfo<PipelineStageListResponse>) => apiResponse.data));
+    public listProductCategories(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListProductCategoriesResponse> {
+        return this.listProductCategoriesWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListProductCategoriesResponse>) => apiResponse.data));
     }
 
     /**
-     * Retrieves a list of pipeline summaries.
-     * Retrieves a list of pipeline summaries.
-     * @param [filter]
-     * @param [pageToken]
-     * @param [orderBy]
-     * @param [pageSize]
+     * Updates a single Product Category
+     * Update a Product Category
+     * @param categoryId category_id
+     * @param updateProductCategoryRequest request
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public listSummariesWithHttpInfo(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: ConfigurationOptions): Observable<HttpInfo<PipelineSummariesListResponse>> {
+    public updateProductCategoryWithHttpInfo(categoryId: string, updateProductCategoryRequest: UpdateProductCategoryRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<ProductCategory>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.listSummaries(filter, pageToken, orderBy, pageSize, _config);
+        const requestContextPromise = this.requestFactory.updateProductCategory(categoryId, updateProductCategoryRequest, updateMask, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -6480,94 +6076,19 @@ export class ObservablePipelinesApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listSummariesWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateProductCategoryWithHttpInfo(rsp)));
             }));
     }
 
     /**
-     * Retrieves a list of pipeline summaries.
-     * Retrieves a list of pipeline summaries.
-     * @param [filter]
-     * @param [pageToken]
-     * @param [orderBy]
-     * @param [pageSize]
+     * Updates a single Product Category
+     * Update a Product Category
+     * @param categoryId category_id
+     * @param updateProductCategoryRequest request
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public listSummaries(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: ConfigurationOptions): Observable<PipelineSummariesListResponse> {
-        return this.listSummariesWithHttpInfo(filter, pageToken, orderBy, pageSize, _options).pipe(map((apiResponse: HttpInfo<PipelineSummariesListResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Sets the outcome labels for a pipeline.
-     * Sets the outcome labels for a pipeline.
-     * @param id the pipeline identifier
-     * @param updateOutcomeLabelsRequest the request containing the new outcome labels
-     */
-    public setOutcomeLabelsWithHttpInfo(id: string, updateOutcomeLabelsRequest: UpdateOutcomeLabelsRequest, _options?: ConfigurationOptions): Observable<HttpInfo<PipelineOutcomeLabelListResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.setOutcomeLabels(id, updateOutcomeLabelsRequest, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.setOutcomeLabelsWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Sets the outcome labels for a pipeline.
-     * Sets the outcome labels for a pipeline.
-     * @param id the pipeline identifier
-     * @param updateOutcomeLabelsRequest the request containing the new outcome labels
-     */
-    public setOutcomeLabels(id: string, updateOutcomeLabelsRequest: UpdateOutcomeLabelsRequest, _options?: ConfigurationOptions): Observable<PipelineOutcomeLabelListResponse> {
-        return this.setOutcomeLabelsWithHttpInfo(id, updateOutcomeLabelsRequest, _options).pipe(map((apiResponse: HttpInfo<PipelineOutcomeLabelListResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Updates an existing entity.
-     * Updates an existing entity.
-     * @param id the entity identifier
-     * @param updateMask the fields to update
-     * @param updatePipelineRequest the update request
-     */
-    public updateWithHttpInfo(id: string, updateMask: Array<string>, updatePipelineRequest: UpdatePipelineRequest, _options?: ConfigurationOptions): Observable<HttpInfo<Pipeline>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.update(id, updateMask, updatePipelineRequest, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Updates an existing entity.
-     * Updates an existing entity.
-     * @param id the entity identifier
-     * @param updateMask the fields to update
-     * @param updatePipelineRequest the update request
-     */
-    public update(id: string, updateMask: Array<string>, updatePipelineRequest: UpdatePipelineRequest, _options?: ConfigurationOptions): Observable<Pipeline> {
-        return this.updateWithHttpInfo(id, updateMask, updatePipelineRequest, _options).pipe(map((apiResponse: HttpInfo<Pipeline>) => apiResponse.data));
+    public updateProductCategory(categoryId: string, updateProductCategoryRequest: UpdateProductCategoryRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<ProductCategory> {
+        return this.updateProductCategoryWithHttpInfo(categoryId, updateProductCategoryRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<ProductCategory>) => apiResponse.data));
     }
 
 }
@@ -6593,10 +6114,10 @@ export class ObservableProductDiscountsApi {
      * Create a Product Discount
      * @param createProductDiscountRequest request
      */
-    public createDiscountUsingPOST2WithHttpInfo(createProductDiscountRequest: CreateProductDiscountRequest, _options?: ConfigurationOptions): Observable<HttpInfo<ProductDiscount>> {
+    public createProductDiscountWithHttpInfo(createProductDiscountRequest: CreateProductDiscountRequest, _options?: ConfigurationOptions): Observable<HttpInfo<ProductDiscount>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.createDiscountUsingPOST2(createProductDiscountRequest, _config);
+        const requestContextPromise = this.requestFactory.createProductDiscount(createProductDiscountRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -6609,7 +6130,7 @@ export class ObservableProductDiscountsApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createDiscountUsingPOST2WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createProductDiscountWithHttpInfo(rsp)));
             }));
     }
 
@@ -6618,8 +6139,8 @@ export class ObservableProductDiscountsApi {
      * Create a Product Discount
      * @param createProductDiscountRequest request
      */
-    public createDiscountUsingPOST2(createProductDiscountRequest: CreateProductDiscountRequest, _options?: ConfigurationOptions): Observable<ProductDiscount> {
-        return this.createDiscountUsingPOST2WithHttpInfo(createProductDiscountRequest, _options).pipe(map((apiResponse: HttpInfo<ProductDiscount>) => apiResponse.data));
+    public createProductDiscount(createProductDiscountRequest: CreateProductDiscountRequest, _options?: ConfigurationOptions): Observable<ProductDiscount> {
+        return this.createProductDiscountWithHttpInfo(createProductDiscountRequest, _options).pipe(map((apiResponse: HttpInfo<ProductDiscount>) => apiResponse.data));
     }
 
     /**
@@ -6627,10 +6148,10 @@ export class ObservableProductDiscountsApi {
      * Delete a Product Discount
      * @param discountId discount_id
      */
-    public deleteDiscountUsingDELETE2WithHttpInfo(discountId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public deleteProductDiscountWithHttpInfo(discountId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.deleteDiscountUsingDELETE2(discountId, _config);
+        const requestContextPromise = this.requestFactory.deleteProductDiscount(discountId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -6643,7 +6164,7 @@ export class ObservableProductDiscountsApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteDiscountUsingDELETE2WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteProductDiscountWithHttpInfo(rsp)));
             }));
     }
 
@@ -6652,8 +6173,8 @@ export class ObservableProductDiscountsApi {
      * Delete a Product Discount
      * @param discountId discount_id
      */
-    public deleteDiscountUsingDELETE2(discountId: string, _options?: ConfigurationOptions): Observable<void> {
-        return this.deleteDiscountUsingDELETE2WithHttpInfo(discountId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public deleteProductDiscount(discountId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteProductDiscountWithHttpInfo(discountId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
@@ -6661,10 +6182,10 @@ export class ObservableProductDiscountsApi {
      * Retrieve a Product Discount
      * @param discountId discount_id
      */
-    public getDiscountUsingGET2WithHttpInfo(discountId: string, _options?: ConfigurationOptions): Observable<HttpInfo<ProductDiscount>> {
+    public getProductDiscountWithHttpInfo(discountId: string, _options?: ConfigurationOptions): Observable<HttpInfo<ProductDiscount>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getDiscountUsingGET2(discountId, _config);
+        const requestContextPromise = this.requestFactory.getProductDiscount(discountId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -6677,7 +6198,7 @@ export class ObservableProductDiscountsApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getDiscountUsingGET2WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getProductDiscountWithHttpInfo(rsp)));
             }));
     }
 
@@ -6686,22 +6207,22 @@ export class ObservableProductDiscountsApi {
      * Retrieve a Product Discount
      * @param discountId discount_id
      */
-    public getDiscountUsingGET2(discountId: string, _options?: ConfigurationOptions): Observable<ProductDiscount> {
-        return this.getDiscountUsingGET2WithHttpInfo(discountId, _options).pipe(map((apiResponse: HttpInfo<ProductDiscount>) => apiResponse.data));
+    public getProductDiscount(discountId: string, _options?: ConfigurationOptions): Observable<ProductDiscount> {
+        return this.getProductDiscountWithHttpInfo(discountId, _options).pipe(map((apiResponse: HttpInfo<ProductDiscount>) => apiResponse.data));
     }
 
     /**
      * Retrieves a list of Product Discounts
      * List all Product Discounts
      * @param [filter] Filter to apply, allowed fields are: - (Boolean) &#x60;apply_to_commissions&#x60; - (DiscountType) &#x60;discount_type&#x60;: AMOUNT or PERCENT - (Double) &#x60;discount_value&#x60; - (String) &#x60;product_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;apply_to_commissions%3D%3Dtrue&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT&#x60; - &#x60;filter&#x3D;discount_value%3D%3D10.0&#x60; - &#x60;filter&#x3D;product_id%3D%3D2&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT%3Bdiscount_value%3D%3D10.0&#x60; 
-     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;apply_to_commissions&#x60; - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60; - &#x60;product_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;apply_to_commissions&#x60; - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60; - &#x60;name&#x60; - &#x60;product_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listDiscountsUsingGETWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListProductDiscountsResponse>> {
+    public listProductDiscountsWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListProductDiscountsResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.listDiscountsUsingGET(filter, orderBy, pageSize, pageToken, _config);
+        const requestContextPromise = this.requestFactory.listProductDiscounts(filter, orderBy, pageSize, pageToken, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -6714,7 +6235,7 @@ export class ObservableProductDiscountsApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listDiscountsUsingGETWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listProductDiscountsWithHttpInfo(rsp)));
             }));
     }
 
@@ -6722,12 +6243,12 @@ export class ObservableProductDiscountsApi {
      * Retrieves a list of Product Discounts
      * List all Product Discounts
      * @param [filter] Filter to apply, allowed fields are: - (Boolean) &#x60;apply_to_commissions&#x60; - (DiscountType) &#x60;discount_type&#x60;: AMOUNT or PERCENT - (Double) &#x60;discount_value&#x60; - (String) &#x60;product_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;apply_to_commissions%3D%3Dtrue&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT&#x60; - &#x60;filter&#x3D;discount_value%3D%3D10.0&#x60; - &#x60;filter&#x3D;product_id%3D%3D2&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT%3Bdiscount_value%3D%3D10.0&#x60; 
-     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;apply_to_commissions&#x60; - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60; - &#x60;product_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;apply_to_commissions&#x60; - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60; - &#x60;name&#x60; - &#x60;product_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listDiscountsUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListProductDiscountsResponse> {
-        return this.listDiscountsUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListProductDiscountsResponse>) => apiResponse.data));
+    public listProductDiscounts(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListProductDiscountsResponse> {
+        return this.listProductDiscountsWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListProductDiscountsResponse>) => apiResponse.data));
     }
 
     /**
@@ -6737,10 +6258,10 @@ export class ObservableProductDiscountsApi {
      * @param updateProductDiscountRequest request
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateDiscountUsingPATCH2WithHttpInfo(discountId: string, updateProductDiscountRequest: UpdateProductDiscountRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<ProductDiscount>> {
+    public updateProductDiscountWithHttpInfo(discountId: string, updateProductDiscountRequest: UpdateProductDiscountRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<ProductDiscount>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.updateDiscountUsingPATCH2(discountId, updateProductDiscountRequest, updateMask, _config);
+        const requestContextPromise = this.requestFactory.updateProductDiscount(discountId, updateProductDiscountRequest, updateMask, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -6753,7 +6274,7 @@ export class ObservableProductDiscountsApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateDiscountUsingPATCH2WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateProductDiscountWithHttpInfo(rsp)));
             }));
     }
 
@@ -6764,8 +6285,8 @@ export class ObservableProductDiscountsApi {
      * @param updateProductDiscountRequest request
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateDiscountUsingPATCH2(discountId: string, updateProductDiscountRequest: UpdateProductDiscountRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<ProductDiscount> {
-        return this.updateDiscountUsingPATCH2WithHttpInfo(discountId, updateProductDiscountRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<ProductDiscount>) => apiResponse.data));
+    public updateProductDiscount(discountId: string, updateProductDiscountRequest: UpdateProductDiscountRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<ProductDiscount> {
+        return this.updateProductDiscountWithHttpInfo(discountId, updateProductDiscountRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<ProductDiscount>) => apiResponse.data));
     }
 
 }
@@ -6792,10 +6313,10 @@ export class ObservableProductInterestBundlesApi {
      * @param id id
      * @param addProductInterestRequest request
      */
-    public addProductInterestUsingPOSTWithHttpInfo(id: string, addProductInterestRequest: AddProductInterestRequest, _options?: ConfigurationOptions): Observable<HttpInfo<ProductInterest>> {
+    public addProductInterestWithHttpInfo(id: string, addProductInterestRequest: AddProductInterestRequest, _options?: ConfigurationOptions): Observable<HttpInfo<ProductInterest>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.addProductInterestUsingPOST(id, addProductInterestRequest, _config);
+        const requestContextPromise = this.requestFactory.addProductInterest(id, addProductInterestRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -6808,7 +6329,7 @@ export class ObservableProductInterestBundlesApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.addProductInterestUsingPOSTWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.addProductInterestWithHttpInfo(rsp)));
             }));
     }
 
@@ -6818,8 +6339,8 @@ export class ObservableProductInterestBundlesApi {
      * @param id id
      * @param addProductInterestRequest request
      */
-    public addProductInterestUsingPOST(id: string, addProductInterestRequest: AddProductInterestRequest, _options?: ConfigurationOptions): Observable<ProductInterest> {
-        return this.addProductInterestUsingPOSTWithHttpInfo(id, addProductInterestRequest, _options).pipe(map((apiResponse: HttpInfo<ProductInterest>) => apiResponse.data));
+    public addProductInterest(id: string, addProductInterestRequest: AddProductInterestRequest, _options?: ConfigurationOptions): Observable<ProductInterest> {
+        return this.addProductInterestWithHttpInfo(id, addProductInterestRequest, _options).pipe(map((apiResponse: HttpInfo<ProductInterest>) => apiResponse.data));
     }
 
     /**
@@ -6827,10 +6348,10 @@ export class ObservableProductInterestBundlesApi {
      * Create a Product Interest Bundle
      * @param createProductInterestBundleRequest createProductInterestBundleRequest
      */
-    public createProductInterestBundleUsingPOSTWithHttpInfo(createProductInterestBundleRequest: CreateProductInterestBundleRequest, _options?: ConfigurationOptions): Observable<HttpInfo<ProductInterestBundle>> {
+    public createProductInterestBundleWithHttpInfo(createProductInterestBundleRequest: CreateProductInterestBundleRequest, _options?: ConfigurationOptions): Observable<HttpInfo<ProductInterestBundle>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.createProductInterestBundleUsingPOST(createProductInterestBundleRequest, _config);
+        const requestContextPromise = this.requestFactory.createProductInterestBundle(createProductInterestBundleRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -6843,7 +6364,7 @@ export class ObservableProductInterestBundlesApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createProductInterestBundleUsingPOSTWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createProductInterestBundleWithHttpInfo(rsp)));
             }));
     }
 
@@ -6852,8 +6373,8 @@ export class ObservableProductInterestBundlesApi {
      * Create a Product Interest Bundle
      * @param createProductInterestBundleRequest createProductInterestBundleRequest
      */
-    public createProductInterestBundleUsingPOST(createProductInterestBundleRequest: CreateProductInterestBundleRequest, _options?: ConfigurationOptions): Observable<ProductInterestBundle> {
-        return this.createProductInterestBundleUsingPOSTWithHttpInfo(createProductInterestBundleRequest, _options).pipe(map((apiResponse: HttpInfo<ProductInterestBundle>) => apiResponse.data));
+    public createProductInterestBundle(createProductInterestBundleRequest: CreateProductInterestBundleRequest, _options?: ConfigurationOptions): Observable<ProductInterestBundle> {
+        return this.createProductInterestBundleWithHttpInfo(createProductInterestBundleRequest, _options).pipe(map((apiResponse: HttpInfo<ProductInterestBundle>) => apiResponse.data));
     }
 
     /**
@@ -6861,10 +6382,10 @@ export class ObservableProductInterestBundlesApi {
      * Delete a Product Interest Bundle
      * @param id id
      */
-    public deleteProductInterestBundleUsingDELETEWithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public deleteProductInterestBundleWithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.deleteProductInterestBundleUsingDELETE(id, _config);
+        const requestContextPromise = this.requestFactory.deleteProductInterestBundle(id, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -6877,7 +6398,7 @@ export class ObservableProductInterestBundlesApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteProductInterestBundleUsingDELETEWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteProductInterestBundleWithHttpInfo(rsp)));
             }));
     }
 
@@ -6886,8 +6407,8 @@ export class ObservableProductInterestBundlesApi {
      * Delete a Product Interest Bundle
      * @param id id
      */
-    public deleteProductInterestBundleUsingDELETE(id: string, _options?: ConfigurationOptions): Observable<void> {
-        return this.deleteProductInterestBundleUsingDELETEWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public deleteProductInterestBundle(id: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteProductInterestBundleWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
@@ -6895,10 +6416,10 @@ export class ObservableProductInterestBundlesApi {
      * Get a Product Interest Bundle
      * @param id id
      */
-    public getProductInterestBundleUsingGETWithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<ProductInterestBundle>> {
+    public getProductInterestBundleWithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<ProductInterestBundle>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getProductInterestBundleUsingGET(id, _config);
+        const requestContextPromise = this.requestFactory.getProductInterestBundle(id, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -6911,7 +6432,7 @@ export class ObservableProductInterestBundlesApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getProductInterestBundleUsingGETWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getProductInterestBundleWithHttpInfo(rsp)));
             }));
     }
 
@@ -6920,8 +6441,8 @@ export class ObservableProductInterestBundlesApi {
      * Get a Product Interest Bundle
      * @param id id
      */
-    public getProductInterestBundleUsingGET(id: string, _options?: ConfigurationOptions): Observable<ProductInterestBundle> {
-        return this.getProductInterestBundleUsingGETWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<ProductInterestBundle>) => apiResponse.data));
+    public getProductInterestBundle(id: string, _options?: ConfigurationOptions): Observable<ProductInterestBundle> {
+        return this.getProductInterestBundleWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<ProductInterestBundle>) => apiResponse.data));
     }
 
     /**
@@ -6932,10 +6453,10 @@ export class ObservableProductInterestBundlesApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listProductInterestBundlesUsingGETWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListProductInterestBundleResponse>> {
+    public listProductInterestBundlesWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListProductInterestBundleResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.listProductInterestBundlesUsingGET(filter, orderBy, pageSize, pageToken, _config);
+        const requestContextPromise = this.requestFactory.listProductInterestBundles(filter, orderBy, pageSize, pageToken, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -6948,7 +6469,7 @@ export class ObservableProductInterestBundlesApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listProductInterestBundlesUsingGETWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listProductInterestBundlesWithHttpInfo(rsp)));
             }));
     }
 
@@ -6960,8 +6481,8 @@ export class ObservableProductInterestBundlesApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listProductInterestBundlesUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListProductInterestBundleResponse> {
-        return this.listProductInterestBundlesUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListProductInterestBundleResponse>) => apiResponse.data));
+    public listProductInterestBundles(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListProductInterestBundleResponse> {
+        return this.listProductInterestBundlesWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListProductInterestBundleResponse>) => apiResponse.data));
     }
 
     /**
@@ -6970,10 +6491,10 @@ export class ObservableProductInterestBundlesApi {
      * @param id id
      * @param interestId interest_id
      */
-    public removeProductInterestUsingDELETEWithHttpInfo(id: string, interestId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public removeProductInterestWithHttpInfo(id: string, interestId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.removeProductInterestUsingDELETE(id, interestId, _config);
+        const requestContextPromise = this.requestFactory.removeProductInterest(id, interestId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -6986,7 +6507,7 @@ export class ObservableProductInterestBundlesApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.removeProductInterestUsingDELETEWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.removeProductInterestWithHttpInfo(rsp)));
             }));
     }
 
@@ -6996,46 +6517,8 @@ export class ObservableProductInterestBundlesApi {
      * @param id id
      * @param interestId interest_id
      */
-    public removeProductInterestUsingDELETE(id: string, interestId: string, _options?: ConfigurationOptions): Observable<void> {
-        return this.removeProductInterestUsingDELETEWithHttpInfo(id, interestId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
-    }
-
-    /**
-     * Updates an existing Product Interest Bundle.
-     * Update a Product Interest Bundle
-     * @param id id
-     * @param updateProductInterestBundleRequest updateProductInterestBundleRequest
-     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-     */
-    public updateProductInterestBundleUsingPATCHWithHttpInfo(id: string, updateProductInterestBundleRequest: UpdateProductInterestBundleRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<ProductInterestBundle>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.updateProductInterestBundleUsingPATCH(id, updateProductInterestBundleRequest, updateMask, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateProductInterestBundleUsingPATCHWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Updates an existing Product Interest Bundle.
-     * Update a Product Interest Bundle
-     * @param id id
-     * @param updateProductInterestBundleRequest updateProductInterestBundleRequest
-     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-     */
-    public updateProductInterestBundleUsingPATCH(id: string, updateProductInterestBundleRequest: UpdateProductInterestBundleRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<ProductInterestBundle> {
-        return this.updateProductInterestBundleUsingPATCHWithHttpInfo(id, updateProductInterestBundleRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<ProductInterestBundle>) => apiResponse.data));
+    public removeProductInterest(id: string, interestId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.removeProductInterestWithHttpInfo(id, interestId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
@@ -7046,10 +6529,10 @@ export class ObservableProductInterestBundlesApi {
      * @param updateProductInterestRequest updateProductInterestRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateProductInterestUsingPATCHWithHttpInfo(id: string, interestId: string, updateProductInterestRequest: UpdateProductInterestRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<ProductInterest>> {
+    public updateProductInterestWithHttpInfo(id: string, interestId: string, updateProductInterestRequest: UpdateProductInterestRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<ProductInterest>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.updateProductInterestUsingPATCH(id, interestId, updateProductInterestRequest, updateMask, _config);
+        const requestContextPromise = this.requestFactory.updateProductInterest(id, interestId, updateProductInterestRequest, updateMask, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -7062,7 +6545,7 @@ export class ObservableProductInterestBundlesApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateProductInterestUsingPATCHWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateProductInterestWithHttpInfo(rsp)));
             }));
     }
 
@@ -7074,8 +6557,350 @@ export class ObservableProductInterestBundlesApi {
      * @param updateProductInterestRequest updateProductInterestRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateProductInterestUsingPATCH(id: string, interestId: string, updateProductInterestRequest: UpdateProductInterestRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<ProductInterest> {
-        return this.updateProductInterestUsingPATCHWithHttpInfo(id, interestId, updateProductInterestRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<ProductInterest>) => apiResponse.data));
+    public updateProductInterest(id: string, interestId: string, updateProductInterestRequest: UpdateProductInterestRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<ProductInterest> {
+        return this.updateProductInterestWithHttpInfo(id, interestId, updateProductInterestRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<ProductInterest>) => apiResponse.data));
+    }
+
+    /**
+     * Updates an existing Product Interest Bundle.
+     * Update a Product Interest Bundle
+     * @param id id
+     * @param updateProductInterestBundleRequest updateProductInterestBundleRequest
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateProductInterestBundleWithHttpInfo(id: string, updateProductInterestBundleRequest: UpdateProductInterestBundleRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<ProductInterestBundle>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.updateProductInterestBundle(id, updateProductInterestBundleRequest, updateMask, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateProductInterestBundleWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Updates an existing Product Interest Bundle.
+     * Update a Product Interest Bundle
+     * @param id id
+     * @param updateProductInterestBundleRequest updateProductInterestBundleRequest
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateProductInterestBundle(id: string, updateProductInterestBundleRequest: UpdateProductInterestBundleRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<ProductInterestBundle> {
+        return this.updateProductInterestBundleWithHttpInfo(id, updateProductInterestBundleRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<ProductInterestBundle>) => apiResponse.data));
+    }
+
+}
+
+import { ProductsApiRequestFactory, ProductsApiResponseProcessor} from "../apis/ProductsApi";
+export class ObservableProductsApi {
+    private requestFactory: ProductsApiRequestFactory;
+    private responseProcessor: ProductsApiResponseProcessor;
+    private configuration: Configuration;
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: ProductsApiRequestFactory,
+        responseProcessor?: ProductsApiResponseProcessor
+    ) {
+        this.configuration = configuration;
+        this.requestFactory = requestFactory || new ProductsApiRequestFactory(configuration);
+        this.responseProcessor = responseProcessor || new ProductsApiResponseProcessor();
+    }
+
+    /**
+     * Increase or decrease the quantity of the Product
+     * Adjust Inventory of a Product
+     * @param productId product_id
+     * @param updateProductInventoryRequest updateProductInventoryRequest
+     */
+    public adjustInventoryWithHttpInfo(productId: string, updateProductInventoryRequest: UpdateProductInventoryRequest, _options?: ConfigurationOptions): Observable<HttpInfo<RestV2Product>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.adjustInventory(productId, updateProductInventoryRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.adjustInventoryWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Increase or decrease the quantity of the Product
+     * Adjust Inventory of a Product
+     * @param productId product_id
+     * @param updateProductInventoryRequest updateProductInventoryRequest
+     */
+    public adjustInventory(productId: string, updateProductInventoryRequest: UpdateProductInventoryRequest, _options?: ConfigurationOptions): Observable<RestV2Product> {
+        return this.adjustInventoryWithHttpInfo(productId, updateProductInventoryRequest, _options).pipe(map((apiResponse: HttpInfo<RestV2Product>) => apiResponse.data));
+    }
+
+    /**
+     * Creates a new product
+     * Create a Product
+     * @param createProductRequest createProductRequest
+     */
+    public createProductWithHttpInfo(createProductRequest: CreateProductRequest, _options?: ConfigurationOptions): Observable<HttpInfo<RestV2Product>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.createProduct(createProductRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createProductWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Creates a new product
+     * Create a Product
+     * @param createProductRequest createProductRequest
+     */
+    public createProduct(createProductRequest: CreateProductRequest, _options?: ConfigurationOptions): Observable<RestV2Product> {
+        return this.createProductWithHttpInfo(createProductRequest, _options).pipe(map((apiResponse: HttpInfo<RestV2Product>) => apiResponse.data));
+    }
+
+    /**
+     * Creates the Product Image file and uploads it to the specified Product
+     * Create the Product Image
+     * @param productId product_id
+     * @param file File to upload
+     */
+    public createProductImageWithHttpInfo(productId: string, file: HttpFile, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.createProductImage(productId, file, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createProductImageWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Creates the Product Image file and uploads it to the specified Product
+     * Create the Product Image
+     * @param productId product_id
+     * @param file File to upload
+     */
+    public createProductImage(productId: string, file: HttpFile, _options?: ConfigurationOptions): Observable<void> {
+        return this.createProductImageWithHttpInfo(productId, file, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+    /**
+     * Deletes a single product
+     * Delete a Product
+     * @param productId product_id
+     */
+    public deleteProductWithHttpInfo(productId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.deleteProduct(productId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteProductWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Deletes a single product
+     * Delete a Product
+     * @param productId product_id
+     */
+    public deleteProduct(productId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteProductWithHttpInfo(productId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+    /**
+     * Deletes the Product Image from the specified Product
+     * Delete the Product Image
+     * @param productId product_id
+     */
+    public deleteProductImageWithHttpInfo(productId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.deleteProductImage(productId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteProductImageWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Deletes the Product Image from the specified Product
+     * Delete the Product Image
+     * @param productId product_id
+     */
+    public deleteProductImage(productId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteProductImageWithHttpInfo(productId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+    /**
+     * Gets a single Product
+     * Get a Product
+     * @param productId product_id
+     */
+    public getProductWithHttpInfo(productId: string, _options?: ConfigurationOptions): Observable<HttpInfo<RestV2Product>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getProduct(productId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getProductWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Gets a single Product
+     * Get a Product
+     * @param productId product_id
+     */
+    public getProduct(productId: string, _options?: ConfigurationOptions): Observable<RestV2Product> {
+        return this.getProductWithHttpInfo(productId, _options).pipe(map((apiResponse: HttpInfo<RestV2Product>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves a list of Products
+     * List Products
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;name&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;name&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listProductsWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListProductsResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.listProducts(filter, orderBy, pageSize, pageToken, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listProductsWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a list of Products
+     * List Products
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;name&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;name&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listProducts(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListProductsResponse> {
+        return this.listProductsWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListProductsResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Updates a product
+     * Update a Product
+     * @param productId product_id
+     * @param updateProductRequest updateProductRequest
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateProductWithHttpInfo(productId: string, updateProductRequest: UpdateProductRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<RestV2Product>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.updateProduct(productId, updateProductRequest, updateMask, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateProductWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Updates a product
+     * Update a Product
+     * @param productId product_id
+     * @param updateProductRequest updateProductRequest
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateProduct(productId: string, updateProductRequest: UpdateProductRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<RestV2Product> {
+        return this.updateProductWithHttpInfo(productId, updateProductRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<RestV2Product>) => apiResponse.data));
     }
 
 }
@@ -7104,10 +6929,10 @@ export class ObservableReportingApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listReportsUsingGETWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListReportsResponse>> {
+    public listReportsWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListReportsResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.listReportsUsingGET(filter, orderBy, pageSize, pageToken, _config);
+        const requestContextPromise = this.requestFactory.listReports(filter, orderBy, pageSize, pageToken, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -7120,7 +6945,7 @@ export class ObservableReportingApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listReportsUsingGETWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listReportsWithHttpInfo(rsp)));
             }));
     }
 
@@ -7132,8 +6957,8 @@ export class ObservableReportingApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listReportsUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListReportsResponse> {
-        return this.listReportsUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListReportsResponse>) => apiResponse.data));
+    public listReports(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListReportsResponse> {
+        return this.listReportsWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListReportsResponse>) => apiResponse.data));
     }
 
     /**
@@ -7141,10 +6966,10 @@ export class ObservableReportingApi {
      * Retrieve Report
      * @param reportId report_id
      */
-    public retrieveReportUsingGETWithHttpInfo(reportId: string, _options?: ConfigurationOptions): Observable<HttpInfo<Report>> {
+    public retrieveReportWithHttpInfo(reportId: string, _options?: ConfigurationOptions): Observable<HttpInfo<Report>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.retrieveReportUsingGET(reportId, _config);
+        const requestContextPromise = this.requestFactory.retrieveReport(reportId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -7157,7 +6982,7 @@ export class ObservableReportingApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.retrieveReportUsingGETWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.retrieveReportWithHttpInfo(rsp)));
             }));
     }
 
@@ -7166,8 +6991,8 @@ export class ObservableReportingApi {
      * Retrieve Report
      * @param reportId report_id
      */
-    public retrieveReportUsingGET(reportId: string, _options?: ConfigurationOptions): Observable<Report> {
-        return this.retrieveReportUsingGETWithHttpInfo(reportId, _options).pipe(map((apiResponse: HttpInfo<Report>) => apiResponse.data));
+    public retrieveReport(reportId: string, _options?: ConfigurationOptions): Observable<Report> {
+        return this.retrieveReportWithHttpInfo(reportId, _options).pipe(map((apiResponse: HttpInfo<Report>) => apiResponse.data));
     }
 
     /**
@@ -7179,10 +7004,10 @@ export class ObservableReportingApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Representation of the last row retrieved from the previous page. An empty value implies a request for the first page.
      */
-    public runReportUsingPOSTWithHttpInfo(reportId: string, fields?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ReportExecutionResult>> {
+    public runReportWithHttpInfo(reportId: string, fields?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ReportExecutionResult>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.runReportUsingPOST(reportId, fields, orderBy, pageSize, pageToken, _config);
+        const requestContextPromise = this.requestFactory.runReport(reportId, fields, orderBy, pageSize, pageToken, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -7195,7 +7020,7 @@ export class ObservableReportingApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.runReportUsingPOSTWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.runReportWithHttpInfo(rsp)));
             }));
     }
 
@@ -7208,8 +7033,8 @@ export class ObservableReportingApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Representation of the last row retrieved from the previous page. An empty value implies a request for the first page.
      */
-    public runReportUsingPOST(reportId: string, fields?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ReportExecutionResult> {
-        return this.runReportUsingPOSTWithHttpInfo(reportId, fields, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ReportExecutionResult>) => apiResponse.data));
+    public runReport(reportId: string, fields?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ReportExecutionResult> {
+        return this.runReportWithHttpInfo(reportId, fields, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ReportExecutionResult>) => apiResponse.data));
     }
 
 }
@@ -7235,10 +7060,10 @@ export class ObservableSalesApi {
      * Set default Merchant Account
      * @param id id
      */
-    public setMerchantGatewayAsDefaultUsingPOSTWithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public setMerchantGatewayAsDefaultWithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.setMerchantGatewayAsDefaultUsingPOST(id, _config);
+        const requestContextPromise = this.requestFactory.setMerchantGatewayAsDefault(id, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -7251,7 +7076,7 @@ export class ObservableSalesApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.setMerchantGatewayAsDefaultUsingPOSTWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.setMerchantGatewayAsDefaultWithHttpInfo(rsp)));
             }));
     }
 
@@ -7260,8 +7085,8 @@ export class ObservableSalesApi {
      * Set default Merchant Account
      * @param id id
      */
-    public setMerchantGatewayAsDefaultUsingPOST(id: string, _options?: ConfigurationOptions): Observable<void> {
-        return this.setMerchantGatewayAsDefaultUsingPOSTWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public setMerchantGatewayAsDefault(id: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.setMerchantGatewayAsDefaultWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
 }
@@ -7287,10 +7112,10 @@ export class ObservableSettingsApi {
      * Get Application Configuration
      * @param [fields] By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query.
      */
-    public getApplicationConfigurationsUsingGETWithHttpInfo(fields?: Array<'AFFILIATE' | 'APPOINTMENT' | 'CONTACT' | 'ECOMMERCE' | 'EMAIL' | 'FORMS' | 'FULFILLMENT' | 'INVOICE' | 'NOTE' | 'OPPORTUNITY' | 'TASK' | 'TEMPLATE'>, _options?: ConfigurationOptions): Observable<HttpInfo<GetSettingsResponse>> {
+    public getApplicationConfigurationsWithHttpInfo(fields?: Array<'AFFILIATE' | 'APPOINTMENT' | 'CONTACT' | 'ECOMMERCE' | 'EMAIL' | 'FORMS' | 'FULFILLMENT' | 'INVOICE' | 'NOTE' | 'OPPORTUNITY' | 'TASK' | 'TEMPLATE'>, _options?: ConfigurationOptions): Observable<HttpInfo<GetSettingsResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getApplicationConfigurationsUsingGET(fields, _config);
+        const requestContextPromise = this.requestFactory.getApplicationConfigurations(fields, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -7303,7 +7128,7 @@ export class ObservableSettingsApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getApplicationConfigurationsUsingGETWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getApplicationConfigurationsWithHttpInfo(rsp)));
             }));
     }
 
@@ -7312,18 +7137,18 @@ export class ObservableSettingsApi {
      * Get Application Configuration
      * @param [fields] By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query.
      */
-    public getApplicationConfigurationsUsingGET(fields?: Array<'AFFILIATE' | 'APPOINTMENT' | 'CONTACT' | 'ECOMMERCE' | 'EMAIL' | 'FORMS' | 'FULFILLMENT' | 'INVOICE' | 'NOTE' | 'OPPORTUNITY' | 'TASK' | 'TEMPLATE'>, _options?: ConfigurationOptions): Observable<GetSettingsResponse> {
-        return this.getApplicationConfigurationsUsingGETWithHttpInfo(fields, _options).pipe(map((apiResponse: HttpInfo<GetSettingsResponse>) => apiResponse.data));
+    public getApplicationConfigurations(fields?: Array<'AFFILIATE' | 'APPOINTMENT' | 'CONTACT' | 'ECOMMERCE' | 'EMAIL' | 'FORMS' | 'FULFILLMENT' | 'INVOICE' | 'NOTE' | 'OPPORTUNITY' | 'TASK' | 'TEMPLATE'>, _options?: ConfigurationOptions): Observable<GetSettingsResponse> {
+        return this.getApplicationConfigurationsWithHttpInfo(fields, _options).pipe(map((apiResponse: HttpInfo<GetSettingsResponse>) => apiResponse.data));
     }
 
     /**
      * Gets a list of Contact Option types.
      * Get Contact Option types
      */
-    public getContactOptionTypesUsingGET1WithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<GetContactOptionTypesResponse>> {
+    public getContactOptionTypesWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<GetContactOptionTypesResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getContactOptionTypesUsingGET1(_config);
+        const requestContextPromise = this.requestFactory.getContactOptionTypes(_config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -7336,7 +7161,7 @@ export class ObservableSettingsApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getContactOptionTypesUsingGET1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getContactOptionTypesWithHttpInfo(rsp)));
             }));
     }
 
@@ -7344,18 +7169,18 @@ export class ObservableSettingsApi {
      * Gets a list of Contact Option types.
      * Get Contact Option types
      */
-    public getContactOptionTypesUsingGET1(_options?: ConfigurationOptions): Observable<GetContactOptionTypesResponse> {
-        return this.getContactOptionTypesUsingGET1WithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<GetContactOptionTypesResponse>) => apiResponse.data));
+    public getContactOptionTypes(_options?: ConfigurationOptions): Observable<GetContactOptionTypesResponse> {
+        return this.getContactOptionTypesWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<GetContactOptionTypesResponse>) => apiResponse.data));
     }
 
     /**
      * Check if the application is enabled or not
      * Get Application Status
      */
-    public isApplicationEnabledUsingGETWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<GetApplicationEnabledStatusResponse>> {
+    public isApplicationEnabledWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<GetApplicationEnabledStatusResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.isApplicationEnabledUsingGET(_config);
+        const requestContextPromise = this.requestFactory.isApplicationEnabled(_config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -7368,7 +7193,7 @@ export class ObservableSettingsApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.isApplicationEnabledUsingGETWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.isApplicationEnabledWithHttpInfo(rsp)));
             }));
     }
 
@@ -7376,8 +7201,58 @@ export class ObservableSettingsApi {
      * Check if the application is enabled or not
      * Get Application Status
      */
-    public isApplicationEnabledUsingGET(_options?: ConfigurationOptions): Observable<GetApplicationEnabledStatusResponse> {
-        return this.isApplicationEnabledUsingGETWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<GetApplicationEnabledStatusResponse>) => apiResponse.data));
+    public isApplicationEnabled(_options?: ConfigurationOptions): Observable<GetApplicationEnabledStatusResponse> {
+        return this.isApplicationEnabledWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<GetApplicationEnabledStatusResponse>) => apiResponse.data));
+    }
+
+}
+
+import { ShippingApiRequestFactory, ShippingApiResponseProcessor} from "../apis/ShippingApi";
+export class ObservableShippingApi {
+    private requestFactory: ShippingApiRequestFactory;
+    private responseProcessor: ShippingApiResponseProcessor;
+    private configuration: Configuration;
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: ShippingApiRequestFactory,
+        responseProcessor?: ShippingApiResponseProcessor
+    ) {
+        this.configuration = configuration;
+        this.requestFactory = requestFactory || new ShippingApiRequestFactory(configuration);
+        this.responseProcessor = responseProcessor || new ShippingApiResponseProcessor();
+    }
+
+    /**
+     * Retrieves a list of Shipping methods
+     * List Shipping methods
+     */
+    public listShippingMethodsWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<ListRestShippingMethodsResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.listShippingMethods(_config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listShippingMethodsWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a list of Shipping methods
+     * List Shipping methods
+     */
+    public listShippingMethods(_options?: ConfigurationOptions): Observable<ListRestShippingMethodsResponse> {
+        return this.listShippingMethodsWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<ListRestShippingMethodsResponse>) => apiResponse.data));
     }
 
 }
@@ -7403,10 +7278,10 @@ export class ObservableShippingDiscountsApi {
      * Create a Shipping Discount
      * @param createShippingDiscountRequest request
      */
-    public createDiscountUsingPOST3WithHttpInfo(createShippingDiscountRequest: CreateShippingDiscountRequest, _options?: ConfigurationOptions): Observable<HttpInfo<ShippingDiscount>> {
+    public createShippingDiscountWithHttpInfo(createShippingDiscountRequest: CreateShippingDiscountRequest, _options?: ConfigurationOptions): Observable<HttpInfo<ShippingDiscount>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.createDiscountUsingPOST3(createShippingDiscountRequest, _config);
+        const requestContextPromise = this.requestFactory.createShippingDiscount(createShippingDiscountRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -7419,7 +7294,7 @@ export class ObservableShippingDiscountsApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createDiscountUsingPOST3WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createShippingDiscountWithHttpInfo(rsp)));
             }));
     }
 
@@ -7428,8 +7303,8 @@ export class ObservableShippingDiscountsApi {
      * Create a Shipping Discount
      * @param createShippingDiscountRequest request
      */
-    public createDiscountUsingPOST3(createShippingDiscountRequest: CreateShippingDiscountRequest, _options?: ConfigurationOptions): Observable<ShippingDiscount> {
-        return this.createDiscountUsingPOST3WithHttpInfo(createShippingDiscountRequest, _options).pipe(map((apiResponse: HttpInfo<ShippingDiscount>) => apiResponse.data));
+    public createShippingDiscount(createShippingDiscountRequest: CreateShippingDiscountRequest, _options?: ConfigurationOptions): Observable<ShippingDiscount> {
+        return this.createShippingDiscountWithHttpInfo(createShippingDiscountRequest, _options).pipe(map((apiResponse: HttpInfo<ShippingDiscount>) => apiResponse.data));
     }
 
     /**
@@ -7437,10 +7312,10 @@ export class ObservableShippingDiscountsApi {
      * Delete a Shipping Discount
      * @param discountId discount_id
      */
-    public deleteDiscountUsingDELETE3WithHttpInfo(discountId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public deleteShippingDiscountWithHttpInfo(discountId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.deleteDiscountUsingDELETE3(discountId, _config);
+        const requestContextPromise = this.requestFactory.deleteShippingDiscount(discountId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -7453,7 +7328,7 @@ export class ObservableShippingDiscountsApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteDiscountUsingDELETE3WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteShippingDiscountWithHttpInfo(rsp)));
             }));
     }
 
@@ -7462,8 +7337,8 @@ export class ObservableShippingDiscountsApi {
      * Delete a Shipping Discount
      * @param discountId discount_id
      */
-    public deleteDiscountUsingDELETE3(discountId: string, _options?: ConfigurationOptions): Observable<void> {
-        return this.deleteDiscountUsingDELETE3WithHttpInfo(discountId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public deleteShippingDiscount(discountId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteShippingDiscountWithHttpInfo(discountId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
@@ -7471,10 +7346,10 @@ export class ObservableShippingDiscountsApi {
      * Retrieve a Shipping Discount
      * @param discountId discount_id
      */
-    public getDiscountUsingGET3WithHttpInfo(discountId: string, _options?: ConfigurationOptions): Observable<HttpInfo<ShippingDiscount>> {
+    public getShippingDiscountWithHttpInfo(discountId: string, _options?: ConfigurationOptions): Observable<HttpInfo<ShippingDiscount>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getDiscountUsingGET3(discountId, _config);
+        const requestContextPromise = this.requestFactory.getShippingDiscount(discountId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -7487,7 +7362,7 @@ export class ObservableShippingDiscountsApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getDiscountUsingGET3WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getShippingDiscountWithHttpInfo(rsp)));
             }));
     }
 
@@ -7496,22 +7371,22 @@ export class ObservableShippingDiscountsApi {
      * Retrieve a Shipping Discount
      * @param discountId discount_id
      */
-    public getDiscountUsingGET3(discountId: string, _options?: ConfigurationOptions): Observable<ShippingDiscount> {
-        return this.getDiscountUsingGET3WithHttpInfo(discountId, _options).pipe(map((apiResponse: HttpInfo<ShippingDiscount>) => apiResponse.data));
+    public getShippingDiscount(discountId: string, _options?: ConfigurationOptions): Observable<ShippingDiscount> {
+        return this.getShippingDiscountWithHttpInfo(discountId, _options).pipe(map((apiResponse: HttpInfo<ShippingDiscount>) => apiResponse.data));
     }
 
     /**
      * Retrieves a list of Shipping Discounts
      * List all Shipping Discounts
      * @param [filter] Filter to apply, allowed fields are: - (DiscountType) &#x60;discount_type&#x60;: AMOUNT or PERCENT - (Double) &#x60;discount_value&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT&#x60; - &#x60;filter&#x3D;discount_value%3D%3D4.5&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT%3Bdiscount_value%3D%3D4.5&#x60; 
-     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60; - &#x60;name&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listDiscountsUsingGET1WithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListShippingDiscountsResponse>> {
+    public listShippingDiscountsWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListShippingDiscountsResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.listDiscountsUsingGET1(filter, orderBy, pageSize, pageToken, _config);
+        const requestContextPromise = this.requestFactory.listShippingDiscounts(filter, orderBy, pageSize, pageToken, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -7524,7 +7399,7 @@ export class ObservableShippingDiscountsApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listDiscountsUsingGET1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listShippingDiscountsWithHttpInfo(rsp)));
             }));
     }
 
@@ -7532,12 +7407,12 @@ export class ObservableShippingDiscountsApi {
      * Retrieves a list of Shipping Discounts
      * List all Shipping Discounts
      * @param [filter] Filter to apply, allowed fields are: - (DiscountType) &#x60;discount_type&#x60;: AMOUNT or PERCENT - (Double) &#x60;discount_value&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT&#x60; - &#x60;filter&#x3D;discount_value%3D%3D4.5&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT%3Bdiscount_value%3D%3D4.5&#x60; 
-     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60; - &#x60;name&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listDiscountsUsingGET1(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListShippingDiscountsResponse> {
-        return this.listDiscountsUsingGET1WithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListShippingDiscountsResponse>) => apiResponse.data));
+    public listShippingDiscounts(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListShippingDiscountsResponse> {
+        return this.listShippingDiscountsWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListShippingDiscountsResponse>) => apiResponse.data));
     }
 
     /**
@@ -7547,10 +7422,10 @@ export class ObservableShippingDiscountsApi {
      * @param updateShippingDiscountRequest request
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateDiscountUsingPATCH3WithHttpInfo(discountId: string, updateShippingDiscountRequest: UpdateShippingDiscountRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<ShippingDiscount>> {
+    public updateShippingDiscountWithHttpInfo(discountId: string, updateShippingDiscountRequest: UpdateShippingDiscountRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<ShippingDiscount>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.updateDiscountUsingPATCH3(discountId, updateShippingDiscountRequest, updateMask, _config);
+        const requestContextPromise = this.requestFactory.updateShippingDiscount(discountId, updateShippingDiscountRequest, updateMask, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -7563,7 +7438,7 @@ export class ObservableShippingDiscountsApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateDiscountUsingPATCH3WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateShippingDiscountWithHttpInfo(rsp)));
             }));
     }
 
@@ -7574,37 +7449,38 @@ export class ObservableShippingDiscountsApi {
      * @param updateShippingDiscountRequest request
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateDiscountUsingPATCH3(discountId: string, updateShippingDiscountRequest: UpdateShippingDiscountRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<ShippingDiscount> {
-        return this.updateDiscountUsingPATCH3WithHttpInfo(discountId, updateShippingDiscountRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<ShippingDiscount>) => apiResponse.data));
+    public updateShippingDiscount(discountId: string, updateShippingDiscountRequest: UpdateShippingDiscountRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<ShippingDiscount> {
+        return this.updateShippingDiscountWithHttpInfo(discountId, updateShippingDiscountRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<ShippingDiscount>) => apiResponse.data));
     }
 
 }
 
-import { StagesApiRequestFactory, StagesApiResponseProcessor} from "../apis/StagesApi";
-export class ObservableStagesApi {
-    private requestFactory: StagesApiRequestFactory;
-    private responseProcessor: StagesApiResponseProcessor;
+import { SubscriptionPlansApiRequestFactory, SubscriptionPlansApiResponseProcessor} from "../apis/SubscriptionPlansApi";
+export class ObservableSubscriptionPlansApi {
+    private requestFactory: SubscriptionPlansApiRequestFactory;
+    private responseProcessor: SubscriptionPlansApiResponseProcessor;
     private configuration: Configuration;
 
     public constructor(
         configuration: Configuration,
-        requestFactory?: StagesApiRequestFactory,
-        responseProcessor?: StagesApiResponseProcessor
+        requestFactory?: SubscriptionPlansApiRequestFactory,
+        responseProcessor?: SubscriptionPlansApiResponseProcessor
     ) {
         this.configuration = configuration;
-        this.requestFactory = requestFactory || new StagesApiRequestFactory(configuration);
-        this.responseProcessor = responseProcessor || new StagesApiResponseProcessor();
+        this.requestFactory = requestFactory || new SubscriptionPlansApiRequestFactory(configuration);
+        this.responseProcessor = responseProcessor || new SubscriptionPlansApiResponseProcessor();
     }
 
     /**
-     * Counts the number of deals in a specific stage.
-     * Counts the number of deals in a specific stage.
-     * @param id the stage identifier
+     * Creates a Subscription Plan
+     * Create Subscription Plan
+     * @param productId product_id
+     * @param createSubscriptionPlanRequest createSubscriptionPlanRequest
      */
-    public countDealsInStageWithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<number>> {
+    public createSubscriptionPlansWithHttpInfo(productId: string, createSubscriptionPlanRequest: CreateSubscriptionPlanRequest, _options?: ConfigurationOptions): Observable<HttpInfo<SubscriptionPlan>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.countDealsInStage(id, _config);
+        const requestContextPromise = this.requestFactory.createSubscriptionPlans(productId, createSubscriptionPlanRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -7617,28 +7493,30 @@ export class ObservableStagesApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.countDealsInStageWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createSubscriptionPlansWithHttpInfo(rsp)));
             }));
     }
 
     /**
-     * Counts the number of deals in a specific stage.
-     * Counts the number of deals in a specific stage.
-     * @param id the stage identifier
+     * Creates a Subscription Plan
+     * Create Subscription Plan
+     * @param productId product_id
+     * @param createSubscriptionPlanRequest createSubscriptionPlanRequest
      */
-    public countDealsInStage(id: string, _options?: ConfigurationOptions): Observable<number> {
-        return this.countDealsInStageWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<number>) => apiResponse.data));
+    public createSubscriptionPlans(productId: string, createSubscriptionPlanRequest: CreateSubscriptionPlanRequest, _options?: ConfigurationOptions): Observable<SubscriptionPlan> {
+        return this.createSubscriptionPlansWithHttpInfo(productId, createSubscriptionPlanRequest, _options).pipe(map((apiResponse: HttpInfo<SubscriptionPlan>) => apiResponse.data));
     }
 
     /**
-     * Creates a new entity.
-     * Creates a new entity.
-     * @param createStageRequest the create request
+     * Deletes a Subscription Plan
+     * Delete Subscription Plan
+     * @param productId product_id
+     * @param subscriptionPlanId subscription_plan_id
      */
-    public create1WithHttpInfo(createStageRequest: CreateStageRequest, _options?: ConfigurationOptions): Observable<HttpInfo<Stage>> {
+    public deleteSubscriptionPlanWithHttpInfo(productId: string, subscriptionPlanId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.create1(createStageRequest, _config);
+        const requestContextPromise = this.requestFactory.deleteSubscriptionPlan(productId, subscriptionPlanId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -7651,29 +7529,30 @@ export class ObservableStagesApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.create1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteSubscriptionPlanWithHttpInfo(rsp)));
             }));
     }
 
     /**
-     * Creates a new entity.
-     * Creates a new entity.
-     * @param createStageRequest the create request
+     * Deletes a Subscription Plan
+     * Delete Subscription Plan
+     * @param productId product_id
+     * @param subscriptionPlanId subscription_plan_id
      */
-    public create1(createStageRequest: CreateStageRequest, _options?: ConfigurationOptions): Observable<Stage> {
-        return this.create1WithHttpInfo(createStageRequest, _options).pipe(map((apiResponse: HttpInfo<Stage>) => apiResponse.data));
+    public deleteSubscriptionPlan(productId: string, subscriptionPlanId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteSubscriptionPlanWithHttpInfo(productId, subscriptionPlanId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
-     * Deletes a stage by its identifier for a given tenant.
-     * Deletes a stage by its identifier for a given tenant.
-     * @param id the stage identifier
-     * @param [newStageId] the new stage identifier, can be null
+     * Retrieves a Subscription Plan
+     * Get Subscription Plan
+     * @param productId product_id
+     * @param subscriptionPlanId subscription_plan_id
      */
-    public delete1WithHttpInfo(id: string, newStageId?: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public fetchSubscriptionPlanWithHttpInfo(productId: string, subscriptionPlanId: string, _options?: ConfigurationOptions): Observable<HttpInfo<SubscriptionPlan>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.delete1(id, newStageId, _config);
+        const requestContextPromise = this.requestFactory.fetchSubscriptionPlan(productId, subscriptionPlanId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -7686,29 +7565,33 @@ export class ObservableStagesApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.delete1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.fetchSubscriptionPlanWithHttpInfo(rsp)));
             }));
     }
 
     /**
-     * Deletes a stage by its identifier for a given tenant.
-     * Deletes a stage by its identifier for a given tenant.
-     * @param id the stage identifier
-     * @param [newStageId] the new stage identifier, can be null
+     * Retrieves a Subscription Plan
+     * Get Subscription Plan
+     * @param productId product_id
+     * @param subscriptionPlanId subscription_plan_id
      */
-    public delete1(id: string, newStageId?: string, _options?: ConfigurationOptions): Observable<void> {
-        return this.delete1WithHttpInfo(id, newStageId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public fetchSubscriptionPlan(productId: string, subscriptionPlanId: string, _options?: ConfigurationOptions): Observable<SubscriptionPlan> {
+        return this.fetchSubscriptionPlanWithHttpInfo(productId, subscriptionPlanId, _options).pipe(map((apiResponse: HttpInfo<SubscriptionPlan>) => apiResponse.data));
     }
 
     /**
-     * Retrieves an entity by its identifier.
-     * Retrieves an entity by its identifier.
-     * @param id the entity identifier
+     * Retrieves a list of Subscription Plans
+     * List Subscription Plans
+     * @param productId product_id
+     * @param [filter] Filter to apply, allowed fields are: - (Boolean) &#x60;active&#x60;: true or false - (BillingCycle) &#x60;cycle_type&#x60;: DAILY, WEEKLY, MONTHLY, YEARLY You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;active%3D%3Dtrue&#x60; - &#x60;filter&#x3D;cycle_type%3D%3DDAILY&#x60; - &#x60;filter&#x3D;active%3D%3Dfalse%3Bcycle_type%3D%3DWEEKLY&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;product_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; 
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
      */
-    public get1WithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<Stage>> {
+    public listSubscriptionPlansWithHttpInfo(productId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListSubscriptionPlansResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.get1(id, _config);
+        const requestContextPromise = this.requestFactory.listSubscriptionPlans(productId, filter, orderBy, pageSize, pageToken, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -7721,31 +7604,35 @@ export class ObservableStagesApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.get1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listSubscriptionPlansWithHttpInfo(rsp)));
             }));
     }
 
     /**
-     * Retrieves an entity by its identifier.
-     * Retrieves an entity by its identifier.
-     * @param id the entity identifier
+     * Retrieves a list of Subscription Plans
+     * List Subscription Plans
+     * @param productId product_id
+     * @param [filter] Filter to apply, allowed fields are: - (Boolean) &#x60;active&#x60;: true or false - (BillingCycle) &#x60;cycle_type&#x60;: DAILY, WEEKLY, MONTHLY, YEARLY You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;active%3D%3Dtrue&#x60; - &#x60;filter&#x3D;cycle_type%3D%3DDAILY&#x60; - &#x60;filter&#x3D;active%3D%3Dfalse%3Bcycle_type%3D%3DWEEKLY&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;product_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; 
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
      */
-    public get1(id: string, _options?: ConfigurationOptions): Observable<Stage> {
-        return this.get1WithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<Stage>) => apiResponse.data));
+    public listSubscriptionPlans(productId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListSubscriptionPlansResponse> {
+        return this.listSubscriptionPlansWithHttpInfo(productId, filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListSubscriptionPlansResponse>) => apiResponse.data));
     }
 
     /**
-     * Lists entities based on the provided ListCommand.
-     * Lists entities based on the provided ListCommand.
-     * @param [filter]
-     * @param [pageToken]
-     * @param [orderBy]
-     * @param [pageSize]
+     * Updates a Subscription Plan
+     * Update Subscription Plan
+     * @param productId product_id
+     * @param subscriptionPlanId subscription_plan_id
+     * @param updateSubscriptionPlanRequest updateSubscriptionPlanRequest
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public list1WithHttpInfo(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: ConfigurationOptions): Observable<HttpInfo<StageListResponse>> {
+    public updateSubscriptionPlanWithHttpInfo(productId: string, subscriptionPlanId: string, updateSubscriptionPlanRequest: UpdateSubscriptionPlanRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<SubscriptionPlan>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.list1(filter, pageToken, orderBy, pageSize, _config);
+        const requestContextPromise = this.requestFactory.updateSubscriptionPlan(productId, subscriptionPlanId, updateSubscriptionPlanRequest, updateMask, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -7758,100 +7645,20 @@ export class ObservableStagesApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.list1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateSubscriptionPlanWithHttpInfo(rsp)));
             }));
     }
 
     /**
-     * Lists entities based on the provided ListCommand.
-     * Lists entities based on the provided ListCommand.
-     * @param [filter]
-     * @param [pageToken]
-     * @param [orderBy]
-     * @param [pageSize]
+     * Updates a Subscription Plan
+     * Update Subscription Plan
+     * @param productId product_id
+     * @param subscriptionPlanId subscription_plan_id
+     * @param updateSubscriptionPlanRequest updateSubscriptionPlanRequest
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public list1(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: ConfigurationOptions): Observable<StageListResponse> {
-        return this.list1WithHttpInfo(filter, pageToken, orderBy, pageSize, _options).pipe(map((apiResponse: HttpInfo<StageListResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Retrieves a list of deals for a specific stage.
-     * Retrieves a list of deals for a specific stage.
-     * @param id the stage identifier
-     * @param [filter]
-     * @param [pageToken]
-     * @param [orderBy]
-     * @param [pageSize]
-     */
-    public listStageDealsWithHttpInfo(id: string, filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: ConfigurationOptions): Observable<HttpInfo<StageDealListResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.listStageDeals(id, filter, pageToken, orderBy, pageSize, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listStageDealsWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Retrieves a list of deals for a specific stage.
-     * Retrieves a list of deals for a specific stage.
-     * @param id the stage identifier
-     * @param [filter]
-     * @param [pageToken]
-     * @param [orderBy]
-     * @param [pageSize]
-     */
-    public listStageDeals(id: string, filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: ConfigurationOptions): Observable<StageDealListResponse> {
-        return this.listStageDealsWithHttpInfo(id, filter, pageToken, orderBy, pageSize, _options).pipe(map((apiResponse: HttpInfo<StageDealListResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Updates an existing entity.
-     * Updates an existing entity.
-     * @param id the entity identifier
-     * @param updateMask the fields to update
-     * @param updateStageRequest the update request
-     */
-    public update1WithHttpInfo(id: string, updateMask: Array<string>, updateStageRequest: UpdateStageRequest, _options?: ConfigurationOptions): Observable<HttpInfo<Stage>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.update1(id, updateMask, updateStageRequest, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.update1WithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Updates an existing entity.
-     * Updates an existing entity.
-     * @param id the entity identifier
-     * @param updateMask the fields to update
-     * @param updateStageRequest the update request
-     */
-    public update1(id: string, updateMask: Array<string>, updateStageRequest: UpdateStageRequest, _options?: ConfigurationOptions): Observable<Stage> {
-        return this.update1WithHttpInfo(id, updateMask, updateStageRequest, _options).pipe(map((apiResponse: HttpInfo<Stage>) => apiResponse.data));
+    public updateSubscriptionPlan(productId: string, subscriptionPlanId: string, updateSubscriptionPlanRequest: UpdateSubscriptionPlanRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<SubscriptionPlan> {
+        return this.updateSubscriptionPlanWithHttpInfo(productId, subscriptionPlanId, updateSubscriptionPlanRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<SubscriptionPlan>) => apiResponse.data));
     }
 
 }
@@ -7873,14 +7680,14 @@ export class ObservableSubscriptionsApi {
     }
 
     /**
-     * Creates a custom field of the specified type and options to the Subscription object
-     * Create a Subscription Custom Field
-     * @param createCustomFieldRequest customField
+     * Creates a subscription with the specified product and product subscription id.
+     * Create Subscription
+     * @param createSubscriptionRequest request
      */
-    public createSubscriptionCustomFieldUsingPOSTWithHttpInfo(createCustomFieldRequest: CreateCustomFieldRequest, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldMetaData>> {
+    public createSubscriptionWithHttpInfo(createSubscriptionRequest: CreateSubscriptionRequest, _options?: ConfigurationOptions): Observable<HttpInfo<Subscription>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.createSubscriptionCustomFieldUsingPOST(createCustomFieldRequest, _config);
+        const requestContextPromise = this.requestFactory.createSubscription(createSubscriptionRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -7893,8 +7700,17 @@ export class ObservableSubscriptionsApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createSubscriptionCustomFieldUsingPOSTWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createSubscriptionWithHttpInfo(rsp)));
             }));
+    }
+
+    /**
+     * Creates a subscription with the specified product and product subscription id.
+     * Create Subscription
+     * @param createSubscriptionRequest request
+     */
+    public createSubscription(createSubscriptionRequest: CreateSubscriptionRequest, _options?: ConfigurationOptions): Observable<Subscription> {
+        return this.createSubscriptionWithHttpInfo(createSubscriptionRequest, _options).pipe(map((apiResponse: HttpInfo<Subscription>) => apiResponse.data));
     }
 
     /**
@@ -7902,19 +7718,10 @@ export class ObservableSubscriptionsApi {
      * Create a Subscription Custom Field
      * @param createCustomFieldRequest customField
      */
-    public createSubscriptionCustomFieldUsingPOST(createCustomFieldRequest: CreateCustomFieldRequest, _options?: ConfigurationOptions): Observable<CustomFieldMetaData> {
-        return this.createSubscriptionCustomFieldUsingPOSTWithHttpInfo(createCustomFieldRequest, _options).pipe(map((apiResponse: HttpInfo<CustomFieldMetaData>) => apiResponse.data));
-    }
-
-    /**
-     * Creates a subscription with the specified product and product subscription id.
-     * Create Subscription
-     * @param createSubscriptionV2 createSubscriptionV2
-     */
-    public createSubscriptionV2UsingPOSTWithHttpInfo(createSubscriptionV2: CreateSubscriptionV2, _options?: ConfigurationOptions): Observable<HttpInfo<RestSubscriptionV2>> {
+    public createSubscriptionCustomFieldWithHttpInfo(createCustomFieldRequest: CreateCustomFieldRequest, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldMetaData>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.createSubscriptionV2UsingPOST(createSubscriptionV2, _config);
+        const requestContextPromise = this.requestFactory.createSubscriptionCustomField(createCustomFieldRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -7927,17 +7734,17 @@ export class ObservableSubscriptionsApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createSubscriptionV2UsingPOSTWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createSubscriptionCustomFieldWithHttpInfo(rsp)));
             }));
     }
 
     /**
-     * Creates a subscription with the specified product and product subscription id.
-     * Create Subscription
-     * @param createSubscriptionV2 createSubscriptionV2
+     * Creates a custom field of the specified type and options to the Subscription object
+     * Create a Subscription Custom Field
+     * @param createCustomFieldRequest customField
      */
-    public createSubscriptionV2UsingPOST(createSubscriptionV2: CreateSubscriptionV2, _options?: ConfigurationOptions): Observable<RestSubscriptionV2> {
-        return this.createSubscriptionV2UsingPOSTWithHttpInfo(createSubscriptionV2, _options).pipe(map((apiResponse: HttpInfo<RestSubscriptionV2>) => apiResponse.data));
+    public createSubscriptionCustomField(createCustomFieldRequest: CreateCustomFieldRequest, _options?: ConfigurationOptions): Observable<CustomFieldMetaData> {
+        return this.createSubscriptionCustomFieldWithHttpInfo(createCustomFieldRequest, _options).pipe(map((apiResponse: HttpInfo<CustomFieldMetaData>) => apiResponse.data));
     }
 
     /**
@@ -7945,10 +7752,10 @@ export class ObservableSubscriptionsApi {
      * Delete a Subscription Custom Field
      * @param customFieldId custom_field_id
      */
-    public deleteSubscriptionCustomFieldUsingDELETEWithHttpInfo(customFieldId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public deleteSubscriptionCustomFieldWithHttpInfo(customFieldId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.deleteSubscriptionCustomFieldUsingDELETE(customFieldId, _config);
+        const requestContextPromise = this.requestFactory.deleteSubscriptionCustomField(customFieldId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -7961,7 +7768,7 @@ export class ObservableSubscriptionsApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteSubscriptionCustomFieldUsingDELETEWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteSubscriptionCustomFieldWithHttpInfo(rsp)));
             }));
     }
 
@@ -7970,18 +7777,18 @@ export class ObservableSubscriptionsApi {
      * Delete a Subscription Custom Field
      * @param customFieldId custom_field_id
      */
-    public deleteSubscriptionCustomFieldUsingDELETE(customFieldId: string, _options?: ConfigurationOptions): Observable<void> {
-        return this.deleteSubscriptionCustomFieldUsingDELETEWithHttpInfo(customFieldId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public deleteSubscriptionCustomField(customFieldId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteSubscriptionCustomFieldWithHttpInfo(customFieldId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
      * Get the custom fields for the Subscription object
      * Retrieve Subscription Custom Field Model
      */
-    public retrieveSubscriptionCustomFieldModelUsingGETWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<ObjectModel>> {
+    public retrieveSubscriptionCustomFieldModelWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<ObjectModel>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.retrieveSubscriptionCustomFieldModelUsingGET(_config);
+        const requestContextPromise = this.requestFactory.retrieveSubscriptionCustomFieldModel(_config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -7994,7 +7801,7 @@ export class ObservableSubscriptionsApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.retrieveSubscriptionCustomFieldModelUsingGETWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.retrieveSubscriptionCustomFieldModelWithHttpInfo(rsp)));
             }));
     }
 
@@ -8002,8 +7809,8 @@ export class ObservableSubscriptionsApi {
      * Get the custom fields for the Subscription object
      * Retrieve Subscription Custom Field Model
      */
-    public retrieveSubscriptionCustomFieldModelUsingGET(_options?: ConfigurationOptions): Observable<ObjectModel> {
-        return this.retrieveSubscriptionCustomFieldModelUsingGETWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<ObjectModel>) => apiResponse.data));
+    public retrieveSubscriptionCustomFieldModel(_options?: ConfigurationOptions): Observable<ObjectModel> {
+        return this.retrieveSubscriptionCustomFieldModelWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<ObjectModel>) => apiResponse.data));
     }
 
     /**
@@ -8013,10 +7820,10 @@ export class ObservableSubscriptionsApi {
      * @param updateCustomFieldMetaDataRequest request
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateSubscriptionCustomFieldUsingPATCHWithHttpInfo(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldMetaData>> {
+    public updateSubscriptionCustomFieldWithHttpInfo(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldMetaData>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.updateSubscriptionCustomFieldUsingPATCH(customFieldId, updateCustomFieldMetaDataRequest, updateMask, _config);
+        const requestContextPromise = this.requestFactory.updateSubscriptionCustomField(customFieldId, updateCustomFieldMetaDataRequest, updateMask, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -8029,7 +7836,7 @@ export class ObservableSubscriptionsApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateSubscriptionCustomFieldUsingPATCHWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateSubscriptionCustomFieldWithHttpInfo(rsp)));
             }));
     }
 
@@ -8040,8 +7847,8 @@ export class ObservableSubscriptionsApi {
      * @param updateCustomFieldMetaDataRequest request
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateSubscriptionCustomFieldUsingPATCH(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<CustomFieldMetaData> {
-        return this.updateSubscriptionCustomFieldUsingPATCHWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<CustomFieldMetaData>) => apiResponse.data));
+    public updateSubscriptionCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<CustomFieldMetaData> {
+        return this.updateSubscriptionCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<CustomFieldMetaData>) => apiResponse.data));
     }
 
 }
@@ -8068,10 +7875,10 @@ export class ObservableTagsApi {
      * @param tagId tag_id
      * @param applyRemoveTagRequest applyRemoveTagRequest
      */
-    public applyTagsUsingPOSTWithHttpInfo(tagId: string, applyRemoveTagRequest: ApplyRemoveTagRequest, _options?: ConfigurationOptions): Observable<HttpInfo<ApplyTagsResponse>> {
+    public applyTagsWithHttpInfo(tagId: string, applyRemoveTagRequest: ApplyRemoveTagRequest, _options?: ConfigurationOptions): Observable<HttpInfo<ApplyTagsResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.applyTagsUsingPOST(tagId, applyRemoveTagRequest, _config);
+        const requestContextPromise = this.requestFactory.applyTags(tagId, applyRemoveTagRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -8084,7 +7891,7 @@ export class ObservableTagsApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.applyTagsUsingPOSTWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.applyTagsWithHttpInfo(rsp)));
             }));
     }
 
@@ -8094,42 +7901,8 @@ export class ObservableTagsApi {
      * @param tagId tag_id
      * @param applyRemoveTagRequest applyRemoveTagRequest
      */
-    public applyTagsUsingPOST(tagId: string, applyRemoveTagRequest: ApplyRemoveTagRequest, _options?: ConfigurationOptions): Observable<ApplyTagsResponse> {
-        return this.applyTagsUsingPOSTWithHttpInfo(tagId, applyRemoveTagRequest, _options).pipe(map((apiResponse: HttpInfo<ApplyTagsResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Creates a new Tag Category.
-     * Create Tag Category
-     * @param createUpdateTagCategoryRequest request
-     */
-    public createTagCategoryUsingPOST1WithHttpInfo(createUpdateTagCategoryRequest: CreateUpdateTagCategoryRequest, _options?: ConfigurationOptions): Observable<HttpInfo<Tag>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.createTagCategoryUsingPOST1(createUpdateTagCategoryRequest, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createTagCategoryUsingPOST1WithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Creates a new Tag Category.
-     * Create Tag Category
-     * @param createUpdateTagCategoryRequest request
-     */
-    public createTagCategoryUsingPOST1(createUpdateTagCategoryRequest: CreateUpdateTagCategoryRequest, _options?: ConfigurationOptions): Observable<Tag> {
-        return this.createTagCategoryUsingPOST1WithHttpInfo(createUpdateTagCategoryRequest, _options).pipe(map((apiResponse: HttpInfo<Tag>) => apiResponse.data));
+    public applyTags(tagId: string, applyRemoveTagRequest: ApplyRemoveTagRequest, _options?: ConfigurationOptions): Observable<ApplyTagsResponse> {
+        return this.applyTagsWithHttpInfo(tagId, applyRemoveTagRequest, _options).pipe(map((apiResponse: HttpInfo<ApplyTagsResponse>) => apiResponse.data));
     }
 
     /**
@@ -8137,10 +7910,10 @@ export class ObservableTagsApi {
      * Create Tag
      * @param createUpdateTagRequest tag
      */
-    public createTagUsingPOST1WithHttpInfo(createUpdateTagRequest: CreateUpdateTagRequest, _options?: ConfigurationOptions): Observable<HttpInfo<Tag>> {
+    public createTagWithHttpInfo(createUpdateTagRequest: CreateUpdateTagRequest, _options?: ConfigurationOptions): Observable<HttpInfo<Tag>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.createTagUsingPOST1(createUpdateTagRequest, _config);
+        const requestContextPromise = this.requestFactory.createTag(createUpdateTagRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -8153,7 +7926,7 @@ export class ObservableTagsApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createTagUsingPOST1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createTagWithHttpInfo(rsp)));
             }));
     }
 
@@ -8162,19 +7935,19 @@ export class ObservableTagsApi {
      * Create Tag
      * @param createUpdateTagRequest tag
      */
-    public createTagUsingPOST1(createUpdateTagRequest: CreateUpdateTagRequest, _options?: ConfigurationOptions): Observable<Tag> {
-        return this.createTagUsingPOST1WithHttpInfo(createUpdateTagRequest, _options).pipe(map((apiResponse: HttpInfo<Tag>) => apiResponse.data));
+    public createTag(createUpdateTagRequest: CreateUpdateTagRequest, _options?: ConfigurationOptions): Observable<Tag> {
+        return this.createTagWithHttpInfo(createUpdateTagRequest, _options).pipe(map((apiResponse: HttpInfo<Tag>) => apiResponse.data));
     }
 
     /**
-     * Deletes the specified Tag Category
-     * Delete Tag Category
-     * @param tagCategoryId tag_category_id
+     * Creates a new Tag Category.
+     * Create Tag Category
+     * @param createUpdateTagCategoryRequest request
      */
-    public deleteTagCategoryUsingDELETEWithHttpInfo(tagCategoryId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public createTagCategoryWithHttpInfo(createUpdateTagCategoryRequest: CreateUpdateTagCategoryRequest, _options?: ConfigurationOptions): Observable<HttpInfo<Tag>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.deleteTagCategoryUsingDELETE(tagCategoryId, _config);
+        const requestContextPromise = this.requestFactory.createTagCategory(createUpdateTagCategoryRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -8187,17 +7960,17 @@ export class ObservableTagsApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteTagCategoryUsingDELETEWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createTagCategoryWithHttpInfo(rsp)));
             }));
     }
 
     /**
-     * Deletes the specified Tag Category
-     * Delete Tag Category
-     * @param tagCategoryId tag_category_id
+     * Creates a new Tag Category.
+     * Create Tag Category
+     * @param createUpdateTagCategoryRequest request
      */
-    public deleteTagCategoryUsingDELETE(tagCategoryId: string, _options?: ConfigurationOptions): Observable<void> {
-        return this.deleteTagCategoryUsingDELETEWithHttpInfo(tagCategoryId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public createTagCategory(createUpdateTagCategoryRequest: CreateUpdateTagCategoryRequest, _options?: ConfigurationOptions): Observable<Tag> {
+        return this.createTagCategoryWithHttpInfo(createUpdateTagCategoryRequest, _options).pipe(map((apiResponse: HttpInfo<Tag>) => apiResponse.data));
     }
 
     /**
@@ -8205,10 +7978,10 @@ export class ObservableTagsApi {
      * Delete Tag
      * @param tagId tag_id
      */
-    public deleteTagUsingDELETEWithHttpInfo(tagId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public deleteTagWithHttpInfo(tagId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.deleteTagUsingDELETE(tagId, _config);
+        const requestContextPromise = this.requestFactory.deleteTag(tagId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -8221,7 +7994,7 @@ export class ObservableTagsApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteTagUsingDELETEWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteTagWithHttpInfo(rsp)));
             }));
     }
 
@@ -8230,8 +8003,42 @@ export class ObservableTagsApi {
      * Delete Tag
      * @param tagId tag_id
      */
-    public deleteTagUsingDELETE(tagId: string, _options?: ConfigurationOptions): Observable<void> {
-        return this.deleteTagUsingDELETEWithHttpInfo(tagId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public deleteTag(tagId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteTagWithHttpInfo(tagId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+    /**
+     * Deletes the specified Tag Category
+     * Delete Tag Category
+     * @param tagCategoryId tag_category_id
+     */
+    public deleteTagCategoryWithHttpInfo(tagCategoryId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.deleteTagCategory(tagCategoryId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteTagCategoryWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Deletes the specified Tag Category
+     * Delete Tag Category
+     * @param tagCategoryId tag_category_id
+     */
+    public deleteTagCategory(tagCategoryId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteTagCategoryWithHttpInfo(tagCategoryId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
@@ -8239,10 +8046,10 @@ export class ObservableTagsApi {
      * Retrieve a Tag Category
      * @param tagCategoryId tag_category_id
      */
-    public getCategoryUsingGETWithHttpInfo(tagCategoryId: string, _options?: ConfigurationOptions): Observable<HttpInfo<GetTagCategoryResponse>> {
+    public getCategoryWithHttpInfo(tagCategoryId: string, _options?: ConfigurationOptions): Observable<HttpInfo<GetTagCategoryResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getCategoryUsingGET(tagCategoryId, _config);
+        const requestContextPromise = this.requestFactory.getCategory(tagCategoryId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -8255,7 +8062,7 @@ export class ObservableTagsApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getCategoryUsingGETWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getCategoryWithHttpInfo(rsp)));
             }));
     }
 
@@ -8264,8 +8071,8 @@ export class ObservableTagsApi {
      * Retrieve a Tag Category
      * @param tagCategoryId tag_category_id
      */
-    public getCategoryUsingGET(tagCategoryId: string, _options?: ConfigurationOptions): Observable<GetTagCategoryResponse> {
-        return this.getCategoryUsingGETWithHttpInfo(tagCategoryId, _options).pipe(map((apiResponse: HttpInfo<GetTagCategoryResponse>) => apiResponse.data));
+    public getCategory(tagCategoryId: string, _options?: ConfigurationOptions): Observable<GetTagCategoryResponse> {
+        return this.getCategoryWithHttpInfo(tagCategoryId, _options).pipe(map((apiResponse: HttpInfo<GetTagCategoryResponse>) => apiResponse.data));
     }
 
     /**
@@ -8273,10 +8080,10 @@ export class ObservableTagsApi {
      * Retrieve a Tag
      * @param tagId tag_id
      */
-    public getTagUsingGET1WithHttpInfo(tagId: string, _options?: ConfigurationOptions): Observable<HttpInfo<Tag>> {
+    public getTagWithHttpInfo(tagId: string, _options?: ConfigurationOptions): Observable<HttpInfo<Tag>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getTagUsingGET1(tagId, _config);
+        const requestContextPromise = this.requestFactory.getTag(tagId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -8289,7 +8096,7 @@ export class ObservableTagsApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getTagUsingGET1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getTagWithHttpInfo(rsp)));
             }));
     }
 
@@ -8298,23 +8105,23 @@ export class ObservableTagsApi {
      * Retrieve a Tag
      * @param tagId tag_id
      */
-    public getTagUsingGET1(tagId: string, _options?: ConfigurationOptions): Observable<Tag> {
-        return this.getTagUsingGET1WithHttpInfo(tagId, _options).pipe(map((apiResponse: HttpInfo<Tag>) => apiResponse.data));
+    public getTag(tagId: string, _options?: ConfigurationOptions): Observable<Tag> {
+        return this.getTagWithHttpInfo(tagId, _options).pipe(map((apiResponse: HttpInfo<Tag>) => apiResponse.data));
     }
 
     /**
      * Retrieves a list of Companies that have the given Tag applied. To search for `null` or empty fields use `filter==NONE`
      * List Tagged Companies
      * @param tagId tag_id
-     * @param [filter] Search filter to apply to results
-     * @param [orderBy] Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60;
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;name&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listCompaniesForTagIdUsingGET1WithHttpInfo(tagId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListTaggedCompaniesResponse>> {
+    public listCompaniesForTagIdWithHttpInfo(tagId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListTaggedCompaniesResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.listCompaniesForTagIdUsingGET1(tagId, filter, orderBy, pageSize, pageToken, _config);
+        const requestContextPromise = this.requestFactory.listCompaniesForTagId(tagId, filter, orderBy, pageSize, pageToken, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -8327,7 +8134,7 @@ export class ObservableTagsApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listCompaniesForTagIdUsingGET1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listCompaniesForTagIdWithHttpInfo(rsp)));
             }));
     }
 
@@ -8335,13 +8142,13 @@ export class ObservableTagsApi {
      * Retrieves a list of Companies that have the given Tag applied. To search for `null` or empty fields use `filter==NONE`
      * List Tagged Companies
      * @param tagId tag_id
-     * @param [filter] Search filter to apply to results
-     * @param [orderBy] Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60;
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;name&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listCompaniesForTagIdUsingGET1(tagId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListTaggedCompaniesResponse> {
-        return this.listCompaniesForTagIdUsingGET1WithHttpInfo(tagId, filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListTaggedCompaniesResponse>) => apiResponse.data));
+    public listCompaniesForTagId(tagId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListTaggedCompaniesResponse> {
+        return this.listCompaniesForTagIdWithHttpInfo(tagId, filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListTaggedCompaniesResponse>) => apiResponse.data));
     }
 
     /**
@@ -8353,10 +8160,10 @@ export class ObservableTagsApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listContactsWithTagIdUsingGETWithHttpInfo(tagId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListTaggedContactsResponse>> {
+    public listContactsWithTagIdWithHttpInfo(tagId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListTaggedContactsResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.listContactsWithTagIdUsingGET(tagId, filter, orderBy, pageSize, pageToken, _config);
+        const requestContextPromise = this.requestFactory.listContactsWithTagId(tagId, filter, orderBy, pageSize, pageToken, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -8369,7 +8176,7 @@ export class ObservableTagsApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listContactsWithTagIdUsingGETWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listContactsWithTagIdWithHttpInfo(rsp)));
             }));
     }
 
@@ -8382,8 +8189,8 @@ export class ObservableTagsApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listContactsWithTagIdUsingGET(tagId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListTaggedContactsResponse> {
-        return this.listContactsWithTagIdUsingGETWithHttpInfo(tagId, filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListTaggedContactsResponse>) => apiResponse.data));
+    public listContactsWithTagId(tagId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListTaggedContactsResponse> {
+        return this.listContactsWithTagIdWithHttpInfo(tagId, filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListTaggedContactsResponse>) => apiResponse.data));
     }
 
     /**
@@ -8394,10 +8201,10 @@ export class ObservableTagsApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listTagCategoriesUsingGETWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListTagCategoriesResponse>> {
+    public listTagCategoriesWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListTagCategoriesResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.listTagCategoriesUsingGET(filter, orderBy, pageSize, pageToken, _config);
+        const requestContextPromise = this.requestFactory.listTagCategories(filter, orderBy, pageSize, pageToken, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -8410,7 +8217,7 @@ export class ObservableTagsApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listTagCategoriesUsingGETWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listTagCategoriesWithHttpInfo(rsp)));
             }));
     }
 
@@ -8422,22 +8229,22 @@ export class ObservableTagsApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listTagCategoriesUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListTagCategoriesResponse> {
-        return this.listTagCategoriesUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListTagCategoriesResponse>) => apiResponse.data));
+    public listTagCategories(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListTagCategoriesResponse> {
+        return this.listTagCategoriesWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListTagCategoriesResponse>) => apiResponse.data));
     }
 
     /**
      * Retrieves a list of Tags defined in the application To search for `null` or empty fields use `filter==NONE`
      * List Tags
-     * @param [filter] Search filter to apply to results
-     * @param [orderBy] Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60;
+     * @param [filter] Filter to apply, allowed fields are:  - (String) &#x60;name&#x60; - (String) &#x60;description&#x60; - (String) &#x60;category_id&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. If NONE is passed in for &#x60;category_id&#x60; or &#x60;description&#x60;, it will check for the non-existence of that field. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;name%3D%3Dmy-tag&#x60; - &#x60;filter&#x3D;category_id%3D%3DNONE&#x60; - &#x60;filter&#x3D;description%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_create_time%3D%3D2024-12-22T01:00:00.000Z;until_create_time%3D%3D2025-01-01T00:00:00.000Z;&#x60;
+     * @param [orderBy] Attribute and direction to order items. One of the following fields:  - &#x60;name&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listTagsUsingGET1WithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListTagsResponse>> {
+    public listTagsWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListTagsResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.listTagsUsingGET1(filter, orderBy, pageSize, pageToken, _config);
+        const requestContextPromise = this.requestFactory.listTags(filter, orderBy, pageSize, pageToken, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -8450,20 +8257,20 @@ export class ObservableTagsApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listTagsUsingGET1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listTagsWithHttpInfo(rsp)));
             }));
     }
 
     /**
      * Retrieves a list of Tags defined in the application To search for `null` or empty fields use `filter==NONE`
      * List Tags
-     * @param [filter] Search filter to apply to results
-     * @param [orderBy] Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60;
+     * @param [filter] Filter to apply, allowed fields are:  - (String) &#x60;name&#x60; - (String) &#x60;description&#x60; - (String) &#x60;category_id&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. If NONE is passed in for &#x60;category_id&#x60; or &#x60;description&#x60;, it will check for the non-existence of that field. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;name%3D%3Dmy-tag&#x60; - &#x60;filter&#x3D;category_id%3D%3DNONE&#x60; - &#x60;filter&#x3D;description%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_create_time%3D%3D2024-12-22T01:00:00.000Z;until_create_time%3D%3D2025-01-01T00:00:00.000Z;&#x60;
+     * @param [orderBy] Attribute and direction to order items. One of the following fields:  - &#x60;name&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listTagsUsingGET1(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListTagsResponse> {
-        return this.listTagsUsingGET1WithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListTagsResponse>) => apiResponse.data));
+    public listTags(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListTagsResponse> {
+        return this.listTagsWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListTagsResponse>) => apiResponse.data));
     }
 
     /**
@@ -8472,10 +8279,10 @@ export class ObservableTagsApi {
      * @param tagId tag_id
      * @param applyRemoveTagRequest applyRemoveTagRequest
      */
-    public removeTagsUsingPOSTWithHttpInfo(tagId: string, applyRemoveTagRequest: ApplyRemoveTagRequest, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public removeTagsWithHttpInfo(tagId: string, applyRemoveTagRequest: ApplyRemoveTagRequest, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.removeTagsUsingPOST(tagId, applyRemoveTagRequest, _config);
+        const requestContextPromise = this.requestFactory.removeTags(tagId, applyRemoveTagRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -8488,7 +8295,7 @@ export class ObservableTagsApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.removeTagsUsingPOSTWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.removeTagsWithHttpInfo(rsp)));
             }));
     }
 
@@ -8498,46 +8305,8 @@ export class ObservableTagsApi {
      * @param tagId tag_id
      * @param applyRemoveTagRequest applyRemoveTagRequest
      */
-    public removeTagsUsingPOST(tagId: string, applyRemoveTagRequest: ApplyRemoveTagRequest, _options?: ConfigurationOptions): Observable<void> {
-        return this.removeTagsUsingPOSTWithHttpInfo(tagId, applyRemoveTagRequest, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
-    }
-
-    /**
-     * Updates a Tag Category with only the values provided in the request
-     * Update a Tag Category
-     * @param tagCategoryId tag_category_id
-     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-     * @param [createUpdateTagCategoryRequest] tagCategory
-     */
-    public updateTagCategoryUsingPATCHWithHttpInfo(tagCategoryId: string, updateMask?: Array<string>, createUpdateTagCategoryRequest?: CreateUpdateTagCategoryRequest, _options?: ConfigurationOptions): Observable<HttpInfo<UpdateTagCategoryResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.updateTagCategoryUsingPATCH(tagCategoryId, updateMask, createUpdateTagCategoryRequest, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateTagCategoryUsingPATCHWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Updates a Tag Category with only the values provided in the request
-     * Update a Tag Category
-     * @param tagCategoryId tag_category_id
-     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-     * @param [createUpdateTagCategoryRequest] tagCategory
-     */
-    public updateTagCategoryUsingPATCH(tagCategoryId: string, updateMask?: Array<string>, createUpdateTagCategoryRequest?: CreateUpdateTagCategoryRequest, _options?: ConfigurationOptions): Observable<UpdateTagCategoryResponse> {
-        return this.updateTagCategoryUsingPATCHWithHttpInfo(tagCategoryId, updateMask, createUpdateTagCategoryRequest, _options).pipe(map((apiResponse: HttpInfo<UpdateTagCategoryResponse>) => apiResponse.data));
+    public removeTags(tagId: string, applyRemoveTagRequest: ApplyRemoveTagRequest, _options?: ConfigurationOptions): Observable<void> {
+        return this.removeTagsWithHttpInfo(tagId, applyRemoveTagRequest, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
@@ -8547,10 +8316,10 @@ export class ObservableTagsApi {
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @param [createUpdateTagRequest] tag
      */
-    public updateTagUsingPATCHWithHttpInfo(tagId: string, updateMask?: Array<string>, createUpdateTagRequest?: CreateUpdateTagRequest, _options?: ConfigurationOptions): Observable<HttpInfo<UpdateTagResponse>> {
+    public updateTagWithHttpInfo(tagId: string, updateMask?: Array<string>, createUpdateTagRequest?: CreateUpdateTagRequest, _options?: ConfigurationOptions): Observable<HttpInfo<UpdateTagResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.updateTagUsingPATCH(tagId, updateMask, createUpdateTagRequest, _config);
+        const requestContextPromise = this.requestFactory.updateTag(tagId, updateMask, createUpdateTagRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -8563,7 +8332,7 @@ export class ObservableTagsApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateTagUsingPATCHWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateTagWithHttpInfo(rsp)));
             }));
     }
 
@@ -8574,8 +8343,46 @@ export class ObservableTagsApi {
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @param [createUpdateTagRequest] tag
      */
-    public updateTagUsingPATCH(tagId: string, updateMask?: Array<string>, createUpdateTagRequest?: CreateUpdateTagRequest, _options?: ConfigurationOptions): Observable<UpdateTagResponse> {
-        return this.updateTagUsingPATCHWithHttpInfo(tagId, updateMask, createUpdateTagRequest, _options).pipe(map((apiResponse: HttpInfo<UpdateTagResponse>) => apiResponse.data));
+    public updateTag(tagId: string, updateMask?: Array<string>, createUpdateTagRequest?: CreateUpdateTagRequest, _options?: ConfigurationOptions): Observable<UpdateTagResponse> {
+        return this.updateTagWithHttpInfo(tagId, updateMask, createUpdateTagRequest, _options).pipe(map((apiResponse: HttpInfo<UpdateTagResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Updates a Tag Category with only the values provided in the request
+     * Update a Tag Category
+     * @param tagCategoryId tag_category_id
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param [createUpdateTagCategoryRequest] tagCategory
+     */
+    public updateTagCategoryWithHttpInfo(tagCategoryId: string, updateMask?: Array<string>, createUpdateTagCategoryRequest?: CreateUpdateTagCategoryRequest, _options?: ConfigurationOptions): Observable<HttpInfo<UpdateTagCategoryResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.updateTagCategory(tagCategoryId, updateMask, createUpdateTagCategoryRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateTagCategoryWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Updates a Tag Category with only the values provided in the request
+     * Update a Tag Category
+     * @param tagCategoryId tag_category_id
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param [createUpdateTagCategoryRequest] tagCategory
+     */
+    public updateTagCategory(tagCategoryId: string, updateMask?: Array<string>, createUpdateTagCategoryRequest?: CreateUpdateTagCategoryRequest, _options?: ConfigurationOptions): Observable<UpdateTagCategoryResponse> {
+        return this.updateTagCategoryWithHttpInfo(tagCategoryId, updateMask, createUpdateTagCategoryRequest, _options).pipe(map((apiResponse: HttpInfo<UpdateTagCategoryResponse>) => apiResponse.data));
     }
 
 }
@@ -8597,48 +8404,14 @@ export class ObservableTaskApi {
     }
 
     /**
-     * Creates a custom field of the specified type and options to the Task object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
-     * Create a Custom Field
-     * @param createCustomFieldRequest customField
-     */
-    public createTaskCustomFieldUsingPOST1WithHttpInfo(createCustomFieldRequest: CreateCustomFieldRequest, _options?: ConfigurationOptions): Observable<HttpInfo<CreateCustomFieldResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.createTaskCustomFieldUsingPOST1(createCustomFieldRequest, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createTaskCustomFieldUsingPOST1WithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Creates a custom field of the specified type and options to the Task object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
-     * Create a Custom Field
-     * @param createCustomFieldRequest customField
-     */
-    public createTaskCustomFieldUsingPOST1(createCustomFieldRequest: CreateCustomFieldRequest, _options?: ConfigurationOptions): Observable<CreateCustomFieldResponse> {
-        return this.createTaskCustomFieldUsingPOST1WithHttpInfo(createCustomFieldRequest, _options).pipe(map((apiResponse: HttpInfo<CreateCustomFieldResponse>) => apiResponse.data));
-    }
-
-    /**
      * Creates a new task as the authenticated user.   This endpoint does not currently support setting Custom Field values.
      * Create a Task
      * @param [createTaskRequest] task
      */
-    public createTaskUsingPOST1WithHttpInfo(createTaskRequest?: CreateTaskRequest, _options?: ConfigurationOptions): Observable<HttpInfo<Task>> {
+    public createTaskWithHttpInfo(createTaskRequest?: CreateTaskRequest, _options?: ConfigurationOptions): Observable<HttpInfo<Task>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.createTaskUsingPOST1(createTaskRequest, _config);
+        const requestContextPromise = this.requestFactory.createTask(createTaskRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -8651,7 +8424,7 @@ export class ObservableTaskApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createTaskUsingPOST1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createTaskWithHttpInfo(rsp)));
             }));
     }
 
@@ -8660,19 +8433,19 @@ export class ObservableTaskApi {
      * Create a Task
      * @param [createTaskRequest] task
      */
-    public createTaskUsingPOST1(createTaskRequest?: CreateTaskRequest, _options?: ConfigurationOptions): Observable<Task> {
-        return this.createTaskUsingPOST1WithHttpInfo(createTaskRequest, _options).pipe(map((apiResponse: HttpInfo<Task>) => apiResponse.data));
+    public createTask(createTaskRequest?: CreateTaskRequest, _options?: ConfigurationOptions): Observable<Task> {
+        return this.createTaskWithHttpInfo(createTaskRequest, _options).pipe(map((apiResponse: HttpInfo<Task>) => apiResponse.data));
     }
 
     /**
-     * Deletes a Custom Field from the Task object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
-     * Delete a Custom Field
-     * @param customFieldId custom_field_id
+     * Creates a custom field of the specified type and options to the Task object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+     * Create a Custom Field
+     * @param createCustomFieldRequest customField
      */
-    public deleteTaskCustomFieldUsingDELETEWithHttpInfo(customFieldId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public createTaskCustomFieldWithHttpInfo(createCustomFieldRequest: CreateCustomFieldRequest, _options?: ConfigurationOptions): Observable<HttpInfo<CreateCustomFieldResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.deleteTaskCustomFieldUsingDELETE(customFieldId, _config);
+        const requestContextPromise = this.requestFactory.createTaskCustomField(createCustomFieldRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -8685,17 +8458,17 @@ export class ObservableTaskApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteTaskCustomFieldUsingDELETEWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createTaskCustomFieldWithHttpInfo(rsp)));
             }));
     }
 
     /**
-     * Deletes a Custom Field from the Task object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
-     * Delete a Custom Field
-     * @param customFieldId custom_field_id
+     * Creates a custom field of the specified type and options to the Task object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+     * Create a Custom Field
+     * @param createCustomFieldRequest customField
      */
-    public deleteTaskCustomFieldUsingDELETE(customFieldId: string, _options?: ConfigurationOptions): Observable<void> {
-        return this.deleteTaskCustomFieldUsingDELETEWithHttpInfo(customFieldId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public createTaskCustomField(createCustomFieldRequest: CreateCustomFieldRequest, _options?: ConfigurationOptions): Observable<CreateCustomFieldResponse> {
+        return this.createTaskCustomFieldWithHttpInfo(createCustomFieldRequest, _options).pipe(map((apiResponse: HttpInfo<CreateCustomFieldResponse>) => apiResponse.data));
     }
 
     /**
@@ -8703,10 +8476,10 @@ export class ObservableTaskApi {
      * Delete a Task
      * @param taskId task_id
      */
-    public deleteTaskUsingDELETE1WithHttpInfo(taskId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public deleteTaskWithHttpInfo(taskId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.deleteTaskUsingDELETE1(taskId, _config);
+        const requestContextPromise = this.requestFactory.deleteTask(taskId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -8719,7 +8492,7 @@ export class ObservableTaskApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteTaskUsingDELETE1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteTaskWithHttpInfo(rsp)));
             }));
     }
 
@@ -8728,19 +8501,19 @@ export class ObservableTaskApi {
      * Delete a Task
      * @param taskId task_id
      */
-    public deleteTaskUsingDELETE1(taskId: string, _options?: ConfigurationOptions): Observable<void> {
-        return this.deleteTaskUsingDELETE1WithHttpInfo(taskId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public deleteTask(taskId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteTaskWithHttpInfo(taskId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
-     * Retrieves a single task
-     * Retrieve a Task
-     * @param taskId task_id
+     * Deletes a Custom Field from the Task object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+     * Delete a Custom Field
+     * @param customFieldId custom_field_id
      */
-    public getTaskUsingGET1WithHttpInfo(taskId: string, _options?: ConfigurationOptions): Observable<HttpInfo<Task>> {
+    public deleteTaskCustomFieldWithHttpInfo(customFieldId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getTaskUsingGET1(taskId, _config);
+        const requestContextPromise = this.requestFactory.deleteTaskCustomField(customFieldId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -8753,7 +8526,41 @@ export class ObservableTaskApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getTaskUsingGET1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteTaskCustomFieldWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Deletes a Custom Field from the Task object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+     * Delete a Custom Field
+     * @param customFieldId custom_field_id
+     */
+    public deleteTaskCustomField(customFieldId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteTaskCustomFieldWithHttpInfo(customFieldId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves a single task
+     * Retrieve a Task
+     * @param taskId task_id
+     */
+    public getTaskWithHttpInfo(taskId: string, _options?: ConfigurationOptions): Observable<HttpInfo<Task>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getTask(taskId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getTaskWithHttpInfo(rsp)));
             }));
     }
 
@@ -8762,8 +8569,8 @@ export class ObservableTaskApi {
      * Retrieve a Task
      * @param taskId task_id
      */
-    public getTaskUsingGET1(taskId: string, _options?: ConfigurationOptions): Observable<Task> {
-        return this.getTaskUsingGET1WithHttpInfo(taskId, _options).pipe(map((apiResponse: HttpInfo<Task>) => apiResponse.data));
+    public getTask(taskId: string, _options?: ConfigurationOptions): Observable<Task> {
+        return this.getTaskWithHttpInfo(taskId, _options).pipe(map((apiResponse: HttpInfo<Task>) => apiResponse.data));
     }
 
     /**
@@ -8776,10 +8583,10 @@ export class ObservableTaskApi {
      * @param [pageToken] Page token
      * @param [startDueTime]
      */
-    public listTasksUsingGET1WithHttpInfo(endDueTime?: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, startDueTime?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListTasksResponse>> {
+    public listTasksWithHttpInfo(endDueTime?: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, startDueTime?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListTasksResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.listTasksUsingGET1(endDueTime, filter, orderBy, pageSize, pageToken, startDueTime, _config);
+        const requestContextPromise = this.requestFactory.listTasks(endDueTime, filter, orderBy, pageSize, pageToken, startDueTime, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -8792,7 +8599,7 @@ export class ObservableTaskApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listTasksUsingGET1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listTasksWithHttpInfo(rsp)));
             }));
     }
 
@@ -8806,18 +8613,18 @@ export class ObservableTaskApi {
      * @param [pageToken] Page token
      * @param [startDueTime]
      */
-    public listTasksUsingGET1(endDueTime?: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, startDueTime?: string, _options?: ConfigurationOptions): Observable<ListTasksResponse> {
-        return this.listTasksUsingGET1WithHttpInfo(endDueTime, filter, orderBy, pageSize, pageToken, startDueTime, _options).pipe(map((apiResponse: HttpInfo<ListTasksResponse>) => apiResponse.data));
+    public listTasks(endDueTime?: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, startDueTime?: string, _options?: ConfigurationOptions): Observable<ListTasksResponse> {
+        return this.listTasksWithHttpInfo(endDueTime, filter, orderBy, pageSize, pageToken, startDueTime, _options).pipe(map((apiResponse: HttpInfo<ListTasksResponse>) => apiResponse.data));
     }
 
     /**
      * Get the custom fields for the Task object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
      * Retrieve Task Model
      */
-    public retrieveTaskModelUsingGET1WithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<ObjectModel>> {
+    public retrieveTaskModelWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<ObjectModel>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.retrieveTaskModelUsingGET1(_config);
+        const requestContextPromise = this.requestFactory.retrieveTaskModel(_config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -8830,7 +8637,7 @@ export class ObservableTaskApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.retrieveTaskModelUsingGET1WithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.retrieveTaskModelWithHttpInfo(rsp)));
             }));
     }
 
@@ -8838,46 +8645,8 @@ export class ObservableTaskApi {
      * Get the custom fields for the Task object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
      * Retrieve Task Model
      */
-    public retrieveTaskModelUsingGET1(_options?: ConfigurationOptions): Observable<ObjectModel> {
-        return this.retrieveTaskModelUsingGET1WithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<ObjectModel>) => apiResponse.data));
-    }
-
-    /**
-     * Updates a custom field of the specified type and options to the Task object.<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
-     * Update a Task\'s Custom Field
-     * @param customFieldId custom_field_id
-     * @param updateCustomFieldMetaDataRequest request
-     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-     */
-    public updateTaskCustomFieldUsingPATCHWithHttpInfo(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldMetaData>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.updateTaskCustomFieldUsingPATCH(customFieldId, updateCustomFieldMetaDataRequest, updateMask, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateTaskCustomFieldUsingPATCHWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Updates a custom field of the specified type and options to the Task object.<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
-     * Update a Task\'s Custom Field
-     * @param customFieldId custom_field_id
-     * @param updateCustomFieldMetaDataRequest request
-     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-     */
-    public updateTaskCustomFieldUsingPATCH(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<CustomFieldMetaData> {
-        return this.updateTaskCustomFieldUsingPATCHWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<CustomFieldMetaData>) => apiResponse.data));
+    public retrieveTaskModel(_options?: ConfigurationOptions): Observable<ObjectModel> {
+        return this.retrieveTaskModelWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<ObjectModel>) => apiResponse.data));
     }
 
     /**
@@ -8887,10 +8656,10 @@ export class ObservableTaskApi {
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @param [createUpdateTaskRequest] task
      */
-    public updateTaskUsingPATCHWithHttpInfo(taskId: string, updateMask?: Array<string>, createUpdateTaskRequest?: CreateUpdateTaskRequest, _options?: ConfigurationOptions): Observable<HttpInfo<UpdateTaskResponse>> {
+    public updateTaskWithHttpInfo(taskId: string, updateMask?: Array<string>, createUpdateTaskRequest?: CreateUpdateTaskRequest, _options?: ConfigurationOptions): Observable<HttpInfo<UpdateTaskResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.updateTaskUsingPATCH(taskId, updateMask, createUpdateTaskRequest, _config);
+        const requestContextPromise = this.requestFactory.updateTask(taskId, updateMask, createUpdateTaskRequest, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -8903,7 +8672,7 @@ export class ObservableTaskApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateTaskUsingPATCHWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateTaskWithHttpInfo(rsp)));
             }));
     }
 
@@ -8914,8 +8683,46 @@ export class ObservableTaskApi {
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @param [createUpdateTaskRequest] task
      */
-    public updateTaskUsingPATCH(taskId: string, updateMask?: Array<string>, createUpdateTaskRequest?: CreateUpdateTaskRequest, _options?: ConfigurationOptions): Observable<UpdateTaskResponse> {
-        return this.updateTaskUsingPATCHWithHttpInfo(taskId, updateMask, createUpdateTaskRequest, _options).pipe(map((apiResponse: HttpInfo<UpdateTaskResponse>) => apiResponse.data));
+    public updateTask(taskId: string, updateMask?: Array<string>, createUpdateTaskRequest?: CreateUpdateTaskRequest, _options?: ConfigurationOptions): Observable<UpdateTaskResponse> {
+        return this.updateTaskWithHttpInfo(taskId, updateMask, createUpdateTaskRequest, _options).pipe(map((apiResponse: HttpInfo<UpdateTaskResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Updates a custom field of the specified type and options to the Task object.<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+     * Update a Task\'s Custom Field
+     * @param customFieldId custom_field_id
+     * @param updateCustomFieldMetaDataRequest request
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateTaskCustomFieldWithHttpInfo(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<CustomFieldMetaData>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.updateTaskCustomField(customFieldId, updateCustomFieldMetaDataRequest, updateMask, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateTaskCustomFieldWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Updates a custom field of the specified type and options to the Task object.<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+     * Update a Task\'s Custom Field
+     * @param customFieldId custom_field_id
+     * @param updateCustomFieldMetaDataRequest request
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateTaskCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<CustomFieldMetaData> {
+        return this.updateTaskCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<CustomFieldMetaData>) => apiResponse.data));
     }
 
 }
@@ -8944,10 +8751,10 @@ export class ObservableUsersApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listPaginatedUsersUsingGETWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListUsersPaginatedResponse>> {
+    public listPaginatedUsersWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListUsersPaginatedResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.listPaginatedUsersUsingGET(filter, orderBy, pageSize, pageToken, _config);
+        const requestContextPromise = this.requestFactory.listPaginatedUsers(filter, orderBy, pageSize, pageToken, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -8960,7 +8767,7 @@ export class ObservableUsersApi {
                 for (const middleware of _config.middleware.reverse()) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listPaginatedUsersUsingGETWithHttpInfo(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listPaginatedUsersWithHttpInfo(rsp)));
             }));
     }
 
@@ -8972,8 +8779,8 @@ export class ObservableUsersApi {
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
-    public listPaginatedUsersUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListUsersPaginatedResponse> {
-        return this.listPaginatedUsersUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListUsersPaginatedResponse>) => apiResponse.data));
+    public listPaginatedUsers(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListUsersPaginatedResponse> {
+        return this.listPaginatedUsersWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListUsersPaginatedResponse>) => apiResponse.data));
     }
 
 }

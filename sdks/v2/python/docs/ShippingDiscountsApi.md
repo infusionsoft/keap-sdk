@@ -4,15 +4,15 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_discount_using_post3**](ShippingDiscountsApi.md#create_discount_using_post3) | **POST** /v2/discounts/shipping | Create a Shipping Discount
-[**delete_discount_using_delete3**](ShippingDiscountsApi.md#delete_discount_using_delete3) | **DELETE** /v2/discounts/shipping/{discount_id} | Delete a Shipping Discount
-[**get_discount_using_get3**](ShippingDiscountsApi.md#get_discount_using_get3) | **GET** /v2/discounts/shipping/{discount_id} | Retrieve a Shipping Discount
-[**list_discounts_using_get1**](ShippingDiscountsApi.md#list_discounts_using_get1) | **GET** /v2/discounts/shipping | List all Shipping Discounts
-[**update_discount_using_patch3**](ShippingDiscountsApi.md#update_discount_using_patch3) | **PATCH** /v2/discounts/shipping/{discount_id} | Update a Shipping Discount
+[**create_shipping_discount**](ShippingDiscountsApi.md#create_shipping_discount) | **POST** /v2/discounts/shipping | Create a Shipping Discount
+[**delete_shipping_discount**](ShippingDiscountsApi.md#delete_shipping_discount) | **DELETE** /v2/discounts/shipping/{discount_id} | Delete a Shipping Discount
+[**get_shipping_discount**](ShippingDiscountsApi.md#get_shipping_discount) | **GET** /v2/discounts/shipping/{discount_id} | Retrieve a Shipping Discount
+[**list_shipping_discounts**](ShippingDiscountsApi.md#list_shipping_discounts) | **GET** /v2/discounts/shipping | List all Shipping Discounts
+[**update_shipping_discount**](ShippingDiscountsApi.md#update_shipping_discount) | **PATCH** /v2/discounts/shipping/{discount_id} | Update a Shipping Discount
 
 
-# **create_discount_using_post3**
-> ShippingDiscount create_discount_using_post3(create_shipping_discount_request)
+# **create_shipping_discount**
+> ShippingDiscount create_shipping_discount(create_shipping_discount_request)
 
 Create a Shipping Discount
 
@@ -42,11 +42,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Create a Shipping Discount
-        api_response = api_instance.create_discount_using_post3(create_shipping_discount_request)
-        print("The response of ShippingDiscountsApi->create_discount_using_post3:\n")
+        api_response = api_instance.create_shipping_discount(create_shipping_discount_request)
+        print("The response of ShippingDiscountsApi->create_shipping_discount:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling ShippingDiscountsApi->create_discount_using_post3: %s\n" % e)
+        print("Exception when calling ShippingDiscountsApi->create_shipping_discount: %s\n" % e)
 ```
 
 
@@ -81,8 +81,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **delete_discount_using_delete3**
-> delete_discount_using_delete3(discount_id)
+# **delete_shipping_discount**
+> delete_shipping_discount(discount_id)
 
 Delete a Shipping Discount
 
@@ -110,9 +110,9 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Delete a Shipping Discount
-        api_instance.delete_discount_using_delete3(discount_id)
+        api_instance.delete_shipping_discount(discount_id)
     except Exception as e:
-        print("Exception when calling ShippingDiscountsApi->delete_discount_using_delete3: %s\n" % e)
+        print("Exception when calling ShippingDiscountsApi->delete_shipping_discount: %s\n" % e)
 ```
 
 
@@ -148,8 +148,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_discount_using_get3**
-> ShippingDiscount get_discount_using_get3(discount_id)
+# **get_shipping_discount**
+> ShippingDiscount get_shipping_discount(discount_id)
 
 Retrieve a Shipping Discount
 
@@ -178,11 +178,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieve a Shipping Discount
-        api_response = api_instance.get_discount_using_get3(discount_id)
-        print("The response of ShippingDiscountsApi->get_discount_using_get3:\n")
+        api_response = api_instance.get_shipping_discount(discount_id)
+        print("The response of ShippingDiscountsApi->get_shipping_discount:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling ShippingDiscountsApi->get_discount_using_get3: %s\n" % e)
+        print("Exception when calling ShippingDiscountsApi->get_shipping_discount: %s\n" % e)
 ```
 
 
@@ -218,8 +218,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **list_discounts_using_get1**
-> ListShippingDiscountsResponse list_discounts_using_get1(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
+# **list_shipping_discounts**
+> ListShippingDiscountsResponse list_shipping_discounts(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
 
 List all Shipping Discounts
 
@@ -245,17 +245,17 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.ShippingDiscountsApi(api_client)
     filter = 'filter_example' # str | Filter to apply, allowed fields are: - (DiscountType) `discount_type`: AMOUNT or PERCENT - (Double) `discount_value`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=discount_type%3D%3DAMOUNT` - `filter=discount_value%3D%3D4.5` - `filter=discount_type%3D%3DAMOUNT%3Bdiscount_value%3D%3D4.5`  (optional)
-    order_by = 'order_by_example' # str | Attribute and direction to order items. One of the following fields: - `discount_type` - `discount_value` - `id`  One of the following directions: - `asc` - `desc` (optional)
+    order_by = 'order_by_example' # str | Attribute and direction to order items. One of the following fields: - `discount_type` - `discount_value` - `id` - `name`  One of the following directions: - `asc` - `desc` (optional)
     page_size = 0 # int | Total number of items to return per page (optional)
     page_token = 'page_token_example' # str | Page token (optional)
 
     try:
         # List all Shipping Discounts
-        api_response = api_instance.list_discounts_using_get1(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
-        print("The response of ShippingDiscountsApi->list_discounts_using_get1:\n")
+        api_response = api_instance.list_shipping_discounts(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
+        print("The response of ShippingDiscountsApi->list_shipping_discounts:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling ShippingDiscountsApi->list_discounts_using_get1: %s\n" % e)
+        print("Exception when calling ShippingDiscountsApi->list_shipping_discounts: %s\n" % e)
 ```
 
 
@@ -265,7 +265,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **filter** | **str**| Filter to apply, allowed fields are: - (DiscountType) &#x60;discount_type&#x60;: AMOUNT or PERCENT - (Double) &#x60;discount_value&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT&#x60; - &#x60;filter&#x3D;discount_value%3D%3D4.5&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT%3Bdiscount_value%3D%3D4.5&#x60;  | [optional] 
- **order_by** | **str**| Attribute and direction to order items. One of the following fields: - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] 
+ **order_by** | **str**| Attribute and direction to order items. One of the following fields: - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60; - &#x60;name&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] 
  **page_size** | **int**| Total number of items to return per page | [optional] 
  **page_token** | **str**| Page token | [optional] 
 
@@ -294,8 +294,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **update_discount_using_patch3**
-> ShippingDiscount update_discount_using_patch3(discount_id, update_shipping_discount_request, update_mask=update_mask)
+# **update_shipping_discount**
+> ShippingDiscount update_shipping_discount(discount_id, update_shipping_discount_request, update_mask=update_mask)
 
 Update a Shipping Discount
 
@@ -327,11 +327,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Update a Shipping Discount
-        api_response = api_instance.update_discount_using_patch3(discount_id, update_shipping_discount_request, update_mask=update_mask)
-        print("The response of ShippingDiscountsApi->update_discount_using_patch3:\n")
+        api_response = api_instance.update_shipping_discount(discount_id, update_shipping_discount_request, update_mask=update_mask)
+        print("The response of ShippingDiscountsApi->update_shipping_discount:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling ShippingDiscountsApi->update_discount_using_patch3: %s\n" % e)
+        print("Exception when calling ShippingDiscountsApi->update_shipping_discount: %s\n" % e)
 ```
 
 

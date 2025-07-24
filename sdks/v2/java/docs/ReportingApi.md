@@ -4,18 +4,18 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**listReportsUsingGET**](ReportingApi.md#listReportsUsingGET) | **GET** /v2/reporting/reports | List Reports |
-| [**listReportsUsingGETWithHttpInfo**](ReportingApi.md#listReportsUsingGETWithHttpInfo) | **GET** /v2/reporting/reports | List Reports |
-| [**retrieveReportUsingGET**](ReportingApi.md#retrieveReportUsingGET) | **GET** /v2/reporting/reports/{report_id} | Retrieve Report |
-| [**retrieveReportUsingGETWithHttpInfo**](ReportingApi.md#retrieveReportUsingGETWithHttpInfo) | **GET** /v2/reporting/reports/{report_id} | Retrieve Report |
-| [**runReportUsingPOST**](ReportingApi.md#runReportUsingPOST) | **POST** /v2/reporting/reports/{report_id}:run | Run a Report |
-| [**runReportUsingPOSTWithHttpInfo**](ReportingApi.md#runReportUsingPOSTWithHttpInfo) | **POST** /v2/reporting/reports/{report_id}:run | Run a Report |
+| [**listReports**](ReportingApi.md#listReports) | **GET** /v2/reporting/reports | List Reports |
+| [**listReportsWithHttpInfo**](ReportingApi.md#listReportsWithHttpInfo) | **GET** /v2/reporting/reports | List Reports |
+| [**retrieveReport**](ReportingApi.md#retrieveReport) | **GET** /v2/reporting/reports/{report_id} | Retrieve Report |
+| [**retrieveReportWithHttpInfo**](ReportingApi.md#retrieveReportWithHttpInfo) | **GET** /v2/reporting/reports/{report_id} | Retrieve Report |
+| [**runReport**](ReportingApi.md#runReport) | **POST** /v2/reporting/reports/{report_id}:run | Run a Report |
+| [**runReportWithHttpInfo**](ReportingApi.md#runReportWithHttpInfo) | **POST** /v2/reporting/reports/{report_id}:run | Run a Report |
 
 
 
-## listReportsUsingGET
+## listReports
 
-> ListReportsResponse listReportsUsingGET(filter, orderBy, pageSize, pageToken)
+> ListReportsResponse listReports(filter, orderBy, pageSize, pageToken)
 
 List Reports
 
@@ -42,10 +42,10 @@ public class Example {
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
         try {
-            ListReportsResponse result = apiInstance.listReportsUsingGET(filter, orderBy, pageSize, pageToken);
+            ListReportsResponse result = apiInstance.listReports(filter, orderBy, pageSize, pageToken);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ReportingApi#listReportsUsingGET");
+            System.err.println("Exception when calling ReportingApi#listReports");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -88,9 +88,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## listReportsUsingGETWithHttpInfo
+## listReportsWithHttpInfo
 
-> ApiResponse<ListReportsResponse> listReportsUsingGET listReportsUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken)
+> ApiResponse<ListReportsResponse> listReports listReportsWithHttpInfo(filter, orderBy, pageSize, pageToken)
 
 List Reports
 
@@ -118,12 +118,12 @@ public class Example {
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
         try {
-            ApiResponse<ListReportsResponse> response = apiInstance.listReportsUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken);
+            ApiResponse<ListReportsResponse> response = apiInstance.listReportsWithHttpInfo(filter, orderBy, pageSize, pageToken);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling ReportingApi#listReportsUsingGET");
+            System.err.println("Exception when calling ReportingApi#listReports");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -167,9 +167,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## retrieveReportUsingGET
+## retrieveReport
 
-> Report retrieveReportUsingGET(reportId)
+> Report retrieveReport(reportId)
 
 Retrieve Report
 
@@ -193,10 +193,10 @@ public class Example {
         ReportingApi apiInstance = new ReportingApi(defaultClient);
         String reportId = "reportId_example"; // String | report_id
         try {
-            Report result = apiInstance.retrieveReportUsingGET(reportId);
+            Report result = apiInstance.retrieveReport(reportId);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ReportingApi#retrieveReportUsingGET");
+            System.err.println("Exception when calling ReportingApi#retrieveReport");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -236,9 +236,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## retrieveReportUsingGETWithHttpInfo
+## retrieveReportWithHttpInfo
 
-> ApiResponse<Report> retrieveReportUsingGET retrieveReportUsingGETWithHttpInfo(reportId)
+> ApiResponse<Report> retrieveReport retrieveReportWithHttpInfo(reportId)
 
 Retrieve Report
 
@@ -263,12 +263,12 @@ public class Example {
         ReportingApi apiInstance = new ReportingApi(defaultClient);
         String reportId = "reportId_example"; // String | report_id
         try {
-            ApiResponse<Report> response = apiInstance.retrieveReportUsingGETWithHttpInfo(reportId);
+            ApiResponse<Report> response = apiInstance.retrieveReportWithHttpInfo(reportId);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling ReportingApi#retrieveReportUsingGET");
+            System.err.println("Exception when calling ReportingApi#retrieveReport");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -309,9 +309,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## runReportUsingPOST
+## runReport
 
-> ReportExecutionResult runReportUsingPOST(reportId, fields, orderBy, pageSize, pageToken)
+> ReportExecutionResult runReport(reportId, fields, orderBy, pageSize, pageToken)
 
 Run a Report
 
@@ -339,10 +339,10 @@ public class Example {
         Integer pageSize = 1000; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Representation of the last row retrieved from the previous page. An empty value implies a request for the first page.
         try {
-            ReportExecutionResult result = apiInstance.runReportUsingPOST(reportId, fields, orderBy, pageSize, pageToken);
+            ReportExecutionResult result = apiInstance.runReport(reportId, fields, orderBy, pageSize, pageToken);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ReportingApi#runReportUsingPOST");
+            System.err.println("Exception when calling ReportingApi#runReport");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -385,9 +385,9 @@ No authorization required
 | **403** | Forbidden |  -  |
 | **500** | Internal Server Error |  -  |
 
-## runReportUsingPOSTWithHttpInfo
+## runReportWithHttpInfo
 
-> ApiResponse<ReportExecutionResult> runReportUsingPOST runReportUsingPOSTWithHttpInfo(reportId, fields, orderBy, pageSize, pageToken)
+> ApiResponse<ReportExecutionResult> runReport runReportWithHttpInfo(reportId, fields, orderBy, pageSize, pageToken)
 
 Run a Report
 
@@ -416,12 +416,12 @@ public class Example {
         Integer pageSize = 1000; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Representation of the last row retrieved from the previous page. An empty value implies a request for the first page.
         try {
-            ApiResponse<ReportExecutionResult> response = apiInstance.runReportUsingPOSTWithHttpInfo(reportId, fields, orderBy, pageSize, pageToken);
+            ApiResponse<ReportExecutionResult> response = apiInstance.runReportWithHttpInfo(reportId, fields, orderBy, pageSize, pageToken);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling ReportingApi#runReportUsingPOST");
+            System.err.println("Exception when calling ReportingApi#runReport");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());

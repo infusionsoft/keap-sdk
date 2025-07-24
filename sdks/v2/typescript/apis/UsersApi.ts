@@ -23,7 +23,7 @@ export class UsersApiRequestFactory extends BaseAPIRequestFactory {
      * @param pageSize Total number of items to return per page
      * @param pageToken Page token
      */
-    public async listPaginatedUsersUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
+    public async listPaginatedUsers(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
 
@@ -75,10 +75,10 @@ export class UsersApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to listPaginatedUsersUsingGET
+     * @params response Response returned by the server for a request to listPaginatedUsers
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async listPaginatedUsersUsingGETWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListUsersPaginatedResponse >> {
+     public async listPaginatedUsersWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListUsersPaginatedResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: ListUsersPaginatedResponse = ObjectSerializer.deserialize(

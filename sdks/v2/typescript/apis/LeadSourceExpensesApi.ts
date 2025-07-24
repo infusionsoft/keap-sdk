@@ -24,18 +24,18 @@ export class LeadSourceExpensesApiRequestFactory extends BaseAPIRequestFactory {
      * @param leadSourceId The ID of the lead source this expense belongs to
      * @param createLeadSourceExpenseRequest The request object to create a new lead source expense
      */
-    public async createLeadSourceExpenseUsingPOST(leadSourceId: string, createLeadSourceExpenseRequest: CreateLeadSourceExpenseRequest, _options?: Configuration): Promise<RequestContext> {
+    public async createLeadSourceExpense(leadSourceId: string, createLeadSourceExpenseRequest: CreateLeadSourceExpenseRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'leadSourceId' is not null or undefined
         if (leadSourceId === null || leadSourceId === undefined) {
-            throw new RequiredError("LeadSourceExpensesApi", "createLeadSourceExpenseUsingPOST", "leadSourceId");
+            throw new RequiredError("LeadSourceExpensesApi", "createLeadSourceExpense", "leadSourceId");
         }
 
 
         // verify required parameter 'createLeadSourceExpenseRequest' is not null or undefined
         if (createLeadSourceExpenseRequest === null || createLeadSourceExpenseRequest === undefined) {
-            throw new RequiredError("LeadSourceExpensesApi", "createLeadSourceExpenseUsingPOST", "createLeadSourceExpenseRequest");
+            throw new RequiredError("LeadSourceExpensesApi", "createLeadSourceExpense", "createLeadSourceExpenseRequest");
         }
 
 
@@ -74,18 +74,18 @@ export class LeadSourceExpensesApiRequestFactory extends BaseAPIRequestFactory {
      * @param leadSourceExpenseId The ID of a lead source expense
      * @param leadSourceId The ID of the lead source this expense belongs to
      */
-    public async deleteLeadSourceUsingDELETE1(leadSourceExpenseId: string, leadSourceId: string, _options?: Configuration): Promise<RequestContext> {
+    public async deleteLeadSourceExpense(leadSourceExpenseId: string, leadSourceId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'leadSourceExpenseId' is not null or undefined
         if (leadSourceExpenseId === null || leadSourceExpenseId === undefined) {
-            throw new RequiredError("LeadSourceExpensesApi", "deleteLeadSourceUsingDELETE1", "leadSourceExpenseId");
+            throw new RequiredError("LeadSourceExpensesApi", "deleteLeadSourceExpense", "leadSourceExpenseId");
         }
 
 
         // verify required parameter 'leadSourceId' is not null or undefined
         if (leadSourceId === null || leadSourceId === undefined) {
-            throw new RequiredError("LeadSourceExpensesApi", "deleteLeadSourceUsingDELETE1", "leadSourceId");
+            throw new RequiredError("LeadSourceExpensesApi", "deleteLeadSourceExpense", "leadSourceId");
         }
 
 
@@ -114,18 +114,18 @@ export class LeadSourceExpensesApiRequestFactory extends BaseAPIRequestFactory {
      * @param leadSourceExpenseId The ID of a lead source expense
      * @param leadSourceId The ID of the lead source this expense belongs to
      */
-    public async getLeadSourceExpenseUsingGET(leadSourceExpenseId: string, leadSourceId: string, _options?: Configuration): Promise<RequestContext> {
+    public async getLeadSourceExpense(leadSourceExpenseId: string, leadSourceId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'leadSourceExpenseId' is not null or undefined
         if (leadSourceExpenseId === null || leadSourceExpenseId === undefined) {
-            throw new RequiredError("LeadSourceExpensesApi", "getLeadSourceExpenseUsingGET", "leadSourceExpenseId");
+            throw new RequiredError("LeadSourceExpensesApi", "getLeadSourceExpense", "leadSourceExpenseId");
         }
 
 
         // verify required parameter 'leadSourceId' is not null or undefined
         if (leadSourceId === null || leadSourceId === undefined) {
-            throw new RequiredError("LeadSourceExpensesApi", "getLeadSourceExpenseUsingGET", "leadSourceId");
+            throw new RequiredError("LeadSourceExpensesApi", "getLeadSourceExpense", "leadSourceId");
         }
 
 
@@ -157,12 +157,12 @@ export class LeadSourceExpensesApiRequestFactory extends BaseAPIRequestFactory {
      * @param pageSize Total number of items to return per page
      * @param pageToken Page token
      */
-    public async listLeadSourceExpensesUsingGET(leadSourceId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
+    public async listLeadSourceExpenses(leadSourceId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'leadSourceId' is not null or undefined
         if (leadSourceId === null || leadSourceId === undefined) {
-            throw new RequiredError("LeadSourceExpensesApi", "listLeadSourceExpensesUsingGET", "leadSourceId");
+            throw new RequiredError("LeadSourceExpensesApi", "listLeadSourceExpenses", "leadSourceId");
         }
 
 
@@ -216,24 +216,24 @@ export class LeadSourceExpensesApiRequestFactory extends BaseAPIRequestFactory {
      * @param updateLeadSourceExpenseRequest The request object to update a lead source expense
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateLeadSourceExpenseUsingPATCH(leadSourceExpenseId: string, leadSourceId: string, updateLeadSourceExpenseRequest: UpdateLeadSourceExpenseRequest, updateMask?: Array<string>, _options?: Configuration): Promise<RequestContext> {
+    public async updateLeadSourceExpense(leadSourceExpenseId: string, leadSourceId: string, updateLeadSourceExpenseRequest: UpdateLeadSourceExpenseRequest, updateMask?: Array<string>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'leadSourceExpenseId' is not null or undefined
         if (leadSourceExpenseId === null || leadSourceExpenseId === undefined) {
-            throw new RequiredError("LeadSourceExpensesApi", "updateLeadSourceExpenseUsingPATCH", "leadSourceExpenseId");
+            throw new RequiredError("LeadSourceExpensesApi", "updateLeadSourceExpense", "leadSourceExpenseId");
         }
 
 
         // verify required parameter 'leadSourceId' is not null or undefined
         if (leadSourceId === null || leadSourceId === undefined) {
-            throw new RequiredError("LeadSourceExpensesApi", "updateLeadSourceExpenseUsingPATCH", "leadSourceId");
+            throw new RequiredError("LeadSourceExpensesApi", "updateLeadSourceExpense", "leadSourceId");
         }
 
 
         // verify required parameter 'updateLeadSourceExpenseRequest' is not null or undefined
         if (updateLeadSourceExpenseRequest === null || updateLeadSourceExpenseRequest === undefined) {
-            throw new RequiredError("LeadSourceExpensesApi", "updateLeadSourceExpenseUsingPATCH", "updateLeadSourceExpenseRequest");
+            throw new RequiredError("LeadSourceExpensesApi", "updateLeadSourceExpense", "updateLeadSourceExpenseRequest");
         }
 
 
@@ -284,10 +284,10 @@ export class LeadSourceExpensesApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to createLeadSourceExpenseUsingPOST
+     * @params response Response returned by the server for a request to createLeadSourceExpense
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async createLeadSourceExpenseUsingPOSTWithHttpInfo(response: ResponseContext): Promise<HttpInfo<LeadSourceExpense >> {
+     public async createLeadSourceExpenseWithHttpInfo(response: ResponseContext): Promise<HttpInfo<LeadSourceExpense >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("201", response.httpStatusCode)) {
             const body: LeadSourceExpense = ObjectSerializer.deserialize(
@@ -348,10 +348,10 @@ export class LeadSourceExpensesApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to deleteLeadSourceUsingDELETE1
+     * @params response Response returned by the server for a request to deleteLeadSourceExpense
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async deleteLeadSourceUsingDELETE1WithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async deleteLeadSourceExpenseWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("204", response.httpStatusCode)) {
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
@@ -401,10 +401,10 @@ export class LeadSourceExpensesApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to getLeadSourceExpenseUsingGET
+     * @params response Response returned by the server for a request to getLeadSourceExpense
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getLeadSourceExpenseUsingGETWithHttpInfo(response: ResponseContext): Promise<HttpInfo<LeadSourceExpense >> {
+     public async getLeadSourceExpenseWithHttpInfo(response: ResponseContext): Promise<HttpInfo<LeadSourceExpense >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: LeadSourceExpense = ObjectSerializer.deserialize(
@@ -458,10 +458,10 @@ export class LeadSourceExpensesApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to listLeadSourceExpensesUsingGET
+     * @params response Response returned by the server for a request to listLeadSourceExpenses
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async listLeadSourceExpensesUsingGETWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListLeadSourceExpensesResponse >> {
+     public async listLeadSourceExpensesWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListLeadSourceExpensesResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: ListLeadSourceExpensesResponse = ObjectSerializer.deserialize(
@@ -522,10 +522,10 @@ export class LeadSourceExpensesApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to updateLeadSourceExpenseUsingPATCH
+     * @params response Response returned by the server for a request to updateLeadSourceExpense
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async updateLeadSourceExpenseUsingPATCHWithHttpInfo(response: ResponseContext): Promise<HttpInfo<LeadSourceExpense >> {
+     public async updateLeadSourceExpenseWithHttpInfo(response: ResponseContext): Promise<HttpInfo<LeadSourceExpense >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: LeadSourceExpense = ObjectSerializer.deserialize(

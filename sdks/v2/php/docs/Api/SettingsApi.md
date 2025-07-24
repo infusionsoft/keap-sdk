@@ -4,15 +4,15 @@ All URIs are relative to https://api.keap.com/crm/rest, except if the operation 
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**getApplicationConfigurationsUsingGET()**](SettingsApi.md#getApplicationConfigurationsUsingGET) | **GET** /v2/settings/applications:getConfiguration | Get Application Configuration |
-| [**getContactOptionTypesUsingGET1()**](SettingsApi.md#getContactOptionTypesUsingGET1) | **GET** /v2/settings/contactOptionTypes | Get Contact Option types |
-| [**isApplicationEnabledUsingGET()**](SettingsApi.md#isApplicationEnabledUsingGET) | **GET** /v2/settings/applications:isEnabled | Get Application Status |
+| [**getApplicationConfigurations()**](SettingsApi.md#getApplicationConfigurations) | **GET** /v2/settings/applications:getConfiguration | Get Application Configuration |
+| [**getContactOptionTypes()**](SettingsApi.md#getContactOptionTypes) | **GET** /v2/settings/contactOptionTypes | Get Contact Option types |
+| [**isApplicationEnabled()**](SettingsApi.md#isApplicationEnabled) | **GET** /v2/settings/applications:isEnabled | Get Application Status |
 
 
-## `getApplicationConfigurationsUsingGET()`
+## `getApplicationConfigurations()`
 
 ```php
-getApplicationConfigurationsUsingGET($fields): \Keap\Core\V2\Model\GetSettingsResponse
+getApplicationConfigurations($fields): \Keap\Core\V2\Model\GetSettingsResponse
 ```
 
 Get Application Configuration
@@ -34,10 +34,10 @@ $apiInstance = new Keap\Core\V2\Api\SettingsApi(
 $fields = array('fields_example'); // string[] | By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query.
 
 try {
-    $result = $apiInstance->getApplicationConfigurationsUsingGET($fields);
+    $result = $apiInstance->getApplicationConfigurations($fields);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling SettingsApi->getApplicationConfigurationsUsingGET: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling SettingsApi->getApplicationConfigurations: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -64,10 +64,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getContactOptionTypesUsingGET1()`
+## `getContactOptionTypes()`
 
 ```php
-getContactOptionTypesUsingGET1(): \Keap\Core\V2\Model\GetContactOptionTypesResponse
+getContactOptionTypes(): \Keap\Core\V2\Model\GetContactOptionTypesResponse
 ```
 
 Get Contact Option types
@@ -88,10 +88,10 @@ $apiInstance = new Keap\Core\V2\Api\SettingsApi(
 );
 
 try {
-    $result = $apiInstance->getContactOptionTypesUsingGET1();
+    $result = $apiInstance->getContactOptionTypes();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling SettingsApi->getContactOptionTypesUsingGET1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling SettingsApi->getContactOptionTypes: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -116,10 +116,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `isApplicationEnabledUsingGET()`
+## `isApplicationEnabled()`
 
 ```php
-isApplicationEnabledUsingGET(): \Keap\Core\V2\Model\GetApplicationEnabledStatusResponse
+isApplicationEnabled(): \Keap\Core\V2\Model\GetApplicationEnabledStatusResponse
 ```
 
 Get Application Status
@@ -140,10 +140,10 @@ $apiInstance = new Keap\Core\V2\Api\SettingsApi(
 );
 
 try {
-    $result = $apiInstance->isApplicationEnabledUsingGET();
+    $result = $apiInstance->isApplicationEnabled();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling SettingsApi->isApplicationEnabledUsingGET: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling SettingsApi->isApplicationEnabled: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

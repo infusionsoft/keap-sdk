@@ -4,14 +4,14 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getBusinessProfileUsingGET**](BusinessProfileApi.md#getBusinessProfileUsingGET) | **GET** /v2/businessProfile | Retrieve Business Profile
-[**updateBusinessProfileUsingPATCH**](BusinessProfileApi.md#updateBusinessProfileUsingPATCH) | **PATCH** /v2/businessProfile | Update Business Profile
+[**getBusinessProfile**](BusinessProfileApi.md#getBusinessProfile) | **GET** /v2/businessProfile | Retrieve Business Profile
+[**updateBusinessProfile**](BusinessProfileApi.md#updateBusinessProfile) | **PATCH** /v2/businessProfile | Update Business Profile
 
 
 
-## getBusinessProfileUsingGET
+## getBusinessProfile
 
-> GetBusinessProfileResponse getBusinessProfileUsingGET()
+> GetBusinessProfileResponse getBusinessProfile()
 
 Retrieve Business Profile
 
@@ -23,7 +23,7 @@ Retrieves Business Profile information.
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.BusinessProfileApi();
-apiInstance.getBusinessProfileUsingGET().then((data) => {
+apiInstance.getBusinessProfile().then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -49,9 +49,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## updateBusinessProfileUsingPATCH
+## updateBusinessProfile
 
-> GetBusinessProfileResponse updateBusinessProfileUsingPATCH(opts)
+> GetBusinessProfileResponse updateBusinessProfile(opts)
 
 Update Business Profile
 
@@ -67,7 +67,7 @@ let opts = {
   'updateMask': ["null"], // [String] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
   'updateBusinessProfileRequest': new KeapCoreServiceV2Sdk.UpdateBusinessProfileRequest() // UpdateBusinessProfileRequest | businessProfile
 };
-apiInstance.updateBusinessProfileUsingPATCH(opts).then((data) => {
+apiInstance.updateBusinessProfile(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);

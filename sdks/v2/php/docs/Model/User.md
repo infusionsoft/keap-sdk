@@ -20,7 +20,6 @@ Name | Type | Description | Notes
 **phone_numbers** | [**\Keap\Core\V2\Model\PhoneNumber[]**](PhoneNumber.md) |  | [optional]
 **social_accounts** | [**\Keap\Core\V2\Model\SocialAccount[]**](SocialAccount.md) |  | [optional]
 **status** | **string** |  | [optional]
-**time_zone** | **string** |  | [optional]
 **title** | **string** |  | [optional]
 **update_time** | **string** |  | [optional]
 **updated_by** | **int** |  | [optional]

@@ -4,19 +4,18 @@ All URIs are relative to https://api.keap.com/crm/rest, except if the operation 
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**addContactsToAutomationSequenceUsingPOST()**](AutomationApi.md#addContactsToAutomationSequenceUsingPOST) | **POST** /v2/automations/{automation_id}/sequences/{sequence_id}:addContacts | Add Contacts to an Automation Sequence |
-| [**bulkAssignmentAutomationsCategoriesUsingPOST()**](AutomationApi.md#bulkAssignmentAutomationsCategoriesUsingPOST) | **POST** /v2/automations/categories/batchAssign | Bulk update for Automations Categories |
-| [**deleteAutomationUsingDELETE()**](AutomationApi.md#deleteAutomationUsingDELETE) | **DELETE** /v2/automations | Delete an Automation |
-| [**getAutomationUsingGET()**](AutomationApi.md#getAutomationUsingGET) | **GET** /v2/automations/{automation_id} | Retrieve an Automation |
-| [**listAllAutomationIdsUsingGET()**](AutomationApi.md#listAllAutomationIdsUsingGET) | **GET** /v2/automations/ids | List Automations Ids |
-| [**listAutomationsUsingGET()**](AutomationApi.md#listAutomationsUsingGET) | **GET** /v2/automations | List Automations |
-| [**updateAutomationCategoryUsingPUT()**](AutomationApi.md#updateAutomationCategoryUsingPUT) | **PUT** /v2/automations/category | Update an Automation&#39;s Category |
+| [**addContactsToAutomationSequence()**](AutomationApi.md#addContactsToAutomationSequence) | **POST** /v2/automations/{automation_id}/sequences/{sequence_id}:addContacts | Add Contacts to an Automation Sequence |
+| [**bulkAssignmentAutomationsCategories()**](AutomationApi.md#bulkAssignmentAutomationsCategories) | **POST** /v2/automations/categories/batchAssign | Bulk update for Automations Categories |
+| [**deleteAutomation()**](AutomationApi.md#deleteAutomation) | **DELETE** /v2/automations | Delete an Automation |
+| [**getAutomation()**](AutomationApi.md#getAutomation) | **GET** /v2/automations/{automation_id} | Retrieve an Automation |
+| [**listAllAutomationIds()**](AutomationApi.md#listAllAutomationIds) | **GET** /v2/automations/ids | List Automations Ids |
+| [**listAutomations()**](AutomationApi.md#listAutomations) | **GET** /v2/automations | List Automations |
 
 
-## `addContactsToAutomationSequenceUsingPOST()`
+## `addContactsToAutomationSequence()`
 
 ```php
-addContactsToAutomationSequenceUsingPOST($automation_id, $sequence_id, $add_to_automation_sequence_request): \Keap\Core\V2\Model\AddToAutomationSequenceResponse
+addContactsToAutomationSequence($automation_id, $sequence_id, $add_to_automation_sequence_request): \Keap\Core\V2\Model\AddToAutomationSequenceResponse
 ```
 
 Add Contacts to an Automation Sequence
@@ -40,10 +39,10 @@ $sequence_id = 'sequence_id_example'; // string | sequence_id
 $add_to_automation_sequence_request = new \Keap\Core\V2\Model\AddToAutomationSequenceRequest(); // \Keap\Core\V2\Model\AddToAutomationSequenceRequest | addToAutomationSequenceRequest
 
 try {
-    $result = $apiInstance->addContactsToAutomationSequenceUsingPOST($automation_id, $sequence_id, $add_to_automation_sequence_request);
+    $result = $apiInstance->addContactsToAutomationSequence($automation_id, $sequence_id, $add_to_automation_sequence_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AutomationApi->addContactsToAutomationSequenceUsingPOST: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AutomationApi->addContactsToAutomationSequence: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -72,10 +71,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `bulkAssignmentAutomationsCategoriesUsingPOST()`
+## `bulkAssignmentAutomationsCategories()`
 
 ```php
-bulkAssignmentAutomationsCategoriesUsingPOST($assign_automation_category_request)
+bulkAssignmentAutomationsCategories($assign_automation_category_request)
 ```
 
 Bulk update for Automations Categories
@@ -97,9 +96,9 @@ $apiInstance = new Keap\Core\V2\Api\AutomationApi(
 $assign_automation_category_request = new \Keap\Core\V2\Model\AssignAutomationCategoryRequest(); // \Keap\Core\V2\Model\AssignAutomationCategoryRequest | assignAutomationCategoryRequest
 
 try {
-    $apiInstance->bulkAssignmentAutomationsCategoriesUsingPOST($assign_automation_category_request);
+    $apiInstance->bulkAssignmentAutomationsCategories($assign_automation_category_request);
 } catch (Exception $e) {
-    echo 'Exception when calling AutomationApi->bulkAssignmentAutomationsCategoriesUsingPOST: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AutomationApi->bulkAssignmentAutomationsCategories: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -126,10 +125,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `deleteAutomationUsingDELETE()`
+## `deleteAutomation()`
 
 ```php
-deleteAutomationUsingDELETE($automation_ids)
+deleteAutomation($automation_ids)
 ```
 
 Delete an Automation
@@ -151,9 +150,9 @@ $apiInstance = new Keap\Core\V2\Api\AutomationApi(
 $automation_ids = array(56); // int[] | automation_ids
 
 try {
-    $apiInstance->deleteAutomationUsingDELETE($automation_ids);
+    $apiInstance->deleteAutomation($automation_ids);
 } catch (Exception $e) {
-    echo 'Exception when calling AutomationApi->deleteAutomationUsingDELETE: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AutomationApi->deleteAutomation: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -180,10 +179,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getAutomationUsingGET()`
+## `getAutomation()`
 
 ```php
-getAutomationUsingGET($automation_id): \Keap\Core\V2\Model\Automation
+getAutomation($automation_id): \Keap\Core\V2\Model\Automation
 ```
 
 Retrieve an Automation
@@ -205,10 +204,10 @@ $apiInstance = new Keap\Core\V2\Api\AutomationApi(
 $automation_id = 'automation_id_example'; // string | automation_id
 
 try {
-    $result = $apiInstance->getAutomationUsingGET($automation_id);
+    $result = $apiInstance->getAutomation($automation_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AutomationApi->getAutomationUsingGET: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AutomationApi->getAutomation: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -235,10 +234,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `listAllAutomationIdsUsingGET()`
+## `listAllAutomationIds()`
 
 ```php
-listAllAutomationIdsUsingGET($filter, $order_by, $page_size, $page_token, $stats): \Keap\Core\V2\Model\ListAutomationIdsResponse
+listAllAutomationIds($filter, $order_by, $page_size, $page_token, $stats): \Keap\Core\V2\Model\ListAutomationIdsResponse
 ```
 
 List Automations Ids
@@ -264,10 +263,10 @@ $page_token = 'page_token_example'; // string | Page token
 $stats = True; // bool
 
 try {
-    $result = $apiInstance->listAllAutomationIdsUsingGET($filter, $order_by, $page_size, $page_token, $stats);
+    $result = $apiInstance->listAllAutomationIds($filter, $order_by, $page_size, $page_token, $stats);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AutomationApi->listAllAutomationIdsUsingGET: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AutomationApi->listAllAutomationIds: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -298,10 +297,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `listAutomationsUsingGET()`
+## `listAutomations()`
 
 ```php
-listAutomationsUsingGET($filter, $order_by, $page_size, $page_token, $stats): \Keap\Core\V2\Model\ListAutomationResponse
+listAutomations($filter, $order_by, $page_size, $page_token, $stats): \Keap\Core\V2\Model\ListAutomationResponse
 ```
 
 List Automations
@@ -327,10 +326,10 @@ $page_token = 'page_token_example'; // string | Page token
 $stats = True; // bool
 
 try {
-    $result = $apiInstance->listAutomationsUsingGET($filter, $order_by, $page_size, $page_token, $stats);
+    $result = $apiInstance->listAutomations($filter, $order_by, $page_size, $page_token, $stats);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AutomationApi->listAutomationsUsingGET: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AutomationApi->listAutomations: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -355,60 +354,6 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `updateAutomationCategoryUsingPUT()`
-
-```php
-updateAutomationCategoryUsingPUT($update_automation_category_request)
-```
-
-Update an Automation's Category
-
-Updates the category of one or more automations
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-$apiInstance = new Keap\Core\V2\Api\AutomationApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
-);
-$update_automation_category_request = new \Keap\Core\V2\Model\UpdateAutomationCategoryRequest(); // \Keap\Core\V2\Model\UpdateAutomationCategoryRequest | updateAutomationCategoryRequest
-
-try {
-    $apiInstance->updateAutomationCategoryUsingPUT($update_automation_category_request);
-} catch (Exception $e) {
-    echo 'Exception when calling AutomationApi->updateAutomationCategoryUsingPUT: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **update_automation_category_request** | [**\Keap\Core\V2\Model\UpdateAutomationCategoryRequest**](../Model/UpdateAutomationCategoryRequest.md)| updateAutomationCategoryRequest | |
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

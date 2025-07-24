@@ -4,12 +4,12 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_business_profile_using_get**](BusinessProfileApi.md#get_business_profile_using_get) | **GET** /v2/businessProfile | Retrieve Business Profile
-[**update_business_profile_using_patch**](BusinessProfileApi.md#update_business_profile_using_patch) | **PATCH** /v2/businessProfile | Update Business Profile
+[**get_business_profile**](BusinessProfileApi.md#get_business_profile) | **GET** /v2/businessProfile | Retrieve Business Profile
+[**update_business_profile**](BusinessProfileApi.md#update_business_profile) | **PATCH** /v2/businessProfile | Update Business Profile
 
 
-# **get_business_profile_using_get**
-> GetBusinessProfileResponse get_business_profile_using_get()
+# **get_business_profile**
+> GetBusinessProfileResponse get_business_profile()
 
 Retrieve Business Profile
 
@@ -37,11 +37,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieve Business Profile
-        api_response = api_instance.get_business_profile_using_get()
-        print("The response of BusinessProfileApi->get_business_profile_using_get:\n")
+        api_response = api_instance.get_business_profile()
+        print("The response of BusinessProfileApi->get_business_profile:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling BusinessProfileApi->get_business_profile_using_get: %s\n" % e)
+        print("Exception when calling BusinessProfileApi->get_business_profile: %s\n" % e)
 ```
 
 
@@ -74,8 +74,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **update_business_profile_using_patch**
-> GetBusinessProfileResponse update_business_profile_using_patch(update_mask=update_mask, update_business_profile_request=update_business_profile_request)
+# **update_business_profile**
+> GetBusinessProfileResponse update_business_profile(update_mask=update_mask, update_business_profile_request=update_business_profile_request)
 
 Update Business Profile
 
@@ -106,11 +106,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Update Business Profile
-        api_response = api_instance.update_business_profile_using_patch(update_mask=update_mask, update_business_profile_request=update_business_profile_request)
-        print("The response of BusinessProfileApi->update_business_profile_using_patch:\n")
+        api_response = api_instance.update_business_profile(update_mask=update_mask, update_business_profile_request=update_business_profile_request)
+        print("The response of BusinessProfileApi->update_business_profile:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling BusinessProfileApi->update_business_profile_using_patch: %s\n" % e)
+        print("Exception when calling BusinessProfileApi->update_business_profile: %s\n" % e)
 ```
 
 

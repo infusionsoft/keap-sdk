@@ -4,15 +4,15 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**CreateLeadSourceCategoryUsingPOST**](LeadSourceCategoriesApi.md#createleadsourcecategoryusingpost) | **POST** /v2/leadSourceCategories | Create a Lead Source Category |
-| [**DeleteLeadSourceCategoryUsingDELETE**](LeadSourceCategoriesApi.md#deleteleadsourcecategoryusingdelete) | **DELETE** /v2/leadSourceCategories/{lead_source_category_id} | Delete a Lead Source Category |
-| [**GetLeadSourceCategoryUsingGET**](LeadSourceCategoriesApi.md#getleadsourcecategoryusingget) | **GET** /v2/leadSourceCategories/{lead_source_category_id} | Retrieve a Lead Source Category |
-| [**ListCategoriesUsingGET1**](LeadSourceCategoriesApi.md#listcategoriesusingget1) | **GET** /v2/leadSourceCategories | List Lead Source Categories |
-| [**UpdateLeadSourceCategoryUsingPATCH**](LeadSourceCategoriesApi.md#updateleadsourcecategoryusingpatch) | **PATCH** /v2/leadSourceCategories/{lead_source_category_id} | Update a Lead Source Category |
+| [**CreateLeadSourceCategory**](LeadSourceCategoriesApi.md#createleadsourcecategory) | **POST** /v2/leadSourceCategories | Create a Lead Source Category |
+| [**DeleteLeadSourceCategory**](LeadSourceCategoriesApi.md#deleteleadsourcecategory) | **DELETE** /v2/leadSourceCategories/{lead_source_category_id} | Delete a Lead Source Category |
+| [**GetLeadSourceCategory**](LeadSourceCategoriesApi.md#getleadsourcecategory) | **GET** /v2/leadSourceCategories/{lead_source_category_id} | Retrieve a Lead Source Category |
+| [**ListLeadSourceCategories**](LeadSourceCategoriesApi.md#listleadsourcecategories) | **GET** /v2/leadSourceCategories | List Lead Source Categories |
+| [**UpdateLeadSourceCategory**](LeadSourceCategoriesApi.md#updateleadsourcecategory) | **PATCH** /v2/leadSourceCategories/{lead_source_category_id} | Update a Lead Source Category |
 
-<a id="createleadsourcecategoryusingpost"></a>
-# **CreateLeadSourceCategoryUsingPOST**
-> LeadSourceCategory CreateLeadSourceCategoryUsingPOST (CreateUpdateLeadSourceCategoryRequest createUpdateLeadSourceCategoryRequest)
+<a id="createleadsourcecategory"></a>
+# **CreateLeadSourceCategory**
+> LeadSourceCategory CreateLeadSourceCategory (CreateUpdateLeadSourceCategoryRequest createUpdateLeadSourceCategoryRequest)
 
 Create a Lead Source Category
 
@@ -28,7 +28,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class CreateLeadSourceCategoryUsingPOSTExample
+    public class CreateLeadSourceCategoryExample
     {
         public static void Main()
         {
@@ -40,12 +40,12 @@ namespace Example
             try
             {
                 // Create a Lead Source Category
-                LeadSourceCategory result = apiInstance.CreateLeadSourceCategoryUsingPOST(createUpdateLeadSourceCategoryRequest);
+                LeadSourceCategory result = apiInstance.CreateLeadSourceCategory(createUpdateLeadSourceCategoryRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling LeadSourceCategoriesApi.CreateLeadSourceCategoryUsingPOST: " + e.Message);
+                Debug.Print("Exception when calling LeadSourceCategoriesApi.CreateLeadSourceCategory: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -54,21 +54,21 @@ namespace Example
 }
 ```
 
-#### Using the CreateLeadSourceCategoryUsingPOSTWithHttpInfo variant
+#### Using the CreateLeadSourceCategoryWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Create a Lead Source Category
-    ApiResponse<LeadSourceCategory> response = apiInstance.CreateLeadSourceCategoryUsingPOSTWithHttpInfo(createUpdateLeadSourceCategoryRequest);
+    ApiResponse<LeadSourceCategory> response = apiInstance.CreateLeadSourceCategoryWithHttpInfo(createUpdateLeadSourceCategoryRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling LeadSourceCategoriesApi.CreateLeadSourceCategoryUsingPOSTWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling LeadSourceCategoriesApi.CreateLeadSourceCategoryWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -105,9 +105,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="deleteleadsourcecategoryusingdelete"></a>
-# **DeleteLeadSourceCategoryUsingDELETE**
-> void DeleteLeadSourceCategoryUsingDELETE (string leadSourceCategoryId)
+<a id="deleteleadsourcecategory"></a>
+# **DeleteLeadSourceCategory**
+> void DeleteLeadSourceCategory (string leadSourceCategoryId)
 
 Delete a Lead Source Category
 
@@ -123,7 +123,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class DeleteLeadSourceCategoryUsingDELETEExample
+    public class DeleteLeadSourceCategoryExample
     {
         public static void Main()
         {
@@ -135,11 +135,11 @@ namespace Example
             try
             {
                 // Delete a Lead Source Category
-                apiInstance.DeleteLeadSourceCategoryUsingDELETE(leadSourceCategoryId);
+                apiInstance.DeleteLeadSourceCategory(leadSourceCategoryId);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling LeadSourceCategoriesApi.DeleteLeadSourceCategoryUsingDELETE: " + e.Message);
+                Debug.Print("Exception when calling LeadSourceCategoriesApi.DeleteLeadSourceCategory: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -148,18 +148,18 @@ namespace Example
 }
 ```
 
-#### Using the DeleteLeadSourceCategoryUsingDELETEWithHttpInfo variant
+#### Using the DeleteLeadSourceCategoryWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Delete a Lead Source Category
-    apiInstance.DeleteLeadSourceCategoryUsingDELETEWithHttpInfo(leadSourceCategoryId);
+    apiInstance.DeleteLeadSourceCategoryWithHttpInfo(leadSourceCategoryId);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling LeadSourceCategoriesApi.DeleteLeadSourceCategoryUsingDELETEWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling LeadSourceCategoriesApi.DeleteLeadSourceCategoryWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -196,9 +196,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="getleadsourcecategoryusingget"></a>
-# **GetLeadSourceCategoryUsingGET**
-> LeadSourceCategory GetLeadSourceCategoryUsingGET (string leadSourceCategoryId)
+<a id="getleadsourcecategory"></a>
+# **GetLeadSourceCategory**
+> LeadSourceCategory GetLeadSourceCategory (string leadSourceCategoryId)
 
 Retrieve a Lead Source Category
 
@@ -214,7 +214,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class GetLeadSourceCategoryUsingGETExample
+    public class GetLeadSourceCategoryExample
     {
         public static void Main()
         {
@@ -226,12 +226,12 @@ namespace Example
             try
             {
                 // Retrieve a Lead Source Category
-                LeadSourceCategory result = apiInstance.GetLeadSourceCategoryUsingGET(leadSourceCategoryId);
+                LeadSourceCategory result = apiInstance.GetLeadSourceCategory(leadSourceCategoryId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling LeadSourceCategoriesApi.GetLeadSourceCategoryUsingGET: " + e.Message);
+                Debug.Print("Exception when calling LeadSourceCategoriesApi.GetLeadSourceCategory: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -240,21 +240,21 @@ namespace Example
 }
 ```
 
-#### Using the GetLeadSourceCategoryUsingGETWithHttpInfo variant
+#### Using the GetLeadSourceCategoryWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Retrieve a Lead Source Category
-    ApiResponse<LeadSourceCategory> response = apiInstance.GetLeadSourceCategoryUsingGETWithHttpInfo(leadSourceCategoryId);
+    ApiResponse<LeadSourceCategory> response = apiInstance.GetLeadSourceCategoryWithHttpInfo(leadSourceCategoryId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling LeadSourceCategoriesApi.GetLeadSourceCategoryUsingGETWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling LeadSourceCategoriesApi.GetLeadSourceCategoryWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -291,9 +291,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="listcategoriesusingget1"></a>
-# **ListCategoriesUsingGET1**
-> ListLeadSourceCategoriesResponse ListCategoriesUsingGET1 (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
+<a id="listleadsourcecategories"></a>
+# **ListLeadSourceCategories**
+> ListLeadSourceCategoriesResponse ListLeadSourceCategories (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
 
 List Lead Source Categories
 
@@ -309,7 +309,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class ListCategoriesUsingGET1Example
+    public class ListLeadSourceCategoriesExample
     {
         public static void Main()
         {
@@ -324,12 +324,12 @@ namespace Example
             try
             {
                 // List Lead Source Categories
-                ListLeadSourceCategoriesResponse result = apiInstance.ListCategoriesUsingGET1(filter, orderBy, pageSize, pageToken);
+                ListLeadSourceCategoriesResponse result = apiInstance.ListLeadSourceCategories(filter, orderBy, pageSize, pageToken);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling LeadSourceCategoriesApi.ListCategoriesUsingGET1: " + e.Message);
+                Debug.Print("Exception when calling LeadSourceCategoriesApi.ListLeadSourceCategories: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -338,21 +338,21 @@ namespace Example
 }
 ```
 
-#### Using the ListCategoriesUsingGET1WithHttpInfo variant
+#### Using the ListLeadSourceCategoriesWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // List Lead Source Categories
-    ApiResponse<ListLeadSourceCategoriesResponse> response = apiInstance.ListCategoriesUsingGET1WithHttpInfo(filter, orderBy, pageSize, pageToken);
+    ApiResponse<ListLeadSourceCategoriesResponse> response = apiInstance.ListLeadSourceCategoriesWithHttpInfo(filter, orderBy, pageSize, pageToken);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling LeadSourceCategoriesApi.ListCategoriesUsingGET1WithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling LeadSourceCategoriesApi.ListLeadSourceCategoriesWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -393,9 +393,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="updateleadsourcecategoryusingpatch"></a>
-# **UpdateLeadSourceCategoryUsingPATCH**
-> LeadSourceCategory UpdateLeadSourceCategoryUsingPATCH (string leadSourceCategoryId, CreateUpdateLeadSourceCategoryRequest createUpdateLeadSourceCategoryRequest, List<string>? updateMask = null)
+<a id="updateleadsourcecategory"></a>
+# **UpdateLeadSourceCategory**
+> LeadSourceCategory UpdateLeadSourceCategory (string leadSourceCategoryId, CreateUpdateLeadSourceCategoryRequest createUpdateLeadSourceCategoryRequest, List<string>? updateMask = null)
 
 Update a Lead Source Category
 
@@ -411,7 +411,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class UpdateLeadSourceCategoryUsingPATCHExample
+    public class UpdateLeadSourceCategoryExample
     {
         public static void Main()
         {
@@ -425,12 +425,12 @@ namespace Example
             try
             {
                 // Update a Lead Source Category
-                LeadSourceCategory result = apiInstance.UpdateLeadSourceCategoryUsingPATCH(leadSourceCategoryId, createUpdateLeadSourceCategoryRequest, updateMask);
+                LeadSourceCategory result = apiInstance.UpdateLeadSourceCategory(leadSourceCategoryId, createUpdateLeadSourceCategoryRequest, updateMask);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling LeadSourceCategoriesApi.UpdateLeadSourceCategoryUsingPATCH: " + e.Message);
+                Debug.Print("Exception when calling LeadSourceCategoriesApi.UpdateLeadSourceCategory: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -439,21 +439,21 @@ namespace Example
 }
 ```
 
-#### Using the UpdateLeadSourceCategoryUsingPATCHWithHttpInfo variant
+#### Using the UpdateLeadSourceCategoryWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Update a Lead Source Category
-    ApiResponse<LeadSourceCategory> response = apiInstance.UpdateLeadSourceCategoryUsingPATCHWithHttpInfo(leadSourceCategoryId, createUpdateLeadSourceCategoryRequest, updateMask);
+    ApiResponse<LeadSourceCategory> response = apiInstance.UpdateLeadSourceCategoryWithHttpInfo(leadSourceCategoryId, createUpdateLeadSourceCategoryRequest, updateMask);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling LeadSourceCategoriesApi.UpdateLeadSourceCategoryUsingPATCHWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling LeadSourceCategoriesApi.UpdateLeadSourceCategoryWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }

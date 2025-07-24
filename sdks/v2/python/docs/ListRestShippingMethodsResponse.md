@@ -5,7 +5,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**next_page_token** | **str** |  | [optional] 
 **shipping_methods** | [**List[ShippingMethod]**](ShippingMethod.md) |  | [optional] 
 
 ## Example

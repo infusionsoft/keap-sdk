@@ -4,14 +4,14 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**CreateOrderCustomFieldUsingPOST**](OrdersApi.md#createordercustomfieldusingpost) | **POST** /v2/orders/model/customFields | Create an Order Custom Field |
-| [**DeleteOrderCustomFieldUsingDELETE**](OrdersApi.md#deleteordercustomfieldusingdelete) | **DELETE** /v2/orders/model/customFields/{custom_field_id} | Delete an Order Custom Field |
-| [**RetrieveOrderCustomFieldModelUsingGET**](OrdersApi.md#retrieveordercustomfieldmodelusingget) | **GET** /v2/orders/model | Retrieve Order Custom Field Model |
-| [**UpdateOrderCustomFieldUsingPATCH**](OrdersApi.md#updateordercustomfieldusingpatch) | **PATCH** /v2/orders/model/customFields/{custom_field_id} | Update an Order Custom Field |
+| [**CreateOrderCustomField**](OrdersApi.md#createordercustomfield) | **POST** /v2/orders/model/customFields | Create an Order Custom Field |
+| [**DeleteOrderCustomField**](OrdersApi.md#deleteordercustomfield) | **DELETE** /v2/orders/model/customFields/{custom_field_id} | Delete an Order Custom Field |
+| [**RetrieveOrderCustomFieldModel**](OrdersApi.md#retrieveordercustomfieldmodel) | **GET** /v2/orders/model | Retrieve Order Custom Field Model |
+| [**UpdateOrderCustomField**](OrdersApi.md#updateordercustomfield) | **PATCH** /v2/orders/model/customFields/{custom_field_id} | Update an Order Custom Field |
 
-<a id="createordercustomfieldusingpost"></a>
-# **CreateOrderCustomFieldUsingPOST**
-> CustomFieldMetaData CreateOrderCustomFieldUsingPOST (CreateCustomFieldRequest createCustomFieldRequest)
+<a id="createordercustomfield"></a>
+# **CreateOrderCustomField**
+> CustomFieldMetaData CreateOrderCustomField (CreateCustomFieldRequest createCustomFieldRequest)
 
 Create an Order Custom Field
 
@@ -27,7 +27,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class CreateOrderCustomFieldUsingPOSTExample
+    public class CreateOrderCustomFieldExample
     {
         public static void Main()
         {
@@ -39,12 +39,12 @@ namespace Example
             try
             {
                 // Create an Order Custom Field
-                CustomFieldMetaData result = apiInstance.CreateOrderCustomFieldUsingPOST(createCustomFieldRequest);
+                CustomFieldMetaData result = apiInstance.CreateOrderCustomField(createCustomFieldRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling OrdersApi.CreateOrderCustomFieldUsingPOST: " + e.Message);
+                Debug.Print("Exception when calling OrdersApi.CreateOrderCustomField: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -53,21 +53,21 @@ namespace Example
 }
 ```
 
-#### Using the CreateOrderCustomFieldUsingPOSTWithHttpInfo variant
+#### Using the CreateOrderCustomFieldWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Create an Order Custom Field
-    ApiResponse<CustomFieldMetaData> response = apiInstance.CreateOrderCustomFieldUsingPOSTWithHttpInfo(createCustomFieldRequest);
+    ApiResponse<CustomFieldMetaData> response = apiInstance.CreateOrderCustomFieldWithHttpInfo(createCustomFieldRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling OrdersApi.CreateOrderCustomFieldUsingPOSTWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling OrdersApi.CreateOrderCustomFieldWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -103,9 +103,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="deleteordercustomfieldusingdelete"></a>
-# **DeleteOrderCustomFieldUsingDELETE**
-> void DeleteOrderCustomFieldUsingDELETE (string customFieldId)
+<a id="deleteordercustomfield"></a>
+# **DeleteOrderCustomField**
+> void DeleteOrderCustomField (string customFieldId)
 
 Delete an Order Custom Field
 
@@ -121,7 +121,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class DeleteOrderCustomFieldUsingDELETEExample
+    public class DeleteOrderCustomFieldExample
     {
         public static void Main()
         {
@@ -133,11 +133,11 @@ namespace Example
             try
             {
                 // Delete an Order Custom Field
-                apiInstance.DeleteOrderCustomFieldUsingDELETE(customFieldId);
+                apiInstance.DeleteOrderCustomField(customFieldId);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling OrdersApi.DeleteOrderCustomFieldUsingDELETE: " + e.Message);
+                Debug.Print("Exception when calling OrdersApi.DeleteOrderCustomField: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -146,18 +146,18 @@ namespace Example
 }
 ```
 
-#### Using the DeleteOrderCustomFieldUsingDELETEWithHttpInfo variant
+#### Using the DeleteOrderCustomFieldWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Delete an Order Custom Field
-    apiInstance.DeleteOrderCustomFieldUsingDELETEWithHttpInfo(customFieldId);
+    apiInstance.DeleteOrderCustomFieldWithHttpInfo(customFieldId);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling OrdersApi.DeleteOrderCustomFieldUsingDELETEWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling OrdersApi.DeleteOrderCustomFieldWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -194,9 +194,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="retrieveordercustomfieldmodelusingget"></a>
-# **RetrieveOrderCustomFieldModelUsingGET**
-> ObjectModel RetrieveOrderCustomFieldModelUsingGET ()
+<a id="retrieveordercustomfieldmodel"></a>
+# **RetrieveOrderCustomFieldModel**
+> ObjectModel RetrieveOrderCustomFieldModel ()
 
 Retrieve Order Custom Field Model
 
@@ -212,7 +212,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class RetrieveOrderCustomFieldModelUsingGETExample
+    public class RetrieveOrderCustomFieldModelExample
     {
         public static void Main()
         {
@@ -223,12 +223,12 @@ namespace Example
             try
             {
                 // Retrieve Order Custom Field Model
-                ObjectModel result = apiInstance.RetrieveOrderCustomFieldModelUsingGET();
+                ObjectModel result = apiInstance.RetrieveOrderCustomFieldModel();
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling OrdersApi.RetrieveOrderCustomFieldModelUsingGET: " + e.Message);
+                Debug.Print("Exception when calling OrdersApi.RetrieveOrderCustomFieldModel: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -237,21 +237,21 @@ namespace Example
 }
 ```
 
-#### Using the RetrieveOrderCustomFieldModelUsingGETWithHttpInfo variant
+#### Using the RetrieveOrderCustomFieldModelWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Retrieve Order Custom Field Model
-    ApiResponse<ObjectModel> response = apiInstance.RetrieveOrderCustomFieldModelUsingGETWithHttpInfo();
+    ApiResponse<ObjectModel> response = apiInstance.RetrieveOrderCustomFieldModelWithHttpInfo();
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling OrdersApi.RetrieveOrderCustomFieldModelUsingGETWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling OrdersApi.RetrieveOrderCustomFieldModelWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -284,9 +284,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="updateordercustomfieldusingpatch"></a>
-# **UpdateOrderCustomFieldUsingPATCH**
-> CustomFieldMetaData UpdateOrderCustomFieldUsingPATCH (string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, List<string>? updateMask = null)
+<a id="updateordercustomfield"></a>
+# **UpdateOrderCustomField**
+> CustomFieldMetaData UpdateOrderCustomField (string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, List<string>? updateMask = null)
 
 Update an Order Custom Field
 
@@ -302,7 +302,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class UpdateOrderCustomFieldUsingPATCHExample
+    public class UpdateOrderCustomFieldExample
     {
         public static void Main()
         {
@@ -316,12 +316,12 @@ namespace Example
             try
             {
                 // Update an Order Custom Field
-                CustomFieldMetaData result = apiInstance.UpdateOrderCustomFieldUsingPATCH(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
+                CustomFieldMetaData result = apiInstance.UpdateOrderCustomField(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling OrdersApi.UpdateOrderCustomFieldUsingPATCH: " + e.Message);
+                Debug.Print("Exception when calling OrdersApi.UpdateOrderCustomField: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -330,21 +330,21 @@ namespace Example
 }
 ```
 
-#### Using the UpdateOrderCustomFieldUsingPATCHWithHttpInfo variant
+#### Using the UpdateOrderCustomFieldWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Update an Order Custom Field
-    ApiResponse<CustomFieldMetaData> response = apiInstance.UpdateOrderCustomFieldUsingPATCHWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
+    ApiResponse<CustomFieldMetaData> response = apiInstance.UpdateOrderCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling OrdersApi.UpdateOrderCustomFieldUsingPATCHWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling OrdersApi.UpdateOrderCustomFieldWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }

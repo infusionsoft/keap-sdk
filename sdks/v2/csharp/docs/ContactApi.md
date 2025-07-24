@@ -4,115 +4,21 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**CreateContactLinkTypeUsingPOST**](ContactApi.md#createcontactlinktypeusingpost) | **POST** /v2/contacts/links/types | Create a Contact Link type |
-| [**CreateContactUsingPOST1**](ContactApi.md#createcontactusingpost1) | **POST** /v2/contacts | Create a Contact |
-| [**DeleteContactUsingDELETE1**](ContactApi.md#deletecontactusingdelete1) | **DELETE** /v2/contacts/{contact_id} | Delete a Contact |
-| [**GetContactUsingGET1**](ContactApi.md#getcontactusingget1) | **GET** /v2/contacts/{contact_id} | Retrieve a Contact |
-| [**LinkContactsUsingPOST**](ContactApi.md#linkcontactsusingpost) | **POST** /v2/contacts:link | Link Contacts |
-| [**ListContactLinkTypesUsingGET**](ContactApi.md#listcontactlinktypesusingget) | **GET** /v2/contacts/links/types | List Contact Link types |
-| [**ListContactLinksUsingGET**](ContactApi.md#listcontactlinksusingget) | **GET** /v2/contacts/{contact_id}/links | List Linked Contacts |
-| [**ListContactsUsingGET1**](ContactApi.md#listcontactsusingget1) | **GET** /v2/contacts | List Contacts |
-| [**RetrieveContactModelUsingGET1**](ContactApi.md#retrievecontactmodelusingget1) | **GET** /v2/contacts/model | Retrieve Contact Model |
-| [**UnlinkContactsUsingPOST**](ContactApi.md#unlinkcontactsusingpost) | **POST** /v2/contacts:unlink | Delete Link between two Contacts |
-| [**UpdateContactUsingPATCH**](ContactApi.md#updatecontactusingpatch) | **PATCH** /v2/contacts/{contact_id} | Update a Contact |
+| [**CreateContact**](ContactApi.md#createcontact) | **POST** /v2/contacts | Create a Contact |
+| [**CreateContactLinkType**](ContactApi.md#createcontactlinktype) | **POST** /v2/contacts/links/types | Create a Contact Link type |
+| [**DeleteContact**](ContactApi.md#deletecontact) | **DELETE** /v2/contacts/{contact_id} | Delete a Contact |
+| [**GetContact**](ContactApi.md#getcontact) | **GET** /v2/contacts/{contact_id} | Retrieve a Contact |
+| [**LinkContacts**](ContactApi.md#linkcontacts) | **POST** /v2/contacts:link | Link Contacts |
+| [**ListContactLinkTypes**](ContactApi.md#listcontactlinktypes) | **GET** /v2/contacts/links/types | List Contact Link types |
+| [**ListContactLinks**](ContactApi.md#listcontactlinks) | **GET** /v2/contacts/{contact_id}/links | List Linked Contacts |
+| [**ListContacts**](ContactApi.md#listcontacts) | **GET** /v2/contacts | List Contacts |
+| [**RetrieveContactModel**](ContactApi.md#retrievecontactmodel) | **GET** /v2/contacts/model | Retrieve Contact Model |
+| [**UnlinkContacts**](ContactApi.md#unlinkcontacts) | **POST** /v2/contacts:unlink | Delete Link between two Contacts |
+| [**UpdateContact**](ContactApi.md#updatecontact) | **PATCH** /v2/contacts/{contact_id} | Update a Contact |
 
-<a id="createcontactlinktypeusingpost"></a>
-# **CreateContactLinkTypeUsingPOST**
-> ContactLinkType CreateContactLinkTypeUsingPOST (CreateContactLinkTypeRequest createContactLinkTypeRequest)
-
-Create a Contact Link type
-
-Creates a new type of Contact Link
-
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using Keap.Core.V2.Api;
-using Keap.Core.V2.Client;
-using Keap.Core.V2.Model;
-
-namespace Example
-{
-    public class CreateContactLinkTypeUsingPOSTExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
-            var apiInstance = new ContactApi(config);
-            var createContactLinkTypeRequest = new CreateContactLinkTypeRequest(); // CreateContactLinkTypeRequest | request
-
-            try
-            {
-                // Create a Contact Link type
-                ContactLinkType result = apiInstance.CreateContactLinkTypeUsingPOST(createContactLinkTypeRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling ContactApi.CreateContactLinkTypeUsingPOST: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the CreateContactLinkTypeUsingPOSTWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Create a Contact Link type
-    ApiResponse<ContactLinkType> response = apiInstance.CreateContactLinkTypeUsingPOSTWithHttpInfo(createContactLinkTypeRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling ContactApi.CreateContactLinkTypeUsingPOSTWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| **createContactLinkTypeRequest** | [**CreateContactLinkTypeRequest**](CreateContactLinkTypeRequest.md) | request |  |
-
-### Return type
-
-[**ContactLinkType**](ContactLinkType.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **201** | Created |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **500** | Internal Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a id="createcontactusingpost1"></a>
-# **CreateContactUsingPOST1**
-> Contact CreateContactUsingPOST1 (CreateUpdateContactRequest? createUpdateContactRequest = null)
+<a id="createcontact"></a>
+# **CreateContact**
+> Contact CreateContact (CreateUpdateContactRequest? createUpdateContactRequest = null)
 
 Create a Contact
 
@@ -128,7 +34,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class CreateContactUsingPOST1Example
+    public class CreateContactExample
     {
         public static void Main()
         {
@@ -140,12 +46,12 @@ namespace Example
             try
             {
                 // Create a Contact
-                Contact result = apiInstance.CreateContactUsingPOST1(createUpdateContactRequest);
+                Contact result = apiInstance.CreateContact(createUpdateContactRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ContactApi.CreateContactUsingPOST1: " + e.Message);
+                Debug.Print("Exception when calling ContactApi.CreateContact: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -154,21 +60,21 @@ namespace Example
 }
 ```
 
-#### Using the CreateContactUsingPOST1WithHttpInfo variant
+#### Using the CreateContactWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Create a Contact
-    ApiResponse<Contact> response = apiInstance.CreateContactUsingPOST1WithHttpInfo(createUpdateContactRequest);
+    ApiResponse<Contact> response = apiInstance.CreateContactWithHttpInfo(createUpdateContactRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling ContactApi.CreateContactUsingPOST1WithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling ContactApi.CreateContactWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -204,9 +110,103 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="deletecontactusingdelete1"></a>
-# **DeleteContactUsingDELETE1**
-> void DeleteContactUsingDELETE1 (string contactId)
+<a id="createcontactlinktype"></a>
+# **CreateContactLinkType**
+> ContactLinkType CreateContactLinkType (CreateContactLinkTypeRequest createContactLinkTypeRequest)
+
+Create a Contact Link type
+
+Creates a new type of Contact Link
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class CreateContactLinkTypeExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm/rest";
+            var apiInstance = new ContactApi(config);
+            var createContactLinkTypeRequest = new CreateContactLinkTypeRequest(); // CreateContactLinkTypeRequest | request
+
+            try
+            {
+                // Create a Contact Link type
+                ContactLinkType result = apiInstance.CreateContactLinkType(createContactLinkTypeRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ContactApi.CreateContactLinkType: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the CreateContactLinkTypeWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Create a Contact Link type
+    ApiResponse<ContactLinkType> response = apiInstance.CreateContactLinkTypeWithHttpInfo(createContactLinkTypeRequest);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ContactApi.CreateContactLinkTypeWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **createContactLinkTypeRequest** | [**CreateContactLinkTypeRequest**](CreateContactLinkTypeRequest.md) | request |  |
+
+### Return type
+
+[**ContactLinkType**](ContactLinkType.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="deletecontact"></a>
+# **DeleteContact**
+> void DeleteContact (string contactId)
 
 Delete a Contact
 
@@ -222,7 +222,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class DeleteContactUsingDELETE1Example
+    public class DeleteContactExample
     {
         public static void Main()
         {
@@ -234,11 +234,11 @@ namespace Example
             try
             {
                 // Delete a Contact
-                apiInstance.DeleteContactUsingDELETE1(contactId);
+                apiInstance.DeleteContact(contactId);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ContactApi.DeleteContactUsingDELETE1: " + e.Message);
+                Debug.Print("Exception when calling ContactApi.DeleteContact: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -247,18 +247,18 @@ namespace Example
 }
 ```
 
-#### Using the DeleteContactUsingDELETE1WithHttpInfo variant
+#### Using the DeleteContactWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Delete a Contact
-    apiInstance.DeleteContactUsingDELETE1WithHttpInfo(contactId);
+    apiInstance.DeleteContactWithHttpInfo(contactId);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling ContactApi.DeleteContactUsingDELETE1WithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling ContactApi.DeleteContactWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -295,9 +295,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="getcontactusingget1"></a>
-# **GetContactUsingGET1**
-> Contact GetContactUsingGET1 (string contactId, List<string>? fields = null)
+<a id="getcontact"></a>
+# **GetContact**
+> Contact GetContact (string contactId, List<string>? fields = null)
 
 Retrieve a Contact
 
@@ -313,7 +313,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class GetContactUsingGET1Example
+    public class GetContactExample
     {
         public static void Main()
         {
@@ -326,12 +326,12 @@ namespace Example
             try
             {
                 // Retrieve a Contact
-                Contact result = apiInstance.GetContactUsingGET1(contactId, fields);
+                Contact result = apiInstance.GetContact(contactId, fields);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ContactApi.GetContactUsingGET1: " + e.Message);
+                Debug.Print("Exception when calling ContactApi.GetContact: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -340,21 +340,21 @@ namespace Example
 }
 ```
 
-#### Using the GetContactUsingGET1WithHttpInfo variant
+#### Using the GetContactWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Retrieve a Contact
-    ApiResponse<Contact> response = apiInstance.GetContactUsingGET1WithHttpInfo(contactId, fields);
+    ApiResponse<Contact> response = apiInstance.GetContactWithHttpInfo(contactId, fields);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling ContactApi.GetContactUsingGET1WithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling ContactApi.GetContactWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -392,9 +392,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="linkcontactsusingpost"></a>
-# **LinkContactsUsingPOST**
-> ContactLink LinkContactsUsingPOST (LinkContactsRequest linkContactsRequest)
+<a id="linkcontacts"></a>
+# **LinkContacts**
+> ContactLink LinkContacts (LinkContactsRequest linkContactsRequest)
 
 Link Contacts
 
@@ -410,7 +410,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class LinkContactsUsingPOSTExample
+    public class LinkContactsExample
     {
         public static void Main()
         {
@@ -422,12 +422,12 @@ namespace Example
             try
             {
                 // Link Contacts
-                ContactLink result = apiInstance.LinkContactsUsingPOST(linkContactsRequest);
+                ContactLink result = apiInstance.LinkContacts(linkContactsRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ContactApi.LinkContactsUsingPOST: " + e.Message);
+                Debug.Print("Exception when calling ContactApi.LinkContacts: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -436,21 +436,21 @@ namespace Example
 }
 ```
 
-#### Using the LinkContactsUsingPOSTWithHttpInfo variant
+#### Using the LinkContactsWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Link Contacts
-    ApiResponse<ContactLink> response = apiInstance.LinkContactsUsingPOSTWithHttpInfo(linkContactsRequest);
+    ApiResponse<ContactLink> response = apiInstance.LinkContactsWithHttpInfo(linkContactsRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling ContactApi.LinkContactsUsingPOSTWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling ContactApi.LinkContactsWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -486,9 +486,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="listcontactlinktypesusingget"></a>
-# **ListContactLinkTypesUsingGET**
-> ListContactLinkTypesResponse ListContactLinkTypesUsingGET (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
+<a id="listcontactlinktypes"></a>
+# **ListContactLinkTypes**
+> ListContactLinkTypesResponse ListContactLinkTypes (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
 
 List Contact Link types
 
@@ -504,27 +504,27 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class ListContactLinkTypesUsingGETExample
+    public class ListContactLinkTypesExample
     {
         public static void Main()
         {
             Configuration config = new Configuration();
             config.BasePath = "https://api.keap.com/crm/rest";
             var apiInstance = new ContactApi(config);
-            var filter = "name";  // string? | Search filter to apply to results. Formatted as (unencoded) ?filter=name==expectedValue (optional) 
-            var orderBy = "orderBy_example";  // string? |  (optional) 
-            var pageSize = 56;  // int? |  (optional) 
-            var pageToken = "pageToken_example";  // string? |  (optional) 
+            var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (String) `name` You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=name%3D%3DexpectedValue`  (optional) 
+            var orderBy = "orderBy_example";  // string? | Attribute and direction to order items. One of the following fields: - `name` - `max_links` - `create_time`  One of the following directions: - `asc` - `desc`  (optional) 
+            var pageSize = 0;  // int? | Total number of items to return per page (optional) 
+            var pageToken = "pageToken_example";  // string? | Page token (optional) 
 
             try
             {
                 // List Contact Link types
-                ListContactLinkTypesResponse result = apiInstance.ListContactLinkTypesUsingGET(filter, orderBy, pageSize, pageToken);
+                ListContactLinkTypesResponse result = apiInstance.ListContactLinkTypes(filter, orderBy, pageSize, pageToken);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ContactApi.ListContactLinkTypesUsingGET: " + e.Message);
+                Debug.Print("Exception when calling ContactApi.ListContactLinkTypes: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -533,21 +533,21 @@ namespace Example
 }
 ```
 
-#### Using the ListContactLinkTypesUsingGETWithHttpInfo variant
+#### Using the ListContactLinkTypesWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // List Contact Link types
-    ApiResponse<ListContactLinkTypesResponse> response = apiInstance.ListContactLinkTypesUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken);
+    ApiResponse<ListContactLinkTypesResponse> response = apiInstance.ListContactLinkTypesWithHttpInfo(filter, orderBy, pageSize, pageToken);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling ContactApi.ListContactLinkTypesUsingGETWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling ContactApi.ListContactLinkTypesWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -557,10 +557,10 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **filter** | **string?** | Search filter to apply to results. Formatted as (unencoded) ?filter&#x3D;name&#x3D;&#x3D;expectedValue | [optional]  |
-| **orderBy** | **string?** |  | [optional]  |
-| **pageSize** | **int?** |  | [optional]  |
-| **pageToken** | **string?** |  | [optional]  |
+| **filter** | **string?** | Filter to apply, allowed fields are: - (String) &#x60;name&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3DexpectedValue&#x60;  | [optional]  |
+| **orderBy** | **string?** | Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;max_links&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  | [optional]  |
+| **pageSize** | **int?** | Total number of items to return per page | [optional]  |
+| **pageToken** | **string?** | Page token | [optional]  |
 
 ### Return type
 
@@ -587,9 +587,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="listcontactlinksusingget"></a>
-# **ListContactLinksUsingGET**
-> ListContactLinksResponse ListContactLinksUsingGET (string contactId)
+<a id="listcontactlinks"></a>
+# **ListContactLinks**
+> ListContactLinksResponse ListContactLinks (string contactId)
 
 List Linked Contacts
 
@@ -605,7 +605,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class ListContactLinksUsingGETExample
+    public class ListContactLinksExample
     {
         public static void Main()
         {
@@ -617,12 +617,12 @@ namespace Example
             try
             {
                 // List Linked Contacts
-                ListContactLinksResponse result = apiInstance.ListContactLinksUsingGET(contactId);
+                ListContactLinksResponse result = apiInstance.ListContactLinks(contactId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ContactApi.ListContactLinksUsingGET: " + e.Message);
+                Debug.Print("Exception when calling ContactApi.ListContactLinks: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -631,21 +631,21 @@ namespace Example
 }
 ```
 
-#### Using the ListContactLinksUsingGETWithHttpInfo variant
+#### Using the ListContactLinksWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // List Linked Contacts
-    ApiResponse<ListContactLinksResponse> response = apiInstance.ListContactLinksUsingGETWithHttpInfo(contactId);
+    ApiResponse<ListContactLinksResponse> response = apiInstance.ListContactLinksWithHttpInfo(contactId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling ContactApi.ListContactLinksUsingGETWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling ContactApi.ListContactLinksWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -682,9 +682,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="listcontactsusingget1"></a>
-# **ListContactsUsingGET1**
-> ListContactsResponse ListContactsUsingGET1 (List<string>? fields = null, string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
+<a id="listcontacts"></a>
+# **ListContacts**
+> ListContactsResponse ListContacts (List<string>? fields = null, string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
 
 List Contacts
 
@@ -700,7 +700,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class ListContactsUsingGET1Example
+    public class ListContactsExample
     {
         public static void Main()
         {
@@ -716,12 +716,12 @@ namespace Example
             try
             {
                 // List Contacts
-                ListContactsResponse result = apiInstance.ListContactsUsingGET1(fields, filter, orderBy, pageSize, pageToken);
+                ListContactsResponse result = apiInstance.ListContacts(fields, filter, orderBy, pageSize, pageToken);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ContactApi.ListContactsUsingGET1: " + e.Message);
+                Debug.Print("Exception when calling ContactApi.ListContacts: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -730,21 +730,21 @@ namespace Example
 }
 ```
 
-#### Using the ListContactsUsingGET1WithHttpInfo variant
+#### Using the ListContactsWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // List Contacts
-    ApiResponse<ListContactsResponse> response = apiInstance.ListContactsUsingGET1WithHttpInfo(fields, filter, orderBy, pageSize, pageToken);
+    ApiResponse<ListContactsResponse> response = apiInstance.ListContactsWithHttpInfo(fields, filter, orderBy, pageSize, pageToken);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling ContactApi.ListContactsUsingGET1WithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling ContactApi.ListContactsWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -785,9 +785,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="retrievecontactmodelusingget1"></a>
-# **RetrieveContactModelUsingGET1**
-> ObjectModel RetrieveContactModelUsingGET1 ()
+<a id="retrievecontactmodel"></a>
+# **RetrieveContactModel**
+> ObjectModel RetrieveContactModel ()
 
 Retrieve Contact Model
 
@@ -803,7 +803,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class RetrieveContactModelUsingGET1Example
+    public class RetrieveContactModelExample
     {
         public static void Main()
         {
@@ -814,12 +814,12 @@ namespace Example
             try
             {
                 // Retrieve Contact Model
-                ObjectModel result = apiInstance.RetrieveContactModelUsingGET1();
+                ObjectModel result = apiInstance.RetrieveContactModel();
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ContactApi.RetrieveContactModelUsingGET1: " + e.Message);
+                Debug.Print("Exception when calling ContactApi.RetrieveContactModel: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -828,21 +828,21 @@ namespace Example
 }
 ```
 
-#### Using the RetrieveContactModelUsingGET1WithHttpInfo variant
+#### Using the RetrieveContactModelWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Retrieve Contact Model
-    ApiResponse<ObjectModel> response = apiInstance.RetrieveContactModelUsingGET1WithHttpInfo();
+    ApiResponse<ObjectModel> response = apiInstance.RetrieveContactModelWithHttpInfo();
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling ContactApi.RetrieveContactModelUsingGET1WithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling ContactApi.RetrieveContactModelWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -875,9 +875,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="unlinkcontactsusingpost"></a>
-# **UnlinkContactsUsingPOST**
-> void UnlinkContactsUsingPOST (LinkContactsRequest linkContactsRequest)
+<a id="unlinkcontacts"></a>
+# **UnlinkContacts**
+> void UnlinkContacts (LinkContactsRequest linkContactsRequest)
 
 Delete Link between two Contacts
 
@@ -893,7 +893,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class UnlinkContactsUsingPOSTExample
+    public class UnlinkContactsExample
     {
         public static void Main()
         {
@@ -905,11 +905,11 @@ namespace Example
             try
             {
                 // Delete Link between two Contacts
-                apiInstance.UnlinkContactsUsingPOST(linkContactsRequest);
+                apiInstance.UnlinkContacts(linkContactsRequest);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ContactApi.UnlinkContactsUsingPOST: " + e.Message);
+                Debug.Print("Exception when calling ContactApi.UnlinkContacts: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -918,18 +918,18 @@ namespace Example
 }
 ```
 
-#### Using the UnlinkContactsUsingPOSTWithHttpInfo variant
+#### Using the UnlinkContactsWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Delete Link between two Contacts
-    apiInstance.UnlinkContactsUsingPOSTWithHttpInfo(linkContactsRequest);
+    apiInstance.UnlinkContactsWithHttpInfo(linkContactsRequest);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling ContactApi.UnlinkContactsUsingPOSTWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling ContactApi.UnlinkContactsWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -965,9 +965,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="updatecontactusingpatch"></a>
-# **UpdateContactUsingPATCH**
-> Contact UpdateContactUsingPATCH (string contactId, List<string>? updateMask = null, CreateUpdateContactRequest? createUpdateContactRequest = null)
+<a id="updatecontact"></a>
+# **UpdateContact**
+> Contact UpdateContact (string contactId, List<string>? updateMask = null, CreateUpdateContactRequest? createUpdateContactRequest = null)
 
 Update a Contact
 
@@ -983,7 +983,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class UpdateContactUsingPATCHExample
+    public class UpdateContactExample
     {
         public static void Main()
         {
@@ -997,12 +997,12 @@ namespace Example
             try
             {
                 // Update a Contact
-                Contact result = apiInstance.UpdateContactUsingPATCH(contactId, updateMask, createUpdateContactRequest);
+                Contact result = apiInstance.UpdateContact(contactId, updateMask, createUpdateContactRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ContactApi.UpdateContactUsingPATCH: " + e.Message);
+                Debug.Print("Exception when calling ContactApi.UpdateContact: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -1011,21 +1011,21 @@ namespace Example
 }
 ```
 
-#### Using the UpdateContactUsingPATCHWithHttpInfo variant
+#### Using the UpdateContactWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Update a Contact
-    ApiResponse<Contact> response = apiInstance.UpdateContactUsingPATCHWithHttpInfo(contactId, updateMask, createUpdateContactRequest);
+    ApiResponse<Contact> response = apiInstance.UpdateContactWithHttpInfo(contactId, updateMask, createUpdateContactRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling ContactApi.UpdateContactUsingPATCHWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling ContactApi.UpdateContactWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }

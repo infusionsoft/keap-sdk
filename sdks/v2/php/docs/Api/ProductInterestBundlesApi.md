@@ -4,20 +4,20 @@ All URIs are relative to https://api.keap.com/crm/rest, except if the operation 
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**addProductInterestUsingPOST()**](ProductInterestBundlesApi.md#addProductInterestUsingPOST) | **POST** /v2/productInterestBundles/{id}/interests | Create a Product Interest in an existing Bundle |
-| [**createProductInterestBundleUsingPOST()**](ProductInterestBundlesApi.md#createProductInterestBundleUsingPOST) | **POST** /v2/productInterestBundles | Create a Product Interest Bundle |
-| [**deleteProductInterestBundleUsingDELETE()**](ProductInterestBundlesApi.md#deleteProductInterestBundleUsingDELETE) | **DELETE** /v2/productInterestBundles/{id} | Delete a Product Interest Bundle |
-| [**getProductInterestBundleUsingGET()**](ProductInterestBundlesApi.md#getProductInterestBundleUsingGET) | **GET** /v2/productInterestBundles/{id} | Get a Product Interest Bundle |
-| [**listProductInterestBundlesUsingGET()**](ProductInterestBundlesApi.md#listProductInterestBundlesUsingGET) | **GET** /v2/productInterestBundles | List Product Interest Bundles |
-| [**removeProductInterestUsingDELETE()**](ProductInterestBundlesApi.md#removeProductInterestUsingDELETE) | **DELETE** /v2/productInterestBundles/{id}/interests/{interest_id} | Delete a Product Interest from an existing Bundle |
-| [**updateProductInterestBundleUsingPATCH()**](ProductInterestBundlesApi.md#updateProductInterestBundleUsingPATCH) | **PATCH** /v2/productInterestBundles/{id} | Update a Product Interest Bundle |
-| [**updateProductInterestUsingPATCH()**](ProductInterestBundlesApi.md#updateProductInterestUsingPATCH) | **PATCH** /v2/productInterestBundles/{id}/interests/{interest_id} | Update a Product Interest in an existing Bundle |
+| [**addProductInterest()**](ProductInterestBundlesApi.md#addProductInterest) | **POST** /v2/productInterestBundles/{id}/interests | Create a Product Interest in an existing Bundle |
+| [**createProductInterestBundle()**](ProductInterestBundlesApi.md#createProductInterestBundle) | **POST** /v2/productInterestBundles | Create a Product Interest Bundle |
+| [**deleteProductInterestBundle()**](ProductInterestBundlesApi.md#deleteProductInterestBundle) | **DELETE** /v2/productInterestBundles/{id} | Delete a Product Interest Bundle |
+| [**getProductInterestBundle()**](ProductInterestBundlesApi.md#getProductInterestBundle) | **GET** /v2/productInterestBundles/{id} | Get a Product Interest Bundle |
+| [**listProductInterestBundles()**](ProductInterestBundlesApi.md#listProductInterestBundles) | **GET** /v2/productInterestBundles | List Product Interest Bundles |
+| [**removeProductInterest()**](ProductInterestBundlesApi.md#removeProductInterest) | **DELETE** /v2/productInterestBundles/{id}/interests/{interest_id} | Delete a Product Interest from an existing Bundle |
+| [**updateProductInterest()**](ProductInterestBundlesApi.md#updateProductInterest) | **PATCH** /v2/productInterestBundles/{id}/interests/{interest_id} | Update a Product Interest in an existing Bundle |
+| [**updateProductInterestBundle()**](ProductInterestBundlesApi.md#updateProductInterestBundle) | **PATCH** /v2/productInterestBundles/{id} | Update a Product Interest Bundle |
 
 
-## `addProductInterestUsingPOST()`
+## `addProductInterest()`
 
 ```php
-addProductInterestUsingPOST($id, $add_product_interest_request): \Keap\Core\V2\Model\ProductInterest
+addProductInterest($id, $add_product_interest_request): \Keap\Core\V2\Model\ProductInterest
 ```
 
 Create a Product Interest in an existing Bundle
@@ -40,10 +40,10 @@ $id = 'id_example'; // string | id
 $add_product_interest_request = new \Keap\Core\V2\Model\AddProductInterestRequest(); // \Keap\Core\V2\Model\AddProductInterestRequest | request
 
 try {
-    $result = $apiInstance->addProductInterestUsingPOST($id, $add_product_interest_request);
+    $result = $apiInstance->addProductInterest($id, $add_product_interest_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ProductInterestBundlesApi->addProductInterestUsingPOST: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ProductInterestBundlesApi->addProductInterest: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -71,10 +71,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `createProductInterestBundleUsingPOST()`
+## `createProductInterestBundle()`
 
 ```php
-createProductInterestBundleUsingPOST($create_product_interest_bundle_request): \Keap\Core\V2\Model\ProductInterestBundle
+createProductInterestBundle($create_product_interest_bundle_request): \Keap\Core\V2\Model\ProductInterestBundle
 ```
 
 Create a Product Interest Bundle
@@ -96,10 +96,10 @@ $apiInstance = new Keap\Core\V2\Api\ProductInterestBundlesApi(
 $create_product_interest_bundle_request = new \Keap\Core\V2\Model\CreateProductInterestBundleRequest(); // \Keap\Core\V2\Model\CreateProductInterestBundleRequest | createProductInterestBundleRequest
 
 try {
-    $result = $apiInstance->createProductInterestBundleUsingPOST($create_product_interest_bundle_request);
+    $result = $apiInstance->createProductInterestBundle($create_product_interest_bundle_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ProductInterestBundlesApi->createProductInterestBundleUsingPOST: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ProductInterestBundlesApi->createProductInterestBundle: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -126,10 +126,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `deleteProductInterestBundleUsingDELETE()`
+## `deleteProductInterestBundle()`
 
 ```php
-deleteProductInterestBundleUsingDELETE($id)
+deleteProductInterestBundle($id)
 ```
 
 Delete a Product Interest Bundle
@@ -151,9 +151,9 @@ $apiInstance = new Keap\Core\V2\Api\ProductInterestBundlesApi(
 $id = 'id_example'; // string | id
 
 try {
-    $apiInstance->deleteProductInterestBundleUsingDELETE($id);
+    $apiInstance->deleteProductInterestBundle($id);
 } catch (Exception $e) {
-    echo 'Exception when calling ProductInterestBundlesApi->deleteProductInterestBundleUsingDELETE: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ProductInterestBundlesApi->deleteProductInterestBundle: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -180,10 +180,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getProductInterestBundleUsingGET()`
+## `getProductInterestBundle()`
 
 ```php
-getProductInterestBundleUsingGET($id): \Keap\Core\V2\Model\ProductInterestBundle
+getProductInterestBundle($id): \Keap\Core\V2\Model\ProductInterestBundle
 ```
 
 Get a Product Interest Bundle
@@ -205,10 +205,10 @@ $apiInstance = new Keap\Core\V2\Api\ProductInterestBundlesApi(
 $id = 'id_example'; // string | id
 
 try {
-    $result = $apiInstance->getProductInterestBundleUsingGET($id);
+    $result = $apiInstance->getProductInterestBundle($id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ProductInterestBundlesApi->getProductInterestBundleUsingGET: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ProductInterestBundlesApi->getProductInterestBundle: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -235,10 +235,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `listProductInterestBundlesUsingGET()`
+## `listProductInterestBundles()`
 
 ```php
-listProductInterestBundlesUsingGET($filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListProductInterestBundleResponse
+listProductInterestBundles($filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListProductInterestBundleResponse
 ```
 
 List Product Interest Bundles
@@ -263,10 +263,10 @@ $page_size = 0; // int | Total number of items to return per page
 $page_token = 'page_token_example'; // string | Page token
 
 try {
-    $result = $apiInstance->listProductInterestBundlesUsingGET($filter, $order_by, $page_size, $page_token);
+    $result = $apiInstance->listProductInterestBundles($filter, $order_by, $page_size, $page_token);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ProductInterestBundlesApi->listProductInterestBundlesUsingGET: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ProductInterestBundlesApi->listProductInterestBundles: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -296,10 +296,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `removeProductInterestUsingDELETE()`
+## `removeProductInterest()`
 
 ```php
-removeProductInterestUsingDELETE($id, $interest_id)
+removeProductInterest($id, $interest_id)
 ```
 
 Delete a Product Interest from an existing Bundle
@@ -322,9 +322,9 @@ $id = 'id_example'; // string | id
 $interest_id = 'interest_id_example'; // string | interest_id
 
 try {
-    $apiInstance->removeProductInterestUsingDELETE($id, $interest_id);
+    $apiInstance->removeProductInterest($id, $interest_id);
 } catch (Exception $e) {
-    echo 'Exception when calling ProductInterestBundlesApi->removeProductInterestUsingDELETE: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ProductInterestBundlesApi->removeProductInterest: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -352,69 +352,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `updateProductInterestBundleUsingPATCH()`
+## `updateProductInterest()`
 
 ```php
-updateProductInterestBundleUsingPATCH($id, $update_product_interest_bundle_request, $update_mask): \Keap\Core\V2\Model\ProductInterestBundle
-```
-
-Update a Product Interest Bundle
-
-Updates an existing Product Interest Bundle.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-$apiInstance = new Keap\Core\V2\Api\ProductInterestBundlesApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
-);
-$id = 'id_example'; // string | id
-$update_product_interest_bundle_request = new \Keap\Core\V2\Model\UpdateProductInterestBundleRequest(); // \Keap\Core\V2\Model\UpdateProductInterestBundleRequest | updateProductInterestBundleRequest
-$update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-
-try {
-    $result = $apiInstance->updateProductInterestBundleUsingPATCH($id, $update_product_interest_bundle_request, $update_mask);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling ProductInterestBundlesApi->updateProductInterestBundleUsingPATCH: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **id** | **string**| id | |
-| **update_product_interest_bundle_request** | [**\Keap\Core\V2\Model\UpdateProductInterestBundleRequest**](../Model/UpdateProductInterestBundleRequest.md)| updateProductInterestBundleRequest | |
-| **update_mask** | [**string[]**](../Model/string.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
-
-### Return type
-
-[**\Keap\Core\V2\Model\ProductInterestBundle**](../Model/ProductInterestBundle.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `updateProductInterestUsingPATCH()`
-
-```php
-updateProductInterestUsingPATCH($id, $interest_id, $update_product_interest_request, $update_mask): \Keap\Core\V2\Model\ProductInterest
+updateProductInterest($id, $interest_id, $update_product_interest_request, $update_mask): \Keap\Core\V2\Model\ProductInterest
 ```
 
 Update a Product Interest in an existing Bundle
@@ -439,10 +380,10 @@ $update_product_interest_request = new \Keap\Core\V2\Model\UpdateProductInterest
 $update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
-    $result = $apiInstance->updateProductInterestUsingPATCH($id, $interest_id, $update_product_interest_request, $update_mask);
+    $result = $apiInstance->updateProductInterest($id, $interest_id, $update_product_interest_request, $update_mask);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ProductInterestBundlesApi->updateProductInterestUsingPATCH: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ProductInterestBundlesApi->updateProductInterest: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -458,6 +399,65 @@ try {
 ### Return type
 
 [**\Keap\Core\V2\Model\ProductInterest**](../Model/ProductInterest.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateProductInterestBundle()`
+
+```php
+updateProductInterestBundle($id, $update_product_interest_bundle_request, $update_mask): \Keap\Core\V2\Model\ProductInterestBundle
+```
+
+Update a Product Interest Bundle
+
+Updates an existing Product Interest Bundle.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+$apiInstance = new Keap\Core\V2\Api\ProductInterestBundlesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$id = 'id_example'; // string | id
+$update_product_interest_bundle_request = new \Keap\Core\V2\Model\UpdateProductInterestBundleRequest(); // \Keap\Core\V2\Model\UpdateProductInterestBundleRequest | updateProductInterestBundleRequest
+$update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+
+try {
+    $result = $apiInstance->updateProductInterestBundle($id, $update_product_interest_bundle_request, $update_mask);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ProductInterestBundlesApi->updateProductInterestBundle: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| id | |
+| **update_product_interest_bundle_request** | [**\Keap\Core\V2\Model\UpdateProductInterestBundleRequest**](../Model/UpdateProductInterestBundleRequest.md)| updateProductInterestBundleRequest | |
+| **update_mask** | [**string[]**](../Model/string.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+
+### Return type
+
+[**\Keap\Core\V2\Model\ProductInterestBundle**](../Model/ProductInterestBundle.md)
 
 ### Authorization
 

@@ -4,17 +4,16 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**addContactsToAutomationSequenceUsingPOST**](AutomationApi.md#addContactsToAutomationSequenceUsingPOST) | **POST** /v2/automations/{automation_id}/sequences/{sequence_id}:addContacts | Add Contacts to an Automation Sequence
-[**bulkAssignmentAutomationsCategoriesUsingPOST**](AutomationApi.md#bulkAssignmentAutomationsCategoriesUsingPOST) | **POST** /v2/automations/categories/batchAssign | Bulk update for Automations Categories
-[**deleteAutomationUsingDELETE**](AutomationApi.md#deleteAutomationUsingDELETE) | **DELETE** /v2/automations | Delete an Automation
-[**getAutomationUsingGET**](AutomationApi.md#getAutomationUsingGET) | **GET** /v2/automations/{automation_id} | Retrieve an Automation
-[**listAllAutomationIdsUsingGET**](AutomationApi.md#listAllAutomationIdsUsingGET) | **GET** /v2/automations/ids | List Automations Ids
-[**listAutomationsUsingGET**](AutomationApi.md#listAutomationsUsingGET) | **GET** /v2/automations | List Automations
-[**updateAutomationCategoryUsingPUT**](AutomationApi.md#updateAutomationCategoryUsingPUT) | **PUT** /v2/automations/category | Update an Automation\&#39;s Category
+[**addContactsToAutomationSequence**](AutomationApi.md#addContactsToAutomationSequence) | **POST** /v2/automations/{automation_id}/sequences/{sequence_id}:addContacts | Add Contacts to an Automation Sequence
+[**bulkAssignmentAutomationsCategories**](AutomationApi.md#bulkAssignmentAutomationsCategories) | **POST** /v2/automations/categories/batchAssign | Bulk update for Automations Categories
+[**deleteAutomation**](AutomationApi.md#deleteAutomation) | **DELETE** /v2/automations | Delete an Automation
+[**getAutomation**](AutomationApi.md#getAutomation) | **GET** /v2/automations/{automation_id} | Retrieve an Automation
+[**listAllAutomationIds**](AutomationApi.md#listAllAutomationIds) | **GET** /v2/automations/ids | List Automations Ids
+[**listAutomations**](AutomationApi.md#listAutomations) | **GET** /v2/automations | List Automations
 
 
-# **addContactsToAutomationSequenceUsingPOST**
-> AddToAutomationSequenceResponse addContactsToAutomationSequenceUsingPOST(addToAutomationSequenceRequest)
+# **addContactsToAutomationSequence**
+> AddToAutomationSequenceResponse addContactsToAutomationSequence(addToAutomationSequenceRequest)
 
 Adds a list of contacts to an automation sequence Response contains a map of the provided list of Contact Ids and their individual result.
 
@@ -23,12 +22,12 @@ Adds a list of contacts to an automation sequence Response contains a map of the
 
 ```typescript
 import { createConfiguration, AutomationApi } from '';
-import type { AutomationApiAddContactsToAutomationSequenceUsingPOSTRequest } from '';
+import type { AutomationApiAddContactsToAutomationSequenceRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new AutomationApi(configuration);
 
-const request: AutomationApiAddContactsToAutomationSequenceUsingPOSTRequest = {
+const request: AutomationApiAddContactsToAutomationSequenceRequest = {
     // automation_id
   automationId: "automation_id_example",
     // sequence_id
@@ -41,7 +40,7 @@ const request: AutomationApiAddContactsToAutomationSequenceUsingPOSTRequest = {
   },
 };
 
-const data = await apiInstance.addContactsToAutomationSequenceUsingPOST(request);
+const data = await apiInstance.addContactsToAutomationSequence(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -79,8 +78,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **bulkAssignmentAutomationsCategoriesUsingPOST**
-> void bulkAssignmentAutomationsCategoriesUsingPOST(assignAutomationCategoryRequest)
+# **bulkAssignmentAutomationsCategories**
+> void bulkAssignmentAutomationsCategories(assignAutomationCategoryRequest)
 
 Bulk updates the categories of one or more automations
 
@@ -89,12 +88,12 @@ Bulk updates the categories of one or more automations
 
 ```typescript
 import { createConfiguration, AutomationApi } from '';
-import type { AutomationApiBulkAssignmentAutomationsCategoriesUsingPOSTRequest } from '';
+import type { AutomationApiBulkAssignmentAutomationsCategoriesRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new AutomationApi(configuration);
 
-const request: AutomationApiBulkAssignmentAutomationsCategoriesUsingPOSTRequest = {
+const request: AutomationApiBulkAssignmentAutomationsCategoriesRequest = {
     // assignAutomationCategoryRequest
   assignAutomationCategoryRequest: {
     applyCategory: true,
@@ -107,7 +106,7 @@ const request: AutomationApiBulkAssignmentAutomationsCategoriesUsingPOSTRequest 
   },
 };
 
-const data = await apiInstance.bulkAssignmentAutomationsCategoriesUsingPOST(request);
+const data = await apiInstance.bulkAssignmentAutomationsCategories(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -143,8 +142,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **deleteAutomationUsingDELETE**
-> void deleteAutomationUsingDELETE()
+# **deleteAutomation**
+> void deleteAutomation()
 
 Deletes a single automation
 
@@ -153,19 +152,19 @@ Deletes a single automation
 
 ```typescript
 import { createConfiguration, AutomationApi } from '';
-import type { AutomationApiDeleteAutomationUsingDELETERequest } from '';
+import type { AutomationApiDeleteAutomationRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new AutomationApi(configuration);
 
-const request: AutomationApiDeleteAutomationUsingDELETERequest = {
+const request: AutomationApiDeleteAutomationRequest = {
     // automation_ids
   automationIds: [
     1,
   ],
 };
 
-const data = await apiInstance.deleteAutomationUsingDELETE(request);
+const data = await apiInstance.deleteAutomation(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -202,8 +201,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **getAutomationUsingGET**
-> Automation getAutomationUsingGET()
+# **getAutomation**
+> Automation getAutomation()
 
 Retrieves a single automation
 
@@ -212,17 +211,17 @@ Retrieves a single automation
 
 ```typescript
 import { createConfiguration, AutomationApi } from '';
-import type { AutomationApiGetAutomationUsingGETRequest } from '';
+import type { AutomationApiGetAutomationRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new AutomationApi(configuration);
 
-const request: AutomationApiGetAutomationUsingGETRequest = {
+const request: AutomationApiGetAutomationRequest = {
     // automation_id
   automationId: "automation_id_example",
 };
 
-const data = await apiInstance.getAutomationUsingGET(request);
+const data = await apiInstance.getAutomation(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -259,8 +258,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **listAllAutomationIdsUsingGET**
-> ListAutomationIdsResponse listAllAutomationIdsUsingGET()
+# **listAllAutomationIds**
+> ListAutomationIdsResponse listAllAutomationIds()
 
 Retrieves a list of automations IDs
 
@@ -269,12 +268,12 @@ Retrieves a list of automations IDs
 
 ```typescript
 import { createConfiguration, AutomationApi } from '';
-import type { AutomationApiListAllAutomationIdsUsingGETRequest } from '';
+import type { AutomationApiListAllAutomationIdsRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new AutomationApi(configuration);
 
-const request: AutomationApiListAllAutomationIdsUsingGETRequest = {
+const request: AutomationApiListAllAutomationIdsRequest = {
     // Filter to apply, allowed fields are: - (String) `name`  You will need to apply the `==` operator to check the equality of the filter with your searched text, in the encoded form `%3D%3D`. The search will look for the text anywhere in the automation name.  - `filter=name%3D%3DSpring Automation` - `filter=name%3D%3DTag New Contacts`  (optional)
   filter: "filter_example",
     // Attribute and direction to order items. One of the following fields: - `name` - `category` - `activeContacts` - `publishedDate`  One of the following directions: - `asc` - `desc` (optional)
@@ -287,7 +286,7 @@ const request: AutomationApiListAllAutomationIdsUsingGETRequest = {
   stats: true,
 };
 
-const data = await apiInstance.listAllAutomationIdsUsingGET(request);
+const data = await apiInstance.listAllAutomationIds(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -328,8 +327,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **listAutomationsUsingGET**
-> ListAutomationResponse listAutomationsUsingGET()
+# **listAutomations**
+> ListAutomationResponse listAutomations()
 
 Retrieves a list of automations
 
@@ -338,12 +337,12 @@ Retrieves a list of automations
 
 ```typescript
 import { createConfiguration, AutomationApi } from '';
-import type { AutomationApiListAutomationsUsingGETRequest } from '';
+import type { AutomationApiListAutomationsRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new AutomationApi(configuration);
 
-const request: AutomationApiListAutomationsUsingGETRequest = {
+const request: AutomationApiListAutomationsRequest = {
     // Filter to apply, allowed fields are: - (String) `name`  You will need to apply the `==` operator to check the equality of the filter with your searched text, in the encoded form `%3D%3D`. The search will look for the text anywhere in the automation name.  - `filter=name%3D%3DSpring Automation` - `filter=name%3D%3DTag New Contacts`  (optional)
   filter: "filter_example",
     // Attribute and direction to order items. One of the following fields: - `name` - `category` - `activeContacts` - `publishedDate`  One of the following directions: - `asc` - `desc` (optional)
@@ -356,7 +355,7 @@ const request: AutomationApiListAutomationsUsingGETRequest = {
   stats: true,
 };
 
-const data = await apiInstance.listAutomationsUsingGET(request);
+const data = await apiInstance.listAutomations(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -383,71 +382,6 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-**401** | Unauthorized |  -  |
-**403** | Forbidden |  -  |
-**404** | Not Found |  -  |
-**500** | Internal Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-# **updateAutomationCategoryUsingPUT**
-> void updateAutomationCategoryUsingPUT(updateAutomationCategoryRequest)
-
-Updates the category of one or more automations
-
-### Example
-
-
-```typescript
-import { createConfiguration, AutomationApi } from '';
-import type { AutomationApiUpdateAutomationCategoryUsingPUTRequest } from '';
-
-const configuration = createConfiguration();
-const apiInstance = new AutomationApi(configuration);
-
-const request: AutomationApiUpdateAutomationCategoryUsingPUTRequest = {
-    // updateAutomationCategoryRequest
-  updateAutomationCategoryRequest: {
-    applyCategory: true,
-    automationIds: [
-      1,
-    ],
-    categoryIds: [
-      1,
-    ],
-  },
-};
-
-const data = await apiInstance.updateAutomationCategoryUsingPUT(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **updateAutomationCategoryRequest** | **UpdateAutomationCategoryRequest**| updateAutomationCategoryRequest |
-
-
-### Return type
-
-**void**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json
  - **Accept**: application/json
 
 

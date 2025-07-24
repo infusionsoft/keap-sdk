@@ -4,15 +4,15 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**CreateDiscountUsingPOST1**](FreeTrialDiscountsApi.md#creatediscountusingpost1) | **POST** /v2/discounts/freeTrials | Create a Subscription Free Trial Discount |
-| [**DeleteDiscountUsingDELETE1**](FreeTrialDiscountsApi.md#deletediscountusingdelete1) | **DELETE** /v2/discounts/freeTrials/{discount_id} | Delete a Subscription Free Trial Discount |
-| [**GetDiscountUsingGET1**](FreeTrialDiscountsApi.md#getdiscountusingget1) | **GET** /v2/discounts/freeTrials/{discount_id} | Retrieve a Subscription Free Trial Discount |
-| [**ListFreeTrialsUsingGET**](FreeTrialDiscountsApi.md#listfreetrialsusingget) | **GET** /v2/discounts/freeTrials | List all Subscription Free Trial Discounts |
-| [**UpdateDiscountUsingPATCH1**](FreeTrialDiscountsApi.md#updatediscountusingpatch1) | **PATCH** /v2/discounts/freeTrials/{discount_id} | Update a Subscription Free Trial Discount |
+| [**CreateFreeTrialDiscount**](FreeTrialDiscountsApi.md#createfreetrialdiscount) | **POST** /v2/discounts/freeTrials | Create a Subscription Free Trial Discount |
+| [**DeleteFreeTrialDiscount**](FreeTrialDiscountsApi.md#deletefreetrialdiscount) | **DELETE** /v2/discounts/freeTrials/{discount_id} | Delete a Subscription Free Trial Discount |
+| [**GetFreeTrialDiscount**](FreeTrialDiscountsApi.md#getfreetrialdiscount) | **GET** /v2/discounts/freeTrials/{discount_id} | Retrieve a Subscription Free Trial Discount |
+| [**ListFreeTrialDiscounts**](FreeTrialDiscountsApi.md#listfreetrialdiscounts) | **GET** /v2/discounts/freeTrials | List all Subscription Free Trial Discounts |
+| [**UpdateFreeTrialDiscount**](FreeTrialDiscountsApi.md#updatefreetrialdiscount) | **PATCH** /v2/discounts/freeTrials/{discount_id} | Update a Subscription Free Trial Discount |
 
-<a id="creatediscountusingpost1"></a>
-# **CreateDiscountUsingPOST1**
-> FreeTrialDiscount CreateDiscountUsingPOST1 (CreateFreeTrialDiscountRequest createFreeTrialDiscountRequest)
+<a id="createfreetrialdiscount"></a>
+# **CreateFreeTrialDiscount**
+> FreeTrialDiscount CreateFreeTrialDiscount (CreateFreeTrialDiscountRequest createFreeTrialDiscountRequest)
 
 Create a Subscription Free Trial Discount
 
@@ -28,7 +28,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class CreateDiscountUsingPOST1Example
+    public class CreateFreeTrialDiscountExample
     {
         public static void Main()
         {
@@ -40,12 +40,12 @@ namespace Example
             try
             {
                 // Create a Subscription Free Trial Discount
-                FreeTrialDiscount result = apiInstance.CreateDiscountUsingPOST1(createFreeTrialDiscountRequest);
+                FreeTrialDiscount result = apiInstance.CreateFreeTrialDiscount(createFreeTrialDiscountRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling FreeTrialDiscountsApi.CreateDiscountUsingPOST1: " + e.Message);
+                Debug.Print("Exception when calling FreeTrialDiscountsApi.CreateFreeTrialDiscount: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -54,21 +54,21 @@ namespace Example
 }
 ```
 
-#### Using the CreateDiscountUsingPOST1WithHttpInfo variant
+#### Using the CreateFreeTrialDiscountWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Create a Subscription Free Trial Discount
-    ApiResponse<FreeTrialDiscount> response = apiInstance.CreateDiscountUsingPOST1WithHttpInfo(createFreeTrialDiscountRequest);
+    ApiResponse<FreeTrialDiscount> response = apiInstance.CreateFreeTrialDiscountWithHttpInfo(createFreeTrialDiscountRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling FreeTrialDiscountsApi.CreateDiscountUsingPOST1WithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling FreeTrialDiscountsApi.CreateFreeTrialDiscountWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -104,9 +104,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="deletediscountusingdelete1"></a>
-# **DeleteDiscountUsingDELETE1**
-> void DeleteDiscountUsingDELETE1 (string discountId)
+<a id="deletefreetrialdiscount"></a>
+# **DeleteFreeTrialDiscount**
+> void DeleteFreeTrialDiscount (string discountId)
 
 Delete a Subscription Free Trial Discount
 
@@ -122,7 +122,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class DeleteDiscountUsingDELETE1Example
+    public class DeleteFreeTrialDiscountExample
     {
         public static void Main()
         {
@@ -134,11 +134,11 @@ namespace Example
             try
             {
                 // Delete a Subscription Free Trial Discount
-                apiInstance.DeleteDiscountUsingDELETE1(discountId);
+                apiInstance.DeleteFreeTrialDiscount(discountId);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling FreeTrialDiscountsApi.DeleteDiscountUsingDELETE1: " + e.Message);
+                Debug.Print("Exception when calling FreeTrialDiscountsApi.DeleteFreeTrialDiscount: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -147,18 +147,18 @@ namespace Example
 }
 ```
 
-#### Using the DeleteDiscountUsingDELETE1WithHttpInfo variant
+#### Using the DeleteFreeTrialDiscountWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Delete a Subscription Free Trial Discount
-    apiInstance.DeleteDiscountUsingDELETE1WithHttpInfo(discountId);
+    apiInstance.DeleteFreeTrialDiscountWithHttpInfo(discountId);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling FreeTrialDiscountsApi.DeleteDiscountUsingDELETE1WithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling FreeTrialDiscountsApi.DeleteFreeTrialDiscountWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -195,9 +195,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="getdiscountusingget1"></a>
-# **GetDiscountUsingGET1**
-> FreeTrialDiscount GetDiscountUsingGET1 (string discountId)
+<a id="getfreetrialdiscount"></a>
+# **GetFreeTrialDiscount**
+> FreeTrialDiscount GetFreeTrialDiscount (string discountId)
 
 Retrieve a Subscription Free Trial Discount
 
@@ -213,7 +213,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class GetDiscountUsingGET1Example
+    public class GetFreeTrialDiscountExample
     {
         public static void Main()
         {
@@ -225,12 +225,12 @@ namespace Example
             try
             {
                 // Retrieve a Subscription Free Trial Discount
-                FreeTrialDiscount result = apiInstance.GetDiscountUsingGET1(discountId);
+                FreeTrialDiscount result = apiInstance.GetFreeTrialDiscount(discountId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling FreeTrialDiscountsApi.GetDiscountUsingGET1: " + e.Message);
+                Debug.Print("Exception when calling FreeTrialDiscountsApi.GetFreeTrialDiscount: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -239,21 +239,21 @@ namespace Example
 }
 ```
 
-#### Using the GetDiscountUsingGET1WithHttpInfo variant
+#### Using the GetFreeTrialDiscountWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Retrieve a Subscription Free Trial Discount
-    ApiResponse<FreeTrialDiscount> response = apiInstance.GetDiscountUsingGET1WithHttpInfo(discountId);
+    ApiResponse<FreeTrialDiscount> response = apiInstance.GetFreeTrialDiscountWithHttpInfo(discountId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling FreeTrialDiscountsApi.GetDiscountUsingGET1WithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling FreeTrialDiscountsApi.GetFreeTrialDiscountWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -290,9 +290,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="listfreetrialsusingget"></a>
-# **ListFreeTrialsUsingGET**
-> ListFreeTrialDiscountsResponse ListFreeTrialsUsingGET (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
+<a id="listfreetrialdiscounts"></a>
+# **ListFreeTrialDiscounts**
+> ListFreeTrialDiscountsResponse ListFreeTrialDiscounts (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
 
 List all Subscription Free Trial Discounts
 
@@ -308,7 +308,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class ListFreeTrialsUsingGETExample
+    public class ListFreeTrialDiscountsExample
     {
         public static void Main()
         {
@@ -323,12 +323,12 @@ namespace Example
             try
             {
                 // List all Subscription Free Trial Discounts
-                ListFreeTrialDiscountsResponse result = apiInstance.ListFreeTrialsUsingGET(filter, orderBy, pageSize, pageToken);
+                ListFreeTrialDiscountsResponse result = apiInstance.ListFreeTrialDiscounts(filter, orderBy, pageSize, pageToken);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling FreeTrialDiscountsApi.ListFreeTrialsUsingGET: " + e.Message);
+                Debug.Print("Exception when calling FreeTrialDiscountsApi.ListFreeTrialDiscounts: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -337,21 +337,21 @@ namespace Example
 }
 ```
 
-#### Using the ListFreeTrialsUsingGETWithHttpInfo variant
+#### Using the ListFreeTrialDiscountsWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // List all Subscription Free Trial Discounts
-    ApiResponse<ListFreeTrialDiscountsResponse> response = apiInstance.ListFreeTrialsUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken);
+    ApiResponse<ListFreeTrialDiscountsResponse> response = apiInstance.ListFreeTrialDiscountsWithHttpInfo(filter, orderBy, pageSize, pageToken);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling FreeTrialDiscountsApi.ListFreeTrialsUsingGETWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling FreeTrialDiscountsApi.ListFreeTrialDiscountsWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -391,9 +391,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="updatediscountusingpatch1"></a>
-# **UpdateDiscountUsingPATCH1**
-> FreeTrialDiscount UpdateDiscountUsingPATCH1 (string discountId, UpdateFreeTrialDiscountRequest updateFreeTrialDiscountRequest, List<string>? updateMask = null)
+<a id="updatefreetrialdiscount"></a>
+# **UpdateFreeTrialDiscount**
+> FreeTrialDiscount UpdateFreeTrialDiscount (string discountId, UpdateFreeTrialDiscountRequest updateFreeTrialDiscountRequest, List<string>? updateMask = null)
 
 Update a Subscription Free Trial Discount
 
@@ -409,7 +409,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class UpdateDiscountUsingPATCH1Example
+    public class UpdateFreeTrialDiscountExample
     {
         public static void Main()
         {
@@ -423,12 +423,12 @@ namespace Example
             try
             {
                 // Update a Subscription Free Trial Discount
-                FreeTrialDiscount result = apiInstance.UpdateDiscountUsingPATCH1(discountId, updateFreeTrialDiscountRequest, updateMask);
+                FreeTrialDiscount result = apiInstance.UpdateFreeTrialDiscount(discountId, updateFreeTrialDiscountRequest, updateMask);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling FreeTrialDiscountsApi.UpdateDiscountUsingPATCH1: " + e.Message);
+                Debug.Print("Exception when calling FreeTrialDiscountsApi.UpdateFreeTrialDiscount: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -437,21 +437,21 @@ namespace Example
 }
 ```
 
-#### Using the UpdateDiscountUsingPATCH1WithHttpInfo variant
+#### Using the UpdateFreeTrialDiscountWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Update a Subscription Free Trial Discount
-    ApiResponse<FreeTrialDiscount> response = apiInstance.UpdateDiscountUsingPATCH1WithHttpInfo(discountId, updateFreeTrialDiscountRequest, updateMask);
+    ApiResponse<FreeTrialDiscount> response = apiInstance.UpdateFreeTrialDiscountWithHttpInfo(discountId, updateFreeTrialDiscountRequest, updateMask);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling FreeTrialDiscountsApi.UpdateDiscountUsingPATCH1WithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling FreeTrialDiscountsApi.UpdateFreeTrialDiscountWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }

@@ -4,18 +4,18 @@ All URIs are relative to https://api.keap.com/crm/rest, except if the operation 
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createLeadSourceRecurringExpenseUsingPOST()**](LeadSourceRecurringExpensesApi.md#createLeadSourceRecurringExpenseUsingPOST) | **POST** /v2/leadSources/{lead_source_id}/recurringExpenses | Create a Lead Source Recurring Expense |
-| [**deleteLeadSourceRecurringExpenseUsingDELETE()**](LeadSourceRecurringExpensesApi.md#deleteLeadSourceRecurringExpenseUsingDELETE) | **DELETE** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Delete a Lead Source Recurring Expense |
-| [**getLeadSourceRecurringExpenseUsingGET()**](LeadSourceRecurringExpensesApi.md#getLeadSourceRecurringExpenseUsingGET) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Retrieve a Lead Source Recurring Expense |
-| [**listExpensesIncurredFromLeadSourceRecurringExpenseUsingGET()**](LeadSourceRecurringExpensesApi.md#listExpensesIncurredFromLeadSourceRecurringExpenseUsingGET) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id}/expenses | Retrieves a list of expenses incurred from a recurring expense |
-| [**listLeadSourceRecurringExpensesUsingGET()**](LeadSourceRecurringExpensesApi.md#listLeadSourceRecurringExpensesUsingGET) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses | Retrieves a list of lead source recurring expenses |
-| [**updateLeadSourceRecurringExpenseUsingPATCH()**](LeadSourceRecurringExpensesApi.md#updateLeadSourceRecurringExpenseUsingPATCH) | **PATCH** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Update a Lead Source Recurring Expense |
+| [**createLeadSourceRecurringExpense()**](LeadSourceRecurringExpensesApi.md#createLeadSourceRecurringExpense) | **POST** /v2/leadSources/{lead_source_id}/recurringExpenses | Create a Lead Source Recurring Expense |
+| [**deleteLeadSourceRecurringExpense()**](LeadSourceRecurringExpensesApi.md#deleteLeadSourceRecurringExpense) | **DELETE** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Delete a Lead Source Recurring Expense |
+| [**getLeadSourceRecurringExpense()**](LeadSourceRecurringExpensesApi.md#getLeadSourceRecurringExpense) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Retrieve a Lead Source Recurring Expense |
+| [**listExpensesIncurredFromLeadSourceRecurringExpense()**](LeadSourceRecurringExpensesApi.md#listExpensesIncurredFromLeadSourceRecurringExpense) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id}/expenses | Retrieves a list of expenses incurred from a recurring expense |
+| [**listLeadSourceRecurringExpenses()**](LeadSourceRecurringExpensesApi.md#listLeadSourceRecurringExpenses) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses | Retrieves a list of lead source recurring expenses |
+| [**updateLeadSourceRecurringExpense()**](LeadSourceRecurringExpensesApi.md#updateLeadSourceRecurringExpense) | **PATCH** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Update a Lead Source Recurring Expense |
 
 
-## `createLeadSourceRecurringExpenseUsingPOST()`
+## `createLeadSourceRecurringExpense()`
 
 ```php
-createLeadSourceRecurringExpenseUsingPOST($lead_source_id, $create_lead_source_recurring_expense_request): \Keap\Core\V2\Model\LeadSourceRecurringExpense
+createLeadSourceRecurringExpense($lead_source_id, $create_lead_source_recurring_expense_request): \Keap\Core\V2\Model\LeadSourceRecurringExpense
 ```
 
 Create a Lead Source Recurring Expense
@@ -38,10 +38,10 @@ $lead_source_id = 'lead_source_id_example'; // string | The ID of the lead sourc
 $create_lead_source_recurring_expense_request = new \Keap\Core\V2\Model\CreateLeadSourceRecurringExpenseRequest(); // \Keap\Core\V2\Model\CreateLeadSourceRecurringExpenseRequest | The request object to create a new lead source recurring expense
 
 try {
-    $result = $apiInstance->createLeadSourceRecurringExpenseUsingPOST($lead_source_id, $create_lead_source_recurring_expense_request);
+    $result = $apiInstance->createLeadSourceRecurringExpense($lead_source_id, $create_lead_source_recurring_expense_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling LeadSourceRecurringExpensesApi->createLeadSourceRecurringExpenseUsingPOST: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling LeadSourceRecurringExpensesApi->createLeadSourceRecurringExpense: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -69,10 +69,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `deleteLeadSourceRecurringExpenseUsingDELETE()`
+## `deleteLeadSourceRecurringExpense()`
 
 ```php
-deleteLeadSourceRecurringExpenseUsingDELETE($lead_source_id, $lead_source_recurring_expense_id)
+deleteLeadSourceRecurringExpense($lead_source_id, $lead_source_recurring_expense_id)
 ```
 
 Delete a Lead Source Recurring Expense
@@ -95,9 +95,9 @@ $lead_source_id = 'lead_source_id_example'; // string | The ID of the lead sourc
 $lead_source_recurring_expense_id = 'lead_source_recurring_expense_id_example'; // string | The ID of a lead source recurring expense
 
 try {
-    $apiInstance->deleteLeadSourceRecurringExpenseUsingDELETE($lead_source_id, $lead_source_recurring_expense_id);
+    $apiInstance->deleteLeadSourceRecurringExpense($lead_source_id, $lead_source_recurring_expense_id);
 } catch (Exception $e) {
-    echo 'Exception when calling LeadSourceRecurringExpensesApi->deleteLeadSourceRecurringExpenseUsingDELETE: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling LeadSourceRecurringExpensesApi->deleteLeadSourceRecurringExpense: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -125,10 +125,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getLeadSourceRecurringExpenseUsingGET()`
+## `getLeadSourceRecurringExpense()`
 
 ```php
-getLeadSourceRecurringExpenseUsingGET($lead_source_id, $lead_source_recurring_expense_id): \Keap\Core\V2\Model\LeadSourceRecurringExpense
+getLeadSourceRecurringExpense($lead_source_id, $lead_source_recurring_expense_id): \Keap\Core\V2\Model\LeadSourceRecurringExpense
 ```
 
 Retrieve a Lead Source Recurring Expense
@@ -151,10 +151,10 @@ $lead_source_id = 'lead_source_id_example'; // string | The ID of the lead sourc
 $lead_source_recurring_expense_id = 'lead_source_recurring_expense_id_example'; // string | The ID of a lead source recurring expense
 
 try {
-    $result = $apiInstance->getLeadSourceRecurringExpenseUsingGET($lead_source_id, $lead_source_recurring_expense_id);
+    $result = $apiInstance->getLeadSourceRecurringExpense($lead_source_id, $lead_source_recurring_expense_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling LeadSourceRecurringExpensesApi->getLeadSourceRecurringExpenseUsingGET: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling LeadSourceRecurringExpensesApi->getLeadSourceRecurringExpense: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -182,10 +182,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `listExpensesIncurredFromLeadSourceRecurringExpenseUsingGET()`
+## `listExpensesIncurredFromLeadSourceRecurringExpense()`
 
 ```php
-listExpensesIncurredFromLeadSourceRecurringExpenseUsingGET($lead_source_id, $lead_source_recurring_expense_id, $filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListLeadSourceExpensesResponse
+listExpensesIncurredFromLeadSourceRecurringExpense($lead_source_id, $lead_source_recurring_expense_id, $filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListLeadSourceExpensesResponse
 ```
 
 Retrieves a list of expenses incurred from a recurring expense
@@ -212,10 +212,10 @@ $page_size = 0; // int | Total number of items to return per page
 $page_token = 'page_token_example'; // string | Page token
 
 try {
-    $result = $apiInstance->listExpensesIncurredFromLeadSourceRecurringExpenseUsingGET($lead_source_id, $lead_source_recurring_expense_id, $filter, $order_by, $page_size, $page_token);
+    $result = $apiInstance->listExpensesIncurredFromLeadSourceRecurringExpense($lead_source_id, $lead_source_recurring_expense_id, $filter, $order_by, $page_size, $page_token);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling LeadSourceRecurringExpensesApi->listExpensesIncurredFromLeadSourceRecurringExpenseUsingGET: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling LeadSourceRecurringExpensesApi->listExpensesIncurredFromLeadSourceRecurringExpense: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -247,10 +247,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `listLeadSourceRecurringExpensesUsingGET()`
+## `listLeadSourceRecurringExpenses()`
 
 ```php
-listLeadSourceRecurringExpensesUsingGET($lead_source_id, $filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListLeadSourceRecurringExpensesResponse
+listLeadSourceRecurringExpenses($lead_source_id, $filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListLeadSourceRecurringExpensesResponse
 ```
 
 Retrieves a list of lead source recurring expenses
@@ -276,10 +276,10 @@ $page_size = 0; // int | Total number of items to return per page
 $page_token = 'page_token_example'; // string | Page token
 
 try {
-    $result = $apiInstance->listLeadSourceRecurringExpensesUsingGET($lead_source_id, $filter, $order_by, $page_size, $page_token);
+    $result = $apiInstance->listLeadSourceRecurringExpenses($lead_source_id, $filter, $order_by, $page_size, $page_token);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling LeadSourceRecurringExpensesApi->listLeadSourceRecurringExpensesUsingGET: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling LeadSourceRecurringExpensesApi->listLeadSourceRecurringExpenses: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -310,10 +310,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `updateLeadSourceRecurringExpenseUsingPATCH()`
+## `updateLeadSourceRecurringExpense()`
 
 ```php
-updateLeadSourceRecurringExpenseUsingPATCH($lead_source_id, $lead_source_recurring_expense_id, $lead_source_recurring_expense_update_request, $update_mask): \Keap\Core\V2\Model\LeadSourceRecurringExpense
+updateLeadSourceRecurringExpense($lead_source_id, $lead_source_recurring_expense_id, $lead_source_recurring_expense_update_request, $update_mask): \Keap\Core\V2\Model\LeadSourceRecurringExpense
 ```
 
 Update a Lead Source Recurring Expense
@@ -338,10 +338,10 @@ $lead_source_recurring_expense_update_request = new \Keap\Core\V2\Model\LeadSour
 $update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
-    $result = $apiInstance->updateLeadSourceRecurringExpenseUsingPATCH($lead_source_id, $lead_source_recurring_expense_id, $lead_source_recurring_expense_update_request, $update_mask);
+    $result = $apiInstance->updateLeadSourceRecurringExpense($lead_source_id, $lead_source_recurring_expense_id, $lead_source_recurring_expense_update_request, $update_mask);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling LeadSourceRecurringExpensesApi->updateLeadSourceRecurringExpenseUsingPATCH: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling LeadSourceRecurringExpensesApi->updateLeadSourceRecurringExpense: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

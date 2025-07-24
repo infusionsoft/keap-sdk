@@ -4,11 +4,11 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**listPaginatedUsersUsingGET**](UsersApi.md#listPaginatedUsersUsingGET) | **GET** /v2/users | List Users
+[**listPaginatedUsers**](UsersApi.md#listPaginatedUsers) | **GET** /v2/users | List Users
 
 
-# **listPaginatedUsersUsingGET**
-> ListUsersPaginatedResponse listPaginatedUsersUsingGET()
+# **listPaginatedUsers**
+> ListUsersPaginatedResponse listPaginatedUsers()
 
 Retrieves a list of users
 
@@ -17,23 +17,23 @@ Retrieves a list of users
 
 ```typescript
 import { createConfiguration, UsersApi } from '';
-import type { UsersApiListPaginatedUsersUsingGETRequest } from '';
+import type { UsersApiListPaginatedUsersRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new UsersApi(configuration);
 
-const request: UsersApiListPaginatedUsersUsingGETRequest = {
+const request: UsersApiListPaginatedUsersRequest = {
     // Filter to apply, allowed fields are: - (String) `email` - (String) `given_name` - (Boolean) `include_inactive` - (Boolean) `include_partners` - (Set[String]) `user_ids`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=given_name%3D%3DMary` - `filter=user_ids%3D%3D123%3Bgiven_name%3D%3DSmith`  (optional)
   filter: "filter_example",
     // Attribute and direction to order items. One of the following fields: - `date_created` - `email`  One of the following directions: - `asc` - `desc` (optional)
   orderBy: "order_by_example",
     // Total number of items to return per page (optional)
-  pageSize: 0,
+  pageSize: 10,
     // Page token (optional)
   pageToken: "page_token_example",
 };
 
-const data = await apiInstance.listPaginatedUsersUsingGET(request);
+const data = await apiInstance.listPaginatedUsers(request);
 console.log('API called successfully. Returned data:', data);
 ```
 

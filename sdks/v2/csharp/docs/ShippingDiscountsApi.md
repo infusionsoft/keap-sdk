@@ -4,15 +4,15 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**CreateDiscountUsingPOST3**](ShippingDiscountsApi.md#creatediscountusingpost3) | **POST** /v2/discounts/shipping | Create a Shipping Discount |
-| [**DeleteDiscountUsingDELETE3**](ShippingDiscountsApi.md#deletediscountusingdelete3) | **DELETE** /v2/discounts/shipping/{discount_id} | Delete a Shipping Discount |
-| [**GetDiscountUsingGET3**](ShippingDiscountsApi.md#getdiscountusingget3) | **GET** /v2/discounts/shipping/{discount_id} | Retrieve a Shipping Discount |
-| [**ListDiscountsUsingGET1**](ShippingDiscountsApi.md#listdiscountsusingget1) | **GET** /v2/discounts/shipping | List all Shipping Discounts |
-| [**UpdateDiscountUsingPATCH3**](ShippingDiscountsApi.md#updatediscountusingpatch3) | **PATCH** /v2/discounts/shipping/{discount_id} | Update a Shipping Discount |
+| [**CreateShippingDiscount**](ShippingDiscountsApi.md#createshippingdiscount) | **POST** /v2/discounts/shipping | Create a Shipping Discount |
+| [**DeleteShippingDiscount**](ShippingDiscountsApi.md#deleteshippingdiscount) | **DELETE** /v2/discounts/shipping/{discount_id} | Delete a Shipping Discount |
+| [**GetShippingDiscount**](ShippingDiscountsApi.md#getshippingdiscount) | **GET** /v2/discounts/shipping/{discount_id} | Retrieve a Shipping Discount |
+| [**ListShippingDiscounts**](ShippingDiscountsApi.md#listshippingdiscounts) | **GET** /v2/discounts/shipping | List all Shipping Discounts |
+| [**UpdateShippingDiscount**](ShippingDiscountsApi.md#updateshippingdiscount) | **PATCH** /v2/discounts/shipping/{discount_id} | Update a Shipping Discount |
 
-<a id="creatediscountusingpost3"></a>
-# **CreateDiscountUsingPOST3**
-> ShippingDiscount CreateDiscountUsingPOST3 (CreateShippingDiscountRequest createShippingDiscountRequest)
+<a id="createshippingdiscount"></a>
+# **CreateShippingDiscount**
+> ShippingDiscount CreateShippingDiscount (CreateShippingDiscountRequest createShippingDiscountRequest)
 
 Create a Shipping Discount
 
@@ -28,7 +28,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class CreateDiscountUsingPOST3Example
+    public class CreateShippingDiscountExample
     {
         public static void Main()
         {
@@ -40,12 +40,12 @@ namespace Example
             try
             {
                 // Create a Shipping Discount
-                ShippingDiscount result = apiInstance.CreateDiscountUsingPOST3(createShippingDiscountRequest);
+                ShippingDiscount result = apiInstance.CreateShippingDiscount(createShippingDiscountRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ShippingDiscountsApi.CreateDiscountUsingPOST3: " + e.Message);
+                Debug.Print("Exception when calling ShippingDiscountsApi.CreateShippingDiscount: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -54,21 +54,21 @@ namespace Example
 }
 ```
 
-#### Using the CreateDiscountUsingPOST3WithHttpInfo variant
+#### Using the CreateShippingDiscountWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Create a Shipping Discount
-    ApiResponse<ShippingDiscount> response = apiInstance.CreateDiscountUsingPOST3WithHttpInfo(createShippingDiscountRequest);
+    ApiResponse<ShippingDiscount> response = apiInstance.CreateShippingDiscountWithHttpInfo(createShippingDiscountRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling ShippingDiscountsApi.CreateDiscountUsingPOST3WithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling ShippingDiscountsApi.CreateShippingDiscountWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -104,9 +104,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="deletediscountusingdelete3"></a>
-# **DeleteDiscountUsingDELETE3**
-> void DeleteDiscountUsingDELETE3 (string discountId)
+<a id="deleteshippingdiscount"></a>
+# **DeleteShippingDiscount**
+> void DeleteShippingDiscount (string discountId)
 
 Delete a Shipping Discount
 
@@ -122,7 +122,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class DeleteDiscountUsingDELETE3Example
+    public class DeleteShippingDiscountExample
     {
         public static void Main()
         {
@@ -134,11 +134,11 @@ namespace Example
             try
             {
                 // Delete a Shipping Discount
-                apiInstance.DeleteDiscountUsingDELETE3(discountId);
+                apiInstance.DeleteShippingDiscount(discountId);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ShippingDiscountsApi.DeleteDiscountUsingDELETE3: " + e.Message);
+                Debug.Print("Exception when calling ShippingDiscountsApi.DeleteShippingDiscount: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -147,18 +147,18 @@ namespace Example
 }
 ```
 
-#### Using the DeleteDiscountUsingDELETE3WithHttpInfo variant
+#### Using the DeleteShippingDiscountWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Delete a Shipping Discount
-    apiInstance.DeleteDiscountUsingDELETE3WithHttpInfo(discountId);
+    apiInstance.DeleteShippingDiscountWithHttpInfo(discountId);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling ShippingDiscountsApi.DeleteDiscountUsingDELETE3WithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling ShippingDiscountsApi.DeleteShippingDiscountWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -195,9 +195,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="getdiscountusingget3"></a>
-# **GetDiscountUsingGET3**
-> ShippingDiscount GetDiscountUsingGET3 (string discountId)
+<a id="getshippingdiscount"></a>
+# **GetShippingDiscount**
+> ShippingDiscount GetShippingDiscount (string discountId)
 
 Retrieve a Shipping Discount
 
@@ -213,7 +213,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class GetDiscountUsingGET3Example
+    public class GetShippingDiscountExample
     {
         public static void Main()
         {
@@ -225,12 +225,12 @@ namespace Example
             try
             {
                 // Retrieve a Shipping Discount
-                ShippingDiscount result = apiInstance.GetDiscountUsingGET3(discountId);
+                ShippingDiscount result = apiInstance.GetShippingDiscount(discountId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ShippingDiscountsApi.GetDiscountUsingGET3: " + e.Message);
+                Debug.Print("Exception when calling ShippingDiscountsApi.GetShippingDiscount: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -239,21 +239,21 @@ namespace Example
 }
 ```
 
-#### Using the GetDiscountUsingGET3WithHttpInfo variant
+#### Using the GetShippingDiscountWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Retrieve a Shipping Discount
-    ApiResponse<ShippingDiscount> response = apiInstance.GetDiscountUsingGET3WithHttpInfo(discountId);
+    ApiResponse<ShippingDiscount> response = apiInstance.GetShippingDiscountWithHttpInfo(discountId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling ShippingDiscountsApi.GetDiscountUsingGET3WithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling ShippingDiscountsApi.GetShippingDiscountWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -290,9 +290,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="listdiscountsusingget1"></a>
-# **ListDiscountsUsingGET1**
-> ListShippingDiscountsResponse ListDiscountsUsingGET1 (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
+<a id="listshippingdiscounts"></a>
+# **ListShippingDiscounts**
+> ListShippingDiscountsResponse ListShippingDiscounts (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
 
 List all Shipping Discounts
 
@@ -308,7 +308,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class ListDiscountsUsingGET1Example
+    public class ListShippingDiscountsExample
     {
         public static void Main()
         {
@@ -316,19 +316,19 @@ namespace Example
             config.BasePath = "https://api.keap.com/crm/rest";
             var apiInstance = new ShippingDiscountsApi(config);
             var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (DiscountType) `discount_type`: AMOUNT or PERCENT - (Double) `discount_value`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=discount_type%3D%3DAMOUNT` - `filter=discount_value%3D%3D4.5` - `filter=discount_type%3D%3DAMOUNT%3Bdiscount_value%3D%3D4.5`  (optional) 
-            var orderBy = "orderBy_example";  // string? | Attribute and direction to order items. One of the following fields: - `discount_type` - `discount_value` - `id`  One of the following directions: - `asc` - `desc` (optional) 
+            var orderBy = "orderBy_example";  // string? | Attribute and direction to order items. One of the following fields: - `discount_type` - `discount_value` - `id` - `name`  One of the following directions: - `asc` - `desc` (optional) 
             var pageSize = 0;  // int? | Total number of items to return per page (optional) 
             var pageToken = "pageToken_example";  // string? | Page token (optional) 
 
             try
             {
                 // List all Shipping Discounts
-                ListShippingDiscountsResponse result = apiInstance.ListDiscountsUsingGET1(filter, orderBy, pageSize, pageToken);
+                ListShippingDiscountsResponse result = apiInstance.ListShippingDiscounts(filter, orderBy, pageSize, pageToken);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ShippingDiscountsApi.ListDiscountsUsingGET1: " + e.Message);
+                Debug.Print("Exception when calling ShippingDiscountsApi.ListShippingDiscounts: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -337,21 +337,21 @@ namespace Example
 }
 ```
 
-#### Using the ListDiscountsUsingGET1WithHttpInfo variant
+#### Using the ListShippingDiscountsWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // List all Shipping Discounts
-    ApiResponse<ListShippingDiscountsResponse> response = apiInstance.ListDiscountsUsingGET1WithHttpInfo(filter, orderBy, pageSize, pageToken);
+    ApiResponse<ListShippingDiscountsResponse> response = apiInstance.ListShippingDiscountsWithHttpInfo(filter, orderBy, pageSize, pageToken);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling ShippingDiscountsApi.ListDiscountsUsingGET1WithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling ShippingDiscountsApi.ListShippingDiscountsWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -362,7 +362,7 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **filter** | **string?** | Filter to apply, allowed fields are: - (DiscountType) &#x60;discount_type&#x60;: AMOUNT or PERCENT - (Double) &#x60;discount_value&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT&#x60; - &#x60;filter&#x3D;discount_value%3D%3D4.5&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT%3Bdiscount_value%3D%3D4.5&#x60;  | [optional]  |
-| **orderBy** | **string?** | Attribute and direction to order items. One of the following fields: - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional]  |
+| **orderBy** | **string?** | Attribute and direction to order items. One of the following fields: - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60; - &#x60;name&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional]  |
 | **pageSize** | **int?** | Total number of items to return per page | [optional]  |
 | **pageToken** | **string?** | Page token | [optional]  |
 
@@ -391,9 +391,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="updatediscountusingpatch3"></a>
-# **UpdateDiscountUsingPATCH3**
-> ShippingDiscount UpdateDiscountUsingPATCH3 (string discountId, UpdateShippingDiscountRequest updateShippingDiscountRequest, List<string>? updateMask = null)
+<a id="updateshippingdiscount"></a>
+# **UpdateShippingDiscount**
+> ShippingDiscount UpdateShippingDiscount (string discountId, UpdateShippingDiscountRequest updateShippingDiscountRequest, List<string>? updateMask = null)
 
 Update a Shipping Discount
 
@@ -409,7 +409,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class UpdateDiscountUsingPATCH3Example
+    public class UpdateShippingDiscountExample
     {
         public static void Main()
         {
@@ -423,12 +423,12 @@ namespace Example
             try
             {
                 // Update a Shipping Discount
-                ShippingDiscount result = apiInstance.UpdateDiscountUsingPATCH3(discountId, updateShippingDiscountRequest, updateMask);
+                ShippingDiscount result = apiInstance.UpdateShippingDiscount(discountId, updateShippingDiscountRequest, updateMask);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ShippingDiscountsApi.UpdateDiscountUsingPATCH3: " + e.Message);
+                Debug.Print("Exception when calling ShippingDiscountsApi.UpdateShippingDiscount: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -437,21 +437,21 @@ namespace Example
 }
 ```
 
-#### Using the UpdateDiscountUsingPATCH3WithHttpInfo variant
+#### Using the UpdateShippingDiscountWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Update a Shipping Discount
-    ApiResponse<ShippingDiscount> response = apiInstance.UpdateDiscountUsingPATCH3WithHttpInfo(discountId, updateShippingDiscountRequest, updateMask);
+    ApiResponse<ShippingDiscount> response = apiInstance.UpdateShippingDiscountWithHttpInfo(discountId, updateShippingDiscountRequest, updateMask);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling ShippingDiscountsApi.UpdateDiscountUsingPATCH3WithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling ShippingDiscountsApi.UpdateShippingDiscountWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }

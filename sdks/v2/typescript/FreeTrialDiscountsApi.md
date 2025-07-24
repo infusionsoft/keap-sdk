@@ -4,15 +4,15 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createDiscountUsingPOST1**](FreeTrialDiscountsApi.md#createDiscountUsingPOST1) | **POST** /v2/discounts/freeTrials | Create a Subscription Free Trial Discount
-[**deleteDiscountUsingDELETE1**](FreeTrialDiscountsApi.md#deleteDiscountUsingDELETE1) | **DELETE** /v2/discounts/freeTrials/{discount_id} | Delete a Subscription Free Trial Discount
-[**getDiscountUsingGET1**](FreeTrialDiscountsApi.md#getDiscountUsingGET1) | **GET** /v2/discounts/freeTrials/{discount_id} | Retrieve a Subscription Free Trial Discount
-[**listFreeTrialsUsingGET**](FreeTrialDiscountsApi.md#listFreeTrialsUsingGET) | **GET** /v2/discounts/freeTrials | List all Subscription Free Trial Discounts
-[**updateDiscountUsingPATCH1**](FreeTrialDiscountsApi.md#updateDiscountUsingPATCH1) | **PATCH** /v2/discounts/freeTrials/{discount_id} | Update a Subscription Free Trial Discount
+[**createFreeTrialDiscount**](FreeTrialDiscountsApi.md#createFreeTrialDiscount) | **POST** /v2/discounts/freeTrials | Create a Subscription Free Trial Discount
+[**deleteFreeTrialDiscount**](FreeTrialDiscountsApi.md#deleteFreeTrialDiscount) | **DELETE** /v2/discounts/freeTrials/{discount_id} | Delete a Subscription Free Trial Discount
+[**getFreeTrialDiscount**](FreeTrialDiscountsApi.md#getFreeTrialDiscount) | **GET** /v2/discounts/freeTrials/{discount_id} | Retrieve a Subscription Free Trial Discount
+[**listFreeTrialDiscounts**](FreeTrialDiscountsApi.md#listFreeTrialDiscounts) | **GET** /v2/discounts/freeTrials | List all Subscription Free Trial Discounts
+[**updateFreeTrialDiscount**](FreeTrialDiscountsApi.md#updateFreeTrialDiscount) | **PATCH** /v2/discounts/freeTrials/{discount_id} | Update a Subscription Free Trial Discount
 
 
-# **createDiscountUsingPOST1**
-> FreeTrialDiscount createDiscountUsingPOST1(createFreeTrialDiscountRequest)
+# **createFreeTrialDiscount**
+> FreeTrialDiscount createFreeTrialDiscount(createFreeTrialDiscountRequest)
 
 Creates a Subscription Free Trial Discount
 
@@ -21,12 +21,12 @@ Creates a Subscription Free Trial Discount
 
 ```typescript
 import { createConfiguration, FreeTrialDiscountsApi } from '';
-import type { FreeTrialDiscountsApiCreateDiscountUsingPOST1Request } from '';
+import type { FreeTrialDiscountsApiCreateFreeTrialDiscountRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new FreeTrialDiscountsApi(configuration);
 
-const request: FreeTrialDiscountsApiCreateDiscountUsingPOST1Request = {
+const request: FreeTrialDiscountsApiCreateFreeTrialDiscountRequest = {
     // createFreeTrialDiscountRequest
   createFreeTrialDiscountRequest: {
     criteria: [
@@ -53,7 +53,7 @@ const request: FreeTrialDiscountsApiCreateDiscountUsingPOST1Request = {
   },
 };
 
-const data = await apiInstance.createDiscountUsingPOST1(request);
+const data = await apiInstance.createFreeTrialDiscount(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -89,8 +89,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **deleteDiscountUsingDELETE1**
-> void deleteDiscountUsingDELETE1()
+# **deleteFreeTrialDiscount**
+> void deleteFreeTrialDiscount()
 
 Deletes a specified Subscription Free Trial Discount
 
@@ -99,17 +99,17 @@ Deletes a specified Subscription Free Trial Discount
 
 ```typescript
 import { createConfiguration, FreeTrialDiscountsApi } from '';
-import type { FreeTrialDiscountsApiDeleteDiscountUsingDELETE1Request } from '';
+import type { FreeTrialDiscountsApiDeleteFreeTrialDiscountRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new FreeTrialDiscountsApi(configuration);
 
-const request: FreeTrialDiscountsApiDeleteDiscountUsingDELETE1Request = {
+const request: FreeTrialDiscountsApiDeleteFreeTrialDiscountRequest = {
     // discount_id
   discountId: "discount_id_example",
 };
 
-const data = await apiInstance.deleteDiscountUsingDELETE1(request);
+const data = await apiInstance.deleteFreeTrialDiscount(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -146,8 +146,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **getDiscountUsingGET1**
-> FreeTrialDiscount getDiscountUsingGET1()
+# **getFreeTrialDiscount**
+> FreeTrialDiscount getFreeTrialDiscount()
 
 Retrieves a Subscription Free Trial Discount
 
@@ -156,17 +156,17 @@ Retrieves a Subscription Free Trial Discount
 
 ```typescript
 import { createConfiguration, FreeTrialDiscountsApi } from '';
-import type { FreeTrialDiscountsApiGetDiscountUsingGET1Request } from '';
+import type { FreeTrialDiscountsApiGetFreeTrialDiscountRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new FreeTrialDiscountsApi(configuration);
 
-const request: FreeTrialDiscountsApiGetDiscountUsingGET1Request = {
+const request: FreeTrialDiscountsApiGetFreeTrialDiscountRequest = {
     // discount_id
   discountId: "discount_id_example",
 };
 
-const data = await apiInstance.getDiscountUsingGET1(request);
+const data = await apiInstance.getFreeTrialDiscount(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -203,8 +203,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **listFreeTrialsUsingGET**
-> ListFreeTrialDiscountsResponse listFreeTrialsUsingGET()
+# **listFreeTrialDiscounts**
+> ListFreeTrialDiscountsResponse listFreeTrialDiscounts()
 
 Retrieves a list of Subscription Free Trial Discounts
 
@@ -213,12 +213,12 @@ Retrieves a list of Subscription Free Trial Discounts
 
 ```typescript
 import { createConfiguration, FreeTrialDiscountsApi } from '';
-import type { FreeTrialDiscountsApiListFreeTrialsUsingGETRequest } from '';
+import type { FreeTrialDiscountsApiListFreeTrialDiscountsRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new FreeTrialDiscountsApi(configuration);
 
-const request: FreeTrialDiscountsApiListFreeTrialsUsingGETRequest = {
+const request: FreeTrialDiscountsApiListFreeTrialDiscountsRequest = {
     // Filter to apply, allowed fields are: - (Integer) `free_trial_days` - (Boolean) `hide_price` - (String) `subscription_plan_id`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=free_trial_days%3D%3D14` - `filter=hide_price%3D%3DTrue` - `filter=subscription_plan_id%3D%3DmySubscriptionPlanId` - `filter=free_trial_days%3D%3D14%3Bhide_price%3D%3DFalse`  (optional)
   filter: "filter_example",
     // Attribute and direction to order items. One of the following fields: - `free_trial_days` - `hide_price` - `id` - `name` - `subscription_plan_id`  One of the following directions: - `asc` - `desc` (optional)
@@ -229,7 +229,7 @@ const request: FreeTrialDiscountsApiListFreeTrialsUsingGETRequest = {
   pageToken: "page_token_example",
 };
 
-const data = await apiInstance.listFreeTrialsUsingGET(request);
+const data = await apiInstance.listFreeTrialDiscounts(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -269,8 +269,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **updateDiscountUsingPATCH1**
-> FreeTrialDiscount updateDiscountUsingPATCH1(updateFreeTrialDiscountRequest)
+# **updateFreeTrialDiscount**
+> FreeTrialDiscount updateFreeTrialDiscount(updateFreeTrialDiscountRequest)
 
 Updates a Subscription Free Trial Discount
 
@@ -279,12 +279,12 @@ Updates a Subscription Free Trial Discount
 
 ```typescript
 import { createConfiguration, FreeTrialDiscountsApi } from '';
-import type { FreeTrialDiscountsApiUpdateDiscountUsingPATCH1Request } from '';
+import type { FreeTrialDiscountsApiUpdateFreeTrialDiscountRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new FreeTrialDiscountsApi(configuration);
 
-const request: FreeTrialDiscountsApiUpdateDiscountUsingPATCH1Request = {
+const request: FreeTrialDiscountsApiUpdateFreeTrialDiscountRequest = {
     // discount_id
   discountId: "discount_id_example",
     // request
@@ -317,7 +317,7 @@ const request: FreeTrialDiscountsApiUpdateDiscountUsingPATCH1Request = {
   ],
 };
 
-const data = await apiInstance.updateDiscountUsingPATCH1(request);
+const data = await apiInstance.updateFreeTrialDiscount(request);
 console.log('API called successfully. Returned data:', data);
 ```
 

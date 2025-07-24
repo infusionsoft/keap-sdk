@@ -15,7 +15,7 @@ class ContactsTest(unittest.TestCase):
         with ApiClient(configuration=config) as api_client:
             api_client.default_headers['Authorization'] = f"Bearer {api_key}"
             contact_api = ContactApi(api_client)
-            response = contact_api.list_contacts_using_get1()
+            response = contact_api.list_contacts()
 
             print(f"Found {len(response.contacts)} contacts")
             for contact in response.contacts:

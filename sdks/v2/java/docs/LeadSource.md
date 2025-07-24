@@ -10,7 +10,7 @@
 |**createTime** | **String** | The time that this lead source was created |  [optional] |
 |**description** | **String** | The description of the lead source |  [optional] |
 |**endTime** | **String** | The time that this lead source will end |  [optional] |
-|**id** | **String** | The unique identifier for thia lead source |  [optional] |
+|**id** | **String** | The unique identifier for this lead source |  [optional] |
 |**leadSourceCategoryId** | **String** | The ID of the category that the lead source belongs to |  [optional] |
 |**medium** | **String** | The medium of the lead source |  [optional] |
 |**message** | **String** | The message/content of the lead source |  [optional] |

@@ -17,6 +17,7 @@
 |**name** | **String** | Product name |  [optional] |
 |**options** | [**List&lt;ProductOptions&gt;**](ProductOptions.md) | List of product options. Can be empty. |  [optional] |
 |**price** | [**CurrencyValue**](CurrencyValue.md) |  |  [optional] |
+|**shippable** | **Boolean** | If the product requires shipping |  [optional] |
 |**shortDescription** | **String** | Product short description |  [optional] |
 |**sku** | **String** | Product SKU |  [optional] |
 |**stateTaxable** | **Boolean** | If state-based taxes should be applied to this product |  [optional] |

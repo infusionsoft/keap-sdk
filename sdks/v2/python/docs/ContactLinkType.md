@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**create_time** | **str** |  | [optional] 
 **id** | **str** |  | [optional] 
 **max_links** | **int** |  | [optional] 
 **name** | **str** |  | [optional] 

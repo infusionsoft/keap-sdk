@@ -4,170 +4,30 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createNoteCustomFieldUsingPOST1**](NoteApi.md#createNoteCustomFieldUsingPOST1) | **POST** /v2/notes/model/customFields | Create a Custom Field |
-| [**createNoteCustomFieldUsingPOST1WithHttpInfo**](NoteApi.md#createNoteCustomFieldUsingPOST1WithHttpInfo) | **POST** /v2/notes/model/customFields | Create a Custom Field |
-| [**createNoteUsingPOST1**](NoteApi.md#createNoteUsingPOST1) | **POST** /v2/contacts/{contact_id}/notes | Create a Note |
-| [**createNoteUsingPOST1WithHttpInfo**](NoteApi.md#createNoteUsingPOST1WithHttpInfo) | **POST** /v2/contacts/{contact_id}/notes | Create a Note |
-| [**deleteNoteUsingDELETE1**](NoteApi.md#deleteNoteUsingDELETE1) | **DELETE** /v2/contacts/{contact_id}/notes/{note_id} | Delete a Note |
-| [**deleteNoteUsingDELETE1WithHttpInfo**](NoteApi.md#deleteNoteUsingDELETE1WithHttpInfo) | **DELETE** /v2/contacts/{contact_id}/notes/{note_id} | Delete a Note |
-| [**getNoteUsingGET1**](NoteApi.md#getNoteUsingGET1) | **GET** /v2/contacts/{contact_id}/notes/{note_id} | Retrieve a Note |
-| [**getNoteUsingGET1WithHttpInfo**](NoteApi.md#getNoteUsingGET1WithHttpInfo) | **GET** /v2/contacts/{contact_id}/notes/{note_id} | Retrieve a Note |
-| [**listNoteTemplatesUsingGET**](NoteApi.md#listNoteTemplatesUsingGET) | **GET** /v2/notes/templates | Retrieve Note Templates |
-| [**listNoteTemplatesUsingGETWithHttpInfo**](NoteApi.md#listNoteTemplatesUsingGETWithHttpInfo) | **GET** /v2/notes/templates | Retrieve Note Templates |
-| [**listNotesUsingGET1**](NoteApi.md#listNotesUsingGET1) | **GET** /v2/contacts/{contact_id}/notes | List Notes |
-| [**listNotesUsingGET1WithHttpInfo**](NoteApi.md#listNotesUsingGET1WithHttpInfo) | **GET** /v2/contacts/{contact_id}/notes | List Notes |
-| [**retrieveNoteModelUsingGET1**](NoteApi.md#retrieveNoteModelUsingGET1) | **GET** /v2/notes/model | Retrieve Note Model |
-| [**retrieveNoteModelUsingGET1WithHttpInfo**](NoteApi.md#retrieveNoteModelUsingGET1WithHttpInfo) | **GET** /v2/notes/model | Retrieve Note Model |
-| [**updateNoteUsingPATCH**](NoteApi.md#updateNoteUsingPATCH) | **PATCH** /v2/contacts/{contact_id}/notes/{note_id} | Update a Note |
-| [**updateNoteUsingPATCHWithHttpInfo**](NoteApi.md#updateNoteUsingPATCHWithHttpInfo) | **PATCH** /v2/contacts/{contact_id}/notes/{note_id} | Update a Note |
-| [**updateNotesCustomFieldUsingPATCH**](NoteApi.md#updateNotesCustomFieldUsingPATCH) | **PATCH** /v2/notes/model/customFields/{custom_field_id} | Update a Custom Field |
-| [**updateNotesCustomFieldUsingPATCHWithHttpInfo**](NoteApi.md#updateNotesCustomFieldUsingPATCHWithHttpInfo) | **PATCH** /v2/notes/model/customFields/{custom_field_id} | Update a Custom Field |
+| [**createNote**](NoteApi.md#createNote) | **POST** /v2/contacts/{contact_id}/notes | Create a Note |
+| [**createNoteWithHttpInfo**](NoteApi.md#createNoteWithHttpInfo) | **POST** /v2/contacts/{contact_id}/notes | Create a Note |
+| [**createNoteCustomField**](NoteApi.md#createNoteCustomField) | **POST** /v2/notes/model/customFields | Create a Custom Field |
+| [**createNoteCustomFieldWithHttpInfo**](NoteApi.md#createNoteCustomFieldWithHttpInfo) | **POST** /v2/notes/model/customFields | Create a Custom Field |
+| [**deleteNote**](NoteApi.md#deleteNote) | **DELETE** /v2/contacts/{contact_id}/notes/{note_id} | Delete a Note |
+| [**deleteNoteWithHttpInfo**](NoteApi.md#deleteNoteWithHttpInfo) | **DELETE** /v2/contacts/{contact_id}/notes/{note_id} | Delete a Note |
+| [**getNote**](NoteApi.md#getNote) | **GET** /v2/contacts/{contact_id}/notes/{note_id} | Retrieve a Note |
+| [**getNoteWithHttpInfo**](NoteApi.md#getNoteWithHttpInfo) | **GET** /v2/contacts/{contact_id}/notes/{note_id} | Retrieve a Note |
+| [**listNoteTemplates**](NoteApi.md#listNoteTemplates) | **GET** /v2/notes/templates | Retrieve Note Templates |
+| [**listNoteTemplatesWithHttpInfo**](NoteApi.md#listNoteTemplatesWithHttpInfo) | **GET** /v2/notes/templates | Retrieve Note Templates |
+| [**listNotes**](NoteApi.md#listNotes) | **GET** /v2/contacts/{contact_id}/notes | List Notes |
+| [**listNotesWithHttpInfo**](NoteApi.md#listNotesWithHttpInfo) | **GET** /v2/contacts/{contact_id}/notes | List Notes |
+| [**retrieveNoteModel**](NoteApi.md#retrieveNoteModel) | **GET** /v2/notes/model | Retrieve Note Model |
+| [**retrieveNoteModelWithHttpInfo**](NoteApi.md#retrieveNoteModelWithHttpInfo) | **GET** /v2/notes/model | Retrieve Note Model |
+| [**updateNote**](NoteApi.md#updateNote) | **PATCH** /v2/contacts/{contact_id}/notes/{note_id} | Update a Note |
+| [**updateNoteWithHttpInfo**](NoteApi.md#updateNoteWithHttpInfo) | **PATCH** /v2/contacts/{contact_id}/notes/{note_id} | Update a Note |
+| [**updateNotesCustomField**](NoteApi.md#updateNotesCustomField) | **PATCH** /v2/notes/model/customFields/{custom_field_id} | Update a Custom Field |
+| [**updateNotesCustomFieldWithHttpInfo**](NoteApi.md#updateNotesCustomFieldWithHttpInfo) | **PATCH** /v2/notes/model/customFields/{custom_field_id} | Update a Custom Field |
 
 
 
-## createNoteCustomFieldUsingPOST1
+## createNote
 
-> CustomFieldMetaData createNoteCustomFieldUsingPOST1(createCustomFieldRequest)
-
-Create a Custom Field
-
-Creates a custom field of the specified type and options to the Note object&lt;br/&gt;Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
-
-### Example
-
-```java
-// Import classes:
-import com.keap.core.sdk.ApiClient;
-import com.keap.core.sdk.ApiException;
-import com.keap.core.sdk.Configuration;
-import com.keap.core.sdk.models.*;
-import com.keap.core.sdk.client.NoteApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
-
-        NoteApi apiInstance = new NoteApi(defaultClient);
-        CreateCustomFieldRequest createCustomFieldRequest = new CreateCustomFieldRequest(); // CreateCustomFieldRequest | customField
-        try {
-            CustomFieldMetaData result = apiInstance.createNoteCustomFieldUsingPOST1(createCustomFieldRequest);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling NoteApi#createNoteCustomFieldUsingPOST1");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **createCustomFieldRequest** | [**CreateCustomFieldRequest**](CreateCustomFieldRequest.md)| customField | |
-
-### Return type
-
-[**CustomFieldMetaData**](CustomFieldMetaData.md)
-
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **201** | Created |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **500** | Internal Server Error |  -  |
-
-## createNoteCustomFieldUsingPOST1WithHttpInfo
-
-> ApiResponse<CustomFieldMetaData> createNoteCustomFieldUsingPOST1 createNoteCustomFieldUsingPOST1WithHttpInfo(createCustomFieldRequest)
-
-Create a Custom Field
-
-Creates a custom field of the specified type and options to the Note object&lt;br/&gt;Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
-
-### Example
-
-```java
-// Import classes:
-import com.keap.core.sdk.ApiClient;
-import com.keap.core.sdk.ApiException;
-import com.keap.core.sdk.ApiResponse;
-import com.keap.core.sdk.Configuration;
-import com.keap.core.sdk.models.*;
-import com.keap.core.sdk.client.NoteApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
-
-        NoteApi apiInstance = new NoteApi(defaultClient);
-        CreateCustomFieldRequest createCustomFieldRequest = new CreateCustomFieldRequest(); // CreateCustomFieldRequest | customField
-        try {
-            ApiResponse<CustomFieldMetaData> response = apiInstance.createNoteCustomFieldUsingPOST1WithHttpInfo(createCustomFieldRequest);
-            System.out.println("Status code: " + response.getStatusCode());
-            System.out.println("Response headers: " + response.getHeaders());
-            System.out.println("Response body: " + response.getData());
-        } catch (ApiException e) {
-            System.err.println("Exception when calling NoteApi#createNoteCustomFieldUsingPOST1");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            System.err.println("Reason: " + e.getResponseBody());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **createCustomFieldRequest** | [**CreateCustomFieldRequest**](CreateCustomFieldRequest.md)| customField | |
-
-### Return type
-
-ApiResponse<[**CustomFieldMetaData**](CustomFieldMetaData.md)>
-
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **201** | Created |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **500** | Internal Server Error |  -  |
-
-
-## createNoteUsingPOST1
-
-> Note createNoteUsingPOST1(contactId, createNoteRequest)
+> Note createNote(contactId, createNoteRequest)
 
 Create a Note
 
@@ -192,10 +52,10 @@ public class Example {
         String contactId = "contactId_example"; // String | contact_id
         CreateNoteRequest createNoteRequest = new CreateNoteRequest(); // CreateNoteRequest | request
         try {
-            Note result = apiInstance.createNoteUsingPOST1(contactId, createNoteRequest);
+            Note result = apiInstance.createNote(contactId, createNoteRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling NoteApi#createNoteUsingPOST1");
+            System.err.println("Exception when calling NoteApi#createNote");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -235,9 +95,9 @@ No authorization required
 | **403** | Forbidden |  -  |
 | **500** | Internal Server Error |  -  |
 
-## createNoteUsingPOST1WithHttpInfo
+## createNoteWithHttpInfo
 
-> ApiResponse<Note> createNoteUsingPOST1 createNoteUsingPOST1WithHttpInfo(contactId, createNoteRequest)
+> ApiResponse<Note> createNote createNoteWithHttpInfo(contactId, createNoteRequest)
 
 Create a Note
 
@@ -263,12 +123,12 @@ public class Example {
         String contactId = "contactId_example"; // String | contact_id
         CreateNoteRequest createNoteRequest = new CreateNoteRequest(); // CreateNoteRequest | request
         try {
-            ApiResponse<Note> response = apiInstance.createNoteUsingPOST1WithHttpInfo(contactId, createNoteRequest);
+            ApiResponse<Note> response = apiInstance.createNoteWithHttpInfo(contactId, createNoteRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling NoteApi#createNoteUsingPOST1");
+            System.err.println("Exception when calling NoteApi#createNote");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -309,9 +169,149 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## deleteNoteUsingDELETE1
+## createNoteCustomField
 
-> void deleteNoteUsingDELETE1(contactId, noteId)
+> CustomFieldMetaData createNoteCustomField(createCustomFieldRequest)
+
+Create a Custom Field
+
+Creates a custom field of the specified type and options to the Note object&lt;br/&gt;Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.NoteApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+
+        NoteApi apiInstance = new NoteApi(defaultClient);
+        CreateCustomFieldRequest createCustomFieldRequest = new CreateCustomFieldRequest(); // CreateCustomFieldRequest | customField
+        try {
+            CustomFieldMetaData result = apiInstance.createNoteCustomField(createCustomFieldRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling NoteApi#createNoteCustomField");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **createCustomFieldRequest** | [**CreateCustomFieldRequest**](CreateCustomFieldRequest.md)| customField | |
+
+### Return type
+
+[**CustomFieldMetaData**](CustomFieldMetaData.md)
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **500** | Internal Server Error |  -  |
+
+## createNoteCustomFieldWithHttpInfo
+
+> ApiResponse<CustomFieldMetaData> createNoteCustomField createNoteCustomFieldWithHttpInfo(createCustomFieldRequest)
+
+Create a Custom Field
+
+Creates a custom field of the specified type and options to the Note object&lt;br/&gt;Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.NoteApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+
+        NoteApi apiInstance = new NoteApi(defaultClient);
+        CreateCustomFieldRequest createCustomFieldRequest = new CreateCustomFieldRequest(); // CreateCustomFieldRequest | customField
+        try {
+            ApiResponse<CustomFieldMetaData> response = apiInstance.createNoteCustomFieldWithHttpInfo(createCustomFieldRequest);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling NoteApi#createNoteCustomField");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **createCustomFieldRequest** | [**CreateCustomFieldRequest**](CreateCustomFieldRequest.md)| customField | |
+
+### Return type
+
+ApiResponse<[**CustomFieldMetaData**](CustomFieldMetaData.md)>
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **500** | Internal Server Error |  -  |
+
+
+## deleteNote
+
+> void deleteNote(contactId, noteId)
 
 Delete a Note
 
@@ -336,9 +336,9 @@ public class Example {
         String contactId = "contactId_example"; // String | contact_id
         String noteId = "noteId_example"; // String | note_id
         try {
-            apiInstance.deleteNoteUsingDELETE1(contactId, noteId);
+            apiInstance.deleteNote(contactId, noteId);
         } catch (ApiException e) {
-            System.err.println("Exception when calling NoteApi#deleteNoteUsingDELETE1");
+            System.err.println("Exception when calling NoteApi#deleteNote");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -379,9 +379,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## deleteNoteUsingDELETE1WithHttpInfo
+## deleteNoteWithHttpInfo
 
-> ApiResponse<Void> deleteNoteUsingDELETE1 deleteNoteUsingDELETE1WithHttpInfo(contactId, noteId)
+> ApiResponse<Void> deleteNote deleteNoteWithHttpInfo(contactId, noteId)
 
 Delete a Note
 
@@ -407,11 +407,11 @@ public class Example {
         String contactId = "contactId_example"; // String | contact_id
         String noteId = "noteId_example"; // String | note_id
         try {
-            ApiResponse<Void> response = apiInstance.deleteNoteUsingDELETE1WithHttpInfo(contactId, noteId);
+            ApiResponse<Void> response = apiInstance.deleteNoteWithHttpInfo(contactId, noteId);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
-            System.err.println("Exception when calling NoteApi#deleteNoteUsingDELETE1");
+            System.err.println("Exception when calling NoteApi#deleteNote");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -453,9 +453,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## getNoteUsingGET1
+## getNote
 
-> GetNoteResponse getNoteUsingGET1(contactId, noteId)
+> GetNoteResponse getNote(contactId, noteId)
 
 Retrieve a Note
 
@@ -480,10 +480,10 @@ public class Example {
         String contactId = "contactId_example"; // String | contact_id
         String noteId = "noteId_example"; // String | note_id
         try {
-            GetNoteResponse result = apiInstance.getNoteUsingGET1(contactId, noteId);
+            GetNoteResponse result = apiInstance.getNote(contactId, noteId);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling NoteApi#getNoteUsingGET1");
+            System.err.println("Exception when calling NoteApi#getNote");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -524,9 +524,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## getNoteUsingGET1WithHttpInfo
+## getNoteWithHttpInfo
 
-> ApiResponse<GetNoteResponse> getNoteUsingGET1 getNoteUsingGET1WithHttpInfo(contactId, noteId)
+> ApiResponse<GetNoteResponse> getNote getNoteWithHttpInfo(contactId, noteId)
 
 Retrieve a Note
 
@@ -552,12 +552,12 @@ public class Example {
         String contactId = "contactId_example"; // String | contact_id
         String noteId = "noteId_example"; // String | note_id
         try {
-            ApiResponse<GetNoteResponse> response = apiInstance.getNoteUsingGET1WithHttpInfo(contactId, noteId);
+            ApiResponse<GetNoteResponse> response = apiInstance.getNoteWithHttpInfo(contactId, noteId);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling NoteApi#getNoteUsingGET1");
+            System.err.println("Exception when calling NoteApi#getNote");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -599,9 +599,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## listNoteTemplatesUsingGET
+## listNoteTemplates
 
-> ListNoteTemplateResponse listNoteTemplatesUsingGET(filter, orderBy, pageSize, pageToken)
+> ListNoteTemplateResponse listNoteTemplates(filter, orderBy, pageSize, pageToken)
 
 Retrieve Note Templates
 
@@ -628,10 +628,10 @@ public class Example {
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
         try {
-            ListNoteTemplateResponse result = apiInstance.listNoteTemplatesUsingGET(filter, orderBy, pageSize, pageToken);
+            ListNoteTemplateResponse result = apiInstance.listNoteTemplates(filter, orderBy, pageSize, pageToken);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling NoteApi#listNoteTemplatesUsingGET");
+            System.err.println("Exception when calling NoteApi#listNoteTemplates");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -674,9 +674,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## listNoteTemplatesUsingGETWithHttpInfo
+## listNoteTemplatesWithHttpInfo
 
-> ApiResponse<ListNoteTemplateResponse> listNoteTemplatesUsingGET listNoteTemplatesUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken)
+> ApiResponse<ListNoteTemplateResponse> listNoteTemplates listNoteTemplatesWithHttpInfo(filter, orderBy, pageSize, pageToken)
 
 Retrieve Note Templates
 
@@ -704,12 +704,12 @@ public class Example {
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
         try {
-            ApiResponse<ListNoteTemplateResponse> response = apiInstance.listNoteTemplatesUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken);
+            ApiResponse<ListNoteTemplateResponse> response = apiInstance.listNoteTemplatesWithHttpInfo(filter, orderBy, pageSize, pageToken);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling NoteApi#listNoteTemplatesUsingGET");
+            System.err.println("Exception when calling NoteApi#listNoteTemplates");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -753,9 +753,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## listNotesUsingGET1
+## listNotes
 
-> ListNotesResponse listNotesUsingGET1(contactId, filter, orderBy, pageSize, pageToken)
+> ListNotesResponse listNotes(contactId, filter, orderBy, pageSize, pageToken)
 
 List Notes
 
@@ -778,15 +778,15 @@ public class Example {
 
         NoteApi apiInstance = new NoteApi(defaultClient);
         String contactId = "contactId_example"; // String | contact_id
-        String filter = "filter_example"; // String | Search filter to apply to results
-        String orderBy = "orderBy_example"; // String | Attribute and direction to order items by. E.g. `given_name desc`
+        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `assigned_to_user_id` - (String) `title` - (String) `since_time` - (String) `until_time` You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=assigned_to_user_id%3D%3DUserId` - `filter=title%3D%3DexpectedTitle` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;` 
+        String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `id` - `create_time`  One of the following directions: - `asc` - `desc`
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
         try {
-            ListNotesResponse result = apiInstance.listNotesUsingGET1(contactId, filter, orderBy, pageSize, pageToken);
+            ListNotesResponse result = apiInstance.listNotes(contactId, filter, orderBy, pageSize, pageToken);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling NoteApi#listNotesUsingGET1");
+            System.err.println("Exception when calling NoteApi#listNotes");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -802,8 +802,8 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **contactId** | **String**| contact_id | |
-| **filter** | **String**| Search filter to apply to results | [optional] |
-| **orderBy** | **String**| Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60; | [optional] |
+| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;assigned_to_user_id&#x60; - (String) &#x60;title&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;assigned_to_user_id%3D%3DUserId&#x60; - &#x60;filter&#x3D;title%3D%3DexpectedTitle&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  | [optional] |
+| **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **pageSize** | **Integer**| Total number of items to return per page | [optional] |
 | **pageToken** | **String**| Page token | [optional] |
 
@@ -830,9 +830,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## listNotesUsingGET1WithHttpInfo
+## listNotesWithHttpInfo
 
-> ApiResponse<ListNotesResponse> listNotesUsingGET1 listNotesUsingGET1WithHttpInfo(contactId, filter, orderBy, pageSize, pageToken)
+> ApiResponse<ListNotesResponse> listNotes listNotesWithHttpInfo(contactId, filter, orderBy, pageSize, pageToken)
 
 List Notes
 
@@ -856,17 +856,17 @@ public class Example {
 
         NoteApi apiInstance = new NoteApi(defaultClient);
         String contactId = "contactId_example"; // String | contact_id
-        String filter = "filter_example"; // String | Search filter to apply to results
-        String orderBy = "orderBy_example"; // String | Attribute and direction to order items by. E.g. `given_name desc`
+        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `assigned_to_user_id` - (String) `title` - (String) `since_time` - (String) `until_time` You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=assigned_to_user_id%3D%3DUserId` - `filter=title%3D%3DexpectedTitle` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;` 
+        String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `id` - `create_time`  One of the following directions: - `asc` - `desc`
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
         try {
-            ApiResponse<ListNotesResponse> response = apiInstance.listNotesUsingGET1WithHttpInfo(contactId, filter, orderBy, pageSize, pageToken);
+            ApiResponse<ListNotesResponse> response = apiInstance.listNotesWithHttpInfo(contactId, filter, orderBy, pageSize, pageToken);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling NoteApi#listNotesUsingGET1");
+            System.err.println("Exception when calling NoteApi#listNotes");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -882,8 +882,8 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **contactId** | **String**| contact_id | |
-| **filter** | **String**| Search filter to apply to results | [optional] |
-| **orderBy** | **String**| Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60; | [optional] |
+| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;assigned_to_user_id&#x60; - (String) &#x60;title&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;assigned_to_user_id%3D%3DUserId&#x60; - &#x60;filter&#x3D;title%3D%3DexpectedTitle&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  | [optional] |
+| **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **pageSize** | **Integer**| Total number of items to return per page | [optional] |
 | **pageToken** | **String**| Page token | [optional] |
 
@@ -911,9 +911,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## retrieveNoteModelUsingGET1
+## retrieveNoteModel
 
-> ObjectModel retrieveNoteModelUsingGET1()
+> ObjectModel retrieveNoteModel()
 
 Retrieve Note Model
 
@@ -936,10 +936,10 @@ public class Example {
 
         NoteApi apiInstance = new NoteApi(defaultClient);
         try {
-            ObjectModel result = apiInstance.retrieveNoteModelUsingGET1();
+            ObjectModel result = apiInstance.retrieveNoteModel();
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling NoteApi#retrieveNoteModelUsingGET1");
+            System.err.println("Exception when calling NoteApi#retrieveNoteModel");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -976,9 +976,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## retrieveNoteModelUsingGET1WithHttpInfo
+## retrieveNoteModelWithHttpInfo
 
-> ApiResponse<ObjectModel> retrieveNoteModelUsingGET1 retrieveNoteModelUsingGET1WithHttpInfo()
+> ApiResponse<ObjectModel> retrieveNoteModel retrieveNoteModelWithHttpInfo()
 
 Retrieve Note Model
 
@@ -1002,12 +1002,12 @@ public class Example {
 
         NoteApi apiInstance = new NoteApi(defaultClient);
         try {
-            ApiResponse<ObjectModel> response = apiInstance.retrieveNoteModelUsingGET1WithHttpInfo();
+            ApiResponse<ObjectModel> response = apiInstance.retrieveNoteModelWithHttpInfo();
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling NoteApi#retrieveNoteModelUsingGET1");
+            System.err.println("Exception when calling NoteApi#retrieveNoteModel");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -1045,9 +1045,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## updateNoteUsingPATCH
+## updateNote
 
-> UpdateNoteResponse updateNoteUsingPATCH(contactId, noteId, updateNoteRequest, updateMask)
+> UpdateNoteResponse updateNote(contactId, noteId, updateNoteRequest, updateMask)
 
 Update a Note
 
@@ -1074,10 +1074,10 @@ public class Example {
         UpdateNoteRequest updateNoteRequest = new UpdateNoteRequest(); // UpdateNoteRequest | updateNoteRequest
         List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
-            UpdateNoteResponse result = apiInstance.updateNoteUsingPATCH(contactId, noteId, updateNoteRequest, updateMask);
+            UpdateNoteResponse result = apiInstance.updateNote(contactId, noteId, updateNoteRequest, updateMask);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling NoteApi#updateNoteUsingPATCH");
+            System.err.println("Exception when calling NoteApi#updateNote");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -1120,9 +1120,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## updateNoteUsingPATCHWithHttpInfo
+## updateNoteWithHttpInfo
 
-> ApiResponse<UpdateNoteResponse> updateNoteUsingPATCH updateNoteUsingPATCHWithHttpInfo(contactId, noteId, updateNoteRequest, updateMask)
+> ApiResponse<UpdateNoteResponse> updateNote updateNoteWithHttpInfo(contactId, noteId, updateNoteRequest, updateMask)
 
 Update a Note
 
@@ -1150,12 +1150,12 @@ public class Example {
         UpdateNoteRequest updateNoteRequest = new UpdateNoteRequest(); // UpdateNoteRequest | updateNoteRequest
         List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
-            ApiResponse<UpdateNoteResponse> response = apiInstance.updateNoteUsingPATCHWithHttpInfo(contactId, noteId, updateNoteRequest, updateMask);
+            ApiResponse<UpdateNoteResponse> response = apiInstance.updateNoteWithHttpInfo(contactId, noteId, updateNoteRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling NoteApi#updateNoteUsingPATCH");
+            System.err.println("Exception when calling NoteApi#updateNote");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -1199,9 +1199,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## updateNotesCustomFieldUsingPATCH
+## updateNotesCustomField
 
-> CustomFieldMetaData updateNotesCustomFieldUsingPATCH(customFieldId, updateCustomFieldMetaDataRequest, updateMask)
+> CustomFieldMetaData updateNotesCustomField(customFieldId, updateCustomFieldMetaDataRequest, updateMask)
 
 Update a Custom Field
 
@@ -1227,10 +1227,10 @@ public class Example {
         UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest = new UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | request
         List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
-            CustomFieldMetaData result = apiInstance.updateNotesCustomFieldUsingPATCH(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
+            CustomFieldMetaData result = apiInstance.updateNotesCustomField(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling NoteApi#updateNotesCustomFieldUsingPATCH");
+            System.err.println("Exception when calling NoteApi#updateNotesCustomField");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -1272,9 +1272,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## updateNotesCustomFieldUsingPATCHWithHttpInfo
+## updateNotesCustomFieldWithHttpInfo
 
-> ApiResponse<CustomFieldMetaData> updateNotesCustomFieldUsingPATCH updateNotesCustomFieldUsingPATCHWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask)
+> ApiResponse<CustomFieldMetaData> updateNotesCustomField updateNotesCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask)
 
 Update a Custom Field
 
@@ -1301,12 +1301,12 @@ public class Example {
         UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest = new UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | request
         List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
-            ApiResponse<CustomFieldMetaData> response = apiInstance.updateNotesCustomFieldUsingPATCHWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
+            ApiResponse<CustomFieldMetaData> response = apiInstance.updateNotesCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling NoteApi#updateNotesCustomFieldUsingPATCH");
+            System.err.println("Exception when calling NoteApi#updateNotesCustomField");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());

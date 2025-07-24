@@ -23,12 +23,12 @@ export class FreeTrialDiscountsApiRequestFactory extends BaseAPIRequestFactory {
      * Create a Subscription Free Trial Discount
      * @param createFreeTrialDiscountRequest createFreeTrialDiscountRequest
      */
-    public async createDiscountUsingPOST1(createFreeTrialDiscountRequest: CreateFreeTrialDiscountRequest, _options?: Configuration): Promise<RequestContext> {
+    public async createFreeTrialDiscount(createFreeTrialDiscountRequest: CreateFreeTrialDiscountRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'createFreeTrialDiscountRequest' is not null or undefined
         if (createFreeTrialDiscountRequest === null || createFreeTrialDiscountRequest === undefined) {
-            throw new RequiredError("FreeTrialDiscountsApi", "createDiscountUsingPOST1", "createFreeTrialDiscountRequest");
+            throw new RequiredError("FreeTrialDiscountsApi", "createFreeTrialDiscount", "createFreeTrialDiscountRequest");
         }
 
 
@@ -65,12 +65,12 @@ export class FreeTrialDiscountsApiRequestFactory extends BaseAPIRequestFactory {
      * Delete a Subscription Free Trial Discount
      * @param discountId discount_id
      */
-    public async deleteDiscountUsingDELETE1(discountId: string, _options?: Configuration): Promise<RequestContext> {
+    public async deleteFreeTrialDiscount(discountId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'discountId' is not null or undefined
         if (discountId === null || discountId === undefined) {
-            throw new RequiredError("FreeTrialDiscountsApi", "deleteDiscountUsingDELETE1", "discountId");
+            throw new RequiredError("FreeTrialDiscountsApi", "deleteFreeTrialDiscount", "discountId");
         }
 
 
@@ -97,12 +97,12 @@ export class FreeTrialDiscountsApiRequestFactory extends BaseAPIRequestFactory {
      * Retrieve a Subscription Free Trial Discount
      * @param discountId discount_id
      */
-    public async getDiscountUsingGET1(discountId: string, _options?: Configuration): Promise<RequestContext> {
+    public async getFreeTrialDiscount(discountId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'discountId' is not null or undefined
         if (discountId === null || discountId === undefined) {
-            throw new RequiredError("FreeTrialDiscountsApi", "getDiscountUsingGET1", "discountId");
+            throw new RequiredError("FreeTrialDiscountsApi", "getFreeTrialDiscount", "discountId");
         }
 
 
@@ -132,7 +132,7 @@ export class FreeTrialDiscountsApiRequestFactory extends BaseAPIRequestFactory {
      * @param pageSize Total number of items to return per page
      * @param pageToken Page token
      */
-    public async listFreeTrialsUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
+    public async listFreeTrialDiscounts(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
 
@@ -183,18 +183,18 @@ export class FreeTrialDiscountsApiRequestFactory extends BaseAPIRequestFactory {
      * @param updateFreeTrialDiscountRequest request
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateDiscountUsingPATCH1(discountId: string, updateFreeTrialDiscountRequest: UpdateFreeTrialDiscountRequest, updateMask?: Array<string>, _options?: Configuration): Promise<RequestContext> {
+    public async updateFreeTrialDiscount(discountId: string, updateFreeTrialDiscountRequest: UpdateFreeTrialDiscountRequest, updateMask?: Array<string>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'discountId' is not null or undefined
         if (discountId === null || discountId === undefined) {
-            throw new RequiredError("FreeTrialDiscountsApi", "updateDiscountUsingPATCH1", "discountId");
+            throw new RequiredError("FreeTrialDiscountsApi", "updateFreeTrialDiscount", "discountId");
         }
 
 
         // verify required parameter 'updateFreeTrialDiscountRequest' is not null or undefined
         if (updateFreeTrialDiscountRequest === null || updateFreeTrialDiscountRequest === undefined) {
-            throw new RequiredError("FreeTrialDiscountsApi", "updateDiscountUsingPATCH1", "updateFreeTrialDiscountRequest");
+            throw new RequiredError("FreeTrialDiscountsApi", "updateFreeTrialDiscount", "updateFreeTrialDiscountRequest");
         }
 
 
@@ -244,10 +244,10 @@ export class FreeTrialDiscountsApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to createDiscountUsingPOST1
+     * @params response Response returned by the server for a request to createFreeTrialDiscount
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async createDiscountUsingPOST1WithHttpInfo(response: ResponseContext): Promise<HttpInfo<FreeTrialDiscount >> {
+     public async createFreeTrialDiscountWithHttpInfo(response: ResponseContext): Promise<HttpInfo<FreeTrialDiscount >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("201", response.httpStatusCode)) {
             const body: FreeTrialDiscount = ObjectSerializer.deserialize(
@@ -294,10 +294,10 @@ export class FreeTrialDiscountsApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to deleteDiscountUsingDELETE1
+     * @params response Response returned by the server for a request to deleteFreeTrialDiscount
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async deleteDiscountUsingDELETE1WithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async deleteFreeTrialDiscountWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("204", response.httpStatusCode)) {
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
@@ -347,10 +347,10 @@ export class FreeTrialDiscountsApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to getDiscountUsingGET1
+     * @params response Response returned by the server for a request to getFreeTrialDiscount
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getDiscountUsingGET1WithHttpInfo(response: ResponseContext): Promise<HttpInfo<FreeTrialDiscount >> {
+     public async getFreeTrialDiscountWithHttpInfo(response: ResponseContext): Promise<HttpInfo<FreeTrialDiscount >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: FreeTrialDiscount = ObjectSerializer.deserialize(
@@ -404,10 +404,10 @@ export class FreeTrialDiscountsApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to listFreeTrialsUsingGET
+     * @params response Response returned by the server for a request to listFreeTrialDiscounts
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async listFreeTrialsUsingGETWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListFreeTrialDiscountsResponse >> {
+     public async listFreeTrialDiscountsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListFreeTrialDiscountsResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: ListFreeTrialDiscountsResponse = ObjectSerializer.deserialize(
@@ -461,10 +461,10 @@ export class FreeTrialDiscountsApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to updateDiscountUsingPATCH1
+     * @params response Response returned by the server for a request to updateFreeTrialDiscount
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async updateDiscountUsingPATCH1WithHttpInfo(response: ResponseContext): Promise<HttpInfo<FreeTrialDiscount >> {
+     public async updateFreeTrialDiscountWithHttpInfo(response: ResponseContext): Promise<HttpInfo<FreeTrialDiscount >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: FreeTrialDiscount = ObjectSerializer.deserialize(

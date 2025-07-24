@@ -4,18 +4,18 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createLeadSourceRecurringExpenseUsingPOST**](LeadSourceRecurringExpensesApi.md#createLeadSourceRecurringExpenseUsingPOST) | **POST** /v2/leadSources/{lead_source_id}/recurringExpenses | Create a Lead Source Recurring Expense
-[**deleteLeadSourceRecurringExpenseUsingDELETE**](LeadSourceRecurringExpensesApi.md#deleteLeadSourceRecurringExpenseUsingDELETE) | **DELETE** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Delete a Lead Source Recurring Expense
-[**getLeadSourceRecurringExpenseUsingGET**](LeadSourceRecurringExpensesApi.md#getLeadSourceRecurringExpenseUsingGET) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Retrieve a Lead Source Recurring Expense
-[**listExpensesIncurredFromLeadSourceRecurringExpenseUsingGET**](LeadSourceRecurringExpensesApi.md#listExpensesIncurredFromLeadSourceRecurringExpenseUsingGET) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id}/expenses | Retrieves a list of expenses incurred from a recurring expense
-[**listLeadSourceRecurringExpensesUsingGET**](LeadSourceRecurringExpensesApi.md#listLeadSourceRecurringExpensesUsingGET) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses | Retrieves a list of lead source recurring expenses
-[**updateLeadSourceRecurringExpenseUsingPATCH**](LeadSourceRecurringExpensesApi.md#updateLeadSourceRecurringExpenseUsingPATCH) | **PATCH** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Update a Lead Source Recurring Expense
+[**createLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#createLeadSourceRecurringExpense) | **POST** /v2/leadSources/{lead_source_id}/recurringExpenses | Create a Lead Source Recurring Expense
+[**deleteLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#deleteLeadSourceRecurringExpense) | **DELETE** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Delete a Lead Source Recurring Expense
+[**getLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#getLeadSourceRecurringExpense) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Retrieve a Lead Source Recurring Expense
+[**listExpensesIncurredFromLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#listExpensesIncurredFromLeadSourceRecurringExpense) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id}/expenses | Retrieves a list of expenses incurred from a recurring expense
+[**listLeadSourceRecurringExpenses**](LeadSourceRecurringExpensesApi.md#listLeadSourceRecurringExpenses) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses | Retrieves a list of lead source recurring expenses
+[**updateLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#updateLeadSourceRecurringExpense) | **PATCH** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Update a Lead Source Recurring Expense
 
 
 
-## createLeadSourceRecurringExpenseUsingPOST
+## createLeadSourceRecurringExpense
 
-> LeadSourceRecurringExpense createLeadSourceRecurringExpenseUsingPOST(leadSourceId, createLeadSourceRecurringExpenseRequest)
+> LeadSourceRecurringExpense createLeadSourceRecurringExpense(leadSourceId, createLeadSourceRecurringExpenseRequest)
 
 Create a Lead Source Recurring Expense
 
@@ -29,7 +29,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 let apiInstance = new KeapCoreServiceV2Sdk.LeadSourceRecurringExpensesApi();
 let leadSourceId = "leadSourceId_example"; // String | The ID of the lead source this recurring expense belongs to
 let createLeadSourceRecurringExpenseRequest = new KeapCoreServiceV2Sdk.CreateLeadSourceRecurringExpenseRequest(); // CreateLeadSourceRecurringExpenseRequest | The request object to create a new lead source recurring expense
-apiInstance.createLeadSourceRecurringExpenseUsingPOST(leadSourceId, createLeadSourceRecurringExpenseRequest).then((data) => {
+apiInstance.createLeadSourceRecurringExpense(leadSourceId, createLeadSourceRecurringExpenseRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -59,9 +59,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## deleteLeadSourceRecurringExpenseUsingDELETE
+## deleteLeadSourceRecurringExpense
 
-> deleteLeadSourceRecurringExpenseUsingDELETE(leadSourceId, leadSourceRecurringExpenseId)
+> deleteLeadSourceRecurringExpense(leadSourceId, leadSourceRecurringExpenseId)
 
 Delete a Lead Source Recurring Expense
 
@@ -75,7 +75,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 let apiInstance = new KeapCoreServiceV2Sdk.LeadSourceRecurringExpensesApi();
 let leadSourceId = "leadSourceId_example"; // String | The ID of the lead source this recurring expense belongs to
 let leadSourceRecurringExpenseId = "leadSourceRecurringExpenseId_example"; // String | The ID of a lead source recurring expense
-apiInstance.deleteLeadSourceRecurringExpenseUsingDELETE(leadSourceId, leadSourceRecurringExpenseId).then(() => {
+apiInstance.deleteLeadSourceRecurringExpense(leadSourceId, leadSourceRecurringExpenseId).then(() => {
   console.log('API called successfully.');
 }, (error) => {
   console.error(error);
@@ -105,9 +105,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## getLeadSourceRecurringExpenseUsingGET
+## getLeadSourceRecurringExpense
 
-> LeadSourceRecurringExpense getLeadSourceRecurringExpenseUsingGET(leadSourceId, leadSourceRecurringExpenseId)
+> LeadSourceRecurringExpense getLeadSourceRecurringExpense(leadSourceId, leadSourceRecurringExpenseId)
 
 Retrieve a Lead Source Recurring Expense
 
@@ -121,7 +121,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 let apiInstance = new KeapCoreServiceV2Sdk.LeadSourceRecurringExpensesApi();
 let leadSourceId = "leadSourceId_example"; // String | The ID of the lead source this recurring expense belongs to
 let leadSourceRecurringExpenseId = "leadSourceRecurringExpenseId_example"; // String | The ID of a lead source recurring expense
-apiInstance.getLeadSourceRecurringExpenseUsingGET(leadSourceId, leadSourceRecurringExpenseId).then((data) => {
+apiInstance.getLeadSourceRecurringExpense(leadSourceId, leadSourceRecurringExpenseId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -151,9 +151,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## listExpensesIncurredFromLeadSourceRecurringExpenseUsingGET
+## listExpensesIncurredFromLeadSourceRecurringExpense
 
-> ListLeadSourceExpensesResponse listExpensesIncurredFromLeadSourceRecurringExpenseUsingGET(leadSourceId, leadSourceRecurringExpenseId, opts)
+> ListLeadSourceExpensesResponse listExpensesIncurredFromLeadSourceRecurringExpense(leadSourceId, leadSourceRecurringExpenseId, opts)
 
 Retrieves a list of expenses incurred from a recurring expense
 
@@ -173,7 +173,7 @@ let opts = {
   'pageSize': 0, // Number | Total number of items to return per page
   'pageToken': "pageToken_example" // String | Page token
 };
-apiInstance.listExpensesIncurredFromLeadSourceRecurringExpenseUsingGET(leadSourceId, leadSourceRecurringExpenseId, opts).then((data) => {
+apiInstance.listExpensesIncurredFromLeadSourceRecurringExpense(leadSourceId, leadSourceRecurringExpenseId, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -207,9 +207,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## listLeadSourceRecurringExpensesUsingGET
+## listLeadSourceRecurringExpenses
 
-> ListLeadSourceRecurringExpensesResponse listLeadSourceRecurringExpensesUsingGET(leadSourceId, opts)
+> ListLeadSourceRecurringExpensesResponse listLeadSourceRecurringExpenses(leadSourceId, opts)
 
 Retrieves a list of lead source recurring expenses
 
@@ -228,7 +228,7 @@ let opts = {
   'pageSize': 0, // Number | Total number of items to return per page
   'pageToken': "pageToken_example" // String | Page token
 };
-apiInstance.listLeadSourceRecurringExpensesUsingGET(leadSourceId, opts).then((data) => {
+apiInstance.listLeadSourceRecurringExpenses(leadSourceId, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -261,9 +261,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## updateLeadSourceRecurringExpenseUsingPATCH
+## updateLeadSourceRecurringExpense
 
-> LeadSourceRecurringExpense updateLeadSourceRecurringExpenseUsingPATCH(leadSourceId, leadSourceRecurringExpenseId, leadSourceRecurringExpenseUpdateRequest, opts)
+> LeadSourceRecurringExpense updateLeadSourceRecurringExpense(leadSourceId, leadSourceRecurringExpenseId, leadSourceRecurringExpenseUpdateRequest, opts)
 
 Update a Lead Source Recurring Expense
 
@@ -281,7 +281,7 @@ let leadSourceRecurringExpenseUpdateRequest = new KeapCoreServiceV2Sdk.LeadSourc
 let opts = {
   'updateMask': ["null"] // [String] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
-apiInstance.updateLeadSourceRecurringExpenseUsingPATCH(leadSourceId, leadSourceRecurringExpenseId, leadSourceRecurringExpenseUpdateRequest, opts).then((data) => {
+apiInstance.updateLeadSourceRecurringExpense(leadSourceId, leadSourceRecurringExpenseId, leadSourceRecurringExpenseUpdateRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);

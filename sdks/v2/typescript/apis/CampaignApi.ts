@@ -27,24 +27,24 @@ export class CampaignApiRequestFactory extends BaseAPIRequestFactory {
      * @param sequenceId sequence_id
      * @param addContactsToSequenceRequest addContactsToSequenceRequest
      */
-    public async addContactsToCampaignSequenceUsingPOST1(campaignId: string, sequenceId: string, addContactsToSequenceRequest: AddContactsToSequenceRequest, _options?: Configuration): Promise<RequestContext> {
+    public async addContactsToCampaignSequence(campaignId: string, sequenceId: string, addContactsToSequenceRequest: AddContactsToSequenceRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'campaignId' is not null or undefined
         if (campaignId === null || campaignId === undefined) {
-            throw new RequiredError("CampaignApi", "addContactsToCampaignSequenceUsingPOST1", "campaignId");
+            throw new RequiredError("CampaignApi", "addContactsToCampaignSequence", "campaignId");
         }
 
 
         // verify required parameter 'sequenceId' is not null or undefined
         if (sequenceId === null || sequenceId === undefined) {
-            throw new RequiredError("CampaignApi", "addContactsToCampaignSequenceUsingPOST1", "sequenceId");
+            throw new RequiredError("CampaignApi", "addContactsToCampaignSequence", "sequenceId");
         }
 
 
         // verify required parameter 'addContactsToSequenceRequest' is not null or undefined
         if (addContactsToSequenceRequest === null || addContactsToSequenceRequest === undefined) {
-            throw new RequiredError("CampaignApi", "addContactsToCampaignSequenceUsingPOST1", "addContactsToSequenceRequest");
+            throw new RequiredError("CampaignApi", "addContactsToCampaignSequence", "addContactsToSequenceRequest");
         }
 
 
@@ -83,12 +83,12 @@ export class CampaignApiRequestFactory extends BaseAPIRequestFactory {
      * Retrieve a Campaign
      * @param campaignId campaign_id
      */
-    public async getCampaignUsingGET1(campaignId: string, _options?: Configuration): Promise<RequestContext> {
+    public async getCampaign(campaignId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'campaignId' is not null or undefined
         if (campaignId === null || campaignId === undefined) {
-            throw new RequiredError("CampaignApi", "getCampaignUsingGET1", "campaignId");
+            throw new RequiredError("CampaignApi", "getCampaign", "campaignId");
         }
 
 
@@ -119,7 +119,7 @@ export class CampaignApiRequestFactory extends BaseAPIRequestFactory {
      * @param pageToken Page token
      * @param stats 
      */
-    public async listCampaignsUsingGET1(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, stats?: boolean, _options?: Configuration): Promise<RequestContext> {
+    public async listCampaigns(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, stats?: boolean, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
 
@@ -176,24 +176,24 @@ export class CampaignApiRequestFactory extends BaseAPIRequestFactory {
      * @param sequenceId sequence_id
      * @param removeContactsFromSequenceRequest removeContactsFromSequenceRequest
      */
-    public async removeContactsFromCampaignSequenceUsingPOST(campaignId: string, sequenceId: string, removeContactsFromSequenceRequest: RemoveContactsFromSequenceRequest, _options?: Configuration): Promise<RequestContext> {
+    public async removeContactsFromCampaignSequence(campaignId: string, sequenceId: string, removeContactsFromSequenceRequest: RemoveContactsFromSequenceRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'campaignId' is not null or undefined
         if (campaignId === null || campaignId === undefined) {
-            throw new RequiredError("CampaignApi", "removeContactsFromCampaignSequenceUsingPOST", "campaignId");
+            throw new RequiredError("CampaignApi", "removeContactsFromCampaignSequence", "campaignId");
         }
 
 
         // verify required parameter 'sequenceId' is not null or undefined
         if (sequenceId === null || sequenceId === undefined) {
-            throw new RequiredError("CampaignApi", "removeContactsFromCampaignSequenceUsingPOST", "sequenceId");
+            throw new RequiredError("CampaignApi", "removeContactsFromCampaignSequence", "sequenceId");
         }
 
 
         // verify required parameter 'removeContactsFromSequenceRequest' is not null or undefined
         if (removeContactsFromSequenceRequest === null || removeContactsFromSequenceRequest === undefined) {
-            throw new RequiredError("CampaignApi", "removeContactsFromCampaignSequenceUsingPOST", "removeContactsFromSequenceRequest");
+            throw new RequiredError("CampaignApi", "removeContactsFromCampaignSequence", "removeContactsFromSequenceRequest");
         }
 
 
@@ -235,10 +235,10 @@ export class CampaignApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to addContactsToCampaignSequenceUsingPOST1
+     * @params response Response returned by the server for a request to addContactsToCampaignSequence
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async addContactsToCampaignSequenceUsingPOST1WithHttpInfo(response: ResponseContext): Promise<HttpInfo<AddContactsToSequenceResponse >> {
+     public async addContactsToCampaignSequenceWithHttpInfo(response: ResponseContext): Promise<HttpInfo<AddContactsToSequenceResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: AddContactsToSequenceResponse = ObjectSerializer.deserialize(
@@ -285,10 +285,10 @@ export class CampaignApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to getCampaignUsingGET1
+     * @params response Response returned by the server for a request to getCampaign
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getCampaignUsingGET1WithHttpInfo(response: ResponseContext): Promise<HttpInfo<Campaign >> {
+     public async getCampaignWithHttpInfo(response: ResponseContext): Promise<HttpInfo<Campaign >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: Campaign = ObjectSerializer.deserialize(
@@ -342,10 +342,10 @@ export class CampaignApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to listCampaignsUsingGET1
+     * @params response Response returned by the server for a request to listCampaigns
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async listCampaignsUsingGET1WithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListCampaignsResponse >> {
+     public async listCampaignsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListCampaignsResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: ListCampaignsResponse = ObjectSerializer.deserialize(
@@ -399,10 +399,10 @@ export class CampaignApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to removeContactsFromCampaignSequenceUsingPOST
+     * @params response Response returned by the server for a request to removeContactsFromCampaignSequence
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async removeContactsFromCampaignSequenceUsingPOSTWithHttpInfo(response: ResponseContext): Promise<HttpInfo<RemoveContactsFromSequenceResponse >> {
+     public async removeContactsFromCampaignSequenceWithHttpInfo(response: ResponseContext): Promise<HttpInfo<RemoveContactsFromSequenceResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: RemoveContactsFromSequenceResponse = ObjectSerializer.deserialize(

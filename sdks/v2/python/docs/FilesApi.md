@@ -4,16 +4,16 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_file_using_post1**](FilesApi.md#create_file_using_post1) | **POST** /v2/files | Create a file
-[**delete_file_using_delete1**](FilesApi.md#delete_file_using_delete1) | **DELETE** /v2/files/{file_id} | Delete a file
-[**get_file_data_using_get**](FilesApi.md#get_file_data_using_get) | **GET** /v2/files/{file_id}:data | Retrieve a file&#39;s data
-[**get_file_using_get1**](FilesApi.md#get_file_using_get1) | **GET** /v2/files/{file_id} | Retrieve a file
-[**list_files_using_get1**](FilesApi.md#list_files_using_get1) | **GET** /v2/files | List all files
-[**update_file_using_post**](FilesApi.md#update_file_using_post) | **POST** /v2/files/{file_id} | Update a file
+[**create_file**](FilesApi.md#create_file) | **POST** /v2/files | Create a file
+[**delete_file**](FilesApi.md#delete_file) | **DELETE** /v2/files/{file_id} | Delete a file
+[**get_file**](FilesApi.md#get_file) | **GET** /v2/files/{file_id} | Retrieve a file
+[**get_file_data**](FilesApi.md#get_file_data) | **GET** /v2/files/{file_id}:data | Retrieve a file&#39;s data
+[**list_files**](FilesApi.md#list_files) | **GET** /v2/files | List all files
+[**update_file**](FilesApi.md#update_file) | **POST** /v2/files/{file_id} | Update a file
 
 
-# **create_file_using_post1**
-> FileMetadata create_file_using_post1(file, file_association, file_name, is_public, contact_id=contact_id)
+# **create_file**
+> FileMetadata create_file(file, file_association, file_name, is_public, contact_id=contact_id)
 
 Create a file
 
@@ -46,11 +46,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Create a file
-        api_response = api_instance.create_file_using_post1(file, file_association, file_name, is_public, contact_id=contact_id)
-        print("The response of FilesApi->create_file_using_post1:\n")
+        api_response = api_instance.create_file(file, file_association, file_name, is_public, contact_id=contact_id)
+        print("The response of FilesApi->create_file:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling FilesApi->create_file_using_post1: %s\n" % e)
+        print("Exception when calling FilesApi->create_file: %s\n" % e)
 ```
 
 
@@ -89,8 +89,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **delete_file_using_delete1**
-> delete_file_using_delete1(file_id)
+# **delete_file**
+> delete_file(file_id)
 
 Delete a file
 
@@ -118,9 +118,9 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Delete a file
-        api_instance.delete_file_using_delete1(file_id)
+        api_instance.delete_file(file_id)
     except Exception as e:
-        print("Exception when calling FilesApi->delete_file_using_delete1: %s\n" % e)
+        print("Exception when calling FilesApi->delete_file: %s\n" % e)
 ```
 
 
@@ -156,77 +156,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_file_data_using_get**
-> bytearray get_file_data_using_get(file_id)
-
-Retrieve a file's data
-
-Retrieves a file's data
-
-### Example
-
-
-```python
-import keap_core_v2_client
-from keap_core_v2_client.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
-# See configuration.py for a list of all supported configuration parameters.
-configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
-)
-
-# Enter a context with an instance of the API client
-with keap_core_v2_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = keap_core_v2_client.FilesApi(api_client)
-    file_id = 'file_id_example' # str | file_id
-
-    try:
-        # Retrieve a file's data
-        api_response = api_instance.get_file_data_using_get(file_id)
-        print("The response of FilesApi->get_file_data_using_get:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling FilesApi->get_file_data_using_get: %s\n" % e)
-```
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **file_id** | **str**| file_id | 
-
-### Return type
-
-**bytearray**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-**401** | Unauthorized |  -  |
-**403** | Forbidden |  -  |
-**404** | Not Found |  -  |
-**500** | Internal Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_file_using_get1**
-> FileMetadata get_file_using_get1(file_id)
+# **get_file**
+> FileMetadata get_file(file_id)
 
 Retrieve a file
 
@@ -255,11 +186,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieve a file
-        api_response = api_instance.get_file_using_get1(file_id)
-        print("The response of FilesApi->get_file_using_get1:\n")
+        api_response = api_instance.get_file(file_id)
+        print("The response of FilesApi->get_file:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling FilesApi->get_file_using_get1: %s\n" % e)
+        print("Exception when calling FilesApi->get_file: %s\n" % e)
 ```
 
 
@@ -295,8 +226,77 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **list_files_using_get1**
-> ListFilesResponse list_files_using_get1(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
+# **get_file_data**
+> bytearray get_file_data(file_id)
+
+Retrieve a file's data
+
+Retrieves a file's data
+
+### Example
+
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm/rest"
+)
+
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.FilesApi(api_client)
+    file_id = 'file_id_example' # str | file_id
+
+    try:
+        # Retrieve a file's data
+        api_response = api_instance.get_file_data(file_id)
+        print("The response of FilesApi->get_file_data:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling FilesApi->get_file_data: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **file_id** | **str**| file_id | 
+
+### Return type
+
+**bytearray**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_files**
+> ListFilesResponse list_files(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
 
 List all files
 
@@ -328,11 +328,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # List all files
-        api_response = api_instance.list_files_using_get1(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
-        print("The response of FilesApi->list_files_using_get1:\n")
+        api_response = api_instance.list_files(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
+        print("The response of FilesApi->list_files:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling FilesApi->list_files_using_get1: %s\n" % e)
+        print("Exception when calling FilesApi->list_files: %s\n" % e)
 ```
 
 
@@ -371,8 +371,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **update_file_using_post**
-> FileMetadata update_file_using_post(file_id, file=file, file_name=file_name, is_public=is_public, update_mask=update_mask)
+# **update_file**
+> FileMetadata update_file(file_id, file=file, file_name=file_name, is_public=is_public, update_mask=update_mask)
 
 Update a file
 
@@ -405,11 +405,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Update a file
-        api_response = api_instance.update_file_using_post(file_id, file=file, file_name=file_name, is_public=is_public, update_mask=update_mask)
-        print("The response of FilesApi->update_file_using_post:\n")
+        api_response = api_instance.update_file(file_id, file=file, file_name=file_name, is_public=is_public, update_mask=update_mask)
+        print("The response of FilesApi->update_file:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling FilesApi->update_file_using_post: %s\n" % e)
+        print("Exception when calling FilesApi->update_file: %s\n" % e)
 ```
 
 

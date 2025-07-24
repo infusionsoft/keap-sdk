@@ -4,13 +4,13 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getApplicationConfigurationsUsingGET**](SettingsApi.md#getApplicationConfigurationsUsingGET) | **GET** /v2/settings/applications:getConfiguration | Get Application Configuration
-[**getContactOptionTypesUsingGET1**](SettingsApi.md#getContactOptionTypesUsingGET1) | **GET** /v2/settings/contactOptionTypes | Get Contact Option types
-[**isApplicationEnabledUsingGET**](SettingsApi.md#isApplicationEnabledUsingGET) | **GET** /v2/settings/applications:isEnabled | Get Application Status
+[**getApplicationConfigurations**](SettingsApi.md#getApplicationConfigurations) | **GET** /v2/settings/applications:getConfiguration | Get Application Configuration
+[**getContactOptionTypes**](SettingsApi.md#getContactOptionTypes) | **GET** /v2/settings/contactOptionTypes | Get Contact Option types
+[**isApplicationEnabled**](SettingsApi.md#isApplicationEnabled) | **GET** /v2/settings/applications:isEnabled | Get Application Status
 
 
-# **getApplicationConfigurationsUsingGET**
-> GetSettingsResponse getApplicationConfigurationsUsingGET()
+# **getApplicationConfigurations**
+> GetSettingsResponse getApplicationConfigurations()
 
 Get configuration values for the application instance.
 
@@ -19,19 +19,19 @@ Get configuration values for the application instance.
 
 ```typescript
 import { createConfiguration, SettingsApi } from '';
-import type { SettingsApiGetApplicationConfigurationsUsingGETRequest } from '';
+import type { SettingsApiGetApplicationConfigurationsRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new SettingsApi(configuration);
 
-const request: SettingsApiGetApplicationConfigurationsUsingGETRequest = {
+const request: SettingsApiGetApplicationConfigurationsRequest = {
     // By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query. (optional)
   fields: [
     "AFFILIATE",
   ],
 };
 
-const data = await apiInstance.getApplicationConfigurationsUsingGET(request);
+const data = await apiInstance.getApplicationConfigurations(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -68,8 +68,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **getContactOptionTypesUsingGET1**
-> GetContactOptionTypesResponse getContactOptionTypesUsingGET1()
+# **getContactOptionTypes**
+> GetContactOptionTypesResponse getContactOptionTypes()
 
 Gets a list of Contact Option types.
 
@@ -84,7 +84,7 @@ const apiInstance = new SettingsApi(configuration);
 
 const request = {};
 
-const data = await apiInstance.getContactOptionTypesUsingGET1(request);
+const data = await apiInstance.getContactOptionTypes(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -118,8 +118,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **isApplicationEnabledUsingGET**
-> GetApplicationEnabledStatusResponse isApplicationEnabledUsingGET()
+# **isApplicationEnabled**
+> GetApplicationEnabledStatusResponse isApplicationEnabled()
 
 Check if the application is enabled or not
 
@@ -134,7 +134,7 @@ const apiInstance = new SettingsApi(configuration);
 
 const request = {};
 
-const data = await apiInstance.isApplicationEnabledUsingGET(request);
+const data = await apiInstance.isApplicationEnabled(request);
 console.log('API called successfully. Returned data:', data);
 ```
 

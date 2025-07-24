@@ -4,20 +4,20 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createEmailUsingPOST1**](EmailApi.md#createEmailUsingPOST1) | **POST** /v2/emails | Create an Email Record
-[**createEmailsUsingPOST1**](EmailApi.md#createEmailsUsingPOST1) | **POST** /v2/emails:batchAdd | Create a set of Email Records
-[**deleteEmailUsingDELETE1**](EmailApi.md#deleteEmailUsingDELETE1) | **DELETE** /v2/emails/{id} | Delete an Email Record
-[**deleteEmailsUsingPOST1**](EmailApi.md#deleteEmailsUsingPOST1) | **POST** /v2/emails:batchRemove | Remove a set of Email Records
-[**getEmailTemplateUsingGET**](EmailApi.md#getEmailTemplateUsingGET) | **GET** /v2/emails/templates/{email_template_id} | Retrieve an email template
-[**getEmailUsingGET1**](EmailApi.md#getEmailUsingGET1) | **GET** /v2/emails/{id} | Retrieve an Email
-[**sendEmailTemplateUsingPOST**](EmailApi.md#sendEmailTemplateUsingPOST) | **POST** /v2/emails/templates:send | Send an email based on a template
-[**sendEmailUsingPOST1**](EmailApi.md#sendEmailUsingPOST1) | **POST** /v2/emails:send | Send an Email
+[**createEmail**](EmailApi.md#createEmail) | **POST** /v2/emails | Create an Email Record
+[**createEmails**](EmailApi.md#createEmails) | **POST** /v2/emails:batchAdd | Create a set of Email Records
+[**deleteEmail**](EmailApi.md#deleteEmail) | **DELETE** /v2/emails/{id} | Delete an Email Record
+[**deleteEmails**](EmailApi.md#deleteEmails) | **POST** /v2/emails:batchRemove | Remove a set of Email Records
+[**getEmail**](EmailApi.md#getEmail) | **GET** /v2/emails/{id} | Retrieve an Email
+[**getEmailTemplate**](EmailApi.md#getEmailTemplate) | **GET** /v2/emails/templates/{email_template_id} | Retrieve an email template
+[**sendEmail**](EmailApi.md#sendEmail) | **POST** /v2/emails:send | Send an Email
+[**sendEmailTemplate**](EmailApi.md#sendEmailTemplate) | **POST** /v2/emails/templates:send | Send an email based on a template
 
 
 
-## createEmailUsingPOST1
+## createEmail
 
-> EmailSentWithContent createEmailUsingPOST1(createEmailSentRequest)
+> EmailSentWithContent createEmail(createEmailSentRequest)
 
 Create an Email Record
 
@@ -30,7 +30,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.EmailApi();
 let createEmailSentRequest = new KeapCoreServiceV2Sdk.CreateEmailSentRequest(); // CreateEmailSentRequest | emailWithContent
-apiInstance.createEmailUsingPOST1(createEmailSentRequest).then((data) => {
+apiInstance.createEmail(createEmailSentRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -59,9 +59,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## createEmailsUsingPOST1
+## createEmails
 
-> EmailsSentList createEmailsUsingPOST1(opts)
+> EmailsSentList createEmails(opts)
 
 Create a set of Email Records
 
@@ -76,7 +76,7 @@ let apiInstance = new KeapCoreServiceV2Sdk.EmailApi();
 let opts = {
   'createEmailsSentRequest': new KeapCoreServiceV2Sdk.CreateEmailsSentRequest() // CreateEmailsSentRequest | Email records to persist, with content.
 };
-apiInstance.createEmailsUsingPOST1(opts).then((data) => {
+apiInstance.createEmails(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -105,9 +105,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## deleteEmailUsingDELETE1
+## deleteEmail
 
-> deleteEmailUsingDELETE1(id)
+> deleteEmail(id)
 
 Delete an Email Record
 
@@ -120,7 +120,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.EmailApi();
 let id = "id_example"; // String | id
-apiInstance.deleteEmailUsingDELETE1(id).then(() => {
+apiInstance.deleteEmail(id).then(() => {
   console.log('API called successfully.');
 }, (error) => {
   console.error(error);
@@ -149,9 +149,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## deleteEmailsUsingPOST1
+## deleteEmails
 
-> DeleteEmailsResponse deleteEmailsUsingPOST1(deleteEmailsRequest)
+> DeleteEmailsResponse deleteEmails(deleteEmailsRequest)
 
 Remove a set of Email Records
 
@@ -164,7 +164,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.EmailApi();
 let deleteEmailsRequest = new KeapCoreServiceV2Sdk.DeleteEmailsRequest(); // DeleteEmailsRequest | deleteEmailsRequest
-apiInstance.deleteEmailsUsingPOST1(deleteEmailsRequest).then((data) => {
+apiInstance.deleteEmails(deleteEmailsRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -193,53 +193,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## getEmailTemplateUsingGET
+## getEmail
 
-> EmailTemplate getEmailTemplateUsingGET(emailTemplateId)
-
-Retrieve an email template
-
-Retrieve an email template
-
-### Example
-
-```javascript
-import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
-
-let apiInstance = new KeapCoreServiceV2Sdk.EmailApi();
-let emailTemplateId = "emailTemplateId_example"; // String | email_template_id
-apiInstance.getEmailTemplateUsingGET(emailTemplateId).then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
-  console.error(error);
-});
-
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **emailTemplateId** | **String**| email_template_id | 
-
-### Return type
-
-[**EmailTemplate**](EmailTemplate.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## getEmailUsingGET1
-
-> EmailSentWithContent getEmailUsingGET1(id)
+> EmailSentWithContent getEmail(id)
 
 Retrieve an Email
 
@@ -252,7 +208,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.EmailApi();
 let id = "id_example"; // String | id
-apiInstance.getEmailUsingGET1(id).then((data) => {
+apiInstance.getEmail(id).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -281,13 +237,57 @@ No authorization required
 - **Accept**: application/json
 
 
-## sendEmailTemplateUsingPOST
+## getEmailTemplate
 
-> sendEmailTemplateUsingPOST(opts)
+> EmailTemplate getEmailTemplate(emailTemplateId)
 
-Send an email based on a template
+Retrieve an email template
 
-Send an email based on a template
+Retrieve an email template
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+
+let apiInstance = new KeapCoreServiceV2Sdk.EmailApi();
+let emailTemplateId = "emailTemplateId_example"; // String | email_template_id
+apiInstance.getEmailTemplate(emailTemplateId).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **emailTemplateId** | **String**| email_template_id | 
+
+### Return type
+
+[**EmailTemplate**](EmailTemplate.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## sendEmail
+
+> sendEmail(opts)
+
+Send an Email
+
+Sends an Email to a list of Contacts
 
 ### Example
 
@@ -296,9 +296,9 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.EmailApi();
 let opts = {
-  'emailSendTemplateRequest': new KeapCoreServiceV2Sdk.EmailSendTemplateRequest() // EmailSendTemplateRequest | Use a template to send an email to a list of contacts 
+  'emailSendRequest': new KeapCoreServiceV2Sdk.EmailSendRequest() // EmailSendRequest | emailSendRequest
 };
-apiInstance.sendEmailTemplateUsingPOST(opts).then(() => {
+apiInstance.sendEmail(opts).then(() => {
   console.log('API called successfully.');
 }, (error) => {
   console.error(error);
@@ -311,7 +311,7 @@ apiInstance.sendEmailTemplateUsingPOST(opts).then(() => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **emailSendTemplateRequest** | [**EmailSendTemplateRequest**](EmailSendTemplateRequest.md)| Use a template to send an email to a list of contacts  | [optional] 
+ **emailSendRequest** | [**EmailSendRequest**](EmailSendRequest.md)| emailSendRequest | [optional] 
 
 ### Return type
 
@@ -327,13 +327,13 @@ No authorization required
 - **Accept**: application/json
 
 
-## sendEmailUsingPOST1
+## sendEmailTemplate
 
-> sendEmailUsingPOST1(opts)
+> sendEmailTemplate(opts)
 
-Send an Email
+Send an email based on a template
 
-Sends an Email to a list of Contacts
+Send an email based on a template
 
 ### Example
 
@@ -342,9 +342,9 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.EmailApi();
 let opts = {
-  'emailSendRequest': new KeapCoreServiceV2Sdk.EmailSendRequest() // EmailSendRequest | emailSendRequest
+  'emailSendTemplateRequest': new KeapCoreServiceV2Sdk.EmailSendTemplateRequest() // EmailSendTemplateRequest | Use a template to send an email to a list of contacts 
 };
-apiInstance.sendEmailUsingPOST1(opts).then(() => {
+apiInstance.sendEmailTemplate(opts).then(() => {
   console.log('API called successfully.');
 }, (error) => {
   console.error(error);
@@ -357,7 +357,7 @@ apiInstance.sendEmailUsingPOST1(opts).then(() => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **emailSendRequest** | [**EmailSendRequest**](EmailSendRequest.md)| emailSendRequest | [optional] 
+ **emailSendTemplateRequest** | [**EmailSendTemplateRequest**](EmailSendTemplateRequest.md)| Use a template to send an email to a list of contacts  | [optional] 
 
 ### Return type
 

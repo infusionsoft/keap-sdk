@@ -4,17 +4,61 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createSubscriptionCustomFieldUsingPOST**](SubscriptionsApi.md#createSubscriptionCustomFieldUsingPOST) | **POST** /v2/subscriptions/model/customFields | Create a Subscription Custom Field
-[**createSubscriptionV2UsingPOST**](SubscriptionsApi.md#createSubscriptionV2UsingPOST) | **POST** /v2/subscriptions | Create Subscription
-[**deleteSubscriptionCustomFieldUsingDELETE**](SubscriptionsApi.md#deleteSubscriptionCustomFieldUsingDELETE) | **DELETE** /v2/subscriptions/model/customFields/{custom_field_id} | Delete a Subscription Custom Field
-[**retrieveSubscriptionCustomFieldModelUsingGET**](SubscriptionsApi.md#retrieveSubscriptionCustomFieldModelUsingGET) | **GET** /v2/subscriptions/model | Retrieve Subscription Custom Field Model
-[**updateSubscriptionCustomFieldUsingPATCH**](SubscriptionsApi.md#updateSubscriptionCustomFieldUsingPATCH) | **PATCH** /v2/subscriptions/model/customFields/{custom_field_id} | Update a Subscription Custom Field
+[**createSubscription**](SubscriptionsApi.md#createSubscription) | **POST** /v2/subscriptions | Create Subscription
+[**createSubscriptionCustomField**](SubscriptionsApi.md#createSubscriptionCustomField) | **POST** /v2/subscriptions/model/customFields | Create a Subscription Custom Field
+[**deleteSubscriptionCustomField**](SubscriptionsApi.md#deleteSubscriptionCustomField) | **DELETE** /v2/subscriptions/model/customFields/{custom_field_id} | Delete a Subscription Custom Field
+[**retrieveSubscriptionCustomFieldModel**](SubscriptionsApi.md#retrieveSubscriptionCustomFieldModel) | **GET** /v2/subscriptions/model | Retrieve Subscription Custom Field Model
+[**updateSubscriptionCustomField**](SubscriptionsApi.md#updateSubscriptionCustomField) | **PATCH** /v2/subscriptions/model/customFields/{custom_field_id} | Update a Subscription Custom Field
 
 
 
-## createSubscriptionCustomFieldUsingPOST
+## createSubscription
 
-> CustomFieldMetaData createSubscriptionCustomFieldUsingPOST(createCustomFieldRequest)
+> Subscription createSubscription(createSubscriptionRequest)
+
+Create Subscription
+
+Creates a subscription with the specified product and product subscription id.
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+
+let apiInstance = new KeapCoreServiceV2Sdk.SubscriptionsApi();
+let createSubscriptionRequest = new KeapCoreServiceV2Sdk.CreateSubscriptionRequest(); // CreateSubscriptionRequest | request
+apiInstance.createSubscription(createSubscriptionRequest).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createSubscriptionRequest** | [**CreateSubscriptionRequest**](CreateSubscriptionRequest.md)| request | 
+
+### Return type
+
+[**Subscription**](Subscription.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## createSubscriptionCustomField
+
+> CustomFieldMetaData createSubscriptionCustomField(createCustomFieldRequest)
 
 Create a Subscription Custom Field
 
@@ -27,7 +71,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.SubscriptionsApi();
 let createCustomFieldRequest = new KeapCoreServiceV2Sdk.CreateCustomFieldRequest(); // CreateCustomFieldRequest | customField
-apiInstance.createSubscriptionCustomFieldUsingPOST(createCustomFieldRequest).then((data) => {
+apiInstance.createSubscriptionCustomField(createCustomFieldRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -56,53 +100,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## createSubscriptionV2UsingPOST
+## deleteSubscriptionCustomField
 
-> RestSubscriptionV2 createSubscriptionV2UsingPOST(createSubscriptionV2)
-
-Create Subscription
-
-Creates a subscription with the specified product and product subscription id.
-
-### Example
-
-```javascript
-import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
-
-let apiInstance = new KeapCoreServiceV2Sdk.SubscriptionsApi();
-let createSubscriptionV2 = new KeapCoreServiceV2Sdk.CreateSubscriptionV2(); // CreateSubscriptionV2 | createSubscriptionV2
-apiInstance.createSubscriptionV2UsingPOST(createSubscriptionV2).then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
-  console.error(error);
-});
-
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **createSubscriptionV2** | [**CreateSubscriptionV2**](CreateSubscriptionV2.md)| createSubscriptionV2 | 
-
-### Return type
-
-[**RestSubscriptionV2**](RestSubscriptionV2.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## deleteSubscriptionCustomFieldUsingDELETE
-
-> deleteSubscriptionCustomFieldUsingDELETE(customFieldId)
+> deleteSubscriptionCustomField(customFieldId)
 
 Delete a Subscription Custom Field
 
@@ -115,7 +115,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.SubscriptionsApi();
 let customFieldId = "customFieldId_example"; // String | custom_field_id
-apiInstance.deleteSubscriptionCustomFieldUsingDELETE(customFieldId).then(() => {
+apiInstance.deleteSubscriptionCustomField(customFieldId).then(() => {
   console.log('API called successfully.');
 }, (error) => {
   console.error(error);
@@ -144,9 +144,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## retrieveSubscriptionCustomFieldModelUsingGET
+## retrieveSubscriptionCustomFieldModel
 
-> ObjectModel retrieveSubscriptionCustomFieldModelUsingGET()
+> ObjectModel retrieveSubscriptionCustomFieldModel()
 
 Retrieve Subscription Custom Field Model
 
@@ -158,7 +158,7 @@ Get the custom fields for the Subscription object
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.SubscriptionsApi();
-apiInstance.retrieveSubscriptionCustomFieldModelUsingGET().then((data) => {
+apiInstance.retrieveSubscriptionCustomFieldModel().then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -184,9 +184,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## updateSubscriptionCustomFieldUsingPATCH
+## updateSubscriptionCustomField
 
-> CustomFieldMetaData updateSubscriptionCustomFieldUsingPATCH(customFieldId, updateCustomFieldMetaDataRequest, opts)
+> CustomFieldMetaData updateSubscriptionCustomField(customFieldId, updateCustomFieldMetaDataRequest, opts)
 
 Update a Subscription Custom Field
 
@@ -203,7 +203,7 @@ let updateCustomFieldMetaDataRequest = new KeapCoreServiceV2Sdk.UpdateCustomFiel
 let opts = {
   'updateMask': ["null"] // [String] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
-apiInstance.updateSubscriptionCustomFieldUsingPATCH(customFieldId, updateCustomFieldMetaDataRequest, opts).then((data) => {
+apiInstance.updateSubscriptionCustomField(customFieldId, updateCustomFieldMetaDataRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);

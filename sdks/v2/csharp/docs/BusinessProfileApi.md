@@ -4,12 +4,12 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**GetBusinessProfileUsingGET**](BusinessProfileApi.md#getbusinessprofileusingget) | **GET** /v2/businessProfile | Retrieve Business Profile |
-| [**UpdateBusinessProfileUsingPATCH**](BusinessProfileApi.md#updatebusinessprofileusingpatch) | **PATCH** /v2/businessProfile | Update Business Profile |
+| [**GetBusinessProfile**](BusinessProfileApi.md#getbusinessprofile) | **GET** /v2/businessProfile | Retrieve Business Profile |
+| [**UpdateBusinessProfile**](BusinessProfileApi.md#updatebusinessprofile) | **PATCH** /v2/businessProfile | Update Business Profile |
 
-<a id="getbusinessprofileusingget"></a>
-# **GetBusinessProfileUsingGET**
-> GetBusinessProfileResponse GetBusinessProfileUsingGET ()
+<a id="getbusinessprofile"></a>
+# **GetBusinessProfile**
+> GetBusinessProfileResponse GetBusinessProfile ()
 
 Retrieve Business Profile
 
@@ -25,7 +25,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class GetBusinessProfileUsingGETExample
+    public class GetBusinessProfileExample
     {
         public static void Main()
         {
@@ -36,12 +36,12 @@ namespace Example
             try
             {
                 // Retrieve Business Profile
-                GetBusinessProfileResponse result = apiInstance.GetBusinessProfileUsingGET();
+                GetBusinessProfileResponse result = apiInstance.GetBusinessProfile();
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling BusinessProfileApi.GetBusinessProfileUsingGET: " + e.Message);
+                Debug.Print("Exception when calling BusinessProfileApi.GetBusinessProfile: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -50,21 +50,21 @@ namespace Example
 }
 ```
 
-#### Using the GetBusinessProfileUsingGETWithHttpInfo variant
+#### Using the GetBusinessProfileWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Retrieve Business Profile
-    ApiResponse<GetBusinessProfileResponse> response = apiInstance.GetBusinessProfileUsingGETWithHttpInfo();
+    ApiResponse<GetBusinessProfileResponse> response = apiInstance.GetBusinessProfileWithHttpInfo();
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling BusinessProfileApi.GetBusinessProfileUsingGETWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling BusinessProfileApi.GetBusinessProfileWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -97,9 +97,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="updatebusinessprofileusingpatch"></a>
-# **UpdateBusinessProfileUsingPATCH**
-> GetBusinessProfileResponse UpdateBusinessProfileUsingPATCH (List<string>? updateMask = null, UpdateBusinessProfileRequest? updateBusinessProfileRequest = null)
+<a id="updatebusinessprofile"></a>
+# **UpdateBusinessProfile**
+> GetBusinessProfileResponse UpdateBusinessProfile (List<string>? updateMask = null, UpdateBusinessProfileRequest? updateBusinessProfileRequest = null)
 
 Update Business Profile
 
@@ -115,7 +115,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class UpdateBusinessProfileUsingPATCHExample
+    public class UpdateBusinessProfileExample
     {
         public static void Main()
         {
@@ -128,12 +128,12 @@ namespace Example
             try
             {
                 // Update Business Profile
-                GetBusinessProfileResponse result = apiInstance.UpdateBusinessProfileUsingPATCH(updateMask, updateBusinessProfileRequest);
+                GetBusinessProfileResponse result = apiInstance.UpdateBusinessProfile(updateMask, updateBusinessProfileRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling BusinessProfileApi.UpdateBusinessProfileUsingPATCH: " + e.Message);
+                Debug.Print("Exception when calling BusinessProfileApi.UpdateBusinessProfile: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -142,21 +142,21 @@ namespace Example
 }
 ```
 
-#### Using the UpdateBusinessProfileUsingPATCHWithHttpInfo variant
+#### Using the UpdateBusinessProfileWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Update Business Profile
-    ApiResponse<GetBusinessProfileResponse> response = apiInstance.UpdateBusinessProfileUsingPATCHWithHttpInfo(updateMask, updateBusinessProfileRequest);
+    ApiResponse<GetBusinessProfileResponse> response = apiInstance.UpdateBusinessProfileWithHttpInfo(updateMask, updateBusinessProfileRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling BusinessProfileApi.UpdateBusinessProfileUsingPATCHWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling BusinessProfileApi.UpdateBusinessProfileWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }

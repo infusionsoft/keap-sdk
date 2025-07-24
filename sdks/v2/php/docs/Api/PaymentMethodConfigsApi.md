@@ -4,13 +4,13 @@ All URIs are relative to https://api.keap.com/crm/rest, except if the operation 
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createPaymentMethodConfigUsingPOST()**](PaymentMethodConfigsApi.md#createPaymentMethodConfigUsingPOST) | **POST** /v2/paymentMethodConfigs | Create Payment Method Configuration |
+| [**createPaymentMethodConfig()**](PaymentMethodConfigsApi.md#createPaymentMethodConfig) | **POST** /v2/paymentMethodConfigs | Create Payment Method Configuration |
 
 
-## `createPaymentMethodConfigUsingPOST()`
+## `createPaymentMethodConfig()`
 
 ```php
-createPaymentMethodConfigUsingPOST($create_payment_method_config_request): \Keap\Core\V2\Model\PaymentMethodConfig
+createPaymentMethodConfig($create_payment_method_config_request): \Keap\Core\V2\Model\PaymentMethodConfig
 ```
 
 Create Payment Method Configuration
@@ -32,10 +32,10 @@ $apiInstance = new Keap\Core\V2\Api\PaymentMethodConfigsApi(
 $create_payment_method_config_request = new \Keap\Core\V2\Model\CreatePaymentMethodConfigRequest(); // \Keap\Core\V2\Model\CreatePaymentMethodConfigRequest | request
 
 try {
-    $result = $apiInstance->createPaymentMethodConfigUsingPOST($create_payment_method_config_request);
+    $result = $apiInstance->createPaymentMethodConfig($create_payment_method_config_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling PaymentMethodConfigsApi->createPaymentMethodConfigUsingPOST: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling PaymentMethodConfigsApi->createPaymentMethodConfig: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

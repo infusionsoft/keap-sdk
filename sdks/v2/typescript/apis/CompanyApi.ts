@@ -23,7 +23,7 @@ export class CompanyApiRequestFactory extends BaseAPIRequestFactory {
      * Create a Company
      * @param createCompanyRequest company
      */
-    public async createCompanyUsingPOST1(createCompanyRequest?: CreateCompanyRequest, _options?: Configuration): Promise<RequestContext> {
+    public async createCompany(createCompanyRequest?: CreateCompanyRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
 
@@ -60,12 +60,12 @@ export class CompanyApiRequestFactory extends BaseAPIRequestFactory {
      * Delete a Company
      * @param companyId company_id
      */
-    public async deleteCompanyUsingDELETE(companyId: string, _options?: Configuration): Promise<RequestContext> {
+    public async deleteCompany(companyId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'companyId' is not null or undefined
         if (companyId === null || companyId === undefined) {
-            throw new RequiredError("CompanyApi", "deleteCompanyUsingDELETE", "companyId");
+            throw new RequiredError("CompanyApi", "deleteCompany", "companyId");
         }
 
 
@@ -93,12 +93,12 @@ export class CompanyApiRequestFactory extends BaseAPIRequestFactory {
      * @param companyId company_id
      * @param fields Comma-delimited list of Company properties to include in the response. (Available fields are: &#x60;company_name&#x60;, &#x60;address&#x60;, &#x60;custom_fields&#x60;, &#x60;email_address&#x60;, &#x60;fax_number&#x60;, &#x60;phone_number&#x60;, &#x60;website&#x60;, &#x60;notes&#x60;)
      */
-    public async getCompanyUsingGET1(companyId: string, fields?: Array<string>, _options?: Configuration): Promise<RequestContext> {
+    public async getCompany(companyId: string, fields?: Array<string>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'companyId' is not null or undefined
         if (companyId === null || companyId === undefined) {
-            throw new RequiredError("CompanyApi", "getCompanyUsingGET1", "companyId");
+            throw new RequiredError("CompanyApi", "getCompany", "companyId");
         }
 
 
@@ -130,15 +130,15 @@ export class CompanyApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Retrieves a list of all Companies
+     * Retrieves a list of all Companies.<br/><br/>If the feature flag is <b>enabled</b>, the endpoint returns the <span style=\'color:red\'>legacy</span> non-paginated list of all companies.<br/>If the flag is <b>disabled</b>, it returns a paginated list using the v2-compliant implementation.<br/><br/><span style=\'color:red\'>Deprecated as of v2</span>: The legacy behavior will be removed after the transition period.
      * List Companies
-     * @param fields Comma-delimited list of Company properties to include in the response. (Fields such as &#x60;notes&#x60;, &#x60;fax_number&#x60; and &#x60;custom_fields&#x60; aren\&#39;t included, by default.)
-     * @param filter Search filter to apply to results
-     * @param orderBy Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60;
+     * @param fields Comma-delimited list of Company properties to include in the response. (Fields such as &#x60;notes&#x60;, &#x60;fax_number&#x60;, &#x60;email_address&#x60;, &#x60;phone_number&#x60;, &#x60;update_time&#x60;, &#x60;create_time&#x60; and &#x60;custom_fields&#x60; aren\&#39;t included, by default.)
+     * @param filter Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; 
+     * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;name&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param pageSize Total number of items to return per page
      * @param pageToken Page token
      */
-    public async listCompaniesUsingGET1(fields?: Array<string>, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
+    public async listCompanies(fields?: Array<string>, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
 
@@ -198,12 +198,12 @@ export class CompanyApiRequestFactory extends BaseAPIRequestFactory {
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @param updateCompanyRequest company
      */
-    public async updateCompanyUsingPATCH1(companyId: string, updateMask?: Array<string>, updateCompanyRequest?: UpdateCompanyRequest, _options?: Configuration): Promise<RequestContext> {
+    public async updateCompany(companyId: string, updateMask?: Array<string>, updateCompanyRequest?: UpdateCompanyRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'companyId' is not null or undefined
         if (companyId === null || companyId === undefined) {
-            throw new RequiredError("CompanyApi", "updateCompanyUsingPATCH1", "companyId");
+            throw new RequiredError("CompanyApi", "updateCompany", "companyId");
         }
 
 
@@ -254,10 +254,10 @@ export class CompanyApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to createCompanyUsingPOST1
+     * @params response Response returned by the server for a request to createCompany
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async createCompanyUsingPOST1WithHttpInfo(response: ResponseContext): Promise<HttpInfo<Company >> {
+     public async createCompanyWithHttpInfo(response: ResponseContext): Promise<HttpInfo<Company >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("201", response.httpStatusCode)) {
             const body: Company = ObjectSerializer.deserialize(
@@ -304,10 +304,10 @@ export class CompanyApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to deleteCompanyUsingDELETE
+     * @params response Response returned by the server for a request to deleteCompany
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async deleteCompanyUsingDELETEWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async deleteCompanyWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("204", response.httpStatusCode)) {
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
@@ -357,10 +357,10 @@ export class CompanyApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to getCompanyUsingGET1
+     * @params response Response returned by the server for a request to getCompany
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getCompanyUsingGET1WithHttpInfo(response: ResponseContext): Promise<HttpInfo<Company >> {
+     public async getCompanyWithHttpInfo(response: ResponseContext): Promise<HttpInfo<Company >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: Company = ObjectSerializer.deserialize(
@@ -414,10 +414,10 @@ export class CompanyApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to listCompaniesUsingGET1
+     * @params response Response returned by the server for a request to listCompanies
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async listCompaniesUsingGET1WithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListCompaniesResponse >> {
+     public async listCompaniesWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListCompaniesResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: ListCompaniesResponse = ObjectSerializer.deserialize(
@@ -471,10 +471,10 @@ export class CompanyApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to updateCompanyUsingPATCH1
+     * @params response Response returned by the server for a request to updateCompany
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async updateCompanyUsingPATCH1WithHttpInfo(response: ResponseContext): Promise<HttpInfo<Company >> {
+     public async updateCompanyWithHttpInfo(response: ResponseContext): Promise<HttpInfo<Company >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: Company = ObjectSerializer.deserialize(

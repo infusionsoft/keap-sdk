@@ -4,18 +4,18 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**AddProductInterestUsingPOST**](ProductInterestBundlesApi.md#addproductinterestusingpost) | **POST** /v2/productInterestBundles/{id}/interests | Create a Product Interest in an existing Bundle |
-| [**CreateProductInterestBundleUsingPOST**](ProductInterestBundlesApi.md#createproductinterestbundleusingpost) | **POST** /v2/productInterestBundles | Create a Product Interest Bundle |
-| [**DeleteProductInterestBundleUsingDELETE**](ProductInterestBundlesApi.md#deleteproductinterestbundleusingdelete) | **DELETE** /v2/productInterestBundles/{id} | Delete a Product Interest Bundle |
-| [**GetProductInterestBundleUsingGET**](ProductInterestBundlesApi.md#getproductinterestbundleusingget) | **GET** /v2/productInterestBundles/{id} | Get a Product Interest Bundle |
-| [**ListProductInterestBundlesUsingGET**](ProductInterestBundlesApi.md#listproductinterestbundlesusingget) | **GET** /v2/productInterestBundles | List Product Interest Bundles |
-| [**RemoveProductInterestUsingDELETE**](ProductInterestBundlesApi.md#removeproductinterestusingdelete) | **DELETE** /v2/productInterestBundles/{id}/interests/{interest_id} | Delete a Product Interest from an existing Bundle |
-| [**UpdateProductInterestBundleUsingPATCH**](ProductInterestBundlesApi.md#updateproductinterestbundleusingpatch) | **PATCH** /v2/productInterestBundles/{id} | Update a Product Interest Bundle |
-| [**UpdateProductInterestUsingPATCH**](ProductInterestBundlesApi.md#updateproductinterestusingpatch) | **PATCH** /v2/productInterestBundles/{id}/interests/{interest_id} | Update a Product Interest in an existing Bundle |
+| [**AddProductInterest**](ProductInterestBundlesApi.md#addproductinterest) | **POST** /v2/productInterestBundles/{id}/interests | Create a Product Interest in an existing Bundle |
+| [**CreateProductInterestBundle**](ProductInterestBundlesApi.md#createproductinterestbundle) | **POST** /v2/productInterestBundles | Create a Product Interest Bundle |
+| [**DeleteProductInterestBundle**](ProductInterestBundlesApi.md#deleteproductinterestbundle) | **DELETE** /v2/productInterestBundles/{id} | Delete a Product Interest Bundle |
+| [**GetProductInterestBundle**](ProductInterestBundlesApi.md#getproductinterestbundle) | **GET** /v2/productInterestBundles/{id} | Get a Product Interest Bundle |
+| [**ListProductInterestBundles**](ProductInterestBundlesApi.md#listproductinterestbundles) | **GET** /v2/productInterestBundles | List Product Interest Bundles |
+| [**RemoveProductInterest**](ProductInterestBundlesApi.md#removeproductinterest) | **DELETE** /v2/productInterestBundles/{id}/interests/{interest_id} | Delete a Product Interest from an existing Bundle |
+| [**UpdateProductInterest**](ProductInterestBundlesApi.md#updateproductinterest) | **PATCH** /v2/productInterestBundles/{id}/interests/{interest_id} | Update a Product Interest in an existing Bundle |
+| [**UpdateProductInterestBundle**](ProductInterestBundlesApi.md#updateproductinterestbundle) | **PATCH** /v2/productInterestBundles/{id} | Update a Product Interest Bundle |
 
-<a id="addproductinterestusingpost"></a>
-# **AddProductInterestUsingPOST**
-> ProductInterest AddProductInterestUsingPOST (string id, AddProductInterestRequest addProductInterestRequest)
+<a id="addproductinterest"></a>
+# **AddProductInterest**
+> ProductInterest AddProductInterest (string id, AddProductInterestRequest addProductInterestRequest)
 
 Create a Product Interest in an existing Bundle
 
@@ -31,7 +31,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class AddProductInterestUsingPOSTExample
+    public class AddProductInterestExample
     {
         public static void Main()
         {
@@ -44,12 +44,12 @@ namespace Example
             try
             {
                 // Create a Product Interest in an existing Bundle
-                ProductInterest result = apiInstance.AddProductInterestUsingPOST(id, addProductInterestRequest);
+                ProductInterest result = apiInstance.AddProductInterest(id, addProductInterestRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ProductInterestBundlesApi.AddProductInterestUsingPOST: " + e.Message);
+                Debug.Print("Exception when calling ProductInterestBundlesApi.AddProductInterest: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -58,21 +58,21 @@ namespace Example
 }
 ```
 
-#### Using the AddProductInterestUsingPOSTWithHttpInfo variant
+#### Using the AddProductInterestWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Create a Product Interest in an existing Bundle
-    ApiResponse<ProductInterest> response = apiInstance.AddProductInterestUsingPOSTWithHttpInfo(id, addProductInterestRequest);
+    ApiResponse<ProductInterest> response = apiInstance.AddProductInterestWithHttpInfo(id, addProductInterestRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling ProductInterestBundlesApi.AddProductInterestUsingPOSTWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling ProductInterestBundlesApi.AddProductInterestWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -109,9 +109,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="createproductinterestbundleusingpost"></a>
-# **CreateProductInterestBundleUsingPOST**
-> ProductInterestBundle CreateProductInterestBundleUsingPOST (CreateProductInterestBundleRequest createProductInterestBundleRequest)
+<a id="createproductinterestbundle"></a>
+# **CreateProductInterestBundle**
+> ProductInterestBundle CreateProductInterestBundle (CreateProductInterestBundleRequest createProductInterestBundleRequest)
 
 Create a Product Interest Bundle
 
@@ -127,7 +127,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class CreateProductInterestBundleUsingPOSTExample
+    public class CreateProductInterestBundleExample
     {
         public static void Main()
         {
@@ -139,12 +139,12 @@ namespace Example
             try
             {
                 // Create a Product Interest Bundle
-                ProductInterestBundle result = apiInstance.CreateProductInterestBundleUsingPOST(createProductInterestBundleRequest);
+                ProductInterestBundle result = apiInstance.CreateProductInterestBundle(createProductInterestBundleRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ProductInterestBundlesApi.CreateProductInterestBundleUsingPOST: " + e.Message);
+                Debug.Print("Exception when calling ProductInterestBundlesApi.CreateProductInterestBundle: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -153,21 +153,21 @@ namespace Example
 }
 ```
 
-#### Using the CreateProductInterestBundleUsingPOSTWithHttpInfo variant
+#### Using the CreateProductInterestBundleWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Create a Product Interest Bundle
-    ApiResponse<ProductInterestBundle> response = apiInstance.CreateProductInterestBundleUsingPOSTWithHttpInfo(createProductInterestBundleRequest);
+    ApiResponse<ProductInterestBundle> response = apiInstance.CreateProductInterestBundleWithHttpInfo(createProductInterestBundleRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling ProductInterestBundlesApi.CreateProductInterestBundleUsingPOSTWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling ProductInterestBundlesApi.CreateProductInterestBundleWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -203,9 +203,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="deleteproductinterestbundleusingdelete"></a>
-# **DeleteProductInterestBundleUsingDELETE**
-> void DeleteProductInterestBundleUsingDELETE (string id)
+<a id="deleteproductinterestbundle"></a>
+# **DeleteProductInterestBundle**
+> void DeleteProductInterestBundle (string id)
 
 Delete a Product Interest Bundle
 
@@ -221,7 +221,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class DeleteProductInterestBundleUsingDELETEExample
+    public class DeleteProductInterestBundleExample
     {
         public static void Main()
         {
@@ -233,11 +233,11 @@ namespace Example
             try
             {
                 // Delete a Product Interest Bundle
-                apiInstance.DeleteProductInterestBundleUsingDELETE(id);
+                apiInstance.DeleteProductInterestBundle(id);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ProductInterestBundlesApi.DeleteProductInterestBundleUsingDELETE: " + e.Message);
+                Debug.Print("Exception when calling ProductInterestBundlesApi.DeleteProductInterestBundle: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -246,18 +246,18 @@ namespace Example
 }
 ```
 
-#### Using the DeleteProductInterestBundleUsingDELETEWithHttpInfo variant
+#### Using the DeleteProductInterestBundleWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Delete a Product Interest Bundle
-    apiInstance.DeleteProductInterestBundleUsingDELETEWithHttpInfo(id);
+    apiInstance.DeleteProductInterestBundleWithHttpInfo(id);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling ProductInterestBundlesApi.DeleteProductInterestBundleUsingDELETEWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling ProductInterestBundlesApi.DeleteProductInterestBundleWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -294,9 +294,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="getproductinterestbundleusingget"></a>
-# **GetProductInterestBundleUsingGET**
-> ProductInterestBundle GetProductInterestBundleUsingGET (string id)
+<a id="getproductinterestbundle"></a>
+# **GetProductInterestBundle**
+> ProductInterestBundle GetProductInterestBundle (string id)
 
 Get a Product Interest Bundle
 
@@ -312,7 +312,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class GetProductInterestBundleUsingGETExample
+    public class GetProductInterestBundleExample
     {
         public static void Main()
         {
@@ -324,12 +324,12 @@ namespace Example
             try
             {
                 // Get a Product Interest Bundle
-                ProductInterestBundle result = apiInstance.GetProductInterestBundleUsingGET(id);
+                ProductInterestBundle result = apiInstance.GetProductInterestBundle(id);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ProductInterestBundlesApi.GetProductInterestBundleUsingGET: " + e.Message);
+                Debug.Print("Exception when calling ProductInterestBundlesApi.GetProductInterestBundle: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -338,21 +338,21 @@ namespace Example
 }
 ```
 
-#### Using the GetProductInterestBundleUsingGETWithHttpInfo variant
+#### Using the GetProductInterestBundleWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Get a Product Interest Bundle
-    ApiResponse<ProductInterestBundle> response = apiInstance.GetProductInterestBundleUsingGETWithHttpInfo(id);
+    ApiResponse<ProductInterestBundle> response = apiInstance.GetProductInterestBundleWithHttpInfo(id);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling ProductInterestBundlesApi.GetProductInterestBundleUsingGETWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling ProductInterestBundlesApi.GetProductInterestBundleWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -389,9 +389,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="listproductinterestbundlesusingget"></a>
-# **ListProductInterestBundlesUsingGET**
-> ListProductInterestBundleResponse ListProductInterestBundlesUsingGET (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
+<a id="listproductinterestbundles"></a>
+# **ListProductInterestBundles**
+> ListProductInterestBundleResponse ListProductInterestBundles (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
 
 List Product Interest Bundles
 
@@ -407,7 +407,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class ListProductInterestBundlesUsingGETExample
+    public class ListProductInterestBundlesExample
     {
         public static void Main()
         {
@@ -422,12 +422,12 @@ namespace Example
             try
             {
                 // List Product Interest Bundles
-                ListProductInterestBundleResponse result = apiInstance.ListProductInterestBundlesUsingGET(filter, orderBy, pageSize, pageToken);
+                ListProductInterestBundleResponse result = apiInstance.ListProductInterestBundles(filter, orderBy, pageSize, pageToken);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ProductInterestBundlesApi.ListProductInterestBundlesUsingGET: " + e.Message);
+                Debug.Print("Exception when calling ProductInterestBundlesApi.ListProductInterestBundles: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -436,21 +436,21 @@ namespace Example
 }
 ```
 
-#### Using the ListProductInterestBundlesUsingGETWithHttpInfo variant
+#### Using the ListProductInterestBundlesWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // List Product Interest Bundles
-    ApiResponse<ListProductInterestBundleResponse> response = apiInstance.ListProductInterestBundlesUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken);
+    ApiResponse<ListProductInterestBundleResponse> response = apiInstance.ListProductInterestBundlesWithHttpInfo(filter, orderBy, pageSize, pageToken);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling ProductInterestBundlesApi.ListProductInterestBundlesUsingGETWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling ProductInterestBundlesApi.ListProductInterestBundlesWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -490,9 +490,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="removeproductinterestusingdelete"></a>
-# **RemoveProductInterestUsingDELETE**
-> void RemoveProductInterestUsingDELETE (string id, string interestId)
+<a id="removeproductinterest"></a>
+# **RemoveProductInterest**
+> void RemoveProductInterest (string id, string interestId)
 
 Delete a Product Interest from an existing Bundle
 
@@ -508,7 +508,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class RemoveProductInterestUsingDELETEExample
+    public class RemoveProductInterestExample
     {
         public static void Main()
         {
@@ -521,11 +521,11 @@ namespace Example
             try
             {
                 // Delete a Product Interest from an existing Bundle
-                apiInstance.RemoveProductInterestUsingDELETE(id, interestId);
+                apiInstance.RemoveProductInterest(id, interestId);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ProductInterestBundlesApi.RemoveProductInterestUsingDELETE: " + e.Message);
+                Debug.Print("Exception when calling ProductInterestBundlesApi.RemoveProductInterest: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -534,18 +534,18 @@ namespace Example
 }
 ```
 
-#### Using the RemoveProductInterestUsingDELETEWithHttpInfo variant
+#### Using the RemoveProductInterestWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Delete a Product Interest from an existing Bundle
-    apiInstance.RemoveProductInterestUsingDELETEWithHttpInfo(id, interestId);
+    apiInstance.RemoveProductInterestWithHttpInfo(id, interestId);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling ProductInterestBundlesApi.RemoveProductInterestUsingDELETEWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling ProductInterestBundlesApi.RemoveProductInterestWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -583,13 +583,13 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="updateproductinterestbundleusingpatch"></a>
-# **UpdateProductInterestBundleUsingPATCH**
-> ProductInterestBundle UpdateProductInterestBundleUsingPATCH (string id, UpdateProductInterestBundleRequest updateProductInterestBundleRequest, List<string>? updateMask = null)
+<a id="updateproductinterest"></a>
+# **UpdateProductInterest**
+> ProductInterest UpdateProductInterest (string id, string interestId, UpdateProductInterestRequest updateProductInterestRequest, List<string>? updateMask = null)
 
-Update a Product Interest Bundle
+Update a Product Interest in an existing Bundle
 
-Updates an existing Product Interest Bundle.
+Updates an existing Product Interest in an existing Bundle.
 
 ### Example
 ```csharp
@@ -601,7 +601,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class UpdateProductInterestBundleUsingPATCHExample
+    public class UpdateProductInterestExample
     {
         public static void Main()
         {
@@ -609,18 +609,19 @@ namespace Example
             config.BasePath = "https://api.keap.com/crm/rest";
             var apiInstance = new ProductInterestBundlesApi(config);
             var id = "id_example";  // string | id
-            var updateProductInterestBundleRequest = new UpdateProductInterestBundleRequest(); // UpdateProductInterestBundleRequest | updateProductInterestBundleRequest
+            var interestId = "interestId_example";  // string | interest_id
+            var updateProductInterestRequest = new UpdateProductInterestRequest(); // UpdateProductInterestRequest | updateProductInterestRequest
             var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
-                // Update a Product Interest Bundle
-                ProductInterestBundle result = apiInstance.UpdateProductInterestBundleUsingPATCH(id, updateProductInterestBundleRequest, updateMask);
+                // Update a Product Interest in an existing Bundle
+                ProductInterest result = apiInstance.UpdateProductInterest(id, interestId, updateProductInterestRequest, updateMask);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ProductInterestBundlesApi.UpdateProductInterestBundleUsingPATCH: " + e.Message);
+                Debug.Print("Exception when calling ProductInterestBundlesApi.UpdateProductInterest: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -629,21 +630,21 @@ namespace Example
 }
 ```
 
-#### Using the UpdateProductInterestBundleUsingPATCHWithHttpInfo variant
+#### Using the UpdateProductInterestWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    // Update a Product Interest Bundle
-    ApiResponse<ProductInterestBundle> response = apiInstance.UpdateProductInterestBundleUsingPATCHWithHttpInfo(id, updateProductInterestBundleRequest, updateMask);
+    // Update a Product Interest in an existing Bundle
+    ApiResponse<ProductInterest> response = apiInstance.UpdateProductInterestWithHttpInfo(id, interestId, updateProductInterestRequest, updateMask);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling ProductInterestBundlesApi.UpdateProductInterestBundleUsingPATCHWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling ProductInterestBundlesApi.UpdateProductInterestWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -654,12 +655,13 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **id** | **string** | id |  |
-| **updateProductInterestBundleRequest** | [**UpdateProductInterestBundleRequest**](UpdateProductInterestBundleRequest.md) | updateProductInterestBundleRequest |  |
+| **interestId** | **string** | interest_id |  |
+| **updateProductInterestRequest** | [**UpdateProductInterestRequest**](UpdateProductInterestRequest.md) | updateProductInterestRequest |  |
 | **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 
-[**ProductInterestBundle**](ProductInterestBundle.md)
+[**ProductInterest**](ProductInterest.md)
 
 ### Authorization
 
@@ -682,13 +684,13 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="updateproductinterestusingpatch"></a>
-# **UpdateProductInterestUsingPATCH**
-> ProductInterest UpdateProductInterestUsingPATCH (string id, string interestId, UpdateProductInterestRequest updateProductInterestRequest, List<string>? updateMask = null)
+<a id="updateproductinterestbundle"></a>
+# **UpdateProductInterestBundle**
+> ProductInterestBundle UpdateProductInterestBundle (string id, UpdateProductInterestBundleRequest updateProductInterestBundleRequest, List<string>? updateMask = null)
 
-Update a Product Interest in an existing Bundle
+Update a Product Interest Bundle
 
-Updates an existing Product Interest in an existing Bundle.
+Updates an existing Product Interest Bundle.
 
 ### Example
 ```csharp
@@ -700,7 +702,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class UpdateProductInterestUsingPATCHExample
+    public class UpdateProductInterestBundleExample
     {
         public static void Main()
         {
@@ -708,19 +710,18 @@ namespace Example
             config.BasePath = "https://api.keap.com/crm/rest";
             var apiInstance = new ProductInterestBundlesApi(config);
             var id = "id_example";  // string | id
-            var interestId = "interestId_example";  // string | interest_id
-            var updateProductInterestRequest = new UpdateProductInterestRequest(); // UpdateProductInterestRequest | updateProductInterestRequest
+            var updateProductInterestBundleRequest = new UpdateProductInterestBundleRequest(); // UpdateProductInterestBundleRequest | updateProductInterestBundleRequest
             var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
-                // Update a Product Interest in an existing Bundle
-                ProductInterest result = apiInstance.UpdateProductInterestUsingPATCH(id, interestId, updateProductInterestRequest, updateMask);
+                // Update a Product Interest Bundle
+                ProductInterestBundle result = apiInstance.UpdateProductInterestBundle(id, updateProductInterestBundleRequest, updateMask);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ProductInterestBundlesApi.UpdateProductInterestUsingPATCH: " + e.Message);
+                Debug.Print("Exception when calling ProductInterestBundlesApi.UpdateProductInterestBundle: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -729,21 +730,21 @@ namespace Example
 }
 ```
 
-#### Using the UpdateProductInterestUsingPATCHWithHttpInfo variant
+#### Using the UpdateProductInterestBundleWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    // Update a Product Interest in an existing Bundle
-    ApiResponse<ProductInterest> response = apiInstance.UpdateProductInterestUsingPATCHWithHttpInfo(id, interestId, updateProductInterestRequest, updateMask);
+    // Update a Product Interest Bundle
+    ApiResponse<ProductInterestBundle> response = apiInstance.UpdateProductInterestBundleWithHttpInfo(id, updateProductInterestBundleRequest, updateMask);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling ProductInterestBundlesApi.UpdateProductInterestUsingPATCHWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling ProductInterestBundlesApi.UpdateProductInterestBundleWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -754,13 +755,12 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **id** | **string** | id |  |
-| **interestId** | **string** | interest_id |  |
-| **updateProductInterestRequest** | [**UpdateProductInterestRequest**](UpdateProductInterestRequest.md) | updateProductInterestRequest |  |
+| **updateProductInterestBundleRequest** | [**UpdateProductInterestBundleRequest**](UpdateProductInterestBundleRequest.md) | updateProductInterestBundleRequest |  |
 | **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 
-[**ProductInterest**](ProductInterest.md)
+[**ProductInterestBundle**](ProductInterestBundle.md)
 
 ### Authorization
 

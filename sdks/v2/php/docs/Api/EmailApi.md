@@ -4,20 +4,20 @@ All URIs are relative to https://api.keap.com/crm/rest, except if the operation 
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createEmailUsingPOST1()**](EmailApi.md#createEmailUsingPOST1) | **POST** /v2/emails | Create an Email Record |
-| [**createEmailsUsingPOST1()**](EmailApi.md#createEmailsUsingPOST1) | **POST** /v2/emails:batchAdd | Create a set of Email Records |
-| [**deleteEmailUsingDELETE1()**](EmailApi.md#deleteEmailUsingDELETE1) | **DELETE** /v2/emails/{id} | Delete an Email Record |
-| [**deleteEmailsUsingPOST1()**](EmailApi.md#deleteEmailsUsingPOST1) | **POST** /v2/emails:batchRemove | Remove a set of Email Records |
-| [**getEmailTemplateUsingGET()**](EmailApi.md#getEmailTemplateUsingGET) | **GET** /v2/emails/templates/{email_template_id} | Retrieve an email template |
-| [**getEmailUsingGET1()**](EmailApi.md#getEmailUsingGET1) | **GET** /v2/emails/{id} | Retrieve an Email |
-| [**sendEmailTemplateUsingPOST()**](EmailApi.md#sendEmailTemplateUsingPOST) | **POST** /v2/emails/templates:send | Send an email based on a template |
-| [**sendEmailUsingPOST1()**](EmailApi.md#sendEmailUsingPOST1) | **POST** /v2/emails:send | Send an Email |
+| [**createEmail()**](EmailApi.md#createEmail) | **POST** /v2/emails | Create an Email Record |
+| [**createEmails()**](EmailApi.md#createEmails) | **POST** /v2/emails:batchAdd | Create a set of Email Records |
+| [**deleteEmail()**](EmailApi.md#deleteEmail) | **DELETE** /v2/emails/{id} | Delete an Email Record |
+| [**deleteEmails()**](EmailApi.md#deleteEmails) | **POST** /v2/emails:batchRemove | Remove a set of Email Records |
+| [**getEmail()**](EmailApi.md#getEmail) | **GET** /v2/emails/{id} | Retrieve an Email |
+| [**getEmailTemplate()**](EmailApi.md#getEmailTemplate) | **GET** /v2/emails/templates/{email_template_id} | Retrieve an email template |
+| [**sendEmail()**](EmailApi.md#sendEmail) | **POST** /v2/emails:send | Send an Email |
+| [**sendEmailTemplate()**](EmailApi.md#sendEmailTemplate) | **POST** /v2/emails/templates:send | Send an email based on a template |
 
 
-## `createEmailUsingPOST1()`
+## `createEmail()`
 
 ```php
-createEmailUsingPOST1($create_email_sent_request): \Keap\Core\V2\Model\EmailSentWithContent
+createEmail($create_email_sent_request): \Keap\Core\V2\Model\EmailSentWithContent
 ```
 
 Create an Email Record
@@ -39,10 +39,10 @@ $apiInstance = new Keap\Core\V2\Api\EmailApi(
 $create_email_sent_request = new \Keap\Core\V2\Model\CreateEmailSentRequest(); // \Keap\Core\V2\Model\CreateEmailSentRequest | emailWithContent
 
 try {
-    $result = $apiInstance->createEmailUsingPOST1($create_email_sent_request);
+    $result = $apiInstance->createEmail($create_email_sent_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling EmailApi->createEmailUsingPOST1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling EmailApi->createEmail: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -69,10 +69,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `createEmailsUsingPOST1()`
+## `createEmails()`
 
 ```php
-createEmailsUsingPOST1($create_emails_sent_request): \Keap\Core\V2\Model\EmailsSentList
+createEmails($create_emails_sent_request): \Keap\Core\V2\Model\EmailsSentList
 ```
 
 Create a set of Email Records
@@ -94,10 +94,10 @@ $apiInstance = new Keap\Core\V2\Api\EmailApi(
 $create_emails_sent_request = new \Keap\Core\V2\Model\CreateEmailsSentRequest(); // \Keap\Core\V2\Model\CreateEmailsSentRequest | Email records to persist, with content.
 
 try {
-    $result = $apiInstance->createEmailsUsingPOST1($create_emails_sent_request);
+    $result = $apiInstance->createEmails($create_emails_sent_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling EmailApi->createEmailsUsingPOST1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling EmailApi->createEmails: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -124,10 +124,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `deleteEmailUsingDELETE1()`
+## `deleteEmail()`
 
 ```php
-deleteEmailUsingDELETE1($id)
+deleteEmail($id)
 ```
 
 Delete an Email Record
@@ -149,9 +149,9 @@ $apiInstance = new Keap\Core\V2\Api\EmailApi(
 $id = 'id_example'; // string | id
 
 try {
-    $apiInstance->deleteEmailUsingDELETE1($id);
+    $apiInstance->deleteEmail($id);
 } catch (Exception $e) {
-    echo 'Exception when calling EmailApi->deleteEmailUsingDELETE1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling EmailApi->deleteEmail: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -178,10 +178,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `deleteEmailsUsingPOST1()`
+## `deleteEmails()`
 
 ```php
-deleteEmailsUsingPOST1($delete_emails_request): \Keap\Core\V2\Model\DeleteEmailsResponse
+deleteEmails($delete_emails_request): \Keap\Core\V2\Model\DeleteEmailsResponse
 ```
 
 Remove a set of Email Records
@@ -203,10 +203,10 @@ $apiInstance = new Keap\Core\V2\Api\EmailApi(
 $delete_emails_request = new \Keap\Core\V2\Model\DeleteEmailsRequest(); // \Keap\Core\V2\Model\DeleteEmailsRequest | deleteEmailsRequest
 
 try {
-    $result = $apiInstance->deleteEmailsUsingPOST1($delete_emails_request);
+    $result = $apiInstance->deleteEmails($delete_emails_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling EmailApi->deleteEmailsUsingPOST1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling EmailApi->deleteEmails: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -233,65 +233,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getEmailTemplateUsingGET()`
+## `getEmail()`
 
 ```php
-getEmailTemplateUsingGET($email_template_id): \Keap\Core\V2\Model\EmailTemplate
-```
-
-Retrieve an email template
-
-Retrieve an email template
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-$apiInstance = new Keap\Core\V2\Api\EmailApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
-);
-$email_template_id = 'email_template_id_example'; // string | email_template_id
-
-try {
-    $result = $apiInstance->getEmailTemplateUsingGET($email_template_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling EmailApi->getEmailTemplateUsingGET: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **email_template_id** | **string**| email_template_id | |
-
-### Return type
-
-[**\Keap\Core\V2\Model\EmailTemplate**](../Model/EmailTemplate.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `getEmailUsingGET1()`
-
-```php
-getEmailUsingGET1($id): \Keap\Core\V2\Model\EmailSentWithContent
+getEmail($id): \Keap\Core\V2\Model\EmailSentWithContent
 ```
 
 Retrieve an Email
@@ -313,10 +258,10 @@ $apiInstance = new Keap\Core\V2\Api\EmailApi(
 $id = 'id_example'; // string | id
 
 try {
-    $result = $apiInstance->getEmailUsingGET1($id);
+    $result = $apiInstance->getEmail($id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling EmailApi->getEmailUsingGET1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling EmailApi->getEmail: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -343,15 +288,15 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `sendEmailTemplateUsingPOST()`
+## `getEmailTemplate()`
 
 ```php
-sendEmailTemplateUsingPOST($email_send_template_request)
+getEmailTemplate($email_template_id): \Keap\Core\V2\Model\EmailTemplate
 ```
 
-Send an email based on a template
+Retrieve an email template
 
-Send an email based on a template
+Retrieve an email template
 
 ### Example
 
@@ -365,12 +310,13 @@ $apiInstance = new Keap\Core\V2\Api\EmailApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$email_send_template_request = new \Keap\Core\V2\Model\EmailSendTemplateRequest(); // \Keap\Core\V2\Model\EmailSendTemplateRequest | Use a template to send an email to a list of contacts
+$email_template_id = 'email_template_id_example'; // string | email_template_id
 
 try {
-    $apiInstance->sendEmailTemplateUsingPOST($email_send_template_request);
+    $result = $apiInstance->getEmailTemplate($email_template_id);
+    print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling EmailApi->sendEmailTemplateUsingPOST: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling EmailApi->getEmailTemplate: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -378,11 +324,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **email_send_template_request** | [**\Keap\Core\V2\Model\EmailSendTemplateRequest**](../Model/EmailSendTemplateRequest.md)| Use a template to send an email to a list of contacts | [optional] |
+| **email_template_id** | **string**| email_template_id | |
 
 ### Return type
 
-void (empty response body)
+[**\Keap\Core\V2\Model\EmailTemplate**](../Model/EmailTemplate.md)
 
 ### Authorization
 
@@ -390,17 +336,17 @@ No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: `application/json`
+- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `sendEmailUsingPOST1()`
+## `sendEmail()`
 
 ```php
-sendEmailUsingPOST1($email_send_request)
+sendEmail($email_send_request)
 ```
 
 Send an Email
@@ -422,9 +368,9 @@ $apiInstance = new Keap\Core\V2\Api\EmailApi(
 $email_send_request = new \Keap\Core\V2\Model\EmailSendRequest(); // \Keap\Core\V2\Model\EmailSendRequest | emailSendRequest
 
 try {
-    $apiInstance->sendEmailUsingPOST1($email_send_request);
+    $apiInstance->sendEmail($email_send_request);
 } catch (Exception $e) {
-    echo 'Exception when calling EmailApi->sendEmailUsingPOST1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling EmailApi->sendEmail: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -433,6 +379,60 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **email_send_request** | [**\Keap\Core\V2\Model\EmailSendRequest**](../Model/EmailSendRequest.md)| emailSendRequest | [optional] |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `sendEmailTemplate()`
+
+```php
+sendEmailTemplate($email_send_template_request)
+```
+
+Send an email based on a template
+
+Send an email based on a template
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+$apiInstance = new Keap\Core\V2\Api\EmailApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$email_send_template_request = new \Keap\Core\V2\Model\EmailSendTemplateRequest(); // \Keap\Core\V2\Model\EmailSendTemplateRequest | Use a template to send an email to a list of contacts
+
+try {
+    $apiInstance->sendEmailTemplate($email_send_template_request);
+} catch (Exception $e) {
+    echo 'Exception when calling EmailApi->sendEmailTemplate: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **email_send_template_request** | [**\Keap\Core\V2\Model\EmailSendTemplateRequest**](../Model/EmailSendTemplateRequest.md)| Use a template to send an email to a list of contacts | [optional] |
 
 ### Return type
 

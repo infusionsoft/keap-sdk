@@ -4,16 +4,16 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_lead_source_recurring_expense_using_post**](LeadSourceRecurringExpensesApi.md#create_lead_source_recurring_expense_using_post) | **POST** /v2/leadSources/{lead_source_id}/recurringExpenses | Create a Lead Source Recurring Expense
-[**delete_lead_source_recurring_expense_using_delete**](LeadSourceRecurringExpensesApi.md#delete_lead_source_recurring_expense_using_delete) | **DELETE** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Delete a Lead Source Recurring Expense
-[**get_lead_source_recurring_expense_using_get**](LeadSourceRecurringExpensesApi.md#get_lead_source_recurring_expense_using_get) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Retrieve a Lead Source Recurring Expense
-[**list_expenses_incurred_from_lead_source_recurring_expense_using_get**](LeadSourceRecurringExpensesApi.md#list_expenses_incurred_from_lead_source_recurring_expense_using_get) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id}/expenses | Retrieves a list of expenses incurred from a recurring expense
-[**list_lead_source_recurring_expenses_using_get**](LeadSourceRecurringExpensesApi.md#list_lead_source_recurring_expenses_using_get) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses | Retrieves a list of lead source recurring expenses
-[**update_lead_source_recurring_expense_using_patch**](LeadSourceRecurringExpensesApi.md#update_lead_source_recurring_expense_using_patch) | **PATCH** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Update a Lead Source Recurring Expense
+[**create_lead_source_recurring_expense**](LeadSourceRecurringExpensesApi.md#create_lead_source_recurring_expense) | **POST** /v2/leadSources/{lead_source_id}/recurringExpenses | Create a Lead Source Recurring Expense
+[**delete_lead_source_recurring_expense**](LeadSourceRecurringExpensesApi.md#delete_lead_source_recurring_expense) | **DELETE** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Delete a Lead Source Recurring Expense
+[**get_lead_source_recurring_expense**](LeadSourceRecurringExpensesApi.md#get_lead_source_recurring_expense) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Retrieve a Lead Source Recurring Expense
+[**list_expenses_incurred_from_lead_source_recurring_expense**](LeadSourceRecurringExpensesApi.md#list_expenses_incurred_from_lead_source_recurring_expense) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id}/expenses | Retrieves a list of expenses incurred from a recurring expense
+[**list_lead_source_recurring_expenses**](LeadSourceRecurringExpensesApi.md#list_lead_source_recurring_expenses) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses | Retrieves a list of lead source recurring expenses
+[**update_lead_source_recurring_expense**](LeadSourceRecurringExpensesApi.md#update_lead_source_recurring_expense) | **PATCH** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Update a Lead Source Recurring Expense
 
 
-# **create_lead_source_recurring_expense_using_post**
-> LeadSourceRecurringExpense create_lead_source_recurring_expense_using_post(lead_source_id, create_lead_source_recurring_expense_request)
+# **create_lead_source_recurring_expense**
+> LeadSourceRecurringExpense create_lead_source_recurring_expense(lead_source_id, create_lead_source_recurring_expense_request)
 
 Create a Lead Source Recurring Expense
 
@@ -44,11 +44,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Create a Lead Source Recurring Expense
-        api_response = api_instance.create_lead_source_recurring_expense_using_post(lead_source_id, create_lead_source_recurring_expense_request)
-        print("The response of LeadSourceRecurringExpensesApi->create_lead_source_recurring_expense_using_post:\n")
+        api_response = api_instance.create_lead_source_recurring_expense(lead_source_id, create_lead_source_recurring_expense_request)
+        print("The response of LeadSourceRecurringExpensesApi->create_lead_source_recurring_expense:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling LeadSourceRecurringExpensesApi->create_lead_source_recurring_expense_using_post: %s\n" % e)
+        print("Exception when calling LeadSourceRecurringExpensesApi->create_lead_source_recurring_expense: %s\n" % e)
 ```
 
 
@@ -85,8 +85,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **delete_lead_source_recurring_expense_using_delete**
-> delete_lead_source_recurring_expense_using_delete(lead_source_id, lead_source_recurring_expense_id)
+# **delete_lead_source_recurring_expense**
+> delete_lead_source_recurring_expense(lead_source_id, lead_source_recurring_expense_id)
 
 Delete a Lead Source Recurring Expense
 
@@ -115,9 +115,9 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Delete a Lead Source Recurring Expense
-        api_instance.delete_lead_source_recurring_expense_using_delete(lead_source_id, lead_source_recurring_expense_id)
+        api_instance.delete_lead_source_recurring_expense(lead_source_id, lead_source_recurring_expense_id)
     except Exception as e:
-        print("Exception when calling LeadSourceRecurringExpensesApi->delete_lead_source_recurring_expense_using_delete: %s\n" % e)
+        print("Exception when calling LeadSourceRecurringExpensesApi->delete_lead_source_recurring_expense: %s\n" % e)
 ```
 
 
@@ -154,8 +154,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_lead_source_recurring_expense_using_get**
-> LeadSourceRecurringExpense get_lead_source_recurring_expense_using_get(lead_source_id, lead_source_recurring_expense_id)
+# **get_lead_source_recurring_expense**
+> LeadSourceRecurringExpense get_lead_source_recurring_expense(lead_source_id, lead_source_recurring_expense_id)
 
 Retrieve a Lead Source Recurring Expense
 
@@ -185,11 +185,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieve a Lead Source Recurring Expense
-        api_response = api_instance.get_lead_source_recurring_expense_using_get(lead_source_id, lead_source_recurring_expense_id)
-        print("The response of LeadSourceRecurringExpensesApi->get_lead_source_recurring_expense_using_get:\n")
+        api_response = api_instance.get_lead_source_recurring_expense(lead_source_id, lead_source_recurring_expense_id)
+        print("The response of LeadSourceRecurringExpensesApi->get_lead_source_recurring_expense:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling LeadSourceRecurringExpensesApi->get_lead_source_recurring_expense_using_get: %s\n" % e)
+        print("Exception when calling LeadSourceRecurringExpensesApi->get_lead_source_recurring_expense: %s\n" % e)
 ```
 
 
@@ -226,8 +226,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **list_expenses_incurred_from_lead_source_recurring_expense_using_get**
-> ListLeadSourceExpensesResponse list_expenses_incurred_from_lead_source_recurring_expense_using_get(lead_source_id, lead_source_recurring_expense_id, filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
+# **list_expenses_incurred_from_lead_source_recurring_expense**
+> ListLeadSourceExpensesResponse list_expenses_incurred_from_lead_source_recurring_expense(lead_source_id, lead_source_recurring_expense_id, filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
 
 Retrieves a list of expenses incurred from a recurring expense
 
@@ -261,11 +261,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of expenses incurred from a recurring expense
-        api_response = api_instance.list_expenses_incurred_from_lead_source_recurring_expense_using_get(lead_source_id, lead_source_recurring_expense_id, filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
-        print("The response of LeadSourceRecurringExpensesApi->list_expenses_incurred_from_lead_source_recurring_expense_using_get:\n")
+        api_response = api_instance.list_expenses_incurred_from_lead_source_recurring_expense(lead_source_id, lead_source_recurring_expense_id, filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
+        print("The response of LeadSourceRecurringExpensesApi->list_expenses_incurred_from_lead_source_recurring_expense:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling LeadSourceRecurringExpensesApi->list_expenses_incurred_from_lead_source_recurring_expense_using_get: %s\n" % e)
+        print("Exception when calling LeadSourceRecurringExpensesApi->list_expenses_incurred_from_lead_source_recurring_expense: %s\n" % e)
 ```
 
 
@@ -307,8 +307,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **list_lead_source_recurring_expenses_using_get**
-> ListLeadSourceRecurringExpensesResponse list_lead_source_recurring_expenses_using_get(lead_source_id, filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
+# **list_lead_source_recurring_expenses**
+> ListLeadSourceRecurringExpensesResponse list_lead_source_recurring_expenses(lead_source_id, filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
 
 Retrieves a list of lead source recurring expenses
 
@@ -341,11 +341,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieves a list of lead source recurring expenses
-        api_response = api_instance.list_lead_source_recurring_expenses_using_get(lead_source_id, filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
-        print("The response of LeadSourceRecurringExpensesApi->list_lead_source_recurring_expenses_using_get:\n")
+        api_response = api_instance.list_lead_source_recurring_expenses(lead_source_id, filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
+        print("The response of LeadSourceRecurringExpensesApi->list_lead_source_recurring_expenses:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling LeadSourceRecurringExpensesApi->list_lead_source_recurring_expenses_using_get: %s\n" % e)
+        print("Exception when calling LeadSourceRecurringExpensesApi->list_lead_source_recurring_expenses: %s\n" % e)
 ```
 
 
@@ -386,8 +386,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **update_lead_source_recurring_expense_using_patch**
-> LeadSourceRecurringExpense update_lead_source_recurring_expense_using_patch(lead_source_id, lead_source_recurring_expense_id, lead_source_recurring_expense_update_request, update_mask=update_mask)
+# **update_lead_source_recurring_expense**
+> LeadSourceRecurringExpense update_lead_source_recurring_expense(lead_source_id, lead_source_recurring_expense_id, lead_source_recurring_expense_update_request, update_mask=update_mask)
 
 Update a Lead Source Recurring Expense
 
@@ -420,11 +420,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Update a Lead Source Recurring Expense
-        api_response = api_instance.update_lead_source_recurring_expense_using_patch(lead_source_id, lead_source_recurring_expense_id, lead_source_recurring_expense_update_request, update_mask=update_mask)
-        print("The response of LeadSourceRecurringExpensesApi->update_lead_source_recurring_expense_using_patch:\n")
+        api_response = api_instance.update_lead_source_recurring_expense(lead_source_id, lead_source_recurring_expense_id, lead_source_recurring_expense_update_request, update_mask=update_mask)
+        print("The response of LeadSourceRecurringExpensesApi->update_lead_source_recurring_expense:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling LeadSourceRecurringExpensesApi->update_lead_source_recurring_expense_using_patch: %s\n" % e)
+        print("Exception when calling LeadSourceRecurringExpensesApi->update_lead_source_recurring_expense: %s\n" % e)
 ```
 
 

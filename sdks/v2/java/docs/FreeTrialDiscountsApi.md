@@ -4,22 +4,22 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createDiscountUsingPOST1**](FreeTrialDiscountsApi.md#createDiscountUsingPOST1) | **POST** /v2/discounts/freeTrials | Create a Subscription Free Trial Discount |
-| [**createDiscountUsingPOST1WithHttpInfo**](FreeTrialDiscountsApi.md#createDiscountUsingPOST1WithHttpInfo) | **POST** /v2/discounts/freeTrials | Create a Subscription Free Trial Discount |
-| [**deleteDiscountUsingDELETE1**](FreeTrialDiscountsApi.md#deleteDiscountUsingDELETE1) | **DELETE** /v2/discounts/freeTrials/{discount_id} | Delete a Subscription Free Trial Discount |
-| [**deleteDiscountUsingDELETE1WithHttpInfo**](FreeTrialDiscountsApi.md#deleteDiscountUsingDELETE1WithHttpInfo) | **DELETE** /v2/discounts/freeTrials/{discount_id} | Delete a Subscription Free Trial Discount |
-| [**getDiscountUsingGET1**](FreeTrialDiscountsApi.md#getDiscountUsingGET1) | **GET** /v2/discounts/freeTrials/{discount_id} | Retrieve a Subscription Free Trial Discount |
-| [**getDiscountUsingGET1WithHttpInfo**](FreeTrialDiscountsApi.md#getDiscountUsingGET1WithHttpInfo) | **GET** /v2/discounts/freeTrials/{discount_id} | Retrieve a Subscription Free Trial Discount |
-| [**listFreeTrialsUsingGET**](FreeTrialDiscountsApi.md#listFreeTrialsUsingGET) | **GET** /v2/discounts/freeTrials | List all Subscription Free Trial Discounts |
-| [**listFreeTrialsUsingGETWithHttpInfo**](FreeTrialDiscountsApi.md#listFreeTrialsUsingGETWithHttpInfo) | **GET** /v2/discounts/freeTrials | List all Subscription Free Trial Discounts |
-| [**updateDiscountUsingPATCH1**](FreeTrialDiscountsApi.md#updateDiscountUsingPATCH1) | **PATCH** /v2/discounts/freeTrials/{discount_id} | Update a Subscription Free Trial Discount |
-| [**updateDiscountUsingPATCH1WithHttpInfo**](FreeTrialDiscountsApi.md#updateDiscountUsingPATCH1WithHttpInfo) | **PATCH** /v2/discounts/freeTrials/{discount_id} | Update a Subscription Free Trial Discount |
+| [**createFreeTrialDiscount**](FreeTrialDiscountsApi.md#createFreeTrialDiscount) | **POST** /v2/discounts/freeTrials | Create a Subscription Free Trial Discount |
+| [**createFreeTrialDiscountWithHttpInfo**](FreeTrialDiscountsApi.md#createFreeTrialDiscountWithHttpInfo) | **POST** /v2/discounts/freeTrials | Create a Subscription Free Trial Discount |
+| [**deleteFreeTrialDiscount**](FreeTrialDiscountsApi.md#deleteFreeTrialDiscount) | **DELETE** /v2/discounts/freeTrials/{discount_id} | Delete a Subscription Free Trial Discount |
+| [**deleteFreeTrialDiscountWithHttpInfo**](FreeTrialDiscountsApi.md#deleteFreeTrialDiscountWithHttpInfo) | **DELETE** /v2/discounts/freeTrials/{discount_id} | Delete a Subscription Free Trial Discount |
+| [**getFreeTrialDiscount**](FreeTrialDiscountsApi.md#getFreeTrialDiscount) | **GET** /v2/discounts/freeTrials/{discount_id} | Retrieve a Subscription Free Trial Discount |
+| [**getFreeTrialDiscountWithHttpInfo**](FreeTrialDiscountsApi.md#getFreeTrialDiscountWithHttpInfo) | **GET** /v2/discounts/freeTrials/{discount_id} | Retrieve a Subscription Free Trial Discount |
+| [**listFreeTrialDiscounts**](FreeTrialDiscountsApi.md#listFreeTrialDiscounts) | **GET** /v2/discounts/freeTrials | List all Subscription Free Trial Discounts |
+| [**listFreeTrialDiscountsWithHttpInfo**](FreeTrialDiscountsApi.md#listFreeTrialDiscountsWithHttpInfo) | **GET** /v2/discounts/freeTrials | List all Subscription Free Trial Discounts |
+| [**updateFreeTrialDiscount**](FreeTrialDiscountsApi.md#updateFreeTrialDiscount) | **PATCH** /v2/discounts/freeTrials/{discount_id} | Update a Subscription Free Trial Discount |
+| [**updateFreeTrialDiscountWithHttpInfo**](FreeTrialDiscountsApi.md#updateFreeTrialDiscountWithHttpInfo) | **PATCH** /v2/discounts/freeTrials/{discount_id} | Update a Subscription Free Trial Discount |
 
 
 
-## createDiscountUsingPOST1
+## createFreeTrialDiscount
 
-> FreeTrialDiscount createDiscountUsingPOST1(createFreeTrialDiscountRequest)
+> FreeTrialDiscount createFreeTrialDiscount(createFreeTrialDiscountRequest)
 
 Create a Subscription Free Trial Discount
 
@@ -43,10 +43,10 @@ public class Example {
         FreeTrialDiscountsApi apiInstance = new FreeTrialDiscountsApi(defaultClient);
         CreateFreeTrialDiscountRequest createFreeTrialDiscountRequest = new CreateFreeTrialDiscountRequest(); // CreateFreeTrialDiscountRequest | createFreeTrialDiscountRequest
         try {
-            FreeTrialDiscount result = apiInstance.createDiscountUsingPOST1(createFreeTrialDiscountRequest);
+            FreeTrialDiscount result = apiInstance.createFreeTrialDiscount(createFreeTrialDiscountRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling FreeTrialDiscountsApi#createDiscountUsingPOST1");
+            System.err.println("Exception when calling FreeTrialDiscountsApi#createFreeTrialDiscount");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -85,9 +85,9 @@ No authorization required
 | **403** | Forbidden |  -  |
 | **500** | Internal Server Error |  -  |
 
-## createDiscountUsingPOST1WithHttpInfo
+## createFreeTrialDiscountWithHttpInfo
 
-> ApiResponse<FreeTrialDiscount> createDiscountUsingPOST1 createDiscountUsingPOST1WithHttpInfo(createFreeTrialDiscountRequest)
+> ApiResponse<FreeTrialDiscount> createFreeTrialDiscount createFreeTrialDiscountWithHttpInfo(createFreeTrialDiscountRequest)
 
 Create a Subscription Free Trial Discount
 
@@ -112,12 +112,12 @@ public class Example {
         FreeTrialDiscountsApi apiInstance = new FreeTrialDiscountsApi(defaultClient);
         CreateFreeTrialDiscountRequest createFreeTrialDiscountRequest = new CreateFreeTrialDiscountRequest(); // CreateFreeTrialDiscountRequest | createFreeTrialDiscountRequest
         try {
-            ApiResponse<FreeTrialDiscount> response = apiInstance.createDiscountUsingPOST1WithHttpInfo(createFreeTrialDiscountRequest);
+            ApiResponse<FreeTrialDiscount> response = apiInstance.createFreeTrialDiscountWithHttpInfo(createFreeTrialDiscountRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling FreeTrialDiscountsApi#createDiscountUsingPOST1");
+            System.err.println("Exception when calling FreeTrialDiscountsApi#createFreeTrialDiscount");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -157,9 +157,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## deleteDiscountUsingDELETE1
+## deleteFreeTrialDiscount
 
-> void deleteDiscountUsingDELETE1(discountId)
+> void deleteFreeTrialDiscount(discountId)
 
 Delete a Subscription Free Trial Discount
 
@@ -183,9 +183,9 @@ public class Example {
         FreeTrialDiscountsApi apiInstance = new FreeTrialDiscountsApi(defaultClient);
         String discountId = "discountId_example"; // String | discount_id
         try {
-            apiInstance.deleteDiscountUsingDELETE1(discountId);
+            apiInstance.deleteFreeTrialDiscount(discountId);
         } catch (ApiException e) {
-            System.err.println("Exception when calling FreeTrialDiscountsApi#deleteDiscountUsingDELETE1");
+            System.err.println("Exception when calling FreeTrialDiscountsApi#deleteFreeTrialDiscount");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -225,9 +225,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## deleteDiscountUsingDELETE1WithHttpInfo
+## deleteFreeTrialDiscountWithHttpInfo
 
-> ApiResponse<Void> deleteDiscountUsingDELETE1 deleteDiscountUsingDELETE1WithHttpInfo(discountId)
+> ApiResponse<Void> deleteFreeTrialDiscount deleteFreeTrialDiscountWithHttpInfo(discountId)
 
 Delete a Subscription Free Trial Discount
 
@@ -252,11 +252,11 @@ public class Example {
         FreeTrialDiscountsApi apiInstance = new FreeTrialDiscountsApi(defaultClient);
         String discountId = "discountId_example"; // String | discount_id
         try {
-            ApiResponse<Void> response = apiInstance.deleteDiscountUsingDELETE1WithHttpInfo(discountId);
+            ApiResponse<Void> response = apiInstance.deleteFreeTrialDiscountWithHttpInfo(discountId);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
-            System.err.println("Exception when calling FreeTrialDiscountsApi#deleteDiscountUsingDELETE1");
+            System.err.println("Exception when calling FreeTrialDiscountsApi#deleteFreeTrialDiscount");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -297,9 +297,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## getDiscountUsingGET1
+## getFreeTrialDiscount
 
-> FreeTrialDiscount getDiscountUsingGET1(discountId)
+> FreeTrialDiscount getFreeTrialDiscount(discountId)
 
 Retrieve a Subscription Free Trial Discount
 
@@ -323,10 +323,10 @@ public class Example {
         FreeTrialDiscountsApi apiInstance = new FreeTrialDiscountsApi(defaultClient);
         String discountId = "discountId_example"; // String | discount_id
         try {
-            FreeTrialDiscount result = apiInstance.getDiscountUsingGET1(discountId);
+            FreeTrialDiscount result = apiInstance.getFreeTrialDiscount(discountId);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling FreeTrialDiscountsApi#getDiscountUsingGET1");
+            System.err.println("Exception when calling FreeTrialDiscountsApi#getFreeTrialDiscount");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -366,9 +366,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## getDiscountUsingGET1WithHttpInfo
+## getFreeTrialDiscountWithHttpInfo
 
-> ApiResponse<FreeTrialDiscount> getDiscountUsingGET1 getDiscountUsingGET1WithHttpInfo(discountId)
+> ApiResponse<FreeTrialDiscount> getFreeTrialDiscount getFreeTrialDiscountWithHttpInfo(discountId)
 
 Retrieve a Subscription Free Trial Discount
 
@@ -393,12 +393,12 @@ public class Example {
         FreeTrialDiscountsApi apiInstance = new FreeTrialDiscountsApi(defaultClient);
         String discountId = "discountId_example"; // String | discount_id
         try {
-            ApiResponse<FreeTrialDiscount> response = apiInstance.getDiscountUsingGET1WithHttpInfo(discountId);
+            ApiResponse<FreeTrialDiscount> response = apiInstance.getFreeTrialDiscountWithHttpInfo(discountId);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling FreeTrialDiscountsApi#getDiscountUsingGET1");
+            System.err.println("Exception when calling FreeTrialDiscountsApi#getFreeTrialDiscount");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -439,9 +439,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## listFreeTrialsUsingGET
+## listFreeTrialDiscounts
 
-> ListFreeTrialDiscountsResponse listFreeTrialsUsingGET(filter, orderBy, pageSize, pageToken)
+> ListFreeTrialDiscountsResponse listFreeTrialDiscounts(filter, orderBy, pageSize, pageToken)
 
 List all Subscription Free Trial Discounts
 
@@ -468,10 +468,10 @@ public class Example {
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
         try {
-            ListFreeTrialDiscountsResponse result = apiInstance.listFreeTrialsUsingGET(filter, orderBy, pageSize, pageToken);
+            ListFreeTrialDiscountsResponse result = apiInstance.listFreeTrialDiscounts(filter, orderBy, pageSize, pageToken);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling FreeTrialDiscountsApi#listFreeTrialsUsingGET");
+            System.err.println("Exception when calling FreeTrialDiscountsApi#listFreeTrialDiscounts");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -514,9 +514,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## listFreeTrialsUsingGETWithHttpInfo
+## listFreeTrialDiscountsWithHttpInfo
 
-> ApiResponse<ListFreeTrialDiscountsResponse> listFreeTrialsUsingGET listFreeTrialsUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken)
+> ApiResponse<ListFreeTrialDiscountsResponse> listFreeTrialDiscounts listFreeTrialDiscountsWithHttpInfo(filter, orderBy, pageSize, pageToken)
 
 List all Subscription Free Trial Discounts
 
@@ -544,12 +544,12 @@ public class Example {
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
         try {
-            ApiResponse<ListFreeTrialDiscountsResponse> response = apiInstance.listFreeTrialsUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken);
+            ApiResponse<ListFreeTrialDiscountsResponse> response = apiInstance.listFreeTrialDiscountsWithHttpInfo(filter, orderBy, pageSize, pageToken);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling FreeTrialDiscountsApi#listFreeTrialsUsingGET");
+            System.err.println("Exception when calling FreeTrialDiscountsApi#listFreeTrialDiscounts");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -593,9 +593,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## updateDiscountUsingPATCH1
+## updateFreeTrialDiscount
 
-> FreeTrialDiscount updateDiscountUsingPATCH1(discountId, updateFreeTrialDiscountRequest, updateMask)
+> FreeTrialDiscount updateFreeTrialDiscount(discountId, updateFreeTrialDiscountRequest, updateMask)
 
 Update a Subscription Free Trial Discount
 
@@ -621,10 +621,10 @@ public class Example {
         UpdateFreeTrialDiscountRequest updateFreeTrialDiscountRequest = new UpdateFreeTrialDiscountRequest(); // UpdateFreeTrialDiscountRequest | request
         List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
-            FreeTrialDiscount result = apiInstance.updateDiscountUsingPATCH1(discountId, updateFreeTrialDiscountRequest, updateMask);
+            FreeTrialDiscount result = apiInstance.updateFreeTrialDiscount(discountId, updateFreeTrialDiscountRequest, updateMask);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling FreeTrialDiscountsApi#updateDiscountUsingPATCH1");
+            System.err.println("Exception when calling FreeTrialDiscountsApi#updateFreeTrialDiscount");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -666,9 +666,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## updateDiscountUsingPATCH1WithHttpInfo
+## updateFreeTrialDiscountWithHttpInfo
 
-> ApiResponse<FreeTrialDiscount> updateDiscountUsingPATCH1 updateDiscountUsingPATCH1WithHttpInfo(discountId, updateFreeTrialDiscountRequest, updateMask)
+> ApiResponse<FreeTrialDiscount> updateFreeTrialDiscount updateFreeTrialDiscountWithHttpInfo(discountId, updateFreeTrialDiscountRequest, updateMask)
 
 Update a Subscription Free Trial Discount
 
@@ -695,12 +695,12 @@ public class Example {
         UpdateFreeTrialDiscountRequest updateFreeTrialDiscountRequest = new UpdateFreeTrialDiscountRequest(); // UpdateFreeTrialDiscountRequest | request
         List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
-            ApiResponse<FreeTrialDiscount> response = apiInstance.updateDiscountUsingPATCH1WithHttpInfo(discountId, updateFreeTrialDiscountRequest, updateMask);
+            ApiResponse<FreeTrialDiscount> response = apiInstance.updateFreeTrialDiscountWithHttpInfo(discountId, updateFreeTrialDiscountRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling FreeTrialDiscountsApi#updateDiscountUsingPATCH1");
+            System.err.println("Exception when calling FreeTrialDiscountsApi#updateFreeTrialDiscount");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());

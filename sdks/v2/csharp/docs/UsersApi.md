@@ -4,11 +4,11 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**ListPaginatedUsersUsingGET**](UsersApi.md#listpaginatedusersusingget) | **GET** /v2/users | List Users |
+| [**ListPaginatedUsers**](UsersApi.md#listpaginatedusers) | **GET** /v2/users | List Users |
 
-<a id="listpaginatedusersusingget"></a>
-# **ListPaginatedUsersUsingGET**
-> ListUsersPaginatedResponse ListPaginatedUsersUsingGET (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
+<a id="listpaginatedusers"></a>
+# **ListPaginatedUsers**
+> ListUsersPaginatedResponse ListPaginatedUsers (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
 
 List Users
 
@@ -24,7 +24,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class ListPaginatedUsersUsingGETExample
+    public class ListPaginatedUsersExample
     {
         public static void Main()
         {
@@ -33,18 +33,18 @@ namespace Example
             var apiInstance = new UsersApi(config);
             var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (String) `email` - (String) `given_name` - (Boolean) `include_inactive` - (Boolean) `include_partners` - (Set[String]) `user_ids`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=given_name%3D%3DMary` - `filter=user_ids%3D%3D123%3Bgiven_name%3D%3DSmith`  (optional) 
             var orderBy = "orderBy_example";  // string? | Attribute and direction to order items. One of the following fields: - `date_created` - `email`  One of the following directions: - `asc` - `desc` (optional) 
-            var pageSize = 0;  // int? | Total number of items to return per page (optional) 
+            var pageSize = 10;  // int? | Total number of items to return per page (optional) 
             var pageToken = "pageToken_example";  // string? | Page token (optional) 
 
             try
             {
                 // List Users
-                ListUsersPaginatedResponse result = apiInstance.ListPaginatedUsersUsingGET(filter, orderBy, pageSize, pageToken);
+                ListUsersPaginatedResponse result = apiInstance.ListPaginatedUsers(filter, orderBy, pageSize, pageToken);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling UsersApi.ListPaginatedUsersUsingGET: " + e.Message);
+                Debug.Print("Exception when calling UsersApi.ListPaginatedUsers: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -53,21 +53,21 @@ namespace Example
 }
 ```
 
-#### Using the ListPaginatedUsersUsingGETWithHttpInfo variant
+#### Using the ListPaginatedUsersWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // List Users
-    ApiResponse<ListUsersPaginatedResponse> response = apiInstance.ListPaginatedUsersUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken);
+    ApiResponse<ListUsersPaginatedResponse> response = apiInstance.ListPaginatedUsersWithHttpInfo(filter, orderBy, pageSize, pageToken);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling UsersApi.ListPaginatedUsersUsingGETWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling UsersApi.ListPaginatedUsersWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }

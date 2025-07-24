@@ -4,14 +4,14 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createPaymentMethodConfigUsingPOST**](PaymentMethodConfigsApi.md#createPaymentMethodConfigUsingPOST) | **POST** /v2/paymentMethodConfigs | Create Payment Method Configuration |
-| [**createPaymentMethodConfigUsingPOSTWithHttpInfo**](PaymentMethodConfigsApi.md#createPaymentMethodConfigUsingPOSTWithHttpInfo) | **POST** /v2/paymentMethodConfigs | Create Payment Method Configuration |
+| [**createPaymentMethodConfig**](PaymentMethodConfigsApi.md#createPaymentMethodConfig) | **POST** /v2/paymentMethodConfigs | Create Payment Method Configuration |
+| [**createPaymentMethodConfigWithHttpInfo**](PaymentMethodConfigsApi.md#createPaymentMethodConfigWithHttpInfo) | **POST** /v2/paymentMethodConfigs | Create Payment Method Configuration |
 
 
 
-## createPaymentMethodConfigUsingPOST
+## createPaymentMethodConfig
 
-> PaymentMethodConfig createPaymentMethodConfigUsingPOST(createPaymentMethodConfigRequest)
+> PaymentMethodConfig createPaymentMethodConfig(createPaymentMethodConfigRequest)
 
 Create Payment Method Configuration
 
@@ -35,10 +35,10 @@ public class Example {
         PaymentMethodConfigsApi apiInstance = new PaymentMethodConfigsApi(defaultClient);
         CreatePaymentMethodConfigRequest createPaymentMethodConfigRequest = new CreatePaymentMethodConfigRequest(); // CreatePaymentMethodConfigRequest | request
         try {
-            PaymentMethodConfig result = apiInstance.createPaymentMethodConfigUsingPOST(createPaymentMethodConfigRequest);
+            PaymentMethodConfig result = apiInstance.createPaymentMethodConfig(createPaymentMethodConfigRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling PaymentMethodConfigsApi#createPaymentMethodConfigUsingPOST");
+            System.err.println("Exception when calling PaymentMethodConfigsApi#createPaymentMethodConfig");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -77,9 +77,9 @@ No authorization required
 | **403** | Forbidden |  -  |
 | **500** | Internal Server Error |  -  |
 
-## createPaymentMethodConfigUsingPOSTWithHttpInfo
+## createPaymentMethodConfigWithHttpInfo
 
-> ApiResponse<PaymentMethodConfig> createPaymentMethodConfigUsingPOST createPaymentMethodConfigUsingPOSTWithHttpInfo(createPaymentMethodConfigRequest)
+> ApiResponse<PaymentMethodConfig> createPaymentMethodConfig createPaymentMethodConfigWithHttpInfo(createPaymentMethodConfigRequest)
 
 Create Payment Method Configuration
 
@@ -104,12 +104,12 @@ public class Example {
         PaymentMethodConfigsApi apiInstance = new PaymentMethodConfigsApi(defaultClient);
         CreatePaymentMethodConfigRequest createPaymentMethodConfigRequest = new CreatePaymentMethodConfigRequest(); // CreatePaymentMethodConfigRequest | request
         try {
-            ApiResponse<PaymentMethodConfig> response = apiInstance.createPaymentMethodConfigUsingPOSTWithHttpInfo(createPaymentMethodConfigRequest);
+            ApiResponse<PaymentMethodConfig> response = apiInstance.createPaymentMethodConfigWithHttpInfo(createPaymentMethodConfigRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling PaymentMethodConfigsApi#createPaymentMethodConfigUsingPOST");
+            System.err.println("Exception when calling PaymentMethodConfigsApi#createPaymentMethodConfig");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());

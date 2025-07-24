@@ -4,17 +4,17 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createLeadSourceExpenseUsingPOST**](LeadSourceExpensesApi.md#createLeadSourceExpenseUsingPOST) | **POST** /v2/leadSources/{lead_source_id}/expenses | Create a Lead Source Expense
-[**deleteLeadSourceUsingDELETE1**](LeadSourceExpensesApi.md#deleteLeadSourceUsingDELETE1) | **DELETE** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Delete a lead source expense
-[**getLeadSourceExpenseUsingGET**](LeadSourceExpensesApi.md#getLeadSourceExpenseUsingGET) | **GET** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Retrieve a Lead Source Expense
-[**listLeadSourceExpensesUsingGET**](LeadSourceExpensesApi.md#listLeadSourceExpensesUsingGET) | **GET** /v2/leadSources/{lead_source_id}/expenses | List Lead Source Expenses
-[**updateLeadSourceExpenseUsingPATCH**](LeadSourceExpensesApi.md#updateLeadSourceExpenseUsingPATCH) | **PATCH** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Update a Lead Source Expense
+[**createLeadSourceExpense**](LeadSourceExpensesApi.md#createLeadSourceExpense) | **POST** /v2/leadSources/{lead_source_id}/expenses | Create a Lead Source Expense
+[**deleteLeadSourceExpense**](LeadSourceExpensesApi.md#deleteLeadSourceExpense) | **DELETE** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Delete a lead source expense
+[**getLeadSourceExpense**](LeadSourceExpensesApi.md#getLeadSourceExpense) | **GET** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Retrieve a Lead Source Expense
+[**listLeadSourceExpenses**](LeadSourceExpensesApi.md#listLeadSourceExpenses) | **GET** /v2/leadSources/{lead_source_id}/expenses | List Lead Source Expenses
+[**updateLeadSourceExpense**](LeadSourceExpensesApi.md#updateLeadSourceExpense) | **PATCH** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Update a Lead Source Expense
 
 
 
-## createLeadSourceExpenseUsingPOST
+## createLeadSourceExpense
 
-> LeadSourceExpense createLeadSourceExpenseUsingPOST(leadSourceId, createLeadSourceExpenseRequest)
+> LeadSourceExpense createLeadSourceExpense(leadSourceId, createLeadSourceExpenseRequest)
 
 Create a Lead Source Expense
 
@@ -28,7 +28,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 let apiInstance = new KeapCoreServiceV2Sdk.LeadSourceExpensesApi();
 let leadSourceId = "leadSourceId_example"; // String | The ID of the lead source this expense belongs to
 let createLeadSourceExpenseRequest = new KeapCoreServiceV2Sdk.CreateLeadSourceExpenseRequest(); // CreateLeadSourceExpenseRequest | The request object to create a new lead source expense
-apiInstance.createLeadSourceExpenseUsingPOST(leadSourceId, createLeadSourceExpenseRequest).then((data) => {
+apiInstance.createLeadSourceExpense(leadSourceId, createLeadSourceExpenseRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -58,9 +58,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## deleteLeadSourceUsingDELETE1
+## deleteLeadSourceExpense
 
-> deleteLeadSourceUsingDELETE1(leadSourceExpenseId, leadSourceId)
+> deleteLeadSourceExpense(leadSourceExpenseId, leadSourceId)
 
 Delete a lead source expense
 
@@ -74,7 +74,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 let apiInstance = new KeapCoreServiceV2Sdk.LeadSourceExpensesApi();
 let leadSourceExpenseId = "leadSourceExpenseId_example"; // String | The ID of a lead source expense
 let leadSourceId = "leadSourceId_example"; // String | The ID of the lead source this expense belongs to
-apiInstance.deleteLeadSourceUsingDELETE1(leadSourceExpenseId, leadSourceId).then(() => {
+apiInstance.deleteLeadSourceExpense(leadSourceExpenseId, leadSourceId).then(() => {
   console.log('API called successfully.');
 }, (error) => {
   console.error(error);
@@ -104,9 +104,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## getLeadSourceExpenseUsingGET
+## getLeadSourceExpense
 
-> LeadSourceExpense getLeadSourceExpenseUsingGET(leadSourceExpenseId, leadSourceId)
+> LeadSourceExpense getLeadSourceExpense(leadSourceExpenseId, leadSourceId)
 
 Retrieve a Lead Source Expense
 
@@ -120,7 +120,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 let apiInstance = new KeapCoreServiceV2Sdk.LeadSourceExpensesApi();
 let leadSourceExpenseId = "leadSourceExpenseId_example"; // String | The ID of a lead source expense
 let leadSourceId = "leadSourceId_example"; // String | The ID of the lead source this expense belongs to
-apiInstance.getLeadSourceExpenseUsingGET(leadSourceExpenseId, leadSourceId).then((data) => {
+apiInstance.getLeadSourceExpense(leadSourceExpenseId, leadSourceId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -150,9 +150,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## listLeadSourceExpensesUsingGET
+## listLeadSourceExpenses
 
-> ListLeadSourceExpensesResponse listLeadSourceExpensesUsingGET(leadSourceId, opts)
+> ListLeadSourceExpensesResponse listLeadSourceExpenses(leadSourceId, opts)
 
 List Lead Source Expenses
 
@@ -171,7 +171,7 @@ let opts = {
   'pageSize': 0, // Number | Total number of items to return per page
   'pageToken': "pageToken_example" // String | Page token
 };
-apiInstance.listLeadSourceExpensesUsingGET(leadSourceId, opts).then((data) => {
+apiInstance.listLeadSourceExpenses(leadSourceId, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -204,9 +204,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## updateLeadSourceExpenseUsingPATCH
+## updateLeadSourceExpense
 
-> LeadSourceExpense updateLeadSourceExpenseUsingPATCH(leadSourceExpenseId, leadSourceId, updateLeadSourceExpenseRequest, opts)
+> LeadSourceExpense updateLeadSourceExpense(leadSourceExpenseId, leadSourceId, updateLeadSourceExpenseRequest, opts)
 
 Update a Lead Source Expense
 
@@ -224,7 +224,7 @@ let updateLeadSourceExpenseRequest = new KeapCoreServiceV2Sdk.UpdateLeadSourceEx
 let opts = {
   'updateMask': ["null"] // [String] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
-apiInstance.updateLeadSourceExpenseUsingPATCH(leadSourceExpenseId, leadSourceId, updateLeadSourceExpenseRequest, opts).then((data) => {
+apiInstance.updateLeadSourceExpense(leadSourceExpenseId, leadSourceId, updateLeadSourceExpenseRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);

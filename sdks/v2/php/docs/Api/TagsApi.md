@@ -4,26 +4,26 @@ All URIs are relative to https://api.keap.com/crm/rest, except if the operation 
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**applyTagsUsingPOST()**](TagsApi.md#applyTagsUsingPOST) | **POST** /v2/tags/{tag_id}/contacts:applyTags | Apply Tag |
-| [**createTagCategoryUsingPOST1()**](TagsApi.md#createTagCategoryUsingPOST1) | **POST** /v2/tags/categories | Create Tag Category |
-| [**createTagUsingPOST1()**](TagsApi.md#createTagUsingPOST1) | **POST** /v2/tags | Create Tag |
-| [**deleteTagCategoryUsingDELETE()**](TagsApi.md#deleteTagCategoryUsingDELETE) | **DELETE** /v2/tags/categories/{tag_category_id} | Delete Tag Category |
-| [**deleteTagUsingDELETE()**](TagsApi.md#deleteTagUsingDELETE) | **DELETE** /v2/tags/{tag_id} | Delete Tag |
-| [**getCategoryUsingGET()**](TagsApi.md#getCategoryUsingGET) | **GET** /v2/tags/categories/{tag_category_id} | Retrieve a Tag Category |
-| [**getTagUsingGET1()**](TagsApi.md#getTagUsingGET1) | **GET** /v2/tags/{tag_id} | Retrieve a Tag |
-| [**listCompaniesForTagIdUsingGET1()**](TagsApi.md#listCompaniesForTagIdUsingGET1) | **GET** /v2/tags/{tag_id}/companies | List Tagged Companies |
-| [**listContactsWithTagIdUsingGET()**](TagsApi.md#listContactsWithTagIdUsingGET) | **GET** /v2/tags/{tag_id}/contacts | List Tagged Contacts |
-| [**listTagCategoriesUsingGET()**](TagsApi.md#listTagCategoriesUsingGET) | **GET** /v2/tags/categories | List Tag Categories |
-| [**listTagsUsingGET1()**](TagsApi.md#listTagsUsingGET1) | **GET** /v2/tags | List Tags |
-| [**removeTagsUsingPOST()**](TagsApi.md#removeTagsUsingPOST) | **POST** /v2/tags/{tag_id}/contacts:removeTags | Remove Tags |
-| [**updateTagCategoryUsingPATCH()**](TagsApi.md#updateTagCategoryUsingPATCH) | **PATCH** /v2/tags/categories/{tag_category_id} | Update a Tag Category |
-| [**updateTagUsingPATCH()**](TagsApi.md#updateTagUsingPATCH) | **PATCH** /v2/tags/{tag_id} | Update a Tag |
+| [**applyTags()**](TagsApi.md#applyTags) | **POST** /v2/tags/{tag_id}/contacts:applyTags | Apply Tag |
+| [**createTag()**](TagsApi.md#createTag) | **POST** /v2/tags | Create Tag |
+| [**createTagCategory()**](TagsApi.md#createTagCategory) | **POST** /v2/tags/categories | Create Tag Category |
+| [**deleteTag()**](TagsApi.md#deleteTag) | **DELETE** /v2/tags/{tag_id} | Delete Tag |
+| [**deleteTagCategory()**](TagsApi.md#deleteTagCategory) | **DELETE** /v2/tags/categories/{tag_category_id} | Delete Tag Category |
+| [**getCategory()**](TagsApi.md#getCategory) | **GET** /v2/tags/categories/{tag_category_id} | Retrieve a Tag Category |
+| [**getTag()**](TagsApi.md#getTag) | **GET** /v2/tags/{tag_id} | Retrieve a Tag |
+| [**listCompaniesForTagId()**](TagsApi.md#listCompaniesForTagId) | **GET** /v2/tags/{tag_id}/companies | List Tagged Companies |
+| [**listContactsWithTagId()**](TagsApi.md#listContactsWithTagId) | **GET** /v2/tags/{tag_id}/contacts | List Tagged Contacts |
+| [**listTagCategories()**](TagsApi.md#listTagCategories) | **GET** /v2/tags/categories | List Tag Categories |
+| [**listTags()**](TagsApi.md#listTags) | **GET** /v2/tags | List Tags |
+| [**removeTags()**](TagsApi.md#removeTags) | **POST** /v2/tags/{tag_id}/contacts:removeTags | Remove Tags |
+| [**updateTag()**](TagsApi.md#updateTag) | **PATCH** /v2/tags/{tag_id} | Update a Tag |
+| [**updateTagCategory()**](TagsApi.md#updateTagCategory) | **PATCH** /v2/tags/categories/{tag_category_id} | Update a Tag Category |
 
 
-## `applyTagsUsingPOST()`
+## `applyTags()`
 
 ```php
-applyTagsUsingPOST($tag_id, $apply_remove_tag_request): \Keap\Core\V2\Model\ApplyTagsResponse
+applyTags($tag_id, $apply_remove_tag_request): \Keap\Core\V2\Model\ApplyTagsResponse
 ```
 
 Apply Tag
@@ -46,10 +46,10 @@ $tag_id = 'tag_id_example'; // string | tag_id
 $apply_remove_tag_request = new \Keap\Core\V2\Model\ApplyRemoveTagRequest(); // \Keap\Core\V2\Model\ApplyRemoveTagRequest | applyRemoveTagRequest
 
 try {
-    $result = $apiInstance->applyTagsUsingPOST($tag_id, $apply_remove_tag_request);
+    $result = $apiInstance->applyTags($tag_id, $apply_remove_tag_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling TagsApi->applyTagsUsingPOST: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling TagsApi->applyTags: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -77,65 +77,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `createTagCategoryUsingPOST1()`
+## `createTag()`
 
 ```php
-createTagCategoryUsingPOST1($create_update_tag_category_request): \Keap\Core\V2\Model\Tag
-```
-
-Create Tag Category
-
-Creates a new Tag Category.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-$apiInstance = new Keap\Core\V2\Api\TagsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
-);
-$create_update_tag_category_request = new \Keap\Core\V2\Model\CreateUpdateTagCategoryRequest(); // \Keap\Core\V2\Model\CreateUpdateTagCategoryRequest | request
-
-try {
-    $result = $apiInstance->createTagCategoryUsingPOST1($create_update_tag_category_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling TagsApi->createTagCategoryUsingPOST1: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **create_update_tag_category_request** | [**\Keap\Core\V2\Model\CreateUpdateTagCategoryRequest**](../Model/CreateUpdateTagCategoryRequest.md)| request | |
-
-### Return type
-
-[**\Keap\Core\V2\Model\Tag**](../Model/Tag.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `createTagUsingPOST1()`
-
-```php
-createTagUsingPOST1($create_update_tag_request): \Keap\Core\V2\Model\Tag
+createTag($create_update_tag_request): \Keap\Core\V2\Model\Tag
 ```
 
 Create Tag
@@ -157,10 +102,10 @@ $apiInstance = new Keap\Core\V2\Api\TagsApi(
 $create_update_tag_request = new \Keap\Core\V2\Model\CreateUpdateTagRequest(); // \Keap\Core\V2\Model\CreateUpdateTagRequest | tag
 
 try {
-    $result = $apiInstance->createTagUsingPOST1($create_update_tag_request);
+    $result = $apiInstance->createTag($create_update_tag_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling TagsApi->createTagUsingPOST1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling TagsApi->createTag: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -187,15 +132,15 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `deleteTagCategoryUsingDELETE()`
+## `createTagCategory()`
 
 ```php
-deleteTagCategoryUsingDELETE($tag_category_id)
+createTagCategory($create_update_tag_category_request): \Keap\Core\V2\Model\Tag
 ```
 
-Delete Tag Category
+Create Tag Category
 
-Deletes the specified Tag Category
+Creates a new Tag Category.
 
 ### Example
 
@@ -209,12 +154,13 @@ $apiInstance = new Keap\Core\V2\Api\TagsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$tag_category_id = 'tag_category_id_example'; // string | tag_category_id
+$create_update_tag_category_request = new \Keap\Core\V2\Model\CreateUpdateTagCategoryRequest(); // \Keap\Core\V2\Model\CreateUpdateTagCategoryRequest | request
 
 try {
-    $apiInstance->deleteTagCategoryUsingDELETE($tag_category_id);
+    $result = $apiInstance->createTagCategory($create_update_tag_category_request);
+    print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling TagsApi->deleteTagCategoryUsingDELETE: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling TagsApi->createTagCategory: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -222,11 +168,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **tag_category_id** | **string**| tag_category_id | |
+| **create_update_tag_category_request** | [**\Keap\Core\V2\Model\CreateUpdateTagCategoryRequest**](../Model/CreateUpdateTagCategoryRequest.md)| request | |
 
 ### Return type
 
-void (empty response body)
+[**\Keap\Core\V2\Model\Tag**](../Model/Tag.md)
 
 ### Authorization
 
@@ -234,17 +180,17 @@ No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `deleteTagUsingDELETE()`
+## `deleteTag()`
 
 ```php
-deleteTagUsingDELETE($tag_id)
+deleteTag($tag_id)
 ```
 
 Delete Tag
@@ -266,9 +212,9 @@ $apiInstance = new Keap\Core\V2\Api\TagsApi(
 $tag_id = 'tag_id_example'; // string | tag_id
 
 try {
-    $apiInstance->deleteTagUsingDELETE($tag_id);
+    $apiInstance->deleteTag($tag_id);
 } catch (Exception $e) {
-    echo 'Exception when calling TagsApi->deleteTagUsingDELETE: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling TagsApi->deleteTag: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -295,10 +241,64 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getCategoryUsingGET()`
+## `deleteTagCategory()`
 
 ```php
-getCategoryUsingGET($tag_category_id): \Keap\Core\V2\Model\GetTagCategoryResponse
+deleteTagCategory($tag_category_id)
+```
+
+Delete Tag Category
+
+Deletes the specified Tag Category
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+$apiInstance = new Keap\Core\V2\Api\TagsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$tag_category_id = 'tag_category_id_example'; // string | tag_category_id
+
+try {
+    $apiInstance->deleteTagCategory($tag_category_id);
+} catch (Exception $e) {
+    echo 'Exception when calling TagsApi->deleteTagCategory: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tag_category_id** | **string**| tag_category_id | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getCategory()`
+
+```php
+getCategory($tag_category_id): \Keap\Core\V2\Model\GetTagCategoryResponse
 ```
 
 Retrieve a Tag Category
@@ -320,10 +320,10 @@ $apiInstance = new Keap\Core\V2\Api\TagsApi(
 $tag_category_id = 'tag_category_id_example'; // string | tag_category_id
 
 try {
-    $result = $apiInstance->getCategoryUsingGET($tag_category_id);
+    $result = $apiInstance->getCategory($tag_category_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling TagsApi->getCategoryUsingGET: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling TagsApi->getCategory: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -350,10 +350,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getTagUsingGET1()`
+## `getTag()`
 
 ```php
-getTagUsingGET1($tag_id): \Keap\Core\V2\Model\Tag
+getTag($tag_id): \Keap\Core\V2\Model\Tag
 ```
 
 Retrieve a Tag
@@ -375,10 +375,10 @@ $apiInstance = new Keap\Core\V2\Api\TagsApi(
 $tag_id = 'tag_id_example'; // string | tag_id
 
 try {
-    $result = $apiInstance->getTagUsingGET1($tag_id);
+    $result = $apiInstance->getTag($tag_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling TagsApi->getTagUsingGET1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling TagsApi->getTag: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -405,10 +405,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `listCompaniesForTagIdUsingGET1()`
+## `listCompaniesForTagId()`
 
 ```php
-listCompaniesForTagIdUsingGET1($tag_id, $filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListTaggedCompaniesResponse
+listCompaniesForTagId($tag_id, $filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListTaggedCompaniesResponse
 ```
 
 List Tagged Companies
@@ -428,16 +428,16 @@ $apiInstance = new Keap\Core\V2\Api\TagsApi(
     new GuzzleHttp\Client()
 );
 $tag_id = 'tag_id_example'; // string | tag_id
-$filter = 'filter_example'; // string | Search filter to apply to results
-$order_by = 'order_by_example'; // string | Attribute and direction to order items by. E.g. `given_name desc`
+$filter = 'filter_example'; // string | Filter to apply, allowed fields are: - (String) `company_name` - (String) `email` - (String) `since_time` - (String) `until_time` You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=company_name%3D%3DCompany` - `filter=email%3D%3Dtest@gmail.com` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;`
+$order_by = 'order_by_example'; // string | Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `name` - `email`  One of the following directions: - `asc` - `desc`
 $page_size = 0; // int | Total number of items to return per page
 $page_token = 'page_token_example'; // string | Page token
 
 try {
-    $result = $apiInstance->listCompaniesForTagIdUsingGET1($tag_id, $filter, $order_by, $page_size, $page_token);
+    $result = $apiInstance->listCompaniesForTagId($tag_id, $filter, $order_by, $page_size, $page_token);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling TagsApi->listCompaniesForTagIdUsingGET1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling TagsApi->listCompaniesForTagId: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -446,8 +446,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **tag_id** | **string**| tag_id | |
-| **filter** | **string**| Search filter to apply to results | [optional] |
-| **order_by** | **string**| Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60; | [optional] |
+| **filter** | **string**| Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; | [optional] |
+| **order_by** | **string**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;name&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **page_size** | **int**| Total number of items to return per page | [optional] |
 | **page_token** | **string**| Page token | [optional] |
 
@@ -468,10 +468,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `listContactsWithTagIdUsingGET()`
+## `listContactsWithTagId()`
 
 ```php
-listContactsWithTagIdUsingGET($tag_id, $filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListTaggedContactsResponse
+listContactsWithTagId($tag_id, $filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListTaggedContactsResponse
 ```
 
 List Tagged Contacts
@@ -497,10 +497,10 @@ $page_size = 0; // int | Total number of items to return per page
 $page_token = 'page_token_example'; // string | Page token
 
 try {
-    $result = $apiInstance->listContactsWithTagIdUsingGET($tag_id, $filter, $order_by, $page_size, $page_token);
+    $result = $apiInstance->listContactsWithTagId($tag_id, $filter, $order_by, $page_size, $page_token);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling TagsApi->listContactsWithTagIdUsingGET: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling TagsApi->listContactsWithTagId: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -531,10 +531,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `listTagCategoriesUsingGET()`
+## `listTagCategories()`
 
 ```php
-listTagCategoriesUsingGET($filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListTagCategoriesResponse
+listTagCategories($filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListTagCategoriesResponse
 ```
 
 List Tag Categories
@@ -559,10 +559,10 @@ $page_size = 0; // int | Total number of items to return per page
 $page_token = 'page_token_example'; // string | Page token
 
 try {
-    $result = $apiInstance->listTagCategoriesUsingGET($filter, $order_by, $page_size, $page_token);
+    $result = $apiInstance->listTagCategories($filter, $order_by, $page_size, $page_token);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling TagsApi->listTagCategoriesUsingGET: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling TagsApi->listTagCategories: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -592,10 +592,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `listTagsUsingGET1()`
+## `listTags()`
 
 ```php
-listTagsUsingGET1($filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListTagsResponse
+listTags($filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListTagsResponse
 ```
 
 List Tags
@@ -614,16 +614,16 @@ $apiInstance = new Keap\Core\V2\Api\TagsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$filter = 'filter_example'; // string | Search filter to apply to results
-$order_by = 'order_by_example'; // string | Attribute and direction to order items by. E.g. `given_name desc`
+$filter = 'filter_example'; // string | Filter to apply, allowed fields are:  - (String) `name` - (String) `description` - (String) `category_id` - (String) `since_create_time` - (String) `until_create_time` - (String) `since_update_time` - (String) `until_update_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. If NONE is passed in for `category_id` or `description`, it will check for the non-existence of that field. For the filters listed above, here are some examples:  - `filter=name%3D%3Dmy-tag` - `filter=category_id%3D%3DNONE` - `filter=description%3D%3DNONE` - `filter=since_create_time%3D%3D2024-12-22T01:00:00.000Z;until_create_time%3D%3D2025-01-01T00:00:00.000Z;`
+$order_by = 'order_by_example'; // string | Attribute and direction to order items. One of the following fields:  - `name` - `create_time` - `update_time`  One of the following directions: - `asc` - `desc`
 $page_size = 0; // int | Total number of items to return per page
 $page_token = 'page_token_example'; // string | Page token
 
 try {
-    $result = $apiInstance->listTagsUsingGET1($filter, $order_by, $page_size, $page_token);
+    $result = $apiInstance->listTags($filter, $order_by, $page_size, $page_token);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling TagsApi->listTagsUsingGET1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling TagsApi->listTags: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -631,8 +631,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **filter** | **string**| Search filter to apply to results | [optional] |
-| **order_by** | **string**| Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60; | [optional] |
+| **filter** | **string**| Filter to apply, allowed fields are:  - (String) &#x60;name&#x60; - (String) &#x60;description&#x60; - (String) &#x60;category_id&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. If NONE is passed in for &#x60;category_id&#x60; or &#x60;description&#x60;, it will check for the non-existence of that field. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;name%3D%3Dmy-tag&#x60; - &#x60;filter&#x3D;category_id%3D%3DNONE&#x60; - &#x60;filter&#x3D;description%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_create_time%3D%3D2024-12-22T01:00:00.000Z;until_create_time%3D%3D2025-01-01T00:00:00.000Z;&#x60; | [optional] |
+| **order_by** | **string**| Attribute and direction to order items. One of the following fields:  - &#x60;name&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **page_size** | **int**| Total number of items to return per page | [optional] |
 | **page_token** | **string**| Page token | [optional] |
 
@@ -653,10 +653,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `removeTagsUsingPOST()`
+## `removeTags()`
 
 ```php
-removeTagsUsingPOST($tag_id, $apply_remove_tag_request)
+removeTags($tag_id, $apply_remove_tag_request)
 ```
 
 Remove Tags
@@ -679,9 +679,9 @@ $tag_id = 'tag_id_example'; // string | tag_id
 $apply_remove_tag_request = new \Keap\Core\V2\Model\ApplyRemoveTagRequest(); // \Keap\Core\V2\Model\ApplyRemoveTagRequest | applyRemoveTagRequest
 
 try {
-    $apiInstance->removeTagsUsingPOST($tag_id, $apply_remove_tag_request);
+    $apiInstance->removeTags($tag_id, $apply_remove_tag_request);
 } catch (Exception $e) {
-    echo 'Exception when calling TagsApi->removeTagsUsingPOST: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling TagsApi->removeTags: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -709,69 +709,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `updateTagCategoryUsingPATCH()`
+## `updateTag()`
 
 ```php
-updateTagCategoryUsingPATCH($tag_category_id, $update_mask, $create_update_tag_category_request): \Keap\Core\V2\Model\UpdateTagCategoryResponse
-```
-
-Update a Tag Category
-
-Updates a Tag Category with only the values provided in the request
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-$apiInstance = new Keap\Core\V2\Api\TagsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
-);
-$tag_category_id = 'tag_category_id_example'; // string | tag_category_id
-$update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-$create_update_tag_category_request = new \Keap\Core\V2\Model\CreateUpdateTagCategoryRequest(); // \Keap\Core\V2\Model\CreateUpdateTagCategoryRequest | tagCategory
-
-try {
-    $result = $apiInstance->updateTagCategoryUsingPATCH($tag_category_id, $update_mask, $create_update_tag_category_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling TagsApi->updateTagCategoryUsingPATCH: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **tag_category_id** | **string**| tag_category_id | |
-| **update_mask** | [**string[]**](../Model/string.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
-| **create_update_tag_category_request** | [**\Keap\Core\V2\Model\CreateUpdateTagCategoryRequest**](../Model/CreateUpdateTagCategoryRequest.md)| tagCategory | [optional] |
-
-### Return type
-
-[**\Keap\Core\V2\Model\UpdateTagCategoryResponse**](../Model/UpdateTagCategoryResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `updateTagUsingPATCH()`
-
-```php
-updateTagUsingPATCH($tag_id, $update_mask, $create_update_tag_request): \Keap\Core\V2\Model\UpdateTagResponse
+updateTag($tag_id, $update_mask, $create_update_tag_request): \Keap\Core\V2\Model\UpdateTagResponse
 ```
 
 Update a Tag
@@ -795,10 +736,10 @@ $update_mask = array('update_mask_example'); // string[] | An optional list of p
 $create_update_tag_request = new \Keap\Core\V2\Model\CreateUpdateTagRequest(); // \Keap\Core\V2\Model\CreateUpdateTagRequest | tag
 
 try {
-    $result = $apiInstance->updateTagUsingPATCH($tag_id, $update_mask, $create_update_tag_request);
+    $result = $apiInstance->updateTag($tag_id, $update_mask, $create_update_tag_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling TagsApi->updateTagUsingPATCH: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling TagsApi->updateTag: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -813,6 +754,65 @@ try {
 ### Return type
 
 [**\Keap\Core\V2\Model\UpdateTagResponse**](../Model/UpdateTagResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateTagCategory()`
+
+```php
+updateTagCategory($tag_category_id, $update_mask, $create_update_tag_category_request): \Keap\Core\V2\Model\UpdateTagCategoryResponse
+```
+
+Update a Tag Category
+
+Updates a Tag Category with only the values provided in the request
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+$apiInstance = new Keap\Core\V2\Api\TagsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$tag_category_id = 'tag_category_id_example'; // string | tag_category_id
+$update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+$create_update_tag_category_request = new \Keap\Core\V2\Model\CreateUpdateTagCategoryRequest(); // \Keap\Core\V2\Model\CreateUpdateTagCategoryRequest | tagCategory
+
+try {
+    $result = $apiInstance->updateTagCategory($tag_category_id, $update_mask, $create_update_tag_category_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TagsApi->updateTagCategory: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tag_category_id** | **string**| tag_category_id | |
+| **update_mask** | [**string[]**](../Model/string.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **create_update_tag_category_request** | [**\Keap\Core\V2\Model\CreateUpdateTagCategoryRequest**](../Model/CreateUpdateTagCategoryRequest.md)| tagCategory | [optional] |
+
+### Return type
+
+[**\Keap\Core\V2\Model\UpdateTagCategoryResponse**](../Model/UpdateTagCategoryResponse.md)
 
 ### Authorization
 

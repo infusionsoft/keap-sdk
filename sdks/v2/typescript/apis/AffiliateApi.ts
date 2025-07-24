@@ -42,23 +42,60 @@ import { UpdateSubscriptionCommissionProgramRequest } from '../models/UpdateSubs
 export class AffiliateApiRequestFactory extends BaseAPIRequestFactory {
 
     /**
+     * Creates a single Affiliate
+     * Create an Affiliate
+     * @param createAffiliateRequest Affiliate request to insert
+     */
+    public async addAffiliate(createAffiliateRequest?: CreateAffiliateRequest, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+
+        // Path Params
+        const localVarPath = '/v2/affiliates';
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        // Body Params
+        const contentType = ObjectSerializer.getPreferredMediaType([
+            "application/json"
+        ]);
+        requestContext.setHeaderParam("Content-Type", contentType);
+        const serializedBody = ObjectSerializer.stringify(
+            ObjectSerializer.serialize(createAffiliateRequest, "CreateAffiliateRequest", ""),
+            contentType
+        );
+        requestContext.setBody(serializedBody);
+
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
      * Assigns an Affiliate to Commission Program
      * Assign Affiliate to Commission program
      * @param id id
      * @param affiliateAddToProgramRequest affiliateAddToProgramRequest
      */
-    public async addAffiliateToProgramUsingPOST(id: string, affiliateAddToProgramRequest: AffiliateAddToProgramRequest, _options?: Configuration): Promise<RequestContext> {
+    public async addAffiliateToProgram(id: string, affiliateAddToProgramRequest: AffiliateAddToProgramRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'id' is not null or undefined
         if (id === null || id === undefined) {
-            throw new RequiredError("AffiliateApi", "addAffiliateToProgramUsingPOST", "id");
+            throw new RequiredError("AffiliateApi", "addAffiliateToProgram", "id");
         }
 
 
         // verify required parameter 'affiliateAddToProgramRequest' is not null or undefined
         if (affiliateAddToProgramRequest === null || affiliateAddToProgramRequest === undefined) {
-            throw new RequiredError("AffiliateApi", "addAffiliateToProgramUsingPOST", "affiliateAddToProgramRequest");
+            throw new RequiredError("AffiliateApi", "addAffiliateToProgram", "affiliateAddToProgramRequest");
         }
 
 
@@ -92,48 +129,11 @@ export class AffiliateApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Creates a single Affiliate
-     * Create an Affiliate
-     * @param createAffiliateRequest Affiliate request to insert
-     */
-    public async addAffiliateUsingPOST(createAffiliateRequest?: CreateAffiliateRequest, _options?: Configuration): Promise<RequestContext> {
-        let _config = _options || this.configuration;
-
-
-        // Path Params
-        const localVarPath = '/v2/affiliates';
-
-        // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-
-        // Body Params
-        const contentType = ObjectSerializer.getPreferredMediaType([
-            "application/json"
-        ]);
-        requestContext.setHeaderParam("Content-Type", contentType);
-        const serializedBody = ObjectSerializer.stringify(
-            ObjectSerializer.serialize(createAffiliateRequest, "CreateAffiliateRequest", ""),
-            contentType
-        );
-        requestContext.setBody(serializedBody);
-
-        
-        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-
-        return requestContext;
-    }
-
-    /**
      * Creates an Affiliate Commission Program
      * Create an Affiliate Commission Program
      * @param createCommissionProgramRequest Commission Program to insert
      */
-    public async addCommissionProgramUsingPOST(createCommissionProgramRequest?: CreateCommissionProgramRequest, _options?: Configuration): Promise<RequestContext> {
+    public async addCommissionProgram(createCommissionProgramRequest?: CreateCommissionProgramRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
 
@@ -171,18 +171,18 @@ export class AffiliateApiRequestFactory extends BaseAPIRequestFactory {
      * @param commissionProgramId commission_program_id
      * @param createProductCommissionProgramRequest Product Commission Program
      */
-    public async assignProductCommissionProgramUsingPOST(commissionProgramId: string, createProductCommissionProgramRequest?: CreateProductCommissionProgramRequest, _options?: Configuration): Promise<RequestContext> {
+    public async assignProductCommissionProgram(commissionProgramId: string, createProductCommissionProgramRequest?: CreateProductCommissionProgramRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'commissionProgramId' is not null or undefined
         if (commissionProgramId === null || commissionProgramId === undefined) {
-            throw new RequiredError("AffiliateApi", "assignProductCommissionProgramUsingPOST", "commissionProgramId");
+            throw new RequiredError("AffiliateApi", "assignProductCommissionProgram", "commissionProgramId");
         }
 
 
 
         // Path Params
-        const localVarPath = '/v2/affiliates/commissionPrograms/productCommissionProgram/{commission_program_id}'
+        const localVarPath = '/v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id}'
             .replace('{' + 'commission_program_id' + '}', encodeURIComponent(String(commissionProgramId)));
 
         // Make Request Context
@@ -216,18 +216,18 @@ export class AffiliateApiRequestFactory extends BaseAPIRequestFactory {
      * @param commissionProgramId commission_program_id
      * @param createSubscriptionCommissionProgramRequest Subscription Commission Program
      */
-    public async assignSubscriptionCommissionProgramUsingPOST(commissionProgramId: string, createSubscriptionCommissionProgramRequest?: CreateSubscriptionCommissionProgramRequest, _options?: Configuration): Promise<RequestContext> {
+    public async assignSubscriptionCommissionProgram(commissionProgramId: string, createSubscriptionCommissionProgramRequest?: CreateSubscriptionCommissionProgramRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'commissionProgramId' is not null or undefined
         if (commissionProgramId === null || commissionProgramId === undefined) {
-            throw new RequiredError("AffiliateApi", "assignSubscriptionCommissionProgramUsingPOST", "commissionProgramId");
+            throw new RequiredError("AffiliateApi", "assignSubscriptionCommissionProgram", "commissionProgramId");
         }
 
 
 
         // Path Params
-        const localVarPath = '/v2/affiliates/commissionPrograms/subscriptionCommissionProgram/{commission_program_id}'
+        const localVarPath = '/v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id}'
             .replace('{' + 'commission_program_id' + '}', encodeURIComponent(String(commissionProgramId)));
 
         // Make Request Context
@@ -261,18 +261,18 @@ export class AffiliateApiRequestFactory extends BaseAPIRequestFactory {
      * @param commissionProgramId commission_program_id
      * @param createDefaultCommissionProgramRequest Values of the Default Commission Program
      */
-    public async createDefaultCommissionProgramUsingPOST(commissionProgramId: string, createDefaultCommissionProgramRequest?: CreateDefaultCommissionProgramRequest, _options?: Configuration): Promise<RequestContext> {
+    public async createDefaultCommissionProgram(commissionProgramId: string, createDefaultCommissionProgramRequest?: CreateDefaultCommissionProgramRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'commissionProgramId' is not null or undefined
         if (commissionProgramId === null || commissionProgramId === undefined) {
-            throw new RequiredError("AffiliateApi", "createDefaultCommissionProgramUsingPOST", "commissionProgramId");
+            throw new RequiredError("AffiliateApi", "createDefaultCommissionProgram", "commissionProgramId");
         }
 
 
 
         // Path Params
-        const localVarPath = '/v2/affiliates/commissionPrograms/defaultCommissionProgram/{commission_program_id}'
+        const localVarPath = '/v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id}'
             .replace('{' + 'commission_program_id' + '}', encodeURIComponent(String(commissionProgramId)));
 
         // Make Request Context
@@ -305,12 +305,12 @@ export class AffiliateApiRequestFactory extends BaseAPIRequestFactory {
      * Create an Affiliate Link
      * @param createOrUpdateAffiliateLinkRequest request
      */
-    public async createRedirectLinkUsingPOST(createOrUpdateAffiliateLinkRequest: CreateOrUpdateAffiliateLinkRequest, _options?: Configuration): Promise<RequestContext> {
+    public async createRedirectLink(createOrUpdateAffiliateLinkRequest: CreateOrUpdateAffiliateLinkRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'createOrUpdateAffiliateLinkRequest' is not null or undefined
         if (createOrUpdateAffiliateLinkRequest === null || createOrUpdateAffiliateLinkRequest === undefined) {
-            throw new RequiredError("AffiliateApi", "createRedirectLinkUsingPOST", "createOrUpdateAffiliateLinkRequest");
+            throw new RequiredError("AffiliateApi", "createRedirectLink", "createOrUpdateAffiliateLinkRequest");
         }
 
 
@@ -343,48 +343,16 @@ export class AffiliateApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Deletes a Commission Program
-     * Delete a Commission Program
-     * @param commissionProgramId commission_program_id
-     */
-    public async deleteAffiliateCommissionProgramUsingDELETE(commissionProgramId: string, _options?: Configuration): Promise<RequestContext> {
-        let _config = _options || this.configuration;
-
-        // verify required parameter 'commissionProgramId' is not null or undefined
-        if (commissionProgramId === null || commissionProgramId === undefined) {
-            throw new RequiredError("AffiliateApi", "deleteAffiliateCommissionProgramUsingDELETE", "commissionProgramId");
-        }
-
-
-        // Path Params
-        const localVarPath = '/v2/affiliates/commissionPrograms/{commission_program_id}'
-            .replace('{' + 'commission_program_id' + '}', encodeURIComponent(String(commissionProgramId)));
-
-        // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.DELETE);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-
-        
-        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-
-        return requestContext;
-    }
-
-    /**
      * Deletes the specified Affiliate
      * Delete Affiliate
      * @param id id
      */
-    public async deleteAffiliateUsingDELETE(id: string, _options?: Configuration): Promise<RequestContext> {
+    public async deleteAffiliate(id: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'id' is not null or undefined
         if (id === null || id === undefined) {
-            throw new RequiredError("AffiliateApi", "deleteAffiliateUsingDELETE", "id");
+            throw new RequiredError("AffiliateApi", "deleteAffiliate", "id");
         }
 
 
@@ -407,16 +375,48 @@ export class AffiliateApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
+     * Deletes a Commission Program
+     * Delete a Commission Program
+     * @param commissionProgramId commission_program_id
+     */
+    public async deleteAffiliateCommissionProgram(commissionProgramId: string, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'commissionProgramId' is not null or undefined
+        if (commissionProgramId === null || commissionProgramId === undefined) {
+            throw new RequiredError("AffiliateApi", "deleteAffiliateCommissionProgram", "commissionProgramId");
+        }
+
+
+        // Path Params
+        const localVarPath = '/v2/affiliates/commissionPrograms/{commission_program_id}'
+            .replace('{' + 'commission_program_id' + '}', encodeURIComponent(String(commissionProgramId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.DELETE);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
      * Deletes an Affiliate Link
      * Delete an Affiliate Link
      * @param redirectId redirect_id
      */
-    public async deleteRedirectLinkUsingDELETE(redirectId: string, _options?: Configuration): Promise<RequestContext> {
+    public async deleteRedirectLink(redirectId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'redirectId' is not null or undefined
         if (redirectId === null || redirectId === undefined) {
-            throw new RequiredError("AffiliateApi", "deleteRedirectLinkUsingDELETE", "redirectId");
+            throw new RequiredError("AffiliateApi", "deleteRedirectLink", "redirectId");
         }
 
 
@@ -439,16 +439,48 @@ export class AffiliateApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
+     * Retrieves a single Affiliate
+     * Retrieve an Affiliate
+     * @param id id
+     */
+    public async getAffiliate(id: string, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'id' is not null or undefined
+        if (id === null || id === undefined) {
+            throw new RequiredError("AffiliateApi", "getAffiliate", "id");
+        }
+
+
+        // Path Params
+        const localVarPath = '/v2/affiliates/{id}'
+            .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
      * Get the Affiliate Commission Earned and View LedgerURl for portal
      * Retrieve Affiliate Commission Earned and View LedgerURl for portal
      * @param affiliateId affiliate_id
      */
-    public async getAffiliateCommissionTotalUsingGET(affiliateId: string, _options?: Configuration): Promise<RequestContext> {
+    public async getAffiliateCommissionTotal(affiliateId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'affiliateId' is not null or undefined
         if (affiliateId === null || affiliateId === undefined) {
-            throw new RequiredError("AffiliateApi", "getAffiliateCommissionTotalUsingGET", "affiliateId");
+            throw new RequiredError("AffiliateApi", "getAffiliateCommissionTotal", "affiliateId");
         }
 
 
@@ -479,12 +511,12 @@ export class AffiliateApiRequestFactory extends BaseAPIRequestFactory {
      * @param pageSize Total number of items to return per page
      * @param pageToken Page token
      */
-    public async getAffiliateCommissionsUsingGET(affiliateId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
+    public async getAffiliateCommissions(affiliateId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'affiliateId' is not null or undefined
         if (affiliateId === null || affiliateId === undefined) {
-            throw new RequiredError("AffiliateApi", "getAffiliateCommissionsUsingGET", "affiliateId");
+            throw new RequiredError("AffiliateApi", "getAffiliateCommissions", "affiliateId");
         }
 
 
@@ -531,48 +563,16 @@ export class AffiliateApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Retrieves a single Affiliate
-     * Retrieve an Affiliate
-     * @param id id
-     */
-    public async getAffiliateUsingGET1(id: string, _options?: Configuration): Promise<RequestContext> {
-        let _config = _options || this.configuration;
-
-        // verify required parameter 'id' is not null or undefined
-        if (id === null || id === undefined) {
-            throw new RequiredError("AffiliateApi", "getAffiliateUsingGET1", "id");
-        }
-
-
-        // Path Params
-        const localVarPath = '/v2/affiliates/{id}'
-            .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
-
-        // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-
-        
-        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-
-        return requestContext;
-    }
-
-    /**
      * Retrieves a single Commission Program
      * Retrieve a Commission Program
      * @param commissionProgramId commission_program_id
      */
-    public async getCommissionProgramUsingGET(commissionProgramId: string, _options?: Configuration): Promise<RequestContext> {
+    public async getCommissionProgram(commissionProgramId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'commissionProgramId' is not null or undefined
         if (commissionProgramId === null || commissionProgramId === undefined) {
-            throw new RequiredError("AffiliateApi", "getCommissionProgramUsingGET", "commissionProgramId");
+            throw new RequiredError("AffiliateApi", "getCommissionProgram", "commissionProgramId");
         }
 
 
@@ -599,12 +599,12 @@ export class AffiliateApiRequestFactory extends BaseAPIRequestFactory {
      * Retrieve an Affiliate Link
      * @param redirectId redirect_id
      */
-    public async getRedirectLinkUsingGET(redirectId: string, _options?: Configuration): Promise<RequestContext> {
+    public async getRedirectLink(redirectId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'redirectId' is not null or undefined
         if (redirectId === null || redirectId === undefined) {
-            throw new RequiredError("AffiliateApi", "getRedirectLinkUsingGET", "redirectId");
+            throw new RequiredError("AffiliateApi", "getRedirectLink", "redirectId");
         }
 
 
@@ -634,7 +634,7 @@ export class AffiliateApiRequestFactory extends BaseAPIRequestFactory {
      * @param pageSize Total number of items to return per page
      * @param pageToken Page token
      */
-    public async listAffiliateCommissionProgramsUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
+    public async listAffiliateCommissionPrograms(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
 
@@ -686,7 +686,7 @@ export class AffiliateApiRequestFactory extends BaseAPIRequestFactory {
      * @param pageSize Total number of items to return per page
      * @param pageToken Page token
      */
-    public async listAffiliateLinksUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
+    public async listAffiliateLinks(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
 
@@ -738,7 +738,7 @@ export class AffiliateApiRequestFactory extends BaseAPIRequestFactory {
      * @param pageSize Total number of items to return per page
      * @param pageToken Page token
      */
-    public async listSummariesUsingGET1(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
+    public async listSummaries(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
 
@@ -788,18 +788,18 @@ export class AffiliateApiRequestFactory extends BaseAPIRequestFactory {
      * @param id id
      * @param affiliateRemoveFromProgramRequest removeFromProgramRequest
      */
-    public async removeAffiliateFromProgramUsingPOST(id: string, affiliateRemoveFromProgramRequest: AffiliateRemoveFromProgramRequest, _options?: Configuration): Promise<RequestContext> {
+    public async removeAffiliateFromProgram(id: string, affiliateRemoveFromProgramRequest: AffiliateRemoveFromProgramRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'id' is not null or undefined
         if (id === null || id === undefined) {
-            throw new RequiredError("AffiliateApi", "removeAffiliateFromProgramUsingPOST", "id");
+            throw new RequiredError("AffiliateApi", "removeAffiliateFromProgram", "id");
         }
 
 
         // verify required parameter 'affiliateRemoveFromProgramRequest' is not null or undefined
         if (affiliateRemoveFromProgramRequest === null || affiliateRemoveFromProgramRequest === undefined) {
-            throw new RequiredError("AffiliateApi", "removeAffiliateFromProgramUsingPOST", "affiliateRemoveFromProgramRequest");
+            throw new RequiredError("AffiliateApi", "removeAffiliateFromProgram", "affiliateRemoveFromProgramRequest");
         }
 
 
@@ -838,18 +838,18 @@ export class AffiliateApiRequestFactory extends BaseAPIRequestFactory {
      * @param commissionId commission_id
      * @param deleteProgramCommissionRequest deleteProgramCommissionRequest
      */
-    public async removeProductCommissionFromCommissionsUsingPOST(commissionId: string, deleteProgramCommissionRequest: DeleteProgramCommissionRequest, _options?: Configuration): Promise<RequestContext> {
+    public async removeProductCommissionFromCommissions(commissionId: string, deleteProgramCommissionRequest: DeleteProgramCommissionRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'commissionId' is not null or undefined
         if (commissionId === null || commissionId === undefined) {
-            throw new RequiredError("AffiliateApi", "removeProductCommissionFromCommissionsUsingPOST", "commissionId");
+            throw new RequiredError("AffiliateApi", "removeProductCommissionFromCommissions", "commissionId");
         }
 
 
         // verify required parameter 'deleteProgramCommissionRequest' is not null or undefined
         if (deleteProgramCommissionRequest === null || deleteProgramCommissionRequest === undefined) {
-            throw new RequiredError("AffiliateApi", "removeProductCommissionFromCommissionsUsingPOST", "deleteProgramCommissionRequest");
+            throw new RequiredError("AffiliateApi", "removeProductCommissionFromCommissions", "deleteProgramCommissionRequest");
         }
 
 
@@ -888,18 +888,18 @@ export class AffiliateApiRequestFactory extends BaseAPIRequestFactory {
      * @param commissionId commission_id
      * @param deleteSubscriptionPlanCommissionRequest deleteSubscriptionPlanCommissionRequest
      */
-    public async removeSubscriptionPlanCommissionFromCommissionsUsingPOST(commissionId: string, deleteSubscriptionPlanCommissionRequest: DeleteSubscriptionPlanCommissionRequest, _options?: Configuration): Promise<RequestContext> {
+    public async removeSubscriptionPlanCommissionFromCommissions(commissionId: string, deleteSubscriptionPlanCommissionRequest: DeleteSubscriptionPlanCommissionRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'commissionId' is not null or undefined
         if (commissionId === null || commissionId === undefined) {
-            throw new RequiredError("AffiliateApi", "removeSubscriptionPlanCommissionFromCommissionsUsingPOST", "commissionId");
+            throw new RequiredError("AffiliateApi", "removeSubscriptionPlanCommissionFromCommissions", "commissionId");
         }
 
 
         // verify required parameter 'deleteSubscriptionPlanCommissionRequest' is not null or undefined
         if (deleteSubscriptionPlanCommissionRequest === null || deleteSubscriptionPlanCommissionRequest === undefined) {
-            throw new RequiredError("AffiliateApi", "removeSubscriptionPlanCommissionFromCommissionsUsingPOST", "deleteSubscriptionPlanCommissionRequest");
+            throw new RequiredError("AffiliateApi", "removeSubscriptionPlanCommissionFromCommissions", "deleteSubscriptionPlanCommissionRequest");
         }
 
 
@@ -938,12 +938,12 @@ export class AffiliateApiRequestFactory extends BaseAPIRequestFactory {
      * @param id id
      * @param updateAffiliateRequest Request to update an affiliate
      */
-    public async updateAffiliateUsingPATCH(id: string, updateAffiliateRequest?: UpdateAffiliateRequest, _options?: Configuration): Promise<RequestContext> {
+    public async updateAffiliate(id: string, updateAffiliateRequest?: UpdateAffiliateRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'id' is not null or undefined
         if (id === null || id === undefined) {
-            throw new RequiredError("AffiliateApi", "updateAffiliateUsingPATCH", "id");
+            throw new RequiredError("AffiliateApi", "updateAffiliate", "id");
         }
 
 
@@ -984,18 +984,18 @@ export class AffiliateApiRequestFactory extends BaseAPIRequestFactory {
      * @param updateCommissionProgramRequest updateCommissionProgramRequest
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateCommissionProgramUsingPATCH(commissionProgramId: string, updateCommissionProgramRequest: UpdateCommissionProgramRequest, updateMask?: Array<string>, _options?: Configuration): Promise<RequestContext> {
+    public async updateCommissionProgram(commissionProgramId: string, updateCommissionProgramRequest: UpdateCommissionProgramRequest, updateMask?: Array<string>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'commissionProgramId' is not null or undefined
         if (commissionProgramId === null || commissionProgramId === undefined) {
-            throw new RequiredError("AffiliateApi", "updateCommissionProgramUsingPATCH", "commissionProgramId");
+            throw new RequiredError("AffiliateApi", "updateCommissionProgram", "commissionProgramId");
         }
 
 
         // verify required parameter 'updateCommissionProgramRequest' is not null or undefined
         if (updateCommissionProgramRequest === null || updateCommissionProgramRequest === undefined) {
-            throw new RequiredError("AffiliateApi", "updateCommissionProgramUsingPATCH", "updateCommissionProgramRequest");
+            throw new RequiredError("AffiliateApi", "updateCommissionProgram", "updateCommissionProgramRequest");
         }
 
 
@@ -1044,12 +1044,12 @@ export class AffiliateApiRequestFactory extends BaseAPIRequestFactory {
      * @param updateMask update_mask
      * @param updateDefaultCommissionProgramRequest Values of the default Commission Program
      */
-    public async updateDefaultCommissionProgramUsingPATCH(commissionProgramId: string, updateMask?: Array<string>, updateDefaultCommissionProgramRequest?: UpdateDefaultCommissionProgramRequest, _options?: Configuration): Promise<RequestContext> {
+    public async updateDefaultCommissionProgram(commissionProgramId: string, updateMask?: Array<string>, updateDefaultCommissionProgramRequest?: UpdateDefaultCommissionProgramRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'commissionProgramId' is not null or undefined
         if (commissionProgramId === null || commissionProgramId === undefined) {
-            throw new RequiredError("AffiliateApi", "updateDefaultCommissionProgramUsingPATCH", "commissionProgramId");
+            throw new RequiredError("AffiliateApi", "updateDefaultCommissionProgram", "commissionProgramId");
         }
 
 
@@ -1099,12 +1099,12 @@ export class AffiliateApiRequestFactory extends BaseAPIRequestFactory {
      * @param updateMask update_mask
      * @param updateProductCommissionProgramRequest Values of the product Commission Program
      */
-    public async updateProductCommissionProgramUsingPATCH(commissionProgramId: string, updateMask?: Array<string>, updateProductCommissionProgramRequest?: UpdateProductCommissionProgramRequest, _options?: Configuration): Promise<RequestContext> {
+    public async updateProductCommissionProgram(commissionProgramId: string, updateMask?: Array<string>, updateProductCommissionProgramRequest?: UpdateProductCommissionProgramRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'commissionProgramId' is not null or undefined
         if (commissionProgramId === null || commissionProgramId === undefined) {
-            throw new RequiredError("AffiliateApi", "updateProductCommissionProgramUsingPATCH", "commissionProgramId");
+            throw new RequiredError("AffiliateApi", "updateProductCommissionProgram", "commissionProgramId");
         }
 
 
@@ -1153,18 +1153,18 @@ export class AffiliateApiRequestFactory extends BaseAPIRequestFactory {
      * @param redirectId redirect_id
      * @param createOrUpdateAffiliateLinkRequest request
      */
-    public async updateRedirectLinkUsingPATCH(redirectId: string, createOrUpdateAffiliateLinkRequest: CreateOrUpdateAffiliateLinkRequest, _options?: Configuration): Promise<RequestContext> {
+    public async updateRedirectLink(redirectId: string, createOrUpdateAffiliateLinkRequest: CreateOrUpdateAffiliateLinkRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'redirectId' is not null or undefined
         if (redirectId === null || redirectId === undefined) {
-            throw new RequiredError("AffiliateApi", "updateRedirectLinkUsingPATCH", "redirectId");
+            throw new RequiredError("AffiliateApi", "updateRedirectLink", "redirectId");
         }
 
 
         // verify required parameter 'createOrUpdateAffiliateLinkRequest' is not null or undefined
         if (createOrUpdateAffiliateLinkRequest === null || createOrUpdateAffiliateLinkRequest === undefined) {
-            throw new RequiredError("AffiliateApi", "updateRedirectLinkUsingPATCH", "createOrUpdateAffiliateLinkRequest");
+            throw new RequiredError("AffiliateApi", "updateRedirectLink", "createOrUpdateAffiliateLinkRequest");
         }
 
 
@@ -1204,12 +1204,12 @@ export class AffiliateApiRequestFactory extends BaseAPIRequestFactory {
      * @param updateMask update_mask
      * @param updateSubscriptionCommissionProgramRequest Values of the subscription Commission Program
      */
-    public async updateSubscriptionCommissionProgramUsingPATCH(commissionProgramId: string, updateMask?: Array<string>, updateSubscriptionCommissionProgramRequest?: UpdateSubscriptionCommissionProgramRequest, _options?: Configuration): Promise<RequestContext> {
+    public async updateSubscriptionCommissionProgram(commissionProgramId: string, updateMask?: Array<string>, updateSubscriptionCommissionProgramRequest?: UpdateSubscriptionCommissionProgramRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'commissionProgramId' is not null or undefined
         if (commissionProgramId === null || commissionProgramId === undefined) {
-            throw new RequiredError("AffiliateApi", "updateSubscriptionCommissionProgramUsingPATCH", "commissionProgramId");
+            throw new RequiredError("AffiliateApi", "updateSubscriptionCommissionProgram", "commissionProgramId");
         }
 
 
@@ -1260,10 +1260,60 @@ export class AffiliateApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to addAffiliateToProgramUsingPOST
+     * @params response Response returned by the server for a request to addAffiliate
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async addAffiliateToProgramUsingPOSTWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async addAffiliateWithHttpInfo(response: ResponseContext): Promise<HttpInfo<RestAffiliate >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("201", response.httpStatusCode)) {
+            const body: RestAffiliate = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "RestAffiliate", ""
+            ) as RestAffiliate;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("401", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Unauthorized", body, response.headers);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: RestAffiliate = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "RestAffiliate", ""
+            ) as RestAffiliate;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to addAffiliateToProgram
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async addAffiliateToProgramWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
@@ -1306,60 +1356,10 @@ export class AffiliateApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to addAffiliateUsingPOST
+     * @params response Response returned by the server for a request to addCommissionProgram
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async addAffiliateUsingPOSTWithHttpInfo(response: ResponseContext): Promise<HttpInfo<RestAffiliate >> {
-        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("201", response.httpStatusCode)) {
-            const body: RestAffiliate = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "RestAffiliate", ""
-            ) as RestAffiliate;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-        if (isCodeInRange("401", response.httpStatusCode)) {
-            const body: Error = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "Error", ""
-            ) as Error;
-            throw new ApiException<Error>(response.httpStatusCode, "Unauthorized", body, response.headers);
-        }
-        if (isCodeInRange("403", response.httpStatusCode)) {
-            const body: Error = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "Error", ""
-            ) as Error;
-            throw new ApiException<Error>(response.httpStatusCode, "Forbidden", body, response.headers);
-        }
-        if (isCodeInRange("500", response.httpStatusCode)) {
-            const body: Error = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "Error", ""
-            ) as Error;
-            throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
-        }
-
-        // Work around for missing responses in specification, e.g. for petstore.yaml
-        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: RestAffiliate = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "RestAffiliate", ""
-            ) as RestAffiliate;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-
-        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
-    }
-
-    /**
-     * Unwraps the actual response sent by the server from the response context and deserializes the response content
-     * to the expected objects
-     *
-     * @params response Response returned by the server for a request to addCommissionProgramUsingPOST
-     * @throws ApiException if the response code was not in [200, 299]
-     */
-     public async addCommissionProgramUsingPOSTWithHttpInfo(response: ResponseContext): Promise<HttpInfo<AffiliateCommissionProgramResponse >> {
+     public async addCommissionProgramWithHttpInfo(response: ResponseContext): Promise<HttpInfo<AffiliateCommissionProgramResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("201", response.httpStatusCode)) {
             const body: AffiliateCommissionProgramResponse = ObjectSerializer.deserialize(
@@ -1406,10 +1406,10 @@ export class AffiliateApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to assignProductCommissionProgramUsingPOST
+     * @params response Response returned by the server for a request to assignProductCommissionProgram
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async assignProductCommissionProgramUsingPOSTWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ProductCommissionProgram >> {
+     public async assignProductCommissionProgramWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ProductCommissionProgram >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("201", response.httpStatusCode)) {
             const body: ProductCommissionProgram = ObjectSerializer.deserialize(
@@ -1456,10 +1456,10 @@ export class AffiliateApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to assignSubscriptionCommissionProgramUsingPOST
+     * @params response Response returned by the server for a request to assignSubscriptionCommissionProgram
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async assignSubscriptionCommissionProgramUsingPOSTWithHttpInfo(response: ResponseContext): Promise<HttpInfo<SubscriptionCommissionProgram >> {
+     public async assignSubscriptionCommissionProgramWithHttpInfo(response: ResponseContext): Promise<HttpInfo<SubscriptionCommissionProgram >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("201", response.httpStatusCode)) {
             const body: SubscriptionCommissionProgram = ObjectSerializer.deserialize(
@@ -1506,10 +1506,10 @@ export class AffiliateApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to createDefaultCommissionProgramUsingPOST
+     * @params response Response returned by the server for a request to createDefaultCommissionProgram
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async createDefaultCommissionProgramUsingPOSTWithHttpInfo(response: ResponseContext): Promise<HttpInfo<SetDefaultCommissionProgramResponse >> {
+     public async createDefaultCommissionProgramWithHttpInfo(response: ResponseContext): Promise<HttpInfo<SetDefaultCommissionProgramResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("201", response.httpStatusCode)) {
             const body: SetDefaultCommissionProgramResponse = ObjectSerializer.deserialize(
@@ -1556,10 +1556,10 @@ export class AffiliateApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to createRedirectLinkUsingPOST
+     * @params response Response returned by the server for a request to createRedirectLink
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async createRedirectLinkUsingPOSTWithHttpInfo(response: ResponseContext): Promise<HttpInfo<AffiliateLink >> {
+     public async createRedirectLinkWithHttpInfo(response: ResponseContext): Promise<HttpInfo<AffiliateLink >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("201", response.httpStatusCode)) {
             const body: AffiliateLink = ObjectSerializer.deserialize(
@@ -1606,10 +1606,10 @@ export class AffiliateApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to deleteAffiliateCommissionProgramUsingDELETE
+     * @params response Response returned by the server for a request to deleteAffiliate
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async deleteAffiliateCommissionProgramUsingDELETEWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async deleteAffiliateWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("204", response.httpStatusCode)) {
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
@@ -1659,10 +1659,10 @@ export class AffiliateApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to deleteAffiliateUsingDELETE
+     * @params response Response returned by the server for a request to deleteAffiliateCommissionProgram
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async deleteAffiliateUsingDELETEWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async deleteAffiliateCommissionProgramWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("204", response.httpStatusCode)) {
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
@@ -1712,10 +1712,10 @@ export class AffiliateApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to deleteRedirectLinkUsingDELETE
+     * @params response Response returned by the server for a request to deleteRedirectLink
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async deleteRedirectLinkUsingDELETEWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async deleteRedirectLinkWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("204", response.httpStatusCode)) {
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
@@ -1765,10 +1765,67 @@ export class AffiliateApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to getAffiliateCommissionTotalUsingGET
+     * @params response Response returned by the server for a request to getAffiliate
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getAffiliateCommissionTotalUsingGETWithHttpInfo(response: ResponseContext): Promise<HttpInfo<AffiliateCommissionEarned >> {
+     public async getAffiliateWithHttpInfo(response: ResponseContext): Promise<HttpInfo<RestAffiliate >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: RestAffiliate = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "RestAffiliate", ""
+            ) as RestAffiliate;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("401", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Unauthorized", body, response.headers);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: RestAffiliate = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "RestAffiliate", ""
+            ) as RestAffiliate;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to getAffiliateCommissionTotal
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async getAffiliateCommissionTotalWithHttpInfo(response: ResponseContext): Promise<HttpInfo<AffiliateCommissionEarned >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: AffiliateCommissionEarned = ObjectSerializer.deserialize(
@@ -1822,10 +1879,10 @@ export class AffiliateApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to getAffiliateCommissionsUsingGET
+     * @params response Response returned by the server for a request to getAffiliateCommissions
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getAffiliateCommissionsUsingGETWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListAffiliateCommissionsResponse >> {
+     public async getAffiliateCommissionsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListAffiliateCommissionsResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: ListAffiliateCommissionsResponse = ObjectSerializer.deserialize(
@@ -1879,67 +1936,10 @@ export class AffiliateApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to getAffiliateUsingGET1
+     * @params response Response returned by the server for a request to getCommissionProgram
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getAffiliateUsingGET1WithHttpInfo(response: ResponseContext): Promise<HttpInfo<RestAffiliate >> {
-        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: RestAffiliate = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "RestAffiliate", ""
-            ) as RestAffiliate;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-        if (isCodeInRange("401", response.httpStatusCode)) {
-            const body: Error = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "Error", ""
-            ) as Error;
-            throw new ApiException<Error>(response.httpStatusCode, "Unauthorized", body, response.headers);
-        }
-        if (isCodeInRange("403", response.httpStatusCode)) {
-            const body: Error = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "Error", ""
-            ) as Error;
-            throw new ApiException<Error>(response.httpStatusCode, "Forbidden", body, response.headers);
-        }
-        if (isCodeInRange("404", response.httpStatusCode)) {
-            const body: Error = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "Error", ""
-            ) as Error;
-            throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
-        }
-        if (isCodeInRange("500", response.httpStatusCode)) {
-            const body: Error = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "Error", ""
-            ) as Error;
-            throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
-        }
-
-        // Work around for missing responses in specification, e.g. for petstore.yaml
-        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: RestAffiliate = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "RestAffiliate", ""
-            ) as RestAffiliate;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-
-        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
-    }
-
-    /**
-     * Unwraps the actual response sent by the server from the response context and deserializes the response content
-     * to the expected objects
-     *
-     * @params response Response returned by the server for a request to getCommissionProgramUsingGET
-     * @throws ApiException if the response code was not in [200, 299]
-     */
-     public async getCommissionProgramUsingGETWithHttpInfo(response: ResponseContext): Promise<HttpInfo<AffiliateProgramV2 >> {
+     public async getCommissionProgramWithHttpInfo(response: ResponseContext): Promise<HttpInfo<AffiliateProgramV2 >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: AffiliateProgramV2 = ObjectSerializer.deserialize(
@@ -1993,10 +1993,10 @@ export class AffiliateApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to getRedirectLinkUsingGET
+     * @params response Response returned by the server for a request to getRedirectLink
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getRedirectLinkUsingGETWithHttpInfo(response: ResponseContext): Promise<HttpInfo<AffiliateLink >> {
+     public async getRedirectLinkWithHttpInfo(response: ResponseContext): Promise<HttpInfo<AffiliateLink >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: AffiliateLink = ObjectSerializer.deserialize(
@@ -2050,10 +2050,10 @@ export class AffiliateApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to listAffiliateCommissionProgramsUsingGET
+     * @params response Response returned by the server for a request to listAffiliateCommissionPrograms
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async listAffiliateCommissionProgramsUsingGETWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListAffiliateCommissionProgramsResponse >> {
+     public async listAffiliateCommissionProgramsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListAffiliateCommissionProgramsResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: ListAffiliateCommissionProgramsResponse = ObjectSerializer.deserialize(
@@ -2107,10 +2107,10 @@ export class AffiliateApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to listAffiliateLinksUsingGET
+     * @params response Response returned by the server for a request to listAffiliateLinks
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async listAffiliateLinksUsingGETWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListAffiliateLinksResponse >> {
+     public async listAffiliateLinksWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListAffiliateLinksResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: ListAffiliateLinksResponse = ObjectSerializer.deserialize(
@@ -2164,10 +2164,10 @@ export class AffiliateApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to listSummariesUsingGET1
+     * @params response Response returned by the server for a request to listSummaries
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async listSummariesUsingGET1WithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListAffiliateSummariesResponse >> {
+     public async listSummariesWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListAffiliateSummariesResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: ListAffiliateSummariesResponse = ObjectSerializer.deserialize(
@@ -2221,10 +2221,10 @@ export class AffiliateApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to removeAffiliateFromProgramUsingPOST
+     * @params response Response returned by the server for a request to removeAffiliateFromProgram
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async removeAffiliateFromProgramUsingPOSTWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async removeAffiliateFromProgramWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
@@ -2267,10 +2267,10 @@ export class AffiliateApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to removeProductCommissionFromCommissionsUsingPOST
+     * @params response Response returned by the server for a request to removeProductCommissionFromCommissions
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async removeProductCommissionFromCommissionsUsingPOSTWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async removeProductCommissionFromCommissionsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
@@ -2313,10 +2313,10 @@ export class AffiliateApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to removeSubscriptionPlanCommissionFromCommissionsUsingPOST
+     * @params response Response returned by the server for a request to removeSubscriptionPlanCommissionFromCommissions
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async removeSubscriptionPlanCommissionFromCommissionsUsingPOSTWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async removeSubscriptionPlanCommissionFromCommissionsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
@@ -2359,10 +2359,10 @@ export class AffiliateApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to updateAffiliateUsingPATCH
+     * @params response Response returned by the server for a request to updateAffiliate
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async updateAffiliateUsingPATCHWithHttpInfo(response: ResponseContext): Promise<HttpInfo<RestAffiliate >> {
+     public async updateAffiliateWithHttpInfo(response: ResponseContext): Promise<HttpInfo<RestAffiliate >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: RestAffiliate = ObjectSerializer.deserialize(
@@ -2416,10 +2416,10 @@ export class AffiliateApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to updateCommissionProgramUsingPATCH
+     * @params response Response returned by the server for a request to updateCommissionProgram
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async updateCommissionProgramUsingPATCHWithHttpInfo(response: ResponseContext): Promise<HttpInfo<AffiliateCommissionProgramResponse >> {
+     public async updateCommissionProgramWithHttpInfo(response: ResponseContext): Promise<HttpInfo<AffiliateCommissionProgramResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: AffiliateCommissionProgramResponse = ObjectSerializer.deserialize(
@@ -2473,10 +2473,10 @@ export class AffiliateApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to updateDefaultCommissionProgramUsingPATCH
+     * @params response Response returned by the server for a request to updateDefaultCommissionProgram
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async updateDefaultCommissionProgramUsingPATCHWithHttpInfo(response: ResponseContext): Promise<HttpInfo<SetDefaultCommissionProgramResponse >> {
+     public async updateDefaultCommissionProgramWithHttpInfo(response: ResponseContext): Promise<HttpInfo<SetDefaultCommissionProgramResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: SetDefaultCommissionProgramResponse = ObjectSerializer.deserialize(
@@ -2530,10 +2530,10 @@ export class AffiliateApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to updateProductCommissionProgramUsingPATCH
+     * @params response Response returned by the server for a request to updateProductCommissionProgram
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async updateProductCommissionProgramUsingPATCHWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ProductCommissionProgram >> {
+     public async updateProductCommissionProgramWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ProductCommissionProgram >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: ProductCommissionProgram = ObjectSerializer.deserialize(
@@ -2587,10 +2587,10 @@ export class AffiliateApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to updateRedirectLinkUsingPATCH
+     * @params response Response returned by the server for a request to updateRedirectLink
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async updateRedirectLinkUsingPATCHWithHttpInfo(response: ResponseContext): Promise<HttpInfo<AffiliateLink >> {
+     public async updateRedirectLinkWithHttpInfo(response: ResponseContext): Promise<HttpInfo<AffiliateLink >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: AffiliateLink = ObjectSerializer.deserialize(
@@ -2644,10 +2644,10 @@ export class AffiliateApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to updateSubscriptionCommissionProgramUsingPATCH
+     * @params response Response returned by the server for a request to updateSubscriptionCommissionProgram
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async updateSubscriptionCommissionProgramUsingPATCHWithHttpInfo(response: ResponseContext): Promise<HttpInfo<SubscriptionCommissionProgram >> {
+     public async updateSubscriptionCommissionProgramWithHttpInfo(response: ResponseContext): Promise<HttpInfo<SubscriptionCommissionProgram >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: SubscriptionCommissionProgram = ObjectSerializer.deserialize(

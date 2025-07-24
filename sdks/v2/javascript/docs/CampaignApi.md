@@ -4,16 +4,16 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**addContactsToCampaignSequenceUsingPOST1**](CampaignApi.md#addContactsToCampaignSequenceUsingPOST1) | **POST** /v2/campaigns/{campaign_id}/sequences/{sequence_id}:addContacts | Add Contacts to Campaign Sequence
-[**getCampaignUsingGET1**](CampaignApi.md#getCampaignUsingGET1) | **GET** /v2/campaigns/{campaign_id} | Retrieve a Campaign
-[**listCampaignsUsingGET1**](CampaignApi.md#listCampaignsUsingGET1) | **GET** /v2/campaigns | List Campaigns
-[**removeContactsFromCampaignSequenceUsingPOST**](CampaignApi.md#removeContactsFromCampaignSequenceUsingPOST) | **POST** /v2/campaigns/{campaign_id}/sequences/{sequence_id}:removeContacts | Remove Contacts from Campaign Sequence
+[**addContactsToCampaignSequence**](CampaignApi.md#addContactsToCampaignSequence) | **POST** /v2/campaigns/{campaign_id}/sequences/{sequence_id}:addContacts | Add Contacts to Campaign Sequence
+[**getCampaign**](CampaignApi.md#getCampaign) | **GET** /v2/campaigns/{campaign_id} | Retrieve a Campaign
+[**listCampaigns**](CampaignApi.md#listCampaigns) | **GET** /v2/campaigns | List Campaigns
+[**removeContactsFromCampaignSequence**](CampaignApi.md#removeContactsFromCampaignSequence) | **POST** /v2/campaigns/{campaign_id}/sequences/{sequence_id}:removeContacts | Remove Contacts from Campaign Sequence
 
 
 
-## addContactsToCampaignSequenceUsingPOST1
+## addContactsToCampaignSequence
 
-> AddContactsToSequenceResponse addContactsToCampaignSequenceUsingPOST1(campaignId, sequenceId, addContactsToSequenceRequest)
+> AddContactsToSequenceResponse addContactsToCampaignSequence(campaignId, sequenceId, addContactsToSequenceRequest)
 
 Add Contacts to Campaign Sequence
 
@@ -28,7 +28,7 @@ let apiInstance = new KeapCoreServiceV2Sdk.CampaignApi();
 let campaignId = "campaignId_example"; // String | campaign_id
 let sequenceId = "sequenceId_example"; // String | sequence_id
 let addContactsToSequenceRequest = new KeapCoreServiceV2Sdk.AddContactsToSequenceRequest(); // AddContactsToSequenceRequest | addContactsToSequenceRequest
-apiInstance.addContactsToCampaignSequenceUsingPOST1(campaignId, sequenceId, addContactsToSequenceRequest).then((data) => {
+apiInstance.addContactsToCampaignSequence(campaignId, sequenceId, addContactsToSequenceRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -59,9 +59,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## getCampaignUsingGET1
+## getCampaign
 
-> Campaign getCampaignUsingGET1(campaignId)
+> Campaign getCampaign(campaignId)
 
 Retrieve a Campaign
 
@@ -74,7 +74,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.CampaignApi();
 let campaignId = "campaignId_example"; // String | campaign_id
-apiInstance.getCampaignUsingGET1(campaignId).then((data) => {
+apiInstance.getCampaign(campaignId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -103,9 +103,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## listCampaignsUsingGET1
+## listCampaigns
 
-> ListCampaignsResponse listCampaignsUsingGET1(opts)
+> ListCampaignsResponse listCampaigns(opts)
 
 List Campaigns
 
@@ -124,7 +124,7 @@ let opts = {
   'pageToken': "pageToken_example", // String | Page token
   'stats': true // Boolean | 
 };
-apiInstance.listCampaignsUsingGET1(opts).then((data) => {
+apiInstance.listCampaigns(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -157,9 +157,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## removeContactsFromCampaignSequenceUsingPOST
+## removeContactsFromCampaignSequence
 
-> RemoveContactsFromSequenceResponse removeContactsFromCampaignSequenceUsingPOST(campaignId, sequenceId, removeContactsFromSequenceRequest)
+> RemoveContactsFromSequenceResponse removeContactsFromCampaignSequence(campaignId, sequenceId, removeContactsFromSequenceRequest)
 
 Remove Contacts from Campaign Sequence
 
@@ -174,7 +174,7 @@ let apiInstance = new KeapCoreServiceV2Sdk.CampaignApi();
 let campaignId = "campaignId_example"; // String | campaign_id
 let sequenceId = "sequenceId_example"; // String | sequence_id
 let removeContactsFromSequenceRequest = new KeapCoreServiceV2Sdk.RemoveContactsFromSequenceRequest(); // RemoveContactsFromSequenceRequest | removeContactsFromSequenceRequest
-apiInstance.removeContactsFromCampaignSequenceUsingPOST(campaignId, sequenceId, removeContactsFromSequenceRequest).then((data) => {
+apiInstance.removeContactsFromCampaignSequence(campaignId, sequenceId, removeContactsFromSequenceRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);

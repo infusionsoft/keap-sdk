@@ -10,23 +10,14 @@
 |**cardInfo** | [**CardInfo**](CardInfo.md) |  |  [optional] |
 |**contactId** | **String** |  |  [optional] |
 |**createdTime** | **String** |  |  [optional] |
-|**paymentGatewayId** | **String** |  |  [optional] |
+|**merchantAccountId** | **String** |  |  [optional] |
+|**merchantAccountType** | [**MerchantAccountTypeEnum**](#MerchantAccountTypeEnum) |  |  [optional] |
 |**paymentMethodId** | **String** |  |  [optional] |
 |**paymentMethodType** | [**PaymentMethodTypeEnum**](#PaymentMethodTypeEnum) |  |  [optional] |
-|**paymentProcessorType** | [**PaymentProcessorTypeEnum**](#PaymentProcessorTypeEnum) |  |  [optional] |
 
 
 
-## Enum: PaymentMethodTypeEnum
-
-| Name | Value |
-|---- | -----|
-| CARD | &quot;CARD&quot; |
-| UNKNOWN_COULD_NOT_DESERIALIZE | &quot;unknown_default_open_api&quot; |
-
-
-
-## Enum: PaymentProcessorTypeEnum
+## Enum: MerchantAccountTypeEnum
 
 | Name | Value |
 |---- | -----|
@@ -37,6 +28,15 @@
 | WEPAY | &quot;WEPAY&quot; |
 | STRIPE | &quot;STRIPE&quot; |
 | KEAP_PAY | &quot;KEAP_PAY&quot; |
+| UNKNOWN_COULD_NOT_DESERIALIZE | &quot;unknown_default_open_api&quot; |
+
+
+
+## Enum: PaymentMethodTypeEnum
+
+| Name | Value |
+|---- | -----|
+| CARD | &quot;CARD&quot; |
 | UNKNOWN_COULD_NOT_DESERIALIZE | &quot;unknown_default_open_api&quot; |
 
 

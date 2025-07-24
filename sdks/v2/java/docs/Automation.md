@@ -13,9 +13,8 @@
 |**errorMessage** | **String** |  |  [optional] |
 |**id** | **String** |  |  [optional] |
 |**locked** | **Boolean** |  |  [optional] |
-|**publicationDate** | **String** |  |  [optional] |
 |**publishedBy** | **String** |  |  [optional] |
-|**publishedDate** | **ZonedDateTime** |  |  [optional] |
+|**publishedDate** | **String** |  |  [optional] |
 |**publishedTimezone** | **String** |  |  [optional] |
 |**status** | **String** |  |  [optional] |
 |**title** | **String** |  |  [optional] |

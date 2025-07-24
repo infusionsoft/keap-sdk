@@ -26,65 +26,23 @@ import { UpdateNoteResponse } from '../models/UpdateNoteResponse';
 export class NoteApiRequestFactory extends BaseAPIRequestFactory {
 
     /**
-     * Creates a custom field of the specified type and options to the Note object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
-     * Create a Custom Field
-     * @param createCustomFieldRequest customField
-     */
-    public async createNoteCustomFieldUsingPOST1(createCustomFieldRequest: CreateCustomFieldRequest, _options?: Configuration): Promise<RequestContext> {
-        let _config = _options || this.configuration;
-
-        // verify required parameter 'createCustomFieldRequest' is not null or undefined
-        if (createCustomFieldRequest === null || createCustomFieldRequest === undefined) {
-            throw new RequiredError("NoteApi", "createNoteCustomFieldUsingPOST1", "createCustomFieldRequest");
-        }
-
-
-        // Path Params
-        const localVarPath = '/v2/notes/model/customFields';
-
-        // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-
-        // Body Params
-        const contentType = ObjectSerializer.getPreferredMediaType([
-            "application/json"
-        ]);
-        requestContext.setHeaderParam("Content-Type", contentType);
-        const serializedBody = ObjectSerializer.stringify(
-            ObjectSerializer.serialize(createCustomFieldRequest, "CreateCustomFieldRequest", ""),
-            contentType
-        );
-        requestContext.setBody(serializedBody);
-
-        
-        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-
-        return requestContext;
-    }
-
-    /**
      * Creates a new Note.
      * Create a Note
      * @param contactId contact_id
      * @param createNoteRequest request
      */
-    public async createNoteUsingPOST1(contactId: string, createNoteRequest: CreateNoteRequest, _options?: Configuration): Promise<RequestContext> {
+    public async createNote(contactId: string, createNoteRequest: CreateNoteRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'contactId' is not null or undefined
         if (contactId === null || contactId === undefined) {
-            throw new RequiredError("NoteApi", "createNoteUsingPOST1", "contactId");
+            throw new RequiredError("NoteApi", "createNote", "contactId");
         }
 
 
         // verify required parameter 'createNoteRequest' is not null or undefined
         if (createNoteRequest === null || createNoteRequest === undefined) {
-            throw new RequiredError("NoteApi", "createNoteUsingPOST1", "createNoteRequest");
+            throw new RequiredError("NoteApi", "createNote", "createNoteRequest");
         }
 
 
@@ -118,23 +76,65 @@ export class NoteApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
+     * Creates a custom field of the specified type and options to the Note object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+     * Create a Custom Field
+     * @param createCustomFieldRequest customField
+     */
+    public async createNoteCustomField(createCustomFieldRequest: CreateCustomFieldRequest, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'createCustomFieldRequest' is not null or undefined
+        if (createCustomFieldRequest === null || createCustomFieldRequest === undefined) {
+            throw new RequiredError("NoteApi", "createNoteCustomField", "createCustomFieldRequest");
+        }
+
+
+        // Path Params
+        const localVarPath = '/v2/notes/model/customFields';
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        // Body Params
+        const contentType = ObjectSerializer.getPreferredMediaType([
+            "application/json"
+        ]);
+        requestContext.setHeaderParam("Content-Type", contentType);
+        const serializedBody = ObjectSerializer.stringify(
+            ObjectSerializer.serialize(createCustomFieldRequest, "CreateCustomFieldRequest", ""),
+            contentType
+        );
+        requestContext.setBody(serializedBody);
+
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
      * Deletes the specified Note
      * Delete a Note
      * @param contactId contact_id
      * @param noteId note_id
      */
-    public async deleteNoteUsingDELETE1(contactId: string, noteId: string, _options?: Configuration): Promise<RequestContext> {
+    public async deleteNote(contactId: string, noteId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'contactId' is not null or undefined
         if (contactId === null || contactId === undefined) {
-            throw new RequiredError("NoteApi", "deleteNoteUsingDELETE1", "contactId");
+            throw new RequiredError("NoteApi", "deleteNote", "contactId");
         }
 
 
         // verify required parameter 'noteId' is not null or undefined
         if (noteId === null || noteId === undefined) {
-            throw new RequiredError("NoteApi", "deleteNoteUsingDELETE1", "noteId");
+            throw new RequiredError("NoteApi", "deleteNote", "noteId");
         }
 
 
@@ -163,18 +163,18 @@ export class NoteApiRequestFactory extends BaseAPIRequestFactory {
      * @param contactId contact_id
      * @param noteId note_id
      */
-    public async getNoteUsingGET1(contactId: string, noteId: string, _options?: Configuration): Promise<RequestContext> {
+    public async getNote(contactId: string, noteId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'contactId' is not null or undefined
         if (contactId === null || contactId === undefined) {
-            throw new RequiredError("NoteApi", "getNoteUsingGET1", "contactId");
+            throw new RequiredError("NoteApi", "getNote", "contactId");
         }
 
 
         // verify required parameter 'noteId' is not null or undefined
         if (noteId === null || noteId === undefined) {
-            throw new RequiredError("NoteApi", "getNoteUsingGET1", "noteId");
+            throw new RequiredError("NoteApi", "getNote", "noteId");
         }
 
 
@@ -205,7 +205,7 @@ export class NoteApiRequestFactory extends BaseAPIRequestFactory {
      * @param pageSize Total number of items to return per page
      * @param pageToken Page token
      */
-    public async listNoteTemplatesUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
+    public async listNoteTemplates(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
 
@@ -253,17 +253,17 @@ export class NoteApiRequestFactory extends BaseAPIRequestFactory {
      * Retrieves a list of Notes
      * List Notes
      * @param contactId contact_id
-     * @param filter Search filter to apply to results
-     * @param orderBy Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60;
+     * @param filter Filter to apply, allowed fields are: - (String) &#x60;assigned_to_user_id&#x60; - (String) &#x60;title&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;assigned_to_user_id%3D%3DUserId&#x60; - &#x60;filter&#x3D;title%3D%3DexpectedTitle&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; 
+     * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param pageSize Total number of items to return per page
      * @param pageToken Page token
      */
-    public async listNotesUsingGET1(contactId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
+    public async listNotes(contactId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'contactId' is not null or undefined
         if (contactId === null || contactId === undefined) {
-            throw new RequiredError("NoteApi", "listNotesUsingGET1", "contactId");
+            throw new RequiredError("NoteApi", "listNotes", "contactId");
         }
 
 
@@ -313,7 +313,7 @@ export class NoteApiRequestFactory extends BaseAPIRequestFactory {
      * Gets the custom fields for the Note object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
      * Retrieve Note Model
      */
-    public async retrieveNoteModelUsingGET1(_options?: Configuration): Promise<RequestContext> {
+    public async retrieveNoteModel(_options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // Path Params
@@ -341,24 +341,24 @@ export class NoteApiRequestFactory extends BaseAPIRequestFactory {
      * @param updateNoteRequest updateNoteRequest
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateNoteUsingPATCH(contactId: string, noteId: string, updateNoteRequest: UpdateNoteRequest, updateMask?: Array<string>, _options?: Configuration): Promise<RequestContext> {
+    public async updateNote(contactId: string, noteId: string, updateNoteRequest: UpdateNoteRequest, updateMask?: Array<string>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'contactId' is not null or undefined
         if (contactId === null || contactId === undefined) {
-            throw new RequiredError("NoteApi", "updateNoteUsingPATCH", "contactId");
+            throw new RequiredError("NoteApi", "updateNote", "contactId");
         }
 
 
         // verify required parameter 'noteId' is not null or undefined
         if (noteId === null || noteId === undefined) {
-            throw new RequiredError("NoteApi", "updateNoteUsingPATCH", "noteId");
+            throw new RequiredError("NoteApi", "updateNote", "noteId");
         }
 
 
         // verify required parameter 'updateNoteRequest' is not null or undefined
         if (updateNoteRequest === null || updateNoteRequest === undefined) {
-            throw new RequiredError("NoteApi", "updateNoteUsingPATCH", "updateNoteRequest");
+            throw new RequiredError("NoteApi", "updateNote", "updateNoteRequest");
         }
 
 
@@ -408,18 +408,18 @@ export class NoteApiRequestFactory extends BaseAPIRequestFactory {
      * @param updateCustomFieldMetaDataRequest request
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateNotesCustomFieldUsingPATCH(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Array<string>, _options?: Configuration): Promise<RequestContext> {
+    public async updateNotesCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Array<string>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'customFieldId' is not null or undefined
         if (customFieldId === null || customFieldId === undefined) {
-            throw new RequiredError("NoteApi", "updateNotesCustomFieldUsingPATCH", "customFieldId");
+            throw new RequiredError("NoteApi", "updateNotesCustomField", "customFieldId");
         }
 
 
         // verify required parameter 'updateCustomFieldMetaDataRequest' is not null or undefined
         if (updateCustomFieldMetaDataRequest === null || updateCustomFieldMetaDataRequest === undefined) {
-            throw new RequiredError("NoteApi", "updateNotesCustomFieldUsingPATCH", "updateCustomFieldMetaDataRequest");
+            throw new RequiredError("NoteApi", "updateNotesCustomField", "updateCustomFieldMetaDataRequest");
         }
 
 
@@ -469,60 +469,10 @@ export class NoteApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to createNoteCustomFieldUsingPOST1
+     * @params response Response returned by the server for a request to createNote
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async createNoteCustomFieldUsingPOST1WithHttpInfo(response: ResponseContext): Promise<HttpInfo<CustomFieldMetaData >> {
-        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("201", response.httpStatusCode)) {
-            const body: CustomFieldMetaData = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "CustomFieldMetaData", ""
-            ) as CustomFieldMetaData;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-        if (isCodeInRange("401", response.httpStatusCode)) {
-            const body: Error = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "Error", ""
-            ) as Error;
-            throw new ApiException<Error>(response.httpStatusCode, "Unauthorized", body, response.headers);
-        }
-        if (isCodeInRange("403", response.httpStatusCode)) {
-            const body: Error = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "Error", ""
-            ) as Error;
-            throw new ApiException<Error>(response.httpStatusCode, "Forbidden", body, response.headers);
-        }
-        if (isCodeInRange("500", response.httpStatusCode)) {
-            const body: Error = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "Error", ""
-            ) as Error;
-            throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
-        }
-
-        // Work around for missing responses in specification, e.g. for petstore.yaml
-        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: CustomFieldMetaData = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "CustomFieldMetaData", ""
-            ) as CustomFieldMetaData;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-
-        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
-    }
-
-    /**
-     * Unwraps the actual response sent by the server from the response context and deserializes the response content
-     * to the expected objects
-     *
-     * @params response Response returned by the server for a request to createNoteUsingPOST1
-     * @throws ApiException if the response code was not in [200, 299]
-     */
-     public async createNoteUsingPOST1WithHttpInfo(response: ResponseContext): Promise<HttpInfo<Note >> {
+     public async createNoteWithHttpInfo(response: ResponseContext): Promise<HttpInfo<Note >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("201", response.httpStatusCode)) {
             const body: Note = ObjectSerializer.deserialize(
@@ -569,10 +519,60 @@ export class NoteApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to deleteNoteUsingDELETE1
+     * @params response Response returned by the server for a request to createNoteCustomField
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async deleteNoteUsingDELETE1WithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async createNoteCustomFieldWithHttpInfo(response: ResponseContext): Promise<HttpInfo<CustomFieldMetaData >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("201", response.httpStatusCode)) {
+            const body: CustomFieldMetaData = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "CustomFieldMetaData", ""
+            ) as CustomFieldMetaData;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("401", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Unauthorized", body, response.headers);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: CustomFieldMetaData = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "CustomFieldMetaData", ""
+            ) as CustomFieldMetaData;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to deleteNote
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async deleteNoteWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("204", response.httpStatusCode)) {
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
@@ -622,10 +622,10 @@ export class NoteApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to getNoteUsingGET1
+     * @params response Response returned by the server for a request to getNote
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getNoteUsingGET1WithHttpInfo(response: ResponseContext): Promise<HttpInfo<GetNoteResponse >> {
+     public async getNoteWithHttpInfo(response: ResponseContext): Promise<HttpInfo<GetNoteResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: GetNoteResponse = ObjectSerializer.deserialize(
@@ -679,10 +679,10 @@ export class NoteApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to listNoteTemplatesUsingGET
+     * @params response Response returned by the server for a request to listNoteTemplates
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async listNoteTemplatesUsingGETWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListNoteTemplateResponse >> {
+     public async listNoteTemplatesWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListNoteTemplateResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: ListNoteTemplateResponse = ObjectSerializer.deserialize(
@@ -736,10 +736,10 @@ export class NoteApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to listNotesUsingGET1
+     * @params response Response returned by the server for a request to listNotes
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async listNotesUsingGET1WithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListNotesResponse >> {
+     public async listNotesWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListNotesResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: ListNotesResponse = ObjectSerializer.deserialize(
@@ -793,10 +793,10 @@ export class NoteApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to retrieveNoteModelUsingGET1
+     * @params response Response returned by the server for a request to retrieveNoteModel
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async retrieveNoteModelUsingGET1WithHttpInfo(response: ResponseContext): Promise<HttpInfo<ObjectModel >> {
+     public async retrieveNoteModelWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ObjectModel >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: ObjectModel = ObjectSerializer.deserialize(
@@ -850,10 +850,10 @@ export class NoteApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to updateNoteUsingPATCH
+     * @params response Response returned by the server for a request to updateNote
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async updateNoteUsingPATCHWithHttpInfo(response: ResponseContext): Promise<HttpInfo<UpdateNoteResponse >> {
+     public async updateNoteWithHttpInfo(response: ResponseContext): Promise<HttpInfo<UpdateNoteResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: UpdateNoteResponse = ObjectSerializer.deserialize(
@@ -907,10 +907,10 @@ export class NoteApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to updateNotesCustomFieldUsingPATCH
+     * @params response Response returned by the server for a request to updateNotesCustomField
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async updateNotesCustomFieldUsingPATCHWithHttpInfo(response: ResponseContext): Promise<HttpInfo<CustomFieldMetaData >> {
+     public async updateNotesCustomFieldWithHttpInfo(response: ResponseContext): Promise<HttpInfo<CustomFieldMetaData >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: CustomFieldMetaData = ObjectSerializer.deserialize(

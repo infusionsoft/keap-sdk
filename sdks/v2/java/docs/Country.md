@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**code** | **String** |  |  [optional] |
+|**codes** | [**CountryCodes**](CountryCodes.md) |  |  [optional] |
 |**name** | **String** |  |  [optional] |
 
 

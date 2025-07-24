@@ -7,7 +7,6 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**nextPageToken** | **String** |  |  [optional] |
 |**shippingMethods** | [**List&lt;ShippingMethod&gt;**](ShippingMethod.md) |  |  [optional] |
 
 

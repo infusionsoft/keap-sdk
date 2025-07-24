@@ -41,28 +41,17 @@ import { ApplicationFeaturesEnabled } from '../models/ApplicationFeaturesEnabled
 import { ApplyRemoveTagRequest } from '../models/ApplyRemoveTagRequest';
 import { ApplyTagsResponse } from '../models/ApplyTagsResponse';
 import { AssignAutomationCategoryRequest } from '../models/AssignAutomationCategoryRequest';
-import { AssignProductCategoriesRequest } from '../models/AssignProductCategoriesRequest';
 import { AssignProductsRequest } from '../models/AssignProductsRequest';
 import { Automation } from '../models/Automation';
 import { AutomationCategory } from '../models/AutomationCategory';
 import { AutomationLockStatus } from '../models/AutomationLockStatus';
-import { BaseListResponseDeal } from '../models/BaseListResponseDeal';
-import { BaseListResponseDealNote } from '../models/BaseListResponseDealNote';
-import { BaseListResponsePipeline } from '../models/BaseListResponsePipeline';
-import { BaseListResponsePipelineCustomField } from '../models/BaseListResponsePipelineCustomField';
-import { BaseListResponsePipelineSummary } from '../models/BaseListResponsePipelineSummary';
-import { BaseListResponseStage } from '../models/BaseListResponseStage';
 import { BasicCompany } from '../models/BasicCompany';
 import { BasicContact } from '../models/BasicContact';
 import { BasicUser } from '../models/BasicUser';
-import { BulkCreateDealNoteRequest } from '../models/BulkCreateDealNoteRequest';
-import { BulkCreateDealNoteResponse } from '../models/BulkCreateDealNoteResponse';
-import { BulkCreateDealNotesRequest } from '../models/BulkCreateDealNotesRequest';
-import { BulkCreateDealNotesResponse } from '../models/BulkCreateDealNotesResponse';
 import { BusinessProfileAddressRequest } from '../models/BusinessProfileAddressRequest';
 import { BusinessProfileAddressResponse } from '../models/BusinessProfileAddressResponse';
 import { Campaign } from '../models/Campaign';
-import { CancelSubscriptionsRequest } from '../models/CancelSubscriptionsRequest';
+import { CancelSubscriptionRequest } from '../models/CancelSubscriptionRequest';
 import { CardInfo } from '../models/CardInfo';
 import { CategoryDiscount } from '../models/CategoryDiscount';
 import { CategoryReference } from '../models/CategoryReference';
@@ -74,6 +63,7 @@ import { ContactLink } from '../models/ContactLink';
 import { ContactLinkType } from '../models/ContactLinkType';
 import { ContactUtmResponse } from '../models/ContactUtmResponse';
 import { Country } from '../models/Country';
+import { CountryCodes } from '../models/CountryCodes';
 import { CreateAffiliateRequest } from '../models/CreateAffiliateRequest';
 import { CreateAutomationCategoryRequest } from '../models/CreateAutomationCategoryRequest';
 import { CreateCategoryDiscountRequest } from '../models/CreateCategoryDiscountRequest';
@@ -84,8 +74,6 @@ import { CreateContactUtmPropertiesRequest } from '../models/CreateContactUtmPro
 import { CreateCustomFieldOptionRequest } from '../models/CreateCustomFieldOptionRequest';
 import { CreateCustomFieldRequest } from '../models/CreateCustomFieldRequest';
 import { CreateCustomFieldResponse } from '../models/CreateCustomFieldResponse';
-import { CreateDealNoteRequest } from '../models/CreateDealNoteRequest';
-import { CreateDealRequest } from '../models/CreateDealRequest';
 import { CreateDefaultCommissionProgramRequest } from '../models/CreateDefaultCommissionProgramRequest';
 import { CreateEmailSentRequest } from '../models/CreateEmailSentRequest';
 import { CreateEmailsSentRequest } from '../models/CreateEmailsSentRequest';
@@ -103,7 +91,6 @@ import { CreateOrUpdateAffiliateLinkRequest } from '../models/CreateOrUpdateAffi
 import { CreateOrderTotalDiscountRequest } from '../models/CreateOrderTotalDiscountRequest';
 import { CreatePaymentMethodConfigRequest } from '../models/CreatePaymentMethodConfigRequest';
 import { CreatePaymentRequest } from '../models/CreatePaymentRequest';
-import { CreatePipelineRequest } from '../models/CreatePipelineRequest';
 import { CreateProductCategoryRequest } from '../models/CreateProductCategoryRequest';
 import { CreateProductCommissionProgramRequest } from '../models/CreateProductCommissionProgramRequest';
 import { CreateProductDiscountRequest } from '../models/CreateProductDiscountRequest';
@@ -112,10 +99,9 @@ import { CreateProductRequest } from '../models/CreateProductRequest';
 import { CreateReferralRequest } from '../models/CreateReferralRequest';
 import { CreateRestOrderItemRequest } from '../models/CreateRestOrderItemRequest';
 import { CreateShippingDiscountRequest } from '../models/CreateShippingDiscountRequest';
-import { CreateStageRequest } from '../models/CreateStageRequest';
 import { CreateSubscriptionCommissionProgramRequest } from '../models/CreateSubscriptionCommissionProgramRequest';
 import { CreateSubscriptionPlanRequest } from '../models/CreateSubscriptionPlanRequest';
-import { CreateSubscriptionV2 } from '../models/CreateSubscriptionV2';
+import { CreateSubscriptionRequest } from '../models/CreateSubscriptionRequest';
 import { CreateTaskRequest } from '../models/CreateTaskRequest';
 import { CreateUpdateContactRequest } from '../models/CreateUpdateContactRequest';
 import { CreateUpdateLeadSourceCategoryRequest } from '../models/CreateUpdateLeadSourceCategoryRequest';
@@ -128,14 +114,6 @@ import { CustomField } from '../models/CustomField';
 import { CustomFieldMetaData } from '../models/CustomFieldMetaData';
 import { CustomFieldOption } from '../models/CustomFieldOption';
 import { CustomFieldValue } from '../models/CustomFieldValue';
-import { DateExpression } from '../models/DateExpression';
-import { DateExpressionResponse } from '../models/DateExpressionResponse';
-import { Deal } from '../models/Deal';
-import { DealContact } from '../models/DealContact';
-import { DealListResponse } from '../models/DealListResponse';
-import { DealNote } from '../models/DealNote';
-import { DealNoteListResponse } from '../models/DealNoteListResponse';
-import { DealStatus } from '../models/DealStatus';
 import { DefaultCommission } from '../models/DefaultCommission';
 import { DeleteEmailsRequest } from '../models/DeleteEmailsRequest';
 import { DeleteEmailsResponse } from '../models/DeleteEmailsResponse';
@@ -144,16 +122,13 @@ import { DeleteProgramCommissionRequest } from '../models/DeleteProgramCommissio
 import { DeleteSubscriptionPlanCommissionRequest } from '../models/DeleteSubscriptionPlanCommissionRequest';
 import { Discount } from '../models/Discount';
 import { DiscountCriteria } from '../models/DiscountCriteria';
-import { DisplayForm } from '../models/DisplayForm';
-import { DisplayGroup } from '../models/DisplayGroup';
-import { DisplayProperty } from '../models/DisplayProperty';
-import { DisplayPropertySource } from '../models/DisplayPropertySource';
 import { EmailAddress } from '../models/EmailAddress';
 import { EmailAddressRequest } from '../models/EmailAddressRequest';
 import { EmailAddressStatus } from '../models/EmailAddressStatus';
 import { EmailSendRequest } from '../models/EmailSendRequest';
 import { EmailSendRequestAttachment } from '../models/EmailSendRequestAttachment';
 import { EmailSendTemplateRequest } from '../models/EmailSendTemplateRequest';
+import { EmailSent } from '../models/EmailSent';
 import { EmailSentCreateError } from '../models/EmailSentCreateError';
 import { EmailSentWithContent } from '../models/EmailSentWithContent';
 import { EmailTemplate } from '../models/EmailTemplate';
@@ -193,6 +168,7 @@ import { ListAffiliateCommissionProgramsResponse } from '../models/ListAffiliate
 import { ListAffiliateCommissionsResponse } from '../models/ListAffiliateCommissionsResponse';
 import { ListAffiliateLinksResponse } from '../models/ListAffiliateLinksResponse';
 import { ListAffiliateSummariesResponse } from '../models/ListAffiliateSummariesResponse';
+import { ListAffiliatesResponse } from '../models/ListAffiliatesResponse';
 import { ListAutomationCategoryResponse } from '../models/ListAutomationCategoryResponse';
 import { ListAutomationIdsResponse } from '../models/ListAutomationIdsResponse';
 import { ListAutomationResponse } from '../models/ListAutomationResponse';
@@ -204,6 +180,7 @@ import { ListContactLinkTypesResponse } from '../models/ListContactLinkTypesResp
 import { ListContactLinksResponse } from '../models/ListContactLinksResponse';
 import { ListContactsResponse } from '../models/ListContactsResponse';
 import { ListCountriesResponse } from '../models/ListCountriesResponse';
+import { ListEmailsSentResponse } from '../models/ListEmailsSentResponse';
 import { ListFilesResponse } from '../models/ListFilesResponse';
 import { ListFreeTrialDiscountsResponse } from '../models/ListFreeTrialDiscountsResponse';
 import { ListLandingPagesResponse } from '../models/ListLandingPagesResponse';
@@ -211,6 +188,8 @@ import { ListLeadSourceCategoriesResponse } from '../models/ListLeadSourceCatego
 import { ListLeadSourceExpensesResponse } from '../models/ListLeadSourceExpensesResponse';
 import { ListLeadSourceRecurringExpensesResponse } from '../models/ListLeadSourceRecurringExpensesResponse';
 import { ListLeadSourcesResponse } from '../models/ListLeadSourcesResponse';
+import { ListMerchantAccountResponse } from '../models/ListMerchantAccountResponse';
+import { ListMerchantsResponse } from '../models/ListMerchantsResponse';
 import { ListNoteTemplateResponse } from '../models/ListNoteTemplateResponse';
 import { ListNotesResponse } from '../models/ListNotesResponse';
 import { ListOpportunitiesResponse } from '../models/ListOpportunitiesResponse';
@@ -225,8 +204,6 @@ import { ListProductInterestBundleResponse } from '../models/ListProductInterest
 import { ListProductsResponse } from '../models/ListProductsResponse';
 import { ListProvincesResponse } from '../models/ListProvincesResponse';
 import { ListReportsResponse } from '../models/ListReportsResponse';
-import { ListRestMerchantAccountResponse } from '../models/ListRestMerchantAccountResponse';
-import { ListRestMerchantResponse } from '../models/ListRestMerchantResponse';
 import { ListRestShippingMethodsResponse } from '../models/ListRestShippingMethodsResponse';
 import { ListShippingDiscountsResponse } from '../models/ListShippingDiscountsResponse';
 import { ListSubscriptionPlansResponse } from '../models/ListSubscriptionPlansResponse';
@@ -237,12 +214,8 @@ import { ListTaggedContactsResponse } from '../models/ListTaggedContactsResponse
 import { ListTagsResponse } from '../models/ListTagsResponse';
 import { ListTasksResponse } from '../models/ListTasksResponse';
 import { ListUsersPaginatedResponse } from '../models/ListUsersPaginatedResponse';
-import { LogicalDate } from '../models/LogicalDate';
 import { ModelError } from '../models/ModelError';
 import { ModelFile } from '../models/ModelFile';
-import { Money } from '../models/Money';
-import { MoveDealsForContactsRequest } from '../models/MoveDealsForContactsRequest';
-import { MoveDealsForContactsResponse } from '../models/MoveDealsForContactsResponse';
 import { Note } from '../models/Note';
 import { NoteTemplate } from '../models/NoteTemplate';
 import { ObjectModel } from '../models/ObjectModel';
@@ -253,49 +226,12 @@ import { OrderItemTax } from '../models/OrderItemTax';
 import { OrderTotalDiscount } from '../models/OrderTotalDiscount';
 import { Origin } from '../models/Origin';
 import { OriginRequest } from '../models/OriginRequest';
-import { Owner } from '../models/Owner';
 import { PatchAutomationCategoryRequest } from '../models/PatchAutomationCategoryRequest';
 import { PaymentMethod } from '../models/PaymentMethod';
 import { PaymentMethodConfig } from '../models/PaymentMethodConfig';
 import { PaymentPlan } from '../models/PaymentPlan';
 import { PaymentResult } from '../models/PaymentResult';
 import { PhoneNumber } from '../models/PhoneNumber';
-import { Pipeline } from '../models/Pipeline';
-import { PipelineCustomField } from '../models/PipelineCustomField';
-import { PipelineCustomFieldArrayDisplayOptions } from '../models/PipelineCustomFieldArrayDisplayOptions';
-import { PipelineCustomFieldArrayPropertyType } from '../models/PipelineCustomFieldArrayPropertyType';
-import { PipelineCustomFieldBooleanDisplayOptions } from '../models/PipelineCustomFieldBooleanDisplayOptions';
-import { PipelineCustomFieldBooleanDisplayType } from '../models/PipelineCustomFieldBooleanDisplayType';
-import { PipelineCustomFieldCardDisplayOptions } from '../models/PipelineCustomFieldCardDisplayOptions';
-import { PipelineCustomFieldCardProperty } from '../models/PipelineCustomFieldCardProperty';
-import { PipelineCustomFieldDateTimeOptions } from '../models/PipelineCustomFieldDateTimeOptions';
-import { PipelineCustomFieldDisplayOptions } from '../models/PipelineCustomFieldDisplayOptions';
-import { PipelineCustomFieldDisplayOptionsType } from '../models/PipelineCustomFieldDisplayOptionsType';
-import { PipelineCustomFieldDisplayStyle } from '../models/PipelineCustomFieldDisplayStyle';
-import { PipelineCustomFieldDurationDisplayOptions } from '../models/PipelineCustomFieldDurationDisplayOptions';
-import { PipelineCustomFieldDurationOptionsDurationUnit } from '../models/PipelineCustomFieldDurationOptionsDurationUnit';
-import { PipelineCustomFieldEmptyStateContent } from '../models/PipelineCustomFieldEmptyStateContent';
-import { PipelineCustomFieldModelPropertyTypeDiscriminator } from '../models/PipelineCustomFieldModelPropertyTypeDiscriminator';
-import { PipelineCustomFieldOption } from '../models/PipelineCustomFieldOption';
-import { PipelineCustomFieldOptionDisplayType } from '../models/PipelineCustomFieldOptionDisplayType';
-import { PipelineCustomFieldOptionGroup } from '../models/PipelineCustomFieldOptionGroup';
-import { PipelineCustomFieldOptions } from '../models/PipelineCustomFieldOptions';
-import { PipelineCustomFieldPrimitiveType } from '../models/PipelineCustomFieldPrimitiveType';
-import { PipelineCustomFieldPropertyValidator } from '../models/PipelineCustomFieldPropertyValidator';
-import { PipelineCustomFieldRefDisplayOptions } from '../models/PipelineCustomFieldRefDisplayOptions';
-import { PipelineCustomFieldRefDisplayType } from '../models/PipelineCustomFieldRefDisplayType';
-import { PipelineCustomFieldRefPropertyType } from '../models/PipelineCustomFieldRefPropertyType';
-import { PipelineCustomFieldRefType } from '../models/PipelineCustomFieldRefType';
-import { PipelineCustomFieldSizeValidationType } from '../models/PipelineCustomFieldSizeValidationType';
-import { PipelineCustomFieldSizeValidator } from '../models/PipelineCustomFieldSizeValidator';
-import { PipelineCustomFieldType } from '../models/PipelineCustomFieldType';
-import { PipelineCustomFields } from '../models/PipelineCustomFields';
-import { PipelineListResponse } from '../models/PipelineListResponse';
-import { PipelineOutcomeLabel } from '../models/PipelineOutcomeLabel';
-import { PipelineOutcomeLabelListResponse } from '../models/PipelineOutcomeLabelListResponse';
-import { PipelineStageListResponse } from '../models/PipelineStageListResponse';
-import { PipelineSummariesListResponse } from '../models/PipelineSummariesListResponse';
-import { PipelineSummary } from '../models/PipelineSummary';
 import { ProductCategory } from '../models/ProductCategory';
 import { ProductCommission } from '../models/ProductCommission';
 import { ProductCommissionProgram } from '../models/ProductCommissionProgram';
@@ -306,7 +242,7 @@ import { ProductInterestBundle } from '../models/ProductInterestBundle';
 import { ProductInventory } from '../models/ProductInventory';
 import { ProductOptions } from '../models/ProductOptions';
 import { ProductVariableSetting } from '../models/ProductVariableSetting';
-import { Provinces } from '../models/Provinces';
+import { Province } from '../models/Province';
 import { Referral } from '../models/Referral';
 import { RemoveContactsFromSequenceRequest } from '../models/RemoveContactsFromSequenceRequest';
 import { RemoveContactsFromSequenceResponse } from '../models/RemoveContactsFromSequenceResponse';
@@ -323,14 +259,12 @@ import { RestOpportunityStage } from '../models/RestOpportunityStage';
 import { RestProductOption } from '../models/RestProductOption';
 import { RestProductOptionValue } from '../models/RestProductOptionValue';
 import { RestSubscriptionPlan } from '../models/RestSubscriptionPlan';
-import { RestSubscriptionV2 } from '../models/RestSubscriptionV2';
 import { RestV2Opportunity } from '../models/RestV2Opportunity';
 import { RestV2Order } from '../models/RestV2Order';
 import { RestV2OrderItem } from '../models/RestV2OrderItem';
 import { RestV2Product } from '../models/RestV2Product';
 import { RestV2Subscription } from '../models/RestV2Subscription';
 import { RestV2User } from '../models/RestV2User';
-import { SaveAutomationCategoryRequest } from '../models/SaveAutomationCategoryRequest';
 import { Sequence } from '../models/Sequence';
 import { SequencePath } from '../models/SequencePath';
 import { SetDefaultCommissionProgramResponse } from '../models/SetDefaultCommissionProgramResponse';
@@ -339,10 +273,8 @@ import { ShippingInformation } from '../models/ShippingInformation';
 import { ShippingMethod } from '../models/ShippingMethod';
 import { SocialAccount } from '../models/SocialAccount';
 import { StackTraceElement } from '../models/StackTraceElement';
-import { Stage } from '../models/Stage';
-import { StageDealListResponse } from '../models/StageDealListResponse';
 import { StageDetails } from '../models/StageDetails';
-import { StageListResponse } from '../models/StageListResponse';
+import { Subscription } from '../models/Subscription';
 import { SubscriptionCommission } from '../models/SubscriptionCommission';
 import { SubscriptionCommissionProgram } from '../models/SubscriptionCommissionProgram';
 import { SubscriptionPlan } from '../models/SubscriptionPlan';
@@ -353,18 +285,12 @@ import { Throwable } from '../models/Throwable';
 import { URI } from '../models/URI';
 import { URL } from '../models/URL';
 import { UpdateAffiliateRequest } from '../models/UpdateAffiliateRequest';
-import { UpdateAutomationCategoryRequest } from '../models/UpdateAutomationCategoryRequest';
 import { UpdateBusinessProfileRequest } from '../models/UpdateBusinessProfileRequest';
 import { UpdateCategoryDiscountRequest } from '../models/UpdateCategoryDiscountRequest';
 import { UpdateCommissionProgramRequest } from '../models/UpdateCommissionProgramRequest';
 import { UpdateCompanyRequest } from '../models/UpdateCompanyRequest';
 import { UpdateCustomFieldMetaDataRequest } from '../models/UpdateCustomFieldMetaDataRequest';
-import { UpdateCustomFieldRequest } from '../models/UpdateCustomFieldRequest';
-import { UpdateDealNoteRequest } from '../models/UpdateDealNoteRequest';
 import { UpdateDefaultCommissionProgramRequest } from '../models/UpdateDefaultCommissionProgramRequest';
-import { UpdateDisplayFormRequest } from '../models/UpdateDisplayFormRequest';
-import { UpdateDisplayGroupRequest } from '../models/UpdateDisplayGroupRequest';
-import { UpdateDisplayPropertyRequest } from '../models/UpdateDisplayPropertyRequest';
 import { UpdateEmailAddress } from '../models/UpdateEmailAddress';
 import { UpdateFreeTrialDiscountRequest } from '../models/UpdateFreeTrialDiscountRequest';
 import { UpdateLeadSourceExpenseRequest } from '../models/UpdateLeadSourceExpenseRequest';
@@ -376,8 +302,6 @@ import { UpdateOpportunityStageRequest } from '../models/UpdateOpportunityStageR
 import { UpdateOrderItemRequest } from '../models/UpdateOrderItemRequest';
 import { UpdateOrderRequest } from '../models/UpdateOrderRequest';
 import { UpdateOrderTotalDiscountRequest } from '../models/UpdateOrderTotalDiscountRequest';
-import { UpdateOutcomeLabelsRequest } from '../models/UpdateOutcomeLabelsRequest';
-import { UpdatePipelineRequest } from '../models/UpdatePipelineRequest';
 import { UpdateProductCategoryRequest } from '../models/UpdateProductCategoryRequest';
 import { UpdateProductCommissionProgramRequest } from '../models/UpdateProductCommissionProgramRequest';
 import { UpdateProductDiscountRequest } from '../models/UpdateProductDiscountRequest';
@@ -386,7 +310,6 @@ import { UpdateProductInterestRequest } from '../models/UpdateProductInterestReq
 import { UpdateProductInventoryRequest } from '../models/UpdateProductInventoryRequest';
 import { UpdateProductRequest } from '../models/UpdateProductRequest';
 import { UpdateShippingDiscountRequest } from '../models/UpdateShippingDiscountRequest';
-import { UpdateStageRequest } from '../models/UpdateStageRequest';
 import { UpdateSubscriptionCommissionProgramRequest } from '../models/UpdateSubscriptionCommissionProgramRequest';
 import { UpdateSubscriptionPlanRequest } from '../models/UpdateSubscriptionPlanRequest';
 import { UpdateSubscriptionRequest } from '../models/UpdateSubscriptionRequest';
@@ -400,157 +323,167 @@ import { User } from '../models/User';
 import { ObservableAffiliateApi } from "./ObservableAPI";
 import { AffiliateApiRequestFactory, AffiliateApiResponseProcessor} from "../apis/AffiliateApi";
 
-export interface AffiliateApiAddAffiliateToProgramUsingPOSTRequest {
+export interface AffiliateApiAddAffiliateRequest {
+    /**
+     * Affiliate request to insert
+     * @type CreateAffiliateRequest
+     * @memberof AffiliateApiaddAffiliate
+     */
+    createAffiliateRequest?: CreateAffiliateRequest
+}
+
+export interface AffiliateApiAddAffiliateToProgramRequest {
     /**
      * id
      * Defaults to: undefined
      * @type string
-     * @memberof AffiliateApiaddAffiliateToProgramUsingPOST
+     * @memberof AffiliateApiaddAffiliateToProgram
      */
     id: string
     /**
      * affiliateAddToProgramRequest
      * @type AffiliateAddToProgramRequest
-     * @memberof AffiliateApiaddAffiliateToProgramUsingPOST
+     * @memberof AffiliateApiaddAffiliateToProgram
      */
     affiliateAddToProgramRequest: AffiliateAddToProgramRequest
 }
 
-export interface AffiliateApiAddAffiliateUsingPOSTRequest {
-    /**
-     * Affiliate request to insert
-     * @type CreateAffiliateRequest
-     * @memberof AffiliateApiaddAffiliateUsingPOST
-     */
-    createAffiliateRequest?: CreateAffiliateRequest
-}
-
-export interface AffiliateApiAddCommissionProgramUsingPOSTRequest {
+export interface AffiliateApiAddCommissionProgramRequest {
     /**
      * Commission Program to insert
      * @type CreateCommissionProgramRequest
-     * @memberof AffiliateApiaddCommissionProgramUsingPOST
+     * @memberof AffiliateApiaddCommissionProgram
      */
     createCommissionProgramRequest?: CreateCommissionProgramRequest
 }
 
-export interface AffiliateApiAssignProductCommissionProgramUsingPOSTRequest {
+export interface AffiliateApiAssignProductCommissionProgramRequest {
     /**
      * commission_program_id
      * Defaults to: undefined
      * @type string
-     * @memberof AffiliateApiassignProductCommissionProgramUsingPOST
+     * @memberof AffiliateApiassignProductCommissionProgram
      */
     commissionProgramId: string
     /**
      * Product Commission Program
      * @type CreateProductCommissionProgramRequest
-     * @memberof AffiliateApiassignProductCommissionProgramUsingPOST
+     * @memberof AffiliateApiassignProductCommissionProgram
      */
     createProductCommissionProgramRequest?: CreateProductCommissionProgramRequest
 }
 
-export interface AffiliateApiAssignSubscriptionCommissionProgramUsingPOSTRequest {
+export interface AffiliateApiAssignSubscriptionCommissionProgramRequest {
     /**
      * commission_program_id
      * Defaults to: undefined
      * @type string
-     * @memberof AffiliateApiassignSubscriptionCommissionProgramUsingPOST
+     * @memberof AffiliateApiassignSubscriptionCommissionProgram
      */
     commissionProgramId: string
     /**
      * Subscription Commission Program
      * @type CreateSubscriptionCommissionProgramRequest
-     * @memberof AffiliateApiassignSubscriptionCommissionProgramUsingPOST
+     * @memberof AffiliateApiassignSubscriptionCommissionProgram
      */
     createSubscriptionCommissionProgramRequest?: CreateSubscriptionCommissionProgramRequest
 }
 
-export interface AffiliateApiCreateDefaultCommissionProgramUsingPOSTRequest {
+export interface AffiliateApiCreateDefaultCommissionProgramRequest {
     /**
      * commission_program_id
      * Defaults to: undefined
      * @type string
-     * @memberof AffiliateApicreateDefaultCommissionProgramUsingPOST
+     * @memberof AffiliateApicreateDefaultCommissionProgram
      */
     commissionProgramId: string
     /**
      * Values of the Default Commission Program
      * @type CreateDefaultCommissionProgramRequest
-     * @memberof AffiliateApicreateDefaultCommissionProgramUsingPOST
+     * @memberof AffiliateApicreateDefaultCommissionProgram
      */
     createDefaultCommissionProgramRequest?: CreateDefaultCommissionProgramRequest
 }
 
-export interface AffiliateApiCreateRedirectLinkUsingPOSTRequest {
+export interface AffiliateApiCreateRedirectLinkRequest {
     /**
      * request
      * @type CreateOrUpdateAffiliateLinkRequest
-     * @memberof AffiliateApicreateRedirectLinkUsingPOST
+     * @memberof AffiliateApicreateRedirectLink
      */
     createOrUpdateAffiliateLinkRequest: CreateOrUpdateAffiliateLinkRequest
 }
 
-export interface AffiliateApiDeleteAffiliateCommissionProgramUsingDELETERequest {
-    /**
-     * commission_program_id
-     * Defaults to: undefined
-     * @type string
-     * @memberof AffiliateApideleteAffiliateCommissionProgramUsingDELETE
-     */
-    commissionProgramId: string
-}
-
-export interface AffiliateApiDeleteAffiliateUsingDELETERequest {
+export interface AffiliateApiDeleteAffiliateRequest {
     /**
      * id
      * Defaults to: undefined
      * @type string
-     * @memberof AffiliateApideleteAffiliateUsingDELETE
+     * @memberof AffiliateApideleteAffiliate
      */
     id: string
 }
 
-export interface AffiliateApiDeleteRedirectLinkUsingDELETERequest {
+export interface AffiliateApiDeleteAffiliateCommissionProgramRequest {
+    /**
+     * commission_program_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof AffiliateApideleteAffiliateCommissionProgram
+     */
+    commissionProgramId: string
+}
+
+export interface AffiliateApiDeleteRedirectLinkRequest {
     /**
      * redirect_id
      * Defaults to: undefined
      * @type string
-     * @memberof AffiliateApideleteRedirectLinkUsingDELETE
+     * @memberof AffiliateApideleteRedirectLink
      */
     redirectId: string
 }
 
-export interface AffiliateApiGetAffiliateCommissionTotalUsingGETRequest {
+export interface AffiliateApiGetAffiliateRequest {
+    /**
+     * id
+     * Defaults to: undefined
+     * @type string
+     * @memberof AffiliateApigetAffiliate
+     */
+    id: string
+}
+
+export interface AffiliateApiGetAffiliateCommissionTotalRequest {
     /**
      * affiliate_id
      * Defaults to: undefined
      * @type string
-     * @memberof AffiliateApigetAffiliateCommissionTotalUsingGET
+     * @memberof AffiliateApigetAffiliateCommissionTotal
      */
     affiliateId: string
 }
 
-export interface AffiliateApiGetAffiliateCommissionsUsingGETRequest {
+export interface AffiliateApiGetAffiliateCommissionsRequest {
     /**
      * affiliate_id
      * Defaults to: undefined
      * @type string
-     * @memberof AffiliateApigetAffiliateCommissionsUsingGET
+     * @memberof AffiliateApigetAffiliateCommissions
      */
     affiliateId: string
     /**
      * Filter to apply, allowed fields are: - (String) &#x60;affiliateId&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched  word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;since_time%3D%3D2024-09-17T-15:50+00&#x60;  - &#x60;filter&#x3D;until_time%3D%3D2024-09-17T-15:50+00&#x60;  - &#x60;filter&#x3D;affiliateId%3D%3D123&#x60; 
      * Defaults to: undefined
      * @type string
-     * @memberof AffiliateApigetAffiliateCommissionsUsingGET
+     * @memberof AffiliateApigetAffiliateCommissions
      */
     filter?: string
     /**
      * Attribute and direction to order items. One of the following fields: - &#x60;invoice_id&#x60; - &#x60;affowed_id&#x60; - &#x60;date_earned&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * Defaults to: undefined
      * @type string
-     * @memberof AffiliateApigetAffiliateCommissionsUsingGET
+     * @memberof AffiliateApigetAffiliateCommissions
      */
     orderBy?: string
     /**
@@ -559,61 +492,51 @@ export interface AffiliateApiGetAffiliateCommissionsUsingGETRequest {
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
-     * @memberof AffiliateApigetAffiliateCommissionsUsingGET
+     * @memberof AffiliateApigetAffiliateCommissions
      */
     pageSize?: number
     /**
      * Page token
      * Defaults to: undefined
      * @type string
-     * @memberof AffiliateApigetAffiliateCommissionsUsingGET
+     * @memberof AffiliateApigetAffiliateCommissions
      */
     pageToken?: string
 }
 
-export interface AffiliateApiGetAffiliateUsingGET1Request {
-    /**
-     * id
-     * Defaults to: undefined
-     * @type string
-     * @memberof AffiliateApigetAffiliateUsingGET1
-     */
-    id: string
-}
-
-export interface AffiliateApiGetCommissionProgramUsingGETRequest {
+export interface AffiliateApiGetCommissionProgramRequest {
     /**
      * commission_program_id
      * Defaults to: undefined
      * @type string
-     * @memberof AffiliateApigetCommissionProgramUsingGET
+     * @memberof AffiliateApigetCommissionProgram
      */
     commissionProgramId: string
 }
 
-export interface AffiliateApiGetRedirectLinkUsingGETRequest {
+export interface AffiliateApiGetRedirectLinkRequest {
     /**
      * redirect_id
      * Defaults to: undefined
      * @type string
-     * @memberof AffiliateApigetRedirectLinkUsingGET
+     * @memberof AffiliateApigetRedirectLink
      */
     redirectId: string
 }
 
-export interface AffiliateApiListAffiliateCommissionProgramsUsingGETRequest {
+export interface AffiliateApiListAffiliateCommissionProgramsRequest {
     /**
      * Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (String) &#x60;affiliate_id&#x60; 
      * Defaults to: undefined
      * @type string
-     * @memberof AffiliateApilistAffiliateCommissionProgramsUsingGET
+     * @memberof AffiliateApilistAffiliateCommissionPrograms
      */
     filter?: string
     /**
      * Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;date_created&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * Defaults to: undefined
      * @type string
-     * @memberof AffiliateApilistAffiliateCommissionProgramsUsingGET
+     * @memberof AffiliateApilistAffiliateCommissionPrograms
      */
     orderBy?: string
     /**
@@ -622,31 +545,31 @@ export interface AffiliateApiListAffiliateCommissionProgramsUsingGETRequest {
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
-     * @memberof AffiliateApilistAffiliateCommissionProgramsUsingGET
+     * @memberof AffiliateApilistAffiliateCommissionPrograms
      */
     pageSize?: number
     /**
      * Page token
      * Defaults to: undefined
      * @type string
-     * @memberof AffiliateApilistAffiliateCommissionProgramsUsingGET
+     * @memberof AffiliateApilistAffiliateCommissionPrograms
      */
     pageToken?: string
 }
 
-export interface AffiliateApiListAffiliateLinksUsingGETRequest {
+export interface AffiliateApiListAffiliateLinksRequest {
     /**
      * Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (String) &#x60;affiliate_id&#x60; 
      * Defaults to: undefined
      * @type string
-     * @memberof AffiliateApilistAffiliateLinksUsingGET
+     * @memberof AffiliateApilistAffiliateLinks
      */
     filter?: string
     /**
      * Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;date_created&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * Defaults to: undefined
      * @type string
-     * @memberof AffiliateApilistAffiliateLinksUsingGET
+     * @memberof AffiliateApilistAffiliateLinks
      */
     orderBy?: string
     /**
@@ -655,31 +578,31 @@ export interface AffiliateApiListAffiliateLinksUsingGETRequest {
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
-     * @memberof AffiliateApilistAffiliateLinksUsingGET
+     * @memberof AffiliateApilistAffiliateLinks
      */
     pageSize?: number
     /**
      * Page token
      * Defaults to: undefined
      * @type string
-     * @memberof AffiliateApilistAffiliateLinksUsingGET
+     * @memberof AffiliateApilistAffiliateLinks
      */
     pageToken?: string
 }
 
-export interface AffiliateApiListSummariesUsingGET1Request {
+export interface AffiliateApiListSummariesRequest {
     /**
      * Filter to apply, allowed fields are: - (List[String]) &#x60;affiliate_ids&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched  word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;since_time%3D%3D2024-09-17T-15:50+00&#x60;  - &#x60;filter&#x3D;until_time%3D%3D2024-09-17T-15:50+00&#x60;  - &#x60;filter&#x3D;affiliate_ids%3D%3D123,456,789&#x60; 
      * Defaults to: undefined
      * @type string
-     * @memberof AffiliateApilistSummariesUsingGET1
+     * @memberof AffiliateApilistSummaries
      */
     filter?: string
     /**
      * Attribute and direction to order items. One of the following fields: - &#x60;affiliate_id&#x60; - &#x60;amount_earned&#x60; - &#x60;balance&#x60; - &#x60;clawbacks&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * Defaults to: undefined
      * @type string
-     * @memberof AffiliateApilistSummariesUsingGET1
+     * @memberof AffiliateApilistSummaries
      */
     orderBy?: string
     /**
@@ -688,186 +611,186 @@ export interface AffiliateApiListSummariesUsingGET1Request {
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
-     * @memberof AffiliateApilistSummariesUsingGET1
+     * @memberof AffiliateApilistSummaries
      */
     pageSize?: number
     /**
      * Page token
      * Defaults to: undefined
      * @type string
-     * @memberof AffiliateApilistSummariesUsingGET1
+     * @memberof AffiliateApilistSummaries
      */
     pageToken?: string
 }
 
-export interface AffiliateApiRemoveAffiliateFromProgramUsingPOSTRequest {
+export interface AffiliateApiRemoveAffiliateFromProgramRequest {
     /**
      * id
      * Defaults to: undefined
      * @type string
-     * @memberof AffiliateApiremoveAffiliateFromProgramUsingPOST
+     * @memberof AffiliateApiremoveAffiliateFromProgram
      */
     id: string
     /**
      * removeFromProgramRequest
      * @type AffiliateRemoveFromProgramRequest
-     * @memberof AffiliateApiremoveAffiliateFromProgramUsingPOST
+     * @memberof AffiliateApiremoveAffiliateFromProgram
      */
     affiliateRemoveFromProgramRequest: AffiliateRemoveFromProgramRequest
 }
 
-export interface AffiliateApiRemoveProductCommissionFromCommissionsUsingPOSTRequest {
+export interface AffiliateApiRemoveProductCommissionFromCommissionsRequest {
     /**
      * commission_id
      * Defaults to: undefined
      * @type string
-     * @memberof AffiliateApiremoveProductCommissionFromCommissionsUsingPOST
+     * @memberof AffiliateApiremoveProductCommissionFromCommissions
      */
     commissionId: string
     /**
      * deleteProgramCommissionRequest
      * @type DeleteProgramCommissionRequest
-     * @memberof AffiliateApiremoveProductCommissionFromCommissionsUsingPOST
+     * @memberof AffiliateApiremoveProductCommissionFromCommissions
      */
     deleteProgramCommissionRequest: DeleteProgramCommissionRequest
 }
 
-export interface AffiliateApiRemoveSubscriptionPlanCommissionFromCommissionsUsingPOSTRequest {
+export interface AffiliateApiRemoveSubscriptionPlanCommissionFromCommissionsRequest {
     /**
      * commission_id
      * Defaults to: undefined
      * @type string
-     * @memberof AffiliateApiremoveSubscriptionPlanCommissionFromCommissionsUsingPOST
+     * @memberof AffiliateApiremoveSubscriptionPlanCommissionFromCommissions
      */
     commissionId: string
     /**
      * deleteSubscriptionPlanCommissionRequest
      * @type DeleteSubscriptionPlanCommissionRequest
-     * @memberof AffiliateApiremoveSubscriptionPlanCommissionFromCommissionsUsingPOST
+     * @memberof AffiliateApiremoveSubscriptionPlanCommissionFromCommissions
      */
     deleteSubscriptionPlanCommissionRequest: DeleteSubscriptionPlanCommissionRequest
 }
 
-export interface AffiliateApiUpdateAffiliateUsingPATCHRequest {
+export interface AffiliateApiUpdateAffiliateRequest {
     /**
      * id
      * Defaults to: undefined
      * @type string
-     * @memberof AffiliateApiupdateAffiliateUsingPATCH
+     * @memberof AffiliateApiupdateAffiliate
      */
     id: string
     /**
      * Request to update an affiliate
      * @type UpdateAffiliateRequest
-     * @memberof AffiliateApiupdateAffiliateUsingPATCH
+     * @memberof AffiliateApiupdateAffiliate
      */
     updateAffiliateRequest?: UpdateAffiliateRequest
 }
 
-export interface AffiliateApiUpdateCommissionProgramUsingPATCHRequest {
+export interface AffiliateApiUpdateCommissionProgramRequest {
     /**
      * commission_program_id
      * Defaults to: undefined
      * @type string
-     * @memberof AffiliateApiupdateCommissionProgramUsingPATCH
+     * @memberof AffiliateApiupdateCommissionProgram
      */
     commissionProgramId: string
     /**
      * updateCommissionProgramRequest
      * @type UpdateCommissionProgramRequest
-     * @memberof AffiliateApiupdateCommissionProgramUsingPATCH
+     * @memberof AffiliateApiupdateCommissionProgram
      */
     updateCommissionProgramRequest: UpdateCommissionProgramRequest
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
      * @type Array&lt;string&gt;
-     * @memberof AffiliateApiupdateCommissionProgramUsingPATCH
+     * @memberof AffiliateApiupdateCommissionProgram
      */
     updateMask?: Array<string>
 }
 
-export interface AffiliateApiUpdateDefaultCommissionProgramUsingPATCHRequest {
+export interface AffiliateApiUpdateDefaultCommissionProgramRequest {
     /**
      * commission_program_id
      * Defaults to: undefined
      * @type string
-     * @memberof AffiliateApiupdateDefaultCommissionProgramUsingPATCH
+     * @memberof AffiliateApiupdateDefaultCommissionProgram
      */
     commissionProgramId: string
     /**
      * update_mask
      * Defaults to: undefined
      * @type Array&lt;string&gt;
-     * @memberof AffiliateApiupdateDefaultCommissionProgramUsingPATCH
+     * @memberof AffiliateApiupdateDefaultCommissionProgram
      */
     updateMask?: Array<string>
     /**
      * Values of the default Commission Program
      * @type UpdateDefaultCommissionProgramRequest
-     * @memberof AffiliateApiupdateDefaultCommissionProgramUsingPATCH
+     * @memberof AffiliateApiupdateDefaultCommissionProgram
      */
     updateDefaultCommissionProgramRequest?: UpdateDefaultCommissionProgramRequest
 }
 
-export interface AffiliateApiUpdateProductCommissionProgramUsingPATCHRequest {
+export interface AffiliateApiUpdateProductCommissionProgramRequest {
     /**
      * commission_program_id
      * Defaults to: undefined
      * @type string
-     * @memberof AffiliateApiupdateProductCommissionProgramUsingPATCH
+     * @memberof AffiliateApiupdateProductCommissionProgram
      */
     commissionProgramId: string
     /**
      * update_mask
      * Defaults to: undefined
      * @type Array&lt;string&gt;
-     * @memberof AffiliateApiupdateProductCommissionProgramUsingPATCH
+     * @memberof AffiliateApiupdateProductCommissionProgram
      */
     updateMask?: Array<string>
     /**
      * Values of the product Commission Program
      * @type UpdateProductCommissionProgramRequest
-     * @memberof AffiliateApiupdateProductCommissionProgramUsingPATCH
+     * @memberof AffiliateApiupdateProductCommissionProgram
      */
     updateProductCommissionProgramRequest?: UpdateProductCommissionProgramRequest
 }
 
-export interface AffiliateApiUpdateRedirectLinkUsingPATCHRequest {
+export interface AffiliateApiUpdateRedirectLinkRequest {
     /**
      * redirect_id
      * Defaults to: undefined
      * @type string
-     * @memberof AffiliateApiupdateRedirectLinkUsingPATCH
+     * @memberof AffiliateApiupdateRedirectLink
      */
     redirectId: string
     /**
      * request
      * @type CreateOrUpdateAffiliateLinkRequest
-     * @memberof AffiliateApiupdateRedirectLinkUsingPATCH
+     * @memberof AffiliateApiupdateRedirectLink
      */
     createOrUpdateAffiliateLinkRequest: CreateOrUpdateAffiliateLinkRequest
 }
 
-export interface AffiliateApiUpdateSubscriptionCommissionProgramUsingPATCHRequest {
+export interface AffiliateApiUpdateSubscriptionCommissionProgramRequest {
     /**
      * commission_program_id
      * Defaults to: undefined
      * @type string
-     * @memberof AffiliateApiupdateSubscriptionCommissionProgramUsingPATCH
+     * @memberof AffiliateApiupdateSubscriptionCommissionProgram
      */
     commissionProgramId: string
     /**
      * update_mask
      * Defaults to: undefined
      * @type Array&lt;string&gt;
-     * @memberof AffiliateApiupdateSubscriptionCommissionProgramUsingPATCH
+     * @memberof AffiliateApiupdateSubscriptionCommissionProgram
      */
     updateMask?: Array<string>
     /**
      * Values of the subscription Commission Program
      * @type UpdateSubscriptionCommissionProgramRequest
-     * @memberof AffiliateApiupdateSubscriptionCommissionProgramUsingPATCH
+     * @memberof AffiliateApiupdateSubscriptionCommissionProgram
      */
     updateSubscriptionCommissionProgramRequest?: UpdateSubscriptionCommissionProgramRequest
 }
@@ -880,21 +803,12 @@ export class ObjectAffiliateApi {
     }
 
     /**
-     * Assigns an Affiliate to Commission Program
-     * Assign Affiliate to Commission program
+     * Creates a single Affiliate
+     * Create an Affiliate
      * @param param the request object
      */
-    public addAffiliateToProgramUsingPOSTWithHttpInfo(param: AffiliateApiAddAffiliateToProgramUsingPOSTRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api.addAffiliateToProgramUsingPOSTWithHttpInfo(param.id, param.affiliateAddToProgramRequest,  options).toPromise();
-    }
-
-    /**
-     * Assigns an Affiliate to Commission Program
-     * Assign Affiliate to Commission program
-     * @param param the request object
-     */
-    public addAffiliateToProgramUsingPOST(param: AffiliateApiAddAffiliateToProgramUsingPOSTRequest, options?: ConfigurationOptions): Promise<void> {
-        return this.api.addAffiliateToProgramUsingPOST(param.id, param.affiliateAddToProgramRequest,  options).toPromise();
+    public addAffiliateWithHttpInfo(param: AffiliateApiAddAffiliateRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<RestAffiliate>> {
+        return this.api.addAffiliateWithHttpInfo(param.createAffiliateRequest,  options).toPromise();
     }
 
     /**
@@ -902,17 +816,26 @@ export class ObjectAffiliateApi {
      * Create an Affiliate
      * @param param the request object
      */
-    public addAffiliateUsingPOSTWithHttpInfo(param: AffiliateApiAddAffiliateUsingPOSTRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<RestAffiliate>> {
-        return this.api.addAffiliateUsingPOSTWithHttpInfo(param.createAffiliateRequest,  options).toPromise();
+    public addAffiliate(param: AffiliateApiAddAffiliateRequest = {}, options?: ConfigurationOptions): Promise<RestAffiliate> {
+        return this.api.addAffiliate(param.createAffiliateRequest,  options).toPromise();
     }
 
     /**
-     * Creates a single Affiliate
-     * Create an Affiliate
+     * Assigns an Affiliate to Commission Program
+     * Assign Affiliate to Commission program
      * @param param the request object
      */
-    public addAffiliateUsingPOST(param: AffiliateApiAddAffiliateUsingPOSTRequest = {}, options?: ConfigurationOptions): Promise<RestAffiliate> {
-        return this.api.addAffiliateUsingPOST(param.createAffiliateRequest,  options).toPromise();
+    public addAffiliateToProgramWithHttpInfo(param: AffiliateApiAddAffiliateToProgramRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.addAffiliateToProgramWithHttpInfo(param.id, param.affiliateAddToProgramRequest,  options).toPromise();
+    }
+
+    /**
+     * Assigns an Affiliate to Commission Program
+     * Assign Affiliate to Commission program
+     * @param param the request object
+     */
+    public addAffiliateToProgram(param: AffiliateApiAddAffiliateToProgramRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.addAffiliateToProgram(param.id, param.affiliateAddToProgramRequest,  options).toPromise();
     }
 
     /**
@@ -920,8 +843,8 @@ export class ObjectAffiliateApi {
      * Create an Affiliate Commission Program
      * @param param the request object
      */
-    public addCommissionProgramUsingPOSTWithHttpInfo(param: AffiliateApiAddCommissionProgramUsingPOSTRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<AffiliateCommissionProgramResponse>> {
-        return this.api.addCommissionProgramUsingPOSTWithHttpInfo(param.createCommissionProgramRequest,  options).toPromise();
+    public addCommissionProgramWithHttpInfo(param: AffiliateApiAddCommissionProgramRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<AffiliateCommissionProgramResponse>> {
+        return this.api.addCommissionProgramWithHttpInfo(param.createCommissionProgramRequest,  options).toPromise();
     }
 
     /**
@@ -929,8 +852,8 @@ export class ObjectAffiliateApi {
      * Create an Affiliate Commission Program
      * @param param the request object
      */
-    public addCommissionProgramUsingPOST(param: AffiliateApiAddCommissionProgramUsingPOSTRequest = {}, options?: ConfigurationOptions): Promise<AffiliateCommissionProgramResponse> {
-        return this.api.addCommissionProgramUsingPOST(param.createCommissionProgramRequest,  options).toPromise();
+    public addCommissionProgram(param: AffiliateApiAddCommissionProgramRequest = {}, options?: ConfigurationOptions): Promise<AffiliateCommissionProgramResponse> {
+        return this.api.addCommissionProgram(param.createCommissionProgramRequest,  options).toPromise();
     }
 
     /**
@@ -938,8 +861,8 @@ export class ObjectAffiliateApi {
      * Assign a Product Commission Program
      * @param param the request object
      */
-    public assignProductCommissionProgramUsingPOSTWithHttpInfo(param: AffiliateApiAssignProductCommissionProgramUsingPOSTRequest, options?: ConfigurationOptions): Promise<HttpInfo<ProductCommissionProgram>> {
-        return this.api.assignProductCommissionProgramUsingPOSTWithHttpInfo(param.commissionProgramId, param.createProductCommissionProgramRequest,  options).toPromise();
+    public assignProductCommissionProgramWithHttpInfo(param: AffiliateApiAssignProductCommissionProgramRequest, options?: ConfigurationOptions): Promise<HttpInfo<ProductCommissionProgram>> {
+        return this.api.assignProductCommissionProgramWithHttpInfo(param.commissionProgramId, param.createProductCommissionProgramRequest,  options).toPromise();
     }
 
     /**
@@ -947,8 +870,8 @@ export class ObjectAffiliateApi {
      * Assign a Product Commission Program
      * @param param the request object
      */
-    public assignProductCommissionProgramUsingPOST(param: AffiliateApiAssignProductCommissionProgramUsingPOSTRequest, options?: ConfigurationOptions): Promise<ProductCommissionProgram> {
-        return this.api.assignProductCommissionProgramUsingPOST(param.commissionProgramId, param.createProductCommissionProgramRequest,  options).toPromise();
+    public assignProductCommissionProgram(param: AffiliateApiAssignProductCommissionProgramRequest, options?: ConfigurationOptions): Promise<ProductCommissionProgram> {
+        return this.api.assignProductCommissionProgram(param.commissionProgramId, param.createProductCommissionProgramRequest,  options).toPromise();
     }
 
     /**
@@ -956,8 +879,8 @@ export class ObjectAffiliateApi {
      * Assign a Subscription Commission Program
      * @param param the request object
      */
-    public assignSubscriptionCommissionProgramUsingPOSTWithHttpInfo(param: AffiliateApiAssignSubscriptionCommissionProgramUsingPOSTRequest, options?: ConfigurationOptions): Promise<HttpInfo<SubscriptionCommissionProgram>> {
-        return this.api.assignSubscriptionCommissionProgramUsingPOSTWithHttpInfo(param.commissionProgramId, param.createSubscriptionCommissionProgramRequest,  options).toPromise();
+    public assignSubscriptionCommissionProgramWithHttpInfo(param: AffiliateApiAssignSubscriptionCommissionProgramRequest, options?: ConfigurationOptions): Promise<HttpInfo<SubscriptionCommissionProgram>> {
+        return this.api.assignSubscriptionCommissionProgramWithHttpInfo(param.commissionProgramId, param.createSubscriptionCommissionProgramRequest,  options).toPromise();
     }
 
     /**
@@ -965,8 +888,8 @@ export class ObjectAffiliateApi {
      * Assign a Subscription Commission Program
      * @param param the request object
      */
-    public assignSubscriptionCommissionProgramUsingPOST(param: AffiliateApiAssignSubscriptionCommissionProgramUsingPOSTRequest, options?: ConfigurationOptions): Promise<SubscriptionCommissionProgram> {
-        return this.api.assignSubscriptionCommissionProgramUsingPOST(param.commissionProgramId, param.createSubscriptionCommissionProgramRequest,  options).toPromise();
+    public assignSubscriptionCommissionProgram(param: AffiliateApiAssignSubscriptionCommissionProgramRequest, options?: ConfigurationOptions): Promise<SubscriptionCommissionProgram> {
+        return this.api.assignSubscriptionCommissionProgram(param.commissionProgramId, param.createSubscriptionCommissionProgramRequest,  options).toPromise();
     }
 
     /**
@@ -974,8 +897,8 @@ export class ObjectAffiliateApi {
      * Create a Default Commission Program
      * @param param the request object
      */
-    public createDefaultCommissionProgramUsingPOSTWithHttpInfo(param: AffiliateApiCreateDefaultCommissionProgramUsingPOSTRequest, options?: ConfigurationOptions): Promise<HttpInfo<SetDefaultCommissionProgramResponse>> {
-        return this.api.createDefaultCommissionProgramUsingPOSTWithHttpInfo(param.commissionProgramId, param.createDefaultCommissionProgramRequest,  options).toPromise();
+    public createDefaultCommissionProgramWithHttpInfo(param: AffiliateApiCreateDefaultCommissionProgramRequest, options?: ConfigurationOptions): Promise<HttpInfo<SetDefaultCommissionProgramResponse>> {
+        return this.api.createDefaultCommissionProgramWithHttpInfo(param.commissionProgramId, param.createDefaultCommissionProgramRequest,  options).toPromise();
     }
 
     /**
@@ -983,8 +906,8 @@ export class ObjectAffiliateApi {
      * Create a Default Commission Program
      * @param param the request object
      */
-    public createDefaultCommissionProgramUsingPOST(param: AffiliateApiCreateDefaultCommissionProgramUsingPOSTRequest, options?: ConfigurationOptions): Promise<SetDefaultCommissionProgramResponse> {
-        return this.api.createDefaultCommissionProgramUsingPOST(param.commissionProgramId, param.createDefaultCommissionProgramRequest,  options).toPromise();
+    public createDefaultCommissionProgram(param: AffiliateApiCreateDefaultCommissionProgramRequest, options?: ConfigurationOptions): Promise<SetDefaultCommissionProgramResponse> {
+        return this.api.createDefaultCommissionProgram(param.commissionProgramId, param.createDefaultCommissionProgramRequest,  options).toPromise();
     }
 
     /**
@@ -992,8 +915,8 @@ export class ObjectAffiliateApi {
      * Create an Affiliate Link
      * @param param the request object
      */
-    public createRedirectLinkUsingPOSTWithHttpInfo(param: AffiliateApiCreateRedirectLinkUsingPOSTRequest, options?: ConfigurationOptions): Promise<HttpInfo<AffiliateLink>> {
-        return this.api.createRedirectLinkUsingPOSTWithHttpInfo(param.createOrUpdateAffiliateLinkRequest,  options).toPromise();
+    public createRedirectLinkWithHttpInfo(param: AffiliateApiCreateRedirectLinkRequest, options?: ConfigurationOptions): Promise<HttpInfo<AffiliateLink>> {
+        return this.api.createRedirectLinkWithHttpInfo(param.createOrUpdateAffiliateLinkRequest,  options).toPromise();
     }
 
     /**
@@ -1001,26 +924,8 @@ export class ObjectAffiliateApi {
      * Create an Affiliate Link
      * @param param the request object
      */
-    public createRedirectLinkUsingPOST(param: AffiliateApiCreateRedirectLinkUsingPOSTRequest, options?: ConfigurationOptions): Promise<AffiliateLink> {
-        return this.api.createRedirectLinkUsingPOST(param.createOrUpdateAffiliateLinkRequest,  options).toPromise();
-    }
-
-    /**
-     * Deletes a Commission Program
-     * Delete a Commission Program
-     * @param param the request object
-     */
-    public deleteAffiliateCommissionProgramUsingDELETEWithHttpInfo(param: AffiliateApiDeleteAffiliateCommissionProgramUsingDELETERequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api.deleteAffiliateCommissionProgramUsingDELETEWithHttpInfo(param.commissionProgramId,  options).toPromise();
-    }
-
-    /**
-     * Deletes a Commission Program
-     * Delete a Commission Program
-     * @param param the request object
-     */
-    public deleteAffiliateCommissionProgramUsingDELETE(param: AffiliateApiDeleteAffiliateCommissionProgramUsingDELETERequest, options?: ConfigurationOptions): Promise<void> {
-        return this.api.deleteAffiliateCommissionProgramUsingDELETE(param.commissionProgramId,  options).toPromise();
+    public createRedirectLink(param: AffiliateApiCreateRedirectLinkRequest, options?: ConfigurationOptions): Promise<AffiliateLink> {
+        return this.api.createRedirectLink(param.createOrUpdateAffiliateLinkRequest,  options).toPromise();
     }
 
     /**
@@ -1028,8 +933,8 @@ export class ObjectAffiliateApi {
      * Delete Affiliate
      * @param param the request object
      */
-    public deleteAffiliateUsingDELETEWithHttpInfo(param: AffiliateApiDeleteAffiliateUsingDELETERequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api.deleteAffiliateUsingDELETEWithHttpInfo(param.id,  options).toPromise();
+    public deleteAffiliateWithHttpInfo(param: AffiliateApiDeleteAffiliateRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteAffiliateWithHttpInfo(param.id,  options).toPromise();
     }
 
     /**
@@ -1037,8 +942,26 @@ export class ObjectAffiliateApi {
      * Delete Affiliate
      * @param param the request object
      */
-    public deleteAffiliateUsingDELETE(param: AffiliateApiDeleteAffiliateUsingDELETERequest, options?: ConfigurationOptions): Promise<void> {
-        return this.api.deleteAffiliateUsingDELETE(param.id,  options).toPromise();
+    public deleteAffiliate(param: AffiliateApiDeleteAffiliateRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteAffiliate(param.id,  options).toPromise();
+    }
+
+    /**
+     * Deletes a Commission Program
+     * Delete a Commission Program
+     * @param param the request object
+     */
+    public deleteAffiliateCommissionProgramWithHttpInfo(param: AffiliateApiDeleteAffiliateCommissionProgramRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteAffiliateCommissionProgramWithHttpInfo(param.commissionProgramId,  options).toPromise();
+    }
+
+    /**
+     * Deletes a Commission Program
+     * Delete a Commission Program
+     * @param param the request object
+     */
+    public deleteAffiliateCommissionProgram(param: AffiliateApiDeleteAffiliateCommissionProgramRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteAffiliateCommissionProgram(param.commissionProgramId,  options).toPromise();
     }
 
     /**
@@ -1046,8 +969,8 @@ export class ObjectAffiliateApi {
      * Delete an Affiliate Link
      * @param param the request object
      */
-    public deleteRedirectLinkUsingDELETEWithHttpInfo(param: AffiliateApiDeleteRedirectLinkUsingDELETERequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api.deleteRedirectLinkUsingDELETEWithHttpInfo(param.redirectId,  options).toPromise();
+    public deleteRedirectLinkWithHttpInfo(param: AffiliateApiDeleteRedirectLinkRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteRedirectLinkWithHttpInfo(param.redirectId,  options).toPromise();
     }
 
     /**
@@ -1055,44 +978,8 @@ export class ObjectAffiliateApi {
      * Delete an Affiliate Link
      * @param param the request object
      */
-    public deleteRedirectLinkUsingDELETE(param: AffiliateApiDeleteRedirectLinkUsingDELETERequest, options?: ConfigurationOptions): Promise<void> {
-        return this.api.deleteRedirectLinkUsingDELETE(param.redirectId,  options).toPromise();
-    }
-
-    /**
-     * Get the Affiliate Commission Earned and View LedgerURl for portal
-     * Retrieve Affiliate Commission Earned and View LedgerURl for portal
-     * @param param the request object
-     */
-    public getAffiliateCommissionTotalUsingGETWithHttpInfo(param: AffiliateApiGetAffiliateCommissionTotalUsingGETRequest, options?: ConfigurationOptions): Promise<HttpInfo<AffiliateCommissionEarned>> {
-        return this.api.getAffiliateCommissionTotalUsingGETWithHttpInfo(param.affiliateId,  options).toPromise();
-    }
-
-    /**
-     * Get the Affiliate Commission Earned and View LedgerURl for portal
-     * Retrieve Affiliate Commission Earned and View LedgerURl for portal
-     * @param param the request object
-     */
-    public getAffiliateCommissionTotalUsingGET(param: AffiliateApiGetAffiliateCommissionTotalUsingGETRequest, options?: ConfigurationOptions): Promise<AffiliateCommissionEarned> {
-        return this.api.getAffiliateCommissionTotalUsingGET(param.affiliateId,  options).toPromise();
-    }
-
-    /**
-     * Retrieve a list of Affiliate\'s Commissions and Clawbacks
-     * Retrieve Affiliate Commission and Clawbacks
-     * @param param the request object
-     */
-    public getAffiliateCommissionsUsingGETWithHttpInfo(param: AffiliateApiGetAffiliateCommissionsUsingGETRequest, options?: ConfigurationOptions): Promise<HttpInfo<ListAffiliateCommissionsResponse>> {
-        return this.api.getAffiliateCommissionsUsingGETWithHttpInfo(param.affiliateId, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
-    }
-
-    /**
-     * Retrieve a list of Affiliate\'s Commissions and Clawbacks
-     * Retrieve Affiliate Commission and Clawbacks
-     * @param param the request object
-     */
-    public getAffiliateCommissionsUsingGET(param: AffiliateApiGetAffiliateCommissionsUsingGETRequest, options?: ConfigurationOptions): Promise<ListAffiliateCommissionsResponse> {
-        return this.api.getAffiliateCommissionsUsingGET(param.affiliateId, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public deleteRedirectLink(param: AffiliateApiDeleteRedirectLinkRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteRedirectLink(param.redirectId,  options).toPromise();
     }
 
     /**
@@ -1100,8 +987,8 @@ export class ObjectAffiliateApi {
      * Retrieve an Affiliate
      * @param param the request object
      */
-    public getAffiliateUsingGET1WithHttpInfo(param: AffiliateApiGetAffiliateUsingGET1Request, options?: ConfigurationOptions): Promise<HttpInfo<RestAffiliate>> {
-        return this.api.getAffiliateUsingGET1WithHttpInfo(param.id,  options).toPromise();
+    public getAffiliateWithHttpInfo(param: AffiliateApiGetAffiliateRequest, options?: ConfigurationOptions): Promise<HttpInfo<RestAffiliate>> {
+        return this.api.getAffiliateWithHttpInfo(param.id,  options).toPromise();
     }
 
     /**
@@ -1109,8 +996,44 @@ export class ObjectAffiliateApi {
      * Retrieve an Affiliate
      * @param param the request object
      */
-    public getAffiliateUsingGET1(param: AffiliateApiGetAffiliateUsingGET1Request, options?: ConfigurationOptions): Promise<RestAffiliate> {
-        return this.api.getAffiliateUsingGET1(param.id,  options).toPromise();
+    public getAffiliate(param: AffiliateApiGetAffiliateRequest, options?: ConfigurationOptions): Promise<RestAffiliate> {
+        return this.api.getAffiliate(param.id,  options).toPromise();
+    }
+
+    /**
+     * Get the Affiliate Commission Earned and View LedgerURl for portal
+     * Retrieve Affiliate Commission Earned and View LedgerURl for portal
+     * @param param the request object
+     */
+    public getAffiliateCommissionTotalWithHttpInfo(param: AffiliateApiGetAffiliateCommissionTotalRequest, options?: ConfigurationOptions): Promise<HttpInfo<AffiliateCommissionEarned>> {
+        return this.api.getAffiliateCommissionTotalWithHttpInfo(param.affiliateId,  options).toPromise();
+    }
+
+    /**
+     * Get the Affiliate Commission Earned and View LedgerURl for portal
+     * Retrieve Affiliate Commission Earned and View LedgerURl for portal
+     * @param param the request object
+     */
+    public getAffiliateCommissionTotal(param: AffiliateApiGetAffiliateCommissionTotalRequest, options?: ConfigurationOptions): Promise<AffiliateCommissionEarned> {
+        return this.api.getAffiliateCommissionTotal(param.affiliateId,  options).toPromise();
+    }
+
+    /**
+     * Retrieve a list of Affiliate\'s Commissions and Clawbacks
+     * Retrieve Affiliate Commission and Clawbacks
+     * @param param the request object
+     */
+    public getAffiliateCommissionsWithHttpInfo(param: AffiliateApiGetAffiliateCommissionsRequest, options?: ConfigurationOptions): Promise<HttpInfo<ListAffiliateCommissionsResponse>> {
+        return this.api.getAffiliateCommissionsWithHttpInfo(param.affiliateId, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    }
+
+    /**
+     * Retrieve a list of Affiliate\'s Commissions and Clawbacks
+     * Retrieve Affiliate Commission and Clawbacks
+     * @param param the request object
+     */
+    public getAffiliateCommissions(param: AffiliateApiGetAffiliateCommissionsRequest, options?: ConfigurationOptions): Promise<ListAffiliateCommissionsResponse> {
+        return this.api.getAffiliateCommissions(param.affiliateId, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -1118,8 +1041,8 @@ export class ObjectAffiliateApi {
      * Retrieve a Commission Program
      * @param param the request object
      */
-    public getCommissionProgramUsingGETWithHttpInfo(param: AffiliateApiGetCommissionProgramUsingGETRequest, options?: ConfigurationOptions): Promise<HttpInfo<AffiliateProgramV2>> {
-        return this.api.getCommissionProgramUsingGETWithHttpInfo(param.commissionProgramId,  options).toPromise();
+    public getCommissionProgramWithHttpInfo(param: AffiliateApiGetCommissionProgramRequest, options?: ConfigurationOptions): Promise<HttpInfo<AffiliateProgramV2>> {
+        return this.api.getCommissionProgramWithHttpInfo(param.commissionProgramId,  options).toPromise();
     }
 
     /**
@@ -1127,8 +1050,8 @@ export class ObjectAffiliateApi {
      * Retrieve a Commission Program
      * @param param the request object
      */
-    public getCommissionProgramUsingGET(param: AffiliateApiGetCommissionProgramUsingGETRequest, options?: ConfigurationOptions): Promise<AffiliateProgramV2> {
-        return this.api.getCommissionProgramUsingGET(param.commissionProgramId,  options).toPromise();
+    public getCommissionProgram(param: AffiliateApiGetCommissionProgramRequest, options?: ConfigurationOptions): Promise<AffiliateProgramV2> {
+        return this.api.getCommissionProgram(param.commissionProgramId,  options).toPromise();
     }
 
     /**
@@ -1136,8 +1059,8 @@ export class ObjectAffiliateApi {
      * Retrieve an Affiliate Link
      * @param param the request object
      */
-    public getRedirectLinkUsingGETWithHttpInfo(param: AffiliateApiGetRedirectLinkUsingGETRequest, options?: ConfigurationOptions): Promise<HttpInfo<AffiliateLink>> {
-        return this.api.getRedirectLinkUsingGETWithHttpInfo(param.redirectId,  options).toPromise();
+    public getRedirectLinkWithHttpInfo(param: AffiliateApiGetRedirectLinkRequest, options?: ConfigurationOptions): Promise<HttpInfo<AffiliateLink>> {
+        return this.api.getRedirectLinkWithHttpInfo(param.redirectId,  options).toPromise();
     }
 
     /**
@@ -1145,8 +1068,8 @@ export class ObjectAffiliateApi {
      * Retrieve an Affiliate Link
      * @param param the request object
      */
-    public getRedirectLinkUsingGET(param: AffiliateApiGetRedirectLinkUsingGETRequest, options?: ConfigurationOptions): Promise<AffiliateLink> {
-        return this.api.getRedirectLinkUsingGET(param.redirectId,  options).toPromise();
+    public getRedirectLink(param: AffiliateApiGetRedirectLinkRequest, options?: ConfigurationOptions): Promise<AffiliateLink> {
+        return this.api.getRedirectLink(param.redirectId,  options).toPromise();
     }
 
     /**
@@ -1154,8 +1077,8 @@ export class ObjectAffiliateApi {
      * List Affiliate Commission Programs
      * @param param the request object
      */
-    public listAffiliateCommissionProgramsUsingGETWithHttpInfo(param: AffiliateApiListAffiliateCommissionProgramsUsingGETRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListAffiliateCommissionProgramsResponse>> {
-        return this.api.listAffiliateCommissionProgramsUsingGETWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listAffiliateCommissionProgramsWithHttpInfo(param: AffiliateApiListAffiliateCommissionProgramsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListAffiliateCommissionProgramsResponse>> {
+        return this.api.listAffiliateCommissionProgramsWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -1163,8 +1086,8 @@ export class ObjectAffiliateApi {
      * List Affiliate Commission Programs
      * @param param the request object
      */
-    public listAffiliateCommissionProgramsUsingGET(param: AffiliateApiListAffiliateCommissionProgramsUsingGETRequest = {}, options?: ConfigurationOptions): Promise<ListAffiliateCommissionProgramsResponse> {
-        return this.api.listAffiliateCommissionProgramsUsingGET(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listAffiliateCommissionPrograms(param: AffiliateApiListAffiliateCommissionProgramsRequest = {}, options?: ConfigurationOptions): Promise<ListAffiliateCommissionProgramsResponse> {
+        return this.api.listAffiliateCommissionPrograms(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -1172,8 +1095,8 @@ export class ObjectAffiliateApi {
      * List Affiliate Links
      * @param param the request object
      */
-    public listAffiliateLinksUsingGETWithHttpInfo(param: AffiliateApiListAffiliateLinksUsingGETRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListAffiliateLinksResponse>> {
-        return this.api.listAffiliateLinksUsingGETWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listAffiliateLinksWithHttpInfo(param: AffiliateApiListAffiliateLinksRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListAffiliateLinksResponse>> {
+        return this.api.listAffiliateLinksWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -1181,8 +1104,8 @@ export class ObjectAffiliateApi {
      * List Affiliate Links
      * @param param the request object
      */
-    public listAffiliateLinksUsingGET(param: AffiliateApiListAffiliateLinksUsingGETRequest = {}, options?: ConfigurationOptions): Promise<ListAffiliateLinksResponse> {
-        return this.api.listAffiliateLinksUsingGET(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listAffiliateLinks(param: AffiliateApiListAffiliateLinksRequest = {}, options?: ConfigurationOptions): Promise<ListAffiliateLinksResponse> {
+        return this.api.listAffiliateLinks(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -1190,8 +1113,8 @@ export class ObjectAffiliateApi {
      * List Affiliate Summaries
      * @param param the request object
      */
-    public listSummariesUsingGET1WithHttpInfo(param: AffiliateApiListSummariesUsingGET1Request = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListAffiliateSummariesResponse>> {
-        return this.api.listSummariesUsingGET1WithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listSummariesWithHttpInfo(param: AffiliateApiListSummariesRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListAffiliateSummariesResponse>> {
+        return this.api.listSummariesWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -1199,8 +1122,8 @@ export class ObjectAffiliateApi {
      * List Affiliate Summaries
      * @param param the request object
      */
-    public listSummariesUsingGET1(param: AffiliateApiListSummariesUsingGET1Request = {}, options?: ConfigurationOptions): Promise<ListAffiliateSummariesResponse> {
-        return this.api.listSummariesUsingGET1(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listSummaries(param: AffiliateApiListSummariesRequest = {}, options?: ConfigurationOptions): Promise<ListAffiliateSummariesResponse> {
+        return this.api.listSummaries(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -1208,8 +1131,8 @@ export class ObjectAffiliateApi {
      * Remove an Affiliate from a Commission Program
      * @param param the request object
      */
-    public removeAffiliateFromProgramUsingPOSTWithHttpInfo(param: AffiliateApiRemoveAffiliateFromProgramUsingPOSTRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api.removeAffiliateFromProgramUsingPOSTWithHttpInfo(param.id, param.affiliateRemoveFromProgramRequest,  options).toPromise();
+    public removeAffiliateFromProgramWithHttpInfo(param: AffiliateApiRemoveAffiliateFromProgramRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.removeAffiliateFromProgramWithHttpInfo(param.id, param.affiliateRemoveFromProgramRequest,  options).toPromise();
     }
 
     /**
@@ -1217,8 +1140,8 @@ export class ObjectAffiliateApi {
      * Remove an Affiliate from a Commission Program
      * @param param the request object
      */
-    public removeAffiliateFromProgramUsingPOST(param: AffiliateApiRemoveAffiliateFromProgramUsingPOSTRequest, options?: ConfigurationOptions): Promise<void> {
-        return this.api.removeAffiliateFromProgramUsingPOST(param.id, param.affiliateRemoveFromProgramRequest,  options).toPromise();
+    public removeAffiliateFromProgram(param: AffiliateApiRemoveAffiliateFromProgramRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.removeAffiliateFromProgram(param.id, param.affiliateRemoveFromProgramRequest,  options).toPromise();
     }
 
     /**
@@ -1226,8 +1149,8 @@ export class ObjectAffiliateApi {
      * Remove a Product from a Commission Program
      * @param param the request object
      */
-    public removeProductCommissionFromCommissionsUsingPOSTWithHttpInfo(param: AffiliateApiRemoveProductCommissionFromCommissionsUsingPOSTRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api.removeProductCommissionFromCommissionsUsingPOSTWithHttpInfo(param.commissionId, param.deleteProgramCommissionRequest,  options).toPromise();
+    public removeProductCommissionFromCommissionsWithHttpInfo(param: AffiliateApiRemoveProductCommissionFromCommissionsRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.removeProductCommissionFromCommissionsWithHttpInfo(param.commissionId, param.deleteProgramCommissionRequest,  options).toPromise();
     }
 
     /**
@@ -1235,8 +1158,8 @@ export class ObjectAffiliateApi {
      * Remove a Product from a Commission Program
      * @param param the request object
      */
-    public removeProductCommissionFromCommissionsUsingPOST(param: AffiliateApiRemoveProductCommissionFromCommissionsUsingPOSTRequest, options?: ConfigurationOptions): Promise<void> {
-        return this.api.removeProductCommissionFromCommissionsUsingPOST(param.commissionId, param.deleteProgramCommissionRequest,  options).toPromise();
+    public removeProductCommissionFromCommissions(param: AffiliateApiRemoveProductCommissionFromCommissionsRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.removeProductCommissionFromCommissions(param.commissionId, param.deleteProgramCommissionRequest,  options).toPromise();
     }
 
     /**
@@ -1244,8 +1167,8 @@ export class ObjectAffiliateApi {
      * Remove a Subscription from a Commission Program
      * @param param the request object
      */
-    public removeSubscriptionPlanCommissionFromCommissionsUsingPOSTWithHttpInfo(param: AffiliateApiRemoveSubscriptionPlanCommissionFromCommissionsUsingPOSTRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api.removeSubscriptionPlanCommissionFromCommissionsUsingPOSTWithHttpInfo(param.commissionId, param.deleteSubscriptionPlanCommissionRequest,  options).toPromise();
+    public removeSubscriptionPlanCommissionFromCommissionsWithHttpInfo(param: AffiliateApiRemoveSubscriptionPlanCommissionFromCommissionsRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.removeSubscriptionPlanCommissionFromCommissionsWithHttpInfo(param.commissionId, param.deleteSubscriptionPlanCommissionRequest,  options).toPromise();
     }
 
     /**
@@ -1253,8 +1176,8 @@ export class ObjectAffiliateApi {
      * Remove a Subscription from a Commission Program
      * @param param the request object
      */
-    public removeSubscriptionPlanCommissionFromCommissionsUsingPOST(param: AffiliateApiRemoveSubscriptionPlanCommissionFromCommissionsUsingPOSTRequest, options?: ConfigurationOptions): Promise<void> {
-        return this.api.removeSubscriptionPlanCommissionFromCommissionsUsingPOST(param.commissionId, param.deleteSubscriptionPlanCommissionRequest,  options).toPromise();
+    public removeSubscriptionPlanCommissionFromCommissions(param: AffiliateApiRemoveSubscriptionPlanCommissionFromCommissionsRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.removeSubscriptionPlanCommissionFromCommissions(param.commissionId, param.deleteSubscriptionPlanCommissionRequest,  options).toPromise();
     }
 
     /**
@@ -1262,8 +1185,8 @@ export class ObjectAffiliateApi {
      * Update an Affiliate
      * @param param the request object
      */
-    public updateAffiliateUsingPATCHWithHttpInfo(param: AffiliateApiUpdateAffiliateUsingPATCHRequest, options?: ConfigurationOptions): Promise<HttpInfo<RestAffiliate>> {
-        return this.api.updateAffiliateUsingPATCHWithHttpInfo(param.id, param.updateAffiliateRequest,  options).toPromise();
+    public updateAffiliateWithHttpInfo(param: AffiliateApiUpdateAffiliateRequest, options?: ConfigurationOptions): Promise<HttpInfo<RestAffiliate>> {
+        return this.api.updateAffiliateWithHttpInfo(param.id, param.updateAffiliateRequest,  options).toPromise();
     }
 
     /**
@@ -1271,8 +1194,8 @@ export class ObjectAffiliateApi {
      * Update an Affiliate
      * @param param the request object
      */
-    public updateAffiliateUsingPATCH(param: AffiliateApiUpdateAffiliateUsingPATCHRequest, options?: ConfigurationOptions): Promise<RestAffiliate> {
-        return this.api.updateAffiliateUsingPATCH(param.id, param.updateAffiliateRequest,  options).toPromise();
+    public updateAffiliate(param: AffiliateApiUpdateAffiliateRequest, options?: ConfigurationOptions): Promise<RestAffiliate> {
+        return this.api.updateAffiliate(param.id, param.updateAffiliateRequest,  options).toPromise();
     }
 
     /**
@@ -1280,8 +1203,8 @@ export class ObjectAffiliateApi {
      * Update an Affiliate Commission Program
      * @param param the request object
      */
-    public updateCommissionProgramUsingPATCHWithHttpInfo(param: AffiliateApiUpdateCommissionProgramUsingPATCHRequest, options?: ConfigurationOptions): Promise<HttpInfo<AffiliateCommissionProgramResponse>> {
-        return this.api.updateCommissionProgramUsingPATCHWithHttpInfo(param.commissionProgramId, param.updateCommissionProgramRequest, param.updateMask,  options).toPromise();
+    public updateCommissionProgramWithHttpInfo(param: AffiliateApiUpdateCommissionProgramRequest, options?: ConfigurationOptions): Promise<HttpInfo<AffiliateCommissionProgramResponse>> {
+        return this.api.updateCommissionProgramWithHttpInfo(param.commissionProgramId, param.updateCommissionProgramRequest, param.updateMask,  options).toPromise();
     }
 
     /**
@@ -1289,8 +1212,8 @@ export class ObjectAffiliateApi {
      * Update an Affiliate Commission Program
      * @param param the request object
      */
-    public updateCommissionProgramUsingPATCH(param: AffiliateApiUpdateCommissionProgramUsingPATCHRequest, options?: ConfigurationOptions): Promise<AffiliateCommissionProgramResponse> {
-        return this.api.updateCommissionProgramUsingPATCH(param.commissionProgramId, param.updateCommissionProgramRequest, param.updateMask,  options).toPromise();
+    public updateCommissionProgram(param: AffiliateApiUpdateCommissionProgramRequest, options?: ConfigurationOptions): Promise<AffiliateCommissionProgramResponse> {
+        return this.api.updateCommissionProgram(param.commissionProgramId, param.updateCommissionProgramRequest, param.updateMask,  options).toPromise();
     }
 
     /**
@@ -1298,8 +1221,8 @@ export class ObjectAffiliateApi {
      * Update a Default Commission Program
      * @param param the request object
      */
-    public updateDefaultCommissionProgramUsingPATCHWithHttpInfo(param: AffiliateApiUpdateDefaultCommissionProgramUsingPATCHRequest, options?: ConfigurationOptions): Promise<HttpInfo<SetDefaultCommissionProgramResponse>> {
-        return this.api.updateDefaultCommissionProgramUsingPATCHWithHttpInfo(param.commissionProgramId, param.updateMask, param.updateDefaultCommissionProgramRequest,  options).toPromise();
+    public updateDefaultCommissionProgramWithHttpInfo(param: AffiliateApiUpdateDefaultCommissionProgramRequest, options?: ConfigurationOptions): Promise<HttpInfo<SetDefaultCommissionProgramResponse>> {
+        return this.api.updateDefaultCommissionProgramWithHttpInfo(param.commissionProgramId, param.updateMask, param.updateDefaultCommissionProgramRequest,  options).toPromise();
     }
 
     /**
@@ -1307,8 +1230,8 @@ export class ObjectAffiliateApi {
      * Update a Default Commission Program
      * @param param the request object
      */
-    public updateDefaultCommissionProgramUsingPATCH(param: AffiliateApiUpdateDefaultCommissionProgramUsingPATCHRequest, options?: ConfigurationOptions): Promise<SetDefaultCommissionProgramResponse> {
-        return this.api.updateDefaultCommissionProgramUsingPATCH(param.commissionProgramId, param.updateMask, param.updateDefaultCommissionProgramRequest,  options).toPromise();
+    public updateDefaultCommissionProgram(param: AffiliateApiUpdateDefaultCommissionProgramRequest, options?: ConfigurationOptions): Promise<SetDefaultCommissionProgramResponse> {
+        return this.api.updateDefaultCommissionProgram(param.commissionProgramId, param.updateMask, param.updateDefaultCommissionProgramRequest,  options).toPromise();
     }
 
     /**
@@ -1316,8 +1239,8 @@ export class ObjectAffiliateApi {
      * Update a Product Commission Program
      * @param param the request object
      */
-    public updateProductCommissionProgramUsingPATCHWithHttpInfo(param: AffiliateApiUpdateProductCommissionProgramUsingPATCHRequest, options?: ConfigurationOptions): Promise<HttpInfo<ProductCommissionProgram>> {
-        return this.api.updateProductCommissionProgramUsingPATCHWithHttpInfo(param.commissionProgramId, param.updateMask, param.updateProductCommissionProgramRequest,  options).toPromise();
+    public updateProductCommissionProgramWithHttpInfo(param: AffiliateApiUpdateProductCommissionProgramRequest, options?: ConfigurationOptions): Promise<HttpInfo<ProductCommissionProgram>> {
+        return this.api.updateProductCommissionProgramWithHttpInfo(param.commissionProgramId, param.updateMask, param.updateProductCommissionProgramRequest,  options).toPromise();
     }
 
     /**
@@ -1325,8 +1248,8 @@ export class ObjectAffiliateApi {
      * Update a Product Commission Program
      * @param param the request object
      */
-    public updateProductCommissionProgramUsingPATCH(param: AffiliateApiUpdateProductCommissionProgramUsingPATCHRequest, options?: ConfigurationOptions): Promise<ProductCommissionProgram> {
-        return this.api.updateProductCommissionProgramUsingPATCH(param.commissionProgramId, param.updateMask, param.updateProductCommissionProgramRequest,  options).toPromise();
+    public updateProductCommissionProgram(param: AffiliateApiUpdateProductCommissionProgramRequest, options?: ConfigurationOptions): Promise<ProductCommissionProgram> {
+        return this.api.updateProductCommissionProgram(param.commissionProgramId, param.updateMask, param.updateProductCommissionProgramRequest,  options).toPromise();
     }
 
     /**
@@ -1334,8 +1257,8 @@ export class ObjectAffiliateApi {
      * Update an Affiliate Link
      * @param param the request object
      */
-    public updateRedirectLinkUsingPATCHWithHttpInfo(param: AffiliateApiUpdateRedirectLinkUsingPATCHRequest, options?: ConfigurationOptions): Promise<HttpInfo<AffiliateLink>> {
-        return this.api.updateRedirectLinkUsingPATCHWithHttpInfo(param.redirectId, param.createOrUpdateAffiliateLinkRequest,  options).toPromise();
+    public updateRedirectLinkWithHttpInfo(param: AffiliateApiUpdateRedirectLinkRequest, options?: ConfigurationOptions): Promise<HttpInfo<AffiliateLink>> {
+        return this.api.updateRedirectLinkWithHttpInfo(param.redirectId, param.createOrUpdateAffiliateLinkRequest,  options).toPromise();
     }
 
     /**
@@ -1343,8 +1266,8 @@ export class ObjectAffiliateApi {
      * Update an Affiliate Link
      * @param param the request object
      */
-    public updateRedirectLinkUsingPATCH(param: AffiliateApiUpdateRedirectLinkUsingPATCHRequest, options?: ConfigurationOptions): Promise<AffiliateLink> {
-        return this.api.updateRedirectLinkUsingPATCH(param.redirectId, param.createOrUpdateAffiliateLinkRequest,  options).toPromise();
+    public updateRedirectLink(param: AffiliateApiUpdateRedirectLinkRequest, options?: ConfigurationOptions): Promise<AffiliateLink> {
+        return this.api.updateRedirectLink(param.redirectId, param.createOrUpdateAffiliateLinkRequest,  options).toPromise();
     }
 
     /**
@@ -1352,8 +1275,8 @@ export class ObjectAffiliateApi {
      * Update a Subscription Commission Program
      * @param param the request object
      */
-    public updateSubscriptionCommissionProgramUsingPATCHWithHttpInfo(param: AffiliateApiUpdateSubscriptionCommissionProgramUsingPATCHRequest, options?: ConfigurationOptions): Promise<HttpInfo<SubscriptionCommissionProgram>> {
-        return this.api.updateSubscriptionCommissionProgramUsingPATCHWithHttpInfo(param.commissionProgramId, param.updateMask, param.updateSubscriptionCommissionProgramRequest,  options).toPromise();
+    public updateSubscriptionCommissionProgramWithHttpInfo(param: AffiliateApiUpdateSubscriptionCommissionProgramRequest, options?: ConfigurationOptions): Promise<HttpInfo<SubscriptionCommissionProgram>> {
+        return this.api.updateSubscriptionCommissionProgramWithHttpInfo(param.commissionProgramId, param.updateMask, param.updateSubscriptionCommissionProgramRequest,  options).toPromise();
     }
 
     /**
@@ -1361,8 +1284,8 @@ export class ObjectAffiliateApi {
      * Update a Subscription Commission Program
      * @param param the request object
      */
-    public updateSubscriptionCommissionProgramUsingPATCH(param: AffiliateApiUpdateSubscriptionCommissionProgramUsingPATCHRequest, options?: ConfigurationOptions): Promise<SubscriptionCommissionProgram> {
-        return this.api.updateSubscriptionCommissionProgramUsingPATCH(param.commissionProgramId, param.updateMask, param.updateSubscriptionCommissionProgramRequest,  options).toPromise();
+    public updateSubscriptionCommissionProgram(param: AffiliateApiUpdateSubscriptionCommissionProgramRequest, options?: ConfigurationOptions): Promise<SubscriptionCommissionProgram> {
+        return this.api.updateSubscriptionCommissionProgram(param.commissionProgramId, param.updateMask, param.updateSubscriptionCommissionProgramRequest,  options).toPromise();
     }
 
 }
@@ -1370,71 +1293,71 @@ export class ObjectAffiliateApi {
 import { ObservableAutomationApi } from "./ObservableAPI";
 import { AutomationApiRequestFactory, AutomationApiResponseProcessor} from "../apis/AutomationApi";
 
-export interface AutomationApiAddContactsToAutomationSequenceUsingPOSTRequest {
+export interface AutomationApiAddContactsToAutomationSequenceRequest {
     /**
      * automation_id
      * Defaults to: undefined
      * @type string
-     * @memberof AutomationApiaddContactsToAutomationSequenceUsingPOST
+     * @memberof AutomationApiaddContactsToAutomationSequence
      */
     automationId: string
     /**
      * sequence_id
      * Defaults to: undefined
      * @type string
-     * @memberof AutomationApiaddContactsToAutomationSequenceUsingPOST
+     * @memberof AutomationApiaddContactsToAutomationSequence
      */
     sequenceId: string
     /**
      * addToAutomationSequenceRequest
      * @type AddToAutomationSequenceRequest
-     * @memberof AutomationApiaddContactsToAutomationSequenceUsingPOST
+     * @memberof AutomationApiaddContactsToAutomationSequence
      */
     addToAutomationSequenceRequest: AddToAutomationSequenceRequest
 }
 
-export interface AutomationApiBulkAssignmentAutomationsCategoriesUsingPOSTRequest {
+export interface AutomationApiBulkAssignmentAutomationsCategoriesRequest {
     /**
      * assignAutomationCategoryRequest
      * @type AssignAutomationCategoryRequest
-     * @memberof AutomationApibulkAssignmentAutomationsCategoriesUsingPOST
+     * @memberof AutomationApibulkAssignmentAutomationsCategories
      */
     assignAutomationCategoryRequest: AssignAutomationCategoryRequest
 }
 
-export interface AutomationApiDeleteAutomationUsingDELETERequest {
+export interface AutomationApiDeleteAutomationRequest {
     /**
      * automation_ids
      * Defaults to: undefined
      * @type Array&lt;number&gt;
-     * @memberof AutomationApideleteAutomationUsingDELETE
+     * @memberof AutomationApideleteAutomation
      */
     automationIds: Array<number>
 }
 
-export interface AutomationApiGetAutomationUsingGETRequest {
+export interface AutomationApiGetAutomationRequest {
     /**
      * automation_id
      * Defaults to: undefined
      * @type string
-     * @memberof AutomationApigetAutomationUsingGET
+     * @memberof AutomationApigetAutomation
      */
     automationId: string
 }
 
-export interface AutomationApiListAllAutomationIdsUsingGETRequest {
+export interface AutomationApiListAllAutomationIdsRequest {
     /**
      * Filter to apply, allowed fields are: - (String) &#x60;name&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of the filter with your searched text, in the encoded form &#x60;%3D%3D&#x60;. The search will look for the text anywhere in the automation name.  - &#x60;filter&#x3D;name%3D%3DSpring Automation&#x60; - &#x60;filter&#x3D;name%3D%3DTag New Contacts&#x60; 
      * Defaults to: undefined
      * @type string
-     * @memberof AutomationApilistAllAutomationIdsUsingGET
+     * @memberof AutomationApilistAllAutomationIds
      */
     filter?: string
     /**
      * Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;category&#x60; - &#x60;activeContacts&#x60; - &#x60;publishedDate&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * Defaults to: undefined
      * @type string
-     * @memberof AutomationApilistAllAutomationIdsUsingGET
+     * @memberof AutomationApilistAllAutomationIds
      */
     orderBy?: string
     /**
@@ -1443,38 +1366,38 @@ export interface AutomationApiListAllAutomationIdsUsingGETRequest {
      * Maximum: 25
      * Defaults to: undefined
      * @type number
-     * @memberof AutomationApilistAllAutomationIdsUsingGET
+     * @memberof AutomationApilistAllAutomationIds
      */
     pageSize?: number
     /**
      * Page token
      * Defaults to: undefined
      * @type string
-     * @memberof AutomationApilistAllAutomationIdsUsingGET
+     * @memberof AutomationApilistAllAutomationIds
      */
     pageToken?: string
     /**
      * 
      * Defaults to: undefined
      * @type boolean
-     * @memberof AutomationApilistAllAutomationIdsUsingGET
+     * @memberof AutomationApilistAllAutomationIds
      */
     stats?: boolean
 }
 
-export interface AutomationApiListAutomationsUsingGETRequest {
+export interface AutomationApiListAutomationsRequest {
     /**
      * Filter to apply, allowed fields are: - (String) &#x60;name&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of the filter with your searched text, in the encoded form &#x60;%3D%3D&#x60;. The search will look for the text anywhere in the automation name.  - &#x60;filter&#x3D;name%3D%3DSpring Automation&#x60; - &#x60;filter&#x3D;name%3D%3DTag New Contacts&#x60; 
      * Defaults to: undefined
      * @type string
-     * @memberof AutomationApilistAutomationsUsingGET
+     * @memberof AutomationApilistAutomations
      */
     filter?: string
     /**
      * Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;category&#x60; - &#x60;activeContacts&#x60; - &#x60;publishedDate&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * Defaults to: undefined
      * @type string
-     * @memberof AutomationApilistAutomationsUsingGET
+     * @memberof AutomationApilistAutomations
      */
     orderBy?: string
     /**
@@ -1483,32 +1406,23 @@ export interface AutomationApiListAutomationsUsingGETRequest {
      * Maximum: 25
      * Defaults to: undefined
      * @type number
-     * @memberof AutomationApilistAutomationsUsingGET
+     * @memberof AutomationApilistAutomations
      */
     pageSize?: number
     /**
      * Page token
      * Defaults to: undefined
      * @type string
-     * @memberof AutomationApilistAutomationsUsingGET
+     * @memberof AutomationApilistAutomations
      */
     pageToken?: string
     /**
      * 
      * Defaults to: undefined
      * @type boolean
-     * @memberof AutomationApilistAutomationsUsingGET
+     * @memberof AutomationApilistAutomations
      */
     stats?: boolean
-}
-
-export interface AutomationApiUpdateAutomationCategoryUsingPUTRequest {
-    /**
-     * updateAutomationCategoryRequest
-     * @type UpdateAutomationCategoryRequest
-     * @memberof AutomationApiupdateAutomationCategoryUsingPUT
-     */
-    updateAutomationCategoryRequest: UpdateAutomationCategoryRequest
 }
 
 export class ObjectAutomationApi {
@@ -1523,8 +1437,8 @@ export class ObjectAutomationApi {
      * Add Contacts to an Automation Sequence
      * @param param the request object
      */
-    public addContactsToAutomationSequenceUsingPOSTWithHttpInfo(param: AutomationApiAddContactsToAutomationSequenceUsingPOSTRequest, options?: ConfigurationOptions): Promise<HttpInfo<AddToAutomationSequenceResponse>> {
-        return this.api.addContactsToAutomationSequenceUsingPOSTWithHttpInfo(param.automationId, param.sequenceId, param.addToAutomationSequenceRequest,  options).toPromise();
+    public addContactsToAutomationSequenceWithHttpInfo(param: AutomationApiAddContactsToAutomationSequenceRequest, options?: ConfigurationOptions): Promise<HttpInfo<AddToAutomationSequenceResponse>> {
+        return this.api.addContactsToAutomationSequenceWithHttpInfo(param.automationId, param.sequenceId, param.addToAutomationSequenceRequest,  options).toPromise();
     }
 
     /**
@@ -1532,8 +1446,8 @@ export class ObjectAutomationApi {
      * Add Contacts to an Automation Sequence
      * @param param the request object
      */
-    public addContactsToAutomationSequenceUsingPOST(param: AutomationApiAddContactsToAutomationSequenceUsingPOSTRequest, options?: ConfigurationOptions): Promise<AddToAutomationSequenceResponse> {
-        return this.api.addContactsToAutomationSequenceUsingPOST(param.automationId, param.sequenceId, param.addToAutomationSequenceRequest,  options).toPromise();
+    public addContactsToAutomationSequence(param: AutomationApiAddContactsToAutomationSequenceRequest, options?: ConfigurationOptions): Promise<AddToAutomationSequenceResponse> {
+        return this.api.addContactsToAutomationSequence(param.automationId, param.sequenceId, param.addToAutomationSequenceRequest,  options).toPromise();
     }
 
     /**
@@ -1541,8 +1455,8 @@ export class ObjectAutomationApi {
      * Bulk update for Automations Categories
      * @param param the request object
      */
-    public bulkAssignmentAutomationsCategoriesUsingPOSTWithHttpInfo(param: AutomationApiBulkAssignmentAutomationsCategoriesUsingPOSTRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api.bulkAssignmentAutomationsCategoriesUsingPOSTWithHttpInfo(param.assignAutomationCategoryRequest,  options).toPromise();
+    public bulkAssignmentAutomationsCategoriesWithHttpInfo(param: AutomationApiBulkAssignmentAutomationsCategoriesRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.bulkAssignmentAutomationsCategoriesWithHttpInfo(param.assignAutomationCategoryRequest,  options).toPromise();
     }
 
     /**
@@ -1550,8 +1464,8 @@ export class ObjectAutomationApi {
      * Bulk update for Automations Categories
      * @param param the request object
      */
-    public bulkAssignmentAutomationsCategoriesUsingPOST(param: AutomationApiBulkAssignmentAutomationsCategoriesUsingPOSTRequest, options?: ConfigurationOptions): Promise<void> {
-        return this.api.bulkAssignmentAutomationsCategoriesUsingPOST(param.assignAutomationCategoryRequest,  options).toPromise();
+    public bulkAssignmentAutomationsCategories(param: AutomationApiBulkAssignmentAutomationsCategoriesRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.bulkAssignmentAutomationsCategories(param.assignAutomationCategoryRequest,  options).toPromise();
     }
 
     /**
@@ -1559,8 +1473,8 @@ export class ObjectAutomationApi {
      * Delete an Automation
      * @param param the request object
      */
-    public deleteAutomationUsingDELETEWithHttpInfo(param: AutomationApiDeleteAutomationUsingDELETERequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api.deleteAutomationUsingDELETEWithHttpInfo(param.automationIds,  options).toPromise();
+    public deleteAutomationWithHttpInfo(param: AutomationApiDeleteAutomationRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteAutomationWithHttpInfo(param.automationIds,  options).toPromise();
     }
 
     /**
@@ -1568,8 +1482,8 @@ export class ObjectAutomationApi {
      * Delete an Automation
      * @param param the request object
      */
-    public deleteAutomationUsingDELETE(param: AutomationApiDeleteAutomationUsingDELETERequest, options?: ConfigurationOptions): Promise<void> {
-        return this.api.deleteAutomationUsingDELETE(param.automationIds,  options).toPromise();
+    public deleteAutomation(param: AutomationApiDeleteAutomationRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteAutomation(param.automationIds,  options).toPromise();
     }
 
     /**
@@ -1577,8 +1491,8 @@ export class ObjectAutomationApi {
      * Retrieve an Automation
      * @param param the request object
      */
-    public getAutomationUsingGETWithHttpInfo(param: AutomationApiGetAutomationUsingGETRequest, options?: ConfigurationOptions): Promise<HttpInfo<Automation>> {
-        return this.api.getAutomationUsingGETWithHttpInfo(param.automationId,  options).toPromise();
+    public getAutomationWithHttpInfo(param: AutomationApiGetAutomationRequest, options?: ConfigurationOptions): Promise<HttpInfo<Automation>> {
+        return this.api.getAutomationWithHttpInfo(param.automationId,  options).toPromise();
     }
 
     /**
@@ -1586,8 +1500,8 @@ export class ObjectAutomationApi {
      * Retrieve an Automation
      * @param param the request object
      */
-    public getAutomationUsingGET(param: AutomationApiGetAutomationUsingGETRequest, options?: ConfigurationOptions): Promise<Automation> {
-        return this.api.getAutomationUsingGET(param.automationId,  options).toPromise();
+    public getAutomation(param: AutomationApiGetAutomationRequest, options?: ConfigurationOptions): Promise<Automation> {
+        return this.api.getAutomation(param.automationId,  options).toPromise();
     }
 
     /**
@@ -1595,8 +1509,8 @@ export class ObjectAutomationApi {
      * List Automations Ids
      * @param param the request object
      */
-    public listAllAutomationIdsUsingGETWithHttpInfo(param: AutomationApiListAllAutomationIdsUsingGETRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListAutomationIdsResponse>> {
-        return this.api.listAllAutomationIdsUsingGETWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken, param.stats,  options).toPromise();
+    public listAllAutomationIdsWithHttpInfo(param: AutomationApiListAllAutomationIdsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListAutomationIdsResponse>> {
+        return this.api.listAllAutomationIdsWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken, param.stats,  options).toPromise();
     }
 
     /**
@@ -1604,8 +1518,8 @@ export class ObjectAutomationApi {
      * List Automations Ids
      * @param param the request object
      */
-    public listAllAutomationIdsUsingGET(param: AutomationApiListAllAutomationIdsUsingGETRequest = {}, options?: ConfigurationOptions): Promise<ListAutomationIdsResponse> {
-        return this.api.listAllAutomationIdsUsingGET(param.filter, param.orderBy, param.pageSize, param.pageToken, param.stats,  options).toPromise();
+    public listAllAutomationIds(param: AutomationApiListAllAutomationIdsRequest = {}, options?: ConfigurationOptions): Promise<ListAutomationIdsResponse> {
+        return this.api.listAllAutomationIds(param.filter, param.orderBy, param.pageSize, param.pageToken, param.stats,  options).toPromise();
     }
 
     /**
@@ -1613,8 +1527,8 @@ export class ObjectAutomationApi {
      * List Automations
      * @param param the request object
      */
-    public listAutomationsUsingGETWithHttpInfo(param: AutomationApiListAutomationsUsingGETRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListAutomationResponse>> {
-        return this.api.listAutomationsUsingGETWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken, param.stats,  options).toPromise();
+    public listAutomationsWithHttpInfo(param: AutomationApiListAutomationsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListAutomationResponse>> {
+        return this.api.listAutomationsWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken, param.stats,  options).toPromise();
     }
 
     /**
@@ -1622,26 +1536,8 @@ export class ObjectAutomationApi {
      * List Automations
      * @param param the request object
      */
-    public listAutomationsUsingGET(param: AutomationApiListAutomationsUsingGETRequest = {}, options?: ConfigurationOptions): Promise<ListAutomationResponse> {
-        return this.api.listAutomationsUsingGET(param.filter, param.orderBy, param.pageSize, param.pageToken, param.stats,  options).toPromise();
-    }
-
-    /**
-     * Updates the category of one or more automations
-     * Update an Automation\'s Category
-     * @param param the request object
-     */
-    public updateAutomationCategoryUsingPUTWithHttpInfo(param: AutomationApiUpdateAutomationCategoryUsingPUTRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api.updateAutomationCategoryUsingPUTWithHttpInfo(param.updateAutomationCategoryRequest,  options).toPromise();
-    }
-
-    /**
-     * Updates the category of one or more automations
-     * Update an Automation\'s Category
-     * @param param the request object
-     */
-    public updateAutomationCategoryUsingPUT(param: AutomationApiUpdateAutomationCategoryUsingPUTRequest, options?: ConfigurationOptions): Promise<void> {
-        return this.api.updateAutomationCategoryUsingPUT(param.updateAutomationCategoryRequest,  options).toPromise();
+    public listAutomations(param: AutomationApiListAutomationsRequest = {}, options?: ConfigurationOptions): Promise<ListAutomationResponse> {
+        return this.api.listAutomations(param.filter, param.orderBy, param.pageSize, param.pageToken, param.stats,  options).toPromise();
     }
 
 }
@@ -1649,51 +1545,42 @@ export class ObjectAutomationApi {
 import { ObservableAutomationCategoryApi } from "./ObservableAPI";
 import { AutomationCategoryApiRequestFactory, AutomationCategoryApiResponseProcessor} from "../apis/AutomationCategoryApi";
 
-export interface AutomationCategoryApiCreateCategoryUsingPOSTRequest {
+export interface AutomationCategoryApiCreateCategoryRequest {
     /**
      * createAutomationCategoryRequest
      * @type CreateAutomationCategoryRequest
-     * @memberof AutomationCategoryApicreateCategoryUsingPOST
+     * @memberof AutomationCategoryApicreateCategory
      */
     createAutomationCategoryRequest: CreateAutomationCategoryRequest
 }
 
-export interface AutomationCategoryApiDeleteCategoriesUsingDELETERequest {
+export interface AutomationCategoryApiDeleteCategoriesRequest {
     /**
      * ids
      * Defaults to: undefined
      * @type Array&lt;number&gt;
-     * @memberof AutomationCategoryApideleteCategoriesUsingDELETE
+     * @memberof AutomationCategoryApideleteCategories
      */
     ids: Array<number>
 }
 
-export interface AutomationCategoryApiListCategoriesUsingGETRequest {
+export interface AutomationCategoryApiListCategoriesRequest {
 }
 
-export interface AutomationCategoryApiPatchCategoryUsingPATCHRequest {
+export interface AutomationCategoryApiPatchCategoryRequest {
     /**
      * id
      * Defaults to: undefined
      * @type string
-     * @memberof AutomationCategoryApipatchCategoryUsingPATCH
+     * @memberof AutomationCategoryApipatchCategory
      */
     id: string
     /**
      * patchAutomationCategoryRequest
      * @type PatchAutomationCategoryRequest
-     * @memberof AutomationCategoryApipatchCategoryUsingPATCH
+     * @memberof AutomationCategoryApipatchCategory
      */
     patchAutomationCategoryRequest: PatchAutomationCategoryRequest
-}
-
-export interface AutomationCategoryApiSaveCategoryUsingPUTRequest {
-    /**
-     * saveAutomationCategoryRequest
-     * @type SaveAutomationCategoryRequest
-     * @memberof AutomationCategoryApisaveCategoryUsingPUT
-     */
-    saveAutomationCategoryRequest: SaveAutomationCategoryRequest
 }
 
 export class ObjectAutomationCategoryApi {
@@ -1708,8 +1595,8 @@ export class ObjectAutomationCategoryApi {
      * Create automation category
      * @param param the request object
      */
-    public createCategoryUsingPOSTWithHttpInfo(param: AutomationCategoryApiCreateCategoryUsingPOSTRequest, options?: ConfigurationOptions): Promise<HttpInfo<AutomationCategory>> {
-        return this.api.createCategoryUsingPOSTWithHttpInfo(param.createAutomationCategoryRequest,  options).toPromise();
+    public createCategoryWithHttpInfo(param: AutomationCategoryApiCreateCategoryRequest, options?: ConfigurationOptions): Promise<HttpInfo<AutomationCategory>> {
+        return this.api.createCategoryWithHttpInfo(param.createAutomationCategoryRequest,  options).toPromise();
     }
 
     /**
@@ -1717,8 +1604,8 @@ export class ObjectAutomationCategoryApi {
      * Create automation category
      * @param param the request object
      */
-    public createCategoryUsingPOST(param: AutomationCategoryApiCreateCategoryUsingPOSTRequest, options?: ConfigurationOptions): Promise<AutomationCategory> {
-        return this.api.createCategoryUsingPOST(param.createAutomationCategoryRequest,  options).toPromise();
+    public createCategory(param: AutomationCategoryApiCreateCategoryRequest, options?: ConfigurationOptions): Promise<AutomationCategory> {
+        return this.api.createCategory(param.createAutomationCategoryRequest,  options).toPromise();
     }
 
     /**
@@ -1726,8 +1613,8 @@ export class ObjectAutomationCategoryApi {
      * Delete automation category
      * @param param the request object
      */
-    public deleteCategoriesUsingDELETEWithHttpInfo(param: AutomationCategoryApiDeleteCategoriesUsingDELETERequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api.deleteCategoriesUsingDELETEWithHttpInfo(param.ids,  options).toPromise();
+    public deleteCategoriesWithHttpInfo(param: AutomationCategoryApiDeleteCategoriesRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteCategoriesWithHttpInfo(param.ids,  options).toPromise();
     }
 
     /**
@@ -1735,8 +1622,8 @@ export class ObjectAutomationCategoryApi {
      * Delete automation category
      * @param param the request object
      */
-    public deleteCategoriesUsingDELETE(param: AutomationCategoryApiDeleteCategoriesUsingDELETERequest, options?: ConfigurationOptions): Promise<void> {
-        return this.api.deleteCategoriesUsingDELETE(param.ids,  options).toPromise();
+    public deleteCategories(param: AutomationCategoryApiDeleteCategoriesRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteCategories(param.ids,  options).toPromise();
     }
 
     /**
@@ -1744,8 +1631,8 @@ export class ObjectAutomationCategoryApi {
      * List automation categories
      * @param param the request object
      */
-    public listCategoriesUsingGETWithHttpInfo(param: AutomationCategoryApiListCategoriesUsingGETRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListAutomationCategoryResponse>> {
-        return this.api.listCategoriesUsingGETWithHttpInfo( options).toPromise();
+    public listCategoriesWithHttpInfo(param: AutomationCategoryApiListCategoriesRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListAutomationCategoryResponse>> {
+        return this.api.listCategoriesWithHttpInfo( options).toPromise();
     }
 
     /**
@@ -1753,8 +1640,8 @@ export class ObjectAutomationCategoryApi {
      * List automation categories
      * @param param the request object
      */
-    public listCategoriesUsingGET(param: AutomationCategoryApiListCategoriesUsingGETRequest = {}, options?: ConfigurationOptions): Promise<ListAutomationCategoryResponse> {
-        return this.api.listCategoriesUsingGET( options).toPromise();
+    public listCategories(param: AutomationCategoryApiListCategoriesRequest = {}, options?: ConfigurationOptions): Promise<ListAutomationCategoryResponse> {
+        return this.api.listCategories( options).toPromise();
     }
 
     /**
@@ -1762,8 +1649,8 @@ export class ObjectAutomationCategoryApi {
      * Update automation category
      * @param param the request object
      */
-    public patchCategoryUsingPATCHWithHttpInfo(param: AutomationCategoryApiPatchCategoryUsingPATCHRequest, options?: ConfigurationOptions): Promise<HttpInfo<AutomationCategory>> {
-        return this.api.patchCategoryUsingPATCHWithHttpInfo(param.id, param.patchAutomationCategoryRequest,  options).toPromise();
+    public patchCategoryWithHttpInfo(param: AutomationCategoryApiPatchCategoryRequest, options?: ConfigurationOptions): Promise<HttpInfo<AutomationCategory>> {
+        return this.api.patchCategoryWithHttpInfo(param.id, param.patchAutomationCategoryRequest,  options).toPromise();
     }
 
     /**
@@ -1771,26 +1658,8 @@ export class ObjectAutomationCategoryApi {
      * Update automation category
      * @param param the request object
      */
-    public patchCategoryUsingPATCH(param: AutomationCategoryApiPatchCategoryUsingPATCHRequest, options?: ConfigurationOptions): Promise<AutomationCategory> {
-        return this.api.patchCategoryUsingPATCH(param.id, param.patchAutomationCategoryRequest,  options).toPromise();
-    }
-
-    /**
-     * Creates or updates a single automation category
-     * Save automation category
-     * @param param the request object
-     */
-    public saveCategoryUsingPUTWithHttpInfo(param: AutomationCategoryApiSaveCategoryUsingPUTRequest, options?: ConfigurationOptions): Promise<HttpInfo<AutomationCategory>> {
-        return this.api.saveCategoryUsingPUTWithHttpInfo(param.saveAutomationCategoryRequest,  options).toPromise();
-    }
-
-    /**
-     * Creates or updates a single automation category
-     * Save automation category
-     * @param param the request object
-     */
-    public saveCategoryUsingPUT(param: AutomationCategoryApiSaveCategoryUsingPUTRequest, options?: ConfigurationOptions): Promise<AutomationCategory> {
-        return this.api.saveCategoryUsingPUT(param.saveAutomationCategoryRequest,  options).toPromise();
+    public patchCategory(param: AutomationCategoryApiPatchCategoryRequest, options?: ConfigurationOptions): Promise<AutomationCategory> {
+        return this.api.patchCategory(param.id, param.patchAutomationCategoryRequest,  options).toPromise();
     }
 
 }
@@ -1798,21 +1667,21 @@ export class ObjectAutomationCategoryApi {
 import { ObservableBusinessProfileApi } from "./ObservableAPI";
 import { BusinessProfileApiRequestFactory, BusinessProfileApiResponseProcessor} from "../apis/BusinessProfileApi";
 
-export interface BusinessProfileApiGetBusinessProfileUsingGETRequest {
+export interface BusinessProfileApiGetBusinessProfileRequest {
 }
 
-export interface BusinessProfileApiUpdateBusinessProfileUsingPATCHRequest {
+export interface BusinessProfileApiUpdateBusinessProfileRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
      * @type Array&lt;string&gt;
-     * @memberof BusinessProfileApiupdateBusinessProfileUsingPATCH
+     * @memberof BusinessProfileApiupdateBusinessProfile
      */
     updateMask?: Array<string>
     /**
      * businessProfile
      * @type UpdateBusinessProfileRequest
-     * @memberof BusinessProfileApiupdateBusinessProfileUsingPATCH
+     * @memberof BusinessProfileApiupdateBusinessProfile
      */
     updateBusinessProfileRequest?: UpdateBusinessProfileRequest
 }
@@ -1829,8 +1698,8 @@ export class ObjectBusinessProfileApi {
      * Retrieve Business Profile
      * @param param the request object
      */
-    public getBusinessProfileUsingGETWithHttpInfo(param: BusinessProfileApiGetBusinessProfileUsingGETRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<GetBusinessProfileResponse>> {
-        return this.api.getBusinessProfileUsingGETWithHttpInfo( options).toPromise();
+    public getBusinessProfileWithHttpInfo(param: BusinessProfileApiGetBusinessProfileRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<GetBusinessProfileResponse>> {
+        return this.api.getBusinessProfileWithHttpInfo( options).toPromise();
     }
 
     /**
@@ -1838,8 +1707,8 @@ export class ObjectBusinessProfileApi {
      * Retrieve Business Profile
      * @param param the request object
      */
-    public getBusinessProfileUsingGET(param: BusinessProfileApiGetBusinessProfileUsingGETRequest = {}, options?: ConfigurationOptions): Promise<GetBusinessProfileResponse> {
-        return this.api.getBusinessProfileUsingGET( options).toPromise();
+    public getBusinessProfile(param: BusinessProfileApiGetBusinessProfileRequest = {}, options?: ConfigurationOptions): Promise<GetBusinessProfileResponse> {
+        return this.api.getBusinessProfile( options).toPromise();
     }
 
     /**
@@ -1847,8 +1716,8 @@ export class ObjectBusinessProfileApi {
      * Update Business Profile
      * @param param the request object
      */
-    public updateBusinessProfileUsingPATCHWithHttpInfo(param: BusinessProfileApiUpdateBusinessProfileUsingPATCHRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<GetBusinessProfileResponse>> {
-        return this.api.updateBusinessProfileUsingPATCHWithHttpInfo(param.updateMask, param.updateBusinessProfileRequest,  options).toPromise();
+    public updateBusinessProfileWithHttpInfo(param: BusinessProfileApiUpdateBusinessProfileRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<GetBusinessProfileResponse>> {
+        return this.api.updateBusinessProfileWithHttpInfo(param.updateMask, param.updateBusinessProfileRequest,  options).toPromise();
     }
 
     /**
@@ -1856,8 +1725,8 @@ export class ObjectBusinessProfileApi {
      * Update Business Profile
      * @param param the request object
      */
-    public updateBusinessProfileUsingPATCH(param: BusinessProfileApiUpdateBusinessProfileUsingPATCHRequest = {}, options?: ConfigurationOptions): Promise<GetBusinessProfileResponse> {
-        return this.api.updateBusinessProfileUsingPATCH(param.updateMask, param.updateBusinessProfileRequest,  options).toPromise();
+    public updateBusinessProfile(param: BusinessProfileApiUpdateBusinessProfileRequest = {}, options?: ConfigurationOptions): Promise<GetBusinessProfileResponse> {
+        return this.api.updateBusinessProfile(param.updateMask, param.updateBusinessProfileRequest,  options).toPromise();
     }
 
 }
@@ -1865,52 +1734,52 @@ export class ObjectBusinessProfileApi {
 import { ObservableCampaignApi } from "./ObservableAPI";
 import { CampaignApiRequestFactory, CampaignApiResponseProcessor} from "../apis/CampaignApi";
 
-export interface CampaignApiAddContactsToCampaignSequenceUsingPOST1Request {
+export interface CampaignApiAddContactsToCampaignSequenceRequest {
     /**
      * campaign_id
      * Defaults to: undefined
      * @type string
-     * @memberof CampaignApiaddContactsToCampaignSequenceUsingPOST1
+     * @memberof CampaignApiaddContactsToCampaignSequence
      */
     campaignId: string
     /**
      * sequence_id
      * Defaults to: undefined
      * @type string
-     * @memberof CampaignApiaddContactsToCampaignSequenceUsingPOST1
+     * @memberof CampaignApiaddContactsToCampaignSequence
      */
     sequenceId: string
     /**
      * addContactsToSequenceRequest
      * @type AddContactsToSequenceRequest
-     * @memberof CampaignApiaddContactsToCampaignSequenceUsingPOST1
+     * @memberof CampaignApiaddContactsToCampaignSequence
      */
     addContactsToSequenceRequest: AddContactsToSequenceRequest
 }
 
-export interface CampaignApiGetCampaignUsingGET1Request {
+export interface CampaignApiGetCampaignRequest {
     /**
      * campaign_id
      * Defaults to: undefined
      * @type string
-     * @memberof CampaignApigetCampaignUsingGET1
+     * @memberof CampaignApigetCampaign
      */
     campaignId: string
 }
 
-export interface CampaignApiListCampaignsUsingGET1Request {
+export interface CampaignApiListCampaignsRequest {
     /**
      * Filter to apply, allowed fields are: - (String) &#x60;name&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of the filter with your searched text, in the encoded form &#x60;%3D%3D&#x60;. The search will look for the text anywhere in the campaign name. - &#x60;filter&#x3D;name%3D%3DSpring Campaign&#x60; - &#x60;filter&#x3D;name%3D%3DTag New Contacts&#x60; 
      * Defaults to: undefined
      * @type string
-     * @memberof CampaignApilistCampaignsUsingGET1
+     * @memberof CampaignApilistCampaigns
      */
     filter?: string
     /**
      * Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;publisheddate&#x60; - &#x60;id&#x60; - &#x60;completedContactCount&#x60; - &#x60;activeContacts&#x60; - &#x60;datecreated&#x60; - &#x60;lastupdated&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * Defaults to: undefined
      * @type string
-     * @memberof CampaignApilistCampaignsUsingGET1
+     * @memberof CampaignApilistCampaigns
      */
     orderBy?: string
     /**
@@ -1919,44 +1788,44 @@ export interface CampaignApiListCampaignsUsingGET1Request {
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
-     * @memberof CampaignApilistCampaignsUsingGET1
+     * @memberof CampaignApilistCampaigns
      */
     pageSize?: number
     /**
      * Page token
      * Defaults to: undefined
      * @type string
-     * @memberof CampaignApilistCampaignsUsingGET1
+     * @memberof CampaignApilistCampaigns
      */
     pageToken?: string
     /**
      * 
      * Defaults to: undefined
      * @type boolean
-     * @memberof CampaignApilistCampaignsUsingGET1
+     * @memberof CampaignApilistCampaigns
      */
     stats?: boolean
 }
 
-export interface CampaignApiRemoveContactsFromCampaignSequenceUsingPOSTRequest {
+export interface CampaignApiRemoveContactsFromCampaignSequenceRequest {
     /**
      * campaign_id
      * Defaults to: undefined
      * @type string
-     * @memberof CampaignApiremoveContactsFromCampaignSequenceUsingPOST
+     * @memberof CampaignApiremoveContactsFromCampaignSequence
      */
     campaignId: string
     /**
      * sequence_id
      * Defaults to: undefined
      * @type string
-     * @memberof CampaignApiremoveContactsFromCampaignSequenceUsingPOST
+     * @memberof CampaignApiremoveContactsFromCampaignSequence
      */
     sequenceId: string
     /**
      * removeContactsFromSequenceRequest
      * @type RemoveContactsFromSequenceRequest
-     * @memberof CampaignApiremoveContactsFromCampaignSequenceUsingPOST
+     * @memberof CampaignApiremoveContactsFromCampaignSequence
      */
     removeContactsFromSequenceRequest: RemoveContactsFromSequenceRequest
 }
@@ -1973,8 +1842,8 @@ export class ObjectCampaignApi {
      * Add Contacts to Campaign Sequence
      * @param param the request object
      */
-    public addContactsToCampaignSequenceUsingPOST1WithHttpInfo(param: CampaignApiAddContactsToCampaignSequenceUsingPOST1Request, options?: ConfigurationOptions): Promise<HttpInfo<AddContactsToSequenceResponse>> {
-        return this.api.addContactsToCampaignSequenceUsingPOST1WithHttpInfo(param.campaignId, param.sequenceId, param.addContactsToSequenceRequest,  options).toPromise();
+    public addContactsToCampaignSequenceWithHttpInfo(param: CampaignApiAddContactsToCampaignSequenceRequest, options?: ConfigurationOptions): Promise<HttpInfo<AddContactsToSequenceResponse>> {
+        return this.api.addContactsToCampaignSequenceWithHttpInfo(param.campaignId, param.sequenceId, param.addContactsToSequenceRequest,  options).toPromise();
     }
 
     /**
@@ -1982,8 +1851,8 @@ export class ObjectCampaignApi {
      * Add Contacts to Campaign Sequence
      * @param param the request object
      */
-    public addContactsToCampaignSequenceUsingPOST1(param: CampaignApiAddContactsToCampaignSequenceUsingPOST1Request, options?: ConfigurationOptions): Promise<AddContactsToSequenceResponse> {
-        return this.api.addContactsToCampaignSequenceUsingPOST1(param.campaignId, param.sequenceId, param.addContactsToSequenceRequest,  options).toPromise();
+    public addContactsToCampaignSequence(param: CampaignApiAddContactsToCampaignSequenceRequest, options?: ConfigurationOptions): Promise<AddContactsToSequenceResponse> {
+        return this.api.addContactsToCampaignSequence(param.campaignId, param.sequenceId, param.addContactsToSequenceRequest,  options).toPromise();
     }
 
     /**
@@ -1991,8 +1860,8 @@ export class ObjectCampaignApi {
      * Retrieve a Campaign
      * @param param the request object
      */
-    public getCampaignUsingGET1WithHttpInfo(param: CampaignApiGetCampaignUsingGET1Request, options?: ConfigurationOptions): Promise<HttpInfo<Campaign>> {
-        return this.api.getCampaignUsingGET1WithHttpInfo(param.campaignId,  options).toPromise();
+    public getCampaignWithHttpInfo(param: CampaignApiGetCampaignRequest, options?: ConfigurationOptions): Promise<HttpInfo<Campaign>> {
+        return this.api.getCampaignWithHttpInfo(param.campaignId,  options).toPromise();
     }
 
     /**
@@ -2000,8 +1869,8 @@ export class ObjectCampaignApi {
      * Retrieve a Campaign
      * @param param the request object
      */
-    public getCampaignUsingGET1(param: CampaignApiGetCampaignUsingGET1Request, options?: ConfigurationOptions): Promise<Campaign> {
-        return this.api.getCampaignUsingGET1(param.campaignId,  options).toPromise();
+    public getCampaign(param: CampaignApiGetCampaignRequest, options?: ConfigurationOptions): Promise<Campaign> {
+        return this.api.getCampaign(param.campaignId,  options).toPromise();
     }
 
     /**
@@ -2009,8 +1878,8 @@ export class ObjectCampaignApi {
      * List Campaigns
      * @param param the request object
      */
-    public listCampaignsUsingGET1WithHttpInfo(param: CampaignApiListCampaignsUsingGET1Request = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListCampaignsResponse>> {
-        return this.api.listCampaignsUsingGET1WithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken, param.stats,  options).toPromise();
+    public listCampaignsWithHttpInfo(param: CampaignApiListCampaignsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListCampaignsResponse>> {
+        return this.api.listCampaignsWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken, param.stats,  options).toPromise();
     }
 
     /**
@@ -2018,8 +1887,8 @@ export class ObjectCampaignApi {
      * List Campaigns
      * @param param the request object
      */
-    public listCampaignsUsingGET1(param: CampaignApiListCampaignsUsingGET1Request = {}, options?: ConfigurationOptions): Promise<ListCampaignsResponse> {
-        return this.api.listCampaignsUsingGET1(param.filter, param.orderBy, param.pageSize, param.pageToken, param.stats,  options).toPromise();
+    public listCampaigns(param: CampaignApiListCampaignsRequest = {}, options?: ConfigurationOptions): Promise<ListCampaignsResponse> {
+        return this.api.listCampaigns(param.filter, param.orderBy, param.pageSize, param.pageToken, param.stats,  options).toPromise();
     }
 
     /**
@@ -2027,8 +1896,8 @@ export class ObjectCampaignApi {
      * Remove Contacts from Campaign Sequence
      * @param param the request object
      */
-    public removeContactsFromCampaignSequenceUsingPOSTWithHttpInfo(param: CampaignApiRemoveContactsFromCampaignSequenceUsingPOSTRequest, options?: ConfigurationOptions): Promise<HttpInfo<RemoveContactsFromSequenceResponse>> {
-        return this.api.removeContactsFromCampaignSequenceUsingPOSTWithHttpInfo(param.campaignId, param.sequenceId, param.removeContactsFromSequenceRequest,  options).toPromise();
+    public removeContactsFromCampaignSequenceWithHttpInfo(param: CampaignApiRemoveContactsFromCampaignSequenceRequest, options?: ConfigurationOptions): Promise<HttpInfo<RemoveContactsFromSequenceResponse>> {
+        return this.api.removeContactsFromCampaignSequenceWithHttpInfo(param.campaignId, param.sequenceId, param.removeContactsFromSequenceRequest,  options).toPromise();
     }
 
     /**
@@ -2036,71 +1905,57 @@ export class ObjectCampaignApi {
      * Remove Contacts from Campaign Sequence
      * @param param the request object
      */
-    public removeContactsFromCampaignSequenceUsingPOST(param: CampaignApiRemoveContactsFromCampaignSequenceUsingPOSTRequest, options?: ConfigurationOptions): Promise<RemoveContactsFromSequenceResponse> {
-        return this.api.removeContactsFromCampaignSequenceUsingPOST(param.campaignId, param.sequenceId, param.removeContactsFromSequenceRequest,  options).toPromise();
+    public removeContactsFromCampaignSequence(param: CampaignApiRemoveContactsFromCampaignSequenceRequest, options?: ConfigurationOptions): Promise<RemoveContactsFromSequenceResponse> {
+        return this.api.removeContactsFromCampaignSequence(param.campaignId, param.sequenceId, param.removeContactsFromSequenceRequest,  options).toPromise();
     }
 
 }
 
-import { ObservableCompanyApi } from "./ObservableAPI";
-import { CompanyApiRequestFactory, CompanyApiResponseProcessor} from "../apis/CompanyApi";
+import { ObservableCategoryDiscountsApi } from "./ObservableAPI";
+import { CategoryDiscountsApiRequestFactory, CategoryDiscountsApiResponseProcessor} from "../apis/CategoryDiscountsApi";
 
-export interface CompanyApiCreateCompanyUsingPOST1Request {
+export interface CategoryDiscountsApiCreateCategoryDiscountRequest {
     /**
-     * company
-     * @type CreateCompanyRequest
-     * @memberof CompanyApicreateCompanyUsingPOST1
+     * request
+     * @type CreateCategoryDiscountRequest
+     * @memberof CategoryDiscountsApicreateCategoryDiscount
      */
-    createCompanyRequest?: CreateCompanyRequest
+    createCategoryDiscountRequest: CreateCategoryDiscountRequest
 }
 
-export interface CompanyApiDeleteCompanyUsingDELETERequest {
+export interface CategoryDiscountsApiDeleteCategoryDiscountRequest {
     /**
-     * company_id
+     * discount_id
      * Defaults to: undefined
      * @type string
-     * @memberof CompanyApideleteCompanyUsingDELETE
+     * @memberof CategoryDiscountsApideleteCategoryDiscount
      */
-    companyId: string
+    discountId: string
 }
 
-export interface CompanyApiGetCompanyUsingGET1Request {
+export interface CategoryDiscountsApiGetCategoryDiscountRequest {
     /**
-     * company_id
+     * discount_id
      * Defaults to: undefined
      * @type string
-     * @memberof CompanyApigetCompanyUsingGET1
+     * @memberof CategoryDiscountsApigetCategoryDiscount
      */
-    companyId: string
-    /**
-     * Comma-delimited list of Company properties to include in the response. (Available fields are: &#x60;company_name&#x60;, &#x60;address&#x60;, &#x60;custom_fields&#x60;, &#x60;email_address&#x60;, &#x60;fax_number&#x60;, &#x60;phone_number&#x60;, &#x60;website&#x60;, &#x60;notes&#x60;)
-     * Defaults to: undefined
-     * @type Array&lt;string&gt;
-     * @memberof CompanyApigetCompanyUsingGET1
-     */
-    fields?: Array<string>
+    discountId: string
 }
 
-export interface CompanyApiListCompaniesUsingGET1Request {
+export interface CategoryDiscountsApiListCategoryDiscountsRequest {
     /**
-     * Comma-delimited list of Company properties to include in the response. (Fields such as &#x60;notes&#x60;, &#x60;fax_number&#x60; and &#x60;custom_fields&#x60; aren\&#39;t included, by default.)
-     * Defaults to: undefined
-     * @type Array&lt;string&gt;
-     * @memberof CompanyApilistCompaniesUsingGET1
-     */
-    fields?: Array<string>
-    /**
-     * Search filter to apply to results
+     * Filter to apply, the allowed field is: - (String) &#x60;product_category_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of the filter with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_category_id%3D%3D4&#x60; 
      * Defaults to: undefined
      * @type string
-     * @memberof CompanyApilistCompaniesUsingGET1
+     * @memberof CategoryDiscountsApilistCategoryDiscounts
      */
     filter?: string
     /**
-     * Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60;
+     * Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;name&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * Defaults to: undefined
      * @type string
-     * @memberof CompanyApilistCompaniesUsingGET1
+     * @memberof CategoryDiscountsApilistCategoryDiscounts
      */
     orderBy?: string
     /**
@@ -2109,37 +1964,238 @@ export interface CompanyApiListCompaniesUsingGET1Request {
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
-     * @memberof CompanyApilistCompaniesUsingGET1
+     * @memberof CategoryDiscountsApilistCategoryDiscounts
      */
     pageSize?: number
     /**
      * Page token
      * Defaults to: undefined
      * @type string
-     * @memberof CompanyApilistCompaniesUsingGET1
+     * @memberof CategoryDiscountsApilistCategoryDiscounts
      */
     pageToken?: string
 }
 
-export interface CompanyApiUpdateCompanyUsingPATCH1Request {
+export interface CategoryDiscountsApiUpdateCategoryDiscountRequest {
+    /**
+     * discount_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof CategoryDiscountsApiupdateCategoryDiscount
+     */
+    discountId: string
+    /**
+     * request
+     * @type UpdateCategoryDiscountRequest
+     * @memberof CategoryDiscountsApiupdateCategoryDiscount
+     */
+    updateCategoryDiscountRequest: UpdateCategoryDiscountRequest
+    /**
+     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * Defaults to: undefined
+     * @type Array&lt;string&gt;
+     * @memberof CategoryDiscountsApiupdateCategoryDiscount
+     */
+    updateMask?: Array<string>
+}
+
+export class ObjectCategoryDiscountsApi {
+    private api: ObservableCategoryDiscountsApi
+
+    public constructor(configuration: Configuration, requestFactory?: CategoryDiscountsApiRequestFactory, responseProcessor?: CategoryDiscountsApiResponseProcessor) {
+        this.api = new ObservableCategoryDiscountsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Creates a Category Discount
+     * Create a Category Discount
+     * @param param the request object
+     */
+    public createCategoryDiscountWithHttpInfo(param: CategoryDiscountsApiCreateCategoryDiscountRequest, options?: ConfigurationOptions): Promise<HttpInfo<CategoryDiscount>> {
+        return this.api.createCategoryDiscountWithHttpInfo(param.createCategoryDiscountRequest,  options).toPromise();
+    }
+
+    /**
+     * Creates a Category Discount
+     * Create a Category Discount
+     * @param param the request object
+     */
+    public createCategoryDiscount(param: CategoryDiscountsApiCreateCategoryDiscountRequest, options?: ConfigurationOptions): Promise<CategoryDiscount> {
+        return this.api.createCategoryDiscount(param.createCategoryDiscountRequest,  options).toPromise();
+    }
+
+    /**
+     * Deletes a specified Category Discount
+     * Delete a Category Discount
+     * @param param the request object
+     */
+    public deleteCategoryDiscountWithHttpInfo(param: CategoryDiscountsApiDeleteCategoryDiscountRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteCategoryDiscountWithHttpInfo(param.discountId,  options).toPromise();
+    }
+
+    /**
+     * Deletes a specified Category Discount
+     * Delete a Category Discount
+     * @param param the request object
+     */
+    public deleteCategoryDiscount(param: CategoryDiscountsApiDeleteCategoryDiscountRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteCategoryDiscount(param.discountId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a single Category Discount
+     * Retrieve a Category Discount
+     * @param param the request object
+     */
+    public getCategoryDiscountWithHttpInfo(param: CategoryDiscountsApiGetCategoryDiscountRequest, options?: ConfigurationOptions): Promise<HttpInfo<CategoryDiscount>> {
+        return this.api.getCategoryDiscountWithHttpInfo(param.discountId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a single Category Discount
+     * Retrieve a Category Discount
+     * @param param the request object
+     */
+    public getCategoryDiscount(param: CategoryDiscountsApiGetCategoryDiscountRequest, options?: ConfigurationOptions): Promise<CategoryDiscount> {
+        return this.api.getCategoryDiscount(param.discountId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of Category Discounts
+     * List Category Discounts
+     * @param param the request object
+     */
+    public listCategoryDiscountsWithHttpInfo(param: CategoryDiscountsApiListCategoryDiscountsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListCategoryDiscountsResponse>> {
+        return this.api.listCategoryDiscountsWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of Category Discounts
+     * List Category Discounts
+     * @param param the request object
+     */
+    public listCategoryDiscounts(param: CategoryDiscountsApiListCategoryDiscountsRequest = {}, options?: ConfigurationOptions): Promise<ListCategoryDiscountsResponse> {
+        return this.api.listCategoryDiscounts(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    }
+
+    /**
+     * Updates a Category Discount
+     * Update a Category Discount
+     * @param param the request object
+     */
+    public updateCategoryDiscountWithHttpInfo(param: CategoryDiscountsApiUpdateCategoryDiscountRequest, options?: ConfigurationOptions): Promise<HttpInfo<CategoryDiscount>> {
+        return this.api.updateCategoryDiscountWithHttpInfo(param.discountId, param.updateCategoryDiscountRequest, param.updateMask,  options).toPromise();
+    }
+
+    /**
+     * Updates a Category Discount
+     * Update a Category Discount
+     * @param param the request object
+     */
+    public updateCategoryDiscount(param: CategoryDiscountsApiUpdateCategoryDiscountRequest, options?: ConfigurationOptions): Promise<CategoryDiscount> {
+        return this.api.updateCategoryDiscount(param.discountId, param.updateCategoryDiscountRequest, param.updateMask,  options).toPromise();
+    }
+
+}
+
+import { ObservableCompanyApi } from "./ObservableAPI";
+import { CompanyApiRequestFactory, CompanyApiResponseProcessor} from "../apis/CompanyApi";
+
+export interface CompanyApiCreateCompanyRequest {
+    /**
+     * company
+     * @type CreateCompanyRequest
+     * @memberof CompanyApicreateCompany
+     */
+    createCompanyRequest?: CreateCompanyRequest
+}
+
+export interface CompanyApiDeleteCompanyRequest {
     /**
      * company_id
      * Defaults to: undefined
      * @type string
-     * @memberof CompanyApiupdateCompanyUsingPATCH1
+     * @memberof CompanyApideleteCompany
+     */
+    companyId: string
+}
+
+export interface CompanyApiGetCompanyRequest {
+    /**
+     * company_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof CompanyApigetCompany
+     */
+    companyId: string
+    /**
+     * Comma-delimited list of Company properties to include in the response. (Available fields are: &#x60;company_name&#x60;, &#x60;address&#x60;, &#x60;custom_fields&#x60;, &#x60;email_address&#x60;, &#x60;fax_number&#x60;, &#x60;phone_number&#x60;, &#x60;website&#x60;, &#x60;notes&#x60;)
+     * Defaults to: undefined
+     * @type Array&lt;string&gt;
+     * @memberof CompanyApigetCompany
+     */
+    fields?: Array<string>
+}
+
+export interface CompanyApiListCompaniesRequest {
+    /**
+     * Comma-delimited list of Company properties to include in the response. (Fields such as &#x60;notes&#x60;, &#x60;fax_number&#x60;, &#x60;email_address&#x60;, &#x60;phone_number&#x60;, &#x60;update_time&#x60;, &#x60;create_time&#x60; and &#x60;custom_fields&#x60; aren\&#39;t included, by default.)
+     * Defaults to: undefined
+     * @type Array&lt;string&gt;
+     * @memberof CompanyApilistCompanies
+     */
+    fields?: Array<string>
+    /**
+     * Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; 
+     * Defaults to: undefined
+     * @type string
+     * @memberof CompanyApilistCompanies
+     */
+    filter?: string
+    /**
+     * Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;name&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * Defaults to: undefined
+     * @type string
+     * @memberof CompanyApilistCompanies
+     */
+    orderBy?: string
+    /**
+     * Total number of items to return per page
+     * Minimum: 1
+     * Maximum: 1000
+     * Defaults to: undefined
+     * @type number
+     * @memberof CompanyApilistCompanies
+     */
+    pageSize?: number
+    /**
+     * Page token
+     * Defaults to: undefined
+     * @type string
+     * @memberof CompanyApilistCompanies
+     */
+    pageToken?: string
+}
+
+export interface CompanyApiUpdateCompanyRequest {
+    /**
+     * company_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof CompanyApiupdateCompany
      */
     companyId: string
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
      * @type Array&lt;string&gt;
-     * @memberof CompanyApiupdateCompanyUsingPATCH1
+     * @memberof CompanyApiupdateCompany
      */
     updateMask?: Array<string>
     /**
      * company
      * @type UpdateCompanyRequest
-     * @memberof CompanyApiupdateCompanyUsingPATCH1
+     * @memberof CompanyApiupdateCompany
      */
     updateCompanyRequest?: UpdateCompanyRequest
 }
@@ -2156,8 +2212,8 @@ export class ObjectCompanyApi {
      * Create a Company
      * @param param the request object
      */
-    public createCompanyUsingPOST1WithHttpInfo(param: CompanyApiCreateCompanyUsingPOST1Request = {}, options?: ConfigurationOptions): Promise<HttpInfo<Company>> {
-        return this.api.createCompanyUsingPOST1WithHttpInfo(param.createCompanyRequest,  options).toPromise();
+    public createCompanyWithHttpInfo(param: CompanyApiCreateCompanyRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<Company>> {
+        return this.api.createCompanyWithHttpInfo(param.createCompanyRequest,  options).toPromise();
     }
 
     /**
@@ -2165,8 +2221,8 @@ export class ObjectCompanyApi {
      * Create a Company
      * @param param the request object
      */
-    public createCompanyUsingPOST1(param: CompanyApiCreateCompanyUsingPOST1Request = {}, options?: ConfigurationOptions): Promise<Company> {
-        return this.api.createCompanyUsingPOST1(param.createCompanyRequest,  options).toPromise();
+    public createCompany(param: CompanyApiCreateCompanyRequest = {}, options?: ConfigurationOptions): Promise<Company> {
+        return this.api.createCompany(param.createCompanyRequest,  options).toPromise();
     }
 
     /**
@@ -2174,8 +2230,8 @@ export class ObjectCompanyApi {
      * Delete a Company
      * @param param the request object
      */
-    public deleteCompanyUsingDELETEWithHttpInfo(param: CompanyApiDeleteCompanyUsingDELETERequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api.deleteCompanyUsingDELETEWithHttpInfo(param.companyId,  options).toPromise();
+    public deleteCompanyWithHttpInfo(param: CompanyApiDeleteCompanyRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteCompanyWithHttpInfo(param.companyId,  options).toPromise();
     }
 
     /**
@@ -2183,8 +2239,8 @@ export class ObjectCompanyApi {
      * Delete a Company
      * @param param the request object
      */
-    public deleteCompanyUsingDELETE(param: CompanyApiDeleteCompanyUsingDELETERequest, options?: ConfigurationOptions): Promise<void> {
-        return this.api.deleteCompanyUsingDELETE(param.companyId,  options).toPromise();
+    public deleteCompany(param: CompanyApiDeleteCompanyRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteCompany(param.companyId,  options).toPromise();
     }
 
     /**
@@ -2192,8 +2248,8 @@ export class ObjectCompanyApi {
      * Retrieve a Company
      * @param param the request object
      */
-    public getCompanyUsingGET1WithHttpInfo(param: CompanyApiGetCompanyUsingGET1Request, options?: ConfigurationOptions): Promise<HttpInfo<Company>> {
-        return this.api.getCompanyUsingGET1WithHttpInfo(param.companyId, param.fields,  options).toPromise();
+    public getCompanyWithHttpInfo(param: CompanyApiGetCompanyRequest, options?: ConfigurationOptions): Promise<HttpInfo<Company>> {
+        return this.api.getCompanyWithHttpInfo(param.companyId, param.fields,  options).toPromise();
     }
 
     /**
@@ -2201,26 +2257,26 @@ export class ObjectCompanyApi {
      * Retrieve a Company
      * @param param the request object
      */
-    public getCompanyUsingGET1(param: CompanyApiGetCompanyUsingGET1Request, options?: ConfigurationOptions): Promise<Company> {
-        return this.api.getCompanyUsingGET1(param.companyId, param.fields,  options).toPromise();
+    public getCompany(param: CompanyApiGetCompanyRequest, options?: ConfigurationOptions): Promise<Company> {
+        return this.api.getCompany(param.companyId, param.fields,  options).toPromise();
     }
 
     /**
-     * Retrieves a list of all Companies
+     * Retrieves a list of all Companies.<br/><br/>If the feature flag is <b>enabled</b>, the endpoint returns the <span style=\'color:red\'>legacy</span> non-paginated list of all companies.<br/>If the flag is <b>disabled</b>, it returns a paginated list using the v2-compliant implementation.<br/><br/><span style=\'color:red\'>Deprecated as of v2</span>: The legacy behavior will be removed after the transition period.
      * List Companies
      * @param param the request object
      */
-    public listCompaniesUsingGET1WithHttpInfo(param: CompanyApiListCompaniesUsingGET1Request = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListCompaniesResponse>> {
-        return this.api.listCompaniesUsingGET1WithHttpInfo(param.fields, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listCompaniesWithHttpInfo(param: CompanyApiListCompaniesRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListCompaniesResponse>> {
+        return this.api.listCompaniesWithHttpInfo(param.fields, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
-     * Retrieves a list of all Companies
+     * Retrieves a list of all Companies.<br/><br/>If the feature flag is <b>enabled</b>, the endpoint returns the <span style=\'color:red\'>legacy</span> non-paginated list of all companies.<br/>If the flag is <b>disabled</b>, it returns a paginated list using the v2-compliant implementation.<br/><br/><span style=\'color:red\'>Deprecated as of v2</span>: The legacy behavior will be removed after the transition period.
      * List Companies
      * @param param the request object
      */
-    public listCompaniesUsingGET1(param: CompanyApiListCompaniesUsingGET1Request = {}, options?: ConfigurationOptions): Promise<ListCompaniesResponse> {
-        return this.api.listCompaniesUsingGET1(param.fields, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listCompanies(param: CompanyApiListCompaniesRequest = {}, options?: ConfigurationOptions): Promise<ListCompaniesResponse> {
+        return this.api.listCompanies(param.fields, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -2228,8 +2284,8 @@ export class ObjectCompanyApi {
      * Update a Company
      * @param param the request object
      */
-    public updateCompanyUsingPATCH1WithHttpInfo(param: CompanyApiUpdateCompanyUsingPATCH1Request, options?: ConfigurationOptions): Promise<HttpInfo<Company>> {
-        return this.api.updateCompanyUsingPATCH1WithHttpInfo(param.companyId, param.updateMask, param.updateCompanyRequest,  options).toPromise();
+    public updateCompanyWithHttpInfo(param: CompanyApiUpdateCompanyRequest, options?: ConfigurationOptions): Promise<HttpInfo<Company>> {
+        return this.api.updateCompanyWithHttpInfo(param.companyId, param.updateMask, param.updateCompanyRequest,  options).toPromise();
     }
 
     /**
@@ -2237,8 +2293,8 @@ export class ObjectCompanyApi {
      * Update a Company
      * @param param the request object
      */
-    public updateCompanyUsingPATCH1(param: CompanyApiUpdateCompanyUsingPATCH1Request, options?: ConfigurationOptions): Promise<Company> {
-        return this.api.updateCompanyUsingPATCH1(param.companyId, param.updateMask, param.updateCompanyRequest,  options).toPromise();
+    public updateCompany(param: CompanyApiUpdateCompanyRequest, options?: ConfigurationOptions): Promise<Company> {
+        return this.api.updateCompany(param.companyId, param.updateMask, param.updateCompanyRequest,  options).toPromise();
     }
 
 }
@@ -2246,121 +2302,73 @@ export class ObjectCompanyApi {
 import { ObservableContactApi } from "./ObservableAPI";
 import { ContactApiRequestFactory, ContactApiResponseProcessor} from "../apis/ContactApi";
 
-export interface ContactApiCreateContactLinkTypeUsingPOSTRequest {
-    /**
-     * request
-     * @type CreateContactLinkTypeRequest
-     * @memberof ContactApicreateContactLinkTypeUsingPOST
-     */
-    createContactLinkTypeRequest: CreateContactLinkTypeRequest
-}
-
-export interface ContactApiCreateContactUsingPOST1Request {
+export interface ContactApiCreateContactRequest {
     /**
      * contact
      * @type CreateUpdateContactRequest
-     * @memberof ContactApicreateContactUsingPOST1
+     * @memberof ContactApicreateContact
      */
     createUpdateContactRequest?: CreateUpdateContactRequest
 }
 
-export interface ContactApiDeleteContactUsingDELETE1Request {
+export interface ContactApiCreateContactLinkTypeRequest {
+    /**
+     * request
+     * @type CreateContactLinkTypeRequest
+     * @memberof ContactApicreateContactLinkType
+     */
+    createContactLinkTypeRequest: CreateContactLinkTypeRequest
+}
+
+export interface ContactApiDeleteContactRequest {
     /**
      * contact_id
      * Defaults to: undefined
      * @type string
-     * @memberof ContactApideleteContactUsingDELETE1
+     * @memberof ContactApideleteContact
      */
     contactId: string
 }
 
-export interface ContactApiGetContactUsingGET1Request {
+export interface ContactApiGetContactRequest {
     /**
      * contact_id
      * Defaults to: undefined
      * @type string
-     * @memberof ContactApigetContactUsingGET1
+     * @memberof ContactApigetContact
      */
     contactId: string
     /**
      * Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
      * Defaults to: undefined
      * @type Array&lt;string&gt;
-     * @memberof ContactApigetContactUsingGET1
+     * @memberof ContactApigetContact
      */
     fields?: Array<string>
 }
 
-export interface ContactApiLinkContactsUsingPOSTRequest {
+export interface ContactApiLinkContactsRequest {
     /**
      * linkContactsRequest
      * @type LinkContactsRequest
-     * @memberof ContactApilinkContactsUsingPOST
+     * @memberof ContactApilinkContacts
      */
     linkContactsRequest: LinkContactsRequest
 }
 
-export interface ContactApiListContactLinkTypesUsingGETRequest {
+export interface ContactApiListContactLinkTypesRequest {
     /**
-     * Search filter to apply to results. Formatted as (unencoded) ?filter&#x3D;name&#x3D;&#x3D;expectedValue
-     * Defaults to: undefined
-     * @type &#39;name&#39;
-     * @memberof ContactApilistContactLinkTypesUsingGET
-     */
-    filter?: 'name'
-    /**
-     * 
+     * Filter to apply, allowed fields are: - (String) &#x60;name&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3DexpectedValue&#x60; 
      * Defaults to: undefined
      * @type string
-     * @memberof ContactApilistContactLinkTypesUsingGET
-     */
-    orderBy?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof ContactApilistContactLinkTypesUsingGET
-     */
-    pageSize?: number
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof ContactApilistContactLinkTypesUsingGET
-     */
-    pageToken?: string
-}
-
-export interface ContactApiListContactLinksUsingGETRequest {
-    /**
-     * contact_id
-     * Defaults to: undefined
-     * @type string
-     * @memberof ContactApilistContactLinksUsingGET
-     */
-    contactId: string
-}
-
-export interface ContactApiListContactsUsingGET1Request {
-    /**
-     * Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
-     * Defaults to: undefined
-     * @type Array&lt;string&gt;
-     * @memberof ContactApilistContactsUsingGET1
-     */
-    fields?: Array<string>
-    /**
-     * Filter to apply, allowed fields are: - (String) &#x60;email&#x60; - (String) &#x60;given_name&#x60; - (String) &#x60;family_name&#x60; - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; 
-     * Defaults to: undefined
-     * @type string
-     * @memberof ContactApilistContactsUsingGET1
+     * @memberof ContactApilistContactLinkTypes
      */
     filter?: string
     /**
-     * Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;date_created&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;max_links&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; 
      * Defaults to: undefined
      * @type string
-     * @memberof ContactApilistContactsUsingGET1
+     * @memberof ContactApilistContactLinkTypes
      */
     orderBy?: string
     /**
@@ -2369,49 +2377,99 @@ export interface ContactApiListContactsUsingGET1Request {
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
-     * @memberof ContactApilistContactsUsingGET1
+     * @memberof ContactApilistContactLinkTypes
      */
     pageSize?: number
     /**
      * Page token
      * Defaults to: undefined
      * @type string
-     * @memberof ContactApilistContactsUsingGET1
+     * @memberof ContactApilistContactLinkTypes
      */
     pageToken?: string
 }
 
-export interface ContactApiRetrieveContactModelUsingGET1Request {
-}
-
-export interface ContactApiUnlinkContactsUsingPOSTRequest {
-    /**
-     * linkContactsRequest
-     * @type LinkContactsRequest
-     * @memberof ContactApiunlinkContactsUsingPOST
-     */
-    linkContactsRequest: LinkContactsRequest
-}
-
-export interface ContactApiUpdateContactUsingPATCHRequest {
+export interface ContactApiListContactLinksRequest {
     /**
      * contact_id
      * Defaults to: undefined
      * @type string
-     * @memberof ContactApiupdateContactUsingPATCH
+     * @memberof ContactApilistContactLinks
+     */
+    contactId: string
+}
+
+export interface ContactApiListContactsRequest {
+    /**
+     * Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
+     * Defaults to: undefined
+     * @type Array&lt;string&gt;
+     * @memberof ContactApilistContacts
+     */
+    fields?: Array<string>
+    /**
+     * Filter to apply, allowed fields are: - (String) &#x60;email&#x60; - (String) &#x60;given_name&#x60; - (String) &#x60;family_name&#x60; - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; 
+     * Defaults to: undefined
+     * @type string
+     * @memberof ContactApilistContacts
+     */
+    filter?: string
+    /**
+     * Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;date_created&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * Defaults to: undefined
+     * @type string
+     * @memberof ContactApilistContacts
+     */
+    orderBy?: string
+    /**
+     * Total number of items to return per page
+     * Minimum: 1
+     * Maximum: 1000
+     * Defaults to: undefined
+     * @type number
+     * @memberof ContactApilistContacts
+     */
+    pageSize?: number
+    /**
+     * Page token
+     * Defaults to: undefined
+     * @type string
+     * @memberof ContactApilistContacts
+     */
+    pageToken?: string
+}
+
+export interface ContactApiRetrieveContactModelRequest {
+}
+
+export interface ContactApiUnlinkContactsRequest {
+    /**
+     * linkContactsRequest
+     * @type LinkContactsRequest
+     * @memberof ContactApiunlinkContacts
+     */
+    linkContactsRequest: LinkContactsRequest
+}
+
+export interface ContactApiUpdateContactRequest {
+    /**
+     * contact_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof ContactApiupdateContact
      */
     contactId: string
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
      * @type Array&lt;string&gt;
-     * @memberof ContactApiupdateContactUsingPATCH
+     * @memberof ContactApiupdateContact
      */
     updateMask?: Array<string>
     /**
      * contact
      * @type CreateUpdateContactRequest
-     * @memberof ContactApiupdateContactUsingPATCH
+     * @memberof ContactApiupdateContact
      */
     createUpdateContactRequest?: CreateUpdateContactRequest
 }
@@ -2424,21 +2482,12 @@ export class ObjectContactApi {
     }
 
     /**
-     * Creates a new type of Contact Link
-     * Create a Contact Link type
+     * Creates a new Contact. *Note:* Contact must contain at least one item in `email_addresses` or `phone_numbers` and `country_code` is required if `region` is specified.
+     * Create a Contact
      * @param param the request object
      */
-    public createContactLinkTypeUsingPOSTWithHttpInfo(param: ContactApiCreateContactLinkTypeUsingPOSTRequest, options?: ConfigurationOptions): Promise<HttpInfo<ContactLinkType>> {
-        return this.api.createContactLinkTypeUsingPOSTWithHttpInfo(param.createContactLinkTypeRequest,  options).toPromise();
-    }
-
-    /**
-     * Creates a new type of Contact Link
-     * Create a Contact Link type
-     * @param param the request object
-     */
-    public createContactLinkTypeUsingPOST(param: ContactApiCreateContactLinkTypeUsingPOSTRequest, options?: ConfigurationOptions): Promise<ContactLinkType> {
-        return this.api.createContactLinkTypeUsingPOST(param.createContactLinkTypeRequest,  options).toPromise();
+    public createContactWithHttpInfo(param: ContactApiCreateContactRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<Contact>> {
+        return this.api.createContactWithHttpInfo(param.createUpdateContactRequest,  options).toPromise();
     }
 
     /**
@@ -2446,17 +2495,26 @@ export class ObjectContactApi {
      * Create a Contact
      * @param param the request object
      */
-    public createContactUsingPOST1WithHttpInfo(param: ContactApiCreateContactUsingPOST1Request = {}, options?: ConfigurationOptions): Promise<HttpInfo<Contact>> {
-        return this.api.createContactUsingPOST1WithHttpInfo(param.createUpdateContactRequest,  options).toPromise();
+    public createContact(param: ContactApiCreateContactRequest = {}, options?: ConfigurationOptions): Promise<Contact> {
+        return this.api.createContact(param.createUpdateContactRequest,  options).toPromise();
     }
 
     /**
-     * Creates a new Contact. *Note:* Contact must contain at least one item in `email_addresses` or `phone_numbers` and `country_code` is required if `region` is specified.
-     * Create a Contact
+     * Creates a new type of Contact Link
+     * Create a Contact Link type
      * @param param the request object
      */
-    public createContactUsingPOST1(param: ContactApiCreateContactUsingPOST1Request = {}, options?: ConfigurationOptions): Promise<Contact> {
-        return this.api.createContactUsingPOST1(param.createUpdateContactRequest,  options).toPromise();
+    public createContactLinkTypeWithHttpInfo(param: ContactApiCreateContactLinkTypeRequest, options?: ConfigurationOptions): Promise<HttpInfo<ContactLinkType>> {
+        return this.api.createContactLinkTypeWithHttpInfo(param.createContactLinkTypeRequest,  options).toPromise();
+    }
+
+    /**
+     * Creates a new type of Contact Link
+     * Create a Contact Link type
+     * @param param the request object
+     */
+    public createContactLinkType(param: ContactApiCreateContactLinkTypeRequest, options?: ConfigurationOptions): Promise<ContactLinkType> {
+        return this.api.createContactLinkType(param.createContactLinkTypeRequest,  options).toPromise();
     }
 
     /**
@@ -2464,8 +2522,8 @@ export class ObjectContactApi {
      * Delete a Contact
      * @param param the request object
      */
-    public deleteContactUsingDELETE1WithHttpInfo(param: ContactApiDeleteContactUsingDELETE1Request, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api.deleteContactUsingDELETE1WithHttpInfo(param.contactId,  options).toPromise();
+    public deleteContactWithHttpInfo(param: ContactApiDeleteContactRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteContactWithHttpInfo(param.contactId,  options).toPromise();
     }
 
     /**
@@ -2473,8 +2531,8 @@ export class ObjectContactApi {
      * Delete a Contact
      * @param param the request object
      */
-    public deleteContactUsingDELETE1(param: ContactApiDeleteContactUsingDELETE1Request, options?: ConfigurationOptions): Promise<void> {
-        return this.api.deleteContactUsingDELETE1(param.contactId,  options).toPromise();
+    public deleteContact(param: ContactApiDeleteContactRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteContact(param.contactId,  options).toPromise();
     }
 
     /**
@@ -2482,8 +2540,8 @@ export class ObjectContactApi {
      * Retrieve a Contact
      * @param param the request object
      */
-    public getContactUsingGET1WithHttpInfo(param: ContactApiGetContactUsingGET1Request, options?: ConfigurationOptions): Promise<HttpInfo<Contact>> {
-        return this.api.getContactUsingGET1WithHttpInfo(param.contactId, param.fields,  options).toPromise();
+    public getContactWithHttpInfo(param: ContactApiGetContactRequest, options?: ConfigurationOptions): Promise<HttpInfo<Contact>> {
+        return this.api.getContactWithHttpInfo(param.contactId, param.fields,  options).toPromise();
     }
 
     /**
@@ -2491,8 +2549,8 @@ export class ObjectContactApi {
      * Retrieve a Contact
      * @param param the request object
      */
-    public getContactUsingGET1(param: ContactApiGetContactUsingGET1Request, options?: ConfigurationOptions): Promise<Contact> {
-        return this.api.getContactUsingGET1(param.contactId, param.fields,  options).toPromise();
+    public getContact(param: ContactApiGetContactRequest, options?: ConfigurationOptions): Promise<Contact> {
+        return this.api.getContact(param.contactId, param.fields,  options).toPromise();
     }
 
     /**
@@ -2500,8 +2558,8 @@ export class ObjectContactApi {
      * Link Contacts
      * @param param the request object
      */
-    public linkContactsUsingPOSTWithHttpInfo(param: ContactApiLinkContactsUsingPOSTRequest, options?: ConfigurationOptions): Promise<HttpInfo<ContactLink>> {
-        return this.api.linkContactsUsingPOSTWithHttpInfo(param.linkContactsRequest,  options).toPromise();
+    public linkContactsWithHttpInfo(param: ContactApiLinkContactsRequest, options?: ConfigurationOptions): Promise<HttpInfo<ContactLink>> {
+        return this.api.linkContactsWithHttpInfo(param.linkContactsRequest,  options).toPromise();
     }
 
     /**
@@ -2509,8 +2567,8 @@ export class ObjectContactApi {
      * Link Contacts
      * @param param the request object
      */
-    public linkContactsUsingPOST(param: ContactApiLinkContactsUsingPOSTRequest, options?: ConfigurationOptions): Promise<ContactLink> {
-        return this.api.linkContactsUsingPOST(param.linkContactsRequest,  options).toPromise();
+    public linkContacts(param: ContactApiLinkContactsRequest, options?: ConfigurationOptions): Promise<ContactLink> {
+        return this.api.linkContacts(param.linkContactsRequest,  options).toPromise();
     }
 
     /**
@@ -2518,8 +2576,8 @@ export class ObjectContactApi {
      * List Contact Link types
      * @param param the request object
      */
-    public listContactLinkTypesUsingGETWithHttpInfo(param: ContactApiListContactLinkTypesUsingGETRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListContactLinkTypesResponse>> {
-        return this.api.listContactLinkTypesUsingGETWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listContactLinkTypesWithHttpInfo(param: ContactApiListContactLinkTypesRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListContactLinkTypesResponse>> {
+        return this.api.listContactLinkTypesWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -2527,8 +2585,8 @@ export class ObjectContactApi {
      * List Contact Link types
      * @param param the request object
      */
-    public listContactLinkTypesUsingGET(param: ContactApiListContactLinkTypesUsingGETRequest = {}, options?: ConfigurationOptions): Promise<ListContactLinkTypesResponse> {
-        return this.api.listContactLinkTypesUsingGET(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listContactLinkTypes(param: ContactApiListContactLinkTypesRequest = {}, options?: ConfigurationOptions): Promise<ListContactLinkTypesResponse> {
+        return this.api.listContactLinkTypes(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -2536,8 +2594,8 @@ export class ObjectContactApi {
      * List Linked Contacts
      * @param param the request object
      */
-    public listContactLinksUsingGETWithHttpInfo(param: ContactApiListContactLinksUsingGETRequest, options?: ConfigurationOptions): Promise<HttpInfo<ListContactLinksResponse>> {
-        return this.api.listContactLinksUsingGETWithHttpInfo(param.contactId,  options).toPromise();
+    public listContactLinksWithHttpInfo(param: ContactApiListContactLinksRequest, options?: ConfigurationOptions): Promise<HttpInfo<ListContactLinksResponse>> {
+        return this.api.listContactLinksWithHttpInfo(param.contactId,  options).toPromise();
     }
 
     /**
@@ -2545,8 +2603,8 @@ export class ObjectContactApi {
      * List Linked Contacts
      * @param param the request object
      */
-    public listContactLinksUsingGET(param: ContactApiListContactLinksUsingGETRequest, options?: ConfigurationOptions): Promise<ListContactLinksResponse> {
-        return this.api.listContactLinksUsingGET(param.contactId,  options).toPromise();
+    public listContactLinks(param: ContactApiListContactLinksRequest, options?: ConfigurationOptions): Promise<ListContactLinksResponse> {
+        return this.api.listContactLinks(param.contactId,  options).toPromise();
     }
 
     /**
@@ -2554,8 +2612,8 @@ export class ObjectContactApi {
      * List Contacts
      * @param param the request object
      */
-    public listContactsUsingGET1WithHttpInfo(param: ContactApiListContactsUsingGET1Request = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListContactsResponse>> {
-        return this.api.listContactsUsingGET1WithHttpInfo(param.fields, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listContactsWithHttpInfo(param: ContactApiListContactsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListContactsResponse>> {
+        return this.api.listContactsWithHttpInfo(param.fields, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -2563,8 +2621,8 @@ export class ObjectContactApi {
      * List Contacts
      * @param param the request object
      */
-    public listContactsUsingGET1(param: ContactApiListContactsUsingGET1Request = {}, options?: ConfigurationOptions): Promise<ListContactsResponse> {
-        return this.api.listContactsUsingGET1(param.fields, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listContacts(param: ContactApiListContactsRequest = {}, options?: ConfigurationOptions): Promise<ListContactsResponse> {
+        return this.api.listContacts(param.fields, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -2572,8 +2630,8 @@ export class ObjectContactApi {
      * Retrieve Contact Model
      * @param param the request object
      */
-    public retrieveContactModelUsingGET1WithHttpInfo(param: ContactApiRetrieveContactModelUsingGET1Request = {}, options?: ConfigurationOptions): Promise<HttpInfo<ObjectModel>> {
-        return this.api.retrieveContactModelUsingGET1WithHttpInfo( options).toPromise();
+    public retrieveContactModelWithHttpInfo(param: ContactApiRetrieveContactModelRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ObjectModel>> {
+        return this.api.retrieveContactModelWithHttpInfo( options).toPromise();
     }
 
     /**
@@ -2581,8 +2639,8 @@ export class ObjectContactApi {
      * Retrieve Contact Model
      * @param param the request object
      */
-    public retrieveContactModelUsingGET1(param: ContactApiRetrieveContactModelUsingGET1Request = {}, options?: ConfigurationOptions): Promise<ObjectModel> {
-        return this.api.retrieveContactModelUsingGET1( options).toPromise();
+    public retrieveContactModel(param: ContactApiRetrieveContactModelRequest = {}, options?: ConfigurationOptions): Promise<ObjectModel> {
+        return this.api.retrieveContactModel( options).toPromise();
     }
 
     /**
@@ -2590,8 +2648,8 @@ export class ObjectContactApi {
      * Delete Link between two Contacts
      * @param param the request object
      */
-    public unlinkContactsUsingPOSTWithHttpInfo(param: ContactApiUnlinkContactsUsingPOSTRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api.unlinkContactsUsingPOSTWithHttpInfo(param.linkContactsRequest,  options).toPromise();
+    public unlinkContactsWithHttpInfo(param: ContactApiUnlinkContactsRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.unlinkContactsWithHttpInfo(param.linkContactsRequest,  options).toPromise();
     }
 
     /**
@@ -2599,8 +2657,8 @@ export class ObjectContactApi {
      * Delete Link between two Contacts
      * @param param the request object
      */
-    public unlinkContactsUsingPOST(param: ContactApiUnlinkContactsUsingPOSTRequest, options?: ConfigurationOptions): Promise<void> {
-        return this.api.unlinkContactsUsingPOST(param.linkContactsRequest,  options).toPromise();
+    public unlinkContacts(param: ContactApiUnlinkContactsRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.unlinkContacts(param.linkContactsRequest,  options).toPromise();
     }
 
     /**
@@ -2608,8 +2666,8 @@ export class ObjectContactApi {
      * Update a Contact
      * @param param the request object
      */
-    public updateContactUsingPATCHWithHttpInfo(param: ContactApiUpdateContactUsingPATCHRequest, options?: ConfigurationOptions): Promise<HttpInfo<Contact>> {
-        return this.api.updateContactUsingPATCHWithHttpInfo(param.contactId, param.updateMask, param.createUpdateContactRequest,  options).toPromise();
+    public updateContactWithHttpInfo(param: ContactApiUpdateContactRequest, options?: ConfigurationOptions): Promise<HttpInfo<Contact>> {
+        return this.api.updateContactWithHttpInfo(param.contactId, param.updateMask, param.createUpdateContactRequest,  options).toPromise();
     }
 
     /**
@@ -2617,611 +2675,8 @@ export class ObjectContactApi {
      * Update a Contact
      * @param param the request object
      */
-    public updateContactUsingPATCH(param: ContactApiUpdateContactUsingPATCHRequest, options?: ConfigurationOptions): Promise<Contact> {
-        return this.api.updateContactUsingPATCH(param.contactId, param.updateMask, param.createUpdateContactRequest,  options).toPromise();
-    }
-
-}
-
-import { ObservableCustomFieldsApi } from "./ObservableAPI";
-import { CustomFieldsApiRequestFactory, CustomFieldsApiResponseProcessor} from "../apis/CustomFieldsApi";
-
-export interface CustomFieldsApiGetCustomFieldsRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof CustomFieldsApigetCustomFields
-     */
-    filter?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof CustomFieldsApigetCustomFields
-     */
-    pageToken?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof CustomFieldsApigetCustomFields
-     */
-    orderBy?: string
-    /**
-     * 
-     * Minimum: 1
-     * Maximum: 1000
-     * Defaults to: 1000
-     * @type number
-     * @memberof CustomFieldsApigetCustomFields
-     */
-    pageSize?: number
-}
-
-export interface CustomFieldsApiUpdateCustomFieldRequest {
-    /**
-     * the identifier of the custom field to update
-     * Defaults to: undefined
-     * @type string
-     * @memberof CustomFieldsApiupdateCustomField
-     */
-    id: string
-    /**
-     * the request body containing updated custom field details
-     * @type UpdateCustomFieldRequest
-     * @memberof CustomFieldsApiupdateCustomField
-     */
-    updateCustomFieldRequest: UpdateCustomFieldRequest
-}
-
-export class ObjectCustomFieldsApi {
-    private api: ObservableCustomFieldsApi
-
-    public constructor(configuration: Configuration, requestFactory?: CustomFieldsApiRequestFactory, responseProcessor?: CustomFieldsApiResponseProcessor) {
-        this.api = new ObservableCustomFieldsApi(configuration, requestFactory, responseProcessor);
-    }
-
-    /**
-     * Retrieves a list of custom fields in a tenant.
-     * Retrieves a list of custom fields in a tenant.
-     * @param param the request object
-     */
-    public getCustomFieldsWithHttpInfo(param: CustomFieldsApiGetCustomFieldsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<PipelineCustomFields>> {
-        return this.api.getCustomFieldsWithHttpInfo(param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
-    }
-
-    /**
-     * Retrieves a list of custom fields in a tenant.
-     * Retrieves a list of custom fields in a tenant.
-     * @param param the request object
-     */
-    public getCustomFields(param: CustomFieldsApiGetCustomFieldsRequest = {}, options?: ConfigurationOptions): Promise<PipelineCustomFields> {
-        return this.api.getCustomFields(param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
-    }
-
-    /**
-     * Updates a custom field
-     * Updates a custom field
-     * @param param the request object
-     */
-    public updateCustomFieldWithHttpInfo(param: CustomFieldsApiUpdateCustomFieldRequest, options?: ConfigurationOptions): Promise<HttpInfo<PipelineCustomField>> {
-        return this.api.updateCustomFieldWithHttpInfo(param.id, param.updateCustomFieldRequest,  options).toPromise();
-    }
-
-    /**
-     * Updates a custom field
-     * Updates a custom field
-     * @param param the request object
-     */
-    public updateCustomField(param: CustomFieldsApiUpdateCustomFieldRequest, options?: ConfigurationOptions): Promise<PipelineCustomField> {
-        return this.api.updateCustomField(param.id, param.updateCustomFieldRequest,  options).toPromise();
-    }
-
-}
-
-import { ObservableDateExpressionApi } from "./ObservableAPI";
-import { DateExpressionApiRequestFactory, DateExpressionApiResponseProcessor} from "../apis/DateExpressionApi";
-
-export interface DateExpressionApiQueryDateExpressionsRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof DateExpressionApiqueryDateExpressions
-     */
-    timeZone?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof DateExpressionApiqueryDateExpressions
-     */
-    query?: string
-}
-
-export class ObjectDateExpressionApi {
-    private api: ObservableDateExpressionApi
-
-    public constructor(configuration: Configuration, requestFactory?: DateExpressionApiRequestFactory, responseProcessor?: DateExpressionApiResponseProcessor) {
-        this.api = new ObservableDateExpressionApi(configuration, requestFactory, responseProcessor);
-    }
-
-    /**
-     * @param param the request object
-     */
-    public queryDateExpressionsWithHttpInfo(param: DateExpressionApiQueryDateExpressionsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<DateExpressionResponse>> {
-        return this.api.queryDateExpressionsWithHttpInfo(param.timeZone, param.query,  options).toPromise();
-    }
-
-    /**
-     * @param param the request object
-     */
-    public queryDateExpressions(param: DateExpressionApiQueryDateExpressionsRequest = {}, options?: ConfigurationOptions): Promise<DateExpressionResponse> {
-        return this.api.queryDateExpressions(param.timeZone, param.query,  options).toPromise();
-    }
-
-}
-
-import { ObservableDealsApi } from "./ObservableAPI";
-import { DealsApiRequestFactory, DealsApiResponseProcessor} from "../apis/DealsApi";
-
-export interface DealsApiCreateDealRequest {
-    /**
-     * the request body containing deal details
-     * @type CreateDealRequest
-     * @memberof DealsApicreateDeal
-     */
-    createDealRequest: CreateDealRequest
-}
-
-export interface DealsApiCreateNoteRequest {
-    /**
-     * the deal ID to associate the new note with
-     * Defaults to: undefined
-     * @type string
-     * @memberof DealsApicreateNote
-     */
-    id: string
-    /**
-     * the request body containing note details
-     * @type CreateDealNoteRequest
-     * @memberof DealsApicreateNote
-     */
-    createDealNoteRequest: CreateDealNoteRequest
-}
-
-export interface DealsApiCreateNotesBulkRequest {
-    /**
-     * the request body containing note details
-     * @type BulkCreateDealNotesRequest
-     * @memberof DealsApicreateNotesBulk
-     */
-    bulkCreateDealNotesRequest: BulkCreateDealNotesRequest
-}
-
-export interface DealsApiDeleteDealRequest {
-    /**
-     * the ID of the deal to delete
-     * Defaults to: undefined
-     * @type string
-     * @memberof DealsApideleteDeal
-     */
-    id: string
-}
-
-export interface DealsApiDeleteNoteRequest {
-    /**
-     * the ID of the note to delete
-     * Defaults to: undefined
-     * @type string
-     * @memberof DealsApideleteNote
-     */
-    noteId: string
-}
-
-export interface DealsApiGetDealRequest {
-    /**
-     * the ID of the deal to retrieve
-     * Defaults to: undefined
-     * @type string
-     * @memberof DealsApigetDeal
-     */
-    id: string
-}
-
-export interface DealsApiGetNoteRequest {
-    /**
-     * the ID of the note to retrieve
-     * Defaults to: undefined
-     * @type string
-     * @memberof DealsApigetNote
-     */
-    noteId: string
-}
-
-export interface DealsApiListDealsRequest {
-    /**
-     * the contact ID to list deals for
-     * Defaults to: undefined
-     * @type string
-     * @memberof DealsApilistDeals
-     */
-    contactId: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof DealsApilistDeals
-     */
-    filter?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof DealsApilistDeals
-     */
-    pageToken?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof DealsApilistDeals
-     */
-    orderBy?: string
-    /**
-     * 
-     * Minimum: 1
-     * Maximum: 1000
-     * Defaults to: 1000
-     * @type number
-     * @memberof DealsApilistDeals
-     */
-    pageSize?: number
-}
-
-export interface DealsApiListNotesRequest {
-    /**
-     * the deal ID to list notes for
-     * Defaults to: undefined
-     * @type string
-     * @memberof DealsApilistNotes
-     */
-    id: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof DealsApilistNotes
-     */
-    filter?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof DealsApilistNotes
-     */
-    pageToken?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof DealsApilistNotes
-     */
-    orderBy?: string
-    /**
-     * 
-     * Minimum: 1
-     * Maximum: 1000
-     * Defaults to: 1000
-     * @type number
-     * @memberof DealsApilistNotes
-     */
-    pageSize?: number
-}
-
-export interface DealsApiMoveDealsForContactsRequest {
-    /**
-     * the request body containing move details
-     * @type MoveDealsForContactsRequest
-     * @memberof DealsApimoveDealsForContacts
-     */
-    moveDealsForContactsRequest: MoveDealsForContactsRequest
-}
-
-export interface DealsApiUpdateNoteRequest {
-    /**
-     * the ID of the note to update
-     * Defaults to: undefined
-     * @type string
-     * @memberof DealsApiupdateNote
-     */
-    noteId: string
-    /**
-     * the request body containing updated note details
-     * @type UpdateDealNoteRequest
-     * @memberof DealsApiupdateNote
-     */
-    updateDealNoteRequest: UpdateDealNoteRequest
-}
-
-export class ObjectDealsApi {
-    private api: ObservableDealsApi
-
-    public constructor(configuration: Configuration, requestFactory?: DealsApiRequestFactory, responseProcessor?: DealsApiResponseProcessor) {
-        this.api = new ObservableDealsApi(configuration, requestFactory, responseProcessor);
-    }
-
-    /**
-     * Creates a new deal.
-     * Creates a new deal.
-     * @param param the request object
-     */
-    public createDealWithHttpInfo(param: DealsApiCreateDealRequest, options?: ConfigurationOptions): Promise<HttpInfo<Deal>> {
-        return this.api.createDealWithHttpInfo(param.createDealRequest,  options).toPromise();
-    }
-
-    /**
-     * Creates a new deal.
-     * Creates a new deal.
-     * @param param the request object
-     */
-    public createDeal(param: DealsApiCreateDealRequest, options?: ConfigurationOptions): Promise<Deal> {
-        return this.api.createDeal(param.createDealRequest,  options).toPromise();
-    }
-
-    /**
-     * Creates a new note for a specific deal.
-     * Creates a new note for a specific deal.
-     * @param param the request object
-     */
-    public createNoteWithHttpInfo(param: DealsApiCreateNoteRequest, options?: ConfigurationOptions): Promise<HttpInfo<DealNote>> {
-        return this.api.createNoteWithHttpInfo(param.id, param.createDealNoteRequest,  options).toPromise();
-    }
-
-    /**
-     * Creates a new note for a specific deal.
-     * Creates a new note for a specific deal.
-     * @param param the request object
-     */
-    public createNote(param: DealsApiCreateNoteRequest, options?: ConfigurationOptions): Promise<DealNote> {
-        return this.api.createNote(param.id, param.createDealNoteRequest,  options).toPromise();
-    }
-
-    /**
-     * Creates new notes in bulk.
-     * Creates new notes in bulk.
-     * @param param the request object
-     */
-    public createNotesBulkWithHttpInfo(param: DealsApiCreateNotesBulkRequest, options?: ConfigurationOptions): Promise<HttpInfo<BulkCreateDealNotesResponse>> {
-        return this.api.createNotesBulkWithHttpInfo(param.bulkCreateDealNotesRequest,  options).toPromise();
-    }
-
-    /**
-     * Creates new notes in bulk.
-     * Creates new notes in bulk.
-     * @param param the request object
-     */
-    public createNotesBulk(param: DealsApiCreateNotesBulkRequest, options?: ConfigurationOptions): Promise<BulkCreateDealNotesResponse> {
-        return this.api.createNotesBulk(param.bulkCreateDealNotesRequest,  options).toPromise();
-    }
-
-    /**
-     * Deletes a specific deal by its ID.
-     * Deletes a specific deal by its ID.
-     * @param param the request object
-     */
-    public deleteDealWithHttpInfo(param: DealsApiDeleteDealRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api.deleteDealWithHttpInfo(param.id,  options).toPromise();
-    }
-
-    /**
-     * Deletes a specific deal by its ID.
-     * Deletes a specific deal by its ID.
-     * @param param the request object
-     */
-    public deleteDeal(param: DealsApiDeleteDealRequest, options?: ConfigurationOptions): Promise<void> {
-        return this.api.deleteDeal(param.id,  options).toPromise();
-    }
-
-    /**
-     * Deletes a specific deal note by its ID.
-     * Deletes a specific deal note by its ID.
-     * @param param the request object
-     */
-    public deleteNoteWithHttpInfo(param: DealsApiDeleteNoteRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api.deleteNoteWithHttpInfo(param.noteId,  options).toPromise();
-    }
-
-    /**
-     * Deletes a specific deal note by its ID.
-     * Deletes a specific deal note by its ID.
-     * @param param the request object
-     */
-    public deleteNote(param: DealsApiDeleteNoteRequest, options?: ConfigurationOptions): Promise<void> {
-        return this.api.deleteNote(param.noteId,  options).toPromise();
-    }
-
-    /**
-     * Retrieves a specific deal by its ID.
-     * Retrieves a specific deal by its ID.
-     * @param param the request object
-     */
-    public getDealWithHttpInfo(param: DealsApiGetDealRequest, options?: ConfigurationOptions): Promise<HttpInfo<Deal>> {
-        return this.api.getDealWithHttpInfo(param.id,  options).toPromise();
-    }
-
-    /**
-     * Retrieves a specific deal by its ID.
-     * Retrieves a specific deal by its ID.
-     * @param param the request object
-     */
-    public getDeal(param: DealsApiGetDealRequest, options?: ConfigurationOptions): Promise<Deal> {
-        return this.api.getDeal(param.id,  options).toPromise();
-    }
-
-    /**
-     * Retrieves a specific deal note by its ID.
-     * Retrieves a specific deal note by its ID.
-     * @param param the request object
-     */
-    public getNoteWithHttpInfo(param: DealsApiGetNoteRequest, options?: ConfigurationOptions): Promise<HttpInfo<DealNote>> {
-        return this.api.getNoteWithHttpInfo(param.noteId,  options).toPromise();
-    }
-
-    /**
-     * Retrieves a specific deal note by its ID.
-     * Retrieves a specific deal note by its ID.
-     * @param param the request object
-     */
-    public getNote(param: DealsApiGetNoteRequest, options?: ConfigurationOptions): Promise<DealNote> {
-        return this.api.getNote(param.noteId,  options).toPromise();
-    }
-
-    /**
-     * Lists all deals associated with a specific contact.
-     * Lists all deals associated with a specific contact.
-     * @param param the request object
-     */
-    public listDealsWithHttpInfo(param: DealsApiListDealsRequest, options?: ConfigurationOptions): Promise<HttpInfo<DealListResponse>> {
-        return this.api.listDealsWithHttpInfo(param.contactId, param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
-    }
-
-    /**
-     * Lists all deals associated with a specific contact.
-     * Lists all deals associated with a specific contact.
-     * @param param the request object
-     */
-    public listDeals(param: DealsApiListDealsRequest, options?: ConfigurationOptions): Promise<DealListResponse> {
-        return this.api.listDeals(param.contactId, param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
-    }
-
-    /**
-     * Lists all notes associated with a specific deal.
-     * Lists all notes associated with a specific deal.
-     * @param param the request object
-     */
-    public listNotesWithHttpInfo(param: DealsApiListNotesRequest, options?: ConfigurationOptions): Promise<HttpInfo<DealNoteListResponse>> {
-        return this.api.listNotesWithHttpInfo(param.id, param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
-    }
-
-    /**
-     * Lists all notes associated with a specific deal.
-     * Lists all notes associated with a specific deal.
-     * @param param the request object
-     */
-    public listNotes(param: DealsApiListNotesRequest, options?: ConfigurationOptions): Promise<DealNoteListResponse> {
-        return this.api.listNotes(param.id, param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
-    }
-
-    /**
-     * Moves the active deals of specified contacts from one stage to another, in bulk.
-     * Moves the active deals of specified contacts from one stage to another, in bulk.
-     * @param param the request object
-     */
-    public moveDealsForContactsWithHttpInfo(param: DealsApiMoveDealsForContactsRequest, options?: ConfigurationOptions): Promise<HttpInfo<MoveDealsForContactsResponse>> {
-        return this.api.moveDealsForContactsWithHttpInfo(param.moveDealsForContactsRequest,  options).toPromise();
-    }
-
-    /**
-     * Moves the active deals of specified contacts from one stage to another, in bulk.
-     * Moves the active deals of specified contacts from one stage to another, in bulk.
-     * @param param the request object
-     */
-    public moveDealsForContacts(param: DealsApiMoveDealsForContactsRequest, options?: ConfigurationOptions): Promise<MoveDealsForContactsResponse> {
-        return this.api.moveDealsForContacts(param.moveDealsForContactsRequest,  options).toPromise();
-    }
-
-    /**
-     * Updates a specific deal note by its ID.
-     * Updates a specific deal note by its ID.
-     * @param param the request object
-     */
-    public updateNoteWithHttpInfo(param: DealsApiUpdateNoteRequest, options?: ConfigurationOptions): Promise<HttpInfo<DealNote>> {
-        return this.api.updateNoteWithHttpInfo(param.noteId, param.updateDealNoteRequest,  options).toPromise();
-    }
-
-    /**
-     * Updates a specific deal note by its ID.
-     * Updates a specific deal note by its ID.
-     * @param param the request object
-     */
-    public updateNote(param: DealsApiUpdateNoteRequest, options?: ConfigurationOptions): Promise<DealNote> {
-        return this.api.updateNote(param.noteId, param.updateDealNoteRequest,  options).toPromise();
-    }
-
-}
-
-import { ObservableDisplayFormsApi } from "./ObservableAPI";
-import { DisplayFormsApiRequestFactory, DisplayFormsApiResponseProcessor} from "../apis/DisplayFormsApi";
-
-export interface DisplayFormsApiGetDisplayFormRequest {
-    /**
-     * the ID of the pipeline containing the form
-     * Defaults to: undefined
-     * @type string
-     * @memberof DisplayFormsApigetDisplayForm
-     */
-    id: string
-}
-
-export interface DisplayFormsApiUpdateDisplayFormRequest {
-    /**
-     * the ID of the pipeline containing the form
-     * Defaults to: undefined
-     * @type string
-     * @memberof DisplayFormsApiupdateDisplayForm
-     */
-    id: string
-    /**
-     * the request body containing updated display form details
-     * @type UpdateDisplayFormRequest
-     * @memberof DisplayFormsApiupdateDisplayForm
-     */
-    updateDisplayFormRequest: UpdateDisplayFormRequest
-}
-
-export class ObjectDisplayFormsApi {
-    private api: ObservableDisplayFormsApi
-
-    public constructor(configuration: Configuration, requestFactory?: DisplayFormsApiRequestFactory, responseProcessor?: DisplayFormsApiResponseProcessor) {
-        this.api = new ObservableDisplayFormsApi(configuration, requestFactory, responseProcessor);
-    }
-
-    /**
-     * Retrieves a specific display form by a pipeline ID.
-     * Retrieves a specific display form by a pipeline ID.
-     * @param param the request object
-     */
-    public getDisplayFormWithHttpInfo(param: DisplayFormsApiGetDisplayFormRequest, options?: ConfigurationOptions): Promise<HttpInfo<DisplayForm>> {
-        return this.api.getDisplayFormWithHttpInfo(param.id,  options).toPromise();
-    }
-
-    /**
-     * Retrieves a specific display form by a pipeline ID.
-     * Retrieves a specific display form by a pipeline ID.
-     * @param param the request object
-     */
-    public getDisplayForm(param: DisplayFormsApiGetDisplayFormRequest, options?: ConfigurationOptions): Promise<DisplayForm> {
-        return this.api.getDisplayForm(param.id,  options).toPromise();
-    }
-
-    /**
-     * Updates a display form
-     * Updates a display form
-     * @param param the request object
-     */
-    public updateDisplayFormWithHttpInfo(param: DisplayFormsApiUpdateDisplayFormRequest, options?: ConfigurationOptions): Promise<HttpInfo<DisplayForm>> {
-        return this.api.updateDisplayFormWithHttpInfo(param.id, param.updateDisplayFormRequest,  options).toPromise();
-    }
-
-    /**
-     * Updates a display form
-     * Updates a display form
-     * @param param the request object
-     */
-    public updateDisplayForm(param: DisplayFormsApiUpdateDisplayFormRequest, options?: ConfigurationOptions): Promise<DisplayForm> {
-        return this.api.updateDisplayForm(param.id, param.updateDisplayFormRequest,  options).toPromise();
+    public updateContact(param: ContactApiUpdateContactRequest, options?: ConfigurationOptions): Promise<Contact> {
+        return this.api.updateContact(param.contactId, param.updateMask, param.createUpdateContactRequest,  options).toPromise();
     }
 
 }
@@ -3229,79 +2684,79 @@ export class ObjectDisplayFormsApi {
 import { ObservableEmailApi } from "./ObservableAPI";
 import { EmailApiRequestFactory, EmailApiResponseProcessor} from "../apis/EmailApi";
 
-export interface EmailApiCreateEmailUsingPOST1Request {
+export interface EmailApiCreateEmailRequest {
     /**
      * emailWithContent
      * @type CreateEmailSentRequest
-     * @memberof EmailApicreateEmailUsingPOST1
+     * @memberof EmailApicreateEmail
      */
     createEmailSentRequest: CreateEmailSentRequest
 }
 
-export interface EmailApiCreateEmailsUsingPOST1Request {
+export interface EmailApiCreateEmailsRequest {
     /**
      * Email records to persist, with content.
      * @type CreateEmailsSentRequest
-     * @memberof EmailApicreateEmailsUsingPOST1
+     * @memberof EmailApicreateEmails
      */
     createEmailsSentRequest?: CreateEmailsSentRequest
 }
 
-export interface EmailApiDeleteEmailUsingDELETE1Request {
+export interface EmailApiDeleteEmailRequest {
     /**
      * id
      * Defaults to: undefined
      * @type string
-     * @memberof EmailApideleteEmailUsingDELETE1
+     * @memberof EmailApideleteEmail
      */
     id: string
 }
 
-export interface EmailApiDeleteEmailsUsingPOST1Request {
+export interface EmailApiDeleteEmailsRequest {
     /**
      * deleteEmailsRequest
      * @type DeleteEmailsRequest
-     * @memberof EmailApideleteEmailsUsingPOST1
+     * @memberof EmailApideleteEmails
      */
     deleteEmailsRequest: DeleteEmailsRequest
 }
 
-export interface EmailApiGetEmailTemplateUsingGETRequest {
-    /**
-     * email_template_id
-     * Defaults to: undefined
-     * @type string
-     * @memberof EmailApigetEmailTemplateUsingGET
-     */
-    emailTemplateId: string
-}
-
-export interface EmailApiGetEmailUsingGET1Request {
+export interface EmailApiGetEmailRequest {
     /**
      * id
      * Defaults to: undefined
      * @type string
-     * @memberof EmailApigetEmailUsingGET1
+     * @memberof EmailApigetEmail
      */
     id: string
 }
 
-export interface EmailApiSendEmailTemplateUsingPOSTRequest {
+export interface EmailApiGetEmailTemplateRequest {
     /**
-     * Use a template to send an email to a list of contacts 
-     * @type EmailSendTemplateRequest
-     * @memberof EmailApisendEmailTemplateUsingPOST
+     * email_template_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof EmailApigetEmailTemplate
      */
-    emailSendTemplateRequest?: EmailSendTemplateRequest
+    emailTemplateId: string
 }
 
-export interface EmailApiSendEmailUsingPOST1Request {
+export interface EmailApiSendEmailRequest {
     /**
      * emailSendRequest
      * @type EmailSendRequest
-     * @memberof EmailApisendEmailUsingPOST1
+     * @memberof EmailApisendEmail
      */
     emailSendRequest?: EmailSendRequest
+}
+
+export interface EmailApiSendEmailTemplateRequest {
+    /**
+     * Use a template to send an email to a list of contacts 
+     * @type EmailSendTemplateRequest
+     * @memberof EmailApisendEmailTemplate
+     */
+    emailSendTemplateRequest?: EmailSendTemplateRequest
 }
 
 export class ObjectEmailApi {
@@ -3316,8 +2771,8 @@ export class ObjectEmailApi {
      * Create an Email Record
      * @param param the request object
      */
-    public createEmailUsingPOST1WithHttpInfo(param: EmailApiCreateEmailUsingPOST1Request, options?: ConfigurationOptions): Promise<HttpInfo<EmailSentWithContent>> {
-        return this.api.createEmailUsingPOST1WithHttpInfo(param.createEmailSentRequest,  options).toPromise();
+    public createEmailWithHttpInfo(param: EmailApiCreateEmailRequest, options?: ConfigurationOptions): Promise<HttpInfo<EmailSentWithContent>> {
+        return this.api.createEmailWithHttpInfo(param.createEmailSentRequest,  options).toPromise();
     }
 
     /**
@@ -3325,8 +2780,8 @@ export class ObjectEmailApi {
      * Create an Email Record
      * @param param the request object
      */
-    public createEmailUsingPOST1(param: EmailApiCreateEmailUsingPOST1Request, options?: ConfigurationOptions): Promise<EmailSentWithContent> {
-        return this.api.createEmailUsingPOST1(param.createEmailSentRequest,  options).toPromise();
+    public createEmail(param: EmailApiCreateEmailRequest, options?: ConfigurationOptions): Promise<EmailSentWithContent> {
+        return this.api.createEmail(param.createEmailSentRequest,  options).toPromise();
     }
 
     /**
@@ -3334,8 +2789,8 @@ export class ObjectEmailApi {
      * Create a set of Email Records
      * @param param the request object
      */
-    public createEmailsUsingPOST1WithHttpInfo(param: EmailApiCreateEmailsUsingPOST1Request = {}, options?: ConfigurationOptions): Promise<HttpInfo<EmailsSentList>> {
-        return this.api.createEmailsUsingPOST1WithHttpInfo(param.createEmailsSentRequest,  options).toPromise();
+    public createEmailsWithHttpInfo(param: EmailApiCreateEmailsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<EmailsSentList>> {
+        return this.api.createEmailsWithHttpInfo(param.createEmailsSentRequest,  options).toPromise();
     }
 
     /**
@@ -3343,8 +2798,8 @@ export class ObjectEmailApi {
      * Create a set of Email Records
      * @param param the request object
      */
-    public createEmailsUsingPOST1(param: EmailApiCreateEmailsUsingPOST1Request = {}, options?: ConfigurationOptions): Promise<EmailsSentList> {
-        return this.api.createEmailsUsingPOST1(param.createEmailsSentRequest,  options).toPromise();
+    public createEmails(param: EmailApiCreateEmailsRequest = {}, options?: ConfigurationOptions): Promise<EmailsSentList> {
+        return this.api.createEmails(param.createEmailsSentRequest,  options).toPromise();
     }
 
     /**
@@ -3352,8 +2807,8 @@ export class ObjectEmailApi {
      * Delete an Email Record
      * @param param the request object
      */
-    public deleteEmailUsingDELETE1WithHttpInfo(param: EmailApiDeleteEmailUsingDELETE1Request, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api.deleteEmailUsingDELETE1WithHttpInfo(param.id,  options).toPromise();
+    public deleteEmailWithHttpInfo(param: EmailApiDeleteEmailRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteEmailWithHttpInfo(param.id,  options).toPromise();
     }
 
     /**
@@ -3361,8 +2816,8 @@ export class ObjectEmailApi {
      * Delete an Email Record
      * @param param the request object
      */
-    public deleteEmailUsingDELETE1(param: EmailApiDeleteEmailUsingDELETE1Request, options?: ConfigurationOptions): Promise<void> {
-        return this.api.deleteEmailUsingDELETE1(param.id,  options).toPromise();
+    public deleteEmail(param: EmailApiDeleteEmailRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteEmail(param.id,  options).toPromise();
     }
 
     /**
@@ -3370,8 +2825,8 @@ export class ObjectEmailApi {
      * Remove a set of Email Records
      * @param param the request object
      */
-    public deleteEmailsUsingPOST1WithHttpInfo(param: EmailApiDeleteEmailsUsingPOST1Request, options?: ConfigurationOptions): Promise<HttpInfo<DeleteEmailsResponse>> {
-        return this.api.deleteEmailsUsingPOST1WithHttpInfo(param.deleteEmailsRequest,  options).toPromise();
+    public deleteEmailsWithHttpInfo(param: EmailApiDeleteEmailsRequest, options?: ConfigurationOptions): Promise<HttpInfo<DeleteEmailsResponse>> {
+        return this.api.deleteEmailsWithHttpInfo(param.deleteEmailsRequest,  options).toPromise();
     }
 
     /**
@@ -3379,26 +2834,8 @@ export class ObjectEmailApi {
      * Remove a set of Email Records
      * @param param the request object
      */
-    public deleteEmailsUsingPOST1(param: EmailApiDeleteEmailsUsingPOST1Request, options?: ConfigurationOptions): Promise<DeleteEmailsResponse> {
-        return this.api.deleteEmailsUsingPOST1(param.deleteEmailsRequest,  options).toPromise();
-    }
-
-    /**
-     * Retrieve an email template
-     * Retrieve an email template
-     * @param param the request object
-     */
-    public getEmailTemplateUsingGETWithHttpInfo(param: EmailApiGetEmailTemplateUsingGETRequest, options?: ConfigurationOptions): Promise<HttpInfo<EmailTemplate>> {
-        return this.api.getEmailTemplateUsingGETWithHttpInfo(param.emailTemplateId,  options).toPromise();
-    }
-
-    /**
-     * Retrieve an email template
-     * Retrieve an email template
-     * @param param the request object
-     */
-    public getEmailTemplateUsingGET(param: EmailApiGetEmailTemplateUsingGETRequest, options?: ConfigurationOptions): Promise<EmailTemplate> {
-        return this.api.getEmailTemplateUsingGET(param.emailTemplateId,  options).toPromise();
+    public deleteEmails(param: EmailApiDeleteEmailsRequest, options?: ConfigurationOptions): Promise<DeleteEmailsResponse> {
+        return this.api.deleteEmails(param.deleteEmailsRequest,  options).toPromise();
     }
 
     /**
@@ -3406,8 +2843,8 @@ export class ObjectEmailApi {
      * Retrieve an Email
      * @param param the request object
      */
-    public getEmailUsingGET1WithHttpInfo(param: EmailApiGetEmailUsingGET1Request, options?: ConfigurationOptions): Promise<HttpInfo<EmailSentWithContent>> {
-        return this.api.getEmailUsingGET1WithHttpInfo(param.id,  options).toPromise();
+    public getEmailWithHttpInfo(param: EmailApiGetEmailRequest, options?: ConfigurationOptions): Promise<HttpInfo<EmailSentWithContent>> {
+        return this.api.getEmailWithHttpInfo(param.id,  options).toPromise();
     }
 
     /**
@@ -3415,35 +2852,26 @@ export class ObjectEmailApi {
      * Retrieve an Email
      * @param param the request object
      */
-    public getEmailUsingGET1(param: EmailApiGetEmailUsingGET1Request, options?: ConfigurationOptions): Promise<EmailSentWithContent> {
-        return this.api.getEmailUsingGET1(param.id,  options).toPromise();
+    public getEmail(param: EmailApiGetEmailRequest, options?: ConfigurationOptions): Promise<EmailSentWithContent> {
+        return this.api.getEmail(param.id,  options).toPromise();
     }
 
     /**
-     * Send an email based on a template
-     * Send an email based on a template
+     * Retrieve an email template
+     * Retrieve an email template
      * @param param the request object
      */
-    public sendEmailTemplateUsingPOSTWithHttpInfo(param: EmailApiSendEmailTemplateUsingPOSTRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api.sendEmailTemplateUsingPOSTWithHttpInfo(param.emailSendTemplateRequest,  options).toPromise();
+    public getEmailTemplateWithHttpInfo(param: EmailApiGetEmailTemplateRequest, options?: ConfigurationOptions): Promise<HttpInfo<EmailTemplate>> {
+        return this.api.getEmailTemplateWithHttpInfo(param.emailTemplateId,  options).toPromise();
     }
 
     /**
-     * Send an email based on a template
-     * Send an email based on a template
+     * Retrieve an email template
+     * Retrieve an email template
      * @param param the request object
      */
-    public sendEmailTemplateUsingPOST(param: EmailApiSendEmailTemplateUsingPOSTRequest = {}, options?: ConfigurationOptions): Promise<void> {
-        return this.api.sendEmailTemplateUsingPOST(param.emailSendTemplateRequest,  options).toPromise();
-    }
-
-    /**
-     * Sends an Email to a list of Contacts
-     * Send an Email
-     * @param param the request object
-     */
-    public sendEmailUsingPOST1WithHttpInfo(param: EmailApiSendEmailUsingPOST1Request = {}, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api.sendEmailUsingPOST1WithHttpInfo(param.emailSendRequest,  options).toPromise();
+    public getEmailTemplate(param: EmailApiGetEmailTemplateRequest, options?: ConfigurationOptions): Promise<EmailTemplate> {
+        return this.api.getEmailTemplate(param.emailTemplateId,  options).toPromise();
     }
 
     /**
@@ -3451,8 +2879,35 @@ export class ObjectEmailApi {
      * Send an Email
      * @param param the request object
      */
-    public sendEmailUsingPOST1(param: EmailApiSendEmailUsingPOST1Request = {}, options?: ConfigurationOptions): Promise<void> {
-        return this.api.sendEmailUsingPOST1(param.emailSendRequest,  options).toPromise();
+    public sendEmailWithHttpInfo(param: EmailApiSendEmailRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.sendEmailWithHttpInfo(param.emailSendRequest,  options).toPromise();
+    }
+
+    /**
+     * Sends an Email to a list of Contacts
+     * Send an Email
+     * @param param the request object
+     */
+    public sendEmail(param: EmailApiSendEmailRequest = {}, options?: ConfigurationOptions): Promise<void> {
+        return this.api.sendEmail(param.emailSendRequest,  options).toPromise();
+    }
+
+    /**
+     * Send an email based on a template
+     * Send an email based on a template
+     * @param param the request object
+     */
+    public sendEmailTemplateWithHttpInfo(param: EmailApiSendEmailTemplateRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.sendEmailTemplateWithHttpInfo(param.emailSendTemplateRequest,  options).toPromise();
+    }
+
+    /**
+     * Send an email based on a template
+     * Send an email based on a template
+     * @param param the request object
+     */
+    public sendEmailTemplate(param: EmailApiSendEmailTemplateRequest = {}, options?: ConfigurationOptions): Promise<void> {
+        return this.api.sendEmailTemplate(param.emailSendTemplateRequest,  options).toPromise();
     }
 
 }
@@ -3460,87 +2915,87 @@ export class ObjectEmailApi {
 import { ObservableFilesApi } from "./ObservableAPI";
 import { FilesApiRequestFactory, FilesApiResponseProcessor} from "../apis/FilesApi";
 
-export interface FilesApiCreateFileUsingPOST1Request {
+export interface FilesApiCreateFileRequest {
     /**
      * File to upload. This is a file sent as multi-part (not a string)
      * Defaults to: undefined
      * @type string
-     * @memberof FilesApicreateFileUsingPOST1
+     * @memberof FilesApicreateFile
      */
     file: string
     /**
      * File association
      * Defaults to: undefined
      * @type string
-     * @memberof FilesApicreateFileUsingPOST1
+     * @memberof FilesApicreateFile
      */
     fileAssociation: string
     /**
      * File name
      * Defaults to: undefined
      * @type string
-     * @memberof FilesApicreateFileUsingPOST1
+     * @memberof FilesApicreateFile
      */
     fileName: string
     /**
      * Is public
      * Defaults to: undefined
      * @type boolean
-     * @memberof FilesApicreateFileUsingPOST1
+     * @memberof FilesApicreateFile
      */
     isPublic: boolean
     /**
      * Contact ID
      * Defaults to: undefined
      * @type string
-     * @memberof FilesApicreateFileUsingPOST1
+     * @memberof FilesApicreateFile
      */
     contactId?: string
 }
 
-export interface FilesApiDeleteFileUsingDELETE1Request {
+export interface FilesApiDeleteFileRequest {
     /**
      * file_id
      * Defaults to: undefined
      * @type string
-     * @memberof FilesApideleteFileUsingDELETE1
+     * @memberof FilesApideleteFile
      */
     fileId: string
 }
 
-export interface FilesApiGetFileDataUsingGETRequest {
+export interface FilesApiGetFileRequest {
     /**
      * file_id
      * Defaults to: undefined
      * @type string
-     * @memberof FilesApigetFileDataUsingGET
+     * @memberof FilesApigetFile
      */
     fileId: string
 }
 
-export interface FilesApiGetFileUsingGET1Request {
+export interface FilesApiGetFileDataRequest {
     /**
      * file_id
      * Defaults to: undefined
      * @type string
-     * @memberof FilesApigetFileUsingGET1
+     * @memberof FilesApigetFileData
      */
     fileId: string
 }
 
-export interface FilesApiListFilesUsingGET1Request {
+export interface FilesApiListFilesRequest {
     /**
      * Filter to apply, allowed fields are: - (Boolean) &#x60;is_public&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;user_id&#x60; - (FileBoxCategory) &#x60;category&#x60; - (FileBoxType) &#x60;file_box_type&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;category%3D%3DATTACHMENTS&#x60; - &#x60;filter&#x3D;file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS&#x60; 
      * Defaults to: undefined
      * @type string
-     * @memberof FilesApilistFilesUsingGET1
+     * @memberof FilesApilistFiles
      */
     filter?: string
     /**
      * Attribute and direction to order items. One of the following fields: - &#x60;file_name&#x60; - &#x60;updated_time&#x60; - ...  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; 
      * Defaults to: undefined
      * @type string
-     * @memberof FilesApilistFilesUsingGET1
+     * @memberof FilesApilistFiles
      */
     orderBy?: string
     /**
@@ -3549,52 +3004,52 @@ export interface FilesApiListFilesUsingGET1Request {
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
-     * @memberof FilesApilistFilesUsingGET1
+     * @memberof FilesApilistFiles
      */
     pageSize?: number
     /**
      * Page token
      * Defaults to: undefined
      * @type string
-     * @memberof FilesApilistFilesUsingGET1
+     * @memberof FilesApilistFiles
      */
     pageToken?: string
 }
 
-export interface FilesApiUpdateFileUsingPOSTRequest {
+export interface FilesApiUpdateFileRequest {
     /**
      * file_id
      * Defaults to: undefined
      * @type string
-     * @memberof FilesApiupdateFileUsingPOST
+     * @memberof FilesApiupdateFile
      */
     fileId: string
     /**
      * File to upload. This is a file sent as multi-part (not a string)
      * Defaults to: undefined
      * @type string
-     * @memberof FilesApiupdateFileUsingPOST
+     * @memberof FilesApiupdateFile
      */
     file?: string
     /**
      * File name
      * Defaults to: undefined
      * @type string
-     * @memberof FilesApiupdateFileUsingPOST
+     * @memberof FilesApiupdateFile
      */
     fileName?: string
     /**
      * Is public
      * Defaults to: undefined
      * @type boolean
-     * @memberof FilesApiupdateFileUsingPOST
+     * @memberof FilesApiupdateFile
      */
     isPublic?: boolean
     /**
      * Update Mask
      * Defaults to: undefined
      * @type string
-     * @memberof FilesApiupdateFileUsingPOST
+     * @memberof FilesApiupdateFile
      */
     updateMask?: string
 }
@@ -3611,8 +3066,8 @@ export class ObjectFilesApi {
      * Create a file
      * @param param the request object
      */
-    public createFileUsingPOST1WithHttpInfo(param: FilesApiCreateFileUsingPOST1Request, options?: ConfigurationOptions): Promise<HttpInfo<FileMetadata>> {
-        return this.api.createFileUsingPOST1WithHttpInfo(param.file, param.fileAssociation, param.fileName, param.isPublic, param.contactId,  options).toPromise();
+    public createFileWithHttpInfo(param: FilesApiCreateFileRequest, options?: ConfigurationOptions): Promise<HttpInfo<FileMetadata>> {
+        return this.api.createFileWithHttpInfo(param.file, param.fileAssociation, param.fileName, param.isPublic, param.contactId,  options).toPromise();
     }
 
     /**
@@ -3620,8 +3075,8 @@ export class ObjectFilesApi {
      * Create a file
      * @param param the request object
      */
-    public createFileUsingPOST1(param: FilesApiCreateFileUsingPOST1Request, options?: ConfigurationOptions): Promise<FileMetadata> {
-        return this.api.createFileUsingPOST1(param.file, param.fileAssociation, param.fileName, param.isPublic, param.contactId,  options).toPromise();
+    public createFile(param: FilesApiCreateFileRequest, options?: ConfigurationOptions): Promise<FileMetadata> {
+        return this.api.createFile(param.file, param.fileAssociation, param.fileName, param.isPublic, param.contactId,  options).toPromise();
     }
 
     /**
@@ -3629,8 +3084,8 @@ export class ObjectFilesApi {
      * Delete a file
      * @param param the request object
      */
-    public deleteFileUsingDELETE1WithHttpInfo(param: FilesApiDeleteFileUsingDELETE1Request, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api.deleteFileUsingDELETE1WithHttpInfo(param.fileId,  options).toPromise();
+    public deleteFileWithHttpInfo(param: FilesApiDeleteFileRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteFileWithHttpInfo(param.fileId,  options).toPromise();
     }
 
     /**
@@ -3638,26 +3093,8 @@ export class ObjectFilesApi {
      * Delete a file
      * @param param the request object
      */
-    public deleteFileUsingDELETE1(param: FilesApiDeleteFileUsingDELETE1Request, options?: ConfigurationOptions): Promise<void> {
-        return this.api.deleteFileUsingDELETE1(param.fileId,  options).toPromise();
-    }
-
-    /**
-     * Retrieves a file\'s data
-     * Retrieve a file\'s data
-     * @param param the request object
-     */
-    public getFileDataUsingGETWithHttpInfo(param: FilesApiGetFileDataUsingGETRequest, options?: ConfigurationOptions): Promise<HttpInfo<string>> {
-        return this.api.getFileDataUsingGETWithHttpInfo(param.fileId,  options).toPromise();
-    }
-
-    /**
-     * Retrieves a file\'s data
-     * Retrieve a file\'s data
-     * @param param the request object
-     */
-    public getFileDataUsingGET(param: FilesApiGetFileDataUsingGETRequest, options?: ConfigurationOptions): Promise<string> {
-        return this.api.getFileDataUsingGET(param.fileId,  options).toPromise();
+    public deleteFile(param: FilesApiDeleteFileRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteFile(param.fileId,  options).toPromise();
     }
 
     /**
@@ -3665,8 +3102,8 @@ export class ObjectFilesApi {
      * Retrieve a file
      * @param param the request object
      */
-    public getFileUsingGET1WithHttpInfo(param: FilesApiGetFileUsingGET1Request, options?: ConfigurationOptions): Promise<HttpInfo<FileMetadata>> {
-        return this.api.getFileUsingGET1WithHttpInfo(param.fileId,  options).toPromise();
+    public getFileWithHttpInfo(param: FilesApiGetFileRequest, options?: ConfigurationOptions): Promise<HttpInfo<FileMetadata>> {
+        return this.api.getFileWithHttpInfo(param.fileId,  options).toPromise();
     }
 
     /**
@@ -3674,8 +3111,26 @@ export class ObjectFilesApi {
      * Retrieve a file
      * @param param the request object
      */
-    public getFileUsingGET1(param: FilesApiGetFileUsingGET1Request, options?: ConfigurationOptions): Promise<FileMetadata> {
-        return this.api.getFileUsingGET1(param.fileId,  options).toPromise();
+    public getFile(param: FilesApiGetFileRequest, options?: ConfigurationOptions): Promise<FileMetadata> {
+        return this.api.getFile(param.fileId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a file\'s data
+     * Retrieve a file\'s data
+     * @param param the request object
+     */
+    public getFileDataWithHttpInfo(param: FilesApiGetFileDataRequest, options?: ConfigurationOptions): Promise<HttpInfo<string>> {
+        return this.api.getFileDataWithHttpInfo(param.fileId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a file\'s data
+     * Retrieve a file\'s data
+     * @param param the request object
+     */
+    public getFileData(param: FilesApiGetFileDataRequest, options?: ConfigurationOptions): Promise<string> {
+        return this.api.getFileData(param.fileId,  options).toPromise();
     }
 
     /**
@@ -3683,8 +3138,8 @@ export class ObjectFilesApi {
      * List all files
      * @param param the request object
      */
-    public listFilesUsingGET1WithHttpInfo(param: FilesApiListFilesUsingGET1Request = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListFilesResponse>> {
-        return this.api.listFilesUsingGET1WithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listFilesWithHttpInfo(param: FilesApiListFilesRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListFilesResponse>> {
+        return this.api.listFilesWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -3692,8 +3147,8 @@ export class ObjectFilesApi {
      * List all files
      * @param param the request object
      */
-    public listFilesUsingGET1(param: FilesApiListFilesUsingGET1Request = {}, options?: ConfigurationOptions): Promise<ListFilesResponse> {
-        return this.api.listFilesUsingGET1(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listFiles(param: FilesApiListFilesRequest = {}, options?: ConfigurationOptions): Promise<ListFilesResponse> {
+        return this.api.listFiles(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -3701,8 +3156,8 @@ export class ObjectFilesApi {
      * Update a file
      * @param param the request object
      */
-    public updateFileUsingPOSTWithHttpInfo(param: FilesApiUpdateFileUsingPOSTRequest, options?: ConfigurationOptions): Promise<HttpInfo<FileMetadata>> {
-        return this.api.updateFileUsingPOSTWithHttpInfo(param.fileId, param.file, param.fileName, param.isPublic, param.updateMask,  options).toPromise();
+    public updateFileWithHttpInfo(param: FilesApiUpdateFileRequest, options?: ConfigurationOptions): Promise<HttpInfo<FileMetadata>> {
+        return this.api.updateFileWithHttpInfo(param.fileId, param.file, param.fileName, param.isPublic, param.updateMask,  options).toPromise();
     }
 
     /**
@@ -3710,8 +3165,8 @@ export class ObjectFilesApi {
      * Update a file
      * @param param the request object
      */
-    public updateFileUsingPOST(param: FilesApiUpdateFileUsingPOSTRequest, options?: ConfigurationOptions): Promise<FileMetadata> {
-        return this.api.updateFileUsingPOST(param.fileId, param.file, param.fileName, param.isPublic, param.updateMask,  options).toPromise();
+    public updateFile(param: FilesApiUpdateFileRequest, options?: ConfigurationOptions): Promise<FileMetadata> {
+        return this.api.updateFile(param.fileId, param.file, param.fileName, param.isPublic, param.updateMask,  options).toPromise();
     }
 
 }
@@ -3719,48 +3174,48 @@ export class ObjectFilesApi {
 import { ObservableFreeTrialDiscountsApi } from "./ObservableAPI";
 import { FreeTrialDiscountsApiRequestFactory, FreeTrialDiscountsApiResponseProcessor} from "../apis/FreeTrialDiscountsApi";
 
-export interface FreeTrialDiscountsApiCreateDiscountUsingPOST1Request {
+export interface FreeTrialDiscountsApiCreateFreeTrialDiscountRequest {
     /**
      * createFreeTrialDiscountRequest
      * @type CreateFreeTrialDiscountRequest
-     * @memberof FreeTrialDiscountsApicreateDiscountUsingPOST1
+     * @memberof FreeTrialDiscountsApicreateFreeTrialDiscount
      */
     createFreeTrialDiscountRequest: CreateFreeTrialDiscountRequest
 }
 
-export interface FreeTrialDiscountsApiDeleteDiscountUsingDELETE1Request {
+export interface FreeTrialDiscountsApiDeleteFreeTrialDiscountRequest {
     /**
      * discount_id
      * Defaults to: undefined
      * @type string
-     * @memberof FreeTrialDiscountsApideleteDiscountUsingDELETE1
+     * @memberof FreeTrialDiscountsApideleteFreeTrialDiscount
      */
     discountId: string
 }
 
-export interface FreeTrialDiscountsApiGetDiscountUsingGET1Request {
+export interface FreeTrialDiscountsApiGetFreeTrialDiscountRequest {
     /**
      * discount_id
      * Defaults to: undefined
      * @type string
-     * @memberof FreeTrialDiscountsApigetDiscountUsingGET1
+     * @memberof FreeTrialDiscountsApigetFreeTrialDiscount
      */
     discountId: string
 }
 
-export interface FreeTrialDiscountsApiListFreeTrialsUsingGETRequest {
+export interface FreeTrialDiscountsApiListFreeTrialDiscountsRequest {
     /**
      * Filter to apply, allowed fields are: - (Integer) &#x60;free_trial_days&#x60; - (Boolean) &#x60;hide_price&#x60; - (String) &#x60;subscription_plan_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;free_trial_days%3D%3D14&#x60; - &#x60;filter&#x3D;hide_price%3D%3DTrue&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3DmySubscriptionPlanId&#x60; - &#x60;filter&#x3D;free_trial_days%3D%3D14%3Bhide_price%3D%3DFalse&#x60; 
      * Defaults to: undefined
      * @type string
-     * @memberof FreeTrialDiscountsApilistFreeTrialsUsingGET
+     * @memberof FreeTrialDiscountsApilistFreeTrialDiscounts
      */
     filter?: string
     /**
      * Attribute and direction to order items. One of the following fields: - &#x60;free_trial_days&#x60; - &#x60;hide_price&#x60; - &#x60;id&#x60; - &#x60;name&#x60; - &#x60;subscription_plan_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * Defaults to: undefined
      * @type string
-     * @memberof FreeTrialDiscountsApilistFreeTrialsUsingGET
+     * @memberof FreeTrialDiscountsApilistFreeTrialDiscounts
      */
     orderBy?: string
     /**
@@ -3769,37 +3224,37 @@ export interface FreeTrialDiscountsApiListFreeTrialsUsingGETRequest {
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
-     * @memberof FreeTrialDiscountsApilistFreeTrialsUsingGET
+     * @memberof FreeTrialDiscountsApilistFreeTrialDiscounts
      */
     pageSize?: number
     /**
      * Page token
      * Defaults to: undefined
      * @type string
-     * @memberof FreeTrialDiscountsApilistFreeTrialsUsingGET
+     * @memberof FreeTrialDiscountsApilistFreeTrialDiscounts
      */
     pageToken?: string
 }
 
-export interface FreeTrialDiscountsApiUpdateDiscountUsingPATCH1Request {
+export interface FreeTrialDiscountsApiUpdateFreeTrialDiscountRequest {
     /**
      * discount_id
      * Defaults to: undefined
      * @type string
-     * @memberof FreeTrialDiscountsApiupdateDiscountUsingPATCH1
+     * @memberof FreeTrialDiscountsApiupdateFreeTrialDiscount
      */
     discountId: string
     /**
      * request
      * @type UpdateFreeTrialDiscountRequest
-     * @memberof FreeTrialDiscountsApiupdateDiscountUsingPATCH1
+     * @memberof FreeTrialDiscountsApiupdateFreeTrialDiscount
      */
     updateFreeTrialDiscountRequest: UpdateFreeTrialDiscountRequest
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
      * @type Array&lt;string&gt;
-     * @memberof FreeTrialDiscountsApiupdateDiscountUsingPATCH1
+     * @memberof FreeTrialDiscountsApiupdateFreeTrialDiscount
      */
     updateMask?: Array<string>
 }
@@ -3816,8 +3271,8 @@ export class ObjectFreeTrialDiscountsApi {
      * Create a Subscription Free Trial Discount
      * @param param the request object
      */
-    public createDiscountUsingPOST1WithHttpInfo(param: FreeTrialDiscountsApiCreateDiscountUsingPOST1Request, options?: ConfigurationOptions): Promise<HttpInfo<FreeTrialDiscount>> {
-        return this.api.createDiscountUsingPOST1WithHttpInfo(param.createFreeTrialDiscountRequest,  options).toPromise();
+    public createFreeTrialDiscountWithHttpInfo(param: FreeTrialDiscountsApiCreateFreeTrialDiscountRequest, options?: ConfigurationOptions): Promise<HttpInfo<FreeTrialDiscount>> {
+        return this.api.createFreeTrialDiscountWithHttpInfo(param.createFreeTrialDiscountRequest,  options).toPromise();
     }
 
     /**
@@ -3825,8 +3280,8 @@ export class ObjectFreeTrialDiscountsApi {
      * Create a Subscription Free Trial Discount
      * @param param the request object
      */
-    public createDiscountUsingPOST1(param: FreeTrialDiscountsApiCreateDiscountUsingPOST1Request, options?: ConfigurationOptions): Promise<FreeTrialDiscount> {
-        return this.api.createDiscountUsingPOST1(param.createFreeTrialDiscountRequest,  options).toPromise();
+    public createFreeTrialDiscount(param: FreeTrialDiscountsApiCreateFreeTrialDiscountRequest, options?: ConfigurationOptions): Promise<FreeTrialDiscount> {
+        return this.api.createFreeTrialDiscount(param.createFreeTrialDiscountRequest,  options).toPromise();
     }
 
     /**
@@ -3834,8 +3289,8 @@ export class ObjectFreeTrialDiscountsApi {
      * Delete a Subscription Free Trial Discount
      * @param param the request object
      */
-    public deleteDiscountUsingDELETE1WithHttpInfo(param: FreeTrialDiscountsApiDeleteDiscountUsingDELETE1Request, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api.deleteDiscountUsingDELETE1WithHttpInfo(param.discountId,  options).toPromise();
+    public deleteFreeTrialDiscountWithHttpInfo(param: FreeTrialDiscountsApiDeleteFreeTrialDiscountRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteFreeTrialDiscountWithHttpInfo(param.discountId,  options).toPromise();
     }
 
     /**
@@ -3843,8 +3298,8 @@ export class ObjectFreeTrialDiscountsApi {
      * Delete a Subscription Free Trial Discount
      * @param param the request object
      */
-    public deleteDiscountUsingDELETE1(param: FreeTrialDiscountsApiDeleteDiscountUsingDELETE1Request, options?: ConfigurationOptions): Promise<void> {
-        return this.api.deleteDiscountUsingDELETE1(param.discountId,  options).toPromise();
+    public deleteFreeTrialDiscount(param: FreeTrialDiscountsApiDeleteFreeTrialDiscountRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteFreeTrialDiscount(param.discountId,  options).toPromise();
     }
 
     /**
@@ -3852,8 +3307,8 @@ export class ObjectFreeTrialDiscountsApi {
      * Retrieve a Subscription Free Trial Discount
      * @param param the request object
      */
-    public getDiscountUsingGET1WithHttpInfo(param: FreeTrialDiscountsApiGetDiscountUsingGET1Request, options?: ConfigurationOptions): Promise<HttpInfo<FreeTrialDiscount>> {
-        return this.api.getDiscountUsingGET1WithHttpInfo(param.discountId,  options).toPromise();
+    public getFreeTrialDiscountWithHttpInfo(param: FreeTrialDiscountsApiGetFreeTrialDiscountRequest, options?: ConfigurationOptions): Promise<HttpInfo<FreeTrialDiscount>> {
+        return this.api.getFreeTrialDiscountWithHttpInfo(param.discountId,  options).toPromise();
     }
 
     /**
@@ -3861,8 +3316,8 @@ export class ObjectFreeTrialDiscountsApi {
      * Retrieve a Subscription Free Trial Discount
      * @param param the request object
      */
-    public getDiscountUsingGET1(param: FreeTrialDiscountsApiGetDiscountUsingGET1Request, options?: ConfigurationOptions): Promise<FreeTrialDiscount> {
-        return this.api.getDiscountUsingGET1(param.discountId,  options).toPromise();
+    public getFreeTrialDiscount(param: FreeTrialDiscountsApiGetFreeTrialDiscountRequest, options?: ConfigurationOptions): Promise<FreeTrialDiscount> {
+        return this.api.getFreeTrialDiscount(param.discountId,  options).toPromise();
     }
 
     /**
@@ -3870,8 +3325,8 @@ export class ObjectFreeTrialDiscountsApi {
      * List all Subscription Free Trial Discounts
      * @param param the request object
      */
-    public listFreeTrialsUsingGETWithHttpInfo(param: FreeTrialDiscountsApiListFreeTrialsUsingGETRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListFreeTrialDiscountsResponse>> {
-        return this.api.listFreeTrialsUsingGETWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listFreeTrialDiscountsWithHttpInfo(param: FreeTrialDiscountsApiListFreeTrialDiscountsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListFreeTrialDiscountsResponse>> {
+        return this.api.listFreeTrialDiscountsWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -3879,8 +3334,8 @@ export class ObjectFreeTrialDiscountsApi {
      * List all Subscription Free Trial Discounts
      * @param param the request object
      */
-    public listFreeTrialsUsingGET(param: FreeTrialDiscountsApiListFreeTrialsUsingGETRequest = {}, options?: ConfigurationOptions): Promise<ListFreeTrialDiscountsResponse> {
-        return this.api.listFreeTrialsUsingGET(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listFreeTrialDiscounts(param: FreeTrialDiscountsApiListFreeTrialDiscountsRequest = {}, options?: ConfigurationOptions): Promise<ListFreeTrialDiscountsResponse> {
+        return this.api.listFreeTrialDiscounts(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -3888,8 +3343,8 @@ export class ObjectFreeTrialDiscountsApi {
      * Update a Subscription Free Trial Discount
      * @param param the request object
      */
-    public updateDiscountUsingPATCH1WithHttpInfo(param: FreeTrialDiscountsApiUpdateDiscountUsingPATCH1Request, options?: ConfigurationOptions): Promise<HttpInfo<FreeTrialDiscount>> {
-        return this.api.updateDiscountUsingPATCH1WithHttpInfo(param.discountId, param.updateFreeTrialDiscountRequest, param.updateMask,  options).toPromise();
+    public updateFreeTrialDiscountWithHttpInfo(param: FreeTrialDiscountsApiUpdateFreeTrialDiscountRequest, options?: ConfigurationOptions): Promise<HttpInfo<FreeTrialDiscount>> {
+        return this.api.updateFreeTrialDiscountWithHttpInfo(param.discountId, param.updateFreeTrialDiscountRequest, param.updateMask,  options).toPromise();
     }
 
     /**
@@ -3897,8 +3352,8 @@ export class ObjectFreeTrialDiscountsApi {
      * Update a Subscription Free Trial Discount
      * @param param the request object
      */
-    public updateDiscountUsingPATCH1(param: FreeTrialDiscountsApiUpdateDiscountUsingPATCH1Request, options?: ConfigurationOptions): Promise<FreeTrialDiscount> {
-        return this.api.updateDiscountUsingPATCH1(param.discountId, param.updateFreeTrialDiscountRequest, param.updateMask,  options).toPromise();
+    public updateFreeTrialDiscount(param: FreeTrialDiscountsApiUpdateFreeTrialDiscountRequest, options?: ConfigurationOptions): Promise<FreeTrialDiscount> {
+        return this.api.updateFreeTrialDiscount(param.discountId, param.updateFreeTrialDiscountRequest, param.updateMask,  options).toPromise();
     }
 
 }
@@ -3906,48 +3361,48 @@ export class ObjectFreeTrialDiscountsApi {
 import { ObservableLeadSourceCategoriesApi } from "./ObservableAPI";
 import { LeadSourceCategoriesApiRequestFactory, LeadSourceCategoriesApiResponseProcessor} from "../apis/LeadSourceCategoriesApi";
 
-export interface LeadSourceCategoriesApiCreateLeadSourceCategoryUsingPOSTRequest {
+export interface LeadSourceCategoriesApiCreateLeadSourceCategoryRequest {
     /**
      * The request object to create a new lead source category
      * @type CreateUpdateLeadSourceCategoryRequest
-     * @memberof LeadSourceCategoriesApicreateLeadSourceCategoryUsingPOST
+     * @memberof LeadSourceCategoriesApicreateLeadSourceCategory
      */
     createUpdateLeadSourceCategoryRequest: CreateUpdateLeadSourceCategoryRequest
 }
 
-export interface LeadSourceCategoriesApiDeleteLeadSourceCategoryUsingDELETERequest {
+export interface LeadSourceCategoriesApiDeleteLeadSourceCategoryRequest {
     /**
      * The ID of a lead source category
      * Defaults to: undefined
      * @type string
-     * @memberof LeadSourceCategoriesApideleteLeadSourceCategoryUsingDELETE
+     * @memberof LeadSourceCategoriesApideleteLeadSourceCategory
      */
     leadSourceCategoryId: string
 }
 
-export interface LeadSourceCategoriesApiGetLeadSourceCategoryUsingGETRequest {
+export interface LeadSourceCategoriesApiGetLeadSourceCategoryRequest {
     /**
      * The ID of a lead source category
      * Defaults to: undefined
      * @type string
-     * @memberof LeadSourceCategoriesApigetLeadSourceCategoryUsingGET
+     * @memberof LeadSourceCategoriesApigetLeadSourceCategory
      */
     leadSourceCategoryId: string
 }
 
-export interface LeadSourceCategoriesApiListCategoriesUsingGET1Request {
+export interface LeadSourceCategoriesApiListLeadSourceCategoriesRequest {
     /**
      * Filter to apply, allowed fields are:  - (String) &#x60;name&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here is an example:  - &#x60;filter&#x3D;name%3D%3Dexample&#x60;
      * Defaults to: undefined
      * @type string
-     * @memberof LeadSourceCategoriesApilistCategoriesUsingGET1
+     * @memberof LeadSourceCategoriesApilistLeadSourceCategories
      */
     filter?: string
     /**
      * Attribute and direction to order items. One of the following fields: - &#x60;name&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * Defaults to: undefined
      * @type string
-     * @memberof LeadSourceCategoriesApilistCategoriesUsingGET1
+     * @memberof LeadSourceCategoriesApilistLeadSourceCategories
      */
     orderBy?: string
     /**
@@ -3956,37 +3411,37 @@ export interface LeadSourceCategoriesApiListCategoriesUsingGET1Request {
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
-     * @memberof LeadSourceCategoriesApilistCategoriesUsingGET1
+     * @memberof LeadSourceCategoriesApilistLeadSourceCategories
      */
     pageSize?: number
     /**
      * Page token
      * Defaults to: undefined
      * @type string
-     * @memberof LeadSourceCategoriesApilistCategoriesUsingGET1
+     * @memberof LeadSourceCategoriesApilistLeadSourceCategories
      */
     pageToken?: string
 }
 
-export interface LeadSourceCategoriesApiUpdateLeadSourceCategoryUsingPATCHRequest {
+export interface LeadSourceCategoriesApiUpdateLeadSourceCategoryRequest {
     /**
      * The ID of a lead source category
      * Defaults to: undefined
      * @type string
-     * @memberof LeadSourceCategoriesApiupdateLeadSourceCategoryUsingPATCH
+     * @memberof LeadSourceCategoriesApiupdateLeadSourceCategory
      */
     leadSourceCategoryId: string
     /**
      * The request object to update a lead source category
      * @type CreateUpdateLeadSourceCategoryRequest
-     * @memberof LeadSourceCategoriesApiupdateLeadSourceCategoryUsingPATCH
+     * @memberof LeadSourceCategoriesApiupdateLeadSourceCategory
      */
     createUpdateLeadSourceCategoryRequest: CreateUpdateLeadSourceCategoryRequest
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
      * @type Array&lt;string&gt;
-     * @memberof LeadSourceCategoriesApiupdateLeadSourceCategoryUsingPATCH
+     * @memberof LeadSourceCategoriesApiupdateLeadSourceCategory
      */
     updateMask?: Array<string>
 }
@@ -4003,8 +3458,8 @@ export class ObjectLeadSourceCategoriesApi {
      * Create a Lead Source Category
      * @param param the request object
      */
-    public createLeadSourceCategoryUsingPOSTWithHttpInfo(param: LeadSourceCategoriesApiCreateLeadSourceCategoryUsingPOSTRequest, options?: ConfigurationOptions): Promise<HttpInfo<LeadSourceCategory>> {
-        return this.api.createLeadSourceCategoryUsingPOSTWithHttpInfo(param.createUpdateLeadSourceCategoryRequest,  options).toPromise();
+    public createLeadSourceCategoryWithHttpInfo(param: LeadSourceCategoriesApiCreateLeadSourceCategoryRequest, options?: ConfigurationOptions): Promise<HttpInfo<LeadSourceCategory>> {
+        return this.api.createLeadSourceCategoryWithHttpInfo(param.createUpdateLeadSourceCategoryRequest,  options).toPromise();
     }
 
     /**
@@ -4012,8 +3467,8 @@ export class ObjectLeadSourceCategoriesApi {
      * Create a Lead Source Category
      * @param param the request object
      */
-    public createLeadSourceCategoryUsingPOST(param: LeadSourceCategoriesApiCreateLeadSourceCategoryUsingPOSTRequest, options?: ConfigurationOptions): Promise<LeadSourceCategory> {
-        return this.api.createLeadSourceCategoryUsingPOST(param.createUpdateLeadSourceCategoryRequest,  options).toPromise();
+    public createLeadSourceCategory(param: LeadSourceCategoriesApiCreateLeadSourceCategoryRequest, options?: ConfigurationOptions): Promise<LeadSourceCategory> {
+        return this.api.createLeadSourceCategory(param.createUpdateLeadSourceCategoryRequest,  options).toPromise();
     }
 
     /**
@@ -4021,8 +3476,8 @@ export class ObjectLeadSourceCategoriesApi {
      * Delete a Lead Source Category
      * @param param the request object
      */
-    public deleteLeadSourceCategoryUsingDELETEWithHttpInfo(param: LeadSourceCategoriesApiDeleteLeadSourceCategoryUsingDELETERequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api.deleteLeadSourceCategoryUsingDELETEWithHttpInfo(param.leadSourceCategoryId,  options).toPromise();
+    public deleteLeadSourceCategoryWithHttpInfo(param: LeadSourceCategoriesApiDeleteLeadSourceCategoryRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteLeadSourceCategoryWithHttpInfo(param.leadSourceCategoryId,  options).toPromise();
     }
 
     /**
@@ -4030,8 +3485,8 @@ export class ObjectLeadSourceCategoriesApi {
      * Delete a Lead Source Category
      * @param param the request object
      */
-    public deleteLeadSourceCategoryUsingDELETE(param: LeadSourceCategoriesApiDeleteLeadSourceCategoryUsingDELETERequest, options?: ConfigurationOptions): Promise<void> {
-        return this.api.deleteLeadSourceCategoryUsingDELETE(param.leadSourceCategoryId,  options).toPromise();
+    public deleteLeadSourceCategory(param: LeadSourceCategoriesApiDeleteLeadSourceCategoryRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteLeadSourceCategory(param.leadSourceCategoryId,  options).toPromise();
     }
 
     /**
@@ -4039,8 +3494,8 @@ export class ObjectLeadSourceCategoriesApi {
      * Retrieve a Lead Source Category
      * @param param the request object
      */
-    public getLeadSourceCategoryUsingGETWithHttpInfo(param: LeadSourceCategoriesApiGetLeadSourceCategoryUsingGETRequest, options?: ConfigurationOptions): Promise<HttpInfo<LeadSourceCategory>> {
-        return this.api.getLeadSourceCategoryUsingGETWithHttpInfo(param.leadSourceCategoryId,  options).toPromise();
+    public getLeadSourceCategoryWithHttpInfo(param: LeadSourceCategoriesApiGetLeadSourceCategoryRequest, options?: ConfigurationOptions): Promise<HttpInfo<LeadSourceCategory>> {
+        return this.api.getLeadSourceCategoryWithHttpInfo(param.leadSourceCategoryId,  options).toPromise();
     }
 
     /**
@@ -4048,8 +3503,8 @@ export class ObjectLeadSourceCategoriesApi {
      * Retrieve a Lead Source Category
      * @param param the request object
      */
-    public getLeadSourceCategoryUsingGET(param: LeadSourceCategoriesApiGetLeadSourceCategoryUsingGETRequest, options?: ConfigurationOptions): Promise<LeadSourceCategory> {
-        return this.api.getLeadSourceCategoryUsingGET(param.leadSourceCategoryId,  options).toPromise();
+    public getLeadSourceCategory(param: LeadSourceCategoriesApiGetLeadSourceCategoryRequest, options?: ConfigurationOptions): Promise<LeadSourceCategory> {
+        return this.api.getLeadSourceCategory(param.leadSourceCategoryId,  options).toPromise();
     }
 
     /**
@@ -4057,8 +3512,8 @@ export class ObjectLeadSourceCategoriesApi {
      * List Lead Source Categories
      * @param param the request object
      */
-    public listCategoriesUsingGET1WithHttpInfo(param: LeadSourceCategoriesApiListCategoriesUsingGET1Request = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListLeadSourceCategoriesResponse>> {
-        return this.api.listCategoriesUsingGET1WithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listLeadSourceCategoriesWithHttpInfo(param: LeadSourceCategoriesApiListLeadSourceCategoriesRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListLeadSourceCategoriesResponse>> {
+        return this.api.listLeadSourceCategoriesWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -4066,8 +3521,8 @@ export class ObjectLeadSourceCategoriesApi {
      * List Lead Source Categories
      * @param param the request object
      */
-    public listCategoriesUsingGET1(param: LeadSourceCategoriesApiListCategoriesUsingGET1Request = {}, options?: ConfigurationOptions): Promise<ListLeadSourceCategoriesResponse> {
-        return this.api.listCategoriesUsingGET1(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listLeadSourceCategories(param: LeadSourceCategoriesApiListLeadSourceCategoriesRequest = {}, options?: ConfigurationOptions): Promise<ListLeadSourceCategoriesResponse> {
+        return this.api.listLeadSourceCategories(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -4075,8 +3530,8 @@ export class ObjectLeadSourceCategoriesApi {
      * Update a Lead Source Category
      * @param param the request object
      */
-    public updateLeadSourceCategoryUsingPATCHWithHttpInfo(param: LeadSourceCategoriesApiUpdateLeadSourceCategoryUsingPATCHRequest, options?: ConfigurationOptions): Promise<HttpInfo<LeadSourceCategory>> {
-        return this.api.updateLeadSourceCategoryUsingPATCHWithHttpInfo(param.leadSourceCategoryId, param.createUpdateLeadSourceCategoryRequest, param.updateMask,  options).toPromise();
+    public updateLeadSourceCategoryWithHttpInfo(param: LeadSourceCategoriesApiUpdateLeadSourceCategoryRequest, options?: ConfigurationOptions): Promise<HttpInfo<LeadSourceCategory>> {
+        return this.api.updateLeadSourceCategoryWithHttpInfo(param.leadSourceCategoryId, param.createUpdateLeadSourceCategoryRequest, param.updateMask,  options).toPromise();
     }
 
     /**
@@ -4084,8 +3539,8 @@ export class ObjectLeadSourceCategoriesApi {
      * Update a Lead Source Category
      * @param param the request object
      */
-    public updateLeadSourceCategoryUsingPATCH(param: LeadSourceCategoriesApiUpdateLeadSourceCategoryUsingPATCHRequest, options?: ConfigurationOptions): Promise<LeadSourceCategory> {
-        return this.api.updateLeadSourceCategoryUsingPATCH(param.leadSourceCategoryId, param.createUpdateLeadSourceCategoryRequest, param.updateMask,  options).toPromise();
+    public updateLeadSourceCategory(param: LeadSourceCategoriesApiUpdateLeadSourceCategoryRequest, options?: ConfigurationOptions): Promise<LeadSourceCategory> {
+        return this.api.updateLeadSourceCategory(param.leadSourceCategoryId, param.createUpdateLeadSourceCategoryRequest, param.updateMask,  options).toPromise();
     }
 
 }
@@ -4093,76 +3548,76 @@ export class ObjectLeadSourceCategoriesApi {
 import { ObservableLeadSourceExpensesApi } from "./ObservableAPI";
 import { LeadSourceExpensesApiRequestFactory, LeadSourceExpensesApiResponseProcessor} from "../apis/LeadSourceExpensesApi";
 
-export interface LeadSourceExpensesApiCreateLeadSourceExpenseUsingPOSTRequest {
+export interface LeadSourceExpensesApiCreateLeadSourceExpenseRequest {
     /**
      * The ID of the lead source this expense belongs to
      * Defaults to: undefined
      * @type string
-     * @memberof LeadSourceExpensesApicreateLeadSourceExpenseUsingPOST
+     * @memberof LeadSourceExpensesApicreateLeadSourceExpense
      */
     leadSourceId: string
     /**
      * The request object to create a new lead source expense
      * @type CreateLeadSourceExpenseRequest
-     * @memberof LeadSourceExpensesApicreateLeadSourceExpenseUsingPOST
+     * @memberof LeadSourceExpensesApicreateLeadSourceExpense
      */
     createLeadSourceExpenseRequest: CreateLeadSourceExpenseRequest
 }
 
-export interface LeadSourceExpensesApiDeleteLeadSourceUsingDELETE1Request {
+export interface LeadSourceExpensesApiDeleteLeadSourceExpenseRequest {
     /**
      * The ID of a lead source expense
      * Defaults to: undefined
      * @type string
-     * @memberof LeadSourceExpensesApideleteLeadSourceUsingDELETE1
+     * @memberof LeadSourceExpensesApideleteLeadSourceExpense
      */
     leadSourceExpenseId: string
     /**
      * The ID of the lead source this expense belongs to
      * Defaults to: undefined
      * @type string
-     * @memberof LeadSourceExpensesApideleteLeadSourceUsingDELETE1
+     * @memberof LeadSourceExpensesApideleteLeadSourceExpense
      */
     leadSourceId: string
 }
 
-export interface LeadSourceExpensesApiGetLeadSourceExpenseUsingGETRequest {
+export interface LeadSourceExpensesApiGetLeadSourceExpenseRequest {
     /**
      * The ID of a lead source expense
      * Defaults to: undefined
      * @type string
-     * @memberof LeadSourceExpensesApigetLeadSourceExpenseUsingGET
+     * @memberof LeadSourceExpensesApigetLeadSourceExpense
      */
     leadSourceExpenseId: string
     /**
      * The ID of the lead source this expense belongs to
      * Defaults to: undefined
      * @type string
-     * @memberof LeadSourceExpensesApigetLeadSourceExpenseUsingGET
+     * @memberof LeadSourceExpensesApigetLeadSourceExpense
      */
     leadSourceId: string
 }
 
-export interface LeadSourceExpensesApiListLeadSourceExpensesUsingGETRequest {
+export interface LeadSourceExpensesApiListLeadSourceExpensesRequest {
     /**
      * The ID of the lead source this expense belongs to
      * Defaults to: undefined
      * @type string
-     * @memberof LeadSourceExpensesApilistLeadSourceExpensesUsingGET
+     * @memberof LeadSourceExpensesApilistLeadSourceExpenses
      */
     leadSourceId: string
     /**
      * Filter to apply, allowed fields are:  - (String) &#x60;title&#x60; - (Long) &#x60;amount&#x60; - (String) &#x60;incurred_time&#x60; - (String) &#x60;create_time&#x60; - (String) &#x60;update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;amount%3D%3D2500&#x60; - &#x60;filter&#x3D;incurred_time%3D%3D2024-12-22T01:00:00.000Z&#x60;
      * Defaults to: undefined
      * @type string
-     * @memberof LeadSourceExpensesApilistLeadSourceExpensesUsingGET
+     * @memberof LeadSourceExpensesApilistLeadSourceExpenses
      */
     filter?: string
     /**
      * Attribute and direction to order items. One of the following fields:  - &#x60;title&#x60; - &#x60;amount&#x60; - &#x60;incurred_time&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * Defaults to: undefined
      * @type string
-     * @memberof LeadSourceExpensesApilistLeadSourceExpensesUsingGET
+     * @memberof LeadSourceExpensesApilistLeadSourceExpenses
      */
     orderBy?: string
     /**
@@ -4171,44 +3626,44 @@ export interface LeadSourceExpensesApiListLeadSourceExpensesUsingGETRequest {
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
-     * @memberof LeadSourceExpensesApilistLeadSourceExpensesUsingGET
+     * @memberof LeadSourceExpensesApilistLeadSourceExpenses
      */
     pageSize?: number
     /**
      * Page token
      * Defaults to: undefined
      * @type string
-     * @memberof LeadSourceExpensesApilistLeadSourceExpensesUsingGET
+     * @memberof LeadSourceExpensesApilistLeadSourceExpenses
      */
     pageToken?: string
 }
 
-export interface LeadSourceExpensesApiUpdateLeadSourceExpenseUsingPATCHRequest {
+export interface LeadSourceExpensesApiUpdateLeadSourceExpenseRequest {
     /**
      * The ID of a lead source expense
      * Defaults to: undefined
      * @type string
-     * @memberof LeadSourceExpensesApiupdateLeadSourceExpenseUsingPATCH
+     * @memberof LeadSourceExpensesApiupdateLeadSourceExpense
      */
     leadSourceExpenseId: string
     /**
      * The ID of the lead source this expense belongs to
      * Defaults to: undefined
      * @type string
-     * @memberof LeadSourceExpensesApiupdateLeadSourceExpenseUsingPATCH
+     * @memberof LeadSourceExpensesApiupdateLeadSourceExpense
      */
     leadSourceId: string
     /**
      * The request object to update a lead source expense
      * @type UpdateLeadSourceExpenseRequest
-     * @memberof LeadSourceExpensesApiupdateLeadSourceExpenseUsingPATCH
+     * @memberof LeadSourceExpensesApiupdateLeadSourceExpense
      */
     updateLeadSourceExpenseRequest: UpdateLeadSourceExpenseRequest
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
      * @type Array&lt;string&gt;
-     * @memberof LeadSourceExpensesApiupdateLeadSourceExpenseUsingPATCH
+     * @memberof LeadSourceExpensesApiupdateLeadSourceExpense
      */
     updateMask?: Array<string>
 }
@@ -4225,8 +3680,8 @@ export class ObjectLeadSourceExpensesApi {
      * Create a Lead Source Expense
      * @param param the request object
      */
-    public createLeadSourceExpenseUsingPOSTWithHttpInfo(param: LeadSourceExpensesApiCreateLeadSourceExpenseUsingPOSTRequest, options?: ConfigurationOptions): Promise<HttpInfo<LeadSourceExpense>> {
-        return this.api.createLeadSourceExpenseUsingPOSTWithHttpInfo(param.leadSourceId, param.createLeadSourceExpenseRequest,  options).toPromise();
+    public createLeadSourceExpenseWithHttpInfo(param: LeadSourceExpensesApiCreateLeadSourceExpenseRequest, options?: ConfigurationOptions): Promise<HttpInfo<LeadSourceExpense>> {
+        return this.api.createLeadSourceExpenseWithHttpInfo(param.leadSourceId, param.createLeadSourceExpenseRequest,  options).toPromise();
     }
 
     /**
@@ -4234,8 +3689,8 @@ export class ObjectLeadSourceExpensesApi {
      * Create a Lead Source Expense
      * @param param the request object
      */
-    public createLeadSourceExpenseUsingPOST(param: LeadSourceExpensesApiCreateLeadSourceExpenseUsingPOSTRequest, options?: ConfigurationOptions): Promise<LeadSourceExpense> {
-        return this.api.createLeadSourceExpenseUsingPOST(param.leadSourceId, param.createLeadSourceExpenseRequest,  options).toPromise();
+    public createLeadSourceExpense(param: LeadSourceExpensesApiCreateLeadSourceExpenseRequest, options?: ConfigurationOptions): Promise<LeadSourceExpense> {
+        return this.api.createLeadSourceExpense(param.leadSourceId, param.createLeadSourceExpenseRequest,  options).toPromise();
     }
 
     /**
@@ -4243,8 +3698,8 @@ export class ObjectLeadSourceExpensesApi {
      * Delete a lead source expense
      * @param param the request object
      */
-    public deleteLeadSourceUsingDELETE1WithHttpInfo(param: LeadSourceExpensesApiDeleteLeadSourceUsingDELETE1Request, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api.deleteLeadSourceUsingDELETE1WithHttpInfo(param.leadSourceExpenseId, param.leadSourceId,  options).toPromise();
+    public deleteLeadSourceExpenseWithHttpInfo(param: LeadSourceExpensesApiDeleteLeadSourceExpenseRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteLeadSourceExpenseWithHttpInfo(param.leadSourceExpenseId, param.leadSourceId,  options).toPromise();
     }
 
     /**
@@ -4252,8 +3707,8 @@ export class ObjectLeadSourceExpensesApi {
      * Delete a lead source expense
      * @param param the request object
      */
-    public deleteLeadSourceUsingDELETE1(param: LeadSourceExpensesApiDeleteLeadSourceUsingDELETE1Request, options?: ConfigurationOptions): Promise<void> {
-        return this.api.deleteLeadSourceUsingDELETE1(param.leadSourceExpenseId, param.leadSourceId,  options).toPromise();
+    public deleteLeadSourceExpense(param: LeadSourceExpensesApiDeleteLeadSourceExpenseRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteLeadSourceExpense(param.leadSourceExpenseId, param.leadSourceId,  options).toPromise();
     }
 
     /**
@@ -4261,8 +3716,8 @@ export class ObjectLeadSourceExpensesApi {
      * Retrieve a Lead Source Expense
      * @param param the request object
      */
-    public getLeadSourceExpenseUsingGETWithHttpInfo(param: LeadSourceExpensesApiGetLeadSourceExpenseUsingGETRequest, options?: ConfigurationOptions): Promise<HttpInfo<LeadSourceExpense>> {
-        return this.api.getLeadSourceExpenseUsingGETWithHttpInfo(param.leadSourceExpenseId, param.leadSourceId,  options).toPromise();
+    public getLeadSourceExpenseWithHttpInfo(param: LeadSourceExpensesApiGetLeadSourceExpenseRequest, options?: ConfigurationOptions): Promise<HttpInfo<LeadSourceExpense>> {
+        return this.api.getLeadSourceExpenseWithHttpInfo(param.leadSourceExpenseId, param.leadSourceId,  options).toPromise();
     }
 
     /**
@@ -4270,8 +3725,8 @@ export class ObjectLeadSourceExpensesApi {
      * Retrieve a Lead Source Expense
      * @param param the request object
      */
-    public getLeadSourceExpenseUsingGET(param: LeadSourceExpensesApiGetLeadSourceExpenseUsingGETRequest, options?: ConfigurationOptions): Promise<LeadSourceExpense> {
-        return this.api.getLeadSourceExpenseUsingGET(param.leadSourceExpenseId, param.leadSourceId,  options).toPromise();
+    public getLeadSourceExpense(param: LeadSourceExpensesApiGetLeadSourceExpenseRequest, options?: ConfigurationOptions): Promise<LeadSourceExpense> {
+        return this.api.getLeadSourceExpense(param.leadSourceExpenseId, param.leadSourceId,  options).toPromise();
     }
 
     /**
@@ -4279,8 +3734,8 @@ export class ObjectLeadSourceExpensesApi {
      * List Lead Source Expenses
      * @param param the request object
      */
-    public listLeadSourceExpensesUsingGETWithHttpInfo(param: LeadSourceExpensesApiListLeadSourceExpensesUsingGETRequest, options?: ConfigurationOptions): Promise<HttpInfo<ListLeadSourceExpensesResponse>> {
-        return this.api.listLeadSourceExpensesUsingGETWithHttpInfo(param.leadSourceId, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listLeadSourceExpensesWithHttpInfo(param: LeadSourceExpensesApiListLeadSourceExpensesRequest, options?: ConfigurationOptions): Promise<HttpInfo<ListLeadSourceExpensesResponse>> {
+        return this.api.listLeadSourceExpensesWithHttpInfo(param.leadSourceId, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -4288,8 +3743,8 @@ export class ObjectLeadSourceExpensesApi {
      * List Lead Source Expenses
      * @param param the request object
      */
-    public listLeadSourceExpensesUsingGET(param: LeadSourceExpensesApiListLeadSourceExpensesUsingGETRequest, options?: ConfigurationOptions): Promise<ListLeadSourceExpensesResponse> {
-        return this.api.listLeadSourceExpensesUsingGET(param.leadSourceId, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listLeadSourceExpenses(param: LeadSourceExpensesApiListLeadSourceExpensesRequest, options?: ConfigurationOptions): Promise<ListLeadSourceExpensesResponse> {
+        return this.api.listLeadSourceExpenses(param.leadSourceId, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -4297,8 +3752,8 @@ export class ObjectLeadSourceExpensesApi {
      * Update a Lead Source Expense
      * @param param the request object
      */
-    public updateLeadSourceExpenseUsingPATCHWithHttpInfo(param: LeadSourceExpensesApiUpdateLeadSourceExpenseUsingPATCHRequest, options?: ConfigurationOptions): Promise<HttpInfo<LeadSourceExpense>> {
-        return this.api.updateLeadSourceExpenseUsingPATCHWithHttpInfo(param.leadSourceExpenseId, param.leadSourceId, param.updateLeadSourceExpenseRequest, param.updateMask,  options).toPromise();
+    public updateLeadSourceExpenseWithHttpInfo(param: LeadSourceExpensesApiUpdateLeadSourceExpenseRequest, options?: ConfigurationOptions): Promise<HttpInfo<LeadSourceExpense>> {
+        return this.api.updateLeadSourceExpenseWithHttpInfo(param.leadSourceExpenseId, param.leadSourceId, param.updateLeadSourceExpenseRequest, param.updateMask,  options).toPromise();
     }
 
     /**
@@ -4306,8 +3761,8 @@ export class ObjectLeadSourceExpensesApi {
      * Update a Lead Source Expense
      * @param param the request object
      */
-    public updateLeadSourceExpenseUsingPATCH(param: LeadSourceExpensesApiUpdateLeadSourceExpenseUsingPATCHRequest, options?: ConfigurationOptions): Promise<LeadSourceExpense> {
-        return this.api.updateLeadSourceExpenseUsingPATCH(param.leadSourceExpenseId, param.leadSourceId, param.updateLeadSourceExpenseRequest, param.updateMask,  options).toPromise();
+    public updateLeadSourceExpense(param: LeadSourceExpensesApiUpdateLeadSourceExpenseRequest, options?: ConfigurationOptions): Promise<LeadSourceExpense> {
+        return this.api.updateLeadSourceExpense(param.leadSourceExpenseId, param.leadSourceId, param.updateLeadSourceExpenseRequest, param.updateMask,  options).toPromise();
     }
 
 }
@@ -4315,83 +3770,83 @@ export class ObjectLeadSourceExpensesApi {
 import { ObservableLeadSourceRecurringExpensesApi } from "./ObservableAPI";
 import { LeadSourceRecurringExpensesApiRequestFactory, LeadSourceRecurringExpensesApiResponseProcessor} from "../apis/LeadSourceRecurringExpensesApi";
 
-export interface LeadSourceRecurringExpensesApiCreateLeadSourceRecurringExpenseUsingPOSTRequest {
+export interface LeadSourceRecurringExpensesApiCreateLeadSourceRecurringExpenseRequest {
     /**
      * The ID of the lead source this recurring expense belongs to
      * Defaults to: undefined
      * @type string
-     * @memberof LeadSourceRecurringExpensesApicreateLeadSourceRecurringExpenseUsingPOST
+     * @memberof LeadSourceRecurringExpensesApicreateLeadSourceRecurringExpense
      */
     leadSourceId: string
     /**
      * The request object to create a new lead source recurring expense
      * @type CreateLeadSourceRecurringExpenseRequest
-     * @memberof LeadSourceRecurringExpensesApicreateLeadSourceRecurringExpenseUsingPOST
+     * @memberof LeadSourceRecurringExpensesApicreateLeadSourceRecurringExpense
      */
     createLeadSourceRecurringExpenseRequest: CreateLeadSourceRecurringExpenseRequest
 }
 
-export interface LeadSourceRecurringExpensesApiDeleteLeadSourceRecurringExpenseUsingDELETERequest {
+export interface LeadSourceRecurringExpensesApiDeleteLeadSourceRecurringExpenseRequest {
     /**
      * The ID of the lead source this recurring expense belongs to
      * Defaults to: undefined
      * @type string
-     * @memberof LeadSourceRecurringExpensesApideleteLeadSourceRecurringExpenseUsingDELETE
+     * @memberof LeadSourceRecurringExpensesApideleteLeadSourceRecurringExpense
      */
     leadSourceId: string
     /**
      * The ID of a lead source recurring expense
      * Defaults to: undefined
      * @type string
-     * @memberof LeadSourceRecurringExpensesApideleteLeadSourceRecurringExpenseUsingDELETE
+     * @memberof LeadSourceRecurringExpensesApideleteLeadSourceRecurringExpense
      */
     leadSourceRecurringExpenseId: string
 }
 
-export interface LeadSourceRecurringExpensesApiGetLeadSourceRecurringExpenseUsingGETRequest {
+export interface LeadSourceRecurringExpensesApiGetLeadSourceRecurringExpenseRequest {
     /**
      * The ID of the lead source this recurring expense belongs to
      * Defaults to: undefined
      * @type string
-     * @memberof LeadSourceRecurringExpensesApigetLeadSourceRecurringExpenseUsingGET
+     * @memberof LeadSourceRecurringExpensesApigetLeadSourceRecurringExpense
      */
     leadSourceId: string
     /**
      * The ID of a lead source recurring expense
      * Defaults to: undefined
      * @type string
-     * @memberof LeadSourceRecurringExpensesApigetLeadSourceRecurringExpenseUsingGET
+     * @memberof LeadSourceRecurringExpensesApigetLeadSourceRecurringExpense
      */
     leadSourceRecurringExpenseId: string
 }
 
-export interface LeadSourceRecurringExpensesApiListExpensesIncurredFromLeadSourceRecurringExpenseUsingGETRequest {
+export interface LeadSourceRecurringExpensesApiListExpensesIncurredFromLeadSourceRecurringExpenseRequest {
     /**
      * The ID of the lead source this recurring expense belongs to
      * Defaults to: undefined
      * @type string
-     * @memberof LeadSourceRecurringExpensesApilistExpensesIncurredFromLeadSourceRecurringExpenseUsingGET
+     * @memberof LeadSourceRecurringExpensesApilistExpensesIncurredFromLeadSourceRecurringExpense
      */
     leadSourceId: string
     /**
      * The ID of a lead source recurring expense
      * Defaults to: undefined
      * @type string
-     * @memberof LeadSourceRecurringExpensesApilistExpensesIncurredFromLeadSourceRecurringExpenseUsingGET
+     * @memberof LeadSourceRecurringExpensesApilistExpensesIncurredFromLeadSourceRecurringExpense
      */
     leadSourceRecurringExpenseId: string
     /**
      * Filter to apply, allowed fields are:  - (String) &#x60;title&#x60; - (Long) &#x60;amount&#x60; - (String) &#x60;incurred_time&#x60; - (String) &#x60;create_time&#x60; - (String) &#x60;update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;amount%3D%3D2500&#x60; - &#x60;filter&#x3D;incurred_time%3D%3D2024-12-22T01:00:00.000Z&#x60;
      * Defaults to: undefined
      * @type string
-     * @memberof LeadSourceRecurringExpensesApilistExpensesIncurredFromLeadSourceRecurringExpenseUsingGET
+     * @memberof LeadSourceRecurringExpensesApilistExpensesIncurredFromLeadSourceRecurringExpense
      */
     filter?: string
     /**
      * Attribute and direction to order items. One of the following fields:  - &#x60;title&#x60; - &#x60;amount&#x60; - &#x60;incurred_time&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * Defaults to: undefined
      * @type string
-     * @memberof LeadSourceRecurringExpensesApilistExpensesIncurredFromLeadSourceRecurringExpenseUsingGET
+     * @memberof LeadSourceRecurringExpensesApilistExpensesIncurredFromLeadSourceRecurringExpense
      */
     orderBy?: string
     /**
@@ -4400,38 +3855,38 @@ export interface LeadSourceRecurringExpensesApiListExpensesIncurredFromLeadSourc
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
-     * @memberof LeadSourceRecurringExpensesApilistExpensesIncurredFromLeadSourceRecurringExpenseUsingGET
+     * @memberof LeadSourceRecurringExpensesApilistExpensesIncurredFromLeadSourceRecurringExpense
      */
     pageSize?: number
     /**
      * Page token
      * Defaults to: undefined
      * @type string
-     * @memberof LeadSourceRecurringExpensesApilistExpensesIncurredFromLeadSourceRecurringExpenseUsingGET
+     * @memberof LeadSourceRecurringExpensesApilistExpensesIncurredFromLeadSourceRecurringExpense
      */
     pageToken?: string
 }
 
-export interface LeadSourceRecurringExpensesApiListLeadSourceRecurringExpensesUsingGETRequest {
+export interface LeadSourceRecurringExpensesApiListLeadSourceRecurringExpensesRequest {
     /**
      * The ID of the lead source this recurring expense belongs to
      * Defaults to: undefined
      * @type string
-     * @memberof LeadSourceRecurringExpensesApilistLeadSourceRecurringExpensesUsingGET
+     * @memberof LeadSourceRecurringExpensesApilistLeadSourceRecurringExpenses
      */
     leadSourceId: string
     /**
      * Filter to apply, allowed fields are:  - (String) &#x60;title&#x60; - (Long) &#x60;amount&#x60; - (String) &#x60;start_time&#x60; - (String) &#x60;end_time&#x60; - (String) &#x60;next_expense_time&#x60; - (String) &#x60;create_time&#x60; - (String) &#x60;update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;amount%3D%3D2500&#x60; - &#x60;filter&#x3D;next_expense_time%3D%3D2024-12-22T01:00:00.000Z&#x60;
      * Defaults to: undefined
      * @type string
-     * @memberof LeadSourceRecurringExpensesApilistLeadSourceRecurringExpensesUsingGET
+     * @memberof LeadSourceRecurringExpensesApilistLeadSourceRecurringExpenses
      */
     filter?: string
     /**
      * Attribute and direction to order items. One of the following fields: - &#x60;title&#x60; - &#x60;amount&#x60; - &#x60;start_time&#x60; - &#x60;end_time&#x60; - &#x60;next_expense_time&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * Defaults to: undefined
      * @type string
-     * @memberof LeadSourceRecurringExpensesApilistLeadSourceRecurringExpensesUsingGET
+     * @memberof LeadSourceRecurringExpensesApilistLeadSourceRecurringExpenses
      */
     orderBy?: string
     /**
@@ -4440,44 +3895,44 @@ export interface LeadSourceRecurringExpensesApiListLeadSourceRecurringExpensesUs
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
-     * @memberof LeadSourceRecurringExpensesApilistLeadSourceRecurringExpensesUsingGET
+     * @memberof LeadSourceRecurringExpensesApilistLeadSourceRecurringExpenses
      */
     pageSize?: number
     /**
      * Page token
      * Defaults to: undefined
      * @type string
-     * @memberof LeadSourceRecurringExpensesApilistLeadSourceRecurringExpensesUsingGET
+     * @memberof LeadSourceRecurringExpensesApilistLeadSourceRecurringExpenses
      */
     pageToken?: string
 }
 
-export interface LeadSourceRecurringExpensesApiUpdateLeadSourceRecurringExpenseUsingPATCHRequest {
+export interface LeadSourceRecurringExpensesApiUpdateLeadSourceRecurringExpenseRequest {
     /**
      * The ID of the lead source this recurring expense belongs to
      * Defaults to: undefined
      * @type string
-     * @memberof LeadSourceRecurringExpensesApiupdateLeadSourceRecurringExpenseUsingPATCH
+     * @memberof LeadSourceRecurringExpensesApiupdateLeadSourceRecurringExpense
      */
     leadSourceId: string
     /**
      * The ID of a lead source recurring expense
      * Defaults to: undefined
      * @type string
-     * @memberof LeadSourceRecurringExpensesApiupdateLeadSourceRecurringExpenseUsingPATCH
+     * @memberof LeadSourceRecurringExpensesApiupdateLeadSourceRecurringExpense
      */
     leadSourceRecurringExpenseId: string
     /**
      * The request object to update a lead source recurring expense
      * @type LeadSourceRecurringExpenseUpdateRequest
-     * @memberof LeadSourceRecurringExpensesApiupdateLeadSourceRecurringExpenseUsingPATCH
+     * @memberof LeadSourceRecurringExpensesApiupdateLeadSourceRecurringExpense
      */
     leadSourceRecurringExpenseUpdateRequest: LeadSourceRecurringExpenseUpdateRequest
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
      * @type Array&lt;string&gt;
-     * @memberof LeadSourceRecurringExpensesApiupdateLeadSourceRecurringExpenseUsingPATCH
+     * @memberof LeadSourceRecurringExpensesApiupdateLeadSourceRecurringExpense
      */
     updateMask?: Array<string>
 }
@@ -4494,8 +3949,8 @@ export class ObjectLeadSourceRecurringExpensesApi {
      * Create a Lead Source Recurring Expense
      * @param param the request object
      */
-    public createLeadSourceRecurringExpenseUsingPOSTWithHttpInfo(param: LeadSourceRecurringExpensesApiCreateLeadSourceRecurringExpenseUsingPOSTRequest, options?: ConfigurationOptions): Promise<HttpInfo<LeadSourceRecurringExpense>> {
-        return this.api.createLeadSourceRecurringExpenseUsingPOSTWithHttpInfo(param.leadSourceId, param.createLeadSourceRecurringExpenseRequest,  options).toPromise();
+    public createLeadSourceRecurringExpenseWithHttpInfo(param: LeadSourceRecurringExpensesApiCreateLeadSourceRecurringExpenseRequest, options?: ConfigurationOptions): Promise<HttpInfo<LeadSourceRecurringExpense>> {
+        return this.api.createLeadSourceRecurringExpenseWithHttpInfo(param.leadSourceId, param.createLeadSourceRecurringExpenseRequest,  options).toPromise();
     }
 
     /**
@@ -4503,8 +3958,8 @@ export class ObjectLeadSourceRecurringExpensesApi {
      * Create a Lead Source Recurring Expense
      * @param param the request object
      */
-    public createLeadSourceRecurringExpenseUsingPOST(param: LeadSourceRecurringExpensesApiCreateLeadSourceRecurringExpenseUsingPOSTRequest, options?: ConfigurationOptions): Promise<LeadSourceRecurringExpense> {
-        return this.api.createLeadSourceRecurringExpenseUsingPOST(param.leadSourceId, param.createLeadSourceRecurringExpenseRequest,  options).toPromise();
+    public createLeadSourceRecurringExpense(param: LeadSourceRecurringExpensesApiCreateLeadSourceRecurringExpenseRequest, options?: ConfigurationOptions): Promise<LeadSourceRecurringExpense> {
+        return this.api.createLeadSourceRecurringExpense(param.leadSourceId, param.createLeadSourceRecurringExpenseRequest,  options).toPromise();
     }
 
     /**
@@ -4512,8 +3967,8 @@ export class ObjectLeadSourceRecurringExpensesApi {
      * Delete a Lead Source Recurring Expense
      * @param param the request object
      */
-    public deleteLeadSourceRecurringExpenseUsingDELETEWithHttpInfo(param: LeadSourceRecurringExpensesApiDeleteLeadSourceRecurringExpenseUsingDELETERequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api.deleteLeadSourceRecurringExpenseUsingDELETEWithHttpInfo(param.leadSourceId, param.leadSourceRecurringExpenseId,  options).toPromise();
+    public deleteLeadSourceRecurringExpenseWithHttpInfo(param: LeadSourceRecurringExpensesApiDeleteLeadSourceRecurringExpenseRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteLeadSourceRecurringExpenseWithHttpInfo(param.leadSourceId, param.leadSourceRecurringExpenseId,  options).toPromise();
     }
 
     /**
@@ -4521,8 +3976,8 @@ export class ObjectLeadSourceRecurringExpensesApi {
      * Delete a Lead Source Recurring Expense
      * @param param the request object
      */
-    public deleteLeadSourceRecurringExpenseUsingDELETE(param: LeadSourceRecurringExpensesApiDeleteLeadSourceRecurringExpenseUsingDELETERequest, options?: ConfigurationOptions): Promise<void> {
-        return this.api.deleteLeadSourceRecurringExpenseUsingDELETE(param.leadSourceId, param.leadSourceRecurringExpenseId,  options).toPromise();
+    public deleteLeadSourceRecurringExpense(param: LeadSourceRecurringExpensesApiDeleteLeadSourceRecurringExpenseRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteLeadSourceRecurringExpense(param.leadSourceId, param.leadSourceRecurringExpenseId,  options).toPromise();
     }
 
     /**
@@ -4530,8 +3985,8 @@ export class ObjectLeadSourceRecurringExpensesApi {
      * Retrieve a Lead Source Recurring Expense
      * @param param the request object
      */
-    public getLeadSourceRecurringExpenseUsingGETWithHttpInfo(param: LeadSourceRecurringExpensesApiGetLeadSourceRecurringExpenseUsingGETRequest, options?: ConfigurationOptions): Promise<HttpInfo<LeadSourceRecurringExpense>> {
-        return this.api.getLeadSourceRecurringExpenseUsingGETWithHttpInfo(param.leadSourceId, param.leadSourceRecurringExpenseId,  options).toPromise();
+    public getLeadSourceRecurringExpenseWithHttpInfo(param: LeadSourceRecurringExpensesApiGetLeadSourceRecurringExpenseRequest, options?: ConfigurationOptions): Promise<HttpInfo<LeadSourceRecurringExpense>> {
+        return this.api.getLeadSourceRecurringExpenseWithHttpInfo(param.leadSourceId, param.leadSourceRecurringExpenseId,  options).toPromise();
     }
 
     /**
@@ -4539,8 +3994,8 @@ export class ObjectLeadSourceRecurringExpensesApi {
      * Retrieve a Lead Source Recurring Expense
      * @param param the request object
      */
-    public getLeadSourceRecurringExpenseUsingGET(param: LeadSourceRecurringExpensesApiGetLeadSourceRecurringExpenseUsingGETRequest, options?: ConfigurationOptions): Promise<LeadSourceRecurringExpense> {
-        return this.api.getLeadSourceRecurringExpenseUsingGET(param.leadSourceId, param.leadSourceRecurringExpenseId,  options).toPromise();
+    public getLeadSourceRecurringExpense(param: LeadSourceRecurringExpensesApiGetLeadSourceRecurringExpenseRequest, options?: ConfigurationOptions): Promise<LeadSourceRecurringExpense> {
+        return this.api.getLeadSourceRecurringExpense(param.leadSourceId, param.leadSourceRecurringExpenseId,  options).toPromise();
     }
 
     /**
@@ -4548,8 +4003,8 @@ export class ObjectLeadSourceRecurringExpensesApi {
      * Retrieves a list of expenses incurred from a recurring expense
      * @param param the request object
      */
-    public listExpensesIncurredFromLeadSourceRecurringExpenseUsingGETWithHttpInfo(param: LeadSourceRecurringExpensesApiListExpensesIncurredFromLeadSourceRecurringExpenseUsingGETRequest, options?: ConfigurationOptions): Promise<HttpInfo<ListLeadSourceExpensesResponse>> {
-        return this.api.listExpensesIncurredFromLeadSourceRecurringExpenseUsingGETWithHttpInfo(param.leadSourceId, param.leadSourceRecurringExpenseId, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listExpensesIncurredFromLeadSourceRecurringExpenseWithHttpInfo(param: LeadSourceRecurringExpensesApiListExpensesIncurredFromLeadSourceRecurringExpenseRequest, options?: ConfigurationOptions): Promise<HttpInfo<ListLeadSourceExpensesResponse>> {
+        return this.api.listExpensesIncurredFromLeadSourceRecurringExpenseWithHttpInfo(param.leadSourceId, param.leadSourceRecurringExpenseId, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -4557,8 +4012,8 @@ export class ObjectLeadSourceRecurringExpensesApi {
      * Retrieves a list of expenses incurred from a recurring expense
      * @param param the request object
      */
-    public listExpensesIncurredFromLeadSourceRecurringExpenseUsingGET(param: LeadSourceRecurringExpensesApiListExpensesIncurredFromLeadSourceRecurringExpenseUsingGETRequest, options?: ConfigurationOptions): Promise<ListLeadSourceExpensesResponse> {
-        return this.api.listExpensesIncurredFromLeadSourceRecurringExpenseUsingGET(param.leadSourceId, param.leadSourceRecurringExpenseId, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listExpensesIncurredFromLeadSourceRecurringExpense(param: LeadSourceRecurringExpensesApiListExpensesIncurredFromLeadSourceRecurringExpenseRequest, options?: ConfigurationOptions): Promise<ListLeadSourceExpensesResponse> {
+        return this.api.listExpensesIncurredFromLeadSourceRecurringExpense(param.leadSourceId, param.leadSourceRecurringExpenseId, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -4566,8 +4021,8 @@ export class ObjectLeadSourceRecurringExpensesApi {
      * Retrieves a list of lead source recurring expenses
      * @param param the request object
      */
-    public listLeadSourceRecurringExpensesUsingGETWithHttpInfo(param: LeadSourceRecurringExpensesApiListLeadSourceRecurringExpensesUsingGETRequest, options?: ConfigurationOptions): Promise<HttpInfo<ListLeadSourceRecurringExpensesResponse>> {
-        return this.api.listLeadSourceRecurringExpensesUsingGETWithHttpInfo(param.leadSourceId, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listLeadSourceRecurringExpensesWithHttpInfo(param: LeadSourceRecurringExpensesApiListLeadSourceRecurringExpensesRequest, options?: ConfigurationOptions): Promise<HttpInfo<ListLeadSourceRecurringExpensesResponse>> {
+        return this.api.listLeadSourceRecurringExpensesWithHttpInfo(param.leadSourceId, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -4575,8 +4030,8 @@ export class ObjectLeadSourceRecurringExpensesApi {
      * Retrieves a list of lead source recurring expenses
      * @param param the request object
      */
-    public listLeadSourceRecurringExpensesUsingGET(param: LeadSourceRecurringExpensesApiListLeadSourceRecurringExpensesUsingGETRequest, options?: ConfigurationOptions): Promise<ListLeadSourceRecurringExpensesResponse> {
-        return this.api.listLeadSourceRecurringExpensesUsingGET(param.leadSourceId, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listLeadSourceRecurringExpenses(param: LeadSourceRecurringExpensesApiListLeadSourceRecurringExpensesRequest, options?: ConfigurationOptions): Promise<ListLeadSourceRecurringExpensesResponse> {
+        return this.api.listLeadSourceRecurringExpenses(param.leadSourceId, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -4584,8 +4039,8 @@ export class ObjectLeadSourceRecurringExpensesApi {
      * Update a Lead Source Recurring Expense
      * @param param the request object
      */
-    public updateLeadSourceRecurringExpenseUsingPATCHWithHttpInfo(param: LeadSourceRecurringExpensesApiUpdateLeadSourceRecurringExpenseUsingPATCHRequest, options?: ConfigurationOptions): Promise<HttpInfo<LeadSourceRecurringExpense>> {
-        return this.api.updateLeadSourceRecurringExpenseUsingPATCHWithHttpInfo(param.leadSourceId, param.leadSourceRecurringExpenseId, param.leadSourceRecurringExpenseUpdateRequest, param.updateMask,  options).toPromise();
+    public updateLeadSourceRecurringExpenseWithHttpInfo(param: LeadSourceRecurringExpensesApiUpdateLeadSourceRecurringExpenseRequest, options?: ConfigurationOptions): Promise<HttpInfo<LeadSourceRecurringExpense>> {
+        return this.api.updateLeadSourceRecurringExpenseWithHttpInfo(param.leadSourceId, param.leadSourceRecurringExpenseId, param.leadSourceRecurringExpenseUpdateRequest, param.updateMask,  options).toPromise();
     }
 
     /**
@@ -4593,8 +4048,8 @@ export class ObjectLeadSourceRecurringExpensesApi {
      * Update a Lead Source Recurring Expense
      * @param param the request object
      */
-    public updateLeadSourceRecurringExpenseUsingPATCH(param: LeadSourceRecurringExpensesApiUpdateLeadSourceRecurringExpenseUsingPATCHRequest, options?: ConfigurationOptions): Promise<LeadSourceRecurringExpense> {
-        return this.api.updateLeadSourceRecurringExpenseUsingPATCH(param.leadSourceId, param.leadSourceRecurringExpenseId, param.leadSourceRecurringExpenseUpdateRequest, param.updateMask,  options).toPromise();
+    public updateLeadSourceRecurringExpense(param: LeadSourceRecurringExpensesApiUpdateLeadSourceRecurringExpenseRequest, options?: ConfigurationOptions): Promise<LeadSourceRecurringExpense> {
+        return this.api.updateLeadSourceRecurringExpense(param.leadSourceId, param.leadSourceRecurringExpenseId, param.leadSourceRecurringExpenseUpdateRequest, param.updateMask,  options).toPromise();
     }
 
 }
@@ -4602,48 +4057,48 @@ export class ObjectLeadSourceRecurringExpensesApi {
 import { ObservableLeadSourcesApi } from "./ObservableAPI";
 import { LeadSourcesApiRequestFactory, LeadSourcesApiResponseProcessor} from "../apis/LeadSourcesApi";
 
-export interface LeadSourcesApiCreateLeadSourceUsingPOSTRequest {
+export interface LeadSourcesApiCreateLeadSourceRequest {
     /**
      * The request object to create a new lead source
      * @type CreateLeadSourceRequest
-     * @memberof LeadSourcesApicreateLeadSourceUsingPOST
+     * @memberof LeadSourcesApicreateLeadSource
      */
     createLeadSourceRequest: CreateLeadSourceRequest
 }
 
-export interface LeadSourcesApiDeleteLeadSourceUsingDELETERequest {
+export interface LeadSourcesApiDeleteLeadSourceRequest {
     /**
      * The ID of a lead source
      * Defaults to: undefined
      * @type string
-     * @memberof LeadSourcesApideleteLeadSourceUsingDELETE
+     * @memberof LeadSourcesApideleteLeadSource
      */
     leadSourceId: string
 }
 
-export interface LeadSourcesApiGetLeadSourceUsingGETRequest {
+export interface LeadSourcesApiGetLeadSourceRequest {
     /**
      * The ID of a lead source
      * Defaults to: undefined
      * @type string
-     * @memberof LeadSourcesApigetLeadSourceUsingGET
+     * @memberof LeadSourcesApigetLeadSource
      */
     leadSourceId: string
 }
 
-export interface LeadSourcesApiListLeadSourcesUsingGETRequest {
+export interface LeadSourcesApiListLeadSourcesRequest {
     /**
      * Filter to apply, allowed fields are:  - (String) &#x60;name&#x60; - (String) &#x60;status&#x60; - (String) &#x60;lead_source_category_id&#x60; - (String) &#x60;vendor&#x60; - (String) &#x60;medium&#x60; - (String) &#x60;start_time&#x60; - (String) &#x60;end_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;name%3D%3Dexample&#x60; - &#x60;filter&#x3D;start_time%3D%3D2024-12-22T01:00:00.000Z&#x60;
      * Defaults to: undefined
      * @type string
-     * @memberof LeadSourcesApilistLeadSourcesUsingGET
+     * @memberof LeadSourcesApilistLeadSources
      */
     filter?: string
     /**
      * Attribute and direction to order items. One of the following fields:  - &#x60;name&#x60; - &#x60;status&#x60; - &#x60;vendor&#x60; - &#x60;medium&#x60; - &#x60;start_time&#x60; - &#x60;end_time&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions:  - &#x60;asc&#x60; - &#x60;desc&#x60;
      * Defaults to: undefined
      * @type string
-     * @memberof LeadSourcesApilistLeadSourcesUsingGET
+     * @memberof LeadSourcesApilistLeadSources
      */
     orderBy?: string
     /**
@@ -4652,37 +4107,37 @@ export interface LeadSourcesApiListLeadSourcesUsingGETRequest {
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
-     * @memberof LeadSourcesApilistLeadSourcesUsingGET
+     * @memberof LeadSourcesApilistLeadSources
      */
     pageSize?: number
     /**
      * Page token
      * Defaults to: undefined
      * @type string
-     * @memberof LeadSourcesApilistLeadSourcesUsingGET
+     * @memberof LeadSourcesApilistLeadSources
      */
     pageToken?: string
 }
 
-export interface LeadSourcesApiUpdateLeadSourceUsingPATCHRequest {
+export interface LeadSourcesApiUpdateLeadSourceRequest {
     /**
      * The ID of a lead source
      * Defaults to: undefined
      * @type string
-     * @memberof LeadSourcesApiupdateLeadSourceUsingPATCH
+     * @memberof LeadSourcesApiupdateLeadSource
      */
     leadSourceId: string
     /**
      * The request object to update a lead source
      * @type CreateLeadSourceRequest
-     * @memberof LeadSourcesApiupdateLeadSourceUsingPATCH
+     * @memberof LeadSourcesApiupdateLeadSource
      */
     createLeadSourceRequest: CreateLeadSourceRequest
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
      * @type Array&lt;string&gt;
-     * @memberof LeadSourcesApiupdateLeadSourceUsingPATCH
+     * @memberof LeadSourcesApiupdateLeadSource
      */
     updateMask?: Array<string>
 }
@@ -4699,8 +4154,8 @@ export class ObjectLeadSourcesApi {
      * Create a Lead Source
      * @param param the request object
      */
-    public createLeadSourceUsingPOSTWithHttpInfo(param: LeadSourcesApiCreateLeadSourceUsingPOSTRequest, options?: ConfigurationOptions): Promise<HttpInfo<LeadSource>> {
-        return this.api.createLeadSourceUsingPOSTWithHttpInfo(param.createLeadSourceRequest,  options).toPromise();
+    public createLeadSourceWithHttpInfo(param: LeadSourcesApiCreateLeadSourceRequest, options?: ConfigurationOptions): Promise<HttpInfo<LeadSource>> {
+        return this.api.createLeadSourceWithHttpInfo(param.createLeadSourceRequest,  options).toPromise();
     }
 
     /**
@@ -4708,8 +4163,8 @@ export class ObjectLeadSourcesApi {
      * Create a Lead Source
      * @param param the request object
      */
-    public createLeadSourceUsingPOST(param: LeadSourcesApiCreateLeadSourceUsingPOSTRequest, options?: ConfigurationOptions): Promise<LeadSource> {
-        return this.api.createLeadSourceUsingPOST(param.createLeadSourceRequest,  options).toPromise();
+    public createLeadSource(param: LeadSourcesApiCreateLeadSourceRequest, options?: ConfigurationOptions): Promise<LeadSource> {
+        return this.api.createLeadSource(param.createLeadSourceRequest,  options).toPromise();
     }
 
     /**
@@ -4717,8 +4172,8 @@ export class ObjectLeadSourcesApi {
      * Delete a Lead Source
      * @param param the request object
      */
-    public deleteLeadSourceUsingDELETEWithHttpInfo(param: LeadSourcesApiDeleteLeadSourceUsingDELETERequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api.deleteLeadSourceUsingDELETEWithHttpInfo(param.leadSourceId,  options).toPromise();
+    public deleteLeadSourceWithHttpInfo(param: LeadSourcesApiDeleteLeadSourceRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteLeadSourceWithHttpInfo(param.leadSourceId,  options).toPromise();
     }
 
     /**
@@ -4726,8 +4181,8 @@ export class ObjectLeadSourcesApi {
      * Delete a Lead Source
      * @param param the request object
      */
-    public deleteLeadSourceUsingDELETE(param: LeadSourcesApiDeleteLeadSourceUsingDELETERequest, options?: ConfigurationOptions): Promise<void> {
-        return this.api.deleteLeadSourceUsingDELETE(param.leadSourceId,  options).toPromise();
+    public deleteLeadSource(param: LeadSourcesApiDeleteLeadSourceRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteLeadSource(param.leadSourceId,  options).toPromise();
     }
 
     /**
@@ -4735,8 +4190,8 @@ export class ObjectLeadSourcesApi {
      * Retrieve a Lead Source
      * @param param the request object
      */
-    public getLeadSourceUsingGETWithHttpInfo(param: LeadSourcesApiGetLeadSourceUsingGETRequest, options?: ConfigurationOptions): Promise<HttpInfo<LeadSource>> {
-        return this.api.getLeadSourceUsingGETWithHttpInfo(param.leadSourceId,  options).toPromise();
+    public getLeadSourceWithHttpInfo(param: LeadSourcesApiGetLeadSourceRequest, options?: ConfigurationOptions): Promise<HttpInfo<LeadSource>> {
+        return this.api.getLeadSourceWithHttpInfo(param.leadSourceId,  options).toPromise();
     }
 
     /**
@@ -4744,8 +4199,8 @@ export class ObjectLeadSourcesApi {
      * Retrieve a Lead Source
      * @param param the request object
      */
-    public getLeadSourceUsingGET(param: LeadSourcesApiGetLeadSourceUsingGETRequest, options?: ConfigurationOptions): Promise<LeadSource> {
-        return this.api.getLeadSourceUsingGET(param.leadSourceId,  options).toPromise();
+    public getLeadSource(param: LeadSourcesApiGetLeadSourceRequest, options?: ConfigurationOptions): Promise<LeadSource> {
+        return this.api.getLeadSource(param.leadSourceId,  options).toPromise();
     }
 
     /**
@@ -4753,8 +4208,8 @@ export class ObjectLeadSourcesApi {
      * List Lead Sources
      * @param param the request object
      */
-    public listLeadSourcesUsingGETWithHttpInfo(param: LeadSourcesApiListLeadSourcesUsingGETRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListLeadSourcesResponse>> {
-        return this.api.listLeadSourcesUsingGETWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listLeadSourcesWithHttpInfo(param: LeadSourcesApiListLeadSourcesRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListLeadSourcesResponse>> {
+        return this.api.listLeadSourcesWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -4762,8 +4217,8 @@ export class ObjectLeadSourcesApi {
      * List Lead Sources
      * @param param the request object
      */
-    public listLeadSourcesUsingGET(param: LeadSourcesApiListLeadSourcesUsingGETRequest = {}, options?: ConfigurationOptions): Promise<ListLeadSourcesResponse> {
-        return this.api.listLeadSourcesUsingGET(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listLeadSources(param: LeadSourcesApiListLeadSourcesRequest = {}, options?: ConfigurationOptions): Promise<ListLeadSourcesResponse> {
+        return this.api.listLeadSources(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -4771,8 +4226,8 @@ export class ObjectLeadSourcesApi {
      * Update a Lead Source
      * @param param the request object
      */
-    public updateLeadSourceUsingPATCHWithHttpInfo(param: LeadSourcesApiUpdateLeadSourceUsingPATCHRequest, options?: ConfigurationOptions): Promise<HttpInfo<LeadSource>> {
-        return this.api.updateLeadSourceUsingPATCHWithHttpInfo(param.leadSourceId, param.createLeadSourceRequest, param.updateMask,  options).toPromise();
+    public updateLeadSourceWithHttpInfo(param: LeadSourcesApiUpdateLeadSourceRequest, options?: ConfigurationOptions): Promise<HttpInfo<LeadSource>> {
+        return this.api.updateLeadSourceWithHttpInfo(param.leadSourceId, param.createLeadSourceRequest, param.updateMask,  options).toPromise();
     }
 
     /**
@@ -4780,8 +4235,195 @@ export class ObjectLeadSourcesApi {
      * Update a Lead Source
      * @param param the request object
      */
-    public updateLeadSourceUsingPATCH(param: LeadSourcesApiUpdateLeadSourceUsingPATCHRequest, options?: ConfigurationOptions): Promise<LeadSource> {
-        return this.api.updateLeadSourceUsingPATCH(param.leadSourceId, param.createLeadSourceRequest, param.updateMask,  options).toPromise();
+    public updateLeadSource(param: LeadSourcesApiUpdateLeadSourceRequest, options?: ConfigurationOptions): Promise<LeadSource> {
+        return this.api.updateLeadSource(param.leadSourceId, param.createLeadSourceRequest, param.updateMask,  options).toPromise();
+    }
+
+}
+
+import { ObservableLocaleApi } from "./ObservableAPI";
+import { LocaleApiRequestFactory, LocaleApiResponseProcessor} from "../apis/LocaleApi";
+
+export interface LocaleApiGetCountryByCodeRequest {
+    /**
+     * The ISO 3166-2 alpha-2 code, alpha-3 code, or name of the country to be retrieved
+     * Defaults to: undefined
+     * @type string
+     * @memberof LocaleApigetCountryByCode
+     */
+    countryCode: string
+}
+
+export interface LocaleApiGetProvinceByCodeRequest {
+    /**
+     * The ISO 3166-1 alpha-2 code, alpha-3 code, or name of the country to be retrieved
+     * Defaults to: undefined
+     * @type string
+     * @memberof LocaleApigetProvinceByCode
+     */
+    countryCode: string
+    /**
+     * The ISO 3166-2 code or name of the province to be retrieved
+     * Defaults to: undefined
+     * @type string
+     * @memberof LocaleApigetProvinceByCode
+     */
+    provinceCode: string
+}
+
+export interface LocaleApiListCountriesRequest {
+}
+
+export interface LocaleApiListProvincesForCountryRequest {
+    /**
+     * country_code
+     * Defaults to: undefined
+     * @type string
+     * @memberof LocaleApilistProvincesForCountry
+     */
+    countryCode: string
+}
+
+export class ObjectLocaleApi {
+    private api: ObservableLocaleApi
+
+    public constructor(configuration: Configuration, requestFactory?: LocaleApiRequestFactory, responseProcessor?: LocaleApiResponseProcessor) {
+        this.api = new ObservableLocaleApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Gets a country by its code or name
+     * Get Country
+     * @param param the request object
+     */
+    public getCountryByCodeWithHttpInfo(param: LocaleApiGetCountryByCodeRequest, options?: ConfigurationOptions): Promise<HttpInfo<Country>> {
+        return this.api.getCountryByCodeWithHttpInfo(param.countryCode,  options).toPromise();
+    }
+
+    /**
+     * Gets a country by its code or name
+     * Get Country
+     * @param param the request object
+     */
+    public getCountryByCode(param: LocaleApiGetCountryByCodeRequest, options?: ConfigurationOptions): Promise<Country> {
+        return this.api.getCountryByCode(param.countryCode,  options).toPromise();
+    }
+
+    /**
+     * Get a province by its code or name
+     * Get Province
+     * @param param the request object
+     */
+    public getProvinceByCodeWithHttpInfo(param: LocaleApiGetProvinceByCodeRequest, options?: ConfigurationOptions): Promise<HttpInfo<Province>> {
+        return this.api.getProvinceByCodeWithHttpInfo(param.countryCode, param.provinceCode,  options).toPromise();
+    }
+
+    /**
+     * Get a province by its code or name
+     * Get Province
+     * @param param the request object
+     */
+    public getProvinceByCode(param: LocaleApiGetProvinceByCodeRequest, options?: ConfigurationOptions): Promise<Province> {
+        return this.api.getProvinceByCode(param.countryCode, param.provinceCode,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of countries
+     * List Countries
+     * @param param the request object
+     */
+    public listCountriesWithHttpInfo(param: LocaleApiListCountriesRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListCountriesResponse>> {
+        return this.api.listCountriesWithHttpInfo( options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of countries
+     * List Countries
+     * @param param the request object
+     */
+    public listCountries(param: LocaleApiListCountriesRequest = {}, options?: ConfigurationOptions): Promise<ListCountriesResponse> {
+        return this.api.listCountries( options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of provinces for a given country
+     * List a Country\'s Province
+     * @param param the request object
+     */
+    public listProvincesForCountryWithHttpInfo(param: LocaleApiListProvincesForCountryRequest, options?: ConfigurationOptions): Promise<HttpInfo<ListProvincesResponse>> {
+        return this.api.listProvincesForCountryWithHttpInfo(param.countryCode,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of provinces for a given country
+     * List a Country\'s Province
+     * @param param the request object
+     */
+    public listProvincesForCountry(param: LocaleApiListProvincesForCountryRequest, options?: ConfigurationOptions): Promise<ListProvincesResponse> {
+        return this.api.listProvincesForCountry(param.countryCode,  options).toPromise();
+    }
+
+}
+
+import { ObservableMerchantsApi } from "./ObservableAPI";
+import { MerchantsApiRequestFactory, MerchantsApiResponseProcessor} from "../apis/MerchantsApi";
+
+export interface MerchantsApiListMerchantsRequest {
+    /**
+     * Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - (String) &#x60;name&#x60; - (String) &#x60;type&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;id%3D%3D123&#x60; - &#x60;filter&#x3D;name%3D%3Dabc&#x60; - &#x60;filter&#x3D;id%3D%3D123%3Bname%3D%3Dabc&#x60; 
+     * Defaults to: undefined
+     * @type string
+     * @memberof MerchantsApilistMerchants
+     */
+    filter?: string
+    /**
+     * Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;name&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * Defaults to: undefined
+     * @type string
+     * @memberof MerchantsApilistMerchants
+     */
+    orderBy?: string
+    /**
+     * Total number of items to return per page
+     * Minimum: 1
+     * Maximum: 1000
+     * Defaults to: undefined
+     * @type number
+     * @memberof MerchantsApilistMerchants
+     */
+    pageSize?: number
+    /**
+     * Page token
+     * Defaults to: undefined
+     * @type string
+     * @memberof MerchantsApilistMerchants
+     */
+    pageToken?: string
+}
+
+export class ObjectMerchantsApi {
+    private api: ObservableMerchantsApi
+
+    public constructor(configuration: Configuration, requestFactory?: MerchantsApiRequestFactory, responseProcessor?: MerchantsApiResponseProcessor) {
+        this.api = new ObservableMerchantsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Retrieves a list of Merchant accounts
+     * List Merchant accounts
+     * @param param the request object
+     */
+    public listMerchantsWithHttpInfo(param: MerchantsApiListMerchantsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListMerchantsResponse>> {
+        return this.api.listMerchantsWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of Merchant accounts
+     * List Merchant accounts
+     * @param param the request object
+     */
+    public listMerchants(param: MerchantsApiListMerchantsRequest = {}, options?: ConfigurationOptions): Promise<ListMerchantsResponse> {
+        return this.api.listMerchants(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
 }
@@ -4789,78 +4431,78 @@ export class ObjectLeadSourcesApi {
 import { ObservableNoteApi } from "./ObservableAPI";
 import { NoteApiRequestFactory, NoteApiResponseProcessor} from "../apis/NoteApi";
 
-export interface NoteApiCreateNoteCustomFieldUsingPOST1Request {
-    /**
-     * customField
-     * @type CreateCustomFieldRequest
-     * @memberof NoteApicreateNoteCustomFieldUsingPOST1
-     */
-    createCustomFieldRequest: CreateCustomFieldRequest
-}
-
-export interface NoteApiCreateNoteUsingPOST1Request {
+export interface NoteApiCreateNoteRequest {
     /**
      * contact_id
      * Defaults to: undefined
      * @type string
-     * @memberof NoteApicreateNoteUsingPOST1
+     * @memberof NoteApicreateNote
      */
     contactId: string
     /**
      * request
      * @type CreateNoteRequest
-     * @memberof NoteApicreateNoteUsingPOST1
+     * @memberof NoteApicreateNote
      */
     createNoteRequest: CreateNoteRequest
 }
 
-export interface NoteApiDeleteNoteUsingDELETE1Request {
+export interface NoteApiCreateNoteCustomFieldRequest {
+    /**
+     * customField
+     * @type CreateCustomFieldRequest
+     * @memberof NoteApicreateNoteCustomField
+     */
+    createCustomFieldRequest: CreateCustomFieldRequest
+}
+
+export interface NoteApiDeleteNoteRequest {
     /**
      * contact_id
      * Defaults to: undefined
      * @type string
-     * @memberof NoteApideleteNoteUsingDELETE1
+     * @memberof NoteApideleteNote
      */
     contactId: string
     /**
      * note_id
      * Defaults to: undefined
      * @type string
-     * @memberof NoteApideleteNoteUsingDELETE1
+     * @memberof NoteApideleteNote
      */
     noteId: string
 }
 
-export interface NoteApiGetNoteUsingGET1Request {
+export interface NoteApiGetNoteRequest {
     /**
      * contact_id
      * Defaults to: undefined
      * @type string
-     * @memberof NoteApigetNoteUsingGET1
+     * @memberof NoteApigetNote
      */
     contactId: string
     /**
      * note_id
      * Defaults to: undefined
      * @type string
-     * @memberof NoteApigetNoteUsingGET1
+     * @memberof NoteApigetNote
      */
     noteId: string
 }
 
-export interface NoteApiListNoteTemplatesUsingGETRequest {
+export interface NoteApiListNoteTemplatesRequest {
     /**
      * Search filter to apply to results
      * Defaults to: undefined
      * @type string
-     * @memberof NoteApilistNoteTemplatesUsingGET
+     * @memberof NoteApilistNoteTemplates
      */
     filter?: string
     /**
      * Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60;
      * Defaults to: undefined
      * @type string
-     * @memberof NoteApilistNoteTemplatesUsingGET
+     * @memberof NoteApilistNoteTemplates
      */
     orderBy?: string
     /**
@@ -4869,38 +4511,38 @@ export interface NoteApiListNoteTemplatesUsingGETRequest {
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
-     * @memberof NoteApilistNoteTemplatesUsingGET
+     * @memberof NoteApilistNoteTemplates
      */
     pageSize?: number
     /**
      * Page token
      * Defaults to: undefined
      * @type string
-     * @memberof NoteApilistNoteTemplatesUsingGET
+     * @memberof NoteApilistNoteTemplates
      */
     pageToken?: string
 }
 
-export interface NoteApiListNotesUsingGET1Request {
+export interface NoteApiListNotesRequest {
     /**
      * contact_id
      * Defaults to: undefined
      * @type string
-     * @memberof NoteApilistNotesUsingGET1
+     * @memberof NoteApilistNotes
      */
     contactId: string
     /**
-     * Search filter to apply to results
+     * Filter to apply, allowed fields are: - (String) &#x60;assigned_to_user_id&#x60; - (String) &#x60;title&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;assigned_to_user_id%3D%3DUserId&#x60; - &#x60;filter&#x3D;title%3D%3DexpectedTitle&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; 
      * Defaults to: undefined
      * @type string
-     * @memberof NoteApilistNotesUsingGET1
+     * @memberof NoteApilistNotes
      */
     filter?: string
     /**
-     * Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60;
+     * Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * Defaults to: undefined
      * @type string
-     * @memberof NoteApilistNotesUsingGET1
+     * @memberof NoteApilistNotes
      */
     orderBy?: string
     /**
@@ -4909,70 +4551,70 @@ export interface NoteApiListNotesUsingGET1Request {
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
-     * @memberof NoteApilistNotesUsingGET1
+     * @memberof NoteApilistNotes
      */
     pageSize?: number
     /**
      * Page token
      * Defaults to: undefined
      * @type string
-     * @memberof NoteApilistNotesUsingGET1
+     * @memberof NoteApilistNotes
      */
     pageToken?: string
 }
 
-export interface NoteApiRetrieveNoteModelUsingGET1Request {
+export interface NoteApiRetrieveNoteModelRequest {
 }
 
-export interface NoteApiUpdateNoteUsingPATCHRequest {
+export interface NoteApiUpdateNoteRequest {
     /**
      * contact_id
      * Defaults to: undefined
      * @type string
-     * @memberof NoteApiupdateNoteUsingPATCH
+     * @memberof NoteApiupdateNote
      */
     contactId: string
     /**
      * note_id
      * Defaults to: undefined
      * @type string
-     * @memberof NoteApiupdateNoteUsingPATCH
+     * @memberof NoteApiupdateNote
      */
     noteId: string
     /**
      * updateNoteRequest
      * @type UpdateNoteRequest
-     * @memberof NoteApiupdateNoteUsingPATCH
+     * @memberof NoteApiupdateNote
      */
     updateNoteRequest: UpdateNoteRequest
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
      * @type Array&lt;string&gt;
-     * @memberof NoteApiupdateNoteUsingPATCH
+     * @memberof NoteApiupdateNote
      */
     updateMask?: Array<string>
 }
 
-export interface NoteApiUpdateNotesCustomFieldUsingPATCHRequest {
+export interface NoteApiUpdateNotesCustomFieldRequest {
     /**
      * custom_field_id
      * Defaults to: undefined
      * @type string
-     * @memberof NoteApiupdateNotesCustomFieldUsingPATCH
+     * @memberof NoteApiupdateNotesCustomField
      */
     customFieldId: string
     /**
      * request
      * @type UpdateCustomFieldMetaDataRequest
-     * @memberof NoteApiupdateNotesCustomFieldUsingPATCH
+     * @memberof NoteApiupdateNotesCustomField
      */
     updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
      * @type Array&lt;string&gt;
-     * @memberof NoteApiupdateNotesCustomFieldUsingPATCH
+     * @memberof NoteApiupdateNotesCustomField
      */
     updateMask?: Array<string>
 }
@@ -4985,21 +4627,12 @@ export class ObjectNoteApi {
     }
 
     /**
-     * Creates a custom field of the specified type and options to the Note object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
-     * Create a Custom Field
+     * Creates a new Note.
+     * Create a Note
      * @param param the request object
      */
-    public createNoteCustomFieldUsingPOST1WithHttpInfo(param: NoteApiCreateNoteCustomFieldUsingPOST1Request, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
-        return this.api.createNoteCustomFieldUsingPOST1WithHttpInfo(param.createCustomFieldRequest,  options).toPromise();
-    }
-
-    /**
-     * Creates a custom field of the specified type and options to the Note object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
-     * Create a Custom Field
-     * @param param the request object
-     */
-    public createNoteCustomFieldUsingPOST1(param: NoteApiCreateNoteCustomFieldUsingPOST1Request, options?: ConfigurationOptions): Promise<CustomFieldMetaData> {
-        return this.api.createNoteCustomFieldUsingPOST1(param.createCustomFieldRequest,  options).toPromise();
+    public createNoteWithHttpInfo(param: NoteApiCreateNoteRequest, options?: ConfigurationOptions): Promise<HttpInfo<Note>> {
+        return this.api.createNoteWithHttpInfo(param.contactId, param.createNoteRequest,  options).toPromise();
     }
 
     /**
@@ -5007,17 +4640,26 @@ export class ObjectNoteApi {
      * Create a Note
      * @param param the request object
      */
-    public createNoteUsingPOST1WithHttpInfo(param: NoteApiCreateNoteUsingPOST1Request, options?: ConfigurationOptions): Promise<HttpInfo<Note>> {
-        return this.api.createNoteUsingPOST1WithHttpInfo(param.contactId, param.createNoteRequest,  options).toPromise();
+    public createNote(param: NoteApiCreateNoteRequest, options?: ConfigurationOptions): Promise<Note> {
+        return this.api.createNote(param.contactId, param.createNoteRequest,  options).toPromise();
     }
 
     /**
-     * Creates a new Note.
-     * Create a Note
+     * Creates a custom field of the specified type and options to the Note object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+     * Create a Custom Field
      * @param param the request object
      */
-    public createNoteUsingPOST1(param: NoteApiCreateNoteUsingPOST1Request, options?: ConfigurationOptions): Promise<Note> {
-        return this.api.createNoteUsingPOST1(param.contactId, param.createNoteRequest,  options).toPromise();
+    public createNoteCustomFieldWithHttpInfo(param: NoteApiCreateNoteCustomFieldRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
+        return this.api.createNoteCustomFieldWithHttpInfo(param.createCustomFieldRequest,  options).toPromise();
+    }
+
+    /**
+     * Creates a custom field of the specified type and options to the Note object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+     * Create a Custom Field
+     * @param param the request object
+     */
+    public createNoteCustomField(param: NoteApiCreateNoteCustomFieldRequest, options?: ConfigurationOptions): Promise<CustomFieldMetaData> {
+        return this.api.createNoteCustomField(param.createCustomFieldRequest,  options).toPromise();
     }
 
     /**
@@ -5025,8 +4667,8 @@ export class ObjectNoteApi {
      * Delete a Note
      * @param param the request object
      */
-    public deleteNoteUsingDELETE1WithHttpInfo(param: NoteApiDeleteNoteUsingDELETE1Request, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api.deleteNoteUsingDELETE1WithHttpInfo(param.contactId, param.noteId,  options).toPromise();
+    public deleteNoteWithHttpInfo(param: NoteApiDeleteNoteRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteNoteWithHttpInfo(param.contactId, param.noteId,  options).toPromise();
     }
 
     /**
@@ -5034,8 +4676,8 @@ export class ObjectNoteApi {
      * Delete a Note
      * @param param the request object
      */
-    public deleteNoteUsingDELETE1(param: NoteApiDeleteNoteUsingDELETE1Request, options?: ConfigurationOptions): Promise<void> {
-        return this.api.deleteNoteUsingDELETE1(param.contactId, param.noteId,  options).toPromise();
+    public deleteNote(param: NoteApiDeleteNoteRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteNote(param.contactId, param.noteId,  options).toPromise();
     }
 
     /**
@@ -5043,8 +4685,8 @@ export class ObjectNoteApi {
      * Retrieve a Note
      * @param param the request object
      */
-    public getNoteUsingGET1WithHttpInfo(param: NoteApiGetNoteUsingGET1Request, options?: ConfigurationOptions): Promise<HttpInfo<GetNoteResponse>> {
-        return this.api.getNoteUsingGET1WithHttpInfo(param.contactId, param.noteId,  options).toPromise();
+    public getNoteWithHttpInfo(param: NoteApiGetNoteRequest, options?: ConfigurationOptions): Promise<HttpInfo<GetNoteResponse>> {
+        return this.api.getNoteWithHttpInfo(param.contactId, param.noteId,  options).toPromise();
     }
 
     /**
@@ -5052,8 +4694,8 @@ export class ObjectNoteApi {
      * Retrieve a Note
      * @param param the request object
      */
-    public getNoteUsingGET1(param: NoteApiGetNoteUsingGET1Request, options?: ConfigurationOptions): Promise<GetNoteResponse> {
-        return this.api.getNoteUsingGET1(param.contactId, param.noteId,  options).toPromise();
+    public getNote(param: NoteApiGetNoteRequest, options?: ConfigurationOptions): Promise<GetNoteResponse> {
+        return this.api.getNote(param.contactId, param.noteId,  options).toPromise();
     }
 
     /**
@@ -5061,8 +4703,8 @@ export class ObjectNoteApi {
      * Retrieve Note Templates
      * @param param the request object
      */
-    public listNoteTemplatesUsingGETWithHttpInfo(param: NoteApiListNoteTemplatesUsingGETRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListNoteTemplateResponse>> {
-        return this.api.listNoteTemplatesUsingGETWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listNoteTemplatesWithHttpInfo(param: NoteApiListNoteTemplatesRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListNoteTemplateResponse>> {
+        return this.api.listNoteTemplatesWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -5070,8 +4712,8 @@ export class ObjectNoteApi {
      * Retrieve Note Templates
      * @param param the request object
      */
-    public listNoteTemplatesUsingGET(param: NoteApiListNoteTemplatesUsingGETRequest = {}, options?: ConfigurationOptions): Promise<ListNoteTemplateResponse> {
-        return this.api.listNoteTemplatesUsingGET(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listNoteTemplates(param: NoteApiListNoteTemplatesRequest = {}, options?: ConfigurationOptions): Promise<ListNoteTemplateResponse> {
+        return this.api.listNoteTemplates(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -5079,8 +4721,8 @@ export class ObjectNoteApi {
      * List Notes
      * @param param the request object
      */
-    public listNotesUsingGET1WithHttpInfo(param: NoteApiListNotesUsingGET1Request, options?: ConfigurationOptions): Promise<HttpInfo<ListNotesResponse>> {
-        return this.api.listNotesUsingGET1WithHttpInfo(param.contactId, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listNotesWithHttpInfo(param: NoteApiListNotesRequest, options?: ConfigurationOptions): Promise<HttpInfo<ListNotesResponse>> {
+        return this.api.listNotesWithHttpInfo(param.contactId, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -5088,8 +4730,8 @@ export class ObjectNoteApi {
      * List Notes
      * @param param the request object
      */
-    public listNotesUsingGET1(param: NoteApiListNotesUsingGET1Request, options?: ConfigurationOptions): Promise<ListNotesResponse> {
-        return this.api.listNotesUsingGET1(param.contactId, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listNotes(param: NoteApiListNotesRequest, options?: ConfigurationOptions): Promise<ListNotesResponse> {
+        return this.api.listNotes(param.contactId, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -5097,8 +4739,8 @@ export class ObjectNoteApi {
      * Retrieve Note Model
      * @param param the request object
      */
-    public retrieveNoteModelUsingGET1WithHttpInfo(param: NoteApiRetrieveNoteModelUsingGET1Request = {}, options?: ConfigurationOptions): Promise<HttpInfo<ObjectModel>> {
-        return this.api.retrieveNoteModelUsingGET1WithHttpInfo( options).toPromise();
+    public retrieveNoteModelWithHttpInfo(param: NoteApiRetrieveNoteModelRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ObjectModel>> {
+        return this.api.retrieveNoteModelWithHttpInfo( options).toPromise();
     }
 
     /**
@@ -5106,8 +4748,8 @@ export class ObjectNoteApi {
      * Retrieve Note Model
      * @param param the request object
      */
-    public retrieveNoteModelUsingGET1(param: NoteApiRetrieveNoteModelUsingGET1Request = {}, options?: ConfigurationOptions): Promise<ObjectModel> {
-        return this.api.retrieveNoteModelUsingGET1( options).toPromise();
+    public retrieveNoteModel(param: NoteApiRetrieveNoteModelRequest = {}, options?: ConfigurationOptions): Promise<ObjectModel> {
+        return this.api.retrieveNoteModel( options).toPromise();
     }
 
     /**
@@ -5115,8 +4757,8 @@ export class ObjectNoteApi {
      * Update a Note
      * @param param the request object
      */
-    public updateNoteUsingPATCHWithHttpInfo(param: NoteApiUpdateNoteUsingPATCHRequest, options?: ConfigurationOptions): Promise<HttpInfo<UpdateNoteResponse>> {
-        return this.api.updateNoteUsingPATCHWithHttpInfo(param.contactId, param.noteId, param.updateNoteRequest, param.updateMask,  options).toPromise();
+    public updateNoteWithHttpInfo(param: NoteApiUpdateNoteRequest, options?: ConfigurationOptions): Promise<HttpInfo<UpdateNoteResponse>> {
+        return this.api.updateNoteWithHttpInfo(param.contactId, param.noteId, param.updateNoteRequest, param.updateMask,  options).toPromise();
     }
 
     /**
@@ -5124,8 +4766,8 @@ export class ObjectNoteApi {
      * Update a Note
      * @param param the request object
      */
-    public updateNoteUsingPATCH(param: NoteApiUpdateNoteUsingPATCHRequest, options?: ConfigurationOptions): Promise<UpdateNoteResponse> {
-        return this.api.updateNoteUsingPATCH(param.contactId, param.noteId, param.updateNoteRequest, param.updateMask,  options).toPromise();
+    public updateNote(param: NoteApiUpdateNoteRequest, options?: ConfigurationOptions): Promise<UpdateNoteResponse> {
+        return this.api.updateNote(param.contactId, param.noteId, param.updateNoteRequest, param.updateMask,  options).toPromise();
     }
 
     /**
@@ -5133,8 +4775,8 @@ export class ObjectNoteApi {
      * Update a Custom Field
      * @param param the request object
      */
-    public updateNotesCustomFieldUsingPATCHWithHttpInfo(param: NoteApiUpdateNotesCustomFieldUsingPATCHRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
-        return this.api.updateNotesCustomFieldUsingPATCHWithHttpInfo(param.customFieldId, param.updateCustomFieldMetaDataRequest, param.updateMask,  options).toPromise();
+    public updateNotesCustomFieldWithHttpInfo(param: NoteApiUpdateNotesCustomFieldRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
+        return this.api.updateNotesCustomFieldWithHttpInfo(param.customFieldId, param.updateCustomFieldMetaDataRequest, param.updateMask,  options).toPromise();
     }
 
     /**
@@ -5142,8 +4784,8 @@ export class ObjectNoteApi {
      * Update a Custom Field
      * @param param the request object
      */
-    public updateNotesCustomFieldUsingPATCH(param: NoteApiUpdateNotesCustomFieldUsingPATCHRequest, options?: ConfigurationOptions): Promise<CustomFieldMetaData> {
-        return this.api.updateNotesCustomFieldUsingPATCH(param.customFieldId, param.updateCustomFieldMetaDataRequest, param.updateMask,  options).toPromise();
+    public updateNotesCustomField(param: NoteApiUpdateNotesCustomFieldRequest, options?: ConfigurationOptions): Promise<CustomFieldMetaData> {
+        return this.api.updateNotesCustomField(param.customFieldId, param.updateCustomFieldMetaDataRequest, param.updateMask,  options).toPromise();
     }
 
 }
@@ -5151,93 +4793,93 @@ export class ObjectNoteApi {
 import { ObservableOpportunityApi } from "./ObservableAPI";
 import { OpportunityApiRequestFactory, OpportunityApiResponseProcessor} from "../apis/OpportunityApi";
 
-export interface OpportunityApiCreateOpportunityCustomFieldsUsingPOSTRequest {
-    /**
-     * customField
-     * @type CreateCustomFieldRequest
-     * @memberof OpportunityApicreateOpportunityCustomFieldsUsingPOST
-     */
-    createCustomFieldRequest: CreateCustomFieldRequest
-}
-
-export interface OpportunityApiCreateOpportunityStageUsingPOSTRequest {
-    /**
-     * opportunity
-     * @type CreateOpportunityStageRequest
-     * @memberof OpportunityApicreateOpportunityStageUsingPOST
-     */
-    createOpportunityStageRequest?: CreateOpportunityStageRequest
-}
-
-export interface OpportunityApiCreateOpportunityUsingPOST1Request {
+export interface OpportunityApiCreateOpportunityRequest {
     /**
      * opportunity
      * @type CreateOpportunityRequest
-     * @memberof OpportunityApicreateOpportunityUsingPOST1
+     * @memberof OpportunityApicreateOpportunity
      */
     createOpportunityRequest?: CreateOpportunityRequest
 }
 
-export interface OpportunityApiDeleteOpportunityStageUsingDELETERequest {
+export interface OpportunityApiCreateOpportunityCustomFieldsRequest {
     /**
-     * stage_id
-     * Defaults to: undefined
-     * @type string
-     * @memberof OpportunityApideleteOpportunityStageUsingDELETE
+     * customField
+     * @type CreateCustomFieldRequest
+     * @memberof OpportunityApicreateOpportunityCustomFields
      */
-    stageId: string
+    createCustomFieldRequest: CreateCustomFieldRequest
 }
 
-export interface OpportunityApiDeleteOpportunityUsingDELETERequest {
+export interface OpportunityApiCreateOpportunityStageRequest {
     /**
-     * opportunity_id
-     * Defaults to: undefined
-     * @type string
-     * @memberof OpportunityApideleteOpportunityUsingDELETE
+     * opportunity
+     * @type CreateOpportunityStageRequest
+     * @memberof OpportunityApicreateOpportunityStage
      */
-    opportunityId: string
+    createOpportunityStageRequest?: CreateOpportunityStageRequest
 }
 
-export interface OpportunityApiGetOpportunityStageUsingGETRequest {
-    /**
-     * stage_id
-     * Defaults to: undefined
-     * @type string
-     * @memberof OpportunityApigetOpportunityStageUsingGET
-     */
-    stageId: string
-}
-
-export interface OpportunityApiGetOpportunityUsingGET1Request {
+export interface OpportunityApiDeleteOpportunityRequest {
     /**
      * opportunity_id
      * Defaults to: undefined
      * @type string
-     * @memberof OpportunityApigetOpportunityUsingGET1
+     * @memberof OpportunityApideleteOpportunity
      */
     opportunityId: string
 }
 
-export interface OpportunityApiListOpportunitiesUsingGET1Request {
+export interface OpportunityApiDeleteOpportunityStageRequest {
+    /**
+     * stage_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof OpportunityApideleteOpportunityStage
+     */
+    stageId: string
+}
+
+export interface OpportunityApiGetOpportunityRequest {
+    /**
+     * opportunity_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof OpportunityApigetOpportunity
+     */
+    opportunityId: string
+}
+
+export interface OpportunityApiGetOpportunityStageRequest {
+    /**
+     * stage_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof OpportunityApigetOpportunityStage
+     */
+    stageId: string
+}
+
+export interface OpportunityApiListOpportunitiesRequest {
     /**
      * fields
      * Defaults to: undefined
      * @type Array&lt;string&gt;
-     * @memberof OpportunityApilistOpportunitiesUsingGET1
+     * @memberof OpportunityApilistOpportunities
      */
     fields?: Array<string>
     /**
      * Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; 
      * Defaults to: undefined
      * @type string
-     * @memberof OpportunityApilistOpportunitiesUsingGET1
+     * @memberof OpportunityApilistOpportunities
      */
     filter?: string
     /**
      * Attribute and direction to opportunities items. One of the following fields: - &#x60;next_action_time&#x60; - &#x60;contact_name&#x60; - &#x60;opportunity_name&#x60; - &#x60;created_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * Defaults to: undefined
      * @type string
-     * @memberof OpportunityApilistOpportunitiesUsingGET1
+     * @memberof OpportunityApilistOpportunities
      */
     orderBy?: string
     /**
@@ -5246,31 +4888,31 @@ export interface OpportunityApiListOpportunitiesUsingGET1Request {
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
-     * @memberof OpportunityApilistOpportunitiesUsingGET1
+     * @memberof OpportunityApilistOpportunities
      */
     pageSize?: number
     /**
      * Page token
      * Defaults to: undefined
      * @type string
-     * @memberof OpportunityApilistOpportunitiesUsingGET1
+     * @memberof OpportunityApilistOpportunities
      */
     pageToken?: string
 }
 
-export interface OpportunityApiListOpportunityStagesUsingGETRequest {
+export interface OpportunityApiListOpportunityStagesRequest {
     /**
      * Search filter to apply to results
      * Defaults to: undefined
      * @type string
-     * @memberof OpportunityApilistOpportunityStagesUsingGET
+     * @memberof OpportunityApilistOpportunityStages
      */
     filter?: string
     /**
      * Attribute and direction to order stage items. One of the following fields: - &#x60;stage_order&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * Defaults to: undefined
      * @type string
-     * @memberof OpportunityApilistOpportunityStagesUsingGET
+     * @memberof OpportunityApilistOpportunityStages
      */
     orderBy?: string
     /**
@@ -5279,83 +4921,83 @@ export interface OpportunityApiListOpportunityStagesUsingGETRequest {
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
-     * @memberof OpportunityApilistOpportunityStagesUsingGET
+     * @memberof OpportunityApilistOpportunityStages
      */
     pageSize?: number
     /**
      * Page token
      * Defaults to: undefined
      * @type string
-     * @memberof OpportunityApilistOpportunityStagesUsingGET
+     * @memberof OpportunityApilistOpportunityStages
      */
     pageToken?: string
 }
 
-export interface OpportunityApiUpdateOpportunityCustomFieldUsingPATCHRequest {
-    /**
-     * custom_field_id
-     * Defaults to: undefined
-     * @type string
-     * @memberof OpportunityApiupdateOpportunityCustomFieldUsingPATCH
-     */
-    customFieldId: string
-    /**
-     * request
-     * @type UpdateCustomFieldMetaDataRequest
-     * @memberof OpportunityApiupdateOpportunityCustomFieldUsingPATCH
-     */
-    updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest
-    /**
-     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-     * Defaults to: undefined
-     * @type Array&lt;string&gt;
-     * @memberof OpportunityApiupdateOpportunityCustomFieldUsingPATCH
-     */
-    updateMask?: Array<string>
-}
-
-export interface OpportunityApiUpdateOpportunityStageUsingPATCHRequest {
-    /**
-     * stage_id
-     * Defaults to: undefined
-     * @type string
-     * @memberof OpportunityApiupdateOpportunityStageUsingPATCH
-     */
-    stageId: string
-    /**
-     * request
-     * @type UpdateOpportunityStageRequest
-     * @memberof OpportunityApiupdateOpportunityStageUsingPATCH
-     */
-    updateOpportunityStageRequest: UpdateOpportunityStageRequest
-    /**
-     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-     * Defaults to: undefined
-     * @type Array&lt;string&gt;
-     * @memberof OpportunityApiupdateOpportunityStageUsingPATCH
-     */
-    updateMask?: Array<string>
-}
-
-export interface OpportunityApiUpdateOpportunityUsingPATCHRequest {
+export interface OpportunityApiUpdateOpportunityRequest {
     /**
      * opportunity_id
      * Defaults to: undefined
      * @type string
-     * @memberof OpportunityApiupdateOpportunityUsingPATCH
+     * @memberof OpportunityApiupdateOpportunity
      */
     opportunityId: string
     /**
      * request
      * @type UpdateOpportunityRequestV2
-     * @memberof OpportunityApiupdateOpportunityUsingPATCH
+     * @memberof OpportunityApiupdateOpportunity
      */
     updateOpportunityRequestV2: UpdateOpportunityRequestV2
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
      * @type Array&lt;string&gt;
-     * @memberof OpportunityApiupdateOpportunityUsingPATCH
+     * @memberof OpportunityApiupdateOpportunity
+     */
+    updateMask?: Array<string>
+}
+
+export interface OpportunityApiUpdateOpportunityCustomFieldRequest {
+    /**
+     * custom_field_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof OpportunityApiupdateOpportunityCustomField
+     */
+    customFieldId: string
+    /**
+     * request
+     * @type UpdateCustomFieldMetaDataRequest
+     * @memberof OpportunityApiupdateOpportunityCustomField
+     */
+    updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest
+    /**
+     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * Defaults to: undefined
+     * @type Array&lt;string&gt;
+     * @memberof OpportunityApiupdateOpportunityCustomField
+     */
+    updateMask?: Array<string>
+}
+
+export interface OpportunityApiUpdateOpportunityStageRequest {
+    /**
+     * stage_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof OpportunityApiupdateOpportunityStage
+     */
+    stageId: string
+    /**
+     * request
+     * @type UpdateOpportunityStageRequest
+     * @memberof OpportunityApiupdateOpportunityStage
+     */
+    updateOpportunityStageRequest: UpdateOpportunityStageRequest
+    /**
+     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * Defaults to: undefined
+     * @type Array&lt;string&gt;
+     * @memberof OpportunityApiupdateOpportunityStage
      */
     updateMask?: Array<string>
 }
@@ -5368,39 +5010,12 @@ export class ObjectOpportunityApi {
     }
 
     /**
-     * Creates a custom field of the specified type and options to the Opportunity object
-     * Create an Opportunity Custom Field
+     * Creates a new opportunity as the authenticated user.
+     * Create an Opportunity
      * @param param the request object
      */
-    public createOpportunityCustomFieldsUsingPOSTWithHttpInfo(param: OpportunityApiCreateOpportunityCustomFieldsUsingPOSTRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
-        return this.api.createOpportunityCustomFieldsUsingPOSTWithHttpInfo(param.createCustomFieldRequest,  options).toPromise();
-    }
-
-    /**
-     * Creates a custom field of the specified type and options to the Opportunity object
-     * Create an Opportunity Custom Field
-     * @param param the request object
-     */
-    public createOpportunityCustomFieldsUsingPOST(param: OpportunityApiCreateOpportunityCustomFieldsUsingPOSTRequest, options?: ConfigurationOptions): Promise<CustomFieldMetaData> {
-        return this.api.createOpportunityCustomFieldsUsingPOST(param.createCustomFieldRequest,  options).toPromise();
-    }
-
-    /**
-     * Creates a new Opportunity Stage
-     * Create an Opportunity Stage
-     * @param param the request object
-     */
-    public createOpportunityStageUsingPOSTWithHttpInfo(param: OpportunityApiCreateOpportunityStageUsingPOSTRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<RestOpportunityStage>> {
-        return this.api.createOpportunityStageUsingPOSTWithHttpInfo(param.createOpportunityStageRequest,  options).toPromise();
-    }
-
-    /**
-     * Creates a new Opportunity Stage
-     * Create an Opportunity Stage
-     * @param param the request object
-     */
-    public createOpportunityStageUsingPOST(param: OpportunityApiCreateOpportunityStageUsingPOSTRequest = {}, options?: ConfigurationOptions): Promise<RestOpportunityStage> {
-        return this.api.createOpportunityStageUsingPOST(param.createOpportunityStageRequest,  options).toPromise();
+    public createOpportunityWithHttpInfo(param: OpportunityApiCreateOpportunityRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<RestV2Opportunity>> {
+        return this.api.createOpportunityWithHttpInfo(param.createOpportunityRequest,  options).toPromise();
     }
 
     /**
@@ -5408,35 +5023,44 @@ export class ObjectOpportunityApi {
      * Create an Opportunity
      * @param param the request object
      */
-    public createOpportunityUsingPOST1WithHttpInfo(param: OpportunityApiCreateOpportunityUsingPOST1Request = {}, options?: ConfigurationOptions): Promise<HttpInfo<RestV2Opportunity>> {
-        return this.api.createOpportunityUsingPOST1WithHttpInfo(param.createOpportunityRequest,  options).toPromise();
+    public createOpportunity(param: OpportunityApiCreateOpportunityRequest = {}, options?: ConfigurationOptions): Promise<RestV2Opportunity> {
+        return this.api.createOpportunity(param.createOpportunityRequest,  options).toPromise();
     }
 
     /**
-     * Creates a new opportunity as the authenticated user.
-     * Create an Opportunity
+     * Creates a custom field of the specified type and options to the Opportunity object
+     * Create an Opportunity Custom Field
      * @param param the request object
      */
-    public createOpportunityUsingPOST1(param: OpportunityApiCreateOpportunityUsingPOST1Request = {}, options?: ConfigurationOptions): Promise<RestV2Opportunity> {
-        return this.api.createOpportunityUsingPOST1(param.createOpportunityRequest,  options).toPromise();
+    public createOpportunityCustomFieldsWithHttpInfo(param: OpportunityApiCreateOpportunityCustomFieldsRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
+        return this.api.createOpportunityCustomFieldsWithHttpInfo(param.createCustomFieldRequest,  options).toPromise();
     }
 
     /**
-     * Deletes the specified Opportunity Stage
-     * Delete an Opportunity Stage
+     * Creates a custom field of the specified type and options to the Opportunity object
+     * Create an Opportunity Custom Field
      * @param param the request object
      */
-    public deleteOpportunityStageUsingDELETEWithHttpInfo(param: OpportunityApiDeleteOpportunityStageUsingDELETERequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api.deleteOpportunityStageUsingDELETEWithHttpInfo(param.stageId,  options).toPromise();
+    public createOpportunityCustomFields(param: OpportunityApiCreateOpportunityCustomFieldsRequest, options?: ConfigurationOptions): Promise<CustomFieldMetaData> {
+        return this.api.createOpportunityCustomFields(param.createCustomFieldRequest,  options).toPromise();
     }
 
     /**
-     * Deletes the specified Opportunity Stage
-     * Delete an Opportunity Stage
+     * Creates a new Opportunity Stage
+     * Create an Opportunity Stage
      * @param param the request object
      */
-    public deleteOpportunityStageUsingDELETE(param: OpportunityApiDeleteOpportunityStageUsingDELETERequest, options?: ConfigurationOptions): Promise<void> {
-        return this.api.deleteOpportunityStageUsingDELETE(param.stageId,  options).toPromise();
+    public createOpportunityStageWithHttpInfo(param: OpportunityApiCreateOpportunityStageRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<RestOpportunityStage>> {
+        return this.api.createOpportunityStageWithHttpInfo(param.createOpportunityStageRequest,  options).toPromise();
+    }
+
+    /**
+     * Creates a new Opportunity Stage
+     * Create an Opportunity Stage
+     * @param param the request object
+     */
+    public createOpportunityStage(param: OpportunityApiCreateOpportunityStageRequest = {}, options?: ConfigurationOptions): Promise<RestOpportunityStage> {
+        return this.api.createOpportunityStage(param.createOpportunityStageRequest,  options).toPromise();
     }
 
     /**
@@ -5444,8 +5068,8 @@ export class ObjectOpportunityApi {
      * Delete an Opportunity
      * @param param the request object
      */
-    public deleteOpportunityUsingDELETEWithHttpInfo(param: OpportunityApiDeleteOpportunityUsingDELETERequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api.deleteOpportunityUsingDELETEWithHttpInfo(param.opportunityId,  options).toPromise();
+    public deleteOpportunityWithHttpInfo(param: OpportunityApiDeleteOpportunityRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteOpportunityWithHttpInfo(param.opportunityId,  options).toPromise();
     }
 
     /**
@@ -5453,35 +5077,26 @@ export class ObjectOpportunityApi {
      * Delete an Opportunity
      * @param param the request object
      */
-    public deleteOpportunityUsingDELETE(param: OpportunityApiDeleteOpportunityUsingDELETERequest, options?: ConfigurationOptions): Promise<void> {
-        return this.api.deleteOpportunityUsingDELETE(param.opportunityId,  options).toPromise();
+    public deleteOpportunity(param: OpportunityApiDeleteOpportunityRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteOpportunity(param.opportunityId,  options).toPromise();
     }
 
     /**
-     * Retrieves the specified Opportunity Stage
-     * Retrieve an Opportunity Stage
+     * Deletes the specified Opportunity Stage
+     * Delete an Opportunity Stage
      * @param param the request object
      */
-    public getOpportunityStageUsingGETWithHttpInfo(param: OpportunityApiGetOpportunityStageUsingGETRequest, options?: ConfigurationOptions): Promise<HttpInfo<RestOpportunityStage>> {
-        return this.api.getOpportunityStageUsingGETWithHttpInfo(param.stageId,  options).toPromise();
+    public deleteOpportunityStageWithHttpInfo(param: OpportunityApiDeleteOpportunityStageRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteOpportunityStageWithHttpInfo(param.stageId,  options).toPromise();
     }
 
     /**
-     * Retrieves the specified Opportunity Stage
-     * Retrieve an Opportunity Stage
+     * Deletes the specified Opportunity Stage
+     * Delete an Opportunity Stage
      * @param param the request object
      */
-    public getOpportunityStageUsingGET(param: OpportunityApiGetOpportunityStageUsingGETRequest, options?: ConfigurationOptions): Promise<RestOpportunityStage> {
-        return this.api.getOpportunityStageUsingGET(param.stageId,  options).toPromise();
-    }
-
-    /**
-     * Retrieves the specified Opportunity
-     * Retrieve a Opportunity
-     * @param param the request object
-     */
-    public getOpportunityUsingGET1WithHttpInfo(param: OpportunityApiGetOpportunityUsingGET1Request, options?: ConfigurationOptions): Promise<HttpInfo<RestV2Opportunity>> {
-        return this.api.getOpportunityUsingGET1WithHttpInfo(param.opportunityId,  options).toPromise();
+    public deleteOpportunityStage(param: OpportunityApiDeleteOpportunityStageRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteOpportunityStage(param.stageId,  options).toPromise();
     }
 
     /**
@@ -5489,8 +5104,35 @@ export class ObjectOpportunityApi {
      * Retrieve a Opportunity
      * @param param the request object
      */
-    public getOpportunityUsingGET1(param: OpportunityApiGetOpportunityUsingGET1Request, options?: ConfigurationOptions): Promise<RestV2Opportunity> {
-        return this.api.getOpportunityUsingGET1(param.opportunityId,  options).toPromise();
+    public getOpportunityWithHttpInfo(param: OpportunityApiGetOpportunityRequest, options?: ConfigurationOptions): Promise<HttpInfo<RestV2Opportunity>> {
+        return this.api.getOpportunityWithHttpInfo(param.opportunityId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves the specified Opportunity
+     * Retrieve a Opportunity
+     * @param param the request object
+     */
+    public getOpportunity(param: OpportunityApiGetOpportunityRequest, options?: ConfigurationOptions): Promise<RestV2Opportunity> {
+        return this.api.getOpportunity(param.opportunityId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves the specified Opportunity Stage
+     * Retrieve an Opportunity Stage
+     * @param param the request object
+     */
+    public getOpportunityStageWithHttpInfo(param: OpportunityApiGetOpportunityStageRequest, options?: ConfigurationOptions): Promise<HttpInfo<RestOpportunityStage>> {
+        return this.api.getOpportunityStageWithHttpInfo(param.stageId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves the specified Opportunity Stage
+     * Retrieve an Opportunity Stage
+     * @param param the request object
+     */
+    public getOpportunityStage(param: OpportunityApiGetOpportunityStageRequest, options?: ConfigurationOptions): Promise<RestOpportunityStage> {
+        return this.api.getOpportunityStage(param.stageId,  options).toPromise();
     }
 
     /**
@@ -5498,8 +5140,8 @@ export class ObjectOpportunityApi {
      * List Opportunities
      * @param param the request object
      */
-    public listOpportunitiesUsingGET1WithHttpInfo(param: OpportunityApiListOpportunitiesUsingGET1Request = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListOpportunitiesResponse>> {
-        return this.api.listOpportunitiesUsingGET1WithHttpInfo(param.fields, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listOpportunitiesWithHttpInfo(param: OpportunityApiListOpportunitiesRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListOpportunitiesResponse>> {
+        return this.api.listOpportunitiesWithHttpInfo(param.fields, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -5507,8 +5149,8 @@ export class ObjectOpportunityApi {
      * List Opportunities
      * @param param the request object
      */
-    public listOpportunitiesUsingGET1(param: OpportunityApiListOpportunitiesUsingGET1Request = {}, options?: ConfigurationOptions): Promise<ListOpportunitiesResponse> {
-        return this.api.listOpportunitiesUsingGET1(param.fields, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listOpportunities(param: OpportunityApiListOpportunitiesRequest = {}, options?: ConfigurationOptions): Promise<ListOpportunitiesResponse> {
+        return this.api.listOpportunities(param.fields, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -5516,8 +5158,8 @@ export class ObjectOpportunityApi {
      * List of Opportunity Stages
      * @param param the request object
      */
-    public listOpportunityStagesUsingGETWithHttpInfo(param: OpportunityApiListOpportunityStagesUsingGETRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListOpportunityStagesResponse>> {
-        return this.api.listOpportunityStagesUsingGETWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listOpportunityStagesWithHttpInfo(param: OpportunityApiListOpportunityStagesRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListOpportunityStagesResponse>> {
+        return this.api.listOpportunityStagesWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -5525,44 +5167,8 @@ export class ObjectOpportunityApi {
      * List of Opportunity Stages
      * @param param the request object
      */
-    public listOpportunityStagesUsingGET(param: OpportunityApiListOpportunityStagesUsingGETRequest = {}, options?: ConfigurationOptions): Promise<ListOpportunityStagesResponse> {
-        return this.api.listOpportunityStagesUsingGET(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
-    }
-
-    /**
-     * Updates a custom field of the specified type and options to the Opportunity object.
-     * Update a Opportunity\'s Custom Field
-     * @param param the request object
-     */
-    public updateOpportunityCustomFieldUsingPATCHWithHttpInfo(param: OpportunityApiUpdateOpportunityCustomFieldUsingPATCHRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
-        return this.api.updateOpportunityCustomFieldUsingPATCHWithHttpInfo(param.customFieldId, param.updateCustomFieldMetaDataRequest, param.updateMask,  options).toPromise();
-    }
-
-    /**
-     * Updates a custom field of the specified type and options to the Opportunity object.
-     * Update a Opportunity\'s Custom Field
-     * @param param the request object
-     */
-    public updateOpportunityCustomFieldUsingPATCH(param: OpportunityApiUpdateOpportunityCustomFieldUsingPATCHRequest, options?: ConfigurationOptions): Promise<CustomFieldMetaData> {
-        return this.api.updateOpportunityCustomFieldUsingPATCH(param.customFieldId, param.updateCustomFieldMetaDataRequest, param.updateMask,  options).toPromise();
-    }
-
-    /**
-     * Updates specified values of a given Opportunity Stage
-     * Update an Opportunity Stage
-     * @param param the request object
-     */
-    public updateOpportunityStageUsingPATCHWithHttpInfo(param: OpportunityApiUpdateOpportunityStageUsingPATCHRequest, options?: ConfigurationOptions): Promise<HttpInfo<RestOpportunityStage>> {
-        return this.api.updateOpportunityStageUsingPATCHWithHttpInfo(param.stageId, param.updateOpportunityStageRequest, param.updateMask,  options).toPromise();
-    }
-
-    /**
-     * Updates specified values of a given Opportunity Stage
-     * Update an Opportunity Stage
-     * @param param the request object
-     */
-    public updateOpportunityStageUsingPATCH(param: OpportunityApiUpdateOpportunityStageUsingPATCHRequest, options?: ConfigurationOptions): Promise<RestOpportunityStage> {
-        return this.api.updateOpportunityStageUsingPATCH(param.stageId, param.updateOpportunityStageRequest, param.updateMask,  options).toPromise();
+    public listOpportunityStages(param: OpportunityApiListOpportunityStagesRequest = {}, options?: ConfigurationOptions): Promise<ListOpportunityStagesResponse> {
+        return this.api.listOpportunityStages(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -5570,8 +5176,8 @@ export class ObjectOpportunityApi {
      * Update an opportunity
      * @param param the request object
      */
-    public updateOpportunityUsingPATCHWithHttpInfo(param: OpportunityApiUpdateOpportunityUsingPATCHRequest, options?: ConfigurationOptions): Promise<HttpInfo<RestV2Opportunity>> {
-        return this.api.updateOpportunityUsingPATCHWithHttpInfo(param.opportunityId, param.updateOpportunityRequestV2, param.updateMask,  options).toPromise();
+    public updateOpportunityWithHttpInfo(param: OpportunityApiUpdateOpportunityRequest, options?: ConfigurationOptions): Promise<HttpInfo<RestV2Opportunity>> {
+        return this.api.updateOpportunityWithHttpInfo(param.opportunityId, param.updateOpportunityRequestV2, param.updateMask,  options).toPromise();
     }
 
     /**
@@ -5579,8 +5185,44 @@ export class ObjectOpportunityApi {
      * Update an opportunity
      * @param param the request object
      */
-    public updateOpportunityUsingPATCH(param: OpportunityApiUpdateOpportunityUsingPATCHRequest, options?: ConfigurationOptions): Promise<RestV2Opportunity> {
-        return this.api.updateOpportunityUsingPATCH(param.opportunityId, param.updateOpportunityRequestV2, param.updateMask,  options).toPromise();
+    public updateOpportunity(param: OpportunityApiUpdateOpportunityRequest, options?: ConfigurationOptions): Promise<RestV2Opportunity> {
+        return this.api.updateOpportunity(param.opportunityId, param.updateOpportunityRequestV2, param.updateMask,  options).toPromise();
+    }
+
+    /**
+     * Updates a custom field of the specified type and options to the Opportunity object.
+     * Update a Opportunity\'s Custom Field
+     * @param param the request object
+     */
+    public updateOpportunityCustomFieldWithHttpInfo(param: OpportunityApiUpdateOpportunityCustomFieldRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
+        return this.api.updateOpportunityCustomFieldWithHttpInfo(param.customFieldId, param.updateCustomFieldMetaDataRequest, param.updateMask,  options).toPromise();
+    }
+
+    /**
+     * Updates a custom field of the specified type and options to the Opportunity object.
+     * Update a Opportunity\'s Custom Field
+     * @param param the request object
+     */
+    public updateOpportunityCustomField(param: OpportunityApiUpdateOpportunityCustomFieldRequest, options?: ConfigurationOptions): Promise<CustomFieldMetaData> {
+        return this.api.updateOpportunityCustomField(param.customFieldId, param.updateCustomFieldMetaDataRequest, param.updateMask,  options).toPromise();
+    }
+
+    /**
+     * Updates specified values of a given Opportunity Stage
+     * Update an Opportunity Stage
+     * @param param the request object
+     */
+    public updateOpportunityStageWithHttpInfo(param: OpportunityApiUpdateOpportunityStageRequest, options?: ConfigurationOptions): Promise<HttpInfo<RestOpportunityStage>> {
+        return this.api.updateOpportunityStageWithHttpInfo(param.stageId, param.updateOpportunityStageRequest, param.updateMask,  options).toPromise();
+    }
+
+    /**
+     * Updates specified values of a given Opportunity Stage
+     * Update an Opportunity Stage
+     * @param param the request object
+     */
+    public updateOpportunityStage(param: OpportunityApiUpdateOpportunityStageRequest, options?: ConfigurationOptions): Promise<RestOpportunityStage> {
+        return this.api.updateOpportunityStage(param.stageId, param.updateOpportunityStageRequest, param.updateMask,  options).toPromise();
     }
 
 }
@@ -5588,48 +5230,48 @@ export class ObjectOpportunityApi {
 import { ObservableOrderTotalDiscountsApi } from "./ObservableAPI";
 import { OrderTotalDiscountsApiRequestFactory, OrderTotalDiscountsApiResponseProcessor} from "../apis/OrderTotalDiscountsApi";
 
-export interface OrderTotalDiscountsApiCreateOrderTotalDiscountUsingPOSTRequest {
+export interface OrderTotalDiscountsApiCreateOrderTotalDiscountRequest {
     /**
      * request
      * @type CreateOrderTotalDiscountRequest
-     * @memberof OrderTotalDiscountsApicreateOrderTotalDiscountUsingPOST
+     * @memberof OrderTotalDiscountsApicreateOrderTotalDiscount
      */
     createOrderTotalDiscountRequest: CreateOrderTotalDiscountRequest
 }
 
-export interface OrderTotalDiscountsApiDeleteOrderTotalDiscountUsingDELETERequest {
+export interface OrderTotalDiscountsApiDeleteOrderTotalDiscountRequest {
     /**
      * discount_id
      * Defaults to: undefined
      * @type string
-     * @memberof OrderTotalDiscountsApideleteOrderTotalDiscountUsingDELETE
+     * @memberof OrderTotalDiscountsApideleteOrderTotalDiscount
      */
     discountId: string
 }
 
-export interface OrderTotalDiscountsApiGetOrderTotalDiscountUsingGETRequest {
+export interface OrderTotalDiscountsApiGetOrderTotalDiscountRequest {
     /**
      * discount_id
      * Defaults to: undefined
      * @type string
-     * @memberof OrderTotalDiscountsApigetOrderTotalDiscountUsingGET
+     * @memberof OrderTotalDiscountsApigetOrderTotalDiscount
      */
     discountId: string
 }
 
-export interface OrderTotalDiscountsApiListOrderTotalDiscountsUsingGETRequest {
+export interface OrderTotalDiscountsApiListOrderTotalDiscountsRequest {
     /**
      * Filter to apply, allowed fields are: - (Boolean) &#x60;apply_to_commissions&#x60; - (DiscountStrategy) &#x60;discount_strategy&#x60;: GROSS or NET - (DiscountType) &#x60;discount_type&#x60;: AMOUNT or PERCENT - (Double) &#x60;discount_value&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;apply_to_commissions%3D%3Dtrue&#x60; - &#x60;filter&#x3D;discount_strategy%3D%3DGROSS&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT&#x60; - &#x60;filter&#x3D;discount_value%3D%3D10.0&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT%3Bdiscount_strategy%3D%3DNET&#x60; 
      * Defaults to: undefined
      * @type string
-     * @memberof OrderTotalDiscountsApilistOrderTotalDiscountsUsingGET
+     * @memberof OrderTotalDiscountsApilistOrderTotalDiscounts
      */
     filter?: string
     /**
-     * Attribute and direction to order items. One of the following fields: - &#x60;apply_to_commissions&#x60; - &#x60;discount_strategy&#x60; - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * Attribute and direction to order items. One of the following fields: - &#x60;apply_to_commissions&#x60; - &#x60;discount_strategy&#x60; - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60; - &#x60;name&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * Defaults to: undefined
      * @type string
-     * @memberof OrderTotalDiscountsApilistOrderTotalDiscountsUsingGET
+     * @memberof OrderTotalDiscountsApilistOrderTotalDiscounts
      */
     orderBy?: string
     /**
@@ -5638,37 +5280,37 @@ export interface OrderTotalDiscountsApiListOrderTotalDiscountsUsingGETRequest {
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
-     * @memberof OrderTotalDiscountsApilistOrderTotalDiscountsUsingGET
+     * @memberof OrderTotalDiscountsApilistOrderTotalDiscounts
      */
     pageSize?: number
     /**
      * Page token
      * Defaults to: undefined
      * @type string
-     * @memberof OrderTotalDiscountsApilistOrderTotalDiscountsUsingGET
+     * @memberof OrderTotalDiscountsApilistOrderTotalDiscounts
      */
     pageToken?: string
 }
 
-export interface OrderTotalDiscountsApiUpdateOrderTotalDiscountUsingPATCHRequest {
+export interface OrderTotalDiscountsApiUpdateOrderTotalDiscountRequest {
     /**
      * discount_id
      * Defaults to: undefined
      * @type string
-     * @memberof OrderTotalDiscountsApiupdateOrderTotalDiscountUsingPATCH
+     * @memberof OrderTotalDiscountsApiupdateOrderTotalDiscount
      */
     discountId: string
     /**
      * request
      * @type UpdateOrderTotalDiscountRequest
-     * @memberof OrderTotalDiscountsApiupdateOrderTotalDiscountUsingPATCH
+     * @memberof OrderTotalDiscountsApiupdateOrderTotalDiscount
      */
     updateOrderTotalDiscountRequest: UpdateOrderTotalDiscountRequest
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
      * @type Array&lt;string&gt;
-     * @memberof OrderTotalDiscountsApiupdateOrderTotalDiscountUsingPATCH
+     * @memberof OrderTotalDiscountsApiupdateOrderTotalDiscount
      */
     updateMask?: Array<string>
 }
@@ -5685,8 +5327,8 @@ export class ObjectOrderTotalDiscountsApi {
      * Create an Order Total Discount
      * @param param the request object
      */
-    public createOrderTotalDiscountUsingPOSTWithHttpInfo(param: OrderTotalDiscountsApiCreateOrderTotalDiscountUsingPOSTRequest, options?: ConfigurationOptions): Promise<HttpInfo<OrderTotalDiscount>> {
-        return this.api.createOrderTotalDiscountUsingPOSTWithHttpInfo(param.createOrderTotalDiscountRequest,  options).toPromise();
+    public createOrderTotalDiscountWithHttpInfo(param: OrderTotalDiscountsApiCreateOrderTotalDiscountRequest, options?: ConfigurationOptions): Promise<HttpInfo<OrderTotalDiscount>> {
+        return this.api.createOrderTotalDiscountWithHttpInfo(param.createOrderTotalDiscountRequest,  options).toPromise();
     }
 
     /**
@@ -5694,8 +5336,8 @@ export class ObjectOrderTotalDiscountsApi {
      * Create an Order Total Discount
      * @param param the request object
      */
-    public createOrderTotalDiscountUsingPOST(param: OrderTotalDiscountsApiCreateOrderTotalDiscountUsingPOSTRequest, options?: ConfigurationOptions): Promise<OrderTotalDiscount> {
-        return this.api.createOrderTotalDiscountUsingPOST(param.createOrderTotalDiscountRequest,  options).toPromise();
+    public createOrderTotalDiscount(param: OrderTotalDiscountsApiCreateOrderTotalDiscountRequest, options?: ConfigurationOptions): Promise<OrderTotalDiscount> {
+        return this.api.createOrderTotalDiscount(param.createOrderTotalDiscountRequest,  options).toPromise();
     }
 
     /**
@@ -5703,8 +5345,8 @@ export class ObjectOrderTotalDiscountsApi {
      * Delete an Order Total Discount
      * @param param the request object
      */
-    public deleteOrderTotalDiscountUsingDELETEWithHttpInfo(param: OrderTotalDiscountsApiDeleteOrderTotalDiscountUsingDELETERequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api.deleteOrderTotalDiscountUsingDELETEWithHttpInfo(param.discountId,  options).toPromise();
+    public deleteOrderTotalDiscountWithHttpInfo(param: OrderTotalDiscountsApiDeleteOrderTotalDiscountRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteOrderTotalDiscountWithHttpInfo(param.discountId,  options).toPromise();
     }
 
     /**
@@ -5712,8 +5354,8 @@ export class ObjectOrderTotalDiscountsApi {
      * Delete an Order Total Discount
      * @param param the request object
      */
-    public deleteOrderTotalDiscountUsingDELETE(param: OrderTotalDiscountsApiDeleteOrderTotalDiscountUsingDELETERequest, options?: ConfigurationOptions): Promise<void> {
-        return this.api.deleteOrderTotalDiscountUsingDELETE(param.discountId,  options).toPromise();
+    public deleteOrderTotalDiscount(param: OrderTotalDiscountsApiDeleteOrderTotalDiscountRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteOrderTotalDiscount(param.discountId,  options).toPromise();
     }
 
     /**
@@ -5721,8 +5363,8 @@ export class ObjectOrderTotalDiscountsApi {
      * Retrieve an Order Total Discount
      * @param param the request object
      */
-    public getOrderTotalDiscountUsingGETWithHttpInfo(param: OrderTotalDiscountsApiGetOrderTotalDiscountUsingGETRequest, options?: ConfigurationOptions): Promise<HttpInfo<OrderTotalDiscount>> {
-        return this.api.getOrderTotalDiscountUsingGETWithHttpInfo(param.discountId,  options).toPromise();
+    public getOrderTotalDiscountWithHttpInfo(param: OrderTotalDiscountsApiGetOrderTotalDiscountRequest, options?: ConfigurationOptions): Promise<HttpInfo<OrderTotalDiscount>> {
+        return this.api.getOrderTotalDiscountWithHttpInfo(param.discountId,  options).toPromise();
     }
 
     /**
@@ -5730,8 +5372,8 @@ export class ObjectOrderTotalDiscountsApi {
      * Retrieve an Order Total Discount
      * @param param the request object
      */
-    public getOrderTotalDiscountUsingGET(param: OrderTotalDiscountsApiGetOrderTotalDiscountUsingGETRequest, options?: ConfigurationOptions): Promise<OrderTotalDiscount> {
-        return this.api.getOrderTotalDiscountUsingGET(param.discountId,  options).toPromise();
+    public getOrderTotalDiscount(param: OrderTotalDiscountsApiGetOrderTotalDiscountRequest, options?: ConfigurationOptions): Promise<OrderTotalDiscount> {
+        return this.api.getOrderTotalDiscount(param.discountId,  options).toPromise();
     }
 
     /**
@@ -5739,8 +5381,8 @@ export class ObjectOrderTotalDiscountsApi {
      * List all Order Total Discounts
      * @param param the request object
      */
-    public listOrderTotalDiscountsUsingGETWithHttpInfo(param: OrderTotalDiscountsApiListOrderTotalDiscountsUsingGETRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListOrderTotalDiscountsResponse>> {
-        return this.api.listOrderTotalDiscountsUsingGETWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listOrderTotalDiscountsWithHttpInfo(param: OrderTotalDiscountsApiListOrderTotalDiscountsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListOrderTotalDiscountsResponse>> {
+        return this.api.listOrderTotalDiscountsWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -5748,8 +5390,8 @@ export class ObjectOrderTotalDiscountsApi {
      * List all Order Total Discounts
      * @param param the request object
      */
-    public listOrderTotalDiscountsUsingGET(param: OrderTotalDiscountsApiListOrderTotalDiscountsUsingGETRequest = {}, options?: ConfigurationOptions): Promise<ListOrderTotalDiscountsResponse> {
-        return this.api.listOrderTotalDiscountsUsingGET(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listOrderTotalDiscounts(param: OrderTotalDiscountsApiListOrderTotalDiscountsRequest = {}, options?: ConfigurationOptions): Promise<ListOrderTotalDiscountsResponse> {
+        return this.api.listOrderTotalDiscounts(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -5757,8 +5399,8 @@ export class ObjectOrderTotalDiscountsApi {
      * Update an Order Total Discount
      * @param param the request object
      */
-    public updateOrderTotalDiscountUsingPATCHWithHttpInfo(param: OrderTotalDiscountsApiUpdateOrderTotalDiscountUsingPATCHRequest, options?: ConfigurationOptions): Promise<HttpInfo<OrderTotalDiscount>> {
-        return this.api.updateOrderTotalDiscountUsingPATCHWithHttpInfo(param.discountId, param.updateOrderTotalDiscountRequest, param.updateMask,  options).toPromise();
+    public updateOrderTotalDiscountWithHttpInfo(param: OrderTotalDiscountsApiUpdateOrderTotalDiscountRequest, options?: ConfigurationOptions): Promise<HttpInfo<OrderTotalDiscount>> {
+        return this.api.updateOrderTotalDiscountWithHttpInfo(param.discountId, param.updateOrderTotalDiscountRequest, param.updateMask,  options).toPromise();
     }
 
     /**
@@ -5766,8 +5408,8 @@ export class ObjectOrderTotalDiscountsApi {
      * Update an Order Total Discount
      * @param param the request object
      */
-    public updateOrderTotalDiscountUsingPATCH(param: OrderTotalDiscountsApiUpdateOrderTotalDiscountUsingPATCHRequest, options?: ConfigurationOptions): Promise<OrderTotalDiscount> {
-        return this.api.updateOrderTotalDiscountUsingPATCH(param.discountId, param.updateOrderTotalDiscountRequest, param.updateMask,  options).toPromise();
+    public updateOrderTotalDiscount(param: OrderTotalDiscountsApiUpdateOrderTotalDiscountRequest, options?: ConfigurationOptions): Promise<OrderTotalDiscount> {
+        return this.api.updateOrderTotalDiscount(param.discountId, param.updateOrderTotalDiscountRequest, param.updateMask,  options).toPromise();
     }
 
 }
@@ -5775,47 +5417,47 @@ export class ObjectOrderTotalDiscountsApi {
 import { ObservableOrdersApi } from "./ObservableAPI";
 import { OrdersApiRequestFactory, OrdersApiResponseProcessor} from "../apis/OrdersApi";
 
-export interface OrdersApiCreateOrderCustomFieldUsingPOSTRequest {
+export interface OrdersApiCreateOrderCustomFieldRequest {
     /**
      * customField
      * @type CreateCustomFieldRequest
-     * @memberof OrdersApicreateOrderCustomFieldUsingPOST
+     * @memberof OrdersApicreateOrderCustomField
      */
     createCustomFieldRequest: CreateCustomFieldRequest
 }
 
-export interface OrdersApiDeleteOrderCustomFieldUsingDELETERequest {
+export interface OrdersApiDeleteOrderCustomFieldRequest {
     /**
      * custom_field_id
      * Defaults to: undefined
      * @type string
-     * @memberof OrdersApideleteOrderCustomFieldUsingDELETE
+     * @memberof OrdersApideleteOrderCustomField
      */
     customFieldId: string
 }
 
-export interface OrdersApiRetrieveOrderCustomFieldModelUsingGETRequest {
+export interface OrdersApiRetrieveOrderCustomFieldModelRequest {
 }
 
-export interface OrdersApiUpdateOrderCustomFieldUsingPATCHRequest {
+export interface OrdersApiUpdateOrderCustomFieldRequest {
     /**
      * custom_field_id
      * Defaults to: undefined
      * @type string
-     * @memberof OrdersApiupdateOrderCustomFieldUsingPATCH
+     * @memberof OrdersApiupdateOrderCustomField
      */
     customFieldId: string
     /**
      * request
      * @type UpdateCustomFieldMetaDataRequest
-     * @memberof OrdersApiupdateOrderCustomFieldUsingPATCH
+     * @memberof OrdersApiupdateOrderCustomField
      */
     updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
      * @type Array&lt;string&gt;
-     * @memberof OrdersApiupdateOrderCustomFieldUsingPATCH
+     * @memberof OrdersApiupdateOrderCustomField
      */
     updateMask?: Array<string>
 }
@@ -5832,8 +5474,8 @@ export class ObjectOrdersApi {
      * Create an Order Custom Field
      * @param param the request object
      */
-    public createOrderCustomFieldUsingPOSTWithHttpInfo(param: OrdersApiCreateOrderCustomFieldUsingPOSTRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
-        return this.api.createOrderCustomFieldUsingPOSTWithHttpInfo(param.createCustomFieldRequest,  options).toPromise();
+    public createOrderCustomFieldWithHttpInfo(param: OrdersApiCreateOrderCustomFieldRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
+        return this.api.createOrderCustomFieldWithHttpInfo(param.createCustomFieldRequest,  options).toPromise();
     }
 
     /**
@@ -5841,8 +5483,8 @@ export class ObjectOrdersApi {
      * Create an Order Custom Field
      * @param param the request object
      */
-    public createOrderCustomFieldUsingPOST(param: OrdersApiCreateOrderCustomFieldUsingPOSTRequest, options?: ConfigurationOptions): Promise<CustomFieldMetaData> {
-        return this.api.createOrderCustomFieldUsingPOST(param.createCustomFieldRequest,  options).toPromise();
+    public createOrderCustomField(param: OrdersApiCreateOrderCustomFieldRequest, options?: ConfigurationOptions): Promise<CustomFieldMetaData> {
+        return this.api.createOrderCustomField(param.createCustomFieldRequest,  options).toPromise();
     }
 
     /**
@@ -5850,8 +5492,8 @@ export class ObjectOrdersApi {
      * Delete an Order Custom Field
      * @param param the request object
      */
-    public deleteOrderCustomFieldUsingDELETEWithHttpInfo(param: OrdersApiDeleteOrderCustomFieldUsingDELETERequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api.deleteOrderCustomFieldUsingDELETEWithHttpInfo(param.customFieldId,  options).toPromise();
+    public deleteOrderCustomFieldWithHttpInfo(param: OrdersApiDeleteOrderCustomFieldRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteOrderCustomFieldWithHttpInfo(param.customFieldId,  options).toPromise();
     }
 
     /**
@@ -5859,8 +5501,8 @@ export class ObjectOrdersApi {
      * Delete an Order Custom Field
      * @param param the request object
      */
-    public deleteOrderCustomFieldUsingDELETE(param: OrdersApiDeleteOrderCustomFieldUsingDELETERequest, options?: ConfigurationOptions): Promise<void> {
-        return this.api.deleteOrderCustomFieldUsingDELETE(param.customFieldId,  options).toPromise();
+    public deleteOrderCustomField(param: OrdersApiDeleteOrderCustomFieldRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteOrderCustomField(param.customFieldId,  options).toPromise();
     }
 
     /**
@@ -5868,8 +5510,8 @@ export class ObjectOrdersApi {
      * Retrieve Order Custom Field Model
      * @param param the request object
      */
-    public retrieveOrderCustomFieldModelUsingGETWithHttpInfo(param: OrdersApiRetrieveOrderCustomFieldModelUsingGETRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ObjectModel>> {
-        return this.api.retrieveOrderCustomFieldModelUsingGETWithHttpInfo( options).toPromise();
+    public retrieveOrderCustomFieldModelWithHttpInfo(param: OrdersApiRetrieveOrderCustomFieldModelRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ObjectModel>> {
+        return this.api.retrieveOrderCustomFieldModelWithHttpInfo( options).toPromise();
     }
 
     /**
@@ -5877,8 +5519,8 @@ export class ObjectOrdersApi {
      * Retrieve Order Custom Field Model
      * @param param the request object
      */
-    public retrieveOrderCustomFieldModelUsingGET(param: OrdersApiRetrieveOrderCustomFieldModelUsingGETRequest = {}, options?: ConfigurationOptions): Promise<ObjectModel> {
-        return this.api.retrieveOrderCustomFieldModelUsingGET( options).toPromise();
+    public retrieveOrderCustomFieldModel(param: OrdersApiRetrieveOrderCustomFieldModelRequest = {}, options?: ConfigurationOptions): Promise<ObjectModel> {
+        return this.api.retrieveOrderCustomFieldModel( options).toPromise();
     }
 
     /**
@@ -5886,8 +5528,8 @@ export class ObjectOrdersApi {
      * Update an Order Custom Field
      * @param param the request object
      */
-    public updateOrderCustomFieldUsingPATCHWithHttpInfo(param: OrdersApiUpdateOrderCustomFieldUsingPATCHRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
-        return this.api.updateOrderCustomFieldUsingPATCHWithHttpInfo(param.customFieldId, param.updateCustomFieldMetaDataRequest, param.updateMask,  options).toPromise();
+    public updateOrderCustomFieldWithHttpInfo(param: OrdersApiUpdateOrderCustomFieldRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
+        return this.api.updateOrderCustomFieldWithHttpInfo(param.customFieldId, param.updateCustomFieldMetaDataRequest, param.updateMask,  options).toPromise();
     }
 
     /**
@@ -5895,8 +5537,8 @@ export class ObjectOrdersApi {
      * Update an Order Custom Field
      * @param param the request object
      */
-    public updateOrderCustomFieldUsingPATCH(param: OrdersApiUpdateOrderCustomFieldUsingPATCHRequest, options?: ConfigurationOptions): Promise<CustomFieldMetaData> {
-        return this.api.updateOrderCustomFieldUsingPATCH(param.customFieldId, param.updateCustomFieldMetaDataRequest, param.updateMask,  options).toPromise();
+    public updateOrderCustomField(param: OrdersApiUpdateOrderCustomFieldRequest, options?: ConfigurationOptions): Promise<CustomFieldMetaData> {
+        return this.api.updateOrderCustomField(param.customFieldId, param.updateCustomFieldMetaDataRequest, param.updateMask,  options).toPromise();
     }
 
 }
@@ -5904,11 +5546,11 @@ export class ObjectOrdersApi {
 import { ObservablePaymentMethodConfigsApi } from "./ObservableAPI";
 import { PaymentMethodConfigsApiRequestFactory, PaymentMethodConfigsApiResponseProcessor} from "../apis/PaymentMethodConfigsApi";
 
-export interface PaymentMethodConfigsApiCreatePaymentMethodConfigUsingPOSTRequest {
+export interface PaymentMethodConfigsApiCreatePaymentMethodConfigRequest {
     /**
      * request
      * @type CreatePaymentMethodConfigRequest
-     * @memberof PaymentMethodConfigsApicreatePaymentMethodConfigUsingPOST
+     * @memberof PaymentMethodConfigsApicreatePaymentMethodConfig
      */
     createPaymentMethodConfigRequest: CreatePaymentMethodConfigRequest
 }
@@ -5925,8 +5567,8 @@ export class ObjectPaymentMethodConfigsApi {
      * Create Payment Method Configuration
      * @param param the request object
      */
-    public createPaymentMethodConfigUsingPOSTWithHttpInfo(param: PaymentMethodConfigsApiCreatePaymentMethodConfigUsingPOSTRequest, options?: ConfigurationOptions): Promise<HttpInfo<PaymentMethodConfig>> {
-        return this.api.createPaymentMethodConfigUsingPOSTWithHttpInfo(param.createPaymentMethodConfigRequest,  options).toPromise();
+    public createPaymentMethodConfigWithHttpInfo(param: PaymentMethodConfigsApiCreatePaymentMethodConfigRequest, options?: ConfigurationOptions): Promise<HttpInfo<PaymentMethodConfig>> {
+        return this.api.createPaymentMethodConfigWithHttpInfo(param.createPaymentMethodConfigRequest,  options).toPromise();
     }
 
     /**
@@ -5934,517 +5576,100 @@ export class ObjectPaymentMethodConfigsApi {
      * Create Payment Method Configuration
      * @param param the request object
      */
-    public createPaymentMethodConfigUsingPOST(param: PaymentMethodConfigsApiCreatePaymentMethodConfigUsingPOSTRequest, options?: ConfigurationOptions): Promise<PaymentMethodConfig> {
-        return this.api.createPaymentMethodConfigUsingPOST(param.createPaymentMethodConfigRequest,  options).toPromise();
+    public createPaymentMethodConfig(param: PaymentMethodConfigsApiCreatePaymentMethodConfigRequest, options?: ConfigurationOptions): Promise<PaymentMethodConfig> {
+        return this.api.createPaymentMethodConfig(param.createPaymentMethodConfigRequest,  options).toPromise();
     }
 
 }
 
-import { ObservablePipelinesApi } from "./ObservableAPI";
-import { PipelinesApiRequestFactory, PipelinesApiResponseProcessor} from "../apis/PipelinesApi";
+import { ObservableProductCategoriesApi } from "./ObservableAPI";
+import { ProductCategoriesApiRequestFactory, ProductCategoriesApiResponseProcessor} from "../apis/ProductCategoriesApi";
 
-export interface PipelinesApiDeleteRequest {
+export interface ProductCategoriesApiAssignProductsToCategoryRequest {
     /**
-     * the pipeline identifier
+     * category_id
      * Defaults to: undefined
      * @type string
-     * @memberof PipelinesApi_delete
+     * @memberof ProductCategoriesApiassignProductsToCategory
      */
-    id: string
-    /**
-     * flag indicating whether cleanup is allowed, can be null
-     * Defaults to: undefined
-     * @type boolean
-     * @memberof PipelinesApi_delete
-     */
-    allowCleanup?: boolean
-    /**
-     * the new stage identifier, can be null
-     * Defaults to: undefined
-     * @type string
-     * @memberof PipelinesApi_delete
-     */
-    newStageId?: string
-}
-
-export interface PipelinesApiCreateRequest {
-    /**
-     * the create request
-     * @type CreatePipelineRequest
-     * @memberof PipelinesApicreate
-     */
-    createPipelineRequest: CreatePipelineRequest
-}
-
-export interface PipelinesApiGetRequest {
-    /**
-     * the entity identifier
-     * Defaults to: undefined
-     * @type string
-     * @memberof PipelinesApiget
-     */
-    id: string
-}
-
-export interface PipelinesApiGetDealCountRequest {
-    /**
-     * the pipeline identifier
-     * Defaults to: undefined
-     * @type string
-     * @memberof PipelinesApigetDealCount
-     */
-    id: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof PipelinesApigetDealCount
-     */
-    filter?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof PipelinesApigetDealCount
-     */
-    pageToken?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof PipelinesApigetDealCount
-     */
-    orderBy?: string
-    /**
-     * 
-     * Minimum: 1
-     * Maximum: 1000
-     * Defaults to: 1000
-     * @type number
-     * @memberof PipelinesApigetDealCount
-     */
-    pageSize?: number
-}
-
-export interface PipelinesApiGetOutcomeLabelsRequest {
-    /**
-     * the pipeline identifier
-     * Defaults to: undefined
-     * @type string
-     * @memberof PipelinesApigetOutcomeLabels
-     */
-    id: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof PipelinesApigetOutcomeLabels
-     */
-    filter?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof PipelinesApigetOutcomeLabels
-     */
-    pageToken?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof PipelinesApigetOutcomeLabels
-     */
-    orderBy?: string
-    /**
-     * 
-     * Minimum: 1
-     * Maximum: 1000
-     * Defaults to: 1000
-     * @type number
-     * @memberof PipelinesApigetOutcomeLabels
-     */
-    pageSize?: number
-}
-
-export interface PipelinesApiListRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof PipelinesApilist
-     */
-    filter?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof PipelinesApilist
-     */
-    pageToken?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof PipelinesApilist
-     */
-    orderBy?: string
-    /**
-     * 
-     * Minimum: 1
-     * Maximum: 1000
-     * Defaults to: 1000
-     * @type number
-     * @memberof PipelinesApilist
-     */
-    pageSize?: number
-}
-
-export interface PipelinesApiListStagesRequest {
-    /**
-     * the pipeline identifier
-     * Defaults to: undefined
-     * @type string
-     * @memberof PipelinesApilistStages
-     */
-    id: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof PipelinesApilistStages
-     */
-    filter?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof PipelinesApilistStages
-     */
-    pageToken?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof PipelinesApilistStages
-     */
-    orderBy?: string
-    /**
-     * 
-     * Minimum: 1
-     * Maximum: 1000
-     * Defaults to: 1000
-     * @type number
-     * @memberof PipelinesApilistStages
-     */
-    pageSize?: number
-}
-
-export interface PipelinesApiListSummariesRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof PipelinesApilistSummaries
-     */
-    filter?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof PipelinesApilistSummaries
-     */
-    pageToken?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof PipelinesApilistSummaries
-     */
-    orderBy?: string
-    /**
-     * 
-     * Minimum: 1
-     * Maximum: 1000
-     * Defaults to: 1000
-     * @type number
-     * @memberof PipelinesApilistSummaries
-     */
-    pageSize?: number
-}
-
-export interface PipelinesApiSetOutcomeLabelsRequest {
-    /**
-     * the pipeline identifier
-     * Defaults to: undefined
-     * @type string
-     * @memberof PipelinesApisetOutcomeLabels
-     */
-    id: string
-    /**
-     * the request containing the new outcome labels
-     * @type UpdateOutcomeLabelsRequest
-     * @memberof PipelinesApisetOutcomeLabels
-     */
-    updateOutcomeLabelsRequest: UpdateOutcomeLabelsRequest
-}
-
-export interface PipelinesApiUpdateRequest {
-    /**
-     * the entity identifier
-     * Defaults to: undefined
-     * @type string
-     * @memberof PipelinesApiupdate
-     */
-    id: string
-    /**
-     * the fields to update
-     * Defaults to: undefined
-     * @type Array&lt;string&gt;
-     * @memberof PipelinesApiupdate
-     */
-    updateMask: Array<string>
-    /**
-     * the update request
-     * @type UpdatePipelineRequest
-     * @memberof PipelinesApiupdate
-     */
-    updatePipelineRequest: UpdatePipelineRequest
-}
-
-export class ObjectPipelinesApi {
-    private api: ObservablePipelinesApi
-
-    public constructor(configuration: Configuration, requestFactory?: PipelinesApiRequestFactory, responseProcessor?: PipelinesApiResponseProcessor) {
-        this.api = new ObservablePipelinesApi(configuration, requestFactory, responseProcessor);
-    }
-
-    /**
-     * Deletes a pipeline.
-     * Deletes a pipeline.
-     * @param param the request object
-     */
-    public _deleteWithHttpInfo(param: PipelinesApiDeleteRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api._deleteWithHttpInfo(param.id, param.allowCleanup, param.newStageId,  options).toPromise();
-    }
-
-    /**
-     * Deletes a pipeline.
-     * Deletes a pipeline.
-     * @param param the request object
-     */
-    public _delete(param: PipelinesApiDeleteRequest, options?: ConfigurationOptions): Promise<void> {
-        return this.api._delete(param.id, param.allowCleanup, param.newStageId,  options).toPromise();
-    }
-
-    /**
-     * Creates a new entity.
-     * Creates a new entity.
-     * @param param the request object
-     */
-    public createWithHttpInfo(param: PipelinesApiCreateRequest, options?: ConfigurationOptions): Promise<HttpInfo<Pipeline>> {
-        return this.api.createWithHttpInfo(param.createPipelineRequest,  options).toPromise();
-    }
-
-    /**
-     * Creates a new entity.
-     * Creates a new entity.
-     * @param param the request object
-     */
-    public create(param: PipelinesApiCreateRequest, options?: ConfigurationOptions): Promise<Pipeline> {
-        return this.api.create(param.createPipelineRequest,  options).toPromise();
-    }
-
-    /**
-     * Retrieves an entity by its identifier.
-     * Retrieves an entity by its identifier.
-     * @param param the request object
-     */
-    public getWithHttpInfo(param: PipelinesApiGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<Pipeline>> {
-        return this.api.getWithHttpInfo(param.id,  options).toPromise();
-    }
-
-    /**
-     * Retrieves an entity by its identifier.
-     * Retrieves an entity by its identifier.
-     * @param param the request object
-     */
-    public get(param: PipelinesApiGetRequest, options?: ConfigurationOptions): Promise<Pipeline> {
-        return this.api.get(param.id,  options).toPromise();
-    }
-
-    /**
-     * Retrieves the count of deals for a specific pipeline.
-     * Retrieves the count of deals for a specific pipeline.
-     * @param param the request object
-     */
-    public getDealCountWithHttpInfo(param: PipelinesApiGetDealCountRequest, options?: ConfigurationOptions): Promise<HttpInfo<number>> {
-        return this.api.getDealCountWithHttpInfo(param.id, param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
-    }
-
-    /**
-     * Retrieves the count of deals for a specific pipeline.
-     * Retrieves the count of deals for a specific pipeline.
-     * @param param the request object
-     */
-    public getDealCount(param: PipelinesApiGetDealCountRequest, options?: ConfigurationOptions): Promise<number> {
-        return this.api.getDealCount(param.id, param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
-    }
-
-    /**
-     * Gets the outcome labels for a pipeline.
-     * Gets the outcome labels for a pipeline.
-     * @param param the request object
-     */
-    public getOutcomeLabelsWithHttpInfo(param: PipelinesApiGetOutcomeLabelsRequest, options?: ConfigurationOptions): Promise<HttpInfo<PipelineOutcomeLabelListResponse>> {
-        return this.api.getOutcomeLabelsWithHttpInfo(param.id, param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
-    }
-
-    /**
-     * Gets the outcome labels for a pipeline.
-     * Gets the outcome labels for a pipeline.
-     * @param param the request object
-     */
-    public getOutcomeLabels(param: PipelinesApiGetOutcomeLabelsRequest, options?: ConfigurationOptions): Promise<PipelineOutcomeLabelListResponse> {
-        return this.api.getOutcomeLabels(param.id, param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
-    }
-
-    /**
-     * Lists entities based on the provided ListCommand.
-     * Lists entities based on the provided ListCommand.
-     * @param param the request object
-     */
-    public listWithHttpInfo(param: PipelinesApiListRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<PipelineListResponse>> {
-        return this.api.listWithHttpInfo(param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
-    }
-
-    /**
-     * Lists entities based on the provided ListCommand.
-     * Lists entities based on the provided ListCommand.
-     * @param param the request object
-     */
-    public list(param: PipelinesApiListRequest = {}, options?: ConfigurationOptions): Promise<PipelineListResponse> {
-        return this.api.list(param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
-    }
-
-    /**
-     * Retrieves a list of stages for a specific pipeline.
-     * Retrieves a list of stages for a specific pipeline.
-     * @param param the request object
-     */
-    public listStagesWithHttpInfo(param: PipelinesApiListStagesRequest, options?: ConfigurationOptions): Promise<HttpInfo<PipelineStageListResponse>> {
-        return this.api.listStagesWithHttpInfo(param.id, param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
-    }
-
-    /**
-     * Retrieves a list of stages for a specific pipeline.
-     * Retrieves a list of stages for a specific pipeline.
-     * @param param the request object
-     */
-    public listStages(param: PipelinesApiListStagesRequest, options?: ConfigurationOptions): Promise<PipelineStageListResponse> {
-        return this.api.listStages(param.id, param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
-    }
-
-    /**
-     * Retrieves a list of pipeline summaries.
-     * Retrieves a list of pipeline summaries.
-     * @param param the request object
-     */
-    public listSummariesWithHttpInfo(param: PipelinesApiListSummariesRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<PipelineSummariesListResponse>> {
-        return this.api.listSummariesWithHttpInfo(param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
-    }
-
-    /**
-     * Retrieves a list of pipeline summaries.
-     * Retrieves a list of pipeline summaries.
-     * @param param the request object
-     */
-    public listSummaries(param: PipelinesApiListSummariesRequest = {}, options?: ConfigurationOptions): Promise<PipelineSummariesListResponse> {
-        return this.api.listSummaries(param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
-    }
-
-    /**
-     * Sets the outcome labels for a pipeline.
-     * Sets the outcome labels for a pipeline.
-     * @param param the request object
-     */
-    public setOutcomeLabelsWithHttpInfo(param: PipelinesApiSetOutcomeLabelsRequest, options?: ConfigurationOptions): Promise<HttpInfo<PipelineOutcomeLabelListResponse>> {
-        return this.api.setOutcomeLabelsWithHttpInfo(param.id, param.updateOutcomeLabelsRequest,  options).toPromise();
-    }
-
-    /**
-     * Sets the outcome labels for a pipeline.
-     * Sets the outcome labels for a pipeline.
-     * @param param the request object
-     */
-    public setOutcomeLabels(param: PipelinesApiSetOutcomeLabelsRequest, options?: ConfigurationOptions): Promise<PipelineOutcomeLabelListResponse> {
-        return this.api.setOutcomeLabels(param.id, param.updateOutcomeLabelsRequest,  options).toPromise();
-    }
-
-    /**
-     * Updates an existing entity.
-     * Updates an existing entity.
-     * @param param the request object
-     */
-    public updateWithHttpInfo(param: PipelinesApiUpdateRequest, options?: ConfigurationOptions): Promise<HttpInfo<Pipeline>> {
-        return this.api.updateWithHttpInfo(param.id, param.updateMask, param.updatePipelineRequest,  options).toPromise();
-    }
-
-    /**
-     * Updates an existing entity.
-     * Updates an existing entity.
-     * @param param the request object
-     */
-    public update(param: PipelinesApiUpdateRequest, options?: ConfigurationOptions): Promise<Pipeline> {
-        return this.api.update(param.id, param.updateMask, param.updatePipelineRequest,  options).toPromise();
-    }
-
-}
-
-import { ObservableProductDiscountsApi } from "./ObservableAPI";
-import { ProductDiscountsApiRequestFactory, ProductDiscountsApiResponseProcessor} from "../apis/ProductDiscountsApi";
-
-export interface ProductDiscountsApiCreateDiscountUsingPOST2Request {
+    categoryId: string
     /**
      * request
-     * @type CreateProductDiscountRequest
-     * @memberof ProductDiscountsApicreateDiscountUsingPOST2
+     * @type AssignProductsRequest
+     * @memberof ProductCategoriesApiassignProductsToCategory
      */
-    createProductDiscountRequest: CreateProductDiscountRequest
+    assignProductsRequest: AssignProductsRequest
 }
 
-export interface ProductDiscountsApiDeleteDiscountUsingDELETE2Request {
+export interface ProductCategoriesApiCreateImageFileRequest {
     /**
-     * discount_id
+     * category_id
      * Defaults to: undefined
      * @type string
-     * @memberof ProductDiscountsApideleteDiscountUsingDELETE2
+     * @memberof ProductCategoriesApicreateImageFile
      */
-    discountId: string
+    categoryId: string
+    /**
+     * File to upload
+     * Defaults to: undefined
+     * @type HttpFile
+     * @memberof ProductCategoriesApicreateImageFile
+     */
+    file: HttpFile
 }
 
-export interface ProductDiscountsApiGetDiscountUsingGET2Request {
+export interface ProductCategoriesApiCreateProductCategoryRequest {
     /**
-     * discount_id
-     * Defaults to: undefined
-     * @type string
-     * @memberof ProductDiscountsApigetDiscountUsingGET2
+     * productCategory
+     * @type CreateProductCategoryRequest
+     * @memberof ProductCategoriesApicreateProductCategory
      */
-    discountId: string
+    createProductCategoryRequest?: CreateProductCategoryRequest
 }
 
-export interface ProductDiscountsApiListDiscountsUsingGETRequest {
+export interface ProductCategoriesApiDeleteImageFileRequest {
     /**
-     * Filter to apply, allowed fields are: - (Boolean) &#x60;apply_to_commissions&#x60; - (DiscountType) &#x60;discount_type&#x60;: AMOUNT or PERCENT - (Double) &#x60;discount_value&#x60; - (String) &#x60;product_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;apply_to_commissions%3D%3Dtrue&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT&#x60; - &#x60;filter&#x3D;discount_value%3D%3D10.0&#x60; - &#x60;filter&#x3D;product_id%3D%3D2&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT%3Bdiscount_value%3D%3D10.0&#x60; 
+     * category_id
      * Defaults to: undefined
      * @type string
-     * @memberof ProductDiscountsApilistDiscountsUsingGET
+     * @memberof ProductCategoriesApideleteImageFile
+     */
+    categoryId: string
+}
+
+export interface ProductCategoriesApiDeleteProductCategoryRequest {
+    /**
+     * category_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof ProductCategoriesApideleteProductCategory
+     */
+    categoryId: string
+}
+
+export interface ProductCategoriesApiGetProductCategoryRequest {
+    /**
+     * category_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof ProductCategoriesApigetProductCategory
+     */
+    categoryId: string
+}
+
+export interface ProductCategoriesApiListProductCategoriesRequest {
+    /**
+     * Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D29&#x60; 
+     * Defaults to: undefined
+     * @type string
+     * @memberof ProductCategoriesApilistProductCategories
      */
     filter?: string
     /**
-     * Attribute and direction to order items. One of the following fields: - &#x60;apply_to_commissions&#x60; - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60; - &#x60;product_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * Attribute and direction to order items. One of the following fields: - &#x60;id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * Defaults to: undefined
      * @type string
-     * @memberof ProductDiscountsApilistDiscountsUsingGET
+     * @memberof ProductCategoriesApilistProductCategories
      */
     orderBy?: string
     /**
@@ -6453,37 +5678,278 @@ export interface ProductDiscountsApiListDiscountsUsingGETRequest {
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
-     * @memberof ProductDiscountsApilistDiscountsUsingGET
+     * @memberof ProductCategoriesApilistProductCategories
      */
     pageSize?: number
     /**
      * Page token
      * Defaults to: undefined
      * @type string
-     * @memberof ProductDiscountsApilistDiscountsUsingGET
+     * @memberof ProductCategoriesApilistProductCategories
      */
     pageToken?: string
 }
 
-export interface ProductDiscountsApiUpdateDiscountUsingPATCH2Request {
+export interface ProductCategoriesApiUpdateProductCategoryRequest {
+    /**
+     * category_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof ProductCategoriesApiupdateProductCategory
+     */
+    categoryId: string
+    /**
+     * request
+     * @type UpdateProductCategoryRequest
+     * @memberof ProductCategoriesApiupdateProductCategory
+     */
+    updateProductCategoryRequest: UpdateProductCategoryRequest
+    /**
+     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * Defaults to: undefined
+     * @type Array&lt;string&gt;
+     * @memberof ProductCategoriesApiupdateProductCategory
+     */
+    updateMask?: Array<string>
+}
+
+export class ObjectProductCategoriesApi {
+    private api: ObservableProductCategoriesApi
+
+    public constructor(configuration: Configuration, requestFactory?: ProductCategoriesApiRequestFactory, responseProcessor?: ProductCategoriesApiResponseProcessor) {
+        this.api = new ObservableProductCategoriesApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Assigns products to a Product Category
+     * Assign Products to a Product Category
+     * @param param the request object
+     */
+    public assignProductsToCategoryWithHttpInfo(param: ProductCategoriesApiAssignProductsToCategoryRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.assignProductsToCategoryWithHttpInfo(param.categoryId, param.assignProductsRequest,  options).toPromise();
+    }
+
+    /**
+     * Assigns products to a Product Category
+     * Assign Products to a Product Category
+     * @param param the request object
+     */
+    public assignProductsToCategory(param: ProductCategoriesApiAssignProductsToCategoryRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.assignProductsToCategory(param.categoryId, param.assignProductsRequest,  options).toPromise();
+    }
+
+    /**
+     * Creates the product category image file and uploads it to the specified product category
+     * Create the product category image file
+     * @param param the request object
+     */
+    public createImageFileWithHttpInfo(param: ProductCategoriesApiCreateImageFileRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.createImageFileWithHttpInfo(param.categoryId, param.file,  options).toPromise();
+    }
+
+    /**
+     * Creates the product category image file and uploads it to the specified product category
+     * Create the product category image file
+     * @param param the request object
+     */
+    public createImageFile(param: ProductCategoriesApiCreateImageFileRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.createImageFile(param.categoryId, param.file,  options).toPromise();
+    }
+
+    /**
+     * Creates a new Product Category
+     * Create a Product Category
+     * @param param the request object
+     */
+    public createProductCategoryWithHttpInfo(param: ProductCategoriesApiCreateProductCategoryRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ProductCategory>> {
+        return this.api.createProductCategoryWithHttpInfo(param.createProductCategoryRequest,  options).toPromise();
+    }
+
+    /**
+     * Creates a new Product Category
+     * Create a Product Category
+     * @param param the request object
+     */
+    public createProductCategory(param: ProductCategoriesApiCreateProductCategoryRequest = {}, options?: ConfigurationOptions): Promise<ProductCategory> {
+        return this.api.createProductCategory(param.createProductCategoryRequest,  options).toPromise();
+    }
+
+    /**
+     * Deletes the image from the specified product category
+     * Delete the image from a product category
+     * @param param the request object
+     */
+    public deleteImageFileWithHttpInfo(param: ProductCategoriesApiDeleteImageFileRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteImageFileWithHttpInfo(param.categoryId,  options).toPromise();
+    }
+
+    /**
+     * Deletes the image from the specified product category
+     * Delete the image from a product category
+     * @param param the request object
+     */
+    public deleteImageFile(param: ProductCategoriesApiDeleteImageFileRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteImageFile(param.categoryId,  options).toPromise();
+    }
+
+    /**
+     * Deletes the specified Product Category, its sub-categories, and removes products from it
+     * Delete a Product Category
+     * @param param the request object
+     */
+    public deleteProductCategoryWithHttpInfo(param: ProductCategoriesApiDeleteProductCategoryRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteProductCategoryWithHttpInfo(param.categoryId,  options).toPromise();
+    }
+
+    /**
+     * Deletes the specified Product Category, its sub-categories, and removes products from it
+     * Delete a Product Category
+     * @param param the request object
+     */
+    public deleteProductCategory(param: ProductCategoriesApiDeleteProductCategoryRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteProductCategory(param.categoryId,  options).toPromise();
+    }
+
+    /**
+     * Gets a single Product Category
+     * Get a Product Category
+     * @param param the request object
+     */
+    public getProductCategoryWithHttpInfo(param: ProductCategoriesApiGetProductCategoryRequest, options?: ConfigurationOptions): Promise<HttpInfo<ProductCategory>> {
+        return this.api.getProductCategoryWithHttpInfo(param.categoryId,  options).toPromise();
+    }
+
+    /**
+     * Gets a single Product Category
+     * Get a Product Category
+     * @param param the request object
+     */
+    public getProductCategory(param: ProductCategoriesApiGetProductCategoryRequest, options?: ConfigurationOptions): Promise<ProductCategory> {
+        return this.api.getProductCategory(param.categoryId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of Product Categories
+     * List all Product Categories
+     * @param param the request object
+     */
+    public listProductCategoriesWithHttpInfo(param: ProductCategoriesApiListProductCategoriesRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListProductCategoriesResponse>> {
+        return this.api.listProductCategoriesWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of Product Categories
+     * List all Product Categories
+     * @param param the request object
+     */
+    public listProductCategories(param: ProductCategoriesApiListProductCategoriesRequest = {}, options?: ConfigurationOptions): Promise<ListProductCategoriesResponse> {
+        return this.api.listProductCategories(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    }
+
+    /**
+     * Updates a single Product Category
+     * Update a Product Category
+     * @param param the request object
+     */
+    public updateProductCategoryWithHttpInfo(param: ProductCategoriesApiUpdateProductCategoryRequest, options?: ConfigurationOptions): Promise<HttpInfo<ProductCategory>> {
+        return this.api.updateProductCategoryWithHttpInfo(param.categoryId, param.updateProductCategoryRequest, param.updateMask,  options).toPromise();
+    }
+
+    /**
+     * Updates a single Product Category
+     * Update a Product Category
+     * @param param the request object
+     */
+    public updateProductCategory(param: ProductCategoriesApiUpdateProductCategoryRequest, options?: ConfigurationOptions): Promise<ProductCategory> {
+        return this.api.updateProductCategory(param.categoryId, param.updateProductCategoryRequest, param.updateMask,  options).toPromise();
+    }
+
+}
+
+import { ObservableProductDiscountsApi } from "./ObservableAPI";
+import { ProductDiscountsApiRequestFactory, ProductDiscountsApiResponseProcessor} from "../apis/ProductDiscountsApi";
+
+export interface ProductDiscountsApiCreateProductDiscountRequest {
+    /**
+     * request
+     * @type CreateProductDiscountRequest
+     * @memberof ProductDiscountsApicreateProductDiscount
+     */
+    createProductDiscountRequest: CreateProductDiscountRequest
+}
+
+export interface ProductDiscountsApiDeleteProductDiscountRequest {
     /**
      * discount_id
      * Defaults to: undefined
      * @type string
-     * @memberof ProductDiscountsApiupdateDiscountUsingPATCH2
+     * @memberof ProductDiscountsApideleteProductDiscount
+     */
+    discountId: string
+}
+
+export interface ProductDiscountsApiGetProductDiscountRequest {
+    /**
+     * discount_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof ProductDiscountsApigetProductDiscount
+     */
+    discountId: string
+}
+
+export interface ProductDiscountsApiListProductDiscountsRequest {
+    /**
+     * Filter to apply, allowed fields are: - (Boolean) &#x60;apply_to_commissions&#x60; - (DiscountType) &#x60;discount_type&#x60;: AMOUNT or PERCENT - (Double) &#x60;discount_value&#x60; - (String) &#x60;product_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;apply_to_commissions%3D%3Dtrue&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT&#x60; - &#x60;filter&#x3D;discount_value%3D%3D10.0&#x60; - &#x60;filter&#x3D;product_id%3D%3D2&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT%3Bdiscount_value%3D%3D10.0&#x60; 
+     * Defaults to: undefined
+     * @type string
+     * @memberof ProductDiscountsApilistProductDiscounts
+     */
+    filter?: string
+    /**
+     * Attribute and direction to order items. One of the following fields: - &#x60;apply_to_commissions&#x60; - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60; - &#x60;name&#x60; - &#x60;product_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * Defaults to: undefined
+     * @type string
+     * @memberof ProductDiscountsApilistProductDiscounts
+     */
+    orderBy?: string
+    /**
+     * Total number of items to return per page
+     * Minimum: 1
+     * Maximum: 1000
+     * Defaults to: undefined
+     * @type number
+     * @memberof ProductDiscountsApilistProductDiscounts
+     */
+    pageSize?: number
+    /**
+     * Page token
+     * Defaults to: undefined
+     * @type string
+     * @memberof ProductDiscountsApilistProductDiscounts
+     */
+    pageToken?: string
+}
+
+export interface ProductDiscountsApiUpdateProductDiscountRequest {
+    /**
+     * discount_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof ProductDiscountsApiupdateProductDiscount
      */
     discountId: string
     /**
      * request
      * @type UpdateProductDiscountRequest
-     * @memberof ProductDiscountsApiupdateDiscountUsingPATCH2
+     * @memberof ProductDiscountsApiupdateProductDiscount
      */
     updateProductDiscountRequest: UpdateProductDiscountRequest
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
      * @type Array&lt;string&gt;
-     * @memberof ProductDiscountsApiupdateDiscountUsingPATCH2
+     * @memberof ProductDiscountsApiupdateProductDiscount
      */
     updateMask?: Array<string>
 }
@@ -6500,8 +5966,8 @@ export class ObjectProductDiscountsApi {
      * Create a Product Discount
      * @param param the request object
      */
-    public createDiscountUsingPOST2WithHttpInfo(param: ProductDiscountsApiCreateDiscountUsingPOST2Request, options?: ConfigurationOptions): Promise<HttpInfo<ProductDiscount>> {
-        return this.api.createDiscountUsingPOST2WithHttpInfo(param.createProductDiscountRequest,  options).toPromise();
+    public createProductDiscountWithHttpInfo(param: ProductDiscountsApiCreateProductDiscountRequest, options?: ConfigurationOptions): Promise<HttpInfo<ProductDiscount>> {
+        return this.api.createProductDiscountWithHttpInfo(param.createProductDiscountRequest,  options).toPromise();
     }
 
     /**
@@ -6509,8 +5975,8 @@ export class ObjectProductDiscountsApi {
      * Create a Product Discount
      * @param param the request object
      */
-    public createDiscountUsingPOST2(param: ProductDiscountsApiCreateDiscountUsingPOST2Request, options?: ConfigurationOptions): Promise<ProductDiscount> {
-        return this.api.createDiscountUsingPOST2(param.createProductDiscountRequest,  options).toPromise();
+    public createProductDiscount(param: ProductDiscountsApiCreateProductDiscountRequest, options?: ConfigurationOptions): Promise<ProductDiscount> {
+        return this.api.createProductDiscount(param.createProductDiscountRequest,  options).toPromise();
     }
 
     /**
@@ -6518,8 +5984,8 @@ export class ObjectProductDiscountsApi {
      * Delete a Product Discount
      * @param param the request object
      */
-    public deleteDiscountUsingDELETE2WithHttpInfo(param: ProductDiscountsApiDeleteDiscountUsingDELETE2Request, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api.deleteDiscountUsingDELETE2WithHttpInfo(param.discountId,  options).toPromise();
+    public deleteProductDiscountWithHttpInfo(param: ProductDiscountsApiDeleteProductDiscountRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteProductDiscountWithHttpInfo(param.discountId,  options).toPromise();
     }
 
     /**
@@ -6527,8 +5993,8 @@ export class ObjectProductDiscountsApi {
      * Delete a Product Discount
      * @param param the request object
      */
-    public deleteDiscountUsingDELETE2(param: ProductDiscountsApiDeleteDiscountUsingDELETE2Request, options?: ConfigurationOptions): Promise<void> {
-        return this.api.deleteDiscountUsingDELETE2(param.discountId,  options).toPromise();
+    public deleteProductDiscount(param: ProductDiscountsApiDeleteProductDiscountRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteProductDiscount(param.discountId,  options).toPromise();
     }
 
     /**
@@ -6536,8 +6002,8 @@ export class ObjectProductDiscountsApi {
      * Retrieve a Product Discount
      * @param param the request object
      */
-    public getDiscountUsingGET2WithHttpInfo(param: ProductDiscountsApiGetDiscountUsingGET2Request, options?: ConfigurationOptions): Promise<HttpInfo<ProductDiscount>> {
-        return this.api.getDiscountUsingGET2WithHttpInfo(param.discountId,  options).toPromise();
+    public getProductDiscountWithHttpInfo(param: ProductDiscountsApiGetProductDiscountRequest, options?: ConfigurationOptions): Promise<HttpInfo<ProductDiscount>> {
+        return this.api.getProductDiscountWithHttpInfo(param.discountId,  options).toPromise();
     }
 
     /**
@@ -6545,8 +6011,8 @@ export class ObjectProductDiscountsApi {
      * Retrieve a Product Discount
      * @param param the request object
      */
-    public getDiscountUsingGET2(param: ProductDiscountsApiGetDiscountUsingGET2Request, options?: ConfigurationOptions): Promise<ProductDiscount> {
-        return this.api.getDiscountUsingGET2(param.discountId,  options).toPromise();
+    public getProductDiscount(param: ProductDiscountsApiGetProductDiscountRequest, options?: ConfigurationOptions): Promise<ProductDiscount> {
+        return this.api.getProductDiscount(param.discountId,  options).toPromise();
     }
 
     /**
@@ -6554,8 +6020,8 @@ export class ObjectProductDiscountsApi {
      * List all Product Discounts
      * @param param the request object
      */
-    public listDiscountsUsingGETWithHttpInfo(param: ProductDiscountsApiListDiscountsUsingGETRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListProductDiscountsResponse>> {
-        return this.api.listDiscountsUsingGETWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listProductDiscountsWithHttpInfo(param: ProductDiscountsApiListProductDiscountsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListProductDiscountsResponse>> {
+        return this.api.listProductDiscountsWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -6563,8 +6029,8 @@ export class ObjectProductDiscountsApi {
      * List all Product Discounts
      * @param param the request object
      */
-    public listDiscountsUsingGET(param: ProductDiscountsApiListDiscountsUsingGETRequest = {}, options?: ConfigurationOptions): Promise<ListProductDiscountsResponse> {
-        return this.api.listDiscountsUsingGET(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listProductDiscounts(param: ProductDiscountsApiListProductDiscountsRequest = {}, options?: ConfigurationOptions): Promise<ListProductDiscountsResponse> {
+        return this.api.listProductDiscounts(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -6572,8 +6038,8 @@ export class ObjectProductDiscountsApi {
      * Update a Product Discount
      * @param param the request object
      */
-    public updateDiscountUsingPATCH2WithHttpInfo(param: ProductDiscountsApiUpdateDiscountUsingPATCH2Request, options?: ConfigurationOptions): Promise<HttpInfo<ProductDiscount>> {
-        return this.api.updateDiscountUsingPATCH2WithHttpInfo(param.discountId, param.updateProductDiscountRequest, param.updateMask,  options).toPromise();
+    public updateProductDiscountWithHttpInfo(param: ProductDiscountsApiUpdateProductDiscountRequest, options?: ConfigurationOptions): Promise<HttpInfo<ProductDiscount>> {
+        return this.api.updateProductDiscountWithHttpInfo(param.discountId, param.updateProductDiscountRequest, param.updateMask,  options).toPromise();
     }
 
     /**
@@ -6581,8 +6047,8 @@ export class ObjectProductDiscountsApi {
      * Update a Product Discount
      * @param param the request object
      */
-    public updateDiscountUsingPATCH2(param: ProductDiscountsApiUpdateDiscountUsingPATCH2Request, options?: ConfigurationOptions): Promise<ProductDiscount> {
-        return this.api.updateDiscountUsingPATCH2(param.discountId, param.updateProductDiscountRequest, param.updateMask,  options).toPromise();
+    public updateProductDiscount(param: ProductDiscountsApiUpdateProductDiscountRequest, options?: ConfigurationOptions): Promise<ProductDiscount> {
+        return this.api.updateProductDiscount(param.discountId, param.updateProductDiscountRequest, param.updateMask,  options).toPromise();
     }
 
 }
@@ -6590,64 +6056,64 @@ export class ObjectProductDiscountsApi {
 import { ObservableProductInterestBundlesApi } from "./ObservableAPI";
 import { ProductInterestBundlesApiRequestFactory, ProductInterestBundlesApiResponseProcessor} from "../apis/ProductInterestBundlesApi";
 
-export interface ProductInterestBundlesApiAddProductInterestUsingPOSTRequest {
+export interface ProductInterestBundlesApiAddProductInterestRequest {
     /**
      * id
      * Defaults to: undefined
      * @type string
-     * @memberof ProductInterestBundlesApiaddProductInterestUsingPOST
+     * @memberof ProductInterestBundlesApiaddProductInterest
      */
     id: string
     /**
      * request
      * @type AddProductInterestRequest
-     * @memberof ProductInterestBundlesApiaddProductInterestUsingPOST
+     * @memberof ProductInterestBundlesApiaddProductInterest
      */
     addProductInterestRequest: AddProductInterestRequest
 }
 
-export interface ProductInterestBundlesApiCreateProductInterestBundleUsingPOSTRequest {
+export interface ProductInterestBundlesApiCreateProductInterestBundleRequest {
     /**
      * createProductInterestBundleRequest
      * @type CreateProductInterestBundleRequest
-     * @memberof ProductInterestBundlesApicreateProductInterestBundleUsingPOST
+     * @memberof ProductInterestBundlesApicreateProductInterestBundle
      */
     createProductInterestBundleRequest: CreateProductInterestBundleRequest
 }
 
-export interface ProductInterestBundlesApiDeleteProductInterestBundleUsingDELETERequest {
+export interface ProductInterestBundlesApiDeleteProductInterestBundleRequest {
     /**
      * id
      * Defaults to: undefined
      * @type string
-     * @memberof ProductInterestBundlesApideleteProductInterestBundleUsingDELETE
+     * @memberof ProductInterestBundlesApideleteProductInterestBundle
      */
     id: string
 }
 
-export interface ProductInterestBundlesApiGetProductInterestBundleUsingGETRequest {
+export interface ProductInterestBundlesApiGetProductInterestBundleRequest {
     /**
      * id
      * Defaults to: undefined
      * @type string
-     * @memberof ProductInterestBundlesApigetProductInterestBundleUsingGET
+     * @memberof ProductInterestBundlesApigetProductInterestBundle
      */
     id: string
 }
 
-export interface ProductInterestBundlesApiListProductInterestBundlesUsingGETRequest {
+export interface ProductInterestBundlesApiListProductInterestBundlesRequest {
     /**
      * Filter to apply, allowed fields are: - (String) &#x60;name&#x60; 
      * Defaults to: undefined
      * @type string
-     * @memberof ProductInterestBundlesApilistProductInterestBundlesUsingGET
+     * @memberof ProductInterestBundlesApilistProductInterestBundles
      */
     filter?: string
     /**
      * Attribute and direction to order items. One of the following fields: - &#x60;name&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; 
      * Defaults to: undefined
      * @type string
-     * @memberof ProductInterestBundlesApilistProductInterestBundlesUsingGET
+     * @memberof ProductInterestBundlesApilistProductInterestBundles
      */
     orderBy?: string
     /**
@@ -6656,84 +6122,84 @@ export interface ProductInterestBundlesApiListProductInterestBundlesUsingGETRequ
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
-     * @memberof ProductInterestBundlesApilistProductInterestBundlesUsingGET
+     * @memberof ProductInterestBundlesApilistProductInterestBundles
      */
     pageSize?: number
     /**
      * Page token
      * Defaults to: undefined
      * @type string
-     * @memberof ProductInterestBundlesApilistProductInterestBundlesUsingGET
+     * @memberof ProductInterestBundlesApilistProductInterestBundles
      */
     pageToken?: string
 }
 
-export interface ProductInterestBundlesApiRemoveProductInterestUsingDELETERequest {
+export interface ProductInterestBundlesApiRemoveProductInterestRequest {
     /**
      * id
      * Defaults to: undefined
      * @type string
-     * @memberof ProductInterestBundlesApiremoveProductInterestUsingDELETE
+     * @memberof ProductInterestBundlesApiremoveProductInterest
      */
     id: string
     /**
      * interest_id
      * Defaults to: undefined
      * @type string
-     * @memberof ProductInterestBundlesApiremoveProductInterestUsingDELETE
+     * @memberof ProductInterestBundlesApiremoveProductInterest
      */
     interestId: string
 }
 
-export interface ProductInterestBundlesApiUpdateProductInterestBundleUsingPATCHRequest {
+export interface ProductInterestBundlesApiUpdateProductInterestRequest {
     /**
      * id
      * Defaults to: undefined
      * @type string
-     * @memberof ProductInterestBundlesApiupdateProductInterestBundleUsingPATCH
-     */
-    id: string
-    /**
-     * updateProductInterestBundleRequest
-     * @type UpdateProductInterestBundleRequest
-     * @memberof ProductInterestBundlesApiupdateProductInterestBundleUsingPATCH
-     */
-    updateProductInterestBundleRequest: UpdateProductInterestBundleRequest
-    /**
-     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-     * Defaults to: undefined
-     * @type Array&lt;string&gt;
-     * @memberof ProductInterestBundlesApiupdateProductInterestBundleUsingPATCH
-     */
-    updateMask?: Array<string>
-}
-
-export interface ProductInterestBundlesApiUpdateProductInterestUsingPATCHRequest {
-    /**
-     * id
-     * Defaults to: undefined
-     * @type string
-     * @memberof ProductInterestBundlesApiupdateProductInterestUsingPATCH
+     * @memberof ProductInterestBundlesApiupdateProductInterest
      */
     id: string
     /**
      * interest_id
      * Defaults to: undefined
      * @type string
-     * @memberof ProductInterestBundlesApiupdateProductInterestUsingPATCH
+     * @memberof ProductInterestBundlesApiupdateProductInterest
      */
     interestId: string
     /**
      * updateProductInterestRequest
      * @type UpdateProductInterestRequest
-     * @memberof ProductInterestBundlesApiupdateProductInterestUsingPATCH
+     * @memberof ProductInterestBundlesApiupdateProductInterest
      */
     updateProductInterestRequest: UpdateProductInterestRequest
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
      * @type Array&lt;string&gt;
-     * @memberof ProductInterestBundlesApiupdateProductInterestUsingPATCH
+     * @memberof ProductInterestBundlesApiupdateProductInterest
+     */
+    updateMask?: Array<string>
+}
+
+export interface ProductInterestBundlesApiUpdateProductInterestBundleRequest {
+    /**
+     * id
+     * Defaults to: undefined
+     * @type string
+     * @memberof ProductInterestBundlesApiupdateProductInterestBundle
+     */
+    id: string
+    /**
+     * updateProductInterestBundleRequest
+     * @type UpdateProductInterestBundleRequest
+     * @memberof ProductInterestBundlesApiupdateProductInterestBundle
+     */
+    updateProductInterestBundleRequest: UpdateProductInterestBundleRequest
+    /**
+     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * Defaults to: undefined
+     * @type Array&lt;string&gt;
+     * @memberof ProductInterestBundlesApiupdateProductInterestBundle
      */
     updateMask?: Array<string>
 }
@@ -6750,8 +6216,8 @@ export class ObjectProductInterestBundlesApi {
      * Create a Product Interest in an existing Bundle
      * @param param the request object
      */
-    public addProductInterestUsingPOSTWithHttpInfo(param: ProductInterestBundlesApiAddProductInterestUsingPOSTRequest, options?: ConfigurationOptions): Promise<HttpInfo<ProductInterest>> {
-        return this.api.addProductInterestUsingPOSTWithHttpInfo(param.id, param.addProductInterestRequest,  options).toPromise();
+    public addProductInterestWithHttpInfo(param: ProductInterestBundlesApiAddProductInterestRequest, options?: ConfigurationOptions): Promise<HttpInfo<ProductInterest>> {
+        return this.api.addProductInterestWithHttpInfo(param.id, param.addProductInterestRequest,  options).toPromise();
     }
 
     /**
@@ -6759,8 +6225,8 @@ export class ObjectProductInterestBundlesApi {
      * Create a Product Interest in an existing Bundle
      * @param param the request object
      */
-    public addProductInterestUsingPOST(param: ProductInterestBundlesApiAddProductInterestUsingPOSTRequest, options?: ConfigurationOptions): Promise<ProductInterest> {
-        return this.api.addProductInterestUsingPOST(param.id, param.addProductInterestRequest,  options).toPromise();
+    public addProductInterest(param: ProductInterestBundlesApiAddProductInterestRequest, options?: ConfigurationOptions): Promise<ProductInterest> {
+        return this.api.addProductInterest(param.id, param.addProductInterestRequest,  options).toPromise();
     }
 
     /**
@@ -6768,8 +6234,8 @@ export class ObjectProductInterestBundlesApi {
      * Create a Product Interest Bundle
      * @param param the request object
      */
-    public createProductInterestBundleUsingPOSTWithHttpInfo(param: ProductInterestBundlesApiCreateProductInterestBundleUsingPOSTRequest, options?: ConfigurationOptions): Promise<HttpInfo<ProductInterestBundle>> {
-        return this.api.createProductInterestBundleUsingPOSTWithHttpInfo(param.createProductInterestBundleRequest,  options).toPromise();
+    public createProductInterestBundleWithHttpInfo(param: ProductInterestBundlesApiCreateProductInterestBundleRequest, options?: ConfigurationOptions): Promise<HttpInfo<ProductInterestBundle>> {
+        return this.api.createProductInterestBundleWithHttpInfo(param.createProductInterestBundleRequest,  options).toPromise();
     }
 
     /**
@@ -6777,8 +6243,8 @@ export class ObjectProductInterestBundlesApi {
      * Create a Product Interest Bundle
      * @param param the request object
      */
-    public createProductInterestBundleUsingPOST(param: ProductInterestBundlesApiCreateProductInterestBundleUsingPOSTRequest, options?: ConfigurationOptions): Promise<ProductInterestBundle> {
-        return this.api.createProductInterestBundleUsingPOST(param.createProductInterestBundleRequest,  options).toPromise();
+    public createProductInterestBundle(param: ProductInterestBundlesApiCreateProductInterestBundleRequest, options?: ConfigurationOptions): Promise<ProductInterestBundle> {
+        return this.api.createProductInterestBundle(param.createProductInterestBundleRequest,  options).toPromise();
     }
 
     /**
@@ -6786,8 +6252,8 @@ export class ObjectProductInterestBundlesApi {
      * Delete a Product Interest Bundle
      * @param param the request object
      */
-    public deleteProductInterestBundleUsingDELETEWithHttpInfo(param: ProductInterestBundlesApiDeleteProductInterestBundleUsingDELETERequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api.deleteProductInterestBundleUsingDELETEWithHttpInfo(param.id,  options).toPromise();
+    public deleteProductInterestBundleWithHttpInfo(param: ProductInterestBundlesApiDeleteProductInterestBundleRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteProductInterestBundleWithHttpInfo(param.id,  options).toPromise();
     }
 
     /**
@@ -6795,8 +6261,8 @@ export class ObjectProductInterestBundlesApi {
      * Delete a Product Interest Bundle
      * @param param the request object
      */
-    public deleteProductInterestBundleUsingDELETE(param: ProductInterestBundlesApiDeleteProductInterestBundleUsingDELETERequest, options?: ConfigurationOptions): Promise<void> {
-        return this.api.deleteProductInterestBundleUsingDELETE(param.id,  options).toPromise();
+    public deleteProductInterestBundle(param: ProductInterestBundlesApiDeleteProductInterestBundleRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteProductInterestBundle(param.id,  options).toPromise();
     }
 
     /**
@@ -6804,8 +6270,8 @@ export class ObjectProductInterestBundlesApi {
      * Get a Product Interest Bundle
      * @param param the request object
      */
-    public getProductInterestBundleUsingGETWithHttpInfo(param: ProductInterestBundlesApiGetProductInterestBundleUsingGETRequest, options?: ConfigurationOptions): Promise<HttpInfo<ProductInterestBundle>> {
-        return this.api.getProductInterestBundleUsingGETWithHttpInfo(param.id,  options).toPromise();
+    public getProductInterestBundleWithHttpInfo(param: ProductInterestBundlesApiGetProductInterestBundleRequest, options?: ConfigurationOptions): Promise<HttpInfo<ProductInterestBundle>> {
+        return this.api.getProductInterestBundleWithHttpInfo(param.id,  options).toPromise();
     }
 
     /**
@@ -6813,8 +6279,8 @@ export class ObjectProductInterestBundlesApi {
      * Get a Product Interest Bundle
      * @param param the request object
      */
-    public getProductInterestBundleUsingGET(param: ProductInterestBundlesApiGetProductInterestBundleUsingGETRequest, options?: ConfigurationOptions): Promise<ProductInterestBundle> {
-        return this.api.getProductInterestBundleUsingGET(param.id,  options).toPromise();
+    public getProductInterestBundle(param: ProductInterestBundlesApiGetProductInterestBundleRequest, options?: ConfigurationOptions): Promise<ProductInterestBundle> {
+        return this.api.getProductInterestBundle(param.id,  options).toPromise();
     }
 
     /**
@@ -6822,8 +6288,8 @@ export class ObjectProductInterestBundlesApi {
      * List Product Interest Bundles
      * @param param the request object
      */
-    public listProductInterestBundlesUsingGETWithHttpInfo(param: ProductInterestBundlesApiListProductInterestBundlesUsingGETRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListProductInterestBundleResponse>> {
-        return this.api.listProductInterestBundlesUsingGETWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listProductInterestBundlesWithHttpInfo(param: ProductInterestBundlesApiListProductInterestBundlesRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListProductInterestBundleResponse>> {
+        return this.api.listProductInterestBundlesWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -6831,8 +6297,8 @@ export class ObjectProductInterestBundlesApi {
      * List Product Interest Bundles
      * @param param the request object
      */
-    public listProductInterestBundlesUsingGET(param: ProductInterestBundlesApiListProductInterestBundlesUsingGETRequest = {}, options?: ConfigurationOptions): Promise<ListProductInterestBundleResponse> {
-        return this.api.listProductInterestBundlesUsingGET(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listProductInterestBundles(param: ProductInterestBundlesApiListProductInterestBundlesRequest = {}, options?: ConfigurationOptions): Promise<ListProductInterestBundleResponse> {
+        return this.api.listProductInterestBundles(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -6840,8 +6306,8 @@ export class ObjectProductInterestBundlesApi {
      * Delete a Product Interest from an existing Bundle
      * @param param the request object
      */
-    public removeProductInterestUsingDELETEWithHttpInfo(param: ProductInterestBundlesApiRemoveProductInterestUsingDELETERequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api.removeProductInterestUsingDELETEWithHttpInfo(param.id, param.interestId,  options).toPromise();
+    public removeProductInterestWithHttpInfo(param: ProductInterestBundlesApiRemoveProductInterestRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.removeProductInterestWithHttpInfo(param.id, param.interestId,  options).toPromise();
     }
 
     /**
@@ -6849,26 +6315,8 @@ export class ObjectProductInterestBundlesApi {
      * Delete a Product Interest from an existing Bundle
      * @param param the request object
      */
-    public removeProductInterestUsingDELETE(param: ProductInterestBundlesApiRemoveProductInterestUsingDELETERequest, options?: ConfigurationOptions): Promise<void> {
-        return this.api.removeProductInterestUsingDELETE(param.id, param.interestId,  options).toPromise();
-    }
-
-    /**
-     * Updates an existing Product Interest Bundle.
-     * Update a Product Interest Bundle
-     * @param param the request object
-     */
-    public updateProductInterestBundleUsingPATCHWithHttpInfo(param: ProductInterestBundlesApiUpdateProductInterestBundleUsingPATCHRequest, options?: ConfigurationOptions): Promise<HttpInfo<ProductInterestBundle>> {
-        return this.api.updateProductInterestBundleUsingPATCHWithHttpInfo(param.id, param.updateProductInterestBundleRequest, param.updateMask,  options).toPromise();
-    }
-
-    /**
-     * Updates an existing Product Interest Bundle.
-     * Update a Product Interest Bundle
-     * @param param the request object
-     */
-    public updateProductInterestBundleUsingPATCH(param: ProductInterestBundlesApiUpdateProductInterestBundleUsingPATCHRequest, options?: ConfigurationOptions): Promise<ProductInterestBundle> {
-        return this.api.updateProductInterestBundleUsingPATCH(param.id, param.updateProductInterestBundleRequest, param.updateMask,  options).toPromise();
+    public removeProductInterest(param: ProductInterestBundlesApiRemoveProductInterestRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.removeProductInterest(param.id, param.interestId,  options).toPromise();
     }
 
     /**
@@ -6876,8 +6324,8 @@ export class ObjectProductInterestBundlesApi {
      * Update a Product Interest in an existing Bundle
      * @param param the request object
      */
-    public updateProductInterestUsingPATCHWithHttpInfo(param: ProductInterestBundlesApiUpdateProductInterestUsingPATCHRequest, options?: ConfigurationOptions): Promise<HttpInfo<ProductInterest>> {
-        return this.api.updateProductInterestUsingPATCHWithHttpInfo(param.id, param.interestId, param.updateProductInterestRequest, param.updateMask,  options).toPromise();
+    public updateProductInterestWithHttpInfo(param: ProductInterestBundlesApiUpdateProductInterestRequest, options?: ConfigurationOptions): Promise<HttpInfo<ProductInterest>> {
+        return this.api.updateProductInterestWithHttpInfo(param.id, param.interestId, param.updateProductInterestRequest, param.updateMask,  options).toPromise();
     }
 
     /**
@@ -6885,28 +6333,118 @@ export class ObjectProductInterestBundlesApi {
      * Update a Product Interest in an existing Bundle
      * @param param the request object
      */
-    public updateProductInterestUsingPATCH(param: ProductInterestBundlesApiUpdateProductInterestUsingPATCHRequest, options?: ConfigurationOptions): Promise<ProductInterest> {
-        return this.api.updateProductInterestUsingPATCH(param.id, param.interestId, param.updateProductInterestRequest, param.updateMask,  options).toPromise();
+    public updateProductInterest(param: ProductInterestBundlesApiUpdateProductInterestRequest, options?: ConfigurationOptions): Promise<ProductInterest> {
+        return this.api.updateProductInterest(param.id, param.interestId, param.updateProductInterestRequest, param.updateMask,  options).toPromise();
+    }
+
+    /**
+     * Updates an existing Product Interest Bundle.
+     * Update a Product Interest Bundle
+     * @param param the request object
+     */
+    public updateProductInterestBundleWithHttpInfo(param: ProductInterestBundlesApiUpdateProductInterestBundleRequest, options?: ConfigurationOptions): Promise<HttpInfo<ProductInterestBundle>> {
+        return this.api.updateProductInterestBundleWithHttpInfo(param.id, param.updateProductInterestBundleRequest, param.updateMask,  options).toPromise();
+    }
+
+    /**
+     * Updates an existing Product Interest Bundle.
+     * Update a Product Interest Bundle
+     * @param param the request object
+     */
+    public updateProductInterestBundle(param: ProductInterestBundlesApiUpdateProductInterestBundleRequest, options?: ConfigurationOptions): Promise<ProductInterestBundle> {
+        return this.api.updateProductInterestBundle(param.id, param.updateProductInterestBundleRequest, param.updateMask,  options).toPromise();
     }
 
 }
 
-import { ObservableReportingApi } from "./ObservableAPI";
-import { ReportingApiRequestFactory, ReportingApiResponseProcessor} from "../apis/ReportingApi";
+import { ObservableProductsApi } from "./ObservableAPI";
+import { ProductsApiRequestFactory, ProductsApiResponseProcessor} from "../apis/ProductsApi";
 
-export interface ReportingApiListReportsUsingGETRequest {
+export interface ProductsApiAdjustInventoryRequest {
     /**
-     * Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (DateTime) &#x60;since_created_time&#x60; - (DateTime) &#x60;until_created_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched  word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; 
+     * product_id
      * Defaults to: undefined
      * @type string
-     * @memberof ReportingApilistReportsUsingGET
+     * @memberof ProductsApiadjustInventory
+     */
+    productId: string
+    /**
+     * updateProductInventoryRequest
+     * @type UpdateProductInventoryRequest
+     * @memberof ProductsApiadjustInventory
+     */
+    updateProductInventoryRequest: UpdateProductInventoryRequest
+}
+
+export interface ProductsApiCreateProductRequest {
+    /**
+     * createProductRequest
+     * @type CreateProductRequest
+     * @memberof ProductsApicreateProduct
+     */
+    createProductRequest: CreateProductRequest
+}
+
+export interface ProductsApiCreateProductImageRequest {
+    /**
+     * product_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof ProductsApicreateProductImage
+     */
+    productId: string
+    /**
+     * File to upload
+     * Defaults to: undefined
+     * @type HttpFile
+     * @memberof ProductsApicreateProductImage
+     */
+    file: HttpFile
+}
+
+export interface ProductsApiDeleteProductRequest {
+    /**
+     * product_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof ProductsApideleteProduct
+     */
+    productId: string
+}
+
+export interface ProductsApiDeleteProductImageRequest {
+    /**
+     * product_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof ProductsApideleteProductImage
+     */
+    productId: string
+}
+
+export interface ProductsApiGetProductRequest {
+    /**
+     * product_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof ProductsApigetProduct
+     */
+    productId: string
+}
+
+export interface ProductsApiListProductsRequest {
+    /**
+     * Filter to apply, allowed fields are: - (String) &#x60;name&#x60; 
+     * Defaults to: undefined
+     * @type string
+     * @memberof ProductsApilistProducts
      */
     filter?: string
     /**
-     * Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;created_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * Attribute and direction to order items. One of the following fields: - &#x60;name&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * Defaults to: undefined
      * @type string
-     * @memberof ReportingApilistReportsUsingGET
+     * @memberof ProductsApilistProducts
      */
     orderBy?: string
     /**
@@ -6915,48 +6453,260 @@ export interface ReportingApiListReportsUsingGETRequest {
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
-     * @memberof ReportingApilistReportsUsingGET
+     * @memberof ProductsApilistProducts
      */
     pageSize?: number
     /**
      * Page token
      * Defaults to: undefined
      * @type string
-     * @memberof ReportingApilistReportsUsingGET
+     * @memberof ProductsApilistProducts
      */
     pageToken?: string
 }
 
-export interface ReportingApiRetrieveReportUsingGETRequest {
+export interface ProductsApiUpdateProductRequest {
+    /**
+     * product_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof ProductsApiupdateProduct
+     */
+    productId: string
+    /**
+     * updateProductRequest
+     * @type UpdateProductRequest
+     * @memberof ProductsApiupdateProduct
+     */
+    updateProductRequest: UpdateProductRequest
+    /**
+     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * Defaults to: undefined
+     * @type Array&lt;string&gt;
+     * @memberof ProductsApiupdateProduct
+     */
+    updateMask?: Array<string>
+}
+
+export class ObjectProductsApi {
+    private api: ObservableProductsApi
+
+    public constructor(configuration: Configuration, requestFactory?: ProductsApiRequestFactory, responseProcessor?: ProductsApiResponseProcessor) {
+        this.api = new ObservableProductsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Increase or decrease the quantity of the Product
+     * Adjust Inventory of a Product
+     * @param param the request object
+     */
+    public adjustInventoryWithHttpInfo(param: ProductsApiAdjustInventoryRequest, options?: ConfigurationOptions): Promise<HttpInfo<RestV2Product>> {
+        return this.api.adjustInventoryWithHttpInfo(param.productId, param.updateProductInventoryRequest,  options).toPromise();
+    }
+
+    /**
+     * Increase or decrease the quantity of the Product
+     * Adjust Inventory of a Product
+     * @param param the request object
+     */
+    public adjustInventory(param: ProductsApiAdjustInventoryRequest, options?: ConfigurationOptions): Promise<RestV2Product> {
+        return this.api.adjustInventory(param.productId, param.updateProductInventoryRequest,  options).toPromise();
+    }
+
+    /**
+     * Creates a new product
+     * Create a Product
+     * @param param the request object
+     */
+    public createProductWithHttpInfo(param: ProductsApiCreateProductRequest, options?: ConfigurationOptions): Promise<HttpInfo<RestV2Product>> {
+        return this.api.createProductWithHttpInfo(param.createProductRequest,  options).toPromise();
+    }
+
+    /**
+     * Creates a new product
+     * Create a Product
+     * @param param the request object
+     */
+    public createProduct(param: ProductsApiCreateProductRequest, options?: ConfigurationOptions): Promise<RestV2Product> {
+        return this.api.createProduct(param.createProductRequest,  options).toPromise();
+    }
+
+    /**
+     * Creates the Product Image file and uploads it to the specified Product
+     * Create the Product Image
+     * @param param the request object
+     */
+    public createProductImageWithHttpInfo(param: ProductsApiCreateProductImageRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.createProductImageWithHttpInfo(param.productId, param.file,  options).toPromise();
+    }
+
+    /**
+     * Creates the Product Image file and uploads it to the specified Product
+     * Create the Product Image
+     * @param param the request object
+     */
+    public createProductImage(param: ProductsApiCreateProductImageRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.createProductImage(param.productId, param.file,  options).toPromise();
+    }
+
+    /**
+     * Deletes a single product
+     * Delete a Product
+     * @param param the request object
+     */
+    public deleteProductWithHttpInfo(param: ProductsApiDeleteProductRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteProductWithHttpInfo(param.productId,  options).toPromise();
+    }
+
+    /**
+     * Deletes a single product
+     * Delete a Product
+     * @param param the request object
+     */
+    public deleteProduct(param: ProductsApiDeleteProductRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteProduct(param.productId,  options).toPromise();
+    }
+
+    /**
+     * Deletes the Product Image from the specified Product
+     * Delete the Product Image
+     * @param param the request object
+     */
+    public deleteProductImageWithHttpInfo(param: ProductsApiDeleteProductImageRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteProductImageWithHttpInfo(param.productId,  options).toPromise();
+    }
+
+    /**
+     * Deletes the Product Image from the specified Product
+     * Delete the Product Image
+     * @param param the request object
+     */
+    public deleteProductImage(param: ProductsApiDeleteProductImageRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteProductImage(param.productId,  options).toPromise();
+    }
+
+    /**
+     * Gets a single Product
+     * Get a Product
+     * @param param the request object
+     */
+    public getProductWithHttpInfo(param: ProductsApiGetProductRequest, options?: ConfigurationOptions): Promise<HttpInfo<RestV2Product>> {
+        return this.api.getProductWithHttpInfo(param.productId,  options).toPromise();
+    }
+
+    /**
+     * Gets a single Product
+     * Get a Product
+     * @param param the request object
+     */
+    public getProduct(param: ProductsApiGetProductRequest, options?: ConfigurationOptions): Promise<RestV2Product> {
+        return this.api.getProduct(param.productId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of Products
+     * List Products
+     * @param param the request object
+     */
+    public listProductsWithHttpInfo(param: ProductsApiListProductsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListProductsResponse>> {
+        return this.api.listProductsWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of Products
+     * List Products
+     * @param param the request object
+     */
+    public listProducts(param: ProductsApiListProductsRequest = {}, options?: ConfigurationOptions): Promise<ListProductsResponse> {
+        return this.api.listProducts(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    }
+
+    /**
+     * Updates a product
+     * Update a Product
+     * @param param the request object
+     */
+    public updateProductWithHttpInfo(param: ProductsApiUpdateProductRequest, options?: ConfigurationOptions): Promise<HttpInfo<RestV2Product>> {
+        return this.api.updateProductWithHttpInfo(param.productId, param.updateProductRequest, param.updateMask,  options).toPromise();
+    }
+
+    /**
+     * Updates a product
+     * Update a Product
+     * @param param the request object
+     */
+    public updateProduct(param: ProductsApiUpdateProductRequest, options?: ConfigurationOptions): Promise<RestV2Product> {
+        return this.api.updateProduct(param.productId, param.updateProductRequest, param.updateMask,  options).toPromise();
+    }
+
+}
+
+import { ObservableReportingApi } from "./ObservableAPI";
+import { ReportingApiRequestFactory, ReportingApiResponseProcessor} from "../apis/ReportingApi";
+
+export interface ReportingApiListReportsRequest {
+    /**
+     * Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (DateTime) &#x60;since_created_time&#x60; - (DateTime) &#x60;until_created_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched  word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; 
+     * Defaults to: undefined
+     * @type string
+     * @memberof ReportingApilistReports
+     */
+    filter?: string
+    /**
+     * Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;created_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * Defaults to: undefined
+     * @type string
+     * @memberof ReportingApilistReports
+     */
+    orderBy?: string
+    /**
+     * Total number of items to return per page
+     * Minimum: 1
+     * Maximum: 1000
+     * Defaults to: undefined
+     * @type number
+     * @memberof ReportingApilistReports
+     */
+    pageSize?: number
+    /**
+     * Page token
+     * Defaults to: undefined
+     * @type string
+     * @memberof ReportingApilistReports
+     */
+    pageToken?: string
+}
+
+export interface ReportingApiRetrieveReportRequest {
     /**
      * report_id
      * Defaults to: undefined
      * @type string
-     * @memberof ReportingApiretrieveReportUsingGET
+     * @memberof ReportingApiretrieveReport
      */
     reportId: string
 }
 
-export interface ReportingApiRunReportUsingPOSTRequest {
+export interface ReportingApiRunReportRequest {
     /**
      * The unique identifier of the report (Saved Search) to execute
      * Defaults to: undefined
      * @type string
-     * @memberof ReportingApirunReportUsingPOST
+     * @memberof ReportingApirunReport
      */
     reportId: string
     /**
      * Comma-separated list of fields to return (or do not supply a value to return all)
      * Defaults to: undefined
      * @type string
-     * @memberof ReportingApirunReportUsingPOST
+     * @memberof ReportingApirunReport
      */
     fields?: string
     /**
      * Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60;
      * Defaults to: undefined
      * @type string
-     * @memberof ReportingApirunReportUsingPOST
+     * @memberof ReportingApirunReport
      */
     orderBy?: string
     /**
@@ -6965,14 +6715,14 @@ export interface ReportingApiRunReportUsingPOSTRequest {
      * Maximum: 1000
      * Defaults to: 1000
      * @type number
-     * @memberof ReportingApirunReportUsingPOST
+     * @memberof ReportingApirunReport
      */
     pageSize?: number
     /**
      * Representation of the last row retrieved from the previous page. An empty value implies a request for the first page.
      * Defaults to: undefined
      * @type string
-     * @memberof ReportingApirunReportUsingPOST
+     * @memberof ReportingApirunReport
      */
     pageToken?: string
 }
@@ -6989,8 +6739,8 @@ export class ObjectReportingApi {
      * List Reports
      * @param param the request object
      */
-    public listReportsUsingGETWithHttpInfo(param: ReportingApiListReportsUsingGETRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListReportsResponse>> {
-        return this.api.listReportsUsingGETWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listReportsWithHttpInfo(param: ReportingApiListReportsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListReportsResponse>> {
+        return this.api.listReportsWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -6998,8 +6748,8 @@ export class ObjectReportingApi {
      * List Reports
      * @param param the request object
      */
-    public listReportsUsingGET(param: ReportingApiListReportsUsingGETRequest = {}, options?: ConfigurationOptions): Promise<ListReportsResponse> {
-        return this.api.listReportsUsingGET(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listReports(param: ReportingApiListReportsRequest = {}, options?: ConfigurationOptions): Promise<ListReportsResponse> {
+        return this.api.listReports(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -7007,8 +6757,8 @@ export class ObjectReportingApi {
      * Retrieve Report
      * @param param the request object
      */
-    public retrieveReportUsingGETWithHttpInfo(param: ReportingApiRetrieveReportUsingGETRequest, options?: ConfigurationOptions): Promise<HttpInfo<Report>> {
-        return this.api.retrieveReportUsingGETWithHttpInfo(param.reportId,  options).toPromise();
+    public retrieveReportWithHttpInfo(param: ReportingApiRetrieveReportRequest, options?: ConfigurationOptions): Promise<HttpInfo<Report>> {
+        return this.api.retrieveReportWithHttpInfo(param.reportId,  options).toPromise();
     }
 
     /**
@@ -7016,8 +6766,8 @@ export class ObjectReportingApi {
      * Retrieve Report
      * @param param the request object
      */
-    public retrieveReportUsingGET(param: ReportingApiRetrieveReportUsingGETRequest, options?: ConfigurationOptions): Promise<Report> {
-        return this.api.retrieveReportUsingGET(param.reportId,  options).toPromise();
+    public retrieveReport(param: ReportingApiRetrieveReportRequest, options?: ConfigurationOptions): Promise<Report> {
+        return this.api.retrieveReport(param.reportId,  options).toPromise();
     }
 
     /**
@@ -7025,8 +6775,8 @@ export class ObjectReportingApi {
      * Run a Report
      * @param param the request object
      */
-    public runReportUsingPOSTWithHttpInfo(param: ReportingApiRunReportUsingPOSTRequest, options?: ConfigurationOptions): Promise<HttpInfo<ReportExecutionResult>> {
-        return this.api.runReportUsingPOSTWithHttpInfo(param.reportId, param.fields, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public runReportWithHttpInfo(param: ReportingApiRunReportRequest, options?: ConfigurationOptions): Promise<HttpInfo<ReportExecutionResult>> {
+        return this.api.runReportWithHttpInfo(param.reportId, param.fields, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -7034,8 +6784,8 @@ export class ObjectReportingApi {
      * Run a Report
      * @param param the request object
      */
-    public runReportUsingPOST(param: ReportingApiRunReportUsingPOSTRequest, options?: ConfigurationOptions): Promise<ReportExecutionResult> {
-        return this.api.runReportUsingPOST(param.reportId, param.fields, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public runReport(param: ReportingApiRunReportRequest, options?: ConfigurationOptions): Promise<ReportExecutionResult> {
+        return this.api.runReport(param.reportId, param.fields, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
 }
@@ -7043,12 +6793,12 @@ export class ObjectReportingApi {
 import { ObservableSalesApi } from "./ObservableAPI";
 import { SalesApiRequestFactory, SalesApiResponseProcessor} from "../apis/SalesApi";
 
-export interface SalesApiSetMerchantGatewayAsDefaultUsingPOSTRequest {
+export interface SalesApiSetMerchantGatewayAsDefaultRequest {
     /**
      * id
      * Defaults to: undefined
      * @type string
-     * @memberof SalesApisetMerchantGatewayAsDefaultUsingPOST
+     * @memberof SalesApisetMerchantGatewayAsDefault
      */
     id: string
 }
@@ -7065,8 +6815,8 @@ export class ObjectSalesApi {
      * Set default Merchant Account
      * @param param the request object
      */
-    public setMerchantGatewayAsDefaultUsingPOSTWithHttpInfo(param: SalesApiSetMerchantGatewayAsDefaultUsingPOSTRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api.setMerchantGatewayAsDefaultUsingPOSTWithHttpInfo(param.id,  options).toPromise();
+    public setMerchantGatewayAsDefaultWithHttpInfo(param: SalesApiSetMerchantGatewayAsDefaultRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.setMerchantGatewayAsDefaultWithHttpInfo(param.id,  options).toPromise();
     }
 
     /**
@@ -7074,8 +6824,8 @@ export class ObjectSalesApi {
      * Set default Merchant Account
      * @param param the request object
      */
-    public setMerchantGatewayAsDefaultUsingPOST(param: SalesApiSetMerchantGatewayAsDefaultUsingPOSTRequest, options?: ConfigurationOptions): Promise<void> {
-        return this.api.setMerchantGatewayAsDefaultUsingPOST(param.id,  options).toPromise();
+    public setMerchantGatewayAsDefault(param: SalesApiSetMerchantGatewayAsDefaultRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.setMerchantGatewayAsDefault(param.id,  options).toPromise();
     }
 
 }
@@ -7083,20 +6833,20 @@ export class ObjectSalesApi {
 import { ObservableSettingsApi } from "./ObservableAPI";
 import { SettingsApiRequestFactory, SettingsApiResponseProcessor} from "../apis/SettingsApi";
 
-export interface SettingsApiGetApplicationConfigurationsUsingGETRequest {
+export interface SettingsApiGetApplicationConfigurationsRequest {
     /**
      * By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query.
      * Defaults to: undefined
      * @type Array&lt;&#39;AFFILIATE&#39; | &#39;APPOINTMENT&#39; | &#39;CONTACT&#39; | &#39;ECOMMERCE&#39; | &#39;EMAIL&#39; | &#39;FORMS&#39; | &#39;FULFILLMENT&#39; | &#39;INVOICE&#39; | &#39;NOTE&#39; | &#39;OPPORTUNITY&#39; | &#39;TASK&#39; | &#39;TEMPLATE&#39;&gt;
-     * @memberof SettingsApigetApplicationConfigurationsUsingGET
+     * @memberof SettingsApigetApplicationConfigurations
      */
     fields?: Array<'AFFILIATE' | 'APPOINTMENT' | 'CONTACT' | 'ECOMMERCE' | 'EMAIL' | 'FORMS' | 'FULFILLMENT' | 'INVOICE' | 'NOTE' | 'OPPORTUNITY' | 'TASK' | 'TEMPLATE'>
 }
 
-export interface SettingsApiGetContactOptionTypesUsingGET1Request {
+export interface SettingsApiGetContactOptionTypesRequest {
 }
 
-export interface SettingsApiIsApplicationEnabledUsingGETRequest {
+export interface SettingsApiIsApplicationEnabledRequest {
 }
 
 export class ObjectSettingsApi {
@@ -7111,8 +6861,8 @@ export class ObjectSettingsApi {
      * Get Application Configuration
      * @param param the request object
      */
-    public getApplicationConfigurationsUsingGETWithHttpInfo(param: SettingsApiGetApplicationConfigurationsUsingGETRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<GetSettingsResponse>> {
-        return this.api.getApplicationConfigurationsUsingGETWithHttpInfo(param.fields,  options).toPromise();
+    public getApplicationConfigurationsWithHttpInfo(param: SettingsApiGetApplicationConfigurationsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<GetSettingsResponse>> {
+        return this.api.getApplicationConfigurationsWithHttpInfo(param.fields,  options).toPromise();
     }
 
     /**
@@ -7120,8 +6870,8 @@ export class ObjectSettingsApi {
      * Get Application Configuration
      * @param param the request object
      */
-    public getApplicationConfigurationsUsingGET(param: SettingsApiGetApplicationConfigurationsUsingGETRequest = {}, options?: ConfigurationOptions): Promise<GetSettingsResponse> {
-        return this.api.getApplicationConfigurationsUsingGET(param.fields,  options).toPromise();
+    public getApplicationConfigurations(param: SettingsApiGetApplicationConfigurationsRequest = {}, options?: ConfigurationOptions): Promise<GetSettingsResponse> {
+        return this.api.getApplicationConfigurations(param.fields,  options).toPromise();
     }
 
     /**
@@ -7129,8 +6879,8 @@ export class ObjectSettingsApi {
      * Get Contact Option types
      * @param param the request object
      */
-    public getContactOptionTypesUsingGET1WithHttpInfo(param: SettingsApiGetContactOptionTypesUsingGET1Request = {}, options?: ConfigurationOptions): Promise<HttpInfo<GetContactOptionTypesResponse>> {
-        return this.api.getContactOptionTypesUsingGET1WithHttpInfo( options).toPromise();
+    public getContactOptionTypesWithHttpInfo(param: SettingsApiGetContactOptionTypesRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<GetContactOptionTypesResponse>> {
+        return this.api.getContactOptionTypesWithHttpInfo( options).toPromise();
     }
 
     /**
@@ -7138,8 +6888,8 @@ export class ObjectSettingsApi {
      * Get Contact Option types
      * @param param the request object
      */
-    public getContactOptionTypesUsingGET1(param: SettingsApiGetContactOptionTypesUsingGET1Request = {}, options?: ConfigurationOptions): Promise<GetContactOptionTypesResponse> {
-        return this.api.getContactOptionTypesUsingGET1( options).toPromise();
+    public getContactOptionTypes(param: SettingsApiGetContactOptionTypesRequest = {}, options?: ConfigurationOptions): Promise<GetContactOptionTypesResponse> {
+        return this.api.getContactOptionTypes( options).toPromise();
     }
 
     /**
@@ -7147,8 +6897,8 @@ export class ObjectSettingsApi {
      * Get Application Status
      * @param param the request object
      */
-    public isApplicationEnabledUsingGETWithHttpInfo(param: SettingsApiIsApplicationEnabledUsingGETRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<GetApplicationEnabledStatusResponse>> {
-        return this.api.isApplicationEnabledUsingGETWithHttpInfo( options).toPromise();
+    public isApplicationEnabledWithHttpInfo(param: SettingsApiIsApplicationEnabledRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<GetApplicationEnabledStatusResponse>> {
+        return this.api.isApplicationEnabledWithHttpInfo( options).toPromise();
     }
 
     /**
@@ -7156,8 +6906,41 @@ export class ObjectSettingsApi {
      * Get Application Status
      * @param param the request object
      */
-    public isApplicationEnabledUsingGET(param: SettingsApiIsApplicationEnabledUsingGETRequest = {}, options?: ConfigurationOptions): Promise<GetApplicationEnabledStatusResponse> {
-        return this.api.isApplicationEnabledUsingGET( options).toPromise();
+    public isApplicationEnabled(param: SettingsApiIsApplicationEnabledRequest = {}, options?: ConfigurationOptions): Promise<GetApplicationEnabledStatusResponse> {
+        return this.api.isApplicationEnabled( options).toPromise();
+    }
+
+}
+
+import { ObservableShippingApi } from "./ObservableAPI";
+import { ShippingApiRequestFactory, ShippingApiResponseProcessor} from "../apis/ShippingApi";
+
+export interface ShippingApiListShippingMethodsRequest {
+}
+
+export class ObjectShippingApi {
+    private api: ObservableShippingApi
+
+    public constructor(configuration: Configuration, requestFactory?: ShippingApiRequestFactory, responseProcessor?: ShippingApiResponseProcessor) {
+        this.api = new ObservableShippingApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Retrieves a list of Shipping methods
+     * List Shipping methods
+     * @param param the request object
+     */
+    public listShippingMethodsWithHttpInfo(param: ShippingApiListShippingMethodsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListRestShippingMethodsResponse>> {
+        return this.api.listShippingMethodsWithHttpInfo( options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of Shipping methods
+     * List Shipping methods
+     * @param param the request object
+     */
+    public listShippingMethods(param: ShippingApiListShippingMethodsRequest = {}, options?: ConfigurationOptions): Promise<ListRestShippingMethodsResponse> {
+        return this.api.listShippingMethods( options).toPromise();
     }
 
 }
@@ -7165,48 +6948,48 @@ export class ObjectSettingsApi {
 import { ObservableShippingDiscountsApi } from "./ObservableAPI";
 import { ShippingDiscountsApiRequestFactory, ShippingDiscountsApiResponseProcessor} from "../apis/ShippingDiscountsApi";
 
-export interface ShippingDiscountsApiCreateDiscountUsingPOST3Request {
+export interface ShippingDiscountsApiCreateShippingDiscountRequest {
     /**
      * request
      * @type CreateShippingDiscountRequest
-     * @memberof ShippingDiscountsApicreateDiscountUsingPOST3
+     * @memberof ShippingDiscountsApicreateShippingDiscount
      */
     createShippingDiscountRequest: CreateShippingDiscountRequest
 }
 
-export interface ShippingDiscountsApiDeleteDiscountUsingDELETE3Request {
+export interface ShippingDiscountsApiDeleteShippingDiscountRequest {
     /**
      * discount_id
      * Defaults to: undefined
      * @type string
-     * @memberof ShippingDiscountsApideleteDiscountUsingDELETE3
+     * @memberof ShippingDiscountsApideleteShippingDiscount
      */
     discountId: string
 }
 
-export interface ShippingDiscountsApiGetDiscountUsingGET3Request {
+export interface ShippingDiscountsApiGetShippingDiscountRequest {
     /**
      * discount_id
      * Defaults to: undefined
      * @type string
-     * @memberof ShippingDiscountsApigetDiscountUsingGET3
+     * @memberof ShippingDiscountsApigetShippingDiscount
      */
     discountId: string
 }
 
-export interface ShippingDiscountsApiListDiscountsUsingGET1Request {
+export interface ShippingDiscountsApiListShippingDiscountsRequest {
     /**
      * Filter to apply, allowed fields are: - (DiscountType) &#x60;discount_type&#x60;: AMOUNT or PERCENT - (Double) &#x60;discount_value&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT&#x60; - &#x60;filter&#x3D;discount_value%3D%3D4.5&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT%3Bdiscount_value%3D%3D4.5&#x60; 
      * Defaults to: undefined
      * @type string
-     * @memberof ShippingDiscountsApilistDiscountsUsingGET1
+     * @memberof ShippingDiscountsApilistShippingDiscounts
      */
     filter?: string
     /**
-     * Attribute and direction to order items. One of the following fields: - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * Attribute and direction to order items. One of the following fields: - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60; - &#x60;name&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * Defaults to: undefined
      * @type string
-     * @memberof ShippingDiscountsApilistDiscountsUsingGET1
+     * @memberof ShippingDiscountsApilistShippingDiscounts
      */
     orderBy?: string
     /**
@@ -7215,37 +6998,37 @@ export interface ShippingDiscountsApiListDiscountsUsingGET1Request {
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
-     * @memberof ShippingDiscountsApilistDiscountsUsingGET1
+     * @memberof ShippingDiscountsApilistShippingDiscounts
      */
     pageSize?: number
     /**
      * Page token
      * Defaults to: undefined
      * @type string
-     * @memberof ShippingDiscountsApilistDiscountsUsingGET1
+     * @memberof ShippingDiscountsApilistShippingDiscounts
      */
     pageToken?: string
 }
 
-export interface ShippingDiscountsApiUpdateDiscountUsingPATCH3Request {
+export interface ShippingDiscountsApiUpdateShippingDiscountRequest {
     /**
      * discount_id
      * Defaults to: undefined
      * @type string
-     * @memberof ShippingDiscountsApiupdateDiscountUsingPATCH3
+     * @memberof ShippingDiscountsApiupdateShippingDiscount
      */
     discountId: string
     /**
      * request
      * @type UpdateShippingDiscountRequest
-     * @memberof ShippingDiscountsApiupdateDiscountUsingPATCH3
+     * @memberof ShippingDiscountsApiupdateShippingDiscount
      */
     updateShippingDiscountRequest: UpdateShippingDiscountRequest
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
      * @type Array&lt;string&gt;
-     * @memberof ShippingDiscountsApiupdateDiscountUsingPATCH3
+     * @memberof ShippingDiscountsApiupdateShippingDiscount
      */
     updateMask?: Array<string>
 }
@@ -7262,8 +7045,8 @@ export class ObjectShippingDiscountsApi {
      * Create a Shipping Discount
      * @param param the request object
      */
-    public createDiscountUsingPOST3WithHttpInfo(param: ShippingDiscountsApiCreateDiscountUsingPOST3Request, options?: ConfigurationOptions): Promise<HttpInfo<ShippingDiscount>> {
-        return this.api.createDiscountUsingPOST3WithHttpInfo(param.createShippingDiscountRequest,  options).toPromise();
+    public createShippingDiscountWithHttpInfo(param: ShippingDiscountsApiCreateShippingDiscountRequest, options?: ConfigurationOptions): Promise<HttpInfo<ShippingDiscount>> {
+        return this.api.createShippingDiscountWithHttpInfo(param.createShippingDiscountRequest,  options).toPromise();
     }
 
     /**
@@ -7271,8 +7054,8 @@ export class ObjectShippingDiscountsApi {
      * Create a Shipping Discount
      * @param param the request object
      */
-    public createDiscountUsingPOST3(param: ShippingDiscountsApiCreateDiscountUsingPOST3Request, options?: ConfigurationOptions): Promise<ShippingDiscount> {
-        return this.api.createDiscountUsingPOST3(param.createShippingDiscountRequest,  options).toPromise();
+    public createShippingDiscount(param: ShippingDiscountsApiCreateShippingDiscountRequest, options?: ConfigurationOptions): Promise<ShippingDiscount> {
+        return this.api.createShippingDiscount(param.createShippingDiscountRequest,  options).toPromise();
     }
 
     /**
@@ -7280,8 +7063,8 @@ export class ObjectShippingDiscountsApi {
      * Delete a Shipping Discount
      * @param param the request object
      */
-    public deleteDiscountUsingDELETE3WithHttpInfo(param: ShippingDiscountsApiDeleteDiscountUsingDELETE3Request, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api.deleteDiscountUsingDELETE3WithHttpInfo(param.discountId,  options).toPromise();
+    public deleteShippingDiscountWithHttpInfo(param: ShippingDiscountsApiDeleteShippingDiscountRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteShippingDiscountWithHttpInfo(param.discountId,  options).toPromise();
     }
 
     /**
@@ -7289,8 +7072,8 @@ export class ObjectShippingDiscountsApi {
      * Delete a Shipping Discount
      * @param param the request object
      */
-    public deleteDiscountUsingDELETE3(param: ShippingDiscountsApiDeleteDiscountUsingDELETE3Request, options?: ConfigurationOptions): Promise<void> {
-        return this.api.deleteDiscountUsingDELETE3(param.discountId,  options).toPromise();
+    public deleteShippingDiscount(param: ShippingDiscountsApiDeleteShippingDiscountRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteShippingDiscount(param.discountId,  options).toPromise();
     }
 
     /**
@@ -7298,8 +7081,8 @@ export class ObjectShippingDiscountsApi {
      * Retrieve a Shipping Discount
      * @param param the request object
      */
-    public getDiscountUsingGET3WithHttpInfo(param: ShippingDiscountsApiGetDiscountUsingGET3Request, options?: ConfigurationOptions): Promise<HttpInfo<ShippingDiscount>> {
-        return this.api.getDiscountUsingGET3WithHttpInfo(param.discountId,  options).toPromise();
+    public getShippingDiscountWithHttpInfo(param: ShippingDiscountsApiGetShippingDiscountRequest, options?: ConfigurationOptions): Promise<HttpInfo<ShippingDiscount>> {
+        return this.api.getShippingDiscountWithHttpInfo(param.discountId,  options).toPromise();
     }
 
     /**
@@ -7307,8 +7090,8 @@ export class ObjectShippingDiscountsApi {
      * Retrieve a Shipping Discount
      * @param param the request object
      */
-    public getDiscountUsingGET3(param: ShippingDiscountsApiGetDiscountUsingGET3Request, options?: ConfigurationOptions): Promise<ShippingDiscount> {
-        return this.api.getDiscountUsingGET3(param.discountId,  options).toPromise();
+    public getShippingDiscount(param: ShippingDiscountsApiGetShippingDiscountRequest, options?: ConfigurationOptions): Promise<ShippingDiscount> {
+        return this.api.getShippingDiscount(param.discountId,  options).toPromise();
     }
 
     /**
@@ -7316,8 +7099,8 @@ export class ObjectShippingDiscountsApi {
      * List all Shipping Discounts
      * @param param the request object
      */
-    public listDiscountsUsingGET1WithHttpInfo(param: ShippingDiscountsApiListDiscountsUsingGET1Request = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListShippingDiscountsResponse>> {
-        return this.api.listDiscountsUsingGET1WithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listShippingDiscountsWithHttpInfo(param: ShippingDiscountsApiListShippingDiscountsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListShippingDiscountsResponse>> {
+        return this.api.listShippingDiscountsWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -7325,8 +7108,8 @@ export class ObjectShippingDiscountsApi {
      * List all Shipping Discounts
      * @param param the request object
      */
-    public listDiscountsUsingGET1(param: ShippingDiscountsApiListDiscountsUsingGET1Request = {}, options?: ConfigurationOptions): Promise<ListShippingDiscountsResponse> {
-        return this.api.listDiscountsUsingGET1(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listShippingDiscounts(param: ShippingDiscountsApiListShippingDiscountsRequest = {}, options?: ConfigurationOptions): Promise<ListShippingDiscountsResponse> {
+        return this.api.listShippingDiscounts(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -7334,8 +7117,8 @@ export class ObjectShippingDiscountsApi {
      * Update a Shipping Discount
      * @param param the request object
      */
-    public updateDiscountUsingPATCH3WithHttpInfo(param: ShippingDiscountsApiUpdateDiscountUsingPATCH3Request, options?: ConfigurationOptions): Promise<HttpInfo<ShippingDiscount>> {
-        return this.api.updateDiscountUsingPATCH3WithHttpInfo(param.discountId, param.updateShippingDiscountRequest, param.updateMask,  options).toPromise();
+    public updateShippingDiscountWithHttpInfo(param: ShippingDiscountsApiUpdateShippingDiscountRequest, options?: ConfigurationOptions): Promise<HttpInfo<ShippingDiscount>> {
+        return this.api.updateShippingDiscountWithHttpInfo(param.discountId, param.updateShippingDiscountRequest, param.updateMask,  options).toPromise();
     }
 
     /**
@@ -7343,288 +7126,230 @@ export class ObjectShippingDiscountsApi {
      * Update a Shipping Discount
      * @param param the request object
      */
-    public updateDiscountUsingPATCH3(param: ShippingDiscountsApiUpdateDiscountUsingPATCH3Request, options?: ConfigurationOptions): Promise<ShippingDiscount> {
-        return this.api.updateDiscountUsingPATCH3(param.discountId, param.updateShippingDiscountRequest, param.updateMask,  options).toPromise();
+    public updateShippingDiscount(param: ShippingDiscountsApiUpdateShippingDiscountRequest, options?: ConfigurationOptions): Promise<ShippingDiscount> {
+        return this.api.updateShippingDiscount(param.discountId, param.updateShippingDiscountRequest, param.updateMask,  options).toPromise();
     }
 
 }
 
-import { ObservableStagesApi } from "./ObservableAPI";
-import { StagesApiRequestFactory, StagesApiResponseProcessor} from "../apis/StagesApi";
+import { ObservableSubscriptionPlansApi } from "./ObservableAPI";
+import { SubscriptionPlansApiRequestFactory, SubscriptionPlansApiResponseProcessor} from "../apis/SubscriptionPlansApi";
 
-export interface StagesApiCountDealsInStageRequest {
+export interface SubscriptionPlansApiCreateSubscriptionPlansRequest {
     /**
-     * the stage identifier
+     * product_id
      * Defaults to: undefined
      * @type string
-     * @memberof StagesApicountDealsInStage
+     * @memberof SubscriptionPlansApicreateSubscriptionPlans
      */
-    id: string
+    productId: string
+    /**
+     * createSubscriptionPlanRequest
+     * @type CreateSubscriptionPlanRequest
+     * @memberof SubscriptionPlansApicreateSubscriptionPlans
+     */
+    createSubscriptionPlanRequest: CreateSubscriptionPlanRequest
 }
 
-export interface StagesApiCreate1Request {
+export interface SubscriptionPlansApiDeleteSubscriptionPlanRequest {
     /**
-     * the create request
-     * @type CreateStageRequest
-     * @memberof StagesApicreate1
+     * product_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof SubscriptionPlansApideleteSubscriptionPlan
      */
-    createStageRequest: CreateStageRequest
+    productId: string
+    /**
+     * subscription_plan_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof SubscriptionPlansApideleteSubscriptionPlan
+     */
+    subscriptionPlanId: string
 }
 
-export interface StagesApiDelete1Request {
+export interface SubscriptionPlansApiFetchSubscriptionPlanRequest {
     /**
-     * the stage identifier
+     * product_id
      * Defaults to: undefined
      * @type string
-     * @memberof StagesApidelete1
+     * @memberof SubscriptionPlansApifetchSubscriptionPlan
      */
-    id: string
+    productId: string
     /**
-     * the new stage identifier, can be null
+     * subscription_plan_id
      * Defaults to: undefined
      * @type string
-     * @memberof StagesApidelete1
+     * @memberof SubscriptionPlansApifetchSubscriptionPlan
      */
-    newStageId?: string
+    subscriptionPlanId: string
 }
 
-export interface StagesApiGet1Request {
+export interface SubscriptionPlansApiListSubscriptionPlansRequest {
     /**
-     * the entity identifier
+     * product_id
      * Defaults to: undefined
      * @type string
-     * @memberof StagesApiget1
+     * @memberof SubscriptionPlansApilistSubscriptionPlans
      */
-    id: string
-}
-
-export interface StagesApiList1Request {
+    productId: string
     /**
-     * 
+     * Filter to apply, allowed fields are: - (Boolean) &#x60;active&#x60;: true or false - (BillingCycle) &#x60;cycle_type&#x60;: DAILY, WEEKLY, MONTHLY, YEARLY You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;active%3D%3Dtrue&#x60; - &#x60;filter&#x3D;cycle_type%3D%3DDAILY&#x60; - &#x60;filter&#x3D;active%3D%3Dfalse%3Bcycle_type%3D%3DWEEKLY&#x60; 
      * Defaults to: undefined
      * @type string
-     * @memberof StagesApilist1
+     * @memberof SubscriptionPlansApilistSubscriptionPlans
      */
     filter?: string
     /**
-     * 
+     * Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;product_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; 
      * Defaults to: undefined
      * @type string
-     * @memberof StagesApilist1
-     */
-    pageToken?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof StagesApilist1
+     * @memberof SubscriptionPlansApilistSubscriptionPlans
      */
     orderBy?: string
     /**
-     * 
+     * Total number of items to return per page
      * Minimum: 1
      * Maximum: 1000
-     * Defaults to: 1000
+     * Defaults to: undefined
      * @type number
-     * @memberof StagesApilist1
+     * @memberof SubscriptionPlansApilistSubscriptionPlans
      */
     pageSize?: number
-}
-
-export interface StagesApiListStageDealsRequest {
     /**
-     * the stage identifier
+     * Page token
      * Defaults to: undefined
      * @type string
-     * @memberof StagesApilistStageDeals
-     */
-    id: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof StagesApilistStageDeals
-     */
-    filter?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof StagesApilistStageDeals
+     * @memberof SubscriptionPlansApilistSubscriptionPlans
      */
     pageToken?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof StagesApilistStageDeals
-     */
-    orderBy?: string
-    /**
-     * 
-     * Minimum: 1
-     * Maximum: 1000
-     * Defaults to: 1000
-     * @type number
-     * @memberof StagesApilistStageDeals
-     */
-    pageSize?: number
 }
 
-export interface StagesApiUpdate1Request {
+export interface SubscriptionPlansApiUpdateSubscriptionPlanRequest {
     /**
-     * the entity identifier
+     * product_id
      * Defaults to: undefined
      * @type string
-     * @memberof StagesApiupdate1
+     * @memberof SubscriptionPlansApiupdateSubscriptionPlan
      */
-    id: string
+    productId: string
     /**
-     * the fields to update
+     * subscription_plan_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof SubscriptionPlansApiupdateSubscriptionPlan
+     */
+    subscriptionPlanId: string
+    /**
+     * updateSubscriptionPlanRequest
+     * @type UpdateSubscriptionPlanRequest
+     * @memberof SubscriptionPlansApiupdateSubscriptionPlan
+     */
+    updateSubscriptionPlanRequest: UpdateSubscriptionPlanRequest
+    /**
+     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
      * @type Array&lt;string&gt;
-     * @memberof StagesApiupdate1
+     * @memberof SubscriptionPlansApiupdateSubscriptionPlan
      */
-    updateMask: Array<string>
-    /**
-     * the update request
-     * @type UpdateStageRequest
-     * @memberof StagesApiupdate1
-     */
-    updateStageRequest: UpdateStageRequest
+    updateMask?: Array<string>
 }
 
-export class ObjectStagesApi {
-    private api: ObservableStagesApi
+export class ObjectSubscriptionPlansApi {
+    private api: ObservableSubscriptionPlansApi
 
-    public constructor(configuration: Configuration, requestFactory?: StagesApiRequestFactory, responseProcessor?: StagesApiResponseProcessor) {
-        this.api = new ObservableStagesApi(configuration, requestFactory, responseProcessor);
+    public constructor(configuration: Configuration, requestFactory?: SubscriptionPlansApiRequestFactory, responseProcessor?: SubscriptionPlansApiResponseProcessor) {
+        this.api = new ObservableSubscriptionPlansApi(configuration, requestFactory, responseProcessor);
     }
 
     /**
-     * Counts the number of deals in a specific stage.
-     * Counts the number of deals in a specific stage.
+     * Creates a Subscription Plan
+     * Create Subscription Plan
      * @param param the request object
      */
-    public countDealsInStageWithHttpInfo(param: StagesApiCountDealsInStageRequest, options?: ConfigurationOptions): Promise<HttpInfo<number>> {
-        return this.api.countDealsInStageWithHttpInfo(param.id,  options).toPromise();
+    public createSubscriptionPlansWithHttpInfo(param: SubscriptionPlansApiCreateSubscriptionPlansRequest, options?: ConfigurationOptions): Promise<HttpInfo<SubscriptionPlan>> {
+        return this.api.createSubscriptionPlansWithHttpInfo(param.productId, param.createSubscriptionPlanRequest,  options).toPromise();
     }
 
     /**
-     * Counts the number of deals in a specific stage.
-     * Counts the number of deals in a specific stage.
+     * Creates a Subscription Plan
+     * Create Subscription Plan
      * @param param the request object
      */
-    public countDealsInStage(param: StagesApiCountDealsInStageRequest, options?: ConfigurationOptions): Promise<number> {
-        return this.api.countDealsInStage(param.id,  options).toPromise();
+    public createSubscriptionPlans(param: SubscriptionPlansApiCreateSubscriptionPlansRequest, options?: ConfigurationOptions): Promise<SubscriptionPlan> {
+        return this.api.createSubscriptionPlans(param.productId, param.createSubscriptionPlanRequest,  options).toPromise();
     }
 
     /**
-     * Creates a new entity.
-     * Creates a new entity.
+     * Deletes a Subscription Plan
+     * Delete Subscription Plan
      * @param param the request object
      */
-    public create1WithHttpInfo(param: StagesApiCreate1Request, options?: ConfigurationOptions): Promise<HttpInfo<Stage>> {
-        return this.api.create1WithHttpInfo(param.createStageRequest,  options).toPromise();
+    public deleteSubscriptionPlanWithHttpInfo(param: SubscriptionPlansApiDeleteSubscriptionPlanRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteSubscriptionPlanWithHttpInfo(param.productId, param.subscriptionPlanId,  options).toPromise();
     }
 
     /**
-     * Creates a new entity.
-     * Creates a new entity.
+     * Deletes a Subscription Plan
+     * Delete Subscription Plan
      * @param param the request object
      */
-    public create1(param: StagesApiCreate1Request, options?: ConfigurationOptions): Promise<Stage> {
-        return this.api.create1(param.createStageRequest,  options).toPromise();
+    public deleteSubscriptionPlan(param: SubscriptionPlansApiDeleteSubscriptionPlanRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteSubscriptionPlan(param.productId, param.subscriptionPlanId,  options).toPromise();
     }
 
     /**
-     * Deletes a stage by its identifier for a given tenant.
-     * Deletes a stage by its identifier for a given tenant.
+     * Retrieves a Subscription Plan
+     * Get Subscription Plan
      * @param param the request object
      */
-    public delete1WithHttpInfo(param: StagesApiDelete1Request, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api.delete1WithHttpInfo(param.id, param.newStageId,  options).toPromise();
+    public fetchSubscriptionPlanWithHttpInfo(param: SubscriptionPlansApiFetchSubscriptionPlanRequest, options?: ConfigurationOptions): Promise<HttpInfo<SubscriptionPlan>> {
+        return this.api.fetchSubscriptionPlanWithHttpInfo(param.productId, param.subscriptionPlanId,  options).toPromise();
     }
 
     /**
-     * Deletes a stage by its identifier for a given tenant.
-     * Deletes a stage by its identifier for a given tenant.
+     * Retrieves a Subscription Plan
+     * Get Subscription Plan
      * @param param the request object
      */
-    public delete1(param: StagesApiDelete1Request, options?: ConfigurationOptions): Promise<void> {
-        return this.api.delete1(param.id, param.newStageId,  options).toPromise();
+    public fetchSubscriptionPlan(param: SubscriptionPlansApiFetchSubscriptionPlanRequest, options?: ConfigurationOptions): Promise<SubscriptionPlan> {
+        return this.api.fetchSubscriptionPlan(param.productId, param.subscriptionPlanId,  options).toPromise();
     }
 
     /**
-     * Retrieves an entity by its identifier.
-     * Retrieves an entity by its identifier.
+     * Retrieves a list of Subscription Plans
+     * List Subscription Plans
      * @param param the request object
      */
-    public get1WithHttpInfo(param: StagesApiGet1Request, options?: ConfigurationOptions): Promise<HttpInfo<Stage>> {
-        return this.api.get1WithHttpInfo(param.id,  options).toPromise();
+    public listSubscriptionPlansWithHttpInfo(param: SubscriptionPlansApiListSubscriptionPlansRequest, options?: ConfigurationOptions): Promise<HttpInfo<ListSubscriptionPlansResponse>> {
+        return this.api.listSubscriptionPlansWithHttpInfo(param.productId, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
-     * Retrieves an entity by its identifier.
-     * Retrieves an entity by its identifier.
+     * Retrieves a list of Subscription Plans
+     * List Subscription Plans
      * @param param the request object
      */
-    public get1(param: StagesApiGet1Request, options?: ConfigurationOptions): Promise<Stage> {
-        return this.api.get1(param.id,  options).toPromise();
+    public listSubscriptionPlans(param: SubscriptionPlansApiListSubscriptionPlansRequest, options?: ConfigurationOptions): Promise<ListSubscriptionPlansResponse> {
+        return this.api.listSubscriptionPlans(param.productId, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
-     * Lists entities based on the provided ListCommand.
-     * Lists entities based on the provided ListCommand.
+     * Updates a Subscription Plan
+     * Update Subscription Plan
      * @param param the request object
      */
-    public list1WithHttpInfo(param: StagesApiList1Request = {}, options?: ConfigurationOptions): Promise<HttpInfo<StageListResponse>> {
-        return this.api.list1WithHttpInfo(param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
+    public updateSubscriptionPlanWithHttpInfo(param: SubscriptionPlansApiUpdateSubscriptionPlanRequest, options?: ConfigurationOptions): Promise<HttpInfo<SubscriptionPlan>> {
+        return this.api.updateSubscriptionPlanWithHttpInfo(param.productId, param.subscriptionPlanId, param.updateSubscriptionPlanRequest, param.updateMask,  options).toPromise();
     }
 
     /**
-     * Lists entities based on the provided ListCommand.
-     * Lists entities based on the provided ListCommand.
+     * Updates a Subscription Plan
+     * Update Subscription Plan
      * @param param the request object
      */
-    public list1(param: StagesApiList1Request = {}, options?: ConfigurationOptions): Promise<StageListResponse> {
-        return this.api.list1(param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
-    }
-
-    /**
-     * Retrieves a list of deals for a specific stage.
-     * Retrieves a list of deals for a specific stage.
-     * @param param the request object
-     */
-    public listStageDealsWithHttpInfo(param: StagesApiListStageDealsRequest, options?: ConfigurationOptions): Promise<HttpInfo<StageDealListResponse>> {
-        return this.api.listStageDealsWithHttpInfo(param.id, param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
-    }
-
-    /**
-     * Retrieves a list of deals for a specific stage.
-     * Retrieves a list of deals for a specific stage.
-     * @param param the request object
-     */
-    public listStageDeals(param: StagesApiListStageDealsRequest, options?: ConfigurationOptions): Promise<StageDealListResponse> {
-        return this.api.listStageDeals(param.id, param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
-    }
-
-    /**
-     * Updates an existing entity.
-     * Updates an existing entity.
-     * @param param the request object
-     */
-    public update1WithHttpInfo(param: StagesApiUpdate1Request, options?: ConfigurationOptions): Promise<HttpInfo<Stage>> {
-        return this.api.update1WithHttpInfo(param.id, param.updateMask, param.updateStageRequest,  options).toPromise();
-    }
-
-    /**
-     * Updates an existing entity.
-     * Updates an existing entity.
-     * @param param the request object
-     */
-    public update1(param: StagesApiUpdate1Request, options?: ConfigurationOptions): Promise<Stage> {
-        return this.api.update1(param.id, param.updateMask, param.updateStageRequest,  options).toPromise();
+    public updateSubscriptionPlan(param: SubscriptionPlansApiUpdateSubscriptionPlanRequest, options?: ConfigurationOptions): Promise<SubscriptionPlan> {
+        return this.api.updateSubscriptionPlan(param.productId, param.subscriptionPlanId, param.updateSubscriptionPlanRequest, param.updateMask,  options).toPromise();
     }
 
 }
@@ -7632,56 +7357,56 @@ export class ObjectStagesApi {
 import { ObservableSubscriptionsApi } from "./ObservableAPI";
 import { SubscriptionsApiRequestFactory, SubscriptionsApiResponseProcessor} from "../apis/SubscriptionsApi";
 
-export interface SubscriptionsApiCreateSubscriptionCustomFieldUsingPOSTRequest {
+export interface SubscriptionsApiCreateSubscriptionRequest {
+    /**
+     * request
+     * @type CreateSubscriptionRequest
+     * @memberof SubscriptionsApicreateSubscription
+     */
+    createSubscriptionRequest: CreateSubscriptionRequest
+}
+
+export interface SubscriptionsApiCreateSubscriptionCustomFieldRequest {
     /**
      * customField
      * @type CreateCustomFieldRequest
-     * @memberof SubscriptionsApicreateSubscriptionCustomFieldUsingPOST
+     * @memberof SubscriptionsApicreateSubscriptionCustomField
      */
     createCustomFieldRequest: CreateCustomFieldRequest
 }
 
-export interface SubscriptionsApiCreateSubscriptionV2UsingPOSTRequest {
-    /**
-     * createSubscriptionV2
-     * @type CreateSubscriptionV2
-     * @memberof SubscriptionsApicreateSubscriptionV2UsingPOST
-     */
-    createSubscriptionV2: CreateSubscriptionV2
-}
-
-export interface SubscriptionsApiDeleteSubscriptionCustomFieldUsingDELETERequest {
+export interface SubscriptionsApiDeleteSubscriptionCustomFieldRequest {
     /**
      * custom_field_id
      * Defaults to: undefined
      * @type string
-     * @memberof SubscriptionsApideleteSubscriptionCustomFieldUsingDELETE
+     * @memberof SubscriptionsApideleteSubscriptionCustomField
      */
     customFieldId: string
 }
 
-export interface SubscriptionsApiRetrieveSubscriptionCustomFieldModelUsingGETRequest {
+export interface SubscriptionsApiRetrieveSubscriptionCustomFieldModelRequest {
 }
 
-export interface SubscriptionsApiUpdateSubscriptionCustomFieldUsingPATCHRequest {
+export interface SubscriptionsApiUpdateSubscriptionCustomFieldRequest {
     /**
      * custom_field_id
      * Defaults to: undefined
      * @type string
-     * @memberof SubscriptionsApiupdateSubscriptionCustomFieldUsingPATCH
+     * @memberof SubscriptionsApiupdateSubscriptionCustomField
      */
     customFieldId: string
     /**
      * request
      * @type UpdateCustomFieldMetaDataRequest
-     * @memberof SubscriptionsApiupdateSubscriptionCustomFieldUsingPATCH
+     * @memberof SubscriptionsApiupdateSubscriptionCustomField
      */
     updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
      * @type Array&lt;string&gt;
-     * @memberof SubscriptionsApiupdateSubscriptionCustomFieldUsingPATCH
+     * @memberof SubscriptionsApiupdateSubscriptionCustomField
      */
     updateMask?: Array<string>
 }
@@ -7694,21 +7419,12 @@ export class ObjectSubscriptionsApi {
     }
 
     /**
-     * Creates a custom field of the specified type and options to the Subscription object
-     * Create a Subscription Custom Field
+     * Creates a subscription with the specified product and product subscription id.
+     * Create Subscription
      * @param param the request object
      */
-    public createSubscriptionCustomFieldUsingPOSTWithHttpInfo(param: SubscriptionsApiCreateSubscriptionCustomFieldUsingPOSTRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
-        return this.api.createSubscriptionCustomFieldUsingPOSTWithHttpInfo(param.createCustomFieldRequest,  options).toPromise();
-    }
-
-    /**
-     * Creates a custom field of the specified type and options to the Subscription object
-     * Create a Subscription Custom Field
-     * @param param the request object
-     */
-    public createSubscriptionCustomFieldUsingPOST(param: SubscriptionsApiCreateSubscriptionCustomFieldUsingPOSTRequest, options?: ConfigurationOptions): Promise<CustomFieldMetaData> {
-        return this.api.createSubscriptionCustomFieldUsingPOST(param.createCustomFieldRequest,  options).toPromise();
+    public createSubscriptionWithHttpInfo(param: SubscriptionsApiCreateSubscriptionRequest, options?: ConfigurationOptions): Promise<HttpInfo<Subscription>> {
+        return this.api.createSubscriptionWithHttpInfo(param.createSubscriptionRequest,  options).toPromise();
     }
 
     /**
@@ -7716,17 +7432,26 @@ export class ObjectSubscriptionsApi {
      * Create Subscription
      * @param param the request object
      */
-    public createSubscriptionV2UsingPOSTWithHttpInfo(param: SubscriptionsApiCreateSubscriptionV2UsingPOSTRequest, options?: ConfigurationOptions): Promise<HttpInfo<RestSubscriptionV2>> {
-        return this.api.createSubscriptionV2UsingPOSTWithHttpInfo(param.createSubscriptionV2,  options).toPromise();
+    public createSubscription(param: SubscriptionsApiCreateSubscriptionRequest, options?: ConfigurationOptions): Promise<Subscription> {
+        return this.api.createSubscription(param.createSubscriptionRequest,  options).toPromise();
     }
 
     /**
-     * Creates a subscription with the specified product and product subscription id.
-     * Create Subscription
+     * Creates a custom field of the specified type and options to the Subscription object
+     * Create a Subscription Custom Field
      * @param param the request object
      */
-    public createSubscriptionV2UsingPOST(param: SubscriptionsApiCreateSubscriptionV2UsingPOSTRequest, options?: ConfigurationOptions): Promise<RestSubscriptionV2> {
-        return this.api.createSubscriptionV2UsingPOST(param.createSubscriptionV2,  options).toPromise();
+    public createSubscriptionCustomFieldWithHttpInfo(param: SubscriptionsApiCreateSubscriptionCustomFieldRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
+        return this.api.createSubscriptionCustomFieldWithHttpInfo(param.createCustomFieldRequest,  options).toPromise();
+    }
+
+    /**
+     * Creates a custom field of the specified type and options to the Subscription object
+     * Create a Subscription Custom Field
+     * @param param the request object
+     */
+    public createSubscriptionCustomField(param: SubscriptionsApiCreateSubscriptionCustomFieldRequest, options?: ConfigurationOptions): Promise<CustomFieldMetaData> {
+        return this.api.createSubscriptionCustomField(param.createCustomFieldRequest,  options).toPromise();
     }
 
     /**
@@ -7734,8 +7459,8 @@ export class ObjectSubscriptionsApi {
      * Delete a Subscription Custom Field
      * @param param the request object
      */
-    public deleteSubscriptionCustomFieldUsingDELETEWithHttpInfo(param: SubscriptionsApiDeleteSubscriptionCustomFieldUsingDELETERequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api.deleteSubscriptionCustomFieldUsingDELETEWithHttpInfo(param.customFieldId,  options).toPromise();
+    public deleteSubscriptionCustomFieldWithHttpInfo(param: SubscriptionsApiDeleteSubscriptionCustomFieldRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteSubscriptionCustomFieldWithHttpInfo(param.customFieldId,  options).toPromise();
     }
 
     /**
@@ -7743,8 +7468,8 @@ export class ObjectSubscriptionsApi {
      * Delete a Subscription Custom Field
      * @param param the request object
      */
-    public deleteSubscriptionCustomFieldUsingDELETE(param: SubscriptionsApiDeleteSubscriptionCustomFieldUsingDELETERequest, options?: ConfigurationOptions): Promise<void> {
-        return this.api.deleteSubscriptionCustomFieldUsingDELETE(param.customFieldId,  options).toPromise();
+    public deleteSubscriptionCustomField(param: SubscriptionsApiDeleteSubscriptionCustomFieldRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteSubscriptionCustomField(param.customFieldId,  options).toPromise();
     }
 
     /**
@@ -7752,8 +7477,8 @@ export class ObjectSubscriptionsApi {
      * Retrieve Subscription Custom Field Model
      * @param param the request object
      */
-    public retrieveSubscriptionCustomFieldModelUsingGETWithHttpInfo(param: SubscriptionsApiRetrieveSubscriptionCustomFieldModelUsingGETRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ObjectModel>> {
-        return this.api.retrieveSubscriptionCustomFieldModelUsingGETWithHttpInfo( options).toPromise();
+    public retrieveSubscriptionCustomFieldModelWithHttpInfo(param: SubscriptionsApiRetrieveSubscriptionCustomFieldModelRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ObjectModel>> {
+        return this.api.retrieveSubscriptionCustomFieldModelWithHttpInfo( options).toPromise();
     }
 
     /**
@@ -7761,8 +7486,8 @@ export class ObjectSubscriptionsApi {
      * Retrieve Subscription Custom Field Model
      * @param param the request object
      */
-    public retrieveSubscriptionCustomFieldModelUsingGET(param: SubscriptionsApiRetrieveSubscriptionCustomFieldModelUsingGETRequest = {}, options?: ConfigurationOptions): Promise<ObjectModel> {
-        return this.api.retrieveSubscriptionCustomFieldModelUsingGET( options).toPromise();
+    public retrieveSubscriptionCustomFieldModel(param: SubscriptionsApiRetrieveSubscriptionCustomFieldModelRequest = {}, options?: ConfigurationOptions): Promise<ObjectModel> {
+        return this.api.retrieveSubscriptionCustomFieldModel( options).toPromise();
     }
 
     /**
@@ -7770,8 +7495,8 @@ export class ObjectSubscriptionsApi {
      * Update a Subscription Custom Field
      * @param param the request object
      */
-    public updateSubscriptionCustomFieldUsingPATCHWithHttpInfo(param: SubscriptionsApiUpdateSubscriptionCustomFieldUsingPATCHRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
-        return this.api.updateSubscriptionCustomFieldUsingPATCHWithHttpInfo(param.customFieldId, param.updateCustomFieldMetaDataRequest, param.updateMask,  options).toPromise();
+    public updateSubscriptionCustomFieldWithHttpInfo(param: SubscriptionsApiUpdateSubscriptionCustomFieldRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
+        return this.api.updateSubscriptionCustomFieldWithHttpInfo(param.customFieldId, param.updateCustomFieldMetaDataRequest, param.updateMask,  options).toPromise();
     }
 
     /**
@@ -7779,8 +7504,8 @@ export class ObjectSubscriptionsApi {
      * Update a Subscription Custom Field
      * @param param the request object
      */
-    public updateSubscriptionCustomFieldUsingPATCH(param: SubscriptionsApiUpdateSubscriptionCustomFieldUsingPATCHRequest, options?: ConfigurationOptions): Promise<CustomFieldMetaData> {
-        return this.api.updateSubscriptionCustomFieldUsingPATCH(param.customFieldId, param.updateCustomFieldMetaDataRequest, param.updateMask,  options).toPromise();
+    public updateSubscriptionCustomField(param: SubscriptionsApiUpdateSubscriptionCustomFieldRequest, options?: ConfigurationOptions): Promise<CustomFieldMetaData> {
+        return this.api.updateSubscriptionCustomField(param.customFieldId, param.updateCustomFieldMetaDataRequest, param.updateMask,  options).toPromise();
     }
 
 }
@@ -7788,100 +7513,140 @@ export class ObjectSubscriptionsApi {
 import { ObservableTagsApi } from "./ObservableAPI";
 import { TagsApiRequestFactory, TagsApiResponseProcessor} from "../apis/TagsApi";
 
-export interface TagsApiApplyTagsUsingPOSTRequest {
+export interface TagsApiApplyTagsRequest {
     /**
      * tag_id
      * Defaults to: undefined
      * @type string
-     * @memberof TagsApiapplyTagsUsingPOST
+     * @memberof TagsApiapplyTags
      */
     tagId: string
     /**
      * applyRemoveTagRequest
      * @type ApplyRemoveTagRequest
-     * @memberof TagsApiapplyTagsUsingPOST
+     * @memberof TagsApiapplyTags
      */
     applyRemoveTagRequest: ApplyRemoveTagRequest
 }
 
-export interface TagsApiCreateTagCategoryUsingPOST1Request {
-    /**
-     * request
-     * @type CreateUpdateTagCategoryRequest
-     * @memberof TagsApicreateTagCategoryUsingPOST1
-     */
-    createUpdateTagCategoryRequest: CreateUpdateTagCategoryRequest
-}
-
-export interface TagsApiCreateTagUsingPOST1Request {
+export interface TagsApiCreateTagRequest {
     /**
      * tag
      * @type CreateUpdateTagRequest
-     * @memberof TagsApicreateTagUsingPOST1
+     * @memberof TagsApicreateTag
      */
     createUpdateTagRequest: CreateUpdateTagRequest
 }
 
-export interface TagsApiDeleteTagCategoryUsingDELETERequest {
+export interface TagsApiCreateTagCategoryRequest {
+    /**
+     * request
+     * @type CreateUpdateTagCategoryRequest
+     * @memberof TagsApicreateTagCategory
+     */
+    createUpdateTagCategoryRequest: CreateUpdateTagCategoryRequest
+}
+
+export interface TagsApiDeleteTagRequest {
+    /**
+     * tag_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof TagsApideleteTag
+     */
+    tagId: string
+}
+
+export interface TagsApiDeleteTagCategoryRequest {
     /**
      * tag_category_id
      * Defaults to: undefined
      * @type string
-     * @memberof TagsApideleteTagCategoryUsingDELETE
+     * @memberof TagsApideleteTagCategory
      */
     tagCategoryId: string
 }
 
-export interface TagsApiDeleteTagUsingDELETERequest {
-    /**
-     * tag_id
-     * Defaults to: undefined
-     * @type string
-     * @memberof TagsApideleteTagUsingDELETE
-     */
-    tagId: string
-}
-
-export interface TagsApiGetCategoryUsingGETRequest {
+export interface TagsApiGetCategoryRequest {
     /**
      * tag_category_id
      * Defaults to: undefined
      * @type string
-     * @memberof TagsApigetCategoryUsingGET
+     * @memberof TagsApigetCategory
      */
     tagCategoryId: string
 }
 
-export interface TagsApiGetTagUsingGET1Request {
+export interface TagsApiGetTagRequest {
     /**
      * tag_id
      * Defaults to: undefined
      * @type string
-     * @memberof TagsApigetTagUsingGET1
+     * @memberof TagsApigetTag
      */
     tagId: string
 }
 
-export interface TagsApiListCompaniesForTagIdUsingGET1Request {
+export interface TagsApiListCompaniesForTagIdRequest {
     /**
      * tag_id
      * Defaults to: undefined
      * @type string
-     * @memberof TagsApilistCompaniesForTagIdUsingGET1
+     * @memberof TagsApilistCompaniesForTagId
+     */
+    tagId: string
+    /**
+     * Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; 
+     * Defaults to: undefined
+     * @type string
+     * @memberof TagsApilistCompaniesForTagId
+     */
+    filter?: string
+    /**
+     * Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;name&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * Defaults to: undefined
+     * @type string
+     * @memberof TagsApilistCompaniesForTagId
+     */
+    orderBy?: string
+    /**
+     * Total number of items to return per page
+     * Minimum: 1
+     * Maximum: 1000
+     * Defaults to: undefined
+     * @type number
+     * @memberof TagsApilistCompaniesForTagId
+     */
+    pageSize?: number
+    /**
+     * Page token
+     * Defaults to: undefined
+     * @type string
+     * @memberof TagsApilistCompaniesForTagId
+     */
+    pageToken?: string
+}
+
+export interface TagsApiListContactsWithTagIdRequest {
+    /**
+     * tag_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof TagsApilistContactsWithTagId
      */
     tagId: string
     /**
      * Search filter to apply to results
      * Defaults to: undefined
      * @type string
-     * @memberof TagsApilistCompaniesForTagIdUsingGET1
+     * @memberof TagsApilistContactsWithTagId
      */
     filter?: string
     /**
      * Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60;
      * Defaults to: undefined
      * @type string
-     * @memberof TagsApilistCompaniesForTagIdUsingGET1
+     * @memberof TagsApilistContactsWithTagId
      */
     orderBy?: string
     /**
@@ -7890,184 +7655,144 @@ export interface TagsApiListCompaniesForTagIdUsingGET1Request {
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
-     * @memberof TagsApilistCompaniesForTagIdUsingGET1
+     * @memberof TagsApilistContactsWithTagId
      */
     pageSize?: number
     /**
      * Page token
      * Defaults to: undefined
      * @type string
-     * @memberof TagsApilistCompaniesForTagIdUsingGET1
+     * @memberof TagsApilistContactsWithTagId
      */
     pageToken?: string
 }
 
-export interface TagsApiListContactsWithTagIdUsingGETRequest {
+export interface TagsApiListTagCategoriesRequest {
+    /**
+     * Search filter to apply to results
+     * Defaults to: undefined
+     * @type string
+     * @memberof TagsApilistTagCategories
+     */
+    filter?: string
+    /**
+     * Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60;
+     * Defaults to: undefined
+     * @type string
+     * @memberof TagsApilistTagCategories
+     */
+    orderBy?: string
+    /**
+     * Total number of items to return per page
+     * Minimum: 1
+     * Maximum: 1000
+     * Defaults to: undefined
+     * @type number
+     * @memberof TagsApilistTagCategories
+     */
+    pageSize?: number
+    /**
+     * Page token
+     * Defaults to: undefined
+     * @type string
+     * @memberof TagsApilistTagCategories
+     */
+    pageToken?: string
+}
+
+export interface TagsApiListTagsRequest {
+    /**
+     * Filter to apply, allowed fields are:  - (String) &#x60;name&#x60; - (String) &#x60;description&#x60; - (String) &#x60;category_id&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. If NONE is passed in for &#x60;category_id&#x60; or &#x60;description&#x60;, it will check for the non-existence of that field. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;name%3D%3Dmy-tag&#x60; - &#x60;filter&#x3D;category_id%3D%3DNONE&#x60; - &#x60;filter&#x3D;description%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_create_time%3D%3D2024-12-22T01:00:00.000Z;until_create_time%3D%3D2025-01-01T00:00:00.000Z;&#x60;
+     * Defaults to: undefined
+     * @type string
+     * @memberof TagsApilistTags
+     */
+    filter?: string
+    /**
+     * Attribute and direction to order items. One of the following fields:  - &#x60;name&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * Defaults to: undefined
+     * @type string
+     * @memberof TagsApilistTags
+     */
+    orderBy?: string
+    /**
+     * Total number of items to return per page
+     * Minimum: 1
+     * Maximum: 1000
+     * Defaults to: undefined
+     * @type number
+     * @memberof TagsApilistTags
+     */
+    pageSize?: number
+    /**
+     * Page token
+     * Defaults to: undefined
+     * @type string
+     * @memberof TagsApilistTags
+     */
+    pageToken?: string
+}
+
+export interface TagsApiRemoveTagsRequest {
     /**
      * tag_id
      * Defaults to: undefined
      * @type string
-     * @memberof TagsApilistContactsWithTagIdUsingGET
-     */
-    tagId: string
-    /**
-     * Search filter to apply to results
-     * Defaults to: undefined
-     * @type string
-     * @memberof TagsApilistContactsWithTagIdUsingGET
-     */
-    filter?: string
-    /**
-     * Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60;
-     * Defaults to: undefined
-     * @type string
-     * @memberof TagsApilistContactsWithTagIdUsingGET
-     */
-    orderBy?: string
-    /**
-     * Total number of items to return per page
-     * Minimum: 1
-     * Maximum: 1000
-     * Defaults to: undefined
-     * @type number
-     * @memberof TagsApilistContactsWithTagIdUsingGET
-     */
-    pageSize?: number
-    /**
-     * Page token
-     * Defaults to: undefined
-     * @type string
-     * @memberof TagsApilistContactsWithTagIdUsingGET
-     */
-    pageToken?: string
-}
-
-export interface TagsApiListTagCategoriesUsingGETRequest {
-    /**
-     * Search filter to apply to results
-     * Defaults to: undefined
-     * @type string
-     * @memberof TagsApilistTagCategoriesUsingGET
-     */
-    filter?: string
-    /**
-     * Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60;
-     * Defaults to: undefined
-     * @type string
-     * @memberof TagsApilistTagCategoriesUsingGET
-     */
-    orderBy?: string
-    /**
-     * Total number of items to return per page
-     * Minimum: 1
-     * Maximum: 1000
-     * Defaults to: undefined
-     * @type number
-     * @memberof TagsApilistTagCategoriesUsingGET
-     */
-    pageSize?: number
-    /**
-     * Page token
-     * Defaults to: undefined
-     * @type string
-     * @memberof TagsApilistTagCategoriesUsingGET
-     */
-    pageToken?: string
-}
-
-export interface TagsApiListTagsUsingGET1Request {
-    /**
-     * Search filter to apply to results
-     * Defaults to: undefined
-     * @type string
-     * @memberof TagsApilistTagsUsingGET1
-     */
-    filter?: string
-    /**
-     * Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60;
-     * Defaults to: undefined
-     * @type string
-     * @memberof TagsApilistTagsUsingGET1
-     */
-    orderBy?: string
-    /**
-     * Total number of items to return per page
-     * Minimum: 1
-     * Maximum: 1000
-     * Defaults to: undefined
-     * @type number
-     * @memberof TagsApilistTagsUsingGET1
-     */
-    pageSize?: number
-    /**
-     * Page token
-     * Defaults to: undefined
-     * @type string
-     * @memberof TagsApilistTagsUsingGET1
-     */
-    pageToken?: string
-}
-
-export interface TagsApiRemoveTagsUsingPOSTRequest {
-    /**
-     * tag_id
-     * Defaults to: undefined
-     * @type string
-     * @memberof TagsApiremoveTagsUsingPOST
+     * @memberof TagsApiremoveTags
      */
     tagId: string
     /**
      * applyRemoveTagRequest
      * @type ApplyRemoveTagRequest
-     * @memberof TagsApiremoveTagsUsingPOST
+     * @memberof TagsApiremoveTags
      */
     applyRemoveTagRequest: ApplyRemoveTagRequest
 }
 
-export interface TagsApiUpdateTagCategoryUsingPATCHRequest {
+export interface TagsApiUpdateTagRequest {
+    /**
+     * tag_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof TagsApiupdateTag
+     */
+    tagId: string
+    /**
+     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * Defaults to: undefined
+     * @type Array&lt;string&gt;
+     * @memberof TagsApiupdateTag
+     */
+    updateMask?: Array<string>
+    /**
+     * tag
+     * @type CreateUpdateTagRequest
+     * @memberof TagsApiupdateTag
+     */
+    createUpdateTagRequest?: CreateUpdateTagRequest
+}
+
+export interface TagsApiUpdateTagCategoryRequest {
     /**
      * tag_category_id
      * Defaults to: undefined
      * @type string
-     * @memberof TagsApiupdateTagCategoryUsingPATCH
+     * @memberof TagsApiupdateTagCategory
      */
     tagCategoryId: string
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
      * @type Array&lt;string&gt;
-     * @memberof TagsApiupdateTagCategoryUsingPATCH
+     * @memberof TagsApiupdateTagCategory
      */
     updateMask?: Array<string>
     /**
      * tagCategory
      * @type CreateUpdateTagCategoryRequest
-     * @memberof TagsApiupdateTagCategoryUsingPATCH
+     * @memberof TagsApiupdateTagCategory
      */
     createUpdateTagCategoryRequest?: CreateUpdateTagCategoryRequest
-}
-
-export interface TagsApiUpdateTagUsingPATCHRequest {
-    /**
-     * tag_id
-     * Defaults to: undefined
-     * @type string
-     * @memberof TagsApiupdateTagUsingPATCH
-     */
-    tagId: string
-    /**
-     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-     * Defaults to: undefined
-     * @type Array&lt;string&gt;
-     * @memberof TagsApiupdateTagUsingPATCH
-     */
-    updateMask?: Array<string>
-    /**
-     * tag
-     * @type CreateUpdateTagRequest
-     * @memberof TagsApiupdateTagUsingPATCH
-     */
-    createUpdateTagRequest?: CreateUpdateTagRequest
 }
 
 export class ObjectTagsApi {
@@ -8082,8 +7807,8 @@ export class ObjectTagsApi {
      * Apply Tag
      * @param param the request object
      */
-    public applyTagsUsingPOSTWithHttpInfo(param: TagsApiApplyTagsUsingPOSTRequest, options?: ConfigurationOptions): Promise<HttpInfo<ApplyTagsResponse>> {
-        return this.api.applyTagsUsingPOSTWithHttpInfo(param.tagId, param.applyRemoveTagRequest,  options).toPromise();
+    public applyTagsWithHttpInfo(param: TagsApiApplyTagsRequest, options?: ConfigurationOptions): Promise<HttpInfo<ApplyTagsResponse>> {
+        return this.api.applyTagsWithHttpInfo(param.tagId, param.applyRemoveTagRequest,  options).toPromise();
     }
 
     /**
@@ -8091,26 +7816,8 @@ export class ObjectTagsApi {
      * Apply Tag
      * @param param the request object
      */
-    public applyTagsUsingPOST(param: TagsApiApplyTagsUsingPOSTRequest, options?: ConfigurationOptions): Promise<ApplyTagsResponse> {
-        return this.api.applyTagsUsingPOST(param.tagId, param.applyRemoveTagRequest,  options).toPromise();
-    }
-
-    /**
-     * Creates a new Tag Category.
-     * Create Tag Category
-     * @param param the request object
-     */
-    public createTagCategoryUsingPOST1WithHttpInfo(param: TagsApiCreateTagCategoryUsingPOST1Request, options?: ConfigurationOptions): Promise<HttpInfo<Tag>> {
-        return this.api.createTagCategoryUsingPOST1WithHttpInfo(param.createUpdateTagCategoryRequest,  options).toPromise();
-    }
-
-    /**
-     * Creates a new Tag Category.
-     * Create Tag Category
-     * @param param the request object
-     */
-    public createTagCategoryUsingPOST1(param: TagsApiCreateTagCategoryUsingPOST1Request, options?: ConfigurationOptions): Promise<Tag> {
-        return this.api.createTagCategoryUsingPOST1(param.createUpdateTagCategoryRequest,  options).toPromise();
+    public applyTags(param: TagsApiApplyTagsRequest, options?: ConfigurationOptions): Promise<ApplyTagsResponse> {
+        return this.api.applyTags(param.tagId, param.applyRemoveTagRequest,  options).toPromise();
     }
 
     /**
@@ -8118,8 +7825,8 @@ export class ObjectTagsApi {
      * Create Tag
      * @param param the request object
      */
-    public createTagUsingPOST1WithHttpInfo(param: TagsApiCreateTagUsingPOST1Request, options?: ConfigurationOptions): Promise<HttpInfo<Tag>> {
-        return this.api.createTagUsingPOST1WithHttpInfo(param.createUpdateTagRequest,  options).toPromise();
+    public createTagWithHttpInfo(param: TagsApiCreateTagRequest, options?: ConfigurationOptions): Promise<HttpInfo<Tag>> {
+        return this.api.createTagWithHttpInfo(param.createUpdateTagRequest,  options).toPromise();
     }
 
     /**
@@ -8127,35 +7834,26 @@ export class ObjectTagsApi {
      * Create Tag
      * @param param the request object
      */
-    public createTagUsingPOST1(param: TagsApiCreateTagUsingPOST1Request, options?: ConfigurationOptions): Promise<Tag> {
-        return this.api.createTagUsingPOST1(param.createUpdateTagRequest,  options).toPromise();
+    public createTag(param: TagsApiCreateTagRequest, options?: ConfigurationOptions): Promise<Tag> {
+        return this.api.createTag(param.createUpdateTagRequest,  options).toPromise();
     }
 
     /**
-     * Deletes the specified Tag Category
-     * Delete Tag Category
+     * Creates a new Tag Category.
+     * Create Tag Category
      * @param param the request object
      */
-    public deleteTagCategoryUsingDELETEWithHttpInfo(param: TagsApiDeleteTagCategoryUsingDELETERequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api.deleteTagCategoryUsingDELETEWithHttpInfo(param.tagCategoryId,  options).toPromise();
+    public createTagCategoryWithHttpInfo(param: TagsApiCreateTagCategoryRequest, options?: ConfigurationOptions): Promise<HttpInfo<Tag>> {
+        return this.api.createTagCategoryWithHttpInfo(param.createUpdateTagCategoryRequest,  options).toPromise();
     }
 
     /**
-     * Deletes the specified Tag Category
-     * Delete Tag Category
+     * Creates a new Tag Category.
+     * Create Tag Category
      * @param param the request object
      */
-    public deleteTagCategoryUsingDELETE(param: TagsApiDeleteTagCategoryUsingDELETERequest, options?: ConfigurationOptions): Promise<void> {
-        return this.api.deleteTagCategoryUsingDELETE(param.tagCategoryId,  options).toPromise();
-    }
-
-    /**
-     * Deletes a Tag.
-     * Delete Tag
-     * @param param the request object
-     */
-    public deleteTagUsingDELETEWithHttpInfo(param: TagsApiDeleteTagUsingDELETERequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api.deleteTagUsingDELETEWithHttpInfo(param.tagId,  options).toPromise();
+    public createTagCategory(param: TagsApiCreateTagCategoryRequest, options?: ConfigurationOptions): Promise<Tag> {
+        return this.api.createTagCategory(param.createUpdateTagCategoryRequest,  options).toPromise();
     }
 
     /**
@@ -8163,8 +7861,35 @@ export class ObjectTagsApi {
      * Delete Tag
      * @param param the request object
      */
-    public deleteTagUsingDELETE(param: TagsApiDeleteTagUsingDELETERequest, options?: ConfigurationOptions): Promise<void> {
-        return this.api.deleteTagUsingDELETE(param.tagId,  options).toPromise();
+    public deleteTagWithHttpInfo(param: TagsApiDeleteTagRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteTagWithHttpInfo(param.tagId,  options).toPromise();
+    }
+
+    /**
+     * Deletes a Tag.
+     * Delete Tag
+     * @param param the request object
+     */
+    public deleteTag(param: TagsApiDeleteTagRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteTag(param.tagId,  options).toPromise();
+    }
+
+    /**
+     * Deletes the specified Tag Category
+     * Delete Tag Category
+     * @param param the request object
+     */
+    public deleteTagCategoryWithHttpInfo(param: TagsApiDeleteTagCategoryRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteTagCategoryWithHttpInfo(param.tagCategoryId,  options).toPromise();
+    }
+
+    /**
+     * Deletes the specified Tag Category
+     * Delete Tag Category
+     * @param param the request object
+     */
+    public deleteTagCategory(param: TagsApiDeleteTagCategoryRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteTagCategory(param.tagCategoryId,  options).toPromise();
     }
 
     /**
@@ -8172,8 +7897,8 @@ export class ObjectTagsApi {
      * Retrieve a Tag Category
      * @param param the request object
      */
-    public getCategoryUsingGETWithHttpInfo(param: TagsApiGetCategoryUsingGETRequest, options?: ConfigurationOptions): Promise<HttpInfo<GetTagCategoryResponse>> {
-        return this.api.getCategoryUsingGETWithHttpInfo(param.tagCategoryId,  options).toPromise();
+    public getCategoryWithHttpInfo(param: TagsApiGetCategoryRequest, options?: ConfigurationOptions): Promise<HttpInfo<GetTagCategoryResponse>> {
+        return this.api.getCategoryWithHttpInfo(param.tagCategoryId,  options).toPromise();
     }
 
     /**
@@ -8181,8 +7906,8 @@ export class ObjectTagsApi {
      * Retrieve a Tag Category
      * @param param the request object
      */
-    public getCategoryUsingGET(param: TagsApiGetCategoryUsingGETRequest, options?: ConfigurationOptions): Promise<GetTagCategoryResponse> {
-        return this.api.getCategoryUsingGET(param.tagCategoryId,  options).toPromise();
+    public getCategory(param: TagsApiGetCategoryRequest, options?: ConfigurationOptions): Promise<GetTagCategoryResponse> {
+        return this.api.getCategory(param.tagCategoryId,  options).toPromise();
     }
 
     /**
@@ -8190,8 +7915,8 @@ export class ObjectTagsApi {
      * Retrieve a Tag
      * @param param the request object
      */
-    public getTagUsingGET1WithHttpInfo(param: TagsApiGetTagUsingGET1Request, options?: ConfigurationOptions): Promise<HttpInfo<Tag>> {
-        return this.api.getTagUsingGET1WithHttpInfo(param.tagId,  options).toPromise();
+    public getTagWithHttpInfo(param: TagsApiGetTagRequest, options?: ConfigurationOptions): Promise<HttpInfo<Tag>> {
+        return this.api.getTagWithHttpInfo(param.tagId,  options).toPromise();
     }
 
     /**
@@ -8199,8 +7924,8 @@ export class ObjectTagsApi {
      * Retrieve a Tag
      * @param param the request object
      */
-    public getTagUsingGET1(param: TagsApiGetTagUsingGET1Request, options?: ConfigurationOptions): Promise<Tag> {
-        return this.api.getTagUsingGET1(param.tagId,  options).toPromise();
+    public getTag(param: TagsApiGetTagRequest, options?: ConfigurationOptions): Promise<Tag> {
+        return this.api.getTag(param.tagId,  options).toPromise();
     }
 
     /**
@@ -8208,8 +7933,8 @@ export class ObjectTagsApi {
      * List Tagged Companies
      * @param param the request object
      */
-    public listCompaniesForTagIdUsingGET1WithHttpInfo(param: TagsApiListCompaniesForTagIdUsingGET1Request, options?: ConfigurationOptions): Promise<HttpInfo<ListTaggedCompaniesResponse>> {
-        return this.api.listCompaniesForTagIdUsingGET1WithHttpInfo(param.tagId, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listCompaniesForTagIdWithHttpInfo(param: TagsApiListCompaniesForTagIdRequest, options?: ConfigurationOptions): Promise<HttpInfo<ListTaggedCompaniesResponse>> {
+        return this.api.listCompaniesForTagIdWithHttpInfo(param.tagId, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -8217,8 +7942,8 @@ export class ObjectTagsApi {
      * List Tagged Companies
      * @param param the request object
      */
-    public listCompaniesForTagIdUsingGET1(param: TagsApiListCompaniesForTagIdUsingGET1Request, options?: ConfigurationOptions): Promise<ListTaggedCompaniesResponse> {
-        return this.api.listCompaniesForTagIdUsingGET1(param.tagId, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listCompaniesForTagId(param: TagsApiListCompaniesForTagIdRequest, options?: ConfigurationOptions): Promise<ListTaggedCompaniesResponse> {
+        return this.api.listCompaniesForTagId(param.tagId, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -8226,8 +7951,8 @@ export class ObjectTagsApi {
      * List Tagged Contacts
      * @param param the request object
      */
-    public listContactsWithTagIdUsingGETWithHttpInfo(param: TagsApiListContactsWithTagIdUsingGETRequest, options?: ConfigurationOptions): Promise<HttpInfo<ListTaggedContactsResponse>> {
-        return this.api.listContactsWithTagIdUsingGETWithHttpInfo(param.tagId, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listContactsWithTagIdWithHttpInfo(param: TagsApiListContactsWithTagIdRequest, options?: ConfigurationOptions): Promise<HttpInfo<ListTaggedContactsResponse>> {
+        return this.api.listContactsWithTagIdWithHttpInfo(param.tagId, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -8235,8 +7960,8 @@ export class ObjectTagsApi {
      * List Tagged Contacts
      * @param param the request object
      */
-    public listContactsWithTagIdUsingGET(param: TagsApiListContactsWithTagIdUsingGETRequest, options?: ConfigurationOptions): Promise<ListTaggedContactsResponse> {
-        return this.api.listContactsWithTagIdUsingGET(param.tagId, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listContactsWithTagId(param: TagsApiListContactsWithTagIdRequest, options?: ConfigurationOptions): Promise<ListTaggedContactsResponse> {
+        return this.api.listContactsWithTagId(param.tagId, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -8244,8 +7969,8 @@ export class ObjectTagsApi {
      * List Tag Categories
      * @param param the request object
      */
-    public listTagCategoriesUsingGETWithHttpInfo(param: TagsApiListTagCategoriesUsingGETRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListTagCategoriesResponse>> {
-        return this.api.listTagCategoriesUsingGETWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listTagCategoriesWithHttpInfo(param: TagsApiListTagCategoriesRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListTagCategoriesResponse>> {
+        return this.api.listTagCategoriesWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -8253,8 +7978,8 @@ export class ObjectTagsApi {
      * List Tag Categories
      * @param param the request object
      */
-    public listTagCategoriesUsingGET(param: TagsApiListTagCategoriesUsingGETRequest = {}, options?: ConfigurationOptions): Promise<ListTagCategoriesResponse> {
-        return this.api.listTagCategoriesUsingGET(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listTagCategories(param: TagsApiListTagCategoriesRequest = {}, options?: ConfigurationOptions): Promise<ListTagCategoriesResponse> {
+        return this.api.listTagCategories(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -8262,8 +7987,8 @@ export class ObjectTagsApi {
      * List Tags
      * @param param the request object
      */
-    public listTagsUsingGET1WithHttpInfo(param: TagsApiListTagsUsingGET1Request = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListTagsResponse>> {
-        return this.api.listTagsUsingGET1WithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listTagsWithHttpInfo(param: TagsApiListTagsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListTagsResponse>> {
+        return this.api.listTagsWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -8271,8 +7996,8 @@ export class ObjectTagsApi {
      * List Tags
      * @param param the request object
      */
-    public listTagsUsingGET1(param: TagsApiListTagsUsingGET1Request = {}, options?: ConfigurationOptions): Promise<ListTagsResponse> {
-        return this.api.listTagsUsingGET1(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listTags(param: TagsApiListTagsRequest = {}, options?: ConfigurationOptions): Promise<ListTagsResponse> {
+        return this.api.listTags(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -8280,8 +8005,8 @@ export class ObjectTagsApi {
      * Remove Tags
      * @param param the request object
      */
-    public removeTagsUsingPOSTWithHttpInfo(param: TagsApiRemoveTagsUsingPOSTRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api.removeTagsUsingPOSTWithHttpInfo(param.tagId, param.applyRemoveTagRequest,  options).toPromise();
+    public removeTagsWithHttpInfo(param: TagsApiRemoveTagsRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.removeTagsWithHttpInfo(param.tagId, param.applyRemoveTagRequest,  options).toPromise();
     }
 
     /**
@@ -8289,26 +8014,8 @@ export class ObjectTagsApi {
      * Remove Tags
      * @param param the request object
      */
-    public removeTagsUsingPOST(param: TagsApiRemoveTagsUsingPOSTRequest, options?: ConfigurationOptions): Promise<void> {
-        return this.api.removeTagsUsingPOST(param.tagId, param.applyRemoveTagRequest,  options).toPromise();
-    }
-
-    /**
-     * Updates a Tag Category with only the values provided in the request
-     * Update a Tag Category
-     * @param param the request object
-     */
-    public updateTagCategoryUsingPATCHWithHttpInfo(param: TagsApiUpdateTagCategoryUsingPATCHRequest, options?: ConfigurationOptions): Promise<HttpInfo<UpdateTagCategoryResponse>> {
-        return this.api.updateTagCategoryUsingPATCHWithHttpInfo(param.tagCategoryId, param.updateMask, param.createUpdateTagCategoryRequest,  options).toPromise();
-    }
-
-    /**
-     * Updates a Tag Category with only the values provided in the request
-     * Update a Tag Category
-     * @param param the request object
-     */
-    public updateTagCategoryUsingPATCH(param: TagsApiUpdateTagCategoryUsingPATCHRequest, options?: ConfigurationOptions): Promise<UpdateTagCategoryResponse> {
-        return this.api.updateTagCategoryUsingPATCH(param.tagCategoryId, param.updateMask, param.createUpdateTagCategoryRequest,  options).toPromise();
+    public removeTags(param: TagsApiRemoveTagsRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.removeTags(param.tagId, param.applyRemoveTagRequest,  options).toPromise();
     }
 
     /**
@@ -8316,8 +8023,8 @@ export class ObjectTagsApi {
      * Update a Tag
      * @param param the request object
      */
-    public updateTagUsingPATCHWithHttpInfo(param: TagsApiUpdateTagUsingPATCHRequest, options?: ConfigurationOptions): Promise<HttpInfo<UpdateTagResponse>> {
-        return this.api.updateTagUsingPATCHWithHttpInfo(param.tagId, param.updateMask, param.createUpdateTagRequest,  options).toPromise();
+    public updateTagWithHttpInfo(param: TagsApiUpdateTagRequest, options?: ConfigurationOptions): Promise<HttpInfo<UpdateTagResponse>> {
+        return this.api.updateTagWithHttpInfo(param.tagId, param.updateMask, param.createUpdateTagRequest,  options).toPromise();
     }
 
     /**
@@ -8325,8 +8032,26 @@ export class ObjectTagsApi {
      * Update a Tag
      * @param param the request object
      */
-    public updateTagUsingPATCH(param: TagsApiUpdateTagUsingPATCHRequest, options?: ConfigurationOptions): Promise<UpdateTagResponse> {
-        return this.api.updateTagUsingPATCH(param.tagId, param.updateMask, param.createUpdateTagRequest,  options).toPromise();
+    public updateTag(param: TagsApiUpdateTagRequest, options?: ConfigurationOptions): Promise<UpdateTagResponse> {
+        return this.api.updateTag(param.tagId, param.updateMask, param.createUpdateTagRequest,  options).toPromise();
+    }
+
+    /**
+     * Updates a Tag Category with only the values provided in the request
+     * Update a Tag Category
+     * @param param the request object
+     */
+    public updateTagCategoryWithHttpInfo(param: TagsApiUpdateTagCategoryRequest, options?: ConfigurationOptions): Promise<HttpInfo<UpdateTagCategoryResponse>> {
+        return this.api.updateTagCategoryWithHttpInfo(param.tagCategoryId, param.updateMask, param.createUpdateTagCategoryRequest,  options).toPromise();
+    }
+
+    /**
+     * Updates a Tag Category with only the values provided in the request
+     * Update a Tag Category
+     * @param param the request object
+     */
+    public updateTagCategory(param: TagsApiUpdateTagCategoryRequest, options?: ConfigurationOptions): Promise<UpdateTagCategoryResponse> {
+        return this.api.updateTagCategory(param.tagCategoryId, param.updateMask, param.createUpdateTagCategoryRequest,  options).toPromise();
     }
 
 }
@@ -8334,74 +8059,74 @@ export class ObjectTagsApi {
 import { ObservableTaskApi } from "./ObservableAPI";
 import { TaskApiRequestFactory, TaskApiResponseProcessor} from "../apis/TaskApi";
 
-export interface TaskApiCreateTaskCustomFieldUsingPOST1Request {
-    /**
-     * customField
-     * @type CreateCustomFieldRequest
-     * @memberof TaskApicreateTaskCustomFieldUsingPOST1
-     */
-    createCustomFieldRequest: CreateCustomFieldRequest
-}
-
-export interface TaskApiCreateTaskUsingPOST1Request {
+export interface TaskApiCreateTaskRequest {
     /**
      * task
      * @type CreateTaskRequest
-     * @memberof TaskApicreateTaskUsingPOST1
+     * @memberof TaskApicreateTask
      */
     createTaskRequest?: CreateTaskRequest
 }
 
-export interface TaskApiDeleteTaskCustomFieldUsingDELETERequest {
+export interface TaskApiCreateTaskCustomFieldRequest {
+    /**
+     * customField
+     * @type CreateCustomFieldRequest
+     * @memberof TaskApicreateTaskCustomField
+     */
+    createCustomFieldRequest: CreateCustomFieldRequest
+}
+
+export interface TaskApiDeleteTaskRequest {
+    /**
+     * task_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof TaskApideleteTask
+     */
+    taskId: string
+}
+
+export interface TaskApiDeleteTaskCustomFieldRequest {
     /**
      * custom_field_id
      * Defaults to: undefined
      * @type string
-     * @memberof TaskApideleteTaskCustomFieldUsingDELETE
+     * @memberof TaskApideleteTaskCustomField
      */
     customFieldId: string
 }
 
-export interface TaskApiDeleteTaskUsingDELETE1Request {
+export interface TaskApiGetTaskRequest {
     /**
      * task_id
      * Defaults to: undefined
      * @type string
-     * @memberof TaskApideleteTaskUsingDELETE1
+     * @memberof TaskApigetTask
      */
     taskId: string
 }
 
-export interface TaskApiGetTaskUsingGET1Request {
-    /**
-     * task_id
-     * Defaults to: undefined
-     * @type string
-     * @memberof TaskApigetTaskUsingGET1
-     */
-    taskId: string
-}
-
-export interface TaskApiListTasksUsingGET1Request {
+export interface TaskApiListTasksRequest {
     /**
      * 
      * Defaults to: undefined
      * @type string
-     * @memberof TaskApilistTasksUsingGET1
+     * @memberof TaskApilistTasks
      */
     endDueTime?: string
     /**
      * Search filter to apply to results
      * Defaults to: undefined
      * @type string
-     * @memberof TaskApilistTasksUsingGET1
+     * @memberof TaskApilistTasks
      */
     filter?: string
     /**
      * Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60;
      * Defaults to: undefined
      * @type string
-     * @memberof TaskApilistTasksUsingGET1
+     * @memberof TaskApilistTasks
      */
     orderBy?: string
     /**
@@ -8410,72 +8135,72 @@ export interface TaskApiListTasksUsingGET1Request {
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
-     * @memberof TaskApilistTasksUsingGET1
+     * @memberof TaskApilistTasks
      */
     pageSize?: number
     /**
      * Page token
      * Defaults to: undefined
      * @type string
-     * @memberof TaskApilistTasksUsingGET1
+     * @memberof TaskApilistTasks
      */
     pageToken?: string
     /**
      * 
      * Defaults to: undefined
      * @type string
-     * @memberof TaskApilistTasksUsingGET1
+     * @memberof TaskApilistTasks
      */
     startDueTime?: string
 }
 
-export interface TaskApiRetrieveTaskModelUsingGET1Request {
+export interface TaskApiRetrieveTaskModelRequest {
 }
 
-export interface TaskApiUpdateTaskCustomFieldUsingPATCHRequest {
-    /**
-     * custom_field_id
-     * Defaults to: undefined
-     * @type string
-     * @memberof TaskApiupdateTaskCustomFieldUsingPATCH
-     */
-    customFieldId: string
-    /**
-     * request
-     * @type UpdateCustomFieldMetaDataRequest
-     * @memberof TaskApiupdateTaskCustomFieldUsingPATCH
-     */
-    updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest
-    /**
-     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-     * Defaults to: undefined
-     * @type Array&lt;string&gt;
-     * @memberof TaskApiupdateTaskCustomFieldUsingPATCH
-     */
-    updateMask?: Array<string>
-}
-
-export interface TaskApiUpdateTaskUsingPATCHRequest {
+export interface TaskApiUpdateTaskRequest {
     /**
      * task_id
      * Defaults to: undefined
      * @type string
-     * @memberof TaskApiupdateTaskUsingPATCH
+     * @memberof TaskApiupdateTask
      */
     taskId: string
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
      * @type Array&lt;string&gt;
-     * @memberof TaskApiupdateTaskUsingPATCH
+     * @memberof TaskApiupdateTask
      */
     updateMask?: Array<string>
     /**
      * task
      * @type CreateUpdateTaskRequest
-     * @memberof TaskApiupdateTaskUsingPATCH
+     * @memberof TaskApiupdateTask
      */
     createUpdateTaskRequest?: CreateUpdateTaskRequest
+}
+
+export interface TaskApiUpdateTaskCustomFieldRequest {
+    /**
+     * custom_field_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof TaskApiupdateTaskCustomField
+     */
+    customFieldId: string
+    /**
+     * request
+     * @type UpdateCustomFieldMetaDataRequest
+     * @memberof TaskApiupdateTaskCustomField
+     */
+    updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest
+    /**
+     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * Defaults to: undefined
+     * @type Array&lt;string&gt;
+     * @memberof TaskApiupdateTaskCustomField
+     */
+    updateMask?: Array<string>
 }
 
 export class ObjectTaskApi {
@@ -8486,21 +8211,12 @@ export class ObjectTaskApi {
     }
 
     /**
-     * Creates a custom field of the specified type and options to the Task object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
-     * Create a Custom Field
+     * Creates a new task as the authenticated user.   This endpoint does not currently support setting Custom Field values.
+     * Create a Task
      * @param param the request object
      */
-    public createTaskCustomFieldUsingPOST1WithHttpInfo(param: TaskApiCreateTaskCustomFieldUsingPOST1Request, options?: ConfigurationOptions): Promise<HttpInfo<CreateCustomFieldResponse>> {
-        return this.api.createTaskCustomFieldUsingPOST1WithHttpInfo(param.createCustomFieldRequest,  options).toPromise();
-    }
-
-    /**
-     * Creates a custom field of the specified type and options to the Task object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
-     * Create a Custom Field
-     * @param param the request object
-     */
-    public createTaskCustomFieldUsingPOST1(param: TaskApiCreateTaskCustomFieldUsingPOST1Request, options?: ConfigurationOptions): Promise<CreateCustomFieldResponse> {
-        return this.api.createTaskCustomFieldUsingPOST1(param.createCustomFieldRequest,  options).toPromise();
+    public createTaskWithHttpInfo(param: TaskApiCreateTaskRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<Task>> {
+        return this.api.createTaskWithHttpInfo(param.createTaskRequest,  options).toPromise();
     }
 
     /**
@@ -8508,35 +8224,26 @@ export class ObjectTaskApi {
      * Create a Task
      * @param param the request object
      */
-    public createTaskUsingPOST1WithHttpInfo(param: TaskApiCreateTaskUsingPOST1Request = {}, options?: ConfigurationOptions): Promise<HttpInfo<Task>> {
-        return this.api.createTaskUsingPOST1WithHttpInfo(param.createTaskRequest,  options).toPromise();
+    public createTask(param: TaskApiCreateTaskRequest = {}, options?: ConfigurationOptions): Promise<Task> {
+        return this.api.createTask(param.createTaskRequest,  options).toPromise();
     }
 
     /**
-     * Creates a new task as the authenticated user.   This endpoint does not currently support setting Custom Field values.
-     * Create a Task
+     * Creates a custom field of the specified type and options to the Task object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+     * Create a Custom Field
      * @param param the request object
      */
-    public createTaskUsingPOST1(param: TaskApiCreateTaskUsingPOST1Request = {}, options?: ConfigurationOptions): Promise<Task> {
-        return this.api.createTaskUsingPOST1(param.createTaskRequest,  options).toPromise();
+    public createTaskCustomFieldWithHttpInfo(param: TaskApiCreateTaskCustomFieldRequest, options?: ConfigurationOptions): Promise<HttpInfo<CreateCustomFieldResponse>> {
+        return this.api.createTaskCustomFieldWithHttpInfo(param.createCustomFieldRequest,  options).toPromise();
     }
 
     /**
-     * Deletes a Custom Field from the Task object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
-     * Delete a Custom Field
+     * Creates a custom field of the specified type and options to the Task object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+     * Create a Custom Field
      * @param param the request object
      */
-    public deleteTaskCustomFieldUsingDELETEWithHttpInfo(param: TaskApiDeleteTaskCustomFieldUsingDELETERequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api.deleteTaskCustomFieldUsingDELETEWithHttpInfo(param.customFieldId,  options).toPromise();
-    }
-
-    /**
-     * Deletes a Custom Field from the Task object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
-     * Delete a Custom Field
-     * @param param the request object
-     */
-    public deleteTaskCustomFieldUsingDELETE(param: TaskApiDeleteTaskCustomFieldUsingDELETERequest, options?: ConfigurationOptions): Promise<void> {
-        return this.api.deleteTaskCustomFieldUsingDELETE(param.customFieldId,  options).toPromise();
+    public createTaskCustomField(param: TaskApiCreateTaskCustomFieldRequest, options?: ConfigurationOptions): Promise<CreateCustomFieldResponse> {
+        return this.api.createTaskCustomField(param.createCustomFieldRequest,  options).toPromise();
     }
 
     /**
@@ -8544,8 +8251,8 @@ export class ObjectTaskApi {
      * Delete a Task
      * @param param the request object
      */
-    public deleteTaskUsingDELETE1WithHttpInfo(param: TaskApiDeleteTaskUsingDELETE1Request, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api.deleteTaskUsingDELETE1WithHttpInfo(param.taskId,  options).toPromise();
+    public deleteTaskWithHttpInfo(param: TaskApiDeleteTaskRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteTaskWithHttpInfo(param.taskId,  options).toPromise();
     }
 
     /**
@@ -8553,8 +8260,26 @@ export class ObjectTaskApi {
      * Delete a Task
      * @param param the request object
      */
-    public deleteTaskUsingDELETE1(param: TaskApiDeleteTaskUsingDELETE1Request, options?: ConfigurationOptions): Promise<void> {
-        return this.api.deleteTaskUsingDELETE1(param.taskId,  options).toPromise();
+    public deleteTask(param: TaskApiDeleteTaskRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteTask(param.taskId,  options).toPromise();
+    }
+
+    /**
+     * Deletes a Custom Field from the Task object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+     * Delete a Custom Field
+     * @param param the request object
+     */
+    public deleteTaskCustomFieldWithHttpInfo(param: TaskApiDeleteTaskCustomFieldRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteTaskCustomFieldWithHttpInfo(param.customFieldId,  options).toPromise();
+    }
+
+    /**
+     * Deletes a Custom Field from the Task object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+     * Delete a Custom Field
+     * @param param the request object
+     */
+    public deleteTaskCustomField(param: TaskApiDeleteTaskCustomFieldRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteTaskCustomField(param.customFieldId,  options).toPromise();
     }
 
     /**
@@ -8562,8 +8287,8 @@ export class ObjectTaskApi {
      * Retrieve a Task
      * @param param the request object
      */
-    public getTaskUsingGET1WithHttpInfo(param: TaskApiGetTaskUsingGET1Request, options?: ConfigurationOptions): Promise<HttpInfo<Task>> {
-        return this.api.getTaskUsingGET1WithHttpInfo(param.taskId,  options).toPromise();
+    public getTaskWithHttpInfo(param: TaskApiGetTaskRequest, options?: ConfigurationOptions): Promise<HttpInfo<Task>> {
+        return this.api.getTaskWithHttpInfo(param.taskId,  options).toPromise();
     }
 
     /**
@@ -8571,8 +8296,8 @@ export class ObjectTaskApi {
      * Retrieve a Task
      * @param param the request object
      */
-    public getTaskUsingGET1(param: TaskApiGetTaskUsingGET1Request, options?: ConfigurationOptions): Promise<Task> {
-        return this.api.getTaskUsingGET1(param.taskId,  options).toPromise();
+    public getTask(param: TaskApiGetTaskRequest, options?: ConfigurationOptions): Promise<Task> {
+        return this.api.getTask(param.taskId,  options).toPromise();
     }
 
     /**
@@ -8580,8 +8305,8 @@ export class ObjectTaskApi {
      * List Tasks
      * @param param the request object
      */
-    public listTasksUsingGET1WithHttpInfo(param: TaskApiListTasksUsingGET1Request = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListTasksResponse>> {
-        return this.api.listTasksUsingGET1WithHttpInfo(param.endDueTime, param.filter, param.orderBy, param.pageSize, param.pageToken, param.startDueTime,  options).toPromise();
+    public listTasksWithHttpInfo(param: TaskApiListTasksRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListTasksResponse>> {
+        return this.api.listTasksWithHttpInfo(param.endDueTime, param.filter, param.orderBy, param.pageSize, param.pageToken, param.startDueTime,  options).toPromise();
     }
 
     /**
@@ -8589,8 +8314,8 @@ export class ObjectTaskApi {
      * List Tasks
      * @param param the request object
      */
-    public listTasksUsingGET1(param: TaskApiListTasksUsingGET1Request = {}, options?: ConfigurationOptions): Promise<ListTasksResponse> {
-        return this.api.listTasksUsingGET1(param.endDueTime, param.filter, param.orderBy, param.pageSize, param.pageToken, param.startDueTime,  options).toPromise();
+    public listTasks(param: TaskApiListTasksRequest = {}, options?: ConfigurationOptions): Promise<ListTasksResponse> {
+        return this.api.listTasks(param.endDueTime, param.filter, param.orderBy, param.pageSize, param.pageToken, param.startDueTime,  options).toPromise();
     }
 
     /**
@@ -8598,8 +8323,8 @@ export class ObjectTaskApi {
      * Retrieve Task Model
      * @param param the request object
      */
-    public retrieveTaskModelUsingGET1WithHttpInfo(param: TaskApiRetrieveTaskModelUsingGET1Request = {}, options?: ConfigurationOptions): Promise<HttpInfo<ObjectModel>> {
-        return this.api.retrieveTaskModelUsingGET1WithHttpInfo( options).toPromise();
+    public retrieveTaskModelWithHttpInfo(param: TaskApiRetrieveTaskModelRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ObjectModel>> {
+        return this.api.retrieveTaskModelWithHttpInfo( options).toPromise();
     }
 
     /**
@@ -8607,26 +8332,8 @@ export class ObjectTaskApi {
      * Retrieve Task Model
      * @param param the request object
      */
-    public retrieveTaskModelUsingGET1(param: TaskApiRetrieveTaskModelUsingGET1Request = {}, options?: ConfigurationOptions): Promise<ObjectModel> {
-        return this.api.retrieveTaskModelUsingGET1( options).toPromise();
-    }
-
-    /**
-     * Updates a custom field of the specified type and options to the Task object.<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
-     * Update a Task\'s Custom Field
-     * @param param the request object
-     */
-    public updateTaskCustomFieldUsingPATCHWithHttpInfo(param: TaskApiUpdateTaskCustomFieldUsingPATCHRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
-        return this.api.updateTaskCustomFieldUsingPATCHWithHttpInfo(param.customFieldId, param.updateCustomFieldMetaDataRequest, param.updateMask,  options).toPromise();
-    }
-
-    /**
-     * Updates a custom field of the specified type and options to the Task object.<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
-     * Update a Task\'s Custom Field
-     * @param param the request object
-     */
-    public updateTaskCustomFieldUsingPATCH(param: TaskApiUpdateTaskCustomFieldUsingPATCHRequest, options?: ConfigurationOptions): Promise<CustomFieldMetaData> {
-        return this.api.updateTaskCustomFieldUsingPATCH(param.customFieldId, param.updateCustomFieldMetaDataRequest, param.updateMask,  options).toPromise();
+    public retrieveTaskModel(param: TaskApiRetrieveTaskModelRequest = {}, options?: ConfigurationOptions): Promise<ObjectModel> {
+        return this.api.retrieveTaskModel( options).toPromise();
     }
 
     /**
@@ -8634,8 +8341,8 @@ export class ObjectTaskApi {
      * Update a Task
      * @param param the request object
      */
-    public updateTaskUsingPATCHWithHttpInfo(param: TaskApiUpdateTaskUsingPATCHRequest, options?: ConfigurationOptions): Promise<HttpInfo<UpdateTaskResponse>> {
-        return this.api.updateTaskUsingPATCHWithHttpInfo(param.taskId, param.updateMask, param.createUpdateTaskRequest,  options).toPromise();
+    public updateTaskWithHttpInfo(param: TaskApiUpdateTaskRequest, options?: ConfigurationOptions): Promise<HttpInfo<UpdateTaskResponse>> {
+        return this.api.updateTaskWithHttpInfo(param.taskId, param.updateMask, param.createUpdateTaskRequest,  options).toPromise();
     }
 
     /**
@@ -8643,8 +8350,26 @@ export class ObjectTaskApi {
      * Update a Task
      * @param param the request object
      */
-    public updateTaskUsingPATCH(param: TaskApiUpdateTaskUsingPATCHRequest, options?: ConfigurationOptions): Promise<UpdateTaskResponse> {
-        return this.api.updateTaskUsingPATCH(param.taskId, param.updateMask, param.createUpdateTaskRequest,  options).toPromise();
+    public updateTask(param: TaskApiUpdateTaskRequest, options?: ConfigurationOptions): Promise<UpdateTaskResponse> {
+        return this.api.updateTask(param.taskId, param.updateMask, param.createUpdateTaskRequest,  options).toPromise();
+    }
+
+    /**
+     * Updates a custom field of the specified type and options to the Task object.<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+     * Update a Task\'s Custom Field
+     * @param param the request object
+     */
+    public updateTaskCustomFieldWithHttpInfo(param: TaskApiUpdateTaskCustomFieldRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
+        return this.api.updateTaskCustomFieldWithHttpInfo(param.customFieldId, param.updateCustomFieldMetaDataRequest, param.updateMask,  options).toPromise();
+    }
+
+    /**
+     * Updates a custom field of the specified type and options to the Task object.<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+     * Update a Task\'s Custom Field
+     * @param param the request object
+     */
+    public updateTaskCustomField(param: TaskApiUpdateTaskCustomFieldRequest, options?: ConfigurationOptions): Promise<CustomFieldMetaData> {
+        return this.api.updateTaskCustomField(param.customFieldId, param.updateCustomFieldMetaDataRequest, param.updateMask,  options).toPromise();
     }
 
 }
@@ -8652,35 +8377,35 @@ export class ObjectTaskApi {
 import { ObservableUsersApi } from "./ObservableAPI";
 import { UsersApiRequestFactory, UsersApiResponseProcessor} from "../apis/UsersApi";
 
-export interface UsersApiListPaginatedUsersUsingGETRequest {
+export interface UsersApiListPaginatedUsersRequest {
     /**
      * Filter to apply, allowed fields are: - (String) &#x60;email&#x60; - (String) &#x60;given_name&#x60; - (Boolean) &#x60;include_inactive&#x60; - (Boolean) &#x60;include_partners&#x60; - (Set[String]) &#x60;user_ids&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;user_ids%3D%3D123%3Bgiven_name%3D%3DSmith&#x60; 
      * Defaults to: undefined
      * @type string
-     * @memberof UsersApilistPaginatedUsersUsingGET
+     * @memberof UsersApilistPaginatedUsers
      */
     filter?: string
     /**
      * Attribute and direction to order items. One of the following fields: - &#x60;date_created&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * Defaults to: undefined
      * @type string
-     * @memberof UsersApilistPaginatedUsersUsingGET
+     * @memberof UsersApilistPaginatedUsers
      */
     orderBy?: string
     /**
      * Total number of items to return per page
      * Minimum: 1
-     * Maximum: 1000
+     * Maximum: 100
      * Defaults to: undefined
      * @type number
-     * @memberof UsersApilistPaginatedUsersUsingGET
+     * @memberof UsersApilistPaginatedUsers
      */
     pageSize?: number
     /**
      * Page token
      * Defaults to: undefined
      * @type string
-     * @memberof UsersApilistPaginatedUsersUsingGET
+     * @memberof UsersApilistPaginatedUsers
      */
     pageToken?: string
 }
@@ -8697,8 +8422,8 @@ export class ObjectUsersApi {
      * List Users
      * @param param the request object
      */
-    public listPaginatedUsersUsingGETWithHttpInfo(param: UsersApiListPaginatedUsersUsingGETRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListUsersPaginatedResponse>> {
-        return this.api.listPaginatedUsersUsingGETWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listPaginatedUsersWithHttpInfo(param: UsersApiListPaginatedUsersRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListUsersPaginatedResponse>> {
+        return this.api.listPaginatedUsersWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -8706,8 +8431,8 @@ export class ObjectUsersApi {
      * List Users
      * @param param the request object
      */
-    public listPaginatedUsersUsingGET(param: UsersApiListPaginatedUsersUsingGETRequest = {}, options?: ConfigurationOptions): Promise<ListUsersPaginatedResponse> {
-        return this.api.listPaginatedUsersUsingGET(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    public listPaginatedUsers(param: UsersApiListPaginatedUsersRequest = {}, options?: ConfigurationOptions): Promise<ListUsersPaginatedResponse> {
+        return this.api.listPaginatedUsers(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
 }

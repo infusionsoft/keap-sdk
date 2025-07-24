@@ -4,14 +4,14 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**add_contacts_to_campaign_sequence_using_post1**](CampaignApi.md#add_contacts_to_campaign_sequence_using_post1) | **POST** /v2/campaigns/{campaign_id}/sequences/{sequence_id}:addContacts | Add Contacts to Campaign Sequence
-[**get_campaign_using_get1**](CampaignApi.md#get_campaign_using_get1) | **GET** /v2/campaigns/{campaign_id} | Retrieve a Campaign
-[**list_campaigns_using_get1**](CampaignApi.md#list_campaigns_using_get1) | **GET** /v2/campaigns | List Campaigns
-[**remove_contacts_from_campaign_sequence_using_post**](CampaignApi.md#remove_contacts_from_campaign_sequence_using_post) | **POST** /v2/campaigns/{campaign_id}/sequences/{sequence_id}:removeContacts | Remove Contacts from Campaign Sequence
+[**add_contacts_to_campaign_sequence**](CampaignApi.md#add_contacts_to_campaign_sequence) | **POST** /v2/campaigns/{campaign_id}/sequences/{sequence_id}:addContacts | Add Contacts to Campaign Sequence
+[**get_campaign**](CampaignApi.md#get_campaign) | **GET** /v2/campaigns/{campaign_id} | Retrieve a Campaign
+[**list_campaigns**](CampaignApi.md#list_campaigns) | **GET** /v2/campaigns | List Campaigns
+[**remove_contacts_from_campaign_sequence**](CampaignApi.md#remove_contacts_from_campaign_sequence) | **POST** /v2/campaigns/{campaign_id}/sequences/{sequence_id}:removeContacts | Remove Contacts from Campaign Sequence
 
 
-# **add_contacts_to_campaign_sequence_using_post1**
-> AddContactsToSequenceResponse add_contacts_to_campaign_sequence_using_post1(campaign_id, sequence_id, add_contacts_to_sequence_request)
+# **add_contacts_to_campaign_sequence**
+> AddContactsToSequenceResponse add_contacts_to_campaign_sequence(campaign_id, sequence_id, add_contacts_to_sequence_request)
 
 Add Contacts to Campaign Sequence
 
@@ -44,11 +44,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Add Contacts to Campaign Sequence
-        api_response = api_instance.add_contacts_to_campaign_sequence_using_post1(campaign_id, sequence_id, add_contacts_to_sequence_request)
-        print("The response of CampaignApi->add_contacts_to_campaign_sequence_using_post1:\n")
+        api_response = api_instance.add_contacts_to_campaign_sequence(campaign_id, sequence_id, add_contacts_to_sequence_request)
+        print("The response of CampaignApi->add_contacts_to_campaign_sequence:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling CampaignApi->add_contacts_to_campaign_sequence_using_post1: %s\n" % e)
+        print("Exception when calling CampaignApi->add_contacts_to_campaign_sequence: %s\n" % e)
 ```
 
 
@@ -85,8 +85,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_campaign_using_get1**
-> Campaign get_campaign_using_get1(campaign_id)
+# **get_campaign**
+> Campaign get_campaign(campaign_id)
 
 Retrieve a Campaign
 
@@ -115,11 +115,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieve a Campaign
-        api_response = api_instance.get_campaign_using_get1(campaign_id)
-        print("The response of CampaignApi->get_campaign_using_get1:\n")
+        api_response = api_instance.get_campaign(campaign_id)
+        print("The response of CampaignApi->get_campaign:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling CampaignApi->get_campaign_using_get1: %s\n" % e)
+        print("Exception when calling CampaignApi->get_campaign: %s\n" % e)
 ```
 
 
@@ -155,8 +155,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **list_campaigns_using_get1**
-> ListCampaignsResponse list_campaigns_using_get1(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token, stats=stats)
+# **list_campaigns**
+> ListCampaignsResponse list_campaigns(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token, stats=stats)
 
 List Campaigns
 
@@ -189,11 +189,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # List Campaigns
-        api_response = api_instance.list_campaigns_using_get1(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token, stats=stats)
-        print("The response of CampaignApi->list_campaigns_using_get1:\n")
+        api_response = api_instance.list_campaigns(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token, stats=stats)
+        print("The response of CampaignApi->list_campaigns:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling CampaignApi->list_campaigns_using_get1: %s\n" % e)
+        print("Exception when calling CampaignApi->list_campaigns: %s\n" % e)
 ```
 
 
@@ -233,8 +233,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **remove_contacts_from_campaign_sequence_using_post**
-> RemoveContactsFromSequenceResponse remove_contacts_from_campaign_sequence_using_post(campaign_id, sequence_id, remove_contacts_from_sequence_request)
+# **remove_contacts_from_campaign_sequence**
+> RemoveContactsFromSequenceResponse remove_contacts_from_campaign_sequence(campaign_id, sequence_id, remove_contacts_from_sequence_request)
 
 Remove Contacts from Campaign Sequence
 
@@ -267,11 +267,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Remove Contacts from Campaign Sequence
-        api_response = api_instance.remove_contacts_from_campaign_sequence_using_post(campaign_id, sequence_id, remove_contacts_from_sequence_request)
-        print("The response of CampaignApi->remove_contacts_from_campaign_sequence_using_post:\n")
+        api_response = api_instance.remove_contacts_from_campaign_sequence(campaign_id, sequence_id, remove_contacts_from_sequence_request)
+        print("The response of CampaignApi->remove_contacts_from_campaign_sequence:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling CampaignApi->remove_contacts_from_campaign_sequence_using_post: %s\n" % e)
+        print("Exception when calling CampaignApi->remove_contacts_from_campaign_sequence: %s\n" % e)
 ```
 
 

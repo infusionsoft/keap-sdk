@@ -25,7 +25,7 @@ export class ReportingApiRequestFactory extends BaseAPIRequestFactory {
      * @param pageSize Total number of items to return per page
      * @param pageToken Page token
      */
-    public async listReportsUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
+    public async listReports(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
 
@@ -74,12 +74,12 @@ export class ReportingApiRequestFactory extends BaseAPIRequestFactory {
      * Retrieve Report
      * @param reportId report_id
      */
-    public async retrieveReportUsingGET(reportId: string, _options?: Configuration): Promise<RequestContext> {
+    public async retrieveReport(reportId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'reportId' is not null or undefined
         if (reportId === null || reportId === undefined) {
-            throw new RequiredError("ReportingApi", "retrieveReportUsingGET", "reportId");
+            throw new RequiredError("ReportingApi", "retrieveReport", "reportId");
         }
 
 
@@ -110,12 +110,12 @@ export class ReportingApiRequestFactory extends BaseAPIRequestFactory {
      * @param pageSize Total number of items to return per page
      * @param pageToken Representation of the last row retrieved from the previous page. An empty value implies a request for the first page.
      */
-    public async runReportUsingPOST(reportId: string, fields?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
+    public async runReport(reportId: string, fields?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'reportId' is not null or undefined
         if (reportId === null || reportId === undefined) {
-            throw new RequiredError("ReportingApi", "runReportUsingPOST", "reportId");
+            throw new RequiredError("ReportingApi", "runReport", "reportId");
         }
 
 
@@ -169,10 +169,10 @@ export class ReportingApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to listReportsUsingGET
+     * @params response Response returned by the server for a request to listReports
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async listReportsUsingGETWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListReportsResponse >> {
+     public async listReportsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListReportsResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: ListReportsResponse = ObjectSerializer.deserialize(
@@ -226,10 +226,10 @@ export class ReportingApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to retrieveReportUsingGET
+     * @params response Response returned by the server for a request to retrieveReport
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async retrieveReportUsingGETWithHttpInfo(response: ResponseContext): Promise<HttpInfo<Report >> {
+     public async retrieveReportWithHttpInfo(response: ResponseContext): Promise<HttpInfo<Report >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: Report = ObjectSerializer.deserialize(
@@ -283,10 +283,10 @@ export class ReportingApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to runReportUsingPOST
+     * @params response Response returned by the server for a request to runReport
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async runReportUsingPOSTWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ReportExecutionResult >> {
+     public async runReportWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ReportExecutionResult >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: ReportExecutionResult = ObjectSerializer.deserialize(

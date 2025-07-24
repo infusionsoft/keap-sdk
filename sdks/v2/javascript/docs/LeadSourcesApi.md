@@ -4,17 +4,17 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createLeadSourceUsingPOST**](LeadSourcesApi.md#createLeadSourceUsingPOST) | **POST** /v2/leadSources | Create a Lead Source
-[**deleteLeadSourceUsingDELETE**](LeadSourcesApi.md#deleteLeadSourceUsingDELETE) | **DELETE** /v2/leadSources/{lead_source_id} | Delete a Lead Source
-[**getLeadSourceUsingGET**](LeadSourcesApi.md#getLeadSourceUsingGET) | **GET** /v2/leadSources/{lead_source_id} | Retrieve a Lead Source
-[**listLeadSourcesUsingGET**](LeadSourcesApi.md#listLeadSourcesUsingGET) | **GET** /v2/leadSources | List Lead Sources
-[**updateLeadSourceUsingPATCH**](LeadSourcesApi.md#updateLeadSourceUsingPATCH) | **PATCH** /v2/leadSources/{lead_source_id} | Update a Lead Source
+[**createLeadSource**](LeadSourcesApi.md#createLeadSource) | **POST** /v2/leadSources | Create a Lead Source
+[**deleteLeadSource**](LeadSourcesApi.md#deleteLeadSource) | **DELETE** /v2/leadSources/{lead_source_id} | Delete a Lead Source
+[**getLeadSource**](LeadSourcesApi.md#getLeadSource) | **GET** /v2/leadSources/{lead_source_id} | Retrieve a Lead Source
+[**listLeadSources**](LeadSourcesApi.md#listLeadSources) | **GET** /v2/leadSources | List Lead Sources
+[**updateLeadSource**](LeadSourcesApi.md#updateLeadSource) | **PATCH** /v2/leadSources/{lead_source_id} | Update a Lead Source
 
 
 
-## createLeadSourceUsingPOST
+## createLeadSource
 
-> LeadSource createLeadSourceUsingPOST(createLeadSourceRequest)
+> LeadSource createLeadSource(createLeadSourceRequest)
 
 Create a Lead Source
 
@@ -27,7 +27,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.LeadSourcesApi();
 let createLeadSourceRequest = new KeapCoreServiceV2Sdk.CreateLeadSourceRequest(); // CreateLeadSourceRequest | The request object to create a new lead source
-apiInstance.createLeadSourceUsingPOST(createLeadSourceRequest).then((data) => {
+apiInstance.createLeadSource(createLeadSourceRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -56,9 +56,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## deleteLeadSourceUsingDELETE
+## deleteLeadSource
 
-> deleteLeadSourceUsingDELETE(leadSourceId)
+> deleteLeadSource(leadSourceId)
 
 Delete a Lead Source
 
@@ -71,7 +71,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.LeadSourcesApi();
 let leadSourceId = "leadSourceId_example"; // String | The ID of a lead source
-apiInstance.deleteLeadSourceUsingDELETE(leadSourceId).then(() => {
+apiInstance.deleteLeadSource(leadSourceId).then(() => {
   console.log('API called successfully.');
 }, (error) => {
   console.error(error);
@@ -100,9 +100,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## getLeadSourceUsingGET
+## getLeadSource
 
-> LeadSource getLeadSourceUsingGET(leadSourceId)
+> LeadSource getLeadSource(leadSourceId)
 
 Retrieve a Lead Source
 
@@ -115,7 +115,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.LeadSourcesApi();
 let leadSourceId = "leadSourceId_example"; // String | The ID of a lead source
-apiInstance.getLeadSourceUsingGET(leadSourceId).then((data) => {
+apiInstance.getLeadSource(leadSourceId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -144,9 +144,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## listLeadSourcesUsingGET
+## listLeadSources
 
-> ListLeadSourcesResponse listLeadSourcesUsingGET(opts)
+> ListLeadSourcesResponse listLeadSources(opts)
 
 List Lead Sources
 
@@ -164,7 +164,7 @@ let opts = {
   'pageSize': 0, // Number | Total number of items to return per page
   'pageToken': "pageToken_example" // String | Page token
 };
-apiInstance.listLeadSourcesUsingGET(opts).then((data) => {
+apiInstance.listLeadSources(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -196,9 +196,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## updateLeadSourceUsingPATCH
+## updateLeadSource
 
-> LeadSource updateLeadSourceUsingPATCH(leadSourceId, createLeadSourceRequest, opts)
+> LeadSource updateLeadSource(leadSourceId, createLeadSourceRequest, opts)
 
 Update a Lead Source
 
@@ -215,7 +215,7 @@ let createLeadSourceRequest = new KeapCoreServiceV2Sdk.CreateLeadSourceRequest()
 let opts = {
   'updateMask': ["null"] // [String] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
-apiInstance.updateLeadSourceUsingPATCH(leadSourceId, createLeadSourceRequest, opts).then((data) => {
+apiInstance.updateLeadSource(leadSourceId, createLeadSourceRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);

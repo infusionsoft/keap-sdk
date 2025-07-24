@@ -4,18 +4,18 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createEmailUsingPOST1**](EmailApi.md#createEmailUsingPOST1) | **POST** /v2/emails | Create an Email Record
-[**createEmailsUsingPOST1**](EmailApi.md#createEmailsUsingPOST1) | **POST** /v2/emails:batchAdd | Create a set of Email Records
-[**deleteEmailUsingDELETE1**](EmailApi.md#deleteEmailUsingDELETE1) | **DELETE** /v2/emails/{id} | Delete an Email Record
-[**deleteEmailsUsingPOST1**](EmailApi.md#deleteEmailsUsingPOST1) | **POST** /v2/emails:batchRemove | Remove a set of Email Records
-[**getEmailTemplateUsingGET**](EmailApi.md#getEmailTemplateUsingGET) | **GET** /v2/emails/templates/{email_template_id} | Retrieve an email template
-[**getEmailUsingGET1**](EmailApi.md#getEmailUsingGET1) | **GET** /v2/emails/{id} | Retrieve an Email
-[**sendEmailTemplateUsingPOST**](EmailApi.md#sendEmailTemplateUsingPOST) | **POST** /v2/emails/templates:send | Send an email based on a template
-[**sendEmailUsingPOST1**](EmailApi.md#sendEmailUsingPOST1) | **POST** /v2/emails:send | Send an Email
+[**createEmail**](EmailApi.md#createEmail) | **POST** /v2/emails | Create an Email Record
+[**createEmails**](EmailApi.md#createEmails) | **POST** /v2/emails:batchAdd | Create a set of Email Records
+[**deleteEmail**](EmailApi.md#deleteEmail) | **DELETE** /v2/emails/{id} | Delete an Email Record
+[**deleteEmails**](EmailApi.md#deleteEmails) | **POST** /v2/emails:batchRemove | Remove a set of Email Records
+[**getEmail**](EmailApi.md#getEmail) | **GET** /v2/emails/{id} | Retrieve an Email
+[**getEmailTemplate**](EmailApi.md#getEmailTemplate) | **GET** /v2/emails/templates/{email_template_id} | Retrieve an email template
+[**sendEmail**](EmailApi.md#sendEmail) | **POST** /v2/emails:send | Send an Email
+[**sendEmailTemplate**](EmailApi.md#sendEmailTemplate) | **POST** /v2/emails/templates:send | Send an email based on a template
 
 
-# **createEmailUsingPOST1**
-> EmailSentWithContent createEmailUsingPOST1(createEmailSentRequest)
+# **createEmail**
+> EmailSentWithContent createEmail(createEmailSentRequest)
 
 Creates a Record of an Email sent to a Contact
 
@@ -24,12 +24,12 @@ Creates a Record of an Email sent to a Contact
 
 ```typescript
 import { createConfiguration, EmailApi } from '';
-import type { EmailApiCreateEmailUsingPOST1Request } from '';
+import type { EmailApiCreateEmailRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new EmailApi(configuration);
 
-const request: EmailApiCreateEmailUsingPOST1Request = {
+const request: EmailApiCreateEmailRequest = {
     // emailWithContent
   createEmailSentRequest: {
     clickedTime: "clickedTime_example",
@@ -56,7 +56,7 @@ const request: EmailApiCreateEmailUsingPOST1Request = {
   },
 };
 
-const data = await apiInstance.createEmailUsingPOST1(request);
+const data = await apiInstance.createEmail(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -92,8 +92,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **createEmailsUsingPOST1**
-> EmailsSentList createEmailsUsingPOST1()
+# **createEmails**
+> EmailsSentList createEmails()
 
 Creates a set of Records of Emails sent to Contacts, maximum 1000 per transaction.
 
@@ -102,12 +102,12 @@ Creates a set of Records of Emails sent to Contacts, maximum 1000 per transactio
 
 ```typescript
 import { createConfiguration, EmailApi } from '';
-import type { EmailApiCreateEmailsUsingPOST1Request } from '';
+import type { EmailApiCreateEmailsRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new EmailApi(configuration);
 
-const request: EmailApiCreateEmailsUsingPOST1Request = {
+const request: EmailApiCreateEmailsRequest = {
     // Email records to persist, with content. (optional)
   createEmailsSentRequest: {
     emails: [
@@ -138,7 +138,7 @@ const request: EmailApiCreateEmailsUsingPOST1Request = {
   },
 };
 
-const data = await apiInstance.createEmailsUsingPOST1(request);
+const data = await apiInstance.createEmails(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -174,8 +174,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **deleteEmailUsingDELETE1**
-> void deleteEmailUsingDELETE1()
+# **deleteEmail**
+> void deleteEmail()
 
 Deletes a specific Email Record
 
@@ -184,17 +184,17 @@ Deletes a specific Email Record
 
 ```typescript
 import { createConfiguration, EmailApi } from '';
-import type { EmailApiDeleteEmailUsingDELETE1Request } from '';
+import type { EmailApiDeleteEmailRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new EmailApi(configuration);
 
-const request: EmailApiDeleteEmailUsingDELETE1Request = {
+const request: EmailApiDeleteEmailRequest = {
     // id
   id: "id_example",
 };
 
-const data = await apiInstance.deleteEmailUsingDELETE1(request);
+const data = await apiInstance.deleteEmail(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -231,8 +231,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **deleteEmailsUsingPOST1**
-> DeleteEmailsResponse deleteEmailsUsingPOST1(deleteEmailsRequest)
+# **deleteEmails**
+> DeleteEmailsResponse deleteEmails(deleteEmailsRequest)
 
 Removes a set of Email Records
 
@@ -241,12 +241,12 @@ Removes a set of Email Records
 
 ```typescript
 import { createConfiguration, EmailApi } from '';
-import type { EmailApiDeleteEmailsUsingPOST1Request } from '';
+import type { EmailApiDeleteEmailsRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new EmailApi(configuration);
 
-const request: EmailApiDeleteEmailsUsingPOST1Request = {
+const request: EmailApiDeleteEmailsRequest = {
     // deleteEmailsRequest
   deleteEmailsRequest: {
     emailIds: [
@@ -255,7 +255,7 @@ const request: EmailApiDeleteEmailsUsingPOST1Request = {
   },
 };
 
-const data = await apiInstance.deleteEmailsUsingPOST1(request);
+const data = await apiInstance.deleteEmails(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -291,65 +291,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **getEmailTemplateUsingGET**
-> EmailTemplate getEmailTemplateUsingGET()
-
-Retrieve an email template
-
-### Example
-
-
-```typescript
-import { createConfiguration, EmailApi } from '';
-import type { EmailApiGetEmailTemplateUsingGETRequest } from '';
-
-const configuration = createConfiguration();
-const apiInstance = new EmailApi(configuration);
-
-const request: EmailApiGetEmailTemplateUsingGETRequest = {
-    // email_template_id
-  emailTemplateId: "email_template_id_example",
-};
-
-const data = await apiInstance.getEmailTemplateUsingGET(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **emailTemplateId** | [**string**] | email_template_id | defaults to undefined
-
-
-### Return type
-
-**EmailTemplate**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-**401** | Unauthorized |  -  |
-**403** | Forbidden |  -  |
-**404** | Not Found |  -  |
-**500** | Internal Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-# **getEmailUsingGET1**
-> EmailSentWithContent getEmailUsingGET1()
+# **getEmail**
+> EmailSentWithContent getEmail()
 
 Retrieves a single Email that has been sent
 
@@ -358,17 +301,17 @@ Retrieves a single Email that has been sent
 
 ```typescript
 import { createConfiguration, EmailApi } from '';
-import type { EmailApiGetEmailUsingGET1Request } from '';
+import type { EmailApiGetEmailRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new EmailApi(configuration);
 
-const request: EmailApiGetEmailUsingGET1Request = {
+const request: EmailApiGetEmailRequest = {
     // id
   id: "id_example",
 };
 
-const data = await apiInstance.getEmailUsingGET1(request);
+const data = await apiInstance.getEmail(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -405,34 +348,27 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **sendEmailTemplateUsingPOST**
-> void sendEmailTemplateUsingPOST()
+# **getEmailTemplate**
+> EmailTemplate getEmailTemplate()
 
-Send an email based on a template
+Retrieve an email template
 
 ### Example
 
 
 ```typescript
 import { createConfiguration, EmailApi } from '';
-import type { EmailApiSendEmailTemplateUsingPOSTRequest } from '';
+import type { EmailApiGetEmailTemplateRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new EmailApi(configuration);
 
-const request: EmailApiSendEmailTemplateUsingPOSTRequest = {
-    // Use a template to send an email to a list of contacts  (optional)
-  emailSendTemplateRequest: {
-    addressField: "addressField_example",
-    contactIds: [
-      "contactIds_example",
-    ],
-    templateId: "templateId_example",
-    userId: "userId_example",
-  },
+const request: EmailApiGetEmailTemplateRequest = {
+    // email_template_id
+  emailTemplateId: "email_template_id_example",
 };
 
-const data = await apiInstance.sendEmailTemplateUsingPOST(request);
+const data = await apiInstance.getEmailTemplate(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -441,7 +377,79 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **emailSendTemplateRequest** | **EmailSendTemplateRequest**| Use a template to send an email to a list of contacts  |
+ **emailTemplateId** | [**string**] | email_template_id | defaults to undefined
+
+
+### Return type
+
+**EmailTemplate**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **sendEmail**
+> void sendEmail()
+
+Sends an Email to a list of Contacts
+
+### Example
+
+
+```typescript
+import { createConfiguration, EmailApi } from '';
+import type { EmailApiSendEmailRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new EmailApi(configuration);
+
+const request: EmailApiSendEmailRequest = {
+    // emailSendRequest (optional)
+  emailSendRequest: {
+    addressField: "addressField_example",
+    attachments: [
+      {
+        fileData: "fileData_example",
+        fileName: "fileName_example",
+      },
+    ],
+    contacts: [
+      "contacts_example",
+    ],
+    htmlContent: "htmlContent_example",
+    plainContent: "plainContent_example",
+    subject: "subject_example",
+    userId: "userId_example",
+  },
+};
+
+const data = await apiInstance.sendEmail(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **emailSendRequest** | **EmailSendRequest**| emailSendRequest |
 
 
 ### Return type
@@ -468,42 +476,34 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **sendEmailUsingPOST1**
-> void sendEmailUsingPOST1()
+# **sendEmailTemplate**
+> void sendEmailTemplate()
 
-Sends an Email to a list of Contacts
+Send an email based on a template
 
 ### Example
 
 
 ```typescript
 import { createConfiguration, EmailApi } from '';
-import type { EmailApiSendEmailUsingPOST1Request } from '';
+import type { EmailApiSendEmailTemplateRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new EmailApi(configuration);
 
-const request: EmailApiSendEmailUsingPOST1Request = {
-    // emailSendRequest (optional)
-  emailSendRequest: {
+const request: EmailApiSendEmailTemplateRequest = {
+    // Use a template to send an email to a list of contacts  (optional)
+  emailSendTemplateRequest: {
     addressField: "addressField_example",
-    attachments: [
-      {
-        fileData: "fileData_example",
-        fileName: "fileName_example",
-      },
+    contactIds: [
+      "contactIds_example",
     ],
-    contacts: [
-      "contacts_example",
-    ],
-    htmlContent: "htmlContent_example",
-    plainContent: "plainContent_example",
-    subject: "subject_example",
+    templateId: "templateId_example",
     userId: "userId_example",
   },
 };
 
-const data = await apiInstance.sendEmailUsingPOST1(request);
+const data = await apiInstance.sendEmailTemplate(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -512,7 +512,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **emailSendRequest** | **EmailSendRequest**| emailSendRequest |
+ **emailSendTemplateRequest** | **EmailSendTemplateRequest**| Use a template to send an email to a list of contacts  |
 
 
 ### Return type

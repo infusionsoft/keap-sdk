@@ -4,15 +4,15 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_discount_using_post2**](ProductDiscountsApi.md#create_discount_using_post2) | **POST** /v2/discounts/products | Create a Product Discount
-[**delete_discount_using_delete2**](ProductDiscountsApi.md#delete_discount_using_delete2) | **DELETE** /v2/discounts/products/{discount_id} | Delete a Product Discount
-[**get_discount_using_get2**](ProductDiscountsApi.md#get_discount_using_get2) | **GET** /v2/discounts/products/{discount_id} | Retrieve a Product Discount
-[**list_discounts_using_get**](ProductDiscountsApi.md#list_discounts_using_get) | **GET** /v2/discounts/products | List all Product Discounts
-[**update_discount_using_patch2**](ProductDiscountsApi.md#update_discount_using_patch2) | **PATCH** /v2/discounts/products/{discount_id} | Update a Product Discount
+[**create_product_discount**](ProductDiscountsApi.md#create_product_discount) | **POST** /v2/discounts/products | Create a Product Discount
+[**delete_product_discount**](ProductDiscountsApi.md#delete_product_discount) | **DELETE** /v2/discounts/products/{discount_id} | Delete a Product Discount
+[**get_product_discount**](ProductDiscountsApi.md#get_product_discount) | **GET** /v2/discounts/products/{discount_id} | Retrieve a Product Discount
+[**list_product_discounts**](ProductDiscountsApi.md#list_product_discounts) | **GET** /v2/discounts/products | List all Product Discounts
+[**update_product_discount**](ProductDiscountsApi.md#update_product_discount) | **PATCH** /v2/discounts/products/{discount_id} | Update a Product Discount
 
 
-# **create_discount_using_post2**
-> ProductDiscount create_discount_using_post2(create_product_discount_request)
+# **create_product_discount**
+> ProductDiscount create_product_discount(create_product_discount_request)
 
 Create a Product Discount
 
@@ -42,11 +42,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Create a Product Discount
-        api_response = api_instance.create_discount_using_post2(create_product_discount_request)
-        print("The response of ProductDiscountsApi->create_discount_using_post2:\n")
+        api_response = api_instance.create_product_discount(create_product_discount_request)
+        print("The response of ProductDiscountsApi->create_product_discount:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling ProductDiscountsApi->create_discount_using_post2: %s\n" % e)
+        print("Exception when calling ProductDiscountsApi->create_product_discount: %s\n" % e)
 ```
 
 
@@ -81,8 +81,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **delete_discount_using_delete2**
-> delete_discount_using_delete2(discount_id)
+# **delete_product_discount**
+> delete_product_discount(discount_id)
 
 Delete a Product Discount
 
@@ -110,9 +110,9 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Delete a Product Discount
-        api_instance.delete_discount_using_delete2(discount_id)
+        api_instance.delete_product_discount(discount_id)
     except Exception as e:
-        print("Exception when calling ProductDiscountsApi->delete_discount_using_delete2: %s\n" % e)
+        print("Exception when calling ProductDiscountsApi->delete_product_discount: %s\n" % e)
 ```
 
 
@@ -148,8 +148,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_discount_using_get2**
-> ProductDiscount get_discount_using_get2(discount_id)
+# **get_product_discount**
+> ProductDiscount get_product_discount(discount_id)
 
 Retrieve a Product Discount
 
@@ -178,11 +178,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieve a Product Discount
-        api_response = api_instance.get_discount_using_get2(discount_id)
-        print("The response of ProductDiscountsApi->get_discount_using_get2:\n")
+        api_response = api_instance.get_product_discount(discount_id)
+        print("The response of ProductDiscountsApi->get_product_discount:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling ProductDiscountsApi->get_discount_using_get2: %s\n" % e)
+        print("Exception when calling ProductDiscountsApi->get_product_discount: %s\n" % e)
 ```
 
 
@@ -218,8 +218,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **list_discounts_using_get**
-> ListProductDiscountsResponse list_discounts_using_get(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
+# **list_product_discounts**
+> ListProductDiscountsResponse list_product_discounts(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
 
 List all Product Discounts
 
@@ -245,17 +245,17 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.ProductDiscountsApi(api_client)
     filter = 'filter_example' # str | Filter to apply, allowed fields are: - (Boolean) `apply_to_commissions` - (DiscountType) `discount_type`: AMOUNT or PERCENT - (Double) `discount_value` - (String) `product_id`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=apply_to_commissions%3D%3Dtrue` - `filter=discount_type%3D%3DAMOUNT` - `filter=discount_value%3D%3D10.0` - `filter=product_id%3D%3D2` - `filter=discount_type%3D%3DAMOUNT%3Bdiscount_value%3D%3D10.0`  (optional)
-    order_by = 'order_by_example' # str | Attribute and direction to order items. One of the following fields: - `apply_to_commissions` - `discount_type` - `discount_value` - `id` - `product_id`  One of the following directions: - `asc` - `desc` (optional)
+    order_by = 'order_by_example' # str | Attribute and direction to order items. One of the following fields: - `apply_to_commissions` - `discount_type` - `discount_value` - `id` - `name` - `product_id`  One of the following directions: - `asc` - `desc` (optional)
     page_size = 0 # int | Total number of items to return per page (optional)
     page_token = 'page_token_example' # str | Page token (optional)
 
     try:
         # List all Product Discounts
-        api_response = api_instance.list_discounts_using_get(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
-        print("The response of ProductDiscountsApi->list_discounts_using_get:\n")
+        api_response = api_instance.list_product_discounts(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
+        print("The response of ProductDiscountsApi->list_product_discounts:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling ProductDiscountsApi->list_discounts_using_get: %s\n" % e)
+        print("Exception when calling ProductDiscountsApi->list_product_discounts: %s\n" % e)
 ```
 
 
@@ -265,7 +265,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **filter** | **str**| Filter to apply, allowed fields are: - (Boolean) &#x60;apply_to_commissions&#x60; - (DiscountType) &#x60;discount_type&#x60;: AMOUNT or PERCENT - (Double) &#x60;discount_value&#x60; - (String) &#x60;product_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;apply_to_commissions%3D%3Dtrue&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT&#x60; - &#x60;filter&#x3D;discount_value%3D%3D10.0&#x60; - &#x60;filter&#x3D;product_id%3D%3D2&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT%3Bdiscount_value%3D%3D10.0&#x60;  | [optional] 
- **order_by** | **str**| Attribute and direction to order items. One of the following fields: - &#x60;apply_to_commissions&#x60; - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60; - &#x60;product_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] 
+ **order_by** | **str**| Attribute and direction to order items. One of the following fields: - &#x60;apply_to_commissions&#x60; - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60; - &#x60;name&#x60; - &#x60;product_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] 
  **page_size** | **int**| Total number of items to return per page | [optional] 
  **page_token** | **str**| Page token | [optional] 
 
@@ -294,8 +294,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **update_discount_using_patch2**
-> ProductDiscount update_discount_using_patch2(discount_id, update_product_discount_request, update_mask=update_mask)
+# **update_product_discount**
+> ProductDiscount update_product_discount(discount_id, update_product_discount_request, update_mask=update_mask)
 
 Update a Product Discount
 
@@ -327,11 +327,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Update a Product Discount
-        api_response = api_instance.update_discount_using_patch2(discount_id, update_product_discount_request, update_mask=update_mask)
-        print("The response of ProductDiscountsApi->update_discount_using_patch2:\n")
+        api_response = api_instance.update_product_discount(discount_id, update_product_discount_request, update_mask=update_mask)
+        print("The response of ProductDiscountsApi->update_product_discount:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling ProductDiscountsApi->update_discount_using_patch2: %s\n" % e)
+        print("Exception when calling ProductDiscountsApi->update_product_discount: %s\n" % e)
 ```
 
 

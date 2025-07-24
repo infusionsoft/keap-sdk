@@ -4,26 +4,24 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**addContactsToAutomationSequenceUsingPOST**](AutomationApi.md#addContactsToAutomationSequenceUsingPOST) | **POST** /v2/automations/{automation_id}/sequences/{sequence_id}:addContacts | Add Contacts to an Automation Sequence |
-| [**addContactsToAutomationSequenceUsingPOSTWithHttpInfo**](AutomationApi.md#addContactsToAutomationSequenceUsingPOSTWithHttpInfo) | **POST** /v2/automations/{automation_id}/sequences/{sequence_id}:addContacts | Add Contacts to an Automation Sequence |
-| [**bulkAssignmentAutomationsCategoriesUsingPOST**](AutomationApi.md#bulkAssignmentAutomationsCategoriesUsingPOST) | **POST** /v2/automations/categories/batchAssign | Bulk update for Automations Categories |
-| [**bulkAssignmentAutomationsCategoriesUsingPOSTWithHttpInfo**](AutomationApi.md#bulkAssignmentAutomationsCategoriesUsingPOSTWithHttpInfo) | **POST** /v2/automations/categories/batchAssign | Bulk update for Automations Categories |
-| [**deleteAutomationUsingDELETE**](AutomationApi.md#deleteAutomationUsingDELETE) | **DELETE** /v2/automations | Delete an Automation |
-| [**deleteAutomationUsingDELETEWithHttpInfo**](AutomationApi.md#deleteAutomationUsingDELETEWithHttpInfo) | **DELETE** /v2/automations | Delete an Automation |
-| [**getAutomationUsingGET**](AutomationApi.md#getAutomationUsingGET) | **GET** /v2/automations/{automation_id} | Retrieve an Automation |
-| [**getAutomationUsingGETWithHttpInfo**](AutomationApi.md#getAutomationUsingGETWithHttpInfo) | **GET** /v2/automations/{automation_id} | Retrieve an Automation |
-| [**listAllAutomationIdsUsingGET**](AutomationApi.md#listAllAutomationIdsUsingGET) | **GET** /v2/automations/ids | List Automations Ids |
-| [**listAllAutomationIdsUsingGETWithHttpInfo**](AutomationApi.md#listAllAutomationIdsUsingGETWithHttpInfo) | **GET** /v2/automations/ids | List Automations Ids |
-| [**listAutomationsUsingGET**](AutomationApi.md#listAutomationsUsingGET) | **GET** /v2/automations | List Automations |
-| [**listAutomationsUsingGETWithHttpInfo**](AutomationApi.md#listAutomationsUsingGETWithHttpInfo) | **GET** /v2/automations | List Automations |
-| [**updateAutomationCategoryUsingPUT**](AutomationApi.md#updateAutomationCategoryUsingPUT) | **PUT** /v2/automations/category | Update an Automation&#39;s Category |
-| [**updateAutomationCategoryUsingPUTWithHttpInfo**](AutomationApi.md#updateAutomationCategoryUsingPUTWithHttpInfo) | **PUT** /v2/automations/category | Update an Automation&#39;s Category |
+| [**addContactsToAutomationSequence**](AutomationApi.md#addContactsToAutomationSequence) | **POST** /v2/automations/{automation_id}/sequences/{sequence_id}:addContacts | Add Contacts to an Automation Sequence |
+| [**addContactsToAutomationSequenceWithHttpInfo**](AutomationApi.md#addContactsToAutomationSequenceWithHttpInfo) | **POST** /v2/automations/{automation_id}/sequences/{sequence_id}:addContacts | Add Contacts to an Automation Sequence |
+| [**bulkAssignmentAutomationsCategories**](AutomationApi.md#bulkAssignmentAutomationsCategories) | **POST** /v2/automations/categories/batchAssign | Bulk update for Automations Categories |
+| [**bulkAssignmentAutomationsCategoriesWithHttpInfo**](AutomationApi.md#bulkAssignmentAutomationsCategoriesWithHttpInfo) | **POST** /v2/automations/categories/batchAssign | Bulk update for Automations Categories |
+| [**deleteAutomation**](AutomationApi.md#deleteAutomation) | **DELETE** /v2/automations | Delete an Automation |
+| [**deleteAutomationWithHttpInfo**](AutomationApi.md#deleteAutomationWithHttpInfo) | **DELETE** /v2/automations | Delete an Automation |
+| [**getAutomation**](AutomationApi.md#getAutomation) | **GET** /v2/automations/{automation_id} | Retrieve an Automation |
+| [**getAutomationWithHttpInfo**](AutomationApi.md#getAutomationWithHttpInfo) | **GET** /v2/automations/{automation_id} | Retrieve an Automation |
+| [**listAllAutomationIds**](AutomationApi.md#listAllAutomationIds) | **GET** /v2/automations/ids | List Automations Ids |
+| [**listAllAutomationIdsWithHttpInfo**](AutomationApi.md#listAllAutomationIdsWithHttpInfo) | **GET** /v2/automations/ids | List Automations Ids |
+| [**listAutomations**](AutomationApi.md#listAutomations) | **GET** /v2/automations | List Automations |
+| [**listAutomationsWithHttpInfo**](AutomationApi.md#listAutomationsWithHttpInfo) | **GET** /v2/automations | List Automations |
 
 
 
-## addContactsToAutomationSequenceUsingPOST
+## addContactsToAutomationSequence
 
-> AddToAutomationSequenceResponse addContactsToAutomationSequenceUsingPOST(automationId, sequenceId, addToAutomationSequenceRequest)
+> AddToAutomationSequenceResponse addContactsToAutomationSequence(automationId, sequenceId, addToAutomationSequenceRequest)
 
 Add Contacts to an Automation Sequence
 
@@ -49,10 +47,10 @@ public class Example {
         String sequenceId = "sequenceId_example"; // String | sequence_id
         AddToAutomationSequenceRequest addToAutomationSequenceRequest = new AddToAutomationSequenceRequest(); // AddToAutomationSequenceRequest | addToAutomationSequenceRequest
         try {
-            AddToAutomationSequenceResponse result = apiInstance.addContactsToAutomationSequenceUsingPOST(automationId, sequenceId, addToAutomationSequenceRequest);
+            AddToAutomationSequenceResponse result = apiInstance.addContactsToAutomationSequence(automationId, sequenceId, addToAutomationSequenceRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AutomationApi#addContactsToAutomationSequenceUsingPOST");
+            System.err.println("Exception when calling AutomationApi#addContactsToAutomationSequence");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -93,9 +91,9 @@ No authorization required
 | **403** | Forbidden |  -  |
 | **500** | Internal Server Error |  -  |
 
-## addContactsToAutomationSequenceUsingPOSTWithHttpInfo
+## addContactsToAutomationSequenceWithHttpInfo
 
-> ApiResponse<AddToAutomationSequenceResponse> addContactsToAutomationSequenceUsingPOST addContactsToAutomationSequenceUsingPOSTWithHttpInfo(automationId, sequenceId, addToAutomationSequenceRequest)
+> ApiResponse<AddToAutomationSequenceResponse> addContactsToAutomationSequence addContactsToAutomationSequenceWithHttpInfo(automationId, sequenceId, addToAutomationSequenceRequest)
 
 Add Contacts to an Automation Sequence
 
@@ -122,12 +120,12 @@ public class Example {
         String sequenceId = "sequenceId_example"; // String | sequence_id
         AddToAutomationSequenceRequest addToAutomationSequenceRequest = new AddToAutomationSequenceRequest(); // AddToAutomationSequenceRequest | addToAutomationSequenceRequest
         try {
-            ApiResponse<AddToAutomationSequenceResponse> response = apiInstance.addContactsToAutomationSequenceUsingPOSTWithHttpInfo(automationId, sequenceId, addToAutomationSequenceRequest);
+            ApiResponse<AddToAutomationSequenceResponse> response = apiInstance.addContactsToAutomationSequenceWithHttpInfo(automationId, sequenceId, addToAutomationSequenceRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling AutomationApi#addContactsToAutomationSequenceUsingPOST");
+            System.err.println("Exception when calling AutomationApi#addContactsToAutomationSequence");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -169,9 +167,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## bulkAssignmentAutomationsCategoriesUsingPOST
+## bulkAssignmentAutomationsCategories
 
-> void bulkAssignmentAutomationsCategoriesUsingPOST(assignAutomationCategoryRequest)
+> void bulkAssignmentAutomationsCategories(assignAutomationCategoryRequest)
 
 Bulk update for Automations Categories
 
@@ -195,9 +193,9 @@ public class Example {
         AutomationApi apiInstance = new AutomationApi(defaultClient);
         AssignAutomationCategoryRequest assignAutomationCategoryRequest = new AssignAutomationCategoryRequest(); // AssignAutomationCategoryRequest | assignAutomationCategoryRequest
         try {
-            apiInstance.bulkAssignmentAutomationsCategoriesUsingPOST(assignAutomationCategoryRequest);
+            apiInstance.bulkAssignmentAutomationsCategories(assignAutomationCategoryRequest);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AutomationApi#bulkAssignmentAutomationsCategoriesUsingPOST");
+            System.err.println("Exception when calling AutomationApi#bulkAssignmentAutomationsCategories");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -236,9 +234,9 @@ No authorization required
 | **403** | Forbidden |  -  |
 | **500** | Internal Server Error |  -  |
 
-## bulkAssignmentAutomationsCategoriesUsingPOSTWithHttpInfo
+## bulkAssignmentAutomationsCategoriesWithHttpInfo
 
-> ApiResponse<Void> bulkAssignmentAutomationsCategoriesUsingPOST bulkAssignmentAutomationsCategoriesUsingPOSTWithHttpInfo(assignAutomationCategoryRequest)
+> ApiResponse<Void> bulkAssignmentAutomationsCategories bulkAssignmentAutomationsCategoriesWithHttpInfo(assignAutomationCategoryRequest)
 
 Bulk update for Automations Categories
 
@@ -263,11 +261,11 @@ public class Example {
         AutomationApi apiInstance = new AutomationApi(defaultClient);
         AssignAutomationCategoryRequest assignAutomationCategoryRequest = new AssignAutomationCategoryRequest(); // AssignAutomationCategoryRequest | assignAutomationCategoryRequest
         try {
-            ApiResponse<Void> response = apiInstance.bulkAssignmentAutomationsCategoriesUsingPOSTWithHttpInfo(assignAutomationCategoryRequest);
+            ApiResponse<Void> response = apiInstance.bulkAssignmentAutomationsCategoriesWithHttpInfo(assignAutomationCategoryRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
-            System.err.println("Exception when calling AutomationApi#bulkAssignmentAutomationsCategoriesUsingPOST");
+            System.err.println("Exception when calling AutomationApi#bulkAssignmentAutomationsCategories");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -307,9 +305,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## deleteAutomationUsingDELETE
+## deleteAutomation
 
-> void deleteAutomationUsingDELETE(automationIds)
+> void deleteAutomation(automationIds)
 
 Delete an Automation
 
@@ -333,9 +331,9 @@ public class Example {
         AutomationApi apiInstance = new AutomationApi(defaultClient);
         List<Long> automationIds = Arrays.asList(); // List<Long> | automation_ids
         try {
-            apiInstance.deleteAutomationUsingDELETE(automationIds);
+            apiInstance.deleteAutomation(automationIds);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AutomationApi#deleteAutomationUsingDELETE");
+            System.err.println("Exception when calling AutomationApi#deleteAutomation");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -375,9 +373,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## deleteAutomationUsingDELETEWithHttpInfo
+## deleteAutomationWithHttpInfo
 
-> ApiResponse<Void> deleteAutomationUsingDELETE deleteAutomationUsingDELETEWithHttpInfo(automationIds)
+> ApiResponse<Void> deleteAutomation deleteAutomationWithHttpInfo(automationIds)
 
 Delete an Automation
 
@@ -402,11 +400,11 @@ public class Example {
         AutomationApi apiInstance = new AutomationApi(defaultClient);
         List<Long> automationIds = Arrays.asList(); // List<Long> | automation_ids
         try {
-            ApiResponse<Void> response = apiInstance.deleteAutomationUsingDELETEWithHttpInfo(automationIds);
+            ApiResponse<Void> response = apiInstance.deleteAutomationWithHttpInfo(automationIds);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
-            System.err.println("Exception when calling AutomationApi#deleteAutomationUsingDELETE");
+            System.err.println("Exception when calling AutomationApi#deleteAutomation");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -447,9 +445,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## getAutomationUsingGET
+## getAutomation
 
-> Automation getAutomationUsingGET(automationId)
+> Automation getAutomation(automationId)
 
 Retrieve an Automation
 
@@ -473,10 +471,10 @@ public class Example {
         AutomationApi apiInstance = new AutomationApi(defaultClient);
         String automationId = "automationId_example"; // String | automation_id
         try {
-            Automation result = apiInstance.getAutomationUsingGET(automationId);
+            Automation result = apiInstance.getAutomation(automationId);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AutomationApi#getAutomationUsingGET");
+            System.err.println("Exception when calling AutomationApi#getAutomation");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -516,9 +514,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## getAutomationUsingGETWithHttpInfo
+## getAutomationWithHttpInfo
 
-> ApiResponse<Automation> getAutomationUsingGET getAutomationUsingGETWithHttpInfo(automationId)
+> ApiResponse<Automation> getAutomation getAutomationWithHttpInfo(automationId)
 
 Retrieve an Automation
 
@@ -543,12 +541,12 @@ public class Example {
         AutomationApi apiInstance = new AutomationApi(defaultClient);
         String automationId = "automationId_example"; // String | automation_id
         try {
-            ApiResponse<Automation> response = apiInstance.getAutomationUsingGETWithHttpInfo(automationId);
+            ApiResponse<Automation> response = apiInstance.getAutomationWithHttpInfo(automationId);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling AutomationApi#getAutomationUsingGET");
+            System.err.println("Exception when calling AutomationApi#getAutomation");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -589,9 +587,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## listAllAutomationIdsUsingGET
+## listAllAutomationIds
 
-> ListAutomationIdsResponse listAllAutomationIdsUsingGET(filter, orderBy, pageSize, pageToken, stats)
+> ListAutomationIdsResponse listAllAutomationIds(filter, orderBy, pageSize, pageToken, stats)
 
 List Automations Ids
 
@@ -619,10 +617,10 @@ public class Example {
         String pageToken = "pageToken_example"; // String | Page token
         Boolean stats = true; // Boolean | 
         try {
-            ListAutomationIdsResponse result = apiInstance.listAllAutomationIdsUsingGET(filter, orderBy, pageSize, pageToken, stats);
+            ListAutomationIdsResponse result = apiInstance.listAllAutomationIds(filter, orderBy, pageSize, pageToken, stats);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AutomationApi#listAllAutomationIdsUsingGET");
+            System.err.println("Exception when calling AutomationApi#listAllAutomationIds");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -666,9 +664,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## listAllAutomationIdsUsingGETWithHttpInfo
+## listAllAutomationIdsWithHttpInfo
 
-> ApiResponse<ListAutomationIdsResponse> listAllAutomationIdsUsingGET listAllAutomationIdsUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken, stats)
+> ApiResponse<ListAutomationIdsResponse> listAllAutomationIds listAllAutomationIdsWithHttpInfo(filter, orderBy, pageSize, pageToken, stats)
 
 List Automations Ids
 
@@ -697,12 +695,12 @@ public class Example {
         String pageToken = "pageToken_example"; // String | Page token
         Boolean stats = true; // Boolean | 
         try {
-            ApiResponse<ListAutomationIdsResponse> response = apiInstance.listAllAutomationIdsUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken, stats);
+            ApiResponse<ListAutomationIdsResponse> response = apiInstance.listAllAutomationIdsWithHttpInfo(filter, orderBy, pageSize, pageToken, stats);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling AutomationApi#listAllAutomationIdsUsingGET");
+            System.err.println("Exception when calling AutomationApi#listAllAutomationIds");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -747,9 +745,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## listAutomationsUsingGET
+## listAutomations
 
-> ListAutomationResponse listAutomationsUsingGET(filter, orderBy, pageSize, pageToken, stats)
+> ListAutomationResponse listAutomations(filter, orderBy, pageSize, pageToken, stats)
 
 List Automations
 
@@ -777,10 +775,10 @@ public class Example {
         String pageToken = "pageToken_example"; // String | Page token
         Boolean stats = true; // Boolean | 
         try {
-            ListAutomationResponse result = apiInstance.listAutomationsUsingGET(filter, orderBy, pageSize, pageToken, stats);
+            ListAutomationResponse result = apiInstance.listAutomations(filter, orderBy, pageSize, pageToken, stats);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AutomationApi#listAutomationsUsingGET");
+            System.err.println("Exception when calling AutomationApi#listAutomations");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -824,9 +822,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## listAutomationsUsingGETWithHttpInfo
+## listAutomationsWithHttpInfo
 
-> ApiResponse<ListAutomationResponse> listAutomationsUsingGET listAutomationsUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken, stats)
+> ApiResponse<ListAutomationResponse> listAutomations listAutomationsWithHttpInfo(filter, orderBy, pageSize, pageToken, stats)
 
 List Automations
 
@@ -855,12 +853,12 @@ public class Example {
         String pageToken = "pageToken_example"; // String | Page token
         Boolean stats = true; // Boolean | 
         try {
-            ApiResponse<ListAutomationResponse> response = apiInstance.listAutomationsUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken, stats);
+            ApiResponse<ListAutomationResponse> response = apiInstance.listAutomationsWithHttpInfo(filter, orderBy, pageSize, pageToken, stats);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling AutomationApi#listAutomationsUsingGET");
+            System.err.println("Exception when calling AutomationApi#listAutomations");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -893,146 +891,6 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **500** | Internal Server Error |  -  |
-
-
-## updateAutomationCategoryUsingPUT
-
-> void updateAutomationCategoryUsingPUT(updateAutomationCategoryRequest)
-
-Update an Automation&#39;s Category
-
-Updates the category of one or more automations
-
-### Example
-
-```java
-// Import classes:
-import com.keap.core.sdk.ApiClient;
-import com.keap.core.sdk.ApiException;
-import com.keap.core.sdk.Configuration;
-import com.keap.core.sdk.models.*;
-import com.keap.core.sdk.client.AutomationApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
-
-        AutomationApi apiInstance = new AutomationApi(defaultClient);
-        UpdateAutomationCategoryRequest updateAutomationCategoryRequest = new UpdateAutomationCategoryRequest(); // UpdateAutomationCategoryRequest | updateAutomationCategoryRequest
-        try {
-            apiInstance.updateAutomationCategoryUsingPUT(updateAutomationCategoryRequest);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling AutomationApi#updateAutomationCategoryUsingPUT");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **updateAutomationCategoryRequest** | [**UpdateAutomationCategoryRequest**](UpdateAutomationCategoryRequest.md)| updateAutomationCategoryRequest | |
-
-### Return type
-
-
-null (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **500** | Internal Server Error |  -  |
-
-## updateAutomationCategoryUsingPUTWithHttpInfo
-
-> ApiResponse<Void> updateAutomationCategoryUsingPUT updateAutomationCategoryUsingPUTWithHttpInfo(updateAutomationCategoryRequest)
-
-Update an Automation&#39;s Category
-
-Updates the category of one or more automations
-
-### Example
-
-```java
-// Import classes:
-import com.keap.core.sdk.ApiClient;
-import com.keap.core.sdk.ApiException;
-import com.keap.core.sdk.ApiResponse;
-import com.keap.core.sdk.Configuration;
-import com.keap.core.sdk.models.*;
-import com.keap.core.sdk.client.AutomationApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
-
-        AutomationApi apiInstance = new AutomationApi(defaultClient);
-        UpdateAutomationCategoryRequest updateAutomationCategoryRequest = new UpdateAutomationCategoryRequest(); // UpdateAutomationCategoryRequest | updateAutomationCategoryRequest
-        try {
-            ApiResponse<Void> response = apiInstance.updateAutomationCategoryUsingPUTWithHttpInfo(updateAutomationCategoryRequest);
-            System.out.println("Status code: " + response.getStatusCode());
-            System.out.println("Response headers: " + response.getHeaders());
-        } catch (ApiException e) {
-            System.err.println("Exception when calling AutomationApi#updateAutomationCategoryUsingPUT");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            System.err.println("Reason: " + e.getResponseBody());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **updateAutomationCategoryRequest** | [**UpdateAutomationCategoryRequest**](UpdateAutomationCategoryRequest.md)| updateAutomationCategoryRequest | |
-
-### Return type
-
-
-ApiResponse<Void>
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
 - **Accept**: application/json
 
 ### HTTP response details

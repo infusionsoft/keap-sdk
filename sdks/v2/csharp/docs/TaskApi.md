@@ -4,113 +4,19 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**CreateTaskCustomFieldUsingPOST1**](TaskApi.md#createtaskcustomfieldusingpost1) | **POST** /v2/tasks/model/customFields | Create a Custom Field |
-| [**CreateTaskUsingPOST1**](TaskApi.md#createtaskusingpost1) | **POST** /v2/tasks | Create a Task |
-| [**DeleteTaskCustomFieldUsingDELETE**](TaskApi.md#deletetaskcustomfieldusingdelete) | **DELETE** /v2/tasks/model/customFields/{custom_field_id} | Delete a Custom Field |
-| [**DeleteTaskUsingDELETE1**](TaskApi.md#deletetaskusingdelete1) | **DELETE** /v2/tasks/{task_id} | Delete a Task |
-| [**GetTaskUsingGET1**](TaskApi.md#gettaskusingget1) | **GET** /v2/tasks/{task_id} | Retrieve a Task |
-| [**ListTasksUsingGET1**](TaskApi.md#listtasksusingget1) | **GET** /v2/tasks | List Tasks |
-| [**RetrieveTaskModelUsingGET1**](TaskApi.md#retrievetaskmodelusingget1) | **GET** /v2/tasks/model | Retrieve Task Model |
-| [**UpdateTaskCustomFieldUsingPATCH**](TaskApi.md#updatetaskcustomfieldusingpatch) | **PATCH** /v2/tasks/model/customFields/{custom_field_id} | Update a Task&#39;s Custom Field |
-| [**UpdateTaskUsingPATCH**](TaskApi.md#updatetaskusingpatch) | **PATCH** /v2/tasks/{task_id} | Update a Task |
+| [**CreateTask**](TaskApi.md#createtask) | **POST** /v2/tasks | Create a Task |
+| [**CreateTaskCustomField**](TaskApi.md#createtaskcustomfield) | **POST** /v2/tasks/model/customFields | Create a Custom Field |
+| [**DeleteTask**](TaskApi.md#deletetask) | **DELETE** /v2/tasks/{task_id} | Delete a Task |
+| [**DeleteTaskCustomField**](TaskApi.md#deletetaskcustomfield) | **DELETE** /v2/tasks/model/customFields/{custom_field_id} | Delete a Custom Field |
+| [**GetTask**](TaskApi.md#gettask) | **GET** /v2/tasks/{task_id} | Retrieve a Task |
+| [**ListTasks**](TaskApi.md#listtasks) | **GET** /v2/tasks | List Tasks |
+| [**RetrieveTaskModel**](TaskApi.md#retrievetaskmodel) | **GET** /v2/tasks/model | Retrieve Task Model |
+| [**UpdateTask**](TaskApi.md#updatetask) | **PATCH** /v2/tasks/{task_id} | Update a Task |
+| [**UpdateTaskCustomField**](TaskApi.md#updatetaskcustomfield) | **PATCH** /v2/tasks/model/customFields/{custom_field_id} | Update a Task&#39;s Custom Field |
 
-<a id="createtaskcustomfieldusingpost1"></a>
-# **CreateTaskCustomFieldUsingPOST1**
-> CreateCustomFieldResponse CreateTaskCustomFieldUsingPOST1 (CreateCustomFieldRequest createCustomFieldRequest)
-
-Create a Custom Field
-
-Creates a custom field of the specified type and options to the Task object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
-
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using Keap.Core.V2.Api;
-using Keap.Core.V2.Client;
-using Keap.Core.V2.Model;
-
-namespace Example
-{
-    public class CreateTaskCustomFieldUsingPOST1Example
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
-            var apiInstance = new TaskApi(config);
-            var createCustomFieldRequest = new CreateCustomFieldRequest(); // CreateCustomFieldRequest | customField
-
-            try
-            {
-                // Create a Custom Field
-                CreateCustomFieldResponse result = apiInstance.CreateTaskCustomFieldUsingPOST1(createCustomFieldRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling TaskApi.CreateTaskCustomFieldUsingPOST1: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the CreateTaskCustomFieldUsingPOST1WithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Create a Custom Field
-    ApiResponse<CreateCustomFieldResponse> response = apiInstance.CreateTaskCustomFieldUsingPOST1WithHttpInfo(createCustomFieldRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling TaskApi.CreateTaskCustomFieldUsingPOST1WithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| **createCustomFieldRequest** | [**CreateCustomFieldRequest**](CreateCustomFieldRequest.md) | customField |  |
-
-### Return type
-
-[**CreateCustomFieldResponse**](CreateCustomFieldResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **201** | Created |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **500** | Internal Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a id="createtaskusingpost1"></a>
-# **CreateTaskUsingPOST1**
-> Task CreateTaskUsingPOST1 (CreateTaskRequest? createTaskRequest = null)
+<a id="createtask"></a>
+# **CreateTask**
+> Task CreateTask (CreateTaskRequest? createTaskRequest = null)
 
 Create a Task
 
@@ -126,7 +32,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class CreateTaskUsingPOST1Example
+    public class CreateTaskExample
     {
         public static void Main()
         {
@@ -138,12 +44,12 @@ namespace Example
             try
             {
                 // Create a Task
-                Task result = apiInstance.CreateTaskUsingPOST1(createTaskRequest);
+                Task result = apiInstance.CreateTask(createTaskRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling TaskApi.CreateTaskUsingPOST1: " + e.Message);
+                Debug.Print("Exception when calling TaskApi.CreateTask: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -152,21 +58,21 @@ namespace Example
 }
 ```
 
-#### Using the CreateTaskUsingPOST1WithHttpInfo variant
+#### Using the CreateTaskWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Create a Task
-    ApiResponse<Task> response = apiInstance.CreateTaskUsingPOST1WithHttpInfo(createTaskRequest);
+    ApiResponse<Task> response = apiInstance.CreateTaskWithHttpInfo(createTaskRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling TaskApi.CreateTaskUsingPOST1WithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling TaskApi.CreateTaskWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -202,9 +108,194 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="deletetaskcustomfieldusingdelete"></a>
-# **DeleteTaskCustomFieldUsingDELETE**
-> void DeleteTaskCustomFieldUsingDELETE (string customFieldId)
+<a id="createtaskcustomfield"></a>
+# **CreateTaskCustomField**
+> CreateCustomFieldResponse CreateTaskCustomField (CreateCustomFieldRequest createCustomFieldRequest)
+
+Create a Custom Field
+
+Creates a custom field of the specified type and options to the Task object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class CreateTaskCustomFieldExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm/rest";
+            var apiInstance = new TaskApi(config);
+            var createCustomFieldRequest = new CreateCustomFieldRequest(); // CreateCustomFieldRequest | customField
+
+            try
+            {
+                // Create a Custom Field
+                CreateCustomFieldResponse result = apiInstance.CreateTaskCustomField(createCustomFieldRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling TaskApi.CreateTaskCustomField: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the CreateTaskCustomFieldWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Create a Custom Field
+    ApiResponse<CreateCustomFieldResponse> response = apiInstance.CreateTaskCustomFieldWithHttpInfo(createCustomFieldRequest);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling TaskApi.CreateTaskCustomFieldWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **createCustomFieldRequest** | [**CreateCustomFieldRequest**](CreateCustomFieldRequest.md) | customField |  |
+
+### Return type
+
+[**CreateCustomFieldResponse**](CreateCustomFieldResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="deletetask"></a>
+# **DeleteTask**
+> void DeleteTask (string taskId)
+
+Delete a Task
+
+Deletes a single task
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class DeleteTaskExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm/rest";
+            var apiInstance = new TaskApi(config);
+            var taskId = "taskId_example";  // string | task_id
+
+            try
+            {
+                // Delete a Task
+                apiInstance.DeleteTask(taskId);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling TaskApi.DeleteTask: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the DeleteTaskWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Delete a Task
+    apiInstance.DeleteTaskWithHttpInfo(taskId);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling TaskApi.DeleteTaskWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **taskId** | **string** | task_id |  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="deletetaskcustomfield"></a>
+# **DeleteTaskCustomField**
+> void DeleteTaskCustomField (string customFieldId)
 
 Delete a Custom Field
 
@@ -220,7 +311,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class DeleteTaskCustomFieldUsingDELETEExample
+    public class DeleteTaskCustomFieldExample
     {
         public static void Main()
         {
@@ -232,11 +323,11 @@ namespace Example
             try
             {
                 // Delete a Custom Field
-                apiInstance.DeleteTaskCustomFieldUsingDELETE(customFieldId);
+                apiInstance.DeleteTaskCustomField(customFieldId);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling TaskApi.DeleteTaskCustomFieldUsingDELETE: " + e.Message);
+                Debug.Print("Exception when calling TaskApi.DeleteTaskCustomField: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -245,18 +336,18 @@ namespace Example
 }
 ```
 
-#### Using the DeleteTaskCustomFieldUsingDELETEWithHttpInfo variant
+#### Using the DeleteTaskCustomFieldWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Delete a Custom Field
-    apiInstance.DeleteTaskCustomFieldUsingDELETEWithHttpInfo(customFieldId);
+    apiInstance.DeleteTaskCustomFieldWithHttpInfo(customFieldId);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling TaskApi.DeleteTaskCustomFieldUsingDELETEWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling TaskApi.DeleteTaskCustomFieldWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -293,100 +384,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="deletetaskusingdelete1"></a>
-# **DeleteTaskUsingDELETE1**
-> void DeleteTaskUsingDELETE1 (string taskId)
-
-Delete a Task
-
-Deletes a single task
-
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using Keap.Core.V2.Api;
-using Keap.Core.V2.Client;
-using Keap.Core.V2.Model;
-
-namespace Example
-{
-    public class DeleteTaskUsingDELETE1Example
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
-            var apiInstance = new TaskApi(config);
-            var taskId = "taskId_example";  // string | task_id
-
-            try
-            {
-                // Delete a Task
-                apiInstance.DeleteTaskUsingDELETE1(taskId);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling TaskApi.DeleteTaskUsingDELETE1: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the DeleteTaskUsingDELETE1WithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Delete a Task
-    apiInstance.DeleteTaskUsingDELETE1WithHttpInfo(taskId);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling TaskApi.DeleteTaskUsingDELETE1WithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| **taskId** | **string** | task_id |  |
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **204** | No Content |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **500** | Internal Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a id="gettaskusingget1"></a>
-# **GetTaskUsingGET1**
-> Task GetTaskUsingGET1 (string taskId)
+<a id="gettask"></a>
+# **GetTask**
+> Task GetTask (string taskId)
 
 Retrieve a Task
 
@@ -402,7 +402,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class GetTaskUsingGET1Example
+    public class GetTaskExample
     {
         public static void Main()
         {
@@ -414,12 +414,12 @@ namespace Example
             try
             {
                 // Retrieve a Task
-                Task result = apiInstance.GetTaskUsingGET1(taskId);
+                Task result = apiInstance.GetTask(taskId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling TaskApi.GetTaskUsingGET1: " + e.Message);
+                Debug.Print("Exception when calling TaskApi.GetTask: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -428,21 +428,21 @@ namespace Example
 }
 ```
 
-#### Using the GetTaskUsingGET1WithHttpInfo variant
+#### Using the GetTaskWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Retrieve a Task
-    ApiResponse<Task> response = apiInstance.GetTaskUsingGET1WithHttpInfo(taskId);
+    ApiResponse<Task> response = apiInstance.GetTaskWithHttpInfo(taskId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling TaskApi.GetTaskUsingGET1WithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling TaskApi.GetTaskWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -479,9 +479,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="listtasksusingget1"></a>
-# **ListTasksUsingGET1**
-> ListTasksResponse ListTasksUsingGET1 (string? endDueTime = null, string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null, string? startDueTime = null)
+<a id="listtasks"></a>
+# **ListTasks**
+> ListTasksResponse ListTasks (string? endDueTime = null, string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null, string? startDueTime = null)
 
 List Tasks
 
@@ -497,7 +497,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class ListTasksUsingGET1Example
+    public class ListTasksExample
     {
         public static void Main()
         {
@@ -514,12 +514,12 @@ namespace Example
             try
             {
                 // List Tasks
-                ListTasksResponse result = apiInstance.ListTasksUsingGET1(endDueTime, filter, orderBy, pageSize, pageToken, startDueTime);
+                ListTasksResponse result = apiInstance.ListTasks(endDueTime, filter, orderBy, pageSize, pageToken, startDueTime);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling TaskApi.ListTasksUsingGET1: " + e.Message);
+                Debug.Print("Exception when calling TaskApi.ListTasks: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -528,21 +528,21 @@ namespace Example
 }
 ```
 
-#### Using the ListTasksUsingGET1WithHttpInfo variant
+#### Using the ListTasksWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // List Tasks
-    ApiResponse<ListTasksResponse> response = apiInstance.ListTasksUsingGET1WithHttpInfo(endDueTime, filter, orderBy, pageSize, pageToken, startDueTime);
+    ApiResponse<ListTasksResponse> response = apiInstance.ListTasksWithHttpInfo(endDueTime, filter, orderBy, pageSize, pageToken, startDueTime);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling TaskApi.ListTasksUsingGET1WithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling TaskApi.ListTasksWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -584,9 +584,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="retrievetaskmodelusingget1"></a>
-# **RetrieveTaskModelUsingGET1**
-> ObjectModel RetrieveTaskModelUsingGET1 ()
+<a id="retrievetaskmodel"></a>
+# **RetrieveTaskModel**
+> ObjectModel RetrieveTaskModel ()
 
 Retrieve Task Model
 
@@ -602,7 +602,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class RetrieveTaskModelUsingGET1Example
+    public class RetrieveTaskModelExample
     {
         public static void Main()
         {
@@ -613,12 +613,12 @@ namespace Example
             try
             {
                 // Retrieve Task Model
-                ObjectModel result = apiInstance.RetrieveTaskModelUsingGET1();
+                ObjectModel result = apiInstance.RetrieveTaskModel();
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling TaskApi.RetrieveTaskModelUsingGET1: " + e.Message);
+                Debug.Print("Exception when calling TaskApi.RetrieveTaskModel: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -627,21 +627,21 @@ namespace Example
 }
 ```
 
-#### Using the RetrieveTaskModelUsingGET1WithHttpInfo variant
+#### Using the RetrieveTaskModelWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Retrieve Task Model
-    ApiResponse<ObjectModel> response = apiInstance.RetrieveTaskModelUsingGET1WithHttpInfo();
+    ApiResponse<ObjectModel> response = apiInstance.RetrieveTaskModelWithHttpInfo();
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling TaskApi.RetrieveTaskModelUsingGET1WithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling TaskApi.RetrieveTaskModelWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -674,13 +674,13 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="updatetaskcustomfieldusingpatch"></a>
-# **UpdateTaskCustomFieldUsingPATCH**
-> CustomFieldMetaData UpdateTaskCustomFieldUsingPATCH (string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, List<string>? updateMask = null)
+<a id="updatetask"></a>
+# **UpdateTask**
+> UpdateTaskResponse UpdateTask (string taskId, List<string>? updateMask = null, CreateUpdateTaskRequest? createUpdateTaskRequest = null)
 
-Update a Task's Custom Field
+Update a Task
 
-Updates a custom field of the specified type and options to the Task object.<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+Updates a task with only the values provided in the request.  This endpoint does not currently support updating Custom Field values.
 
 ### Example
 ```csharp
@@ -692,26 +692,26 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class UpdateTaskCustomFieldUsingPATCHExample
+    public class UpdateTaskExample
     {
         public static void Main()
         {
             Configuration config = new Configuration();
             config.BasePath = "https://api.keap.com/crm/rest";
             var apiInstance = new TaskApi(config);
-            var customFieldId = "customFieldId_example";  // string | custom_field_id
-            var updateCustomFieldMetaDataRequest = new UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | request
+            var taskId = "taskId_example";  // string | task_id
             var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var createUpdateTaskRequest = new CreateUpdateTaskRequest?(); // CreateUpdateTaskRequest? | task (optional) 
 
             try
             {
-                // Update a Task's Custom Field
-                CustomFieldMetaData result = apiInstance.UpdateTaskCustomFieldUsingPATCH(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
+                // Update a Task
+                UpdateTaskResponse result = apiInstance.UpdateTask(taskId, updateMask, createUpdateTaskRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling TaskApi.UpdateTaskCustomFieldUsingPATCH: " + e.Message);
+                Debug.Print("Exception when calling TaskApi.UpdateTask: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -720,21 +720,21 @@ namespace Example
 }
 ```
 
-#### Using the UpdateTaskCustomFieldUsingPATCHWithHttpInfo variant
+#### Using the UpdateTaskWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    // Update a Task's Custom Field
-    ApiResponse<CustomFieldMetaData> response = apiInstance.UpdateTaskCustomFieldUsingPATCHWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
+    // Update a Task
+    ApiResponse<UpdateTaskResponse> response = apiInstance.UpdateTaskWithHttpInfo(taskId, updateMask, createUpdateTaskRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling TaskApi.UpdateTaskCustomFieldUsingPATCHWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling TaskApi.UpdateTaskWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -744,13 +744,13 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **customFieldId** | **string** | custom_field_id |  |
-| **updateCustomFieldMetaDataRequest** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md) | request |  |
+| **taskId** | **string** | task_id |  |
 | **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **createUpdateTaskRequest** | [**CreateUpdateTaskRequest?**](CreateUpdateTaskRequest?.md) | task | [optional]  |
 
 ### Return type
 
-[**CustomFieldMetaData**](CustomFieldMetaData.md)
+[**UpdateTaskResponse**](UpdateTaskResponse.md)
 
 ### Authorization
 
@@ -773,13 +773,13 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="updatetaskusingpatch"></a>
-# **UpdateTaskUsingPATCH**
-> UpdateTaskResponse UpdateTaskUsingPATCH (string taskId, List<string>? updateMask = null, CreateUpdateTaskRequest? createUpdateTaskRequest = null)
+<a id="updatetaskcustomfield"></a>
+# **UpdateTaskCustomField**
+> CustomFieldMetaData UpdateTaskCustomField (string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, List<string>? updateMask = null)
 
-Update a Task
+Update a Task's Custom Field
 
-Updates a task with only the values provided in the request.  This endpoint does not currently support updating Custom Field values.
+Updates a custom field of the specified type and options to the Task object.<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
 
 ### Example
 ```csharp
@@ -791,26 +791,26 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class UpdateTaskUsingPATCHExample
+    public class UpdateTaskCustomFieldExample
     {
         public static void Main()
         {
             Configuration config = new Configuration();
             config.BasePath = "https://api.keap.com/crm/rest";
             var apiInstance = new TaskApi(config);
-            var taskId = "taskId_example";  // string | task_id
+            var customFieldId = "customFieldId_example";  // string | custom_field_id
+            var updateCustomFieldMetaDataRequest = new UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | request
             var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
-            var createUpdateTaskRequest = new CreateUpdateTaskRequest?(); // CreateUpdateTaskRequest? | task (optional) 
 
             try
             {
-                // Update a Task
-                UpdateTaskResponse result = apiInstance.UpdateTaskUsingPATCH(taskId, updateMask, createUpdateTaskRequest);
+                // Update a Task's Custom Field
+                CustomFieldMetaData result = apiInstance.UpdateTaskCustomField(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling TaskApi.UpdateTaskUsingPATCH: " + e.Message);
+                Debug.Print("Exception when calling TaskApi.UpdateTaskCustomField: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -819,21 +819,21 @@ namespace Example
 }
 ```
 
-#### Using the UpdateTaskUsingPATCHWithHttpInfo variant
+#### Using the UpdateTaskCustomFieldWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    // Update a Task
-    ApiResponse<UpdateTaskResponse> response = apiInstance.UpdateTaskUsingPATCHWithHttpInfo(taskId, updateMask, createUpdateTaskRequest);
+    // Update a Task's Custom Field
+    ApiResponse<CustomFieldMetaData> response = apiInstance.UpdateTaskCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling TaskApi.UpdateTaskUsingPATCHWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling TaskApi.UpdateTaskCustomFieldWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -843,13 +843,13 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **taskId** | **string** | task_id |  |
+| **customFieldId** | **string** | custom_field_id |  |
+| **updateCustomFieldMetaDataRequest** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md) | request |  |
 | **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
-| **createUpdateTaskRequest** | [**CreateUpdateTaskRequest?**](CreateUpdateTaskRequest?.md) | task | [optional]  |
 
 ### Return type
 
-[**UpdateTaskResponse**](UpdateTaskResponse.md)
+[**CustomFieldMetaData**](CustomFieldMetaData.md)
 
 ### Authorization
 

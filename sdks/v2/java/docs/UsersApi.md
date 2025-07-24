@@ -4,14 +4,14 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**listPaginatedUsersUsingGET**](UsersApi.md#listPaginatedUsersUsingGET) | **GET** /v2/users | List Users |
-| [**listPaginatedUsersUsingGETWithHttpInfo**](UsersApi.md#listPaginatedUsersUsingGETWithHttpInfo) | **GET** /v2/users | List Users |
+| [**listPaginatedUsers**](UsersApi.md#listPaginatedUsers) | **GET** /v2/users | List Users |
+| [**listPaginatedUsersWithHttpInfo**](UsersApi.md#listPaginatedUsersWithHttpInfo) | **GET** /v2/users | List Users |
 
 
 
-## listPaginatedUsersUsingGET
+## listPaginatedUsers
 
-> ListUsersPaginatedResponse listPaginatedUsersUsingGET(filter, orderBy, pageSize, pageToken)
+> ListUsersPaginatedResponse listPaginatedUsers(filter, orderBy, pageSize, pageToken)
 
 List Users
 
@@ -35,13 +35,13 @@ public class Example {
         UsersApi apiInstance = new UsersApi(defaultClient);
         String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `email` - (String) `given_name` - (Boolean) `include_inactive` - (Boolean) `include_partners` - (Set[String]) `user_ids`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=given_name%3D%3DMary` - `filter=user_ids%3D%3D123%3Bgiven_name%3D%3DSmith` 
         String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `date_created` - `email`  One of the following directions: - `asc` - `desc`
-        Integer pageSize = 0; // Integer | Total number of items to return per page
+        Integer pageSize = 10; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
         try {
-            ListUsersPaginatedResponse result = apiInstance.listPaginatedUsersUsingGET(filter, orderBy, pageSize, pageToken);
+            ListUsersPaginatedResponse result = apiInstance.listPaginatedUsers(filter, orderBy, pageSize, pageToken);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling UsersApi#listPaginatedUsersUsingGET");
+            System.err.println("Exception when calling UsersApi#listPaginatedUsers");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -84,9 +84,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## listPaginatedUsersUsingGETWithHttpInfo
+## listPaginatedUsersWithHttpInfo
 
-> ApiResponse<ListUsersPaginatedResponse> listPaginatedUsersUsingGET listPaginatedUsersUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken)
+> ApiResponse<ListUsersPaginatedResponse> listPaginatedUsers listPaginatedUsersWithHttpInfo(filter, orderBy, pageSize, pageToken)
 
 List Users
 
@@ -111,15 +111,15 @@ public class Example {
         UsersApi apiInstance = new UsersApi(defaultClient);
         String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `email` - (String) `given_name` - (Boolean) `include_inactive` - (Boolean) `include_partners` - (Set[String]) `user_ids`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=given_name%3D%3DMary` - `filter=user_ids%3D%3D123%3Bgiven_name%3D%3DSmith` 
         String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `date_created` - `email`  One of the following directions: - `asc` - `desc`
-        Integer pageSize = 0; // Integer | Total number of items to return per page
+        Integer pageSize = 10; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
         try {
-            ApiResponse<ListUsersPaginatedResponse> response = apiInstance.listPaginatedUsersUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken);
+            ApiResponse<ListUsersPaginatedResponse> response = apiInstance.listPaginatedUsersWithHttpInfo(filter, orderBy, pageSize, pageToken);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling UsersApi#listPaginatedUsersUsingGET");
+            System.err.println("Exception when calling UsersApi#listPaginatedUsers");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());

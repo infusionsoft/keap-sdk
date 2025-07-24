@@ -4,11 +4,11 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**list_paginated_users_using_get**](UsersApi.md#list_paginated_users_using_get) | **GET** /v2/users | List Users
+[**list_paginated_users**](UsersApi.md#list_paginated_users) | **GET** /v2/users | List Users
 
 
-# **list_paginated_users_using_get**
-> ListUsersPaginatedResponse list_paginated_users_using_get(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
+# **list_paginated_users**
+> ListUsersPaginatedResponse list_paginated_users(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
 
 List Users
 
@@ -35,16 +35,16 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
     api_instance = keap_core_v2_client.UsersApi(api_client)
     filter = 'filter_example' # str | Filter to apply, allowed fields are: - (String) `email` - (String) `given_name` - (Boolean) `include_inactive` - (Boolean) `include_partners` - (Set[String]) `user_ids`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=given_name%3D%3DMary` - `filter=user_ids%3D%3D123%3Bgiven_name%3D%3DSmith`  (optional)
     order_by = 'order_by_example' # str | Attribute and direction to order items. One of the following fields: - `date_created` - `email`  One of the following directions: - `asc` - `desc` (optional)
-    page_size = 0 # int | Total number of items to return per page (optional)
+    page_size = 10 # int | Total number of items to return per page (optional)
     page_token = 'page_token_example' # str | Page token (optional)
 
     try:
         # List Users
-        api_response = api_instance.list_paginated_users_using_get(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
-        print("The response of UsersApi->list_paginated_users_using_get:\n")
+        api_response = api_instance.list_paginated_users(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
+        print("The response of UsersApi->list_paginated_users:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling UsersApi->list_paginated_users_using_get: %s\n" % e)
+        print("Exception when calling UsersApi->list_paginated_users: %s\n" % e)
 ```
 
 

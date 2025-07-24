@@ -4,30 +4,170 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createTaskCustomFieldUsingPOST1**](TaskApi.md#createTaskCustomFieldUsingPOST1) | **POST** /v2/tasks/model/customFields | Create a Custom Field |
-| [**createTaskCustomFieldUsingPOST1WithHttpInfo**](TaskApi.md#createTaskCustomFieldUsingPOST1WithHttpInfo) | **POST** /v2/tasks/model/customFields | Create a Custom Field |
-| [**createTaskUsingPOST1**](TaskApi.md#createTaskUsingPOST1) | **POST** /v2/tasks | Create a Task |
-| [**createTaskUsingPOST1WithHttpInfo**](TaskApi.md#createTaskUsingPOST1WithHttpInfo) | **POST** /v2/tasks | Create a Task |
-| [**deleteTaskCustomFieldUsingDELETE**](TaskApi.md#deleteTaskCustomFieldUsingDELETE) | **DELETE** /v2/tasks/model/customFields/{custom_field_id} | Delete a Custom Field |
-| [**deleteTaskCustomFieldUsingDELETEWithHttpInfo**](TaskApi.md#deleteTaskCustomFieldUsingDELETEWithHttpInfo) | **DELETE** /v2/tasks/model/customFields/{custom_field_id} | Delete a Custom Field |
-| [**deleteTaskUsingDELETE1**](TaskApi.md#deleteTaskUsingDELETE1) | **DELETE** /v2/tasks/{task_id} | Delete a Task |
-| [**deleteTaskUsingDELETE1WithHttpInfo**](TaskApi.md#deleteTaskUsingDELETE1WithHttpInfo) | **DELETE** /v2/tasks/{task_id} | Delete a Task |
-| [**getTaskUsingGET1**](TaskApi.md#getTaskUsingGET1) | **GET** /v2/tasks/{task_id} | Retrieve a Task |
-| [**getTaskUsingGET1WithHttpInfo**](TaskApi.md#getTaskUsingGET1WithHttpInfo) | **GET** /v2/tasks/{task_id} | Retrieve a Task |
-| [**listTasksUsingGET1**](TaskApi.md#listTasksUsingGET1) | **GET** /v2/tasks | List Tasks |
-| [**listTasksUsingGET1WithHttpInfo**](TaskApi.md#listTasksUsingGET1WithHttpInfo) | **GET** /v2/tasks | List Tasks |
-| [**retrieveTaskModelUsingGET1**](TaskApi.md#retrieveTaskModelUsingGET1) | **GET** /v2/tasks/model | Retrieve Task Model |
-| [**retrieveTaskModelUsingGET1WithHttpInfo**](TaskApi.md#retrieveTaskModelUsingGET1WithHttpInfo) | **GET** /v2/tasks/model | Retrieve Task Model |
-| [**updateTaskCustomFieldUsingPATCH**](TaskApi.md#updateTaskCustomFieldUsingPATCH) | **PATCH** /v2/tasks/model/customFields/{custom_field_id} | Update a Task&#39;s Custom Field |
-| [**updateTaskCustomFieldUsingPATCHWithHttpInfo**](TaskApi.md#updateTaskCustomFieldUsingPATCHWithHttpInfo) | **PATCH** /v2/tasks/model/customFields/{custom_field_id} | Update a Task&#39;s Custom Field |
-| [**updateTaskUsingPATCH**](TaskApi.md#updateTaskUsingPATCH) | **PATCH** /v2/tasks/{task_id} | Update a Task |
-| [**updateTaskUsingPATCHWithHttpInfo**](TaskApi.md#updateTaskUsingPATCHWithHttpInfo) | **PATCH** /v2/tasks/{task_id} | Update a Task |
+| [**createTask**](TaskApi.md#createTask) | **POST** /v2/tasks | Create a Task |
+| [**createTaskWithHttpInfo**](TaskApi.md#createTaskWithHttpInfo) | **POST** /v2/tasks | Create a Task |
+| [**createTaskCustomField**](TaskApi.md#createTaskCustomField) | **POST** /v2/tasks/model/customFields | Create a Custom Field |
+| [**createTaskCustomFieldWithHttpInfo**](TaskApi.md#createTaskCustomFieldWithHttpInfo) | **POST** /v2/tasks/model/customFields | Create a Custom Field |
+| [**deleteTask**](TaskApi.md#deleteTask) | **DELETE** /v2/tasks/{task_id} | Delete a Task |
+| [**deleteTaskWithHttpInfo**](TaskApi.md#deleteTaskWithHttpInfo) | **DELETE** /v2/tasks/{task_id} | Delete a Task |
+| [**deleteTaskCustomField**](TaskApi.md#deleteTaskCustomField) | **DELETE** /v2/tasks/model/customFields/{custom_field_id} | Delete a Custom Field |
+| [**deleteTaskCustomFieldWithHttpInfo**](TaskApi.md#deleteTaskCustomFieldWithHttpInfo) | **DELETE** /v2/tasks/model/customFields/{custom_field_id} | Delete a Custom Field |
+| [**getTask**](TaskApi.md#getTask) | **GET** /v2/tasks/{task_id} | Retrieve a Task |
+| [**getTaskWithHttpInfo**](TaskApi.md#getTaskWithHttpInfo) | **GET** /v2/tasks/{task_id} | Retrieve a Task |
+| [**listTasks**](TaskApi.md#listTasks) | **GET** /v2/tasks | List Tasks |
+| [**listTasksWithHttpInfo**](TaskApi.md#listTasksWithHttpInfo) | **GET** /v2/tasks | List Tasks |
+| [**retrieveTaskModel**](TaskApi.md#retrieveTaskModel) | **GET** /v2/tasks/model | Retrieve Task Model |
+| [**retrieveTaskModelWithHttpInfo**](TaskApi.md#retrieveTaskModelWithHttpInfo) | **GET** /v2/tasks/model | Retrieve Task Model |
+| [**updateTask**](TaskApi.md#updateTask) | **PATCH** /v2/tasks/{task_id} | Update a Task |
+| [**updateTaskWithHttpInfo**](TaskApi.md#updateTaskWithHttpInfo) | **PATCH** /v2/tasks/{task_id} | Update a Task |
+| [**updateTaskCustomField**](TaskApi.md#updateTaskCustomField) | **PATCH** /v2/tasks/model/customFields/{custom_field_id} | Update a Task&#39;s Custom Field |
+| [**updateTaskCustomFieldWithHttpInfo**](TaskApi.md#updateTaskCustomFieldWithHttpInfo) | **PATCH** /v2/tasks/model/customFields/{custom_field_id} | Update a Task&#39;s Custom Field |
 
 
 
-## createTaskCustomFieldUsingPOST1
+## createTask
 
-> CreateCustomFieldResponse createTaskCustomFieldUsingPOST1(createCustomFieldRequest)
+> Task createTask(createTaskRequest)
+
+Create a Task
+
+Creates a new task as the authenticated user.   This endpoint does not currently support setting Custom Field values.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.TaskApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+
+        TaskApi apiInstance = new TaskApi(defaultClient);
+        CreateTaskRequest createTaskRequest = new CreateTaskRequest(); // CreateTaskRequest | task
+        try {
+            Task result = apiInstance.createTask(createTaskRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TaskApi#createTask");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **createTaskRequest** | [**CreateTaskRequest**](CreateTaskRequest.md)| task | [optional] |
+
+### Return type
+
+[**Task**](Task.md)
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **500** | Internal Server Error |  -  |
+
+## createTaskWithHttpInfo
+
+> ApiResponse<Task> createTask createTaskWithHttpInfo(createTaskRequest)
+
+Create a Task
+
+Creates a new task as the authenticated user.   This endpoint does not currently support setting Custom Field values.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.TaskApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+
+        TaskApi apiInstance = new TaskApi(defaultClient);
+        CreateTaskRequest createTaskRequest = new CreateTaskRequest(); // CreateTaskRequest | task
+        try {
+            ApiResponse<Task> response = apiInstance.createTaskWithHttpInfo(createTaskRequest);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TaskApi#createTask");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **createTaskRequest** | [**CreateTaskRequest**](CreateTaskRequest.md)| task | [optional] |
+
+### Return type
+
+ApiResponse<[**Task**](Task.md)>
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **500** | Internal Server Error |  -  |
+
+
+## createTaskCustomField
+
+> CreateCustomFieldResponse createTaskCustomField(createCustomFieldRequest)
 
 Create a Custom Field
 
@@ -51,10 +191,10 @@ public class Example {
         TaskApi apiInstance = new TaskApi(defaultClient);
         CreateCustomFieldRequest createCustomFieldRequest = new CreateCustomFieldRequest(); // CreateCustomFieldRequest | customField
         try {
-            CreateCustomFieldResponse result = apiInstance.createTaskCustomFieldUsingPOST1(createCustomFieldRequest);
+            CreateCustomFieldResponse result = apiInstance.createTaskCustomField(createCustomFieldRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling TaskApi#createTaskCustomFieldUsingPOST1");
+            System.err.println("Exception when calling TaskApi#createTaskCustomField");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -93,9 +233,9 @@ No authorization required
 | **403** | Forbidden |  -  |
 | **500** | Internal Server Error |  -  |
 
-## createTaskCustomFieldUsingPOST1WithHttpInfo
+## createTaskCustomFieldWithHttpInfo
 
-> ApiResponse<CreateCustomFieldResponse> createTaskCustomFieldUsingPOST1 createTaskCustomFieldUsingPOST1WithHttpInfo(createCustomFieldRequest)
+> ApiResponse<CreateCustomFieldResponse> createTaskCustomField createTaskCustomFieldWithHttpInfo(createCustomFieldRequest)
 
 Create a Custom Field
 
@@ -120,12 +260,12 @@ public class Example {
         TaskApi apiInstance = new TaskApi(defaultClient);
         CreateCustomFieldRequest createCustomFieldRequest = new CreateCustomFieldRequest(); // CreateCustomFieldRequest | customField
         try {
-            ApiResponse<CreateCustomFieldResponse> response = apiInstance.createTaskCustomFieldUsingPOST1WithHttpInfo(createCustomFieldRequest);
+            ApiResponse<CreateCustomFieldResponse> response = apiInstance.createTaskCustomFieldWithHttpInfo(createCustomFieldRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling TaskApi#createTaskCustomFieldUsingPOST1");
+            System.err.println("Exception when calling TaskApi#createTaskCustomField");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -165,289 +305,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## createTaskUsingPOST1
+## deleteTask
 
-> Task createTaskUsingPOST1(createTaskRequest)
-
-Create a Task
-
-Creates a new task as the authenticated user.   This endpoint does not currently support setting Custom Field values.
-
-### Example
-
-```java
-// Import classes:
-import com.keap.core.sdk.ApiClient;
-import com.keap.core.sdk.ApiException;
-import com.keap.core.sdk.Configuration;
-import com.keap.core.sdk.models.*;
-import com.keap.core.sdk.client.TaskApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
-
-        TaskApi apiInstance = new TaskApi(defaultClient);
-        CreateTaskRequest createTaskRequest = new CreateTaskRequest(); // CreateTaskRequest | task
-        try {
-            Task result = apiInstance.createTaskUsingPOST1(createTaskRequest);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling TaskApi#createTaskUsingPOST1");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **createTaskRequest** | [**CreateTaskRequest**](CreateTaskRequest.md)| task | [optional] |
-
-### Return type
-
-[**Task**](Task.md)
-
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **201** | Created |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **500** | Internal Server Error |  -  |
-
-## createTaskUsingPOST1WithHttpInfo
-
-> ApiResponse<Task> createTaskUsingPOST1 createTaskUsingPOST1WithHttpInfo(createTaskRequest)
-
-Create a Task
-
-Creates a new task as the authenticated user.   This endpoint does not currently support setting Custom Field values.
-
-### Example
-
-```java
-// Import classes:
-import com.keap.core.sdk.ApiClient;
-import com.keap.core.sdk.ApiException;
-import com.keap.core.sdk.ApiResponse;
-import com.keap.core.sdk.Configuration;
-import com.keap.core.sdk.models.*;
-import com.keap.core.sdk.client.TaskApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
-
-        TaskApi apiInstance = new TaskApi(defaultClient);
-        CreateTaskRequest createTaskRequest = new CreateTaskRequest(); // CreateTaskRequest | task
-        try {
-            ApiResponse<Task> response = apiInstance.createTaskUsingPOST1WithHttpInfo(createTaskRequest);
-            System.out.println("Status code: " + response.getStatusCode());
-            System.out.println("Response headers: " + response.getHeaders());
-            System.out.println("Response body: " + response.getData());
-        } catch (ApiException e) {
-            System.err.println("Exception when calling TaskApi#createTaskUsingPOST1");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            System.err.println("Reason: " + e.getResponseBody());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **createTaskRequest** | [**CreateTaskRequest**](CreateTaskRequest.md)| task | [optional] |
-
-### Return type
-
-ApiResponse<[**Task**](Task.md)>
-
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **201** | Created |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **500** | Internal Server Error |  -  |
-
-
-## deleteTaskCustomFieldUsingDELETE
-
-> void deleteTaskCustomFieldUsingDELETE(customFieldId)
-
-Delete a Custom Field
-
-Deletes a Custom Field from the Task object&lt;br/&gt;Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
-
-### Example
-
-```java
-// Import classes:
-import com.keap.core.sdk.ApiClient;
-import com.keap.core.sdk.ApiException;
-import com.keap.core.sdk.Configuration;
-import com.keap.core.sdk.models.*;
-import com.keap.core.sdk.client.TaskApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
-
-        TaskApi apiInstance = new TaskApi(defaultClient);
-        String customFieldId = "customFieldId_example"; // String | custom_field_id
-        try {
-            apiInstance.deleteTaskCustomFieldUsingDELETE(customFieldId);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling TaskApi#deleteTaskCustomFieldUsingDELETE");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **customFieldId** | **String**| custom_field_id | |
-
-### Return type
-
-
-null (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **204** | No Content |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **500** | Internal Server Error |  -  |
-
-## deleteTaskCustomFieldUsingDELETEWithHttpInfo
-
-> ApiResponse<Void> deleteTaskCustomFieldUsingDELETE deleteTaskCustomFieldUsingDELETEWithHttpInfo(customFieldId)
-
-Delete a Custom Field
-
-Deletes a Custom Field from the Task object&lt;br/&gt;Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
-
-### Example
-
-```java
-// Import classes:
-import com.keap.core.sdk.ApiClient;
-import com.keap.core.sdk.ApiException;
-import com.keap.core.sdk.ApiResponse;
-import com.keap.core.sdk.Configuration;
-import com.keap.core.sdk.models.*;
-import com.keap.core.sdk.client.TaskApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
-
-        TaskApi apiInstance = new TaskApi(defaultClient);
-        String customFieldId = "customFieldId_example"; // String | custom_field_id
-        try {
-            ApiResponse<Void> response = apiInstance.deleteTaskCustomFieldUsingDELETEWithHttpInfo(customFieldId);
-            System.out.println("Status code: " + response.getStatusCode());
-            System.out.println("Response headers: " + response.getHeaders());
-        } catch (ApiException e) {
-            System.err.println("Exception when calling TaskApi#deleteTaskCustomFieldUsingDELETE");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            System.err.println("Reason: " + e.getResponseBody());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **customFieldId** | **String**| custom_field_id | |
-
-### Return type
-
-
-ApiResponse<Void>
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **204** | No Content |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **500** | Internal Server Error |  -  |
-
-
-## deleteTaskUsingDELETE1
-
-> void deleteTaskUsingDELETE1(taskId)
+> void deleteTask(taskId)
 
 Delete a Task
 
@@ -471,9 +331,9 @@ public class Example {
         TaskApi apiInstance = new TaskApi(defaultClient);
         String taskId = "taskId_example"; // String | task_id
         try {
-            apiInstance.deleteTaskUsingDELETE1(taskId);
+            apiInstance.deleteTask(taskId);
         } catch (ApiException e) {
-            System.err.println("Exception when calling TaskApi#deleteTaskUsingDELETE1");
+            System.err.println("Exception when calling TaskApi#deleteTask");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -513,9 +373,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## deleteTaskUsingDELETE1WithHttpInfo
+## deleteTaskWithHttpInfo
 
-> ApiResponse<Void> deleteTaskUsingDELETE1 deleteTaskUsingDELETE1WithHttpInfo(taskId)
+> ApiResponse<Void> deleteTask deleteTaskWithHttpInfo(taskId)
 
 Delete a Task
 
@@ -540,11 +400,11 @@ public class Example {
         TaskApi apiInstance = new TaskApi(defaultClient);
         String taskId = "taskId_example"; // String | task_id
         try {
-            ApiResponse<Void> response = apiInstance.deleteTaskUsingDELETE1WithHttpInfo(taskId);
+            ApiResponse<Void> response = apiInstance.deleteTaskWithHttpInfo(taskId);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
-            System.err.println("Exception when calling TaskApi#deleteTaskUsingDELETE1");
+            System.err.println("Exception when calling TaskApi#deleteTask");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -585,9 +445,149 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## getTaskUsingGET1
+## deleteTaskCustomField
 
-> Task getTaskUsingGET1(taskId)
+> void deleteTaskCustomField(customFieldId)
+
+Delete a Custom Field
+
+Deletes a Custom Field from the Task object&lt;br/&gt;Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.TaskApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+
+        TaskApi apiInstance = new TaskApi(defaultClient);
+        String customFieldId = "customFieldId_example"; // String | custom_field_id
+        try {
+            apiInstance.deleteTaskCustomField(customFieldId);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TaskApi#deleteTaskCustomField");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **customFieldId** | **String**| custom_field_id | |
+
+### Return type
+
+
+null (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
+
+## deleteTaskCustomFieldWithHttpInfo
+
+> ApiResponse<Void> deleteTaskCustomField deleteTaskCustomFieldWithHttpInfo(customFieldId)
+
+Delete a Custom Field
+
+Deletes a Custom Field from the Task object&lt;br/&gt;Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.TaskApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+
+        TaskApi apiInstance = new TaskApi(defaultClient);
+        String customFieldId = "customFieldId_example"; // String | custom_field_id
+        try {
+            ApiResponse<Void> response = apiInstance.deleteTaskCustomFieldWithHttpInfo(customFieldId);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TaskApi#deleteTaskCustomField");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **customFieldId** | **String**| custom_field_id | |
+
+### Return type
+
+
+ApiResponse<Void>
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
+
+
+## getTask
+
+> Task getTask(taskId)
 
 Retrieve a Task
 
@@ -611,10 +611,10 @@ public class Example {
         TaskApi apiInstance = new TaskApi(defaultClient);
         String taskId = "taskId_example"; // String | task_id
         try {
-            Task result = apiInstance.getTaskUsingGET1(taskId);
+            Task result = apiInstance.getTask(taskId);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling TaskApi#getTaskUsingGET1");
+            System.err.println("Exception when calling TaskApi#getTask");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -654,9 +654,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## getTaskUsingGET1WithHttpInfo
+## getTaskWithHttpInfo
 
-> ApiResponse<Task> getTaskUsingGET1 getTaskUsingGET1WithHttpInfo(taskId)
+> ApiResponse<Task> getTask getTaskWithHttpInfo(taskId)
 
 Retrieve a Task
 
@@ -681,12 +681,12 @@ public class Example {
         TaskApi apiInstance = new TaskApi(defaultClient);
         String taskId = "taskId_example"; // String | task_id
         try {
-            ApiResponse<Task> response = apiInstance.getTaskUsingGET1WithHttpInfo(taskId);
+            ApiResponse<Task> response = apiInstance.getTaskWithHttpInfo(taskId);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling TaskApi#getTaskUsingGET1");
+            System.err.println("Exception when calling TaskApi#getTask");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -727,9 +727,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## listTasksUsingGET1
+## listTasks
 
-> ListTasksResponse listTasksUsingGET1(endDueTime, filter, orderBy, pageSize, pageToken, startDueTime)
+> ListTasksResponse listTasks(endDueTime, filter, orderBy, pageSize, pageToken, startDueTime)
 
 List Tasks
 
@@ -758,10 +758,10 @@ public class Example {
         String pageToken = "pageToken_example"; // String | Page token
         String startDueTime = "startDueTime_example"; // String | 
         try {
-            ListTasksResponse result = apiInstance.listTasksUsingGET1(endDueTime, filter, orderBy, pageSize, pageToken, startDueTime);
+            ListTasksResponse result = apiInstance.listTasks(endDueTime, filter, orderBy, pageSize, pageToken, startDueTime);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling TaskApi#listTasksUsingGET1");
+            System.err.println("Exception when calling TaskApi#listTasks");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -806,9 +806,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## listTasksUsingGET1WithHttpInfo
+## listTasksWithHttpInfo
 
-> ApiResponse<ListTasksResponse> listTasksUsingGET1 listTasksUsingGET1WithHttpInfo(endDueTime, filter, orderBy, pageSize, pageToken, startDueTime)
+> ApiResponse<ListTasksResponse> listTasks listTasksWithHttpInfo(endDueTime, filter, orderBy, pageSize, pageToken, startDueTime)
 
 List Tasks
 
@@ -838,12 +838,12 @@ public class Example {
         String pageToken = "pageToken_example"; // String | Page token
         String startDueTime = "startDueTime_example"; // String | 
         try {
-            ApiResponse<ListTasksResponse> response = apiInstance.listTasksUsingGET1WithHttpInfo(endDueTime, filter, orderBy, pageSize, pageToken, startDueTime);
+            ApiResponse<ListTasksResponse> response = apiInstance.listTasksWithHttpInfo(endDueTime, filter, orderBy, pageSize, pageToken, startDueTime);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling TaskApi#listTasksUsingGET1");
+            System.err.println("Exception when calling TaskApi#listTasks");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -889,9 +889,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## retrieveTaskModelUsingGET1
+## retrieveTaskModel
 
-> ObjectModel retrieveTaskModelUsingGET1()
+> ObjectModel retrieveTaskModel()
 
 Retrieve Task Model
 
@@ -914,10 +914,10 @@ public class Example {
 
         TaskApi apiInstance = new TaskApi(defaultClient);
         try {
-            ObjectModel result = apiInstance.retrieveTaskModelUsingGET1();
+            ObjectModel result = apiInstance.retrieveTaskModel();
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling TaskApi#retrieveTaskModelUsingGET1");
+            System.err.println("Exception when calling TaskApi#retrieveTaskModel");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -954,9 +954,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## retrieveTaskModelUsingGET1WithHttpInfo
+## retrieveTaskModelWithHttpInfo
 
-> ApiResponse<ObjectModel> retrieveTaskModelUsingGET1 retrieveTaskModelUsingGET1WithHttpInfo()
+> ApiResponse<ObjectModel> retrieveTaskModel retrieveTaskModelWithHttpInfo()
 
 Retrieve Task Model
 
@@ -980,12 +980,12 @@ public class Example {
 
         TaskApi apiInstance = new TaskApi(defaultClient);
         try {
-            ApiResponse<ObjectModel> response = apiInstance.retrieveTaskModelUsingGET1WithHttpInfo();
+            ApiResponse<ObjectModel> response = apiInstance.retrieveTaskModelWithHttpInfo();
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling TaskApi#retrieveTaskModelUsingGET1");
+            System.err.println("Exception when calling TaskApi#retrieveTaskModel");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -1023,159 +1023,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## updateTaskCustomFieldUsingPATCH
+## updateTask
 
-> CustomFieldMetaData updateTaskCustomFieldUsingPATCH(customFieldId, updateCustomFieldMetaDataRequest, updateMask)
-
-Update a Task&#39;s Custom Field
-
-Updates a custom field of the specified type and options to the Task object.&lt;br/&gt;Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
-
-### Example
-
-```java
-// Import classes:
-import com.keap.core.sdk.ApiClient;
-import com.keap.core.sdk.ApiException;
-import com.keap.core.sdk.Configuration;
-import com.keap.core.sdk.models.*;
-import com.keap.core.sdk.client.TaskApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
-
-        TaskApi apiInstance = new TaskApi(defaultClient);
-        String customFieldId = "customFieldId_example"; // String | custom_field_id
-        UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest = new UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | request
-        List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        try {
-            CustomFieldMetaData result = apiInstance.updateTaskCustomFieldUsingPATCH(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling TaskApi#updateTaskCustomFieldUsingPATCH");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **customFieldId** | **String**| custom_field_id | |
-| **updateCustomFieldMetaDataRequest** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md)| request | |
-| **updateMask** | [**List&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: group_id, label, options] |
-
-### Return type
-
-[**CustomFieldMetaData**](CustomFieldMetaData.md)
-
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **500** | Internal Server Error |  -  |
-
-## updateTaskCustomFieldUsingPATCHWithHttpInfo
-
-> ApiResponse<CustomFieldMetaData> updateTaskCustomFieldUsingPATCH updateTaskCustomFieldUsingPATCHWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask)
-
-Update a Task&#39;s Custom Field
-
-Updates a custom field of the specified type and options to the Task object.&lt;br/&gt;Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
-
-### Example
-
-```java
-// Import classes:
-import com.keap.core.sdk.ApiClient;
-import com.keap.core.sdk.ApiException;
-import com.keap.core.sdk.ApiResponse;
-import com.keap.core.sdk.Configuration;
-import com.keap.core.sdk.models.*;
-import com.keap.core.sdk.client.TaskApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
-
-        TaskApi apiInstance = new TaskApi(defaultClient);
-        String customFieldId = "customFieldId_example"; // String | custom_field_id
-        UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest = new UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | request
-        List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        try {
-            ApiResponse<CustomFieldMetaData> response = apiInstance.updateTaskCustomFieldUsingPATCHWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
-            System.out.println("Status code: " + response.getStatusCode());
-            System.out.println("Response headers: " + response.getHeaders());
-            System.out.println("Response body: " + response.getData());
-        } catch (ApiException e) {
-            System.err.println("Exception when calling TaskApi#updateTaskCustomFieldUsingPATCH");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            System.err.println("Reason: " + e.getResponseBody());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **customFieldId** | **String**| custom_field_id | |
-| **updateCustomFieldMetaDataRequest** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md)| request | |
-| **updateMask** | [**List&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: group_id, label, options] |
-
-### Return type
-
-ApiResponse<[**CustomFieldMetaData**](CustomFieldMetaData.md)>
-
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **500** | Internal Server Error |  -  |
-
-
-## updateTaskUsingPATCH
-
-> UpdateTaskResponse updateTaskUsingPATCH(taskId, updateMask, createUpdateTaskRequest)
+> UpdateTaskResponse updateTask(taskId, updateMask, createUpdateTaskRequest)
 
 Update a Task
 
@@ -1201,10 +1051,10 @@ public class Example {
         List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         CreateUpdateTaskRequest createUpdateTaskRequest = new CreateUpdateTaskRequest(); // CreateUpdateTaskRequest | task
         try {
-            UpdateTaskResponse result = apiInstance.updateTaskUsingPATCH(taskId, updateMask, createUpdateTaskRequest);
+            UpdateTaskResponse result = apiInstance.updateTask(taskId, updateMask, createUpdateTaskRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling TaskApi#updateTaskUsingPATCH");
+            System.err.println("Exception when calling TaskApi#updateTask");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -1246,9 +1096,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## updateTaskUsingPATCHWithHttpInfo
+## updateTaskWithHttpInfo
 
-> ApiResponse<UpdateTaskResponse> updateTaskUsingPATCH updateTaskUsingPATCHWithHttpInfo(taskId, updateMask, createUpdateTaskRequest)
+> ApiResponse<UpdateTaskResponse> updateTask updateTaskWithHttpInfo(taskId, updateMask, createUpdateTaskRequest)
 
 Update a Task
 
@@ -1275,12 +1125,12 @@ public class Example {
         List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         CreateUpdateTaskRequest createUpdateTaskRequest = new CreateUpdateTaskRequest(); // CreateUpdateTaskRequest | task
         try {
-            ApiResponse<UpdateTaskResponse> response = apiInstance.updateTaskUsingPATCHWithHttpInfo(taskId, updateMask, createUpdateTaskRequest);
+            ApiResponse<UpdateTaskResponse> response = apiInstance.updateTaskWithHttpInfo(taskId, updateMask, createUpdateTaskRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling TaskApi#updateTaskUsingPATCH");
+            System.err.println("Exception when calling TaskApi#updateTask");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -1302,6 +1152,156 @@ public class Example {
 ### Return type
 
 ApiResponse<[**UpdateTaskResponse**](UpdateTaskResponse.md)>
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
+
+
+## updateTaskCustomField
+
+> CustomFieldMetaData updateTaskCustomField(customFieldId, updateCustomFieldMetaDataRequest, updateMask)
+
+Update a Task&#39;s Custom Field
+
+Updates a custom field of the specified type and options to the Task object.&lt;br/&gt;Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.TaskApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+
+        TaskApi apiInstance = new TaskApi(defaultClient);
+        String customFieldId = "customFieldId_example"; // String | custom_field_id
+        UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest = new UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | request
+        List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        try {
+            CustomFieldMetaData result = apiInstance.updateTaskCustomField(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TaskApi#updateTaskCustomField");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **customFieldId** | **String**| custom_field_id | |
+| **updateCustomFieldMetaDataRequest** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md)| request | |
+| **updateMask** | [**List&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: group_id, label, options] |
+
+### Return type
+
+[**CustomFieldMetaData**](CustomFieldMetaData.md)
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
+
+## updateTaskCustomFieldWithHttpInfo
+
+> ApiResponse<CustomFieldMetaData> updateTaskCustomField updateTaskCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask)
+
+Update a Task&#39;s Custom Field
+
+Updates a custom field of the specified type and options to the Task object.&lt;br/&gt;Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.TaskApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+
+        TaskApi apiInstance = new TaskApi(defaultClient);
+        String customFieldId = "customFieldId_example"; // String | custom_field_id
+        UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest = new UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | request
+        List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        try {
+            ApiResponse<CustomFieldMetaData> response = apiInstance.updateTaskCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TaskApi#updateTaskCustomField");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **customFieldId** | **String**| custom_field_id | |
+| **updateCustomFieldMetaDataRequest** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md)| request | |
+| **updateMask** | [**List&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: group_id, label, options] |
+
+### Return type
+
+ApiResponse<[**CustomFieldMetaData**](CustomFieldMetaData.md)>
 
 
 ### Authorization

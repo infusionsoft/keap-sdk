@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**contact_ids** | **List[str]** |  | [optional] 
+**contact_ids** | **List[str]** |  | 
 
 ## Example
 

@@ -4,15 +4,15 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**listReportsUsingGET**](ReportingApi.md#listReportsUsingGET) | **GET** /v2/reporting/reports | List Reports
-[**retrieveReportUsingGET**](ReportingApi.md#retrieveReportUsingGET) | **GET** /v2/reporting/reports/{report_id} | Retrieve Report
-[**runReportUsingPOST**](ReportingApi.md#runReportUsingPOST) | **POST** /v2/reporting/reports/{report_id}:run | Run a Report
+[**listReports**](ReportingApi.md#listReports) | **GET** /v2/reporting/reports | List Reports
+[**retrieveReport**](ReportingApi.md#retrieveReport) | **GET** /v2/reporting/reports/{report_id} | Retrieve Report
+[**runReport**](ReportingApi.md#runReport) | **POST** /v2/reporting/reports/{report_id}:run | Run a Report
 
 
 
-## listReportsUsingGET
+## listReports
 
-> ListReportsResponse listReportsUsingGET(opts)
+> ListReportsResponse listReports(opts)
 
 List Reports
 
@@ -30,7 +30,7 @@ let opts = {
   'pageSize': 0, // Number | Total number of items to return per page
   'pageToken': "pageToken_example" // String | Page token
 };
-apiInstance.listReportsUsingGET(opts).then((data) => {
+apiInstance.listReports(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -62,9 +62,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## retrieveReportUsingGET
+## retrieveReport
 
-> Report retrieveReportUsingGET(reportId)
+> Report retrieveReport(reportId)
 
 Retrieve Report
 
@@ -77,7 +77,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.ReportingApi();
 let reportId = "reportId_example"; // String | report_id
-apiInstance.retrieveReportUsingGET(reportId).then((data) => {
+apiInstance.retrieveReport(reportId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -106,9 +106,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## runReportUsingPOST
+## runReport
 
-> ReportExecutionResult runReportUsingPOST(reportId, opts)
+> ReportExecutionResult runReport(reportId, opts)
 
 Run a Report
 
@@ -127,7 +127,7 @@ let opts = {
   'pageSize': 0, // Number | Total number of items to return per page
   'pageToken': "pageToken_example" // String | Representation of the last row retrieved from the previous page. An empty value implies a request for the first page.
 };
-apiInstance.runReportUsingPOST(reportId, opts).then((data) => {
+apiInstance.runReport(reportId, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);

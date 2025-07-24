@@ -4,15 +4,15 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createLeadSourceCategoryUsingPOST**](LeadSourceCategoriesApi.md#createLeadSourceCategoryUsingPOST) | **POST** /v2/leadSourceCategories | Create a Lead Source Category
-[**deleteLeadSourceCategoryUsingDELETE**](LeadSourceCategoriesApi.md#deleteLeadSourceCategoryUsingDELETE) | **DELETE** /v2/leadSourceCategories/{lead_source_category_id} | Delete a Lead Source Category
-[**getLeadSourceCategoryUsingGET**](LeadSourceCategoriesApi.md#getLeadSourceCategoryUsingGET) | **GET** /v2/leadSourceCategories/{lead_source_category_id} | Retrieve a Lead Source Category
-[**listCategoriesUsingGET1**](LeadSourceCategoriesApi.md#listCategoriesUsingGET1) | **GET** /v2/leadSourceCategories | List Lead Source Categories
-[**updateLeadSourceCategoryUsingPATCH**](LeadSourceCategoriesApi.md#updateLeadSourceCategoryUsingPATCH) | **PATCH** /v2/leadSourceCategories/{lead_source_category_id} | Update a Lead Source Category
+[**createLeadSourceCategory**](LeadSourceCategoriesApi.md#createLeadSourceCategory) | **POST** /v2/leadSourceCategories | Create a Lead Source Category
+[**deleteLeadSourceCategory**](LeadSourceCategoriesApi.md#deleteLeadSourceCategory) | **DELETE** /v2/leadSourceCategories/{lead_source_category_id} | Delete a Lead Source Category
+[**getLeadSourceCategory**](LeadSourceCategoriesApi.md#getLeadSourceCategory) | **GET** /v2/leadSourceCategories/{lead_source_category_id} | Retrieve a Lead Source Category
+[**listLeadSourceCategories**](LeadSourceCategoriesApi.md#listLeadSourceCategories) | **GET** /v2/leadSourceCategories | List Lead Source Categories
+[**updateLeadSourceCategory**](LeadSourceCategoriesApi.md#updateLeadSourceCategory) | **PATCH** /v2/leadSourceCategories/{lead_source_category_id} | Update a Lead Source Category
 
 
-# **createLeadSourceCategoryUsingPOST**
-> LeadSourceCategory createLeadSourceCategoryUsingPOST(createUpdateLeadSourceCategoryRequest)
+# **createLeadSourceCategory**
+> LeadSourceCategory createLeadSourceCategory(createUpdateLeadSourceCategoryRequest)
 
 Creates a new Lead Source Category
 
@@ -21,12 +21,12 @@ Creates a new Lead Source Category
 
 ```typescript
 import { createConfiguration, LeadSourceCategoriesApi } from '';
-import type { LeadSourceCategoriesApiCreateLeadSourceCategoryUsingPOSTRequest } from '';
+import type { LeadSourceCategoriesApiCreateLeadSourceCategoryRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new LeadSourceCategoriesApi(configuration);
 
-const request: LeadSourceCategoriesApiCreateLeadSourceCategoryUsingPOSTRequest = {
+const request: LeadSourceCategoriesApiCreateLeadSourceCategoryRequest = {
     // The request object to create a new lead source category
   createUpdateLeadSourceCategoryRequest: {
     description: "description_example",
@@ -34,7 +34,7 @@ const request: LeadSourceCategoriesApiCreateLeadSourceCategoryUsingPOSTRequest =
   },
 };
 
-const data = await apiInstance.createLeadSourceCategoryUsingPOST(request);
+const data = await apiInstance.createLeadSourceCategory(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -71,8 +71,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **deleteLeadSourceCategoryUsingDELETE**
-> void deleteLeadSourceCategoryUsingDELETE()
+# **deleteLeadSourceCategory**
+> void deleteLeadSourceCategory()
 
 Deletes the specified Lead Source Category
 
@@ -81,17 +81,17 @@ Deletes the specified Lead Source Category
 
 ```typescript
 import { createConfiguration, LeadSourceCategoriesApi } from '';
-import type { LeadSourceCategoriesApiDeleteLeadSourceCategoryUsingDELETERequest } from '';
+import type { LeadSourceCategoriesApiDeleteLeadSourceCategoryRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new LeadSourceCategoriesApi(configuration);
 
-const request: LeadSourceCategoriesApiDeleteLeadSourceCategoryUsingDELETERequest = {
+const request: LeadSourceCategoriesApiDeleteLeadSourceCategoryRequest = {
     // The ID of a lead source category
   leadSourceCategoryId: "lead_source_category_id_example",
 };
 
-const data = await apiInstance.deleteLeadSourceCategoryUsingDELETE(request);
+const data = await apiInstance.deleteLeadSourceCategory(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -128,8 +128,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **getLeadSourceCategoryUsingGET**
-> LeadSourceCategory getLeadSourceCategoryUsingGET()
+# **getLeadSourceCategory**
+> LeadSourceCategory getLeadSourceCategory()
 
 Retrieves a single Lead Source Category for a given ID
 
@@ -138,17 +138,17 @@ Retrieves a single Lead Source Category for a given ID
 
 ```typescript
 import { createConfiguration, LeadSourceCategoriesApi } from '';
-import type { LeadSourceCategoriesApiGetLeadSourceCategoryUsingGETRequest } from '';
+import type { LeadSourceCategoriesApiGetLeadSourceCategoryRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new LeadSourceCategoriesApi(configuration);
 
-const request: LeadSourceCategoriesApiGetLeadSourceCategoryUsingGETRequest = {
+const request: LeadSourceCategoriesApiGetLeadSourceCategoryRequest = {
     // The ID of a lead source category
   leadSourceCategoryId: "lead_source_category_id_example",
 };
 
-const data = await apiInstance.getLeadSourceCategoryUsingGET(request);
+const data = await apiInstance.getLeadSourceCategory(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -185,8 +185,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **listCategoriesUsingGET1**
-> ListLeadSourceCategoriesResponse listCategoriesUsingGET1()
+# **listLeadSourceCategories**
+> ListLeadSourceCategoriesResponse listLeadSourceCategories()
 
 Retrieves a list of Lead Source Categories
 
@@ -195,12 +195,12 @@ Retrieves a list of Lead Source Categories
 
 ```typescript
 import { createConfiguration, LeadSourceCategoriesApi } from '';
-import type { LeadSourceCategoriesApiListCategoriesUsingGET1Request } from '';
+import type { LeadSourceCategoriesApiListLeadSourceCategoriesRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new LeadSourceCategoriesApi(configuration);
 
-const request: LeadSourceCategoriesApiListCategoriesUsingGET1Request = {
+const request: LeadSourceCategoriesApiListLeadSourceCategoriesRequest = {
     // Filter to apply, allowed fields are:  - (String) `name`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here is an example:  - `filter=name%3D%3Dexample` (optional)
   filter: "filter_example",
     // Attribute and direction to order items. One of the following fields: - `name`  One of the following directions: - `asc` - `desc` (optional)
@@ -211,7 +211,7 @@ const request: LeadSourceCategoriesApiListCategoriesUsingGET1Request = {
   pageToken: "page_token_example",
 };
 
-const data = await apiInstance.listCategoriesUsingGET1(request);
+const data = await apiInstance.listLeadSourceCategories(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -252,8 +252,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **updateLeadSourceCategoryUsingPATCH**
-> LeadSourceCategory updateLeadSourceCategoryUsingPATCH(createUpdateLeadSourceCategoryRequest)
+# **updateLeadSourceCategory**
+> LeadSourceCategory updateLeadSourceCategory(createUpdateLeadSourceCategoryRequest)
 
 Updates a Lead Source Category
 
@@ -262,12 +262,12 @@ Updates a Lead Source Category
 
 ```typescript
 import { createConfiguration, LeadSourceCategoriesApi } from '';
-import type { LeadSourceCategoriesApiUpdateLeadSourceCategoryUsingPATCHRequest } from '';
+import type { LeadSourceCategoriesApiUpdateLeadSourceCategoryRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new LeadSourceCategoriesApi(configuration);
 
-const request: LeadSourceCategoriesApiUpdateLeadSourceCategoryUsingPATCHRequest = {
+const request: LeadSourceCategoriesApiUpdateLeadSourceCategoryRequest = {
     // The ID of a lead source category
   leadSourceCategoryId: "lead_source_category_id_example",
     // The request object to update a lead source category
@@ -281,7 +281,7 @@ const request: LeadSourceCategoriesApiUpdateLeadSourceCategoryUsingPATCHRequest 
   ],
 };
 
-const data = await apiInstance.updateLeadSourceCategoryUsingPATCH(request);
+const data = await apiInstance.updateLeadSourceCategory(request);
 console.log('API called successfully. Returned data:', data);
 ```
 

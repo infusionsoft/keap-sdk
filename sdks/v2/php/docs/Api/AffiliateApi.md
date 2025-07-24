@@ -4,39 +4,94 @@ All URIs are relative to https://api.keap.com/crm/rest, except if the operation 
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**addAffiliateToProgramUsingPOST()**](AffiliateApi.md#addAffiliateToProgramUsingPOST) | **POST** /v2/affiliates/{id}:assignToProgram | Assign Affiliate to Commission program |
-| [**addAffiliateUsingPOST()**](AffiliateApi.md#addAffiliateUsingPOST) | **POST** /v2/affiliates | Create an Affiliate |
-| [**addCommissionProgramUsingPOST()**](AffiliateApi.md#addCommissionProgramUsingPOST) | **POST** /v2/affiliates/commissionPrograms | Create an Affiliate Commission Program |
-| [**assignProductCommissionProgramUsingPOST()**](AffiliateApi.md#assignProductCommissionProgramUsingPOST) | **POST** /v2/affiliates/commissionPrograms/productCommissionProgram/{commission_program_id} | Assign a Product Commission Program |
-| [**assignSubscriptionCommissionProgramUsingPOST()**](AffiliateApi.md#assignSubscriptionCommissionProgramUsingPOST) | **POST** /v2/affiliates/commissionPrograms/subscriptionCommissionProgram/{commission_program_id} | Assign a Subscription Commission Program |
-| [**createDefaultCommissionProgramUsingPOST()**](AffiliateApi.md#createDefaultCommissionProgramUsingPOST) | **POST** /v2/affiliates/commissionPrograms/defaultCommissionProgram/{commission_program_id} | Create a Default Commission Program |
-| [**createRedirectLinkUsingPOST()**](AffiliateApi.md#createRedirectLinkUsingPOST) | **POST** /v2/affiliates/redirects | Create an Affiliate Link |
-| [**deleteAffiliateCommissionProgramUsingDELETE()**](AffiliateApi.md#deleteAffiliateCommissionProgramUsingDELETE) | **DELETE** /v2/affiliates/commissionPrograms/{commission_program_id} | Delete a Commission Program |
-| [**deleteAffiliateUsingDELETE()**](AffiliateApi.md#deleteAffiliateUsingDELETE) | **DELETE** /v2/affiliates/{id} | Delete Affiliate |
-| [**deleteRedirectLinkUsingDELETE()**](AffiliateApi.md#deleteRedirectLinkUsingDELETE) | **DELETE** /v2/affiliates/redirects/{redirect_id} | Delete an Affiliate Link |
-| [**getAffiliateCommissionTotalUsingGET()**](AffiliateApi.md#getAffiliateCommissionTotalUsingGET) | **GET** /v2/affiliates/{affiliate_id}/commissionTotal | Retrieve Affiliate Commission Earned and View LedgerURl for portal |
-| [**getAffiliateCommissionsUsingGET()**](AffiliateApi.md#getAffiliateCommissionsUsingGET) | **GET** /v2/affiliates/{affiliate_id}:commissions | Retrieve Affiliate Commission and Clawbacks |
-| [**getAffiliateUsingGET1()**](AffiliateApi.md#getAffiliateUsingGET1) | **GET** /v2/affiliates/{id} | Retrieve an Affiliate |
-| [**getCommissionProgramUsingGET()**](AffiliateApi.md#getCommissionProgramUsingGET) | **GET** /v2/affiliates/commissionPrograms/{commission_program_id} | Retrieve a Commission Program |
-| [**getRedirectLinkUsingGET()**](AffiliateApi.md#getRedirectLinkUsingGET) | **GET** /v2/affiliates/redirects/{redirect_id} | Retrieve an Affiliate Link |
-| [**listAffiliateCommissionProgramsUsingGET()**](AffiliateApi.md#listAffiliateCommissionProgramsUsingGET) | **GET** /v2/affiliates/commissionPrograms | List Affiliate Commission Programs |
-| [**listAffiliateLinksUsingGET()**](AffiliateApi.md#listAffiliateLinksUsingGET) | **GET** /v2/affiliates/redirects | List Affiliate Links |
-| [**listSummariesUsingGET1()**](AffiliateApi.md#listSummariesUsingGET1) | **GET** /v2/affiliates/summaries | List Affiliate Summaries |
-| [**removeAffiliateFromProgramUsingPOST()**](AffiliateApi.md#removeAffiliateFromProgramUsingPOST) | **POST** /v2/affiliates/{id}:removeFromProgram | Remove an Affiliate from a Commission Program |
-| [**removeProductCommissionFromCommissionsUsingPOST()**](AffiliateApi.md#removeProductCommissionFromCommissionsUsingPOST) | **POST** /v2/affiliates/commissionPrograms/{commission_id}:removeProductCommission | Remove a Product from a Commission Program |
-| [**removeSubscriptionPlanCommissionFromCommissionsUsingPOST()**](AffiliateApi.md#removeSubscriptionPlanCommissionFromCommissionsUsingPOST) | **POST** /v2/affiliates/commissionPrograms/{commission_id}:removeSubscriptionCommission | Remove a Subscription from a Commission Program |
-| [**updateAffiliateUsingPATCH()**](AffiliateApi.md#updateAffiliateUsingPATCH) | **PATCH** /v2/affiliates/{id} | Update an Affiliate |
-| [**updateCommissionProgramUsingPATCH()**](AffiliateApi.md#updateCommissionProgramUsingPATCH) | **PATCH** /v2/affiliates/commissionPrograms/{commission_program_id} | Update an Affiliate Commission Program |
-| [**updateDefaultCommissionProgramUsingPATCH()**](AffiliateApi.md#updateDefaultCommissionProgramUsingPATCH) | **PATCH** /v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Update a Default Commission Program |
-| [**updateProductCommissionProgramUsingPATCH()**](AffiliateApi.md#updateProductCommissionProgramUsingPATCH) | **PATCH** /v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Update a Product Commission Program |
-| [**updateRedirectLinkUsingPATCH()**](AffiliateApi.md#updateRedirectLinkUsingPATCH) | **PATCH** /v2/affiliates/redirects/{redirect_id} | Update an Affiliate Link |
-| [**updateSubscriptionCommissionProgramUsingPATCH()**](AffiliateApi.md#updateSubscriptionCommissionProgramUsingPATCH) | **PATCH** /v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id} | Update a Subscription Commission Program |
+| [**addAffiliate()**](AffiliateApi.md#addAffiliate) | **POST** /v2/affiliates | Create an Affiliate |
+| [**addAffiliateToProgram()**](AffiliateApi.md#addAffiliateToProgram) | **POST** /v2/affiliates/{id}:assignToProgram | Assign Affiliate to Commission program |
+| [**addCommissionProgram()**](AffiliateApi.md#addCommissionProgram) | **POST** /v2/affiliates/commissionPrograms | Create an Affiliate Commission Program |
+| [**assignProductCommissionProgram()**](AffiliateApi.md#assignProductCommissionProgram) | **POST** /v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Assign a Product Commission Program |
+| [**assignSubscriptionCommissionProgram()**](AffiliateApi.md#assignSubscriptionCommissionProgram) | **POST** /v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id} | Assign a Subscription Commission Program |
+| [**createDefaultCommissionProgram()**](AffiliateApi.md#createDefaultCommissionProgram) | **POST** /v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Create a Default Commission Program |
+| [**createRedirectLink()**](AffiliateApi.md#createRedirectLink) | **POST** /v2/affiliates/redirects | Create an Affiliate Link |
+| [**deleteAffiliate()**](AffiliateApi.md#deleteAffiliate) | **DELETE** /v2/affiliates/{id} | Delete Affiliate |
+| [**deleteAffiliateCommissionProgram()**](AffiliateApi.md#deleteAffiliateCommissionProgram) | **DELETE** /v2/affiliates/commissionPrograms/{commission_program_id} | Delete a Commission Program |
+| [**deleteRedirectLink()**](AffiliateApi.md#deleteRedirectLink) | **DELETE** /v2/affiliates/redirects/{redirect_id} | Delete an Affiliate Link |
+| [**getAffiliate()**](AffiliateApi.md#getAffiliate) | **GET** /v2/affiliates/{id} | Retrieve an Affiliate |
+| [**getAffiliateCommissionTotal()**](AffiliateApi.md#getAffiliateCommissionTotal) | **GET** /v2/affiliates/{affiliate_id}/commissionTotal | Retrieve Affiliate Commission Earned and View LedgerURl for portal |
+| [**getAffiliateCommissions()**](AffiliateApi.md#getAffiliateCommissions) | **GET** /v2/affiliates/{affiliate_id}:commissions | Retrieve Affiliate Commission and Clawbacks |
+| [**getCommissionProgram()**](AffiliateApi.md#getCommissionProgram) | **GET** /v2/affiliates/commissionPrograms/{commission_program_id} | Retrieve a Commission Program |
+| [**getRedirectLink()**](AffiliateApi.md#getRedirectLink) | **GET** /v2/affiliates/redirects/{redirect_id} | Retrieve an Affiliate Link |
+| [**listAffiliateCommissionPrograms()**](AffiliateApi.md#listAffiliateCommissionPrograms) | **GET** /v2/affiliates/commissionPrograms | List Affiliate Commission Programs |
+| [**listAffiliateLinks()**](AffiliateApi.md#listAffiliateLinks) | **GET** /v2/affiliates/redirects | List Affiliate Links |
+| [**listSummaries()**](AffiliateApi.md#listSummaries) | **GET** /v2/affiliates/summaries | List Affiliate Summaries |
+| [**removeAffiliateFromProgram()**](AffiliateApi.md#removeAffiliateFromProgram) | **POST** /v2/affiliates/{id}:removeFromProgram | Remove an Affiliate from a Commission Program |
+| [**removeProductCommissionFromCommissions()**](AffiliateApi.md#removeProductCommissionFromCommissions) | **POST** /v2/affiliates/commissionPrograms/{commission_id}:removeProductCommission | Remove a Product from a Commission Program |
+| [**removeSubscriptionPlanCommissionFromCommissions()**](AffiliateApi.md#removeSubscriptionPlanCommissionFromCommissions) | **POST** /v2/affiliates/commissionPrograms/{commission_id}:removeSubscriptionCommission | Remove a Subscription from a Commission Program |
+| [**updateAffiliate()**](AffiliateApi.md#updateAffiliate) | **PATCH** /v2/affiliates/{id} | Update an Affiliate |
+| [**updateCommissionProgram()**](AffiliateApi.md#updateCommissionProgram) | **PATCH** /v2/affiliates/commissionPrograms/{commission_program_id} | Update an Affiliate Commission Program |
+| [**updateDefaultCommissionProgram()**](AffiliateApi.md#updateDefaultCommissionProgram) | **PATCH** /v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Update a Default Commission Program |
+| [**updateProductCommissionProgram()**](AffiliateApi.md#updateProductCommissionProgram) | **PATCH** /v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Update a Product Commission Program |
+| [**updateRedirectLink()**](AffiliateApi.md#updateRedirectLink) | **PATCH** /v2/affiliates/redirects/{redirect_id} | Update an Affiliate Link |
+| [**updateSubscriptionCommissionProgram()**](AffiliateApi.md#updateSubscriptionCommissionProgram) | **PATCH** /v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id} | Update a Subscription Commission Program |
 
 
-## `addAffiliateToProgramUsingPOST()`
+## `addAffiliate()`
 
 ```php
-addAffiliateToProgramUsingPOST($id, $affiliate_add_to_program_request)
+addAffiliate($create_affiliate_request): \Keap\Core\V2\Model\RestAffiliate
+```
+
+Create an Affiliate
+
+Creates a single Affiliate
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+$apiInstance = new Keap\Core\V2\Api\AffiliateApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$create_affiliate_request = new \Keap\Core\V2\Model\CreateAffiliateRequest(); // \Keap\Core\V2\Model\CreateAffiliateRequest | Affiliate request to insert
+
+try {
+    $result = $apiInstance->addAffiliate($create_affiliate_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AffiliateApi->addAffiliate: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **create_affiliate_request** | [**\Keap\Core\V2\Model\CreateAffiliateRequest**](../Model/CreateAffiliateRequest.md)| Affiliate request to insert | [optional] |
+
+### Return type
+
+[**\Keap\Core\V2\Model\RestAffiliate**](../Model/RestAffiliate.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `addAffiliateToProgram()`
+
+```php
+addAffiliateToProgram($id, $affiliate_add_to_program_request)
 ```
 
 Assign Affiliate to Commission program
@@ -59,9 +114,9 @@ $id = 'id_example'; // string | id
 $affiliate_add_to_program_request = new \Keap\Core\V2\Model\AffiliateAddToProgramRequest(); // \Keap\Core\V2\Model\AffiliateAddToProgramRequest | affiliateAddToProgramRequest
 
 try {
-    $apiInstance->addAffiliateToProgramUsingPOST($id, $affiliate_add_to_program_request);
+    $apiInstance->addAffiliateToProgram($id, $affiliate_add_to_program_request);
 } catch (Exception $e) {
-    echo 'Exception when calling AffiliateApi->addAffiliateToProgramUsingPOST: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AffiliateApi->addAffiliateToProgram: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -89,65 +144,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `addAffiliateUsingPOST()`
+## `addCommissionProgram()`
 
 ```php
-addAffiliateUsingPOST($create_affiliate_request): \Keap\Core\V2\Model\RestAffiliate
-```
-
-Create an Affiliate
-
-Creates a single Affiliate
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-$apiInstance = new Keap\Core\V2\Api\AffiliateApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
-);
-$create_affiliate_request = new \Keap\Core\V2\Model\CreateAffiliateRequest(); // \Keap\Core\V2\Model\CreateAffiliateRequest | Affiliate request to insert
-
-try {
-    $result = $apiInstance->addAffiliateUsingPOST($create_affiliate_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling AffiliateApi->addAffiliateUsingPOST: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **create_affiliate_request** | [**\Keap\Core\V2\Model\CreateAffiliateRequest**](../Model/CreateAffiliateRequest.md)| Affiliate request to insert | [optional] |
-
-### Return type
-
-[**\Keap\Core\V2\Model\RestAffiliate**](../Model/RestAffiliate.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `addCommissionProgramUsingPOST()`
-
-```php
-addCommissionProgramUsingPOST($create_commission_program_request): \Keap\Core\V2\Model\AffiliateCommissionProgramResponse
+addCommissionProgram($create_commission_program_request): \Keap\Core\V2\Model\AffiliateCommissionProgramResponse
 ```
 
 Create an Affiliate Commission Program
@@ -169,10 +169,10 @@ $apiInstance = new Keap\Core\V2\Api\AffiliateApi(
 $create_commission_program_request = new \Keap\Core\V2\Model\CreateCommissionProgramRequest(); // \Keap\Core\V2\Model\CreateCommissionProgramRequest | Commission Program to insert
 
 try {
-    $result = $apiInstance->addCommissionProgramUsingPOST($create_commission_program_request);
+    $result = $apiInstance->addCommissionProgram($create_commission_program_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AffiliateApi->addCommissionProgramUsingPOST: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AffiliateApi->addCommissionProgram: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -199,10 +199,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `assignProductCommissionProgramUsingPOST()`
+## `assignProductCommissionProgram()`
 
 ```php
-assignProductCommissionProgramUsingPOST($commission_program_id, $create_product_commission_program_request): \Keap\Core\V2\Model\ProductCommissionProgram
+assignProductCommissionProgram($commission_program_id, $create_product_commission_program_request): \Keap\Core\V2\Model\ProductCommissionProgram
 ```
 
 Assign a Product Commission Program
@@ -225,10 +225,10 @@ $commission_program_id = 'commission_program_id_example'; // string | commission
 $create_product_commission_program_request = new \Keap\Core\V2\Model\CreateProductCommissionProgramRequest(); // \Keap\Core\V2\Model\CreateProductCommissionProgramRequest | Product Commission Program
 
 try {
-    $result = $apiInstance->assignProductCommissionProgramUsingPOST($commission_program_id, $create_product_commission_program_request);
+    $result = $apiInstance->assignProductCommissionProgram($commission_program_id, $create_product_commission_program_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AffiliateApi->assignProductCommissionProgramUsingPOST: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AffiliateApi->assignProductCommissionProgram: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -256,10 +256,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `assignSubscriptionCommissionProgramUsingPOST()`
+## `assignSubscriptionCommissionProgram()`
 
 ```php
-assignSubscriptionCommissionProgramUsingPOST($commission_program_id, $create_subscription_commission_program_request): \Keap\Core\V2\Model\SubscriptionCommissionProgram
+assignSubscriptionCommissionProgram($commission_program_id, $create_subscription_commission_program_request): \Keap\Core\V2\Model\SubscriptionCommissionProgram
 ```
 
 Assign a Subscription Commission Program
@@ -282,10 +282,10 @@ $commission_program_id = 'commission_program_id_example'; // string | commission
 $create_subscription_commission_program_request = new \Keap\Core\V2\Model\CreateSubscriptionCommissionProgramRequest(); // \Keap\Core\V2\Model\CreateSubscriptionCommissionProgramRequest | Subscription Commission Program
 
 try {
-    $result = $apiInstance->assignSubscriptionCommissionProgramUsingPOST($commission_program_id, $create_subscription_commission_program_request);
+    $result = $apiInstance->assignSubscriptionCommissionProgram($commission_program_id, $create_subscription_commission_program_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AffiliateApi->assignSubscriptionCommissionProgramUsingPOST: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AffiliateApi->assignSubscriptionCommissionProgram: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -313,10 +313,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `createDefaultCommissionProgramUsingPOST()`
+## `createDefaultCommissionProgram()`
 
 ```php
-createDefaultCommissionProgramUsingPOST($commission_program_id, $create_default_commission_program_request): \Keap\Core\V2\Model\SetDefaultCommissionProgramResponse
+createDefaultCommissionProgram($commission_program_id, $create_default_commission_program_request): \Keap\Core\V2\Model\SetDefaultCommissionProgramResponse
 ```
 
 Create a Default Commission Program
@@ -339,10 +339,10 @@ $commission_program_id = 'commission_program_id_example'; // string | commission
 $create_default_commission_program_request = new \Keap\Core\V2\Model\CreateDefaultCommissionProgramRequest(); // \Keap\Core\V2\Model\CreateDefaultCommissionProgramRequest | Values of the Default Commission Program
 
 try {
-    $result = $apiInstance->createDefaultCommissionProgramUsingPOST($commission_program_id, $create_default_commission_program_request);
+    $result = $apiInstance->createDefaultCommissionProgram($commission_program_id, $create_default_commission_program_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AffiliateApi->createDefaultCommissionProgramUsingPOST: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AffiliateApi->createDefaultCommissionProgram: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -370,10 +370,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `createRedirectLinkUsingPOST()`
+## `createRedirectLink()`
 
 ```php
-createRedirectLinkUsingPOST($create_or_update_affiliate_link_request): \Keap\Core\V2\Model\AffiliateLink
+createRedirectLink($create_or_update_affiliate_link_request): \Keap\Core\V2\Model\AffiliateLink
 ```
 
 Create an Affiliate Link
@@ -395,10 +395,10 @@ $apiInstance = new Keap\Core\V2\Api\AffiliateApi(
 $create_or_update_affiliate_link_request = new \Keap\Core\V2\Model\CreateOrUpdateAffiliateLinkRequest(); // \Keap\Core\V2\Model\CreateOrUpdateAffiliateLinkRequest | request
 
 try {
-    $result = $apiInstance->createRedirectLinkUsingPOST($create_or_update_affiliate_link_request);
+    $result = $apiInstance->createRedirectLink($create_or_update_affiliate_link_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AffiliateApi->createRedirectLinkUsingPOST: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AffiliateApi->createRedirectLink: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -425,64 +425,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `deleteAffiliateCommissionProgramUsingDELETE()`
+## `deleteAffiliate()`
 
 ```php
-deleteAffiliateCommissionProgramUsingDELETE($commission_program_id)
-```
-
-Delete a Commission Program
-
-Deletes a Commission Program
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-$apiInstance = new Keap\Core\V2\Api\AffiliateApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
-);
-$commission_program_id = 'commission_program_id_example'; // string | commission_program_id
-
-try {
-    $apiInstance->deleteAffiliateCommissionProgramUsingDELETE($commission_program_id);
-} catch (Exception $e) {
-    echo 'Exception when calling AffiliateApi->deleteAffiliateCommissionProgramUsingDELETE: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **commission_program_id** | **string**| commission_program_id | |
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `deleteAffiliateUsingDELETE()`
-
-```php
-deleteAffiliateUsingDELETE($id)
+deleteAffiliate($id)
 ```
 
 Delete Affiliate
@@ -504,9 +450,9 @@ $apiInstance = new Keap\Core\V2\Api\AffiliateApi(
 $id = 'id_example'; // string | id
 
 try {
-    $apiInstance->deleteAffiliateUsingDELETE($id);
+    $apiInstance->deleteAffiliate($id);
 } catch (Exception $e) {
-    echo 'Exception when calling AffiliateApi->deleteAffiliateUsingDELETE: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AffiliateApi->deleteAffiliate: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -533,10 +479,64 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `deleteRedirectLinkUsingDELETE()`
+## `deleteAffiliateCommissionProgram()`
 
 ```php
-deleteRedirectLinkUsingDELETE($redirect_id)
+deleteAffiliateCommissionProgram($commission_program_id)
+```
+
+Delete a Commission Program
+
+Deletes a Commission Program
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+$apiInstance = new Keap\Core\V2\Api\AffiliateApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$commission_program_id = 'commission_program_id_example'; // string | commission_program_id
+
+try {
+    $apiInstance->deleteAffiliateCommissionProgram($commission_program_id);
+} catch (Exception $e) {
+    echo 'Exception when calling AffiliateApi->deleteAffiliateCommissionProgram: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **commission_program_id** | **string**| commission_program_id | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteRedirectLink()`
+
+```php
+deleteRedirectLink($redirect_id)
 ```
 
 Delete an Affiliate Link
@@ -558,9 +558,9 @@ $apiInstance = new Keap\Core\V2\Api\AffiliateApi(
 $redirect_id = 'redirect_id_example'; // string | redirect_id
 
 try {
-    $apiInstance->deleteRedirectLinkUsingDELETE($redirect_id);
+    $apiInstance->deleteRedirectLink($redirect_id);
 } catch (Exception $e) {
-    echo 'Exception when calling AffiliateApi->deleteRedirectLinkUsingDELETE: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AffiliateApi->deleteRedirectLink: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -587,10 +587,65 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getAffiliateCommissionTotalUsingGET()`
+## `getAffiliate()`
 
 ```php
-getAffiliateCommissionTotalUsingGET($affiliate_id): \Keap\Core\V2\Model\AffiliateCommissionEarned
+getAffiliate($id): \Keap\Core\V2\Model\RestAffiliate
+```
+
+Retrieve an Affiliate
+
+Retrieves a single Affiliate
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+$apiInstance = new Keap\Core\V2\Api\AffiliateApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$id = 'id_example'; // string | id
+
+try {
+    $result = $apiInstance->getAffiliate($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AffiliateApi->getAffiliate: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| id | |
+
+### Return type
+
+[**\Keap\Core\V2\Model\RestAffiliate**](../Model/RestAffiliate.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getAffiliateCommissionTotal()`
+
+```php
+getAffiliateCommissionTotal($affiliate_id): \Keap\Core\V2\Model\AffiliateCommissionEarned
 ```
 
 Retrieve Affiliate Commission Earned and View LedgerURl for portal
@@ -612,10 +667,10 @@ $apiInstance = new Keap\Core\V2\Api\AffiliateApi(
 $affiliate_id = 'affiliate_id_example'; // string | affiliate_id
 
 try {
-    $result = $apiInstance->getAffiliateCommissionTotalUsingGET($affiliate_id);
+    $result = $apiInstance->getAffiliateCommissionTotal($affiliate_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AffiliateApi->getAffiliateCommissionTotalUsingGET: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AffiliateApi->getAffiliateCommissionTotal: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -642,10 +697,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getAffiliateCommissionsUsingGET()`
+## `getAffiliateCommissions()`
 
 ```php
-getAffiliateCommissionsUsingGET($affiliate_id, $filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListAffiliateCommissionsResponse
+getAffiliateCommissions($affiliate_id, $filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListAffiliateCommissionsResponse
 ```
 
 Retrieve Affiliate Commission and Clawbacks
@@ -671,10 +726,10 @@ $page_size = 0; // int | Total number of items to return per page
 $page_token = 'page_token_example'; // string | Page token
 
 try {
-    $result = $apiInstance->getAffiliateCommissionsUsingGET($affiliate_id, $filter, $order_by, $page_size, $page_token);
+    $result = $apiInstance->getAffiliateCommissions($affiliate_id, $filter, $order_by, $page_size, $page_token);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AffiliateApi->getAffiliateCommissionsUsingGET: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AffiliateApi->getAffiliateCommissions: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -705,65 +760,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getAffiliateUsingGET1()`
+## `getCommissionProgram()`
 
 ```php
-getAffiliateUsingGET1($id): \Keap\Core\V2\Model\RestAffiliate
-```
-
-Retrieve an Affiliate
-
-Retrieves a single Affiliate
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-$apiInstance = new Keap\Core\V2\Api\AffiliateApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
-);
-$id = 'id_example'; // string | id
-
-try {
-    $result = $apiInstance->getAffiliateUsingGET1($id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling AffiliateApi->getAffiliateUsingGET1: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **id** | **string**| id | |
-
-### Return type
-
-[**\Keap\Core\V2\Model\RestAffiliate**](../Model/RestAffiliate.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `getCommissionProgramUsingGET()`
-
-```php
-getCommissionProgramUsingGET($commission_program_id): \Keap\Core\V2\Model\AffiliateProgramV2
+getCommissionProgram($commission_program_id): \Keap\Core\V2\Model\AffiliateProgramV2
 ```
 
 Retrieve a Commission Program
@@ -785,10 +785,10 @@ $apiInstance = new Keap\Core\V2\Api\AffiliateApi(
 $commission_program_id = 'commission_program_id_example'; // string | commission_program_id
 
 try {
-    $result = $apiInstance->getCommissionProgramUsingGET($commission_program_id);
+    $result = $apiInstance->getCommissionProgram($commission_program_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AffiliateApi->getCommissionProgramUsingGET: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AffiliateApi->getCommissionProgram: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -815,10 +815,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getRedirectLinkUsingGET()`
+## `getRedirectLink()`
 
 ```php
-getRedirectLinkUsingGET($redirect_id): \Keap\Core\V2\Model\AffiliateLink
+getRedirectLink($redirect_id): \Keap\Core\V2\Model\AffiliateLink
 ```
 
 Retrieve an Affiliate Link
@@ -840,10 +840,10 @@ $apiInstance = new Keap\Core\V2\Api\AffiliateApi(
 $redirect_id = 'redirect_id_example'; // string | redirect_id
 
 try {
-    $result = $apiInstance->getRedirectLinkUsingGET($redirect_id);
+    $result = $apiInstance->getRedirectLink($redirect_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AffiliateApi->getRedirectLinkUsingGET: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AffiliateApi->getRedirectLink: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -870,10 +870,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `listAffiliateCommissionProgramsUsingGET()`
+## `listAffiliateCommissionPrograms()`
 
 ```php
-listAffiliateCommissionProgramsUsingGET($filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListAffiliateCommissionProgramsResponse
+listAffiliateCommissionPrograms($filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListAffiliateCommissionProgramsResponse
 ```
 
 List Affiliate Commission Programs
@@ -898,10 +898,10 @@ $page_size = 0; // int | Total number of items to return per page
 $page_token = 'page_token_example'; // string | Page token
 
 try {
-    $result = $apiInstance->listAffiliateCommissionProgramsUsingGET($filter, $order_by, $page_size, $page_token);
+    $result = $apiInstance->listAffiliateCommissionPrograms($filter, $order_by, $page_size, $page_token);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AffiliateApi->listAffiliateCommissionProgramsUsingGET: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AffiliateApi->listAffiliateCommissionPrograms: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -931,10 +931,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `listAffiliateLinksUsingGET()`
+## `listAffiliateLinks()`
 
 ```php
-listAffiliateLinksUsingGET($filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListAffiliateLinksResponse
+listAffiliateLinks($filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListAffiliateLinksResponse
 ```
 
 List Affiliate Links
@@ -959,10 +959,10 @@ $page_size = 0; // int | Total number of items to return per page
 $page_token = 'page_token_example'; // string | Page token
 
 try {
-    $result = $apiInstance->listAffiliateLinksUsingGET($filter, $order_by, $page_size, $page_token);
+    $result = $apiInstance->listAffiliateLinks($filter, $order_by, $page_size, $page_token);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AffiliateApi->listAffiliateLinksUsingGET: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AffiliateApi->listAffiliateLinks: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -992,10 +992,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `listSummariesUsingGET1()`
+## `listSummaries()`
 
 ```php
-listSummariesUsingGET1($filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListAffiliateSummariesResponse
+listSummaries($filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListAffiliateSummariesResponse
 ```
 
 List Affiliate Summaries
@@ -1020,10 +1020,10 @@ $page_size = 0; // int | Total number of items to return per page
 $page_token = 'page_token_example'; // string | Page token
 
 try {
-    $result = $apiInstance->listSummariesUsingGET1($filter, $order_by, $page_size, $page_token);
+    $result = $apiInstance->listSummaries($filter, $order_by, $page_size, $page_token);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AffiliateApi->listSummariesUsingGET1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AffiliateApi->listSummaries: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -1053,10 +1053,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `removeAffiliateFromProgramUsingPOST()`
+## `removeAffiliateFromProgram()`
 
 ```php
-removeAffiliateFromProgramUsingPOST($id, $affiliate_remove_from_program_request)
+removeAffiliateFromProgram($id, $affiliate_remove_from_program_request)
 ```
 
 Remove an Affiliate from a Commission Program
@@ -1079,9 +1079,9 @@ $id = 'id_example'; // string | id
 $affiliate_remove_from_program_request = new \Keap\Core\V2\Model\AffiliateRemoveFromProgramRequest(); // \Keap\Core\V2\Model\AffiliateRemoveFromProgramRequest | removeFromProgramRequest
 
 try {
-    $apiInstance->removeAffiliateFromProgramUsingPOST($id, $affiliate_remove_from_program_request);
+    $apiInstance->removeAffiliateFromProgram($id, $affiliate_remove_from_program_request);
 } catch (Exception $e) {
-    echo 'Exception when calling AffiliateApi->removeAffiliateFromProgramUsingPOST: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AffiliateApi->removeAffiliateFromProgram: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -1109,10 +1109,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `removeProductCommissionFromCommissionsUsingPOST()`
+## `removeProductCommissionFromCommissions()`
 
 ```php
-removeProductCommissionFromCommissionsUsingPOST($commission_id, $delete_program_commission_request)
+removeProductCommissionFromCommissions($commission_id, $delete_program_commission_request)
 ```
 
 Remove a Product from a Commission Program
@@ -1135,9 +1135,9 @@ $commission_id = 'commission_id_example'; // string | commission_id
 $delete_program_commission_request = new \Keap\Core\V2\Model\DeleteProgramCommissionRequest(); // \Keap\Core\V2\Model\DeleteProgramCommissionRequest | deleteProgramCommissionRequest
 
 try {
-    $apiInstance->removeProductCommissionFromCommissionsUsingPOST($commission_id, $delete_program_commission_request);
+    $apiInstance->removeProductCommissionFromCommissions($commission_id, $delete_program_commission_request);
 } catch (Exception $e) {
-    echo 'Exception when calling AffiliateApi->removeProductCommissionFromCommissionsUsingPOST: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AffiliateApi->removeProductCommissionFromCommissions: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -1165,10 +1165,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `removeSubscriptionPlanCommissionFromCommissionsUsingPOST()`
+## `removeSubscriptionPlanCommissionFromCommissions()`
 
 ```php
-removeSubscriptionPlanCommissionFromCommissionsUsingPOST($commission_id, $delete_subscription_plan_commission_request)
+removeSubscriptionPlanCommissionFromCommissions($commission_id, $delete_subscription_plan_commission_request)
 ```
 
 Remove a Subscription from a Commission Program
@@ -1191,9 +1191,9 @@ $commission_id = 'commission_id_example'; // string | commission_id
 $delete_subscription_plan_commission_request = new \Keap\Core\V2\Model\DeleteSubscriptionPlanCommissionRequest(); // \Keap\Core\V2\Model\DeleteSubscriptionPlanCommissionRequest | deleteSubscriptionPlanCommissionRequest
 
 try {
-    $apiInstance->removeSubscriptionPlanCommissionFromCommissionsUsingPOST($commission_id, $delete_subscription_plan_commission_request);
+    $apiInstance->removeSubscriptionPlanCommissionFromCommissions($commission_id, $delete_subscription_plan_commission_request);
 } catch (Exception $e) {
-    echo 'Exception when calling AffiliateApi->removeSubscriptionPlanCommissionFromCommissionsUsingPOST: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AffiliateApi->removeSubscriptionPlanCommissionFromCommissions: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -1221,10 +1221,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `updateAffiliateUsingPATCH()`
+## `updateAffiliate()`
 
 ```php
-updateAffiliateUsingPATCH($id, $update_affiliate_request): \Keap\Core\V2\Model\RestAffiliate
+updateAffiliate($id, $update_affiliate_request): \Keap\Core\V2\Model\RestAffiliate
 ```
 
 Update an Affiliate
@@ -1247,10 +1247,10 @@ $id = 'id_example'; // string | id
 $update_affiliate_request = new \Keap\Core\V2\Model\UpdateAffiliateRequest(); // \Keap\Core\V2\Model\UpdateAffiliateRequest | Request to update an affiliate
 
 try {
-    $result = $apiInstance->updateAffiliateUsingPATCH($id, $update_affiliate_request);
+    $result = $apiInstance->updateAffiliate($id, $update_affiliate_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AffiliateApi->updateAffiliateUsingPATCH: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AffiliateApi->updateAffiliate: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -1278,10 +1278,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `updateCommissionProgramUsingPATCH()`
+## `updateCommissionProgram()`
 
 ```php
-updateCommissionProgramUsingPATCH($commission_program_id, $update_commission_program_request, $update_mask): \Keap\Core\V2\Model\AffiliateCommissionProgramResponse
+updateCommissionProgram($commission_program_id, $update_commission_program_request, $update_mask): \Keap\Core\V2\Model\AffiliateCommissionProgramResponse
 ```
 
 Update an Affiliate Commission Program
@@ -1305,10 +1305,10 @@ $update_commission_program_request = new \Keap\Core\V2\Model\UpdateCommissionPro
 $update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
-    $result = $apiInstance->updateCommissionProgramUsingPATCH($commission_program_id, $update_commission_program_request, $update_mask);
+    $result = $apiInstance->updateCommissionProgram($commission_program_id, $update_commission_program_request, $update_mask);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AffiliateApi->updateCommissionProgramUsingPATCH: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AffiliateApi->updateCommissionProgram: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -1337,10 +1337,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `updateDefaultCommissionProgramUsingPATCH()`
+## `updateDefaultCommissionProgram()`
 
 ```php
-updateDefaultCommissionProgramUsingPATCH($commission_program_id, $update_mask, $update_default_commission_program_request): \Keap\Core\V2\Model\SetDefaultCommissionProgramResponse
+updateDefaultCommissionProgram($commission_program_id, $update_mask, $update_default_commission_program_request): \Keap\Core\V2\Model\SetDefaultCommissionProgramResponse
 ```
 
 Update a Default Commission Program
@@ -1364,10 +1364,10 @@ $update_mask = array('update_mask_example'); // string[] | update_mask
 $update_default_commission_program_request = new \Keap\Core\V2\Model\UpdateDefaultCommissionProgramRequest(); // \Keap\Core\V2\Model\UpdateDefaultCommissionProgramRequest | Values of the default Commission Program
 
 try {
-    $result = $apiInstance->updateDefaultCommissionProgramUsingPATCH($commission_program_id, $update_mask, $update_default_commission_program_request);
+    $result = $apiInstance->updateDefaultCommissionProgram($commission_program_id, $update_mask, $update_default_commission_program_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AffiliateApi->updateDefaultCommissionProgramUsingPATCH: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AffiliateApi->updateDefaultCommissionProgram: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -1396,10 +1396,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `updateProductCommissionProgramUsingPATCH()`
+## `updateProductCommissionProgram()`
 
 ```php
-updateProductCommissionProgramUsingPATCH($commission_program_id, $update_mask, $update_product_commission_program_request): \Keap\Core\V2\Model\ProductCommissionProgram
+updateProductCommissionProgram($commission_program_id, $update_mask, $update_product_commission_program_request): \Keap\Core\V2\Model\ProductCommissionProgram
 ```
 
 Update a Product Commission Program
@@ -1423,10 +1423,10 @@ $update_mask = array('update_mask_example'); // string[] | update_mask
 $update_product_commission_program_request = new \Keap\Core\V2\Model\UpdateProductCommissionProgramRequest(); // \Keap\Core\V2\Model\UpdateProductCommissionProgramRequest | Values of the product Commission Program
 
 try {
-    $result = $apiInstance->updateProductCommissionProgramUsingPATCH($commission_program_id, $update_mask, $update_product_commission_program_request);
+    $result = $apiInstance->updateProductCommissionProgram($commission_program_id, $update_mask, $update_product_commission_program_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AffiliateApi->updateProductCommissionProgramUsingPATCH: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AffiliateApi->updateProductCommissionProgram: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -1455,10 +1455,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `updateRedirectLinkUsingPATCH()`
+## `updateRedirectLink()`
 
 ```php
-updateRedirectLinkUsingPATCH($redirect_id, $create_or_update_affiliate_link_request): \Keap\Core\V2\Model\AffiliateLink
+updateRedirectLink($redirect_id, $create_or_update_affiliate_link_request): \Keap\Core\V2\Model\AffiliateLink
 ```
 
 Update an Affiliate Link
@@ -1481,10 +1481,10 @@ $redirect_id = 'redirect_id_example'; // string | redirect_id
 $create_or_update_affiliate_link_request = new \Keap\Core\V2\Model\CreateOrUpdateAffiliateLinkRequest(); // \Keap\Core\V2\Model\CreateOrUpdateAffiliateLinkRequest | request
 
 try {
-    $result = $apiInstance->updateRedirectLinkUsingPATCH($redirect_id, $create_or_update_affiliate_link_request);
+    $result = $apiInstance->updateRedirectLink($redirect_id, $create_or_update_affiliate_link_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AffiliateApi->updateRedirectLinkUsingPATCH: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AffiliateApi->updateRedirectLink: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -1512,10 +1512,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `updateSubscriptionCommissionProgramUsingPATCH()`
+## `updateSubscriptionCommissionProgram()`
 
 ```php
-updateSubscriptionCommissionProgramUsingPATCH($commission_program_id, $update_mask, $update_subscription_commission_program_request): \Keap\Core\V2\Model\SubscriptionCommissionProgram
+updateSubscriptionCommissionProgram($commission_program_id, $update_mask, $update_subscription_commission_program_request): \Keap\Core\V2\Model\SubscriptionCommissionProgram
 ```
 
 Update a Subscription Commission Program
@@ -1539,10 +1539,10 @@ $update_mask = array('update_mask_example'); // string[] | update_mask
 $update_subscription_commission_program_request = new \Keap\Core\V2\Model\UpdateSubscriptionCommissionProgramRequest(); // \Keap\Core\V2\Model\UpdateSubscriptionCommissionProgramRequest | Values of the subscription Commission Program
 
 try {
-    $result = $apiInstance->updateSubscriptionCommissionProgramUsingPATCH($commission_program_id, $update_mask, $update_subscription_commission_program_request);
+    $result = $apiInstance->updateSubscriptionCommissionProgram($commission_program_id, $update_mask, $update_subscription_commission_program_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AffiliateApi->updateSubscriptionCommissionProgramUsingPATCH: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AffiliateApi->updateSubscriptionCommissionProgram: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

@@ -4,15 +4,15 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**CreateLeadSourceExpenseUsingPOST**](LeadSourceExpensesApi.md#createleadsourceexpenseusingpost) | **POST** /v2/leadSources/{lead_source_id}/expenses | Create a Lead Source Expense |
-| [**DeleteLeadSourceUsingDELETE1**](LeadSourceExpensesApi.md#deleteleadsourceusingdelete1) | **DELETE** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Delete a lead source expense |
-| [**GetLeadSourceExpenseUsingGET**](LeadSourceExpensesApi.md#getleadsourceexpenseusingget) | **GET** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Retrieve a Lead Source Expense |
-| [**ListLeadSourceExpensesUsingGET**](LeadSourceExpensesApi.md#listleadsourceexpensesusingget) | **GET** /v2/leadSources/{lead_source_id}/expenses | List Lead Source Expenses |
-| [**UpdateLeadSourceExpenseUsingPATCH**](LeadSourceExpensesApi.md#updateleadsourceexpenseusingpatch) | **PATCH** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Update a Lead Source Expense |
+| [**CreateLeadSourceExpense**](LeadSourceExpensesApi.md#createleadsourceexpense) | **POST** /v2/leadSources/{lead_source_id}/expenses | Create a Lead Source Expense |
+| [**DeleteLeadSourceExpense**](LeadSourceExpensesApi.md#deleteleadsourceexpense) | **DELETE** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Delete a lead source expense |
+| [**GetLeadSourceExpense**](LeadSourceExpensesApi.md#getleadsourceexpense) | **GET** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Retrieve a Lead Source Expense |
+| [**ListLeadSourceExpenses**](LeadSourceExpensesApi.md#listleadsourceexpenses) | **GET** /v2/leadSources/{lead_source_id}/expenses | List Lead Source Expenses |
+| [**UpdateLeadSourceExpense**](LeadSourceExpensesApi.md#updateleadsourceexpense) | **PATCH** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Update a Lead Source Expense |
 
-<a id="createleadsourceexpenseusingpost"></a>
-# **CreateLeadSourceExpenseUsingPOST**
-> LeadSourceExpense CreateLeadSourceExpenseUsingPOST (string leadSourceId, CreateLeadSourceExpenseRequest createLeadSourceExpenseRequest)
+<a id="createleadsourceexpense"></a>
+# **CreateLeadSourceExpense**
+> LeadSourceExpense CreateLeadSourceExpense (string leadSourceId, CreateLeadSourceExpenseRequest createLeadSourceExpenseRequest)
 
 Create a Lead Source Expense
 
@@ -28,7 +28,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class CreateLeadSourceExpenseUsingPOSTExample
+    public class CreateLeadSourceExpenseExample
     {
         public static void Main()
         {
@@ -41,12 +41,12 @@ namespace Example
             try
             {
                 // Create a Lead Source Expense
-                LeadSourceExpense result = apiInstance.CreateLeadSourceExpenseUsingPOST(leadSourceId, createLeadSourceExpenseRequest);
+                LeadSourceExpense result = apiInstance.CreateLeadSourceExpense(leadSourceId, createLeadSourceExpenseRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling LeadSourceExpensesApi.CreateLeadSourceExpenseUsingPOST: " + e.Message);
+                Debug.Print("Exception when calling LeadSourceExpensesApi.CreateLeadSourceExpense: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -55,21 +55,21 @@ namespace Example
 }
 ```
 
-#### Using the CreateLeadSourceExpenseUsingPOSTWithHttpInfo variant
+#### Using the CreateLeadSourceExpenseWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Create a Lead Source Expense
-    ApiResponse<LeadSourceExpense> response = apiInstance.CreateLeadSourceExpenseUsingPOSTWithHttpInfo(leadSourceId, createLeadSourceExpenseRequest);
+    ApiResponse<LeadSourceExpense> response = apiInstance.CreateLeadSourceExpenseWithHttpInfo(leadSourceId, createLeadSourceExpenseRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling LeadSourceExpensesApi.CreateLeadSourceExpenseUsingPOSTWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling LeadSourceExpensesApi.CreateLeadSourceExpenseWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -108,9 +108,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="deleteleadsourceusingdelete1"></a>
-# **DeleteLeadSourceUsingDELETE1**
-> void DeleteLeadSourceUsingDELETE1 (string leadSourceExpenseId, string leadSourceId)
+<a id="deleteleadsourceexpense"></a>
+# **DeleteLeadSourceExpense**
+> void DeleteLeadSourceExpense (string leadSourceExpenseId, string leadSourceId)
 
 Delete a lead source expense
 
@@ -126,7 +126,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class DeleteLeadSourceUsingDELETE1Example
+    public class DeleteLeadSourceExpenseExample
     {
         public static void Main()
         {
@@ -139,11 +139,11 @@ namespace Example
             try
             {
                 // Delete a lead source expense
-                apiInstance.DeleteLeadSourceUsingDELETE1(leadSourceExpenseId, leadSourceId);
+                apiInstance.DeleteLeadSourceExpense(leadSourceExpenseId, leadSourceId);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling LeadSourceExpensesApi.DeleteLeadSourceUsingDELETE1: " + e.Message);
+                Debug.Print("Exception when calling LeadSourceExpensesApi.DeleteLeadSourceExpense: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -152,18 +152,18 @@ namespace Example
 }
 ```
 
-#### Using the DeleteLeadSourceUsingDELETE1WithHttpInfo variant
+#### Using the DeleteLeadSourceExpenseWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Delete a lead source expense
-    apiInstance.DeleteLeadSourceUsingDELETE1WithHttpInfo(leadSourceExpenseId, leadSourceId);
+    apiInstance.DeleteLeadSourceExpenseWithHttpInfo(leadSourceExpenseId, leadSourceId);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling LeadSourceExpensesApi.DeleteLeadSourceUsingDELETE1WithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling LeadSourceExpensesApi.DeleteLeadSourceExpenseWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -201,9 +201,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="getleadsourceexpenseusingget"></a>
-# **GetLeadSourceExpenseUsingGET**
-> LeadSourceExpense GetLeadSourceExpenseUsingGET (string leadSourceExpenseId, string leadSourceId)
+<a id="getleadsourceexpense"></a>
+# **GetLeadSourceExpense**
+> LeadSourceExpense GetLeadSourceExpense (string leadSourceExpenseId, string leadSourceId)
 
 Retrieve a Lead Source Expense
 
@@ -219,7 +219,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class GetLeadSourceExpenseUsingGETExample
+    public class GetLeadSourceExpenseExample
     {
         public static void Main()
         {
@@ -232,12 +232,12 @@ namespace Example
             try
             {
                 // Retrieve a Lead Source Expense
-                LeadSourceExpense result = apiInstance.GetLeadSourceExpenseUsingGET(leadSourceExpenseId, leadSourceId);
+                LeadSourceExpense result = apiInstance.GetLeadSourceExpense(leadSourceExpenseId, leadSourceId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling LeadSourceExpensesApi.GetLeadSourceExpenseUsingGET: " + e.Message);
+                Debug.Print("Exception when calling LeadSourceExpensesApi.GetLeadSourceExpense: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -246,21 +246,21 @@ namespace Example
 }
 ```
 
-#### Using the GetLeadSourceExpenseUsingGETWithHttpInfo variant
+#### Using the GetLeadSourceExpenseWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Retrieve a Lead Source Expense
-    ApiResponse<LeadSourceExpense> response = apiInstance.GetLeadSourceExpenseUsingGETWithHttpInfo(leadSourceExpenseId, leadSourceId);
+    ApiResponse<LeadSourceExpense> response = apiInstance.GetLeadSourceExpenseWithHttpInfo(leadSourceExpenseId, leadSourceId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling LeadSourceExpensesApi.GetLeadSourceExpenseUsingGETWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling LeadSourceExpensesApi.GetLeadSourceExpenseWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -298,9 +298,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="listleadsourceexpensesusingget"></a>
-# **ListLeadSourceExpensesUsingGET**
-> ListLeadSourceExpensesResponse ListLeadSourceExpensesUsingGET (string leadSourceId, string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
+<a id="listleadsourceexpenses"></a>
+# **ListLeadSourceExpenses**
+> ListLeadSourceExpensesResponse ListLeadSourceExpenses (string leadSourceId, string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
 
 List Lead Source Expenses
 
@@ -316,7 +316,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class ListLeadSourceExpensesUsingGETExample
+    public class ListLeadSourceExpensesExample
     {
         public static void Main()
         {
@@ -332,12 +332,12 @@ namespace Example
             try
             {
                 // List Lead Source Expenses
-                ListLeadSourceExpensesResponse result = apiInstance.ListLeadSourceExpensesUsingGET(leadSourceId, filter, orderBy, pageSize, pageToken);
+                ListLeadSourceExpensesResponse result = apiInstance.ListLeadSourceExpenses(leadSourceId, filter, orderBy, pageSize, pageToken);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling LeadSourceExpensesApi.ListLeadSourceExpensesUsingGET: " + e.Message);
+                Debug.Print("Exception when calling LeadSourceExpensesApi.ListLeadSourceExpenses: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -346,21 +346,21 @@ namespace Example
 }
 ```
 
-#### Using the ListLeadSourceExpensesUsingGETWithHttpInfo variant
+#### Using the ListLeadSourceExpensesWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // List Lead Source Expenses
-    ApiResponse<ListLeadSourceExpensesResponse> response = apiInstance.ListLeadSourceExpensesUsingGETWithHttpInfo(leadSourceId, filter, orderBy, pageSize, pageToken);
+    ApiResponse<ListLeadSourceExpensesResponse> response = apiInstance.ListLeadSourceExpensesWithHttpInfo(leadSourceId, filter, orderBy, pageSize, pageToken);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling LeadSourceExpensesApi.ListLeadSourceExpensesUsingGETWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling LeadSourceExpensesApi.ListLeadSourceExpensesWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -402,9 +402,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="updateleadsourceexpenseusingpatch"></a>
-# **UpdateLeadSourceExpenseUsingPATCH**
-> LeadSourceExpense UpdateLeadSourceExpenseUsingPATCH (string leadSourceExpenseId, string leadSourceId, UpdateLeadSourceExpenseRequest updateLeadSourceExpenseRequest, List<string>? updateMask = null)
+<a id="updateleadsourceexpense"></a>
+# **UpdateLeadSourceExpense**
+> LeadSourceExpense UpdateLeadSourceExpense (string leadSourceExpenseId, string leadSourceId, UpdateLeadSourceExpenseRequest updateLeadSourceExpenseRequest, List<string>? updateMask = null)
 
 Update a Lead Source Expense
 
@@ -420,7 +420,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class UpdateLeadSourceExpenseUsingPATCHExample
+    public class UpdateLeadSourceExpenseExample
     {
         public static void Main()
         {
@@ -435,12 +435,12 @@ namespace Example
             try
             {
                 // Update a Lead Source Expense
-                LeadSourceExpense result = apiInstance.UpdateLeadSourceExpenseUsingPATCH(leadSourceExpenseId, leadSourceId, updateLeadSourceExpenseRequest, updateMask);
+                LeadSourceExpense result = apiInstance.UpdateLeadSourceExpense(leadSourceExpenseId, leadSourceId, updateLeadSourceExpenseRequest, updateMask);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling LeadSourceExpensesApi.UpdateLeadSourceExpenseUsingPATCH: " + e.Message);
+                Debug.Print("Exception when calling LeadSourceExpensesApi.UpdateLeadSourceExpense: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -449,21 +449,21 @@ namespace Example
 }
 ```
 
-#### Using the UpdateLeadSourceExpenseUsingPATCHWithHttpInfo variant
+#### Using the UpdateLeadSourceExpenseWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Update a Lead Source Expense
-    ApiResponse<LeadSourceExpense> response = apiInstance.UpdateLeadSourceExpenseUsingPATCHWithHttpInfo(leadSourceExpenseId, leadSourceId, updateLeadSourceExpenseRequest, updateMask);
+    ApiResponse<LeadSourceExpense> response = apiInstance.UpdateLeadSourceExpenseWithHttpInfo(leadSourceExpenseId, leadSourceId, updateLeadSourceExpenseRequest, updateMask);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling LeadSourceExpensesApi.UpdateLeadSourceExpenseUsingPATCHWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling LeadSourceExpensesApi.UpdateLeadSourceExpenseWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }

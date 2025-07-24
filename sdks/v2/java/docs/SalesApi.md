@@ -4,14 +4,14 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**setMerchantGatewayAsDefaultUsingPOST**](SalesApi.md#setMerchantGatewayAsDefaultUsingPOST) | **POST** /v2/sales/merchants/{id}:setDefault | Set default Merchant Account |
-| [**setMerchantGatewayAsDefaultUsingPOSTWithHttpInfo**](SalesApi.md#setMerchantGatewayAsDefaultUsingPOSTWithHttpInfo) | **POST** /v2/sales/merchants/{id}:setDefault | Set default Merchant Account |
+| [**setMerchantGatewayAsDefault**](SalesApi.md#setMerchantGatewayAsDefault) | **POST** /v2/sales/merchants/{id}:setDefault | Set default Merchant Account |
+| [**setMerchantGatewayAsDefaultWithHttpInfo**](SalesApi.md#setMerchantGatewayAsDefaultWithHttpInfo) | **POST** /v2/sales/merchants/{id}:setDefault | Set default Merchant Account |
 
 
 
-## setMerchantGatewayAsDefaultUsingPOST
+## setMerchantGatewayAsDefault
 
-> void setMerchantGatewayAsDefaultUsingPOST(id)
+> void setMerchantGatewayAsDefault(id)
 
 Set default Merchant Account
 
@@ -35,9 +35,9 @@ public class Example {
         SalesApi apiInstance = new SalesApi(defaultClient);
         String id = "id_example"; // String | id
         try {
-            apiInstance.setMerchantGatewayAsDefaultUsingPOST(id);
+            apiInstance.setMerchantGatewayAsDefault(id);
         } catch (ApiException e) {
-            System.err.println("Exception when calling SalesApi#setMerchantGatewayAsDefaultUsingPOST");
+            System.err.println("Exception when calling SalesApi#setMerchantGatewayAsDefault");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -76,9 +76,9 @@ No authorization required
 | **403** | Forbidden |  -  |
 | **500** | Internal Server Error |  -  |
 
-## setMerchantGatewayAsDefaultUsingPOSTWithHttpInfo
+## setMerchantGatewayAsDefaultWithHttpInfo
 
-> ApiResponse<Void> setMerchantGatewayAsDefaultUsingPOST setMerchantGatewayAsDefaultUsingPOSTWithHttpInfo(id)
+> ApiResponse<Void> setMerchantGatewayAsDefault setMerchantGatewayAsDefaultWithHttpInfo(id)
 
 Set default Merchant Account
 
@@ -103,11 +103,11 @@ public class Example {
         SalesApi apiInstance = new SalesApi(defaultClient);
         String id = "id_example"; // String | id
         try {
-            ApiResponse<Void> response = apiInstance.setMerchantGatewayAsDefaultUsingPOSTWithHttpInfo(id);
+            ApiResponse<Void> response = apiInstance.setMerchantGatewayAsDefaultWithHttpInfo(id);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
-            System.err.println("Exception when calling SalesApi#setMerchantGatewayAsDefaultUsingPOST");
+            System.err.println("Exception when calling SalesApi#setMerchantGatewayAsDefault");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());

@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Code** | **string** | The Affiliate Code | [optional] 
 **ContactId** | **string** | The ContactID | [optional] 
+**DateCreated** | **string** |  | [optional] 
 **Id** | **string** | The AffiliateId | [optional] 
 **Name** | **string** | The Affiliate Name | [optional] 
 **Status** | **string** | The Affiliate Status | [optional] 

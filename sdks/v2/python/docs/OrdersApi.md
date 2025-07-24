@@ -4,14 +4,14 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_order_custom_field_using_post**](OrdersApi.md#create_order_custom_field_using_post) | **POST** /v2/orders/model/customFields | Create an Order Custom Field
-[**delete_order_custom_field_using_delete**](OrdersApi.md#delete_order_custom_field_using_delete) | **DELETE** /v2/orders/model/customFields/{custom_field_id} | Delete an Order Custom Field
-[**retrieve_order_custom_field_model_using_get**](OrdersApi.md#retrieve_order_custom_field_model_using_get) | **GET** /v2/orders/model | Retrieve Order Custom Field Model
-[**update_order_custom_field_using_patch**](OrdersApi.md#update_order_custom_field_using_patch) | **PATCH** /v2/orders/model/customFields/{custom_field_id} | Update an Order Custom Field
+[**create_order_custom_field**](OrdersApi.md#create_order_custom_field) | **POST** /v2/orders/model/customFields | Create an Order Custom Field
+[**delete_order_custom_field**](OrdersApi.md#delete_order_custom_field) | **DELETE** /v2/orders/model/customFields/{custom_field_id} | Delete an Order Custom Field
+[**retrieve_order_custom_field_model**](OrdersApi.md#retrieve_order_custom_field_model) | **GET** /v2/orders/model | Retrieve Order Custom Field Model
+[**update_order_custom_field**](OrdersApi.md#update_order_custom_field) | **PATCH** /v2/orders/model/customFields/{custom_field_id} | Update an Order Custom Field
 
 
-# **create_order_custom_field_using_post**
-> CustomFieldMetaData create_order_custom_field_using_post(create_custom_field_request)
+# **create_order_custom_field**
+> CustomFieldMetaData create_order_custom_field(create_custom_field_request)
 
 Create an Order Custom Field
 
@@ -41,11 +41,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Create an Order Custom Field
-        api_response = api_instance.create_order_custom_field_using_post(create_custom_field_request)
-        print("The response of OrdersApi->create_order_custom_field_using_post:\n")
+        api_response = api_instance.create_order_custom_field(create_custom_field_request)
+        print("The response of OrdersApi->create_order_custom_field:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling OrdersApi->create_order_custom_field_using_post: %s\n" % e)
+        print("Exception when calling OrdersApi->create_order_custom_field: %s\n" % e)
 ```
 
 
@@ -80,8 +80,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **delete_order_custom_field_using_delete**
-> delete_order_custom_field_using_delete(custom_field_id)
+# **delete_order_custom_field**
+> delete_order_custom_field(custom_field_id)
 
 Delete an Order Custom Field
 
@@ -109,9 +109,9 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Delete an Order Custom Field
-        api_instance.delete_order_custom_field_using_delete(custom_field_id)
+        api_instance.delete_order_custom_field(custom_field_id)
     except Exception as e:
-        print("Exception when calling OrdersApi->delete_order_custom_field_using_delete: %s\n" % e)
+        print("Exception when calling OrdersApi->delete_order_custom_field: %s\n" % e)
 ```
 
 
@@ -147,8 +147,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **retrieve_order_custom_field_model_using_get**
-> ObjectModel retrieve_order_custom_field_model_using_get()
+# **retrieve_order_custom_field_model**
+> ObjectModel retrieve_order_custom_field_model()
 
 Retrieve Order Custom Field Model
 
@@ -176,11 +176,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieve Order Custom Field Model
-        api_response = api_instance.retrieve_order_custom_field_model_using_get()
-        print("The response of OrdersApi->retrieve_order_custom_field_model_using_get:\n")
+        api_response = api_instance.retrieve_order_custom_field_model()
+        print("The response of OrdersApi->retrieve_order_custom_field_model:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling OrdersApi->retrieve_order_custom_field_model_using_get: %s\n" % e)
+        print("Exception when calling OrdersApi->retrieve_order_custom_field_model: %s\n" % e)
 ```
 
 
@@ -213,8 +213,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **update_order_custom_field_using_patch**
-> CustomFieldMetaData update_order_custom_field_using_patch(custom_field_id, update_custom_field_meta_data_request, update_mask=update_mask)
+# **update_order_custom_field**
+> CustomFieldMetaData update_order_custom_field(custom_field_id, update_custom_field_meta_data_request, update_mask=update_mask)
 
 Update an Order Custom Field
 
@@ -246,11 +246,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Update an Order Custom Field
-        api_response = api_instance.update_order_custom_field_using_patch(custom_field_id, update_custom_field_meta_data_request, update_mask=update_mask)
-        print("The response of OrdersApi->update_order_custom_field_using_patch:\n")
+        api_response = api_instance.update_order_custom_field(custom_field_id, update_custom_field_meta_data_request, update_mask=update_mask)
+        print("The response of OrdersApi->update_order_custom_field:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling OrdersApi->update_order_custom_field_using_patch: %s\n" % e)
+        print("Exception when calling OrdersApi->update_order_custom_field: %s\n" % e)
 ```
 
 

@@ -23,12 +23,12 @@ export class OrderTotalDiscountsApiRequestFactory extends BaseAPIRequestFactory 
      * Create an Order Total Discount
      * @param createOrderTotalDiscountRequest request
      */
-    public async createOrderTotalDiscountUsingPOST(createOrderTotalDiscountRequest: CreateOrderTotalDiscountRequest, _options?: Configuration): Promise<RequestContext> {
+    public async createOrderTotalDiscount(createOrderTotalDiscountRequest: CreateOrderTotalDiscountRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'createOrderTotalDiscountRequest' is not null or undefined
         if (createOrderTotalDiscountRequest === null || createOrderTotalDiscountRequest === undefined) {
-            throw new RequiredError("OrderTotalDiscountsApi", "createOrderTotalDiscountUsingPOST", "createOrderTotalDiscountRequest");
+            throw new RequiredError("OrderTotalDiscountsApi", "createOrderTotalDiscount", "createOrderTotalDiscountRequest");
         }
 
 
@@ -65,12 +65,12 @@ export class OrderTotalDiscountsApiRequestFactory extends BaseAPIRequestFactory 
      * Delete an Order Total Discount
      * @param discountId discount_id
      */
-    public async deleteOrderTotalDiscountUsingDELETE(discountId: string, _options?: Configuration): Promise<RequestContext> {
+    public async deleteOrderTotalDiscount(discountId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'discountId' is not null or undefined
         if (discountId === null || discountId === undefined) {
-            throw new RequiredError("OrderTotalDiscountsApi", "deleteOrderTotalDiscountUsingDELETE", "discountId");
+            throw new RequiredError("OrderTotalDiscountsApi", "deleteOrderTotalDiscount", "discountId");
         }
 
 
@@ -97,12 +97,12 @@ export class OrderTotalDiscountsApiRequestFactory extends BaseAPIRequestFactory 
      * Retrieve an Order Total Discount
      * @param discountId discount_id
      */
-    public async getOrderTotalDiscountUsingGET(discountId: string, _options?: Configuration): Promise<RequestContext> {
+    public async getOrderTotalDiscount(discountId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'discountId' is not null or undefined
         if (discountId === null || discountId === undefined) {
-            throw new RequiredError("OrderTotalDiscountsApi", "getOrderTotalDiscountUsingGET", "discountId");
+            throw new RequiredError("OrderTotalDiscountsApi", "getOrderTotalDiscount", "discountId");
         }
 
 
@@ -128,11 +128,11 @@ export class OrderTotalDiscountsApiRequestFactory extends BaseAPIRequestFactory 
      * Retrieves a list of Order Total Discounts
      * List all Order Total Discounts
      * @param filter Filter to apply, allowed fields are: - (Boolean) &#x60;apply_to_commissions&#x60; - (DiscountStrategy) &#x60;discount_strategy&#x60;: GROSS or NET - (DiscountType) &#x60;discount_type&#x60;: AMOUNT or PERCENT - (Double) &#x60;discount_value&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;apply_to_commissions%3D%3Dtrue&#x60; - &#x60;filter&#x3D;discount_strategy%3D%3DGROSS&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT&#x60; - &#x60;filter&#x3D;discount_value%3D%3D10.0&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT%3Bdiscount_strategy%3D%3DNET&#x60; 
-     * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;apply_to_commissions&#x60; - &#x60;discount_strategy&#x60; - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;apply_to_commissions&#x60; - &#x60;discount_strategy&#x60; - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60; - &#x60;name&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param pageSize Total number of items to return per page
      * @param pageToken Page token
      */
-    public async listOrderTotalDiscountsUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
+    public async listOrderTotalDiscounts(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
 
@@ -183,18 +183,18 @@ export class OrderTotalDiscountsApiRequestFactory extends BaseAPIRequestFactory 
      * @param updateOrderTotalDiscountRequest request
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateOrderTotalDiscountUsingPATCH(discountId: string, updateOrderTotalDiscountRequest: UpdateOrderTotalDiscountRequest, updateMask?: Array<string>, _options?: Configuration): Promise<RequestContext> {
+    public async updateOrderTotalDiscount(discountId: string, updateOrderTotalDiscountRequest: UpdateOrderTotalDiscountRequest, updateMask?: Array<string>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'discountId' is not null or undefined
         if (discountId === null || discountId === undefined) {
-            throw new RequiredError("OrderTotalDiscountsApi", "updateOrderTotalDiscountUsingPATCH", "discountId");
+            throw new RequiredError("OrderTotalDiscountsApi", "updateOrderTotalDiscount", "discountId");
         }
 
 
         // verify required parameter 'updateOrderTotalDiscountRequest' is not null or undefined
         if (updateOrderTotalDiscountRequest === null || updateOrderTotalDiscountRequest === undefined) {
-            throw new RequiredError("OrderTotalDiscountsApi", "updateOrderTotalDiscountUsingPATCH", "updateOrderTotalDiscountRequest");
+            throw new RequiredError("OrderTotalDiscountsApi", "updateOrderTotalDiscount", "updateOrderTotalDiscountRequest");
         }
 
 
@@ -244,10 +244,10 @@ export class OrderTotalDiscountsApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to createOrderTotalDiscountUsingPOST
+     * @params response Response returned by the server for a request to createOrderTotalDiscount
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async createOrderTotalDiscountUsingPOSTWithHttpInfo(response: ResponseContext): Promise<HttpInfo<OrderTotalDiscount >> {
+     public async createOrderTotalDiscountWithHttpInfo(response: ResponseContext): Promise<HttpInfo<OrderTotalDiscount >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("201", response.httpStatusCode)) {
             const body: OrderTotalDiscount = ObjectSerializer.deserialize(
@@ -294,10 +294,10 @@ export class OrderTotalDiscountsApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to deleteOrderTotalDiscountUsingDELETE
+     * @params response Response returned by the server for a request to deleteOrderTotalDiscount
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async deleteOrderTotalDiscountUsingDELETEWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async deleteOrderTotalDiscountWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("204", response.httpStatusCode)) {
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
@@ -347,10 +347,10 @@ export class OrderTotalDiscountsApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to getOrderTotalDiscountUsingGET
+     * @params response Response returned by the server for a request to getOrderTotalDiscount
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getOrderTotalDiscountUsingGETWithHttpInfo(response: ResponseContext): Promise<HttpInfo<OrderTotalDiscount >> {
+     public async getOrderTotalDiscountWithHttpInfo(response: ResponseContext): Promise<HttpInfo<OrderTotalDiscount >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: OrderTotalDiscount = ObjectSerializer.deserialize(
@@ -404,10 +404,10 @@ export class OrderTotalDiscountsApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to listOrderTotalDiscountsUsingGET
+     * @params response Response returned by the server for a request to listOrderTotalDiscounts
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async listOrderTotalDiscountsUsingGETWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListOrderTotalDiscountsResponse >> {
+     public async listOrderTotalDiscountsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListOrderTotalDiscountsResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: ListOrderTotalDiscountsResponse = ObjectSerializer.deserialize(
@@ -461,10 +461,10 @@ export class OrderTotalDiscountsApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to updateOrderTotalDiscountUsingPATCH
+     * @params response Response returned by the server for a request to updateOrderTotalDiscount
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async updateOrderTotalDiscountUsingPATCHWithHttpInfo(response: ResponseContext): Promise<HttpInfo<OrderTotalDiscount >> {
+     public async updateOrderTotalDiscountWithHttpInfo(response: ResponseContext): Promise<HttpInfo<OrderTotalDiscount >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: OrderTotalDiscount = ObjectSerializer.deserialize(

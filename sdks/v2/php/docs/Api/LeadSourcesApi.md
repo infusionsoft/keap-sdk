@@ -4,17 +4,17 @@ All URIs are relative to https://api.keap.com/crm/rest, except if the operation 
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createLeadSourceUsingPOST()**](LeadSourcesApi.md#createLeadSourceUsingPOST) | **POST** /v2/leadSources | Create a Lead Source |
-| [**deleteLeadSourceUsingDELETE()**](LeadSourcesApi.md#deleteLeadSourceUsingDELETE) | **DELETE** /v2/leadSources/{lead_source_id} | Delete a Lead Source |
-| [**getLeadSourceUsingGET()**](LeadSourcesApi.md#getLeadSourceUsingGET) | **GET** /v2/leadSources/{lead_source_id} | Retrieve a Lead Source |
-| [**listLeadSourcesUsingGET()**](LeadSourcesApi.md#listLeadSourcesUsingGET) | **GET** /v2/leadSources | List Lead Sources |
-| [**updateLeadSourceUsingPATCH()**](LeadSourcesApi.md#updateLeadSourceUsingPATCH) | **PATCH** /v2/leadSources/{lead_source_id} | Update a Lead Source |
+| [**createLeadSource()**](LeadSourcesApi.md#createLeadSource) | **POST** /v2/leadSources | Create a Lead Source |
+| [**deleteLeadSource()**](LeadSourcesApi.md#deleteLeadSource) | **DELETE** /v2/leadSources/{lead_source_id} | Delete a Lead Source |
+| [**getLeadSource()**](LeadSourcesApi.md#getLeadSource) | **GET** /v2/leadSources/{lead_source_id} | Retrieve a Lead Source |
+| [**listLeadSources()**](LeadSourcesApi.md#listLeadSources) | **GET** /v2/leadSources | List Lead Sources |
+| [**updateLeadSource()**](LeadSourcesApi.md#updateLeadSource) | **PATCH** /v2/leadSources/{lead_source_id} | Update a Lead Source |
 
 
-## `createLeadSourceUsingPOST()`
+## `createLeadSource()`
 
 ```php
-createLeadSourceUsingPOST($create_lead_source_request): \Keap\Core\V2\Model\LeadSource
+createLeadSource($create_lead_source_request): \Keap\Core\V2\Model\LeadSource
 ```
 
 Create a Lead Source
@@ -36,10 +36,10 @@ $apiInstance = new Keap\Core\V2\Api\LeadSourcesApi(
 $create_lead_source_request = new \Keap\Core\V2\Model\CreateLeadSourceRequest(); // \Keap\Core\V2\Model\CreateLeadSourceRequest | The request object to create a new lead source
 
 try {
-    $result = $apiInstance->createLeadSourceUsingPOST($create_lead_source_request);
+    $result = $apiInstance->createLeadSource($create_lead_source_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling LeadSourcesApi->createLeadSourceUsingPOST: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling LeadSourcesApi->createLeadSource: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -66,10 +66,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `deleteLeadSourceUsingDELETE()`
+## `deleteLeadSource()`
 
 ```php
-deleteLeadSourceUsingDELETE($lead_source_id)
+deleteLeadSource($lead_source_id)
 ```
 
 Delete a Lead Source
@@ -91,9 +91,9 @@ $apiInstance = new Keap\Core\V2\Api\LeadSourcesApi(
 $lead_source_id = 'lead_source_id_example'; // string | The ID of a lead source
 
 try {
-    $apiInstance->deleteLeadSourceUsingDELETE($lead_source_id);
+    $apiInstance->deleteLeadSource($lead_source_id);
 } catch (Exception $e) {
-    echo 'Exception when calling LeadSourcesApi->deleteLeadSourceUsingDELETE: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling LeadSourcesApi->deleteLeadSource: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -120,10 +120,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getLeadSourceUsingGET()`
+## `getLeadSource()`
 
 ```php
-getLeadSourceUsingGET($lead_source_id): \Keap\Core\V2\Model\LeadSource
+getLeadSource($lead_source_id): \Keap\Core\V2\Model\LeadSource
 ```
 
 Retrieve a Lead Source
@@ -145,10 +145,10 @@ $apiInstance = new Keap\Core\V2\Api\LeadSourcesApi(
 $lead_source_id = 'lead_source_id_example'; // string | The ID of a lead source
 
 try {
-    $result = $apiInstance->getLeadSourceUsingGET($lead_source_id);
+    $result = $apiInstance->getLeadSource($lead_source_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling LeadSourcesApi->getLeadSourceUsingGET: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling LeadSourcesApi->getLeadSource: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -175,10 +175,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `listLeadSourcesUsingGET()`
+## `listLeadSources()`
 
 ```php
-listLeadSourcesUsingGET($filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListLeadSourcesResponse
+listLeadSources($filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListLeadSourcesResponse
 ```
 
 List Lead Sources
@@ -203,10 +203,10 @@ $page_size = 0; // int | Total number of items to return per page
 $page_token = 'page_token_example'; // string | Page token
 
 try {
-    $result = $apiInstance->listLeadSourcesUsingGET($filter, $order_by, $page_size, $page_token);
+    $result = $apiInstance->listLeadSources($filter, $order_by, $page_size, $page_token);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling LeadSourcesApi->listLeadSourcesUsingGET: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling LeadSourcesApi->listLeadSources: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -236,10 +236,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `updateLeadSourceUsingPATCH()`
+## `updateLeadSource()`
 
 ```php
-updateLeadSourceUsingPATCH($lead_source_id, $create_lead_source_request, $update_mask): \Keap\Core\V2\Model\LeadSource
+updateLeadSource($lead_source_id, $create_lead_source_request, $update_mask): \Keap\Core\V2\Model\LeadSource
 ```
 
 Update a Lead Source
@@ -263,10 +263,10 @@ $create_lead_source_request = new \Keap\Core\V2\Model\CreateLeadSourceRequest();
 $update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
-    $result = $apiInstance->updateLeadSourceUsingPATCH($lead_source_id, $create_lead_source_request, $update_mask);
+    $result = $apiInstance->updateLeadSource($lead_source_id, $create_lead_source_request, $update_mask);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling LeadSourcesApi->updateLeadSourceUsingPATCH: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling LeadSourcesApi->updateLeadSource: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

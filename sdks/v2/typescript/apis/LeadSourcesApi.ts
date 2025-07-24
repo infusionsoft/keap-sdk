@@ -22,12 +22,12 @@ export class LeadSourcesApiRequestFactory extends BaseAPIRequestFactory {
      * Create a Lead Source
      * @param createLeadSourceRequest The request object to create a new lead source
      */
-    public async createLeadSourceUsingPOST(createLeadSourceRequest: CreateLeadSourceRequest, _options?: Configuration): Promise<RequestContext> {
+    public async createLeadSource(createLeadSourceRequest: CreateLeadSourceRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'createLeadSourceRequest' is not null or undefined
         if (createLeadSourceRequest === null || createLeadSourceRequest === undefined) {
-            throw new RequiredError("LeadSourcesApi", "createLeadSourceUsingPOST", "createLeadSourceRequest");
+            throw new RequiredError("LeadSourcesApi", "createLeadSource", "createLeadSourceRequest");
         }
 
 
@@ -64,12 +64,12 @@ export class LeadSourcesApiRequestFactory extends BaseAPIRequestFactory {
      * Delete a Lead Source
      * @param leadSourceId The ID of a lead source
      */
-    public async deleteLeadSourceUsingDELETE(leadSourceId: string, _options?: Configuration): Promise<RequestContext> {
+    public async deleteLeadSource(leadSourceId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'leadSourceId' is not null or undefined
         if (leadSourceId === null || leadSourceId === undefined) {
-            throw new RequiredError("LeadSourcesApi", "deleteLeadSourceUsingDELETE", "leadSourceId");
+            throw new RequiredError("LeadSourcesApi", "deleteLeadSource", "leadSourceId");
         }
 
 
@@ -96,12 +96,12 @@ export class LeadSourcesApiRequestFactory extends BaseAPIRequestFactory {
      * Retrieve a Lead Source
      * @param leadSourceId The ID of a lead source
      */
-    public async getLeadSourceUsingGET(leadSourceId: string, _options?: Configuration): Promise<RequestContext> {
+    public async getLeadSource(leadSourceId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'leadSourceId' is not null or undefined
         if (leadSourceId === null || leadSourceId === undefined) {
-            throw new RequiredError("LeadSourcesApi", "getLeadSourceUsingGET", "leadSourceId");
+            throw new RequiredError("LeadSourcesApi", "getLeadSource", "leadSourceId");
         }
 
 
@@ -131,7 +131,7 @@ export class LeadSourcesApiRequestFactory extends BaseAPIRequestFactory {
      * @param pageSize Total number of items to return per page
      * @param pageToken Page token
      */
-    public async listLeadSourcesUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
+    public async listLeadSources(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
 
@@ -182,18 +182,18 @@ export class LeadSourcesApiRequestFactory extends BaseAPIRequestFactory {
      * @param createLeadSourceRequest The request object to update a lead source
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateLeadSourceUsingPATCH(leadSourceId: string, createLeadSourceRequest: CreateLeadSourceRequest, updateMask?: Array<string>, _options?: Configuration): Promise<RequestContext> {
+    public async updateLeadSource(leadSourceId: string, createLeadSourceRequest: CreateLeadSourceRequest, updateMask?: Array<string>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'leadSourceId' is not null or undefined
         if (leadSourceId === null || leadSourceId === undefined) {
-            throw new RequiredError("LeadSourcesApi", "updateLeadSourceUsingPATCH", "leadSourceId");
+            throw new RequiredError("LeadSourcesApi", "updateLeadSource", "leadSourceId");
         }
 
 
         // verify required parameter 'createLeadSourceRequest' is not null or undefined
         if (createLeadSourceRequest === null || createLeadSourceRequest === undefined) {
-            throw new RequiredError("LeadSourcesApi", "updateLeadSourceUsingPATCH", "createLeadSourceRequest");
+            throw new RequiredError("LeadSourcesApi", "updateLeadSource", "createLeadSourceRequest");
         }
 
 
@@ -243,10 +243,10 @@ export class LeadSourcesApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to createLeadSourceUsingPOST
+     * @params response Response returned by the server for a request to createLeadSource
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async createLeadSourceUsingPOSTWithHttpInfo(response: ResponseContext): Promise<HttpInfo<LeadSource >> {
+     public async createLeadSourceWithHttpInfo(response: ResponseContext): Promise<HttpInfo<LeadSource >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("201", response.httpStatusCode)) {
             const body: LeadSource = ObjectSerializer.deserialize(
@@ -300,10 +300,10 @@ export class LeadSourcesApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to deleteLeadSourceUsingDELETE
+     * @params response Response returned by the server for a request to deleteLeadSource
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async deleteLeadSourceUsingDELETEWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async deleteLeadSourceWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("204", response.httpStatusCode)) {
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
@@ -353,10 +353,10 @@ export class LeadSourcesApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to getLeadSourceUsingGET
+     * @params response Response returned by the server for a request to getLeadSource
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getLeadSourceUsingGETWithHttpInfo(response: ResponseContext): Promise<HttpInfo<LeadSource >> {
+     public async getLeadSourceWithHttpInfo(response: ResponseContext): Promise<HttpInfo<LeadSource >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: LeadSource = ObjectSerializer.deserialize(
@@ -410,10 +410,10 @@ export class LeadSourcesApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to listLeadSourcesUsingGET
+     * @params response Response returned by the server for a request to listLeadSources
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async listLeadSourcesUsingGETWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListLeadSourcesResponse >> {
+     public async listLeadSourcesWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListLeadSourcesResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: ListLeadSourcesResponse = ObjectSerializer.deserialize(
@@ -474,10 +474,10 @@ export class LeadSourcesApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to updateLeadSourceUsingPATCH
+     * @params response Response returned by the server for a request to updateLeadSource
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async updateLeadSourceUsingPATCHWithHttpInfo(response: ResponseContext): Promise<HttpInfo<LeadSource >> {
+     public async updateLeadSourceWithHttpInfo(response: ResponseContext): Promise<HttpInfo<LeadSource >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: LeadSource = ObjectSerializer.deserialize(

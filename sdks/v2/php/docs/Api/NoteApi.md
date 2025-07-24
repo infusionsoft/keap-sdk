@@ -4,76 +4,21 @@ All URIs are relative to https://api.keap.com/crm/rest, except if the operation 
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createNoteCustomFieldUsingPOST1()**](NoteApi.md#createNoteCustomFieldUsingPOST1) | **POST** /v2/notes/model/customFields | Create a Custom Field |
-| [**createNoteUsingPOST1()**](NoteApi.md#createNoteUsingPOST1) | **POST** /v2/contacts/{contact_id}/notes | Create a Note |
-| [**deleteNoteUsingDELETE1()**](NoteApi.md#deleteNoteUsingDELETE1) | **DELETE** /v2/contacts/{contact_id}/notes/{note_id} | Delete a Note |
-| [**getNoteUsingGET1()**](NoteApi.md#getNoteUsingGET1) | **GET** /v2/contacts/{contact_id}/notes/{note_id} | Retrieve a Note |
-| [**listNoteTemplatesUsingGET()**](NoteApi.md#listNoteTemplatesUsingGET) | **GET** /v2/notes/templates | Retrieve Note Templates |
-| [**listNotesUsingGET1()**](NoteApi.md#listNotesUsingGET1) | **GET** /v2/contacts/{contact_id}/notes | List Notes |
-| [**retrieveNoteModelUsingGET1()**](NoteApi.md#retrieveNoteModelUsingGET1) | **GET** /v2/notes/model | Retrieve Note Model |
-| [**updateNoteUsingPATCH()**](NoteApi.md#updateNoteUsingPATCH) | **PATCH** /v2/contacts/{contact_id}/notes/{note_id} | Update a Note |
-| [**updateNotesCustomFieldUsingPATCH()**](NoteApi.md#updateNotesCustomFieldUsingPATCH) | **PATCH** /v2/notes/model/customFields/{custom_field_id} | Update a Custom Field |
+| [**createNote()**](NoteApi.md#createNote) | **POST** /v2/contacts/{contact_id}/notes | Create a Note |
+| [**createNoteCustomField()**](NoteApi.md#createNoteCustomField) | **POST** /v2/notes/model/customFields | Create a Custom Field |
+| [**deleteNote()**](NoteApi.md#deleteNote) | **DELETE** /v2/contacts/{contact_id}/notes/{note_id} | Delete a Note |
+| [**getNote()**](NoteApi.md#getNote) | **GET** /v2/contacts/{contact_id}/notes/{note_id} | Retrieve a Note |
+| [**listNoteTemplates()**](NoteApi.md#listNoteTemplates) | **GET** /v2/notes/templates | Retrieve Note Templates |
+| [**listNotes()**](NoteApi.md#listNotes) | **GET** /v2/contacts/{contact_id}/notes | List Notes |
+| [**retrieveNoteModel()**](NoteApi.md#retrieveNoteModel) | **GET** /v2/notes/model | Retrieve Note Model |
+| [**updateNote()**](NoteApi.md#updateNote) | **PATCH** /v2/contacts/{contact_id}/notes/{note_id} | Update a Note |
+| [**updateNotesCustomField()**](NoteApi.md#updateNotesCustomField) | **PATCH** /v2/notes/model/customFields/{custom_field_id} | Update a Custom Field |
 
 
-## `createNoteCustomFieldUsingPOST1()`
-
-```php
-createNoteCustomFieldUsingPOST1($create_custom_field_request): \Keap\Core\V2\Model\CustomFieldMetaData
-```
-
-Create a Custom Field
-
-Creates a custom field of the specified type and options to the Note object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
-
-### Example
+## `createNote()`
 
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-$apiInstance = new Keap\Core\V2\Api\NoteApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
-);
-$create_custom_field_request = new \Keap\Core\V2\Model\CreateCustomFieldRequest(); // \Keap\Core\V2\Model\CreateCustomFieldRequest | customField
-
-try {
-    $result = $apiInstance->createNoteCustomFieldUsingPOST1($create_custom_field_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling NoteApi->createNoteCustomFieldUsingPOST1: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **create_custom_field_request** | [**\Keap\Core\V2\Model\CreateCustomFieldRequest**](../Model/CreateCustomFieldRequest.md)| customField | |
-
-### Return type
-
-[**\Keap\Core\V2\Model\CustomFieldMetaData**](../Model/CustomFieldMetaData.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `createNoteUsingPOST1()`
-
-```php
-createNoteUsingPOST1($contact_id, $create_note_request): \Keap\Core\V2\Model\Note
+createNote($contact_id, $create_note_request): \Keap\Core\V2\Model\Note
 ```
 
 Create a Note
@@ -96,10 +41,10 @@ $contact_id = 'contact_id_example'; // string | contact_id
 $create_note_request = new \Keap\Core\V2\Model\CreateNoteRequest(); // \Keap\Core\V2\Model\CreateNoteRequest | request
 
 try {
-    $result = $apiInstance->createNoteUsingPOST1($contact_id, $create_note_request);
+    $result = $apiInstance->createNote($contact_id, $create_note_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling NoteApi->createNoteUsingPOST1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling NoteApi->createNote: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -127,10 +72,65 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `deleteNoteUsingDELETE1()`
+## `createNoteCustomField()`
 
 ```php
-deleteNoteUsingDELETE1($contact_id, $note_id)
+createNoteCustomField($create_custom_field_request): \Keap\Core\V2\Model\CustomFieldMetaData
+```
+
+Create a Custom Field
+
+Creates a custom field of the specified type and options to the Note object<br/>Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+$apiInstance = new Keap\Core\V2\Api\NoteApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$create_custom_field_request = new \Keap\Core\V2\Model\CreateCustomFieldRequest(); // \Keap\Core\V2\Model\CreateCustomFieldRequest | customField
+
+try {
+    $result = $apiInstance->createNoteCustomField($create_custom_field_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling NoteApi->createNoteCustomField: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **create_custom_field_request** | [**\Keap\Core\V2\Model\CreateCustomFieldRequest**](../Model/CreateCustomFieldRequest.md)| customField | |
+
+### Return type
+
+[**\Keap\Core\V2\Model\CustomFieldMetaData**](../Model/CustomFieldMetaData.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteNote()`
+
+```php
+deleteNote($contact_id, $note_id)
 ```
 
 Delete a Note
@@ -153,9 +153,9 @@ $contact_id = 'contact_id_example'; // string | contact_id
 $note_id = 'note_id_example'; // string | note_id
 
 try {
-    $apiInstance->deleteNoteUsingDELETE1($contact_id, $note_id);
+    $apiInstance->deleteNote($contact_id, $note_id);
 } catch (Exception $e) {
-    echo 'Exception when calling NoteApi->deleteNoteUsingDELETE1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling NoteApi->deleteNote: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -183,10 +183,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getNoteUsingGET1()`
+## `getNote()`
 
 ```php
-getNoteUsingGET1($contact_id, $note_id): \Keap\Core\V2\Model\GetNoteResponse
+getNote($contact_id, $note_id): \Keap\Core\V2\Model\GetNoteResponse
 ```
 
 Retrieve a Note
@@ -209,10 +209,10 @@ $contact_id = 'contact_id_example'; // string | contact_id
 $note_id = 'note_id_example'; // string | note_id
 
 try {
-    $result = $apiInstance->getNoteUsingGET1($contact_id, $note_id);
+    $result = $apiInstance->getNote($contact_id, $note_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling NoteApi->getNoteUsingGET1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling NoteApi->getNote: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -240,10 +240,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `listNoteTemplatesUsingGET()`
+## `listNoteTemplates()`
 
 ```php
-listNoteTemplatesUsingGET($filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListNoteTemplateResponse
+listNoteTemplates($filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListNoteTemplateResponse
 ```
 
 Retrieve Note Templates
@@ -268,10 +268,10 @@ $page_size = 0; // int | Total number of items to return per page
 $page_token = 'page_token_example'; // string | Page token
 
 try {
-    $result = $apiInstance->listNoteTemplatesUsingGET($filter, $order_by, $page_size, $page_token);
+    $result = $apiInstance->listNoteTemplates($filter, $order_by, $page_size, $page_token);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling NoteApi->listNoteTemplatesUsingGET: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling NoteApi->listNoteTemplates: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -301,10 +301,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `listNotesUsingGET1()`
+## `listNotes()`
 
 ```php
-listNotesUsingGET1($contact_id, $filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListNotesResponse
+listNotes($contact_id, $filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListNotesResponse
 ```
 
 List Notes
@@ -324,16 +324,16 @@ $apiInstance = new Keap\Core\V2\Api\NoteApi(
     new GuzzleHttp\Client()
 );
 $contact_id = 'contact_id_example'; // string | contact_id
-$filter = 'filter_example'; // string | Search filter to apply to results
-$order_by = 'order_by_example'; // string | Attribute and direction to order items by. E.g. `given_name desc`
+$filter = 'filter_example'; // string | Filter to apply, allowed fields are: - (String) `assigned_to_user_id` - (String) `title` - (String) `since_time` - (String) `until_time` You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=assigned_to_user_id%3D%3DUserId` - `filter=title%3D%3DexpectedTitle` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;`
+$order_by = 'order_by_example'; // string | Attribute and direction to order items. One of the following fields: - `id` - `create_time`  One of the following directions: - `asc` - `desc`
 $page_size = 0; // int | Total number of items to return per page
 $page_token = 'page_token_example'; // string | Page token
 
 try {
-    $result = $apiInstance->listNotesUsingGET1($contact_id, $filter, $order_by, $page_size, $page_token);
+    $result = $apiInstance->listNotes($contact_id, $filter, $order_by, $page_size, $page_token);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling NoteApi->listNotesUsingGET1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling NoteApi->listNotes: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -342,8 +342,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **contact_id** | **string**| contact_id | |
-| **filter** | **string**| Search filter to apply to results | [optional] |
-| **order_by** | **string**| Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60; | [optional] |
+| **filter** | **string**| Filter to apply, allowed fields are: - (String) &#x60;assigned_to_user_id&#x60; - (String) &#x60;title&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;assigned_to_user_id%3D%3DUserId&#x60; - &#x60;filter&#x3D;title%3D%3DexpectedTitle&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; | [optional] |
+| **order_by** | **string**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **page_size** | **int**| Total number of items to return per page | [optional] |
 | **page_token** | **string**| Page token | [optional] |
 
@@ -364,10 +364,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `retrieveNoteModelUsingGET1()`
+## `retrieveNoteModel()`
 
 ```php
-retrieveNoteModelUsingGET1(): \Keap\Core\V2\Model\ObjectModel
+retrieveNoteModel(): \Keap\Core\V2\Model\ObjectModel
 ```
 
 Retrieve Note Model
@@ -388,10 +388,10 @@ $apiInstance = new Keap\Core\V2\Api\NoteApi(
 );
 
 try {
-    $result = $apiInstance->retrieveNoteModelUsingGET1();
+    $result = $apiInstance->retrieveNoteModel();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling NoteApi->retrieveNoteModelUsingGET1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling NoteApi->retrieveNoteModel: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -416,10 +416,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `updateNoteUsingPATCH()`
+## `updateNote()`
 
 ```php
-updateNoteUsingPATCH($contact_id, $note_id, $update_note_request, $update_mask): \Keap\Core\V2\Model\UpdateNoteResponse
+updateNote($contact_id, $note_id, $update_note_request, $update_mask): \Keap\Core\V2\Model\UpdateNoteResponse
 ```
 
 Update a Note
@@ -444,10 +444,10 @@ $update_note_request = new \Keap\Core\V2\Model\UpdateNoteRequest(); // \Keap\Cor
 $update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
-    $result = $apiInstance->updateNoteUsingPATCH($contact_id, $note_id, $update_note_request, $update_mask);
+    $result = $apiInstance->updateNote($contact_id, $note_id, $update_note_request, $update_mask);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling NoteApi->updateNoteUsingPATCH: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling NoteApi->updateNote: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -477,10 +477,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `updateNotesCustomFieldUsingPATCH()`
+## `updateNotesCustomField()`
 
 ```php
-updateNotesCustomFieldUsingPATCH($custom_field_id, $update_custom_field_meta_data_request, $update_mask): \Keap\Core\V2\Model\CustomFieldMetaData
+updateNotesCustomField($custom_field_id, $update_custom_field_meta_data_request, $update_mask): \Keap\Core\V2\Model\CustomFieldMetaData
 ```
 
 Update a Custom Field
@@ -504,10 +504,10 @@ $update_custom_field_meta_data_request = new \Keap\Core\V2\Model\UpdateCustomFie
 $update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
-    $result = $apiInstance->updateNotesCustomFieldUsingPATCH($custom_field_id, $update_custom_field_meta_data_request, $update_mask);
+    $result = $apiInstance->updateNotesCustomField($custom_field_id, $update_custom_field_meta_data_request, $update_mask);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling NoteApi->updateNotesCustomFieldUsingPATCH: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling NoteApi->updateNotesCustomField: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

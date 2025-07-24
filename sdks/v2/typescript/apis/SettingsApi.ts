@@ -22,7 +22,7 @@ export class SettingsApiRequestFactory extends BaseAPIRequestFactory {
      * Get Application Configuration
      * @param fields By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query.
      */
-    public async getApplicationConfigurationsUsingGET(fields?: Array<'AFFILIATE' | 'APPOINTMENT' | 'CONTACT' | 'ECOMMERCE' | 'EMAIL' | 'FORMS' | 'FULFILLMENT' | 'INVOICE' | 'NOTE' | 'OPPORTUNITY' | 'TASK' | 'TEMPLATE'>, _options?: Configuration): Promise<RequestContext> {
+    public async getApplicationConfigurations(fields?: Array<'AFFILIATE' | 'APPOINTMENT' | 'CONTACT' | 'ECOMMERCE' | 'EMAIL' | 'FORMS' | 'FULFILLMENT' | 'INVOICE' | 'NOTE' | 'OPPORTUNITY' | 'TASK' | 'TEMPLATE'>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
 
@@ -55,7 +55,7 @@ export class SettingsApiRequestFactory extends BaseAPIRequestFactory {
      * Gets a list of Contact Option types.
      * Get Contact Option types
      */
-    public async getContactOptionTypesUsingGET1(_options?: Configuration): Promise<RequestContext> {
+    public async getContactOptionTypes(_options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // Path Params
@@ -79,7 +79,7 @@ export class SettingsApiRequestFactory extends BaseAPIRequestFactory {
      * Check if the application is enabled or not
      * Get Application Status
      */
-    public async isApplicationEnabledUsingGET(_options?: Configuration): Promise<RequestContext> {
+    public async isApplicationEnabled(_options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // Path Params
@@ -107,10 +107,10 @@ export class SettingsApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to getApplicationConfigurationsUsingGET
+     * @params response Response returned by the server for a request to getApplicationConfigurations
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getApplicationConfigurationsUsingGETWithHttpInfo(response: ResponseContext): Promise<HttpInfo<GetSettingsResponse >> {
+     public async getApplicationConfigurationsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<GetSettingsResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: GetSettingsResponse = ObjectSerializer.deserialize(
@@ -164,10 +164,10 @@ export class SettingsApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to getContactOptionTypesUsingGET1
+     * @params response Response returned by the server for a request to getContactOptionTypes
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getContactOptionTypesUsingGET1WithHttpInfo(response: ResponseContext): Promise<HttpInfo<GetContactOptionTypesResponse >> {
+     public async getContactOptionTypesWithHttpInfo(response: ResponseContext): Promise<HttpInfo<GetContactOptionTypesResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: GetContactOptionTypesResponse = ObjectSerializer.deserialize(
@@ -221,10 +221,10 @@ export class SettingsApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to isApplicationEnabledUsingGET
+     * @params response Response returned by the server for a request to isApplicationEnabled
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async isApplicationEnabledUsingGETWithHttpInfo(response: ResponseContext): Promise<HttpInfo<GetApplicationEnabledStatusResponse >> {
+     public async isApplicationEnabledWithHttpInfo(response: ResponseContext): Promise<HttpInfo<GetApplicationEnabledStatusResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: GetApplicationEnabledStatusResponse = ObjectSerializer.deserialize(

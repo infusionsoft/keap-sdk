@@ -4,14 +4,14 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**AddContactsToCampaignSequenceUsingPOST1**](CampaignApi.md#addcontactstocampaignsequenceusingpost1) | **POST** /v2/campaigns/{campaign_id}/sequences/{sequence_id}:addContacts | Add Contacts to Campaign Sequence |
-| [**GetCampaignUsingGET1**](CampaignApi.md#getcampaignusingget1) | **GET** /v2/campaigns/{campaign_id} | Retrieve a Campaign |
-| [**ListCampaignsUsingGET1**](CampaignApi.md#listcampaignsusingget1) | **GET** /v2/campaigns | List Campaigns |
-| [**RemoveContactsFromCampaignSequenceUsingPOST**](CampaignApi.md#removecontactsfromcampaignsequenceusingpost) | **POST** /v2/campaigns/{campaign_id}/sequences/{sequence_id}:removeContacts | Remove Contacts from Campaign Sequence |
+| [**AddContactsToCampaignSequence**](CampaignApi.md#addcontactstocampaignsequence) | **POST** /v2/campaigns/{campaign_id}/sequences/{sequence_id}:addContacts | Add Contacts to Campaign Sequence |
+| [**GetCampaign**](CampaignApi.md#getcampaign) | **GET** /v2/campaigns/{campaign_id} | Retrieve a Campaign |
+| [**ListCampaigns**](CampaignApi.md#listcampaigns) | **GET** /v2/campaigns | List Campaigns |
+| [**RemoveContactsFromCampaignSequence**](CampaignApi.md#removecontactsfromcampaignsequence) | **POST** /v2/campaigns/{campaign_id}/sequences/{sequence_id}:removeContacts | Remove Contacts from Campaign Sequence |
 
-<a id="addcontactstocampaignsequenceusingpost1"></a>
-# **AddContactsToCampaignSequenceUsingPOST1**
-> AddContactsToSequenceResponse AddContactsToCampaignSequenceUsingPOST1 (string campaignId, string sequenceId, AddContactsToSequenceRequest addContactsToSequenceRequest)
+<a id="addcontactstocampaignsequence"></a>
+# **AddContactsToCampaignSequence**
+> AddContactsToSequenceResponse AddContactsToCampaignSequence (string campaignId, string sequenceId, AddContactsToSequenceRequest addContactsToSequenceRequest)
 
 Add Contacts to Campaign Sequence
 
@@ -27,7 +27,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class AddContactsToCampaignSequenceUsingPOST1Example
+    public class AddContactsToCampaignSequenceExample
     {
         public static void Main()
         {
@@ -41,12 +41,12 @@ namespace Example
             try
             {
                 // Add Contacts to Campaign Sequence
-                AddContactsToSequenceResponse result = apiInstance.AddContactsToCampaignSequenceUsingPOST1(campaignId, sequenceId, addContactsToSequenceRequest);
+                AddContactsToSequenceResponse result = apiInstance.AddContactsToCampaignSequence(campaignId, sequenceId, addContactsToSequenceRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling CampaignApi.AddContactsToCampaignSequenceUsingPOST1: " + e.Message);
+                Debug.Print("Exception when calling CampaignApi.AddContactsToCampaignSequence: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -55,21 +55,21 @@ namespace Example
 }
 ```
 
-#### Using the AddContactsToCampaignSequenceUsingPOST1WithHttpInfo variant
+#### Using the AddContactsToCampaignSequenceWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Add Contacts to Campaign Sequence
-    ApiResponse<AddContactsToSequenceResponse> response = apiInstance.AddContactsToCampaignSequenceUsingPOST1WithHttpInfo(campaignId, sequenceId, addContactsToSequenceRequest);
+    ApiResponse<AddContactsToSequenceResponse> response = apiInstance.AddContactsToCampaignSequenceWithHttpInfo(campaignId, sequenceId, addContactsToSequenceRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling CampaignApi.AddContactsToCampaignSequenceUsingPOST1WithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling CampaignApi.AddContactsToCampaignSequenceWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -107,9 +107,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="getcampaignusingget1"></a>
-# **GetCampaignUsingGET1**
-> Campaign GetCampaignUsingGET1 (string campaignId)
+<a id="getcampaign"></a>
+# **GetCampaign**
+> Campaign GetCampaign (string campaignId)
 
 Retrieve a Campaign
 
@@ -125,7 +125,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class GetCampaignUsingGET1Example
+    public class GetCampaignExample
     {
         public static void Main()
         {
@@ -137,12 +137,12 @@ namespace Example
             try
             {
                 // Retrieve a Campaign
-                Campaign result = apiInstance.GetCampaignUsingGET1(campaignId);
+                Campaign result = apiInstance.GetCampaign(campaignId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling CampaignApi.GetCampaignUsingGET1: " + e.Message);
+                Debug.Print("Exception when calling CampaignApi.GetCampaign: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -151,21 +151,21 @@ namespace Example
 }
 ```
 
-#### Using the GetCampaignUsingGET1WithHttpInfo variant
+#### Using the GetCampaignWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Retrieve a Campaign
-    ApiResponse<Campaign> response = apiInstance.GetCampaignUsingGET1WithHttpInfo(campaignId);
+    ApiResponse<Campaign> response = apiInstance.GetCampaignWithHttpInfo(campaignId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling CampaignApi.GetCampaignUsingGET1WithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling CampaignApi.GetCampaignWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -202,9 +202,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="listcampaignsusingget1"></a>
-# **ListCampaignsUsingGET1**
-> ListCampaignsResponse ListCampaignsUsingGET1 (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null, bool? stats = null)
+<a id="listcampaigns"></a>
+# **ListCampaigns**
+> ListCampaignsResponse ListCampaigns (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null, bool? stats = null)
 
 List Campaigns
 
@@ -220,7 +220,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class ListCampaignsUsingGET1Example
+    public class ListCampaignsExample
     {
         public static void Main()
         {
@@ -236,12 +236,12 @@ namespace Example
             try
             {
                 // List Campaigns
-                ListCampaignsResponse result = apiInstance.ListCampaignsUsingGET1(filter, orderBy, pageSize, pageToken, stats);
+                ListCampaignsResponse result = apiInstance.ListCampaigns(filter, orderBy, pageSize, pageToken, stats);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling CampaignApi.ListCampaignsUsingGET1: " + e.Message);
+                Debug.Print("Exception when calling CampaignApi.ListCampaigns: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -250,21 +250,21 @@ namespace Example
 }
 ```
 
-#### Using the ListCampaignsUsingGET1WithHttpInfo variant
+#### Using the ListCampaignsWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // List Campaigns
-    ApiResponse<ListCampaignsResponse> response = apiInstance.ListCampaignsUsingGET1WithHttpInfo(filter, orderBy, pageSize, pageToken, stats);
+    ApiResponse<ListCampaignsResponse> response = apiInstance.ListCampaignsWithHttpInfo(filter, orderBy, pageSize, pageToken, stats);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling CampaignApi.ListCampaignsUsingGET1WithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling CampaignApi.ListCampaignsWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -305,9 +305,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="removecontactsfromcampaignsequenceusingpost"></a>
-# **RemoveContactsFromCampaignSequenceUsingPOST**
-> RemoveContactsFromSequenceResponse RemoveContactsFromCampaignSequenceUsingPOST (string campaignId, string sequenceId, RemoveContactsFromSequenceRequest removeContactsFromSequenceRequest)
+<a id="removecontactsfromcampaignsequence"></a>
+# **RemoveContactsFromCampaignSequence**
+> RemoveContactsFromSequenceResponse RemoveContactsFromCampaignSequence (string campaignId, string sequenceId, RemoveContactsFromSequenceRequest removeContactsFromSequenceRequest)
 
 Remove Contacts from Campaign Sequence
 
@@ -323,7 +323,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class RemoveContactsFromCampaignSequenceUsingPOSTExample
+    public class RemoveContactsFromCampaignSequenceExample
     {
         public static void Main()
         {
@@ -337,12 +337,12 @@ namespace Example
             try
             {
                 // Remove Contacts from Campaign Sequence
-                RemoveContactsFromSequenceResponse result = apiInstance.RemoveContactsFromCampaignSequenceUsingPOST(campaignId, sequenceId, removeContactsFromSequenceRequest);
+                RemoveContactsFromSequenceResponse result = apiInstance.RemoveContactsFromCampaignSequence(campaignId, sequenceId, removeContactsFromSequenceRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling CampaignApi.RemoveContactsFromCampaignSequenceUsingPOST: " + e.Message);
+                Debug.Print("Exception when calling CampaignApi.RemoveContactsFromCampaignSequence: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -351,21 +351,21 @@ namespace Example
 }
 ```
 
-#### Using the RemoveContactsFromCampaignSequenceUsingPOSTWithHttpInfo variant
+#### Using the RemoveContactsFromCampaignSequenceWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Remove Contacts from Campaign Sequence
-    ApiResponse<RemoveContactsFromSequenceResponse> response = apiInstance.RemoveContactsFromCampaignSequenceUsingPOSTWithHttpInfo(campaignId, sequenceId, removeContactsFromSequenceRequest);
+    ApiResponse<RemoveContactsFromSequenceResponse> response = apiInstance.RemoveContactsFromCampaignSequenceWithHttpInfo(campaignId, sequenceId, removeContactsFromSequenceRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling CampaignApi.RemoveContactsFromCampaignSequenceUsingPOSTWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling CampaignApi.RemoveContactsFromCampaignSequenceWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }

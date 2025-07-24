@@ -22,12 +22,12 @@ export class LeadSourceCategoriesApiRequestFactory extends BaseAPIRequestFactory
      * Create a Lead Source Category
      * @param createUpdateLeadSourceCategoryRequest The request object to create a new lead source category
      */
-    public async createLeadSourceCategoryUsingPOST(createUpdateLeadSourceCategoryRequest: CreateUpdateLeadSourceCategoryRequest, _options?: Configuration): Promise<RequestContext> {
+    public async createLeadSourceCategory(createUpdateLeadSourceCategoryRequest: CreateUpdateLeadSourceCategoryRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'createUpdateLeadSourceCategoryRequest' is not null or undefined
         if (createUpdateLeadSourceCategoryRequest === null || createUpdateLeadSourceCategoryRequest === undefined) {
-            throw new RequiredError("LeadSourceCategoriesApi", "createLeadSourceCategoryUsingPOST", "createUpdateLeadSourceCategoryRequest");
+            throw new RequiredError("LeadSourceCategoriesApi", "createLeadSourceCategory", "createUpdateLeadSourceCategoryRequest");
         }
 
 
@@ -64,12 +64,12 @@ export class LeadSourceCategoriesApiRequestFactory extends BaseAPIRequestFactory
      * Delete a Lead Source Category
      * @param leadSourceCategoryId The ID of a lead source category
      */
-    public async deleteLeadSourceCategoryUsingDELETE(leadSourceCategoryId: string, _options?: Configuration): Promise<RequestContext> {
+    public async deleteLeadSourceCategory(leadSourceCategoryId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'leadSourceCategoryId' is not null or undefined
         if (leadSourceCategoryId === null || leadSourceCategoryId === undefined) {
-            throw new RequiredError("LeadSourceCategoriesApi", "deleteLeadSourceCategoryUsingDELETE", "leadSourceCategoryId");
+            throw new RequiredError("LeadSourceCategoriesApi", "deleteLeadSourceCategory", "leadSourceCategoryId");
         }
 
 
@@ -96,12 +96,12 @@ export class LeadSourceCategoriesApiRequestFactory extends BaseAPIRequestFactory
      * Retrieve a Lead Source Category
      * @param leadSourceCategoryId The ID of a lead source category
      */
-    public async getLeadSourceCategoryUsingGET(leadSourceCategoryId: string, _options?: Configuration): Promise<RequestContext> {
+    public async getLeadSourceCategory(leadSourceCategoryId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'leadSourceCategoryId' is not null or undefined
         if (leadSourceCategoryId === null || leadSourceCategoryId === undefined) {
-            throw new RequiredError("LeadSourceCategoriesApi", "getLeadSourceCategoryUsingGET", "leadSourceCategoryId");
+            throw new RequiredError("LeadSourceCategoriesApi", "getLeadSourceCategory", "leadSourceCategoryId");
         }
 
 
@@ -131,7 +131,7 @@ export class LeadSourceCategoriesApiRequestFactory extends BaseAPIRequestFactory
      * @param pageSize Total number of items to return per page
      * @param pageToken Page token
      */
-    public async listCategoriesUsingGET1(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
+    public async listLeadSourceCategories(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
 
@@ -182,18 +182,18 @@ export class LeadSourceCategoriesApiRequestFactory extends BaseAPIRequestFactory
      * @param createUpdateLeadSourceCategoryRequest The request object to update a lead source category
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateLeadSourceCategoryUsingPATCH(leadSourceCategoryId: string, createUpdateLeadSourceCategoryRequest: CreateUpdateLeadSourceCategoryRequest, updateMask?: Array<string>, _options?: Configuration): Promise<RequestContext> {
+    public async updateLeadSourceCategory(leadSourceCategoryId: string, createUpdateLeadSourceCategoryRequest: CreateUpdateLeadSourceCategoryRequest, updateMask?: Array<string>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'leadSourceCategoryId' is not null or undefined
         if (leadSourceCategoryId === null || leadSourceCategoryId === undefined) {
-            throw new RequiredError("LeadSourceCategoriesApi", "updateLeadSourceCategoryUsingPATCH", "leadSourceCategoryId");
+            throw new RequiredError("LeadSourceCategoriesApi", "updateLeadSourceCategory", "leadSourceCategoryId");
         }
 
 
         // verify required parameter 'createUpdateLeadSourceCategoryRequest' is not null or undefined
         if (createUpdateLeadSourceCategoryRequest === null || createUpdateLeadSourceCategoryRequest === undefined) {
-            throw new RequiredError("LeadSourceCategoriesApi", "updateLeadSourceCategoryUsingPATCH", "createUpdateLeadSourceCategoryRequest");
+            throw new RequiredError("LeadSourceCategoriesApi", "updateLeadSourceCategory", "createUpdateLeadSourceCategoryRequest");
         }
 
 
@@ -243,10 +243,10 @@ export class LeadSourceCategoriesApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to createLeadSourceCategoryUsingPOST
+     * @params response Response returned by the server for a request to createLeadSourceCategory
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async createLeadSourceCategoryUsingPOSTWithHttpInfo(response: ResponseContext): Promise<HttpInfo<LeadSourceCategory >> {
+     public async createLeadSourceCategoryWithHttpInfo(response: ResponseContext): Promise<HttpInfo<LeadSourceCategory >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("201", response.httpStatusCode)) {
             const body: LeadSourceCategory = ObjectSerializer.deserialize(
@@ -300,10 +300,10 @@ export class LeadSourceCategoriesApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to deleteLeadSourceCategoryUsingDELETE
+     * @params response Response returned by the server for a request to deleteLeadSourceCategory
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async deleteLeadSourceCategoryUsingDELETEWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async deleteLeadSourceCategoryWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("204", response.httpStatusCode)) {
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
@@ -353,10 +353,10 @@ export class LeadSourceCategoriesApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to getLeadSourceCategoryUsingGET
+     * @params response Response returned by the server for a request to getLeadSourceCategory
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getLeadSourceCategoryUsingGETWithHttpInfo(response: ResponseContext): Promise<HttpInfo<LeadSourceCategory >> {
+     public async getLeadSourceCategoryWithHttpInfo(response: ResponseContext): Promise<HttpInfo<LeadSourceCategory >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: LeadSourceCategory = ObjectSerializer.deserialize(
@@ -410,10 +410,10 @@ export class LeadSourceCategoriesApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to listCategoriesUsingGET1
+     * @params response Response returned by the server for a request to listLeadSourceCategories
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async listCategoriesUsingGET1WithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListLeadSourceCategoriesResponse >> {
+     public async listLeadSourceCategoriesWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListLeadSourceCategoriesResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: ListLeadSourceCategoriesResponse = ObjectSerializer.deserialize(
@@ -474,10 +474,10 @@ export class LeadSourceCategoriesApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to updateLeadSourceCategoryUsingPATCH
+     * @params response Response returned by the server for a request to updateLeadSourceCategory
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async updateLeadSourceCategoryUsingPATCHWithHttpInfo(response: ResponseContext): Promise<HttpInfo<LeadSourceCategory >> {
+     public async updateLeadSourceCategoryWithHttpInfo(response: ResponseContext): Promise<HttpInfo<LeadSourceCategory >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: LeadSourceCategory = ObjectSerializer.deserialize(

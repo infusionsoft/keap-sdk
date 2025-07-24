@@ -4,65 +4,21 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createNoteCustomFieldUsingPOST1**](NoteApi.md#createNoteCustomFieldUsingPOST1) | **POST** /v2/notes/model/customFields | Create a Custom Field
-[**createNoteUsingPOST1**](NoteApi.md#createNoteUsingPOST1) | **POST** /v2/contacts/{contact_id}/notes | Create a Note
-[**deleteNoteUsingDELETE1**](NoteApi.md#deleteNoteUsingDELETE1) | **DELETE** /v2/contacts/{contact_id}/notes/{note_id} | Delete a Note
-[**getNoteUsingGET1**](NoteApi.md#getNoteUsingGET1) | **GET** /v2/contacts/{contact_id}/notes/{note_id} | Retrieve a Note
-[**listNoteTemplatesUsingGET**](NoteApi.md#listNoteTemplatesUsingGET) | **GET** /v2/notes/templates | Retrieve Note Templates
-[**listNotesUsingGET1**](NoteApi.md#listNotesUsingGET1) | **GET** /v2/contacts/{contact_id}/notes | List Notes
-[**retrieveNoteModelUsingGET1**](NoteApi.md#retrieveNoteModelUsingGET1) | **GET** /v2/notes/model | Retrieve Note Model
-[**updateNoteUsingPATCH**](NoteApi.md#updateNoteUsingPATCH) | **PATCH** /v2/contacts/{contact_id}/notes/{note_id} | Update a Note
-[**updateNotesCustomFieldUsingPATCH**](NoteApi.md#updateNotesCustomFieldUsingPATCH) | **PATCH** /v2/notes/model/customFields/{custom_field_id} | Update a Custom Field
+[**createNote**](NoteApi.md#createNote) | **POST** /v2/contacts/{contact_id}/notes | Create a Note
+[**createNoteCustomField**](NoteApi.md#createNoteCustomField) | **POST** /v2/notes/model/customFields | Create a Custom Field
+[**deleteNote**](NoteApi.md#deleteNote) | **DELETE** /v2/contacts/{contact_id}/notes/{note_id} | Delete a Note
+[**getNote**](NoteApi.md#getNote) | **GET** /v2/contacts/{contact_id}/notes/{note_id} | Retrieve a Note
+[**listNoteTemplates**](NoteApi.md#listNoteTemplates) | **GET** /v2/notes/templates | Retrieve Note Templates
+[**listNotes**](NoteApi.md#listNotes) | **GET** /v2/contacts/{contact_id}/notes | List Notes
+[**retrieveNoteModel**](NoteApi.md#retrieveNoteModel) | **GET** /v2/notes/model | Retrieve Note Model
+[**updateNote**](NoteApi.md#updateNote) | **PATCH** /v2/contacts/{contact_id}/notes/{note_id} | Update a Note
+[**updateNotesCustomField**](NoteApi.md#updateNotesCustomField) | **PATCH** /v2/notes/model/customFields/{custom_field_id} | Update a Custom Field
 
 
 
-## createNoteCustomFieldUsingPOST1
+## createNote
 
-> CustomFieldMetaData createNoteCustomFieldUsingPOST1(createCustomFieldRequest)
-
-Create a Custom Field
-
-Creates a custom field of the specified type and options to the Note object&lt;br/&gt;Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
-
-### Example
-
-```javascript
-import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
-
-let apiInstance = new KeapCoreServiceV2Sdk.NoteApi();
-let createCustomFieldRequest = new KeapCoreServiceV2Sdk.CreateCustomFieldRequest(); // CreateCustomFieldRequest | customField
-apiInstance.createNoteCustomFieldUsingPOST1(createCustomFieldRequest).then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
-  console.error(error);
-});
-
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **createCustomFieldRequest** | [**CreateCustomFieldRequest**](CreateCustomFieldRequest.md)| customField | 
-
-### Return type
-
-[**CustomFieldMetaData**](CustomFieldMetaData.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## createNoteUsingPOST1
-
-> Note createNoteUsingPOST1(contactId, createNoteRequest)
+> Note createNote(contactId, createNoteRequest)
 
 Create a Note
 
@@ -76,7 +32,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 let apiInstance = new KeapCoreServiceV2Sdk.NoteApi();
 let contactId = "contactId_example"; // String | contact_id
 let createNoteRequest = new KeapCoreServiceV2Sdk.CreateNoteRequest(); // CreateNoteRequest | request
-apiInstance.createNoteUsingPOST1(contactId, createNoteRequest).then((data) => {
+apiInstance.createNote(contactId, createNoteRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -106,9 +62,53 @@ No authorization required
 - **Accept**: application/json
 
 
-## deleteNoteUsingDELETE1
+## createNoteCustomField
 
-> deleteNoteUsingDELETE1(contactId, noteId)
+> CustomFieldMetaData createNoteCustomField(createCustomFieldRequest)
+
+Create a Custom Field
+
+Creates a custom field of the specified type and options to the Note object&lt;br/&gt;Note: Custom Fields for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+
+let apiInstance = new KeapCoreServiceV2Sdk.NoteApi();
+let createCustomFieldRequest = new KeapCoreServiceV2Sdk.CreateCustomFieldRequest(); // CreateCustomFieldRequest | customField
+apiInstance.createNoteCustomField(createCustomFieldRequest).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCustomFieldRequest** | [**CreateCustomFieldRequest**](CreateCustomFieldRequest.md)| customField | 
+
+### Return type
+
+[**CustomFieldMetaData**](CustomFieldMetaData.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## deleteNote
+
+> deleteNote(contactId, noteId)
 
 Delete a Note
 
@@ -122,7 +122,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 let apiInstance = new KeapCoreServiceV2Sdk.NoteApi();
 let contactId = "contactId_example"; // String | contact_id
 let noteId = "noteId_example"; // String | note_id
-apiInstance.deleteNoteUsingDELETE1(contactId, noteId).then(() => {
+apiInstance.deleteNote(contactId, noteId).then(() => {
   console.log('API called successfully.');
 }, (error) => {
   console.error(error);
@@ -152,9 +152,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## getNoteUsingGET1
+## getNote
 
-> GetNoteResponse getNoteUsingGET1(contactId, noteId)
+> GetNoteResponse getNote(contactId, noteId)
 
 Retrieve a Note
 
@@ -168,7 +168,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 let apiInstance = new KeapCoreServiceV2Sdk.NoteApi();
 let contactId = "contactId_example"; // String | contact_id
 let noteId = "noteId_example"; // String | note_id
-apiInstance.getNoteUsingGET1(contactId, noteId).then((data) => {
+apiInstance.getNote(contactId, noteId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -198,9 +198,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## listNoteTemplatesUsingGET
+## listNoteTemplates
 
-> ListNoteTemplateResponse listNoteTemplatesUsingGET(opts)
+> ListNoteTemplateResponse listNoteTemplates(opts)
 
 Retrieve Note Templates
 
@@ -218,7 +218,7 @@ let opts = {
   'pageSize': 0, // Number | Total number of items to return per page
   'pageToken': "pageToken_example" // String | Page token
 };
-apiInstance.listNoteTemplatesUsingGET(opts).then((data) => {
+apiInstance.listNoteTemplates(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -250,9 +250,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## listNotesUsingGET1
+## listNotes
 
-> ListNotesResponse listNotesUsingGET1(contactId, opts)
+> ListNotesResponse listNotes(contactId, opts)
 
 List Notes
 
@@ -266,12 +266,12 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 let apiInstance = new KeapCoreServiceV2Sdk.NoteApi();
 let contactId = "contactId_example"; // String | contact_id
 let opts = {
-  'filter': "filter_example", // String | Search filter to apply to results
-  'orderBy': "orderBy_example", // String | Attribute and direction to order items by. E.g. `given_name desc`
+  'filter': "filter_example", // String | Filter to apply, allowed fields are: - (String) `assigned_to_user_id` - (String) `title` - (String) `since_time` - (String) `until_time` You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=assigned_to_user_id%3D%3DUserId` - `filter=title%3D%3DexpectedTitle` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;` 
+  'orderBy': "orderBy_example", // String | Attribute and direction to order items. One of the following fields: - `id` - `create_time`  One of the following directions: - `asc` - `desc`
   'pageSize': 0, // Number | Total number of items to return per page
   'pageToken': "pageToken_example" // String | Page token
 };
-apiInstance.listNotesUsingGET1(contactId, opts).then((data) => {
+apiInstance.listNotes(contactId, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -285,8 +285,8 @@ apiInstance.listNotesUsingGET1(contactId, opts).then((data) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contactId** | **String**| contact_id | 
- **filter** | **String**| Search filter to apply to results | [optional] 
- **orderBy** | **String**| Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60; | [optional] 
+ **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;assigned_to_user_id&#x60; - (String) &#x60;title&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;assigned_to_user_id%3D%3DUserId&#x60; - &#x60;filter&#x3D;title%3D%3DexpectedTitle&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  | [optional] 
+ **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] 
  **pageSize** | **Number**| Total number of items to return per page | [optional] 
  **pageToken** | **String**| Page token | [optional] 
 
@@ -304,9 +304,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## retrieveNoteModelUsingGET1
+## retrieveNoteModel
 
-> ObjectModel retrieveNoteModelUsingGET1()
+> ObjectModel retrieveNoteModel()
 
 Retrieve Note Model
 
@@ -318,7 +318,7 @@ Gets the custom fields for the Note object&lt;br/&gt;Note: Custom Fields for Tas
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.NoteApi();
-apiInstance.retrieveNoteModelUsingGET1().then((data) => {
+apiInstance.retrieveNoteModel().then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -344,9 +344,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## updateNoteUsingPATCH
+## updateNote
 
-> UpdateNoteResponse updateNoteUsingPATCH(contactId, noteId, updateNoteRequest, opts)
+> UpdateNoteResponse updateNote(contactId, noteId, updateNoteRequest, opts)
 
 Update a Note
 
@@ -364,7 +364,7 @@ let updateNoteRequest = new KeapCoreServiceV2Sdk.UpdateNoteRequest(); // UpdateN
 let opts = {
   'updateMask': ["null"] // [String] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
-apiInstance.updateNoteUsingPATCH(contactId, noteId, updateNoteRequest, opts).then((data) => {
+apiInstance.updateNote(contactId, noteId, updateNoteRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -396,9 +396,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## updateNotesCustomFieldUsingPATCH
+## updateNotesCustomField
 
-> CustomFieldMetaData updateNotesCustomFieldUsingPATCH(customFieldId, updateCustomFieldMetaDataRequest, opts)
+> CustomFieldMetaData updateNotesCustomField(customFieldId, updateCustomFieldMetaDataRequest, opts)
 
 Update a Custom Field
 
@@ -415,7 +415,7 @@ let updateCustomFieldMetaDataRequest = new KeapCoreServiceV2Sdk.UpdateCustomFiel
 let opts = {
   'updateMask': ["null"] // [String] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
-apiInstance.updateNotesCustomFieldUsingPATCH(customFieldId, updateCustomFieldMetaDataRequest, opts).then((data) => {
+apiInstance.updateNotesCustomField(customFieldId, updateCustomFieldMetaDataRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);

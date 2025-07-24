@@ -4,15 +4,15 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**CreateLeadSourceUsingPOST**](LeadSourcesApi.md#createleadsourceusingpost) | **POST** /v2/leadSources | Create a Lead Source |
-| [**DeleteLeadSourceUsingDELETE**](LeadSourcesApi.md#deleteleadsourceusingdelete) | **DELETE** /v2/leadSources/{lead_source_id} | Delete a Lead Source |
-| [**GetLeadSourceUsingGET**](LeadSourcesApi.md#getleadsourceusingget) | **GET** /v2/leadSources/{lead_source_id} | Retrieve a Lead Source |
-| [**ListLeadSourcesUsingGET**](LeadSourcesApi.md#listleadsourcesusingget) | **GET** /v2/leadSources | List Lead Sources |
-| [**UpdateLeadSourceUsingPATCH**](LeadSourcesApi.md#updateleadsourceusingpatch) | **PATCH** /v2/leadSources/{lead_source_id} | Update a Lead Source |
+| [**CreateLeadSource**](LeadSourcesApi.md#createleadsource) | **POST** /v2/leadSources | Create a Lead Source |
+| [**DeleteLeadSource**](LeadSourcesApi.md#deleteleadsource) | **DELETE** /v2/leadSources/{lead_source_id} | Delete a Lead Source |
+| [**GetLeadSource**](LeadSourcesApi.md#getleadsource) | **GET** /v2/leadSources/{lead_source_id} | Retrieve a Lead Source |
+| [**ListLeadSources**](LeadSourcesApi.md#listleadsources) | **GET** /v2/leadSources | List Lead Sources |
+| [**UpdateLeadSource**](LeadSourcesApi.md#updateleadsource) | **PATCH** /v2/leadSources/{lead_source_id} | Update a Lead Source |
 
-<a id="createleadsourceusingpost"></a>
-# **CreateLeadSourceUsingPOST**
-> LeadSource CreateLeadSourceUsingPOST (CreateLeadSourceRequest createLeadSourceRequest)
+<a id="createleadsource"></a>
+# **CreateLeadSource**
+> LeadSource CreateLeadSource (CreateLeadSourceRequest createLeadSourceRequest)
 
 Create a Lead Source
 
@@ -28,7 +28,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class CreateLeadSourceUsingPOSTExample
+    public class CreateLeadSourceExample
     {
         public static void Main()
         {
@@ -40,12 +40,12 @@ namespace Example
             try
             {
                 // Create a Lead Source
-                LeadSource result = apiInstance.CreateLeadSourceUsingPOST(createLeadSourceRequest);
+                LeadSource result = apiInstance.CreateLeadSource(createLeadSourceRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling LeadSourcesApi.CreateLeadSourceUsingPOST: " + e.Message);
+                Debug.Print("Exception when calling LeadSourcesApi.CreateLeadSource: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -54,21 +54,21 @@ namespace Example
 }
 ```
 
-#### Using the CreateLeadSourceUsingPOSTWithHttpInfo variant
+#### Using the CreateLeadSourceWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Create a Lead Source
-    ApiResponse<LeadSource> response = apiInstance.CreateLeadSourceUsingPOSTWithHttpInfo(createLeadSourceRequest);
+    ApiResponse<LeadSource> response = apiInstance.CreateLeadSourceWithHttpInfo(createLeadSourceRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling LeadSourcesApi.CreateLeadSourceUsingPOSTWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling LeadSourcesApi.CreateLeadSourceWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -105,9 +105,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="deleteleadsourceusingdelete"></a>
-# **DeleteLeadSourceUsingDELETE**
-> void DeleteLeadSourceUsingDELETE (string leadSourceId)
+<a id="deleteleadsource"></a>
+# **DeleteLeadSource**
+> void DeleteLeadSource (string leadSourceId)
 
 Delete a Lead Source
 
@@ -123,7 +123,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class DeleteLeadSourceUsingDELETEExample
+    public class DeleteLeadSourceExample
     {
         public static void Main()
         {
@@ -135,11 +135,11 @@ namespace Example
             try
             {
                 // Delete a Lead Source
-                apiInstance.DeleteLeadSourceUsingDELETE(leadSourceId);
+                apiInstance.DeleteLeadSource(leadSourceId);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling LeadSourcesApi.DeleteLeadSourceUsingDELETE: " + e.Message);
+                Debug.Print("Exception when calling LeadSourcesApi.DeleteLeadSource: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -148,18 +148,18 @@ namespace Example
 }
 ```
 
-#### Using the DeleteLeadSourceUsingDELETEWithHttpInfo variant
+#### Using the DeleteLeadSourceWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Delete a Lead Source
-    apiInstance.DeleteLeadSourceUsingDELETEWithHttpInfo(leadSourceId);
+    apiInstance.DeleteLeadSourceWithHttpInfo(leadSourceId);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling LeadSourcesApi.DeleteLeadSourceUsingDELETEWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling LeadSourcesApi.DeleteLeadSourceWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -196,9 +196,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="getleadsourceusingget"></a>
-# **GetLeadSourceUsingGET**
-> LeadSource GetLeadSourceUsingGET (string leadSourceId)
+<a id="getleadsource"></a>
+# **GetLeadSource**
+> LeadSource GetLeadSource (string leadSourceId)
 
 Retrieve a Lead Source
 
@@ -214,7 +214,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class GetLeadSourceUsingGETExample
+    public class GetLeadSourceExample
     {
         public static void Main()
         {
@@ -226,12 +226,12 @@ namespace Example
             try
             {
                 // Retrieve a Lead Source
-                LeadSource result = apiInstance.GetLeadSourceUsingGET(leadSourceId);
+                LeadSource result = apiInstance.GetLeadSource(leadSourceId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling LeadSourcesApi.GetLeadSourceUsingGET: " + e.Message);
+                Debug.Print("Exception when calling LeadSourcesApi.GetLeadSource: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -240,21 +240,21 @@ namespace Example
 }
 ```
 
-#### Using the GetLeadSourceUsingGETWithHttpInfo variant
+#### Using the GetLeadSourceWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Retrieve a Lead Source
-    ApiResponse<LeadSource> response = apiInstance.GetLeadSourceUsingGETWithHttpInfo(leadSourceId);
+    ApiResponse<LeadSource> response = apiInstance.GetLeadSourceWithHttpInfo(leadSourceId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling LeadSourcesApi.GetLeadSourceUsingGETWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling LeadSourcesApi.GetLeadSourceWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -291,9 +291,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="listleadsourcesusingget"></a>
-# **ListLeadSourcesUsingGET**
-> ListLeadSourcesResponse ListLeadSourcesUsingGET (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
+<a id="listleadsources"></a>
+# **ListLeadSources**
+> ListLeadSourcesResponse ListLeadSources (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
 
 List Lead Sources
 
@@ -309,7 +309,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class ListLeadSourcesUsingGETExample
+    public class ListLeadSourcesExample
     {
         public static void Main()
         {
@@ -324,12 +324,12 @@ namespace Example
             try
             {
                 // List Lead Sources
-                ListLeadSourcesResponse result = apiInstance.ListLeadSourcesUsingGET(filter, orderBy, pageSize, pageToken);
+                ListLeadSourcesResponse result = apiInstance.ListLeadSources(filter, orderBy, pageSize, pageToken);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling LeadSourcesApi.ListLeadSourcesUsingGET: " + e.Message);
+                Debug.Print("Exception when calling LeadSourcesApi.ListLeadSources: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -338,21 +338,21 @@ namespace Example
 }
 ```
 
-#### Using the ListLeadSourcesUsingGETWithHttpInfo variant
+#### Using the ListLeadSourcesWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // List Lead Sources
-    ApiResponse<ListLeadSourcesResponse> response = apiInstance.ListLeadSourcesUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken);
+    ApiResponse<ListLeadSourcesResponse> response = apiInstance.ListLeadSourcesWithHttpInfo(filter, orderBy, pageSize, pageToken);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling LeadSourcesApi.ListLeadSourcesUsingGETWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling LeadSourcesApi.ListLeadSourcesWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -393,9 +393,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="updateleadsourceusingpatch"></a>
-# **UpdateLeadSourceUsingPATCH**
-> LeadSource UpdateLeadSourceUsingPATCH (string leadSourceId, CreateLeadSourceRequest createLeadSourceRequest, List<string>? updateMask = null)
+<a id="updateleadsource"></a>
+# **UpdateLeadSource**
+> LeadSource UpdateLeadSource (string leadSourceId, CreateLeadSourceRequest createLeadSourceRequest, List<string>? updateMask = null)
 
 Update a Lead Source
 
@@ -411,7 +411,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class UpdateLeadSourceUsingPATCHExample
+    public class UpdateLeadSourceExample
     {
         public static void Main()
         {
@@ -425,12 +425,12 @@ namespace Example
             try
             {
                 // Update a Lead Source
-                LeadSource result = apiInstance.UpdateLeadSourceUsingPATCH(leadSourceId, createLeadSourceRequest, updateMask);
+                LeadSource result = apiInstance.UpdateLeadSource(leadSourceId, createLeadSourceRequest, updateMask);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling LeadSourcesApi.UpdateLeadSourceUsingPATCH: " + e.Message);
+                Debug.Print("Exception when calling LeadSourcesApi.UpdateLeadSource: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -439,21 +439,21 @@ namespace Example
 }
 ```
 
-#### Using the UpdateLeadSourceUsingPATCHWithHttpInfo variant
+#### Using the UpdateLeadSourceWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Update a Lead Source
-    ApiResponse<LeadSource> response = apiInstance.UpdateLeadSourceUsingPATCHWithHttpInfo(leadSourceId, createLeadSourceRequest, updateMask);
+    ApiResponse<LeadSource> response = apiInstance.UpdateLeadSourceWithHttpInfo(leadSourceId, createLeadSourceRequest, updateMask);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling LeadSourcesApi.UpdateLeadSourceUsingPATCHWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling LeadSourcesApi.UpdateLeadSourceWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }

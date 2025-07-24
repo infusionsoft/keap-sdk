@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**affiliateId** | **String** | The affiliate id | 
 **commissionAmount** | **Number** |  | [optional] 
 **commissionDate** | **String** |  | [optional] 
 **description** | **String** |  | [optional] 
 **payPercent** | **Number** |  | [optional] 
 **payoutType** | **String** | The payout type | 
-**referralPartnerId** | **String** | The referral partner id | 
 
 
 

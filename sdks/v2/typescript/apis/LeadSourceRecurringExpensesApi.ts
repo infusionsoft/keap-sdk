@@ -25,18 +25,18 @@ export class LeadSourceRecurringExpensesApiRequestFactory extends BaseAPIRequest
      * @param leadSourceId The ID of the lead source this recurring expense belongs to
      * @param createLeadSourceRecurringExpenseRequest The request object to create a new lead source recurring expense
      */
-    public async createLeadSourceRecurringExpenseUsingPOST(leadSourceId: string, createLeadSourceRecurringExpenseRequest: CreateLeadSourceRecurringExpenseRequest, _options?: Configuration): Promise<RequestContext> {
+    public async createLeadSourceRecurringExpense(leadSourceId: string, createLeadSourceRecurringExpenseRequest: CreateLeadSourceRecurringExpenseRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'leadSourceId' is not null or undefined
         if (leadSourceId === null || leadSourceId === undefined) {
-            throw new RequiredError("LeadSourceRecurringExpensesApi", "createLeadSourceRecurringExpenseUsingPOST", "leadSourceId");
+            throw new RequiredError("LeadSourceRecurringExpensesApi", "createLeadSourceRecurringExpense", "leadSourceId");
         }
 
 
         // verify required parameter 'createLeadSourceRecurringExpenseRequest' is not null or undefined
         if (createLeadSourceRecurringExpenseRequest === null || createLeadSourceRecurringExpenseRequest === undefined) {
-            throw new RequiredError("LeadSourceRecurringExpensesApi", "createLeadSourceRecurringExpenseUsingPOST", "createLeadSourceRecurringExpenseRequest");
+            throw new RequiredError("LeadSourceRecurringExpensesApi", "createLeadSourceRecurringExpense", "createLeadSourceRecurringExpenseRequest");
         }
 
 
@@ -75,18 +75,18 @@ export class LeadSourceRecurringExpensesApiRequestFactory extends BaseAPIRequest
      * @param leadSourceId The ID of the lead source this recurring expense belongs to
      * @param leadSourceRecurringExpenseId The ID of a lead source recurring expense
      */
-    public async deleteLeadSourceRecurringExpenseUsingDELETE(leadSourceId: string, leadSourceRecurringExpenseId: string, _options?: Configuration): Promise<RequestContext> {
+    public async deleteLeadSourceRecurringExpense(leadSourceId: string, leadSourceRecurringExpenseId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'leadSourceId' is not null or undefined
         if (leadSourceId === null || leadSourceId === undefined) {
-            throw new RequiredError("LeadSourceRecurringExpensesApi", "deleteLeadSourceRecurringExpenseUsingDELETE", "leadSourceId");
+            throw new RequiredError("LeadSourceRecurringExpensesApi", "deleteLeadSourceRecurringExpense", "leadSourceId");
         }
 
 
         // verify required parameter 'leadSourceRecurringExpenseId' is not null or undefined
         if (leadSourceRecurringExpenseId === null || leadSourceRecurringExpenseId === undefined) {
-            throw new RequiredError("LeadSourceRecurringExpensesApi", "deleteLeadSourceRecurringExpenseUsingDELETE", "leadSourceRecurringExpenseId");
+            throw new RequiredError("LeadSourceRecurringExpensesApi", "deleteLeadSourceRecurringExpense", "leadSourceRecurringExpenseId");
         }
 
 
@@ -115,18 +115,18 @@ export class LeadSourceRecurringExpensesApiRequestFactory extends BaseAPIRequest
      * @param leadSourceId The ID of the lead source this recurring expense belongs to
      * @param leadSourceRecurringExpenseId The ID of a lead source recurring expense
      */
-    public async getLeadSourceRecurringExpenseUsingGET(leadSourceId: string, leadSourceRecurringExpenseId: string, _options?: Configuration): Promise<RequestContext> {
+    public async getLeadSourceRecurringExpense(leadSourceId: string, leadSourceRecurringExpenseId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'leadSourceId' is not null or undefined
         if (leadSourceId === null || leadSourceId === undefined) {
-            throw new RequiredError("LeadSourceRecurringExpensesApi", "getLeadSourceRecurringExpenseUsingGET", "leadSourceId");
+            throw new RequiredError("LeadSourceRecurringExpensesApi", "getLeadSourceRecurringExpense", "leadSourceId");
         }
 
 
         // verify required parameter 'leadSourceRecurringExpenseId' is not null or undefined
         if (leadSourceRecurringExpenseId === null || leadSourceRecurringExpenseId === undefined) {
-            throw new RequiredError("LeadSourceRecurringExpensesApi", "getLeadSourceRecurringExpenseUsingGET", "leadSourceRecurringExpenseId");
+            throw new RequiredError("LeadSourceRecurringExpensesApi", "getLeadSourceRecurringExpense", "leadSourceRecurringExpenseId");
         }
 
 
@@ -159,18 +159,18 @@ export class LeadSourceRecurringExpensesApiRequestFactory extends BaseAPIRequest
      * @param pageSize Total number of items to return per page
      * @param pageToken Page token
      */
-    public async listExpensesIncurredFromLeadSourceRecurringExpenseUsingGET(leadSourceId: string, leadSourceRecurringExpenseId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
+    public async listExpensesIncurredFromLeadSourceRecurringExpense(leadSourceId: string, leadSourceRecurringExpenseId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'leadSourceId' is not null or undefined
         if (leadSourceId === null || leadSourceId === undefined) {
-            throw new RequiredError("LeadSourceRecurringExpensesApi", "listExpensesIncurredFromLeadSourceRecurringExpenseUsingGET", "leadSourceId");
+            throw new RequiredError("LeadSourceRecurringExpensesApi", "listExpensesIncurredFromLeadSourceRecurringExpense", "leadSourceId");
         }
 
 
         // verify required parameter 'leadSourceRecurringExpenseId' is not null or undefined
         if (leadSourceRecurringExpenseId === null || leadSourceRecurringExpenseId === undefined) {
-            throw new RequiredError("LeadSourceRecurringExpensesApi", "listExpensesIncurredFromLeadSourceRecurringExpenseUsingGET", "leadSourceRecurringExpenseId");
+            throw new RequiredError("LeadSourceRecurringExpensesApi", "listExpensesIncurredFromLeadSourceRecurringExpense", "leadSourceRecurringExpenseId");
         }
 
 
@@ -226,12 +226,12 @@ export class LeadSourceRecurringExpensesApiRequestFactory extends BaseAPIRequest
      * @param pageSize Total number of items to return per page
      * @param pageToken Page token
      */
-    public async listLeadSourceRecurringExpensesUsingGET(leadSourceId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
+    public async listLeadSourceRecurringExpenses(leadSourceId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'leadSourceId' is not null or undefined
         if (leadSourceId === null || leadSourceId === undefined) {
-            throw new RequiredError("LeadSourceRecurringExpensesApi", "listLeadSourceRecurringExpensesUsingGET", "leadSourceId");
+            throw new RequiredError("LeadSourceRecurringExpensesApi", "listLeadSourceRecurringExpenses", "leadSourceId");
         }
 
 
@@ -285,24 +285,24 @@ export class LeadSourceRecurringExpensesApiRequestFactory extends BaseAPIRequest
      * @param leadSourceRecurringExpenseUpdateRequest The request object to update a lead source recurring expense
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateLeadSourceRecurringExpenseUsingPATCH(leadSourceId: string, leadSourceRecurringExpenseId: string, leadSourceRecurringExpenseUpdateRequest: LeadSourceRecurringExpenseUpdateRequest, updateMask?: Array<string>, _options?: Configuration): Promise<RequestContext> {
+    public async updateLeadSourceRecurringExpense(leadSourceId: string, leadSourceRecurringExpenseId: string, leadSourceRecurringExpenseUpdateRequest: LeadSourceRecurringExpenseUpdateRequest, updateMask?: Array<string>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'leadSourceId' is not null or undefined
         if (leadSourceId === null || leadSourceId === undefined) {
-            throw new RequiredError("LeadSourceRecurringExpensesApi", "updateLeadSourceRecurringExpenseUsingPATCH", "leadSourceId");
+            throw new RequiredError("LeadSourceRecurringExpensesApi", "updateLeadSourceRecurringExpense", "leadSourceId");
         }
 
 
         // verify required parameter 'leadSourceRecurringExpenseId' is not null or undefined
         if (leadSourceRecurringExpenseId === null || leadSourceRecurringExpenseId === undefined) {
-            throw new RequiredError("LeadSourceRecurringExpensesApi", "updateLeadSourceRecurringExpenseUsingPATCH", "leadSourceRecurringExpenseId");
+            throw new RequiredError("LeadSourceRecurringExpensesApi", "updateLeadSourceRecurringExpense", "leadSourceRecurringExpenseId");
         }
 
 
         // verify required parameter 'leadSourceRecurringExpenseUpdateRequest' is not null or undefined
         if (leadSourceRecurringExpenseUpdateRequest === null || leadSourceRecurringExpenseUpdateRequest === undefined) {
-            throw new RequiredError("LeadSourceRecurringExpensesApi", "updateLeadSourceRecurringExpenseUsingPATCH", "leadSourceRecurringExpenseUpdateRequest");
+            throw new RequiredError("LeadSourceRecurringExpensesApi", "updateLeadSourceRecurringExpense", "leadSourceRecurringExpenseUpdateRequest");
         }
 
 
@@ -353,10 +353,10 @@ export class LeadSourceRecurringExpensesApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to createLeadSourceRecurringExpenseUsingPOST
+     * @params response Response returned by the server for a request to createLeadSourceRecurringExpense
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async createLeadSourceRecurringExpenseUsingPOSTWithHttpInfo(response: ResponseContext): Promise<HttpInfo<LeadSourceRecurringExpense >> {
+     public async createLeadSourceRecurringExpenseWithHttpInfo(response: ResponseContext): Promise<HttpInfo<LeadSourceRecurringExpense >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("201", response.httpStatusCode)) {
             const body: LeadSourceRecurringExpense = ObjectSerializer.deserialize(
@@ -410,10 +410,10 @@ export class LeadSourceRecurringExpensesApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to deleteLeadSourceRecurringExpenseUsingDELETE
+     * @params response Response returned by the server for a request to deleteLeadSourceRecurringExpense
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async deleteLeadSourceRecurringExpenseUsingDELETEWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async deleteLeadSourceRecurringExpenseWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("204", response.httpStatusCode)) {
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
@@ -463,10 +463,10 @@ export class LeadSourceRecurringExpensesApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to getLeadSourceRecurringExpenseUsingGET
+     * @params response Response returned by the server for a request to getLeadSourceRecurringExpense
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getLeadSourceRecurringExpenseUsingGETWithHttpInfo(response: ResponseContext): Promise<HttpInfo<LeadSourceRecurringExpense >> {
+     public async getLeadSourceRecurringExpenseWithHttpInfo(response: ResponseContext): Promise<HttpInfo<LeadSourceRecurringExpense >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: LeadSourceRecurringExpense = ObjectSerializer.deserialize(
@@ -520,10 +520,10 @@ export class LeadSourceRecurringExpensesApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to listExpensesIncurredFromLeadSourceRecurringExpenseUsingGET
+     * @params response Response returned by the server for a request to listExpensesIncurredFromLeadSourceRecurringExpense
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async listExpensesIncurredFromLeadSourceRecurringExpenseUsingGETWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListLeadSourceExpensesResponse >> {
+     public async listExpensesIncurredFromLeadSourceRecurringExpenseWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListLeadSourceExpensesResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: ListLeadSourceExpensesResponse = ObjectSerializer.deserialize(
@@ -584,10 +584,10 @@ export class LeadSourceRecurringExpensesApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to listLeadSourceRecurringExpensesUsingGET
+     * @params response Response returned by the server for a request to listLeadSourceRecurringExpenses
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async listLeadSourceRecurringExpensesUsingGETWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListLeadSourceRecurringExpensesResponse >> {
+     public async listLeadSourceRecurringExpensesWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListLeadSourceRecurringExpensesResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: ListLeadSourceRecurringExpensesResponse = ObjectSerializer.deserialize(
@@ -648,10 +648,10 @@ export class LeadSourceRecurringExpensesApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to updateLeadSourceRecurringExpenseUsingPATCH
+     * @params response Response returned by the server for a request to updateLeadSourceRecurringExpense
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async updateLeadSourceRecurringExpenseUsingPATCHWithHttpInfo(response: ResponseContext): Promise<HttpInfo<LeadSourceRecurringExpense >> {
+     public async updateLeadSourceRecurringExpenseWithHttpInfo(response: ResponseContext): Promise<HttpInfo<LeadSourceRecurringExpense >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: LeadSourceRecurringExpense = ObjectSerializer.deserialize(

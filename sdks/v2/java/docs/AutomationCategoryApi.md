@@ -4,22 +4,20 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createCategoryUsingPOST**](AutomationCategoryApi.md#createCategoryUsingPOST) | **POST** /v2/automationCategory | Create automation category |
-| [**createCategoryUsingPOSTWithHttpInfo**](AutomationCategoryApi.md#createCategoryUsingPOSTWithHttpInfo) | **POST** /v2/automationCategory | Create automation category |
-| [**deleteCategoriesUsingDELETE**](AutomationCategoryApi.md#deleteCategoriesUsingDELETE) | **DELETE** /v2/automationCategory | Delete automation category |
-| [**deleteCategoriesUsingDELETEWithHttpInfo**](AutomationCategoryApi.md#deleteCategoriesUsingDELETEWithHttpInfo) | **DELETE** /v2/automationCategory | Delete automation category |
-| [**listCategoriesUsingGET**](AutomationCategoryApi.md#listCategoriesUsingGET) | **GET** /v2/automationCategory | List automation categories |
-| [**listCategoriesUsingGETWithHttpInfo**](AutomationCategoryApi.md#listCategoriesUsingGETWithHttpInfo) | **GET** /v2/automationCategory | List automation categories |
-| [**patchCategoryUsingPATCH**](AutomationCategoryApi.md#patchCategoryUsingPATCH) | **PATCH** /v2/automationCategory/{id} | Update automation category |
-| [**patchCategoryUsingPATCHWithHttpInfo**](AutomationCategoryApi.md#patchCategoryUsingPATCHWithHttpInfo) | **PATCH** /v2/automationCategory/{id} | Update automation category |
-| [**saveCategoryUsingPUT**](AutomationCategoryApi.md#saveCategoryUsingPUT) | **PUT** /v2/automationCategory | Save automation category |
-| [**saveCategoryUsingPUTWithHttpInfo**](AutomationCategoryApi.md#saveCategoryUsingPUTWithHttpInfo) | **PUT** /v2/automationCategory | Save automation category |
+| [**createCategory**](AutomationCategoryApi.md#createCategory) | **POST** /v2/automationCategory | Create automation category |
+| [**createCategoryWithHttpInfo**](AutomationCategoryApi.md#createCategoryWithHttpInfo) | **POST** /v2/automationCategory | Create automation category |
+| [**deleteCategories**](AutomationCategoryApi.md#deleteCategories) | **DELETE** /v2/automationCategory | Delete automation category |
+| [**deleteCategoriesWithHttpInfo**](AutomationCategoryApi.md#deleteCategoriesWithHttpInfo) | **DELETE** /v2/automationCategory | Delete automation category |
+| [**listCategories**](AutomationCategoryApi.md#listCategories) | **GET** /v2/automationCategory | List automation categories |
+| [**listCategoriesWithHttpInfo**](AutomationCategoryApi.md#listCategoriesWithHttpInfo) | **GET** /v2/automationCategory | List automation categories |
+| [**patchCategory**](AutomationCategoryApi.md#patchCategory) | **PATCH** /v2/automationCategory/{id} | Update automation category |
+| [**patchCategoryWithHttpInfo**](AutomationCategoryApi.md#patchCategoryWithHttpInfo) | **PATCH** /v2/automationCategory/{id} | Update automation category |
 
 
 
-## createCategoryUsingPOST
+## createCategory
 
-> AutomationCategory createCategoryUsingPOST(createAutomationCategoryRequest)
+> AutomationCategory createCategory(createAutomationCategoryRequest)
 
 Create automation category
 
@@ -43,10 +41,10 @@ public class Example {
         AutomationCategoryApi apiInstance = new AutomationCategoryApi(defaultClient);
         CreateAutomationCategoryRequest createAutomationCategoryRequest = new CreateAutomationCategoryRequest(); // CreateAutomationCategoryRequest | createAutomationCategoryRequest
         try {
-            AutomationCategory result = apiInstance.createCategoryUsingPOST(createAutomationCategoryRequest);
+            AutomationCategory result = apiInstance.createCategory(createAutomationCategoryRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AutomationCategoryApi#createCategoryUsingPOST");
+            System.err.println("Exception when calling AutomationCategoryApi#createCategory");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -85,9 +83,9 @@ No authorization required
 | **403** | Forbidden |  -  |
 | **500** | Internal Server Error |  -  |
 
-## createCategoryUsingPOSTWithHttpInfo
+## createCategoryWithHttpInfo
 
-> ApiResponse<AutomationCategory> createCategoryUsingPOST createCategoryUsingPOSTWithHttpInfo(createAutomationCategoryRequest)
+> ApiResponse<AutomationCategory> createCategory createCategoryWithHttpInfo(createAutomationCategoryRequest)
 
 Create automation category
 
@@ -112,12 +110,12 @@ public class Example {
         AutomationCategoryApi apiInstance = new AutomationCategoryApi(defaultClient);
         CreateAutomationCategoryRequest createAutomationCategoryRequest = new CreateAutomationCategoryRequest(); // CreateAutomationCategoryRequest | createAutomationCategoryRequest
         try {
-            ApiResponse<AutomationCategory> response = apiInstance.createCategoryUsingPOSTWithHttpInfo(createAutomationCategoryRequest);
+            ApiResponse<AutomationCategory> response = apiInstance.createCategoryWithHttpInfo(createAutomationCategoryRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling AutomationCategoryApi#createCategoryUsingPOST");
+            System.err.println("Exception when calling AutomationCategoryApi#createCategory");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -157,9 +155,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## deleteCategoriesUsingDELETE
+## deleteCategories
 
-> void deleteCategoriesUsingDELETE(ids)
+> void deleteCategories(ids)
 
 Delete automation category
 
@@ -183,9 +181,9 @@ public class Example {
         AutomationCategoryApi apiInstance = new AutomationCategoryApi(defaultClient);
         List<Long> ids = Arrays.asList(); // List<Long> | ids
         try {
-            apiInstance.deleteCategoriesUsingDELETE(ids);
+            apiInstance.deleteCategories(ids);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AutomationCategoryApi#deleteCategoriesUsingDELETE");
+            System.err.println("Exception when calling AutomationCategoryApi#deleteCategories");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -225,9 +223,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## deleteCategoriesUsingDELETEWithHttpInfo
+## deleteCategoriesWithHttpInfo
 
-> ApiResponse<Void> deleteCategoriesUsingDELETE deleteCategoriesUsingDELETEWithHttpInfo(ids)
+> ApiResponse<Void> deleteCategories deleteCategoriesWithHttpInfo(ids)
 
 Delete automation category
 
@@ -252,11 +250,11 @@ public class Example {
         AutomationCategoryApi apiInstance = new AutomationCategoryApi(defaultClient);
         List<Long> ids = Arrays.asList(); // List<Long> | ids
         try {
-            ApiResponse<Void> response = apiInstance.deleteCategoriesUsingDELETEWithHttpInfo(ids);
+            ApiResponse<Void> response = apiInstance.deleteCategoriesWithHttpInfo(ids);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
-            System.err.println("Exception when calling AutomationCategoryApi#deleteCategoriesUsingDELETE");
+            System.err.println("Exception when calling AutomationCategoryApi#deleteCategories");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -297,9 +295,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## listCategoriesUsingGET
+## listCategories
 
-> ListAutomationCategoryResponse listCategoriesUsingGET()
+> ListAutomationCategoryResponse listCategories()
 
 List automation categories
 
@@ -322,10 +320,10 @@ public class Example {
 
         AutomationCategoryApi apiInstance = new AutomationCategoryApi(defaultClient);
         try {
-            ListAutomationCategoryResponse result = apiInstance.listCategoriesUsingGET();
+            ListAutomationCategoryResponse result = apiInstance.listCategories();
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AutomationCategoryApi#listCategoriesUsingGET");
+            System.err.println("Exception when calling AutomationCategoryApi#listCategories");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -362,9 +360,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## listCategoriesUsingGETWithHttpInfo
+## listCategoriesWithHttpInfo
 
-> ApiResponse<ListAutomationCategoryResponse> listCategoriesUsingGET listCategoriesUsingGETWithHttpInfo()
+> ApiResponse<ListAutomationCategoryResponse> listCategories listCategoriesWithHttpInfo()
 
 List automation categories
 
@@ -388,12 +386,12 @@ public class Example {
 
         AutomationCategoryApi apiInstance = new AutomationCategoryApi(defaultClient);
         try {
-            ApiResponse<ListAutomationCategoryResponse> response = apiInstance.listCategoriesUsingGETWithHttpInfo();
+            ApiResponse<ListAutomationCategoryResponse> response = apiInstance.listCategoriesWithHttpInfo();
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling AutomationCategoryApi#listCategoriesUsingGET");
+            System.err.println("Exception when calling AutomationCategoryApi#listCategories");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -431,9 +429,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## patchCategoryUsingPATCH
+## patchCategory
 
-> AutomationCategory patchCategoryUsingPATCH(id, patchAutomationCategoryRequest)
+> AutomationCategory patchCategory(id, patchAutomationCategoryRequest)
 
 Update automation category
 
@@ -458,10 +456,10 @@ public class Example {
         String id = "id_example"; // String | id
         PatchAutomationCategoryRequest patchAutomationCategoryRequest = new PatchAutomationCategoryRequest(); // PatchAutomationCategoryRequest | patchAutomationCategoryRequest
         try {
-            AutomationCategory result = apiInstance.patchCategoryUsingPATCH(id, patchAutomationCategoryRequest);
+            AutomationCategory result = apiInstance.patchCategory(id, patchAutomationCategoryRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AutomationCategoryApi#patchCategoryUsingPATCH");
+            System.err.println("Exception when calling AutomationCategoryApi#patchCategory");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -502,9 +500,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## patchCategoryUsingPATCHWithHttpInfo
+## patchCategoryWithHttpInfo
 
-> ApiResponse<AutomationCategory> patchCategoryUsingPATCH patchCategoryUsingPATCHWithHttpInfo(id, patchAutomationCategoryRequest)
+> ApiResponse<AutomationCategory> patchCategory patchCategoryWithHttpInfo(id, patchAutomationCategoryRequest)
 
 Update automation category
 
@@ -530,12 +528,12 @@ public class Example {
         String id = "id_example"; // String | id
         PatchAutomationCategoryRequest patchAutomationCategoryRequest = new PatchAutomationCategoryRequest(); // PatchAutomationCategoryRequest | patchAutomationCategoryRequest
         try {
-            ApiResponse<AutomationCategory> response = apiInstance.patchCategoryUsingPATCHWithHttpInfo(id, patchAutomationCategoryRequest);
+            ApiResponse<AutomationCategory> response = apiInstance.patchCategoryWithHttpInfo(id, patchAutomationCategoryRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling AutomationCategoryApi#patchCategoryUsingPATCH");
+            System.err.println("Exception when calling AutomationCategoryApi#patchCategory");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -552,148 +550,6 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **String**| id | |
 | **patchAutomationCategoryRequest** | [**PatchAutomationCategoryRequest**](PatchAutomationCategoryRequest.md)| patchAutomationCategoryRequest | |
-
-### Return type
-
-ApiResponse<[**AutomationCategory**](AutomationCategory.md)>
-
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **500** | Internal Server Error |  -  |
-
-
-## saveCategoryUsingPUT
-
-> AutomationCategory saveCategoryUsingPUT(saveAutomationCategoryRequest)
-
-Save automation category
-
-Creates or updates a single automation category
-
-### Example
-
-```java
-// Import classes:
-import com.keap.core.sdk.ApiClient;
-import com.keap.core.sdk.ApiException;
-import com.keap.core.sdk.Configuration;
-import com.keap.core.sdk.models.*;
-import com.keap.core.sdk.client.AutomationCategoryApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
-
-        AutomationCategoryApi apiInstance = new AutomationCategoryApi(defaultClient);
-        SaveAutomationCategoryRequest saveAutomationCategoryRequest = new SaveAutomationCategoryRequest(); // SaveAutomationCategoryRequest | saveAutomationCategoryRequest
-        try {
-            AutomationCategory result = apiInstance.saveCategoryUsingPUT(saveAutomationCategoryRequest);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling AutomationCategoryApi#saveCategoryUsingPUT");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **saveAutomationCategoryRequest** | [**SaveAutomationCategoryRequest**](SaveAutomationCategoryRequest.md)| saveAutomationCategoryRequest | |
-
-### Return type
-
-[**AutomationCategory**](AutomationCategory.md)
-
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **500** | Internal Server Error |  -  |
-
-## saveCategoryUsingPUTWithHttpInfo
-
-> ApiResponse<AutomationCategory> saveCategoryUsingPUT saveCategoryUsingPUTWithHttpInfo(saveAutomationCategoryRequest)
-
-Save automation category
-
-Creates or updates a single automation category
-
-### Example
-
-```java
-// Import classes:
-import com.keap.core.sdk.ApiClient;
-import com.keap.core.sdk.ApiException;
-import com.keap.core.sdk.ApiResponse;
-import com.keap.core.sdk.Configuration;
-import com.keap.core.sdk.models.*;
-import com.keap.core.sdk.client.AutomationCategoryApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
-
-        AutomationCategoryApi apiInstance = new AutomationCategoryApi(defaultClient);
-        SaveAutomationCategoryRequest saveAutomationCategoryRequest = new SaveAutomationCategoryRequest(); // SaveAutomationCategoryRequest | saveAutomationCategoryRequest
-        try {
-            ApiResponse<AutomationCategory> response = apiInstance.saveCategoryUsingPUTWithHttpInfo(saveAutomationCategoryRequest);
-            System.out.println("Status code: " + response.getStatusCode());
-            System.out.println("Response headers: " + response.getHeaders());
-            System.out.println("Response body: " + response.getData());
-        } catch (ApiException e) {
-            System.err.println("Exception when calling AutomationCategoryApi#saveCategoryUsingPUT");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            System.err.println("Reason: " + e.getResponseBody());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **saveAutomationCategoryRequest** | [**SaveAutomationCategoryRequest**](SaveAutomationCategoryRequest.md)| saveAutomationCategoryRequest | |
 
 ### Return type
 

@@ -4,37 +4,131 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**AddAffiliateToProgramUsingPOST**](AffiliateApi.md#addaffiliatetoprogramusingpost) | **POST** /v2/affiliates/{id}:assignToProgram | Assign Affiliate to Commission program |
-| [**AddAffiliateUsingPOST**](AffiliateApi.md#addaffiliateusingpost) | **POST** /v2/affiliates | Create an Affiliate |
-| [**AddCommissionProgramUsingPOST**](AffiliateApi.md#addcommissionprogramusingpost) | **POST** /v2/affiliates/commissionPrograms | Create an Affiliate Commission Program |
-| [**AssignProductCommissionProgramUsingPOST**](AffiliateApi.md#assignproductcommissionprogramusingpost) | **POST** /v2/affiliates/commissionPrograms/productCommissionProgram/{commission_program_id} | Assign a Product Commission Program |
-| [**AssignSubscriptionCommissionProgramUsingPOST**](AffiliateApi.md#assignsubscriptioncommissionprogramusingpost) | **POST** /v2/affiliates/commissionPrograms/subscriptionCommissionProgram/{commission_program_id} | Assign a Subscription Commission Program |
-| [**CreateDefaultCommissionProgramUsingPOST**](AffiliateApi.md#createdefaultcommissionprogramusingpost) | **POST** /v2/affiliates/commissionPrograms/defaultCommissionProgram/{commission_program_id} | Create a Default Commission Program |
-| [**CreateRedirectLinkUsingPOST**](AffiliateApi.md#createredirectlinkusingpost) | **POST** /v2/affiliates/redirects | Create an Affiliate Link |
-| [**DeleteAffiliateCommissionProgramUsingDELETE**](AffiliateApi.md#deleteaffiliatecommissionprogramusingdelete) | **DELETE** /v2/affiliates/commissionPrograms/{commission_program_id} | Delete a Commission Program |
-| [**DeleteAffiliateUsingDELETE**](AffiliateApi.md#deleteaffiliateusingdelete) | **DELETE** /v2/affiliates/{id} | Delete Affiliate |
-| [**DeleteRedirectLinkUsingDELETE**](AffiliateApi.md#deleteredirectlinkusingdelete) | **DELETE** /v2/affiliates/redirects/{redirect_id} | Delete an Affiliate Link |
-| [**GetAffiliateCommissionTotalUsingGET**](AffiliateApi.md#getaffiliatecommissiontotalusingget) | **GET** /v2/affiliates/{affiliate_id}/commissionTotal | Retrieve Affiliate Commission Earned and View LedgerURl for portal |
-| [**GetAffiliateCommissionsUsingGET**](AffiliateApi.md#getaffiliatecommissionsusingget) | **GET** /v2/affiliates/{affiliate_id}:commissions | Retrieve Affiliate Commission and Clawbacks |
-| [**GetAffiliateUsingGET1**](AffiliateApi.md#getaffiliateusingget1) | **GET** /v2/affiliates/{id} | Retrieve an Affiliate |
-| [**GetCommissionProgramUsingGET**](AffiliateApi.md#getcommissionprogramusingget) | **GET** /v2/affiliates/commissionPrograms/{commission_program_id} | Retrieve a Commission Program |
-| [**GetRedirectLinkUsingGET**](AffiliateApi.md#getredirectlinkusingget) | **GET** /v2/affiliates/redirects/{redirect_id} | Retrieve an Affiliate Link |
-| [**ListAffiliateCommissionProgramsUsingGET**](AffiliateApi.md#listaffiliatecommissionprogramsusingget) | **GET** /v2/affiliates/commissionPrograms | List Affiliate Commission Programs |
-| [**ListAffiliateLinksUsingGET**](AffiliateApi.md#listaffiliatelinksusingget) | **GET** /v2/affiliates/redirects | List Affiliate Links |
-| [**ListSummariesUsingGET1**](AffiliateApi.md#listsummariesusingget1) | **GET** /v2/affiliates/summaries | List Affiliate Summaries |
-| [**RemoveAffiliateFromProgramUsingPOST**](AffiliateApi.md#removeaffiliatefromprogramusingpost) | **POST** /v2/affiliates/{id}:removeFromProgram | Remove an Affiliate from a Commission Program |
-| [**RemoveProductCommissionFromCommissionsUsingPOST**](AffiliateApi.md#removeproductcommissionfromcommissionsusingpost) | **POST** /v2/affiliates/commissionPrograms/{commission_id}:removeProductCommission | Remove a Product from a Commission Program |
-| [**RemoveSubscriptionPlanCommissionFromCommissionsUsingPOST**](AffiliateApi.md#removesubscriptionplancommissionfromcommissionsusingpost) | **POST** /v2/affiliates/commissionPrograms/{commission_id}:removeSubscriptionCommission | Remove a Subscription from a Commission Program |
-| [**UpdateAffiliateUsingPATCH**](AffiliateApi.md#updateaffiliateusingpatch) | **PATCH** /v2/affiliates/{id} | Update an Affiliate |
-| [**UpdateCommissionProgramUsingPATCH**](AffiliateApi.md#updatecommissionprogramusingpatch) | **PATCH** /v2/affiliates/commissionPrograms/{commission_program_id} | Update an Affiliate Commission Program |
-| [**UpdateDefaultCommissionProgramUsingPATCH**](AffiliateApi.md#updatedefaultcommissionprogramusingpatch) | **PATCH** /v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Update a Default Commission Program |
-| [**UpdateProductCommissionProgramUsingPATCH**](AffiliateApi.md#updateproductcommissionprogramusingpatch) | **PATCH** /v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Update a Product Commission Program |
-| [**UpdateRedirectLinkUsingPATCH**](AffiliateApi.md#updateredirectlinkusingpatch) | **PATCH** /v2/affiliates/redirects/{redirect_id} | Update an Affiliate Link |
-| [**UpdateSubscriptionCommissionProgramUsingPATCH**](AffiliateApi.md#updatesubscriptioncommissionprogramusingpatch) | **PATCH** /v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id} | Update a Subscription Commission Program |
+| [**AddAffiliate**](AffiliateApi.md#addaffiliate) | **POST** /v2/affiliates | Create an Affiliate |
+| [**AddAffiliateToProgram**](AffiliateApi.md#addaffiliatetoprogram) | **POST** /v2/affiliates/{id}:assignToProgram | Assign Affiliate to Commission program |
+| [**AddCommissionProgram**](AffiliateApi.md#addcommissionprogram) | **POST** /v2/affiliates/commissionPrograms | Create an Affiliate Commission Program |
+| [**AssignProductCommissionProgram**](AffiliateApi.md#assignproductcommissionprogram) | **POST** /v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Assign a Product Commission Program |
+| [**AssignSubscriptionCommissionProgram**](AffiliateApi.md#assignsubscriptioncommissionprogram) | **POST** /v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id} | Assign a Subscription Commission Program |
+| [**CreateDefaultCommissionProgram**](AffiliateApi.md#createdefaultcommissionprogram) | **POST** /v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Create a Default Commission Program |
+| [**CreateRedirectLink**](AffiliateApi.md#createredirectlink) | **POST** /v2/affiliates/redirects | Create an Affiliate Link |
+| [**DeleteAffiliate**](AffiliateApi.md#deleteaffiliate) | **DELETE** /v2/affiliates/{id} | Delete Affiliate |
+| [**DeleteAffiliateCommissionProgram**](AffiliateApi.md#deleteaffiliatecommissionprogram) | **DELETE** /v2/affiliates/commissionPrograms/{commission_program_id} | Delete a Commission Program |
+| [**DeleteRedirectLink**](AffiliateApi.md#deleteredirectlink) | **DELETE** /v2/affiliates/redirects/{redirect_id} | Delete an Affiliate Link |
+| [**GetAffiliate**](AffiliateApi.md#getaffiliate) | **GET** /v2/affiliates/{id} | Retrieve an Affiliate |
+| [**GetAffiliateCommissionTotal**](AffiliateApi.md#getaffiliatecommissiontotal) | **GET** /v2/affiliates/{affiliate_id}/commissionTotal | Retrieve Affiliate Commission Earned and View LedgerURl for portal |
+| [**GetAffiliateCommissions**](AffiliateApi.md#getaffiliatecommissions) | **GET** /v2/affiliates/{affiliate_id}:commissions | Retrieve Affiliate Commission and Clawbacks |
+| [**GetCommissionProgram**](AffiliateApi.md#getcommissionprogram) | **GET** /v2/affiliates/commissionPrograms/{commission_program_id} | Retrieve a Commission Program |
+| [**GetRedirectLink**](AffiliateApi.md#getredirectlink) | **GET** /v2/affiliates/redirects/{redirect_id} | Retrieve an Affiliate Link |
+| [**ListAffiliateCommissionPrograms**](AffiliateApi.md#listaffiliatecommissionprograms) | **GET** /v2/affiliates/commissionPrograms | List Affiliate Commission Programs |
+| [**ListAffiliateLinks**](AffiliateApi.md#listaffiliatelinks) | **GET** /v2/affiliates/redirects | List Affiliate Links |
+| [**ListSummaries**](AffiliateApi.md#listsummaries) | **GET** /v2/affiliates/summaries | List Affiliate Summaries |
+| [**RemoveAffiliateFromProgram**](AffiliateApi.md#removeaffiliatefromprogram) | **POST** /v2/affiliates/{id}:removeFromProgram | Remove an Affiliate from a Commission Program |
+| [**RemoveProductCommissionFromCommissions**](AffiliateApi.md#removeproductcommissionfromcommissions) | **POST** /v2/affiliates/commissionPrograms/{commission_id}:removeProductCommission | Remove a Product from a Commission Program |
+| [**RemoveSubscriptionPlanCommissionFromCommissions**](AffiliateApi.md#removesubscriptionplancommissionfromcommissions) | **POST** /v2/affiliates/commissionPrograms/{commission_id}:removeSubscriptionCommission | Remove a Subscription from a Commission Program |
+| [**UpdateAffiliate**](AffiliateApi.md#updateaffiliate) | **PATCH** /v2/affiliates/{id} | Update an Affiliate |
+| [**UpdateCommissionProgram**](AffiliateApi.md#updatecommissionprogram) | **PATCH** /v2/affiliates/commissionPrograms/{commission_program_id} | Update an Affiliate Commission Program |
+| [**UpdateDefaultCommissionProgram**](AffiliateApi.md#updatedefaultcommissionprogram) | **PATCH** /v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Update a Default Commission Program |
+| [**UpdateProductCommissionProgram**](AffiliateApi.md#updateproductcommissionprogram) | **PATCH** /v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Update a Product Commission Program |
+| [**UpdateRedirectLink**](AffiliateApi.md#updateredirectlink) | **PATCH** /v2/affiliates/redirects/{redirect_id} | Update an Affiliate Link |
+| [**UpdateSubscriptionCommissionProgram**](AffiliateApi.md#updatesubscriptioncommissionprogram) | **PATCH** /v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id} | Update a Subscription Commission Program |
 
-<a id="addaffiliatetoprogramusingpost"></a>
-# **AddAffiliateToProgramUsingPOST**
-> void AddAffiliateToProgramUsingPOST (string id, AffiliateAddToProgramRequest affiliateAddToProgramRequest)
+<a id="addaffiliate"></a>
+# **AddAffiliate**
+> RestAffiliate AddAffiliate (CreateAffiliateRequest? createAffiliateRequest = null)
+
+Create an Affiliate
+
+Creates a single Affiliate
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class AddAffiliateExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm/rest";
+            var apiInstance = new AffiliateApi(config);
+            var createAffiliateRequest = new CreateAffiliateRequest?(); // CreateAffiliateRequest? | Affiliate request to insert (optional) 
+
+            try
+            {
+                // Create an Affiliate
+                RestAffiliate result = apiInstance.AddAffiliate(createAffiliateRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling AffiliateApi.AddAffiliate: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the AddAffiliateWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Create an Affiliate
+    ApiResponse<RestAffiliate> response = apiInstance.AddAffiliateWithHttpInfo(createAffiliateRequest);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling AffiliateApi.AddAffiliateWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **createAffiliateRequest** | [**CreateAffiliateRequest?**](CreateAffiliateRequest?.md) | Affiliate request to insert | [optional]  |
+
+### Return type
+
+[**RestAffiliate**](RestAffiliate.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="addaffiliatetoprogram"></a>
+# **AddAffiliateToProgram**
+> void AddAffiliateToProgram (string id, AffiliateAddToProgramRequest affiliateAddToProgramRequest)
 
 Assign Affiliate to Commission program
 
@@ -50,7 +144,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class AddAffiliateToProgramUsingPOSTExample
+    public class AddAffiliateToProgramExample
     {
         public static void Main()
         {
@@ -63,11 +157,11 @@ namespace Example
             try
             {
                 // Assign Affiliate to Commission program
-                apiInstance.AddAffiliateToProgramUsingPOST(id, affiliateAddToProgramRequest);
+                apiInstance.AddAffiliateToProgram(id, affiliateAddToProgramRequest);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling AffiliateApi.AddAffiliateToProgramUsingPOST: " + e.Message);
+                Debug.Print("Exception when calling AffiliateApi.AddAffiliateToProgram: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -76,18 +170,18 @@ namespace Example
 }
 ```
 
-#### Using the AddAffiliateToProgramUsingPOSTWithHttpInfo variant
+#### Using the AddAffiliateToProgramWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Assign Affiliate to Commission program
-    apiInstance.AddAffiliateToProgramUsingPOSTWithHttpInfo(id, affiliateAddToProgramRequest);
+    apiInstance.AddAffiliateToProgramWithHttpInfo(id, affiliateAddToProgramRequest);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling AffiliateApi.AddAffiliateToProgramUsingPOSTWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling AffiliateApi.AddAffiliateToProgramWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -124,103 +218,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="addaffiliateusingpost"></a>
-# **AddAffiliateUsingPOST**
-> RestAffiliate AddAffiliateUsingPOST (CreateAffiliateRequest? createAffiliateRequest = null)
-
-Create an Affiliate
-
-Creates a single Affiliate
-
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using Keap.Core.V2.Api;
-using Keap.Core.V2.Client;
-using Keap.Core.V2.Model;
-
-namespace Example
-{
-    public class AddAffiliateUsingPOSTExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
-            var apiInstance = new AffiliateApi(config);
-            var createAffiliateRequest = new CreateAffiliateRequest?(); // CreateAffiliateRequest? | Affiliate request to insert (optional) 
-
-            try
-            {
-                // Create an Affiliate
-                RestAffiliate result = apiInstance.AddAffiliateUsingPOST(createAffiliateRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling AffiliateApi.AddAffiliateUsingPOST: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the AddAffiliateUsingPOSTWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Create an Affiliate
-    ApiResponse<RestAffiliate> response = apiInstance.AddAffiliateUsingPOSTWithHttpInfo(createAffiliateRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling AffiliateApi.AddAffiliateUsingPOSTWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| **createAffiliateRequest** | [**CreateAffiliateRequest?**](CreateAffiliateRequest?.md) | Affiliate request to insert | [optional]  |
-
-### Return type
-
-[**RestAffiliate**](RestAffiliate.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **201** | Created |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **500** | Internal Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a id="addcommissionprogramusingpost"></a>
-# **AddCommissionProgramUsingPOST**
-> AffiliateCommissionProgramResponse AddCommissionProgramUsingPOST (CreateCommissionProgramRequest? createCommissionProgramRequest = null)
+<a id="addcommissionprogram"></a>
+# **AddCommissionProgram**
+> AffiliateCommissionProgramResponse AddCommissionProgram (CreateCommissionProgramRequest? createCommissionProgramRequest = null)
 
 Create an Affiliate Commission Program
 
@@ -236,7 +236,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class AddCommissionProgramUsingPOSTExample
+    public class AddCommissionProgramExample
     {
         public static void Main()
         {
@@ -248,12 +248,12 @@ namespace Example
             try
             {
                 // Create an Affiliate Commission Program
-                AffiliateCommissionProgramResponse result = apiInstance.AddCommissionProgramUsingPOST(createCommissionProgramRequest);
+                AffiliateCommissionProgramResponse result = apiInstance.AddCommissionProgram(createCommissionProgramRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling AffiliateApi.AddCommissionProgramUsingPOST: " + e.Message);
+                Debug.Print("Exception when calling AffiliateApi.AddCommissionProgram: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -262,21 +262,21 @@ namespace Example
 }
 ```
 
-#### Using the AddCommissionProgramUsingPOSTWithHttpInfo variant
+#### Using the AddCommissionProgramWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Create an Affiliate Commission Program
-    ApiResponse<AffiliateCommissionProgramResponse> response = apiInstance.AddCommissionProgramUsingPOSTWithHttpInfo(createCommissionProgramRequest);
+    ApiResponse<AffiliateCommissionProgramResponse> response = apiInstance.AddCommissionProgramWithHttpInfo(createCommissionProgramRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling AffiliateApi.AddCommissionProgramUsingPOSTWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling AffiliateApi.AddCommissionProgramWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -312,9 +312,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="assignproductcommissionprogramusingpost"></a>
-# **AssignProductCommissionProgramUsingPOST**
-> ProductCommissionProgram AssignProductCommissionProgramUsingPOST (string commissionProgramId, CreateProductCommissionProgramRequest? createProductCommissionProgramRequest = null)
+<a id="assignproductcommissionprogram"></a>
+# **AssignProductCommissionProgram**
+> ProductCommissionProgram AssignProductCommissionProgram (string commissionProgramId, CreateProductCommissionProgramRequest? createProductCommissionProgramRequest = null)
 
 Assign a Product Commission Program
 
@@ -330,7 +330,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class AssignProductCommissionProgramUsingPOSTExample
+    public class AssignProductCommissionProgramExample
     {
         public static void Main()
         {
@@ -343,12 +343,12 @@ namespace Example
             try
             {
                 // Assign a Product Commission Program
-                ProductCommissionProgram result = apiInstance.AssignProductCommissionProgramUsingPOST(commissionProgramId, createProductCommissionProgramRequest);
+                ProductCommissionProgram result = apiInstance.AssignProductCommissionProgram(commissionProgramId, createProductCommissionProgramRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling AffiliateApi.AssignProductCommissionProgramUsingPOST: " + e.Message);
+                Debug.Print("Exception when calling AffiliateApi.AssignProductCommissionProgram: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -357,21 +357,21 @@ namespace Example
 }
 ```
 
-#### Using the AssignProductCommissionProgramUsingPOSTWithHttpInfo variant
+#### Using the AssignProductCommissionProgramWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Assign a Product Commission Program
-    ApiResponse<ProductCommissionProgram> response = apiInstance.AssignProductCommissionProgramUsingPOSTWithHttpInfo(commissionProgramId, createProductCommissionProgramRequest);
+    ApiResponse<ProductCommissionProgram> response = apiInstance.AssignProductCommissionProgramWithHttpInfo(commissionProgramId, createProductCommissionProgramRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling AffiliateApi.AssignProductCommissionProgramUsingPOSTWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling AffiliateApi.AssignProductCommissionProgramWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -408,9 +408,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="assignsubscriptioncommissionprogramusingpost"></a>
-# **AssignSubscriptionCommissionProgramUsingPOST**
-> SubscriptionCommissionProgram AssignSubscriptionCommissionProgramUsingPOST (string commissionProgramId, CreateSubscriptionCommissionProgramRequest? createSubscriptionCommissionProgramRequest = null)
+<a id="assignsubscriptioncommissionprogram"></a>
+# **AssignSubscriptionCommissionProgram**
+> SubscriptionCommissionProgram AssignSubscriptionCommissionProgram (string commissionProgramId, CreateSubscriptionCommissionProgramRequest? createSubscriptionCommissionProgramRequest = null)
 
 Assign a Subscription Commission Program
 
@@ -426,7 +426,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class AssignSubscriptionCommissionProgramUsingPOSTExample
+    public class AssignSubscriptionCommissionProgramExample
     {
         public static void Main()
         {
@@ -439,12 +439,12 @@ namespace Example
             try
             {
                 // Assign a Subscription Commission Program
-                SubscriptionCommissionProgram result = apiInstance.AssignSubscriptionCommissionProgramUsingPOST(commissionProgramId, createSubscriptionCommissionProgramRequest);
+                SubscriptionCommissionProgram result = apiInstance.AssignSubscriptionCommissionProgram(commissionProgramId, createSubscriptionCommissionProgramRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling AffiliateApi.AssignSubscriptionCommissionProgramUsingPOST: " + e.Message);
+                Debug.Print("Exception when calling AffiliateApi.AssignSubscriptionCommissionProgram: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -453,21 +453,21 @@ namespace Example
 }
 ```
 
-#### Using the AssignSubscriptionCommissionProgramUsingPOSTWithHttpInfo variant
+#### Using the AssignSubscriptionCommissionProgramWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Assign a Subscription Commission Program
-    ApiResponse<SubscriptionCommissionProgram> response = apiInstance.AssignSubscriptionCommissionProgramUsingPOSTWithHttpInfo(commissionProgramId, createSubscriptionCommissionProgramRequest);
+    ApiResponse<SubscriptionCommissionProgram> response = apiInstance.AssignSubscriptionCommissionProgramWithHttpInfo(commissionProgramId, createSubscriptionCommissionProgramRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling AffiliateApi.AssignSubscriptionCommissionProgramUsingPOSTWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling AffiliateApi.AssignSubscriptionCommissionProgramWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -504,9 +504,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="createdefaultcommissionprogramusingpost"></a>
-# **CreateDefaultCommissionProgramUsingPOST**
-> SetDefaultCommissionProgramResponse CreateDefaultCommissionProgramUsingPOST (string commissionProgramId, CreateDefaultCommissionProgramRequest? createDefaultCommissionProgramRequest = null)
+<a id="createdefaultcommissionprogram"></a>
+# **CreateDefaultCommissionProgram**
+> SetDefaultCommissionProgramResponse CreateDefaultCommissionProgram (string commissionProgramId, CreateDefaultCommissionProgramRequest? createDefaultCommissionProgramRequest = null)
 
 Create a Default Commission Program
 
@@ -522,7 +522,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class CreateDefaultCommissionProgramUsingPOSTExample
+    public class CreateDefaultCommissionProgramExample
     {
         public static void Main()
         {
@@ -535,12 +535,12 @@ namespace Example
             try
             {
                 // Create a Default Commission Program
-                SetDefaultCommissionProgramResponse result = apiInstance.CreateDefaultCommissionProgramUsingPOST(commissionProgramId, createDefaultCommissionProgramRequest);
+                SetDefaultCommissionProgramResponse result = apiInstance.CreateDefaultCommissionProgram(commissionProgramId, createDefaultCommissionProgramRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling AffiliateApi.CreateDefaultCommissionProgramUsingPOST: " + e.Message);
+                Debug.Print("Exception when calling AffiliateApi.CreateDefaultCommissionProgram: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -549,21 +549,21 @@ namespace Example
 }
 ```
 
-#### Using the CreateDefaultCommissionProgramUsingPOSTWithHttpInfo variant
+#### Using the CreateDefaultCommissionProgramWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Create a Default Commission Program
-    ApiResponse<SetDefaultCommissionProgramResponse> response = apiInstance.CreateDefaultCommissionProgramUsingPOSTWithHttpInfo(commissionProgramId, createDefaultCommissionProgramRequest);
+    ApiResponse<SetDefaultCommissionProgramResponse> response = apiInstance.CreateDefaultCommissionProgramWithHttpInfo(commissionProgramId, createDefaultCommissionProgramRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling AffiliateApi.CreateDefaultCommissionProgramUsingPOSTWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling AffiliateApi.CreateDefaultCommissionProgramWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -600,9 +600,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="createredirectlinkusingpost"></a>
-# **CreateRedirectLinkUsingPOST**
-> AffiliateLink CreateRedirectLinkUsingPOST (CreateOrUpdateAffiliateLinkRequest createOrUpdateAffiliateLinkRequest)
+<a id="createredirectlink"></a>
+# **CreateRedirectLink**
+> AffiliateLink CreateRedirectLink (CreateOrUpdateAffiliateLinkRequest createOrUpdateAffiliateLinkRequest)
 
 Create an Affiliate Link
 
@@ -618,7 +618,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class CreateRedirectLinkUsingPOSTExample
+    public class CreateRedirectLinkExample
     {
         public static void Main()
         {
@@ -630,12 +630,12 @@ namespace Example
             try
             {
                 // Create an Affiliate Link
-                AffiliateLink result = apiInstance.CreateRedirectLinkUsingPOST(createOrUpdateAffiliateLinkRequest);
+                AffiliateLink result = apiInstance.CreateRedirectLink(createOrUpdateAffiliateLinkRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling AffiliateApi.CreateRedirectLinkUsingPOST: " + e.Message);
+                Debug.Print("Exception when calling AffiliateApi.CreateRedirectLink: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -644,21 +644,21 @@ namespace Example
 }
 ```
 
-#### Using the CreateRedirectLinkUsingPOSTWithHttpInfo variant
+#### Using the CreateRedirectLinkWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Create an Affiliate Link
-    ApiResponse<AffiliateLink> response = apiInstance.CreateRedirectLinkUsingPOSTWithHttpInfo(createOrUpdateAffiliateLinkRequest);
+    ApiResponse<AffiliateLink> response = apiInstance.CreateRedirectLinkWithHttpInfo(createOrUpdateAffiliateLinkRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling AffiliateApi.CreateRedirectLinkUsingPOSTWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling AffiliateApi.CreateRedirectLinkWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -694,100 +694,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="deleteaffiliatecommissionprogramusingdelete"></a>
-# **DeleteAffiliateCommissionProgramUsingDELETE**
-> void DeleteAffiliateCommissionProgramUsingDELETE (string commissionProgramId)
-
-Delete a Commission Program
-
-Deletes a Commission Program
-
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using Keap.Core.V2.Api;
-using Keap.Core.V2.Client;
-using Keap.Core.V2.Model;
-
-namespace Example
-{
-    public class DeleteAffiliateCommissionProgramUsingDELETEExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
-            var apiInstance = new AffiliateApi(config);
-            var commissionProgramId = "commissionProgramId_example";  // string | commission_program_id
-
-            try
-            {
-                // Delete a Commission Program
-                apiInstance.DeleteAffiliateCommissionProgramUsingDELETE(commissionProgramId);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling AffiliateApi.DeleteAffiliateCommissionProgramUsingDELETE: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the DeleteAffiliateCommissionProgramUsingDELETEWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Delete a Commission Program
-    apiInstance.DeleteAffiliateCommissionProgramUsingDELETEWithHttpInfo(commissionProgramId);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling AffiliateApi.DeleteAffiliateCommissionProgramUsingDELETEWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| **commissionProgramId** | **string** | commission_program_id |  |
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **204** | No Content |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **500** | Internal Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a id="deleteaffiliateusingdelete"></a>
-# **DeleteAffiliateUsingDELETE**
-> void DeleteAffiliateUsingDELETE (string id)
+<a id="deleteaffiliate"></a>
+# **DeleteAffiliate**
+> void DeleteAffiliate (string id)
 
 Delete Affiliate
 
@@ -803,7 +712,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class DeleteAffiliateUsingDELETEExample
+    public class DeleteAffiliateExample
     {
         public static void Main()
         {
@@ -815,11 +724,11 @@ namespace Example
             try
             {
                 // Delete Affiliate
-                apiInstance.DeleteAffiliateUsingDELETE(id);
+                apiInstance.DeleteAffiliate(id);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling AffiliateApi.DeleteAffiliateUsingDELETE: " + e.Message);
+                Debug.Print("Exception when calling AffiliateApi.DeleteAffiliate: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -828,18 +737,18 @@ namespace Example
 }
 ```
 
-#### Using the DeleteAffiliateUsingDELETEWithHttpInfo variant
+#### Using the DeleteAffiliateWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Delete Affiliate
-    apiInstance.DeleteAffiliateUsingDELETEWithHttpInfo(id);
+    apiInstance.DeleteAffiliateWithHttpInfo(id);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling AffiliateApi.DeleteAffiliateUsingDELETEWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling AffiliateApi.DeleteAffiliateWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -876,9 +785,100 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="deleteredirectlinkusingdelete"></a>
-# **DeleteRedirectLinkUsingDELETE**
-> void DeleteRedirectLinkUsingDELETE (string redirectId)
+<a id="deleteaffiliatecommissionprogram"></a>
+# **DeleteAffiliateCommissionProgram**
+> void DeleteAffiliateCommissionProgram (string commissionProgramId)
+
+Delete a Commission Program
+
+Deletes a Commission Program
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class DeleteAffiliateCommissionProgramExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm/rest";
+            var apiInstance = new AffiliateApi(config);
+            var commissionProgramId = "commissionProgramId_example";  // string | commission_program_id
+
+            try
+            {
+                // Delete a Commission Program
+                apiInstance.DeleteAffiliateCommissionProgram(commissionProgramId);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling AffiliateApi.DeleteAffiliateCommissionProgram: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the DeleteAffiliateCommissionProgramWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Delete a Commission Program
+    apiInstance.DeleteAffiliateCommissionProgramWithHttpInfo(commissionProgramId);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling AffiliateApi.DeleteAffiliateCommissionProgramWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **commissionProgramId** | **string** | commission_program_id |  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="deleteredirectlink"></a>
+# **DeleteRedirectLink**
+> void DeleteRedirectLink (string redirectId)
 
 Delete an Affiliate Link
 
@@ -894,7 +894,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class DeleteRedirectLinkUsingDELETEExample
+    public class DeleteRedirectLinkExample
     {
         public static void Main()
         {
@@ -906,11 +906,11 @@ namespace Example
             try
             {
                 // Delete an Affiliate Link
-                apiInstance.DeleteRedirectLinkUsingDELETE(redirectId);
+                apiInstance.DeleteRedirectLink(redirectId);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling AffiliateApi.DeleteRedirectLinkUsingDELETE: " + e.Message);
+                Debug.Print("Exception when calling AffiliateApi.DeleteRedirectLink: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -919,18 +919,18 @@ namespace Example
 }
 ```
 
-#### Using the DeleteRedirectLinkUsingDELETEWithHttpInfo variant
+#### Using the DeleteRedirectLinkWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Delete an Affiliate Link
-    apiInstance.DeleteRedirectLinkUsingDELETEWithHttpInfo(redirectId);
+    apiInstance.DeleteRedirectLinkWithHttpInfo(redirectId);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling AffiliateApi.DeleteRedirectLinkUsingDELETEWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling AffiliateApi.DeleteRedirectLinkWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -967,9 +967,104 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="getaffiliatecommissiontotalusingget"></a>
-# **GetAffiliateCommissionTotalUsingGET**
-> AffiliateCommissionEarned GetAffiliateCommissionTotalUsingGET (string affiliateId)
+<a id="getaffiliate"></a>
+# **GetAffiliate**
+> RestAffiliate GetAffiliate (string id)
+
+Retrieve an Affiliate
+
+Retrieves a single Affiliate
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class GetAffiliateExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm/rest";
+            var apiInstance = new AffiliateApi(config);
+            var id = "id_example";  // string | id
+
+            try
+            {
+                // Retrieve an Affiliate
+                RestAffiliate result = apiInstance.GetAffiliate(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling AffiliateApi.GetAffiliate: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GetAffiliateWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Retrieve an Affiliate
+    ApiResponse<RestAffiliate> response = apiInstance.GetAffiliateWithHttpInfo(id);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling AffiliateApi.GetAffiliateWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **id** | **string** | id |  |
+
+### Return type
+
+[**RestAffiliate**](RestAffiliate.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="getaffiliatecommissiontotal"></a>
+# **GetAffiliateCommissionTotal**
+> AffiliateCommissionEarned GetAffiliateCommissionTotal (string affiliateId)
 
 Retrieve Affiliate Commission Earned and View LedgerURl for portal
 
@@ -985,7 +1080,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class GetAffiliateCommissionTotalUsingGETExample
+    public class GetAffiliateCommissionTotalExample
     {
         public static void Main()
         {
@@ -997,12 +1092,12 @@ namespace Example
             try
             {
                 // Retrieve Affiliate Commission Earned and View LedgerURl for portal
-                AffiliateCommissionEarned result = apiInstance.GetAffiliateCommissionTotalUsingGET(affiliateId);
+                AffiliateCommissionEarned result = apiInstance.GetAffiliateCommissionTotal(affiliateId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling AffiliateApi.GetAffiliateCommissionTotalUsingGET: " + e.Message);
+                Debug.Print("Exception when calling AffiliateApi.GetAffiliateCommissionTotal: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -1011,21 +1106,21 @@ namespace Example
 }
 ```
 
-#### Using the GetAffiliateCommissionTotalUsingGETWithHttpInfo variant
+#### Using the GetAffiliateCommissionTotalWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Retrieve Affiliate Commission Earned and View LedgerURl for portal
-    ApiResponse<AffiliateCommissionEarned> response = apiInstance.GetAffiliateCommissionTotalUsingGETWithHttpInfo(affiliateId);
+    ApiResponse<AffiliateCommissionEarned> response = apiInstance.GetAffiliateCommissionTotalWithHttpInfo(affiliateId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling AffiliateApi.GetAffiliateCommissionTotalUsingGETWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling AffiliateApi.GetAffiliateCommissionTotalWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -1062,9 +1157,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="getaffiliatecommissionsusingget"></a>
-# **GetAffiliateCommissionsUsingGET**
-> ListAffiliateCommissionsResponse GetAffiliateCommissionsUsingGET (string affiliateId, string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
+<a id="getaffiliatecommissions"></a>
+# **GetAffiliateCommissions**
+> ListAffiliateCommissionsResponse GetAffiliateCommissions (string affiliateId, string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
 
 Retrieve Affiliate Commission and Clawbacks
 
@@ -1080,7 +1175,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class GetAffiliateCommissionsUsingGETExample
+    public class GetAffiliateCommissionsExample
     {
         public static void Main()
         {
@@ -1096,12 +1191,12 @@ namespace Example
             try
             {
                 // Retrieve Affiliate Commission and Clawbacks
-                ListAffiliateCommissionsResponse result = apiInstance.GetAffiliateCommissionsUsingGET(affiliateId, filter, orderBy, pageSize, pageToken);
+                ListAffiliateCommissionsResponse result = apiInstance.GetAffiliateCommissions(affiliateId, filter, orderBy, pageSize, pageToken);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling AffiliateApi.GetAffiliateCommissionsUsingGET: " + e.Message);
+                Debug.Print("Exception when calling AffiliateApi.GetAffiliateCommissions: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -1110,21 +1205,21 @@ namespace Example
 }
 ```
 
-#### Using the GetAffiliateCommissionsUsingGETWithHttpInfo variant
+#### Using the GetAffiliateCommissionsWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Retrieve Affiliate Commission and Clawbacks
-    ApiResponse<ListAffiliateCommissionsResponse> response = apiInstance.GetAffiliateCommissionsUsingGETWithHttpInfo(affiliateId, filter, orderBy, pageSize, pageToken);
+    ApiResponse<ListAffiliateCommissionsResponse> response = apiInstance.GetAffiliateCommissionsWithHttpInfo(affiliateId, filter, orderBy, pageSize, pageToken);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling AffiliateApi.GetAffiliateCommissionsUsingGETWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling AffiliateApi.GetAffiliateCommissionsWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -1165,104 +1260,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="getaffiliateusingget1"></a>
-# **GetAffiliateUsingGET1**
-> RestAffiliate GetAffiliateUsingGET1 (string id)
-
-Retrieve an Affiliate
-
-Retrieves a single Affiliate
-
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using Keap.Core.V2.Api;
-using Keap.Core.V2.Client;
-using Keap.Core.V2.Model;
-
-namespace Example
-{
-    public class GetAffiliateUsingGET1Example
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
-            var apiInstance = new AffiliateApi(config);
-            var id = "id_example";  // string | id
-
-            try
-            {
-                // Retrieve an Affiliate
-                RestAffiliate result = apiInstance.GetAffiliateUsingGET1(id);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling AffiliateApi.GetAffiliateUsingGET1: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetAffiliateUsingGET1WithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieve an Affiliate
-    ApiResponse<RestAffiliate> response = apiInstance.GetAffiliateUsingGET1WithHttpInfo(id);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling AffiliateApi.GetAffiliateUsingGET1WithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| **id** | **string** | id |  |
-
-### Return type
-
-[**RestAffiliate**](RestAffiliate.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **500** | Internal Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a id="getcommissionprogramusingget"></a>
-# **GetCommissionProgramUsingGET**
-> AffiliateProgramV2 GetCommissionProgramUsingGET (string commissionProgramId)
+<a id="getcommissionprogram"></a>
+# **GetCommissionProgram**
+> AffiliateProgramV2 GetCommissionProgram (string commissionProgramId)
 
 Retrieve a Commission Program
 
@@ -1278,7 +1278,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class GetCommissionProgramUsingGETExample
+    public class GetCommissionProgramExample
     {
         public static void Main()
         {
@@ -1290,12 +1290,12 @@ namespace Example
             try
             {
                 // Retrieve a Commission Program
-                AffiliateProgramV2 result = apiInstance.GetCommissionProgramUsingGET(commissionProgramId);
+                AffiliateProgramV2 result = apiInstance.GetCommissionProgram(commissionProgramId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling AffiliateApi.GetCommissionProgramUsingGET: " + e.Message);
+                Debug.Print("Exception when calling AffiliateApi.GetCommissionProgram: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -1304,21 +1304,21 @@ namespace Example
 }
 ```
 
-#### Using the GetCommissionProgramUsingGETWithHttpInfo variant
+#### Using the GetCommissionProgramWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Retrieve a Commission Program
-    ApiResponse<AffiliateProgramV2> response = apiInstance.GetCommissionProgramUsingGETWithHttpInfo(commissionProgramId);
+    ApiResponse<AffiliateProgramV2> response = apiInstance.GetCommissionProgramWithHttpInfo(commissionProgramId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling AffiliateApi.GetCommissionProgramUsingGETWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling AffiliateApi.GetCommissionProgramWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -1355,9 +1355,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="getredirectlinkusingget"></a>
-# **GetRedirectLinkUsingGET**
-> AffiliateLink GetRedirectLinkUsingGET (string redirectId)
+<a id="getredirectlink"></a>
+# **GetRedirectLink**
+> AffiliateLink GetRedirectLink (string redirectId)
 
 Retrieve an Affiliate Link
 
@@ -1373,7 +1373,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class GetRedirectLinkUsingGETExample
+    public class GetRedirectLinkExample
     {
         public static void Main()
         {
@@ -1385,12 +1385,12 @@ namespace Example
             try
             {
                 // Retrieve an Affiliate Link
-                AffiliateLink result = apiInstance.GetRedirectLinkUsingGET(redirectId);
+                AffiliateLink result = apiInstance.GetRedirectLink(redirectId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling AffiliateApi.GetRedirectLinkUsingGET: " + e.Message);
+                Debug.Print("Exception when calling AffiliateApi.GetRedirectLink: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -1399,21 +1399,21 @@ namespace Example
 }
 ```
 
-#### Using the GetRedirectLinkUsingGETWithHttpInfo variant
+#### Using the GetRedirectLinkWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Retrieve an Affiliate Link
-    ApiResponse<AffiliateLink> response = apiInstance.GetRedirectLinkUsingGETWithHttpInfo(redirectId);
+    ApiResponse<AffiliateLink> response = apiInstance.GetRedirectLinkWithHttpInfo(redirectId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling AffiliateApi.GetRedirectLinkUsingGETWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling AffiliateApi.GetRedirectLinkWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -1450,9 +1450,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="listaffiliatecommissionprogramsusingget"></a>
-# **ListAffiliateCommissionProgramsUsingGET**
-> ListAffiliateCommissionProgramsResponse ListAffiliateCommissionProgramsUsingGET (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
+<a id="listaffiliatecommissionprograms"></a>
+# **ListAffiliateCommissionPrograms**
+> ListAffiliateCommissionProgramsResponse ListAffiliateCommissionPrograms (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
 
 List Affiliate Commission Programs
 
@@ -1468,7 +1468,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class ListAffiliateCommissionProgramsUsingGETExample
+    public class ListAffiliateCommissionProgramsExample
     {
         public static void Main()
         {
@@ -1483,12 +1483,12 @@ namespace Example
             try
             {
                 // List Affiliate Commission Programs
-                ListAffiliateCommissionProgramsResponse result = apiInstance.ListAffiliateCommissionProgramsUsingGET(filter, orderBy, pageSize, pageToken);
+                ListAffiliateCommissionProgramsResponse result = apiInstance.ListAffiliateCommissionPrograms(filter, orderBy, pageSize, pageToken);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling AffiliateApi.ListAffiliateCommissionProgramsUsingGET: " + e.Message);
+                Debug.Print("Exception when calling AffiliateApi.ListAffiliateCommissionPrograms: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -1497,21 +1497,21 @@ namespace Example
 }
 ```
 
-#### Using the ListAffiliateCommissionProgramsUsingGETWithHttpInfo variant
+#### Using the ListAffiliateCommissionProgramsWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // List Affiliate Commission Programs
-    ApiResponse<ListAffiliateCommissionProgramsResponse> response = apiInstance.ListAffiliateCommissionProgramsUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken);
+    ApiResponse<ListAffiliateCommissionProgramsResponse> response = apiInstance.ListAffiliateCommissionProgramsWithHttpInfo(filter, orderBy, pageSize, pageToken);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling AffiliateApi.ListAffiliateCommissionProgramsUsingGETWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling AffiliateApi.ListAffiliateCommissionProgramsWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -1551,9 +1551,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="listaffiliatelinksusingget"></a>
-# **ListAffiliateLinksUsingGET**
-> ListAffiliateLinksResponse ListAffiliateLinksUsingGET (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
+<a id="listaffiliatelinks"></a>
+# **ListAffiliateLinks**
+> ListAffiliateLinksResponse ListAffiliateLinks (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
 
 List Affiliate Links
 
@@ -1569,7 +1569,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class ListAffiliateLinksUsingGETExample
+    public class ListAffiliateLinksExample
     {
         public static void Main()
         {
@@ -1584,12 +1584,12 @@ namespace Example
             try
             {
                 // List Affiliate Links
-                ListAffiliateLinksResponse result = apiInstance.ListAffiliateLinksUsingGET(filter, orderBy, pageSize, pageToken);
+                ListAffiliateLinksResponse result = apiInstance.ListAffiliateLinks(filter, orderBy, pageSize, pageToken);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling AffiliateApi.ListAffiliateLinksUsingGET: " + e.Message);
+                Debug.Print("Exception when calling AffiliateApi.ListAffiliateLinks: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -1598,21 +1598,21 @@ namespace Example
 }
 ```
 
-#### Using the ListAffiliateLinksUsingGETWithHttpInfo variant
+#### Using the ListAffiliateLinksWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // List Affiliate Links
-    ApiResponse<ListAffiliateLinksResponse> response = apiInstance.ListAffiliateLinksUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken);
+    ApiResponse<ListAffiliateLinksResponse> response = apiInstance.ListAffiliateLinksWithHttpInfo(filter, orderBy, pageSize, pageToken);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling AffiliateApi.ListAffiliateLinksUsingGETWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling AffiliateApi.ListAffiliateLinksWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -1652,9 +1652,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="listsummariesusingget1"></a>
-# **ListSummariesUsingGET1**
-> ListAffiliateSummariesResponse ListSummariesUsingGET1 (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
+<a id="listsummaries"></a>
+# **ListSummaries**
+> ListAffiliateSummariesResponse ListSummaries (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
 
 List Affiliate Summaries
 
@@ -1670,7 +1670,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class ListSummariesUsingGET1Example
+    public class ListSummariesExample
     {
         public static void Main()
         {
@@ -1685,12 +1685,12 @@ namespace Example
             try
             {
                 // List Affiliate Summaries
-                ListAffiliateSummariesResponse result = apiInstance.ListSummariesUsingGET1(filter, orderBy, pageSize, pageToken);
+                ListAffiliateSummariesResponse result = apiInstance.ListSummaries(filter, orderBy, pageSize, pageToken);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling AffiliateApi.ListSummariesUsingGET1: " + e.Message);
+                Debug.Print("Exception when calling AffiliateApi.ListSummaries: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -1699,21 +1699,21 @@ namespace Example
 }
 ```
 
-#### Using the ListSummariesUsingGET1WithHttpInfo variant
+#### Using the ListSummariesWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // List Affiliate Summaries
-    ApiResponse<ListAffiliateSummariesResponse> response = apiInstance.ListSummariesUsingGET1WithHttpInfo(filter, orderBy, pageSize, pageToken);
+    ApiResponse<ListAffiliateSummariesResponse> response = apiInstance.ListSummariesWithHttpInfo(filter, orderBy, pageSize, pageToken);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling AffiliateApi.ListSummariesUsingGET1WithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling AffiliateApi.ListSummariesWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -1753,9 +1753,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="removeaffiliatefromprogramusingpost"></a>
-# **RemoveAffiliateFromProgramUsingPOST**
-> void RemoveAffiliateFromProgramUsingPOST (string id, AffiliateRemoveFromProgramRequest affiliateRemoveFromProgramRequest)
+<a id="removeaffiliatefromprogram"></a>
+# **RemoveAffiliateFromProgram**
+> void RemoveAffiliateFromProgram (string id, AffiliateRemoveFromProgramRequest affiliateRemoveFromProgramRequest)
 
 Remove an Affiliate from a Commission Program
 
@@ -1771,7 +1771,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class RemoveAffiliateFromProgramUsingPOSTExample
+    public class RemoveAffiliateFromProgramExample
     {
         public static void Main()
         {
@@ -1784,11 +1784,11 @@ namespace Example
             try
             {
                 // Remove an Affiliate from a Commission Program
-                apiInstance.RemoveAffiliateFromProgramUsingPOST(id, affiliateRemoveFromProgramRequest);
+                apiInstance.RemoveAffiliateFromProgram(id, affiliateRemoveFromProgramRequest);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling AffiliateApi.RemoveAffiliateFromProgramUsingPOST: " + e.Message);
+                Debug.Print("Exception when calling AffiliateApi.RemoveAffiliateFromProgram: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -1797,18 +1797,18 @@ namespace Example
 }
 ```
 
-#### Using the RemoveAffiliateFromProgramUsingPOSTWithHttpInfo variant
+#### Using the RemoveAffiliateFromProgramWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Remove an Affiliate from a Commission Program
-    apiInstance.RemoveAffiliateFromProgramUsingPOSTWithHttpInfo(id, affiliateRemoveFromProgramRequest);
+    apiInstance.RemoveAffiliateFromProgramWithHttpInfo(id, affiliateRemoveFromProgramRequest);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling AffiliateApi.RemoveAffiliateFromProgramUsingPOSTWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling AffiliateApi.RemoveAffiliateFromProgramWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -1845,9 +1845,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="removeproductcommissionfromcommissionsusingpost"></a>
-# **RemoveProductCommissionFromCommissionsUsingPOST**
-> void RemoveProductCommissionFromCommissionsUsingPOST (string commissionId, DeleteProgramCommissionRequest deleteProgramCommissionRequest)
+<a id="removeproductcommissionfromcommissions"></a>
+# **RemoveProductCommissionFromCommissions**
+> void RemoveProductCommissionFromCommissions (string commissionId, DeleteProgramCommissionRequest deleteProgramCommissionRequest)
 
 Remove a Product from a Commission Program
 
@@ -1863,7 +1863,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class RemoveProductCommissionFromCommissionsUsingPOSTExample
+    public class RemoveProductCommissionFromCommissionsExample
     {
         public static void Main()
         {
@@ -1876,11 +1876,11 @@ namespace Example
             try
             {
                 // Remove a Product from a Commission Program
-                apiInstance.RemoveProductCommissionFromCommissionsUsingPOST(commissionId, deleteProgramCommissionRequest);
+                apiInstance.RemoveProductCommissionFromCommissions(commissionId, deleteProgramCommissionRequest);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling AffiliateApi.RemoveProductCommissionFromCommissionsUsingPOST: " + e.Message);
+                Debug.Print("Exception when calling AffiliateApi.RemoveProductCommissionFromCommissions: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -1889,18 +1889,18 @@ namespace Example
 }
 ```
 
-#### Using the RemoveProductCommissionFromCommissionsUsingPOSTWithHttpInfo variant
+#### Using the RemoveProductCommissionFromCommissionsWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Remove a Product from a Commission Program
-    apiInstance.RemoveProductCommissionFromCommissionsUsingPOSTWithHttpInfo(commissionId, deleteProgramCommissionRequest);
+    apiInstance.RemoveProductCommissionFromCommissionsWithHttpInfo(commissionId, deleteProgramCommissionRequest);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling AffiliateApi.RemoveProductCommissionFromCommissionsUsingPOSTWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling AffiliateApi.RemoveProductCommissionFromCommissionsWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -1937,9 +1937,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="removesubscriptionplancommissionfromcommissionsusingpost"></a>
-# **RemoveSubscriptionPlanCommissionFromCommissionsUsingPOST**
-> void RemoveSubscriptionPlanCommissionFromCommissionsUsingPOST (string commissionId, DeleteSubscriptionPlanCommissionRequest deleteSubscriptionPlanCommissionRequest)
+<a id="removesubscriptionplancommissionfromcommissions"></a>
+# **RemoveSubscriptionPlanCommissionFromCommissions**
+> void RemoveSubscriptionPlanCommissionFromCommissions (string commissionId, DeleteSubscriptionPlanCommissionRequest deleteSubscriptionPlanCommissionRequest)
 
 Remove a Subscription from a Commission Program
 
@@ -1955,7 +1955,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class RemoveSubscriptionPlanCommissionFromCommissionsUsingPOSTExample
+    public class RemoveSubscriptionPlanCommissionFromCommissionsExample
     {
         public static void Main()
         {
@@ -1968,11 +1968,11 @@ namespace Example
             try
             {
                 // Remove a Subscription from a Commission Program
-                apiInstance.RemoveSubscriptionPlanCommissionFromCommissionsUsingPOST(commissionId, deleteSubscriptionPlanCommissionRequest);
+                apiInstance.RemoveSubscriptionPlanCommissionFromCommissions(commissionId, deleteSubscriptionPlanCommissionRequest);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling AffiliateApi.RemoveSubscriptionPlanCommissionFromCommissionsUsingPOST: " + e.Message);
+                Debug.Print("Exception when calling AffiliateApi.RemoveSubscriptionPlanCommissionFromCommissions: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -1981,18 +1981,18 @@ namespace Example
 }
 ```
 
-#### Using the RemoveSubscriptionPlanCommissionFromCommissionsUsingPOSTWithHttpInfo variant
+#### Using the RemoveSubscriptionPlanCommissionFromCommissionsWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Remove a Subscription from a Commission Program
-    apiInstance.RemoveSubscriptionPlanCommissionFromCommissionsUsingPOSTWithHttpInfo(commissionId, deleteSubscriptionPlanCommissionRequest);
+    apiInstance.RemoveSubscriptionPlanCommissionFromCommissionsWithHttpInfo(commissionId, deleteSubscriptionPlanCommissionRequest);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling AffiliateApi.RemoveSubscriptionPlanCommissionFromCommissionsUsingPOSTWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling AffiliateApi.RemoveSubscriptionPlanCommissionFromCommissionsWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -2029,9 +2029,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="updateaffiliateusingpatch"></a>
-# **UpdateAffiliateUsingPATCH**
-> RestAffiliate UpdateAffiliateUsingPATCH (string id, UpdateAffiliateRequest? updateAffiliateRequest = null)
+<a id="updateaffiliate"></a>
+# **UpdateAffiliate**
+> RestAffiliate UpdateAffiliate (string id, UpdateAffiliateRequest? updateAffiliateRequest = null)
 
 Update an Affiliate
 
@@ -2047,7 +2047,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class UpdateAffiliateUsingPATCHExample
+    public class UpdateAffiliateExample
     {
         public static void Main()
         {
@@ -2060,12 +2060,12 @@ namespace Example
             try
             {
                 // Update an Affiliate
-                RestAffiliate result = apiInstance.UpdateAffiliateUsingPATCH(id, updateAffiliateRequest);
+                RestAffiliate result = apiInstance.UpdateAffiliate(id, updateAffiliateRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling AffiliateApi.UpdateAffiliateUsingPATCH: " + e.Message);
+                Debug.Print("Exception when calling AffiliateApi.UpdateAffiliate: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -2074,21 +2074,21 @@ namespace Example
 }
 ```
 
-#### Using the UpdateAffiliateUsingPATCHWithHttpInfo variant
+#### Using the UpdateAffiliateWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Update an Affiliate
-    ApiResponse<RestAffiliate> response = apiInstance.UpdateAffiliateUsingPATCHWithHttpInfo(id, updateAffiliateRequest);
+    ApiResponse<RestAffiliate> response = apiInstance.UpdateAffiliateWithHttpInfo(id, updateAffiliateRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling AffiliateApi.UpdateAffiliateUsingPATCHWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling AffiliateApi.UpdateAffiliateWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -2126,9 +2126,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="updatecommissionprogramusingpatch"></a>
-# **UpdateCommissionProgramUsingPATCH**
-> AffiliateCommissionProgramResponse UpdateCommissionProgramUsingPATCH (string commissionProgramId, UpdateCommissionProgramRequest updateCommissionProgramRequest, List<string>? updateMask = null)
+<a id="updatecommissionprogram"></a>
+# **UpdateCommissionProgram**
+> AffiliateCommissionProgramResponse UpdateCommissionProgram (string commissionProgramId, UpdateCommissionProgramRequest updateCommissionProgramRequest, List<string>? updateMask = null)
 
 Update an Affiliate Commission Program
 
@@ -2144,7 +2144,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class UpdateCommissionProgramUsingPATCHExample
+    public class UpdateCommissionProgramExample
     {
         public static void Main()
         {
@@ -2158,12 +2158,12 @@ namespace Example
             try
             {
                 // Update an Affiliate Commission Program
-                AffiliateCommissionProgramResponse result = apiInstance.UpdateCommissionProgramUsingPATCH(commissionProgramId, updateCommissionProgramRequest, updateMask);
+                AffiliateCommissionProgramResponse result = apiInstance.UpdateCommissionProgram(commissionProgramId, updateCommissionProgramRequest, updateMask);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling AffiliateApi.UpdateCommissionProgramUsingPATCH: " + e.Message);
+                Debug.Print("Exception when calling AffiliateApi.UpdateCommissionProgram: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -2172,21 +2172,21 @@ namespace Example
 }
 ```
 
-#### Using the UpdateCommissionProgramUsingPATCHWithHttpInfo variant
+#### Using the UpdateCommissionProgramWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Update an Affiliate Commission Program
-    ApiResponse<AffiliateCommissionProgramResponse> response = apiInstance.UpdateCommissionProgramUsingPATCHWithHttpInfo(commissionProgramId, updateCommissionProgramRequest, updateMask);
+    ApiResponse<AffiliateCommissionProgramResponse> response = apiInstance.UpdateCommissionProgramWithHttpInfo(commissionProgramId, updateCommissionProgramRequest, updateMask);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling AffiliateApi.UpdateCommissionProgramUsingPATCHWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling AffiliateApi.UpdateCommissionProgramWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -2225,9 +2225,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="updatedefaultcommissionprogramusingpatch"></a>
-# **UpdateDefaultCommissionProgramUsingPATCH**
-> SetDefaultCommissionProgramResponse UpdateDefaultCommissionProgramUsingPATCH (string commissionProgramId, List<string>? updateMask = null, UpdateDefaultCommissionProgramRequest? updateDefaultCommissionProgramRequest = null)
+<a id="updatedefaultcommissionprogram"></a>
+# **UpdateDefaultCommissionProgram**
+> SetDefaultCommissionProgramResponse UpdateDefaultCommissionProgram (string commissionProgramId, List<string>? updateMask = null, UpdateDefaultCommissionProgramRequest? updateDefaultCommissionProgramRequest = null)
 
 Update a Default Commission Program
 
@@ -2243,7 +2243,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class UpdateDefaultCommissionProgramUsingPATCHExample
+    public class UpdateDefaultCommissionProgramExample
     {
         public static void Main()
         {
@@ -2257,12 +2257,12 @@ namespace Example
             try
             {
                 // Update a Default Commission Program
-                SetDefaultCommissionProgramResponse result = apiInstance.UpdateDefaultCommissionProgramUsingPATCH(commissionProgramId, updateMask, updateDefaultCommissionProgramRequest);
+                SetDefaultCommissionProgramResponse result = apiInstance.UpdateDefaultCommissionProgram(commissionProgramId, updateMask, updateDefaultCommissionProgramRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling AffiliateApi.UpdateDefaultCommissionProgramUsingPATCH: " + e.Message);
+                Debug.Print("Exception when calling AffiliateApi.UpdateDefaultCommissionProgram: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -2271,21 +2271,21 @@ namespace Example
 }
 ```
 
-#### Using the UpdateDefaultCommissionProgramUsingPATCHWithHttpInfo variant
+#### Using the UpdateDefaultCommissionProgramWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Update a Default Commission Program
-    ApiResponse<SetDefaultCommissionProgramResponse> response = apiInstance.UpdateDefaultCommissionProgramUsingPATCHWithHttpInfo(commissionProgramId, updateMask, updateDefaultCommissionProgramRequest);
+    ApiResponse<SetDefaultCommissionProgramResponse> response = apiInstance.UpdateDefaultCommissionProgramWithHttpInfo(commissionProgramId, updateMask, updateDefaultCommissionProgramRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling AffiliateApi.UpdateDefaultCommissionProgramUsingPATCHWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling AffiliateApi.UpdateDefaultCommissionProgramWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -2324,9 +2324,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="updateproductcommissionprogramusingpatch"></a>
-# **UpdateProductCommissionProgramUsingPATCH**
-> ProductCommissionProgram UpdateProductCommissionProgramUsingPATCH (string commissionProgramId, List<string>? updateMask = null, UpdateProductCommissionProgramRequest? updateProductCommissionProgramRequest = null)
+<a id="updateproductcommissionprogram"></a>
+# **UpdateProductCommissionProgram**
+> ProductCommissionProgram UpdateProductCommissionProgram (string commissionProgramId, List<string>? updateMask = null, UpdateProductCommissionProgramRequest? updateProductCommissionProgramRequest = null)
 
 Update a Product Commission Program
 
@@ -2342,7 +2342,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class UpdateProductCommissionProgramUsingPATCHExample
+    public class UpdateProductCommissionProgramExample
     {
         public static void Main()
         {
@@ -2356,12 +2356,12 @@ namespace Example
             try
             {
                 // Update a Product Commission Program
-                ProductCommissionProgram result = apiInstance.UpdateProductCommissionProgramUsingPATCH(commissionProgramId, updateMask, updateProductCommissionProgramRequest);
+                ProductCommissionProgram result = apiInstance.UpdateProductCommissionProgram(commissionProgramId, updateMask, updateProductCommissionProgramRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling AffiliateApi.UpdateProductCommissionProgramUsingPATCH: " + e.Message);
+                Debug.Print("Exception when calling AffiliateApi.UpdateProductCommissionProgram: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -2370,21 +2370,21 @@ namespace Example
 }
 ```
 
-#### Using the UpdateProductCommissionProgramUsingPATCHWithHttpInfo variant
+#### Using the UpdateProductCommissionProgramWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Update a Product Commission Program
-    ApiResponse<ProductCommissionProgram> response = apiInstance.UpdateProductCommissionProgramUsingPATCHWithHttpInfo(commissionProgramId, updateMask, updateProductCommissionProgramRequest);
+    ApiResponse<ProductCommissionProgram> response = apiInstance.UpdateProductCommissionProgramWithHttpInfo(commissionProgramId, updateMask, updateProductCommissionProgramRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling AffiliateApi.UpdateProductCommissionProgramUsingPATCHWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling AffiliateApi.UpdateProductCommissionProgramWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -2423,9 +2423,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="updateredirectlinkusingpatch"></a>
-# **UpdateRedirectLinkUsingPATCH**
-> AffiliateLink UpdateRedirectLinkUsingPATCH (string redirectId, CreateOrUpdateAffiliateLinkRequest createOrUpdateAffiliateLinkRequest)
+<a id="updateredirectlink"></a>
+# **UpdateRedirectLink**
+> AffiliateLink UpdateRedirectLink (string redirectId, CreateOrUpdateAffiliateLinkRequest createOrUpdateAffiliateLinkRequest)
 
 Update an Affiliate Link
 
@@ -2441,7 +2441,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class UpdateRedirectLinkUsingPATCHExample
+    public class UpdateRedirectLinkExample
     {
         public static void Main()
         {
@@ -2454,12 +2454,12 @@ namespace Example
             try
             {
                 // Update an Affiliate Link
-                AffiliateLink result = apiInstance.UpdateRedirectLinkUsingPATCH(redirectId, createOrUpdateAffiliateLinkRequest);
+                AffiliateLink result = apiInstance.UpdateRedirectLink(redirectId, createOrUpdateAffiliateLinkRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling AffiliateApi.UpdateRedirectLinkUsingPATCH: " + e.Message);
+                Debug.Print("Exception when calling AffiliateApi.UpdateRedirectLink: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -2468,21 +2468,21 @@ namespace Example
 }
 ```
 
-#### Using the UpdateRedirectLinkUsingPATCHWithHttpInfo variant
+#### Using the UpdateRedirectLinkWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Update an Affiliate Link
-    ApiResponse<AffiliateLink> response = apiInstance.UpdateRedirectLinkUsingPATCHWithHttpInfo(redirectId, createOrUpdateAffiliateLinkRequest);
+    ApiResponse<AffiliateLink> response = apiInstance.UpdateRedirectLinkWithHttpInfo(redirectId, createOrUpdateAffiliateLinkRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling AffiliateApi.UpdateRedirectLinkUsingPATCHWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling AffiliateApi.UpdateRedirectLinkWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -2520,9 +2520,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="updatesubscriptioncommissionprogramusingpatch"></a>
-# **UpdateSubscriptionCommissionProgramUsingPATCH**
-> SubscriptionCommissionProgram UpdateSubscriptionCommissionProgramUsingPATCH (string commissionProgramId, List<string>? updateMask = null, UpdateSubscriptionCommissionProgramRequest? updateSubscriptionCommissionProgramRequest = null)
+<a id="updatesubscriptioncommissionprogram"></a>
+# **UpdateSubscriptionCommissionProgram**
+> SubscriptionCommissionProgram UpdateSubscriptionCommissionProgram (string commissionProgramId, List<string>? updateMask = null, UpdateSubscriptionCommissionProgramRequest? updateSubscriptionCommissionProgramRequest = null)
 
 Update a Subscription Commission Program
 
@@ -2538,7 +2538,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class UpdateSubscriptionCommissionProgramUsingPATCHExample
+    public class UpdateSubscriptionCommissionProgramExample
     {
         public static void Main()
         {
@@ -2552,12 +2552,12 @@ namespace Example
             try
             {
                 // Update a Subscription Commission Program
-                SubscriptionCommissionProgram result = apiInstance.UpdateSubscriptionCommissionProgramUsingPATCH(commissionProgramId, updateMask, updateSubscriptionCommissionProgramRequest);
+                SubscriptionCommissionProgram result = apiInstance.UpdateSubscriptionCommissionProgram(commissionProgramId, updateMask, updateSubscriptionCommissionProgramRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling AffiliateApi.UpdateSubscriptionCommissionProgramUsingPATCH: " + e.Message);
+                Debug.Print("Exception when calling AffiliateApi.UpdateSubscriptionCommissionProgram: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -2566,21 +2566,21 @@ namespace Example
 }
 ```
 
-#### Using the UpdateSubscriptionCommissionProgramUsingPATCHWithHttpInfo variant
+#### Using the UpdateSubscriptionCommissionProgramWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Update a Subscription Commission Program
-    ApiResponse<SubscriptionCommissionProgram> response = apiInstance.UpdateSubscriptionCommissionProgramUsingPATCHWithHttpInfo(commissionProgramId, updateMask, updateSubscriptionCommissionProgramRequest);
+    ApiResponse<SubscriptionCommissionProgram> response = apiInstance.UpdateSubscriptionCommissionProgramWithHttpInfo(commissionProgramId, updateMask, updateSubscriptionCommissionProgramRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling AffiliateApi.UpdateSubscriptionCommissionProgramUsingPATCHWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling AffiliateApi.UpdateSubscriptionCommissionProgramWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }

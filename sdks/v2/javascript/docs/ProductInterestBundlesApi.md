@@ -4,20 +4,20 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**addProductInterestUsingPOST**](ProductInterestBundlesApi.md#addProductInterestUsingPOST) | **POST** /v2/productInterestBundles/{id}/interests | Create a Product Interest in an existing Bundle
-[**createProductInterestBundleUsingPOST**](ProductInterestBundlesApi.md#createProductInterestBundleUsingPOST) | **POST** /v2/productInterestBundles | Create a Product Interest Bundle
-[**deleteProductInterestBundleUsingDELETE**](ProductInterestBundlesApi.md#deleteProductInterestBundleUsingDELETE) | **DELETE** /v2/productInterestBundles/{id} | Delete a Product Interest Bundle
-[**getProductInterestBundleUsingGET**](ProductInterestBundlesApi.md#getProductInterestBundleUsingGET) | **GET** /v2/productInterestBundles/{id} | Get a Product Interest Bundle
-[**listProductInterestBundlesUsingGET**](ProductInterestBundlesApi.md#listProductInterestBundlesUsingGET) | **GET** /v2/productInterestBundles | List Product Interest Bundles
-[**removeProductInterestUsingDELETE**](ProductInterestBundlesApi.md#removeProductInterestUsingDELETE) | **DELETE** /v2/productInterestBundles/{id}/interests/{interest_id} | Delete a Product Interest from an existing Bundle
-[**updateProductInterestBundleUsingPATCH**](ProductInterestBundlesApi.md#updateProductInterestBundleUsingPATCH) | **PATCH** /v2/productInterestBundles/{id} | Update a Product Interest Bundle
-[**updateProductInterestUsingPATCH**](ProductInterestBundlesApi.md#updateProductInterestUsingPATCH) | **PATCH** /v2/productInterestBundles/{id}/interests/{interest_id} | Update a Product Interest in an existing Bundle
+[**addProductInterest**](ProductInterestBundlesApi.md#addProductInterest) | **POST** /v2/productInterestBundles/{id}/interests | Create a Product Interest in an existing Bundle
+[**createProductInterestBundle**](ProductInterestBundlesApi.md#createProductInterestBundle) | **POST** /v2/productInterestBundles | Create a Product Interest Bundle
+[**deleteProductInterestBundle**](ProductInterestBundlesApi.md#deleteProductInterestBundle) | **DELETE** /v2/productInterestBundles/{id} | Delete a Product Interest Bundle
+[**getProductInterestBundle**](ProductInterestBundlesApi.md#getProductInterestBundle) | **GET** /v2/productInterestBundles/{id} | Get a Product Interest Bundle
+[**listProductInterestBundles**](ProductInterestBundlesApi.md#listProductInterestBundles) | **GET** /v2/productInterestBundles | List Product Interest Bundles
+[**removeProductInterest**](ProductInterestBundlesApi.md#removeProductInterest) | **DELETE** /v2/productInterestBundles/{id}/interests/{interest_id} | Delete a Product Interest from an existing Bundle
+[**updateProductInterest**](ProductInterestBundlesApi.md#updateProductInterest) | **PATCH** /v2/productInterestBundles/{id}/interests/{interest_id} | Update a Product Interest in an existing Bundle
+[**updateProductInterestBundle**](ProductInterestBundlesApi.md#updateProductInterestBundle) | **PATCH** /v2/productInterestBundles/{id} | Update a Product Interest Bundle
 
 
 
-## addProductInterestUsingPOST
+## addProductInterest
 
-> ProductInterest addProductInterestUsingPOST(id, addProductInterestRequest)
+> ProductInterest addProductInterest(id, addProductInterestRequest)
 
 Create a Product Interest in an existing Bundle
 
@@ -31,7 +31,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 let apiInstance = new KeapCoreServiceV2Sdk.ProductInterestBundlesApi();
 let id = "id_example"; // String | id
 let addProductInterestRequest = new KeapCoreServiceV2Sdk.AddProductInterestRequest(); // AddProductInterestRequest | request
-apiInstance.addProductInterestUsingPOST(id, addProductInterestRequest).then((data) => {
+apiInstance.addProductInterest(id, addProductInterestRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -61,9 +61,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## createProductInterestBundleUsingPOST
+## createProductInterestBundle
 
-> ProductInterestBundle createProductInterestBundleUsingPOST(createProductInterestBundleRequest)
+> ProductInterestBundle createProductInterestBundle(createProductInterestBundleRequest)
 
 Create a Product Interest Bundle
 
@@ -76,7 +76,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.ProductInterestBundlesApi();
 let createProductInterestBundleRequest = new KeapCoreServiceV2Sdk.CreateProductInterestBundleRequest(); // CreateProductInterestBundleRequest | createProductInterestBundleRequest
-apiInstance.createProductInterestBundleUsingPOST(createProductInterestBundleRequest).then((data) => {
+apiInstance.createProductInterestBundle(createProductInterestBundleRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -105,9 +105,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## deleteProductInterestBundleUsingDELETE
+## deleteProductInterestBundle
 
-> deleteProductInterestBundleUsingDELETE(id)
+> deleteProductInterestBundle(id)
 
 Delete a Product Interest Bundle
 
@@ -120,7 +120,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.ProductInterestBundlesApi();
 let id = "id_example"; // String | id
-apiInstance.deleteProductInterestBundleUsingDELETE(id).then(() => {
+apiInstance.deleteProductInterestBundle(id).then(() => {
   console.log('API called successfully.');
 }, (error) => {
   console.error(error);
@@ -149,9 +149,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## getProductInterestBundleUsingGET
+## getProductInterestBundle
 
-> ProductInterestBundle getProductInterestBundleUsingGET(id)
+> ProductInterestBundle getProductInterestBundle(id)
 
 Get a Product Interest Bundle
 
@@ -164,7 +164,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.ProductInterestBundlesApi();
 let id = "id_example"; // String | id
-apiInstance.getProductInterestBundleUsingGET(id).then((data) => {
+apiInstance.getProductInterestBundle(id).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -193,9 +193,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## listProductInterestBundlesUsingGET
+## listProductInterestBundles
 
-> ListProductInterestBundleResponse listProductInterestBundlesUsingGET(opts)
+> ListProductInterestBundleResponse listProductInterestBundles(opts)
 
 List Product Interest Bundles
 
@@ -213,7 +213,7 @@ let opts = {
   'pageSize': 0, // Number | Total number of items to return per page
   'pageToken': "pageToken_example" // String | Page token
 };
-apiInstance.listProductInterestBundlesUsingGET(opts).then((data) => {
+apiInstance.listProductInterestBundles(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -245,9 +245,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## removeProductInterestUsingDELETE
+## removeProductInterest
 
-> removeProductInterestUsingDELETE(id, interestId)
+> removeProductInterest(id, interestId)
 
 Delete a Product Interest from an existing Bundle
 
@@ -261,7 +261,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 let apiInstance = new KeapCoreServiceV2Sdk.ProductInterestBundlesApi();
 let id = "id_example"; // String | id
 let interestId = "interestId_example"; // String | interest_id
-apiInstance.removeProductInterestUsingDELETE(id, interestId).then(() => {
+apiInstance.removeProductInterest(id, interestId).then(() => {
   console.log('API called successfully.');
 }, (error) => {
   console.error(error);
@@ -291,59 +291,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## updateProductInterestBundleUsingPATCH
+## updateProductInterest
 
-> ProductInterestBundle updateProductInterestBundleUsingPATCH(id, updateProductInterestBundleRequest, opts)
-
-Update a Product Interest Bundle
-
-Updates an existing Product Interest Bundle.
-
-### Example
-
-```javascript
-import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
-
-let apiInstance = new KeapCoreServiceV2Sdk.ProductInterestBundlesApi();
-let id = "id_example"; // String | id
-let updateProductInterestBundleRequest = new KeapCoreServiceV2Sdk.UpdateProductInterestBundleRequest(); // UpdateProductInterestBundleRequest | updateProductInterestBundleRequest
-let opts = {
-  'updateMask': ["null"] // [String] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-};
-apiInstance.updateProductInterestBundleUsingPATCH(id, updateProductInterestBundleRequest, opts).then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
-  console.error(error);
-});
-
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**| id | 
- **updateProductInterestBundleRequest** | [**UpdateProductInterestBundleRequest**](UpdateProductInterestBundleRequest.md)| updateProductInterestBundleRequest | 
- **updateMask** | [**[String]**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
-
-### Return type
-
-[**ProductInterestBundle**](ProductInterestBundle.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## updateProductInterestUsingPATCH
-
-> ProductInterest updateProductInterestUsingPATCH(id, interestId, updateProductInterestRequest, opts)
+> ProductInterest updateProductInterest(id, interestId, updateProductInterestRequest, opts)
 
 Update a Product Interest in an existing Bundle
 
@@ -361,7 +311,7 @@ let updateProductInterestRequest = new KeapCoreServiceV2Sdk.UpdateProductInteres
 let opts = {
   'updateMask': ["null"] // [String] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
-apiInstance.updateProductInterestUsingPATCH(id, interestId, updateProductInterestRequest, opts).then((data) => {
+apiInstance.updateProductInterest(id, interestId, updateProductInterestRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -382,6 +332,56 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ProductInterest**](ProductInterest.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## updateProductInterestBundle
+
+> ProductInterestBundle updateProductInterestBundle(id, updateProductInterestBundleRequest, opts)
+
+Update a Product Interest Bundle
+
+Updates an existing Product Interest Bundle.
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+
+let apiInstance = new KeapCoreServiceV2Sdk.ProductInterestBundlesApi();
+let id = "id_example"; // String | id
+let updateProductInterestBundleRequest = new KeapCoreServiceV2Sdk.UpdateProductInterestBundleRequest(); // UpdateProductInterestBundleRequest | updateProductInterestBundleRequest
+let opts = {
+  'updateMask': ["null"] // [String] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+};
+apiInstance.updateProductInterestBundle(id, updateProductInterestBundleRequest, opts).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| id | 
+ **updateProductInterestBundleRequest** | [**UpdateProductInterestBundleRequest**](UpdateProductInterestBundleRequest.md)| updateProductInterestBundleRequest | 
+ **updateMask** | [**[String]**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+
+### Return type
+
+[**ProductInterestBundle**](ProductInterestBundle.md)
 
 ### Authorization
 

@@ -4,17 +4,17 @@ All URIs are relative to https://api.keap.com/crm/rest, except if the operation 
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createOrderTotalDiscountUsingPOST()**](OrderTotalDiscountsApi.md#createOrderTotalDiscountUsingPOST) | **POST** /v2/discounts/orderTotals | Create an Order Total Discount |
-| [**deleteOrderTotalDiscountUsingDELETE()**](OrderTotalDiscountsApi.md#deleteOrderTotalDiscountUsingDELETE) | **DELETE** /v2/discounts/orderTotals/{discount_id} | Delete an Order Total Discount |
-| [**getOrderTotalDiscountUsingGET()**](OrderTotalDiscountsApi.md#getOrderTotalDiscountUsingGET) | **GET** /v2/discounts/orderTotals/{discount_id} | Retrieve an Order Total Discount |
-| [**listOrderTotalDiscountsUsingGET()**](OrderTotalDiscountsApi.md#listOrderTotalDiscountsUsingGET) | **GET** /v2/discounts/orderTotals | List all Order Total Discounts |
-| [**updateOrderTotalDiscountUsingPATCH()**](OrderTotalDiscountsApi.md#updateOrderTotalDiscountUsingPATCH) | **PATCH** /v2/discounts/orderTotals/{discount_id} | Update an Order Total Discount |
+| [**createOrderTotalDiscount()**](OrderTotalDiscountsApi.md#createOrderTotalDiscount) | **POST** /v2/discounts/orderTotals | Create an Order Total Discount |
+| [**deleteOrderTotalDiscount()**](OrderTotalDiscountsApi.md#deleteOrderTotalDiscount) | **DELETE** /v2/discounts/orderTotals/{discount_id} | Delete an Order Total Discount |
+| [**getOrderTotalDiscount()**](OrderTotalDiscountsApi.md#getOrderTotalDiscount) | **GET** /v2/discounts/orderTotals/{discount_id} | Retrieve an Order Total Discount |
+| [**listOrderTotalDiscounts()**](OrderTotalDiscountsApi.md#listOrderTotalDiscounts) | **GET** /v2/discounts/orderTotals | List all Order Total Discounts |
+| [**updateOrderTotalDiscount()**](OrderTotalDiscountsApi.md#updateOrderTotalDiscount) | **PATCH** /v2/discounts/orderTotals/{discount_id} | Update an Order Total Discount |
 
 
-## `createOrderTotalDiscountUsingPOST()`
+## `createOrderTotalDiscount()`
 
 ```php
-createOrderTotalDiscountUsingPOST($create_order_total_discount_request): \Keap\Core\V2\Model\OrderTotalDiscount
+createOrderTotalDiscount($create_order_total_discount_request): \Keap\Core\V2\Model\OrderTotalDiscount
 ```
 
 Create an Order Total Discount
@@ -36,10 +36,10 @@ $apiInstance = new Keap\Core\V2\Api\OrderTotalDiscountsApi(
 $create_order_total_discount_request = new \Keap\Core\V2\Model\CreateOrderTotalDiscountRequest(); // \Keap\Core\V2\Model\CreateOrderTotalDiscountRequest | request
 
 try {
-    $result = $apiInstance->createOrderTotalDiscountUsingPOST($create_order_total_discount_request);
+    $result = $apiInstance->createOrderTotalDiscount($create_order_total_discount_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling OrderTotalDiscountsApi->createOrderTotalDiscountUsingPOST: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling OrderTotalDiscountsApi->createOrderTotalDiscount: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -66,10 +66,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `deleteOrderTotalDiscountUsingDELETE()`
+## `deleteOrderTotalDiscount()`
 
 ```php
-deleteOrderTotalDiscountUsingDELETE($discount_id)
+deleteOrderTotalDiscount($discount_id)
 ```
 
 Delete an Order Total Discount
@@ -91,9 +91,9 @@ $apiInstance = new Keap\Core\V2\Api\OrderTotalDiscountsApi(
 $discount_id = 'discount_id_example'; // string | discount_id
 
 try {
-    $apiInstance->deleteOrderTotalDiscountUsingDELETE($discount_id);
+    $apiInstance->deleteOrderTotalDiscount($discount_id);
 } catch (Exception $e) {
-    echo 'Exception when calling OrderTotalDiscountsApi->deleteOrderTotalDiscountUsingDELETE: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling OrderTotalDiscountsApi->deleteOrderTotalDiscount: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -120,10 +120,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getOrderTotalDiscountUsingGET()`
+## `getOrderTotalDiscount()`
 
 ```php
-getOrderTotalDiscountUsingGET($discount_id): \Keap\Core\V2\Model\OrderTotalDiscount
+getOrderTotalDiscount($discount_id): \Keap\Core\V2\Model\OrderTotalDiscount
 ```
 
 Retrieve an Order Total Discount
@@ -145,10 +145,10 @@ $apiInstance = new Keap\Core\V2\Api\OrderTotalDiscountsApi(
 $discount_id = 'discount_id_example'; // string | discount_id
 
 try {
-    $result = $apiInstance->getOrderTotalDiscountUsingGET($discount_id);
+    $result = $apiInstance->getOrderTotalDiscount($discount_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling OrderTotalDiscountsApi->getOrderTotalDiscountUsingGET: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling OrderTotalDiscountsApi->getOrderTotalDiscount: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -175,10 +175,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `listOrderTotalDiscountsUsingGET()`
+## `listOrderTotalDiscounts()`
 
 ```php
-listOrderTotalDiscountsUsingGET($filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListOrderTotalDiscountsResponse
+listOrderTotalDiscounts($filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListOrderTotalDiscountsResponse
 ```
 
 List all Order Total Discounts
@@ -198,15 +198,15 @@ $apiInstance = new Keap\Core\V2\Api\OrderTotalDiscountsApi(
     new GuzzleHttp\Client()
 );
 $filter = 'filter_example'; // string | Filter to apply, allowed fields are: - (Boolean) `apply_to_commissions` - (DiscountStrategy) `discount_strategy`: GROSS or NET - (DiscountType) `discount_type`: AMOUNT or PERCENT - (Double) `discount_value`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=apply_to_commissions%3D%3Dtrue` - `filter=discount_strategy%3D%3DGROSS` - `filter=discount_type%3D%3DAMOUNT` - `filter=discount_value%3D%3D10.0` - `filter=discount_type%3D%3DAMOUNT%3Bdiscount_strategy%3D%3DNET`
-$order_by = 'order_by_example'; // string | Attribute and direction to order items. One of the following fields: - `apply_to_commissions` - `discount_strategy` - `discount_type` - `discount_value` - `id`  One of the following directions: - `asc` - `desc`
+$order_by = 'order_by_example'; // string | Attribute and direction to order items. One of the following fields: - `apply_to_commissions` - `discount_strategy` - `discount_type` - `discount_value` - `id` - `name`  One of the following directions: - `asc` - `desc`
 $page_size = 0; // int | Total number of items to return per page
 $page_token = 'page_token_example'; // string | Page token
 
 try {
-    $result = $apiInstance->listOrderTotalDiscountsUsingGET($filter, $order_by, $page_size, $page_token);
+    $result = $apiInstance->listOrderTotalDiscounts($filter, $order_by, $page_size, $page_token);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling OrderTotalDiscountsApi->listOrderTotalDiscountsUsingGET: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling OrderTotalDiscountsApi->listOrderTotalDiscounts: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -215,7 +215,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **filter** | **string**| Filter to apply, allowed fields are: - (Boolean) &#x60;apply_to_commissions&#x60; - (DiscountStrategy) &#x60;discount_strategy&#x60;: GROSS or NET - (DiscountType) &#x60;discount_type&#x60;: AMOUNT or PERCENT - (Double) &#x60;discount_value&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;apply_to_commissions%3D%3Dtrue&#x60; - &#x60;filter&#x3D;discount_strategy%3D%3DGROSS&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT&#x60; - &#x60;filter&#x3D;discount_value%3D%3D10.0&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT%3Bdiscount_strategy%3D%3DNET&#x60; | [optional] |
-| **order_by** | **string**| Attribute and direction to order items. One of the following fields: - &#x60;apply_to_commissions&#x60; - &#x60;discount_strategy&#x60; - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
+| **order_by** | **string**| Attribute and direction to order items. One of the following fields: - &#x60;apply_to_commissions&#x60; - &#x60;discount_strategy&#x60; - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60; - &#x60;name&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **page_size** | **int**| Total number of items to return per page | [optional] |
 | **page_token** | **string**| Page token | [optional] |
 
@@ -236,10 +236,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `updateOrderTotalDiscountUsingPATCH()`
+## `updateOrderTotalDiscount()`
 
 ```php
-updateOrderTotalDiscountUsingPATCH($discount_id, $update_order_total_discount_request, $update_mask): \Keap\Core\V2\Model\OrderTotalDiscount
+updateOrderTotalDiscount($discount_id, $update_order_total_discount_request, $update_mask): \Keap\Core\V2\Model\OrderTotalDiscount
 ```
 
 Update an Order Total Discount
@@ -263,10 +263,10 @@ $update_order_total_discount_request = new \Keap\Core\V2\Model\UpdateOrderTotalD
 $update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
-    $result = $apiInstance->updateOrderTotalDiscountUsingPATCH($discount_id, $update_order_total_discount_request, $update_mask);
+    $result = $apiInstance->updateOrderTotalDiscount($discount_id, $update_order_total_discount_request, $update_mask);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling OrderTotalDiscountsApi->updateOrderTotalDiscountUsingPATCH: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling OrderTotalDiscountsApi->updateOrderTotalDiscount: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

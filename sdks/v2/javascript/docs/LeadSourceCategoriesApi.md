@@ -4,17 +4,17 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createLeadSourceCategoryUsingPOST**](LeadSourceCategoriesApi.md#createLeadSourceCategoryUsingPOST) | **POST** /v2/leadSourceCategories | Create a Lead Source Category
-[**deleteLeadSourceCategoryUsingDELETE**](LeadSourceCategoriesApi.md#deleteLeadSourceCategoryUsingDELETE) | **DELETE** /v2/leadSourceCategories/{lead_source_category_id} | Delete a Lead Source Category
-[**getLeadSourceCategoryUsingGET**](LeadSourceCategoriesApi.md#getLeadSourceCategoryUsingGET) | **GET** /v2/leadSourceCategories/{lead_source_category_id} | Retrieve a Lead Source Category
-[**listCategoriesUsingGET1**](LeadSourceCategoriesApi.md#listCategoriesUsingGET1) | **GET** /v2/leadSourceCategories | List Lead Source Categories
-[**updateLeadSourceCategoryUsingPATCH**](LeadSourceCategoriesApi.md#updateLeadSourceCategoryUsingPATCH) | **PATCH** /v2/leadSourceCategories/{lead_source_category_id} | Update a Lead Source Category
+[**createLeadSourceCategory**](LeadSourceCategoriesApi.md#createLeadSourceCategory) | **POST** /v2/leadSourceCategories | Create a Lead Source Category
+[**deleteLeadSourceCategory**](LeadSourceCategoriesApi.md#deleteLeadSourceCategory) | **DELETE** /v2/leadSourceCategories/{lead_source_category_id} | Delete a Lead Source Category
+[**getLeadSourceCategory**](LeadSourceCategoriesApi.md#getLeadSourceCategory) | **GET** /v2/leadSourceCategories/{lead_source_category_id} | Retrieve a Lead Source Category
+[**listLeadSourceCategories**](LeadSourceCategoriesApi.md#listLeadSourceCategories) | **GET** /v2/leadSourceCategories | List Lead Source Categories
+[**updateLeadSourceCategory**](LeadSourceCategoriesApi.md#updateLeadSourceCategory) | **PATCH** /v2/leadSourceCategories/{lead_source_category_id} | Update a Lead Source Category
 
 
 
-## createLeadSourceCategoryUsingPOST
+## createLeadSourceCategory
 
-> LeadSourceCategory createLeadSourceCategoryUsingPOST(createUpdateLeadSourceCategoryRequest)
+> LeadSourceCategory createLeadSourceCategory(createUpdateLeadSourceCategoryRequest)
 
 Create a Lead Source Category
 
@@ -27,7 +27,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.LeadSourceCategoriesApi();
 let createUpdateLeadSourceCategoryRequest = new KeapCoreServiceV2Sdk.CreateUpdateLeadSourceCategoryRequest(); // CreateUpdateLeadSourceCategoryRequest | The request object to create a new lead source category
-apiInstance.createLeadSourceCategoryUsingPOST(createUpdateLeadSourceCategoryRequest).then((data) => {
+apiInstance.createLeadSourceCategory(createUpdateLeadSourceCategoryRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -56,9 +56,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## deleteLeadSourceCategoryUsingDELETE
+## deleteLeadSourceCategory
 
-> deleteLeadSourceCategoryUsingDELETE(leadSourceCategoryId)
+> deleteLeadSourceCategory(leadSourceCategoryId)
 
 Delete a Lead Source Category
 
@@ -71,7 +71,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.LeadSourceCategoriesApi();
 let leadSourceCategoryId = "leadSourceCategoryId_example"; // String | The ID of a lead source category
-apiInstance.deleteLeadSourceCategoryUsingDELETE(leadSourceCategoryId).then(() => {
+apiInstance.deleteLeadSourceCategory(leadSourceCategoryId).then(() => {
   console.log('API called successfully.');
 }, (error) => {
   console.error(error);
@@ -100,9 +100,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## getLeadSourceCategoryUsingGET
+## getLeadSourceCategory
 
-> LeadSourceCategory getLeadSourceCategoryUsingGET(leadSourceCategoryId)
+> LeadSourceCategory getLeadSourceCategory(leadSourceCategoryId)
 
 Retrieve a Lead Source Category
 
@@ -115,7 +115,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.LeadSourceCategoriesApi();
 let leadSourceCategoryId = "leadSourceCategoryId_example"; // String | The ID of a lead source category
-apiInstance.getLeadSourceCategoryUsingGET(leadSourceCategoryId).then((data) => {
+apiInstance.getLeadSourceCategory(leadSourceCategoryId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -144,9 +144,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## listCategoriesUsingGET1
+## listLeadSourceCategories
 
-> ListLeadSourceCategoriesResponse listCategoriesUsingGET1(opts)
+> ListLeadSourceCategoriesResponse listLeadSourceCategories(opts)
 
 List Lead Source Categories
 
@@ -164,7 +164,7 @@ let opts = {
   'pageSize': 0, // Number | Total number of items to return per page
   'pageToken': "pageToken_example" // String | Page token
 };
-apiInstance.listCategoriesUsingGET1(opts).then((data) => {
+apiInstance.listLeadSourceCategories(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -196,9 +196,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## updateLeadSourceCategoryUsingPATCH
+## updateLeadSourceCategory
 
-> LeadSourceCategory updateLeadSourceCategoryUsingPATCH(leadSourceCategoryId, createUpdateLeadSourceCategoryRequest, opts)
+> LeadSourceCategory updateLeadSourceCategory(leadSourceCategoryId, createUpdateLeadSourceCategoryRequest, opts)
 
 Update a Lead Source Category
 
@@ -215,7 +215,7 @@ let createUpdateLeadSourceCategoryRequest = new KeapCoreServiceV2Sdk.CreateUpdat
 let opts = {
   'updateMask': ["null"] // [String] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
-apiInstance.updateLeadSourceCategoryUsingPATCH(leadSourceCategoryId, createUpdateLeadSourceCategoryRequest, opts).then((data) => {
+apiInstance.updateLeadSourceCategory(leadSourceCategoryId, createUpdateLeadSourceCategoryRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);

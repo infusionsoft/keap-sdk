@@ -8,7 +8,7 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**nextPageToken** | **String** |  |  [optional] |
-|**subscriptions** | [**List&lt;RestSubscriptionV2&gt;**](RestSubscriptionV2.md) |  |  [optional] |
+|**subscriptions** | [**List&lt;Subscription&gt;**](Subscription.md) |  |  [optional] |
 
 
 ## Implemented Interfaces

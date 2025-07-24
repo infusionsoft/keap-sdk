@@ -4,14 +4,14 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**addContactsToCampaignSequenceUsingPOST1**](CampaignApi.md#addContactsToCampaignSequenceUsingPOST1) | **POST** /v2/campaigns/{campaign_id}/sequences/{sequence_id}:addContacts | Add Contacts to Campaign Sequence
-[**getCampaignUsingGET1**](CampaignApi.md#getCampaignUsingGET1) | **GET** /v2/campaigns/{campaign_id} | Retrieve a Campaign
-[**listCampaignsUsingGET1**](CampaignApi.md#listCampaignsUsingGET1) | **GET** /v2/campaigns | List Campaigns
-[**removeContactsFromCampaignSequenceUsingPOST**](CampaignApi.md#removeContactsFromCampaignSequenceUsingPOST) | **POST** /v2/campaigns/{campaign_id}/sequences/{sequence_id}:removeContacts | Remove Contacts from Campaign Sequence
+[**addContactsToCampaignSequence**](CampaignApi.md#addContactsToCampaignSequence) | **POST** /v2/campaigns/{campaign_id}/sequences/{sequence_id}:addContacts | Add Contacts to Campaign Sequence
+[**getCampaign**](CampaignApi.md#getCampaign) | **GET** /v2/campaigns/{campaign_id} | Retrieve a Campaign
+[**listCampaigns**](CampaignApi.md#listCampaigns) | **GET** /v2/campaigns | List Campaigns
+[**removeContactsFromCampaignSequence**](CampaignApi.md#removeContactsFromCampaignSequence) | **POST** /v2/campaigns/{campaign_id}/sequences/{sequence_id}:removeContacts | Remove Contacts from Campaign Sequence
 
 
-# **addContactsToCampaignSequenceUsingPOST1**
-> AddContactsToSequenceResponse addContactsToCampaignSequenceUsingPOST1(addContactsToSequenceRequest)
+# **addContactsToCampaignSequence**
+> AddContactsToSequenceResponse addContactsToCampaignSequence(addContactsToSequenceRequest)
 
 Adds a list of contacts to a campaign sequence Response contains a map of the provided list of Contact Ids related to their individual result.
 
@@ -20,12 +20,12 @@ Adds a list of contacts to a campaign sequence Response contains a map of the pr
 
 ```typescript
 import { createConfiguration, CampaignApi } from '';
-import type { CampaignApiAddContactsToCampaignSequenceUsingPOST1Request } from '';
+import type { CampaignApiAddContactsToCampaignSequenceRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new CampaignApi(configuration);
 
-const request: CampaignApiAddContactsToCampaignSequenceUsingPOST1Request = {
+const request: CampaignApiAddContactsToCampaignSequenceRequest = {
     // campaign_id
   campaignId: "campaign_id_example",
     // sequence_id
@@ -38,7 +38,7 @@ const request: CampaignApiAddContactsToCampaignSequenceUsingPOST1Request = {
   },
 };
 
-const data = await apiInstance.addContactsToCampaignSequenceUsingPOST1(request);
+const data = await apiInstance.addContactsToCampaignSequence(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -76,8 +76,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **getCampaignUsingGET1**
-> Campaign getCampaignUsingGET1()
+# **getCampaign**
+> Campaign getCampaign()
 
 Retrieves a single campaign
 
@@ -86,17 +86,17 @@ Retrieves a single campaign
 
 ```typescript
 import { createConfiguration, CampaignApi } from '';
-import type { CampaignApiGetCampaignUsingGET1Request } from '';
+import type { CampaignApiGetCampaignRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new CampaignApi(configuration);
 
-const request: CampaignApiGetCampaignUsingGET1Request = {
+const request: CampaignApiGetCampaignRequest = {
     // campaign_id
   campaignId: "campaign_id_example",
 };
 
-const data = await apiInstance.getCampaignUsingGET1(request);
+const data = await apiInstance.getCampaign(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -133,8 +133,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **listCampaignsUsingGET1**
-> ListCampaignsResponse listCampaignsUsingGET1()
+# **listCampaigns**
+> ListCampaignsResponse listCampaigns()
 
 Retrieves a list of campaigns for the authenticated user
 
@@ -143,12 +143,12 @@ Retrieves a list of campaigns for the authenticated user
 
 ```typescript
 import { createConfiguration, CampaignApi } from '';
-import type { CampaignApiListCampaignsUsingGET1Request } from '';
+import type { CampaignApiListCampaignsRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new CampaignApi(configuration);
 
-const request: CampaignApiListCampaignsUsingGET1Request = {
+const request: CampaignApiListCampaignsRequest = {
     // Filter to apply, allowed fields are: - (String) `name`  You will need to apply the `==` operator to check the equality of the filter with your searched text, in the encoded form `%3D%3D`. The search will look for the text anywhere in the campaign name. - `filter=name%3D%3DSpring Campaign` - `filter=name%3D%3DTag New Contacts`  (optional)
   filter: "filter_example",
     // Attribute and direction to order items. One of the following fields: - `name` - `publisheddate` - `id` - `completedContactCount` - `activeContacts` - `datecreated` - `lastupdated`  One of the following directions: - `asc` - `desc` (optional)
@@ -161,7 +161,7 @@ const request: CampaignApiListCampaignsUsingGET1Request = {
   stats: true,
 };
 
-const data = await apiInstance.listCampaignsUsingGET1(request);
+const data = await apiInstance.listCampaigns(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -202,8 +202,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **removeContactsFromCampaignSequenceUsingPOST**
-> RemoveContactsFromSequenceResponse removeContactsFromCampaignSequenceUsingPOST(removeContactsFromSequenceRequest)
+# **removeContactsFromCampaignSequence**
+> RemoveContactsFromSequenceResponse removeContactsFromCampaignSequence(removeContactsFromSequenceRequest)
 
 Removes a list of contacts from a campaign sequence Response contains a map of the provided list of Contact Ids related to their individual result.
 
@@ -212,12 +212,12 @@ Removes a list of contacts from a campaign sequence Response contains a map of t
 
 ```typescript
 import { createConfiguration, CampaignApi } from '';
-import type { CampaignApiRemoveContactsFromCampaignSequenceUsingPOSTRequest } from '';
+import type { CampaignApiRemoveContactsFromCampaignSequenceRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new CampaignApi(configuration);
 
-const request: CampaignApiRemoveContactsFromCampaignSequenceUsingPOSTRequest = {
+const request: CampaignApiRemoveContactsFromCampaignSequenceRequest = {
     // campaign_id
   campaignId: "campaign_id_example",
     // sequence_id
@@ -230,7 +230,7 @@ const request: CampaignApiRemoveContactsFromCampaignSequenceUsingPOSTRequest = {
   },
 };
 
-const data = await apiInstance.removeContactsFromCampaignSequenceUsingPOST(request);
+const data = await apiInstance.removeContactsFromCampaignSequence(request);
 console.log('API called successfully. Returned data:', data);
 ```
 

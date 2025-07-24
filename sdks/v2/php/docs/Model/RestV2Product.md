@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **name** | **string** | Product name | [optional]
 **options** | [**\Keap\Core\V2\Model\ProductOptions[]**](ProductOptions.md) | List of product options. Can be empty. | [optional]
 **price** | [**\Keap\Core\V2\Model\CurrencyValue**](CurrencyValue.md) |  | [optional]
+**shippable** | **bool** | If the product requires shipping | [optional]
 **short_description** | **string** | Product short description | [optional]
 **sku** | **string** | Product SKU | [optional]
 **state_taxable** | **bool** | If state-based taxes should be applied to this product | [optional]

@@ -4,15 +4,15 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_lead_source_expense_using_post**](LeadSourceExpensesApi.md#create_lead_source_expense_using_post) | **POST** /v2/leadSources/{lead_source_id}/expenses | Create a Lead Source Expense
-[**delete_lead_source_using_delete1**](LeadSourceExpensesApi.md#delete_lead_source_using_delete1) | **DELETE** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Delete a lead source expense
-[**get_lead_source_expense_using_get**](LeadSourceExpensesApi.md#get_lead_source_expense_using_get) | **GET** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Retrieve a Lead Source Expense
-[**list_lead_source_expenses_using_get**](LeadSourceExpensesApi.md#list_lead_source_expenses_using_get) | **GET** /v2/leadSources/{lead_source_id}/expenses | List Lead Source Expenses
-[**update_lead_source_expense_using_patch**](LeadSourceExpensesApi.md#update_lead_source_expense_using_patch) | **PATCH** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Update a Lead Source Expense
+[**create_lead_source_expense**](LeadSourceExpensesApi.md#create_lead_source_expense) | **POST** /v2/leadSources/{lead_source_id}/expenses | Create a Lead Source Expense
+[**delete_lead_source_expense**](LeadSourceExpensesApi.md#delete_lead_source_expense) | **DELETE** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Delete a lead source expense
+[**get_lead_source_expense**](LeadSourceExpensesApi.md#get_lead_source_expense) | **GET** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Retrieve a Lead Source Expense
+[**list_lead_source_expenses**](LeadSourceExpensesApi.md#list_lead_source_expenses) | **GET** /v2/leadSources/{lead_source_id}/expenses | List Lead Source Expenses
+[**update_lead_source_expense**](LeadSourceExpensesApi.md#update_lead_source_expense) | **PATCH** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Update a Lead Source Expense
 
 
-# **create_lead_source_expense_using_post**
-> LeadSourceExpense create_lead_source_expense_using_post(lead_source_id, create_lead_source_expense_request)
+# **create_lead_source_expense**
+> LeadSourceExpense create_lead_source_expense(lead_source_id, create_lead_source_expense_request)
 
 Create a Lead Source Expense
 
@@ -43,11 +43,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Create a Lead Source Expense
-        api_response = api_instance.create_lead_source_expense_using_post(lead_source_id, create_lead_source_expense_request)
-        print("The response of LeadSourceExpensesApi->create_lead_source_expense_using_post:\n")
+        api_response = api_instance.create_lead_source_expense(lead_source_id, create_lead_source_expense_request)
+        print("The response of LeadSourceExpensesApi->create_lead_source_expense:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling LeadSourceExpensesApi->create_lead_source_expense_using_post: %s\n" % e)
+        print("Exception when calling LeadSourceExpensesApi->create_lead_source_expense: %s\n" % e)
 ```
 
 
@@ -85,8 +85,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **delete_lead_source_using_delete1**
-> delete_lead_source_using_delete1(lead_source_expense_id, lead_source_id)
+# **delete_lead_source_expense**
+> delete_lead_source_expense(lead_source_expense_id, lead_source_id)
 
 Delete a lead source expense
 
@@ -115,9 +115,9 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Delete a lead source expense
-        api_instance.delete_lead_source_using_delete1(lead_source_expense_id, lead_source_id)
+        api_instance.delete_lead_source_expense(lead_source_expense_id, lead_source_id)
     except Exception as e:
-        print("Exception when calling LeadSourceExpensesApi->delete_lead_source_using_delete1: %s\n" % e)
+        print("Exception when calling LeadSourceExpensesApi->delete_lead_source_expense: %s\n" % e)
 ```
 
 
@@ -154,8 +154,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_lead_source_expense_using_get**
-> LeadSourceExpense get_lead_source_expense_using_get(lead_source_expense_id, lead_source_id)
+# **get_lead_source_expense**
+> LeadSourceExpense get_lead_source_expense(lead_source_expense_id, lead_source_id)
 
 Retrieve a Lead Source Expense
 
@@ -185,11 +185,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieve a Lead Source Expense
-        api_response = api_instance.get_lead_source_expense_using_get(lead_source_expense_id, lead_source_id)
-        print("The response of LeadSourceExpensesApi->get_lead_source_expense_using_get:\n")
+        api_response = api_instance.get_lead_source_expense(lead_source_expense_id, lead_source_id)
+        print("The response of LeadSourceExpensesApi->get_lead_source_expense:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling LeadSourceExpensesApi->get_lead_source_expense_using_get: %s\n" % e)
+        print("Exception when calling LeadSourceExpensesApi->get_lead_source_expense: %s\n" % e)
 ```
 
 
@@ -226,8 +226,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **list_lead_source_expenses_using_get**
-> ListLeadSourceExpensesResponse list_lead_source_expenses_using_get(lead_source_id, filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
+# **list_lead_source_expenses**
+> ListLeadSourceExpensesResponse list_lead_source_expenses(lead_source_id, filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
 
 List Lead Source Expenses
 
@@ -260,11 +260,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # List Lead Source Expenses
-        api_response = api_instance.list_lead_source_expenses_using_get(lead_source_id, filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
-        print("The response of LeadSourceExpensesApi->list_lead_source_expenses_using_get:\n")
+        api_response = api_instance.list_lead_source_expenses(lead_source_id, filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
+        print("The response of LeadSourceExpensesApi->list_lead_source_expenses:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling LeadSourceExpensesApi->list_lead_source_expenses_using_get: %s\n" % e)
+        print("Exception when calling LeadSourceExpensesApi->list_lead_source_expenses: %s\n" % e)
 ```
 
 
@@ -305,8 +305,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **update_lead_source_expense_using_patch**
-> LeadSourceExpense update_lead_source_expense_using_patch(lead_source_expense_id, lead_source_id, update_lead_source_expense_request, update_mask=update_mask)
+# **update_lead_source_expense**
+> LeadSourceExpense update_lead_source_expense(lead_source_expense_id, lead_source_id, update_lead_source_expense_request, update_mask=update_mask)
 
 Update a Lead Source Expense
 
@@ -339,11 +339,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Update a Lead Source Expense
-        api_response = api_instance.update_lead_source_expense_using_patch(lead_source_expense_id, lead_source_id, update_lead_source_expense_request, update_mask=update_mask)
-        print("The response of LeadSourceExpensesApi->update_lead_source_expense_using_patch:\n")
+        api_response = api_instance.update_lead_source_expense(lead_source_expense_id, lead_source_id, update_lead_source_expense_request, update_mask=update_mask)
+        print("The response of LeadSourceExpensesApi->update_lead_source_expense:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling LeadSourceExpensesApi->update_lead_source_expense_using_patch: %s\n" % e)
+        print("Exception when calling LeadSourceExpensesApi->update_lead_source_expense: %s\n" % e)
 ```
 
 

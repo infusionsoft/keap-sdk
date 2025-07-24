@@ -4,15 +4,15 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_lead_source_using_post**](LeadSourcesApi.md#create_lead_source_using_post) | **POST** /v2/leadSources | Create a Lead Source
-[**delete_lead_source_using_delete**](LeadSourcesApi.md#delete_lead_source_using_delete) | **DELETE** /v2/leadSources/{lead_source_id} | Delete a Lead Source
-[**get_lead_source_using_get**](LeadSourcesApi.md#get_lead_source_using_get) | **GET** /v2/leadSources/{lead_source_id} | Retrieve a Lead Source
-[**list_lead_sources_using_get**](LeadSourcesApi.md#list_lead_sources_using_get) | **GET** /v2/leadSources | List Lead Sources
-[**update_lead_source_using_patch**](LeadSourcesApi.md#update_lead_source_using_patch) | **PATCH** /v2/leadSources/{lead_source_id} | Update a Lead Source
+[**create_lead_source**](LeadSourcesApi.md#create_lead_source) | **POST** /v2/leadSources | Create a Lead Source
+[**delete_lead_source**](LeadSourcesApi.md#delete_lead_source) | **DELETE** /v2/leadSources/{lead_source_id} | Delete a Lead Source
+[**get_lead_source**](LeadSourcesApi.md#get_lead_source) | **GET** /v2/leadSources/{lead_source_id} | Retrieve a Lead Source
+[**list_lead_sources**](LeadSourcesApi.md#list_lead_sources) | **GET** /v2/leadSources | List Lead Sources
+[**update_lead_source**](LeadSourcesApi.md#update_lead_source) | **PATCH** /v2/leadSources/{lead_source_id} | Update a Lead Source
 
 
-# **create_lead_source_using_post**
-> LeadSource create_lead_source_using_post(create_lead_source_request)
+# **create_lead_source**
+> LeadSource create_lead_source(create_lead_source_request)
 
 Create a Lead Source
 
@@ -42,11 +42,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Create a Lead Source
-        api_response = api_instance.create_lead_source_using_post(create_lead_source_request)
-        print("The response of LeadSourcesApi->create_lead_source_using_post:\n")
+        api_response = api_instance.create_lead_source(create_lead_source_request)
+        print("The response of LeadSourcesApi->create_lead_source:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling LeadSourcesApi->create_lead_source_using_post: %s\n" % e)
+        print("Exception when calling LeadSourcesApi->create_lead_source: %s\n" % e)
 ```
 
 
@@ -82,8 +82,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **delete_lead_source_using_delete**
-> delete_lead_source_using_delete(lead_source_id)
+# **delete_lead_source**
+> delete_lead_source(lead_source_id)
 
 Delete a Lead Source
 
@@ -111,9 +111,9 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Delete a Lead Source
-        api_instance.delete_lead_source_using_delete(lead_source_id)
+        api_instance.delete_lead_source(lead_source_id)
     except Exception as e:
-        print("Exception when calling LeadSourcesApi->delete_lead_source_using_delete: %s\n" % e)
+        print("Exception when calling LeadSourcesApi->delete_lead_source: %s\n" % e)
 ```
 
 
@@ -149,8 +149,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_lead_source_using_get**
-> LeadSource get_lead_source_using_get(lead_source_id)
+# **get_lead_source**
+> LeadSource get_lead_source(lead_source_id)
 
 Retrieve a Lead Source
 
@@ -179,11 +179,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieve a Lead Source
-        api_response = api_instance.get_lead_source_using_get(lead_source_id)
-        print("The response of LeadSourcesApi->get_lead_source_using_get:\n")
+        api_response = api_instance.get_lead_source(lead_source_id)
+        print("The response of LeadSourcesApi->get_lead_source:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling LeadSourcesApi->get_lead_source_using_get: %s\n" % e)
+        print("Exception when calling LeadSourcesApi->get_lead_source: %s\n" % e)
 ```
 
 
@@ -219,8 +219,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **list_lead_sources_using_get**
-> ListLeadSourcesResponse list_lead_sources_using_get(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
+# **list_lead_sources**
+> ListLeadSourcesResponse list_lead_sources(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
 
 List Lead Sources
 
@@ -252,11 +252,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # List Lead Sources
-        api_response = api_instance.list_lead_sources_using_get(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
-        print("The response of LeadSourcesApi->list_lead_sources_using_get:\n")
+        api_response = api_instance.list_lead_sources(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
+        print("The response of LeadSourcesApi->list_lead_sources:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling LeadSourcesApi->list_lead_sources_using_get: %s\n" % e)
+        print("Exception when calling LeadSourcesApi->list_lead_sources: %s\n" % e)
 ```
 
 
@@ -296,8 +296,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **update_lead_source_using_patch**
-> LeadSource update_lead_source_using_patch(lead_source_id, create_lead_source_request, update_mask=update_mask)
+# **update_lead_source**
+> LeadSource update_lead_source(lead_source_id, create_lead_source_request, update_mask=update_mask)
 
 Update a Lead Source
 
@@ -329,11 +329,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Update a Lead Source
-        api_response = api_instance.update_lead_source_using_patch(lead_source_id, create_lead_source_request, update_mask=update_mask)
-        print("The response of LeadSourcesApi->update_lead_source_using_patch:\n")
+        api_response = api_instance.update_lead_source(lead_source_id, create_lead_source_request, update_mask=update_mask)
+        print("The response of LeadSourcesApi->update_lead_source:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling LeadSourcesApi->update_lead_source_using_patch: %s\n" % e)
+        print("Exception when calling LeadSourcesApi->update_lead_source: %s\n" % e)
 ```
 
 

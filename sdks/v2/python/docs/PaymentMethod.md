@@ -8,10 +8,10 @@ Name | Type | Description | Notes
 **card_info** | [**CardInfo**](CardInfo.md) |  | [optional] 
 **contact_id** | **str** |  | [optional] 
 **created_time** | **str** |  | [optional] 
-**payment_gateway_id** | **str** |  | [optional] 
+**merchant_account_id** | **str** |  | [optional] 
+**merchant_account_type** | **str** |  | [optional] 
 **payment_method_id** | **str** |  | [optional] 
 **payment_method_type** | **str** |  | [optional] 
-**payment_processor_type** | **str** |  | [optional] 
 
 ## Example
 

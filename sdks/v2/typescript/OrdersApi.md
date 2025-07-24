@@ -4,14 +4,14 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createOrderCustomFieldUsingPOST**](OrdersApi.md#createOrderCustomFieldUsingPOST) | **POST** /v2/orders/model/customFields | Create an Order Custom Field
-[**deleteOrderCustomFieldUsingDELETE**](OrdersApi.md#deleteOrderCustomFieldUsingDELETE) | **DELETE** /v2/orders/model/customFields/{custom_field_id} | Delete an Order Custom Field
-[**retrieveOrderCustomFieldModelUsingGET**](OrdersApi.md#retrieveOrderCustomFieldModelUsingGET) | **GET** /v2/orders/model | Retrieve Order Custom Field Model
-[**updateOrderCustomFieldUsingPATCH**](OrdersApi.md#updateOrderCustomFieldUsingPATCH) | **PATCH** /v2/orders/model/customFields/{custom_field_id} | Update an Order Custom Field
+[**createOrderCustomField**](OrdersApi.md#createOrderCustomField) | **POST** /v2/orders/model/customFields | Create an Order Custom Field
+[**deleteOrderCustomField**](OrdersApi.md#deleteOrderCustomField) | **DELETE** /v2/orders/model/customFields/{custom_field_id} | Delete an Order Custom Field
+[**retrieveOrderCustomFieldModel**](OrdersApi.md#retrieveOrderCustomFieldModel) | **GET** /v2/orders/model | Retrieve Order Custom Field Model
+[**updateOrderCustomField**](OrdersApi.md#updateOrderCustomField) | **PATCH** /v2/orders/model/customFields/{custom_field_id} | Update an Order Custom Field
 
 
-# **createOrderCustomFieldUsingPOST**
-> CustomFieldMetaData createOrderCustomFieldUsingPOST(createCustomFieldRequest)
+# **createOrderCustomField**
+> CustomFieldMetaData createOrderCustomField(createCustomFieldRequest)
 
 Creates a custom field of the specified type and options to the Order object
 
@@ -20,12 +20,12 @@ Creates a custom field of the specified type and options to the Order object
 
 ```typescript
 import { createConfiguration, OrdersApi } from '';
-import type { OrdersApiCreateOrderCustomFieldUsingPOSTRequest } from '';
+import type { OrdersApiCreateOrderCustomFieldRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new OrdersApi(configuration);
 
-const request: OrdersApiCreateOrderCustomFieldUsingPOSTRequest = {
+const request: OrdersApiCreateOrderCustomFieldRequest = {
     // customField
   createCustomFieldRequest: {
     fieldType: "CURRENCY",
@@ -41,7 +41,7 @@ const request: OrdersApiCreateOrderCustomFieldUsingPOSTRequest = {
   },
 };
 
-const data = await apiInstance.createOrderCustomFieldUsingPOST(request);
+const data = await apiInstance.createOrderCustomField(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -77,8 +77,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **deleteOrderCustomFieldUsingDELETE**
-> void deleteOrderCustomFieldUsingDELETE()
+# **deleteOrderCustomField**
+> void deleteOrderCustomField()
 
 Deletes a Custom Field from the Order object
 
@@ -87,17 +87,17 @@ Deletes a Custom Field from the Order object
 
 ```typescript
 import { createConfiguration, OrdersApi } from '';
-import type { OrdersApiDeleteOrderCustomFieldUsingDELETERequest } from '';
+import type { OrdersApiDeleteOrderCustomFieldRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new OrdersApi(configuration);
 
-const request: OrdersApiDeleteOrderCustomFieldUsingDELETERequest = {
+const request: OrdersApiDeleteOrderCustomFieldRequest = {
     // custom_field_id
   customFieldId: "custom_field_id_example",
 };
 
-const data = await apiInstance.deleteOrderCustomFieldUsingDELETE(request);
+const data = await apiInstance.deleteOrderCustomField(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -134,8 +134,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **retrieveOrderCustomFieldModelUsingGET**
-> ObjectModel retrieveOrderCustomFieldModelUsingGET()
+# **retrieveOrderCustomFieldModel**
+> ObjectModel retrieveOrderCustomFieldModel()
 
 Gets the custom fields for the Order object
 
@@ -150,7 +150,7 @@ const apiInstance = new OrdersApi(configuration);
 
 const request = {};
 
-const data = await apiInstance.retrieveOrderCustomFieldModelUsingGET(request);
+const data = await apiInstance.retrieveOrderCustomFieldModel(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -184,8 +184,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **updateOrderCustomFieldUsingPATCH**
-> CustomFieldMetaData updateOrderCustomFieldUsingPATCH(updateCustomFieldMetaDataRequest)
+# **updateOrderCustomField**
+> CustomFieldMetaData updateOrderCustomField(updateCustomFieldMetaDataRequest)
 
 Updates a custom field of the specified type and options to the Order object
 
@@ -194,12 +194,12 @@ Updates a custom field of the specified type and options to the Order object
 
 ```typescript
 import { createConfiguration, OrdersApi } from '';
-import type { OrdersApiUpdateOrderCustomFieldUsingPATCHRequest } from '';
+import type { OrdersApiUpdateOrderCustomFieldRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new OrdersApi(configuration);
 
-const request: OrdersApiUpdateOrderCustomFieldUsingPATCHRequest = {
+const request: OrdersApiUpdateOrderCustomFieldRequest = {
     // custom_field_id
   customFieldId: "custom_field_id_example",
     // request
@@ -220,7 +220,7 @@ const request: OrdersApiUpdateOrderCustomFieldUsingPATCHRequest = {
   ],
 };
 
-const data = await apiInstance.updateOrderCustomFieldUsingPATCH(request);
+const data = await apiInstance.updateOrderCustomField(request);
 console.log('API called successfully. Returned data:', data);
 ```
 

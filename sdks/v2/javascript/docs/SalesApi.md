@@ -4,13 +4,13 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**setMerchantGatewayAsDefaultUsingPOST**](SalesApi.md#setMerchantGatewayAsDefaultUsingPOST) | **POST** /v2/sales/merchants/{id}:setDefault | Set default Merchant Account
+[**setMerchantGatewayAsDefault**](SalesApi.md#setMerchantGatewayAsDefault) | **POST** /v2/sales/merchants/{id}:setDefault | Set default Merchant Account
 
 
 
-## setMerchantGatewayAsDefaultUsingPOST
+## setMerchantGatewayAsDefault
 
-> setMerchantGatewayAsDefaultUsingPOST(id)
+> setMerchantGatewayAsDefault(id)
 
 Set default Merchant Account
 
@@ -23,7 +23,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.SalesApi();
 let id = "id_example"; // String | id
-apiInstance.setMerchantGatewayAsDefaultUsingPOST(id).then(() => {
+apiInstance.setMerchantGatewayAsDefault(id).then(() => {
   console.log('API called successfully.');
 }, (error) => {
   console.error(error);

@@ -4,17 +4,16 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**AddContactsToAutomationSequenceUsingPOST**](AutomationApi.md#addcontactstoautomationsequenceusingpost) | **POST** /v2/automations/{automation_id}/sequences/{sequence_id}:addContacts | Add Contacts to an Automation Sequence |
-| [**BulkAssignmentAutomationsCategoriesUsingPOST**](AutomationApi.md#bulkassignmentautomationscategoriesusingpost) | **POST** /v2/automations/categories/batchAssign | Bulk update for Automations Categories |
-| [**DeleteAutomationUsingDELETE**](AutomationApi.md#deleteautomationusingdelete) | **DELETE** /v2/automations | Delete an Automation |
-| [**GetAutomationUsingGET**](AutomationApi.md#getautomationusingget) | **GET** /v2/automations/{automation_id} | Retrieve an Automation |
-| [**ListAllAutomationIdsUsingGET**](AutomationApi.md#listallautomationidsusingget) | **GET** /v2/automations/ids | List Automations Ids |
-| [**ListAutomationsUsingGET**](AutomationApi.md#listautomationsusingget) | **GET** /v2/automations | List Automations |
-| [**UpdateAutomationCategoryUsingPUT**](AutomationApi.md#updateautomationcategoryusingput) | **PUT** /v2/automations/category | Update an Automation&#39;s Category |
+| [**AddContactsToAutomationSequence**](AutomationApi.md#addcontactstoautomationsequence) | **POST** /v2/automations/{automation_id}/sequences/{sequence_id}:addContacts | Add Contacts to an Automation Sequence |
+| [**BulkAssignmentAutomationsCategories**](AutomationApi.md#bulkassignmentautomationscategories) | **POST** /v2/automations/categories/batchAssign | Bulk update for Automations Categories |
+| [**DeleteAutomation**](AutomationApi.md#deleteautomation) | **DELETE** /v2/automations | Delete an Automation |
+| [**GetAutomation**](AutomationApi.md#getautomation) | **GET** /v2/automations/{automation_id} | Retrieve an Automation |
+| [**ListAllAutomationIds**](AutomationApi.md#listallautomationids) | **GET** /v2/automations/ids | List Automations Ids |
+| [**ListAutomations**](AutomationApi.md#listautomations) | **GET** /v2/automations | List Automations |
 
-<a id="addcontactstoautomationsequenceusingpost"></a>
-# **AddContactsToAutomationSequenceUsingPOST**
-> AddToAutomationSequenceResponse AddContactsToAutomationSequenceUsingPOST (string automationId, string sequenceId, AddToAutomationSequenceRequest addToAutomationSequenceRequest)
+<a id="addcontactstoautomationsequence"></a>
+# **AddContactsToAutomationSequence**
+> AddToAutomationSequenceResponse AddContactsToAutomationSequence (string automationId, string sequenceId, AddToAutomationSequenceRequest addToAutomationSequenceRequest)
 
 Add Contacts to an Automation Sequence
 
@@ -30,7 +29,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class AddContactsToAutomationSequenceUsingPOSTExample
+    public class AddContactsToAutomationSequenceExample
     {
         public static void Main()
         {
@@ -44,12 +43,12 @@ namespace Example
             try
             {
                 // Add Contacts to an Automation Sequence
-                AddToAutomationSequenceResponse result = apiInstance.AddContactsToAutomationSequenceUsingPOST(automationId, sequenceId, addToAutomationSequenceRequest);
+                AddToAutomationSequenceResponse result = apiInstance.AddContactsToAutomationSequence(automationId, sequenceId, addToAutomationSequenceRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling AutomationApi.AddContactsToAutomationSequenceUsingPOST: " + e.Message);
+                Debug.Print("Exception when calling AutomationApi.AddContactsToAutomationSequence: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -58,21 +57,21 @@ namespace Example
 }
 ```
 
-#### Using the AddContactsToAutomationSequenceUsingPOSTWithHttpInfo variant
+#### Using the AddContactsToAutomationSequenceWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Add Contacts to an Automation Sequence
-    ApiResponse<AddToAutomationSequenceResponse> response = apiInstance.AddContactsToAutomationSequenceUsingPOSTWithHttpInfo(automationId, sequenceId, addToAutomationSequenceRequest);
+    ApiResponse<AddToAutomationSequenceResponse> response = apiInstance.AddContactsToAutomationSequenceWithHttpInfo(automationId, sequenceId, addToAutomationSequenceRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling AutomationApi.AddContactsToAutomationSequenceUsingPOSTWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling AutomationApi.AddContactsToAutomationSequenceWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -110,9 +109,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="bulkassignmentautomationscategoriesusingpost"></a>
-# **BulkAssignmentAutomationsCategoriesUsingPOST**
-> void BulkAssignmentAutomationsCategoriesUsingPOST (AssignAutomationCategoryRequest assignAutomationCategoryRequest)
+<a id="bulkassignmentautomationscategories"></a>
+# **BulkAssignmentAutomationsCategories**
+> void BulkAssignmentAutomationsCategories (AssignAutomationCategoryRequest assignAutomationCategoryRequest)
 
 Bulk update for Automations Categories
 
@@ -128,7 +127,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class BulkAssignmentAutomationsCategoriesUsingPOSTExample
+    public class BulkAssignmentAutomationsCategoriesExample
     {
         public static void Main()
         {
@@ -140,11 +139,11 @@ namespace Example
             try
             {
                 // Bulk update for Automations Categories
-                apiInstance.BulkAssignmentAutomationsCategoriesUsingPOST(assignAutomationCategoryRequest);
+                apiInstance.BulkAssignmentAutomationsCategories(assignAutomationCategoryRequest);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling AutomationApi.BulkAssignmentAutomationsCategoriesUsingPOST: " + e.Message);
+                Debug.Print("Exception when calling AutomationApi.BulkAssignmentAutomationsCategories: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -153,18 +152,18 @@ namespace Example
 }
 ```
 
-#### Using the BulkAssignmentAutomationsCategoriesUsingPOSTWithHttpInfo variant
+#### Using the BulkAssignmentAutomationsCategoriesWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Bulk update for Automations Categories
-    apiInstance.BulkAssignmentAutomationsCategoriesUsingPOSTWithHttpInfo(assignAutomationCategoryRequest);
+    apiInstance.BulkAssignmentAutomationsCategoriesWithHttpInfo(assignAutomationCategoryRequest);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling AutomationApi.BulkAssignmentAutomationsCategoriesUsingPOSTWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling AutomationApi.BulkAssignmentAutomationsCategoriesWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -200,9 +199,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="deleteautomationusingdelete"></a>
-# **DeleteAutomationUsingDELETE**
-> void DeleteAutomationUsingDELETE (List<long> automationIds)
+<a id="deleteautomation"></a>
+# **DeleteAutomation**
+> void DeleteAutomation (List<long> automationIds)
 
 Delete an Automation
 
@@ -218,7 +217,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class DeleteAutomationUsingDELETEExample
+    public class DeleteAutomationExample
     {
         public static void Main()
         {
@@ -230,11 +229,11 @@ namespace Example
             try
             {
                 // Delete an Automation
-                apiInstance.DeleteAutomationUsingDELETE(automationIds);
+                apiInstance.DeleteAutomation(automationIds);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling AutomationApi.DeleteAutomationUsingDELETE: " + e.Message);
+                Debug.Print("Exception when calling AutomationApi.DeleteAutomation: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -243,18 +242,18 @@ namespace Example
 }
 ```
 
-#### Using the DeleteAutomationUsingDELETEWithHttpInfo variant
+#### Using the DeleteAutomationWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Delete an Automation
-    apiInstance.DeleteAutomationUsingDELETEWithHttpInfo(automationIds);
+    apiInstance.DeleteAutomationWithHttpInfo(automationIds);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling AutomationApi.DeleteAutomationUsingDELETEWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling AutomationApi.DeleteAutomationWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -291,9 +290,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="getautomationusingget"></a>
-# **GetAutomationUsingGET**
-> Automation GetAutomationUsingGET (string automationId)
+<a id="getautomation"></a>
+# **GetAutomation**
+> Automation GetAutomation (string automationId)
 
 Retrieve an Automation
 
@@ -309,7 +308,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class GetAutomationUsingGETExample
+    public class GetAutomationExample
     {
         public static void Main()
         {
@@ -321,12 +320,12 @@ namespace Example
             try
             {
                 // Retrieve an Automation
-                Automation result = apiInstance.GetAutomationUsingGET(automationId);
+                Automation result = apiInstance.GetAutomation(automationId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling AutomationApi.GetAutomationUsingGET: " + e.Message);
+                Debug.Print("Exception when calling AutomationApi.GetAutomation: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -335,21 +334,21 @@ namespace Example
 }
 ```
 
-#### Using the GetAutomationUsingGETWithHttpInfo variant
+#### Using the GetAutomationWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Retrieve an Automation
-    ApiResponse<Automation> response = apiInstance.GetAutomationUsingGETWithHttpInfo(automationId);
+    ApiResponse<Automation> response = apiInstance.GetAutomationWithHttpInfo(automationId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling AutomationApi.GetAutomationUsingGETWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling AutomationApi.GetAutomationWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -386,9 +385,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="listallautomationidsusingget"></a>
-# **ListAllAutomationIdsUsingGET**
-> ListAutomationIdsResponse ListAllAutomationIdsUsingGET (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null, bool? stats = null)
+<a id="listallautomationids"></a>
+# **ListAllAutomationIds**
+> ListAutomationIdsResponse ListAllAutomationIds (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null, bool? stats = null)
 
 List Automations Ids
 
@@ -404,7 +403,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class ListAllAutomationIdsUsingGETExample
+    public class ListAllAutomationIdsExample
     {
         public static void Main()
         {
@@ -420,12 +419,12 @@ namespace Example
             try
             {
                 // List Automations Ids
-                ListAutomationIdsResponse result = apiInstance.ListAllAutomationIdsUsingGET(filter, orderBy, pageSize, pageToken, stats);
+                ListAutomationIdsResponse result = apiInstance.ListAllAutomationIds(filter, orderBy, pageSize, pageToken, stats);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling AutomationApi.ListAllAutomationIdsUsingGET: " + e.Message);
+                Debug.Print("Exception when calling AutomationApi.ListAllAutomationIds: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -434,21 +433,21 @@ namespace Example
 }
 ```
 
-#### Using the ListAllAutomationIdsUsingGETWithHttpInfo variant
+#### Using the ListAllAutomationIdsWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // List Automations Ids
-    ApiResponse<ListAutomationIdsResponse> response = apiInstance.ListAllAutomationIdsUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken, stats);
+    ApiResponse<ListAutomationIdsResponse> response = apiInstance.ListAllAutomationIdsWithHttpInfo(filter, orderBy, pageSize, pageToken, stats);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling AutomationApi.ListAllAutomationIdsUsingGETWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling AutomationApi.ListAllAutomationIdsWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -489,9 +488,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="listautomationsusingget"></a>
-# **ListAutomationsUsingGET**
-> ListAutomationResponse ListAutomationsUsingGET (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null, bool? stats = null)
+<a id="listautomations"></a>
+# **ListAutomations**
+> ListAutomationResponse ListAutomations (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null, bool? stats = null)
 
 List Automations
 
@@ -507,7 +506,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class ListAutomationsUsingGETExample
+    public class ListAutomationsExample
     {
         public static void Main()
         {
@@ -523,12 +522,12 @@ namespace Example
             try
             {
                 // List Automations
-                ListAutomationResponse result = apiInstance.ListAutomationsUsingGET(filter, orderBy, pageSize, pageToken, stats);
+                ListAutomationResponse result = apiInstance.ListAutomations(filter, orderBy, pageSize, pageToken, stats);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling AutomationApi.ListAutomationsUsingGET: " + e.Message);
+                Debug.Print("Exception when calling AutomationApi.ListAutomations: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -537,21 +536,21 @@ namespace Example
 }
 ```
 
-#### Using the ListAutomationsUsingGETWithHttpInfo variant
+#### Using the ListAutomationsWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // List Automations
-    ApiResponse<ListAutomationResponse> response = apiInstance.ListAutomationsUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken, stats);
+    ApiResponse<ListAutomationResponse> response = apiInstance.ListAutomationsWithHttpInfo(filter, orderBy, pageSize, pageToken, stats);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling AutomationApi.ListAutomationsUsingGETWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling AutomationApi.ListAutomationsWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -578,97 +577,6 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **500** | Internal Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a id="updateautomationcategoryusingput"></a>
-# **UpdateAutomationCategoryUsingPUT**
-> void UpdateAutomationCategoryUsingPUT (UpdateAutomationCategoryRequest updateAutomationCategoryRequest)
-
-Update an Automation's Category
-
-Updates the category of one or more automations
-
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using Keap.Core.V2.Api;
-using Keap.Core.V2.Client;
-using Keap.Core.V2.Model;
-
-namespace Example
-{
-    public class UpdateAutomationCategoryUsingPUTExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
-            var apiInstance = new AutomationApi(config);
-            var updateAutomationCategoryRequest = new UpdateAutomationCategoryRequest(); // UpdateAutomationCategoryRequest | updateAutomationCategoryRequest
-
-            try
-            {
-                // Update an Automation's Category
-                apiInstance.UpdateAutomationCategoryUsingPUT(updateAutomationCategoryRequest);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling AutomationApi.UpdateAutomationCategoryUsingPUT: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the UpdateAutomationCategoryUsingPUTWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Update an Automation's Category
-    apiInstance.UpdateAutomationCategoryUsingPUTWithHttpInfo(updateAutomationCategoryRequest);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling AutomationApi.UpdateAutomationCategoryUsingPUTWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| **updateAutomationCategoryRequest** | [**UpdateAutomationCategoryRequest**](UpdateAutomationCategoryRequest.md) | updateAutomationCategoryRequest |  |
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json
  - **Accept**: application/json
 
 

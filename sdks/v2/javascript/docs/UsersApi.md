@@ -4,13 +4,13 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**listPaginatedUsersUsingGET**](UsersApi.md#listPaginatedUsersUsingGET) | **GET** /v2/users | List Users
+[**listPaginatedUsers**](UsersApi.md#listPaginatedUsers) | **GET** /v2/users | List Users
 
 
 
-## listPaginatedUsersUsingGET
+## listPaginatedUsers
 
-> ListUsersPaginatedResponse listPaginatedUsersUsingGET(opts)
+> ListUsersPaginatedResponse listPaginatedUsers(opts)
 
 List Users
 
@@ -25,10 +25,10 @@ let apiInstance = new KeapCoreServiceV2Sdk.UsersApi();
 let opts = {
   'filter': "filter_example", // String | Filter to apply, allowed fields are: - (String) `email` - (String) `given_name` - (Boolean) `include_inactive` - (Boolean) `include_partners` - (Set[String]) `user_ids`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=given_name%3D%3DMary` - `filter=user_ids%3D%3D123%3Bgiven_name%3D%3DSmith` 
   'orderBy': "orderBy_example", // String | Attribute and direction to order items. One of the following fields: - `date_created` - `email`  One of the following directions: - `asc` - `desc`
-  'pageSize': 0, // Number | Total number of items to return per page
+  'pageSize': 10, // Number | Total number of items to return per page
   'pageToken': "pageToken_example" // String | Page token
 };
-apiInstance.listPaginatedUsersUsingGET(opts).then((data) => {
+apiInstance.listPaginatedUsers(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);

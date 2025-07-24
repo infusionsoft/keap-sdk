@@ -4,17 +4,17 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createDiscountUsingPOST1**](FreeTrialDiscountsApi.md#createDiscountUsingPOST1) | **POST** /v2/discounts/freeTrials | Create a Subscription Free Trial Discount
-[**deleteDiscountUsingDELETE1**](FreeTrialDiscountsApi.md#deleteDiscountUsingDELETE1) | **DELETE** /v2/discounts/freeTrials/{discount_id} | Delete a Subscription Free Trial Discount
-[**getDiscountUsingGET1**](FreeTrialDiscountsApi.md#getDiscountUsingGET1) | **GET** /v2/discounts/freeTrials/{discount_id} | Retrieve a Subscription Free Trial Discount
-[**listFreeTrialsUsingGET**](FreeTrialDiscountsApi.md#listFreeTrialsUsingGET) | **GET** /v2/discounts/freeTrials | List all Subscription Free Trial Discounts
-[**updateDiscountUsingPATCH1**](FreeTrialDiscountsApi.md#updateDiscountUsingPATCH1) | **PATCH** /v2/discounts/freeTrials/{discount_id} | Update a Subscription Free Trial Discount
+[**createFreeTrialDiscount**](FreeTrialDiscountsApi.md#createFreeTrialDiscount) | **POST** /v2/discounts/freeTrials | Create a Subscription Free Trial Discount
+[**deleteFreeTrialDiscount**](FreeTrialDiscountsApi.md#deleteFreeTrialDiscount) | **DELETE** /v2/discounts/freeTrials/{discount_id} | Delete a Subscription Free Trial Discount
+[**getFreeTrialDiscount**](FreeTrialDiscountsApi.md#getFreeTrialDiscount) | **GET** /v2/discounts/freeTrials/{discount_id} | Retrieve a Subscription Free Trial Discount
+[**listFreeTrialDiscounts**](FreeTrialDiscountsApi.md#listFreeTrialDiscounts) | **GET** /v2/discounts/freeTrials | List all Subscription Free Trial Discounts
+[**updateFreeTrialDiscount**](FreeTrialDiscountsApi.md#updateFreeTrialDiscount) | **PATCH** /v2/discounts/freeTrials/{discount_id} | Update a Subscription Free Trial Discount
 
 
 
-## createDiscountUsingPOST1
+## createFreeTrialDiscount
 
-> FreeTrialDiscount createDiscountUsingPOST1(createFreeTrialDiscountRequest)
+> FreeTrialDiscount createFreeTrialDiscount(createFreeTrialDiscountRequest)
 
 Create a Subscription Free Trial Discount
 
@@ -27,7 +27,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.FreeTrialDiscountsApi();
 let createFreeTrialDiscountRequest = new KeapCoreServiceV2Sdk.CreateFreeTrialDiscountRequest(); // CreateFreeTrialDiscountRequest | createFreeTrialDiscountRequest
-apiInstance.createDiscountUsingPOST1(createFreeTrialDiscountRequest).then((data) => {
+apiInstance.createFreeTrialDiscount(createFreeTrialDiscountRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -56,9 +56,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## deleteDiscountUsingDELETE1
+## deleteFreeTrialDiscount
 
-> deleteDiscountUsingDELETE1(discountId)
+> deleteFreeTrialDiscount(discountId)
 
 Delete a Subscription Free Trial Discount
 
@@ -71,7 +71,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.FreeTrialDiscountsApi();
 let discountId = "discountId_example"; // String | discount_id
-apiInstance.deleteDiscountUsingDELETE1(discountId).then(() => {
+apiInstance.deleteFreeTrialDiscount(discountId).then(() => {
   console.log('API called successfully.');
 }, (error) => {
   console.error(error);
@@ -100,9 +100,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## getDiscountUsingGET1
+## getFreeTrialDiscount
 
-> FreeTrialDiscount getDiscountUsingGET1(discountId)
+> FreeTrialDiscount getFreeTrialDiscount(discountId)
 
 Retrieve a Subscription Free Trial Discount
 
@@ -115,7 +115,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.FreeTrialDiscountsApi();
 let discountId = "discountId_example"; // String | discount_id
-apiInstance.getDiscountUsingGET1(discountId).then((data) => {
+apiInstance.getFreeTrialDiscount(discountId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -144,9 +144,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## listFreeTrialsUsingGET
+## listFreeTrialDiscounts
 
-> ListFreeTrialDiscountsResponse listFreeTrialsUsingGET(opts)
+> ListFreeTrialDiscountsResponse listFreeTrialDiscounts(opts)
 
 List all Subscription Free Trial Discounts
 
@@ -164,7 +164,7 @@ let opts = {
   'pageSize': 0, // Number | Total number of items to return per page
   'pageToken': "pageToken_example" // String | Page token
 };
-apiInstance.listFreeTrialsUsingGET(opts).then((data) => {
+apiInstance.listFreeTrialDiscounts(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -196,9 +196,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## updateDiscountUsingPATCH1
+## updateFreeTrialDiscount
 
-> FreeTrialDiscount updateDiscountUsingPATCH1(discountId, updateFreeTrialDiscountRequest, opts)
+> FreeTrialDiscount updateFreeTrialDiscount(discountId, updateFreeTrialDiscountRequest, opts)
 
 Update a Subscription Free Trial Discount
 
@@ -215,7 +215,7 @@ let updateFreeTrialDiscountRequest = new KeapCoreServiceV2Sdk.UpdateFreeTrialDis
 let opts = {
   'updateMask': ["null"] // [String] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
-apiInstance.updateDiscountUsingPATCH1(discountId, updateFreeTrialDiscountRequest, opts).then((data) => {
+apiInstance.updateFreeTrialDiscount(discountId, updateFreeTrialDiscountRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);

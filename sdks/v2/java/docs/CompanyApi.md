@@ -4,22 +4,22 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createCompanyUsingPOST1**](CompanyApi.md#createCompanyUsingPOST1) | **POST** /v2/companies | Create a Company |
-| [**createCompanyUsingPOST1WithHttpInfo**](CompanyApi.md#createCompanyUsingPOST1WithHttpInfo) | **POST** /v2/companies | Create a Company |
-| [**deleteCompanyUsingDELETE**](CompanyApi.md#deleteCompanyUsingDELETE) | **DELETE** /v2/companies/{company_id} | Delete a Company |
-| [**deleteCompanyUsingDELETEWithHttpInfo**](CompanyApi.md#deleteCompanyUsingDELETEWithHttpInfo) | **DELETE** /v2/companies/{company_id} | Delete a Company |
-| [**getCompanyUsingGET1**](CompanyApi.md#getCompanyUsingGET1) | **GET** /v2/companies/{company_id} | Retrieve a Company |
-| [**getCompanyUsingGET1WithHttpInfo**](CompanyApi.md#getCompanyUsingGET1WithHttpInfo) | **GET** /v2/companies/{company_id} | Retrieve a Company |
-| [**listCompaniesUsingGET1**](CompanyApi.md#listCompaniesUsingGET1) | **GET** /v2/companies | List Companies |
-| [**listCompaniesUsingGET1WithHttpInfo**](CompanyApi.md#listCompaniesUsingGET1WithHttpInfo) | **GET** /v2/companies | List Companies |
-| [**updateCompanyUsingPATCH1**](CompanyApi.md#updateCompanyUsingPATCH1) | **PATCH** /v2/companies/{company_id} | Update a Company |
-| [**updateCompanyUsingPATCH1WithHttpInfo**](CompanyApi.md#updateCompanyUsingPATCH1WithHttpInfo) | **PATCH** /v2/companies/{company_id} | Update a Company |
+| [**createCompany**](CompanyApi.md#createCompany) | **POST** /v2/companies | Create a Company |
+| [**createCompanyWithHttpInfo**](CompanyApi.md#createCompanyWithHttpInfo) | **POST** /v2/companies | Create a Company |
+| [**deleteCompany**](CompanyApi.md#deleteCompany) | **DELETE** /v2/companies/{company_id} | Delete a Company |
+| [**deleteCompanyWithHttpInfo**](CompanyApi.md#deleteCompanyWithHttpInfo) | **DELETE** /v2/companies/{company_id} | Delete a Company |
+| [**getCompany**](CompanyApi.md#getCompany) | **GET** /v2/companies/{company_id} | Retrieve a Company |
+| [**getCompanyWithHttpInfo**](CompanyApi.md#getCompanyWithHttpInfo) | **GET** /v2/companies/{company_id} | Retrieve a Company |
+| [**listCompanies**](CompanyApi.md#listCompanies) | **GET** /v2/companies | List Companies |
+| [**listCompaniesWithHttpInfo**](CompanyApi.md#listCompaniesWithHttpInfo) | **GET** /v2/companies | List Companies |
+| [**updateCompany**](CompanyApi.md#updateCompany) | **PATCH** /v2/companies/{company_id} | Update a Company |
+| [**updateCompanyWithHttpInfo**](CompanyApi.md#updateCompanyWithHttpInfo) | **PATCH** /v2/companies/{company_id} | Update a Company |
 
 
 
-## createCompanyUsingPOST1
+## createCompany
 
-> Company createCompanyUsingPOST1(createCompanyRequest)
+> Company createCompany(createCompanyRequest)
 
 Create a Company
 
@@ -43,10 +43,10 @@ public class Example {
         CompanyApi apiInstance = new CompanyApi(defaultClient);
         CreateCompanyRequest createCompanyRequest = new CreateCompanyRequest(); // CreateCompanyRequest | company
         try {
-            Company result = apiInstance.createCompanyUsingPOST1(createCompanyRequest);
+            Company result = apiInstance.createCompany(createCompanyRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling CompanyApi#createCompanyUsingPOST1");
+            System.err.println("Exception when calling CompanyApi#createCompany");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -85,9 +85,9 @@ No authorization required
 | **403** | Forbidden |  -  |
 | **500** | Internal Server Error |  -  |
 
-## createCompanyUsingPOST1WithHttpInfo
+## createCompanyWithHttpInfo
 
-> ApiResponse<Company> createCompanyUsingPOST1 createCompanyUsingPOST1WithHttpInfo(createCompanyRequest)
+> ApiResponse<Company> createCompany createCompanyWithHttpInfo(createCompanyRequest)
 
 Create a Company
 
@@ -112,12 +112,12 @@ public class Example {
         CompanyApi apiInstance = new CompanyApi(defaultClient);
         CreateCompanyRequest createCompanyRequest = new CreateCompanyRequest(); // CreateCompanyRequest | company
         try {
-            ApiResponse<Company> response = apiInstance.createCompanyUsingPOST1WithHttpInfo(createCompanyRequest);
+            ApiResponse<Company> response = apiInstance.createCompanyWithHttpInfo(createCompanyRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling CompanyApi#createCompanyUsingPOST1");
+            System.err.println("Exception when calling CompanyApi#createCompany");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -157,9 +157,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## deleteCompanyUsingDELETE
+## deleteCompany
 
-> void deleteCompanyUsingDELETE(companyId)
+> void deleteCompany(companyId)
 
 Delete a Company
 
@@ -183,9 +183,9 @@ public class Example {
         CompanyApi apiInstance = new CompanyApi(defaultClient);
         String companyId = "companyId_example"; // String | company_id
         try {
-            apiInstance.deleteCompanyUsingDELETE(companyId);
+            apiInstance.deleteCompany(companyId);
         } catch (ApiException e) {
-            System.err.println("Exception when calling CompanyApi#deleteCompanyUsingDELETE");
+            System.err.println("Exception when calling CompanyApi#deleteCompany");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -225,9 +225,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## deleteCompanyUsingDELETEWithHttpInfo
+## deleteCompanyWithHttpInfo
 
-> ApiResponse<Void> deleteCompanyUsingDELETE deleteCompanyUsingDELETEWithHttpInfo(companyId)
+> ApiResponse<Void> deleteCompany deleteCompanyWithHttpInfo(companyId)
 
 Delete a Company
 
@@ -252,11 +252,11 @@ public class Example {
         CompanyApi apiInstance = new CompanyApi(defaultClient);
         String companyId = "companyId_example"; // String | company_id
         try {
-            ApiResponse<Void> response = apiInstance.deleteCompanyUsingDELETEWithHttpInfo(companyId);
+            ApiResponse<Void> response = apiInstance.deleteCompanyWithHttpInfo(companyId);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
-            System.err.println("Exception when calling CompanyApi#deleteCompanyUsingDELETE");
+            System.err.println("Exception when calling CompanyApi#deleteCompany");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -297,9 +297,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## getCompanyUsingGET1
+## getCompany
 
-> Company getCompanyUsingGET1(companyId, fields)
+> Company getCompany(companyId, fields)
 
 Retrieve a Company
 
@@ -324,10 +324,10 @@ public class Example {
         String companyId = "companyId_example"; // String | company_id
         List<String> fields = Arrays.asList(); // List<String> | Comma-delimited list of Company properties to include in the response. (Available fields are: `company_name`, `address`, `custom_fields`, `email_address`, `fax_number`, `phone_number`, `website`, `notes`)
         try {
-            Company result = apiInstance.getCompanyUsingGET1(companyId, fields);
+            Company result = apiInstance.getCompany(companyId, fields);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling CompanyApi#getCompanyUsingGET1");
+            System.err.println("Exception when calling CompanyApi#getCompany");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -368,9 +368,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## getCompanyUsingGET1WithHttpInfo
+## getCompanyWithHttpInfo
 
-> ApiResponse<Company> getCompanyUsingGET1 getCompanyUsingGET1WithHttpInfo(companyId, fields)
+> ApiResponse<Company> getCompany getCompanyWithHttpInfo(companyId, fields)
 
 Retrieve a Company
 
@@ -396,12 +396,12 @@ public class Example {
         String companyId = "companyId_example"; // String | company_id
         List<String> fields = Arrays.asList(); // List<String> | Comma-delimited list of Company properties to include in the response. (Available fields are: `company_name`, `address`, `custom_fields`, `email_address`, `fax_number`, `phone_number`, `website`, `notes`)
         try {
-            ApiResponse<Company> response = apiInstance.getCompanyUsingGET1WithHttpInfo(companyId, fields);
+            ApiResponse<Company> response = apiInstance.getCompanyWithHttpInfo(companyId, fields);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling CompanyApi#getCompanyUsingGET1");
+            System.err.println("Exception when calling CompanyApi#getCompany");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -443,13 +443,13 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## listCompaniesUsingGET1
+## listCompanies
 
-> ListCompaniesResponse listCompaniesUsingGET1(fields, filter, orderBy, pageSize, pageToken)
+> ListCompaniesResponse listCompanies(fields, filter, orderBy, pageSize, pageToken)
 
 List Companies
 
-Retrieves a list of all Companies
+Retrieves a list of all Companies.&lt;br/&gt;&lt;br/&gt;If the feature flag is &lt;b&gt;enabled&lt;/b&gt;, the endpoint returns the &lt;span style&#x3D;&#39;color:red&#39;&gt;legacy&lt;/span&gt; non-paginated list of all companies.&lt;br/&gt;If the flag is &lt;b&gt;disabled&lt;/b&gt;, it returns a paginated list using the v2-compliant implementation.&lt;br/&gt;&lt;br/&gt;&lt;span style&#x3D;&#39;color:red&#39;&gt;Deprecated as of v2&lt;/span&gt;: The legacy behavior will be removed after the transition period.
 
 ### Example
 
@@ -467,16 +467,16 @@ public class Example {
         defaultClient.setBasePath("https://api.keap.com/crm/rest");
 
         CompanyApi apiInstance = new CompanyApi(defaultClient);
-        List<String> fields = Arrays.asList(); // List<String> | Comma-delimited list of Company properties to include in the response. (Fields such as `notes`, `fax_number` and `custom_fields` aren't included, by default.)
-        String filter = "filter_example"; // String | Search filter to apply to results
-        String orderBy = "orderBy_example"; // String | Attribute and direction to order items by. E.g. `given_name desc`
+        List<String> fields = Arrays.asList(); // List<String> | Comma-delimited list of Company properties to include in the response. (Fields such as `notes`, `fax_number`, `email_address`, `phone_number`, `update_time`, `create_time` and `custom_fields` aren't included, by default.)
+        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `company_name` - (String) `email` - (String) `since_time` - (String) `until_time` You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=company_name%3D%3DCompany` - `filter=email%3D%3Dtest@gmail.com` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;` 
+        String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `name` - `email`  One of the following directions: - `asc` - `desc`
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
         try {
-            ListCompaniesResponse result = apiInstance.listCompaniesUsingGET1(fields, filter, orderBy, pageSize, pageToken);
+            ListCompaniesResponse result = apiInstance.listCompanies(fields, filter, orderBy, pageSize, pageToken);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling CompanyApi#listCompaniesUsingGET1");
+            System.err.println("Exception when calling CompanyApi#listCompanies");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -491,9 +491,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **fields** | [**List&lt;String&gt;**](String.md)| Comma-delimited list of Company properties to include in the response. (Fields such as &#x60;notes&#x60;, &#x60;fax_number&#x60; and &#x60;custom_fields&#x60; aren&#39;t included, by default.) | [optional] |
-| **filter** | **String**| Search filter to apply to results | [optional] |
-| **orderBy** | **String**| Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60; | [optional] |
+| **fields** | [**List&lt;String&gt;**](String.md)| Comma-delimited list of Company properties to include in the response. (Fields such as &#x60;notes&#x60;, &#x60;fax_number&#x60;, &#x60;email_address&#x60;, &#x60;phone_number&#x60;, &#x60;update_time&#x60;, &#x60;create_time&#x60; and &#x60;custom_fields&#x60; aren&#39;t included, by default.) | [optional] |
+| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  | [optional] |
+| **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;name&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **pageSize** | **Integer**| Total number of items to return per page | [optional] |
 | **pageToken** | **String**| Page token | [optional] |
 
@@ -520,13 +520,13 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## listCompaniesUsingGET1WithHttpInfo
+## listCompaniesWithHttpInfo
 
-> ApiResponse<ListCompaniesResponse> listCompaniesUsingGET1 listCompaniesUsingGET1WithHttpInfo(fields, filter, orderBy, pageSize, pageToken)
+> ApiResponse<ListCompaniesResponse> listCompanies listCompaniesWithHttpInfo(fields, filter, orderBy, pageSize, pageToken)
 
 List Companies
 
-Retrieves a list of all Companies
+Retrieves a list of all Companies.&lt;br/&gt;&lt;br/&gt;If the feature flag is &lt;b&gt;enabled&lt;/b&gt;, the endpoint returns the &lt;span style&#x3D;&#39;color:red&#39;&gt;legacy&lt;/span&gt; non-paginated list of all companies.&lt;br/&gt;If the flag is &lt;b&gt;disabled&lt;/b&gt;, it returns a paginated list using the v2-compliant implementation.&lt;br/&gt;&lt;br/&gt;&lt;span style&#x3D;&#39;color:red&#39;&gt;Deprecated as of v2&lt;/span&gt;: The legacy behavior will be removed after the transition period.
 
 ### Example
 
@@ -545,18 +545,18 @@ public class Example {
         defaultClient.setBasePath("https://api.keap.com/crm/rest");
 
         CompanyApi apiInstance = new CompanyApi(defaultClient);
-        List<String> fields = Arrays.asList(); // List<String> | Comma-delimited list of Company properties to include in the response. (Fields such as `notes`, `fax_number` and `custom_fields` aren't included, by default.)
-        String filter = "filter_example"; // String | Search filter to apply to results
-        String orderBy = "orderBy_example"; // String | Attribute and direction to order items by. E.g. `given_name desc`
+        List<String> fields = Arrays.asList(); // List<String> | Comma-delimited list of Company properties to include in the response. (Fields such as `notes`, `fax_number`, `email_address`, `phone_number`, `update_time`, `create_time` and `custom_fields` aren't included, by default.)
+        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `company_name` - (String) `email` - (String) `since_time` - (String) `until_time` You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=company_name%3D%3DCompany` - `filter=email%3D%3Dtest@gmail.com` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;` 
+        String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `name` - `email`  One of the following directions: - `asc` - `desc`
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
         try {
-            ApiResponse<ListCompaniesResponse> response = apiInstance.listCompaniesUsingGET1WithHttpInfo(fields, filter, orderBy, pageSize, pageToken);
+            ApiResponse<ListCompaniesResponse> response = apiInstance.listCompaniesWithHttpInfo(fields, filter, orderBy, pageSize, pageToken);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling CompanyApi#listCompaniesUsingGET1");
+            System.err.println("Exception when calling CompanyApi#listCompanies");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -571,9 +571,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **fields** | [**List&lt;String&gt;**](String.md)| Comma-delimited list of Company properties to include in the response. (Fields such as &#x60;notes&#x60;, &#x60;fax_number&#x60; and &#x60;custom_fields&#x60; aren&#39;t included, by default.) | [optional] |
-| **filter** | **String**| Search filter to apply to results | [optional] |
-| **orderBy** | **String**| Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60; | [optional] |
+| **fields** | [**List&lt;String&gt;**](String.md)| Comma-delimited list of Company properties to include in the response. (Fields such as &#x60;notes&#x60;, &#x60;fax_number&#x60;, &#x60;email_address&#x60;, &#x60;phone_number&#x60;, &#x60;update_time&#x60;, &#x60;create_time&#x60; and &#x60;custom_fields&#x60; aren&#39;t included, by default.) | [optional] |
+| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  | [optional] |
+| **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;name&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **pageSize** | **Integer**| Total number of items to return per page | [optional] |
 | **pageToken** | **String**| Page token | [optional] |
 
@@ -601,9 +601,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## updateCompanyUsingPATCH1
+## updateCompany
 
-> Company updateCompanyUsingPATCH1(companyId, updateMask, updateCompanyRequest)
+> Company updateCompany(companyId, updateMask, updateCompanyRequest)
 
 Update a Company
 
@@ -629,10 +629,10 @@ public class Example {
         List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         UpdateCompanyRequest updateCompanyRequest = new UpdateCompanyRequest(); // UpdateCompanyRequest | company
         try {
-            Company result = apiInstance.updateCompanyUsingPATCH1(companyId, updateMask, updateCompanyRequest);
+            Company result = apiInstance.updateCompany(companyId, updateMask, updateCompanyRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling CompanyApi#updateCompanyUsingPATCH1");
+            System.err.println("Exception when calling CompanyApi#updateCompany");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -674,9 +674,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## updateCompanyUsingPATCH1WithHttpInfo
+## updateCompanyWithHttpInfo
 
-> ApiResponse<Company> updateCompanyUsingPATCH1 updateCompanyUsingPATCH1WithHttpInfo(companyId, updateMask, updateCompanyRequest)
+> ApiResponse<Company> updateCompany updateCompanyWithHttpInfo(companyId, updateMask, updateCompanyRequest)
 
 Update a Company
 
@@ -703,12 +703,12 @@ public class Example {
         List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         UpdateCompanyRequest updateCompanyRequest = new UpdateCompanyRequest(); // UpdateCompanyRequest | company
         try {
-            ApiResponse<Company> response = apiInstance.updateCompanyUsingPATCH1WithHttpInfo(companyId, updateMask, updateCompanyRequest);
+            ApiResponse<Company> response = apiInstance.updateCompanyWithHttpInfo(companyId, updateMask, updateCompanyRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling CompanyApi#updateCompanyUsingPATCH1");
+            System.err.println("Exception when calling CompanyApi#updateCompany");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());

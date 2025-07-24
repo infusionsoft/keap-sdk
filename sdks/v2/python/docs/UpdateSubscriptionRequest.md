@@ -5,26 +5,24 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**active** | **bool** |  | [optional] 
-**allow_tax** | **bool** |  | [optional] 
-**auto_charge** | **bool** |  | [optional] 
-**billing_amount** | **float** |  | [optional] 
-**billing_cycle** | **str** |  | [optional] 
-**billing_frequency** | **int** |  | [optional] 
-**contact_id** | **str** |  | [optional] 
-**days_between_retries** | **int** |  | [optional] 
-**end_bill_date** | **str** |  | [optional] 
-**lead_affiliate_id** | **str** |  | [optional] 
-**max_charge_attempts** | **int** |  | [optional] 
-**next_bill_date** | **str** |  | [optional] 
-**payment_method_id** | **str** |  | [optional] 
-**previous_bill_date** | **str** |  | [optional] 
+**active** | **bool** | If the subscription is active or not. | [optional] 
+**allow_tax** | **bool** | Only works if the product associated with the product subscription is taxable. | [optional] 
+**auto_charge** | **bool** | If the subscription should auto charge on the next billing date. | [optional] 
+**billing_amount** | **float** | The billing amount. Must be 0 or greater. | [optional] 
+**billing_cycle** | **str** | The billing cycle for the subscription. | [optional] 
+**billing_frequency** | **int** | The number of days between billing cycles. Must be 1 or greater. | [optional] 
+**contact_id** | **str** | Id of the contact to create the subscription for. | 
+**days_between_retries** | **int** | Number of days between charge attempts. Must be 1 or greater. | [optional] 
+**end_date** | **str** | The date the subscription will end. Must not be in the past. | [optional] 
+**lead_affiliate_id** | **str** | The affiliate id for the lead of the subscription. | [optional] 
+**max_charge_attempts** | **int** | Maximum number of charge attempts. Must be 1 or greater. | [optional] 
+**next_bill_date** | **str** | The next date the subscription will bill. Must not be in the past. | [optional] 
+**payment_method_id** | **str** | Id associated with the payment method. | [optional] 
 **product_id** | **str** |  | [optional] 
-**quantity** | **int** |  | [optional] 
-**sale_affiliate_id** | **str** |  | [optional] 
+**quantity** | **int** | The subscription quantity. Must be 1 or greater. | [optional] 
+**sale_affiliate_id** | **str** | The affiliate id for the sale of the subscription. | [optional] 
 **shipping_address** | [**Address**](Address.md) |  | [optional] 
-**start_date** | **str** |  | [optional] 
-**subscription_plan_id** | **str** |  | [optional] 
+**subscription_plan_id** | **str** | Id of the product subscription plan. | [optional] 
 
 ## Example
 

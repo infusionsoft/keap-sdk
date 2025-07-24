@@ -4,39 +4,85 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**addAffiliateToProgramUsingPOST**](AffiliateApi.md#addAffiliateToProgramUsingPOST) | **POST** /v2/affiliates/{id}:assignToProgram | Assign Affiliate to Commission program
-[**addAffiliateUsingPOST**](AffiliateApi.md#addAffiliateUsingPOST) | **POST** /v2/affiliates | Create an Affiliate
-[**addCommissionProgramUsingPOST**](AffiliateApi.md#addCommissionProgramUsingPOST) | **POST** /v2/affiliates/commissionPrograms | Create an Affiliate Commission Program
-[**assignProductCommissionProgramUsingPOST**](AffiliateApi.md#assignProductCommissionProgramUsingPOST) | **POST** /v2/affiliates/commissionPrograms/productCommissionProgram/{commission_program_id} | Assign a Product Commission Program
-[**assignSubscriptionCommissionProgramUsingPOST**](AffiliateApi.md#assignSubscriptionCommissionProgramUsingPOST) | **POST** /v2/affiliates/commissionPrograms/subscriptionCommissionProgram/{commission_program_id} | Assign a Subscription Commission Program
-[**createDefaultCommissionProgramUsingPOST**](AffiliateApi.md#createDefaultCommissionProgramUsingPOST) | **POST** /v2/affiliates/commissionPrograms/defaultCommissionProgram/{commission_program_id} | Create a Default Commission Program
-[**createRedirectLinkUsingPOST**](AffiliateApi.md#createRedirectLinkUsingPOST) | **POST** /v2/affiliates/redirects | Create an Affiliate Link
-[**deleteAffiliateCommissionProgramUsingDELETE**](AffiliateApi.md#deleteAffiliateCommissionProgramUsingDELETE) | **DELETE** /v2/affiliates/commissionPrograms/{commission_program_id} | Delete a Commission Program
-[**deleteAffiliateUsingDELETE**](AffiliateApi.md#deleteAffiliateUsingDELETE) | **DELETE** /v2/affiliates/{id} | Delete Affiliate
-[**deleteRedirectLinkUsingDELETE**](AffiliateApi.md#deleteRedirectLinkUsingDELETE) | **DELETE** /v2/affiliates/redirects/{redirect_id} | Delete an Affiliate Link
-[**getAffiliateCommissionTotalUsingGET**](AffiliateApi.md#getAffiliateCommissionTotalUsingGET) | **GET** /v2/affiliates/{affiliate_id}/commissionTotal | Retrieve Affiliate Commission Earned and View LedgerURl for portal
-[**getAffiliateCommissionsUsingGET**](AffiliateApi.md#getAffiliateCommissionsUsingGET) | **GET** /v2/affiliates/{affiliate_id}:commissions | Retrieve Affiliate Commission and Clawbacks
-[**getAffiliateUsingGET1**](AffiliateApi.md#getAffiliateUsingGET1) | **GET** /v2/affiliates/{id} | Retrieve an Affiliate
-[**getCommissionProgramUsingGET**](AffiliateApi.md#getCommissionProgramUsingGET) | **GET** /v2/affiliates/commissionPrograms/{commission_program_id} | Retrieve a Commission Program
-[**getRedirectLinkUsingGET**](AffiliateApi.md#getRedirectLinkUsingGET) | **GET** /v2/affiliates/redirects/{redirect_id} | Retrieve an Affiliate Link
-[**listAffiliateCommissionProgramsUsingGET**](AffiliateApi.md#listAffiliateCommissionProgramsUsingGET) | **GET** /v2/affiliates/commissionPrograms | List Affiliate Commission Programs
-[**listAffiliateLinksUsingGET**](AffiliateApi.md#listAffiliateLinksUsingGET) | **GET** /v2/affiliates/redirects | List Affiliate Links
-[**listSummariesUsingGET1**](AffiliateApi.md#listSummariesUsingGET1) | **GET** /v2/affiliates/summaries | List Affiliate Summaries
-[**removeAffiliateFromProgramUsingPOST**](AffiliateApi.md#removeAffiliateFromProgramUsingPOST) | **POST** /v2/affiliates/{id}:removeFromProgram | Remove an Affiliate from a Commission Program
-[**removeProductCommissionFromCommissionsUsingPOST**](AffiliateApi.md#removeProductCommissionFromCommissionsUsingPOST) | **POST** /v2/affiliates/commissionPrograms/{commission_id}:removeProductCommission | Remove a Product from a Commission Program
-[**removeSubscriptionPlanCommissionFromCommissionsUsingPOST**](AffiliateApi.md#removeSubscriptionPlanCommissionFromCommissionsUsingPOST) | **POST** /v2/affiliates/commissionPrograms/{commission_id}:removeSubscriptionCommission | Remove a Subscription from a Commission Program
-[**updateAffiliateUsingPATCH**](AffiliateApi.md#updateAffiliateUsingPATCH) | **PATCH** /v2/affiliates/{id} | Update an Affiliate
-[**updateCommissionProgramUsingPATCH**](AffiliateApi.md#updateCommissionProgramUsingPATCH) | **PATCH** /v2/affiliates/commissionPrograms/{commission_program_id} | Update an Affiliate Commission Program
-[**updateDefaultCommissionProgramUsingPATCH**](AffiliateApi.md#updateDefaultCommissionProgramUsingPATCH) | **PATCH** /v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Update a Default Commission Program
-[**updateProductCommissionProgramUsingPATCH**](AffiliateApi.md#updateProductCommissionProgramUsingPATCH) | **PATCH** /v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Update a Product Commission Program
-[**updateRedirectLinkUsingPATCH**](AffiliateApi.md#updateRedirectLinkUsingPATCH) | **PATCH** /v2/affiliates/redirects/{redirect_id} | Update an Affiliate Link
-[**updateSubscriptionCommissionProgramUsingPATCH**](AffiliateApi.md#updateSubscriptionCommissionProgramUsingPATCH) | **PATCH** /v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id} | Update a Subscription Commission Program
+[**addAffiliate**](AffiliateApi.md#addAffiliate) | **POST** /v2/affiliates | Create an Affiliate
+[**addAffiliateToProgram**](AffiliateApi.md#addAffiliateToProgram) | **POST** /v2/affiliates/{id}:assignToProgram | Assign Affiliate to Commission program
+[**addCommissionProgram**](AffiliateApi.md#addCommissionProgram) | **POST** /v2/affiliates/commissionPrograms | Create an Affiliate Commission Program
+[**assignProductCommissionProgram**](AffiliateApi.md#assignProductCommissionProgram) | **POST** /v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Assign a Product Commission Program
+[**assignSubscriptionCommissionProgram**](AffiliateApi.md#assignSubscriptionCommissionProgram) | **POST** /v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id} | Assign a Subscription Commission Program
+[**createDefaultCommissionProgram**](AffiliateApi.md#createDefaultCommissionProgram) | **POST** /v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Create a Default Commission Program
+[**createRedirectLink**](AffiliateApi.md#createRedirectLink) | **POST** /v2/affiliates/redirects | Create an Affiliate Link
+[**deleteAffiliate**](AffiliateApi.md#deleteAffiliate) | **DELETE** /v2/affiliates/{id} | Delete Affiliate
+[**deleteAffiliateCommissionProgram**](AffiliateApi.md#deleteAffiliateCommissionProgram) | **DELETE** /v2/affiliates/commissionPrograms/{commission_program_id} | Delete a Commission Program
+[**deleteRedirectLink**](AffiliateApi.md#deleteRedirectLink) | **DELETE** /v2/affiliates/redirects/{redirect_id} | Delete an Affiliate Link
+[**getAffiliate**](AffiliateApi.md#getAffiliate) | **GET** /v2/affiliates/{id} | Retrieve an Affiliate
+[**getAffiliateCommissionTotal**](AffiliateApi.md#getAffiliateCommissionTotal) | **GET** /v2/affiliates/{affiliate_id}/commissionTotal | Retrieve Affiliate Commission Earned and View LedgerURl for portal
+[**getAffiliateCommissions**](AffiliateApi.md#getAffiliateCommissions) | **GET** /v2/affiliates/{affiliate_id}:commissions | Retrieve Affiliate Commission and Clawbacks
+[**getCommissionProgram**](AffiliateApi.md#getCommissionProgram) | **GET** /v2/affiliates/commissionPrograms/{commission_program_id} | Retrieve a Commission Program
+[**getRedirectLink**](AffiliateApi.md#getRedirectLink) | **GET** /v2/affiliates/redirects/{redirect_id} | Retrieve an Affiliate Link
+[**listAffiliateCommissionPrograms**](AffiliateApi.md#listAffiliateCommissionPrograms) | **GET** /v2/affiliates/commissionPrograms | List Affiliate Commission Programs
+[**listAffiliateLinks**](AffiliateApi.md#listAffiliateLinks) | **GET** /v2/affiliates/redirects | List Affiliate Links
+[**listSummaries**](AffiliateApi.md#listSummaries) | **GET** /v2/affiliates/summaries | List Affiliate Summaries
+[**removeAffiliateFromProgram**](AffiliateApi.md#removeAffiliateFromProgram) | **POST** /v2/affiliates/{id}:removeFromProgram | Remove an Affiliate from a Commission Program
+[**removeProductCommissionFromCommissions**](AffiliateApi.md#removeProductCommissionFromCommissions) | **POST** /v2/affiliates/commissionPrograms/{commission_id}:removeProductCommission | Remove a Product from a Commission Program
+[**removeSubscriptionPlanCommissionFromCommissions**](AffiliateApi.md#removeSubscriptionPlanCommissionFromCommissions) | **POST** /v2/affiliates/commissionPrograms/{commission_id}:removeSubscriptionCommission | Remove a Subscription from a Commission Program
+[**updateAffiliate**](AffiliateApi.md#updateAffiliate) | **PATCH** /v2/affiliates/{id} | Update an Affiliate
+[**updateCommissionProgram**](AffiliateApi.md#updateCommissionProgram) | **PATCH** /v2/affiliates/commissionPrograms/{commission_program_id} | Update an Affiliate Commission Program
+[**updateDefaultCommissionProgram**](AffiliateApi.md#updateDefaultCommissionProgram) | **PATCH** /v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Update a Default Commission Program
+[**updateProductCommissionProgram**](AffiliateApi.md#updateProductCommissionProgram) | **PATCH** /v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Update a Product Commission Program
+[**updateRedirectLink**](AffiliateApi.md#updateRedirectLink) | **PATCH** /v2/affiliates/redirects/{redirect_id} | Update an Affiliate Link
+[**updateSubscriptionCommissionProgram**](AffiliateApi.md#updateSubscriptionCommissionProgram) | **PATCH** /v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id} | Update a Subscription Commission Program
 
 
 
-## addAffiliateToProgramUsingPOST
+## addAffiliate
 
-> addAffiliateToProgramUsingPOST(id, affiliateAddToProgramRequest)
+> RestAffiliate addAffiliate(opts)
+
+Create an Affiliate
+
+Creates a single Affiliate
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+
+let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
+let opts = {
+  'createAffiliateRequest': new KeapCoreServiceV2Sdk.CreateAffiliateRequest() // CreateAffiliateRequest | Affiliate request to insert
+};
+apiInstance.addAffiliate(opts).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createAffiliateRequest** | [**CreateAffiliateRequest**](CreateAffiliateRequest.md)| Affiliate request to insert | [optional] 
+
+### Return type
+
+[**RestAffiliate**](RestAffiliate.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## addAffiliateToProgram
+
+> addAffiliateToProgram(id, affiliateAddToProgramRequest)
 
 Assign Affiliate to Commission program
 
@@ -50,7 +96,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
 let id = "id_example"; // String | id
 let affiliateAddToProgramRequest = new KeapCoreServiceV2Sdk.AffiliateAddToProgramRequest(); // AffiliateAddToProgramRequest | affiliateAddToProgramRequest
-apiInstance.addAffiliateToProgramUsingPOST(id, affiliateAddToProgramRequest).then(() => {
+apiInstance.addAffiliateToProgram(id, affiliateAddToProgramRequest).then(() => {
   console.log('API called successfully.');
 }, (error) => {
   console.error(error);
@@ -80,55 +126,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## addAffiliateUsingPOST
+## addCommissionProgram
 
-> RestAffiliate addAffiliateUsingPOST(opts)
-
-Create an Affiliate
-
-Creates a single Affiliate
-
-### Example
-
-```javascript
-import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
-
-let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
-let opts = {
-  'createAffiliateRequest': new KeapCoreServiceV2Sdk.CreateAffiliateRequest() // CreateAffiliateRequest | Affiliate request to insert
-};
-apiInstance.addAffiliateUsingPOST(opts).then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
-  console.error(error);
-});
-
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **createAffiliateRequest** | [**CreateAffiliateRequest**](CreateAffiliateRequest.md)| Affiliate request to insert | [optional] 
-
-### Return type
-
-[**RestAffiliate**](RestAffiliate.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## addCommissionProgramUsingPOST
-
-> AffiliateCommissionProgramResponse addCommissionProgramUsingPOST(opts)
+> AffiliateCommissionProgramResponse addCommissionProgram(opts)
 
 Create an Affiliate Commission Program
 
@@ -143,7 +143,7 @@ let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
 let opts = {
   'createCommissionProgramRequest': new KeapCoreServiceV2Sdk.CreateCommissionProgramRequest() // CreateCommissionProgramRequest | Commission Program to insert
 };
-apiInstance.addCommissionProgramUsingPOST(opts).then((data) => {
+apiInstance.addCommissionProgram(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -172,9 +172,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## assignProductCommissionProgramUsingPOST
+## assignProductCommissionProgram
 
-> ProductCommissionProgram assignProductCommissionProgramUsingPOST(commissionProgramId, opts)
+> ProductCommissionProgram assignProductCommissionProgram(commissionProgramId, opts)
 
 Assign a Product Commission Program
 
@@ -190,7 +190,7 @@ let commissionProgramId = "commissionProgramId_example"; // String | commission_
 let opts = {
   'createProductCommissionProgramRequest': new KeapCoreServiceV2Sdk.CreateProductCommissionProgramRequest() // CreateProductCommissionProgramRequest | Product Commission Program
 };
-apiInstance.assignProductCommissionProgramUsingPOST(commissionProgramId, opts).then((data) => {
+apiInstance.assignProductCommissionProgram(commissionProgramId, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -220,9 +220,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## assignSubscriptionCommissionProgramUsingPOST
+## assignSubscriptionCommissionProgram
 
-> SubscriptionCommissionProgram assignSubscriptionCommissionProgramUsingPOST(commissionProgramId, opts)
+> SubscriptionCommissionProgram assignSubscriptionCommissionProgram(commissionProgramId, opts)
 
 Assign a Subscription Commission Program
 
@@ -238,7 +238,7 @@ let commissionProgramId = "commissionProgramId_example"; // String | commission_
 let opts = {
   'createSubscriptionCommissionProgramRequest': new KeapCoreServiceV2Sdk.CreateSubscriptionCommissionProgramRequest() // CreateSubscriptionCommissionProgramRequest | Subscription Commission Program
 };
-apiInstance.assignSubscriptionCommissionProgramUsingPOST(commissionProgramId, opts).then((data) => {
+apiInstance.assignSubscriptionCommissionProgram(commissionProgramId, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -268,9 +268,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## createDefaultCommissionProgramUsingPOST
+## createDefaultCommissionProgram
 
-> SetDefaultCommissionProgramResponse createDefaultCommissionProgramUsingPOST(commissionProgramId, opts)
+> SetDefaultCommissionProgramResponse createDefaultCommissionProgram(commissionProgramId, opts)
 
 Create a Default Commission Program
 
@@ -286,7 +286,7 @@ let commissionProgramId = "commissionProgramId_example"; // String | commission_
 let opts = {
   'createDefaultCommissionProgramRequest': new KeapCoreServiceV2Sdk.CreateDefaultCommissionProgramRequest() // CreateDefaultCommissionProgramRequest | Values of the Default Commission Program
 };
-apiInstance.createDefaultCommissionProgramUsingPOST(commissionProgramId, opts).then((data) => {
+apiInstance.createDefaultCommissionProgram(commissionProgramId, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -316,9 +316,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## createRedirectLinkUsingPOST
+## createRedirectLink
 
-> AffiliateLink createRedirectLinkUsingPOST(createOrUpdateAffiliateLinkRequest)
+> AffiliateLink createRedirectLink(createOrUpdateAffiliateLinkRequest)
 
 Create an Affiliate Link
 
@@ -331,7 +331,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
 let createOrUpdateAffiliateLinkRequest = new KeapCoreServiceV2Sdk.CreateOrUpdateAffiliateLinkRequest(); // CreateOrUpdateAffiliateLinkRequest | request
-apiInstance.createRedirectLinkUsingPOST(createOrUpdateAffiliateLinkRequest).then((data) => {
+apiInstance.createRedirectLink(createOrUpdateAffiliateLinkRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -360,53 +360,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## deleteAffiliateCommissionProgramUsingDELETE
+## deleteAffiliate
 
-> deleteAffiliateCommissionProgramUsingDELETE(commissionProgramId)
-
-Delete a Commission Program
-
-Deletes a Commission Program
-
-### Example
-
-```javascript
-import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
-
-let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
-let commissionProgramId = "commissionProgramId_example"; // String | commission_program_id
-apiInstance.deleteAffiliateCommissionProgramUsingDELETE(commissionProgramId).then(() => {
-  console.log('API called successfully.');
-}, (error) => {
-  console.error(error);
-});
-
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **commissionProgramId** | **String**| commission_program_id | 
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## deleteAffiliateUsingDELETE
-
-> deleteAffiliateUsingDELETE(id)
+> deleteAffiliate(id)
 
 Delete Affiliate
 
@@ -419,7 +375,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
 let id = "id_example"; // String | id
-apiInstance.deleteAffiliateUsingDELETE(id).then(() => {
+apiInstance.deleteAffiliate(id).then(() => {
   console.log('API called successfully.');
 }, (error) => {
   console.error(error);
@@ -448,9 +404,53 @@ No authorization required
 - **Accept**: application/json
 
 
-## deleteRedirectLinkUsingDELETE
+## deleteAffiliateCommissionProgram
 
-> deleteRedirectLinkUsingDELETE(redirectId)
+> deleteAffiliateCommissionProgram(commissionProgramId)
+
+Delete a Commission Program
+
+Deletes a Commission Program
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+
+let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
+let commissionProgramId = "commissionProgramId_example"; // String | commission_program_id
+apiInstance.deleteAffiliateCommissionProgram(commissionProgramId).then(() => {
+  console.log('API called successfully.');
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **commissionProgramId** | **String**| commission_program_id | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## deleteRedirectLink
+
+> deleteRedirectLink(redirectId)
 
 Delete an Affiliate Link
 
@@ -463,7 +463,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
 let redirectId = "redirectId_example"; // String | redirect_id
-apiInstance.deleteRedirectLinkUsingDELETE(redirectId).then(() => {
+apiInstance.deleteRedirectLink(redirectId).then(() => {
   console.log('API called successfully.');
 }, (error) => {
   console.error(error);
@@ -492,9 +492,53 @@ No authorization required
 - **Accept**: application/json
 
 
-## getAffiliateCommissionTotalUsingGET
+## getAffiliate
 
-> AffiliateCommissionEarned getAffiliateCommissionTotalUsingGET(affiliateId)
+> RestAffiliate getAffiliate(id)
+
+Retrieve an Affiliate
+
+Retrieves a single Affiliate
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+
+let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
+let id = "id_example"; // String | id
+apiInstance.getAffiliate(id).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| id | 
+
+### Return type
+
+[**RestAffiliate**](RestAffiliate.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## getAffiliateCommissionTotal
+
+> AffiliateCommissionEarned getAffiliateCommissionTotal(affiliateId)
 
 Retrieve Affiliate Commission Earned and View LedgerURl for portal
 
@@ -507,7 +551,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
 let affiliateId = "affiliateId_example"; // String | affiliate_id
-apiInstance.getAffiliateCommissionTotalUsingGET(affiliateId).then((data) => {
+apiInstance.getAffiliateCommissionTotal(affiliateId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -536,9 +580,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## getAffiliateCommissionsUsingGET
+## getAffiliateCommissions
 
-> ListAffiliateCommissionsResponse getAffiliateCommissionsUsingGET(affiliateId, opts)
+> ListAffiliateCommissionsResponse getAffiliateCommissions(affiliateId, opts)
 
 Retrieve Affiliate Commission and Clawbacks
 
@@ -557,7 +601,7 @@ let opts = {
   'pageSize': 0, // Number | Total number of items to return per page
   'pageToken': "pageToken_example" // String | Page token
 };
-apiInstance.getAffiliateCommissionsUsingGET(affiliateId, opts).then((data) => {
+apiInstance.getAffiliateCommissions(affiliateId, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -590,53 +634,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## getAffiliateUsingGET1
+## getCommissionProgram
 
-> RestAffiliate getAffiliateUsingGET1(id)
-
-Retrieve an Affiliate
-
-Retrieves a single Affiliate
-
-### Example
-
-```javascript
-import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
-
-let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
-let id = "id_example"; // String | id
-apiInstance.getAffiliateUsingGET1(id).then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
-  console.error(error);
-});
-
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**| id | 
-
-### Return type
-
-[**RestAffiliate**](RestAffiliate.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## getCommissionProgramUsingGET
-
-> AffiliateProgramV2 getCommissionProgramUsingGET(commissionProgramId)
+> AffiliateProgramV2 getCommissionProgram(commissionProgramId)
 
 Retrieve a Commission Program
 
@@ -649,7 +649,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
 let commissionProgramId = "commissionProgramId_example"; // String | commission_program_id
-apiInstance.getCommissionProgramUsingGET(commissionProgramId).then((data) => {
+apiInstance.getCommissionProgram(commissionProgramId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -678,9 +678,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## getRedirectLinkUsingGET
+## getRedirectLink
 
-> AffiliateLink getRedirectLinkUsingGET(redirectId)
+> AffiliateLink getRedirectLink(redirectId)
 
 Retrieve an Affiliate Link
 
@@ -693,7 +693,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
 let redirectId = "redirectId_example"; // String | redirect_id
-apiInstance.getRedirectLinkUsingGET(redirectId).then((data) => {
+apiInstance.getRedirectLink(redirectId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -722,9 +722,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## listAffiliateCommissionProgramsUsingGET
+## listAffiliateCommissionPrograms
 
-> ListAffiliateCommissionProgramsResponse listAffiliateCommissionProgramsUsingGET(opts)
+> ListAffiliateCommissionProgramsResponse listAffiliateCommissionPrograms(opts)
 
 List Affiliate Commission Programs
 
@@ -742,7 +742,7 @@ let opts = {
   'pageSize': 0, // Number | Total number of items to return per page
   'pageToken': "pageToken_example" // String | Page token
 };
-apiInstance.listAffiliateCommissionProgramsUsingGET(opts).then((data) => {
+apiInstance.listAffiliateCommissionPrograms(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -774,9 +774,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## listAffiliateLinksUsingGET
+## listAffiliateLinks
 
-> ListAffiliateLinksResponse listAffiliateLinksUsingGET(opts)
+> ListAffiliateLinksResponse listAffiliateLinks(opts)
 
 List Affiliate Links
 
@@ -794,7 +794,7 @@ let opts = {
   'pageSize': 0, // Number | Total number of items to return per page
   'pageToken': "pageToken_example" // String | Page token
 };
-apiInstance.listAffiliateLinksUsingGET(opts).then((data) => {
+apiInstance.listAffiliateLinks(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -826,9 +826,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## listSummariesUsingGET1
+## listSummaries
 
-> ListAffiliateSummariesResponse listSummariesUsingGET1(opts)
+> ListAffiliateSummariesResponse listSummaries(opts)
 
 List Affiliate Summaries
 
@@ -846,7 +846,7 @@ let opts = {
   'pageSize': 0, // Number | Total number of items to return per page
   'pageToken': "pageToken_example" // String | Page token
 };
-apiInstance.listSummariesUsingGET1(opts).then((data) => {
+apiInstance.listSummaries(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -878,9 +878,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## removeAffiliateFromProgramUsingPOST
+## removeAffiliateFromProgram
 
-> removeAffiliateFromProgramUsingPOST(id, affiliateRemoveFromProgramRequest)
+> removeAffiliateFromProgram(id, affiliateRemoveFromProgramRequest)
 
 Remove an Affiliate from a Commission Program
 
@@ -894,7 +894,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
 let id = "id_example"; // String | id
 let affiliateRemoveFromProgramRequest = new KeapCoreServiceV2Sdk.AffiliateRemoveFromProgramRequest(); // AffiliateRemoveFromProgramRequest | removeFromProgramRequest
-apiInstance.removeAffiliateFromProgramUsingPOST(id, affiliateRemoveFromProgramRequest).then(() => {
+apiInstance.removeAffiliateFromProgram(id, affiliateRemoveFromProgramRequest).then(() => {
   console.log('API called successfully.');
 }, (error) => {
   console.error(error);
@@ -924,9 +924,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## removeProductCommissionFromCommissionsUsingPOST
+## removeProductCommissionFromCommissions
 
-> removeProductCommissionFromCommissionsUsingPOST(commissionId, deleteProgramCommissionRequest)
+> removeProductCommissionFromCommissions(commissionId, deleteProgramCommissionRequest)
 
 Remove a Product from a Commission Program
 
@@ -940,7 +940,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
 let commissionId = "commissionId_example"; // String | commission_id
 let deleteProgramCommissionRequest = new KeapCoreServiceV2Sdk.DeleteProgramCommissionRequest(); // DeleteProgramCommissionRequest | deleteProgramCommissionRequest
-apiInstance.removeProductCommissionFromCommissionsUsingPOST(commissionId, deleteProgramCommissionRequest).then(() => {
+apiInstance.removeProductCommissionFromCommissions(commissionId, deleteProgramCommissionRequest).then(() => {
   console.log('API called successfully.');
 }, (error) => {
   console.error(error);
@@ -970,9 +970,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## removeSubscriptionPlanCommissionFromCommissionsUsingPOST
+## removeSubscriptionPlanCommissionFromCommissions
 
-> removeSubscriptionPlanCommissionFromCommissionsUsingPOST(commissionId, deleteSubscriptionPlanCommissionRequest)
+> removeSubscriptionPlanCommissionFromCommissions(commissionId, deleteSubscriptionPlanCommissionRequest)
 
 Remove a Subscription from a Commission Program
 
@@ -986,7 +986,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
 let commissionId = "commissionId_example"; // String | commission_id
 let deleteSubscriptionPlanCommissionRequest = new KeapCoreServiceV2Sdk.DeleteSubscriptionPlanCommissionRequest(); // DeleteSubscriptionPlanCommissionRequest | deleteSubscriptionPlanCommissionRequest
-apiInstance.removeSubscriptionPlanCommissionFromCommissionsUsingPOST(commissionId, deleteSubscriptionPlanCommissionRequest).then(() => {
+apiInstance.removeSubscriptionPlanCommissionFromCommissions(commissionId, deleteSubscriptionPlanCommissionRequest).then(() => {
   console.log('API called successfully.');
 }, (error) => {
   console.error(error);
@@ -1016,9 +1016,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## updateAffiliateUsingPATCH
+## updateAffiliate
 
-> RestAffiliate updateAffiliateUsingPATCH(id, opts)
+> RestAffiliate updateAffiliate(id, opts)
 
 Update an Affiliate
 
@@ -1034,7 +1034,7 @@ let id = "id_example"; // String | id
 let opts = {
   'updateAffiliateRequest': new KeapCoreServiceV2Sdk.UpdateAffiliateRequest() // UpdateAffiliateRequest | Request to update an affiliate
 };
-apiInstance.updateAffiliateUsingPATCH(id, opts).then((data) => {
+apiInstance.updateAffiliate(id, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -1064,9 +1064,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## updateCommissionProgramUsingPATCH
+## updateCommissionProgram
 
-> AffiliateCommissionProgramResponse updateCommissionProgramUsingPATCH(commissionProgramId, updateCommissionProgramRequest, opts)
+> AffiliateCommissionProgramResponse updateCommissionProgram(commissionProgramId, updateCommissionProgramRequest, opts)
 
 Update an Affiliate Commission Program
 
@@ -1083,7 +1083,7 @@ let updateCommissionProgramRequest = new KeapCoreServiceV2Sdk.UpdateCommissionPr
 let opts = {
   'updateMask': ["null"] // [String] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
-apiInstance.updateCommissionProgramUsingPATCH(commissionProgramId, updateCommissionProgramRequest, opts).then((data) => {
+apiInstance.updateCommissionProgram(commissionProgramId, updateCommissionProgramRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -1114,9 +1114,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## updateDefaultCommissionProgramUsingPATCH
+## updateDefaultCommissionProgram
 
-> SetDefaultCommissionProgramResponse updateDefaultCommissionProgramUsingPATCH(commissionProgramId, opts)
+> SetDefaultCommissionProgramResponse updateDefaultCommissionProgram(commissionProgramId, opts)
 
 Update a Default Commission Program
 
@@ -1133,7 +1133,7 @@ let opts = {
   'updateMask': ["null"], // [String] | update_mask
   'updateDefaultCommissionProgramRequest': new KeapCoreServiceV2Sdk.UpdateDefaultCommissionProgramRequest() // UpdateDefaultCommissionProgramRequest | Values of the default Commission Program
 };
-apiInstance.updateDefaultCommissionProgramUsingPATCH(commissionProgramId, opts).then((data) => {
+apiInstance.updateDefaultCommissionProgram(commissionProgramId, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -1164,9 +1164,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## updateProductCommissionProgramUsingPATCH
+## updateProductCommissionProgram
 
-> ProductCommissionProgram updateProductCommissionProgramUsingPATCH(commissionProgramId, opts)
+> ProductCommissionProgram updateProductCommissionProgram(commissionProgramId, opts)
 
 Update a Product Commission Program
 
@@ -1183,7 +1183,7 @@ let opts = {
   'updateMask': ["null"], // [String] | update_mask
   'updateProductCommissionProgramRequest': new KeapCoreServiceV2Sdk.UpdateProductCommissionProgramRequest() // UpdateProductCommissionProgramRequest | Values of the product Commission Program
 };
-apiInstance.updateProductCommissionProgramUsingPATCH(commissionProgramId, opts).then((data) => {
+apiInstance.updateProductCommissionProgram(commissionProgramId, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -1214,9 +1214,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## updateRedirectLinkUsingPATCH
+## updateRedirectLink
 
-> AffiliateLink updateRedirectLinkUsingPATCH(redirectId, createOrUpdateAffiliateLinkRequest)
+> AffiliateLink updateRedirectLink(redirectId, createOrUpdateAffiliateLinkRequest)
 
 Update an Affiliate Link
 
@@ -1230,7 +1230,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
 let redirectId = "redirectId_example"; // String | redirect_id
 let createOrUpdateAffiliateLinkRequest = new KeapCoreServiceV2Sdk.CreateOrUpdateAffiliateLinkRequest(); // CreateOrUpdateAffiliateLinkRequest | request
-apiInstance.updateRedirectLinkUsingPATCH(redirectId, createOrUpdateAffiliateLinkRequest).then((data) => {
+apiInstance.updateRedirectLink(redirectId, createOrUpdateAffiliateLinkRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -1260,9 +1260,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## updateSubscriptionCommissionProgramUsingPATCH
+## updateSubscriptionCommissionProgram
 
-> SubscriptionCommissionProgram updateSubscriptionCommissionProgramUsingPATCH(commissionProgramId, opts)
+> SubscriptionCommissionProgram updateSubscriptionCommissionProgram(commissionProgramId, opts)
 
 Update a Subscription Commission Program
 
@@ -1279,7 +1279,7 @@ let opts = {
   'updateMask': ["null"], // [String] | update_mask
   'updateSubscriptionCommissionProgramRequest': new KeapCoreServiceV2Sdk.UpdateSubscriptionCommissionProgramRequest() // UpdateSubscriptionCommissionProgramRequest | Values of the subscription Commission Program
 };
-apiInstance.updateSubscriptionCommissionProgramUsingPATCH(commissionProgramId, opts).then((data) => {
+apiInstance.updateSubscriptionCommissionProgram(commissionProgramId, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);

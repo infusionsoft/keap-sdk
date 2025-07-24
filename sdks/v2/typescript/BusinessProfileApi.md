@@ -4,12 +4,12 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getBusinessProfileUsingGET**](BusinessProfileApi.md#getBusinessProfileUsingGET) | **GET** /v2/businessProfile | Retrieve Business Profile
-[**updateBusinessProfileUsingPATCH**](BusinessProfileApi.md#updateBusinessProfileUsingPATCH) | **PATCH** /v2/businessProfile | Update Business Profile
+[**getBusinessProfile**](BusinessProfileApi.md#getBusinessProfile) | **GET** /v2/businessProfile | Retrieve Business Profile
+[**updateBusinessProfile**](BusinessProfileApi.md#updateBusinessProfile) | **PATCH** /v2/businessProfile | Update Business Profile
 
 
-# **getBusinessProfileUsingGET**
-> GetBusinessProfileResponse getBusinessProfileUsingGET()
+# **getBusinessProfile**
+> GetBusinessProfileResponse getBusinessProfile()
 
 Retrieves Business Profile information.
 
@@ -24,7 +24,7 @@ const apiInstance = new BusinessProfileApi(configuration);
 
 const request = {};
 
-const data = await apiInstance.getBusinessProfileUsingGET(request);
+const data = await apiInstance.getBusinessProfile(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -58,8 +58,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **updateBusinessProfileUsingPATCH**
-> GetBusinessProfileResponse updateBusinessProfileUsingPATCH()
+# **updateBusinessProfile**
+> GetBusinessProfileResponse updateBusinessProfile()
 
 Updates Business Profile information.
 
@@ -68,12 +68,12 @@ Updates Business Profile information.
 
 ```typescript
 import { createConfiguration, BusinessProfileApi } from '';
-import type { BusinessProfileApiUpdateBusinessProfileUsingPATCHRequest } from '';
+import type { BusinessProfileApiUpdateBusinessProfileRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new BusinessProfileApi(configuration);
 
-const request: BusinessProfileApiUpdateBusinessProfileUsingPATCHRequest = {
+const request: BusinessProfileApiUpdateBusinessProfileRequest = {
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
   updateMask: [
     "name",
@@ -101,7 +101,7 @@ const request: BusinessProfileApiUpdateBusinessProfileUsingPATCHRequest = {
   },
 };
 
-const data = await apiInstance.updateBusinessProfileUsingPATCH(request);
+const data = await apiInstance.updateBusinessProfile(request);
 console.log('API called successfully. Returned data:', data);
 ```
 

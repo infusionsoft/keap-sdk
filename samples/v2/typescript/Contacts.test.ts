@@ -17,7 +17,7 @@ test('listContactsSucceeds', async () => {
     });
 
     const contactApi = new ContactApi(configuration);
-    const response = await contactApi.listContactsUsingGET1();
+    const response = await contactApi.listContacts();
 
     if (response.contacts) {
         console.log(`Found ${response.contacts.length} contacts`);

@@ -4,22 +4,22 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createLeadSourceCategoryUsingPOST**](LeadSourceCategoriesApi.md#createLeadSourceCategoryUsingPOST) | **POST** /v2/leadSourceCategories | Create a Lead Source Category |
-| [**createLeadSourceCategoryUsingPOSTWithHttpInfo**](LeadSourceCategoriesApi.md#createLeadSourceCategoryUsingPOSTWithHttpInfo) | **POST** /v2/leadSourceCategories | Create a Lead Source Category |
-| [**deleteLeadSourceCategoryUsingDELETE**](LeadSourceCategoriesApi.md#deleteLeadSourceCategoryUsingDELETE) | **DELETE** /v2/leadSourceCategories/{lead_source_category_id} | Delete a Lead Source Category |
-| [**deleteLeadSourceCategoryUsingDELETEWithHttpInfo**](LeadSourceCategoriesApi.md#deleteLeadSourceCategoryUsingDELETEWithHttpInfo) | **DELETE** /v2/leadSourceCategories/{lead_source_category_id} | Delete a Lead Source Category |
-| [**getLeadSourceCategoryUsingGET**](LeadSourceCategoriesApi.md#getLeadSourceCategoryUsingGET) | **GET** /v2/leadSourceCategories/{lead_source_category_id} | Retrieve a Lead Source Category |
-| [**getLeadSourceCategoryUsingGETWithHttpInfo**](LeadSourceCategoriesApi.md#getLeadSourceCategoryUsingGETWithHttpInfo) | **GET** /v2/leadSourceCategories/{lead_source_category_id} | Retrieve a Lead Source Category |
-| [**listCategoriesUsingGET1**](LeadSourceCategoriesApi.md#listCategoriesUsingGET1) | **GET** /v2/leadSourceCategories | List Lead Source Categories |
-| [**listCategoriesUsingGET1WithHttpInfo**](LeadSourceCategoriesApi.md#listCategoriesUsingGET1WithHttpInfo) | **GET** /v2/leadSourceCategories | List Lead Source Categories |
-| [**updateLeadSourceCategoryUsingPATCH**](LeadSourceCategoriesApi.md#updateLeadSourceCategoryUsingPATCH) | **PATCH** /v2/leadSourceCategories/{lead_source_category_id} | Update a Lead Source Category |
-| [**updateLeadSourceCategoryUsingPATCHWithHttpInfo**](LeadSourceCategoriesApi.md#updateLeadSourceCategoryUsingPATCHWithHttpInfo) | **PATCH** /v2/leadSourceCategories/{lead_source_category_id} | Update a Lead Source Category |
+| [**createLeadSourceCategory**](LeadSourceCategoriesApi.md#createLeadSourceCategory) | **POST** /v2/leadSourceCategories | Create a Lead Source Category |
+| [**createLeadSourceCategoryWithHttpInfo**](LeadSourceCategoriesApi.md#createLeadSourceCategoryWithHttpInfo) | **POST** /v2/leadSourceCategories | Create a Lead Source Category |
+| [**deleteLeadSourceCategory**](LeadSourceCategoriesApi.md#deleteLeadSourceCategory) | **DELETE** /v2/leadSourceCategories/{lead_source_category_id} | Delete a Lead Source Category |
+| [**deleteLeadSourceCategoryWithHttpInfo**](LeadSourceCategoriesApi.md#deleteLeadSourceCategoryWithHttpInfo) | **DELETE** /v2/leadSourceCategories/{lead_source_category_id} | Delete a Lead Source Category |
+| [**getLeadSourceCategory**](LeadSourceCategoriesApi.md#getLeadSourceCategory) | **GET** /v2/leadSourceCategories/{lead_source_category_id} | Retrieve a Lead Source Category |
+| [**getLeadSourceCategoryWithHttpInfo**](LeadSourceCategoriesApi.md#getLeadSourceCategoryWithHttpInfo) | **GET** /v2/leadSourceCategories/{lead_source_category_id} | Retrieve a Lead Source Category |
+| [**listLeadSourceCategories**](LeadSourceCategoriesApi.md#listLeadSourceCategories) | **GET** /v2/leadSourceCategories | List Lead Source Categories |
+| [**listLeadSourceCategoriesWithHttpInfo**](LeadSourceCategoriesApi.md#listLeadSourceCategoriesWithHttpInfo) | **GET** /v2/leadSourceCategories | List Lead Source Categories |
+| [**updateLeadSourceCategory**](LeadSourceCategoriesApi.md#updateLeadSourceCategory) | **PATCH** /v2/leadSourceCategories/{lead_source_category_id} | Update a Lead Source Category |
+| [**updateLeadSourceCategoryWithHttpInfo**](LeadSourceCategoriesApi.md#updateLeadSourceCategoryWithHttpInfo) | **PATCH** /v2/leadSourceCategories/{lead_source_category_id} | Update a Lead Source Category |
 
 
 
-## createLeadSourceCategoryUsingPOST
+## createLeadSourceCategory
 
-> LeadSourceCategory createLeadSourceCategoryUsingPOST(createUpdateLeadSourceCategoryRequest)
+> LeadSourceCategory createLeadSourceCategory(createUpdateLeadSourceCategoryRequest)
 
 Create a Lead Source Category
 
@@ -43,10 +43,10 @@ public class Example {
         LeadSourceCategoriesApi apiInstance = new LeadSourceCategoriesApi(defaultClient);
         CreateUpdateLeadSourceCategoryRequest createUpdateLeadSourceCategoryRequest = new CreateUpdateLeadSourceCategoryRequest(); // CreateUpdateLeadSourceCategoryRequest | The request object to create a new lead source category
         try {
-            LeadSourceCategory result = apiInstance.createLeadSourceCategoryUsingPOST(createUpdateLeadSourceCategoryRequest);
+            LeadSourceCategory result = apiInstance.createLeadSourceCategory(createUpdateLeadSourceCategoryRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling LeadSourceCategoriesApi#createLeadSourceCategoryUsingPOST");
+            System.err.println("Exception when calling LeadSourceCategoriesApi#createLeadSourceCategory");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -86,9 +86,9 @@ No authorization required
 | **403** | Forbidden |  -  |
 | **500** | Internal Server Error |  -  |
 
-## createLeadSourceCategoryUsingPOSTWithHttpInfo
+## createLeadSourceCategoryWithHttpInfo
 
-> ApiResponse<LeadSourceCategory> createLeadSourceCategoryUsingPOST createLeadSourceCategoryUsingPOSTWithHttpInfo(createUpdateLeadSourceCategoryRequest)
+> ApiResponse<LeadSourceCategory> createLeadSourceCategory createLeadSourceCategoryWithHttpInfo(createUpdateLeadSourceCategoryRequest)
 
 Create a Lead Source Category
 
@@ -113,12 +113,12 @@ public class Example {
         LeadSourceCategoriesApi apiInstance = new LeadSourceCategoriesApi(defaultClient);
         CreateUpdateLeadSourceCategoryRequest createUpdateLeadSourceCategoryRequest = new CreateUpdateLeadSourceCategoryRequest(); // CreateUpdateLeadSourceCategoryRequest | The request object to create a new lead source category
         try {
-            ApiResponse<LeadSourceCategory> response = apiInstance.createLeadSourceCategoryUsingPOSTWithHttpInfo(createUpdateLeadSourceCategoryRequest);
+            ApiResponse<LeadSourceCategory> response = apiInstance.createLeadSourceCategoryWithHttpInfo(createUpdateLeadSourceCategoryRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling LeadSourceCategoriesApi#createLeadSourceCategoryUsingPOST");
+            System.err.println("Exception when calling LeadSourceCategoriesApi#createLeadSourceCategory");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -159,9 +159,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## deleteLeadSourceCategoryUsingDELETE
+## deleteLeadSourceCategory
 
-> void deleteLeadSourceCategoryUsingDELETE(leadSourceCategoryId)
+> void deleteLeadSourceCategory(leadSourceCategoryId)
 
 Delete a Lead Source Category
 
@@ -185,9 +185,9 @@ public class Example {
         LeadSourceCategoriesApi apiInstance = new LeadSourceCategoriesApi(defaultClient);
         String leadSourceCategoryId = "leadSourceCategoryId_example"; // String | The ID of a lead source category
         try {
-            apiInstance.deleteLeadSourceCategoryUsingDELETE(leadSourceCategoryId);
+            apiInstance.deleteLeadSourceCategory(leadSourceCategoryId);
         } catch (ApiException e) {
-            System.err.println("Exception when calling LeadSourceCategoriesApi#deleteLeadSourceCategoryUsingDELETE");
+            System.err.println("Exception when calling LeadSourceCategoriesApi#deleteLeadSourceCategory");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -227,9 +227,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## deleteLeadSourceCategoryUsingDELETEWithHttpInfo
+## deleteLeadSourceCategoryWithHttpInfo
 
-> ApiResponse<Void> deleteLeadSourceCategoryUsingDELETE deleteLeadSourceCategoryUsingDELETEWithHttpInfo(leadSourceCategoryId)
+> ApiResponse<Void> deleteLeadSourceCategory deleteLeadSourceCategoryWithHttpInfo(leadSourceCategoryId)
 
 Delete a Lead Source Category
 
@@ -254,11 +254,11 @@ public class Example {
         LeadSourceCategoriesApi apiInstance = new LeadSourceCategoriesApi(defaultClient);
         String leadSourceCategoryId = "leadSourceCategoryId_example"; // String | The ID of a lead source category
         try {
-            ApiResponse<Void> response = apiInstance.deleteLeadSourceCategoryUsingDELETEWithHttpInfo(leadSourceCategoryId);
+            ApiResponse<Void> response = apiInstance.deleteLeadSourceCategoryWithHttpInfo(leadSourceCategoryId);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
-            System.err.println("Exception when calling LeadSourceCategoriesApi#deleteLeadSourceCategoryUsingDELETE");
+            System.err.println("Exception when calling LeadSourceCategoriesApi#deleteLeadSourceCategory");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -299,9 +299,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## getLeadSourceCategoryUsingGET
+## getLeadSourceCategory
 
-> LeadSourceCategory getLeadSourceCategoryUsingGET(leadSourceCategoryId)
+> LeadSourceCategory getLeadSourceCategory(leadSourceCategoryId)
 
 Retrieve a Lead Source Category
 
@@ -325,10 +325,10 @@ public class Example {
         LeadSourceCategoriesApi apiInstance = new LeadSourceCategoriesApi(defaultClient);
         String leadSourceCategoryId = "leadSourceCategoryId_example"; // String | The ID of a lead source category
         try {
-            LeadSourceCategory result = apiInstance.getLeadSourceCategoryUsingGET(leadSourceCategoryId);
+            LeadSourceCategory result = apiInstance.getLeadSourceCategory(leadSourceCategoryId);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling LeadSourceCategoriesApi#getLeadSourceCategoryUsingGET");
+            System.err.println("Exception when calling LeadSourceCategoriesApi#getLeadSourceCategory");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -368,9 +368,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## getLeadSourceCategoryUsingGETWithHttpInfo
+## getLeadSourceCategoryWithHttpInfo
 
-> ApiResponse<LeadSourceCategory> getLeadSourceCategoryUsingGET getLeadSourceCategoryUsingGETWithHttpInfo(leadSourceCategoryId)
+> ApiResponse<LeadSourceCategory> getLeadSourceCategory getLeadSourceCategoryWithHttpInfo(leadSourceCategoryId)
 
 Retrieve a Lead Source Category
 
@@ -395,12 +395,12 @@ public class Example {
         LeadSourceCategoriesApi apiInstance = new LeadSourceCategoriesApi(defaultClient);
         String leadSourceCategoryId = "leadSourceCategoryId_example"; // String | The ID of a lead source category
         try {
-            ApiResponse<LeadSourceCategory> response = apiInstance.getLeadSourceCategoryUsingGETWithHttpInfo(leadSourceCategoryId);
+            ApiResponse<LeadSourceCategory> response = apiInstance.getLeadSourceCategoryWithHttpInfo(leadSourceCategoryId);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling LeadSourceCategoriesApi#getLeadSourceCategoryUsingGET");
+            System.err.println("Exception when calling LeadSourceCategoriesApi#getLeadSourceCategory");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -441,9 +441,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## listCategoriesUsingGET1
+## listLeadSourceCategories
 
-> ListLeadSourceCategoriesResponse listCategoriesUsingGET1(filter, orderBy, pageSize, pageToken)
+> ListLeadSourceCategoriesResponse listLeadSourceCategories(filter, orderBy, pageSize, pageToken)
 
 List Lead Source Categories
 
@@ -470,10 +470,10 @@ public class Example {
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
         try {
-            ListLeadSourceCategoriesResponse result = apiInstance.listCategoriesUsingGET1(filter, orderBy, pageSize, pageToken);
+            ListLeadSourceCategoriesResponse result = apiInstance.listLeadSourceCategories(filter, orderBy, pageSize, pageToken);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling LeadSourceCategoriesApi#listCategoriesUsingGET1");
+            System.err.println("Exception when calling LeadSourceCategoriesApi#listLeadSourceCategories");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -517,9 +517,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## listCategoriesUsingGET1WithHttpInfo
+## listLeadSourceCategoriesWithHttpInfo
 
-> ApiResponse<ListLeadSourceCategoriesResponse> listCategoriesUsingGET1 listCategoriesUsingGET1WithHttpInfo(filter, orderBy, pageSize, pageToken)
+> ApiResponse<ListLeadSourceCategoriesResponse> listLeadSourceCategories listLeadSourceCategoriesWithHttpInfo(filter, orderBy, pageSize, pageToken)
 
 List Lead Source Categories
 
@@ -547,12 +547,12 @@ public class Example {
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
         try {
-            ApiResponse<ListLeadSourceCategoriesResponse> response = apiInstance.listCategoriesUsingGET1WithHttpInfo(filter, orderBy, pageSize, pageToken);
+            ApiResponse<ListLeadSourceCategoriesResponse> response = apiInstance.listLeadSourceCategoriesWithHttpInfo(filter, orderBy, pageSize, pageToken);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling LeadSourceCategoriesApi#listCategoriesUsingGET1");
+            System.err.println("Exception when calling LeadSourceCategoriesApi#listLeadSourceCategories");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -597,9 +597,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## updateLeadSourceCategoryUsingPATCH
+## updateLeadSourceCategory
 
-> LeadSourceCategory updateLeadSourceCategoryUsingPATCH(leadSourceCategoryId, createUpdateLeadSourceCategoryRequest, updateMask)
+> LeadSourceCategory updateLeadSourceCategory(leadSourceCategoryId, createUpdateLeadSourceCategoryRequest, updateMask)
 
 Update a Lead Source Category
 
@@ -625,10 +625,10 @@ public class Example {
         CreateUpdateLeadSourceCategoryRequest createUpdateLeadSourceCategoryRequest = new CreateUpdateLeadSourceCategoryRequest(); // CreateUpdateLeadSourceCategoryRequest | The request object to update a lead source category
         List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
-            LeadSourceCategory result = apiInstance.updateLeadSourceCategoryUsingPATCH(leadSourceCategoryId, createUpdateLeadSourceCategoryRequest, updateMask);
+            LeadSourceCategory result = apiInstance.updateLeadSourceCategory(leadSourceCategoryId, createUpdateLeadSourceCategoryRequest, updateMask);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling LeadSourceCategoriesApi#updateLeadSourceCategoryUsingPATCH");
+            System.err.println("Exception when calling LeadSourceCategoriesApi#updateLeadSourceCategory");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -671,9 +671,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## updateLeadSourceCategoryUsingPATCHWithHttpInfo
+## updateLeadSourceCategoryWithHttpInfo
 
-> ApiResponse<LeadSourceCategory> updateLeadSourceCategoryUsingPATCH updateLeadSourceCategoryUsingPATCHWithHttpInfo(leadSourceCategoryId, createUpdateLeadSourceCategoryRequest, updateMask)
+> ApiResponse<LeadSourceCategory> updateLeadSourceCategory updateLeadSourceCategoryWithHttpInfo(leadSourceCategoryId, createUpdateLeadSourceCategoryRequest, updateMask)
 
 Update a Lead Source Category
 
@@ -700,12 +700,12 @@ public class Example {
         CreateUpdateLeadSourceCategoryRequest createUpdateLeadSourceCategoryRequest = new CreateUpdateLeadSourceCategoryRequest(); // CreateUpdateLeadSourceCategoryRequest | The request object to update a lead source category
         List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
-            ApiResponse<LeadSourceCategory> response = apiInstance.updateLeadSourceCategoryUsingPATCHWithHttpInfo(leadSourceCategoryId, createUpdateLeadSourceCategoryRequest, updateMask);
+            ApiResponse<LeadSourceCategory> response = apiInstance.updateLeadSourceCategoryWithHttpInfo(leadSourceCategoryId, createUpdateLeadSourceCategoryRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling LeadSourceCategoriesApi#updateLeadSourceCategoryUsingPATCH");
+            System.err.println("Exception when calling LeadSourceCategoriesApi#updateLeadSourceCategory");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());

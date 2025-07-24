@@ -4,15 +4,15 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**CreateOrderTotalDiscountUsingPOST**](OrderTotalDiscountsApi.md#createordertotaldiscountusingpost) | **POST** /v2/discounts/orderTotals | Create an Order Total Discount |
-| [**DeleteOrderTotalDiscountUsingDELETE**](OrderTotalDiscountsApi.md#deleteordertotaldiscountusingdelete) | **DELETE** /v2/discounts/orderTotals/{discount_id} | Delete an Order Total Discount |
-| [**GetOrderTotalDiscountUsingGET**](OrderTotalDiscountsApi.md#getordertotaldiscountusingget) | **GET** /v2/discounts/orderTotals/{discount_id} | Retrieve an Order Total Discount |
-| [**ListOrderTotalDiscountsUsingGET**](OrderTotalDiscountsApi.md#listordertotaldiscountsusingget) | **GET** /v2/discounts/orderTotals | List all Order Total Discounts |
-| [**UpdateOrderTotalDiscountUsingPATCH**](OrderTotalDiscountsApi.md#updateordertotaldiscountusingpatch) | **PATCH** /v2/discounts/orderTotals/{discount_id} | Update an Order Total Discount |
+| [**CreateOrderTotalDiscount**](OrderTotalDiscountsApi.md#createordertotaldiscount) | **POST** /v2/discounts/orderTotals | Create an Order Total Discount |
+| [**DeleteOrderTotalDiscount**](OrderTotalDiscountsApi.md#deleteordertotaldiscount) | **DELETE** /v2/discounts/orderTotals/{discount_id} | Delete an Order Total Discount |
+| [**GetOrderTotalDiscount**](OrderTotalDiscountsApi.md#getordertotaldiscount) | **GET** /v2/discounts/orderTotals/{discount_id} | Retrieve an Order Total Discount |
+| [**ListOrderTotalDiscounts**](OrderTotalDiscountsApi.md#listordertotaldiscounts) | **GET** /v2/discounts/orderTotals | List all Order Total Discounts |
+| [**UpdateOrderTotalDiscount**](OrderTotalDiscountsApi.md#updateordertotaldiscount) | **PATCH** /v2/discounts/orderTotals/{discount_id} | Update an Order Total Discount |
 
-<a id="createordertotaldiscountusingpost"></a>
-# **CreateOrderTotalDiscountUsingPOST**
-> OrderTotalDiscount CreateOrderTotalDiscountUsingPOST (CreateOrderTotalDiscountRequest createOrderTotalDiscountRequest)
+<a id="createordertotaldiscount"></a>
+# **CreateOrderTotalDiscount**
+> OrderTotalDiscount CreateOrderTotalDiscount (CreateOrderTotalDiscountRequest createOrderTotalDiscountRequest)
 
 Create an Order Total Discount
 
@@ -28,7 +28,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class CreateOrderTotalDiscountUsingPOSTExample
+    public class CreateOrderTotalDiscountExample
     {
         public static void Main()
         {
@@ -40,12 +40,12 @@ namespace Example
             try
             {
                 // Create an Order Total Discount
-                OrderTotalDiscount result = apiInstance.CreateOrderTotalDiscountUsingPOST(createOrderTotalDiscountRequest);
+                OrderTotalDiscount result = apiInstance.CreateOrderTotalDiscount(createOrderTotalDiscountRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling OrderTotalDiscountsApi.CreateOrderTotalDiscountUsingPOST: " + e.Message);
+                Debug.Print("Exception when calling OrderTotalDiscountsApi.CreateOrderTotalDiscount: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -54,21 +54,21 @@ namespace Example
 }
 ```
 
-#### Using the CreateOrderTotalDiscountUsingPOSTWithHttpInfo variant
+#### Using the CreateOrderTotalDiscountWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Create an Order Total Discount
-    ApiResponse<OrderTotalDiscount> response = apiInstance.CreateOrderTotalDiscountUsingPOSTWithHttpInfo(createOrderTotalDiscountRequest);
+    ApiResponse<OrderTotalDiscount> response = apiInstance.CreateOrderTotalDiscountWithHttpInfo(createOrderTotalDiscountRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling OrderTotalDiscountsApi.CreateOrderTotalDiscountUsingPOSTWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling OrderTotalDiscountsApi.CreateOrderTotalDiscountWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -104,9 +104,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="deleteordertotaldiscountusingdelete"></a>
-# **DeleteOrderTotalDiscountUsingDELETE**
-> void DeleteOrderTotalDiscountUsingDELETE (string discountId)
+<a id="deleteordertotaldiscount"></a>
+# **DeleteOrderTotalDiscount**
+> void DeleteOrderTotalDiscount (string discountId)
 
 Delete an Order Total Discount
 
@@ -122,7 +122,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class DeleteOrderTotalDiscountUsingDELETEExample
+    public class DeleteOrderTotalDiscountExample
     {
         public static void Main()
         {
@@ -134,11 +134,11 @@ namespace Example
             try
             {
                 // Delete an Order Total Discount
-                apiInstance.DeleteOrderTotalDiscountUsingDELETE(discountId);
+                apiInstance.DeleteOrderTotalDiscount(discountId);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling OrderTotalDiscountsApi.DeleteOrderTotalDiscountUsingDELETE: " + e.Message);
+                Debug.Print("Exception when calling OrderTotalDiscountsApi.DeleteOrderTotalDiscount: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -147,18 +147,18 @@ namespace Example
 }
 ```
 
-#### Using the DeleteOrderTotalDiscountUsingDELETEWithHttpInfo variant
+#### Using the DeleteOrderTotalDiscountWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Delete an Order Total Discount
-    apiInstance.DeleteOrderTotalDiscountUsingDELETEWithHttpInfo(discountId);
+    apiInstance.DeleteOrderTotalDiscountWithHttpInfo(discountId);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling OrderTotalDiscountsApi.DeleteOrderTotalDiscountUsingDELETEWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling OrderTotalDiscountsApi.DeleteOrderTotalDiscountWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -195,9 +195,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="getordertotaldiscountusingget"></a>
-# **GetOrderTotalDiscountUsingGET**
-> OrderTotalDiscount GetOrderTotalDiscountUsingGET (string discountId)
+<a id="getordertotaldiscount"></a>
+# **GetOrderTotalDiscount**
+> OrderTotalDiscount GetOrderTotalDiscount (string discountId)
 
 Retrieve an Order Total Discount
 
@@ -213,7 +213,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class GetOrderTotalDiscountUsingGETExample
+    public class GetOrderTotalDiscountExample
     {
         public static void Main()
         {
@@ -225,12 +225,12 @@ namespace Example
             try
             {
                 // Retrieve an Order Total Discount
-                OrderTotalDiscount result = apiInstance.GetOrderTotalDiscountUsingGET(discountId);
+                OrderTotalDiscount result = apiInstance.GetOrderTotalDiscount(discountId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling OrderTotalDiscountsApi.GetOrderTotalDiscountUsingGET: " + e.Message);
+                Debug.Print("Exception when calling OrderTotalDiscountsApi.GetOrderTotalDiscount: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -239,21 +239,21 @@ namespace Example
 }
 ```
 
-#### Using the GetOrderTotalDiscountUsingGETWithHttpInfo variant
+#### Using the GetOrderTotalDiscountWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Retrieve an Order Total Discount
-    ApiResponse<OrderTotalDiscount> response = apiInstance.GetOrderTotalDiscountUsingGETWithHttpInfo(discountId);
+    ApiResponse<OrderTotalDiscount> response = apiInstance.GetOrderTotalDiscountWithHttpInfo(discountId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling OrderTotalDiscountsApi.GetOrderTotalDiscountUsingGETWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling OrderTotalDiscountsApi.GetOrderTotalDiscountWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -290,9 +290,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="listordertotaldiscountsusingget"></a>
-# **ListOrderTotalDiscountsUsingGET**
-> ListOrderTotalDiscountsResponse ListOrderTotalDiscountsUsingGET (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
+<a id="listordertotaldiscounts"></a>
+# **ListOrderTotalDiscounts**
+> ListOrderTotalDiscountsResponse ListOrderTotalDiscounts (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
 
 List all Order Total Discounts
 
@@ -308,7 +308,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class ListOrderTotalDiscountsUsingGETExample
+    public class ListOrderTotalDiscountsExample
     {
         public static void Main()
         {
@@ -316,19 +316,19 @@ namespace Example
             config.BasePath = "https://api.keap.com/crm/rest";
             var apiInstance = new OrderTotalDiscountsApi(config);
             var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (Boolean) `apply_to_commissions` - (DiscountStrategy) `discount_strategy`: GROSS or NET - (DiscountType) `discount_type`: AMOUNT or PERCENT - (Double) `discount_value`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=apply_to_commissions%3D%3Dtrue` - `filter=discount_strategy%3D%3DGROSS` - `filter=discount_type%3D%3DAMOUNT` - `filter=discount_value%3D%3D10.0` - `filter=discount_type%3D%3DAMOUNT%3Bdiscount_strategy%3D%3DNET`  (optional) 
-            var orderBy = "orderBy_example";  // string? | Attribute and direction to order items. One of the following fields: - `apply_to_commissions` - `discount_strategy` - `discount_type` - `discount_value` - `id`  One of the following directions: - `asc` - `desc` (optional) 
+            var orderBy = "orderBy_example";  // string? | Attribute and direction to order items. One of the following fields: - `apply_to_commissions` - `discount_strategy` - `discount_type` - `discount_value` - `id` - `name`  One of the following directions: - `asc` - `desc` (optional) 
             var pageSize = 0;  // int? | Total number of items to return per page (optional) 
             var pageToken = "pageToken_example";  // string? | Page token (optional) 
 
             try
             {
                 // List all Order Total Discounts
-                ListOrderTotalDiscountsResponse result = apiInstance.ListOrderTotalDiscountsUsingGET(filter, orderBy, pageSize, pageToken);
+                ListOrderTotalDiscountsResponse result = apiInstance.ListOrderTotalDiscounts(filter, orderBy, pageSize, pageToken);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling OrderTotalDiscountsApi.ListOrderTotalDiscountsUsingGET: " + e.Message);
+                Debug.Print("Exception when calling OrderTotalDiscountsApi.ListOrderTotalDiscounts: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -337,21 +337,21 @@ namespace Example
 }
 ```
 
-#### Using the ListOrderTotalDiscountsUsingGETWithHttpInfo variant
+#### Using the ListOrderTotalDiscountsWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // List all Order Total Discounts
-    ApiResponse<ListOrderTotalDiscountsResponse> response = apiInstance.ListOrderTotalDiscountsUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken);
+    ApiResponse<ListOrderTotalDiscountsResponse> response = apiInstance.ListOrderTotalDiscountsWithHttpInfo(filter, orderBy, pageSize, pageToken);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling OrderTotalDiscountsApi.ListOrderTotalDiscountsUsingGETWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling OrderTotalDiscountsApi.ListOrderTotalDiscountsWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -362,7 +362,7 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **filter** | **string?** | Filter to apply, allowed fields are: - (Boolean) &#x60;apply_to_commissions&#x60; - (DiscountStrategy) &#x60;discount_strategy&#x60;: GROSS or NET - (DiscountType) &#x60;discount_type&#x60;: AMOUNT or PERCENT - (Double) &#x60;discount_value&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;apply_to_commissions%3D%3Dtrue&#x60; - &#x60;filter&#x3D;discount_strategy%3D%3DGROSS&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT&#x60; - &#x60;filter&#x3D;discount_value%3D%3D10.0&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT%3Bdiscount_strategy%3D%3DNET&#x60;  | [optional]  |
-| **orderBy** | **string?** | Attribute and direction to order items. One of the following fields: - &#x60;apply_to_commissions&#x60; - &#x60;discount_strategy&#x60; - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional]  |
+| **orderBy** | **string?** | Attribute and direction to order items. One of the following fields: - &#x60;apply_to_commissions&#x60; - &#x60;discount_strategy&#x60; - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60; - &#x60;name&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional]  |
 | **pageSize** | **int?** | Total number of items to return per page | [optional]  |
 | **pageToken** | **string?** | Page token | [optional]  |
 
@@ -391,9 +391,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="updateordertotaldiscountusingpatch"></a>
-# **UpdateOrderTotalDiscountUsingPATCH**
-> OrderTotalDiscount UpdateOrderTotalDiscountUsingPATCH (string discountId, UpdateOrderTotalDiscountRequest updateOrderTotalDiscountRequest, List<string>? updateMask = null)
+<a id="updateordertotaldiscount"></a>
+# **UpdateOrderTotalDiscount**
+> OrderTotalDiscount UpdateOrderTotalDiscount (string discountId, UpdateOrderTotalDiscountRequest updateOrderTotalDiscountRequest, List<string>? updateMask = null)
 
 Update an Order Total Discount
 
@@ -409,7 +409,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class UpdateOrderTotalDiscountUsingPATCHExample
+    public class UpdateOrderTotalDiscountExample
     {
         public static void Main()
         {
@@ -423,12 +423,12 @@ namespace Example
             try
             {
                 // Update an Order Total Discount
-                OrderTotalDiscount result = apiInstance.UpdateOrderTotalDiscountUsingPATCH(discountId, updateOrderTotalDiscountRequest, updateMask);
+                OrderTotalDiscount result = apiInstance.UpdateOrderTotalDiscount(discountId, updateOrderTotalDiscountRequest, updateMask);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling OrderTotalDiscountsApi.UpdateOrderTotalDiscountUsingPATCH: " + e.Message);
+                Debug.Print("Exception when calling OrderTotalDiscountsApi.UpdateOrderTotalDiscount: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -437,21 +437,21 @@ namespace Example
 }
 ```
 
-#### Using the UpdateOrderTotalDiscountUsingPATCHWithHttpInfo variant
+#### Using the UpdateOrderTotalDiscountWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Update an Order Total Discount
-    ApiResponse<OrderTotalDiscount> response = apiInstance.UpdateOrderTotalDiscountUsingPATCHWithHttpInfo(discountId, updateOrderTotalDiscountRequest, updateMask);
+    ApiResponse<OrderTotalDiscount> response = apiInstance.UpdateOrderTotalDiscountWithHttpInfo(discountId, updateOrderTotalDiscountRequest, updateMask);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling OrderTotalDiscountsApi.UpdateOrderTotalDiscountUsingPATCHWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling OrderTotalDiscountsApi.UpdateOrderTotalDiscountWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }

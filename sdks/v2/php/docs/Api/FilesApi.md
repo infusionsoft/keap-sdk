@@ -4,18 +4,18 @@ All URIs are relative to https://api.keap.com/crm/rest, except if the operation 
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createFileUsingPOST1()**](FilesApi.md#createFileUsingPOST1) | **POST** /v2/files | Create a file |
-| [**deleteFileUsingDELETE1()**](FilesApi.md#deleteFileUsingDELETE1) | **DELETE** /v2/files/{file_id} | Delete a file |
-| [**getFileDataUsingGET()**](FilesApi.md#getFileDataUsingGET) | **GET** /v2/files/{file_id}:data | Retrieve a file&#39;s data |
-| [**getFileUsingGET1()**](FilesApi.md#getFileUsingGET1) | **GET** /v2/files/{file_id} | Retrieve a file |
-| [**listFilesUsingGET1()**](FilesApi.md#listFilesUsingGET1) | **GET** /v2/files | List all files |
-| [**updateFileUsingPOST()**](FilesApi.md#updateFileUsingPOST) | **POST** /v2/files/{file_id} | Update a file |
+| [**createFile()**](FilesApi.md#createFile) | **POST** /v2/files | Create a file |
+| [**deleteFile()**](FilesApi.md#deleteFile) | **DELETE** /v2/files/{file_id} | Delete a file |
+| [**getFile()**](FilesApi.md#getFile) | **GET** /v2/files/{file_id} | Retrieve a file |
+| [**getFileData()**](FilesApi.md#getFileData) | **GET** /v2/files/{file_id}:data | Retrieve a file&#39;s data |
+| [**listFiles()**](FilesApi.md#listFiles) | **GET** /v2/files | List all files |
+| [**updateFile()**](FilesApi.md#updateFile) | **POST** /v2/files/{file_id} | Update a file |
 
 
-## `createFileUsingPOST1()`
+## `createFile()`
 
 ```php
-createFileUsingPOST1($file, $file_association, $file_name, $is_public, $contact_id): \Keap\Core\V2\Model\FileMetadata
+createFile($file, $file_association, $file_name, $is_public, $contact_id): \Keap\Core\V2\Model\FileMetadata
 ```
 
 Create a file
@@ -41,10 +41,10 @@ $is_public = True; // bool | Is public
 $contact_id = 'contact_id_example'; // string | Contact ID
 
 try {
-    $result = $apiInstance->createFileUsingPOST1($file, $file_association, $file_name, $is_public, $contact_id);
+    $result = $apiInstance->createFile($file, $file_association, $file_name, $is_public, $contact_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling FilesApi->createFileUsingPOST1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling FilesApi->createFile: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -75,10 +75,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `deleteFileUsingDELETE1()`
+## `deleteFile()`
 
 ```php
-deleteFileUsingDELETE1($file_id)
+deleteFile($file_id)
 ```
 
 Delete a file
@@ -100,9 +100,9 @@ $apiInstance = new Keap\Core\V2\Api\FilesApi(
 $file_id = 'file_id_example'; // string | file_id
 
 try {
-    $apiInstance->deleteFileUsingDELETE1($file_id);
+    $apiInstance->deleteFile($file_id);
 } catch (Exception $e) {
-    echo 'Exception when calling FilesApi->deleteFileUsingDELETE1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling FilesApi->deleteFile: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -129,65 +129,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getFileDataUsingGET()`
+## `getFile()`
 
 ```php
-getFileDataUsingGET($file_id): string
-```
-
-Retrieve a file's data
-
-Retrieves a file's data
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-$apiInstance = new Keap\Core\V2\Api\FilesApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
-);
-$file_id = 'file_id_example'; // string | file_id
-
-try {
-    $result = $apiInstance->getFileDataUsingGET($file_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling FilesApi->getFileDataUsingGET: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **file_id** | **string**| file_id | |
-
-### Return type
-
-**string**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `getFileUsingGET1()`
-
-```php
-getFileUsingGET1($file_id): \Keap\Core\V2\Model\FileMetadata
+getFile($file_id): \Keap\Core\V2\Model\FileMetadata
 ```
 
 Retrieve a file
@@ -209,10 +154,10 @@ $apiInstance = new Keap\Core\V2\Api\FilesApi(
 $file_id = 'file_id_example'; // string | file_id
 
 try {
-    $result = $apiInstance->getFileUsingGET1($file_id);
+    $result = $apiInstance->getFile($file_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling FilesApi->getFileUsingGET1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling FilesApi->getFile: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -239,10 +184,65 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `listFilesUsingGET1()`
+## `getFileData()`
 
 ```php
-listFilesUsingGET1($filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListFilesResponse
+getFileData($file_id): string
+```
+
+Retrieve a file's data
+
+Retrieves a file's data
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+$apiInstance = new Keap\Core\V2\Api\FilesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$file_id = 'file_id_example'; // string | file_id
+
+try {
+    $result = $apiInstance->getFileData($file_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling FilesApi->getFileData: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **file_id** | **string**| file_id | |
+
+### Return type
+
+**string**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listFiles()`
+
+```php
+listFiles($filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListFilesResponse
 ```
 
 List all files
@@ -267,10 +267,10 @@ $page_size = 0; // int | Total number of items to return per page
 $page_token = 'page_token_example'; // string | Page token
 
 try {
-    $result = $apiInstance->listFilesUsingGET1($filter, $order_by, $page_size, $page_token);
+    $result = $apiInstance->listFiles($filter, $order_by, $page_size, $page_token);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling FilesApi->listFilesUsingGET1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling FilesApi->listFiles: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -300,10 +300,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `updateFileUsingPOST()`
+## `updateFile()`
 
 ```php
-updateFileUsingPOST($file_id, $file, $file_name, $is_public, $update_mask): \Keap\Core\V2\Model\FileMetadata
+updateFile($file_id, $file, $file_name, $is_public, $update_mask): \Keap\Core\V2\Model\FileMetadata
 ```
 
 Update a file
@@ -329,10 +329,10 @@ $is_public = True; // bool | Is public
 $update_mask = 'update_mask_example'; // string | Update Mask
 
 try {
-    $result = $apiInstance->updateFileUsingPOST($file_id, $file, $file_name, $is_public, $update_mask);
+    $result = $apiInstance->updateFile($file_id, $file, $file_name, $is_public, $update_mask);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling FilesApi->updateFileUsingPOST: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling FilesApi->updateFile: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

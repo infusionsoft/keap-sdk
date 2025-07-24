@@ -9,6 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 |**code** | **String** | The Affiliate Code |  [optional] |
 |**contactId** | **String** | The ContactID |  [optional] |
+|**dateCreated** | **String** |  |  [optional] |
 |**id** | **String** | The AffiliateId |  [optional] |
 |**name** | **String** | The Affiliate Name |  [optional] |
 |**status** | [**StatusEnum**](#StatusEnum) | The Affiliate Status |  [optional] |

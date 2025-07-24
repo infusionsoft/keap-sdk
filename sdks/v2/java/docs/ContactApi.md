@@ -4,174 +4,34 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createContactLinkTypeUsingPOST**](ContactApi.md#createContactLinkTypeUsingPOST) | **POST** /v2/contacts/links/types | Create a Contact Link type |
-| [**createContactLinkTypeUsingPOSTWithHttpInfo**](ContactApi.md#createContactLinkTypeUsingPOSTWithHttpInfo) | **POST** /v2/contacts/links/types | Create a Contact Link type |
-| [**createContactUsingPOST1**](ContactApi.md#createContactUsingPOST1) | **POST** /v2/contacts | Create a Contact |
-| [**createContactUsingPOST1WithHttpInfo**](ContactApi.md#createContactUsingPOST1WithHttpInfo) | **POST** /v2/contacts | Create a Contact |
-| [**deleteContactUsingDELETE1**](ContactApi.md#deleteContactUsingDELETE1) | **DELETE** /v2/contacts/{contact_id} | Delete a Contact |
-| [**deleteContactUsingDELETE1WithHttpInfo**](ContactApi.md#deleteContactUsingDELETE1WithHttpInfo) | **DELETE** /v2/contacts/{contact_id} | Delete a Contact |
-| [**getContactUsingGET1**](ContactApi.md#getContactUsingGET1) | **GET** /v2/contacts/{contact_id} | Retrieve a Contact |
-| [**getContactUsingGET1WithHttpInfo**](ContactApi.md#getContactUsingGET1WithHttpInfo) | **GET** /v2/contacts/{contact_id} | Retrieve a Contact |
-| [**linkContactsUsingPOST**](ContactApi.md#linkContactsUsingPOST) | **POST** /v2/contacts:link | Link Contacts |
-| [**linkContactsUsingPOSTWithHttpInfo**](ContactApi.md#linkContactsUsingPOSTWithHttpInfo) | **POST** /v2/contacts:link | Link Contacts |
-| [**listContactLinkTypesUsingGET**](ContactApi.md#listContactLinkTypesUsingGET) | **GET** /v2/contacts/links/types | List Contact Link types |
-| [**listContactLinkTypesUsingGETWithHttpInfo**](ContactApi.md#listContactLinkTypesUsingGETWithHttpInfo) | **GET** /v2/contacts/links/types | List Contact Link types |
-| [**listContactLinksUsingGET**](ContactApi.md#listContactLinksUsingGET) | **GET** /v2/contacts/{contact_id}/links | List Linked Contacts |
-| [**listContactLinksUsingGETWithHttpInfo**](ContactApi.md#listContactLinksUsingGETWithHttpInfo) | **GET** /v2/contacts/{contact_id}/links | List Linked Contacts |
-| [**listContactsUsingGET1**](ContactApi.md#listContactsUsingGET1) | **GET** /v2/contacts | List Contacts |
-| [**listContactsUsingGET1WithHttpInfo**](ContactApi.md#listContactsUsingGET1WithHttpInfo) | **GET** /v2/contacts | List Contacts |
-| [**retrieveContactModelUsingGET1**](ContactApi.md#retrieveContactModelUsingGET1) | **GET** /v2/contacts/model | Retrieve Contact Model |
-| [**retrieveContactModelUsingGET1WithHttpInfo**](ContactApi.md#retrieveContactModelUsingGET1WithHttpInfo) | **GET** /v2/contacts/model | Retrieve Contact Model |
-| [**unlinkContactsUsingPOST**](ContactApi.md#unlinkContactsUsingPOST) | **POST** /v2/contacts:unlink | Delete Link between two Contacts |
-| [**unlinkContactsUsingPOSTWithHttpInfo**](ContactApi.md#unlinkContactsUsingPOSTWithHttpInfo) | **POST** /v2/contacts:unlink | Delete Link between two Contacts |
-| [**updateContactUsingPATCH**](ContactApi.md#updateContactUsingPATCH) | **PATCH** /v2/contacts/{contact_id} | Update a Contact |
-| [**updateContactUsingPATCHWithHttpInfo**](ContactApi.md#updateContactUsingPATCHWithHttpInfo) | **PATCH** /v2/contacts/{contact_id} | Update a Contact |
+| [**createContact**](ContactApi.md#createContact) | **POST** /v2/contacts | Create a Contact |
+| [**createContactWithHttpInfo**](ContactApi.md#createContactWithHttpInfo) | **POST** /v2/contacts | Create a Contact |
+| [**createContactLinkType**](ContactApi.md#createContactLinkType) | **POST** /v2/contacts/links/types | Create a Contact Link type |
+| [**createContactLinkTypeWithHttpInfo**](ContactApi.md#createContactLinkTypeWithHttpInfo) | **POST** /v2/contacts/links/types | Create a Contact Link type |
+| [**deleteContact**](ContactApi.md#deleteContact) | **DELETE** /v2/contacts/{contact_id} | Delete a Contact |
+| [**deleteContactWithHttpInfo**](ContactApi.md#deleteContactWithHttpInfo) | **DELETE** /v2/contacts/{contact_id} | Delete a Contact |
+| [**getContact**](ContactApi.md#getContact) | **GET** /v2/contacts/{contact_id} | Retrieve a Contact |
+| [**getContactWithHttpInfo**](ContactApi.md#getContactWithHttpInfo) | **GET** /v2/contacts/{contact_id} | Retrieve a Contact |
+| [**linkContacts**](ContactApi.md#linkContacts) | **POST** /v2/contacts:link | Link Contacts |
+| [**linkContactsWithHttpInfo**](ContactApi.md#linkContactsWithHttpInfo) | **POST** /v2/contacts:link | Link Contacts |
+| [**listContactLinkTypes**](ContactApi.md#listContactLinkTypes) | **GET** /v2/contacts/links/types | List Contact Link types |
+| [**listContactLinkTypesWithHttpInfo**](ContactApi.md#listContactLinkTypesWithHttpInfo) | **GET** /v2/contacts/links/types | List Contact Link types |
+| [**listContactLinks**](ContactApi.md#listContactLinks) | **GET** /v2/contacts/{contact_id}/links | List Linked Contacts |
+| [**listContactLinksWithHttpInfo**](ContactApi.md#listContactLinksWithHttpInfo) | **GET** /v2/contacts/{contact_id}/links | List Linked Contacts |
+| [**listContacts**](ContactApi.md#listContacts) | **GET** /v2/contacts | List Contacts |
+| [**listContactsWithHttpInfo**](ContactApi.md#listContactsWithHttpInfo) | **GET** /v2/contacts | List Contacts |
+| [**retrieveContactModel**](ContactApi.md#retrieveContactModel) | **GET** /v2/contacts/model | Retrieve Contact Model |
+| [**retrieveContactModelWithHttpInfo**](ContactApi.md#retrieveContactModelWithHttpInfo) | **GET** /v2/contacts/model | Retrieve Contact Model |
+| [**unlinkContacts**](ContactApi.md#unlinkContacts) | **POST** /v2/contacts:unlink | Delete Link between two Contacts |
+| [**unlinkContactsWithHttpInfo**](ContactApi.md#unlinkContactsWithHttpInfo) | **POST** /v2/contacts:unlink | Delete Link between two Contacts |
+| [**updateContact**](ContactApi.md#updateContact) | **PATCH** /v2/contacts/{contact_id} | Update a Contact |
+| [**updateContactWithHttpInfo**](ContactApi.md#updateContactWithHttpInfo) | **PATCH** /v2/contacts/{contact_id} | Update a Contact |
 
 
 
-## createContactLinkTypeUsingPOST
+## createContact
 
-> ContactLinkType createContactLinkTypeUsingPOST(createContactLinkTypeRequest)
-
-Create a Contact Link type
-
-Creates a new type of Contact Link
-
-### Example
-
-```java
-// Import classes:
-import com.keap.core.sdk.ApiClient;
-import com.keap.core.sdk.ApiException;
-import com.keap.core.sdk.Configuration;
-import com.keap.core.sdk.models.*;
-import com.keap.core.sdk.client.ContactApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
-
-        ContactApi apiInstance = new ContactApi(defaultClient);
-        CreateContactLinkTypeRequest createContactLinkTypeRequest = new CreateContactLinkTypeRequest(); // CreateContactLinkTypeRequest | request
-        try {
-            ContactLinkType result = apiInstance.createContactLinkTypeUsingPOST(createContactLinkTypeRequest);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ContactApi#createContactLinkTypeUsingPOST");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **createContactLinkTypeRequest** | [**CreateContactLinkTypeRequest**](CreateContactLinkTypeRequest.md)| request | |
-
-### Return type
-
-[**ContactLinkType**](ContactLinkType.md)
-
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **201** | Created |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **500** | Internal Server Error |  -  |
-
-## createContactLinkTypeUsingPOSTWithHttpInfo
-
-> ApiResponse<ContactLinkType> createContactLinkTypeUsingPOST createContactLinkTypeUsingPOSTWithHttpInfo(createContactLinkTypeRequest)
-
-Create a Contact Link type
-
-Creates a new type of Contact Link
-
-### Example
-
-```java
-// Import classes:
-import com.keap.core.sdk.ApiClient;
-import com.keap.core.sdk.ApiException;
-import com.keap.core.sdk.ApiResponse;
-import com.keap.core.sdk.Configuration;
-import com.keap.core.sdk.models.*;
-import com.keap.core.sdk.client.ContactApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
-
-        ContactApi apiInstance = new ContactApi(defaultClient);
-        CreateContactLinkTypeRequest createContactLinkTypeRequest = new CreateContactLinkTypeRequest(); // CreateContactLinkTypeRequest | request
-        try {
-            ApiResponse<ContactLinkType> response = apiInstance.createContactLinkTypeUsingPOSTWithHttpInfo(createContactLinkTypeRequest);
-            System.out.println("Status code: " + response.getStatusCode());
-            System.out.println("Response headers: " + response.getHeaders());
-            System.out.println("Response body: " + response.getData());
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ContactApi#createContactLinkTypeUsingPOST");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            System.err.println("Reason: " + e.getResponseBody());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **createContactLinkTypeRequest** | [**CreateContactLinkTypeRequest**](CreateContactLinkTypeRequest.md)| request | |
-
-### Return type
-
-ApiResponse<[**ContactLinkType**](ContactLinkType.md)>
-
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **201** | Created |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **500** | Internal Server Error |  -  |
-
-
-## createContactUsingPOST1
-
-> Contact createContactUsingPOST1(createUpdateContactRequest)
+> Contact createContact(createUpdateContactRequest)
 
 Create a Contact
 
@@ -195,10 +55,10 @@ public class Example {
         ContactApi apiInstance = new ContactApi(defaultClient);
         CreateUpdateContactRequest createUpdateContactRequest = new CreateUpdateContactRequest(); // CreateUpdateContactRequest | contact
         try {
-            Contact result = apiInstance.createContactUsingPOST1(createUpdateContactRequest);
+            Contact result = apiInstance.createContact(createUpdateContactRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ContactApi#createContactUsingPOST1");
+            System.err.println("Exception when calling ContactApi#createContact");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -237,9 +97,9 @@ No authorization required
 | **403** | Forbidden |  -  |
 | **500** | Internal Server Error |  -  |
 
-## createContactUsingPOST1WithHttpInfo
+## createContactWithHttpInfo
 
-> ApiResponse<Contact> createContactUsingPOST1 createContactUsingPOST1WithHttpInfo(createUpdateContactRequest)
+> ApiResponse<Contact> createContact createContactWithHttpInfo(createUpdateContactRequest)
 
 Create a Contact
 
@@ -264,12 +124,12 @@ public class Example {
         ContactApi apiInstance = new ContactApi(defaultClient);
         CreateUpdateContactRequest createUpdateContactRequest = new CreateUpdateContactRequest(); // CreateUpdateContactRequest | contact
         try {
-            ApiResponse<Contact> response = apiInstance.createContactUsingPOST1WithHttpInfo(createUpdateContactRequest);
+            ApiResponse<Contact> response = apiInstance.createContactWithHttpInfo(createUpdateContactRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling ContactApi#createContactUsingPOST1");
+            System.err.println("Exception when calling ContactApi#createContact");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -309,9 +169,149 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## deleteContactUsingDELETE1
+## createContactLinkType
 
-> void deleteContactUsingDELETE1(contactId)
+> ContactLinkType createContactLinkType(createContactLinkTypeRequest)
+
+Create a Contact Link type
+
+Creates a new type of Contact Link
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.ContactApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+
+        ContactApi apiInstance = new ContactApi(defaultClient);
+        CreateContactLinkTypeRequest createContactLinkTypeRequest = new CreateContactLinkTypeRequest(); // CreateContactLinkTypeRequest | request
+        try {
+            ContactLinkType result = apiInstance.createContactLinkType(createContactLinkTypeRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ContactApi#createContactLinkType");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **createContactLinkTypeRequest** | [**CreateContactLinkTypeRequest**](CreateContactLinkTypeRequest.md)| request | |
+
+### Return type
+
+[**ContactLinkType**](ContactLinkType.md)
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **500** | Internal Server Error |  -  |
+
+## createContactLinkTypeWithHttpInfo
+
+> ApiResponse<ContactLinkType> createContactLinkType createContactLinkTypeWithHttpInfo(createContactLinkTypeRequest)
+
+Create a Contact Link type
+
+Creates a new type of Contact Link
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.ContactApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+
+        ContactApi apiInstance = new ContactApi(defaultClient);
+        CreateContactLinkTypeRequest createContactLinkTypeRequest = new CreateContactLinkTypeRequest(); // CreateContactLinkTypeRequest | request
+        try {
+            ApiResponse<ContactLinkType> response = apiInstance.createContactLinkTypeWithHttpInfo(createContactLinkTypeRequest);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ContactApi#createContactLinkType");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **createContactLinkTypeRequest** | [**CreateContactLinkTypeRequest**](CreateContactLinkTypeRequest.md)| request | |
+
+### Return type
+
+ApiResponse<[**ContactLinkType**](ContactLinkType.md)>
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **500** | Internal Server Error |  -  |
+
+
+## deleteContact
+
+> void deleteContact(contactId)
 
 Delete a Contact
 
@@ -335,9 +335,9 @@ public class Example {
         ContactApi apiInstance = new ContactApi(defaultClient);
         String contactId = "contactId_example"; // String | contact_id
         try {
-            apiInstance.deleteContactUsingDELETE1(contactId);
+            apiInstance.deleteContact(contactId);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ContactApi#deleteContactUsingDELETE1");
+            System.err.println("Exception when calling ContactApi#deleteContact");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -377,9 +377,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## deleteContactUsingDELETE1WithHttpInfo
+## deleteContactWithHttpInfo
 
-> ApiResponse<Void> deleteContactUsingDELETE1 deleteContactUsingDELETE1WithHttpInfo(contactId)
+> ApiResponse<Void> deleteContact deleteContactWithHttpInfo(contactId)
 
 Delete a Contact
 
@@ -404,11 +404,11 @@ public class Example {
         ContactApi apiInstance = new ContactApi(defaultClient);
         String contactId = "contactId_example"; // String | contact_id
         try {
-            ApiResponse<Void> response = apiInstance.deleteContactUsingDELETE1WithHttpInfo(contactId);
+            ApiResponse<Void> response = apiInstance.deleteContactWithHttpInfo(contactId);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
-            System.err.println("Exception when calling ContactApi#deleteContactUsingDELETE1");
+            System.err.println("Exception when calling ContactApi#deleteContact");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -449,9 +449,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## getContactUsingGET1
+## getContact
 
-> Contact getContactUsingGET1(contactId, fields)
+> Contact getContact(contactId, fields)
 
 Retrieve a Contact
 
@@ -476,10 +476,10 @@ public class Example {
         String contactId = "contactId_example"; // String | contact_id
         List<String> fields = Arrays.asList(); // List<String> | Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
         try {
-            Contact result = apiInstance.getContactUsingGET1(contactId, fields);
+            Contact result = apiInstance.getContact(contactId, fields);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ContactApi#getContactUsingGET1");
+            System.err.println("Exception when calling ContactApi#getContact");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -520,9 +520,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## getContactUsingGET1WithHttpInfo
+## getContactWithHttpInfo
 
-> ApiResponse<Contact> getContactUsingGET1 getContactUsingGET1WithHttpInfo(contactId, fields)
+> ApiResponse<Contact> getContact getContactWithHttpInfo(contactId, fields)
 
 Retrieve a Contact
 
@@ -548,12 +548,12 @@ public class Example {
         String contactId = "contactId_example"; // String | contact_id
         List<String> fields = Arrays.asList(); // List<String> | Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
         try {
-            ApiResponse<Contact> response = apiInstance.getContactUsingGET1WithHttpInfo(contactId, fields);
+            ApiResponse<Contact> response = apiInstance.getContactWithHttpInfo(contactId, fields);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling ContactApi#getContactUsingGET1");
+            System.err.println("Exception when calling ContactApi#getContact");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -595,9 +595,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## linkContactsUsingPOST
+## linkContacts
 
-> ContactLink linkContactsUsingPOST(linkContactsRequest)
+> ContactLink linkContacts(linkContactsRequest)
 
 Link Contacts
 
@@ -621,10 +621,10 @@ public class Example {
         ContactApi apiInstance = new ContactApi(defaultClient);
         LinkContactsRequest linkContactsRequest = new LinkContactsRequest(); // LinkContactsRequest | linkContactsRequest
         try {
-            ContactLink result = apiInstance.linkContactsUsingPOST(linkContactsRequest);
+            ContactLink result = apiInstance.linkContacts(linkContactsRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ContactApi#linkContactsUsingPOST");
+            System.err.println("Exception when calling ContactApi#linkContacts");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -663,9 +663,9 @@ No authorization required
 | **403** | Forbidden |  -  |
 | **500** | Internal Server Error |  -  |
 
-## linkContactsUsingPOSTWithHttpInfo
+## linkContactsWithHttpInfo
 
-> ApiResponse<ContactLink> linkContactsUsingPOST linkContactsUsingPOSTWithHttpInfo(linkContactsRequest)
+> ApiResponse<ContactLink> linkContacts linkContactsWithHttpInfo(linkContactsRequest)
 
 Link Contacts
 
@@ -690,12 +690,12 @@ public class Example {
         ContactApi apiInstance = new ContactApi(defaultClient);
         LinkContactsRequest linkContactsRequest = new LinkContactsRequest(); // LinkContactsRequest | linkContactsRequest
         try {
-            ApiResponse<ContactLink> response = apiInstance.linkContactsUsingPOSTWithHttpInfo(linkContactsRequest);
+            ApiResponse<ContactLink> response = apiInstance.linkContactsWithHttpInfo(linkContactsRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling ContactApi#linkContactsUsingPOST");
+            System.err.println("Exception when calling ContactApi#linkContacts");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -735,9 +735,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## listContactLinkTypesUsingGET
+## listContactLinkTypes
 
-> ListContactLinkTypesResponse listContactLinkTypesUsingGET(filter, orderBy, pageSize, pageToken)
+> ListContactLinkTypesResponse listContactLinkTypes(filter, orderBy, pageSize, pageToken)
 
 List Contact Link types
 
@@ -759,15 +759,15 @@ public class Example {
         defaultClient.setBasePath("https://api.keap.com/crm/rest");
 
         ContactApi apiInstance = new ContactApi(defaultClient);
-        String filter = "name"; // String | Search filter to apply to results. Formatted as (unencoded) ?filter=name==expectedValue
-        String orderBy = "orderBy_example"; // String | 
-        Integer pageSize = 56; // Integer | 
-        String pageToken = "pageToken_example"; // String | 
+        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `name` You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=name%3D%3DexpectedValue` 
+        String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `name` - `max_links` - `create_time`  One of the following directions: - `asc` - `desc` 
+        Integer pageSize = 0; // Integer | Total number of items to return per page
+        String pageToken = "pageToken_example"; // String | Page token
         try {
-            ListContactLinkTypesResponse result = apiInstance.listContactLinkTypesUsingGET(filter, orderBy, pageSize, pageToken);
+            ListContactLinkTypesResponse result = apiInstance.listContactLinkTypes(filter, orderBy, pageSize, pageToken);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ContactApi#listContactLinkTypesUsingGET");
+            System.err.println("Exception when calling ContactApi#listContactLinkTypes");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -782,10 +782,10 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **filter** | **String**| Search filter to apply to results. Formatted as (unencoded) ?filter&#x3D;name&#x3D;&#x3D;expectedValue | [optional] [enum: name] |
-| **orderBy** | **String**|  | [optional] |
-| **pageSize** | **Integer**|  | [optional] |
-| **pageToken** | **String**|  | [optional] |
+| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;name&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3DexpectedValue&#x60;  | [optional] |
+| **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;max_links&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  | [optional] |
+| **pageSize** | **Integer**| Total number of items to return per page | [optional] |
+| **pageToken** | **String**| Page token | [optional] |
 
 ### Return type
 
@@ -810,9 +810,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## listContactLinkTypesUsingGETWithHttpInfo
+## listContactLinkTypesWithHttpInfo
 
-> ApiResponse<ListContactLinkTypesResponse> listContactLinkTypesUsingGET listContactLinkTypesUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken)
+> ApiResponse<ListContactLinkTypesResponse> listContactLinkTypes listContactLinkTypesWithHttpInfo(filter, orderBy, pageSize, pageToken)
 
 List Contact Link types
 
@@ -835,17 +835,17 @@ public class Example {
         defaultClient.setBasePath("https://api.keap.com/crm/rest");
 
         ContactApi apiInstance = new ContactApi(defaultClient);
-        String filter = "name"; // String | Search filter to apply to results. Formatted as (unencoded) ?filter=name==expectedValue
-        String orderBy = "orderBy_example"; // String | 
-        Integer pageSize = 56; // Integer | 
-        String pageToken = "pageToken_example"; // String | 
+        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `name` You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=name%3D%3DexpectedValue` 
+        String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `name` - `max_links` - `create_time`  One of the following directions: - `asc` - `desc` 
+        Integer pageSize = 0; // Integer | Total number of items to return per page
+        String pageToken = "pageToken_example"; // String | Page token
         try {
-            ApiResponse<ListContactLinkTypesResponse> response = apiInstance.listContactLinkTypesUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken);
+            ApiResponse<ListContactLinkTypesResponse> response = apiInstance.listContactLinkTypesWithHttpInfo(filter, orderBy, pageSize, pageToken);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling ContactApi#listContactLinkTypesUsingGET");
+            System.err.println("Exception when calling ContactApi#listContactLinkTypes");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -860,10 +860,10 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **filter** | **String**| Search filter to apply to results. Formatted as (unencoded) ?filter&#x3D;name&#x3D;&#x3D;expectedValue | [optional] [enum: name] |
-| **orderBy** | **String**|  | [optional] |
-| **pageSize** | **Integer**|  | [optional] |
-| **pageToken** | **String**|  | [optional] |
+| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;name&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3DexpectedValue&#x60;  | [optional] |
+| **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;max_links&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  | [optional] |
+| **pageSize** | **Integer**| Total number of items to return per page | [optional] |
+| **pageToken** | **String**| Page token | [optional] |
 
 ### Return type
 
@@ -889,9 +889,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## listContactLinksUsingGET
+## listContactLinks
 
-> ListContactLinksResponse listContactLinksUsingGET(contactId)
+> ListContactLinksResponse listContactLinks(contactId)
 
 List Linked Contacts
 
@@ -915,10 +915,10 @@ public class Example {
         ContactApi apiInstance = new ContactApi(defaultClient);
         String contactId = "contactId_example"; // String | contact_id
         try {
-            ListContactLinksResponse result = apiInstance.listContactLinksUsingGET(contactId);
+            ListContactLinksResponse result = apiInstance.listContactLinks(contactId);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ContactApi#listContactLinksUsingGET");
+            System.err.println("Exception when calling ContactApi#listContactLinks");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -958,9 +958,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## listContactLinksUsingGETWithHttpInfo
+## listContactLinksWithHttpInfo
 
-> ApiResponse<ListContactLinksResponse> listContactLinksUsingGET listContactLinksUsingGETWithHttpInfo(contactId)
+> ApiResponse<ListContactLinksResponse> listContactLinks listContactLinksWithHttpInfo(contactId)
 
 List Linked Contacts
 
@@ -985,12 +985,12 @@ public class Example {
         ContactApi apiInstance = new ContactApi(defaultClient);
         String contactId = "contactId_example"; // String | contact_id
         try {
-            ApiResponse<ListContactLinksResponse> response = apiInstance.listContactLinksUsingGETWithHttpInfo(contactId);
+            ApiResponse<ListContactLinksResponse> response = apiInstance.listContactLinksWithHttpInfo(contactId);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling ContactApi#listContactLinksUsingGET");
+            System.err.println("Exception when calling ContactApi#listContactLinks");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -1031,9 +1031,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## listContactsUsingGET1
+## listContacts
 
-> ListContactsResponse listContactsUsingGET1(fields, filter, orderBy, pageSize, pageToken)
+> ListContactsResponse listContacts(fields, filter, orderBy, pageSize, pageToken)
 
 List Contacts
 
@@ -1061,10 +1061,10 @@ public class Example {
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
         try {
-            ListContactsResponse result = apiInstance.listContactsUsingGET1(fields, filter, orderBy, pageSize, pageToken);
+            ListContactsResponse result = apiInstance.listContacts(fields, filter, orderBy, pageSize, pageToken);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ContactApi#listContactsUsingGET1");
+            System.err.println("Exception when calling ContactApi#listContacts");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -1108,9 +1108,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## listContactsUsingGET1WithHttpInfo
+## listContactsWithHttpInfo
 
-> ApiResponse<ListContactsResponse> listContactsUsingGET1 listContactsUsingGET1WithHttpInfo(fields, filter, orderBy, pageSize, pageToken)
+> ApiResponse<ListContactsResponse> listContacts listContactsWithHttpInfo(fields, filter, orderBy, pageSize, pageToken)
 
 List Contacts
 
@@ -1139,12 +1139,12 @@ public class Example {
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
         try {
-            ApiResponse<ListContactsResponse> response = apiInstance.listContactsUsingGET1WithHttpInfo(fields, filter, orderBy, pageSize, pageToken);
+            ApiResponse<ListContactsResponse> response = apiInstance.listContactsWithHttpInfo(fields, filter, orderBy, pageSize, pageToken);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling ContactApi#listContactsUsingGET1");
+            System.err.println("Exception when calling ContactApi#listContacts");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -1189,9 +1189,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## retrieveContactModelUsingGET1
+## retrieveContactModel
 
-> ObjectModel retrieveContactModelUsingGET1()
+> ObjectModel retrieveContactModel()
 
 Retrieve Contact Model
 
@@ -1214,10 +1214,10 @@ public class Example {
 
         ContactApi apiInstance = new ContactApi(defaultClient);
         try {
-            ObjectModel result = apiInstance.retrieveContactModelUsingGET1();
+            ObjectModel result = apiInstance.retrieveContactModel();
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ContactApi#retrieveContactModelUsingGET1");
+            System.err.println("Exception when calling ContactApi#retrieveContactModel");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -1254,9 +1254,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## retrieveContactModelUsingGET1WithHttpInfo
+## retrieveContactModelWithHttpInfo
 
-> ApiResponse<ObjectModel> retrieveContactModelUsingGET1 retrieveContactModelUsingGET1WithHttpInfo()
+> ApiResponse<ObjectModel> retrieveContactModel retrieveContactModelWithHttpInfo()
 
 Retrieve Contact Model
 
@@ -1280,12 +1280,12 @@ public class Example {
 
         ContactApi apiInstance = new ContactApi(defaultClient);
         try {
-            ApiResponse<ObjectModel> response = apiInstance.retrieveContactModelUsingGET1WithHttpInfo();
+            ApiResponse<ObjectModel> response = apiInstance.retrieveContactModelWithHttpInfo();
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling ContactApi#retrieveContactModelUsingGET1");
+            System.err.println("Exception when calling ContactApi#retrieveContactModel");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -1323,9 +1323,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## unlinkContactsUsingPOST
+## unlinkContacts
 
-> void unlinkContactsUsingPOST(linkContactsRequest)
+> void unlinkContacts(linkContactsRequest)
 
 Delete Link between two Contacts
 
@@ -1349,9 +1349,9 @@ public class Example {
         ContactApi apiInstance = new ContactApi(defaultClient);
         LinkContactsRequest linkContactsRequest = new LinkContactsRequest(); // LinkContactsRequest | linkContactsRequest
         try {
-            apiInstance.unlinkContactsUsingPOST(linkContactsRequest);
+            apiInstance.unlinkContacts(linkContactsRequest);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ContactApi#unlinkContactsUsingPOST");
+            System.err.println("Exception when calling ContactApi#unlinkContacts");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -1390,9 +1390,9 @@ No authorization required
 | **403** | Forbidden |  -  |
 | **500** | Internal Server Error |  -  |
 
-## unlinkContactsUsingPOSTWithHttpInfo
+## unlinkContactsWithHttpInfo
 
-> ApiResponse<Void> unlinkContactsUsingPOST unlinkContactsUsingPOSTWithHttpInfo(linkContactsRequest)
+> ApiResponse<Void> unlinkContacts unlinkContactsWithHttpInfo(linkContactsRequest)
 
 Delete Link between two Contacts
 
@@ -1417,11 +1417,11 @@ public class Example {
         ContactApi apiInstance = new ContactApi(defaultClient);
         LinkContactsRequest linkContactsRequest = new LinkContactsRequest(); // LinkContactsRequest | linkContactsRequest
         try {
-            ApiResponse<Void> response = apiInstance.unlinkContactsUsingPOSTWithHttpInfo(linkContactsRequest);
+            ApiResponse<Void> response = apiInstance.unlinkContactsWithHttpInfo(linkContactsRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
-            System.err.println("Exception when calling ContactApi#unlinkContactsUsingPOST");
+            System.err.println("Exception when calling ContactApi#unlinkContacts");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -1461,9 +1461,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## updateContactUsingPATCH
+## updateContact
 
-> Contact updateContactUsingPATCH(contactId, updateMask, createUpdateContactRequest)
+> Contact updateContact(contactId, updateMask, createUpdateContactRequest)
 
 Update a Contact
 
@@ -1489,10 +1489,10 @@ public class Example {
         List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         CreateUpdateContactRequest createUpdateContactRequest = new CreateUpdateContactRequest(); // CreateUpdateContactRequest | contact
         try {
-            Contact result = apiInstance.updateContactUsingPATCH(contactId, updateMask, createUpdateContactRequest);
+            Contact result = apiInstance.updateContact(contactId, updateMask, createUpdateContactRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ContactApi#updateContactUsingPATCH");
+            System.err.println("Exception when calling ContactApi#updateContact");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -1534,9 +1534,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## updateContactUsingPATCHWithHttpInfo
+## updateContactWithHttpInfo
 
-> ApiResponse<Contact> updateContactUsingPATCH updateContactUsingPATCHWithHttpInfo(contactId, updateMask, createUpdateContactRequest)
+> ApiResponse<Contact> updateContact updateContactWithHttpInfo(contactId, updateMask, createUpdateContactRequest)
 
 Update a Contact
 
@@ -1563,12 +1563,12 @@ public class Example {
         List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         CreateUpdateContactRequest createUpdateContactRequest = new CreateUpdateContactRequest(); // CreateUpdateContactRequest | contact
         try {
-            ApiResponse<Contact> response = apiInstance.updateContactUsingPATCHWithHttpInfo(contactId, updateMask, createUpdateContactRequest);
+            ApiResponse<Contact> response = apiInstance.updateContactWithHttpInfo(contactId, updateMask, createUpdateContactRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling ContactApi#updateContactUsingPATCH");
+            System.err.println("Exception when calling ContactApi#updateContact");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());

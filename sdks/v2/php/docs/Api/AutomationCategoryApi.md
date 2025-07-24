@@ -4,17 +4,16 @@ All URIs are relative to https://api.keap.com/crm/rest, except if the operation 
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createCategoryUsingPOST()**](AutomationCategoryApi.md#createCategoryUsingPOST) | **POST** /v2/automationCategory | Create automation category |
-| [**deleteCategoriesUsingDELETE()**](AutomationCategoryApi.md#deleteCategoriesUsingDELETE) | **DELETE** /v2/automationCategory | Delete automation category |
-| [**listCategoriesUsingGET()**](AutomationCategoryApi.md#listCategoriesUsingGET) | **GET** /v2/automationCategory | List automation categories |
-| [**patchCategoryUsingPATCH()**](AutomationCategoryApi.md#patchCategoryUsingPATCH) | **PATCH** /v2/automationCategory/{id} | Update automation category |
-| [**saveCategoryUsingPUT()**](AutomationCategoryApi.md#saveCategoryUsingPUT) | **PUT** /v2/automationCategory | Save automation category |
+| [**createCategory()**](AutomationCategoryApi.md#createCategory) | **POST** /v2/automationCategory | Create automation category |
+| [**deleteCategories()**](AutomationCategoryApi.md#deleteCategories) | **DELETE** /v2/automationCategory | Delete automation category |
+| [**listCategories()**](AutomationCategoryApi.md#listCategories) | **GET** /v2/automationCategory | List automation categories |
+| [**patchCategory()**](AutomationCategoryApi.md#patchCategory) | **PATCH** /v2/automationCategory/{id} | Update automation category |
 
 
-## `createCategoryUsingPOST()`
+## `createCategory()`
 
 ```php
-createCategoryUsingPOST($create_automation_category_request): \Keap\Core\V2\Model\AutomationCategory
+createCategory($create_automation_category_request): \Keap\Core\V2\Model\AutomationCategory
 ```
 
 Create automation category
@@ -36,10 +35,10 @@ $apiInstance = new Keap\Core\V2\Api\AutomationCategoryApi(
 $create_automation_category_request = new \Keap\Core\V2\Model\CreateAutomationCategoryRequest(); // \Keap\Core\V2\Model\CreateAutomationCategoryRequest | createAutomationCategoryRequest
 
 try {
-    $result = $apiInstance->createCategoryUsingPOST($create_automation_category_request);
+    $result = $apiInstance->createCategory($create_automation_category_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AutomationCategoryApi->createCategoryUsingPOST: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AutomationCategoryApi->createCategory: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -66,10 +65,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `deleteCategoriesUsingDELETE()`
+## `deleteCategories()`
 
 ```php
-deleteCategoriesUsingDELETE($ids)
+deleteCategories($ids)
 ```
 
 Delete automation category
@@ -91,9 +90,9 @@ $apiInstance = new Keap\Core\V2\Api\AutomationCategoryApi(
 $ids = array(56); // int[] | ids
 
 try {
-    $apiInstance->deleteCategoriesUsingDELETE($ids);
+    $apiInstance->deleteCategories($ids);
 } catch (Exception $e) {
-    echo 'Exception when calling AutomationCategoryApi->deleteCategoriesUsingDELETE: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AutomationCategoryApi->deleteCategories: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -120,10 +119,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `listCategoriesUsingGET()`
+## `listCategories()`
 
 ```php
-listCategoriesUsingGET(): \Keap\Core\V2\Model\ListAutomationCategoryResponse
+listCategories(): \Keap\Core\V2\Model\ListAutomationCategoryResponse
 ```
 
 List automation categories
@@ -144,10 +143,10 @@ $apiInstance = new Keap\Core\V2\Api\AutomationCategoryApi(
 );
 
 try {
-    $result = $apiInstance->listCategoriesUsingGET();
+    $result = $apiInstance->listCategories();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AutomationCategoryApi->listCategoriesUsingGET: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AutomationCategoryApi->listCategories: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -172,10 +171,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `patchCategoryUsingPATCH()`
+## `patchCategory()`
 
 ```php
-patchCategoryUsingPATCH($id, $patch_automation_category_request): \Keap\Core\V2\Model\AutomationCategory
+patchCategory($id, $patch_automation_category_request): \Keap\Core\V2\Model\AutomationCategory
 ```
 
 Update automation category
@@ -198,10 +197,10 @@ $id = 'id_example'; // string | id
 $patch_automation_category_request = new \Keap\Core\V2\Model\PatchAutomationCategoryRequest(); // \Keap\Core\V2\Model\PatchAutomationCategoryRequest | patchAutomationCategoryRequest
 
 try {
-    $result = $apiInstance->patchCategoryUsingPATCH($id, $patch_automation_category_request);
+    $result = $apiInstance->patchCategory($id, $patch_automation_category_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AutomationCategoryApi->patchCategoryUsingPATCH: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AutomationCategoryApi->patchCategory: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -211,61 +210,6 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **string**| id | |
 | **patch_automation_category_request** | [**\Keap\Core\V2\Model\PatchAutomationCategoryRequest**](../Model/PatchAutomationCategoryRequest.md)| patchAutomationCategoryRequest | |
-
-### Return type
-
-[**\Keap\Core\V2\Model\AutomationCategory**](../Model/AutomationCategory.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `saveCategoryUsingPUT()`
-
-```php
-saveCategoryUsingPUT($save_automation_category_request): \Keap\Core\V2\Model\AutomationCategory
-```
-
-Save automation category
-
-Creates or updates a single automation category
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-$apiInstance = new Keap\Core\V2\Api\AutomationCategoryApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
-);
-$save_automation_category_request = new \Keap\Core\V2\Model\SaveAutomationCategoryRequest(); // \Keap\Core\V2\Model\SaveAutomationCategoryRequest | saveAutomationCategoryRequest
-
-try {
-    $result = $apiInstance->saveCategoryUsingPUT($save_automation_category_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling AutomationCategoryApi->saveCategoryUsingPUT: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **save_automation_category_request** | [**\Keap\Core\V2\Model\SaveAutomationCategoryRequest**](../Model/SaveAutomationCategoryRequest.md)| saveAutomationCategoryRequest | |
 
 ### Return type
 

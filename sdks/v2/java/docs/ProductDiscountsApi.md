@@ -4,22 +4,22 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createDiscountUsingPOST2**](ProductDiscountsApi.md#createDiscountUsingPOST2) | **POST** /v2/discounts/products | Create a Product Discount |
-| [**createDiscountUsingPOST2WithHttpInfo**](ProductDiscountsApi.md#createDiscountUsingPOST2WithHttpInfo) | **POST** /v2/discounts/products | Create a Product Discount |
-| [**deleteDiscountUsingDELETE2**](ProductDiscountsApi.md#deleteDiscountUsingDELETE2) | **DELETE** /v2/discounts/products/{discount_id} | Delete a Product Discount |
-| [**deleteDiscountUsingDELETE2WithHttpInfo**](ProductDiscountsApi.md#deleteDiscountUsingDELETE2WithHttpInfo) | **DELETE** /v2/discounts/products/{discount_id} | Delete a Product Discount |
-| [**getDiscountUsingGET2**](ProductDiscountsApi.md#getDiscountUsingGET2) | **GET** /v2/discounts/products/{discount_id} | Retrieve a Product Discount |
-| [**getDiscountUsingGET2WithHttpInfo**](ProductDiscountsApi.md#getDiscountUsingGET2WithHttpInfo) | **GET** /v2/discounts/products/{discount_id} | Retrieve a Product Discount |
-| [**listDiscountsUsingGET**](ProductDiscountsApi.md#listDiscountsUsingGET) | **GET** /v2/discounts/products | List all Product Discounts |
-| [**listDiscountsUsingGETWithHttpInfo**](ProductDiscountsApi.md#listDiscountsUsingGETWithHttpInfo) | **GET** /v2/discounts/products | List all Product Discounts |
-| [**updateDiscountUsingPATCH2**](ProductDiscountsApi.md#updateDiscountUsingPATCH2) | **PATCH** /v2/discounts/products/{discount_id} | Update a Product Discount |
-| [**updateDiscountUsingPATCH2WithHttpInfo**](ProductDiscountsApi.md#updateDiscountUsingPATCH2WithHttpInfo) | **PATCH** /v2/discounts/products/{discount_id} | Update a Product Discount |
+| [**createProductDiscount**](ProductDiscountsApi.md#createProductDiscount) | **POST** /v2/discounts/products | Create a Product Discount |
+| [**createProductDiscountWithHttpInfo**](ProductDiscountsApi.md#createProductDiscountWithHttpInfo) | **POST** /v2/discounts/products | Create a Product Discount |
+| [**deleteProductDiscount**](ProductDiscountsApi.md#deleteProductDiscount) | **DELETE** /v2/discounts/products/{discount_id} | Delete a Product Discount |
+| [**deleteProductDiscountWithHttpInfo**](ProductDiscountsApi.md#deleteProductDiscountWithHttpInfo) | **DELETE** /v2/discounts/products/{discount_id} | Delete a Product Discount |
+| [**getProductDiscount**](ProductDiscountsApi.md#getProductDiscount) | **GET** /v2/discounts/products/{discount_id} | Retrieve a Product Discount |
+| [**getProductDiscountWithHttpInfo**](ProductDiscountsApi.md#getProductDiscountWithHttpInfo) | **GET** /v2/discounts/products/{discount_id} | Retrieve a Product Discount |
+| [**listProductDiscounts**](ProductDiscountsApi.md#listProductDiscounts) | **GET** /v2/discounts/products | List all Product Discounts |
+| [**listProductDiscountsWithHttpInfo**](ProductDiscountsApi.md#listProductDiscountsWithHttpInfo) | **GET** /v2/discounts/products | List all Product Discounts |
+| [**updateProductDiscount**](ProductDiscountsApi.md#updateProductDiscount) | **PATCH** /v2/discounts/products/{discount_id} | Update a Product Discount |
+| [**updateProductDiscountWithHttpInfo**](ProductDiscountsApi.md#updateProductDiscountWithHttpInfo) | **PATCH** /v2/discounts/products/{discount_id} | Update a Product Discount |
 
 
 
-## createDiscountUsingPOST2
+## createProductDiscount
 
-> ProductDiscount createDiscountUsingPOST2(createProductDiscountRequest)
+> ProductDiscount createProductDiscount(createProductDiscountRequest)
 
 Create a Product Discount
 
@@ -43,10 +43,10 @@ public class Example {
         ProductDiscountsApi apiInstance = new ProductDiscountsApi(defaultClient);
         CreateProductDiscountRequest createProductDiscountRequest = new CreateProductDiscountRequest(); // CreateProductDiscountRequest | request
         try {
-            ProductDiscount result = apiInstance.createDiscountUsingPOST2(createProductDiscountRequest);
+            ProductDiscount result = apiInstance.createProductDiscount(createProductDiscountRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ProductDiscountsApi#createDiscountUsingPOST2");
+            System.err.println("Exception when calling ProductDiscountsApi#createProductDiscount");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -85,9 +85,9 @@ No authorization required
 | **403** | Forbidden |  -  |
 | **500** | Internal Server Error |  -  |
 
-## createDiscountUsingPOST2WithHttpInfo
+## createProductDiscountWithHttpInfo
 
-> ApiResponse<ProductDiscount> createDiscountUsingPOST2 createDiscountUsingPOST2WithHttpInfo(createProductDiscountRequest)
+> ApiResponse<ProductDiscount> createProductDiscount createProductDiscountWithHttpInfo(createProductDiscountRequest)
 
 Create a Product Discount
 
@@ -112,12 +112,12 @@ public class Example {
         ProductDiscountsApi apiInstance = new ProductDiscountsApi(defaultClient);
         CreateProductDiscountRequest createProductDiscountRequest = new CreateProductDiscountRequest(); // CreateProductDiscountRequest | request
         try {
-            ApiResponse<ProductDiscount> response = apiInstance.createDiscountUsingPOST2WithHttpInfo(createProductDiscountRequest);
+            ApiResponse<ProductDiscount> response = apiInstance.createProductDiscountWithHttpInfo(createProductDiscountRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling ProductDiscountsApi#createDiscountUsingPOST2");
+            System.err.println("Exception when calling ProductDiscountsApi#createProductDiscount");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -157,9 +157,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## deleteDiscountUsingDELETE2
+## deleteProductDiscount
 
-> void deleteDiscountUsingDELETE2(discountId)
+> void deleteProductDiscount(discountId)
 
 Delete a Product Discount
 
@@ -183,9 +183,9 @@ public class Example {
         ProductDiscountsApi apiInstance = new ProductDiscountsApi(defaultClient);
         String discountId = "discountId_example"; // String | discount_id
         try {
-            apiInstance.deleteDiscountUsingDELETE2(discountId);
+            apiInstance.deleteProductDiscount(discountId);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ProductDiscountsApi#deleteDiscountUsingDELETE2");
+            System.err.println("Exception when calling ProductDiscountsApi#deleteProductDiscount");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -225,9 +225,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## deleteDiscountUsingDELETE2WithHttpInfo
+## deleteProductDiscountWithHttpInfo
 
-> ApiResponse<Void> deleteDiscountUsingDELETE2 deleteDiscountUsingDELETE2WithHttpInfo(discountId)
+> ApiResponse<Void> deleteProductDiscount deleteProductDiscountWithHttpInfo(discountId)
 
 Delete a Product Discount
 
@@ -252,11 +252,11 @@ public class Example {
         ProductDiscountsApi apiInstance = new ProductDiscountsApi(defaultClient);
         String discountId = "discountId_example"; // String | discount_id
         try {
-            ApiResponse<Void> response = apiInstance.deleteDiscountUsingDELETE2WithHttpInfo(discountId);
+            ApiResponse<Void> response = apiInstance.deleteProductDiscountWithHttpInfo(discountId);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
-            System.err.println("Exception when calling ProductDiscountsApi#deleteDiscountUsingDELETE2");
+            System.err.println("Exception when calling ProductDiscountsApi#deleteProductDiscount");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -297,9 +297,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## getDiscountUsingGET2
+## getProductDiscount
 
-> ProductDiscount getDiscountUsingGET2(discountId)
+> ProductDiscount getProductDiscount(discountId)
 
 Retrieve a Product Discount
 
@@ -323,10 +323,10 @@ public class Example {
         ProductDiscountsApi apiInstance = new ProductDiscountsApi(defaultClient);
         String discountId = "discountId_example"; // String | discount_id
         try {
-            ProductDiscount result = apiInstance.getDiscountUsingGET2(discountId);
+            ProductDiscount result = apiInstance.getProductDiscount(discountId);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ProductDiscountsApi#getDiscountUsingGET2");
+            System.err.println("Exception when calling ProductDiscountsApi#getProductDiscount");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -366,9 +366,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## getDiscountUsingGET2WithHttpInfo
+## getProductDiscountWithHttpInfo
 
-> ApiResponse<ProductDiscount> getDiscountUsingGET2 getDiscountUsingGET2WithHttpInfo(discountId)
+> ApiResponse<ProductDiscount> getProductDiscount getProductDiscountWithHttpInfo(discountId)
 
 Retrieve a Product Discount
 
@@ -393,12 +393,12 @@ public class Example {
         ProductDiscountsApi apiInstance = new ProductDiscountsApi(defaultClient);
         String discountId = "discountId_example"; // String | discount_id
         try {
-            ApiResponse<ProductDiscount> response = apiInstance.getDiscountUsingGET2WithHttpInfo(discountId);
+            ApiResponse<ProductDiscount> response = apiInstance.getProductDiscountWithHttpInfo(discountId);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling ProductDiscountsApi#getDiscountUsingGET2");
+            System.err.println("Exception when calling ProductDiscountsApi#getProductDiscount");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -439,9 +439,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## listDiscountsUsingGET
+## listProductDiscounts
 
-> ListProductDiscountsResponse listDiscountsUsingGET(filter, orderBy, pageSize, pageToken)
+> ListProductDiscountsResponse listProductDiscounts(filter, orderBy, pageSize, pageToken)
 
 List all Product Discounts
 
@@ -464,14 +464,14 @@ public class Example {
 
         ProductDiscountsApi apiInstance = new ProductDiscountsApi(defaultClient);
         String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (Boolean) `apply_to_commissions` - (DiscountType) `discount_type`: AMOUNT or PERCENT - (Double) `discount_value` - (String) `product_id`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=apply_to_commissions%3D%3Dtrue` - `filter=discount_type%3D%3DAMOUNT` - `filter=discount_value%3D%3D10.0` - `filter=product_id%3D%3D2` - `filter=discount_type%3D%3DAMOUNT%3Bdiscount_value%3D%3D10.0` 
-        String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `apply_to_commissions` - `discount_type` - `discount_value` - `id` - `product_id`  One of the following directions: - `asc` - `desc`
+        String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `apply_to_commissions` - `discount_type` - `discount_value` - `id` - `name` - `product_id`  One of the following directions: - `asc` - `desc`
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
         try {
-            ListProductDiscountsResponse result = apiInstance.listDiscountsUsingGET(filter, orderBy, pageSize, pageToken);
+            ListProductDiscountsResponse result = apiInstance.listProductDiscounts(filter, orderBy, pageSize, pageToken);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ProductDiscountsApi#listDiscountsUsingGET");
+            System.err.println("Exception when calling ProductDiscountsApi#listProductDiscounts");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -487,7 +487,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **filter** | **String**| Filter to apply, allowed fields are: - (Boolean) &#x60;apply_to_commissions&#x60; - (DiscountType) &#x60;discount_type&#x60;: AMOUNT or PERCENT - (Double) &#x60;discount_value&#x60; - (String) &#x60;product_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;apply_to_commissions%3D%3Dtrue&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT&#x60; - &#x60;filter&#x3D;discount_value%3D%3D10.0&#x60; - &#x60;filter&#x3D;product_id%3D%3D2&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT%3Bdiscount_value%3D%3D10.0&#x60;  | [optional] |
-| **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;apply_to_commissions&#x60; - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60; - &#x60;product_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
+| **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;apply_to_commissions&#x60; - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60; - &#x60;name&#x60; - &#x60;product_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **pageSize** | **Integer**| Total number of items to return per page | [optional] |
 | **pageToken** | **String**| Page token | [optional] |
 
@@ -514,9 +514,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## listDiscountsUsingGETWithHttpInfo
+## listProductDiscountsWithHttpInfo
 
-> ApiResponse<ListProductDiscountsResponse> listDiscountsUsingGET listDiscountsUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken)
+> ApiResponse<ListProductDiscountsResponse> listProductDiscounts listProductDiscountsWithHttpInfo(filter, orderBy, pageSize, pageToken)
 
 List all Product Discounts
 
@@ -540,16 +540,16 @@ public class Example {
 
         ProductDiscountsApi apiInstance = new ProductDiscountsApi(defaultClient);
         String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (Boolean) `apply_to_commissions` - (DiscountType) `discount_type`: AMOUNT or PERCENT - (Double) `discount_value` - (String) `product_id`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=apply_to_commissions%3D%3Dtrue` - `filter=discount_type%3D%3DAMOUNT` - `filter=discount_value%3D%3D10.0` - `filter=product_id%3D%3D2` - `filter=discount_type%3D%3DAMOUNT%3Bdiscount_value%3D%3D10.0` 
-        String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `apply_to_commissions` - `discount_type` - `discount_value` - `id` - `product_id`  One of the following directions: - `asc` - `desc`
+        String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `apply_to_commissions` - `discount_type` - `discount_value` - `id` - `name` - `product_id`  One of the following directions: - `asc` - `desc`
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
         try {
-            ApiResponse<ListProductDiscountsResponse> response = apiInstance.listDiscountsUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken);
+            ApiResponse<ListProductDiscountsResponse> response = apiInstance.listProductDiscountsWithHttpInfo(filter, orderBy, pageSize, pageToken);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling ProductDiscountsApi#listDiscountsUsingGET");
+            System.err.println("Exception when calling ProductDiscountsApi#listProductDiscounts");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -565,7 +565,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **filter** | **String**| Filter to apply, allowed fields are: - (Boolean) &#x60;apply_to_commissions&#x60; - (DiscountType) &#x60;discount_type&#x60;: AMOUNT or PERCENT - (Double) &#x60;discount_value&#x60; - (String) &#x60;product_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;apply_to_commissions%3D%3Dtrue&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT&#x60; - &#x60;filter&#x3D;discount_value%3D%3D10.0&#x60; - &#x60;filter&#x3D;product_id%3D%3D2&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT%3Bdiscount_value%3D%3D10.0&#x60;  | [optional] |
-| **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;apply_to_commissions&#x60; - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60; - &#x60;product_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
+| **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;apply_to_commissions&#x60; - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60; - &#x60;name&#x60; - &#x60;product_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **pageSize** | **Integer**| Total number of items to return per page | [optional] |
 | **pageToken** | **String**| Page token | [optional] |
 
@@ -593,9 +593,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## updateDiscountUsingPATCH2
+## updateProductDiscount
 
-> ProductDiscount updateDiscountUsingPATCH2(discountId, updateProductDiscountRequest, updateMask)
+> ProductDiscount updateProductDiscount(discountId, updateProductDiscountRequest, updateMask)
 
 Update a Product Discount
 
@@ -621,10 +621,10 @@ public class Example {
         UpdateProductDiscountRequest updateProductDiscountRequest = new UpdateProductDiscountRequest(); // UpdateProductDiscountRequest | request
         List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
-            ProductDiscount result = apiInstance.updateDiscountUsingPATCH2(discountId, updateProductDiscountRequest, updateMask);
+            ProductDiscount result = apiInstance.updateProductDiscount(discountId, updateProductDiscountRequest, updateMask);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ProductDiscountsApi#updateDiscountUsingPATCH2");
+            System.err.println("Exception when calling ProductDiscountsApi#updateProductDiscount");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -666,9 +666,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## updateDiscountUsingPATCH2WithHttpInfo
+## updateProductDiscountWithHttpInfo
 
-> ApiResponse<ProductDiscount> updateDiscountUsingPATCH2 updateDiscountUsingPATCH2WithHttpInfo(discountId, updateProductDiscountRequest, updateMask)
+> ApiResponse<ProductDiscount> updateProductDiscount updateProductDiscountWithHttpInfo(discountId, updateProductDiscountRequest, updateMask)
 
 Update a Product Discount
 
@@ -695,12 +695,12 @@ public class Example {
         UpdateProductDiscountRequest updateProductDiscountRequest = new UpdateProductDiscountRequest(); // UpdateProductDiscountRequest | request
         List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
-            ApiResponse<ProductDiscount> response = apiInstance.updateDiscountUsingPATCH2WithHttpInfo(discountId, updateProductDiscountRequest, updateMask);
+            ApiResponse<ProductDiscount> response = apiInstance.updateProductDiscountWithHttpInfo(discountId, updateProductDiscountRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling ProductDiscountsApi#updateDiscountUsingPATCH2");
+            System.err.println("Exception when calling ProductDiscountsApi#updateProductDiscount");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());

@@ -23,7 +23,6 @@
 |**phoneNumbers** | [**List&lt;PhoneNumber&gt;**](PhoneNumber.md) |  |  [optional] |
 |**socialAccounts** | [**List&lt;SocialAccount&gt;**](SocialAccount.md) |  |  [optional] |
 |**status** | [**StatusEnum**](#StatusEnum) |  |  [optional] |
-|**timeZone** | **String** |  |  [optional] |
 |**title** | **String** |  |  [optional] |
 |**updateTime** | **String** |  |  [optional] |
 |**updatedBy** | **Long** |  |  [optional] |

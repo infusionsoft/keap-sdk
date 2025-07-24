@@ -4,13 +4,13 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**listReportsUsingGET**](ReportingApi.md#listReportsUsingGET) | **GET** /v2/reporting/reports | List Reports
-[**retrieveReportUsingGET**](ReportingApi.md#retrieveReportUsingGET) | **GET** /v2/reporting/reports/{report_id} | Retrieve Report
-[**runReportUsingPOST**](ReportingApi.md#runReportUsingPOST) | **POST** /v2/reporting/reports/{report_id}:run | Run a Report
+[**listReports**](ReportingApi.md#listReports) | **GET** /v2/reporting/reports | List Reports
+[**retrieveReport**](ReportingApi.md#retrieveReport) | **GET** /v2/reporting/reports/{report_id} | Retrieve Report
+[**runReport**](ReportingApi.md#runReport) | **POST** /v2/reporting/reports/{report_id}:run | Run a Report
 
 
-# **listReportsUsingGET**
-> ListReportsResponse listReportsUsingGET()
+# **listReports**
+> ListReportsResponse listReports()
 
 Retrieves a list of Reports as defined in the application (identified as Saved Search)<br/><span style=\'color:red\'>Deprecated as of v2</span>
 
@@ -19,12 +19,12 @@ Retrieves a list of Reports as defined in the application (identified as Saved S
 
 ```typescript
 import { createConfiguration, ReportingApi } from '';
-import type { ReportingApiListReportsUsingGETRequest } from '';
+import type { ReportingApiListReportsRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new ReportingApi(configuration);
 
-const request: ReportingApiListReportsUsingGETRequest = {
+const request: ReportingApiListReportsRequest = {
     // Filter to apply, allowed fields are: - (String) `name` - (DateTime) `since_created_time` - (DateTime) `until_created_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched  word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=given_name%3D%3DMary` - `filter=company_id%3D%3D123` - `filter=company_id%3D%3D123%3Bfamily_name%3D%3DSmith`  (optional)
   filter: "filter_example",
     // Attribute and direction to order items. One of the following fields: - `name` - `created_time`  One of the following directions: - `asc` - `desc` (optional)
@@ -35,7 +35,7 @@ const request: ReportingApiListReportsUsingGETRequest = {
   pageToken: "page_token_example",
 };
 
-const data = await apiInstance.listReportsUsingGET(request);
+const data = await apiInstance.listReports(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -75,8 +75,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **retrieveReportUsingGET**
-> Report retrieveReportUsingGET()
+# **retrieveReport**
+> Report retrieveReport()
 
 Retrieves information about a Report as defined in the application (identified as Saved Search)<br/><span style=\'color:red\'>Deprecated as of v2</span>
 
@@ -85,17 +85,17 @@ Retrieves information about a Report as defined in the application (identified a
 
 ```typescript
 import { createConfiguration, ReportingApi } from '';
-import type { ReportingApiRetrieveReportUsingGETRequest } from '';
+import type { ReportingApiRetrieveReportRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new ReportingApi(configuration);
 
-const request: ReportingApiRetrieveReportUsingGETRequest = {
+const request: ReportingApiRetrieveReportRequest = {
     // report_id
   reportId: "report_id_example",
 };
 
-const data = await apiInstance.retrieveReportUsingGET(request);
+const data = await apiInstance.retrieveReport(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -132,8 +132,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **runReportUsingPOST**
-> ReportExecutionResult runReportUsingPOST()
+# **runReport**
+> ReportExecutionResult runReport()
 
 Runs a report as defined in the application (identified as Saved Search)<br/><span style=\'color:red\'>Deprecated as of v2</span>
 
@@ -142,12 +142,12 @@ Runs a report as defined in the application (identified as Saved Search)<br/><sp
 
 ```typescript
 import { createConfiguration, ReportingApi } from '';
-import type { ReportingApiRunReportUsingPOSTRequest } from '';
+import type { ReportingApiRunReportRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new ReportingApi(configuration);
 
-const request: ReportingApiRunReportUsingPOSTRequest = {
+const request: ReportingApiRunReportRequest = {
     // The unique identifier of the report (Saved Search) to execute
   reportId: "report_id_example",
     // Comma-separated list of fields to return (or do not supply a value to return all) (optional)
@@ -160,7 +160,7 @@ const request: ReportingApiRunReportUsingPOSTRequest = {
   pageToken: "page_token_example",
 };
 
-const data = await apiInstance.runReportUsingPOST(request);
+const data = await apiInstance.runReport(request);
 console.log('API called successfully. Returned data:', data);
 ```
 

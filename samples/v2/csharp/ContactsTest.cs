@@ -15,7 +15,7 @@ public class ContactsTest
         config.DefaultHeaders["Authorization"] = $"Bearer {apiKey}";
 
         var contactApi = new ContactApi(config);
-        var response = contactApi.ListContactsUsingGET1();
+        var response = contactApi.ListContacts();
 
         Console.WriteLine($"Found {response.Contacts.Count()} contacts");
         foreach (var contact in response.Contacts)

@@ -4,22 +4,22 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createLeadSourceUsingPOST**](LeadSourcesApi.md#createLeadSourceUsingPOST) | **POST** /v2/leadSources | Create a Lead Source |
-| [**createLeadSourceUsingPOSTWithHttpInfo**](LeadSourcesApi.md#createLeadSourceUsingPOSTWithHttpInfo) | **POST** /v2/leadSources | Create a Lead Source |
-| [**deleteLeadSourceUsingDELETE**](LeadSourcesApi.md#deleteLeadSourceUsingDELETE) | **DELETE** /v2/leadSources/{lead_source_id} | Delete a Lead Source |
-| [**deleteLeadSourceUsingDELETEWithHttpInfo**](LeadSourcesApi.md#deleteLeadSourceUsingDELETEWithHttpInfo) | **DELETE** /v2/leadSources/{lead_source_id} | Delete a Lead Source |
-| [**getLeadSourceUsingGET**](LeadSourcesApi.md#getLeadSourceUsingGET) | **GET** /v2/leadSources/{lead_source_id} | Retrieve a Lead Source |
-| [**getLeadSourceUsingGETWithHttpInfo**](LeadSourcesApi.md#getLeadSourceUsingGETWithHttpInfo) | **GET** /v2/leadSources/{lead_source_id} | Retrieve a Lead Source |
-| [**listLeadSourcesUsingGET**](LeadSourcesApi.md#listLeadSourcesUsingGET) | **GET** /v2/leadSources | List Lead Sources |
-| [**listLeadSourcesUsingGETWithHttpInfo**](LeadSourcesApi.md#listLeadSourcesUsingGETWithHttpInfo) | **GET** /v2/leadSources | List Lead Sources |
-| [**updateLeadSourceUsingPATCH**](LeadSourcesApi.md#updateLeadSourceUsingPATCH) | **PATCH** /v2/leadSources/{lead_source_id} | Update a Lead Source |
-| [**updateLeadSourceUsingPATCHWithHttpInfo**](LeadSourcesApi.md#updateLeadSourceUsingPATCHWithHttpInfo) | **PATCH** /v2/leadSources/{lead_source_id} | Update a Lead Source |
+| [**createLeadSource**](LeadSourcesApi.md#createLeadSource) | **POST** /v2/leadSources | Create a Lead Source |
+| [**createLeadSourceWithHttpInfo**](LeadSourcesApi.md#createLeadSourceWithHttpInfo) | **POST** /v2/leadSources | Create a Lead Source |
+| [**deleteLeadSource**](LeadSourcesApi.md#deleteLeadSource) | **DELETE** /v2/leadSources/{lead_source_id} | Delete a Lead Source |
+| [**deleteLeadSourceWithHttpInfo**](LeadSourcesApi.md#deleteLeadSourceWithHttpInfo) | **DELETE** /v2/leadSources/{lead_source_id} | Delete a Lead Source |
+| [**getLeadSource**](LeadSourcesApi.md#getLeadSource) | **GET** /v2/leadSources/{lead_source_id} | Retrieve a Lead Source |
+| [**getLeadSourceWithHttpInfo**](LeadSourcesApi.md#getLeadSourceWithHttpInfo) | **GET** /v2/leadSources/{lead_source_id} | Retrieve a Lead Source |
+| [**listLeadSources**](LeadSourcesApi.md#listLeadSources) | **GET** /v2/leadSources | List Lead Sources |
+| [**listLeadSourcesWithHttpInfo**](LeadSourcesApi.md#listLeadSourcesWithHttpInfo) | **GET** /v2/leadSources | List Lead Sources |
+| [**updateLeadSource**](LeadSourcesApi.md#updateLeadSource) | **PATCH** /v2/leadSources/{lead_source_id} | Update a Lead Source |
+| [**updateLeadSourceWithHttpInfo**](LeadSourcesApi.md#updateLeadSourceWithHttpInfo) | **PATCH** /v2/leadSources/{lead_source_id} | Update a Lead Source |
 
 
 
-## createLeadSourceUsingPOST
+## createLeadSource
 
-> LeadSource createLeadSourceUsingPOST(createLeadSourceRequest)
+> LeadSource createLeadSource(createLeadSourceRequest)
 
 Create a Lead Source
 
@@ -43,10 +43,10 @@ public class Example {
         LeadSourcesApi apiInstance = new LeadSourcesApi(defaultClient);
         CreateLeadSourceRequest createLeadSourceRequest = new CreateLeadSourceRequest(); // CreateLeadSourceRequest | The request object to create a new lead source
         try {
-            LeadSource result = apiInstance.createLeadSourceUsingPOST(createLeadSourceRequest);
+            LeadSource result = apiInstance.createLeadSource(createLeadSourceRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling LeadSourcesApi#createLeadSourceUsingPOST");
+            System.err.println("Exception when calling LeadSourcesApi#createLeadSource");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -86,9 +86,9 @@ No authorization required
 | **403** | Forbidden |  -  |
 | **500** | Internal Server Error |  -  |
 
-## createLeadSourceUsingPOSTWithHttpInfo
+## createLeadSourceWithHttpInfo
 
-> ApiResponse<LeadSource> createLeadSourceUsingPOST createLeadSourceUsingPOSTWithHttpInfo(createLeadSourceRequest)
+> ApiResponse<LeadSource> createLeadSource createLeadSourceWithHttpInfo(createLeadSourceRequest)
 
 Create a Lead Source
 
@@ -113,12 +113,12 @@ public class Example {
         LeadSourcesApi apiInstance = new LeadSourcesApi(defaultClient);
         CreateLeadSourceRequest createLeadSourceRequest = new CreateLeadSourceRequest(); // CreateLeadSourceRequest | The request object to create a new lead source
         try {
-            ApiResponse<LeadSource> response = apiInstance.createLeadSourceUsingPOSTWithHttpInfo(createLeadSourceRequest);
+            ApiResponse<LeadSource> response = apiInstance.createLeadSourceWithHttpInfo(createLeadSourceRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling LeadSourcesApi#createLeadSourceUsingPOST");
+            System.err.println("Exception when calling LeadSourcesApi#createLeadSource");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -159,9 +159,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## deleteLeadSourceUsingDELETE
+## deleteLeadSource
 
-> void deleteLeadSourceUsingDELETE(leadSourceId)
+> void deleteLeadSource(leadSourceId)
 
 Delete a Lead Source
 
@@ -185,9 +185,9 @@ public class Example {
         LeadSourcesApi apiInstance = new LeadSourcesApi(defaultClient);
         String leadSourceId = "leadSourceId_example"; // String | The ID of a lead source
         try {
-            apiInstance.deleteLeadSourceUsingDELETE(leadSourceId);
+            apiInstance.deleteLeadSource(leadSourceId);
         } catch (ApiException e) {
-            System.err.println("Exception when calling LeadSourcesApi#deleteLeadSourceUsingDELETE");
+            System.err.println("Exception when calling LeadSourcesApi#deleteLeadSource");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -227,9 +227,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## deleteLeadSourceUsingDELETEWithHttpInfo
+## deleteLeadSourceWithHttpInfo
 
-> ApiResponse<Void> deleteLeadSourceUsingDELETE deleteLeadSourceUsingDELETEWithHttpInfo(leadSourceId)
+> ApiResponse<Void> deleteLeadSource deleteLeadSourceWithHttpInfo(leadSourceId)
 
 Delete a Lead Source
 
@@ -254,11 +254,11 @@ public class Example {
         LeadSourcesApi apiInstance = new LeadSourcesApi(defaultClient);
         String leadSourceId = "leadSourceId_example"; // String | The ID of a lead source
         try {
-            ApiResponse<Void> response = apiInstance.deleteLeadSourceUsingDELETEWithHttpInfo(leadSourceId);
+            ApiResponse<Void> response = apiInstance.deleteLeadSourceWithHttpInfo(leadSourceId);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
-            System.err.println("Exception when calling LeadSourcesApi#deleteLeadSourceUsingDELETE");
+            System.err.println("Exception when calling LeadSourcesApi#deleteLeadSource");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -299,9 +299,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## getLeadSourceUsingGET
+## getLeadSource
 
-> LeadSource getLeadSourceUsingGET(leadSourceId)
+> LeadSource getLeadSource(leadSourceId)
 
 Retrieve a Lead Source
 
@@ -325,10 +325,10 @@ public class Example {
         LeadSourcesApi apiInstance = new LeadSourcesApi(defaultClient);
         String leadSourceId = "leadSourceId_example"; // String | The ID of a lead source
         try {
-            LeadSource result = apiInstance.getLeadSourceUsingGET(leadSourceId);
+            LeadSource result = apiInstance.getLeadSource(leadSourceId);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling LeadSourcesApi#getLeadSourceUsingGET");
+            System.err.println("Exception when calling LeadSourcesApi#getLeadSource");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -368,9 +368,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## getLeadSourceUsingGETWithHttpInfo
+## getLeadSourceWithHttpInfo
 
-> ApiResponse<LeadSource> getLeadSourceUsingGET getLeadSourceUsingGETWithHttpInfo(leadSourceId)
+> ApiResponse<LeadSource> getLeadSource getLeadSourceWithHttpInfo(leadSourceId)
 
 Retrieve a Lead Source
 
@@ -395,12 +395,12 @@ public class Example {
         LeadSourcesApi apiInstance = new LeadSourcesApi(defaultClient);
         String leadSourceId = "leadSourceId_example"; // String | The ID of a lead source
         try {
-            ApiResponse<LeadSource> response = apiInstance.getLeadSourceUsingGETWithHttpInfo(leadSourceId);
+            ApiResponse<LeadSource> response = apiInstance.getLeadSourceWithHttpInfo(leadSourceId);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling LeadSourcesApi#getLeadSourceUsingGET");
+            System.err.println("Exception when calling LeadSourcesApi#getLeadSource");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -441,9 +441,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## listLeadSourcesUsingGET
+## listLeadSources
 
-> ListLeadSourcesResponse listLeadSourcesUsingGET(filter, orderBy, pageSize, pageToken)
+> ListLeadSourcesResponse listLeadSources(filter, orderBy, pageSize, pageToken)
 
 List Lead Sources
 
@@ -470,10 +470,10 @@ public class Example {
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
         try {
-            ListLeadSourcesResponse result = apiInstance.listLeadSourcesUsingGET(filter, orderBy, pageSize, pageToken);
+            ListLeadSourcesResponse result = apiInstance.listLeadSources(filter, orderBy, pageSize, pageToken);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling LeadSourcesApi#listLeadSourcesUsingGET");
+            System.err.println("Exception when calling LeadSourcesApi#listLeadSources");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -517,9 +517,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## listLeadSourcesUsingGETWithHttpInfo
+## listLeadSourcesWithHttpInfo
 
-> ApiResponse<ListLeadSourcesResponse> listLeadSourcesUsingGET listLeadSourcesUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken)
+> ApiResponse<ListLeadSourcesResponse> listLeadSources listLeadSourcesWithHttpInfo(filter, orderBy, pageSize, pageToken)
 
 List Lead Sources
 
@@ -547,12 +547,12 @@ public class Example {
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
         try {
-            ApiResponse<ListLeadSourcesResponse> response = apiInstance.listLeadSourcesUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken);
+            ApiResponse<ListLeadSourcesResponse> response = apiInstance.listLeadSourcesWithHttpInfo(filter, orderBy, pageSize, pageToken);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling LeadSourcesApi#listLeadSourcesUsingGET");
+            System.err.println("Exception when calling LeadSourcesApi#listLeadSources");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -597,9 +597,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## updateLeadSourceUsingPATCH
+## updateLeadSource
 
-> LeadSource updateLeadSourceUsingPATCH(leadSourceId, createLeadSourceRequest, updateMask)
+> LeadSource updateLeadSource(leadSourceId, createLeadSourceRequest, updateMask)
 
 Update a Lead Source
 
@@ -625,10 +625,10 @@ public class Example {
         CreateLeadSourceRequest createLeadSourceRequest = new CreateLeadSourceRequest(); // CreateLeadSourceRequest | The request object to update a lead source
         List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
-            LeadSource result = apiInstance.updateLeadSourceUsingPATCH(leadSourceId, createLeadSourceRequest, updateMask);
+            LeadSource result = apiInstance.updateLeadSource(leadSourceId, createLeadSourceRequest, updateMask);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling LeadSourcesApi#updateLeadSourceUsingPATCH");
+            System.err.println("Exception when calling LeadSourcesApi#updateLeadSource");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -671,9 +671,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## updateLeadSourceUsingPATCHWithHttpInfo
+## updateLeadSourceWithHttpInfo
 
-> ApiResponse<LeadSource> updateLeadSourceUsingPATCH updateLeadSourceUsingPATCHWithHttpInfo(leadSourceId, createLeadSourceRequest, updateMask)
+> ApiResponse<LeadSource> updateLeadSource updateLeadSourceWithHttpInfo(leadSourceId, createLeadSourceRequest, updateMask)
 
 Update a Lead Source
 
@@ -700,12 +700,12 @@ public class Example {
         CreateLeadSourceRequest createLeadSourceRequest = new CreateLeadSourceRequest(); // CreateLeadSourceRequest | The request object to update a lead source
         List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
-            ApiResponse<LeadSource> response = apiInstance.updateLeadSourceUsingPATCHWithHttpInfo(leadSourceId, createLeadSourceRequest, updateMask);
+            ApiResponse<LeadSource> response = apiInstance.updateLeadSourceWithHttpInfo(leadSourceId, createLeadSourceRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling LeadSourcesApi#updateLeadSourceUsingPATCH");
+            System.err.println("Exception when calling LeadSourcesApi#updateLeadSource");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());

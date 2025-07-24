@@ -4,14 +4,14 @@ All URIs are relative to https://api.keap.com/crm/rest, except if the operation 
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**getBusinessProfileUsingGET()**](BusinessProfileApi.md#getBusinessProfileUsingGET) | **GET** /v2/businessProfile | Retrieve Business Profile |
-| [**updateBusinessProfileUsingPATCH()**](BusinessProfileApi.md#updateBusinessProfileUsingPATCH) | **PATCH** /v2/businessProfile | Update Business Profile |
+| [**getBusinessProfile()**](BusinessProfileApi.md#getBusinessProfile) | **GET** /v2/businessProfile | Retrieve Business Profile |
+| [**updateBusinessProfile()**](BusinessProfileApi.md#updateBusinessProfile) | **PATCH** /v2/businessProfile | Update Business Profile |
 
 
-## `getBusinessProfileUsingGET()`
+## `getBusinessProfile()`
 
 ```php
-getBusinessProfileUsingGET(): \Keap\Core\V2\Model\GetBusinessProfileResponse
+getBusinessProfile(): \Keap\Core\V2\Model\GetBusinessProfileResponse
 ```
 
 Retrieve Business Profile
@@ -32,10 +32,10 @@ $apiInstance = new Keap\Core\V2\Api\BusinessProfileApi(
 );
 
 try {
-    $result = $apiInstance->getBusinessProfileUsingGET();
+    $result = $apiInstance->getBusinessProfile();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling BusinessProfileApi->getBusinessProfileUsingGET: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling BusinessProfileApi->getBusinessProfile: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -60,10 +60,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `updateBusinessProfileUsingPATCH()`
+## `updateBusinessProfile()`
 
 ```php
-updateBusinessProfileUsingPATCH($update_mask, $update_business_profile_request): \Keap\Core\V2\Model\GetBusinessProfileResponse
+updateBusinessProfile($update_mask, $update_business_profile_request): \Keap\Core\V2\Model\GetBusinessProfileResponse
 ```
 
 Update Business Profile
@@ -86,10 +86,10 @@ $update_mask = array('update_mask_example'); // string[] | An optional list of p
 $update_business_profile_request = new \Keap\Core\V2\Model\UpdateBusinessProfileRequest(); // \Keap\Core\V2\Model\UpdateBusinessProfileRequest | businessProfile
 
 try {
-    $result = $apiInstance->updateBusinessProfileUsingPATCH($update_mask, $update_business_profile_request);
+    $result = $apiInstance->updateBusinessProfile($update_mask, $update_business_profile_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling BusinessProfileApi->updateBusinessProfileUsingPATCH: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling BusinessProfileApi->updateBusinessProfile: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

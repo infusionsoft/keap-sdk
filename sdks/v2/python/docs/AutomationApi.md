@@ -4,17 +4,16 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**add_contacts_to_automation_sequence_using_post**](AutomationApi.md#add_contacts_to_automation_sequence_using_post) | **POST** /v2/automations/{automation_id}/sequences/{sequence_id}:addContacts | Add Contacts to an Automation Sequence
-[**bulk_assignment_automations_categories_using_post**](AutomationApi.md#bulk_assignment_automations_categories_using_post) | **POST** /v2/automations/categories/batchAssign | Bulk update for Automations Categories
-[**delete_automation_using_delete**](AutomationApi.md#delete_automation_using_delete) | **DELETE** /v2/automations | Delete an Automation
-[**get_automation_using_get**](AutomationApi.md#get_automation_using_get) | **GET** /v2/automations/{automation_id} | Retrieve an Automation
-[**list_all_automation_ids_using_get**](AutomationApi.md#list_all_automation_ids_using_get) | **GET** /v2/automations/ids | List Automations Ids
-[**list_automations_using_get**](AutomationApi.md#list_automations_using_get) | **GET** /v2/automations | List Automations
-[**update_automation_category_using_put**](AutomationApi.md#update_automation_category_using_put) | **PUT** /v2/automations/category | Update an Automation&#39;s Category
+[**add_contacts_to_automation_sequence**](AutomationApi.md#add_contacts_to_automation_sequence) | **POST** /v2/automations/{automation_id}/sequences/{sequence_id}:addContacts | Add Contacts to an Automation Sequence
+[**bulk_assignment_automations_categories**](AutomationApi.md#bulk_assignment_automations_categories) | **POST** /v2/automations/categories/batchAssign | Bulk update for Automations Categories
+[**delete_automation**](AutomationApi.md#delete_automation) | **DELETE** /v2/automations | Delete an Automation
+[**get_automation**](AutomationApi.md#get_automation) | **GET** /v2/automations/{automation_id} | Retrieve an Automation
+[**list_all_automation_ids**](AutomationApi.md#list_all_automation_ids) | **GET** /v2/automations/ids | List Automations Ids
+[**list_automations**](AutomationApi.md#list_automations) | **GET** /v2/automations | List Automations
 
 
-# **add_contacts_to_automation_sequence_using_post**
-> AddToAutomationSequenceResponse add_contacts_to_automation_sequence_using_post(automation_id, sequence_id, add_to_automation_sequence_request)
+# **add_contacts_to_automation_sequence**
+> AddToAutomationSequenceResponse add_contacts_to_automation_sequence(automation_id, sequence_id, add_to_automation_sequence_request)
 
 Add Contacts to an Automation Sequence
 
@@ -47,11 +46,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Add Contacts to an Automation Sequence
-        api_response = api_instance.add_contacts_to_automation_sequence_using_post(automation_id, sequence_id, add_to_automation_sequence_request)
-        print("The response of AutomationApi->add_contacts_to_automation_sequence_using_post:\n")
+        api_response = api_instance.add_contacts_to_automation_sequence(automation_id, sequence_id, add_to_automation_sequence_request)
+        print("The response of AutomationApi->add_contacts_to_automation_sequence:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling AutomationApi->add_contacts_to_automation_sequence_using_post: %s\n" % e)
+        print("Exception when calling AutomationApi->add_contacts_to_automation_sequence: %s\n" % e)
 ```
 
 
@@ -88,8 +87,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **bulk_assignment_automations_categories_using_post**
-> bulk_assignment_automations_categories_using_post(assign_automation_category_request)
+# **bulk_assignment_automations_categories**
+> bulk_assignment_automations_categories(assign_automation_category_request)
 
 Bulk update for Automations Categories
 
@@ -118,9 +117,9 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Bulk update for Automations Categories
-        api_instance.bulk_assignment_automations_categories_using_post(assign_automation_category_request)
+        api_instance.bulk_assignment_automations_categories(assign_automation_category_request)
     except Exception as e:
-        print("Exception when calling AutomationApi->bulk_assignment_automations_categories_using_post: %s\n" % e)
+        print("Exception when calling AutomationApi->bulk_assignment_automations_categories: %s\n" % e)
 ```
 
 
@@ -155,8 +154,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **delete_automation_using_delete**
-> delete_automation_using_delete(automation_ids)
+# **delete_automation**
+> delete_automation(automation_ids)
 
 Delete an Automation
 
@@ -184,9 +183,9 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Delete an Automation
-        api_instance.delete_automation_using_delete(automation_ids)
+        api_instance.delete_automation(automation_ids)
     except Exception as e:
-        print("Exception when calling AutomationApi->delete_automation_using_delete: %s\n" % e)
+        print("Exception when calling AutomationApi->delete_automation: %s\n" % e)
 ```
 
 
@@ -222,8 +221,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_automation_using_get**
-> Automation get_automation_using_get(automation_id)
+# **get_automation**
+> Automation get_automation(automation_id)
 
 Retrieve an Automation
 
@@ -252,11 +251,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieve an Automation
-        api_response = api_instance.get_automation_using_get(automation_id)
-        print("The response of AutomationApi->get_automation_using_get:\n")
+        api_response = api_instance.get_automation(automation_id)
+        print("The response of AutomationApi->get_automation:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling AutomationApi->get_automation_using_get: %s\n" % e)
+        print("Exception when calling AutomationApi->get_automation: %s\n" % e)
 ```
 
 
@@ -292,8 +291,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **list_all_automation_ids_using_get**
-> ListAutomationIdsResponse list_all_automation_ids_using_get(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token, stats=stats)
+# **list_all_automation_ids**
+> ListAutomationIdsResponse list_all_automation_ids(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token, stats=stats)
 
 List Automations Ids
 
@@ -326,11 +325,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # List Automations Ids
-        api_response = api_instance.list_all_automation_ids_using_get(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token, stats=stats)
-        print("The response of AutomationApi->list_all_automation_ids_using_get:\n")
+        api_response = api_instance.list_all_automation_ids(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token, stats=stats)
+        print("The response of AutomationApi->list_all_automation_ids:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling AutomationApi->list_all_automation_ids_using_get: %s\n" % e)
+        print("Exception when calling AutomationApi->list_all_automation_ids: %s\n" % e)
 ```
 
 
@@ -370,8 +369,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **list_automations_using_get**
-> ListAutomationResponse list_automations_using_get(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token, stats=stats)
+# **list_automations**
+> ListAutomationResponse list_automations(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token, stats=stats)
 
 List Automations
 
@@ -404,11 +403,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # List Automations
-        api_response = api_instance.list_automations_using_get(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token, stats=stats)
-        print("The response of AutomationApi->list_automations_using_get:\n")
+        api_response = api_instance.list_automations(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token, stats=stats)
+        print("The response of AutomationApi->list_automations:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling AutomationApi->list_automations_using_get: %s\n" % e)
+        print("Exception when calling AutomationApi->list_automations: %s\n" % e)
 ```
 
 
@@ -434,74 +433,6 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-**401** | Unauthorized |  -  |
-**403** | Forbidden |  -  |
-**404** | Not Found |  -  |
-**500** | Internal Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **update_automation_category_using_put**
-> update_automation_category_using_put(update_automation_category_request)
-
-Update an Automation's Category
-
-Updates the category of one or more automations
-
-### Example
-
-
-```python
-import keap_core_v2_client
-from keap_core_v2_client.models.update_automation_category_request import UpdateAutomationCategoryRequest
-from keap_core_v2_client.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
-# See configuration.py for a list of all supported configuration parameters.
-configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
-)
-
-# Enter a context with an instance of the API client
-with keap_core_v2_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = keap_core_v2_client.AutomationApi(api_client)
-    update_automation_category_request = keap_core_v2_client.UpdateAutomationCategoryRequest() # UpdateAutomationCategoryRequest | updateAutomationCategoryRequest
-
-    try:
-        # Update an Automation's Category
-        api_instance.update_automation_category_using_put(update_automation_category_request)
-    except Exception as e:
-        print("Exception when calling AutomationApi->update_automation_category_using_put: %s\n" % e)
-```
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **update_automation_category_request** | [**UpdateAutomationCategoryRequest**](UpdateAutomationCategoryRequest.md)| updateAutomationCategoryRequest | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details

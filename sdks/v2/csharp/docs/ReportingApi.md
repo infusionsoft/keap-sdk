@@ -4,13 +4,13 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**ListReportsUsingGET**](ReportingApi.md#listreportsusingget) | **GET** /v2/reporting/reports | List Reports |
-| [**RetrieveReportUsingGET**](ReportingApi.md#retrievereportusingget) | **GET** /v2/reporting/reports/{report_id} | Retrieve Report |
-| [**RunReportUsingPOST**](ReportingApi.md#runreportusingpost) | **POST** /v2/reporting/reports/{report_id}:run | Run a Report |
+| [**ListReports**](ReportingApi.md#listreports) | **GET** /v2/reporting/reports | List Reports |
+| [**RetrieveReport**](ReportingApi.md#retrievereport) | **GET** /v2/reporting/reports/{report_id} | Retrieve Report |
+| [**RunReport**](ReportingApi.md#runreport) | **POST** /v2/reporting/reports/{report_id}:run | Run a Report |
 
-<a id="listreportsusingget"></a>
-# **ListReportsUsingGET**
-> ListReportsResponse ListReportsUsingGET (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
+<a id="listreports"></a>
+# **ListReports**
+> ListReportsResponse ListReports (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
 
 List Reports
 
@@ -26,7 +26,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class ListReportsUsingGETExample
+    public class ListReportsExample
     {
         public static void Main()
         {
@@ -41,12 +41,12 @@ namespace Example
             try
             {
                 // List Reports
-                ListReportsResponse result = apiInstance.ListReportsUsingGET(filter, orderBy, pageSize, pageToken);
+                ListReportsResponse result = apiInstance.ListReports(filter, orderBy, pageSize, pageToken);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ReportingApi.ListReportsUsingGET: " + e.Message);
+                Debug.Print("Exception when calling ReportingApi.ListReports: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -55,21 +55,21 @@ namespace Example
 }
 ```
 
-#### Using the ListReportsUsingGETWithHttpInfo variant
+#### Using the ListReportsWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // List Reports
-    ApiResponse<ListReportsResponse> response = apiInstance.ListReportsUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken);
+    ApiResponse<ListReportsResponse> response = apiInstance.ListReportsWithHttpInfo(filter, orderBy, pageSize, pageToken);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling ReportingApi.ListReportsUsingGETWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling ReportingApi.ListReportsWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -109,9 +109,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="retrievereportusingget"></a>
-# **RetrieveReportUsingGET**
-> Report RetrieveReportUsingGET (string reportId)
+<a id="retrievereport"></a>
+# **RetrieveReport**
+> Report RetrieveReport (string reportId)
 
 Retrieve Report
 
@@ -127,7 +127,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class RetrieveReportUsingGETExample
+    public class RetrieveReportExample
     {
         public static void Main()
         {
@@ -139,12 +139,12 @@ namespace Example
             try
             {
                 // Retrieve Report
-                Report result = apiInstance.RetrieveReportUsingGET(reportId);
+                Report result = apiInstance.RetrieveReport(reportId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ReportingApi.RetrieveReportUsingGET: " + e.Message);
+                Debug.Print("Exception when calling ReportingApi.RetrieveReport: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -153,21 +153,21 @@ namespace Example
 }
 ```
 
-#### Using the RetrieveReportUsingGETWithHttpInfo variant
+#### Using the RetrieveReportWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Retrieve Report
-    ApiResponse<Report> response = apiInstance.RetrieveReportUsingGETWithHttpInfo(reportId);
+    ApiResponse<Report> response = apiInstance.RetrieveReportWithHttpInfo(reportId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling ReportingApi.RetrieveReportUsingGETWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling ReportingApi.RetrieveReportWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -204,9 +204,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="runreportusingpost"></a>
-# **RunReportUsingPOST**
-> ReportExecutionResult RunReportUsingPOST (string reportId, string? fields = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
+<a id="runreport"></a>
+# **RunReport**
+> ReportExecutionResult RunReport (string reportId, string? fields = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
 
 Run a Report
 
@@ -222,7 +222,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class RunReportUsingPOSTExample
+    public class RunReportExample
     {
         public static void Main()
         {
@@ -238,12 +238,12 @@ namespace Example
             try
             {
                 // Run a Report
-                ReportExecutionResult result = apiInstance.RunReportUsingPOST(reportId, fields, orderBy, pageSize, pageToken);
+                ReportExecutionResult result = apiInstance.RunReport(reportId, fields, orderBy, pageSize, pageToken);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ReportingApi.RunReportUsingPOST: " + e.Message);
+                Debug.Print("Exception when calling ReportingApi.RunReport: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -252,21 +252,21 @@ namespace Example
 }
 ```
 
-#### Using the RunReportUsingPOSTWithHttpInfo variant
+#### Using the RunReportWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Run a Report
-    ApiResponse<ReportExecutionResult> response = apiInstance.RunReportUsingPOSTWithHttpInfo(reportId, fields, orderBy, pageSize, pageToken);
+    ApiResponse<ReportExecutionResult> response = apiInstance.RunReportWithHttpInfo(reportId, fields, orderBy, pageSize, pageToken);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling ReportingApi.RunReportUsingPOSTWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling ReportingApi.RunReportWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }

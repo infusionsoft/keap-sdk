@@ -10,7 +10,7 @@ test('listContactsSucceeds', async () => {
     apiClient.defaultHeaders['Authorization'] = `Bearer ${apiKey}`;
 
     const contactApi = new ContactApi(apiClient);
-    const response = await contactApi.listContactsUsingGET1();
+    const response = await contactApi.listContacts();
 
     console.log(`Found ${response.contacts.length} contacts`);
     response.contacts.forEach(contact => {

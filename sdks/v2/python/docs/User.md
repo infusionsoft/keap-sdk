@@ -21,7 +21,6 @@ Name | Type | Description | Notes
 **phone_numbers** | [**List[PhoneNumber]**](PhoneNumber.md) |  | [optional] 
 **social_accounts** | [**List[SocialAccount]**](SocialAccount.md) |  | [optional] 
 **status** | **str** |  | [optional] 
-**time_zone** | **str** |  | [optional] 
 **title** | **str** |  | [optional] 
 **update_time** | **str** |  | [optional] 
 **updated_by** | **int** |  | [optional] 

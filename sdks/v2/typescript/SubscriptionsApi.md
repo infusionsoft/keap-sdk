@@ -4,15 +4,82 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createSubscriptionCustomFieldUsingPOST**](SubscriptionsApi.md#createSubscriptionCustomFieldUsingPOST) | **POST** /v2/subscriptions/model/customFields | Create a Subscription Custom Field
-[**createSubscriptionV2UsingPOST**](SubscriptionsApi.md#createSubscriptionV2UsingPOST) | **POST** /v2/subscriptions | Create Subscription
-[**deleteSubscriptionCustomFieldUsingDELETE**](SubscriptionsApi.md#deleteSubscriptionCustomFieldUsingDELETE) | **DELETE** /v2/subscriptions/model/customFields/{custom_field_id} | Delete a Subscription Custom Field
-[**retrieveSubscriptionCustomFieldModelUsingGET**](SubscriptionsApi.md#retrieveSubscriptionCustomFieldModelUsingGET) | **GET** /v2/subscriptions/model | Retrieve Subscription Custom Field Model
-[**updateSubscriptionCustomFieldUsingPATCH**](SubscriptionsApi.md#updateSubscriptionCustomFieldUsingPATCH) | **PATCH** /v2/subscriptions/model/customFields/{custom_field_id} | Update a Subscription Custom Field
+[**createSubscription**](SubscriptionsApi.md#createSubscription) | **POST** /v2/subscriptions | Create Subscription
+[**createSubscriptionCustomField**](SubscriptionsApi.md#createSubscriptionCustomField) | **POST** /v2/subscriptions/model/customFields | Create a Subscription Custom Field
+[**deleteSubscriptionCustomField**](SubscriptionsApi.md#deleteSubscriptionCustomField) | **DELETE** /v2/subscriptions/model/customFields/{custom_field_id} | Delete a Subscription Custom Field
+[**retrieveSubscriptionCustomFieldModel**](SubscriptionsApi.md#retrieveSubscriptionCustomFieldModel) | **GET** /v2/subscriptions/model | Retrieve Subscription Custom Field Model
+[**updateSubscriptionCustomField**](SubscriptionsApi.md#updateSubscriptionCustomField) | **PATCH** /v2/subscriptions/model/customFields/{custom_field_id} | Update a Subscription Custom Field
 
 
-# **createSubscriptionCustomFieldUsingPOST**
-> CustomFieldMetaData createSubscriptionCustomFieldUsingPOST(createCustomFieldRequest)
+# **createSubscription**
+> Subscription createSubscription(createSubscriptionRequest)
+
+Creates a subscription with the specified product and product subscription id.
+
+### Example
+
+
+```typescript
+import { createConfiguration, SubscriptionsApi } from '';
+import type { SubscriptionsApiCreateSubscriptionRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new SubscriptionsApi(configuration);
+
+const request: SubscriptionsApiCreateSubscriptionRequest = {
+    // request
+  createSubscriptionRequest: {
+    allowDuplicate: true,
+    allowTax: true,
+    autoCharge: true,
+    billingAmount: 3.14,
+    contactId: "contactId_example",
+    paymentMethodId: "paymentMethodId_example",
+    quantity: 1,
+    saleAffiliateId: "saleAffiliateId_example",
+    startDate: "startDate_example",
+    subscriptionPlanId: "subscriptionPlanId_example",
+  },
+};
+
+const data = await apiInstance.createSubscription(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createSubscriptionRequest** | **CreateSubscriptionRequest**| request |
+
+
+### Return type
+
+**Subscription**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **createSubscriptionCustomField**
+> CustomFieldMetaData createSubscriptionCustomField(createCustomFieldRequest)
 
 Creates a custom field of the specified type and options to the Subscription object
 
@@ -21,12 +88,12 @@ Creates a custom field of the specified type and options to the Subscription obj
 
 ```typescript
 import { createConfiguration, SubscriptionsApi } from '';
-import type { SubscriptionsApiCreateSubscriptionCustomFieldUsingPOSTRequest } from '';
+import type { SubscriptionsApiCreateSubscriptionCustomFieldRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new SubscriptionsApi(configuration);
 
-const request: SubscriptionsApiCreateSubscriptionCustomFieldUsingPOSTRequest = {
+const request: SubscriptionsApiCreateSubscriptionCustomFieldRequest = {
     // customField
   createCustomFieldRequest: {
     fieldType: "CURRENCY",
@@ -42,7 +109,7 @@ const request: SubscriptionsApiCreateSubscriptionCustomFieldUsingPOSTRequest = {
   },
 };
 
-const data = await apiInstance.createSubscriptionCustomFieldUsingPOST(request);
+const data = await apiInstance.createSubscriptionCustomField(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -78,75 +145,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **createSubscriptionV2UsingPOST**
-> RestSubscriptionV2 createSubscriptionV2UsingPOST(createSubscriptionV2)
-
-Creates a subscription with the specified product and product subscription id.
-
-### Example
-
-
-```typescript
-import { createConfiguration, SubscriptionsApi } from '';
-import type { SubscriptionsApiCreateSubscriptionV2UsingPOSTRequest } from '';
-
-const configuration = createConfiguration();
-const apiInstance = new SubscriptionsApi(configuration);
-
-const request: SubscriptionsApiCreateSubscriptionV2UsingPOSTRequest = {
-    // createSubscriptionV2
-  createSubscriptionV2: {
-    allowDuplicate: true,
-    allowTax: true,
-    autoCharge: true,
-    billingAmount: 3.14,
-    contactId: "contactId_example",
-    firstBillDate: new Date('1970-01-01').toISOString().split('T')[0];,
-    paymentMethodId: "paymentMethodId_example",
-    quantity: 1,
-    saleAffiliateId: "saleAffiliateId_example",
-    subscriptionPlanId: "subscriptionPlanId_example",
-  },
-};
-
-const data = await apiInstance.createSubscriptionV2UsingPOST(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **createSubscriptionV2** | **CreateSubscriptionV2**| createSubscriptionV2 |
-
-
-### Return type
-
-**RestSubscriptionV2**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** | Created |  -  |
-**401** | Unauthorized |  -  |
-**403** | Forbidden |  -  |
-**500** | Internal Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-# **deleteSubscriptionCustomFieldUsingDELETE**
-> void deleteSubscriptionCustomFieldUsingDELETE()
+# **deleteSubscriptionCustomField**
+> void deleteSubscriptionCustomField()
 
 Deletes a custom field from the Subscription object
 
@@ -155,17 +155,17 @@ Deletes a custom field from the Subscription object
 
 ```typescript
 import { createConfiguration, SubscriptionsApi } from '';
-import type { SubscriptionsApiDeleteSubscriptionCustomFieldUsingDELETERequest } from '';
+import type { SubscriptionsApiDeleteSubscriptionCustomFieldRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new SubscriptionsApi(configuration);
 
-const request: SubscriptionsApiDeleteSubscriptionCustomFieldUsingDELETERequest = {
+const request: SubscriptionsApiDeleteSubscriptionCustomFieldRequest = {
     // custom_field_id
   customFieldId: "custom_field_id_example",
 };
 
-const data = await apiInstance.deleteSubscriptionCustomFieldUsingDELETE(request);
+const data = await apiInstance.deleteSubscriptionCustomField(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -202,8 +202,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **retrieveSubscriptionCustomFieldModelUsingGET**
-> ObjectModel retrieveSubscriptionCustomFieldModelUsingGET()
+# **retrieveSubscriptionCustomFieldModel**
+> ObjectModel retrieveSubscriptionCustomFieldModel()
 
 Get the custom fields for the Subscription object
 
@@ -218,7 +218,7 @@ const apiInstance = new SubscriptionsApi(configuration);
 
 const request = {};
 
-const data = await apiInstance.retrieveSubscriptionCustomFieldModelUsingGET(request);
+const data = await apiInstance.retrieveSubscriptionCustomFieldModel(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -252,8 +252,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **updateSubscriptionCustomFieldUsingPATCH**
-> CustomFieldMetaData updateSubscriptionCustomFieldUsingPATCH(updateCustomFieldMetaDataRequest)
+# **updateSubscriptionCustomField**
+> CustomFieldMetaData updateSubscriptionCustomField(updateCustomFieldMetaDataRequest)
 
 Updates a custom field of the specified type and options to the Subscription object
 
@@ -262,12 +262,12 @@ Updates a custom field of the specified type and options to the Subscription obj
 
 ```typescript
 import { createConfiguration, SubscriptionsApi } from '';
-import type { SubscriptionsApiUpdateSubscriptionCustomFieldUsingPATCHRequest } from '';
+import type { SubscriptionsApiUpdateSubscriptionCustomFieldRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new SubscriptionsApi(configuration);
 
-const request: SubscriptionsApiUpdateSubscriptionCustomFieldUsingPATCHRequest = {
+const request: SubscriptionsApiUpdateSubscriptionCustomFieldRequest = {
     // custom_field_id
   customFieldId: "custom_field_id_example",
     // request
@@ -288,7 +288,7 @@ const request: SubscriptionsApiUpdateSubscriptionCustomFieldUsingPATCHRequest = 
   ],
 };
 
-const data = await apiInstance.updateSubscriptionCustomFieldUsingPATCH(request);
+const data = await apiInstance.updateSubscriptionCustomField(request);
 console.log('API called successfully. Returned data:', data);
 ```
 

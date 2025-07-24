@@ -35,7 +35,7 @@ class ContactsTest extends TestCase
 
         $client = new Client();
         $contactApi = new ContactApi($client, $config, $headerSelector);
-        $response = $contactApi->listContactsUsingGET1();
+        $response = $contactApi->listContacts();
 
         echo 'Found ' . count($response->getContacts()) . ' contacts' . PHP_EOL;
         foreach ($response->getContacts() as $contact) {

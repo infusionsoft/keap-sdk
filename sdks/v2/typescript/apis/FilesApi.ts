@@ -25,30 +25,30 @@ export class FilesApiRequestFactory extends BaseAPIRequestFactory {
      * @param isPublic Is public
      * @param contactId Contact ID
      */
-    public async createFileUsingPOST1(file: string, fileAssociation: string, fileName: string, isPublic: boolean, contactId?: string, _options?: Configuration): Promise<RequestContext> {
+    public async createFile(file: string, fileAssociation: string, fileName: string, isPublic: boolean, contactId?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'file' is not null or undefined
         if (file === null || file === undefined) {
-            throw new RequiredError("FilesApi", "createFileUsingPOST1", "file");
+            throw new RequiredError("FilesApi", "createFile", "file");
         }
 
 
         // verify required parameter 'fileAssociation' is not null or undefined
         if (fileAssociation === null || fileAssociation === undefined) {
-            throw new RequiredError("FilesApi", "createFileUsingPOST1", "fileAssociation");
+            throw new RequiredError("FilesApi", "createFile", "fileAssociation");
         }
 
 
         // verify required parameter 'fileName' is not null or undefined
         if (fileName === null || fileName === undefined) {
-            throw new RequiredError("FilesApi", "createFileUsingPOST1", "fileName");
+            throw new RequiredError("FilesApi", "createFile", "fileName");
         }
 
 
         // verify required parameter 'isPublic' is not null or undefined
         if (isPublic === null || isPublic === undefined) {
-            throw new RequiredError("FilesApi", "createFileUsingPOST1", "isPublic");
+            throw new RequiredError("FilesApi", "createFile", "isPublic");
         }
 
 
@@ -116,12 +116,12 @@ export class FilesApiRequestFactory extends BaseAPIRequestFactory {
      * Delete a file
      * @param fileId file_id
      */
-    public async deleteFileUsingDELETE1(fileId: string, _options?: Configuration): Promise<RequestContext> {
+    public async deleteFile(fileId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'fileId' is not null or undefined
         if (fileId === null || fileId === undefined) {
-            throw new RequiredError("FilesApi", "deleteFileUsingDELETE1", "fileId");
+            throw new RequiredError("FilesApi", "deleteFile", "fileId");
         }
 
 
@@ -144,21 +144,21 @@ export class FilesApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Retrieves a file\'s data
-     * Retrieve a file\'s data
+     * Retrieves a file
+     * Retrieve a file
      * @param fileId file_id
      */
-    public async getFileDataUsingGET(fileId: string, _options?: Configuration): Promise<RequestContext> {
+    public async getFile(fileId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'fileId' is not null or undefined
         if (fileId === null || fileId === undefined) {
-            throw new RequiredError("FilesApi", "getFileDataUsingGET", "fileId");
+            throw new RequiredError("FilesApi", "getFile", "fileId");
         }
 
 
         // Path Params
-        const localVarPath = '/v2/files/{file_id}:data'
+        const localVarPath = '/v2/files/{file_id}'
             .replace('{' + 'file_id' + '}', encodeURIComponent(String(fileId)));
 
         // Make Request Context
@@ -176,21 +176,21 @@ export class FilesApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Retrieves a file
-     * Retrieve a file
+     * Retrieves a file\'s data
+     * Retrieve a file\'s data
      * @param fileId file_id
      */
-    public async getFileUsingGET1(fileId: string, _options?: Configuration): Promise<RequestContext> {
+    public async getFileData(fileId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'fileId' is not null or undefined
         if (fileId === null || fileId === undefined) {
-            throw new RequiredError("FilesApi", "getFileUsingGET1", "fileId");
+            throw new RequiredError("FilesApi", "getFileData", "fileId");
         }
 
 
         // Path Params
-        const localVarPath = '/v2/files/{file_id}'
+        const localVarPath = '/v2/files/{file_id}:data'
             .replace('{' + 'file_id' + '}', encodeURIComponent(String(fileId)));
 
         // Make Request Context
@@ -215,7 +215,7 @@ export class FilesApiRequestFactory extends BaseAPIRequestFactory {
      * @param pageSize Total number of items to return per page
      * @param pageToken Page token
      */
-    public async listFilesUsingGET1(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
+    public async listFiles(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
 
@@ -268,12 +268,12 @@ export class FilesApiRequestFactory extends BaseAPIRequestFactory {
      * @param isPublic Is public
      * @param updateMask Update Mask
      */
-    public async updateFileUsingPOST(fileId: string, file?: string, fileName?: string, isPublic?: boolean, updateMask?: string, _options?: Configuration): Promise<RequestContext> {
+    public async updateFile(fileId: string, file?: string, fileName?: string, isPublic?: boolean, updateMask?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'fileId' is not null or undefined
         if (fileId === null || fileId === undefined) {
-            throw new RequiredError("FilesApi", "updateFileUsingPOST", "fileId");
+            throw new RequiredError("FilesApi", "updateFile", "fileId");
         }
 
 
@@ -344,10 +344,10 @@ export class FilesApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to createFileUsingPOST1
+     * @params response Response returned by the server for a request to createFile
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async createFileUsingPOST1WithHttpInfo(response: ResponseContext): Promise<HttpInfo<FileMetadata >> {
+     public async createFileWithHttpInfo(response: ResponseContext): Promise<HttpInfo<FileMetadata >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("201", response.httpStatusCode)) {
             const body: FileMetadata = ObjectSerializer.deserialize(
@@ -394,10 +394,10 @@ export class FilesApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to deleteFileUsingDELETE1
+     * @params response Response returned by the server for a request to deleteFile
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async deleteFileUsingDELETE1WithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async deleteFileWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("204", response.httpStatusCode)) {
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
@@ -447,67 +447,10 @@ export class FilesApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to getFileDataUsingGET
+     * @params response Response returned by the server for a request to getFile
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getFileDataUsingGETWithHttpInfo(response: ResponseContext): Promise<HttpInfo<string >> {
-        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: string = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "string", "byte"
-            ) as string;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-        if (isCodeInRange("401", response.httpStatusCode)) {
-            const body: Error = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "Error", "byte"
-            ) as Error;
-            throw new ApiException<Error>(response.httpStatusCode, "Unauthorized", body, response.headers);
-        }
-        if (isCodeInRange("403", response.httpStatusCode)) {
-            const body: Error = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "Error", "byte"
-            ) as Error;
-            throw new ApiException<Error>(response.httpStatusCode, "Forbidden", body, response.headers);
-        }
-        if (isCodeInRange("404", response.httpStatusCode)) {
-            const body: Error = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "Error", "byte"
-            ) as Error;
-            throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
-        }
-        if (isCodeInRange("500", response.httpStatusCode)) {
-            const body: Error = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "Error", "byte"
-            ) as Error;
-            throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
-        }
-
-        // Work around for missing responses in specification, e.g. for petstore.yaml
-        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: string = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "string", "byte"
-            ) as string;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-
-        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
-    }
-
-    /**
-     * Unwraps the actual response sent by the server from the response context and deserializes the response content
-     * to the expected objects
-     *
-     * @params response Response returned by the server for a request to getFileUsingGET1
-     * @throws ApiException if the response code was not in [200, 299]
-     */
-     public async getFileUsingGET1WithHttpInfo(response: ResponseContext): Promise<HttpInfo<FileMetadata >> {
+     public async getFileWithHttpInfo(response: ResponseContext): Promise<HttpInfo<FileMetadata >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: FileMetadata = ObjectSerializer.deserialize(
@@ -561,10 +504,67 @@ export class FilesApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to listFilesUsingGET1
+     * @params response Response returned by the server for a request to getFileData
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async listFilesUsingGET1WithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListFilesResponse >> {
+     public async getFileDataWithHttpInfo(response: ResponseContext): Promise<HttpInfo<string >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: string = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "string", "byte"
+            ) as string;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("401", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", "byte"
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Unauthorized", body, response.headers);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", "byte"
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", "byte"
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", "byte"
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: string = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "string", "byte"
+            ) as string;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to listFiles
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async listFilesWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListFilesResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: ListFilesResponse = ObjectSerializer.deserialize(
@@ -618,10 +618,10 @@ export class FilesApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to updateFileUsingPOST
+     * @params response Response returned by the server for a request to updateFile
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async updateFileUsingPOSTWithHttpInfo(response: ResponseContext): Promise<HttpInfo<FileMetadata >> {
+     public async updateFileWithHttpInfo(response: ResponseContext): Promise<HttpInfo<FileMetadata >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: FileMetadata = ObjectSerializer.deserialize(

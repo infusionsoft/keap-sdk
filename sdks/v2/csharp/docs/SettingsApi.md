@@ -4,13 +4,13 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**GetApplicationConfigurationsUsingGET**](SettingsApi.md#getapplicationconfigurationsusingget) | **GET** /v2/settings/applications:getConfiguration | Get Application Configuration |
-| [**GetContactOptionTypesUsingGET1**](SettingsApi.md#getcontactoptiontypesusingget1) | **GET** /v2/settings/contactOptionTypes | Get Contact Option types |
-| [**IsApplicationEnabledUsingGET**](SettingsApi.md#isapplicationenabledusingget) | **GET** /v2/settings/applications:isEnabled | Get Application Status |
+| [**GetApplicationConfigurations**](SettingsApi.md#getapplicationconfigurations) | **GET** /v2/settings/applications:getConfiguration | Get Application Configuration |
+| [**GetContactOptionTypes**](SettingsApi.md#getcontactoptiontypes) | **GET** /v2/settings/contactOptionTypes | Get Contact Option types |
+| [**IsApplicationEnabled**](SettingsApi.md#isapplicationenabled) | **GET** /v2/settings/applications:isEnabled | Get Application Status |
 
-<a id="getapplicationconfigurationsusingget"></a>
-# **GetApplicationConfigurationsUsingGET**
-> GetSettingsResponse GetApplicationConfigurationsUsingGET (List<string>? fields = null)
+<a id="getapplicationconfigurations"></a>
+# **GetApplicationConfigurations**
+> GetSettingsResponse GetApplicationConfigurations (List<string>? fields = null)
 
 Get Application Configuration
 
@@ -26,7 +26,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class GetApplicationConfigurationsUsingGETExample
+    public class GetApplicationConfigurationsExample
     {
         public static void Main()
         {
@@ -38,12 +38,12 @@ namespace Example
             try
             {
                 // Get Application Configuration
-                GetSettingsResponse result = apiInstance.GetApplicationConfigurationsUsingGET(fields);
+                GetSettingsResponse result = apiInstance.GetApplicationConfigurations(fields);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling SettingsApi.GetApplicationConfigurationsUsingGET: " + e.Message);
+                Debug.Print("Exception when calling SettingsApi.GetApplicationConfigurations: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -52,21 +52,21 @@ namespace Example
 }
 ```
 
-#### Using the GetApplicationConfigurationsUsingGETWithHttpInfo variant
+#### Using the GetApplicationConfigurationsWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Get Application Configuration
-    ApiResponse<GetSettingsResponse> response = apiInstance.GetApplicationConfigurationsUsingGETWithHttpInfo(fields);
+    ApiResponse<GetSettingsResponse> response = apiInstance.GetApplicationConfigurationsWithHttpInfo(fields);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling SettingsApi.GetApplicationConfigurationsUsingGETWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling SettingsApi.GetApplicationConfigurationsWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -103,9 +103,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="getcontactoptiontypesusingget1"></a>
-# **GetContactOptionTypesUsingGET1**
-> GetContactOptionTypesResponse GetContactOptionTypesUsingGET1 ()
+<a id="getcontactoptiontypes"></a>
+# **GetContactOptionTypes**
+> GetContactOptionTypesResponse GetContactOptionTypes ()
 
 Get Contact Option types
 
@@ -121,7 +121,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class GetContactOptionTypesUsingGET1Example
+    public class GetContactOptionTypesExample
     {
         public static void Main()
         {
@@ -132,12 +132,12 @@ namespace Example
             try
             {
                 // Get Contact Option types
-                GetContactOptionTypesResponse result = apiInstance.GetContactOptionTypesUsingGET1();
+                GetContactOptionTypesResponse result = apiInstance.GetContactOptionTypes();
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling SettingsApi.GetContactOptionTypesUsingGET1: " + e.Message);
+                Debug.Print("Exception when calling SettingsApi.GetContactOptionTypes: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -146,21 +146,21 @@ namespace Example
 }
 ```
 
-#### Using the GetContactOptionTypesUsingGET1WithHttpInfo variant
+#### Using the GetContactOptionTypesWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Get Contact Option types
-    ApiResponse<GetContactOptionTypesResponse> response = apiInstance.GetContactOptionTypesUsingGET1WithHttpInfo();
+    ApiResponse<GetContactOptionTypesResponse> response = apiInstance.GetContactOptionTypesWithHttpInfo();
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling SettingsApi.GetContactOptionTypesUsingGET1WithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling SettingsApi.GetContactOptionTypesWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -193,9 +193,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="isapplicationenabledusingget"></a>
-# **IsApplicationEnabledUsingGET**
-> GetApplicationEnabledStatusResponse IsApplicationEnabledUsingGET ()
+<a id="isapplicationenabled"></a>
+# **IsApplicationEnabled**
+> GetApplicationEnabledStatusResponse IsApplicationEnabled ()
 
 Get Application Status
 
@@ -211,7 +211,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class IsApplicationEnabledUsingGETExample
+    public class IsApplicationEnabledExample
     {
         public static void Main()
         {
@@ -222,12 +222,12 @@ namespace Example
             try
             {
                 // Get Application Status
-                GetApplicationEnabledStatusResponse result = apiInstance.IsApplicationEnabledUsingGET();
+                GetApplicationEnabledStatusResponse result = apiInstance.IsApplicationEnabled();
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling SettingsApi.IsApplicationEnabledUsingGET: " + e.Message);
+                Debug.Print("Exception when calling SettingsApi.IsApplicationEnabled: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -236,21 +236,21 @@ namespace Example
 }
 ```
 
-#### Using the IsApplicationEnabledUsingGETWithHttpInfo variant
+#### Using the IsApplicationEnabledWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Get Application Status
-    ApiResponse<GetApplicationEnabledStatusResponse> response = apiInstance.IsApplicationEnabledUsingGETWithHttpInfo();
+    ApiResponse<GetApplicationEnabledStatusResponse> response = apiInstance.IsApplicationEnabledWithHttpInfo();
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling SettingsApi.IsApplicationEnabledUsingGETWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling SettingsApi.IsApplicationEnabledWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }

@@ -27,18 +27,18 @@ export class ProductInterestBundlesApiRequestFactory extends BaseAPIRequestFacto
      * @param id id
      * @param addProductInterestRequest request
      */
-    public async addProductInterestUsingPOST(id: string, addProductInterestRequest: AddProductInterestRequest, _options?: Configuration): Promise<RequestContext> {
+    public async addProductInterest(id: string, addProductInterestRequest: AddProductInterestRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'id' is not null or undefined
         if (id === null || id === undefined) {
-            throw new RequiredError("ProductInterestBundlesApi", "addProductInterestUsingPOST", "id");
+            throw new RequiredError("ProductInterestBundlesApi", "addProductInterest", "id");
         }
 
 
         // verify required parameter 'addProductInterestRequest' is not null or undefined
         if (addProductInterestRequest === null || addProductInterestRequest === undefined) {
-            throw new RequiredError("ProductInterestBundlesApi", "addProductInterestUsingPOST", "addProductInterestRequest");
+            throw new RequiredError("ProductInterestBundlesApi", "addProductInterest", "addProductInterestRequest");
         }
 
 
@@ -76,12 +76,12 @@ export class ProductInterestBundlesApiRequestFactory extends BaseAPIRequestFacto
      * Create a Product Interest Bundle
      * @param createProductInterestBundleRequest createProductInterestBundleRequest
      */
-    public async createProductInterestBundleUsingPOST(createProductInterestBundleRequest: CreateProductInterestBundleRequest, _options?: Configuration): Promise<RequestContext> {
+    public async createProductInterestBundle(createProductInterestBundleRequest: CreateProductInterestBundleRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'createProductInterestBundleRequest' is not null or undefined
         if (createProductInterestBundleRequest === null || createProductInterestBundleRequest === undefined) {
-            throw new RequiredError("ProductInterestBundlesApi", "createProductInterestBundleUsingPOST", "createProductInterestBundleRequest");
+            throw new RequiredError("ProductInterestBundlesApi", "createProductInterestBundle", "createProductInterestBundleRequest");
         }
 
 
@@ -118,12 +118,12 @@ export class ProductInterestBundlesApiRequestFactory extends BaseAPIRequestFacto
      * Delete a Product Interest Bundle
      * @param id id
      */
-    public async deleteProductInterestBundleUsingDELETE(id: string, _options?: Configuration): Promise<RequestContext> {
+    public async deleteProductInterestBundle(id: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'id' is not null or undefined
         if (id === null || id === undefined) {
-            throw new RequiredError("ProductInterestBundlesApi", "deleteProductInterestBundleUsingDELETE", "id");
+            throw new RequiredError("ProductInterestBundlesApi", "deleteProductInterestBundle", "id");
         }
 
 
@@ -150,12 +150,12 @@ export class ProductInterestBundlesApiRequestFactory extends BaseAPIRequestFacto
      * Get a Product Interest Bundle
      * @param id id
      */
-    public async getProductInterestBundleUsingGET(id: string, _options?: Configuration): Promise<RequestContext> {
+    public async getProductInterestBundle(id: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'id' is not null or undefined
         if (id === null || id === undefined) {
-            throw new RequiredError("ProductInterestBundlesApi", "getProductInterestBundleUsingGET", "id");
+            throw new RequiredError("ProductInterestBundlesApi", "getProductInterestBundle", "id");
         }
 
 
@@ -185,7 +185,7 @@ export class ProductInterestBundlesApiRequestFactory extends BaseAPIRequestFacto
      * @param pageSize Total number of items to return per page
      * @param pageToken Page token
      */
-    public async listProductInterestBundlesUsingGET(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
+    public async listProductInterestBundles(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
 
@@ -235,18 +235,18 @@ export class ProductInterestBundlesApiRequestFactory extends BaseAPIRequestFacto
      * @param id id
      * @param interestId interest_id
      */
-    public async removeProductInterestUsingDELETE(id: string, interestId: string, _options?: Configuration): Promise<RequestContext> {
+    public async removeProductInterest(id: string, interestId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'id' is not null or undefined
         if (id === null || id === undefined) {
-            throw new RequiredError("ProductInterestBundlesApi", "removeProductInterestUsingDELETE", "id");
+            throw new RequiredError("ProductInterestBundlesApi", "removeProductInterest", "id");
         }
 
 
         // verify required parameter 'interestId' is not null or undefined
         if (interestId === null || interestId === undefined) {
-            throw new RequiredError("ProductInterestBundlesApi", "removeProductInterestUsingDELETE", "interestId");
+            throw new RequiredError("ProductInterestBundlesApi", "removeProductInterest", "interestId");
         }
 
 
@@ -270,66 +270,6 @@ export class ProductInterestBundlesApiRequestFactory extends BaseAPIRequestFacto
     }
 
     /**
-     * Updates an existing Product Interest Bundle.
-     * Update a Product Interest Bundle
-     * @param id id
-     * @param updateProductInterestBundleRequest updateProductInterestBundleRequest
-     * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-     */
-    public async updateProductInterestBundleUsingPATCH(id: string, updateProductInterestBundleRequest: UpdateProductInterestBundleRequest, updateMask?: Array<string>, _options?: Configuration): Promise<RequestContext> {
-        let _config = _options || this.configuration;
-
-        // verify required parameter 'id' is not null or undefined
-        if (id === null || id === undefined) {
-            throw new RequiredError("ProductInterestBundlesApi", "updateProductInterestBundleUsingPATCH", "id");
-        }
-
-
-        // verify required parameter 'updateProductInterestBundleRequest' is not null or undefined
-        if (updateProductInterestBundleRequest === null || updateProductInterestBundleRequest === undefined) {
-            throw new RequiredError("ProductInterestBundlesApi", "updateProductInterestBundleUsingPATCH", "updateProductInterestBundleRequest");
-        }
-
-
-
-        // Path Params
-        const localVarPath = '/v2/productInterestBundles/{id}'
-            .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
-
-        // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.PATCH);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-        // Query Params
-        if (updateMask !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(updateMask, "Array<string>", "");
-            for (const serializedParam of serializedParams) {
-                requestContext.appendQueryParam("update_mask", serializedParam);
-            }
-        }
-
-
-        // Body Params
-        const contentType = ObjectSerializer.getPreferredMediaType([
-            "application/json"
-        ]);
-        requestContext.setHeaderParam("Content-Type", contentType);
-        const serializedBody = ObjectSerializer.stringify(
-            ObjectSerializer.serialize(updateProductInterestBundleRequest, "UpdateProductInterestBundleRequest", ""),
-            contentType
-        );
-        requestContext.setBody(serializedBody);
-
-        
-        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-
-        return requestContext;
-    }
-
-    /**
      * Updates an existing Product Interest in an existing Bundle.
      * Update a Product Interest in an existing Bundle
      * @param id id
@@ -337,24 +277,24 @@ export class ProductInterestBundlesApiRequestFactory extends BaseAPIRequestFacto
      * @param updateProductInterestRequest updateProductInterestRequest
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateProductInterestUsingPATCH(id: string, interestId: string, updateProductInterestRequest: UpdateProductInterestRequest, updateMask?: Array<string>, _options?: Configuration): Promise<RequestContext> {
+    public async updateProductInterest(id: string, interestId: string, updateProductInterestRequest: UpdateProductInterestRequest, updateMask?: Array<string>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'id' is not null or undefined
         if (id === null || id === undefined) {
-            throw new RequiredError("ProductInterestBundlesApi", "updateProductInterestUsingPATCH", "id");
+            throw new RequiredError("ProductInterestBundlesApi", "updateProductInterest", "id");
         }
 
 
         // verify required parameter 'interestId' is not null or undefined
         if (interestId === null || interestId === undefined) {
-            throw new RequiredError("ProductInterestBundlesApi", "updateProductInterestUsingPATCH", "interestId");
+            throw new RequiredError("ProductInterestBundlesApi", "updateProductInterest", "interestId");
         }
 
 
         // verify required parameter 'updateProductInterestRequest' is not null or undefined
         if (updateProductInterestRequest === null || updateProductInterestRequest === undefined) {
-            throw new RequiredError("ProductInterestBundlesApi", "updateProductInterestUsingPATCH", "updateProductInterestRequest");
+            throw new RequiredError("ProductInterestBundlesApi", "updateProductInterest", "updateProductInterestRequest");
         }
 
 
@@ -397,6 +337,66 @@ export class ProductInterestBundlesApiRequestFactory extends BaseAPIRequestFacto
         return requestContext;
     }
 
+    /**
+     * Updates an existing Product Interest Bundle.
+     * Update a Product Interest Bundle
+     * @param id id
+     * @param updateProductInterestBundleRequest updateProductInterestBundleRequest
+     * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public async updateProductInterestBundle(id: string, updateProductInterestBundleRequest: UpdateProductInterestBundleRequest, updateMask?: Array<string>, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'id' is not null or undefined
+        if (id === null || id === undefined) {
+            throw new RequiredError("ProductInterestBundlesApi", "updateProductInterestBundle", "id");
+        }
+
+
+        // verify required parameter 'updateProductInterestBundleRequest' is not null or undefined
+        if (updateProductInterestBundleRequest === null || updateProductInterestBundleRequest === undefined) {
+            throw new RequiredError("ProductInterestBundlesApi", "updateProductInterestBundle", "updateProductInterestBundleRequest");
+        }
+
+
+
+        // Path Params
+        const localVarPath = '/v2/productInterestBundles/{id}'
+            .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.PATCH);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Query Params
+        if (updateMask !== undefined) {
+            const serializedParams = ObjectSerializer.serialize(updateMask, "Array<string>", "");
+            for (const serializedParam of serializedParams) {
+                requestContext.appendQueryParam("update_mask", serializedParam);
+            }
+        }
+
+
+        // Body Params
+        const contentType = ObjectSerializer.getPreferredMediaType([
+            "application/json"
+        ]);
+        requestContext.setHeaderParam("Content-Type", contentType);
+        const serializedBody = ObjectSerializer.stringify(
+            ObjectSerializer.serialize(updateProductInterestBundleRequest, "UpdateProductInterestBundleRequest", ""),
+            contentType
+        );
+        requestContext.setBody(serializedBody);
+
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
 }
 
 export class ProductInterestBundlesApiResponseProcessor {
@@ -405,10 +405,10 @@ export class ProductInterestBundlesApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to addProductInterestUsingPOST
+     * @params response Response returned by the server for a request to addProductInterest
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async addProductInterestUsingPOSTWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ProductInterest >> {
+     public async addProductInterestWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ProductInterest >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("201", response.httpStatusCode)) {
             const body: ProductInterest = ObjectSerializer.deserialize(
@@ -455,10 +455,10 @@ export class ProductInterestBundlesApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to createProductInterestBundleUsingPOST
+     * @params response Response returned by the server for a request to createProductInterestBundle
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async createProductInterestBundleUsingPOSTWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ProductInterestBundle >> {
+     public async createProductInterestBundleWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ProductInterestBundle >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("201", response.httpStatusCode)) {
             const body: ProductInterestBundle = ObjectSerializer.deserialize(
@@ -505,10 +505,10 @@ export class ProductInterestBundlesApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to deleteProductInterestBundleUsingDELETE
+     * @params response Response returned by the server for a request to deleteProductInterestBundle
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async deleteProductInterestBundleUsingDELETEWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async deleteProductInterestBundleWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("204", response.httpStatusCode)) {
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
@@ -558,10 +558,10 @@ export class ProductInterestBundlesApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to getProductInterestBundleUsingGET
+     * @params response Response returned by the server for a request to getProductInterestBundle
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getProductInterestBundleUsingGETWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ProductInterestBundle >> {
+     public async getProductInterestBundleWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ProductInterestBundle >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: ProductInterestBundle = ObjectSerializer.deserialize(
@@ -615,10 +615,10 @@ export class ProductInterestBundlesApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to listProductInterestBundlesUsingGET
+     * @params response Response returned by the server for a request to listProductInterestBundles
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async listProductInterestBundlesUsingGETWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListProductInterestBundleResponse >> {
+     public async listProductInterestBundlesWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListProductInterestBundleResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: ListProductInterestBundleResponse = ObjectSerializer.deserialize(
@@ -672,10 +672,10 @@ export class ProductInterestBundlesApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to removeProductInterestUsingDELETE
+     * @params response Response returned by the server for a request to removeProductInterest
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async removeProductInterestUsingDELETEWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async removeProductInterestWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("204", response.httpStatusCode)) {
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
@@ -725,16 +725,16 @@ export class ProductInterestBundlesApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to updateProductInterestBundleUsingPATCH
+     * @params response Response returned by the server for a request to updateProductInterest
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async updateProductInterestBundleUsingPATCHWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ProductInterestBundle >> {
+     public async updateProductInterestWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ProductInterest >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: ProductInterestBundle = ObjectSerializer.deserialize(
+            const body: ProductInterest = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "ProductInterestBundle", ""
-            ) as ProductInterestBundle;
+                "ProductInterest", ""
+            ) as ProductInterest;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("401", response.httpStatusCode)) {
@@ -768,10 +768,10 @@ export class ProductInterestBundlesApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: ProductInterestBundle = ObjectSerializer.deserialize(
+            const body: ProductInterest = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "ProductInterestBundle", ""
-            ) as ProductInterestBundle;
+                "ProductInterest", ""
+            ) as ProductInterest;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -782,16 +782,16 @@ export class ProductInterestBundlesApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to updateProductInterestUsingPATCH
+     * @params response Response returned by the server for a request to updateProductInterestBundle
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async updateProductInterestUsingPATCHWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ProductInterest >> {
+     public async updateProductInterestBundleWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ProductInterestBundle >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: ProductInterest = ObjectSerializer.deserialize(
+            const body: ProductInterestBundle = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "ProductInterest", ""
-            ) as ProductInterest;
+                "ProductInterestBundle", ""
+            ) as ProductInterestBundle;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("401", response.httpStatusCode)) {
@@ -825,10 +825,10 @@ export class ProductInterestBundlesApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: ProductInterest = ObjectSerializer.deserialize(
+            const body: ProductInterestBundle = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "ProductInterest", ""
-            ) as ProductInterest;
+                "ProductInterestBundle", ""
+            ) as ProductInterestBundle;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

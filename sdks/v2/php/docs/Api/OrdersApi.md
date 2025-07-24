@@ -4,16 +4,16 @@ All URIs are relative to https://api.keap.com/crm/rest, except if the operation 
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createOrderCustomFieldUsingPOST()**](OrdersApi.md#createOrderCustomFieldUsingPOST) | **POST** /v2/orders/model/customFields | Create an Order Custom Field |
-| [**deleteOrderCustomFieldUsingDELETE()**](OrdersApi.md#deleteOrderCustomFieldUsingDELETE) | **DELETE** /v2/orders/model/customFields/{custom_field_id} | Delete an Order Custom Field |
-| [**retrieveOrderCustomFieldModelUsingGET()**](OrdersApi.md#retrieveOrderCustomFieldModelUsingGET) | **GET** /v2/orders/model | Retrieve Order Custom Field Model |
-| [**updateOrderCustomFieldUsingPATCH()**](OrdersApi.md#updateOrderCustomFieldUsingPATCH) | **PATCH** /v2/orders/model/customFields/{custom_field_id} | Update an Order Custom Field |
+| [**createOrderCustomField()**](OrdersApi.md#createOrderCustomField) | **POST** /v2/orders/model/customFields | Create an Order Custom Field |
+| [**deleteOrderCustomField()**](OrdersApi.md#deleteOrderCustomField) | **DELETE** /v2/orders/model/customFields/{custom_field_id} | Delete an Order Custom Field |
+| [**retrieveOrderCustomFieldModel()**](OrdersApi.md#retrieveOrderCustomFieldModel) | **GET** /v2/orders/model | Retrieve Order Custom Field Model |
+| [**updateOrderCustomField()**](OrdersApi.md#updateOrderCustomField) | **PATCH** /v2/orders/model/customFields/{custom_field_id} | Update an Order Custom Field |
 
 
-## `createOrderCustomFieldUsingPOST()`
+## `createOrderCustomField()`
 
 ```php
-createOrderCustomFieldUsingPOST($create_custom_field_request): \Keap\Core\V2\Model\CustomFieldMetaData
+createOrderCustomField($create_custom_field_request): \Keap\Core\V2\Model\CustomFieldMetaData
 ```
 
 Create an Order Custom Field
@@ -35,10 +35,10 @@ $apiInstance = new Keap\Core\V2\Api\OrdersApi(
 $create_custom_field_request = new \Keap\Core\V2\Model\CreateCustomFieldRequest(); // \Keap\Core\V2\Model\CreateCustomFieldRequest | customField
 
 try {
-    $result = $apiInstance->createOrderCustomFieldUsingPOST($create_custom_field_request);
+    $result = $apiInstance->createOrderCustomField($create_custom_field_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling OrdersApi->createOrderCustomFieldUsingPOST: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling OrdersApi->createOrderCustomField: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -65,10 +65,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `deleteOrderCustomFieldUsingDELETE()`
+## `deleteOrderCustomField()`
 
 ```php
-deleteOrderCustomFieldUsingDELETE($custom_field_id)
+deleteOrderCustomField($custom_field_id)
 ```
 
 Delete an Order Custom Field
@@ -90,9 +90,9 @@ $apiInstance = new Keap\Core\V2\Api\OrdersApi(
 $custom_field_id = 'custom_field_id_example'; // string | custom_field_id
 
 try {
-    $apiInstance->deleteOrderCustomFieldUsingDELETE($custom_field_id);
+    $apiInstance->deleteOrderCustomField($custom_field_id);
 } catch (Exception $e) {
-    echo 'Exception when calling OrdersApi->deleteOrderCustomFieldUsingDELETE: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling OrdersApi->deleteOrderCustomField: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -119,10 +119,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `retrieveOrderCustomFieldModelUsingGET()`
+## `retrieveOrderCustomFieldModel()`
 
 ```php
-retrieveOrderCustomFieldModelUsingGET(): \Keap\Core\V2\Model\ObjectModel
+retrieveOrderCustomFieldModel(): \Keap\Core\V2\Model\ObjectModel
 ```
 
 Retrieve Order Custom Field Model
@@ -143,10 +143,10 @@ $apiInstance = new Keap\Core\V2\Api\OrdersApi(
 );
 
 try {
-    $result = $apiInstance->retrieveOrderCustomFieldModelUsingGET();
+    $result = $apiInstance->retrieveOrderCustomFieldModel();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling OrdersApi->retrieveOrderCustomFieldModelUsingGET: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling OrdersApi->retrieveOrderCustomFieldModel: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -171,10 +171,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `updateOrderCustomFieldUsingPATCH()`
+## `updateOrderCustomField()`
 
 ```php
-updateOrderCustomFieldUsingPATCH($custom_field_id, $update_custom_field_meta_data_request, $update_mask): \Keap\Core\V2\Model\CustomFieldMetaData
+updateOrderCustomField($custom_field_id, $update_custom_field_meta_data_request, $update_mask): \Keap\Core\V2\Model\CustomFieldMetaData
 ```
 
 Update an Order Custom Field
@@ -198,10 +198,10 @@ $update_custom_field_meta_data_request = new \Keap\Core\V2\Model\UpdateCustomFie
 $update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
-    $result = $apiInstance->updateOrderCustomFieldUsingPATCH($custom_field_id, $update_custom_field_meta_data_request, $update_mask);
+    $result = $apiInstance->updateOrderCustomField($custom_field_id, $update_custom_field_meta_data_request, $update_mask);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling OrdersApi->updateOrderCustomFieldUsingPATCH: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling OrdersApi->updateOrderCustomField: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

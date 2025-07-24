@@ -23,12 +23,12 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
      * Create an Order Custom Field
      * @param createCustomFieldRequest customField
      */
-    public async createOrderCustomFieldUsingPOST(createCustomFieldRequest: CreateCustomFieldRequest, _options?: Configuration): Promise<RequestContext> {
+    public async createOrderCustomField(createCustomFieldRequest: CreateCustomFieldRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'createCustomFieldRequest' is not null or undefined
         if (createCustomFieldRequest === null || createCustomFieldRequest === undefined) {
-            throw new RequiredError("OrdersApi", "createOrderCustomFieldUsingPOST", "createCustomFieldRequest");
+            throw new RequiredError("OrdersApi", "createOrderCustomField", "createCustomFieldRequest");
         }
 
 
@@ -65,12 +65,12 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
      * Delete an Order Custom Field
      * @param customFieldId custom_field_id
      */
-    public async deleteOrderCustomFieldUsingDELETE(customFieldId: string, _options?: Configuration): Promise<RequestContext> {
+    public async deleteOrderCustomField(customFieldId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'customFieldId' is not null or undefined
         if (customFieldId === null || customFieldId === undefined) {
-            throw new RequiredError("OrdersApi", "deleteOrderCustomFieldUsingDELETE", "customFieldId");
+            throw new RequiredError("OrdersApi", "deleteOrderCustomField", "customFieldId");
         }
 
 
@@ -96,7 +96,7 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
      * Gets the custom fields for the Order object
      * Retrieve Order Custom Field Model
      */
-    public async retrieveOrderCustomFieldModelUsingGET(_options?: Configuration): Promise<RequestContext> {
+    public async retrieveOrderCustomFieldModel(_options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // Path Params
@@ -123,18 +123,18 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
      * @param updateCustomFieldMetaDataRequest request
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateOrderCustomFieldUsingPATCH(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Array<string>, _options?: Configuration): Promise<RequestContext> {
+    public async updateOrderCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Array<string>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'customFieldId' is not null or undefined
         if (customFieldId === null || customFieldId === undefined) {
-            throw new RequiredError("OrdersApi", "updateOrderCustomFieldUsingPATCH", "customFieldId");
+            throw new RequiredError("OrdersApi", "updateOrderCustomField", "customFieldId");
         }
 
 
         // verify required parameter 'updateCustomFieldMetaDataRequest' is not null or undefined
         if (updateCustomFieldMetaDataRequest === null || updateCustomFieldMetaDataRequest === undefined) {
-            throw new RequiredError("OrdersApi", "updateOrderCustomFieldUsingPATCH", "updateCustomFieldMetaDataRequest");
+            throw new RequiredError("OrdersApi", "updateOrderCustomField", "updateCustomFieldMetaDataRequest");
         }
 
 
@@ -184,10 +184,10 @@ export class OrdersApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to createOrderCustomFieldUsingPOST
+     * @params response Response returned by the server for a request to createOrderCustomField
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async createOrderCustomFieldUsingPOSTWithHttpInfo(response: ResponseContext): Promise<HttpInfo<CustomFieldMetaData >> {
+     public async createOrderCustomFieldWithHttpInfo(response: ResponseContext): Promise<HttpInfo<CustomFieldMetaData >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("201", response.httpStatusCode)) {
             const body: CustomFieldMetaData = ObjectSerializer.deserialize(
@@ -234,10 +234,10 @@ export class OrdersApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to deleteOrderCustomFieldUsingDELETE
+     * @params response Response returned by the server for a request to deleteOrderCustomField
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async deleteOrderCustomFieldUsingDELETEWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async deleteOrderCustomFieldWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("204", response.httpStatusCode)) {
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
@@ -287,10 +287,10 @@ export class OrdersApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to retrieveOrderCustomFieldModelUsingGET
+     * @params response Response returned by the server for a request to retrieveOrderCustomFieldModel
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async retrieveOrderCustomFieldModelUsingGETWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ObjectModel >> {
+     public async retrieveOrderCustomFieldModelWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ObjectModel >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: ObjectModel = ObjectSerializer.deserialize(
@@ -344,10 +344,10 @@ export class OrdersApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to updateOrderCustomFieldUsingPATCH
+     * @params response Response returned by the server for a request to updateOrderCustomField
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async updateOrderCustomFieldUsingPATCHWithHttpInfo(response: ResponseContext): Promise<HttpInfo<CustomFieldMetaData >> {
+     public async updateOrderCustomFieldWithHttpInfo(response: ResponseContext): Promise<HttpInfo<CustomFieldMetaData >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: CustomFieldMetaData = ObjectSerializer.deserialize(

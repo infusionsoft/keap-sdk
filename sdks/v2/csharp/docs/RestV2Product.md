@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **Name** | **string** | Product name | [optional] 
 **Options** | [**List&lt;ProductOptions&gt;**](ProductOptions.md) | List of product options. Can be empty. | [optional] 
 **Price** | [**CurrencyValue**](CurrencyValue.md) |  | [optional] 
+**Shippable** | **bool** | If the product requires shipping | [optional] 
 **ShortDescription** | **string** | Product short description | [optional] 
 **Sku** | **string** | Product SKU | [optional] 
 **StateTaxable** | **bool** | If state-based taxes should be applied to this product | [optional] 

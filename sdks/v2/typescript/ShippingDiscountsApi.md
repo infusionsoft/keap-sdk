@@ -4,15 +4,15 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createDiscountUsingPOST3**](ShippingDiscountsApi.md#createDiscountUsingPOST3) | **POST** /v2/discounts/shipping | Create a Shipping Discount
-[**deleteDiscountUsingDELETE3**](ShippingDiscountsApi.md#deleteDiscountUsingDELETE3) | **DELETE** /v2/discounts/shipping/{discount_id} | Delete a Shipping Discount
-[**getDiscountUsingGET3**](ShippingDiscountsApi.md#getDiscountUsingGET3) | **GET** /v2/discounts/shipping/{discount_id} | Retrieve a Shipping Discount
-[**listDiscountsUsingGET1**](ShippingDiscountsApi.md#listDiscountsUsingGET1) | **GET** /v2/discounts/shipping | List all Shipping Discounts
-[**updateDiscountUsingPATCH3**](ShippingDiscountsApi.md#updateDiscountUsingPATCH3) | **PATCH** /v2/discounts/shipping/{discount_id} | Update a Shipping Discount
+[**createShippingDiscount**](ShippingDiscountsApi.md#createShippingDiscount) | **POST** /v2/discounts/shipping | Create a Shipping Discount
+[**deleteShippingDiscount**](ShippingDiscountsApi.md#deleteShippingDiscount) | **DELETE** /v2/discounts/shipping/{discount_id} | Delete a Shipping Discount
+[**getShippingDiscount**](ShippingDiscountsApi.md#getShippingDiscount) | **GET** /v2/discounts/shipping/{discount_id} | Retrieve a Shipping Discount
+[**listShippingDiscounts**](ShippingDiscountsApi.md#listShippingDiscounts) | **GET** /v2/discounts/shipping | List all Shipping Discounts
+[**updateShippingDiscount**](ShippingDiscountsApi.md#updateShippingDiscount) | **PATCH** /v2/discounts/shipping/{discount_id} | Update a Shipping Discount
 
 
-# **createDiscountUsingPOST3**
-> ShippingDiscount createDiscountUsingPOST3(createShippingDiscountRequest)
+# **createShippingDiscount**
+> ShippingDiscount createShippingDiscount(createShippingDiscountRequest)
 
 Creates a Shipping Discount
 
@@ -21,12 +21,12 @@ Creates a Shipping Discount
 
 ```typescript
 import { createConfiguration, ShippingDiscountsApi } from '';
-import type { ShippingDiscountsApiCreateDiscountUsingPOST3Request } from '';
+import type { ShippingDiscountsApiCreateShippingDiscountRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new ShippingDiscountsApi(configuration);
 
-const request: ShippingDiscountsApiCreateDiscountUsingPOST3Request = {
+const request: ShippingDiscountsApiCreateShippingDiscountRequest = {
     // request
   createShippingDiscountRequest: {
     criteria: [
@@ -52,7 +52,7 @@ const request: ShippingDiscountsApiCreateDiscountUsingPOST3Request = {
   },
 };
 
-const data = await apiInstance.createDiscountUsingPOST3(request);
+const data = await apiInstance.createShippingDiscount(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -88,8 +88,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **deleteDiscountUsingDELETE3**
-> void deleteDiscountUsingDELETE3()
+# **deleteShippingDiscount**
+> void deleteShippingDiscount()
 
 Deletes a specified Shipping Discount
 
@@ -98,17 +98,17 @@ Deletes a specified Shipping Discount
 
 ```typescript
 import { createConfiguration, ShippingDiscountsApi } from '';
-import type { ShippingDiscountsApiDeleteDiscountUsingDELETE3Request } from '';
+import type { ShippingDiscountsApiDeleteShippingDiscountRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new ShippingDiscountsApi(configuration);
 
-const request: ShippingDiscountsApiDeleteDiscountUsingDELETE3Request = {
+const request: ShippingDiscountsApiDeleteShippingDiscountRequest = {
     // discount_id
   discountId: "discount_id_example",
 };
 
-const data = await apiInstance.deleteDiscountUsingDELETE3(request);
+const data = await apiInstance.deleteShippingDiscount(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -145,8 +145,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **getDiscountUsingGET3**
-> ShippingDiscount getDiscountUsingGET3()
+# **getShippingDiscount**
+> ShippingDiscount getShippingDiscount()
 
 Retrieves a Shipping Discount
 
@@ -155,17 +155,17 @@ Retrieves a Shipping Discount
 
 ```typescript
 import { createConfiguration, ShippingDiscountsApi } from '';
-import type { ShippingDiscountsApiGetDiscountUsingGET3Request } from '';
+import type { ShippingDiscountsApiGetShippingDiscountRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new ShippingDiscountsApi(configuration);
 
-const request: ShippingDiscountsApiGetDiscountUsingGET3Request = {
+const request: ShippingDiscountsApiGetShippingDiscountRequest = {
     // discount_id
   discountId: "discount_id_example",
 };
 
-const data = await apiInstance.getDiscountUsingGET3(request);
+const data = await apiInstance.getShippingDiscount(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -202,8 +202,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **listDiscountsUsingGET1**
-> ListShippingDiscountsResponse listDiscountsUsingGET1()
+# **listShippingDiscounts**
+> ListShippingDiscountsResponse listShippingDiscounts()
 
 Retrieves a list of Shipping Discounts
 
@@ -212,15 +212,15 @@ Retrieves a list of Shipping Discounts
 
 ```typescript
 import { createConfiguration, ShippingDiscountsApi } from '';
-import type { ShippingDiscountsApiListDiscountsUsingGET1Request } from '';
+import type { ShippingDiscountsApiListShippingDiscountsRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new ShippingDiscountsApi(configuration);
 
-const request: ShippingDiscountsApiListDiscountsUsingGET1Request = {
+const request: ShippingDiscountsApiListShippingDiscountsRequest = {
     // Filter to apply, allowed fields are: - (DiscountType) `discount_type`: AMOUNT or PERCENT - (Double) `discount_value`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=discount_type%3D%3DAMOUNT` - `filter=discount_value%3D%3D4.5` - `filter=discount_type%3D%3DAMOUNT%3Bdiscount_value%3D%3D4.5`  (optional)
   filter: "filter_example",
-    // Attribute and direction to order items. One of the following fields: - `discount_type` - `discount_value` - `id`  One of the following directions: - `asc` - `desc` (optional)
+    // Attribute and direction to order items. One of the following fields: - `discount_type` - `discount_value` - `id` - `name`  One of the following directions: - `asc` - `desc` (optional)
   orderBy: "order_by_example",
     // Total number of items to return per page (optional)
   pageSize: 0,
@@ -228,7 +228,7 @@ const request: ShippingDiscountsApiListDiscountsUsingGET1Request = {
   pageToken: "page_token_example",
 };
 
-const data = await apiInstance.listDiscountsUsingGET1(request);
+const data = await apiInstance.listShippingDiscounts(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -238,7 +238,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **filter** | [**string**] | Filter to apply, allowed fields are: - (DiscountType) &#x60;discount_type&#x60;: AMOUNT or PERCENT - (Double) &#x60;discount_value&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT&#x60; - &#x60;filter&#x3D;discount_value%3D%3D4.5&#x60; - &#x60;filter&#x3D;discount_type%3D%3DAMOUNT%3Bdiscount_value%3D%3D4.5&#x60;  | (optional) defaults to undefined
- **orderBy** | [**string**] | Attribute and direction to order items. One of the following fields: - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | (optional) defaults to undefined
+ **orderBy** | [**string**] | Attribute and direction to order items. One of the following fields: - &#x60;discount_type&#x60; - &#x60;discount_value&#x60; - &#x60;id&#x60; - &#x60;name&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | (optional) defaults to undefined
  **pageSize** | [**number**] | Total number of items to return per page | (optional) defaults to undefined
  **pageToken** | [**string**] | Page token | (optional) defaults to undefined
 
@@ -268,8 +268,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **updateDiscountUsingPATCH3**
-> ShippingDiscount updateDiscountUsingPATCH3(updateShippingDiscountRequest)
+# **updateShippingDiscount**
+> ShippingDiscount updateShippingDiscount(updateShippingDiscountRequest)
 
 Updates a Shipping Discount
 
@@ -278,12 +278,12 @@ Updates a Shipping Discount
 
 ```typescript
 import { createConfiguration, ShippingDiscountsApi } from '';
-import type { ShippingDiscountsApiUpdateDiscountUsingPATCH3Request } from '';
+import type { ShippingDiscountsApiUpdateShippingDiscountRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new ShippingDiscountsApi(configuration);
 
-const request: ShippingDiscountsApiUpdateDiscountUsingPATCH3Request = {
+const request: ShippingDiscountsApiUpdateShippingDiscountRequest = {
     // discount_id
   discountId: "discount_id_example",
     // request
@@ -315,7 +315,7 @@ const request: ShippingDiscountsApiUpdateDiscountUsingPATCH3Request = {
   ],
 };
 
-const data = await apiInstance.updateDiscountUsingPATCH3(request);
+const data = await apiInstance.updateShippingDiscount(request);
 console.log('API called successfully. Returned data:', data);
 ```
 

@@ -4,18 +4,18 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**addProductInterestUsingPOST**](ProductInterestBundlesApi.md#addProductInterestUsingPOST) | **POST** /v2/productInterestBundles/{id}/interests | Create a Product Interest in an existing Bundle
-[**createProductInterestBundleUsingPOST**](ProductInterestBundlesApi.md#createProductInterestBundleUsingPOST) | **POST** /v2/productInterestBundles | Create a Product Interest Bundle
-[**deleteProductInterestBundleUsingDELETE**](ProductInterestBundlesApi.md#deleteProductInterestBundleUsingDELETE) | **DELETE** /v2/productInterestBundles/{id} | Delete a Product Interest Bundle
-[**getProductInterestBundleUsingGET**](ProductInterestBundlesApi.md#getProductInterestBundleUsingGET) | **GET** /v2/productInterestBundles/{id} | Get a Product Interest Bundle
-[**listProductInterestBundlesUsingGET**](ProductInterestBundlesApi.md#listProductInterestBundlesUsingGET) | **GET** /v2/productInterestBundles | List Product Interest Bundles
-[**removeProductInterestUsingDELETE**](ProductInterestBundlesApi.md#removeProductInterestUsingDELETE) | **DELETE** /v2/productInterestBundles/{id}/interests/{interest_id} | Delete a Product Interest from an existing Bundle
-[**updateProductInterestBundleUsingPATCH**](ProductInterestBundlesApi.md#updateProductInterestBundleUsingPATCH) | **PATCH** /v2/productInterestBundles/{id} | Update a Product Interest Bundle
-[**updateProductInterestUsingPATCH**](ProductInterestBundlesApi.md#updateProductInterestUsingPATCH) | **PATCH** /v2/productInterestBundles/{id}/interests/{interest_id} | Update a Product Interest in an existing Bundle
+[**addProductInterest**](ProductInterestBundlesApi.md#addProductInterest) | **POST** /v2/productInterestBundles/{id}/interests | Create a Product Interest in an existing Bundle
+[**createProductInterestBundle**](ProductInterestBundlesApi.md#createProductInterestBundle) | **POST** /v2/productInterestBundles | Create a Product Interest Bundle
+[**deleteProductInterestBundle**](ProductInterestBundlesApi.md#deleteProductInterestBundle) | **DELETE** /v2/productInterestBundles/{id} | Delete a Product Interest Bundle
+[**getProductInterestBundle**](ProductInterestBundlesApi.md#getProductInterestBundle) | **GET** /v2/productInterestBundles/{id} | Get a Product Interest Bundle
+[**listProductInterestBundles**](ProductInterestBundlesApi.md#listProductInterestBundles) | **GET** /v2/productInterestBundles | List Product Interest Bundles
+[**removeProductInterest**](ProductInterestBundlesApi.md#removeProductInterest) | **DELETE** /v2/productInterestBundles/{id}/interests/{interest_id} | Delete a Product Interest from an existing Bundle
+[**updateProductInterest**](ProductInterestBundlesApi.md#updateProductInterest) | **PATCH** /v2/productInterestBundles/{id}/interests/{interest_id} | Update a Product Interest in an existing Bundle
+[**updateProductInterestBundle**](ProductInterestBundlesApi.md#updateProductInterestBundle) | **PATCH** /v2/productInterestBundles/{id} | Update a Product Interest Bundle
 
 
-# **addProductInterestUsingPOST**
-> ProductInterest addProductInterestUsingPOST(addProductInterestRequest)
+# **addProductInterest**
+> ProductInterest addProductInterest(addProductInterestRequest)
 
 Creates a new Product Interest in an existing Bundle.
 
@@ -24,12 +24,12 @@ Creates a new Product Interest in an existing Bundle.
 
 ```typescript
 import { createConfiguration, ProductInterestBundlesApi } from '';
-import type { ProductInterestBundlesApiAddProductInterestUsingPOSTRequest } from '';
+import type { ProductInterestBundlesApiAddProductInterestRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new ProductInterestBundlesApi(configuration);
 
-const request: ProductInterestBundlesApiAddProductInterestUsingPOSTRequest = {
+const request: ProductInterestBundlesApiAddProductInterestRequest = {
     // id
   id: "id_example",
     // request
@@ -42,7 +42,7 @@ const request: ProductInterestBundlesApiAddProductInterestUsingPOSTRequest = {
   },
 };
 
-const data = await apiInstance.addProductInterestUsingPOST(request);
+const data = await apiInstance.addProductInterest(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -79,8 +79,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **createProductInterestBundleUsingPOST**
-> ProductInterestBundle createProductInterestBundleUsingPOST(createProductInterestBundleRequest)
+# **createProductInterestBundle**
+> ProductInterestBundle createProductInterestBundle(createProductInterestBundleRequest)
 
 Creates a new Product Interest Bundle.
 
@@ -89,12 +89,12 @@ Creates a new Product Interest Bundle.
 
 ```typescript
 import { createConfiguration, ProductInterestBundlesApi } from '';
-import type { ProductInterestBundlesApiCreateProductInterestBundleUsingPOSTRequest } from '';
+import type { ProductInterestBundlesApiCreateProductInterestBundleRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new ProductInterestBundlesApi(configuration);
 
-const request: ProductInterestBundlesApiCreateProductInterestBundleUsingPOSTRequest = {
+const request: ProductInterestBundlesApiCreateProductInterestBundleRequest = {
     // createProductInterestBundleRequest
   createProductInterestBundleRequest: {
     description: "description_example",
@@ -102,7 +102,7 @@ const request: ProductInterestBundlesApiCreateProductInterestBundleUsingPOSTRequ
   },
 };
 
-const data = await apiInstance.createProductInterestBundleUsingPOST(request);
+const data = await apiInstance.createProductInterestBundle(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -138,8 +138,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **deleteProductInterestBundleUsingDELETE**
-> void deleteProductInterestBundleUsingDELETE()
+# **deleteProductInterestBundle**
+> void deleteProductInterestBundle()
 
 Deletes an existing Product Interest Bundle.
 
@@ -148,17 +148,17 @@ Deletes an existing Product Interest Bundle.
 
 ```typescript
 import { createConfiguration, ProductInterestBundlesApi } from '';
-import type { ProductInterestBundlesApiDeleteProductInterestBundleUsingDELETERequest } from '';
+import type { ProductInterestBundlesApiDeleteProductInterestBundleRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new ProductInterestBundlesApi(configuration);
 
-const request: ProductInterestBundlesApiDeleteProductInterestBundleUsingDELETERequest = {
+const request: ProductInterestBundlesApiDeleteProductInterestBundleRequest = {
     // id
   id: "id_example",
 };
 
-const data = await apiInstance.deleteProductInterestBundleUsingDELETE(request);
+const data = await apiInstance.deleteProductInterestBundle(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -195,8 +195,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **getProductInterestBundleUsingGET**
-> ProductInterestBundle getProductInterestBundleUsingGET()
+# **getProductInterestBundle**
+> ProductInterestBundle getProductInterestBundle()
 
 Gets a single Product Interest Bundle.
 
@@ -205,17 +205,17 @@ Gets a single Product Interest Bundle.
 
 ```typescript
 import { createConfiguration, ProductInterestBundlesApi } from '';
-import type { ProductInterestBundlesApiGetProductInterestBundleUsingGETRequest } from '';
+import type { ProductInterestBundlesApiGetProductInterestBundleRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new ProductInterestBundlesApi(configuration);
 
-const request: ProductInterestBundlesApiGetProductInterestBundleUsingGETRequest = {
+const request: ProductInterestBundlesApiGetProductInterestBundleRequest = {
     // id
   id: "id_example",
 };
 
-const data = await apiInstance.getProductInterestBundleUsingGET(request);
+const data = await apiInstance.getProductInterestBundle(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -252,8 +252,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **listProductInterestBundlesUsingGET**
-> ListProductInterestBundleResponse listProductInterestBundlesUsingGET()
+# **listProductInterestBundles**
+> ListProductInterestBundleResponse listProductInterestBundles()
 
 Retrieves a list of Product Interest Bundles
 
@@ -262,12 +262,12 @@ Retrieves a list of Product Interest Bundles
 
 ```typescript
 import { createConfiguration, ProductInterestBundlesApi } from '';
-import type { ProductInterestBundlesApiListProductInterestBundlesUsingGETRequest } from '';
+import type { ProductInterestBundlesApiListProductInterestBundlesRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new ProductInterestBundlesApi(configuration);
 
-const request: ProductInterestBundlesApiListProductInterestBundlesUsingGETRequest = {
+const request: ProductInterestBundlesApiListProductInterestBundlesRequest = {
     // Filter to apply, allowed fields are: - (String) `name`  (optional)
   filter: "filter_example",
     // Attribute and direction to order items. One of the following fields: - `name`  One of the following directions: - `asc` - `desc`  (optional)
@@ -278,7 +278,7 @@ const request: ProductInterestBundlesApiListProductInterestBundlesUsingGETReques
   pageToken: "page_token_example",
 };
 
-const data = await apiInstance.listProductInterestBundlesUsingGET(request);
+const data = await apiInstance.listProductInterestBundles(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -318,8 +318,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **removeProductInterestUsingDELETE**
-> void removeProductInterestUsingDELETE()
+# **removeProductInterest**
+> void removeProductInterest()
 
 Deletes an existing Product Interest from an existing Bundle.
 
@@ -328,19 +328,19 @@ Deletes an existing Product Interest from an existing Bundle.
 
 ```typescript
 import { createConfiguration, ProductInterestBundlesApi } from '';
-import type { ProductInterestBundlesApiRemoveProductInterestUsingDELETERequest } from '';
+import type { ProductInterestBundlesApiRemoveProductInterestRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new ProductInterestBundlesApi(configuration);
 
-const request: ProductInterestBundlesApiRemoveProductInterestUsingDELETERequest = {
+const request: ProductInterestBundlesApiRemoveProductInterestRequest = {
     // id
   id: "id_example",
     // interest_id
   interestId: "interest_id_example",
 };
 
-const data = await apiInstance.removeProductInterestUsingDELETE(request);
+const data = await apiInstance.removeProductInterest(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -378,36 +378,39 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **updateProductInterestBundleUsingPATCH**
-> ProductInterestBundle updateProductInterestBundleUsingPATCH(updateProductInterestBundleRequest)
+# **updateProductInterest**
+> ProductInterest updateProductInterest(updateProductInterestRequest)
 
-Updates an existing Product Interest Bundle.
+Updates an existing Product Interest in an existing Bundle.
 
 ### Example
 
 
 ```typescript
 import { createConfiguration, ProductInterestBundlesApi } from '';
-import type { ProductInterestBundlesApiUpdateProductInterestBundleUsingPATCHRequest } from '';
+import type { ProductInterestBundlesApiUpdateProductInterestRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new ProductInterestBundlesApi(configuration);
 
-const request: ProductInterestBundlesApiUpdateProductInterestBundleUsingPATCHRequest = {
+const request: ProductInterestBundlesApiUpdateProductInterestRequest = {
     // id
   id: "id_example",
-    // updateProductInterestBundleRequest
-  updateProductInterestBundleRequest: {
-    description: "description_example",
-    name: "name_example",
+    // interest_id
+  interestId: "interest_id_example",
+    // updateProductInterestRequest
+  updateProductInterestRequest: {
+    discountPercent: 1,
+    price: 3.14,
+    quantity: 1,
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
   updateMask: [
-    "name",
+    "quantity",
   ],
 };
 
-const data = await apiInstance.updateProductInterestBundleUsingPATCH(request);
+const data = await apiInstance.updateProductInterest(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -416,14 +419,15 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **updateProductInterestBundleRequest** | **UpdateProductInterestBundleRequest**| updateProductInterestBundleRequest |
+ **updateProductInterestRequest** | **UpdateProductInterestRequest**| updateProductInterestRequest |
  **id** | [**string**] | id | defaults to undefined
+ **interestId** | [**string**] | interest_id | defaults to undefined
  **updateMask** |  | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
 
-**ProductInterestBundle**
+**ProductInterest**
 
 ### Authorization
 
@@ -446,39 +450,36 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **updateProductInterestUsingPATCH**
-> ProductInterest updateProductInterestUsingPATCH(updateProductInterestRequest)
+# **updateProductInterestBundle**
+> ProductInterestBundle updateProductInterestBundle(updateProductInterestBundleRequest)
 
-Updates an existing Product Interest in an existing Bundle.
+Updates an existing Product Interest Bundle.
 
 ### Example
 
 
 ```typescript
 import { createConfiguration, ProductInterestBundlesApi } from '';
-import type { ProductInterestBundlesApiUpdateProductInterestUsingPATCHRequest } from '';
+import type { ProductInterestBundlesApiUpdateProductInterestBundleRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new ProductInterestBundlesApi(configuration);
 
-const request: ProductInterestBundlesApiUpdateProductInterestUsingPATCHRequest = {
+const request: ProductInterestBundlesApiUpdateProductInterestBundleRequest = {
     // id
   id: "id_example",
-    // interest_id
-  interestId: "interest_id_example",
-    // updateProductInterestRequest
-  updateProductInterestRequest: {
-    discountPercent: 1,
-    price: 3.14,
-    quantity: 1,
+    // updateProductInterestBundleRequest
+  updateProductInterestBundleRequest: {
+    description: "description_example",
+    name: "name_example",
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
   updateMask: [
-    "quantity",
+    "name",
   ],
 };
 
-const data = await apiInstance.updateProductInterestUsingPATCH(request);
+const data = await apiInstance.updateProductInterestBundle(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -487,15 +488,14 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **updateProductInterestRequest** | **UpdateProductInterestRequest**| updateProductInterestRequest |
+ **updateProductInterestBundleRequest** | **UpdateProductInterestBundleRequest**| updateProductInterestBundleRequest |
  **id** | [**string**] | id | defaults to undefined
- **interestId** | [**string**] | interest_id | defaults to undefined
  **updateMask** |  | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
 
-**ProductInterest**
+**ProductInterestBundle**
 
 ### Authorization
 

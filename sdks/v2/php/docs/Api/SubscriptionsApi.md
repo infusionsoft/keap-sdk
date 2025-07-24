@@ -4,17 +4,72 @@ All URIs are relative to https://api.keap.com/crm/rest, except if the operation 
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createSubscriptionCustomFieldUsingPOST()**](SubscriptionsApi.md#createSubscriptionCustomFieldUsingPOST) | **POST** /v2/subscriptions/model/customFields | Create a Subscription Custom Field |
-| [**createSubscriptionV2UsingPOST()**](SubscriptionsApi.md#createSubscriptionV2UsingPOST) | **POST** /v2/subscriptions | Create Subscription |
-| [**deleteSubscriptionCustomFieldUsingDELETE()**](SubscriptionsApi.md#deleteSubscriptionCustomFieldUsingDELETE) | **DELETE** /v2/subscriptions/model/customFields/{custom_field_id} | Delete a Subscription Custom Field |
-| [**retrieveSubscriptionCustomFieldModelUsingGET()**](SubscriptionsApi.md#retrieveSubscriptionCustomFieldModelUsingGET) | **GET** /v2/subscriptions/model | Retrieve Subscription Custom Field Model |
-| [**updateSubscriptionCustomFieldUsingPATCH()**](SubscriptionsApi.md#updateSubscriptionCustomFieldUsingPATCH) | **PATCH** /v2/subscriptions/model/customFields/{custom_field_id} | Update a Subscription Custom Field |
+| [**createSubscription()**](SubscriptionsApi.md#createSubscription) | **POST** /v2/subscriptions | Create Subscription |
+| [**createSubscriptionCustomField()**](SubscriptionsApi.md#createSubscriptionCustomField) | **POST** /v2/subscriptions/model/customFields | Create a Subscription Custom Field |
+| [**deleteSubscriptionCustomField()**](SubscriptionsApi.md#deleteSubscriptionCustomField) | **DELETE** /v2/subscriptions/model/customFields/{custom_field_id} | Delete a Subscription Custom Field |
+| [**retrieveSubscriptionCustomFieldModel()**](SubscriptionsApi.md#retrieveSubscriptionCustomFieldModel) | **GET** /v2/subscriptions/model | Retrieve Subscription Custom Field Model |
+| [**updateSubscriptionCustomField()**](SubscriptionsApi.md#updateSubscriptionCustomField) | **PATCH** /v2/subscriptions/model/customFields/{custom_field_id} | Update a Subscription Custom Field |
 
 
-## `createSubscriptionCustomFieldUsingPOST()`
+## `createSubscription()`
 
 ```php
-createSubscriptionCustomFieldUsingPOST($create_custom_field_request): \Keap\Core\V2\Model\CustomFieldMetaData
+createSubscription($create_subscription_request): \Keap\Core\V2\Model\Subscription
+```
+
+Create Subscription
+
+Creates a subscription with the specified product and product subscription id.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+$apiInstance = new Keap\Core\V2\Api\SubscriptionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$create_subscription_request = new \Keap\Core\V2\Model\CreateSubscriptionRequest(); // \Keap\Core\V2\Model\CreateSubscriptionRequest | request
+
+try {
+    $result = $apiInstance->createSubscription($create_subscription_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling SubscriptionsApi->createSubscription: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **create_subscription_request** | [**\Keap\Core\V2\Model\CreateSubscriptionRequest**](../Model/CreateSubscriptionRequest.md)| request | |
+
+### Return type
+
+[**\Keap\Core\V2\Model\Subscription**](../Model/Subscription.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createSubscriptionCustomField()`
+
+```php
+createSubscriptionCustomField($create_custom_field_request): \Keap\Core\V2\Model\CustomFieldMetaData
 ```
 
 Create a Subscription Custom Field
@@ -36,10 +91,10 @@ $apiInstance = new Keap\Core\V2\Api\SubscriptionsApi(
 $create_custom_field_request = new \Keap\Core\V2\Model\CreateCustomFieldRequest(); // \Keap\Core\V2\Model\CreateCustomFieldRequest | customField
 
 try {
-    $result = $apiInstance->createSubscriptionCustomFieldUsingPOST($create_custom_field_request);
+    $result = $apiInstance->createSubscriptionCustomField($create_custom_field_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling SubscriptionsApi->createSubscriptionCustomFieldUsingPOST: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling SubscriptionsApi->createSubscriptionCustomField: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -66,65 +121,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `createSubscriptionV2UsingPOST()`
+## `deleteSubscriptionCustomField()`
 
 ```php
-createSubscriptionV2UsingPOST($create_subscription_v2): \Keap\Core\V2\Model\RestSubscriptionV2
-```
-
-Create Subscription
-
-Creates a subscription with the specified product and product subscription id.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-$apiInstance = new Keap\Core\V2\Api\SubscriptionsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
-);
-$create_subscription_v2 = new \Keap\Core\V2\Model\CreateSubscriptionV2(); // \Keap\Core\V2\Model\CreateSubscriptionV2 | createSubscriptionV2
-
-try {
-    $result = $apiInstance->createSubscriptionV2UsingPOST($create_subscription_v2);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling SubscriptionsApi->createSubscriptionV2UsingPOST: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **create_subscription_v2** | [**\Keap\Core\V2\Model\CreateSubscriptionV2**](../Model/CreateSubscriptionV2.md)| createSubscriptionV2 | |
-
-### Return type
-
-[**\Keap\Core\V2\Model\RestSubscriptionV2**](../Model/RestSubscriptionV2.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `deleteSubscriptionCustomFieldUsingDELETE()`
-
-```php
-deleteSubscriptionCustomFieldUsingDELETE($custom_field_id)
+deleteSubscriptionCustomField($custom_field_id)
 ```
 
 Delete a Subscription Custom Field
@@ -146,9 +146,9 @@ $apiInstance = new Keap\Core\V2\Api\SubscriptionsApi(
 $custom_field_id = 'custom_field_id_example'; // string | custom_field_id
 
 try {
-    $apiInstance->deleteSubscriptionCustomFieldUsingDELETE($custom_field_id);
+    $apiInstance->deleteSubscriptionCustomField($custom_field_id);
 } catch (Exception $e) {
-    echo 'Exception when calling SubscriptionsApi->deleteSubscriptionCustomFieldUsingDELETE: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling SubscriptionsApi->deleteSubscriptionCustomField: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -175,10 +175,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `retrieveSubscriptionCustomFieldModelUsingGET()`
+## `retrieveSubscriptionCustomFieldModel()`
 
 ```php
-retrieveSubscriptionCustomFieldModelUsingGET(): \Keap\Core\V2\Model\ObjectModel
+retrieveSubscriptionCustomFieldModel(): \Keap\Core\V2\Model\ObjectModel
 ```
 
 Retrieve Subscription Custom Field Model
@@ -199,10 +199,10 @@ $apiInstance = new Keap\Core\V2\Api\SubscriptionsApi(
 );
 
 try {
-    $result = $apiInstance->retrieveSubscriptionCustomFieldModelUsingGET();
+    $result = $apiInstance->retrieveSubscriptionCustomFieldModel();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling SubscriptionsApi->retrieveSubscriptionCustomFieldModelUsingGET: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling SubscriptionsApi->retrieveSubscriptionCustomFieldModel: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -227,10 +227,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `updateSubscriptionCustomFieldUsingPATCH()`
+## `updateSubscriptionCustomField()`
 
 ```php
-updateSubscriptionCustomFieldUsingPATCH($custom_field_id, $update_custom_field_meta_data_request, $update_mask): \Keap\Core\V2\Model\CustomFieldMetaData
+updateSubscriptionCustomField($custom_field_id, $update_custom_field_meta_data_request, $update_mask): \Keap\Core\V2\Model\CustomFieldMetaData
 ```
 
 Update a Subscription Custom Field
@@ -254,10 +254,10 @@ $update_custom_field_meta_data_request = new \Keap\Core\V2\Model\UpdateCustomFie
 $update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
-    $result = $apiInstance->updateSubscriptionCustomFieldUsingPATCH($custom_field_id, $update_custom_field_meta_data_request, $update_mask);
+    $result = $apiInstance->updateSubscriptionCustomField($custom_field_id, $update_custom_field_meta_data_request, $update_mask);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling SubscriptionsApi->updateSubscriptionCustomFieldUsingPATCH: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling SubscriptionsApi->updateSubscriptionCustomField: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

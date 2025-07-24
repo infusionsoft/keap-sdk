@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CreateTime** | **string** |  | [optional] 
 **Id** | **string** |  | [optional] 
 **MaxLinks** | **long** |  | [optional] 
 **Name** | **string** |  | [optional] 

@@ -4,26 +4,26 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**applyTagsUsingPOST**](TagsApi.md#applyTagsUsingPOST) | **POST** /v2/tags/{tag_id}/contacts:applyTags | Apply Tag
-[**createTagCategoryUsingPOST1**](TagsApi.md#createTagCategoryUsingPOST1) | **POST** /v2/tags/categories | Create Tag Category
-[**createTagUsingPOST1**](TagsApi.md#createTagUsingPOST1) | **POST** /v2/tags | Create Tag
-[**deleteTagCategoryUsingDELETE**](TagsApi.md#deleteTagCategoryUsingDELETE) | **DELETE** /v2/tags/categories/{tag_category_id} | Delete Tag Category
-[**deleteTagUsingDELETE**](TagsApi.md#deleteTagUsingDELETE) | **DELETE** /v2/tags/{tag_id} | Delete Tag
-[**getCategoryUsingGET**](TagsApi.md#getCategoryUsingGET) | **GET** /v2/tags/categories/{tag_category_id} | Retrieve a Tag Category
-[**getTagUsingGET1**](TagsApi.md#getTagUsingGET1) | **GET** /v2/tags/{tag_id} | Retrieve a Tag
-[**listCompaniesForTagIdUsingGET1**](TagsApi.md#listCompaniesForTagIdUsingGET1) | **GET** /v2/tags/{tag_id}/companies | List Tagged Companies
-[**listContactsWithTagIdUsingGET**](TagsApi.md#listContactsWithTagIdUsingGET) | **GET** /v2/tags/{tag_id}/contacts | List Tagged Contacts
-[**listTagCategoriesUsingGET**](TagsApi.md#listTagCategoriesUsingGET) | **GET** /v2/tags/categories | List Tag Categories
-[**listTagsUsingGET1**](TagsApi.md#listTagsUsingGET1) | **GET** /v2/tags | List Tags
-[**removeTagsUsingPOST**](TagsApi.md#removeTagsUsingPOST) | **POST** /v2/tags/{tag_id}/contacts:removeTags | Remove Tags
-[**updateTagCategoryUsingPATCH**](TagsApi.md#updateTagCategoryUsingPATCH) | **PATCH** /v2/tags/categories/{tag_category_id} | Update a Tag Category
-[**updateTagUsingPATCH**](TagsApi.md#updateTagUsingPATCH) | **PATCH** /v2/tags/{tag_id} | Update a Tag
+[**applyTags**](TagsApi.md#applyTags) | **POST** /v2/tags/{tag_id}/contacts:applyTags | Apply Tag
+[**createTag**](TagsApi.md#createTag) | **POST** /v2/tags | Create Tag
+[**createTagCategory**](TagsApi.md#createTagCategory) | **POST** /v2/tags/categories | Create Tag Category
+[**deleteTag**](TagsApi.md#deleteTag) | **DELETE** /v2/tags/{tag_id} | Delete Tag
+[**deleteTagCategory**](TagsApi.md#deleteTagCategory) | **DELETE** /v2/tags/categories/{tag_category_id} | Delete Tag Category
+[**getCategory**](TagsApi.md#getCategory) | **GET** /v2/tags/categories/{tag_category_id} | Retrieve a Tag Category
+[**getTag**](TagsApi.md#getTag) | **GET** /v2/tags/{tag_id} | Retrieve a Tag
+[**listCompaniesForTagId**](TagsApi.md#listCompaniesForTagId) | **GET** /v2/tags/{tag_id}/companies | List Tagged Companies
+[**listContactsWithTagId**](TagsApi.md#listContactsWithTagId) | **GET** /v2/tags/{tag_id}/contacts | List Tagged Contacts
+[**listTagCategories**](TagsApi.md#listTagCategories) | **GET** /v2/tags/categories | List Tag Categories
+[**listTags**](TagsApi.md#listTags) | **GET** /v2/tags | List Tags
+[**removeTags**](TagsApi.md#removeTags) | **POST** /v2/tags/{tag_id}/contacts:removeTags | Remove Tags
+[**updateTag**](TagsApi.md#updateTag) | **PATCH** /v2/tags/{tag_id} | Update a Tag
+[**updateTagCategory**](TagsApi.md#updateTagCategory) | **PATCH** /v2/tags/categories/{tag_category_id} | Update a Tag Category
 
 
 
-## applyTagsUsingPOST
+## applyTags
 
-> ApplyTagsResponse applyTagsUsingPOST(tagId, applyRemoveTagRequest)
+> ApplyTagsResponse applyTags(tagId, applyRemoveTagRequest)
 
 Apply Tag
 
@@ -37,7 +37,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 let apiInstance = new KeapCoreServiceV2Sdk.TagsApi();
 let tagId = "tagId_example"; // String | tag_id
 let applyRemoveTagRequest = new KeapCoreServiceV2Sdk.ApplyRemoveTagRequest(); // ApplyRemoveTagRequest | applyRemoveTagRequest
-apiInstance.applyTagsUsingPOST(tagId, applyRemoveTagRequest).then((data) => {
+apiInstance.applyTags(tagId, applyRemoveTagRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -67,53 +67,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## createTagCategoryUsingPOST1
+## createTag
 
-> Tag createTagCategoryUsingPOST1(createUpdateTagCategoryRequest)
-
-Create Tag Category
-
-Creates a new Tag Category.
-
-### Example
-
-```javascript
-import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
-
-let apiInstance = new KeapCoreServiceV2Sdk.TagsApi();
-let createUpdateTagCategoryRequest = new KeapCoreServiceV2Sdk.CreateUpdateTagCategoryRequest(); // CreateUpdateTagCategoryRequest | request
-apiInstance.createTagCategoryUsingPOST1(createUpdateTagCategoryRequest).then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
-  console.error(error);
-});
-
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **createUpdateTagCategoryRequest** | [**CreateUpdateTagCategoryRequest**](CreateUpdateTagCategoryRequest.md)| request | 
-
-### Return type
-
-[**Tag**](Tag.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## createTagUsingPOST1
-
-> Tag createTagUsingPOST1(createUpdateTagRequest)
+> Tag createTag(createUpdateTagRequest)
 
 Create Tag
 
@@ -126,7 +82,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.TagsApi();
 let createUpdateTagRequest = new KeapCoreServiceV2Sdk.CreateUpdateTagRequest(); // CreateUpdateTagRequest | tag
-apiInstance.createTagUsingPOST1(createUpdateTagRequest).then((data) => {
+apiInstance.createTag(createUpdateTagRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -155,13 +111,13 @@ No authorization required
 - **Accept**: application/json
 
 
-## deleteTagCategoryUsingDELETE
+## createTagCategory
 
-> deleteTagCategoryUsingDELETE(tagCategoryId)
+> Tag createTagCategory(createUpdateTagCategoryRequest)
 
-Delete Tag Category
+Create Tag Category
 
-Deletes the specified Tag Category
+Creates a new Tag Category.
 
 ### Example
 
@@ -169,9 +125,9 @@ Deletes the specified Tag Category
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.TagsApi();
-let tagCategoryId = "tagCategoryId_example"; // String | tag_category_id
-apiInstance.deleteTagCategoryUsingDELETE(tagCategoryId).then(() => {
-  console.log('API called successfully.');
+let createUpdateTagCategoryRequest = new KeapCoreServiceV2Sdk.CreateUpdateTagCategoryRequest(); // CreateUpdateTagCategoryRequest | request
+apiInstance.createTagCategory(createUpdateTagCategoryRequest).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
 });
@@ -183,11 +139,11 @@ apiInstance.deleteTagCategoryUsingDELETE(tagCategoryId).then(() => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tagCategoryId** | **String**| tag_category_id | 
+ **createUpdateTagCategoryRequest** | [**CreateUpdateTagCategoryRequest**](CreateUpdateTagCategoryRequest.md)| request | 
 
 ### Return type
 
-null (empty response body)
+[**Tag**](Tag.md)
 
 ### Authorization
 
@@ -195,13 +151,13 @@ No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 
-## deleteTagUsingDELETE
+## deleteTag
 
-> deleteTagUsingDELETE(tagId)
+> deleteTag(tagId)
 
 Delete Tag
 
@@ -214,7 +170,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.TagsApi();
 let tagId = "tagId_example"; // String | tag_id
-apiInstance.deleteTagUsingDELETE(tagId).then(() => {
+apiInstance.deleteTag(tagId).then(() => {
   console.log('API called successfully.');
 }, (error) => {
   console.error(error);
@@ -243,9 +199,53 @@ No authorization required
 - **Accept**: application/json
 
 
-## getCategoryUsingGET
+## deleteTagCategory
 
-> GetTagCategoryResponse getCategoryUsingGET(tagCategoryId)
+> deleteTagCategory(tagCategoryId)
+
+Delete Tag Category
+
+Deletes the specified Tag Category
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+
+let apiInstance = new KeapCoreServiceV2Sdk.TagsApi();
+let tagCategoryId = "tagCategoryId_example"; // String | tag_category_id
+apiInstance.deleteTagCategory(tagCategoryId).then(() => {
+  console.log('API called successfully.');
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tagCategoryId** | **String**| tag_category_id | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## getCategory
+
+> GetTagCategoryResponse getCategory(tagCategoryId)
 
 Retrieve a Tag Category
 
@@ -258,7 +258,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.TagsApi();
 let tagCategoryId = "tagCategoryId_example"; // String | tag_category_id
-apiInstance.getCategoryUsingGET(tagCategoryId).then((data) => {
+apiInstance.getCategory(tagCategoryId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -287,9 +287,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## getTagUsingGET1
+## getTag
 
-> Tag getTagUsingGET1(tagId)
+> Tag getTag(tagId)
 
 Retrieve a Tag
 
@@ -302,7 +302,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.TagsApi();
 let tagId = "tagId_example"; // String | tag_id
-apiInstance.getTagUsingGET1(tagId).then((data) => {
+apiInstance.getTag(tagId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -331,9 +331,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## listCompaniesForTagIdUsingGET1
+## listCompaniesForTagId
 
-> ListTaggedCompaniesResponse listCompaniesForTagIdUsingGET1(tagId, opts)
+> ListTaggedCompaniesResponse listCompaniesForTagId(tagId, opts)
 
 List Tagged Companies
 
@@ -347,12 +347,12 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 let apiInstance = new KeapCoreServiceV2Sdk.TagsApi();
 let tagId = "tagId_example"; // String | tag_id
 let opts = {
-  'filter': "filter_example", // String | Search filter to apply to results
-  'orderBy': "orderBy_example", // String | Attribute and direction to order items by. E.g. `given_name desc`
+  'filter': "filter_example", // String | Filter to apply, allowed fields are: - (String) `company_name` - (String) `email` - (String) `since_time` - (String) `until_time` You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=company_name%3D%3DCompany` - `filter=email%3D%3Dtest@gmail.com` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;` 
+  'orderBy': "orderBy_example", // String | Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `name` - `email`  One of the following directions: - `asc` - `desc`
   'pageSize': 0, // Number | Total number of items to return per page
   'pageToken': "pageToken_example" // String | Page token
 };
-apiInstance.listCompaniesForTagIdUsingGET1(tagId, opts).then((data) => {
+apiInstance.listCompaniesForTagId(tagId, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -366,8 +366,8 @@ apiInstance.listCompaniesForTagIdUsingGET1(tagId, opts).then((data) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tagId** | **String**| tag_id | 
- **filter** | **String**| Search filter to apply to results | [optional] 
- **orderBy** | **String**| Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60; | [optional] 
+ **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  | [optional] 
+ **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;name&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] 
  **pageSize** | **Number**| Total number of items to return per page | [optional] 
  **pageToken** | **String**| Page token | [optional] 
 
@@ -385,9 +385,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## listContactsWithTagIdUsingGET
+## listContactsWithTagId
 
-> ListTaggedContactsResponse listContactsWithTagIdUsingGET(tagId, opts)
+> ListTaggedContactsResponse listContactsWithTagId(tagId, opts)
 
 List Tagged Contacts
 
@@ -406,7 +406,7 @@ let opts = {
   'pageSize': 0, // Number | Total number of items to return per page
   'pageToken': "pageToken_example" // String | Page token
 };
-apiInstance.listContactsWithTagIdUsingGET(tagId, opts).then((data) => {
+apiInstance.listContactsWithTagId(tagId, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -439,9 +439,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## listTagCategoriesUsingGET
+## listTagCategories
 
-> ListTagCategoriesResponse listTagCategoriesUsingGET(opts)
+> ListTagCategoriesResponse listTagCategories(opts)
 
 List Tag Categories
 
@@ -459,7 +459,7 @@ let opts = {
   'pageSize': 0, // Number | Total number of items to return per page
   'pageToken': "pageToken_example" // String | Page token
 };
-apiInstance.listTagCategoriesUsingGET(opts).then((data) => {
+apiInstance.listTagCategories(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -491,9 +491,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## listTagsUsingGET1
+## listTags
 
-> ListTagsResponse listTagsUsingGET1(opts)
+> ListTagsResponse listTags(opts)
 
 List Tags
 
@@ -506,12 +506,12 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 
 let apiInstance = new KeapCoreServiceV2Sdk.TagsApi();
 let opts = {
-  'filter': "filter_example", // String | Search filter to apply to results
-  'orderBy': "orderBy_example", // String | Attribute and direction to order items by. E.g. `given_name desc`
+  'filter': "filter_example", // String | Filter to apply, allowed fields are:  - (String) `name` - (String) `description` - (String) `category_id` - (String) `since_create_time` - (String) `until_create_time` - (String) `since_update_time` - (String) `until_update_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. If NONE is passed in for `category_id` or `description`, it will check for the non-existence of that field. For the filters listed above, here are some examples:  - `filter=name%3D%3Dmy-tag` - `filter=category_id%3D%3DNONE` - `filter=description%3D%3DNONE` - `filter=since_create_time%3D%3D2024-12-22T01:00:00.000Z;until_create_time%3D%3D2025-01-01T00:00:00.000Z;`
+  'orderBy': "orderBy_example", // String | Attribute and direction to order items. One of the following fields:  - `name` - `create_time` - `update_time`  One of the following directions: - `asc` - `desc`
   'pageSize': 0, // Number | Total number of items to return per page
   'pageToken': "pageToken_example" // String | Page token
 };
-apiInstance.listTagsUsingGET1(opts).then((data) => {
+apiInstance.listTags(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -524,8 +524,8 @@ apiInstance.listTagsUsingGET1(opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filter** | **String**| Search filter to apply to results | [optional] 
- **orderBy** | **String**| Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60; | [optional] 
+ **filter** | **String**| Filter to apply, allowed fields are:  - (String) &#x60;name&#x60; - (String) &#x60;description&#x60; - (String) &#x60;category_id&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. If NONE is passed in for &#x60;category_id&#x60; or &#x60;description&#x60;, it will check for the non-existence of that field. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;name%3D%3Dmy-tag&#x60; - &#x60;filter&#x3D;category_id%3D%3DNONE&#x60; - &#x60;filter&#x3D;description%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_create_time%3D%3D2024-12-22T01:00:00.000Z;until_create_time%3D%3D2025-01-01T00:00:00.000Z;&#x60; | [optional] 
+ **orderBy** | **String**| Attribute and direction to order items. One of the following fields:  - &#x60;name&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] 
  **pageSize** | **Number**| Total number of items to return per page | [optional] 
  **pageToken** | **String**| Page token | [optional] 
 
@@ -543,9 +543,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## removeTagsUsingPOST
+## removeTags
 
-> removeTagsUsingPOST(tagId, applyRemoveTagRequest)
+> removeTags(tagId, applyRemoveTagRequest)
 
 Remove Tags
 
@@ -559,7 +559,7 @@ import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
 let apiInstance = new KeapCoreServiceV2Sdk.TagsApi();
 let tagId = "tagId_example"; // String | tag_id
 let applyRemoveTagRequest = new KeapCoreServiceV2Sdk.ApplyRemoveTagRequest(); // ApplyRemoveTagRequest | applyRemoveTagRequest
-apiInstance.removeTagsUsingPOST(tagId, applyRemoveTagRequest).then(() => {
+apiInstance.removeTags(tagId, applyRemoveTagRequest).then(() => {
   console.log('API called successfully.');
 }, (error) => {
   console.error(error);
@@ -589,59 +589,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## updateTagCategoryUsingPATCH
+## updateTag
 
-> UpdateTagCategoryResponse updateTagCategoryUsingPATCH(tagCategoryId, opts)
-
-Update a Tag Category
-
-Updates a Tag Category with only the values provided in the request
-
-### Example
-
-```javascript
-import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
-
-let apiInstance = new KeapCoreServiceV2Sdk.TagsApi();
-let tagCategoryId = "tagCategoryId_example"; // String | tag_category_id
-let opts = {
-  'updateMask': ["null"], // [String] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-  'createUpdateTagCategoryRequest': new KeapCoreServiceV2Sdk.CreateUpdateTagCategoryRequest() // CreateUpdateTagCategoryRequest | tagCategory
-};
-apiInstance.updateTagCategoryUsingPATCH(tagCategoryId, opts).then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
-  console.error(error);
-});
-
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **tagCategoryId** | **String**| tag_category_id | 
- **updateMask** | [**[String]**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
- **createUpdateTagCategoryRequest** | [**CreateUpdateTagCategoryRequest**](CreateUpdateTagCategoryRequest.md)| tagCategory | [optional] 
-
-### Return type
-
-[**UpdateTagCategoryResponse**](UpdateTagCategoryResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## updateTagUsingPATCH
-
-> UpdateTagResponse updateTagUsingPATCH(tagId, opts)
+> UpdateTagResponse updateTag(tagId, opts)
 
 Update a Tag
 
@@ -658,7 +608,7 @@ let opts = {
   'updateMask': ["null"], // [String] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
   'createUpdateTagRequest': new KeapCoreServiceV2Sdk.CreateUpdateTagRequest() // CreateUpdateTagRequest | tag
 };
-apiInstance.updateTagUsingPATCH(tagId, opts).then((data) => {
+apiInstance.updateTag(tagId, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -678,6 +628,56 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**UpdateTagResponse**](UpdateTagResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## updateTagCategory
+
+> UpdateTagCategoryResponse updateTagCategory(tagCategoryId, opts)
+
+Update a Tag Category
+
+Updates a Tag Category with only the values provided in the request
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+
+let apiInstance = new KeapCoreServiceV2Sdk.TagsApi();
+let tagCategoryId = "tagCategoryId_example"; // String | tag_category_id
+let opts = {
+  'updateMask': ["null"], // [String] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+  'createUpdateTagCategoryRequest': new KeapCoreServiceV2Sdk.CreateUpdateTagCategoryRequest() // CreateUpdateTagCategoryRequest | tagCategory
+};
+apiInstance.updateTagCategory(tagCategoryId, opts).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tagCategoryId** | **String**| tag_category_id | 
+ **updateMask** | [**[String]**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **createUpdateTagCategoryRequest** | [**CreateUpdateTagCategoryRequest**](CreateUpdateTagCategoryRequest.md)| tagCategory | [optional] 
+
+### Return type
+
+[**UpdateTagCategoryResponse**](UpdateTagCategoryResponse.md)
 
 ### Authorization
 

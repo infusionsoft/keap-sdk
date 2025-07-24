@@ -19,12 +19,12 @@ export class SalesApiRequestFactory extends BaseAPIRequestFactory {
      * Set default Merchant Account
      * @param id id
      */
-    public async setMerchantGatewayAsDefaultUsingPOST(id: string, _options?: Configuration): Promise<RequestContext> {
+    public async setMerchantGatewayAsDefault(id: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'id' is not null or undefined
         if (id === null || id === undefined) {
-            throw new RequiredError("SalesApi", "setMerchantGatewayAsDefaultUsingPOST", "id");
+            throw new RequiredError("SalesApi", "setMerchantGatewayAsDefault", "id");
         }
 
 
@@ -54,10 +54,10 @@ export class SalesApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to setMerchantGatewayAsDefaultUsingPOST
+     * @params response Response returned by the server for a request to setMerchantGatewayAsDefault
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async setMerchantGatewayAsDefaultUsingPOSTWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async setMerchantGatewayAsDefaultWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);

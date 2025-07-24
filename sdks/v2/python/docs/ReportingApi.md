@@ -4,13 +4,13 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**list_reports_using_get**](ReportingApi.md#list_reports_using_get) | **GET** /v2/reporting/reports | List Reports
-[**retrieve_report_using_get**](ReportingApi.md#retrieve_report_using_get) | **GET** /v2/reporting/reports/{report_id} | Retrieve Report
-[**run_report_using_post**](ReportingApi.md#run_report_using_post) | **POST** /v2/reporting/reports/{report_id}:run | Run a Report
+[**list_reports**](ReportingApi.md#list_reports) | **GET** /v2/reporting/reports | List Reports
+[**retrieve_report**](ReportingApi.md#retrieve_report) | **GET** /v2/reporting/reports/{report_id} | Retrieve Report
+[**run_report**](ReportingApi.md#run_report) | **POST** /v2/reporting/reports/{report_id}:run | Run a Report
 
 
-# **list_reports_using_get**
-> ListReportsResponse list_reports_using_get(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
+# **list_reports**
+> ListReportsResponse list_reports(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
 
 List Reports
 
@@ -42,11 +42,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # List Reports
-        api_response = api_instance.list_reports_using_get(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
-        print("The response of ReportingApi->list_reports_using_get:\n")
+        api_response = api_instance.list_reports(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
+        print("The response of ReportingApi->list_reports:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling ReportingApi->list_reports_using_get: %s\n" % e)
+        print("Exception when calling ReportingApi->list_reports: %s\n" % e)
 ```
 
 
@@ -85,8 +85,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **retrieve_report_using_get**
-> Report retrieve_report_using_get(report_id)
+# **retrieve_report**
+> Report retrieve_report(report_id)
 
 Retrieve Report
 
@@ -115,11 +115,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieve Report
-        api_response = api_instance.retrieve_report_using_get(report_id)
-        print("The response of ReportingApi->retrieve_report_using_get:\n")
+        api_response = api_instance.retrieve_report(report_id)
+        print("The response of ReportingApi->retrieve_report:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling ReportingApi->retrieve_report_using_get: %s\n" % e)
+        print("Exception when calling ReportingApi->retrieve_report: %s\n" % e)
 ```
 
 
@@ -155,8 +155,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **run_report_using_post**
-> ReportExecutionResult run_report_using_post(report_id, fields=fields, order_by=order_by, page_size=page_size, page_token=page_token)
+# **run_report**
+> ReportExecutionResult run_report(report_id, fields=fields, order_by=order_by, page_size=page_size, page_token=page_token)
 
 Run a Report
 
@@ -189,11 +189,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Run a Report
-        api_response = api_instance.run_report_using_post(report_id, fields=fields, order_by=order_by, page_size=page_size, page_token=page_token)
-        print("The response of ReportingApi->run_report_using_post:\n")
+        api_response = api_instance.run_report(report_id, fields=fields, order_by=order_by, page_size=page_size, page_token=page_token)
+        print("The response of ReportingApi->run_report:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling ReportingApi->run_report_using_post: %s\n" % e)
+        print("Exception when calling ReportingApi->run_report: %s\n" % e)
 ```
 
 

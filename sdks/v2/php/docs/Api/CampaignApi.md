@@ -4,16 +4,16 @@ All URIs are relative to https://api.keap.com/crm/rest, except if the operation 
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**addContactsToCampaignSequenceUsingPOST1()**](CampaignApi.md#addContactsToCampaignSequenceUsingPOST1) | **POST** /v2/campaigns/{campaign_id}/sequences/{sequence_id}:addContacts | Add Contacts to Campaign Sequence |
-| [**getCampaignUsingGET1()**](CampaignApi.md#getCampaignUsingGET1) | **GET** /v2/campaigns/{campaign_id} | Retrieve a Campaign |
-| [**listCampaignsUsingGET1()**](CampaignApi.md#listCampaignsUsingGET1) | **GET** /v2/campaigns | List Campaigns |
-| [**removeContactsFromCampaignSequenceUsingPOST()**](CampaignApi.md#removeContactsFromCampaignSequenceUsingPOST) | **POST** /v2/campaigns/{campaign_id}/sequences/{sequence_id}:removeContacts | Remove Contacts from Campaign Sequence |
+| [**addContactsToCampaignSequence()**](CampaignApi.md#addContactsToCampaignSequence) | **POST** /v2/campaigns/{campaign_id}/sequences/{sequence_id}:addContacts | Add Contacts to Campaign Sequence |
+| [**getCampaign()**](CampaignApi.md#getCampaign) | **GET** /v2/campaigns/{campaign_id} | Retrieve a Campaign |
+| [**listCampaigns()**](CampaignApi.md#listCampaigns) | **GET** /v2/campaigns | List Campaigns |
+| [**removeContactsFromCampaignSequence()**](CampaignApi.md#removeContactsFromCampaignSequence) | **POST** /v2/campaigns/{campaign_id}/sequences/{sequence_id}:removeContacts | Remove Contacts from Campaign Sequence |
 
 
-## `addContactsToCampaignSequenceUsingPOST1()`
+## `addContactsToCampaignSequence()`
 
 ```php
-addContactsToCampaignSequenceUsingPOST1($campaign_id, $sequence_id, $add_contacts_to_sequence_request): \Keap\Core\V2\Model\AddContactsToSequenceResponse
+addContactsToCampaignSequence($campaign_id, $sequence_id, $add_contacts_to_sequence_request): \Keap\Core\V2\Model\AddContactsToSequenceResponse
 ```
 
 Add Contacts to Campaign Sequence
@@ -37,10 +37,10 @@ $sequence_id = 'sequence_id_example'; // string | sequence_id
 $add_contacts_to_sequence_request = new \Keap\Core\V2\Model\AddContactsToSequenceRequest(); // \Keap\Core\V2\Model\AddContactsToSequenceRequest | addContactsToSequenceRequest
 
 try {
-    $result = $apiInstance->addContactsToCampaignSequenceUsingPOST1($campaign_id, $sequence_id, $add_contacts_to_sequence_request);
+    $result = $apiInstance->addContactsToCampaignSequence($campaign_id, $sequence_id, $add_contacts_to_sequence_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->addContactsToCampaignSequenceUsingPOST1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CampaignApi->addContactsToCampaignSequence: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -69,10 +69,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getCampaignUsingGET1()`
+## `getCampaign()`
 
 ```php
-getCampaignUsingGET1($campaign_id): \Keap\Core\V2\Model\Campaign
+getCampaign($campaign_id): \Keap\Core\V2\Model\Campaign
 ```
 
 Retrieve a Campaign
@@ -94,10 +94,10 @@ $apiInstance = new Keap\Core\V2\Api\CampaignApi(
 $campaign_id = 'campaign_id_example'; // string | campaign_id
 
 try {
-    $result = $apiInstance->getCampaignUsingGET1($campaign_id);
+    $result = $apiInstance->getCampaign($campaign_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->getCampaignUsingGET1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CampaignApi->getCampaign: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -124,10 +124,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `listCampaignsUsingGET1()`
+## `listCampaigns()`
 
 ```php
-listCampaignsUsingGET1($filter, $order_by, $page_size, $page_token, $stats): \Keap\Core\V2\Model\ListCampaignsResponse
+listCampaigns($filter, $order_by, $page_size, $page_token, $stats): \Keap\Core\V2\Model\ListCampaignsResponse
 ```
 
 List Campaigns
@@ -153,10 +153,10 @@ $page_token = 'page_token_example'; // string | Page token
 $stats = True; // bool
 
 try {
-    $result = $apiInstance->listCampaignsUsingGET1($filter, $order_by, $page_size, $page_token, $stats);
+    $result = $apiInstance->listCampaigns($filter, $order_by, $page_size, $page_token, $stats);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->listCampaignsUsingGET1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CampaignApi->listCampaigns: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -187,10 +187,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `removeContactsFromCampaignSequenceUsingPOST()`
+## `removeContactsFromCampaignSequence()`
 
 ```php
-removeContactsFromCampaignSequenceUsingPOST($campaign_id, $sequence_id, $remove_contacts_from_sequence_request): \Keap\Core\V2\Model\RemoveContactsFromSequenceResponse
+removeContactsFromCampaignSequence($campaign_id, $sequence_id, $remove_contacts_from_sequence_request): \Keap\Core\V2\Model\RemoveContactsFromSequenceResponse
 ```
 
 Remove Contacts from Campaign Sequence
@@ -214,10 +214,10 @@ $sequence_id = 'sequence_id_example'; // string | sequence_id
 $remove_contacts_from_sequence_request = new \Keap\Core\V2\Model\RemoveContactsFromSequenceRequest(); // \Keap\Core\V2\Model\RemoveContactsFromSequenceRequest | removeContactsFromSequenceRequest
 
 try {
-    $result = $apiInstance->removeContactsFromCampaignSequenceUsingPOST($campaign_id, $sequence_id, $remove_contacts_from_sequence_request);
+    $result = $apiInstance->removeContactsFromCampaignSequence($campaign_id, $sequence_id, $remove_contacts_from_sequence_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->removeContactsFromCampaignSequenceUsingPOST: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CampaignApi->removeContactsFromCampaignSequence: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

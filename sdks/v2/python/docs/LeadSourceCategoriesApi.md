@@ -4,15 +4,15 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_lead_source_category_using_post**](LeadSourceCategoriesApi.md#create_lead_source_category_using_post) | **POST** /v2/leadSourceCategories | Create a Lead Source Category
-[**delete_lead_source_category_using_delete**](LeadSourceCategoriesApi.md#delete_lead_source_category_using_delete) | **DELETE** /v2/leadSourceCategories/{lead_source_category_id} | Delete a Lead Source Category
-[**get_lead_source_category_using_get**](LeadSourceCategoriesApi.md#get_lead_source_category_using_get) | **GET** /v2/leadSourceCategories/{lead_source_category_id} | Retrieve a Lead Source Category
-[**list_categories_using_get1**](LeadSourceCategoriesApi.md#list_categories_using_get1) | **GET** /v2/leadSourceCategories | List Lead Source Categories
-[**update_lead_source_category_using_patch**](LeadSourceCategoriesApi.md#update_lead_source_category_using_patch) | **PATCH** /v2/leadSourceCategories/{lead_source_category_id} | Update a Lead Source Category
+[**create_lead_source_category**](LeadSourceCategoriesApi.md#create_lead_source_category) | **POST** /v2/leadSourceCategories | Create a Lead Source Category
+[**delete_lead_source_category**](LeadSourceCategoriesApi.md#delete_lead_source_category) | **DELETE** /v2/leadSourceCategories/{lead_source_category_id} | Delete a Lead Source Category
+[**get_lead_source_category**](LeadSourceCategoriesApi.md#get_lead_source_category) | **GET** /v2/leadSourceCategories/{lead_source_category_id} | Retrieve a Lead Source Category
+[**list_lead_source_categories**](LeadSourceCategoriesApi.md#list_lead_source_categories) | **GET** /v2/leadSourceCategories | List Lead Source Categories
+[**update_lead_source_category**](LeadSourceCategoriesApi.md#update_lead_source_category) | **PATCH** /v2/leadSourceCategories/{lead_source_category_id} | Update a Lead Source Category
 
 
-# **create_lead_source_category_using_post**
-> LeadSourceCategory create_lead_source_category_using_post(create_update_lead_source_category_request)
+# **create_lead_source_category**
+> LeadSourceCategory create_lead_source_category(create_update_lead_source_category_request)
 
 Create a Lead Source Category
 
@@ -42,11 +42,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Create a Lead Source Category
-        api_response = api_instance.create_lead_source_category_using_post(create_update_lead_source_category_request)
-        print("The response of LeadSourceCategoriesApi->create_lead_source_category_using_post:\n")
+        api_response = api_instance.create_lead_source_category(create_update_lead_source_category_request)
+        print("The response of LeadSourceCategoriesApi->create_lead_source_category:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling LeadSourceCategoriesApi->create_lead_source_category_using_post: %s\n" % e)
+        print("Exception when calling LeadSourceCategoriesApi->create_lead_source_category: %s\n" % e)
 ```
 
 
@@ -82,8 +82,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **delete_lead_source_category_using_delete**
-> delete_lead_source_category_using_delete(lead_source_category_id)
+# **delete_lead_source_category**
+> delete_lead_source_category(lead_source_category_id)
 
 Delete a Lead Source Category
 
@@ -111,9 +111,9 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Delete a Lead Source Category
-        api_instance.delete_lead_source_category_using_delete(lead_source_category_id)
+        api_instance.delete_lead_source_category(lead_source_category_id)
     except Exception as e:
-        print("Exception when calling LeadSourceCategoriesApi->delete_lead_source_category_using_delete: %s\n" % e)
+        print("Exception when calling LeadSourceCategoriesApi->delete_lead_source_category: %s\n" % e)
 ```
 
 
@@ -149,8 +149,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_lead_source_category_using_get**
-> LeadSourceCategory get_lead_source_category_using_get(lead_source_category_id)
+# **get_lead_source_category**
+> LeadSourceCategory get_lead_source_category(lead_source_category_id)
 
 Retrieve a Lead Source Category
 
@@ -179,11 +179,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Retrieve a Lead Source Category
-        api_response = api_instance.get_lead_source_category_using_get(lead_source_category_id)
-        print("The response of LeadSourceCategoriesApi->get_lead_source_category_using_get:\n")
+        api_response = api_instance.get_lead_source_category(lead_source_category_id)
+        print("The response of LeadSourceCategoriesApi->get_lead_source_category:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling LeadSourceCategoriesApi->get_lead_source_category_using_get: %s\n" % e)
+        print("Exception when calling LeadSourceCategoriesApi->get_lead_source_category: %s\n" % e)
 ```
 
 
@@ -219,8 +219,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **list_categories_using_get1**
-> ListLeadSourceCategoriesResponse list_categories_using_get1(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
+# **list_lead_source_categories**
+> ListLeadSourceCategoriesResponse list_lead_source_categories(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
 
 List Lead Source Categories
 
@@ -252,11 +252,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # List Lead Source Categories
-        api_response = api_instance.list_categories_using_get1(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
-        print("The response of LeadSourceCategoriesApi->list_categories_using_get1:\n")
+        api_response = api_instance.list_lead_source_categories(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
+        print("The response of LeadSourceCategoriesApi->list_lead_source_categories:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling LeadSourceCategoriesApi->list_categories_using_get1: %s\n" % e)
+        print("Exception when calling LeadSourceCategoriesApi->list_lead_source_categories: %s\n" % e)
 ```
 
 
@@ -296,8 +296,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **update_lead_source_category_using_patch**
-> LeadSourceCategory update_lead_source_category_using_patch(lead_source_category_id, create_update_lead_source_category_request, update_mask=update_mask)
+# **update_lead_source_category**
+> LeadSourceCategory update_lead_source_category(lead_source_category_id, create_update_lead_source_category_request, update_mask=update_mask)
 
 Update a Lead Source Category
 
@@ -329,11 +329,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
     try:
         # Update a Lead Source Category
-        api_response = api_instance.update_lead_source_category_using_patch(lead_source_category_id, create_update_lead_source_category_request, update_mask=update_mask)
-        print("The response of LeadSourceCategoriesApi->update_lead_source_category_using_patch:\n")
+        api_response = api_instance.update_lead_source_category(lead_source_category_id, create_update_lead_source_category_request, update_mask=update_mask)
+        print("The response of LeadSourceCategoriesApi->update_lead_source_category:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling LeadSourceCategoriesApi->update_lead_source_category_using_patch: %s\n" % e)
+        print("Exception when calling LeadSourceCategoriesApi->update_lead_source_category: %s\n" % e)
 ```
 
 

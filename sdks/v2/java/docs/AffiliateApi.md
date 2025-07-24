@@ -4,66 +4,206 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**addAffiliateToProgramUsingPOST**](AffiliateApi.md#addAffiliateToProgramUsingPOST) | **POST** /v2/affiliates/{id}:assignToProgram | Assign Affiliate to Commission program |
-| [**addAffiliateToProgramUsingPOSTWithHttpInfo**](AffiliateApi.md#addAffiliateToProgramUsingPOSTWithHttpInfo) | **POST** /v2/affiliates/{id}:assignToProgram | Assign Affiliate to Commission program |
-| [**addAffiliateUsingPOST**](AffiliateApi.md#addAffiliateUsingPOST) | **POST** /v2/affiliates | Create an Affiliate |
-| [**addAffiliateUsingPOSTWithHttpInfo**](AffiliateApi.md#addAffiliateUsingPOSTWithHttpInfo) | **POST** /v2/affiliates | Create an Affiliate |
-| [**addCommissionProgramUsingPOST**](AffiliateApi.md#addCommissionProgramUsingPOST) | **POST** /v2/affiliates/commissionPrograms | Create an Affiliate Commission Program |
-| [**addCommissionProgramUsingPOSTWithHttpInfo**](AffiliateApi.md#addCommissionProgramUsingPOSTWithHttpInfo) | **POST** /v2/affiliates/commissionPrograms | Create an Affiliate Commission Program |
-| [**assignProductCommissionProgramUsingPOST**](AffiliateApi.md#assignProductCommissionProgramUsingPOST) | **POST** /v2/affiliates/commissionPrograms/productCommissionProgram/{commission_program_id} | Assign a Product Commission Program |
-| [**assignProductCommissionProgramUsingPOSTWithHttpInfo**](AffiliateApi.md#assignProductCommissionProgramUsingPOSTWithHttpInfo) | **POST** /v2/affiliates/commissionPrograms/productCommissionProgram/{commission_program_id} | Assign a Product Commission Program |
-| [**assignSubscriptionCommissionProgramUsingPOST**](AffiliateApi.md#assignSubscriptionCommissionProgramUsingPOST) | **POST** /v2/affiliates/commissionPrograms/subscriptionCommissionProgram/{commission_program_id} | Assign a Subscription Commission Program |
-| [**assignSubscriptionCommissionProgramUsingPOSTWithHttpInfo**](AffiliateApi.md#assignSubscriptionCommissionProgramUsingPOSTWithHttpInfo) | **POST** /v2/affiliates/commissionPrograms/subscriptionCommissionProgram/{commission_program_id} | Assign a Subscription Commission Program |
-| [**createDefaultCommissionProgramUsingPOST**](AffiliateApi.md#createDefaultCommissionProgramUsingPOST) | **POST** /v2/affiliates/commissionPrograms/defaultCommissionProgram/{commission_program_id} | Create a Default Commission Program |
-| [**createDefaultCommissionProgramUsingPOSTWithHttpInfo**](AffiliateApi.md#createDefaultCommissionProgramUsingPOSTWithHttpInfo) | **POST** /v2/affiliates/commissionPrograms/defaultCommissionProgram/{commission_program_id} | Create a Default Commission Program |
-| [**createRedirectLinkUsingPOST**](AffiliateApi.md#createRedirectLinkUsingPOST) | **POST** /v2/affiliates/redirects | Create an Affiliate Link |
-| [**createRedirectLinkUsingPOSTWithHttpInfo**](AffiliateApi.md#createRedirectLinkUsingPOSTWithHttpInfo) | **POST** /v2/affiliates/redirects | Create an Affiliate Link |
-| [**deleteAffiliateCommissionProgramUsingDELETE**](AffiliateApi.md#deleteAffiliateCommissionProgramUsingDELETE) | **DELETE** /v2/affiliates/commissionPrograms/{commission_program_id} | Delete a Commission Program |
-| [**deleteAffiliateCommissionProgramUsingDELETEWithHttpInfo**](AffiliateApi.md#deleteAffiliateCommissionProgramUsingDELETEWithHttpInfo) | **DELETE** /v2/affiliates/commissionPrograms/{commission_program_id} | Delete a Commission Program |
-| [**deleteAffiliateUsingDELETE**](AffiliateApi.md#deleteAffiliateUsingDELETE) | **DELETE** /v2/affiliates/{id} | Delete Affiliate |
-| [**deleteAffiliateUsingDELETEWithHttpInfo**](AffiliateApi.md#deleteAffiliateUsingDELETEWithHttpInfo) | **DELETE** /v2/affiliates/{id} | Delete Affiliate |
-| [**deleteRedirectLinkUsingDELETE**](AffiliateApi.md#deleteRedirectLinkUsingDELETE) | **DELETE** /v2/affiliates/redirects/{redirect_id} | Delete an Affiliate Link |
-| [**deleteRedirectLinkUsingDELETEWithHttpInfo**](AffiliateApi.md#deleteRedirectLinkUsingDELETEWithHttpInfo) | **DELETE** /v2/affiliates/redirects/{redirect_id} | Delete an Affiliate Link |
-| [**getAffiliateCommissionTotalUsingGET**](AffiliateApi.md#getAffiliateCommissionTotalUsingGET) | **GET** /v2/affiliates/{affiliate_id}/commissionTotal | Retrieve Affiliate Commission Earned and View LedgerURl for portal |
-| [**getAffiliateCommissionTotalUsingGETWithHttpInfo**](AffiliateApi.md#getAffiliateCommissionTotalUsingGETWithHttpInfo) | **GET** /v2/affiliates/{affiliate_id}/commissionTotal | Retrieve Affiliate Commission Earned and View LedgerURl for portal |
-| [**getAffiliateCommissionsUsingGET**](AffiliateApi.md#getAffiliateCommissionsUsingGET) | **GET** /v2/affiliates/{affiliate_id}:commissions | Retrieve Affiliate Commission and Clawbacks |
-| [**getAffiliateCommissionsUsingGETWithHttpInfo**](AffiliateApi.md#getAffiliateCommissionsUsingGETWithHttpInfo) | **GET** /v2/affiliates/{affiliate_id}:commissions | Retrieve Affiliate Commission and Clawbacks |
-| [**getAffiliateUsingGET1**](AffiliateApi.md#getAffiliateUsingGET1) | **GET** /v2/affiliates/{id} | Retrieve an Affiliate |
-| [**getAffiliateUsingGET1WithHttpInfo**](AffiliateApi.md#getAffiliateUsingGET1WithHttpInfo) | **GET** /v2/affiliates/{id} | Retrieve an Affiliate |
-| [**getCommissionProgramUsingGET**](AffiliateApi.md#getCommissionProgramUsingGET) | **GET** /v2/affiliates/commissionPrograms/{commission_program_id} | Retrieve a Commission Program |
-| [**getCommissionProgramUsingGETWithHttpInfo**](AffiliateApi.md#getCommissionProgramUsingGETWithHttpInfo) | **GET** /v2/affiliates/commissionPrograms/{commission_program_id} | Retrieve a Commission Program |
-| [**getRedirectLinkUsingGET**](AffiliateApi.md#getRedirectLinkUsingGET) | **GET** /v2/affiliates/redirects/{redirect_id} | Retrieve an Affiliate Link |
-| [**getRedirectLinkUsingGETWithHttpInfo**](AffiliateApi.md#getRedirectLinkUsingGETWithHttpInfo) | **GET** /v2/affiliates/redirects/{redirect_id} | Retrieve an Affiliate Link |
-| [**listAffiliateCommissionProgramsUsingGET**](AffiliateApi.md#listAffiliateCommissionProgramsUsingGET) | **GET** /v2/affiliates/commissionPrograms | List Affiliate Commission Programs |
-| [**listAffiliateCommissionProgramsUsingGETWithHttpInfo**](AffiliateApi.md#listAffiliateCommissionProgramsUsingGETWithHttpInfo) | **GET** /v2/affiliates/commissionPrograms | List Affiliate Commission Programs |
-| [**listAffiliateLinksUsingGET**](AffiliateApi.md#listAffiliateLinksUsingGET) | **GET** /v2/affiliates/redirects | List Affiliate Links |
-| [**listAffiliateLinksUsingGETWithHttpInfo**](AffiliateApi.md#listAffiliateLinksUsingGETWithHttpInfo) | **GET** /v2/affiliates/redirects | List Affiliate Links |
-| [**listSummariesUsingGET1**](AffiliateApi.md#listSummariesUsingGET1) | **GET** /v2/affiliates/summaries | List Affiliate Summaries |
-| [**listSummariesUsingGET1WithHttpInfo**](AffiliateApi.md#listSummariesUsingGET1WithHttpInfo) | **GET** /v2/affiliates/summaries | List Affiliate Summaries |
-| [**removeAffiliateFromProgramUsingPOST**](AffiliateApi.md#removeAffiliateFromProgramUsingPOST) | **POST** /v2/affiliates/{id}:removeFromProgram | Remove an Affiliate from a Commission Program |
-| [**removeAffiliateFromProgramUsingPOSTWithHttpInfo**](AffiliateApi.md#removeAffiliateFromProgramUsingPOSTWithHttpInfo) | **POST** /v2/affiliates/{id}:removeFromProgram | Remove an Affiliate from a Commission Program |
-| [**removeProductCommissionFromCommissionsUsingPOST**](AffiliateApi.md#removeProductCommissionFromCommissionsUsingPOST) | **POST** /v2/affiliates/commissionPrograms/{commission_id}:removeProductCommission | Remove a Product from a Commission Program |
-| [**removeProductCommissionFromCommissionsUsingPOSTWithHttpInfo**](AffiliateApi.md#removeProductCommissionFromCommissionsUsingPOSTWithHttpInfo) | **POST** /v2/affiliates/commissionPrograms/{commission_id}:removeProductCommission | Remove a Product from a Commission Program |
-| [**removeSubscriptionPlanCommissionFromCommissionsUsingPOST**](AffiliateApi.md#removeSubscriptionPlanCommissionFromCommissionsUsingPOST) | **POST** /v2/affiliates/commissionPrograms/{commission_id}:removeSubscriptionCommission | Remove a Subscription from a Commission Program |
-| [**removeSubscriptionPlanCommissionFromCommissionsUsingPOSTWithHttpInfo**](AffiliateApi.md#removeSubscriptionPlanCommissionFromCommissionsUsingPOSTWithHttpInfo) | **POST** /v2/affiliates/commissionPrograms/{commission_id}:removeSubscriptionCommission | Remove a Subscription from a Commission Program |
-| [**updateAffiliateUsingPATCH**](AffiliateApi.md#updateAffiliateUsingPATCH) | **PATCH** /v2/affiliates/{id} | Update an Affiliate |
-| [**updateAffiliateUsingPATCHWithHttpInfo**](AffiliateApi.md#updateAffiliateUsingPATCHWithHttpInfo) | **PATCH** /v2/affiliates/{id} | Update an Affiliate |
-| [**updateCommissionProgramUsingPATCH**](AffiliateApi.md#updateCommissionProgramUsingPATCH) | **PATCH** /v2/affiliates/commissionPrograms/{commission_program_id} | Update an Affiliate Commission Program |
-| [**updateCommissionProgramUsingPATCHWithHttpInfo**](AffiliateApi.md#updateCommissionProgramUsingPATCHWithHttpInfo) | **PATCH** /v2/affiliates/commissionPrograms/{commission_program_id} | Update an Affiliate Commission Program |
-| [**updateDefaultCommissionProgramUsingPATCH**](AffiliateApi.md#updateDefaultCommissionProgramUsingPATCH) | **PATCH** /v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Update a Default Commission Program |
-| [**updateDefaultCommissionProgramUsingPATCHWithHttpInfo**](AffiliateApi.md#updateDefaultCommissionProgramUsingPATCHWithHttpInfo) | **PATCH** /v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Update a Default Commission Program |
-| [**updateProductCommissionProgramUsingPATCH**](AffiliateApi.md#updateProductCommissionProgramUsingPATCH) | **PATCH** /v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Update a Product Commission Program |
-| [**updateProductCommissionProgramUsingPATCHWithHttpInfo**](AffiliateApi.md#updateProductCommissionProgramUsingPATCHWithHttpInfo) | **PATCH** /v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Update a Product Commission Program |
-| [**updateRedirectLinkUsingPATCH**](AffiliateApi.md#updateRedirectLinkUsingPATCH) | **PATCH** /v2/affiliates/redirects/{redirect_id} | Update an Affiliate Link |
-| [**updateRedirectLinkUsingPATCHWithHttpInfo**](AffiliateApi.md#updateRedirectLinkUsingPATCHWithHttpInfo) | **PATCH** /v2/affiliates/redirects/{redirect_id} | Update an Affiliate Link |
-| [**updateSubscriptionCommissionProgramUsingPATCH**](AffiliateApi.md#updateSubscriptionCommissionProgramUsingPATCH) | **PATCH** /v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id} | Update a Subscription Commission Program |
-| [**updateSubscriptionCommissionProgramUsingPATCHWithHttpInfo**](AffiliateApi.md#updateSubscriptionCommissionProgramUsingPATCHWithHttpInfo) | **PATCH** /v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id} | Update a Subscription Commission Program |
+| [**addAffiliate**](AffiliateApi.md#addAffiliate) | **POST** /v2/affiliates | Create an Affiliate |
+| [**addAffiliateWithHttpInfo**](AffiliateApi.md#addAffiliateWithHttpInfo) | **POST** /v2/affiliates | Create an Affiliate |
+| [**addAffiliateToProgram**](AffiliateApi.md#addAffiliateToProgram) | **POST** /v2/affiliates/{id}:assignToProgram | Assign Affiliate to Commission program |
+| [**addAffiliateToProgramWithHttpInfo**](AffiliateApi.md#addAffiliateToProgramWithHttpInfo) | **POST** /v2/affiliates/{id}:assignToProgram | Assign Affiliate to Commission program |
+| [**addCommissionProgram**](AffiliateApi.md#addCommissionProgram) | **POST** /v2/affiliates/commissionPrograms | Create an Affiliate Commission Program |
+| [**addCommissionProgramWithHttpInfo**](AffiliateApi.md#addCommissionProgramWithHttpInfo) | **POST** /v2/affiliates/commissionPrograms | Create an Affiliate Commission Program |
+| [**assignProductCommissionProgram**](AffiliateApi.md#assignProductCommissionProgram) | **POST** /v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Assign a Product Commission Program |
+| [**assignProductCommissionProgramWithHttpInfo**](AffiliateApi.md#assignProductCommissionProgramWithHttpInfo) | **POST** /v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Assign a Product Commission Program |
+| [**assignSubscriptionCommissionProgram**](AffiliateApi.md#assignSubscriptionCommissionProgram) | **POST** /v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id} | Assign a Subscription Commission Program |
+| [**assignSubscriptionCommissionProgramWithHttpInfo**](AffiliateApi.md#assignSubscriptionCommissionProgramWithHttpInfo) | **POST** /v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id} | Assign a Subscription Commission Program |
+| [**createDefaultCommissionProgram**](AffiliateApi.md#createDefaultCommissionProgram) | **POST** /v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Create a Default Commission Program |
+| [**createDefaultCommissionProgramWithHttpInfo**](AffiliateApi.md#createDefaultCommissionProgramWithHttpInfo) | **POST** /v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Create a Default Commission Program |
+| [**createRedirectLink**](AffiliateApi.md#createRedirectLink) | **POST** /v2/affiliates/redirects | Create an Affiliate Link |
+| [**createRedirectLinkWithHttpInfo**](AffiliateApi.md#createRedirectLinkWithHttpInfo) | **POST** /v2/affiliates/redirects | Create an Affiliate Link |
+| [**deleteAffiliate**](AffiliateApi.md#deleteAffiliate) | **DELETE** /v2/affiliates/{id} | Delete Affiliate |
+| [**deleteAffiliateWithHttpInfo**](AffiliateApi.md#deleteAffiliateWithHttpInfo) | **DELETE** /v2/affiliates/{id} | Delete Affiliate |
+| [**deleteAffiliateCommissionProgram**](AffiliateApi.md#deleteAffiliateCommissionProgram) | **DELETE** /v2/affiliates/commissionPrograms/{commission_program_id} | Delete a Commission Program |
+| [**deleteAffiliateCommissionProgramWithHttpInfo**](AffiliateApi.md#deleteAffiliateCommissionProgramWithHttpInfo) | **DELETE** /v2/affiliates/commissionPrograms/{commission_program_id} | Delete a Commission Program |
+| [**deleteRedirectLink**](AffiliateApi.md#deleteRedirectLink) | **DELETE** /v2/affiliates/redirects/{redirect_id} | Delete an Affiliate Link |
+| [**deleteRedirectLinkWithHttpInfo**](AffiliateApi.md#deleteRedirectLinkWithHttpInfo) | **DELETE** /v2/affiliates/redirects/{redirect_id} | Delete an Affiliate Link |
+| [**getAffiliate**](AffiliateApi.md#getAffiliate) | **GET** /v2/affiliates/{id} | Retrieve an Affiliate |
+| [**getAffiliateWithHttpInfo**](AffiliateApi.md#getAffiliateWithHttpInfo) | **GET** /v2/affiliates/{id} | Retrieve an Affiliate |
+| [**getAffiliateCommissionTotal**](AffiliateApi.md#getAffiliateCommissionTotal) | **GET** /v2/affiliates/{affiliate_id}/commissionTotal | Retrieve Affiliate Commission Earned and View LedgerURl for portal |
+| [**getAffiliateCommissionTotalWithHttpInfo**](AffiliateApi.md#getAffiliateCommissionTotalWithHttpInfo) | **GET** /v2/affiliates/{affiliate_id}/commissionTotal | Retrieve Affiliate Commission Earned and View LedgerURl for portal |
+| [**getAffiliateCommissions**](AffiliateApi.md#getAffiliateCommissions) | **GET** /v2/affiliates/{affiliate_id}:commissions | Retrieve Affiliate Commission and Clawbacks |
+| [**getAffiliateCommissionsWithHttpInfo**](AffiliateApi.md#getAffiliateCommissionsWithHttpInfo) | **GET** /v2/affiliates/{affiliate_id}:commissions | Retrieve Affiliate Commission and Clawbacks |
+| [**getCommissionProgram**](AffiliateApi.md#getCommissionProgram) | **GET** /v2/affiliates/commissionPrograms/{commission_program_id} | Retrieve a Commission Program |
+| [**getCommissionProgramWithHttpInfo**](AffiliateApi.md#getCommissionProgramWithHttpInfo) | **GET** /v2/affiliates/commissionPrograms/{commission_program_id} | Retrieve a Commission Program |
+| [**getRedirectLink**](AffiliateApi.md#getRedirectLink) | **GET** /v2/affiliates/redirects/{redirect_id} | Retrieve an Affiliate Link |
+| [**getRedirectLinkWithHttpInfo**](AffiliateApi.md#getRedirectLinkWithHttpInfo) | **GET** /v2/affiliates/redirects/{redirect_id} | Retrieve an Affiliate Link |
+| [**listAffiliateCommissionPrograms**](AffiliateApi.md#listAffiliateCommissionPrograms) | **GET** /v2/affiliates/commissionPrograms | List Affiliate Commission Programs |
+| [**listAffiliateCommissionProgramsWithHttpInfo**](AffiliateApi.md#listAffiliateCommissionProgramsWithHttpInfo) | **GET** /v2/affiliates/commissionPrograms | List Affiliate Commission Programs |
+| [**listAffiliateLinks**](AffiliateApi.md#listAffiliateLinks) | **GET** /v2/affiliates/redirects | List Affiliate Links |
+| [**listAffiliateLinksWithHttpInfo**](AffiliateApi.md#listAffiliateLinksWithHttpInfo) | **GET** /v2/affiliates/redirects | List Affiliate Links |
+| [**listSummaries**](AffiliateApi.md#listSummaries) | **GET** /v2/affiliates/summaries | List Affiliate Summaries |
+| [**listSummariesWithHttpInfo**](AffiliateApi.md#listSummariesWithHttpInfo) | **GET** /v2/affiliates/summaries | List Affiliate Summaries |
+| [**removeAffiliateFromProgram**](AffiliateApi.md#removeAffiliateFromProgram) | **POST** /v2/affiliates/{id}:removeFromProgram | Remove an Affiliate from a Commission Program |
+| [**removeAffiliateFromProgramWithHttpInfo**](AffiliateApi.md#removeAffiliateFromProgramWithHttpInfo) | **POST** /v2/affiliates/{id}:removeFromProgram | Remove an Affiliate from a Commission Program |
+| [**removeProductCommissionFromCommissions**](AffiliateApi.md#removeProductCommissionFromCommissions) | **POST** /v2/affiliates/commissionPrograms/{commission_id}:removeProductCommission | Remove a Product from a Commission Program |
+| [**removeProductCommissionFromCommissionsWithHttpInfo**](AffiliateApi.md#removeProductCommissionFromCommissionsWithHttpInfo) | **POST** /v2/affiliates/commissionPrograms/{commission_id}:removeProductCommission | Remove a Product from a Commission Program |
+| [**removeSubscriptionPlanCommissionFromCommissions**](AffiliateApi.md#removeSubscriptionPlanCommissionFromCommissions) | **POST** /v2/affiliates/commissionPrograms/{commission_id}:removeSubscriptionCommission | Remove a Subscription from a Commission Program |
+| [**removeSubscriptionPlanCommissionFromCommissionsWithHttpInfo**](AffiliateApi.md#removeSubscriptionPlanCommissionFromCommissionsWithHttpInfo) | **POST** /v2/affiliates/commissionPrograms/{commission_id}:removeSubscriptionCommission | Remove a Subscription from a Commission Program |
+| [**updateAffiliate**](AffiliateApi.md#updateAffiliate) | **PATCH** /v2/affiliates/{id} | Update an Affiliate |
+| [**updateAffiliateWithHttpInfo**](AffiliateApi.md#updateAffiliateWithHttpInfo) | **PATCH** /v2/affiliates/{id} | Update an Affiliate |
+| [**updateCommissionProgram**](AffiliateApi.md#updateCommissionProgram) | **PATCH** /v2/affiliates/commissionPrograms/{commission_program_id} | Update an Affiliate Commission Program |
+| [**updateCommissionProgramWithHttpInfo**](AffiliateApi.md#updateCommissionProgramWithHttpInfo) | **PATCH** /v2/affiliates/commissionPrograms/{commission_program_id} | Update an Affiliate Commission Program |
+| [**updateDefaultCommissionProgram**](AffiliateApi.md#updateDefaultCommissionProgram) | **PATCH** /v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Update a Default Commission Program |
+| [**updateDefaultCommissionProgramWithHttpInfo**](AffiliateApi.md#updateDefaultCommissionProgramWithHttpInfo) | **PATCH** /v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Update a Default Commission Program |
+| [**updateProductCommissionProgram**](AffiliateApi.md#updateProductCommissionProgram) | **PATCH** /v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Update a Product Commission Program |
+| [**updateProductCommissionProgramWithHttpInfo**](AffiliateApi.md#updateProductCommissionProgramWithHttpInfo) | **PATCH** /v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Update a Product Commission Program |
+| [**updateRedirectLink**](AffiliateApi.md#updateRedirectLink) | **PATCH** /v2/affiliates/redirects/{redirect_id} | Update an Affiliate Link |
+| [**updateRedirectLinkWithHttpInfo**](AffiliateApi.md#updateRedirectLinkWithHttpInfo) | **PATCH** /v2/affiliates/redirects/{redirect_id} | Update an Affiliate Link |
+| [**updateSubscriptionCommissionProgram**](AffiliateApi.md#updateSubscriptionCommissionProgram) | **PATCH** /v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id} | Update a Subscription Commission Program |
+| [**updateSubscriptionCommissionProgramWithHttpInfo**](AffiliateApi.md#updateSubscriptionCommissionProgramWithHttpInfo) | **PATCH** /v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id} | Update a Subscription Commission Program |
 
 
 
-## addAffiliateToProgramUsingPOST
+## addAffiliate
 
-> void addAffiliateToProgramUsingPOST(id, affiliateAddToProgramRequest)
+> RestAffiliate addAffiliate(createAffiliateRequest)
+
+Create an Affiliate
+
+Creates a single Affiliate
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.AffiliateApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+
+        AffiliateApi apiInstance = new AffiliateApi(defaultClient);
+        CreateAffiliateRequest createAffiliateRequest = new CreateAffiliateRequest(); // CreateAffiliateRequest | Affiliate request to insert
+        try {
+            RestAffiliate result = apiInstance.addAffiliate(createAffiliateRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AffiliateApi#addAffiliate");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **createAffiliateRequest** | [**CreateAffiliateRequest**](CreateAffiliateRequest.md)| Affiliate request to insert | [optional] |
+
+### Return type
+
+[**RestAffiliate**](RestAffiliate.md)
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **500** | Internal Server Error |  -  |
+
+## addAffiliateWithHttpInfo
+
+> ApiResponse<RestAffiliate> addAffiliate addAffiliateWithHttpInfo(createAffiliateRequest)
+
+Create an Affiliate
+
+Creates a single Affiliate
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.AffiliateApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+
+        AffiliateApi apiInstance = new AffiliateApi(defaultClient);
+        CreateAffiliateRequest createAffiliateRequest = new CreateAffiliateRequest(); // CreateAffiliateRequest | Affiliate request to insert
+        try {
+            ApiResponse<RestAffiliate> response = apiInstance.addAffiliateWithHttpInfo(createAffiliateRequest);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AffiliateApi#addAffiliate");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **createAffiliateRequest** | [**CreateAffiliateRequest**](CreateAffiliateRequest.md)| Affiliate request to insert | [optional] |
+
+### Return type
+
+ApiResponse<[**RestAffiliate**](RestAffiliate.md)>
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **500** | Internal Server Error |  -  |
+
+
+## addAffiliateToProgram
+
+> void addAffiliateToProgram(id, affiliateAddToProgramRequest)
 
 Assign Affiliate to Commission program
 
@@ -88,9 +228,9 @@ public class Example {
         String id = "id_example"; // String | id
         AffiliateAddToProgramRequest affiliateAddToProgramRequest = new AffiliateAddToProgramRequest(); // AffiliateAddToProgramRequest | affiliateAddToProgramRequest
         try {
-            apiInstance.addAffiliateToProgramUsingPOST(id, affiliateAddToProgramRequest);
+            apiInstance.addAffiliateToProgram(id, affiliateAddToProgramRequest);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#addAffiliateToProgramUsingPOST");
+            System.err.println("Exception when calling AffiliateApi#addAffiliateToProgram");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -130,9 +270,9 @@ No authorization required
 | **403** | Forbidden |  -  |
 | **500** | Internal Server Error |  -  |
 
-## addAffiliateToProgramUsingPOSTWithHttpInfo
+## addAffiliateToProgramWithHttpInfo
 
-> ApiResponse<Void> addAffiliateToProgramUsingPOST addAffiliateToProgramUsingPOSTWithHttpInfo(id, affiliateAddToProgramRequest)
+> ApiResponse<Void> addAffiliateToProgram addAffiliateToProgramWithHttpInfo(id, affiliateAddToProgramRequest)
 
 Assign Affiliate to Commission program
 
@@ -158,11 +298,11 @@ public class Example {
         String id = "id_example"; // String | id
         AffiliateAddToProgramRequest affiliateAddToProgramRequest = new AffiliateAddToProgramRequest(); // AffiliateAddToProgramRequest | affiliateAddToProgramRequest
         try {
-            ApiResponse<Void> response = apiInstance.addAffiliateToProgramUsingPOSTWithHttpInfo(id, affiliateAddToProgramRequest);
+            ApiResponse<Void> response = apiInstance.addAffiliateToProgramWithHttpInfo(id, affiliateAddToProgramRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#addAffiliateToProgramUsingPOST");
+            System.err.println("Exception when calling AffiliateApi#addAffiliateToProgram");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -203,149 +343,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## addAffiliateUsingPOST
+## addCommissionProgram
 
-> RestAffiliate addAffiliateUsingPOST(createAffiliateRequest)
-
-Create an Affiliate
-
-Creates a single Affiliate
-
-### Example
-
-```java
-// Import classes:
-import com.keap.core.sdk.ApiClient;
-import com.keap.core.sdk.ApiException;
-import com.keap.core.sdk.Configuration;
-import com.keap.core.sdk.models.*;
-import com.keap.core.sdk.client.AffiliateApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
-
-        AffiliateApi apiInstance = new AffiliateApi(defaultClient);
-        CreateAffiliateRequest createAffiliateRequest = new CreateAffiliateRequest(); // CreateAffiliateRequest | Affiliate request to insert
-        try {
-            RestAffiliate result = apiInstance.addAffiliateUsingPOST(createAffiliateRequest);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#addAffiliateUsingPOST");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **createAffiliateRequest** | [**CreateAffiliateRequest**](CreateAffiliateRequest.md)| Affiliate request to insert | [optional] |
-
-### Return type
-
-[**RestAffiliate**](RestAffiliate.md)
-
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **201** | Created |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **500** | Internal Server Error |  -  |
-
-## addAffiliateUsingPOSTWithHttpInfo
-
-> ApiResponse<RestAffiliate> addAffiliateUsingPOST addAffiliateUsingPOSTWithHttpInfo(createAffiliateRequest)
-
-Create an Affiliate
-
-Creates a single Affiliate
-
-### Example
-
-```java
-// Import classes:
-import com.keap.core.sdk.ApiClient;
-import com.keap.core.sdk.ApiException;
-import com.keap.core.sdk.ApiResponse;
-import com.keap.core.sdk.Configuration;
-import com.keap.core.sdk.models.*;
-import com.keap.core.sdk.client.AffiliateApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
-
-        AffiliateApi apiInstance = new AffiliateApi(defaultClient);
-        CreateAffiliateRequest createAffiliateRequest = new CreateAffiliateRequest(); // CreateAffiliateRequest | Affiliate request to insert
-        try {
-            ApiResponse<RestAffiliate> response = apiInstance.addAffiliateUsingPOSTWithHttpInfo(createAffiliateRequest);
-            System.out.println("Status code: " + response.getStatusCode());
-            System.out.println("Response headers: " + response.getHeaders());
-            System.out.println("Response body: " + response.getData());
-        } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#addAffiliateUsingPOST");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            System.err.println("Reason: " + e.getResponseBody());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **createAffiliateRequest** | [**CreateAffiliateRequest**](CreateAffiliateRequest.md)| Affiliate request to insert | [optional] |
-
-### Return type
-
-ApiResponse<[**RestAffiliate**](RestAffiliate.md)>
-
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **201** | Created |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **500** | Internal Server Error |  -  |
-
-
-## addCommissionProgramUsingPOST
-
-> AffiliateCommissionProgramResponse addCommissionProgramUsingPOST(createCommissionProgramRequest)
+> AffiliateCommissionProgramResponse addCommissionProgram(createCommissionProgramRequest)
 
 Create an Affiliate Commission Program
 
@@ -369,10 +369,10 @@ public class Example {
         AffiliateApi apiInstance = new AffiliateApi(defaultClient);
         CreateCommissionProgramRequest createCommissionProgramRequest = new CreateCommissionProgramRequest(); // CreateCommissionProgramRequest | Commission Program to insert
         try {
-            AffiliateCommissionProgramResponse result = apiInstance.addCommissionProgramUsingPOST(createCommissionProgramRequest);
+            AffiliateCommissionProgramResponse result = apiInstance.addCommissionProgram(createCommissionProgramRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#addCommissionProgramUsingPOST");
+            System.err.println("Exception when calling AffiliateApi#addCommissionProgram");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -411,9 +411,9 @@ No authorization required
 | **403** | Forbidden |  -  |
 | **500** | Internal Server Error |  -  |
 
-## addCommissionProgramUsingPOSTWithHttpInfo
+## addCommissionProgramWithHttpInfo
 
-> ApiResponse<AffiliateCommissionProgramResponse> addCommissionProgramUsingPOST addCommissionProgramUsingPOSTWithHttpInfo(createCommissionProgramRequest)
+> ApiResponse<AffiliateCommissionProgramResponse> addCommissionProgram addCommissionProgramWithHttpInfo(createCommissionProgramRequest)
 
 Create an Affiliate Commission Program
 
@@ -438,12 +438,12 @@ public class Example {
         AffiliateApi apiInstance = new AffiliateApi(defaultClient);
         CreateCommissionProgramRequest createCommissionProgramRequest = new CreateCommissionProgramRequest(); // CreateCommissionProgramRequest | Commission Program to insert
         try {
-            ApiResponse<AffiliateCommissionProgramResponse> response = apiInstance.addCommissionProgramUsingPOSTWithHttpInfo(createCommissionProgramRequest);
+            ApiResponse<AffiliateCommissionProgramResponse> response = apiInstance.addCommissionProgramWithHttpInfo(createCommissionProgramRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#addCommissionProgramUsingPOST");
+            System.err.println("Exception when calling AffiliateApi#addCommissionProgram");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -483,9 +483,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## assignProductCommissionProgramUsingPOST
+## assignProductCommissionProgram
 
-> ProductCommissionProgram assignProductCommissionProgramUsingPOST(commissionProgramId, createProductCommissionProgramRequest)
+> ProductCommissionProgram assignProductCommissionProgram(commissionProgramId, createProductCommissionProgramRequest)
 
 Assign a Product Commission Program
 
@@ -510,10 +510,10 @@ public class Example {
         String commissionProgramId = "commissionProgramId_example"; // String | commission_program_id
         CreateProductCommissionProgramRequest createProductCommissionProgramRequest = new CreateProductCommissionProgramRequest(); // CreateProductCommissionProgramRequest | Product Commission Program
         try {
-            ProductCommissionProgram result = apiInstance.assignProductCommissionProgramUsingPOST(commissionProgramId, createProductCommissionProgramRequest);
+            ProductCommissionProgram result = apiInstance.assignProductCommissionProgram(commissionProgramId, createProductCommissionProgramRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#assignProductCommissionProgramUsingPOST");
+            System.err.println("Exception when calling AffiliateApi#assignProductCommissionProgram");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -553,9 +553,9 @@ No authorization required
 | **403** | Forbidden |  -  |
 | **500** | Internal Server Error |  -  |
 
-## assignProductCommissionProgramUsingPOSTWithHttpInfo
+## assignProductCommissionProgramWithHttpInfo
 
-> ApiResponse<ProductCommissionProgram> assignProductCommissionProgramUsingPOST assignProductCommissionProgramUsingPOSTWithHttpInfo(commissionProgramId, createProductCommissionProgramRequest)
+> ApiResponse<ProductCommissionProgram> assignProductCommissionProgram assignProductCommissionProgramWithHttpInfo(commissionProgramId, createProductCommissionProgramRequest)
 
 Assign a Product Commission Program
 
@@ -581,12 +581,12 @@ public class Example {
         String commissionProgramId = "commissionProgramId_example"; // String | commission_program_id
         CreateProductCommissionProgramRequest createProductCommissionProgramRequest = new CreateProductCommissionProgramRequest(); // CreateProductCommissionProgramRequest | Product Commission Program
         try {
-            ApiResponse<ProductCommissionProgram> response = apiInstance.assignProductCommissionProgramUsingPOSTWithHttpInfo(commissionProgramId, createProductCommissionProgramRequest);
+            ApiResponse<ProductCommissionProgram> response = apiInstance.assignProductCommissionProgramWithHttpInfo(commissionProgramId, createProductCommissionProgramRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#assignProductCommissionProgramUsingPOST");
+            System.err.println("Exception when calling AffiliateApi#assignProductCommissionProgram");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -627,9 +627,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## assignSubscriptionCommissionProgramUsingPOST
+## assignSubscriptionCommissionProgram
 
-> SubscriptionCommissionProgram assignSubscriptionCommissionProgramUsingPOST(commissionProgramId, createSubscriptionCommissionProgramRequest)
+> SubscriptionCommissionProgram assignSubscriptionCommissionProgram(commissionProgramId, createSubscriptionCommissionProgramRequest)
 
 Assign a Subscription Commission Program
 
@@ -654,10 +654,10 @@ public class Example {
         String commissionProgramId = "commissionProgramId_example"; // String | commission_program_id
         CreateSubscriptionCommissionProgramRequest createSubscriptionCommissionProgramRequest = new CreateSubscriptionCommissionProgramRequest(); // CreateSubscriptionCommissionProgramRequest | Subscription Commission Program
         try {
-            SubscriptionCommissionProgram result = apiInstance.assignSubscriptionCommissionProgramUsingPOST(commissionProgramId, createSubscriptionCommissionProgramRequest);
+            SubscriptionCommissionProgram result = apiInstance.assignSubscriptionCommissionProgram(commissionProgramId, createSubscriptionCommissionProgramRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#assignSubscriptionCommissionProgramUsingPOST");
+            System.err.println("Exception when calling AffiliateApi#assignSubscriptionCommissionProgram");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -697,9 +697,9 @@ No authorization required
 | **403** | Forbidden |  -  |
 | **500** | Internal Server Error |  -  |
 
-## assignSubscriptionCommissionProgramUsingPOSTWithHttpInfo
+## assignSubscriptionCommissionProgramWithHttpInfo
 
-> ApiResponse<SubscriptionCommissionProgram> assignSubscriptionCommissionProgramUsingPOST assignSubscriptionCommissionProgramUsingPOSTWithHttpInfo(commissionProgramId, createSubscriptionCommissionProgramRequest)
+> ApiResponse<SubscriptionCommissionProgram> assignSubscriptionCommissionProgram assignSubscriptionCommissionProgramWithHttpInfo(commissionProgramId, createSubscriptionCommissionProgramRequest)
 
 Assign a Subscription Commission Program
 
@@ -725,12 +725,12 @@ public class Example {
         String commissionProgramId = "commissionProgramId_example"; // String | commission_program_id
         CreateSubscriptionCommissionProgramRequest createSubscriptionCommissionProgramRequest = new CreateSubscriptionCommissionProgramRequest(); // CreateSubscriptionCommissionProgramRequest | Subscription Commission Program
         try {
-            ApiResponse<SubscriptionCommissionProgram> response = apiInstance.assignSubscriptionCommissionProgramUsingPOSTWithHttpInfo(commissionProgramId, createSubscriptionCommissionProgramRequest);
+            ApiResponse<SubscriptionCommissionProgram> response = apiInstance.assignSubscriptionCommissionProgramWithHttpInfo(commissionProgramId, createSubscriptionCommissionProgramRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#assignSubscriptionCommissionProgramUsingPOST");
+            System.err.println("Exception when calling AffiliateApi#assignSubscriptionCommissionProgram");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -771,9 +771,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## createDefaultCommissionProgramUsingPOST
+## createDefaultCommissionProgram
 
-> SetDefaultCommissionProgramResponse createDefaultCommissionProgramUsingPOST(commissionProgramId, createDefaultCommissionProgramRequest)
+> SetDefaultCommissionProgramResponse createDefaultCommissionProgram(commissionProgramId, createDefaultCommissionProgramRequest)
 
 Create a Default Commission Program
 
@@ -798,10 +798,10 @@ public class Example {
         String commissionProgramId = "commissionProgramId_example"; // String | commission_program_id
         CreateDefaultCommissionProgramRequest createDefaultCommissionProgramRequest = new CreateDefaultCommissionProgramRequest(); // CreateDefaultCommissionProgramRequest | Values of the Default Commission Program
         try {
-            SetDefaultCommissionProgramResponse result = apiInstance.createDefaultCommissionProgramUsingPOST(commissionProgramId, createDefaultCommissionProgramRequest);
+            SetDefaultCommissionProgramResponse result = apiInstance.createDefaultCommissionProgram(commissionProgramId, createDefaultCommissionProgramRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#createDefaultCommissionProgramUsingPOST");
+            System.err.println("Exception when calling AffiliateApi#createDefaultCommissionProgram");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -841,9 +841,9 @@ No authorization required
 | **403** | Forbidden |  -  |
 | **500** | Internal Server Error |  -  |
 
-## createDefaultCommissionProgramUsingPOSTWithHttpInfo
+## createDefaultCommissionProgramWithHttpInfo
 
-> ApiResponse<SetDefaultCommissionProgramResponse> createDefaultCommissionProgramUsingPOST createDefaultCommissionProgramUsingPOSTWithHttpInfo(commissionProgramId, createDefaultCommissionProgramRequest)
+> ApiResponse<SetDefaultCommissionProgramResponse> createDefaultCommissionProgram createDefaultCommissionProgramWithHttpInfo(commissionProgramId, createDefaultCommissionProgramRequest)
 
 Create a Default Commission Program
 
@@ -869,12 +869,12 @@ public class Example {
         String commissionProgramId = "commissionProgramId_example"; // String | commission_program_id
         CreateDefaultCommissionProgramRequest createDefaultCommissionProgramRequest = new CreateDefaultCommissionProgramRequest(); // CreateDefaultCommissionProgramRequest | Values of the Default Commission Program
         try {
-            ApiResponse<SetDefaultCommissionProgramResponse> response = apiInstance.createDefaultCommissionProgramUsingPOSTWithHttpInfo(commissionProgramId, createDefaultCommissionProgramRequest);
+            ApiResponse<SetDefaultCommissionProgramResponse> response = apiInstance.createDefaultCommissionProgramWithHttpInfo(commissionProgramId, createDefaultCommissionProgramRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#createDefaultCommissionProgramUsingPOST");
+            System.err.println("Exception when calling AffiliateApi#createDefaultCommissionProgram");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -915,9 +915,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## createRedirectLinkUsingPOST
+## createRedirectLink
 
-> AffiliateLink createRedirectLinkUsingPOST(createOrUpdateAffiliateLinkRequest)
+> AffiliateLink createRedirectLink(createOrUpdateAffiliateLinkRequest)
 
 Create an Affiliate Link
 
@@ -941,10 +941,10 @@ public class Example {
         AffiliateApi apiInstance = new AffiliateApi(defaultClient);
         CreateOrUpdateAffiliateLinkRequest createOrUpdateAffiliateLinkRequest = new CreateOrUpdateAffiliateLinkRequest(); // CreateOrUpdateAffiliateLinkRequest | request
         try {
-            AffiliateLink result = apiInstance.createRedirectLinkUsingPOST(createOrUpdateAffiliateLinkRequest);
+            AffiliateLink result = apiInstance.createRedirectLink(createOrUpdateAffiliateLinkRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#createRedirectLinkUsingPOST");
+            System.err.println("Exception when calling AffiliateApi#createRedirectLink");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -983,9 +983,9 @@ No authorization required
 | **403** | Forbidden |  -  |
 | **500** | Internal Server Error |  -  |
 
-## createRedirectLinkUsingPOSTWithHttpInfo
+## createRedirectLinkWithHttpInfo
 
-> ApiResponse<AffiliateLink> createRedirectLinkUsingPOST createRedirectLinkUsingPOSTWithHttpInfo(createOrUpdateAffiliateLinkRequest)
+> ApiResponse<AffiliateLink> createRedirectLink createRedirectLinkWithHttpInfo(createOrUpdateAffiliateLinkRequest)
 
 Create an Affiliate Link
 
@@ -1010,12 +1010,12 @@ public class Example {
         AffiliateApi apiInstance = new AffiliateApi(defaultClient);
         CreateOrUpdateAffiliateLinkRequest createOrUpdateAffiliateLinkRequest = new CreateOrUpdateAffiliateLinkRequest(); // CreateOrUpdateAffiliateLinkRequest | request
         try {
-            ApiResponse<AffiliateLink> response = apiInstance.createRedirectLinkUsingPOSTWithHttpInfo(createOrUpdateAffiliateLinkRequest);
+            ApiResponse<AffiliateLink> response = apiInstance.createRedirectLinkWithHttpInfo(createOrUpdateAffiliateLinkRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#createRedirectLinkUsingPOST");
+            System.err.println("Exception when calling AffiliateApi#createRedirectLink");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -1055,149 +1055,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## deleteAffiliateCommissionProgramUsingDELETE
+## deleteAffiliate
 
-> void deleteAffiliateCommissionProgramUsingDELETE(commissionProgramId)
-
-Delete a Commission Program
-
-Deletes a Commission Program
-
-### Example
-
-```java
-// Import classes:
-import com.keap.core.sdk.ApiClient;
-import com.keap.core.sdk.ApiException;
-import com.keap.core.sdk.Configuration;
-import com.keap.core.sdk.models.*;
-import com.keap.core.sdk.client.AffiliateApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
-
-        AffiliateApi apiInstance = new AffiliateApi(defaultClient);
-        String commissionProgramId = "commissionProgramId_example"; // String | commission_program_id
-        try {
-            apiInstance.deleteAffiliateCommissionProgramUsingDELETE(commissionProgramId);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#deleteAffiliateCommissionProgramUsingDELETE");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **commissionProgramId** | **String**| commission_program_id | |
-
-### Return type
-
-
-null (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **204** | No Content |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **500** | Internal Server Error |  -  |
-
-## deleteAffiliateCommissionProgramUsingDELETEWithHttpInfo
-
-> ApiResponse<Void> deleteAffiliateCommissionProgramUsingDELETE deleteAffiliateCommissionProgramUsingDELETEWithHttpInfo(commissionProgramId)
-
-Delete a Commission Program
-
-Deletes a Commission Program
-
-### Example
-
-```java
-// Import classes:
-import com.keap.core.sdk.ApiClient;
-import com.keap.core.sdk.ApiException;
-import com.keap.core.sdk.ApiResponse;
-import com.keap.core.sdk.Configuration;
-import com.keap.core.sdk.models.*;
-import com.keap.core.sdk.client.AffiliateApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
-
-        AffiliateApi apiInstance = new AffiliateApi(defaultClient);
-        String commissionProgramId = "commissionProgramId_example"; // String | commission_program_id
-        try {
-            ApiResponse<Void> response = apiInstance.deleteAffiliateCommissionProgramUsingDELETEWithHttpInfo(commissionProgramId);
-            System.out.println("Status code: " + response.getStatusCode());
-            System.out.println("Response headers: " + response.getHeaders());
-        } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#deleteAffiliateCommissionProgramUsingDELETE");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            System.err.println("Reason: " + e.getResponseBody());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **commissionProgramId** | **String**| commission_program_id | |
-
-### Return type
-
-
-ApiResponse<Void>
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **204** | No Content |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **500** | Internal Server Error |  -  |
-
-
-## deleteAffiliateUsingDELETE
-
-> void deleteAffiliateUsingDELETE(id)
+> void deleteAffiliate(id)
 
 Delete Affiliate
 
@@ -1221,9 +1081,9 @@ public class Example {
         AffiliateApi apiInstance = new AffiliateApi(defaultClient);
         String id = "id_example"; // String | id
         try {
-            apiInstance.deleteAffiliateUsingDELETE(id);
+            apiInstance.deleteAffiliate(id);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#deleteAffiliateUsingDELETE");
+            System.err.println("Exception when calling AffiliateApi#deleteAffiliate");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -1263,9 +1123,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## deleteAffiliateUsingDELETEWithHttpInfo
+## deleteAffiliateWithHttpInfo
 
-> ApiResponse<Void> deleteAffiliateUsingDELETE deleteAffiliateUsingDELETEWithHttpInfo(id)
+> ApiResponse<Void> deleteAffiliate deleteAffiliateWithHttpInfo(id)
 
 Delete Affiliate
 
@@ -1290,11 +1150,11 @@ public class Example {
         AffiliateApi apiInstance = new AffiliateApi(defaultClient);
         String id = "id_example"; // String | id
         try {
-            ApiResponse<Void> response = apiInstance.deleteAffiliateUsingDELETEWithHttpInfo(id);
+            ApiResponse<Void> response = apiInstance.deleteAffiliateWithHttpInfo(id);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#deleteAffiliateUsingDELETE");
+            System.err.println("Exception when calling AffiliateApi#deleteAffiliate");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -1335,9 +1195,149 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## deleteRedirectLinkUsingDELETE
+## deleteAffiliateCommissionProgram
 
-> void deleteRedirectLinkUsingDELETE(redirectId)
+> void deleteAffiliateCommissionProgram(commissionProgramId)
+
+Delete a Commission Program
+
+Deletes a Commission Program
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.AffiliateApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+
+        AffiliateApi apiInstance = new AffiliateApi(defaultClient);
+        String commissionProgramId = "commissionProgramId_example"; // String | commission_program_id
+        try {
+            apiInstance.deleteAffiliateCommissionProgram(commissionProgramId);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AffiliateApi#deleteAffiliateCommissionProgram");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **commissionProgramId** | **String**| commission_program_id | |
+
+### Return type
+
+
+null (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
+
+## deleteAffiliateCommissionProgramWithHttpInfo
+
+> ApiResponse<Void> deleteAffiliateCommissionProgram deleteAffiliateCommissionProgramWithHttpInfo(commissionProgramId)
+
+Delete a Commission Program
+
+Deletes a Commission Program
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.AffiliateApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+
+        AffiliateApi apiInstance = new AffiliateApi(defaultClient);
+        String commissionProgramId = "commissionProgramId_example"; // String | commission_program_id
+        try {
+            ApiResponse<Void> response = apiInstance.deleteAffiliateCommissionProgramWithHttpInfo(commissionProgramId);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AffiliateApi#deleteAffiliateCommissionProgram");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **commissionProgramId** | **String**| commission_program_id | |
+
+### Return type
+
+
+ApiResponse<Void>
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
+
+
+## deleteRedirectLink
+
+> void deleteRedirectLink(redirectId)
 
 Delete an Affiliate Link
 
@@ -1361,9 +1361,9 @@ public class Example {
         AffiliateApi apiInstance = new AffiliateApi(defaultClient);
         String redirectId = "redirectId_example"; // String | redirect_id
         try {
-            apiInstance.deleteRedirectLinkUsingDELETE(redirectId);
+            apiInstance.deleteRedirectLink(redirectId);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#deleteRedirectLinkUsingDELETE");
+            System.err.println("Exception when calling AffiliateApi#deleteRedirectLink");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -1403,9 +1403,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## deleteRedirectLinkUsingDELETEWithHttpInfo
+## deleteRedirectLinkWithHttpInfo
 
-> ApiResponse<Void> deleteRedirectLinkUsingDELETE deleteRedirectLinkUsingDELETEWithHttpInfo(redirectId)
+> ApiResponse<Void> deleteRedirectLink deleteRedirectLinkWithHttpInfo(redirectId)
 
 Delete an Affiliate Link
 
@@ -1430,11 +1430,11 @@ public class Example {
         AffiliateApi apiInstance = new AffiliateApi(defaultClient);
         String redirectId = "redirectId_example"; // String | redirect_id
         try {
-            ApiResponse<Void> response = apiInstance.deleteRedirectLinkUsingDELETEWithHttpInfo(redirectId);
+            ApiResponse<Void> response = apiInstance.deleteRedirectLinkWithHttpInfo(redirectId);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#deleteRedirectLinkUsingDELETE");
+            System.err.println("Exception when calling AffiliateApi#deleteRedirectLink");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -1475,9 +1475,151 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## getAffiliateCommissionTotalUsingGET
+## getAffiliate
 
-> AffiliateCommissionEarned getAffiliateCommissionTotalUsingGET(affiliateId)
+> RestAffiliate getAffiliate(id)
+
+Retrieve an Affiliate
+
+Retrieves a single Affiliate
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.AffiliateApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+
+        AffiliateApi apiInstance = new AffiliateApi(defaultClient);
+        String id = "id_example"; // String | id
+        try {
+            RestAffiliate result = apiInstance.getAffiliate(id);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AffiliateApi#getAffiliate");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | **String**| id | |
+
+### Return type
+
+[**RestAffiliate**](RestAffiliate.md)
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
+
+## getAffiliateWithHttpInfo
+
+> ApiResponse<RestAffiliate> getAffiliate getAffiliateWithHttpInfo(id)
+
+Retrieve an Affiliate
+
+Retrieves a single Affiliate
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.AffiliateApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+
+        AffiliateApi apiInstance = new AffiliateApi(defaultClient);
+        String id = "id_example"; // String | id
+        try {
+            ApiResponse<RestAffiliate> response = apiInstance.getAffiliateWithHttpInfo(id);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AffiliateApi#getAffiliate");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | **String**| id | |
+
+### Return type
+
+ApiResponse<[**RestAffiliate**](RestAffiliate.md)>
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
+
+
+## getAffiliateCommissionTotal
+
+> AffiliateCommissionEarned getAffiliateCommissionTotal(affiliateId)
 
 Retrieve Affiliate Commission Earned and View LedgerURl for portal
 
@@ -1501,10 +1643,10 @@ public class Example {
         AffiliateApi apiInstance = new AffiliateApi(defaultClient);
         String affiliateId = "affiliateId_example"; // String | affiliate_id
         try {
-            AffiliateCommissionEarned result = apiInstance.getAffiliateCommissionTotalUsingGET(affiliateId);
+            AffiliateCommissionEarned result = apiInstance.getAffiliateCommissionTotal(affiliateId);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#getAffiliateCommissionTotalUsingGET");
+            System.err.println("Exception when calling AffiliateApi#getAffiliateCommissionTotal");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -1544,9 +1686,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## getAffiliateCommissionTotalUsingGETWithHttpInfo
+## getAffiliateCommissionTotalWithHttpInfo
 
-> ApiResponse<AffiliateCommissionEarned> getAffiliateCommissionTotalUsingGET getAffiliateCommissionTotalUsingGETWithHttpInfo(affiliateId)
+> ApiResponse<AffiliateCommissionEarned> getAffiliateCommissionTotal getAffiliateCommissionTotalWithHttpInfo(affiliateId)
 
 Retrieve Affiliate Commission Earned and View LedgerURl for portal
 
@@ -1571,12 +1713,12 @@ public class Example {
         AffiliateApi apiInstance = new AffiliateApi(defaultClient);
         String affiliateId = "affiliateId_example"; // String | affiliate_id
         try {
-            ApiResponse<AffiliateCommissionEarned> response = apiInstance.getAffiliateCommissionTotalUsingGETWithHttpInfo(affiliateId);
+            ApiResponse<AffiliateCommissionEarned> response = apiInstance.getAffiliateCommissionTotalWithHttpInfo(affiliateId);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#getAffiliateCommissionTotalUsingGET");
+            System.err.println("Exception when calling AffiliateApi#getAffiliateCommissionTotal");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -1617,9 +1759,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## getAffiliateCommissionsUsingGET
+## getAffiliateCommissions
 
-> ListAffiliateCommissionsResponse getAffiliateCommissionsUsingGET(affiliateId, filter, orderBy, pageSize, pageToken)
+> ListAffiliateCommissionsResponse getAffiliateCommissions(affiliateId, filter, orderBy, pageSize, pageToken)
 
 Retrieve Affiliate Commission and Clawbacks
 
@@ -1647,10 +1789,10 @@ public class Example {
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
         try {
-            ListAffiliateCommissionsResponse result = apiInstance.getAffiliateCommissionsUsingGET(affiliateId, filter, orderBy, pageSize, pageToken);
+            ListAffiliateCommissionsResponse result = apiInstance.getAffiliateCommissions(affiliateId, filter, orderBy, pageSize, pageToken);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#getAffiliateCommissionsUsingGET");
+            System.err.println("Exception when calling AffiliateApi#getAffiliateCommissions");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -1694,9 +1836,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## getAffiliateCommissionsUsingGETWithHttpInfo
+## getAffiliateCommissionsWithHttpInfo
 
-> ApiResponse<ListAffiliateCommissionsResponse> getAffiliateCommissionsUsingGET getAffiliateCommissionsUsingGETWithHttpInfo(affiliateId, filter, orderBy, pageSize, pageToken)
+> ApiResponse<ListAffiliateCommissionsResponse> getAffiliateCommissions getAffiliateCommissionsWithHttpInfo(affiliateId, filter, orderBy, pageSize, pageToken)
 
 Retrieve Affiliate Commission and Clawbacks
 
@@ -1725,12 +1867,12 @@ public class Example {
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
         try {
-            ApiResponse<ListAffiliateCommissionsResponse> response = apiInstance.getAffiliateCommissionsUsingGETWithHttpInfo(affiliateId, filter, orderBy, pageSize, pageToken);
+            ApiResponse<ListAffiliateCommissionsResponse> response = apiInstance.getAffiliateCommissionsWithHttpInfo(affiliateId, filter, orderBy, pageSize, pageToken);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#getAffiliateCommissionsUsingGET");
+            System.err.println("Exception when calling AffiliateApi#getAffiliateCommissions");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -1775,151 +1917,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## getAffiliateUsingGET1
+## getCommissionProgram
 
-> RestAffiliate getAffiliateUsingGET1(id)
-
-Retrieve an Affiliate
-
-Retrieves a single Affiliate
-
-### Example
-
-```java
-// Import classes:
-import com.keap.core.sdk.ApiClient;
-import com.keap.core.sdk.ApiException;
-import com.keap.core.sdk.Configuration;
-import com.keap.core.sdk.models.*;
-import com.keap.core.sdk.client.AffiliateApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
-
-        AffiliateApi apiInstance = new AffiliateApi(defaultClient);
-        String id = "id_example"; // String | id
-        try {
-            RestAffiliate result = apiInstance.getAffiliateUsingGET1(id);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#getAffiliateUsingGET1");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **id** | **String**| id | |
-
-### Return type
-
-[**RestAffiliate**](RestAffiliate.md)
-
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **500** | Internal Server Error |  -  |
-
-## getAffiliateUsingGET1WithHttpInfo
-
-> ApiResponse<RestAffiliate> getAffiliateUsingGET1 getAffiliateUsingGET1WithHttpInfo(id)
-
-Retrieve an Affiliate
-
-Retrieves a single Affiliate
-
-### Example
-
-```java
-// Import classes:
-import com.keap.core.sdk.ApiClient;
-import com.keap.core.sdk.ApiException;
-import com.keap.core.sdk.ApiResponse;
-import com.keap.core.sdk.Configuration;
-import com.keap.core.sdk.models.*;
-import com.keap.core.sdk.client.AffiliateApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
-
-        AffiliateApi apiInstance = new AffiliateApi(defaultClient);
-        String id = "id_example"; // String | id
-        try {
-            ApiResponse<RestAffiliate> response = apiInstance.getAffiliateUsingGET1WithHttpInfo(id);
-            System.out.println("Status code: " + response.getStatusCode());
-            System.out.println("Response headers: " + response.getHeaders());
-            System.out.println("Response body: " + response.getData());
-        } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#getAffiliateUsingGET1");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            System.err.println("Reason: " + e.getResponseBody());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **id** | **String**| id | |
-
-### Return type
-
-ApiResponse<[**RestAffiliate**](RestAffiliate.md)>
-
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **500** | Internal Server Error |  -  |
-
-
-## getCommissionProgramUsingGET
-
-> AffiliateProgramV2 getCommissionProgramUsingGET(commissionProgramId)
+> AffiliateProgramV2 getCommissionProgram(commissionProgramId)
 
 Retrieve a Commission Program
 
@@ -1943,10 +1943,10 @@ public class Example {
         AffiliateApi apiInstance = new AffiliateApi(defaultClient);
         String commissionProgramId = "commissionProgramId_example"; // String | commission_program_id
         try {
-            AffiliateProgramV2 result = apiInstance.getCommissionProgramUsingGET(commissionProgramId);
+            AffiliateProgramV2 result = apiInstance.getCommissionProgram(commissionProgramId);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#getCommissionProgramUsingGET");
+            System.err.println("Exception when calling AffiliateApi#getCommissionProgram");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -1986,9 +1986,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## getCommissionProgramUsingGETWithHttpInfo
+## getCommissionProgramWithHttpInfo
 
-> ApiResponse<AffiliateProgramV2> getCommissionProgramUsingGET getCommissionProgramUsingGETWithHttpInfo(commissionProgramId)
+> ApiResponse<AffiliateProgramV2> getCommissionProgram getCommissionProgramWithHttpInfo(commissionProgramId)
 
 Retrieve a Commission Program
 
@@ -2013,12 +2013,12 @@ public class Example {
         AffiliateApi apiInstance = new AffiliateApi(defaultClient);
         String commissionProgramId = "commissionProgramId_example"; // String | commission_program_id
         try {
-            ApiResponse<AffiliateProgramV2> response = apiInstance.getCommissionProgramUsingGETWithHttpInfo(commissionProgramId);
+            ApiResponse<AffiliateProgramV2> response = apiInstance.getCommissionProgramWithHttpInfo(commissionProgramId);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#getCommissionProgramUsingGET");
+            System.err.println("Exception when calling AffiliateApi#getCommissionProgram");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -2059,9 +2059,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## getRedirectLinkUsingGET
+## getRedirectLink
 
-> AffiliateLink getRedirectLinkUsingGET(redirectId)
+> AffiliateLink getRedirectLink(redirectId)
 
 Retrieve an Affiliate Link
 
@@ -2085,10 +2085,10 @@ public class Example {
         AffiliateApi apiInstance = new AffiliateApi(defaultClient);
         String redirectId = "redirectId_example"; // String | redirect_id
         try {
-            AffiliateLink result = apiInstance.getRedirectLinkUsingGET(redirectId);
+            AffiliateLink result = apiInstance.getRedirectLink(redirectId);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#getRedirectLinkUsingGET");
+            System.err.println("Exception when calling AffiliateApi#getRedirectLink");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -2128,9 +2128,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## getRedirectLinkUsingGETWithHttpInfo
+## getRedirectLinkWithHttpInfo
 
-> ApiResponse<AffiliateLink> getRedirectLinkUsingGET getRedirectLinkUsingGETWithHttpInfo(redirectId)
+> ApiResponse<AffiliateLink> getRedirectLink getRedirectLinkWithHttpInfo(redirectId)
 
 Retrieve an Affiliate Link
 
@@ -2155,12 +2155,12 @@ public class Example {
         AffiliateApi apiInstance = new AffiliateApi(defaultClient);
         String redirectId = "redirectId_example"; // String | redirect_id
         try {
-            ApiResponse<AffiliateLink> response = apiInstance.getRedirectLinkUsingGETWithHttpInfo(redirectId);
+            ApiResponse<AffiliateLink> response = apiInstance.getRedirectLinkWithHttpInfo(redirectId);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#getRedirectLinkUsingGET");
+            System.err.println("Exception when calling AffiliateApi#getRedirectLink");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -2201,9 +2201,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## listAffiliateCommissionProgramsUsingGET
+## listAffiliateCommissionPrograms
 
-> ListAffiliateCommissionProgramsResponse listAffiliateCommissionProgramsUsingGET(filter, orderBy, pageSize, pageToken)
+> ListAffiliateCommissionProgramsResponse listAffiliateCommissionPrograms(filter, orderBy, pageSize, pageToken)
 
 List Affiliate Commission Programs
 
@@ -2230,10 +2230,10 @@ public class Example {
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
         try {
-            ListAffiliateCommissionProgramsResponse result = apiInstance.listAffiliateCommissionProgramsUsingGET(filter, orderBy, pageSize, pageToken);
+            ListAffiliateCommissionProgramsResponse result = apiInstance.listAffiliateCommissionPrograms(filter, orderBy, pageSize, pageToken);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#listAffiliateCommissionProgramsUsingGET");
+            System.err.println("Exception when calling AffiliateApi#listAffiliateCommissionPrograms");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -2276,9 +2276,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## listAffiliateCommissionProgramsUsingGETWithHttpInfo
+## listAffiliateCommissionProgramsWithHttpInfo
 
-> ApiResponse<ListAffiliateCommissionProgramsResponse> listAffiliateCommissionProgramsUsingGET listAffiliateCommissionProgramsUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken)
+> ApiResponse<ListAffiliateCommissionProgramsResponse> listAffiliateCommissionPrograms listAffiliateCommissionProgramsWithHttpInfo(filter, orderBy, pageSize, pageToken)
 
 List Affiliate Commission Programs
 
@@ -2306,12 +2306,12 @@ public class Example {
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
         try {
-            ApiResponse<ListAffiliateCommissionProgramsResponse> response = apiInstance.listAffiliateCommissionProgramsUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken);
+            ApiResponse<ListAffiliateCommissionProgramsResponse> response = apiInstance.listAffiliateCommissionProgramsWithHttpInfo(filter, orderBy, pageSize, pageToken);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#listAffiliateCommissionProgramsUsingGET");
+            System.err.println("Exception when calling AffiliateApi#listAffiliateCommissionPrograms");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -2355,9 +2355,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## listAffiliateLinksUsingGET
+## listAffiliateLinks
 
-> ListAffiliateLinksResponse listAffiliateLinksUsingGET(filter, orderBy, pageSize, pageToken)
+> ListAffiliateLinksResponse listAffiliateLinks(filter, orderBy, pageSize, pageToken)
 
 List Affiliate Links
 
@@ -2384,10 +2384,10 @@ public class Example {
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
         try {
-            ListAffiliateLinksResponse result = apiInstance.listAffiliateLinksUsingGET(filter, orderBy, pageSize, pageToken);
+            ListAffiliateLinksResponse result = apiInstance.listAffiliateLinks(filter, orderBy, pageSize, pageToken);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#listAffiliateLinksUsingGET");
+            System.err.println("Exception when calling AffiliateApi#listAffiliateLinks");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -2430,9 +2430,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## listAffiliateLinksUsingGETWithHttpInfo
+## listAffiliateLinksWithHttpInfo
 
-> ApiResponse<ListAffiliateLinksResponse> listAffiliateLinksUsingGET listAffiliateLinksUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken)
+> ApiResponse<ListAffiliateLinksResponse> listAffiliateLinks listAffiliateLinksWithHttpInfo(filter, orderBy, pageSize, pageToken)
 
 List Affiliate Links
 
@@ -2460,12 +2460,12 @@ public class Example {
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
         try {
-            ApiResponse<ListAffiliateLinksResponse> response = apiInstance.listAffiliateLinksUsingGETWithHttpInfo(filter, orderBy, pageSize, pageToken);
+            ApiResponse<ListAffiliateLinksResponse> response = apiInstance.listAffiliateLinksWithHttpInfo(filter, orderBy, pageSize, pageToken);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#listAffiliateLinksUsingGET");
+            System.err.println("Exception when calling AffiliateApi#listAffiliateLinks");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -2509,9 +2509,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## listSummariesUsingGET1
+## listSummaries
 
-> ListAffiliateSummariesResponse listSummariesUsingGET1(filter, orderBy, pageSize, pageToken)
+> ListAffiliateSummariesResponse listSummaries(filter, orderBy, pageSize, pageToken)
 
 List Affiliate Summaries
 
@@ -2538,10 +2538,10 @@ public class Example {
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
         try {
-            ListAffiliateSummariesResponse result = apiInstance.listSummariesUsingGET1(filter, orderBy, pageSize, pageToken);
+            ListAffiliateSummariesResponse result = apiInstance.listSummaries(filter, orderBy, pageSize, pageToken);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#listSummariesUsingGET1");
+            System.err.println("Exception when calling AffiliateApi#listSummaries");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -2584,9 +2584,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## listSummariesUsingGET1WithHttpInfo
+## listSummariesWithHttpInfo
 
-> ApiResponse<ListAffiliateSummariesResponse> listSummariesUsingGET1 listSummariesUsingGET1WithHttpInfo(filter, orderBy, pageSize, pageToken)
+> ApiResponse<ListAffiliateSummariesResponse> listSummaries listSummariesWithHttpInfo(filter, orderBy, pageSize, pageToken)
 
 List Affiliate Summaries
 
@@ -2614,12 +2614,12 @@ public class Example {
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
         try {
-            ApiResponse<ListAffiliateSummariesResponse> response = apiInstance.listSummariesUsingGET1WithHttpInfo(filter, orderBy, pageSize, pageToken);
+            ApiResponse<ListAffiliateSummariesResponse> response = apiInstance.listSummariesWithHttpInfo(filter, orderBy, pageSize, pageToken);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#listSummariesUsingGET1");
+            System.err.println("Exception when calling AffiliateApi#listSummaries");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -2663,9 +2663,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## removeAffiliateFromProgramUsingPOST
+## removeAffiliateFromProgram
 
-> void removeAffiliateFromProgramUsingPOST(id, affiliateRemoveFromProgramRequest)
+> void removeAffiliateFromProgram(id, affiliateRemoveFromProgramRequest)
 
 Remove an Affiliate from a Commission Program
 
@@ -2690,9 +2690,9 @@ public class Example {
         String id = "id_example"; // String | id
         AffiliateRemoveFromProgramRequest affiliateRemoveFromProgramRequest = new AffiliateRemoveFromProgramRequest(); // AffiliateRemoveFromProgramRequest | removeFromProgramRequest
         try {
-            apiInstance.removeAffiliateFromProgramUsingPOST(id, affiliateRemoveFromProgramRequest);
+            apiInstance.removeAffiliateFromProgram(id, affiliateRemoveFromProgramRequest);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#removeAffiliateFromProgramUsingPOST");
+            System.err.println("Exception when calling AffiliateApi#removeAffiliateFromProgram");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -2732,9 +2732,9 @@ No authorization required
 | **403** | Forbidden |  -  |
 | **500** | Internal Server Error |  -  |
 
-## removeAffiliateFromProgramUsingPOSTWithHttpInfo
+## removeAffiliateFromProgramWithHttpInfo
 
-> ApiResponse<Void> removeAffiliateFromProgramUsingPOST removeAffiliateFromProgramUsingPOSTWithHttpInfo(id, affiliateRemoveFromProgramRequest)
+> ApiResponse<Void> removeAffiliateFromProgram removeAffiliateFromProgramWithHttpInfo(id, affiliateRemoveFromProgramRequest)
 
 Remove an Affiliate from a Commission Program
 
@@ -2760,11 +2760,11 @@ public class Example {
         String id = "id_example"; // String | id
         AffiliateRemoveFromProgramRequest affiliateRemoveFromProgramRequest = new AffiliateRemoveFromProgramRequest(); // AffiliateRemoveFromProgramRequest | removeFromProgramRequest
         try {
-            ApiResponse<Void> response = apiInstance.removeAffiliateFromProgramUsingPOSTWithHttpInfo(id, affiliateRemoveFromProgramRequest);
+            ApiResponse<Void> response = apiInstance.removeAffiliateFromProgramWithHttpInfo(id, affiliateRemoveFromProgramRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#removeAffiliateFromProgramUsingPOST");
+            System.err.println("Exception when calling AffiliateApi#removeAffiliateFromProgram");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -2805,9 +2805,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## removeProductCommissionFromCommissionsUsingPOST
+## removeProductCommissionFromCommissions
 
-> void removeProductCommissionFromCommissionsUsingPOST(commissionId, deleteProgramCommissionRequest)
+> void removeProductCommissionFromCommissions(commissionId, deleteProgramCommissionRequest)
 
 Remove a Product from a Commission Program
 
@@ -2832,9 +2832,9 @@ public class Example {
         String commissionId = "commissionId_example"; // String | commission_id
         DeleteProgramCommissionRequest deleteProgramCommissionRequest = new DeleteProgramCommissionRequest(); // DeleteProgramCommissionRequest | deleteProgramCommissionRequest
         try {
-            apiInstance.removeProductCommissionFromCommissionsUsingPOST(commissionId, deleteProgramCommissionRequest);
+            apiInstance.removeProductCommissionFromCommissions(commissionId, deleteProgramCommissionRequest);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#removeProductCommissionFromCommissionsUsingPOST");
+            System.err.println("Exception when calling AffiliateApi#removeProductCommissionFromCommissions");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -2874,9 +2874,9 @@ No authorization required
 | **403** | Forbidden |  -  |
 | **500** | Internal Server Error |  -  |
 
-## removeProductCommissionFromCommissionsUsingPOSTWithHttpInfo
+## removeProductCommissionFromCommissionsWithHttpInfo
 
-> ApiResponse<Void> removeProductCommissionFromCommissionsUsingPOST removeProductCommissionFromCommissionsUsingPOSTWithHttpInfo(commissionId, deleteProgramCommissionRequest)
+> ApiResponse<Void> removeProductCommissionFromCommissions removeProductCommissionFromCommissionsWithHttpInfo(commissionId, deleteProgramCommissionRequest)
 
 Remove a Product from a Commission Program
 
@@ -2902,11 +2902,11 @@ public class Example {
         String commissionId = "commissionId_example"; // String | commission_id
         DeleteProgramCommissionRequest deleteProgramCommissionRequest = new DeleteProgramCommissionRequest(); // DeleteProgramCommissionRequest | deleteProgramCommissionRequest
         try {
-            ApiResponse<Void> response = apiInstance.removeProductCommissionFromCommissionsUsingPOSTWithHttpInfo(commissionId, deleteProgramCommissionRequest);
+            ApiResponse<Void> response = apiInstance.removeProductCommissionFromCommissionsWithHttpInfo(commissionId, deleteProgramCommissionRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#removeProductCommissionFromCommissionsUsingPOST");
+            System.err.println("Exception when calling AffiliateApi#removeProductCommissionFromCommissions");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -2947,9 +2947,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## removeSubscriptionPlanCommissionFromCommissionsUsingPOST
+## removeSubscriptionPlanCommissionFromCommissions
 
-> void removeSubscriptionPlanCommissionFromCommissionsUsingPOST(commissionId, deleteSubscriptionPlanCommissionRequest)
+> void removeSubscriptionPlanCommissionFromCommissions(commissionId, deleteSubscriptionPlanCommissionRequest)
 
 Remove a Subscription from a Commission Program
 
@@ -2974,9 +2974,9 @@ public class Example {
         String commissionId = "commissionId_example"; // String | commission_id
         DeleteSubscriptionPlanCommissionRequest deleteSubscriptionPlanCommissionRequest = new DeleteSubscriptionPlanCommissionRequest(); // DeleteSubscriptionPlanCommissionRequest | deleteSubscriptionPlanCommissionRequest
         try {
-            apiInstance.removeSubscriptionPlanCommissionFromCommissionsUsingPOST(commissionId, deleteSubscriptionPlanCommissionRequest);
+            apiInstance.removeSubscriptionPlanCommissionFromCommissions(commissionId, deleteSubscriptionPlanCommissionRequest);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#removeSubscriptionPlanCommissionFromCommissionsUsingPOST");
+            System.err.println("Exception when calling AffiliateApi#removeSubscriptionPlanCommissionFromCommissions");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -3016,9 +3016,9 @@ No authorization required
 | **403** | Forbidden |  -  |
 | **500** | Internal Server Error |  -  |
 
-## removeSubscriptionPlanCommissionFromCommissionsUsingPOSTWithHttpInfo
+## removeSubscriptionPlanCommissionFromCommissionsWithHttpInfo
 
-> ApiResponse<Void> removeSubscriptionPlanCommissionFromCommissionsUsingPOST removeSubscriptionPlanCommissionFromCommissionsUsingPOSTWithHttpInfo(commissionId, deleteSubscriptionPlanCommissionRequest)
+> ApiResponse<Void> removeSubscriptionPlanCommissionFromCommissions removeSubscriptionPlanCommissionFromCommissionsWithHttpInfo(commissionId, deleteSubscriptionPlanCommissionRequest)
 
 Remove a Subscription from a Commission Program
 
@@ -3044,11 +3044,11 @@ public class Example {
         String commissionId = "commissionId_example"; // String | commission_id
         DeleteSubscriptionPlanCommissionRequest deleteSubscriptionPlanCommissionRequest = new DeleteSubscriptionPlanCommissionRequest(); // DeleteSubscriptionPlanCommissionRequest | deleteSubscriptionPlanCommissionRequest
         try {
-            ApiResponse<Void> response = apiInstance.removeSubscriptionPlanCommissionFromCommissionsUsingPOSTWithHttpInfo(commissionId, deleteSubscriptionPlanCommissionRequest);
+            ApiResponse<Void> response = apiInstance.removeSubscriptionPlanCommissionFromCommissionsWithHttpInfo(commissionId, deleteSubscriptionPlanCommissionRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#removeSubscriptionPlanCommissionFromCommissionsUsingPOST");
+            System.err.println("Exception when calling AffiliateApi#removeSubscriptionPlanCommissionFromCommissions");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -3089,9 +3089,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## updateAffiliateUsingPATCH
+## updateAffiliate
 
-> RestAffiliate updateAffiliateUsingPATCH(id, updateAffiliateRequest)
+> RestAffiliate updateAffiliate(id, updateAffiliateRequest)
 
 Update an Affiliate
 
@@ -3116,10 +3116,10 @@ public class Example {
         String id = "id_example"; // String | id
         UpdateAffiliateRequest updateAffiliateRequest = new UpdateAffiliateRequest(); // UpdateAffiliateRequest | Request to update an affiliate
         try {
-            RestAffiliate result = apiInstance.updateAffiliateUsingPATCH(id, updateAffiliateRequest);
+            RestAffiliate result = apiInstance.updateAffiliate(id, updateAffiliateRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#updateAffiliateUsingPATCH");
+            System.err.println("Exception when calling AffiliateApi#updateAffiliate");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -3160,9 +3160,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## updateAffiliateUsingPATCHWithHttpInfo
+## updateAffiliateWithHttpInfo
 
-> ApiResponse<RestAffiliate> updateAffiliateUsingPATCH updateAffiliateUsingPATCHWithHttpInfo(id, updateAffiliateRequest)
+> ApiResponse<RestAffiliate> updateAffiliate updateAffiliateWithHttpInfo(id, updateAffiliateRequest)
 
 Update an Affiliate
 
@@ -3188,12 +3188,12 @@ public class Example {
         String id = "id_example"; // String | id
         UpdateAffiliateRequest updateAffiliateRequest = new UpdateAffiliateRequest(); // UpdateAffiliateRequest | Request to update an affiliate
         try {
-            ApiResponse<RestAffiliate> response = apiInstance.updateAffiliateUsingPATCHWithHttpInfo(id, updateAffiliateRequest);
+            ApiResponse<RestAffiliate> response = apiInstance.updateAffiliateWithHttpInfo(id, updateAffiliateRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#updateAffiliateUsingPATCH");
+            System.err.println("Exception when calling AffiliateApi#updateAffiliate");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -3235,9 +3235,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## updateCommissionProgramUsingPATCH
+## updateCommissionProgram
 
-> AffiliateCommissionProgramResponse updateCommissionProgramUsingPATCH(commissionProgramId, updateCommissionProgramRequest, updateMask)
+> AffiliateCommissionProgramResponse updateCommissionProgram(commissionProgramId, updateCommissionProgramRequest, updateMask)
 
 Update an Affiliate Commission Program
 
@@ -3263,10 +3263,10 @@ public class Example {
         UpdateCommissionProgramRequest updateCommissionProgramRequest = new UpdateCommissionProgramRequest(); // UpdateCommissionProgramRequest | updateCommissionProgramRequest
         List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
-            AffiliateCommissionProgramResponse result = apiInstance.updateCommissionProgramUsingPATCH(commissionProgramId, updateCommissionProgramRequest, updateMask);
+            AffiliateCommissionProgramResponse result = apiInstance.updateCommissionProgram(commissionProgramId, updateCommissionProgramRequest, updateMask);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#updateCommissionProgramUsingPATCH");
+            System.err.println("Exception when calling AffiliateApi#updateCommissionProgram");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -3308,9 +3308,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## updateCommissionProgramUsingPATCHWithHttpInfo
+## updateCommissionProgramWithHttpInfo
 
-> ApiResponse<AffiliateCommissionProgramResponse> updateCommissionProgramUsingPATCH updateCommissionProgramUsingPATCHWithHttpInfo(commissionProgramId, updateCommissionProgramRequest, updateMask)
+> ApiResponse<AffiliateCommissionProgramResponse> updateCommissionProgram updateCommissionProgramWithHttpInfo(commissionProgramId, updateCommissionProgramRequest, updateMask)
 
 Update an Affiliate Commission Program
 
@@ -3337,12 +3337,12 @@ public class Example {
         UpdateCommissionProgramRequest updateCommissionProgramRequest = new UpdateCommissionProgramRequest(); // UpdateCommissionProgramRequest | updateCommissionProgramRequest
         List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
-            ApiResponse<AffiliateCommissionProgramResponse> response = apiInstance.updateCommissionProgramUsingPATCHWithHttpInfo(commissionProgramId, updateCommissionProgramRequest, updateMask);
+            ApiResponse<AffiliateCommissionProgramResponse> response = apiInstance.updateCommissionProgramWithHttpInfo(commissionProgramId, updateCommissionProgramRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#updateCommissionProgramUsingPATCH");
+            System.err.println("Exception when calling AffiliateApi#updateCommissionProgram");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -3385,9 +3385,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## updateDefaultCommissionProgramUsingPATCH
+## updateDefaultCommissionProgram
 
-> SetDefaultCommissionProgramResponse updateDefaultCommissionProgramUsingPATCH(commissionProgramId, updateMask, updateDefaultCommissionProgramRequest)
+> SetDefaultCommissionProgramResponse updateDefaultCommissionProgram(commissionProgramId, updateMask, updateDefaultCommissionProgramRequest)
 
 Update a Default Commission Program
 
@@ -3413,10 +3413,10 @@ public class Example {
         List<String> updateMask = Arrays.asList(); // List<String> | update_mask
         UpdateDefaultCommissionProgramRequest updateDefaultCommissionProgramRequest = new UpdateDefaultCommissionProgramRequest(); // UpdateDefaultCommissionProgramRequest | Values of the default Commission Program
         try {
-            SetDefaultCommissionProgramResponse result = apiInstance.updateDefaultCommissionProgramUsingPATCH(commissionProgramId, updateMask, updateDefaultCommissionProgramRequest);
+            SetDefaultCommissionProgramResponse result = apiInstance.updateDefaultCommissionProgram(commissionProgramId, updateMask, updateDefaultCommissionProgramRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#updateDefaultCommissionProgramUsingPATCH");
+            System.err.println("Exception when calling AffiliateApi#updateDefaultCommissionProgram");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -3458,9 +3458,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## updateDefaultCommissionProgramUsingPATCHWithHttpInfo
+## updateDefaultCommissionProgramWithHttpInfo
 
-> ApiResponse<SetDefaultCommissionProgramResponse> updateDefaultCommissionProgramUsingPATCH updateDefaultCommissionProgramUsingPATCHWithHttpInfo(commissionProgramId, updateMask, updateDefaultCommissionProgramRequest)
+> ApiResponse<SetDefaultCommissionProgramResponse> updateDefaultCommissionProgram updateDefaultCommissionProgramWithHttpInfo(commissionProgramId, updateMask, updateDefaultCommissionProgramRequest)
 
 Update a Default Commission Program
 
@@ -3487,12 +3487,12 @@ public class Example {
         List<String> updateMask = Arrays.asList(); // List<String> | update_mask
         UpdateDefaultCommissionProgramRequest updateDefaultCommissionProgramRequest = new UpdateDefaultCommissionProgramRequest(); // UpdateDefaultCommissionProgramRequest | Values of the default Commission Program
         try {
-            ApiResponse<SetDefaultCommissionProgramResponse> response = apiInstance.updateDefaultCommissionProgramUsingPATCHWithHttpInfo(commissionProgramId, updateMask, updateDefaultCommissionProgramRequest);
+            ApiResponse<SetDefaultCommissionProgramResponse> response = apiInstance.updateDefaultCommissionProgramWithHttpInfo(commissionProgramId, updateMask, updateDefaultCommissionProgramRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#updateDefaultCommissionProgramUsingPATCH");
+            System.err.println("Exception when calling AffiliateApi#updateDefaultCommissionProgram");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -3535,9 +3535,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## updateProductCommissionProgramUsingPATCH
+## updateProductCommissionProgram
 
-> ProductCommissionProgram updateProductCommissionProgramUsingPATCH(commissionProgramId, updateMask, updateProductCommissionProgramRequest)
+> ProductCommissionProgram updateProductCommissionProgram(commissionProgramId, updateMask, updateProductCommissionProgramRequest)
 
 Update a Product Commission Program
 
@@ -3563,10 +3563,10 @@ public class Example {
         List<String> updateMask = Arrays.asList(); // List<String> | update_mask
         UpdateProductCommissionProgramRequest updateProductCommissionProgramRequest = new UpdateProductCommissionProgramRequest(); // UpdateProductCommissionProgramRequest | Values of the product Commission Program
         try {
-            ProductCommissionProgram result = apiInstance.updateProductCommissionProgramUsingPATCH(commissionProgramId, updateMask, updateProductCommissionProgramRequest);
+            ProductCommissionProgram result = apiInstance.updateProductCommissionProgram(commissionProgramId, updateMask, updateProductCommissionProgramRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#updateProductCommissionProgramUsingPATCH");
+            System.err.println("Exception when calling AffiliateApi#updateProductCommissionProgram");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -3608,9 +3608,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## updateProductCommissionProgramUsingPATCHWithHttpInfo
+## updateProductCommissionProgramWithHttpInfo
 
-> ApiResponse<ProductCommissionProgram> updateProductCommissionProgramUsingPATCH updateProductCommissionProgramUsingPATCHWithHttpInfo(commissionProgramId, updateMask, updateProductCommissionProgramRequest)
+> ApiResponse<ProductCommissionProgram> updateProductCommissionProgram updateProductCommissionProgramWithHttpInfo(commissionProgramId, updateMask, updateProductCommissionProgramRequest)
 
 Update a Product Commission Program
 
@@ -3637,12 +3637,12 @@ public class Example {
         List<String> updateMask = Arrays.asList(); // List<String> | update_mask
         UpdateProductCommissionProgramRequest updateProductCommissionProgramRequest = new UpdateProductCommissionProgramRequest(); // UpdateProductCommissionProgramRequest | Values of the product Commission Program
         try {
-            ApiResponse<ProductCommissionProgram> response = apiInstance.updateProductCommissionProgramUsingPATCHWithHttpInfo(commissionProgramId, updateMask, updateProductCommissionProgramRequest);
+            ApiResponse<ProductCommissionProgram> response = apiInstance.updateProductCommissionProgramWithHttpInfo(commissionProgramId, updateMask, updateProductCommissionProgramRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#updateProductCommissionProgramUsingPATCH");
+            System.err.println("Exception when calling AffiliateApi#updateProductCommissionProgram");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -3685,9 +3685,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## updateRedirectLinkUsingPATCH
+## updateRedirectLink
 
-> AffiliateLink updateRedirectLinkUsingPATCH(redirectId, createOrUpdateAffiliateLinkRequest)
+> AffiliateLink updateRedirectLink(redirectId, createOrUpdateAffiliateLinkRequest)
 
 Update an Affiliate Link
 
@@ -3712,10 +3712,10 @@ public class Example {
         String redirectId = "redirectId_example"; // String | redirect_id
         CreateOrUpdateAffiliateLinkRequest createOrUpdateAffiliateLinkRequest = new CreateOrUpdateAffiliateLinkRequest(); // CreateOrUpdateAffiliateLinkRequest | request
         try {
-            AffiliateLink result = apiInstance.updateRedirectLinkUsingPATCH(redirectId, createOrUpdateAffiliateLinkRequest);
+            AffiliateLink result = apiInstance.updateRedirectLink(redirectId, createOrUpdateAffiliateLinkRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#updateRedirectLinkUsingPATCH");
+            System.err.println("Exception when calling AffiliateApi#updateRedirectLink");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -3756,9 +3756,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## updateRedirectLinkUsingPATCHWithHttpInfo
+## updateRedirectLinkWithHttpInfo
 
-> ApiResponse<AffiliateLink> updateRedirectLinkUsingPATCH updateRedirectLinkUsingPATCHWithHttpInfo(redirectId, createOrUpdateAffiliateLinkRequest)
+> ApiResponse<AffiliateLink> updateRedirectLink updateRedirectLinkWithHttpInfo(redirectId, createOrUpdateAffiliateLinkRequest)
 
 Update an Affiliate Link
 
@@ -3784,12 +3784,12 @@ public class Example {
         String redirectId = "redirectId_example"; // String | redirect_id
         CreateOrUpdateAffiliateLinkRequest createOrUpdateAffiliateLinkRequest = new CreateOrUpdateAffiliateLinkRequest(); // CreateOrUpdateAffiliateLinkRequest | request
         try {
-            ApiResponse<AffiliateLink> response = apiInstance.updateRedirectLinkUsingPATCHWithHttpInfo(redirectId, createOrUpdateAffiliateLinkRequest);
+            ApiResponse<AffiliateLink> response = apiInstance.updateRedirectLinkWithHttpInfo(redirectId, createOrUpdateAffiliateLinkRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#updateRedirectLinkUsingPATCH");
+            System.err.println("Exception when calling AffiliateApi#updateRedirectLink");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -3831,9 +3831,9 @@ No authorization required
 | **500** | Internal Server Error |  -  |
 
 
-## updateSubscriptionCommissionProgramUsingPATCH
+## updateSubscriptionCommissionProgram
 
-> SubscriptionCommissionProgram updateSubscriptionCommissionProgramUsingPATCH(commissionProgramId, updateMask, updateSubscriptionCommissionProgramRequest)
+> SubscriptionCommissionProgram updateSubscriptionCommissionProgram(commissionProgramId, updateMask, updateSubscriptionCommissionProgramRequest)
 
 Update a Subscription Commission Program
 
@@ -3859,10 +3859,10 @@ public class Example {
         List<String> updateMask = Arrays.asList(); // List<String> | update_mask
         UpdateSubscriptionCommissionProgramRequest updateSubscriptionCommissionProgramRequest = new UpdateSubscriptionCommissionProgramRequest(); // UpdateSubscriptionCommissionProgramRequest | Values of the subscription Commission Program
         try {
-            SubscriptionCommissionProgram result = apiInstance.updateSubscriptionCommissionProgramUsingPATCH(commissionProgramId, updateMask, updateSubscriptionCommissionProgramRequest);
+            SubscriptionCommissionProgram result = apiInstance.updateSubscriptionCommissionProgram(commissionProgramId, updateMask, updateSubscriptionCommissionProgramRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#updateSubscriptionCommissionProgramUsingPATCH");
+            System.err.println("Exception when calling AffiliateApi#updateSubscriptionCommissionProgram");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -3904,9 +3904,9 @@ No authorization required
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-## updateSubscriptionCommissionProgramUsingPATCHWithHttpInfo
+## updateSubscriptionCommissionProgramWithHttpInfo
 
-> ApiResponse<SubscriptionCommissionProgram> updateSubscriptionCommissionProgramUsingPATCH updateSubscriptionCommissionProgramUsingPATCHWithHttpInfo(commissionProgramId, updateMask, updateSubscriptionCommissionProgramRequest)
+> ApiResponse<SubscriptionCommissionProgram> updateSubscriptionCommissionProgram updateSubscriptionCommissionProgramWithHttpInfo(commissionProgramId, updateMask, updateSubscriptionCommissionProgramRequest)
 
 Update a Subscription Commission Program
 
@@ -3933,12 +3933,12 @@ public class Example {
         List<String> updateMask = Arrays.asList(); // List<String> | update_mask
         UpdateSubscriptionCommissionProgramRequest updateSubscriptionCommissionProgramRequest = new UpdateSubscriptionCommissionProgramRequest(); // UpdateSubscriptionCommissionProgramRequest | Values of the subscription Commission Program
         try {
-            ApiResponse<SubscriptionCommissionProgram> response = apiInstance.updateSubscriptionCommissionProgramUsingPATCHWithHttpInfo(commissionProgramId, updateMask, updateSubscriptionCommissionProgramRequest);
+            ApiResponse<SubscriptionCommissionProgram> response = apiInstance.updateSubscriptionCommissionProgramWithHttpInfo(commissionProgramId, updateMask, updateSubscriptionCommissionProgramRequest);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling AffiliateApi#updateSubscriptionCommissionProgramUsingPATCH");
+            System.err.println("Exception when calling AffiliateApi#updateSubscriptionCommissionProgram");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());

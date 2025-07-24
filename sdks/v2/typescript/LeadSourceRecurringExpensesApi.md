@@ -4,16 +4,16 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createLeadSourceRecurringExpenseUsingPOST**](LeadSourceRecurringExpensesApi.md#createLeadSourceRecurringExpenseUsingPOST) | **POST** /v2/leadSources/{lead_source_id}/recurringExpenses | Create a Lead Source Recurring Expense
-[**deleteLeadSourceRecurringExpenseUsingDELETE**](LeadSourceRecurringExpensesApi.md#deleteLeadSourceRecurringExpenseUsingDELETE) | **DELETE** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Delete a Lead Source Recurring Expense
-[**getLeadSourceRecurringExpenseUsingGET**](LeadSourceRecurringExpensesApi.md#getLeadSourceRecurringExpenseUsingGET) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Retrieve a Lead Source Recurring Expense
-[**listExpensesIncurredFromLeadSourceRecurringExpenseUsingGET**](LeadSourceRecurringExpensesApi.md#listExpensesIncurredFromLeadSourceRecurringExpenseUsingGET) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id}/expenses | Retrieves a list of expenses incurred from a recurring expense
-[**listLeadSourceRecurringExpensesUsingGET**](LeadSourceRecurringExpensesApi.md#listLeadSourceRecurringExpensesUsingGET) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses | Retrieves a list of lead source recurring expenses
-[**updateLeadSourceRecurringExpenseUsingPATCH**](LeadSourceRecurringExpensesApi.md#updateLeadSourceRecurringExpenseUsingPATCH) | **PATCH** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Update a Lead Source Recurring Expense
+[**createLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#createLeadSourceRecurringExpense) | **POST** /v2/leadSources/{lead_source_id}/recurringExpenses | Create a Lead Source Recurring Expense
+[**deleteLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#deleteLeadSourceRecurringExpense) | **DELETE** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Delete a Lead Source Recurring Expense
+[**getLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#getLeadSourceRecurringExpense) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Retrieve a Lead Source Recurring Expense
+[**listExpensesIncurredFromLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#listExpensesIncurredFromLeadSourceRecurringExpense) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id}/expenses | Retrieves a list of expenses incurred from a recurring expense
+[**listLeadSourceRecurringExpenses**](LeadSourceRecurringExpensesApi.md#listLeadSourceRecurringExpenses) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses | Retrieves a list of lead source recurring expenses
+[**updateLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#updateLeadSourceRecurringExpense) | **PATCH** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Update a Lead Source Recurring Expense
 
 
-# **createLeadSourceRecurringExpenseUsingPOST**
-> LeadSourceRecurringExpense createLeadSourceRecurringExpenseUsingPOST(createLeadSourceRecurringExpenseRequest)
+# **createLeadSourceRecurringExpense**
+> LeadSourceRecurringExpense createLeadSourceRecurringExpense(createLeadSourceRecurringExpenseRequest)
 
 Creates a new Lead Source Recurring Expense
 
@@ -22,12 +22,12 @@ Creates a new Lead Source Recurring Expense
 
 ```typescript
 import { createConfiguration, LeadSourceRecurringExpensesApi } from '';
-import type { LeadSourceRecurringExpensesApiCreateLeadSourceRecurringExpenseUsingPOSTRequest } from '';
+import type { LeadSourceRecurringExpensesApiCreateLeadSourceRecurringExpenseRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new LeadSourceRecurringExpensesApi(configuration);
 
-const request: LeadSourceRecurringExpensesApiCreateLeadSourceRecurringExpenseUsingPOSTRequest = {
+const request: LeadSourceRecurringExpensesApiCreateLeadSourceRecurringExpenseRequest = {
     // The ID of the lead source this recurring expense belongs to
   leadSourceId: "lead_source_id_example",
     // The request object to create a new lead source recurring expense
@@ -40,7 +40,7 @@ const request: LeadSourceRecurringExpensesApiCreateLeadSourceRecurringExpenseUsi
   },
 };
 
-const data = await apiInstance.createLeadSourceRecurringExpenseUsingPOST(request);
+const data = await apiInstance.createLeadSourceRecurringExpense(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -78,8 +78,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **deleteLeadSourceRecurringExpenseUsingDELETE**
-> void deleteLeadSourceRecurringExpenseUsingDELETE()
+# **deleteLeadSourceRecurringExpense**
+> void deleteLeadSourceRecurringExpense()
 
 Deletes a new Lead Source Recurring Expense that belongs to a Lead Source
 
@@ -88,19 +88,19 @@ Deletes a new Lead Source Recurring Expense that belongs to a Lead Source
 
 ```typescript
 import { createConfiguration, LeadSourceRecurringExpensesApi } from '';
-import type { LeadSourceRecurringExpensesApiDeleteLeadSourceRecurringExpenseUsingDELETERequest } from '';
+import type { LeadSourceRecurringExpensesApiDeleteLeadSourceRecurringExpenseRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new LeadSourceRecurringExpensesApi(configuration);
 
-const request: LeadSourceRecurringExpensesApiDeleteLeadSourceRecurringExpenseUsingDELETERequest = {
+const request: LeadSourceRecurringExpensesApiDeleteLeadSourceRecurringExpenseRequest = {
     // The ID of the lead source this recurring expense belongs to
   leadSourceId: "lead_source_id_example",
     // The ID of a lead source recurring expense
   leadSourceRecurringExpenseId: "lead_source_recurring_expense_id_example",
 };
 
-const data = await apiInstance.deleteLeadSourceRecurringExpenseUsingDELETE(request);
+const data = await apiInstance.deleteLeadSourceRecurringExpense(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -138,8 +138,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **getLeadSourceRecurringExpenseUsingGET**
-> LeadSourceRecurringExpense getLeadSourceRecurringExpenseUsingGET()
+# **getLeadSourceRecurringExpense**
+> LeadSourceRecurringExpense getLeadSourceRecurringExpense()
 
 Retrieves a Lead Source Recurring Expense using leadSourceId and leadSourceRecurringExpenseId
 
@@ -148,19 +148,19 @@ Retrieves a Lead Source Recurring Expense using leadSourceId and leadSourceRecur
 
 ```typescript
 import { createConfiguration, LeadSourceRecurringExpensesApi } from '';
-import type { LeadSourceRecurringExpensesApiGetLeadSourceRecurringExpenseUsingGETRequest } from '';
+import type { LeadSourceRecurringExpensesApiGetLeadSourceRecurringExpenseRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new LeadSourceRecurringExpensesApi(configuration);
 
-const request: LeadSourceRecurringExpensesApiGetLeadSourceRecurringExpenseUsingGETRequest = {
+const request: LeadSourceRecurringExpensesApiGetLeadSourceRecurringExpenseRequest = {
     // The ID of the lead source this recurring expense belongs to
   leadSourceId: "lead_source_id_example",
     // The ID of a lead source recurring expense
   leadSourceRecurringExpenseId: "lead_source_recurring_expense_id_example",
 };
 
-const data = await apiInstance.getLeadSourceRecurringExpenseUsingGET(request);
+const data = await apiInstance.getLeadSourceRecurringExpense(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -198,8 +198,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **listExpensesIncurredFromLeadSourceRecurringExpenseUsingGET**
-> ListLeadSourceExpensesResponse listExpensesIncurredFromLeadSourceRecurringExpenseUsingGET()
+# **listExpensesIncurredFromLeadSourceRecurringExpense**
+> ListLeadSourceExpensesResponse listExpensesIncurredFromLeadSourceRecurringExpense()
 
 Retrieves a list of expenses incurred from a recurring expense
 
@@ -208,12 +208,12 @@ Retrieves a list of expenses incurred from a recurring expense
 
 ```typescript
 import { createConfiguration, LeadSourceRecurringExpensesApi } from '';
-import type { LeadSourceRecurringExpensesApiListExpensesIncurredFromLeadSourceRecurringExpenseUsingGETRequest } from '';
+import type { LeadSourceRecurringExpensesApiListExpensesIncurredFromLeadSourceRecurringExpenseRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new LeadSourceRecurringExpensesApi(configuration);
 
-const request: LeadSourceRecurringExpensesApiListExpensesIncurredFromLeadSourceRecurringExpenseUsingGETRequest = {
+const request: LeadSourceRecurringExpensesApiListExpensesIncurredFromLeadSourceRecurringExpenseRequest = {
     // The ID of the lead source this recurring expense belongs to
   leadSourceId: "lead_source_id_example",
     // The ID of a lead source recurring expense
@@ -228,7 +228,7 @@ const request: LeadSourceRecurringExpensesApiListExpensesIncurredFromLeadSourceR
   pageToken: "page_token_example",
 };
 
-const data = await apiInstance.listExpensesIncurredFromLeadSourceRecurringExpenseUsingGET(request);
+const data = await apiInstance.listExpensesIncurredFromLeadSourceRecurringExpense(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -271,8 +271,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **listLeadSourceRecurringExpensesUsingGET**
-> ListLeadSourceRecurringExpensesResponse listLeadSourceRecurringExpensesUsingGET()
+# **listLeadSourceRecurringExpenses**
+> ListLeadSourceRecurringExpensesResponse listLeadSourceRecurringExpenses()
 
 Retrieves a list of recurring expenses with lead_source_id and optional \'filter\' query param
 
@@ -281,12 +281,12 @@ Retrieves a list of recurring expenses with lead_source_id and optional \'filter
 
 ```typescript
 import { createConfiguration, LeadSourceRecurringExpensesApi } from '';
-import type { LeadSourceRecurringExpensesApiListLeadSourceRecurringExpensesUsingGETRequest } from '';
+import type { LeadSourceRecurringExpensesApiListLeadSourceRecurringExpensesRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new LeadSourceRecurringExpensesApi(configuration);
 
-const request: LeadSourceRecurringExpensesApiListLeadSourceRecurringExpensesUsingGETRequest = {
+const request: LeadSourceRecurringExpensesApiListLeadSourceRecurringExpensesRequest = {
     // The ID of the lead source this recurring expense belongs to
   leadSourceId: "lead_source_id_example",
     // Filter to apply, allowed fields are:  - (String) `title` - (Long) `amount` - (String) `start_time` - (String) `end_time` - (String) `next_expense_time` - (String) `create_time` - (String) `update_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:  - `filter=amount%3D%3D2500` - `filter=next_expense_time%3D%3D2024-12-22T01:00:00.000Z` (optional)
@@ -299,7 +299,7 @@ const request: LeadSourceRecurringExpensesApiListLeadSourceRecurringExpensesUsin
   pageToken: "page_token_example",
 };
 
-const data = await apiInstance.listLeadSourceRecurringExpensesUsingGET(request);
+const data = await apiInstance.listLeadSourceRecurringExpenses(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -341,8 +341,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **updateLeadSourceRecurringExpenseUsingPATCH**
-> LeadSourceRecurringExpense updateLeadSourceRecurringExpenseUsingPATCH(leadSourceRecurringExpenseUpdateRequest)
+# **updateLeadSourceRecurringExpense**
+> LeadSourceRecurringExpense updateLeadSourceRecurringExpense(leadSourceRecurringExpenseUpdateRequest)
 
 Updates a Lead Source Recurring Expense
 
@@ -351,12 +351,12 @@ Updates a Lead Source Recurring Expense
 
 ```typescript
 import { createConfiguration, LeadSourceRecurringExpensesApi } from '';
-import type { LeadSourceRecurringExpensesApiUpdateLeadSourceRecurringExpenseUsingPATCHRequest } from '';
+import type { LeadSourceRecurringExpensesApiUpdateLeadSourceRecurringExpenseRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new LeadSourceRecurringExpensesApi(configuration);
 
-const request: LeadSourceRecurringExpensesApiUpdateLeadSourceRecurringExpenseUsingPATCHRequest = {
+const request: LeadSourceRecurringExpensesApiUpdateLeadSourceRecurringExpenseRequest = {
     // The ID of the lead source this recurring expense belongs to
   leadSourceId: "lead_source_id_example",
     // The ID of a lead source recurring expense
@@ -375,7 +375,7 @@ const request: LeadSourceRecurringExpensesApiUpdateLeadSourceRecurringExpenseUsi
   ],
 };
 
-const data = await apiInstance.updateLeadSourceRecurringExpenseUsingPATCH(request);
+const data = await apiInstance.updateLeadSourceRecurringExpense(request);
 console.log('API called successfully. Returned data:', data);
 ```
 

@@ -4,11 +4,11 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createPaymentMethodConfigUsingPOST**](PaymentMethodConfigsApi.md#createPaymentMethodConfigUsingPOST) | **POST** /v2/paymentMethodConfigs | Create Payment Method Configuration
+[**createPaymentMethodConfig**](PaymentMethodConfigsApi.md#createPaymentMethodConfig) | **POST** /v2/paymentMethodConfigs | Create Payment Method Configuration
 
 
-# **createPaymentMethodConfigUsingPOST**
-> PaymentMethodConfig createPaymentMethodConfigUsingPOST(createPaymentMethodConfigRequest)
+# **createPaymentMethodConfig**
+> PaymentMethodConfig createPaymentMethodConfig(createPaymentMethodConfigRequest)
 
 Creates configuration details for rendering payment method components
 
@@ -17,19 +17,19 @@ Creates configuration details for rendering payment method components
 
 ```typescript
 import { createConfiguration, PaymentMethodConfigsApi } from '';
-import type { PaymentMethodConfigsApiCreatePaymentMethodConfigUsingPOSTRequest } from '';
+import type { PaymentMethodConfigsApiCreatePaymentMethodConfigRequest } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new PaymentMethodConfigsApi(configuration);
 
-const request: PaymentMethodConfigsApiCreatePaymentMethodConfigUsingPOSTRequest = {
+const request: PaymentMethodConfigsApiCreatePaymentMethodConfigRequest = {
     // request
   createPaymentMethodConfigRequest: {
     contactId: "contactId_example",
   },
 };
 
-const data = await apiInstance.createPaymentMethodConfigUsingPOST(request);
+const data = await apiInstance.createPaymentMethodConfig(request);
 console.log('API called successfully. Returned data:', data);
 ```
 

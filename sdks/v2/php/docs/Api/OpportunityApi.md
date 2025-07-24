@@ -4,134 +4,24 @@ All URIs are relative to https://api.keap.com/crm/rest, except if the operation 
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createOpportunityCustomFieldsUsingPOST()**](OpportunityApi.md#createOpportunityCustomFieldsUsingPOST) | **POST** /v2/opportunities/model/customFields | Create an Opportunity Custom Field |
-| [**createOpportunityStageUsingPOST()**](OpportunityApi.md#createOpportunityStageUsingPOST) | **POST** /v2/opportunities/stages | Create an Opportunity Stage |
-| [**createOpportunityUsingPOST1()**](OpportunityApi.md#createOpportunityUsingPOST1) | **POST** /v2/opportunities | Create an Opportunity |
-| [**deleteOpportunityStageUsingDELETE()**](OpportunityApi.md#deleteOpportunityStageUsingDELETE) | **DELETE** /v2/opportunities/stages/{stage_id} | Delete an Opportunity Stage |
-| [**deleteOpportunityUsingDELETE()**](OpportunityApi.md#deleteOpportunityUsingDELETE) | **DELETE** /v2/opportunities/{opportunity_id} | Delete an Opportunity |
-| [**getOpportunityStageUsingGET()**](OpportunityApi.md#getOpportunityStageUsingGET) | **GET** /v2/opportunities/stages/{stage_id} | Retrieve an Opportunity Stage |
-| [**getOpportunityUsingGET1()**](OpportunityApi.md#getOpportunityUsingGET1) | **GET** /v2/opportunities/{opportunity_id} | Retrieve a Opportunity |
-| [**listOpportunitiesUsingGET1()**](OpportunityApi.md#listOpportunitiesUsingGET1) | **GET** /v2/opportunities | List Opportunities |
-| [**listOpportunityStagesUsingGET()**](OpportunityApi.md#listOpportunityStagesUsingGET) | **GET** /v2/opportunities/stages | List of Opportunity Stages |
-| [**updateOpportunityCustomFieldUsingPATCH()**](OpportunityApi.md#updateOpportunityCustomFieldUsingPATCH) | **PATCH** /v2/opportunities/model/customFields/{custom_field_id} | Update a Opportunity&#39;s Custom Field |
-| [**updateOpportunityStageUsingPATCH()**](OpportunityApi.md#updateOpportunityStageUsingPATCH) | **PATCH** /v2/opportunities/stages/{stage_id} | Update an Opportunity Stage |
-| [**updateOpportunityUsingPATCH()**](OpportunityApi.md#updateOpportunityUsingPATCH) | **PATCH** /v2/opportunities/{opportunity_id} | Update an opportunity |
+| [**createOpportunity()**](OpportunityApi.md#createOpportunity) | **POST** /v2/opportunities | Create an Opportunity |
+| [**createOpportunityCustomFields()**](OpportunityApi.md#createOpportunityCustomFields) | **POST** /v2/opportunities/model/customFields | Create an Opportunity Custom Field |
+| [**createOpportunityStage()**](OpportunityApi.md#createOpportunityStage) | **POST** /v2/opportunities/stages | Create an Opportunity Stage |
+| [**deleteOpportunity()**](OpportunityApi.md#deleteOpportunity) | **DELETE** /v2/opportunities/{opportunity_id} | Delete an Opportunity |
+| [**deleteOpportunityStage()**](OpportunityApi.md#deleteOpportunityStage) | **DELETE** /v2/opportunities/stages/{stage_id} | Delete an Opportunity Stage |
+| [**getOpportunity()**](OpportunityApi.md#getOpportunity) | **GET** /v2/opportunities/{opportunity_id} | Retrieve a Opportunity |
+| [**getOpportunityStage()**](OpportunityApi.md#getOpportunityStage) | **GET** /v2/opportunities/stages/{stage_id} | Retrieve an Opportunity Stage |
+| [**listOpportunities()**](OpportunityApi.md#listOpportunities) | **GET** /v2/opportunities | List Opportunities |
+| [**listOpportunityStages()**](OpportunityApi.md#listOpportunityStages) | **GET** /v2/opportunities/stages | List of Opportunity Stages |
+| [**updateOpportunity()**](OpportunityApi.md#updateOpportunity) | **PATCH** /v2/opportunities/{opportunity_id} | Update an opportunity |
+| [**updateOpportunityCustomField()**](OpportunityApi.md#updateOpportunityCustomField) | **PATCH** /v2/opportunities/model/customFields/{custom_field_id} | Update a Opportunity&#39;s Custom Field |
+| [**updateOpportunityStage()**](OpportunityApi.md#updateOpportunityStage) | **PATCH** /v2/opportunities/stages/{stage_id} | Update an Opportunity Stage |
 
 
-## `createOpportunityCustomFieldsUsingPOST()`
-
-```php
-createOpportunityCustomFieldsUsingPOST($create_custom_field_request): \Keap\Core\V2\Model\CustomFieldMetaData
-```
-
-Create an Opportunity Custom Field
-
-Creates a custom field of the specified type and options to the Opportunity object
-
-### Example
+## `createOpportunity()`
 
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-$apiInstance = new Keap\Core\V2\Api\OpportunityApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
-);
-$create_custom_field_request = new \Keap\Core\V2\Model\CreateCustomFieldRequest(); // \Keap\Core\V2\Model\CreateCustomFieldRequest | customField
-
-try {
-    $result = $apiInstance->createOpportunityCustomFieldsUsingPOST($create_custom_field_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling OpportunityApi->createOpportunityCustomFieldsUsingPOST: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **create_custom_field_request** | [**\Keap\Core\V2\Model\CreateCustomFieldRequest**](../Model/CreateCustomFieldRequest.md)| customField | |
-
-### Return type
-
-[**\Keap\Core\V2\Model\CustomFieldMetaData**](../Model/CustomFieldMetaData.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `createOpportunityStageUsingPOST()`
-
-```php
-createOpportunityStageUsingPOST($create_opportunity_stage_request): \Keap\Core\V2\Model\RestOpportunityStage
-```
-
-Create an Opportunity Stage
-
-Creates a new Opportunity Stage
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-$apiInstance = new Keap\Core\V2\Api\OpportunityApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
-);
-$create_opportunity_stage_request = new \Keap\Core\V2\Model\CreateOpportunityStageRequest(); // \Keap\Core\V2\Model\CreateOpportunityStageRequest | opportunity
-
-try {
-    $result = $apiInstance->createOpportunityStageUsingPOST($create_opportunity_stage_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling OpportunityApi->createOpportunityStageUsingPOST: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **create_opportunity_stage_request** | [**\Keap\Core\V2\Model\CreateOpportunityStageRequest**](../Model/CreateOpportunityStageRequest.md)| opportunity | [optional] |
-
-### Return type
-
-[**\Keap\Core\V2\Model\RestOpportunityStage**](../Model/RestOpportunityStage.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `createOpportunityUsingPOST1()`
-
-```php
-createOpportunityUsingPOST1($create_opportunity_request): \Keap\Core\V2\Model\RestV2Opportunity
+createOpportunity($create_opportunity_request): \Keap\Core\V2\Model\RestV2Opportunity
 ```
 
 Create an Opportunity
@@ -153,10 +43,10 @@ $apiInstance = new Keap\Core\V2\Api\OpportunityApi(
 $create_opportunity_request = new \Keap\Core\V2\Model\CreateOpportunityRequest(); // \Keap\Core\V2\Model\CreateOpportunityRequest | opportunity
 
 try {
-    $result = $apiInstance->createOpportunityUsingPOST1($create_opportunity_request);
+    $result = $apiInstance->createOpportunity($create_opportunity_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling OpportunityApi->createOpportunityUsingPOST1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling OpportunityApi->createOpportunity: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -183,15 +73,15 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `deleteOpportunityStageUsingDELETE()`
+## `createOpportunityCustomFields()`
 
 ```php
-deleteOpportunityStageUsingDELETE($stage_id)
+createOpportunityCustomFields($create_custom_field_request): \Keap\Core\V2\Model\CustomFieldMetaData
 ```
 
-Delete an Opportunity Stage
+Create an Opportunity Custom Field
 
-Deletes the specified Opportunity Stage
+Creates a custom field of the specified type and options to the Opportunity object
 
 ### Example
 
@@ -205,12 +95,13 @@ $apiInstance = new Keap\Core\V2\Api\OpportunityApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$stage_id = 'stage_id_example'; // string | stage_id
+$create_custom_field_request = new \Keap\Core\V2\Model\CreateCustomFieldRequest(); // \Keap\Core\V2\Model\CreateCustomFieldRequest | customField
 
 try {
-    $apiInstance->deleteOpportunityStageUsingDELETE($stage_id);
+    $result = $apiInstance->createOpportunityCustomFields($create_custom_field_request);
+    print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling OpportunityApi->deleteOpportunityStageUsingDELETE: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling OpportunityApi->createOpportunityCustomFields: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -218,11 +109,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **stage_id** | **string**| stage_id | |
+| **create_custom_field_request** | [**\Keap\Core\V2\Model\CreateCustomFieldRequest**](../Model/CreateCustomFieldRequest.md)| customField | |
 
 ### Return type
 
-void (empty response body)
+[**\Keap\Core\V2\Model\CustomFieldMetaData**](../Model/CustomFieldMetaData.md)
 
 ### Authorization
 
@@ -230,17 +121,72 @@ No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `deleteOpportunityUsingDELETE()`
+## `createOpportunityStage()`
 
 ```php
-deleteOpportunityUsingDELETE($opportunity_id)
+createOpportunityStage($create_opportunity_stage_request): \Keap\Core\V2\Model\RestOpportunityStage
+```
+
+Create an Opportunity Stage
+
+Creates a new Opportunity Stage
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+$apiInstance = new Keap\Core\V2\Api\OpportunityApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$create_opportunity_stage_request = new \Keap\Core\V2\Model\CreateOpportunityStageRequest(); // \Keap\Core\V2\Model\CreateOpportunityStageRequest | opportunity
+
+try {
+    $result = $apiInstance->createOpportunityStage($create_opportunity_stage_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling OpportunityApi->createOpportunityStage: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **create_opportunity_stage_request** | [**\Keap\Core\V2\Model\CreateOpportunityStageRequest**](../Model/CreateOpportunityStageRequest.md)| opportunity | [optional] |
+
+### Return type
+
+[**\Keap\Core\V2\Model\RestOpportunityStage**](../Model/RestOpportunityStage.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteOpportunity()`
+
+```php
+deleteOpportunity($opportunity_id)
 ```
 
 Delete an Opportunity
@@ -262,9 +208,9 @@ $apiInstance = new Keap\Core\V2\Api\OpportunityApi(
 $opportunity_id = 'opportunity_id_example'; // string | opportunity_id
 
 try {
-    $apiInstance->deleteOpportunityUsingDELETE($opportunity_id);
+    $apiInstance->deleteOpportunity($opportunity_id);
 } catch (Exception $e) {
-    echo 'Exception when calling OpportunityApi->deleteOpportunityUsingDELETE: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling OpportunityApi->deleteOpportunity: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -291,15 +237,15 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getOpportunityStageUsingGET()`
+## `deleteOpportunityStage()`
 
 ```php
-getOpportunityStageUsingGET($stage_id): \Keap\Core\V2\Model\RestOpportunityStage
+deleteOpportunityStage($stage_id)
 ```
 
-Retrieve an Opportunity Stage
+Delete an Opportunity Stage
 
-Retrieves the specified Opportunity Stage
+Deletes the specified Opportunity Stage
 
 ### Example
 
@@ -316,10 +262,9 @@ $apiInstance = new Keap\Core\V2\Api\OpportunityApi(
 $stage_id = 'stage_id_example'; // string | stage_id
 
 try {
-    $result = $apiInstance->getOpportunityStageUsingGET($stage_id);
-    print_r($result);
+    $apiInstance->deleteOpportunityStage($stage_id);
 } catch (Exception $e) {
-    echo 'Exception when calling OpportunityApi->getOpportunityStageUsingGET: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling OpportunityApi->deleteOpportunityStage: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -331,7 +276,7 @@ try {
 
 ### Return type
 
-[**\Keap\Core\V2\Model\RestOpportunityStage**](../Model/RestOpportunityStage.md)
+void (empty response body)
 
 ### Authorization
 
@@ -346,10 +291,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getOpportunityUsingGET1()`
+## `getOpportunity()`
 
 ```php
-getOpportunityUsingGET1($opportunity_id): \Keap\Core\V2\Model\RestV2Opportunity
+getOpportunity($opportunity_id): \Keap\Core\V2\Model\RestV2Opportunity
 ```
 
 Retrieve a Opportunity
@@ -371,10 +316,10 @@ $apiInstance = new Keap\Core\V2\Api\OpportunityApi(
 $opportunity_id = 'opportunity_id_example'; // string | opportunity_id
 
 try {
-    $result = $apiInstance->getOpportunityUsingGET1($opportunity_id);
+    $result = $apiInstance->getOpportunity($opportunity_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling OpportunityApi->getOpportunityUsingGET1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling OpportunityApi->getOpportunity: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -401,10 +346,65 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `listOpportunitiesUsingGET1()`
+## `getOpportunityStage()`
 
 ```php
-listOpportunitiesUsingGET1($fields, $filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListOpportunitiesResponse
+getOpportunityStage($stage_id): \Keap\Core\V2\Model\RestOpportunityStage
+```
+
+Retrieve an Opportunity Stage
+
+Retrieves the specified Opportunity Stage
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+$apiInstance = new Keap\Core\V2\Api\OpportunityApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$stage_id = 'stage_id_example'; // string | stage_id
+
+try {
+    $result = $apiInstance->getOpportunityStage($stage_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling OpportunityApi->getOpportunityStage: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **stage_id** | **string**| stage_id | |
+
+### Return type
+
+[**\Keap\Core\V2\Model\RestOpportunityStage**](../Model/RestOpportunityStage.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listOpportunities()`
+
+```php
+listOpportunities($fields, $filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListOpportunitiesResponse
 ```
 
 List Opportunities
@@ -430,10 +430,10 @@ $page_size = 0; // int | Total number of items to return per page
 $page_token = 'page_token_example'; // string | Page token
 
 try {
-    $result = $apiInstance->listOpportunitiesUsingGET1($fields, $filter, $order_by, $page_size, $page_token);
+    $result = $apiInstance->listOpportunities($fields, $filter, $order_by, $page_size, $page_token);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling OpportunityApi->listOpportunitiesUsingGET1: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling OpportunityApi->listOpportunities: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -464,10 +464,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `listOpportunityStagesUsingGET()`
+## `listOpportunityStages()`
 
 ```php
-listOpportunityStagesUsingGET($filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListOpportunityStagesResponse
+listOpportunityStages($filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListOpportunityStagesResponse
 ```
 
 List of Opportunity Stages
@@ -492,10 +492,10 @@ $page_size = 0; // int | Total number of items to return per page
 $page_token = 'page_token_example'; // string | Page token
 
 try {
-    $result = $apiInstance->listOpportunityStagesUsingGET($filter, $order_by, $page_size, $page_token);
+    $result = $apiInstance->listOpportunityStages($filter, $order_by, $page_size, $page_token);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling OpportunityApi->listOpportunityStagesUsingGET: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling OpportunityApi->listOpportunityStages: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -525,10 +525,69 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `updateOpportunityCustomFieldUsingPATCH()`
+## `updateOpportunity()`
 
 ```php
-updateOpportunityCustomFieldUsingPATCH($custom_field_id, $update_custom_field_meta_data_request, $update_mask): \Keap\Core\V2\Model\CustomFieldMetaData
+updateOpportunity($opportunity_id, $update_opportunity_request_v2, $update_mask): \Keap\Core\V2\Model\RestV2Opportunity
+```
+
+Update an opportunity
+
+Updates specified values of a given opportunity
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+$apiInstance = new Keap\Core\V2\Api\OpportunityApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$opportunity_id = 'opportunity_id_example'; // string | opportunity_id
+$update_opportunity_request_v2 = new \Keap\Core\V2\Model\UpdateOpportunityRequestV2(); // \Keap\Core\V2\Model\UpdateOpportunityRequestV2 | request
+$update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+
+try {
+    $result = $apiInstance->updateOpportunity($opportunity_id, $update_opportunity_request_v2, $update_mask);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling OpportunityApi->updateOpportunity: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **opportunity_id** | **string**| opportunity_id | |
+| **update_opportunity_request_v2** | [**\Keap\Core\V2\Model\UpdateOpportunityRequestV2**](../Model/UpdateOpportunityRequestV2.md)| request | |
+| **update_mask** | [**string[]**](../Model/string.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+
+### Return type
+
+[**\Keap\Core\V2\Model\RestV2Opportunity**](../Model/RestV2Opportunity.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateOpportunityCustomField()`
+
+```php
+updateOpportunityCustomField($custom_field_id, $update_custom_field_meta_data_request, $update_mask): \Keap\Core\V2\Model\CustomFieldMetaData
 ```
 
 Update a Opportunity's Custom Field
@@ -552,10 +611,10 @@ $update_custom_field_meta_data_request = new \Keap\Core\V2\Model\UpdateCustomFie
 $update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
-    $result = $apiInstance->updateOpportunityCustomFieldUsingPATCH($custom_field_id, $update_custom_field_meta_data_request, $update_mask);
+    $result = $apiInstance->updateOpportunityCustomField($custom_field_id, $update_custom_field_meta_data_request, $update_mask);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling OpportunityApi->updateOpportunityCustomFieldUsingPATCH: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling OpportunityApi->updateOpportunityCustomField: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -584,10 +643,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `updateOpportunityStageUsingPATCH()`
+## `updateOpportunityStage()`
 
 ```php
-updateOpportunityStageUsingPATCH($stage_id, $update_opportunity_stage_request, $update_mask): \Keap\Core\V2\Model\RestOpportunityStage
+updateOpportunityStage($stage_id, $update_opportunity_stage_request, $update_mask): \Keap\Core\V2\Model\RestOpportunityStage
 ```
 
 Update an Opportunity Stage
@@ -611,10 +670,10 @@ $update_opportunity_stage_request = new \Keap\Core\V2\Model\UpdateOpportunitySta
 $update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
-    $result = $apiInstance->updateOpportunityStageUsingPATCH($stage_id, $update_opportunity_stage_request, $update_mask);
+    $result = $apiInstance->updateOpportunityStage($stage_id, $update_opportunity_stage_request, $update_mask);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling OpportunityApi->updateOpportunityStageUsingPATCH: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling OpportunityApi->updateOpportunityStage: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -629,65 +688,6 @@ try {
 ### Return type
 
 [**\Keap\Core\V2\Model\RestOpportunityStage**](../Model/RestOpportunityStage.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `updateOpportunityUsingPATCH()`
-
-```php
-updateOpportunityUsingPATCH($opportunity_id, $update_opportunity_request_v2, $update_mask): \Keap\Core\V2\Model\RestV2Opportunity
-```
-
-Update an opportunity
-
-Updates specified values of a given opportunity
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-$apiInstance = new Keap\Core\V2\Api\OpportunityApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
-);
-$opportunity_id = 'opportunity_id_example'; // string | opportunity_id
-$update_opportunity_request_v2 = new \Keap\Core\V2\Model\UpdateOpportunityRequestV2(); // \Keap\Core\V2\Model\UpdateOpportunityRequestV2 | request
-$update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-
-try {
-    $result = $apiInstance->updateOpportunityUsingPATCH($opportunity_id, $update_opportunity_request_v2, $update_mask);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling OpportunityApi->updateOpportunityUsingPATCH: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **opportunity_id** | **string**| opportunity_id | |
-| **update_opportunity_request_v2** | [**\Keap\Core\V2\Model\UpdateOpportunityRequestV2**](../Model/UpdateOpportunityRequestV2.md)| request | |
-| **update_mask** | [**string[]**](../Model/string.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
-
-### Return type
-
-[**\Keap\Core\V2\Model\RestV2Opportunity**](../Model/RestV2Opportunity.md)
 
 ### Authorization
 

@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**affiliate_id** | **str** | The affiliate id | 
 **commission_amount** | **float** |  | [optional] 
 **commission_date** | **str** |  | [optional] 
 **description** | **str** |  | [optional] 
 **pay_percent** | **float** |  | [optional] 
 **payout_type** | **str** | The payout type | 
-**referral_partner_id** | **str** | The referral partner id | 
 
 ## Example
 
