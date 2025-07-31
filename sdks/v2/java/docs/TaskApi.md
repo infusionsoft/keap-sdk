@@ -729,7 +729,7 @@ No authorization required
 
 ## listTasks
 
-> ListTasksResponse listTasks(endDueTime, filter, orderBy, pageSize, pageToken, startDueTime)
+> ListTasksResponse listTasks(filter, orderBy, pageSize, pageToken)
 
 List Tasks
 
@@ -751,14 +751,12 @@ public class Example {
         defaultClient.setBasePath("https://api.keap.com/crm/rest");
 
         TaskApi apiInstance = new TaskApi(defaultClient);
-        String endDueTime = "endDueTime_example"; // String | 
-        String filter = "filter_example"; // String | Search filter to apply to results
-        String orderBy = "orderBy_example"; // String | Attribute and direction to order items by. E.g. `given_name desc`
+        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `contact_id` - (String) `has_due_date` - (String) `is_completed` - (String) `user_id` - (String) `task_ids` - (String) `since_time` - (String) `until_time` You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=has_due_date%3D%3Dtrue` - `filter=is_completed%3D%3Dtrue` - `filter=user_id%3D%3D321` - `filter=task_ids%3D%3D1,2,3` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;` 
+        String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `due_time`  One of the following directions: - `asc` - `desc`
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
-        String startDueTime = "startDueTime_example"; // String | 
         try {
-            ListTasksResponse result = apiInstance.listTasks(endDueTime, filter, orderBy, pageSize, pageToken, startDueTime);
+            ListTasksResponse result = apiInstance.listTasks(filter, orderBy, pageSize, pageToken);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling TaskApi#listTasks");
@@ -776,12 +774,10 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **endDueTime** | **String**|  | [optional] |
-| **filter** | **String**| Search filter to apply to results | [optional] |
-| **orderBy** | **String**| Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60; | [optional] |
+| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;has_due_date&#x60; - (String) &#x60;is_completed&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;task_ids&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;has_due_date%3D%3Dtrue&#x60; - &#x60;filter&#x3D;is_completed%3D%3Dtrue&#x60; - &#x60;filter&#x3D;user_id%3D%3D321&#x60; - &#x60;filter&#x3D;task_ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  | [optional] |
+| **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;due_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **pageSize** | **Integer**| Total number of items to return per page | [optional] |
 | **pageToken** | **String**| Page token | [optional] |
-| **startDueTime** | **String**|  | [optional] |
 
 ### Return type
 
@@ -808,7 +804,7 @@ No authorization required
 
 ## listTasksWithHttpInfo
 
-> ApiResponse<ListTasksResponse> listTasks listTasksWithHttpInfo(endDueTime, filter, orderBy, pageSize, pageToken, startDueTime)
+> ApiResponse<ListTasksResponse> listTasks listTasksWithHttpInfo(filter, orderBy, pageSize, pageToken)
 
 List Tasks
 
@@ -831,14 +827,12 @@ public class Example {
         defaultClient.setBasePath("https://api.keap.com/crm/rest");
 
         TaskApi apiInstance = new TaskApi(defaultClient);
-        String endDueTime = "endDueTime_example"; // String | 
-        String filter = "filter_example"; // String | Search filter to apply to results
-        String orderBy = "orderBy_example"; // String | Attribute and direction to order items by. E.g. `given_name desc`
+        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `contact_id` - (String) `has_due_date` - (String) `is_completed` - (String) `user_id` - (String) `task_ids` - (String) `since_time` - (String) `until_time` You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=has_due_date%3D%3Dtrue` - `filter=is_completed%3D%3Dtrue` - `filter=user_id%3D%3D321` - `filter=task_ids%3D%3D1,2,3` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;` 
+        String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `due_time`  One of the following directions: - `asc` - `desc`
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
-        String startDueTime = "startDueTime_example"; // String | 
         try {
-            ApiResponse<ListTasksResponse> response = apiInstance.listTasksWithHttpInfo(endDueTime, filter, orderBy, pageSize, pageToken, startDueTime);
+            ApiResponse<ListTasksResponse> response = apiInstance.listTasksWithHttpInfo(filter, orderBy, pageSize, pageToken);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -858,12 +852,10 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **endDueTime** | **String**|  | [optional] |
-| **filter** | **String**| Search filter to apply to results | [optional] |
-| **orderBy** | **String**| Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60; | [optional] |
+| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;has_due_date&#x60; - (String) &#x60;is_completed&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;task_ids&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;has_due_date%3D%3Dtrue&#x60; - &#x60;filter&#x3D;is_completed%3D%3Dtrue&#x60; - &#x60;filter&#x3D;user_id%3D%3D321&#x60; - &#x60;filter&#x3D;task_ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  | [optional] |
+| **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;due_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **pageSize** | **Integer**| Total number of items to return per page | [optional] |
 | **pageToken** | **String**| Page token | [optional] |
-| **startDueTime** | **String**|  | [optional] |
 
 ### Return type
 

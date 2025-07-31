@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   description: Keap REST Core Service
-  version: 2.70.0.834462-hf-202507221415
+  version: 2.70.0.836642-hf-202507280853
   title: Keap REST API
   termsOfService: https://keap.com/legal
   contact:
@@ -11605,20 +11605,41 @@ paths:
         are not assigned to a User may be queried with user_id==UNASSIGNED.
       operationId: listTasks
       parameters:
-      - name: end_due_time
-        in: query
-        required: false
-        schema:
-          type: string
       - name: filter
         in: query
-        description: Search filter to apply to results
+        description: |
+          Filter to apply, allowed fields are:
+          - (String) `contact_id`
+          - (String) `has_due_date`
+          - (String) `is_completed`
+          - (String) `user_id`
+          - (String) `task_ids`
+          - (String) `since_time`
+          - (String) `until_time`
+          You will need to apply the `==` operator to check the equality of one of the filters with your searched
+          word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:
+          - `filter=contact_id%3D%3D123`
+          - `filter=has_due_date%3D%3Dtrue`
+          - `filter=is_completed%3D%3Dtrue`
+          - `filter=user_id%3D%3D321`
+          - `filter=task_ids%3D%3D1,2,3`
+          - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;`
+          - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;`
         required: false
         schema:
           type: string
       - name: order_by
         in: query
-        description: Attribute and direction to order items by. E.g. `given_name desc`
+        description: |-
+          Attribute and direction to order items.
+          One of the following fields:
+          - `id`
+          - `create_time`
+          - `due_time`
+
+          One of the following directions:
+          - `asc`
+          - `desc`
         required: false
         schema:
           type: string
@@ -11637,11 +11658,6 @@ paths:
       - name: page_token
         in: query
         description: Page token
-        required: false
-        schema:
-          type: string
-      - name: start_due_time
-        in: query
         required: false
         schema:
           type: string

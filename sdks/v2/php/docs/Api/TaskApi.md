@@ -291,7 +291,7 @@ No authorization required
 ## `listTasks()`
 
 ```php
-listTasks($end_due_time, $filter, $order_by, $page_size, $page_token, $start_due_time): \Keap\Core\V2\Model\ListTasksResponse
+listTasks($filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListTasksResponse
 ```
 
 List Tasks
@@ -310,15 +310,13 @@ $apiInstance = new Keap\Core\V2\Api\TaskApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$end_due_time = 'end_due_time_example'; // string
-$filter = 'filter_example'; // string | Search filter to apply to results
-$order_by = 'order_by_example'; // string | Attribute and direction to order items by. E.g. `given_name desc`
+$filter = 'filter_example'; // string | Filter to apply, allowed fields are: - (String) `contact_id` - (String) `has_due_date` - (String) `is_completed` - (String) `user_id` - (String) `task_ids` - (String) `since_time` - (String) `until_time` You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=has_due_date%3D%3Dtrue` - `filter=is_completed%3D%3Dtrue` - `filter=user_id%3D%3D321` - `filter=task_ids%3D%3D1,2,3` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;`
+$order_by = 'order_by_example'; // string | Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `due_time`  One of the following directions: - `asc` - `desc`
 $page_size = 0; // int | Total number of items to return per page
 $page_token = 'page_token_example'; // string | Page token
-$start_due_time = 'start_due_time_example'; // string
 
 try {
-    $result = $apiInstance->listTasks($end_due_time, $filter, $order_by, $page_size, $page_token, $start_due_time);
+    $result = $apiInstance->listTasks($filter, $order_by, $page_size, $page_token);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling TaskApi->listTasks: ', $e->getMessage(), PHP_EOL;
@@ -329,12 +327,10 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **end_due_time** | **string**|  | [optional] |
-| **filter** | **string**| Search filter to apply to results | [optional] |
-| **order_by** | **string**| Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60; | [optional] |
+| **filter** | **string**| Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;has_due_date&#x60; - (String) &#x60;is_completed&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;task_ids&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;has_due_date%3D%3Dtrue&#x60; - &#x60;filter&#x3D;is_completed%3D%3Dtrue&#x60; - &#x60;filter&#x3D;user_id%3D%3D321&#x60; - &#x60;filter&#x3D;task_ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; | [optional] |
+| **order_by** | **string**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;due_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **page_size** | **int**| Total number of items to return per page | [optional] |
 | **page_token** | **string**| Page token | [optional] |
-| **start_due_time** | **string**|  | [optional] |
 
 ### Return type
 
