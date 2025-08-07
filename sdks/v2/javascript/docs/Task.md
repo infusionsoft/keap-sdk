@@ -35,24 +35,3 @@ Name | Type | Description | Notes
 
 
 
-
-## Enum: TypeEnum
-
-
-* `EMAIL` (value: `"EMAIL"`)
-
-* `CALL` (value: `"CALL"`)
-
-* `APPOINTMENT` (value: `"APPOINTMENT"`)
-
-* `FAX` (value: `"FAX"`)
-
-* `LETTER` (value: `"LETTER"`)
-
-* `OTHER` (value: `"OTHER"`)
-
-* `unknown_default_open_api` (value: `"unknown_default_open_api"`)
-
-
-
-

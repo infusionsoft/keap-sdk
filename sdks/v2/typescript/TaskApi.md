@@ -42,7 +42,7 @@ const request: TaskApiCreateTaskRequest = {
     priority: "CRITICAL",
     remindTimeMins: 1,
     title: "title_example",
-    type: "EMAIL",
+    type: "type_example",
   },
 };
 
@@ -469,7 +469,7 @@ const request: TaskApiUpdateTaskRequest = {
     priority: "CRITICAL",
     remindTimeMins: 1,
     title: "title_example",
-    type: "EMAIL",
+    type: "type_example",
   },
 };
 

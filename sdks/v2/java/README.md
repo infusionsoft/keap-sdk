@@ -2,7 +2,7 @@
 
 Keap REST API
 
-- API version: 2.70.0.836642-hf-202507280853
+- API version: 2.70.0.839048
 
 - Generator version: 7.13.0
 
@@ -43,7 +43,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.keap.core</groupId>
   <artifactId>core-service-v2-java-sdk</artifactId>
-  <version>1.0.22</version>
+  <version>1.0.23</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.keap.core:core-service-v2-java-sdk:1.0.22"
+compile "com.keap.core:core-service-v2-java-sdk:1.0.23"
 ```
 
 ### Others
@@ -66,7 +66,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/core-service-v2-java-sdk-1.0.22.jar`
+- `target/core-service-v2-java-sdk-1.0.23.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -710,6 +710,7 @@ Class | Method | HTTP request | Description
  - [ListAffiliateCommissionProgramsResponse](docs/ListAffiliateCommissionProgramsResponse.md)
  - [ListAffiliateCommissionsResponse](docs/ListAffiliateCommissionsResponse.md)
  - [ListAffiliateLinksResponse](docs/ListAffiliateLinksResponse.md)
+ - [ListAffiliatePaymentsResponse](docs/ListAffiliatePaymentsResponse.md)
  - [ListAffiliateSummariesResponse](docs/ListAffiliateSummariesResponse.md)
  - [ListAffiliatesResponse](docs/ListAffiliatesResponse.md)
  - [ListAutomationCategoryResponse](docs/ListAutomationCategoryResponse.md)
@@ -794,6 +795,7 @@ Class | Method | HTTP request | Description
  - [ReportExecutionResult](docs/ReportExecutionResult.md)
  - [Resource](docs/Resource.md)
  - [RestAffiliate](docs/RestAffiliate.md)
+ - [RestAffiliatePayment](docs/RestAffiliatePayment.md)
  - [RestApplyCommissionRequest](docs/RestApplyCommissionRequest.md)
  - [RestCreateOrderRequest](docs/RestCreateOrderRequest.md)
  - [RestEmailAddress](docs/RestEmailAddress.md)

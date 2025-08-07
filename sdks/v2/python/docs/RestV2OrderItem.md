@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**cost** | [**CurrencyValue**](CurrencyValue.md) |  | [optional] 
+**cost_per_unit** | [**CurrencyValue**](CurrencyValue.md) |  | [optional] 
 **description** | **str** |  | [optional] 
 **discount** | [**CurrencyValue**](CurrencyValue.md) |  | [optional] 
 **id** | **str** |  | [optional] 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **name** | **str** |  | [optional] 
 **notes** | **str** |  | [optional] 
 **order_item_taxes** | [**List[OrderItemTax]**](OrderItemTax.md) |  | [optional] 
-**price** | [**CurrencyValue**](CurrencyValue.md) |  | [optional] 
+**price_per_unit** | [**CurrencyValue**](CurrencyValue.md) |  | [optional] 
 **product** | [**OrderItemProduct**](OrderItemProduct.md) |  | [optional] 
 **quantity** | **int** |  | [optional] 
 **special** | [**Discount**](Discount.md) |  | [optional] 

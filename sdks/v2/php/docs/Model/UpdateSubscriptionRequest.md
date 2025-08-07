@@ -17,7 +17,6 @@ Name | Type | Description | Notes
 **max_charge_attempts** | **int** | Maximum number of charge attempts. Must be 1 or greater. | [optional]
 **next_bill_date** | **string** | The next date the subscription will bill. Must not be in the past. | [optional]
 **payment_method_id** | **string** | Id associated with the payment method. | [optional]
-**product_id** | **string** |  | [optional]
 **quantity** | **int** | The subscription quantity. Must be 1 or greater. | [optional]
 **sale_affiliate_id** | **string** | The affiliate id for the sale of the subscription. | [optional]
 **shipping_address** | [**\Keap\Core\V2\Model\Address**](Address.md) |  | [optional]

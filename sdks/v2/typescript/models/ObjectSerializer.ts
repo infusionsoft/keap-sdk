@@ -163,6 +163,7 @@ export * from '../models/LinkContactsRequest';
 export * from '../models/ListAffiliateCommissionProgramsResponse';
 export * from '../models/ListAffiliateCommissionsResponse';
 export * from '../models/ListAffiliateLinksResponse';
+export * from '../models/ListAffiliatePaymentsResponse';
 export * from '../models/ListAffiliateSummariesResponse';
 export * from '../models/ListAffiliatesResponse';
 export * from '../models/ListAutomationCategoryResponse';
@@ -248,6 +249,7 @@ export * from '../models/ReportEntryValue';
 export * from '../models/ReportExecutionResult';
 export * from '../models/Resource';
 export * from '../models/RestAffiliate';
+export * from '../models/RestAffiliatePayment';
 export * from '../models/RestApplyCommissionRequest';
 export * from '../models/RestCreateOrderRequest';
 export * from '../models/RestEmailAddress';
@@ -416,12 +418,12 @@ import { CreateShippingDiscountRequest  , CreateShippingDiscountRequestDiscountT
 import { CreateSubscriptionCommissionProgramRequest } from '../models/CreateSubscriptionCommissionProgramRequest';
 import { CreateSubscriptionPlanRequest  , CreateSubscriptionPlanRequestCycleTypeEnum       } from '../models/CreateSubscriptionPlanRequest';
 import { CreateSubscriptionRequest } from '../models/CreateSubscriptionRequest';
-import { CreateTaskRequest      , CreateTaskRequestPriorityEnum    , CreateTaskRequestTypeEnum   } from '../models/CreateTaskRequest';
+import { CreateTaskRequest      , CreateTaskRequestPriorityEnum      } from '../models/CreateTaskRequest';
 import { CreateUpdateContactRequest                     , CreateUpdateContactRequestSourceTypeEnum        } from '../models/CreateUpdateContactRequest';
 import { CreateUpdateLeadSourceCategoryRequest } from '../models/CreateUpdateLeadSourceCategoryRequest';
 import { CreateUpdateTagCategoryRequest } from '../models/CreateUpdateTagCategoryRequest';
 import { CreateUpdateTagRequest } from '../models/CreateUpdateTagRequest';
-import { CreateUpdateTaskRequest      , CreateUpdateTaskRequestPriorityEnum    , CreateUpdateTaskRequestTypeEnum   } from '../models/CreateUpdateTaskRequest';
+import { CreateUpdateTaskRequest      , CreateUpdateTaskRequestPriorityEnum      } from '../models/CreateUpdateTaskRequest';
 import { CreateUserRequestV2 } from '../models/CreateUserRequestV2';
 import { CurrencyValue } from '../models/CurrencyValue';
 import { CustomField } from '../models/CustomField';
@@ -481,6 +483,7 @@ import { LinkContactsRequest } from '../models/LinkContactsRequest';
 import { ListAffiliateCommissionProgramsResponse } from '../models/ListAffiliateCommissionProgramsResponse';
 import { ListAffiliateCommissionsResponse } from '../models/ListAffiliateCommissionsResponse';
 import { ListAffiliateLinksResponse } from '../models/ListAffiliateLinksResponse';
+import { ListAffiliatePaymentsResponse } from '../models/ListAffiliatePaymentsResponse';
 import { ListAffiliateSummariesResponse } from '../models/ListAffiliateSummariesResponse';
 import { ListAffiliatesResponse } from '../models/ListAffiliatesResponse';
 import { ListAutomationCategoryResponse } from '../models/ListAutomationCategoryResponse';
@@ -566,6 +569,7 @@ import { ReportEntryValue } from '../models/ReportEntryValue';
 import { ReportExecutionResult } from '../models/ReportExecutionResult';
 import { Resource } from '../models/Resource';
 import { RestAffiliate     , RestAffiliateStatusEnum    } from '../models/RestAffiliate';
+import { RestAffiliatePayment     , RestAffiliatePaymentPayTypeEnum   } from '../models/RestAffiliatePayment';
 import { RestApplyCommissionRequest     , RestApplyCommissionRequestPayoutTypeEnum   } from '../models/RestApplyCommissionRequest';
 import { RestCreateOrderRequest      , RestCreateOrderRequestOrderTypeEnum       } from '../models/RestCreateOrderRequest';
 import { RestEmailAddress  , RestEmailAddressStatusEnum   } from '../models/RestEmailAddress';
@@ -588,13 +592,13 @@ import { ShippingMethod } from '../models/ShippingMethod';
 import { SocialAccount , SocialAccountTypeEnum   } from '../models/SocialAccount';
 import { StackTraceElement } from '../models/StackTraceElement';
 import { StageDetails } from '../models/StageDetails';
-import { Subscription    , SubscriptionBillingCycleEnum                } from '../models/Subscription';
+import { Subscription    , SubscriptionBillingCycleEnum                    } from '../models/Subscription';
 import { SubscriptionCommission } from '../models/SubscriptionCommission';
 import { SubscriptionCommissionProgram } from '../models/SubscriptionCommissionProgram';
 import { SubscriptionPlan  , SubscriptionPlanCycleTypeEnum         } from '../models/SubscriptionPlan';
 import { Tag } from '../models/Tag';
 import { TaggedCompany } from '../models/TaggedCompany';
-import { Task          , TaskPriorityEnum    , TaskTypeEnum   } from '../models/Task';
+import { Task          , TaskPriorityEnum      } from '../models/Task';
 import { Throwable } from '../models/Throwable';
 import { URI } from '../models/URI';
 import { URL } from '../models/URL';
@@ -626,10 +630,10 @@ import { UpdateProductRequest } from '../models/UpdateProductRequest';
 import { UpdateShippingDiscountRequest  , UpdateShippingDiscountRequestDiscountTypeEnum     } from '../models/UpdateShippingDiscountRequest';
 import { UpdateSubscriptionCommissionProgramRequest } from '../models/UpdateSubscriptionCommissionProgramRequest';
 import { UpdateSubscriptionPlanRequest  , UpdateSubscriptionPlanRequestCycleTypeEnum       } from '../models/UpdateSubscriptionPlanRequest';
-import { UpdateSubscriptionRequest    , UpdateSubscriptionRequestBillingCycleEnum                } from '../models/UpdateSubscriptionRequest';
+import { UpdateSubscriptionRequest    , UpdateSubscriptionRequestBillingCycleEnum               } from '../models/UpdateSubscriptionRequest';
 import { UpdateTagCategoryResponse } from '../models/UpdateTagCategoryResponse';
 import { UpdateTagResponse } from '../models/UpdateTagResponse';
-import { UpdateTaskResponse          , UpdateTaskResponsePriorityEnum    , UpdateTaskResponseTypeEnum   } from '../models/UpdateTaskResponse';
+import { UpdateTaskResponse          , UpdateTaskResponsePriorityEnum      } from '../models/UpdateTaskResponse';
 import { UpdateUserRequest } from '../models/UpdateUserRequest';
 import { UpdatedPaymentPlan } from '../models/UpdatedPaymentPlan';
 import { User               , UserStatusEnum       } from '../models/User';
@@ -662,10 +666,8 @@ let enumsMap: Set<string> = new Set<string>([
     "CreateShippingDiscountRequestDiscountTypeEnum",
     "CreateSubscriptionPlanRequestCycleTypeEnum",
     "CreateTaskRequestPriorityEnum",
-    "CreateTaskRequestTypeEnum",
     "CreateUpdateContactRequestSourceTypeEnum",
     "CreateUpdateTaskRequestPriorityEnum",
-    "CreateUpdateTaskRequestTypeEnum",
     "CustomFieldMetaDataFieldTypeEnum",
     "CustomFieldMetaDataRecordTypeEnum",
     "DiscountDiscountMethodEnum",
@@ -697,6 +699,7 @@ let enumsMap: Set<string> = new Set<string>([
     "ProductOptionsTypeEnum",
     "ReferralReferralTypeEnum",
     "RestAffiliateStatusEnum",
+    "RestAffiliatePaymentPayTypeEnum",
     "RestApplyCommissionRequestPayoutTypeEnum",
     "RestCreateOrderRequestOrderTypeEnum",
     "RestEmailAddressStatusEnum",
@@ -711,7 +714,6 @@ let enumsMap: Set<string> = new Set<string>([
     "SubscriptionBillingCycleEnum",
     "SubscriptionPlanCycleTypeEnum",
     "TaskPriorityEnum",
-    "TaskTypeEnum",
     "UpdateAffiliateRequestStatusEnum",
     "UpdateOrderItemRequestTypeEnum",
     "UpdateOrderRequestOrderTypeEnum",
@@ -723,7 +725,6 @@ let enumsMap: Set<string> = new Set<string>([
     "UpdateSubscriptionPlanRequestCycleTypeEnum",
     "UpdateSubscriptionRequestBillingCycleEnum",
     "UpdateTaskResponsePriorityEnum",
-    "UpdateTaskResponseTypeEnum",
     "UserStatusEnum",
 ]);
 
@@ -893,6 +894,7 @@ let typeMap: {[index: string]: any} = {
     "ListAffiliateCommissionProgramsResponse": ListAffiliateCommissionProgramsResponse,
     "ListAffiliateCommissionsResponse": ListAffiliateCommissionsResponse,
     "ListAffiliateLinksResponse": ListAffiliateLinksResponse,
+    "ListAffiliatePaymentsResponse": ListAffiliatePaymentsResponse,
     "ListAffiliateSummariesResponse": ListAffiliateSummariesResponse,
     "ListAffiliatesResponse": ListAffiliatesResponse,
     "ListAutomationCategoryResponse": ListAutomationCategoryResponse,
@@ -978,6 +980,7 @@ let typeMap: {[index: string]: any} = {
     "ReportExecutionResult": ReportExecutionResult,
     "Resource": Resource,
     "RestAffiliate": RestAffiliate,
+    "RestAffiliatePayment": RestAffiliatePayment,
     "RestApplyCommissionRequest": RestApplyCommissionRequest,
     "RestCreateOrderRequest": RestCreateOrderRequest,
     "RestEmailAddress": RestEmailAddress,

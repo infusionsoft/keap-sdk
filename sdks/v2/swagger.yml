@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   description: Keap REST Core Service
-  version: 2.70.0.836642-hf-202507280853
+  version: 2.70.0.839048
   title: Keap REST API
   termsOfService: https://keap.com/legal
   contact:
@@ -14040,8 +14040,8 @@ components:
         price:
           type: number
           format: double
-          description: Overridable price of the product. If not specified, the default
-            will be used. Must be greater than or equal to 0.
+          description: Overridable price of the product. Must be greater than or equal
+            to 0. If not specified, the product price will be used.
         product_id:
           type: string
           description: The id of the product to be added to the order.
@@ -14129,6 +14129,9 @@ components:
       - contact_id
       - subscription_plan_id
       properties:
+        active:
+          type: boolean
+          description: If the subscription is active or not. Default is true
         allow_duplicate:
           type: boolean
           description: If true, it will disable the check to see if there is already
@@ -14149,6 +14152,20 @@ components:
         contact_id:
           type: string
           description: Id of the contact to create the subscription for.
+        days_between_retries:
+          type: integer
+          format: int32
+          description: Number of days between charge attempts. Must be 1 or greater.
+            Default is the configured [Num Days Between Retries] value.
+        lead_affiliate_id:
+          type: string
+          description: The affiliate id for the lead of the subscription. Default
+            is 0.
+        max_charge_attempts:
+          type: integer
+          format: int32
+          description: Maximum number of charge attempts. Must be 1 or greater. Default
+            is the configured [Max Retries] value.
         payment_method_id:
           type: string
           description: Id associated with the payment method. Default is the contact's
@@ -14162,6 +14179,8 @@ components:
           type: string
           description: The affiliate id for the sale of the subscription. Default
             is 0.
+        shipping_address:
+          $ref: '#/components/schemas/Address'
         start_date:
           type: string
           description: The first day the subscription will bill. Must not be in the
@@ -14202,13 +14221,6 @@ components:
           type: string
         type:
           type: string
-          enum:
-          - EMAIL
-          - CALL
-          - APPOINTMENT
-          - FAX
-          - LETTER
-          - OTHER
       title: CreateTaskRequest
     CreateUpdateContactRequest:
       type: object
@@ -14364,13 +14376,6 @@ components:
           type: string
         type:
           type: string
-          enum:
-          - EMAIL
-          - CALL
-          - APPOINTMENT
-          - FAX
-          - LETTER
-          - OTHER
       title: CreateUpdateTaskRequest
     CreateUserRequestV2:
       type: object
@@ -15732,6 +15737,16 @@ components:
         next_page_token:
           type: string
       title: ListAffiliateLinksResponse
+    ListAffiliatePaymentsResponse:
+      type: object
+      properties:
+        affiliate_payments:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestAffiliatePayment'
+        next_page_token:
+          type: string
+      title: ListAffiliatePaymentsResponse
     ListAffiliateSummariesResponse:
       type: object
       properties:
@@ -16907,6 +16922,32 @@ components:
           example: 123456
           description: The Affiliate PortalSite Id
       title: RestAffiliate
+    RestAffiliatePayment:
+      type: object
+      properties:
+        create_time:
+          type: string
+        id:
+          type: string
+        pay_amount:
+          type: number
+          format: double
+        pay_date:
+          type: string
+        pay_notes:
+          type: string
+        pay_type:
+          type: string
+          enum:
+          - CASH
+          - CHECK
+          - CREDIT_CARD
+          - CREDIT_CARD_MANUAL
+          - MONEY_ORDER
+          - ADJUSTMENT
+          - CREDIT
+          - REFUND
+      title: RestAffiliatePayment
     RestApplyCommissionRequest:
       type: object
       required:
@@ -17266,7 +17307,7 @@ components:
     RestV2OrderItem:
       type: object
       properties:
-        cost:
+        cost_per_unit:
           $ref: '#/components/schemas/CurrencyValue'
         description:
           type: string
@@ -17302,7 +17343,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/OrderItemTax'
-        price:
+        price_per_unit:
           $ref: '#/components/schemas/CurrencyValue'
         product:
           $ref: '#/components/schemas/OrderItemProduct'
@@ -17574,15 +17615,21 @@ components:
       properties:
         active:
           type: boolean
+          description: If the subscription is active or not.
         allow_tax:
           type: boolean
+          description: If the subscription allows tax.
         auto_charge:
           type: boolean
+          description: If the subscription should auto charge on the next billing
+            date.
         billing_amount:
           type: number
           format: double
+          description: The billing amount.
         billing_cycle:
           type: string
+          description: The billing cycle of the subscription.
           enum:
           - YEAR
           - MONTH
@@ -17591,31 +17638,57 @@ components:
         billing_frequency:
           type: integer
           format: int32
+          description: The billing frequency in days.
         contact_id:
           type: string
+          description: Id of the contact to create the subscription for.
+        days_between_retries:
+          type: integer
+          format: int32
+          description: Number of days between charge attempts.
         end_date:
           type: string
+          description: The last date the subscription will bill.
         id:
           type: string
+          description: Id of the subscription.
         last_bill_date:
           type: string
+          description: The last date the subscription was billed.
+        lead_affiliate_id:
+          type: string
+          description: The affiliate id for the lead of the subscription.
+        max_charge_attempts:
+          type: integer
+          format: int32
+          description: Maximum number of charge attempts.
         merchant_account_id:
           type: string
+          description: The merchant account id associated with the subscription.
         next_bill_date:
           type: string
+          description: The next date the subscription will bill.
         payment_method_id:
           type: string
+          description: Id associated with the payment method.
         product_id:
           type: string
+          description: Id of the product associated with the subscription.
         quantity:
           type: integer
           format: int64
+          description: The subscription quantity.
         sale_affiliate_id:
           type: string
+          description: The affiliate id for the sale of the subscription.
+        shipping_address:
+          $ref: '#/components/schemas/Address'
         start_date:
           type: string
+          description: The first day the subscription will bill.
         subscription_plan_id:
           type: string
+          description: Id of the product subscription plan.
       title: Subscription
     SubscriptionCommission:
       type: object
@@ -17751,13 +17824,6 @@ components:
           type: string
         type:
           type: string
-          enum:
-          - EMAIL
-          - CALL
-          - APPOINTMENT
-          - FAX
-          - LETTER
-          - OTHER
       title: Task
     Throwable:
       type: object
@@ -18532,8 +18598,6 @@ components:
         payment_method_id:
           type: string
           description: Id associated with the payment method.
-        product_id:
-          type: string
         quantity:
           type: integer
           format: int32
@@ -18616,13 +18680,6 @@ components:
           type: string
         type:
           type: string
-          enum:
-          - EMAIL
-          - CALL
-          - APPOINTMENT
-          - FAX
-          - LETTER
-          - OTHER
       title: UpdateTaskResponse
     UpdateUserRequest:
       type: object

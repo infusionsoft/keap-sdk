@@ -17,7 +17,6 @@ Name | Type | Description | Notes
 **maxChargeAttempts** | **Number** | Maximum number of charge attempts. Must be 1 or greater. | [optional] 
 **nextBillDate** | **String** | The next date the subscription will bill. Must not be in the past. | [optional] 
 **paymentMethodId** | **String** | Id associated with the payment method. | [optional] 
-**productId** | **String** |  | [optional] 
 **quantity** | **Number** | The subscription quantity. Must be 1 or greater. | [optional] 
 **saleAffiliateId** | **String** | The affiliate id for the sale of the subscription. | [optional] 
 **shippingAddress** | [**Address**](Address.md) |  | [optional] 

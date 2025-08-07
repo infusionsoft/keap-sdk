@@ -20,7 +20,7 @@
 |**priority** | [**PriorityEnum**](#PriorityEnum) |  |  [optional] |
 |**remindTimeMins** | **Integer** |  |  [optional] |
 |**title** | **String** |  |  [optional] |
-|**type** | [**TypeEnum**](#TypeEnum) |  |  [optional] |
+|**type** | **String** |  |  [optional] |
 
 
 
@@ -31,20 +31,6 @@
 | CRITICAL | &quot;CRITICAL&quot; |
 | ESSENTIAL | &quot;ESSENTIAL&quot; |
 | NONESSENTIAL | &quot;NONESSENTIAL&quot; |
-| UNKNOWN_COULD_NOT_DESERIALIZE | &quot;unknown_default_open_api&quot; |
-
-
-
-## Enum: TypeEnum
-
-| Name | Value |
-|---- | -----|
-| EMAIL | &quot;EMAIL&quot; |
-| CALL | &quot;CALL&quot; |
-| APPOINTMENT | &quot;APPOINTMENT&quot; |
-| FAX | &quot;FAX&quot; |
-| LETTER | &quot;LETTER&quot; |
-| OTHER | &quot;OTHER&quot; |
 | UNKNOWN_COULD_NOT_DESERIALIZE | &quot;unknown_default_open_api&quot; |
 
 

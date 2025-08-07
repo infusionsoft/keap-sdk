@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**cost** | [**\Keap\Core\V2\Model\CurrencyValue**](CurrencyValue.md) |  | [optional]
+**cost_per_unit** | [**\Keap\Core\V2\Model\CurrencyValue**](CurrencyValue.md) |  | [optional]
 **description** | **string** |  | [optional]
 **discount** | [**\Keap\Core\V2\Model\CurrencyValue**](CurrencyValue.md) |  | [optional]
 **id** | **string** |  | [optional]
@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **name** | **string** |  | [optional]
 **notes** | **string** |  | [optional]
 **order_item_taxes** | [**\Keap\Core\V2\Model\OrderItemTax[]**](OrderItemTax.md) |  | [optional]
-**price** | [**\Keap\Core\V2\Model\CurrencyValue**](CurrencyValue.md) |  | [optional]
+**price_per_unit** | [**\Keap\Core\V2\Model\CurrencyValue**](CurrencyValue.md) |  | [optional]
 **product** | [**\Keap\Core\V2\Model\OrderItemProduct**](OrderItemProduct.md) |  | [optional]
 **quantity** | **int** |  | [optional]
 **special** | [**\Keap\Core\V2\Model\Discount**](Discount.md) |  | [optional]
