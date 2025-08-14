@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **ContactId** | **string** |  | 
 **LeadAffiliateId** | **string** |  | [optional] 
 **Notes** | **string** |  | [optional] 
-**OrderItems** | [**List&lt;CreateRestOrderItemRequest&gt;**](CreateRestOrderItemRequest.md) |  | 
+**OrderItems** | [**List&lt;CreateOrderItemRequest&gt;**](CreateOrderItemRequest.md) |  | 
 **OrderTime** | **string** |  | 
 **OrderTitle** | **string** |  | 
 **OrderType** | **string** |  | 

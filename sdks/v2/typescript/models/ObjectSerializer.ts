@@ -84,6 +84,7 @@ export * from '../models/CreateOpportunityRequest';
 export * from '../models/CreateOpportunityStageChecklistItem';
 export * from '../models/CreateOpportunityStageRequest';
 export * from '../models/CreateOrUpdateAffiliateLinkRequest';
+export * from '../models/CreateOrderItemRequest';
 export * from '../models/CreateOrderTotalDiscountRequest';
 export * from '../models/CreatePaymentMethodConfigRequest';
 export * from '../models/CreatePaymentRequest';
@@ -93,7 +94,6 @@ export * from '../models/CreateProductDiscountRequest';
 export * from '../models/CreateProductInterestBundleRequest';
 export * from '../models/CreateProductRequest';
 export * from '../models/CreateReferralRequest';
-export * from '../models/CreateRestOrderItemRequest';
 export * from '../models/CreateShippingDiscountRequest';
 export * from '../models/CreateSubscriptionCommissionProgramRequest';
 export * from '../models/CreateSubscriptionPlanRequest';
@@ -169,7 +169,6 @@ export * from '../models/ListAffiliatesResponse';
 export * from '../models/ListAutomationCategoryResponse';
 export * from '../models/ListAutomationIdsResponse';
 export * from '../models/ListAutomationResponse';
-export * from '../models/ListBasicContactResponse';
 export * from '../models/ListCampaignsResponse';
 export * from '../models/ListCategoryDiscountsResponse';
 export * from '../models/ListCompaniesResponse';
@@ -404,6 +403,7 @@ import { CreateOpportunityRequest } from '../models/CreateOpportunityRequest';
 import { CreateOpportunityStageChecklistItem } from '../models/CreateOpportunityStageChecklistItem';
 import { CreateOpportunityStageRequest } from '../models/CreateOpportunityStageRequest';
 import { CreateOrUpdateAffiliateLinkRequest } from '../models/CreateOrUpdateAffiliateLinkRequest';
+import { CreateOrderItemRequest  , CreateOrderItemRequestItemTypeEnum        } from '../models/CreateOrderItemRequest';
 import { CreateOrderTotalDiscountRequest   , CreateOrderTotalDiscountRequestDiscountStrategyEnum  , CreateOrderTotalDiscountRequestDiscountTypeEnum     } from '../models/CreateOrderTotalDiscountRequest';
 import { CreatePaymentMethodConfigRequest } from '../models/CreatePaymentMethodConfigRequest';
 import { CreatePaymentRequest } from '../models/CreatePaymentRequest';
@@ -413,7 +413,6 @@ import { CreateProductDiscountRequest   , CreateProductDiscountRequestDiscountTy
 import { CreateProductInterestBundleRequest } from '../models/CreateProductInterestBundleRequest';
 import { CreateProductRequest } from '../models/CreateProductRequest';
 import { CreateReferralRequest      , CreateReferralRequestReferralTypeEnum    } from '../models/CreateReferralRequest';
-import { CreateRestOrderItemRequest , CreateRestOrderItemRequestItemTypeEnum      } from '../models/CreateRestOrderItemRequest';
 import { CreateShippingDiscountRequest  , CreateShippingDiscountRequestDiscountTypeEnum     } from '../models/CreateShippingDiscountRequest';
 import { CreateSubscriptionCommissionProgramRequest } from '../models/CreateSubscriptionCommissionProgramRequest';
 import { CreateSubscriptionPlanRequest  , CreateSubscriptionPlanRequestCycleTypeEnum       } from '../models/CreateSubscriptionPlanRequest';
@@ -489,7 +488,6 @@ import { ListAffiliatesResponse } from '../models/ListAffiliatesResponse';
 import { ListAutomationCategoryResponse } from '../models/ListAutomationCategoryResponse';
 import { ListAutomationIdsResponse } from '../models/ListAutomationIdsResponse';
 import { ListAutomationResponse } from '../models/ListAutomationResponse';
-import { ListBasicContactResponse } from '../models/ListBasicContactResponse';
 import { ListCampaignsResponse } from '../models/ListCampaignsResponse';
 import { ListCategoryDiscountsResponse } from '../models/ListCategoryDiscountsResponse';
 import { ListCompaniesResponse } from '../models/ListCompaniesResponse';
@@ -658,11 +656,11 @@ let enumsMap: Set<string> = new Set<string>([
     "CreateAffiliateRequestStatusEnum",
     "CreateCustomFieldRequestFieldTypeEnum",
     "CreateEmailSentRequestOriginalProviderEnum",
+    "CreateOrderItemRequestItemTypeEnum",
     "CreateOrderTotalDiscountRequestDiscountStrategyEnum",
     "CreateOrderTotalDiscountRequestDiscountTypeEnum",
     "CreateProductDiscountRequestDiscountTypeEnum",
     "CreateReferralRequestReferralTypeEnum",
-    "CreateRestOrderItemRequestItemTypeEnum",
     "CreateShippingDiscountRequestDiscountTypeEnum",
     "CreateSubscriptionPlanRequestCycleTypeEnum",
     "CreateTaskRequestPriorityEnum",
@@ -815,6 +813,7 @@ let typeMap: {[index: string]: any} = {
     "CreateOpportunityStageChecklistItem": CreateOpportunityStageChecklistItem,
     "CreateOpportunityStageRequest": CreateOpportunityStageRequest,
     "CreateOrUpdateAffiliateLinkRequest": CreateOrUpdateAffiliateLinkRequest,
+    "CreateOrderItemRequest": CreateOrderItemRequest,
     "CreateOrderTotalDiscountRequest": CreateOrderTotalDiscountRequest,
     "CreatePaymentMethodConfigRequest": CreatePaymentMethodConfigRequest,
     "CreatePaymentRequest": CreatePaymentRequest,
@@ -824,7 +823,6 @@ let typeMap: {[index: string]: any} = {
     "CreateProductInterestBundleRequest": CreateProductInterestBundleRequest,
     "CreateProductRequest": CreateProductRequest,
     "CreateReferralRequest": CreateReferralRequest,
-    "CreateRestOrderItemRequest": CreateRestOrderItemRequest,
     "CreateShippingDiscountRequest": CreateShippingDiscountRequest,
     "CreateSubscriptionCommissionProgramRequest": CreateSubscriptionCommissionProgramRequest,
     "CreateSubscriptionPlanRequest": CreateSubscriptionPlanRequest,
@@ -900,7 +898,6 @@ let typeMap: {[index: string]: any} = {
     "ListAutomationCategoryResponse": ListAutomationCategoryResponse,
     "ListAutomationIdsResponse": ListAutomationIdsResponse,
     "ListAutomationResponse": ListAutomationResponse,
-    "ListBasicContactResponse": ListBasicContactResponse,
     "ListCampaignsResponse": ListCampaignsResponse,
     "ListCategoryDiscountsResponse": ListCategoryDiscountsResponse,
     "ListCompaniesResponse": ListCompaniesResponse,

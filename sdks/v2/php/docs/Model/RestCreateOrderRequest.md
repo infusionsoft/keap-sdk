@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **contact_id** | **string** |  |
 **lead_affiliate_id** | **string** |  | [optional]
 **notes** | **string** |  | [optional]
-**order_items** | [**\Keap\Core\V2\Model\CreateRestOrderItemRequest[]**](CreateRestOrderItemRequest.md) |  |
+**order_items** | [**\Keap\Core\V2\Model\CreateOrderItemRequest[]**](CreateOrderItemRequest.md) |  |
 **order_time** | **string** |  |
 **order_title** | **string** |  |
 **order_type** | **string** |  |

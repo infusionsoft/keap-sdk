@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   description: Keap REST Core Service
-  version: 2.70.0.839048
+  version: 2.70.0.843039-hf-202508121547
   title: Keap REST API
   termsOfService: https://keap.com/legal
   contact:
@@ -13806,6 +13806,62 @@ components:
           example: www.fitnessProgram.com
           description: Website Address
       title: CreateOrUpdateAffiliateLinkRequest
+    CreateOrderItemRequest:
+      type: object
+      required:
+      - product_id
+      - quantity
+      properties:
+        cost_per_unit:
+          type: number
+          format: double
+          description: The cost per unit. Must be greater than or equal to 0.
+        description:
+          type: string
+          description: The description of the order item. Must not be whitespace.
+        item_type:
+          type: string
+          description: The type of this order item. For now only [PRODUCT] is supported.
+            Will default to [PRODUCT] if omitted.
+          enum:
+          - UNKNOWN
+          - SHIPPING
+          - TAX
+          - SERVICE
+          - PRODUCT
+          - UPSELL
+          - FINANCE_CHARGE
+          - DISCOUNT
+          - PROGRAM
+          - SUBSCRIPTION
+          - DISCOUNT_FREE_TRIAL
+          - DISCOUNT_ORDER_TOTAL
+          - DISCOUNT_PRODUCT
+          - DISCOUNT_PRODUCT_CATEGORY
+          - DISCOUNT_SHIPPING
+          - TIP
+          - OTHER
+        name:
+          type: string
+          description: The name of the order item. Must not be whitespace. If not
+            specified, the product name will be used.
+        notes:
+          type: string
+          description: The notes for the order item. Must not be whitespace.
+        price_per_unit:
+          type: number
+          format: double
+          description: The price per unit. Must be greater than or equal to 0. If
+            not specified, the product price will be used.
+        product_id:
+          type: string
+          description: The id of the product to be added to the order. Must be a valid
+            product id.
+        quantity:
+          type: integer
+          format: int32
+          description: The quantity. Must be greater than or equal to 1.
+      title: CreateOrderItemRequest
     CreateOrderTotalDiscountRequest:
       type: object
       required:
@@ -14007,49 +14063,6 @@ components:
         source:
           type: string
       title: CreateReferralRequest
-    CreateRestOrderItemRequest:
-      type: object
-      required:
-      - product_id
-      - quantity
-      properties:
-        description:
-          type: string
-        item_type:
-          type: string
-          description: The type of this line item. For now only [PRODUCT] is supported.
-            Will default to [PRODUCT] if omitted.
-          enum:
-          - UNKNOWN
-          - SHIPPING
-          - TAX
-          - SERVICE
-          - PRODUCT
-          - UPSELL
-          - FINANCE_CHARGE
-          - DISCOUNT
-          - PROGRAM
-          - SUBSCRIPTION
-          - DISCOUNT_FREE_TRIAL
-          - DISCOUNT_ORDER_TOTAL
-          - DISCOUNT_PRODUCT
-          - DISCOUNT_PRODUCT_CATEGORY
-          - DISCOUNT_SHIPPING
-          - TIP
-          - OTHER
-        price:
-          type: number
-          format: double
-          description: Overridable price of the product. Must be greater than or equal
-            to 0. If not specified, the product price will be used.
-        product_id:
-          type: string
-          description: The id of the product to be added to the order.
-        quantity:
-          type: integer
-          format: int32
-          description: Quantity must be greater than or equal to 1
-      title: CreateRestOrderItemRequest
     CreateShippingDiscountRequest:
       type: object
       required:
@@ -15804,16 +15817,6 @@ components:
         next_page_token:
           type: string
       title: ListAutomationResponse
-    ListBasicContactResponse:
-      type: object
-      properties:
-        contacts:
-          type: array
-          items:
-            $ref: '#/components/schemas/BasicContact'
-        next_page_token:
-          type: string
-      title: ListBasicContactResponse
     ListCampaignsResponse:
       type: object
       properties:
@@ -16992,7 +16995,7 @@ components:
         order_items:
           type: array
           items:
-            $ref: '#/components/schemas/CreateRestOrderItemRequest'
+            $ref: '#/components/schemas/CreateOrderItemRequest'
         order_time:
           type: string
         order_title:

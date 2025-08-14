@@ -2,7 +2,7 @@
 
 Keap REST API
 
-- API version: 2.70.0.839048
+- API version: 2.70.0.843039-hf-202508121547
 
 - Generator version: 7.13.0
 
@@ -43,7 +43,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.keap.core</groupId>
   <artifactId>core-service-v2-java-sdk</artifactId>
-  <version>1.0.23</version>
+  <version>1.0.24</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.keap.core:core-service-v2-java-sdk:1.0.23"
+compile "com.keap.core:core-service-v2-java-sdk:1.0.24"
 ```
 
 ### Others
@@ -66,7 +66,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/core-service-v2-java-sdk-1.0.23.jar`
+- `target/core-service-v2-java-sdk-1.0.24.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -630,6 +630,7 @@ Class | Method | HTTP request | Description
  - [CreateOpportunityStageChecklistItem](docs/CreateOpportunityStageChecklistItem.md)
  - [CreateOpportunityStageRequest](docs/CreateOpportunityStageRequest.md)
  - [CreateOrUpdateAffiliateLinkRequest](docs/CreateOrUpdateAffiliateLinkRequest.md)
+ - [CreateOrderItemRequest](docs/CreateOrderItemRequest.md)
  - [CreateOrderTotalDiscountRequest](docs/CreateOrderTotalDiscountRequest.md)
  - [CreatePaymentMethodConfigRequest](docs/CreatePaymentMethodConfigRequest.md)
  - [CreatePaymentRequest](docs/CreatePaymentRequest.md)
@@ -639,7 +640,6 @@ Class | Method | HTTP request | Description
  - [CreateProductInterestBundleRequest](docs/CreateProductInterestBundleRequest.md)
  - [CreateProductRequest](docs/CreateProductRequest.md)
  - [CreateReferralRequest](docs/CreateReferralRequest.md)
- - [CreateRestOrderItemRequest](docs/CreateRestOrderItemRequest.md)
  - [CreateShippingDiscountRequest](docs/CreateShippingDiscountRequest.md)
  - [CreateSubscriptionCommissionProgramRequest](docs/CreateSubscriptionCommissionProgramRequest.md)
  - [CreateSubscriptionPlanRequest](docs/CreateSubscriptionPlanRequest.md)
@@ -716,7 +716,6 @@ Class | Method | HTTP request | Description
  - [ListAutomationCategoryResponse](docs/ListAutomationCategoryResponse.md)
  - [ListAutomationIdsResponse](docs/ListAutomationIdsResponse.md)
  - [ListAutomationResponse](docs/ListAutomationResponse.md)
- - [ListBasicContactResponse](docs/ListBasicContactResponse.md)
  - [ListCampaignsResponse](docs/ListCampaignsResponse.md)
  - [ListCategoryDiscountsResponse](docs/ListCategoryDiscountsResponse.md)
  - [ListCompaniesResponse](docs/ListCompaniesResponse.md)

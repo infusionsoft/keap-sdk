@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **contact_id** | **str** |  | 
 **lead_affiliate_id** | **str** |  | [optional] 
 **notes** | **str** |  | [optional] 
-**order_items** | [**List[CreateRestOrderItemRequest]**](CreateRestOrderItemRequest.md) |  | 
+**order_items** | [**List[CreateOrderItemRequest]**](CreateOrderItemRequest.md) |  | 
 **order_time** | **str** |  | 
 **order_title** | **str** |  | 
 **order_type** | **str** |  | 

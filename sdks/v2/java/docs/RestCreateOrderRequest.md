@@ -10,7 +10,7 @@
 |**contactId** | **String** |  |  |
 |**leadAffiliateId** | **String** |  |  [optional] |
 |**notes** | **String** |  |  [optional] |
-|**orderItems** | [**List&lt;CreateRestOrderItemRequest&gt;**](CreateRestOrderItemRequest.md) |  |  |
+|**orderItems** | [**List&lt;CreateOrderItemRequest&gt;**](CreateOrderItemRequest.md) |  |  |
 |**orderTime** | **String** |  |  |
 |**orderTitle** | **String** |  |  |
 |**orderType** | [**OrderTypeEnum**](#OrderTypeEnum) |  |  |
