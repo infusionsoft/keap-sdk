@@ -4,18 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**chargeInventory** | **Boolean** | Determine if the order item has an impact on inventory. | [optional] 
-**costPerUnit** | **Number** |  | [optional] 
-**description** | **String** |  | [optional] 
-**name** | **String** |  | [optional] 
-**note** | **String** |  | [optional] 
-**pricePerUnit** | **Number** |  | [optional] 
-**quantity** | **Number** |  | [optional] 
-**type** | **String** |  | [optional] 
+**costPerUnit** | **Number** | The cost per unit. Must be greater than or equal to 0. | [optional] 
+**description** | **String** | The description of the order item. Must not be whitespace. | [optional] 
+**itemType** | **String** | The type of this order item. For now only [PRODUCT] is supported. Will default to [PRODUCT] if omitted. | [optional] 
+**name** | **String** | The name of the order item. Must not be whitespace. | [optional] 
+**notes** | **String** | The notes for the order item. Must not be whitespace. | [optional] 
+**pricePerUnit** | **Number** | The price per unit. Must be greater than or equal to 0. | [optional] 
+**quantity** | **Number** | The quantity. Must be greater than or equal to 1. | [optional] 
 
 
 
-## Enum: TypeEnum
+## Enum: ItemTypeEnum
 
 
 * `UNKNOWN` (value: `"UNKNOWN"`)

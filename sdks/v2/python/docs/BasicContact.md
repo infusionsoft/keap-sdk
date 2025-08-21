@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**applied_time** | **str** | The time the tag was applied to the contact, in ISO 8601 format. | [optional] 
 **email** | **str** |  | [optional] 
 **family_name** | **str** |  | [optional] 
 **given_name** | **str** |  | [optional] 

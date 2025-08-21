@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   description: Keap REST Core Service
-  version: 2.70.0.844065-hf-202508141354
+  version: 2.70.0.844359
   title: Keap REST API
   termsOfService: https://keap.com/legal
   contact:
@@ -11355,14 +11355,14 @@ paths:
           Filter to apply, allowed fields are:
           - (String) `company_name`
           - (String) `email`
-          - (String) `since_time`
-          - (String) `until_time`
+          - (String) `since_applied_time`
+          - (String) `until_applied_time`
           You will need to apply the `==` operator to check the equality of one of the filters with your searched
-          word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:
+          word, in the encoded form `%3D%3D`. If NONE is passed in for `email`, it
+          will check for the non-existence of that field. For the filters listed above, here are some examples:
           - `filter=company_name%3D%3DCompany`
           - `filter=email%3D%3Dtest@gmail.com`
-          - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;`
-          - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;`
+          - `filter=since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;`
         required: false
         schema:
           type: string
@@ -11371,10 +11371,9 @@ paths:
         description: |-
           Attribute and direction to order items.
           One of the following fields:
-          - `id`
-          - `create_time`
-          - `name`
+          - `company_name`
           - `email`
+          - `applied_time`
 
           One of the following directions:
           - `asc`
@@ -11450,13 +11449,36 @@ paths:
       parameters:
       - name: filter
         in: query
-        description: Search filter to apply to results
+        description: |-
+          Filter to apply, allowed fields are:
+          - (String) `given_name`
+          - (String) `family_name`
+          - (String) `email`
+          - (String) `since_applied_time`
+          - (String) `until_applied_time`
+
+          You will need to apply the `==` operator to check the equality of one of the filters with your searched
+          word, in the encoded form `%3D%3D`. If NONE is passed in for `email`, `given_name`, or `family_name`, it
+          will check for the non-existence of that field. For the filters listed above, here are some examples:
+          - `filter=given_name%3D%3DJohn`
+          - `filter=family_name%3D%3DSmith`
+          - `filter=email%3D%3DNONE`
         required: false
         schema:
           type: string
       - name: order_by
         in: query
-        description: Attribute and direction to order items by. E.g. `given_name desc`
+        description: |-
+          Attribute and direction to order items.
+          One of the following fields:
+          - `given_name`
+          - `family_name`
+          - `email`
+          - `applied_time`
+
+          One of the following directions:
+          - `asc`
+          - `desc`
         required: false
         schema:
           type: string
@@ -12862,6 +12884,10 @@ components:
     BasicContact:
       type: object
       properties:
+        applied_time:
+          type: string
+          example: '2023-10-01T12:00:00Z'
+          description: The time the tag was applied to the contact, in ISO 8601 format.
         email:
           type: string
         family_name:
@@ -13065,29 +13091,11 @@ components:
     Company:
       type: object
       properties:
-        address:
-          $ref: '#/components/schemas/Address'
         company_name:
           type: string
-        create_time:
-          type: string
-        custom_fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomFieldValue'
         email_address:
           $ref: '#/components/schemas/EmailAddress'
-        fax_number:
-          $ref: '#/components/schemas/FaxNumber'
         id:
-          type: string
-        notes:
-          type: string
-        phone_number:
-          $ref: '#/components/schemas/PhoneNumber'
-        update_time:
-          type: string
-        website:
           type: string
       title: Company
     Contact:
@@ -17786,6 +17794,8 @@ components:
       properties:
         applied_time:
           type: string
+          example: '2023-10-01T12:00:00Z'
+          description: The time the tag was applied to the company, in ISO 8601 format.
         company:
           $ref: '#/components/schemas/Company'
       title: TaggedCompany
@@ -18230,26 +18240,17 @@ components:
     UpdateOrderItemRequest:
       type: object
       properties:
-        charge_inventory:
-          type: boolean
-          description: Determine if the order item has an impact on inventory.
         cost_per_unit:
           type: number
           format: double
+          description: The cost per unit. Must be greater than or equal to 0.
         description:
           type: string
-        name:
+          description: The description of the order item. Must not be whitespace.
+        item_type:
           type: string
-        note:
-          type: string
-        price_per_unit:
-          type: number
-          format: double
-        quantity:
-          type: integer
-          format: int32
-        type:
-          type: string
+          description: The type of this order item. For now only [PRODUCT] is supported.
+            Will default to [PRODUCT] if omitted.
           enum:
           - UNKNOWN
           - SHIPPING
@@ -18268,6 +18269,20 @@ components:
           - DISCOUNT_SHIPPING
           - TIP
           - OTHER
+        name:
+          type: string
+          description: The name of the order item. Must not be whitespace.
+        notes:
+          type: string
+          description: The notes for the order item. Must not be whitespace.
+        price_per_unit:
+          type: number
+          format: double
+          description: The price per unit. Must be greater than or equal to 0.
+        quantity:
+          type: integer
+          format: int32
+          description: The quantity. Must be greater than or equal to 1.
       title: UpdateOrderItemRequest
     UpdateOrderRequest:
       type: object

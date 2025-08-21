@@ -615,7 +615,7 @@ import { UpdateNoteResponse } from '../models/UpdateNoteResponse';
 import { UpdateOpportunityRequestV2 } from '../models/UpdateOpportunityRequestV2';
 import { UpdateOpportunityStageChecklistItem } from '../models/UpdateOpportunityStageChecklistItem';
 import { UpdateOpportunityStageRequest } from '../models/UpdateOpportunityStageRequest';
-import { UpdateOrderItemRequest       , UpdateOrderItemRequestTypeEnum   } from '../models/UpdateOrderItemRequest';
+import { UpdateOrderItemRequest  , UpdateOrderItemRequestItemTypeEnum       } from '../models/UpdateOrderItemRequest';
 import { UpdateOrderRequest     , UpdateOrderRequestOrderTypeEnum        } from '../models/UpdateOrderRequest';
 import { UpdateOrderTotalDiscountRequest   , UpdateOrderTotalDiscountRequestDiscountStrategyEnum  , UpdateOrderTotalDiscountRequestDiscountTypeEnum     } from '../models/UpdateOrderTotalDiscountRequest';
 import { UpdateProductCategoryRequest } from '../models/UpdateProductCategoryRequest';
@@ -713,7 +713,7 @@ let enumsMap: Set<string> = new Set<string>([
     "SubscriptionPlanCycleTypeEnum",
     "TaskPriorityEnum",
     "UpdateAffiliateRequestStatusEnum",
-    "UpdateOrderItemRequestTypeEnum",
+    "UpdateOrderItemRequestItemTypeEnum",
     "UpdateOrderRequestOrderTypeEnum",
     "UpdateOrderTotalDiscountRequestDiscountStrategyEnum",
     "UpdateOrderTotalDiscountRequestDiscountTypeEnum",
