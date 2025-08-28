@@ -104,7 +104,6 @@ export * from '../models/CreateUpdateLeadSourceCategoryRequest';
 export * from '../models/CreateUpdateTagCategoryRequest';
 export * from '../models/CreateUpdateTagRequest';
 export * from '../models/CreateUpdateTaskRequest';
-export * from '../models/CreateUserRequestV2';
 export * from '../models/CurrencyValue';
 export * from '../models/CustomField';
 export * from '../models/CustomFieldMetaData';
@@ -423,7 +422,6 @@ import { CreateUpdateLeadSourceCategoryRequest } from '../models/CreateUpdateLea
 import { CreateUpdateTagCategoryRequest } from '../models/CreateUpdateTagCategoryRequest';
 import { CreateUpdateTagRequest } from '../models/CreateUpdateTagRequest';
 import { CreateUpdateTaskRequest      , CreateUpdateTaskRequestPriorityEnum      } from '../models/CreateUpdateTaskRequest';
-import { CreateUserRequestV2 } from '../models/CreateUserRequestV2';
 import { CurrencyValue } from '../models/CurrencyValue';
 import { CustomField } from '../models/CustomField';
 import { CustomFieldMetaData  , CustomFieldMetaDataFieldTypeEnum      , CustomFieldMetaDataRecordTypeEnum   } from '../models/CustomFieldMetaData';
@@ -833,7 +831,6 @@ let typeMap: {[index: string]: any} = {
     "CreateUpdateTagCategoryRequest": CreateUpdateTagCategoryRequest,
     "CreateUpdateTagRequest": CreateUpdateTagRequest,
     "CreateUpdateTaskRequest": CreateUpdateTaskRequest,
-    "CreateUserRequestV2": CreateUserRequestV2,
     "CurrencyValue": CurrencyValue,
     "CustomField": CustomField,
     "CustomFieldMetaData": CustomFieldMetaData,

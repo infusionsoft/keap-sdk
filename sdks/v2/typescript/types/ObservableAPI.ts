@@ -109,7 +109,6 @@ import { CreateUpdateLeadSourceCategoryRequest } from '../models/CreateUpdateLea
 import { CreateUpdateTagCategoryRequest } from '../models/CreateUpdateTagCategoryRequest';
 import { CreateUpdateTagRequest } from '../models/CreateUpdateTagRequest';
 import { CreateUpdateTaskRequest } from '../models/CreateUpdateTaskRequest';
-import { CreateUserRequestV2 } from '../models/CreateUserRequestV2';
 import { CurrencyValue } from '../models/CurrencyValue';
 import { CustomField } from '../models/CustomField';
 import { CustomFieldMetaData } from '../models/CustomFieldMetaData';

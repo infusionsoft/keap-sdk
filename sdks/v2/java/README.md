@@ -2,7 +2,7 @@
 
 Keap REST API
 
-- API version: 2.70.0.844359
+- API version: 2.70.0.848026-hf-202508251610
 
 - Generator version: 7.13.0
 
@@ -43,7 +43,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.keap.core</groupId>
   <artifactId>core-service-v2-java-sdk</artifactId>
-  <version>1.0.26</version>
+  <version>1.0.27</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.keap.core:core-service-v2-java-sdk:1.0.26"
+compile "com.keap.core:core-service-v2-java-sdk:1.0.27"
 ```
 
 ### Others
@@ -66,7 +66,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/core-service-v2-java-sdk-1.0.26.jar`
+- `target/core-service-v2-java-sdk-1.0.27.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -650,7 +650,6 @@ Class | Method | HTTP request | Description
  - [CreateUpdateTagCategoryRequest](docs/CreateUpdateTagCategoryRequest.md)
  - [CreateUpdateTagRequest](docs/CreateUpdateTagRequest.md)
  - [CreateUpdateTaskRequest](docs/CreateUpdateTaskRequest.md)
- - [CreateUserRequestV2](docs/CreateUserRequestV2.md)
  - [CurrencyValue](docs/CurrencyValue.md)
  - [CustomField](docs/CustomField.md)
  - [CustomFieldMetaData](docs/CustomFieldMetaData.md)

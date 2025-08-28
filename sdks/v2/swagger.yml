@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   description: Keap REST Core Service
-  version: 2.70.0.844359
+  version: 2.70.0.848026-hf-202508251610
   title: Keap REST API
   termsOfService: https://keap.com/legal
   contact:
@@ -14398,21 +14398,6 @@ components:
         type:
           type: string
       title: CreateUpdateTaskRequest
-    CreateUserRequestV2:
-      type: object
-      required:
-      - email_address
-      - given_name
-      properties:
-        admin:
-          type: boolean
-        email_address:
-          $ref: '#/components/schemas/EmailAddressRequest'
-        given_name:
-          type: string
-        partner:
-          type: boolean
-      title: CreateUserRequestV2
     CurrencyValue:
       type: object
       properties:
