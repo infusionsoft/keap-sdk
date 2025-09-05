@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   description: Keap REST Core Service
-  version: 2.70.0.848026-hf-202508251610
+  version: 2.70.0.849961
   title: Keap REST API
   termsOfService: https://keap.com/legal
   contact:
@@ -3596,6 +3596,187 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
       deprecated: false
+  /v2/contacts/{contact_id}/paymentMethods:
+    get:
+      tags:
+      - Payment Methods
+      summary: List of Payment Methods
+      description: Retrieves a list of Payment Methods
+      operationId: listPaymentMethods
+      parameters:
+      - name: contact_id
+        in: path
+        description: ID of the contact to which the payment method belongs.
+        required: true
+        schema:
+          type: string
+      - name: filter
+        in: query
+        description: |
+          Filter to apply, allowed fields are:
+          - (String) `merchant_account_id`
+
+          You will need to apply the `==` operator to check the equality of one of the filters with your searched
+          word, in the encoded form `%3D%3D`.
+          - `filter=merchant_account_id%3D%3D123`
+
+          You can filter across all contacts by using the `-` for the `contact_id` field.
+        required: false
+        schema:
+          type: string
+      - name: order_by
+        in: query
+        description: |-
+          Attribute and direction to order items.
+          One of the following fields:
+          - `date_created`
+
+          One of the following directions:
+          - `desc`
+          - `asc`
+        required: false
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: Total number of items to return per page
+        required: false
+        example: 0
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 1000
+          exclusiveMinimum: false
+          exclusiveMaximum: false
+      - name: page_token
+        in: query
+        description: Page token
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListPaymentMethodsResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/contacts/{contact_id}/paymentMethods/{payment_method_id}:
+    delete:
+      tags:
+      - Payment Methods
+      summary: Delete a Payment Method
+      description: Deletes the specified payment method
+      operationId: deletePaymentMethod
+      parameters:
+      - name: contact_id
+        in: path
+        description: ID of the contact to which the payment method belongs.
+        required: true
+        schema:
+          type: string
+      - name: payment_method_id
+        in: path
+        description: ID of the payment method to be deleted.
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/contacts/{contact_id}/paymentMethods/{payment_method_id}:deactivate:
+    post:
+      tags:
+      - Payment Methods
+      summary: Deactivate a Payment Method
+      description: Deactivate the specified payment method
+      operationId: deactivatePaymentMethod
+      parameters:
+      - name: contact_id
+        in: path
+        description: ID of the contact to which the payment method belongs.
+        required: true
+        schema:
+          type: string
+      - name: payment_method_id
+        in: path
+        description: ID of the payment method to be deactivated.
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
   /v2/contacts:link:
     post:
       tags:
@@ -5098,7 +5279,204 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
       deprecated: false
+  /v2/emailAddresses/{email}/status:
+    get:
+      tags:
+      - Email Address
+      summary: Retrieve an Email Address status
+      description: Retrieves the opt-in status for a given Email Address
+      operationId: getEmailAddressStatus
+      parameters:
+      - name: email
+        in: path
+        description: email
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailAddressStatus'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    patch:
+      tags:
+      - Email Address
+      summary: Update an Email Address opt-in status
+      description: |-
+        Updates an Email Address opt-in status
+
+        You may opt-in or mark an email address as _Marketable_ by including the following field in the request JSON
+        with an opt-in reason. (This field is also shown in the complete request body sample.)
+        The reason you provide here will help with compliance.
+        Example reasons: "Customer opted-in through webform", "Company gave explicit permission."
+
+        ```json
+        "opt_in_reason": "your reason for opt-in"
+        ```
+        Note that the email address status will only be updated to `Unconfirmed` (marketable) for email addresses
+        that are currently in the following states:
+        - `Unengaged Marketable`
+        - `Unengaged Non-Marketable`
+        - `Non-Marketable`
+        - `Opt-Out: Manual`
+
+        All other existing statuses e.g. `List Unsubscribe`, `Opt-Out`, `System` etc will remain non-marketable and in their existing state.
+      operationId: updateEmailAddressOptStatus
+      parameters:
+      - name: email
+        in: path
+        description: email
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateEmailAddress'
+        description: updateEmailAddress
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailAddressStatus'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
   /v2/emails:
+    get:
+      tags:
+      - Email
+      summary: List Emails
+      description: Retrieves a list of emails that have been sent
+      operationId: listEmails
+      parameters:
+      - name: filter
+        in: query
+        description: |
+          Filter to apply, allowed fields are:
+          - (String) contact_id
+          - (String) email
+          - (String) start_created_time
+          - (String) end_created_time
+        required: false
+        schema:
+          type: string
+      - name: order_by
+        in: query
+        description: |-
+          Attribute and direction to order items.
+          One of the following fields:
+          - `created_time`
+
+          One of the following directions:
+          - `asc`
+          - `desc`
+        required: false
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: Total number of items to return per page
+        required: false
+        example: 0
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 1000
+          exclusiveMinimum: false
+          exclusiveMaximum: false
+      - name: page_token
+        in: query
+        description: Page token
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListEmailsSentResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
     post:
       tags:
       - Email
@@ -8516,6 +8894,98 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
       deprecated: false
+  /v2/orders/{order_id}:
+    delete:
+      tags:
+      - Orders
+      summary: Delete an Order
+      description: |
+        Deletes an Order<br/>
+        Note: The Order must not have any transactions recorded to be available for deletion.
+      operationId: deleteOrder
+      parameters:
+      - name: order_id
+        in: path
+        description: order_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/orders/{order_id}/items/{order_item_id}:
+    delete:
+      tags:
+      - Orders
+      summary: Delete an Order Item
+      description: Deletes an order item on an existing order
+      operationId: deleteOrderItem
+      parameters:
+      - name: order_id
+        in: path
+        description: order_id
+        required: true
+        schema:
+          type: string
+      - name: order_item_id
+        in: path
+        description: order_item_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
   /v2/paymentMethodConfigs:
     post:
       tags:
@@ -10773,6 +11243,49 @@ paths:
                 $ref: '#/components/schemas/Error'
         '404':
           description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/subscriptions/{subscription_id}:deactivate:
+    post:
+      tags:
+      - Subscriptions
+      summary: Cancel Subscription
+      description: Cancels the specified subscription
+      operationId: cancelSubscription
+      parameters:
+      - name: subscription_id
+        in: path
+        description: subscription_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CancelSubscriptionRequest'
+        description: request
+        required: true
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
           content:
             application/json:
               schema:
@@ -13909,23 +14422,30 @@ components:
       title: CreatePaymentMethodConfigRequest
     CreatePaymentRequest:
       type: object
-      required:
-      - apply_to_commissions
-      - payment_amount
       properties:
         apply_to_commissions:
           type: boolean
+          description: Whether to apply this payment to commissions.
         notes:
           type: string
+          description: The notes for this payment.
         payment_amount:
           type: number
           format: double
+          description: The amount to pay. Must not exceed the current balance of the
+            order. Must be greater than 0 if charging with a payment_method_id
         payment_method_id:
           type: string
+          description: The payment method id to charge immediately against this order.
+            Omit if you want to add a payment record instead.
         payment_method_type:
           type: string
+          description: The manual payment method type for manually recording a payment.
+            Value must match against the list of types defined under your application's
+            Order Settings. Ignored if payment_method_id is provided.
         payment_time:
           type: string
+          description: The date and time of payment. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
       title: CreatePaymentRequest
     CreateProductCategoryRequest:
       type: object

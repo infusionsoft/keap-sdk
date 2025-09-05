@@ -10,6 +10,7 @@ from keap_core_v2_client.api.category_discounts_api import CategoryDiscountsApi
 from keap_core_v2_client.api.company_api import CompanyApi
 from keap_core_v2_client.api.contact_api import ContactApi
 from keap_core_v2_client.api.email_api import EmailApi
+from keap_core_v2_client.api.email_address_api import EmailAddressApi
 from keap_core_v2_client.api.files_api import FilesApi
 from keap_core_v2_client.api.free_trial_discounts_api import FreeTrialDiscountsApi
 from keap_core_v2_client.api.lead_source_categories_api import LeadSourceCategoriesApi
@@ -23,6 +24,7 @@ from keap_core_v2_client.api.opportunity_api import OpportunityApi
 from keap_core_v2_client.api.order_total_discounts_api import OrderTotalDiscountsApi
 from keap_core_v2_client.api.orders_api import OrdersApi
 from keap_core_v2_client.api.payment_method_configs_api import PaymentMethodConfigsApi
+from keap_core_v2_client.api.payment_methods_api import PaymentMethodsApi
 from keap_core_v2_client.api.product_categories_api import ProductCategoriesApi
 from keap_core_v2_client.api.product_discounts_api import ProductDiscountsApi
 from keap_core_v2_client.api.product_interest_bundles_api import ProductInterestBundlesApi

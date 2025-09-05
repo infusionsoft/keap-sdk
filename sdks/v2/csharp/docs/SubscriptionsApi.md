@@ -4,11 +4,104 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
+| [**CancelSubscription**](SubscriptionsApi.md#cancelsubscription) | **POST** /v2/subscriptions/{subscription_id}:deactivate | Cancel Subscription |
 | [**CreateSubscription**](SubscriptionsApi.md#createsubscription) | **POST** /v2/subscriptions | Create Subscription |
 | [**CreateSubscriptionCustomField**](SubscriptionsApi.md#createsubscriptioncustomfield) | **POST** /v2/subscriptions/model/customFields | Create a Subscription Custom Field |
 | [**DeleteSubscriptionCustomField**](SubscriptionsApi.md#deletesubscriptioncustomfield) | **DELETE** /v2/subscriptions/model/customFields/{custom_field_id} | Delete a Subscription Custom Field |
 | [**RetrieveSubscriptionCustomFieldModel**](SubscriptionsApi.md#retrievesubscriptioncustomfieldmodel) | **GET** /v2/subscriptions/model | Retrieve Subscription Custom Field Model |
 | [**UpdateSubscriptionCustomField**](SubscriptionsApi.md#updatesubscriptioncustomfield) | **PATCH** /v2/subscriptions/model/customFields/{custom_field_id} | Update a Subscription Custom Field |
+
+<a id="cancelsubscription"></a>
+# **CancelSubscription**
+> void CancelSubscription (string subscriptionId, CancelSubscriptionRequest cancelSubscriptionRequest)
+
+Cancel Subscription
+
+Cancels the specified subscription
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class CancelSubscriptionExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm/rest";
+            var apiInstance = new SubscriptionsApi(config);
+            var subscriptionId = "subscriptionId_example";  // string | subscription_id
+            var cancelSubscriptionRequest = new CancelSubscriptionRequest(); // CancelSubscriptionRequest | request
+
+            try
+            {
+                // Cancel Subscription
+                apiInstance.CancelSubscription(subscriptionId, cancelSubscriptionRequest);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling SubscriptionsApi.CancelSubscription: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the CancelSubscriptionWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Cancel Subscription
+    apiInstance.CancelSubscriptionWithHttpInfo(subscriptionId, cancelSubscriptionRequest);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling SubscriptionsApi.CancelSubscriptionWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **subscriptionId** | **string** | subscription_id |  |
+| **cancelSubscriptionRequest** | [**CancelSubscriptionRequest**](CancelSubscriptionRequest.md) | request |  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="createsubscription"></a>
 # **CreateSubscription**

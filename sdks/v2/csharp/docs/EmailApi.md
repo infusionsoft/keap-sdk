@@ -10,6 +10,7 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 | [**DeleteEmails**](EmailApi.md#deleteemails) | **POST** /v2/emails:batchRemove | Remove a set of Email Records |
 | [**GetEmail**](EmailApi.md#getemail) | **GET** /v2/emails/{id} | Retrieve an Email |
 | [**GetEmailTemplate**](EmailApi.md#getemailtemplate) | **GET** /v2/emails/templates/{email_template_id} | Retrieve an email template |
+| [**ListEmails**](EmailApi.md#listemails) | **GET** /v2/emails | List Emails |
 | [**SendEmail**](EmailApi.md#sendemail) | **POST** /v2/emails:send | Send an Email |
 | [**SendEmailTemplate**](EmailApi.md#sendemailtemplate) | **POST** /v2/emails/templates:send | Send an email based on a template |
 
@@ -554,6 +555,107 @@ catch (ApiException e)
 ### Return type
 
 [**EmailTemplate**](EmailTemplate.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="listemails"></a>
+# **ListEmails**
+> ListEmailsSentResponse ListEmails (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
+
+List Emails
+
+Retrieves a list of emails that have been sent
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class ListEmailsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm/rest";
+            var apiInstance = new EmailApi(config);
+            var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (String) contact_id - (String) email - (String) start_created_time - (String) end_created_time  (optional) 
+            var orderBy = "orderBy_example";  // string? | Attribute and direction to order items. One of the following fields: - `created_time`  One of the following directions: - `asc` - `desc` (optional) 
+            var pageSize = 0;  // int? | Total number of items to return per page (optional) 
+            var pageToken = "pageToken_example";  // string? | Page token (optional) 
+
+            try
+            {
+                // List Emails
+                ListEmailsSentResponse result = apiInstance.ListEmails(filter, orderBy, pageSize, pageToken);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling EmailApi.ListEmails: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the ListEmailsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // List Emails
+    ApiResponse<ListEmailsSentResponse> response = apiInstance.ListEmailsWithHttpInfo(filter, orderBy, pageSize, pageToken);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling EmailApi.ListEmailsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **filter** | **string?** | Filter to apply, allowed fields are: - (String) contact_id - (String) email - (String) start_created_time - (String) end_created_time  | [optional]  |
+| **orderBy** | **string?** | Attribute and direction to order items. One of the following fields: - &#x60;created_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional]  |
+| **pageSize** | **int?** | Total number of items to return per page | [optional]  |
+| **pageToken** | **string?** | Page token | [optional]  |
+
+### Return type
+
+[**ListEmailsSentResponse**](ListEmailsSentResponse.md)
 
 ### Authorization
 

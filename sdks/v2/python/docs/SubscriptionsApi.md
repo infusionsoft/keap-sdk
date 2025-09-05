@@ -4,12 +4,82 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**cancel_subscription**](SubscriptionsApi.md#cancel_subscription) | **POST** /v2/subscriptions/{subscription_id}:deactivate | Cancel Subscription
 [**create_subscription**](SubscriptionsApi.md#create_subscription) | **POST** /v2/subscriptions | Create Subscription
 [**create_subscription_custom_field**](SubscriptionsApi.md#create_subscription_custom_field) | **POST** /v2/subscriptions/model/customFields | Create a Subscription Custom Field
 [**delete_subscription_custom_field**](SubscriptionsApi.md#delete_subscription_custom_field) | **DELETE** /v2/subscriptions/model/customFields/{custom_field_id} | Delete a Subscription Custom Field
 [**retrieve_subscription_custom_field_model**](SubscriptionsApi.md#retrieve_subscription_custom_field_model) | **GET** /v2/subscriptions/model | Retrieve Subscription Custom Field Model
 [**update_subscription_custom_field**](SubscriptionsApi.md#update_subscription_custom_field) | **PATCH** /v2/subscriptions/model/customFields/{custom_field_id} | Update a Subscription Custom Field
 
+
+# **cancel_subscription**
+> cancel_subscription(subscription_id, cancel_subscription_request)
+
+Cancel Subscription
+
+Cancels the specified subscription
+
+### Example
+
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.cancel_subscription_request import CancelSubscriptionRequest
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm/rest"
+)
+
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.SubscriptionsApi(api_client)
+    subscription_id = 'subscription_id_example' # str | subscription_id
+    cancel_subscription_request = keap_core_v2_client.CancelSubscriptionRequest() # CancelSubscriptionRequest | request
+
+    try:
+        # Cancel Subscription
+        api_instance.cancel_subscription(subscription_id, cancel_subscription_request)
+    except Exception as e:
+        print("Exception when calling SubscriptionsApi->cancel_subscription: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **subscription_id** | **str**| subscription_id | 
+ **cancel_subscription_request** | [**CancelSubscriptionRequest**](CancelSubscriptionRequest.md)| request | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_subscription**
 > Subscription create_subscription(create_subscription_request)

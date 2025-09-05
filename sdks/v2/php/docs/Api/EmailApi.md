@@ -10,6 +10,7 @@ All URIs are relative to https://api.keap.com/crm/rest, except if the operation 
 | [**deleteEmails()**](EmailApi.md#deleteEmails) | **POST** /v2/emails:batchRemove | Remove a set of Email Records |
 | [**getEmail()**](EmailApi.md#getEmail) | **GET** /v2/emails/{id} | Retrieve an Email |
 | [**getEmailTemplate()**](EmailApi.md#getEmailTemplate) | **GET** /v2/emails/templates/{email_template_id} | Retrieve an email template |
+| [**listEmails()**](EmailApi.md#listEmails) | **GET** /v2/emails | List Emails |
 | [**sendEmail()**](EmailApi.md#sendEmail) | **POST** /v2/emails:send | Send an Email |
 | [**sendEmailTemplate()**](EmailApi.md#sendEmailTemplate) | **POST** /v2/emails/templates:send | Send an email based on a template |
 
@@ -329,6 +330,67 @@ try {
 ### Return type
 
 [**\Keap\Core\V2\Model\EmailTemplate**](../Model/EmailTemplate.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listEmails()`
+
+```php
+listEmails($filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListEmailsSentResponse
+```
+
+List Emails
+
+Retrieves a list of emails that have been sent
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+$apiInstance = new Keap\Core\V2\Api\EmailApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$filter = 'filter_example'; // string | Filter to apply, allowed fields are: - (String) contact_id - (String) email - (String) start_created_time - (String) end_created_time
+$order_by = 'order_by_example'; // string | Attribute and direction to order items. One of the following fields: - `created_time`  One of the following directions: - `asc` - `desc`
+$page_size = 0; // int | Total number of items to return per page
+$page_token = 'page_token_example'; // string | Page token
+
+try {
+    $result = $apiInstance->listEmails($filter, $order_by, $page_size, $page_token);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EmailApi->listEmails: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **filter** | **string**| Filter to apply, allowed fields are: - (String) contact_id - (String) email - (String) start_created_time - (String) end_created_time | [optional] |
+| **order_by** | **string**| Attribute and direction to order items. One of the following fields: - &#x60;created_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
+| **page_size** | **int**| Total number of items to return per page | [optional] |
+| **page_token** | **string**| Page token | [optional] |
+
+### Return type
+
+[**\Keap\Core\V2\Model\ListEmailsSentResponse**](../Model/ListEmailsSentResponse.md)
 
 ### Authorization
 

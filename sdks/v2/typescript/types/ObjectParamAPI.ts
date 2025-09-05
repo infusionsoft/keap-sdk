@@ -2741,6 +2741,39 @@ export interface EmailApiGetEmailTemplateRequest {
     emailTemplateId: string
 }
 
+export interface EmailApiListEmailsRequest {
+    /**
+     * Filter to apply, allowed fields are: - (String) contact_id - (String) email - (String) start_created_time - (String) end_created_time 
+     * Defaults to: undefined
+     * @type string
+     * @memberof EmailApilistEmails
+     */
+    filter?: string
+    /**
+     * Attribute and direction to order items. One of the following fields: - &#x60;created_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * Defaults to: undefined
+     * @type string
+     * @memberof EmailApilistEmails
+     */
+    orderBy?: string
+    /**
+     * Total number of items to return per page
+     * Minimum: 1
+     * Maximum: 1000
+     * Defaults to: undefined
+     * @type number
+     * @memberof EmailApilistEmails
+     */
+    pageSize?: number
+    /**
+     * Page token
+     * Defaults to: undefined
+     * @type string
+     * @memberof EmailApilistEmails
+     */
+    pageToken?: string
+}
+
 export interface EmailApiSendEmailRequest {
     /**
      * emailSendRequest
@@ -2875,6 +2908,24 @@ export class ObjectEmailApi {
     }
 
     /**
+     * Retrieves a list of emails that have been sent
+     * List Emails
+     * @param param the request object
+     */
+    public listEmailsWithHttpInfo(param: EmailApiListEmailsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListEmailsSentResponse>> {
+        return this.api.listEmailsWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of emails that have been sent
+     * List Emails
+     * @param param the request object
+     */
+    public listEmails(param: EmailApiListEmailsRequest = {}, options?: ConfigurationOptions): Promise<ListEmailsSentResponse> {
+        return this.api.listEmails(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    }
+
+    /**
      * Sends an Email to a list of Contacts
      * Send an Email
      * @param param the request object
@@ -2908,6 +2959,80 @@ export class ObjectEmailApi {
      */
     public sendEmailTemplate(param: EmailApiSendEmailTemplateRequest = {}, options?: ConfigurationOptions): Promise<void> {
         return this.api.sendEmailTemplate(param.emailSendTemplateRequest,  options).toPromise();
+    }
+
+}
+
+import { ObservableEmailAddressApi } from "./ObservableAPI";
+import { EmailAddressApiRequestFactory, EmailAddressApiResponseProcessor} from "../apis/EmailAddressApi";
+
+export interface EmailAddressApiGetEmailAddressStatusRequest {
+    /**
+     * email
+     * Defaults to: undefined
+     * @type string
+     * @memberof EmailAddressApigetEmailAddressStatus
+     */
+    email: string
+}
+
+export interface EmailAddressApiUpdateEmailAddressOptStatusRequest {
+    /**
+     * email
+     * Defaults to: undefined
+     * @type string
+     * @memberof EmailAddressApiupdateEmailAddressOptStatus
+     */
+    email: string
+    /**
+     * updateEmailAddress
+     * @type UpdateEmailAddress
+     * @memberof EmailAddressApiupdateEmailAddressOptStatus
+     */
+    updateEmailAddress: UpdateEmailAddress
+}
+
+export class ObjectEmailAddressApi {
+    private api: ObservableEmailAddressApi
+
+    public constructor(configuration: Configuration, requestFactory?: EmailAddressApiRequestFactory, responseProcessor?: EmailAddressApiResponseProcessor) {
+        this.api = new ObservableEmailAddressApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Retrieves the opt-in status for a given Email Address
+     * Retrieve an Email Address status
+     * @param param the request object
+     */
+    public getEmailAddressStatusWithHttpInfo(param: EmailAddressApiGetEmailAddressStatusRequest, options?: ConfigurationOptions): Promise<HttpInfo<EmailAddressStatus>> {
+        return this.api.getEmailAddressStatusWithHttpInfo(param.email,  options).toPromise();
+    }
+
+    /**
+     * Retrieves the opt-in status for a given Email Address
+     * Retrieve an Email Address status
+     * @param param the request object
+     */
+    public getEmailAddressStatus(param: EmailAddressApiGetEmailAddressStatusRequest, options?: ConfigurationOptions): Promise<EmailAddressStatus> {
+        return this.api.getEmailAddressStatus(param.email,  options).toPromise();
+    }
+
+    /**
+     * Updates an Email Address opt-in status  You may opt-in or mark an email address as _Marketable_ by including the following field in the request JSON with an opt-in reason. (This field is also shown in the complete request body sample.) The reason you provide here will help with compliance. Example reasons: \"Customer opted-in through webform\", \"Company gave explicit permission.\"  ```json \"opt_in_reason\": \"your reason for opt-in\" ``` Note that the email address status will only be updated to `Unconfirmed` (marketable) for email addresses that are currently in the following states: - `Unengaged Marketable` - `Unengaged Non-Marketable` - `Non-Marketable` - `Opt-Out: Manual`  All other existing statuses e.g. `List Unsubscribe`, `Opt-Out`, `System` etc will remain non-marketable and in their existing state.
+     * Update an Email Address opt-in status
+     * @param param the request object
+     */
+    public updateEmailAddressOptStatusWithHttpInfo(param: EmailAddressApiUpdateEmailAddressOptStatusRequest, options?: ConfigurationOptions): Promise<HttpInfo<EmailAddressStatus>> {
+        return this.api.updateEmailAddressOptStatusWithHttpInfo(param.email, param.updateEmailAddress,  options).toPromise();
+    }
+
+    /**
+     * Updates an Email Address opt-in status  You may opt-in or mark an email address as _Marketable_ by including the following field in the request JSON with an opt-in reason. (This field is also shown in the complete request body sample.) The reason you provide here will help with compliance. Example reasons: \"Customer opted-in through webform\", \"Company gave explicit permission.\"  ```json \"opt_in_reason\": \"your reason for opt-in\" ``` Note that the email address status will only be updated to `Unconfirmed` (marketable) for email addresses that are currently in the following states: - `Unengaged Marketable` - `Unengaged Non-Marketable` - `Non-Marketable` - `Opt-Out: Manual`  All other existing statuses e.g. `List Unsubscribe`, `Opt-Out`, `System` etc will remain non-marketable and in their existing state.
+     * Update an Email Address opt-in status
+     * @param param the request object
+     */
+    public updateEmailAddressOptStatus(param: EmailAddressApiUpdateEmailAddressOptStatusRequest, options?: ConfigurationOptions): Promise<EmailAddressStatus> {
+        return this.api.updateEmailAddressOptStatus(param.email, param.updateEmailAddress,  options).toPromise();
     }
 
 }
@@ -5426,6 +5551,16 @@ export interface OrdersApiCreateOrderCustomFieldRequest {
     createCustomFieldRequest: CreateCustomFieldRequest
 }
 
+export interface OrdersApiDeleteOrderRequest {
+    /**
+     * order_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof OrdersApideleteOrder
+     */
+    orderId: string
+}
+
 export interface OrdersApiDeleteOrderCustomFieldRequest {
     /**
      * custom_field_id
@@ -5434,6 +5569,23 @@ export interface OrdersApiDeleteOrderCustomFieldRequest {
      * @memberof OrdersApideleteOrderCustomField
      */
     customFieldId: string
+}
+
+export interface OrdersApiDeleteOrderItemRequest {
+    /**
+     * order_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof OrdersApideleteOrderItem
+     */
+    orderId: string
+    /**
+     * order_item_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof OrdersApideleteOrderItem
+     */
+    orderItemId: string
 }
 
 export interface OrdersApiRetrieveOrderCustomFieldModelRequest {
@@ -5488,6 +5640,24 @@ export class ObjectOrdersApi {
     }
 
     /**
+     * Deletes an Order<br/> Note: The Order must not have any transactions recorded to be available for deletion. 
+     * Delete an Order
+     * @param param the request object
+     */
+    public deleteOrderWithHttpInfo(param: OrdersApiDeleteOrderRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteOrderWithHttpInfo(param.orderId,  options).toPromise();
+    }
+
+    /**
+     * Deletes an Order<br/> Note: The Order must not have any transactions recorded to be available for deletion. 
+     * Delete an Order
+     * @param param the request object
+     */
+    public deleteOrder(param: OrdersApiDeleteOrderRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteOrder(param.orderId,  options).toPromise();
+    }
+
+    /**
      * Deletes a Custom Field from the Order object
      * Delete an Order Custom Field
      * @param param the request object
@@ -5503,6 +5673,24 @@ export class ObjectOrdersApi {
      */
     public deleteOrderCustomField(param: OrdersApiDeleteOrderCustomFieldRequest, options?: ConfigurationOptions): Promise<void> {
         return this.api.deleteOrderCustomField(param.customFieldId,  options).toPromise();
+    }
+
+    /**
+     * Deletes an order item on an existing order
+     * Delete an Order Item
+     * @param param the request object
+     */
+    public deleteOrderItemWithHttpInfo(param: OrdersApiDeleteOrderItemRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteOrderItemWithHttpInfo(param.orderId, param.orderItemId,  options).toPromise();
+    }
+
+    /**
+     * Deletes an order item on an existing order
+     * Delete an Order Item
+     * @param param the request object
+     */
+    public deleteOrderItem(param: OrdersApiDeleteOrderItemRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteOrderItem(param.orderId, param.orderItemId,  options).toPromise();
     }
 
     /**
@@ -5578,6 +5766,146 @@ export class ObjectPaymentMethodConfigsApi {
      */
     public createPaymentMethodConfig(param: PaymentMethodConfigsApiCreatePaymentMethodConfigRequest, options?: ConfigurationOptions): Promise<PaymentMethodConfig> {
         return this.api.createPaymentMethodConfig(param.createPaymentMethodConfigRequest,  options).toPromise();
+    }
+
+}
+
+import { ObservablePaymentMethodsApi } from "./ObservableAPI";
+import { PaymentMethodsApiRequestFactory, PaymentMethodsApiResponseProcessor} from "../apis/PaymentMethodsApi";
+
+export interface PaymentMethodsApiDeactivatePaymentMethodRequest {
+    /**
+     * ID of the contact to which the payment method belongs.
+     * Defaults to: undefined
+     * @type string
+     * @memberof PaymentMethodsApideactivatePaymentMethod
+     */
+    contactId: string
+    /**
+     * ID of the payment method to be deactivated.
+     * Defaults to: undefined
+     * @type string
+     * @memberof PaymentMethodsApideactivatePaymentMethod
+     */
+    paymentMethodId: string
+}
+
+export interface PaymentMethodsApiDeletePaymentMethodRequest {
+    /**
+     * ID of the contact to which the payment method belongs.
+     * Defaults to: undefined
+     * @type string
+     * @memberof PaymentMethodsApideletePaymentMethod
+     */
+    contactId: string
+    /**
+     * ID of the payment method to be deleted.
+     * Defaults to: undefined
+     * @type string
+     * @memberof PaymentMethodsApideletePaymentMethod
+     */
+    paymentMethodId: string
+}
+
+export interface PaymentMethodsApiListPaymentMethodsRequest {
+    /**
+     * ID of the contact to which the payment method belongs.
+     * Defaults to: undefined
+     * @type string
+     * @memberof PaymentMethodsApilistPaymentMethods
+     */
+    contactId: string
+    /**
+     * Filter to apply, allowed fields are: - (String) &#x60;merchant_account_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;merchant_account_id%3D%3D123&#x60;  You can filter across all contacts by using the &#x60;-&#x60; for the &#x60;contact_id&#x60; field. 
+     * Defaults to: undefined
+     * @type string
+     * @memberof PaymentMethodsApilistPaymentMethods
+     */
+    filter?: string
+    /**
+     * Attribute and direction to order items. One of the following fields: - &#x60;date_created&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60;
+     * Defaults to: undefined
+     * @type string
+     * @memberof PaymentMethodsApilistPaymentMethods
+     */
+    orderBy?: string
+    /**
+     * Total number of items to return per page
+     * Minimum: 1
+     * Maximum: 1000
+     * Defaults to: undefined
+     * @type number
+     * @memberof PaymentMethodsApilistPaymentMethods
+     */
+    pageSize?: number
+    /**
+     * Page token
+     * Defaults to: undefined
+     * @type string
+     * @memberof PaymentMethodsApilistPaymentMethods
+     */
+    pageToken?: string
+}
+
+export class ObjectPaymentMethodsApi {
+    private api: ObservablePaymentMethodsApi
+
+    public constructor(configuration: Configuration, requestFactory?: PaymentMethodsApiRequestFactory, responseProcessor?: PaymentMethodsApiResponseProcessor) {
+        this.api = new ObservablePaymentMethodsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Deactivate the specified payment method
+     * Deactivate a Payment Method
+     * @param param the request object
+     */
+    public deactivatePaymentMethodWithHttpInfo(param: PaymentMethodsApiDeactivatePaymentMethodRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deactivatePaymentMethodWithHttpInfo(param.contactId, param.paymentMethodId,  options).toPromise();
+    }
+
+    /**
+     * Deactivate the specified payment method
+     * Deactivate a Payment Method
+     * @param param the request object
+     */
+    public deactivatePaymentMethod(param: PaymentMethodsApiDeactivatePaymentMethodRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deactivatePaymentMethod(param.contactId, param.paymentMethodId,  options).toPromise();
+    }
+
+    /**
+     * Deletes the specified payment method
+     * Delete a Payment Method
+     * @param param the request object
+     */
+    public deletePaymentMethodWithHttpInfo(param: PaymentMethodsApiDeletePaymentMethodRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deletePaymentMethodWithHttpInfo(param.contactId, param.paymentMethodId,  options).toPromise();
+    }
+
+    /**
+     * Deletes the specified payment method
+     * Delete a Payment Method
+     * @param param the request object
+     */
+    public deletePaymentMethod(param: PaymentMethodsApiDeletePaymentMethodRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deletePaymentMethod(param.contactId, param.paymentMethodId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of Payment Methods
+     * List of Payment Methods
+     * @param param the request object
+     */
+    public listPaymentMethodsWithHttpInfo(param: PaymentMethodsApiListPaymentMethodsRequest, options?: ConfigurationOptions): Promise<HttpInfo<ListPaymentMethodsResponse>> {
+        return this.api.listPaymentMethodsWithHttpInfo(param.contactId, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of Payment Methods
+     * List of Payment Methods
+     * @param param the request object
+     */
+    public listPaymentMethods(param: PaymentMethodsApiListPaymentMethodsRequest, options?: ConfigurationOptions): Promise<ListPaymentMethodsResponse> {
+        return this.api.listPaymentMethods(param.contactId, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
 }
@@ -7357,6 +7685,22 @@ export class ObjectSubscriptionPlansApi {
 import { ObservableSubscriptionsApi } from "./ObservableAPI";
 import { SubscriptionsApiRequestFactory, SubscriptionsApiResponseProcessor} from "../apis/SubscriptionsApi";
 
+export interface SubscriptionsApiCancelSubscriptionRequest {
+    /**
+     * subscription_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof SubscriptionsApicancelSubscription
+     */
+    subscriptionId: string
+    /**
+     * request
+     * @type CancelSubscriptionRequest
+     * @memberof SubscriptionsApicancelSubscription
+     */
+    cancelSubscriptionRequest: CancelSubscriptionRequest
+}
+
 export interface SubscriptionsApiCreateSubscriptionRequest {
     /**
      * request
@@ -7416,6 +7760,24 @@ export class ObjectSubscriptionsApi {
 
     public constructor(configuration: Configuration, requestFactory?: SubscriptionsApiRequestFactory, responseProcessor?: SubscriptionsApiResponseProcessor) {
         this.api = new ObservableSubscriptionsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Cancels the specified subscription
+     * Cancel Subscription
+     * @param param the request object
+     */
+    public cancelSubscriptionWithHttpInfo(param: SubscriptionsApiCancelSubscriptionRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.cancelSubscriptionWithHttpInfo(param.subscriptionId, param.cancelSubscriptionRequest,  options).toPromise();
+    }
+
+    /**
+     * Cancels the specified subscription
+     * Cancel Subscription
+     * @param param the request object
+     */
+    public cancelSubscription(param: SubscriptionsApiCancelSubscriptionRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.cancelSubscription(param.subscriptionId, param.cancelSubscriptionRequest,  options).toPromise();
     }
 
     /**

@@ -2164,6 +2164,34 @@ export class PromiseEmailApi {
     }
 
     /**
+     * Retrieves a list of emails that have been sent
+     * List Emails
+     * @param [filter] Filter to apply, allowed fields are: - (String) contact_id - (String) email - (String) start_created_time - (String) end_created_time 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;created_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listEmailsWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListEmailsSentResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listEmailsWithHttpInfo(filter, orderBy, pageSize, pageToken, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of emails that have been sent
+     * List Emails
+     * @param [filter] Filter to apply, allowed fields are: - (String) contact_id - (String) email - (String) start_created_time - (String) end_created_time 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;created_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listEmails(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<ListEmailsSentResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listEmails(filter, orderBy, pageSize, pageToken, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Sends an Email to a list of Contacts
      * Send an Email
      * @param [emailSendRequest] emailSendRequest
@@ -2204,6 +2232,71 @@ export class PromiseEmailApi {
     public sendEmailTemplate(emailSendTemplateRequest?: EmailSendTemplateRequest, _options?: PromiseConfigurationOptions): Promise<void> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.sendEmailTemplate(emailSendTemplateRequest, observableOptions);
+        return result.toPromise();
+    }
+
+
+}
+
+
+
+import { ObservableEmailAddressApi } from './ObservableAPI';
+
+import { EmailAddressApiRequestFactory, EmailAddressApiResponseProcessor} from "../apis/EmailAddressApi";
+export class PromiseEmailAddressApi {
+    private api: ObservableEmailAddressApi
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: EmailAddressApiRequestFactory,
+        responseProcessor?: EmailAddressApiResponseProcessor
+    ) {
+        this.api = new ObservableEmailAddressApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Retrieves the opt-in status for a given Email Address
+     * Retrieve an Email Address status
+     * @param email email
+     */
+    public getEmailAddressStatusWithHttpInfo(email: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<EmailAddressStatus>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getEmailAddressStatusWithHttpInfo(email, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves the opt-in status for a given Email Address
+     * Retrieve an Email Address status
+     * @param email email
+     */
+    public getEmailAddressStatus(email: string, _options?: PromiseConfigurationOptions): Promise<EmailAddressStatus> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getEmailAddressStatus(email, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates an Email Address opt-in status  You may opt-in or mark an email address as _Marketable_ by including the following field in the request JSON with an opt-in reason. (This field is also shown in the complete request body sample.) The reason you provide here will help with compliance. Example reasons: \"Customer opted-in through webform\", \"Company gave explicit permission.\"  ```json \"opt_in_reason\": \"your reason for opt-in\" ``` Note that the email address status will only be updated to `Unconfirmed` (marketable) for email addresses that are currently in the following states: - `Unengaged Marketable` - `Unengaged Non-Marketable` - `Non-Marketable` - `Opt-Out: Manual`  All other existing statuses e.g. `List Unsubscribe`, `Opt-Out`, `System` etc will remain non-marketable and in their existing state.
+     * Update an Email Address opt-in status
+     * @param email email
+     * @param updateEmailAddress updateEmailAddress
+     */
+    public updateEmailAddressOptStatusWithHttpInfo(email: string, updateEmailAddress: UpdateEmailAddress, _options?: PromiseConfigurationOptions): Promise<HttpInfo<EmailAddressStatus>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateEmailAddressOptStatusWithHttpInfo(email, updateEmailAddress, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates an Email Address opt-in status  You may opt-in or mark an email address as _Marketable_ by including the following field in the request JSON with an opt-in reason. (This field is also shown in the complete request body sample.) The reason you provide here will help with compliance. Example reasons: \"Customer opted-in through webform\", \"Company gave explicit permission.\"  ```json \"opt_in_reason\": \"your reason for opt-in\" ``` Note that the email address status will only be updated to `Unconfirmed` (marketable) for email addresses that are currently in the following states: - `Unengaged Marketable` - `Unengaged Non-Marketable` - `Non-Marketable` - `Opt-Out: Manual`  All other existing statuses e.g. `List Unsubscribe`, `Opt-Out`, `System` etc will remain non-marketable and in their existing state.
+     * Update an Email Address opt-in status
+     * @param email email
+     * @param updateEmailAddress updateEmailAddress
+     */
+    public updateEmailAddressOptStatus(email: string, updateEmailAddress: UpdateEmailAddress, _options?: PromiseConfigurationOptions): Promise<EmailAddressStatus> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateEmailAddressOptStatus(email, updateEmailAddress, observableOptions);
         return result.toPromise();
     }
 
@@ -4016,6 +4109,28 @@ export class PromiseOrdersApi {
     }
 
     /**
+     * Deletes an Order<br/> Note: The Order must not have any transactions recorded to be available for deletion. 
+     * Delete an Order
+     * @param orderId order_id
+     */
+    public deleteOrderWithHttpInfo(orderId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteOrderWithHttpInfo(orderId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes an Order<br/> Note: The Order must not have any transactions recorded to be available for deletion. 
+     * Delete an Order
+     * @param orderId order_id
+     */
+    public deleteOrder(orderId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteOrder(orderId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Deletes a Custom Field from the Order object
      * Delete an Order Custom Field
      * @param customFieldId custom_field_id
@@ -4034,6 +4149,30 @@ export class PromiseOrdersApi {
     public deleteOrderCustomField(customFieldId: string, _options?: PromiseConfigurationOptions): Promise<void> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.deleteOrderCustomField(customFieldId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes an order item on an existing order
+     * Delete an Order Item
+     * @param orderId order_id
+     * @param orderItemId order_item_id
+     */
+    public deleteOrderItemWithHttpInfo(orderId: string, orderItemId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteOrderItemWithHttpInfo(orderId, orderItemId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes an order item on an existing order
+     * Delete an Order Item
+     * @param orderId order_id
+     * @param orderItemId order_item_id
+     */
+    public deleteOrderItem(orderId: string, orderItemId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteOrderItem(orderId, orderItemId, observableOptions);
         return result.toPromise();
     }
 
@@ -4121,6 +4260,103 @@ export class PromisePaymentMethodConfigsApi {
     public createPaymentMethodConfig(createPaymentMethodConfigRequest: CreatePaymentMethodConfigRequest, _options?: PromiseConfigurationOptions): Promise<PaymentMethodConfig> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.createPaymentMethodConfig(createPaymentMethodConfigRequest, observableOptions);
+        return result.toPromise();
+    }
+
+
+}
+
+
+
+import { ObservablePaymentMethodsApi } from './ObservableAPI';
+
+import { PaymentMethodsApiRequestFactory, PaymentMethodsApiResponseProcessor} from "../apis/PaymentMethodsApi";
+export class PromisePaymentMethodsApi {
+    private api: ObservablePaymentMethodsApi
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: PaymentMethodsApiRequestFactory,
+        responseProcessor?: PaymentMethodsApiResponseProcessor
+    ) {
+        this.api = new ObservablePaymentMethodsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Deactivate the specified payment method
+     * Deactivate a Payment Method
+     * @param contactId ID of the contact to which the payment method belongs.
+     * @param paymentMethodId ID of the payment method to be deactivated.
+     */
+    public deactivatePaymentMethodWithHttpInfo(contactId: string, paymentMethodId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deactivatePaymentMethodWithHttpInfo(contactId, paymentMethodId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deactivate the specified payment method
+     * Deactivate a Payment Method
+     * @param contactId ID of the contact to which the payment method belongs.
+     * @param paymentMethodId ID of the payment method to be deactivated.
+     */
+    public deactivatePaymentMethod(contactId: string, paymentMethodId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deactivatePaymentMethod(contactId, paymentMethodId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes the specified payment method
+     * Delete a Payment Method
+     * @param contactId ID of the contact to which the payment method belongs.
+     * @param paymentMethodId ID of the payment method to be deleted.
+     */
+    public deletePaymentMethodWithHttpInfo(contactId: string, paymentMethodId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deletePaymentMethodWithHttpInfo(contactId, paymentMethodId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes the specified payment method
+     * Delete a Payment Method
+     * @param contactId ID of the contact to which the payment method belongs.
+     * @param paymentMethodId ID of the payment method to be deleted.
+     */
+    public deletePaymentMethod(contactId: string, paymentMethodId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deletePaymentMethod(contactId, paymentMethodId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of Payment Methods
+     * List of Payment Methods
+     * @param contactId ID of the contact to which the payment method belongs.
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;merchant_account_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;merchant_account_id%3D%3D123&#x60;  You can filter across all contacts by using the &#x60;-&#x60; for the &#x60;contact_id&#x60; field. 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;date_created&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listPaymentMethodsWithHttpInfo(contactId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListPaymentMethodsResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listPaymentMethodsWithHttpInfo(contactId, filter, orderBy, pageSize, pageToken, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of Payment Methods
+     * List of Payment Methods
+     * @param contactId ID of the contact to which the payment method belongs.
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;merchant_account_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;merchant_account_id%3D%3D123&#x60;  You can filter across all contacts by using the &#x60;-&#x60; for the &#x60;contact_id&#x60; field. 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;date_created&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listPaymentMethods(contactId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<ListPaymentMethodsResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listPaymentMethods(contactId, filter, orderBy, pageSize, pageToken, observableOptions);
         return result.toPromise();
     }
 
@@ -5461,6 +5697,30 @@ export class PromiseSubscriptionsApi {
         responseProcessor?: SubscriptionsApiResponseProcessor
     ) {
         this.api = new ObservableSubscriptionsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Cancels the specified subscription
+     * Cancel Subscription
+     * @param subscriptionId subscription_id
+     * @param cancelSubscriptionRequest request
+     */
+    public cancelSubscriptionWithHttpInfo(subscriptionId: string, cancelSubscriptionRequest: CancelSubscriptionRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.cancelSubscriptionWithHttpInfo(subscriptionId, cancelSubscriptionRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Cancels the specified subscription
+     * Cancel Subscription
+     * @param subscriptionId subscription_id
+     * @param cancelSubscriptionRequest request
+     */
+    public cancelSubscription(subscriptionId: string, cancelSubscriptionRequest: CancelSubscriptionRequest, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.cancelSubscription(subscriptionId, cancelSubscriptionRequest, observableOptions);
+        return result.toPromise();
     }
 
     /**

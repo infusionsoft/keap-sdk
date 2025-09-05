@@ -3000,6 +3000,46 @@ export class ObservableEmailApi {
     }
 
     /**
+     * Retrieves a list of emails that have been sent
+     * List Emails
+     * @param [filter] Filter to apply, allowed fields are: - (String) contact_id - (String) email - (String) start_created_time - (String) end_created_time 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;created_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listEmailsWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListEmailsSentResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.listEmails(filter, orderBy, pageSize, pageToken, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listEmailsWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a list of emails that have been sent
+     * List Emails
+     * @param [filter] Filter to apply, allowed fields are: - (String) contact_id - (String) email - (String) start_created_time - (String) end_created_time 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;created_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listEmails(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListEmailsSentResponse> {
+        return this.listEmailsWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListEmailsSentResponse>) => apiResponse.data));
+    }
+
+    /**
      * Sends an Email to a list of Contacts
      * Send an Email
      * @param [emailSendRequest] emailSendRequest
@@ -3065,6 +3105,94 @@ export class ObservableEmailApi {
      */
     public sendEmailTemplate(emailSendTemplateRequest?: EmailSendTemplateRequest, _options?: ConfigurationOptions): Observable<void> {
         return this.sendEmailTemplateWithHttpInfo(emailSendTemplateRequest, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+}
+
+import { EmailAddressApiRequestFactory, EmailAddressApiResponseProcessor} from "../apis/EmailAddressApi";
+export class ObservableEmailAddressApi {
+    private requestFactory: EmailAddressApiRequestFactory;
+    private responseProcessor: EmailAddressApiResponseProcessor;
+    private configuration: Configuration;
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: EmailAddressApiRequestFactory,
+        responseProcessor?: EmailAddressApiResponseProcessor
+    ) {
+        this.configuration = configuration;
+        this.requestFactory = requestFactory || new EmailAddressApiRequestFactory(configuration);
+        this.responseProcessor = responseProcessor || new EmailAddressApiResponseProcessor();
+    }
+
+    /**
+     * Retrieves the opt-in status for a given Email Address
+     * Retrieve an Email Address status
+     * @param email email
+     */
+    public getEmailAddressStatusWithHttpInfo(email: string, _options?: ConfigurationOptions): Observable<HttpInfo<EmailAddressStatus>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getEmailAddressStatus(email, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getEmailAddressStatusWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves the opt-in status for a given Email Address
+     * Retrieve an Email Address status
+     * @param email email
+     */
+    public getEmailAddressStatus(email: string, _options?: ConfigurationOptions): Observable<EmailAddressStatus> {
+        return this.getEmailAddressStatusWithHttpInfo(email, _options).pipe(map((apiResponse: HttpInfo<EmailAddressStatus>) => apiResponse.data));
+    }
+
+    /**
+     * Updates an Email Address opt-in status  You may opt-in or mark an email address as _Marketable_ by including the following field in the request JSON with an opt-in reason. (This field is also shown in the complete request body sample.) The reason you provide here will help with compliance. Example reasons: \"Customer opted-in through webform\", \"Company gave explicit permission.\"  ```json \"opt_in_reason\": \"your reason for opt-in\" ``` Note that the email address status will only be updated to `Unconfirmed` (marketable) for email addresses that are currently in the following states: - `Unengaged Marketable` - `Unengaged Non-Marketable` - `Non-Marketable` - `Opt-Out: Manual`  All other existing statuses e.g. `List Unsubscribe`, `Opt-Out`, `System` etc will remain non-marketable and in their existing state.
+     * Update an Email Address opt-in status
+     * @param email email
+     * @param updateEmailAddress updateEmailAddress
+     */
+    public updateEmailAddressOptStatusWithHttpInfo(email: string, updateEmailAddress: UpdateEmailAddress, _options?: ConfigurationOptions): Observable<HttpInfo<EmailAddressStatus>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.updateEmailAddressOptStatus(email, updateEmailAddress, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateEmailAddressOptStatusWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Updates an Email Address opt-in status  You may opt-in or mark an email address as _Marketable_ by including the following field in the request JSON with an opt-in reason. (This field is also shown in the complete request body sample.) The reason you provide here will help with compliance. Example reasons: \"Customer opted-in through webform\", \"Company gave explicit permission.\"  ```json \"opt_in_reason\": \"your reason for opt-in\" ``` Note that the email address status will only be updated to `Unconfirmed` (marketable) for email addresses that are currently in the following states: - `Unengaged Marketable` - `Unengaged Non-Marketable` - `Non-Marketable` - `Opt-Out: Manual`  All other existing statuses e.g. `List Unsubscribe`, `Opt-Out`, `System` etc will remain non-marketable and in their existing state.
+     * Update an Email Address opt-in status
+     * @param email email
+     * @param updateEmailAddress updateEmailAddress
+     */
+    public updateEmailAddressOptStatus(email: string, updateEmailAddress: UpdateEmailAddress, _options?: ConfigurationOptions): Observable<EmailAddressStatus> {
+        return this.updateEmailAddressOptStatusWithHttpInfo(email, updateEmailAddress, _options).pipe(map((apiResponse: HttpInfo<EmailAddressStatus>) => apiResponse.data));
     }
 
 }
@@ -5632,6 +5760,40 @@ export class ObservableOrdersApi {
     }
 
     /**
+     * Deletes an Order<br/> Note: The Order must not have any transactions recorded to be available for deletion. 
+     * Delete an Order
+     * @param orderId order_id
+     */
+    public deleteOrderWithHttpInfo(orderId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.deleteOrder(orderId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteOrderWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Deletes an Order<br/> Note: The Order must not have any transactions recorded to be available for deletion. 
+     * Delete an Order
+     * @param orderId order_id
+     */
+    public deleteOrder(orderId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteOrderWithHttpInfo(orderId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+    /**
      * Deletes a Custom Field from the Order object
      * Delete an Order Custom Field
      * @param customFieldId custom_field_id
@@ -5663,6 +5825,42 @@ export class ObservableOrdersApi {
      */
     public deleteOrderCustomField(customFieldId: string, _options?: ConfigurationOptions): Observable<void> {
         return this.deleteOrderCustomFieldWithHttpInfo(customFieldId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+    /**
+     * Deletes an order item on an existing order
+     * Delete an Order Item
+     * @param orderId order_id
+     * @param orderItemId order_item_id
+     */
+    public deleteOrderItemWithHttpInfo(orderId: string, orderItemId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.deleteOrderItem(orderId, orderItemId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteOrderItemWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Deletes an order item on an existing order
+     * Delete an Order Item
+     * @param orderId order_id
+     * @param orderItemId order_item_id
+     */
+    public deleteOrderItem(orderId: string, orderItemId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deleteOrderItemWithHttpInfo(orderId, orderItemId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
@@ -5785,6 +5983,138 @@ export class ObservablePaymentMethodConfigsApi {
      */
     public createPaymentMethodConfig(createPaymentMethodConfigRequest: CreatePaymentMethodConfigRequest, _options?: ConfigurationOptions): Observable<PaymentMethodConfig> {
         return this.createPaymentMethodConfigWithHttpInfo(createPaymentMethodConfigRequest, _options).pipe(map((apiResponse: HttpInfo<PaymentMethodConfig>) => apiResponse.data));
+    }
+
+}
+
+import { PaymentMethodsApiRequestFactory, PaymentMethodsApiResponseProcessor} from "../apis/PaymentMethodsApi";
+export class ObservablePaymentMethodsApi {
+    private requestFactory: PaymentMethodsApiRequestFactory;
+    private responseProcessor: PaymentMethodsApiResponseProcessor;
+    private configuration: Configuration;
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: PaymentMethodsApiRequestFactory,
+        responseProcessor?: PaymentMethodsApiResponseProcessor
+    ) {
+        this.configuration = configuration;
+        this.requestFactory = requestFactory || new PaymentMethodsApiRequestFactory(configuration);
+        this.responseProcessor = responseProcessor || new PaymentMethodsApiResponseProcessor();
+    }
+
+    /**
+     * Deactivate the specified payment method
+     * Deactivate a Payment Method
+     * @param contactId ID of the contact to which the payment method belongs.
+     * @param paymentMethodId ID of the payment method to be deactivated.
+     */
+    public deactivatePaymentMethodWithHttpInfo(contactId: string, paymentMethodId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.deactivatePaymentMethod(contactId, paymentMethodId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deactivatePaymentMethodWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Deactivate the specified payment method
+     * Deactivate a Payment Method
+     * @param contactId ID of the contact to which the payment method belongs.
+     * @param paymentMethodId ID of the payment method to be deactivated.
+     */
+    public deactivatePaymentMethod(contactId: string, paymentMethodId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deactivatePaymentMethodWithHttpInfo(contactId, paymentMethodId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+    /**
+     * Deletes the specified payment method
+     * Delete a Payment Method
+     * @param contactId ID of the contact to which the payment method belongs.
+     * @param paymentMethodId ID of the payment method to be deleted.
+     */
+    public deletePaymentMethodWithHttpInfo(contactId: string, paymentMethodId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.deletePaymentMethod(contactId, paymentMethodId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deletePaymentMethodWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Deletes the specified payment method
+     * Delete a Payment Method
+     * @param contactId ID of the contact to which the payment method belongs.
+     * @param paymentMethodId ID of the payment method to be deleted.
+     */
+    public deletePaymentMethod(contactId: string, paymentMethodId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.deletePaymentMethodWithHttpInfo(contactId, paymentMethodId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves a list of Payment Methods
+     * List of Payment Methods
+     * @param contactId ID of the contact to which the payment method belongs.
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;merchant_account_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;merchant_account_id%3D%3D123&#x60;  You can filter across all contacts by using the &#x60;-&#x60; for the &#x60;contact_id&#x60; field. 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;date_created&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listPaymentMethodsWithHttpInfo(contactId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListPaymentMethodsResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.listPaymentMethods(contactId, filter, orderBy, pageSize, pageToken, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listPaymentMethodsWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a list of Payment Methods
+     * List of Payment Methods
+     * @param contactId ID of the contact to which the payment method belongs.
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;merchant_account_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;merchant_account_id%3D%3D123&#x60;  You can filter across all contacts by using the &#x60;-&#x60; for the &#x60;contact_id&#x60; field. 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;date_created&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listPaymentMethods(contactId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListPaymentMethodsResponse> {
+        return this.listPaymentMethodsWithHttpInfo(contactId, filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListPaymentMethodsResponse>) => apiResponse.data));
     }
 
 }
@@ -7677,6 +8007,42 @@ export class ObservableSubscriptionsApi {
         this.configuration = configuration;
         this.requestFactory = requestFactory || new SubscriptionsApiRequestFactory(configuration);
         this.responseProcessor = responseProcessor || new SubscriptionsApiResponseProcessor();
+    }
+
+    /**
+     * Cancels the specified subscription
+     * Cancel Subscription
+     * @param subscriptionId subscription_id
+     * @param cancelSubscriptionRequest request
+     */
+    public cancelSubscriptionWithHttpInfo(subscriptionId: string, cancelSubscriptionRequest: CancelSubscriptionRequest, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.cancelSubscription(subscriptionId, cancelSubscriptionRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.cancelSubscriptionWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Cancels the specified subscription
+     * Cancel Subscription
+     * @param subscriptionId subscription_id
+     * @param cancelSubscriptionRequest request
+     */
+    public cancelSubscription(subscriptionId: string, cancelSubscriptionRequest: CancelSubscriptionRequest, _options?: ConfigurationOptions): Observable<void> {
+        return this.cancelSubscriptionWithHttpInfo(subscriptionId, cancelSubscriptionRequest, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**

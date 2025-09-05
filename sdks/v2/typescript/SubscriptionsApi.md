@@ -4,12 +4,74 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**cancelSubscription**](SubscriptionsApi.md#cancelSubscription) | **POST** /v2/subscriptions/{subscription_id}:deactivate | Cancel Subscription
 [**createSubscription**](SubscriptionsApi.md#createSubscription) | **POST** /v2/subscriptions | Create Subscription
 [**createSubscriptionCustomField**](SubscriptionsApi.md#createSubscriptionCustomField) | **POST** /v2/subscriptions/model/customFields | Create a Subscription Custom Field
 [**deleteSubscriptionCustomField**](SubscriptionsApi.md#deleteSubscriptionCustomField) | **DELETE** /v2/subscriptions/model/customFields/{custom_field_id} | Delete a Subscription Custom Field
 [**retrieveSubscriptionCustomFieldModel**](SubscriptionsApi.md#retrieveSubscriptionCustomFieldModel) | **GET** /v2/subscriptions/model | Retrieve Subscription Custom Field Model
 [**updateSubscriptionCustomField**](SubscriptionsApi.md#updateSubscriptionCustomField) | **PATCH** /v2/subscriptions/model/customFields/{custom_field_id} | Update a Subscription Custom Field
 
+
+# **cancelSubscription**
+> void cancelSubscription(cancelSubscriptionRequest)
+
+Cancels the specified subscription
+
+### Example
+
+
+```typescript
+import { createConfiguration, SubscriptionsApi } from '';
+import type { SubscriptionsApiCancelSubscriptionRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new SubscriptionsApi(configuration);
+
+const request: SubscriptionsApiCancelSubscriptionRequest = {
+    // subscription_id
+  subscriptionId: "subscription_id_example",
+    // request
+  cancelSubscriptionRequest: {
+    reason: "reason_example",
+  },
+};
+
+const data = await apiInstance.cancelSubscription(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cancelSubscriptionRequest** | **CancelSubscriptionRequest**| request |
+ **subscriptionId** | [**string**] | subscription_id | defaults to undefined
+
+
+### Return type
+
+**void**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **createSubscription**
 > Subscription createSubscription(createSubscriptionRequest)

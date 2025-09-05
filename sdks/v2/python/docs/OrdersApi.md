@@ -5,7 +5,9 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_order_custom_field**](OrdersApi.md#create_order_custom_field) | **POST** /v2/orders/model/customFields | Create an Order Custom Field
+[**delete_order**](OrdersApi.md#delete_order) | **DELETE** /v2/orders/{order_id} | Delete an Order
 [**delete_order_custom_field**](OrdersApi.md#delete_order_custom_field) | **DELETE** /v2/orders/model/customFields/{custom_field_id} | Delete an Order Custom Field
+[**delete_order_item**](OrdersApi.md#delete_order_item) | **DELETE** /v2/orders/{order_id}/items/{order_item_id} | Delete an Order Item
 [**retrieve_order_custom_field_model**](OrdersApi.md#retrieve_order_custom_field_model) | **GET** /v2/orders/model | Retrieve Order Custom Field Model
 [**update_order_custom_field**](OrdersApi.md#update_order_custom_field) | **PATCH** /v2/orders/model/customFields/{custom_field_id} | Update an Order Custom Field
 
@@ -80,6 +82,75 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **delete_order**
+> delete_order(order_id)
+
+Delete an Order
+
+Deletes an Order<br/>
+Note: The Order must not have any transactions recorded to be available for deletion.
+
+
+### Example
+
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm/rest"
+)
+
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.OrdersApi(api_client)
+    order_id = 'order_id_example' # str | order_id
+
+    try:
+        # Delete an Order
+        api_instance.delete_order(order_id)
+    except Exception as e:
+        print("Exception when calling OrdersApi->delete_order: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **order_id** | **str**| order_id | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **delete_order_custom_field**
 > delete_order_custom_field(custom_field_id)
 
@@ -121,6 +192,75 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **custom_field_id** | **str**| custom_field_id | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_order_item**
+> delete_order_item(order_id, order_item_id)
+
+Delete an Order Item
+
+Deletes an order item on an existing order
+
+### Example
+
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm/rest"
+)
+
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.OrdersApi(api_client)
+    order_id = 'order_id_example' # str | order_id
+    order_item_id = 'order_item_id_example' # str | order_item_id
+
+    try:
+        # Delete an Order Item
+        api_instance.delete_order_item(order_id, order_item_id)
+    except Exception as e:
+        print("Exception when calling OrdersApi->delete_order_item: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **order_id** | **str**| order_id | 
+ **order_item_id** | **str**| order_item_id | 
 
 ### Return type
 

@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**deleteEmails**](EmailApi.md#deleteEmails) | **POST** /v2/emails:batchRemove | Remove a set of Email Records
 [**getEmail**](EmailApi.md#getEmail) | **GET** /v2/emails/{id} | Retrieve an Email
 [**getEmailTemplate**](EmailApi.md#getEmailTemplate) | **GET** /v2/emails/templates/{email_template_id} | Retrieve an email template
+[**listEmails**](EmailApi.md#listEmails) | **GET** /v2/emails | List Emails
 [**sendEmail**](EmailApi.md#sendEmail) | **POST** /v2/emails:send | Send an Email
 [**sendEmailTemplate**](EmailApi.md#sendEmailTemplate) | **POST** /v2/emails/templates:send | Send an email based on a template
 
@@ -383,6 +384,72 @@ Name | Type | Description  | Notes
 ### Return type
 
 **EmailTemplate**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **listEmails**
+> ListEmailsSentResponse listEmails()
+
+Retrieves a list of emails that have been sent
+
+### Example
+
+
+```typescript
+import { createConfiguration, EmailApi } from '';
+import type { EmailApiListEmailsRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new EmailApi(configuration);
+
+const request: EmailApiListEmailsRequest = {
+    // Filter to apply, allowed fields are: - (String) contact_id - (String) email - (String) start_created_time - (String) end_created_time  (optional)
+  filter: "filter_example",
+    // Attribute and direction to order items. One of the following fields: - `created_time`  One of the following directions: - `asc` - `desc` (optional)
+  orderBy: "order_by_example",
+    // Total number of items to return per page (optional)
+  pageSize: 0,
+    // Page token (optional)
+  pageToken: "page_token_example",
+};
+
+const data = await apiInstance.listEmails(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **filter** | [**string**] | Filter to apply, allowed fields are: - (String) contact_id - (String) email - (String) start_created_time - (String) end_created_time  | (optional) defaults to undefined
+ **orderBy** | [**string**] | Attribute and direction to order items. One of the following fields: - &#x60;created_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | (optional) defaults to undefined
+ **pageSize** | [**number**] | Total number of items to return per page | (optional) defaults to undefined
+ **pageToken** | [**string**] | Page token | (optional) defaults to undefined
+
+
+### Return type
+
+**ListEmailsSentResponse**
 
 ### Authorization
 

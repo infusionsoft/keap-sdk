@@ -5,7 +5,9 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createOrderCustomField**](OrdersApi.md#createOrderCustomField) | **POST** /v2/orders/model/customFields | Create an Order Custom Field
+[**deleteOrder**](OrdersApi.md#deleteOrder) | **DELETE** /v2/orders/{order_id} | Delete an Order
 [**deleteOrderCustomField**](OrdersApi.md#deleteOrderCustomField) | **DELETE** /v2/orders/model/customFields/{custom_field_id} | Delete an Order Custom Field
+[**deleteOrderItem**](OrdersApi.md#deleteOrderItem) | **DELETE** /v2/orders/{order_id}/items/{order_item_id} | Delete an Order Item
 [**retrieveOrderCustomFieldModel**](OrdersApi.md#retrieveOrderCustomFieldModel) | **GET** /v2/orders/model | Retrieve Order Custom Field Model
 [**updateOrderCustomField**](OrdersApi.md#updateOrderCustomField) | **PATCH** /v2/orders/model/customFields/{custom_field_id} | Update an Order Custom Field
 
@@ -55,6 +57,50 @@ No authorization required
 - **Accept**: application/json
 
 
+## deleteOrder
+
+> deleteOrder(orderId)
+
+Delete an Order
+
+Deletes an Order&lt;br/&gt; Note: The Order must not have any transactions recorded to be available for deletion. 
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+
+let apiInstance = new KeapCoreServiceV2Sdk.OrdersApi();
+let orderId = "orderId_example"; // String | order_id
+apiInstance.deleteOrder(orderId).then(() => {
+  console.log('API called successfully.');
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **orderId** | **String**| order_id | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## deleteOrderCustomField
 
 > deleteOrderCustomField(customFieldId)
@@ -84,6 +130,52 @@ apiInstance.deleteOrderCustomField(customFieldId).then(() => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **customFieldId** | **String**| custom_field_id | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## deleteOrderItem
+
+> deleteOrderItem(orderId, orderItemId)
+
+Delete an Order Item
+
+Deletes an order item on an existing order
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+
+let apiInstance = new KeapCoreServiceV2Sdk.OrdersApi();
+let orderId = "orderId_example"; // String | order_id
+let orderItemId = "orderItemId_example"; // String | order_item_id
+apiInstance.deleteOrderItem(orderId, orderItemId).then(() => {
+  console.log('API called successfully.');
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **orderId** | **String**| order_id | 
+ **orderItemId** | **String**| order_item_id | 
 
 ### Return type
 

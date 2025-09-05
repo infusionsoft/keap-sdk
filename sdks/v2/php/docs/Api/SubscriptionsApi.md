@@ -4,12 +4,69 @@ All URIs are relative to https://api.keap.com/crm/rest, except if the operation 
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
+| [**cancelSubscription()**](SubscriptionsApi.md#cancelSubscription) | **POST** /v2/subscriptions/{subscription_id}:deactivate | Cancel Subscription |
 | [**createSubscription()**](SubscriptionsApi.md#createSubscription) | **POST** /v2/subscriptions | Create Subscription |
 | [**createSubscriptionCustomField()**](SubscriptionsApi.md#createSubscriptionCustomField) | **POST** /v2/subscriptions/model/customFields | Create a Subscription Custom Field |
 | [**deleteSubscriptionCustomField()**](SubscriptionsApi.md#deleteSubscriptionCustomField) | **DELETE** /v2/subscriptions/model/customFields/{custom_field_id} | Delete a Subscription Custom Field |
 | [**retrieveSubscriptionCustomFieldModel()**](SubscriptionsApi.md#retrieveSubscriptionCustomFieldModel) | **GET** /v2/subscriptions/model | Retrieve Subscription Custom Field Model |
 | [**updateSubscriptionCustomField()**](SubscriptionsApi.md#updateSubscriptionCustomField) | **PATCH** /v2/subscriptions/model/customFields/{custom_field_id} | Update a Subscription Custom Field |
 
+
+## `cancelSubscription()`
+
+```php
+cancelSubscription($subscription_id, $cancel_subscription_request)
+```
+
+Cancel Subscription
+
+Cancels the specified subscription
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+$apiInstance = new Keap\Core\V2\Api\SubscriptionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$subscription_id = 'subscription_id_example'; // string | subscription_id
+$cancel_subscription_request = new \Keap\Core\V2\Model\CancelSubscriptionRequest(); // \Keap\Core\V2\Model\CancelSubscriptionRequest | request
+
+try {
+    $apiInstance->cancelSubscription($subscription_id, $cancel_subscription_request);
+} catch (Exception $e) {
+    echo 'Exception when calling SubscriptionsApi->cancelSubscription: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **subscription_id** | **string**| subscription_id | |
+| **cancel_subscription_request** | [**\Keap\Core\V2\Model\CancelSubscriptionRequest**](../Model/CancelSubscriptionRequest.md)| request | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `createSubscription()`
 

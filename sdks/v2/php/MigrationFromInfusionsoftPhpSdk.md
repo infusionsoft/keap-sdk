@@ -102,7 +102,7 @@ $headerSelector = new class extends HeaderSelector {
 $client = new Client();
 $contactApi = new ContactApi($client, $config, $headerSelector);
 
-$response = $contactApi->listContactsUsingGET1(
+$response = $contactApi->listContacts(
     filter: 'email==john@doe.com',
     page_size: 1                    // if you only want the first match
 );
@@ -136,7 +136,7 @@ $request->setFamilyName('UpdatedLastName');
 $updateMask = ['given_name', 'family_name'];
 
 // Step 3: Call the updateContactUsingPATCH method
-$updatedContact = $contactApi->updateContactUsingPATCH(
+$updatedContact = $contactApi->updateContact(
     contact_id: $contact->getId(),
     update_mask: $updateMask,
     create_update_contact_request: $request

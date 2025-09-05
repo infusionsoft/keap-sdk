@@ -2,7 +2,7 @@
 
 Keap REST API
 
-- API version: 2.70.0.848026-hf-202508251610
+- API version: 2.70.0.849961
 
 - Generator version: 7.13.0
 
@@ -43,7 +43,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.keap.core</groupId>
   <artifactId>core-service-v2-java-sdk</artifactId>
-  <version>1.0.27</version>
+  <version>1.0.28</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.keap.core:core-service-v2-java-sdk:1.0.27"
+compile "com.keap.core:core-service-v2-java-sdk:1.0.28"
 ```
 
 ### Others
@@ -66,7 +66,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/core-service-v2-java-sdk-1.0.27.jar`
+- `target/core-service-v2-java-sdk-1.0.28.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -248,10 +248,16 @@ Class | Method | HTTP request | Description
 *EmailApi* | [**getEmailWithHttpInfo**](docs/EmailApi.md#getEmailWithHttpInfo) | **GET** /v2/emails/{id} | Retrieve an Email
 *EmailApi* | [**getEmailTemplate**](docs/EmailApi.md#getEmailTemplate) | **GET** /v2/emails/templates/{email_template_id} | Retrieve an email template
 *EmailApi* | [**getEmailTemplateWithHttpInfo**](docs/EmailApi.md#getEmailTemplateWithHttpInfo) | **GET** /v2/emails/templates/{email_template_id} | Retrieve an email template
+*EmailApi* | [**listEmails**](docs/EmailApi.md#listEmails) | **GET** /v2/emails | List Emails
+*EmailApi* | [**listEmailsWithHttpInfo**](docs/EmailApi.md#listEmailsWithHttpInfo) | **GET** /v2/emails | List Emails
 *EmailApi* | [**sendEmail**](docs/EmailApi.md#sendEmail) | **POST** /v2/emails:send | Send an Email
 *EmailApi* | [**sendEmailWithHttpInfo**](docs/EmailApi.md#sendEmailWithHttpInfo) | **POST** /v2/emails:send | Send an Email
 *EmailApi* | [**sendEmailTemplate**](docs/EmailApi.md#sendEmailTemplate) | **POST** /v2/emails/templates:send | Send an email based on a template
 *EmailApi* | [**sendEmailTemplateWithHttpInfo**](docs/EmailApi.md#sendEmailTemplateWithHttpInfo) | **POST** /v2/emails/templates:send | Send an email based on a template
+*EmailAddressApi* | [**getEmailAddressStatus**](docs/EmailAddressApi.md#getEmailAddressStatus) | **GET** /v2/emailAddresses/{email}/status | Retrieve an Email Address status
+*EmailAddressApi* | [**getEmailAddressStatusWithHttpInfo**](docs/EmailAddressApi.md#getEmailAddressStatusWithHttpInfo) | **GET** /v2/emailAddresses/{email}/status | Retrieve an Email Address status
+*EmailAddressApi* | [**updateEmailAddressOptStatus**](docs/EmailAddressApi.md#updateEmailAddressOptStatus) | **PATCH** /v2/emailAddresses/{email}/status | Update an Email Address opt-in status
+*EmailAddressApi* | [**updateEmailAddressOptStatusWithHttpInfo**](docs/EmailAddressApi.md#updateEmailAddressOptStatusWithHttpInfo) | **PATCH** /v2/emailAddresses/{email}/status | Update an Email Address opt-in status
 *FilesApi* | [**createFile**](docs/FilesApi.md#createFile) | **POST** /v2/files | Create a file
 *FilesApi* | [**createFileWithHttpInfo**](docs/FilesApi.md#createFileWithHttpInfo) | **POST** /v2/files | Create a file
 *FilesApi* | [**deleteFile**](docs/FilesApi.md#deleteFile) | **DELETE** /v2/files/{file_id} | Delete a file
@@ -380,14 +386,24 @@ Class | Method | HTTP request | Description
 *OrderTotalDiscountsApi* | [**updateOrderTotalDiscountWithHttpInfo**](docs/OrderTotalDiscountsApi.md#updateOrderTotalDiscountWithHttpInfo) | **PATCH** /v2/discounts/orderTotals/{discount_id} | Update an Order Total Discount
 *OrdersApi* | [**createOrderCustomField**](docs/OrdersApi.md#createOrderCustomField) | **POST** /v2/orders/model/customFields | Create an Order Custom Field
 *OrdersApi* | [**createOrderCustomFieldWithHttpInfo**](docs/OrdersApi.md#createOrderCustomFieldWithHttpInfo) | **POST** /v2/orders/model/customFields | Create an Order Custom Field
+*OrdersApi* | [**deleteOrder**](docs/OrdersApi.md#deleteOrder) | **DELETE** /v2/orders/{order_id} | Delete an Order
+*OrdersApi* | [**deleteOrderWithHttpInfo**](docs/OrdersApi.md#deleteOrderWithHttpInfo) | **DELETE** /v2/orders/{order_id} | Delete an Order
 *OrdersApi* | [**deleteOrderCustomField**](docs/OrdersApi.md#deleteOrderCustomField) | **DELETE** /v2/orders/model/customFields/{custom_field_id} | Delete an Order Custom Field
 *OrdersApi* | [**deleteOrderCustomFieldWithHttpInfo**](docs/OrdersApi.md#deleteOrderCustomFieldWithHttpInfo) | **DELETE** /v2/orders/model/customFields/{custom_field_id} | Delete an Order Custom Field
+*OrdersApi* | [**deleteOrderItem**](docs/OrdersApi.md#deleteOrderItem) | **DELETE** /v2/orders/{order_id}/items/{order_item_id} | Delete an Order Item
+*OrdersApi* | [**deleteOrderItemWithHttpInfo**](docs/OrdersApi.md#deleteOrderItemWithHttpInfo) | **DELETE** /v2/orders/{order_id}/items/{order_item_id} | Delete an Order Item
 *OrdersApi* | [**retrieveOrderCustomFieldModel**](docs/OrdersApi.md#retrieveOrderCustomFieldModel) | **GET** /v2/orders/model | Retrieve Order Custom Field Model
 *OrdersApi* | [**retrieveOrderCustomFieldModelWithHttpInfo**](docs/OrdersApi.md#retrieveOrderCustomFieldModelWithHttpInfo) | **GET** /v2/orders/model | Retrieve Order Custom Field Model
 *OrdersApi* | [**updateOrderCustomField**](docs/OrdersApi.md#updateOrderCustomField) | **PATCH** /v2/orders/model/customFields/{custom_field_id} | Update an Order Custom Field
 *OrdersApi* | [**updateOrderCustomFieldWithHttpInfo**](docs/OrdersApi.md#updateOrderCustomFieldWithHttpInfo) | **PATCH** /v2/orders/model/customFields/{custom_field_id} | Update an Order Custom Field
 *PaymentMethodConfigsApi* | [**createPaymentMethodConfig**](docs/PaymentMethodConfigsApi.md#createPaymentMethodConfig) | **POST** /v2/paymentMethodConfigs | Create Payment Method Configuration
 *PaymentMethodConfigsApi* | [**createPaymentMethodConfigWithHttpInfo**](docs/PaymentMethodConfigsApi.md#createPaymentMethodConfigWithHttpInfo) | **POST** /v2/paymentMethodConfigs | Create Payment Method Configuration
+*PaymentMethodsApi* | [**deactivatePaymentMethod**](docs/PaymentMethodsApi.md#deactivatePaymentMethod) | **POST** /v2/contacts/{contact_id}/paymentMethods/{payment_method_id}:deactivate | Deactivate a Payment Method
+*PaymentMethodsApi* | [**deactivatePaymentMethodWithHttpInfo**](docs/PaymentMethodsApi.md#deactivatePaymentMethodWithHttpInfo) | **POST** /v2/contacts/{contact_id}/paymentMethods/{payment_method_id}:deactivate | Deactivate a Payment Method
+*PaymentMethodsApi* | [**deletePaymentMethod**](docs/PaymentMethodsApi.md#deletePaymentMethod) | **DELETE** /v2/contacts/{contact_id}/paymentMethods/{payment_method_id} | Delete a Payment Method
+*PaymentMethodsApi* | [**deletePaymentMethodWithHttpInfo**](docs/PaymentMethodsApi.md#deletePaymentMethodWithHttpInfo) | **DELETE** /v2/contacts/{contact_id}/paymentMethods/{payment_method_id} | Delete a Payment Method
+*PaymentMethodsApi* | [**listPaymentMethods**](docs/PaymentMethodsApi.md#listPaymentMethods) | **GET** /v2/contacts/{contact_id}/paymentMethods | List of Payment Methods
+*PaymentMethodsApi* | [**listPaymentMethodsWithHttpInfo**](docs/PaymentMethodsApi.md#listPaymentMethodsWithHttpInfo) | **GET** /v2/contacts/{contact_id}/paymentMethods | List of Payment Methods
 *ProductCategoriesApi* | [**assignProductsToCategory**](docs/ProductCategoriesApi.md#assignProductsToCategory) | **POST** /v2/productCategories/{category_id}:assignProducts | Assign Products to a Product Category
 *ProductCategoriesApi* | [**assignProductsToCategoryWithHttpInfo**](docs/ProductCategoriesApi.md#assignProductsToCategoryWithHttpInfo) | **POST** /v2/productCategories/{category_id}:assignProducts | Assign Products to a Product Category
 *ProductCategoriesApi* | [**createImageFile**](docs/ProductCategoriesApi.md#createImageFile) | **POST** /v2/productCategories/{category_id}/images | Create the product category image file
@@ -482,6 +498,8 @@ Class | Method | HTTP request | Description
 *SubscriptionPlansApi* | [**listSubscriptionPlansWithHttpInfo**](docs/SubscriptionPlansApi.md#listSubscriptionPlansWithHttpInfo) | **GET** /v2/products/{product_id}/subscriptions | List Subscription Plans
 *SubscriptionPlansApi* | [**updateSubscriptionPlan**](docs/SubscriptionPlansApi.md#updateSubscriptionPlan) | **PATCH** /v2/products/{product_id}/subscriptions/{subscription_plan_id} | Update Subscription Plan
 *SubscriptionPlansApi* | [**updateSubscriptionPlanWithHttpInfo**](docs/SubscriptionPlansApi.md#updateSubscriptionPlanWithHttpInfo) | **PATCH** /v2/products/{product_id}/subscriptions/{subscription_plan_id} | Update Subscription Plan
+*SubscriptionsApi* | [**cancelSubscription**](docs/SubscriptionsApi.md#cancelSubscription) | **POST** /v2/subscriptions/{subscription_id}:deactivate | Cancel Subscription
+*SubscriptionsApi* | [**cancelSubscriptionWithHttpInfo**](docs/SubscriptionsApi.md#cancelSubscriptionWithHttpInfo) | **POST** /v2/subscriptions/{subscription_id}:deactivate | Cancel Subscription
 *SubscriptionsApi* | [**createSubscription**](docs/SubscriptionsApi.md#createSubscription) | **POST** /v2/subscriptions | Create Subscription
 *SubscriptionsApi* | [**createSubscriptionWithHttpInfo**](docs/SubscriptionsApi.md#createSubscriptionWithHttpInfo) | **POST** /v2/subscriptions | Create Subscription
 *SubscriptionsApi* | [**createSubscriptionCustomField**](docs/SubscriptionsApi.md#createSubscriptionCustomField) | **POST** /v2/subscriptions/model/customFields | Create a Subscription Custom Field
