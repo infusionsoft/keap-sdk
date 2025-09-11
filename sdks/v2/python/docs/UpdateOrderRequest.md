@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **contact_id** | **str** |  | [optional] 
 **lead_affiliate_id** | **str** |  | [optional] 
 **notes** | **str** |  | [optional] 
-**order_time** | **str** | ISO date-time of the transaction. e.g 2024-04-28 11:25:44 | [optional] 
+**order_time** | **str** | The date and time of the order. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z) | [optional] 
 **order_title** | **str** |  | [optional] 
 **order_type** | **str** |  | [optional] 
 **payment_plan** | [**UpdatedPaymentPlan**](UpdatedPaymentPlan.md) |  | [optional] 

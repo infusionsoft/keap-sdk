@@ -76,23 +76,29 @@ Class | Method | HTTP request | Description
 *AffiliateApi* | [**addCommissionProgram**](docs/Api/AffiliateApi.md#addcommissionprogram) | **POST** /v2/affiliates/commissionPrograms | Create an Affiliate Commission Program
 *AffiliateApi* | [**assignProductCommissionProgram**](docs/Api/AffiliateApi.md#assignproductcommissionprogram) | **POST** /v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Assign a Product Commission Program
 *AffiliateApi* | [**assignSubscriptionCommissionProgram**](docs/Api/AffiliateApi.md#assignsubscriptioncommissionprogram) | **POST** /v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id} | Assign a Subscription Commission Program
+*AffiliateApi* | [**createAffiliateCustomField**](docs/Api/AffiliateApi.md#createaffiliatecustomfield) | **POST** /v2/affiliates/model/customFields | Create an Affiliate Custom Field
 *AffiliateApi* | [**createDefaultCommissionProgram**](docs/Api/AffiliateApi.md#createdefaultcommissionprogram) | **POST** /v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Create a Default Commission Program
 *AffiliateApi* | [**createRedirectLink**](docs/Api/AffiliateApi.md#createredirectlink) | **POST** /v2/affiliates/redirects | Create an Affiliate Link
 *AffiliateApi* | [**deleteAffiliate**](docs/Api/AffiliateApi.md#deleteaffiliate) | **DELETE** /v2/affiliates/{id} | Delete Affiliate
 *AffiliateApi* | [**deleteAffiliateCommissionProgram**](docs/Api/AffiliateApi.md#deleteaffiliatecommissionprogram) | **DELETE** /v2/affiliates/commissionPrograms/{commission_program_id} | Delete a Commission Program
+*AffiliateApi* | [**deleteAffiliateCustomField**](docs/Api/AffiliateApi.md#deleteaffiliatecustomfield) | **DELETE** /v2/affiliates/model/customFields/{custom_field_id} | Delete a Custom Field
 *AffiliateApi* | [**deleteRedirectLink**](docs/Api/AffiliateApi.md#deleteredirectlink) | **DELETE** /v2/affiliates/redirects/{redirect_id} | Delete an Affiliate Link
 *AffiliateApi* | [**getAffiliate**](docs/Api/AffiliateApi.md#getaffiliate) | **GET** /v2/affiliates/{id} | Retrieve an Affiliate
 *AffiliateApi* | [**getAffiliateCommissionTotal**](docs/Api/AffiliateApi.md#getaffiliatecommissiontotal) | **GET** /v2/affiliates/{affiliate_id}/commissionTotal | Retrieve Affiliate Commission Earned and View LedgerURl for portal
 *AffiliateApi* | [**getAffiliateCommissions**](docs/Api/AffiliateApi.md#getaffiliatecommissions) | **GET** /v2/affiliates/{affiliate_id}:commissions | Retrieve Affiliate Commission and Clawbacks
+*AffiliateApi* | [**getAffiliateCustomFields**](docs/Api/AffiliateApi.md#getaffiliatecustomfields) | **GET** /v2/affiliates/model | Retrieve Affiliate Model
 *AffiliateApi* | [**getCommissionProgram**](docs/Api/AffiliateApi.md#getcommissionprogram) | **GET** /v2/affiliates/commissionPrograms/{commission_program_id} | Retrieve a Commission Program
 *AffiliateApi* | [**getRedirectLink**](docs/Api/AffiliateApi.md#getredirectlink) | **GET** /v2/affiliates/redirects/{redirect_id} | Retrieve an Affiliate Link
+*AffiliateApi* | [**listAffiliate**](docs/Api/AffiliateApi.md#listaffiliate) | **GET** /v2/affiliates | List Affiliates
 *AffiliateApi* | [**listAffiliateCommissionPrograms**](docs/Api/AffiliateApi.md#listaffiliatecommissionprograms) | **GET** /v2/affiliates/commissionPrograms | List Affiliate Commission Programs
 *AffiliateApi* | [**listAffiliateLinks**](docs/Api/AffiliateApi.md#listaffiliatelinks) | **GET** /v2/affiliates/redirects | List Affiliate Links
+*AffiliateApi* | [**listAffiliatePayments**](docs/Api/AffiliateApi.md#listaffiliatepayments) | **GET** /v2/affiliates/{affiliate_id}/payments | List Affiliate Payments
 *AffiliateApi* | [**listSummaries**](docs/Api/AffiliateApi.md#listsummaries) | **GET** /v2/affiliates/summaries | List Affiliate Summaries
 *AffiliateApi* | [**removeAffiliateFromProgram**](docs/Api/AffiliateApi.md#removeaffiliatefromprogram) | **POST** /v2/affiliates/{id}:removeFromProgram | Remove an Affiliate from a Commission Program
 *AffiliateApi* | [**removeProductCommissionFromCommissions**](docs/Api/AffiliateApi.md#removeproductcommissionfromcommissions) | **POST** /v2/affiliates/commissionPrograms/{commission_id}:removeProductCommission | Remove a Product from a Commission Program
 *AffiliateApi* | [**removeSubscriptionPlanCommissionFromCommissions**](docs/Api/AffiliateApi.md#removesubscriptionplancommissionfromcommissions) | **POST** /v2/affiliates/commissionPrograms/{commission_id}:removeSubscriptionCommission | Remove a Subscription from a Commission Program
 *AffiliateApi* | [**updateAffiliate**](docs/Api/AffiliateApi.md#updateaffiliate) | **PATCH** /v2/affiliates/{id} | Update an Affiliate
+*AffiliateApi* | [**updateAffiliateCustomField**](docs/Api/AffiliateApi.md#updateaffiliatecustomfield) | **PATCH** /v2/affiliates/model/customFields/{custom_field_id} | Update a Custom Field
 *AffiliateApi* | [**updateCommissionProgram**](docs/Api/AffiliateApi.md#updatecommissionprogram) | **PATCH** /v2/affiliates/commissionPrograms/{commission_program_id} | Update an Affiliate Commission Program
 *AffiliateApi* | [**updateDefaultCommissionProgram**](docs/Api/AffiliateApi.md#updatedefaultcommissionprogram) | **PATCH** /v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Update a Default Commission Program
 *AffiliateApi* | [**updateProductCommissionProgram**](docs/Api/AffiliateApi.md#updateproductcommissionprogram) | **PATCH** /v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Update a Product Commission Program
@@ -453,7 +459,6 @@ Class | Method | HTTP request | Description
 - [InvoiceFile](docs/Model/InvoiceFile.md)
 - [InvoiceOrderPayment](docs/Model/InvoiceOrderPayment.md)
 - [Item](docs/Model/Item.md)
-- [LandingPage](docs/Model/LandingPage.md)
 - [LeadScore](docs/Model/LeadScore.md)
 - [LeadSource](docs/Model/LeadSource.md)
 - [LeadSourceCategory](docs/Model/LeadSourceCategory.md)
@@ -481,7 +486,6 @@ Class | Method | HTTP request | Description
 - [ListEmailsSentResponse](docs/Model/ListEmailsSentResponse.md)
 - [ListFilesResponse](docs/Model/ListFilesResponse.md)
 - [ListFreeTrialDiscountsResponse](docs/Model/ListFreeTrialDiscountsResponse.md)
-- [ListLandingPagesResponse](docs/Model/ListLandingPagesResponse.md)
 - [ListLeadSourceCategoriesResponse](docs/Model/ListLeadSourceCategoriesResponse.md)
 - [ListLeadSourceExpensesResponse](docs/Model/ListLeadSourceExpensesResponse.md)
 - [ListLeadSourceRecurringExpensesResponse](docs/Model/ListLeadSourceRecurringExpensesResponse.md)
@@ -644,7 +648,7 @@ api@keap.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `2.70.0.849961`
-    - Package version: `1.0.28`
+- API version: `2.70.0.852640`
+    - Package version: `1.0.29`
     - Generator version: `7.13.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

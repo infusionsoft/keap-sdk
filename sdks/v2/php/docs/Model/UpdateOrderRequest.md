@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **contact_id** | **string** |  | [optional]
 **lead_affiliate_id** | **string** |  | [optional]
 **notes** | **string** |  | [optional]
-**order_time** | **string** | ISO date-time of the transaction. e.g 2024-04-28 11:25:44 | [optional]
+**order_time** | **string** | The date and time of the order. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z) | [optional]
 **order_title** | **string** |  | [optional]
 **order_type** | **string** |  | [optional]
 **payment_plan** | [**\Keap\Core\V2\Model\UpdatedPaymentPlan**](UpdatedPaymentPlan.md) |  | [optional]

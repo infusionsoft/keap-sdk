@@ -10,7 +10,7 @@
 |**contactId** | **String** |  |  [optional] |
 |**leadAffiliateId** | **String** |  |  [optional] |
 |**notes** | **String** |  |  [optional] |
-|**orderTime** | **String** | ISO date-time of the transaction. e.g 2024-04-28 11:25:44 |  [optional] |
+|**orderTime** | **String** | The date and time of the order. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z) |  [optional] |
 |**orderTitle** | **String** |  |  [optional] |
 |**orderType** | [**OrderTypeEnum**](#OrderTypeEnum) |  |  [optional] |
 |**paymentPlan** | [**UpdatedPaymentPlan**](UpdatedPaymentPlan.md) |  |  [optional] |

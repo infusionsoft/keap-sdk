@@ -11,9 +11,9 @@
 |**leadAffiliateId** | **String** |  |  [optional] |
 |**notes** | **String** |  |  [optional] |
 |**orderItems** | [**List&lt;CreateOrderItemRequest&gt;**](CreateOrderItemRequest.md) |  |  |
-|**orderTime** | **String** |  |  |
+|**orderTime** | **String** | The date and time of the order. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z) |  [optional] |
 |**orderTitle** | **String** |  |  |
-|**orderType** | [**OrderTypeEnum**](#OrderTypeEnum) |  |  |
+|**orderType** | [**OrderTypeEnum**](#OrderTypeEnum) | The order type. Valid values are: ONLINE, OFFLINE. |  [optional] |
 |**promoCodes** | **List&lt;String&gt;** | Uses multiple strings as promo codes. The corresponding discount will be applied to the order. |  [optional] |
 |**salesAffiliateId** | **String** |  |  [optional] |
 |**shippingAddress** | [**AddressInformation**](AddressInformation.md) |  |  [optional] |

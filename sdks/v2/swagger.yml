@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   description: Keap REST Core Service
-  version: 2.70.0.849961
+  version: 2.70.0.852640
   title: Keap REST API
   termsOfService: https://keap.com/legal
   contact:
@@ -38,8 +38,6 @@ tags:
   description: Rest Free Trial Discount Controller
 - name: FunnelIntegration
   description: Rest Funnel Integration Endpoint
-- name: Landing Pages
-  description: Rest Landing Page Controller
 - name: Lead Source Categories
   description: Rest Lead Source Category Controller
 - name: Lead Source Expenses
@@ -98,6 +96,91 @@ tags:
   description: Rest User Controller
 paths:
   /v2/affiliates:
+    get:
+      tags:
+      - Affiliate
+      summary: List Affiliates
+      description: Retrieves a list of Affiliates
+      operationId: listAffiliate
+      parameters:
+      - name: filter
+        in: query
+        description: |
+          Filter to apply, allowed fields are:
+          - (String) `affiliate_name`
+          - (String) `contact_id`
+          - (String) `status`
+          - (String) `code`
+        required: false
+        schema:
+          type: string
+      - name: order_by
+        in: query
+        description: |
+          Attribute and direction to order items.
+          One of the following fields:
+          - `id`
+          - `create_time`
+          - `name`
+          - `status`
+          - `code`
+
+          One of the following directions:
+          - `asc`
+          - `desc`
+        required: false
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: Total number of items to return per page
+        required: false
+        example: 0
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 1000
+          exclusiveMinimum: false
+          exclusiveMaximum: false
+      - name: page_token
+        in: query
+        description: Page token
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListAffiliatesResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
     post:
       tags:
       - Affiliate
@@ -813,6 +896,186 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
       deprecated: false
+  /v2/affiliates/model:
+    get:
+      tags:
+      - Affiliate
+      summary: Retrieve Affiliate Model
+      description: Get the custom fields and optional properties for the Affiliate
+        object
+      operationId: getAffiliateCustomFields
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectModel'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/affiliates/model/customFields:
+    post:
+      tags:
+      - Affiliate
+      summary: Create an Affiliate Custom Field
+      description: Creates a single Affiliate Custom Field
+      operationId: createAffiliateCustomField
+      requestBody:
+        $ref: '#/components/requestBodies/CreateCustomFieldRequest'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldMetaData'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/affiliates/model/customFields/{custom_field_id}:
+    delete:
+      tags:
+      - Affiliate
+      summary: Delete a Custom Field
+      description: Deletes a Custom Field from Affiliate.
+      operationId: deleteAffiliateCustomField
+      parameters:
+      - name: custom_field_id
+        in: path
+        description: custom_field_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    patch:
+      tags:
+      - Affiliate
+      summary: Update a Custom Field
+      description: Updates a custom field of the specified type and options to the
+        Affiliate object.
+      operationId: updateAffiliateCustomField
+      parameters:
+      - name: custom_field_id
+        in: path
+        description: custom_field_id
+        required: true
+        schema:
+          type: string
+      - name: update_mask
+        in: query
+        description: An optional list of properties to be updated. If set, only the
+          provided properties will be updated and others will be skipped.
+        required: false
+        allowEmptyValue: false
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+          enum:
+          - group_id
+          - label
+          - options
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateCustomFieldMetaDataRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldMetaData'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
   /v2/affiliates/redirects:
     get:
       tags:
@@ -1172,6 +1435,98 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AffiliateCommissionEarned'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/affiliates/{affiliate_id}/payments:
+    get:
+      tags:
+      - Affiliate
+      summary: List Affiliate Payments
+      description: Retrieves a list of affiliate payments
+      operationId: listAffiliatePayments
+      parameters:
+      - name: affiliate_id
+        in: path
+        description: affiliate_id
+        required: true
+        schema:
+          type: string
+      - name: filter
+        in: query
+        description: |
+          Filter to apply, allowed fields are:
+          - (String) `since_time`
+          - (String) `until_time`
+          You will need to apply the `==` operator to check the equality of one of the filters with your searched
+          word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:
+          - `filter=since_time%3D%3D2024-09-17T-15:50+00`
+          - `filter=until_time%3D%3D2024-09-17T-15:50+00`
+        required: false
+        schema:
+          type: string
+      - name: order_by
+        in: query
+        description: |
+          Attribute and direction to order items.
+          One of the following fields:
+          - `create_time`
+          - `pay_date`
+          - `pay_amount`
+
+          One of the following directions:
+          - `asc`
+          - `desc`
+        required: false
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: Total number of items to return per page
+        required: false
+        example: 0
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 1000
+          exclusiveMinimum: false
+          exclusiveMaximum: false
+      - name: page_token
+        in: query
+        description: Page token
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListAffiliatePaymentsResponse'
         '401':
           description: Unauthorized
           content:
@@ -16009,6 +16364,7 @@ components:
           - Fax
           - Letter
           - AutomatedSms
+          - UnlayerEmailConfirm
           - Tag
           - Opportunity
           - Note
@@ -16029,20 +16385,6 @@ components:
           - IntegrationAction
           - ActionSet
       title: Item
-    LandingPage:
-      type: object
-      properties:
-        html_preview_url:
-          type: string
-        html_url:
-          type: string
-        id:
-          type: string
-        template_group_status:
-          type: string
-        title:
-          type: string
-      title: LandingPage
     LeadScore:
       type: object
       properties:
@@ -16433,20 +16775,6 @@ components:
         next_page_token:
           type: string
       title: ListFreeTrialDiscountsResponse
-    ListLandingPagesResponse:
-      type: object
-      properties:
-        landingpages:
-          type: array
-          items:
-            $ref: '#/components/schemas/LandingPage'
-        next_page_token:
-          type: string
-        page_size:
-          type: string
-        pages:
-          type: string
-      title: ListLandingPagesResponse
     ListLeadSourceCategoriesResponse:
       type: object
       properties:
@@ -17495,9 +17823,7 @@ components:
       required:
       - contact_id
       - order_items
-      - order_time
       - order_title
-      - order_type
       properties:
         contact_id:
           type: string
@@ -17511,10 +17837,12 @@ components:
             $ref: '#/components/schemas/CreateOrderItemRequest'
         order_time:
           type: string
+          description: The date and time of the order. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
         order_title:
           type: string
         order_type:
           type: string
+          description: 'The order type. Valid values are: ONLINE, OFFLINE.'
           enum:
           - OFFLINE
           - ONLINE
@@ -18800,7 +19128,7 @@ components:
           type: string
         order_time:
           type: string
-          description: ISO date-time of the transaction. e.g 2024-04-28 11:25:44
+          description: The date and time of the order. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
         order_title:
           type: string
         order_type:

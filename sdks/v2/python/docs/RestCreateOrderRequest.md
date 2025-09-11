@@ -9,9 +9,9 @@ Name | Type | Description | Notes
 **lead_affiliate_id** | **str** |  | [optional] 
 **notes** | **str** |  | [optional] 
 **order_items** | [**List[CreateOrderItemRequest]**](CreateOrderItemRequest.md) |  | 
-**order_time** | **str** |  | 
+**order_time** | **str** | The date and time of the order. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z) | [optional] 
 **order_title** | **str** |  | 
-**order_type** | **str** |  | 
+**order_type** | **str** | The order type. Valid values are: ONLINE, OFFLINE. | [optional] 
 **promo_codes** | **List[str]** | Uses multiple strings as promo codes. The corresponding discount will be applied to the order. | [optional] 
 **sales_affiliate_id** | **str** |  | [optional] 
 **shipping_address** | [**AddressInformation**](AddressInformation.md) |  | [optional] 

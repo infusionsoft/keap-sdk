@@ -9,23 +9,29 @@ Method | HTTP request | Description
 [**add_commission_program**](AffiliateApi.md#add_commission_program) | **POST** /v2/affiliates/commissionPrograms | Create an Affiliate Commission Program
 [**assign_product_commission_program**](AffiliateApi.md#assign_product_commission_program) | **POST** /v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Assign a Product Commission Program
 [**assign_subscription_commission_program**](AffiliateApi.md#assign_subscription_commission_program) | **POST** /v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id} | Assign a Subscription Commission Program
+[**create_affiliate_custom_field**](AffiliateApi.md#create_affiliate_custom_field) | **POST** /v2/affiliates/model/customFields | Create an Affiliate Custom Field
 [**create_default_commission_program**](AffiliateApi.md#create_default_commission_program) | **POST** /v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Create a Default Commission Program
 [**create_redirect_link**](AffiliateApi.md#create_redirect_link) | **POST** /v2/affiliates/redirects | Create an Affiliate Link
 [**delete_affiliate**](AffiliateApi.md#delete_affiliate) | **DELETE** /v2/affiliates/{id} | Delete Affiliate
 [**delete_affiliate_commission_program**](AffiliateApi.md#delete_affiliate_commission_program) | **DELETE** /v2/affiliates/commissionPrograms/{commission_program_id} | Delete a Commission Program
+[**delete_affiliate_custom_field**](AffiliateApi.md#delete_affiliate_custom_field) | **DELETE** /v2/affiliates/model/customFields/{custom_field_id} | Delete a Custom Field
 [**delete_redirect_link**](AffiliateApi.md#delete_redirect_link) | **DELETE** /v2/affiliates/redirects/{redirect_id} | Delete an Affiliate Link
 [**get_affiliate**](AffiliateApi.md#get_affiliate) | **GET** /v2/affiliates/{id} | Retrieve an Affiliate
 [**get_affiliate_commission_total**](AffiliateApi.md#get_affiliate_commission_total) | **GET** /v2/affiliates/{affiliate_id}/commissionTotal | Retrieve Affiliate Commission Earned and View LedgerURl for portal
 [**get_affiliate_commissions**](AffiliateApi.md#get_affiliate_commissions) | **GET** /v2/affiliates/{affiliate_id}:commissions | Retrieve Affiliate Commission and Clawbacks
+[**get_affiliate_custom_fields**](AffiliateApi.md#get_affiliate_custom_fields) | **GET** /v2/affiliates/model | Retrieve Affiliate Model
 [**get_commission_program**](AffiliateApi.md#get_commission_program) | **GET** /v2/affiliates/commissionPrograms/{commission_program_id} | Retrieve a Commission Program
 [**get_redirect_link**](AffiliateApi.md#get_redirect_link) | **GET** /v2/affiliates/redirects/{redirect_id} | Retrieve an Affiliate Link
+[**list_affiliate**](AffiliateApi.md#list_affiliate) | **GET** /v2/affiliates | List Affiliates
 [**list_affiliate_commission_programs**](AffiliateApi.md#list_affiliate_commission_programs) | **GET** /v2/affiliates/commissionPrograms | List Affiliate Commission Programs
 [**list_affiliate_links**](AffiliateApi.md#list_affiliate_links) | **GET** /v2/affiliates/redirects | List Affiliate Links
+[**list_affiliate_payments**](AffiliateApi.md#list_affiliate_payments) | **GET** /v2/affiliates/{affiliate_id}/payments | List Affiliate Payments
 [**list_summaries**](AffiliateApi.md#list_summaries) | **GET** /v2/affiliates/summaries | List Affiliate Summaries
 [**remove_affiliate_from_program**](AffiliateApi.md#remove_affiliate_from_program) | **POST** /v2/affiliates/{id}:removeFromProgram | Remove an Affiliate from a Commission Program
 [**remove_product_commission_from_commissions**](AffiliateApi.md#remove_product_commission_from_commissions) | **POST** /v2/affiliates/commissionPrograms/{commission_id}:removeProductCommission | Remove a Product from a Commission Program
 [**remove_subscription_plan_commission_from_commissions**](AffiliateApi.md#remove_subscription_plan_commission_from_commissions) | **POST** /v2/affiliates/commissionPrograms/{commission_id}:removeSubscriptionCommission | Remove a Subscription from a Commission Program
 [**update_affiliate**](AffiliateApi.md#update_affiliate) | **PATCH** /v2/affiliates/{id} | Update an Affiliate
+[**update_affiliate_custom_field**](AffiliateApi.md#update_affiliate_custom_field) | **PATCH** /v2/affiliates/model/customFields/{custom_field_id} | Update a Custom Field
 [**update_commission_program**](AffiliateApi.md#update_commission_program) | **PATCH** /v2/affiliates/commissionPrograms/{commission_program_id} | Update an Affiliate Commission Program
 [**update_default_commission_program**](AffiliateApi.md#update_default_commission_program) | **PATCH** /v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Update a Default Commission Program
 [**update_product_commission_program**](AffiliateApi.md#update_product_commission_program) | **PATCH** /v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Update a Product Commission Program
@@ -386,6 +392,76 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **create_affiliate_custom_field**
+> CustomFieldMetaData create_affiliate_custom_field(create_custom_field_request)
+
+Create an Affiliate Custom Field
+
+Creates a single Affiliate Custom Field
+
+### Example
+
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.create_custom_field_request import CreateCustomFieldRequest
+from keap_core_v2_client.models.custom_field_meta_data import CustomFieldMetaData
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm/rest"
+)
+
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.AffiliateApi(api_client)
+    create_custom_field_request = keap_core_v2_client.CreateCustomFieldRequest() # CreateCustomFieldRequest | customField
+
+    try:
+        # Create an Affiliate Custom Field
+        api_response = api_instance.create_affiliate_custom_field(create_custom_field_request)
+        print("The response of AffiliateApi->create_affiliate_custom_field:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AffiliateApi->create_affiliate_custom_field: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **create_custom_field_request** | [**CreateCustomFieldRequest**](CreateCustomFieldRequest.md)| customField | 
+
+### Return type
+
+[**CustomFieldMetaData**](CustomFieldMetaData.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **create_default_commission_program**
 > SetDefaultCommissionProgramResponse create_default_commission_program(commission_program_id, create_default_commission_program_request=create_default_commission_program_request)
 
@@ -636,6 +712,73 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **commission_program_id** | **str**| commission_program_id | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_affiliate_custom_field**
+> delete_affiliate_custom_field(custom_field_id)
+
+Delete a Custom Field
+
+Deletes a Custom Field from Affiliate.
+
+### Example
+
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm/rest"
+)
+
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.AffiliateApi(api_client)
+    custom_field_id = 'custom_field_id_example' # str | custom_field_id
+
+    try:
+        # Delete a Custom Field
+        api_instance.delete_affiliate_custom_field(custom_field_id)
+    except Exception as e:
+        print("Exception when calling AffiliateApi->delete_affiliate_custom_field: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **custom_field_id** | **str**| custom_field_id | 
 
 ### Return type
 
@@ -947,6 +1090,72 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_affiliate_custom_fields**
+> ObjectModel get_affiliate_custom_fields()
+
+Retrieve Affiliate Model
+
+Get the custom fields and optional properties for the Affiliate object
+
+### Example
+
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.object_model import ObjectModel
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm/rest"
+)
+
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.AffiliateApi(api_client)
+
+    try:
+        # Retrieve Affiliate Model
+        api_response = api_instance.get_affiliate_custom_fields()
+        print("The response of AffiliateApi->get_affiliate_custom_fields:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AffiliateApi->get_affiliate_custom_fields: %s\n" % e)
+```
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ObjectModel**](ObjectModel.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_commission_program**
 > AffiliateProgramV2 get_commission_program(commission_program_id)
 
@@ -1065,6 +1274,82 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AffiliateLink**](AffiliateLink.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_affiliate**
+> ListAffiliatesResponse list_affiliate(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
+
+List Affiliates
+
+Retrieves a list of Affiliates
+
+### Example
+
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.list_affiliates_response import ListAffiliatesResponse
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm/rest"
+)
+
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.AffiliateApi(api_client)
+    filter = 'filter_example' # str | Filter to apply, allowed fields are: - (String) `affiliate_name` - (String) `contact_id` - (String) `status` - (String) `code`  (optional)
+    order_by = 'order_by_example' # str | Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `name` - `status` - `code`  One of the following directions: - `asc` - `desc`  (optional)
+    page_size = 0 # int | Total number of items to return per page (optional)
+    page_token = 'page_token_example' # str | Page token (optional)
+
+    try:
+        # List Affiliates
+        api_response = api_instance.list_affiliate(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
+        print("The response of AffiliateApi->list_affiliate:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AffiliateApi->list_affiliate: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **filter** | **str**| Filter to apply, allowed fields are: - (String) &#x60;affiliate_name&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;code&#x60;  | [optional] 
+ **order_by** | **str**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;name&#x60; - &#x60;status&#x60; - &#x60;code&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  | [optional] 
+ **page_size** | **int**| Total number of items to return per page | [optional] 
+ **page_token** | **str**| Page token | [optional] 
+
+### Return type
+
+[**ListAffiliatesResponse**](ListAffiliatesResponse.md)
 
 ### Authorization
 
@@ -1217,6 +1502,84 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ListAffiliateLinksResponse**](ListAffiliateLinksResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_affiliate_payments**
+> ListAffiliatePaymentsResponse list_affiliate_payments(affiliate_id, filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
+
+List Affiliate Payments
+
+Retrieves a list of affiliate payments
+
+### Example
+
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.list_affiliate_payments_response import ListAffiliatePaymentsResponse
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm/rest"
+)
+
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.AffiliateApi(api_client)
+    affiliate_id = 'affiliate_id_example' # str | affiliate_id
+    filter = 'filter_example' # str | Filter to apply, allowed fields are: - (String) `since_time` - (String) `until_time` You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=since_time%3D%3D2024-09-17T-15:50+00` - `filter=until_time%3D%3D2024-09-17T-15:50+00`  (optional)
+    order_by = 'order_by_example' # str | Attribute and direction to order items. One of the following fields: - `create_time` - `pay_date` - `pay_amount`  One of the following directions: - `asc` - `desc`  (optional)
+    page_size = 0 # int | Total number of items to return per page (optional)
+    page_token = 'page_token_example' # str | Page token (optional)
+
+    try:
+        # List Affiliate Payments
+        api_response = api_instance.list_affiliate_payments(affiliate_id, filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
+        print("The response of AffiliateApi->list_affiliate_payments:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AffiliateApi->list_affiliate_payments: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **affiliate_id** | **str**| affiliate_id | 
+ **filter** | **str**| Filter to apply, allowed fields are: - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;since_time%3D%3D2024-09-17T-15:50+00&#x60; - &#x60;filter&#x3D;until_time%3D%3D2024-09-17T-15:50+00&#x60;  | [optional] 
+ **order_by** | **str**| Attribute and direction to order items. One of the following fields: - &#x60;create_time&#x60; - &#x60;pay_date&#x60; - &#x60;pay_amount&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  | [optional] 
+ **page_size** | **int**| Total number of items to return per page | [optional] 
+ **page_token** | **str**| Page token | [optional] 
+
+### Return type
+
+[**ListAffiliatePaymentsResponse**](ListAffiliatePaymentsResponse.md)
 
 ### Authorization
 
@@ -1573,6 +1936,81 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**RestAffiliate**](RestAffiliate.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_affiliate_custom_field**
+> CustomFieldMetaData update_affiliate_custom_field(custom_field_id, update_custom_field_meta_data_request, update_mask=update_mask)
+
+Update a Custom Field
+
+Updates a custom field of the specified type and options to the Affiliate object.
+
+### Example
+
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.custom_field_meta_data import CustomFieldMetaData
+from keap_core_v2_client.models.update_custom_field_meta_data_request import UpdateCustomFieldMetaDataRequest
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm/rest"
+)
+
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.AffiliateApi(api_client)
+    custom_field_id = 'custom_field_id_example' # str | custom_field_id
+    update_custom_field_meta_data_request = keap_core_v2_client.UpdateCustomFieldMetaDataRequest() # UpdateCustomFieldMetaDataRequest | request
+    update_mask = ['update_mask_example'] # List[str] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+
+    try:
+        # Update a Custom Field
+        api_response = api_instance.update_affiliate_custom_field(custom_field_id, update_custom_field_meta_data_request, update_mask=update_mask)
+        print("The response of AffiliateApi->update_affiliate_custom_field:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AffiliateApi->update_affiliate_custom_field: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **custom_field_id** | **str**| custom_field_id | 
+ **update_custom_field_meta_data_request** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md)| request | 
+ **update_mask** | [**List[str]**](str.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+
+### Return type
+
+[**CustomFieldMetaData**](CustomFieldMetaData.md)
 
 ### Authorization
 

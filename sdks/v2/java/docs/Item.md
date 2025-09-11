@@ -34,6 +34,7 @@
 | FAX | &quot;Fax&quot; |
 | LETTER | &quot;Letter&quot; |
 | AUTOMATED_SMS | &quot;AutomatedSms&quot; |
+| UNLAYER_EMAIL_CONFIRM | &quot;UnlayerEmailConfirm&quot; |
 | TAG | &quot;Tag&quot; |
 | OPPORTUNITY | &quot;Opportunity&quot; |
 | NOTE | &quot;Note&quot; |

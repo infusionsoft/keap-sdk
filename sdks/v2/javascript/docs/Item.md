@@ -45,6 +45,8 @@ Name | Type | Description | Notes
 
 * `AutomatedSms` (value: `"AutomatedSms"`)
 
+* `UnlayerEmailConfirm` (value: `"UnlayerEmailConfirm"`)
+
 * `Tag` (value: `"Tag"`)
 
 * `Opportunity` (value: `"Opportunity"`)

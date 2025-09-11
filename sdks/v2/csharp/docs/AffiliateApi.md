@@ -9,23 +9,29 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 | [**AddCommissionProgram**](AffiliateApi.md#addcommissionprogram) | **POST** /v2/affiliates/commissionPrograms | Create an Affiliate Commission Program |
 | [**AssignProductCommissionProgram**](AffiliateApi.md#assignproductcommissionprogram) | **POST** /v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Assign a Product Commission Program |
 | [**AssignSubscriptionCommissionProgram**](AffiliateApi.md#assignsubscriptioncommissionprogram) | **POST** /v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id} | Assign a Subscription Commission Program |
+| [**CreateAffiliateCustomField**](AffiliateApi.md#createaffiliatecustomfield) | **POST** /v2/affiliates/model/customFields | Create an Affiliate Custom Field |
 | [**CreateDefaultCommissionProgram**](AffiliateApi.md#createdefaultcommissionprogram) | **POST** /v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Create a Default Commission Program |
 | [**CreateRedirectLink**](AffiliateApi.md#createredirectlink) | **POST** /v2/affiliates/redirects | Create an Affiliate Link |
 | [**DeleteAffiliate**](AffiliateApi.md#deleteaffiliate) | **DELETE** /v2/affiliates/{id} | Delete Affiliate |
 | [**DeleteAffiliateCommissionProgram**](AffiliateApi.md#deleteaffiliatecommissionprogram) | **DELETE** /v2/affiliates/commissionPrograms/{commission_program_id} | Delete a Commission Program |
+| [**DeleteAffiliateCustomField**](AffiliateApi.md#deleteaffiliatecustomfield) | **DELETE** /v2/affiliates/model/customFields/{custom_field_id} | Delete a Custom Field |
 | [**DeleteRedirectLink**](AffiliateApi.md#deleteredirectlink) | **DELETE** /v2/affiliates/redirects/{redirect_id} | Delete an Affiliate Link |
 | [**GetAffiliate**](AffiliateApi.md#getaffiliate) | **GET** /v2/affiliates/{id} | Retrieve an Affiliate |
 | [**GetAffiliateCommissionTotal**](AffiliateApi.md#getaffiliatecommissiontotal) | **GET** /v2/affiliates/{affiliate_id}/commissionTotal | Retrieve Affiliate Commission Earned and View LedgerURl for portal |
 | [**GetAffiliateCommissions**](AffiliateApi.md#getaffiliatecommissions) | **GET** /v2/affiliates/{affiliate_id}:commissions | Retrieve Affiliate Commission and Clawbacks |
+| [**GetAffiliateCustomFields**](AffiliateApi.md#getaffiliatecustomfields) | **GET** /v2/affiliates/model | Retrieve Affiliate Model |
 | [**GetCommissionProgram**](AffiliateApi.md#getcommissionprogram) | **GET** /v2/affiliates/commissionPrograms/{commission_program_id} | Retrieve a Commission Program |
 | [**GetRedirectLink**](AffiliateApi.md#getredirectlink) | **GET** /v2/affiliates/redirects/{redirect_id} | Retrieve an Affiliate Link |
+| [**ListAffiliate**](AffiliateApi.md#listaffiliate) | **GET** /v2/affiliates | List Affiliates |
 | [**ListAffiliateCommissionPrograms**](AffiliateApi.md#listaffiliatecommissionprograms) | **GET** /v2/affiliates/commissionPrograms | List Affiliate Commission Programs |
 | [**ListAffiliateLinks**](AffiliateApi.md#listaffiliatelinks) | **GET** /v2/affiliates/redirects | List Affiliate Links |
+| [**ListAffiliatePayments**](AffiliateApi.md#listaffiliatepayments) | **GET** /v2/affiliates/{affiliate_id}/payments | List Affiliate Payments |
 | [**ListSummaries**](AffiliateApi.md#listsummaries) | **GET** /v2/affiliates/summaries | List Affiliate Summaries |
 | [**RemoveAffiliateFromProgram**](AffiliateApi.md#removeaffiliatefromprogram) | **POST** /v2/affiliates/{id}:removeFromProgram | Remove an Affiliate from a Commission Program |
 | [**RemoveProductCommissionFromCommissions**](AffiliateApi.md#removeproductcommissionfromcommissions) | **POST** /v2/affiliates/commissionPrograms/{commission_id}:removeProductCommission | Remove a Product from a Commission Program |
 | [**RemoveSubscriptionPlanCommissionFromCommissions**](AffiliateApi.md#removesubscriptionplancommissionfromcommissions) | **POST** /v2/affiliates/commissionPrograms/{commission_id}:removeSubscriptionCommission | Remove a Subscription from a Commission Program |
 | [**UpdateAffiliate**](AffiliateApi.md#updateaffiliate) | **PATCH** /v2/affiliates/{id} | Update an Affiliate |
+| [**UpdateAffiliateCustomField**](AffiliateApi.md#updateaffiliatecustomfield) | **PATCH** /v2/affiliates/model/customFields/{custom_field_id} | Update a Custom Field |
 | [**UpdateCommissionProgram**](AffiliateApi.md#updatecommissionprogram) | **PATCH** /v2/affiliates/commissionPrograms/{commission_program_id} | Update an Affiliate Commission Program |
 | [**UpdateDefaultCommissionProgram**](AffiliateApi.md#updatedefaultcommissionprogram) | **PATCH** /v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Update a Default Commission Program |
 | [**UpdateProductCommissionProgram**](AffiliateApi.md#updateproductcommissionprogram) | **PATCH** /v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Update a Product Commission Program |
@@ -504,6 +510,100 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="createaffiliatecustomfield"></a>
+# **CreateAffiliateCustomField**
+> CustomFieldMetaData CreateAffiliateCustomField (CreateCustomFieldRequest createCustomFieldRequest)
+
+Create an Affiliate Custom Field
+
+Creates a single Affiliate Custom Field
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class CreateAffiliateCustomFieldExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm/rest";
+            var apiInstance = new AffiliateApi(config);
+            var createCustomFieldRequest = new CreateCustomFieldRequest(); // CreateCustomFieldRequest | customField
+
+            try
+            {
+                // Create an Affiliate Custom Field
+                CustomFieldMetaData result = apiInstance.CreateAffiliateCustomField(createCustomFieldRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling AffiliateApi.CreateAffiliateCustomField: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the CreateAffiliateCustomFieldWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Create an Affiliate Custom Field
+    ApiResponse<CustomFieldMetaData> response = apiInstance.CreateAffiliateCustomFieldWithHttpInfo(createCustomFieldRequest);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling AffiliateApi.CreateAffiliateCustomFieldWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **createCustomFieldRequest** | [**CreateCustomFieldRequest**](CreateCustomFieldRequest.md) | customField |  |
+
+### Return type
+
+[**CustomFieldMetaData**](CustomFieldMetaData.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="createdefaultcommissionprogram"></a>
 # **CreateDefaultCommissionProgram**
 > SetDefaultCommissionProgramResponse CreateDefaultCommissionProgram (string commissionProgramId, CreateDefaultCommissionProgramRequest? createDefaultCommissionProgramRequest = null)
@@ -850,6 +950,97 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **commissionProgramId** | **string** | commission_program_id |  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="deleteaffiliatecustomfield"></a>
+# **DeleteAffiliateCustomField**
+> void DeleteAffiliateCustomField (string customFieldId)
+
+Delete a Custom Field
+
+Deletes a Custom Field from Affiliate.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class DeleteAffiliateCustomFieldExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm/rest";
+            var apiInstance = new AffiliateApi(config);
+            var customFieldId = "customFieldId_example";  // string | custom_field_id
+
+            try
+            {
+                // Delete a Custom Field
+                apiInstance.DeleteAffiliateCustomField(customFieldId);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling AffiliateApi.DeleteAffiliateCustomField: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the DeleteAffiliateCustomFieldWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Delete a Custom Field
+    apiInstance.DeleteAffiliateCustomFieldWithHttpInfo(customFieldId);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling AffiliateApi.DeleteAffiliateCustomFieldWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **customFieldId** | **string** | custom_field_id |  |
 
 ### Return type
 
@@ -1260,6 +1451,96 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="getaffiliatecustomfields"></a>
+# **GetAffiliateCustomFields**
+> ObjectModel GetAffiliateCustomFields ()
+
+Retrieve Affiliate Model
+
+Get the custom fields and optional properties for the Affiliate object
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class GetAffiliateCustomFieldsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm/rest";
+            var apiInstance = new AffiliateApi(config);
+
+            try
+            {
+                // Retrieve Affiliate Model
+                ObjectModel result = apiInstance.GetAffiliateCustomFields();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling AffiliateApi.GetAffiliateCustomFields: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GetAffiliateCustomFieldsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Retrieve Affiliate Model
+    ApiResponse<ObjectModel> response = apiInstance.GetAffiliateCustomFieldsWithHttpInfo();
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling AffiliateApi.GetAffiliateCustomFieldsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+### Return type
+
+[**ObjectModel**](ObjectModel.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="getcommissionprogram"></a>
 # **GetCommissionProgram**
 > AffiliateProgramV2 GetCommissionProgram (string commissionProgramId)
@@ -1428,6 +1709,107 @@ catch (ApiException e)
 ### Return type
 
 [**AffiliateLink**](AffiliateLink.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="listaffiliate"></a>
+# **ListAffiliate**
+> ListAffiliatesResponse ListAffiliate (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
+
+List Affiliates
+
+Retrieves a list of Affiliates
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class ListAffiliateExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm/rest";
+            var apiInstance = new AffiliateApi(config);
+            var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (String) `affiliate_name` - (String) `contact_id` - (String) `status` - (String) `code`  (optional) 
+            var orderBy = "orderBy_example";  // string? | Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `name` - `status` - `code`  One of the following directions: - `asc` - `desc`  (optional) 
+            var pageSize = 0;  // int? | Total number of items to return per page (optional) 
+            var pageToken = "pageToken_example";  // string? | Page token (optional) 
+
+            try
+            {
+                // List Affiliates
+                ListAffiliatesResponse result = apiInstance.ListAffiliate(filter, orderBy, pageSize, pageToken);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling AffiliateApi.ListAffiliate: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the ListAffiliateWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // List Affiliates
+    ApiResponse<ListAffiliatesResponse> response = apiInstance.ListAffiliateWithHttpInfo(filter, orderBy, pageSize, pageToken);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling AffiliateApi.ListAffiliateWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **filter** | **string?** | Filter to apply, allowed fields are: - (String) &#x60;affiliate_name&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;code&#x60;  | [optional]  |
+| **orderBy** | **string?** | Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;name&#x60; - &#x60;status&#x60; - &#x60;code&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  | [optional]  |
+| **pageSize** | **int?** | Total number of items to return per page | [optional]  |
+| **pageToken** | **string?** | Page token | [optional]  |
+
+### Return type
+
+[**ListAffiliatesResponse**](ListAffiliatesResponse.md)
 
 ### Authorization
 
@@ -1630,6 +2012,109 @@ catch (ApiException e)
 ### Return type
 
 [**ListAffiliateLinksResponse**](ListAffiliateLinksResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="listaffiliatepayments"></a>
+# **ListAffiliatePayments**
+> ListAffiliatePaymentsResponse ListAffiliatePayments (string affiliateId, string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
+
+List Affiliate Payments
+
+Retrieves a list of affiliate payments
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class ListAffiliatePaymentsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm/rest";
+            var apiInstance = new AffiliateApi(config);
+            var affiliateId = "affiliateId_example";  // string | affiliate_id
+            var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (String) `since_time` - (String) `until_time` You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=since_time%3D%3D2024-09-17T-15:50+00` - `filter=until_time%3D%3D2024-09-17T-15:50+00`  (optional) 
+            var orderBy = "orderBy_example";  // string? | Attribute and direction to order items. One of the following fields: - `create_time` - `pay_date` - `pay_amount`  One of the following directions: - `asc` - `desc`  (optional) 
+            var pageSize = 0;  // int? | Total number of items to return per page (optional) 
+            var pageToken = "pageToken_example";  // string? | Page token (optional) 
+
+            try
+            {
+                // List Affiliate Payments
+                ListAffiliatePaymentsResponse result = apiInstance.ListAffiliatePayments(affiliateId, filter, orderBy, pageSize, pageToken);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling AffiliateApi.ListAffiliatePayments: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the ListAffiliatePaymentsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // List Affiliate Payments
+    ApiResponse<ListAffiliatePaymentsResponse> response = apiInstance.ListAffiliatePaymentsWithHttpInfo(affiliateId, filter, orderBy, pageSize, pageToken);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling AffiliateApi.ListAffiliatePaymentsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **affiliateId** | **string** | affiliate_id |  |
+| **filter** | **string?** | Filter to apply, allowed fields are: - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;since_time%3D%3D2024-09-17T-15:50+00&#x60; - &#x60;filter&#x3D;until_time%3D%3D2024-09-17T-15:50+00&#x60;  | [optional]  |
+| **orderBy** | **string?** | Attribute and direction to order items. One of the following fields: - &#x60;create_time&#x60; - &#x60;pay_date&#x60; - &#x60;pay_amount&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  | [optional]  |
+| **pageSize** | **int?** | Total number of items to return per page | [optional]  |
+| **pageToken** | **string?** | Page token | [optional]  |
+
+### Return type
+
+[**ListAffiliatePaymentsResponse**](ListAffiliatePaymentsResponse.md)
 
 ### Authorization
 
@@ -2104,6 +2589,105 @@ catch (ApiException e)
 ### Return type
 
 [**RestAffiliate**](RestAffiliate.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="updateaffiliatecustomfield"></a>
+# **UpdateAffiliateCustomField**
+> CustomFieldMetaData UpdateAffiliateCustomField (string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, List<string>? updateMask = null)
+
+Update a Custom Field
+
+Updates a custom field of the specified type and options to the Affiliate object.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class UpdateAffiliateCustomFieldExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm/rest";
+            var apiInstance = new AffiliateApi(config);
+            var customFieldId = "customFieldId_example";  // string | custom_field_id
+            var updateCustomFieldMetaDataRequest = new UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | request
+            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+
+            try
+            {
+                // Update a Custom Field
+                CustomFieldMetaData result = apiInstance.UpdateAffiliateCustomField(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling AffiliateApi.UpdateAffiliateCustomField: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the UpdateAffiliateCustomFieldWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Update a Custom Field
+    ApiResponse<CustomFieldMetaData> response = apiInstance.UpdateAffiliateCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling AffiliateApi.UpdateAffiliateCustomFieldWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **customFieldId** | **string** | custom_field_id |  |
+| **updateCustomFieldMetaDataRequest** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md) | request |  |
+| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+
+### Return type
+
+[**CustomFieldMetaData**](CustomFieldMetaData.md)
 
 ### Authorization
 

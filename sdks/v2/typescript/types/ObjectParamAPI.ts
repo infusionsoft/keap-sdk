@@ -154,7 +154,6 @@ import { HistoricalCounts } from '../models/HistoricalCounts';
 import { InvoiceFile } from '../models/InvoiceFile';
 import { InvoiceOrderPayment } from '../models/InvoiceOrderPayment';
 import { Item } from '../models/Item';
-import { LandingPage } from '../models/LandingPage';
 import { LeadScore } from '../models/LeadScore';
 import { LeadSource } from '../models/LeadSource';
 import { LeadSourceCategory } from '../models/LeadSourceCategory';
@@ -182,7 +181,6 @@ import { ListCountriesResponse } from '../models/ListCountriesResponse';
 import { ListEmailsSentResponse } from '../models/ListEmailsSentResponse';
 import { ListFilesResponse } from '../models/ListFilesResponse';
 import { ListFreeTrialDiscountsResponse } from '../models/ListFreeTrialDiscountsResponse';
-import { ListLandingPagesResponse } from '../models/ListLandingPagesResponse';
 import { ListLeadSourceCategoriesResponse } from '../models/ListLeadSourceCategoriesResponse';
 import { ListLeadSourceExpensesResponse } from '../models/ListLeadSourceExpensesResponse';
 import { ListLeadSourceRecurringExpensesResponse } from '../models/ListLeadSourceRecurringExpensesResponse';
@@ -389,6 +387,15 @@ export interface AffiliateApiAssignSubscriptionCommissionProgramRequest {
     createSubscriptionCommissionProgramRequest?: CreateSubscriptionCommissionProgramRequest
 }
 
+export interface AffiliateApiCreateAffiliateCustomFieldRequest {
+    /**
+     * customField
+     * @type CreateCustomFieldRequest
+     * @memberof AffiliateApicreateAffiliateCustomField
+     */
+    createCustomFieldRequest: CreateCustomFieldRequest
+}
+
 export interface AffiliateApiCreateDefaultCommissionProgramRequest {
     /**
      * commission_program_id
@@ -432,6 +439,16 @@ export interface AffiliateApiDeleteAffiliateCommissionProgramRequest {
      * @memberof AffiliateApideleteAffiliateCommissionProgram
      */
     commissionProgramId: string
+}
+
+export interface AffiliateApiDeleteAffiliateCustomFieldRequest {
+    /**
+     * custom_field_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof AffiliateApideleteAffiliateCustomField
+     */
+    customFieldId: string
 }
 
 export interface AffiliateApiDeleteRedirectLinkRequest {
@@ -504,6 +521,9 @@ export interface AffiliateApiGetAffiliateCommissionsRequest {
     pageToken?: string
 }
 
+export interface AffiliateApiGetAffiliateCustomFieldsRequest {
+}
+
 export interface AffiliateApiGetCommissionProgramRequest {
     /**
      * commission_program_id
@@ -522,6 +542,39 @@ export interface AffiliateApiGetRedirectLinkRequest {
      * @memberof AffiliateApigetRedirectLink
      */
     redirectId: string
+}
+
+export interface AffiliateApiListAffiliateRequest {
+    /**
+     * Filter to apply, allowed fields are: - (String) &#x60;affiliate_name&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;code&#x60; 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AffiliateApilistAffiliate
+     */
+    filter?: string
+    /**
+     * Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;name&#x60; - &#x60;status&#x60; - &#x60;code&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AffiliateApilistAffiliate
+     */
+    orderBy?: string
+    /**
+     * Total number of items to return per page
+     * Minimum: 1
+     * Maximum: 1000
+     * Defaults to: undefined
+     * @type number
+     * @memberof AffiliateApilistAffiliate
+     */
+    pageSize?: number
+    /**
+     * Page token
+     * Defaults to: undefined
+     * @type string
+     * @memberof AffiliateApilistAffiliate
+     */
+    pageToken?: string
 }
 
 export interface AffiliateApiListAffiliateCommissionProgramsRequest {
@@ -586,6 +639,46 @@ export interface AffiliateApiListAffiliateLinksRequest {
      * Defaults to: undefined
      * @type string
      * @memberof AffiliateApilistAffiliateLinks
+     */
+    pageToken?: string
+}
+
+export interface AffiliateApiListAffiliatePaymentsRequest {
+    /**
+     * affiliate_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof AffiliateApilistAffiliatePayments
+     */
+    affiliateId: string
+    /**
+     * Filter to apply, allowed fields are: - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;since_time%3D%3D2024-09-17T-15:50+00&#x60; - &#x60;filter&#x3D;until_time%3D%3D2024-09-17T-15:50+00&#x60; 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AffiliateApilistAffiliatePayments
+     */
+    filter?: string
+    /**
+     * Attribute and direction to order items. One of the following fields: - &#x60;create_time&#x60; - &#x60;pay_date&#x60; - &#x60;pay_amount&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AffiliateApilistAffiliatePayments
+     */
+    orderBy?: string
+    /**
+     * Total number of items to return per page
+     * Minimum: 1
+     * Maximum: 1000
+     * Defaults to: undefined
+     * @type number
+     * @memberof AffiliateApilistAffiliatePayments
+     */
+    pageSize?: number
+    /**
+     * Page token
+     * Defaults to: undefined
+     * @type string
+     * @memberof AffiliateApilistAffiliatePayments
      */
     pageToken?: string
 }
@@ -685,6 +778,29 @@ export interface AffiliateApiUpdateAffiliateRequest {
      * @memberof AffiliateApiupdateAffiliate
      */
     updateAffiliateRequest?: UpdateAffiliateRequest
+}
+
+export interface AffiliateApiUpdateAffiliateCustomFieldRequest {
+    /**
+     * custom_field_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof AffiliateApiupdateAffiliateCustomField
+     */
+    customFieldId: string
+    /**
+     * request
+     * @type UpdateCustomFieldMetaDataRequest
+     * @memberof AffiliateApiupdateAffiliateCustomField
+     */
+    updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest
+    /**
+     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * Defaults to: undefined
+     * @type Array&lt;string&gt;
+     * @memberof AffiliateApiupdateAffiliateCustomField
+     */
+    updateMask?: Array<string>
 }
 
 export interface AffiliateApiUpdateCommissionProgramRequest {
@@ -893,6 +1009,24 @@ export class ObjectAffiliateApi {
     }
 
     /**
+     * Creates a single Affiliate Custom Field
+     * Create an Affiliate Custom Field
+     * @param param the request object
+     */
+    public createAffiliateCustomFieldWithHttpInfo(param: AffiliateApiCreateAffiliateCustomFieldRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
+        return this.api.createAffiliateCustomFieldWithHttpInfo(param.createCustomFieldRequest,  options).toPromise();
+    }
+
+    /**
+     * Creates a single Affiliate Custom Field
+     * Create an Affiliate Custom Field
+     * @param param the request object
+     */
+    public createAffiliateCustomField(param: AffiliateApiCreateAffiliateCustomFieldRequest, options?: ConfigurationOptions): Promise<CustomFieldMetaData> {
+        return this.api.createAffiliateCustomField(param.createCustomFieldRequest,  options).toPromise();
+    }
+
+    /**
      * Creates a Default Commission Program
      * Create a Default Commission Program
      * @param param the request object
@@ -962,6 +1096,24 @@ export class ObjectAffiliateApi {
      */
     public deleteAffiliateCommissionProgram(param: AffiliateApiDeleteAffiliateCommissionProgramRequest, options?: ConfigurationOptions): Promise<void> {
         return this.api.deleteAffiliateCommissionProgram(param.commissionProgramId,  options).toPromise();
+    }
+
+    /**
+     * Deletes a Custom Field from Affiliate.
+     * Delete a Custom Field
+     * @param param the request object
+     */
+    public deleteAffiliateCustomFieldWithHttpInfo(param: AffiliateApiDeleteAffiliateCustomFieldRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteAffiliateCustomFieldWithHttpInfo(param.customFieldId,  options).toPromise();
+    }
+
+    /**
+     * Deletes a Custom Field from Affiliate.
+     * Delete a Custom Field
+     * @param param the request object
+     */
+    public deleteAffiliateCustomField(param: AffiliateApiDeleteAffiliateCustomFieldRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteAffiliateCustomField(param.customFieldId,  options).toPromise();
     }
 
     /**
@@ -1037,6 +1189,24 @@ export class ObjectAffiliateApi {
     }
 
     /**
+     * Get the custom fields and optional properties for the Affiliate object
+     * Retrieve Affiliate Model
+     * @param param the request object
+     */
+    public getAffiliateCustomFieldsWithHttpInfo(param: AffiliateApiGetAffiliateCustomFieldsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ObjectModel>> {
+        return this.api.getAffiliateCustomFieldsWithHttpInfo( options).toPromise();
+    }
+
+    /**
+     * Get the custom fields and optional properties for the Affiliate object
+     * Retrieve Affiliate Model
+     * @param param the request object
+     */
+    public getAffiliateCustomFields(param: AffiliateApiGetAffiliateCustomFieldsRequest = {}, options?: ConfigurationOptions): Promise<ObjectModel> {
+        return this.api.getAffiliateCustomFields( options).toPromise();
+    }
+
+    /**
      * Retrieves a single Commission Program
      * Retrieve a Commission Program
      * @param param the request object
@@ -1073,6 +1243,24 @@ export class ObjectAffiliateApi {
     }
 
     /**
+     * Retrieves a list of Affiliates
+     * List Affiliates
+     * @param param the request object
+     */
+    public listAffiliateWithHttpInfo(param: AffiliateApiListAffiliateRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListAffiliatesResponse>> {
+        return this.api.listAffiliateWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of Affiliates
+     * List Affiliates
+     * @param param the request object
+     */
+    public listAffiliate(param: AffiliateApiListAffiliateRequest = {}, options?: ConfigurationOptions): Promise<ListAffiliatesResponse> {
+        return this.api.listAffiliate(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    }
+
+    /**
      * Retrieves a list of Affiliate Commission Programs
      * List Affiliate Commission Programs
      * @param param the request object
@@ -1106,6 +1294,24 @@ export class ObjectAffiliateApi {
      */
     public listAffiliateLinks(param: AffiliateApiListAffiliateLinksRequest = {}, options?: ConfigurationOptions): Promise<ListAffiliateLinksResponse> {
         return this.api.listAffiliateLinks(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of affiliate payments
+     * List Affiliate Payments
+     * @param param the request object
+     */
+    public listAffiliatePaymentsWithHttpInfo(param: AffiliateApiListAffiliatePaymentsRequest, options?: ConfigurationOptions): Promise<HttpInfo<ListAffiliatePaymentsResponse>> {
+        return this.api.listAffiliatePaymentsWithHttpInfo(param.affiliateId, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of affiliate payments
+     * List Affiliate Payments
+     * @param param the request object
+     */
+    public listAffiliatePayments(param: AffiliateApiListAffiliatePaymentsRequest, options?: ConfigurationOptions): Promise<ListAffiliatePaymentsResponse> {
+        return this.api.listAffiliatePayments(param.affiliateId, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -1196,6 +1402,24 @@ export class ObjectAffiliateApi {
      */
     public updateAffiliate(param: AffiliateApiUpdateAffiliateRequest, options?: ConfigurationOptions): Promise<RestAffiliate> {
         return this.api.updateAffiliate(param.id, param.updateAffiliateRequest,  options).toPromise();
+    }
+
+    /**
+     * Updates a custom field of the specified type and options to the Affiliate object.
+     * Update a Custom Field
+     * @param param the request object
+     */
+    public updateAffiliateCustomFieldWithHttpInfo(param: AffiliateApiUpdateAffiliateCustomFieldRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
+        return this.api.updateAffiliateCustomFieldWithHttpInfo(param.customFieldId, param.updateCustomFieldMetaDataRequest, param.updateMask,  options).toPromise();
+    }
+
+    /**
+     * Updates a custom field of the specified type and options to the Affiliate object.
+     * Update a Custom Field
+     * @param param the request object
+     */
+    public updateAffiliateCustomField(param: AffiliateApiUpdateAffiliateCustomFieldRequest, options?: ConfigurationOptions): Promise<CustomFieldMetaData> {
+        return this.api.updateAffiliateCustomField(param.customFieldId, param.updateCustomFieldMetaDataRequest, param.updateMask,  options).toPromise();
     }
 
     /**

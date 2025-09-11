@@ -150,7 +150,6 @@ export * from '../models/HistoricalCounts';
 export * from '../models/InvoiceFile';
 export * from '../models/InvoiceOrderPayment';
 export * from '../models/Item';
-export * from '../models/LandingPage';
 export * from '../models/LeadScore';
 export * from '../models/LeadSource';
 export * from '../models/LeadSourceCategory';
@@ -178,7 +177,6 @@ export * from '../models/ListCountriesResponse';
 export * from '../models/ListEmailsSentResponse';
 export * from '../models/ListFilesResponse';
 export * from '../models/ListFreeTrialDiscountsResponse';
-export * from '../models/ListLandingPagesResponse';
 export * from '../models/ListLeadSourceCategoriesResponse';
 export * from '../models/ListLeadSourceExpensesResponse';
 export * from '../models/ListLeadSourceRecurringExpensesResponse';
@@ -468,7 +466,6 @@ import { HistoricalCounts } from '../models/HistoricalCounts';
 import { InvoiceFile } from '../models/InvoiceFile';
 import { InvoiceOrderPayment     , InvoiceOrderPaymentPayStatusEnum       } from '../models/InvoiceOrderPayment';
 import { Item    , ItemTypeEnum   } from '../models/Item';
-import { LandingPage } from '../models/LandingPage';
 import { LeadScore } from '../models/LeadScore';
 import { LeadSource         , LeadSourceStatusEnum     } from '../models/LeadSource';
 import { LeadSourceCategory } from '../models/LeadSourceCategory';
@@ -496,7 +493,6 @@ import { ListCountriesResponse } from '../models/ListCountriesResponse';
 import { ListEmailsSentResponse } from '../models/ListEmailsSentResponse';
 import { ListFilesResponse } from '../models/ListFilesResponse';
 import { ListFreeTrialDiscountsResponse } from '../models/ListFreeTrialDiscountsResponse';
-import { ListLandingPagesResponse } from '../models/ListLandingPagesResponse';
 import { ListLeadSourceCategoriesResponse } from '../models/ListLeadSourceCategoriesResponse';
 import { ListLeadSourceExpensesResponse } from '../models/ListLeadSourceExpensesResponse';
 import { ListLeadSourceRecurringExpensesResponse } from '../models/ListLeadSourceRecurringExpensesResponse';
@@ -877,7 +873,6 @@ let typeMap: {[index: string]: any} = {
     "InvoiceFile": InvoiceFile,
     "InvoiceOrderPayment": InvoiceOrderPayment,
     "Item": Item,
-    "LandingPage": LandingPage,
     "LeadScore": LeadScore,
     "LeadSource": LeadSource,
     "LeadSourceCategory": LeadSourceCategory,
@@ -905,7 +900,6 @@ let typeMap: {[index: string]: any} = {
     "ListEmailsSentResponse": ListEmailsSentResponse,
     "ListFilesResponse": ListFilesResponse,
     "ListFreeTrialDiscountsResponse": ListFreeTrialDiscountsResponse,
-    "ListLandingPagesResponse": ListLandingPagesResponse,
     "ListLeadSourceCategoriesResponse": ListLeadSourceCategoriesResponse,
     "ListLeadSourceExpensesResponse": ListLeadSourceExpensesResponse,
     "ListLeadSourceRecurringExpensesResponse": ListLeadSourceRecurringExpensesResponse,

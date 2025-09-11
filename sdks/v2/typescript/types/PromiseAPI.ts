@@ -154,7 +154,6 @@ import { HistoricalCounts } from '../models/HistoricalCounts';
 import { InvoiceFile } from '../models/InvoiceFile';
 import { InvoiceOrderPayment } from '../models/InvoiceOrderPayment';
 import { Item } from '../models/Item';
-import { LandingPage } from '../models/LandingPage';
 import { LeadScore } from '../models/LeadScore';
 import { LeadSource } from '../models/LeadSource';
 import { LeadSourceCategory } from '../models/LeadSourceCategory';
@@ -182,7 +181,6 @@ import { ListCountriesResponse } from '../models/ListCountriesResponse';
 import { ListEmailsSentResponse } from '../models/ListEmailsSentResponse';
 import { ListFilesResponse } from '../models/ListFilesResponse';
 import { ListFreeTrialDiscountsResponse } from '../models/ListFreeTrialDiscountsResponse';
-import { ListLandingPagesResponse } from '../models/ListLandingPagesResponse';
 import { ListLeadSourceCategoriesResponse } from '../models/ListLeadSourceCategoriesResponse';
 import { ListLeadSourceExpensesResponse } from '../models/ListLeadSourceExpensesResponse';
 import { ListLeadSourceRecurringExpensesResponse } from '../models/ListLeadSourceRecurringExpensesResponse';
@@ -450,6 +448,28 @@ export class PromiseAffiliateApi {
     }
 
     /**
+     * Creates a single Affiliate Custom Field
+     * Create an Affiliate Custom Field
+     * @param createCustomFieldRequest customField
+     */
+    public createAffiliateCustomFieldWithHttpInfo(createCustomFieldRequest: CreateCustomFieldRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createAffiliateCustomFieldWithHttpInfo(createCustomFieldRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a single Affiliate Custom Field
+     * Create an Affiliate Custom Field
+     * @param createCustomFieldRequest customField
+     */
+    public createAffiliateCustomField(createCustomFieldRequest: CreateCustomFieldRequest, _options?: PromiseConfigurationOptions): Promise<CustomFieldMetaData> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createAffiliateCustomField(createCustomFieldRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Creates a Default Commission Program
      * Create a Default Commission Program
      * @param commissionProgramId commission_program_id
@@ -536,6 +556,28 @@ export class PromiseAffiliateApi {
     public deleteAffiliateCommissionProgram(commissionProgramId: string, _options?: PromiseConfigurationOptions): Promise<void> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.deleteAffiliateCommissionProgram(commissionProgramId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a Custom Field from Affiliate.
+     * Delete a Custom Field
+     * @param customFieldId custom_field_id
+     */
+    public deleteAffiliateCustomFieldWithHttpInfo(customFieldId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteAffiliateCustomFieldWithHttpInfo(customFieldId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a Custom Field from Affiliate.
+     * Delete a Custom Field
+     * @param customFieldId custom_field_id
+     */
+    public deleteAffiliateCustomField(customFieldId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteAffiliateCustomField(customFieldId, observableOptions);
         return result.toPromise();
     }
 
@@ -636,6 +678,26 @@ export class PromiseAffiliateApi {
     }
 
     /**
+     * Get the custom fields and optional properties for the Affiliate object
+     * Retrieve Affiliate Model
+     */
+    public getAffiliateCustomFieldsWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<ObjectModel>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getAffiliateCustomFieldsWithHttpInfo(observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Get the custom fields and optional properties for the Affiliate object
+     * Retrieve Affiliate Model
+     */
+    public getAffiliateCustomFields(_options?: PromiseConfigurationOptions): Promise<ObjectModel> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getAffiliateCustomFields(observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Retrieves a single Commission Program
      * Retrieve a Commission Program
      * @param commissionProgramId commission_program_id
@@ -676,6 +738,34 @@ export class PromiseAffiliateApi {
     public getRedirectLink(redirectId: string, _options?: PromiseConfigurationOptions): Promise<AffiliateLink> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getRedirectLink(redirectId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of Affiliates
+     * List Affiliates
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;affiliate_name&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;code&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;name&#x60; - &#x60;status&#x60; - &#x60;code&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; 
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listAffiliateWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListAffiliatesResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listAffiliateWithHttpInfo(filter, orderBy, pageSize, pageToken, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of Affiliates
+     * List Affiliates
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;affiliate_name&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;code&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;name&#x60; - &#x60;status&#x60; - &#x60;code&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; 
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listAffiliate(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<ListAffiliatesResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listAffiliate(filter, orderBy, pageSize, pageToken, observableOptions);
         return result.toPromise();
     }
 
@@ -732,6 +822,36 @@ export class PromiseAffiliateApi {
     public listAffiliateLinks(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<ListAffiliateLinksResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.listAffiliateLinks(filter, orderBy, pageSize, pageToken, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of affiliate payments
+     * List Affiliate Payments
+     * @param affiliateId affiliate_id
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;since_time%3D%3D2024-09-17T-15:50+00&#x60; - &#x60;filter&#x3D;until_time%3D%3D2024-09-17T-15:50+00&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;create_time&#x60; - &#x60;pay_date&#x60; - &#x60;pay_amount&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; 
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listAffiliatePaymentsWithHttpInfo(affiliateId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListAffiliatePaymentsResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listAffiliatePaymentsWithHttpInfo(affiliateId, filter, orderBy, pageSize, pageToken, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of affiliate payments
+     * List Affiliate Payments
+     * @param affiliateId affiliate_id
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;since_time%3D%3D2024-09-17T-15:50+00&#x60; - &#x60;filter&#x3D;until_time%3D%3D2024-09-17T-15:50+00&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;create_time&#x60; - &#x60;pay_date&#x60; - &#x60;pay_amount&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; 
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listAffiliatePayments(affiliateId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<ListAffiliatePaymentsResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listAffiliatePayments(affiliateId, filter, orderBy, pageSize, pageToken, observableOptions);
         return result.toPromise();
     }
 
@@ -856,6 +976,32 @@ export class PromiseAffiliateApi {
     public updateAffiliate(id: string, updateAffiliateRequest?: UpdateAffiliateRequest, _options?: PromiseConfigurationOptions): Promise<RestAffiliate> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateAffiliate(id, updateAffiliateRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates a custom field of the specified type and options to the Affiliate object.
+     * Update a Custom Field
+     * @param customFieldId custom_field_id
+     * @param updateCustomFieldMetaDataRequest request
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateAffiliateCustomFieldWithHttpInfo(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Array<string>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateAffiliateCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates a custom field of the specified type and options to the Affiliate object.
+     * Update a Custom Field
+     * @param customFieldId custom_field_id
+     * @param updateCustomFieldMetaDataRequest request
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateAffiliateCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Array<string>, _options?: PromiseConfigurationOptions): Promise<CustomFieldMetaData> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateAffiliateCustomField(customFieldId, updateCustomFieldMetaDataRequest, updateMask, observableOptions);
         return result.toPromise();
     }
 

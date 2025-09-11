@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **ContactId** | **string** |  | [optional] 
 **LeadAffiliateId** | **string** |  | [optional] 
 **Notes** | **string** |  | [optional] 
-**OrderTime** | **string** | ISO date-time of the transaction. e.g 2024-04-28 11:25:44 | [optional] 
+**OrderTime** | **string** | The date and time of the order. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z) | [optional] 
 **OrderTitle** | **string** |  | [optional] 
 **OrderType** | **string** |  | [optional] 
 **PaymentPlan** | [**UpdatedPaymentPlan**](UpdatedPaymentPlan.md) |  | [optional] 

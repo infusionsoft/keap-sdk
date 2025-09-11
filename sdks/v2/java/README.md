@@ -2,7 +2,7 @@
 
 Keap REST API
 
-- API version: 2.70.0.849961
+- API version: 2.70.0.852640
 
 - Generator version: 7.13.0
 
@@ -43,7 +43,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.keap.core</groupId>
   <artifactId>core-service-v2-java-sdk</artifactId>
-  <version>1.0.28</version>
+  <version>1.0.29</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.keap.core:core-service-v2-java-sdk:1.0.28"
+compile "com.keap.core:core-service-v2-java-sdk:1.0.29"
 ```
 
 ### Others
@@ -66,7 +66,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/core-service-v2-java-sdk-1.0.28.jar`
+- `target/core-service-v2-java-sdk-1.0.29.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -118,6 +118,8 @@ Class | Method | HTTP request | Description
 *AffiliateApi* | [**assignProductCommissionProgramWithHttpInfo**](docs/AffiliateApi.md#assignProductCommissionProgramWithHttpInfo) | **POST** /v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Assign a Product Commission Program
 *AffiliateApi* | [**assignSubscriptionCommissionProgram**](docs/AffiliateApi.md#assignSubscriptionCommissionProgram) | **POST** /v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id} | Assign a Subscription Commission Program
 *AffiliateApi* | [**assignSubscriptionCommissionProgramWithHttpInfo**](docs/AffiliateApi.md#assignSubscriptionCommissionProgramWithHttpInfo) | **POST** /v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id} | Assign a Subscription Commission Program
+*AffiliateApi* | [**createAffiliateCustomField**](docs/AffiliateApi.md#createAffiliateCustomField) | **POST** /v2/affiliates/model/customFields | Create an Affiliate Custom Field
+*AffiliateApi* | [**createAffiliateCustomFieldWithHttpInfo**](docs/AffiliateApi.md#createAffiliateCustomFieldWithHttpInfo) | **POST** /v2/affiliates/model/customFields | Create an Affiliate Custom Field
 *AffiliateApi* | [**createDefaultCommissionProgram**](docs/AffiliateApi.md#createDefaultCommissionProgram) | **POST** /v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Create a Default Commission Program
 *AffiliateApi* | [**createDefaultCommissionProgramWithHttpInfo**](docs/AffiliateApi.md#createDefaultCommissionProgramWithHttpInfo) | **POST** /v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Create a Default Commission Program
 *AffiliateApi* | [**createRedirectLink**](docs/AffiliateApi.md#createRedirectLink) | **POST** /v2/affiliates/redirects | Create an Affiliate Link
@@ -126,6 +128,8 @@ Class | Method | HTTP request | Description
 *AffiliateApi* | [**deleteAffiliateWithHttpInfo**](docs/AffiliateApi.md#deleteAffiliateWithHttpInfo) | **DELETE** /v2/affiliates/{id} | Delete Affiliate
 *AffiliateApi* | [**deleteAffiliateCommissionProgram**](docs/AffiliateApi.md#deleteAffiliateCommissionProgram) | **DELETE** /v2/affiliates/commissionPrograms/{commission_program_id} | Delete a Commission Program
 *AffiliateApi* | [**deleteAffiliateCommissionProgramWithHttpInfo**](docs/AffiliateApi.md#deleteAffiliateCommissionProgramWithHttpInfo) | **DELETE** /v2/affiliates/commissionPrograms/{commission_program_id} | Delete a Commission Program
+*AffiliateApi* | [**deleteAffiliateCustomField**](docs/AffiliateApi.md#deleteAffiliateCustomField) | **DELETE** /v2/affiliates/model/customFields/{custom_field_id} | Delete a Custom Field
+*AffiliateApi* | [**deleteAffiliateCustomFieldWithHttpInfo**](docs/AffiliateApi.md#deleteAffiliateCustomFieldWithHttpInfo) | **DELETE** /v2/affiliates/model/customFields/{custom_field_id} | Delete a Custom Field
 *AffiliateApi* | [**deleteRedirectLink**](docs/AffiliateApi.md#deleteRedirectLink) | **DELETE** /v2/affiliates/redirects/{redirect_id} | Delete an Affiliate Link
 *AffiliateApi* | [**deleteRedirectLinkWithHttpInfo**](docs/AffiliateApi.md#deleteRedirectLinkWithHttpInfo) | **DELETE** /v2/affiliates/redirects/{redirect_id} | Delete an Affiliate Link
 *AffiliateApi* | [**getAffiliate**](docs/AffiliateApi.md#getAffiliate) | **GET** /v2/affiliates/{id} | Retrieve an Affiliate
@@ -134,14 +138,20 @@ Class | Method | HTTP request | Description
 *AffiliateApi* | [**getAffiliateCommissionTotalWithHttpInfo**](docs/AffiliateApi.md#getAffiliateCommissionTotalWithHttpInfo) | **GET** /v2/affiliates/{affiliate_id}/commissionTotal | Retrieve Affiliate Commission Earned and View LedgerURl for portal
 *AffiliateApi* | [**getAffiliateCommissions**](docs/AffiliateApi.md#getAffiliateCommissions) | **GET** /v2/affiliates/{affiliate_id}:commissions | Retrieve Affiliate Commission and Clawbacks
 *AffiliateApi* | [**getAffiliateCommissionsWithHttpInfo**](docs/AffiliateApi.md#getAffiliateCommissionsWithHttpInfo) | **GET** /v2/affiliates/{affiliate_id}:commissions | Retrieve Affiliate Commission and Clawbacks
+*AffiliateApi* | [**getAffiliateCustomFields**](docs/AffiliateApi.md#getAffiliateCustomFields) | **GET** /v2/affiliates/model | Retrieve Affiliate Model
+*AffiliateApi* | [**getAffiliateCustomFieldsWithHttpInfo**](docs/AffiliateApi.md#getAffiliateCustomFieldsWithHttpInfo) | **GET** /v2/affiliates/model | Retrieve Affiliate Model
 *AffiliateApi* | [**getCommissionProgram**](docs/AffiliateApi.md#getCommissionProgram) | **GET** /v2/affiliates/commissionPrograms/{commission_program_id} | Retrieve a Commission Program
 *AffiliateApi* | [**getCommissionProgramWithHttpInfo**](docs/AffiliateApi.md#getCommissionProgramWithHttpInfo) | **GET** /v2/affiliates/commissionPrograms/{commission_program_id} | Retrieve a Commission Program
 *AffiliateApi* | [**getRedirectLink**](docs/AffiliateApi.md#getRedirectLink) | **GET** /v2/affiliates/redirects/{redirect_id} | Retrieve an Affiliate Link
 *AffiliateApi* | [**getRedirectLinkWithHttpInfo**](docs/AffiliateApi.md#getRedirectLinkWithHttpInfo) | **GET** /v2/affiliates/redirects/{redirect_id} | Retrieve an Affiliate Link
+*AffiliateApi* | [**listAffiliate**](docs/AffiliateApi.md#listAffiliate) | **GET** /v2/affiliates | List Affiliates
+*AffiliateApi* | [**listAffiliateWithHttpInfo**](docs/AffiliateApi.md#listAffiliateWithHttpInfo) | **GET** /v2/affiliates | List Affiliates
 *AffiliateApi* | [**listAffiliateCommissionPrograms**](docs/AffiliateApi.md#listAffiliateCommissionPrograms) | **GET** /v2/affiliates/commissionPrograms | List Affiliate Commission Programs
 *AffiliateApi* | [**listAffiliateCommissionProgramsWithHttpInfo**](docs/AffiliateApi.md#listAffiliateCommissionProgramsWithHttpInfo) | **GET** /v2/affiliates/commissionPrograms | List Affiliate Commission Programs
 *AffiliateApi* | [**listAffiliateLinks**](docs/AffiliateApi.md#listAffiliateLinks) | **GET** /v2/affiliates/redirects | List Affiliate Links
 *AffiliateApi* | [**listAffiliateLinksWithHttpInfo**](docs/AffiliateApi.md#listAffiliateLinksWithHttpInfo) | **GET** /v2/affiliates/redirects | List Affiliate Links
+*AffiliateApi* | [**listAffiliatePayments**](docs/AffiliateApi.md#listAffiliatePayments) | **GET** /v2/affiliates/{affiliate_id}/payments | List Affiliate Payments
+*AffiliateApi* | [**listAffiliatePaymentsWithHttpInfo**](docs/AffiliateApi.md#listAffiliatePaymentsWithHttpInfo) | **GET** /v2/affiliates/{affiliate_id}/payments | List Affiliate Payments
 *AffiliateApi* | [**listSummaries**](docs/AffiliateApi.md#listSummaries) | **GET** /v2/affiliates/summaries | List Affiliate Summaries
 *AffiliateApi* | [**listSummariesWithHttpInfo**](docs/AffiliateApi.md#listSummariesWithHttpInfo) | **GET** /v2/affiliates/summaries | List Affiliate Summaries
 *AffiliateApi* | [**removeAffiliateFromProgram**](docs/AffiliateApi.md#removeAffiliateFromProgram) | **POST** /v2/affiliates/{id}:removeFromProgram | Remove an Affiliate from a Commission Program
@@ -152,6 +162,8 @@ Class | Method | HTTP request | Description
 *AffiliateApi* | [**removeSubscriptionPlanCommissionFromCommissionsWithHttpInfo**](docs/AffiliateApi.md#removeSubscriptionPlanCommissionFromCommissionsWithHttpInfo) | **POST** /v2/affiliates/commissionPrograms/{commission_id}:removeSubscriptionCommission | Remove a Subscription from a Commission Program
 *AffiliateApi* | [**updateAffiliate**](docs/AffiliateApi.md#updateAffiliate) | **PATCH** /v2/affiliates/{id} | Update an Affiliate
 *AffiliateApi* | [**updateAffiliateWithHttpInfo**](docs/AffiliateApi.md#updateAffiliateWithHttpInfo) | **PATCH** /v2/affiliates/{id} | Update an Affiliate
+*AffiliateApi* | [**updateAffiliateCustomField**](docs/AffiliateApi.md#updateAffiliateCustomField) | **PATCH** /v2/affiliates/model/customFields/{custom_field_id} | Update a Custom Field
+*AffiliateApi* | [**updateAffiliateCustomFieldWithHttpInfo**](docs/AffiliateApi.md#updateAffiliateCustomFieldWithHttpInfo) | **PATCH** /v2/affiliates/model/customFields/{custom_field_id} | Update a Custom Field
 *AffiliateApi* | [**updateCommissionProgram**](docs/AffiliateApi.md#updateCommissionProgram) | **PATCH** /v2/affiliates/commissionPrograms/{commission_program_id} | Update an Affiliate Commission Program
 *AffiliateApi* | [**updateCommissionProgramWithHttpInfo**](docs/AffiliateApi.md#updateCommissionProgramWithHttpInfo) | **PATCH** /v2/affiliates/commissionPrograms/{commission_program_id} | Update an Affiliate Commission Program
 *AffiliateApi* | [**updateDefaultCommissionProgram**](docs/AffiliateApi.md#updateDefaultCommissionProgram) | **PATCH** /v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Update a Default Commission Program
@@ -715,7 +727,6 @@ Class | Method | HTTP request | Description
  - [InvoiceFile](docs/InvoiceFile.md)
  - [InvoiceOrderPayment](docs/InvoiceOrderPayment.md)
  - [Item](docs/Item.md)
- - [LandingPage](docs/LandingPage.md)
  - [LeadScore](docs/LeadScore.md)
  - [LeadSource](docs/LeadSource.md)
  - [LeadSourceCategory](docs/LeadSourceCategory.md)
@@ -743,7 +754,6 @@ Class | Method | HTTP request | Description
  - [ListEmailsSentResponse](docs/ListEmailsSentResponse.md)
  - [ListFilesResponse](docs/ListFilesResponse.md)
  - [ListFreeTrialDiscountsResponse](docs/ListFreeTrialDiscountsResponse.md)
- - [ListLandingPagesResponse](docs/ListLandingPagesResponse.md)
  - [ListLeadSourceCategoriesResponse](docs/ListLeadSourceCategoriesResponse.md)
  - [ListLeadSourceExpensesResponse](docs/ListLeadSourceExpensesResponse.md)
  - [ListLeadSourceRecurringExpensesResponse](docs/ListLeadSourceRecurringExpensesResponse.md)

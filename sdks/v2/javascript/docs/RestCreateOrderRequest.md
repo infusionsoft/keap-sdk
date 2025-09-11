@@ -8,9 +8,9 @@ Name | Type | Description | Notes
 **leadAffiliateId** | **String** |  | [optional] 
 **notes** | **String** |  | [optional] 
 **orderItems** | [**[CreateOrderItemRequest]**](CreateOrderItemRequest.md) |  | 
-**orderTime** | **String** |  | 
+**orderTime** | **String** | The date and time of the order. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z) | [optional] 
 **orderTitle** | **String** |  | 
-**orderType** | **String** |  | 
+**orderType** | **String** | The order type. Valid values are: ONLINE, OFFLINE. | [optional] 
 **promoCodes** | **[String]** | Uses multiple strings as promo codes. The corresponding discount will be applied to the order. | [optional] 
 **salesAffiliateId** | **String** |  | [optional] 
 **shippingAddress** | [**AddressInformation**](AddressInformation.md) |  | [optional] 
