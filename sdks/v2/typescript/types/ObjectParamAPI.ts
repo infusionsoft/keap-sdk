@@ -78,8 +78,6 @@ import { CreateDefaultCommissionProgramRequest } from '../models/CreateDefaultCo
 import { CreateEmailSentRequest } from '../models/CreateEmailSentRequest';
 import { CreateEmailsSentRequest } from '../models/CreateEmailsSentRequest';
 import { CreateFreeTrialDiscountRequest } from '../models/CreateFreeTrialDiscountRequest';
-import { CreateFunnelIntegrationRequest } from '../models/CreateFunnelIntegrationRequest';
-import { CreateFunnelIntegrationTriggerEvents } from '../models/CreateFunnelIntegrationTriggerEvents';
 import { CreateLeadSourceExpenseRequest } from '../models/CreateLeadSourceExpenseRequest';
 import { CreateLeadSourceRecurringExpenseRequest } from '../models/CreateLeadSourceRecurringExpenseRequest';
 import { CreateLeadSourceRequest } from '../models/CreateLeadSourceRequest';
@@ -116,7 +114,6 @@ import { CustomFieldValue } from '../models/CustomFieldValue';
 import { DefaultCommission } from '../models/DefaultCommission';
 import { DeleteEmailsRequest } from '../models/DeleteEmailsRequest';
 import { DeleteEmailsResponse } from '../models/DeleteEmailsResponse';
-import { DeleteFunnelIntegrationRequest } from '../models/DeleteFunnelIntegrationRequest';
 import { DeleteProgramCommissionRequest } from '../models/DeleteProgramCommissionRequest';
 import { DeleteSubscriptionPlanCommissionRequest } from '../models/DeleteSubscriptionPlanCommissionRequest';
 import { Discount } from '../models/Discount';
@@ -137,11 +134,6 @@ import { FaxNumber } from '../models/FaxNumber';
 import { FileMetadata } from '../models/FileMetadata';
 import { FileOperationRequest } from '../models/FileOperationRequest';
 import { FreeTrialDiscount } from '../models/FreeTrialDiscount';
-import { FunnelIntegrationAction } from '../models/FunnelIntegrationAction';
-import { FunnelIntegrationHttpRequest } from '../models/FunnelIntegrationHttpRequest';
-import { FunnelIntegrationSchemaField } from '../models/FunnelIntegrationSchemaField';
-import { FunnelIntegrationTriggerEventDTO } from '../models/FunnelIntegrationTriggerEventDTO';
-import { FunnelIntegrationTriggerResultDTO } from '../models/FunnelIntegrationTriggerResultDTO';
 import { GetApplicationEnabledStatusResponse } from '../models/GetApplicationEnabledStatusResponse';
 import { GetBusinessProfileResponse } from '../models/GetBusinessProfileResponse';
 import { GetContactOptionTypesResponse } from '../models/GetContactOptionTypesResponse';
@@ -218,8 +210,9 @@ import { NoteTemplate } from '../models/NoteTemplate';
 import { ObjectModel } from '../models/ObjectModel';
 import { OpportunityContact } from '../models/OpportunityContact';
 import { OpportunityStage } from '../models/OpportunityStage';
+import { Order } from '../models/Order';
+import { OrderItem } from '../models/OrderItem';
 import { OrderItemProduct } from '../models/OrderItemProduct';
-import { OrderItemTax } from '../models/OrderItemTax';
 import { OrderTotalDiscount } from '../models/OrderTotalDiscount';
 import { Origin } from '../models/Origin';
 import { OriginRequest } from '../models/OriginRequest';
@@ -254,14 +247,8 @@ import { RestApplyCommissionRequest } from '../models/RestApplyCommissionRequest
 import { RestCreateOrderRequest } from '../models/RestCreateOrderRequest';
 import { RestEmailAddress } from '../models/RestEmailAddress';
 import { RestOpportunityStage } from '../models/RestOpportunityStage';
-import { RestProductOption } from '../models/RestProductOption';
-import { RestProductOptionValue } from '../models/RestProductOptionValue';
-import { RestSubscriptionPlan } from '../models/RestSubscriptionPlan';
 import { RestV2Opportunity } from '../models/RestV2Opportunity';
-import { RestV2Order } from '../models/RestV2Order';
-import { RestV2OrderItem } from '../models/RestV2OrderItem';
 import { RestV2Product } from '../models/RestV2Product';
-import { RestV2Subscription } from '../models/RestV2Subscription';
 import { RestV2User } from '../models/RestV2User';
 import { Sequence } from '../models/Sequence';
 import { SequencePath } from '../models/SequencePath';
@@ -8949,6 +8936,29 @@ export class ObjectTaskApi {
 import { ObservableUsersApi } from "./ObservableAPI";
 import { UsersApiRequestFactory, UsersApiResponseProcessor} from "../apis/UsersApi";
 
+export interface UsersApiGetUserByIdRequest {
+    /**
+     * user_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof UsersApigetUserById
+     */
+    userId: string
+}
+
+export interface UsersApiGetUserInfoRequest {
+}
+
+export interface UsersApiGetUserSignatureRequest {
+    /**
+     * user_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof UsersApigetUserSignature
+     */
+    userId: string
+}
+
 export interface UsersApiListPaginatedUsersRequest {
     /**
      * Filter to apply, allowed fields are: - (String) &#x60;email&#x60; - (String) &#x60;given_name&#x60; - (Boolean) &#x60;include_inactive&#x60; - (Boolean) &#x60;include_partners&#x60; - (Set[String]) &#x60;user_ids&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;user_ids%3D%3D123%3Bgiven_name%3D%3DSmith&#x60; 
@@ -8982,11 +8992,88 @@ export interface UsersApiListPaginatedUsersRequest {
     pageToken?: string
 }
 
+export interface UsersApiUpdateUserRequest {
+    /**
+     * user_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof UsersApiupdateUser
+     */
+    userId: string
+    /**
+     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * Defaults to: undefined
+     * @type Array&lt;string&gt;
+     * @memberof UsersApiupdateUser
+     */
+    updateMask?: Array<string>
+    /**
+     * user
+     * @type UpdateUserRequest
+     * @memberof UsersApiupdateUser
+     */
+    updateUserRequest?: UpdateUserRequest
+}
+
 export class ObjectUsersApi {
     private api: ObservableUsersApi
 
     public constructor(configuration: Configuration, requestFactory?: UsersApiRequestFactory, responseProcessor?: UsersApiResponseProcessor) {
         this.api = new ObservableUsersApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Retrieves a specific User
+     * Get User
+     * @param param the request object
+     */
+    public getUserByIdWithHttpInfo(param: UsersApiGetUserByIdRequest, options?: ConfigurationOptions): Promise<HttpInfo<User>> {
+        return this.api.getUserByIdWithHttpInfo(param.userId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a specific User
+     * Get User
+     * @param param the request object
+     */
+    public getUserById(param: UsersApiGetUserByIdRequest, options?: ConfigurationOptions): Promise<User> {
+        return this.api.getUserById(param.userId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves information for the current authenticated end-user, as outlined by the [OpenID Connect specification](http://openid.net/specs/openid-connect-core-1_0.html#UserInfo).
+     * Retrieve User Info
+     * @param param the request object
+     */
+    public getUserInfoWithHttpInfo(param: UsersApiGetUserInfoRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<GetUserInfoResponse>> {
+        return this.api.getUserInfoWithHttpInfo( options).toPromise();
+    }
+
+    /**
+     * Retrieves information for the current authenticated end-user, as outlined by the [OpenID Connect specification](http://openid.net/specs/openid-connect-core-1_0.html#UserInfo).
+     * Retrieve User Info
+     * @param param the request object
+     */
+    public getUserInfo(param: UsersApiGetUserInfoRequest = {}, options?: ConfigurationOptions): Promise<GetUserInfoResponse> {
+        return this.api.getUserInfo( options).toPromise();
+    }
+
+    /**
+     * Retrieves a HTML snippet that contains the user\'s email signature.
+     * Get User email signature
+     * @param param the request object
+     */
+    public getUserSignatureWithHttpInfo(param: UsersApiGetUserSignatureRequest, options?: ConfigurationOptions): Promise<HttpInfo<string>> {
+        return this.api.getUserSignatureWithHttpInfo(param.userId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a HTML snippet that contains the user\'s email signature.
+     * Get User email signature
+     * @param param the request object
+     */
+    public getUserSignature(param: UsersApiGetUserSignatureRequest, options?: ConfigurationOptions): Promise<string> {
+        return this.api.getUserSignature(param.userId,  options).toPromise();
     }
 
     /**
@@ -9005,6 +9092,24 @@ export class ObjectUsersApi {
      */
     public listPaginatedUsers(param: UsersApiListPaginatedUsersRequest = {}, options?: ConfigurationOptions): Promise<ListUsersPaginatedResponse> {
         return this.api.listPaginatedUsers(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    }
+
+    /**
+     * Updates information on a specific User
+     * Update User
+     * @param param the request object
+     */
+    public updateUserWithHttpInfo(param: UsersApiUpdateUserRequest, options?: ConfigurationOptions): Promise<HttpInfo<User>> {
+        return this.api.updateUserWithHttpInfo(param.userId, param.updateMask, param.updateUserRequest,  options).toPromise();
+    }
+
+    /**
+     * Updates information on a specific User
+     * Update User
+     * @param param the request object
+     */
+    public updateUser(param: UsersApiUpdateUserRequest, options?: ConfigurationOptions): Promise<User> {
+        return this.api.updateUser(param.userId, param.updateMask, param.updateUserRequest,  options).toPromise();
     }
 
 }

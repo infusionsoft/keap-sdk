@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   description: Keap REST Core Service
-  version: 2.70.0.852640
+  version: 2.70.0.862454-hf-202509261459
   title: Keap REST API
   termsOfService: https://keap.com/legal
   contact:
@@ -36,8 +36,6 @@ tags:
   description: Rest File Controller
 - name: Free Trial Discounts
   description: Rest Free Trial Discount Controller
-- name: FunnelIntegration
-  description: Rest Funnel Integration Endpoint
 - name: Lead Source Categories
   description: Rest Lead Source Category Controller
 - name: Lead Source Expenses
@@ -8404,6 +8402,46 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
       deprecated: false
+  /v2/oauth/connect/userinfo:
+    get:
+      tags:
+      - Users
+      summary: Retrieve User Info
+      description: Retrieves information for the current authenticated end-user, as
+        outlined by the [OpenID Connect specification](http://openid.net/specs/openid-connect-core-1_0.html#UserInfo).
+      operationId: getUserInfo
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetUserInfoResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
   /v2/opportunities:
     get:
       tags:
@@ -13058,6 +13096,171 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
       deprecated: false
+  /v2/users/{user_id}:
+    get:
+      tags:
+      - Users
+      summary: Get User
+      description: Retrieves a specific User
+      operationId: getUserById
+      parameters:
+      - name: user_id
+        in: path
+        description: user_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    patch:
+      tags:
+      - Users
+      summary: Update User
+      description: Updates information on a specific User
+      operationId: updateUser
+      parameters:
+      - name: update_mask
+        in: query
+        description: An optional list of properties to be updated. If set, only the
+          provided properties will be updated and others will be skipped.
+        required: false
+        allowEmptyValue: false
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+          enum:
+          - address
+          - company_name
+          - email_address
+          - family_name
+          - fax_numbers
+          - given_name
+          - job_title
+          - phone_numbers
+          - time_zone
+          - website
+      - name: user_id
+        in: path
+        description: user_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserRequest'
+        description: user
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/users/{user_id}/signature:
+    get:
+      tags:
+      - Users
+      summary: Get User email signature
+      description: Retrieves a HTML snippet that contains the user's email signature.
+      operationId: getUserSignature
+      parameters:
+      - name: user_id
+        in: path
+        description: user_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
 servers:
 - url: https://api.keap.com/crm/rest
 components:
@@ -14444,45 +14647,6 @@ components:
         subscription_plan_id:
           type: string
       title: CreateFreeTrialDiscountRequest
-    CreateFunnelIntegrationRequest:
-      type: object
-      properties:
-        base_url:
-          type: string
-          description: The base URL of the integration, that will be used to call
-            the integration related REST endpoints.
-        context:
-          type: string
-          description: The context of the integration, that will be used internally
-            to identify the integration.
-        enabled:
-          type: boolean
-          description: The flag to enable or disable the integration.
-        funnel_integration_actions:
-          type: array
-          description: The list of actions that will be installed with the integration.
-          items:
-            $ref: '#/components/schemas/FunnelIntegrationAction'
-        funnel_integration_triggers:
-          type: array
-          description: The list of triggers that will be installed with the integration.
-          items:
-            $ref: '#/components/schemas/FunnelIntegrationAction'
-        name:
-          type: string
-          example: My Integration, MyIntegration, My 1 New Very Exciting Integration
-          description: The name of the integration, that will be used internally to
-            identify the integration.
-      title: CreateFunnelIntegrationRequest
-    CreateFunnelIntegrationTriggerEvents:
-      type: object
-      properties:
-        funnel_integration_trigger_events:
-          type: array
-          description: A list of trigger events to be created.
-          items:
-            $ref: '#/components/schemas/FunnelIntegrationTriggerEventDTO'
-      title: CreateFunnelIntegrationTriggerEvents
     CreateLeadSourceExpenseRequest:
       type: object
       properties:
@@ -14691,7 +14855,8 @@ components:
         cost_per_unit:
           type: number
           format: double
-          description: The cost per unit. Must be greater than or equal to 0.
+          description: The cost per unit. Must be greater than or equal to 0. If not
+            specified, the product cost will be used.
         description:
           type: string
           description: The description of the order item. Must not be whitespace.
@@ -15396,26 +15561,6 @@ components:
           additionalProperties:
             type: string
       title: DeleteEmailsResponse
-    DeleteFunnelIntegrationRequest:
-      type: object
-      properties:
-        action_names:
-          type: array
-          description: The name of the actions, that will be looked for and uninstalled.
-          items:
-            type: string
-        integration_names:
-          type: array
-          description: The name of the integrations, that will be looked for and uninstalled.
-            This will uninstall all triggers and actions related to this automation.
-          items:
-            type: string
-        trigger_names:
-          type: array
-          description: The name of the triggers, that will be looked for and uninstalled.
-          items:
-            type: string
-      title: DeleteFunnelIntegrationRequest
     DeleteProgramCommissionRequest:
       type: object
       properties:
@@ -15432,10 +15577,6 @@ components:
       title: DeleteSubscriptionPlanCommissionRequest
     Discount:
       type: object
-      required:
-      - amount
-      - discount_method
-      - special_item_id
       properties:
         amount:
           type: number
@@ -15445,8 +15586,6 @@ components:
           enum:
           - AMOUNT
           - PERCENT
-        line_item_id:
-          type: string
         special_item_id:
           type: string
       title: Discount
@@ -15970,133 +16109,6 @@ components:
         subscription_plan_id:
           type: string
       title: FreeTrialDiscount
-    FunnelIntegrationAction:
-      type: object
-      properties:
-        base_url:
-          type: string
-          description: The base URL of the trigger, that will be used to call the
-            integration related REST endpoints.
-        context:
-          type: string
-          description: The context of the trigger, that will be used internally to
-            identify the integration.
-        enabled:
-          type: boolean
-          description: The flag to enable or disable the integration trigger.
-        icon_url:
-          type: string
-          description: The icon URL of the trigger, that will be used to display the
-            icon of this specific integration trigger.
-        name:
-          type: string
-          example: My Trigger, MyTrigger, My 1 New Very Exciting Trigger
-          description: The name of the trigger, that will be used internally to identify
-            and initiate the trigger.
-        schema_fields:
-          type: array
-          example: |-
-            "schema_fields": [
-                            {
-                                "name": "my_schema_field",
-                                "type": "String",
-                                "label": "My Schema Field"
-                            },
-                            {
-                                "name": "num_sales",
-                                "type": "Integer",
-                                "label": "Number of Sales"
-                            }
-
-                        ],
-          description: The schema for this trigger that can be used in the builder
-            context, and populated when a trigger is initiated.
-          items:
-            $ref: '#/components/schemas/FunnelIntegrationSchemaField'
-      title: FunnelIntegrationAction
-    FunnelIntegrationHttpRequest:
-      type: object
-      properties:
-        body:
-          type: string
-          example:
-            contact_id: '123'
-          description: The body of the HTTP request that will be made when this action
-            is processed in the builder(s).
-        call_type:
-          type: string
-          example: POST
-          description: The type of HTTP request that will be made when this action
-            is processed in the builder(s).
-        header_parameters:
-          type: object
-          example:
-            header1: value1
-            contact_name: ~Contact.FirstName~
-          description: A map of the header parameters of the HTTP request that will
-            be made when this action is processed in the builder(s).
-          additionalProperties:
-            type: string
-        query_parameters:
-          type: object
-          example:
-            param1: value1
-            contact_name: ~Contact.FirstName~
-          description: A map of the query parameters of the HTTP request that will
-            be made when this action is processed in the builder(s).
-          additionalProperties:
-            type: string
-        url:
-          type: string
-          example: https://api.example.com
-          description: The URL of the HTTP request that will be made when this action
-            is processed in the builder(s).
-      title: FunnelIntegrationHttpRequest
-    FunnelIntegrationSchemaField:
-      type: object
-      properties:
-        label:
-          type: string
-          example: My Integration Field
-          description: The label that will be used to show the name of the field in
-            the UI.
-        name:
-          type: string
-          example: my_integration_field
-          description: The name of the schema field. Will be the defauly label, if
-            no label is provided.
-        type:
-          type: string
-          example: String
-          description: The data type of the field.
-      title: FunnelIntegrationSchemaField
-    FunnelIntegrationTriggerEventDTO:
-      type: object
-      properties:
-        contact_id:
-          type: integer
-          format: int64
-        oracle_id:
-          type: string
-        schema_data:
-          type: string
-      title: FunnelIntegrationTriggerEventDTO
-    FunnelIntegrationTriggerResultDTO:
-      type: object
-      properties:
-        automation_id:
-          type: integer
-          format: int64
-        goal_id:
-          type: integer
-          format: int64
-        message:
-          type: string
-        schema_data:
-          type: string
-        success:
-          type: boolean
-      title: FunnelIntegrationTriggerResultDTO
     GetApplicationEnabledStatusResponse:
       type: object
       properties:
@@ -16919,7 +16931,7 @@ components:
         orders:
           type: array
           items:
-            $ref: '#/components/schemas/RestV2Order'
+            $ref: '#/components/schemas/Order'
       title: ListOrders
     ListPaymentMethodsResponse:
       type: object
@@ -17197,67 +17209,166 @@ components:
           items:
             type: string
       title: OpportunityStage
+    Order:
+      type: object
+      properties:
+        allow_payment:
+          type: boolean
+          description: Whether or not card-related payments should be allowed on this
+            order. Applies only to Keap Pro/Max edition.
+        allow_paypal:
+          type: boolean
+          description: Whether or not PayPal payments should be allowed on this order.
+            Applies only to Keap Pro/Max edition.
+        contact:
+          $ref: '#/components/schemas/BasicContact'
+        creation_time:
+          type: string
+          description: When this order was originally created. In ISO-8601 format
+            (e.g. 2024-05-21T23:00:00Z)
+        files:
+          type: array
+          description: A list of attached files to this order. Applies only to Keap
+            Pro/Max edition.
+          items:
+            $ref: '#/components/schemas/InvoiceFile'
+        id:
+          type: string
+        invoice_number:
+          type: string
+          description: The associated invoice identifier. Applies only to Keap Pro/Max
+            edition. Feature not yet supported.
+        lead_affiliate_id:
+          type: string
+        modification_time:
+          type: string
+          description: When this order was changed. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+        notes:
+          type: string
+        order_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderItem'
+        order_time:
+          type: string
+          description: A user-defined date and time of the order. In ISO-8601 format
+            (e.g. 2024-05-21T23:00:00Z)
+        order_type:
+          type: string
+          description: 'The order type. Valid values are: ONLINE, OFFLINE.'
+          enum:
+          - OFFLINE
+          - ONLINE
+          - UNKNOWN
+        payment_plan:
+          $ref: '#/components/schemas/PaymentPlan'
+        refund_total:
+          $ref: '#/components/schemas/CurrencyValue'
+        sales_affiliate_id:
+          type: string
+        shipping_information:
+          $ref: '#/components/schemas/ShippingInformation'
+        source_type:
+          type: string
+          description: 'The source where the order was created. Valid values include:
+            API, CHECKOUT_FORM, INVOICE, MANUAL_PAYMENT, QUICKBOOKS, UNKNOWN.'
+          enum:
+          - INVOICE
+          - API
+          - CHECKOUT_FORM
+          - MANUAL_PAYMENT
+          - QUICKBOOKS
+          - UNKNOWN
+        status:
+          type: string
+          description: 'The order status. Valid values are: DRAFT, SENT, VIEWED, PAID.'
+          enum:
+          - DRAFT
+          - PAID
+          - SENT
+          - VIEWED
+        terms:
+          type: string
+        title:
+          type: string
+        total:
+          $ref: '#/components/schemas/CurrencyValue'
+        total_due:
+          $ref: '#/components/schemas/CurrencyValue'
+        total_paid:
+          $ref: '#/components/schemas/CurrencyValue'
+      title: Order
+    OrderItem:
+      type: object
+      properties:
+        cost_per_unit:
+          $ref: '#/components/schemas/CurrencyValue'
+        description:
+          type: string
+        discount:
+          $ref: '#/components/schemas/CurrencyValue'
+        id:
+          type: string
+        item_type:
+          type: string
+          description: 'The order item type. Valid values are: PRODUCT, SHIPPING,
+            TAX, SERVICE, PRODUCT, UPSELL, FINANCE_CHARGE, DISCOUNT, PROGRAM, SUBSCRIPTION,
+            DISCOUNT_FREE_TRIAL, DISCOUNT_ORDER_TOTAL, DISCOUNT_PRODUCT, DISCOUNT_PRODUCT_CATEGORY,
+            DISCOUNT_SHIPPING, TIP, OTHER.'
+          enum:
+          - UNKNOWN
+          - SHIPPING
+          - TAX
+          - SERVICE
+          - PRODUCT
+          - UPSELL
+          - FINANCE_CHARGE
+          - DISCOUNT
+          - PROGRAM
+          - SUBSCRIPTION
+          - DISCOUNT_FREE_TRIAL
+          - DISCOUNT_ORDER_TOTAL
+          - DISCOUNT_PRODUCT
+          - DISCOUNT_PRODUCT_CATEGORY
+          - DISCOUNT_SHIPPING
+          - TIP
+          - OTHER
+        name:
+          type: string
+        notes:
+          type: string
+        price_per_unit:
+          $ref: '#/components/schemas/CurrencyValue'
+        product:
+          $ref: '#/components/schemas/OrderItemProduct'
+        quantity:
+          type: integer
+          format: int32
+        special:
+          $ref: '#/components/schemas/Discount'
+        subscription_id:
+          type: string
+          description: If the order item is a subscription type, this refers to the
+            subscription id that generated the order.
+        subscription_plan:
+          $ref: '#/components/schemas/SubscriptionPlan'
+      title: OrderItem
     OrderItemProduct:
       type: object
       properties:
-        active:
-          type: boolean
-        created_time:
-          type: string
         description:
           type: string
         id:
           type: string
-        last_updated_time:
-          type: string
         name:
-          type: string
-        product_options:
-          type: array
-          items:
-            $ref: '#/components/schemas/RestProductOption'
-        product_price:
-          type: number
-          format: double
-        product_short_description:
           type: string
         shippable:
           type: boolean
         sku:
           type: string
-        subscription_only:
-          type: boolean
-        subscription_plans:
-          type: array
-          items:
-            $ref: '#/components/schemas/RestSubscriptionPlan'
         taxable:
           type: boolean
-        url:
-          type: string
-          description: The url is the permalink to the resource
       title: OrderItemProduct
-    OrderItemTax:
-      type: object
-      properties:
-        amount:
-          type: number
-          format: double
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        orderItemId:
-          type: integer
-          format: int64
-        rate:
-          type: number
-          format: double
-        taxTemplateId:
-          type: integer
-          format: int64
-      title: OrderItemTax
     OrderTotalDiscount:
       type: object
       properties:
@@ -17822,7 +17933,6 @@ components:
       type: object
       required:
       - contact_id
-      - order_items
       - order_title
       properties:
         contact_id:
@@ -17916,105 +18026,6 @@ components:
         updated_time:
           type: string
       title: RestOpportunityStage
-    RestProductOption:
-      type: object
-      properties:
-        allow_spaces:
-          type: boolean
-        can_contain_character:
-          type: boolean
-        can_contain_number:
-          type: boolean
-        can_end_with_character:
-          type: boolean
-        can_end_with_number:
-          type: boolean
-        can_start_with_character:
-          type: boolean
-        can_start_with_number:
-          type: boolean
-        display_index:
-          type: integer
-          format: int32
-        id:
-          type: string
-        label:
-          type: string
-        max_chars:
-          type: integer
-          format: int32
-        min_chars:
-          type: integer
-          format: int32
-        name:
-          type: string
-        required:
-          type: boolean
-        text_message:
-          type: string
-        type:
-          type: string
-          enum:
-          - FIXED
-          - VARIABLE
-        values:
-          type: array
-          items:
-            $ref: '#/components/schemas/RestProductOptionValue'
-      title: RestProductOption
-    RestProductOptionValue:
-      type: object
-      properties:
-        id:
-          type: string
-        index:
-          type: integer
-          format: int32
-        is_default:
-          type: boolean
-        label:
-          type: string
-        price_adjustment:
-          type: number
-          format: double
-        sku:
-          type: string
-      title: RestProductOptionValue
-    RestSubscriptionPlan:
-      type: object
-      properties:
-        active:
-          type: boolean
-        cycle:
-          type: string
-          example: YEAR
-          description: The interval at which the customer is charged for the subscription.
-          enum:
-          - DAILY
-          - WEEKLY
-          - MONTHLY
-          - YEARLY
-        frequency:
-          type: integer
-          format: int32
-          example: 2
-          description: Interval at which a customer receives a product or service
-            as part of a subscription plan.
-        id:
-          type: string
-        number_of_cycles:
-          type: integer
-          format: int32
-        plan_price:
-          $ref: '#/components/schemas/CurrencyValue'
-        subscription_plan_index:
-          type: integer
-          format: int32
-          example: 99
-          description: Subscription plan identifier.
-        subscription_plan_name:
-          type: string
-      title: RestSubscriptionPlan
     RestV2Opportunity:
       type: object
       required:
@@ -18059,150 +18070,6 @@ components:
         user:
           $ref: '#/components/schemas/RestV2User'
       title: RestV2Opportunity
-    RestV2Order:
-      type: object
-      properties:
-        allow_payment:
-          type: boolean
-          description: Whether or not card-related payments should be allowed on this
-            order. Applies only to Keap Pro/Max edition.
-        allow_paypal:
-          type: boolean
-          description: Whether or not PayPal payments should be allowed on this order.
-            Applies only to Keap Pro/Max edition.
-        contact:
-          $ref: '#/components/schemas/BasicContact'
-        creation_time:
-          type: string
-          description: When this order was originally created. In ISO-8601 format
-            (e.g. 2024-05-21T23:00:00Z)
-        files:
-          type: array
-          description: A list of attached files to this order. Applies only to Keap
-            Pro/Max edition.
-          items:
-            $ref: '#/components/schemas/InvoiceFile'
-        id:
-          type: string
-        invoice_number:
-          type: string
-          description: The associated invoice identifier. Applies only to Keap Pro/Max
-            edition. Feature not yet supported.
-        lead_affiliate_id:
-          type: string
-        modification_time:
-          type: string
-          description: When this order was changed. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
-        notes:
-          type: string
-        order_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/RestV2OrderItem'
-        order_time:
-          type: string
-          description: A user-defined date and time of the order. In ISO-8601 format
-            (e.g. 2024-05-21T23:00:00Z)
-        order_type:
-          type: string
-          description: 'The order type. Valid values are: ONLINE, OFFLINE.'
-          enum:
-          - OFFLINE
-          - ONLINE
-          - UNKNOWN
-        payment_plan:
-          $ref: '#/components/schemas/PaymentPlan'
-        refund_total:
-          $ref: '#/components/schemas/CurrencyValue'
-        sales_affiliate_id:
-          type: string
-        shipping_information:
-          $ref: '#/components/schemas/ShippingInformation'
-        source_type:
-          type: string
-          description: 'The source where the order was created. Valid values include:
-            API, CHECKOUT_FORM, INVOICE, MANUAL_PAYMENT, QUICKBOOKS, UNKNOWN.'
-          enum:
-          - INVOICE
-          - API
-          - CHECKOUT_FORM
-          - MANUAL_PAYMENT
-          - QUICKBOOKS
-          - UNKNOWN
-        status:
-          type: string
-          description: 'The order status. Valid values are: DRAFT, SENT, VIEWED, PAID.'
-          enum:
-          - DRAFT
-          - PAID
-          - SENT
-          - VIEWED
-        terms:
-          type: string
-        title:
-          type: string
-        total:
-          $ref: '#/components/schemas/CurrencyValue'
-        total_due:
-          $ref: '#/components/schemas/CurrencyValue'
-        total_paid:
-          $ref: '#/components/schemas/CurrencyValue'
-      title: RestV2Order
-    RestV2OrderItem:
-      type: object
-      properties:
-        cost_per_unit:
-          $ref: '#/components/schemas/CurrencyValue'
-        description:
-          type: string
-        discount:
-          $ref: '#/components/schemas/CurrencyValue'
-        id:
-          type: string
-        item_type:
-          type: string
-          enum:
-          - UNKNOWN
-          - SHIPPING
-          - TAX
-          - SERVICE
-          - PRODUCT
-          - UPSELL
-          - FINANCE_CHARGE
-          - DISCOUNT
-          - PROGRAM
-          - SUBSCRIPTION
-          - DISCOUNT_FREE_TRIAL
-          - DISCOUNT_ORDER_TOTAL
-          - DISCOUNT_PRODUCT
-          - DISCOUNT_PRODUCT_CATEGORY
-          - DISCOUNT_SHIPPING
-          - TIP
-          - OTHER
-        name:
-          type: string
-        notes:
-          type: string
-        order_item_taxes:
-          type: array
-          items:
-            $ref: '#/components/schemas/OrderItemTax'
-        price_per_unit:
-          $ref: '#/components/schemas/CurrencyValue'
-        product:
-          $ref: '#/components/schemas/OrderItemProduct'
-        quantity:
-          type: integer
-          format: int32
-        special:
-          $ref: '#/components/schemas/Discount'
-        subscription:
-          $ref: '#/components/schemas/RestV2Subscription'
-        subscription_id:
-          type: string
-        subscription_plan:
-          $ref: '#/components/schemas/RestSubscriptionPlan'
-      title: RestV2OrderItem
     RestV2Product:
       type: object
       properties:
@@ -18271,23 +18138,6 @@ components:
           format: double
           description: Product weight
       title: RestV2Product
-    RestV2Subscription:
-      type: object
-      properties:
-        subscription_active:
-          type: boolean
-        subscription_cycles_completed:
-          type: integer
-          format: int32
-        subscription_end_date:
-          type: string
-        subscription_id:
-          type: string
-        subscription_next_bill_date:
-          type: string
-        subscription_start_date:
-          type: string
-      title: RestV2Subscription
     RestV2User:
       type: object
       properties:
@@ -18571,7 +18421,7 @@ components:
         cycle_type:
           type: string
           description: 'The cycle type of the subscription plan. Possible values:
-            YEAR, MONTH, WEEK, DAY'
+            YEARLY, MONTHLY, WEEKLY, DAILY'
           enum:
           - DAILY
           - WEEKLY
@@ -19133,6 +18983,7 @@ components:
           type: string
         order_type:
           type: string
+          description: 'The order type. Valid values are: ONLINE, OFFLINE.'
           enum:
           - OFFLINE
           - ONLINE

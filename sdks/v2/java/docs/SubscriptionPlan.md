@@ -9,7 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 |**active** | **Boolean** | If the subscription plan is active or not. |  [optional] |
 |**allowProrating** | **Boolean** | Whether or not the plan will allow prorating. |  [optional] |
-|**cycleType** | [**CycleTypeEnum**](#CycleTypeEnum) | The cycle type of the subscription plan. Possible values: YEAR, MONTH, WEEK, DAY |  [optional] |
+|**cycleType** | [**CycleTypeEnum**](#CycleTypeEnum) | The cycle type of the subscription plan. Possible values: YEARLY, MONTHLY, WEEKLY, DAILY |  [optional] |
 |**displayOrderIndex** | **Integer** | The order index where this plan will be displayed on a page against other plans. Smaller number indicates plan will be displayed higher in the list. |  [optional] |
 |**frequency** | **Integer** | Total number of times of a cycle type which constitutes a plan cycle. Minimum value is 1. |  [optional] |
 |**id** | **String** | Id of the subscription plan. |  [optional] |

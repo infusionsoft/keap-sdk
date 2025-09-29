@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**cost_per_unit** | **float** | The cost per unit. Must be greater than or equal to 0. | [optional] 
+**cost_per_unit** | **float** | The cost per unit. Must be greater than or equal to 0. If not specified, the product cost will be used. | [optional] 
 **description** | **str** | The description of the order item. Must not be whitespace. | [optional] 
 **item_type** | **str** | The type of this order item. For now only [PRODUCT] is supported. Will default to [PRODUCT] if omitted. | [optional] 
 **name** | **str** | The name of the order item. Must not be whitespace. If not specified, the product name will be used. | [optional] 

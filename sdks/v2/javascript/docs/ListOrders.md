@@ -5,6 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **nextPageToken** | **String** |  | [optional] 
-**orders** | [**[RestV2Order]**](RestV2Order.md) |  | [optional] 
+**orders** | [**[Order]**](Order.md) |  | [optional] 
 
 

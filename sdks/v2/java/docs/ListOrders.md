@@ -8,7 +8,7 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**nextPageToken** | **String** |  |  [optional] |
-|**orders** | [**List&lt;RestV2Order&gt;**](RestV2Order.md) |  |  [optional] |
+|**orders** | [**List&lt;Order&gt;**](Order.md) |  |  [optional] |
 
 
 ## Implemented Interfaces

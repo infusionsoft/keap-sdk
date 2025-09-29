@@ -79,8 +79,6 @@ import { CreateDefaultCommissionProgramRequest } from '../models/CreateDefaultCo
 import { CreateEmailSentRequest } from '../models/CreateEmailSentRequest';
 import { CreateEmailsSentRequest } from '../models/CreateEmailsSentRequest';
 import { CreateFreeTrialDiscountRequest } from '../models/CreateFreeTrialDiscountRequest';
-import { CreateFunnelIntegrationRequest } from '../models/CreateFunnelIntegrationRequest';
-import { CreateFunnelIntegrationTriggerEvents } from '../models/CreateFunnelIntegrationTriggerEvents';
 import { CreateLeadSourceExpenseRequest } from '../models/CreateLeadSourceExpenseRequest';
 import { CreateLeadSourceRecurringExpenseRequest } from '../models/CreateLeadSourceRecurringExpenseRequest';
 import { CreateLeadSourceRequest } from '../models/CreateLeadSourceRequest';
@@ -117,7 +115,6 @@ import { CustomFieldValue } from '../models/CustomFieldValue';
 import { DefaultCommission } from '../models/DefaultCommission';
 import { DeleteEmailsRequest } from '../models/DeleteEmailsRequest';
 import { DeleteEmailsResponse } from '../models/DeleteEmailsResponse';
-import { DeleteFunnelIntegrationRequest } from '../models/DeleteFunnelIntegrationRequest';
 import { DeleteProgramCommissionRequest } from '../models/DeleteProgramCommissionRequest';
 import { DeleteSubscriptionPlanCommissionRequest } from '../models/DeleteSubscriptionPlanCommissionRequest';
 import { Discount } from '../models/Discount';
@@ -138,11 +135,6 @@ import { FaxNumber } from '../models/FaxNumber';
 import { FileMetadata } from '../models/FileMetadata';
 import { FileOperationRequest } from '../models/FileOperationRequest';
 import { FreeTrialDiscount } from '../models/FreeTrialDiscount';
-import { FunnelIntegrationAction } from '../models/FunnelIntegrationAction';
-import { FunnelIntegrationHttpRequest } from '../models/FunnelIntegrationHttpRequest';
-import { FunnelIntegrationSchemaField } from '../models/FunnelIntegrationSchemaField';
-import { FunnelIntegrationTriggerEventDTO } from '../models/FunnelIntegrationTriggerEventDTO';
-import { FunnelIntegrationTriggerResultDTO } from '../models/FunnelIntegrationTriggerResultDTO';
 import { GetApplicationEnabledStatusResponse } from '../models/GetApplicationEnabledStatusResponse';
 import { GetBusinessProfileResponse } from '../models/GetBusinessProfileResponse';
 import { GetContactOptionTypesResponse } from '../models/GetContactOptionTypesResponse';
@@ -219,8 +211,9 @@ import { NoteTemplate } from '../models/NoteTemplate';
 import { ObjectModel } from '../models/ObjectModel';
 import { OpportunityContact } from '../models/OpportunityContact';
 import { OpportunityStage } from '../models/OpportunityStage';
+import { Order } from '../models/Order';
+import { OrderItem } from '../models/OrderItem';
 import { OrderItemProduct } from '../models/OrderItemProduct';
-import { OrderItemTax } from '../models/OrderItemTax';
 import { OrderTotalDiscount } from '../models/OrderTotalDiscount';
 import { Origin } from '../models/Origin';
 import { OriginRequest } from '../models/OriginRequest';
@@ -255,14 +248,8 @@ import { RestApplyCommissionRequest } from '../models/RestApplyCommissionRequest
 import { RestCreateOrderRequest } from '../models/RestCreateOrderRequest';
 import { RestEmailAddress } from '../models/RestEmailAddress';
 import { RestOpportunityStage } from '../models/RestOpportunityStage';
-import { RestProductOption } from '../models/RestProductOption';
-import { RestProductOptionValue } from '../models/RestProductOptionValue';
-import { RestSubscriptionPlan } from '../models/RestSubscriptionPlan';
 import { RestV2Opportunity } from '../models/RestV2Opportunity';
-import { RestV2Order } from '../models/RestV2Order';
-import { RestV2OrderItem } from '../models/RestV2OrderItem';
 import { RestV2Product } from '../models/RestV2Product';
-import { RestV2Subscription } from '../models/RestV2Subscription';
 import { RestV2User } from '../models/RestV2User';
 import { Sequence } from '../models/Sequence';
 import { SequencePath } from '../models/SequencePath';
@@ -9324,6 +9311,106 @@ export class ObservableUsersApi {
     }
 
     /**
+     * Retrieves a specific User
+     * Get User
+     * @param userId user_id
+     */
+    public getUserByIdWithHttpInfo(userId: string, _options?: ConfigurationOptions): Observable<HttpInfo<User>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getUserById(userId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getUserByIdWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a specific User
+     * Get User
+     * @param userId user_id
+     */
+    public getUserById(userId: string, _options?: ConfigurationOptions): Observable<User> {
+        return this.getUserByIdWithHttpInfo(userId, _options).pipe(map((apiResponse: HttpInfo<User>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves information for the current authenticated end-user, as outlined by the [OpenID Connect specification](http://openid.net/specs/openid-connect-core-1_0.html#UserInfo).
+     * Retrieve User Info
+     */
+    public getUserInfoWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<GetUserInfoResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getUserInfo(_config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getUserInfoWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves information for the current authenticated end-user, as outlined by the [OpenID Connect specification](http://openid.net/specs/openid-connect-core-1_0.html#UserInfo).
+     * Retrieve User Info
+     */
+    public getUserInfo(_options?: ConfigurationOptions): Observable<GetUserInfoResponse> {
+        return this.getUserInfoWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<GetUserInfoResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves a HTML snippet that contains the user\'s email signature.
+     * Get User email signature
+     * @param userId user_id
+     */
+    public getUserSignatureWithHttpInfo(userId: string, _options?: ConfigurationOptions): Observable<HttpInfo<string>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getUserSignature(userId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getUserSignatureWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a HTML snippet that contains the user\'s email signature.
+     * Get User email signature
+     * @param userId user_id
+     */
+    public getUserSignature(userId: string, _options?: ConfigurationOptions): Observable<string> {
+        return this.getUserSignatureWithHttpInfo(userId, _options).pipe(map((apiResponse: HttpInfo<string>) => apiResponse.data));
+    }
+
+    /**
      * Retrieves a list of users
      * List Users
      * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;email&#x60; - (String) &#x60;given_name&#x60; - (Boolean) &#x60;include_inactive&#x60; - (Boolean) &#x60;include_partners&#x60; - (Set[String]) &#x60;user_ids&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;user_ids%3D%3D123%3Bgiven_name%3D%3DSmith&#x60; 
@@ -9361,6 +9448,44 @@ export class ObservableUsersApi {
      */
     public listPaginatedUsers(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListUsersPaginatedResponse> {
         return this.listPaginatedUsersWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListUsersPaginatedResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Updates information on a specific User
+     * Update User
+     * @param userId user_id
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param [updateUserRequest] user
+     */
+    public updateUserWithHttpInfo(userId: string, updateMask?: Array<string>, updateUserRequest?: UpdateUserRequest, _options?: ConfigurationOptions): Observable<HttpInfo<User>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.updateUser(userId, updateMask, updateUserRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateUserWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Updates information on a specific User
+     * Update User
+     * @param userId user_id
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param [updateUserRequest] user
+     */
+    public updateUser(userId: string, updateMask?: Array<string>, updateUserRequest?: UpdateUserRequest, _options?: ConfigurationOptions): Observable<User> {
+        return this.updateUserWithHttpInfo(userId, updateMask, updateUserRequest, _options).pipe(map((apiResponse: HttpInfo<User>) => apiResponse.data));
     }
 
 }

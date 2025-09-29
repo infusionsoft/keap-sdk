@@ -5,21 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**active** | **bool** |  | [optional] 
-**created_time** | **str** |  | [optional] 
 **description** | **str** |  | [optional] 
 **id** | **str** |  | [optional] 
-**last_updated_time** | **str** |  | [optional] 
 **name** | **str** |  | [optional] 
-**product_options** | [**List[RestProductOption]**](RestProductOption.md) |  | [optional] 
-**product_price** | **float** |  | [optional] 
-**product_short_description** | **str** |  | [optional] 
 **shippable** | **bool** |  | [optional] 
 **sku** | **str** |  | [optional] 
-**subscription_only** | **bool** |  | [optional] 
-**subscription_plans** | [**List[RestSubscriptionPlan]**](RestSubscriptionPlan.md) |  | [optional] 
 **taxable** | **bool** |  | [optional] 
-**url** | **str** | The url is the permalink to the resource | [optional] 
 
 ## Example
 

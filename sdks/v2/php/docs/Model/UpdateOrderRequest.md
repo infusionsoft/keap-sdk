@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **notes** | **string** |  | [optional]
 **order_time** | **string** | The date and time of the order. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z) | [optional]
 **order_title** | **string** |  | [optional]
-**order_type** | **string** |  | [optional]
+**order_type** | **string** | The order type. Valid values are: ONLINE, OFFLINE. | [optional]
 **payment_plan** | [**\Keap\Core\V2\Model\UpdatedPaymentPlan**](UpdatedPaymentPlan.md) |  | [optional]
 **promo_codes** | **string[]** | Uses multiple strings as promo codes. The corresponding discount will be applied to the order. | [optional]
 **sales_affiliate_id** | **string** |  | [optional]

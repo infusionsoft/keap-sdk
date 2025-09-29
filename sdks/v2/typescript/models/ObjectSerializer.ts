@@ -74,8 +74,6 @@ export * from '../models/CreateDefaultCommissionProgramRequest';
 export * from '../models/CreateEmailSentRequest';
 export * from '../models/CreateEmailsSentRequest';
 export * from '../models/CreateFreeTrialDiscountRequest';
-export * from '../models/CreateFunnelIntegrationRequest';
-export * from '../models/CreateFunnelIntegrationTriggerEvents';
 export * from '../models/CreateLeadSourceExpenseRequest';
 export * from '../models/CreateLeadSourceRecurringExpenseRequest';
 export * from '../models/CreateLeadSourceRequest';
@@ -112,7 +110,6 @@ export * from '../models/CustomFieldValue';
 export * from '../models/DefaultCommission';
 export * from '../models/DeleteEmailsRequest';
 export * from '../models/DeleteEmailsResponse';
-export * from '../models/DeleteFunnelIntegrationRequest';
 export * from '../models/DeleteProgramCommissionRequest';
 export * from '../models/DeleteSubscriptionPlanCommissionRequest';
 export * from '../models/Discount';
@@ -133,11 +130,6 @@ export * from '../models/FaxNumber';
 export * from '../models/FileMetadata';
 export * from '../models/FileOperationRequest';
 export * from '../models/FreeTrialDiscount';
-export * from '../models/FunnelIntegrationAction';
-export * from '../models/FunnelIntegrationHttpRequest';
-export * from '../models/FunnelIntegrationSchemaField';
-export * from '../models/FunnelIntegrationTriggerEventDTO';
-export * from '../models/FunnelIntegrationTriggerResultDTO';
 export * from '../models/GetApplicationEnabledStatusResponse';
 export * from '../models/GetBusinessProfileResponse';
 export * from '../models/GetContactOptionTypesResponse';
@@ -214,8 +206,9 @@ export * from '../models/NoteTemplate';
 export * from '../models/ObjectModel';
 export * from '../models/OpportunityContact';
 export * from '../models/OpportunityStage';
+export * from '../models/Order';
+export * from '../models/OrderItem';
 export * from '../models/OrderItemProduct';
-export * from '../models/OrderItemTax';
 export * from '../models/OrderTotalDiscount';
 export * from '../models/Origin';
 export * from '../models/OriginRequest';
@@ -250,14 +243,8 @@ export * from '../models/RestApplyCommissionRequest';
 export * from '../models/RestCreateOrderRequest';
 export * from '../models/RestEmailAddress';
 export * from '../models/RestOpportunityStage';
-export * from '../models/RestProductOption';
-export * from '../models/RestProductOptionValue';
-export * from '../models/RestSubscriptionPlan';
 export * from '../models/RestV2Opportunity';
-export * from '../models/RestV2Order';
-export * from '../models/RestV2OrderItem';
 export * from '../models/RestV2Product';
-export * from '../models/RestV2Subscription';
 export * from '../models/RestV2User';
 export * from '../models/Sequence';
 export * from '../models/SequencePath';
@@ -390,8 +377,6 @@ import { CreateDefaultCommissionProgramRequest } from '../models/CreateDefaultCo
 import { CreateEmailSentRequest     , CreateEmailSentRequestOriginalProviderEnum              } from '../models/CreateEmailSentRequest';
 import { CreateEmailsSentRequest } from '../models/CreateEmailsSentRequest';
 import { CreateFreeTrialDiscountRequest } from '../models/CreateFreeTrialDiscountRequest';
-import { CreateFunnelIntegrationRequest } from '../models/CreateFunnelIntegrationRequest';
-import { CreateFunnelIntegrationTriggerEvents } from '../models/CreateFunnelIntegrationTriggerEvents';
 import { CreateLeadSourceExpenseRequest } from '../models/CreateLeadSourceExpenseRequest';
 import { CreateLeadSourceRecurringExpenseRequest } from '../models/CreateLeadSourceRecurringExpenseRequest';
 import { CreateLeadSourceRequest } from '../models/CreateLeadSourceRequest';
@@ -428,10 +413,9 @@ import { CustomFieldValue } from '../models/CustomFieldValue';
 import { DefaultCommission } from '../models/DefaultCommission';
 import { DeleteEmailsRequest } from '../models/DeleteEmailsRequest';
 import { DeleteEmailsResponse } from '../models/DeleteEmailsResponse';
-import { DeleteFunnelIntegrationRequest } from '../models/DeleteFunnelIntegrationRequest';
 import { DeleteProgramCommissionRequest } from '../models/DeleteProgramCommissionRequest';
 import { DeleteSubscriptionPlanCommissionRequest } from '../models/DeleteSubscriptionPlanCommissionRequest';
-import { Discount , DiscountDiscountMethodEnum     } from '../models/Discount';
+import { Discount , DiscountDiscountMethodEnum    } from '../models/Discount';
 import { DiscountCriteria  , DiscountCriteriaOperatorEnum          , DiscountCriteriaTypeEnum   } from '../models/DiscountCriteria';
 import { EmailAddress , EmailAddressEmailOptStatusEnum  , EmailAddressFieldEnum     } from '../models/EmailAddress';
 import { EmailAddressRequest , EmailAddressRequestFieldEnum    } from '../models/EmailAddressRequest';
@@ -449,11 +433,6 @@ import { FaxNumber, FaxNumberFieldEnum     } from '../models/FaxNumber';
 import { FileMetadata, FileMetadataCategoryEnum     , FileMetadataFileBoxTypeEnum         } from '../models/FileMetadata';
 import { FileOperationRequest } from '../models/FileOperationRequest';
 import { FreeTrialDiscount } from '../models/FreeTrialDiscount';
-import { FunnelIntegrationAction } from '../models/FunnelIntegrationAction';
-import { FunnelIntegrationHttpRequest } from '../models/FunnelIntegrationHttpRequest';
-import { FunnelIntegrationSchemaField } from '../models/FunnelIntegrationSchemaField';
-import { FunnelIntegrationTriggerEventDTO } from '../models/FunnelIntegrationTriggerEventDTO';
-import { FunnelIntegrationTriggerResultDTO } from '../models/FunnelIntegrationTriggerResultDTO';
 import { GetApplicationEnabledStatusResponse } from '../models/GetApplicationEnabledStatusResponse';
 import { GetBusinessProfileResponse } from '../models/GetBusinessProfileResponse';
 import { GetContactOptionTypesResponse } from '../models/GetContactOptionTypesResponse';
@@ -530,8 +509,9 @@ import { NoteTemplate, NoteTemplateActionTypeEnum        } from '../models/NoteT
 import { ObjectModel } from '../models/ObjectModel';
 import { OpportunityContact } from '../models/OpportunityContact';
 import { OpportunityStage } from '../models/OpportunityStage';
+import { Order            , OrderOrderTypeEnum      , OrderSourceTypeEnum  , OrderStatusEnum        } from '../models/Order';
+import { OrderItem    , OrderItemItemTypeEnum           } from '../models/OrderItem';
 import { OrderItemProduct } from '../models/OrderItemProduct';
-import { OrderItemTax } from '../models/OrderItemTax';
 import { OrderTotalDiscount   , OrderTotalDiscountDiscountStrategyEnum  , OrderTotalDiscountDiscountTypeEnum      } from '../models/OrderTotalDiscount';
 import { Origin } from '../models/Origin';
 import { OriginRequest } from '../models/OriginRequest';
@@ -566,14 +546,8 @@ import { RestApplyCommissionRequest     , RestApplyCommissionRequestPayoutTypeEn
 import { RestCreateOrderRequest      , RestCreateOrderRequestOrderTypeEnum       } from '../models/RestCreateOrderRequest';
 import { RestEmailAddress  , RestEmailAddressStatusEnum   } from '../models/RestEmailAddress';
 import { RestOpportunityStage } from '../models/RestOpportunityStage';
-import { RestProductOption               , RestProductOptionTypeEnum    } from '../models/RestProductOption';
-import { RestProductOptionValue } from '../models/RestProductOptionValue';
-import { RestSubscriptionPlan , RestSubscriptionPlanCycleEnum         } from '../models/RestSubscriptionPlan';
 import { RestV2Opportunity } from '../models/RestV2Opportunity';
-import { RestV2Order            , RestV2OrderOrderTypeEnum      , RestV2OrderSourceTypeEnum  , RestV2OrderStatusEnum        } from '../models/RestV2Order';
-import { RestV2OrderItem    , RestV2OrderItemItemTypeEnum             } from '../models/RestV2OrderItem';
 import { RestV2Product } from '../models/RestV2Product';
-import { RestV2Subscription } from '../models/RestV2Subscription';
 import { RestV2User } from '../models/RestV2User';
 import { Sequence } from '../models/Sequence';
 import { SequencePath } from '../models/SequencePath';
@@ -681,6 +655,10 @@ let enumsMap: Set<string> = new Set<string>([
     "LeadSourceStatusEnum",
     "ListMerchantAccountResponseTypeEnum",
     "NoteTemplateActionTypeEnum",
+    "OrderOrderTypeEnum",
+    "OrderSourceTypeEnum",
+    "OrderStatusEnum",
+    "OrderItemItemTypeEnum",
     "OrderTotalDiscountDiscountStrategyEnum",
     "OrderTotalDiscountDiscountTypeEnum",
     "PaymentMethodMerchantAccountTypeEnum",
@@ -695,12 +673,6 @@ let enumsMap: Set<string> = new Set<string>([
     "RestApplyCommissionRequestPayoutTypeEnum",
     "RestCreateOrderRequestOrderTypeEnum",
     "RestEmailAddressStatusEnum",
-    "RestProductOptionTypeEnum",
-    "RestSubscriptionPlanCycleEnum",
-    "RestV2OrderOrderTypeEnum",
-    "RestV2OrderSourceTypeEnum",
-    "RestV2OrderStatusEnum",
-    "RestV2OrderItemItemTypeEnum",
     "ShippingDiscountDiscountTypeEnum",
     "SocialAccountTypeEnum",
     "SubscriptionBillingCycleEnum",
@@ -797,8 +769,6 @@ let typeMap: {[index: string]: any} = {
     "CreateEmailSentRequest": CreateEmailSentRequest,
     "CreateEmailsSentRequest": CreateEmailsSentRequest,
     "CreateFreeTrialDiscountRequest": CreateFreeTrialDiscountRequest,
-    "CreateFunnelIntegrationRequest": CreateFunnelIntegrationRequest,
-    "CreateFunnelIntegrationTriggerEvents": CreateFunnelIntegrationTriggerEvents,
     "CreateLeadSourceExpenseRequest": CreateLeadSourceExpenseRequest,
     "CreateLeadSourceRecurringExpenseRequest": CreateLeadSourceRecurringExpenseRequest,
     "CreateLeadSourceRequest": CreateLeadSourceRequest,
@@ -835,7 +805,6 @@ let typeMap: {[index: string]: any} = {
     "DefaultCommission": DefaultCommission,
     "DeleteEmailsRequest": DeleteEmailsRequest,
     "DeleteEmailsResponse": DeleteEmailsResponse,
-    "DeleteFunnelIntegrationRequest": DeleteFunnelIntegrationRequest,
     "DeleteProgramCommissionRequest": DeleteProgramCommissionRequest,
     "DeleteSubscriptionPlanCommissionRequest": DeleteSubscriptionPlanCommissionRequest,
     "Discount": Discount,
@@ -856,11 +825,6 @@ let typeMap: {[index: string]: any} = {
     "FileMetadata": FileMetadata,
     "FileOperationRequest": FileOperationRequest,
     "FreeTrialDiscount": FreeTrialDiscount,
-    "FunnelIntegrationAction": FunnelIntegrationAction,
-    "FunnelIntegrationHttpRequest": FunnelIntegrationHttpRequest,
-    "FunnelIntegrationSchemaField": FunnelIntegrationSchemaField,
-    "FunnelIntegrationTriggerEventDTO": FunnelIntegrationTriggerEventDTO,
-    "FunnelIntegrationTriggerResultDTO": FunnelIntegrationTriggerResultDTO,
     "GetApplicationEnabledStatusResponse": GetApplicationEnabledStatusResponse,
     "GetBusinessProfileResponse": GetBusinessProfileResponse,
     "GetContactOptionTypesResponse": GetContactOptionTypesResponse,
@@ -937,8 +901,9 @@ let typeMap: {[index: string]: any} = {
     "ObjectModel": ObjectModel,
     "OpportunityContact": OpportunityContact,
     "OpportunityStage": OpportunityStage,
+    "Order": Order,
+    "OrderItem": OrderItem,
     "OrderItemProduct": OrderItemProduct,
-    "OrderItemTax": OrderItemTax,
     "OrderTotalDiscount": OrderTotalDiscount,
     "Origin": Origin,
     "OriginRequest": OriginRequest,
@@ -973,14 +938,8 @@ let typeMap: {[index: string]: any} = {
     "RestCreateOrderRequest": RestCreateOrderRequest,
     "RestEmailAddress": RestEmailAddress,
     "RestOpportunityStage": RestOpportunityStage,
-    "RestProductOption": RestProductOption,
-    "RestProductOptionValue": RestProductOptionValue,
-    "RestSubscriptionPlan": RestSubscriptionPlan,
     "RestV2Opportunity": RestV2Opportunity,
-    "RestV2Order": RestV2Order,
-    "RestV2OrderItem": RestV2OrderItem,
     "RestV2Product": RestV2Product,
-    "RestV2Subscription": RestV2Subscription,
     "RestV2User": RestV2User,
     "Sequence": Sequence,
     "SequencePath": SequencePath,

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **notes** | **str** |  | [optional] 
 **order_time** | **str** | The date and time of the order. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z) | [optional] 
 **order_title** | **str** |  | [optional] 
-**order_type** | **str** |  | [optional] 
+**order_type** | **str** | The order type. Valid values are: ONLINE, OFFLINE. | [optional] 
 **payment_plan** | [**UpdatedPaymentPlan**](UpdatedPaymentPlan.md) |  | [optional] 
 **promo_codes** | **List[str]** | Uses multiple strings as promo codes. The corresponding discount will be applied to the order. | [optional] 
 **sales_affiliate_id** | **str** |  | [optional] 

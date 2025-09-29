@@ -10,7 +10,7 @@
 |**contactId** | **String** |  |  |
 |**leadAffiliateId** | **String** |  |  [optional] |
 |**notes** | **String** |  |  [optional] |
-|**orderItems** | [**List&lt;CreateOrderItemRequest&gt;**](CreateOrderItemRequest.md) |  |  |
+|**orderItems** | [**List&lt;CreateOrderItemRequest&gt;**](CreateOrderItemRequest.md) |  |  [optional] |
 |**orderTime** | **String** | The date and time of the order. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z) |  [optional] |
 |**orderTitle** | **String** |  |  |
 |**orderType** | [**OrderTypeEnum**](#OrderTypeEnum) | The order type. Valid values are: ONLINE, OFFLINE. |  [optional] |

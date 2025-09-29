@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **next_page_token** | **str** |  | [optional] 
-**orders** | [**List[RestV2Order]**](RestV2Order.md) |  | [optional] 
+**orders** | [**List[Order]**](Order.md) |  | [optional] 
 
 ## Example
 

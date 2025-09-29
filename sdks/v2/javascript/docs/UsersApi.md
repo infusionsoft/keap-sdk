@@ -4,8 +4,140 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**getUserById**](UsersApi.md#getUserById) | **GET** /v2/users/{user_id} | Get User
+[**getUserInfo**](UsersApi.md#getUserInfo) | **GET** /v2/oauth/connect/userinfo | Retrieve User Info
+[**getUserSignature**](UsersApi.md#getUserSignature) | **GET** /v2/users/{user_id}/signature | Get User email signature
 [**listPaginatedUsers**](UsersApi.md#listPaginatedUsers) | **GET** /v2/users | List Users
+[**updateUser**](UsersApi.md#updateUser) | **PATCH** /v2/users/{user_id} | Update User
 
+
+
+## getUserById
+
+> User getUserById(userId)
+
+Get User
+
+Retrieves a specific User
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+
+let apiInstance = new KeapCoreServiceV2Sdk.UsersApi();
+let userId = "userId_example"; // String | user_id
+apiInstance.getUserById(userId).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userId** | **String**| user_id | 
+
+### Return type
+
+[**User**](User.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## getUserInfo
+
+> GetUserInfoResponse getUserInfo()
+
+Retrieve User Info
+
+Retrieves information for the current authenticated end-user, as outlined by the [OpenID Connect specification](http://openid.net/specs/openid-connect-core-1_0.html#UserInfo).
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+
+let apiInstance = new KeapCoreServiceV2Sdk.UsersApi();
+apiInstance.getUserInfo().then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**GetUserInfoResponse**](GetUserInfoResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## getUserSignature
+
+> String getUserSignature(userId)
+
+Get User email signature
+
+Retrieves a HTML snippet that contains the user&#39;s email signature.
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+
+let apiInstance = new KeapCoreServiceV2Sdk.UsersApi();
+let userId = "userId_example"; // String | user_id
+apiInstance.getUserSignature(userId).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userId** | **String**| user_id | 
+
+### Return type
+
+**String**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
 ## listPaginatedUsers
@@ -57,5 +189,55 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## updateUser
+
+> User updateUser(userId, opts)
+
+Update User
+
+Updates information on a specific User
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+
+let apiInstance = new KeapCoreServiceV2Sdk.UsersApi();
+let userId = "userId_example"; // String | user_id
+let opts = {
+  'updateMask': ["null"], // [String] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+  'updateUserRequest': new KeapCoreServiceV2Sdk.UpdateUserRequest() // UpdateUserRequest | user
+};
+apiInstance.updateUser(userId, opts).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userId** | **String**| user_id | 
+ **updateMask** | [**[String]**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **updateUserRequest** | [**UpdateUserRequest**](UpdateUserRequest.md)| user | [optional] 
+
+### Return type
+
+[**User**](User.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 

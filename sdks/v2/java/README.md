@@ -2,7 +2,7 @@
 
 Keap REST API
 
-- API version: 2.70.0.852640
+- API version: 2.70.0.862454-hf-202509261459
 
 - Generator version: 7.13.0
 
@@ -43,7 +43,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.keap.core</groupId>
   <artifactId>core-service-v2-java-sdk</artifactId>
-  <version>1.0.29</version>
+  <version>1.0.30</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.keap.core:core-service-v2-java-sdk:1.0.29"
+compile "com.keap.core:core-service-v2-java-sdk:1.0.30"
 ```
 
 ### Others
@@ -66,7 +66,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/core-service-v2-java-sdk-1.0.29.jar`
+- `target/core-service-v2-java-sdk-1.0.30.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -568,8 +568,16 @@ Class | Method | HTTP request | Description
 *TaskApi* | [**updateTaskWithHttpInfo**](docs/TaskApi.md#updateTaskWithHttpInfo) | **PATCH** /v2/tasks/{task_id} | Update a Task
 *TaskApi* | [**updateTaskCustomField**](docs/TaskApi.md#updateTaskCustomField) | **PATCH** /v2/tasks/model/customFields/{custom_field_id} | Update a Task&#39;s Custom Field
 *TaskApi* | [**updateTaskCustomFieldWithHttpInfo**](docs/TaskApi.md#updateTaskCustomFieldWithHttpInfo) | **PATCH** /v2/tasks/model/customFields/{custom_field_id} | Update a Task&#39;s Custom Field
+*UsersApi* | [**getUserById**](docs/UsersApi.md#getUserById) | **GET** /v2/users/{user_id} | Get User
+*UsersApi* | [**getUserByIdWithHttpInfo**](docs/UsersApi.md#getUserByIdWithHttpInfo) | **GET** /v2/users/{user_id} | Get User
+*UsersApi* | [**getUserInfo**](docs/UsersApi.md#getUserInfo) | **GET** /v2/oauth/connect/userinfo | Retrieve User Info
+*UsersApi* | [**getUserInfoWithHttpInfo**](docs/UsersApi.md#getUserInfoWithHttpInfo) | **GET** /v2/oauth/connect/userinfo | Retrieve User Info
+*UsersApi* | [**getUserSignature**](docs/UsersApi.md#getUserSignature) | **GET** /v2/users/{user_id}/signature | Get User email signature
+*UsersApi* | [**getUserSignatureWithHttpInfo**](docs/UsersApi.md#getUserSignatureWithHttpInfo) | **GET** /v2/users/{user_id}/signature | Get User email signature
 *UsersApi* | [**listPaginatedUsers**](docs/UsersApi.md#listPaginatedUsers) | **GET** /v2/users | List Users
 *UsersApi* | [**listPaginatedUsersWithHttpInfo**](docs/UsersApi.md#listPaginatedUsersWithHttpInfo) | **GET** /v2/users | List Users
+*UsersApi* | [**updateUser**](docs/UsersApi.md#updateUser) | **PATCH** /v2/users/{user_id} | Update User
+*UsersApi* | [**updateUserWithHttpInfo**](docs/UsersApi.md#updateUserWithHttpInfo) | **PATCH** /v2/users/{user_id} | Update User
 
 
 ## Documentation for Models
@@ -650,8 +658,6 @@ Class | Method | HTTP request | Description
  - [CreateEmailSentRequest](docs/CreateEmailSentRequest.md)
  - [CreateEmailsSentRequest](docs/CreateEmailsSentRequest.md)
  - [CreateFreeTrialDiscountRequest](docs/CreateFreeTrialDiscountRequest.md)
- - [CreateFunnelIntegrationRequest](docs/CreateFunnelIntegrationRequest.md)
- - [CreateFunnelIntegrationTriggerEvents](docs/CreateFunnelIntegrationTriggerEvents.md)
  - [CreateLeadSourceExpenseRequest](docs/CreateLeadSourceExpenseRequest.md)
  - [CreateLeadSourceRecurringExpenseRequest](docs/CreateLeadSourceRecurringExpenseRequest.md)
  - [CreateLeadSourceRequest](docs/CreateLeadSourceRequest.md)
@@ -688,7 +694,6 @@ Class | Method | HTTP request | Description
  - [DefaultCommission](docs/DefaultCommission.md)
  - [DeleteEmailsRequest](docs/DeleteEmailsRequest.md)
  - [DeleteEmailsResponse](docs/DeleteEmailsResponse.md)
- - [DeleteFunnelIntegrationRequest](docs/DeleteFunnelIntegrationRequest.md)
  - [DeleteProgramCommissionRequest](docs/DeleteProgramCommissionRequest.md)
  - [DeleteSubscriptionPlanCommissionRequest](docs/DeleteSubscriptionPlanCommissionRequest.md)
  - [Discount](docs/Discount.md)
@@ -710,11 +715,6 @@ Class | Method | HTTP request | Description
  - [FileMetadata](docs/FileMetadata.md)
  - [FileOperationRequest](docs/FileOperationRequest.md)
  - [FreeTrialDiscount](docs/FreeTrialDiscount.md)
- - [FunnelIntegrationAction](docs/FunnelIntegrationAction.md)
- - [FunnelIntegrationHttpRequest](docs/FunnelIntegrationHttpRequest.md)
- - [FunnelIntegrationSchemaField](docs/FunnelIntegrationSchemaField.md)
- - [FunnelIntegrationTriggerEventDTO](docs/FunnelIntegrationTriggerEventDTO.md)
- - [FunnelIntegrationTriggerResultDTO](docs/FunnelIntegrationTriggerResultDTO.md)
  - [GetApplicationEnabledStatusResponse](docs/GetApplicationEnabledStatusResponse.md)
  - [GetBusinessProfileResponse](docs/GetBusinessProfileResponse.md)
  - [GetContactOptionTypesResponse](docs/GetContactOptionTypesResponse.md)
@@ -790,8 +790,9 @@ Class | Method | HTTP request | Description
  - [ObjectModel](docs/ObjectModel.md)
  - [OpportunityContact](docs/OpportunityContact.md)
  - [OpportunityStage](docs/OpportunityStage.md)
+ - [Order](docs/Order.md)
+ - [OrderItem](docs/OrderItem.md)
  - [OrderItemProduct](docs/OrderItemProduct.md)
- - [OrderItemTax](docs/OrderItemTax.md)
  - [OrderTotalDiscount](docs/OrderTotalDiscount.md)
  - [Origin](docs/Origin.md)
  - [OriginRequest](docs/OriginRequest.md)
@@ -826,14 +827,8 @@ Class | Method | HTTP request | Description
  - [RestCreateOrderRequest](docs/RestCreateOrderRequest.md)
  - [RestEmailAddress](docs/RestEmailAddress.md)
  - [RestOpportunityStage](docs/RestOpportunityStage.md)
- - [RestProductOption](docs/RestProductOption.md)
- - [RestProductOptionValue](docs/RestProductOptionValue.md)
- - [RestSubscriptionPlan](docs/RestSubscriptionPlan.md)
  - [RestV2Opportunity](docs/RestV2Opportunity.md)
- - [RestV2Order](docs/RestV2Order.md)
- - [RestV2OrderItem](docs/RestV2OrderItem.md)
  - [RestV2Product](docs/RestV2Product.md)
- - [RestV2Subscription](docs/RestV2Subscription.md)
  - [RestV2User](docs/RestV2User.md)
  - [Sequence](docs/Sequence.md)
  - [SequencePath](docs/SequencePath.md)

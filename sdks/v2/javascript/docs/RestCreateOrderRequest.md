@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **contactId** | **String** |  | 
 **leadAffiliateId** | **String** |  | [optional] 
 **notes** | **String** |  | [optional] 
-**orderItems** | [**[CreateOrderItemRequest]**](CreateOrderItemRequest.md) |  | 
+**orderItems** | [**[CreateOrderItemRequest]**](CreateOrderItemRequest.md) |  | [optional] 
 **orderTime** | **String** | The date and time of the order. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z) | [optional] 
 **orderTitle** | **String** |  | 
 **orderType** | **String** | The order type. Valid values are: ONLINE, OFFLINE. | [optional] 

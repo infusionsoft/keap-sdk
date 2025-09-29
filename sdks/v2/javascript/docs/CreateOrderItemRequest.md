@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**costPerUnit** | **Number** | The cost per unit. Must be greater than or equal to 0. | [optional] 
+**costPerUnit** | **Number** | The cost per unit. Must be greater than or equal to 0. If not specified, the product cost will be used. | [optional] 
 **description** | **String** | The description of the order item. Must not be whitespace. | [optional] 
 **itemType** | **String** | The type of this order item. For now only [PRODUCT] is supported. Will default to [PRODUCT] if omitted. | [optional] 
 **name** | **String** | The name of the order item. Must not be whitespace. If not specified, the product name will be used. | [optional] 
