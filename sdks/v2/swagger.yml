@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   description: Keap REST Core Service
-  version: 2.70.0.862454-hf-202509261459
+  version: 2.70.0.861953
   title: Keap REST API
   termsOfService: https://keap.com/legal
   contact:
@@ -92,6 +92,8 @@ tags:
   description: Rest Task Controller
 - name: Users
   description: Rest User Controller
+- name: Webforms
+  description: Rest Webform Controller
 paths:
   /v2/affiliates:
     get:
@@ -3137,7 +3139,7 @@ paths:
           Attribute and direction to order items.
           One of the following fields:
           - `id`
-          - `date_created`
+          - `create_time`
           - `email`
 
           One of the following directions:
@@ -3563,6 +3565,52 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Contact'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/contacts/{contact_id}/leadScore:
+    get:
+      tags:
+      - LeadScore
+      summary: Retrieve Lead Score of a Contact
+      description: Retrieves information about the Lead Score of a Contact
+      operationId: getLeadScoreDetails
+      parameters:
+      - name: contact_id
+        in: path
+        description: contact_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LeadScore'
         '401':
           description: Unauthorized
           content:
@@ -9107,6 +9155,134 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
       deprecated: false
+  /v2/orders:
+    get:
+      tags:
+      - Orders
+      summary: List orders
+      description: Retrieves a list of orders
+      operationId: listOrders
+      parameters:
+      - name: filter
+        in: query
+        description: |-
+          Filter to apply, allowed fields are:
+          - (String) `product_id`
+          - (String) `contact_id`
+          - (Boolean) `paid`
+          - (String) `created_since_time`
+          - (String) `created_until_time`
+          You will need to apply the `==` operator to check the equality of one of the filters with your searched
+          word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:
+          - `filter=product_id%3D%3D123`
+          - `filter=contact_id%3D%3D567`
+          - `filter=product_id%3D%3D123%3Bcontact_id%3D%3D567`
+        required: false
+        schema:
+          type: string
+      - name: order_by
+        in: query
+        description: |-
+          Attribute and direction to order items.
+          One of the following fields:
+          - `id`
+          - `order_time`
+
+          One of the following directions:
+          - `asc`
+          - `desc`
+        required: false
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: Total number of items to return per page
+        required: false
+        example: 0
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 1000
+          exclusiveMinimum: false
+          exclusiveMaximum: false
+      - name: page_token
+        in: query
+        description: Page token
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListOrders'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    post:
+      tags:
+      - Orders
+      summary: Create an Order
+      description: Creates a one time Order with Order items
+      operationId: createOrder
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RestCreateOrderRequest'
+        description: request
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
   /v2/orders/model:
     get:
       tags:
@@ -9288,6 +9464,51 @@ paths:
                 $ref: '#/components/schemas/Error'
       deprecated: false
   /v2/orders/{order_id}:
+    get:
+      tags:
+      - Orders
+      summary: Retrieve an Order
+      description: Retrieves a single Order for a given order id
+      operationId: getOrder
+      parameters:
+      - name: order_id
+        in: path
+        description: order_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
     delete:
       tags:
       - Orders
@@ -9320,6 +9541,128 @@ paths:
                 $ref: '#/components/schemas/Error'
         '404':
           description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    patch:
+      tags:
+      - Orders
+      summary: Update an Order
+      description: Updates an Order
+      operationId: updateOrder
+      parameters:
+      - name: order_id
+        in: path
+        description: order_id
+        required: true
+        schema:
+          type: string
+      - name: update_mask
+        in: query
+        description: An optional list of properties to be updated. If set, only the
+          provided properties will be updated and others will be skipped.
+        required: false
+        allowEmptyValue: false
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+          enum:
+          - contact_id
+          - order_items
+          - order_title
+          - order_time
+          - order_type
+          - promo_codes
+          - lead_affiliate_id
+          - sales_affiliate_id
+          - shipping_address
+          - notes
+          - terms
+          - payment_plan
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateOrderRequest'
+        description: order
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/orders/{order_id}/items:
+    post:
+      tags:
+      - Orders
+      summary: Create an Order Item
+      description: Creates an order item on an existing order
+      operationId: createOrderItem
+      parameters:
+      - name: order_id
+        in: path
+        description: order_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOrderItemRequest'
+        description: request
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderItem'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
           content:
             application/json:
               schema:
@@ -9368,6 +9711,423 @@ paths:
                 $ref: '#/components/schemas/Error'
         '404':
           description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    patch:
+      tags:
+      - Orders
+      summary: Update an Order Item
+      description: Updates an Order Item
+      operationId: updateOrderItem
+      parameters:
+      - name: order_id
+        in: path
+        description: order_id
+        required: true
+        schema:
+          type: string
+      - name: order_item_id
+        in: path
+        description: order_item_id
+        required: true
+        schema:
+          type: string
+      - name: update_mask
+        in: query
+        description: An optional list of properties to be updated. If set, only the
+          provided properties will be updated and others will be skipped.
+        required: false
+        allowEmptyValue: false
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+          enum:
+          - contact_id
+          - order_items
+          - order_title
+          - order_time
+          - order_type
+          - promo_codes
+          - lead_affiliate_id
+          - sales_affiliate_id
+          - shipping_address
+          - notes
+          - terms
+          - payment_plan
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateOrderItemRequest'
+        description: order
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderItem'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/orders/{order_id}/items/{order_item_id}:applyCommission:
+    post:
+      tags:
+      - Orders
+      summary: Apply Commission to an Order Item
+      description: Applies commission to an order item on an existing order.
+      operationId: applyCommissionOnOrderItems
+      parameters:
+      - name: order_id
+        in: path
+        description: order_id
+        required: true
+        schema:
+          type: string
+      - name: order_item_id
+        in: path
+        description: order_item_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RestApplyCommissionRequest'
+        description: request
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderItem'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/orders/{order_id}/payments:
+    get:
+      tags:
+      - Orders
+      summary: Retrieve Order Payments
+      description: Retrieves a list of payments made against a given order, including
+        historical or external payments of cash or credit card
+      operationId: listOrderPayments
+      parameters:
+      - name: filter
+        in: query
+        description: |
+          Filter to apply, allowed fields are:
+          - (String) `invoice_id`
+          - (String) `payment_id`
+          - (String) `amount`
+          - (String) `pay_status`
+          - (Boolean) `skip_commission`
+
+          You will need to apply the `==` operator to check the equality of one of the filters with your searched
+           word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:
+          - `filter=payment_id%3D%3D123`
+          - `filter=pay_status%3D%3DAPPROVED`
+          - `filter=invoice_id%3D%3D456%3Bskip_commission=true`
+        required: false
+        schema:
+          type: string
+      - name: order_by
+        in: query
+        description: |-
+          Attribute and direction to order items.
+          One of the following fields:
+          - `invoice_id`
+          - `payment_id`
+          - `amount`
+          - `pay_time`
+          - `pay_status`
+          - `skip_commission`
+          - `last_updated_time`
+
+          One of the following directions:
+          - `asc`
+          - `desc`
+        required: false
+        schema:
+          type: string
+      - name: order_id
+        in: path
+        description: order_id
+        required: true
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: Total number of items to return per page
+        required: false
+        example: 0
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 1000
+          exclusiveMinimum: false
+          exclusiveMaximum: false
+      - name: page_token
+        in: query
+        description: Page token
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListOrderPaymentsResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    post:
+      tags:
+      - Orders
+      summary: Create a Payment
+      description: Creates a payment record. Alternatively, adds a record of historical
+        or external payment of cash or credit card
+      operationId: createPaymentForAnOrder
+      parameters:
+      - name: order_id
+        in: path
+        description: order_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePaymentRequest'
+        description: request
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentResult'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/orders/{order_id}:applyTax:
+    post:
+      tags:
+      - Orders
+      summary: Apply Taxes on an Order
+      description: Calculate taxes for a single Order for a given order id
+      operationId: applyTax
+      parameters:
+      - name: order_id
+        in: path
+        description: order_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/orders/{order_id}:attachFile:
+    post:
+      tags:
+      - Orders
+      summary: Attach a File to an Order Invoice
+      description: Attaches an uploaded File to an Order Invoice
+      operationId: attachFileToOrder
+      parameters:
+      - name: order_id
+        in: path
+        description: order_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FileOperationRequest'
+        description: File name
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/orders/{order_id}:detachFile:
+    post:
+      tags:
+      - Orders
+      summary: Detach a File from an Order Invoice
+      description: Detaches a File from an Order Invoice
+      operationId: detachFileFromOrder
+      parameters:
+      - name: order_id
+        in: path
+        description: order_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FileOperationRequest'
+        description: request
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
           content:
             application/json:
               schema:
@@ -10985,6 +11745,46 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
       deprecated: false
+  /v2/referrals:
+    post:
+      tags:
+      - Referral
+      summary: Create a Referral
+      description: Creates a new referral partner referral on the provided contact
+      operationId: createReferral
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateReferralRequest'
+        description: request
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Referral'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
   /v2/reporting/reports:
     get:
       tags:
@@ -11427,6 +12227,87 @@ paths:
                 $ref: '#/components/schemas/Error'
       deprecated: false
   /v2/subscriptions:
+    get:
+      tags:
+      - Subscriptions
+      summary: List Subscriptions
+      description: Retrieves a list of subscriptions using the specified search criteria.
+      operationId: listSubscriptions
+      parameters:
+      - name: filter
+        in: query
+        description: |
+          Filter to apply, allowed fields are:
+          - (String) `contact_id`
+          - (String) `subscription_plan_id`
+        required: false
+        schema:
+          type: string
+      - name: order_by
+        in: query
+        description: |-
+          Attribute and direction to order items.
+          One of the following fields:
+          - `id`
+          - `contact_id`
+          - `subscription_plan_id`
+
+          One of the following directions:
+          - `asc`
+          - `desc`
+        required: false
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: Total number of items to return per page
+        required: false
+        example: 0
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 1000
+          exclusiveMinimum: false
+          exclusiveMaximum: false
+      - name: page_token
+        in: query
+        description: Page token
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListSubscriptionsResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
     post:
       tags:
       - Subscriptions
@@ -11647,6 +12528,133 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
       deprecated: false
+  /v2/subscriptions/{subscription_id}:
+    get:
+      tags:
+      - Subscriptions
+      summary: Retrieve a Subscription
+      description: Retrieves a single subscription
+      operationId: getSubscription
+      parameters:
+      - name: subscription_id
+        in: path
+        description: subscription_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+    patch:
+      tags:
+      - Subscriptions
+      summary: Update a Subscription
+      description: Updates a Subscription
+      operationId: updateSubscription
+      parameters:
+      - name: subscription_id
+        in: path
+        description: subscription_id
+        required: true
+        schema:
+          type: string
+      - name: update_mask
+        in: query
+        description: An optional list of properties to be updated. If set, only the
+          provided properties will be updated and others will be skipped.
+        required: false
+        allowEmptyValue: false
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+          enum:
+          - contact_id
+          - subscription_plan_id
+          - quantity
+          - billing_amount
+          - auto_charge
+          - max_charge_attempts
+          - days_between_retries
+          - active
+          - billing_frequency
+          - billing_cycle
+          - next_bill_date
+          - end_date
+          - payment_method_id
+          - allow_tax
+          - lead_affiliate_id
+          - sale_affiliate_id
+          - shipping_address
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateSubscriptionRequest'
+        description: request
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
   /v2/subscriptions/{subscription_id}:deactivate:
     post:
       tags:
@@ -11841,13 +12849,39 @@ paths:
       parameters:
       - name: filter
         in: query
-        description: Search filter to apply to results
+        description: |-
+          Filter to apply, allowed fields are:
+
+          - (String) `name`
+          - (String) `description`
+          - (String) `since_create_time`
+          - (String) `until_create_time`
+          - (String) `since_update_time`
+          - (String) `until_update_time`
+
+          You will need to apply the `==` operator to check the equality of one of the filters with your searched
+          word, in the encoded form `%3D%3D`. If NONE is passed in for `category_id` or `description`, it will check
+          for the non-existence of that field. For the filters listed above, here are some examples:
+
+          - `filter=name%3D%3Dmy-tag`
+          - `filter=description%3D%3DNONE`
+          - `filter=since_create_time%3D%3D2024-12-22T01:00:00.000Z;until_create_time%3D%3D2025-01-01T00:00:00.000Z;`
         required: false
         schema:
           type: string
       - name: order_by
         in: query
-        description: Attribute and direction to order items by. E.g. `given_name desc`
+        description: |-
+          Attribute and direction to order items.
+          One of the following fields:
+
+          - `name`
+          - `create_time`
+          - `update_time`
+
+          One of the following directions:
+          - `asc`
+          - `desc`
         required: false
         schema:
           type: string
@@ -11920,7 +12954,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Tag'
+                $ref: '#/components/schemas/TagCategory'
         '401':
           description: Unauthorized
           content:
@@ -13461,6 +14495,35 @@ components:
         zip_four:
           type: string
       title: AddressInformation
+    AddressRequest:
+      type: object
+      properties:
+        country_code:
+          type: string
+          example: USA
+          description: An ISO 3166-2 Country Code (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3)
+        field:
+          type: string
+          enum:
+          - ADDRESS_FIELD_UNSPECIFIED
+          - BILLING
+          - SHIPPING
+          - OTHER
+        line1:
+          type: string
+        line2:
+          type: string
+        locality:
+          type: string
+          example: Phoenix
+          description: The municipality to which the address belongs
+        postal_code:
+          type: string
+        region_code:
+          type: string
+          example: US-AZ
+          description: An ISO 3166-2 Province Code, such as one of the US States (https://en.wikipedia.org/wiki/ISO_3166-2:US)
+      title: AddressRequest
     AffiliateAddToProgramRequest:
       type: object
       properties:
@@ -15241,7 +16304,7 @@ components:
           description: The affiliate id for the sale of the subscription. Default
             is 0.
         shipping_address:
-          $ref: '#/components/schemas/Address'
+          $ref: '#/components/schemas/AddressRequest'
         start_date:
           type: string
           description: The first day the subscription will bill. Must not be in the
@@ -16220,12 +17283,21 @@ components:
     GetTagCategoryResponse:
       type: object
       properties:
+        create_time:
+          type: string
+          description: The time this tag category was created, in ISO 8601 format
         description:
           type: string
+          description: A description of this tag category
         id:
           type: string
+          description: The unique identifier for this tag category
         name:
           type: string
+          description: The unique name of this tag category
+        update_time:
+          type: string
+          description: The time this tag category was last updated, in ISO 8601 format
       title: GetTagCategoryResponse
     GetUserInfoResponse:
       type: object
@@ -17052,7 +18124,7 @@ components:
         tag_categories:
           type: array
           items:
-            $ref: '#/components/schemas/Tag'
+            $ref: '#/components/schemas/TagCategory'
       title: ListTagCategoriesResponse
     ListTaggedCompaniesResponse:
       type: object
@@ -18472,6 +19544,25 @@ components:
           type: string
           description: The time this tag was last updated, in ISO 8601 format
       title: Tag
+    TagCategory:
+      type: object
+      properties:
+        create_time:
+          type: string
+          description: The time this tag category was created, in ISO 8601 format
+        description:
+          type: string
+          description: A description of this tag category
+        id:
+          type: string
+          description: The unique identifier for this tag category
+        name:
+          type: string
+          description: The unique name of this tag category
+        update_time:
+          type: string
+          description: The time this tag category was last updated, in ISO 8601 format
+      title: TagCategory
     TaggedCompany:
       type: object
       properties:
@@ -19308,7 +20399,7 @@ components:
           type: string
           description: The affiliate id for the sale of the subscription.
         shipping_address:
-          $ref: '#/components/schemas/Address'
+          $ref: '#/components/schemas/AddressRequest'
         subscription_plan_id:
           type: string
           description: Id of the product subscription plan.
@@ -19316,12 +20407,21 @@ components:
     UpdateTagCategoryResponse:
       type: object
       properties:
+        create_time:
+          type: string
+          description: The time this tag category was created, in ISO 8601 format
         description:
           type: string
+          description: A description of this tag category
         id:
           type: string
+          description: The unique identifier for this tag category
         name:
           type: string
+          description: The unique name of this tag category
+        update_time:
+          type: string
+          description: The time this tag category was last updated, in ISO 8601 format
       title: UpdateTagCategoryResponse
     UpdateTagResponse:
       type: object

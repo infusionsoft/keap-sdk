@@ -10,6 +10,7 @@ import { AddToAutomationSequenceRequest } from '../models/AddToAutomationSequenc
 import { AddToAutomationSequenceResponse } from '../models/AddToAutomationSequenceResponse';
 import { Address } from '../models/Address';
 import { AddressInformation } from '../models/AddressInformation';
+import { AddressRequest } from '../models/AddressRequest';
 import { AffiliateAddToProgramRequest } from '../models/AffiliateAddToProgramRequest';
 import { AffiliateCommission } from '../models/AffiliateCommission';
 import { AffiliateCommissionEarned } from '../models/AffiliateCommissionEarned';
@@ -265,6 +266,7 @@ import { SubscriptionCommission } from '../models/SubscriptionCommission';
 import { SubscriptionCommissionProgram } from '../models/SubscriptionCommissionProgram';
 import { SubscriptionPlan } from '../models/SubscriptionPlan';
 import { Tag } from '../models/Tag';
+import { TagCategory } from '../models/TagCategory';
 import { TaggedCompany } from '../models/TaggedCompany';
 import { Task } from '../models/Task';
 import { Throwable } from '../models/Throwable';
@@ -2841,7 +2843,7 @@ export class ObservableContactApi {
      * List Contacts
      * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
      * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;email&#x60; - (String) &#x60;given_name&#x60; - (String) &#x60;family_name&#x60; - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; 
-     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;date_created&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
@@ -2870,7 +2872,7 @@ export class ObservableContactApi {
      * List Contacts
      * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
      * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;email&#x60; - (String) &#x60;given_name&#x60; - (String) &#x60;family_name&#x60; - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; 
-     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;date_created&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
@@ -3840,6 +3842,58 @@ export class ObservableFreeTrialDiscountsApi {
      */
     public updateFreeTrialDiscount(discountId: string, updateFreeTrialDiscountRequest: UpdateFreeTrialDiscountRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<FreeTrialDiscount> {
         return this.updateFreeTrialDiscountWithHttpInfo(discountId, updateFreeTrialDiscountRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<FreeTrialDiscount>) => apiResponse.data));
+    }
+
+}
+
+import { LeadScoreApiRequestFactory, LeadScoreApiResponseProcessor} from "../apis/LeadScoreApi";
+export class ObservableLeadScoreApi {
+    private requestFactory: LeadScoreApiRequestFactory;
+    private responseProcessor: LeadScoreApiResponseProcessor;
+    private configuration: Configuration;
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: LeadScoreApiRequestFactory,
+        responseProcessor?: LeadScoreApiResponseProcessor
+    ) {
+        this.configuration = configuration;
+        this.requestFactory = requestFactory || new LeadScoreApiRequestFactory(configuration);
+        this.responseProcessor = responseProcessor || new LeadScoreApiResponseProcessor();
+    }
+
+    /**
+     * Retrieves information about the Lead Score of a Contact
+     * Retrieve Lead Score of a Contact
+     * @param contactId contact_id
+     */
+    public getLeadScoreDetailsWithHttpInfo(contactId: string, _options?: ConfigurationOptions): Observable<HttpInfo<LeadScore>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getLeadScoreDetails(contactId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getLeadScoreDetailsWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves information about the Lead Score of a Contact
+     * Retrieve Lead Score of a Contact
+     * @param contactId contact_id
+     */
+    public getLeadScoreDetails(contactId: string, _options?: ConfigurationOptions): Observable<LeadScore> {
+        return this.getLeadScoreDetailsWithHttpInfo(contactId, _options).pipe(map((apiResponse: HttpInfo<LeadScore>) => apiResponse.data));
     }
 
 }
@@ -5931,6 +5985,148 @@ export class ObservableOrdersApi {
     }
 
     /**
+     * Applies commission to an order item on an existing order.
+     * Apply Commission to an Order Item
+     * @param orderId order_id
+     * @param orderItemId order_item_id
+     * @param restApplyCommissionRequest request
+     */
+    public applyCommissionOnOrderItemsWithHttpInfo(orderId: string, orderItemId: string, restApplyCommissionRequest: RestApplyCommissionRequest, _options?: ConfigurationOptions): Observable<HttpInfo<OrderItem>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.applyCommissionOnOrderItems(orderId, orderItemId, restApplyCommissionRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.applyCommissionOnOrderItemsWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Applies commission to an order item on an existing order.
+     * Apply Commission to an Order Item
+     * @param orderId order_id
+     * @param orderItemId order_item_id
+     * @param restApplyCommissionRequest request
+     */
+    public applyCommissionOnOrderItems(orderId: string, orderItemId: string, restApplyCommissionRequest: RestApplyCommissionRequest, _options?: ConfigurationOptions): Observable<OrderItem> {
+        return this.applyCommissionOnOrderItemsWithHttpInfo(orderId, orderItemId, restApplyCommissionRequest, _options).pipe(map((apiResponse: HttpInfo<OrderItem>) => apiResponse.data));
+    }
+
+    /**
+     * Calculate taxes for a single Order for a given order id
+     * Apply Taxes on an Order
+     * @param orderId order_id
+     */
+    public applyTaxWithHttpInfo(orderId: string, _options?: ConfigurationOptions): Observable<HttpInfo<Order>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.applyTax(orderId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.applyTaxWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Calculate taxes for a single Order for a given order id
+     * Apply Taxes on an Order
+     * @param orderId order_id
+     */
+    public applyTax(orderId: string, _options?: ConfigurationOptions): Observable<Order> {
+        return this.applyTaxWithHttpInfo(orderId, _options).pipe(map((apiResponse: HttpInfo<Order>) => apiResponse.data));
+    }
+
+    /**
+     * Attaches an uploaded File to an Order Invoice
+     * Attach a File to an Order Invoice
+     * @param orderId order_id
+     * @param fileOperationRequest File name
+     */
+    public attachFileToOrderWithHttpInfo(orderId: string, fileOperationRequest: FileOperationRequest, _options?: ConfigurationOptions): Observable<HttpInfo<Order>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.attachFileToOrder(orderId, fileOperationRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.attachFileToOrderWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Attaches an uploaded File to an Order Invoice
+     * Attach a File to an Order Invoice
+     * @param orderId order_id
+     * @param fileOperationRequest File name
+     */
+    public attachFileToOrder(orderId: string, fileOperationRequest: FileOperationRequest, _options?: ConfigurationOptions): Observable<Order> {
+        return this.attachFileToOrderWithHttpInfo(orderId, fileOperationRequest, _options).pipe(map((apiResponse: HttpInfo<Order>) => apiResponse.data));
+    }
+
+    /**
+     * Creates a one time Order with Order items
+     * Create an Order
+     * @param restCreateOrderRequest request
+     */
+    public createOrderWithHttpInfo(restCreateOrderRequest: RestCreateOrderRequest, _options?: ConfigurationOptions): Observable<HttpInfo<Order>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.createOrder(restCreateOrderRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createOrderWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Creates a one time Order with Order items
+     * Create an Order
+     * @param restCreateOrderRequest request
+     */
+    public createOrder(restCreateOrderRequest: RestCreateOrderRequest, _options?: ConfigurationOptions): Observable<Order> {
+        return this.createOrderWithHttpInfo(restCreateOrderRequest, _options).pipe(map((apiResponse: HttpInfo<Order>) => apiResponse.data));
+    }
+
+    /**
      * Creates a custom field of the specified type and options to the Order object
      * Create an Order Custom Field
      * @param createCustomFieldRequest customField
@@ -5962,6 +6158,78 @@ export class ObservableOrdersApi {
      */
     public createOrderCustomField(createCustomFieldRequest: CreateCustomFieldRequest, _options?: ConfigurationOptions): Observable<CustomFieldMetaData> {
         return this.createOrderCustomFieldWithHttpInfo(createCustomFieldRequest, _options).pipe(map((apiResponse: HttpInfo<CustomFieldMetaData>) => apiResponse.data));
+    }
+
+    /**
+     * Creates an order item on an existing order
+     * Create an Order Item
+     * @param orderId order_id
+     * @param createOrderItemRequest request
+     */
+    public createOrderItemWithHttpInfo(orderId: string, createOrderItemRequest: CreateOrderItemRequest, _options?: ConfigurationOptions): Observable<HttpInfo<OrderItem>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.createOrderItem(orderId, createOrderItemRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createOrderItemWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Creates an order item on an existing order
+     * Create an Order Item
+     * @param orderId order_id
+     * @param createOrderItemRequest request
+     */
+    public createOrderItem(orderId: string, createOrderItemRequest: CreateOrderItemRequest, _options?: ConfigurationOptions): Observable<OrderItem> {
+        return this.createOrderItemWithHttpInfo(orderId, createOrderItemRequest, _options).pipe(map((apiResponse: HttpInfo<OrderItem>) => apiResponse.data));
+    }
+
+    /**
+     * Creates a payment record. Alternatively, adds a record of historical or external payment of cash or credit card
+     * Create a Payment
+     * @param orderId order_id
+     * @param createPaymentRequest request
+     */
+    public createPaymentForAnOrderWithHttpInfo(orderId: string, createPaymentRequest: CreatePaymentRequest, _options?: ConfigurationOptions): Observable<HttpInfo<PaymentResult>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.createPaymentForAnOrder(orderId, createPaymentRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createPaymentForAnOrderWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Creates a payment record. Alternatively, adds a record of historical or external payment of cash or credit card
+     * Create a Payment
+     * @param orderId order_id
+     * @param createPaymentRequest request
+     */
+    public createPaymentForAnOrder(orderId: string, createPaymentRequest: CreatePaymentRequest, _options?: ConfigurationOptions): Observable<PaymentResult> {
+        return this.createPaymentForAnOrderWithHttpInfo(orderId, createPaymentRequest, _options).pipe(map((apiResponse: HttpInfo<PaymentResult>) => apiResponse.data));
     }
 
     /**
@@ -6069,6 +6337,158 @@ export class ObservableOrdersApi {
     }
 
     /**
+     * Detaches a File from an Order Invoice
+     * Detach a File from an Order Invoice
+     * @param orderId order_id
+     * @param fileOperationRequest request
+     */
+    public detachFileFromOrderWithHttpInfo(orderId: string, fileOperationRequest: FileOperationRequest, _options?: ConfigurationOptions): Observable<HttpInfo<Order>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.detachFileFromOrder(orderId, fileOperationRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.detachFileFromOrderWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Detaches a File from an Order Invoice
+     * Detach a File from an Order Invoice
+     * @param orderId order_id
+     * @param fileOperationRequest request
+     */
+    public detachFileFromOrder(orderId: string, fileOperationRequest: FileOperationRequest, _options?: ConfigurationOptions): Observable<Order> {
+        return this.detachFileFromOrderWithHttpInfo(orderId, fileOperationRequest, _options).pipe(map((apiResponse: HttpInfo<Order>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves a single Order for a given order id
+     * Retrieve an Order
+     * @param orderId order_id
+     */
+    public getOrderWithHttpInfo(orderId: string, _options?: ConfigurationOptions): Observable<HttpInfo<Order>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getOrder(orderId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getOrderWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a single Order for a given order id
+     * Retrieve an Order
+     * @param orderId order_id
+     */
+    public getOrder(orderId: string, _options?: ConfigurationOptions): Observable<Order> {
+        return this.getOrderWithHttpInfo(orderId, _options).pipe(map((apiResponse: HttpInfo<Order>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves a list of payments made against a given order, including historical or external payments of cash or credit card
+     * Retrieve Order Payments
+     * @param orderId order_id
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;invoice_id&#x60; - (String) &#x60;payment_id&#x60; - (String) &#x60;amount&#x60; - (String) &#x60;pay_status&#x60; - (Boolean) &#x60;skip_commission&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched  word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;payment_id%3D%3D123&#x60; - &#x60;filter&#x3D;pay_status%3D%3DAPPROVED&#x60; - &#x60;filter&#x3D;invoice_id%3D%3D456%3Bskip_commission&#x3D;true&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;invoice_id&#x60; - &#x60;payment_id&#x60; - &#x60;amount&#x60; - &#x60;pay_time&#x60; - &#x60;pay_status&#x60; - &#x60;skip_commission&#x60; - &#x60;last_updated_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listOrderPaymentsWithHttpInfo(orderId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListOrderPaymentsResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.listOrderPayments(orderId, filter, orderBy, pageSize, pageToken, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listOrderPaymentsWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a list of payments made against a given order, including historical or external payments of cash or credit card
+     * Retrieve Order Payments
+     * @param orderId order_id
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;invoice_id&#x60; - (String) &#x60;payment_id&#x60; - (String) &#x60;amount&#x60; - (String) &#x60;pay_status&#x60; - (Boolean) &#x60;skip_commission&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched  word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;payment_id%3D%3D123&#x60; - &#x60;filter&#x3D;pay_status%3D%3DAPPROVED&#x60; - &#x60;filter&#x3D;invoice_id%3D%3D456%3Bskip_commission&#x3D;true&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;invoice_id&#x60; - &#x60;payment_id&#x60; - &#x60;amount&#x60; - &#x60;pay_time&#x60; - &#x60;pay_status&#x60; - &#x60;skip_commission&#x60; - &#x60;last_updated_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listOrderPayments(orderId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListOrderPaymentsResponse> {
+        return this.listOrderPaymentsWithHttpInfo(orderId, filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListOrderPaymentsResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves a list of orders
+     * List orders
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60;
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;order_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listOrdersWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListOrders>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.listOrders(filter, orderBy, pageSize, pageToken, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listOrdersWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a list of orders
+     * List orders
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60;
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;order_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listOrders(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListOrders> {
+        return this.listOrdersWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListOrders>) => apiResponse.data));
+    }
+
+    /**
      * Gets the custom fields for the Order object
      * Retrieve Order Custom Field Model
      */
@@ -6098,6 +6518,44 @@ export class ObservableOrdersApi {
      */
     public retrieveOrderCustomFieldModel(_options?: ConfigurationOptions): Observable<ObjectModel> {
         return this.retrieveOrderCustomFieldModelWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<ObjectModel>) => apiResponse.data));
+    }
+
+    /**
+     * Updates an Order
+     * Update an Order
+     * @param orderId order_id
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param [updateOrderRequest] order
+     */
+    public updateOrderWithHttpInfo(orderId: string, updateMask?: Array<string>, updateOrderRequest?: UpdateOrderRequest, _options?: ConfigurationOptions): Observable<HttpInfo<Order>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.updateOrder(orderId, updateMask, updateOrderRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateOrderWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Updates an Order
+     * Update an Order
+     * @param orderId order_id
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param [updateOrderRequest] order
+     */
+    public updateOrder(orderId: string, updateMask?: Array<string>, updateOrderRequest?: UpdateOrderRequest, _options?: ConfigurationOptions): Observable<Order> {
+        return this.updateOrderWithHttpInfo(orderId, updateMask, updateOrderRequest, _options).pipe(map((apiResponse: HttpInfo<Order>) => apiResponse.data));
     }
 
     /**
@@ -6136,6 +6594,46 @@ export class ObservableOrdersApi {
      */
     public updateOrderCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<CustomFieldMetaData> {
         return this.updateOrderCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<CustomFieldMetaData>) => apiResponse.data));
+    }
+
+    /**
+     * Updates an Order Item
+     * Update an Order Item
+     * @param orderId order_id
+     * @param orderItemId order_item_id
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param [updateOrderItemRequest] order
+     */
+    public updateOrderItemWithHttpInfo(orderId: string, orderItemId: string, updateMask?: Array<string>, updateOrderItemRequest?: UpdateOrderItemRequest, _options?: ConfigurationOptions): Observable<HttpInfo<OrderItem>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.updateOrderItem(orderId, orderItemId, updateMask, updateOrderItemRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateOrderItemWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Updates an Order Item
+     * Update an Order Item
+     * @param orderId order_id
+     * @param orderItemId order_item_id
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @param [updateOrderItemRequest] order
+     */
+    public updateOrderItem(orderId: string, orderItemId: string, updateMask?: Array<string>, updateOrderItemRequest?: UpdateOrderItemRequest, _options?: ConfigurationOptions): Observable<OrderItem> {
+        return this.updateOrderItemWithHttpInfo(orderId, orderItemId, updateMask, updateOrderItemRequest, _options).pipe(map((apiResponse: HttpInfo<OrderItem>) => apiResponse.data));
     }
 
 }
@@ -7440,6 +7938,58 @@ export class ObservableProductsApi {
 
 }
 
+import { ReferralApiRequestFactory, ReferralApiResponseProcessor} from "../apis/ReferralApi";
+export class ObservableReferralApi {
+    private requestFactory: ReferralApiRequestFactory;
+    private responseProcessor: ReferralApiResponseProcessor;
+    private configuration: Configuration;
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: ReferralApiRequestFactory,
+        responseProcessor?: ReferralApiResponseProcessor
+    ) {
+        this.configuration = configuration;
+        this.requestFactory = requestFactory || new ReferralApiRequestFactory(configuration);
+        this.responseProcessor = responseProcessor || new ReferralApiResponseProcessor();
+    }
+
+    /**
+     * Creates a new referral partner referral on the provided contact
+     * Create a Referral
+     * @param createReferralRequest request
+     */
+    public createReferralWithHttpInfo(createReferralRequest: CreateReferralRequest, _options?: ConfigurationOptions): Observable<HttpInfo<Referral>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.createReferral(createReferralRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createReferralWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Creates a new referral partner referral on the provided contact
+     * Create a Referral
+     * @param createReferralRequest request
+     */
+    public createReferral(createReferralRequest: CreateReferralRequest, _options?: ConfigurationOptions): Observable<Referral> {
+        return this.createReferralWithHttpInfo(createReferralRequest, _options).pipe(map((apiResponse: HttpInfo<Referral>) => apiResponse.data));
+    }
+
+}
+
 import { ReportingApiRequestFactory, ReportingApiResponseProcessor} from "../apis/ReportingApi";
 export class ObservableReportingApi {
     private requestFactory: ReportingApiRequestFactory;
@@ -8353,6 +8903,80 @@ export class ObservableSubscriptionsApi {
     }
 
     /**
+     * Retrieves a single subscription
+     * Retrieve a Subscription
+     * @param subscriptionId subscription_id
+     */
+    public getSubscriptionWithHttpInfo(subscriptionId: string, _options?: ConfigurationOptions): Observable<HttpInfo<Subscription>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getSubscription(subscriptionId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getSubscriptionWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a single subscription
+     * Retrieve a Subscription
+     * @param subscriptionId subscription_id
+     */
+    public getSubscription(subscriptionId: string, _options?: ConfigurationOptions): Observable<Subscription> {
+        return this.getSubscriptionWithHttpInfo(subscriptionId, _options).pipe(map((apiResponse: HttpInfo<Subscription>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves a list of subscriptions using the specified search criteria.
+     * List Subscriptions
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listSubscriptionsWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListSubscriptionsResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.listSubscriptions(filter, orderBy, pageSize, pageToken, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listSubscriptionsWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a list of subscriptions using the specified search criteria.
+     * List Subscriptions
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; 
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listSubscriptions(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListSubscriptionsResponse> {
+        return this.listSubscriptionsWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListSubscriptionsResponse>) => apiResponse.data));
+    }
+
+    /**
      * Get the custom fields for the Subscription object
      * Retrieve Subscription Custom Field Model
      */
@@ -8382,6 +9006,44 @@ export class ObservableSubscriptionsApi {
      */
     public retrieveSubscriptionCustomFieldModel(_options?: ConfigurationOptions): Observable<ObjectModel> {
         return this.retrieveSubscriptionCustomFieldModelWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<ObjectModel>) => apiResponse.data));
+    }
+
+    /**
+     * Updates a Subscription
+     * Update a Subscription
+     * @param subscriptionId subscription_id
+     * @param updateSubscriptionRequest request
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateSubscriptionWithHttpInfo(subscriptionId: string, updateSubscriptionRequest: UpdateSubscriptionRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<Subscription>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.updateSubscription(subscriptionId, updateSubscriptionRequest, updateMask, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateSubscriptionWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Updates a Subscription
+     * Update a Subscription
+     * @param subscriptionId subscription_id
+     * @param updateSubscriptionRequest request
+     * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public updateSubscription(subscriptionId: string, updateSubscriptionRequest: UpdateSubscriptionRequest, updateMask?: Array<string>, _options?: ConfigurationOptions): Observable<Subscription> {
+        return this.updateSubscriptionWithHttpInfo(subscriptionId, updateSubscriptionRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<Subscription>) => apiResponse.data));
     }
 
     /**
@@ -8515,7 +9177,7 @@ export class ObservableTagsApi {
      * Create Tag Category
      * @param createUpdateTagCategoryRequest request
      */
-    public createTagCategoryWithHttpInfo(createUpdateTagCategoryRequest: CreateUpdateTagCategoryRequest, _options?: ConfigurationOptions): Observable<HttpInfo<Tag>> {
+    public createTagCategoryWithHttpInfo(createUpdateTagCategoryRequest: CreateUpdateTagCategoryRequest, _options?: ConfigurationOptions): Observable<HttpInfo<TagCategory>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.createTagCategory(createUpdateTagCategoryRequest, _config);
@@ -8540,8 +9202,8 @@ export class ObservableTagsApi {
      * Create Tag Category
      * @param createUpdateTagCategoryRequest request
      */
-    public createTagCategory(createUpdateTagCategoryRequest: CreateUpdateTagCategoryRequest, _options?: ConfigurationOptions): Observable<Tag> {
-        return this.createTagCategoryWithHttpInfo(createUpdateTagCategoryRequest, _options).pipe(map((apiResponse: HttpInfo<Tag>) => apiResponse.data));
+    public createTagCategory(createUpdateTagCategoryRequest: CreateUpdateTagCategoryRequest, _options?: ConfigurationOptions): Observable<TagCategory> {
+        return this.createTagCategoryWithHttpInfo(createUpdateTagCategoryRequest, _options).pipe(map((apiResponse: HttpInfo<TagCategory>) => apiResponse.data));
     }
 
     /**
@@ -8767,8 +9429,8 @@ export class ObservableTagsApi {
     /**
      * Retrieves a list of defined Tag Categories To search for `null` or empty fields use `filter==NONE`
      * List Tag Categories
-     * @param [filter] Search filter to apply to results
-     * @param [orderBy] Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60;
+     * @param [filter] Filter to apply, allowed fields are:  - (String) &#x60;name&#x60; - (String) &#x60;description&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. If NONE is passed in for &#x60;category_id&#x60; or &#x60;description&#x60;, it will check for the non-existence of that field. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;name%3D%3Dmy-tag&#x60; - &#x60;filter&#x3D;description%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_create_time%3D%3D2024-12-22T01:00:00.000Z;until_create_time%3D%3D2025-01-01T00:00:00.000Z;&#x60;
+     * @param [orderBy] Attribute and direction to order items. One of the following fields:  - &#x60;name&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */
@@ -8795,8 +9457,8 @@ export class ObservableTagsApi {
     /**
      * Retrieves a list of defined Tag Categories To search for `null` or empty fields use `filter==NONE`
      * List Tag Categories
-     * @param [filter] Search filter to apply to results
-     * @param [orderBy] Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60;
+     * @param [filter] Filter to apply, allowed fields are:  - (String) &#x60;name&#x60; - (String) &#x60;description&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. If NONE is passed in for &#x60;category_id&#x60; or &#x60;description&#x60;, it will check for the non-existence of that field. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;name%3D%3Dmy-tag&#x60; - &#x60;filter&#x3D;description%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_create_time%3D%3D2024-12-22T01:00:00.000Z;until_create_time%3D%3D2025-01-01T00:00:00.000Z;&#x60;
+     * @param [orderBy] Attribute and direction to order items. One of the following fields:  - &#x60;name&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
      */

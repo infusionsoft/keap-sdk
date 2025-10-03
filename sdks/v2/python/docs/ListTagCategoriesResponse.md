@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **next_page_token** | **str** |  | [optional] 
-**tag_categories** | [**List[Tag]**](Tag.md) |  | [optional] 
+**tag_categories** | [**List[TagCategory]**](TagCategory.md) |  | [optional] 
 
 ## Example
 

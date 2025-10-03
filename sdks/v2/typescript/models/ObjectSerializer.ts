@@ -5,6 +5,7 @@ export * from '../models/AddToAutomationSequenceRequest';
 export * from '../models/AddToAutomationSequenceResponse';
 export * from '../models/Address';
 export * from '../models/AddressInformation';
+export * from '../models/AddressRequest';
 export * from '../models/AffiliateAddToProgramRequest';
 export * from '../models/AffiliateCommission';
 export * from '../models/AffiliateCommissionEarned';
@@ -260,6 +261,7 @@ export * from '../models/SubscriptionCommission';
 export * from '../models/SubscriptionCommissionProgram';
 export * from '../models/SubscriptionPlan';
 export * from '../models/Tag';
+export * from '../models/TagCategory';
 export * from '../models/TaggedCompany';
 export * from '../models/Task';
 export * from '../models/Throwable';
@@ -308,6 +310,7 @@ import { AddToAutomationSequenceRequest } from '../models/AddToAutomationSequenc
 import { AddToAutomationSequenceResponse } from '../models/AddToAutomationSequenceResponse';
 import { Address  , AddressFieldEnum           } from '../models/Address';
 import { AddressInformation } from '../models/AddressInformation';
+import { AddressRequest , AddressRequestFieldEnum        } from '../models/AddressRequest';
 import { AffiliateAddToProgramRequest } from '../models/AffiliateAddToProgramRequest';
 import { AffiliateCommission } from '../models/AffiliateCommission';
 import { AffiliateCommissionEarned } from '../models/AffiliateCommissionEarned';
@@ -563,6 +566,7 @@ import { SubscriptionCommission } from '../models/SubscriptionCommission';
 import { SubscriptionCommissionProgram } from '../models/SubscriptionCommissionProgram';
 import { SubscriptionPlan  , SubscriptionPlanCycleTypeEnum         } from '../models/SubscriptionPlan';
 import { Tag } from '../models/Tag';
+import { TagCategory } from '../models/TagCategory';
 import { TaggedCompany } from '../models/TaggedCompany';
 import { Task          , TaskPriorityEnum      } from '../models/Task';
 import { Throwable } from '../models/Throwable';
@@ -619,6 +623,7 @@ let primitives = [
 let enumsMap: Set<string> = new Set<string>([
     "AddProductInterestRequestTypeEnum",
     "AddressFieldEnum",
+    "AddressRequestFieldEnum",
     "CardInfoCardTypeEnum",
     "ContactSourceTypeEnum",
     "CreateAffiliateRequestStatusEnum",
@@ -700,6 +705,7 @@ let typeMap: {[index: string]: any} = {
     "AddToAutomationSequenceResponse": AddToAutomationSequenceResponse,
     "Address": Address,
     "AddressInformation": AddressInformation,
+    "AddressRequest": AddressRequest,
     "AffiliateAddToProgramRequest": AffiliateAddToProgramRequest,
     "AffiliateCommission": AffiliateCommission,
     "AffiliateCommissionEarned": AffiliateCommissionEarned,
@@ -955,6 +961,7 @@ let typeMap: {[index: string]: any} = {
     "SubscriptionCommissionProgram": SubscriptionCommissionProgram,
     "SubscriptionPlan": SubscriptionPlan,
     "Tag": Tag,
+    "TagCategory": TagCategory,
     "TaggedCompany": TaggedCompany,
     "Task": Task,
     "Throwable": Throwable,

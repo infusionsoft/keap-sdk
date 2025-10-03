@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **PaymentMethodId** | **string** | Id associated with the payment method. | [optional] 
 **Quantity** | **int** | The subscription quantity. Must be 1 or greater. | [optional] 
 **SaleAffiliateId** | **string** | The affiliate id for the sale of the subscription. | [optional] 
-**ShippingAddress** | [**Address**](Address.md) |  | [optional] 
+**ShippingAddress** | [**AddressRequest**](AddressRequest.md) |  | [optional] 
 **SubscriptionPlanId** | **string** | Id of the product subscription plan. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -18,6 +18,7 @@ import { ListTaggedCompaniesResponse } from '../models/ListTaggedCompaniesRespon
 import { ListTaggedContactsResponse } from '../models/ListTaggedContactsResponse';
 import { ListTagsResponse } from '../models/ListTagsResponse';
 import { Tag } from '../models/Tag';
+import { TagCategory } from '../models/TagCategory';
 import { UpdateTagCategoryResponse } from '../models/UpdateTagCategoryResponse';
 import { UpdateTagResponse } from '../models/UpdateTagResponse';
 
@@ -411,8 +412,8 @@ export class TagsApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Retrieves a list of defined Tag Categories To search for `null` or empty fields use `filter==NONE`
      * List Tag Categories
-     * @param filter Search filter to apply to results
-     * @param orderBy Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60;
+     * @param filter Filter to apply, allowed fields are:  - (String) &#x60;name&#x60; - (String) &#x60;description&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. If NONE is passed in for &#x60;category_id&#x60; or &#x60;description&#x60;, it will check for the non-existence of that field. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;name%3D%3Dmy-tag&#x60; - &#x60;filter&#x3D;description%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_create_time%3D%3D2024-12-22T01:00:00.000Z;until_create_time%3D%3D2025-01-01T00:00:00.000Z;&#x60;
+     * @param orderBy Attribute and direction to order items. One of the following fields:  - &#x60;name&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param pageSize Total number of items to return per page
      * @param pageToken Page token
      */
@@ -783,13 +784,13 @@ export class TagsApiResponseProcessor {
      * @params response Response returned by the server for a request to createTagCategory
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async createTagCategoryWithHttpInfo(response: ResponseContext): Promise<HttpInfo<Tag >> {
+     public async createTagCategoryWithHttpInfo(response: ResponseContext): Promise<HttpInfo<TagCategory >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("201", response.httpStatusCode)) {
-            const body: Tag = ObjectSerializer.deserialize(
+            const body: TagCategory = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Tag", ""
-            ) as Tag;
+                "TagCategory", ""
+            ) as TagCategory;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("401", response.httpStatusCode)) {
@@ -816,10 +817,10 @@ export class TagsApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: Tag = ObjectSerializer.deserialize(
+            const body: TagCategory = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Tag", ""
-            ) as Tag;
+                "TagCategory", ""
+            ) as TagCategory;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

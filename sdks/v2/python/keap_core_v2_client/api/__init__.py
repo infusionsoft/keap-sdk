@@ -13,6 +13,7 @@ from keap_core_v2_client.api.email_api import EmailApi
 from keap_core_v2_client.api.email_address_api import EmailAddressApi
 from keap_core_v2_client.api.files_api import FilesApi
 from keap_core_v2_client.api.free_trial_discounts_api import FreeTrialDiscountsApi
+from keap_core_v2_client.api.lead_score_api import LeadScoreApi
 from keap_core_v2_client.api.lead_source_categories_api import LeadSourceCategoriesApi
 from keap_core_v2_client.api.lead_source_expenses_api import LeadSourceExpensesApi
 from keap_core_v2_client.api.lead_source_recurring_expenses_api import LeadSourceRecurringExpensesApi
@@ -29,6 +30,7 @@ from keap_core_v2_client.api.product_categories_api import ProductCategoriesApi
 from keap_core_v2_client.api.product_discounts_api import ProductDiscountsApi
 from keap_core_v2_client.api.product_interest_bundles_api import ProductInterestBundlesApi
 from keap_core_v2_client.api.products_api import ProductsApi
+from keap_core_v2_client.api.referral_api import ReferralApi
 from keap_core_v2_client.api.reporting_api import ReportingApi
 from keap_core_v2_client.api.sales_api import SalesApi
 from keap_core_v2_client.api.settings_api import SettingsApi

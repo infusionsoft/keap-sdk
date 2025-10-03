@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **payment_method_id** | **string** | Id associated with the payment method. | [optional]
 **quantity** | **int** | The subscription quantity. Must be 1 or greater. | [optional]
 **sale_affiliate_id** | **string** | The affiliate id for the sale of the subscription. | [optional]
-**shipping_address** | [**\Keap\Core\V2\Model\Address**](Address.md) |  | [optional]
+**shipping_address** | [**\Keap\Core\V2\Model\AddressRequest**](AddressRequest.md) |  | [optional]
 **subscription_plan_id** | **string** | Id of the product subscription plan. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

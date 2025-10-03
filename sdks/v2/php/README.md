@@ -163,6 +163,7 @@ Class | Method | HTTP request | Description
 *FreeTrialDiscountsApi* | [**getFreeTrialDiscount**](docs/Api/FreeTrialDiscountsApi.md#getfreetrialdiscount) | **GET** /v2/discounts/freeTrials/{discount_id} | Retrieve a Subscription Free Trial Discount
 *FreeTrialDiscountsApi* | [**listFreeTrialDiscounts**](docs/Api/FreeTrialDiscountsApi.md#listfreetrialdiscounts) | **GET** /v2/discounts/freeTrials | List all Subscription Free Trial Discounts
 *FreeTrialDiscountsApi* | [**updateFreeTrialDiscount**](docs/Api/FreeTrialDiscountsApi.md#updatefreetrialdiscount) | **PATCH** /v2/discounts/freeTrials/{discount_id} | Update a Subscription Free Trial Discount
+*LeadScoreApi* | [**getLeadScoreDetails**](docs/Api/LeadScoreApi.md#getleadscoredetails) | **GET** /v2/contacts/{contact_id}/leadScore | Retrieve Lead Score of a Contact
 *LeadSourceCategoriesApi* | [**createLeadSourceCategory**](docs/Api/LeadSourceCategoriesApi.md#createleadsourcecategory) | **POST** /v2/leadSourceCategories | Create a Lead Source Category
 *LeadSourceCategoriesApi* | [**deleteLeadSourceCategory**](docs/Api/LeadSourceCategoriesApi.md#deleteleadsourcecategory) | **DELETE** /v2/leadSourceCategories/{lead_source_category_id} | Delete a Lead Source Category
 *LeadSourceCategoriesApi* | [**getLeadSourceCategory**](docs/Api/LeadSourceCategoriesApi.md#getleadsourcecategory) | **GET** /v2/leadSourceCategories/{lead_source_category_id} | Retrieve a Lead Source Category
@@ -215,12 +216,24 @@ Class | Method | HTTP request | Description
 *OrderTotalDiscountsApi* | [**getOrderTotalDiscount**](docs/Api/OrderTotalDiscountsApi.md#getordertotaldiscount) | **GET** /v2/discounts/orderTotals/{discount_id} | Retrieve an Order Total Discount
 *OrderTotalDiscountsApi* | [**listOrderTotalDiscounts**](docs/Api/OrderTotalDiscountsApi.md#listordertotaldiscounts) | **GET** /v2/discounts/orderTotals | List all Order Total Discounts
 *OrderTotalDiscountsApi* | [**updateOrderTotalDiscount**](docs/Api/OrderTotalDiscountsApi.md#updateordertotaldiscount) | **PATCH** /v2/discounts/orderTotals/{discount_id} | Update an Order Total Discount
+*OrdersApi* | [**applyCommissionOnOrderItems**](docs/Api/OrdersApi.md#applycommissiononorderitems) | **POST** /v2/orders/{order_id}/items/{order_item_id}:applyCommission | Apply Commission to an Order Item
+*OrdersApi* | [**applyTax**](docs/Api/OrdersApi.md#applytax) | **POST** /v2/orders/{order_id}:applyTax | Apply Taxes on an Order
+*OrdersApi* | [**attachFileToOrder**](docs/Api/OrdersApi.md#attachfiletoorder) | **POST** /v2/orders/{order_id}:attachFile | Attach a File to an Order Invoice
+*OrdersApi* | [**createOrder**](docs/Api/OrdersApi.md#createorder) | **POST** /v2/orders | Create an Order
 *OrdersApi* | [**createOrderCustomField**](docs/Api/OrdersApi.md#createordercustomfield) | **POST** /v2/orders/model/customFields | Create an Order Custom Field
+*OrdersApi* | [**createOrderItem**](docs/Api/OrdersApi.md#createorderitem) | **POST** /v2/orders/{order_id}/items | Create an Order Item
+*OrdersApi* | [**createPaymentForAnOrder**](docs/Api/OrdersApi.md#createpaymentforanorder) | **POST** /v2/orders/{order_id}/payments | Create a Payment
 *OrdersApi* | [**deleteOrder**](docs/Api/OrdersApi.md#deleteorder) | **DELETE** /v2/orders/{order_id} | Delete an Order
 *OrdersApi* | [**deleteOrderCustomField**](docs/Api/OrdersApi.md#deleteordercustomfield) | **DELETE** /v2/orders/model/customFields/{custom_field_id} | Delete an Order Custom Field
 *OrdersApi* | [**deleteOrderItem**](docs/Api/OrdersApi.md#deleteorderitem) | **DELETE** /v2/orders/{order_id}/items/{order_item_id} | Delete an Order Item
+*OrdersApi* | [**detachFileFromOrder**](docs/Api/OrdersApi.md#detachfilefromorder) | **POST** /v2/orders/{order_id}:detachFile | Detach a File from an Order Invoice
+*OrdersApi* | [**getOrder**](docs/Api/OrdersApi.md#getorder) | **GET** /v2/orders/{order_id} | Retrieve an Order
+*OrdersApi* | [**listOrderPayments**](docs/Api/OrdersApi.md#listorderpayments) | **GET** /v2/orders/{order_id}/payments | Retrieve Order Payments
+*OrdersApi* | [**listOrders**](docs/Api/OrdersApi.md#listorders) | **GET** /v2/orders | List orders
 *OrdersApi* | [**retrieveOrderCustomFieldModel**](docs/Api/OrdersApi.md#retrieveordercustomfieldmodel) | **GET** /v2/orders/model | Retrieve Order Custom Field Model
+*OrdersApi* | [**updateOrder**](docs/Api/OrdersApi.md#updateorder) | **PATCH** /v2/orders/{order_id} | Update an Order
 *OrdersApi* | [**updateOrderCustomField**](docs/Api/OrdersApi.md#updateordercustomfield) | **PATCH** /v2/orders/model/customFields/{custom_field_id} | Update an Order Custom Field
+*OrdersApi* | [**updateOrderItem**](docs/Api/OrdersApi.md#updateorderitem) | **PATCH** /v2/orders/{order_id}/items/{order_item_id} | Update an Order Item
 *PaymentMethodConfigsApi* | [**createPaymentMethodConfig**](docs/Api/PaymentMethodConfigsApi.md#createpaymentmethodconfig) | **POST** /v2/paymentMethodConfigs | Create Payment Method Configuration
 *PaymentMethodsApi* | [**deactivatePaymentMethod**](docs/Api/PaymentMethodsApi.md#deactivatepaymentmethod) | **POST** /v2/contacts/{contact_id}/paymentMethods/{payment_method_id}:deactivate | Deactivate a Payment Method
 *PaymentMethodsApi* | [**deletePaymentMethod**](docs/Api/PaymentMethodsApi.md#deletepaymentmethod) | **DELETE** /v2/contacts/{contact_id}/paymentMethods/{payment_method_id} | Delete a Payment Method
@@ -254,6 +267,7 @@ Class | Method | HTTP request | Description
 *ProductsApi* | [**getProduct**](docs/Api/ProductsApi.md#getproduct) | **GET** /v2/products/{product_id} | Get a Product
 *ProductsApi* | [**listProducts**](docs/Api/ProductsApi.md#listproducts) | **GET** /v2/products | List Products
 *ProductsApi* | [**updateProduct**](docs/Api/ProductsApi.md#updateproduct) | **PATCH** /v2/products/{product_id} | Update a Product
+*ReferralApi* | [**createReferral**](docs/Api/ReferralApi.md#createreferral) | **POST** /v2/referrals | Create a Referral
 *ReportingApi* | [**listReports**](docs/Api/ReportingApi.md#listreports) | **GET** /v2/reporting/reports | List Reports
 *ReportingApi* | [**retrieveReport**](docs/Api/ReportingApi.md#retrievereport) | **GET** /v2/reporting/reports/{report_id} | Retrieve Report
 *ReportingApi* | [**runReport**](docs/Api/ReportingApi.md#runreport) | **POST** /v2/reporting/reports/{report_id}:run | Run a Report
@@ -276,7 +290,10 @@ Class | Method | HTTP request | Description
 *SubscriptionsApi* | [**createSubscription**](docs/Api/SubscriptionsApi.md#createsubscription) | **POST** /v2/subscriptions | Create Subscription
 *SubscriptionsApi* | [**createSubscriptionCustomField**](docs/Api/SubscriptionsApi.md#createsubscriptioncustomfield) | **POST** /v2/subscriptions/model/customFields | Create a Subscription Custom Field
 *SubscriptionsApi* | [**deleteSubscriptionCustomField**](docs/Api/SubscriptionsApi.md#deletesubscriptioncustomfield) | **DELETE** /v2/subscriptions/model/customFields/{custom_field_id} | Delete a Subscription Custom Field
+*SubscriptionsApi* | [**getSubscription**](docs/Api/SubscriptionsApi.md#getsubscription) | **GET** /v2/subscriptions/{subscription_id} | Retrieve a Subscription
+*SubscriptionsApi* | [**listSubscriptions**](docs/Api/SubscriptionsApi.md#listsubscriptions) | **GET** /v2/subscriptions | List Subscriptions
 *SubscriptionsApi* | [**retrieveSubscriptionCustomFieldModel**](docs/Api/SubscriptionsApi.md#retrievesubscriptioncustomfieldmodel) | **GET** /v2/subscriptions/model | Retrieve Subscription Custom Field Model
+*SubscriptionsApi* | [**updateSubscription**](docs/Api/SubscriptionsApi.md#updatesubscription) | **PATCH** /v2/subscriptions/{subscription_id} | Update a Subscription
 *SubscriptionsApi* | [**updateSubscriptionCustomField**](docs/Api/SubscriptionsApi.md#updatesubscriptioncustomfield) | **PATCH** /v2/subscriptions/model/customFields/{custom_field_id} | Update a Subscription Custom Field
 *TagsApi* | [**applyTags**](docs/Api/TagsApi.md#applytags) | **POST** /v2/tags/{tag_id}/contacts:applyTags | Apply Tag
 *TagsApi* | [**createTag**](docs/Api/TagsApi.md#createtag) | **POST** /v2/tags | Create Tag
@@ -316,6 +333,7 @@ Class | Method | HTTP request | Description
 - [AddToAutomationSequenceResponse](docs/Model/AddToAutomationSequenceResponse.md)
 - [Address](docs/Model/Address.md)
 - [AddressInformation](docs/Model/AddressInformation.md)
+- [AddressRequest](docs/Model/AddressRequest.md)
 - [AffiliateAddToProgramRequest](docs/Model/AffiliateAddToProgramRequest.md)
 - [AffiliateCommission](docs/Model/AffiliateCommission.md)
 - [AffiliateCommissionEarned](docs/Model/AffiliateCommissionEarned.md)
@@ -571,6 +589,7 @@ Class | Method | HTTP request | Description
 - [SubscriptionCommissionProgram](docs/Model/SubscriptionCommissionProgram.md)
 - [SubscriptionPlan](docs/Model/SubscriptionPlan.md)
 - [Tag](docs/Model/Tag.md)
+- [TagCategory](docs/Model/TagCategory.md)
 - [TaggedCompany](docs/Model/TaggedCompany.md)
 - [Task](docs/Model/Task.md)
 - [Throwable](docs/Model/Throwable.md)
@@ -639,7 +658,7 @@ api@keap.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `2.70.0.862454-hf-202509261459`
-    - Package version: `1.0.30`
+- API version: `2.70.0.861953`
+    - Package version: `1.0.31`
     - Generator version: `7.13.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

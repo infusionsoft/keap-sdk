@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **payment_method_id** | **str** | Id associated with the payment method. | [optional] 
 **quantity** | **int** | The subscription quantity. Must be 1 or greater. | [optional] 
 **sale_affiliate_id** | **str** | The affiliate id for the sale of the subscription. | [optional] 
-**shipping_address** | [**Address**](Address.md) |  | [optional] 
+**shipping_address** | [**AddressRequest**](AddressRequest.md) |  | [optional] 
 **subscription_plan_id** | **str** | Id of the product subscription plan. | [optional] 
 
 ## Example

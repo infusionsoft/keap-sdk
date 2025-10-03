@@ -8,7 +8,10 @@ Method | HTTP request | Description
 [**createSubscription**](SubscriptionsApi.md#createSubscription) | **POST** /v2/subscriptions | Create Subscription
 [**createSubscriptionCustomField**](SubscriptionsApi.md#createSubscriptionCustomField) | **POST** /v2/subscriptions/model/customFields | Create a Subscription Custom Field
 [**deleteSubscriptionCustomField**](SubscriptionsApi.md#deleteSubscriptionCustomField) | **DELETE** /v2/subscriptions/model/customFields/{custom_field_id} | Delete a Subscription Custom Field
+[**getSubscription**](SubscriptionsApi.md#getSubscription) | **GET** /v2/subscriptions/{subscription_id} | Retrieve a Subscription
+[**listSubscriptions**](SubscriptionsApi.md#listSubscriptions) | **GET** /v2/subscriptions | List Subscriptions
 [**retrieveSubscriptionCustomFieldModel**](SubscriptionsApi.md#retrieveSubscriptionCustomFieldModel) | **GET** /v2/subscriptions/model | Retrieve Subscription Custom Field Model
+[**updateSubscription**](SubscriptionsApi.md#updateSubscription) | **PATCH** /v2/subscriptions/{subscription_id} | Update a Subscription
 [**updateSubscriptionCustomField**](SubscriptionsApi.md#updateSubscriptionCustomField) | **PATCH** /v2/subscriptions/model/customFields/{custom_field_id} | Update a Subscription Custom Field
 
 
@@ -104,17 +107,13 @@ const request: SubscriptionsApiCreateSubscriptionRequest = {
     quantity: 1,
     saleAffiliateId: "saleAffiliateId_example",
     shippingAddress: {
-      country: "United States of America",
       countryCode: "USA",
       field: "ADDRESS_FIELD_UNSPECIFIED",
       line1: "line1_example",
       line2: "line2_example",
       locality: "Phoenix",
       postalCode: "postalCode_example",
-      region: "Arizona",
       regionCode: "US-AZ",
-      zipCode: "zipCode_example",
-      zipFour: "zipFour_example",
     },
     startDate: "startDate_example",
     subscriptionPlanId: "subscriptionPlanId_example",
@@ -281,6 +280,129 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **getSubscription**
+> Subscription getSubscription()
+
+Retrieves a single subscription
+
+### Example
+
+
+```typescript
+import { createConfiguration, SubscriptionsApi } from '';
+import type { SubscriptionsApiGetSubscriptionRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new SubscriptionsApi(configuration);
+
+const request: SubscriptionsApiGetSubscriptionRequest = {
+    // subscription_id
+  subscriptionId: "subscription_id_example",
+};
+
+const data = await apiInstance.getSubscription(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **subscriptionId** | [**string**] | subscription_id | defaults to undefined
+
+
+### Return type
+
+**Subscription**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **listSubscriptions**
+> ListSubscriptionsResponse listSubscriptions()
+
+Retrieves a list of subscriptions using the specified search criteria.
+
+### Example
+
+
+```typescript
+import { createConfiguration, SubscriptionsApi } from '';
+import type { SubscriptionsApiListSubscriptionsRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new SubscriptionsApi(configuration);
+
+const request: SubscriptionsApiListSubscriptionsRequest = {
+    // Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id`  (optional)
+  filter: "filter_example",
+    // Attribute and direction to order items. One of the following fields: - `id` - `contact_id` - `subscription_plan_id`  One of the following directions: - `asc` - `desc` (optional)
+  orderBy: "order_by_example",
+    // Total number of items to return per page (optional)
+  pageSize: 0,
+    // Page token (optional)
+  pageToken: "page_token_example",
+};
+
+const data = await apiInstance.listSubscriptions(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **filter** | [**string**] | Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60;  | (optional) defaults to undefined
+ **orderBy** | [**string**] | Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | (optional) defaults to undefined
+ **pageSize** | [**number**] | Total number of items to return per page | (optional) defaults to undefined
+ **pageToken** | [**string**] | Page token | (optional) defaults to undefined
+
+
+### Return type
+
+**ListSubscriptionsResponse**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **retrieveSubscriptionCustomFieldModel**
 > ObjectModel retrieveSubscriptionCustomFieldModel()
 
@@ -317,6 +439,97 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **updateSubscription**
+> Subscription updateSubscription(updateSubscriptionRequest)
+
+Updates a Subscription
+
+### Example
+
+
+```typescript
+import { createConfiguration, SubscriptionsApi } from '';
+import type { SubscriptionsApiUpdateSubscriptionRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new SubscriptionsApi(configuration);
+
+const request: SubscriptionsApiUpdateSubscriptionRequest = {
+    // subscription_id
+  subscriptionId: "subscription_id_example",
+    // request
+  updateSubscriptionRequest: {
+    active: true,
+    allowTax: true,
+    autoCharge: true,
+    billingAmount: 3.14,
+    billingCycle: "YEAR",
+    billingFrequency: 1,
+    contactId: "contactId_example",
+    daysBetweenRetries: 1,
+    endDate: "endDate_example",
+    leadAffiliateId: "leadAffiliateId_example",
+    maxChargeAttempts: 1,
+    nextBillDate: "nextBillDate_example",
+    paymentMethodId: "paymentMethodId_example",
+    quantity: 1,
+    saleAffiliateId: "saleAffiliateId_example",
+    shippingAddress: {
+      countryCode: "USA",
+      field: "ADDRESS_FIELD_UNSPECIFIED",
+      line1: "line1_example",
+      line2: "line2_example",
+      locality: "Phoenix",
+      postalCode: "postalCode_example",
+      regionCode: "US-AZ",
+    },
+    subscriptionPlanId: "subscriptionPlanId_example",
+  },
+    // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+  updateMask: [
+    "contact_id",
+  ],
+};
+
+const data = await apiInstance.updateSubscription(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateSubscriptionRequest** | **UpdateSubscriptionRequest**| request |
+ **subscriptionId** | [**string**] | subscription_id | defaults to undefined
+ **updateMask** |  | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+
+
+### Return type
+
+**Subscription**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

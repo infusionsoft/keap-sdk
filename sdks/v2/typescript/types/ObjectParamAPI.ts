@@ -9,6 +9,7 @@ import { AddToAutomationSequenceRequest } from '../models/AddToAutomationSequenc
 import { AddToAutomationSequenceResponse } from '../models/AddToAutomationSequenceResponse';
 import { Address } from '../models/Address';
 import { AddressInformation } from '../models/AddressInformation';
+import { AddressRequest } from '../models/AddressRequest';
 import { AffiliateAddToProgramRequest } from '../models/AffiliateAddToProgramRequest';
 import { AffiliateCommission } from '../models/AffiliateCommission';
 import { AffiliateCommissionEarned } from '../models/AffiliateCommissionEarned';
@@ -264,6 +265,7 @@ import { SubscriptionCommission } from '../models/SubscriptionCommission';
 import { SubscriptionCommissionProgram } from '../models/SubscriptionCommissionProgram';
 import { SubscriptionPlan } from '../models/SubscriptionPlan';
 import { Tag } from '../models/Tag';
+import { TagCategory } from '../models/TagCategory';
 import { TaggedCompany } from '../models/TaggedCompany';
 import { Task } from '../models/Task';
 import { Throwable } from '../models/Throwable';
@@ -2626,7 +2628,7 @@ export interface ContactApiListContactsRequest {
      */
     filter?: string
     /**
-     * Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;date_created&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * Defaults to: undefined
      * @type string
      * @memberof ContactApilistContacts
@@ -3690,6 +3692,46 @@ export class ObjectFreeTrialDiscountsApi {
      */
     public updateFreeTrialDiscount(param: FreeTrialDiscountsApiUpdateFreeTrialDiscountRequest, options?: ConfigurationOptions): Promise<FreeTrialDiscount> {
         return this.api.updateFreeTrialDiscount(param.discountId, param.updateFreeTrialDiscountRequest, param.updateMask,  options).toPromise();
+    }
+
+}
+
+import { ObservableLeadScoreApi } from "./ObservableAPI";
+import { LeadScoreApiRequestFactory, LeadScoreApiResponseProcessor} from "../apis/LeadScoreApi";
+
+export interface LeadScoreApiGetLeadScoreDetailsRequest {
+    /**
+     * contact_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof LeadScoreApigetLeadScoreDetails
+     */
+    contactId: string
+}
+
+export class ObjectLeadScoreApi {
+    private api: ObservableLeadScoreApi
+
+    public constructor(configuration: Configuration, requestFactory?: LeadScoreApiRequestFactory, responseProcessor?: LeadScoreApiResponseProcessor) {
+        this.api = new ObservableLeadScoreApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Retrieves information about the Lead Score of a Contact
+     * Retrieve Lead Score of a Contact
+     * @param param the request object
+     */
+    public getLeadScoreDetailsWithHttpInfo(param: LeadScoreApiGetLeadScoreDetailsRequest, options?: ConfigurationOptions): Promise<HttpInfo<LeadScore>> {
+        return this.api.getLeadScoreDetailsWithHttpInfo(param.contactId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves information about the Lead Score of a Contact
+     * Retrieve Lead Score of a Contact
+     * @param param the request object
+     */
+    public getLeadScoreDetails(param: LeadScoreApiGetLeadScoreDetailsRequest, options?: ConfigurationOptions): Promise<LeadScore> {
+        return this.api.getLeadScoreDetails(param.contactId,  options).toPromise();
     }
 
 }
@@ -5753,6 +5795,64 @@ export class ObjectOrderTotalDiscountsApi {
 import { ObservableOrdersApi } from "./ObservableAPI";
 import { OrdersApiRequestFactory, OrdersApiResponseProcessor} from "../apis/OrdersApi";
 
+export interface OrdersApiApplyCommissionOnOrderItemsRequest {
+    /**
+     * order_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof OrdersApiapplyCommissionOnOrderItems
+     */
+    orderId: string
+    /**
+     * order_item_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof OrdersApiapplyCommissionOnOrderItems
+     */
+    orderItemId: string
+    /**
+     * request
+     * @type RestApplyCommissionRequest
+     * @memberof OrdersApiapplyCommissionOnOrderItems
+     */
+    restApplyCommissionRequest: RestApplyCommissionRequest
+}
+
+export interface OrdersApiApplyTaxRequest {
+    /**
+     * order_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof OrdersApiapplyTax
+     */
+    orderId: string
+}
+
+export interface OrdersApiAttachFileToOrderRequest {
+    /**
+     * order_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof OrdersApiattachFileToOrder
+     */
+    orderId: string
+    /**
+     * File name
+     * @type FileOperationRequest
+     * @memberof OrdersApiattachFileToOrder
+     */
+    fileOperationRequest: FileOperationRequest
+}
+
+export interface OrdersApiCreateOrderRequest {
+    /**
+     * request
+     * @type RestCreateOrderRequest
+     * @memberof OrdersApicreateOrder
+     */
+    restCreateOrderRequest: RestCreateOrderRequest
+}
+
 export interface OrdersApiCreateOrderCustomFieldRequest {
     /**
      * customField
@@ -5760,6 +5860,38 @@ export interface OrdersApiCreateOrderCustomFieldRequest {
      * @memberof OrdersApicreateOrderCustomField
      */
     createCustomFieldRequest: CreateCustomFieldRequest
+}
+
+export interface OrdersApiCreateOrderItemRequest {
+    /**
+     * order_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof OrdersApicreateOrderItem
+     */
+    orderId: string
+    /**
+     * request
+     * @type CreateOrderItemRequest
+     * @memberof OrdersApicreateOrderItem
+     */
+    createOrderItemRequest: CreateOrderItemRequest
+}
+
+export interface OrdersApiCreatePaymentForAnOrderRequest {
+    /**
+     * order_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof OrdersApicreatePaymentForAnOrder
+     */
+    orderId: string
+    /**
+     * request
+     * @type CreatePaymentRequest
+     * @memberof OrdersApicreatePaymentForAnOrder
+     */
+    createPaymentRequest: CreatePaymentRequest
 }
 
 export interface OrdersApiDeleteOrderRequest {
@@ -5799,7 +5931,129 @@ export interface OrdersApiDeleteOrderItemRequest {
     orderItemId: string
 }
 
+export interface OrdersApiDetachFileFromOrderRequest {
+    /**
+     * order_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof OrdersApidetachFileFromOrder
+     */
+    orderId: string
+    /**
+     * request
+     * @type FileOperationRequest
+     * @memberof OrdersApidetachFileFromOrder
+     */
+    fileOperationRequest: FileOperationRequest
+}
+
+export interface OrdersApiGetOrderRequest {
+    /**
+     * order_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof OrdersApigetOrder
+     */
+    orderId: string
+}
+
+export interface OrdersApiListOrderPaymentsRequest {
+    /**
+     * order_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof OrdersApilistOrderPayments
+     */
+    orderId: string
+    /**
+     * Filter to apply, allowed fields are: - (String) &#x60;invoice_id&#x60; - (String) &#x60;payment_id&#x60; - (String) &#x60;amount&#x60; - (String) &#x60;pay_status&#x60; - (Boolean) &#x60;skip_commission&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched  word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;payment_id%3D%3D123&#x60; - &#x60;filter&#x3D;pay_status%3D%3DAPPROVED&#x60; - &#x60;filter&#x3D;invoice_id%3D%3D456%3Bskip_commission&#x3D;true&#x60; 
+     * Defaults to: undefined
+     * @type string
+     * @memberof OrdersApilistOrderPayments
+     */
+    filter?: string
+    /**
+     * Attribute and direction to order items. One of the following fields: - &#x60;invoice_id&#x60; - &#x60;payment_id&#x60; - &#x60;amount&#x60; - &#x60;pay_time&#x60; - &#x60;pay_status&#x60; - &#x60;skip_commission&#x60; - &#x60;last_updated_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * Defaults to: undefined
+     * @type string
+     * @memberof OrdersApilistOrderPayments
+     */
+    orderBy?: string
+    /**
+     * Total number of items to return per page
+     * Minimum: 1
+     * Maximum: 1000
+     * Defaults to: undefined
+     * @type number
+     * @memberof OrdersApilistOrderPayments
+     */
+    pageSize?: number
+    /**
+     * Page token
+     * Defaults to: undefined
+     * @type string
+     * @memberof OrdersApilistOrderPayments
+     */
+    pageToken?: string
+}
+
+export interface OrdersApiListOrdersRequest {
+    /**
+     * Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60;
+     * Defaults to: undefined
+     * @type string
+     * @memberof OrdersApilistOrders
+     */
+    filter?: string
+    /**
+     * Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;order_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * Defaults to: undefined
+     * @type string
+     * @memberof OrdersApilistOrders
+     */
+    orderBy?: string
+    /**
+     * Total number of items to return per page
+     * Minimum: 1
+     * Maximum: 1000
+     * Defaults to: undefined
+     * @type number
+     * @memberof OrdersApilistOrders
+     */
+    pageSize?: number
+    /**
+     * Page token
+     * Defaults to: undefined
+     * @type string
+     * @memberof OrdersApilistOrders
+     */
+    pageToken?: string
+}
+
 export interface OrdersApiRetrieveOrderCustomFieldModelRequest {
+}
+
+export interface OrdersApiUpdateOrderRequest {
+    /**
+     * order_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof OrdersApiupdateOrder
+     */
+    orderId: string
+    /**
+     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * Defaults to: undefined
+     * @type Array&lt;string&gt;
+     * @memberof OrdersApiupdateOrder
+     */
+    updateMask?: Array<string>
+    /**
+     * order
+     * @type UpdateOrderRequest
+     * @memberof OrdersApiupdateOrder
+     */
+    updateOrderRequest?: UpdateOrderRequest
 }
 
 export interface OrdersApiUpdateOrderCustomFieldRequest {
@@ -5825,11 +6079,113 @@ export interface OrdersApiUpdateOrderCustomFieldRequest {
     updateMask?: Array<string>
 }
 
+export interface OrdersApiUpdateOrderItemRequest {
+    /**
+     * order_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof OrdersApiupdateOrderItem
+     */
+    orderId: string
+    /**
+     * order_item_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof OrdersApiupdateOrderItem
+     */
+    orderItemId: string
+    /**
+     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * Defaults to: undefined
+     * @type Array&lt;string&gt;
+     * @memberof OrdersApiupdateOrderItem
+     */
+    updateMask?: Array<string>
+    /**
+     * order
+     * @type UpdateOrderItemRequest
+     * @memberof OrdersApiupdateOrderItem
+     */
+    updateOrderItemRequest?: UpdateOrderItemRequest
+}
+
 export class ObjectOrdersApi {
     private api: ObservableOrdersApi
 
     public constructor(configuration: Configuration, requestFactory?: OrdersApiRequestFactory, responseProcessor?: OrdersApiResponseProcessor) {
         this.api = new ObservableOrdersApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Applies commission to an order item on an existing order.
+     * Apply Commission to an Order Item
+     * @param param the request object
+     */
+    public applyCommissionOnOrderItemsWithHttpInfo(param: OrdersApiApplyCommissionOnOrderItemsRequest, options?: ConfigurationOptions): Promise<HttpInfo<OrderItem>> {
+        return this.api.applyCommissionOnOrderItemsWithHttpInfo(param.orderId, param.orderItemId, param.restApplyCommissionRequest,  options).toPromise();
+    }
+
+    /**
+     * Applies commission to an order item on an existing order.
+     * Apply Commission to an Order Item
+     * @param param the request object
+     */
+    public applyCommissionOnOrderItems(param: OrdersApiApplyCommissionOnOrderItemsRequest, options?: ConfigurationOptions): Promise<OrderItem> {
+        return this.api.applyCommissionOnOrderItems(param.orderId, param.orderItemId, param.restApplyCommissionRequest,  options).toPromise();
+    }
+
+    /**
+     * Calculate taxes for a single Order for a given order id
+     * Apply Taxes on an Order
+     * @param param the request object
+     */
+    public applyTaxWithHttpInfo(param: OrdersApiApplyTaxRequest, options?: ConfigurationOptions): Promise<HttpInfo<Order>> {
+        return this.api.applyTaxWithHttpInfo(param.orderId,  options).toPromise();
+    }
+
+    /**
+     * Calculate taxes for a single Order for a given order id
+     * Apply Taxes on an Order
+     * @param param the request object
+     */
+    public applyTax(param: OrdersApiApplyTaxRequest, options?: ConfigurationOptions): Promise<Order> {
+        return this.api.applyTax(param.orderId,  options).toPromise();
+    }
+
+    /**
+     * Attaches an uploaded File to an Order Invoice
+     * Attach a File to an Order Invoice
+     * @param param the request object
+     */
+    public attachFileToOrderWithHttpInfo(param: OrdersApiAttachFileToOrderRequest, options?: ConfigurationOptions): Promise<HttpInfo<Order>> {
+        return this.api.attachFileToOrderWithHttpInfo(param.orderId, param.fileOperationRequest,  options).toPromise();
+    }
+
+    /**
+     * Attaches an uploaded File to an Order Invoice
+     * Attach a File to an Order Invoice
+     * @param param the request object
+     */
+    public attachFileToOrder(param: OrdersApiAttachFileToOrderRequest, options?: ConfigurationOptions): Promise<Order> {
+        return this.api.attachFileToOrder(param.orderId, param.fileOperationRequest,  options).toPromise();
+    }
+
+    /**
+     * Creates a one time Order with Order items
+     * Create an Order
+     * @param param the request object
+     */
+    public createOrderWithHttpInfo(param: OrdersApiCreateOrderRequest, options?: ConfigurationOptions): Promise<HttpInfo<Order>> {
+        return this.api.createOrderWithHttpInfo(param.restCreateOrderRequest,  options).toPromise();
+    }
+
+    /**
+     * Creates a one time Order with Order items
+     * Create an Order
+     * @param param the request object
+     */
+    public createOrder(param: OrdersApiCreateOrderRequest, options?: ConfigurationOptions): Promise<Order> {
+        return this.api.createOrder(param.restCreateOrderRequest,  options).toPromise();
     }
 
     /**
@@ -5848,6 +6204,42 @@ export class ObjectOrdersApi {
      */
     public createOrderCustomField(param: OrdersApiCreateOrderCustomFieldRequest, options?: ConfigurationOptions): Promise<CustomFieldMetaData> {
         return this.api.createOrderCustomField(param.createCustomFieldRequest,  options).toPromise();
+    }
+
+    /**
+     * Creates an order item on an existing order
+     * Create an Order Item
+     * @param param the request object
+     */
+    public createOrderItemWithHttpInfo(param: OrdersApiCreateOrderItemRequest, options?: ConfigurationOptions): Promise<HttpInfo<OrderItem>> {
+        return this.api.createOrderItemWithHttpInfo(param.orderId, param.createOrderItemRequest,  options).toPromise();
+    }
+
+    /**
+     * Creates an order item on an existing order
+     * Create an Order Item
+     * @param param the request object
+     */
+    public createOrderItem(param: OrdersApiCreateOrderItemRequest, options?: ConfigurationOptions): Promise<OrderItem> {
+        return this.api.createOrderItem(param.orderId, param.createOrderItemRequest,  options).toPromise();
+    }
+
+    /**
+     * Creates a payment record. Alternatively, adds a record of historical or external payment of cash or credit card
+     * Create a Payment
+     * @param param the request object
+     */
+    public createPaymentForAnOrderWithHttpInfo(param: OrdersApiCreatePaymentForAnOrderRequest, options?: ConfigurationOptions): Promise<HttpInfo<PaymentResult>> {
+        return this.api.createPaymentForAnOrderWithHttpInfo(param.orderId, param.createPaymentRequest,  options).toPromise();
+    }
+
+    /**
+     * Creates a payment record. Alternatively, adds a record of historical or external payment of cash or credit card
+     * Create a Payment
+     * @param param the request object
+     */
+    public createPaymentForAnOrder(param: OrdersApiCreatePaymentForAnOrderRequest, options?: ConfigurationOptions): Promise<PaymentResult> {
+        return this.api.createPaymentForAnOrder(param.orderId, param.createPaymentRequest,  options).toPromise();
     }
 
     /**
@@ -5905,6 +6297,78 @@ export class ObjectOrdersApi {
     }
 
     /**
+     * Detaches a File from an Order Invoice
+     * Detach a File from an Order Invoice
+     * @param param the request object
+     */
+    public detachFileFromOrderWithHttpInfo(param: OrdersApiDetachFileFromOrderRequest, options?: ConfigurationOptions): Promise<HttpInfo<Order>> {
+        return this.api.detachFileFromOrderWithHttpInfo(param.orderId, param.fileOperationRequest,  options).toPromise();
+    }
+
+    /**
+     * Detaches a File from an Order Invoice
+     * Detach a File from an Order Invoice
+     * @param param the request object
+     */
+    public detachFileFromOrder(param: OrdersApiDetachFileFromOrderRequest, options?: ConfigurationOptions): Promise<Order> {
+        return this.api.detachFileFromOrder(param.orderId, param.fileOperationRequest,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a single Order for a given order id
+     * Retrieve an Order
+     * @param param the request object
+     */
+    public getOrderWithHttpInfo(param: OrdersApiGetOrderRequest, options?: ConfigurationOptions): Promise<HttpInfo<Order>> {
+        return this.api.getOrderWithHttpInfo(param.orderId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a single Order for a given order id
+     * Retrieve an Order
+     * @param param the request object
+     */
+    public getOrder(param: OrdersApiGetOrderRequest, options?: ConfigurationOptions): Promise<Order> {
+        return this.api.getOrder(param.orderId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of payments made against a given order, including historical or external payments of cash or credit card
+     * Retrieve Order Payments
+     * @param param the request object
+     */
+    public listOrderPaymentsWithHttpInfo(param: OrdersApiListOrderPaymentsRequest, options?: ConfigurationOptions): Promise<HttpInfo<ListOrderPaymentsResponse>> {
+        return this.api.listOrderPaymentsWithHttpInfo(param.orderId, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of payments made against a given order, including historical or external payments of cash or credit card
+     * Retrieve Order Payments
+     * @param param the request object
+     */
+    public listOrderPayments(param: OrdersApiListOrderPaymentsRequest, options?: ConfigurationOptions): Promise<ListOrderPaymentsResponse> {
+        return this.api.listOrderPayments(param.orderId, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of orders
+     * List orders
+     * @param param the request object
+     */
+    public listOrdersWithHttpInfo(param: OrdersApiListOrdersRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListOrders>> {
+        return this.api.listOrdersWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of orders
+     * List orders
+     * @param param the request object
+     */
+    public listOrders(param: OrdersApiListOrdersRequest = {}, options?: ConfigurationOptions): Promise<ListOrders> {
+        return this.api.listOrders(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    }
+
+    /**
      * Gets the custom fields for the Order object
      * Retrieve Order Custom Field Model
      * @param param the request object
@@ -5923,6 +6387,24 @@ export class ObjectOrdersApi {
     }
 
     /**
+     * Updates an Order
+     * Update an Order
+     * @param param the request object
+     */
+    public updateOrderWithHttpInfo(param: OrdersApiUpdateOrderRequest, options?: ConfigurationOptions): Promise<HttpInfo<Order>> {
+        return this.api.updateOrderWithHttpInfo(param.orderId, param.updateMask, param.updateOrderRequest,  options).toPromise();
+    }
+
+    /**
+     * Updates an Order
+     * Update an Order
+     * @param param the request object
+     */
+    public updateOrder(param: OrdersApiUpdateOrderRequest, options?: ConfigurationOptions): Promise<Order> {
+        return this.api.updateOrder(param.orderId, param.updateMask, param.updateOrderRequest,  options).toPromise();
+    }
+
+    /**
      * Updates a custom field of the specified type and options to the Order object
      * Update an Order Custom Field
      * @param param the request object
@@ -5938,6 +6420,24 @@ export class ObjectOrdersApi {
      */
     public updateOrderCustomField(param: OrdersApiUpdateOrderCustomFieldRequest, options?: ConfigurationOptions): Promise<CustomFieldMetaData> {
         return this.api.updateOrderCustomField(param.customFieldId, param.updateCustomFieldMetaDataRequest, param.updateMask,  options).toPromise();
+    }
+
+    /**
+     * Updates an Order Item
+     * Update an Order Item
+     * @param param the request object
+     */
+    public updateOrderItemWithHttpInfo(param: OrdersApiUpdateOrderItemRequest, options?: ConfigurationOptions): Promise<HttpInfo<OrderItem>> {
+        return this.api.updateOrderItemWithHttpInfo(param.orderId, param.orderItemId, param.updateMask, param.updateOrderItemRequest,  options).toPromise();
+    }
+
+    /**
+     * Updates an Order Item
+     * Update an Order Item
+     * @param param the request object
+     */
+    public updateOrderItem(param: OrdersApiUpdateOrderItemRequest, options?: ConfigurationOptions): Promise<OrderItem> {
+        return this.api.updateOrderItem(param.orderId, param.orderItemId, param.updateMask, param.updateOrderItemRequest,  options).toPromise();
     }
 
 }
@@ -7180,6 +7680,45 @@ export class ObjectProductsApi {
 
 }
 
+import { ObservableReferralApi } from "./ObservableAPI";
+import { ReferralApiRequestFactory, ReferralApiResponseProcessor} from "../apis/ReferralApi";
+
+export interface ReferralApiCreateReferralRequest {
+    /**
+     * request
+     * @type CreateReferralRequest
+     * @memberof ReferralApicreateReferral
+     */
+    createReferralRequest: CreateReferralRequest
+}
+
+export class ObjectReferralApi {
+    private api: ObservableReferralApi
+
+    public constructor(configuration: Configuration, requestFactory?: ReferralApiRequestFactory, responseProcessor?: ReferralApiResponseProcessor) {
+        this.api = new ObservableReferralApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Creates a new referral partner referral on the provided contact
+     * Create a Referral
+     * @param param the request object
+     */
+    public createReferralWithHttpInfo(param: ReferralApiCreateReferralRequest, options?: ConfigurationOptions): Promise<HttpInfo<Referral>> {
+        return this.api.createReferralWithHttpInfo(param.createReferralRequest,  options).toPromise();
+    }
+
+    /**
+     * Creates a new referral partner referral on the provided contact
+     * Create a Referral
+     * @param param the request object
+     */
+    public createReferral(param: ReferralApiCreateReferralRequest, options?: ConfigurationOptions): Promise<Referral> {
+        return this.api.createReferral(param.createReferralRequest,  options).toPromise();
+    }
+
+}
+
 import { ObservableReportingApi } from "./ObservableAPI";
 import { ReportingApiRequestFactory, ReportingApiResponseProcessor} from "../apis/ReportingApi";
 
@@ -7940,7 +8479,73 @@ export interface SubscriptionsApiDeleteSubscriptionCustomFieldRequest {
     customFieldId: string
 }
 
+export interface SubscriptionsApiGetSubscriptionRequest {
+    /**
+     * subscription_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof SubscriptionsApigetSubscription
+     */
+    subscriptionId: string
+}
+
+export interface SubscriptionsApiListSubscriptionsRequest {
+    /**
+     * Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; 
+     * Defaults to: undefined
+     * @type string
+     * @memberof SubscriptionsApilistSubscriptions
+     */
+    filter?: string
+    /**
+     * Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * Defaults to: undefined
+     * @type string
+     * @memberof SubscriptionsApilistSubscriptions
+     */
+    orderBy?: string
+    /**
+     * Total number of items to return per page
+     * Minimum: 1
+     * Maximum: 1000
+     * Defaults to: undefined
+     * @type number
+     * @memberof SubscriptionsApilistSubscriptions
+     */
+    pageSize?: number
+    /**
+     * Page token
+     * Defaults to: undefined
+     * @type string
+     * @memberof SubscriptionsApilistSubscriptions
+     */
+    pageToken?: string
+}
+
 export interface SubscriptionsApiRetrieveSubscriptionCustomFieldModelRequest {
+}
+
+export interface SubscriptionsApiUpdateSubscriptionRequest {
+    /**
+     * subscription_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof SubscriptionsApiupdateSubscription
+     */
+    subscriptionId: string
+    /**
+     * request
+     * @type UpdateSubscriptionRequest
+     * @memberof SubscriptionsApiupdateSubscription
+     */
+    updateSubscriptionRequest: UpdateSubscriptionRequest
+    /**
+     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * Defaults to: undefined
+     * @type Array&lt;string&gt;
+     * @memberof SubscriptionsApiupdateSubscription
+     */
+    updateMask?: Array<string>
 }
 
 export interface SubscriptionsApiUpdateSubscriptionCustomFieldRequest {
@@ -8046,6 +8651,42 @@ export class ObjectSubscriptionsApi {
     }
 
     /**
+     * Retrieves a single subscription
+     * Retrieve a Subscription
+     * @param param the request object
+     */
+    public getSubscriptionWithHttpInfo(param: SubscriptionsApiGetSubscriptionRequest, options?: ConfigurationOptions): Promise<HttpInfo<Subscription>> {
+        return this.api.getSubscriptionWithHttpInfo(param.subscriptionId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a single subscription
+     * Retrieve a Subscription
+     * @param param the request object
+     */
+    public getSubscription(param: SubscriptionsApiGetSubscriptionRequest, options?: ConfigurationOptions): Promise<Subscription> {
+        return this.api.getSubscription(param.subscriptionId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of subscriptions using the specified search criteria.
+     * List Subscriptions
+     * @param param the request object
+     */
+    public listSubscriptionsWithHttpInfo(param: SubscriptionsApiListSubscriptionsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListSubscriptionsResponse>> {
+        return this.api.listSubscriptionsWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of subscriptions using the specified search criteria.
+     * List Subscriptions
+     * @param param the request object
+     */
+    public listSubscriptions(param: SubscriptionsApiListSubscriptionsRequest = {}, options?: ConfigurationOptions): Promise<ListSubscriptionsResponse> {
+        return this.api.listSubscriptions(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    }
+
+    /**
      * Get the custom fields for the Subscription object
      * Retrieve Subscription Custom Field Model
      * @param param the request object
@@ -8061,6 +8702,24 @@ export class ObjectSubscriptionsApi {
      */
     public retrieveSubscriptionCustomFieldModel(param: SubscriptionsApiRetrieveSubscriptionCustomFieldModelRequest = {}, options?: ConfigurationOptions): Promise<ObjectModel> {
         return this.api.retrieveSubscriptionCustomFieldModel( options).toPromise();
+    }
+
+    /**
+     * Updates a Subscription
+     * Update a Subscription
+     * @param param the request object
+     */
+    public updateSubscriptionWithHttpInfo(param: SubscriptionsApiUpdateSubscriptionRequest, options?: ConfigurationOptions): Promise<HttpInfo<Subscription>> {
+        return this.api.updateSubscriptionWithHttpInfo(param.subscriptionId, param.updateSubscriptionRequest, param.updateMask,  options).toPromise();
+    }
+
+    /**
+     * Updates a Subscription
+     * Update a Subscription
+     * @param param the request object
+     */
+    public updateSubscription(param: SubscriptionsApiUpdateSubscriptionRequest, options?: ConfigurationOptions): Promise<Subscription> {
+        return this.api.updateSubscription(param.subscriptionId, param.updateSubscriptionRequest, param.updateMask,  options).toPromise();
     }
 
     /**
@@ -8242,14 +8901,14 @@ export interface TagsApiListContactsWithTagIdRequest {
 
 export interface TagsApiListTagCategoriesRequest {
     /**
-     * Search filter to apply to results
+     * Filter to apply, allowed fields are:  - (String) &#x60;name&#x60; - (String) &#x60;description&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. If NONE is passed in for &#x60;category_id&#x60; or &#x60;description&#x60;, it will check for the non-existence of that field. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;name%3D%3Dmy-tag&#x60; - &#x60;filter&#x3D;description%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_create_time%3D%3D2024-12-22T01:00:00.000Z;until_create_time%3D%3D2025-01-01T00:00:00.000Z;&#x60;
      * Defaults to: undefined
      * @type string
      * @memberof TagsApilistTagCategories
      */
     filter?: string
     /**
-     * Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60;
+     * Attribute and direction to order items. One of the following fields:  - &#x60;name&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * Defaults to: undefined
      * @type string
      * @memberof TagsApilistTagCategories
@@ -8416,7 +9075,7 @@ export class ObjectTagsApi {
      * Create Tag Category
      * @param param the request object
      */
-    public createTagCategoryWithHttpInfo(param: TagsApiCreateTagCategoryRequest, options?: ConfigurationOptions): Promise<HttpInfo<Tag>> {
+    public createTagCategoryWithHttpInfo(param: TagsApiCreateTagCategoryRequest, options?: ConfigurationOptions): Promise<HttpInfo<TagCategory>> {
         return this.api.createTagCategoryWithHttpInfo(param.createUpdateTagCategoryRequest,  options).toPromise();
     }
 
@@ -8425,7 +9084,7 @@ export class ObjectTagsApi {
      * Create Tag Category
      * @param param the request object
      */
-    public createTagCategory(param: TagsApiCreateTagCategoryRequest, options?: ConfigurationOptions): Promise<Tag> {
+    public createTagCategory(param: TagsApiCreateTagCategoryRequest, options?: ConfigurationOptions): Promise<TagCategory> {
         return this.api.createTagCategory(param.createUpdateTagCategoryRequest,  options).toPromise();
     }
 

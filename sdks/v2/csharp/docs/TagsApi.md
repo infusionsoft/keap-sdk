@@ -211,7 +211,7 @@ No authorization required
 
 <a id="createtagcategory"></a>
 # **CreateTagCategory**
-> Tag CreateTagCategory (CreateUpdateTagCategoryRequest createUpdateTagCategoryRequest)
+> TagCategory CreateTagCategory (CreateUpdateTagCategoryRequest createUpdateTagCategoryRequest)
 
 Create Tag Category
 
@@ -239,7 +239,7 @@ namespace Example
             try
             {
                 // Create Tag Category
-                Tag result = apiInstance.CreateTagCategory(createUpdateTagCategoryRequest);
+                TagCategory result = apiInstance.CreateTagCategory(createUpdateTagCategoryRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -260,7 +260,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Create Tag Category
-    ApiResponse<Tag> response = apiInstance.CreateTagCategoryWithHttpInfo(createUpdateTagCategoryRequest);
+    ApiResponse<TagCategory> response = apiInstance.CreateTagCategoryWithHttpInfo(createUpdateTagCategoryRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -281,7 +281,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**Tag**](Tag.md)
+[**TagCategory**](TagCategory.md)
 
 ### Authorization
 
@@ -906,8 +906,8 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://api.keap.com/crm/rest";
             var apiInstance = new TagsApi(config);
-            var filter = "filter_example";  // string? | Search filter to apply to results (optional) 
-            var orderBy = "orderBy_example";  // string? | Attribute and direction to order items by. E.g. `given_name desc` (optional) 
+            var filter = "filter_example";  // string? | Filter to apply, allowed fields are:  - (String) `name` - (String) `description` - (String) `since_create_time` - (String) `until_create_time` - (String) `since_update_time` - (String) `until_update_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. If NONE is passed in for `category_id` or `description`, it will check for the non-existence of that field. For the filters listed above, here are some examples:  - `filter=name%3D%3Dmy-tag` - `filter=description%3D%3DNONE` - `filter=since_create_time%3D%3D2024-12-22T01:00:00.000Z;until_create_time%3D%3D2025-01-01T00:00:00.000Z;` (optional) 
+            var orderBy = "orderBy_example";  // string? | Attribute and direction to order items. One of the following fields:  - `name` - `create_time` - `update_time`  One of the following directions: - `asc` - `desc` (optional) 
             var pageSize = 0;  // int? | Total number of items to return per page (optional) 
             var pageToken = "pageToken_example";  // string? | Page token (optional) 
 
@@ -952,8 +952,8 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **filter** | **string?** | Search filter to apply to results | [optional]  |
-| **orderBy** | **string?** | Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60; | [optional]  |
+| **filter** | **string?** | Filter to apply, allowed fields are:  - (String) &#x60;name&#x60; - (String) &#x60;description&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. If NONE is passed in for &#x60;category_id&#x60; or &#x60;description&#x60;, it will check for the non-existence of that field. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;name%3D%3Dmy-tag&#x60; - &#x60;filter&#x3D;description%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_create_time%3D%3D2024-12-22T01:00:00.000Z;until_create_time%3D%3D2025-01-01T00:00:00.000Z;&#x60; | [optional]  |
+| **orderBy** | **string?** | Attribute and direction to order items. One of the following fields:  - &#x60;name&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional]  |
 | **pageSize** | **int?** | Total number of items to return per page | [optional]  |
 | **pageToken** | **string?** | Page token | [optional]  |
 

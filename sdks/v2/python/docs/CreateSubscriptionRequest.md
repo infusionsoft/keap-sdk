@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **payment_method_id** | **str** | Id associated with the payment method. Default is the contact&#39;s most recently used card, if auto charge is true. Default is 0 otherwise. | [optional] 
 **quantity** | **int** | The subscription quantity. Must be 1 or greater. Default is 1. | [optional] 
 **sale_affiliate_id** | **str** | The affiliate id for the sale of the subscription. Default is 0. | [optional] 
-**shipping_address** | [**Address**](Address.md) |  | [optional] 
+**shipping_address** | [**AddressRequest**](AddressRequest.md) |  | [optional] 
 **start_date** | **str** | The first day the subscription will bill. Must not be in the past. Default is today. | [optional] 
 **subscription_plan_id** | **str** | Id of the product subscription plan. | 
 

@@ -5,6 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **nextPageToken** | **String** |  | [optional] 
-**tagCategories** | [**[Tag]**](Tag.md) |  | [optional] 
+**tagCategories** | [**[TagCategory]**](TagCategory.md) |  | [optional] 
 
 

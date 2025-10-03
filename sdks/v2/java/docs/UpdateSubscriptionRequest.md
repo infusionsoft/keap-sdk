@@ -22,7 +22,7 @@
 |**paymentMethodId** | **String** | Id associated with the payment method. |  [optional] |
 |**quantity** | **Integer** | The subscription quantity. Must be 1 or greater. |  [optional] |
 |**saleAffiliateId** | **String** | The affiliate id for the sale of the subscription. |  [optional] |
-|**shippingAddress** | [**Address**](Address.md) |  |  [optional] |
+|**shippingAddress** | [**AddressRequest**](AddressRequest.md) |  |  [optional] |
 |**subscriptionPlanId** | **String** | Id of the product subscription plan. |  [optional] |
 
 

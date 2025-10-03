@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **payment_method_id** | **string** | Id associated with the payment method. Default is the contact&#39;s most recently used card, if auto charge is true. Default is 0 otherwise. | [optional]
 **quantity** | **int** | The subscription quantity. Must be 1 or greater. Default is 1. | [optional]
 **sale_affiliate_id** | **string** | The affiliate id for the sale of the subscription. Default is 0. | [optional]
-**shipping_address** | [**\Keap\Core\V2\Model\Address**](Address.md) |  | [optional]
+**shipping_address** | [**\Keap\Core\V2\Model\AddressRequest**](AddressRequest.md) |  | [optional]
 **start_date** | **string** | The first day the subscription will bill. Must not be in the past. Default is today. | [optional]
 **subscription_plan_id** | **string** | Id of the product subscription plan. |
 
