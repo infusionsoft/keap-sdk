@@ -6,6 +6,8 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 |--------|--------------|-------------|
 | [**AddContactsToCampaignSequence**](CampaignApi.md#addcontactstocampaignsequence) | **POST** /v2/campaigns/{campaign_id}/sequences/{sequence_id}:addContacts | Add Contacts to Campaign Sequence |
 | [**GetCampaign**](CampaignApi.md#getcampaign) | **GET** /v2/campaigns/{campaign_id} | Retrieve a Campaign |
+| [**GetCampaignGoals**](CampaignApi.md#getcampaigngoals) | **GET** /v2/campaigns/{campaign_id}/goals | Retrieve a list of Goals for a Campaign |
+| [**GetCampaignSequences**](CampaignApi.md#getcampaignsequences) | **GET** /v2/campaigns/{campaign_id}/sequences | Retrieve a list of Sequences for a Campaign |
 | [**ListCampaigns**](CampaignApi.md#listcampaigns) | **GET** /v2/campaigns | List Campaigns |
 | [**RemoveContactsFromCampaignSequence**](CampaignApi.md#removecontactsfromcampaignsequence) | **POST** /v2/campaigns/{campaign_id}/sequences/{sequence_id}:removeContacts | Remove Contacts from Campaign Sequence |
 
@@ -180,6 +182,196 @@ catch (ApiException e)
 ### Return type
 
 [**Campaign**](Campaign.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="getcampaigngoals"></a>
+# **GetCampaignGoals**
+> ListCampaignGoalsResponse GetCampaignGoals (string campaignId)
+
+Retrieve a list of Goals for a Campaign
+
+Retrieves a list of Goals (published) for a Campaign
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class GetCampaignGoalsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm/rest";
+            var apiInstance = new CampaignApi(config);
+            var campaignId = "campaignId_example";  // string | campaign_id
+
+            try
+            {
+                // Retrieve a list of Goals for a Campaign
+                ListCampaignGoalsResponse result = apiInstance.GetCampaignGoals(campaignId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling CampaignApi.GetCampaignGoals: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GetCampaignGoalsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Retrieve a list of Goals for a Campaign
+    ApiResponse<ListCampaignGoalsResponse> response = apiInstance.GetCampaignGoalsWithHttpInfo(campaignId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling CampaignApi.GetCampaignGoalsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **campaignId** | **string** | campaign_id |  |
+
+### Return type
+
+[**ListCampaignGoalsResponse**](ListCampaignGoalsResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="getcampaignsequences"></a>
+# **GetCampaignSequences**
+> ListCampaignSequenceResponse GetCampaignSequences (string campaignId)
+
+Retrieve a list of Sequences for a Campaign
+
+Retrieves a list of Sequences (published) for a Campaign
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class GetCampaignSequencesExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm/rest";
+            var apiInstance = new CampaignApi(config);
+            var campaignId = "campaignId_example";  // string | campaign_id
+
+            try
+            {
+                // Retrieve a list of Sequences for a Campaign
+                ListCampaignSequenceResponse result = apiInstance.GetCampaignSequences(campaignId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling CampaignApi.GetCampaignSequences: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GetCampaignSequencesWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Retrieve a list of Sequences for a Campaign
+    ApiResponse<ListCampaignSequenceResponse> response = apiInstance.GetCampaignSequencesWithHttpInfo(campaignId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling CampaignApi.GetCampaignSequencesWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **campaignId** | **string** | campaign_id |  |
+
+### Return type
+
+[**ListCampaignSequenceResponse**](ListCampaignSequenceResponse.md)
 
 ### Authorization
 

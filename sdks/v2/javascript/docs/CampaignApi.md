@@ -6,6 +6,8 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**addContactsToCampaignSequence**](CampaignApi.md#addContactsToCampaignSequence) | **POST** /v2/campaigns/{campaign_id}/sequences/{sequence_id}:addContacts | Add Contacts to Campaign Sequence
 [**getCampaign**](CampaignApi.md#getCampaign) | **GET** /v2/campaigns/{campaign_id} | Retrieve a Campaign
+[**getCampaignGoals**](CampaignApi.md#getCampaignGoals) | **GET** /v2/campaigns/{campaign_id}/goals | Retrieve a list of Goals for a Campaign
+[**getCampaignSequences**](CampaignApi.md#getCampaignSequences) | **GET** /v2/campaigns/{campaign_id}/sequences | Retrieve a list of Sequences for a Campaign
 [**listCampaigns**](CampaignApi.md#listCampaigns) | **GET** /v2/campaigns | List Campaigns
 [**removeContactsFromCampaignSequence**](CampaignApi.md#removeContactsFromCampaignSequence) | **POST** /v2/campaigns/{campaign_id}/sequences/{sequence_id}:removeContacts | Remove Contacts from Campaign Sequence
 
@@ -92,6 +94,94 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Campaign**](Campaign.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## getCampaignGoals
+
+> ListCampaignGoalsResponse getCampaignGoals(campaignId)
+
+Retrieve a list of Goals for a Campaign
+
+Retrieves a list of Goals (published) for a Campaign
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+
+let apiInstance = new KeapCoreServiceV2Sdk.CampaignApi();
+let campaignId = "campaignId_example"; // String | campaign_id
+apiInstance.getCampaignGoals(campaignId).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **campaignId** | **String**| campaign_id | 
+
+### Return type
+
+[**ListCampaignGoalsResponse**](ListCampaignGoalsResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## getCampaignSequences
+
+> ListCampaignSequenceResponse getCampaignSequences(campaignId)
+
+Retrieve a list of Sequences for a Campaign
+
+Retrieves a list of Sequences (published) for a Campaign
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+
+let apiInstance = new KeapCoreServiceV2Sdk.CampaignApi();
+let campaignId = "campaignId_example"; // String | campaign_id
+apiInstance.getCampaignSequences(campaignId).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **campaignId** | **String**| campaign_id | 
+
+### Return type
+
+[**ListCampaignSequenceResponse**](ListCampaignSequenceResponse.md)
 
 ### Authorization
 

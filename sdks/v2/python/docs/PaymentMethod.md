@@ -9,9 +9,10 @@ Name | Type | Description | Notes
 **contact_id** | **str** |  | [optional] 
 **created_time** | **str** |  | [optional] 
 **merchant_account_id** | **str** |  | [optional] 
-**merchant_account_type** | **str** |  | [optional] 
+**merchant_account_type** | **str** | The merchant type this payment method was authorized with. Valid values are: PAYPAL, AUTHORIZE, EWAY, WEPAY, STRIPE, KEAP_PAY, UNSUPPORTED | [optional] 
 **payment_method_id** | **str** |  | [optional] 
-**payment_method_type** | **str** |  | [optional] 
+**payment_method_type** | **str** | The type of payment method. For now, only CARD is supported. | [optional] 
+**status** | **str** | Status of the payment method. Fow now, only EXPIRED is supported. | [optional] 
 
 ## Example
 

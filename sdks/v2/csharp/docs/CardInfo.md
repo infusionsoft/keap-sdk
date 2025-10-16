@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Brand** | **string** |  | [optional] 
-**CardType** | **string** |  | [optional] 
+**CardType** | **string** | The card type. Valid values are: CREDIT, DEBIT, PREPAID. | [optional] 
 **ExpirationMonth** | **string** |  | [optional] 
 **ExpirationYear** | **string** |  | [optional] 
 **LastFour** | **string** |  | [optional] 

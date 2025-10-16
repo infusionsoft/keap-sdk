@@ -160,6 +160,8 @@ export * from '../models/ListAffiliatesResponse';
 export * from '../models/ListAutomationCategoryResponse';
 export * from '../models/ListAutomationIdsResponse';
 export * from '../models/ListAutomationResponse';
+export * from '../models/ListCampaignGoalsResponse';
+export * from '../models/ListCampaignSequenceResponse';
 export * from '../models/ListCampaignsResponse';
 export * from '../models/ListCategoryDiscountsResponse';
 export * from '../models/ListCompaniesResponse';
@@ -200,6 +202,7 @@ export * from '../models/ListTaggedContactsResponse';
 export * from '../models/ListTagsResponse';
 export * from '../models/ListTasksResponse';
 export * from '../models/ListUsersPaginatedResponse';
+export * from '../models/ListWebformsResponse';
 export * from '../models/ModelError';
 export * from '../models/ModelFile';
 export * from '../models/Note';
@@ -302,6 +305,7 @@ export * from '../models/UpdateTaskResponse';
 export * from '../models/UpdateUserRequest';
 export * from '../models/UpdatedPaymentPlan';
 export * from '../models/User';
+export * from '../models/Webform';
 
 import { AddContactsToSequenceRequest } from '../models/AddContactsToSequenceRequest';
 import { AddContactsToSequenceResponse } from '../models/AddContactsToSequenceResponse';
@@ -465,6 +469,8 @@ import { ListAffiliatesResponse } from '../models/ListAffiliatesResponse';
 import { ListAutomationCategoryResponse } from '../models/ListAutomationCategoryResponse';
 import { ListAutomationIdsResponse } from '../models/ListAutomationIdsResponse';
 import { ListAutomationResponse } from '../models/ListAutomationResponse';
+import { ListCampaignGoalsResponse } from '../models/ListCampaignGoalsResponse';
+import { ListCampaignSequenceResponse } from '../models/ListCampaignSequenceResponse';
 import { ListCampaignsResponse } from '../models/ListCampaignsResponse';
 import { ListCategoryDiscountsResponse } from '../models/ListCategoryDiscountsResponse';
 import { ListCompaniesResponse } from '../models/ListCompaniesResponse';
@@ -505,6 +511,7 @@ import { ListTaggedContactsResponse } from '../models/ListTaggedContactsResponse
 import { ListTagsResponse } from '../models/ListTagsResponse';
 import { ListTasksResponse } from '../models/ListTasksResponse';
 import { ListUsersPaginatedResponse } from '../models/ListUsersPaginatedResponse';
+import { ListWebformsResponse } from '../models/ListWebformsResponse';
 import { ModelError } from '../models/ModelError';
 import { ModelFile } from '../models/ModelFile';
 import { Note } from '../models/Note';
@@ -519,7 +526,7 @@ import { OrderTotalDiscount   , OrderTotalDiscountDiscountStrategyEnum  , OrderT
 import { Origin } from '../models/Origin';
 import { OriginRequest } from '../models/OriginRequest';
 import { PatchAutomationCategoryRequest } from '../models/PatchAutomationCategoryRequest';
-import { PaymentMethod    , PaymentMethodMerchantAccountTypeEnum   , PaymentMethodPaymentMethodTypeEnum   } from '../models/PaymentMethod';
+import { PaymentMethod    , PaymentMethodMerchantAccountTypeEnum   , PaymentMethodPaymentMethodTypeEnum  , PaymentMethodStatusEnum   } from '../models/PaymentMethod';
 import { PaymentMethodConfig } from '../models/PaymentMethodConfig';
 import { PaymentPlan } from '../models/PaymentPlan';
 import { PaymentResult } from '../models/PaymentResult';
@@ -607,6 +614,7 @@ import { UpdateTaskResponse          , UpdateTaskResponsePriorityEnum      } fro
 import { UpdateUserRequest } from '../models/UpdateUserRequest';
 import { UpdatedPaymentPlan } from '../models/UpdatedPaymentPlan';
 import { User               , UserStatusEnum       } from '../models/User';
+import { Webform  , WebformDuplicateCheckOptionEnum  , WebformExitOptionEnum        , WebformWebformTypeEnum     } from '../models/Webform';
 
 /* tslint:disable:no-unused-variable */
 let primitives = [
@@ -668,6 +676,7 @@ let enumsMap: Set<string> = new Set<string>([
     "OrderTotalDiscountDiscountTypeEnum",
     "PaymentMethodMerchantAccountTypeEnum",
     "PaymentMethodPaymentMethodTypeEnum",
+    "PaymentMethodStatusEnum",
     "PhoneNumberFieldEnum",
     "ProductDiscountDiscountTypeEnum",
     "ProductInterestTypeEnum",
@@ -695,6 +704,9 @@ let enumsMap: Set<string> = new Set<string>([
     "UpdateSubscriptionRequestBillingCycleEnum",
     "UpdateTaskResponsePriorityEnum",
     "UserStatusEnum",
+    "WebformDuplicateCheckOptionEnum",
+    "WebformExitOptionEnum",
+    "WebformWebformTypeEnum",
 ]);
 
 let typeMap: {[index: string]: any} = {
@@ -860,6 +872,8 @@ let typeMap: {[index: string]: any} = {
     "ListAutomationCategoryResponse": ListAutomationCategoryResponse,
     "ListAutomationIdsResponse": ListAutomationIdsResponse,
     "ListAutomationResponse": ListAutomationResponse,
+    "ListCampaignGoalsResponse": ListCampaignGoalsResponse,
+    "ListCampaignSequenceResponse": ListCampaignSequenceResponse,
     "ListCampaignsResponse": ListCampaignsResponse,
     "ListCategoryDiscountsResponse": ListCategoryDiscountsResponse,
     "ListCompaniesResponse": ListCompaniesResponse,
@@ -900,6 +914,7 @@ let typeMap: {[index: string]: any} = {
     "ListTagsResponse": ListTagsResponse,
     "ListTasksResponse": ListTasksResponse,
     "ListUsersPaginatedResponse": ListUsersPaginatedResponse,
+    "ListWebformsResponse": ListWebformsResponse,
     "ModelError": ModelError,
     "ModelFile": ModelFile,
     "Note": Note,
@@ -1002,6 +1017,7 @@ let typeMap: {[index: string]: any} = {
     "UpdateUserRequest": UpdateUserRequest,
     "UpdatedPaymentPlan": UpdatedPaymentPlan,
     "User": User,
+    "Webform": Webform,
 }
 
 type MimeTypeDescriptor = {

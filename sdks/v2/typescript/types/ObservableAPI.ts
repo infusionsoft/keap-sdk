@@ -165,6 +165,8 @@ import { ListAffiliatesResponse } from '../models/ListAffiliatesResponse';
 import { ListAutomationCategoryResponse } from '../models/ListAutomationCategoryResponse';
 import { ListAutomationIdsResponse } from '../models/ListAutomationIdsResponse';
 import { ListAutomationResponse } from '../models/ListAutomationResponse';
+import { ListCampaignGoalsResponse } from '../models/ListCampaignGoalsResponse';
+import { ListCampaignSequenceResponse } from '../models/ListCampaignSequenceResponse';
 import { ListCampaignsResponse } from '../models/ListCampaignsResponse';
 import { ListCategoryDiscountsResponse } from '../models/ListCategoryDiscountsResponse';
 import { ListCompaniesResponse } from '../models/ListCompaniesResponse';
@@ -205,6 +207,7 @@ import { ListTaggedContactsResponse } from '../models/ListTaggedContactsResponse
 import { ListTagsResponse } from '../models/ListTagsResponse';
 import { ListTasksResponse } from '../models/ListTasksResponse';
 import { ListUsersPaginatedResponse } from '../models/ListUsersPaginatedResponse';
+import { ListWebformsResponse } from '../models/ListWebformsResponse';
 import { ModelError } from '../models/ModelError';
 import { ModelFile } from '../models/ModelFile';
 import { Note } from '../models/Note';
@@ -307,6 +310,7 @@ import { UpdateTaskResponse } from '../models/UpdateTaskResponse';
 import { UpdateUserRequest } from '../models/UpdateUserRequest';
 import { UpdatedPaymentPlan } from '../models/UpdatedPaymentPlan';
 import { User } from '../models/User';
+import { Webform } from '../models/Webform';
 
 import { AffiliateApiRequestFactory, AffiliateApiResponseProcessor} from "../apis/AffiliateApi";
 export class ObservableAffiliateApi {
@@ -2092,6 +2096,74 @@ export class ObservableCampaignApi {
      */
     public getCampaign(campaignId: string, _options?: ConfigurationOptions): Observable<Campaign> {
         return this.getCampaignWithHttpInfo(campaignId, _options).pipe(map((apiResponse: HttpInfo<Campaign>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves a list of Goals (published) for a Campaign
+     * Retrieve a list of Goals for a Campaign
+     * @param campaignId campaign_id
+     */
+    public getCampaignGoalsWithHttpInfo(campaignId: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListCampaignGoalsResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getCampaignGoals(campaignId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getCampaignGoalsWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a list of Goals (published) for a Campaign
+     * Retrieve a list of Goals for a Campaign
+     * @param campaignId campaign_id
+     */
+    public getCampaignGoals(campaignId: string, _options?: ConfigurationOptions): Observable<ListCampaignGoalsResponse> {
+        return this.getCampaignGoalsWithHttpInfo(campaignId, _options).pipe(map((apiResponse: HttpInfo<ListCampaignGoalsResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves a list of Sequences (published) for a Campaign
+     * Retrieve a list of Sequences for a Campaign
+     * @param campaignId campaign_id
+     */
+    public getCampaignSequencesWithHttpInfo(campaignId: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListCampaignSequenceResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getCampaignSequences(campaignId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getCampaignSequencesWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a list of Sequences (published) for a Campaign
+     * Retrieve a list of Sequences for a Campaign
+     * @param campaignId campaign_id
+     */
+    public getCampaignSequences(campaignId: string, _options?: ConfigurationOptions): Observable<ListCampaignSequenceResponse> {
+        return this.getCampaignSequencesWithHttpInfo(campaignId, _options).pipe(map((apiResponse: HttpInfo<ListCampaignSequenceResponse>) => apiResponse.data));
     }
 
     /**
@@ -10148,6 +10220,98 @@ export class ObservableUsersApi {
      */
     public updateUser(userId: string, updateMask?: Array<string>, updateUserRequest?: UpdateUserRequest, _options?: ConfigurationOptions): Observable<User> {
         return this.updateUserWithHttpInfo(userId, updateMask, updateUserRequest, _options).pipe(map((apiResponse: HttpInfo<User>) => apiResponse.data));
+    }
+
+}
+
+import { WebformsApiRequestFactory, WebformsApiResponseProcessor} from "../apis/WebformsApi";
+export class ObservableWebformsApi {
+    private requestFactory: WebformsApiRequestFactory;
+    private responseProcessor: WebformsApiResponseProcessor;
+    private configuration: Configuration;
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: WebformsApiRequestFactory,
+        responseProcessor?: WebformsApiResponseProcessor
+    ) {
+        this.configuration = configuration;
+        this.requestFactory = requestFactory || new WebformsApiRequestFactory(configuration);
+        this.responseProcessor = responseProcessor || new WebformsApiResponseProcessor();
+    }
+
+    /**
+     * Returns the HTML
+     * Get Webform HTML
+     * @param webformId webform_id
+     */
+    public getHtmlWithHttpInfo(webformId: string, _options?: ConfigurationOptions): Observable<HttpInfo<string>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getHtml(webformId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getHtmlWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Returns the HTML
+     * Get Webform HTML
+     * @param webformId webform_id
+     */
+    public getHtml(webformId: string, _options?: ConfigurationOptions): Observable<string> {
+        return this.getHtmlWithHttpInfo(webformId, _options).pipe(map((apiResponse: HttpInfo<string>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves a list of webforms
+     * List Webforms with filter
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (String) &#x60;webform_type&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3DContact Us&#x60; - &#x60;filter&#x3D;webform_type%3D%3Dlegacy&#x60;
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;webform_type&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listWebformsWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListWebformsResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.listWebforms(filter, orderBy, pageSize, pageToken, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listWebformsWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a list of webforms
+     * List Webforms with filter
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (String) &#x60;webform_type&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3DContact Us&#x60; - &#x60;filter&#x3D;webform_type%3D%3Dlegacy&#x60;
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;webform_type&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listWebforms(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListWebformsResponse> {
+        return this.listWebformsWithHttpInfo(filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListWebformsResponse>) => apiResponse.data));
     }
 
 }

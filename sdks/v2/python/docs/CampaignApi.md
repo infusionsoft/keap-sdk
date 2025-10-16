@@ -6,6 +6,8 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**add_contacts_to_campaign_sequence**](CampaignApi.md#add_contacts_to_campaign_sequence) | **POST** /v2/campaigns/{campaign_id}/sequences/{sequence_id}:addContacts | Add Contacts to Campaign Sequence
 [**get_campaign**](CampaignApi.md#get_campaign) | **GET** /v2/campaigns/{campaign_id} | Retrieve a Campaign
+[**get_campaign_goals**](CampaignApi.md#get_campaign_goals) | **GET** /v2/campaigns/{campaign_id}/goals | Retrieve a list of Goals for a Campaign
+[**get_campaign_sequences**](CampaignApi.md#get_campaign_sequences) | **GET** /v2/campaigns/{campaign_id}/sequences | Retrieve a list of Sequences for a Campaign
 [**list_campaigns**](CampaignApi.md#list_campaigns) | **GET** /v2/campaigns | List Campaigns
 [**remove_contacts_from_campaign_sequence**](CampaignApi.md#remove_contacts_from_campaign_sequence) | **POST** /v2/campaigns/{campaign_id}/sequences/{sequence_id}:removeContacts | Remove Contacts from Campaign Sequence
 
@@ -133,6 +135,146 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Campaign**](Campaign.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_campaign_goals**
+> ListCampaignGoalsResponse get_campaign_goals(campaign_id)
+
+Retrieve a list of Goals for a Campaign
+
+Retrieves a list of Goals (published) for a Campaign
+
+### Example
+
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.list_campaign_goals_response import ListCampaignGoalsResponse
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm/rest"
+)
+
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.CampaignApi(api_client)
+    campaign_id = 'campaign_id_example' # str | campaign_id
+
+    try:
+        # Retrieve a list of Goals for a Campaign
+        api_response = api_instance.get_campaign_goals(campaign_id)
+        print("The response of CampaignApi->get_campaign_goals:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CampaignApi->get_campaign_goals: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **campaign_id** | **str**| campaign_id | 
+
+### Return type
+
+[**ListCampaignGoalsResponse**](ListCampaignGoalsResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_campaign_sequences**
+> ListCampaignSequenceResponse get_campaign_sequences(campaign_id)
+
+Retrieve a list of Sequences for a Campaign
+
+Retrieves a list of Sequences (published) for a Campaign
+
+### Example
+
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.list_campaign_sequence_response import ListCampaignSequenceResponse
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm/rest"
+)
+
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.CampaignApi(api_client)
+    campaign_id = 'campaign_id_example' # str | campaign_id
+
+    try:
+        # Retrieve a list of Sequences for a Campaign
+        api_response = api_instance.get_campaign_sequences(campaign_id)
+        print("The response of CampaignApi->get_campaign_sequences:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CampaignApi->get_campaign_sequences: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **campaign_id** | **str**| campaign_id | 
+
+### Return type
+
+[**ListCampaignSequenceResponse**](ListCampaignSequenceResponse.md)
 
 ### Authorization
 

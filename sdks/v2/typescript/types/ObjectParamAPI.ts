@@ -164,6 +164,8 @@ import { ListAffiliatesResponse } from '../models/ListAffiliatesResponse';
 import { ListAutomationCategoryResponse } from '../models/ListAutomationCategoryResponse';
 import { ListAutomationIdsResponse } from '../models/ListAutomationIdsResponse';
 import { ListAutomationResponse } from '../models/ListAutomationResponse';
+import { ListCampaignGoalsResponse } from '../models/ListCampaignGoalsResponse';
+import { ListCampaignSequenceResponse } from '../models/ListCampaignSequenceResponse';
 import { ListCampaignsResponse } from '../models/ListCampaignsResponse';
 import { ListCategoryDiscountsResponse } from '../models/ListCategoryDiscountsResponse';
 import { ListCompaniesResponse } from '../models/ListCompaniesResponse';
@@ -204,6 +206,7 @@ import { ListTaggedContactsResponse } from '../models/ListTaggedContactsResponse
 import { ListTagsResponse } from '../models/ListTagsResponse';
 import { ListTasksResponse } from '../models/ListTasksResponse';
 import { ListUsersPaginatedResponse } from '../models/ListUsersPaginatedResponse';
+import { ListWebformsResponse } from '../models/ListWebformsResponse';
 import { ModelError } from '../models/ModelError';
 import { ModelFile } from '../models/ModelFile';
 import { Note } from '../models/Note';
@@ -306,6 +309,7 @@ import { UpdateTaskResponse } from '../models/UpdateTaskResponse';
 import { UpdateUserRequest } from '../models/UpdateUserRequest';
 import { UpdatedPaymentPlan } from '../models/UpdatedPaymentPlan';
 import { User } from '../models/User';
+import { Webform } from '../models/Webform';
 
 import { ObservableAffiliateApi } from "./ObservableAPI";
 import { AffiliateApiRequestFactory, AffiliateApiResponseProcessor} from "../apis/AffiliateApi";
@@ -1980,6 +1984,26 @@ export interface CampaignApiGetCampaignRequest {
     campaignId: string
 }
 
+export interface CampaignApiGetCampaignGoalsRequest {
+    /**
+     * campaign_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof CampaignApigetCampaignGoals
+     */
+    campaignId: string
+}
+
+export interface CampaignApiGetCampaignSequencesRequest {
+    /**
+     * campaign_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof CampaignApigetCampaignSequences
+     */
+    campaignId: string
+}
+
 export interface CampaignApiListCampaignsRequest {
     /**
      * Filter to apply, allowed fields are: - (String) &#x60;name&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of the filter with your searched text, in the encoded form &#x60;%3D%3D&#x60;. The search will look for the text anywhere in the campaign name. - &#x60;filter&#x3D;name%3D%3DSpring Campaign&#x60; - &#x60;filter&#x3D;name%3D%3DTag New Contacts&#x60; 
@@ -2084,6 +2108,42 @@ export class ObjectCampaignApi {
      */
     public getCampaign(param: CampaignApiGetCampaignRequest, options?: ConfigurationOptions): Promise<Campaign> {
         return this.api.getCampaign(param.campaignId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of Goals (published) for a Campaign
+     * Retrieve a list of Goals for a Campaign
+     * @param param the request object
+     */
+    public getCampaignGoalsWithHttpInfo(param: CampaignApiGetCampaignGoalsRequest, options?: ConfigurationOptions): Promise<HttpInfo<ListCampaignGoalsResponse>> {
+        return this.api.getCampaignGoalsWithHttpInfo(param.campaignId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of Goals (published) for a Campaign
+     * Retrieve a list of Goals for a Campaign
+     * @param param the request object
+     */
+    public getCampaignGoals(param: CampaignApiGetCampaignGoalsRequest, options?: ConfigurationOptions): Promise<ListCampaignGoalsResponse> {
+        return this.api.getCampaignGoals(param.campaignId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of Sequences (published) for a Campaign
+     * Retrieve a list of Sequences for a Campaign
+     * @param param the request object
+     */
+    public getCampaignSequencesWithHttpInfo(param: CampaignApiGetCampaignSequencesRequest, options?: ConfigurationOptions): Promise<HttpInfo<ListCampaignSequenceResponse>> {
+        return this.api.getCampaignSequencesWithHttpInfo(param.campaignId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of Sequences (published) for a Campaign
+     * Retrieve a list of Sequences for a Campaign
+     * @param param the request object
+     */
+    public getCampaignSequences(param: CampaignApiGetCampaignSequencesRequest, options?: ConfigurationOptions): Promise<ListCampaignSequenceResponse> {
+        return this.api.getCampaignSequences(param.campaignId,  options).toPromise();
     }
 
     /**
@@ -9769,6 +9829,97 @@ export class ObjectUsersApi {
      */
     public updateUser(param: UsersApiUpdateUserRequest, options?: ConfigurationOptions): Promise<User> {
         return this.api.updateUser(param.userId, param.updateMask, param.updateUserRequest,  options).toPromise();
+    }
+
+}
+
+import { ObservableWebformsApi } from "./ObservableAPI";
+import { WebformsApiRequestFactory, WebformsApiResponseProcessor} from "../apis/WebformsApi";
+
+export interface WebformsApiGetHtmlRequest {
+    /**
+     * webform_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof WebformsApigetHtml
+     */
+    webformId: string
+}
+
+export interface WebformsApiListWebformsRequest {
+    /**
+     * Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (String) &#x60;webform_type&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3DContact Us&#x60; - &#x60;filter&#x3D;webform_type%3D%3Dlegacy&#x60;
+     * Defaults to: undefined
+     * @type string
+     * @memberof WebformsApilistWebforms
+     */
+    filter?: string
+    /**
+     * Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;webform_type&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * Defaults to: undefined
+     * @type string
+     * @memberof WebformsApilistWebforms
+     */
+    orderBy?: string
+    /**
+     * Total number of items to return per page
+     * Minimum: 1
+     * Maximum: 1000
+     * Defaults to: undefined
+     * @type number
+     * @memberof WebformsApilistWebforms
+     */
+    pageSize?: number
+    /**
+     * Page token
+     * Defaults to: undefined
+     * @type string
+     * @memberof WebformsApilistWebforms
+     */
+    pageToken?: string
+}
+
+export class ObjectWebformsApi {
+    private api: ObservableWebformsApi
+
+    public constructor(configuration: Configuration, requestFactory?: WebformsApiRequestFactory, responseProcessor?: WebformsApiResponseProcessor) {
+        this.api = new ObservableWebformsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Returns the HTML
+     * Get Webform HTML
+     * @param param the request object
+     */
+    public getHtmlWithHttpInfo(param: WebformsApiGetHtmlRequest, options?: ConfigurationOptions): Promise<HttpInfo<string>> {
+        return this.api.getHtmlWithHttpInfo(param.webformId,  options).toPromise();
+    }
+
+    /**
+     * Returns the HTML
+     * Get Webform HTML
+     * @param param the request object
+     */
+    public getHtml(param: WebformsApiGetHtmlRequest, options?: ConfigurationOptions): Promise<string> {
+        return this.api.getHtml(param.webformId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of webforms
+     * List Webforms with filter
+     * @param param the request object
+     */
+    public listWebformsWithHttpInfo(param: WebformsApiListWebformsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListWebformsResponse>> {
+        return this.api.listWebformsWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of webforms
+     * List Webforms with filter
+     * @param param the request object
+     */
+    public listWebforms(param: WebformsApiListWebformsRequest = {}, options?: ConfigurationOptions): Promise<ListWebformsResponse> {
+        return this.api.listWebforms(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
 }

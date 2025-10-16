@@ -6,6 +6,8 @@ All URIs are relative to https://api.keap.com/crm/rest, except if the operation 
 | ------------- | ------------- | ------------- |
 | [**addContactsToCampaignSequence()**](CampaignApi.md#addContactsToCampaignSequence) | **POST** /v2/campaigns/{campaign_id}/sequences/{sequence_id}:addContacts | Add Contacts to Campaign Sequence |
 | [**getCampaign()**](CampaignApi.md#getCampaign) | **GET** /v2/campaigns/{campaign_id} | Retrieve a Campaign |
+| [**getCampaignGoals()**](CampaignApi.md#getCampaignGoals) | **GET** /v2/campaigns/{campaign_id}/goals | Retrieve a list of Goals for a Campaign |
+| [**getCampaignSequences()**](CampaignApi.md#getCampaignSequences) | **GET** /v2/campaigns/{campaign_id}/sequences | Retrieve a list of Sequences for a Campaign |
 | [**listCampaigns()**](CampaignApi.md#listCampaigns) | **GET** /v2/campaigns | List Campaigns |
 | [**removeContactsFromCampaignSequence()**](CampaignApi.md#removeContactsFromCampaignSequence) | **POST** /v2/campaigns/{campaign_id}/sequences/{sequence_id}:removeContacts | Remove Contacts from Campaign Sequence |
 
@@ -110,6 +112,116 @@ try {
 ### Return type
 
 [**\Keap\Core\V2\Model\Campaign**](../Model/Campaign.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getCampaignGoals()`
+
+```php
+getCampaignGoals($campaign_id): \Keap\Core\V2\Model\ListCampaignGoalsResponse
+```
+
+Retrieve a list of Goals for a Campaign
+
+Retrieves a list of Goals (published) for a Campaign
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+$apiInstance = new Keap\Core\V2\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$campaign_id = 'campaign_id_example'; // string | campaign_id
+
+try {
+    $result = $apiInstance->getCampaignGoals($campaign_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignApi->getCampaignGoals: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_id** | **string**| campaign_id | |
+
+### Return type
+
+[**\Keap\Core\V2\Model\ListCampaignGoalsResponse**](../Model/ListCampaignGoalsResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getCampaignSequences()`
+
+```php
+getCampaignSequences($campaign_id): \Keap\Core\V2\Model\ListCampaignSequenceResponse
+```
+
+Retrieve a list of Sequences for a Campaign
+
+Retrieves a list of Sequences (published) for a Campaign
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+$apiInstance = new Keap\Core\V2\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$campaign_id = 'campaign_id_example'; // string | campaign_id
+
+try {
+    $result = $apiInstance->getCampaignSequences($campaign_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignApi->getCampaignSequences: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_id** | **string**| campaign_id | |
+
+### Return type
+
+[**\Keap\Core\V2\Model\ListCampaignSequenceResponse**](../Model/ListCampaignSequenceResponse.md)
 
 ### Authorization
 

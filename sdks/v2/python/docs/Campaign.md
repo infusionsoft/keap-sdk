@@ -10,14 +10,12 @@ Name | Type | Description | Notes
 **created_by_global_id** | **str** |  | [optional] 
 **date_created** | **str** |  | [optional] 
 **error_message** | **str** |  | [optional] 
-**goals** | [**List[Goal]**](Goal.md) |  | [optional] 
 **id** | **str** |  | [optional] 
 **locked** | **bool** |  | [optional] 
 **name** | **str** |  | [optional] 
 **published_date** | **str** |  | [optional] 
 **published_status** | **bool** |  | [optional] 
 **published_time_zone** | **str** |  | [optional] 
-**sequences** | [**List[Sequence]**](Sequence.md) |  | [optional] 
 **time_zone** | **str** |  | [optional] 
 
 ## Example

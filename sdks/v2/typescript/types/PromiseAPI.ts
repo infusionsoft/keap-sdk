@@ -164,6 +164,8 @@ import { ListAffiliatesResponse } from '../models/ListAffiliatesResponse';
 import { ListAutomationCategoryResponse } from '../models/ListAutomationCategoryResponse';
 import { ListAutomationIdsResponse } from '../models/ListAutomationIdsResponse';
 import { ListAutomationResponse } from '../models/ListAutomationResponse';
+import { ListCampaignGoalsResponse } from '../models/ListCampaignGoalsResponse';
+import { ListCampaignSequenceResponse } from '../models/ListCampaignSequenceResponse';
 import { ListCampaignsResponse } from '../models/ListCampaignsResponse';
 import { ListCategoryDiscountsResponse } from '../models/ListCategoryDiscountsResponse';
 import { ListCompaniesResponse } from '../models/ListCompaniesResponse';
@@ -204,6 +206,7 @@ import { ListTaggedContactsResponse } from '../models/ListTaggedContactsResponse
 import { ListTagsResponse } from '../models/ListTagsResponse';
 import { ListTasksResponse } from '../models/ListTasksResponse';
 import { ListUsersPaginatedResponse } from '../models/ListUsersPaginatedResponse';
+import { ListWebformsResponse } from '../models/ListWebformsResponse';
 import { ModelError } from '../models/ModelError';
 import { ModelFile } from '../models/ModelFile';
 import { Note } from '../models/Note';
@@ -306,6 +309,7 @@ import { UpdateTaskResponse } from '../models/UpdateTaskResponse';
 import { UpdateUserRequest } from '../models/UpdateUserRequest';
 import { UpdatedPaymentPlan } from '../models/UpdatedPaymentPlan';
 import { User } from '../models/User';
+import { Webform } from '../models/Webform';
 import { ObservableAffiliateApi } from './ObservableAPI';
 
 import { AffiliateApiRequestFactory, AffiliateApiResponseProcessor} from "../apis/AffiliateApi";
@@ -1527,6 +1531,50 @@ export class PromiseCampaignApi {
     public getCampaign(campaignId: string, _options?: PromiseConfigurationOptions): Promise<Campaign> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getCampaign(campaignId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of Goals (published) for a Campaign
+     * Retrieve a list of Goals for a Campaign
+     * @param campaignId campaign_id
+     */
+    public getCampaignGoalsWithHttpInfo(campaignId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListCampaignGoalsResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getCampaignGoalsWithHttpInfo(campaignId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of Goals (published) for a Campaign
+     * Retrieve a list of Goals for a Campaign
+     * @param campaignId campaign_id
+     */
+    public getCampaignGoals(campaignId: string, _options?: PromiseConfigurationOptions): Promise<ListCampaignGoalsResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getCampaignGoals(campaignId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of Sequences (published) for a Campaign
+     * Retrieve a list of Sequences for a Campaign
+     * @param campaignId campaign_id
+     */
+    public getCampaignSequencesWithHttpInfo(campaignId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListCampaignSequenceResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getCampaignSequencesWithHttpInfo(campaignId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of Sequences (published) for a Campaign
+     * Retrieve a list of Sequences for a Campaign
+     * @param campaignId campaign_id
+     */
+    public getCampaignSequences(campaignId: string, _options?: PromiseConfigurationOptions): Promise<ListCampaignSequenceResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getCampaignSequences(campaignId, observableOptions);
         return result.toPromise();
     }
 
@@ -7158,6 +7206,75 @@ export class PromiseUsersApi {
     public updateUser(userId: string, updateMask?: Array<string>, updateUserRequest?: UpdateUserRequest, _options?: PromiseConfigurationOptions): Promise<User> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateUser(userId, updateMask, updateUserRequest, observableOptions);
+        return result.toPromise();
+    }
+
+
+}
+
+
+
+import { ObservableWebformsApi } from './ObservableAPI';
+
+import { WebformsApiRequestFactory, WebformsApiResponseProcessor} from "../apis/WebformsApi";
+export class PromiseWebformsApi {
+    private api: ObservableWebformsApi
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: WebformsApiRequestFactory,
+        responseProcessor?: WebformsApiResponseProcessor
+    ) {
+        this.api = new ObservableWebformsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Returns the HTML
+     * Get Webform HTML
+     * @param webformId webform_id
+     */
+    public getHtmlWithHttpInfo(webformId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<string>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getHtmlWithHttpInfo(webformId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the HTML
+     * Get Webform HTML
+     * @param webformId webform_id
+     */
+    public getHtml(webformId: string, _options?: PromiseConfigurationOptions): Promise<string> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getHtml(webformId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of webforms
+     * List Webforms with filter
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (String) &#x60;webform_type&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3DContact Us&#x60; - &#x60;filter&#x3D;webform_type%3D%3Dlegacy&#x60;
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;webform_type&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listWebformsWithHttpInfo(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListWebformsResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listWebformsWithHttpInfo(filter, orderBy, pageSize, pageToken, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of webforms
+     * List Webforms with filter
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (String) &#x60;webform_type&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3DContact Us&#x60; - &#x60;filter&#x3D;webform_type%3D%3Dlegacy&#x60;
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;webform_type&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     * @param [pageToken] Page token
+     */
+    public listWebforms(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<ListWebformsResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listWebforms(filter, orderBy, pageSize, pageToken, observableOptions);
         return result.toPromise();
     }
 

@@ -2,7 +2,7 @@
 
 Keap REST API
 
-- API version: 2.70.0.865894-hf-202510091441
+- API version: 2.70.0.866784-hf-202510132126
 
 - Generator version: 7.13.0
 
@@ -43,7 +43,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.keap.core</groupId>
   <artifactId>core-service-v2-java-sdk</artifactId>
-  <version>1.0.33</version>
+  <version>1.0.34</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.keap.core:core-service-v2-java-sdk:1.0.33"
+compile "com.keap.core:core-service-v2-java-sdk:1.0.34"
 ```
 
 ### Others
@@ -66,7 +66,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/core-service-v2-java-sdk-1.0.33.jar`
+- `target/core-service-v2-java-sdk-1.0.34.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -202,6 +202,10 @@ Class | Method | HTTP request | Description
 *CampaignApi* | [**addContactsToCampaignSequenceWithHttpInfo**](docs/CampaignApi.md#addContactsToCampaignSequenceWithHttpInfo) | **POST** /v2/campaigns/{campaign_id}/sequences/{sequence_id}:addContacts | Add Contacts to Campaign Sequence
 *CampaignApi* | [**getCampaign**](docs/CampaignApi.md#getCampaign) | **GET** /v2/campaigns/{campaign_id} | Retrieve a Campaign
 *CampaignApi* | [**getCampaignWithHttpInfo**](docs/CampaignApi.md#getCampaignWithHttpInfo) | **GET** /v2/campaigns/{campaign_id} | Retrieve a Campaign
+*CampaignApi* | [**getCampaignGoals**](docs/CampaignApi.md#getCampaignGoals) | **GET** /v2/campaigns/{campaign_id}/goals | Retrieve a list of Goals for a Campaign
+*CampaignApi* | [**getCampaignGoalsWithHttpInfo**](docs/CampaignApi.md#getCampaignGoalsWithHttpInfo) | **GET** /v2/campaigns/{campaign_id}/goals | Retrieve a list of Goals for a Campaign
+*CampaignApi* | [**getCampaignSequences**](docs/CampaignApi.md#getCampaignSequences) | **GET** /v2/campaigns/{campaign_id}/sequences | Retrieve a list of Sequences for a Campaign
+*CampaignApi* | [**getCampaignSequencesWithHttpInfo**](docs/CampaignApi.md#getCampaignSequencesWithHttpInfo) | **GET** /v2/campaigns/{campaign_id}/sequences | Retrieve a list of Sequences for a Campaign
 *CampaignApi* | [**listCampaigns**](docs/CampaignApi.md#listCampaigns) | **GET** /v2/campaigns | List Campaigns
 *CampaignApi* | [**listCampaignsWithHttpInfo**](docs/CampaignApi.md#listCampaignsWithHttpInfo) | **GET** /v2/campaigns | List Campaigns
 *CampaignApi* | [**removeContactsFromCampaignSequence**](docs/CampaignApi.md#removeContactsFromCampaignSequence) | **POST** /v2/campaigns/{campaign_id}/sequences/{sequence_id}:removeContacts | Remove Contacts from Campaign Sequence
@@ -612,6 +616,10 @@ Class | Method | HTTP request | Description
 *UsersApi* | [**listPaginatedUsersWithHttpInfo**](docs/UsersApi.md#listPaginatedUsersWithHttpInfo) | **GET** /v2/users | List Users
 *UsersApi* | [**updateUser**](docs/UsersApi.md#updateUser) | **PATCH** /v2/users/{user_id} | Update User
 *UsersApi* | [**updateUserWithHttpInfo**](docs/UsersApi.md#updateUserWithHttpInfo) | **PATCH** /v2/users/{user_id} | Update User
+*WebformsApi* | [**getHtml**](docs/WebformsApi.md#getHtml) | **GET** /v2/webforms/{webform_id}:data | Get Webform HTML
+*WebformsApi* | [**getHtmlWithHttpInfo**](docs/WebformsApi.md#getHtmlWithHttpInfo) | **GET** /v2/webforms/{webform_id}:data | Get Webform HTML
+*WebformsApi* | [**listWebforms**](docs/WebformsApi.md#listWebforms) | **GET** /v2/webforms | List Webforms with filter
+*WebformsApi* | [**listWebformsWithHttpInfo**](docs/WebformsApi.md#listWebformsWithHttpInfo) | **GET** /v2/webforms | List Webforms with filter
 
 
 ## Documentation for Models
@@ -779,6 +787,8 @@ Class | Method | HTTP request | Description
  - [ListAutomationCategoryResponse](docs/ListAutomationCategoryResponse.md)
  - [ListAutomationIdsResponse](docs/ListAutomationIdsResponse.md)
  - [ListAutomationResponse](docs/ListAutomationResponse.md)
+ - [ListCampaignGoalsResponse](docs/ListCampaignGoalsResponse.md)
+ - [ListCampaignSequenceResponse](docs/ListCampaignSequenceResponse.md)
  - [ListCampaignsResponse](docs/ListCampaignsResponse.md)
  - [ListCategoryDiscountsResponse](docs/ListCategoryDiscountsResponse.md)
  - [ListCompaniesResponse](docs/ListCompaniesResponse.md)
@@ -819,6 +829,7 @@ Class | Method | HTTP request | Description
  - [ListTagsResponse](docs/ListTagsResponse.md)
  - [ListTasksResponse](docs/ListTasksResponse.md)
  - [ListUsersPaginatedResponse](docs/ListUsersPaginatedResponse.md)
+ - [ListWebformsResponse](docs/ListWebformsResponse.md)
  - [ModelFile](docs/ModelFile.md)
  - [Note](docs/Note.md)
  - [NoteTemplate](docs/NoteTemplate.md)
@@ -920,6 +931,7 @@ Class | Method | HTTP request | Description
  - [UpdateUserRequest](docs/UpdateUserRequest.md)
  - [UpdatedPaymentPlan](docs/UpdatedPaymentPlan.md)
  - [User](docs/User.md)
+ - [Webform](docs/Webform.md)
 
 
 <a id="documentation-for-authorization"></a>
