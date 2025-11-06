@@ -201,6 +201,7 @@ export * from '../models/ListTaggedCompaniesResponse';
 export * from '../models/ListTaggedContactsResponse';
 export * from '../models/ListTagsResponse';
 export * from '../models/ListTasksResponse';
+export * from '../models/ListUserGroupsResponse';
 export * from '../models/ListUsersPaginatedResponse';
 export * from '../models/ListWebformsResponse';
 export * from '../models/ModelError';
@@ -305,6 +306,7 @@ export * from '../models/UpdateTaskResponse';
 export * from '../models/UpdateUserRequest';
 export * from '../models/UpdatedPaymentPlan';
 export * from '../models/User';
+export * from '../models/UserGroup';
 export * from '../models/Webform';
 
 import { AddContactsToSequenceRequest } from '../models/AddContactsToSequenceRequest';
@@ -510,6 +512,7 @@ import { ListTaggedCompaniesResponse } from '../models/ListTaggedCompaniesRespon
 import { ListTaggedContactsResponse } from '../models/ListTaggedContactsResponse';
 import { ListTagsResponse } from '../models/ListTagsResponse';
 import { ListTasksResponse } from '../models/ListTasksResponse';
+import { ListUserGroupsResponse } from '../models/ListUserGroupsResponse';
 import { ListUsersPaginatedResponse } from '../models/ListUsersPaginatedResponse';
 import { ListWebformsResponse } from '../models/ListWebformsResponse';
 import { ModelError } from '../models/ModelError';
@@ -614,6 +617,7 @@ import { UpdateTaskResponse          , UpdateTaskResponsePriorityEnum      } fro
 import { UpdateUserRequest } from '../models/UpdateUserRequest';
 import { UpdatedPaymentPlan } from '../models/UpdatedPaymentPlan';
 import { User               , UserStatusEnum       } from '../models/User';
+import { UserGroup } from '../models/UserGroup';
 import { Webform  , WebformDuplicateCheckOptionEnum  , WebformExitOptionEnum        , WebformWebformTypeEnum     } from '../models/Webform';
 
 /* tslint:disable:no-unused-variable */
@@ -913,6 +917,7 @@ let typeMap: {[index: string]: any} = {
     "ListTaggedContactsResponse": ListTaggedContactsResponse,
     "ListTagsResponse": ListTagsResponse,
     "ListTasksResponse": ListTasksResponse,
+    "ListUserGroupsResponse": ListUserGroupsResponse,
     "ListUsersPaginatedResponse": ListUsersPaginatedResponse,
     "ListWebformsResponse": ListWebformsResponse,
     "ModelError": ModelError,
@@ -1017,6 +1022,7 @@ let typeMap: {[index: string]: any} = {
     "UpdateUserRequest": UpdateUserRequest,
     "UpdatedPaymentPlan": UpdatedPaymentPlan,
     "User": User,
+    "UserGroup": UserGroup,
     "Webform": Webform,
 }
 

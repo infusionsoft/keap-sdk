@@ -205,6 +205,7 @@ import { ListTaggedCompaniesResponse } from '../models/ListTaggedCompaniesRespon
 import { ListTaggedContactsResponse } from '../models/ListTaggedContactsResponse';
 import { ListTagsResponse } from '../models/ListTagsResponse';
 import { ListTasksResponse } from '../models/ListTasksResponse';
+import { ListUserGroupsResponse } from '../models/ListUserGroupsResponse';
 import { ListUsersPaginatedResponse } from '../models/ListUsersPaginatedResponse';
 import { ListWebformsResponse } from '../models/ListWebformsResponse';
 import { ModelError } from '../models/ModelError';
@@ -309,6 +310,7 @@ import { UpdateTaskResponse } from '../models/UpdateTaskResponse';
 import { UpdateUserRequest } from '../models/UpdateUserRequest';
 import { UpdatedPaymentPlan } from '../models/UpdatedPaymentPlan';
 import { User } from '../models/User';
+import { UserGroup } from '../models/UserGroup';
 import { Webform } from '../models/Webform';
 import { ObservableAffiliateApi } from './ObservableAPI';
 

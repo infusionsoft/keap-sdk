@@ -2,7 +2,7 @@
 
 Keap REST API
 
-- API version: 2.70.0.869301
+- API version: 2.70.0.872719-hf-202511041049
 
 - Generator version: 7.13.0
 
@@ -43,7 +43,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.keap.core</groupId>
   <artifactId>core-service-v2-java-sdk</artifactId>
-  <version>1.0.36</version>
+  <version>1.0.37</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.keap.core:core-service-v2-java-sdk:1.0.36"
+compile "com.keap.core:core-service-v2-java-sdk:1.0.37"
 ```
 
 ### Others
@@ -66,7 +66,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/core-service-v2-java-sdk-1.0.36.jar`
+- `target/core-service-v2-java-sdk-1.0.37.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -828,6 +828,7 @@ Class | Method | HTTP request | Description
  - [ListTaggedContactsResponse](docs/ListTaggedContactsResponse.md)
  - [ListTagsResponse](docs/ListTagsResponse.md)
  - [ListTasksResponse](docs/ListTasksResponse.md)
+ - [ListUserGroupsResponse](docs/ListUserGroupsResponse.md)
  - [ListUsersPaginatedResponse](docs/ListUsersPaginatedResponse.md)
  - [ListWebformsResponse](docs/ListWebformsResponse.md)
  - [ModelFile](docs/ModelFile.md)
@@ -931,6 +932,7 @@ Class | Method | HTTP request | Description
  - [UpdateUserRequest](docs/UpdateUserRequest.md)
  - [UpdatedPaymentPlan](docs/UpdatedPaymentPlan.md)
  - [User](docs/User.md)
+ - [UserGroup](docs/UserGroup.md)
  - [Webform](docs/Webform.md)
 
 

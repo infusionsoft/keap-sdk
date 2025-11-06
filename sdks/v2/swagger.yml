@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   description: Keap REST Core Service
-  version: 2.70.0.869301
+  version: 2.70.0.872719-hf-202511041049
   title: Keap REST API
   termsOfService: https://keap.com/legal
   contact:
@@ -90,6 +90,8 @@ tags:
   description: Rest Tag Controller
 - name: Task
   description: Rest Task Controller
+- name: User Groups
+  description: Rest User Group Controller
 - name: Users
   description: Rest User Controller
 - name: Webforms
@@ -18414,6 +18416,16 @@ components:
           items:
             $ref: '#/components/schemas/Task'
       title: ListTasksResponse
+    ListUserGroupsResponse:
+      type: object
+      properties:
+        next_page_token:
+          type: string
+        user_groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserGroup'
+      title: ListUserGroupsResponse
     ListUsersPaginatedResponse:
       type: object
       properties:
@@ -20866,6 +20878,16 @@ components:
         website:
           type: string
       title: User
+    UserGroup:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier for this user group.
+        name:
+          type: string
+          description: The name of this user group.
+      title: UserGroup
     Webform:
       type: object
       properties:
