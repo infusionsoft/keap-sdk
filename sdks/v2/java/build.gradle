@@ -55,7 +55,7 @@ publishing {
 }
 
 group = 'com.keap.core'
-version = '1.0.37'
+version = '1.0.38'
 description = 'Java SDK for Keap Core Service v2 API'
 
 repositories {
