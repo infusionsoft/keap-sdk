@@ -10030,6 +10030,90 @@ export class ObservableTaskApi {
 
 }
 
+import { UserGroupsApiRequestFactory, UserGroupsApiResponseProcessor} from "../apis/UserGroupsApi";
+export class ObservableUserGroupsApi {
+    private requestFactory: UserGroupsApiRequestFactory;
+    private responseProcessor: UserGroupsApiResponseProcessor;
+    private configuration: Configuration;
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: UserGroupsApiRequestFactory,
+        responseProcessor?: UserGroupsApiResponseProcessor
+    ) {
+        this.configuration = configuration;
+        this.requestFactory = requestFactory || new UserGroupsApiRequestFactory(configuration);
+        this.responseProcessor = responseProcessor || new UserGroupsApiResponseProcessor();
+    }
+
+    /**
+     * Retrieves a single user group by its ID.
+     * Retrieve an User Group
+     * @param userGroupId user_group_id
+     */
+    public getUserGroupWithHttpInfo(userGroupId: string, _options?: ConfigurationOptions): Observable<HttpInfo<UserGroup>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getUserGroup(userGroupId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getUserGroupWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a single user group by its ID.
+     * Retrieve an User Group
+     * @param userGroupId user_group_id
+     */
+    public getUserGroup(userGroupId: string, _options?: ConfigurationOptions): Observable<UserGroup> {
+        return this.getUserGroupWithHttpInfo(userGroupId, _options).pipe(map((apiResponse: HttpInfo<UserGroup>) => apiResponse.data));
+    }
+
+    /**
+     * Retrieves a list of all user groups in the application.
+     * List User Groups
+     */
+    public listUserGroupsWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<ListUserGroupsResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.listUserGroups(_config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listUserGroupsWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a list of all user groups in the application.
+     * List User Groups
+     */
+    public listUserGroups(_options?: ConfigurationOptions): Observable<ListUserGroupsResponse> {
+        return this.listUserGroupsWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<ListUserGroupsResponse>) => apiResponse.data));
+    }
+
+}
+
 import { UsersApiRequestFactory, UsersApiResponseProcessor} from "../apis/UsersApi";
 export class ObservableUsersApi {
     private requestFactory: UsersApiRequestFactory;

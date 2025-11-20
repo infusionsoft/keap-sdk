@@ -2,7 +2,7 @@
 
 Keap REST API
 
-- API version: 2.70.0.874149
+- API version: 2.70.0.875782
 
 - Generator version: 7.13.0
 
@@ -43,7 +43,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.keap.core</groupId>
   <artifactId>core-service-v2-java-sdk</artifactId>
-  <version>1.0.38</version>
+  <version>1.0.39</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.keap.core:core-service-v2-java-sdk:1.0.38"
+compile "com.keap.core:core-service-v2-java-sdk:1.0.39"
 ```
 
 ### Others
@@ -66,7 +66,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/core-service-v2-java-sdk-1.0.38.jar`
+- `target/core-service-v2-java-sdk-1.0.39.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -606,6 +606,10 @@ Class | Method | HTTP request | Description
 *TaskApi* | [**updateTaskWithHttpInfo**](docs/TaskApi.md#updateTaskWithHttpInfo) | **PATCH** /v2/tasks/{task_id} | Update a Task
 *TaskApi* | [**updateTaskCustomField**](docs/TaskApi.md#updateTaskCustomField) | **PATCH** /v2/tasks/model/customFields/{custom_field_id} | Update a Task&#39;s Custom Field
 *TaskApi* | [**updateTaskCustomFieldWithHttpInfo**](docs/TaskApi.md#updateTaskCustomFieldWithHttpInfo) | **PATCH** /v2/tasks/model/customFields/{custom_field_id} | Update a Task&#39;s Custom Field
+*UserGroupsApi* | [**getUserGroup**](docs/UserGroupsApi.md#getUserGroup) | **GET** /v2/userGroups/{user_group_id} | Retrieve an User Group
+*UserGroupsApi* | [**getUserGroupWithHttpInfo**](docs/UserGroupsApi.md#getUserGroupWithHttpInfo) | **GET** /v2/userGroups/{user_group_id} | Retrieve an User Group
+*UserGroupsApi* | [**listUserGroups**](docs/UserGroupsApi.md#listUserGroups) | **GET** /v2/userGroups | List User Groups
+*UserGroupsApi* | [**listUserGroupsWithHttpInfo**](docs/UserGroupsApi.md#listUserGroupsWithHttpInfo) | **GET** /v2/userGroups | List User Groups
 *UsersApi* | [**getUserById**](docs/UsersApi.md#getUserById) | **GET** /v2/users/{user_id} | Get User
 *UsersApi* | [**getUserByIdWithHttpInfo**](docs/UsersApi.md#getUserByIdWithHttpInfo) | **GET** /v2/users/{user_id} | Get User
 *UsersApi* | [**getUserInfo**](docs/UsersApi.md#getUserInfo) | **GET** /v2/oauth/connect/userinfo | Retrieve User Info

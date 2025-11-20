@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   description: Keap REST Core Service
-  version: 2.70.0.874149
+  version: 2.70.0.875782
   title: Keap REST API
   termsOfService: https://keap.com/legal
   contact:
@@ -14109,6 +14109,91 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateTaskResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/userGroups:
+    get:
+      tags:
+      - User Groups
+      summary: List User Groups
+      description: Retrieves a list of all user groups in the application.
+      operationId: listUserGroups
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListUserGroupsResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: false
+  /v2/userGroups/{user_group_id}:
+    get:
+      tags:
+      - User Groups
+      summary: Retrieve an User Group
+      description: Retrieves a single user group by its ID.
+      operationId: getUserGroup
+      parameters:
+      - name: user_group_id
+        in: path
+        description: user_group_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserGroup'
         '401':
           description: Unauthorized
           content:

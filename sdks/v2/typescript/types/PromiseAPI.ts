@@ -7079,6 +7079,67 @@ export class PromiseTaskApi {
 
 
 
+import { ObservableUserGroupsApi } from './ObservableAPI';
+
+import { UserGroupsApiRequestFactory, UserGroupsApiResponseProcessor} from "../apis/UserGroupsApi";
+export class PromiseUserGroupsApi {
+    private api: ObservableUserGroupsApi
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: UserGroupsApiRequestFactory,
+        responseProcessor?: UserGroupsApiResponseProcessor
+    ) {
+        this.api = new ObservableUserGroupsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Retrieves a single user group by its ID.
+     * Retrieve an User Group
+     * @param userGroupId user_group_id
+     */
+    public getUserGroupWithHttpInfo(userGroupId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<UserGroup>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getUserGroupWithHttpInfo(userGroupId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a single user group by its ID.
+     * Retrieve an User Group
+     * @param userGroupId user_group_id
+     */
+    public getUserGroup(userGroupId: string, _options?: PromiseConfigurationOptions): Promise<UserGroup> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getUserGroup(userGroupId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of all user groups in the application.
+     * List User Groups
+     */
+    public listUserGroupsWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<ListUserGroupsResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listUserGroupsWithHttpInfo(observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of all user groups in the application.
+     * List User Groups
+     */
+    public listUserGroups(_options?: PromiseConfigurationOptions): Promise<ListUserGroupsResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listUserGroups(observableOptions);
+        return result.toPromise();
+    }
+
+
+}
+
+
+
 import { ObservableUsersApi } from './ObservableAPI';
 
 import { UsersApiRequestFactory, UsersApiResponseProcessor} from "../apis/UsersApi";

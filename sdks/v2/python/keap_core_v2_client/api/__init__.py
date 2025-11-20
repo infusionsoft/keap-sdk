@@ -40,6 +40,7 @@ from keap_core_v2_client.api.subscription_plans_api import SubscriptionPlansApi
 from keap_core_v2_client.api.subscriptions_api import SubscriptionsApi
 from keap_core_v2_client.api.tags_api import TagsApi
 from keap_core_v2_client.api.task_api import TaskApi
+from keap_core_v2_client.api.user_groups_api import UserGroupsApi
 from keap_core_v2_client.api.users_api import UsersApi
 from keap_core_v2_client.api.webforms_api import WebformsApi
 

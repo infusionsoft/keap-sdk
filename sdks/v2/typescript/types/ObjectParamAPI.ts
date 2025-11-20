@@ -9654,6 +9654,67 @@ export class ObjectTaskApi {
 
 }
 
+import { ObservableUserGroupsApi } from "./ObservableAPI";
+import { UserGroupsApiRequestFactory, UserGroupsApiResponseProcessor} from "../apis/UserGroupsApi";
+
+export interface UserGroupsApiGetUserGroupRequest {
+    /**
+     * user_group_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof UserGroupsApigetUserGroup
+     */
+    userGroupId: string
+}
+
+export interface UserGroupsApiListUserGroupsRequest {
+}
+
+export class ObjectUserGroupsApi {
+    private api: ObservableUserGroupsApi
+
+    public constructor(configuration: Configuration, requestFactory?: UserGroupsApiRequestFactory, responseProcessor?: UserGroupsApiResponseProcessor) {
+        this.api = new ObservableUserGroupsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Retrieves a single user group by its ID.
+     * Retrieve an User Group
+     * @param param the request object
+     */
+    public getUserGroupWithHttpInfo(param: UserGroupsApiGetUserGroupRequest, options?: ConfigurationOptions): Promise<HttpInfo<UserGroup>> {
+        return this.api.getUserGroupWithHttpInfo(param.userGroupId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a single user group by its ID.
+     * Retrieve an User Group
+     * @param param the request object
+     */
+    public getUserGroup(param: UserGroupsApiGetUserGroupRequest, options?: ConfigurationOptions): Promise<UserGroup> {
+        return this.api.getUserGroup(param.userGroupId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of all user groups in the application.
+     * List User Groups
+     * @param param the request object
+     */
+    public listUserGroupsWithHttpInfo(param: UserGroupsApiListUserGroupsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListUserGroupsResponse>> {
+        return this.api.listUserGroupsWithHttpInfo( options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of all user groups in the application.
+     * List User Groups
+     * @param param the request object
+     */
+    public listUserGroups(param: UserGroupsApiListUserGroupsRequest = {}, options?: ConfigurationOptions): Promise<ListUserGroupsResponse> {
+        return this.api.listUserGroups( options).toPromise();
+    }
+
+}
+
 import { ObservableUsersApi } from "./ObservableAPI";
 import { UsersApiRequestFactory, UsersApiResponseProcessor} from "../apis/UsersApi";
 
