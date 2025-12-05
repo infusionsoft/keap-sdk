@@ -6822,7 +6822,7 @@ export class ObjectProductCategoriesApi {
     }
 
     /**
-     * Assigns products to a Product Category
+     * Updates the list of products assigned to a Product Category. **Note:** The full list of product IDs that should remain assigned must be provided; any IDs omitted are removed automatically.
      * Assign Products to a Product Category
      * @param param the request object
      */
@@ -6831,7 +6831,7 @@ export class ObjectProductCategoriesApi {
     }
 
     /**
-     * Assigns products to a Product Category
+     * Updates the list of products assigned to a Product Category. **Note:** The full list of product IDs that should remain assigned must be provided; any IDs omitted are removed automatically.
      * Assign Products to a Product Category
      * @param param the request object
      */
