@@ -25,6 +25,10 @@ jobs:
         working-directory: sdks/v2/javascript
         run: npm install
 
+      - name: Set Javascript package version
+        working-directory: sdks/v2/javascript
+        run: npm version ${{ github.event.release.tag_name }} --no-git-tag-version
+
       - name: Publish Core Javascript package to npmjs
         run: npm publish --provenance --access public
         working-directory: sdks/v2/javascript
@@ -35,6 +39,10 @@ jobs:
       - name: Install Typescript dependencies
         working-directory: sdks/v2/typescript
         run: npm install
+
+      - name: Set Typescript package version
+        working-directory: sdks/v2/typescript
+        run: npm version ${{ github.event.release.tag_name }} --no-git-tag-version
 
       - name: Publish Core Typescript package to npmjs
         run: npm publish --provenance --access public
