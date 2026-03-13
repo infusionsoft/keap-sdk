@@ -1,14 +1,14 @@
 # keap_core_v2_client.UsersApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_user_by_id**](UsersApi.md#get_user_by_id) | **GET** /v2/users/{user_id} | Get User
-[**get_user_info**](UsersApi.md#get_user_info) | **GET** /v2/oauth/connect/userinfo | Retrieve User Info
-[**get_user_signature**](UsersApi.md#get_user_signature) | **GET** /v2/users/{user_id}/signature | Get User email signature
-[**list_paginated_users**](UsersApi.md#list_paginated_users) | **GET** /v2/users | List Users
-[**update_user**](UsersApi.md#update_user) | **PATCH** /v2/users/{user_id} | Update User
+[**get_user_by_id**](UsersApi.md#get_user_by_id) | **GET** /rest/v2/users/{user_id} | Get User
+[**get_user_info**](UsersApi.md#get_user_info) | **GET** /rest/v2/oauth/connect/userinfo | Retrieve User Info
+[**get_user_signature**](UsersApi.md#get_user_signature) | **GET** /rest/v2/users/{user_id}/signature | Get User email signature
+[**list_paginated_users**](UsersApi.md#list_paginated_users) | **GET** /rest/v2/users | List Users
+[**update_user**](UsersApi.md#update_user) | **PATCH** /rest/v2/users/{user_id} | Update User
 
 
 # **get_user_by_id**
@@ -20,6 +20,7 @@ Retrieves a specific User
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
@@ -27,17 +28,23 @@ from keap_core_v2_client.models.user import User
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.UsersApi(api_client)
-    user_id = 'user_id_example' # str | user_id
+    user_id = 'user_id_example' # str | 
 
     try:
         # Get User
@@ -54,7 +61,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **str**| user_id | 
+ **user_id** | **str**|  | 
 
 ### Return type
 
@@ -62,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -74,10 +81,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -90,6 +100,7 @@ Retrieves information for the current authenticated end-user, as outlined by the
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
@@ -97,12 +108,18 @@ from keap_core_v2_client.models.get_user_info_response import GetUserInfoRespons
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -128,7 +145,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -140,10 +157,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -156,23 +176,30 @@ Retrieves a HTML snippet that contains the user's email signature.
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.UsersApi(api_client)
-    user_id = 'user_id_example' # str | user_id
+    user_id = 'user_id_example' # str | 
 
     try:
         # Get User email signature
@@ -189,7 +216,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **str**| user_id | 
+ **user_id** | **str**|  | 
 
 ### Return type
 
@@ -197,7 +224,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -209,10 +236,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -225,6 +255,7 @@ Retrieves a list of users
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
@@ -232,18 +263,24 @@ from keap_core_v2_client.models.list_users_paginated_response import ListUsersPa
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.UsersApi(api_client)
     filter = 'filter_example' # str | Filter to apply, allowed fields are: - (String) `email` - (String) `given_name` - (Boolean) `include_inactive` - (Boolean) `include_partners` - (Set[String]) `user_ids`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=given_name%3D%3DMary` - `filter=user_ids%3D%3D123%3Bgiven_name%3D%3DSmith`  (optional)
-    order_by = 'order_by_example' # str | Attribute and direction to order items. One of the following fields: - `date_created` - `email`  One of the following directions: - `asc` - `desc` (optional)
+    order_by = 'order_by_example' # str | Attribute and direction to order items. One of the following fields: - `create_time` - `email`  One of the following directions: - `asc` - `desc` (optional)
     page_size = 10 # int | Total number of items to return per page (optional)
     page_token = 'page_token_example' # str | Page token (optional)
 
@@ -263,7 +300,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **filter** | **str**| Filter to apply, allowed fields are: - (String) &#x60;email&#x60; - (String) &#x60;given_name&#x60; - (Boolean) &#x60;include_inactive&#x60; - (Boolean) &#x60;include_partners&#x60; - (Set[String]) &#x60;user_ids&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;user_ids%3D%3D123%3Bgiven_name%3D%3DSmith&#x60;  | [optional] 
- **order_by** | **str**| Attribute and direction to order items. One of the following fields: - &#x60;date_created&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] 
+ **order_by** | **str**| Attribute and direction to order items. One of the following fields: - &#x60;create_time&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] 
  **page_size** | **int**| Total number of items to return per page | [optional] 
  **page_token** | **str**| Page token | [optional] 
 
@@ -273,7 +310,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -285,15 +322,18 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_user**
-> User update_user(user_id, update_mask=update_mask, update_user_request=update_user_request)
+> User update_user(user_id, update_user_request, update_mask=update_mask)
 
 Update User
 
@@ -301,6 +341,7 @@ Updates information on a specific User
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
@@ -309,23 +350,29 @@ from keap_core_v2_client.models.user import User
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.UsersApi(api_client)
-    user_id = 'user_id_example' # str | user_id
-    update_mask = ['update_mask_example'] # List[str] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-    update_user_request = keap_core_v2_client.UpdateUserRequest() # UpdateUserRequest | user (optional)
+    user_id = 'user_id_example' # str | 
+    update_user_request = keap_core_v2_client.UpdateUserRequest() # UpdateUserRequest | 
+    update_mask = 'update_mask_example' # str | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
 
     try:
         # Update User
-        api_response = api_instance.update_user(user_id, update_mask=update_mask, update_user_request=update_user_request)
+        api_response = api_instance.update_user(user_id, update_user_request, update_mask=update_mask)
         print("The response of UsersApi->update_user:\n")
         pprint(api_response)
     except Exception as e:
@@ -338,9 +385,9 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **str**| user_id | 
- **update_mask** | [**List[str]**](str.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
- **update_user_request** | [**UpdateUserRequest**](UpdateUserRequest.md)| user | [optional] 
+ **user_id** | **str**|  | 
+ **update_user_request** | [**UpdateUserRequest**](UpdateUserRequest.md)|  | 
+ **update_mask** | **str**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 
@@ -348,7 +395,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -360,10 +407,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

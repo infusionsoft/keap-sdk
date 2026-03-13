@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**checklistItems** | [**[CheckListItemDetails]**](CheckListItemDetails.md) |  | [optional] 
-**probability** | **Number** |  | [optional] 
-**stageOrder** | **Number** |  | [optional] 
-**targetNumDays** | **Number** |  | [optional] 
+**probability** | **Number** | Win probability (0-100) | [optional] 
+**stageOrder** | **Number** | Stage order in pipeline | [optional] 
+**targetNumDays** | **Number** | Target days in stage | [optional] 
+**checklistItems** | [**[CheckListItemDetails]**](CheckListItemDetails.md) | Stage checklist items | [optional] 
 
 

@@ -1,14 +1,14 @@
 # Keap\Core\V2\ProductDiscountsApi
 
-All URIs are relative to https://api.keap.com/crm/rest, except if the operation defines another base path.
+All URIs are relative to https://api.keap.com/crm, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createProductDiscount()**](ProductDiscountsApi.md#createProductDiscount) | **POST** /v2/discounts/products | Create a Product Discount |
-| [**deleteProductDiscount()**](ProductDiscountsApi.md#deleteProductDiscount) | **DELETE** /v2/discounts/products/{discount_id} | Delete a Product Discount |
-| [**getProductDiscount()**](ProductDiscountsApi.md#getProductDiscount) | **GET** /v2/discounts/products/{discount_id} | Retrieve a Product Discount |
-| [**listProductDiscounts()**](ProductDiscountsApi.md#listProductDiscounts) | **GET** /v2/discounts/products | List all Product Discounts |
-| [**updateProductDiscount()**](ProductDiscountsApi.md#updateProductDiscount) | **PATCH** /v2/discounts/products/{discount_id} | Update a Product Discount |
+| [**createProductDiscount()**](ProductDiscountsApi.md#createProductDiscount) | **POST** /rest/v2/discounts/products | Create a Product Discount |
+| [**deleteProductDiscount()**](ProductDiscountsApi.md#deleteProductDiscount) | **DELETE** /rest/v2/discounts/products/{discount_id} | Delete a Product Discount |
+| [**getProductDiscount()**](ProductDiscountsApi.md#getProductDiscount) | **GET** /rest/v2/discounts/products/{discount_id} | Retrieve a Product Discount |
+| [**listProductDiscounts()**](ProductDiscountsApi.md#listProductDiscounts) | **GET** /rest/v2/discounts/products | List all Product Discounts |
+| [**updateProductDiscount()**](ProductDiscountsApi.md#updateProductDiscount) | **PATCH** /rest/v2/discounts/products/{discount_id} | Update a Product Discount |
 
 
 ## `createProductDiscount()`
@@ -28,12 +28,16 @@ Creates a Product Discount
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\ProductDiscountsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$create_product_discount_request = new \Keap\Core\V2\Model\CreateProductDiscountRequest(); // \Keap\Core\V2\Model\CreateProductDiscountRequest | request
+$create_product_discount_request = new \Keap\Core\V2\Model\CreateProductDiscountRequest(); // \Keap\Core\V2\Model\CreateProductDiscountRequest
 
 try {
     $result = $apiInstance->createProductDiscount($create_product_discount_request);
@@ -47,7 +51,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **create_product_discount_request** | [**\Keap\Core\V2\Model\CreateProductDiscountRequest**](../Model/CreateProductDiscountRequest.md)| request | |
+| **create_product_discount_request** | [**\Keap\Core\V2\Model\CreateProductDiscountRequest**](../Model/CreateProductDiscountRequest.md)|  | |
 
 ### Return type
 
@@ -55,7 +59,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -83,12 +87,16 @@ Deletes a specified Product Discount
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\ProductDiscountsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$discount_id = 'discount_id_example'; // string | discount_id
+$discount_id = 'discount_id_example'; // string
 
 try {
     $apiInstance->deleteProductDiscount($discount_id);
@@ -101,7 +109,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **discount_id** | **string**| discount_id | |
+| **discount_id** | **string**|  | |
 
 ### Return type
 
@@ -109,7 +117,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -137,12 +145,16 @@ Retrieves a Product Discount
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\ProductDiscountsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$discount_id = 'discount_id_example'; // string | discount_id
+$discount_id = 'discount_id_example'; // string
 
 try {
     $result = $apiInstance->getProductDiscount($discount_id);
@@ -156,7 +168,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **discount_id** | **string**| discount_id | |
+| **discount_id** | **string**|  | |
 
 ### Return type
 
@@ -164,7 +176,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -192,10 +204,14 @@ Retrieves a list of Product Discounts
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\ProductDiscountsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $filter = 'filter_example'; // string | Filter to apply, allowed fields are: - (Boolean) `apply_to_commissions` - (DiscountType) `discount_type`: AMOUNT or PERCENT - (Double) `discount_value` - (String) `product_id`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=apply_to_commissions%3D%3Dtrue` - `filter=discount_type%3D%3DAMOUNT` - `filter=discount_value%3D%3D10.0` - `filter=product_id%3D%3D2` - `filter=discount_type%3D%3DAMOUNT%3Bdiscount_value%3D%3D10.0`
 $order_by = 'order_by_example'; // string | Attribute and direction to order items. One of the following fields: - `apply_to_commissions` - `discount_type` - `discount_value` - `id` - `name` - `product_id`  One of the following directions: - `asc` - `desc`
@@ -225,7 +241,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -253,14 +269,18 @@ Updates a Product Discount
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\ProductDiscountsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$discount_id = 'discount_id_example'; // string | discount_id
-$update_product_discount_request = new \Keap\Core\V2\Model\UpdateProductDiscountRequest(); // \Keap\Core\V2\Model\UpdateProductDiscountRequest | request
-$update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+$discount_id = 'discount_id_example'; // string
+$update_product_discount_request = new \Keap\Core\V2\Model\UpdateProductDiscountRequest(); // \Keap\Core\V2\Model\UpdateProductDiscountRequest
+$update_mask = 'update_mask_example'; // string | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
     $result = $apiInstance->updateProductDiscount($discount_id, $update_product_discount_request, $update_mask);
@@ -274,9 +294,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **discount_id** | **string**| discount_id | |
-| **update_product_discount_request** | [**\Keap\Core\V2\Model\UpdateProductDiscountRequest**](../Model/UpdateProductDiscountRequest.md)| request | |
-| **update_mask** | [**string[]**](../Model/string.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **discount_id** | **string**|  | |
+| **update_product_discount_request** | [**\Keap\Core\V2\Model\UpdateProductDiscountRequest**](../Model/UpdateProductDiscountRequest.md)|  | |
+| **update_mask** | **string**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -284,7 +304,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 

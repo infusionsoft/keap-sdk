@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CompanyName** | **string** |  | [optional] 
-**Id** | **string** |  | [optional] 
+**Id** | **string** | Company ID | [optional] 
+**CompanyName** | **string** | Company name | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

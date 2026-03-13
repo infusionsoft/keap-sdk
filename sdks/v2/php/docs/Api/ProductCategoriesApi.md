@@ -1,17 +1,17 @@
 # Keap\Core\V2\ProductCategoriesApi
 
-All URIs are relative to https://api.keap.com/crm/rest, except if the operation defines another base path.
+All URIs are relative to https://api.keap.com/crm, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**assignProductsToCategory()**](ProductCategoriesApi.md#assignProductsToCategory) | **POST** /v2/productCategories/{category_id}:assignProducts | Assign Products to a Product Category |
-| [**createImageFile()**](ProductCategoriesApi.md#createImageFile) | **POST** /v2/productCategories/{category_id}/images | Create the product category image file |
-| [**createProductCategory()**](ProductCategoriesApi.md#createProductCategory) | **POST** /v2/productCategories | Create a Product Category |
-| [**deleteImageFile()**](ProductCategoriesApi.md#deleteImageFile) | **DELETE** /v2/productCategories/{category_id}/images | Delete the image from a product category |
-| [**deleteProductCategory()**](ProductCategoriesApi.md#deleteProductCategory) | **DELETE** /v2/productCategories/{category_id} | Delete a Product Category |
-| [**getProductCategory()**](ProductCategoriesApi.md#getProductCategory) | **GET** /v2/productCategories/{category_id} | Get a Product Category |
-| [**listProductCategories()**](ProductCategoriesApi.md#listProductCategories) | **GET** /v2/productCategories | List all Product Categories |
-| [**updateProductCategory()**](ProductCategoriesApi.md#updateProductCategory) | **PATCH** /v2/productCategories/{category_id} | Update a Product Category |
+| [**assignProductsToCategory()**](ProductCategoriesApi.md#assignProductsToCategory) | **POST** /rest/v2/productCategories/{category_id}:assignProducts | Assign Products to a Product Category |
+| [**createImageFile()**](ProductCategoriesApi.md#createImageFile) | **POST** /rest/v2/productCategories/{category_id}/images | Create the product category image file |
+| [**createProductCategory()**](ProductCategoriesApi.md#createProductCategory) | **POST** /rest/v2/productCategories | Create a Product Category |
+| [**deleteImageFile()**](ProductCategoriesApi.md#deleteImageFile) | **DELETE** /rest/v2/productCategories/{category_id}/images | Delete the image from a product category |
+| [**deleteProductCategory()**](ProductCategoriesApi.md#deleteProductCategory) | **DELETE** /rest/v2/productCategories/{category_id} | Delete a Product Category |
+| [**getProductCategory()**](ProductCategoriesApi.md#getProductCategory) | **GET** /rest/v2/productCategories/{category_id} | Get a Product Category |
+| [**listProductCategories()**](ProductCategoriesApi.md#listProductCategories) | **GET** /rest/v2/productCategories | List all Product Categories |
+| [**updateProductCategory()**](ProductCategoriesApi.md#updateProductCategory) | **PATCH** /rest/v2/productCategories/{category_id} | Update a Product Category |
 
 
 ## `assignProductsToCategory()`
@@ -31,13 +31,17 @@ Updates the list of products assigned to a Product Category. **Note:** The full 
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\ProductCategoriesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$category_id = 'category_id_example'; // string | category_id
-$assign_products_request = new \Keap\Core\V2\Model\AssignProductsRequest(); // \Keap\Core\V2\Model\AssignProductsRequest | request
+$category_id = 'category_id_example'; // string
+$assign_products_request = new \Keap\Core\V2\Model\AssignProductsRequest(); // \Keap\Core\V2\Model\AssignProductsRequest
 
 try {
     $apiInstance->assignProductsToCategory($category_id, $assign_products_request);
@@ -50,8 +54,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **category_id** | **string**| category_id | |
-| **assign_products_request** | [**\Keap\Core\V2\Model\AssignProductsRequest**](../Model/AssignProductsRequest.md)| request | |
+| **category_id** | **string**|  | |
+| **assign_products_request** | [**\Keap\Core\V2\Model\AssignProductsRequest**](../Model/AssignProductsRequest.md)|  | |
 
 ### Return type
 
@@ -59,7 +63,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -87,12 +91,16 @@ Creates the product category image file and uploads it to the specified product 
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\ProductCategoriesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$category_id = 'category_id_example'; // string | category_id
+$category_id = 'category_id_example'; // string
 $file = '/path/to/file.txt'; // \SplFileObject | File to upload
 
 try {
@@ -106,7 +114,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **category_id** | **string**| category_id | |
+| **category_id** | **string**|  | |
 | **file** | **\SplFileObject****\SplFileObject**| File to upload | |
 
 ### Return type
@@ -115,7 +123,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -143,12 +151,16 @@ Creates a new Product Category
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\ProductCategoriesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$create_product_category_request = new \Keap\Core\V2\Model\CreateProductCategoryRequest(); // \Keap\Core\V2\Model\CreateProductCategoryRequest | productCategory
+$create_product_category_request = new \Keap\Core\V2\Model\CreateProductCategoryRequest(); // \Keap\Core\V2\Model\CreateProductCategoryRequest
 
 try {
     $result = $apiInstance->createProductCategory($create_product_category_request);
@@ -162,7 +174,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **create_product_category_request** | [**\Keap\Core\V2\Model\CreateProductCategoryRequest**](../Model/CreateProductCategoryRequest.md)| productCategory | [optional] |
+| **create_product_category_request** | [**\Keap\Core\V2\Model\CreateProductCategoryRequest**](../Model/CreateProductCategoryRequest.md)|  | |
 
 ### Return type
 
@@ -170,7 +182,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -198,12 +210,16 @@ Deletes the image from the specified product category
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\ProductCategoriesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$category_id = 'category_id_example'; // string | category_id
+$category_id = 'category_id_example'; // string
 
 try {
     $apiInstance->deleteImageFile($category_id);
@@ -216,7 +232,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **category_id** | **string**| category_id | |
+| **category_id** | **string**|  | |
 
 ### Return type
 
@@ -224,7 +240,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -252,12 +268,16 @@ Deletes the specified Product Category, its sub-categories, and removes products
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\ProductCategoriesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$category_id = 'category_id_example'; // string | category_id
+$category_id = 'category_id_example'; // string
 
 try {
     $apiInstance->deleteProductCategory($category_id);
@@ -270,7 +290,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **category_id** | **string**| category_id | |
+| **category_id** | **string**|  | |
 
 ### Return type
 
@@ -278,7 +298,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -306,12 +326,16 @@ Gets a single Product Category
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\ProductCategoriesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$category_id = 'category_id_example'; // string | category_id
+$category_id = 'category_id_example'; // string
 
 try {
     $result = $apiInstance->getProductCategory($category_id);
@@ -325,7 +349,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **category_id** | **string**| category_id | |
+| **category_id** | **string**|  | |
 
 ### Return type
 
@@ -333,7 +357,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -361,10 +385,14 @@ Retrieves a list of Product Categories
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\ProductCategoriesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $filter = 'filter_example'; // string | Filter to apply, allowed fields are: - (String) `product_id`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=product_id%3D%3D29`
 $order_by = 'order_by_example'; // string | Attribute and direction to order items. One of the following fields: - `id`  One of the following directions: - `asc` - `desc`
@@ -394,7 +422,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -422,14 +450,18 @@ Updates a single Product Category
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\ProductCategoriesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$category_id = 'category_id_example'; // string | category_id
-$update_product_category_request = new \Keap\Core\V2\Model\UpdateProductCategoryRequest(); // \Keap\Core\V2\Model\UpdateProductCategoryRequest | request
-$update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+$category_id = 'category_id_example'; // string
+$update_product_category_request = new \Keap\Core\V2\Model\UpdateProductCategoryRequest(); // \Keap\Core\V2\Model\UpdateProductCategoryRequest
+$update_mask = 'update_mask_example'; // string | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
     $result = $apiInstance->updateProductCategory($category_id, $update_product_category_request, $update_mask);
@@ -443,9 +475,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **category_id** | **string**| category_id | |
-| **update_product_category_request** | [**\Keap\Core\V2\Model\UpdateProductCategoryRequest**](../Model/UpdateProductCategoryRequest.md)| request | |
-| **update_mask** | [**string[]**](../Model/string.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **category_id** | **string**|  | |
+| **update_product_category_request** | [**\Keap\Core\V2\Model\UpdateProductCategoryRequest**](../Model/UpdateProductCategoryRequest.md)|  | |
+| **update_mask** | **string**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -453,7 +485,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 

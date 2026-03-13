@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**amount** | **Number** |  | [optional] 
-**discountMethod** | **String** |  | [optional] 
-**specialItemId** | **String** |  | [optional] 
+**amount** | **Number** | Discount amount | [optional] 
+**specialItemId** | **String** | Discount item ID | [optional] 
+**discountMethod** | **String** | Discount method | [optional] 
 
 
 

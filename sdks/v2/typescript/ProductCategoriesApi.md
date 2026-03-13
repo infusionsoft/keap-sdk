@@ -1,17 +1,17 @@
 # .ProductCategoriesApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**assignProductsToCategory**](ProductCategoriesApi.md#assignProductsToCategory) | **POST** /v2/productCategories/{category_id}:assignProducts | Assign Products to a Product Category
-[**createImageFile**](ProductCategoriesApi.md#createImageFile) | **POST** /v2/productCategories/{category_id}/images | Create the product category image file
-[**createProductCategory**](ProductCategoriesApi.md#createProductCategory) | **POST** /v2/productCategories | Create a Product Category
-[**deleteImageFile**](ProductCategoriesApi.md#deleteImageFile) | **DELETE** /v2/productCategories/{category_id}/images | Delete the image from a product category
-[**deleteProductCategory**](ProductCategoriesApi.md#deleteProductCategory) | **DELETE** /v2/productCategories/{category_id} | Delete a Product Category
-[**getProductCategory**](ProductCategoriesApi.md#getProductCategory) | **GET** /v2/productCategories/{category_id} | Get a Product Category
-[**listProductCategories**](ProductCategoriesApi.md#listProductCategories) | **GET** /v2/productCategories | List all Product Categories
-[**updateProductCategory**](ProductCategoriesApi.md#updateProductCategory) | **PATCH** /v2/productCategories/{category_id} | Update a Product Category
+[**assignProductsToCategory**](ProductCategoriesApi.md#assignProductsToCategory) | **POST** /rest/v2/productCategories/{category_id}:assignProducts | Assign Products to a Product Category
+[**createImageFile**](ProductCategoriesApi.md#createImageFile) | **POST** /rest/v2/productCategories/{category_id}/images | Create the product category image file
+[**createProductCategory**](ProductCategoriesApi.md#createProductCategory) | **POST** /rest/v2/productCategories | Create a Product Category
+[**deleteImageFile**](ProductCategoriesApi.md#deleteImageFile) | **DELETE** /rest/v2/productCategories/{category_id}/images | Delete the image from a product category
+[**deleteProductCategory**](ProductCategoriesApi.md#deleteProductCategory) | **DELETE** /rest/v2/productCategories/{category_id} | Delete a Product Category
+[**getProductCategory**](ProductCategoriesApi.md#getProductCategory) | **GET** /rest/v2/productCategories/{category_id} | Get a Product Category
+[**listProductCategories**](ProductCategoriesApi.md#listProductCategories) | **GET** /rest/v2/productCategories | List all Product Categories
+[**updateProductCategory**](ProductCategoriesApi.md#updateProductCategory) | **PATCH** /rest/v2/productCategories/{category_id} | Update a Product Category
 
 
 # **assignProductsToCategory**
@@ -30,9 +30,9 @@ const configuration = createConfiguration();
 const apiInstance = new ProductCategoriesApi(configuration);
 
 const request: ProductCategoriesApiAssignProductsToCategoryRequest = {
-    // category_id
+  
   categoryId: "category_id_example",
-    // request
+  
   assignProductsRequest: {
     productIds: [
       "productIds_example",
@@ -49,8 +49,8 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **assignProductsRequest** | **AssignProductsRequest**| request |
- **categoryId** | [**string**] | category_id | defaults to undefined
+ **assignProductsRequest** | **AssignProductsRequest**|  |
+ **categoryId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -59,7 +59,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -71,9 +71,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No Content |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -93,7 +97,7 @@ const configuration = createConfiguration();
 const apiInstance = new ProductCategoriesApi(configuration);
 
 const request: ProductCategoriesApiCreateImageFileRequest = {
-    // category_id
+  
   categoryId: "category_id_example",
     // File to upload
   file: { data: Buffer.from(fs.readFileSync('/path/to/file', 'utf-8')), name: '/path/to/file' },
@@ -108,7 +112,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **categoryId** | [**string**] | category_id | defaults to undefined
+ **categoryId** | [**string**] |  | defaults to undefined
  **file** | [**HttpFile**] | File to upload | defaults to undefined
 
 
@@ -118,7 +122,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -130,14 +134,18 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **createProductCategory**
-> ProductCategory createProductCategory()
+> ProductCategory createProductCategory(createProductCategoryRequest)
 
 Creates a new Product Category
 
@@ -152,11 +160,11 @@ const configuration = createConfiguration();
 const apiInstance = new ProductCategoriesApi(configuration);
 
 const request: ProductCategoriesApiCreateProductCategoryRequest = {
-    // productCategory (optional)
+  
   createProductCategoryRequest: {
-    displayOrderIndex: 1,
-    name: "name_example",
-    parentCategoryId: "parentCategoryId_example",
+    name: "Electronics",
+    displayOrderIndex: 0,
+    parentCategoryId: "2",
   },
 };
 
@@ -169,7 +177,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createProductCategoryRequest** | **CreateProductCategoryRequest**| productCategory |
+ **createProductCategoryRequest** | **CreateProductCategoryRequest**|  |
 
 
 ### Return type
@@ -178,7 +186,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -190,9 +198,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -212,7 +224,7 @@ const configuration = createConfiguration();
 const apiInstance = new ProductCategoriesApi(configuration);
 
 const request: ProductCategoriesApiDeleteImageFileRequest = {
-    // category_id
+  
   categoryId: "category_id_example",
 };
 
@@ -225,7 +237,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **categoryId** | [**string**] | category_id | defaults to undefined
+ **categoryId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -234,7 +246,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -246,10 +258,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No Content |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -269,7 +284,7 @@ const configuration = createConfiguration();
 const apiInstance = new ProductCategoriesApi(configuration);
 
 const request: ProductCategoriesApiDeleteProductCategoryRequest = {
-    // category_id
+  
   categoryId: "category_id_example",
 };
 
@@ -282,7 +297,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **categoryId** | [**string**] | category_id | defaults to undefined
+ **categoryId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -291,7 +306,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -303,10 +318,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No Content |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -326,7 +344,7 @@ const configuration = createConfiguration();
 const apiInstance = new ProductCategoriesApi(configuration);
 
 const request: ProductCategoriesApiGetProductCategoryRequest = {
-    // category_id
+  
   categoryId: "category_id_example",
 };
 
@@ -339,7 +357,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **categoryId** | [**string**] | category_id | defaults to undefined
+ **categoryId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -348,7 +366,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -360,10 +378,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -414,7 +435,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -426,10 +447,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -449,18 +473,16 @@ const configuration = createConfiguration();
 const apiInstance = new ProductCategoriesApi(configuration);
 
 const request: ProductCategoriesApiUpdateProductCategoryRequest = {
-    // category_id
+  
   categoryId: "category_id_example",
-    // request
+  
   updateProductCategoryRequest: {
-    displayOrderIndex: 1,
-    name: "name_example",
-    parentCategoryId: "parentCategoryId_example",
+    name: "Electronics",
+    displayOrderIndex: 0,
+    parentCategoryId: "2",
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: [
-    "name",
-  ],
+  updateMask: "name,display_order_index,parent_category_id",
 };
 
 const data = await apiInstance.updateProductCategory(request);
@@ -472,9 +494,9 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **updateProductCategoryRequest** | **UpdateProductCategoryRequest**| request |
- **categoryId** | [**string**] | category_id | defaults to undefined
- **updateMask** |  | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateProductCategoryRequest** | **UpdateProductCategoryRequest**|  |
+ **categoryId** | [**string**] |  | defaults to undefined
+ **updateMask** | [**&#39;name,display_order_index,parent_category_id&#39;**]**Array<&#39;name,display_order_index,parent_category_id&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
@@ -483,7 +505,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -495,10 +517,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

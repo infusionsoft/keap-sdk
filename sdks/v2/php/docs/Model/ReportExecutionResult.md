@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**page_token** | **string** |  | [optional]
-**results** | [**\Keap\Core\V2\Model\ReportEntryRecord[]**](ReportEntryRecord.md) |  | [optional]
+**results** | [**\Keap\Core\V2\Model\ReportEntryRecord[]**](ReportEntryRecord.md) | The list of report result records | [optional]
+**page_token** | **string** | Token for retrieving the next page of results | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

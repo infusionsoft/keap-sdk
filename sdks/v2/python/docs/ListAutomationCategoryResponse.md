@@ -1,11 +1,12 @@
 # ListAutomationCategoryResponse
 
+Response containing a list of automation categories
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**automation_categories** | [**List[AutomationCategory]**](AutomationCategory.md) |  | [optional] 
+**automation_categories** | [**List[AutomationCategory]**](AutomationCategory.md) | List of automation categories | [optional] 
 **next_page_token** | **str** |  | [optional] 
 
 ## Example

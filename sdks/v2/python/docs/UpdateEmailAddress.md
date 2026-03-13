@@ -1,12 +1,13 @@
 # UpdateEmailAddress
 
+Request to update email address opt-in status
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**opted_in** | **bool** |  | 
-**reason** | **str** |  | 
+**reason** | **str** | Reason for the opt-in status change | 
+**opted_in** | **bool** | Whether to opt-in the email address | 
 
 ## Example
 

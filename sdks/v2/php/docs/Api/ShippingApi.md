@@ -1,10 +1,10 @@
 # Keap\Core\V2\ShippingApi
 
-All URIs are relative to https://api.keap.com/crm/rest, except if the operation defines another base path.
+All URIs are relative to https://api.keap.com/crm, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**listShippingMethods()**](ShippingApi.md#listShippingMethods) | **GET** /v2/shipping | List Shipping methods |
+| [**listShippingMethods()**](ShippingApi.md#listShippingMethods) | **GET** /rest/v2/shipping | List Shipping methods |
 
 
 ## `listShippingMethods()`
@@ -24,10 +24,14 @@ Retrieves a list of Shipping methods
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\ShippingApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 
 try {
@@ -48,7 +52,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 

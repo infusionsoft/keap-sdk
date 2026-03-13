@@ -1,20 +1,21 @@
 # UpdateUserRequest
 
+user
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**address** | [**Address**](Address.md) |  | [optional] 
-**company_name** | **str** |  | [optional] 
-**email_address** | [**EmailAddressRequest**](EmailAddressRequest.md) |  | [optional] 
-**family_name** | **str** |  | [optional] 
-**fax_numbers** | [**List[FaxNumber]**](FaxNumber.md) |  | [optional] 
-**given_name** | **str** |  | [optional] 
-**phone_numbers** | [**List[PhoneNumber]**](PhoneNumber.md) |  | [optional] 
-**time_zone** | **str** |  | [optional] 
-**title** | **str** |  | [optional] 
-**website** | **str** |  | [optional] 
+**address** | [**Address**](Address.md) | The user&#39;s address | [optional] 
+**title** | **str** | The user&#39;s job title | [optional] 
+**website** | **str** | The user&#39;s website URL | [optional] 
+**company_name** | **str** | The user&#39;s company name | [optional] 
+**email_address** | [**EmailAddressRequest**](EmailAddressRequest.md) | The user&#39;s email address | [optional] 
+**family_name** | **str** | The user&#39;s last name | [optional] 
+**fax_numbers** | [**List[FaxNumber]**](FaxNumber.md) | List of user&#39;s fax numbers | [optional] 
+**given_name** | **str** | The user&#39;s first name | [optional] 
+**phone_numbers** | [**List[PhoneNumber]**](PhoneNumber.md) | List of user&#39;s phone numbers | [optional] 
+**time_zone** | **str** | The user&#39;s timezone in IANA format | [optional] 
 
 ## Example
 

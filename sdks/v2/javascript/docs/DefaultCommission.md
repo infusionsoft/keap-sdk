@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**dollarAmount** | **Number** |  | [optional] 
-**percentage** | **Number** |  | [optional] 
+**percentage** | **Number** | Percentage commission (0-100) | [optional] 
+**dollarAmount** | **Number** | Fixed dollar amount commission | [optional] 
 
 

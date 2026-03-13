@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**defaultStage** | **String** |  |  [optional] |
 |**states** | [**ApplicationConfigurationModuleOpportunityStates**](ApplicationConfigurationModuleOpportunityStates.md) |  |  [optional] |
+|**defaultStage** | **String** |  |  [optional] |
 
 
 ## Implemented Interfaces

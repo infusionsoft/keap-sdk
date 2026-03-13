@@ -21,7 +21,7 @@ export class FreeTrialDiscountsApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Creates a Subscription Free Trial Discount
      * Create a Subscription Free Trial Discount
-     * @param createFreeTrialDiscountRequest createFreeTrialDiscountRequest
+     * @param createFreeTrialDiscountRequest 
      */
     public async createFreeTrialDiscount(createFreeTrialDiscountRequest: CreateFreeTrialDiscountRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
@@ -33,7 +33,7 @@ export class FreeTrialDiscountsApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/v2/discounts/freeTrials';
+        const localVarPath = '/rest/v2/discounts/freeTrials';
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
@@ -51,6 +51,12 @@ export class FreeTrialDiscountsApiRequestFactory extends BaseAPIRequestFactory {
         );
         requestContext.setBody(serializedBody);
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -63,7 +69,7 @@ export class FreeTrialDiscountsApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Deletes a specified Subscription Free Trial Discount
      * Delete a Subscription Free Trial Discount
-     * @param discountId discount_id
+     * @param discountId 
      */
     public async deleteFreeTrialDiscount(discountId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
@@ -75,7 +81,7 @@ export class FreeTrialDiscountsApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/v2/discounts/freeTrials/{discount_id}'
+        const localVarPath = '/rest/v2/discounts/freeTrials/{discount_id}'
             .replace('{' + 'discount_id' + '}', encodeURIComponent(String(discountId)));
 
         // Make Request Context
@@ -83,6 +89,12 @@ export class FreeTrialDiscountsApiRequestFactory extends BaseAPIRequestFactory {
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
 
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -95,7 +107,7 @@ export class FreeTrialDiscountsApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Retrieves a Subscription Free Trial Discount
      * Retrieve a Subscription Free Trial Discount
-     * @param discountId discount_id
+     * @param discountId 
      */
     public async getFreeTrialDiscount(discountId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
@@ -107,7 +119,7 @@ export class FreeTrialDiscountsApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/v2/discounts/freeTrials/{discount_id}'
+        const localVarPath = '/rest/v2/discounts/freeTrials/{discount_id}'
             .replace('{' + 'discount_id' + '}', encodeURIComponent(String(discountId)));
 
         // Make Request Context
@@ -115,6 +127,12 @@ export class FreeTrialDiscountsApiRequestFactory extends BaseAPIRequestFactory {
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
 
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -140,7 +158,7 @@ export class FreeTrialDiscountsApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/v2/discounts/freeTrials';
+        const localVarPath = '/rest/v2/discounts/freeTrials';
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
@@ -167,6 +185,12 @@ export class FreeTrialDiscountsApiRequestFactory extends BaseAPIRequestFactory {
         }
 
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -179,11 +203,11 @@ export class FreeTrialDiscountsApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Updates a Subscription Free Trial Discount
      * Update a Subscription Free Trial Discount
-     * @param discountId discount_id
-     * @param updateFreeTrialDiscountRequest request
+     * @param discountId 
+     * @param updateFreeTrialDiscountRequest 
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateFreeTrialDiscount(discountId: string, updateFreeTrialDiscountRequest: UpdateFreeTrialDiscountRequest, updateMask?: Array<string>, _options?: Configuration): Promise<RequestContext> {
+    public async updateFreeTrialDiscount(discountId: string, updateFreeTrialDiscountRequest: UpdateFreeTrialDiscountRequest, updateMask?: 'name,description,free_trial_days,hide_price,subscription_plan_id,criteria', _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'discountId' is not null or undefined
@@ -200,7 +224,7 @@ export class FreeTrialDiscountsApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/v2/discounts/freeTrials/{discount_id}'
+        const localVarPath = '/rest/v2/discounts/freeTrials/{discount_id}'
             .replace('{' + 'discount_id' + '}', encodeURIComponent(String(discountId)));
 
         // Make Request Context
@@ -209,10 +233,7 @@ export class FreeTrialDiscountsApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (updateMask !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(updateMask, "Array<string>", "");
-            for (const serializedParam of serializedParams) {
-                requestContext.appendQueryParam("update_mask", serializedParam);
-            }
+            requestContext.setQueryParam("update_mask", ObjectSerializer.serialize(updateMask, "'name,description,free_trial_days,hide_price,subscription_plan_id,criteria'", ""));
         }
 
 
@@ -227,6 +248,12 @@ export class FreeTrialDiscountsApiRequestFactory extends BaseAPIRequestFactory {
         );
         requestContext.setBody(serializedBody);
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -256,6 +283,13 @@ export class FreeTrialDiscountsApiResponseProcessor {
             ) as FreeTrialDiscount;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -270,12 +304,33 @@ export class FreeTrialDiscountsApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Forbidden", body, response.headers);
         }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -302,6 +357,13 @@ export class FreeTrialDiscountsApiResponseProcessor {
         if (isCodeInRange("204", response.httpStatusCode)) {
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
         }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -323,12 +385,26 @@ export class FreeTrialDiscountsApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -359,6 +435,13 @@ export class FreeTrialDiscountsApiResponseProcessor {
             ) as FreeTrialDiscount;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -380,12 +463,26 @@ export class FreeTrialDiscountsApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -416,6 +513,13 @@ export class FreeTrialDiscountsApiResponseProcessor {
             ) as ListFreeTrialDiscountsResponse;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -437,12 +541,26 @@ export class FreeTrialDiscountsApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -473,6 +591,13 @@ export class FreeTrialDiscountsApiResponseProcessor {
             ) as FreeTrialDiscount;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -494,12 +619,26 @@ export class FreeTrialDiscountsApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml

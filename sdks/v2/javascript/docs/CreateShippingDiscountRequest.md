@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**criteria** | [**[DiscountCriteria]**](DiscountCriteria.md) |  | [optional] 
-**description** | **String** |  | [optional] 
-**discountType** | **String** |  | 
-**discountValue** | **Number** |  | 
-**name** | **String** |  | 
+**name** | **String** | Name of the discount | 
+**description** | **String** | Description of the discount | [optional] 
+**criteria** | [**[DiscountCriteria]**](DiscountCriteria.md) | List of criteria that must be met for this discount to apply | [optional] 
+**discountType** | **String** | Type of discount: AMOUNT (fixed amount) or PERCENT (percentage) | 
+**discountValue** | **Number** | Value of the discount (amount or percentage depending on discount_type) | 
 
 
 

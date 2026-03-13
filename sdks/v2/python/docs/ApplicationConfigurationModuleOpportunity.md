@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**default_stage** | **str** |  | [optional] 
 **states** | [**ApplicationConfigurationModuleOpportunityStates**](ApplicationConfigurationModuleOpportunityStates.md) |  | [optional] 
+**default_stage** | **str** |  | [optional] 
 
 ## Example
 

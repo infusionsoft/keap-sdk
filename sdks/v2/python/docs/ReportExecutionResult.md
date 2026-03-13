@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**page_token** | **str** |  | [optional] 
-**results** | [**List[ReportEntryRecord]**](ReportEntryRecord.md) |  | [optional] 
+**results** | [**List[ReportEntryRecord]**](ReportEntryRecord.md) | The list of report result records | [optional] 
+**page_token** | **str** | Token for retrieving the next page of results | [optional] 
 
 ## Example
 

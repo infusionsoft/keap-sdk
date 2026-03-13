@@ -1,19 +1,20 @@
 # Keap.Core.V2.Model.CreateTaskRequest
+task
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AssignedToUserId** | **string** |  | 
-**Completed** | **bool** |  | [optional] 
-**CompletionTime** | **string** |  | [optional] 
-**ContactId** | **string** |  | [optional] 
-**Description** | **string** |  | [optional] 
-**DueTime** | **string** |  | [optional] 
-**Priority** | **string** |  | [optional] 
-**RemindTimeMins** | **int** | Value in minutes before start_date to show pop-up reminder.  Acceptable values are [5,10,15,30,60,120,240,480,1440,2880] | [optional] 
-**Title** | **string** |  | [optional] 
-**Type** | **string** |  | [optional] 
+**Title** | **string** | Task title | [optional] 
+**Description** | **string** | Task description | [optional] 
+**Type** | **string** | Task type | [optional] 
+**Priority** | **string** | Task priority | [optional] 
+**Completed** | **bool** | Whether task is completed | [optional] 
+**CompletionTime** | **string** | Completion timestamp (ISO-8601) | [optional] 
+**DueTime** | **string** | Due date/time (ISO-8601) | [optional] 
+**RemindTimeMins** | **int** | Value in minutes before start_date to show pop-up reminder. | [optional] 
+**AssignedToUserId** | **string** | Assigned user ID | 
+**ContactId** | **string** | Associated contact ID | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

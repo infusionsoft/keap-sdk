@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**email** | **String** |  | [optional] 
-**field** | **String** |  | [optional] 
-**optInReason** | **String** |  | [optional] 
+**email** | **String** | Email address | [optional] 
+**field** | **String** | Email address slot | [optional] 
+**optInReason** | **String** | Reason for opting in | [optional] 
 
 
 

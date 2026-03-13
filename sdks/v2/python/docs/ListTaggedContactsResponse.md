@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**contacts** | [**List[BasicContact]**](BasicContact.md) |  | [optional] 
+**contacts** | [**List[TaggedContact]**](TaggedContact.md) |  | [optional] 
 **next_page_token** | **str** |  | [optional] 
 
 ## Example

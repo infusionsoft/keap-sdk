@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**emails** | [**[EmailSent]**](EmailSent.md) |  | [optional] 
+**emails** | [**[EmailSent]**](EmailSent.md) | List of sent emails | [optional] 
 **nextPageToken** | **String** |  | [optional] 
 
 

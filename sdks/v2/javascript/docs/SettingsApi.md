@@ -1,12 +1,12 @@
 # KeapCoreServiceV2Sdk.SettingsApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getApplicationConfigurations**](SettingsApi.md#getApplicationConfigurations) | **GET** /v2/settings/applications:getConfiguration | Get Application Configuration
-[**getContactOptionTypes**](SettingsApi.md#getContactOptionTypes) | **GET** /v2/settings/contactOptionTypes | Get Contact Option types
-[**isApplicationEnabled**](SettingsApi.md#isApplicationEnabled) | **GET** /v2/settings/applications:isEnabled | Get Application Status
+[**getApplicationConfigurations**](SettingsApi.md#getApplicationConfigurations) | **GET** /rest/v2/settings/applications:getConfiguration | Get Application Configuration
+[**getContactOptionTypes**](SettingsApi.md#getContactOptionTypes) | **GET** /rest/v2/settings/contactOptionTypes | Get Contact Option types
+[**isApplicationEnabled**](SettingsApi.md#isApplicationEnabled) | **GET** /rest/v2/settings/applications:isEnabled | Get Application Status
 
 
 
@@ -22,6 +22,10 @@ Get configuration values for the application instance.
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.SettingsApi();
 let opts = {
@@ -48,7 +52,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -68,6 +72,10 @@ Gets a list of Contact Option types.
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.SettingsApi();
 apiInstance.getContactOptionTypes().then((data) => {
@@ -88,7 +96,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -108,6 +116,10 @@ Check if the application is enabled or not
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.SettingsApi();
 apiInstance.isApplicationEnabled().then((data) => {
@@ -128,7 +140,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 

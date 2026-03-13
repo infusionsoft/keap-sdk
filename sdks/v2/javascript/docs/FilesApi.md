@@ -1,21 +1,21 @@
 # KeapCoreServiceV2Sdk.FilesApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createFile**](FilesApi.md#createFile) | **POST** /v2/files | Create a file
-[**deleteFile**](FilesApi.md#deleteFile) | **DELETE** /v2/files/{file_id} | Delete a file
-[**getFile**](FilesApi.md#getFile) | **GET** /v2/files/{file_id} | Retrieve a file
-[**getFileData**](FilesApi.md#getFileData) | **GET** /v2/files/{file_id}:data | Retrieve a file&#39;s data
-[**listFiles**](FilesApi.md#listFiles) | **GET** /v2/files | List all files
-[**updateFile**](FilesApi.md#updateFile) | **POST** /v2/files/{file_id} | Update a file
+[**createFile**](FilesApi.md#createFile) | **POST** /rest/v2/files | Create a file
+[**deleteFile**](FilesApi.md#deleteFile) | **DELETE** /rest/v2/files/{file_id} | Delete a file
+[**getFile**](FilesApi.md#getFile) | **GET** /rest/v2/files/{file_id} | Retrieve a file
+[**getFileData**](FilesApi.md#getFileData) | **GET** /rest/v2/files/{file_id}:data | Retrieve a file&#39;s data
+[**listFiles**](FilesApi.md#listFiles) | **GET** /rest/v2/files | List all files
+[**updateFile**](FilesApi.md#updateFile) | **POST** /rest/v2/files/{file_id} | Update a file
 
 
 
 ## createFile
 
-> FileMetadata createFile(file, fileAssociation, fileName, isPublic, opts)
+> FileMetadata createFile(file, fileName, isPublic, fileAssociation, file2, fileName2, isPublic2, fileAssociation2, opts)
 
 Create a file
 
@@ -25,16 +25,25 @@ Creates a file and uploads it
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.FilesApi();
-let file = "file_example"; // String | File to upload. This is a file sent as multi-part (not a string)
-let fileAssociation = "fileAssociation_example"; // String | File association
+let file = "/path/to/file"; // File | File to upload. This is a file sent as multi-part (not a string)
 let fileName = "fileName_example"; // String | File name
 let isPublic = true; // Boolean | Is public
+let fileAssociation = "fileAssociation_example"; // String | File association
+let file2 = "/path/to/file"; // File | File to upload
+let fileName2 = "fileName_example"; // String | File name
+let isPublic2 = "isPublic_example"; // String | Is public
+let fileAssociation2 = "fileAssociation_example"; // String | File association
 let opts = {
-  'contactId': "contactId_example" // String | Contact ID
+  'contactId': "contactId_example", // String | Contact ID
+  'contactId2': "contactId_example" // String | Contact ID. Required if the `file_association` is CONTACT
 };
-apiInstance.createFile(file, fileAssociation, fileName, isPublic, opts).then((data) => {
+apiInstance.createFile(file, fileName, isPublic, fileAssociation, file2, fileName2, isPublic2, fileAssociation2, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -47,11 +56,16 @@ apiInstance.createFile(file, fileAssociation, fileName, isPublic, opts).then((da
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **file** | **String**| File to upload. This is a file sent as multi-part (not a string) | 
- **fileAssociation** | **String**| File association | 
+ **file** | **File**| File to upload. This is a file sent as multi-part (not a string) | 
  **fileName** | **String**| File name | 
  **isPublic** | **Boolean**| Is public | 
+ **fileAssociation** | **String**| File association | 
+ **file2** | **File**| File to upload | 
+ **fileName2** | **String**| File name | 
+ **isPublic2** | **String**| Is public | 
+ **fileAssociation2** | **String**| File association | 
  **contactId** | **String**| Contact ID | [optional] 
+ **contactId2** | **String**| Contact ID. Required if the &#x60;file_association&#x60; is CONTACT | [optional] 
 
 ### Return type
 
@@ -59,7 +73,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -79,9 +93,13 @@ Deletes a specified file
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.FilesApi();
-let fileId = "fileId_example"; // String | file_id
+let fileId = "fileId_example"; // String | 
 apiInstance.deleteFile(fileId).then(() => {
   console.log('API called successfully.');
 }, (error) => {
@@ -95,7 +113,7 @@ apiInstance.deleteFile(fileId).then(() => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **fileId** | **String**| file_id | 
+ **fileId** | **String**|  | 
 
 ### Return type
 
@@ -103,7 +121,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -123,9 +141,13 @@ Retrieves a file
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.FilesApi();
-let fileId = "fileId_example"; // String | file_id
+let fileId = "fileId_example"; // String | 
 apiInstance.getFile(fileId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -139,7 +161,7 @@ apiInstance.getFile(fileId).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **fileId** | **String**| file_id | 
+ **fileId** | **String**|  | 
 
 ### Return type
 
@@ -147,7 +169,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -167,9 +189,13 @@ Retrieves a file&#39;s data
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.FilesApi();
-let fileId = "fileId_example"; // String | file_id
+let fileId = "fileId_example"; // String | 
 apiInstance.getFileData(fileId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -183,7 +209,7 @@ apiInstance.getFileData(fileId).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **fileId** | **String**| file_id | 
+ **fileId** | **String**|  | 
 
 ### Return type
 
@@ -191,7 +217,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -211,6 +237,10 @@ Retrieves a list of files
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.FilesApi();
 let opts = {
@@ -243,7 +273,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -263,14 +293,21 @@ Updates a file. Note that this endpoint is using a POST method instead of PATCH.
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.FilesApi();
-let fileId = "fileId_example"; // String | file_id
+let fileId = "fileId_example"; // String | 
 let opts = {
-  'file': "file_example", // String | File to upload. This is a file sent as multi-part (not a string)
+  'updateMask': "updateMask_example", // String | Update Mask
+  'file': "/path/to/file", // File | File to upload. This is a file sent as multi-part (not a string)
   'fileName': "fileName_example", // String | File name
   'isPublic': true, // Boolean | Is public
-  'updateMask': "updateMask_example" // String | Update Mask
+  'file2': "/path/to/file", // File | File to upload
+  'fileName2': "fileName_example", // String | File name
+  'isPublic2': true // Boolean | Is public
 };
 apiInstance.updateFile(fileId, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -285,11 +322,14 @@ apiInstance.updateFile(fileId, opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **fileId** | **String**| file_id | 
- **file** | **String**| File to upload. This is a file sent as multi-part (not a string) | [optional] 
+ **fileId** | **String**|  | 
+ **updateMask** | **String**| Update Mask | [optional] 
+ **file** | **File**| File to upload. This is a file sent as multi-part (not a string) | [optional] 
  **fileName** | **String**| File name | [optional] 
  **isPublic** | **Boolean**| Is public | [optional] 
- **updateMask** | **String**| Update Mask | [optional] 
+ **file2** | **File**| File to upload | [optional] 
+ **fileName2** | **String**| File name | [optional] 
+ **isPublic2** | **Boolean**| Is public | [optional] 
 
 ### Return type
 
@@ -297,7 +337,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 

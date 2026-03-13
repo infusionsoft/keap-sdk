@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** |  | [optional] 
-**type** | **str** |  | 
+**name** | **str** | Social account username or handle | [optional] 
+**type** | **str** | Social account type | 
 
 ## Example
 

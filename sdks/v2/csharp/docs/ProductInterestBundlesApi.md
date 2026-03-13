@@ -1,17 +1,17 @@
 # Keap.Core.V2.Api.ProductInterestBundlesApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**AddProductInterest**](ProductInterestBundlesApi.md#addproductinterest) | **POST** /v2/productInterestBundles/{id}/interests | Create a Product Interest in an existing Bundle |
-| [**CreateProductInterestBundle**](ProductInterestBundlesApi.md#createproductinterestbundle) | **POST** /v2/productInterestBundles | Create a Product Interest Bundle |
-| [**DeleteProductInterestBundle**](ProductInterestBundlesApi.md#deleteproductinterestbundle) | **DELETE** /v2/productInterestBundles/{id} | Delete a Product Interest Bundle |
-| [**GetProductInterestBundle**](ProductInterestBundlesApi.md#getproductinterestbundle) | **GET** /v2/productInterestBundles/{id} | Get a Product Interest Bundle |
-| [**ListProductInterestBundles**](ProductInterestBundlesApi.md#listproductinterestbundles) | **GET** /v2/productInterestBundles | List Product Interest Bundles |
-| [**RemoveProductInterest**](ProductInterestBundlesApi.md#removeproductinterest) | **DELETE** /v2/productInterestBundles/{id}/interests/{interest_id} | Delete a Product Interest from an existing Bundle |
-| [**UpdateProductInterest**](ProductInterestBundlesApi.md#updateproductinterest) | **PATCH** /v2/productInterestBundles/{id}/interests/{interest_id} | Update a Product Interest in an existing Bundle |
-| [**UpdateProductInterestBundle**](ProductInterestBundlesApi.md#updateproductinterestbundle) | **PATCH** /v2/productInterestBundles/{id} | Update a Product Interest Bundle |
+| [**AddProductInterest**](ProductInterestBundlesApi.md#addproductinterest) | **POST** /rest/v2/productInterestBundles/{id}/interests | Create a Product Interest in an existing Bundle |
+| [**CreateProductInterestBundle**](ProductInterestBundlesApi.md#createproductinterestbundle) | **POST** /rest/v2/productInterestBundles | Create a Product Interest Bundle |
+| [**DeleteProductInterestBundle**](ProductInterestBundlesApi.md#deleteproductinterestbundle) | **DELETE** /rest/v2/productInterestBundles/{id} | Delete a Product Interest Bundle |
+| [**GetProductInterestBundle**](ProductInterestBundlesApi.md#getproductinterestbundle) | **GET** /rest/v2/productInterestBundles/{id} | Get a Product Interest Bundle |
+| [**ListProductInterestBundles**](ProductInterestBundlesApi.md#listproductinterestbundles) | **GET** /rest/v2/productInterestBundles | List Product Interest Bundles |
+| [**RemoveProductInterest**](ProductInterestBundlesApi.md#removeproductinterest) | **DELETE** /rest/v2/productInterestBundles/{id}/interests/{interest_id} | Delete a Product Interest from an existing Bundle |
+| [**UpdateProductInterest**](ProductInterestBundlesApi.md#updateproductinterest) | **PATCH** /rest/v2/productInterestBundles/{id}/interests/{interest_id} | Update a Product Interest in an existing Bundle |
+| [**UpdateProductInterestBundle**](ProductInterestBundlesApi.md#updateproductinterestbundle) | **PATCH** /rest/v2/productInterestBundles/{id} | Update a Product Interest Bundle |
 
 <a id="addproductinterest"></a>
 # **AddProductInterest**
@@ -36,10 +36,13 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new ProductInterestBundlesApi(config);
-            var id = "id_example";  // string | id
-            var addProductInterestRequest = new AddProductInterestRequest(); // AddProductInterestRequest | request
+            var id = "id_example";  // string | 
+            var addProductInterestRequest = new AddProductInterestRequest(); // AddProductInterestRequest | 
 
             try
             {
@@ -82,8 +85,8 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **id** | **string** | id |  |
-| **addProductInterestRequest** | [**AddProductInterestRequest**](AddProductInterestRequest.md) | request |  |
+| **id** | **string** |  |  |
+| **addProductInterestRequest** | [**AddProductInterestRequest**](AddProductInterestRequest.md) |  |  |
 
 ### Return type
 
@@ -91,7 +94,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -103,9 +106,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -132,9 +139,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new ProductInterestBundlesApi(config);
-            var createProductInterestBundleRequest = new CreateProductInterestBundleRequest(); // CreateProductInterestBundleRequest | createProductInterestBundleRequest
+            var createProductInterestBundleRequest = new CreateProductInterestBundleRequest(); // CreateProductInterestBundleRequest | 
 
             try
             {
@@ -177,7 +187,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **createProductInterestBundleRequest** | [**CreateProductInterestBundleRequest**](CreateProductInterestBundleRequest.md) | createProductInterestBundleRequest |  |
+| **createProductInterestBundleRequest** | [**CreateProductInterestBundleRequest**](CreateProductInterestBundleRequest.md) |  |  |
 
 ### Return type
 
@@ -185,7 +195,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -197,9 +207,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -226,9 +240,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new ProductInterestBundlesApi(config);
-            var id = "id_example";  // string | id
+            var id = "id_example";  // string | 
 
             try
             {
@@ -267,7 +284,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **id** | **string** | id |  |
+| **id** | **string** |  |  |
 
 ### Return type
 
@@ -275,7 +292,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -287,10 +304,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -317,9 +337,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new ProductInterestBundlesApi(config);
-            var id = "id_example";  // string | id
+            var id = "id_example";  // string | 
 
             try
             {
@@ -362,7 +385,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **id** | **string** | id |  |
+| **id** | **string** |  |  |
 
 ### Return type
 
@@ -370,7 +393,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -382,10 +405,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -412,7 +438,10 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new ProductInterestBundlesApi(config);
             var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (String) `name`  (optional) 
             var orderBy = "orderBy_example";  // string? | Attribute and direction to order items. One of the following fields: - `name`  One of the following directions: - `asc` - `desc`  (optional) 
@@ -471,7 +500,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -483,10 +512,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -513,10 +545,13 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new ProductInterestBundlesApi(config);
-            var id = "id_example";  // string | id
-            var interestId = "interestId_example";  // string | interest_id
+            var id = "id_example";  // string | 
+            var interestId = "interestId_example";  // string | 
 
             try
             {
@@ -555,8 +590,8 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **id** | **string** | id |  |
-| **interestId** | **string** | interest_id |  |
+| **id** | **string** |  |  |
+| **interestId** | **string** |  |  |
 
 ### Return type
 
@@ -564,7 +599,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -576,16 +611,19 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="updateproductinterest"></a>
 # **UpdateProductInterest**
-> ProductInterest UpdateProductInterest (string id, string interestId, UpdateProductInterestRequest updateProductInterestRequest, List<string>? updateMask = null)
+> ProductInterest UpdateProductInterest (string id, string interestId, UpdateProductInterestRequest updateProductInterestRequest, string? updateMask = null)
 
 Update a Product Interest in an existing Bundle
 
@@ -606,12 +644,15 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new ProductInterestBundlesApi(config);
-            var id = "id_example";  // string | id
-            var interestId = "interestId_example";  // string | interest_id
-            var updateProductInterestRequest = new UpdateProductInterestRequest(); // UpdateProductInterestRequest | updateProductInterestRequest
-            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var id = "id_example";  // string | 
+            var interestId = "interestId_example";  // string | 
+            var updateProductInterestRequest = new UpdateProductInterestRequest(); // UpdateProductInterestRequest | 
+            var updateMask = "quantity,price,discount_percent";  // string? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -654,10 +695,10 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **id** | **string** | id |  |
-| **interestId** | **string** | interest_id |  |
-| **updateProductInterestRequest** | [**UpdateProductInterestRequest**](UpdateProductInterestRequest.md) | updateProductInterestRequest |  |
-| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **id** | **string** |  |  |
+| **interestId** | **string** |  |  |
+| **updateProductInterestRequest** | [**UpdateProductInterestRequest**](UpdateProductInterestRequest.md) |  |  |
+| **updateMask** | **string?** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 
@@ -665,7 +706,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -677,16 +718,19 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="updateproductinterestbundle"></a>
 # **UpdateProductInterestBundle**
-> ProductInterestBundle UpdateProductInterestBundle (string id, UpdateProductInterestBundleRequest updateProductInterestBundleRequest, List<string>? updateMask = null)
+> ProductInterestBundle UpdateProductInterestBundle (string id, UpdateProductInterestBundleRequest updateProductInterestBundleRequest, string? updateMask = null)
 
 Update a Product Interest Bundle
 
@@ -707,11 +751,14 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new ProductInterestBundlesApi(config);
-            var id = "id_example";  // string | id
-            var updateProductInterestBundleRequest = new UpdateProductInterestBundleRequest(); // UpdateProductInterestBundleRequest | updateProductInterestBundleRequest
-            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var id = "id_example";  // string | 
+            var updateProductInterestBundleRequest = new UpdateProductInterestBundleRequest(); // UpdateProductInterestBundleRequest | 
+            var updateMask = "name,description";  // string? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -754,9 +801,9 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **id** | **string** | id |  |
-| **updateProductInterestBundleRequest** | [**UpdateProductInterestBundleRequest**](UpdateProductInterestBundleRequest.md) | updateProductInterestBundleRequest |  |
-| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **id** | **string** |  |  |
+| **updateProductInterestBundleRequest** | [**UpdateProductInterestBundleRequest**](UpdateProductInterestBundleRequest.md) |  |  |
+| **updateMask** | **string?** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 
@@ -764,7 +811,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -776,10 +823,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -6,8 +6,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **code** | **str** |  | [optional] 
-**country** | **str** |  | [optional] 
 **name** | **str** |  | [optional] 
+**country** | **str** |  | [optional] 
 
 ## Example
 

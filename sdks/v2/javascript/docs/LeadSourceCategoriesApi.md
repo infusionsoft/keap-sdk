@@ -1,14 +1,14 @@
 # KeapCoreServiceV2Sdk.LeadSourceCategoriesApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createLeadSourceCategory**](LeadSourceCategoriesApi.md#createLeadSourceCategory) | **POST** /v2/leadSourceCategories | Create a Lead Source Category
-[**deleteLeadSourceCategory**](LeadSourceCategoriesApi.md#deleteLeadSourceCategory) | **DELETE** /v2/leadSourceCategories/{lead_source_category_id} | Delete a Lead Source Category
-[**getLeadSourceCategory**](LeadSourceCategoriesApi.md#getLeadSourceCategory) | **GET** /v2/leadSourceCategories/{lead_source_category_id} | Retrieve a Lead Source Category
-[**listLeadSourceCategories**](LeadSourceCategoriesApi.md#listLeadSourceCategories) | **GET** /v2/leadSourceCategories | List Lead Source Categories
-[**updateLeadSourceCategory**](LeadSourceCategoriesApi.md#updateLeadSourceCategory) | **PATCH** /v2/leadSourceCategories/{lead_source_category_id} | Update a Lead Source Category
+[**createLeadSourceCategory**](LeadSourceCategoriesApi.md#createLeadSourceCategory) | **POST** /rest/v2/leadSourceCategories | Create a Lead Source Category
+[**deleteLeadSourceCategory**](LeadSourceCategoriesApi.md#deleteLeadSourceCategory) | **DELETE** /rest/v2/leadSourceCategories/{lead_source_category_id} | Delete a Lead Source Category
+[**getLeadSourceCategory**](LeadSourceCategoriesApi.md#getLeadSourceCategory) | **GET** /rest/v2/leadSourceCategories/{lead_source_category_id} | Retrieve a Lead Source Category
+[**listLeadSourceCategories**](LeadSourceCategoriesApi.md#listLeadSourceCategories) | **GET** /rest/v2/leadSourceCategories | List Lead Source Categories
+[**updateLeadSourceCategory**](LeadSourceCategoriesApi.md#updateLeadSourceCategory) | **PATCH** /rest/v2/leadSourceCategories/{lead_source_category_id} | Update a Lead Source Category
 
 
 
@@ -18,15 +18,19 @@ Method | HTTP request | Description
 
 Create a Lead Source Category
 
-Creates a new Lead Source Category
+Creates a new Lead Source Category.
 
 ### Example
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.LeadSourceCategoriesApi();
-let createUpdateLeadSourceCategoryRequest = new KeapCoreServiceV2Sdk.CreateUpdateLeadSourceCategoryRequest(); // CreateUpdateLeadSourceCategoryRequest | The request object to create a new lead source category
+let createUpdateLeadSourceCategoryRequest = new KeapCoreServiceV2Sdk.CreateUpdateLeadSourceCategoryRequest(); // CreateUpdateLeadSourceCategoryRequest | 
 apiInstance.createLeadSourceCategory(createUpdateLeadSourceCategoryRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -40,7 +44,7 @@ apiInstance.createLeadSourceCategory(createUpdateLeadSourceCategoryRequest).then
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createUpdateLeadSourceCategoryRequest** | [**CreateUpdateLeadSourceCategoryRequest**](CreateUpdateLeadSourceCategoryRequest.md)| The request object to create a new lead source category | 
+ **createUpdateLeadSourceCategoryRequest** | [**CreateUpdateLeadSourceCategoryRequest**](CreateUpdateLeadSourceCategoryRequest.md)|  | 
 
 ### Return type
 
@@ -48,7 +52,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -68,6 +72,10 @@ Deletes the specified Lead Source Category
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.LeadSourceCategoriesApi();
 let leadSourceCategoryId = "leadSourceCategoryId_example"; // String | The ID of a lead source category
@@ -92,7 +100,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -112,6 +120,10 @@ Retrieves a single Lead Source Category for a given ID
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.LeadSourceCategoriesApi();
 let leadSourceCategoryId = "leadSourceCategoryId_example"; // String | The ID of a lead source category
@@ -136,7 +148,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -156,6 +168,10 @@ Retrieves a list of Lead Source Categories
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.LeadSourceCategoriesApi();
 let opts = {
@@ -188,7 +204,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -208,12 +224,16 @@ Updates a Lead Source Category
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.LeadSourceCategoriesApi();
 let leadSourceCategoryId = "leadSourceCategoryId_example"; // String | The ID of a lead source category
-let createUpdateLeadSourceCategoryRequest = new KeapCoreServiceV2Sdk.CreateUpdateLeadSourceCategoryRequest(); // CreateUpdateLeadSourceCategoryRequest | The request object to update a lead source category
+let createUpdateLeadSourceCategoryRequest = new KeapCoreServiceV2Sdk.CreateUpdateLeadSourceCategoryRequest(); // CreateUpdateLeadSourceCategoryRequest | 
 let opts = {
-  'updateMask': ["null"] // [String] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+  'updateMask': "updateMask_example" // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
 apiInstance.updateLeadSourceCategory(leadSourceCategoryId, createUpdateLeadSourceCategoryRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -229,8 +249,8 @@ apiInstance.updateLeadSourceCategory(leadSourceCategoryId, createUpdateLeadSourc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **leadSourceCategoryId** | **String**| The ID of a lead source category | 
- **createUpdateLeadSourceCategoryRequest** | [**CreateUpdateLeadSourceCategoryRequest**](CreateUpdateLeadSourceCategoryRequest.md)| The request object to update a lead source category | 
- **updateMask** | [**[String]**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **createUpdateLeadSourceCategoryRequest** | [**CreateUpdateLeadSourceCategoryRequest**](CreateUpdateLeadSourceCategoryRequest.md)|  | 
+ **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 
@@ -238,7 +258,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 

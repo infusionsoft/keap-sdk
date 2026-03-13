@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**name** | **String** |  |  [optional] |
+|**name** | **String** | New name for the category |  [optional] |
 
 
 ## Implemented Interfaces

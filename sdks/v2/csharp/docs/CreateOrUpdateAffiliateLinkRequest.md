@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Name** | **string** | The Affiliate Link Name | 
+**Code** | **string** | Code | 
 **AffiliateId** | **string** | The AffiliateId | [optional] 
-**Code** | **string** | Code | [optional] 
-**Name** | **string** | The Affiliate Link Name | [optional] 
-**ProgramIds** | **List&lt;string&gt;** |  | [optional] 
-**WebsiteAddress** | **string** | Website Address | [optional] 
+**WebsiteAddress** | **string** | Website Address | 
+**ProgramIds** | **List&lt;string&gt;** | Program IDs to associate | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**category** | **String** |  | [optional] 
-**contactId** | **String** |  | [optional] 
-**createdById** | **String** |  | [optional] 
-**createdTime** | **String** |  | [optional] 
-**fileBoxType** | **String** |  | [optional] 
-**fileName** | **String** |  | [optional] 
-**fileSize** | **Number** |  | [optional] 
-**id** | **String** |  | [optional] 
-**isPublic** | **Boolean** |  | [optional] 
-**remoteFileKey** | **String** |  | [optional] 
-**updatedTime** | **String** |  | [optional] 
+**id** | **String** | File ID | [optional] 
+**category** | **String** | File category | [optional] 
+**fileName** | **String** | File name with extension | [optional] 
+**isPublic** | **Boolean** | Whether file is publicly accessible | [optional] 
+**contactId** | **String** | Associated contact ID | [optional] 
+**createdById** | **String** | ID of user who created the file | [optional] 
+**remoteFileKey** | **String** | Remote storage key | [optional] 
+**fileBoxType** | **String** | File box type | [optional] 
+**fileSize** | **Number** | File size in bytes | [optional] 
+**createdTime** | **String** | Creation timestamp (ISO-8601) | [optional] 
+**updatedTime** | **String** | Last update timestamp (ISO-8601) | [optional] 
 
 
 

@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**orders** | [**List[OrderV2]**](OrderV2.md) |  | [optional] 
 **next_page_token** | **str** |  | [optional] 
-**orders** | [**List[Order]**](Order.md) |  | [optional] 
 
 ## Example
 

@@ -1,15 +1,15 @@
 # keap_core_v2_client.LeadSourceRecurringExpensesApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_lead_source_recurring_expense**](LeadSourceRecurringExpensesApi.md#create_lead_source_recurring_expense) | **POST** /v2/leadSources/{lead_source_id}/recurringExpenses | Create a Lead Source Recurring Expense
-[**delete_lead_source_recurring_expense**](LeadSourceRecurringExpensesApi.md#delete_lead_source_recurring_expense) | **DELETE** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Delete a Lead Source Recurring Expense
-[**get_lead_source_recurring_expense**](LeadSourceRecurringExpensesApi.md#get_lead_source_recurring_expense) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Retrieve a Lead Source Recurring Expense
-[**list_expenses_incurred_from_lead_source_recurring_expense**](LeadSourceRecurringExpensesApi.md#list_expenses_incurred_from_lead_source_recurring_expense) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id}/expenses | Retrieves a list of expenses incurred from a recurring expense
-[**list_lead_source_recurring_expenses**](LeadSourceRecurringExpensesApi.md#list_lead_source_recurring_expenses) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses | Retrieves a list of lead source recurring expenses
-[**update_lead_source_recurring_expense**](LeadSourceRecurringExpensesApi.md#update_lead_source_recurring_expense) | **PATCH** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Update a Lead Source Recurring Expense
+[**create_lead_source_recurring_expense**](LeadSourceRecurringExpensesApi.md#create_lead_source_recurring_expense) | **POST** /rest/v2/leadSources/{lead_source_id}/recurringExpenses | Create a Lead Source Recurring Expense
+[**delete_lead_source_recurring_expense**](LeadSourceRecurringExpensesApi.md#delete_lead_source_recurring_expense) | **DELETE** /rest/v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Delete a Lead Source Recurring Expense
+[**get_lead_source_recurring_expense**](LeadSourceRecurringExpensesApi.md#get_lead_source_recurring_expense) | **GET** /rest/v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Retrieve a Lead Source Recurring Expense
+[**list_expenses_incurred_from_lead_source_recurring_expense**](LeadSourceRecurringExpensesApi.md#list_expenses_incurred_from_lead_source_recurring_expense) | **GET** /rest/v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id}/expenses | Retrieves a list of expenses incurred from a recurring expense
+[**list_lead_source_recurring_expenses**](LeadSourceRecurringExpensesApi.md#list_lead_source_recurring_expenses) | **GET** /rest/v2/leadSources/{lead_source_id}/recurringExpenses | Retrieves a list of lead source recurring expenses
+[**update_lead_source_recurring_expense**](LeadSourceRecurringExpensesApi.md#update_lead_source_recurring_expense) | **PATCH** /rest/v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Update a Lead Source Recurring Expense
 
 
 # **create_lead_source_recurring_expense**
@@ -21,6 +21,7 @@ Creates a new Lead Source Recurring Expense
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
@@ -29,18 +30,24 @@ from keap_core_v2_client.models.lead_source_recurring_expense import LeadSourceR
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.LeadSourceRecurringExpensesApi(api_client)
     lead_source_id = 'lead_source_id_example' # str | The ID of the lead source this recurring expense belongs to
-    create_lead_source_recurring_expense_request = keap_core_v2_client.CreateLeadSourceRecurringExpenseRequest() # CreateLeadSourceRecurringExpenseRequest | The request object to create a new lead source recurring expense
+    create_lead_source_recurring_expense_request = keap_core_v2_client.CreateLeadSourceRecurringExpenseRequest() # CreateLeadSourceRecurringExpenseRequest | 
 
     try:
         # Create a Lead Source Recurring Expense
@@ -58,7 +65,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **lead_source_id** | **str**| The ID of the lead source this recurring expense belongs to | 
- **create_lead_source_recurring_expense_request** | [**CreateLeadSourceRecurringExpenseRequest**](CreateLeadSourceRecurringExpenseRequest.md)| The request object to create a new lead source recurring expense | 
+ **create_lead_source_recurring_expense_request** | [**CreateLeadSourceRecurringExpenseRequest**](CreateLeadSourceRecurringExpenseRequest.md)|  | 
 
 ### Return type
 
@@ -66,7 +73,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -81,7 +88,10 @@ No authorization required
 **400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -94,18 +104,25 @@ Deletes a new Lead Source Recurring Expense that belongs to a Lead Source
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -135,7 +152,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -147,10 +164,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No Content |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -163,6 +183,7 @@ Retrieves a Lead Source Recurring Expense using leadSourceId and leadSourceRecur
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
@@ -170,12 +191,18 @@ from keap_core_v2_client.models.lead_source_recurring_expense import LeadSourceR
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -207,7 +234,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -219,10 +246,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -235,6 +265,7 @@ Retrieves a list of expenses incurred from a recurring expense
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
@@ -242,12 +273,18 @@ from keap_core_v2_client.models.list_lead_source_expenses_response import ListLe
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -287,7 +324,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -303,7 +340,9 @@ No authorization required
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -316,6 +355,7 @@ Retrieves a list of recurring expenses with lead_source_id and optional 'filter'
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
@@ -323,12 +363,18 @@ from keap_core_v2_client.models.list_lead_source_recurring_expenses_response imp
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -366,7 +412,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -382,7 +428,9 @@ No authorization required
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -395,6 +443,7 @@ Updates a Lead Source Recurring Expense
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
@@ -403,20 +452,26 @@ from keap_core_v2_client.models.lead_source_recurring_expense_update_request imp
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.LeadSourceRecurringExpensesApi(api_client)
     lead_source_id = 'lead_source_id_example' # str | The ID of the lead source this recurring expense belongs to
     lead_source_recurring_expense_id = 'lead_source_recurring_expense_id_example' # str | The ID of a lead source recurring expense
-    lead_source_recurring_expense_update_request = keap_core_v2_client.LeadSourceRecurringExpenseUpdateRequest() # LeadSourceRecurringExpenseUpdateRequest | The request object to update a lead source recurring expense
-    update_mask = ['update_mask_example'] # List[str] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+    lead_source_recurring_expense_update_request = keap_core_v2_client.LeadSourceRecurringExpenseUpdateRequest() # LeadSourceRecurringExpenseUpdateRequest | 
+    update_mask = 'update_mask_example' # str | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
 
     try:
         # Update a Lead Source Recurring Expense
@@ -435,8 +490,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **lead_source_id** | **str**| The ID of the lead source this recurring expense belongs to | 
  **lead_source_recurring_expense_id** | **str**| The ID of a lead source recurring expense | 
- **lead_source_recurring_expense_update_request** | [**LeadSourceRecurringExpenseUpdateRequest**](LeadSourceRecurringExpenseUpdateRequest.md)| The request object to update a lead source recurring expense | 
- **update_mask** | [**List[str]**](str.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **lead_source_recurring_expense_update_request** | [**LeadSourceRecurringExpenseUpdateRequest**](LeadSourceRecurringExpenseUpdateRequest.md)|  | 
+ **update_mask** | **str**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 
@@ -444,7 +499,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -460,7 +515,9 @@ No authorization required
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

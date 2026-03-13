@@ -25,9 +25,9 @@ export class CampaignApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Adds a list of contacts to a campaign sequence Response contains a map of the provided list of Contact Ids related to their individual result.
      * Add Contacts to Campaign Sequence
-     * @param campaignId campaign_id
-     * @param sequenceId sequence_id
-     * @param addContactsToSequenceRequest addContactsToSequenceRequest
+     * @param campaignId 
+     * @param sequenceId 
+     * @param addContactsToSequenceRequest 
      */
     public async addContactsToCampaignSequence(campaignId: string, sequenceId: string, addContactsToSequenceRequest: AddContactsToSequenceRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
@@ -51,7 +51,7 @@ export class CampaignApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/v2/campaigns/{campaign_id}/sequences/{sequence_id}:addContacts'
+        const localVarPath = '/rest/v2/campaigns/{campaign_id}/sequences/{sequence_id}:addContacts'
             .replace('{' + 'campaign_id' + '}', encodeURIComponent(String(campaignId)))
             .replace('{' + 'sequence_id' + '}', encodeURIComponent(String(sequenceId)));
 
@@ -71,6 +71,12 @@ export class CampaignApiRequestFactory extends BaseAPIRequestFactory {
         );
         requestContext.setBody(serializedBody);
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -83,7 +89,7 @@ export class CampaignApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Retrieves a single campaign
      * Retrieve a Campaign
-     * @param campaignId campaign_id
+     * @param campaignId 
      */
     public async getCampaign(campaignId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
@@ -95,7 +101,7 @@ export class CampaignApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/v2/campaigns/{campaign_id}'
+        const localVarPath = '/rest/v2/campaigns/{campaign_id}'
             .replace('{' + 'campaign_id' + '}', encodeURIComponent(String(campaignId)));
 
         // Make Request Context
@@ -103,6 +109,12 @@ export class CampaignApiRequestFactory extends BaseAPIRequestFactory {
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
 
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -115,7 +127,7 @@ export class CampaignApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Retrieves a list of Goals (published) for a Campaign
      * Retrieve a list of Goals for a Campaign
-     * @param campaignId campaign_id
+     * @param campaignId 
      */
     public async getCampaignGoals(campaignId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
@@ -127,7 +139,7 @@ export class CampaignApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/v2/campaigns/{campaign_id}/goals'
+        const localVarPath = '/rest/v2/campaigns/{campaign_id}/goals'
             .replace('{' + 'campaign_id' + '}', encodeURIComponent(String(campaignId)));
 
         // Make Request Context
@@ -135,6 +147,12 @@ export class CampaignApiRequestFactory extends BaseAPIRequestFactory {
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
 
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -147,7 +165,7 @@ export class CampaignApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Retrieves a list of Sequences (published) for a Campaign
      * Retrieve a list of Sequences for a Campaign
-     * @param campaignId campaign_id
+     * @param campaignId 
      */
     public async getCampaignSequences(campaignId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
@@ -159,7 +177,7 @@ export class CampaignApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/v2/campaigns/{campaign_id}/sequences'
+        const localVarPath = '/rest/v2/campaigns/{campaign_id}/sequences'
             .replace('{' + 'campaign_id' + '}', encodeURIComponent(String(campaignId)));
 
         // Make Request Context
@@ -167,6 +185,12 @@ export class CampaignApiRequestFactory extends BaseAPIRequestFactory {
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
 
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -183,18 +207,16 @@ export class CampaignApiRequestFactory extends BaseAPIRequestFactory {
      * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;publisheddate&#x60; - &#x60;id&#x60; - &#x60;completedContactCount&#x60; - &#x60;activeContacts&#x60; - &#x60;datecreated&#x60; - &#x60;lastupdated&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param pageSize Total number of items to return per page
      * @param pageToken Page token
-     * @param stats 
      */
-    public async listCampaigns(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, stats?: boolean, _options?: Configuration): Promise<RequestContext> {
+    public async listCampaigns(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
 
 
 
 
-
         // Path Params
-        const localVarPath = '/v2/campaigns';
+        const localVarPath = '/rest/v2/campaigns';
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
@@ -220,12 +242,13 @@ export class CampaignApiRequestFactory extends BaseAPIRequestFactory {
             requestContext.setQueryParam("page_token", ObjectSerializer.serialize(pageToken, "string", ""));
         }
 
-        // Query Params
-        if (stats !== undefined) {
-            requestContext.setQueryParam("stats", ObjectSerializer.serialize(stats, "boolean", ""));
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
         }
-
-
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -238,9 +261,9 @@ export class CampaignApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Removes a list of contacts from a campaign sequence Response contains a map of the provided list of Contact Ids related to their individual result.
      * Remove Contacts from Campaign Sequence
-     * @param campaignId campaign_id
-     * @param sequenceId sequence_id
-     * @param removeContactsFromSequenceRequest removeContactsFromSequenceRequest
+     * @param campaignId 
+     * @param sequenceId 
+     * @param removeContactsFromSequenceRequest 
      */
     public async removeContactsFromCampaignSequence(campaignId: string, sequenceId: string, removeContactsFromSequenceRequest: RemoveContactsFromSequenceRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
@@ -264,7 +287,7 @@ export class CampaignApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/v2/campaigns/{campaign_id}/sequences/{sequence_id}:removeContacts'
+        const localVarPath = '/rest/v2/campaigns/{campaign_id}/sequences/{sequence_id}:removeContacts'
             .replace('{' + 'campaign_id' + '}', encodeURIComponent(String(campaignId)))
             .replace('{' + 'sequence_id' + '}', encodeURIComponent(String(sequenceId)));
 
@@ -284,6 +307,12 @@ export class CampaignApiRequestFactory extends BaseAPIRequestFactory {
         );
         requestContext.setBody(serializedBody);
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -313,6 +342,13 @@ export class CampaignApiResponseProcessor {
             ) as AddContactsToSequenceResponse;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -327,12 +363,33 @@ export class CampaignApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Forbidden", body, response.headers);
         }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -363,6 +420,13 @@ export class CampaignApiResponseProcessor {
             ) as Campaign;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -384,12 +448,26 @@ export class CampaignApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -420,6 +498,13 @@ export class CampaignApiResponseProcessor {
             ) as ListCampaignGoalsResponse;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -441,12 +526,26 @@ export class CampaignApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -477,6 +576,13 @@ export class CampaignApiResponseProcessor {
             ) as ListCampaignSequenceResponse;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -498,12 +604,26 @@ export class CampaignApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -534,6 +654,13 @@ export class CampaignApiResponseProcessor {
             ) as ListCampaignsResponse;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -555,12 +682,26 @@ export class CampaignApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -591,6 +732,13 @@ export class CampaignApiResponseProcessor {
             ) as RemoveContactsFromSequenceResponse;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -605,12 +753,33 @@ export class CampaignApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Forbidden", body, response.headers);
         }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml

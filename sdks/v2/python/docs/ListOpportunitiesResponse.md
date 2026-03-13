@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**next_page_token** | **str** |  | [optional] 
 **opportunities** | [**List[RestV2Opportunity]**](RestV2Opportunity.md) |  | [optional] 
+**next_page_token** | **str** |  | [optional] 
 
 ## Example
 

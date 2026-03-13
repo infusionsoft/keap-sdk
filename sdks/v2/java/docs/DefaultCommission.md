@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**dollarAmount** | **Double** |  |  [optional] |
-|**percentage** | **Double** |  |  [optional] |
+|**percentage** | **Double** | Percentage commission (0-100) |  [optional] |
+|**dollarAmount** | **Double** | Fixed dollar amount commission |  [optional] |
 
 
 ## Implemented Interfaces

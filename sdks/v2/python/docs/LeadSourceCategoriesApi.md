@@ -1,14 +1,14 @@
 # keap_core_v2_client.LeadSourceCategoriesApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_lead_source_category**](LeadSourceCategoriesApi.md#create_lead_source_category) | **POST** /v2/leadSourceCategories | Create a Lead Source Category
-[**delete_lead_source_category**](LeadSourceCategoriesApi.md#delete_lead_source_category) | **DELETE** /v2/leadSourceCategories/{lead_source_category_id} | Delete a Lead Source Category
-[**get_lead_source_category**](LeadSourceCategoriesApi.md#get_lead_source_category) | **GET** /v2/leadSourceCategories/{lead_source_category_id} | Retrieve a Lead Source Category
-[**list_lead_source_categories**](LeadSourceCategoriesApi.md#list_lead_source_categories) | **GET** /v2/leadSourceCategories | List Lead Source Categories
-[**update_lead_source_category**](LeadSourceCategoriesApi.md#update_lead_source_category) | **PATCH** /v2/leadSourceCategories/{lead_source_category_id} | Update a Lead Source Category
+[**create_lead_source_category**](LeadSourceCategoriesApi.md#create_lead_source_category) | **POST** /rest/v2/leadSourceCategories | Create a Lead Source Category
+[**delete_lead_source_category**](LeadSourceCategoriesApi.md#delete_lead_source_category) | **DELETE** /rest/v2/leadSourceCategories/{lead_source_category_id} | Delete a Lead Source Category
+[**get_lead_source_category**](LeadSourceCategoriesApi.md#get_lead_source_category) | **GET** /rest/v2/leadSourceCategories/{lead_source_category_id} | Retrieve a Lead Source Category
+[**list_lead_source_categories**](LeadSourceCategoriesApi.md#list_lead_source_categories) | **GET** /rest/v2/leadSourceCategories | List Lead Source Categories
+[**update_lead_source_category**](LeadSourceCategoriesApi.md#update_lead_source_category) | **PATCH** /rest/v2/leadSourceCategories/{lead_source_category_id} | Update a Lead Source Category
 
 
 # **create_lead_source_category**
@@ -16,10 +16,11 @@ Method | HTTP request | Description
 
 Create a Lead Source Category
 
-Creates a new Lead Source Category
+Creates a new Lead Source Category.
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
@@ -28,17 +29,23 @@ from keap_core_v2_client.models.lead_source_category import LeadSourceCategory
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.LeadSourceCategoriesApi(api_client)
-    create_update_lead_source_category_request = keap_core_v2_client.CreateUpdateLeadSourceCategoryRequest() # CreateUpdateLeadSourceCategoryRequest | The request object to create a new lead source category
+    create_update_lead_source_category_request = keap_core_v2_client.CreateUpdateLeadSourceCategoryRequest() # CreateUpdateLeadSourceCategoryRequest | 
 
     try:
         # Create a Lead Source Category
@@ -55,7 +62,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **create_update_lead_source_category_request** | [**CreateUpdateLeadSourceCategoryRequest**](CreateUpdateLeadSourceCategoryRequest.md)| The request object to create a new lead source category | 
+ **create_update_lead_source_category_request** | [**CreateUpdateLeadSourceCategoryRequest**](CreateUpdateLeadSourceCategoryRequest.md)|  | 
 
 ### Return type
 
@@ -63,7 +70,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -78,7 +85,10 @@ No authorization required
 **400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -91,18 +101,25 @@ Deletes the specified Lead Source Category
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -130,7 +147,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -142,10 +159,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No Content |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -158,6 +178,7 @@ Retrieves a single Lead Source Category for a given ID
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
@@ -165,12 +186,18 @@ from keap_core_v2_client.models.lead_source_category import LeadSourceCategory
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -200,7 +227,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -212,10 +239,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -228,6 +258,7 @@ Retrieves a list of Lead Source Categories
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
@@ -235,12 +266,18 @@ from keap_core_v2_client.models.list_lead_source_categories_response import List
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -276,7 +313,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -292,7 +329,9 @@ No authorization required
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -305,6 +344,7 @@ Updates a Lead Source Category
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
@@ -313,19 +353,25 @@ from keap_core_v2_client.models.lead_source_category import LeadSourceCategory
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.LeadSourceCategoriesApi(api_client)
     lead_source_category_id = 'lead_source_category_id_example' # str | The ID of a lead source category
-    create_update_lead_source_category_request = keap_core_v2_client.CreateUpdateLeadSourceCategoryRequest() # CreateUpdateLeadSourceCategoryRequest | The request object to update a lead source category
-    update_mask = ['update_mask_example'] # List[str] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+    create_update_lead_source_category_request = keap_core_v2_client.CreateUpdateLeadSourceCategoryRequest() # CreateUpdateLeadSourceCategoryRequest | 
+    update_mask = 'update_mask_example' # str | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
 
     try:
         # Update a Lead Source Category
@@ -343,8 +389,8 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **lead_source_category_id** | **str**| The ID of a lead source category | 
- **create_update_lead_source_category_request** | [**CreateUpdateLeadSourceCategoryRequest**](CreateUpdateLeadSourceCategoryRequest.md)| The request object to update a lead source category | 
- **update_mask** | [**List[str]**](str.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **create_update_lead_source_category_request** | [**CreateUpdateLeadSourceCategoryRequest**](CreateUpdateLeadSourceCategoryRequest.md)|  | 
+ **update_mask** | **str**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 
@@ -352,7 +398,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -368,7 +414,9 @@ No authorization required
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

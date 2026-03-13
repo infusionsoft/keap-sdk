@@ -1,13 +1,13 @@
 # KeapCoreServiceV2Sdk.AutomationCategoryApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createCategory**](AutomationCategoryApi.md#createCategory) | **POST** /v2/automationCategory | Create automation category
-[**deleteCategories**](AutomationCategoryApi.md#deleteCategories) | **DELETE** /v2/automationCategory | Delete automation category
-[**listCategories**](AutomationCategoryApi.md#listCategories) | **GET** /v2/automationCategory | List automation categories
-[**patchCategory**](AutomationCategoryApi.md#patchCategory) | **PATCH** /v2/automationCategory/{id} | Update automation category
+[**createCategory**](AutomationCategoryApi.md#createCategory) | **POST** /rest/v2/automationCategory | Create automation category
+[**deleteCategories**](AutomationCategoryApi.md#deleteCategories) | **DELETE** /rest/v2/automationCategory | Delete automation category
+[**listCategories**](AutomationCategoryApi.md#listCategories) | **GET** /rest/v2/automationCategory | List automation categories
+[**patchCategory**](AutomationCategoryApi.md#patchCategory) | **PATCH** /rest/v2/automationCategory/{id} | Update automation category
 
 
 
@@ -23,9 +23,13 @@ Creates a single automation category
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AutomationCategoryApi();
-let createAutomationCategoryRequest = new KeapCoreServiceV2Sdk.CreateAutomationCategoryRequest(); // CreateAutomationCategoryRequest | createAutomationCategoryRequest
+let createAutomationCategoryRequest = new KeapCoreServiceV2Sdk.CreateAutomationCategoryRequest(); // CreateAutomationCategoryRequest | 
 apiInstance.createCategory(createAutomationCategoryRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -39,7 +43,7 @@ apiInstance.createCategory(createAutomationCategoryRequest).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createAutomationCategoryRequest** | [**CreateAutomationCategoryRequest**](CreateAutomationCategoryRequest.md)| createAutomationCategoryRequest | 
+ **createAutomationCategoryRequest** | [**CreateAutomationCategoryRequest**](CreateAutomationCategoryRequest.md)|  | 
 
 ### Return type
 
@@ -47,7 +51,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -67,9 +71,13 @@ Deletes one or more automation categories based on the request parameters
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AutomationCategoryApi();
-let ids = [null]; // [Number] | ids
+let ids = [null]; // [Number] | 
 apiInstance.deleteCategories(ids).then(() => {
   console.log('API called successfully.');
 }, (error) => {
@@ -83,7 +91,7 @@ apiInstance.deleteCategories(ids).then(() => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ids** | [**[Number]**](Number.md)| ids | 
+ **ids** | [**[Number]**](Number.md)|  | 
 
 ### Return type
 
@@ -91,7 +99,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -111,6 +119,10 @@ Retrieves a list of automation categories
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AutomationCategoryApi();
 apiInstance.listCategories().then((data) => {
@@ -131,7 +143,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -151,10 +163,14 @@ Updates part of a single automation category
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AutomationCategoryApi();
-let id = "id_example"; // String | id
-let patchAutomationCategoryRequest = new KeapCoreServiceV2Sdk.PatchAutomationCategoryRequest(); // PatchAutomationCategoryRequest | patchAutomationCategoryRequest
+let id = "id_example"; // String | 
+let patchAutomationCategoryRequest = new KeapCoreServiceV2Sdk.PatchAutomationCategoryRequest(); // PatchAutomationCategoryRequest | 
 apiInstance.patchCategory(id, patchAutomationCategoryRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -168,8 +184,8 @@ apiInstance.patchCategory(id, patchAutomationCategoryRequest).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| id | 
- **patchAutomationCategoryRequest** | [**PatchAutomationCategoryRequest**](PatchAutomationCategoryRequest.md)| patchAutomationCategoryRequest | 
+ **id** | **String**|  | 
+ **patchAutomationCategoryRequest** | [**PatchAutomationCategoryRequest**](PatchAutomationCategoryRequest.md)|  | 
 
 ### Return type
 
@@ -177,7 +193,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 

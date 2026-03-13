@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**description** | **string** |  | [optional]
-**name** | **string** |  | [optional]
+**name** | **string** | The name of the tag category, must be unique | [optional]
+**description** | **string** | A description of the tag category | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

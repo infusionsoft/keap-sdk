@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**description** | **String** |  | [optional] 
-**doneDate** | **Date** |  | [optional] 
 **id** | **Number** |  | [optional] 
+**description** | **String** |  | [optional] 
+**required** | **Boolean** |  | [optional] 
 **instanceId** | **Number** |  | [optional] 
 **itemOrder** | **Number** |  | [optional] 
-**required** | **Boolean** |  | [optional] 
+**doneDate** | **Date** |  | [optional] 
 
 

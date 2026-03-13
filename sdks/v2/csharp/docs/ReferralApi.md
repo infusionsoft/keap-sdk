@@ -1,10 +1,10 @@
 # Keap.Core.V2.Api.ReferralApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**CreateReferral**](ReferralApi.md#createreferral) | **POST** /v2/referrals | Create a Referral |
+| [**CreateReferral**](ReferralApi.md#createreferral) | **POST** /rest/v2/referrals | Create a Referral |
 
 <a id="createreferral"></a>
 # **CreateReferral**
@@ -29,9 +29,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new ReferralApi(config);
-            var createReferralRequest = new CreateReferralRequest(); // CreateReferralRequest | request
+            var createReferralRequest = new CreateReferralRequest(); // CreateReferralRequest | 
 
             try
             {
@@ -74,7 +77,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **createReferralRequest** | [**CreateReferralRequest**](CreateReferralRequest.md) | request |  |
+| **createReferralRequest** | [**CreateReferralRequest**](CreateReferralRequest.md) |  |  |
 
 ### Return type
 
@@ -82,7 +85,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -94,9 +97,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

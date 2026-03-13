@@ -5,13 +5,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**choose_affiliate** | **bool** |  | [optional] 
 **commission** | [**ApplicationConfigurationModuleAffiliateCommission**](ApplicationConfigurationModuleAffiliateCommission.md) |  | [optional] 
+**choose_affiliate** | **bool** |  | [optional] 
 **custom_affiliate_url** | **str** |  | [optional] 
 **display_affiliate_ip_address** | **bool** |  | [optional] 
 **do_not_notify_affiliate** | **bool** |  | [optional] 
-**skip_pay_if_unused** | **bool** |  | [optional] 
 **use_referral_history_if_no_tracking_cookie** | **bool** |  | [optional] 
+**skip_pay_if_unused** | **bool** |  | [optional] 
 
 ## Example
 

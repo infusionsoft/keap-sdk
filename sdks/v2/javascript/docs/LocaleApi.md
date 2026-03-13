@@ -1,13 +1,13 @@
 # KeapCoreServiceV2Sdk.LocaleApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getCountryByCode**](LocaleApi.md#getCountryByCode) | **GET** /v2/locales/countries/{country_code} | Get Country
-[**getProvinceByCode**](LocaleApi.md#getProvinceByCode) | **GET** /v2/locales/countries/{country_code}/provinces/{province_code} | Get Province
-[**listCountries**](LocaleApi.md#listCountries) | **GET** /v2/locales/countries | List Countries
-[**listProvincesForCountry**](LocaleApi.md#listProvincesForCountry) | **GET** /v2/locales/countries/{country_code}/provinces | List a Country&#39;s Province
+[**getCountryByCode**](LocaleApi.md#getCountryByCode) | **GET** /rest/v2/locales/countries/{country_code} | Get Country
+[**getProvinceByCode**](LocaleApi.md#getProvinceByCode) | **GET** /rest/v2/locales/countries/{country_code}/provinces/{province_code} | Get Province
+[**listCountries**](LocaleApi.md#listCountries) | **GET** /rest/v2/locales/countries | List Countries
+[**listProvincesForCountry**](LocaleApi.md#listProvincesForCountry) | **GET** /rest/v2/locales/countries/{country_code}/provinces | List a Country&#39;s Provinces
 
 
 
@@ -23,6 +23,10 @@ Gets a country by its code or name
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.LocaleApi();
 let countryCode = "countryCode_example"; // String | The ISO 3166-2 alpha-2 code, alpha-3 code, or name of the country to be retrieved
@@ -47,7 +51,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -67,6 +71,10 @@ Get a province by its code or name
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.LocaleApi();
 let countryCode = "countryCode_example"; // String | The ISO 3166-1 alpha-2 code, alpha-3 code, or name of the country to be retrieved
@@ -93,7 +101,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -113,6 +121,10 @@ Retrieves a list of countries
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.LocaleApi();
 apiInstance.listCountries().then((data) => {
@@ -133,7 +145,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -145,7 +157,7 @@ No authorization required
 
 > ListProvincesResponse listProvincesForCountry(countryCode)
 
-List a Country&#39;s Province
+List a Country&#39;s Provinces
 
 Retrieves a list of provinces for a given country
 
@@ -153,9 +165,13 @@ Retrieves a list of provinces for a given country
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.LocaleApi();
-let countryCode = "countryCode_example"; // String | country_code
+let countryCode = "countryCode_example"; // String | 
 apiInstance.listProvincesForCountry(countryCode).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -169,7 +185,7 @@ apiInstance.listProvincesForCountry(countryCode).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **countryCode** | **String**| country_code | 
+ **countryCode** | **String**|  | 
 
 ### Return type
 
@@ -177,7 +193,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 

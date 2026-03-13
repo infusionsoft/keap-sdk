@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**maxLinks** | **Long** |  |  [optional] |
-|**name** | **String** |  |  [optional] |
+|**name** | **String** | Link type name |  [optional] |
+|**maxLinks** | **Long** | Maximum number of links allowed (must be &gt; 0) |  [optional] |
 
 
 ## Implemented Interfaces

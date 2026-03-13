@@ -22,7 +22,7 @@ export class LeadSourceExpensesApiRequestFactory extends BaseAPIRequestFactory {
      * Creates a new Lead Source Expense
      * Create a Lead Source Expense
      * @param leadSourceId The ID of the lead source this expense belongs to
-     * @param createLeadSourceExpenseRequest The request object to create a new lead source expense
+     * @param createLeadSourceExpenseRequest 
      */
     public async createLeadSourceExpense(leadSourceId: string, createLeadSourceExpenseRequest: CreateLeadSourceExpenseRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
@@ -40,7 +40,7 @@ export class LeadSourceExpensesApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/v2/leadSources/{lead_source_id}/expenses'
+        const localVarPath = '/rest/v2/leadSources/{lead_source_id}/expenses'
             .replace('{' + 'lead_source_id' + '}', encodeURIComponent(String(leadSourceId)));
 
         // Make Request Context
@@ -59,6 +59,12 @@ export class LeadSourceExpensesApiRequestFactory extends BaseAPIRequestFactory {
         );
         requestContext.setBody(serializedBody);
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -90,7 +96,7 @@ export class LeadSourceExpensesApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id}'
+        const localVarPath = '/rest/v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id}'
             .replace('{' + 'lead_source_expense_id' + '}', encodeURIComponent(String(leadSourceExpenseId)))
             .replace('{' + 'lead_source_id' + '}', encodeURIComponent(String(leadSourceId)));
 
@@ -99,6 +105,12 @@ export class LeadSourceExpensesApiRequestFactory extends BaseAPIRequestFactory {
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
 
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -130,7 +142,7 @@ export class LeadSourceExpensesApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id}'
+        const localVarPath = '/rest/v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id}'
             .replace('{' + 'lead_source_expense_id' + '}', encodeURIComponent(String(leadSourceExpenseId)))
             .replace('{' + 'lead_source_id' + '}', encodeURIComponent(String(leadSourceId)));
 
@@ -139,6 +151,12 @@ export class LeadSourceExpensesApiRequestFactory extends BaseAPIRequestFactory {
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
 
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -171,7 +189,7 @@ export class LeadSourceExpensesApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/v2/leadSources/{lead_source_id}/expenses'
+        const localVarPath = '/rest/v2/leadSources/{lead_source_id}/expenses'
             .replace('{' + 'lead_source_id' + '}', encodeURIComponent(String(leadSourceId)));
 
         // Make Request Context
@@ -199,6 +217,12 @@ export class LeadSourceExpensesApiRequestFactory extends BaseAPIRequestFactory {
         }
 
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -213,10 +237,10 @@ export class LeadSourceExpensesApiRequestFactory extends BaseAPIRequestFactory {
      * Update a Lead Source Expense
      * @param leadSourceExpenseId The ID of a lead source expense
      * @param leadSourceId The ID of the lead source this expense belongs to
-     * @param updateLeadSourceExpenseRequest The request object to update a lead source expense
+     * @param updateLeadSourceExpenseRequest 
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateLeadSourceExpense(leadSourceExpenseId: string, leadSourceId: string, updateLeadSourceExpenseRequest: UpdateLeadSourceExpenseRequest, updateMask?: Array<string>, _options?: Configuration): Promise<RequestContext> {
+    public async updateLeadSourceExpense(leadSourceExpenseId: string, leadSourceId: string, updateLeadSourceExpenseRequest: UpdateLeadSourceExpenseRequest, updateMask?: 'title,notes,amount,incurred_time', _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'leadSourceExpenseId' is not null or undefined
@@ -239,7 +263,7 @@ export class LeadSourceExpensesApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id}'
+        const localVarPath = '/rest/v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id}'
             .replace('{' + 'lead_source_expense_id' + '}', encodeURIComponent(String(leadSourceExpenseId)))
             .replace('{' + 'lead_source_id' + '}', encodeURIComponent(String(leadSourceId)));
 
@@ -249,10 +273,7 @@ export class LeadSourceExpensesApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (updateMask !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(updateMask, "Array<string>", "");
-            for (const serializedParam of serializedParams) {
-                requestContext.appendQueryParam("update_mask", serializedParam);
-            }
+            requestContext.setQueryParam("update_mask", ObjectSerializer.serialize(updateMask, "'title,notes,amount,incurred_time'", ""));
         }
 
 
@@ -267,6 +288,12 @@ export class LeadSourceExpensesApiRequestFactory extends BaseAPIRequestFactory {
         );
         requestContext.setBody(serializedBody);
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -324,12 +351,26 @@ export class LeadSourceExpensesApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -356,6 +397,13 @@ export class LeadSourceExpensesApiResponseProcessor {
         if (isCodeInRange("204", response.httpStatusCode)) {
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
         }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -377,12 +425,26 @@ export class LeadSourceExpensesApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -413,6 +475,13 @@ export class LeadSourceExpensesApiResponseProcessor {
             ) as LeadSourceExpense;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -434,12 +503,26 @@ export class LeadSourceExpensesApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -498,12 +581,26 @@ export class LeadSourceExpensesApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -562,12 +659,26 @@ export class LeadSourceExpensesApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml

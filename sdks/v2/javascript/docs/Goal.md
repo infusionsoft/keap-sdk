@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**historicalContactCounts** | [**HistoricalCounts**](HistoricalCounts.md) |  | [optional] 
-**id** | **String** |  | [optional] 
-**name** | **String** |  | [optional] 
-**nextSequenceIds** | **[String]** |  | [optional] 
-**previousSequenceIds** | **[String]** |  | [optional] 
-**type** | **String** |  | [optional] 
+**id** | **String** | The unique identifier of the goal | [optional] 
+**name** | **String** | The name of the goal | [optional] 
+**type** | **String** | The type of goal | [optional] 
+**historicalContactCounts** | [**HistoricalCounts**](HistoricalCounts.md) | Historical contact counts for this goal | [optional] 
+**nextSequenceIds** | **[String]** | IDs of sequences that follow this goal | [optional] 
+**previousSequenceIds** | **[String]** | IDs of sequences that precede this goal | [optional] 
 
 
 

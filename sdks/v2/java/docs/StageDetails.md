@@ -7,10 +7,10 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**checklistItems** | [**List&lt;CheckListItemDetails&gt;**](CheckListItemDetails.md) |  |  [optional] |
-|**probability** | **Integer** |  |  [optional] |
-|**stageOrder** | **Integer** |  |  [optional] |
-|**targetNumDays** | **Integer** |  |  [optional] |
+|**probability** | **Integer** | Win probability (0-100) |  [optional] |
+|**stageOrder** | **Integer** | Stage order in pipeline |  [optional] |
+|**targetNumDays** | **Integer** | Target days in stage |  [optional] |
+|**checklistItems** | [**List&lt;CheckListItemDetails&gt;**](CheckListItemDetails.md) | Stage checklist items |  [optional] |
 
 
 ## Implemented Interfaces

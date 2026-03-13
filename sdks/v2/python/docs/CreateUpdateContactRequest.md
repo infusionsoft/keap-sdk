@@ -1,37 +1,38 @@
 # CreateUpdateContactRequest
 
+contact
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **addresses** | [**List[Address]**](Address.md) | Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed. | [optional] 
-**anniversary_date** | **str** |  | [optional] 
-**birth_date** | **str** |  | [optional] 
 **company** | [**BasicCompany**](BasicCompany.md) |  | [optional] 
-**contact_type** | **str** |  | [optional] 
+**origin** | [**OriginRequest**](OriginRequest.md) |  | [optional] 
+**prefix** | **str** | Name prefix | [optional] 
+**suffix** | **str** | Name suffix | [optional] 
+**website** | **str** | Personal website URL | [optional] 
+**anniversary_date** | **str** | The anniversary date | [optional] 
+**birth_date** | **str** | The birth date | [optional] 
+**contact_type** | **str** | Type of contact | [optional] 
 **custom_fields** | [**List[CustomFieldValue]**](CustomFieldValue.md) | Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed. | [optional] 
 **email_addresses** | [**List[EmailAddressRequest]**](EmailAddressRequest.md) | Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed. | [optional] 
-**family_name** | **str** |  | [optional] 
+**family_name** | **str** | Last name / surname | [optional] 
 **fax_numbers** | [**List[FaxNumber]**](FaxNumber.md) | Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed. | [optional] 
-**given_name** | **str** |  | [optional] 
-**job_title** | **str** |  | [optional] 
-**leadsource_id** | **str** |  | [optional] 
-**middle_name** | **str** |  | [optional] 
-**origin** | [**OriginRequest**](OriginRequest.md) |  | [optional] 
-**owner_id** | **str** |  | [optional] 
+**given_name** | **str** | First name | [optional] 
+**job_title** | **str** | Job title | [optional] 
+**leadsource_id** | **str** | Lead source identifier | [optional] 
+**middle_name** | **str** | Middle name | [optional] 
+**owner_id** | **str** | ID of the user who owns this contact | [optional] 
 **phone_numbers** | [**List[PhoneNumber]**](PhoneNumber.md) | Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed. | [optional] 
-**preferred_locale** | **str** |  | [optional] 
-**preferred_name** | **str** |  | [optional] 
-**prefix** | **str** |  | [optional] 
-**referral_code** | **str** |  | [optional] 
+**preferred_locale** | **str** | Preferred locale | [optional] 
+**preferred_name** | **str** | Preferred name or nickname | [optional] 
+**referral_code** | **str** | Referral code | [optional] 
 **social_accounts** | [**List[SocialAccount]**](SocialAccount.md) | Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed. | [optional] 
 **source_type** | **str** |  | [optional] 
-**spouse_name** | **str** |  | [optional] 
-**suffix** | **str** |  | [optional] 
-**time_zone** | **str** |  | [optional] 
+**spouse_name** | **str** | Spouse&#39;s name | [optional] 
+**time_zone** | **str** | Contact&#39;s timezone | [optional] 
 **utm_parameters** | [**CreateContactUtmPropertiesRequest**](CreateContactUtmPropertiesRequest.md) |  | [optional] 
-**website** | **str** |  | [optional] 
 
 ## Example
 

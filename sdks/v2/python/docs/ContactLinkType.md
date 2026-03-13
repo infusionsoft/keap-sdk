@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**create_time** | **str** |  | [optional] 
-**id** | **str** |  | [optional] 
-**max_links** | **int** |  | [optional] 
-**name** | **str** |  | [optional] 
+**id** | **str** | Link type ID | [optional] 
+**name** | **str** | Link type name | [optional] 
+**max_links** | **int** | Maximum number of links allowed | [optional] 
+**create_time** | **str** | Creation timestamp (ISO-8601) | [optional] 
 
 ## Example
 

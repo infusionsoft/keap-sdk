@@ -5,22 +5,22 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**affiliate_id** | **str** |  | [optional] 
+**id** | **str** | Opportunity ID | [optional] 
 **contact** | [**OpportunityContact**](OpportunityContact.md) |  | 
-**created_time** | **str** |  | [optional] 
-**custom_fields** | [**List[CustomField]**](CustomField.md) |  | [optional] 
-**estimated_close_time** | **str** |  | [optional] 
-**id** | **str** |  | [optional] 
-**include_in_forecast** | **bool** |  | [optional] 
-**last_updated_time** | **str** |  | [optional] 
-**next_action_notes** | **str** |  | [optional] 
-**next_action_time** | **str** |  | [optional] 
-**opportunity_notes** | **str** |  | [optional] 
-**opportunity_title** | **str** |  | 
-**projected_revenue_high** | **float** |  | [optional] 
-**projected_revenue_low** | **float** |  | [optional] 
 **stage** | [**OpportunityStage**](OpportunityStage.md) |  | 
 **user** | [**RestV2User**](RestV2User.md) |  | [optional] 
+**opportunity_title** | **str** | Opportunity title | 
+**next_action_time** | **str** | Next action timestamp (ISO-8601) | [optional] 
+**next_action_notes** | **str** | Notes for next action | [optional] 
+**opportunity_notes** | **str** | General notes | [optional] 
+**estimated_close_time** | **str** | Estimated close timestamp (ISO-8601) | [optional] 
+**include_in_forecast** | **bool** | Include in sales forecast | [optional] 
+**projected_revenue_low** | **float** | Low revenue estimate | [optional] 
+**projected_revenue_high** | **float** | High revenue estimate | [optional] 
+**custom_fields** | [**List[CustomField]**](CustomField.md) |  | [optional] 
+**created_time** | **str** | Creation timestamp (ISO-8601) | [optional] 
+**last_updated_time** | **str** | Last update timestamp (ISO-8601) | [optional] 
+**affiliate_id** | **str** | Affiliate ID | [optional] 
 
 ## Example
 

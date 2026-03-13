@@ -5,14 +5,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**default_value** | **str** |  | [optional] 
-**field_name** | **str** |  | [optional] 
-**field_type** | **str** |  | [optional] 
-**group_id** | **str** |  | [optional] 
 **id** | **str** |  | [optional] 
 **label** | **str** |  | [optional] 
 **options** | [**List[CustomFieldOption]**](CustomFieldOption.md) |  | [optional] 
 **record_type** | **str** |  | [optional] 
+**field_type** | **str** |  | [optional] 
+**default_value** | **str** |  | [optional] 
+**group_id** | **str** |  | [optional] 
+**field_name** | **str** |  | [optional] 
 
 ## Example
 

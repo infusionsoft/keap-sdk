@@ -1,12 +1,12 @@
 # .SettingsApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getApplicationConfigurations**](SettingsApi.md#getApplicationConfigurations) | **GET** /v2/settings/applications:getConfiguration | Get Application Configuration
-[**getContactOptionTypes**](SettingsApi.md#getContactOptionTypes) | **GET** /v2/settings/contactOptionTypes | Get Contact Option types
-[**isApplicationEnabled**](SettingsApi.md#isApplicationEnabled) | **GET** /v2/settings/applications:isEnabled | Get Application Status
+[**getApplicationConfigurations**](SettingsApi.md#getApplicationConfigurations) | **GET** /rest/v2/settings/applications:getConfiguration | Get Application Configuration
+[**getContactOptionTypes**](SettingsApi.md#getContactOptionTypes) | **GET** /rest/v2/settings/contactOptionTypes | Get Contact Option types
+[**isApplicationEnabled**](SettingsApi.md#isApplicationEnabled) | **GET** /rest/v2/settings/applications:isEnabled | Get Application Status
 
 
 # **getApplicationConfigurations**
@@ -27,7 +27,7 @@ const apiInstance = new SettingsApi(configuration);
 const request: SettingsApiGetApplicationConfigurationsRequest = {
     // By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query. (optional)
   fields: [
-    "AFFILIATE",
+    "fields_example",
   ],
 };
 
@@ -40,7 +40,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **fields** | **Array<&#39;AFFILIATE&#39; &#124; &#39;APPOINTMENT&#39; &#124; &#39;CONTACT&#39; &#124; &#39;ECOMMERCE&#39; &#124; &#39;EMAIL&#39; &#124; &#39;FORMS&#39; &#124; &#39;FULFILLMENT&#39; &#124; &#39;INVOICE&#39; &#124; &#39;NOTE&#39; &#124; &#39;OPPORTUNITY&#39; &#124; &#39;TASK&#39; &#124; &#39;TEMPLATE&#39;>** | By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query. | (optional) defaults to undefined
+ **fields** | **Array&lt;string&gt;** | By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query. | (optional) defaults to undefined
 
 
 ### Return type
@@ -49,7 +49,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -61,10 +61,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -99,7 +102,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -111,10 +114,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -149,7 +155,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -161,10 +167,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

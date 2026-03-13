@@ -6,9 +6,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **code** | **str** | The Affiliate code which have some validations. 1. The code should not have white spaces 2. The code should starts with letters 3. The code minimum 4 characters length | 
-**contact_id** | **str** | The contactId identifier , Must be a positive number | [optional] 
 **name** | **str** | The Affiliate name will be derived from the Contact, when not explicitly provided | [optional] 
-**status** | **str** | The Affiliate Status | 
+**status** | **str** | The Affiliate Status | [optional] 
+**contact_id** | **str** | The contactId identifier , Must be a positive number | 
+**parent_affiliate_id** | **str** | The Parent Affiliate Id | [optional] 
+**notify_on_sale** | **bool** | Whether to notify on sale events | [optional] 
+**notify_on_lead** | **bool** | Whether to notify on lead events | [optional] 
+**track_leads_days** | **int** | Number of days to track leads | [optional] 
+**password** | **str** | Affiliate portal password. | [optional] 
 
 ## Example
 

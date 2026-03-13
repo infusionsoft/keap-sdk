@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**users** | [**[User]**](User.md) | List of users | [optional] 
 **nextPageToken** | **String** |  | [optional] 
-**users** | [**[User]**](User.md) |  | [optional] 
 
 

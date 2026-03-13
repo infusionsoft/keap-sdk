@@ -1,14 +1,14 @@
 # .ShippingDiscountsApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createShippingDiscount**](ShippingDiscountsApi.md#createShippingDiscount) | **POST** /v2/discounts/shipping | Create a Shipping Discount
-[**deleteShippingDiscount**](ShippingDiscountsApi.md#deleteShippingDiscount) | **DELETE** /v2/discounts/shipping/{discount_id} | Delete a Shipping Discount
-[**getShippingDiscount**](ShippingDiscountsApi.md#getShippingDiscount) | **GET** /v2/discounts/shipping/{discount_id} | Retrieve a Shipping Discount
-[**listShippingDiscounts**](ShippingDiscountsApi.md#listShippingDiscounts) | **GET** /v2/discounts/shipping | List all Shipping Discounts
-[**updateShippingDiscount**](ShippingDiscountsApi.md#updateShippingDiscount) | **PATCH** /v2/discounts/shipping/{discount_id} | Update a Shipping Discount
+[**createShippingDiscount**](ShippingDiscountsApi.md#createShippingDiscount) | **POST** /rest/v2/discounts/shipping | Create a Shipping Discount
+[**deleteShippingDiscount**](ShippingDiscountsApi.md#deleteShippingDiscount) | **DELETE** /rest/v2/discounts/shipping/{discount_id} | Delete a Shipping Discount
+[**getShippingDiscount**](ShippingDiscountsApi.md#getShippingDiscount) | **GET** /rest/v2/discounts/shipping/{discount_id} | Retrieve a Shipping Discount
+[**listShippingDiscounts**](ShippingDiscountsApi.md#listShippingDiscounts) | **GET** /rest/v2/discounts/shipping | List all Shipping Discounts
+[**updateShippingDiscount**](ShippingDiscountsApi.md#updateShippingDiscount) | **PATCH** /rest/v2/discounts/shipping/{discount_id} | Update a Shipping Discount
 
 
 # **createShippingDiscount**
@@ -27,28 +27,28 @@ const configuration = createConfiguration();
 const apiInstance = new ShippingDiscountsApi(configuration);
 
 const request: ShippingDiscountsApiCreateShippingDiscountRequest = {
-    // request
+  
   createShippingDiscountRequest: {
+    name: "Free Shipping Over $100",
+    description: "Free shipping on orders over $100",
     criteria: [
       {
-        code: "code_example",
-        criteriaId: "criteriaId_example",
-        operator: "LESS_THAN",
-        planId: "planId_example",
-        productId: "productId_example",
-        productQuantityMax: 1,
-        productQuantityMin: 1,
-        rangeEndTime: "rangeEndTime_example",
-        rangeStartTime: "rangeStartTime_example",
-        subscriptionQuantity: 1,
-        totalAmount: 3.14,
         type: "DATE_RANGE",
+        code: "SUMMER2024",
+        criteriaId: "501",
+        rangeStartTime: new Date('2024-01-01T00:00:00Z'),
+        rangeEndTime: new Date('2024-12-31T23:59:59Z'),
+        productId: "456",
+        productQuantityMin: 1,
+        productQuantityMax: 10,
+        planId: "789",
+        subscriptionQuantity: 1,
+        totalAmount: 100,
+        operator: "GREATER_THAN",
       },
     ],
-    description: "description_example",
-    discountType: "AMOUNT",
-    discountValue: 3.14,
-    name: "name_example",
+    discountType: "PERCENT",
+    discountValue: 100,
   },
 };
 
@@ -61,7 +61,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createShippingDiscountRequest** | **CreateShippingDiscountRequest**| request |
+ **createShippingDiscountRequest** | **CreateShippingDiscountRequest**|  |
 
 
 ### Return type
@@ -70,7 +70,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -82,9 +82,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -104,7 +108,7 @@ const configuration = createConfiguration();
 const apiInstance = new ShippingDiscountsApi(configuration);
 
 const request: ShippingDiscountsApiDeleteShippingDiscountRequest = {
-    // discount_id
+  
   discountId: "discount_id_example",
 };
 
@@ -117,7 +121,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **discountId** | [**string**] | discount_id | defaults to undefined
+ **discountId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -126,7 +130,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -138,10 +142,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No Content |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -161,7 +168,7 @@ const configuration = createConfiguration();
 const apiInstance = new ShippingDiscountsApi(configuration);
 
 const request: ShippingDiscountsApiGetShippingDiscountRequest = {
-    // discount_id
+  
   discountId: "discount_id_example",
 };
 
@@ -174,7 +181,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **discountId** | [**string**] | discount_id | defaults to undefined
+ **discountId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -183,7 +190,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -195,10 +202,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -249,7 +259,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -261,10 +271,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -284,35 +297,33 @@ const configuration = createConfiguration();
 const apiInstance = new ShippingDiscountsApi(configuration);
 
 const request: ShippingDiscountsApiUpdateShippingDiscountRequest = {
-    // discount_id
+  
   discountId: "discount_id_example",
-    // request
+  
   updateShippingDiscountRequest: {
+    name: "Free Shipping Over $100",
+    description: "Free shipping on orders over $100",
     criteria: [
       {
-        code: "code_example",
-        criteriaId: "criteriaId_example",
-        operator: "LESS_THAN",
-        planId: "planId_example",
-        productId: "productId_example",
-        productQuantityMax: 1,
-        productQuantityMin: 1,
-        rangeEndTime: "rangeEndTime_example",
-        rangeStartTime: "rangeStartTime_example",
-        subscriptionQuantity: 1,
-        totalAmount: 3.14,
         type: "DATE_RANGE",
+        code: "SUMMER2024",
+        criteriaId: "501",
+        rangeStartTime: new Date('2024-01-01T00:00:00Z'),
+        rangeEndTime: new Date('2024-12-31T23:59:59Z'),
+        productId: "456",
+        productQuantityMin: 1,
+        productQuantityMax: 10,
+        planId: "789",
+        subscriptionQuantity: 1,
+        totalAmount: 100,
+        operator: "GREATER_THAN",
       },
     ],
-    description: "description_example",
-    discountType: "AMOUNT",
-    discountValue: 3.14,
-    name: "name_example",
+    discountType: "PERCENT",
+    discountValue: 100,
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: [
-    "name",
-  ],
+  updateMask: "name,description,discount_type,discount_value,criteria",
 };
 
 const data = await apiInstance.updateShippingDiscount(request);
@@ -324,9 +335,9 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **updateShippingDiscountRequest** | **UpdateShippingDiscountRequest**| request |
- **discountId** | [**string**] | discount_id | defaults to undefined
- **updateMask** |  | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateShippingDiscountRequest** | **UpdateShippingDiscountRequest**|  |
+ **discountId** | [**string**] |  | defaults to undefined
+ **updateMask** | [**&#39;name,description,discount_type,discount_value,criteria&#39;**]**Array<&#39;name,description,discount_type,discount_value,criteria&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
@@ -335,7 +346,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -347,10 +358,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

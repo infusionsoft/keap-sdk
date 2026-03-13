@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**automation_count** | **int** |  | [optional] 
 **automations** | [**List[Automation]**](Automation.md) |  | [optional] 
 **next_page_token** | **str** |  | [optional] 
+**automation_count** | **int** |  | [optional] 
 
 ## Example
 

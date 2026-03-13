@@ -1,17 +1,18 @@
 # EmailSendRequest
 
+Request to send an email to contacts
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**address_field** | **str** | Email field of each Contact record to address the email to, such as &#39;Email&#39;, &#39;EmailAddress2&#39;, &#39;EmailAddress3&#39; or &#39;_CustomFieldName&#39;, defaulting to the contact&#39;s primary email | [optional] 
-**attachments** | [**List[EmailSendRequestAttachment]**](EmailSendRequestAttachment.md) | Attachments to be sent with each copy of the email, maximum of 10 with size of 1MB each | [optional] 
 **contacts** | **List[str]** | An array of Contact Ids to receive the email | 
+**subject** | **str** | The subject line of the email | 
+**attachments** | [**List[EmailSendRequestAttachment]**](EmailSendRequestAttachment.md) | Attachments to be sent with each copy of the email, maximum of 10 with size of 1MB each | [optional] 
+**user_id** | **str** | The user ID to send the email on behalf of | 
 **html_content** | **str** | The HTML-formatted content of the email, encoded in Base64 | [optional] 
 **plain_content** | **str** | The plain-text content of the email, encoded in Base64 | [optional] 
-**subject** | **str** | The subject line of the email | 
-**user_id** | **str** | The infusionsoft user to send the email on behalf of | 
+**address_field** | **str** | Email field of each Contact record to address the email to, such as &#39;Email&#39;, &#39;EmailAddress2&#39;, &#39;EmailAddress3&#39; or &#39;_CustomFieldName&#39;, defaulting to the contact&#39;s primary email | [optional] 
 
 ## Example
 

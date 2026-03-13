@@ -1,46 +1,48 @@
 # Keap.Core.V2.Api.AffiliateApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**AddAffiliate**](AffiliateApi.md#addaffiliate) | **POST** /v2/affiliates | Create an Affiliate |
-| [**AddAffiliateToProgram**](AffiliateApi.md#addaffiliatetoprogram) | **POST** /v2/affiliates/{id}:assignToProgram | Assign Affiliate to Commission program |
-| [**AddCommissionProgram**](AffiliateApi.md#addcommissionprogram) | **POST** /v2/affiliates/commissionPrograms | Create an Affiliate Commission Program |
-| [**AssignProductCommissionProgram**](AffiliateApi.md#assignproductcommissionprogram) | **POST** /v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Assign a Product Commission Program |
-| [**AssignSubscriptionCommissionProgram**](AffiliateApi.md#assignsubscriptioncommissionprogram) | **POST** /v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id} | Assign a Subscription Commission Program |
-| [**CreateAffiliateCustomField**](AffiliateApi.md#createaffiliatecustomfield) | **POST** /v2/affiliates/model/customFields | Create an Affiliate Custom Field |
-| [**CreateDefaultCommissionProgram**](AffiliateApi.md#createdefaultcommissionprogram) | **POST** /v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Create a Default Commission Program |
-| [**CreateRedirectLink**](AffiliateApi.md#createredirectlink) | **POST** /v2/affiliates/redirects | Create an Affiliate Link |
-| [**DeleteAffiliate**](AffiliateApi.md#deleteaffiliate) | **DELETE** /v2/affiliates/{id} | Delete Affiliate |
-| [**DeleteAffiliateCommissionProgram**](AffiliateApi.md#deleteaffiliatecommissionprogram) | **DELETE** /v2/affiliates/commissionPrograms/{commission_program_id} | Delete a Commission Program |
-| [**DeleteAffiliateCustomField**](AffiliateApi.md#deleteaffiliatecustomfield) | **DELETE** /v2/affiliates/model/customFields/{custom_field_id} | Delete a Custom Field |
-| [**DeleteRedirectLink**](AffiliateApi.md#deleteredirectlink) | **DELETE** /v2/affiliates/redirects/{redirect_id} | Delete an Affiliate Link |
-| [**GetAffiliate**](AffiliateApi.md#getaffiliate) | **GET** /v2/affiliates/{id} | Retrieve an Affiliate |
-| [**GetAffiliateCommissionTotal**](AffiliateApi.md#getaffiliatecommissiontotal) | **GET** /v2/affiliates/{affiliate_id}/commissionTotal | Retrieve Affiliate Commission Earned and View LedgerURl for portal |
-| [**GetAffiliateCommissions**](AffiliateApi.md#getaffiliatecommissions) | **GET** /v2/affiliates/{affiliate_id}:commissions | Retrieve Affiliate Commission and Clawbacks |
-| [**GetAffiliateCustomFields**](AffiliateApi.md#getaffiliatecustomfields) | **GET** /v2/affiliates/model | Retrieve Affiliate Model |
-| [**GetCommissionProgram**](AffiliateApi.md#getcommissionprogram) | **GET** /v2/affiliates/commissionPrograms/{commission_program_id} | Retrieve a Commission Program |
-| [**GetRedirectLink**](AffiliateApi.md#getredirectlink) | **GET** /v2/affiliates/redirects/{redirect_id} | Retrieve an Affiliate Link |
-| [**ListAffiliate**](AffiliateApi.md#listaffiliate) | **GET** /v2/affiliates | List Affiliates |
-| [**ListAffiliateCommissionPrograms**](AffiliateApi.md#listaffiliatecommissionprograms) | **GET** /v2/affiliates/commissionPrograms | List Affiliate Commission Programs |
-| [**ListAffiliateLinks**](AffiliateApi.md#listaffiliatelinks) | **GET** /v2/affiliates/redirects | List Affiliate Links |
-| [**ListAffiliatePayments**](AffiliateApi.md#listaffiliatepayments) | **GET** /v2/affiliates/{affiliate_id}/payments | List Affiliate Payments |
-| [**ListSummaries**](AffiliateApi.md#listsummaries) | **GET** /v2/affiliates/summaries | List Affiliate Summaries |
-| [**RemoveAffiliateFromProgram**](AffiliateApi.md#removeaffiliatefromprogram) | **POST** /v2/affiliates/{id}:removeFromProgram | Remove an Affiliate from a Commission Program |
-| [**RemoveProductCommissionFromCommissions**](AffiliateApi.md#removeproductcommissionfromcommissions) | **POST** /v2/affiliates/commissionPrograms/{commission_id}:removeProductCommission | Remove a Product from a Commission Program |
-| [**RemoveSubscriptionPlanCommissionFromCommissions**](AffiliateApi.md#removesubscriptionplancommissionfromcommissions) | **POST** /v2/affiliates/commissionPrograms/{commission_id}:removeSubscriptionCommission | Remove a Subscription from a Commission Program |
-| [**UpdateAffiliate**](AffiliateApi.md#updateaffiliate) | **PATCH** /v2/affiliates/{id} | Update an Affiliate |
-| [**UpdateAffiliateCustomField**](AffiliateApi.md#updateaffiliatecustomfield) | **PATCH** /v2/affiliates/model/customFields/{custom_field_id} | Update a Custom Field |
-| [**UpdateCommissionProgram**](AffiliateApi.md#updatecommissionprogram) | **PATCH** /v2/affiliates/commissionPrograms/{commission_program_id} | Update an Affiliate Commission Program |
-| [**UpdateDefaultCommissionProgram**](AffiliateApi.md#updatedefaultcommissionprogram) | **PATCH** /v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Update a Default Commission Program |
-| [**UpdateProductCommissionProgram**](AffiliateApi.md#updateproductcommissionprogram) | **PATCH** /v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Update a Product Commission Program |
-| [**UpdateRedirectLink**](AffiliateApi.md#updateredirectlink) | **PATCH** /v2/affiliates/redirects/{redirect_id} | Update an Affiliate Link |
-| [**UpdateSubscriptionCommissionProgram**](AffiliateApi.md#updatesubscriptioncommissionprogram) | **PATCH** /v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id} | Update a Subscription Commission Program |
+| [**AddAffiliate**](AffiliateApi.md#addaffiliate) | **POST** /rest/v2/affiliates | Create an Affiliate |
+| [**AddAffiliateToProgram**](AffiliateApi.md#addaffiliatetoprogram) | **POST** /rest/v2/affiliates/{id}:assignToProgram | Assign Affiliate to Commission program |
+| [**AddCommissionProgram**](AffiliateApi.md#addcommissionprogram) | **POST** /rest/v2/affiliates/commissionPrograms | Create an Affiliate Commission Program |
+| [**AssignProductCommissionProgram**](AffiliateApi.md#assignproductcommissionprogram) | **POST** /rest/v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Assign a Product Commission Program |
+| [**AssignSubscriptionCommissionProgram**](AffiliateApi.md#assignsubscriptioncommissionprogram) | **POST** /rest/v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id} | Assign a Subscription Commission Program |
+| [**CreateAffiliateCustomField**](AffiliateApi.md#createaffiliatecustomfield) | **POST** /rest/v2/affiliates/model/customFields | Create an Affiliate Custom Field |
+| [**CreateDefaultCommissionProgram**](AffiliateApi.md#createdefaultcommissionprogram) | **POST** /rest/v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Create a Default Commission Program |
+| [**CreateRedirectLink**](AffiliateApi.md#createredirectlink) | **POST** /rest/v2/affiliates/redirects | Create an Affiliate Link |
+| [**DeleteAffiliate**](AffiliateApi.md#deleteaffiliate) | **DELETE** /rest/v2/affiliates/{id} | Delete Affiliate |
+| [**DeleteAffiliateCommissionProgram**](AffiliateApi.md#deleteaffiliatecommissionprogram) | **DELETE** /rest/v2/affiliates/commissionPrograms/{commission_program_id} | Delete a Commission Program |
+| [**DeleteAffiliateCustomField**](AffiliateApi.md#deleteaffiliatecustomfield) | **DELETE** /rest/v2/affiliates/model/customFields/{custom_field_id} | Delete a Custom Field |
+| [**DeleteRedirectLink**](AffiliateApi.md#deleteredirectlink) | **DELETE** /rest/v2/affiliates/redirects/{redirect_id} | Delete an Affiliate Link |
+| [**GetAffiliate**](AffiliateApi.md#getaffiliate) | **GET** /rest/v2/affiliates/{id} | Retrieve an Affiliate |
+| [**GetAffiliateCommissionTotal**](AffiliateApi.md#getaffiliatecommissiontotal) | **GET** /rest/v2/affiliates/{affiliate_id}/commissionTotal | Retrieve Affiliate Commission Earned and View LedgerURl for portal |
+| [**GetAffiliateCommissions**](AffiliateApi.md#getaffiliatecommissions) | **GET** /rest/v2/affiliates/{affiliate_id}:commissions | Retrieve Affiliate Commissions |
+| [**GetAffiliateCustomFields**](AffiliateApi.md#getaffiliatecustomfields) | **GET** /rest/v2/affiliates/model | Retrieve Affiliate Model |
+| [**GetCommissionProgram**](AffiliateApi.md#getcommissionprogram) | **GET** /rest/v2/affiliates/commissionPrograms/{commission_program_id} | Retrieve a Commission Program |
+| [**GetRedirectLink**](AffiliateApi.md#getredirectlink) | **GET** /rest/v2/affiliates/redirects/{redirect_id} | Retrieve an Affiliate Link |
+| [**GetReferralsByAffiliateId**](AffiliateApi.md#getreferralsbyaffiliateid) | **GET** /rest/v2/affiliates/{affiliate_id}/referrals | Retrieve Affiliate Referrals |
+| [**ListAffiliate**](AffiliateApi.md#listaffiliate) | **GET** /rest/v2/affiliates | List Affiliates |
+| [**ListAffiliateCommissionPrograms**](AffiliateApi.md#listaffiliatecommissionprograms) | **GET** /rest/v2/affiliates/commissionPrograms | List Affiliate Commission Programs |
+| [**ListAffiliateLinks**](AffiliateApi.md#listaffiliatelinks) | **GET** /rest/v2/affiliates/redirects | List Affiliate Links |
+| [**ListAffiliatePayments**](AffiliateApi.md#listaffiliatepayments) | **GET** /rest/v2/affiliates/{affiliate_id}/payments | List Affiliate Payments |
+| [**ListCommissionProgramResources**](AffiliateApi.md#listcommissionprogramresources) | **GET** /rest/v2/affiliates/commissionPrograms/{commission_program_id}/resources | Retrieve Commission Program Resources |
+| [**ListSummaries**](AffiliateApi.md#listsummaries) | **GET** /rest/v2/affiliates/summaries | List Affiliate Summaries |
+| [**RemoveAffiliateFromProgram**](AffiliateApi.md#removeaffiliatefromprogram) | **POST** /rest/v2/affiliates/{id}:removeFromProgram | Remove an Affiliate from a Commission Program |
+| [**RemoveProductCommissionFromCommissions**](AffiliateApi.md#removeproductcommissionfromcommissions) | **POST** /rest/v2/affiliates/commissionPrograms/{commission_id}:removeProductCommission | Remove a Product from a Commission Program |
+| [**RemoveSubscriptionPlanCommissionFromCommissions**](AffiliateApi.md#removesubscriptionplancommissionfromcommissions) | **POST** /rest/v2/affiliates/commissionPrograms/{commission_id}:removeSubscriptionCommission | Remove a Subscription from a Commission Program |
+| [**UpdateAffiliate**](AffiliateApi.md#updateaffiliate) | **PATCH** /rest/v2/affiliates/{id} | Update an Affiliate |
+| [**UpdateAffiliateCustomField**](AffiliateApi.md#updateaffiliatecustomfield) | **PATCH** /rest/v2/affiliates/model/customFields/{custom_field_id} | Update a Custom Field |
+| [**UpdateCommissionProgram**](AffiliateApi.md#updatecommissionprogram) | **PATCH** /rest/v2/affiliates/commissionPrograms/{commission_program_id} | Update an Affiliate Commission Program |
+| [**UpdateDefaultCommissionProgram**](AffiliateApi.md#updatedefaultcommissionprogram) | **PATCH** /rest/v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Update a Default Commission Program |
+| [**UpdateProductCommissionProgram**](AffiliateApi.md#updateproductcommissionprogram) | **PATCH** /rest/v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Update a Product Commission Program |
+| [**UpdateRedirectLink**](AffiliateApi.md#updateredirectlink) | **PATCH** /rest/v2/affiliates/redirects/{redirect_id} | Update an Affiliate Link |
+| [**UpdateSubscriptionCommissionProgram**](AffiliateApi.md#updatesubscriptioncommissionprogram) | **PATCH** /rest/v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id} | Update a Subscription Commission Program |
 
 <a id="addaffiliate"></a>
 # **AddAffiliate**
-> RestAffiliate AddAffiliate (CreateAffiliateRequest? createAffiliateRequest = null)
+> RestAffiliate AddAffiliate (CreateAffiliateRequest createAffiliateRequest)
 
 Create an Affiliate
 
@@ -61,9 +63,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AffiliateApi(config);
-            var createAffiliateRequest = new CreateAffiliateRequest?(); // CreateAffiliateRequest? | Affiliate request to insert (optional) 
+            var createAffiliateRequest = new CreateAffiliateRequest(); // CreateAffiliateRequest | 
 
             try
             {
@@ -106,7 +111,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **createAffiliateRequest** | [**CreateAffiliateRequest?**](CreateAffiliateRequest?.md) | Affiliate request to insert | [optional]  |
+| **createAffiliateRequest** | [**CreateAffiliateRequest**](CreateAffiliateRequest.md) |  |  |
 
 ### Return type
 
@@ -114,7 +119,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -126,9 +131,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -155,10 +164,13 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AffiliateApi(config);
-            var id = "id_example";  // string | id
-            var affiliateAddToProgramRequest = new AffiliateAddToProgramRequest(); // AffiliateAddToProgramRequest | affiliateAddToProgramRequest
+            var id = "id_example";  // string | 
+            var affiliateAddToProgramRequest = new AffiliateAddToProgramRequest(); // AffiliateAddToProgramRequest | 
 
             try
             {
@@ -197,8 +209,8 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **id** | **string** | id |  |
-| **affiliateAddToProgramRequest** | [**AffiliateAddToProgramRequest**](AffiliateAddToProgramRequest.md) | affiliateAddToProgramRequest |  |
+| **id** | **string** |  |  |
+| **affiliateAddToProgramRequest** | [**AffiliateAddToProgramRequest**](AffiliateAddToProgramRequest.md) |  |  |
 
 ### Return type
 
@@ -206,7 +218,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -218,15 +230,19 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="addcommissionprogram"></a>
 # **AddCommissionProgram**
-> AffiliateCommissionProgramResponse AddCommissionProgram (CreateCommissionProgramRequest? createCommissionProgramRequest = null)
+> AffiliateCommissionProgramResponse AddCommissionProgram (CreateCommissionProgramRequest createCommissionProgramRequest)
 
 Create an Affiliate Commission Program
 
@@ -247,9 +263,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AffiliateApi(config);
-            var createCommissionProgramRequest = new CreateCommissionProgramRequest?(); // CreateCommissionProgramRequest? | Commission Program to insert (optional) 
+            var createCommissionProgramRequest = new CreateCommissionProgramRequest(); // CreateCommissionProgramRequest | 
 
             try
             {
@@ -292,7 +311,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **createCommissionProgramRequest** | [**CreateCommissionProgramRequest?**](CreateCommissionProgramRequest?.md) | Commission Program to insert | [optional]  |
+| **createCommissionProgramRequest** | [**CreateCommissionProgramRequest**](CreateCommissionProgramRequest.md) |  |  |
 
 ### Return type
 
@@ -300,7 +319,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -312,15 +331,19 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="assignproductcommissionprogram"></a>
 # **AssignProductCommissionProgram**
-> ProductCommissionProgram AssignProductCommissionProgram (string commissionProgramId, CreateProductCommissionProgramRequest? createProductCommissionProgramRequest = null)
+> ProductCommissionProgram AssignProductCommissionProgram (string commissionProgramId, CreateProductCommissionProgramRequest createProductCommissionProgramRequest)
 
 Assign a Product Commission Program
 
@@ -341,10 +364,13 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AffiliateApi(config);
-            var commissionProgramId = "commissionProgramId_example";  // string | commission_program_id
-            var createProductCommissionProgramRequest = new CreateProductCommissionProgramRequest?(); // CreateProductCommissionProgramRequest? | Product Commission Program (optional) 
+            var commissionProgramId = "commissionProgramId_example";  // string | 
+            var createProductCommissionProgramRequest = new CreateProductCommissionProgramRequest(); // CreateProductCommissionProgramRequest | 
 
             try
             {
@@ -387,8 +413,8 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **commissionProgramId** | **string** | commission_program_id |  |
-| **createProductCommissionProgramRequest** | [**CreateProductCommissionProgramRequest?**](CreateProductCommissionProgramRequest?.md) | Product Commission Program | [optional]  |
+| **commissionProgramId** | **string** |  |  |
+| **createProductCommissionProgramRequest** | [**CreateProductCommissionProgramRequest**](CreateProductCommissionProgramRequest.md) |  |  |
 
 ### Return type
 
@@ -396,7 +422,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -408,15 +434,19 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="assignsubscriptioncommissionprogram"></a>
 # **AssignSubscriptionCommissionProgram**
-> SubscriptionCommissionProgram AssignSubscriptionCommissionProgram (string commissionProgramId, CreateSubscriptionCommissionProgramRequest? createSubscriptionCommissionProgramRequest = null)
+> SubscriptionCommissionProgram AssignSubscriptionCommissionProgram (string commissionProgramId, CreateSubscriptionCommissionProgramRequest createSubscriptionCommissionProgramRequest)
 
 Assign a Subscription Commission Program
 
@@ -437,10 +467,13 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AffiliateApi(config);
-            var commissionProgramId = "commissionProgramId_example";  // string | commission_program_id
-            var createSubscriptionCommissionProgramRequest = new CreateSubscriptionCommissionProgramRequest?(); // CreateSubscriptionCommissionProgramRequest? | Subscription Commission Program (optional) 
+            var commissionProgramId = "commissionProgramId_example";  // string | 
+            var createSubscriptionCommissionProgramRequest = new CreateSubscriptionCommissionProgramRequest(); // CreateSubscriptionCommissionProgramRequest | 
 
             try
             {
@@ -483,8 +516,8 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **commissionProgramId** | **string** | commission_program_id |  |
-| **createSubscriptionCommissionProgramRequest** | [**CreateSubscriptionCommissionProgramRequest?**](CreateSubscriptionCommissionProgramRequest?.md) | Subscription Commission Program | [optional]  |
+| **commissionProgramId** | **string** |  |  |
+| **createSubscriptionCommissionProgramRequest** | [**CreateSubscriptionCommissionProgramRequest**](CreateSubscriptionCommissionProgramRequest.md) |  |  |
 
 ### Return type
 
@@ -492,7 +525,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -504,9 +537,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -533,9 +570,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AffiliateApi(config);
-            var createCustomFieldRequest = new CreateCustomFieldRequest(); // CreateCustomFieldRequest | customField
+            var createCustomFieldRequest = new CreateCustomFieldRequest(); // CreateCustomFieldRequest | 
 
             try
             {
@@ -578,7 +618,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **createCustomFieldRequest** | [**CreateCustomFieldRequest**](CreateCustomFieldRequest.md) | customField |  |
+| **createCustomFieldRequest** | [**CreateCustomFieldRequest**](CreateCustomFieldRequest.md) |  |  |
 
 ### Return type
 
@@ -586,7 +626,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -598,15 +638,19 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="createdefaultcommissionprogram"></a>
 # **CreateDefaultCommissionProgram**
-> SetDefaultCommissionProgramResponse CreateDefaultCommissionProgram (string commissionProgramId, CreateDefaultCommissionProgramRequest? createDefaultCommissionProgramRequest = null)
+> SetDefaultCommissionProgramResponse CreateDefaultCommissionProgram (string commissionProgramId, CreateDefaultCommissionProgramRequest createDefaultCommissionProgramRequest)
 
 Create a Default Commission Program
 
@@ -627,10 +671,13 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AffiliateApi(config);
-            var commissionProgramId = "commissionProgramId_example";  // string | commission_program_id
-            var createDefaultCommissionProgramRequest = new CreateDefaultCommissionProgramRequest?(); // CreateDefaultCommissionProgramRequest? | Values of the Default Commission Program (optional) 
+            var commissionProgramId = "commissionProgramId_example";  // string | 
+            var createDefaultCommissionProgramRequest = new CreateDefaultCommissionProgramRequest(); // CreateDefaultCommissionProgramRequest | 
 
             try
             {
@@ -673,8 +720,8 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **commissionProgramId** | **string** | commission_program_id |  |
-| **createDefaultCommissionProgramRequest** | [**CreateDefaultCommissionProgramRequest?**](CreateDefaultCommissionProgramRequest?.md) | Values of the Default Commission Program | [optional]  |
+| **commissionProgramId** | **string** |  |  |
+| **createDefaultCommissionProgramRequest** | [**CreateDefaultCommissionProgramRequest**](CreateDefaultCommissionProgramRequest.md) |  |  |
 
 ### Return type
 
@@ -682,7 +729,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -694,9 +741,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -723,9 +774,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AffiliateApi(config);
-            var createOrUpdateAffiliateLinkRequest = new CreateOrUpdateAffiliateLinkRequest(); // CreateOrUpdateAffiliateLinkRequest | request
+            var createOrUpdateAffiliateLinkRequest = new CreateOrUpdateAffiliateLinkRequest(); // CreateOrUpdateAffiliateLinkRequest | 
 
             try
             {
@@ -768,7 +822,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **createOrUpdateAffiliateLinkRequest** | [**CreateOrUpdateAffiliateLinkRequest**](CreateOrUpdateAffiliateLinkRequest.md) | request |  |
+| **createOrUpdateAffiliateLinkRequest** | [**CreateOrUpdateAffiliateLinkRequest**](CreateOrUpdateAffiliateLinkRequest.md) |  |  |
 
 ### Return type
 
@@ -776,7 +830,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -788,9 +842,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -817,9 +875,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AffiliateApi(config);
-            var id = "id_example";  // string | id
+            var id = "id_example";  // string | 
 
             try
             {
@@ -858,7 +919,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **id** | **string** | id |  |
+| **id** | **string** |  |  |
 
 ### Return type
 
@@ -866,7 +927,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -878,10 +939,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -908,9 +972,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AffiliateApi(config);
-            var commissionProgramId = "commissionProgramId_example";  // string | commission_program_id
+            var commissionProgramId = "commissionProgramId_example";  // string | 
 
             try
             {
@@ -949,7 +1016,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **commissionProgramId** | **string** | commission_program_id |  |
+| **commissionProgramId** | **string** |  |  |
 
 ### Return type
 
@@ -957,7 +1024,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -969,10 +1036,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -999,9 +1069,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AffiliateApi(config);
-            var customFieldId = "customFieldId_example";  // string | custom_field_id
+            var customFieldId = "customFieldId_example";  // string | 
 
             try
             {
@@ -1040,7 +1113,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **customFieldId** | **string** | custom_field_id |  |
+| **customFieldId** | **string** |  |  |
 
 ### Return type
 
@@ -1048,7 +1121,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1060,10 +1133,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1090,9 +1166,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AffiliateApi(config);
-            var redirectId = "redirectId_example";  // string | redirect_id
+            var redirectId = "redirectId_example";  // string | 
 
             try
             {
@@ -1131,7 +1210,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **redirectId** | **string** | redirect_id |  |
+| **redirectId** | **string** |  |  |
 
 ### Return type
 
@@ -1139,7 +1218,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1151,10 +1230,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1181,9 +1263,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AffiliateApi(config);
-            var id = "id_example";  // string | id
+            var id = "id_example";  // string | 
 
             try
             {
@@ -1226,7 +1311,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **id** | **string** | id |  |
+| **id** | **string** |  |  |
 
 ### Return type
 
@@ -1234,7 +1319,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1246,10 +1331,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1276,9 +1364,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AffiliateApi(config);
-            var affiliateId = "affiliateId_example";  // string | affiliate_id
+            var affiliateId = "affiliateId_example";  // string | 
 
             try
             {
@@ -1321,7 +1412,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **affiliateId** | **string** | affiliate_id |  |
+| **affiliateId** | **string** |  |  |
 
 ### Return type
 
@@ -1329,7 +1420,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1341,10 +1432,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1352,9 +1446,9 @@ No authorization required
 # **GetAffiliateCommissions**
 > ListAffiliateCommissionsResponse GetAffiliateCommissions (string affiliateId, string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
 
-Retrieve Affiliate Commission and Clawbacks
+Retrieve Affiliate Commissions
 
-Retrieve a list of Affiliate's Commissions and Clawbacks
+Retrieve a list of Affiliate's Commissions
 
 ### Example
 ```csharp
@@ -1371,17 +1465,20 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AffiliateApi(config);
-            var affiliateId = "affiliateId_example";  // string | affiliate_id
-            var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (String) `affiliateId` - (String) `since_time` - (String) `until_time` You will need to apply the `==` operator to check the equality of one of the filters with your searched  word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:  - `filter=since_time%3D%3D2024-09-17T-15:50+00`  - `filter=until_time%3D%3D2024-09-17T-15:50+00`  - `filter=affiliateId%3D%3D123`  (optional) 
-            var orderBy = "orderBy_example";  // string? | Attribute and direction to order items. One of the following fields: - `invoice_id` - `affowed_id` - `date_earned`  One of the following directions: - `asc` - `desc` (optional) 
+            var affiliateId = "affiliateId_example";  // string | 
+            var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (String) `since_time` - (String) `until_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=since_time%3D%3D2024-05-21T23:00:00Z%3Buntil_time%3D%3D2025-05-21T23:00:00Z` - `filter=until_time%3D%3D2025-05-21T23:00:00Z`  (optional) 
+            var orderBy = "orderBy_example";  // string? | Attribute and direction to order items. One of the following fields: - `invoice_id` - `time_earned`  One of the following directions: - `asc` - `desc` (optional) 
             var pageSize = 0;  // int? | Total number of items to return per page (optional) 
             var pageToken = "pageToken_example";  // string? | Page token (optional) 
 
             try
             {
-                // Retrieve Affiliate Commission and Clawbacks
+                // Retrieve Affiliate Commissions
                 ListAffiliateCommissionsResponse result = apiInstance.GetAffiliateCommissions(affiliateId, filter, orderBy, pageSize, pageToken);
                 Debug.WriteLine(result);
             }
@@ -1402,7 +1499,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    // Retrieve Affiliate Commission and Clawbacks
+    // Retrieve Affiliate Commissions
     ApiResponse<ListAffiliateCommissionsResponse> response = apiInstance.GetAffiliateCommissionsWithHttpInfo(affiliateId, filter, orderBy, pageSize, pageToken);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
@@ -1420,9 +1517,9 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **affiliateId** | **string** | affiliate_id |  |
-| **filter** | **string?** | Filter to apply, allowed fields are: - (String) &#x60;affiliateId&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched  word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;since_time%3D%3D2024-09-17T-15:50+00&#x60;  - &#x60;filter&#x3D;until_time%3D%3D2024-09-17T-15:50+00&#x60;  - &#x60;filter&#x3D;affiliateId%3D%3D123&#x60;  | [optional]  |
-| **orderBy** | **string?** | Attribute and direction to order items. One of the following fields: - &#x60;invoice_id&#x60; - &#x60;affowed_id&#x60; - &#x60;date_earned&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional]  |
+| **affiliateId** | **string** |  |  |
+| **filter** | **string?** | Filter to apply, allowed fields are: - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;since_time%3D%3D2024-05-21T23:00:00Z%3Buntil_time%3D%3D2025-05-21T23:00:00Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-05-21T23:00:00Z&#x60;  | [optional]  |
+| **orderBy** | **string?** | Attribute and direction to order items. One of the following fields: - &#x60;invoice_id&#x60; - &#x60;time_earned&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional]  |
 | **pageSize** | **int?** | Total number of items to return per page | [optional]  |
 | **pageToken** | **string?** | Page token | [optional]  |
 
@@ -1432,7 +1529,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1444,10 +1541,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1474,7 +1574,10 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AffiliateApi(config);
 
             try
@@ -1522,7 +1625,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1534,16 +1637,19 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="getcommissionprogram"></a>
 # **GetCommissionProgram**
-> AffiliateProgramV2 GetCommissionProgram (string commissionProgramId)
+> GetRestCommissionProgram GetCommissionProgram (string commissionProgramId)
 
 Retrieve a Commission Program
 
@@ -1564,14 +1670,17 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AffiliateApi(config);
-            var commissionProgramId = "commissionProgramId_example";  // string | commission_program_id
+            var commissionProgramId = "commissionProgramId_example";  // string | 
 
             try
             {
                 // Retrieve a Commission Program
-                AffiliateProgramV2 result = apiInstance.GetCommissionProgram(commissionProgramId);
+                GetRestCommissionProgram result = apiInstance.GetCommissionProgram(commissionProgramId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1592,7 +1701,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Retrieve a Commission Program
-    ApiResponse<AffiliateProgramV2> response = apiInstance.GetCommissionProgramWithHttpInfo(commissionProgramId);
+    ApiResponse<GetRestCommissionProgram> response = apiInstance.GetCommissionProgramWithHttpInfo(commissionProgramId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -1609,15 +1718,15 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **commissionProgramId** | **string** | commission_program_id |  |
+| **commissionProgramId** | **string** |  |  |
 
 ### Return type
 
-[**AffiliateProgramV2**](AffiliateProgramV2.md)
+[**GetRestCommissionProgram**](GetRestCommissionProgram.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1629,10 +1738,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1659,9 +1771,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AffiliateApi(config);
-            var redirectId = "redirectId_example";  // string | redirect_id
+            var redirectId = "redirectId_example";  // string | 
 
             try
             {
@@ -1704,7 +1819,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **redirectId** | **string** | redirect_id |  |
+| **redirectId** | **string** |  |  |
 
 ### Return type
 
@@ -1712,7 +1827,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1724,10 +1839,114 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="getreferralsbyaffiliateid"></a>
+# **GetReferralsByAffiliateId**
+> ListAffiliateReferralsResponse GetReferralsByAffiliateId (string affiliateId)
+
+Retrieve Affiliate Referrals
+
+Retrieves all referrals belonging to the given affiliate
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class GetReferralsByAffiliateIdExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new AffiliateApi(config);
+            var affiliateId = "affiliateId_example";  // string | 
+
+            try
+            {
+                // Retrieve Affiliate Referrals
+                ListAffiliateReferralsResponse result = apiInstance.GetReferralsByAffiliateId(affiliateId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling AffiliateApi.GetReferralsByAffiliateId: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GetReferralsByAffiliateIdWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Retrieve Affiliate Referrals
+    ApiResponse<ListAffiliateReferralsResponse> response = apiInstance.GetReferralsByAffiliateIdWithHttpInfo(affiliateId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling AffiliateApi.GetReferralsByAffiliateIdWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **affiliateId** | **string** |  |  |
+
+### Return type
+
+[**ListAffiliateReferralsResponse**](ListAffiliateReferralsResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1754,9 +1973,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AffiliateApi(config);
-            var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (String) `affiliate_name` - (String) `contact_id` - (String) `status` - (String) `code`  (optional) 
+            var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (String) `affiliate_name` - (String) `contact_id` - (String) `referral_contact_id` - (String) `status` - (String) `code`  You will need to apply the `==` operator to check the equality of one of the filters with the value you want to match, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=affiliate_name%3D%3DBob` - `filter=contact_id%3D%3D567` - `filter=contact_id%3D%3D123%3Bcode%3D%3D567` (optional) 
             var orderBy = "orderBy_example";  // string? | Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `name` - `status` - `code`  One of the following directions: - `asc` - `desc`  (optional) 
             var pageSize = 0;  // int? | Total number of items to return per page (optional) 
             var pageToken = "pageToken_example";  // string? | Page token (optional) 
@@ -1802,7 +2024,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **filter** | **string?** | Filter to apply, allowed fields are: - (String) &#x60;affiliate_name&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;code&#x60;  | [optional]  |
+| **filter** | **string?** | Filter to apply, allowed fields are: - (String) &#x60;affiliate_name&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;referral_contact_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;code&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with the value you want to match, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;affiliate_name%3D%3DBob&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bcode%3D%3D567&#x60; | [optional]  |
 | **orderBy** | **string?** | Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;name&#x60; - &#x60;status&#x60; - &#x60;code&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  | [optional]  |
 | **pageSize** | **int?** | Total number of items to return per page | [optional]  |
 | **pageToken** | **string?** | Page token | [optional]  |
@@ -1813,7 +2035,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1825,10 +2047,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1855,7 +2080,10 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AffiliateApi(config);
             var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (String) `name` - (String) `affiliate_id`  (optional) 
             var orderBy = "orderBy_example";  // string? | Attribute and direction to order items. One of the following fields: - `name` - `date_created`  One of the following directions: - `asc` - `desc` (optional) 
@@ -1914,7 +2142,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1926,10 +2154,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1956,7 +2187,10 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AffiliateApi(config);
             var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (String) `name` - (String) `affiliate_id`  (optional) 
             var orderBy = "orderBy_example";  // string? | Attribute and direction to order items. One of the following fields: - `name` - `date_created`  One of the following directions: - `asc` - `desc` (optional) 
@@ -2015,7 +2249,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -2027,10 +2261,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2057,10 +2294,13 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AffiliateApi(config);
-            var affiliateId = "affiliateId_example";  // string | affiliate_id
-            var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (String) `since_time` - (String) `until_time` You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=since_time%3D%3D2024-09-17T-15:50+00` - `filter=until_time%3D%3D2024-09-17T-15:50+00`  (optional) 
+            var affiliateId = "affiliateId_example";  // string | 
+            var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (String) `since_time` - (String) `until_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=since_time%3D%3D2024-09-17T-15:50+00` - `filter=until_time%3D%3D2024-09-17T-15:50+00`  (optional) 
             var orderBy = "orderBy_example";  // string? | Attribute and direction to order items. One of the following fields: - `create_time` - `pay_date` - `pay_amount`  One of the following directions: - `asc` - `desc`  (optional) 
             var pageSize = 0;  // int? | Total number of items to return per page (optional) 
             var pageToken = "pageToken_example";  // string? | Page token (optional) 
@@ -2106,8 +2346,8 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **affiliateId** | **string** | affiliate_id |  |
-| **filter** | **string?** | Filter to apply, allowed fields are: - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;since_time%3D%3D2024-09-17T-15:50+00&#x60; - &#x60;filter&#x3D;until_time%3D%3D2024-09-17T-15:50+00&#x60;  | [optional]  |
+| **affiliateId** | **string** |  |  |
+| **filter** | **string?** | Filter to apply, allowed fields are: - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;since_time%3D%3D2024-09-17T-15:50+00&#x60; - &#x60;filter&#x3D;until_time%3D%3D2024-09-17T-15:50+00&#x60;  | [optional]  |
 | **orderBy** | **string?** | Attribute and direction to order items. One of the following fields: - &#x60;create_time&#x60; - &#x60;pay_date&#x60; - &#x60;pay_amount&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  | [optional]  |
 | **pageSize** | **int?** | Total number of items to return per page | [optional]  |
 | **pageToken** | **string?** | Page token | [optional]  |
@@ -2118,7 +2358,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -2130,10 +2370,114 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="listcommissionprogramresources"></a>
+# **ListCommissionProgramResources**
+> ListProgramResourcesResponse ListCommissionProgramResources (string commissionProgramId)
+
+Retrieve Commission Program Resources
+
+Retrieves resources for a commission program
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class ListCommissionProgramResourcesExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new AffiliateApi(config);
+            var commissionProgramId = "commissionProgramId_example";  // string | 
+
+            try
+            {
+                // Retrieve Commission Program Resources
+                ListProgramResourcesResponse result = apiInstance.ListCommissionProgramResources(commissionProgramId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling AffiliateApi.ListCommissionProgramResources: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the ListCommissionProgramResourcesWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Retrieve Commission Program Resources
+    ApiResponse<ListProgramResourcesResponse> response = apiInstance.ListCommissionProgramResourcesWithHttpInfo(commissionProgramId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling AffiliateApi.ListCommissionProgramResourcesWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **commissionProgramId** | **string** |  |  |
+
+### Return type
+
+[**ListProgramResourcesResponse**](ListProgramResourcesResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2160,9 +2504,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AffiliateApi(config);
-            var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (List[String]) `affiliate_ids` - (String) `since_time` - (String) `until_time` You will need to apply the `==` operator to check the equality of one of the filters with your searched  word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:  - `filter=since_time%3D%3D2024-09-17T-15:50+00`  - `filter=until_time%3D%3D2024-09-17T-15:50+00`  - `filter=affiliate_ids%3D%3D123,456,789`  (optional) 
+            var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (List[String]) `affiliate_ids` - (String) `since_time` - (String) `until_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched  word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:  - `filter=since_time%3D%3D2024-09-17T-15:50+00`  - `filter=until_time%3D%3D2024-09-17T-15:50+00`  - `filter=affiliate_ids%3D%3D123,456,789`  (optional) 
             var orderBy = "orderBy_example";  // string? | Attribute and direction to order items. One of the following fields: - `affiliate_id` - `amount_earned` - `balance` - `clawbacks`  One of the following directions: - `asc` - `desc` (optional) 
             var pageSize = 0;  // int? | Total number of items to return per page (optional) 
             var pageToken = "pageToken_example";  // string? | Page token (optional) 
@@ -2208,7 +2555,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **filter** | **string?** | Filter to apply, allowed fields are: - (List[String]) &#x60;affiliate_ids&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched  word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;since_time%3D%3D2024-09-17T-15:50+00&#x60;  - &#x60;filter&#x3D;until_time%3D%3D2024-09-17T-15:50+00&#x60;  - &#x60;filter&#x3D;affiliate_ids%3D%3D123,456,789&#x60;  | [optional]  |
+| **filter** | **string?** | Filter to apply, allowed fields are: - (List[String]) &#x60;affiliate_ids&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched  word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;since_time%3D%3D2024-09-17T-15:50+00&#x60;  - &#x60;filter&#x3D;until_time%3D%3D2024-09-17T-15:50+00&#x60;  - &#x60;filter&#x3D;affiliate_ids%3D%3D123,456,789&#x60;  | [optional]  |
 | **orderBy** | **string?** | Attribute and direction to order items. One of the following fields: - &#x60;affiliate_id&#x60; - &#x60;amount_earned&#x60; - &#x60;balance&#x60; - &#x60;clawbacks&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional]  |
 | **pageSize** | **int?** | Total number of items to return per page | [optional]  |
 | **pageToken** | **string?** | Page token | [optional]  |
@@ -2219,7 +2566,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -2231,10 +2578,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2261,10 +2611,13 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AffiliateApi(config);
-            var id = "id_example";  // string | id
-            var affiliateRemoveFromProgramRequest = new AffiliateRemoveFromProgramRequest(); // AffiliateRemoveFromProgramRequest | removeFromProgramRequest
+            var id = "id_example";  // string | 
+            var affiliateRemoveFromProgramRequest = new AffiliateRemoveFromProgramRequest(); // AffiliateRemoveFromProgramRequest | 
 
             try
             {
@@ -2303,8 +2656,8 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **id** | **string** | id |  |
-| **affiliateRemoveFromProgramRequest** | [**AffiliateRemoveFromProgramRequest**](AffiliateRemoveFromProgramRequest.md) | removeFromProgramRequest |  |
+| **id** | **string** |  |  |
+| **affiliateRemoveFromProgramRequest** | [**AffiliateRemoveFromProgramRequest**](AffiliateRemoveFromProgramRequest.md) |  |  |
 
 ### Return type
 
@@ -2312,7 +2665,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -2324,9 +2677,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2353,10 +2710,13 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AffiliateApi(config);
-            var commissionId = "commissionId_example";  // string | commission_id
-            var deleteProgramCommissionRequest = new DeleteProgramCommissionRequest(); // DeleteProgramCommissionRequest | deleteProgramCommissionRequest
+            var commissionId = "commissionId_example";  // string | 
+            var deleteProgramCommissionRequest = new DeleteProgramCommissionRequest(); // DeleteProgramCommissionRequest | 
 
             try
             {
@@ -2395,8 +2755,8 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **commissionId** | **string** | commission_id |  |
-| **deleteProgramCommissionRequest** | [**DeleteProgramCommissionRequest**](DeleteProgramCommissionRequest.md) | deleteProgramCommissionRequest |  |
+| **commissionId** | **string** |  |  |
+| **deleteProgramCommissionRequest** | [**DeleteProgramCommissionRequest**](DeleteProgramCommissionRequest.md) |  |  |
 
 ### Return type
 
@@ -2404,7 +2764,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -2416,9 +2776,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2445,10 +2809,13 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AffiliateApi(config);
-            var commissionId = "commissionId_example";  // string | commission_id
-            var deleteSubscriptionPlanCommissionRequest = new DeleteSubscriptionPlanCommissionRequest(); // DeleteSubscriptionPlanCommissionRequest | deleteSubscriptionPlanCommissionRequest
+            var commissionId = "commissionId_example";  // string | 
+            var deleteSubscriptionPlanCommissionRequest = new DeleteSubscriptionPlanCommissionRequest(); // DeleteSubscriptionPlanCommissionRequest | 
 
             try
             {
@@ -2487,8 +2854,8 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **commissionId** | **string** | commission_id |  |
-| **deleteSubscriptionPlanCommissionRequest** | [**DeleteSubscriptionPlanCommissionRequest**](DeleteSubscriptionPlanCommissionRequest.md) | deleteSubscriptionPlanCommissionRequest |  |
+| **commissionId** | **string** |  |  |
+| **deleteSubscriptionPlanCommissionRequest** | [**DeleteSubscriptionPlanCommissionRequest**](DeleteSubscriptionPlanCommissionRequest.md) |  |  |
 
 ### Return type
 
@@ -2496,7 +2863,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -2508,15 +2875,19 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="updateaffiliate"></a>
 # **UpdateAffiliate**
-> RestAffiliate UpdateAffiliate (string id, UpdateAffiliateRequest? updateAffiliateRequest = null)
+> RestAffiliate UpdateAffiliate (string id, UpdateAffiliateRequest updateAffiliateRequest)
 
 Update an Affiliate
 
@@ -2537,10 +2908,13 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AffiliateApi(config);
-            var id = "id_example";  // string | id
-            var updateAffiliateRequest = new UpdateAffiliateRequest?(); // UpdateAffiliateRequest? | Request to update an affiliate (optional) 
+            var id = "id_example";  // string | 
+            var updateAffiliateRequest = new UpdateAffiliateRequest(); // UpdateAffiliateRequest | 
 
             try
             {
@@ -2583,8 +2957,8 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **id** | **string** | id |  |
-| **updateAffiliateRequest** | [**UpdateAffiliateRequest?**](UpdateAffiliateRequest?.md) | Request to update an affiliate | [optional]  |
+| **id** | **string** |  |  |
+| **updateAffiliateRequest** | [**UpdateAffiliateRequest**](UpdateAffiliateRequest.md) |  |  |
 
 ### Return type
 
@@ -2592,7 +2966,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -2604,16 +2978,19 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="updateaffiliatecustomfield"></a>
 # **UpdateAffiliateCustomField**
-> CustomFieldMetaData UpdateAffiliateCustomField (string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, List<string>? updateMask = null)
+> CustomFieldMetaData UpdateAffiliateCustomField (string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, string? updateMask = null)
 
 Update a Custom Field
 
@@ -2634,11 +3011,14 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AffiliateApi(config);
-            var customFieldId = "customFieldId_example";  // string | custom_field_id
-            var updateCustomFieldMetaDataRequest = new UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | request
-            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var customFieldId = "customFieldId_example";  // string | 
+            var updateCustomFieldMetaDataRequest = new UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | 
+            var updateMask = "group_id,label,options";  // string? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -2681,9 +3061,9 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **customFieldId** | **string** | custom_field_id |  |
-| **updateCustomFieldMetaDataRequest** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md) | request |  |
-| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **customFieldId** | **string** |  |  |
+| **updateCustomFieldMetaDataRequest** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md) |  |  |
+| **updateMask** | **string?** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 
@@ -2691,7 +3071,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -2703,16 +3083,19 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="updatecommissionprogram"></a>
 # **UpdateCommissionProgram**
-> AffiliateCommissionProgramResponse UpdateCommissionProgram (string commissionProgramId, UpdateCommissionProgramRequest updateCommissionProgramRequest, List<string>? updateMask = null)
+> AffiliateCommissionProgramResponse UpdateCommissionProgram (string commissionProgramId, UpdateCommissionProgramRequest updateCommissionProgramRequest, string? updateMask = null)
 
 Update an Affiliate Commission Program
 
@@ -2733,11 +3116,14 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AffiliateApi(config);
-            var commissionProgramId = "commissionProgramId_example";  // string | commission_program_id
-            var updateCommissionProgramRequest = new UpdateCommissionProgramRequest(); // UpdateCommissionProgramRequest | updateCommissionProgramRequest
-            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var commissionProgramId = "commissionProgramId_example";  // string | 
+            var updateCommissionProgramRequest = new UpdateCommissionProgramRequest(); // UpdateCommissionProgramRequest | 
+            var updateMask = "name,notes,priority";  // string? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -2780,9 +3166,9 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **commissionProgramId** | **string** | commission_program_id |  |
-| **updateCommissionProgramRequest** | [**UpdateCommissionProgramRequest**](UpdateCommissionProgramRequest.md) | updateCommissionProgramRequest |  |
-| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **commissionProgramId** | **string** |  |  |
+| **updateCommissionProgramRequest** | [**UpdateCommissionProgramRequest**](UpdateCommissionProgramRequest.md) |  |  |
+| **updateMask** | **string?** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 
@@ -2790,7 +3176,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -2802,16 +3188,19 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="updatedefaultcommissionprogram"></a>
 # **UpdateDefaultCommissionProgram**
-> SetDefaultCommissionProgramResponse UpdateDefaultCommissionProgram (string commissionProgramId, List<string>? updateMask = null, UpdateDefaultCommissionProgramRequest? updateDefaultCommissionProgramRequest = null)
+> SetDefaultCommissionProgramResponse UpdateDefaultCommissionProgram (string commissionProgramId, UpdateDefaultCommissionProgramRequest updateDefaultCommissionProgramRequest, List<string>? updateMask = null)
 
 Update a Default Commission Program
 
@@ -2832,16 +3221,19 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AffiliateApi(config);
-            var commissionProgramId = "commissionProgramId_example";  // string | commission_program_id
-            var updateMask = new List<string>?(); // List<string>? | update_mask (optional) 
-            var updateDefaultCommissionProgramRequest = new UpdateDefaultCommissionProgramRequest?(); // UpdateDefaultCommissionProgramRequest? | Values of the default Commission Program (optional) 
+            var commissionProgramId = "commissionProgramId_example";  // string | 
+            var updateDefaultCommissionProgramRequest = new UpdateDefaultCommissionProgramRequest(); // UpdateDefaultCommissionProgramRequest | 
+            var updateMask = new List<string>?(); // List<string>? |  (optional) 
 
             try
             {
                 // Update a Default Commission Program
-                SetDefaultCommissionProgramResponse result = apiInstance.UpdateDefaultCommissionProgram(commissionProgramId, updateMask, updateDefaultCommissionProgramRequest);
+                SetDefaultCommissionProgramResponse result = apiInstance.UpdateDefaultCommissionProgram(commissionProgramId, updateDefaultCommissionProgramRequest, updateMask);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2862,7 +3254,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Update a Default Commission Program
-    ApiResponse<SetDefaultCommissionProgramResponse> response = apiInstance.UpdateDefaultCommissionProgramWithHttpInfo(commissionProgramId, updateMask, updateDefaultCommissionProgramRequest);
+    ApiResponse<SetDefaultCommissionProgramResponse> response = apiInstance.UpdateDefaultCommissionProgramWithHttpInfo(commissionProgramId, updateDefaultCommissionProgramRequest, updateMask);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -2879,9 +3271,9 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **commissionProgramId** | **string** | commission_program_id |  |
-| **updateMask** | [**List&lt;string&gt;?**](string.md) | update_mask | [optional]  |
-| **updateDefaultCommissionProgramRequest** | [**UpdateDefaultCommissionProgramRequest?**](UpdateDefaultCommissionProgramRequest?.md) | Values of the default Commission Program | [optional]  |
+| **commissionProgramId** | **string** |  |  |
+| **updateDefaultCommissionProgramRequest** | [**UpdateDefaultCommissionProgramRequest**](UpdateDefaultCommissionProgramRequest.md) |  |  |
+| **updateMask** | [**List&lt;string&gt;?**](string.md) |  | [optional]  |
 
 ### Return type
 
@@ -2889,7 +3281,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -2901,16 +3293,19 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="updateproductcommissionprogram"></a>
 # **UpdateProductCommissionProgram**
-> ProductCommissionProgram UpdateProductCommissionProgram (string commissionProgramId, List<string>? updateMask = null, UpdateProductCommissionProgramRequest? updateProductCommissionProgramRequest = null)
+> ProductCommissionProgram UpdateProductCommissionProgram (string commissionProgramId, UpdateProductCommissionProgramRequest updateProductCommissionProgramRequest, List<string>? updateMask = null)
 
 Update a Product Commission Program
 
@@ -2931,16 +3326,19 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AffiliateApi(config);
-            var commissionProgramId = "commissionProgramId_example";  // string | commission_program_id
-            var updateMask = new List<string>?(); // List<string>? | update_mask (optional) 
-            var updateProductCommissionProgramRequest = new UpdateProductCommissionProgramRequest?(); // UpdateProductCommissionProgramRequest? | Values of the product Commission Program (optional) 
+            var commissionProgramId = "commissionProgramId_example";  // string | 
+            var updateProductCommissionProgramRequest = new UpdateProductCommissionProgramRequest(); // UpdateProductCommissionProgramRequest | 
+            var updateMask = new List<string>?(); // List<string>? |  (optional) 
 
             try
             {
                 // Update a Product Commission Program
-                ProductCommissionProgram result = apiInstance.UpdateProductCommissionProgram(commissionProgramId, updateMask, updateProductCommissionProgramRequest);
+                ProductCommissionProgram result = apiInstance.UpdateProductCommissionProgram(commissionProgramId, updateProductCommissionProgramRequest, updateMask);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2961,7 +3359,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Update a Product Commission Program
-    ApiResponse<ProductCommissionProgram> response = apiInstance.UpdateProductCommissionProgramWithHttpInfo(commissionProgramId, updateMask, updateProductCommissionProgramRequest);
+    ApiResponse<ProductCommissionProgram> response = apiInstance.UpdateProductCommissionProgramWithHttpInfo(commissionProgramId, updateProductCommissionProgramRequest, updateMask);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -2978,9 +3376,9 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **commissionProgramId** | **string** | commission_program_id |  |
-| **updateMask** | [**List&lt;string&gt;?**](string.md) | update_mask | [optional]  |
-| **updateProductCommissionProgramRequest** | [**UpdateProductCommissionProgramRequest?**](UpdateProductCommissionProgramRequest?.md) | Values of the product Commission Program | [optional]  |
+| **commissionProgramId** | **string** |  |  |
+| **updateProductCommissionProgramRequest** | [**UpdateProductCommissionProgramRequest**](UpdateProductCommissionProgramRequest.md) |  |  |
+| **updateMask** | [**List&lt;string&gt;?**](string.md) |  | [optional]  |
 
 ### Return type
 
@@ -2988,7 +3386,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -3000,10 +3398,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3030,10 +3431,13 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AffiliateApi(config);
-            var redirectId = "redirectId_example";  // string | redirect_id
-            var createOrUpdateAffiliateLinkRequest = new CreateOrUpdateAffiliateLinkRequest(); // CreateOrUpdateAffiliateLinkRequest | request
+            var redirectId = "redirectId_example";  // string | 
+            var createOrUpdateAffiliateLinkRequest = new CreateOrUpdateAffiliateLinkRequest(); // CreateOrUpdateAffiliateLinkRequest | 
 
             try
             {
@@ -3076,8 +3480,8 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **redirectId** | **string** | redirect_id |  |
-| **createOrUpdateAffiliateLinkRequest** | [**CreateOrUpdateAffiliateLinkRequest**](CreateOrUpdateAffiliateLinkRequest.md) | request |  |
+| **redirectId** | **string** |  |  |
+| **createOrUpdateAffiliateLinkRequest** | [**CreateOrUpdateAffiliateLinkRequest**](CreateOrUpdateAffiliateLinkRequest.md) |  |  |
 
 ### Return type
 
@@ -3085,7 +3489,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -3097,16 +3501,19 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="updatesubscriptioncommissionprogram"></a>
 # **UpdateSubscriptionCommissionProgram**
-> SubscriptionCommissionProgram UpdateSubscriptionCommissionProgram (string commissionProgramId, List<string>? updateMask = null, UpdateSubscriptionCommissionProgramRequest? updateSubscriptionCommissionProgramRequest = null)
+> SubscriptionCommissionProgram UpdateSubscriptionCommissionProgram (string commissionProgramId, UpdateSubscriptionCommissionProgramRequest updateSubscriptionCommissionProgramRequest, List<string>? updateMask = null)
 
 Update a Subscription Commission Program
 
@@ -3127,16 +3534,19 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AffiliateApi(config);
-            var commissionProgramId = "commissionProgramId_example";  // string | commission_program_id
-            var updateMask = new List<string>?(); // List<string>? | update_mask (optional) 
-            var updateSubscriptionCommissionProgramRequest = new UpdateSubscriptionCommissionProgramRequest?(); // UpdateSubscriptionCommissionProgramRequest? | Values of the subscription Commission Program (optional) 
+            var commissionProgramId = "commissionProgramId_example";  // string | 
+            var updateSubscriptionCommissionProgramRequest = new UpdateSubscriptionCommissionProgramRequest(); // UpdateSubscriptionCommissionProgramRequest | 
+            var updateMask = new List<string>?(); // List<string>? |  (optional) 
 
             try
             {
                 // Update a Subscription Commission Program
-                SubscriptionCommissionProgram result = apiInstance.UpdateSubscriptionCommissionProgram(commissionProgramId, updateMask, updateSubscriptionCommissionProgramRequest);
+                SubscriptionCommissionProgram result = apiInstance.UpdateSubscriptionCommissionProgram(commissionProgramId, updateSubscriptionCommissionProgramRequest, updateMask);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -3157,7 +3567,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Update a Subscription Commission Program
-    ApiResponse<SubscriptionCommissionProgram> response = apiInstance.UpdateSubscriptionCommissionProgramWithHttpInfo(commissionProgramId, updateMask, updateSubscriptionCommissionProgramRequest);
+    ApiResponse<SubscriptionCommissionProgram> response = apiInstance.UpdateSubscriptionCommissionProgramWithHttpInfo(commissionProgramId, updateSubscriptionCommissionProgramRequest, updateMask);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -3174,9 +3584,9 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **commissionProgramId** | **string** | commission_program_id |  |
-| **updateMask** | [**List&lt;string&gt;?**](string.md) | update_mask | [optional]  |
-| **updateSubscriptionCommissionProgramRequest** | [**UpdateSubscriptionCommissionProgramRequest?**](UpdateSubscriptionCommissionProgramRequest?.md) | Values of the subscription Commission Program | [optional]  |
+| **commissionProgramId** | **string** |  |  |
+| **updateSubscriptionCommissionProgramRequest** | [**UpdateSubscriptionCommissionProgramRequest**](UpdateSubscriptionCommissionProgramRequest.md) |  |  |
+| **updateMask** | [**List&lt;string&gt;?**](string.md) |  | [optional]  |
 
 ### Return type
 
@@ -3184,7 +3594,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -3196,10 +3606,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

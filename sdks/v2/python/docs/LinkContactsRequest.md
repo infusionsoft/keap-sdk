@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**contact1_id** | **str** |  | [optional] 
-**contact2_id** | **str** |  | [optional] 
-**link_type_id** | **str** |  | [optional] 
+**contact1_id** | **str** | First contact ID to link | [optional] 
+**link_type_id** | **str** | Link type ID | [optional] 
+**contact2_id** | **str** | Second contact ID to link | [optional] 
 
 ## Example
 

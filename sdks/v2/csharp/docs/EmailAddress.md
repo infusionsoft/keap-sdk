@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Email** | **string** |  | [optional] 
-**EmailOptStatus** | **string** |  | [optional] 
-**Field** | **string** |  | [optional] 
+**Email** | **string** | Email address | [optional] 
+**Field** | **string** | Email address slot | [optional] 
+**OptInReason** | **string** | Reason for opting in | [optional] 
 **IsOptIn** | **bool** |  | [optional] 
-**OptInReason** | **string** |  | [optional] 
+**EmailOptStatus** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

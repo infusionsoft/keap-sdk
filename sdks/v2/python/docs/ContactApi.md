@@ -1,24 +1,25 @@
 # keap_core_v2_client.ContactApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_contact**](ContactApi.md#create_contact) | **POST** /v2/contacts | Create a Contact
-[**create_contact_link_type**](ContactApi.md#create_contact_link_type) | **POST** /v2/contacts/links/types | Create a Contact Link type
-[**delete_contact**](ContactApi.md#delete_contact) | **DELETE** /v2/contacts/{contact_id} | Delete a Contact
-[**get_contact**](ContactApi.md#get_contact) | **GET** /v2/contacts/{contact_id} | Retrieve a Contact
-[**link_contacts**](ContactApi.md#link_contacts) | **POST** /v2/contacts:link | Link Contacts
-[**list_contact_link_types**](ContactApi.md#list_contact_link_types) | **GET** /v2/contacts/links/types | List Contact Link types
-[**list_contact_links**](ContactApi.md#list_contact_links) | **GET** /v2/contacts/{contact_id}/links | List Linked Contacts
-[**list_contacts**](ContactApi.md#list_contacts) | **GET** /v2/contacts | List Contacts
-[**retrieve_contact_model**](ContactApi.md#retrieve_contact_model) | **GET** /v2/contacts/model | Retrieve Contact Model
-[**unlink_contacts**](ContactApi.md#unlink_contacts) | **POST** /v2/contacts:unlink | Delete Link between two Contacts
-[**update_contact**](ContactApi.md#update_contact) | **PATCH** /v2/contacts/{contact_id} | Update a Contact
+[**create_contact**](ContactApi.md#create_contact) | **POST** /rest/v2/contacts | Create a Contact
+[**create_contact_link_type**](ContactApi.md#create_contact_link_type) | **POST** /rest/v2/contacts/links/types | Create a Contact Link type
+[**delete_contact**](ContactApi.md#delete_contact) | **DELETE** /rest/v2/contacts/{contact_id} | Delete a Contact
+[**get_contact**](ContactApi.md#get_contact) | **GET** /rest/v2/contacts/{contact_id} | Retrieve a Contact
+[**link_contacts**](ContactApi.md#link_contacts) | **POST** /rest/v2/contacts:link | Link Contacts
+[**list_contact_link_types**](ContactApi.md#list_contact_link_types) | **GET** /rest/v2/contacts/links/types | List Contact Link types
+[**list_contact_links**](ContactApi.md#list_contact_links) | **GET** /rest/v2/contacts/{contact_id}/links | List Linked Contacts
+[**list_contacts**](ContactApi.md#list_contacts) | **GET** /rest/v2/contacts | List Contacts
+[**list_tags_for_contact**](ContactApi.md#list_tags_for_contact) | **GET** /rest/v2/contacts/{contact_id}/tags | List Applied Tags
+[**retrieve_contact_model**](ContactApi.md#retrieve_contact_model) | **GET** /rest/v2/contacts/model | Retrieve Contact Model
+[**unlink_contacts**](ContactApi.md#unlink_contacts) | **POST** /rest/v2/contacts:unlink | Delete Link between two Contacts
+[**update_contact**](ContactApi.md#update_contact) | **PATCH** /rest/v2/contacts/{contact_id} | Update a Contact
 
 
 # **create_contact**
-> Contact create_contact(create_update_contact_request=create_update_contact_request)
+> Contact create_contact(create_update_contact_request, fields=fields)
 
 Create a Contact
 
@@ -27,6 +28,7 @@ Creates a new Contact.
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
@@ -35,21 +37,28 @@ from keap_core_v2_client.models.create_update_contact_request import CreateUpdat
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.ContactApi(api_client)
-    create_update_contact_request = keap_core_v2_client.CreateUpdateContactRequest() # CreateUpdateContactRequest | contact (optional)
+    create_update_contact_request = keap_core_v2_client.CreateUpdateContactRequest() # CreateUpdateContactRequest | 
+    fields = ['fields_example'] # List[str] | Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website) (optional)
 
     try:
         # Create a Contact
-        api_response = api_instance.create_contact(create_update_contact_request=create_update_contact_request)
+        api_response = api_instance.create_contact(create_update_contact_request, fields=fields)
         print("The response of ContactApi->create_contact:\n")
         pprint(api_response)
     except Exception as e:
@@ -62,7 +71,8 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **create_update_contact_request** | [**CreateUpdateContactRequest**](CreateUpdateContactRequest.md)| contact | [optional] 
+ **create_update_contact_request** | [**CreateUpdateContactRequest**](CreateUpdateContactRequest.md)|  | 
+ **fields** | [**List[str]**](str.md)| Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website) | [optional] 
 
 ### Return type
 
@@ -70,7 +80,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -82,9 +92,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -97,6 +111,7 @@ Creates a new type of Contact Link
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
@@ -105,17 +120,23 @@ from keap_core_v2_client.models.create_contact_link_type_request import CreateCo
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.ContactApi(api_client)
-    create_contact_link_type_request = keap_core_v2_client.CreateContactLinkTypeRequest() # CreateContactLinkTypeRequest | request
+    create_contact_link_type_request = keap_core_v2_client.CreateContactLinkTypeRequest() # CreateContactLinkTypeRequest | 
 
     try:
         # Create a Contact Link type
@@ -132,7 +153,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **create_contact_link_type_request** | [**CreateContactLinkTypeRequest**](CreateContactLinkTypeRequest.md)| request | 
+ **create_contact_link_type_request** | [**CreateContactLinkTypeRequest**](CreateContactLinkTypeRequest.md)|  | 
 
 ### Return type
 
@@ -140,7 +161,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -152,9 +173,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -167,23 +192,30 @@ Deletes the specified Contact
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.ContactApi(api_client)
-    contact_id = 'contact_id_example' # str | contact_id
+    contact_id = 'contact_id_example' # str | 
 
     try:
         # Delete a Contact
@@ -198,7 +230,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **contact_id** | **str**| contact_id | 
+ **contact_id** | **str**|  | 
 
 ### Return type
 
@@ -206,7 +238,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -218,10 +250,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No Content |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -234,6 +269,7 @@ Retrieves a single Contact
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
@@ -241,17 +277,23 @@ from keap_core_v2_client.models.contact import Contact
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.ContactApi(api_client)
-    contact_id = 'contact_id_example' # str | contact_id
+    contact_id = 'contact_id_example' # str | 
     fields = ['fields_example'] # List[str] | Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website) (optional)
 
     try:
@@ -269,7 +311,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **contact_id** | **str**| contact_id | 
+ **contact_id** | **str**|  | 
  **fields** | [**List[str]**](str.md)| Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website) | [optional] 
 
 ### Return type
@@ -278,7 +320,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -290,10 +332,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -306,6 +351,7 @@ Links two Contacts together using the provided Link type
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
@@ -314,17 +360,23 @@ from keap_core_v2_client.models.link_contacts_request import LinkContactsRequest
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.ContactApi(api_client)
-    link_contacts_request = keap_core_v2_client.LinkContactsRequest() # LinkContactsRequest | linkContactsRequest
+    link_contacts_request = keap_core_v2_client.LinkContactsRequest() # LinkContactsRequest | 
 
     try:
         # Link Contacts
@@ -341,7 +393,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **link_contacts_request** | [**LinkContactsRequest**](LinkContactsRequest.md)| linkContactsRequest | 
+ **link_contacts_request** | [**LinkContactsRequest**](LinkContactsRequest.md)|  | 
 
 ### Return type
 
@@ -349,7 +401,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -361,9 +413,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -376,6 +432,7 @@ Retrieves a list of Contact Link types.
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
@@ -383,17 +440,23 @@ from keap_core_v2_client.models.list_contact_link_types_response import ListCont
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.ContactApi(api_client)
-    filter = 'filter_example' # str | Filter to apply, allowed fields are: - (String) `name` You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=name%3D%3DexpectedValue`  (optional)
+    filter = 'filter_example' # str | Filter to apply, allowed fields are: - (String) `name`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=name%3D%3DexpectedValue`  (optional)
     order_by = 'order_by_example' # str | Attribute and direction to order items. One of the following fields: - `name` - `max_links` - `create_time`  One of the following directions: - `asc` - `desc`  (optional)
     page_size = 0 # int | Total number of items to return per page (optional)
     page_token = 'page_token_example' # str | Page token (optional)
@@ -413,7 +476,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filter** | **str**| Filter to apply, allowed fields are: - (String) &#x60;name&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3DexpectedValue&#x60;  | [optional] 
+ **filter** | **str**| Filter to apply, allowed fields are: - (String) &#x60;name&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3DexpectedValue&#x60;  | [optional] 
  **order_by** | **str**| Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;max_links&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  | [optional] 
  **page_size** | **int**| Total number of items to return per page | [optional] 
  **page_token** | **str**| Page token | [optional] 
@@ -424,7 +487,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -436,10 +499,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -452,6 +518,7 @@ Retrieves a list of Linked Contacts for a given Contact
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
@@ -459,17 +526,23 @@ from keap_core_v2_client.models.list_contact_links_response import ListContactLi
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.ContactApi(api_client)
-    contact_id = 'contact_id_example' # str | contact_id
+    contact_id = 'contact_id_example' # str | 
 
     try:
         # List Linked Contacts
@@ -486,7 +559,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **contact_id** | **str**| contact_id | 
+ **contact_id** | **str**|  | 
 
 ### Return type
 
@@ -494,7 +567,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -506,10 +579,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -522,6 +598,7 @@ Retrieves a list of Contacts
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
@@ -529,12 +606,18 @@ from keap_core_v2_client.models.list_contacts_response import ListContactsRespon
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -572,7 +655,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -584,10 +667,101 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_tags_for_contact**
+> ListContactTagsResponse list_tags_for_contact(contact_id, filter=filter, page_token=page_token, order_by=order_by, page_size=page_size)
+
+List Applied Tags
+
+Retrieves a list of tags applied to the specified Contact
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.list_contact_tags_response import ListContactTagsResponse
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.ContactApi(api_client)
+    contact_id = 'contact_id_example' # str | Contact identifier
+    filter = 'filter_example' # str | Filter to apply, allowed fields are: - (String) `name` - (String) `description` - (String) `category_id` (use `category_id==NONE` to filter tags not assigned to any category) - (String) `since_applied_time` - (String) `until_applied_time` - (String) `since_create_time` - (String) `until_create_time` - (String) `since_update_time` - (String) `until_update_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=name%3D%3DCustomer` - `filter=category_id%3D%3D123` - `filter=category_id%3D%3DNONE` - `filter=since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;`  (optional)
+    page_token = 'page_token_example' # str | Page token (optional)
+    order_by = 'order_by_example' # str | Attribute and direction to order items. One of the following fields: - `name` - `create_time` - `update_time` - `applied_time` - `category_id` One of the following directions: - `asc` - `desc` (optional)
+    page_size = 0 # int | Total number of items to return per page (optional)
+
+    try:
+        # List Applied Tags
+        api_response = api_instance.list_tags_for_contact(contact_id, filter=filter, page_token=page_token, order_by=order_by, page_size=page_size)
+        print("The response of ContactApi->list_tags_for_contact:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ContactApi->list_tags_for_contact: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **contact_id** | **str**| Contact identifier | 
+ **filter** | **str**| Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (String) &#x60;description&#x60; - (String) &#x60;category_id&#x60; (use &#x60;category_id&#x3D;&#x3D;NONE&#x60; to filter tags not assigned to any category) - (String) &#x60;since_applied_time&#x60; - (String) &#x60;until_applied_time&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3DCustomer&#x60; - &#x60;filter&#x3D;category_id%3D%3D123&#x60; - &#x60;filter&#x3D;category_id%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  | [optional] 
+ **page_token** | **str**| Page token | [optional] 
+ **order_by** | **str**| Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60; - &#x60;applied_time&#x60; - &#x60;category_id&#x60; One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] 
+ **page_size** | **int**| Total number of items to return per page | [optional] 
+
+### Return type
+
+[**ListContactTagsResponse**](ListContactTagsResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -600,6 +774,7 @@ Get the custom fields and optional properties for the Contact object
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
@@ -607,12 +782,18 @@ from keap_core_v2_client.models.object_model import ObjectModel
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -638,7 +819,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -650,10 +831,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -666,6 +850,7 @@ Deletes Link between two Contacts
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
@@ -673,17 +858,23 @@ from keap_core_v2_client.models.link_contacts_request import LinkContactsRequest
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.ContactApi(api_client)
-    link_contacts_request = keap_core_v2_client.LinkContactsRequest() # LinkContactsRequest | linkContactsRequest
+    link_contacts_request = keap_core_v2_client.LinkContactsRequest() # LinkContactsRequest | 
 
     try:
         # Delete Link between two Contacts
@@ -698,7 +889,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **link_contacts_request** | [**LinkContactsRequest**](LinkContactsRequest.md)| linkContactsRequest | 
+ **link_contacts_request** | [**LinkContactsRequest**](LinkContactsRequest.md)|  | 
 
 ### Return type
 
@@ -706,7 +897,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -718,14 +909,18 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No Content |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_contact**
-> Contact update_contact(contact_id, update_mask=update_mask, create_update_contact_request=create_update_contact_request)
+> Contact update_contact(contact_id, create_update_contact_request, update_mask=update_mask, fields=fields)
 
 Update a Contact
 
@@ -733,6 +928,7 @@ Updates a Contact
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
@@ -741,23 +937,30 @@ from keap_core_v2_client.models.create_update_contact_request import CreateUpdat
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.ContactApi(api_client)
-    contact_id = 'contact_id_example' # str | contact_id
-    update_mask = ['update_mask_example'] # List[str] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-    create_update_contact_request = keap_core_v2_client.CreateUpdateContactRequest() # CreateUpdateContactRequest | contact (optional)
+    contact_id = 'contact_id_example' # str | 
+    create_update_contact_request = keap_core_v2_client.CreateUpdateContactRequest() # CreateUpdateContactRequest | 
+    update_mask = 'update_mask_example' # str | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+    fields = ['fields_example'] # List[str] | Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website) (optional)
 
     try:
         # Update a Contact
-        api_response = api_instance.update_contact(contact_id, update_mask=update_mask, create_update_contact_request=create_update_contact_request)
+        api_response = api_instance.update_contact(contact_id, create_update_contact_request, update_mask=update_mask, fields=fields)
         print("The response of ContactApi->update_contact:\n")
         pprint(api_response)
     except Exception as e:
@@ -770,9 +973,10 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **contact_id** | **str**| contact_id | 
- **update_mask** | [**List[str]**](str.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
- **create_update_contact_request** | [**CreateUpdateContactRequest**](CreateUpdateContactRequest.md)| contact | [optional] 
+ **contact_id** | **str**|  | 
+ **create_update_contact_request** | [**CreateUpdateContactRequest**](CreateUpdateContactRequest.md)|  | 
+ **update_mask** | **str**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **fields** | [**List[str]**](str.md)| Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website) | [optional] 
 
 ### Return type
 
@@ -780,7 +984,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -792,10 +996,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

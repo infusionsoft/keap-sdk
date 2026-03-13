@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**reason** | **String** |  | [optional] 
+**reason** | **String** | The reason for cancelling the subscription. | [optional] 
 
 

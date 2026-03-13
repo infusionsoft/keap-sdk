@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**next_page_token** | **str** |  | [optional] 
 **product_interest_bundles** | [**List[ProductInterestBundle]**](ProductInterestBundle.md) |  | [optional] 
+**next_page_token** | **str** |  | [optional] 
 
 ## Example
 

@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**checklistItems** | [**[CreateOpportunityStageChecklistItem]**](CreateOpportunityStageChecklistItem.md) |  | [optional] 
 **name** | **String** |  | 
 **order** | **Number** |  | 
-**probability** | **Number** |  | 
 **targetNumberDays** | **Number** |  | 
+**probability** | **Number** |  | 
+**checklistItems** | [**[CreateOpportunityStageChecklistItem]**](CreateOpportunityStageChecklistItem.md) |  | [optional] 
 
 

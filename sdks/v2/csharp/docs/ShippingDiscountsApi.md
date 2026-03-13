@@ -1,14 +1,14 @@
 # Keap.Core.V2.Api.ShippingDiscountsApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**CreateShippingDiscount**](ShippingDiscountsApi.md#createshippingdiscount) | **POST** /v2/discounts/shipping | Create a Shipping Discount |
-| [**DeleteShippingDiscount**](ShippingDiscountsApi.md#deleteshippingdiscount) | **DELETE** /v2/discounts/shipping/{discount_id} | Delete a Shipping Discount |
-| [**GetShippingDiscount**](ShippingDiscountsApi.md#getshippingdiscount) | **GET** /v2/discounts/shipping/{discount_id} | Retrieve a Shipping Discount |
-| [**ListShippingDiscounts**](ShippingDiscountsApi.md#listshippingdiscounts) | **GET** /v2/discounts/shipping | List all Shipping Discounts |
-| [**UpdateShippingDiscount**](ShippingDiscountsApi.md#updateshippingdiscount) | **PATCH** /v2/discounts/shipping/{discount_id} | Update a Shipping Discount |
+| [**CreateShippingDiscount**](ShippingDiscountsApi.md#createshippingdiscount) | **POST** /rest/v2/discounts/shipping | Create a Shipping Discount |
+| [**DeleteShippingDiscount**](ShippingDiscountsApi.md#deleteshippingdiscount) | **DELETE** /rest/v2/discounts/shipping/{discount_id} | Delete a Shipping Discount |
+| [**GetShippingDiscount**](ShippingDiscountsApi.md#getshippingdiscount) | **GET** /rest/v2/discounts/shipping/{discount_id} | Retrieve a Shipping Discount |
+| [**ListShippingDiscounts**](ShippingDiscountsApi.md#listshippingdiscounts) | **GET** /rest/v2/discounts/shipping | List all Shipping Discounts |
+| [**UpdateShippingDiscount**](ShippingDiscountsApi.md#updateshippingdiscount) | **PATCH** /rest/v2/discounts/shipping/{discount_id} | Update a Shipping Discount |
 
 <a id="createshippingdiscount"></a>
 # **CreateShippingDiscount**
@@ -33,9 +33,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new ShippingDiscountsApi(config);
-            var createShippingDiscountRequest = new CreateShippingDiscountRequest(); // CreateShippingDiscountRequest | request
+            var createShippingDiscountRequest = new CreateShippingDiscountRequest(); // CreateShippingDiscountRequest | 
 
             try
             {
@@ -78,7 +81,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **createShippingDiscountRequest** | [**CreateShippingDiscountRequest**](CreateShippingDiscountRequest.md) | request |  |
+| **createShippingDiscountRequest** | [**CreateShippingDiscountRequest**](CreateShippingDiscountRequest.md) |  |  |
 
 ### Return type
 
@@ -86,7 +89,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -98,9 +101,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -127,9 +134,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new ShippingDiscountsApi(config);
-            var discountId = "discountId_example";  // string | discount_id
+            var discountId = "discountId_example";  // string | 
 
             try
             {
@@ -168,7 +178,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **discountId** | **string** | discount_id |  |
+| **discountId** | **string** |  |  |
 
 ### Return type
 
@@ -176,7 +186,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -188,10 +198,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -218,9 +231,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new ShippingDiscountsApi(config);
-            var discountId = "discountId_example";  // string | discount_id
+            var discountId = "discountId_example";  // string | 
 
             try
             {
@@ -263,7 +279,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **discountId** | **string** | discount_id |  |
+| **discountId** | **string** |  |  |
 
 ### Return type
 
@@ -271,7 +287,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -283,10 +299,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -313,7 +332,10 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new ShippingDiscountsApi(config);
             var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (DiscountType) `discount_type`: AMOUNT or PERCENT - (Double) `discount_value`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=discount_type%3D%3DAMOUNT` - `filter=discount_value%3D%3D4.5` - `filter=discount_type%3D%3DAMOUNT%3Bdiscount_value%3D%3D4.5`  (optional) 
             var orderBy = "orderBy_example";  // string? | Attribute and direction to order items. One of the following fields: - `discount_type` - `discount_value` - `id` - `name`  One of the following directions: - `asc` - `desc` (optional) 
@@ -372,7 +394,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -384,16 +406,19 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="updateshippingdiscount"></a>
 # **UpdateShippingDiscount**
-> ShippingDiscount UpdateShippingDiscount (string discountId, UpdateShippingDiscountRequest updateShippingDiscountRequest, List<string>? updateMask = null)
+> ShippingDiscount UpdateShippingDiscount (string discountId, UpdateShippingDiscountRequest updateShippingDiscountRequest, string? updateMask = null)
 
 Update a Shipping Discount
 
@@ -414,11 +439,14 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new ShippingDiscountsApi(config);
-            var discountId = "discountId_example";  // string | discount_id
-            var updateShippingDiscountRequest = new UpdateShippingDiscountRequest(); // UpdateShippingDiscountRequest | request
-            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var discountId = "discountId_example";  // string | 
+            var updateShippingDiscountRequest = new UpdateShippingDiscountRequest(); // UpdateShippingDiscountRequest | 
+            var updateMask = "name,description,discount_type,discount_value,criteria";  // string? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -461,9 +489,9 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **discountId** | **string** | discount_id |  |
-| **updateShippingDiscountRequest** | [**UpdateShippingDiscountRequest**](UpdateShippingDiscountRequest.md) | request |  |
-| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **discountId** | **string** |  |  |
+| **updateShippingDiscountRequest** | [**UpdateShippingDiscountRequest**](UpdateShippingDiscountRequest.md) |  |  |
+| **updateMask** | **string?** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 
@@ -471,7 +499,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -483,10 +511,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

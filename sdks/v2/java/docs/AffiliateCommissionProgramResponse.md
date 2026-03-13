@@ -7,10 +7,10 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**id** | **String** |  |  [optional] |
-|**name** | **String** |  |  [optional] |
-|**notes** | **String** |  |  [optional] |
-|**priority** | **Integer** |  |  [optional] |
+|**id** | **String** | Commission program ID |  [optional] |
+|**name** | **String** | Program name |  [optional] |
+|**notes** | **String** | Program notes |  [optional] |
+|**priority** | **Integer** | Program priority |  [optional] |
 
 
 ## Implemented Interfaces

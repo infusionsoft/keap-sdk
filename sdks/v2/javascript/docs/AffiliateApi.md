@@ -1,48 +1,50 @@
 # KeapCoreServiceV2Sdk.AffiliateApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**addAffiliate**](AffiliateApi.md#addAffiliate) | **POST** /v2/affiliates | Create an Affiliate
-[**addAffiliateToProgram**](AffiliateApi.md#addAffiliateToProgram) | **POST** /v2/affiliates/{id}:assignToProgram | Assign Affiliate to Commission program
-[**addCommissionProgram**](AffiliateApi.md#addCommissionProgram) | **POST** /v2/affiliates/commissionPrograms | Create an Affiliate Commission Program
-[**assignProductCommissionProgram**](AffiliateApi.md#assignProductCommissionProgram) | **POST** /v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Assign a Product Commission Program
-[**assignSubscriptionCommissionProgram**](AffiliateApi.md#assignSubscriptionCommissionProgram) | **POST** /v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id} | Assign a Subscription Commission Program
-[**createAffiliateCustomField**](AffiliateApi.md#createAffiliateCustomField) | **POST** /v2/affiliates/model/customFields | Create an Affiliate Custom Field
-[**createDefaultCommissionProgram**](AffiliateApi.md#createDefaultCommissionProgram) | **POST** /v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Create a Default Commission Program
-[**createRedirectLink**](AffiliateApi.md#createRedirectLink) | **POST** /v2/affiliates/redirects | Create an Affiliate Link
-[**deleteAffiliate**](AffiliateApi.md#deleteAffiliate) | **DELETE** /v2/affiliates/{id} | Delete Affiliate
-[**deleteAffiliateCommissionProgram**](AffiliateApi.md#deleteAffiliateCommissionProgram) | **DELETE** /v2/affiliates/commissionPrograms/{commission_program_id} | Delete a Commission Program
-[**deleteAffiliateCustomField**](AffiliateApi.md#deleteAffiliateCustomField) | **DELETE** /v2/affiliates/model/customFields/{custom_field_id} | Delete a Custom Field
-[**deleteRedirectLink**](AffiliateApi.md#deleteRedirectLink) | **DELETE** /v2/affiliates/redirects/{redirect_id} | Delete an Affiliate Link
-[**getAffiliate**](AffiliateApi.md#getAffiliate) | **GET** /v2/affiliates/{id} | Retrieve an Affiliate
-[**getAffiliateCommissionTotal**](AffiliateApi.md#getAffiliateCommissionTotal) | **GET** /v2/affiliates/{affiliate_id}/commissionTotal | Retrieve Affiliate Commission Earned and View LedgerURl for portal
-[**getAffiliateCommissions**](AffiliateApi.md#getAffiliateCommissions) | **GET** /v2/affiliates/{affiliate_id}:commissions | Retrieve Affiliate Commission and Clawbacks
-[**getAffiliateCustomFields**](AffiliateApi.md#getAffiliateCustomFields) | **GET** /v2/affiliates/model | Retrieve Affiliate Model
-[**getCommissionProgram**](AffiliateApi.md#getCommissionProgram) | **GET** /v2/affiliates/commissionPrograms/{commission_program_id} | Retrieve a Commission Program
-[**getRedirectLink**](AffiliateApi.md#getRedirectLink) | **GET** /v2/affiliates/redirects/{redirect_id} | Retrieve an Affiliate Link
-[**listAffiliate**](AffiliateApi.md#listAffiliate) | **GET** /v2/affiliates | List Affiliates
-[**listAffiliateCommissionPrograms**](AffiliateApi.md#listAffiliateCommissionPrograms) | **GET** /v2/affiliates/commissionPrograms | List Affiliate Commission Programs
-[**listAffiliateLinks**](AffiliateApi.md#listAffiliateLinks) | **GET** /v2/affiliates/redirects | List Affiliate Links
-[**listAffiliatePayments**](AffiliateApi.md#listAffiliatePayments) | **GET** /v2/affiliates/{affiliate_id}/payments | List Affiliate Payments
-[**listSummaries**](AffiliateApi.md#listSummaries) | **GET** /v2/affiliates/summaries | List Affiliate Summaries
-[**removeAffiliateFromProgram**](AffiliateApi.md#removeAffiliateFromProgram) | **POST** /v2/affiliates/{id}:removeFromProgram | Remove an Affiliate from a Commission Program
-[**removeProductCommissionFromCommissions**](AffiliateApi.md#removeProductCommissionFromCommissions) | **POST** /v2/affiliates/commissionPrograms/{commission_id}:removeProductCommission | Remove a Product from a Commission Program
-[**removeSubscriptionPlanCommissionFromCommissions**](AffiliateApi.md#removeSubscriptionPlanCommissionFromCommissions) | **POST** /v2/affiliates/commissionPrograms/{commission_id}:removeSubscriptionCommission | Remove a Subscription from a Commission Program
-[**updateAffiliate**](AffiliateApi.md#updateAffiliate) | **PATCH** /v2/affiliates/{id} | Update an Affiliate
-[**updateAffiliateCustomField**](AffiliateApi.md#updateAffiliateCustomField) | **PATCH** /v2/affiliates/model/customFields/{custom_field_id} | Update a Custom Field
-[**updateCommissionProgram**](AffiliateApi.md#updateCommissionProgram) | **PATCH** /v2/affiliates/commissionPrograms/{commission_program_id} | Update an Affiliate Commission Program
-[**updateDefaultCommissionProgram**](AffiliateApi.md#updateDefaultCommissionProgram) | **PATCH** /v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Update a Default Commission Program
-[**updateProductCommissionProgram**](AffiliateApi.md#updateProductCommissionProgram) | **PATCH** /v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Update a Product Commission Program
-[**updateRedirectLink**](AffiliateApi.md#updateRedirectLink) | **PATCH** /v2/affiliates/redirects/{redirect_id} | Update an Affiliate Link
-[**updateSubscriptionCommissionProgram**](AffiliateApi.md#updateSubscriptionCommissionProgram) | **PATCH** /v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id} | Update a Subscription Commission Program
+[**addAffiliate**](AffiliateApi.md#addAffiliate) | **POST** /rest/v2/affiliates | Create an Affiliate
+[**addAffiliateToProgram**](AffiliateApi.md#addAffiliateToProgram) | **POST** /rest/v2/affiliates/{id}:assignToProgram | Assign Affiliate to Commission program
+[**addCommissionProgram**](AffiliateApi.md#addCommissionProgram) | **POST** /rest/v2/affiliates/commissionPrograms | Create an Affiliate Commission Program
+[**assignProductCommissionProgram**](AffiliateApi.md#assignProductCommissionProgram) | **POST** /rest/v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Assign a Product Commission Program
+[**assignSubscriptionCommissionProgram**](AffiliateApi.md#assignSubscriptionCommissionProgram) | **POST** /rest/v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id} | Assign a Subscription Commission Program
+[**createAffiliateCustomField**](AffiliateApi.md#createAffiliateCustomField) | **POST** /rest/v2/affiliates/model/customFields | Create an Affiliate Custom Field
+[**createDefaultCommissionProgram**](AffiliateApi.md#createDefaultCommissionProgram) | **POST** /rest/v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Create a Default Commission Program
+[**createRedirectLink**](AffiliateApi.md#createRedirectLink) | **POST** /rest/v2/affiliates/redirects | Create an Affiliate Link
+[**deleteAffiliate**](AffiliateApi.md#deleteAffiliate) | **DELETE** /rest/v2/affiliates/{id} | Delete Affiliate
+[**deleteAffiliateCommissionProgram**](AffiliateApi.md#deleteAffiliateCommissionProgram) | **DELETE** /rest/v2/affiliates/commissionPrograms/{commission_program_id} | Delete a Commission Program
+[**deleteAffiliateCustomField**](AffiliateApi.md#deleteAffiliateCustomField) | **DELETE** /rest/v2/affiliates/model/customFields/{custom_field_id} | Delete a Custom Field
+[**deleteRedirectLink**](AffiliateApi.md#deleteRedirectLink) | **DELETE** /rest/v2/affiliates/redirects/{redirect_id} | Delete an Affiliate Link
+[**getAffiliate**](AffiliateApi.md#getAffiliate) | **GET** /rest/v2/affiliates/{id} | Retrieve an Affiliate
+[**getAffiliateCommissionTotal**](AffiliateApi.md#getAffiliateCommissionTotal) | **GET** /rest/v2/affiliates/{affiliate_id}/commissionTotal | Retrieve Affiliate Commission Earned and View LedgerURl for portal
+[**getAffiliateCommissions**](AffiliateApi.md#getAffiliateCommissions) | **GET** /rest/v2/affiliates/{affiliate_id}:commissions | Retrieve Affiliate Commissions
+[**getAffiliateCustomFields**](AffiliateApi.md#getAffiliateCustomFields) | **GET** /rest/v2/affiliates/model | Retrieve Affiliate Model
+[**getCommissionProgram**](AffiliateApi.md#getCommissionProgram) | **GET** /rest/v2/affiliates/commissionPrograms/{commission_program_id} | Retrieve a Commission Program
+[**getRedirectLink**](AffiliateApi.md#getRedirectLink) | **GET** /rest/v2/affiliates/redirects/{redirect_id} | Retrieve an Affiliate Link
+[**getReferralsByAffiliateId**](AffiliateApi.md#getReferralsByAffiliateId) | **GET** /rest/v2/affiliates/{affiliate_id}/referrals | Retrieve Affiliate Referrals
+[**listAffiliate**](AffiliateApi.md#listAffiliate) | **GET** /rest/v2/affiliates | List Affiliates
+[**listAffiliateCommissionPrograms**](AffiliateApi.md#listAffiliateCommissionPrograms) | **GET** /rest/v2/affiliates/commissionPrograms | List Affiliate Commission Programs
+[**listAffiliateLinks**](AffiliateApi.md#listAffiliateLinks) | **GET** /rest/v2/affiliates/redirects | List Affiliate Links
+[**listAffiliatePayments**](AffiliateApi.md#listAffiliatePayments) | **GET** /rest/v2/affiliates/{affiliate_id}/payments | List Affiliate Payments
+[**listCommissionProgramResources**](AffiliateApi.md#listCommissionProgramResources) | **GET** /rest/v2/affiliates/commissionPrograms/{commission_program_id}/resources | Retrieve Commission Program Resources
+[**listSummaries**](AffiliateApi.md#listSummaries) | **GET** /rest/v2/affiliates/summaries | List Affiliate Summaries
+[**removeAffiliateFromProgram**](AffiliateApi.md#removeAffiliateFromProgram) | **POST** /rest/v2/affiliates/{id}:removeFromProgram | Remove an Affiliate from a Commission Program
+[**removeProductCommissionFromCommissions**](AffiliateApi.md#removeProductCommissionFromCommissions) | **POST** /rest/v2/affiliates/commissionPrograms/{commission_id}:removeProductCommission | Remove a Product from a Commission Program
+[**removeSubscriptionPlanCommissionFromCommissions**](AffiliateApi.md#removeSubscriptionPlanCommissionFromCommissions) | **POST** /rest/v2/affiliates/commissionPrograms/{commission_id}:removeSubscriptionCommission | Remove a Subscription from a Commission Program
+[**updateAffiliate**](AffiliateApi.md#updateAffiliate) | **PATCH** /rest/v2/affiliates/{id} | Update an Affiliate
+[**updateAffiliateCustomField**](AffiliateApi.md#updateAffiliateCustomField) | **PATCH** /rest/v2/affiliates/model/customFields/{custom_field_id} | Update a Custom Field
+[**updateCommissionProgram**](AffiliateApi.md#updateCommissionProgram) | **PATCH** /rest/v2/affiliates/commissionPrograms/{commission_program_id} | Update an Affiliate Commission Program
+[**updateDefaultCommissionProgram**](AffiliateApi.md#updateDefaultCommissionProgram) | **PATCH** /rest/v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Update a Default Commission Program
+[**updateProductCommissionProgram**](AffiliateApi.md#updateProductCommissionProgram) | **PATCH** /rest/v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Update a Product Commission Program
+[**updateRedirectLink**](AffiliateApi.md#updateRedirectLink) | **PATCH** /rest/v2/affiliates/redirects/{redirect_id} | Update an Affiliate Link
+[**updateSubscriptionCommissionProgram**](AffiliateApi.md#updateSubscriptionCommissionProgram) | **PATCH** /rest/v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id} | Update a Subscription Commission Program
 
 
 
 ## addAffiliate
 
-> RestAffiliate addAffiliate(opts)
+> RestAffiliate addAffiliate(createAffiliateRequest)
 
 Create an Affiliate
 
@@ -52,12 +54,14 @@ Creates a single Affiliate
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
-let opts = {
-  'createAffiliateRequest': new KeapCoreServiceV2Sdk.CreateAffiliateRequest() // CreateAffiliateRequest | Affiliate request to insert
-};
-apiInstance.addAffiliate(opts).then((data) => {
+let createAffiliateRequest = new KeapCoreServiceV2Sdk.CreateAffiliateRequest(); // CreateAffiliateRequest | 
+apiInstance.addAffiliate(createAffiliateRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -70,7 +74,7 @@ apiInstance.addAffiliate(opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createAffiliateRequest** | [**CreateAffiliateRequest**](CreateAffiliateRequest.md)| Affiliate request to insert | [optional] 
+ **createAffiliateRequest** | [**CreateAffiliateRequest**](CreateAffiliateRequest.md)|  | 
 
 ### Return type
 
@@ -78,7 +82,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -98,10 +102,14 @@ Assigns an Affiliate to Commission Program
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
-let id = "id_example"; // String | id
-let affiliateAddToProgramRequest = new KeapCoreServiceV2Sdk.AffiliateAddToProgramRequest(); // AffiliateAddToProgramRequest | affiliateAddToProgramRequest
+let id = "id_example"; // String | 
+let affiliateAddToProgramRequest = new KeapCoreServiceV2Sdk.AffiliateAddToProgramRequest(); // AffiliateAddToProgramRequest | 
 apiInstance.addAffiliateToProgram(id, affiliateAddToProgramRequest).then(() => {
   console.log('API called successfully.');
 }, (error) => {
@@ -115,8 +123,8 @@ apiInstance.addAffiliateToProgram(id, affiliateAddToProgramRequest).then(() => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| id | 
- **affiliateAddToProgramRequest** | [**AffiliateAddToProgramRequest**](AffiliateAddToProgramRequest.md)| affiliateAddToProgramRequest | 
+ **id** | **String**|  | 
+ **affiliateAddToProgramRequest** | [**AffiliateAddToProgramRequest**](AffiliateAddToProgramRequest.md)|  | 
 
 ### Return type
 
@@ -124,7 +132,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -134,7 +142,7 @@ No authorization required
 
 ## addCommissionProgram
 
-> AffiliateCommissionProgramResponse addCommissionProgram(opts)
+> AffiliateCommissionProgramResponse addCommissionProgram(createCommissionProgramRequest)
 
 Create an Affiliate Commission Program
 
@@ -144,12 +152,14 @@ Creates an Affiliate Commission Program
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
-let opts = {
-  'createCommissionProgramRequest': new KeapCoreServiceV2Sdk.CreateCommissionProgramRequest() // CreateCommissionProgramRequest | Commission Program to insert
-};
-apiInstance.addCommissionProgram(opts).then((data) => {
+let createCommissionProgramRequest = new KeapCoreServiceV2Sdk.CreateCommissionProgramRequest(); // CreateCommissionProgramRequest | 
+apiInstance.addCommissionProgram(createCommissionProgramRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -162,7 +172,7 @@ apiInstance.addCommissionProgram(opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createCommissionProgramRequest** | [**CreateCommissionProgramRequest**](CreateCommissionProgramRequest.md)| Commission Program to insert | [optional] 
+ **createCommissionProgramRequest** | [**CreateCommissionProgramRequest**](CreateCommissionProgramRequest.md)|  | 
 
 ### Return type
 
@@ -170,7 +180,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -180,7 +190,7 @@ No authorization required
 
 ## assignProductCommissionProgram
 
-> ProductCommissionProgram assignProductCommissionProgram(commissionProgramId, opts)
+> ProductCommissionProgram assignProductCommissionProgram(commissionProgramId, createProductCommissionProgramRequest)
 
 Assign a Product Commission Program
 
@@ -190,13 +200,15 @@ Assigns a Product Commission Program to a Product
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
-let commissionProgramId = "commissionProgramId_example"; // String | commission_program_id
-let opts = {
-  'createProductCommissionProgramRequest': new KeapCoreServiceV2Sdk.CreateProductCommissionProgramRequest() // CreateProductCommissionProgramRequest | Product Commission Program
-};
-apiInstance.assignProductCommissionProgram(commissionProgramId, opts).then((data) => {
+let commissionProgramId = "commissionProgramId_example"; // String | 
+let createProductCommissionProgramRequest = new KeapCoreServiceV2Sdk.CreateProductCommissionProgramRequest(); // CreateProductCommissionProgramRequest | 
+apiInstance.assignProductCommissionProgram(commissionProgramId, createProductCommissionProgramRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -209,8 +221,8 @@ apiInstance.assignProductCommissionProgram(commissionProgramId, opts).then((data
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **commissionProgramId** | **String**| commission_program_id | 
- **createProductCommissionProgramRequest** | [**CreateProductCommissionProgramRequest**](CreateProductCommissionProgramRequest.md)| Product Commission Program | [optional] 
+ **commissionProgramId** | **String**|  | 
+ **createProductCommissionProgramRequest** | [**CreateProductCommissionProgramRequest**](CreateProductCommissionProgramRequest.md)|  | 
 
 ### Return type
 
@@ -218,7 +230,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -228,7 +240,7 @@ No authorization required
 
 ## assignSubscriptionCommissionProgram
 
-> SubscriptionCommissionProgram assignSubscriptionCommissionProgram(commissionProgramId, opts)
+> SubscriptionCommissionProgram assignSubscriptionCommissionProgram(commissionProgramId, createSubscriptionCommissionProgramRequest)
 
 Assign a Subscription Commission Program
 
@@ -238,13 +250,15 @@ Assigns a Subscription Commission Program to a Subscription
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
-let commissionProgramId = "commissionProgramId_example"; // String | commission_program_id
-let opts = {
-  'createSubscriptionCommissionProgramRequest': new KeapCoreServiceV2Sdk.CreateSubscriptionCommissionProgramRequest() // CreateSubscriptionCommissionProgramRequest | Subscription Commission Program
-};
-apiInstance.assignSubscriptionCommissionProgram(commissionProgramId, opts).then((data) => {
+let commissionProgramId = "commissionProgramId_example"; // String | 
+let createSubscriptionCommissionProgramRequest = new KeapCoreServiceV2Sdk.CreateSubscriptionCommissionProgramRequest(); // CreateSubscriptionCommissionProgramRequest | 
+apiInstance.assignSubscriptionCommissionProgram(commissionProgramId, createSubscriptionCommissionProgramRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -257,8 +271,8 @@ apiInstance.assignSubscriptionCommissionProgram(commissionProgramId, opts).then(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **commissionProgramId** | **String**| commission_program_id | 
- **createSubscriptionCommissionProgramRequest** | [**CreateSubscriptionCommissionProgramRequest**](CreateSubscriptionCommissionProgramRequest.md)| Subscription Commission Program | [optional] 
+ **commissionProgramId** | **String**|  | 
+ **createSubscriptionCommissionProgramRequest** | [**CreateSubscriptionCommissionProgramRequest**](CreateSubscriptionCommissionProgramRequest.md)|  | 
 
 ### Return type
 
@@ -266,7 +280,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -286,9 +300,13 @@ Creates a single Affiliate Custom Field
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
-let createCustomFieldRequest = new KeapCoreServiceV2Sdk.CreateCustomFieldRequest(); // CreateCustomFieldRequest | customField
+let createCustomFieldRequest = new KeapCoreServiceV2Sdk.CreateCustomFieldRequest(); // CreateCustomFieldRequest | 
 apiInstance.createAffiliateCustomField(createCustomFieldRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -302,7 +320,7 @@ apiInstance.createAffiliateCustomField(createCustomFieldRequest).then((data) => 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createCustomFieldRequest** | [**CreateCustomFieldRequest**](CreateCustomFieldRequest.md)| customField | 
+ **createCustomFieldRequest** | [**CreateCustomFieldRequest**](CreateCustomFieldRequest.md)|  | 
 
 ### Return type
 
@@ -310,7 +328,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -320,7 +338,7 @@ No authorization required
 
 ## createDefaultCommissionProgram
 
-> SetDefaultCommissionProgramResponse createDefaultCommissionProgram(commissionProgramId, opts)
+> SetDefaultCommissionProgramResponse createDefaultCommissionProgram(commissionProgramId, createDefaultCommissionProgramRequest)
 
 Create a Default Commission Program
 
@@ -330,13 +348,15 @@ Creates a Default Commission Program
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
-let commissionProgramId = "commissionProgramId_example"; // String | commission_program_id
-let opts = {
-  'createDefaultCommissionProgramRequest': new KeapCoreServiceV2Sdk.CreateDefaultCommissionProgramRequest() // CreateDefaultCommissionProgramRequest | Values of the Default Commission Program
-};
-apiInstance.createDefaultCommissionProgram(commissionProgramId, opts).then((data) => {
+let commissionProgramId = "commissionProgramId_example"; // String | 
+let createDefaultCommissionProgramRequest = new KeapCoreServiceV2Sdk.CreateDefaultCommissionProgramRequest(); // CreateDefaultCommissionProgramRequest | 
+apiInstance.createDefaultCommissionProgram(commissionProgramId, createDefaultCommissionProgramRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -349,8 +369,8 @@ apiInstance.createDefaultCommissionProgram(commissionProgramId, opts).then((data
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **commissionProgramId** | **String**| commission_program_id | 
- **createDefaultCommissionProgramRequest** | [**CreateDefaultCommissionProgramRequest**](CreateDefaultCommissionProgramRequest.md)| Values of the Default Commission Program | [optional] 
+ **commissionProgramId** | **String**|  | 
+ **createDefaultCommissionProgramRequest** | [**CreateDefaultCommissionProgramRequest**](CreateDefaultCommissionProgramRequest.md)|  | 
 
 ### Return type
 
@@ -358,7 +378,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -378,9 +398,13 @@ Creates a single Affiliate Link
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
-let createOrUpdateAffiliateLinkRequest = new KeapCoreServiceV2Sdk.CreateOrUpdateAffiliateLinkRequest(); // CreateOrUpdateAffiliateLinkRequest | request
+let createOrUpdateAffiliateLinkRequest = new KeapCoreServiceV2Sdk.CreateOrUpdateAffiliateLinkRequest(); // CreateOrUpdateAffiliateLinkRequest | 
 apiInstance.createRedirectLink(createOrUpdateAffiliateLinkRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -394,7 +418,7 @@ apiInstance.createRedirectLink(createOrUpdateAffiliateLinkRequest).then((data) =
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createOrUpdateAffiliateLinkRequest** | [**CreateOrUpdateAffiliateLinkRequest**](CreateOrUpdateAffiliateLinkRequest.md)| request | 
+ **createOrUpdateAffiliateLinkRequest** | [**CreateOrUpdateAffiliateLinkRequest**](CreateOrUpdateAffiliateLinkRequest.md)|  | 
 
 ### Return type
 
@@ -402,7 +426,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -422,9 +446,13 @@ Deletes the specified Affiliate
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
-let id = "id_example"; // String | id
+let id = "id_example"; // String | 
 apiInstance.deleteAffiliate(id).then(() => {
   console.log('API called successfully.');
 }, (error) => {
@@ -438,7 +466,7 @@ apiInstance.deleteAffiliate(id).then(() => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| id | 
+ **id** | **String**|  | 
 
 ### Return type
 
@@ -446,7 +474,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -466,9 +494,13 @@ Deletes a Commission Program
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
-let commissionProgramId = "commissionProgramId_example"; // String | commission_program_id
+let commissionProgramId = "commissionProgramId_example"; // String | 
 apiInstance.deleteAffiliateCommissionProgram(commissionProgramId).then(() => {
   console.log('API called successfully.');
 }, (error) => {
@@ -482,7 +514,7 @@ apiInstance.deleteAffiliateCommissionProgram(commissionProgramId).then(() => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **commissionProgramId** | **String**| commission_program_id | 
+ **commissionProgramId** | **String**|  | 
 
 ### Return type
 
@@ -490,7 +522,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -510,9 +542,13 @@ Deletes a Custom Field from Affiliate.
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
-let customFieldId = "customFieldId_example"; // String | custom_field_id
+let customFieldId = "customFieldId_example"; // String | 
 apiInstance.deleteAffiliateCustomField(customFieldId).then(() => {
   console.log('API called successfully.');
 }, (error) => {
@@ -526,7 +562,7 @@ apiInstance.deleteAffiliateCustomField(customFieldId).then(() => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **customFieldId** | **String**| custom_field_id | 
+ **customFieldId** | **String**|  | 
 
 ### Return type
 
@@ -534,7 +570,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -554,9 +590,13 @@ Deletes an Affiliate Link
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
-let redirectId = "redirectId_example"; // String | redirect_id
+let redirectId = "redirectId_example"; // String | 
 apiInstance.deleteRedirectLink(redirectId).then(() => {
   console.log('API called successfully.');
 }, (error) => {
@@ -570,7 +610,7 @@ apiInstance.deleteRedirectLink(redirectId).then(() => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **redirectId** | **String**| redirect_id | 
+ **redirectId** | **String**|  | 
 
 ### Return type
 
@@ -578,7 +618,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -598,9 +638,13 @@ Retrieves a single Affiliate
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
-let id = "id_example"; // String | id
+let id = "id_example"; // String | 
 apiInstance.getAffiliate(id).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -614,7 +658,7 @@ apiInstance.getAffiliate(id).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| id | 
+ **id** | **String**|  | 
 
 ### Return type
 
@@ -622,7 +666,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -642,9 +686,13 @@ Get the Affiliate Commission Earned and View LedgerURl for portal
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
-let affiliateId = "affiliateId_example"; // String | affiliate_id
+let affiliateId = "affiliateId_example"; // String | 
 apiInstance.getAffiliateCommissionTotal(affiliateId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -658,7 +706,7 @@ apiInstance.getAffiliateCommissionTotal(affiliateId).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **affiliateId** | **String**| affiliate_id | 
+ **affiliateId** | **String**|  | 
 
 ### Return type
 
@@ -666,7 +714,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -678,20 +726,24 @@ No authorization required
 
 > ListAffiliateCommissionsResponse getAffiliateCommissions(affiliateId, opts)
 
-Retrieve Affiliate Commission and Clawbacks
+Retrieve Affiliate Commissions
 
-Retrieve a list of Affiliate&#39;s Commissions and Clawbacks
+Retrieve a list of Affiliate&#39;s Commissions
 
 ### Example
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
-let affiliateId = "affiliateId_example"; // String | affiliate_id
+let affiliateId = "affiliateId_example"; // String | 
 let opts = {
-  'filter': "filter_example", // String | Filter to apply, allowed fields are: - (String) `affiliateId` - (String) `since_time` - (String) `until_time` You will need to apply the `==` operator to check the equality of one of the filters with your searched  word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:  - `filter=since_time%3D%3D2024-09-17T-15:50+00`  - `filter=until_time%3D%3D2024-09-17T-15:50+00`  - `filter=affiliateId%3D%3D123` 
-  'orderBy': "orderBy_example", // String | Attribute and direction to order items. One of the following fields: - `invoice_id` - `affowed_id` - `date_earned`  One of the following directions: - `asc` - `desc`
+  'filter': "filter_example", // String | Filter to apply, allowed fields are: - (String) `since_time` - (String) `until_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=since_time%3D%3D2024-05-21T23:00:00Z%3Buntil_time%3D%3D2025-05-21T23:00:00Z` - `filter=until_time%3D%3D2025-05-21T23:00:00Z` 
+  'orderBy': "orderBy_example", // String | Attribute and direction to order items. One of the following fields: - `invoice_id` - `time_earned`  One of the following directions: - `asc` - `desc`
   'pageSize': 0, // Number | Total number of items to return per page
   'pageToken': "pageToken_example" // String | Page token
 };
@@ -708,9 +760,9 @@ apiInstance.getAffiliateCommissions(affiliateId, opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **affiliateId** | **String**| affiliate_id | 
- **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;affiliateId&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched  word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;since_time%3D%3D2024-09-17T-15:50+00&#x60;  - &#x60;filter&#x3D;until_time%3D%3D2024-09-17T-15:50+00&#x60;  - &#x60;filter&#x3D;affiliateId%3D%3D123&#x60;  | [optional] 
- **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;invoice_id&#x60; - &#x60;affowed_id&#x60; - &#x60;date_earned&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] 
+ **affiliateId** | **String**|  | 
+ **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;since_time%3D%3D2024-05-21T23:00:00Z%3Buntil_time%3D%3D2025-05-21T23:00:00Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-05-21T23:00:00Z&#x60;  | [optional] 
+ **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;invoice_id&#x60; - &#x60;time_earned&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] 
  **pageSize** | **Number**| Total number of items to return per page | [optional] 
  **pageToken** | **String**| Page token | [optional] 
 
@@ -720,7 +772,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -740,6 +792,10 @@ Get the custom fields and optional properties for the Affiliate object
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
 apiInstance.getAffiliateCustomFields().then((data) => {
@@ -760,7 +816,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -770,7 +826,7 @@ No authorization required
 
 ## getCommissionProgram
 
-> AffiliateProgramV2 getCommissionProgram(commissionProgramId)
+> GetRestCommissionProgram getCommissionProgram(commissionProgramId)
 
 Retrieve a Commission Program
 
@@ -780,9 +836,13 @@ Retrieves a single Commission Program
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
-let commissionProgramId = "commissionProgramId_example"; // String | commission_program_id
+let commissionProgramId = "commissionProgramId_example"; // String | 
 apiInstance.getCommissionProgram(commissionProgramId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -796,15 +856,15 @@ apiInstance.getCommissionProgram(commissionProgramId).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **commissionProgramId** | **String**| commission_program_id | 
+ **commissionProgramId** | **String**|  | 
 
 ### Return type
 
-[**AffiliateProgramV2**](AffiliateProgramV2.md)
+[**GetRestCommissionProgram**](GetRestCommissionProgram.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -824,9 +884,13 @@ Retrieves information about a single Affiliate Link
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
-let redirectId = "redirectId_example"; // String | redirect_id
+let redirectId = "redirectId_example"; // String | 
 apiInstance.getRedirectLink(redirectId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -840,7 +904,7 @@ apiInstance.getRedirectLink(redirectId).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **redirectId** | **String**| redirect_id | 
+ **redirectId** | **String**|  | 
 
 ### Return type
 
@@ -848,7 +912,55 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## getReferralsByAffiliateId
+
+> ListAffiliateReferralsResponse getReferralsByAffiliateId(affiliateId)
+
+Retrieve Affiliate Referrals
+
+Retrieves all referrals belonging to the given affiliate
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
+let affiliateId = "affiliateId_example"; // String | 
+apiInstance.getReferralsByAffiliateId(affiliateId).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **affiliateId** | **String**|  | 
+
+### Return type
+
+[**ListAffiliateReferralsResponse**](ListAffiliateReferralsResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -868,10 +980,14 @@ Retrieves a list of Affiliates
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
 let opts = {
-  'filter': "filter_example", // String | Filter to apply, allowed fields are: - (String) `affiliate_name` - (String) `contact_id` - (String) `status` - (String) `code` 
+  'filter': "filter_example", // String | Filter to apply, allowed fields are: - (String) `affiliate_name` - (String) `contact_id` - (String) `referral_contact_id` - (String) `status` - (String) `code`  You will need to apply the `==` operator to check the equality of one of the filters with the value you want to match, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=affiliate_name%3D%3DBob` - `filter=contact_id%3D%3D567` - `filter=contact_id%3D%3D123%3Bcode%3D%3D567`
   'orderBy': "orderBy_example", // String | Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `name` - `status` - `code`  One of the following directions: - `asc` - `desc` 
   'pageSize': 0, // Number | Total number of items to return per page
   'pageToken': "pageToken_example" // String | Page token
@@ -889,7 +1005,7 @@ apiInstance.listAffiliate(opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;affiliate_name&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;code&#x60;  | [optional] 
+ **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;affiliate_name&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;referral_contact_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;code&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with the value you want to match, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;affiliate_name%3D%3DBob&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bcode%3D%3D567&#x60; | [optional] 
  **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;name&#x60; - &#x60;status&#x60; - &#x60;code&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  | [optional] 
  **pageSize** | **Number**| Total number of items to return per page | [optional] 
  **pageToken** | **String**| Page token | [optional] 
@@ -900,7 +1016,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -920,6 +1036,10 @@ Retrieves a list of Affiliate Commission Programs
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
 let opts = {
@@ -952,7 +1072,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -972,6 +1092,10 @@ Retrieves a list of Affiliate Links
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
 let opts = {
@@ -1004,7 +1128,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1024,11 +1148,15 @@ Retrieves a list of affiliate payments
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
-let affiliateId = "affiliateId_example"; // String | affiliate_id
+let affiliateId = "affiliateId_example"; // String | 
 let opts = {
-  'filter': "filter_example", // String | Filter to apply, allowed fields are: - (String) `since_time` - (String) `until_time` You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=since_time%3D%3D2024-09-17T-15:50+00` - `filter=until_time%3D%3D2024-09-17T-15:50+00` 
+  'filter': "filter_example", // String | Filter to apply, allowed fields are: - (String) `since_time` - (String) `until_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=since_time%3D%3D2024-09-17T-15:50+00` - `filter=until_time%3D%3D2024-09-17T-15:50+00` 
   'orderBy': "orderBy_example", // String | Attribute and direction to order items. One of the following fields: - `create_time` - `pay_date` - `pay_amount`  One of the following directions: - `asc` - `desc` 
   'pageSize': 0, // Number | Total number of items to return per page
   'pageToken': "pageToken_example" // String | Page token
@@ -1046,8 +1174,8 @@ apiInstance.listAffiliatePayments(affiliateId, opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **affiliateId** | **String**| affiliate_id | 
- **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;since_time%3D%3D2024-09-17T-15:50+00&#x60; - &#x60;filter&#x3D;until_time%3D%3D2024-09-17T-15:50+00&#x60;  | [optional] 
+ **affiliateId** | **String**|  | 
+ **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;since_time%3D%3D2024-09-17T-15:50+00&#x60; - &#x60;filter&#x3D;until_time%3D%3D2024-09-17T-15:50+00&#x60;  | [optional] 
  **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;create_time&#x60; - &#x60;pay_date&#x60; - &#x60;pay_amount&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  | [optional] 
  **pageSize** | **Number**| Total number of items to return per page | [optional] 
  **pageToken** | **String**| Page token | [optional] 
@@ -1058,7 +1186,55 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## listCommissionProgramResources
+
+> ListProgramResourcesResponse listCommissionProgramResources(commissionProgramId)
+
+Retrieve Commission Program Resources
+
+Retrieves resources for a commission program
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
+let commissionProgramId = "commissionProgramId_example"; // String | 
+apiInstance.listCommissionProgramResources(commissionProgramId).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **commissionProgramId** | **String**|  | 
+
+### Return type
+
+[**ListProgramResourcesResponse**](ListProgramResourcesResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1078,10 +1254,14 @@ Retrieves a list of Affiliate Summaries
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
 let opts = {
-  'filter': "filter_example", // String | Filter to apply, allowed fields are: - (List[String]) `affiliate_ids` - (String) `since_time` - (String) `until_time` You will need to apply the `==` operator to check the equality of one of the filters with your searched  word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:  - `filter=since_time%3D%3D2024-09-17T-15:50+00`  - `filter=until_time%3D%3D2024-09-17T-15:50+00`  - `filter=affiliate_ids%3D%3D123,456,789` 
+  'filter': "filter_example", // String | Filter to apply, allowed fields are: - (List[String]) `affiliate_ids` - (String) `since_time` - (String) `until_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched  word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:  - `filter=since_time%3D%3D2024-09-17T-15:50+00`  - `filter=until_time%3D%3D2024-09-17T-15:50+00`  - `filter=affiliate_ids%3D%3D123,456,789` 
   'orderBy': "orderBy_example", // String | Attribute and direction to order items. One of the following fields: - `affiliate_id` - `amount_earned` - `balance` - `clawbacks`  One of the following directions: - `asc` - `desc`
   'pageSize': 0, // Number | Total number of items to return per page
   'pageToken': "pageToken_example" // String | Page token
@@ -1099,7 +1279,7 @@ apiInstance.listSummaries(opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filter** | **String**| Filter to apply, allowed fields are: - (List[String]) &#x60;affiliate_ids&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched  word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;since_time%3D%3D2024-09-17T-15:50+00&#x60;  - &#x60;filter&#x3D;until_time%3D%3D2024-09-17T-15:50+00&#x60;  - &#x60;filter&#x3D;affiliate_ids%3D%3D123,456,789&#x60;  | [optional] 
+ **filter** | **String**| Filter to apply, allowed fields are: - (List[String]) &#x60;affiliate_ids&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched  word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;since_time%3D%3D2024-09-17T-15:50+00&#x60;  - &#x60;filter&#x3D;until_time%3D%3D2024-09-17T-15:50+00&#x60;  - &#x60;filter&#x3D;affiliate_ids%3D%3D123,456,789&#x60;  | [optional] 
  **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;affiliate_id&#x60; - &#x60;amount_earned&#x60; - &#x60;balance&#x60; - &#x60;clawbacks&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] 
  **pageSize** | **Number**| Total number of items to return per page | [optional] 
  **pageToken** | **String**| Page token | [optional] 
@@ -1110,7 +1290,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1130,10 +1310,14 @@ Removes an Affiliate from a Commission Program
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
-let id = "id_example"; // String | id
-let affiliateRemoveFromProgramRequest = new KeapCoreServiceV2Sdk.AffiliateRemoveFromProgramRequest(); // AffiliateRemoveFromProgramRequest | removeFromProgramRequest
+let id = "id_example"; // String | 
+let affiliateRemoveFromProgramRequest = new KeapCoreServiceV2Sdk.AffiliateRemoveFromProgramRequest(); // AffiliateRemoveFromProgramRequest | 
 apiInstance.removeAffiliateFromProgram(id, affiliateRemoveFromProgramRequest).then(() => {
   console.log('API called successfully.');
 }, (error) => {
@@ -1147,8 +1331,8 @@ apiInstance.removeAffiliateFromProgram(id, affiliateRemoveFromProgramRequest).th
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| id | 
- **affiliateRemoveFromProgramRequest** | [**AffiliateRemoveFromProgramRequest**](AffiliateRemoveFromProgramRequest.md)| removeFromProgramRequest | 
+ **id** | **String**|  | 
+ **affiliateRemoveFromProgramRequest** | [**AffiliateRemoveFromProgramRequest**](AffiliateRemoveFromProgramRequest.md)|  | 
 
 ### Return type
 
@@ -1156,7 +1340,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1176,10 +1360,14 @@ Removes a Product from a Commission Program
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
-let commissionId = "commissionId_example"; // String | commission_id
-let deleteProgramCommissionRequest = new KeapCoreServiceV2Sdk.DeleteProgramCommissionRequest(); // DeleteProgramCommissionRequest | deleteProgramCommissionRequest
+let commissionId = "commissionId_example"; // String | 
+let deleteProgramCommissionRequest = new KeapCoreServiceV2Sdk.DeleteProgramCommissionRequest(); // DeleteProgramCommissionRequest | 
 apiInstance.removeProductCommissionFromCommissions(commissionId, deleteProgramCommissionRequest).then(() => {
   console.log('API called successfully.');
 }, (error) => {
@@ -1193,8 +1381,8 @@ apiInstance.removeProductCommissionFromCommissions(commissionId, deleteProgramCo
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **commissionId** | **String**| commission_id | 
- **deleteProgramCommissionRequest** | [**DeleteProgramCommissionRequest**](DeleteProgramCommissionRequest.md)| deleteProgramCommissionRequest | 
+ **commissionId** | **String**|  | 
+ **deleteProgramCommissionRequest** | [**DeleteProgramCommissionRequest**](DeleteProgramCommissionRequest.md)|  | 
 
 ### Return type
 
@@ -1202,7 +1390,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1222,10 +1410,14 @@ Removes a Subscription from a Commission Program
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
-let commissionId = "commissionId_example"; // String | commission_id
-let deleteSubscriptionPlanCommissionRequest = new KeapCoreServiceV2Sdk.DeleteSubscriptionPlanCommissionRequest(); // DeleteSubscriptionPlanCommissionRequest | deleteSubscriptionPlanCommissionRequest
+let commissionId = "commissionId_example"; // String | 
+let deleteSubscriptionPlanCommissionRequest = new KeapCoreServiceV2Sdk.DeleteSubscriptionPlanCommissionRequest(); // DeleteSubscriptionPlanCommissionRequest | 
 apiInstance.removeSubscriptionPlanCommissionFromCommissions(commissionId, deleteSubscriptionPlanCommissionRequest).then(() => {
   console.log('API called successfully.');
 }, (error) => {
@@ -1239,8 +1431,8 @@ apiInstance.removeSubscriptionPlanCommissionFromCommissions(commissionId, delete
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **commissionId** | **String**| commission_id | 
- **deleteSubscriptionPlanCommissionRequest** | [**DeleteSubscriptionPlanCommissionRequest**](DeleteSubscriptionPlanCommissionRequest.md)| deleteSubscriptionPlanCommissionRequest | 
+ **commissionId** | **String**|  | 
+ **deleteSubscriptionPlanCommissionRequest** | [**DeleteSubscriptionPlanCommissionRequest**](DeleteSubscriptionPlanCommissionRequest.md)|  | 
 
 ### Return type
 
@@ -1248,7 +1440,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1258,7 +1450,7 @@ No authorization required
 
 ## updateAffiliate
 
-> RestAffiliate updateAffiliate(id, opts)
+> RestAffiliate updateAffiliate(id, updateAffiliateRequest)
 
 Update an Affiliate
 
@@ -1268,13 +1460,15 @@ Updates a single Affiliate
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
-let id = "id_example"; // String | id
-let opts = {
-  'updateAffiliateRequest': new KeapCoreServiceV2Sdk.UpdateAffiliateRequest() // UpdateAffiliateRequest | Request to update an affiliate
-};
-apiInstance.updateAffiliate(id, opts).then((data) => {
+let id = "id_example"; // String | 
+let updateAffiliateRequest = new KeapCoreServiceV2Sdk.UpdateAffiliateRequest(); // UpdateAffiliateRequest | 
+apiInstance.updateAffiliate(id, updateAffiliateRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -1287,8 +1481,8 @@ apiInstance.updateAffiliate(id, opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| id | 
- **updateAffiliateRequest** | [**UpdateAffiliateRequest**](UpdateAffiliateRequest.md)| Request to update an affiliate | [optional] 
+ **id** | **String**|  | 
+ **updateAffiliateRequest** | [**UpdateAffiliateRequest**](UpdateAffiliateRequest.md)|  | 
 
 ### Return type
 
@@ -1296,7 +1490,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1316,12 +1510,16 @@ Updates a custom field of the specified type and options to the Affiliate object
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
-let customFieldId = "customFieldId_example"; // String | custom_field_id
-let updateCustomFieldMetaDataRequest = new KeapCoreServiceV2Sdk.UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | request
+let customFieldId = "customFieldId_example"; // String | 
+let updateCustomFieldMetaDataRequest = new KeapCoreServiceV2Sdk.UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | 
 let opts = {
-  'updateMask': ["null"] // [String] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+  'updateMask': "updateMask_example" // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
 apiInstance.updateAffiliateCustomField(customFieldId, updateCustomFieldMetaDataRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -1336,9 +1534,9 @@ apiInstance.updateAffiliateCustomField(customFieldId, updateCustomFieldMetaDataR
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **customFieldId** | **String**| custom_field_id | 
- **updateCustomFieldMetaDataRequest** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md)| request | 
- **updateMask** | [**[String]**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **customFieldId** | **String**|  | 
+ **updateCustomFieldMetaDataRequest** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md)|  | 
+ **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 
@@ -1346,7 +1544,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1366,12 +1564,16 @@ Updates the properties of an Affiliate Commission Program
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
-let commissionProgramId = "commissionProgramId_example"; // String | commission_program_id
-let updateCommissionProgramRequest = new KeapCoreServiceV2Sdk.UpdateCommissionProgramRequest(); // UpdateCommissionProgramRequest | updateCommissionProgramRequest
+let commissionProgramId = "commissionProgramId_example"; // String | 
+let updateCommissionProgramRequest = new KeapCoreServiceV2Sdk.UpdateCommissionProgramRequest(); // UpdateCommissionProgramRequest | 
 let opts = {
-  'updateMask': ["null"] // [String] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+  'updateMask': "updateMask_example" // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
 apiInstance.updateCommissionProgram(commissionProgramId, updateCommissionProgramRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -1386,9 +1588,9 @@ apiInstance.updateCommissionProgram(commissionProgramId, updateCommissionProgram
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **commissionProgramId** | **String**| commission_program_id | 
- **updateCommissionProgramRequest** | [**UpdateCommissionProgramRequest**](UpdateCommissionProgramRequest.md)| updateCommissionProgramRequest | 
- **updateMask** | [**[String]**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **commissionProgramId** | **String**|  | 
+ **updateCommissionProgramRequest** | [**UpdateCommissionProgramRequest**](UpdateCommissionProgramRequest.md)|  | 
+ **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 
@@ -1396,7 +1598,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1406,7 +1608,7 @@ No authorization required
 
 ## updateDefaultCommissionProgram
 
-> SetDefaultCommissionProgramResponse updateDefaultCommissionProgram(commissionProgramId, opts)
+> SetDefaultCommissionProgramResponse updateDefaultCommissionProgram(commissionProgramId, updateDefaultCommissionProgramRequest, opts)
 
 Update a Default Commission Program
 
@@ -1416,14 +1618,18 @@ Updates a Default Commission Program
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
-let commissionProgramId = "commissionProgramId_example"; // String | commission_program_id
+let commissionProgramId = "commissionProgramId_example"; // String | 
+let updateDefaultCommissionProgramRequest = new KeapCoreServiceV2Sdk.UpdateDefaultCommissionProgramRequest(); // UpdateDefaultCommissionProgramRequest | 
 let opts = {
-  'updateMask': ["null"], // [String] | update_mask
-  'updateDefaultCommissionProgramRequest': new KeapCoreServiceV2Sdk.UpdateDefaultCommissionProgramRequest() // UpdateDefaultCommissionProgramRequest | Values of the default Commission Program
+  'updateMask': ["null"] // [String] | 
 };
-apiInstance.updateDefaultCommissionProgram(commissionProgramId, opts).then((data) => {
+apiInstance.updateDefaultCommissionProgram(commissionProgramId, updateDefaultCommissionProgramRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -1436,9 +1642,9 @@ apiInstance.updateDefaultCommissionProgram(commissionProgramId, opts).then((data
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **commissionProgramId** | **String**| commission_program_id | 
- **updateMask** | [**[String]**](String.md)| update_mask | [optional] 
- **updateDefaultCommissionProgramRequest** | [**UpdateDefaultCommissionProgramRequest**](UpdateDefaultCommissionProgramRequest.md)| Values of the default Commission Program | [optional] 
+ **commissionProgramId** | **String**|  | 
+ **updateDefaultCommissionProgramRequest** | [**UpdateDefaultCommissionProgramRequest**](UpdateDefaultCommissionProgramRequest.md)|  | 
+ **updateMask** | [**[String]**](String.md)|  | [optional] 
 
 ### Return type
 
@@ -1446,7 +1652,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1456,7 +1662,7 @@ No authorization required
 
 ## updateProductCommissionProgram
 
-> ProductCommissionProgram updateProductCommissionProgram(commissionProgramId, opts)
+> ProductCommissionProgram updateProductCommissionProgram(commissionProgramId, updateProductCommissionProgramRequest, opts)
 
 Update a Product Commission Program
 
@@ -1466,14 +1672,18 @@ Updates a Product Commission Program
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
-let commissionProgramId = "commissionProgramId_example"; // String | commission_program_id
+let commissionProgramId = "commissionProgramId_example"; // String | 
+let updateProductCommissionProgramRequest = new KeapCoreServiceV2Sdk.UpdateProductCommissionProgramRequest(); // UpdateProductCommissionProgramRequest | 
 let opts = {
-  'updateMask': ["null"], // [String] | update_mask
-  'updateProductCommissionProgramRequest': new KeapCoreServiceV2Sdk.UpdateProductCommissionProgramRequest() // UpdateProductCommissionProgramRequest | Values of the product Commission Program
+  'updateMask': ["null"] // [String] | 
 };
-apiInstance.updateProductCommissionProgram(commissionProgramId, opts).then((data) => {
+apiInstance.updateProductCommissionProgram(commissionProgramId, updateProductCommissionProgramRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -1486,9 +1696,9 @@ apiInstance.updateProductCommissionProgram(commissionProgramId, opts).then((data
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **commissionProgramId** | **String**| commission_program_id | 
- **updateMask** | [**[String]**](String.md)| update_mask | [optional] 
- **updateProductCommissionProgramRequest** | [**UpdateProductCommissionProgramRequest**](UpdateProductCommissionProgramRequest.md)| Values of the product Commission Program | [optional] 
+ **commissionProgramId** | **String**|  | 
+ **updateProductCommissionProgramRequest** | [**UpdateProductCommissionProgramRequest**](UpdateProductCommissionProgramRequest.md)|  | 
+ **updateMask** | [**[String]**](String.md)|  | [optional] 
 
 ### Return type
 
@@ -1496,7 +1706,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1516,10 +1726,14 @@ Updates an Affiliate Link
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
-let redirectId = "redirectId_example"; // String | redirect_id
-let createOrUpdateAffiliateLinkRequest = new KeapCoreServiceV2Sdk.CreateOrUpdateAffiliateLinkRequest(); // CreateOrUpdateAffiliateLinkRequest | request
+let redirectId = "redirectId_example"; // String | 
+let createOrUpdateAffiliateLinkRequest = new KeapCoreServiceV2Sdk.CreateOrUpdateAffiliateLinkRequest(); // CreateOrUpdateAffiliateLinkRequest | 
 apiInstance.updateRedirectLink(redirectId, createOrUpdateAffiliateLinkRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -1533,8 +1747,8 @@ apiInstance.updateRedirectLink(redirectId, createOrUpdateAffiliateLinkRequest).t
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **redirectId** | **String**| redirect_id | 
- **createOrUpdateAffiliateLinkRequest** | [**CreateOrUpdateAffiliateLinkRequest**](CreateOrUpdateAffiliateLinkRequest.md)| request | 
+ **redirectId** | **String**|  | 
+ **createOrUpdateAffiliateLinkRequest** | [**CreateOrUpdateAffiliateLinkRequest**](CreateOrUpdateAffiliateLinkRequest.md)|  | 
 
 ### Return type
 
@@ -1542,7 +1756,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1552,7 +1766,7 @@ No authorization required
 
 ## updateSubscriptionCommissionProgram
 
-> SubscriptionCommissionProgram updateSubscriptionCommissionProgram(commissionProgramId, opts)
+> SubscriptionCommissionProgram updateSubscriptionCommissionProgram(commissionProgramId, updateSubscriptionCommissionProgramRequest, opts)
 
 Update a Subscription Commission Program
 
@@ -1562,14 +1776,18 @@ Updates a Subscription Commission Program
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AffiliateApi();
-let commissionProgramId = "commissionProgramId_example"; // String | commission_program_id
+let commissionProgramId = "commissionProgramId_example"; // String | 
+let updateSubscriptionCommissionProgramRequest = new KeapCoreServiceV2Sdk.UpdateSubscriptionCommissionProgramRequest(); // UpdateSubscriptionCommissionProgramRequest | 
 let opts = {
-  'updateMask': ["null"], // [String] | update_mask
-  'updateSubscriptionCommissionProgramRequest': new KeapCoreServiceV2Sdk.UpdateSubscriptionCommissionProgramRequest() // UpdateSubscriptionCommissionProgramRequest | Values of the subscription Commission Program
+  'updateMask': ["null"] // [String] | 
 };
-apiInstance.updateSubscriptionCommissionProgram(commissionProgramId, opts).then((data) => {
+apiInstance.updateSubscriptionCommissionProgram(commissionProgramId, updateSubscriptionCommissionProgramRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -1582,9 +1800,9 @@ apiInstance.updateSubscriptionCommissionProgram(commissionProgramId, opts).then(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **commissionProgramId** | **String**| commission_program_id | 
- **updateMask** | [**[String]**](String.md)| update_mask | [optional] 
- **updateSubscriptionCommissionProgramRequest** | [**UpdateSubscriptionCommissionProgramRequest**](UpdateSubscriptionCommissionProgramRequest.md)| Values of the subscription Commission Program | [optional] 
+ **commissionProgramId** | **String**|  | 
+ **updateSubscriptionCommissionProgramRequest** | [**UpdateSubscriptionCommissionProgramRequest**](UpdateSubscriptionCommissionProgramRequest.md)|  | 
+ **updateMask** | [**[String]**](String.md)|  | [optional] 
 
 ### Return type
 
@@ -1592,7 +1810,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 

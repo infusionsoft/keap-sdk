@@ -10,13 +10,13 @@ import {SecurityAuthentication} from '../auth/auth';
 
 import { CancelSubscriptionRequest } from '../models/CancelSubscriptionRequest';
 import { CreateCustomFieldRequest } from '../models/CreateCustomFieldRequest';
-import { CreateSubscriptionRequest } from '../models/CreateSubscriptionRequest';
+import { CreateSubscriptionRequestDetail } from '../models/CreateSubscriptionRequestDetail';
 import { CustomFieldMetaData } from '../models/CustomFieldMetaData';
-import { ListSubscriptionsResponse } from '../models/ListSubscriptionsResponse';
+import { ListSubscriptionsResponseList } from '../models/ListSubscriptionsResponseList';
 import { ObjectModel } from '../models/ObjectModel';
-import { Subscription } from '../models/Subscription';
+import { SubscriptionDetail } from '../models/SubscriptionDetail';
 import { UpdateCustomFieldMetaDataRequest } from '../models/UpdateCustomFieldMetaDataRequest';
-import { UpdateSubscriptionRequest } from '../models/UpdateSubscriptionRequest';
+import { UpdateSubscriptionRequestDetail } from '../models/UpdateSubscriptionRequestDetail';
 
 /**
  * no description
@@ -26,8 +26,8 @@ export class SubscriptionsApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Cancels the specified subscription
      * Cancel Subscription
-     * @param subscriptionId subscription_id
-     * @param cancelSubscriptionRequest request
+     * @param subscriptionId 
+     * @param cancelSubscriptionRequest 
      */
     public async cancelSubscription(subscriptionId: string, cancelSubscriptionRequest: CancelSubscriptionRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
@@ -45,7 +45,7 @@ export class SubscriptionsApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/v2/subscriptions/{subscription_id}:deactivate'
+        const localVarPath = '/rest/v2/subscriptions/{subscription_id}:deactivate'
             .replace('{' + 'subscription_id' + '}', encodeURIComponent(String(subscriptionId)));
 
         // Make Request Context
@@ -64,6 +64,12 @@ export class SubscriptionsApiRequestFactory extends BaseAPIRequestFactory {
         );
         requestContext.setBody(serializedBody);
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -76,19 +82,19 @@ export class SubscriptionsApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Creates a subscription with the specified product and product subscription id.
      * Create Subscription
-     * @param createSubscriptionRequest request
+     * @param createSubscriptionRequestDetail 
      */
-    public async createSubscription(createSubscriptionRequest: CreateSubscriptionRequest, _options?: Configuration): Promise<RequestContext> {
+    public async createSubscription(createSubscriptionRequestDetail: CreateSubscriptionRequestDetail, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
-        // verify required parameter 'createSubscriptionRequest' is not null or undefined
-        if (createSubscriptionRequest === null || createSubscriptionRequest === undefined) {
-            throw new RequiredError("SubscriptionsApi", "createSubscription", "createSubscriptionRequest");
+        // verify required parameter 'createSubscriptionRequestDetail' is not null or undefined
+        if (createSubscriptionRequestDetail === null || createSubscriptionRequestDetail === undefined) {
+            throw new RequiredError("SubscriptionsApi", "createSubscription", "createSubscriptionRequestDetail");
         }
 
 
         // Path Params
-        const localVarPath = '/v2/subscriptions';
+        const localVarPath = '/rest/v2/subscriptions';
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
@@ -101,11 +107,17 @@ export class SubscriptionsApiRequestFactory extends BaseAPIRequestFactory {
         ]);
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
-            ObjectSerializer.serialize(createSubscriptionRequest, "CreateSubscriptionRequest", ""),
+            ObjectSerializer.serialize(createSubscriptionRequestDetail, "CreateSubscriptionRequestDetail", ""),
             contentType
         );
         requestContext.setBody(serializedBody);
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -118,7 +130,7 @@ export class SubscriptionsApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Creates a custom field of the specified type and options to the Subscription object
      * Create a Subscription Custom Field
-     * @param createCustomFieldRequest customField
+     * @param createCustomFieldRequest 
      */
     public async createSubscriptionCustomField(createCustomFieldRequest: CreateCustomFieldRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
@@ -130,7 +142,7 @@ export class SubscriptionsApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/v2/subscriptions/model/customFields';
+        const localVarPath = '/rest/v2/subscriptions/model/customFields';
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
@@ -148,6 +160,12 @@ export class SubscriptionsApiRequestFactory extends BaseAPIRequestFactory {
         );
         requestContext.setBody(serializedBody);
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -160,7 +178,7 @@ export class SubscriptionsApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Deletes a custom field from the Subscription object
      * Delete a Subscription Custom Field
-     * @param customFieldId custom_field_id
+     * @param customFieldId 
      */
     public async deleteSubscriptionCustomField(customFieldId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
@@ -172,7 +190,7 @@ export class SubscriptionsApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/v2/subscriptions/model/customFields/{custom_field_id}'
+        const localVarPath = '/rest/v2/subscriptions/model/customFields/{custom_field_id}'
             .replace('{' + 'custom_field_id' + '}', encodeURIComponent(String(customFieldId)));
 
         // Make Request Context
@@ -180,6 +198,12 @@ export class SubscriptionsApiRequestFactory extends BaseAPIRequestFactory {
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
 
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -192,7 +216,7 @@ export class SubscriptionsApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Retrieves a single subscription
      * Retrieve a Subscription
-     * @param subscriptionId subscription_id
+     * @param subscriptionId 
      */
     public async getSubscription(subscriptionId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
@@ -204,7 +228,7 @@ export class SubscriptionsApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/v2/subscriptions/{subscription_id}'
+        const localVarPath = '/rest/v2/subscriptions/{subscription_id}'
             .replace('{' + 'subscription_id' + '}', encodeURIComponent(String(subscriptionId)));
 
         // Make Request Context
@@ -212,6 +236,12 @@ export class SubscriptionsApiRequestFactory extends BaseAPIRequestFactory {
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
 
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -224,7 +254,7 @@ export class SubscriptionsApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Retrieves a list of subscriptions using the specified search criteria.
      * List Subscriptions
-     * @param filter Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; 
+     * @param filter Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; 
      * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param pageSize Total number of items to return per page
      * @param pageToken Page token
@@ -237,7 +267,7 @@ export class SubscriptionsApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/v2/subscriptions';
+        const localVarPath = '/rest/v2/subscriptions';
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
@@ -264,6 +294,12 @@ export class SubscriptionsApiRequestFactory extends BaseAPIRequestFactory {
         }
 
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -281,13 +317,19 @@ export class SubscriptionsApiRequestFactory extends BaseAPIRequestFactory {
         let _config = _options || this.configuration;
 
         // Path Params
-        const localVarPath = '/v2/subscriptions/model';
+        const localVarPath = '/rest/v2/subscriptions/model';
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
 
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -300,11 +342,11 @@ export class SubscriptionsApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Updates a Subscription
      * Update a Subscription
-     * @param subscriptionId subscription_id
-     * @param updateSubscriptionRequest request
+     * @param subscriptionId 
+     * @param updateSubscriptionRequestDetail 
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateSubscription(subscriptionId: string, updateSubscriptionRequest: UpdateSubscriptionRequest, updateMask?: Array<string>, _options?: Configuration): Promise<RequestContext> {
+    public async updateSubscription(subscriptionId: string, updateSubscriptionRequestDetail: UpdateSubscriptionRequestDetail, updateMask?: 'contact_id,subscription_plan_id,quantity,billing_amount,auto_charge,max_charge_attempts,days_between_retries, active,billing_frequency,billing_cycle,next_bill_date,end_date,payment_method_id,allow_tax,lead_affiliate_id, sale_affiliate_id,promo_code,shipping_option_id,reason_stopped,shipping_address', _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'subscriptionId' is not null or undefined
@@ -313,15 +355,15 @@ export class SubscriptionsApiRequestFactory extends BaseAPIRequestFactory {
         }
 
 
-        // verify required parameter 'updateSubscriptionRequest' is not null or undefined
-        if (updateSubscriptionRequest === null || updateSubscriptionRequest === undefined) {
-            throw new RequiredError("SubscriptionsApi", "updateSubscription", "updateSubscriptionRequest");
+        // verify required parameter 'updateSubscriptionRequestDetail' is not null or undefined
+        if (updateSubscriptionRequestDetail === null || updateSubscriptionRequestDetail === undefined) {
+            throw new RequiredError("SubscriptionsApi", "updateSubscription", "updateSubscriptionRequestDetail");
         }
 
 
 
         // Path Params
-        const localVarPath = '/v2/subscriptions/{subscription_id}'
+        const localVarPath = '/rest/v2/subscriptions/{subscription_id}'
             .replace('{' + 'subscription_id' + '}', encodeURIComponent(String(subscriptionId)));
 
         // Make Request Context
@@ -330,10 +372,7 @@ export class SubscriptionsApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (updateMask !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(updateMask, "Array<string>", "");
-            for (const serializedParam of serializedParams) {
-                requestContext.appendQueryParam("update_mask", serializedParam);
-            }
+            requestContext.setQueryParam("update_mask", ObjectSerializer.serialize(updateMask, "'contact_id,subscription_plan_id,quantity,billing_amount,auto_charge,max_charge_attempts,days_between_retries, active,billing_frequency,billing_cycle,next_bill_date,end_date,payment_method_id,allow_tax,lead_affiliate_id, sale_affiliate_id,promo_code,shipping_option_id,reason_stopped,shipping_address'", ""));
         }
 
 
@@ -343,11 +382,17 @@ export class SubscriptionsApiRequestFactory extends BaseAPIRequestFactory {
         ]);
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
-            ObjectSerializer.serialize(updateSubscriptionRequest, "UpdateSubscriptionRequest", ""),
+            ObjectSerializer.serialize(updateSubscriptionRequestDetail, "UpdateSubscriptionRequestDetail", ""),
             contentType
         );
         requestContext.setBody(serializedBody);
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -360,11 +405,11 @@ export class SubscriptionsApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Updates a custom field of the specified type and options to the Subscription object
      * Update a Subscription Custom Field
-     * @param customFieldId custom_field_id
-     * @param updateCustomFieldMetaDataRequest request
+     * @param customFieldId 
+     * @param updateCustomFieldMetaDataRequest 
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateSubscriptionCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Array<string>, _options?: Configuration): Promise<RequestContext> {
+    public async updateSubscriptionCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: 'group_id,label,options', _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'customFieldId' is not null or undefined
@@ -381,7 +426,7 @@ export class SubscriptionsApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/v2/subscriptions/model/customFields/{custom_field_id}'
+        const localVarPath = '/rest/v2/subscriptions/model/customFields/{custom_field_id}'
             .replace('{' + 'custom_field_id' + '}', encodeURIComponent(String(customFieldId)));
 
         // Make Request Context
@@ -390,10 +435,7 @@ export class SubscriptionsApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (updateMask !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(updateMask, "Array<string>", "");
-            for (const serializedParam of serializedParams) {
-                requestContext.appendQueryParam("update_mask", serializedParam);
-            }
+            requestContext.setQueryParam("update_mask", ObjectSerializer.serialize(updateMask, "'group_id,label,options'", ""));
         }
 
 
@@ -408,6 +450,12 @@ export class SubscriptionsApiRequestFactory extends BaseAPIRequestFactory {
         );
         requestContext.setBody(serializedBody);
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -433,6 +481,13 @@ export class SubscriptionsApiResponseProcessor {
         if (isCodeInRange("200", response.httpStatusCode)) {
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
         }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -447,12 +502,33 @@ export class SubscriptionsApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Forbidden", body, response.headers);
         }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -474,14 +550,21 @@ export class SubscriptionsApiResponseProcessor {
      * @params response Response returned by the server for a request to createSubscription
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async createSubscriptionWithHttpInfo(response: ResponseContext): Promise<HttpInfo<Subscription >> {
+     public async createSubscriptionWithHttpInfo(response: ResponseContext): Promise<HttpInfo<SubscriptionDetail >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("201", response.httpStatusCode)) {
-            const body: Subscription = ObjectSerializer.deserialize(
+            const body: SubscriptionDetail = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Subscription", ""
-            ) as Subscription;
+                "SubscriptionDetail", ""
+            ) as SubscriptionDetail;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
         }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
@@ -497,6 +580,20 @@ export class SubscriptionsApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Forbidden", body, response.headers);
         }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -504,13 +601,20 @@ export class SubscriptionsApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
         }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
+        }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: Subscription = ObjectSerializer.deserialize(
+            const body: SubscriptionDetail = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Subscription", ""
-            ) as Subscription;
+                "SubscriptionDetail", ""
+            ) as SubscriptionDetail;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -533,6 +637,13 @@ export class SubscriptionsApiResponseProcessor {
             ) as CustomFieldMetaData;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -547,12 +658,33 @@ export class SubscriptionsApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Forbidden", body, response.headers);
         }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -579,6 +711,13 @@ export class SubscriptionsApiResponseProcessor {
         if (isCodeInRange("204", response.httpStatusCode)) {
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
         }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -600,12 +739,26 @@ export class SubscriptionsApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -627,14 +780,21 @@ export class SubscriptionsApiResponseProcessor {
      * @params response Response returned by the server for a request to getSubscription
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getSubscriptionWithHttpInfo(response: ResponseContext): Promise<HttpInfo<Subscription >> {
+     public async getSubscriptionWithHttpInfo(response: ResponseContext): Promise<HttpInfo<SubscriptionDetail >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: Subscription = ObjectSerializer.deserialize(
+            const body: SubscriptionDetail = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Subscription", ""
-            ) as Subscription;
+                "SubscriptionDetail", ""
+            ) as SubscriptionDetail;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
         }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
@@ -657,6 +817,13 @@ export class SubscriptionsApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -664,13 +831,20 @@ export class SubscriptionsApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
         }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
+        }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: Subscription = ObjectSerializer.deserialize(
+            const body: SubscriptionDetail = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Subscription", ""
-            ) as Subscription;
+                "SubscriptionDetail", ""
+            ) as SubscriptionDetail;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -684,14 +858,21 @@ export class SubscriptionsApiResponseProcessor {
      * @params response Response returned by the server for a request to listSubscriptions
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async listSubscriptionsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListSubscriptionsResponse >> {
+     public async listSubscriptionsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListSubscriptionsResponseList >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: ListSubscriptionsResponse = ObjectSerializer.deserialize(
+            const body: ListSubscriptionsResponseList = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "ListSubscriptionsResponse", ""
-            ) as ListSubscriptionsResponse;
+                "ListSubscriptionsResponseList", ""
+            ) as ListSubscriptionsResponseList;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
         }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
@@ -714,6 +895,13 @@ export class SubscriptionsApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -721,13 +909,20 @@ export class SubscriptionsApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
         }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
+        }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: ListSubscriptionsResponse = ObjectSerializer.deserialize(
+            const body: ListSubscriptionsResponseList = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "ListSubscriptionsResponse", ""
-            ) as ListSubscriptionsResponse;
+                "ListSubscriptionsResponseList", ""
+            ) as ListSubscriptionsResponseList;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -750,6 +945,13 @@ export class SubscriptionsApiResponseProcessor {
             ) as ObjectModel;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -771,12 +973,26 @@ export class SubscriptionsApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -798,14 +1014,21 @@ export class SubscriptionsApiResponseProcessor {
      * @params response Response returned by the server for a request to updateSubscription
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async updateSubscriptionWithHttpInfo(response: ResponseContext): Promise<HttpInfo<Subscription >> {
+     public async updateSubscriptionWithHttpInfo(response: ResponseContext): Promise<HttpInfo<SubscriptionDetail >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: Subscription = ObjectSerializer.deserialize(
+            const body: SubscriptionDetail = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Subscription", ""
-            ) as Subscription;
+                "SubscriptionDetail", ""
+            ) as SubscriptionDetail;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
         }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
@@ -828,6 +1051,13 @@ export class SubscriptionsApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -835,13 +1065,20 @@ export class SubscriptionsApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
         }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
+        }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: Subscription = ObjectSerializer.deserialize(
+            const body: SubscriptionDetail = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Subscription", ""
-            ) as Subscription;
+                "SubscriptionDetail", ""
+            ) as SubscriptionDetail;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -864,6 +1101,13 @@ export class SubscriptionsApiResponseProcessor {
             ) as CustomFieldMetaData;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -885,12 +1129,26 @@ export class SubscriptionsApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml

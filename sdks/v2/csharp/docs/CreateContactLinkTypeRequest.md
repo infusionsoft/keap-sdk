@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MaxLinks** | **long** |  | [optional] 
-**Name** | **string** |  | [optional] 
+**Name** | **string** | Link type name | [optional] 
+**MaxLinks** | **long** | Maximum number of links allowed (must be &gt; 0) | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

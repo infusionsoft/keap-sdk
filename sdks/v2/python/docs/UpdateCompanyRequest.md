@@ -1,18 +1,19 @@
 # UpdateCompanyRequest
 
+company
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**address** | [**Address**](Address.md) |  | [optional] 
-**company_name** | **str** |  | [optional] 
+**address** | [**Address**](Address.md) | The company&#39;s address | [optional] 
+**notes** | **str** | Notes about the company | [optional] 
+**website** | **str** | The company&#39;s website URL | [optional] 
+**company_name** | **str** | The name of the company | [optional] 
 **custom_fields** | [**List[CustomFieldValue]**](CustomFieldValue.md) |  | [optional] 
 **email_address** | [**EmailAddress**](EmailAddress.md) |  | [optional] 
 **fax_number** | [**FaxNumber**](FaxNumber.md) |  | [optional] 
-**notes** | **str** |  | [optional] 
 **phone_number** | [**PhoneNumber**](PhoneNumber.md) |  | [optional] 
-**website** | **str** |  | [optional] 
 
 ## Example
 

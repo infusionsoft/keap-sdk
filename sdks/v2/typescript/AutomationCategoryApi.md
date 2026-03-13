@@ -1,13 +1,13 @@
 # .AutomationCategoryApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createCategory**](AutomationCategoryApi.md#createCategory) | **POST** /v2/automationCategory | Create automation category
-[**deleteCategories**](AutomationCategoryApi.md#deleteCategories) | **DELETE** /v2/automationCategory | Delete automation category
-[**listCategories**](AutomationCategoryApi.md#listCategories) | **GET** /v2/automationCategory | List automation categories
-[**patchCategory**](AutomationCategoryApi.md#patchCategory) | **PATCH** /v2/automationCategory/{id} | Update automation category
+[**createCategory**](AutomationCategoryApi.md#createCategory) | **POST** /rest/v2/automationCategory | Create automation category
+[**deleteCategories**](AutomationCategoryApi.md#deleteCategories) | **DELETE** /rest/v2/automationCategory | Delete automation category
+[**listCategories**](AutomationCategoryApi.md#listCategories) | **GET** /rest/v2/automationCategory | List automation categories
+[**patchCategory**](AutomationCategoryApi.md#patchCategory) | **PATCH** /rest/v2/automationCategory/{id} | Update automation category
 
 
 # **createCategory**
@@ -26,9 +26,9 @@ const configuration = createConfiguration();
 const apiInstance = new AutomationCategoryApi(configuration);
 
 const request: AutomationCategoryApiCreateCategoryRequest = {
-    // createAutomationCategoryRequest
+  
   createAutomationCategoryRequest: {
-    name: "name_example",
+    name: "Marketing Campaigns",
   },
 };
 
@@ -41,7 +41,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createAutomationCategoryRequest** | **CreateAutomationCategoryRequest**| createAutomationCategoryRequest |
+ **createAutomationCategoryRequest** | **CreateAutomationCategoryRequest**|  |
 
 
 ### Return type
@@ -50,7 +50,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -62,9 +62,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -84,7 +88,7 @@ const configuration = createConfiguration();
 const apiInstance = new AutomationCategoryApi(configuration);
 
 const request: AutomationCategoryApiDeleteCategoriesRequest = {
-    // ids
+  
   ids: [
     1,
   ],
@@ -99,7 +103,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ids** | **Array&lt;number&gt;** | ids | defaults to undefined
+ **ids** | **Array&lt;number&gt;** |  | defaults to undefined
 
 
 ### Return type
@@ -108,7 +112,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -120,10 +124,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No Content |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -158,7 +165,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -170,10 +177,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -193,11 +203,11 @@ const configuration = createConfiguration();
 const apiInstance = new AutomationCategoryApi(configuration);
 
 const request: AutomationCategoryApiPatchCategoryRequest = {
-    // id
+  
   id: "id_example",
-    // patchAutomationCategoryRequest
+  
   patchAutomationCategoryRequest: {
-    name: "name_example",
+    name: "Marketing Campaigns",
   },
 };
 
@@ -210,8 +220,8 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **patchAutomationCategoryRequest** | **PatchAutomationCategoryRequest**| patchAutomationCategoryRequest |
- **id** | [**string**] | id | defaults to undefined
+ **patchAutomationCategoryRequest** | **PatchAutomationCategoryRequest**|  |
+ **id** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -220,7 +230,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -232,10 +242,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

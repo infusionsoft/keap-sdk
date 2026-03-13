@@ -5,15 +5,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**contact_id** | **str** |  | [optional] 
-**description** | **str** |  | [optional] 
-**expiration_time** | **str** |  | [optional] 
-**id** | **str** |  | [optional] 
-**ip_address** | **str** |  | [optional] 
-**referral_partner_id** | **str** |  | [optional] 
-**referral_time** | **str** |  | [optional] 
-**referral_type** | **str** |  | [optional] 
-**source** | **str** |  | [optional] 
+**id** | **str** | The unique identifier for this referral. | [optional] 
+**description** | **str** | The referral description. | [optional] 
+**source** | **str** | The source for the referral. | [optional] 
+**contact_id** | **str** | The referral&#39;s contact_id. | [optional] 
+**referral_partner_id** | **str** | The referring affiliate ID. | [optional] 
+**referral_time** | **datetime** | The time of the referral. | [optional] 
+**expiration_time** | **datetime** | The time when the referral expires. | [optional] 
+**ip_address** | **str** | The IP address of the referral. | [optional] 
+**referral_type** | **str** | The referral type. | [optional] 
 
 ## Example
 

@@ -1,15 +1,16 @@
 # CreateOpportunityStageRequest
 
+opportunity
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**checklist_items** | [**List[CreateOpportunityStageChecklistItem]**](CreateOpportunityStageChecklistItem.md) |  | [optional] 
 **name** | **str** |  | 
 **order** | **int** |  | 
-**probability** | **int** |  | 
 **target_number_days** | **int** |  | 
+**probability** | **int** |  | 
+**checklist_items** | [**List[CreateOpportunityStageChecklistItem]**](CreateOpportunityStageChecklistItem.md) |  | [optional] 
 
 ## Example
 

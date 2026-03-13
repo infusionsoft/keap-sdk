@@ -4,34 +4,32 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**costPerUnit** | [**CurrencyValue**](CurrencyValue.md) |  | [optional] 
-**description** | **String** |  | [optional] 
-**discount** | [**CurrencyValue**](CurrencyValue.md) |  | [optional] 
-**id** | **String** |  | [optional] 
-**itemType** | **String** | The order item type. Valid values are: PRODUCT, SHIPPING, TAX, SERVICE, PRODUCT, UPSELL, FINANCE_CHARGE, DISCOUNT, PROGRAM, SUBSCRIPTION, DISCOUNT_FREE_TRIAL, DISCOUNT_ORDER_TOTAL, DISCOUNT_PRODUCT, DISCOUNT_PRODUCT_CATEGORY, DISCOUNT_SHIPPING, TIP, OTHER. | [optional] 
-**name** | **String** |  | [optional] 
-**notes** | **String** |  | [optional] 
-**pricePerUnit** | [**CurrencyValue**](CurrencyValue.md) |  | [optional] 
-**product** | [**OrderItemProduct**](OrderItemProduct.md) |  | [optional] 
-**quantity** | **Number** |  | [optional] 
-**special** | [**Discount**](Discount.md) |  | [optional] 
+**id** | **String** | Unique identifier for the order item | [optional] 
+**name** | **String** | Name of the item | [optional] 
+**description** | **String** | Item description | [optional] 
+**notes** | **String** | Additional notes | [optional] 
+**quantity** | **Number** | Quantity ordered | [optional] 
+**discount** | [**CurrencyValue**](CurrencyValue.md) | If the order item is a discount type, this is the amount of the discount. | [optional] 
+**special** | [**Discount**](Discount.md) | If the line item is a discount type, the details about the discount. | [optional] 
+**product** | [**OrderItemProduct**](OrderItemProduct.md) | Product details | [optional] 
 **subscriptionId** | **String** | If the order item is a subscription type, this refers to the subscription id that generated the order. | [optional] 
-**subscriptionPlan** | [**SubscriptionPlan**](SubscriptionPlan.md) |  | [optional] 
+**itemType** | **String** | The type of order item. | [optional] 
+**costPerUnit** | [**CurrencyValue**](CurrencyValue.md) | Cost per unit | [optional] 
+**pricePerUnit** | [**CurrencyValue**](CurrencyValue.md) | Price per unit charged to customer | [optional] 
+**subscriptionPlan** | [**SubscriptionPlan**](SubscriptionPlan.md) | If the order item is a subscription type, the details of the subscription plan. | [optional] 
 
 
 
 ## Enum: ItemTypeEnum
 
 
-* `UNKNOWN` (value: `"UNKNOWN"`)
+* `PRODUCT` (value: `"PRODUCT"`)
 
 * `SHIPPING` (value: `"SHIPPING"`)
 
 * `TAX` (value: `"TAX"`)
 
 * `SERVICE` (value: `"SERVICE"`)
-
-* `PRODUCT` (value: `"PRODUCT"`)
 
 * `UPSELL` (value: `"UPSELL"`)
 
@@ -56,6 +54,8 @@ Name | Type | Description | Notes
 * `TIP` (value: `"TIP"`)
 
 * `OTHER` (value: `"OTHER"`)
+
+* `UNKNOWN` (value: `"UNKNOWN"`)
 
 * `unknown_default_open_api` (value: `"unknown_default_open_api"`)
 

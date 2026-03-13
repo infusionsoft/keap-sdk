@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**reason** | **str** |  | [optional] 
+**reason** | **str** | The reason for cancelling the subscription. | [optional] 
 
 ## Example
 

@@ -7,19 +7,19 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**company** | **String** |  |  [optional] |
-|**countryCode** | **String** |  |  [optional] |
-|**firstName** | **String** |  |  [optional] |
-|**isInvoiceToCompany** | **Boolean** |  |  [optional] |
-|**lastName** | **String** |  |  [optional] |
 |**line1** | **String** |  |  [optional] |
 |**line2** | **String** |  |  [optional] |
 |**locality** | **String** |  |  [optional] |
-|**middleName** | **String** |  |  [optional] |
-|**phone** | **String** |  |  [optional] |
 |**region** | **String** |  |  [optional] |
+|**company** | **String** |  |  [optional] |
+|**phone** | **String** |  |  [optional] |
 |**zipCode** | **String** |  |  [optional] |
 |**zipFour** | **String** |  |  [optional] |
+|**countryCode** | **String** |  |  [optional] |
+|**firstName** | **String** |  |  [optional] |
+|**middleName** | **String** |  |  [optional] |
+|**lastName** | **String** |  |  [optional] |
+|**isInvoiceToCompany** | **Boolean** |  |  [optional] |
 
 
 ## Implemented Interfaces

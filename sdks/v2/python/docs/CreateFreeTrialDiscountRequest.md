@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**criteria** | [**List[DiscountCriteria]**](DiscountCriteria.md) |  | [optional] 
-**description** | **str** |  | [optional] 
-**free_trial_days** | **int** | The number of free trial days. Must be a positive number. Defaults to 0. | [optional] 
-**hide_price** | **bool** |  | [optional] 
-**name** | **str** |  | 
-**subscription_plan_id** | **str** |  | 
+**name** | **str** | Name of the discount | 
+**description** | **str** | Description of the discount | [optional] 
+**criteria** | [**List[DiscountCriteria]**](DiscountCriteria.md) | List of criteria that must be met for this discount to apply | [optional] 
+**hide_price** | **bool** | Whether to hide the price during the trial period | [optional] 
+**subscription_plan_id** | **str** | ID of the subscription plan this trial applies to | 
+**free_trial_days** | **int** | Number of free trial days. Must be a positive number. Defaults to 0. | [optional] 
 
 ## Example
 

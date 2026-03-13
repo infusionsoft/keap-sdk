@@ -1,13 +1,13 @@
 # Keap.Core.V2.Api.LocaleApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**GetCountryByCode**](LocaleApi.md#getcountrybycode) | **GET** /v2/locales/countries/{country_code} | Get Country |
-| [**GetProvinceByCode**](LocaleApi.md#getprovincebycode) | **GET** /v2/locales/countries/{country_code}/provinces/{province_code} | Get Province |
-| [**ListCountries**](LocaleApi.md#listcountries) | **GET** /v2/locales/countries | List Countries |
-| [**ListProvincesForCountry**](LocaleApi.md#listprovincesforcountry) | **GET** /v2/locales/countries/{country_code}/provinces | List a Country&#39;s Province |
+| [**GetCountryByCode**](LocaleApi.md#getcountrybycode) | **GET** /rest/v2/locales/countries/{country_code} | Get Country |
+| [**GetProvinceByCode**](LocaleApi.md#getprovincebycode) | **GET** /rest/v2/locales/countries/{country_code}/provinces/{province_code} | Get Province |
+| [**ListCountries**](LocaleApi.md#listcountries) | **GET** /rest/v2/locales/countries | List Countries |
+| [**ListProvincesForCountry**](LocaleApi.md#listprovincesforcountry) | **GET** /rest/v2/locales/countries/{country_code}/provinces | List a Country&#39;s Provinces |
 
 <a id="getcountrybycode"></a>
 # **GetCountryByCode**
@@ -32,7 +32,10 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new LocaleApi(config);
             var countryCode = "countryCode_example";  // string | The ISO 3166-2 alpha-2 code, alpha-3 code, or name of the country to be retrieved
 
@@ -85,7 +88,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -97,10 +100,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -127,7 +133,10 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new LocaleApi(config);
             var countryCode = "countryCode_example";  // string | The ISO 3166-1 alpha-2 code, alpha-3 code, or name of the country to be retrieved
             var provinceCode = "provinceCode_example";  // string | The ISO 3166-2 code or name of the province to be retrieved
@@ -182,7 +191,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -194,10 +203,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -224,7 +236,10 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new LocaleApi(config);
 
             try
@@ -272,7 +287,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -284,10 +299,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -295,7 +313,7 @@ No authorization required
 # **ListProvincesForCountry**
 > ListProvincesResponse ListProvincesForCountry (string countryCode)
 
-List a Country's Province
+List a Country's Provinces
 
 Retrieves a list of provinces for a given country
 
@@ -314,13 +332,16 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new LocaleApi(config);
-            var countryCode = "countryCode_example";  // string | country_code
+            var countryCode = "countryCode_example";  // string | 
 
             try
             {
-                // List a Country's Province
+                // List a Country's Provinces
                 ListProvincesResponse result = apiInstance.ListProvincesForCountry(countryCode);
                 Debug.WriteLine(result);
             }
@@ -341,7 +362,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    // List a Country's Province
+    // List a Country's Provinces
     ApiResponse<ListProvincesResponse> response = apiInstance.ListProvincesForCountryWithHttpInfo(countryCode);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
@@ -359,7 +380,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **countryCode** | **string** | country_code |  |
+| **countryCode** | **string** |  |  |
 
 ### Return type
 
@@ -367,7 +388,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -379,10 +400,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

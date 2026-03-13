@@ -5,17 +5,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**category** | **str** |  | [optional] 
-**contact_id** | **str** |  | [optional] 
-**created_by_id** | **str** |  | [optional] 
-**created_time** | **str** |  | [optional] 
-**file_box_type** | **str** |  | [optional] 
-**file_name** | **str** |  | [optional] 
-**file_size** | **int** |  | [optional] 
-**id** | **str** |  | [optional] 
-**is_public** | **bool** |  | [optional] 
-**remote_file_key** | **str** |  | [optional] 
-**updated_time** | **str** |  | [optional] 
+**id** | **str** | File ID | [optional] 
+**category** | **str** | File category | [optional] 
+**file_name** | **str** | File name with extension | [optional] 
+**is_public** | **bool** | Whether file is publicly accessible | [optional] 
+**contact_id** | **str** | Associated contact ID | [optional] 
+**created_by_id** | **str** | ID of user who created the file | [optional] 
+**remote_file_key** | **str** | Remote storage key | [optional] 
+**file_box_type** | **str** | File box type | [optional] 
+**file_size** | **int** | File size in bytes | [optional] 
+**created_time** | **str** | Creation timestamp (ISO-8601) | [optional] 
+**updated_time** | **str** | Last update timestamp (ISO-8601) | [optional] 
 
 ## Example
 

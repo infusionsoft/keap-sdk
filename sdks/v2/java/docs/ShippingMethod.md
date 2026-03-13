@@ -7,13 +7,13 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**description** | **String** |  |  [optional] |
 |**id** | **String** |  |  [optional] |
-|**international** | **Boolean** |  |  [optional] |
 |**name** | **String** |  |  [optional] |
-|**settings** | **Object** |  |  [optional] |
-|**status** | **String** |  |  [optional] |
+|**description** | **String** |  |  [optional] |
 |**type** | **String** |  |  [optional] |
+|**status** | **String** |  |  [optional] |
+|**international** | **Boolean** |  |  [optional] |
+|**settings** | **Object** |  |  [optional] |
 
 
 ## Implemented Interfaces

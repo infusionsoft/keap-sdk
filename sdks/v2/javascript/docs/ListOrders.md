@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**orders** | [**[OrderV2]**](OrderV2.md) |  | [optional] 
 **nextPageToken** | **String** |  | [optional] 
-**orders** | [**[Order]**](Order.md) |  | [optional] 
 
 

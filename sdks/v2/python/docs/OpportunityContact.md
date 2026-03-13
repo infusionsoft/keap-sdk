@@ -5,13 +5,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**company_name** | **str** |  | [optional] 
-**email** | **str** |  | [optional] 
-**first_name** | **str** |  | [optional] 
-**id** | **str** |  | 
-**job_title** | **str** |  | [optional] 
-**last_name** | **str** |  | [optional] 
-**phone_number** | **str** |  | [optional] 
+**id** | **str** | Contact ID | 
+**email** | **str** | Email address | [optional] 
+**first_name** | **str** | First name | [optional] 
+**last_name** | **str** | Last name | [optional] 
+**company_name** | **str** | Company name | [optional] 
+**job_title** | **str** | Job title | [optional] 
+**phone_number** | **str** | Phone number | [optional] 
 
 ## Example
 

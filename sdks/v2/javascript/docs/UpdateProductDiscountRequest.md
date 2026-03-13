@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**applyToCommissions** | **Boolean** |  | [optional] 
-**criteria** | [**[DiscountCriteria]**](DiscountCriteria.md) |  | [optional] 
-**description** | **String** |  | [optional] 
-**discountType** | **String** |  | [optional] 
-**discountValue** | **Number** |  | [optional] 
-**name** | **String** |  | [optional] 
-**productId** | **String** |  | [optional] 
+**name** | **String** | Name of the discount | [optional] 
+**description** | **String** | Description of the discount | [optional] 
+**criteria** | [**[DiscountCriteria]**](DiscountCriteria.md) | List of criteria that must be met for this discount to apply | [optional] 
+**applyToCommissions** | **Boolean** | Whether to apply this discount to commission calculations | [optional] 
+**productId** | **String** | ID of the product this discount applies to | [optional] 
+**discountType** | **String** | Type of discount: AMOUNT (fixed amount) or PERCENT (percentage) | [optional] 
+**discountValue** | **Number** | Value of the discount (amount or percentage depending on discount_type) | [optional] 
 
 
 

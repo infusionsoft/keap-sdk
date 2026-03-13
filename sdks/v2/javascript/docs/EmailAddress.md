@@ -4,11 +4,28 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**email** | **String** |  | [optional] 
-**emailOptStatus** | **String** |  | [optional] 
-**field** | **String** |  | [optional] 
+**email** | **String** | Email address | [optional] 
+**field** | **String** | Email address slot | [optional] 
+**optInReason** | **String** | Reason for opting in | [optional] 
 **isOptIn** | **Boolean** |  | [optional] 
-**optInReason** | **String** |  | [optional] 
+**emailOptStatus** | **String** |  | [optional] 
+
+
+
+## Enum: FieldEnum
+
+
+* `EMAIL_FIELD_UNSPECIFIED` (value: `"EMAIL_FIELD_UNSPECIFIED"`)
+
+* `EMAIL1` (value: `"EMAIL1"`)
+
+* `EMAIL2` (value: `"EMAIL2"`)
+
+* `EMAIL3` (value: `"EMAIL3"`)
+
+* `unknown_default_open_api` (value: `"unknown_default_open_api"`)
+
+
 
 
 
@@ -48,23 +65,6 @@ Name | Type | Description | Notes
 * `INVALID` (value: `"INVALID"`)
 
 * `DEACTIVATED` (value: `"DEACTIVATED"`)
-
-* `unknown_default_open_api` (value: `"unknown_default_open_api"`)
-
-
-
-
-
-## Enum: FieldEnum
-
-
-* `EMAIL_FIELD_UNSPECIFIED` (value: `"EMAIL_FIELD_UNSPECIFIED"`)
-
-* `EMAIL1` (value: `"EMAIL1"`)
-
-* `EMAIL2` (value: `"EMAIL2"`)
-
-* `EMAIL3` (value: `"EMAIL3"`)
 
 * `unknown_default_open_api` (value: `"unknown_default_open_api"`)
 

@@ -1,18 +1,18 @@
 # KeapCoreServiceV2Sdk.SubscriptionsApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**cancelSubscription**](SubscriptionsApi.md#cancelSubscription) | **POST** /v2/subscriptions/{subscription_id}:deactivate | Cancel Subscription
-[**createSubscription**](SubscriptionsApi.md#createSubscription) | **POST** /v2/subscriptions | Create Subscription
-[**createSubscriptionCustomField**](SubscriptionsApi.md#createSubscriptionCustomField) | **POST** /v2/subscriptions/model/customFields | Create a Subscription Custom Field
-[**deleteSubscriptionCustomField**](SubscriptionsApi.md#deleteSubscriptionCustomField) | **DELETE** /v2/subscriptions/model/customFields/{custom_field_id} | Delete a Subscription Custom Field
-[**getSubscription**](SubscriptionsApi.md#getSubscription) | **GET** /v2/subscriptions/{subscription_id} | Retrieve a Subscription
-[**listSubscriptions**](SubscriptionsApi.md#listSubscriptions) | **GET** /v2/subscriptions | List Subscriptions
-[**retrieveSubscriptionCustomFieldModel**](SubscriptionsApi.md#retrieveSubscriptionCustomFieldModel) | **GET** /v2/subscriptions/model | Retrieve Subscription Custom Field Model
-[**updateSubscription**](SubscriptionsApi.md#updateSubscription) | **PATCH** /v2/subscriptions/{subscription_id} | Update a Subscription
-[**updateSubscriptionCustomField**](SubscriptionsApi.md#updateSubscriptionCustomField) | **PATCH** /v2/subscriptions/model/customFields/{custom_field_id} | Update a Subscription Custom Field
+[**cancelSubscription**](SubscriptionsApi.md#cancelSubscription) | **POST** /rest/v2/subscriptions/{subscription_id}:deactivate | Cancel Subscription
+[**createSubscription**](SubscriptionsApi.md#createSubscription) | **POST** /rest/v2/subscriptions | Create Subscription
+[**createSubscriptionCustomField**](SubscriptionsApi.md#createSubscriptionCustomField) | **POST** /rest/v2/subscriptions/model/customFields | Create a Subscription Custom Field
+[**deleteSubscriptionCustomField**](SubscriptionsApi.md#deleteSubscriptionCustomField) | **DELETE** /rest/v2/subscriptions/model/customFields/{custom_field_id} | Delete a Subscription Custom Field
+[**getSubscription**](SubscriptionsApi.md#getSubscription) | **GET** /rest/v2/subscriptions/{subscription_id} | Retrieve a Subscription
+[**listSubscriptions**](SubscriptionsApi.md#listSubscriptions) | **GET** /rest/v2/subscriptions | List Subscriptions
+[**retrieveSubscriptionCustomFieldModel**](SubscriptionsApi.md#retrieveSubscriptionCustomFieldModel) | **GET** /rest/v2/subscriptions/model | Retrieve Subscription Custom Field Model
+[**updateSubscription**](SubscriptionsApi.md#updateSubscription) | **PATCH** /rest/v2/subscriptions/{subscription_id} | Update a Subscription
+[**updateSubscriptionCustomField**](SubscriptionsApi.md#updateSubscriptionCustomField) | **PATCH** /rest/v2/subscriptions/model/customFields/{custom_field_id} | Update a Subscription Custom Field
 
 
 
@@ -28,10 +28,14 @@ Cancels the specified subscription
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.SubscriptionsApi();
-let subscriptionId = "subscriptionId_example"; // String | subscription_id
-let cancelSubscriptionRequest = new KeapCoreServiceV2Sdk.CancelSubscriptionRequest(); // CancelSubscriptionRequest | request
+let subscriptionId = "subscriptionId_example"; // String | 
+let cancelSubscriptionRequest = new KeapCoreServiceV2Sdk.CancelSubscriptionRequest(); // CancelSubscriptionRequest | 
 apiInstance.cancelSubscription(subscriptionId, cancelSubscriptionRequest).then(() => {
   console.log('API called successfully.');
 }, (error) => {
@@ -45,8 +49,8 @@ apiInstance.cancelSubscription(subscriptionId, cancelSubscriptionRequest).then((
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **subscriptionId** | **String**| subscription_id | 
- **cancelSubscriptionRequest** | [**CancelSubscriptionRequest**](CancelSubscriptionRequest.md)| request | 
+ **subscriptionId** | **String**|  | 
+ **cancelSubscriptionRequest** | [**CancelSubscriptionRequest**](CancelSubscriptionRequest.md)|  | 
 
 ### Return type
 
@@ -54,7 +58,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -64,7 +68,7 @@ No authorization required
 
 ## createSubscription
 
-> Subscription createSubscription(createSubscriptionRequest)
+> SubscriptionDetail createSubscription(createSubscriptionRequestDetail)
 
 Create Subscription
 
@@ -74,10 +78,14 @@ Creates a subscription with the specified product and product subscription id.
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.SubscriptionsApi();
-let createSubscriptionRequest = new KeapCoreServiceV2Sdk.CreateSubscriptionRequest(); // CreateSubscriptionRequest | request
-apiInstance.createSubscription(createSubscriptionRequest).then((data) => {
+let createSubscriptionRequestDetail = new KeapCoreServiceV2Sdk.CreateSubscriptionRequestDetail(); // CreateSubscriptionRequestDetail | 
+apiInstance.createSubscription(createSubscriptionRequestDetail).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -90,15 +98,15 @@ apiInstance.createSubscription(createSubscriptionRequest).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createSubscriptionRequest** | [**CreateSubscriptionRequest**](CreateSubscriptionRequest.md)| request | 
+ **createSubscriptionRequestDetail** | [**CreateSubscriptionRequestDetail**](CreateSubscriptionRequestDetail.md)|  | 
 
 ### Return type
 
-[**Subscription**](Subscription.md)
+[**SubscriptionDetail**](SubscriptionDetail.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -118,9 +126,13 @@ Creates a custom field of the specified type and options to the Subscription obj
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.SubscriptionsApi();
-let createCustomFieldRequest = new KeapCoreServiceV2Sdk.CreateCustomFieldRequest(); // CreateCustomFieldRequest | customField
+let createCustomFieldRequest = new KeapCoreServiceV2Sdk.CreateCustomFieldRequest(); // CreateCustomFieldRequest | 
 apiInstance.createSubscriptionCustomField(createCustomFieldRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -134,7 +146,7 @@ apiInstance.createSubscriptionCustomField(createCustomFieldRequest).then((data) 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createCustomFieldRequest** | [**CreateCustomFieldRequest**](CreateCustomFieldRequest.md)| customField | 
+ **createCustomFieldRequest** | [**CreateCustomFieldRequest**](CreateCustomFieldRequest.md)|  | 
 
 ### Return type
 
@@ -142,7 +154,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -162,9 +174,13 @@ Deletes a custom field from the Subscription object
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.SubscriptionsApi();
-let customFieldId = "customFieldId_example"; // String | custom_field_id
+let customFieldId = "customFieldId_example"; // String | 
 apiInstance.deleteSubscriptionCustomField(customFieldId).then(() => {
   console.log('API called successfully.');
 }, (error) => {
@@ -178,7 +194,7 @@ apiInstance.deleteSubscriptionCustomField(customFieldId).then(() => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **customFieldId** | **String**| custom_field_id | 
+ **customFieldId** | **String**|  | 
 
 ### Return type
 
@@ -186,7 +202,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -196,7 +212,7 @@ No authorization required
 
 ## getSubscription
 
-> Subscription getSubscription(subscriptionId)
+> SubscriptionDetail getSubscription(subscriptionId)
 
 Retrieve a Subscription
 
@@ -206,9 +222,13 @@ Retrieves a single subscription
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.SubscriptionsApi();
-let subscriptionId = "subscriptionId_example"; // String | subscription_id
+let subscriptionId = "subscriptionId_example"; // String | 
 apiInstance.getSubscription(subscriptionId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -222,15 +242,15 @@ apiInstance.getSubscription(subscriptionId).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **subscriptionId** | **String**| subscription_id | 
+ **subscriptionId** | **String**|  | 
 
 ### Return type
 
-[**Subscription**](Subscription.md)
+[**SubscriptionDetail**](SubscriptionDetail.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -240,7 +260,7 @@ No authorization required
 
 ## listSubscriptions
 
-> ListSubscriptionsResponse listSubscriptions(opts)
+> ListSubscriptionsResponseList listSubscriptions(opts)
 
 List Subscriptions
 
@@ -250,10 +270,14 @@ Retrieves a list of subscriptions using the specified search criteria.
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.SubscriptionsApi();
 let opts = {
-  'filter': "filter_example", // String | Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id` 
+  'filter': "filter_example", // String | Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id` - (String) `status` 
   'orderBy': "orderBy_example", // String | Attribute and direction to order items. One of the following fields: - `id` - `contact_id` - `subscription_plan_id`  One of the following directions: - `asc` - `desc`
   'pageSize': 0, // Number | Total number of items to return per page
   'pageToken': "pageToken_example" // String | Page token
@@ -271,18 +295,18 @@ apiInstance.listSubscriptions(opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60;  | [optional] 
+ **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60;  | [optional] 
  **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] 
  **pageSize** | **Number**| Total number of items to return per page | [optional] 
  **pageToken** | **String**| Page token | [optional] 
 
 ### Return type
 
-[**ListSubscriptionsResponse**](ListSubscriptionsResponse.md)
+[**ListSubscriptionsResponseList**](ListSubscriptionsResponseList.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -302,6 +326,10 @@ Get the custom fields for the Subscription object
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.SubscriptionsApi();
 apiInstance.retrieveSubscriptionCustomFieldModel().then((data) => {
@@ -322,7 +350,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -332,7 +360,7 @@ No authorization required
 
 ## updateSubscription
 
-> Subscription updateSubscription(subscriptionId, updateSubscriptionRequest, opts)
+> SubscriptionDetail updateSubscription(subscriptionId, updateSubscriptionRequestDetail, opts)
 
 Update a Subscription
 
@@ -342,14 +370,18 @@ Updates a Subscription
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.SubscriptionsApi();
-let subscriptionId = "subscriptionId_example"; // String | subscription_id
-let updateSubscriptionRequest = new KeapCoreServiceV2Sdk.UpdateSubscriptionRequest(); // UpdateSubscriptionRequest | request
+let subscriptionId = "subscriptionId_example"; // String | 
+let updateSubscriptionRequestDetail = new KeapCoreServiceV2Sdk.UpdateSubscriptionRequestDetail(); // UpdateSubscriptionRequestDetail | 
 let opts = {
-  'updateMask': ["null"] // [String] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+  'updateMask': "updateMask_example" // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
-apiInstance.updateSubscription(subscriptionId, updateSubscriptionRequest, opts).then((data) => {
+apiInstance.updateSubscription(subscriptionId, updateSubscriptionRequestDetail, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -362,17 +394,17 @@ apiInstance.updateSubscription(subscriptionId, updateSubscriptionRequest, opts).
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **subscriptionId** | **String**| subscription_id | 
- **updateSubscriptionRequest** | [**UpdateSubscriptionRequest**](UpdateSubscriptionRequest.md)| request | 
- **updateMask** | [**[String]**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **subscriptionId** | **String**|  | 
+ **updateSubscriptionRequestDetail** | [**UpdateSubscriptionRequestDetail**](UpdateSubscriptionRequestDetail.md)|  | 
+ **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 
-[**Subscription**](Subscription.md)
+[**SubscriptionDetail**](SubscriptionDetail.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -392,12 +424,16 @@ Updates a custom field of the specified type and options to the Subscription obj
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.SubscriptionsApi();
-let customFieldId = "customFieldId_example"; // String | custom_field_id
-let updateCustomFieldMetaDataRequest = new KeapCoreServiceV2Sdk.UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | request
+let customFieldId = "customFieldId_example"; // String | 
+let updateCustomFieldMetaDataRequest = new KeapCoreServiceV2Sdk.UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | 
 let opts = {
-  'updateMask': ["null"] // [String] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+  'updateMask': "updateMask_example" // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
 apiInstance.updateSubscriptionCustomField(customFieldId, updateCustomFieldMetaDataRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -412,9 +448,9 @@ apiInstance.updateSubscriptionCustomField(customFieldId, updateCustomFieldMetaDa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **customFieldId** | **String**| custom_field_id | 
- **updateCustomFieldMetaDataRequest** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md)| request | 
- **updateMask** | [**[String]**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **customFieldId** | **String**|  | 
+ **updateCustomFieldMetaDataRequest** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md)|  | 
+ **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 
@@ -422,7 +458,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 

@@ -5,11 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**name** | **str** | The Affiliate Link Name | 
+**code** | **str** | Code | 
 **affiliate_id** | **str** | The AffiliateId | [optional] 
-**code** | **str** | Code | [optional] 
-**name** | **str** | The Affiliate Link Name | [optional] 
-**program_ids** | **List[str]** |  | [optional] 
-**website_address** | **str** | Website Address | [optional] 
+**website_address** | **str** | Website Address | 
+**program_ids** | **List[str]** | Program IDs to associate | [optional] 
 
 ## Example
 

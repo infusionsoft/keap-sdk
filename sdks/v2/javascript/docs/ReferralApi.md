@@ -1,10 +1,10 @@
 # KeapCoreServiceV2Sdk.ReferralApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createReferral**](ReferralApi.md#createReferral) | **POST** /v2/referrals | Create a Referral
+[**createReferral**](ReferralApi.md#createReferral) | **POST** /rest/v2/referrals | Create a Referral
 
 
 
@@ -20,9 +20,13 @@ Creates a new referral partner referral on the provided contact
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.ReferralApi();
-let createReferralRequest = new KeapCoreServiceV2Sdk.CreateReferralRequest(); // CreateReferralRequest | request
+let createReferralRequest = new KeapCoreServiceV2Sdk.CreateReferralRequest(); // CreateReferralRequest | 
 apiInstance.createReferral(createReferralRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -36,7 +40,7 @@ apiInstance.createReferral(createReferralRequest).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createReferralRequest** | [**CreateReferralRequest**](CreateReferralRequest.md)| request | 
+ **createReferralRequest** | [**CreateReferralRequest**](CreateReferralRequest.md)|  | 
 
 ### Return type
 
@@ -44,7 +48,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 

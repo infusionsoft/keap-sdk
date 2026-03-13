@@ -1,14 +1,14 @@
 # Keap\Core\V2\FreeTrialDiscountsApi
 
-All URIs are relative to https://api.keap.com/crm/rest, except if the operation defines another base path.
+All URIs are relative to https://api.keap.com/crm, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createFreeTrialDiscount()**](FreeTrialDiscountsApi.md#createFreeTrialDiscount) | **POST** /v2/discounts/freeTrials | Create a Subscription Free Trial Discount |
-| [**deleteFreeTrialDiscount()**](FreeTrialDiscountsApi.md#deleteFreeTrialDiscount) | **DELETE** /v2/discounts/freeTrials/{discount_id} | Delete a Subscription Free Trial Discount |
-| [**getFreeTrialDiscount()**](FreeTrialDiscountsApi.md#getFreeTrialDiscount) | **GET** /v2/discounts/freeTrials/{discount_id} | Retrieve a Subscription Free Trial Discount |
-| [**listFreeTrialDiscounts()**](FreeTrialDiscountsApi.md#listFreeTrialDiscounts) | **GET** /v2/discounts/freeTrials | List all Subscription Free Trial Discounts |
-| [**updateFreeTrialDiscount()**](FreeTrialDiscountsApi.md#updateFreeTrialDiscount) | **PATCH** /v2/discounts/freeTrials/{discount_id} | Update a Subscription Free Trial Discount |
+| [**createFreeTrialDiscount()**](FreeTrialDiscountsApi.md#createFreeTrialDiscount) | **POST** /rest/v2/discounts/freeTrials | Create a Subscription Free Trial Discount |
+| [**deleteFreeTrialDiscount()**](FreeTrialDiscountsApi.md#deleteFreeTrialDiscount) | **DELETE** /rest/v2/discounts/freeTrials/{discount_id} | Delete a Subscription Free Trial Discount |
+| [**getFreeTrialDiscount()**](FreeTrialDiscountsApi.md#getFreeTrialDiscount) | **GET** /rest/v2/discounts/freeTrials/{discount_id} | Retrieve a Subscription Free Trial Discount |
+| [**listFreeTrialDiscounts()**](FreeTrialDiscountsApi.md#listFreeTrialDiscounts) | **GET** /rest/v2/discounts/freeTrials | List all Subscription Free Trial Discounts |
+| [**updateFreeTrialDiscount()**](FreeTrialDiscountsApi.md#updateFreeTrialDiscount) | **PATCH** /rest/v2/discounts/freeTrials/{discount_id} | Update a Subscription Free Trial Discount |
 
 
 ## `createFreeTrialDiscount()`
@@ -28,12 +28,16 @@ Creates a Subscription Free Trial Discount
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\FreeTrialDiscountsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$create_free_trial_discount_request = new \Keap\Core\V2\Model\CreateFreeTrialDiscountRequest(); // \Keap\Core\V2\Model\CreateFreeTrialDiscountRequest | createFreeTrialDiscountRequest
+$create_free_trial_discount_request = new \Keap\Core\V2\Model\CreateFreeTrialDiscountRequest(); // \Keap\Core\V2\Model\CreateFreeTrialDiscountRequest
 
 try {
     $result = $apiInstance->createFreeTrialDiscount($create_free_trial_discount_request);
@@ -47,7 +51,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **create_free_trial_discount_request** | [**\Keap\Core\V2\Model\CreateFreeTrialDiscountRequest**](../Model/CreateFreeTrialDiscountRequest.md)| createFreeTrialDiscountRequest | |
+| **create_free_trial_discount_request** | [**\Keap\Core\V2\Model\CreateFreeTrialDiscountRequest**](../Model/CreateFreeTrialDiscountRequest.md)|  | |
 
 ### Return type
 
@@ -55,7 +59,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -83,12 +87,16 @@ Deletes a specified Subscription Free Trial Discount
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\FreeTrialDiscountsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$discount_id = 'discount_id_example'; // string | discount_id
+$discount_id = 'discount_id_example'; // string
 
 try {
     $apiInstance->deleteFreeTrialDiscount($discount_id);
@@ -101,7 +109,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **discount_id** | **string**| discount_id | |
+| **discount_id** | **string**|  | |
 
 ### Return type
 
@@ -109,7 +117,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -137,12 +145,16 @@ Retrieves a Subscription Free Trial Discount
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\FreeTrialDiscountsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$discount_id = 'discount_id_example'; // string | discount_id
+$discount_id = 'discount_id_example'; // string
 
 try {
     $result = $apiInstance->getFreeTrialDiscount($discount_id);
@@ -156,7 +168,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **discount_id** | **string**| discount_id | |
+| **discount_id** | **string**|  | |
 
 ### Return type
 
@@ -164,7 +176,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -192,10 +204,14 @@ Retrieves a list of Subscription Free Trial Discounts
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\FreeTrialDiscountsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $filter = 'filter_example'; // string | Filter to apply, allowed fields are: - (Integer) `free_trial_days` - (Boolean) `hide_price` - (String) `subscription_plan_id`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=free_trial_days%3D%3D14` - `filter=hide_price%3D%3DTrue` - `filter=subscription_plan_id%3D%3DmySubscriptionPlanId` - `filter=free_trial_days%3D%3D14%3Bhide_price%3D%3DFalse`
 $order_by = 'order_by_example'; // string | Attribute and direction to order items. One of the following fields: - `free_trial_days` - `hide_price` - `id` - `name` - `subscription_plan_id`  One of the following directions: - `asc` - `desc`
@@ -225,7 +241,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -253,14 +269,18 @@ Updates a Subscription Free Trial Discount
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\FreeTrialDiscountsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$discount_id = 'discount_id_example'; // string | discount_id
-$update_free_trial_discount_request = new \Keap\Core\V2\Model\UpdateFreeTrialDiscountRequest(); // \Keap\Core\V2\Model\UpdateFreeTrialDiscountRequest | request
-$update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+$discount_id = 'discount_id_example'; // string
+$update_free_trial_discount_request = new \Keap\Core\V2\Model\UpdateFreeTrialDiscountRequest(); // \Keap\Core\V2\Model\UpdateFreeTrialDiscountRequest
+$update_mask = 'update_mask_example'; // string | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
     $result = $apiInstance->updateFreeTrialDiscount($discount_id, $update_free_trial_discount_request, $update_mask);
@@ -274,9 +294,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **discount_id** | **string**| discount_id | |
-| **update_free_trial_discount_request** | [**\Keap\Core\V2\Model\UpdateFreeTrialDiscountRequest**](../Model/UpdateFreeTrialDiscountRequest.md)| request | |
-| **update_mask** | [**string[]**](../Model/string.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **discount_id** | **string**|  | |
+| **update_free_trial_discount_request** | [**\Keap\Core\V2\Model\UpdateFreeTrialDiscountRequest**](../Model/UpdateFreeTrialDiscountRequest.md)|  | |
+| **update_mask** | **string**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -284,7 +304,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 

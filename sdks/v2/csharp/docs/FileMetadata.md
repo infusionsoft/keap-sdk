@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Category** | **string** |  | [optional] 
-**ContactId** | **string** |  | [optional] 
-**CreatedById** | **string** |  | [optional] 
-**CreatedTime** | **string** |  | [optional] 
-**FileBoxType** | **string** |  | [optional] 
-**FileName** | **string** |  | [optional] 
-**FileSize** | **long** |  | [optional] 
-**Id** | **string** |  | [optional] 
-**IsPublic** | **bool** |  | [optional] 
-**RemoteFileKey** | **string** |  | [optional] 
-**UpdatedTime** | **string** |  | [optional] 
+**Id** | **string** | File ID | [optional] 
+**Category** | **string** | File category | [optional] 
+**FileName** | **string** | File name with extension | [optional] 
+**IsPublic** | **bool** | Whether file is publicly accessible | [optional] 
+**ContactId** | **string** | Associated contact ID | [optional] 
+**CreatedById** | **string** | ID of user who created the file | [optional] 
+**RemoteFileKey** | **string** | Remote storage key | [optional] 
+**FileBoxType** | **string** | File box type | [optional] 
+**FileSize** | **long** | File size in bytes | [optional] 
+**CreatedTime** | **string** | Creation timestamp (ISO-8601) | [optional] 
+**UpdatedTime** | **string** | Last update timestamp (ISO-8601) | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

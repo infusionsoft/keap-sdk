@@ -5,18 +5,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**code** | **str** |  | [optional] 
-**criteria_id** | **str** |  | [optional] 
-**operator** | **str** |  | [optional] 
-**plan_id** | **str** |  | [optional] 
-**product_id** | **str** |  | [optional] 
-**product_quantity_max** | **int** |  | [optional] 
-**product_quantity_min** | **int** |  | [optional] 
-**range_end_time** | **str** |  | [optional] 
-**range_start_time** | **str** |  | [optional] 
-**subscription_quantity** | **int** |  | [optional] 
-**total_amount** | **float** |  | [optional] 
-**type** | **str** |  | [optional] 
+**type** | **str** | Type of criteria: DATE_RANGE, PROMO_CODE, PRODUCT, SUBSCRIPTION_PLAN, or ORDER_TOTAL | [optional] 
+**code** | **str** | Promotional code for PROMO_CODE criteria | [optional] 
+**criteria_id** | **str** | Unique identifier for this criteria | [optional] 
+**range_start_time** | **datetime** | Start date/time for DATE_RANGE criteria (ISO-8601 format) | [optional] 
+**range_end_time** | **datetime** | End date/time for DATE_RANGE criteria (ISO-8601 format) | [optional] 
+**product_id** | **str** | Product ID for PRODUCT criteria | [optional] 
+**product_quantity_min** | **int** | Minimum product quantity for PRODUCT criteria | [optional] 
+**product_quantity_max** | **int** | Maximum product quantity for PRODUCT criteria | [optional] 
+**plan_id** | **str** | Subscription plan ID for SUBSCRIPTION_PLAN criteria | [optional] 
+**subscription_quantity** | **int** | Subscription quantity for SUBSCRIPTION_PLAN criteria | [optional] 
+**total_amount** | **float** | Total amount threshold for ORDER_TOTAL criteria | [optional] 
+**operator** | **str** | Comparison operator for ORDER_TOTAL criteria: LESS_THAN or GREATER_THAN | [optional] 
 
 ## Example
 

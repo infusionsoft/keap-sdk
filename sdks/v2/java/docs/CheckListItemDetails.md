@@ -7,12 +7,12 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**description** | **String** |  |  [optional] |
-|**doneDate** | **ZonedDateTime** |  |  [optional] |
 |**id** | **Long** |  |  [optional] |
+|**description** | **String** |  |  [optional] |
+|**required** | **Boolean** |  |  [optional] |
 |**instanceId** | **Long** |  |  [optional] |
 |**itemOrder** | **Integer** |  |  [optional] |
-|**required** | **Boolean** |  |  [optional] |
+|**doneDate** | **ZonedDateTime** |  |  [optional] |
 
 
 ## Implemented Interfaces

@@ -1,20 +1,21 @@
 # CreateTaskRequest
 
+task
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**assigned_to_user_id** | **str** |  | 
-**completed** | **bool** |  | [optional] 
-**completion_time** | **str** |  | [optional] 
-**contact_id** | **str** |  | [optional] 
-**description** | **str** |  | [optional] 
-**due_time** | **str** |  | [optional] 
-**priority** | **str** |  | [optional] 
-**remind_time_mins** | **int** | Value in minutes before start_date to show pop-up reminder.  Acceptable values are [5,10,15,30,60,120,240,480,1440,2880] | [optional] 
-**title** | **str** |  | [optional] 
-**type** | **str** |  | [optional] 
+**title** | **str** | Task title | [optional] 
+**description** | **str** | Task description | [optional] 
+**type** | **str** | Task type | [optional] 
+**priority** | **str** | Task priority | [optional] 
+**completed** | **bool** | Whether task is completed | [optional] 
+**completion_time** | **str** | Completion timestamp (ISO-8601) | [optional] 
+**due_time** | **str** | Due date/time (ISO-8601) | [optional] 
+**remind_time_mins** | **int** | Value in minutes before start_date to show pop-up reminder. | [optional] 
+**assigned_to_user_id** | **str** | Assigned user ID | 
+**contact_id** | **str** | Associated contact ID | [optional] 
 
 ## Example
 

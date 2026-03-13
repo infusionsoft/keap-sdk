@@ -5,11 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**dollar_amount** | **float** |  | [optional] 
-**name** | **str** |  | [optional] 
-**percentage** | **float** |  | [optional] 
-**plan_price** | **float** |  | [optional] 
-**subscription_id** | **str** |  | [optional] 
+**name** | **str** | Subscription name | [optional] 
+**percentage** | **float** | Percentage commission | [optional] 
+**subscription_id** | **str** | Subscription ID | [optional] 
+**plan_price** | **float** | Plan price | [optional] 
+**dollar_amount** | **float** | Fixed dollar commission | [optional] 
 
 ## Example
 

@@ -8,19 +8,19 @@ import {canConsumeForm, isCodeInRange} from '../util';
 import {SecurityAuthentication} from '../auth/auth';
 
 
+import { ApplyCommissionRequest } from '../models/ApplyCommissionRequest';
 import { CreateCustomFieldRequest } from '../models/CreateCustomFieldRequest';
 import { CreateOrderItemRequest } from '../models/CreateOrderItemRequest';
-import { CreatePaymentRequest } from '../models/CreatePaymentRequest';
 import { CustomFieldMetaData } from '../models/CustomFieldMetaData';
 import { FileOperationRequest } from '../models/FileOperationRequest';
 import { ListOrderPaymentsResponse } from '../models/ListOrderPaymentsResponse';
 import { ListOrders } from '../models/ListOrders';
 import { ObjectModel } from '../models/ObjectModel';
-import { Order } from '../models/Order';
 import { OrderItem } from '../models/OrderItem';
+import { OrderV2 } from '../models/OrderV2';
 import { PaymentResult } from '../models/PaymentResult';
-import { RestApplyCommissionRequest } from '../models/RestApplyCommissionRequest';
 import { RestCreateOrderRequest } from '../models/RestCreateOrderRequest';
+import { RestCreatePaymentRequest } from '../models/RestCreatePaymentRequest';
 import { UpdateCustomFieldMetaDataRequest } from '../models/UpdateCustomFieldMetaDataRequest';
 import { UpdateOrderItemRequest } from '../models/UpdateOrderItemRequest';
 import { UpdateOrderRequest } from '../models/UpdateOrderRequest';
@@ -33,11 +33,11 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Applies commission to an order item on an existing order.
      * Apply Commission to an Order Item
-     * @param orderId order_id
-     * @param orderItemId order_item_id
-     * @param restApplyCommissionRequest request
+     * @param orderId 
+     * @param orderItemId 
+     * @param applyCommissionRequest 
      */
-    public async applyCommissionOnOrderItems(orderId: string, orderItemId: string, restApplyCommissionRequest: RestApplyCommissionRequest, _options?: Configuration): Promise<RequestContext> {
+    public async applyCommissionOnOrderItems(orderId: string, orderItemId: string, applyCommissionRequest: ApplyCommissionRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'orderId' is not null or undefined
@@ -52,14 +52,14 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
         }
 
 
-        // verify required parameter 'restApplyCommissionRequest' is not null or undefined
-        if (restApplyCommissionRequest === null || restApplyCommissionRequest === undefined) {
-            throw new RequiredError("OrdersApi", "applyCommissionOnOrderItems", "restApplyCommissionRequest");
+        // verify required parameter 'applyCommissionRequest' is not null or undefined
+        if (applyCommissionRequest === null || applyCommissionRequest === undefined) {
+            throw new RequiredError("OrdersApi", "applyCommissionOnOrderItems", "applyCommissionRequest");
         }
 
 
         // Path Params
-        const localVarPath = '/v2/orders/{order_id}/items/{order_item_id}:applyCommission'
+        const localVarPath = '/rest/v2/orders/{order_id}/items/{order_item_id}:applyCommission'
             .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)))
             .replace('{' + 'order_item_id' + '}', encodeURIComponent(String(orderItemId)));
 
@@ -74,11 +74,17 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
         ]);
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
-            ObjectSerializer.serialize(restApplyCommissionRequest, "RestApplyCommissionRequest", ""),
+            ObjectSerializer.serialize(applyCommissionRequest, "ApplyCommissionRequest", ""),
             contentType
         );
         requestContext.setBody(serializedBody);
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -91,7 +97,7 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Calculate taxes for a single Order for a given order id
      * Apply Taxes on an Order
-     * @param orderId order_id
+     * @param orderId 
      */
     public async applyTax(orderId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
@@ -103,7 +109,7 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/v2/orders/{order_id}:applyTax'
+        const localVarPath = '/rest/v2/orders/{order_id}:applyTax'
             .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
 
         // Make Request Context
@@ -111,6 +117,12 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
 
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -123,8 +135,8 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Attaches an uploaded File to an Order Invoice
      * Attach a File to an Order Invoice
-     * @param orderId order_id
-     * @param fileOperationRequest File name
+     * @param orderId 
+     * @param fileOperationRequest 
      */
     public async attachFileToOrder(orderId: string, fileOperationRequest: FileOperationRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
@@ -142,7 +154,7 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/v2/orders/{order_id}:attachFile'
+        const localVarPath = '/rest/v2/orders/{order_id}:attachFile'
             .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
 
         // Make Request Context
@@ -161,6 +173,12 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
         );
         requestContext.setBody(serializedBody);
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -173,7 +191,7 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Creates a one time Order with Order items
      * Create an Order
-     * @param restCreateOrderRequest request
+     * @param restCreateOrderRequest 
      */
     public async createOrder(restCreateOrderRequest: RestCreateOrderRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
@@ -185,7 +203,7 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/v2/orders';
+        const localVarPath = '/rest/v2/orders';
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
@@ -203,6 +221,12 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
         );
         requestContext.setBody(serializedBody);
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -215,7 +239,7 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Creates a custom field of the specified type and options to the Order object
      * Create an Order Custom Field
-     * @param createCustomFieldRequest customField
+     * @param createCustomFieldRequest 
      */
     public async createOrderCustomField(createCustomFieldRequest: CreateCustomFieldRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
@@ -227,7 +251,7 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/v2/orders/model/customFields';
+        const localVarPath = '/rest/v2/orders/model/customFields';
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
@@ -245,6 +269,12 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
         );
         requestContext.setBody(serializedBody);
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -257,8 +287,8 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Creates an order item on an existing order
      * Create an Order Item
-     * @param orderId order_id
-     * @param createOrderItemRequest request
+     * @param orderId 
+     * @param createOrderItemRequest 
      */
     public async createOrderItem(orderId: string, createOrderItemRequest: CreateOrderItemRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
@@ -276,7 +306,7 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/v2/orders/{order_id}/items'
+        const localVarPath = '/rest/v2/orders/{order_id}/items'
             .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
 
         // Make Request Context
@@ -295,6 +325,12 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
         );
         requestContext.setBody(serializedBody);
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -307,10 +343,10 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Creates a payment record. Alternatively, adds a record of historical or external payment of cash or credit card
      * Create a Payment
-     * @param orderId order_id
-     * @param createPaymentRequest request
+     * @param orderId 
+     * @param restCreatePaymentRequest 
      */
-    public async createPaymentForAnOrder(orderId: string, createPaymentRequest: CreatePaymentRequest, _options?: Configuration): Promise<RequestContext> {
+    public async createPaymentForAnOrder(orderId: string, restCreatePaymentRequest: RestCreatePaymentRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'orderId' is not null or undefined
@@ -319,14 +355,14 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
         }
 
 
-        // verify required parameter 'createPaymentRequest' is not null or undefined
-        if (createPaymentRequest === null || createPaymentRequest === undefined) {
-            throw new RequiredError("OrdersApi", "createPaymentForAnOrder", "createPaymentRequest");
+        // verify required parameter 'restCreatePaymentRequest' is not null or undefined
+        if (restCreatePaymentRequest === null || restCreatePaymentRequest === undefined) {
+            throw new RequiredError("OrdersApi", "createPaymentForAnOrder", "restCreatePaymentRequest");
         }
 
 
         // Path Params
-        const localVarPath = '/v2/orders/{order_id}/payments'
+        const localVarPath = '/rest/v2/orders/{order_id}/payments'
             .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
 
         // Make Request Context
@@ -340,11 +376,17 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
         ]);
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
-            ObjectSerializer.serialize(createPaymentRequest, "CreatePaymentRequest", ""),
+            ObjectSerializer.serialize(restCreatePaymentRequest, "RestCreatePaymentRequest", ""),
             contentType
         );
         requestContext.setBody(serializedBody);
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -357,7 +399,7 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Deletes an Order<br/> Note: The Order must not have any transactions recorded to be available for deletion. 
      * Delete an Order
-     * @param orderId order_id
+     * @param orderId 
      */
     public async deleteOrder(orderId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
@@ -369,7 +411,7 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/v2/orders/{order_id}'
+        const localVarPath = '/rest/v2/orders/{order_id}'
             .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
 
         // Make Request Context
@@ -377,6 +419,12 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
 
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -389,7 +437,7 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Deletes a Custom Field from the Order object
      * Delete an Order Custom Field
-     * @param customFieldId custom_field_id
+     * @param customFieldId 
      */
     public async deleteOrderCustomField(customFieldId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
@@ -401,7 +449,7 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/v2/orders/model/customFields/{custom_field_id}'
+        const localVarPath = '/rest/v2/orders/model/customFields/{custom_field_id}'
             .replace('{' + 'custom_field_id' + '}', encodeURIComponent(String(customFieldId)));
 
         // Make Request Context
@@ -409,6 +457,12 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
 
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -421,8 +475,8 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Deletes an order item on an existing order
      * Delete an Order Item
-     * @param orderId order_id
-     * @param orderItemId order_item_id
+     * @param orderId 
+     * @param orderItemId 
      */
     public async deleteOrderItem(orderId: string, orderItemId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
@@ -440,7 +494,7 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/v2/orders/{order_id}/items/{order_item_id}'
+        const localVarPath = '/rest/v2/orders/{order_id}/items/{order_item_id}'
             .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)))
             .replace('{' + 'order_item_id' + '}', encodeURIComponent(String(orderItemId)));
 
@@ -449,6 +503,12 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
 
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -461,8 +521,8 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Detaches a File from an Order Invoice
      * Detach a File from an Order Invoice
-     * @param orderId order_id
-     * @param fileOperationRequest request
+     * @param orderId 
+     * @param fileOperationRequest 
      */
     public async detachFileFromOrder(orderId: string, fileOperationRequest: FileOperationRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
@@ -480,7 +540,7 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/v2/orders/{order_id}:detachFile'
+        const localVarPath = '/rest/v2/orders/{order_id}:detachFile'
             .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
 
         // Make Request Context
@@ -499,6 +559,12 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
         );
         requestContext.setBody(serializedBody);
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -511,7 +577,7 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Retrieves a single Order for a given order id
      * Retrieve an Order
-     * @param orderId order_id
+     * @param orderId 
      */
     public async getOrder(orderId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
@@ -523,7 +589,7 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/v2/orders/{order_id}'
+        const localVarPath = '/rest/v2/orders/{order_id}'
             .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
 
         // Make Request Context
@@ -531,6 +597,12 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
 
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -543,7 +615,7 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Retrieves a list of payments made against a given order, including historical or external payments of cash or credit card
      * Retrieve Order Payments
-     * @param orderId order_id
+     * @param orderId 
      * @param filter Filter to apply, allowed fields are: - (String) &#x60;invoice_id&#x60; - (String) &#x60;payment_id&#x60; - (String) &#x60;amount&#x60; - (String) &#x60;pay_status&#x60; - (Boolean) &#x60;skip_commission&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched  word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;payment_id%3D%3D123&#x60; - &#x60;filter&#x3D;pay_status%3D%3DAPPROVED&#x60; - &#x60;filter&#x3D;invoice_id%3D%3D456%3Bskip_commission&#x3D;true&#x60; 
      * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;invoice_id&#x60; - &#x60;payment_id&#x60; - &#x60;amount&#x60; - &#x60;pay_time&#x60; - &#x60;pay_status&#x60; - &#x60;skip_commission&#x60; - &#x60;last_updated_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param pageSize Total number of items to return per page
@@ -563,7 +635,7 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/v2/orders/{order_id}/payments'
+        const localVarPath = '/rest/v2/orders/{order_id}/payments'
             .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
 
         // Make Request Context
@@ -591,6 +663,12 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
         }
 
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -603,7 +681,7 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Retrieves a list of orders
      * List orders
-     * @param filter Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60;
+     * @param filter Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60;
      * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;order_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param pageSize Total number of items to return per page
      * @param pageToken Page token
@@ -616,7 +694,7 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/v2/orders';
+        const localVarPath = '/rest/v2/orders';
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
@@ -643,6 +721,12 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
         }
 
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -660,13 +744,19 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
         let _config = _options || this.configuration;
 
         // Path Params
-        const localVarPath = '/v2/orders/model';
+        const localVarPath = '/rest/v2/orders/model';
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
 
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -679,11 +769,11 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Updates an Order
      * Update an Order
-     * @param orderId order_id
+     * @param orderId 
+     * @param updateOrderRequest 
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-     * @param updateOrderRequest order
      */
-    public async updateOrder(orderId: string, updateMask?: Array<string>, updateOrderRequest?: UpdateOrderRequest, _options?: Configuration): Promise<RequestContext> {
+    public async updateOrder(orderId: string, updateOrderRequest: UpdateOrderRequest, updateMask?: 'contact_id,order_items,order_title,order_time,order_type,promo_codes, lead_affiliate_id,sales_affiliate_id,shipping_address,notes,terms,payment_plan', _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'orderId' is not null or undefined
@@ -692,10 +782,15 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
         }
 
 
+        // verify required parameter 'updateOrderRequest' is not null or undefined
+        if (updateOrderRequest === null || updateOrderRequest === undefined) {
+            throw new RequiredError("OrdersApi", "updateOrder", "updateOrderRequest");
+        }
+
 
 
         // Path Params
-        const localVarPath = '/v2/orders/{order_id}'
+        const localVarPath = '/rest/v2/orders/{order_id}'
             .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)));
 
         // Make Request Context
@@ -704,10 +799,7 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (updateMask !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(updateMask, "Array<string>", "");
-            for (const serializedParam of serializedParams) {
-                requestContext.appendQueryParam("update_mask", serializedParam);
-            }
+            requestContext.setQueryParam("update_mask", ObjectSerializer.serialize(updateMask, "'contact_id,order_items,order_title,order_time,order_type,promo_codes, lead_affiliate_id,sales_affiliate_id,shipping_address,notes,terms,payment_plan'", ""));
         }
 
 
@@ -722,6 +814,12 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
         );
         requestContext.setBody(serializedBody);
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -734,11 +832,11 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Updates a custom field of the specified type and options to the Order object
      * Update an Order Custom Field
-     * @param customFieldId custom_field_id
-     * @param updateCustomFieldMetaDataRequest request
+     * @param customFieldId 
+     * @param updateCustomFieldMetaDataRequest 
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateOrderCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: Array<string>, _options?: Configuration): Promise<RequestContext> {
+    public async updateOrderCustomField(customFieldId: string, updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest, updateMask?: 'group_id,label,options', _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'customFieldId' is not null or undefined
@@ -755,7 +853,7 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/v2/orders/model/customFields/{custom_field_id}'
+        const localVarPath = '/rest/v2/orders/model/customFields/{custom_field_id}'
             .replace('{' + 'custom_field_id' + '}', encodeURIComponent(String(customFieldId)));
 
         // Make Request Context
@@ -764,10 +862,7 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (updateMask !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(updateMask, "Array<string>", "");
-            for (const serializedParam of serializedParams) {
-                requestContext.appendQueryParam("update_mask", serializedParam);
-            }
+            requestContext.setQueryParam("update_mask", ObjectSerializer.serialize(updateMask, "'group_id,label,options'", ""));
         }
 
 
@@ -782,6 +877,12 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
         );
         requestContext.setBody(serializedBody);
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -794,12 +895,12 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Updates an Order Item
      * Update an Order Item
-     * @param orderId order_id
-     * @param orderItemId order_item_id
+     * @param orderId 
+     * @param orderItemId 
+     * @param updateOrderItemRequest 
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-     * @param updateOrderItemRequest order
      */
-    public async updateOrderItem(orderId: string, orderItemId: string, updateMask?: Array<string>, updateOrderItemRequest?: UpdateOrderItemRequest, _options?: Configuration): Promise<RequestContext> {
+    public async updateOrderItem(orderId: string, orderItemId: string, updateOrderItemRequest: UpdateOrderItemRequest, updateMask?: 'name,description,notes,quantity,price_per_unit,cost_per_unit, product_id,subscription_plan_id,subscription_plan_description', _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'orderId' is not null or undefined
@@ -814,10 +915,15 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
         }
 
 
+        // verify required parameter 'updateOrderItemRequest' is not null or undefined
+        if (updateOrderItemRequest === null || updateOrderItemRequest === undefined) {
+            throw new RequiredError("OrdersApi", "updateOrderItem", "updateOrderItemRequest");
+        }
+
 
 
         // Path Params
-        const localVarPath = '/v2/orders/{order_id}/items/{order_item_id}'
+        const localVarPath = '/rest/v2/orders/{order_id}/items/{order_item_id}'
             .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)))
             .replace('{' + 'order_item_id' + '}', encodeURIComponent(String(orderItemId)));
 
@@ -827,10 +933,7 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (updateMask !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(updateMask, "Array<string>", "");
-            for (const serializedParam of serializedParams) {
-                requestContext.appendQueryParam("update_mask", serializedParam);
-            }
+            requestContext.setQueryParam("update_mask", ObjectSerializer.serialize(updateMask, "'name,description,notes,quantity,price_per_unit,cost_per_unit, product_id,subscription_plan_id,subscription_plan_description'", ""));
         }
 
 
@@ -845,6 +948,12 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
         );
         requestContext.setBody(serializedBody);
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -874,6 +983,13 @@ export class OrdersApiResponseProcessor {
             ) as OrderItem;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -888,12 +1004,33 @@ export class OrdersApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Forbidden", body, response.headers);
         }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -915,14 +1052,21 @@ export class OrdersApiResponseProcessor {
      * @params response Response returned by the server for a request to applyTax
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async applyTaxWithHttpInfo(response: ResponseContext): Promise<HttpInfo<Order >> {
+     public async applyTaxWithHttpInfo(response: ResponseContext): Promise<HttpInfo<OrderV2 >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: Order = ObjectSerializer.deserialize(
+            const body: OrderV2 = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Order", ""
-            ) as Order;
+                "OrderV2", ""
+            ) as OrderV2;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
         }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
@@ -938,6 +1082,20 @@ export class OrdersApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Forbidden", body, response.headers);
         }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -945,13 +1103,20 @@ export class OrdersApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
         }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
+        }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: Order = ObjectSerializer.deserialize(
+            const body: OrderV2 = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Order", ""
-            ) as Order;
+                "OrderV2", ""
+            ) as OrderV2;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -965,14 +1130,21 @@ export class OrdersApiResponseProcessor {
      * @params response Response returned by the server for a request to attachFileToOrder
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async attachFileToOrderWithHttpInfo(response: ResponseContext): Promise<HttpInfo<Order >> {
+     public async attachFileToOrderWithHttpInfo(response: ResponseContext): Promise<HttpInfo<OrderV2 >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: Order = ObjectSerializer.deserialize(
+            const body: OrderV2 = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Order", ""
-            ) as Order;
+                "OrderV2", ""
+            ) as OrderV2;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
         }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
@@ -988,6 +1160,20 @@ export class OrdersApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Forbidden", body, response.headers);
         }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -995,13 +1181,20 @@ export class OrdersApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
         }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
+        }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: Order = ObjectSerializer.deserialize(
+            const body: OrderV2 = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Order", ""
-            ) as Order;
+                "OrderV2", ""
+            ) as OrderV2;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -1015,14 +1208,21 @@ export class OrdersApiResponseProcessor {
      * @params response Response returned by the server for a request to createOrder
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async createOrderWithHttpInfo(response: ResponseContext): Promise<HttpInfo<Order >> {
+     public async createOrderWithHttpInfo(response: ResponseContext): Promise<HttpInfo<OrderV2 >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("201", response.httpStatusCode)) {
-            const body: Order = ObjectSerializer.deserialize(
+            const body: OrderV2 = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Order", ""
-            ) as Order;
+                "OrderV2", ""
+            ) as OrderV2;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
         }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
@@ -1038,6 +1238,20 @@ export class OrdersApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Forbidden", body, response.headers);
         }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -1045,13 +1259,20 @@ export class OrdersApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
         }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
+        }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: Order = ObjectSerializer.deserialize(
+            const body: OrderV2 = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Order", ""
-            ) as Order;
+                "OrderV2", ""
+            ) as OrderV2;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -1074,6 +1295,13 @@ export class OrdersApiResponseProcessor {
             ) as CustomFieldMetaData;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -1088,12 +1316,33 @@ export class OrdersApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Forbidden", body, response.headers);
         }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -1124,6 +1373,13 @@ export class OrdersApiResponseProcessor {
             ) as OrderItem;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -1138,12 +1394,33 @@ export class OrdersApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Forbidden", body, response.headers);
         }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -1174,6 +1451,13 @@ export class OrdersApiResponseProcessor {
             ) as PaymentResult;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -1188,12 +1472,33 @@ export class OrdersApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Forbidden", body, response.headers);
         }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -1220,6 +1525,13 @@ export class OrdersApiResponseProcessor {
         if (isCodeInRange("204", response.httpStatusCode)) {
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
         }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -1241,12 +1553,26 @@ export class OrdersApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -1273,6 +1599,13 @@ export class OrdersApiResponseProcessor {
         if (isCodeInRange("204", response.httpStatusCode)) {
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
         }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -1294,12 +1627,26 @@ export class OrdersApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -1326,6 +1673,13 @@ export class OrdersApiResponseProcessor {
         if (isCodeInRange("204", response.httpStatusCode)) {
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
         }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -1347,12 +1701,26 @@ export class OrdersApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -1374,64 +1742,21 @@ export class OrdersApiResponseProcessor {
      * @params response Response returned by the server for a request to detachFileFromOrder
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async detachFileFromOrderWithHttpInfo(response: ResponseContext): Promise<HttpInfo<Order >> {
+     public async detachFileFromOrderWithHttpInfo(response: ResponseContext): Promise<HttpInfo<OrderV2 >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: Order = ObjectSerializer.deserialize(
+            const body: OrderV2 = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Order", ""
-            ) as Order;
+                "OrderV2", ""
+            ) as OrderV2;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
-        if (isCodeInRange("401", response.httpStatusCode)) {
+        if (isCodeInRange("400", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "Error", ""
             ) as Error;
-            throw new ApiException<Error>(response.httpStatusCode, "Unauthorized", body, response.headers);
-        }
-        if (isCodeInRange("403", response.httpStatusCode)) {
-            const body: Error = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "Error", ""
-            ) as Error;
-            throw new ApiException<Error>(response.httpStatusCode, "Forbidden", body, response.headers);
-        }
-        if (isCodeInRange("500", response.httpStatusCode)) {
-            const body: Error = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "Error", ""
-            ) as Error;
-            throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
-        }
-
-        // Work around for missing responses in specification, e.g. for petstore.yaml
-        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: Order = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "Order", ""
-            ) as Order;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-
-        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
-    }
-
-    /**
-     * Unwraps the actual response sent by the server from the response context and deserializes the response content
-     * to the expected objects
-     *
-     * @params response Response returned by the server for a request to getOrder
-     * @throws ApiException if the response code was not in [200, 299]
-     */
-     public async getOrderWithHttpInfo(response: ResponseContext): Promise<HttpInfo<Order >> {
-        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: Order = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "Order", ""
-            ) as Order;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
         }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
@@ -1454,6 +1779,13 @@ export class OrdersApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -1461,13 +1793,98 @@ export class OrdersApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
         }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
+        }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: Order = ObjectSerializer.deserialize(
+            const body: OrderV2 = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Order", ""
-            ) as Order;
+                "OrderV2", ""
+            ) as OrderV2;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to getOrder
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async getOrderWithHttpInfo(response: ResponseContext): Promise<HttpInfo<OrderV2 >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: OrderV2 = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "OrderV2", ""
+            ) as OrderV2;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
+        if (isCodeInRange("401", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Unauthorized", body, response.headers);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: OrderV2 = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "OrderV2", ""
+            ) as OrderV2;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -1490,6 +1907,13 @@ export class OrdersApiResponseProcessor {
             ) as ListOrderPaymentsResponse;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -1511,12 +1935,26 @@ export class OrdersApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -1547,6 +1985,13 @@ export class OrdersApiResponseProcessor {
             ) as ListOrders;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -1568,12 +2013,26 @@ export class OrdersApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -1604,6 +2063,13 @@ export class OrdersApiResponseProcessor {
             ) as ObjectModel;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -1625,12 +2091,26 @@ export class OrdersApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -1652,14 +2132,21 @@ export class OrdersApiResponseProcessor {
      * @params response Response returned by the server for a request to updateOrder
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async updateOrderWithHttpInfo(response: ResponseContext): Promise<HttpInfo<Order >> {
+     public async updateOrderWithHttpInfo(response: ResponseContext): Promise<HttpInfo<OrderV2 >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: Order = ObjectSerializer.deserialize(
+            const body: OrderV2 = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Order", ""
-            ) as Order;
+                "OrderV2", ""
+            ) as OrderV2;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
         }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
@@ -1682,6 +2169,13 @@ export class OrdersApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -1689,13 +2183,20 @@ export class OrdersApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
         }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
+        }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: Order = ObjectSerializer.deserialize(
+            const body: OrderV2 = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Order", ""
-            ) as Order;
+                "OrderV2", ""
+            ) as OrderV2;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -1718,6 +2219,13 @@ export class OrdersApiResponseProcessor {
             ) as CustomFieldMetaData;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -1739,12 +2247,26 @@ export class OrdersApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -1775,6 +2297,13 @@ export class OrdersApiResponseProcessor {
             ) as OrderItem;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -1796,12 +2325,26 @@ export class OrdersApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml

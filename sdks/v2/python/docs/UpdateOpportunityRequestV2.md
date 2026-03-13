@@ -5,19 +5,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**affiliate_id** | **str** |  | [optional] 
-**contact_id** | **str** |  | [optional] 
+**opportunity_title** | **str** | Opportunity title | [optional] 
+**next_action_time** | **str** | Next action timestamp (ISO-8601) | [optional] 
+**next_action_notes** | **str** | Notes for next action | [optional] 
+**opportunity_notes** | **str** | General notes | [optional] 
+**estimated_close_time** | **str** | Estimated close timestamp (ISO-8601) | [optional] 
+**include_in_forecast** | **bool** | Include in sales forecast | [optional] 
+**projected_revenue_low** | **float** | Low revenue estimate | [optional] 
+**projected_revenue_high** | **float** | High revenue estimate | [optional] 
+**contact_id** | **str** | Associated contact ID | [optional] 
+**stage_id** | **str** | Pipeline stage ID | [optional] 
+**user_id** | **str** | Assigned user ID | [optional] 
 **custom_fields** | [**List[CustomField]**](CustomField.md) |  | [optional] 
-**estimated_close_time** | **str** |  | [optional] 
-**include_in_forecast** | **bool** |  | [optional] 
-**next_action_notes** | **str** |  | [optional] 
-**next_action_time** | **str** |  | [optional] 
-**opportunity_notes** | **str** |  | [optional] 
-**opportunity_title** | **str** |  | [optional] 
-**projected_revenue_high** | **float** |  | [optional] 
-**projected_revenue_low** | **float** |  | [optional] 
-**stage_id** | **str** |  | [optional] 
-**user_id** | **str** |  | [optional] 
+**affiliate_id** | **str** | Affiliate ID | [optional] 
 
 ## Example
 

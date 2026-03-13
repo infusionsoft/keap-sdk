@@ -5,17 +5,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**contact_id** | **str** |  | 
-**lead_affiliate_id** | **str** |  | [optional] 
-**notes** | **str** |  | [optional] 
-**order_items** | [**List[CreateOrderItemRequest]**](CreateOrderItemRequest.md) |  | [optional] 
-**order_time** | **str** | The date and time of the order. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z) | [optional] 
-**order_title** | **str** |  | 
-**order_type** | **str** | The order type. Valid values are: ONLINE, OFFLINE. | [optional] 
+**notes** | **str** | Internal notes | [optional] 
+**terms** | **str** | Order terms | [optional] 
+**contact_id** | **str** | ID of the contact for this order | 
+**order_items** | [**List[CreateOrderItemRequest]**](CreateOrderItemRequest.md) | List of items to include in the order | [optional] 
+**order_title** | **str** | Title for the order | 
+**order_time** | **datetime** | The date and time of the order. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z) | 
+**order_type** | **str** | The order type. | 
 **promo_codes** | **List[str]** | Uses multiple strings as promo codes. The corresponding discount will be applied to the order. | [optional] 
-**sales_affiliate_id** | **str** |  | [optional] 
-**shipping_address** | [**AddressInformation**](AddressInformation.md) |  | [optional] 
-**terms** | **str** |  | [optional] 
+**lead_affiliate_id** | **str** | Lead affiliate ID | [optional] 
+**sales_affiliate_id** | **str** | Sales affiliate ID | [optional] 
+**shipping_address** | [**AddressInformation**](AddressInformation.md) | Shipping address for the order | [optional] 
 
 ## Example
 

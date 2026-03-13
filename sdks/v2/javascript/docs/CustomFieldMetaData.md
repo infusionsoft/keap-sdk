@@ -4,14 +4,37 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**defaultValue** | **String** |  | [optional] 
-**fieldName** | **String** |  | [optional] 
-**fieldType** | **String** |  | [optional] 
-**groupId** | **String** |  | [optional] 
 **id** | **String** |  | [optional] 
 **label** | **String** |  | [optional] 
 **options** | [**[CustomFieldOption]**](CustomFieldOption.md) |  | [optional] 
 **recordType** | **String** |  | [optional] 
+**fieldType** | **String** |  | [optional] 
+**defaultValue** | **String** |  | [optional] 
+**groupId** | **String** |  | [optional] 
+**fieldName** | **String** |  | [optional] 
+
+
+
+## Enum: RecordTypeEnum
+
+
+* `CONTACT` (value: `"CONTACT"`)
+
+* `REFERRAL_PARTNER` (value: `"REFERRAL_PARTNER"`)
+
+* `OPPORTUNITY` (value: `"OPPORTUNITY"`)
+
+* `TASK_NOTE_APPOINTMENT` (value: `"TASK_NOTE_APPOINTMENT"`)
+
+* `COMPANY` (value: `"COMPANY"`)
+
+* `ORDER` (value: `"ORDER"`)
+
+* `SUBSCRIPTION` (value: `"SUBSCRIPTION"`)
+
+* `unknown_default_open_api` (value: `"unknown_default_open_api"`)
+
+
 
 
 
@@ -65,29 +88,6 @@ Name | Type | Description | Notes
 * `YEAR` (value: `"YEAR"`)
 
 * `YES_NO` (value: `"YES_NO"`)
-
-* `unknown_default_open_api` (value: `"unknown_default_open_api"`)
-
-
-
-
-
-## Enum: RecordTypeEnum
-
-
-* `CONTACT` (value: `"CONTACT"`)
-
-* `REFERRAL_PARTNER` (value: `"REFERRAL_PARTNER"`)
-
-* `OPPORTUNITY` (value: `"OPPORTUNITY"`)
-
-* `TASK_NOTE_APPOINTMENT` (value: `"TASK_NOTE_APPOINTMENT"`)
-
-* `COMPANY` (value: `"COMPANY"`)
-
-* `ORDER` (value: `"ORDER"`)
-
-* `SUBSCRIPTION` (value: `"SUBSCRIPTION"`)
 
 * `unknown_default_open_api` (value: `"unknown_default_open_api"`)
 

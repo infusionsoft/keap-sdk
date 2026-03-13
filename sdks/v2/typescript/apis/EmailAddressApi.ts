@@ -8,7 +8,7 @@ import {canConsumeForm, isCodeInRange} from '../util';
 import {SecurityAuthentication} from '../auth/auth';
 
 
-import { EmailAddressStatus } from '../models/EmailAddressStatus';
+import { RestEmailAddressStatus } from '../models/RestEmailAddressStatus';
 import { UpdateEmailAddress } from '../models/UpdateEmailAddress';
 
 /**
@@ -19,7 +19,7 @@ export class EmailAddressApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Retrieves the opt-in status for a given Email Address
      * Retrieve an Email Address status
-     * @param email email
+     * @param email 
      */
     public async getEmailAddressStatus(email: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
@@ -31,7 +31,7 @@ export class EmailAddressApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/v2/emailAddresses/{email}/status'
+        const localVarPath = '/rest/v2/emailAddresses/{email}/status'
             .replace('{' + 'email' + '}', encodeURIComponent(String(email)));
 
         // Make Request Context
@@ -39,6 +39,12 @@ export class EmailAddressApiRequestFactory extends BaseAPIRequestFactory {
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
 
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -51,8 +57,8 @@ export class EmailAddressApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Updates an Email Address opt-in status  You may opt-in or mark an email address as _Marketable_ by including the following field in the request JSON with an opt-in reason. (This field is also shown in the complete request body sample.) The reason you provide here will help with compliance. Example reasons: \"Customer opted-in through webform\", \"Company gave explicit permission.\"  ```json \"opt_in_reason\": \"your reason for opt-in\" ``` Note that the email address status will only be updated to `Unconfirmed` (marketable) for email addresses that are currently in the following states: - `Unengaged Marketable` - `Unengaged Non-Marketable` - `Non-Marketable` - `Opt-Out: Manual`  All other existing statuses e.g. `List Unsubscribe`, `Opt-Out`, `System` etc will remain non-marketable and in their existing state.
      * Update an Email Address opt-in status
-     * @param email email
-     * @param updateEmailAddress updateEmailAddress
+     * @param email 
+     * @param updateEmailAddress 
      */
     public async updateEmailAddressOptStatus(email: string, updateEmailAddress: UpdateEmailAddress, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
@@ -70,7 +76,7 @@ export class EmailAddressApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/v2/emailAddresses/{email}/status'
+        const localVarPath = '/rest/v2/emailAddresses/{email}/status'
             .replace('{' + 'email' + '}', encodeURIComponent(String(email)));
 
         // Make Request Context
@@ -89,6 +95,12 @@ export class EmailAddressApiRequestFactory extends BaseAPIRequestFactory {
         );
         requestContext.setBody(serializedBody);
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -109,14 +121,21 @@ export class EmailAddressApiResponseProcessor {
      * @params response Response returned by the server for a request to getEmailAddressStatus
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getEmailAddressStatusWithHttpInfo(response: ResponseContext): Promise<HttpInfo<EmailAddressStatus >> {
+     public async getEmailAddressStatusWithHttpInfo(response: ResponseContext): Promise<HttpInfo<RestEmailAddressStatus >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: EmailAddressStatus = ObjectSerializer.deserialize(
+            const body: RestEmailAddressStatus = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "EmailAddressStatus", ""
-            ) as EmailAddressStatus;
+                "RestEmailAddressStatus", ""
+            ) as RestEmailAddressStatus;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
         }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
@@ -139,6 +158,13 @@ export class EmailAddressApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -146,13 +172,20 @@ export class EmailAddressApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
         }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
+        }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: EmailAddressStatus = ObjectSerializer.deserialize(
+            const body: RestEmailAddressStatus = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "EmailAddressStatus", ""
-            ) as EmailAddressStatus;
+                "RestEmailAddressStatus", ""
+            ) as RestEmailAddressStatus;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -166,14 +199,21 @@ export class EmailAddressApiResponseProcessor {
      * @params response Response returned by the server for a request to updateEmailAddressOptStatus
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async updateEmailAddressOptStatusWithHttpInfo(response: ResponseContext): Promise<HttpInfo<EmailAddressStatus >> {
+     public async updateEmailAddressOptStatusWithHttpInfo(response: ResponseContext): Promise<HttpInfo<RestEmailAddressStatus >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: EmailAddressStatus = ObjectSerializer.deserialize(
+            const body: RestEmailAddressStatus = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "EmailAddressStatus", ""
-            ) as EmailAddressStatus;
+                "RestEmailAddressStatus", ""
+            ) as RestEmailAddressStatus;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
         }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
@@ -196,6 +236,13 @@ export class EmailAddressApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -203,13 +250,20 @@ export class EmailAddressApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
         }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
+        }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: EmailAddressStatus = ObjectSerializer.deserialize(
+            const body: RestEmailAddressStatus = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "EmailAddressStatus", ""
-            ) as EmailAddressStatus;
+                "RestEmailAddressStatus", ""
+            ) as RestEmailAddressStatus;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

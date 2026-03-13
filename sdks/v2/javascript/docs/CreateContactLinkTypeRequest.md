@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**maxLinks** | **Number** |  | [optional] 
-**name** | **String** |  | [optional] 
+**name** | **String** | Link type name | [optional] 
+**maxLinks** | **Number** | Maximum number of links allowed (must be &gt; 0) | [optional] 
 
 

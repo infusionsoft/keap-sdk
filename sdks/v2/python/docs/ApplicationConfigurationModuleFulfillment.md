@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**default_message_fields** | **str** |  | [optional] 
 **default_message_to** | **str** |  | [optional] 
+**default_message_fields** | **str** |  | [optional] 
 
 ## Example
 

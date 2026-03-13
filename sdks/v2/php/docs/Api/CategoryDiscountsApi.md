@@ -1,14 +1,14 @@
 # Keap\Core\V2\CategoryDiscountsApi
 
-All URIs are relative to https://api.keap.com/crm/rest, except if the operation defines another base path.
+All URIs are relative to https://api.keap.com/crm, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createCategoryDiscount()**](CategoryDiscountsApi.md#createCategoryDiscount) | **POST** /v2/discounts/productCategories | Create a Category Discount |
-| [**deleteCategoryDiscount()**](CategoryDiscountsApi.md#deleteCategoryDiscount) | **DELETE** /v2/discounts/productCategories/{discount_id} | Delete a Category Discount |
-| [**getCategoryDiscount()**](CategoryDiscountsApi.md#getCategoryDiscount) | **GET** /v2/discounts/productCategories/{discount_id} | Retrieve a Category Discount |
-| [**listCategoryDiscounts()**](CategoryDiscountsApi.md#listCategoryDiscounts) | **GET** /v2/discounts/productCategories | List Category Discounts |
-| [**updateCategoryDiscount()**](CategoryDiscountsApi.md#updateCategoryDiscount) | **PATCH** /v2/discounts/productCategories/{discount_id} | Update a Category Discount |
+| [**createCategoryDiscount()**](CategoryDiscountsApi.md#createCategoryDiscount) | **POST** /rest/v2/discounts/productCategories | Create a Category Discount |
+| [**deleteCategoryDiscount()**](CategoryDiscountsApi.md#deleteCategoryDiscount) | **DELETE** /rest/v2/discounts/productCategories/{discount_id} | Delete a Category Discount |
+| [**getCategoryDiscount()**](CategoryDiscountsApi.md#getCategoryDiscount) | **GET** /rest/v2/discounts/productCategories/{discount_id} | Retrieve a Category Discount |
+| [**listCategoryDiscounts()**](CategoryDiscountsApi.md#listCategoryDiscounts) | **GET** /rest/v2/discounts/productCategories | List Category Discounts |
+| [**updateCategoryDiscount()**](CategoryDiscountsApi.md#updateCategoryDiscount) | **PATCH** /rest/v2/discounts/productCategories/{discount_id} | Update a Category Discount |
 
 
 ## `createCategoryDiscount()`
@@ -28,12 +28,16 @@ Creates a Category Discount
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\CategoryDiscountsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$create_category_discount_request = new \Keap\Core\V2\Model\CreateCategoryDiscountRequest(); // \Keap\Core\V2\Model\CreateCategoryDiscountRequest | request
+$create_category_discount_request = new \Keap\Core\V2\Model\CreateCategoryDiscountRequest(); // \Keap\Core\V2\Model\CreateCategoryDiscountRequest
 
 try {
     $result = $apiInstance->createCategoryDiscount($create_category_discount_request);
@@ -47,7 +51,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **create_category_discount_request** | [**\Keap\Core\V2\Model\CreateCategoryDiscountRequest**](../Model/CreateCategoryDiscountRequest.md)| request | |
+| **create_category_discount_request** | [**\Keap\Core\V2\Model\CreateCategoryDiscountRequest**](../Model/CreateCategoryDiscountRequest.md)|  | |
 
 ### Return type
 
@@ -55,7 +59,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -83,12 +87,16 @@ Deletes a specified Category Discount
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\CategoryDiscountsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$discount_id = 'discount_id_example'; // string | discount_id
+$discount_id = 'discount_id_example'; // string
 
 try {
     $apiInstance->deleteCategoryDiscount($discount_id);
@@ -101,7 +109,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **discount_id** | **string**| discount_id | |
+| **discount_id** | **string**|  | |
 
 ### Return type
 
@@ -109,7 +117,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -137,12 +145,16 @@ Retrieves a single Category Discount
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\CategoryDiscountsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$discount_id = 'discount_id_example'; // string | discount_id
+$discount_id = 'discount_id_example'; // string
 
 try {
     $result = $apiInstance->getCategoryDiscount($discount_id);
@@ -156,7 +168,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **discount_id** | **string**| discount_id | |
+| **discount_id** | **string**|  | |
 
 ### Return type
 
@@ -164,7 +176,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -192,10 +204,14 @@ Retrieves a list of Category Discounts
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\CategoryDiscountsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $filter = 'filter_example'; // string | Filter to apply, the allowed field is: - (String) `product_category_id`  You will need to apply the `==` operator to check the equality of the filter with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=product_category_id%3D%3D4`
 $order_by = 'order_by_example'; // string | Attribute and direction to order items. One of the following fields: - `id` - `name`  One of the following directions: - `asc` - `desc`
@@ -225,7 +241,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -253,14 +269,18 @@ Updates a Category Discount
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\CategoryDiscountsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$discount_id = 'discount_id_example'; // string | discount_id
-$update_category_discount_request = new \Keap\Core\V2\Model\UpdateCategoryDiscountRequest(); // \Keap\Core\V2\Model\UpdateCategoryDiscountRequest | request
-$update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+$discount_id = 'discount_id_example'; // string
+$update_category_discount_request = new \Keap\Core\V2\Model\UpdateCategoryDiscountRequest(); // \Keap\Core\V2\Model\UpdateCategoryDiscountRequest
+$update_mask = 'update_mask_example'; // string | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
     $result = $apiInstance->updateCategoryDiscount($discount_id, $update_category_discount_request, $update_mask);
@@ -274,9 +294,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **discount_id** | **string**| discount_id | |
-| **update_category_discount_request** | [**\Keap\Core\V2\Model\UpdateCategoryDiscountRequest**](../Model/UpdateCategoryDiscountRequest.md)| request | |
-| **update_mask** | [**string[]**](../Model/string.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **discount_id** | **string**|  | |
+| **update_category_discount_request** | [**\Keap\Core\V2\Model\UpdateCategoryDiscountRequest**](../Model/UpdateCategoryDiscountRequest.md)|  | |
+| **update_mask** | **string**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -284,7 +304,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 

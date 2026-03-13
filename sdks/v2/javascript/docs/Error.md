@@ -4,10 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**cause** | [**Throwable**](Throwable.md) |  | [optional] 
-**localizedMessage** | **String** |  | [optional] 
+**code** | **Number** |  | [optional] 
 **message** | **String** |  | [optional] 
-**stackTrace** | [**[StackTraceElement]**](StackTraceElement.md) |  | [optional] 
-**suppressed** | [**[Throwable]**](Throwable.md) |  | [optional] 
+**status** | **String** |  | [optional] 
+**details** | [**[ErrorDetails]**](ErrorDetails.md) |  | [optional] 
 
 

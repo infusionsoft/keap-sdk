@@ -1,17 +1,17 @@
 # .ProductInterestBundlesApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**addProductInterest**](ProductInterestBundlesApi.md#addProductInterest) | **POST** /v2/productInterestBundles/{id}/interests | Create a Product Interest in an existing Bundle
-[**createProductInterestBundle**](ProductInterestBundlesApi.md#createProductInterestBundle) | **POST** /v2/productInterestBundles | Create a Product Interest Bundle
-[**deleteProductInterestBundle**](ProductInterestBundlesApi.md#deleteProductInterestBundle) | **DELETE** /v2/productInterestBundles/{id} | Delete a Product Interest Bundle
-[**getProductInterestBundle**](ProductInterestBundlesApi.md#getProductInterestBundle) | **GET** /v2/productInterestBundles/{id} | Get a Product Interest Bundle
-[**listProductInterestBundles**](ProductInterestBundlesApi.md#listProductInterestBundles) | **GET** /v2/productInterestBundles | List Product Interest Bundles
-[**removeProductInterest**](ProductInterestBundlesApi.md#removeProductInterest) | **DELETE** /v2/productInterestBundles/{id}/interests/{interest_id} | Delete a Product Interest from an existing Bundle
-[**updateProductInterest**](ProductInterestBundlesApi.md#updateProductInterest) | **PATCH** /v2/productInterestBundles/{id}/interests/{interest_id} | Update a Product Interest in an existing Bundle
-[**updateProductInterestBundle**](ProductInterestBundlesApi.md#updateProductInterestBundle) | **PATCH** /v2/productInterestBundles/{id} | Update a Product Interest Bundle
+[**addProductInterest**](ProductInterestBundlesApi.md#addProductInterest) | **POST** /rest/v2/productInterestBundles/{id}/interests | Create a Product Interest in an existing Bundle
+[**createProductInterestBundle**](ProductInterestBundlesApi.md#createProductInterestBundle) | **POST** /rest/v2/productInterestBundles | Create a Product Interest Bundle
+[**deleteProductInterestBundle**](ProductInterestBundlesApi.md#deleteProductInterestBundle) | **DELETE** /rest/v2/productInterestBundles/{id} | Delete a Product Interest Bundle
+[**getProductInterestBundle**](ProductInterestBundlesApi.md#getProductInterestBundle) | **GET** /rest/v2/productInterestBundles/{id} | Get a Product Interest Bundle
+[**listProductInterestBundles**](ProductInterestBundlesApi.md#listProductInterestBundles) | **GET** /rest/v2/productInterestBundles | List Product Interest Bundles
+[**removeProductInterest**](ProductInterestBundlesApi.md#removeProductInterest) | **DELETE** /rest/v2/productInterestBundles/{id}/interests/{interest_id} | Delete a Product Interest from an existing Bundle
+[**updateProductInterest**](ProductInterestBundlesApi.md#updateProductInterest) | **PATCH** /rest/v2/productInterestBundles/{id}/interests/{interest_id} | Update a Product Interest in an existing Bundle
+[**updateProductInterestBundle**](ProductInterestBundlesApi.md#updateProductInterestBundle) | **PATCH** /rest/v2/productInterestBundles/{id} | Update a Product Interest Bundle
 
 
 # **addProductInterest**
@@ -30,15 +30,15 @@ const configuration = createConfiguration();
 const apiInstance = new ProductInterestBundlesApi(configuration);
 
 const request: ProductInterestBundlesApiAddProductInterestRequest = {
-    // id
+  
   id: "id_example",
-    // request
+  
   addProductInterestRequest: {
-    discountPercent: 1,
-    entityId: "entityId_example",
-    price: 3.14,
-    quantity: 1,
     type: "PRODUCT",
+    entityId: "123",
+    price: 10000,
+    quantity: 1,
+    discountPercent: 10,
   },
 };
 
@@ -51,8 +51,8 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **addProductInterestRequest** | **AddProductInterestRequest**| request |
- **id** | [**string**] | id | defaults to undefined
+ **addProductInterestRequest** | **AddProductInterestRequest**|  |
+ **id** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -73,9 +73,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -95,10 +99,10 @@ const configuration = createConfiguration();
 const apiInstance = new ProductInterestBundlesApi(configuration);
 
 const request: ProductInterestBundlesApiCreateProductInterestBundleRequest = {
-    // createProductInterestBundleRequest
+  
   createProductInterestBundleRequest: {
-    description: "description_example",
-    name: "name_example",
+    name: "Premium Bundle",
+    description: "Bundle of premium products",
   },
 };
 
@@ -111,7 +115,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createProductInterestBundleRequest** | **CreateProductInterestBundleRequest**| createProductInterestBundleRequest |
+ **createProductInterestBundleRequest** | **CreateProductInterestBundleRequest**|  |
 
 
 ### Return type
@@ -120,7 +124,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -132,9 +136,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -154,7 +162,7 @@ const configuration = createConfiguration();
 const apiInstance = new ProductInterestBundlesApi(configuration);
 
 const request: ProductInterestBundlesApiDeleteProductInterestBundleRequest = {
-    // id
+  
   id: "id_example",
 };
 
@@ -167,7 +175,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | [**string**] | id | defaults to undefined
+ **id** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -176,7 +184,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -188,10 +196,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No Content |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -211,7 +222,7 @@ const configuration = createConfiguration();
 const apiInstance = new ProductInterestBundlesApi(configuration);
 
 const request: ProductInterestBundlesApiGetProductInterestBundleRequest = {
-    // id
+  
   id: "id_example",
 };
 
@@ -224,7 +235,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | [**string**] | id | defaults to undefined
+ **id** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -233,7 +244,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -245,10 +256,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -299,7 +313,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -311,10 +325,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -334,9 +351,9 @@ const configuration = createConfiguration();
 const apiInstance = new ProductInterestBundlesApi(configuration);
 
 const request: ProductInterestBundlesApiRemoveProductInterestRequest = {
-    // id
+  
   id: "id_example",
-    // interest_id
+  
   interestId: "interest_id_example",
 };
 
@@ -349,8 +366,8 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | [**string**] | id | defaults to undefined
- **interestId** | [**string**] | interest_id | defaults to undefined
+ **id** | [**string**] |  | defaults to undefined
+ **interestId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -359,7 +376,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -371,10 +388,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No Content |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -394,20 +414,18 @@ const configuration = createConfiguration();
 const apiInstance = new ProductInterestBundlesApi(configuration);
 
 const request: ProductInterestBundlesApiUpdateProductInterestRequest = {
-    // id
+  
   id: "id_example",
-    // interest_id
+  
   interestId: "interest_id_example",
-    // updateProductInterestRequest
+  
   updateProductInterestRequest: {
-    discountPercent: 1,
-    price: 3.14,
+    price: 10000,
     quantity: 1,
+    discountPercent: 10,
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: [
-    "quantity",
-  ],
+  updateMask: "quantity,price,discount_percent",
 };
 
 const data = await apiInstance.updateProductInterest(request);
@@ -419,10 +437,10 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **updateProductInterestRequest** | **UpdateProductInterestRequest**| updateProductInterestRequest |
- **id** | [**string**] | id | defaults to undefined
- **interestId** | [**string**] | interest_id | defaults to undefined
- **updateMask** |  | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateProductInterestRequest** | **UpdateProductInterestRequest**|  |
+ **id** | [**string**] |  | defaults to undefined
+ **interestId** | [**string**] |  | defaults to undefined
+ **updateMask** | [**&#39;quantity,price,discount_percent&#39;**]**Array<&#39;quantity,price,discount_percent&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
@@ -431,7 +449,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -443,10 +461,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -466,17 +487,15 @@ const configuration = createConfiguration();
 const apiInstance = new ProductInterestBundlesApi(configuration);
 
 const request: ProductInterestBundlesApiUpdateProductInterestBundleRequest = {
-    // id
+  
   id: "id_example",
-    // updateProductInterestBundleRequest
+  
   updateProductInterestBundleRequest: {
-    description: "description_example",
-    name: "name_example",
+    name: "Premium Bundle",
+    description: "Bundle of premium products",
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: [
-    "name",
-  ],
+  updateMask: "name,description",
 };
 
 const data = await apiInstance.updateProductInterestBundle(request);
@@ -488,9 +507,9 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **updateProductInterestBundleRequest** | **UpdateProductInterestBundleRequest**| updateProductInterestBundleRequest |
- **id** | [**string**] | id | defaults to undefined
- **updateMask** |  | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateProductInterestBundleRequest** | **UpdateProductInterestBundleRequest**|  |
+ **id** | [**string**] |  | defaults to undefined
+ **updateMask** | [**&#39;name,description&#39;**]**Array<&#39;name,description&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
@@ -499,7 +518,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -511,10 +530,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

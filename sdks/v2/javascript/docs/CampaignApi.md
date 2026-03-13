@@ -1,15 +1,15 @@
 # KeapCoreServiceV2Sdk.CampaignApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**addContactsToCampaignSequence**](CampaignApi.md#addContactsToCampaignSequence) | **POST** /v2/campaigns/{campaign_id}/sequences/{sequence_id}:addContacts | Add Contacts to Campaign Sequence
-[**getCampaign**](CampaignApi.md#getCampaign) | **GET** /v2/campaigns/{campaign_id} | Retrieve a Campaign
-[**getCampaignGoals**](CampaignApi.md#getCampaignGoals) | **GET** /v2/campaigns/{campaign_id}/goals | Retrieve a list of Goals for a Campaign
-[**getCampaignSequences**](CampaignApi.md#getCampaignSequences) | **GET** /v2/campaigns/{campaign_id}/sequences | Retrieve a list of Sequences for a Campaign
-[**listCampaigns**](CampaignApi.md#listCampaigns) | **GET** /v2/campaigns | List Campaigns
-[**removeContactsFromCampaignSequence**](CampaignApi.md#removeContactsFromCampaignSequence) | **POST** /v2/campaigns/{campaign_id}/sequences/{sequence_id}:removeContacts | Remove Contacts from Campaign Sequence
+[**addContactsToCampaignSequence**](CampaignApi.md#addContactsToCampaignSequence) | **POST** /rest/v2/campaigns/{campaign_id}/sequences/{sequence_id}:addContacts | Add Contacts to Campaign Sequence
+[**getCampaign**](CampaignApi.md#getCampaign) | **GET** /rest/v2/campaigns/{campaign_id} | Retrieve a Campaign
+[**getCampaignGoals**](CampaignApi.md#getCampaignGoals) | **GET** /rest/v2/campaigns/{campaign_id}/goals | Retrieve a list of Goals for a Campaign
+[**getCampaignSequences**](CampaignApi.md#getCampaignSequences) | **GET** /rest/v2/campaigns/{campaign_id}/sequences | Retrieve a list of Sequences for a Campaign
+[**listCampaigns**](CampaignApi.md#listCampaigns) | **GET** /rest/v2/campaigns | List Campaigns
+[**removeContactsFromCampaignSequence**](CampaignApi.md#removeContactsFromCampaignSequence) | **POST** /rest/v2/campaigns/{campaign_id}/sequences/{sequence_id}:removeContacts | Remove Contacts from Campaign Sequence
 
 
 
@@ -25,11 +25,15 @@ Adds a list of contacts to a campaign sequence Response contains a map of the pr
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.CampaignApi();
-let campaignId = "campaignId_example"; // String | campaign_id
-let sequenceId = "sequenceId_example"; // String | sequence_id
-let addContactsToSequenceRequest = new KeapCoreServiceV2Sdk.AddContactsToSequenceRequest(); // AddContactsToSequenceRequest | addContactsToSequenceRequest
+let campaignId = "campaignId_example"; // String | 
+let sequenceId = "sequenceId_example"; // String | 
+let addContactsToSequenceRequest = new KeapCoreServiceV2Sdk.AddContactsToSequenceRequest(); // AddContactsToSequenceRequest | 
 apiInstance.addContactsToCampaignSequence(campaignId, sequenceId, addContactsToSequenceRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -43,9 +47,9 @@ apiInstance.addContactsToCampaignSequence(campaignId, sequenceId, addContactsToS
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaignId** | **String**| campaign_id | 
- **sequenceId** | **String**| sequence_id | 
- **addContactsToSequenceRequest** | [**AddContactsToSequenceRequest**](AddContactsToSequenceRequest.md)| addContactsToSequenceRequest | 
+ **campaignId** | **String**|  | 
+ **sequenceId** | **String**|  | 
+ **addContactsToSequenceRequest** | [**AddContactsToSequenceRequest**](AddContactsToSequenceRequest.md)|  | 
 
 ### Return type
 
@@ -53,7 +57,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -73,9 +77,13 @@ Retrieves a single campaign
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.CampaignApi();
-let campaignId = "campaignId_example"; // String | campaign_id
+let campaignId = "campaignId_example"; // String | 
 apiInstance.getCampaign(campaignId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -89,7 +97,7 @@ apiInstance.getCampaign(campaignId).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaignId** | **String**| campaign_id | 
+ **campaignId** | **String**|  | 
 
 ### Return type
 
@@ -97,7 +105,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -117,9 +125,13 @@ Retrieves a list of Goals (published) for a Campaign
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.CampaignApi();
-let campaignId = "campaignId_example"; // String | campaign_id
+let campaignId = "campaignId_example"; // String | 
 apiInstance.getCampaignGoals(campaignId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -133,7 +145,7 @@ apiInstance.getCampaignGoals(campaignId).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaignId** | **String**| campaign_id | 
+ **campaignId** | **String**|  | 
 
 ### Return type
 
@@ -141,7 +153,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -161,9 +173,13 @@ Retrieves a list of Sequences (published) for a Campaign
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.CampaignApi();
-let campaignId = "campaignId_example"; // String | campaign_id
+let campaignId = "campaignId_example"; // String | 
 apiInstance.getCampaignSequences(campaignId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -177,7 +193,7 @@ apiInstance.getCampaignSequences(campaignId).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaignId** | **String**| campaign_id | 
+ **campaignId** | **String**|  | 
 
 ### Return type
 
@@ -185,7 +201,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -205,14 +221,17 @@ Retrieves a list of campaigns for the authenticated user
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.CampaignApi();
 let opts = {
   'filter': "filter_example", // String | Filter to apply, allowed fields are: - (String) `name`  You will need to apply the `==` operator to check the equality of the filter with your searched text, in the encoded form `%3D%3D`. The search will look for the text anywhere in the campaign name. - `filter=name%3D%3DSpring Campaign` - `filter=name%3D%3DTag New Contacts` 
   'orderBy': "orderBy_example", // String | Attribute and direction to order items. One of the following fields: - `name` - `publisheddate` - `id` - `completedContactCount` - `activeContacts` - `datecreated` - `lastupdated`  One of the following directions: - `asc` - `desc`
   'pageSize': 0, // Number | Total number of items to return per page
-  'pageToken': "pageToken_example", // String | Page token
-  'stats': true // Boolean | 
+  'pageToken': "pageToken_example" // String | Page token
 };
 apiInstance.listCampaigns(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -231,7 +250,6 @@ Name | Type | Description  | Notes
  **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;publisheddate&#x60; - &#x60;id&#x60; - &#x60;completedContactCount&#x60; - &#x60;activeContacts&#x60; - &#x60;datecreated&#x60; - &#x60;lastupdated&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] 
  **pageSize** | **Number**| Total number of items to return per page | [optional] 
  **pageToken** | **String**| Page token | [optional] 
- **stats** | **Boolean**|  | [optional] 
 
 ### Return type
 
@@ -239,7 +257,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -259,11 +277,15 @@ Removes a list of contacts from a campaign sequence Response contains a map of t
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.CampaignApi();
-let campaignId = "campaignId_example"; // String | campaign_id
-let sequenceId = "sequenceId_example"; // String | sequence_id
-let removeContactsFromSequenceRequest = new KeapCoreServiceV2Sdk.RemoveContactsFromSequenceRequest(); // RemoveContactsFromSequenceRequest | removeContactsFromSequenceRequest
+let campaignId = "campaignId_example"; // String | 
+let sequenceId = "sequenceId_example"; // String | 
+let removeContactsFromSequenceRequest = new KeapCoreServiceV2Sdk.RemoveContactsFromSequenceRequest(); // RemoveContactsFromSequenceRequest | 
 apiInstance.removeContactsFromCampaignSequence(campaignId, sequenceId, removeContactsFromSequenceRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -277,9 +299,9 @@ apiInstance.removeContactsFromCampaignSequence(campaignId, sequenceId, removeCon
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaignId** | **String**| campaign_id | 
- **sequenceId** | **String**| sequence_id | 
- **removeContactsFromSequenceRequest** | [**RemoveContactsFromSequenceRequest**](RemoveContactsFromSequenceRequest.md)| removeContactsFromSequenceRequest | 
+ **campaignId** | **String**|  | 
+ **sequenceId** | **String**|  | 
+ **removeContactsFromSequenceRequest** | [**RemoveContactsFromSequenceRequest**](RemoveContactsFromSequenceRequest.md)|  | 
 
 ### Return type
 
@@ -287,7 +309,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 

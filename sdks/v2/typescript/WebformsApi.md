@@ -1,11 +1,11 @@
 # .WebformsApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getHtml**](WebformsApi.md#getHtml) | **GET** /v2/webforms/{webform_id}:data | Get Webform HTML
-[**listWebforms**](WebformsApi.md#listWebforms) | **GET** /v2/webforms | List Webforms with filter
+[**getHtml**](WebformsApi.md#getHtml) | **GET** /rest/v2/webforms/{webform_id}:data | Get Webform HTML
+[**listWebforms**](WebformsApi.md#listWebforms) | **GET** /rest/v2/webforms | List Webforms with filter
 
 
 # **getHtml**
@@ -24,7 +24,7 @@ const configuration = createConfiguration();
 const apiInstance = new WebformsApi(configuration);
 
 const request: WebformsApiGetHtmlRequest = {
-    // webform_id
+  
   webformId: "webform_id_example",
 };
 
@@ -37,7 +37,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **webformId** | [**string**] | webform_id | defaults to undefined
+ **webformId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -46,22 +46,25 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: text/html
+ - **Accept**: text/html, application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | OK |  -  |
+**200** | HTML content of the webform |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -112,7 +115,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -124,10 +127,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

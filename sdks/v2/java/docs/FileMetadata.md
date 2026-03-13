@@ -7,17 +7,17 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**category** | [**CategoryEnum**](#CategoryEnum) |  |  [optional] |
-|**contactId** | **String** |  |  [optional] |
-|**createdById** | **String** |  |  [optional] |
-|**createdTime** | **String** |  |  [optional] |
-|**fileBoxType** | [**FileBoxTypeEnum**](#FileBoxTypeEnum) |  |  [optional] |
-|**fileName** | **String** |  |  [optional] |
-|**fileSize** | **Long** |  |  [optional] |
-|**id** | **String** |  |  [optional] |
-|**isPublic** | **Boolean** |  |  [optional] |
-|**remoteFileKey** | **String** |  |  [optional] |
-|**updatedTime** | **String** |  |  [optional] |
+|**id** | **String** | File ID |  [optional] |
+|**category** | [**CategoryEnum**](#CategoryEnum) | File category |  [optional] |
+|**fileName** | **String** | File name with extension |  [optional] |
+|**isPublic** | **Boolean** | Whether file is publicly accessible |  [optional] |
+|**contactId** | **String** | Associated contact ID |  [optional] |
+|**createdById** | **String** | ID of user who created the file |  [optional] |
+|**remoteFileKey** | **String** | Remote storage key |  [optional] |
+|**fileBoxType** | [**FileBoxTypeEnum**](#FileBoxTypeEnum) | File box type |  [optional] |
+|**fileSize** | **Long** | File size in bytes |  [optional] |
+|**createdTime** | **String** | Creation timestamp (ISO-8601) |  [optional] |
+|**updatedTime** | **String** | Last update timestamp (ISO-8601) |  [optional] |
 
 
 

@@ -1,17 +1,17 @@
 # KeapCoreServiceV2Sdk.WebformsApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getHtml**](WebformsApi.md#getHtml) | **GET** /v2/webforms/{webform_id}:data | Get Webform HTML
-[**listWebforms**](WebformsApi.md#listWebforms) | **GET** /v2/webforms | List Webforms with filter
+[**getHtml**](WebformsApi.md#getHtml) | **GET** /rest/v2/webforms/{webform_id}:data | Get Webform HTML
+[**listWebforms**](WebformsApi.md#listWebforms) | **GET** /rest/v2/webforms | List Webforms with filter
 
 
 
 ## getHtml
 
-> Blob getHtml(webformId)
+> String getHtml(webformId)
 
 Get Webform HTML
 
@@ -21,9 +21,13 @@ Returns the HTML
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.WebformsApi();
-let webformId = "webformId_example"; // String | webform_id
+let webformId = "webformId_example"; // String | 
 apiInstance.getHtml(webformId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -37,20 +41,20 @@ apiInstance.getHtml(webformId).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **webformId** | **String**| webform_id | 
+ **webformId** | **String**|  | 
 
 ### Return type
 
-**Blob**
+**String**
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/html
+- **Accept**: text/html, application/json
 
 
 ## listWebforms
@@ -65,6 +69,10 @@ Retrieves a list of webforms
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.WebformsApi();
 let opts = {
@@ -97,7 +105,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 

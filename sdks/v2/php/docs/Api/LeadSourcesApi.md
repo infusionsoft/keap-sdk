@@ -1,14 +1,14 @@
 # Keap\Core\V2\LeadSourcesApi
 
-All URIs are relative to https://api.keap.com/crm/rest, except if the operation defines another base path.
+All URIs are relative to https://api.keap.com/crm, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createLeadSource()**](LeadSourcesApi.md#createLeadSource) | **POST** /v2/leadSources | Create a Lead Source |
-| [**deleteLeadSource()**](LeadSourcesApi.md#deleteLeadSource) | **DELETE** /v2/leadSources/{lead_source_id} | Delete a Lead Source |
-| [**getLeadSource()**](LeadSourcesApi.md#getLeadSource) | **GET** /v2/leadSources/{lead_source_id} | Retrieve a Lead Source |
-| [**listLeadSources()**](LeadSourcesApi.md#listLeadSources) | **GET** /v2/leadSources | List Lead Sources |
-| [**updateLeadSource()**](LeadSourcesApi.md#updateLeadSource) | **PATCH** /v2/leadSources/{lead_source_id} | Update a Lead Source |
+| [**createLeadSource()**](LeadSourcesApi.md#createLeadSource) | **POST** /rest/v2/leadSources | Create a Lead Source |
+| [**deleteLeadSource()**](LeadSourcesApi.md#deleteLeadSource) | **DELETE** /rest/v2/leadSources/{lead_source_id} | Delete a Lead Source |
+| [**getLeadSource()**](LeadSourcesApi.md#getLeadSource) | **GET** /rest/v2/leadSources/{lead_source_id} | Retrieve a Lead Source |
+| [**listLeadSources()**](LeadSourcesApi.md#listLeadSources) | **GET** /rest/v2/leadSources | List Lead Sources |
+| [**updateLeadSource()**](LeadSourcesApi.md#updateLeadSource) | **PATCH** /rest/v2/leadSources/{lead_source_id} | Update a Lead Source |
 
 
 ## `createLeadSource()`
@@ -28,12 +28,16 @@ Creates a new Lead Source
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\LeadSourcesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$create_lead_source_request = new \Keap\Core\V2\Model\CreateLeadSourceRequest(); // \Keap\Core\V2\Model\CreateLeadSourceRequest | The request object to create a new lead source
+$create_lead_source_request = new \Keap\Core\V2\Model\CreateLeadSourceRequest(); // \Keap\Core\V2\Model\CreateLeadSourceRequest
 
 try {
     $result = $apiInstance->createLeadSource($create_lead_source_request);
@@ -47,7 +51,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **create_lead_source_request** | [**\Keap\Core\V2\Model\CreateLeadSourceRequest**](../Model/CreateLeadSourceRequest.md)| The request object to create a new lead source | |
+| **create_lead_source_request** | [**\Keap\Core\V2\Model\CreateLeadSourceRequest**](../Model/CreateLeadSourceRequest.md)|  | |
 
 ### Return type
 
@@ -55,7 +59,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -83,10 +87,14 @@ Deletes a Lead Source by ID
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\LeadSourcesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $lead_source_id = 'lead_source_id_example'; // string | The ID of a lead source
 
@@ -109,7 +117,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -137,10 +145,14 @@ Retrieves a Lead Source by ID
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\LeadSourcesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $lead_source_id = 'lead_source_id_example'; // string | The ID of a lead source
 
@@ -164,7 +176,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -192,10 +204,14 @@ Retrieves a list of Lead Sources
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\LeadSourcesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $filter = 'filter_example'; // string | Filter to apply, allowed fields are:  - (String) `name` - (String) `status` - (String) `lead_source_category_id` - (String) `vendor` - (String) `medium` - (String) `start_time` - (String) `end_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:  - `filter=name%3D%3Dexample` - `filter=start_time%3D%3D2024-12-22T01:00:00.000Z`
 $order_by = 'order_by_example'; // string | Attribute and direction to order items. One of the following fields:  - `name` - `status` - `vendor` - `medium` - `start_time` - `end_time` - `create_time` - `update_time`  One of the following directions:  - `asc` - `desc`
@@ -225,7 +241,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -253,14 +269,18 @@ Updates a Lead Source with only the values provided in the request
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\LeadSourcesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $lead_source_id = 'lead_source_id_example'; // string | The ID of a lead source
-$create_lead_source_request = new \Keap\Core\V2\Model\CreateLeadSourceRequest(); // \Keap\Core\V2\Model\CreateLeadSourceRequest | The request object to update a lead source
-$update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+$create_lead_source_request = new \Keap\Core\V2\Model\CreateLeadSourceRequest(); // \Keap\Core\V2\Model\CreateLeadSourceRequest
+$update_mask = 'update_mask_example'; // string | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
     $result = $apiInstance->updateLeadSource($lead_source_id, $create_lead_source_request, $update_mask);
@@ -275,8 +295,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **lead_source_id** | **string**| The ID of a lead source | |
-| **create_lead_source_request** | [**\Keap\Core\V2\Model\CreateLeadSourceRequest**](../Model/CreateLeadSourceRequest.md)| The request object to update a lead source | |
-| **update_mask** | [**string[]**](../Model/string.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **create_lead_source_request** | [**\Keap\Core\V2\Model\CreateLeadSourceRequest**](../Model/CreateLeadSourceRequest.md)|  | |
+| **update_mask** | **string**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -284,7 +304,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 

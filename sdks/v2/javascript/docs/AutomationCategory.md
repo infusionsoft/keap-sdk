@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**automationCount** | **Number** |  | [optional] 
-**id** | **String** |  | [optional] 
-**name** | **String** |  | [optional] 
+**id** | **String** | The unique identifier of the category | [optional] 
+**name** | **String** | The name of the category | [optional] 
+**automationCount** | **Number** | Number of automations in this category | [optional] 
 
 

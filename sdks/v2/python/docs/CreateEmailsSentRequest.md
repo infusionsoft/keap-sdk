@@ -1,11 +1,12 @@
 # CreateEmailsSentRequest
 
+Email records to persist, with content.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**emails** | [**List[CreateEmailSentRequest]**](CreateEmailSentRequest.md) |  | [optional] 
+**emails** | [**List[CreateEmailSentRequest]**](CreateEmailSentRequest.md) | Collection of email records to create, maximum 1000 | 
 
 ## Example
 

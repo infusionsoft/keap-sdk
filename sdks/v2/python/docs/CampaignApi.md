@@ -1,15 +1,15 @@
 # keap_core_v2_client.CampaignApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**add_contacts_to_campaign_sequence**](CampaignApi.md#add_contacts_to_campaign_sequence) | **POST** /v2/campaigns/{campaign_id}/sequences/{sequence_id}:addContacts | Add Contacts to Campaign Sequence
-[**get_campaign**](CampaignApi.md#get_campaign) | **GET** /v2/campaigns/{campaign_id} | Retrieve a Campaign
-[**get_campaign_goals**](CampaignApi.md#get_campaign_goals) | **GET** /v2/campaigns/{campaign_id}/goals | Retrieve a list of Goals for a Campaign
-[**get_campaign_sequences**](CampaignApi.md#get_campaign_sequences) | **GET** /v2/campaigns/{campaign_id}/sequences | Retrieve a list of Sequences for a Campaign
-[**list_campaigns**](CampaignApi.md#list_campaigns) | **GET** /v2/campaigns | List Campaigns
-[**remove_contacts_from_campaign_sequence**](CampaignApi.md#remove_contacts_from_campaign_sequence) | **POST** /v2/campaigns/{campaign_id}/sequences/{sequence_id}:removeContacts | Remove Contacts from Campaign Sequence
+[**add_contacts_to_campaign_sequence**](CampaignApi.md#add_contacts_to_campaign_sequence) | **POST** /rest/v2/campaigns/{campaign_id}/sequences/{sequence_id}:addContacts | Add Contacts to Campaign Sequence
+[**get_campaign**](CampaignApi.md#get_campaign) | **GET** /rest/v2/campaigns/{campaign_id} | Retrieve a Campaign
+[**get_campaign_goals**](CampaignApi.md#get_campaign_goals) | **GET** /rest/v2/campaigns/{campaign_id}/goals | Retrieve a list of Goals for a Campaign
+[**get_campaign_sequences**](CampaignApi.md#get_campaign_sequences) | **GET** /rest/v2/campaigns/{campaign_id}/sequences | Retrieve a list of Sequences for a Campaign
+[**list_campaigns**](CampaignApi.md#list_campaigns) | **GET** /rest/v2/campaigns | List Campaigns
+[**remove_contacts_from_campaign_sequence**](CampaignApi.md#remove_contacts_from_campaign_sequence) | **POST** /rest/v2/campaigns/{campaign_id}/sequences/{sequence_id}:removeContacts | Remove Contacts from Campaign Sequence
 
 
 # **add_contacts_to_campaign_sequence**
@@ -22,6 +22,7 @@ Response contains a map of the provided list of Contact Ids related to their ind
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
@@ -30,19 +31,25 @@ from keap_core_v2_client.models.add_contacts_to_sequence_response import AddCont
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.CampaignApi(api_client)
-    campaign_id = 'campaign_id_example' # str | campaign_id
-    sequence_id = 'sequence_id_example' # str | sequence_id
-    add_contacts_to_sequence_request = keap_core_v2_client.AddContactsToSequenceRequest() # AddContactsToSequenceRequest | addContactsToSequenceRequest
+    campaign_id = 'campaign_id_example' # str | 
+    sequence_id = 'sequence_id_example' # str | 
+    add_contacts_to_sequence_request = keap_core_v2_client.AddContactsToSequenceRequest() # AddContactsToSequenceRequest | 
 
     try:
         # Add Contacts to Campaign Sequence
@@ -59,9 +66,9 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaign_id** | **str**| campaign_id | 
- **sequence_id** | **str**| sequence_id | 
- **add_contacts_to_sequence_request** | [**AddContactsToSequenceRequest**](AddContactsToSequenceRequest.md)| addContactsToSequenceRequest | 
+ **campaign_id** | **str**|  | 
+ **sequence_id** | **str**|  | 
+ **add_contacts_to_sequence_request** | [**AddContactsToSequenceRequest**](AddContactsToSequenceRequest.md)|  | 
 
 ### Return type
 
@@ -69,7 +76,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -81,9 +88,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -96,6 +107,7 @@ Retrieves a single campaign
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
@@ -103,17 +115,23 @@ from keap_core_v2_client.models.campaign import Campaign
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.CampaignApi(api_client)
-    campaign_id = 'campaign_id_example' # str | campaign_id
+    campaign_id = 'campaign_id_example' # str | 
 
     try:
         # Retrieve a Campaign
@@ -130,7 +148,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaign_id** | **str**| campaign_id | 
+ **campaign_id** | **str**|  | 
 
 ### Return type
 
@@ -138,7 +156,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -150,10 +168,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -166,6 +187,7 @@ Retrieves a list of Goals (published) for a Campaign
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
@@ -173,17 +195,23 @@ from keap_core_v2_client.models.list_campaign_goals_response import ListCampaign
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.CampaignApi(api_client)
-    campaign_id = 'campaign_id_example' # str | campaign_id
+    campaign_id = 'campaign_id_example' # str | 
 
     try:
         # Retrieve a list of Goals for a Campaign
@@ -200,7 +228,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaign_id** | **str**| campaign_id | 
+ **campaign_id** | **str**|  | 
 
 ### Return type
 
@@ -208,7 +236,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -220,10 +248,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -236,6 +267,7 @@ Retrieves a list of Sequences (published) for a Campaign
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
@@ -243,17 +275,23 @@ from keap_core_v2_client.models.list_campaign_sequence_response import ListCampa
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.CampaignApi(api_client)
-    campaign_id = 'campaign_id_example' # str | campaign_id
+    campaign_id = 'campaign_id_example' # str | 
 
     try:
         # Retrieve a list of Sequences for a Campaign
@@ -270,7 +308,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaign_id** | **str**| campaign_id | 
+ **campaign_id** | **str**|  | 
 
 ### Return type
 
@@ -278,7 +316,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -290,15 +328,18 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_campaigns**
-> ListCampaignsResponse list_campaigns(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token, stats=stats)
+> ListCampaignsResponse list_campaigns(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
 
 List Campaigns
 
@@ -306,6 +347,7 @@ Retrieves a list of campaigns for the authenticated user
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
@@ -313,12 +355,18 @@ from keap_core_v2_client.models.list_campaigns_response import ListCampaignsResp
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -327,11 +375,10 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
     order_by = 'order_by_example' # str | Attribute and direction to order items. One of the following fields: - `name` - `publisheddate` - `id` - `completedContactCount` - `activeContacts` - `datecreated` - `lastupdated`  One of the following directions: - `asc` - `desc` (optional)
     page_size = 0 # int | Total number of items to return per page (optional)
     page_token = 'page_token_example' # str | Page token (optional)
-    stats = True # bool |  (optional)
 
     try:
         # List Campaigns
-        api_response = api_instance.list_campaigns(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token, stats=stats)
+        api_response = api_instance.list_campaigns(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
         print("The response of CampaignApi->list_campaigns:\n")
         pprint(api_response)
     except Exception as e:
@@ -348,7 +395,6 @@ Name | Type | Description  | Notes
  **order_by** | **str**| Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;publisheddate&#x60; - &#x60;id&#x60; - &#x60;completedContactCount&#x60; - &#x60;activeContacts&#x60; - &#x60;datecreated&#x60; - &#x60;lastupdated&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] 
  **page_size** | **int**| Total number of items to return per page | [optional] 
  **page_token** | **str**| Page token | [optional] 
- **stats** | **bool**|  | [optional] 
 
 ### Return type
 
@@ -356,7 +402,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -368,10 +414,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -385,6 +434,7 @@ Response contains a map of the provided list of Contact Ids related to their ind
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
@@ -393,19 +443,25 @@ from keap_core_v2_client.models.remove_contacts_from_sequence_response import Re
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.CampaignApi(api_client)
-    campaign_id = 'campaign_id_example' # str | campaign_id
-    sequence_id = 'sequence_id_example' # str | sequence_id
-    remove_contacts_from_sequence_request = keap_core_v2_client.RemoveContactsFromSequenceRequest() # RemoveContactsFromSequenceRequest | removeContactsFromSequenceRequest
+    campaign_id = 'campaign_id_example' # str | 
+    sequence_id = 'sequence_id_example' # str | 
+    remove_contacts_from_sequence_request = keap_core_v2_client.RemoveContactsFromSequenceRequest() # RemoveContactsFromSequenceRequest | 
 
     try:
         # Remove Contacts from Campaign Sequence
@@ -422,9 +478,9 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaign_id** | **str**| campaign_id | 
- **sequence_id** | **str**| sequence_id | 
- **remove_contacts_from_sequence_request** | [**RemoveContactsFromSequenceRequest**](RemoveContactsFromSequenceRequest.md)| removeContactsFromSequenceRequest | 
+ **campaign_id** | **str**|  | 
+ **sequence_id** | **str**|  | 
+ **remove_contacts_from_sequence_request** | [**RemoveContactsFromSequenceRequest**](RemoveContactsFromSequenceRequest.md)|  | 
 
 ### Return type
 
@@ -432,7 +488,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -444,9 +500,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

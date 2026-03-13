@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**nextPageToken** | **String** |  |  [optional] |
 |**opportunities** | [**List&lt;RestV2Opportunity&gt;**](RestV2Opportunity.md) |  |  [optional] |
+|**nextPageToken** | **String** |  |  [optional] |
 
 
 ## Implemented Interfaces

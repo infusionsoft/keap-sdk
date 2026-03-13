@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** |  | [optional] 
-**name** | **String** |  | [optional] 
-**notes** | **String** |  | [optional] 
-**priority** | **Number** |  | [optional] 
+**id** | **String** | Commission program ID | [optional] 
+**name** | **String** | Program name | [optional] 
+**notes** | **String** | Program notes | [optional] 
+**priority** | **Number** | Program priority | [optional] 
 
 

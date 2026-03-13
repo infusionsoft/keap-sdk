@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**var_field** | **str** |  | [optional] 
-**number** | **str** |  | [optional] 
-**type** | **str** |  | [optional] 
+**number** | **str** | Fax number | [optional] 
+**type** | **str** | Fax type | [optional] 
+**var_field** | **str** | Fax number slot | [optional] 
 
 ## Example
 

@@ -1,19 +1,19 @@
 # WebformsApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getHtml**](WebformsApi.md#getHtml) | **GET** /v2/webforms/{webform_id}:data | Get Webform HTML |
-| [**getHtmlWithHttpInfo**](WebformsApi.md#getHtmlWithHttpInfo) | **GET** /v2/webforms/{webform_id}:data | Get Webform HTML |
-| [**listWebforms**](WebformsApi.md#listWebforms) | **GET** /v2/webforms | List Webforms with filter |
-| [**listWebformsWithHttpInfo**](WebformsApi.md#listWebformsWithHttpInfo) | **GET** /v2/webforms | List Webforms with filter |
+| [**getHtml**](WebformsApi.md#getHtml) | **GET** /rest/v2/webforms/{webform_id}:data | Get Webform HTML |
+| [**getHtmlWithHttpInfo**](WebformsApi.md#getHtmlWithHttpInfo) | **GET** /rest/v2/webforms/{webform_id}:data | Get Webform HTML |
+| [**listWebforms**](WebformsApi.md#listWebforms) | **GET** /rest/v2/webforms | List Webforms with filter |
+| [**listWebformsWithHttpInfo**](WebformsApi.md#listWebformsWithHttpInfo) | **GET** /rest/v2/webforms | List Webforms with filter |
 
 
 
 ## getHtml
 
-> byte[] getHtml(webformId)
+> String getHtml(webformId)
 
 Get Webform HTML
 
@@ -26,18 +26,23 @@ Returns the HTML
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.WebformsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         WebformsApi apiInstance = new WebformsApi(defaultClient);
-        String webformId = "webformId_example"; // String | webform_id
+        String webformId = "webformId_example"; // String | 
         try {
-            byte[] result = apiInstance.getHtml(webformId);
+            String result = apiInstance.getHtml(webformId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling WebformsApi#getHtml");
@@ -55,34 +60,37 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **webformId** | **String**| webform_id | |
+| **webformId** | **String**|  | |
 
 ### Return type
 
-**byte[]**
+**String**
 
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/html
+- **Accept**: text/html, application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | OK |  -  |
+| **200** | HTML content of the webform |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## getHtmlWithHttpInfo
 
-> ApiResponse<byte[]> getHtml getHtmlWithHttpInfo(webformId)
+> ApiResponse<String> getHtml getHtmlWithHttpInfo(webformId)
 
 Get Webform HTML
 
@@ -96,18 +104,23 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.WebformsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         WebformsApi apiInstance = new WebformsApi(defaultClient);
-        String webformId = "webformId_example"; // String | webform_id
+        String webformId = "webformId_example"; // String | 
         try {
-            ApiResponse<byte[]> response = apiInstance.getHtmlWithHttpInfo(webformId);
+            ApiResponse<String> response = apiInstance.getHtmlWithHttpInfo(webformId);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -127,30 +140,33 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **webformId** | **String**| webform_id | |
+| **webformId** | **String**|  | |
 
 ### Return type
 
-ApiResponse<**byte[]**>
+ApiResponse<**String**>
 
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/html
+- **Accept**: text/html, application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | OK |  -  |
+| **200** | HTML content of the webform |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## listWebforms
@@ -168,13 +184,18 @@ Retrieves a list of webforms
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.WebformsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         WebformsApi apiInstance = new WebformsApi(defaultClient);
         String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `name` - (String) `webform_type` - (String) `since_create_time` - (String) `until_create_time` - (String) `since_update_time` - (String) `until_update_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=name%3D%3DContact Us` - `filter=webform_type%3D%3Dlegacy`
@@ -212,7 +233,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -223,10 +244,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## listWebformsWithHttpInfo
 
@@ -244,13 +268,18 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.WebformsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         WebformsApi apiInstance = new WebformsApi(defaultClient);
         String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `name` - (String) `webform_type` - (String) `since_create_time` - (String) `until_create_time` - (String) `since_update_time` - (String) `until_update_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=name%3D%3DContact Us` - `filter=webform_type%3D%3Dlegacy`
@@ -290,7 +319,7 @@ ApiResponse<[**ListWebformsResponse**](ListWebformsResponse.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -301,8 +330,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 

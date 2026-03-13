@@ -1,17 +1,17 @@
 # Keap\Core\V2\ProductInterestBundlesApi
 
-All URIs are relative to https://api.keap.com/crm/rest, except if the operation defines another base path.
+All URIs are relative to https://api.keap.com/crm, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**addProductInterest()**](ProductInterestBundlesApi.md#addProductInterest) | **POST** /v2/productInterestBundles/{id}/interests | Create a Product Interest in an existing Bundle |
-| [**createProductInterestBundle()**](ProductInterestBundlesApi.md#createProductInterestBundle) | **POST** /v2/productInterestBundles | Create a Product Interest Bundle |
-| [**deleteProductInterestBundle()**](ProductInterestBundlesApi.md#deleteProductInterestBundle) | **DELETE** /v2/productInterestBundles/{id} | Delete a Product Interest Bundle |
-| [**getProductInterestBundle()**](ProductInterestBundlesApi.md#getProductInterestBundle) | **GET** /v2/productInterestBundles/{id} | Get a Product Interest Bundle |
-| [**listProductInterestBundles()**](ProductInterestBundlesApi.md#listProductInterestBundles) | **GET** /v2/productInterestBundles | List Product Interest Bundles |
-| [**removeProductInterest()**](ProductInterestBundlesApi.md#removeProductInterest) | **DELETE** /v2/productInterestBundles/{id}/interests/{interest_id} | Delete a Product Interest from an existing Bundle |
-| [**updateProductInterest()**](ProductInterestBundlesApi.md#updateProductInterest) | **PATCH** /v2/productInterestBundles/{id}/interests/{interest_id} | Update a Product Interest in an existing Bundle |
-| [**updateProductInterestBundle()**](ProductInterestBundlesApi.md#updateProductInterestBundle) | **PATCH** /v2/productInterestBundles/{id} | Update a Product Interest Bundle |
+| [**addProductInterest()**](ProductInterestBundlesApi.md#addProductInterest) | **POST** /rest/v2/productInterestBundles/{id}/interests | Create a Product Interest in an existing Bundle |
+| [**createProductInterestBundle()**](ProductInterestBundlesApi.md#createProductInterestBundle) | **POST** /rest/v2/productInterestBundles | Create a Product Interest Bundle |
+| [**deleteProductInterestBundle()**](ProductInterestBundlesApi.md#deleteProductInterestBundle) | **DELETE** /rest/v2/productInterestBundles/{id} | Delete a Product Interest Bundle |
+| [**getProductInterestBundle()**](ProductInterestBundlesApi.md#getProductInterestBundle) | **GET** /rest/v2/productInterestBundles/{id} | Get a Product Interest Bundle |
+| [**listProductInterestBundles()**](ProductInterestBundlesApi.md#listProductInterestBundles) | **GET** /rest/v2/productInterestBundles | List Product Interest Bundles |
+| [**removeProductInterest()**](ProductInterestBundlesApi.md#removeProductInterest) | **DELETE** /rest/v2/productInterestBundles/{id}/interests/{interest_id} | Delete a Product Interest from an existing Bundle |
+| [**updateProductInterest()**](ProductInterestBundlesApi.md#updateProductInterest) | **PATCH** /rest/v2/productInterestBundles/{id}/interests/{interest_id} | Update a Product Interest in an existing Bundle |
+| [**updateProductInterestBundle()**](ProductInterestBundlesApi.md#updateProductInterestBundle) | **PATCH** /rest/v2/productInterestBundles/{id} | Update a Product Interest Bundle |
 
 
 ## `addProductInterest()`
@@ -31,13 +31,17 @@ Creates a new Product Interest in an existing Bundle.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\ProductInterestBundlesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$id = 'id_example'; // string | id
-$add_product_interest_request = new \Keap\Core\V2\Model\AddProductInterestRequest(); // \Keap\Core\V2\Model\AddProductInterestRequest | request
+$id = 'id_example'; // string
+$add_product_interest_request = new \Keap\Core\V2\Model\AddProductInterestRequest(); // \Keap\Core\V2\Model\AddProductInterestRequest
 
 try {
     $result = $apiInstance->addProductInterest($id, $add_product_interest_request);
@@ -51,8 +55,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **string**| id | |
-| **add_product_interest_request** | [**\Keap\Core\V2\Model\AddProductInterestRequest**](../Model/AddProductInterestRequest.md)| request | |
+| **id** | **string**|  | |
+| **add_product_interest_request** | [**\Keap\Core\V2\Model\AddProductInterestRequest**](../Model/AddProductInterestRequest.md)|  | |
 
 ### Return type
 
@@ -60,7 +64,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -88,12 +92,16 @@ Creates a new Product Interest Bundle.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\ProductInterestBundlesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$create_product_interest_bundle_request = new \Keap\Core\V2\Model\CreateProductInterestBundleRequest(); // \Keap\Core\V2\Model\CreateProductInterestBundleRequest | createProductInterestBundleRequest
+$create_product_interest_bundle_request = new \Keap\Core\V2\Model\CreateProductInterestBundleRequest(); // \Keap\Core\V2\Model\CreateProductInterestBundleRequest
 
 try {
     $result = $apiInstance->createProductInterestBundle($create_product_interest_bundle_request);
@@ -107,7 +115,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **create_product_interest_bundle_request** | [**\Keap\Core\V2\Model\CreateProductInterestBundleRequest**](../Model/CreateProductInterestBundleRequest.md)| createProductInterestBundleRequest | |
+| **create_product_interest_bundle_request** | [**\Keap\Core\V2\Model\CreateProductInterestBundleRequest**](../Model/CreateProductInterestBundleRequest.md)|  | |
 
 ### Return type
 
@@ -115,7 +123,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -143,12 +151,16 @@ Deletes an existing Product Interest Bundle.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\ProductInterestBundlesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$id = 'id_example'; // string | id
+$id = 'id_example'; // string
 
 try {
     $apiInstance->deleteProductInterestBundle($id);
@@ -161,7 +173,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **string**| id | |
+| **id** | **string**|  | |
 
 ### Return type
 
@@ -169,7 +181,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -197,12 +209,16 @@ Gets a single Product Interest Bundle.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\ProductInterestBundlesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$id = 'id_example'; // string | id
+$id = 'id_example'; // string
 
 try {
     $result = $apiInstance->getProductInterestBundle($id);
@@ -216,7 +232,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **string**| id | |
+| **id** | **string**|  | |
 
 ### Return type
 
@@ -224,7 +240,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -252,10 +268,14 @@ Retrieves a list of Product Interest Bundles
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\ProductInterestBundlesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $filter = 'filter_example'; // string | Filter to apply, allowed fields are: - (String) `name`
 $order_by = 'order_by_example'; // string | Attribute and direction to order items. One of the following fields: - `name`  One of the following directions: - `asc` - `desc`
@@ -285,7 +305,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -313,13 +333,17 @@ Deletes an existing Product Interest from an existing Bundle.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\ProductInterestBundlesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$id = 'id_example'; // string | id
-$interest_id = 'interest_id_example'; // string | interest_id
+$id = 'id_example'; // string
+$interest_id = 'interest_id_example'; // string
 
 try {
     $apiInstance->removeProductInterest($id, $interest_id);
@@ -332,8 +356,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **string**| id | |
-| **interest_id** | **string**| interest_id | |
+| **id** | **string**|  | |
+| **interest_id** | **string**|  | |
 
 ### Return type
 
@@ -341,7 +365,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -369,15 +393,19 @@ Updates an existing Product Interest in an existing Bundle.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\ProductInterestBundlesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$id = 'id_example'; // string | id
-$interest_id = 'interest_id_example'; // string | interest_id
-$update_product_interest_request = new \Keap\Core\V2\Model\UpdateProductInterestRequest(); // \Keap\Core\V2\Model\UpdateProductInterestRequest | updateProductInterestRequest
-$update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+$id = 'id_example'; // string
+$interest_id = 'interest_id_example'; // string
+$update_product_interest_request = new \Keap\Core\V2\Model\UpdateProductInterestRequest(); // \Keap\Core\V2\Model\UpdateProductInterestRequest
+$update_mask = 'update_mask_example'; // string | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
     $result = $apiInstance->updateProductInterest($id, $interest_id, $update_product_interest_request, $update_mask);
@@ -391,10 +419,10 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **string**| id | |
-| **interest_id** | **string**| interest_id | |
-| **update_product_interest_request** | [**\Keap\Core\V2\Model\UpdateProductInterestRequest**](../Model/UpdateProductInterestRequest.md)| updateProductInterestRequest | |
-| **update_mask** | [**string[]**](../Model/string.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **id** | **string**|  | |
+| **interest_id** | **string**|  | |
+| **update_product_interest_request** | [**\Keap\Core\V2\Model\UpdateProductInterestRequest**](../Model/UpdateProductInterestRequest.md)|  | |
+| **update_mask** | **string**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -402,7 +430,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -430,14 +458,18 @@ Updates an existing Product Interest Bundle.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\ProductInterestBundlesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$id = 'id_example'; // string | id
-$update_product_interest_bundle_request = new \Keap\Core\V2\Model\UpdateProductInterestBundleRequest(); // \Keap\Core\V2\Model\UpdateProductInterestBundleRequest | updateProductInterestBundleRequest
-$update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+$id = 'id_example'; // string
+$update_product_interest_bundle_request = new \Keap\Core\V2\Model\UpdateProductInterestBundleRequest(); // \Keap\Core\V2\Model\UpdateProductInterestBundleRequest
+$update_mask = 'update_mask_example'; // string | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
     $result = $apiInstance->updateProductInterestBundle($id, $update_product_interest_bundle_request, $update_mask);
@@ -451,9 +483,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **string**| id | |
-| **update_product_interest_bundle_request** | [**\Keap\Core\V2\Model\UpdateProductInterestBundleRequest**](../Model/UpdateProductInterestBundleRequest.md)| updateProductInterestBundleRequest | |
-| **update_mask** | [**string[]**](../Model/string.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **id** | **string**|  | |
+| **update_product_interest_bundle_request** | [**\Keap\Core\V2\Model\UpdateProductInterestBundleRequest**](../Model/UpdateProductInterestBundleRequest.md)|  | |
+| **update_mask** | **string**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -461,7 +493,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 

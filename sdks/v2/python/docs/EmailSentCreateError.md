@@ -1,12 +1,13 @@
 # EmailSentCreateError
 
+Error that occurred when creating an email record
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**email** | [**CreateEmailSentRequest**](CreateEmailSentRequest.md) |  | [optional] 
-**error_message** | **str** |  | [optional] 
+**error_message** | **str** | Description of the error | [optional] 
+**email** | [**CreateEmailSentRequest**](CreateEmailSentRequest.md) | The email request that failed | [optional] 
 
 ## Example
 

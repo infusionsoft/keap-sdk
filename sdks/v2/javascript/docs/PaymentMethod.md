@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**cardInfo** | [**CardInfo**](CardInfo.md) |  | [optional] 
 **contactId** | **String** |  | [optional] 
-**createdTime** | **String** |  | [optional] 
-**merchantAccountId** | **String** |  | [optional] 
-**merchantAccountType** | **String** | The merchant type this payment method was authorized with. Valid values are: PAYPAL, AUTHORIZE, EWAY, WEPAY, STRIPE, KEAP_PAY, UNSUPPORTED | [optional] 
 **paymentMethodId** | **String** |  | [optional] 
+**merchantAccountType** | **String** | The merchant type this payment method was authorized with. Valid values are: PAYPAL, AUTHORIZE, EWAY, WEPAY, STRIPE, KEAP_PAY, UNSUPPORTED | [optional] 
+**merchantAccountId** | **String** |  | [optional] 
 **paymentMethodType** | **String** | The type of payment method. For now, only CARD is supported. | [optional] 
+**createdTime** | **String** |  | [optional] 
+**cardInfo** | [**CardInfo**](CardInfo.md) | Additional info for payment methods of payment_method_type CARD. | [optional] 
 **status** | **String** | Status of the payment method. Fow now, only EXPIRED is supported. | [optional] 
 
 

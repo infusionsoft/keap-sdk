@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**email** | **str** |  | [optional] 
-**var_field** | **str** |  | [optional] 
-**opt_in_reason** | **str** |  | [optional] 
+**email** | **str** | Email address | [optional] 
+**var_field** | **str** | Email address slot | [optional] 
+**opt_in_reason** | **str** | Reason for opting in | [optional] 
 
 ## Example
 

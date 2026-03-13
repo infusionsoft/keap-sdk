@@ -5,16 +5,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**auto_charge** | **bool** |  | [optional] 
-**days_between_payments** | **int** |  | 
-**days_between_retries** | **int** |  | [optional] 
-**initial_payment_amount** | [**CurrencyValue**](CurrencyValue.md) |  | [optional] 
-**initial_payment_date** | **str** |  | [optional] 
-**initial_payment_percent** | **float** |  | [optional] 
-**max_charge_attempts** | **int** |  | [optional] 
-**number_of_payments** | **int** |  | 
-**payment_method_id** | **str** |  | [optional] 
-**plan_start_date** | **str** |  | 
+**auto_charge** | **bool** | Whether to auto-charge payments | [optional] 
+**max_charge_attempts** | **int** | Maximum charge attempts | [optional] 
+**days_between_retries** | **int** | Days between retry attempts | [optional] 
+**payment_method_id** | **str** | Payment method ID to charge | [optional] 
+**initial_payment_amount** | [**CurrencyValue**](CurrencyValue.md) | Initial payment amount | [optional] 
+**initial_payment_percent** | **float** | Initial payment as percentage | [optional] 
+**initial_payment_date** | **date** | The initial payment date. In ISO-8601 date format (e.g. 2024-05-21) | [optional] 
+**plan_start_date** | **date** | The start date of the payment plan. In ISO-8601 date format (e.g. 2024-05-21) | 
+**number_of_payments** | **int** | Number of payments in the plan | 
+**days_between_payments** | **int** | Days between each payment | 
+**payment_plan_items** | [**List[PaymentPlanItem]**](PaymentPlanItem.md) | List of scheduled payment items | [optional] 
 
 ## Example
 

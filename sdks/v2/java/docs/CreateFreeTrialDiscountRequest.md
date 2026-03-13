@@ -7,12 +7,12 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**criteria** | [**List&lt;DiscountCriteria&gt;**](DiscountCriteria.md) |  |  [optional] |
-|**description** | **String** |  |  [optional] |
-|**freeTrialDays** | **Integer** | The number of free trial days. Must be a positive number. Defaults to 0. |  [optional] |
-|**hidePrice** | **Boolean** |  |  [optional] |
-|**name** | **String** |  |  |
-|**subscriptionPlanId** | **String** |  |  |
+|**name** | **String** | Name of the discount |  |
+|**description** | **String** | Description of the discount |  [optional] |
+|**criteria** | [**List&lt;DiscountCriteria&gt;**](DiscountCriteria.md) | List of criteria that must be met for this discount to apply |  [optional] |
+|**hidePrice** | **Boolean** | Whether to hide the price during the trial period |  [optional] |
+|**subscriptionPlanId** | **String** | ID of the subscription plan this trial applies to |  |
+|**freeTrialDays** | **Integer** | Number of free trial days. Must be a positive number. Defaults to 0. |  [optional] |
 
 
 ## Implemented Interfaces

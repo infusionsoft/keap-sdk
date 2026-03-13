@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**create_time** | **str** |  | [optional] 
-**id** | **str** |  | [optional] 
-**pay_amount** | **float** |  | [optional] 
-**pay_date** | **str** |  | [optional] 
-**pay_notes** | **str** |  | [optional] 
-**pay_type** | **str** |  | [optional] 
+**id** | **str** | Payment ID | [optional] 
+**pay_date** | **str** | Payment date (ISO-8601) | [optional] 
+**pay_notes** | **str** | Payment notes | [optional] 
+**pay_amount** | **float** | Payment amount | [optional] 
+**pay_type** | **str** | Payment type | [optional] 
+**create_time** | **str** | Record creation time (ISO-8601) | [optional] 
 
 ## Example
 

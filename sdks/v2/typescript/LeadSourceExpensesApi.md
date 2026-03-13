@@ -1,14 +1,14 @@
 # .LeadSourceExpensesApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createLeadSourceExpense**](LeadSourceExpensesApi.md#createLeadSourceExpense) | **POST** /v2/leadSources/{lead_source_id}/expenses | Create a Lead Source Expense
-[**deleteLeadSourceExpense**](LeadSourceExpensesApi.md#deleteLeadSourceExpense) | **DELETE** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Delete a lead source expense
-[**getLeadSourceExpense**](LeadSourceExpensesApi.md#getLeadSourceExpense) | **GET** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Retrieve a Lead Source Expense
-[**listLeadSourceExpenses**](LeadSourceExpensesApi.md#listLeadSourceExpenses) | **GET** /v2/leadSources/{lead_source_id}/expenses | List Lead Source Expenses
-[**updateLeadSourceExpense**](LeadSourceExpensesApi.md#updateLeadSourceExpense) | **PATCH** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Update a Lead Source Expense
+[**createLeadSourceExpense**](LeadSourceExpensesApi.md#createLeadSourceExpense) | **POST** /rest/v2/leadSources/{lead_source_id}/expenses | Create a Lead Source Expense
+[**deleteLeadSourceExpense**](LeadSourceExpensesApi.md#deleteLeadSourceExpense) | **DELETE** /rest/v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Delete a lead source expense
+[**getLeadSourceExpense**](LeadSourceExpensesApi.md#getLeadSourceExpense) | **GET** /rest/v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Retrieve a Lead Source Expense
+[**listLeadSourceExpenses**](LeadSourceExpensesApi.md#listLeadSourceExpenses) | **GET** /rest/v2/leadSources/{lead_source_id}/expenses | List Lead Source Expenses
+[**updateLeadSourceExpense**](LeadSourceExpensesApi.md#updateLeadSourceExpense) | **PATCH** /rest/v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Update a Lead Source Expense
 
 
 # **createLeadSourceExpense**
@@ -29,12 +29,12 @@ const apiInstance = new LeadSourceExpensesApi(configuration);
 const request: LeadSourceExpensesApiCreateLeadSourceExpenseRequest = {
     // The ID of the lead source this expense belongs to
   leadSourceId: "lead_source_id_example",
-    // The request object to create a new lead source expense
+  
   createLeadSourceExpenseRequest: {
-    amount: 1,
-    incurredTime: "incurredTime_example",
-    notes: "notes_example",
-    title: "title_example",
+    title: "Google Ads Campaign",
+    notes: "Q1 advertising spend",
+    amount: 22550,
+    incurredTime: new Date('2024-03-15T00:00:00Z'),
   },
 };
 
@@ -47,7 +47,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createLeadSourceExpenseRequest** | **CreateLeadSourceExpenseRequest**| The request object to create a new lead source expense |
+ **createLeadSourceExpenseRequest** | **CreateLeadSourceExpenseRequest**|  |
  **leadSourceId** | [**string**] | The ID of the lead source this expense belongs to | defaults to undefined
 
 
@@ -57,7 +57,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -73,7 +73,9 @@ No authorization required
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -118,7 +120,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -130,10 +132,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No Content |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -178,7 +183,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -190,10 +195,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -247,7 +255,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -263,7 +271,9 @@ No authorization required
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -287,17 +297,15 @@ const request: LeadSourceExpensesApiUpdateLeadSourceExpenseRequest = {
   leadSourceExpenseId: "lead_source_expense_id_example",
     // The ID of the lead source this expense belongs to
   leadSourceId: "lead_source_id_example",
-    // The request object to update a lead source expense
+  
   updateLeadSourceExpenseRequest: {
-    amount: 1,
-    incurredTime: "incurredTime_example",
-    notes: "notes_example",
-    title: "title_example",
+    title: "Google Ads Campaign",
+    notes: "Q1 advertising spend",
+    amount: 22550,
+    incurredTime: new Date('2024-03-15T00:00:00Z'),
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: [
-    "title",
-  ],
+  updateMask: "title,notes,amount,incurred_time",
 };
 
 const data = await apiInstance.updateLeadSourceExpense(request);
@@ -309,10 +317,10 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **updateLeadSourceExpenseRequest** | **UpdateLeadSourceExpenseRequest**| The request object to update a lead source expense |
+ **updateLeadSourceExpenseRequest** | **UpdateLeadSourceExpenseRequest**|  |
  **leadSourceExpenseId** | [**string**] | The ID of a lead source expense | defaults to undefined
  **leadSourceId** | [**string**] | The ID of the lead source this expense belongs to | defaults to undefined
- **updateMask** |  | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | [**&#39;title,notes,amount,incurred_time&#39;**]**Array<&#39;title,notes,amount,incurred_time&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
@@ -321,7 +329,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -337,7 +345,9 @@ No authorization required
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

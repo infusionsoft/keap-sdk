@@ -1,12 +1,13 @@
 # ListUsersPaginatedResponse
 
+Paginated response containing a list of users
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**users** | [**List[User]**](User.md) | List of users | [optional] 
 **next_page_token** | **str** |  | [optional] 
-**users** | [**List[User]**](User.md) |  | [optional] 
 
 ## Example
 

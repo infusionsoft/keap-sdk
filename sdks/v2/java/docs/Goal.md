@@ -7,12 +7,12 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**historicalContactCounts** | [**HistoricalCounts**](HistoricalCounts.md) |  |  [optional] |
-|**id** | **String** |  |  [optional] |
-|**name** | **String** |  |  [optional] |
-|**nextSequenceIds** | **List&lt;String&gt;** |  |  [optional] |
-|**previousSequenceIds** | **List&lt;String&gt;** |  |  [optional] |
-|**type** | [**TypeEnum**](#TypeEnum) |  |  [optional] |
+|**id** | **String** | The unique identifier of the goal |  [optional] |
+|**name** | **String** | The name of the goal |  [optional] |
+|**type** | [**TypeEnum**](#TypeEnum) | The type of goal |  [optional] |
+|**historicalContactCounts** | [**HistoricalCounts**](HistoricalCounts.md) | Historical contact counts for this goal |  [optional] |
+|**nextSequenceIds** | **Set&lt;String&gt;** | IDs of sequences that follow this goal |  [optional] |
+|**previousSequenceIds** | **Set&lt;String&gt;** | IDs of sequences that precede this goal |  [optional] |
 
 
 

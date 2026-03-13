@@ -5,11 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**discount_percent** | **int** | Defaults to &#x60;0&#x60;. | [optional] 
+**type** | **str** | The product interest type. | 
 **entity_id** | **str** | The &#x60;product_id&#x60; (when the &#x60;type&#x60; is set to &#x60;PRODUCT&#x60;)  or the &#x60;subscription_plan_id&#x60; (when the &#x60;type&#x60; is set to &#x60;SUBSCRIPTION_PLAN&#x60;).  | 
-**price** | **float** |  | 
+**price** | **float** | The price per unit of the product. | 
 **quantity** | **int** | Defaults to &#x60;1&#x60;. | [optional] 
-**type** | **str** |  | 
+**discount_percent** | **int** | Defaults to &#x60;0&#x60;. | [optional] 
 
 ## Example
 

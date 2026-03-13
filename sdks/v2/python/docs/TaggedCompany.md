@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**applied_time** | **str** | The time the tag was applied to the company, in ISO 8601 format. | [optional] 
-**company** | [**Company**](Company.md) |  | [optional] 
+**company** | [**Company**](Company.md) | The company the tag is applied to | [optional] 
+**applied_time** | **datetime** | The time the tag was applied to the company, in ISO 8601 format. | [optional] 
 
 ## Example
 

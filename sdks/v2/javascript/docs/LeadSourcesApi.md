@@ -1,14 +1,14 @@
 # KeapCoreServiceV2Sdk.LeadSourcesApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createLeadSource**](LeadSourcesApi.md#createLeadSource) | **POST** /v2/leadSources | Create a Lead Source
-[**deleteLeadSource**](LeadSourcesApi.md#deleteLeadSource) | **DELETE** /v2/leadSources/{lead_source_id} | Delete a Lead Source
-[**getLeadSource**](LeadSourcesApi.md#getLeadSource) | **GET** /v2/leadSources/{lead_source_id} | Retrieve a Lead Source
-[**listLeadSources**](LeadSourcesApi.md#listLeadSources) | **GET** /v2/leadSources | List Lead Sources
-[**updateLeadSource**](LeadSourcesApi.md#updateLeadSource) | **PATCH** /v2/leadSources/{lead_source_id} | Update a Lead Source
+[**createLeadSource**](LeadSourcesApi.md#createLeadSource) | **POST** /rest/v2/leadSources | Create a Lead Source
+[**deleteLeadSource**](LeadSourcesApi.md#deleteLeadSource) | **DELETE** /rest/v2/leadSources/{lead_source_id} | Delete a Lead Source
+[**getLeadSource**](LeadSourcesApi.md#getLeadSource) | **GET** /rest/v2/leadSources/{lead_source_id} | Retrieve a Lead Source
+[**listLeadSources**](LeadSourcesApi.md#listLeadSources) | **GET** /rest/v2/leadSources | List Lead Sources
+[**updateLeadSource**](LeadSourcesApi.md#updateLeadSource) | **PATCH** /rest/v2/leadSources/{lead_source_id} | Update a Lead Source
 
 
 
@@ -24,9 +24,13 @@ Creates a new Lead Source
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.LeadSourcesApi();
-let createLeadSourceRequest = new KeapCoreServiceV2Sdk.CreateLeadSourceRequest(); // CreateLeadSourceRequest | The request object to create a new lead source
+let createLeadSourceRequest = new KeapCoreServiceV2Sdk.CreateLeadSourceRequest(); // CreateLeadSourceRequest | 
 apiInstance.createLeadSource(createLeadSourceRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -40,7 +44,7 @@ apiInstance.createLeadSource(createLeadSourceRequest).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createLeadSourceRequest** | [**CreateLeadSourceRequest**](CreateLeadSourceRequest.md)| The request object to create a new lead source | 
+ **createLeadSourceRequest** | [**CreateLeadSourceRequest**](CreateLeadSourceRequest.md)|  | 
 
 ### Return type
 
@@ -48,7 +52,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -68,6 +72,10 @@ Deletes a Lead Source by ID
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.LeadSourcesApi();
 let leadSourceId = "leadSourceId_example"; // String | The ID of a lead source
@@ -92,7 +100,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -112,6 +120,10 @@ Retrieves a Lead Source by ID
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.LeadSourcesApi();
 let leadSourceId = "leadSourceId_example"; // String | The ID of a lead source
@@ -136,7 +148,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -156,6 +168,10 @@ Retrieves a list of Lead Sources
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.LeadSourcesApi();
 let opts = {
@@ -188,7 +204,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -208,12 +224,16 @@ Updates a Lead Source with only the values provided in the request
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.LeadSourcesApi();
 let leadSourceId = "leadSourceId_example"; // String | The ID of a lead source
-let createLeadSourceRequest = new KeapCoreServiceV2Sdk.CreateLeadSourceRequest(); // CreateLeadSourceRequest | The request object to update a lead source
+let createLeadSourceRequest = new KeapCoreServiceV2Sdk.CreateLeadSourceRequest(); // CreateLeadSourceRequest | 
 let opts = {
-  'updateMask': ["null"] // [String] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+  'updateMask': "updateMask_example" // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
 apiInstance.updateLeadSource(leadSourceId, createLeadSourceRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -229,8 +249,8 @@ apiInstance.updateLeadSource(leadSourceId, createLeadSourceRequest, opts).then((
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **leadSourceId** | **String**| The ID of a lead source | 
- **createLeadSourceRequest** | [**CreateLeadSourceRequest**](CreateLeadSourceRequest.md)| The request object to update a lead source | 
- **updateMask** | [**[String]**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **createLeadSourceRequest** | [**CreateLeadSourceRequest**](CreateLeadSourceRequest.md)|  | 
+ **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 
@@ -238,7 +258,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 

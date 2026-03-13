@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**campaign_id** | **str** |  | [optional] 
 **goals** | [**List[Goal]**](Goal.md) |  | [optional] 
 **next_page_token** | **str** |  | [optional] 
+**campaign_id** | **str** |  | [optional] 
 
 ## Example
 

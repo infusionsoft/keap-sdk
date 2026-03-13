@@ -1,12 +1,13 @@
 # CreateUpdateTagCategoryRequest
 
+tagCategory
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**description** | **str** |  | [optional] 
-**name** | **str** |  | [optional] 
+**name** | **str** | The name of the tag category, must be unique | [optional] 
+**description** | **str** | A description of the tag category | [optional] 
 
 ## Example
 

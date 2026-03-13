@@ -1,11 +1,11 @@
 # ShippingApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**listShippingMethods**](ShippingApi.md#listShippingMethods) | **GET** /v2/shipping | List Shipping methods |
-| [**listShippingMethodsWithHttpInfo**](ShippingApi.md#listShippingMethodsWithHttpInfo) | **GET** /v2/shipping | List Shipping methods |
+| [**listShippingMethods**](ShippingApi.md#listShippingMethods) | **GET** /rest/v2/shipping | List Shipping methods |
+| [**listShippingMethodsWithHttpInfo**](ShippingApi.md#listShippingMethodsWithHttpInfo) | **GET** /rest/v2/shipping | List Shipping methods |
 
 
 
@@ -24,13 +24,18 @@ Retrieves a list of Shipping methods
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ShippingApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ShippingApi apiInstance = new ShippingApi(defaultClient);
         try {
@@ -58,7 +63,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -69,10 +74,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## listShippingMethodsWithHttpInfo
 
@@ -90,13 +98,18 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ShippingApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ShippingApi apiInstance = new ShippingApi(defaultClient);
         try {
@@ -126,7 +139,7 @@ ApiResponse<[**ListRestShippingMethodsResponse**](ListRestShippingMethodsRespons
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -137,8 +150,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 

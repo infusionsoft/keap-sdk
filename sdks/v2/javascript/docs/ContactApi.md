@@ -1,26 +1,27 @@
 # KeapCoreServiceV2Sdk.ContactApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createContact**](ContactApi.md#createContact) | **POST** /v2/contacts | Create a Contact
-[**createContactLinkType**](ContactApi.md#createContactLinkType) | **POST** /v2/contacts/links/types | Create a Contact Link type
-[**deleteContact**](ContactApi.md#deleteContact) | **DELETE** /v2/contacts/{contact_id} | Delete a Contact
-[**getContact**](ContactApi.md#getContact) | **GET** /v2/contacts/{contact_id} | Retrieve a Contact
-[**linkContacts**](ContactApi.md#linkContacts) | **POST** /v2/contacts:link | Link Contacts
-[**listContactLinkTypes**](ContactApi.md#listContactLinkTypes) | **GET** /v2/contacts/links/types | List Contact Link types
-[**listContactLinks**](ContactApi.md#listContactLinks) | **GET** /v2/contacts/{contact_id}/links | List Linked Contacts
-[**listContacts**](ContactApi.md#listContacts) | **GET** /v2/contacts | List Contacts
-[**retrieveContactModel**](ContactApi.md#retrieveContactModel) | **GET** /v2/contacts/model | Retrieve Contact Model
-[**unlinkContacts**](ContactApi.md#unlinkContacts) | **POST** /v2/contacts:unlink | Delete Link between two Contacts
-[**updateContact**](ContactApi.md#updateContact) | **PATCH** /v2/contacts/{contact_id} | Update a Contact
+[**createContact**](ContactApi.md#createContact) | **POST** /rest/v2/contacts | Create a Contact
+[**createContactLinkType**](ContactApi.md#createContactLinkType) | **POST** /rest/v2/contacts/links/types | Create a Contact Link type
+[**deleteContact**](ContactApi.md#deleteContact) | **DELETE** /rest/v2/contacts/{contact_id} | Delete a Contact
+[**getContact**](ContactApi.md#getContact) | **GET** /rest/v2/contacts/{contact_id} | Retrieve a Contact
+[**linkContacts**](ContactApi.md#linkContacts) | **POST** /rest/v2/contacts:link | Link Contacts
+[**listContactLinkTypes**](ContactApi.md#listContactLinkTypes) | **GET** /rest/v2/contacts/links/types | List Contact Link types
+[**listContactLinks**](ContactApi.md#listContactLinks) | **GET** /rest/v2/contacts/{contact_id}/links | List Linked Contacts
+[**listContacts**](ContactApi.md#listContacts) | **GET** /rest/v2/contacts | List Contacts
+[**listTagsForContact**](ContactApi.md#listTagsForContact) | **GET** /rest/v2/contacts/{contact_id}/tags | List Applied Tags
+[**retrieveContactModel**](ContactApi.md#retrieveContactModel) | **GET** /rest/v2/contacts/model | Retrieve Contact Model
+[**unlinkContacts**](ContactApi.md#unlinkContacts) | **POST** /rest/v2/contacts:unlink | Delete Link between two Contacts
+[**updateContact**](ContactApi.md#updateContact) | **PATCH** /rest/v2/contacts/{contact_id} | Update a Contact
 
 
 
 ## createContact
 
-> Contact createContact(opts)
+> Contact createContact(createUpdateContactRequest, opts)
 
 Create a Contact
 
@@ -30,12 +31,17 @@ Creates a new Contact. *Note:* Contact must contain at least one item in &#x60;e
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.ContactApi();
+let createUpdateContactRequest = new KeapCoreServiceV2Sdk.CreateUpdateContactRequest(); // CreateUpdateContactRequest | 
 let opts = {
-  'createUpdateContactRequest': new KeapCoreServiceV2Sdk.CreateUpdateContactRequest() // CreateUpdateContactRequest | contact
+  'fields': ["null"] // [String] | Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
 };
-apiInstance.createContact(opts).then((data) => {
+apiInstance.createContact(createUpdateContactRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -48,7 +54,8 @@ apiInstance.createContact(opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createUpdateContactRequest** | [**CreateUpdateContactRequest**](CreateUpdateContactRequest.md)| contact | [optional] 
+ **createUpdateContactRequest** | [**CreateUpdateContactRequest**](CreateUpdateContactRequest.md)|  | 
+ **fields** | [**[String]**](String.md)| Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website) | [optional] 
 
 ### Return type
 
@@ -56,7 +63,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -76,9 +83,13 @@ Creates a new type of Contact Link
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.ContactApi();
-let createContactLinkTypeRequest = new KeapCoreServiceV2Sdk.CreateContactLinkTypeRequest(); // CreateContactLinkTypeRequest | request
+let createContactLinkTypeRequest = new KeapCoreServiceV2Sdk.CreateContactLinkTypeRequest(); // CreateContactLinkTypeRequest | 
 apiInstance.createContactLinkType(createContactLinkTypeRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -92,7 +103,7 @@ apiInstance.createContactLinkType(createContactLinkTypeRequest).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createContactLinkTypeRequest** | [**CreateContactLinkTypeRequest**](CreateContactLinkTypeRequest.md)| request | 
+ **createContactLinkTypeRequest** | [**CreateContactLinkTypeRequest**](CreateContactLinkTypeRequest.md)|  | 
 
 ### Return type
 
@@ -100,7 +111,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -120,9 +131,13 @@ Deletes the specified Contact
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.ContactApi();
-let contactId = "contactId_example"; // String | contact_id
+let contactId = "contactId_example"; // String | 
 apiInstance.deleteContact(contactId).then(() => {
   console.log('API called successfully.');
 }, (error) => {
@@ -136,7 +151,7 @@ apiInstance.deleteContact(contactId).then(() => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **contactId** | **String**| contact_id | 
+ **contactId** | **String**|  | 
 
 ### Return type
 
@@ -144,7 +159,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -164,9 +179,13 @@ Retrieves a single Contact
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.ContactApi();
-let contactId = "contactId_example"; // String | contact_id
+let contactId = "contactId_example"; // String | 
 let opts = {
   'fields': ["null"] // [String] | Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
 };
@@ -183,7 +202,7 @@ apiInstance.getContact(contactId, opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **contactId** | **String**| contact_id | 
+ **contactId** | **String**|  | 
  **fields** | [**[String]**](String.md)| Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website) | [optional] 
 
 ### Return type
@@ -192,7 +211,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -212,9 +231,13 @@ Links two Contacts together using the provided Link type
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.ContactApi();
-let linkContactsRequest = new KeapCoreServiceV2Sdk.LinkContactsRequest(); // LinkContactsRequest | linkContactsRequest
+let linkContactsRequest = new KeapCoreServiceV2Sdk.LinkContactsRequest(); // LinkContactsRequest | 
 apiInstance.linkContacts(linkContactsRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -228,7 +251,7 @@ apiInstance.linkContacts(linkContactsRequest).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **linkContactsRequest** | [**LinkContactsRequest**](LinkContactsRequest.md)| linkContactsRequest | 
+ **linkContactsRequest** | [**LinkContactsRequest**](LinkContactsRequest.md)|  | 
 
 ### Return type
 
@@ -236,7 +259,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -256,10 +279,14 @@ Retrieves a list of Contact Link types.
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.ContactApi();
 let opts = {
-  'filter': "filter_example", // String | Filter to apply, allowed fields are: - (String) `name` You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=name%3D%3DexpectedValue` 
+  'filter': "filter_example", // String | Filter to apply, allowed fields are: - (String) `name`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=name%3D%3DexpectedValue` 
   'orderBy': "orderBy_example", // String | Attribute and direction to order items. One of the following fields: - `name` - `max_links` - `create_time`  One of the following directions: - `asc` - `desc` 
   'pageSize': 0, // Number | Total number of items to return per page
   'pageToken': "pageToken_example" // String | Page token
@@ -277,7 +304,7 @@ apiInstance.listContactLinkTypes(opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;name&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3DexpectedValue&#x60;  | [optional] 
+ **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;name&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3DexpectedValue&#x60;  | [optional] 
  **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;max_links&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  | [optional] 
  **pageSize** | **Number**| Total number of items to return per page | [optional] 
  **pageToken** | **String**| Page token | [optional] 
@@ -288,7 +315,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -308,9 +335,13 @@ Retrieves a list of Linked Contacts for a given Contact
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.ContactApi();
-let contactId = "contactId_example"; // String | contact_id
+let contactId = "contactId_example"; // String | 
 apiInstance.listContactLinks(contactId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -324,7 +355,7 @@ apiInstance.listContactLinks(contactId).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **contactId** | **String**| contact_id | 
+ **contactId** | **String**|  | 
 
 ### Return type
 
@@ -332,7 +363,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -352,6 +383,10 @@ Retrieves a list of Contacts
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.ContactApi();
 let opts = {
@@ -386,7 +421,65 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## listTagsForContact
+
+> ListContactTagsResponse listTagsForContact(contactId, opts)
+
+List Applied Tags
+
+Retrieves a list of tags applied to the specified Contact
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new KeapCoreServiceV2Sdk.ContactApi();
+let contactId = "contactId_example"; // String | Contact identifier
+let opts = {
+  'filter': "filter_example", // String | Filter to apply, allowed fields are: - (String) `name` - (String) `description` - (String) `category_id` (use `category_id==NONE` to filter tags not assigned to any category) - (String) `since_applied_time` - (String) `until_applied_time` - (String) `since_create_time` - (String) `until_create_time` - (String) `since_update_time` - (String) `until_update_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=name%3D%3DCustomer` - `filter=category_id%3D%3D123` - `filter=category_id%3D%3DNONE` - `filter=since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;` 
+  'pageToken': "pageToken_example", // String | Page token
+  'orderBy': "orderBy_example", // String | Attribute and direction to order items. One of the following fields: - `name` - `create_time` - `update_time` - `applied_time` - `category_id` One of the following directions: - `asc` - `desc`
+  'pageSize': 0 // Number | Total number of items to return per page
+};
+apiInstance.listTagsForContact(contactId, opts).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **contactId** | **String**| Contact identifier | 
+ **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (String) &#x60;description&#x60; - (String) &#x60;category_id&#x60; (use &#x60;category_id&#x3D;&#x3D;NONE&#x60; to filter tags not assigned to any category) - (String) &#x60;since_applied_time&#x60; - (String) &#x60;until_applied_time&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3DCustomer&#x60; - &#x60;filter&#x3D;category_id%3D%3D123&#x60; - &#x60;filter&#x3D;category_id%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  | [optional] 
+ **pageToken** | **String**| Page token | [optional] 
+ **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60; - &#x60;applied_time&#x60; - &#x60;category_id&#x60; One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] 
+ **pageSize** | **Number**| Total number of items to return per page | [optional] 
+
+### Return type
+
+[**ListContactTagsResponse**](ListContactTagsResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -406,6 +499,10 @@ Get the custom fields and optional properties for the Contact object
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.ContactApi();
 apiInstance.retrieveContactModel().then((data) => {
@@ -426,7 +523,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -446,9 +543,13 @@ Deletes Link between two Contacts
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.ContactApi();
-let linkContactsRequest = new KeapCoreServiceV2Sdk.LinkContactsRequest(); // LinkContactsRequest | linkContactsRequest
+let linkContactsRequest = new KeapCoreServiceV2Sdk.LinkContactsRequest(); // LinkContactsRequest | 
 apiInstance.unlinkContacts(linkContactsRequest).then(() => {
   console.log('API called successfully.');
 }, (error) => {
@@ -462,7 +563,7 @@ apiInstance.unlinkContacts(linkContactsRequest).then(() => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **linkContactsRequest** | [**LinkContactsRequest**](LinkContactsRequest.md)| linkContactsRequest | 
+ **linkContactsRequest** | [**LinkContactsRequest**](LinkContactsRequest.md)|  | 
 
 ### Return type
 
@@ -470,7 +571,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -480,7 +581,7 @@ No authorization required
 
 ## updateContact
 
-> Contact updateContact(contactId, opts)
+> Contact updateContact(contactId, createUpdateContactRequest, opts)
 
 Update a Contact
 
@@ -490,14 +591,19 @@ Updates a Contact
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.ContactApi();
-let contactId = "contactId_example"; // String | contact_id
+let contactId = "contactId_example"; // String | 
+let createUpdateContactRequest = new KeapCoreServiceV2Sdk.CreateUpdateContactRequest(); // CreateUpdateContactRequest | 
 let opts = {
-  'updateMask': ["null"], // [String] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-  'createUpdateContactRequest': new KeapCoreServiceV2Sdk.CreateUpdateContactRequest() // CreateUpdateContactRequest | contact
+  'updateMask': "updateMask_example", // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+  'fields': ["null"] // [String] | Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
 };
-apiInstance.updateContact(contactId, opts).then((data) => {
+apiInstance.updateContact(contactId, createUpdateContactRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -510,9 +616,10 @@ apiInstance.updateContact(contactId, opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **contactId** | **String**| contact_id | 
- **updateMask** | [**[String]**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
- **createUpdateContactRequest** | [**CreateUpdateContactRequest**](CreateUpdateContactRequest.md)| contact | [optional] 
+ **contactId** | **String**|  | 
+ **createUpdateContactRequest** | [**CreateUpdateContactRequest**](CreateUpdateContactRequest.md)|  | 
+ **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **fields** | [**[String]**](String.md)| Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website) | [optional] 
 
 ### Return type
 
@@ -520,7 +627,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 

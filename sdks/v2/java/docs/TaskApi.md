@@ -1,27 +1,27 @@
 # TaskApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createTask**](TaskApi.md#createTask) | **POST** /v2/tasks | Create a Task |
-| [**createTaskWithHttpInfo**](TaskApi.md#createTaskWithHttpInfo) | **POST** /v2/tasks | Create a Task |
-| [**createTaskCustomField**](TaskApi.md#createTaskCustomField) | **POST** /v2/tasks/model/customFields | Create a Custom Field |
-| [**createTaskCustomFieldWithHttpInfo**](TaskApi.md#createTaskCustomFieldWithHttpInfo) | **POST** /v2/tasks/model/customFields | Create a Custom Field |
-| [**deleteTask**](TaskApi.md#deleteTask) | **DELETE** /v2/tasks/{task_id} | Delete a Task |
-| [**deleteTaskWithHttpInfo**](TaskApi.md#deleteTaskWithHttpInfo) | **DELETE** /v2/tasks/{task_id} | Delete a Task |
-| [**deleteTaskCustomField**](TaskApi.md#deleteTaskCustomField) | **DELETE** /v2/tasks/model/customFields/{custom_field_id} | Delete a Custom Field |
-| [**deleteTaskCustomFieldWithHttpInfo**](TaskApi.md#deleteTaskCustomFieldWithHttpInfo) | **DELETE** /v2/tasks/model/customFields/{custom_field_id} | Delete a Custom Field |
-| [**getTask**](TaskApi.md#getTask) | **GET** /v2/tasks/{task_id} | Retrieve a Task |
-| [**getTaskWithHttpInfo**](TaskApi.md#getTaskWithHttpInfo) | **GET** /v2/tasks/{task_id} | Retrieve a Task |
-| [**listTasks**](TaskApi.md#listTasks) | **GET** /v2/tasks | List Tasks |
-| [**listTasksWithHttpInfo**](TaskApi.md#listTasksWithHttpInfo) | **GET** /v2/tasks | List Tasks |
-| [**retrieveTaskModel**](TaskApi.md#retrieveTaskModel) | **GET** /v2/tasks/model | Retrieve Task Model |
-| [**retrieveTaskModelWithHttpInfo**](TaskApi.md#retrieveTaskModelWithHttpInfo) | **GET** /v2/tasks/model | Retrieve Task Model |
-| [**updateTask**](TaskApi.md#updateTask) | **PATCH** /v2/tasks/{task_id} | Update a Task |
-| [**updateTaskWithHttpInfo**](TaskApi.md#updateTaskWithHttpInfo) | **PATCH** /v2/tasks/{task_id} | Update a Task |
-| [**updateTaskCustomField**](TaskApi.md#updateTaskCustomField) | **PATCH** /v2/tasks/model/customFields/{custom_field_id} | Update a Task&#39;s Custom Field |
-| [**updateTaskCustomFieldWithHttpInfo**](TaskApi.md#updateTaskCustomFieldWithHttpInfo) | **PATCH** /v2/tasks/model/customFields/{custom_field_id} | Update a Task&#39;s Custom Field |
+| [**createTask**](TaskApi.md#createTask) | **POST** /rest/v2/tasks | Create a Task |
+| [**createTaskWithHttpInfo**](TaskApi.md#createTaskWithHttpInfo) | **POST** /rest/v2/tasks | Create a Task |
+| [**createTaskCustomField**](TaskApi.md#createTaskCustomField) | **POST** /rest/v2/tasks/model/customFields | Create a Custom Field |
+| [**createTaskCustomFieldWithHttpInfo**](TaskApi.md#createTaskCustomFieldWithHttpInfo) | **POST** /rest/v2/tasks/model/customFields | Create a Custom Field |
+| [**deleteTask**](TaskApi.md#deleteTask) | **DELETE** /rest/v2/tasks/{task_id} | Delete a Task |
+| [**deleteTaskWithHttpInfo**](TaskApi.md#deleteTaskWithHttpInfo) | **DELETE** /rest/v2/tasks/{task_id} | Delete a Task |
+| [**deleteTaskCustomField**](TaskApi.md#deleteTaskCustomField) | **DELETE** /rest/v2/tasks/model/customFields/{custom_field_id} | Delete a Custom Field |
+| [**deleteTaskCustomFieldWithHttpInfo**](TaskApi.md#deleteTaskCustomFieldWithHttpInfo) | **DELETE** /rest/v2/tasks/model/customFields/{custom_field_id} | Delete a Custom Field |
+| [**getTask**](TaskApi.md#getTask) | **GET** /rest/v2/tasks/{task_id} | Retrieve a Task |
+| [**getTaskWithHttpInfo**](TaskApi.md#getTaskWithHttpInfo) | **GET** /rest/v2/tasks/{task_id} | Retrieve a Task |
+| [**listTasks**](TaskApi.md#listTasks) | **GET** /rest/v2/tasks | List Tasks |
+| [**listTasksWithHttpInfo**](TaskApi.md#listTasksWithHttpInfo) | **GET** /rest/v2/tasks | List Tasks |
+| [**retrieveTaskModel**](TaskApi.md#retrieveTaskModel) | **GET** /rest/v2/tasks/model | Retrieve Task Model |
+| [**retrieveTaskModelWithHttpInfo**](TaskApi.md#retrieveTaskModelWithHttpInfo) | **GET** /rest/v2/tasks/model | Retrieve Task Model |
+| [**updateTask**](TaskApi.md#updateTask) | **PATCH** /rest/v2/tasks/{task_id} | Update a Task |
+| [**updateTaskWithHttpInfo**](TaskApi.md#updateTaskWithHttpInfo) | **PATCH** /rest/v2/tasks/{task_id} | Update a Task |
+| [**updateTaskCustomField**](TaskApi.md#updateTaskCustomField) | **PATCH** /rest/v2/tasks/model/customFields/{custom_field_id} | Update a Task&#39;s Custom Field |
+| [**updateTaskCustomFieldWithHttpInfo**](TaskApi.md#updateTaskCustomFieldWithHttpInfo) | **PATCH** /rest/v2/tasks/model/customFields/{custom_field_id} | Update a Task&#39;s Custom Field |
 
 
 
@@ -40,16 +40,21 @@ Creates a new task as the authenticated user.   This endpoint does not currently
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.TaskApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         TaskApi apiInstance = new TaskApi(defaultClient);
-        CreateTaskRequest createTaskRequest = new CreateTaskRequest(); // CreateTaskRequest | task
+        CreateTaskRequest createTaskRequest = new CreateTaskRequest(); // CreateTaskRequest | 
         try {
             Task result = apiInstance.createTask(createTaskRequest);
             System.out.println(result);
@@ -69,7 +74,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **createTaskRequest** | [**CreateTaskRequest**](CreateTaskRequest.md)| task | [optional] |
+| **createTaskRequest** | [**CreateTaskRequest**](CreateTaskRequest.md)|  | |
 
 ### Return type
 
@@ -78,7 +83,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -89,9 +94,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## createTaskWithHttpInfo
 
@@ -109,16 +118,21 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.TaskApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         TaskApi apiInstance = new TaskApi(defaultClient);
-        CreateTaskRequest createTaskRequest = new CreateTaskRequest(); // CreateTaskRequest | task
+        CreateTaskRequest createTaskRequest = new CreateTaskRequest(); // CreateTaskRequest | 
         try {
             ApiResponse<Task> response = apiInstance.createTaskWithHttpInfo(createTaskRequest);
             System.out.println("Status code: " + response.getStatusCode());
@@ -140,7 +154,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **createTaskRequest** | [**CreateTaskRequest**](CreateTaskRequest.md)| task | [optional] |
+| **createTaskRequest** | [**CreateTaskRequest**](CreateTaskRequest.md)|  | |
 
 ### Return type
 
@@ -149,7 +163,7 @@ ApiResponse<[**Task**](Task.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -160,9 +174,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## createTaskCustomField
@@ -180,16 +198,21 @@ Creates a custom field of the specified type and options to the Task object&lt;b
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.TaskApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         TaskApi apiInstance = new TaskApi(defaultClient);
-        CreateCustomFieldRequest createCustomFieldRequest = new CreateCustomFieldRequest(); // CreateCustomFieldRequest | customField
+        CreateCustomFieldRequest createCustomFieldRequest = new CreateCustomFieldRequest(); // CreateCustomFieldRequest | 
         try {
             CreateCustomFieldResponse result = apiInstance.createTaskCustomField(createCustomFieldRequest);
             System.out.println(result);
@@ -209,7 +232,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **createCustomFieldRequest** | [**CreateCustomFieldRequest**](CreateCustomFieldRequest.md)| customField | |
+| **createCustomFieldRequest** | [**CreateCustomFieldRequest**](CreateCustomFieldRequest.md)|  | |
 
 ### Return type
 
@@ -218,7 +241,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -229,9 +252,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## createTaskCustomFieldWithHttpInfo
 
@@ -249,16 +276,21 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.TaskApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         TaskApi apiInstance = new TaskApi(defaultClient);
-        CreateCustomFieldRequest createCustomFieldRequest = new CreateCustomFieldRequest(); // CreateCustomFieldRequest | customField
+        CreateCustomFieldRequest createCustomFieldRequest = new CreateCustomFieldRequest(); // CreateCustomFieldRequest | 
         try {
             ApiResponse<CreateCustomFieldResponse> response = apiInstance.createTaskCustomFieldWithHttpInfo(createCustomFieldRequest);
             System.out.println("Status code: " + response.getStatusCode());
@@ -280,7 +312,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **createCustomFieldRequest** | [**CreateCustomFieldRequest**](CreateCustomFieldRequest.md)| customField | |
+| **createCustomFieldRequest** | [**CreateCustomFieldRequest**](CreateCustomFieldRequest.md)|  | |
 
 ### Return type
 
@@ -289,7 +321,7 @@ ApiResponse<[**CreateCustomFieldResponse**](CreateCustomFieldResponse.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -300,9 +332,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## deleteTask
@@ -320,16 +356,21 @@ Deletes a single task
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.TaskApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         TaskApi apiInstance = new TaskApi(defaultClient);
-        String taskId = "taskId_example"; // String | task_id
+        String taskId = "taskId_example"; // String | 
         try {
             apiInstance.deleteTask(taskId);
         } catch (ApiException e) {
@@ -348,7 +389,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **taskId** | **String**| task_id | |
+| **taskId** | **String**|  | |
 
 ### Return type
 
@@ -357,7 +398,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -368,10 +409,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## deleteTaskWithHttpInfo
 
@@ -389,16 +433,21 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.TaskApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         TaskApi apiInstance = new TaskApi(defaultClient);
-        String taskId = "taskId_example"; // String | task_id
+        String taskId = "taskId_example"; // String | 
         try {
             ApiResponse<Void> response = apiInstance.deleteTaskWithHttpInfo(taskId);
             System.out.println("Status code: " + response.getStatusCode());
@@ -419,7 +468,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **taskId** | **String**| task_id | |
+| **taskId** | **String**|  | |
 
 ### Return type
 
@@ -428,7 +477,7 @@ ApiResponse<Void>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -439,10 +488,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## deleteTaskCustomField
@@ -460,16 +512,21 @@ Deletes a Custom Field from the Task object&lt;br/&gt;Note: Custom Fields for Ta
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.TaskApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         TaskApi apiInstance = new TaskApi(defaultClient);
-        String customFieldId = "customFieldId_example"; // String | custom_field_id
+        String customFieldId = "customFieldId_example"; // String | 
         try {
             apiInstance.deleteTaskCustomField(customFieldId);
         } catch (ApiException e) {
@@ -488,7 +545,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customFieldId** | **String**| custom_field_id | |
+| **customFieldId** | **String**|  | |
 
 ### Return type
 
@@ -497,7 +554,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -508,10 +565,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## deleteTaskCustomFieldWithHttpInfo
 
@@ -529,16 +589,21 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.TaskApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         TaskApi apiInstance = new TaskApi(defaultClient);
-        String customFieldId = "customFieldId_example"; // String | custom_field_id
+        String customFieldId = "customFieldId_example"; // String | 
         try {
             ApiResponse<Void> response = apiInstance.deleteTaskCustomFieldWithHttpInfo(customFieldId);
             System.out.println("Status code: " + response.getStatusCode());
@@ -559,7 +624,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customFieldId** | **String**| custom_field_id | |
+| **customFieldId** | **String**|  | |
 
 ### Return type
 
@@ -568,7 +633,7 @@ ApiResponse<Void>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -579,10 +644,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## getTask
@@ -600,16 +668,21 @@ Retrieves a single task
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.TaskApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         TaskApi apiInstance = new TaskApi(defaultClient);
-        String taskId = "taskId_example"; // String | task_id
+        String taskId = "taskId_example"; // String | 
         try {
             Task result = apiInstance.getTask(taskId);
             System.out.println(result);
@@ -629,7 +702,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **taskId** | **String**| task_id | |
+| **taskId** | **String**|  | |
 
 ### Return type
 
@@ -638,7 +711,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -649,10 +722,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## getTaskWithHttpInfo
 
@@ -670,16 +746,21 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.TaskApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         TaskApi apiInstance = new TaskApi(defaultClient);
-        String taskId = "taskId_example"; // String | task_id
+        String taskId = "taskId_example"; // String | 
         try {
             ApiResponse<Task> response = apiInstance.getTaskWithHttpInfo(taskId);
             System.out.println("Status code: " + response.getStatusCode());
@@ -701,7 +782,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **taskId** | **String**| task_id | |
+| **taskId** | **String**|  | |
 
 ### Return type
 
@@ -710,7 +791,7 @@ ApiResponse<[**Task**](Task.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -721,10 +802,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## listTasks
@@ -742,16 +826,21 @@ Retrieves a list of tasks based on the provided filter. Tasks which are not assi
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.TaskApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         TaskApi apiInstance = new TaskApi(defaultClient);
-        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `contact_id` - (String) `has_due_date` - (String) `is_completed` - (String) `user_id` - (String) `task_ids` - (String) `since_time` - (String) `until_time` You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=has_due_date%3D%3Dtrue` - `filter=is_completed%3D%3Dtrue` - `filter=user_id%3D%3D321` - `filter=task_ids%3D%3D1,2,3` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;` 
+        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `contact_id` - (String) `has_due_date` - (String) `is_completed` - (String) `user_id` - (String) `task_ids` - (String) `since_time` - (String) `until_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=has_due_date%3D%3Dtrue` - `filter=is_completed%3D%3Dtrue` - `filter=user_id%3D%3D321` - `filter=task_ids%3D%3D1,2,3` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;` 
         String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `due_time`  One of the following directions: - `asc` - `desc`
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
@@ -774,7 +863,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;has_due_date&#x60; - (String) &#x60;is_completed&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;task_ids&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;has_due_date%3D%3Dtrue&#x60; - &#x60;filter&#x3D;is_completed%3D%3Dtrue&#x60; - &#x60;filter&#x3D;user_id%3D%3D321&#x60; - &#x60;filter&#x3D;task_ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  | [optional] |
+| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;has_due_date&#x60; - (String) &#x60;is_completed&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;task_ids&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;has_due_date%3D%3Dtrue&#x60; - &#x60;filter&#x3D;is_completed%3D%3Dtrue&#x60; - &#x60;filter&#x3D;user_id%3D%3D321&#x60; - &#x60;filter&#x3D;task_ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  | [optional] |
 | **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;due_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **pageSize** | **Integer**| Total number of items to return per page | [optional] |
 | **pageToken** | **String**| Page token | [optional] |
@@ -786,7 +875,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -797,10 +886,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## listTasksWithHttpInfo
 
@@ -818,16 +910,21 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.TaskApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         TaskApi apiInstance = new TaskApi(defaultClient);
-        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `contact_id` - (String) `has_due_date` - (String) `is_completed` - (String) `user_id` - (String) `task_ids` - (String) `since_time` - (String) `until_time` You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=has_due_date%3D%3Dtrue` - `filter=is_completed%3D%3Dtrue` - `filter=user_id%3D%3D321` - `filter=task_ids%3D%3D1,2,3` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;` 
+        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `contact_id` - (String) `has_due_date` - (String) `is_completed` - (String) `user_id` - (String) `task_ids` - (String) `since_time` - (String) `until_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=has_due_date%3D%3Dtrue` - `filter=is_completed%3D%3Dtrue` - `filter=user_id%3D%3D321` - `filter=task_ids%3D%3D1,2,3` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;` 
         String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `due_time`  One of the following directions: - `asc` - `desc`
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
@@ -852,7 +949,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;has_due_date&#x60; - (String) &#x60;is_completed&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;task_ids&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;has_due_date%3D%3Dtrue&#x60; - &#x60;filter&#x3D;is_completed%3D%3Dtrue&#x60; - &#x60;filter&#x3D;user_id%3D%3D321&#x60; - &#x60;filter&#x3D;task_ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  | [optional] |
+| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;has_due_date&#x60; - (String) &#x60;is_completed&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;task_ids&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;has_due_date%3D%3Dtrue&#x60; - &#x60;filter&#x3D;is_completed%3D%3Dtrue&#x60; - &#x60;filter&#x3D;user_id%3D%3D321&#x60; - &#x60;filter&#x3D;task_ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  | [optional] |
 | **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;due_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **pageSize** | **Integer**| Total number of items to return per page | [optional] |
 | **pageToken** | **String**| Page token | [optional] |
@@ -864,7 +961,7 @@ ApiResponse<[**ListTasksResponse**](ListTasksResponse.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -875,10 +972,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## retrieveTaskModel
@@ -896,13 +996,18 @@ Get the custom fields for the Task object&lt;br/&gt;Note: Custom Fields for Task
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.TaskApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         TaskApi apiInstance = new TaskApi(defaultClient);
         try {
@@ -930,7 +1035,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -941,10 +1046,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## retrieveTaskModelWithHttpInfo
 
@@ -962,13 +1070,18 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.TaskApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         TaskApi apiInstance = new TaskApi(defaultClient);
         try {
@@ -998,7 +1111,7 @@ ApiResponse<[**ObjectModel**](ObjectModel.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1009,15 +1122,18 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## updateTask
 
-> UpdateTaskResponse updateTask(taskId, updateMask, createUpdateTaskRequest)
+> UpdateTaskResponse updateTask(taskId, createUpdateTaskRequest, updateMask)
 
 Update a Task
 
@@ -1030,20 +1146,25 @@ Updates a task with only the values provided in the request.  This endpoint does
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.TaskApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         TaskApi apiInstance = new TaskApi(defaultClient);
-        String taskId = "taskId_example"; // String | task_id
-        List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        CreateUpdateTaskRequest createUpdateTaskRequest = new CreateUpdateTaskRequest(); // CreateUpdateTaskRequest | task
+        String taskId = "taskId_example"; // String | 
+        CreateUpdateTaskRequest createUpdateTaskRequest = new CreateUpdateTaskRequest(); // CreateUpdateTaskRequest | 
+        String updateMask = "id,title,description,type,priority,completion_time, due_time,remind_time_mins,assigned_to_user_id,contact_id,completed"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
-            UpdateTaskResponse result = apiInstance.updateTask(taskId, updateMask, createUpdateTaskRequest);
+            UpdateTaskResponse result = apiInstance.updateTask(taskId, createUpdateTaskRequest, updateMask);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling TaskApi#updateTask");
@@ -1061,9 +1182,10 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **taskId** | **String**| task_id | |
-| **updateMask** | [**List&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: id, title, description, type, priority, completion_time, due_time, remind_time_mins, assigned_to_user_id, contact_id, completed] |
-| **createUpdateTaskRequest** | [**CreateUpdateTaskRequest**](CreateUpdateTaskRequest.md)| task | [optional] |
+| **taskId** | **String**|  | |
+| **createUpdateTaskRequest** | [**CreateUpdateTaskRequest**](CreateUpdateTaskRequest.md)|  | |
+| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: id,title,description,type,priority,completion_time,
+due_time,remind_time_mins,assigned_to_user_id,contact_id,completed] |
 
 ### Return type
 
@@ -1072,7 +1194,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1083,14 +1205,17 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## updateTaskWithHttpInfo
 
-> ApiResponse<UpdateTaskResponse> updateTask updateTaskWithHttpInfo(taskId, updateMask, createUpdateTaskRequest)
+> ApiResponse<UpdateTaskResponse> updateTask updateTaskWithHttpInfo(taskId, createUpdateTaskRequest, updateMask)
 
 Update a Task
 
@@ -1104,20 +1229,25 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.TaskApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         TaskApi apiInstance = new TaskApi(defaultClient);
-        String taskId = "taskId_example"; // String | task_id
-        List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        CreateUpdateTaskRequest createUpdateTaskRequest = new CreateUpdateTaskRequest(); // CreateUpdateTaskRequest | task
+        String taskId = "taskId_example"; // String | 
+        CreateUpdateTaskRequest createUpdateTaskRequest = new CreateUpdateTaskRequest(); // CreateUpdateTaskRequest | 
+        String updateMask = "id,title,description,type,priority,completion_time, due_time,remind_time_mins,assigned_to_user_id,contact_id,completed"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
-            ApiResponse<UpdateTaskResponse> response = apiInstance.updateTaskWithHttpInfo(taskId, updateMask, createUpdateTaskRequest);
+            ApiResponse<UpdateTaskResponse> response = apiInstance.updateTaskWithHttpInfo(taskId, createUpdateTaskRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -1137,9 +1267,10 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **taskId** | **String**| task_id | |
-| **updateMask** | [**List&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: id, title, description, type, priority, completion_time, due_time, remind_time_mins, assigned_to_user_id, contact_id, completed] |
-| **createUpdateTaskRequest** | [**CreateUpdateTaskRequest**](CreateUpdateTaskRequest.md)| task | [optional] |
+| **taskId** | **String**|  | |
+| **createUpdateTaskRequest** | [**CreateUpdateTaskRequest**](CreateUpdateTaskRequest.md)|  | |
+| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: id,title,description,type,priority,completion_time,
+due_time,remind_time_mins,assigned_to_user_id,contact_id,completed] |
 
 ### Return type
 
@@ -1148,7 +1279,7 @@ ApiResponse<[**UpdateTaskResponse**](UpdateTaskResponse.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1159,10 +1290,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## updateTaskCustomField
@@ -1180,18 +1314,23 @@ Updates a custom field of the specified type and options to the Task object.&lt;
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.TaskApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         TaskApi apiInstance = new TaskApi(defaultClient);
-        String customFieldId = "customFieldId_example"; // String | custom_field_id
-        UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest = new UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | request
-        List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        String customFieldId = "customFieldId_example"; // String | 
+        UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest = new UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | 
+        String updateMask = "group_id,label,options"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             CustomFieldMetaData result = apiInstance.updateTaskCustomField(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
             System.out.println(result);
@@ -1211,9 +1350,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customFieldId** | **String**| custom_field_id | |
-| **updateCustomFieldMetaDataRequest** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md)| request | |
-| **updateMask** | [**List&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: group_id, label, options] |
+| **customFieldId** | **String**|  | |
+| **updateCustomFieldMetaDataRequest** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md)|  | |
+| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: group_id,label,options] |
 
 ### Return type
 
@@ -1222,7 +1361,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1233,10 +1372,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## updateTaskCustomFieldWithHttpInfo
 
@@ -1254,18 +1396,23 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.TaskApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         TaskApi apiInstance = new TaskApi(defaultClient);
-        String customFieldId = "customFieldId_example"; // String | custom_field_id
-        UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest = new UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | request
-        List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        String customFieldId = "customFieldId_example"; // String | 
+        UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest = new UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | 
+        String updateMask = "group_id,label,options"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ApiResponse<CustomFieldMetaData> response = apiInstance.updateTaskCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
@@ -1287,9 +1434,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customFieldId** | **String**| custom_field_id | |
-| **updateCustomFieldMetaDataRequest** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md)| request | |
-| **updateMask** | [**List&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: group_id, label, options] |
+| **customFieldId** | **String**|  | |
+| **updateCustomFieldMetaDataRequest** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md)|  | |
+| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: group_id,label,options] |
 
 ### Return type
 
@@ -1298,7 +1445,7 @@ ApiResponse<[**CustomFieldMetaData**](CustomFieldMetaData.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1309,8 +1456,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 

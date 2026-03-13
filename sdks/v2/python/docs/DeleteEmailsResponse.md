@@ -1,11 +1,12 @@
 # DeleteEmailsResponse
 
+Response from deleting email records
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**results** | **Dict[str, str]** |  | [optional] 
+**results** | **Dict[str, str]** | Map of email ID to deletion result (SUCCESS, NO_PERMISSION, EMAIL_ID_NOT_FOUND) | [optional] 
 
 ## Example
 

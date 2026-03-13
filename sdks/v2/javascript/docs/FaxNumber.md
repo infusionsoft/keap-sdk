@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**field** | **String** |  | [optional] 
-**number** | **String** |  | [optional] 
-**type** | **String** |  | [optional] 
+**number** | **String** | Fax number | [optional] 
+**type** | **String** | Fax type | [optional] 
+**field** | **String** | Fax number slot | [optional] 
 
 
 

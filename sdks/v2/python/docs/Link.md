@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [optional] 
-**link_type_id** | **str** |  | [optional] 
-**link_type_name** | **str** |  | [optional] 
-**linked_contact_id** | **str** |  | [optional] 
+**id** | **str** | Link ID | [optional] 
+**linked_contact_id** | **str** | ID of the linked contact | [optional] 
+**link_type_id** | **str** | Link type ID | [optional] 
+**link_type_name** | **str** | Link type name | [optional] 
 
 ## Example
 

@@ -1,14 +1,14 @@
 # .SubscriptionPlansApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createSubscriptionPlans**](SubscriptionPlansApi.md#createSubscriptionPlans) | **POST** /v2/products/{product_id}/subscriptions | Create Subscription Plan
-[**deleteSubscriptionPlan**](SubscriptionPlansApi.md#deleteSubscriptionPlan) | **DELETE** /v2/products/{product_id}/subscriptions/{subscription_plan_id} | Delete Subscription Plan
-[**fetchSubscriptionPlan**](SubscriptionPlansApi.md#fetchSubscriptionPlan) | **GET** /v2/products/{product_id}/subscriptions/{subscription_plan_id} | Get Subscription Plan
-[**listSubscriptionPlans**](SubscriptionPlansApi.md#listSubscriptionPlans) | **GET** /v2/products/{product_id}/subscriptions | List Subscription Plans
-[**updateSubscriptionPlan**](SubscriptionPlansApi.md#updateSubscriptionPlan) | **PATCH** /v2/products/{product_id}/subscriptions/{subscription_plan_id} | Update Subscription Plan
+[**createSubscriptionPlans**](SubscriptionPlansApi.md#createSubscriptionPlans) | **POST** /rest/v2/products/{product_id}/subscriptions | Create Subscription Plan
+[**deleteSubscriptionPlan**](SubscriptionPlansApi.md#deleteSubscriptionPlan) | **DELETE** /rest/v2/products/{product_id}/subscriptions/{subscription_plan_id} | Delete Subscription Plan
+[**fetchSubscriptionPlan**](SubscriptionPlansApi.md#fetchSubscriptionPlan) | **GET** /rest/v2/products/{product_id}/subscriptions/{subscription_plan_id} | Get Subscription Plan
+[**listSubscriptionPlans**](SubscriptionPlansApi.md#listSubscriptionPlans) | **GET** /rest/v2/products/{product_id}/subscriptions | List Subscription Plans
+[**updateSubscriptionPlan**](SubscriptionPlansApi.md#updateSubscriptionPlan) | **PATCH** /rest/v2/products/{product_id}/subscriptions/{subscription_plan_id} | Update Subscription Plan
 
 
 # **createSubscriptionPlans**
@@ -27,17 +27,17 @@ const configuration = createConfiguration();
 const apiInstance = new SubscriptionPlansApi(configuration);
 
 const request: SubscriptionPlansApiCreateSubscriptionPlansRequest = {
-    // product_id
+  
   productId: "product_id_example",
-    // createSubscriptionPlanRequest
+  
   createSubscriptionPlanRequest: {
     active: true,
-    allowProrating: true,
-    cycleType: "DAILY",
-    displayOrderIndex: 1,
     frequency: 1,
-    planPrice: 3.14,
-    totalCycles: 1,
+    allowProrating: false,
+    cycleType: "MONTHLY",
+    displayOrderIndex: 0,
+    planPrice: 10000,
+    totalCycles: 12,
   },
 };
 
@@ -50,8 +50,8 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createSubscriptionPlanRequest** | **CreateSubscriptionPlanRequest**| createSubscriptionPlanRequest |
- **productId** | [**string**] | product_id | defaults to undefined
+ **createSubscriptionPlanRequest** | **CreateSubscriptionPlanRequest**|  |
+ **productId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -60,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -72,9 +72,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -119,7 +123,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -131,10 +135,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No Content |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -179,7 +186,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -191,10 +198,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -216,7 +226,7 @@ const apiInstance = new SubscriptionPlansApi(configuration);
 const request: SubscriptionPlansApiListSubscriptionPlansRequest = {
     // product_id
   productId: "'-' can be used for a wildcard (/v2/products/-/subscriptions",
-    // Filter to apply, allowed fields are: - (Boolean) `active`: true or false - (BillingCycle) `cycle_type`: DAILY, WEEKLY, MONTHLY, YEARLY You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=active%3D%3Dtrue` - `filter=cycle_type%3D%3DDAILY` - `filter=active%3D%3Dfalse%3Bcycle_type%3D%3DWEEKLY`  (optional)
+    // Filter to apply, allowed fields are: - (Boolean) `active`: true or false - (BillingCycle) `cycle_type`: DAILY, WEEKLY, MONTHLY, YEARLY  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=active%3D%3Dtrue` - `filter=cycle_type%3D%3DDAILY` - `filter=active%3D%3Dfalse%3Bcycle_type%3D%3DWEEKLY`  (optional)
   filter: "filter_example",
     // Attribute and direction to order items. One of the following fields: - `id` - `product_id`  One of the following directions: - `asc` - `desc`  (optional)
   orderBy: "order_by_example",
@@ -236,7 +246,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **productId** | [**string**] | product_id | defaults to undefined
- **filter** | [**string**] | Filter to apply, allowed fields are: - (Boolean) &#x60;active&#x60;: true or false - (BillingCycle) &#x60;cycle_type&#x60;: DAILY, WEEKLY, MONTHLY, YEARLY You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;active%3D%3Dtrue&#x60; - &#x60;filter&#x3D;cycle_type%3D%3DDAILY&#x60; - &#x60;filter&#x3D;active%3D%3Dfalse%3Bcycle_type%3D%3DWEEKLY&#x60;  | (optional) defaults to undefined
+ **filter** | [**string**] | Filter to apply, allowed fields are: - (Boolean) &#x60;active&#x60;: true or false - (BillingCycle) &#x60;cycle_type&#x60;: DAILY, WEEKLY, MONTHLY, YEARLY  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;active%3D%3Dtrue&#x60; - &#x60;filter&#x3D;cycle_type%3D%3DDAILY&#x60; - &#x60;filter&#x3D;active%3D%3Dfalse%3Bcycle_type%3D%3DWEEKLY&#x60;  | (optional) defaults to undefined
  **orderBy** | [**string**] | Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;product_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  | (optional) defaults to undefined
  **pageSize** | [**number**] | Total number of items to return per page | (optional) defaults to undefined
  **pageToken** | [**string**] | Page token | (optional) defaults to undefined
@@ -248,7 +258,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -260,10 +270,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -287,20 +300,18 @@ const request: SubscriptionPlansApiUpdateSubscriptionPlanRequest = {
   productId: "product_id_example",
     // subscription_plan_id
   subscriptionPlanId: "subscription_plan_id_example",
-    // updateSubscriptionPlanRequest
+  
   updateSubscriptionPlanRequest: {
     active: true,
-    allowProrating: true,
-    cycleType: "DAILY",
-    displayOrderIndex: 1,
     frequency: 1,
-    planPrice: 3.14,
-    totalCycles: 1,
+    allowProrating: false,
+    cycleType: "MONTHLY",
+    displayOrderIndex: 0,
+    planPrice: 10000,
+    totalCycles: 12,
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: [
-    "active",
-  ],
+  updateMask: "active,allow_prorating,cycle_type,display_order_index,frequency,plan_price,total_cycles",
 };
 
 const data = await apiInstance.updateSubscriptionPlan(request);
@@ -312,10 +323,10 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **updateSubscriptionPlanRequest** | **UpdateSubscriptionPlanRequest**| updateSubscriptionPlanRequest |
+ **updateSubscriptionPlanRequest** | **UpdateSubscriptionPlanRequest**|  |
  **productId** | [**string**] | product_id | defaults to undefined
  **subscriptionPlanId** | [**string**] | subscription_plan_id | defaults to undefined
- **updateMask** |  | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | [**&#39;active,allow_prorating,cycle_type,display_order_index,frequency,plan_price,total_cycles&#39;**]**Array<&#39;active,allow_prorating,cycle_type,display_order_index,frequency,plan_price,total_cycles&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
@@ -324,7 +335,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -336,10 +347,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

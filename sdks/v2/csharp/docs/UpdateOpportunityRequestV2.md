@@ -4,19 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AffiliateId** | **string** |  | [optional] 
-**ContactId** | **string** |  | [optional] 
+**OpportunityTitle** | **string** | Opportunity title | [optional] 
+**NextActionTime** | **string** | Next action timestamp (ISO-8601) | [optional] 
+**NextActionNotes** | **string** | Notes for next action | [optional] 
+**OpportunityNotes** | **string** | General notes | [optional] 
+**EstimatedCloseTime** | **string** | Estimated close timestamp (ISO-8601) | [optional] 
+**IncludeInForecast** | **bool** | Include in sales forecast | [optional] 
+**ProjectedRevenueLow** | **double** | Low revenue estimate | [optional] 
+**ProjectedRevenueHigh** | **double** | High revenue estimate | [optional] 
+**ContactId** | **string** | Associated contact ID | [optional] 
+**StageId** | **string** | Pipeline stage ID | [optional] 
+**UserId** | **string** | Assigned user ID | [optional] 
 **CustomFields** | [**List&lt;CustomField&gt;**](CustomField.md) |  | [optional] 
-**EstimatedCloseTime** | **string** |  | [optional] 
-**IncludeInForecast** | **bool** |  | [optional] 
-**NextActionNotes** | **string** |  | [optional] 
-**NextActionTime** | **string** |  | [optional] 
-**OpportunityNotes** | **string** |  | [optional] 
-**OpportunityTitle** | **string** |  | [optional] 
-**ProjectedRevenueHigh** | **double** |  | [optional] 
-**ProjectedRevenueLow** | **double** |  | [optional] 
-**StageId** | **string** |  | [optional] 
-**UserId** | **string** |  | [optional] 
+**AffiliateId** | **string** | Affiliate ID | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

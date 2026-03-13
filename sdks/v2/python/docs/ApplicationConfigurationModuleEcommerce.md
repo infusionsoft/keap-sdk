@@ -5,16 +5,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**credit_card_types** | **str** |  | [optional] 
 **currency** | **str** |  | [optional] 
-**default_charge_max_retry_attempts** | **int** |  | [optional] 
 **default_country** | **str** |  | [optional] 
 **default_merchant** | **str** |  | [optional] 
-**default_number_of_days_between_charge_attempts** | **int** |  | [optional] 
+**credit_card_types** | **str** |  | [optional] 
 **default_tax** | **str** |  | [optional] 
-**default_to_auto_charge** | **bool** |  | [optional] 
-**merchant_account_max_retry_attempts** | **int** |  | [optional] 
 **payment_types** | **str** |  | [optional] 
+**default_to_auto_charge** | **bool** |  | [optional] 
+**default_charge_max_retry_attempts** | **int** |  | [optional] 
+**default_number_of_days_between_charge_attempts** | **int** |  | [optional] 
+**merchant_account_max_retry_attempts** | **int** |  | [optional] 
 **promo_codes** | **str** |  | [optional] 
 **track_cost_per_unit** | **bool** |  | [optional] 
 **track_inventory** | **bool** |  | [optional] 

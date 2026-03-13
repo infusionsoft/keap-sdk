@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**max_links** | **int** |  | [optional] 
-**name** | **str** |  | [optional] 
+**name** | **str** | Link type name | [optional] 
+**max_links** | **int** | Maximum number of links allowed (must be &gt; 0) | [optional] 
 
 ## Example
 

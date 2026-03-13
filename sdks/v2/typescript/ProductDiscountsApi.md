@@ -1,14 +1,14 @@
 # .ProductDiscountsApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createProductDiscount**](ProductDiscountsApi.md#createProductDiscount) | **POST** /v2/discounts/products | Create a Product Discount
-[**deleteProductDiscount**](ProductDiscountsApi.md#deleteProductDiscount) | **DELETE** /v2/discounts/products/{discount_id} | Delete a Product Discount
-[**getProductDiscount**](ProductDiscountsApi.md#getProductDiscount) | **GET** /v2/discounts/products/{discount_id} | Retrieve a Product Discount
-[**listProductDiscounts**](ProductDiscountsApi.md#listProductDiscounts) | **GET** /v2/discounts/products | List all Product Discounts
-[**updateProductDiscount**](ProductDiscountsApi.md#updateProductDiscount) | **PATCH** /v2/discounts/products/{discount_id} | Update a Product Discount
+[**createProductDiscount**](ProductDiscountsApi.md#createProductDiscount) | **POST** /rest/v2/discounts/products | Create a Product Discount
+[**deleteProductDiscount**](ProductDiscountsApi.md#deleteProductDiscount) | **DELETE** /rest/v2/discounts/products/{discount_id} | Delete a Product Discount
+[**getProductDiscount**](ProductDiscountsApi.md#getProductDiscount) | **GET** /rest/v2/discounts/products/{discount_id} | Retrieve a Product Discount
+[**listProductDiscounts**](ProductDiscountsApi.md#listProductDiscounts) | **GET** /rest/v2/discounts/products | List all Product Discounts
+[**updateProductDiscount**](ProductDiscountsApi.md#updateProductDiscount) | **PATCH** /rest/v2/discounts/products/{discount_id} | Update a Product Discount
 
 
 # **createProductDiscount**
@@ -27,30 +27,30 @@ const configuration = createConfiguration();
 const apiInstance = new ProductDiscountsApi(configuration);
 
 const request: ProductDiscountsApiCreateProductDiscountRequest = {
-    // request
+  
   createProductDiscountRequest: {
-    applyToCommissions: true,
+    name: "Summer Sale 20% Off",
+    description: "20% off on all summer products",
     criteria: [
       {
-        code: "code_example",
-        criteriaId: "criteriaId_example",
-        operator: "LESS_THAN",
-        planId: "planId_example",
-        productId: "productId_example",
-        productQuantityMax: 1,
-        productQuantityMin: 1,
-        rangeEndTime: "rangeEndTime_example",
-        rangeStartTime: "rangeStartTime_example",
-        subscriptionQuantity: 1,
-        totalAmount: 3.14,
         type: "DATE_RANGE",
+        code: "SUMMER2024",
+        criteriaId: "501",
+        rangeStartTime: new Date('2024-01-01T00:00:00Z'),
+        rangeEndTime: new Date('2024-12-31T23:59:59Z'),
+        productId: "456",
+        productQuantityMin: 1,
+        productQuantityMax: 10,
+        planId: "789",
+        subscriptionQuantity: 1,
+        totalAmount: 100,
+        operator: "GREATER_THAN",
       },
     ],
-    description: "description_example",
-    discountType: "AMOUNT",
-    discountValue: 3.14,
-    name: "name_example",
-    productId: "productId_example",
+    applyToCommissions: true,
+    productId: "456",
+    discountType: "PERCENT",
+    discountValue: 20,
   },
 };
 
@@ -63,7 +63,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createProductDiscountRequest** | **CreateProductDiscountRequest**| request |
+ **createProductDiscountRequest** | **CreateProductDiscountRequest**|  |
 
 
 ### Return type
@@ -72,7 +72,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -84,9 +84,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -106,7 +110,7 @@ const configuration = createConfiguration();
 const apiInstance = new ProductDiscountsApi(configuration);
 
 const request: ProductDiscountsApiDeleteProductDiscountRequest = {
-    // discount_id
+  
   discountId: "discount_id_example",
 };
 
@@ -119,7 +123,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **discountId** | [**string**] | discount_id | defaults to undefined
+ **discountId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -128,7 +132,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -140,10 +144,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No Content |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -163,7 +170,7 @@ const configuration = createConfiguration();
 const apiInstance = new ProductDiscountsApi(configuration);
 
 const request: ProductDiscountsApiGetProductDiscountRequest = {
-    // discount_id
+  
   discountId: "discount_id_example",
 };
 
@@ -176,7 +183,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **discountId** | [**string**] | discount_id | defaults to undefined
+ **discountId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -185,7 +192,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -197,10 +204,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -251,7 +261,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -263,10 +273,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -286,37 +299,35 @@ const configuration = createConfiguration();
 const apiInstance = new ProductDiscountsApi(configuration);
 
 const request: ProductDiscountsApiUpdateProductDiscountRequest = {
-    // discount_id
+  
   discountId: "discount_id_example",
-    // request
+  
   updateProductDiscountRequest: {
-    applyToCommissions: true,
+    name: "Summer Sale 20% Off",
+    description: "20% off on all summer products",
     criteria: [
       {
-        code: "code_example",
-        criteriaId: "criteriaId_example",
-        operator: "LESS_THAN",
-        planId: "planId_example",
-        productId: "productId_example",
-        productQuantityMax: 1,
-        productQuantityMin: 1,
-        rangeEndTime: "rangeEndTime_example",
-        rangeStartTime: "rangeStartTime_example",
-        subscriptionQuantity: 1,
-        totalAmount: 3.14,
         type: "DATE_RANGE",
+        code: "SUMMER2024",
+        criteriaId: "501",
+        rangeStartTime: new Date('2024-01-01T00:00:00Z'),
+        rangeEndTime: new Date('2024-12-31T23:59:59Z'),
+        productId: "456",
+        productQuantityMin: 1,
+        productQuantityMax: 10,
+        planId: "789",
+        subscriptionQuantity: 1,
+        totalAmount: 100,
+        operator: "GREATER_THAN",
       },
     ],
-    description: "description_example",
-    discountType: "AMOUNT",
-    discountValue: 3.14,
-    name: "name_example",
-    productId: "productId_example",
+    applyToCommissions: true,
+    productId: "456",
+    discountType: "PERCENT",
+    discountValue: 20,
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: [
-    "name",
-  ],
+  updateMask: "name,description,apply_to_commissions,discount_type,discount_value,product_id,criteria",
 };
 
 const data = await apiInstance.updateProductDiscount(request);
@@ -328,9 +339,9 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **updateProductDiscountRequest** | **UpdateProductDiscountRequest**| request |
- **discountId** | [**string**] | discount_id | defaults to undefined
- **updateMask** |  | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateProductDiscountRequest** | **UpdateProductDiscountRequest**|  |
+ **discountId** | [**string**] |  | defaults to undefined
+ **updateMask** | [**&#39;name,description,apply_to_commissions,discount_type,discount_value,product_id,criteria&#39;**]**Array<&#39;name,description,apply_to_commissions,discount_type,discount_value,product_id,criteria&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
@@ -339,7 +350,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -351,10 +362,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

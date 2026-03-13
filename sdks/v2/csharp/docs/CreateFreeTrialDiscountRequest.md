@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Criteria** | [**List&lt;DiscountCriteria&gt;**](DiscountCriteria.md) |  | [optional] 
-**Description** | **string** |  | [optional] 
-**FreeTrialDays** | **int** | The number of free trial days. Must be a positive number. Defaults to 0. | [optional] 
-**HidePrice** | **bool** |  | [optional] 
-**Name** | **string** |  | 
-**SubscriptionPlanId** | **string** |  | 
+**Name** | **string** | Name of the discount | 
+**Description** | **string** | Description of the discount | [optional] 
+**Criteria** | [**List&lt;DiscountCriteria&gt;**](DiscountCriteria.md) | List of criteria that must be met for this discount to apply | [optional] 
+**HidePrice** | **bool** | Whether to hide the price during the trial period | [optional] 
+**SubscriptionPlanId** | **string** | ID of the subscription plan this trial applies to | 
+**FreeTrialDays** | **int** | Number of free trial days. Must be a positive number. Defaults to 0. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

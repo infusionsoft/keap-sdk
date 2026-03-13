@@ -1,11 +1,11 @@
 # Keap\Core\V2\BusinessProfileApi
 
-All URIs are relative to https://api.keap.com/crm/rest, except if the operation defines another base path.
+All URIs are relative to https://api.keap.com/crm, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**getBusinessProfile()**](BusinessProfileApi.md#getBusinessProfile) | **GET** /v2/businessProfile | Retrieve Business Profile |
-| [**updateBusinessProfile()**](BusinessProfileApi.md#updateBusinessProfile) | **PATCH** /v2/businessProfile | Update Business Profile |
+| [**getBusinessProfile()**](BusinessProfileApi.md#getBusinessProfile) | **GET** /rest/v2/businessProfile | Retrieve Business Profile |
+| [**updateBusinessProfile()**](BusinessProfileApi.md#updateBusinessProfile) | **PATCH** /rest/v2/businessProfile | Update Business Profile |
 
 
 ## `getBusinessProfile()`
@@ -25,10 +25,14 @@ Retrieves Business Profile information.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\BusinessProfileApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 
 try {
@@ -49,7 +53,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -63,7 +67,7 @@ No authorization required
 ## `updateBusinessProfile()`
 
 ```php
-updateBusinessProfile($update_mask, $update_business_profile_request): \Keap\Core\V2\Model\GetBusinessProfileResponse
+updateBusinessProfile($update_business_profile_request, $update_mask): \Keap\Core\V2\Model\GetBusinessProfileResponse
 ```
 
 Update Business Profile
@@ -77,16 +81,20 @@ Updates Business Profile information.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\BusinessProfileApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-$update_business_profile_request = new \Keap\Core\V2\Model\UpdateBusinessProfileRequest(); // \Keap\Core\V2\Model\UpdateBusinessProfileRequest | businessProfile
+$update_business_profile_request = new \Keap\Core\V2\Model\UpdateBusinessProfileRequest(); // \Keap\Core\V2\Model\UpdateBusinessProfileRequest
+$update_mask = 'update_mask_example'; // string | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
-    $result = $apiInstance->updateBusinessProfile($update_mask, $update_business_profile_request);
+    $result = $apiInstance->updateBusinessProfile($update_business_profile_request, $update_mask);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BusinessProfileApi->updateBusinessProfile: ', $e->getMessage(), PHP_EOL;
@@ -97,8 +105,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **update_mask** | [**string[]**](../Model/string.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
-| **update_business_profile_request** | [**\Keap\Core\V2\Model\UpdateBusinessProfileRequest**](../Model/UpdateBusinessProfileRequest.md)| businessProfile | [optional] |
+| **update_business_profile_request** | [**\Keap\Core\V2\Model\UpdateBusinessProfileRequest**](../Model/UpdateBusinessProfileRequest.md)|  | |
+| **update_mask** | **string**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -106,7 +114,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 

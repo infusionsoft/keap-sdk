@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**nextPageToken** | **String** |  | [optional] 
 **tagCategories** | [**[TagCategory]**](TagCategory.md) |  | [optional] 
+**nextPageToken** | **String** |  | [optional] 
 
 

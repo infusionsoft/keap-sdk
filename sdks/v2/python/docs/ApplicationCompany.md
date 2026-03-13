@@ -5,19 +5,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**caller_id_number** | **str** |  | [optional] 
-**city** | **str** |  | [optional] 
+**name** | **str** |  | [optional] 
 **country** | **str** |  | [optional] 
 **email** | **str** |  | [optional] 
-**name** | **str** |  | [optional] 
-**phone** | **str** |  | [optional] 
-**phone_ext** | **str** |  | [optional] 
+**city** | **str** |  | [optional] 
 **state** | **str** |  | [optional] 
+**zip** | **str** |  | [optional] 
+**phone** | **str** |  | [optional] 
+**website** | **str** |  | [optional] 
 **street_address_1** | **str** |  | [optional] 
 **street_address_2** | **str** |  | [optional] 
+**phone_ext** | **str** |  | [optional] 
+**caller_id_number** | **str** |  | [optional] 
 **web_logo_url** | **str** |  | [optional] 
-**website** | **str** |  | [optional] 
-**zip** | **str** |  | [optional] 
 
 ## Example
 

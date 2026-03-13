@@ -6,11 +6,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **keap_source_id** | **str** | The formId | 
+**utm_source** | **str** | UTM source information | [optional] 
+**utm_medium** | **str** | UTM medium information | [optional] 
+**utm_term** | **str** | UTM term information | [optional] 
 **utm_campaign** | **str** | UTM campaign information | [optional] 
 **utm_content** | **str** | UTM content information | [optional] 
-**utm_medium** | **str** | UTM medium information | [optional] 
-**utm_source** | **str** | UTM source information | [optional] 
-**utm_term** | **str** | UTM term information | [optional] 
 
 ## Example
 

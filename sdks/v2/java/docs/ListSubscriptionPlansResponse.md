@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**nextPageToken** | **String** |  |  [optional] |
 |**subscriptions** | [**List&lt;SubscriptionPlan&gt;**](SubscriptionPlan.md) |  |  [optional] |
+|**nextPageToken** | **String** |  |  [optional] |
 
 
 ## Implemented Interfaces

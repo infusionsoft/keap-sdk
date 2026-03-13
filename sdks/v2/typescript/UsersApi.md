@@ -1,14 +1,14 @@
 # .UsersApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getUserById**](UsersApi.md#getUserById) | **GET** /v2/users/{user_id} | Get User
-[**getUserInfo**](UsersApi.md#getUserInfo) | **GET** /v2/oauth/connect/userinfo | Retrieve User Info
-[**getUserSignature**](UsersApi.md#getUserSignature) | **GET** /v2/users/{user_id}/signature | Get User email signature
-[**listPaginatedUsers**](UsersApi.md#listPaginatedUsers) | **GET** /v2/users | List Users
-[**updateUser**](UsersApi.md#updateUser) | **PATCH** /v2/users/{user_id} | Update User
+[**getUserById**](UsersApi.md#getUserById) | **GET** /rest/v2/users/{user_id} | Get User
+[**getUserInfo**](UsersApi.md#getUserInfo) | **GET** /rest/v2/oauth/connect/userinfo | Retrieve User Info
+[**getUserSignature**](UsersApi.md#getUserSignature) | **GET** /rest/v2/users/{user_id}/signature | Get User email signature
+[**listPaginatedUsers**](UsersApi.md#listPaginatedUsers) | **GET** /rest/v2/users | List Users
+[**updateUser**](UsersApi.md#updateUser) | **PATCH** /rest/v2/users/{user_id} | Update User
 
 
 # **getUserById**
@@ -27,7 +27,7 @@ const configuration = createConfiguration();
 const apiInstance = new UsersApi(configuration);
 
 const request: UsersApiGetUserByIdRequest = {
-    // user_id
+  
   userId: "user_id_example",
 };
 
@@ -40,7 +40,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | [**string**] | user_id | defaults to undefined
+ **userId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -49,7 +49,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -61,10 +61,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -99,7 +102,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -111,10 +114,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -134,7 +140,7 @@ const configuration = createConfiguration();
 const apiInstance = new UsersApi(configuration);
 
 const request: UsersApiGetUserSignatureRequest = {
-    // user_id
+  
   userId: "user_id_example",
 };
 
@@ -147,7 +153,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | [**string**] | user_id | defaults to undefined
+ **userId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -156,7 +162,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -168,10 +174,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -193,7 +202,7 @@ const apiInstance = new UsersApi(configuration);
 const request: UsersApiListPaginatedUsersRequest = {
     // Filter to apply, allowed fields are: - (String) `email` - (String) `given_name` - (Boolean) `include_inactive` - (Boolean) `include_partners` - (Set[String]) `user_ids`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=given_name%3D%3DMary` - `filter=user_ids%3D%3D123%3Bgiven_name%3D%3DSmith`  (optional)
   filter: "filter_example",
-    // Attribute and direction to order items. One of the following fields: - `date_created` - `email`  One of the following directions: - `asc` - `desc` (optional)
+    // Attribute and direction to order items. One of the following fields: - `create_time` - `email`  One of the following directions: - `asc` - `desc` (optional)
   orderBy: "order_by_example",
     // Total number of items to return per page (optional)
   pageSize: 10,
@@ -211,7 +220,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **filter** | [**string**] | Filter to apply, allowed fields are: - (String) &#x60;email&#x60; - (String) &#x60;given_name&#x60; - (Boolean) &#x60;include_inactive&#x60; - (Boolean) &#x60;include_partners&#x60; - (Set[String]) &#x60;user_ids&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;user_ids%3D%3D123%3Bgiven_name%3D%3DSmith&#x60;  | (optional) defaults to undefined
- **orderBy** | [**string**] | Attribute and direction to order items. One of the following fields: - &#x60;date_created&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | (optional) defaults to undefined
+ **orderBy** | [**string**] | Attribute and direction to order items. One of the following fields: - &#x60;create_time&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | (optional) defaults to undefined
  **pageSize** | [**number**] | Total number of items to return per page | (optional) defaults to undefined
  **pageToken** | [**string**] | Page token | (optional) defaults to undefined
 
@@ -222,7 +231,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -234,15 +243,18 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **updateUser**
-> User updateUser()
+> User updateUser(updateUserRequest)
 
 Updates information on a specific User
 
@@ -257,55 +269,53 @@ const configuration = createConfiguration();
 const apiInstance = new UsersApi(configuration);
 
 const request: UsersApiUpdateUserRequest = {
-    // user_id
+  
   userId: "user_id_example",
-    // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: [
-    "address",
-  ],
-    // user (optional)
+  
   updateUserRequest: {
     address: {
       country: "United States of America",
-      countryCode: "USA",
-      field: "ADDRESS_FIELD_UNSPECIFIED",
-      line1: "line1_example",
-      line2: "line2_example",
+      line1: "123",
+      line2: "Suite 100",
       locality: "Phoenix",
-      postalCode: "postalCode_example",
       region: "Arizona",
+      field: "BILLING",
+      countryCode: "USA",
+      postalCode: "85001",
       regionCode: "US-AZ",
-      zipCode: "zipCode_example",
-      zipFour: "zipFour_example",
+      zipCode: "85001",
+      zipFour: "1234",
     },
-    companyName: "companyName_example",
+    title: "Sales Manager",
+    website: "https://example.com",
+    companyName: "Acme Corp",
     emailAddress: {
-      email: "email_example",
-      field: "EMAIL_FIELD_UNSPECIFIED",
-      optInReason: "optInReason_example",
+      email: "john.smith@example.com",
+      field: "EMAIL1",
+      optInReason: "Subscribed via website form",
     },
-    familyName: "familyName_example",
+    familyName: "Smith",
     faxNumbers: [
       {
-        field: "FAX_NUMBER_FIELD_UNSPECIFIED",
-        number: "number_example",
-        type: "type_example",
+        number: "5551234568",
+        type: "Work",
+        field: "FAX1",
       },
     ],
-    givenName: "givenName_example",
+    givenName: "John",
     phoneNumbers: [
       {
-        extension: "extension_example",
-        field: "PHONE_NUMBER_FIELD_UNSPECIFIED",
-        number: "number_example",
-        numberE164: "numberE164_example",
-        type: "type_example",
+        extension: "101",
+        number: "5551234567",
+        type: "Work",
+        field: "PHONE1",
+        numberE164: "+15551234567",
       },
     ],
-    timeZone: "timeZone_example",
-    title: "title_example",
-    website: "website_example",
+    timeZone: "America/New_York",
   },
+    // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+  updateMask: "address,company_name,email_address,family_name,fax_numbers,given_name,job_title,phone_numbers,time_zone,website",
 };
 
 const data = await apiInstance.updateUser(request);
@@ -317,9 +327,9 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **updateUserRequest** | **UpdateUserRequest**| user |
- **userId** | [**string**] | user_id | defaults to undefined
- **updateMask** |  | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateUserRequest** | **UpdateUserRequest**|  |
+ **userId** | [**string**] |  | defaults to undefined
+ **updateMask** | [**&#39;address,company_name,email_address,family_name,fax_numbers,given_name,job_title,phone_numbers,time_zone,website&#39;**]**Array<&#39;address,company_name,email_address,family_name,fax_numbers,given_name,job_title,phone_numbers,time_zone,website&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
@@ -328,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -340,10 +350,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

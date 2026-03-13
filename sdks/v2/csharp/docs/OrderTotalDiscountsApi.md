@@ -1,14 +1,14 @@
 # Keap.Core.V2.Api.OrderTotalDiscountsApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**CreateOrderTotalDiscount**](OrderTotalDiscountsApi.md#createordertotaldiscount) | **POST** /v2/discounts/orderTotals | Create an Order Total Discount |
-| [**DeleteOrderTotalDiscount**](OrderTotalDiscountsApi.md#deleteordertotaldiscount) | **DELETE** /v2/discounts/orderTotals/{discount_id} | Delete an Order Total Discount |
-| [**GetOrderTotalDiscount**](OrderTotalDiscountsApi.md#getordertotaldiscount) | **GET** /v2/discounts/orderTotals/{discount_id} | Retrieve an Order Total Discount |
-| [**ListOrderTotalDiscounts**](OrderTotalDiscountsApi.md#listordertotaldiscounts) | **GET** /v2/discounts/orderTotals | List all Order Total Discounts |
-| [**UpdateOrderTotalDiscount**](OrderTotalDiscountsApi.md#updateordertotaldiscount) | **PATCH** /v2/discounts/orderTotals/{discount_id} | Update an Order Total Discount |
+| [**CreateOrderTotalDiscount**](OrderTotalDiscountsApi.md#createordertotaldiscount) | **POST** /rest/v2/discounts/orderTotals | Create an Order Total Discount |
+| [**DeleteOrderTotalDiscount**](OrderTotalDiscountsApi.md#deleteordertotaldiscount) | **DELETE** /rest/v2/discounts/orderTotals/{discount_id} | Delete an Order Total Discount |
+| [**GetOrderTotalDiscount**](OrderTotalDiscountsApi.md#getordertotaldiscount) | **GET** /rest/v2/discounts/orderTotals/{discount_id} | Retrieve an Order Total Discount |
+| [**ListOrderTotalDiscounts**](OrderTotalDiscountsApi.md#listordertotaldiscounts) | **GET** /rest/v2/discounts/orderTotals | List all Order Total Discounts |
+| [**UpdateOrderTotalDiscount**](OrderTotalDiscountsApi.md#updateordertotaldiscount) | **PATCH** /rest/v2/discounts/orderTotals/{discount_id} | Update an Order Total Discount |
 
 <a id="createordertotaldiscount"></a>
 # **CreateOrderTotalDiscount**
@@ -33,9 +33,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new OrderTotalDiscountsApi(config);
-            var createOrderTotalDiscountRequest = new CreateOrderTotalDiscountRequest(); // CreateOrderTotalDiscountRequest | request
+            var createOrderTotalDiscountRequest = new CreateOrderTotalDiscountRequest(); // CreateOrderTotalDiscountRequest | 
 
             try
             {
@@ -78,7 +81,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **createOrderTotalDiscountRequest** | [**CreateOrderTotalDiscountRequest**](CreateOrderTotalDiscountRequest.md) | request |  |
+| **createOrderTotalDiscountRequest** | [**CreateOrderTotalDiscountRequest**](CreateOrderTotalDiscountRequest.md) |  |  |
 
 ### Return type
 
@@ -86,7 +89,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -98,9 +101,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -127,9 +134,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new OrderTotalDiscountsApi(config);
-            var discountId = "discountId_example";  // string | discount_id
+            var discountId = "discountId_example";  // string | 
 
             try
             {
@@ -168,7 +178,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **discountId** | **string** | discount_id |  |
+| **discountId** | **string** |  |  |
 
 ### Return type
 
@@ -176,7 +186,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -188,10 +198,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -218,9 +231,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new OrderTotalDiscountsApi(config);
-            var discountId = "discountId_example";  // string | discount_id
+            var discountId = "discountId_example";  // string | 
 
             try
             {
@@ -263,7 +279,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **discountId** | **string** | discount_id |  |
+| **discountId** | **string** |  |  |
 
 ### Return type
 
@@ -271,7 +287,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -283,10 +299,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -313,7 +332,10 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new OrderTotalDiscountsApi(config);
             var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (Boolean) `apply_to_commissions` - (DiscountStrategy) `discount_strategy`: GROSS or NET - (DiscountType) `discount_type`: AMOUNT or PERCENT - (Double) `discount_value`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=apply_to_commissions%3D%3Dtrue` - `filter=discount_strategy%3D%3DGROSS` - `filter=discount_type%3D%3DAMOUNT` - `filter=discount_value%3D%3D10.0` - `filter=discount_type%3D%3DAMOUNT%3Bdiscount_strategy%3D%3DNET`  (optional) 
             var orderBy = "orderBy_example";  // string? | Attribute and direction to order items. One of the following fields: - `apply_to_commissions` - `discount_strategy` - `discount_type` - `discount_value` - `id` - `name`  One of the following directions: - `asc` - `desc` (optional) 
@@ -372,7 +394,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -384,16 +406,19 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="updateordertotaldiscount"></a>
 # **UpdateOrderTotalDiscount**
-> OrderTotalDiscount UpdateOrderTotalDiscount (string discountId, UpdateOrderTotalDiscountRequest updateOrderTotalDiscountRequest, List<string>? updateMask = null)
+> OrderTotalDiscount UpdateOrderTotalDiscount (string discountId, UpdateOrderTotalDiscountRequest updateOrderTotalDiscountRequest, string? updateMask = null)
 
 Update an Order Total Discount
 
@@ -414,11 +439,14 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new OrderTotalDiscountsApi(config);
-            var discountId = "discountId_example";  // string | discount_id
-            var updateOrderTotalDiscountRequest = new UpdateOrderTotalDiscountRequest(); // UpdateOrderTotalDiscountRequest | request
-            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var discountId = "discountId_example";  // string | 
+            var updateOrderTotalDiscountRequest = new UpdateOrderTotalDiscountRequest(); // UpdateOrderTotalDiscountRequest | 
+            var updateMask = "name,description,apply_to_commissions,discount_type,discount_value,discount_strategy,criteria";  // string? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -461,9 +489,9 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **discountId** | **string** | discount_id |  |
-| **updateOrderTotalDiscountRequest** | [**UpdateOrderTotalDiscountRequest**](UpdateOrderTotalDiscountRequest.md) | request |  |
-| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **discountId** | **string** |  |  |
+| **updateOrderTotalDiscountRequest** | [**UpdateOrderTotalDiscountRequest**](UpdateOrderTotalDiscountRequest.md) |  |  |
+| **updateMask** | **string?** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 
@@ -471,7 +499,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -483,10 +511,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

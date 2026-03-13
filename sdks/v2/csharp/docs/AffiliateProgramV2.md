@@ -4,15 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AffiliateId** | **string** | The affiliate_Id for Affiliate commission program | [optional] 
-**CreateTime** | **string** | The created time of affiliate commission program | [optional] 
-**DefaultCommission** | [**DefaultCommission**](DefaultCommission.md) |  | [optional] 
-**Id** | **string** | The affiliate commission program name | [optional] 
+**Id** | **string** | Commission program ID | [optional] 
 **Name** | **string** | The affiliate commission program name | [optional] 
-**Notes** | **string** | The affiliate commission program notes | [optional] 
 **Priority** | **string** | The Affiliate commission program priority | [optional] 
-**ProductCommissions** | [**List&lt;ProductCommission&gt;**](ProductCommission.md) |  | [optional] 
-**SubscriptionCommissions** | [**List&lt;SubscriptionCommission&gt;**](SubscriptionCommission.md) |  | [optional] 
+**Notes** | **string** | The affiliate commission program notes | [optional] 
+**CreateTime** | **string** | The created time of affiliate commission program | [optional] 
+**AffiliateIds** | **List&lt;string&gt;** | The list of affiliate_ids using this commission program | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

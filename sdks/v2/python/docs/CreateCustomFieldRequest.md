@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**field_type** | **str** |  | 
-**group_id** | **str** | An optional tab group to place the field under in the interface.  If not specified, will default to the &#39;Custom Fields&#39; tab. | [optional] 
 **label** | **str** |  | 
 **options** | [**List[CreateCustomFieldOptionRequest]**](CreateCustomFieldOptionRequest.md) |  | [optional] 
+**field_type** | **str** |  | 
+**group_id** | **str** | An optional tab group to place the field under in the interface.  If not specified, will default to the &#39;Custom Fields&#39; tab. | [optional] 
 **user_group_id** | **str** | An optional user group to choose from when selecting values for User or UserListBox fields. | [optional] 
 
 ## Example

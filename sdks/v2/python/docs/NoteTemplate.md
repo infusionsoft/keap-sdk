@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**action_type** | **str** |  | [optional] 
-**assignment_user_id** | **int** |  | [optional] 
-**description** | **str** |  | [optional] 
-**id** | **str** |  | [optional] 
-**notify_users** | **List[str]** |  | [optional] 
-**title** | **str** |  | [optional] 
+**id** | **str** | Template ID | [optional] 
+**title** | **str** | Template title | [optional] 
+**description** | **str** | Template description | [optional] 
+**action_type** | **str** | Note action type | [optional] 
+**assignment_user_id** | **int** | Default assigned user ID | [optional] 
+**notify_users** | **List[str]** | List of user IDs to notify | [optional] 
 
 ## Example
 

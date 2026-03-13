@@ -1,12 +1,13 @@
 # EmailSendRequestAttachment
 
+An attachment for an email
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**file_data** | **str** | The content of the attachment, encoded in Base64 | [optional] 
-**file_name** | **str** | The filename of the attached file, including extension | [optional] 
+**file_name** | **str** | The filename of the attached file, including extension | 
+**file_data** | **str** | The content of the attachment, encoded in Base64 | 
 
 ## Example
 

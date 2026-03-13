@@ -7,10 +7,10 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**fieldType** | [**FieldTypeEnum**](#FieldTypeEnum) |  |  |
-|**groupId** | **String** | An optional tab group to place the field under in the interface.  If not specified, will default to the &#39;Custom Fields&#39; tab. |  [optional] |
 |**label** | **String** |  |  |
 |**options** | [**List&lt;CreateCustomFieldOptionRequest&gt;**](CreateCustomFieldOptionRequest.md) |  |  [optional] |
+|**fieldType** | [**FieldTypeEnum**](#FieldTypeEnum) |  |  |
+|**groupId** | **String** | An optional tab group to place the field under in the interface.  If not specified, will default to the &#39;Custom Fields&#39; tab. |  [optional] |
 |**userGroupId** | **String** | An optional user group to choose from when selecting values for User or UserListBox fields. |  [optional] |
 
 

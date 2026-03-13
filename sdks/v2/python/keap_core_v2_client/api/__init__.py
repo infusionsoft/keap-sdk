@@ -13,6 +13,7 @@ from keap_core_v2_client.api.email_api import EmailApi
 from keap_core_v2_client.api.email_address_api import EmailAddressApi
 from keap_core_v2_client.api.files_api import FilesApi
 from keap_core_v2_client.api.free_trial_discounts_api import FreeTrialDiscountsApi
+from keap_core_v2_client.api.integrations_api import IntegrationsApi
 from keap_core_v2_client.api.lead_score_api import LeadScoreApi
 from keap_core_v2_client.api.lead_source_categories_api import LeadSourceCategoriesApi
 from keap_core_v2_client.api.lead_source_expenses_api import LeadSourceExpensesApi

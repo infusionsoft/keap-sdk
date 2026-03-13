@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**company_name** | **str** |  | [optional] 
-**id** | **str** |  | [optional] 
+**id** | **str** | Company ID | [optional] 
+**company_name** | **str** | Company name | [optional] 
 
 ## Example
 

@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**historical_contact_counts** | [**HistoricalCounts**](HistoricalCounts.md) |  | [optional] 
-**id** | **str** |  | [optional] 
-**name** | **str** |  | [optional] 
-**next_sequence_ids** | **List[str]** |  | [optional] 
-**previous_sequence_ids** | **List[str]** |  | [optional] 
-**type** | **str** |  | [optional] 
+**id** | **str** | The unique identifier of the goal | [optional] 
+**name** | **str** | The name of the goal | [optional] 
+**type** | **str** | The type of goal | [optional] 
+**historical_contact_counts** | [**HistoricalCounts**](HistoricalCounts.md) | Historical contact counts for this goal | [optional] 
+**next_sequence_ids** | **List[str]** | IDs of sequences that follow this goal | [optional] 
+**previous_sequence_ids** | **List[str]** | IDs of sequences that precede this goal | [optional] 
 
 ## Example
 

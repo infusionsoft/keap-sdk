@@ -1,11 +1,11 @@
 # Keap.Core.V2.Api.BusinessProfileApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**GetBusinessProfile**](BusinessProfileApi.md#getbusinessprofile) | **GET** /v2/businessProfile | Retrieve Business Profile |
-| [**UpdateBusinessProfile**](BusinessProfileApi.md#updatebusinessprofile) | **PATCH** /v2/businessProfile | Update Business Profile |
+| [**GetBusinessProfile**](BusinessProfileApi.md#getbusinessprofile) | **GET** /rest/v2/businessProfile | Retrieve Business Profile |
+| [**UpdateBusinessProfile**](BusinessProfileApi.md#updatebusinessprofile) | **PATCH** /rest/v2/businessProfile | Update Business Profile |
 
 <a id="getbusinessprofile"></a>
 # **GetBusinessProfile**
@@ -30,7 +30,10 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new BusinessProfileApi(config);
 
             try
@@ -78,7 +81,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -90,16 +93,19 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="updatebusinessprofile"></a>
 # **UpdateBusinessProfile**
-> GetBusinessProfileResponse UpdateBusinessProfile (List<string>? updateMask = null, UpdateBusinessProfileRequest? updateBusinessProfileRequest = null)
+> GetBusinessProfileResponse UpdateBusinessProfile (UpdateBusinessProfileRequest updateBusinessProfileRequest, string? updateMask = null)
 
 Update Business Profile
 
@@ -120,15 +126,18 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new BusinessProfileApi(config);
-            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
-            var updateBusinessProfileRequest = new UpdateBusinessProfileRequest?(); // UpdateBusinessProfileRequest? | businessProfile (optional) 
+            var updateBusinessProfileRequest = new UpdateBusinessProfileRequest(); // UpdateBusinessProfileRequest | 
+            var updateMask = "name,email,website,phone,address,currency_code,business_goals,business_primary_color, business_secondary_color";  // string? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
                 // Update Business Profile
-                GetBusinessProfileResponse result = apiInstance.UpdateBusinessProfile(updateMask, updateBusinessProfileRequest);
+                GetBusinessProfileResponse result = apiInstance.UpdateBusinessProfile(updateBusinessProfileRequest, updateMask);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -149,7 +158,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Update Business Profile
-    ApiResponse<GetBusinessProfileResponse> response = apiInstance.UpdateBusinessProfileWithHttpInfo(updateMask, updateBusinessProfileRequest);
+    ApiResponse<GetBusinessProfileResponse> response = apiInstance.UpdateBusinessProfileWithHttpInfo(updateBusinessProfileRequest, updateMask);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -166,8 +175,8 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
-| **updateBusinessProfileRequest** | [**UpdateBusinessProfileRequest?**](UpdateBusinessProfileRequest?.md) | businessProfile | [optional]  |
+| **updateBusinessProfileRequest** | [**UpdateBusinessProfileRequest**](UpdateBusinessProfileRequest.md) |  |  |
+| **updateMask** | **string?** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 
@@ -175,7 +184,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -187,10 +196,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

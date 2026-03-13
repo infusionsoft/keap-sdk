@@ -4,20 +4,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AssignedToUserId** | **string** |  | [optional] 
-**Completed** | **bool** |  | [optional] 
-**CompletionTime** | **string** |  | [optional] 
-**ContactId** | **string** |  | [optional] 
-**CreateTime** | **string** | On initial object the returned value for this property may not accurately represent the exact stored value. | [optional] 
-**CreatedByUserId** | **string** |  | [optional] 
-**Description** | **string** |  | [optional] 
-**DueTime** | **string** |  | [optional] 
-**Id** | **string** |  | [optional] 
-**ModificationTime** | **string** |  | [optional] 
-**Priority** | **string** |  | [optional] 
-**RemindTimeMins** | **int** |  | [optional] 
-**Title** | **string** |  | [optional] 
-**Type** | **string** |  | [optional] 
+**Id** | **string** | Task ID | [optional] 
+**Title** | **string** | Task title | [optional] 
+**Description** | **string** | Task description | [optional] 
+**Type** | **string** | Task type | [optional] 
+**Priority** | **string** | Task priority | [optional] 
+**Completed** | **bool** | Whether task is completed | [optional] 
+**CreateTime** | **string** | Creation timestamp (ISO-8601) | [optional] 
+**ModificationTime** | **string** | Last modification timestamp (ISO-8601) | [optional] 
+**CompletionTime** | **string** | Completion timestamp (ISO-8601) | [optional] 
+**DueTime** | **string** | Due date/time (ISO-8601) | [optional] 
+**RemindTimeMins** | **int** | Reminder minutes before due. | [optional] 
+**AssignedToUserId** | **string** | Assigned user ID | [optional] 
+**CreatedByUserId** | **string** | Creator user ID | [optional] 
+**ContactId** | **string** | Associated contact ID | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

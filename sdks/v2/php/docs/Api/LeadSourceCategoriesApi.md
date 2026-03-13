@@ -1,14 +1,14 @@
 # Keap\Core\V2\LeadSourceCategoriesApi
 
-All URIs are relative to https://api.keap.com/crm/rest, except if the operation defines another base path.
+All URIs are relative to https://api.keap.com/crm, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createLeadSourceCategory()**](LeadSourceCategoriesApi.md#createLeadSourceCategory) | **POST** /v2/leadSourceCategories | Create a Lead Source Category |
-| [**deleteLeadSourceCategory()**](LeadSourceCategoriesApi.md#deleteLeadSourceCategory) | **DELETE** /v2/leadSourceCategories/{lead_source_category_id} | Delete a Lead Source Category |
-| [**getLeadSourceCategory()**](LeadSourceCategoriesApi.md#getLeadSourceCategory) | **GET** /v2/leadSourceCategories/{lead_source_category_id} | Retrieve a Lead Source Category |
-| [**listLeadSourceCategories()**](LeadSourceCategoriesApi.md#listLeadSourceCategories) | **GET** /v2/leadSourceCategories | List Lead Source Categories |
-| [**updateLeadSourceCategory()**](LeadSourceCategoriesApi.md#updateLeadSourceCategory) | **PATCH** /v2/leadSourceCategories/{lead_source_category_id} | Update a Lead Source Category |
+| [**createLeadSourceCategory()**](LeadSourceCategoriesApi.md#createLeadSourceCategory) | **POST** /rest/v2/leadSourceCategories | Create a Lead Source Category |
+| [**deleteLeadSourceCategory()**](LeadSourceCategoriesApi.md#deleteLeadSourceCategory) | **DELETE** /rest/v2/leadSourceCategories/{lead_source_category_id} | Delete a Lead Source Category |
+| [**getLeadSourceCategory()**](LeadSourceCategoriesApi.md#getLeadSourceCategory) | **GET** /rest/v2/leadSourceCategories/{lead_source_category_id} | Retrieve a Lead Source Category |
+| [**listLeadSourceCategories()**](LeadSourceCategoriesApi.md#listLeadSourceCategories) | **GET** /rest/v2/leadSourceCategories | List Lead Source Categories |
+| [**updateLeadSourceCategory()**](LeadSourceCategoriesApi.md#updateLeadSourceCategory) | **PATCH** /rest/v2/leadSourceCategories/{lead_source_category_id} | Update a Lead Source Category |
 
 
 ## `createLeadSourceCategory()`
@@ -19,7 +19,7 @@ createLeadSourceCategory($create_update_lead_source_category_request): \Keap\Cor
 
 Create a Lead Source Category
 
-Creates a new Lead Source Category
+Creates a new Lead Source Category.
 
 ### Example
 
@@ -28,12 +28,16 @@ Creates a new Lead Source Category
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\LeadSourceCategoriesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$create_update_lead_source_category_request = new \Keap\Core\V2\Model\CreateUpdateLeadSourceCategoryRequest(); // \Keap\Core\V2\Model\CreateUpdateLeadSourceCategoryRequest | The request object to create a new lead source category
+$create_update_lead_source_category_request = new \Keap\Core\V2\Model\CreateUpdateLeadSourceCategoryRequest(); // \Keap\Core\V2\Model\CreateUpdateLeadSourceCategoryRequest
 
 try {
     $result = $apiInstance->createLeadSourceCategory($create_update_lead_source_category_request);
@@ -47,7 +51,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **create_update_lead_source_category_request** | [**\Keap\Core\V2\Model\CreateUpdateLeadSourceCategoryRequest**](../Model/CreateUpdateLeadSourceCategoryRequest.md)| The request object to create a new lead source category | |
+| **create_update_lead_source_category_request** | [**\Keap\Core\V2\Model\CreateUpdateLeadSourceCategoryRequest**](../Model/CreateUpdateLeadSourceCategoryRequest.md)|  | |
 
 ### Return type
 
@@ -55,7 +59,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -83,10 +87,14 @@ Deletes the specified Lead Source Category
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\LeadSourceCategoriesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $lead_source_category_id = 'lead_source_category_id_example'; // string | The ID of a lead source category
 
@@ -109,7 +117,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -137,10 +145,14 @@ Retrieves a single Lead Source Category for a given ID
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\LeadSourceCategoriesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $lead_source_category_id = 'lead_source_category_id_example'; // string | The ID of a lead source category
 
@@ -164,7 +176,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -192,10 +204,14 @@ Retrieves a list of Lead Source Categories
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\LeadSourceCategoriesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $filter = 'filter_example'; // string | Filter to apply, allowed fields are:  - (String) `name`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here is an example:  - `filter=name%3D%3Dexample`
 $order_by = 'order_by_example'; // string | Attribute and direction to order items. One of the following fields: - `name`  One of the following directions: - `asc` - `desc`
@@ -225,7 +241,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -253,14 +269,18 @@ Updates a Lead Source Category
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\LeadSourceCategoriesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $lead_source_category_id = 'lead_source_category_id_example'; // string | The ID of a lead source category
-$create_update_lead_source_category_request = new \Keap\Core\V2\Model\CreateUpdateLeadSourceCategoryRequest(); // \Keap\Core\V2\Model\CreateUpdateLeadSourceCategoryRequest | The request object to update a lead source category
-$update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+$create_update_lead_source_category_request = new \Keap\Core\V2\Model\CreateUpdateLeadSourceCategoryRequest(); // \Keap\Core\V2\Model\CreateUpdateLeadSourceCategoryRequest
+$update_mask = 'update_mask_example'; // string | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
     $result = $apiInstance->updateLeadSourceCategory($lead_source_category_id, $create_update_lead_source_category_request, $update_mask);
@@ -275,8 +295,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **lead_source_category_id** | **string**| The ID of a lead source category | |
-| **create_update_lead_source_category_request** | [**\Keap\Core\V2\Model\CreateUpdateLeadSourceCategoryRequest**](../Model/CreateUpdateLeadSourceCategoryRequest.md)| The request object to update a lead source category | |
-| **update_mask** | [**string[]**](../Model/string.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **create_update_lead_source_category_request** | [**\Keap\Core\V2\Model\CreateUpdateLeadSourceCategoryRequest**](../Model/CreateUpdateLeadSourceCategoryRequest.md)|  | |
+| **update_mask** | **string**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -284,7 +304,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 

@@ -1,15 +1,15 @@
 # .CampaignApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**addContactsToCampaignSequence**](CampaignApi.md#addContactsToCampaignSequence) | **POST** /v2/campaigns/{campaign_id}/sequences/{sequence_id}:addContacts | Add Contacts to Campaign Sequence
-[**getCampaign**](CampaignApi.md#getCampaign) | **GET** /v2/campaigns/{campaign_id} | Retrieve a Campaign
-[**getCampaignGoals**](CampaignApi.md#getCampaignGoals) | **GET** /v2/campaigns/{campaign_id}/goals | Retrieve a list of Goals for a Campaign
-[**getCampaignSequences**](CampaignApi.md#getCampaignSequences) | **GET** /v2/campaigns/{campaign_id}/sequences | Retrieve a list of Sequences for a Campaign
-[**listCampaigns**](CampaignApi.md#listCampaigns) | **GET** /v2/campaigns | List Campaigns
-[**removeContactsFromCampaignSequence**](CampaignApi.md#removeContactsFromCampaignSequence) | **POST** /v2/campaigns/{campaign_id}/sequences/{sequence_id}:removeContacts | Remove Contacts from Campaign Sequence
+[**addContactsToCampaignSequence**](CampaignApi.md#addContactsToCampaignSequence) | **POST** /rest/v2/campaigns/{campaign_id}/sequences/{sequence_id}:addContacts | Add Contacts to Campaign Sequence
+[**getCampaign**](CampaignApi.md#getCampaign) | **GET** /rest/v2/campaigns/{campaign_id} | Retrieve a Campaign
+[**getCampaignGoals**](CampaignApi.md#getCampaignGoals) | **GET** /rest/v2/campaigns/{campaign_id}/goals | Retrieve a list of Goals for a Campaign
+[**getCampaignSequences**](CampaignApi.md#getCampaignSequences) | **GET** /rest/v2/campaigns/{campaign_id}/sequences | Retrieve a list of Sequences for a Campaign
+[**listCampaigns**](CampaignApi.md#listCampaigns) | **GET** /rest/v2/campaigns | List Campaigns
+[**removeContactsFromCampaignSequence**](CampaignApi.md#removeContactsFromCampaignSequence) | **POST** /rest/v2/campaigns/{campaign_id}/sequences/{sequence_id}:removeContacts | Remove Contacts from Campaign Sequence
 
 
 # **addContactsToCampaignSequence**
@@ -28,15 +28,13 @@ const configuration = createConfiguration();
 const apiInstance = new CampaignApi(configuration);
 
 const request: CampaignApiAddContactsToCampaignSequenceRequest = {
-    // campaign_id
+  
   campaignId: "campaign_id_example",
-    // sequence_id
+  
   sequenceId: "sequence_id_example",
-    // addContactsToSequenceRequest
+  
   addContactsToSequenceRequest: {
-    contactIds: [
-      "contactIds_example",
-    ],
+    contactIds: [123, 456, 789],
   },
 };
 
@@ -49,9 +47,9 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **addContactsToSequenceRequest** | **AddContactsToSequenceRequest**| addContactsToSequenceRequest |
- **campaignId** | [**string**] | campaign_id | defaults to undefined
- **sequenceId** | [**string**] | sequence_id | defaults to undefined
+ **addContactsToSequenceRequest** | **AddContactsToSequenceRequest**|  |
+ **campaignId** | [**string**] |  | defaults to undefined
+ **sequenceId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -60,7 +58,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -72,9 +70,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -94,7 +96,7 @@ const configuration = createConfiguration();
 const apiInstance = new CampaignApi(configuration);
 
 const request: CampaignApiGetCampaignRequest = {
-    // campaign_id
+  
   campaignId: "campaign_id_example",
 };
 
@@ -107,7 +109,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaignId** | [**string**] | campaign_id | defaults to undefined
+ **campaignId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -116,7 +118,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -128,10 +130,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -151,7 +156,7 @@ const configuration = createConfiguration();
 const apiInstance = new CampaignApi(configuration);
 
 const request: CampaignApiGetCampaignGoalsRequest = {
-    // campaign_id
+  
   campaignId: "campaign_id_example",
 };
 
@@ -164,7 +169,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaignId** | [**string**] | campaign_id | defaults to undefined
+ **campaignId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -173,7 +178,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -185,10 +190,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -208,7 +216,7 @@ const configuration = createConfiguration();
 const apiInstance = new CampaignApi(configuration);
 
 const request: CampaignApiGetCampaignSequencesRequest = {
-    // campaign_id
+  
   campaignId: "campaign_id_example",
 };
 
@@ -221,7 +229,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaignId** | [**string**] | campaign_id | defaults to undefined
+ **campaignId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -230,7 +238,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -242,10 +250,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -273,8 +284,6 @@ const request: CampaignApiListCampaignsRequest = {
   pageSize: 0,
     // Page token (optional)
   pageToken: "page_token_example",
-  
-  stats: true,
 };
 
 const data = await apiInstance.listCampaigns(request);
@@ -290,7 +299,6 @@ Name | Type | Description  | Notes
  **orderBy** | [**string**] | Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;publisheddate&#x60; - &#x60;id&#x60; - &#x60;completedContactCount&#x60; - &#x60;activeContacts&#x60; - &#x60;datecreated&#x60; - &#x60;lastupdated&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | (optional) defaults to undefined
  **pageSize** | [**number**] | Total number of items to return per page | (optional) defaults to undefined
  **pageToken** | [**string**] | Page token | (optional) defaults to undefined
- **stats** | [**boolean**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -299,7 +307,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -311,10 +319,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -334,15 +345,13 @@ const configuration = createConfiguration();
 const apiInstance = new CampaignApi(configuration);
 
 const request: CampaignApiRemoveContactsFromCampaignSequenceRequest = {
-    // campaign_id
+  
   campaignId: "campaign_id_example",
-    // sequence_id
+  
   sequenceId: "sequence_id_example",
-    // removeContactsFromSequenceRequest
+  
   removeContactsFromSequenceRequest: {
-    contactIds: [
-      "contactIds_example",
-    ],
+    contactIds: [123, 456, 789],
   },
 };
 
@@ -355,9 +364,9 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **removeContactsFromSequenceRequest** | **RemoveContactsFromSequenceRequest**| removeContactsFromSequenceRequest |
- **campaignId** | [**string**] | campaign_id | defaults to undefined
- **sequenceId** | [**string**] | sequence_id | defaults to undefined
+ **removeContactsFromSequenceRequest** | **RemoveContactsFromSequenceRequest**|  |
+ **campaignId** | [**string**] |  | defaults to undefined
+ **sequenceId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -366,7 +375,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -378,9 +387,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

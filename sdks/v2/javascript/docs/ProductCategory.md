@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**displayOrderIndex** | **Number** |  | [optional] 
-**id** | **String** |  | [optional] 
-**name** | **String** |  | [optional] 
-**parentCategoryId** | **String** |  | [optional] 
+**id** | **String** | The product category ID | [optional] 
+**name** | **String** | The category name | [optional] 
+**displayOrderIndex** | **Number** | Display order of the category | [optional] 
+**parentCategoryId** | **String** | Parent category ID for subcategories | [optional] 
 
 

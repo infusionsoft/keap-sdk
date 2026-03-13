@@ -1,37 +1,37 @@
 # TagsApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**applyTags**](TagsApi.md#applyTags) | **POST** /v2/tags/{tag_id}/contacts:applyTags | Apply Tag |
-| [**applyTagsWithHttpInfo**](TagsApi.md#applyTagsWithHttpInfo) | **POST** /v2/tags/{tag_id}/contacts:applyTags | Apply Tag |
-| [**createTag**](TagsApi.md#createTag) | **POST** /v2/tags | Create Tag |
-| [**createTagWithHttpInfo**](TagsApi.md#createTagWithHttpInfo) | **POST** /v2/tags | Create Tag |
-| [**createTagCategory**](TagsApi.md#createTagCategory) | **POST** /v2/tags/categories | Create Tag Category |
-| [**createTagCategoryWithHttpInfo**](TagsApi.md#createTagCategoryWithHttpInfo) | **POST** /v2/tags/categories | Create Tag Category |
-| [**deleteTag**](TagsApi.md#deleteTag) | **DELETE** /v2/tags/{tag_id} | Delete Tag |
-| [**deleteTagWithHttpInfo**](TagsApi.md#deleteTagWithHttpInfo) | **DELETE** /v2/tags/{tag_id} | Delete Tag |
-| [**deleteTagCategory**](TagsApi.md#deleteTagCategory) | **DELETE** /v2/tags/categories/{tag_category_id} | Delete Tag Category |
-| [**deleteTagCategoryWithHttpInfo**](TagsApi.md#deleteTagCategoryWithHttpInfo) | **DELETE** /v2/tags/categories/{tag_category_id} | Delete Tag Category |
-| [**getCategory**](TagsApi.md#getCategory) | **GET** /v2/tags/categories/{tag_category_id} | Retrieve a Tag Category |
-| [**getCategoryWithHttpInfo**](TagsApi.md#getCategoryWithHttpInfo) | **GET** /v2/tags/categories/{tag_category_id} | Retrieve a Tag Category |
-| [**getTag**](TagsApi.md#getTag) | **GET** /v2/tags/{tag_id} | Retrieve a Tag |
-| [**getTagWithHttpInfo**](TagsApi.md#getTagWithHttpInfo) | **GET** /v2/tags/{tag_id} | Retrieve a Tag |
-| [**listCompaniesForTagId**](TagsApi.md#listCompaniesForTagId) | **GET** /v2/tags/{tag_id}/companies | List Tagged Companies |
-| [**listCompaniesForTagIdWithHttpInfo**](TagsApi.md#listCompaniesForTagIdWithHttpInfo) | **GET** /v2/tags/{tag_id}/companies | List Tagged Companies |
-| [**listContactsWithTagId**](TagsApi.md#listContactsWithTagId) | **GET** /v2/tags/{tag_id}/contacts | List Tagged Contacts |
-| [**listContactsWithTagIdWithHttpInfo**](TagsApi.md#listContactsWithTagIdWithHttpInfo) | **GET** /v2/tags/{tag_id}/contacts | List Tagged Contacts |
-| [**listTagCategories**](TagsApi.md#listTagCategories) | **GET** /v2/tags/categories | List Tag Categories |
-| [**listTagCategoriesWithHttpInfo**](TagsApi.md#listTagCategoriesWithHttpInfo) | **GET** /v2/tags/categories | List Tag Categories |
-| [**listTags**](TagsApi.md#listTags) | **GET** /v2/tags | List Tags |
-| [**listTagsWithHttpInfo**](TagsApi.md#listTagsWithHttpInfo) | **GET** /v2/tags | List Tags |
-| [**removeTags**](TagsApi.md#removeTags) | **POST** /v2/tags/{tag_id}/contacts:removeTags | Remove Tags |
-| [**removeTagsWithHttpInfo**](TagsApi.md#removeTagsWithHttpInfo) | **POST** /v2/tags/{tag_id}/contacts:removeTags | Remove Tags |
-| [**updateTag**](TagsApi.md#updateTag) | **PATCH** /v2/tags/{tag_id} | Update a Tag |
-| [**updateTagWithHttpInfo**](TagsApi.md#updateTagWithHttpInfo) | **PATCH** /v2/tags/{tag_id} | Update a Tag |
-| [**updateTagCategory**](TagsApi.md#updateTagCategory) | **PATCH** /v2/tags/categories/{tag_category_id} | Update a Tag Category |
-| [**updateTagCategoryWithHttpInfo**](TagsApi.md#updateTagCategoryWithHttpInfo) | **PATCH** /v2/tags/categories/{tag_category_id} | Update a Tag Category |
+| [**applyTags**](TagsApi.md#applyTags) | **POST** /rest/v2/tags/{tag_id}/contacts:applyTags | Apply Tag |
+| [**applyTagsWithHttpInfo**](TagsApi.md#applyTagsWithHttpInfo) | **POST** /rest/v2/tags/{tag_id}/contacts:applyTags | Apply Tag |
+| [**createTag**](TagsApi.md#createTag) | **POST** /rest/v2/tags | Create Tag |
+| [**createTagWithHttpInfo**](TagsApi.md#createTagWithHttpInfo) | **POST** /rest/v2/tags | Create Tag |
+| [**createTagCategory**](TagsApi.md#createTagCategory) | **POST** /rest/v2/tags/categories | Create Tag Category |
+| [**createTagCategoryWithHttpInfo**](TagsApi.md#createTagCategoryWithHttpInfo) | **POST** /rest/v2/tags/categories | Create Tag Category |
+| [**deleteTag**](TagsApi.md#deleteTag) | **DELETE** /rest/v2/tags/{tag_id} | Delete Tag |
+| [**deleteTagWithHttpInfo**](TagsApi.md#deleteTagWithHttpInfo) | **DELETE** /rest/v2/tags/{tag_id} | Delete Tag |
+| [**deleteTagCategory**](TagsApi.md#deleteTagCategory) | **DELETE** /rest/v2/tags/categories/{tag_category_id} | Delete Tag Category |
+| [**deleteTagCategoryWithHttpInfo**](TagsApi.md#deleteTagCategoryWithHttpInfo) | **DELETE** /rest/v2/tags/categories/{tag_category_id} | Delete Tag Category |
+| [**getCategory**](TagsApi.md#getCategory) | **GET** /rest/v2/tags/categories/{tag_category_id} | Retrieve a Tag Category |
+| [**getCategoryWithHttpInfo**](TagsApi.md#getCategoryWithHttpInfo) | **GET** /rest/v2/tags/categories/{tag_category_id} | Retrieve a Tag Category |
+| [**getTag**](TagsApi.md#getTag) | **GET** /rest/v2/tags/{tag_id} | Retrieve a Tag |
+| [**getTagWithHttpInfo**](TagsApi.md#getTagWithHttpInfo) | **GET** /rest/v2/tags/{tag_id} | Retrieve a Tag |
+| [**listCompaniesForTagId**](TagsApi.md#listCompaniesForTagId) | **GET** /rest/v2/tags/{tag_id}/companies | List Tagged Companies |
+| [**listCompaniesForTagIdWithHttpInfo**](TagsApi.md#listCompaniesForTagIdWithHttpInfo) | **GET** /rest/v2/tags/{tag_id}/companies | List Tagged Companies |
+| [**listContactsWithTagId**](TagsApi.md#listContactsWithTagId) | **GET** /rest/v2/tags/{tag_id}/contacts | List Tagged Contacts |
+| [**listContactsWithTagIdWithHttpInfo**](TagsApi.md#listContactsWithTagIdWithHttpInfo) | **GET** /rest/v2/tags/{tag_id}/contacts | List Tagged Contacts |
+| [**listTagCategories**](TagsApi.md#listTagCategories) | **GET** /rest/v2/tags/categories | List Tag Categories |
+| [**listTagCategoriesWithHttpInfo**](TagsApi.md#listTagCategoriesWithHttpInfo) | **GET** /rest/v2/tags/categories | List Tag Categories |
+| [**listTags**](TagsApi.md#listTags) | **GET** /rest/v2/tags | List Tags |
+| [**listTagsWithHttpInfo**](TagsApi.md#listTagsWithHttpInfo) | **GET** /rest/v2/tags | List Tags |
+| [**removeTags**](TagsApi.md#removeTags) | **POST** /rest/v2/tags/{tag_id}/contacts:removeTags | Remove Tags |
+| [**removeTagsWithHttpInfo**](TagsApi.md#removeTagsWithHttpInfo) | **POST** /rest/v2/tags/{tag_id}/contacts:removeTags | Remove Tags |
+| [**updateTag**](TagsApi.md#updateTag) | **PATCH** /rest/v2/tags/{tag_id} | Update a Tag |
+| [**updateTagWithHttpInfo**](TagsApi.md#updateTagWithHttpInfo) | **PATCH** /rest/v2/tags/{tag_id} | Update a Tag |
+| [**updateTagCategory**](TagsApi.md#updateTagCategory) | **PATCH** /rest/v2/tags/categories/{tag_category_id} | Update a Tag Category |
+| [**updateTagCategoryWithHttpInfo**](TagsApi.md#updateTagCategoryWithHttpInfo) | **PATCH** /rest/v2/tags/categories/{tag_category_id} | Update a Tag Category |
 
 
 
@@ -50,17 +50,22 @@ Applies a Tag to a list of Contacts.
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.TagsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         TagsApi apiInstance = new TagsApi(defaultClient);
-        String tagId = "tagId_example"; // String | tag_id
-        ApplyRemoveTagRequest applyRemoveTagRequest = new ApplyRemoveTagRequest(); // ApplyRemoveTagRequest | applyRemoveTagRequest
+        String tagId = "tagId_example"; // String | 
+        ApplyRemoveTagRequest applyRemoveTagRequest = new ApplyRemoveTagRequest(); // ApplyRemoveTagRequest | 
         try {
             ApplyTagsResponse result = apiInstance.applyTags(tagId, applyRemoveTagRequest);
             System.out.println(result);
@@ -80,8 +85,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **tagId** | **String**| tag_id | |
-| **applyRemoveTagRequest** | [**ApplyRemoveTagRequest**](ApplyRemoveTagRequest.md)| applyRemoveTagRequest | |
+| **tagId** | **String**|  | |
+| **applyRemoveTagRequest** | [**ApplyRemoveTagRequest**](ApplyRemoveTagRequest.md)|  | |
 
 ### Return type
 
@@ -90,7 +95,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -101,9 +106,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## applyTagsWithHttpInfo
 
@@ -121,17 +130,22 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.TagsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         TagsApi apiInstance = new TagsApi(defaultClient);
-        String tagId = "tagId_example"; // String | tag_id
-        ApplyRemoveTagRequest applyRemoveTagRequest = new ApplyRemoveTagRequest(); // ApplyRemoveTagRequest | applyRemoveTagRequest
+        String tagId = "tagId_example"; // String | 
+        ApplyRemoveTagRequest applyRemoveTagRequest = new ApplyRemoveTagRequest(); // ApplyRemoveTagRequest | 
         try {
             ApiResponse<ApplyTagsResponse> response = apiInstance.applyTagsWithHttpInfo(tagId, applyRemoveTagRequest);
             System.out.println("Status code: " + response.getStatusCode());
@@ -153,8 +167,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **tagId** | **String**| tag_id | |
-| **applyRemoveTagRequest** | [**ApplyRemoveTagRequest**](ApplyRemoveTagRequest.md)| applyRemoveTagRequest | |
+| **tagId** | **String**|  | |
+| **applyRemoveTagRequest** | [**ApplyRemoveTagRequest**](ApplyRemoveTagRequest.md)|  | |
 
 ### Return type
 
@@ -163,7 +177,7 @@ ApiResponse<[**ApplyTagsResponse**](ApplyTagsResponse.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -174,9 +188,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## createTag
@@ -194,16 +212,21 @@ Creates a new Tag
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.TagsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         TagsApi apiInstance = new TagsApi(defaultClient);
-        CreateUpdateTagRequest createUpdateTagRequest = new CreateUpdateTagRequest(); // CreateUpdateTagRequest | tag
+        CreateUpdateTagRequest createUpdateTagRequest = new CreateUpdateTagRequest(); // CreateUpdateTagRequest | 
         try {
             Tag result = apiInstance.createTag(createUpdateTagRequest);
             System.out.println(result);
@@ -223,7 +246,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **createUpdateTagRequest** | [**CreateUpdateTagRequest**](CreateUpdateTagRequest.md)| tag | |
+| **createUpdateTagRequest** | [**CreateUpdateTagRequest**](CreateUpdateTagRequest.md)|  | |
 
 ### Return type
 
@@ -232,7 +255,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -243,9 +266,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## createTagWithHttpInfo
 
@@ -263,16 +290,21 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.TagsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         TagsApi apiInstance = new TagsApi(defaultClient);
-        CreateUpdateTagRequest createUpdateTagRequest = new CreateUpdateTagRequest(); // CreateUpdateTagRequest | tag
+        CreateUpdateTagRequest createUpdateTagRequest = new CreateUpdateTagRequest(); // CreateUpdateTagRequest | 
         try {
             ApiResponse<Tag> response = apiInstance.createTagWithHttpInfo(createUpdateTagRequest);
             System.out.println("Status code: " + response.getStatusCode());
@@ -294,7 +326,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **createUpdateTagRequest** | [**CreateUpdateTagRequest**](CreateUpdateTagRequest.md)| tag | |
+| **createUpdateTagRequest** | [**CreateUpdateTagRequest**](CreateUpdateTagRequest.md)|  | |
 
 ### Return type
 
@@ -303,7 +335,7 @@ ApiResponse<[**Tag**](Tag.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -314,9 +346,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## createTagCategory
@@ -334,16 +370,21 @@ Creates a new Tag Category.
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.TagsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         TagsApi apiInstance = new TagsApi(defaultClient);
-        CreateUpdateTagCategoryRequest createUpdateTagCategoryRequest = new CreateUpdateTagCategoryRequest(); // CreateUpdateTagCategoryRequest | request
+        CreateUpdateTagCategoryRequest createUpdateTagCategoryRequest = new CreateUpdateTagCategoryRequest(); // CreateUpdateTagCategoryRequest | 
         try {
             TagCategory result = apiInstance.createTagCategory(createUpdateTagCategoryRequest);
             System.out.println(result);
@@ -363,7 +404,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **createUpdateTagCategoryRequest** | [**CreateUpdateTagCategoryRequest**](CreateUpdateTagCategoryRequest.md)| request | |
+| **createUpdateTagCategoryRequest** | [**CreateUpdateTagCategoryRequest**](CreateUpdateTagCategoryRequest.md)|  | |
 
 ### Return type
 
@@ -372,7 +413,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -383,9 +424,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## createTagCategoryWithHttpInfo
 
@@ -403,16 +448,21 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.TagsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         TagsApi apiInstance = new TagsApi(defaultClient);
-        CreateUpdateTagCategoryRequest createUpdateTagCategoryRequest = new CreateUpdateTagCategoryRequest(); // CreateUpdateTagCategoryRequest | request
+        CreateUpdateTagCategoryRequest createUpdateTagCategoryRequest = new CreateUpdateTagCategoryRequest(); // CreateUpdateTagCategoryRequest | 
         try {
             ApiResponse<TagCategory> response = apiInstance.createTagCategoryWithHttpInfo(createUpdateTagCategoryRequest);
             System.out.println("Status code: " + response.getStatusCode());
@@ -434,7 +484,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **createUpdateTagCategoryRequest** | [**CreateUpdateTagCategoryRequest**](CreateUpdateTagCategoryRequest.md)| request | |
+| **createUpdateTagCategoryRequest** | [**CreateUpdateTagCategoryRequest**](CreateUpdateTagCategoryRequest.md)|  | |
 
 ### Return type
 
@@ -443,7 +493,7 @@ ApiResponse<[**TagCategory**](TagCategory.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -454,9 +504,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## deleteTag
@@ -474,16 +528,21 @@ Deletes a Tag.
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.TagsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         TagsApi apiInstance = new TagsApi(defaultClient);
-        String tagId = "tagId_example"; // String | tag_id
+        String tagId = "tagId_example"; // String | 
         try {
             apiInstance.deleteTag(tagId);
         } catch (ApiException e) {
@@ -502,7 +561,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **tagId** | **String**| tag_id | |
+| **tagId** | **String**|  | |
 
 ### Return type
 
@@ -511,7 +570,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -522,10 +581,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## deleteTagWithHttpInfo
 
@@ -543,16 +605,21 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.TagsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         TagsApi apiInstance = new TagsApi(defaultClient);
-        String tagId = "tagId_example"; // String | tag_id
+        String tagId = "tagId_example"; // String | 
         try {
             ApiResponse<Void> response = apiInstance.deleteTagWithHttpInfo(tagId);
             System.out.println("Status code: " + response.getStatusCode());
@@ -573,7 +640,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **tagId** | **String**| tag_id | |
+| **tagId** | **String**|  | |
 
 ### Return type
 
@@ -582,7 +649,7 @@ ApiResponse<Void>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -593,10 +660,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## deleteTagCategory
@@ -614,16 +684,21 @@ Deletes the specified Tag Category
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.TagsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         TagsApi apiInstance = new TagsApi(defaultClient);
-        String tagCategoryId = "tagCategoryId_example"; // String | tag_category_id
+        String tagCategoryId = "tagCategoryId_example"; // String | 
         try {
             apiInstance.deleteTagCategory(tagCategoryId);
         } catch (ApiException e) {
@@ -642,7 +717,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **tagCategoryId** | **String**| tag_category_id | |
+| **tagCategoryId** | **String**|  | |
 
 ### Return type
 
@@ -651,7 +726,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -662,10 +737,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## deleteTagCategoryWithHttpInfo
 
@@ -683,16 +761,21 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.TagsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         TagsApi apiInstance = new TagsApi(defaultClient);
-        String tagCategoryId = "tagCategoryId_example"; // String | tag_category_id
+        String tagCategoryId = "tagCategoryId_example"; // String | 
         try {
             ApiResponse<Void> response = apiInstance.deleteTagCategoryWithHttpInfo(tagCategoryId);
             System.out.println("Status code: " + response.getStatusCode());
@@ -713,7 +796,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **tagCategoryId** | **String**| tag_category_id | |
+| **tagCategoryId** | **String**|  | |
 
 ### Return type
 
@@ -722,7 +805,7 @@ ApiResponse<Void>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -733,10 +816,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## getCategory
@@ -754,16 +840,21 @@ Returns information about the specified Tag Category
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.TagsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         TagsApi apiInstance = new TagsApi(defaultClient);
-        String tagCategoryId = "tagCategoryId_example"; // String | tag_category_id
+        String tagCategoryId = "tagCategoryId_example"; // String | 
         try {
             GetTagCategoryResponse result = apiInstance.getCategory(tagCategoryId);
             System.out.println(result);
@@ -783,7 +874,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **tagCategoryId** | **String**| tag_category_id | |
+| **tagCategoryId** | **String**|  | |
 
 ### Return type
 
@@ -792,7 +883,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -803,10 +894,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## getCategoryWithHttpInfo
 
@@ -824,16 +918,21 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.TagsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         TagsApi apiInstance = new TagsApi(defaultClient);
-        String tagCategoryId = "tagCategoryId_example"; // String | tag_category_id
+        String tagCategoryId = "tagCategoryId_example"; // String | 
         try {
             ApiResponse<GetTagCategoryResponse> response = apiInstance.getCategoryWithHttpInfo(tagCategoryId);
             System.out.println("Status code: " + response.getStatusCode());
@@ -855,7 +954,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **tagCategoryId** | **String**| tag_category_id | |
+| **tagCategoryId** | **String**|  | |
 
 ### Return type
 
@@ -864,7 +963,7 @@ ApiResponse<[**GetTagCategoryResponse**](GetTagCategoryResponse.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -875,10 +974,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## getTag
@@ -896,16 +998,21 @@ Retrieves information about the specified Tag
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.TagsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         TagsApi apiInstance = new TagsApi(defaultClient);
-        String tagId = "tagId_example"; // String | tag_id
+        String tagId = "tagId_example"; // String | 
         try {
             Tag result = apiInstance.getTag(tagId);
             System.out.println(result);
@@ -925,7 +1032,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **tagId** | **String**| tag_id | |
+| **tagId** | **String**|  | |
 
 ### Return type
 
@@ -934,7 +1041,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -945,10 +1052,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## getTagWithHttpInfo
 
@@ -966,16 +1076,21 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.TagsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         TagsApi apiInstance = new TagsApi(defaultClient);
-        String tagId = "tagId_example"; // String | tag_id
+        String tagId = "tagId_example"; // String | 
         try {
             ApiResponse<Tag> response = apiInstance.getTagWithHttpInfo(tagId);
             System.out.println("Status code: " + response.getStatusCode());
@@ -997,7 +1112,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **tagId** | **String**| tag_id | |
+| **tagId** | **String**|  | |
 
 ### Return type
 
@@ -1006,7 +1121,7 @@ ApiResponse<[**Tag**](Tag.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1017,10 +1132,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## listCompaniesForTagId
@@ -1038,17 +1156,22 @@ Retrieves a list of Companies that have the given Tag applied. To search for &#x
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.TagsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         TagsApi apiInstance = new TagsApi(defaultClient);
-        String tagId = "tagId_example"; // String | tag_id
-        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `company_name` - (String) `email` - (String) `since_applied_time` - (String) `until_applied_time` You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. If NONE is passed in for `email`, it will check for the non-existence of that field. For the filters listed above, here are some examples: - `filter=company_name%3D%3DCompany` - `filter=email%3D%3Dtest@gmail.com` - `filter=since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;` 
+        String tagId = "tagId_example"; // String | 
+        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `company_name` - (String) `email` - (String) `since_applied_time` - (String) `until_applied_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. If NONE is passed in for `email`, it will check for the non-existence of that field. For the filters listed above, here are some examples: - `filter=company_name%3D%3DCompany` - `filter=email%3D%3Dtest@gmail.com` - `filter=since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;` 
         String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `company_name` - `email` - `applied_time`  One of the following directions: - `asc` - `desc`
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
@@ -1071,8 +1194,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **tagId** | **String**| tag_id | |
-| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_applied_time&#x60; - (String) &#x60;until_applied_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. If NONE is passed in for &#x60;email&#x60;, it will check for the non-existence of that field. For the filters listed above, here are some examples: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  | [optional] |
+| **tagId** | **String**|  | |
+| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_applied_time&#x60; - (String) &#x60;until_applied_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. If NONE is passed in for &#x60;email&#x60;, it will check for the non-existence of that field. For the filters listed above, here are some examples: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  | [optional] |
 | **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;company_name&#x60; - &#x60;email&#x60; - &#x60;applied_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **pageSize** | **Integer**| Total number of items to return per page | [optional] |
 | **pageToken** | **String**| Page token | [optional] |
@@ -1084,7 +1207,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1095,10 +1218,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## listCompaniesForTagIdWithHttpInfo
 
@@ -1116,17 +1242,22 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.TagsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         TagsApi apiInstance = new TagsApi(defaultClient);
-        String tagId = "tagId_example"; // String | tag_id
-        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `company_name` - (String) `email` - (String) `since_applied_time` - (String) `until_applied_time` You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. If NONE is passed in for `email`, it will check for the non-existence of that field. For the filters listed above, here are some examples: - `filter=company_name%3D%3DCompany` - `filter=email%3D%3Dtest@gmail.com` - `filter=since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;` 
+        String tagId = "tagId_example"; // String | 
+        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `company_name` - (String) `email` - (String) `since_applied_time` - (String) `until_applied_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. If NONE is passed in for `email`, it will check for the non-existence of that field. For the filters listed above, here are some examples: - `filter=company_name%3D%3DCompany` - `filter=email%3D%3Dtest@gmail.com` - `filter=since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;` 
         String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `company_name` - `email` - `applied_time`  One of the following directions: - `asc` - `desc`
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
@@ -1151,8 +1282,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **tagId** | **String**| tag_id | |
-| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_applied_time&#x60; - (String) &#x60;until_applied_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. If NONE is passed in for &#x60;email&#x60;, it will check for the non-existence of that field. For the filters listed above, here are some examples: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  | [optional] |
+| **tagId** | **String**|  | |
+| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_applied_time&#x60; - (String) &#x60;until_applied_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. If NONE is passed in for &#x60;email&#x60;, it will check for the non-existence of that field. For the filters listed above, here are some examples: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  | [optional] |
 | **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;company_name&#x60; - &#x60;email&#x60; - &#x60;applied_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **pageSize** | **Integer**| Total number of items to return per page | [optional] |
 | **pageToken** | **String**| Page token | [optional] |
@@ -1164,7 +1295,7 @@ ApiResponse<[**ListTaggedCompaniesResponse**](ListTaggedCompaniesResponse.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1175,10 +1306,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## listContactsWithTagId
@@ -1196,17 +1330,22 @@ Retrieves a list of Contacts with the specified Tag To search for &#x60;null&#x6
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.TagsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         TagsApi apiInstance = new TagsApi(defaultClient);
-        String tagId = "tagId_example"; // String | tag_id
-        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `given_name` - (String) `family_name` - (String) `email` - (String) `since_applied_time` - (String) `until_applied_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. If NONE is passed in for `email`, `given_name`, or `family_name`, it will check for the non-existence of that field. For the filters listed above, here are some examples: - `filter=given_name%3D%3DJohn` - `filter=family_name%3D%3DSmith` - `filter=email%3D%3DNONE`
+        String tagId = "tagId_example"; // String | 
+        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `given_name` - (String) `family_name` - (String) `email` - (String) `since_applied_time` - (String) `until_applied_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. If NONE is passed in for `email`, `given_name`, or `family_name`, it will check for the non-existence of that field. For the filters listed above, here are some examples: - `filter=given_name%3D%3DJohn` - `filter=family_name%3D%3DSmith` - `filter=email%3D%3DNONE` - `filter=since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;` 
         String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `given_name` - `family_name` - `email` - `applied_time`  One of the following directions: - `asc` - `desc`
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
@@ -1229,8 +1368,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **tagId** | **String**| tag_id | |
-| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;given_name&#x60; - (String) &#x60;family_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_applied_time&#x60; - (String) &#x60;until_applied_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. If NONE is passed in for &#x60;email&#x60;, &#x60;given_name&#x60;, or &#x60;family_name&#x60;, it will check for the non-existence of that field. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DJohn&#x60; - &#x60;filter&#x3D;family_name%3D%3DSmith&#x60; - &#x60;filter&#x3D;email%3D%3DNONE&#x60; | [optional] |
+| **tagId** | **String**|  | |
+| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;given_name&#x60; - (String) &#x60;family_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_applied_time&#x60; - (String) &#x60;until_applied_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. If NONE is passed in for &#x60;email&#x60;, &#x60;given_name&#x60;, or &#x60;family_name&#x60;, it will check for the non-existence of that field. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DJohn&#x60; - &#x60;filter&#x3D;family_name%3D%3DSmith&#x60; - &#x60;filter&#x3D;email%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  | [optional] |
 | **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;given_name&#x60; - &#x60;family_name&#x60; - &#x60;email&#x60; - &#x60;applied_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **pageSize** | **Integer**| Total number of items to return per page | [optional] |
 | **pageToken** | **String**| Page token | [optional] |
@@ -1242,7 +1381,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1253,10 +1392,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## listContactsWithTagIdWithHttpInfo
 
@@ -1274,17 +1416,22 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.TagsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         TagsApi apiInstance = new TagsApi(defaultClient);
-        String tagId = "tagId_example"; // String | tag_id
-        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `given_name` - (String) `family_name` - (String) `email` - (String) `since_applied_time` - (String) `until_applied_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. If NONE is passed in for `email`, `given_name`, or `family_name`, it will check for the non-existence of that field. For the filters listed above, here are some examples: - `filter=given_name%3D%3DJohn` - `filter=family_name%3D%3DSmith` - `filter=email%3D%3DNONE`
+        String tagId = "tagId_example"; // String | 
+        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `given_name` - (String) `family_name` - (String) `email` - (String) `since_applied_time` - (String) `until_applied_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. If NONE is passed in for `email`, `given_name`, or `family_name`, it will check for the non-existence of that field. For the filters listed above, here are some examples: - `filter=given_name%3D%3DJohn` - `filter=family_name%3D%3DSmith` - `filter=email%3D%3DNONE` - `filter=since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;` 
         String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `given_name` - `family_name` - `email` - `applied_time`  One of the following directions: - `asc` - `desc`
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
@@ -1309,8 +1456,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **tagId** | **String**| tag_id | |
-| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;given_name&#x60; - (String) &#x60;family_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_applied_time&#x60; - (String) &#x60;until_applied_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. If NONE is passed in for &#x60;email&#x60;, &#x60;given_name&#x60;, or &#x60;family_name&#x60;, it will check for the non-existence of that field. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DJohn&#x60; - &#x60;filter&#x3D;family_name%3D%3DSmith&#x60; - &#x60;filter&#x3D;email%3D%3DNONE&#x60; | [optional] |
+| **tagId** | **String**|  | |
+| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;given_name&#x60; - (String) &#x60;family_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_applied_time&#x60; - (String) &#x60;until_applied_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. If NONE is passed in for &#x60;email&#x60;, &#x60;given_name&#x60;, or &#x60;family_name&#x60;, it will check for the non-existence of that field. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DJohn&#x60; - &#x60;filter&#x3D;family_name%3D%3DSmith&#x60; - &#x60;filter&#x3D;email%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  | [optional] |
 | **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;given_name&#x60; - &#x60;family_name&#x60; - &#x60;email&#x60; - &#x60;applied_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **pageSize** | **Integer**| Total number of items to return per page | [optional] |
 | **pageToken** | **String**| Page token | [optional] |
@@ -1322,7 +1469,7 @@ ApiResponse<[**ListTaggedContactsResponse**](ListTaggedContactsResponse.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1333,10 +1480,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## listTagCategories
@@ -1354,17 +1504,22 @@ Retrieves a list of defined Tag Categories To search for &#x60;null&#x60; or emp
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.TagsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         TagsApi apiInstance = new TagsApi(defaultClient);
-        String filter = "filter_example"; // String | Filter to apply, allowed fields are:  - (String) `name` - (String) `description` - (String) `since_create_time` - (String) `until_create_time` - (String) `since_update_time` - (String) `until_update_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. If NONE is passed in for `category_id` or `description`, it will check for the non-existence of that field. For the filters listed above, here are some examples:  - `filter=name%3D%3Dmy-tag` - `filter=description%3D%3DNONE` - `filter=since_create_time%3D%3D2024-12-22T01:00:00.000Z;until_create_time%3D%3D2025-01-01T00:00:00.000Z;`
-        String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields:  - `name` - `create_time` - `update_time`  One of the following directions: - `asc` - `desc`
+        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `name` - (String) `description` - (String) `since_create_time` - (String) `until_create_time` - (String) `since_update_time` - (String) `until_update_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. If NONE is passed in for `name` or `description`, it will check for the non-existence of that field. For the filters listed above, here are some examples: - `filter=name%3D%3Dmy-tag-category` - `filter=description%3D%3DNONE` - `filter=since_create_time%3D%3D2024-12-22T01:00:00.000Z;until_create_time%3D%3D2025-01-01T00:00:00.000Z;`
+        String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `name` - `create_time` - `update_time`  One of the following directions: - `asc` - `desc`
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
         try {
@@ -1386,8 +1541,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **filter** | **String**| Filter to apply, allowed fields are:  - (String) &#x60;name&#x60; - (String) &#x60;description&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. If NONE is passed in for &#x60;category_id&#x60; or &#x60;description&#x60;, it will check for the non-existence of that field. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;name%3D%3Dmy-tag&#x60; - &#x60;filter&#x3D;description%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_create_time%3D%3D2024-12-22T01:00:00.000Z;until_create_time%3D%3D2025-01-01T00:00:00.000Z;&#x60; | [optional] |
-| **orderBy** | **String**| Attribute and direction to order items. One of the following fields:  - &#x60;name&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
+| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (String) &#x60;description&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. If NONE is passed in for &#x60;name&#x60; or &#x60;description&#x60;, it will check for the non-existence of that field. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3Dmy-tag-category&#x60; - &#x60;filter&#x3D;description%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_create_time%3D%3D2024-12-22T01:00:00.000Z;until_create_time%3D%3D2025-01-01T00:00:00.000Z;&#x60; | [optional] |
+| **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **pageSize** | **Integer**| Total number of items to return per page | [optional] |
 | **pageToken** | **String**| Page token | [optional] |
 
@@ -1398,7 +1553,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1409,10 +1564,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## listTagCategoriesWithHttpInfo
 
@@ -1430,17 +1588,22 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.TagsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         TagsApi apiInstance = new TagsApi(defaultClient);
-        String filter = "filter_example"; // String | Filter to apply, allowed fields are:  - (String) `name` - (String) `description` - (String) `since_create_time` - (String) `until_create_time` - (String) `since_update_time` - (String) `until_update_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. If NONE is passed in for `category_id` or `description`, it will check for the non-existence of that field. For the filters listed above, here are some examples:  - `filter=name%3D%3Dmy-tag` - `filter=description%3D%3DNONE` - `filter=since_create_time%3D%3D2024-12-22T01:00:00.000Z;until_create_time%3D%3D2025-01-01T00:00:00.000Z;`
-        String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields:  - `name` - `create_time` - `update_time`  One of the following directions: - `asc` - `desc`
+        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `name` - (String) `description` - (String) `since_create_time` - (String) `until_create_time` - (String) `since_update_time` - (String) `until_update_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. If NONE is passed in for `name` or `description`, it will check for the non-existence of that field. For the filters listed above, here are some examples: - `filter=name%3D%3Dmy-tag-category` - `filter=description%3D%3DNONE` - `filter=since_create_time%3D%3D2024-12-22T01:00:00.000Z;until_create_time%3D%3D2025-01-01T00:00:00.000Z;`
+        String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `name` - `create_time` - `update_time`  One of the following directions: - `asc` - `desc`
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
         try {
@@ -1464,8 +1627,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **filter** | **String**| Filter to apply, allowed fields are:  - (String) &#x60;name&#x60; - (String) &#x60;description&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. If NONE is passed in for &#x60;category_id&#x60; or &#x60;description&#x60;, it will check for the non-existence of that field. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;name%3D%3Dmy-tag&#x60; - &#x60;filter&#x3D;description%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_create_time%3D%3D2024-12-22T01:00:00.000Z;until_create_time%3D%3D2025-01-01T00:00:00.000Z;&#x60; | [optional] |
-| **orderBy** | **String**| Attribute and direction to order items. One of the following fields:  - &#x60;name&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
+| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (String) &#x60;description&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. If NONE is passed in for &#x60;name&#x60; or &#x60;description&#x60;, it will check for the non-existence of that field. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3Dmy-tag-category&#x60; - &#x60;filter&#x3D;description%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_create_time%3D%3D2024-12-22T01:00:00.000Z;until_create_time%3D%3D2025-01-01T00:00:00.000Z;&#x60; | [optional] |
+| **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **pageSize** | **Integer**| Total number of items to return per page | [optional] |
 | **pageToken** | **String**| Page token | [optional] |
 
@@ -1476,7 +1639,7 @@ ApiResponse<[**ListTagCategoriesResponse**](ListTagCategoriesResponse.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1487,10 +1650,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## listTags
@@ -1508,13 +1674,18 @@ Retrieves a list of Tags defined in the application To search for &#x60;null&#x6
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.TagsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         TagsApi apiInstance = new TagsApi(defaultClient);
         String filter = "filter_example"; // String | Filter to apply, allowed fields are:  - (String) `name` - (String) `description` - (String) `category_id` - (String) `since_create_time` - (String) `until_create_time` - (String) `since_update_time` - (String) `until_update_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. If NONE is passed in for `category_id` or `description`, it will check for the non-existence of that field. For the filters listed above, here are some examples:  - `filter=name%3D%3Dmy-tag` - `filter=category_id%3D%3DNONE` - `filter=description%3D%3DNONE` - `filter=since_create_time%3D%3D2024-12-22T01:00:00.000Z;until_create_time%3D%3D2025-01-01T00:00:00.000Z;`
@@ -1552,7 +1723,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1563,10 +1734,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## listTagsWithHttpInfo
 
@@ -1584,13 +1758,18 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.TagsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         TagsApi apiInstance = new TagsApi(defaultClient);
         String filter = "filter_example"; // String | Filter to apply, allowed fields are:  - (String) `name` - (String) `description` - (String) `category_id` - (String) `since_create_time` - (String) `until_create_time` - (String) `since_update_time` - (String) `until_update_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. If NONE is passed in for `category_id` or `description`, it will check for the non-existence of that field. For the filters listed above, here are some examples:  - `filter=name%3D%3Dmy-tag` - `filter=category_id%3D%3DNONE` - `filter=description%3D%3DNONE` - `filter=since_create_time%3D%3D2024-12-22T01:00:00.000Z;until_create_time%3D%3D2025-01-01T00:00:00.000Z;`
@@ -1630,7 +1809,7 @@ ApiResponse<[**ListTagsResponse**](ListTagsResponse.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1641,10 +1820,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## removeTags
@@ -1662,17 +1844,22 @@ Removes a Tag from a list of Contacts.
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.TagsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         TagsApi apiInstance = new TagsApi(defaultClient);
-        String tagId = "tagId_example"; // String | tag_id
-        ApplyRemoveTagRequest applyRemoveTagRequest = new ApplyRemoveTagRequest(); // ApplyRemoveTagRequest | applyRemoveTagRequest
+        String tagId = "tagId_example"; // String | 
+        ApplyRemoveTagRequest applyRemoveTagRequest = new ApplyRemoveTagRequest(); // ApplyRemoveTagRequest | 
         try {
             apiInstance.removeTags(tagId, applyRemoveTagRequest);
         } catch (ApiException e) {
@@ -1691,8 +1878,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **tagId** | **String**| tag_id | |
-| **applyRemoveTagRequest** | [**ApplyRemoveTagRequest**](ApplyRemoveTagRequest.md)| applyRemoveTagRequest | |
+| **tagId** | **String**|  | |
+| **applyRemoveTagRequest** | [**ApplyRemoveTagRequest**](ApplyRemoveTagRequest.md)|  | |
 
 ### Return type
 
@@ -1701,7 +1888,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1712,9 +1899,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## removeTagsWithHttpInfo
 
@@ -1732,17 +1923,22 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.TagsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         TagsApi apiInstance = new TagsApi(defaultClient);
-        String tagId = "tagId_example"; // String | tag_id
-        ApplyRemoveTagRequest applyRemoveTagRequest = new ApplyRemoveTagRequest(); // ApplyRemoveTagRequest | applyRemoveTagRequest
+        String tagId = "tagId_example"; // String | 
+        ApplyRemoveTagRequest applyRemoveTagRequest = new ApplyRemoveTagRequest(); // ApplyRemoveTagRequest | 
         try {
             ApiResponse<Void> response = apiInstance.removeTagsWithHttpInfo(tagId, applyRemoveTagRequest);
             System.out.println("Status code: " + response.getStatusCode());
@@ -1763,8 +1959,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **tagId** | **String**| tag_id | |
-| **applyRemoveTagRequest** | [**ApplyRemoveTagRequest**](ApplyRemoveTagRequest.md)| applyRemoveTagRequest | |
+| **tagId** | **String**|  | |
+| **applyRemoveTagRequest** | [**ApplyRemoveTagRequest**](ApplyRemoveTagRequest.md)|  | |
 
 ### Return type
 
@@ -1773,7 +1969,7 @@ ApiResponse<Void>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1784,14 +1980,18 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## updateTag
 
-> UpdateTagResponse updateTag(tagId, updateMask, createUpdateTagRequest)
+> UpdateTagResponse updateTag(tagId, createUpdateTagRequest, updateMask)
 
 Update a Tag
 
@@ -1804,20 +2004,25 @@ Updates a Tag with only the values provided in the request
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.TagsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         TagsApi apiInstance = new TagsApi(defaultClient);
-        String tagId = "tagId_example"; // String | tag_id
-        List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        CreateUpdateTagRequest createUpdateTagRequest = new CreateUpdateTagRequest(); // CreateUpdateTagRequest | tag
+        String tagId = "tagId_example"; // String | 
+        CreateUpdateTagRequest createUpdateTagRequest = new CreateUpdateTagRequest(); // CreateUpdateTagRequest | 
+        String updateMask = "name,description,category"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
-            UpdateTagResponse result = apiInstance.updateTag(tagId, updateMask, createUpdateTagRequest);
+            UpdateTagResponse result = apiInstance.updateTag(tagId, createUpdateTagRequest, updateMask);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling TagsApi#updateTag");
@@ -1835,9 +2040,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **tagId** | **String**| tag_id | |
-| **updateMask** | [**List&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name, description, category] |
-| **createUpdateTagRequest** | [**CreateUpdateTagRequest**](CreateUpdateTagRequest.md)| tag | [optional] |
+| **tagId** | **String**|  | |
+| **createUpdateTagRequest** | [**CreateUpdateTagRequest**](CreateUpdateTagRequest.md)|  | |
+| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name,description,category] |
 
 ### Return type
 
@@ -1846,7 +2051,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1857,14 +2062,17 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## updateTagWithHttpInfo
 
-> ApiResponse<UpdateTagResponse> updateTag updateTagWithHttpInfo(tagId, updateMask, createUpdateTagRequest)
+> ApiResponse<UpdateTagResponse> updateTag updateTagWithHttpInfo(tagId, createUpdateTagRequest, updateMask)
 
 Update a Tag
 
@@ -1878,20 +2086,25 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.TagsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         TagsApi apiInstance = new TagsApi(defaultClient);
-        String tagId = "tagId_example"; // String | tag_id
-        List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        CreateUpdateTagRequest createUpdateTagRequest = new CreateUpdateTagRequest(); // CreateUpdateTagRequest | tag
+        String tagId = "tagId_example"; // String | 
+        CreateUpdateTagRequest createUpdateTagRequest = new CreateUpdateTagRequest(); // CreateUpdateTagRequest | 
+        String updateMask = "name,description,category"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
-            ApiResponse<UpdateTagResponse> response = apiInstance.updateTagWithHttpInfo(tagId, updateMask, createUpdateTagRequest);
+            ApiResponse<UpdateTagResponse> response = apiInstance.updateTagWithHttpInfo(tagId, createUpdateTagRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -1911,9 +2124,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **tagId** | **String**| tag_id | |
-| **updateMask** | [**List&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name, description, category] |
-| **createUpdateTagRequest** | [**CreateUpdateTagRequest**](CreateUpdateTagRequest.md)| tag | [optional] |
+| **tagId** | **String**|  | |
+| **createUpdateTagRequest** | [**CreateUpdateTagRequest**](CreateUpdateTagRequest.md)|  | |
+| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name,description,category] |
 
 ### Return type
 
@@ -1922,7 +2135,7 @@ ApiResponse<[**UpdateTagResponse**](UpdateTagResponse.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1933,15 +2146,18 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## updateTagCategory
 
-> UpdateTagCategoryResponse updateTagCategory(tagCategoryId, updateMask, createUpdateTagCategoryRequest)
+> UpdateTagCategoryResponse updateTagCategory(tagCategoryId, createUpdateTagCategoryRequest, updateMask)
 
 Update a Tag Category
 
@@ -1954,20 +2170,25 @@ Updates a Tag Category with only the values provided in the request
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.TagsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         TagsApi apiInstance = new TagsApi(defaultClient);
-        String tagCategoryId = "tagCategoryId_example"; // String | tag_category_id
-        List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        CreateUpdateTagCategoryRequest createUpdateTagCategoryRequest = new CreateUpdateTagCategoryRequest(); // CreateUpdateTagCategoryRequest | tagCategory
+        String tagCategoryId = "tagCategoryId_example"; // String | 
+        CreateUpdateTagCategoryRequest createUpdateTagCategoryRequest = new CreateUpdateTagCategoryRequest(); // CreateUpdateTagCategoryRequest | 
+        String updateMask = "name,description"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
-            UpdateTagCategoryResponse result = apiInstance.updateTagCategory(tagCategoryId, updateMask, createUpdateTagCategoryRequest);
+            UpdateTagCategoryResponse result = apiInstance.updateTagCategory(tagCategoryId, createUpdateTagCategoryRequest, updateMask);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling TagsApi#updateTagCategory");
@@ -1985,9 +2206,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **tagCategoryId** | **String**| tag_category_id | |
-| **updateMask** | [**List&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name, description] |
-| **createUpdateTagCategoryRequest** | [**CreateUpdateTagCategoryRequest**](CreateUpdateTagCategoryRequest.md)| tagCategory | [optional] |
+| **tagCategoryId** | **String**|  | |
+| **createUpdateTagCategoryRequest** | [**CreateUpdateTagCategoryRequest**](CreateUpdateTagCategoryRequest.md)|  | |
+| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name,description] |
 
 ### Return type
 
@@ -1996,7 +2217,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -2007,14 +2228,17 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## updateTagCategoryWithHttpInfo
 
-> ApiResponse<UpdateTagCategoryResponse> updateTagCategory updateTagCategoryWithHttpInfo(tagCategoryId, updateMask, createUpdateTagCategoryRequest)
+> ApiResponse<UpdateTagCategoryResponse> updateTagCategory updateTagCategoryWithHttpInfo(tagCategoryId, createUpdateTagCategoryRequest, updateMask)
 
 Update a Tag Category
 
@@ -2028,20 +2252,25 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.TagsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         TagsApi apiInstance = new TagsApi(defaultClient);
-        String tagCategoryId = "tagCategoryId_example"; // String | tag_category_id
-        List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        CreateUpdateTagCategoryRequest createUpdateTagCategoryRequest = new CreateUpdateTagCategoryRequest(); // CreateUpdateTagCategoryRequest | tagCategory
+        String tagCategoryId = "tagCategoryId_example"; // String | 
+        CreateUpdateTagCategoryRequest createUpdateTagCategoryRequest = new CreateUpdateTagCategoryRequest(); // CreateUpdateTagCategoryRequest | 
+        String updateMask = "name,description"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
-            ApiResponse<UpdateTagCategoryResponse> response = apiInstance.updateTagCategoryWithHttpInfo(tagCategoryId, updateMask, createUpdateTagCategoryRequest);
+            ApiResponse<UpdateTagCategoryResponse> response = apiInstance.updateTagCategoryWithHttpInfo(tagCategoryId, createUpdateTagCategoryRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -2061,9 +2290,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **tagCategoryId** | **String**| tag_category_id | |
-| **updateMask** | [**List&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name, description] |
-| **createUpdateTagCategoryRequest** | [**CreateUpdateTagCategoryRequest**](CreateUpdateTagCategoryRequest.md)| tagCategory | [optional] |
+| **tagCategoryId** | **String**|  | |
+| **createUpdateTagCategoryRequest** | [**CreateUpdateTagCategoryRequest**](CreateUpdateTagCategoryRequest.md)|  | |
+| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name,description] |
 
 ### Return type
 
@@ -2072,7 +2301,7 @@ ApiResponse<[**UpdateTagCategoryResponse**](UpdateTagCategoryResponse.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -2083,8 +2312,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 

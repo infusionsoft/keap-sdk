@@ -7,12 +7,12 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**createTime** | **String** |  |  [optional] |
-|**id** | **String** |  |  [optional] |
-|**payAmount** | **Double** |  |  [optional] |
-|**payDate** | **String** |  |  [optional] |
-|**payNotes** | **String** |  |  [optional] |
-|**payType** | [**PayTypeEnum**](#PayTypeEnum) |  |  [optional] |
+|**id** | **String** | Payment ID |  [optional] |
+|**payDate** | **String** | Payment date (ISO-8601) |  [optional] |
+|**payNotes** | **String** | Payment notes |  [optional] |
+|**payAmount** | **Double** | Payment amount |  [optional] |
+|**payType** | [**PayTypeEnum**](#PayTypeEnum) | Payment type |  [optional] |
+|**createTime** | **String** | Record creation time (ISO-8601) |  [optional] |
 
 
 

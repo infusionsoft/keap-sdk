@@ -1,15 +1,15 @@
 # keap_core_v2_client.EmailAddressApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_email_address_status**](EmailAddressApi.md#get_email_address_status) | **GET** /v2/emailAddresses/{email}/status | Retrieve an Email Address status
-[**update_email_address_opt_status**](EmailAddressApi.md#update_email_address_opt_status) | **PATCH** /v2/emailAddresses/{email}/status | Update an Email Address opt-in status
+[**get_email_address_status**](EmailAddressApi.md#get_email_address_status) | **GET** /rest/v2/emailAddresses/{email}/status | Retrieve an Email Address status
+[**update_email_address_opt_status**](EmailAddressApi.md#update_email_address_opt_status) | **PATCH** /rest/v2/emailAddresses/{email}/status | Update an Email Address opt-in status
 
 
 # **get_email_address_status**
-> EmailAddressStatus get_email_address_status(email)
+> RestEmailAddressStatus get_email_address_status(email)
 
 Retrieve an Email Address status
 
@@ -17,24 +17,31 @@ Retrieves the opt-in status for a given Email Address
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
-from keap_core_v2_client.models.email_address_status import EmailAddressStatus
+from keap_core_v2_client.models.rest_email_address_status import RestEmailAddressStatus
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.EmailAddressApi(api_client)
-    email = 'email_example' # str | email
+    email = 'email_example' # str | 
 
     try:
         # Retrieve an Email Address status
@@ -51,15 +58,15 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **email** | **str**| email | 
+ **email** | **str**|  | 
 
 ### Return type
 
-[**EmailAddressStatus**](EmailAddressStatus.md)
+[**RestEmailAddressStatus**](RestEmailAddressStatus.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -71,15 +78,18 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_email_address_opt_status**
-> EmailAddressStatus update_email_address_opt_status(email, update_email_address)
+> RestEmailAddressStatus update_email_address_opt_status(email, update_email_address)
 
 Update an Email Address opt-in status
 
@@ -104,26 +114,33 @@ All other existing statuses e.g. `List Unsubscribe`, `Opt-Out`, `System` etc wil
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
-from keap_core_v2_client.models.email_address_status import EmailAddressStatus
+from keap_core_v2_client.models.rest_email_address_status import RestEmailAddressStatus
 from keap_core_v2_client.models.update_email_address import UpdateEmailAddress
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.EmailAddressApi(api_client)
-    email = 'email_example' # str | email
-    update_email_address = keap_core_v2_client.UpdateEmailAddress() # UpdateEmailAddress | updateEmailAddress
+    email = 'email_example' # str | 
+    update_email_address = keap_core_v2_client.UpdateEmailAddress() # UpdateEmailAddress | 
 
     try:
         # Update an Email Address opt-in status
@@ -140,16 +157,16 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **email** | **str**| email | 
- **update_email_address** | [**UpdateEmailAddress**](UpdateEmailAddress.md)| updateEmailAddress | 
+ **email** | **str**|  | 
+ **update_email_address** | [**UpdateEmailAddress**](UpdateEmailAddress.md)|  | 
 
 ### Return type
 
-[**EmailAddressStatus**](EmailAddressStatus.md)
+[**RestEmailAddressStatus**](RestEmailAddressStatus.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -161,10 +178,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

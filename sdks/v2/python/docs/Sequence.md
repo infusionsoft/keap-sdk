@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**active_contact_count** | **int** |  | [optional] 
-**active_contact_count_completed** | **int** |  | [optional] 
-**historical_contact_count** | [**HistoricalCounts**](HistoricalCounts.md) |  | [optional] 
-**id** | **str** |  | [optional] 
-**name** | **str** |  | [optional] 
-**paths** | [**List[SequencePath]**](SequencePath.md) |  | [optional] 
+**id** | **str** | The unique identifier of the sequence | [optional] 
+**name** | **str** | The name of the sequence | [optional] 
+**paths** | [**List[SequencePath]**](SequencePath.md) | List of paths in this sequence | [optional] 
+**active_contact_count** | **int** | Number of contacts currently in this sequence | [optional] 
+**active_contact_count_completed** | **int** | Number of contacts who have completed this sequence | [optional] 
+**historical_contact_count** | [**HistoricalCounts**](HistoricalCounts.md) | Historical contact counts for this sequence | [optional] 
 
 ## Example
 

@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**automationIds** | **[String]** |  | [optional] 
-**lockedAutomationIds** | **[String]** |  | [optional] 
+**automationIds** | **[String]** | List of automation IDs | [optional] 
 **nextPageToken** | **String** |  | [optional] 
+**lockedAutomationIds** | **[String]** | List of automation IDs that are currently locked for editing | [optional] 
 
 

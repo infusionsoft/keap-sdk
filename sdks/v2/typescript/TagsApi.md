@@ -1,23 +1,23 @@
 # .TagsApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**applyTags**](TagsApi.md#applyTags) | **POST** /v2/tags/{tag_id}/contacts:applyTags | Apply Tag
-[**createTag**](TagsApi.md#createTag) | **POST** /v2/tags | Create Tag
-[**createTagCategory**](TagsApi.md#createTagCategory) | **POST** /v2/tags/categories | Create Tag Category
-[**deleteTag**](TagsApi.md#deleteTag) | **DELETE** /v2/tags/{tag_id} | Delete Tag
-[**deleteTagCategory**](TagsApi.md#deleteTagCategory) | **DELETE** /v2/tags/categories/{tag_category_id} | Delete Tag Category
-[**getCategory**](TagsApi.md#getCategory) | **GET** /v2/tags/categories/{tag_category_id} | Retrieve a Tag Category
-[**getTag**](TagsApi.md#getTag) | **GET** /v2/tags/{tag_id} | Retrieve a Tag
-[**listCompaniesForTagId**](TagsApi.md#listCompaniesForTagId) | **GET** /v2/tags/{tag_id}/companies | List Tagged Companies
-[**listContactsWithTagId**](TagsApi.md#listContactsWithTagId) | **GET** /v2/tags/{tag_id}/contacts | List Tagged Contacts
-[**listTagCategories**](TagsApi.md#listTagCategories) | **GET** /v2/tags/categories | List Tag Categories
-[**listTags**](TagsApi.md#listTags) | **GET** /v2/tags | List Tags
-[**removeTags**](TagsApi.md#removeTags) | **POST** /v2/tags/{tag_id}/contacts:removeTags | Remove Tags
-[**updateTag**](TagsApi.md#updateTag) | **PATCH** /v2/tags/{tag_id} | Update a Tag
-[**updateTagCategory**](TagsApi.md#updateTagCategory) | **PATCH** /v2/tags/categories/{tag_category_id} | Update a Tag Category
+[**applyTags**](TagsApi.md#applyTags) | **POST** /rest/v2/tags/{tag_id}/contacts:applyTags | Apply Tag
+[**createTag**](TagsApi.md#createTag) | **POST** /rest/v2/tags | Create Tag
+[**createTagCategory**](TagsApi.md#createTagCategory) | **POST** /rest/v2/tags/categories | Create Tag Category
+[**deleteTag**](TagsApi.md#deleteTag) | **DELETE** /rest/v2/tags/{tag_id} | Delete Tag
+[**deleteTagCategory**](TagsApi.md#deleteTagCategory) | **DELETE** /rest/v2/tags/categories/{tag_category_id} | Delete Tag Category
+[**getCategory**](TagsApi.md#getCategory) | **GET** /rest/v2/tags/categories/{tag_category_id} | Retrieve a Tag Category
+[**getTag**](TagsApi.md#getTag) | **GET** /rest/v2/tags/{tag_id} | Retrieve a Tag
+[**listCompaniesForTagId**](TagsApi.md#listCompaniesForTagId) | **GET** /rest/v2/tags/{tag_id}/companies | List Tagged Companies
+[**listContactsWithTagId**](TagsApi.md#listContactsWithTagId) | **GET** /rest/v2/tags/{tag_id}/contacts | List Tagged Contacts
+[**listTagCategories**](TagsApi.md#listTagCategories) | **GET** /rest/v2/tags/categories | List Tag Categories
+[**listTags**](TagsApi.md#listTags) | **GET** /rest/v2/tags | List Tags
+[**removeTags**](TagsApi.md#removeTags) | **POST** /rest/v2/tags/{tag_id}/contacts:removeTags | Remove Tags
+[**updateTag**](TagsApi.md#updateTag) | **PATCH** /rest/v2/tags/{tag_id} | Update a Tag
+[**updateTagCategory**](TagsApi.md#updateTagCategory) | **PATCH** /rest/v2/tags/categories/{tag_category_id} | Update a Tag Category
 
 
 # **applyTags**
@@ -36,13 +36,11 @@ const configuration = createConfiguration();
 const apiInstance = new TagsApi(configuration);
 
 const request: TagsApiApplyTagsRequest = {
-    // tag_id
+  
   tagId: "tag_id_example",
-    // applyRemoveTagRequest
+  
   applyRemoveTagRequest: {
-    contactIds: [
-      "contactIds_example",
-    ],
+    contactIds: [123, 456],
   },
 };
 
@@ -55,8 +53,8 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applyRemoveTagRequest** | **ApplyRemoveTagRequest**| applyRemoveTagRequest |
- **tagId** | [**string**] | tag_id | defaults to undefined
+ **applyRemoveTagRequest** | **ApplyRemoveTagRequest**|  |
+ **tagId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -65,7 +63,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -77,9 +75,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -99,13 +101,13 @@ const configuration = createConfiguration();
 const apiInstance = new TagsApi(configuration);
 
 const request: TagsApiCreateTagRequest = {
-    // tag
+  
   createUpdateTagRequest: {
+    name: "VIP Customer",
+    description: "High-value customers",
     category: {
-      id: "id_example",
+      id: "123",
     },
-    description: "description_example",
-    name: "name_example",
   },
 };
 
@@ -118,7 +120,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createUpdateTagRequest** | **CreateUpdateTagRequest**| tag |
+ **createUpdateTagRequest** | **CreateUpdateTagRequest**|  |
 
 
 ### Return type
@@ -127,7 +129,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -139,9 +141,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -161,10 +167,10 @@ const configuration = createConfiguration();
 const apiInstance = new TagsApi(configuration);
 
 const request: TagsApiCreateTagCategoryRequest = {
-    // request
+  
   createUpdateTagCategoryRequest: {
-    description: "description_example",
-    name: "name_example",
+    name: "Customer Segments",
+    description: "Tags for customer segmentation",
   },
 };
 
@@ -177,7 +183,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createUpdateTagCategoryRequest** | **CreateUpdateTagCategoryRequest**| request |
+ **createUpdateTagCategoryRequest** | **CreateUpdateTagCategoryRequest**|  |
 
 
 ### Return type
@@ -186,7 +192,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -198,9 +204,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -220,7 +230,7 @@ const configuration = createConfiguration();
 const apiInstance = new TagsApi(configuration);
 
 const request: TagsApiDeleteTagRequest = {
-    // tag_id
+  
   tagId: "tag_id_example",
 };
 
@@ -233,7 +243,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tagId** | [**string**] | tag_id | defaults to undefined
+ **tagId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -242,7 +252,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -254,10 +264,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No Content |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -277,7 +290,7 @@ const configuration = createConfiguration();
 const apiInstance = new TagsApi(configuration);
 
 const request: TagsApiDeleteTagCategoryRequest = {
-    // tag_category_id
+  
   tagCategoryId: "tag_category_id_example",
 };
 
@@ -290,7 +303,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tagCategoryId** | [**string**] | tag_category_id | defaults to undefined
+ **tagCategoryId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -299,7 +312,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -311,10 +324,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No Content |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -334,7 +350,7 @@ const configuration = createConfiguration();
 const apiInstance = new TagsApi(configuration);
 
 const request: TagsApiGetCategoryRequest = {
-    // tag_category_id
+  
   tagCategoryId: "tag_category_id_example",
 };
 
@@ -347,7 +363,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tagCategoryId** | [**string**] | tag_category_id | defaults to undefined
+ **tagCategoryId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -356,7 +372,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -368,10 +384,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -391,7 +410,7 @@ const configuration = createConfiguration();
 const apiInstance = new TagsApi(configuration);
 
 const request: TagsApiGetTagRequest = {
-    // tag_id
+  
   tagId: "tag_id_example",
 };
 
@@ -404,7 +423,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tagId** | [**string**] | tag_id | defaults to undefined
+ **tagId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -413,7 +432,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -425,10 +444,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -448,9 +470,9 @@ const configuration = createConfiguration();
 const apiInstance = new TagsApi(configuration);
 
 const request: TagsApiListCompaniesForTagIdRequest = {
-    // tag_id
+  
   tagId: "tag_id_example",
-    // Filter to apply, allowed fields are: - (String) `company_name` - (String) `email` - (String) `since_applied_time` - (String) `until_applied_time` You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. If NONE is passed in for `email`, it will check for the non-existence of that field. For the filters listed above, here are some examples: - `filter=company_name%3D%3DCompany` - `filter=email%3D%3Dtest@gmail.com` - `filter=since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;`  (optional)
+    // Filter to apply, allowed fields are: - (String) `company_name` - (String) `email` - (String) `since_applied_time` - (String) `until_applied_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. If NONE is passed in for `email`, it will check for the non-existence of that field. For the filters listed above, here are some examples: - `filter=company_name%3D%3DCompany` - `filter=email%3D%3Dtest@gmail.com` - `filter=since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;`  (optional)
   filter: "filter_example",
     // Attribute and direction to order items. One of the following fields: - `company_name` - `email` - `applied_time`  One of the following directions: - `asc` - `desc` (optional)
   orderBy: "order_by_example",
@@ -469,8 +491,8 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tagId** | [**string**] | tag_id | defaults to undefined
- **filter** | [**string**] | Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_applied_time&#x60; - (String) &#x60;until_applied_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. If NONE is passed in for &#x60;email&#x60;, it will check for the non-existence of that field. For the filters listed above, here are some examples: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  | (optional) defaults to undefined
+ **tagId** | [**string**] |  | defaults to undefined
+ **filter** | [**string**] | Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_applied_time&#x60; - (String) &#x60;until_applied_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. If NONE is passed in for &#x60;email&#x60;, it will check for the non-existence of that field. For the filters listed above, here are some examples: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  | (optional) defaults to undefined
  **orderBy** | [**string**] | Attribute and direction to order items. One of the following fields: - &#x60;company_name&#x60; - &#x60;email&#x60; - &#x60;applied_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | (optional) defaults to undefined
  **pageSize** | [**number**] | Total number of items to return per page | (optional) defaults to undefined
  **pageToken** | [**string**] | Page token | (optional) defaults to undefined
@@ -482,7 +504,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -494,10 +516,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -517,9 +542,9 @@ const configuration = createConfiguration();
 const apiInstance = new TagsApi(configuration);
 
 const request: TagsApiListContactsWithTagIdRequest = {
-    // tag_id
+  
   tagId: "tag_id_example",
-    // Filter to apply, allowed fields are: - (String) `given_name` - (String) `family_name` - (String) `email` - (String) `since_applied_time` - (String) `until_applied_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. If NONE is passed in for `email`, `given_name`, or `family_name`, it will check for the non-existence of that field. For the filters listed above, here are some examples: - `filter=given_name%3D%3DJohn` - `filter=family_name%3D%3DSmith` - `filter=email%3D%3DNONE` (optional)
+    // Filter to apply, allowed fields are: - (String) `given_name` - (String) `family_name` - (String) `email` - (String) `since_applied_time` - (String) `until_applied_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. If NONE is passed in for `email`, `given_name`, or `family_name`, it will check for the non-existence of that field. For the filters listed above, here are some examples: - `filter=given_name%3D%3DJohn` - `filter=family_name%3D%3DSmith` - `filter=email%3D%3DNONE` - `filter=since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;`  (optional)
   filter: "filter_example",
     // Attribute and direction to order items. One of the following fields: - `given_name` - `family_name` - `email` - `applied_time`  One of the following directions: - `asc` - `desc` (optional)
   orderBy: "order_by_example",
@@ -538,8 +563,8 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tagId** | [**string**] | tag_id | defaults to undefined
- **filter** | [**string**] | Filter to apply, allowed fields are: - (String) &#x60;given_name&#x60; - (String) &#x60;family_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_applied_time&#x60; - (String) &#x60;until_applied_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. If NONE is passed in for &#x60;email&#x60;, &#x60;given_name&#x60;, or &#x60;family_name&#x60;, it will check for the non-existence of that field. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DJohn&#x60; - &#x60;filter&#x3D;family_name%3D%3DSmith&#x60; - &#x60;filter&#x3D;email%3D%3DNONE&#x60; | (optional) defaults to undefined
+ **tagId** | [**string**] |  | defaults to undefined
+ **filter** | [**string**] | Filter to apply, allowed fields are: - (String) &#x60;given_name&#x60; - (String) &#x60;family_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_applied_time&#x60; - (String) &#x60;until_applied_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. If NONE is passed in for &#x60;email&#x60;, &#x60;given_name&#x60;, or &#x60;family_name&#x60;, it will check for the non-existence of that field. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DJohn&#x60; - &#x60;filter&#x3D;family_name%3D%3DSmith&#x60; - &#x60;filter&#x3D;email%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  | (optional) defaults to undefined
  **orderBy** | [**string**] | Attribute and direction to order items. One of the following fields: - &#x60;given_name&#x60; - &#x60;family_name&#x60; - &#x60;email&#x60; - &#x60;applied_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | (optional) defaults to undefined
  **pageSize** | [**number**] | Total number of items to return per page | (optional) defaults to undefined
  **pageToken** | [**string**] | Page token | (optional) defaults to undefined
@@ -551,7 +576,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -563,10 +588,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -586,9 +614,9 @@ const configuration = createConfiguration();
 const apiInstance = new TagsApi(configuration);
 
 const request: TagsApiListTagCategoriesRequest = {
-    // Filter to apply, allowed fields are:  - (String) `name` - (String) `description` - (String) `since_create_time` - (String) `until_create_time` - (String) `since_update_time` - (String) `until_update_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. If NONE is passed in for `category_id` or `description`, it will check for the non-existence of that field. For the filters listed above, here are some examples:  - `filter=name%3D%3Dmy-tag` - `filter=description%3D%3DNONE` - `filter=since_create_time%3D%3D2024-12-22T01:00:00.000Z;until_create_time%3D%3D2025-01-01T00:00:00.000Z;` (optional)
+    // Filter to apply, allowed fields are: - (String) `name` - (String) `description` - (String) `since_create_time` - (String) `until_create_time` - (String) `since_update_time` - (String) `until_update_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. If NONE is passed in for `name` or `description`, it will check for the non-existence of that field. For the filters listed above, here are some examples: - `filter=name%3D%3Dmy-tag-category` - `filter=description%3D%3DNONE` - `filter=since_create_time%3D%3D2024-12-22T01:00:00.000Z;until_create_time%3D%3D2025-01-01T00:00:00.000Z;` (optional)
   filter: "filter_example",
-    // Attribute and direction to order items. One of the following fields:  - `name` - `create_time` - `update_time`  One of the following directions: - `asc` - `desc` (optional)
+    // Attribute and direction to order items. One of the following fields: - `name` - `create_time` - `update_time`  One of the following directions: - `asc` - `desc` (optional)
   orderBy: "order_by_example",
     // Total number of items to return per page (optional)
   pageSize: 0,
@@ -605,8 +633,8 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filter** | [**string**] | Filter to apply, allowed fields are:  - (String) &#x60;name&#x60; - (String) &#x60;description&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. If NONE is passed in for &#x60;category_id&#x60; or &#x60;description&#x60;, it will check for the non-existence of that field. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;name%3D%3Dmy-tag&#x60; - &#x60;filter&#x3D;description%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_create_time%3D%3D2024-12-22T01:00:00.000Z;until_create_time%3D%3D2025-01-01T00:00:00.000Z;&#x60; | (optional) defaults to undefined
- **orderBy** | [**string**] | Attribute and direction to order items. One of the following fields:  - &#x60;name&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | (optional) defaults to undefined
+ **filter** | [**string**] | Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (String) &#x60;description&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. If NONE is passed in for &#x60;name&#x60; or &#x60;description&#x60;, it will check for the non-existence of that field. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3Dmy-tag-category&#x60; - &#x60;filter&#x3D;description%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_create_time%3D%3D2024-12-22T01:00:00.000Z;until_create_time%3D%3D2025-01-01T00:00:00.000Z;&#x60; | (optional) defaults to undefined
+ **orderBy** | [**string**] | Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | (optional) defaults to undefined
  **pageSize** | [**number**] | Total number of items to return per page | (optional) defaults to undefined
  **pageToken** | [**string**] | Page token | (optional) defaults to undefined
 
@@ -617,7 +645,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -629,10 +657,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -683,7 +714,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -695,10 +726,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -718,13 +752,11 @@ const configuration = createConfiguration();
 const apiInstance = new TagsApi(configuration);
 
 const request: TagsApiRemoveTagsRequest = {
-    // tag_id
+  
   tagId: "tag_id_example",
-    // applyRemoveTagRequest
+  
   applyRemoveTagRequest: {
-    contactIds: [
-      "contactIds_example",
-    ],
+    contactIds: [123, 456],
   },
 };
 
@@ -737,8 +769,8 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applyRemoveTagRequest** | **ApplyRemoveTagRequest**| applyRemoveTagRequest |
- **tagId** | [**string**] | tag_id | defaults to undefined
+ **applyRemoveTagRequest** | **ApplyRemoveTagRequest**|  |
+ **tagId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -747,7 +779,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -759,14 +791,18 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No Content |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **updateTag**
-> UpdateTagResponse updateTag()
+> UpdateTagResponse updateTag(createUpdateTagRequest)
 
 Updates a Tag with only the values provided in the request
 
@@ -781,20 +817,18 @@ const configuration = createConfiguration();
 const apiInstance = new TagsApi(configuration);
 
 const request: TagsApiUpdateTagRequest = {
-    // tag_id
+  
   tagId: "tag_id_example",
-    // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: [
-    "name",
-  ],
-    // tag (optional)
+  
   createUpdateTagRequest: {
+    name: "VIP Customer",
+    description: "High-value customers",
     category: {
-      id: "id_example",
+      id: "123",
     },
-    description: "description_example",
-    name: "name_example",
   },
+    // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+  updateMask: "name,description,category",
 };
 
 const data = await apiInstance.updateTag(request);
@@ -806,9 +840,9 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createUpdateTagRequest** | **CreateUpdateTagRequest**| tag |
- **tagId** | [**string**] | tag_id | defaults to undefined
- **updateMask** |  | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **createUpdateTagRequest** | **CreateUpdateTagRequest**|  |
+ **tagId** | [**string**] |  | defaults to undefined
+ **updateMask** | [**&#39;name,description,category&#39;**]**Array<&#39;name,description,category&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
@@ -817,7 +851,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -829,15 +863,18 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **updateTagCategory**
-> UpdateTagCategoryResponse updateTagCategory()
+> UpdateTagCategoryResponse updateTagCategory(createUpdateTagCategoryRequest)
 
 Updates a Tag Category with only the values provided in the request
 
@@ -852,17 +889,15 @@ const configuration = createConfiguration();
 const apiInstance = new TagsApi(configuration);
 
 const request: TagsApiUpdateTagCategoryRequest = {
-    // tag_category_id
+  
   tagCategoryId: "tag_category_id_example",
-    // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: [
-    "name",
-  ],
-    // tagCategory (optional)
+  
   createUpdateTagCategoryRequest: {
-    description: "description_example",
-    name: "name_example",
+    name: "Customer Segments",
+    description: "Tags for customer segmentation",
   },
+    // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+  updateMask: "name,description",
 };
 
 const data = await apiInstance.updateTagCategory(request);
@@ -874,9 +909,9 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createUpdateTagCategoryRequest** | **CreateUpdateTagCategoryRequest**| tagCategory |
- **tagCategoryId** | [**string**] | tag_category_id | defaults to undefined
- **updateMask** |  | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **createUpdateTagCategoryRequest** | **CreateUpdateTagCategoryRequest**|  |
+ **tagCategoryId** | [**string**] |  | defaults to undefined
+ **updateMask** | [**&#39;name,description&#39;**]**Array<&#39;name,description&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
@@ -885,7 +920,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -897,10 +932,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

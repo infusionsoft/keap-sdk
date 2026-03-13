@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**campaignId** | **String** |  | [optional] 
-**nextPageToken** | **String** |  | [optional] 
 **sequences** | [**[Sequence]**](Sequence.md) |  | [optional] 
+**nextPageToken** | **String** |  | [optional] 
+**campaignId** | **String** |  | [optional] 
 
 

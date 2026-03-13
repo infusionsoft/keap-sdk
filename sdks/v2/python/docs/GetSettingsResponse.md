@@ -6,8 +6,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **affiliate** | [**ApplicationConfigurationModuleAffiliate**](ApplicationConfigurationModuleAffiliate.md) |  | [optional] 
-**application** | [**ApplicationConfigurationModuleApplication**](ApplicationConfigurationModuleApplication.md) |  | [optional] 
 **appointment** | [**ApplicationConfigurationModuleAppointment**](ApplicationConfigurationModuleAppointment.md) |  | [optional] 
+**application** | [**ApplicationConfigurationModuleApplication**](ApplicationConfigurationModuleApplication.md) |  | [optional] 
 **contact** | [**ApplicationConfigurationModuleContact**](ApplicationConfigurationModuleContact.md) |  | [optional] 
 **ecommerce** | [**ApplicationConfigurationModuleEcommerce**](ApplicationConfigurationModuleEcommerce.md) |  | [optional] 
 **email** | [**ApplicationConfigurationModuleEmail**](ApplicationConfigurationModuleEmail.md) |  | [optional] 

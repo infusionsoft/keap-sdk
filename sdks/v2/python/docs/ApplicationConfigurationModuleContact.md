@@ -5,14 +5,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**address_labels** | [**ApplicationConfigurationModuleContactAddressLabels**](ApplicationConfigurationModuleContactAddressLabels.md) |  | [optional] 
-**contact_types** | **str** |  | [optional] 
-**default_new_contact_form** | **str** |  | [optional] 
-**disable_contact_edit_in_client_login** | **bool** |  | [optional] 
-**fax_types** | **str** |  | [optional] 
-**phone_types** | **str** |  | [optional] 
-**suffix_types** | **str** |  | [optional] 
 **title_types** | **str** |  | [optional] 
+**suffix_types** | **str** |  | [optional] 
+**contact_types** | **str** |  | [optional] 
+**phone_types** | **str** |  | [optional] 
+**fax_types** | **str** |  | [optional] 
+**address_labels** | [**ApplicationConfigurationModuleContactAddressLabels**](ApplicationConfigurationModuleContactAddressLabels.md) |  | [optional] 
+**disable_contact_edit_in_client_login** | **bool** |  | [optional] 
+**default_new_contact_form** | **str** |  | [optional] 
 
 ## Example
 

@@ -1,11 +1,11 @@
 # KeapCoreServiceV2Sdk.BusinessProfileApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getBusinessProfile**](BusinessProfileApi.md#getBusinessProfile) | **GET** /v2/businessProfile | Retrieve Business Profile
-[**updateBusinessProfile**](BusinessProfileApi.md#updateBusinessProfile) | **PATCH** /v2/businessProfile | Update Business Profile
+[**getBusinessProfile**](BusinessProfileApi.md#getBusinessProfile) | **GET** /rest/v2/businessProfile | Retrieve Business Profile
+[**updateBusinessProfile**](BusinessProfileApi.md#updateBusinessProfile) | **PATCH** /rest/v2/businessProfile | Update Business Profile
 
 
 
@@ -21,6 +21,10 @@ Retrieves Business Profile information.
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.BusinessProfileApi();
 apiInstance.getBusinessProfile().then((data) => {
@@ -41,7 +45,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -51,7 +55,7 @@ No authorization required
 
 ## updateBusinessProfile
 
-> GetBusinessProfileResponse updateBusinessProfile(opts)
+> GetBusinessProfileResponse updateBusinessProfile(updateBusinessProfileRequest, opts)
 
 Update Business Profile
 
@@ -61,13 +65,17 @@ Updates Business Profile information.
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.BusinessProfileApi();
+let updateBusinessProfileRequest = new KeapCoreServiceV2Sdk.UpdateBusinessProfileRequest(); // UpdateBusinessProfileRequest | 
 let opts = {
-  'updateMask': ["null"], // [String] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-  'updateBusinessProfileRequest': new KeapCoreServiceV2Sdk.UpdateBusinessProfileRequest() // UpdateBusinessProfileRequest | businessProfile
+  'updateMask': "updateMask_example" // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
-apiInstance.updateBusinessProfile(opts).then((data) => {
+apiInstance.updateBusinessProfile(updateBusinessProfileRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -80,8 +88,8 @@ apiInstance.updateBusinessProfile(opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **updateMask** | [**[String]**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
- **updateBusinessProfileRequest** | [**UpdateBusinessProfileRequest**](UpdateBusinessProfileRequest.md)| businessProfile | [optional] 
+ **updateBusinessProfileRequest** | [**UpdateBusinessProfileRequest**](UpdateBusinessProfileRequest.md)|  | 
+ **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 
@@ -89,7 +97,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 

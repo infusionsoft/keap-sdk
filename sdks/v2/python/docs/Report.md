@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**created_time** | **str** |  | [optional] 
-**id** | **str** |  | [optional] 
-**name** | **str** |  | [optional] 
-**updated_time** | **str** |  | [optional] 
+**id** | **str** | The unique identifier of the report (Saved Search) | [optional] 
+**name** | **str** | The name of the report | [optional] 
+**updated_time** | **str** | The last update timestamp | [optional] 
+**created_time** | **str** | The creation timestamp | [optional] 
 **user_ids** | **List[str]** | A list of Users who have access to this Saved Search, or ALL_USERS if visible to all | [optional] 
 
 ## Example

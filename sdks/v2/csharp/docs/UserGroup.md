@@ -1,4 +1,5 @@
 # Keap.Core.V2.Model.UserGroup
+A user group in the application
 
 ## Properties
 

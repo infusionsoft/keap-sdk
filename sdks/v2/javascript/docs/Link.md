@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** |  | [optional] 
-**linkTypeId** | **String** |  | [optional] 
-**linkTypeName** | **String** |  | [optional] 
-**linkedContactId** | **String** |  | [optional] 
+**id** | **String** | Link ID | [optional] 
+**linkedContactId** | **String** | ID of the linked contact | [optional] 
+**linkTypeId** | **String** | Link type ID | [optional] 
+**linkTypeName** | **String** | Link type name | [optional] 
 
 

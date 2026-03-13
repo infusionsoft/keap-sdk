@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**nextPageToken** | **String** |  |  [optional] |
 |**taggedCompanies** | [**List&lt;TaggedCompany&gt;**](TaggedCompany.md) |  |  [optional] |
+|**nextPageToken** | **String** |  |  [optional] |
 
 
 ## Implemented Interfaces

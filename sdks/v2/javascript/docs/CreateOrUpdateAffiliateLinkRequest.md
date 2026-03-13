@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**name** | **String** | The Affiliate Link Name | 
+**code** | **String** | Code | 
 **affiliateId** | **String** | The AffiliateId | [optional] 
-**code** | **String** | Code | [optional] 
-**name** | **String** | The Affiliate Link Name | [optional] 
-**programIds** | **[String]** |  | [optional] 
-**websiteAddress** | **String** | Website Address | [optional] 
+**websiteAddress** | **String** | Website Address | 
+**programIds** | **[String]** | Program IDs to associate | [optional] 
 
 

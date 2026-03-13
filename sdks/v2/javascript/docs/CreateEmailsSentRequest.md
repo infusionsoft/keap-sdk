@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**emails** | [**[CreateEmailSentRequest]**](CreateEmailSentRequest.md) |  | [optional] 
+**emails** | [**[CreateEmailSentRequest]**](CreateEmailSentRequest.md) | Collection of email records to create, maximum 1000 | 
 
 

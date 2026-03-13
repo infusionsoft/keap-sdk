@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**dollar_amount** | **string** |  | [optional]
-**percentage** | **string** |  | [optional]
-**product_id** | **string** |  | [optional]
+**percentage** | **string** | Commission percentage (0-100). Either percentage or dollar_amount is required | [optional]
+**dollar_amount** | **string** | Fixed dollar amount. Either percentage or dollar_amount is required | [optional]
+**product_id** | **string** | Product ID to assign commission |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -1,10 +1,10 @@
 # Keap\Core\V2\SalesApi
 
-All URIs are relative to https://api.keap.com/crm/rest, except if the operation defines another base path.
+All URIs are relative to https://api.keap.com/crm, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**setMerchantGatewayAsDefault()**](SalesApi.md#setMerchantGatewayAsDefault) | **POST** /v2/sales/merchants/{id}:setDefault | Set default Merchant Account |
+| [**setMerchantGatewayAsDefault()**](SalesApi.md#setMerchantGatewayAsDefault) | **POST** /rest/v2/sales/merchants/{id}:setDefault | Set default Merchant Account |
 
 
 ## `setMerchantGatewayAsDefault()`
@@ -24,12 +24,16 @@ Sets the specified Merchant Account as the default Merchant Account.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\SalesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$id = 'id_example'; // string | id
+$id = 'id_example'; // string
 
 try {
     $apiInstance->setMerchantGatewayAsDefault($id);
@@ -42,7 +46,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **string**| id | |
+| **id** | **string**|  | |
 
 ### Return type
 
@@ -50,7 +54,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 

@@ -1,16 +1,85 @@
 # .AutomationApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**addContactsToAutomationSequence**](AutomationApi.md#addContactsToAutomationSequence) | **POST** /v2/automations/{automation_id}/sequences/{sequence_id}:addContacts | Add Contacts to an Automation Sequence
-[**bulkAssignmentAutomationsCategories**](AutomationApi.md#bulkAssignmentAutomationsCategories) | **POST** /v2/automations/categories/batchAssign | Bulk update for Automations Categories
-[**deleteAutomation**](AutomationApi.md#deleteAutomation) | **DELETE** /v2/automations | Delete an Automation
-[**getAutomation**](AutomationApi.md#getAutomation) | **GET** /v2/automations/{automation_id} | Retrieve an Automation
-[**listAllAutomationIds**](AutomationApi.md#listAllAutomationIds) | **GET** /v2/automations/ids | List Automations Ids
-[**listAutomations**](AutomationApi.md#listAutomations) | **GET** /v2/automations | List Automations
+[**achieveGoal**](AutomationApi.md#achieveGoal) | **POST** /rest/v2/automations/goals/achieve | Achieve an Automation Goal
+[**addContactsToAutomationSequence**](AutomationApi.md#addContactsToAutomationSequence) | **POST** /rest/v2/automations/{automation_id}/sequences/{sequence_id}:addContacts | Add Contacts to an Automation Sequence
+[**bulkAssignmentAutomationsCategories**](AutomationApi.md#bulkAssignmentAutomationsCategories) | **POST** /rest/v2/automations/categories/batchAssign | Bulk update for Automations Categories
+[**bulkUnpublishAutomations**](AutomationApi.md#bulkUnpublishAutomations) | **POST** /rest/v2/automations/batch-unpublish | Bulk unpublish Automations
+[**deleteAutomation**](AutomationApi.md#deleteAutomation) | **DELETE** /rest/v2/automations | Delete an Automation
+[**getAutomation**](AutomationApi.md#getAutomation) | **GET** /rest/v2/automations/{automation_id} | Retrieve an Automation
+[**listAllAutomationIds**](AutomationApi.md#listAllAutomationIds) | **GET** /rest/v2/automations/ids | List Automations Ids
+[**listAutomations**](AutomationApi.md#listAutomations) | **GET** /rest/v2/automations | List Automations
+[**unpublishAutomation**](AutomationApi.md#unpublishAutomation) | **PUT** /rest/v2/automations/{automation_id}/unpublish | Unpublish an Automation
 
+
+# **achieveGoal**
+> AchieveGoalResponse achieveGoal(achieveGoalRequest)
+
+Achieves a goal in an automation for a contact
+
+### Example
+
+
+```typescript
+import { createConfiguration, AutomationApi } from '';
+import type { AutomationApiAchieveGoalRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new AutomationApi(configuration);
+
+const request: AutomationApiAchieveGoalRequest = {
+  
+  achieveGoalRequest: {
+    integration: "my_integration",
+    callName: "goal_achieved",
+    automationId: 123,
+    goalId: 456,
+    contactId: 789,
+  },
+};
+
+const data = await apiInstance.achieveGoal(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **achieveGoalRequest** | **AchieveGoalRequest**|  |
+
+
+### Return type
+
+**AchieveGoalResponse**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **addContactsToAutomationSequence**
 > AddToAutomationSequenceResponse addContactsToAutomationSequence(addToAutomationSequenceRequest)
@@ -28,15 +97,13 @@ const configuration = createConfiguration();
 const apiInstance = new AutomationApi(configuration);
 
 const request: AutomationApiAddContactsToAutomationSequenceRequest = {
-    // automation_id
+  
   automationId: "automation_id_example",
-    // sequence_id
+  
   sequenceId: "sequence_id_example",
-    // addToAutomationSequenceRequest
+  
   addToAutomationSequenceRequest: {
-    contactIds: [
-      "contactIds_example",
-    ],
+    contactIds: [123, 456, 789],
   },
 };
 
@@ -49,9 +116,9 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **addToAutomationSequenceRequest** | **AddToAutomationSequenceRequest**| addToAutomationSequenceRequest |
- **automationId** | [**string**] | automation_id | defaults to undefined
- **sequenceId** | [**string**] | sequence_id | defaults to undefined
+ **addToAutomationSequenceRequest** | **AddToAutomationSequenceRequest**|  |
+ **automationId** | [**string**] |  | defaults to undefined
+ **sequenceId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -60,7 +127,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -72,9 +139,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -94,15 +165,11 @@ const configuration = createConfiguration();
 const apiInstance = new AutomationApi(configuration);
 
 const request: AutomationApiBulkAssignmentAutomationsCategoriesRequest = {
-    // assignAutomationCategoryRequest
+  
   assignAutomationCategoryRequest: {
+    categoryIds: [1, 2, 3],
+    automationIds: [100, 200, 300],
     applyCategory: true,
-    automationIds: [
-      "automationIds_example",
-    ],
-    categoryIds: [
-      "categoryIds_example",
-    ],
   },
 };
 
@@ -115,7 +182,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **assignAutomationCategoryRequest** | **AssignAutomationCategoryRequest**| assignAutomationCategoryRequest |
+ **assignAutomationCategoryRequest** | **AssignAutomationCategoryRequest**|  |
 
 
 ### Return type
@@ -124,7 +191,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -136,9 +203,76 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **bulkUnpublishAutomations**
+> void bulkUnpublishAutomations(batchUnpublishAutomationRequest)
+
+Bulk unpublish one or more automations
+
+### Example
+
+
+```typescript
+import { createConfiguration, AutomationApi } from '';
+import type { AutomationApiBulkUnpublishAutomationsRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new AutomationApi(configuration);
+
+const request: AutomationApiBulkUnpublishAutomationsRequest = {
+  
+  batchUnpublishAutomationRequest: {
+    automationIds: [123, 456, 789],
+    unpublishedFormMessage: "This form is currently unavailable",
+  },
+};
+
+const data = await apiInstance.bulkUnpublishAutomations(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **batchUnpublishAutomationRequest** | **BatchUnpublishAutomationRequest**|  |
+
+
+### Return type
+
+**void**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -158,7 +292,7 @@ const configuration = createConfiguration();
 const apiInstance = new AutomationApi(configuration);
 
 const request: AutomationApiDeleteAutomationRequest = {
-    // automation_ids
+  
   automationIds: [
     1,
   ],
@@ -173,7 +307,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **automationIds** | **Array&lt;number&gt;** | automation_ids | defaults to undefined
+ **automationIds** | **Array&lt;number&gt;** |  | defaults to undefined
 
 
 ### Return type
@@ -182,7 +316,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -194,10 +328,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No Content |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -217,7 +354,7 @@ const configuration = createConfiguration();
 const apiInstance = new AutomationApi(configuration);
 
 const request: AutomationApiGetAutomationRequest = {
-    // automation_id
+  
   automationId: "automation_id_example",
 };
 
@@ -230,7 +367,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **automationId** | [**string**] | automation_id | defaults to undefined
+ **automationId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -239,7 +376,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -251,10 +388,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -282,8 +422,6 @@ const request: AutomationApiListAllAutomationIdsRequest = {
   pageSize: 0,
     // Page token (optional)
   pageToken: "page_token_example",
-  
-  stats: true,
 };
 
 const data = await apiInstance.listAllAutomationIds(request);
@@ -299,7 +437,6 @@ Name | Type | Description  | Notes
  **orderBy** | [**string**] | Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;category&#x60; - &#x60;activeContacts&#x60; - &#x60;publishedDate&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | (optional) defaults to undefined
  **pageSize** | [**number**] | Total number of items to return per page | (optional) defaults to undefined
  **pageToken** | [**string**] | Page token | (optional) defaults to undefined
- **stats** | [**boolean**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -308,7 +445,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -320,10 +457,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -351,8 +491,6 @@ const request: AutomationApiListAutomationsRequest = {
   pageSize: 0,
     // Page token (optional)
   pageToken: "page_token_example",
-  
-  stats: true,
 };
 
 const data = await apiInstance.listAutomations(request);
@@ -368,7 +506,6 @@ Name | Type | Description  | Notes
  **orderBy** | [**string**] | Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;category&#x60; - &#x60;activeContacts&#x60; - &#x60;publishedDate&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | (optional) defaults to undefined
  **pageSize** | [**number**] | Total number of items to return per page | (optional) defaults to undefined
  **pageToken** | [**string**] | Page token | (optional) defaults to undefined
- **stats** | [**boolean**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -377,7 +514,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -389,10 +526,78 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **unpublishAutomation**
+> void unpublishAutomation(unpublishAutomationRequest)
+
+Unpublishes a single automation
+
+### Example
+
+
+```typescript
+import { createConfiguration, AutomationApi } from '';
+import type { AutomationApiUnpublishAutomationRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new AutomationApi(configuration);
+
+const request: AutomationApiUnpublishAutomationRequest = {
+  
+  automationId: "automation_id_example",
+  
+  unpublishAutomationRequest: {
+    unpublishedFormMessage: "This form is currently unavailable",
+  },
+};
+
+const data = await apiInstance.unpublishAutomation(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **unpublishAutomationRequest** | **UnpublishAutomationRequest**|  |
+ **automationId** | [**string**] |  | defaults to undefined
+
+
+### Return type
+
+**void**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

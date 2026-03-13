@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**apply_to_commissions** | **bool** |  | [optional]
-**criteria** | [**\Keap\Core\V2\Model\DiscountCriteria[]**](DiscountCriteria.md) |  | [optional]
-**description** | **string** |  | [optional]
-**discount_type** | **string** |  |
-**discount_value** | **float** |  |
-**name** | **string** |  |
-**product_id** | **string** |  |
+**name** | **string** | Name of the discount |
+**description** | **string** | Description of the discount | [optional]
+**criteria** | [**\Keap\Core\V2\Model\DiscountCriteria[]**](DiscountCriteria.md) | List of criteria that must be met for this discount to apply | [optional]
+**apply_to_commissions** | **bool** | Whether to apply this discount to commission calculations | [optional]
+**product_id** | **string** | ID of the product this discount applies to |
+**discount_type** | **string** | Type of discount: AMOUNT (fixed amount) or PERCENT (percentage) |
+**discount_value** | **float** | Value of the discount (amount or percentage depending on discount_type) |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

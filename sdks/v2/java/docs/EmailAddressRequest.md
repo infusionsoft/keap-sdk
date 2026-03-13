@@ -7,9 +7,9 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**email** | **String** |  |  [optional] |
-|**field** | [**FieldEnum**](#FieldEnum) |  |  [optional] |
-|**optInReason** | **String** |  |  [optional] |
+|**email** | **String** | Email address |  [optional] |
+|**field** | [**FieldEnum**](#FieldEnum) | Email address slot |  [optional] |
+|**optInReason** | **String** | Reason for opting in |  [optional] |
 
 
 

@@ -1,20 +1,20 @@
 # UpdateBusinessProfileRequest
 
-Update profile information about the business that owns/uses this account
+businessProfile
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**name** | **str** |  | [optional] 
+**email** | **str** |  | [optional] 
+**website** | **str** |  | [optional] 
+**phone** | **str** |  | [optional] 
 **address** | [**BusinessProfileAddressRequest**](BusinessProfileAddressRequest.md) |  | [optional] 
+**currency_code** | **str** | ISO 4217 Currency Code | [optional] 
 **business_goals** | **List[str]** | The goals of this business, ie. Grow Business, Convert more leads | [optional] 
 **business_primary_color** | **str** |  | [optional] 
 **business_secondary_color** | **str** |  | [optional] 
-**currency_code** | **str** | ISO 4217 Currency Code | [optional] 
-**email** | **str** |  | [optional] 
-**name** | **str** |  | [optional] 
-**phone** | **str** |  | [optional] 
-**website** | **str** |  | [optional] 
 
 ## Example
 

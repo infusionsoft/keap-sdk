@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**columns** | [**List&lt;ReportEntryValue&gt;**](ReportEntryValue.md) |  |  [optional] |
+|**columns** | [**Set&lt;ReportEntryValue&gt;**](ReportEntryValue.md) | The set of column values for this record |  [optional] |
 
 
 ## Implemented Interfaces

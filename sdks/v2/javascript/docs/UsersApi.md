@@ -1,14 +1,14 @@
 # KeapCoreServiceV2Sdk.UsersApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getUserById**](UsersApi.md#getUserById) | **GET** /v2/users/{user_id} | Get User
-[**getUserInfo**](UsersApi.md#getUserInfo) | **GET** /v2/oauth/connect/userinfo | Retrieve User Info
-[**getUserSignature**](UsersApi.md#getUserSignature) | **GET** /v2/users/{user_id}/signature | Get User email signature
-[**listPaginatedUsers**](UsersApi.md#listPaginatedUsers) | **GET** /v2/users | List Users
-[**updateUser**](UsersApi.md#updateUser) | **PATCH** /v2/users/{user_id} | Update User
+[**getUserById**](UsersApi.md#getUserById) | **GET** /rest/v2/users/{user_id} | Get User
+[**getUserInfo**](UsersApi.md#getUserInfo) | **GET** /rest/v2/oauth/connect/userinfo | Retrieve User Info
+[**getUserSignature**](UsersApi.md#getUserSignature) | **GET** /rest/v2/users/{user_id}/signature | Get User email signature
+[**listPaginatedUsers**](UsersApi.md#listPaginatedUsers) | **GET** /rest/v2/users | List Users
+[**updateUser**](UsersApi.md#updateUser) | **PATCH** /rest/v2/users/{user_id} | Update User
 
 
 
@@ -24,9 +24,13 @@ Retrieves a specific User
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.UsersApi();
-let userId = "userId_example"; // String | user_id
+let userId = "userId_example"; // String | 
 apiInstance.getUserById(userId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -40,7 +44,7 @@ apiInstance.getUserById(userId).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **String**| user_id | 
+ **userId** | **String**|  | 
 
 ### Return type
 
@@ -48,7 +52,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -68,6 +72,10 @@ Retrieves information for the current authenticated end-user, as outlined by the
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.UsersApi();
 apiInstance.getUserInfo().then((data) => {
@@ -88,7 +96,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -108,9 +116,13 @@ Retrieves a HTML snippet that contains the user&#39;s email signature.
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.UsersApi();
-let userId = "userId_example"; // String | user_id
+let userId = "userId_example"; // String | 
 apiInstance.getUserSignature(userId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -124,7 +136,7 @@ apiInstance.getUserSignature(userId).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **String**| user_id | 
+ **userId** | **String**|  | 
 
 ### Return type
 
@@ -132,7 +144,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -152,11 +164,15 @@ Retrieves a list of users
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.UsersApi();
 let opts = {
   'filter': "filter_example", // String | Filter to apply, allowed fields are: - (String) `email` - (String) `given_name` - (Boolean) `include_inactive` - (Boolean) `include_partners` - (Set[String]) `user_ids`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=given_name%3D%3DMary` - `filter=user_ids%3D%3D123%3Bgiven_name%3D%3DSmith` 
-  'orderBy': "orderBy_example", // String | Attribute and direction to order items. One of the following fields: - `date_created` - `email`  One of the following directions: - `asc` - `desc`
+  'orderBy': "orderBy_example", // String | Attribute and direction to order items. One of the following fields: - `create_time` - `email`  One of the following directions: - `asc` - `desc`
   'pageSize': 10, // Number | Total number of items to return per page
   'pageToken': "pageToken_example" // String | Page token
 };
@@ -174,7 +190,7 @@ apiInstance.listPaginatedUsers(opts).then((data) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;email&#x60; - (String) &#x60;given_name&#x60; - (Boolean) &#x60;include_inactive&#x60; - (Boolean) &#x60;include_partners&#x60; - (Set[String]) &#x60;user_ids&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;user_ids%3D%3D123%3Bgiven_name%3D%3DSmith&#x60;  | [optional] 
- **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;date_created&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] 
+ **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;create_time&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] 
  **pageSize** | **Number**| Total number of items to return per page | [optional] 
  **pageToken** | **String**| Page token | [optional] 
 
@@ -184,7 +200,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -194,7 +210,7 @@ No authorization required
 
 ## updateUser
 
-> User updateUser(userId, opts)
+> User updateUser(userId, updateUserRequest, opts)
 
 Update User
 
@@ -204,14 +220,18 @@ Updates information on a specific User
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.UsersApi();
-let userId = "userId_example"; // String | user_id
+let userId = "userId_example"; // String | 
+let updateUserRequest = new KeapCoreServiceV2Sdk.UpdateUserRequest(); // UpdateUserRequest | 
 let opts = {
-  'updateMask': ["null"], // [String] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-  'updateUserRequest': new KeapCoreServiceV2Sdk.UpdateUserRequest() // UpdateUserRequest | user
+  'updateMask': "updateMask_example" // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
-apiInstance.updateUser(userId, opts).then((data) => {
+apiInstance.updateUser(userId, updateUserRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -224,9 +244,9 @@ apiInstance.updateUser(userId, opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **String**| user_id | 
- **updateMask** | [**[String]**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
- **updateUserRequest** | [**UpdateUserRequest**](UpdateUserRequest.md)| user | [optional] 
+ **userId** | **String**|  | 
+ **updateUserRequest** | [**UpdateUserRequest**](UpdateUserRequest.md)|  | 
+ **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 
@@ -234,7 +254,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 

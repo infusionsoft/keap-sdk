@@ -5,11 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**extension** | **str** |  | [optional] 
-**var_field** | **str** |  | [optional] 
-**number** | **str** |  | [optional] 
-**number_e164** | **str** |  | [optional] 
-**type** | **str** |  | [optional] 
+**extension** | **str** | Phone extension | [optional] 
+**number** | **str** | Phone number | [optional] 
+**type** | **str** | Phone type | [optional] 
+**var_field** | **str** | Phone number slot | [optional] 
+**number_e164** | **str** | Phone number in E.164 format | [optional] 
 
 ## Example
 

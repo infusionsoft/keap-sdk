@@ -1,15 +1,15 @@
 # Keap.Core.V2.Api.EmailAddressApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**GetEmailAddressStatus**](EmailAddressApi.md#getemailaddressstatus) | **GET** /v2/emailAddresses/{email}/status | Retrieve an Email Address status |
-| [**UpdateEmailAddressOptStatus**](EmailAddressApi.md#updateemailaddressoptstatus) | **PATCH** /v2/emailAddresses/{email}/status | Update an Email Address opt-in status |
+| [**GetEmailAddressStatus**](EmailAddressApi.md#getemailaddressstatus) | **GET** /rest/v2/emailAddresses/{email}/status | Retrieve an Email Address status |
+| [**UpdateEmailAddressOptStatus**](EmailAddressApi.md#updateemailaddressoptstatus) | **PATCH** /rest/v2/emailAddresses/{email}/status | Update an Email Address opt-in status |
 
 <a id="getemailaddressstatus"></a>
 # **GetEmailAddressStatus**
-> EmailAddressStatus GetEmailAddressStatus (string email)
+> RestEmailAddressStatus GetEmailAddressStatus (string email)
 
 Retrieve an Email Address status
 
@@ -30,14 +30,17 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new EmailAddressApi(config);
-            var email = "email_example";  // string | email
+            var email = "email_example";  // string | 
 
             try
             {
                 // Retrieve an Email Address status
-                EmailAddressStatus result = apiInstance.GetEmailAddressStatus(email);
+                RestEmailAddressStatus result = apiInstance.GetEmailAddressStatus(email);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -58,7 +61,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Retrieve an Email Address status
-    ApiResponse<EmailAddressStatus> response = apiInstance.GetEmailAddressStatusWithHttpInfo(email);
+    ApiResponse<RestEmailAddressStatus> response = apiInstance.GetEmailAddressStatusWithHttpInfo(email);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -75,15 +78,15 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **email** | **string** | email |  |
+| **email** | **string** |  |  |
 
 ### Return type
 
-[**EmailAddressStatus**](EmailAddressStatus.md)
+[**RestEmailAddressStatus**](RestEmailAddressStatus.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -95,16 +98,19 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="updateemailaddressoptstatus"></a>
 # **UpdateEmailAddressOptStatus**
-> EmailAddressStatus UpdateEmailAddressOptStatus (string email, UpdateEmailAddress updateEmailAddress)
+> RestEmailAddressStatus UpdateEmailAddressOptStatus (string email, UpdateEmailAddress updateEmailAddress)
 
 Update an Email Address opt-in status
 
@@ -125,15 +131,18 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new EmailAddressApi(config);
-            var email = "email_example";  // string | email
-            var updateEmailAddress = new UpdateEmailAddress(); // UpdateEmailAddress | updateEmailAddress
+            var email = "email_example";  // string | 
+            var updateEmailAddress = new UpdateEmailAddress(); // UpdateEmailAddress | 
 
             try
             {
                 // Update an Email Address opt-in status
-                EmailAddressStatus result = apiInstance.UpdateEmailAddressOptStatus(email, updateEmailAddress);
+                RestEmailAddressStatus result = apiInstance.UpdateEmailAddressOptStatus(email, updateEmailAddress);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -154,7 +163,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Update an Email Address opt-in status
-    ApiResponse<EmailAddressStatus> response = apiInstance.UpdateEmailAddressOptStatusWithHttpInfo(email, updateEmailAddress);
+    ApiResponse<RestEmailAddressStatus> response = apiInstance.UpdateEmailAddressOptStatusWithHttpInfo(email, updateEmailAddress);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -171,16 +180,16 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **email** | **string** | email |  |
-| **updateEmailAddress** | [**UpdateEmailAddress**](UpdateEmailAddress.md) | updateEmailAddress |  |
+| **email** | **string** |  |  |
+| **updateEmailAddress** | [**UpdateEmailAddress**](UpdateEmailAddress.md) |  |  |
 
 ### Return type
 
-[**EmailAddressStatus**](EmailAddressStatus.md)
+[**RestEmailAddressStatus**](RestEmailAddressStatus.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -192,10 +201,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

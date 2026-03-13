@@ -7,13 +7,13 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**companyName** | **String** |  |  [optional] |
-|**email** | **String** |  |  [optional] |
-|**firstName** | **String** |  |  [optional] |
-|**id** | **String** |  |  |
-|**jobTitle** | **String** |  |  [optional] |
-|**lastName** | **String** |  |  [optional] |
-|**phoneNumber** | **String** |  |  [optional] |
+|**id** | **String** | Contact ID |  |
+|**email** | **String** | Email address |  [optional] |
+|**firstName** | **String** | First name |  [optional] |
+|**lastName** | **String** | Last name |  [optional] |
+|**companyName** | **String** | Company name |  [optional] |
+|**jobTitle** | **String** | Job title |  [optional] |
+|**phoneNumber** | **String** | Phone number |  [optional] |
 
 
 ## Implemented Interfaces

@@ -5,19 +5,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**create_time** | **str** | When the webform was created | [optional] 
-**custom_slug** | **str** | The custom slug of the webform. Used in pretty webform URLs | [optional] 
-**duplicate_check_option** | **str** | The option that determines if the lead submitted through the form is a duplicate or not. If it&#39;s a duplicate, then the lead will be merged with the existing contact record | [optional] 
-**exit_option** | **str** | The option that determines what happens after the form is submitted | [optional] 
-**funnel_id** | **str** | The id of the funnel this webform belongs to, if any | [optional] 
 **id** | **str** | The unique identifier for this webform | [optional] 
+**xid** | **str** | The public unique identifier for this webform, used in webform URLs | [optional] 
 **name** | **str** | The name of this webform | [optional] 
+**funnel_id** | **str** | The id of the funnel this webform belongs to, if any | [optional] 
+**custom_slug** | **str** | The custom slug of the webform. Used in pretty webform URLs | [optional] 
+**webform_url** | **str** | The URL for this webform that uses the xid to identify it | [optional] 
 **pretty_webform_url** | **str** | The URL for this webform that uses the custom slug to identify it | [optional] 
 **thank_you_page_url** | **str** | The URL of the thank you page for this webform | [optional] 
-**update_time** | **str** | When the webform was last updated | [optional] 
+**duplicate_check_option** | **str** | The option that determines if the lead submitted through the form is a duplicate or not. If it&#39;s a duplicate, then the lead will be merged with the existing contact record | [optional] 
+**exit_option** | **str** | The option that determines what happens after the form is submitted | [optional] 
 **webform_type** | **str** | The type of webform this is | [optional] 
-**webform_url** | **str** | The URL for this webform that uses the xid to identify it | [optional] 
-**xid** | **str** | The public unique identifier for this tag, used in webform URLs | [optional] 
+**create_time** | **datetime** | When the webform was created | [optional] 
+**update_time** | **datetime** | When the webform was last updated | [optional] 
 
 ## Example
 

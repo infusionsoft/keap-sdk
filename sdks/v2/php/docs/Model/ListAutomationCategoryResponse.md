@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**automation_categories** | [**\Keap\Core\V2\Model\AutomationCategory[]**](AutomationCategory.md) |  | [optional]
+**automation_categories** | [**\Keap\Core\V2\Model\AutomationCategory[]**](AutomationCategory.md) | List of automation categories | [optional]
 **next_page_token** | **string** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

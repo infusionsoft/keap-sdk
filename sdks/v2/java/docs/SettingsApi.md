@@ -1,15 +1,15 @@
 # SettingsApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getApplicationConfigurations**](SettingsApi.md#getApplicationConfigurations) | **GET** /v2/settings/applications:getConfiguration | Get Application Configuration |
-| [**getApplicationConfigurationsWithHttpInfo**](SettingsApi.md#getApplicationConfigurationsWithHttpInfo) | **GET** /v2/settings/applications:getConfiguration | Get Application Configuration |
-| [**getContactOptionTypes**](SettingsApi.md#getContactOptionTypes) | **GET** /v2/settings/contactOptionTypes | Get Contact Option types |
-| [**getContactOptionTypesWithHttpInfo**](SettingsApi.md#getContactOptionTypesWithHttpInfo) | **GET** /v2/settings/contactOptionTypes | Get Contact Option types |
-| [**isApplicationEnabled**](SettingsApi.md#isApplicationEnabled) | **GET** /v2/settings/applications:isEnabled | Get Application Status |
-| [**isApplicationEnabledWithHttpInfo**](SettingsApi.md#isApplicationEnabledWithHttpInfo) | **GET** /v2/settings/applications:isEnabled | Get Application Status |
+| [**getApplicationConfigurations**](SettingsApi.md#getApplicationConfigurations) | **GET** /rest/v2/settings/applications:getConfiguration | Get Application Configuration |
+| [**getApplicationConfigurationsWithHttpInfo**](SettingsApi.md#getApplicationConfigurationsWithHttpInfo) | **GET** /rest/v2/settings/applications:getConfiguration | Get Application Configuration |
+| [**getContactOptionTypes**](SettingsApi.md#getContactOptionTypes) | **GET** /rest/v2/settings/contactOptionTypes | Get Contact Option types |
+| [**getContactOptionTypesWithHttpInfo**](SettingsApi.md#getContactOptionTypesWithHttpInfo) | **GET** /rest/v2/settings/contactOptionTypes | Get Contact Option types |
+| [**isApplicationEnabled**](SettingsApi.md#isApplicationEnabled) | **GET** /rest/v2/settings/applications:isEnabled | Get Application Status |
+| [**isApplicationEnabledWithHttpInfo**](SettingsApi.md#isApplicationEnabledWithHttpInfo) | **GET** /rest/v2/settings/applications:isEnabled | Get Application Status |
 
 
 
@@ -28,13 +28,18 @@ Get configuration values for the application instance.
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.SettingsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         SettingsApi apiInstance = new SettingsApi(defaultClient);
         List<String> fields = Arrays.asList(); // List<String> | By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query.
@@ -57,7 +62,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **fields** | [**List&lt;String&gt;**](String.md)| By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query. | [optional] [enum: AFFILIATE, APPOINTMENT, CONTACT, ECOMMERCE, EMAIL, FORMS, FULFILLMENT, INVOICE, NOTE, OPPORTUNITY, TASK, TEMPLATE] |
+| **fields** | [**List&lt;String&gt;**](String.md)| By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query. | [optional] |
 
 ### Return type
 
@@ -66,7 +71,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -77,10 +82,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## getApplicationConfigurationsWithHttpInfo
 
@@ -98,13 +106,18 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.SettingsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         SettingsApi apiInstance = new SettingsApi(defaultClient);
         List<String> fields = Arrays.asList(); // List<String> | By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query.
@@ -129,7 +142,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **fields** | [**List&lt;String&gt;**](String.md)| By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query. | [optional] [enum: AFFILIATE, APPOINTMENT, CONTACT, ECOMMERCE, EMAIL, FORMS, FULFILLMENT, INVOICE, NOTE, OPPORTUNITY, TASK, TEMPLATE] |
+| **fields** | [**List&lt;String&gt;**](String.md)| By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query. | [optional] |
 
 ### Return type
 
@@ -138,7 +151,7 @@ ApiResponse<[**GetSettingsResponse**](GetSettingsResponse.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -149,10 +162,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## getContactOptionTypes
@@ -170,13 +186,18 @@ Gets a list of Contact Option types.
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.SettingsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         SettingsApi apiInstance = new SettingsApi(defaultClient);
         try {
@@ -204,7 +225,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -215,10 +236,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## getContactOptionTypesWithHttpInfo
 
@@ -236,13 +260,18 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.SettingsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         SettingsApi apiInstance = new SettingsApi(defaultClient);
         try {
@@ -272,7 +301,7 @@ ApiResponse<[**GetContactOptionTypesResponse**](GetContactOptionTypesResponse.md
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -283,10 +312,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## isApplicationEnabled
@@ -304,13 +336,18 @@ Check if the application is enabled or not
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.SettingsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         SettingsApi apiInstance = new SettingsApi(defaultClient);
         try {
@@ -338,7 +375,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -349,10 +386,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## isApplicationEnabledWithHttpInfo
 
@@ -370,13 +410,18 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.SettingsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         SettingsApi apiInstance = new SettingsApi(defaultClient);
         try {
@@ -406,7 +451,7 @@ ApiResponse<[**GetApplicationEnabledStatusResponse**](GetApplicationEnabledStatu
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -417,8 +462,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 

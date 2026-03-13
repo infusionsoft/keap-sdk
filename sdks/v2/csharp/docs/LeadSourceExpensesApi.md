@@ -1,14 +1,14 @@
 # Keap.Core.V2.Api.LeadSourceExpensesApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**CreateLeadSourceExpense**](LeadSourceExpensesApi.md#createleadsourceexpense) | **POST** /v2/leadSources/{lead_source_id}/expenses | Create a Lead Source Expense |
-| [**DeleteLeadSourceExpense**](LeadSourceExpensesApi.md#deleteleadsourceexpense) | **DELETE** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Delete a lead source expense |
-| [**GetLeadSourceExpense**](LeadSourceExpensesApi.md#getleadsourceexpense) | **GET** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Retrieve a Lead Source Expense |
-| [**ListLeadSourceExpenses**](LeadSourceExpensesApi.md#listleadsourceexpenses) | **GET** /v2/leadSources/{lead_source_id}/expenses | List Lead Source Expenses |
-| [**UpdateLeadSourceExpense**](LeadSourceExpensesApi.md#updateleadsourceexpense) | **PATCH** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Update a Lead Source Expense |
+| [**CreateLeadSourceExpense**](LeadSourceExpensesApi.md#createleadsourceexpense) | **POST** /rest/v2/leadSources/{lead_source_id}/expenses | Create a Lead Source Expense |
+| [**DeleteLeadSourceExpense**](LeadSourceExpensesApi.md#deleteleadsourceexpense) | **DELETE** /rest/v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Delete a lead source expense |
+| [**GetLeadSourceExpense**](LeadSourceExpensesApi.md#getleadsourceexpense) | **GET** /rest/v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Retrieve a Lead Source Expense |
+| [**ListLeadSourceExpenses**](LeadSourceExpensesApi.md#listleadsourceexpenses) | **GET** /rest/v2/leadSources/{lead_source_id}/expenses | List Lead Source Expenses |
+| [**UpdateLeadSourceExpense**](LeadSourceExpensesApi.md#updateleadsourceexpense) | **PATCH** /rest/v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Update a Lead Source Expense |
 
 <a id="createleadsourceexpense"></a>
 # **CreateLeadSourceExpense**
@@ -33,10 +33,13 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new LeadSourceExpensesApi(config);
             var leadSourceId = "leadSourceId_example";  // string | The ID of the lead source this expense belongs to
-            var createLeadSourceExpenseRequest = new CreateLeadSourceExpenseRequest(); // CreateLeadSourceExpenseRequest | The request object to create a new lead source expense
+            var createLeadSourceExpenseRequest = new CreateLeadSourceExpenseRequest(); // CreateLeadSourceExpenseRequest | 
 
             try
             {
@@ -80,7 +83,7 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **leadSourceId** | **string** | The ID of the lead source this expense belongs to |  |
-| **createLeadSourceExpenseRequest** | [**CreateLeadSourceExpenseRequest**](CreateLeadSourceExpenseRequest.md) | The request object to create a new lead source expense |  |
+| **createLeadSourceExpenseRequest** | [**CreateLeadSourceExpenseRequest**](CreateLeadSourceExpenseRequest.md) |  |  |
 
 ### Return type
 
@@ -88,7 +91,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -104,7 +107,9 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -131,7 +136,10 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new LeadSourceExpensesApi(config);
             var leadSourceExpenseId = "leadSourceExpenseId_example";  // string | The ID of a lead source expense
             var leadSourceId = "leadSourceId_example";  // string | The ID of the lead source this expense belongs to
@@ -182,7 +190,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -194,10 +202,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -224,7 +235,10 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new LeadSourceExpensesApi(config);
             var leadSourceExpenseId = "leadSourceExpenseId_example";  // string | The ID of a lead source expense
             var leadSourceId = "leadSourceId_example";  // string | The ID of the lead source this expense belongs to
@@ -279,7 +293,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -291,10 +305,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -321,7 +338,10 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new LeadSourceExpensesApi(config);
             var leadSourceId = "leadSourceId_example";  // string | The ID of the lead source this expense belongs to
             var filter = "filter_example";  // string? | Filter to apply, allowed fields are:  - (String) `title` - (Long) `amount` - (String) `incurred_time` - (String) `create_time` - (String) `update_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:  - `filter=amount%3D%3D2500` - `filter=incurred_time%3D%3D2024-12-22T01:00:00.000Z` (optional) 
@@ -382,7 +402,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -398,13 +418,15 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="updateleadsourceexpense"></a>
 # **UpdateLeadSourceExpense**
-> LeadSourceExpense UpdateLeadSourceExpense (string leadSourceExpenseId, string leadSourceId, UpdateLeadSourceExpenseRequest updateLeadSourceExpenseRequest, List<string>? updateMask = null)
+> LeadSourceExpense UpdateLeadSourceExpense (string leadSourceExpenseId, string leadSourceId, UpdateLeadSourceExpenseRequest updateLeadSourceExpenseRequest, string? updateMask = null)
 
 Update a Lead Source Expense
 
@@ -425,12 +447,15 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new LeadSourceExpensesApi(config);
             var leadSourceExpenseId = "leadSourceExpenseId_example";  // string | The ID of a lead source expense
             var leadSourceId = "leadSourceId_example";  // string | The ID of the lead source this expense belongs to
-            var updateLeadSourceExpenseRequest = new UpdateLeadSourceExpenseRequest(); // UpdateLeadSourceExpenseRequest | The request object to update a lead source expense
-            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var updateLeadSourceExpenseRequest = new UpdateLeadSourceExpenseRequest(); // UpdateLeadSourceExpenseRequest | 
+            var updateMask = "title,notes,amount,incurred_time";  // string? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -475,8 +500,8 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **leadSourceExpenseId** | **string** | The ID of a lead source expense |  |
 | **leadSourceId** | **string** | The ID of the lead source this expense belongs to |  |
-| **updateLeadSourceExpenseRequest** | [**UpdateLeadSourceExpenseRequest**](UpdateLeadSourceExpenseRequest.md) | The request object to update a lead source expense |  |
-| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **updateLeadSourceExpenseRequest** | [**UpdateLeadSourceExpenseRequest**](UpdateLeadSourceExpenseRequest.md) |  |  |
+| **updateMask** | **string?** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 
@@ -484,7 +509,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -500,7 +525,9 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

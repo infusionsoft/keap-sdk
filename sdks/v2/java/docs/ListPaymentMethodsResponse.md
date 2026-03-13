@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**nextPageToken** | **String** |  |  [optional] |
 |**records** | [**List&lt;PaymentMethod&gt;**](PaymentMethod.md) |  |  [optional] |
+|**nextPageToken** | **String** |  |  [optional] |
 
 
 ## Implemented Interfaces

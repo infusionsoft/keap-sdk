@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**calculationType** | **String** |  |  [optional] |
 |**levels** | **Integer** |  |  [optional] |
+|**calculationType** | **String** |  |  [optional] |
 |**participantTypes** | **String** |  |  [optional] |
 
 

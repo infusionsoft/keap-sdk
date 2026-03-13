@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**description** | **str** | Product interest bundle description | 
 **name** | **str** | Product interest bundle name | 
+**description** | **str** | Product interest bundle description | 
 
 ## Example
 

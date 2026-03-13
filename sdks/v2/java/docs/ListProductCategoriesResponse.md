@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**nextPageToken** | **String** |  |  [optional] |
 |**productCategories** | [**List&lt;ProductCategory&gt;**](ProductCategory.md) |  |  [optional] |
+|**nextPageToken** | **String** |  |  [optional] |
 
 
 ## Implemented Interfaces

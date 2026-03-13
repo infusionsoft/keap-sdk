@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AffiliateCommissionTotal** | **double** |  | [optional] 
-**ViewLedgerUrl** | **string** |  | [optional] 
+**AffiliateCommissionTotal** | **double** | Total commission earned by affiliate | [optional] 
+**ViewLedgerUrl** | **string** | URL to view affiliate ledger | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

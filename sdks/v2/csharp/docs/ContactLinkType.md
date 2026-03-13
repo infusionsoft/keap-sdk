@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CreateTime** | **string** |  | [optional] 
-**Id** | **string** |  | [optional] 
-**MaxLinks** | **long** |  | [optional] 
-**Name** | **string** |  | [optional] 
+**Id** | **string** | Link type ID | [optional] 
+**Name** | **string** | Link type name | [optional] 
+**MaxLinks** | **long** | Maximum number of links allowed | [optional] 
+**CreateTime** | **string** | Creation timestamp (ISO-8601) | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

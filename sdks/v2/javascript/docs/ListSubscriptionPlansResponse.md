@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**nextPageToken** | **String** |  | [optional] 
 **subscriptions** | [**[SubscriptionPlan]**](SubscriptionPlan.md) |  | [optional] 
+**nextPageToken** | **String** |  | [optional] 
 
 

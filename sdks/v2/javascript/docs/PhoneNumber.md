@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**extension** | **String** |  | [optional] 
-**field** | **String** |  | [optional] 
-**number** | **String** |  | [optional] 
-**numberE164** | **String** |  | [optional] 
-**type** | **String** |  | [optional] 
+**extension** | **String** | Phone extension | [optional] 
+**number** | **String** | Phone number | [optional] 
+**type** | **String** | Phone type | [optional] 
+**field** | **String** | Phone number slot | [optional] 
+**numberE164** | **String** | Phone number in E.164 format | [optional] 
 
 
 

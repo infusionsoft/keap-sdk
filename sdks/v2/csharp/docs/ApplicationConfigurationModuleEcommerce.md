@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CreditCardTypes** | **string** |  | [optional] 
 **Currency** | **string** |  | [optional] 
-**DefaultChargeMaxRetryAttempts** | **int** |  | [optional] 
 **DefaultCountry** | **string** |  | [optional] 
 **DefaultMerchant** | **string** |  | [optional] 
-**DefaultNumberOfDaysBetweenChargeAttempts** | **int** |  | [optional] 
+**CreditCardTypes** | **string** |  | [optional] 
 **DefaultTax** | **string** |  | [optional] 
-**DefaultToAutoCharge** | **bool** |  | [optional] 
-**MerchantAccountMaxRetryAttempts** | **int** |  | [optional] 
 **PaymentTypes** | **string** |  | [optional] 
+**DefaultToAutoCharge** | **bool** |  | [optional] 
+**DefaultChargeMaxRetryAttempts** | **int** |  | [optional] 
+**DefaultNumberOfDaysBetweenChargeAttempts** | **int** |  | [optional] 
+**MerchantAccountMaxRetryAttempts** | **int** |  | [optional] 
 **PromoCodes** | **string** |  | [optional] 
 **TrackCostPerUnit** | **bool** |  | [optional] 
 **TrackInventory** | **bool** |  | [optional] 

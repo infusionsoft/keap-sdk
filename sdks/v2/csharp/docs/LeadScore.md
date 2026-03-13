@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**LastUpdated** | **string** |  | [optional] 
-**Score** | **string** |  | [optional] 
+**Score** | **string** | Lead score value (flame count) | [optional] 
+**LastUpdated** | **string** | Last updated timestamp (ISO-8601) | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -1,17 +1,17 @@
 # keap_core_v2_client.ProductCategoriesApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**assign_products_to_category**](ProductCategoriesApi.md#assign_products_to_category) | **POST** /v2/productCategories/{category_id}:assignProducts | Assign Products to a Product Category
-[**create_image_file**](ProductCategoriesApi.md#create_image_file) | **POST** /v2/productCategories/{category_id}/images | Create the product category image file
-[**create_product_category**](ProductCategoriesApi.md#create_product_category) | **POST** /v2/productCategories | Create a Product Category
-[**delete_image_file**](ProductCategoriesApi.md#delete_image_file) | **DELETE** /v2/productCategories/{category_id}/images | Delete the image from a product category
-[**delete_product_category**](ProductCategoriesApi.md#delete_product_category) | **DELETE** /v2/productCategories/{category_id} | Delete a Product Category
-[**get_product_category**](ProductCategoriesApi.md#get_product_category) | **GET** /v2/productCategories/{category_id} | Get a Product Category
-[**list_product_categories**](ProductCategoriesApi.md#list_product_categories) | **GET** /v2/productCategories | List all Product Categories
-[**update_product_category**](ProductCategoriesApi.md#update_product_category) | **PATCH** /v2/productCategories/{category_id} | Update a Product Category
+[**assign_products_to_category**](ProductCategoriesApi.md#assign_products_to_category) | **POST** /rest/v2/productCategories/{category_id}:assignProducts | Assign Products to a Product Category
+[**create_image_file**](ProductCategoriesApi.md#create_image_file) | **POST** /rest/v2/productCategories/{category_id}/images | Create the product category image file
+[**create_product_category**](ProductCategoriesApi.md#create_product_category) | **POST** /rest/v2/productCategories | Create a Product Category
+[**delete_image_file**](ProductCategoriesApi.md#delete_image_file) | **DELETE** /rest/v2/productCategories/{category_id}/images | Delete the image from a product category
+[**delete_product_category**](ProductCategoriesApi.md#delete_product_category) | **DELETE** /rest/v2/productCategories/{category_id} | Delete a Product Category
+[**get_product_category**](ProductCategoriesApi.md#get_product_category) | **GET** /rest/v2/productCategories/{category_id} | Get a Product Category
+[**list_product_categories**](ProductCategoriesApi.md#list_product_categories) | **GET** /rest/v2/productCategories | List all Product Categories
+[**update_product_category**](ProductCategoriesApi.md#update_product_category) | **PATCH** /rest/v2/productCategories/{category_id} | Update a Product Category
 
 
 # **assign_products_to_category**
@@ -23,6 +23,7 @@ Updates the list of products assigned to a Product Category. **Note:** The full 
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
@@ -30,18 +31,24 @@ from keap_core_v2_client.models.assign_products_request import AssignProductsReq
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.ProductCategoriesApi(api_client)
-    category_id = 'category_id_example' # str | category_id
-    assign_products_request = keap_core_v2_client.AssignProductsRequest() # AssignProductsRequest | request
+    category_id = 'category_id_example' # str | 
+    assign_products_request = keap_core_v2_client.AssignProductsRequest() # AssignProductsRequest | 
 
     try:
         # Assign Products to a Product Category
@@ -56,8 +63,8 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **category_id** | **str**| category_id | 
- **assign_products_request** | [**AssignProductsRequest**](AssignProductsRequest.md)| request | 
+ **category_id** | **str**|  | 
+ **assign_products_request** | [**AssignProductsRequest**](AssignProductsRequest.md)|  | 
 
 ### Return type
 
@@ -65,7 +72,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -77,9 +84,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No Content |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -92,23 +103,30 @@ Creates the product category image file and uploads it to the specified product 
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.ProductCategoriesApi(api_client)
-    category_id = 'category_id_example' # str | category_id
+    category_id = 'category_id_example' # str | 
     file = None # bytearray | File to upload
 
     try:
@@ -124,7 +142,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **category_id** | **str**| category_id | 
+ **category_id** | **str**|  | 
  **file** | **bytearray**| File to upload | 
 
 ### Return type
@@ -133,7 +151,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -145,14 +163,18 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_product_category**
-> ProductCategory create_product_category(create_product_category_request=create_product_category_request)
+> ProductCategory create_product_category(create_product_category_request)
 
 Create a Product Category
 
@@ -160,6 +182,7 @@ Creates a new Product Category
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
@@ -168,21 +191,27 @@ from keap_core_v2_client.models.product_category import ProductCategory
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.ProductCategoriesApi(api_client)
-    create_product_category_request = keap_core_v2_client.CreateProductCategoryRequest() # CreateProductCategoryRequest | productCategory (optional)
+    create_product_category_request = keap_core_v2_client.CreateProductCategoryRequest() # CreateProductCategoryRequest | 
 
     try:
         # Create a Product Category
-        api_response = api_instance.create_product_category(create_product_category_request=create_product_category_request)
+        api_response = api_instance.create_product_category(create_product_category_request)
         print("The response of ProductCategoriesApi->create_product_category:\n")
         pprint(api_response)
     except Exception as e:
@@ -195,7 +224,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **create_product_category_request** | [**CreateProductCategoryRequest**](CreateProductCategoryRequest.md)| productCategory | [optional] 
+ **create_product_category_request** | [**CreateProductCategoryRequest**](CreateProductCategoryRequest.md)|  | 
 
 ### Return type
 
@@ -203,7 +232,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -215,9 +244,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -230,23 +263,30 @@ Deletes the image from the specified product category
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.ProductCategoriesApi(api_client)
-    category_id = 'category_id_example' # str | category_id
+    category_id = 'category_id_example' # str | 
 
     try:
         # Delete the image from a product category
@@ -261,7 +301,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **category_id** | **str**| category_id | 
+ **category_id** | **str**|  | 
 
 ### Return type
 
@@ -269,7 +309,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -281,10 +321,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No Content |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -297,23 +340,30 @@ Deletes the specified Product Category, its sub-categories, and removes products
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.ProductCategoriesApi(api_client)
-    category_id = 'category_id_example' # str | category_id
+    category_id = 'category_id_example' # str | 
 
     try:
         # Delete a Product Category
@@ -328,7 +378,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **category_id** | **str**| category_id | 
+ **category_id** | **str**|  | 
 
 ### Return type
 
@@ -336,7 +386,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -348,10 +398,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No Content |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -364,6 +417,7 @@ Gets a single Product Category
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
@@ -371,17 +425,23 @@ from keap_core_v2_client.models.product_category import ProductCategory
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.ProductCategoriesApi(api_client)
-    category_id = 'category_id_example' # str | category_id
+    category_id = 'category_id_example' # str | 
 
     try:
         # Get a Product Category
@@ -398,7 +458,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **category_id** | **str**| category_id | 
+ **category_id** | **str**|  | 
 
 ### Return type
 
@@ -406,7 +466,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -418,10 +478,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -434,6 +497,7 @@ Retrieves a list of Product Categories
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
@@ -441,12 +505,18 @@ from keap_core_v2_client.models.list_product_categories_response import ListProd
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -482,7 +552,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -494,10 +564,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -510,6 +583,7 @@ Updates a single Product Category
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
@@ -518,19 +592,25 @@ from keap_core_v2_client.models.update_product_category_request import UpdatePro
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.ProductCategoriesApi(api_client)
-    category_id = 'category_id_example' # str | category_id
-    update_product_category_request = keap_core_v2_client.UpdateProductCategoryRequest() # UpdateProductCategoryRequest | request
-    update_mask = ['update_mask_example'] # List[str] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+    category_id = 'category_id_example' # str | 
+    update_product_category_request = keap_core_v2_client.UpdateProductCategoryRequest() # UpdateProductCategoryRequest | 
+    update_mask = 'update_mask_example' # str | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
 
     try:
         # Update a Product Category
@@ -547,9 +627,9 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **category_id** | **str**| category_id | 
- **update_product_category_request** | [**UpdateProductCategoryRequest**](UpdateProductCategoryRequest.md)| request | 
- **update_mask** | [**List[str]**](str.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **category_id** | **str**|  | 
+ **update_product_category_request** | [**UpdateProductCategoryRequest**](UpdateProductCategoryRequest.md)|  | 
+ **update_mask** | **str**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 
@@ -557,7 +637,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -569,10 +649,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

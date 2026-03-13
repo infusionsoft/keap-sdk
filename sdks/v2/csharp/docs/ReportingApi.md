@@ -1,12 +1,12 @@
 # Keap.Core.V2.Api.ReportingApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**ListReports**](ReportingApi.md#listreports) | **GET** /v2/reporting/reports | List Reports |
-| [**RetrieveReport**](ReportingApi.md#retrievereport) | **GET** /v2/reporting/reports/{report_id} | Retrieve Report |
-| [**RunReport**](ReportingApi.md#runreport) | **POST** /v2/reporting/reports/{report_id}:run | Run a Report |
+| [**ListReports**](ReportingApi.md#listreports) | **GET** /rest/v2/reporting/reports | List Reports |
+| [**RetrieveReport**](ReportingApi.md#retrievereport) | **GET** /rest/v2/reporting/reports/{report_id} | Retrieve Report |
+| [**RunReport**](ReportingApi.md#runreport) | **POST** /rest/v2/reporting/reports/{report_id}:run | Run a Report |
 
 <a id="listreports"></a>
 # **ListReports**
@@ -31,10 +31,13 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new ReportingApi(config);
-            var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (String) `name` - (DateTime) `since_created_time` - (DateTime) `until_created_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched  word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=given_name%3D%3DMary` - `filter=company_id%3D%3D123` - `filter=company_id%3D%3D123%3Bfamily_name%3D%3DSmith`  (optional) 
-            var orderBy = "orderBy_example";  // string? | Attribute and direction to order items. One of the following fields: - `name` - `created_time`  One of the following directions: - `asc` - `desc` (optional) 
+            var filter = name%3D%3DMonthly%20Sales;  // string? | Filter to apply, allowed fields are: - (String) `name` - (DateTime) `since_created_time` - (DateTime) `until_created_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched  word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=name%3D%3DMonthly%20Sales` - `filter=since_created_time%3D%3D2024-01-01`  (optional) 
+            var orderBy = name asc;  // string? | Attribute and direction to order items. One of the following fields: - `name` - `created_time`  One of the following directions: - `asc` - `desc` (optional) 
             var pageSize = 0;  // int? | Total number of items to return per page (optional) 
             var pageToken = "pageToken_example";  // string? | Page token (optional) 
 
@@ -79,7 +82,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **filter** | **string?** | Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (DateTime) &#x60;since_created_time&#x60; - (DateTime) &#x60;until_created_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched  word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60;  | [optional]  |
+| **filter** | **string?** | Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (DateTime) &#x60;since_created_time&#x60; - (DateTime) &#x60;until_created_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched  word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3DMonthly%20Sales&#x60; - &#x60;filter&#x3D;since_created_time%3D%3D2024-01-01&#x60;  | [optional]  |
 | **orderBy** | **string?** | Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;created_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional]  |
 | **pageSize** | **int?** | Total number of items to return per page | [optional]  |
 | **pageToken** | **string?** | Page token | [optional]  |
@@ -90,7 +93,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -102,10 +105,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -132,9 +138,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new ReportingApi(config);
-            var reportId = "reportId_example";  // string | report_id
+            var reportId = 123;  // string | The unique identifier of the report (Saved Search)
 
             try
             {
@@ -177,7 +186,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **reportId** | **string** | report_id |  |
+| **reportId** | **string** | The unique identifier of the report (Saved Search) |  |
 
 ### Return type
 
@@ -185,7 +194,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -197,16 +206,19 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="runreport"></a>
 # **RunReport**
-> ReportExecutionResult RunReport (string reportId, string? fields = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
+> ReportExecutionResult RunReport (string reportId, RunReportRequest runReportRequest)
 
 Run a Report
 
@@ -227,18 +239,18 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new ReportingApi(config);
-            var reportId = "reportId_example";  // string | The unique identifier of the report (Saved Search) to execute
-            var fields = "fields_example";  // string? | Comma-separated list of fields to return (or do not supply a value to return all) (optional) 
-            var orderBy = "orderBy_example";  // string? | Attribute and direction to order items by. E.g. `given_name desc` (optional) 
-            var pageSize = 0;  // int? | Total number of items to return per page (optional)  (default to 1000)
-            var pageToken = "pageToken_example";  // string? | Representation of the last row retrieved from the previous page. An empty value implies a request for the first page. (optional) 
+            var reportId = 123;  // string | The unique identifier of the report (Saved Search) to execute
+            var runReportRequest = new RunReportRequest(); // RunReportRequest | 
 
             try
             {
                 // Run a Report
-                ReportExecutionResult result = apiInstance.RunReport(reportId, fields, orderBy, pageSize, pageToken);
+                ReportExecutionResult result = apiInstance.RunReport(reportId, runReportRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -259,7 +271,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Run a Report
-    ApiResponse<ReportExecutionResult> response = apiInstance.RunReportWithHttpInfo(reportId, fields, orderBy, pageSize, pageToken);
+    ApiResponse<ReportExecutionResult> response = apiInstance.RunReportWithHttpInfo(reportId, runReportRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -277,10 +289,7 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **reportId** | **string** | The unique identifier of the report (Saved Search) to execute |  |
-| **fields** | **string?** | Comma-separated list of fields to return (or do not supply a value to return all) | [optional]  |
-| **orderBy** | **string?** | Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60; | [optional]  |
-| **pageSize** | **int?** | Total number of items to return per page | [optional] [default to 1000] |
-| **pageToken** | **string?** | Representation of the last row retrieved from the previous page. An empty value implies a request for the first page. | [optional]  |
+| **runReportRequest** | [**RunReportRequest**](RunReportRequest.md) |  |  |
 
 ### Return type
 
@@ -288,7 +297,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -300,9 +309,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

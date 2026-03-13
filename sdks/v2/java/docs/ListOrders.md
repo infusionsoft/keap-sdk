@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+|**orders** | [**List&lt;OrderV2&gt;**](OrderV2.md) |  |  [optional] |
 |**nextPageToken** | **String** |  |  [optional] |
-|**orders** | [**List&lt;Order&gt;**](Order.md) |  |  [optional] |
 
 
 ## Implemented Interfaces

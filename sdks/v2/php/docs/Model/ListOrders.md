@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**orders** | [**\Keap\Core\V2\Model\OrderV2[]**](OrderV2.md) |  | [optional]
 **next_page_token** | **string** |  | [optional]
-**orders** | [**\Keap\Core\V2\Model\Order[]**](Order.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

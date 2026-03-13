@@ -1,19 +1,19 @@
 # LeadSourcesApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createLeadSource**](LeadSourcesApi.md#createLeadSource) | **POST** /v2/leadSources | Create a Lead Source |
-| [**createLeadSourceWithHttpInfo**](LeadSourcesApi.md#createLeadSourceWithHttpInfo) | **POST** /v2/leadSources | Create a Lead Source |
-| [**deleteLeadSource**](LeadSourcesApi.md#deleteLeadSource) | **DELETE** /v2/leadSources/{lead_source_id} | Delete a Lead Source |
-| [**deleteLeadSourceWithHttpInfo**](LeadSourcesApi.md#deleteLeadSourceWithHttpInfo) | **DELETE** /v2/leadSources/{lead_source_id} | Delete a Lead Source |
-| [**getLeadSource**](LeadSourcesApi.md#getLeadSource) | **GET** /v2/leadSources/{lead_source_id} | Retrieve a Lead Source |
-| [**getLeadSourceWithHttpInfo**](LeadSourcesApi.md#getLeadSourceWithHttpInfo) | **GET** /v2/leadSources/{lead_source_id} | Retrieve a Lead Source |
-| [**listLeadSources**](LeadSourcesApi.md#listLeadSources) | **GET** /v2/leadSources | List Lead Sources |
-| [**listLeadSourcesWithHttpInfo**](LeadSourcesApi.md#listLeadSourcesWithHttpInfo) | **GET** /v2/leadSources | List Lead Sources |
-| [**updateLeadSource**](LeadSourcesApi.md#updateLeadSource) | **PATCH** /v2/leadSources/{lead_source_id} | Update a Lead Source |
-| [**updateLeadSourceWithHttpInfo**](LeadSourcesApi.md#updateLeadSourceWithHttpInfo) | **PATCH** /v2/leadSources/{lead_source_id} | Update a Lead Source |
+| [**createLeadSource**](LeadSourcesApi.md#createLeadSource) | **POST** /rest/v2/leadSources | Create a Lead Source |
+| [**createLeadSourceWithHttpInfo**](LeadSourcesApi.md#createLeadSourceWithHttpInfo) | **POST** /rest/v2/leadSources | Create a Lead Source |
+| [**deleteLeadSource**](LeadSourcesApi.md#deleteLeadSource) | **DELETE** /rest/v2/leadSources/{lead_source_id} | Delete a Lead Source |
+| [**deleteLeadSourceWithHttpInfo**](LeadSourcesApi.md#deleteLeadSourceWithHttpInfo) | **DELETE** /rest/v2/leadSources/{lead_source_id} | Delete a Lead Source |
+| [**getLeadSource**](LeadSourcesApi.md#getLeadSource) | **GET** /rest/v2/leadSources/{lead_source_id} | Retrieve a Lead Source |
+| [**getLeadSourceWithHttpInfo**](LeadSourcesApi.md#getLeadSourceWithHttpInfo) | **GET** /rest/v2/leadSources/{lead_source_id} | Retrieve a Lead Source |
+| [**listLeadSources**](LeadSourcesApi.md#listLeadSources) | **GET** /rest/v2/leadSources | List Lead Sources |
+| [**listLeadSourcesWithHttpInfo**](LeadSourcesApi.md#listLeadSourcesWithHttpInfo) | **GET** /rest/v2/leadSources | List Lead Sources |
+| [**updateLeadSource**](LeadSourcesApi.md#updateLeadSource) | **PATCH** /rest/v2/leadSources/{lead_source_id} | Update a Lead Source |
+| [**updateLeadSourceWithHttpInfo**](LeadSourcesApi.md#updateLeadSourceWithHttpInfo) | **PATCH** /rest/v2/leadSources/{lead_source_id} | Update a Lead Source |
 
 
 
@@ -32,16 +32,21 @@ Creates a new Lead Source
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.LeadSourcesApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         LeadSourcesApi apiInstance = new LeadSourcesApi(defaultClient);
-        CreateLeadSourceRequest createLeadSourceRequest = new CreateLeadSourceRequest(); // CreateLeadSourceRequest | The request object to create a new lead source
+        CreateLeadSourceRequest createLeadSourceRequest = new CreateLeadSourceRequest(); // CreateLeadSourceRequest | 
         try {
             LeadSource result = apiInstance.createLeadSource(createLeadSourceRequest);
             System.out.println(result);
@@ -61,7 +66,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **createLeadSourceRequest** | [**CreateLeadSourceRequest**](CreateLeadSourceRequest.md)| The request object to create a new lead source | |
+| **createLeadSourceRequest** | [**CreateLeadSourceRequest**](CreateLeadSourceRequest.md)|  | |
 
 ### Return type
 
@@ -70,7 +75,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -84,7 +89,10 @@ No authorization required
 | **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## createLeadSourceWithHttpInfo
 
@@ -102,16 +110,21 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.LeadSourcesApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         LeadSourcesApi apiInstance = new LeadSourcesApi(defaultClient);
-        CreateLeadSourceRequest createLeadSourceRequest = new CreateLeadSourceRequest(); // CreateLeadSourceRequest | The request object to create a new lead source
+        CreateLeadSourceRequest createLeadSourceRequest = new CreateLeadSourceRequest(); // CreateLeadSourceRequest | 
         try {
             ApiResponse<LeadSource> response = apiInstance.createLeadSourceWithHttpInfo(createLeadSourceRequest);
             System.out.println("Status code: " + response.getStatusCode());
@@ -133,7 +146,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **createLeadSourceRequest** | [**CreateLeadSourceRequest**](CreateLeadSourceRequest.md)| The request object to create a new lead source | |
+| **createLeadSourceRequest** | [**CreateLeadSourceRequest**](CreateLeadSourceRequest.md)|  | |
 
 ### Return type
 
@@ -142,7 +155,7 @@ ApiResponse<[**LeadSource**](LeadSource.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -156,7 +169,10 @@ No authorization required
 | **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## deleteLeadSource
@@ -174,13 +190,18 @@ Deletes a Lead Source by ID
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.LeadSourcesApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         LeadSourcesApi apiInstance = new LeadSourcesApi(defaultClient);
         String leadSourceId = "leadSourceId_example"; // String | The ID of a lead source
@@ -211,7 +232,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -222,10 +243,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## deleteLeadSourceWithHttpInfo
 
@@ -243,13 +267,18 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.LeadSourcesApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         LeadSourcesApi apiInstance = new LeadSourcesApi(defaultClient);
         String leadSourceId = "leadSourceId_example"; // String | The ID of a lead source
@@ -282,7 +311,7 @@ ApiResponse<Void>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -293,10 +322,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## getLeadSource
@@ -314,13 +346,18 @@ Retrieves a Lead Source by ID
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.LeadSourcesApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         LeadSourcesApi apiInstance = new LeadSourcesApi(defaultClient);
         String leadSourceId = "leadSourceId_example"; // String | The ID of a lead source
@@ -352,7 +389,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -363,10 +400,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## getLeadSourceWithHttpInfo
 
@@ -384,13 +424,18 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.LeadSourcesApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         LeadSourcesApi apiInstance = new LeadSourcesApi(defaultClient);
         String leadSourceId = "leadSourceId_example"; // String | The ID of a lead source
@@ -424,7 +469,7 @@ ApiResponse<[**LeadSource**](LeadSource.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -435,10 +480,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## listLeadSources
@@ -456,13 +504,18 @@ Retrieves a list of Lead Sources
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.LeadSourcesApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         LeadSourcesApi apiInstance = new LeadSourcesApi(defaultClient);
         String filter = "filter_example"; // String | Filter to apply, allowed fields are:  - (String) `name` - (String) `status` - (String) `lead_source_category_id` - (String) `vendor` - (String) `medium` - (String) `start_time` - (String) `end_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:  - `filter=name%3D%3Dexample` - `filter=start_time%3D%3D2024-12-22T01:00:00.000Z`
@@ -500,7 +553,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -515,7 +568,9 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## listLeadSourcesWithHttpInfo
 
@@ -533,13 +588,18 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.LeadSourcesApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         LeadSourcesApi apiInstance = new LeadSourcesApi(defaultClient);
         String filter = "filter_example"; // String | Filter to apply, allowed fields are:  - (String) `name` - (String) `status` - (String) `lead_source_category_id` - (String) `vendor` - (String) `medium` - (String) `start_time` - (String) `end_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:  - `filter=name%3D%3Dexample` - `filter=start_time%3D%3D2024-12-22T01:00:00.000Z`
@@ -579,7 +639,7 @@ ApiResponse<[**ListLeadSourcesResponse**](ListLeadSourcesResponse.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -594,7 +654,9 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## updateLeadSource
@@ -612,18 +674,23 @@ Updates a Lead Source with only the values provided in the request
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.LeadSourcesApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         LeadSourcesApi apiInstance = new LeadSourcesApi(defaultClient);
         String leadSourceId = "leadSourceId_example"; // String | The ID of a lead source
-        CreateLeadSourceRequest createLeadSourceRequest = new CreateLeadSourceRequest(); // CreateLeadSourceRequest | The request object to update a lead source
-        List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        CreateLeadSourceRequest createLeadSourceRequest = new CreateLeadSourceRequest(); // CreateLeadSourceRequest | 
+        String updateMask = "name,description,vendor,medium,message,start_time,end_time,status,lead_source_category_id"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             LeadSource result = apiInstance.updateLeadSource(leadSourceId, createLeadSourceRequest, updateMask);
             System.out.println(result);
@@ -644,8 +711,8 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **leadSourceId** | **String**| The ID of a lead source | |
-| **createLeadSourceRequest** | [**CreateLeadSourceRequest**](CreateLeadSourceRequest.md)| The request object to update a lead source | |
-| **updateMask** | [**List&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name, description, vendor, medium, message, start_time, end_time, status, lead_source_category_id] |
+| **createLeadSourceRequest** | [**CreateLeadSourceRequest**](CreateLeadSourceRequest.md)|  | |
+| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name,description,vendor,medium,message,start_time,end_time,status,lead_source_category_id] |
 
 ### Return type
 
@@ -654,7 +721,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -669,7 +736,9 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## updateLeadSourceWithHttpInfo
 
@@ -687,18 +756,23 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.LeadSourcesApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         LeadSourcesApi apiInstance = new LeadSourcesApi(defaultClient);
         String leadSourceId = "leadSourceId_example"; // String | The ID of a lead source
-        CreateLeadSourceRequest createLeadSourceRequest = new CreateLeadSourceRequest(); // CreateLeadSourceRequest | The request object to update a lead source
-        List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        CreateLeadSourceRequest createLeadSourceRequest = new CreateLeadSourceRequest(); // CreateLeadSourceRequest | 
+        String updateMask = "name,description,vendor,medium,message,start_time,end_time,status,lead_source_category_id"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ApiResponse<LeadSource> response = apiInstance.updateLeadSourceWithHttpInfo(leadSourceId, createLeadSourceRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
@@ -721,8 +795,8 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **leadSourceId** | **String**| The ID of a lead source | |
-| **createLeadSourceRequest** | [**CreateLeadSourceRequest**](CreateLeadSourceRequest.md)| The request object to update a lead source | |
-| **updateMask** | [**List&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name, description, vendor, medium, message, start_time, end_time, status, lead_source_category_id] |
+| **createLeadSourceRequest** | [**CreateLeadSourceRequest**](CreateLeadSourceRequest.md)|  | |
+| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name,description,vendor,medium,message,start_time,end_time,status,lead_source_category_id] |
 
 ### Return type
 
@@ -731,7 +805,7 @@ ApiResponse<[**LeadSource**](LeadSource.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -746,5 +820,7 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**emails** | [**[EmailSentWithContent]**](EmailSentWithContent.md) |  | [optional] 
-**errors** | [**[EmailSentCreateError]**](EmailSentCreateError.md) |  | [optional] 
+**emails** | [**[EmailSentWithContent]**](EmailSentWithContent.md) | Successfully created email records | [optional] 
+**errors** | [**[EmailSentCreateError]**](EmailSentCreateError.md) | Errors that occurred during creation | [optional] 
 
 

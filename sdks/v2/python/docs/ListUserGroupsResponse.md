@@ -1,12 +1,13 @@
 # ListUserGroupsResponse
 
+Response containing a list of user groups
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**user_groups** | [**List[UserGroup]**](UserGroup.md) | List of user groups | [optional] 
 **next_page_token** | **str** |  | [optional] 
-**user_groups** | [**List[UserGroup]**](UserGroup.md) |  | [optional] 
 
 ## Example
 

@@ -7,10 +7,10 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**description** | **String** |  |  [optional] |
-|**id** | **String** |  |  [optional] |
-|**order** | **Integer** |  |  [optional] |
-|**required** | **Boolean** |  |  [optional] |
+|**id** | **String** | Checklist item ID |  [optional] |
+|**description** | **String** | Item description |  [optional] |
+|**required** | **Boolean** | Whether item is required |  [optional] |
+|**order** | **Integer** | Display order |  [optional] |
 
 
 ## Implemented Interfaces

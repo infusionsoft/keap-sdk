@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**description** | **String** |  | [optional] 
-**id** | **String** |  | [optional] 
-**order** | **Number** |  | [optional] 
-**required** | **Boolean** |  | [optional] 
+**id** | **String** | Checklist item ID | [optional] 
+**description** | **String** | Item description | [optional] 
+**required** | **Boolean** | Whether item is required | [optional] 
+**order** | **Number** | Display order | [optional] 
 
 

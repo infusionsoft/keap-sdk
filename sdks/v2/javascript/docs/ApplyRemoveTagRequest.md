@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**contactIds** | **[String]** |  | 
+**contactIds** | **[String]** | The IDs of the contacts to apply/remove the tag to/from | 
 
 

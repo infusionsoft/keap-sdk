@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [optional] 
-**items** | [**List[Item]**](Item.md) |  | [optional] 
+**id** | **str** | The unique identifier of the sequence path | [optional] 
+**items** | [**List[Item]**](Item.md) | List of items in this sequence path | [optional] 
 
 ## Example
 

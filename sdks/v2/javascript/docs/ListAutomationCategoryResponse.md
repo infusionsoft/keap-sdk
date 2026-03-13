@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**automationCategories** | [**[AutomationCategory]**](AutomationCategory.md) |  | [optional] 
+**automationCategories** | [**[AutomationCategory]**](AutomationCategory.md) | List of automation categories | [optional] 
 **nextPageToken** | **String** |  | [optional] 
 
 

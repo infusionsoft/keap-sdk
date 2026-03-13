@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | [optional] 
-**Name** | **string** |  | [optional] 
-**Notes** | **string** |  | [optional] 
-**Priority** | **int** |  | [optional] 
+**Id** | **string** | Commission program ID | [optional] 
+**Name** | **string** | Program name | [optional] 
+**Notes** | **string** | Program notes | [optional] 
+**Priority** | **int** | Program priority | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

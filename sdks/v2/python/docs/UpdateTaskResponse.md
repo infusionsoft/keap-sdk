@@ -5,20 +5,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**assigned_to_user_id** | **str** |  | [optional] 
-**completed** | **bool** |  | [optional] 
-**completion_time** | **str** |  | [optional] 
-**contact_id** | **str** |  | [optional] 
-**create_time** | **str** | On initial object the returned value for this property may not accurately represent the exact stored value. | [optional] 
-**created_by_user_id** | **str** |  | [optional] 
-**description** | **str** |  | [optional] 
-**due_time** | **str** |  | [optional] 
-**id** | **str** |  | [optional] 
-**modification_time** | **str** |  | [optional] 
-**priority** | **str** |  | [optional] 
-**remind_time_mins** | **int** |  | [optional] 
-**title** | **str** |  | [optional] 
-**type** | **str** |  | [optional] 
+**id** | **str** | Task ID | [optional] 
+**title** | **str** | Task title | [optional] 
+**description** | **str** | Task description | [optional] 
+**type** | **str** | Task type | [optional] 
+**priority** | **str** | Task priority | [optional] 
+**completed** | **bool** | Whether task is completed | [optional] 
+**create_time** | **str** | Creation timestamp (ISO-8601) | [optional] 
+**modification_time** | **str** | Last modification timestamp (ISO-8601) | [optional] 
+**completion_time** | **str** | Completion timestamp (ISO-8601) | [optional] 
+**due_time** | **str** | Due date/time (ISO-8601) | [optional] 
+**remind_time_mins** | **int** | Reminder minutes before due. | [optional] 
+**assigned_to_user_id** | **str** | Assigned user ID | [optional] 
+**created_by_user_id** | **str** | Creator user ID | [optional] 
+**contact_id** | **str** | Associated contact ID | [optional] 
 
 ## Example
 

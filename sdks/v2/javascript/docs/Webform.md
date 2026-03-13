@@ -4,19 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**createTime** | **String** | When the webform was created | [optional] 
-**customSlug** | **String** | The custom slug of the webform. Used in pretty webform URLs | [optional] 
-**duplicateCheckOption** | **String** | The option that determines if the lead submitted through the form is a duplicate or not. If it&#39;s a duplicate, then the lead will be merged with the existing contact record | [optional] 
-**exitOption** | **String** | The option that determines what happens after the form is submitted | [optional] 
-**funnelId** | **String** | The id of the funnel this webform belongs to, if any | [optional] 
 **id** | **String** | The unique identifier for this webform | [optional] 
+**xid** | **String** | The public unique identifier for this webform, used in webform URLs | [optional] 
 **name** | **String** | The name of this webform | [optional] 
+**funnelId** | **String** | The id of the funnel this webform belongs to, if any | [optional] 
+**customSlug** | **String** | The custom slug of the webform. Used in pretty webform URLs | [optional] 
+**webformUrl** | **String** | The URL for this webform that uses the xid to identify it | [optional] 
 **prettyWebformUrl** | **String** | The URL for this webform that uses the custom slug to identify it | [optional] 
 **thankYouPageUrl** | **String** | The URL of the thank you page for this webform | [optional] 
-**updateTime** | **String** | When the webform was last updated | [optional] 
+**duplicateCheckOption** | **String** | The option that determines if the lead submitted through the form is a duplicate or not. If it&#39;s a duplicate, then the lead will be merged with the existing contact record | [optional] 
+**exitOption** | **String** | The option that determines what happens after the form is submitted | [optional] 
 **webformType** | **String** | The type of webform this is | [optional] 
-**webformUrl** | **String** | The URL for this webform that uses the xid to identify it | [optional] 
-**xid** | **String** | The public unique identifier for this tag, used in webform URLs | [optional] 
+**createTime** | **Date** | When the webform was created | [optional] 
+**updateTime** | **Date** | When the webform was last updated | [optional] 
 
 
 

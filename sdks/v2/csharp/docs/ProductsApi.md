@@ -1,21 +1,134 @@
 # Keap.Core.V2.Api.ProductsApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**AdjustInventory**](ProductsApi.md#adjustinventory) | **POST** /v2/products/{product_id}:adjustInventory | Adjust Inventory of a Product |
-| [**CreateProduct**](ProductsApi.md#createproduct) | **POST** /v2/products | Create a Product |
-| [**CreateProductImage**](ProductsApi.md#createproductimage) | **POST** /v2/products/{product_id}/images | Create the Product Image |
-| [**DeleteProduct**](ProductsApi.md#deleteproduct) | **DELETE** /v2/products/{product_id} | Delete a Product |
-| [**DeleteProductImage**](ProductsApi.md#deleteproductimage) | **DELETE** /v2/products/{product_id}/images | Delete the Product Image |
-| [**GetProduct**](ProductsApi.md#getproduct) | **GET** /v2/products/{product_id} | Get a Product |
-| [**ListProducts**](ProductsApi.md#listproducts) | **GET** /v2/products | List Products |
-| [**UpdateProduct**](ProductsApi.md#updateproduct) | **PATCH** /v2/products/{product_id} | Update a Product |
+| [**AddProductOptionListOptionValue**](ProductsApi.md#addproductoptionlistoptionvalue) | **POST** /rest/v2/products/{product_id}/options/{product_option_id}/listItems | Add a Product Option List Option Value |
+| [**AdjustInventory**](ProductsApi.md#adjustinventory) | **POST** /rest/v2/products/{product_id}:adjustInventory | Adjust Inventory of a Product |
+| [**CreateProduct**](ProductsApi.md#createproduct) | **POST** /rest/v2/products | Create a Product |
+| [**CreateProductImage**](ProductsApi.md#createproductimage) | **POST** /rest/v2/products/{product_id}/images | Create the Product Image |
+| [**CreateProductOption**](ProductsApi.md#createproductoption) | **POST** /rest/v2/products/{product_id}/options | Create a Product Option |
+| [**DeleteProduct**](ProductsApi.md#deleteproduct) | **DELETE** /rest/v2/products/{product_id} | Delete a Product |
+| [**DeleteProductImage**](ProductsApi.md#deleteproductimage) | **DELETE** /rest/v2/products/{product_id}/images | Delete the Product Image |
+| [**DeleteProductOption**](ProductsApi.md#deleteproductoption) | **DELETE** /rest/v2/products/{product_id}/options/{product_option_id} | Delete a Product Option |
+| [**DeleteProductOptionListOptionValue**](ProductsApi.md#deleteproductoptionlistoptionvalue) | **DELETE** /rest/v2/products/{product_id}/options/{product_option_id}/listItems/{item_id} | Delete a Product Option List Item |
+| [**GetProduct**](ProductsApi.md#getproduct) | **GET** /rest/v2/products/{product_id} | Get a Product |
+| [**GetProductOption**](ProductsApi.md#getproductoption) | **GET** /rest/v2/products/{product_id}/options/{product_option_id} | Get Product Option |
+| [**ListProductOptions**](ProductsApi.md#listproductoptions) | **GET** /rest/v2/products/{product_id}/options | List Product Options |
+| [**ListProducts**](ProductsApi.md#listproducts) | **GET** /rest/v2/products | List Products |
+| [**UpdateProduct**](ProductsApi.md#updateproduct) | **PATCH** /rest/v2/products/{product_id} | Update a Product |
+| [**UpdateProductOption**](ProductsApi.md#updateproductoption) | **PATCH** /rest/v2/products/{product_id}/options/{product_option_id} | Updates a Product Option |
+| [**UpdateProductOptionListOptionValue**](ProductsApi.md#updateproductoptionlistoptionvalue) | **PATCH** /rest/v2/products/{product_id}/options/{product_option_id}/listItems/{item_id} | Updates a Product Option List Option Value |
+
+<a id="addproductoptionlistoptionvalue"></a>
+# **AddProductOptionListOptionValue**
+> ProductOption AddProductOptionListOptionValue (string productId, string productOptionId, List<CreateProductOptionListOption> createProductOptionListOption)
+
+Add a Product Option List Option Value
+
+Adds product option values to a product option of type LIST
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class AddProductOptionListOptionValueExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new ProductsApi(config);
+            var productId = "productId_example";  // string | product_id
+            var productOptionId = "productOptionId_example";  // string | product_option_id
+            var createProductOptionListOption = new List<CreateProductOptionListOption>(); // List<CreateProductOptionListOption> | 
+
+            try
+            {
+                // Add a Product Option List Option Value
+                ProductOption result = apiInstance.AddProductOptionListOptionValue(productId, productOptionId, createProductOptionListOption);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ProductsApi.AddProductOptionListOptionValue: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the AddProductOptionListOptionValueWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Add a Product Option List Option Value
+    ApiResponse<ProductOption> response = apiInstance.AddProductOptionListOptionValueWithHttpInfo(productId, productOptionId, createProductOptionListOption);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ProductsApi.AddProductOptionListOptionValueWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **productId** | **string** | product_id |  |
+| **productOptionId** | **string** | product_option_id |  |
+| **createProductOptionListOption** | [**List&lt;CreateProductOptionListOption&gt;**](CreateProductOptionListOption.md) |  |  |
+
+### Return type
+
+[**ProductOption**](ProductOption.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="adjustinventory"></a>
 # **AdjustInventory**
-> RestV2Product AdjustInventory (string productId, UpdateProductInventoryRequest updateProductInventoryRequest)
+> RestV2ProductDetail AdjustInventory (string productId, UpdateProductInventoryRequestDetail updateProductInventoryRequestDetail)
 
 Adjust Inventory of a Product
 
@@ -36,15 +149,18 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new ProductsApi(config);
             var productId = "productId_example";  // string | product_id
-            var updateProductInventoryRequest = new UpdateProductInventoryRequest(); // UpdateProductInventoryRequest | updateProductInventoryRequest
+            var updateProductInventoryRequestDetail = new UpdateProductInventoryRequestDetail(); // UpdateProductInventoryRequestDetail | 
 
             try
             {
                 // Adjust Inventory of a Product
-                RestV2Product result = apiInstance.AdjustInventory(productId, updateProductInventoryRequest);
+                RestV2ProductDetail result = apiInstance.AdjustInventory(productId, updateProductInventoryRequestDetail);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -65,7 +181,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Adjust Inventory of a Product
-    ApiResponse<RestV2Product> response = apiInstance.AdjustInventoryWithHttpInfo(productId, updateProductInventoryRequest);
+    ApiResponse<RestV2ProductDetail> response = apiInstance.AdjustInventoryWithHttpInfo(productId, updateProductInventoryRequestDetail);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -83,15 +199,15 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **productId** | **string** | product_id |  |
-| **updateProductInventoryRequest** | [**UpdateProductInventoryRequest**](UpdateProductInventoryRequest.md) | updateProductInventoryRequest |  |
+| **updateProductInventoryRequestDetail** | [**UpdateProductInventoryRequestDetail**](UpdateProductInventoryRequestDetail.md) |  |  |
 
 ### Return type
 
-[**RestV2Product**](RestV2Product.md)
+[**RestV2ProductDetail**](RestV2ProductDetail.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -103,15 +219,19 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="createproduct"></a>
 # **CreateProduct**
-> RestV2Product CreateProduct (CreateProductRequest createProductRequest)
+> RestV2ProductDetail CreateProduct (CreateProductRequestDetail createProductRequestDetail)
 
 Create a Product
 
@@ -132,14 +252,17 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new ProductsApi(config);
-            var createProductRequest = new CreateProductRequest(); // CreateProductRequest | createProductRequest
+            var createProductRequestDetail = new CreateProductRequestDetail(); // CreateProductRequestDetail | 
 
             try
             {
                 // Create a Product
-                RestV2Product result = apiInstance.CreateProduct(createProductRequest);
+                RestV2ProductDetail result = apiInstance.CreateProduct(createProductRequestDetail);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -160,7 +283,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Create a Product
-    ApiResponse<RestV2Product> response = apiInstance.CreateProductWithHttpInfo(createProductRequest);
+    ApiResponse<RestV2ProductDetail> response = apiInstance.CreateProductWithHttpInfo(createProductRequestDetail);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -177,15 +300,15 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **createProductRequest** | [**CreateProductRequest**](CreateProductRequest.md) | createProductRequest |  |
+| **createProductRequestDetail** | [**CreateProductRequestDetail**](CreateProductRequestDetail.md) |  |  |
 
 ### Return type
 
-[**RestV2Product**](RestV2Product.md)
+[**RestV2ProductDetail**](RestV2ProductDetail.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -197,9 +320,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -226,7 +353,10 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new ProductsApi(config);
             var productId = "productId_example";  // string | product_id
             var file = new System.IO.MemoryStream(System.IO.File.ReadAllBytes("/path/to/file.txt"));  // System.IO.Stream | File to upload
@@ -277,7 +407,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -289,9 +419,116 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="createproductoption"></a>
+# **CreateProductOption**
+> ProductOption CreateProductOption (string productId, CreateProductOptionRequest createProductOptionRequest)
+
+Create a Product Option
+
+Creates a new product option
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class CreateProductOptionExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new ProductsApi(config);
+            var productId = "productId_example";  // string | product_id
+            var createProductOptionRequest = new CreateProductOptionRequest(); // CreateProductOptionRequest | 
+
+            try
+            {
+                // Create a Product Option
+                ProductOption result = apiInstance.CreateProductOption(productId, createProductOptionRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ProductsApi.CreateProductOption: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the CreateProductOptionWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Create a Product Option
+    ApiResponse<ProductOption> response = apiInstance.CreateProductOptionWithHttpInfo(productId, createProductOptionRequest);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ProductsApi.CreateProductOptionWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **productId** | **string** | product_id |  |
+| **createProductOptionRequest** | [**CreateProductOptionRequest**](CreateProductOptionRequest.md) |  |  |
+
+### Return type
+
+[**ProductOption**](ProductOption.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -318,7 +555,10 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new ProductsApi(config);
             var productId = "productId_example";  // string | product_id
 
@@ -367,7 +607,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -379,10 +619,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -409,7 +652,10 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new ProductsApi(config);
             var productId = "productId_example";  // string | product_id
 
@@ -458,7 +704,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -470,16 +716,219 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="deleteproductoption"></a>
+# **DeleteProductOption**
+> void DeleteProductOption (string productId, string productOptionId)
+
+Delete a Product Option
+
+Deletes a single product option
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class DeleteProductOptionExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new ProductsApi(config);
+            var productId = "productId_example";  // string | product_id
+            var productOptionId = "productOptionId_example";  // string | product_option_id
+
+            try
+            {
+                // Delete a Product Option
+                apiInstance.DeleteProductOption(productId, productOptionId);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ProductsApi.DeleteProductOption: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the DeleteProductOptionWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Delete a Product Option
+    apiInstance.DeleteProductOptionWithHttpInfo(productId, productOptionId);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ProductsApi.DeleteProductOptionWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **productId** | **string** | product_id |  |
+| **productOptionId** | **string** | product_option_id |  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="deleteproductoptionlistoptionvalue"></a>
+# **DeleteProductOptionListOptionValue**
+> void DeleteProductOptionListOptionValue (string productId, string productOptionId, string itemId)
+
+Delete a Product Option List Item
+
+Deletes a single option value in a Product Option of type LIST
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class DeleteProductOptionListOptionValueExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new ProductsApi(config);
+            var productId = "productId_example";  // string | product_id
+            var productOptionId = "productOptionId_example";  // string | product_option_id
+            var itemId = "itemId_example";  // string | item_id
+
+            try
+            {
+                // Delete a Product Option List Item
+                apiInstance.DeleteProductOptionListOptionValue(productId, productOptionId, itemId);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ProductsApi.DeleteProductOptionListOptionValue: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the DeleteProductOptionListOptionValueWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Delete a Product Option List Item
+    apiInstance.DeleteProductOptionListOptionValueWithHttpInfo(productId, productOptionId, itemId);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ProductsApi.DeleteProductOptionListOptionValueWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **productId** | **string** | product_id |  |
+| **productOptionId** | **string** | product_option_id |  |
+| **itemId** | **string** | item_id |  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="getproduct"></a>
 # **GetProduct**
-> RestV2Product GetProduct (string productId)
+> RestV2ProductDetail GetProduct (string productId)
 
 Get a Product
 
@@ -500,14 +949,17 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new ProductsApi(config);
             var productId = "productId_example";  // string | product_id
 
             try
             {
                 // Get a Product
-                RestV2Product result = apiInstance.GetProduct(productId);
+                RestV2ProductDetail result = apiInstance.GetProduct(productId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -528,7 +980,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Get a Product
-    ApiResponse<RestV2Product> response = apiInstance.GetProductWithHttpInfo(productId);
+    ApiResponse<RestV2ProductDetail> response = apiInstance.GetProductWithHttpInfo(productId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -549,11 +1001,11 @@ catch (ApiException e)
 
 ### Return type
 
-[**RestV2Product**](RestV2Product.md)
+[**RestV2ProductDetail**](RestV2ProductDetail.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -565,16 +1017,223 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="getproductoption"></a>
+# **GetProductOption**
+> ProductOption GetProductOption (string productId, string productOptionId)
+
+Get Product Option
+
+Retrieves a Product Option
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class GetProductOptionExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new ProductsApi(config);
+            var productId = "productId_example";  // string | product_id
+            var productOptionId = "productOptionId_example";  // string | product_option_id
+
+            try
+            {
+                // Get Product Option
+                ProductOption result = apiInstance.GetProductOption(productId, productOptionId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ProductsApi.GetProductOption: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GetProductOptionWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Get Product Option
+    ApiResponse<ProductOption> response = apiInstance.GetProductOptionWithHttpInfo(productId, productOptionId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ProductsApi.GetProductOptionWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **productId** | **string** | product_id |  |
+| **productOptionId** | **string** | product_option_id |  |
+
+### Return type
+
+[**ProductOption**](ProductOption.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="listproductoptions"></a>
+# **ListProductOptions**
+> ListProductOptionsResponse ListProductOptions (string productId)
+
+List Product Options
+
+Retrieves all options of a Product
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class ListProductOptionsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new ProductsApi(config);
+            var productId = "productId_example";  // string | product_id
+
+            try
+            {
+                // List Product Options
+                ListProductOptionsResponse result = apiInstance.ListProductOptions(productId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ProductsApi.ListProductOptions: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the ListProductOptionsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // List Product Options
+    ApiResponse<ListProductOptionsResponse> response = apiInstance.ListProductOptionsWithHttpInfo(productId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ProductsApi.ListProductOptionsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **productId** | **string** | product_id |  |
+
+### Return type
+
+[**ListProductOptionsResponse**](ListProductOptionsResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="listproducts"></a>
 # **ListProducts**
-> ListProductsResponse ListProducts (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
+> ListProductsResponseList ListProducts (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
 
 List Products
 
@@ -595,9 +1254,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new ProductsApi(config);
-            var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (String) `name`  (optional) 
+            var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (String) `name` - (String) `sku`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=name%3D%3Dtestsearch` - `filter=sku%3D%3Dtestsearch` - `filter=name%3D%3Dtestsearch%3Bsku%3D%3Dtestsearch`  (optional) 
             var orderBy = "orderBy_example";  // string? | Attribute and direction to order items. One of the following fields: - `name`  One of the following directions: - `asc` - `desc` (optional) 
             var pageSize = 0;  // int? | Total number of items to return per page (optional) 
             var pageToken = "pageToken_example";  // string? | Page token (optional) 
@@ -605,7 +1267,7 @@ namespace Example
             try
             {
                 // List Products
-                ListProductsResponse result = apiInstance.ListProducts(filter, orderBy, pageSize, pageToken);
+                ListProductsResponseList result = apiInstance.ListProducts(filter, orderBy, pageSize, pageToken);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -626,7 +1288,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // List Products
-    ApiResponse<ListProductsResponse> response = apiInstance.ListProductsWithHttpInfo(filter, orderBy, pageSize, pageToken);
+    ApiResponse<ListProductsResponseList> response = apiInstance.ListProductsWithHttpInfo(filter, orderBy, pageSize, pageToken);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -643,18 +1305,18 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **filter** | **string?** | Filter to apply, allowed fields are: - (String) &#x60;name&#x60;  | [optional]  |
+| **filter** | **string?** | Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (String) &#x60;sku&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3Dtestsearch&#x60; - &#x60;filter&#x3D;sku%3D%3Dtestsearch&#x60; - &#x60;filter&#x3D;name%3D%3Dtestsearch%3Bsku%3D%3Dtestsearch&#x60;  | [optional]  |
 | **orderBy** | **string?** | Attribute and direction to order items. One of the following fields: - &#x60;name&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional]  |
 | **pageSize** | **int?** | Total number of items to return per page | [optional]  |
 | **pageToken** | **string?** | Page token | [optional]  |
 
 ### Return type
 
-[**ListProductsResponse**](ListProductsResponse.md)
+[**ListProductsResponseList**](ListProductsResponseList.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -666,16 +1328,19 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="updateproduct"></a>
 # **UpdateProduct**
-> RestV2Product UpdateProduct (string productId, UpdateProductRequest updateProductRequest, List<string>? updateMask = null)
+> RestV2ProductDetail UpdateProduct (string productId, UpdateProductRequestDetail updateProductRequestDetail, string? updateMask = null)
 
 Update a Product
 
@@ -696,16 +1361,19 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new ProductsApi(config);
             var productId = "productId_example";  // string | product_id
-            var updateProductRequest = new UpdateProductRequest(); // UpdateProductRequest | updateProductRequest
-            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var updateProductRequestDetail = new UpdateProductRequestDetail(); // UpdateProductRequestDetail | 
+            var updateMask = "active,name,description,price,sku,shippable,short_description,subscription_only, storefront_hidden,weight,taxable,country_taxable,city_taxable,state_taxable, inventory_limit,out_of_stock_enabled,email_for_inventory_notifications";  // string? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
                 // Update a Product
-                RestV2Product result = apiInstance.UpdateProduct(productId, updateProductRequest, updateMask);
+                RestV2ProductDetail result = apiInstance.UpdateProduct(productId, updateProductRequestDetail, updateMask);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -726,7 +1394,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Update a Product
-    ApiResponse<RestV2Product> response = apiInstance.UpdateProductWithHttpInfo(productId, updateProductRequest, updateMask);
+    ApiResponse<RestV2ProductDetail> response = apiInstance.UpdateProductWithHttpInfo(productId, updateProductRequestDetail, updateMask);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -744,16 +1412,16 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **productId** | **string** | product_id |  |
-| **updateProductRequest** | [**UpdateProductRequest**](UpdateProductRequest.md) | updateProductRequest |  |
-| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **updateProductRequestDetail** | [**UpdateProductRequestDetail**](UpdateProductRequestDetail.md) |  |  |
+| **updateMask** | **string?** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 
-[**RestV2Product**](RestV2Product.md)
+[**RestV2ProductDetail**](RestV2ProductDetail.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -765,10 +1433,229 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="updateproductoption"></a>
+# **UpdateProductOption**
+> ProductOption UpdateProductOption (string productId, string productOptionId, UpdateProductOptionRequest updateProductOptionRequest, string? updateMask = null)
+
+Updates a Product Option
+
+Updates a product option
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class UpdateProductOptionExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new ProductsApi(config);
+            var productId = "productId_example";  // string | product_id
+            var productOptionId = "productOptionId_example";  // string | product_option_id
+            var updateProductOptionRequest = new UpdateProductOptionRequest(); // UpdateProductOptionRequest | 
+            var updateMask = "option_label,display_order,required,minimum_characters,maximum_characters,allow_spaces, only_starts_with,only_ends_with,only_contains,error_message";  // string? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+
+            try
+            {
+                // Updates a Product Option
+                ProductOption result = apiInstance.UpdateProductOption(productId, productOptionId, updateProductOptionRequest, updateMask);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ProductsApi.UpdateProductOption: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the UpdateProductOptionWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Updates a Product Option
+    ApiResponse<ProductOption> response = apiInstance.UpdateProductOptionWithHttpInfo(productId, productOptionId, updateProductOptionRequest, updateMask);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ProductsApi.UpdateProductOptionWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **productId** | **string** | product_id |  |
+| **productOptionId** | **string** | product_option_id |  |
+| **updateProductOptionRequest** | [**UpdateProductOptionRequest**](UpdateProductOptionRequest.md) |  |  |
+| **updateMask** | **string?** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+
+### Return type
+
+[**ProductOption**](ProductOption.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="updateproductoptionlistoptionvalue"></a>
+# **UpdateProductOptionListOptionValue**
+> ProductOption UpdateProductOptionListOptionValue (string productId, string productOptionId, string itemId, UpdateProductOptionListOption updateProductOptionListOption, string? updateMask = null)
+
+Updates a Product Option List Option Value
+
+Updates a single product option value
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class UpdateProductOptionListOptionValueExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new ProductsApi(config);
+            var productId = "productId_example";  // string | product_id
+            var productOptionId = "productOptionId_example";  // string | product_option_id
+            var itemId = "itemId_example";  // string | item_id
+            var updateProductOptionListOption = new UpdateProductOptionListOption(); // UpdateProductOptionListOption | 
+            var updateMask = "item_label,item_code,item_display_order,price_adjustment ";  // string? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+
+            try
+            {
+                // Updates a Product Option List Option Value
+                ProductOption result = apiInstance.UpdateProductOptionListOptionValue(productId, productOptionId, itemId, updateProductOptionListOption, updateMask);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ProductsApi.UpdateProductOptionListOptionValue: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the UpdateProductOptionListOptionValueWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Updates a Product Option List Option Value
+    ApiResponse<ProductOption> response = apiInstance.UpdateProductOptionListOptionValueWithHttpInfo(productId, productOptionId, itemId, updateProductOptionListOption, updateMask);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ProductsApi.UpdateProductOptionListOptionValueWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **productId** | **string** | product_id |  |
+| **productOptionId** | **string** | product_option_id |  |
+| **itemId** | **string** | item_id |  |
+| **updateProductOptionListOption** | [**UpdateProductOptionListOption**](UpdateProductOptionListOption.md) |  |  |
+| **updateMask** | **string?** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+
+### Return type
+
+[**ProductOption**](ProductOption.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

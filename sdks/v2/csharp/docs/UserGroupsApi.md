@@ -1,17 +1,17 @@
 # Keap.Core.V2.Api.UserGroupsApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**GetUserGroup**](UserGroupsApi.md#getusergroup) | **GET** /v2/userGroups/{user_group_id} | Retrieve an User Group |
-| [**ListUserGroups**](UserGroupsApi.md#listusergroups) | **GET** /v2/userGroups | List User Groups |
+| [**GetUserGroup**](UserGroupsApi.md#getusergroup) | **GET** /rest/v2/userGroups/{user_group_id} | Retrieve a User Group |
+| [**ListUserGroups**](UserGroupsApi.md#listusergroups) | **GET** /rest/v2/userGroups | List User Groups |
 
 <a id="getusergroup"></a>
 # **GetUserGroup**
 > UserGroup GetUserGroup (string userGroupId)
 
-Retrieve an User Group
+Retrieve a User Group
 
 Retrieves a single user group by its ID.
 
@@ -30,13 +30,16 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new UserGroupsApi(config);
-            var userGroupId = "userGroupId_example";  // string | user_group_id
+            var userGroupId = "userGroupId_example";  // string | 
 
             try
             {
-                // Retrieve an User Group
+                // Retrieve a User Group
                 UserGroup result = apiInstance.GetUserGroup(userGroupId);
                 Debug.WriteLine(result);
             }
@@ -57,7 +60,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    // Retrieve an User Group
+    // Retrieve a User Group
     ApiResponse<UserGroup> response = apiInstance.GetUserGroupWithHttpInfo(userGroupId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
@@ -75,7 +78,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **userGroupId** | **string** | user_group_id |  |
+| **userGroupId** | **string** |  |  |
 
 ### Return type
 
@@ -83,7 +86,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -95,10 +98,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -125,7 +131,10 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new UserGroupsApi(config);
 
             try
@@ -173,7 +182,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -185,10 +194,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

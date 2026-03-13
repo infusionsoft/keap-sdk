@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** |  | [optional] 
-**message** | **String** |  | [optional] 
+**id** | **String** | Commission program ID | [optional] 
+**message** | **String** | Response message | [optional] 
 
 

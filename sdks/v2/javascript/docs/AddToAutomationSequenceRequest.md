@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**contactIds** | **[String]** |  | [optional] 
+**contactIds** | **[String]** | List of contact IDs to add to the automation sequence | 
 
 

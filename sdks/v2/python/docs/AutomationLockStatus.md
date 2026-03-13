@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**locked** | **bool** |  | [optional] 
-**user_firstname** | **str** |  | [optional] 
-**user_id** | **str** |  | [optional] 
-**user_name** | **str** |  | [optional] 
+**locked** | **bool** | Whether the automation is currently locked | [optional] 
+**user_id** | **str** | The ID of the user who has the lock | [optional] 
+**user_name** | **str** | The username of the user who has the lock | [optional] 
+**user_firstname** | **str** | The first name of the user who has the lock | [optional] 
 
 ## Example
 

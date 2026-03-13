@@ -1,14 +1,15 @@
 # Keap.Core.V2.Model.CreateOpportunityStageRequest
+opportunity
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ChecklistItems** | [**List&lt;CreateOpportunityStageChecklistItem&gt;**](CreateOpportunityStageChecklistItem.md) |  | [optional] 
 **Name** | **string** |  | 
 **Order** | **int** |  | 
-**Probability** | **int** |  | 
 **TargetNumberDays** | **int** |  | 
+**Probability** | **int** |  | 
+**ChecklistItems** | [**List&lt;CreateOpportunityStageChecklistItem&gt;**](CreateOpportunityStageChecklistItem.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

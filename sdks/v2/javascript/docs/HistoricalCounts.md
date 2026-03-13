@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**_24hours** | **Number** |  | [optional] 
-**_30days** | **Number** |  | [optional] 
+**_24hours** | **Number** | Number of contacts in the last 24 hours | [optional] 
+**_30days** | **Number** | Number of contacts in the last 30 days | [optional] 
 
 

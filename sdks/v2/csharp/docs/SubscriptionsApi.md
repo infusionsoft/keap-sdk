@@ -1,18 +1,18 @@
 # Keap.Core.V2.Api.SubscriptionsApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**CancelSubscription**](SubscriptionsApi.md#cancelsubscription) | **POST** /v2/subscriptions/{subscription_id}:deactivate | Cancel Subscription |
-| [**CreateSubscription**](SubscriptionsApi.md#createsubscription) | **POST** /v2/subscriptions | Create Subscription |
-| [**CreateSubscriptionCustomField**](SubscriptionsApi.md#createsubscriptioncustomfield) | **POST** /v2/subscriptions/model/customFields | Create a Subscription Custom Field |
-| [**DeleteSubscriptionCustomField**](SubscriptionsApi.md#deletesubscriptioncustomfield) | **DELETE** /v2/subscriptions/model/customFields/{custom_field_id} | Delete a Subscription Custom Field |
-| [**GetSubscription**](SubscriptionsApi.md#getsubscription) | **GET** /v2/subscriptions/{subscription_id} | Retrieve a Subscription |
-| [**ListSubscriptions**](SubscriptionsApi.md#listsubscriptions) | **GET** /v2/subscriptions | List Subscriptions |
-| [**RetrieveSubscriptionCustomFieldModel**](SubscriptionsApi.md#retrievesubscriptioncustomfieldmodel) | **GET** /v2/subscriptions/model | Retrieve Subscription Custom Field Model |
-| [**UpdateSubscription**](SubscriptionsApi.md#updatesubscription) | **PATCH** /v2/subscriptions/{subscription_id} | Update a Subscription |
-| [**UpdateSubscriptionCustomField**](SubscriptionsApi.md#updatesubscriptioncustomfield) | **PATCH** /v2/subscriptions/model/customFields/{custom_field_id} | Update a Subscription Custom Field |
+| [**CancelSubscription**](SubscriptionsApi.md#cancelsubscription) | **POST** /rest/v2/subscriptions/{subscription_id}:deactivate | Cancel Subscription |
+| [**CreateSubscription**](SubscriptionsApi.md#createsubscription) | **POST** /rest/v2/subscriptions | Create Subscription |
+| [**CreateSubscriptionCustomField**](SubscriptionsApi.md#createsubscriptioncustomfield) | **POST** /rest/v2/subscriptions/model/customFields | Create a Subscription Custom Field |
+| [**DeleteSubscriptionCustomField**](SubscriptionsApi.md#deletesubscriptioncustomfield) | **DELETE** /rest/v2/subscriptions/model/customFields/{custom_field_id} | Delete a Subscription Custom Field |
+| [**GetSubscription**](SubscriptionsApi.md#getsubscription) | **GET** /rest/v2/subscriptions/{subscription_id} | Retrieve a Subscription |
+| [**ListSubscriptions**](SubscriptionsApi.md#listsubscriptions) | **GET** /rest/v2/subscriptions | List Subscriptions |
+| [**RetrieveSubscriptionCustomFieldModel**](SubscriptionsApi.md#retrievesubscriptioncustomfieldmodel) | **GET** /rest/v2/subscriptions/model | Retrieve Subscription Custom Field Model |
+| [**UpdateSubscription**](SubscriptionsApi.md#updatesubscription) | **PATCH** /rest/v2/subscriptions/{subscription_id} | Update a Subscription |
+| [**UpdateSubscriptionCustomField**](SubscriptionsApi.md#updatesubscriptioncustomfield) | **PATCH** /rest/v2/subscriptions/model/customFields/{custom_field_id} | Update a Subscription Custom Field |
 
 <a id="cancelsubscription"></a>
 # **CancelSubscription**
@@ -37,10 +37,13 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new SubscriptionsApi(config);
-            var subscriptionId = "subscriptionId_example";  // string | subscription_id
-            var cancelSubscriptionRequest = new CancelSubscriptionRequest(); // CancelSubscriptionRequest | request
+            var subscriptionId = "subscriptionId_example";  // string | 
+            var cancelSubscriptionRequest = new CancelSubscriptionRequest(); // CancelSubscriptionRequest | 
 
             try
             {
@@ -79,8 +82,8 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **subscriptionId** | **string** | subscription_id |  |
-| **cancelSubscriptionRequest** | [**CancelSubscriptionRequest**](CancelSubscriptionRequest.md) | request |  |
+| **subscriptionId** | **string** |  |  |
+| **cancelSubscriptionRequest** | [**CancelSubscriptionRequest**](CancelSubscriptionRequest.md) |  |  |
 
 ### Return type
 
@@ -88,7 +91,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -100,15 +103,19 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="createsubscription"></a>
 # **CreateSubscription**
-> Subscription CreateSubscription (CreateSubscriptionRequest createSubscriptionRequest)
+> SubscriptionDetail CreateSubscription (CreateSubscriptionRequestDetail createSubscriptionRequestDetail)
 
 Create Subscription
 
@@ -129,14 +136,17 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new SubscriptionsApi(config);
-            var createSubscriptionRequest = new CreateSubscriptionRequest(); // CreateSubscriptionRequest | request
+            var createSubscriptionRequestDetail = new CreateSubscriptionRequestDetail(); // CreateSubscriptionRequestDetail | 
 
             try
             {
                 // Create Subscription
-                Subscription result = apiInstance.CreateSubscription(createSubscriptionRequest);
+                SubscriptionDetail result = apiInstance.CreateSubscription(createSubscriptionRequestDetail);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -157,7 +167,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Create Subscription
-    ApiResponse<Subscription> response = apiInstance.CreateSubscriptionWithHttpInfo(createSubscriptionRequest);
+    ApiResponse<SubscriptionDetail> response = apiInstance.CreateSubscriptionWithHttpInfo(createSubscriptionRequestDetail);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -174,15 +184,15 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **createSubscriptionRequest** | [**CreateSubscriptionRequest**](CreateSubscriptionRequest.md) | request |  |
+| **createSubscriptionRequestDetail** | [**CreateSubscriptionRequestDetail**](CreateSubscriptionRequestDetail.md) |  |  |
 
 ### Return type
 
-[**Subscription**](Subscription.md)
+[**SubscriptionDetail**](SubscriptionDetail.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -194,9 +204,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -223,9 +237,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new SubscriptionsApi(config);
-            var createCustomFieldRequest = new CreateCustomFieldRequest(); // CreateCustomFieldRequest | customField
+            var createCustomFieldRequest = new CreateCustomFieldRequest(); // CreateCustomFieldRequest | 
 
             try
             {
@@ -268,7 +285,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **createCustomFieldRequest** | [**CreateCustomFieldRequest**](CreateCustomFieldRequest.md) | customField |  |
+| **createCustomFieldRequest** | [**CreateCustomFieldRequest**](CreateCustomFieldRequest.md) |  |  |
 
 ### Return type
 
@@ -276,7 +293,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -288,9 +305,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -317,9 +338,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new SubscriptionsApi(config);
-            var customFieldId = "customFieldId_example";  // string | custom_field_id
+            var customFieldId = "customFieldId_example";  // string | 
 
             try
             {
@@ -358,7 +382,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **customFieldId** | **string** | custom_field_id |  |
+| **customFieldId** | **string** |  |  |
 
 ### Return type
 
@@ -366,7 +390,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -378,16 +402,19 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="getsubscription"></a>
 # **GetSubscription**
-> Subscription GetSubscription (string subscriptionId)
+> SubscriptionDetail GetSubscription (string subscriptionId)
 
 Retrieve a Subscription
 
@@ -408,14 +435,17 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new SubscriptionsApi(config);
-            var subscriptionId = "subscriptionId_example";  // string | subscription_id
+            var subscriptionId = "subscriptionId_example";  // string | 
 
             try
             {
                 // Retrieve a Subscription
-                Subscription result = apiInstance.GetSubscription(subscriptionId);
+                SubscriptionDetail result = apiInstance.GetSubscription(subscriptionId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -436,7 +466,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Retrieve a Subscription
-    ApiResponse<Subscription> response = apiInstance.GetSubscriptionWithHttpInfo(subscriptionId);
+    ApiResponse<SubscriptionDetail> response = apiInstance.GetSubscriptionWithHttpInfo(subscriptionId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -453,15 +483,15 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **subscriptionId** | **string** | subscription_id |  |
+| **subscriptionId** | **string** |  |  |
 
 ### Return type
 
-[**Subscription**](Subscription.md)
+[**SubscriptionDetail**](SubscriptionDetail.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -473,16 +503,19 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="listsubscriptions"></a>
 # **ListSubscriptions**
-> ListSubscriptionsResponse ListSubscriptions (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
+> ListSubscriptionsResponseList ListSubscriptions (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
 
 List Subscriptions
 
@@ -503,9 +536,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new SubscriptionsApi(config);
-            var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id`  (optional) 
+            var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id` - (String) `status`  (optional) 
             var orderBy = "orderBy_example";  // string? | Attribute and direction to order items. One of the following fields: - `id` - `contact_id` - `subscription_plan_id`  One of the following directions: - `asc` - `desc` (optional) 
             var pageSize = 0;  // int? | Total number of items to return per page (optional) 
             var pageToken = "pageToken_example";  // string? | Page token (optional) 
@@ -513,7 +549,7 @@ namespace Example
             try
             {
                 // List Subscriptions
-                ListSubscriptionsResponse result = apiInstance.ListSubscriptions(filter, orderBy, pageSize, pageToken);
+                ListSubscriptionsResponseList result = apiInstance.ListSubscriptions(filter, orderBy, pageSize, pageToken);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -534,7 +570,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // List Subscriptions
-    ApiResponse<ListSubscriptionsResponse> response = apiInstance.ListSubscriptionsWithHttpInfo(filter, orderBy, pageSize, pageToken);
+    ApiResponse<ListSubscriptionsResponseList> response = apiInstance.ListSubscriptionsWithHttpInfo(filter, orderBy, pageSize, pageToken);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -551,18 +587,18 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **filter** | **string?** | Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60;  | [optional]  |
+| **filter** | **string?** | Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60;  | [optional]  |
 | **orderBy** | **string?** | Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional]  |
 | **pageSize** | **int?** | Total number of items to return per page | [optional]  |
 | **pageToken** | **string?** | Page token | [optional]  |
 
 ### Return type
 
-[**ListSubscriptionsResponse**](ListSubscriptionsResponse.md)
+[**ListSubscriptionsResponseList**](ListSubscriptionsResponseList.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -574,10 +610,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -604,7 +643,10 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new SubscriptionsApi(config);
 
             try
@@ -652,7 +694,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -664,16 +706,19 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="updatesubscription"></a>
 # **UpdateSubscription**
-> Subscription UpdateSubscription (string subscriptionId, UpdateSubscriptionRequest updateSubscriptionRequest, List<string>? updateMask = null)
+> SubscriptionDetail UpdateSubscription (string subscriptionId, UpdateSubscriptionRequestDetail updateSubscriptionRequestDetail, string? updateMask = null)
 
 Update a Subscription
 
@@ -694,16 +739,19 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new SubscriptionsApi(config);
-            var subscriptionId = "subscriptionId_example";  // string | subscription_id
-            var updateSubscriptionRequest = new UpdateSubscriptionRequest(); // UpdateSubscriptionRequest | request
-            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var subscriptionId = "subscriptionId_example";  // string | 
+            var updateSubscriptionRequestDetail = new UpdateSubscriptionRequestDetail(); // UpdateSubscriptionRequestDetail | 
+            var updateMask = "contact_id,subscription_plan_id,quantity,billing_amount,auto_charge,max_charge_attempts,days_between_retries, active,billing_frequency,billing_cycle,next_bill_date,end_date,payment_method_id,allow_tax,lead_affiliate_id, sale_affiliate_id,promo_code,shipping_option_id,reason_stopped,shipping_address";  // string? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
                 // Update a Subscription
-                Subscription result = apiInstance.UpdateSubscription(subscriptionId, updateSubscriptionRequest, updateMask);
+                SubscriptionDetail result = apiInstance.UpdateSubscription(subscriptionId, updateSubscriptionRequestDetail, updateMask);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -724,7 +772,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Update a Subscription
-    ApiResponse<Subscription> response = apiInstance.UpdateSubscriptionWithHttpInfo(subscriptionId, updateSubscriptionRequest, updateMask);
+    ApiResponse<SubscriptionDetail> response = apiInstance.UpdateSubscriptionWithHttpInfo(subscriptionId, updateSubscriptionRequestDetail, updateMask);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -741,17 +789,17 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **subscriptionId** | **string** | subscription_id |  |
-| **updateSubscriptionRequest** | [**UpdateSubscriptionRequest**](UpdateSubscriptionRequest.md) | request |  |
-| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **subscriptionId** | **string** |  |  |
+| **updateSubscriptionRequestDetail** | [**UpdateSubscriptionRequestDetail**](UpdateSubscriptionRequestDetail.md) |  |  |
+| **updateMask** | **string?** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 
-[**Subscription**](Subscription.md)
+[**SubscriptionDetail**](SubscriptionDetail.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -763,16 +811,19 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="updatesubscriptioncustomfield"></a>
 # **UpdateSubscriptionCustomField**
-> CustomFieldMetaData UpdateSubscriptionCustomField (string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, List<string>? updateMask = null)
+> CustomFieldMetaData UpdateSubscriptionCustomField (string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, string? updateMask = null)
 
 Update a Subscription Custom Field
 
@@ -793,11 +844,14 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new SubscriptionsApi(config);
-            var customFieldId = "customFieldId_example";  // string | custom_field_id
-            var updateCustomFieldMetaDataRequest = new UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | request
-            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var customFieldId = "customFieldId_example";  // string | 
+            var updateCustomFieldMetaDataRequest = new UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | 
+            var updateMask = "group_id,label,options";  // string? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -840,9 +894,9 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **customFieldId** | **string** | custom_field_id |  |
-| **updateCustomFieldMetaDataRequest** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md) | request |  |
-| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **customFieldId** | **string** |  |  |
+| **updateCustomFieldMetaDataRequest** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md) |  |  |
+| **updateMask** | **string?** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 
@@ -850,7 +904,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -862,10 +916,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

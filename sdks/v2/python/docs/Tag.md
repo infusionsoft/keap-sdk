@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**category** | [**CategoryReference**](CategoryReference.md) |  | [optional] 
-**create_time** | **str** | The time this tag was created, in ISO 8601 format | [optional] 
-**description** | **str** | A description of this tag | [optional] 
 **id** | **str** | The unique identifier for this tag | [optional] 
 **name** | **str** | The unique name of this tag | [optional] 
-**update_time** | **str** | The time this tag was last updated, in ISO 8601 format | [optional] 
+**description** | **str** | A description of this tag | [optional] 
+**category** | [**CategoryReference**](CategoryReference.md) | The category this tag belongs to | [optional] 
+**create_time** | **datetime** | The time this tag was created, in ISO 8601 format | [optional] 
+**update_time** | **datetime** | The time this tag was last updated, in ISO 8601 format | [optional] 
 
 ## Example
 

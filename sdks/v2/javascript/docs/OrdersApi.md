@@ -1,33 +1,33 @@
 # KeapCoreServiceV2Sdk.OrdersApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**applyCommissionOnOrderItems**](OrdersApi.md#applyCommissionOnOrderItems) | **POST** /v2/orders/{order_id}/items/{order_item_id}:applyCommission | Apply Commission to an Order Item
-[**applyTax**](OrdersApi.md#applyTax) | **POST** /v2/orders/{order_id}:applyTax | Apply Taxes on an Order
-[**attachFileToOrder**](OrdersApi.md#attachFileToOrder) | **POST** /v2/orders/{order_id}:attachFile | Attach a File to an Order Invoice
-[**createOrder**](OrdersApi.md#createOrder) | **POST** /v2/orders | Create an Order
-[**createOrderCustomField**](OrdersApi.md#createOrderCustomField) | **POST** /v2/orders/model/customFields | Create an Order Custom Field
-[**createOrderItem**](OrdersApi.md#createOrderItem) | **POST** /v2/orders/{order_id}/items | Create an Order Item
-[**createPaymentForAnOrder**](OrdersApi.md#createPaymentForAnOrder) | **POST** /v2/orders/{order_id}/payments | Create a Payment
-[**deleteOrder**](OrdersApi.md#deleteOrder) | **DELETE** /v2/orders/{order_id} | Delete an Order
-[**deleteOrderCustomField**](OrdersApi.md#deleteOrderCustomField) | **DELETE** /v2/orders/model/customFields/{custom_field_id} | Delete an Order Custom Field
-[**deleteOrderItem**](OrdersApi.md#deleteOrderItem) | **DELETE** /v2/orders/{order_id}/items/{order_item_id} | Delete an Order Item
-[**detachFileFromOrder**](OrdersApi.md#detachFileFromOrder) | **POST** /v2/orders/{order_id}:detachFile | Detach a File from an Order Invoice
-[**getOrder**](OrdersApi.md#getOrder) | **GET** /v2/orders/{order_id} | Retrieve an Order
-[**listOrderPayments**](OrdersApi.md#listOrderPayments) | **GET** /v2/orders/{order_id}/payments | Retrieve Order Payments
-[**listOrders**](OrdersApi.md#listOrders) | **GET** /v2/orders | List orders
-[**retrieveOrderCustomFieldModel**](OrdersApi.md#retrieveOrderCustomFieldModel) | **GET** /v2/orders/model | Retrieve Order Custom Field Model
-[**updateOrder**](OrdersApi.md#updateOrder) | **PATCH** /v2/orders/{order_id} | Update an Order
-[**updateOrderCustomField**](OrdersApi.md#updateOrderCustomField) | **PATCH** /v2/orders/model/customFields/{custom_field_id} | Update an Order Custom Field
-[**updateOrderItem**](OrdersApi.md#updateOrderItem) | **PATCH** /v2/orders/{order_id}/items/{order_item_id} | Update an Order Item
+[**applyCommissionOnOrderItems**](OrdersApi.md#applyCommissionOnOrderItems) | **POST** /rest/v2/orders/{order_id}/items/{order_item_id}:applyCommission | Apply Commission to an Order Item
+[**applyTax**](OrdersApi.md#applyTax) | **POST** /rest/v2/orders/{order_id}:applyTax | Apply Taxes on an Order
+[**attachFileToOrder**](OrdersApi.md#attachFileToOrder) | **POST** /rest/v2/orders/{order_id}:attachFile | Attach a File to an Order Invoice
+[**createOrder**](OrdersApi.md#createOrder) | **POST** /rest/v2/orders | Create an Order
+[**createOrderCustomField**](OrdersApi.md#createOrderCustomField) | **POST** /rest/v2/orders/model/customFields | Create an Order Custom Field
+[**createOrderItem**](OrdersApi.md#createOrderItem) | **POST** /rest/v2/orders/{order_id}/items | Create an Order Item
+[**createPaymentForAnOrder**](OrdersApi.md#createPaymentForAnOrder) | **POST** /rest/v2/orders/{order_id}/payments | Create a Payment
+[**deleteOrder**](OrdersApi.md#deleteOrder) | **DELETE** /rest/v2/orders/{order_id} | Delete an Order
+[**deleteOrderCustomField**](OrdersApi.md#deleteOrderCustomField) | **DELETE** /rest/v2/orders/model/customFields/{custom_field_id} | Delete an Order Custom Field
+[**deleteOrderItem**](OrdersApi.md#deleteOrderItem) | **DELETE** /rest/v2/orders/{order_id}/items/{order_item_id} | Delete an Order Item
+[**detachFileFromOrder**](OrdersApi.md#detachFileFromOrder) | **POST** /rest/v2/orders/{order_id}:detachFile | Detach a File from an Order Invoice
+[**getOrder**](OrdersApi.md#getOrder) | **GET** /rest/v2/orders/{order_id} | Retrieve an Order
+[**listOrderPayments**](OrdersApi.md#listOrderPayments) | **GET** /rest/v2/orders/{order_id}/payments | Retrieve Order Payments
+[**listOrders**](OrdersApi.md#listOrders) | **GET** /rest/v2/orders | List orders
+[**retrieveOrderCustomFieldModel**](OrdersApi.md#retrieveOrderCustomFieldModel) | **GET** /rest/v2/orders/model | Retrieve Order Custom Field Model
+[**updateOrder**](OrdersApi.md#updateOrder) | **PATCH** /rest/v2/orders/{order_id} | Update an Order
+[**updateOrderCustomField**](OrdersApi.md#updateOrderCustomField) | **PATCH** /rest/v2/orders/model/customFields/{custom_field_id} | Update an Order Custom Field
+[**updateOrderItem**](OrdersApi.md#updateOrderItem) | **PATCH** /rest/v2/orders/{order_id}/items/{order_item_id} | Update an Order Item
 
 
 
 ## applyCommissionOnOrderItems
 
-> OrderItem applyCommissionOnOrderItems(orderId, orderItemId, restApplyCommissionRequest)
+> OrderItem applyCommissionOnOrderItems(orderId, orderItemId, applyCommissionRequest)
 
 Apply Commission to an Order Item
 
@@ -37,12 +37,16 @@ Applies commission to an order item on an existing order.
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.OrdersApi();
-let orderId = "orderId_example"; // String | order_id
-let orderItemId = "orderItemId_example"; // String | order_item_id
-let restApplyCommissionRequest = new KeapCoreServiceV2Sdk.RestApplyCommissionRequest(); // RestApplyCommissionRequest | request
-apiInstance.applyCommissionOnOrderItems(orderId, orderItemId, restApplyCommissionRequest).then((data) => {
+let orderId = "orderId_example"; // String | 
+let orderItemId = "orderItemId_example"; // String | 
+let applyCommissionRequest = new KeapCoreServiceV2Sdk.ApplyCommissionRequest(); // ApplyCommissionRequest | 
+apiInstance.applyCommissionOnOrderItems(orderId, orderItemId, applyCommissionRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -55,9 +59,9 @@ apiInstance.applyCommissionOnOrderItems(orderId, orderItemId, restApplyCommissio
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **orderId** | **String**| order_id | 
- **orderItemId** | **String**| order_item_id | 
- **restApplyCommissionRequest** | [**RestApplyCommissionRequest**](RestApplyCommissionRequest.md)| request | 
+ **orderId** | **String**|  | 
+ **orderItemId** | **String**|  | 
+ **applyCommissionRequest** | [**ApplyCommissionRequest**](ApplyCommissionRequest.md)|  | 
 
 ### Return type
 
@@ -65,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -75,7 +79,7 @@ No authorization required
 
 ## applyTax
 
-> Order applyTax(orderId)
+> OrderV2 applyTax(orderId)
 
 Apply Taxes on an Order
 
@@ -85,9 +89,13 @@ Calculate taxes for a single Order for a given order id
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.OrdersApi();
-let orderId = "orderId_example"; // String | order_id
+let orderId = "orderId_example"; // String | 
 apiInstance.applyTax(orderId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -101,15 +109,15 @@ apiInstance.applyTax(orderId).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **orderId** | **String**| order_id | 
+ **orderId** | **String**|  | 
 
 ### Return type
 
-[**Order**](Order.md)
+[**OrderV2**](OrderV2.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -119,7 +127,7 @@ No authorization required
 
 ## attachFileToOrder
 
-> Order attachFileToOrder(orderId, fileOperationRequest)
+> OrderV2 attachFileToOrder(orderId, fileOperationRequest)
 
 Attach a File to an Order Invoice
 
@@ -129,10 +137,14 @@ Attaches an uploaded File to an Order Invoice
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.OrdersApi();
-let orderId = "orderId_example"; // String | order_id
-let fileOperationRequest = new KeapCoreServiceV2Sdk.FileOperationRequest(); // FileOperationRequest | File name
+let orderId = "orderId_example"; // String | 
+let fileOperationRequest = new KeapCoreServiceV2Sdk.FileOperationRequest(); // FileOperationRequest | 
 apiInstance.attachFileToOrder(orderId, fileOperationRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -146,16 +158,16 @@ apiInstance.attachFileToOrder(orderId, fileOperationRequest).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **orderId** | **String**| order_id | 
- **fileOperationRequest** | [**FileOperationRequest**](FileOperationRequest.md)| File name | 
+ **orderId** | **String**|  | 
+ **fileOperationRequest** | [**FileOperationRequest**](FileOperationRequest.md)|  | 
 
 ### Return type
 
-[**Order**](Order.md)
+[**OrderV2**](OrderV2.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -165,7 +177,7 @@ No authorization required
 
 ## createOrder
 
-> Order createOrder(restCreateOrderRequest)
+> OrderV2 createOrder(restCreateOrderRequest)
 
 Create an Order
 
@@ -175,9 +187,13 @@ Creates a one time Order with Order items
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.OrdersApi();
-let restCreateOrderRequest = new KeapCoreServiceV2Sdk.RestCreateOrderRequest(); // RestCreateOrderRequest | request
+let restCreateOrderRequest = new KeapCoreServiceV2Sdk.RestCreateOrderRequest(); // RestCreateOrderRequest | 
 apiInstance.createOrder(restCreateOrderRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -191,15 +207,15 @@ apiInstance.createOrder(restCreateOrderRequest).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **restCreateOrderRequest** | [**RestCreateOrderRequest**](RestCreateOrderRequest.md)| request | 
+ **restCreateOrderRequest** | [**RestCreateOrderRequest**](RestCreateOrderRequest.md)|  | 
 
 ### Return type
 
-[**Order**](Order.md)
+[**OrderV2**](OrderV2.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -219,9 +235,13 @@ Creates a custom field of the specified type and options to the Order object
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.OrdersApi();
-let createCustomFieldRequest = new KeapCoreServiceV2Sdk.CreateCustomFieldRequest(); // CreateCustomFieldRequest | customField
+let createCustomFieldRequest = new KeapCoreServiceV2Sdk.CreateCustomFieldRequest(); // CreateCustomFieldRequest | 
 apiInstance.createOrderCustomField(createCustomFieldRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -235,7 +255,7 @@ apiInstance.createOrderCustomField(createCustomFieldRequest).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createCustomFieldRequest** | [**CreateCustomFieldRequest**](CreateCustomFieldRequest.md)| customField | 
+ **createCustomFieldRequest** | [**CreateCustomFieldRequest**](CreateCustomFieldRequest.md)|  | 
 
 ### Return type
 
@@ -243,7 +263,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -263,10 +283,14 @@ Creates an order item on an existing order
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.OrdersApi();
-let orderId = "orderId_example"; // String | order_id
-let createOrderItemRequest = new KeapCoreServiceV2Sdk.CreateOrderItemRequest(); // CreateOrderItemRequest | request
+let orderId = "orderId_example"; // String | 
+let createOrderItemRequest = new KeapCoreServiceV2Sdk.CreateOrderItemRequest(); // CreateOrderItemRequest | 
 apiInstance.createOrderItem(orderId, createOrderItemRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -280,8 +304,8 @@ apiInstance.createOrderItem(orderId, createOrderItemRequest).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **orderId** | **String**| order_id | 
- **createOrderItemRequest** | [**CreateOrderItemRequest**](CreateOrderItemRequest.md)| request | 
+ **orderId** | **String**|  | 
+ **createOrderItemRequest** | [**CreateOrderItemRequest**](CreateOrderItemRequest.md)|  | 
 
 ### Return type
 
@@ -289,7 +313,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -299,7 +323,7 @@ No authorization required
 
 ## createPaymentForAnOrder
 
-> PaymentResult createPaymentForAnOrder(orderId, createPaymentRequest)
+> PaymentResult createPaymentForAnOrder(orderId, restCreatePaymentRequest)
 
 Create a Payment
 
@@ -309,11 +333,15 @@ Creates a payment record. Alternatively, adds a record of historical or external
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.OrdersApi();
-let orderId = "orderId_example"; // String | order_id
-let createPaymentRequest = new KeapCoreServiceV2Sdk.CreatePaymentRequest(); // CreatePaymentRequest | request
-apiInstance.createPaymentForAnOrder(orderId, createPaymentRequest).then((data) => {
+let orderId = "orderId_example"; // String | 
+let restCreatePaymentRequest = new KeapCoreServiceV2Sdk.RestCreatePaymentRequest(); // RestCreatePaymentRequest | 
+apiInstance.createPaymentForAnOrder(orderId, restCreatePaymentRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -326,8 +354,8 @@ apiInstance.createPaymentForAnOrder(orderId, createPaymentRequest).then((data) =
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **orderId** | **String**| order_id | 
- **createPaymentRequest** | [**CreatePaymentRequest**](CreatePaymentRequest.md)| request | 
+ **orderId** | **String**|  | 
+ **restCreatePaymentRequest** | [**RestCreatePaymentRequest**](RestCreatePaymentRequest.md)|  | 
 
 ### Return type
 
@@ -335,7 +363,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -355,9 +383,13 @@ Deletes an Order&lt;br/&gt; Note: The Order must not have any transactions recor
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.OrdersApi();
-let orderId = "orderId_example"; // String | order_id
+let orderId = "orderId_example"; // String | 
 apiInstance.deleteOrder(orderId).then(() => {
   console.log('API called successfully.');
 }, (error) => {
@@ -371,7 +403,7 @@ apiInstance.deleteOrder(orderId).then(() => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **orderId** | **String**| order_id | 
+ **orderId** | **String**|  | 
 
 ### Return type
 
@@ -379,7 +411,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -399,9 +431,13 @@ Deletes a Custom Field from the Order object
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.OrdersApi();
-let customFieldId = "customFieldId_example"; // String | custom_field_id
+let customFieldId = "customFieldId_example"; // String | 
 apiInstance.deleteOrderCustomField(customFieldId).then(() => {
   console.log('API called successfully.');
 }, (error) => {
@@ -415,7 +451,7 @@ apiInstance.deleteOrderCustomField(customFieldId).then(() => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **customFieldId** | **String**| custom_field_id | 
+ **customFieldId** | **String**|  | 
 
 ### Return type
 
@@ -423,7 +459,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -443,10 +479,14 @@ Deletes an order item on an existing order
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.OrdersApi();
-let orderId = "orderId_example"; // String | order_id
-let orderItemId = "orderItemId_example"; // String | order_item_id
+let orderId = "orderId_example"; // String | 
+let orderItemId = "orderItemId_example"; // String | 
 apiInstance.deleteOrderItem(orderId, orderItemId).then(() => {
   console.log('API called successfully.');
 }, (error) => {
@@ -460,8 +500,8 @@ apiInstance.deleteOrderItem(orderId, orderItemId).then(() => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **orderId** | **String**| order_id | 
- **orderItemId** | **String**| order_item_id | 
+ **orderId** | **String**|  | 
+ **orderItemId** | **String**|  | 
 
 ### Return type
 
@@ -469,7 +509,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -479,7 +519,7 @@ No authorization required
 
 ## detachFileFromOrder
 
-> Order detachFileFromOrder(orderId, fileOperationRequest)
+> OrderV2 detachFileFromOrder(orderId, fileOperationRequest)
 
 Detach a File from an Order Invoice
 
@@ -489,10 +529,14 @@ Detaches a File from an Order Invoice
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.OrdersApi();
-let orderId = "orderId_example"; // String | order_id
-let fileOperationRequest = new KeapCoreServiceV2Sdk.FileOperationRequest(); // FileOperationRequest | request
+let orderId = "orderId_example"; // String | 
+let fileOperationRequest = new KeapCoreServiceV2Sdk.FileOperationRequest(); // FileOperationRequest | 
 apiInstance.detachFileFromOrder(orderId, fileOperationRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -506,16 +550,16 @@ apiInstance.detachFileFromOrder(orderId, fileOperationRequest).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **orderId** | **String**| order_id | 
- **fileOperationRequest** | [**FileOperationRequest**](FileOperationRequest.md)| request | 
+ **orderId** | **String**|  | 
+ **fileOperationRequest** | [**FileOperationRequest**](FileOperationRequest.md)|  | 
 
 ### Return type
 
-[**Order**](Order.md)
+[**OrderV2**](OrderV2.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -525,7 +569,7 @@ No authorization required
 
 ## getOrder
 
-> Order getOrder(orderId)
+> OrderV2 getOrder(orderId)
 
 Retrieve an Order
 
@@ -535,9 +579,13 @@ Retrieves a single Order for a given order id
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.OrdersApi();
-let orderId = "orderId_example"; // String | order_id
+let orderId = "orderId_example"; // String | 
 apiInstance.getOrder(orderId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -551,15 +599,15 @@ apiInstance.getOrder(orderId).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **orderId** | **String**| order_id | 
+ **orderId** | **String**|  | 
 
 ### Return type
 
-[**Order**](Order.md)
+[**OrderV2**](OrderV2.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -579,9 +627,13 @@ Retrieves a list of payments made against a given order, including historical or
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.OrdersApi();
-let orderId = "orderId_example"; // String | order_id
+let orderId = "orderId_example"; // String | 
 let opts = {
   'filter': "filter_example", // String | Filter to apply, allowed fields are: - (String) `invoice_id` - (String) `payment_id` - (String) `amount` - (String) `pay_status` - (Boolean) `skip_commission`  You will need to apply the `==` operator to check the equality of one of the filters with your searched  word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=payment_id%3D%3D123` - `filter=pay_status%3D%3DAPPROVED` - `filter=invoice_id%3D%3D456%3Bskip_commission=true` 
   'orderBy': "orderBy_example", // String | Attribute and direction to order items. One of the following fields: - `invoice_id` - `payment_id` - `amount` - `pay_time` - `pay_status` - `skip_commission` - `last_updated_time`  One of the following directions: - `asc` - `desc`
@@ -601,7 +653,7 @@ apiInstance.listOrderPayments(orderId, opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **orderId** | **String**| order_id | 
+ **orderId** | **String**|  | 
  **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;invoice_id&#x60; - (String) &#x60;payment_id&#x60; - (String) &#x60;amount&#x60; - (String) &#x60;pay_status&#x60; - (Boolean) &#x60;skip_commission&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched  word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;payment_id%3D%3D123&#x60; - &#x60;filter&#x3D;pay_status%3D%3DAPPROVED&#x60; - &#x60;filter&#x3D;invoice_id%3D%3D456%3Bskip_commission&#x3D;true&#x60;  | [optional] 
  **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;invoice_id&#x60; - &#x60;payment_id&#x60; - &#x60;amount&#x60; - &#x60;pay_time&#x60; - &#x60;pay_status&#x60; - &#x60;skip_commission&#x60; - &#x60;last_updated_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] 
  **pageSize** | **Number**| Total number of items to return per page | [optional] 
@@ -613,7 +665,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -633,10 +685,14 @@ Retrieves a list of orders
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.OrdersApi();
 let opts = {
-  'filter': "filter_example", // String | Filter to apply, allowed fields are: - (String) `product_id` - (String) `contact_id` - (Boolean) `paid` - (String) `created_since_time` - (String) `created_until_time` You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=product_id%3D%3D123` - `filter=contact_id%3D%3D567` - `filter=product_id%3D%3D123%3Bcontact_id%3D%3D567`
+  'filter': "filter_example", // String | Filter to apply, allowed fields are: - (String) `product_id` - (String) `contact_id` - (Boolean) `paid` - (String) `created_since_time` - (String) `created_until_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=product_id%3D%3D123` - `filter=contact_id%3D%3D567` - `filter=product_id%3D%3D123%3Bcontact_id%3D%3D567`
   'orderBy': "orderBy_example", // String | Attribute and direction to order items. One of the following fields: - `id` - `order_time`  One of the following directions: - `asc` - `desc`
   'pageSize': 0, // Number | Total number of items to return per page
   'pageToken': "pageToken_example" // String | Page token
@@ -654,7 +710,7 @@ apiInstance.listOrders(opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; | [optional] 
+ **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; | [optional] 
  **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;order_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] 
  **pageSize** | **Number**| Total number of items to return per page | [optional] 
  **pageToken** | **String**| Page token | [optional] 
@@ -665,7 +721,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -685,6 +741,10 @@ Gets the custom fields for the Order object
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.OrdersApi();
 apiInstance.retrieveOrderCustomFieldModel().then((data) => {
@@ -705,7 +765,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -715,7 +775,7 @@ No authorization required
 
 ## updateOrder
 
-> Order updateOrder(orderId, opts)
+> OrderV2 updateOrder(orderId, updateOrderRequest, opts)
 
 Update an Order
 
@@ -725,14 +785,18 @@ Updates an Order
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.OrdersApi();
-let orderId = "orderId_example"; // String | order_id
+let orderId = "orderId_example"; // String | 
+let updateOrderRequest = new KeapCoreServiceV2Sdk.UpdateOrderRequest(); // UpdateOrderRequest | 
 let opts = {
-  'updateMask': ["null"], // [String] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-  'updateOrderRequest': new KeapCoreServiceV2Sdk.UpdateOrderRequest() // UpdateOrderRequest | order
+  'updateMask': "updateMask_example" // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
-apiInstance.updateOrder(orderId, opts).then((data) => {
+apiInstance.updateOrder(orderId, updateOrderRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -745,17 +809,17 @@ apiInstance.updateOrder(orderId, opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **orderId** | **String**| order_id | 
- **updateMask** | [**[String]**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
- **updateOrderRequest** | [**UpdateOrderRequest**](UpdateOrderRequest.md)| order | [optional] 
+ **orderId** | **String**|  | 
+ **updateOrderRequest** | [**UpdateOrderRequest**](UpdateOrderRequest.md)|  | 
+ **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 
-[**Order**](Order.md)
+[**OrderV2**](OrderV2.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -775,12 +839,16 @@ Updates a custom field of the specified type and options to the Order object
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.OrdersApi();
-let customFieldId = "customFieldId_example"; // String | custom_field_id
-let updateCustomFieldMetaDataRequest = new KeapCoreServiceV2Sdk.UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | request
+let customFieldId = "customFieldId_example"; // String | 
+let updateCustomFieldMetaDataRequest = new KeapCoreServiceV2Sdk.UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | 
 let opts = {
-  'updateMask': ["null"] // [String] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+  'updateMask': "updateMask_example" // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
 apiInstance.updateOrderCustomField(customFieldId, updateCustomFieldMetaDataRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -795,9 +863,9 @@ apiInstance.updateOrderCustomField(customFieldId, updateCustomFieldMetaDataReque
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **customFieldId** | **String**| custom_field_id | 
- **updateCustomFieldMetaDataRequest** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md)| request | 
- **updateMask** | [**[String]**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **customFieldId** | **String**|  | 
+ **updateCustomFieldMetaDataRequest** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md)|  | 
+ **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 
@@ -805,7 +873,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -815,7 +883,7 @@ No authorization required
 
 ## updateOrderItem
 
-> OrderItem updateOrderItem(orderId, orderItemId, opts)
+> OrderItem updateOrderItem(orderId, orderItemId, updateOrderItemRequest, opts)
 
 Update an Order Item
 
@@ -825,15 +893,19 @@ Updates an Order Item
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.OrdersApi();
-let orderId = "orderId_example"; // String | order_id
-let orderItemId = "orderItemId_example"; // String | order_item_id
+let orderId = "orderId_example"; // String | 
+let orderItemId = "orderItemId_example"; // String | 
+let updateOrderItemRequest = new KeapCoreServiceV2Sdk.UpdateOrderItemRequest(); // UpdateOrderItemRequest | 
 let opts = {
-  'updateMask': ["null"], // [String] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-  'updateOrderItemRequest': new KeapCoreServiceV2Sdk.UpdateOrderItemRequest() // UpdateOrderItemRequest | order
+  'updateMask': "updateMask_example" // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
-apiInstance.updateOrderItem(orderId, orderItemId, opts).then((data) => {
+apiInstance.updateOrderItem(orderId, orderItemId, updateOrderItemRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -846,10 +918,10 @@ apiInstance.updateOrderItem(orderId, orderItemId, opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **orderId** | **String**| order_id | 
- **orderItemId** | **String**| order_item_id | 
- **updateMask** | [**[String]**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
- **updateOrderItemRequest** | [**UpdateOrderItemRequest**](UpdateOrderItemRequest.md)| order | [optional] 
+ **orderId** | **String**|  | 
+ **orderItemId** | **String**|  | 
+ **updateOrderItemRequest** | [**UpdateOrderItemRequest**](UpdateOrderItemRequest.md)|  | 
+ **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 
@@ -857,7 +929,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 

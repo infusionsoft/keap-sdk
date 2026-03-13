@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**field_name** | **str** |  | [optional] 
-**value** | **str** |  | [optional] 
+**field_name** | **str** | The name of the field/column | [optional] 
+**value** | **str** | The value of the field | [optional] 
 
 ## Example
 

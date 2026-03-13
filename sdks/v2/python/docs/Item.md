@@ -5,11 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [optional] 
-**name** | **str** |  | [optional] 
-**next_item_id** | **str** |  | [optional] 
-**previous_item_id** | **str** |  | [optional] 
-**type** | **str** |  | [optional] 
+**id** | **str** | The unique identifier of the item | [optional] 
+**name** | **str** | The name of the item | [optional] 
+**type** | **str** | The type of flow item | [optional] 
+**next_item_id** | **str** | The ID of the next item in the sequence | [optional] 
+**previous_item_id** | **str** | The ID of the previous item in the sequence | [optional] 
 
 ## Example
 

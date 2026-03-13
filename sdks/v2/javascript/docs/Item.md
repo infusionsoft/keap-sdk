@@ -4,18 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** |  | [optional] 
-**name** | **String** |  | [optional] 
-**nextItemId** | **String** |  | [optional] 
-**previousItemId** | **String** |  | [optional] 
-**type** | **String** |  | [optional] 
+**id** | **String** | The unique identifier of the item | [optional] 
+**name** | **String** | The name of the item | [optional] 
+**type** | **String** | The type of flow item | [optional] 
+**nextItemId** | **String** | The ID of the next item in the sequence | [optional] 
+**previousItemId** | **String** | The ID of the previous item in the sequence | [optional] 
 
 
 
 ## Enum: TypeEnum
 
-
-* `NULL` (value: `"NULL"`)
 
 * `Start` (value: `"Start"`)
 

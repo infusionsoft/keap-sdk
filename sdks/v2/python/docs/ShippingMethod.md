@@ -5,13 +5,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**description** | **str** |  | [optional] 
 **id** | **str** |  | [optional] 
-**international** | **bool** |  | [optional] 
 **name** | **str** |  | [optional] 
-**settings** | **object** |  | [optional] 
-**status** | **str** |  | [optional] 
+**description** | **str** |  | [optional] 
 **type** | **str** |  | [optional] 
+**status** | **str** |  | [optional] 
+**international** | **bool** |  | [optional] 
+**settings** | **object** |  | [optional] 
 
 ## Example
 

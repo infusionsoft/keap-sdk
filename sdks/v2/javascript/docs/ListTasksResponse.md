@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**nextPageToken** | **String** |  | [optional] 
 **tasks** | [**[Task]**](Task.md) |  | [optional] 
+**nextPageToken** | **String** |  | [optional] 
 
 

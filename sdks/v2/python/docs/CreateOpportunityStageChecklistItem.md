@@ -6,8 +6,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **description** | **str** |  | 
-**order** | **int** |  | 
 **required** | **bool** |  | 
+**order** | **int** | Must be Numeric could be negative values as well for ordering | 
 
 ## Example
 

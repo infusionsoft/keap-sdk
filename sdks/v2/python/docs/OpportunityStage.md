@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**details** | [**StageDetails**](StageDetails.md) |  | [optional] 
-**id** | **str** |  | 
-**name** | **str** |  | [optional] 
-**reasons** | **List[str]** |  | [optional] 
+**id** | **str** | Stage ID | 
+**name** | **str** | Stage name | [optional] 
+**details** | [**StageDetails**](StageDetails.md) | Stage details | [optional] 
+**reasons** | **List[str]** | Stage change reasons | [optional] 
 
 ## Example
 

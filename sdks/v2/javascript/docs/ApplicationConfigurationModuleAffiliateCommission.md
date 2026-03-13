@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**calculationType** | **String** |  | [optional] 
 **levels** | **Number** |  | [optional] 
+**calculationType** | **String** |  | [optional] 
 **participantTypes** | **String** |  | [optional] 
 
 

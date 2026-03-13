@@ -7,9 +7,9 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**field** | [**FieldEnum**](#FieldEnum) |  |  [optional] |
-|**number** | **String** |  |  [optional] |
-|**type** | **String** |  |  [optional] |
+|**number** | **String** | Fax number |  [optional] |
+|**type** | **String** | Fax type |  [optional] |
+|**field** | [**FieldEnum**](#FieldEnum) | Fax number slot |  [optional] |
 
 
 

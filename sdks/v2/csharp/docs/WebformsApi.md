@@ -1,15 +1,15 @@
 # Keap.Core.V2.Api.WebformsApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**GetHtml**](WebformsApi.md#gethtml) | **GET** /v2/webforms/{webform_id}:data | Get Webform HTML |
-| [**ListWebforms**](WebformsApi.md#listwebforms) | **GET** /v2/webforms | List Webforms with filter |
+| [**GetHtml**](WebformsApi.md#gethtml) | **GET** /rest/v2/webforms/{webform_id}:data | Get Webform HTML |
+| [**ListWebforms**](WebformsApi.md#listwebforms) | **GET** /rest/v2/webforms | List Webforms with filter |
 
 <a id="gethtml"></a>
 # **GetHtml**
-> byte[] GetHtml (string webformId)
+> string GetHtml (string webformId)
 
 Get Webform HTML
 
@@ -30,14 +30,17 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new WebformsApi(config);
-            var webformId = "webformId_example";  // string | webform_id
+            var webformId = "webformId_example";  // string | 
 
             try
             {
                 // Get Webform HTML
-                byte[] result = apiInstance.GetHtml(webformId);
+                string result = apiInstance.GetHtml(webformId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -58,7 +61,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Get Webform HTML
-    ApiResponse<byte[]> response = apiInstance.GetHtmlWithHttpInfo(webformId);
+    ApiResponse<string> response = apiInstance.GetHtmlWithHttpInfo(webformId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -75,30 +78,33 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **webformId** | **string** | webform_id |  |
+| **webformId** | **string** |  |  |
 
 ### Return type
 
-**byte[]**
+**string**
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: text/html
+ - **Accept**: text/html, application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | OK |  -  |
+| **200** | HTML content of the webform |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -125,7 +131,10 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new WebformsApi(config);
             var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (String) `name` - (String) `webform_type` - (String) `since_create_time` - (String) `until_create_time` - (String) `since_update_time` - (String) `until_update_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=name%3D%3DContact Us` - `filter=webform_type%3D%3Dlegacy` (optional) 
             var orderBy = "orderBy_example";  // string? | Attribute and direction to order items. One of the following fields: - `name` - `webform_type` - `create_time` - `update_time`  One of the following directions: - `asc` - `desc` (optional) 
@@ -184,7 +193,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -196,10 +205,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

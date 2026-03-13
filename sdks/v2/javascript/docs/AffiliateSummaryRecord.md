@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **affiliateId** | **Number** |  | [optional] 
-**amountEarned** | **Number** |  | [optional] 
-**balance** | **Number** |  | [optional] 
 **clawbacks** | **Number** |  | [optional] 
+**balance** | **Number** |  | [optional] 
+**amountEarned** | **Number** |  | [optional] 
 
 

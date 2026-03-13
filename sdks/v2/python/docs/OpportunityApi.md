@@ -1,25 +1,25 @@
 # keap_core_v2_client.OpportunityApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_opportunity**](OpportunityApi.md#create_opportunity) | **POST** /v2/opportunities | Create an Opportunity
-[**create_opportunity_custom_fields**](OpportunityApi.md#create_opportunity_custom_fields) | **POST** /v2/opportunities/model/customFields | Create an Opportunity Custom Field
-[**create_opportunity_stage**](OpportunityApi.md#create_opportunity_stage) | **POST** /v2/opportunities/stages | Create an Opportunity Stage
-[**delete_opportunity**](OpportunityApi.md#delete_opportunity) | **DELETE** /v2/opportunities/{opportunity_id} | Delete an Opportunity
-[**delete_opportunity_stage**](OpportunityApi.md#delete_opportunity_stage) | **DELETE** /v2/opportunities/stages/{stage_id} | Delete an Opportunity Stage
-[**get_opportunity**](OpportunityApi.md#get_opportunity) | **GET** /v2/opportunities/{opportunity_id} | Retrieve a Opportunity
-[**get_opportunity_stage**](OpportunityApi.md#get_opportunity_stage) | **GET** /v2/opportunities/stages/{stage_id} | Retrieve an Opportunity Stage
-[**list_opportunities**](OpportunityApi.md#list_opportunities) | **GET** /v2/opportunities | List Opportunities
-[**list_opportunity_stages**](OpportunityApi.md#list_opportunity_stages) | **GET** /v2/opportunities/stages | List of Opportunity Stages
-[**update_opportunity**](OpportunityApi.md#update_opportunity) | **PATCH** /v2/opportunities/{opportunity_id} | Update an opportunity
-[**update_opportunity_custom_field**](OpportunityApi.md#update_opportunity_custom_field) | **PATCH** /v2/opportunities/model/customFields/{custom_field_id} | Update a Opportunity&#39;s Custom Field
-[**update_opportunity_stage**](OpportunityApi.md#update_opportunity_stage) | **PATCH** /v2/opportunities/stages/{stage_id} | Update an Opportunity Stage
+[**create_opportunity**](OpportunityApi.md#create_opportunity) | **POST** /rest/v2/opportunities | Create an Opportunity
+[**create_opportunity_custom_fields**](OpportunityApi.md#create_opportunity_custom_fields) | **POST** /rest/v2/opportunities/model/customFields | Create an Opportunity Custom Field
+[**create_opportunity_stage**](OpportunityApi.md#create_opportunity_stage) | **POST** /rest/v2/opportunities/stages | Create an Opportunity Stage
+[**delete_opportunity**](OpportunityApi.md#delete_opportunity) | **DELETE** /rest/v2/opportunities/{opportunity_id} | Delete an Opportunity
+[**delete_opportunity_stage**](OpportunityApi.md#delete_opportunity_stage) | **DELETE** /rest/v2/opportunities/stages/{stage_id} | Delete an Opportunity Stage
+[**get_opportunity**](OpportunityApi.md#get_opportunity) | **GET** /rest/v2/opportunities/{opportunity_id} | Retrieve a Opportunity
+[**get_opportunity_stage**](OpportunityApi.md#get_opportunity_stage) | **GET** /rest/v2/opportunities/stages/{stage_id} | Retrieve an Opportunity Stage
+[**list_opportunities**](OpportunityApi.md#list_opportunities) | **GET** /rest/v2/opportunities | List Opportunities
+[**list_opportunity_stages**](OpportunityApi.md#list_opportunity_stages) | **GET** /rest/v2/opportunities/stages | List of Opportunity Stages
+[**update_opportunity**](OpportunityApi.md#update_opportunity) | **PATCH** /rest/v2/opportunities/{opportunity_id} | Update an opportunity
+[**update_opportunity_custom_field**](OpportunityApi.md#update_opportunity_custom_field) | **PATCH** /rest/v2/opportunities/model/customFields/{custom_field_id} | Update a Opportunity&#39;s Custom Field
+[**update_opportunity_stage**](OpportunityApi.md#update_opportunity_stage) | **PATCH** /rest/v2/opportunities/stages/{stage_id} | Update an Opportunity Stage
 
 
 # **create_opportunity**
-> RestV2Opportunity create_opportunity(create_opportunity_request=create_opportunity_request)
+> RestV2Opportunity create_opportunity(create_opportunity_request)
 
 Create an Opportunity
 
@@ -27,6 +27,7 @@ Creates a new opportunity as the authenticated user.
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
@@ -35,21 +36,27 @@ from keap_core_v2_client.models.rest_v2_opportunity import RestV2Opportunity
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.OpportunityApi(api_client)
-    create_opportunity_request = keap_core_v2_client.CreateOpportunityRequest() # CreateOpportunityRequest | opportunity (optional)
+    create_opportunity_request = keap_core_v2_client.CreateOpportunityRequest() # CreateOpportunityRequest | 
 
     try:
         # Create an Opportunity
-        api_response = api_instance.create_opportunity(create_opportunity_request=create_opportunity_request)
+        api_response = api_instance.create_opportunity(create_opportunity_request)
         print("The response of OpportunityApi->create_opportunity:\n")
         pprint(api_response)
     except Exception as e:
@@ -62,7 +69,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **create_opportunity_request** | [**CreateOpportunityRequest**](CreateOpportunityRequest.md)| opportunity | [optional] 
+ **create_opportunity_request** | [**CreateOpportunityRequest**](CreateOpportunityRequest.md)|  | 
 
 ### Return type
 
@@ -70,7 +77,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -82,9 +89,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -97,6 +108,7 @@ Creates a custom field of the specified type and options to the Opportunity obje
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
@@ -105,17 +117,23 @@ from keap_core_v2_client.models.custom_field_meta_data import CustomFieldMetaDat
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.OpportunityApi(api_client)
-    create_custom_field_request = keap_core_v2_client.CreateCustomFieldRequest() # CreateCustomFieldRequest | customField
+    create_custom_field_request = keap_core_v2_client.CreateCustomFieldRequest() # CreateCustomFieldRequest | 
 
     try:
         # Create an Opportunity Custom Field
@@ -132,7 +150,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **create_custom_field_request** | [**CreateCustomFieldRequest**](CreateCustomFieldRequest.md)| customField | 
+ **create_custom_field_request** | [**CreateCustomFieldRequest**](CreateCustomFieldRequest.md)|  | 
 
 ### Return type
 
@@ -140,7 +158,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -152,14 +170,18 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_opportunity_stage**
-> RestOpportunityStage create_opportunity_stage(create_opportunity_stage_request=create_opportunity_stage_request)
+> RestOpportunityStage create_opportunity_stage(create_opportunity_stage_request)
 
 Create an Opportunity Stage
 
@@ -167,6 +189,7 @@ Creates a new Opportunity Stage
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
@@ -175,21 +198,27 @@ from keap_core_v2_client.models.rest_opportunity_stage import RestOpportunitySta
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.OpportunityApi(api_client)
-    create_opportunity_stage_request = keap_core_v2_client.CreateOpportunityStageRequest() # CreateOpportunityStageRequest | opportunity (optional)
+    create_opportunity_stage_request = keap_core_v2_client.CreateOpportunityStageRequest() # CreateOpportunityStageRequest | 
 
     try:
         # Create an Opportunity Stage
-        api_response = api_instance.create_opportunity_stage(create_opportunity_stage_request=create_opportunity_stage_request)
+        api_response = api_instance.create_opportunity_stage(create_opportunity_stage_request)
         print("The response of OpportunityApi->create_opportunity_stage:\n")
         pprint(api_response)
     except Exception as e:
@@ -202,7 +231,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **create_opportunity_stage_request** | [**CreateOpportunityStageRequest**](CreateOpportunityStageRequest.md)| opportunity | [optional] 
+ **create_opportunity_stage_request** | [**CreateOpportunityStageRequest**](CreateOpportunityStageRequest.md)|  | 
 
 ### Return type
 
@@ -210,7 +239,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -222,9 +251,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -237,23 +270,30 @@ Deletes the specified Opportunity
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.OpportunityApi(api_client)
-    opportunity_id = 'opportunity_id_example' # str | opportunity_id
+    opportunity_id = 'opportunity_id_example' # str | 
 
     try:
         # Delete an Opportunity
@@ -268,7 +308,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **opportunity_id** | **str**| opportunity_id | 
+ **opportunity_id** | **str**|  | 
 
 ### Return type
 
@@ -276,7 +316,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -288,10 +328,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No Content |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -304,23 +347,30 @@ Deletes the specified Opportunity Stage
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.OpportunityApi(api_client)
-    stage_id = 'stage_id_example' # str | stage_id
+    stage_id = 'stage_id_example' # str | 
 
     try:
         # Delete an Opportunity Stage
@@ -335,7 +385,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **stage_id** | **str**| stage_id | 
+ **stage_id** | **str**|  | 
 
 ### Return type
 
@@ -343,7 +393,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -355,10 +405,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No Content |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -371,6 +424,7 @@ Retrieves the specified Opportunity
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
@@ -378,17 +432,23 @@ from keap_core_v2_client.models.rest_v2_opportunity import RestV2Opportunity
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.OpportunityApi(api_client)
-    opportunity_id = 'opportunity_id_example' # str | opportunity_id
+    opportunity_id = 'opportunity_id_example' # str | 
 
     try:
         # Retrieve a Opportunity
@@ -405,7 +465,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **opportunity_id** | **str**| opportunity_id | 
+ **opportunity_id** | **str**|  | 
 
 ### Return type
 
@@ -413,7 +473,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -425,10 +485,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -441,6 +504,7 @@ Retrieves the specified Opportunity Stage
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
@@ -448,17 +512,23 @@ from keap_core_v2_client.models.rest_opportunity_stage import RestOpportunitySta
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.OpportunityApi(api_client)
-    stage_id = 'stage_id_example' # str | stage_id
+    stage_id = 'stage_id_example' # str | 
 
     try:
         # Retrieve an Opportunity Stage
@@ -475,7 +545,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **stage_id** | **str**| stage_id | 
+ **stage_id** | **str**|  | 
 
 ### Return type
 
@@ -483,7 +553,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -495,10 +565,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -511,6 +584,7 @@ Retrieves a list of all Opportunities.
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
@@ -518,17 +592,23 @@ from keap_core_v2_client.models.list_opportunities_response import ListOpportuni
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.OpportunityApi(api_client)
-    fields = ['fields_example'] # List[str] | fields (optional)
+    fields = ['fields_example'] # List[str] |  (optional)
     filter = 'filter_example' # str | Filter to apply, allowed fields are: - (String) `stage_id` - (String) `user_id`  (optional)
     order_by = 'order_by_example' # str | Attribute and direction to opportunities items. One of the following fields: - `next_action_time` - `contact_name` - `opportunity_name` - `created_time`  One of the following directions: - `asc` - `desc` (optional)
     page_size = 0 # int | Total number of items to return per page (optional)
@@ -549,7 +629,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **fields** | [**List[str]**](str.md)| fields | [optional] 
+ **fields** | [**List[str]**](str.md)|  | [optional] 
  **filter** | **str**| Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60;  | [optional] 
  **order_by** | **str**| Attribute and direction to opportunities items. One of the following fields: - &#x60;next_action_time&#x60; - &#x60;contact_name&#x60; - &#x60;opportunity_name&#x60; - &#x60;created_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] 
  **page_size** | **int**| Total number of items to return per page | [optional] 
@@ -561,7 +641,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -573,10 +653,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -589,6 +672,7 @@ Retrieves a list of Opportunity Stages.
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
@@ -596,12 +680,18 @@ from keap_core_v2_client.models.list_opportunity_stages_response import ListOppo
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -637,7 +727,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -649,10 +739,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -665,6 +758,7 @@ Updates specified values of a given opportunity
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
@@ -673,19 +767,25 @@ from keap_core_v2_client.models.update_opportunity_request_v2 import UpdateOppor
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.OpportunityApi(api_client)
-    opportunity_id = 'opportunity_id_example' # str | opportunity_id
-    update_opportunity_request_v2 = keap_core_v2_client.UpdateOpportunityRequestV2() # UpdateOpportunityRequestV2 | request
-    update_mask = ['update_mask_example'] # List[str] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+    opportunity_id = 'opportunity_id_example' # str | 
+    update_opportunity_request_v2 = keap_core_v2_client.UpdateOpportunityRequestV2() # UpdateOpportunityRequestV2 | 
+    update_mask = 'update_mask_example' # str | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
 
     try:
         # Update an opportunity
@@ -702,9 +802,9 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **opportunity_id** | **str**| opportunity_id | 
- **update_opportunity_request_v2** | [**UpdateOpportunityRequestV2**](UpdateOpportunityRequestV2.md)| request | 
- **update_mask** | [**List[str]**](str.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **opportunity_id** | **str**|  | 
+ **update_opportunity_request_v2** | [**UpdateOpportunityRequestV2**](UpdateOpportunityRequestV2.md)|  | 
+ **update_mask** | **str**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 
@@ -712,7 +812,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -724,10 +824,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -740,6 +843,7 @@ Updates a custom field of the specified type and options to the Opportunity obje
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
@@ -748,19 +852,25 @@ from keap_core_v2_client.models.update_custom_field_meta_data_request import Upd
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.OpportunityApi(api_client)
-    custom_field_id = 'custom_field_id_example' # str | custom_field_id
-    update_custom_field_meta_data_request = keap_core_v2_client.UpdateCustomFieldMetaDataRequest() # UpdateCustomFieldMetaDataRequest | request
-    update_mask = ['update_mask_example'] # List[str] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+    custom_field_id = 'custom_field_id_example' # str | 
+    update_custom_field_meta_data_request = keap_core_v2_client.UpdateCustomFieldMetaDataRequest() # UpdateCustomFieldMetaDataRequest | 
+    update_mask = 'update_mask_example' # str | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
 
     try:
         # Update a Opportunity's Custom Field
@@ -777,9 +887,9 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **custom_field_id** | **str**| custom_field_id | 
- **update_custom_field_meta_data_request** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md)| request | 
- **update_mask** | [**List[str]**](str.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **custom_field_id** | **str**|  | 
+ **update_custom_field_meta_data_request** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md)|  | 
+ **update_mask** | **str**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 
@@ -787,7 +897,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -799,10 +909,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -815,6 +928,7 @@ Updates specified values of a given Opportunity Stage
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
@@ -823,19 +937,25 @@ from keap_core_v2_client.models.update_opportunity_stage_request import UpdateOp
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.OpportunityApi(api_client)
-    stage_id = 'stage_id_example' # str | stage_id
-    update_opportunity_stage_request = keap_core_v2_client.UpdateOpportunityStageRequest() # UpdateOpportunityStageRequest | request
-    update_mask = ['update_mask_example'] # List[str] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+    stage_id = 'stage_id_example' # str | 
+    update_opportunity_stage_request = keap_core_v2_client.UpdateOpportunityStageRequest() # UpdateOpportunityStageRequest | 
+    update_mask = 'update_mask_example' # str | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
 
     try:
         # Update an Opportunity Stage
@@ -852,9 +972,9 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **stage_id** | **str**| stage_id | 
- **update_opportunity_stage_request** | [**UpdateOpportunityStageRequest**](UpdateOpportunityStageRequest.md)| request | 
- **update_mask** | [**List[str]**](str.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **stage_id** | **str**|  | 
+ **update_opportunity_stage_request** | [**UpdateOpportunityStageRequest**](UpdateOpportunityStageRequest.md)|  | 
+ **update_mask** | **str**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 
@@ -862,7 +982,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -874,10 +994,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -1,11 +1,11 @@
 # KeapCoreServiceV2Sdk.UserGroupsApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getUserGroup**](UserGroupsApi.md#getUserGroup) | **GET** /v2/userGroups/{user_group_id} | Retrieve an User Group
-[**listUserGroups**](UserGroupsApi.md#listUserGroups) | **GET** /v2/userGroups | List User Groups
+[**getUserGroup**](UserGroupsApi.md#getUserGroup) | **GET** /rest/v2/userGroups/{user_group_id} | Retrieve a User Group
+[**listUserGroups**](UserGroupsApi.md#listUserGroups) | **GET** /rest/v2/userGroups | List User Groups
 
 
 
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 > UserGroup getUserGroup(userGroupId)
 
-Retrieve an User Group
+Retrieve a User Group
 
 Retrieves a single user group by its ID.
 
@@ -21,9 +21,13 @@ Retrieves a single user group by its ID.
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.UserGroupsApi();
-let userGroupId = "userGroupId_example"; // String | user_group_id
+let userGroupId = "userGroupId_example"; // String | 
 apiInstance.getUserGroup(userGroupId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -37,7 +41,7 @@ apiInstance.getUserGroup(userGroupId).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userGroupId** | **String**| user_group_id | 
+ **userGroupId** | **String**|  | 
 
 ### Return type
 
@@ -45,7 +49,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -65,6 +69,10 @@ Retrieves a list of all user groups in the application.
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.UserGroupsApi();
 apiInstance.listUserGroups().then((data) => {
@@ -85,7 +93,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 

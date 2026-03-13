@@ -1,14 +1,14 @@
 # .FreeTrialDiscountsApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createFreeTrialDiscount**](FreeTrialDiscountsApi.md#createFreeTrialDiscount) | **POST** /v2/discounts/freeTrials | Create a Subscription Free Trial Discount
-[**deleteFreeTrialDiscount**](FreeTrialDiscountsApi.md#deleteFreeTrialDiscount) | **DELETE** /v2/discounts/freeTrials/{discount_id} | Delete a Subscription Free Trial Discount
-[**getFreeTrialDiscount**](FreeTrialDiscountsApi.md#getFreeTrialDiscount) | **GET** /v2/discounts/freeTrials/{discount_id} | Retrieve a Subscription Free Trial Discount
-[**listFreeTrialDiscounts**](FreeTrialDiscountsApi.md#listFreeTrialDiscounts) | **GET** /v2/discounts/freeTrials | List all Subscription Free Trial Discounts
-[**updateFreeTrialDiscount**](FreeTrialDiscountsApi.md#updateFreeTrialDiscount) | **PATCH** /v2/discounts/freeTrials/{discount_id} | Update a Subscription Free Trial Discount
+[**createFreeTrialDiscount**](FreeTrialDiscountsApi.md#createFreeTrialDiscount) | **POST** /rest/v2/discounts/freeTrials | Create a Subscription Free Trial Discount
+[**deleteFreeTrialDiscount**](FreeTrialDiscountsApi.md#deleteFreeTrialDiscount) | **DELETE** /rest/v2/discounts/freeTrials/{discount_id} | Delete a Subscription Free Trial Discount
+[**getFreeTrialDiscount**](FreeTrialDiscountsApi.md#getFreeTrialDiscount) | **GET** /rest/v2/discounts/freeTrials/{discount_id} | Retrieve a Subscription Free Trial Discount
+[**listFreeTrialDiscounts**](FreeTrialDiscountsApi.md#listFreeTrialDiscounts) | **GET** /rest/v2/discounts/freeTrials | List all Subscription Free Trial Discounts
+[**updateFreeTrialDiscount**](FreeTrialDiscountsApi.md#updateFreeTrialDiscount) | **PATCH** /rest/v2/discounts/freeTrials/{discount_id} | Update a Subscription Free Trial Discount
 
 
 # **createFreeTrialDiscount**
@@ -27,29 +27,29 @@ const configuration = createConfiguration();
 const apiInstance = new FreeTrialDiscountsApi(configuration);
 
 const request: FreeTrialDiscountsApiCreateFreeTrialDiscountRequest = {
-    // createFreeTrialDiscountRequest
+  
   createFreeTrialDiscountRequest: {
+    name: "30-Day Free Trial",
+    description: "Try our premium plan free for 30 days",
     criteria: [
       {
-        code: "code_example",
-        criteriaId: "criteriaId_example",
-        operator: "LESS_THAN",
-        planId: "planId_example",
-        productId: "productId_example",
-        productQuantityMax: 1,
-        productQuantityMin: 1,
-        rangeEndTime: "rangeEndTime_example",
-        rangeStartTime: "rangeStartTime_example",
-        subscriptionQuantity: 1,
-        totalAmount: 3.14,
         type: "DATE_RANGE",
+        code: "SUMMER2024",
+        criteriaId: "501",
+        rangeStartTime: new Date('2024-01-01T00:00:00Z'),
+        rangeEndTime: new Date('2024-12-31T23:59:59Z'),
+        productId: "456",
+        productQuantityMin: 1,
+        productQuantityMax: 10,
+        planId: "789",
+        subscriptionQuantity: 1,
+        totalAmount: 100,
+        operator: "GREATER_THAN",
       },
     ],
-    description: "description_example",
-    freeTrialDays: 1,
     hidePrice: true,
-    name: "name_example",
-    subscriptionPlanId: "subscriptionPlanId_example",
+    subscriptionPlanId: "789",
+    freeTrialDays: 30,
   },
 };
 
@@ -62,7 +62,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createFreeTrialDiscountRequest** | **CreateFreeTrialDiscountRequest**| createFreeTrialDiscountRequest |
+ **createFreeTrialDiscountRequest** | **CreateFreeTrialDiscountRequest**|  |
 
 
 ### Return type
@@ -71,7 +71,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -83,9 +83,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -105,7 +109,7 @@ const configuration = createConfiguration();
 const apiInstance = new FreeTrialDiscountsApi(configuration);
 
 const request: FreeTrialDiscountsApiDeleteFreeTrialDiscountRequest = {
-    // discount_id
+  
   discountId: "discount_id_example",
 };
 
@@ -118,7 +122,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **discountId** | [**string**] | discount_id | defaults to undefined
+ **discountId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -127,7 +131,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -139,10 +143,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No Content |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -162,7 +169,7 @@ const configuration = createConfiguration();
 const apiInstance = new FreeTrialDiscountsApi(configuration);
 
 const request: FreeTrialDiscountsApiGetFreeTrialDiscountRequest = {
-    // discount_id
+  
   discountId: "discount_id_example",
 };
 
@@ -175,7 +182,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **discountId** | [**string**] | discount_id | defaults to undefined
+ **discountId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -184,7 +191,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -196,10 +203,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -250,7 +260,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -262,10 +272,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -285,36 +298,34 @@ const configuration = createConfiguration();
 const apiInstance = new FreeTrialDiscountsApi(configuration);
 
 const request: FreeTrialDiscountsApiUpdateFreeTrialDiscountRequest = {
-    // discount_id
+  
   discountId: "discount_id_example",
-    // request
+  
   updateFreeTrialDiscountRequest: {
+    name: "30-Day Free Trial",
+    description: "Try our premium plan free for 30 days",
     criteria: [
       {
-        code: "code_example",
-        criteriaId: "criteriaId_example",
-        operator: "LESS_THAN",
-        planId: "planId_example",
-        productId: "productId_example",
-        productQuantityMax: 1,
-        productQuantityMin: 1,
-        rangeEndTime: "rangeEndTime_example",
-        rangeStartTime: "rangeStartTime_example",
-        subscriptionQuantity: 1,
-        totalAmount: 3.14,
         type: "DATE_RANGE",
+        code: "SUMMER2024",
+        criteriaId: "501",
+        rangeStartTime: new Date('2024-01-01T00:00:00Z'),
+        rangeEndTime: new Date('2024-12-31T23:59:59Z'),
+        productId: "456",
+        productQuantityMin: 1,
+        productQuantityMax: 10,
+        planId: "789",
+        subscriptionQuantity: 1,
+        totalAmount: 100,
+        operator: "GREATER_THAN",
       },
     ],
-    description: "description_example",
-    freeTrialDays: 1,
+    freeTrialDays: 30,
     hidePrice: true,
-    name: "name_example",
-    subscriptionPlanId: "subscriptionPlanId_example",
+    subscriptionPlanId: "789",
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: [
-    "name",
-  ],
+  updateMask: "name,description,free_trial_days,hide_price,subscription_plan_id,criteria",
 };
 
 const data = await apiInstance.updateFreeTrialDiscount(request);
@@ -326,9 +337,9 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **updateFreeTrialDiscountRequest** | **UpdateFreeTrialDiscountRequest**| request |
- **discountId** | [**string**] | discount_id | defaults to undefined
- **updateMask** |  | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateFreeTrialDiscountRequest** | **UpdateFreeTrialDiscountRequest**|  |
+ **discountId** | [**string**] |  | defaults to undefined
+ **updateMask** | [**&#39;name,description,free_trial_days,hide_price,subscription_plan_id,criteria&#39;**]**Array<&#39;name,description,free_trial_days,hide_price,subscription_plan_id,criteria&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
@@ -337,7 +348,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -349,10 +360,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

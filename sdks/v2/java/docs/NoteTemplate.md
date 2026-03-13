@@ -7,12 +7,12 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**actionType** | [**ActionTypeEnum**](#ActionTypeEnum) |  |  [optional] |
-|**assignmentUserId** | **Long** |  |  [optional] |
-|**description** | **String** |  |  [optional] |
-|**id** | **String** |  |  [optional] |
-|**notifyUsers** | **List&lt;String&gt;** |  |  [optional] |
-|**title** | **String** |  |  [optional] |
+|**id** | **String** | Template ID |  [optional] |
+|**title** | **String** | Template title |  [optional] |
+|**description** | **String** | Template description |  [optional] |
+|**actionType** | [**ActionTypeEnum**](#ActionTypeEnum) | Note action type |  [optional] |
+|**assignmentUserId** | **Long** | Default assigned user ID |  [optional] |
+|**notifyUsers** | **List&lt;String&gt;** | List of user IDs to notify |  [optional] |
 
 
 

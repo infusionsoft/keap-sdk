@@ -1,15 +1,15 @@
 # Keap.Core.V2.Api.LeadSourceRecurringExpensesApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**CreateLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#createleadsourcerecurringexpense) | **POST** /v2/leadSources/{lead_source_id}/recurringExpenses | Create a Lead Source Recurring Expense |
-| [**DeleteLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#deleteleadsourcerecurringexpense) | **DELETE** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Delete a Lead Source Recurring Expense |
-| [**GetLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#getleadsourcerecurringexpense) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Retrieve a Lead Source Recurring Expense |
-| [**ListExpensesIncurredFromLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#listexpensesincurredfromleadsourcerecurringexpense) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id}/expenses | Retrieves a list of expenses incurred from a recurring expense |
-| [**ListLeadSourceRecurringExpenses**](LeadSourceRecurringExpensesApi.md#listleadsourcerecurringexpenses) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses | Retrieves a list of lead source recurring expenses |
-| [**UpdateLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#updateleadsourcerecurringexpense) | **PATCH** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Update a Lead Source Recurring Expense |
+| [**CreateLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#createleadsourcerecurringexpense) | **POST** /rest/v2/leadSources/{lead_source_id}/recurringExpenses | Create a Lead Source Recurring Expense |
+| [**DeleteLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#deleteleadsourcerecurringexpense) | **DELETE** /rest/v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Delete a Lead Source Recurring Expense |
+| [**GetLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#getleadsourcerecurringexpense) | **GET** /rest/v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Retrieve a Lead Source Recurring Expense |
+| [**ListExpensesIncurredFromLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#listexpensesincurredfromleadsourcerecurringexpense) | **GET** /rest/v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id}/expenses | Retrieves a list of expenses incurred from a recurring expense |
+| [**ListLeadSourceRecurringExpenses**](LeadSourceRecurringExpensesApi.md#listleadsourcerecurringexpenses) | **GET** /rest/v2/leadSources/{lead_source_id}/recurringExpenses | Retrieves a list of lead source recurring expenses |
+| [**UpdateLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#updateleadsourcerecurringexpense) | **PATCH** /rest/v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Update a Lead Source Recurring Expense |
 
 <a id="createleadsourcerecurringexpense"></a>
 # **CreateLeadSourceRecurringExpense**
@@ -34,10 +34,13 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new LeadSourceRecurringExpensesApi(config);
             var leadSourceId = "leadSourceId_example";  // string | The ID of the lead source this recurring expense belongs to
-            var createLeadSourceRecurringExpenseRequest = new CreateLeadSourceRecurringExpenseRequest(); // CreateLeadSourceRecurringExpenseRequest | The request object to create a new lead source recurring expense
+            var createLeadSourceRecurringExpenseRequest = new CreateLeadSourceRecurringExpenseRequest(); // CreateLeadSourceRecurringExpenseRequest | 
 
             try
             {
@@ -81,7 +84,7 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **leadSourceId** | **string** | The ID of the lead source this recurring expense belongs to |  |
-| **createLeadSourceRecurringExpenseRequest** | [**CreateLeadSourceRecurringExpenseRequest**](CreateLeadSourceRecurringExpenseRequest.md) | The request object to create a new lead source recurring expense |  |
+| **createLeadSourceRecurringExpenseRequest** | [**CreateLeadSourceRecurringExpenseRequest**](CreateLeadSourceRecurringExpenseRequest.md) |  |  |
 
 ### Return type
 
@@ -89,7 +92,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -104,7 +107,10 @@ No authorization required
 | **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -131,7 +137,10 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new LeadSourceRecurringExpensesApi(config);
             var leadSourceId = "leadSourceId_example";  // string | The ID of the lead source this recurring expense belongs to
             var leadSourceRecurringExpenseId = "leadSourceRecurringExpenseId_example";  // string | The ID of a lead source recurring expense
@@ -182,7 +191,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -194,10 +203,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -224,7 +236,10 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new LeadSourceRecurringExpensesApi(config);
             var leadSourceId = "leadSourceId_example";  // string | The ID of the lead source this recurring expense belongs to
             var leadSourceRecurringExpenseId = "leadSourceRecurringExpenseId_example";  // string | The ID of a lead source recurring expense
@@ -279,7 +294,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -291,10 +306,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -321,7 +339,10 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new LeadSourceRecurringExpensesApi(config);
             var leadSourceId = "leadSourceId_example";  // string | The ID of the lead source this recurring expense belongs to
             var leadSourceRecurringExpenseId = "leadSourceRecurringExpenseId_example";  // string | The ID of a lead source recurring expense
@@ -384,7 +405,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -400,7 +421,9 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -427,7 +450,10 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new LeadSourceRecurringExpensesApi(config);
             var leadSourceId = "leadSourceId_example";  // string | The ID of the lead source this recurring expense belongs to
             var filter = "filter_example";  // string? | Filter to apply, allowed fields are:  - (String) `title` - (Long) `amount` - (String) `start_time` - (String) `end_time` - (String) `next_expense_time` - (String) `create_time` - (String) `update_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:  - `filter=amount%3D%3D2500` - `filter=next_expense_time%3D%3D2024-12-22T01:00:00.000Z` (optional) 
@@ -488,7 +514,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -504,13 +530,15 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="updateleadsourcerecurringexpense"></a>
 # **UpdateLeadSourceRecurringExpense**
-> LeadSourceRecurringExpense UpdateLeadSourceRecurringExpense (string leadSourceId, string leadSourceRecurringExpenseId, LeadSourceRecurringExpenseUpdateRequest leadSourceRecurringExpenseUpdateRequest, List<string>? updateMask = null)
+> LeadSourceRecurringExpense UpdateLeadSourceRecurringExpense (string leadSourceId, string leadSourceRecurringExpenseId, LeadSourceRecurringExpenseUpdateRequest leadSourceRecurringExpenseUpdateRequest, string? updateMask = null)
 
 Update a Lead Source Recurring Expense
 
@@ -531,12 +559,15 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new LeadSourceRecurringExpensesApi(config);
             var leadSourceId = "leadSourceId_example";  // string | The ID of the lead source this recurring expense belongs to
             var leadSourceRecurringExpenseId = "leadSourceRecurringExpenseId_example";  // string | The ID of a lead source recurring expense
-            var leadSourceRecurringExpenseUpdateRequest = new LeadSourceRecurringExpenseUpdateRequest(); // LeadSourceRecurringExpenseUpdateRequest | The request object to update a lead source recurring expense
-            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var leadSourceRecurringExpenseUpdateRequest = new LeadSourceRecurringExpenseUpdateRequest(); // LeadSourceRecurringExpenseUpdateRequest | 
+            var updateMask = "title,notes,amount,start_time,end_time";  // string? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -581,8 +612,8 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **leadSourceId** | **string** | The ID of the lead source this recurring expense belongs to |  |
 | **leadSourceRecurringExpenseId** | **string** | The ID of a lead source recurring expense |  |
-| **leadSourceRecurringExpenseUpdateRequest** | [**LeadSourceRecurringExpenseUpdateRequest**](LeadSourceRecurringExpenseUpdateRequest.md) | The request object to update a lead source recurring expense |  |
-| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **leadSourceRecurringExpenseUpdateRequest** | [**LeadSourceRecurringExpenseUpdateRequest**](LeadSourceRecurringExpenseUpdateRequest.md) |  |  |
+| **updateMask** | **string?** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 
@@ -590,7 +621,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -606,7 +637,9 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

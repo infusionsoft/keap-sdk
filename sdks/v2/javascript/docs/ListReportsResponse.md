@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**nextPageToken** | **String** |  | [optional] 
 **reports** | [**[Report]**](Report.md) |  | [optional] 
+**nextPageToken** | **String** |  | [optional] 
 
 

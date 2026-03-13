@@ -1,37 +1,39 @@
 # ContactApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createContact**](ContactApi.md#createContact) | **POST** /v2/contacts | Create a Contact |
-| [**createContactWithHttpInfo**](ContactApi.md#createContactWithHttpInfo) | **POST** /v2/contacts | Create a Contact |
-| [**createContactLinkType**](ContactApi.md#createContactLinkType) | **POST** /v2/contacts/links/types | Create a Contact Link type |
-| [**createContactLinkTypeWithHttpInfo**](ContactApi.md#createContactLinkTypeWithHttpInfo) | **POST** /v2/contacts/links/types | Create a Contact Link type |
-| [**deleteContact**](ContactApi.md#deleteContact) | **DELETE** /v2/contacts/{contact_id} | Delete a Contact |
-| [**deleteContactWithHttpInfo**](ContactApi.md#deleteContactWithHttpInfo) | **DELETE** /v2/contacts/{contact_id} | Delete a Contact |
-| [**getContact**](ContactApi.md#getContact) | **GET** /v2/contacts/{contact_id} | Retrieve a Contact |
-| [**getContactWithHttpInfo**](ContactApi.md#getContactWithHttpInfo) | **GET** /v2/contacts/{contact_id} | Retrieve a Contact |
-| [**linkContacts**](ContactApi.md#linkContacts) | **POST** /v2/contacts:link | Link Contacts |
-| [**linkContactsWithHttpInfo**](ContactApi.md#linkContactsWithHttpInfo) | **POST** /v2/contacts:link | Link Contacts |
-| [**listContactLinkTypes**](ContactApi.md#listContactLinkTypes) | **GET** /v2/contacts/links/types | List Contact Link types |
-| [**listContactLinkTypesWithHttpInfo**](ContactApi.md#listContactLinkTypesWithHttpInfo) | **GET** /v2/contacts/links/types | List Contact Link types |
-| [**listContactLinks**](ContactApi.md#listContactLinks) | **GET** /v2/contacts/{contact_id}/links | List Linked Contacts |
-| [**listContactLinksWithHttpInfo**](ContactApi.md#listContactLinksWithHttpInfo) | **GET** /v2/contacts/{contact_id}/links | List Linked Contacts |
-| [**listContacts**](ContactApi.md#listContacts) | **GET** /v2/contacts | List Contacts |
-| [**listContactsWithHttpInfo**](ContactApi.md#listContactsWithHttpInfo) | **GET** /v2/contacts | List Contacts |
-| [**retrieveContactModel**](ContactApi.md#retrieveContactModel) | **GET** /v2/contacts/model | Retrieve Contact Model |
-| [**retrieveContactModelWithHttpInfo**](ContactApi.md#retrieveContactModelWithHttpInfo) | **GET** /v2/contacts/model | Retrieve Contact Model |
-| [**unlinkContacts**](ContactApi.md#unlinkContacts) | **POST** /v2/contacts:unlink | Delete Link between two Contacts |
-| [**unlinkContactsWithHttpInfo**](ContactApi.md#unlinkContactsWithHttpInfo) | **POST** /v2/contacts:unlink | Delete Link between two Contacts |
-| [**updateContact**](ContactApi.md#updateContact) | **PATCH** /v2/contacts/{contact_id} | Update a Contact |
-| [**updateContactWithHttpInfo**](ContactApi.md#updateContactWithHttpInfo) | **PATCH** /v2/contacts/{contact_id} | Update a Contact |
+| [**createContact**](ContactApi.md#createContact) | **POST** /rest/v2/contacts | Create a Contact |
+| [**createContactWithHttpInfo**](ContactApi.md#createContactWithHttpInfo) | **POST** /rest/v2/contacts | Create a Contact |
+| [**createContactLinkType**](ContactApi.md#createContactLinkType) | **POST** /rest/v2/contacts/links/types | Create a Contact Link type |
+| [**createContactLinkTypeWithHttpInfo**](ContactApi.md#createContactLinkTypeWithHttpInfo) | **POST** /rest/v2/contacts/links/types | Create a Contact Link type |
+| [**deleteContact**](ContactApi.md#deleteContact) | **DELETE** /rest/v2/contacts/{contact_id} | Delete a Contact |
+| [**deleteContactWithHttpInfo**](ContactApi.md#deleteContactWithHttpInfo) | **DELETE** /rest/v2/contacts/{contact_id} | Delete a Contact |
+| [**getContact**](ContactApi.md#getContact) | **GET** /rest/v2/contacts/{contact_id} | Retrieve a Contact |
+| [**getContactWithHttpInfo**](ContactApi.md#getContactWithHttpInfo) | **GET** /rest/v2/contacts/{contact_id} | Retrieve a Contact |
+| [**linkContacts**](ContactApi.md#linkContacts) | **POST** /rest/v2/contacts:link | Link Contacts |
+| [**linkContactsWithHttpInfo**](ContactApi.md#linkContactsWithHttpInfo) | **POST** /rest/v2/contacts:link | Link Contacts |
+| [**listContactLinkTypes**](ContactApi.md#listContactLinkTypes) | **GET** /rest/v2/contacts/links/types | List Contact Link types |
+| [**listContactLinkTypesWithHttpInfo**](ContactApi.md#listContactLinkTypesWithHttpInfo) | **GET** /rest/v2/contacts/links/types | List Contact Link types |
+| [**listContactLinks**](ContactApi.md#listContactLinks) | **GET** /rest/v2/contacts/{contact_id}/links | List Linked Contacts |
+| [**listContactLinksWithHttpInfo**](ContactApi.md#listContactLinksWithHttpInfo) | **GET** /rest/v2/contacts/{contact_id}/links | List Linked Contacts |
+| [**listContacts**](ContactApi.md#listContacts) | **GET** /rest/v2/contacts | List Contacts |
+| [**listContactsWithHttpInfo**](ContactApi.md#listContactsWithHttpInfo) | **GET** /rest/v2/contacts | List Contacts |
+| [**listTagsForContact**](ContactApi.md#listTagsForContact) | **GET** /rest/v2/contacts/{contact_id}/tags | List Applied Tags |
+| [**listTagsForContactWithHttpInfo**](ContactApi.md#listTagsForContactWithHttpInfo) | **GET** /rest/v2/contacts/{contact_id}/tags | List Applied Tags |
+| [**retrieveContactModel**](ContactApi.md#retrieveContactModel) | **GET** /rest/v2/contacts/model | Retrieve Contact Model |
+| [**retrieveContactModelWithHttpInfo**](ContactApi.md#retrieveContactModelWithHttpInfo) | **GET** /rest/v2/contacts/model | Retrieve Contact Model |
+| [**unlinkContacts**](ContactApi.md#unlinkContacts) | **POST** /rest/v2/contacts:unlink | Delete Link between two Contacts |
+| [**unlinkContactsWithHttpInfo**](ContactApi.md#unlinkContactsWithHttpInfo) | **POST** /rest/v2/contacts:unlink | Delete Link between two Contacts |
+| [**updateContact**](ContactApi.md#updateContact) | **PATCH** /rest/v2/contacts/{contact_id} | Update a Contact |
+| [**updateContactWithHttpInfo**](ContactApi.md#updateContactWithHttpInfo) | **PATCH** /rest/v2/contacts/{contact_id} | Update a Contact |
 
 
 
 ## createContact
 
-> Contact createContact(createUpdateContactRequest)
+> Contact createContact(createUpdateContactRequest, fields)
 
 Create a Contact
 
@@ -44,18 +46,24 @@ Creates a new Contact. *Note:* Contact must contain at least one item in &#x60;e
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ContactApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ContactApi apiInstance = new ContactApi(defaultClient);
-        CreateUpdateContactRequest createUpdateContactRequest = new CreateUpdateContactRequest(); // CreateUpdateContactRequest | contact
+        CreateUpdateContactRequest createUpdateContactRequest = new CreateUpdateContactRequest(); // CreateUpdateContactRequest | 
+        List<String> fields = Arrays.asList(); // List<String> | Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
         try {
-            Contact result = apiInstance.createContact(createUpdateContactRequest);
+            Contact result = apiInstance.createContact(createUpdateContactRequest, fields);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ContactApi#createContact");
@@ -73,7 +81,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **createUpdateContactRequest** | [**CreateUpdateContactRequest**](CreateUpdateContactRequest.md)| contact | [optional] |
+| **createUpdateContactRequest** | [**CreateUpdateContactRequest**](CreateUpdateContactRequest.md)|  | |
+| **fields** | [**List&lt;String&gt;**](String.md)| Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website) | [optional] |
 
 ### Return type
 
@@ -82,7 +91,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -93,13 +102,17 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## createContactWithHttpInfo
 
-> ApiResponse<Contact> createContact createContactWithHttpInfo(createUpdateContactRequest)
+> ApiResponse<Contact> createContact createContactWithHttpInfo(createUpdateContactRequest, fields)
 
 Create a Contact
 
@@ -113,18 +126,24 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ContactApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ContactApi apiInstance = new ContactApi(defaultClient);
-        CreateUpdateContactRequest createUpdateContactRequest = new CreateUpdateContactRequest(); // CreateUpdateContactRequest | contact
+        CreateUpdateContactRequest createUpdateContactRequest = new CreateUpdateContactRequest(); // CreateUpdateContactRequest | 
+        List<String> fields = Arrays.asList(); // List<String> | Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
         try {
-            ApiResponse<Contact> response = apiInstance.createContactWithHttpInfo(createUpdateContactRequest);
+            ApiResponse<Contact> response = apiInstance.createContactWithHttpInfo(createUpdateContactRequest, fields);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -144,7 +163,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **createUpdateContactRequest** | [**CreateUpdateContactRequest**](CreateUpdateContactRequest.md)| contact | [optional] |
+| **createUpdateContactRequest** | [**CreateUpdateContactRequest**](CreateUpdateContactRequest.md)|  | |
+| **fields** | [**List&lt;String&gt;**](String.md)| Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website) | [optional] |
 
 ### Return type
 
@@ -153,7 +173,7 @@ ApiResponse<[**Contact**](Contact.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -164,9 +184,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## createContactLinkType
@@ -184,16 +208,21 @@ Creates a new type of Contact Link
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ContactApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ContactApi apiInstance = new ContactApi(defaultClient);
-        CreateContactLinkTypeRequest createContactLinkTypeRequest = new CreateContactLinkTypeRequest(); // CreateContactLinkTypeRequest | request
+        CreateContactLinkTypeRequest createContactLinkTypeRequest = new CreateContactLinkTypeRequest(); // CreateContactLinkTypeRequest | 
         try {
             ContactLinkType result = apiInstance.createContactLinkType(createContactLinkTypeRequest);
             System.out.println(result);
@@ -213,7 +242,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **createContactLinkTypeRequest** | [**CreateContactLinkTypeRequest**](CreateContactLinkTypeRequest.md)| request | |
+| **createContactLinkTypeRequest** | [**CreateContactLinkTypeRequest**](CreateContactLinkTypeRequest.md)|  | |
 
 ### Return type
 
@@ -222,7 +251,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -233,9 +262,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## createContactLinkTypeWithHttpInfo
 
@@ -253,16 +286,21 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ContactApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ContactApi apiInstance = new ContactApi(defaultClient);
-        CreateContactLinkTypeRequest createContactLinkTypeRequest = new CreateContactLinkTypeRequest(); // CreateContactLinkTypeRequest | request
+        CreateContactLinkTypeRequest createContactLinkTypeRequest = new CreateContactLinkTypeRequest(); // CreateContactLinkTypeRequest | 
         try {
             ApiResponse<ContactLinkType> response = apiInstance.createContactLinkTypeWithHttpInfo(createContactLinkTypeRequest);
             System.out.println("Status code: " + response.getStatusCode());
@@ -284,7 +322,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **createContactLinkTypeRequest** | [**CreateContactLinkTypeRequest**](CreateContactLinkTypeRequest.md)| request | |
+| **createContactLinkTypeRequest** | [**CreateContactLinkTypeRequest**](CreateContactLinkTypeRequest.md)|  | |
 
 ### Return type
 
@@ -293,7 +331,7 @@ ApiResponse<[**ContactLinkType**](ContactLinkType.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -304,9 +342,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## deleteContact
@@ -324,16 +366,21 @@ Deletes the specified Contact
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ContactApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ContactApi apiInstance = new ContactApi(defaultClient);
-        String contactId = "contactId_example"; // String | contact_id
+        String contactId = "contactId_example"; // String | 
         try {
             apiInstance.deleteContact(contactId);
         } catch (ApiException e) {
@@ -352,7 +399,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **contactId** | **String**| contact_id | |
+| **contactId** | **String**|  | |
 
 ### Return type
 
@@ -361,7 +408,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -372,10 +419,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## deleteContactWithHttpInfo
 
@@ -393,16 +443,21 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ContactApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ContactApi apiInstance = new ContactApi(defaultClient);
-        String contactId = "contactId_example"; // String | contact_id
+        String contactId = "contactId_example"; // String | 
         try {
             ApiResponse<Void> response = apiInstance.deleteContactWithHttpInfo(contactId);
             System.out.println("Status code: " + response.getStatusCode());
@@ -423,7 +478,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **contactId** | **String**| contact_id | |
+| **contactId** | **String**|  | |
 
 ### Return type
 
@@ -432,7 +487,7 @@ ApiResponse<Void>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -443,10 +498,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## getContact
@@ -464,16 +522,21 @@ Retrieves a single Contact
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ContactApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ContactApi apiInstance = new ContactApi(defaultClient);
-        String contactId = "contactId_example"; // String | contact_id
+        String contactId = "contactId_example"; // String | 
         List<String> fields = Arrays.asList(); // List<String> | Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
         try {
             Contact result = apiInstance.getContact(contactId, fields);
@@ -494,7 +557,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **contactId** | **String**| contact_id | |
+| **contactId** | **String**|  | |
 | **fields** | [**List&lt;String&gt;**](String.md)| Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website) | [optional] |
 
 ### Return type
@@ -504,7 +567,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -515,10 +578,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## getContactWithHttpInfo
 
@@ -536,16 +602,21 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ContactApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ContactApi apiInstance = new ContactApi(defaultClient);
-        String contactId = "contactId_example"; // String | contact_id
+        String contactId = "contactId_example"; // String | 
         List<String> fields = Arrays.asList(); // List<String> | Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
         try {
             ApiResponse<Contact> response = apiInstance.getContactWithHttpInfo(contactId, fields);
@@ -568,7 +639,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **contactId** | **String**| contact_id | |
+| **contactId** | **String**|  | |
 | **fields** | [**List&lt;String&gt;**](String.md)| Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website) | [optional] |
 
 ### Return type
@@ -578,7 +649,7 @@ ApiResponse<[**Contact**](Contact.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -589,10 +660,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## linkContacts
@@ -610,16 +684,21 @@ Links two Contacts together using the provided Link type
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ContactApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ContactApi apiInstance = new ContactApi(defaultClient);
-        LinkContactsRequest linkContactsRequest = new LinkContactsRequest(); // LinkContactsRequest | linkContactsRequest
+        LinkContactsRequest linkContactsRequest = new LinkContactsRequest(); // LinkContactsRequest | 
         try {
             ContactLink result = apiInstance.linkContacts(linkContactsRequest);
             System.out.println(result);
@@ -639,7 +718,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **linkContactsRequest** | [**LinkContactsRequest**](LinkContactsRequest.md)| linkContactsRequest | |
+| **linkContactsRequest** | [**LinkContactsRequest**](LinkContactsRequest.md)|  | |
 
 ### Return type
 
@@ -648,7 +727,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -659,9 +738,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## linkContactsWithHttpInfo
 
@@ -679,16 +762,21 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ContactApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ContactApi apiInstance = new ContactApi(defaultClient);
-        LinkContactsRequest linkContactsRequest = new LinkContactsRequest(); // LinkContactsRequest | linkContactsRequest
+        LinkContactsRequest linkContactsRequest = new LinkContactsRequest(); // LinkContactsRequest | 
         try {
             ApiResponse<ContactLink> response = apiInstance.linkContactsWithHttpInfo(linkContactsRequest);
             System.out.println("Status code: " + response.getStatusCode());
@@ -710,7 +798,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **linkContactsRequest** | [**LinkContactsRequest**](LinkContactsRequest.md)| linkContactsRequest | |
+| **linkContactsRequest** | [**LinkContactsRequest**](LinkContactsRequest.md)|  | |
 
 ### Return type
 
@@ -719,7 +807,7 @@ ApiResponse<[**ContactLink**](ContactLink.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -730,9 +818,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## listContactLinkTypes
@@ -750,16 +842,21 @@ Retrieves a list of Contact Link types.
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ContactApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ContactApi apiInstance = new ContactApi(defaultClient);
-        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `name` You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=name%3D%3DexpectedValue` 
+        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `name`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=name%3D%3DexpectedValue` 
         String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `name` - `max_links` - `create_time`  One of the following directions: - `asc` - `desc` 
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
@@ -782,7 +879,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;name&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3DexpectedValue&#x60;  | [optional] |
+| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;name&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3DexpectedValue&#x60;  | [optional] |
 | **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;max_links&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  | [optional] |
 | **pageSize** | **Integer**| Total number of items to return per page | [optional] |
 | **pageToken** | **String**| Page token | [optional] |
@@ -794,7 +891,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -805,10 +902,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## listContactLinkTypesWithHttpInfo
 
@@ -826,16 +926,21 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ContactApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ContactApi apiInstance = new ContactApi(defaultClient);
-        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `name` You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=name%3D%3DexpectedValue` 
+        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `name`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=name%3D%3DexpectedValue` 
         String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `name` - `max_links` - `create_time`  One of the following directions: - `asc` - `desc` 
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
@@ -860,7 +965,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;name&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3DexpectedValue&#x60;  | [optional] |
+| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;name&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3DexpectedValue&#x60;  | [optional] |
 | **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;max_links&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  | [optional] |
 | **pageSize** | **Integer**| Total number of items to return per page | [optional] |
 | **pageToken** | **String**| Page token | [optional] |
@@ -872,7 +977,7 @@ ApiResponse<[**ListContactLinkTypesResponse**](ListContactLinkTypesResponse.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -883,10 +988,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## listContactLinks
@@ -904,16 +1012,21 @@ Retrieves a list of Linked Contacts for a given Contact
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ContactApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ContactApi apiInstance = new ContactApi(defaultClient);
-        String contactId = "contactId_example"; // String | contact_id
+        String contactId = "contactId_example"; // String | 
         try {
             ListContactLinksResponse result = apiInstance.listContactLinks(contactId);
             System.out.println(result);
@@ -933,7 +1046,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **contactId** | **String**| contact_id | |
+| **contactId** | **String**|  | |
 
 ### Return type
 
@@ -942,7 +1055,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -953,10 +1066,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## listContactLinksWithHttpInfo
 
@@ -974,16 +1090,21 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ContactApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ContactApi apiInstance = new ContactApi(defaultClient);
-        String contactId = "contactId_example"; // String | contact_id
+        String contactId = "contactId_example"; // String | 
         try {
             ApiResponse<ListContactLinksResponse> response = apiInstance.listContactLinksWithHttpInfo(contactId);
             System.out.println("Status code: " + response.getStatusCode());
@@ -1005,7 +1126,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **contactId** | **String**| contact_id | |
+| **contactId** | **String**|  | |
 
 ### Return type
 
@@ -1014,7 +1135,7 @@ ApiResponse<[**ListContactLinksResponse**](ListContactLinksResponse.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1025,10 +1146,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## listContacts
@@ -1046,13 +1170,18 @@ Retrieves a list of Contacts
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ContactApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ContactApi apiInstance = new ContactApi(defaultClient);
         List<String> fields = Arrays.asList(); // List<String> | Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
@@ -1092,7 +1221,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1103,10 +1232,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## listContactsWithHttpInfo
 
@@ -1124,13 +1256,18 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ContactApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ContactApi apiInstance = new ContactApi(defaultClient);
         List<String> fields = Arrays.asList(); // List<String> | Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
@@ -1172,7 +1309,7 @@ ApiResponse<[**ListContactsResponse**](ListContactsResponse.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1183,10 +1320,187 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
+## listTagsForContact
+
+> ListContactTagsResponse listTagsForContact(contactId, filter, pageToken, orderBy, pageSize)
+
+List Applied Tags
+
+Retrieves a list of tags applied to the specified Contact
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.ContactApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        ContactApi apiInstance = new ContactApi(defaultClient);
+        String contactId = "contactId_example"; // String | Contact identifier
+        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `name` - (String) `description` - (String) `category_id` (use `category_id==NONE` to filter tags not assigned to any category) - (String) `since_applied_time` - (String) `until_applied_time` - (String) `since_create_time` - (String) `until_create_time` - (String) `since_update_time` - (String) `until_update_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=name%3D%3DCustomer` - `filter=category_id%3D%3D123` - `filter=category_id%3D%3DNONE` - `filter=since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;` 
+        String pageToken = "pageToken_example"; // String | Page token
+        String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `name` - `create_time` - `update_time` - `applied_time` - `category_id` One of the following directions: - `asc` - `desc`
+        Integer pageSize = 0; // Integer | Total number of items to return per page
+        try {
+            ListContactTagsResponse result = apiInstance.listTagsForContact(contactId, filter, pageToken, orderBy, pageSize);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ContactApi#listTagsForContact");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **contactId** | **String**| Contact identifier | |
+| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (String) &#x60;description&#x60; - (String) &#x60;category_id&#x60; (use &#x60;category_id&#x3D;&#x3D;NONE&#x60; to filter tags not assigned to any category) - (String) &#x60;since_applied_time&#x60; - (String) &#x60;until_applied_time&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3DCustomer&#x60; - &#x60;filter&#x3D;category_id%3D%3D123&#x60; - &#x60;filter&#x3D;category_id%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  | [optional] |
+| **pageToken** | **String**| Page token | [optional] |
+| **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60; - &#x60;applied_time&#x60; - &#x60;category_id&#x60; One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
+| **pageSize** | **Integer**| Total number of items to return per page | [optional] |
+
+### Return type
+
+[**ListContactTagsResponse**](ListContactTagsResponse.md)
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## listTagsForContactWithHttpInfo
+
+> ApiResponse<ListContactTagsResponse> listTagsForContact listTagsForContactWithHttpInfo(contactId, filter, pageToken, orderBy, pageSize)
+
+List Applied Tags
+
+Retrieves a list of tags applied to the specified Contact
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.ContactApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        ContactApi apiInstance = new ContactApi(defaultClient);
+        String contactId = "contactId_example"; // String | Contact identifier
+        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `name` - (String) `description` - (String) `category_id` (use `category_id==NONE` to filter tags not assigned to any category) - (String) `since_applied_time` - (String) `until_applied_time` - (String) `since_create_time` - (String) `until_create_time` - (String) `since_update_time` - (String) `until_update_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=name%3D%3DCustomer` - `filter=category_id%3D%3D123` - `filter=category_id%3D%3DNONE` - `filter=since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;` 
+        String pageToken = "pageToken_example"; // String | Page token
+        String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `name` - `create_time` - `update_time` - `applied_time` - `category_id` One of the following directions: - `asc` - `desc`
+        Integer pageSize = 0; // Integer | Total number of items to return per page
+        try {
+            ApiResponse<ListContactTagsResponse> response = apiInstance.listTagsForContactWithHttpInfo(contactId, filter, pageToken, orderBy, pageSize);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ContactApi#listTagsForContact");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **contactId** | **String**| Contact identifier | |
+| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (String) &#x60;description&#x60; - (String) &#x60;category_id&#x60; (use &#x60;category_id&#x3D;&#x3D;NONE&#x60; to filter tags not assigned to any category) - (String) &#x60;since_applied_time&#x60; - (String) &#x60;until_applied_time&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3DCustomer&#x60; - &#x60;filter&#x3D;category_id%3D%3D123&#x60; - &#x60;filter&#x3D;category_id%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  | [optional] |
+| **pageToken** | **String**| Page token | [optional] |
+| **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60; - &#x60;applied_time&#x60; - &#x60;category_id&#x60; One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
+| **pageSize** | **Integer**| Total number of items to return per page | [optional] |
+
+### Return type
+
+ApiResponse<[**ListContactTagsResponse**](ListContactTagsResponse.md)>
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## retrieveContactModel
@@ -1204,13 +1518,18 @@ Get the custom fields and optional properties for the Contact object
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ContactApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ContactApi apiInstance = new ContactApi(defaultClient);
         try {
@@ -1238,7 +1557,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1249,10 +1568,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## retrieveContactModelWithHttpInfo
 
@@ -1270,13 +1592,18 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ContactApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ContactApi apiInstance = new ContactApi(defaultClient);
         try {
@@ -1306,7 +1633,7 @@ ApiResponse<[**ObjectModel**](ObjectModel.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1317,10 +1644,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## unlinkContacts
@@ -1338,16 +1668,21 @@ Deletes Link between two Contacts
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ContactApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ContactApi apiInstance = new ContactApi(defaultClient);
-        LinkContactsRequest linkContactsRequest = new LinkContactsRequest(); // LinkContactsRequest | linkContactsRequest
+        LinkContactsRequest linkContactsRequest = new LinkContactsRequest(); // LinkContactsRequest | 
         try {
             apiInstance.unlinkContacts(linkContactsRequest);
         } catch (ApiException e) {
@@ -1366,7 +1701,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **linkContactsRequest** | [**LinkContactsRequest**](LinkContactsRequest.md)| linkContactsRequest | |
+| **linkContactsRequest** | [**LinkContactsRequest**](LinkContactsRequest.md)|  | |
 
 ### Return type
 
@@ -1375,7 +1710,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1386,9 +1721,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## unlinkContactsWithHttpInfo
 
@@ -1406,16 +1745,21 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ContactApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ContactApi apiInstance = new ContactApi(defaultClient);
-        LinkContactsRequest linkContactsRequest = new LinkContactsRequest(); // LinkContactsRequest | linkContactsRequest
+        LinkContactsRequest linkContactsRequest = new LinkContactsRequest(); // LinkContactsRequest | 
         try {
             ApiResponse<Void> response = apiInstance.unlinkContactsWithHttpInfo(linkContactsRequest);
             System.out.println("Status code: " + response.getStatusCode());
@@ -1436,7 +1780,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **linkContactsRequest** | [**LinkContactsRequest**](LinkContactsRequest.md)| linkContactsRequest | |
+| **linkContactsRequest** | [**LinkContactsRequest**](LinkContactsRequest.md)|  | |
 
 ### Return type
 
@@ -1445,7 +1789,7 @@ ApiResponse<Void>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1456,14 +1800,18 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## updateContact
 
-> Contact updateContact(contactId, updateMask, createUpdateContactRequest)
+> Contact updateContact(contactId, createUpdateContactRequest, updateMask, fields)
 
 Update a Contact
 
@@ -1476,20 +1824,26 @@ Updates a Contact
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ContactApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ContactApi apiInstance = new ContactApi(defaultClient);
-        String contactId = "contactId_example"; // String | contact_id
-        List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        CreateUpdateContactRequest createUpdateContactRequest = new CreateUpdateContactRequest(); // CreateUpdateContactRequest | contact
+        String contactId = "contactId_example"; // String | 
+        CreateUpdateContactRequest createUpdateContactRequest = new CreateUpdateContactRequest(); // CreateUpdateContactRequest | 
+        String updateMask = "addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        List<String> fields = Arrays.asList(); // List<String> | Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
         try {
-            Contact result = apiInstance.updateContact(contactId, updateMask, createUpdateContactRequest);
+            Contact result = apiInstance.updateContact(contactId, createUpdateContactRequest, updateMask, fields);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ContactApi#updateContact");
@@ -1507,9 +1861,14 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **contactId** | **String**| contact_id | |
-| **updateMask** | [**List&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: addresses, anniversary_date, birth_date, company, contact_type, create_time, custom_fields, email_addresses, family_name, fax_numbers, given_name, id, job_title, leadsource_id, links, middle_name, notes, origin, owner_id, phone_numbers, preferred_locale, preferred_name, prefix, referral_code, score_value, social_accounts, source_type, spouse_name, suffix, tag_ids, time_zone, update_time, utm_parameters, website] |
-| **createUpdateContactRequest** | [**CreateUpdateContactRequest**](CreateUpdateContactRequest.md)| contact | [optional] |
+| **contactId** | **String**|  | |
+| **createUpdateContactRequest** | [**CreateUpdateContactRequest**](CreateUpdateContactRequest.md)|  | |
+| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: addresses,anniversary_date,birth_date,company,contact_type,create_time,
+custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id,
+links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix,
+referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone,
+update_time,utm_parameters,website] |
+| **fields** | [**List&lt;String&gt;**](String.md)| Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website) | [optional] |
 
 ### Return type
 
@@ -1518,7 +1877,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1529,14 +1888,17 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## updateContactWithHttpInfo
 
-> ApiResponse<Contact> updateContact updateContactWithHttpInfo(contactId, updateMask, createUpdateContactRequest)
+> ApiResponse<Contact> updateContact updateContactWithHttpInfo(contactId, createUpdateContactRequest, updateMask, fields)
 
 Update a Contact
 
@@ -1550,20 +1912,26 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ContactApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ContactApi apiInstance = new ContactApi(defaultClient);
-        String contactId = "contactId_example"; // String | contact_id
-        List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        CreateUpdateContactRequest createUpdateContactRequest = new CreateUpdateContactRequest(); // CreateUpdateContactRequest | contact
+        String contactId = "contactId_example"; // String | 
+        CreateUpdateContactRequest createUpdateContactRequest = new CreateUpdateContactRequest(); // CreateUpdateContactRequest | 
+        String updateMask = "addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        List<String> fields = Arrays.asList(); // List<String> | Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
         try {
-            ApiResponse<Contact> response = apiInstance.updateContactWithHttpInfo(contactId, updateMask, createUpdateContactRequest);
+            ApiResponse<Contact> response = apiInstance.updateContactWithHttpInfo(contactId, createUpdateContactRequest, updateMask, fields);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -1583,9 +1951,14 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **contactId** | **String**| contact_id | |
-| **updateMask** | [**List&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: addresses, anniversary_date, birth_date, company, contact_type, create_time, custom_fields, email_addresses, family_name, fax_numbers, given_name, id, job_title, leadsource_id, links, middle_name, notes, origin, owner_id, phone_numbers, preferred_locale, preferred_name, prefix, referral_code, score_value, social_accounts, source_type, spouse_name, suffix, tag_ids, time_zone, update_time, utm_parameters, website] |
-| **createUpdateContactRequest** | [**CreateUpdateContactRequest**](CreateUpdateContactRequest.md)| contact | [optional] |
+| **contactId** | **String**|  | |
+| **createUpdateContactRequest** | [**CreateUpdateContactRequest**](CreateUpdateContactRequest.md)|  | |
+| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: addresses,anniversary_date,birth_date,company,contact_type,create_time,
+custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id,
+links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix,
+referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone,
+update_time,utm_parameters,website] |
+| **fields** | [**List&lt;String&gt;**](String.md)| Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website) | [optional] |
 
 ### Return type
 
@@ -1594,7 +1967,7 @@ ApiResponse<[**Contact**](Contact.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1605,8 +1978,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 

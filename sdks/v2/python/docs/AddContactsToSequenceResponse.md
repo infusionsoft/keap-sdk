@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**add_to_sequence_results** | **Dict[str, str]** |  | [optional] 
+**add_to_sequence_results** | **Dict[str, str]** | A map containing the contact ID as key and the result of adding them to the sequence as value | [optional] 
 
 ## Example
 

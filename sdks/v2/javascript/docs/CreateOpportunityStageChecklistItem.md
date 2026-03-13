@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **description** | **String** |  | 
-**order** | **Number** |  | 
 **required** | **Boolean** |  | 
+**order** | **Number** | Must be Numeric could be negative values as well for ordering | 
 
 

@@ -1,15 +1,15 @@
 # .FilesApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createFile**](FilesApi.md#createFile) | **POST** /v2/files | Create a file
-[**deleteFile**](FilesApi.md#deleteFile) | **DELETE** /v2/files/{file_id} | Delete a file
-[**getFile**](FilesApi.md#getFile) | **GET** /v2/files/{file_id} | Retrieve a file
-[**getFileData**](FilesApi.md#getFileData) | **GET** /v2/files/{file_id}:data | Retrieve a file\&#39;s data
-[**listFiles**](FilesApi.md#listFiles) | **GET** /v2/files | List all files
-[**updateFile**](FilesApi.md#updateFile) | **POST** /v2/files/{file_id} | Update a file
+[**createFile**](FilesApi.md#createFile) | **POST** /rest/v2/files | Create a file
+[**deleteFile**](FilesApi.md#deleteFile) | **DELETE** /rest/v2/files/{file_id} | Delete a file
+[**getFile**](FilesApi.md#getFile) | **GET** /rest/v2/files/{file_id} | Retrieve a file
+[**getFileData**](FilesApi.md#getFileData) | **GET** /rest/v2/files/{file_id}:data | Retrieve a file\&#39;s data
+[**listFiles**](FilesApi.md#listFiles) | **GET** /rest/v2/files | List all files
+[**updateFile**](FilesApi.md#updateFile) | **POST** /rest/v2/files/{file_id} | Update a file
 
 
 # **createFile**
@@ -29,15 +29,25 @@ const apiInstance = new FilesApi(configuration);
 
 const request: FilesApiCreateFileRequest = {
     // File to upload. This is a file sent as multi-part (not a string)
-  file: "file_example",
-    // File association
-  fileAssociation: "CONTACT",
+  file: { data: Buffer.from(fs.readFileSync('/path/to/file', 'utf-8')), name: '/path/to/file' },
     // File name
-  fileName: "fileName_example",
+  fileName: "file_name_example",
     // Is public
   isPublic: true,
+    // File association
+  fileAssociation: "file_association_example",
+    // File to upload
+  file2: { data: Buffer.from(fs.readFileSync('/path/to/file', 'utf-8')), name: '/path/to/file' },
+    // File name
+  fileName2: "fileName_example",
+    // Is public
+  isPublic2: "isPublic_example",
+    // File association
+  fileAssociation2: "fileAssociation_example",
     // Contact ID (optional)
-  contactId: "contactId_example",
+  contactId: "contact_id_example",
+    // Contact ID. Required if the `file_association` is CONTACT (optional)
+  contactId2: "contactId_example",
 };
 
 const data = await apiInstance.createFile(request);
@@ -49,11 +59,16 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **file** | [**string**] | File to upload. This is a file sent as multi-part (not a string) | defaults to undefined
- **fileAssociation** | [**string**]**Array<&#39;CONTACT&#39; &#124; &#39;USER&#39; &#124; &#39;COMPANY&#39;>** | File association | defaults to undefined
+ **file** | [**HttpFile**] | File to upload. This is a file sent as multi-part (not a string) | defaults to undefined
  **fileName** | [**string**] | File name | defaults to undefined
  **isPublic** | [**boolean**] | Is public | defaults to undefined
+ **fileAssociation** | [**string**] | File association | defaults to undefined
+ **file2** | [**HttpFile**] | File to upload | defaults to undefined
+ **fileName2** | [**string**] | File name | defaults to undefined
+ **isPublic2** | [**string**] | Is public | defaults to undefined
+ **fileAssociation2** | [**string**] | File association | defaults to undefined
  **contactId** | [**string**] | Contact ID | (optional) defaults to undefined
+ **contactId2** | [**string**] | Contact ID. Required if the &#x60;file_association&#x60; is CONTACT | (optional) defaults to undefined
 
 
 ### Return type
@@ -62,7 +77,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -74,9 +89,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -96,7 +115,7 @@ const configuration = createConfiguration();
 const apiInstance = new FilesApi(configuration);
 
 const request: FilesApiDeleteFileRequest = {
-    // file_id
+  
   fileId: "file_id_example",
 };
 
@@ -109,7 +128,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **fileId** | [**string**] | file_id | defaults to undefined
+ **fileId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -118,7 +137,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -130,10 +149,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No Content |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -153,7 +175,7 @@ const configuration = createConfiguration();
 const apiInstance = new FilesApi(configuration);
 
 const request: FilesApiGetFileRequest = {
-    // file_id
+  
   fileId: "file_id_example",
 };
 
@@ -166,7 +188,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **fileId** | [**string**] | file_id | defaults to undefined
+ **fileId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -175,7 +197,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -187,10 +209,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -210,7 +235,7 @@ const configuration = createConfiguration();
 const apiInstance = new FilesApi(configuration);
 
 const request: FilesApiGetFileDataRequest = {
-    // file_id
+  
   fileId: "file_id_example",
 };
 
@@ -223,7 +248,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **fileId** | [**string**] | file_id | defaults to undefined
+ **fileId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -232,7 +257,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -244,10 +269,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -298,7 +326,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -310,10 +338,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -333,16 +364,22 @@ const configuration = createConfiguration();
 const apiInstance = new FilesApi(configuration);
 
 const request: FilesApiUpdateFileRequest = {
-    // file_id
+  
   fileId: "file_id_example",
+    // Update Mask (optional)
+  updateMask: "update_mask_example",
     // File to upload. This is a file sent as multi-part (not a string) (optional)
-  file: "file_example",
+  file: { data: Buffer.from(fs.readFileSync('/path/to/file', 'utf-8')), name: '/path/to/file' },
     // File name (optional)
-  fileName: "fileName_example",
+  fileName: "file_name_example",
     // Is public (optional)
   isPublic: true,
-    // Update Mask (optional)
-  updateMask: "file",
+    // File to upload (optional)
+  file2: { data: Buffer.from(fs.readFileSync('/path/to/file', 'utf-8')), name: '/path/to/file' },
+    // File name (optional)
+  fileName2: "fileName_example",
+    // Is public (optional)
+  isPublic2: true,
 };
 
 const data = await apiInstance.updateFile(request);
@@ -354,11 +391,14 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **fileId** | [**string**] | file_id | defaults to undefined
- **file** | [**string**] | File to upload. This is a file sent as multi-part (not a string) | (optional) defaults to undefined
+ **fileId** | [**string**] |  | defaults to undefined
+ **updateMask** | [**string**] | Update Mask | (optional) defaults to undefined
+ **file** | [**HttpFile**] | File to upload. This is a file sent as multi-part (not a string) | (optional) defaults to undefined
  **fileName** | [**string**] | File name | (optional) defaults to undefined
  **isPublic** | [**boolean**] | Is public | (optional) defaults to undefined
- **updateMask** | [**string**]**Array<&#39;file&#39; &#124; &#39;file_name&#39; &#124; &#39;is_public&#39;>** | Update Mask | (optional) defaults to undefined
+ **file2** | [**HttpFile**] | File to upload | (optional) defaults to undefined
+ **fileName2** | [**string**] | File name | (optional) defaults to undefined
+ **isPublic2** | [**boolean**] | Is public | (optional) defaults to undefined
 
 
 ### Return type
@@ -367,7 +407,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -379,9 +419,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

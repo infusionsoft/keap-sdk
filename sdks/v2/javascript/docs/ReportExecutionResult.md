@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**pageToken** | **String** |  | [optional] 
-**results** | [**[ReportEntryRecord]**](ReportEntryRecord.md) |  | [optional] 
+**results** | [**[ReportEntryRecord]**](ReportEntryRecord.md) | The list of report result records | [optional] 
+**pageToken** | **String** | Token for retrieving the next page of results | [optional] 
 
 

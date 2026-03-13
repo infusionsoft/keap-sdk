@@ -5,16 +5,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**date_created** | **datetime** |  | [optional] 
-**first_touch** | **bool** |  | [optional] 
 **id** | **int** |  | [optional] 
 **keap_source_id** | **str** |  | [optional] 
-**last_touch** | **bool** |  | [optional] 
+**utm_source** | **str** |  | [optional] 
+**utm_medium** | **str** |  | [optional] 
+**utm_term** | **str** |  | [optional] 
 **utm_campaign** | **str** |  | [optional] 
 **utm_content** | **str** |  | [optional] 
-**utm_medium** | **str** |  | [optional] 
-**utm_source** | **str** |  | [optional] 
-**utm_term** | **str** |  | [optional] 
+**first_touch** | **bool** |  | [optional] 
+**last_touch** | **bool** |  | [optional] 
+**date_created** | **datetime** |  | [optional] 
 
 ## Example
 

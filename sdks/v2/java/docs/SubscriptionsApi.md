@@ -1,27 +1,27 @@
 # SubscriptionsApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**cancelSubscription**](SubscriptionsApi.md#cancelSubscription) | **POST** /v2/subscriptions/{subscription_id}:deactivate | Cancel Subscription |
-| [**cancelSubscriptionWithHttpInfo**](SubscriptionsApi.md#cancelSubscriptionWithHttpInfo) | **POST** /v2/subscriptions/{subscription_id}:deactivate | Cancel Subscription |
-| [**createSubscription**](SubscriptionsApi.md#createSubscription) | **POST** /v2/subscriptions | Create Subscription |
-| [**createSubscriptionWithHttpInfo**](SubscriptionsApi.md#createSubscriptionWithHttpInfo) | **POST** /v2/subscriptions | Create Subscription |
-| [**createSubscriptionCustomField**](SubscriptionsApi.md#createSubscriptionCustomField) | **POST** /v2/subscriptions/model/customFields | Create a Subscription Custom Field |
-| [**createSubscriptionCustomFieldWithHttpInfo**](SubscriptionsApi.md#createSubscriptionCustomFieldWithHttpInfo) | **POST** /v2/subscriptions/model/customFields | Create a Subscription Custom Field |
-| [**deleteSubscriptionCustomField**](SubscriptionsApi.md#deleteSubscriptionCustomField) | **DELETE** /v2/subscriptions/model/customFields/{custom_field_id} | Delete a Subscription Custom Field |
-| [**deleteSubscriptionCustomFieldWithHttpInfo**](SubscriptionsApi.md#deleteSubscriptionCustomFieldWithHttpInfo) | **DELETE** /v2/subscriptions/model/customFields/{custom_field_id} | Delete a Subscription Custom Field |
-| [**getSubscription**](SubscriptionsApi.md#getSubscription) | **GET** /v2/subscriptions/{subscription_id} | Retrieve a Subscription |
-| [**getSubscriptionWithHttpInfo**](SubscriptionsApi.md#getSubscriptionWithHttpInfo) | **GET** /v2/subscriptions/{subscription_id} | Retrieve a Subscription |
-| [**listSubscriptions**](SubscriptionsApi.md#listSubscriptions) | **GET** /v2/subscriptions | List Subscriptions |
-| [**listSubscriptionsWithHttpInfo**](SubscriptionsApi.md#listSubscriptionsWithHttpInfo) | **GET** /v2/subscriptions | List Subscriptions |
-| [**retrieveSubscriptionCustomFieldModel**](SubscriptionsApi.md#retrieveSubscriptionCustomFieldModel) | **GET** /v2/subscriptions/model | Retrieve Subscription Custom Field Model |
-| [**retrieveSubscriptionCustomFieldModelWithHttpInfo**](SubscriptionsApi.md#retrieveSubscriptionCustomFieldModelWithHttpInfo) | **GET** /v2/subscriptions/model | Retrieve Subscription Custom Field Model |
-| [**updateSubscription**](SubscriptionsApi.md#updateSubscription) | **PATCH** /v2/subscriptions/{subscription_id} | Update a Subscription |
-| [**updateSubscriptionWithHttpInfo**](SubscriptionsApi.md#updateSubscriptionWithHttpInfo) | **PATCH** /v2/subscriptions/{subscription_id} | Update a Subscription |
-| [**updateSubscriptionCustomField**](SubscriptionsApi.md#updateSubscriptionCustomField) | **PATCH** /v2/subscriptions/model/customFields/{custom_field_id} | Update a Subscription Custom Field |
-| [**updateSubscriptionCustomFieldWithHttpInfo**](SubscriptionsApi.md#updateSubscriptionCustomFieldWithHttpInfo) | **PATCH** /v2/subscriptions/model/customFields/{custom_field_id} | Update a Subscription Custom Field |
+| [**cancelSubscription**](SubscriptionsApi.md#cancelSubscription) | **POST** /rest/v2/subscriptions/{subscription_id}:deactivate | Cancel Subscription |
+| [**cancelSubscriptionWithHttpInfo**](SubscriptionsApi.md#cancelSubscriptionWithHttpInfo) | **POST** /rest/v2/subscriptions/{subscription_id}:deactivate | Cancel Subscription |
+| [**createSubscription**](SubscriptionsApi.md#createSubscription) | **POST** /rest/v2/subscriptions | Create Subscription |
+| [**createSubscriptionWithHttpInfo**](SubscriptionsApi.md#createSubscriptionWithHttpInfo) | **POST** /rest/v2/subscriptions | Create Subscription |
+| [**createSubscriptionCustomField**](SubscriptionsApi.md#createSubscriptionCustomField) | **POST** /rest/v2/subscriptions/model/customFields | Create a Subscription Custom Field |
+| [**createSubscriptionCustomFieldWithHttpInfo**](SubscriptionsApi.md#createSubscriptionCustomFieldWithHttpInfo) | **POST** /rest/v2/subscriptions/model/customFields | Create a Subscription Custom Field |
+| [**deleteSubscriptionCustomField**](SubscriptionsApi.md#deleteSubscriptionCustomField) | **DELETE** /rest/v2/subscriptions/model/customFields/{custom_field_id} | Delete a Subscription Custom Field |
+| [**deleteSubscriptionCustomFieldWithHttpInfo**](SubscriptionsApi.md#deleteSubscriptionCustomFieldWithHttpInfo) | **DELETE** /rest/v2/subscriptions/model/customFields/{custom_field_id} | Delete a Subscription Custom Field |
+| [**getSubscription**](SubscriptionsApi.md#getSubscription) | **GET** /rest/v2/subscriptions/{subscription_id} | Retrieve a Subscription |
+| [**getSubscriptionWithHttpInfo**](SubscriptionsApi.md#getSubscriptionWithHttpInfo) | **GET** /rest/v2/subscriptions/{subscription_id} | Retrieve a Subscription |
+| [**listSubscriptions**](SubscriptionsApi.md#listSubscriptions) | **GET** /rest/v2/subscriptions | List Subscriptions |
+| [**listSubscriptionsWithHttpInfo**](SubscriptionsApi.md#listSubscriptionsWithHttpInfo) | **GET** /rest/v2/subscriptions | List Subscriptions |
+| [**retrieveSubscriptionCustomFieldModel**](SubscriptionsApi.md#retrieveSubscriptionCustomFieldModel) | **GET** /rest/v2/subscriptions/model | Retrieve Subscription Custom Field Model |
+| [**retrieveSubscriptionCustomFieldModelWithHttpInfo**](SubscriptionsApi.md#retrieveSubscriptionCustomFieldModelWithHttpInfo) | **GET** /rest/v2/subscriptions/model | Retrieve Subscription Custom Field Model |
+| [**updateSubscription**](SubscriptionsApi.md#updateSubscription) | **PATCH** /rest/v2/subscriptions/{subscription_id} | Update a Subscription |
+| [**updateSubscriptionWithHttpInfo**](SubscriptionsApi.md#updateSubscriptionWithHttpInfo) | **PATCH** /rest/v2/subscriptions/{subscription_id} | Update a Subscription |
+| [**updateSubscriptionCustomField**](SubscriptionsApi.md#updateSubscriptionCustomField) | **PATCH** /rest/v2/subscriptions/model/customFields/{custom_field_id} | Update a Subscription Custom Field |
+| [**updateSubscriptionCustomFieldWithHttpInfo**](SubscriptionsApi.md#updateSubscriptionCustomFieldWithHttpInfo) | **PATCH** /rest/v2/subscriptions/model/customFields/{custom_field_id} | Update a Subscription Custom Field |
 
 
 
@@ -40,17 +40,22 @@ Cancels the specified subscription
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.SubscriptionsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         SubscriptionsApi apiInstance = new SubscriptionsApi(defaultClient);
-        String subscriptionId = "subscriptionId_example"; // String | subscription_id
-        CancelSubscriptionRequest cancelSubscriptionRequest = new CancelSubscriptionRequest(); // CancelSubscriptionRequest | request
+        String subscriptionId = "subscriptionId_example"; // String | 
+        CancelSubscriptionRequest cancelSubscriptionRequest = new CancelSubscriptionRequest(); // CancelSubscriptionRequest | 
         try {
             apiInstance.cancelSubscription(subscriptionId, cancelSubscriptionRequest);
         } catch (ApiException e) {
@@ -69,8 +74,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **subscriptionId** | **String**| subscription_id | |
-| **cancelSubscriptionRequest** | [**CancelSubscriptionRequest**](CancelSubscriptionRequest.md)| request | |
+| **subscriptionId** | **String**|  | |
+| **cancelSubscriptionRequest** | [**CancelSubscriptionRequest**](CancelSubscriptionRequest.md)|  | |
 
 ### Return type
 
@@ -79,7 +84,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -90,9 +95,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## cancelSubscriptionWithHttpInfo
 
@@ -110,17 +119,22 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.SubscriptionsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         SubscriptionsApi apiInstance = new SubscriptionsApi(defaultClient);
-        String subscriptionId = "subscriptionId_example"; // String | subscription_id
-        CancelSubscriptionRequest cancelSubscriptionRequest = new CancelSubscriptionRequest(); // CancelSubscriptionRequest | request
+        String subscriptionId = "subscriptionId_example"; // String | 
+        CancelSubscriptionRequest cancelSubscriptionRequest = new CancelSubscriptionRequest(); // CancelSubscriptionRequest | 
         try {
             ApiResponse<Void> response = apiInstance.cancelSubscriptionWithHttpInfo(subscriptionId, cancelSubscriptionRequest);
             System.out.println("Status code: " + response.getStatusCode());
@@ -141,8 +155,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **subscriptionId** | **String**| subscription_id | |
-| **cancelSubscriptionRequest** | [**CancelSubscriptionRequest**](CancelSubscriptionRequest.md)| request | |
+| **subscriptionId** | **String**|  | |
+| **cancelSubscriptionRequest** | [**CancelSubscriptionRequest**](CancelSubscriptionRequest.md)|  | |
 
 ### Return type
 
@@ -151,7 +165,7 @@ ApiResponse<Void>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -162,14 +176,18 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## createSubscription
 
-> Subscription createSubscription(createSubscriptionRequest)
+> SubscriptionDetail createSubscription(createSubscriptionRequestDetail)
 
 Create Subscription
 
@@ -182,18 +200,23 @@ Creates a subscription with the specified product and product subscription id.
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.SubscriptionsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         SubscriptionsApi apiInstance = new SubscriptionsApi(defaultClient);
-        CreateSubscriptionRequest createSubscriptionRequest = new CreateSubscriptionRequest(); // CreateSubscriptionRequest | request
+        CreateSubscriptionRequestDetail createSubscriptionRequestDetail = new CreateSubscriptionRequestDetail(); // CreateSubscriptionRequestDetail | 
         try {
-            Subscription result = apiInstance.createSubscription(createSubscriptionRequest);
+            SubscriptionDetail result = apiInstance.createSubscription(createSubscriptionRequestDetail);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling SubscriptionsApi#createSubscription");
@@ -211,16 +234,16 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **createSubscriptionRequest** | [**CreateSubscriptionRequest**](CreateSubscriptionRequest.md)| request | |
+| **createSubscriptionRequestDetail** | [**CreateSubscriptionRequestDetail**](CreateSubscriptionRequestDetail.md)|  | |
 
 ### Return type
 
-[**Subscription**](Subscription.md)
+[**SubscriptionDetail**](SubscriptionDetail.md)
 
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -231,13 +254,17 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## createSubscriptionWithHttpInfo
 
-> ApiResponse<Subscription> createSubscription createSubscriptionWithHttpInfo(createSubscriptionRequest)
+> ApiResponse<SubscriptionDetail> createSubscription createSubscriptionWithHttpInfo(createSubscriptionRequestDetail)
 
 Create Subscription
 
@@ -251,18 +278,23 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.SubscriptionsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         SubscriptionsApi apiInstance = new SubscriptionsApi(defaultClient);
-        CreateSubscriptionRequest createSubscriptionRequest = new CreateSubscriptionRequest(); // CreateSubscriptionRequest | request
+        CreateSubscriptionRequestDetail createSubscriptionRequestDetail = new CreateSubscriptionRequestDetail(); // CreateSubscriptionRequestDetail | 
         try {
-            ApiResponse<Subscription> response = apiInstance.createSubscriptionWithHttpInfo(createSubscriptionRequest);
+            ApiResponse<SubscriptionDetail> response = apiInstance.createSubscriptionWithHttpInfo(createSubscriptionRequestDetail);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -282,16 +314,16 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **createSubscriptionRequest** | [**CreateSubscriptionRequest**](CreateSubscriptionRequest.md)| request | |
+| **createSubscriptionRequestDetail** | [**CreateSubscriptionRequestDetail**](CreateSubscriptionRequestDetail.md)|  | |
 
 ### Return type
 
-ApiResponse<[**Subscription**](Subscription.md)>
+ApiResponse<[**SubscriptionDetail**](SubscriptionDetail.md)>
 
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -302,9 +334,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## createSubscriptionCustomField
@@ -322,16 +358,21 @@ Creates a custom field of the specified type and options to the Subscription obj
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.SubscriptionsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         SubscriptionsApi apiInstance = new SubscriptionsApi(defaultClient);
-        CreateCustomFieldRequest createCustomFieldRequest = new CreateCustomFieldRequest(); // CreateCustomFieldRequest | customField
+        CreateCustomFieldRequest createCustomFieldRequest = new CreateCustomFieldRequest(); // CreateCustomFieldRequest | 
         try {
             CustomFieldMetaData result = apiInstance.createSubscriptionCustomField(createCustomFieldRequest);
             System.out.println(result);
@@ -351,7 +392,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **createCustomFieldRequest** | [**CreateCustomFieldRequest**](CreateCustomFieldRequest.md)| customField | |
+| **createCustomFieldRequest** | [**CreateCustomFieldRequest**](CreateCustomFieldRequest.md)|  | |
 
 ### Return type
 
@@ -360,7 +401,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -371,9 +412,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## createSubscriptionCustomFieldWithHttpInfo
 
@@ -391,16 +436,21 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.SubscriptionsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         SubscriptionsApi apiInstance = new SubscriptionsApi(defaultClient);
-        CreateCustomFieldRequest createCustomFieldRequest = new CreateCustomFieldRequest(); // CreateCustomFieldRequest | customField
+        CreateCustomFieldRequest createCustomFieldRequest = new CreateCustomFieldRequest(); // CreateCustomFieldRequest | 
         try {
             ApiResponse<CustomFieldMetaData> response = apiInstance.createSubscriptionCustomFieldWithHttpInfo(createCustomFieldRequest);
             System.out.println("Status code: " + response.getStatusCode());
@@ -422,7 +472,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **createCustomFieldRequest** | [**CreateCustomFieldRequest**](CreateCustomFieldRequest.md)| customField | |
+| **createCustomFieldRequest** | [**CreateCustomFieldRequest**](CreateCustomFieldRequest.md)|  | |
 
 ### Return type
 
@@ -431,7 +481,7 @@ ApiResponse<[**CustomFieldMetaData**](CustomFieldMetaData.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -442,9 +492,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## deleteSubscriptionCustomField
@@ -462,16 +516,21 @@ Deletes a custom field from the Subscription object
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.SubscriptionsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         SubscriptionsApi apiInstance = new SubscriptionsApi(defaultClient);
-        String customFieldId = "customFieldId_example"; // String | custom_field_id
+        String customFieldId = "customFieldId_example"; // String | 
         try {
             apiInstance.deleteSubscriptionCustomField(customFieldId);
         } catch (ApiException e) {
@@ -490,7 +549,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customFieldId** | **String**| custom_field_id | |
+| **customFieldId** | **String**|  | |
 
 ### Return type
 
@@ -499,7 +558,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -510,10 +569,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## deleteSubscriptionCustomFieldWithHttpInfo
 
@@ -531,16 +593,21 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.SubscriptionsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         SubscriptionsApi apiInstance = new SubscriptionsApi(defaultClient);
-        String customFieldId = "customFieldId_example"; // String | custom_field_id
+        String customFieldId = "customFieldId_example"; // String | 
         try {
             ApiResponse<Void> response = apiInstance.deleteSubscriptionCustomFieldWithHttpInfo(customFieldId);
             System.out.println("Status code: " + response.getStatusCode());
@@ -561,7 +628,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customFieldId** | **String**| custom_field_id | |
+| **customFieldId** | **String**|  | |
 
 ### Return type
 
@@ -570,7 +637,7 @@ ApiResponse<Void>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -581,15 +648,18 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## getSubscription
 
-> Subscription getSubscription(subscriptionId)
+> SubscriptionDetail getSubscription(subscriptionId)
 
 Retrieve a Subscription
 
@@ -602,18 +672,23 @@ Retrieves a single subscription
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.SubscriptionsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         SubscriptionsApi apiInstance = new SubscriptionsApi(defaultClient);
-        String subscriptionId = "subscriptionId_example"; // String | subscription_id
+        String subscriptionId = "subscriptionId_example"; // String | 
         try {
-            Subscription result = apiInstance.getSubscription(subscriptionId);
+            SubscriptionDetail result = apiInstance.getSubscription(subscriptionId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling SubscriptionsApi#getSubscription");
@@ -631,16 +706,16 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **subscriptionId** | **String**| subscription_id | |
+| **subscriptionId** | **String**|  | |
 
 ### Return type
 
-[**Subscription**](Subscription.md)
+[**SubscriptionDetail**](SubscriptionDetail.md)
 
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -651,14 +726,17 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## getSubscriptionWithHttpInfo
 
-> ApiResponse<Subscription> getSubscription getSubscriptionWithHttpInfo(subscriptionId)
+> ApiResponse<SubscriptionDetail> getSubscription getSubscriptionWithHttpInfo(subscriptionId)
 
 Retrieve a Subscription
 
@@ -672,18 +750,23 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.SubscriptionsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         SubscriptionsApi apiInstance = new SubscriptionsApi(defaultClient);
-        String subscriptionId = "subscriptionId_example"; // String | subscription_id
+        String subscriptionId = "subscriptionId_example"; // String | 
         try {
-            ApiResponse<Subscription> response = apiInstance.getSubscriptionWithHttpInfo(subscriptionId);
+            ApiResponse<SubscriptionDetail> response = apiInstance.getSubscriptionWithHttpInfo(subscriptionId);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -703,16 +786,16 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **subscriptionId** | **String**| subscription_id | |
+| **subscriptionId** | **String**|  | |
 
 ### Return type
 
-ApiResponse<[**Subscription**](Subscription.md)>
+ApiResponse<[**SubscriptionDetail**](SubscriptionDetail.md)>
 
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -723,15 +806,18 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## listSubscriptions
 
-> ListSubscriptionsResponse listSubscriptions(filter, orderBy, pageSize, pageToken)
+> ListSubscriptionsResponseList listSubscriptions(filter, orderBy, pageSize, pageToken)
 
 List Subscriptions
 
@@ -744,21 +830,26 @@ Retrieves a list of subscriptions using the specified search criteria.
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.SubscriptionsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         SubscriptionsApi apiInstance = new SubscriptionsApi(defaultClient);
-        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id` 
+        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id` - (String) `status` 
         String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `id` - `contact_id` - `subscription_plan_id`  One of the following directions: - `asc` - `desc`
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
         try {
-            ListSubscriptionsResponse result = apiInstance.listSubscriptions(filter, orderBy, pageSize, pageToken);
+            ListSubscriptionsResponseList result = apiInstance.listSubscriptions(filter, orderBy, pageSize, pageToken);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling SubscriptionsApi#listSubscriptions");
@@ -776,19 +867,19 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60;  | [optional] |
+| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60;  | [optional] |
 | **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **pageSize** | **Integer**| Total number of items to return per page | [optional] |
 | **pageToken** | **String**| Page token | [optional] |
 
 ### Return type
 
-[**ListSubscriptionsResponse**](ListSubscriptionsResponse.md)
+[**ListSubscriptionsResponseList**](ListSubscriptionsResponseList.md)
 
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -799,14 +890,17 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## listSubscriptionsWithHttpInfo
 
-> ApiResponse<ListSubscriptionsResponse> listSubscriptions listSubscriptionsWithHttpInfo(filter, orderBy, pageSize, pageToken)
+> ApiResponse<ListSubscriptionsResponseList> listSubscriptions listSubscriptionsWithHttpInfo(filter, orderBy, pageSize, pageToken)
 
 List Subscriptions
 
@@ -820,21 +914,26 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.SubscriptionsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         SubscriptionsApi apiInstance = new SubscriptionsApi(defaultClient);
-        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id` 
+        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id` - (String) `status` 
         String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `id` - `contact_id` - `subscription_plan_id`  One of the following directions: - `asc` - `desc`
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
         try {
-            ApiResponse<ListSubscriptionsResponse> response = apiInstance.listSubscriptionsWithHttpInfo(filter, orderBy, pageSize, pageToken);
+            ApiResponse<ListSubscriptionsResponseList> response = apiInstance.listSubscriptionsWithHttpInfo(filter, orderBy, pageSize, pageToken);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -854,19 +953,19 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60;  | [optional] |
+| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60;  | [optional] |
 | **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **pageSize** | **Integer**| Total number of items to return per page | [optional] |
 | **pageToken** | **String**| Page token | [optional] |
 
 ### Return type
 
-ApiResponse<[**ListSubscriptionsResponse**](ListSubscriptionsResponse.md)>
+ApiResponse<[**ListSubscriptionsResponseList**](ListSubscriptionsResponseList.md)>
 
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -877,10 +976,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## retrieveSubscriptionCustomFieldModel
@@ -898,13 +1000,18 @@ Get the custom fields for the Subscription object
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.SubscriptionsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         SubscriptionsApi apiInstance = new SubscriptionsApi(defaultClient);
         try {
@@ -932,7 +1039,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -943,10 +1050,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## retrieveSubscriptionCustomFieldModelWithHttpInfo
 
@@ -964,13 +1074,18 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.SubscriptionsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         SubscriptionsApi apiInstance = new SubscriptionsApi(defaultClient);
         try {
@@ -1000,7 +1115,7 @@ ApiResponse<[**ObjectModel**](ObjectModel.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1011,15 +1126,18 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## updateSubscription
 
-> Subscription updateSubscription(subscriptionId, updateSubscriptionRequest, updateMask)
+> SubscriptionDetail updateSubscription(subscriptionId, updateSubscriptionRequestDetail, updateMask)
 
 Update a Subscription
 
@@ -1032,20 +1150,25 @@ Updates a Subscription
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.SubscriptionsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         SubscriptionsApi apiInstance = new SubscriptionsApi(defaultClient);
-        String subscriptionId = "subscriptionId_example"; // String | subscription_id
-        UpdateSubscriptionRequest updateSubscriptionRequest = new UpdateSubscriptionRequest(); // UpdateSubscriptionRequest | request
-        List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        String subscriptionId = "subscriptionId_example"; // String | 
+        UpdateSubscriptionRequestDetail updateSubscriptionRequestDetail = new UpdateSubscriptionRequestDetail(); // UpdateSubscriptionRequestDetail | 
+        String updateMask = "contact_id,subscription_plan_id,quantity,billing_amount,auto_charge,max_charge_attempts,days_between_retries, active,billing_frequency,billing_cycle,next_bill_date,end_date,payment_method_id,allow_tax,lead_affiliate_id, sale_affiliate_id,promo_code,shipping_option_id,reason_stopped,shipping_address"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
-            Subscription result = apiInstance.updateSubscription(subscriptionId, updateSubscriptionRequest, updateMask);
+            SubscriptionDetail result = apiInstance.updateSubscription(subscriptionId, updateSubscriptionRequestDetail, updateMask);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling SubscriptionsApi#updateSubscription");
@@ -1063,18 +1186,20 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **subscriptionId** | **String**| subscription_id | |
-| **updateSubscriptionRequest** | [**UpdateSubscriptionRequest**](UpdateSubscriptionRequest.md)| request | |
-| **updateMask** | [**List&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: contact_id, subscription_plan_id, quantity, billing_amount, auto_charge, max_charge_attempts, days_between_retries, active, billing_frequency, billing_cycle, next_bill_date, end_date, payment_method_id, allow_tax, lead_affiliate_id, sale_affiliate_id, shipping_address] |
+| **subscriptionId** | **String**|  | |
+| **updateSubscriptionRequestDetail** | [**UpdateSubscriptionRequestDetail**](UpdateSubscriptionRequestDetail.md)|  | |
+| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: contact_id,subscription_plan_id,quantity,billing_amount,auto_charge,max_charge_attempts,days_between_retries,
+active,billing_frequency,billing_cycle,next_bill_date,end_date,payment_method_id,allow_tax,lead_affiliate_id,
+sale_affiliate_id,promo_code,shipping_option_id,reason_stopped,shipping_address] |
 
 ### Return type
 
-[**Subscription**](Subscription.md)
+[**SubscriptionDetail**](SubscriptionDetail.md)
 
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1085,14 +1210,17 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## updateSubscriptionWithHttpInfo
 
-> ApiResponse<Subscription> updateSubscription updateSubscriptionWithHttpInfo(subscriptionId, updateSubscriptionRequest, updateMask)
+> ApiResponse<SubscriptionDetail> updateSubscription updateSubscriptionWithHttpInfo(subscriptionId, updateSubscriptionRequestDetail, updateMask)
 
 Update a Subscription
 
@@ -1106,20 +1234,25 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.SubscriptionsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         SubscriptionsApi apiInstance = new SubscriptionsApi(defaultClient);
-        String subscriptionId = "subscriptionId_example"; // String | subscription_id
-        UpdateSubscriptionRequest updateSubscriptionRequest = new UpdateSubscriptionRequest(); // UpdateSubscriptionRequest | request
-        List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        String subscriptionId = "subscriptionId_example"; // String | 
+        UpdateSubscriptionRequestDetail updateSubscriptionRequestDetail = new UpdateSubscriptionRequestDetail(); // UpdateSubscriptionRequestDetail | 
+        String updateMask = "contact_id,subscription_plan_id,quantity,billing_amount,auto_charge,max_charge_attempts,days_between_retries, active,billing_frequency,billing_cycle,next_bill_date,end_date,payment_method_id,allow_tax,lead_affiliate_id, sale_affiliate_id,promo_code,shipping_option_id,reason_stopped,shipping_address"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
-            ApiResponse<Subscription> response = apiInstance.updateSubscriptionWithHttpInfo(subscriptionId, updateSubscriptionRequest, updateMask);
+            ApiResponse<SubscriptionDetail> response = apiInstance.updateSubscriptionWithHttpInfo(subscriptionId, updateSubscriptionRequestDetail, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -1139,18 +1272,20 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **subscriptionId** | **String**| subscription_id | |
-| **updateSubscriptionRequest** | [**UpdateSubscriptionRequest**](UpdateSubscriptionRequest.md)| request | |
-| **updateMask** | [**List&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: contact_id, subscription_plan_id, quantity, billing_amount, auto_charge, max_charge_attempts, days_between_retries, active, billing_frequency, billing_cycle, next_bill_date, end_date, payment_method_id, allow_tax, lead_affiliate_id, sale_affiliate_id, shipping_address] |
+| **subscriptionId** | **String**|  | |
+| **updateSubscriptionRequestDetail** | [**UpdateSubscriptionRequestDetail**](UpdateSubscriptionRequestDetail.md)|  | |
+| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: contact_id,subscription_plan_id,quantity,billing_amount,auto_charge,max_charge_attempts,days_between_retries,
+active,billing_frequency,billing_cycle,next_bill_date,end_date,payment_method_id,allow_tax,lead_affiliate_id,
+sale_affiliate_id,promo_code,shipping_option_id,reason_stopped,shipping_address] |
 
 ### Return type
 
-ApiResponse<[**Subscription**](Subscription.md)>
+ApiResponse<[**SubscriptionDetail**](SubscriptionDetail.md)>
 
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1161,10 +1296,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## updateSubscriptionCustomField
@@ -1182,18 +1320,23 @@ Updates a custom field of the specified type and options to the Subscription obj
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.SubscriptionsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         SubscriptionsApi apiInstance = new SubscriptionsApi(defaultClient);
-        String customFieldId = "customFieldId_example"; // String | custom_field_id
-        UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest = new UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | request
-        List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        String customFieldId = "customFieldId_example"; // String | 
+        UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest = new UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | 
+        String updateMask = "group_id,label,options"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             CustomFieldMetaData result = apiInstance.updateSubscriptionCustomField(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
             System.out.println(result);
@@ -1213,9 +1356,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customFieldId** | **String**| custom_field_id | |
-| **updateCustomFieldMetaDataRequest** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md)| request | |
-| **updateMask** | [**List&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: group_id, label, options] |
+| **customFieldId** | **String**|  | |
+| **updateCustomFieldMetaDataRequest** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md)|  | |
+| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: group_id,label,options] |
 
 ### Return type
 
@@ -1224,7 +1367,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1235,10 +1378,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## updateSubscriptionCustomFieldWithHttpInfo
 
@@ -1256,18 +1402,23 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.SubscriptionsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         SubscriptionsApi apiInstance = new SubscriptionsApi(defaultClient);
-        String customFieldId = "customFieldId_example"; // String | custom_field_id
-        UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest = new UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | request
-        List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        String customFieldId = "customFieldId_example"; // String | 
+        UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest = new UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | 
+        String updateMask = "group_id,label,options"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ApiResponse<CustomFieldMetaData> response = apiInstance.updateSubscriptionCustomFieldWithHttpInfo(customFieldId, updateCustomFieldMetaDataRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
@@ -1289,9 +1440,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customFieldId** | **String**| custom_field_id | |
-| **updateCustomFieldMetaDataRequest** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md)| request | |
-| **updateMask** | [**List&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: group_id, label, options] |
+| **customFieldId** | **String**|  | |
+| **updateCustomFieldMetaDataRequest** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md)|  | |
+| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: group_id,label,options] |
 
 ### Return type
 
@@ -1300,7 +1451,7 @@ ApiResponse<[**CustomFieldMetaData**](CustomFieldMetaData.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1311,8 +1462,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 

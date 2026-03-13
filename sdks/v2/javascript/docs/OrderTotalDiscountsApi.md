@@ -1,14 +1,14 @@
 # KeapCoreServiceV2Sdk.OrderTotalDiscountsApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createOrderTotalDiscount**](OrderTotalDiscountsApi.md#createOrderTotalDiscount) | **POST** /v2/discounts/orderTotals | Create an Order Total Discount
-[**deleteOrderTotalDiscount**](OrderTotalDiscountsApi.md#deleteOrderTotalDiscount) | **DELETE** /v2/discounts/orderTotals/{discount_id} | Delete an Order Total Discount
-[**getOrderTotalDiscount**](OrderTotalDiscountsApi.md#getOrderTotalDiscount) | **GET** /v2/discounts/orderTotals/{discount_id} | Retrieve an Order Total Discount
-[**listOrderTotalDiscounts**](OrderTotalDiscountsApi.md#listOrderTotalDiscounts) | **GET** /v2/discounts/orderTotals | List all Order Total Discounts
-[**updateOrderTotalDiscount**](OrderTotalDiscountsApi.md#updateOrderTotalDiscount) | **PATCH** /v2/discounts/orderTotals/{discount_id} | Update an Order Total Discount
+[**createOrderTotalDiscount**](OrderTotalDiscountsApi.md#createOrderTotalDiscount) | **POST** /rest/v2/discounts/orderTotals | Create an Order Total Discount
+[**deleteOrderTotalDiscount**](OrderTotalDiscountsApi.md#deleteOrderTotalDiscount) | **DELETE** /rest/v2/discounts/orderTotals/{discount_id} | Delete an Order Total Discount
+[**getOrderTotalDiscount**](OrderTotalDiscountsApi.md#getOrderTotalDiscount) | **GET** /rest/v2/discounts/orderTotals/{discount_id} | Retrieve an Order Total Discount
+[**listOrderTotalDiscounts**](OrderTotalDiscountsApi.md#listOrderTotalDiscounts) | **GET** /rest/v2/discounts/orderTotals | List all Order Total Discounts
+[**updateOrderTotalDiscount**](OrderTotalDiscountsApi.md#updateOrderTotalDiscount) | **PATCH** /rest/v2/discounts/orderTotals/{discount_id} | Update an Order Total Discount
 
 
 
@@ -24,9 +24,13 @@ Creates an Order Total Discount
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.OrderTotalDiscountsApi();
-let createOrderTotalDiscountRequest = new KeapCoreServiceV2Sdk.CreateOrderTotalDiscountRequest(); // CreateOrderTotalDiscountRequest | request
+let createOrderTotalDiscountRequest = new KeapCoreServiceV2Sdk.CreateOrderTotalDiscountRequest(); // CreateOrderTotalDiscountRequest | 
 apiInstance.createOrderTotalDiscount(createOrderTotalDiscountRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -40,7 +44,7 @@ apiInstance.createOrderTotalDiscount(createOrderTotalDiscountRequest).then((data
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createOrderTotalDiscountRequest** | [**CreateOrderTotalDiscountRequest**](CreateOrderTotalDiscountRequest.md)| request | 
+ **createOrderTotalDiscountRequest** | [**CreateOrderTotalDiscountRequest**](CreateOrderTotalDiscountRequest.md)|  | 
 
 ### Return type
 
@@ -48,7 +52,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -68,9 +72,13 @@ Deletes a specified Order Total Discount
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.OrderTotalDiscountsApi();
-let discountId = "discountId_example"; // String | discount_id
+let discountId = "discountId_example"; // String | 
 apiInstance.deleteOrderTotalDiscount(discountId).then(() => {
   console.log('API called successfully.');
 }, (error) => {
@@ -84,7 +92,7 @@ apiInstance.deleteOrderTotalDiscount(discountId).then(() => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **discountId** | **String**| discount_id | 
+ **discountId** | **String**|  | 
 
 ### Return type
 
@@ -92,7 +100,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -112,9 +120,13 @@ Retrieves an Order Total Discount
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.OrderTotalDiscountsApi();
-let discountId = "discountId_example"; // String | discount_id
+let discountId = "discountId_example"; // String | 
 apiInstance.getOrderTotalDiscount(discountId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -128,7 +140,7 @@ apiInstance.getOrderTotalDiscount(discountId).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **discountId** | **String**| discount_id | 
+ **discountId** | **String**|  | 
 
 ### Return type
 
@@ -136,7 +148,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -156,6 +168,10 @@ Retrieves a list of Order Total Discounts
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.OrderTotalDiscountsApi();
 let opts = {
@@ -188,7 +204,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -208,12 +224,16 @@ Updates an Order Total Discount
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.OrderTotalDiscountsApi();
-let discountId = "discountId_example"; // String | discount_id
-let updateOrderTotalDiscountRequest = new KeapCoreServiceV2Sdk.UpdateOrderTotalDiscountRequest(); // UpdateOrderTotalDiscountRequest | request
+let discountId = "discountId_example"; // String | 
+let updateOrderTotalDiscountRequest = new KeapCoreServiceV2Sdk.UpdateOrderTotalDiscountRequest(); // UpdateOrderTotalDiscountRequest | 
 let opts = {
-  'updateMask': ["null"] // [String] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+  'updateMask': "updateMask_example" // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
 apiInstance.updateOrderTotalDiscount(discountId, updateOrderTotalDiscountRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -228,9 +248,9 @@ apiInstance.updateOrderTotalDiscount(discountId, updateOrderTotalDiscountRequest
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **discountId** | **String**| discount_id | 
- **updateOrderTotalDiscountRequest** | [**UpdateOrderTotalDiscountRequest**](UpdateOrderTotalDiscountRequest.md)| request | 
- **updateMask** | [**[String]**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **discountId** | **String**|  | 
+ **updateOrderTotalDiscountRequest** | [**UpdateOrderTotalDiscountRequest**](UpdateOrderTotalDiscountRequest.md)|  | 
+ **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 
@@ -238,7 +258,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**nextPageToken** | **String** |  | [optional] 
 **records** | [**[PaymentMethod]**](PaymentMethod.md) |  | [optional] 
+**nextPageToken** | **String** |  | [optional] 
 
 

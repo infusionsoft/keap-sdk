@@ -1,10 +1,10 @@
 # KeapCoreServiceV2Sdk.ShippingApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**listShippingMethods**](ShippingApi.md#listShippingMethods) | **GET** /v2/shipping | List Shipping methods
+[**listShippingMethods**](ShippingApi.md#listShippingMethods) | **GET** /rest/v2/shipping | List Shipping methods
 
 
 
@@ -20,6 +20,10 @@ Retrieves a list of Shipping methods
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.ShippingApi();
 apiInstance.listShippingMethods().then((data) => {
@@ -40,7 +44,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 

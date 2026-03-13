@@ -1,14 +1,14 @@
 # .LeadSourcesApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createLeadSource**](LeadSourcesApi.md#createLeadSource) | **POST** /v2/leadSources | Create a Lead Source
-[**deleteLeadSource**](LeadSourcesApi.md#deleteLeadSource) | **DELETE** /v2/leadSources/{lead_source_id} | Delete a Lead Source
-[**getLeadSource**](LeadSourcesApi.md#getLeadSource) | **GET** /v2/leadSources/{lead_source_id} | Retrieve a Lead Source
-[**listLeadSources**](LeadSourcesApi.md#listLeadSources) | **GET** /v2/leadSources | List Lead Sources
-[**updateLeadSource**](LeadSourcesApi.md#updateLeadSource) | **PATCH** /v2/leadSources/{lead_source_id} | Update a Lead Source
+[**createLeadSource**](LeadSourcesApi.md#createLeadSource) | **POST** /rest/v2/leadSources | Create a Lead Source
+[**deleteLeadSource**](LeadSourcesApi.md#deleteLeadSource) | **DELETE** /rest/v2/leadSources/{lead_source_id} | Delete a Lead Source
+[**getLeadSource**](LeadSourcesApi.md#getLeadSource) | **GET** /rest/v2/leadSources/{lead_source_id} | Retrieve a Lead Source
+[**listLeadSources**](LeadSourcesApi.md#listLeadSources) | **GET** /rest/v2/leadSources | List Lead Sources
+[**updateLeadSource**](LeadSourcesApi.md#updateLeadSource) | **PATCH** /rest/v2/leadSources/{lead_source_id} | Update a Lead Source
 
 
 # **createLeadSource**
@@ -27,17 +27,17 @@ const configuration = createConfiguration();
 const apiInstance = new LeadSourcesApi(configuration);
 
 const request: LeadSourcesApiCreateLeadSourceRequest = {
-    // The request object to create a new lead source
+  
   createLeadSourceRequest: {
-    description: "description_example",
-    endTime: "endTime_example",
-    leadSourceCategoryId: "leadSourceCategoryId_example",
-    medium: "medium_example",
-    message: "message_example",
-    name: "name_example",
-    startTime: "startTime_example",
-    status: "status_example",
-    vendor: "vendor_example",
+    name: "Google Ads",
+    description: "Paid search advertising",
+    vendor: "Google",
+    medium: "cpc",
+    message: "Spring promotion",
+    status: "ACTIVE",
+    leadSourceCategoryId: "456",
+    startTime: new Date('2024-01-01T00:00:00Z'),
+    endTime: new Date('2024-12-31T23:59:59Z'),
   },
 };
 
@@ -50,7 +50,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createLeadSourceRequest** | **CreateLeadSourceRequest**| The request object to create a new lead source |
+ **createLeadSourceRequest** | **CreateLeadSourceRequest**|  |
 
 
 ### Return type
@@ -59,7 +59,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -74,7 +74,10 @@ No authorization required
 **400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -116,7 +119,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -128,10 +131,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No Content |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -173,7 +179,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -185,10 +191,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -239,7 +248,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -255,7 +264,9 @@ No authorization required
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -277,22 +288,20 @@ const apiInstance = new LeadSourcesApi(configuration);
 const request: LeadSourcesApiUpdateLeadSourceRequest = {
     // The ID of a lead source
   leadSourceId: "lead_source_id_example",
-    // The request object to update a lead source
+  
   createLeadSourceRequest: {
-    description: "description_example",
-    endTime: "endTime_example",
-    leadSourceCategoryId: "leadSourceCategoryId_example",
-    medium: "medium_example",
-    message: "message_example",
-    name: "name_example",
-    startTime: "startTime_example",
-    status: "status_example",
-    vendor: "vendor_example",
+    name: "Google Ads",
+    description: "Paid search advertising",
+    vendor: "Google",
+    medium: "cpc",
+    message: "Spring promotion",
+    status: "ACTIVE",
+    leadSourceCategoryId: "456",
+    startTime: new Date('2024-01-01T00:00:00Z'),
+    endTime: new Date('2024-12-31T23:59:59Z'),
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: [
-    "name",
-  ],
+  updateMask: "name,description,vendor,medium,message,start_time,end_time,status,lead_source_category_id",
 };
 
 const data = await apiInstance.updateLeadSource(request);
@@ -304,9 +313,9 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createLeadSourceRequest** | **CreateLeadSourceRequest**| The request object to update a lead source |
+ **createLeadSourceRequest** | **CreateLeadSourceRequest**|  |
  **leadSourceId** | [**string**] | The ID of a lead source | defaults to undefined
- **updateMask** |  | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | [**&#39;name,description,vendor,medium,message,start_time,end_time,status,lead_source_category_id&#39;**]**Array<&#39;name,description,vendor,medium,message,start_time,end_time,status,lead_source_category_id&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
@@ -315,7 +324,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -331,7 +340,9 @@ No authorization required
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Description** | **string** |  | 
-**Order** | **int** |  | 
 **Required** | **bool** |  | 
+**Order** | **int** | Must be Numeric could be negative values as well for ordering | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -2,24 +2,25 @@
 
 # CreateOpportunityRequest
 
+opportunity
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**affiliateId** | **String** |  |  [optional] |
-|**contactId** | **String** |  |  [optional] |
+|**opportunityTitle** | **String** | Opportunity title |  |
+|**nextActionTime** | **String** | Next action timestamp (ISO-8601) |  [optional] |
+|**nextActionNotes** | **String** | Notes for next action |  [optional] |
+|**opportunityNotes** | **String** | General notes |  [optional] |
+|**estimatedCloseTime** | **String** | Estimated close timestamp (ISO-8601) |  [optional] |
+|**includeInForecast** | **Boolean** | Include in sales forecast |  [optional] |
+|**projectedRevenueLow** | **Double** | Low revenue estimate |  [optional] |
+|**projectedRevenueHigh** | **Double** | High revenue estimate |  [optional] |
+|**contactId** | **String** | Associated contact ID |  [optional] |
+|**stageId** | **String** | Pipeline stage ID |  [optional] |
+|**userId** | **String** | Assigned user ID |  [optional] |
 |**customFields** | [**List&lt;CustomField&gt;**](CustomField.md) |  |  [optional] |
-|**estimatedCloseTime** | **String** |  |  [optional] |
-|**includeInForecast** | **Boolean** |  |  [optional] |
-|**nextActionNotes** | **String** |  |  [optional] |
-|**nextActionTime** | **String** |  |  [optional] |
-|**opportunityNotes** | **String** |  |  [optional] |
-|**opportunityTitle** | **String** |  |  |
-|**projectedRevenueHigh** | **Double** |  |  [optional] |
-|**projectedRevenueLow** | **Double** |  |  [optional] |
-|**stageId** | **String** |  |  [optional] |
-|**userId** | **String** |  |  [optional] |
+|**affiliateId** | **String** | Affiliate ID |  [optional] |
 
 
 ## Implemented Interfaces

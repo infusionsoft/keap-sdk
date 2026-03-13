@@ -5,13 +5,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**address** | [**Address**](Address.md) |  | [optional] 
-**company** | **str** |  | [optional] 
-**family_name** | **str** |  | [optional] 
-**given_name** | **str** |  | [optional] 
-**id** | **str** |  | [optional] 
-**invoice_to_company** | **bool** |  | [optional] 
-**phone_number** | **str** |  | [optional] 
+**id** | **str** | Shipping information ID | [optional] 
+**address** | [**Address**](Address.md) | Shipping address | [optional] 
+**company** | **str** | Company name | [optional] 
+**given_name** | **str** | First name | [optional] 
+**family_name** | **str** | Last name | [optional] 
+**phone_number** | **str** | Phone number | [optional] 
+**invoice_to_company** | **bool** | Whether to invoice to company | [optional] 
 
 ## Example
 

@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**pageToken** | **String** |  |  [optional] |
-|**results** | [**List&lt;ReportEntryRecord&gt;**](ReportEntryRecord.md) |  |  [optional] |
+|**results** | [**List&lt;ReportEntryRecord&gt;**](ReportEntryRecord.md) | The list of report result records |  [optional] |
+|**pageToken** | **String** | Token for retrieving the next page of results |  [optional] |
 
 
 ## Implemented Interfaces

@@ -1,30 +1,31 @@
 # User
 
+A user in the system
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**address** | [**Address**](Address.md) |  | [optional] 
-**admin** | **bool** |  | [optional] 
-**company_name** | **str** |  | [optional] 
-**create_time** | **str** |  | [optional] 
-**created_by** | **int** |  | [optional] 
-**email_addresses** | [**List[EmailAddress]**](EmailAddress.md) |  | [optional] 
-**family_name** | **str** |  | [optional] 
-**fax_numbers** | [**List[FaxNumber]**](FaxNumber.md) |  | [optional] 
-**given_name** | **str** |  | [optional] 
-**global_user_id** | **str** |  | [optional] 
-**id** | **str** |  | [optional] 
-**keap_id** | **str** |  | [optional] 
-**partner** | **bool** |  | [optional] 
-**phone_numbers** | [**List[PhoneNumber]**](PhoneNumber.md) |  | [optional] 
-**social_accounts** | [**List[SocialAccount]**](SocialAccount.md) |  | [optional] 
-**status** | **str** |  | [optional] 
-**title** | **str** |  | [optional] 
-**update_time** | **str** |  | [optional] 
-**updated_by** | **int** |  | [optional] 
-**website** | **str** |  | [optional] 
+**address** | [**Address**](Address.md) | The user&#39;s address | [optional] 
+**title** | **str** | The user&#39;s job title | [optional] 
+**website** | **str** | The user&#39;s website URL | [optional] 
+**partner** | **bool** | Whether the user is a partner | [optional] 
+**admin** | **bool** | Whether the user is an admin | [optional] 
+**status** | **str** | The user&#39;s status | [optional] 
+**id** | **str** | The unique identifier of the user | [optional] 
+**global_user_id** | **str** | The global user identifier across tenants | [optional] 
+**keap_id** | **str** | The Keap ID of the user | [optional] 
+**given_name** | **str** | The user&#39;s first name | [optional] 
+**family_name** | **str** | The user&#39;s last name | [optional] 
+**phone_numbers** | [**List[PhoneNumber]**](PhoneNumber.md) | List of user&#39;s phone numbers | [optional] 
+**fax_numbers** | [**List[FaxNumber]**](FaxNumber.md) | List of user&#39;s fax numbers | [optional] 
+**email_addresses** | [**List[EmailAddress]**](EmailAddress.md) | List of user&#39;s email addresses | [optional] 
+**social_accounts** | [**List[SocialAccount]**](SocialAccount.md) | List of user&#39;s social media accounts | [optional] 
+**company_name** | **str** | The user&#39;s company name | [optional] 
+**created_by** | **int** | ID of the user who created this user | [optional] 
+**create_time** | **datetime** | When the user was created, in ISO-8601 format | [optional] 
+**updated_by** | **int** | ID of the user who last updated this user | [optional] 
+**update_time** | **datetime** | When the user was last updated, in ISO-8601 format | [optional] 
 
 ## Example
 

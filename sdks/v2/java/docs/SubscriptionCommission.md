@@ -7,11 +7,11 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**dollarAmount** | **Double** |  |  [optional] |
-|**name** | **String** |  |  [optional] |
-|**percentage** | **Double** |  |  [optional] |
-|**planPrice** | **Double** |  |  [optional] |
-|**subscriptionId** | **String** |  |  [optional] |
+|**name** | **String** | Subscription name |  [optional] |
+|**percentage** | **Double** | Percentage commission |  [optional] |
+|**subscriptionId** | **String** | Subscription ID |  [optional] |
+|**planPrice** | **Double** | Plan price |  [optional] |
+|**dollarAmount** | **Double** | Fixed dollar commission |  [optional] |
 
 
 ## Implemented Interfaces

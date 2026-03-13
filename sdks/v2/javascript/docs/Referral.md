@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**contactId** | **String** |  | [optional] 
-**description** | **String** |  | [optional] 
-**expirationTime** | **String** |  | [optional] 
-**id** | **String** |  | [optional] 
-**ipAddress** | **String** |  | [optional] 
-**referralPartnerId** | **String** |  | [optional] 
-**referralTime** | **String** |  | [optional] 
-**referralType** | **String** |  | [optional] 
-**source** | **String** |  | [optional] 
+**id** | **String** | The unique identifier for this referral. | [optional] 
+**description** | **String** | The referral description. | [optional] 
+**source** | **String** | The source for the referral. | [optional] 
+**contactId** | **String** | The referral&#39;s contact_id. | [optional] 
+**referralPartnerId** | **String** | The referring affiliate ID. | [optional] 
+**referralTime** | **Date** | The time of the referral. | [optional] 
+**expirationTime** | **Date** | The time when the referral expires. | [optional] 
+**ipAddress** | **String** | The IP address of the referral. | [optional] 
+**referralType** | **String** | The referral type. | [optional] 
 
 
 
@@ -21,9 +21,9 @@ Name | Type | Description | Notes
 
 * `COOKIE` (value: `"COOKIE"`)
 
-* `PERMANENT` (value: `"PERMANENT"`)
-
 * `MANUAL` (value: `"MANUAL"`)
+
+* `PERMANENT` (value: `"PERMANENT"`)
 
 * `unknown_default_open_api` (value: `"unknown_default_open_api"`)
 

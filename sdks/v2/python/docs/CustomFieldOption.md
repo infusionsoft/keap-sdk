@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
 **label** | **str** |  | [optional] 
-**options** | [**List[CustomFieldOption]**](CustomFieldOption.md) |  | [optional] 
 
 ## Example
 

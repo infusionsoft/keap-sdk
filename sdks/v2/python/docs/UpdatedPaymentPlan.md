@@ -5,15 +5,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**auto_charge** | **bool** |  | [optional] 
-**days_between_payments** | **int** |  | [optional] 
-**days_between_retries** | **int** |  | [optional] 
-**initial_payment_amount** | **float** |  | [optional] 
-**initial_payment_date** | **str** | ISO date of the initial payment in pay plan. e.g 2024-04-28 | [optional] 
-**max_charge_attempts** | **int** |  | [optional] 
-**number_of_payments** | **int** |  | [optional] 
-**payment_method_id** | **str** |  | [optional] 
-**plan_start_date** | **str** | ISO date of the start of pay plan. e.g 2024-04-28 | [optional] 
+**auto_charge** | **bool** | Whether to auto-charge payments | [optional] 
+**max_charge_attempts** | **int** | Maximum charge attempts | [optional] 
+**days_between_retries** | **int** | Days between retry attempts | [optional] 
+**payment_method_id** | **str** | Payment method ID | [optional] 
+**initial_payment_amount** | **float** | Initial payment amount | [optional] 
+**initial_payment_date** | **date** | ISO date of the initial payment in pay plan | [optional] 
+**plan_start_date** | **date** | ISO date of the start of pay plan | [optional] 
+**number_of_payments** | **int** | Number of payments in the plan | [optional] 
+**days_between_payments** | **int** | Days between each payment | [optional] 
 
 ## Example
 

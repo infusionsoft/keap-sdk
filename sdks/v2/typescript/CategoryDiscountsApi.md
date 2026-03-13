@@ -1,14 +1,14 @@
 # .CategoryDiscountsApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createCategoryDiscount**](CategoryDiscountsApi.md#createCategoryDiscount) | **POST** /v2/discounts/productCategories | Create a Category Discount
-[**deleteCategoryDiscount**](CategoryDiscountsApi.md#deleteCategoryDiscount) | **DELETE** /v2/discounts/productCategories/{discount_id} | Delete a Category Discount
-[**getCategoryDiscount**](CategoryDiscountsApi.md#getCategoryDiscount) | **GET** /v2/discounts/productCategories/{discount_id} | Retrieve a Category Discount
-[**listCategoryDiscounts**](CategoryDiscountsApi.md#listCategoryDiscounts) | **GET** /v2/discounts/productCategories | List Category Discounts
-[**updateCategoryDiscount**](CategoryDiscountsApi.md#updateCategoryDiscount) | **PATCH** /v2/discounts/productCategories/{discount_id} | Update a Category Discount
+[**createCategoryDiscount**](CategoryDiscountsApi.md#createCategoryDiscount) | **POST** /rest/v2/discounts/productCategories | Create a Category Discount
+[**deleteCategoryDiscount**](CategoryDiscountsApi.md#deleteCategoryDiscount) | **DELETE** /rest/v2/discounts/productCategories/{discount_id} | Delete a Category Discount
+[**getCategoryDiscount**](CategoryDiscountsApi.md#getCategoryDiscount) | **GET** /rest/v2/discounts/productCategories/{discount_id} | Retrieve a Category Discount
+[**listCategoryDiscounts**](CategoryDiscountsApi.md#listCategoryDiscounts) | **GET** /rest/v2/discounts/productCategories | List Category Discounts
+[**updateCategoryDiscount**](CategoryDiscountsApi.md#updateCategoryDiscount) | **PATCH** /rest/v2/discounts/productCategories/{discount_id} | Update a Category Discount
 
 
 # **createCategoryDiscount**
@@ -27,31 +27,21 @@ const configuration = createConfiguration();
 const apiInstance = new CategoryDiscountsApi(configuration);
 
 const request: CategoryDiscountsApiCreateCategoryDiscountRequest = {
-    // request
+  
   createCategoryDiscountRequest: {
-    applyToCommissions: true,
+    name: "Electronics Category Sale",
+    description: "15% off all electronics",
     criteria: [
       {
-        code: "code_example",
-        criteriaId: "criteriaId_example",
-        operator: "LESS_THAN",
-        planId: "planId_example",
-        productId: "productId_example",
-        productQuantityMax: 1,
-        productQuantityMin: 1,
-        rangeEndTime: "rangeEndTime_example",
-        rangeStartTime: "rangeStartTime_example",
-        subscriptionQuantity: 1,
-        totalAmount: 3.14,
         type: "DATE_RANGE",
+        code: "SUMMER2024",
+        rangeStartTime: new Date('2024-01-01T00:00:00Z'),
+        rangeEndTime: new Date('2024-12-31T23:59:59Z'),
       },
     ],
-    description: "description_example",
-    discountPercent: 3.14,
-    name: "name_example",
-    productCategoryIds: [
-      "productCategoryIds_example",
-    ],
+    applyToCommissions: false,
+    discountPercent: 15,
+    productCategoryIds: [10, 11, 12],
   },
 };
 
@@ -64,7 +54,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createCategoryDiscountRequest** | **CreateCategoryDiscountRequest**| request |
+ **createCategoryDiscountRequest** | **CreateCategoryDiscountRequest**|  |
 
 
 ### Return type
@@ -73,7 +63,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -85,9 +75,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -107,7 +101,7 @@ const configuration = createConfiguration();
 const apiInstance = new CategoryDiscountsApi(configuration);
 
 const request: CategoryDiscountsApiDeleteCategoryDiscountRequest = {
-    // discount_id
+  
   discountId: "discount_id_example",
 };
 
@@ -120,7 +114,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **discountId** | [**string**] | discount_id | defaults to undefined
+ **discountId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -129,7 +123,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -141,10 +135,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No Content |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -164,7 +161,7 @@ const configuration = createConfiguration();
 const apiInstance = new CategoryDiscountsApi(configuration);
 
 const request: CategoryDiscountsApiGetCategoryDiscountRequest = {
-    // discount_id
+  
   discountId: "discount_id_example",
 };
 
@@ -177,7 +174,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **discountId** | [**string**] | discount_id | defaults to undefined
+ **discountId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -186,7 +183,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -198,10 +195,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -252,7 +252,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -264,10 +264,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -287,38 +290,26 @@ const configuration = createConfiguration();
 const apiInstance = new CategoryDiscountsApi(configuration);
 
 const request: CategoryDiscountsApiUpdateCategoryDiscountRequest = {
-    // discount_id
+  
   discountId: "discount_id_example",
-    // request
+  
   updateCategoryDiscountRequest: {
-    applyToCommissions: true,
+    name: "Electronics Category Sale",
+    description: "15% off all electronics",
     criteria: [
       {
-        code: "code_example",
-        criteriaId: "criteriaId_example",
-        operator: "LESS_THAN",
-        planId: "planId_example",
-        productId: "productId_example",
-        productQuantityMax: 1,
-        productQuantityMin: 1,
-        rangeEndTime: "rangeEndTime_example",
-        rangeStartTime: "rangeStartTime_example",
-        subscriptionQuantity: 1,
-        totalAmount: 3.14,
         type: "DATE_RANGE",
+        code: "SUMMER2024",
+        rangeStartTime: new Date('2024-01-01T00:00:00Z'),
+        rangeEndTime: new Date('2024-12-31T23:59:59Z'),
       },
     ],
-    description: "description_example",
-    discountPercent: 3.14,
-    name: "name_example",
-    productCategoryIds: [
-      "productCategoryIds_example",
-    ],
+    applyToCommissions: false,
+    discountPercent: 15,
+    productCategoryIds: [10, 11, 12],
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: [
-    "name",
-  ],
+  updateMask: "name,description,discount_percent,apply_to_commissions,criteria,product_category_ids",
 };
 
 const data = await apiInstance.updateCategoryDiscount(request);
@@ -330,9 +321,9 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **updateCategoryDiscountRequest** | **UpdateCategoryDiscountRequest**| request |
- **discountId** | [**string**] | discount_id | defaults to undefined
- **updateMask** |  | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateCategoryDiscountRequest** | **UpdateCategoryDiscountRequest**|  |
+ **discountId** | [**string**] |  | defaults to undefined
+ **updateMask** | [**&#39;name,description,discount_percent,apply_to_commissions,criteria,product_category_ids&#39;**]**Array<&#39;name,description,discount_percent,apply_to_commissions,criteria,product_category_ids&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
@@ -341,7 +332,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -353,10 +344,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

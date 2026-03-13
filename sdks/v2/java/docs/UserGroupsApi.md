@@ -1,13 +1,13 @@
 # UserGroupsApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getUserGroup**](UserGroupsApi.md#getUserGroup) | **GET** /v2/userGroups/{user_group_id} | Retrieve an User Group |
-| [**getUserGroupWithHttpInfo**](UserGroupsApi.md#getUserGroupWithHttpInfo) | **GET** /v2/userGroups/{user_group_id} | Retrieve an User Group |
-| [**listUserGroups**](UserGroupsApi.md#listUserGroups) | **GET** /v2/userGroups | List User Groups |
-| [**listUserGroupsWithHttpInfo**](UserGroupsApi.md#listUserGroupsWithHttpInfo) | **GET** /v2/userGroups | List User Groups |
+| [**getUserGroup**](UserGroupsApi.md#getUserGroup) | **GET** /rest/v2/userGroups/{user_group_id} | Retrieve a User Group |
+| [**getUserGroupWithHttpInfo**](UserGroupsApi.md#getUserGroupWithHttpInfo) | **GET** /rest/v2/userGroups/{user_group_id} | Retrieve a User Group |
+| [**listUserGroups**](UserGroupsApi.md#listUserGroups) | **GET** /rest/v2/userGroups | List User Groups |
+| [**listUserGroupsWithHttpInfo**](UserGroupsApi.md#listUserGroupsWithHttpInfo) | **GET** /rest/v2/userGroups | List User Groups |
 
 
 
@@ -15,7 +15,7 @@ All URIs are relative to *https://api.keap.com/crm/rest*
 
 > UserGroup getUserGroup(userGroupId)
 
-Retrieve an User Group
+Retrieve a User Group
 
 Retrieves a single user group by its ID.
 
@@ -26,16 +26,21 @@ Retrieves a single user group by its ID.
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.UserGroupsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         UserGroupsApi apiInstance = new UserGroupsApi(defaultClient);
-        String userGroupId = "userGroupId_example"; // String | user_group_id
+        String userGroupId = "userGroupId_example"; // String | 
         try {
             UserGroup result = apiInstance.getUserGroup(userGroupId);
             System.out.println(result);
@@ -55,7 +60,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **userGroupId** | **String**| user_group_id | |
+| **userGroupId** | **String**|  | |
 
 ### Return type
 
@@ -64,7 +69,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -75,16 +80,19 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## getUserGroupWithHttpInfo
 
 > ApiResponse<UserGroup> getUserGroup getUserGroupWithHttpInfo(userGroupId)
 
-Retrieve an User Group
+Retrieve a User Group
 
 Retrieves a single user group by its ID.
 
@@ -96,16 +104,21 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.UserGroupsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         UserGroupsApi apiInstance = new UserGroupsApi(defaultClient);
-        String userGroupId = "userGroupId_example"; // String | user_group_id
+        String userGroupId = "userGroupId_example"; // String | 
         try {
             ApiResponse<UserGroup> response = apiInstance.getUserGroupWithHttpInfo(userGroupId);
             System.out.println("Status code: " + response.getStatusCode());
@@ -127,7 +140,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **userGroupId** | **String**| user_group_id | |
+| **userGroupId** | **String**|  | |
 
 ### Return type
 
@@ -136,7 +149,7 @@ ApiResponse<[**UserGroup**](UserGroup.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -147,10 +160,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## listUserGroups
@@ -168,13 +184,18 @@ Retrieves a list of all user groups in the application.
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.UserGroupsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         UserGroupsApi apiInstance = new UserGroupsApi(defaultClient);
         try {
@@ -202,7 +223,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -213,10 +234,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## listUserGroupsWithHttpInfo
 
@@ -234,13 +258,18 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.UserGroupsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         UserGroupsApi apiInstance = new UserGroupsApi(defaultClient);
         try {
@@ -270,7 +299,7 @@ ApiResponse<[**ListUserGroupsResponse**](ListUserGroupsResponse.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -281,8 +310,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 

@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**next_page_token** | **str** |  | [optional] 
 **reports** | [**List[Report]**](Report.md) |  | [optional] 
+**next_page_token** | **str** |  | [optional] 
 
 ## Example
 

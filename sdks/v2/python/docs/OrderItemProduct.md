@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**description** | **str** |  | [optional] 
-**id** | **str** |  | [optional] 
-**name** | **str** |  | [optional] 
-**shippable** | **bool** |  | [optional] 
-**sku** | **str** |  | [optional] 
-**taxable** | **bool** |  | [optional] 
+**id** | **str** | Product ID | [optional] 
+**name** | **str** | Product name | [optional] 
+**sku** | **str** | Stock keeping unit | [optional] 
+**description** | **str** | Product description | [optional] 
+**shippable** | **bool** | Whether product requires shipping | [optional] 
+**taxable** | **bool** | Whether product is taxable | [optional] 
 
 ## Example
 

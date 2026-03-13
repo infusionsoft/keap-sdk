@@ -1,24 +1,25 @@
 # .ContactApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createContact**](ContactApi.md#createContact) | **POST** /v2/contacts | Create a Contact
-[**createContactLinkType**](ContactApi.md#createContactLinkType) | **POST** /v2/contacts/links/types | Create a Contact Link type
-[**deleteContact**](ContactApi.md#deleteContact) | **DELETE** /v2/contacts/{contact_id} | Delete a Contact
-[**getContact**](ContactApi.md#getContact) | **GET** /v2/contacts/{contact_id} | Retrieve a Contact
-[**linkContacts**](ContactApi.md#linkContacts) | **POST** /v2/contacts:link | Link Contacts
-[**listContactLinkTypes**](ContactApi.md#listContactLinkTypes) | **GET** /v2/contacts/links/types | List Contact Link types
-[**listContactLinks**](ContactApi.md#listContactLinks) | **GET** /v2/contacts/{contact_id}/links | List Linked Contacts
-[**listContacts**](ContactApi.md#listContacts) | **GET** /v2/contacts | List Contacts
-[**retrieveContactModel**](ContactApi.md#retrieveContactModel) | **GET** /v2/contacts/model | Retrieve Contact Model
-[**unlinkContacts**](ContactApi.md#unlinkContacts) | **POST** /v2/contacts:unlink | Delete Link between two Contacts
-[**updateContact**](ContactApi.md#updateContact) | **PATCH** /v2/contacts/{contact_id} | Update a Contact
+[**createContact**](ContactApi.md#createContact) | **POST** /rest/v2/contacts | Create a Contact
+[**createContactLinkType**](ContactApi.md#createContactLinkType) | **POST** /rest/v2/contacts/links/types | Create a Contact Link type
+[**deleteContact**](ContactApi.md#deleteContact) | **DELETE** /rest/v2/contacts/{contact_id} | Delete a Contact
+[**getContact**](ContactApi.md#getContact) | **GET** /rest/v2/contacts/{contact_id} | Retrieve a Contact
+[**linkContacts**](ContactApi.md#linkContacts) | **POST** /rest/v2/contacts:link | Link Contacts
+[**listContactLinkTypes**](ContactApi.md#listContactLinkTypes) | **GET** /rest/v2/contacts/links/types | List Contact Link types
+[**listContactLinks**](ContactApi.md#listContactLinks) | **GET** /rest/v2/contacts/{contact_id}/links | List Linked Contacts
+[**listContacts**](ContactApi.md#listContacts) | **GET** /rest/v2/contacts | List Contacts
+[**listTagsForContact**](ContactApi.md#listTagsForContact) | **GET** /rest/v2/contacts/{contact_id}/tags | List Applied Tags
+[**retrieveContactModel**](ContactApi.md#retrieveContactModel) | **GET** /rest/v2/contacts/model | Retrieve Contact Model
+[**unlinkContacts**](ContactApi.md#unlinkContacts) | **POST** /rest/v2/contacts:unlink | Delete Link between two Contacts
+[**updateContact**](ContactApi.md#updateContact) | **PATCH** /rest/v2/contacts/{contact_id} | Update a Contact
 
 
 # **createContact**
-> Contact createContact()
+> Contact createContact(createUpdateContactRequest)
 
 Creates a new Contact. *Note:* Contact must contain at least one item in `email_addresses` or `phone_numbers` and `country_code` is required if `region` is specified.
 
@@ -33,92 +34,96 @@ const configuration = createConfiguration();
 const apiInstance = new ContactApi(configuration);
 
 const request: ContactApiCreateContactRequest = {
-    // contact (optional)
+  
   createUpdateContactRequest: {
     addresses: [
       {
         country: "United States of America",
-        countryCode: "USA",
-        field: "ADDRESS_FIELD_UNSPECIFIED",
-        line1: "line1_example",
-        line2: "line2_example",
+        line1: "123",
+        line2: "Suite 100",
         locality: "Phoenix",
-        postalCode: "postalCode_example",
         region: "Arizona",
+        field: "BILLING",
+        countryCode: "USA",
+        postalCode: "85001",
         regionCode: "US-AZ",
-        zipCode: "zipCode_example",
-        zipFour: "zipFour_example",
+        zipCode: "85001",
+        zipFour: "1234",
       },
     ],
-    anniversaryDate: "anniversaryDate_example",
-    birthDate: "birthDate_example",
     company: {
-      companyName: "companyName_example",
-      id: "id_example",
+      id: "100",
+      companyName: "Thryv",
     },
-    contactType: "contactType_example",
+    origin: {
+      ipAddress: "ipAddress_example",
+    },
+    prefix: "Dr.",
+    suffix: "Jr",
+    website: "https://thryv.com",
+    anniversaryDate: "2015-06-20",
+    birthDate: "1985-03-15",
+    contactType: "Prospect",
     customFields: [
       {
-        content: {},
+        content: null,
         id: "id_example",
       },
     ],
     emailAddresses: [
       {
-        email: "email_example",
-        field: "EMAIL_FIELD_UNSPECIFIED",
-        optInReason: "optInReason_example",
+        email: "john.smith@example.com",
+        field: "EMAIL1",
+        optInReason: "Subscribed via website form",
       },
     ],
-    familyName: "familyName_example",
+    familyName: "Smith",
     faxNumbers: [
       {
-        field: "FAX_NUMBER_FIELD_UNSPECIFIED",
-        number: "number_example",
-        type: "type_example",
+        number: "5551234568",
+        type: "Work",
+        field: "FAX1",
       },
     ],
-    givenName: "givenName_example",
-    jobTitle: "jobTitle_example",
-    leadsourceId: "leadsourceId_example",
-    middleName: "middleName_example",
-    origin: {
-      ipAddress: "ipAddress_example",
-    },
-    ownerId: "ownerId_example",
+    givenName: "John",
+    jobTitle: "Senior Software Engineer",
+    leadsourceId: "12",
+    middleName: "Robert",
+    ownerId: "45",
     phoneNumbers: [
       {
-        extension: "extension_example",
-        field: "PHONE_NUMBER_FIELD_UNSPECIFIED",
-        number: "number_example",
-        numberE164: "numberE164_example",
-        type: "type_example",
+        extension: "101",
+        number: "5551234567",
+        type: "Work",
+        field: "PHONE1",
+        numberE164: "+15551234567",
       },
     ],
     preferredLocale: "en_US",
-    preferredName: "preferredName_example",
-    prefix: "prefix_example",
-    referralCode: "referralCode_example",
+    preferredName: "Johnny",
+    referralCode: "REF2024ABC",
     socialAccounts: [
       {
-        name: "name_example",
-        type: "SOCIAL_ACCOUNT_TYPE_UNSPECIFIED",
+        name: "@thryv",
+        type: "FACEBOOK",
       },
     ],
     sourceType: "SOURCE_TYPE_UNSPECIFIED",
-    spouseName: "spouseName_example",
-    suffix: "suffix_example",
-    timeZone: "timeZone_example",
+    spouseName: "Jane Smith",
+    timeZone: "America/New_York",
     utmParameters: {
       keapSourceId: "6088383224687662",
+      utmSource: "google",
+      utmMedium: "cpc",
+      utmTerm: "financial_consulting",
       utmCampaign: "spring_sale",
       utmContent: "textlink",
-      utmMedium: "cpc",
-      utmSource: "google",
-      utmTerm: "financial_consulting",
     },
-    website: "website_example",
   },
+    // Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website) (optional)
+  fields: [
+    "fields_example",
+  ],
 };
 
 const data = await apiInstance.createContact(request);
@@ -130,7 +135,8 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createUpdateContactRequest** | **CreateUpdateContactRequest**| contact |
+ **createUpdateContactRequest** | **CreateUpdateContactRequest**|  |
+ **fields** | **Array&lt;string&gt;** | Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website) | (optional) defaults to undefined
 
 
 ### Return type
@@ -139,7 +145,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -151,9 +157,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -173,10 +183,10 @@ const configuration = createConfiguration();
 const apiInstance = new ContactApi(configuration);
 
 const request: ContactApiCreateContactLinkTypeRequest = {
-    // request
+  
   createContactLinkTypeRequest: {
+    name: "Spouse",
     maxLinks: 1,
-    name: "name_example",
   },
 };
 
@@ -189,7 +199,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createContactLinkTypeRequest** | **CreateContactLinkTypeRequest**| request |
+ **createContactLinkTypeRequest** | **CreateContactLinkTypeRequest**|  |
 
 
 ### Return type
@@ -198,7 +208,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -210,9 +220,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -232,7 +246,7 @@ const configuration = createConfiguration();
 const apiInstance = new ContactApi(configuration);
 
 const request: ContactApiDeleteContactRequest = {
-    // contact_id
+  
   contactId: "contact_id_example",
 };
 
@@ -245,7 +259,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **contactId** | [**string**] | contact_id | defaults to undefined
+ **contactId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -254,7 +268,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -266,10 +280,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No Content |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -289,7 +306,7 @@ const configuration = createConfiguration();
 const apiInstance = new ContactApi(configuration);
 
 const request: ContactApiGetContactRequest = {
-    // contact_id
+  
   contactId: "contact_id_example",
     // Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website) (optional)
   fields: [
@@ -306,7 +323,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **contactId** | [**string**] | contact_id | defaults to undefined
+ **contactId** | [**string**] |  | defaults to undefined
  **fields** | **Array&lt;string&gt;** | Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website) | (optional) defaults to undefined
 
 
@@ -316,7 +333,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -328,10 +345,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -351,11 +371,11 @@ const configuration = createConfiguration();
 const apiInstance = new ContactApi(configuration);
 
 const request: ContactApiLinkContactsRequest = {
-    // linkContactsRequest
+  
   linkContactsRequest: {
-    contact1Id: "contact1Id_example",
-    contact2Id: "contact2Id_example",
-    linkTypeId: "linkTypeId_example",
+    contact1Id: "1001",
+    linkTypeId: "1",
+    contact2Id: "1002",
   },
 };
 
@@ -368,7 +388,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **linkContactsRequest** | **LinkContactsRequest**| linkContactsRequest |
+ **linkContactsRequest** | **LinkContactsRequest**|  |
 
 
 ### Return type
@@ -377,7 +397,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -389,9 +409,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -411,7 +435,7 @@ const configuration = createConfiguration();
 const apiInstance = new ContactApi(configuration);
 
 const request: ContactApiListContactLinkTypesRequest = {
-    // Filter to apply, allowed fields are: - (String) `name` You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=name%3D%3DexpectedValue`  (optional)
+    // Filter to apply, allowed fields are: - (String) `name`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=name%3D%3DexpectedValue`  (optional)
   filter: "filter_example",
     // Attribute and direction to order items. One of the following fields: - `name` - `max_links` - `create_time`  One of the following directions: - `asc` - `desc`  (optional)
   orderBy: "order_by_example",
@@ -430,7 +454,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filter** | [**string**] | Filter to apply, allowed fields are: - (String) &#x60;name&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3DexpectedValue&#x60;  | (optional) defaults to undefined
+ **filter** | [**string**] | Filter to apply, allowed fields are: - (String) &#x60;name&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3DexpectedValue&#x60;  | (optional) defaults to undefined
  **orderBy** | [**string**] | Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;max_links&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  | (optional) defaults to undefined
  **pageSize** | [**number**] | Total number of items to return per page | (optional) defaults to undefined
  **pageToken** | [**string**] | Page token | (optional) defaults to undefined
@@ -442,7 +466,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -454,10 +478,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -477,7 +504,7 @@ const configuration = createConfiguration();
 const apiInstance = new ContactApi(configuration);
 
 const request: ContactApiListContactLinksRequest = {
-    // contact_id
+  
   contactId: "contact_id_example",
 };
 
@@ -490,7 +517,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **contactId** | [**string**] | contact_id | defaults to undefined
+ **contactId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -499,7 +526,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -511,10 +538,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -570,7 +600,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -582,10 +612,85 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **listTagsForContact**
+> ListContactTagsResponse listTagsForContact()
+
+Retrieves a list of tags applied to the specified Contact
+
+### Example
+
+
+```typescript
+import { createConfiguration, ContactApi } from '';
+import type { ContactApiListTagsForContactRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new ContactApi(configuration);
+
+const request: ContactApiListTagsForContactRequest = {
+    // Contact identifier
+  contactId: "contact_id_example",
+    // Filter to apply, allowed fields are: - (String) `name` - (String) `description` - (String) `category_id` (use `category_id==NONE` to filter tags not assigned to any category) - (String) `since_applied_time` - (String) `until_applied_time` - (String) `since_create_time` - (String) `until_create_time` - (String) `since_update_time` - (String) `until_update_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=name%3D%3DCustomer` - `filter=category_id%3D%3D123` - `filter=category_id%3D%3DNONE` - `filter=since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;`  (optional)
+  filter: "filter_example",
+    // Page token (optional)
+  pageToken: "page_token_example",
+    // Attribute and direction to order items. One of the following fields: - `name` - `create_time` - `update_time` - `applied_time` - `category_id` One of the following directions: - `asc` - `desc` (optional)
+  orderBy: "order_by_example",
+    // Total number of items to return per page (optional)
+  pageSize: 0,
+};
+
+const data = await apiInstance.listTagsForContact(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **contactId** | [**string**] | Contact identifier | defaults to undefined
+ **filter** | [**string**] | Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (String) &#x60;description&#x60; - (String) &#x60;category_id&#x60; (use &#x60;category_id&#x3D;&#x3D;NONE&#x60; to filter tags not assigned to any category) - (String) &#x60;since_applied_time&#x60; - (String) &#x60;until_applied_time&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3DCustomer&#x60; - &#x60;filter&#x3D;category_id%3D%3D123&#x60; - &#x60;filter&#x3D;category_id%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  | (optional) defaults to undefined
+ **pageToken** | [**string**] | Page token | (optional) defaults to undefined
+ **orderBy** | [**string**] | Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60; - &#x60;applied_time&#x60; - &#x60;category_id&#x60; One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | (optional) defaults to undefined
+ **pageSize** | [**number**] | Total number of items to return per page | (optional) defaults to undefined
+
+
+### Return type
+
+**ListContactTagsResponse**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -620,7 +725,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -632,10 +737,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -655,11 +763,11 @@ const configuration = createConfiguration();
 const apiInstance = new ContactApi(configuration);
 
 const request: ContactApiUnlinkContactsRequest = {
-    // linkContactsRequest
+  
   linkContactsRequest: {
-    contact1Id: "contact1Id_example",
-    contact2Id: "contact2Id_example",
-    linkTypeId: "linkTypeId_example",
+    contact1Id: "1001",
+    linkTypeId: "1",
+    contact2Id: "1002",
   },
 };
 
@@ -672,7 +780,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **linkContactsRequest** | **LinkContactsRequest**| linkContactsRequest |
+ **linkContactsRequest** | **LinkContactsRequest**|  |
 
 
 ### Return type
@@ -681,7 +789,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -693,14 +801,18 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No Content |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **updateContact**
-> Contact updateContact()
+> Contact updateContact(createUpdateContactRequest)
 
 Updates a Contact
 
@@ -715,98 +827,104 @@ const configuration = createConfiguration();
 const apiInstance = new ContactApi(configuration);
 
 const request: ContactApiUpdateContactRequest = {
-    // contact_id
+  
   contactId: "contact_id_example",
-    // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: [
-    "addresses",
-  ],
-    // contact (optional)
+  
   createUpdateContactRequest: {
     addresses: [
       {
         country: "United States of America",
-        countryCode: "USA",
-        field: "ADDRESS_FIELD_UNSPECIFIED",
-        line1: "line1_example",
-        line2: "line2_example",
+        line1: "123",
+        line2: "Suite 100",
         locality: "Phoenix",
-        postalCode: "postalCode_example",
         region: "Arizona",
+        field: "BILLING",
+        countryCode: "USA",
+        postalCode: "85001",
         regionCode: "US-AZ",
-        zipCode: "zipCode_example",
-        zipFour: "zipFour_example",
+        zipCode: "85001",
+        zipFour: "1234",
       },
     ],
-    anniversaryDate: "anniversaryDate_example",
-    birthDate: "birthDate_example",
     company: {
-      companyName: "companyName_example",
-      id: "id_example",
+      id: "100",
+      companyName: "Thryv",
     },
-    contactType: "contactType_example",
+    origin: {
+      ipAddress: "ipAddress_example",
+    },
+    prefix: "Dr.",
+    suffix: "Jr",
+    website: "https://thryv.com",
+    anniversaryDate: "2015-06-20",
+    birthDate: "1985-03-15",
+    contactType: "Prospect",
     customFields: [
       {
-        content: {},
+        content: null,
         id: "id_example",
       },
     ],
     emailAddresses: [
       {
-        email: "email_example",
-        field: "EMAIL_FIELD_UNSPECIFIED",
-        optInReason: "optInReason_example",
+        email: "john.smith@example.com",
+        field: "EMAIL1",
+        optInReason: "Subscribed via website form",
       },
     ],
-    familyName: "familyName_example",
+    familyName: "Smith",
     faxNumbers: [
       {
-        field: "FAX_NUMBER_FIELD_UNSPECIFIED",
-        number: "number_example",
-        type: "type_example",
+        number: "5551234568",
+        type: "Work",
+        field: "FAX1",
       },
     ],
-    givenName: "givenName_example",
-    jobTitle: "jobTitle_example",
-    leadsourceId: "leadsourceId_example",
-    middleName: "middleName_example",
-    origin: {
-      ipAddress: "ipAddress_example",
-    },
-    ownerId: "ownerId_example",
+    givenName: "John",
+    jobTitle: "Senior Software Engineer",
+    leadsourceId: "12",
+    middleName: "Robert",
+    ownerId: "45",
     phoneNumbers: [
       {
-        extension: "extension_example",
-        field: "PHONE_NUMBER_FIELD_UNSPECIFIED",
-        number: "number_example",
-        numberE164: "numberE164_example",
-        type: "type_example",
+        extension: "101",
+        number: "5551234567",
+        type: "Work",
+        field: "PHONE1",
+        numberE164: "+15551234567",
       },
     ],
     preferredLocale: "en_US",
-    preferredName: "preferredName_example",
-    prefix: "prefix_example",
-    referralCode: "referralCode_example",
+    preferredName: "Johnny",
+    referralCode: "REF2024ABC",
     socialAccounts: [
       {
-        name: "name_example",
-        type: "SOCIAL_ACCOUNT_TYPE_UNSPECIFIED",
+        name: "@thryv",
+        type: "FACEBOOK",
       },
     ],
     sourceType: "SOURCE_TYPE_UNSPECIFIED",
-    spouseName: "spouseName_example",
-    suffix: "suffix_example",
-    timeZone: "timeZone_example",
+    spouseName: "Jane Smith",
+    timeZone: "America/New_York",
     utmParameters: {
       keapSourceId: "6088383224687662",
+      utmSource: "google",
+      utmMedium: "cpc",
+      utmTerm: "financial_consulting",
       utmCampaign: "spring_sale",
       utmContent: "textlink",
-      utmMedium: "cpc",
-      utmSource: "google",
-      utmTerm: "financial_consulting",
     },
-    website: "website_example",
   },
+    // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+  updateMask: `addresses,anniversary_date,birth_date,company,contact_type,create_time,
+custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id,
+links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix,
+referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone,
+update_time,utm_parameters,website`,
+    // Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website) (optional)
+  fields: [
+    "fields_example",
+  ],
 };
 
 const data = await apiInstance.updateContact(request);
@@ -818,9 +936,10 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createUpdateContactRequest** | **CreateUpdateContactRequest**| contact |
- **contactId** | [**string**] | contact_id | defaults to undefined
- **updateMask** |  | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **createUpdateContactRequest** | **CreateUpdateContactRequest**|  |
+ **contactId** | [**string**] |  | defaults to undefined
+ **updateMask** | [**&#39;addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website&#39;**]**Array<&#39;addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **fields** | **Array&lt;string&gt;** | Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website) | (optional) defaults to undefined
 
 
 ### Return type
@@ -829,7 +948,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -841,10 +960,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

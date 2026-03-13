@@ -5,15 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**affiliate_id** | **str** | The affiliate_Id for Affiliate commission program | [optional] 
-**create_time** | **str** | The created time of affiliate commission program | [optional] 
-**default_commission** | [**DefaultCommission**](DefaultCommission.md) |  | [optional] 
-**id** | **str** | The affiliate commission program name | [optional] 
+**id** | **str** | Commission program ID | [optional] 
 **name** | **str** | The affiliate commission program name | [optional] 
-**notes** | **str** | The affiliate commission program notes | [optional] 
 **priority** | **str** | The Affiliate commission program priority | [optional] 
-**product_commissions** | [**List[ProductCommission]**](ProductCommission.md) |  | [optional] 
-**subscription_commissions** | [**List[SubscriptionCommission]**](SubscriptionCommission.md) |  | [optional] 
+**notes** | **str** | The affiliate commission program notes | [optional] 
+**create_time** | **str** | The created time of affiliate commission program | [optional] 
+**affiliate_ids** | **List[str]** | The list of affiliate_ids using this commission program | [optional] 
 
 ## Example
 

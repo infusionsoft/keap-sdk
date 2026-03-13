@@ -1,11 +1,11 @@
 # PaymentMethodConfigsApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createPaymentMethodConfig**](PaymentMethodConfigsApi.md#createPaymentMethodConfig) | **POST** /v2/paymentMethodConfigs | Create Payment Method Configuration |
-| [**createPaymentMethodConfigWithHttpInfo**](PaymentMethodConfigsApi.md#createPaymentMethodConfigWithHttpInfo) | **POST** /v2/paymentMethodConfigs | Create Payment Method Configuration |
+| [**createPaymentMethodConfig**](PaymentMethodConfigsApi.md#createPaymentMethodConfig) | **POST** /rest/v2/paymentMethodConfigs | Create Payment Method Configuration |
+| [**createPaymentMethodConfigWithHttpInfo**](PaymentMethodConfigsApi.md#createPaymentMethodConfigWithHttpInfo) | **POST** /rest/v2/paymentMethodConfigs | Create Payment Method Configuration |
 
 
 
@@ -24,16 +24,21 @@ Creates configuration details for rendering payment method components
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.PaymentMethodConfigsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         PaymentMethodConfigsApi apiInstance = new PaymentMethodConfigsApi(defaultClient);
-        CreatePaymentMethodConfigRequest createPaymentMethodConfigRequest = new CreatePaymentMethodConfigRequest(); // CreatePaymentMethodConfigRequest | request
+        CreatePaymentMethodConfigRequest createPaymentMethodConfigRequest = new CreatePaymentMethodConfigRequest(); // CreatePaymentMethodConfigRequest | 
         try {
             PaymentMethodConfig result = apiInstance.createPaymentMethodConfig(createPaymentMethodConfigRequest);
             System.out.println(result);
@@ -53,7 +58,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **createPaymentMethodConfigRequest** | [**CreatePaymentMethodConfigRequest**](CreatePaymentMethodConfigRequest.md)| request | |
+| **createPaymentMethodConfigRequest** | [**CreatePaymentMethodConfigRequest**](CreatePaymentMethodConfigRequest.md)|  | |
 
 ### Return type
 
@@ -62,7 +67,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -73,9 +78,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## createPaymentMethodConfigWithHttpInfo
 
@@ -93,16 +102,21 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.PaymentMethodConfigsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         PaymentMethodConfigsApi apiInstance = new PaymentMethodConfigsApi(defaultClient);
-        CreatePaymentMethodConfigRequest createPaymentMethodConfigRequest = new CreatePaymentMethodConfigRequest(); // CreatePaymentMethodConfigRequest | request
+        CreatePaymentMethodConfigRequest createPaymentMethodConfigRequest = new CreatePaymentMethodConfigRequest(); // CreatePaymentMethodConfigRequest | 
         try {
             ApiResponse<PaymentMethodConfig> response = apiInstance.createPaymentMethodConfigWithHttpInfo(createPaymentMethodConfigRequest);
             System.out.println("Status code: " + response.getStatusCode());
@@ -124,7 +138,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **createPaymentMethodConfigRequest** | [**CreatePaymentMethodConfigRequest**](CreatePaymentMethodConfigRequest.md)| request | |
+| **createPaymentMethodConfigRequest** | [**CreatePaymentMethodConfigRequest**](CreatePaymentMethodConfigRequest.md)|  | |
 
 ### Return type
 
@@ -133,7 +147,7 @@ ApiResponse<[**PaymentMethodConfig**](PaymentMethodConfig.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -144,7 +158,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 

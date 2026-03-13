@@ -1,13 +1,13 @@
 # Keap\Core\V2\AutomationCategoryApi
 
-All URIs are relative to https://api.keap.com/crm/rest, except if the operation defines another base path.
+All URIs are relative to https://api.keap.com/crm, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createCategory()**](AutomationCategoryApi.md#createCategory) | **POST** /v2/automationCategory | Create automation category |
-| [**deleteCategories()**](AutomationCategoryApi.md#deleteCategories) | **DELETE** /v2/automationCategory | Delete automation category |
-| [**listCategories()**](AutomationCategoryApi.md#listCategories) | **GET** /v2/automationCategory | List automation categories |
-| [**patchCategory()**](AutomationCategoryApi.md#patchCategory) | **PATCH** /v2/automationCategory/{id} | Update automation category |
+| [**createCategory()**](AutomationCategoryApi.md#createCategory) | **POST** /rest/v2/automationCategory | Create automation category |
+| [**deleteCategories()**](AutomationCategoryApi.md#deleteCategories) | **DELETE** /rest/v2/automationCategory | Delete automation category |
+| [**listCategories()**](AutomationCategoryApi.md#listCategories) | **GET** /rest/v2/automationCategory | List automation categories |
+| [**patchCategory()**](AutomationCategoryApi.md#patchCategory) | **PATCH** /rest/v2/automationCategory/{id} | Update automation category |
 
 
 ## `createCategory()`
@@ -27,12 +27,16 @@ Creates a single automation category
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\AutomationCategoryApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$create_automation_category_request = new \Keap\Core\V2\Model\CreateAutomationCategoryRequest(); // \Keap\Core\V2\Model\CreateAutomationCategoryRequest | createAutomationCategoryRequest
+$create_automation_category_request = new \Keap\Core\V2\Model\CreateAutomationCategoryRequest(); // \Keap\Core\V2\Model\CreateAutomationCategoryRequest
 
 try {
     $result = $apiInstance->createCategory($create_automation_category_request);
@@ -46,7 +50,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **create_automation_category_request** | [**\Keap\Core\V2\Model\CreateAutomationCategoryRequest**](../Model/CreateAutomationCategoryRequest.md)| createAutomationCategoryRequest | |
+| **create_automation_category_request** | [**\Keap\Core\V2\Model\CreateAutomationCategoryRequest**](../Model/CreateAutomationCategoryRequest.md)|  | |
 
 ### Return type
 
@@ -54,7 +58,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -82,12 +86,16 @@ Deletes one or more automation categories based on the request parameters
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\AutomationCategoryApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$ids = array(56); // int[] | ids
+$ids = array(56); // int[]
 
 try {
     $apiInstance->deleteCategories($ids);
@@ -100,7 +108,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **ids** | [**int[]**](../Model/int.md)| ids | |
+| **ids** | [**int[]**](../Model/int.md)|  | |
 
 ### Return type
 
@@ -108,7 +116,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -136,10 +144,14 @@ Retrieves a list of automation categories
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\AutomationCategoryApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 
 try {
@@ -160,7 +172,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -188,13 +200,17 @@ Updates part of a single automation category
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\AutomationCategoryApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$id = 'id_example'; // string | id
-$patch_automation_category_request = new \Keap\Core\V2\Model\PatchAutomationCategoryRequest(); // \Keap\Core\V2\Model\PatchAutomationCategoryRequest | patchAutomationCategoryRequest
+$id = 'id_example'; // string
+$patch_automation_category_request = new \Keap\Core\V2\Model\PatchAutomationCategoryRequest(); // \Keap\Core\V2\Model\PatchAutomationCategoryRequest
 
 try {
     $result = $apiInstance->patchCategory($id, $patch_automation_category_request);
@@ -208,8 +224,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **string**| id | |
-| **patch_automation_category_request** | [**\Keap\Core\V2\Model\PatchAutomationCategoryRequest**](../Model/PatchAutomationCategoryRequest.md)| patchAutomationCategoryRequest | |
+| **id** | **string**|  | |
+| **patch_automation_category_request** | [**\Keap\Core\V2\Model\PatchAutomationCategoryRequest**](../Model/PatchAutomationCategoryRequest.md)|  | |
 
 ### Return type
 
@@ -217,7 +233,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 

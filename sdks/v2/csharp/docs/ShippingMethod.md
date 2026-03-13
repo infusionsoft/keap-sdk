@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Description** | **string** |  | [optional] 
 **Id** | **string** |  | [optional] 
-**International** | **bool** |  | [optional] 
 **Name** | **string** |  | [optional] 
-**Settings** | **Object** |  | [optional] 
-**Status** | **string** |  | [optional] 
+**Description** | **string** |  | [optional] 
 **Type** | **string** |  | [optional] 
+**Status** | **string** |  | [optional] 
+**International** | **bool** |  | [optional] 
+**Settings** | **Object** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

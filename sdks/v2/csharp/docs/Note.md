@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AssignedToUser** | [**BasicUser**](BasicUser.md) |  | [optional] 
-**ContactId** | **string** |  | [optional] 
-**CreateTime** | **string** |  | [optional] 
-**CreatedByUserId** | **string** |  | [optional] 
-**Id** | **string** |  | [optional] 
-**LastUpdatedByUserId** | **string** |  | [optional] 
-**PinnedAt** | **string** |  | [optional] 
-**Text** | **string** |  | [optional] 
-**Title** | **string** |  | [optional] 
-**Type** | **string** |  | [optional] 
-**UpdateTime** | **string** |  | [optional] 
+**Id** | **string** | Note ID | [optional] 
+**Text** | **string** | Note content | [optional] 
+**Title** | **string** | Note title | [optional] 
+**Type** | **string** | Note type | [optional] 
+**ContactId** | **string** | Associated contact ID | [optional] 
+**AssignedToUser** | [**BasicUser**](BasicUser.md) | User assigned to this note | [optional] 
+**CreateTime** | **string** | Creation timestamp (ISO-8601) | [optional] 
+**UpdateTime** | **string** | Last update timestamp (ISO-8601) | [optional] 
+**LastUpdatedByUserId** | **string** | ID of user who last updated | [optional] 
+**PinnedAt** | **string** | Pin timestamp (ISO-8601), null if not pinned | [optional] 
+**CreatedByUserId** | **string** | ID of user who created | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

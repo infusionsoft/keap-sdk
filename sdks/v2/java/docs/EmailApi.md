@@ -1,27 +1,27 @@
 # EmailApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createEmail**](EmailApi.md#createEmail) | **POST** /v2/emails | Create an Email Record |
-| [**createEmailWithHttpInfo**](EmailApi.md#createEmailWithHttpInfo) | **POST** /v2/emails | Create an Email Record |
-| [**createEmails**](EmailApi.md#createEmails) | **POST** /v2/emails:batchAdd | Create a set of Email Records |
-| [**createEmailsWithHttpInfo**](EmailApi.md#createEmailsWithHttpInfo) | **POST** /v2/emails:batchAdd | Create a set of Email Records |
-| [**deleteEmail**](EmailApi.md#deleteEmail) | **DELETE** /v2/emails/{id} | Delete an Email Record |
-| [**deleteEmailWithHttpInfo**](EmailApi.md#deleteEmailWithHttpInfo) | **DELETE** /v2/emails/{id} | Delete an Email Record |
-| [**deleteEmails**](EmailApi.md#deleteEmails) | **POST** /v2/emails:batchRemove | Remove a set of Email Records |
-| [**deleteEmailsWithHttpInfo**](EmailApi.md#deleteEmailsWithHttpInfo) | **POST** /v2/emails:batchRemove | Remove a set of Email Records |
-| [**getEmail**](EmailApi.md#getEmail) | **GET** /v2/emails/{id} | Retrieve an Email |
-| [**getEmailWithHttpInfo**](EmailApi.md#getEmailWithHttpInfo) | **GET** /v2/emails/{id} | Retrieve an Email |
-| [**getEmailTemplate**](EmailApi.md#getEmailTemplate) | **GET** /v2/emails/templates/{email_template_id} | Retrieve an email template |
-| [**getEmailTemplateWithHttpInfo**](EmailApi.md#getEmailTemplateWithHttpInfo) | **GET** /v2/emails/templates/{email_template_id} | Retrieve an email template |
-| [**listEmails**](EmailApi.md#listEmails) | **GET** /v2/emails | List Emails |
-| [**listEmailsWithHttpInfo**](EmailApi.md#listEmailsWithHttpInfo) | **GET** /v2/emails | List Emails |
-| [**sendEmail**](EmailApi.md#sendEmail) | **POST** /v2/emails:send | Send an Email |
-| [**sendEmailWithHttpInfo**](EmailApi.md#sendEmailWithHttpInfo) | **POST** /v2/emails:send | Send an Email |
-| [**sendEmailTemplate**](EmailApi.md#sendEmailTemplate) | **POST** /v2/emails/templates:send | Send an email based on a template |
-| [**sendEmailTemplateWithHttpInfo**](EmailApi.md#sendEmailTemplateWithHttpInfo) | **POST** /v2/emails/templates:send | Send an email based on a template |
+| [**createEmail**](EmailApi.md#createEmail) | **POST** /rest/v2/emails | Create an Email Record |
+| [**createEmailWithHttpInfo**](EmailApi.md#createEmailWithHttpInfo) | **POST** /rest/v2/emails | Create an Email Record |
+| [**createEmails**](EmailApi.md#createEmails) | **POST** /rest/v2/emails:batchAdd | Create a set of Email Records |
+| [**createEmailsWithHttpInfo**](EmailApi.md#createEmailsWithHttpInfo) | **POST** /rest/v2/emails:batchAdd | Create a set of Email Records |
+| [**deleteEmail**](EmailApi.md#deleteEmail) | **DELETE** /rest/v2/emails/{id} | Delete an Email Record |
+| [**deleteEmailWithHttpInfo**](EmailApi.md#deleteEmailWithHttpInfo) | **DELETE** /rest/v2/emails/{id} | Delete an Email Record |
+| [**deleteEmails**](EmailApi.md#deleteEmails) | **POST** /rest/v2/emails:batchRemove | Remove a set of Email Records |
+| [**deleteEmailsWithHttpInfo**](EmailApi.md#deleteEmailsWithHttpInfo) | **POST** /rest/v2/emails:batchRemove | Remove a set of Email Records |
+| [**getEmail**](EmailApi.md#getEmail) | **GET** /rest/v2/emails/{id} | Retrieve an Email |
+| [**getEmailWithHttpInfo**](EmailApi.md#getEmailWithHttpInfo) | **GET** /rest/v2/emails/{id} | Retrieve an Email |
+| [**getEmailTemplate**](EmailApi.md#getEmailTemplate) | **GET** /rest/v2/emails/templates/{email_template_id} | Retrieve an email template |
+| [**getEmailTemplateWithHttpInfo**](EmailApi.md#getEmailTemplateWithHttpInfo) | **GET** /rest/v2/emails/templates/{email_template_id} | Retrieve an email template |
+| [**listEmails**](EmailApi.md#listEmails) | **GET** /rest/v2/emails | List Emails |
+| [**listEmailsWithHttpInfo**](EmailApi.md#listEmailsWithHttpInfo) | **GET** /rest/v2/emails | List Emails |
+| [**sendEmail**](EmailApi.md#sendEmail) | **POST** /rest/v2/emails:send | Send an Email |
+| [**sendEmailWithHttpInfo**](EmailApi.md#sendEmailWithHttpInfo) | **POST** /rest/v2/emails:send | Send an Email |
+| [**sendEmailTemplate**](EmailApi.md#sendEmailTemplate) | **POST** /rest/v2/emails/templates:send | Send an email based on a template |
+| [**sendEmailTemplateWithHttpInfo**](EmailApi.md#sendEmailTemplateWithHttpInfo) | **POST** /rest/v2/emails/templates:send | Send an email based on a template |
 
 
 
@@ -40,16 +40,21 @@ Creates a Record of an Email sent to a Contact
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.EmailApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         EmailApi apiInstance = new EmailApi(defaultClient);
-        CreateEmailSentRequest createEmailSentRequest = new CreateEmailSentRequest(); // CreateEmailSentRequest | emailWithContent
+        CreateEmailSentRequest createEmailSentRequest = new CreateEmailSentRequest(); // CreateEmailSentRequest | 
         try {
             EmailSentWithContent result = apiInstance.createEmail(createEmailSentRequest);
             System.out.println(result);
@@ -69,7 +74,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **createEmailSentRequest** | [**CreateEmailSentRequest**](CreateEmailSentRequest.md)| emailWithContent | |
+| **createEmailSentRequest** | [**CreateEmailSentRequest**](CreateEmailSentRequest.md)|  | |
 
 ### Return type
 
@@ -78,7 +83,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -89,9 +94,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## createEmailWithHttpInfo
 
@@ -109,16 +118,21 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.EmailApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         EmailApi apiInstance = new EmailApi(defaultClient);
-        CreateEmailSentRequest createEmailSentRequest = new CreateEmailSentRequest(); // CreateEmailSentRequest | emailWithContent
+        CreateEmailSentRequest createEmailSentRequest = new CreateEmailSentRequest(); // CreateEmailSentRequest | 
         try {
             ApiResponse<EmailSentWithContent> response = apiInstance.createEmailWithHttpInfo(createEmailSentRequest);
             System.out.println("Status code: " + response.getStatusCode());
@@ -140,7 +154,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **createEmailSentRequest** | [**CreateEmailSentRequest**](CreateEmailSentRequest.md)| emailWithContent | |
+| **createEmailSentRequest** | [**CreateEmailSentRequest**](CreateEmailSentRequest.md)|  | |
 
 ### Return type
 
@@ -149,7 +163,7 @@ ApiResponse<[**EmailSentWithContent**](EmailSentWithContent.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -160,9 +174,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## createEmails
@@ -180,16 +198,21 @@ Creates a set of Records of Emails sent to Contacts, maximum 1000 per transactio
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.EmailApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         EmailApi apiInstance = new EmailApi(defaultClient);
-        CreateEmailsSentRequest createEmailsSentRequest = new CreateEmailsSentRequest(); // CreateEmailsSentRequest | Email records to persist, with content.
+        CreateEmailsSentRequest createEmailsSentRequest = new CreateEmailsSentRequest(); // CreateEmailsSentRequest | 
         try {
             EmailsSentList result = apiInstance.createEmails(createEmailsSentRequest);
             System.out.println(result);
@@ -209,7 +232,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **createEmailsSentRequest** | [**CreateEmailsSentRequest**](CreateEmailsSentRequest.md)| Email records to persist, with content. | [optional] |
+| **createEmailsSentRequest** | [**CreateEmailsSentRequest**](CreateEmailsSentRequest.md)|  | |
 
 ### Return type
 
@@ -218,7 +241,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -229,9 +252,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## createEmailsWithHttpInfo
 
@@ -249,16 +276,21 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.EmailApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         EmailApi apiInstance = new EmailApi(defaultClient);
-        CreateEmailsSentRequest createEmailsSentRequest = new CreateEmailsSentRequest(); // CreateEmailsSentRequest | Email records to persist, with content.
+        CreateEmailsSentRequest createEmailsSentRequest = new CreateEmailsSentRequest(); // CreateEmailsSentRequest | 
         try {
             ApiResponse<EmailsSentList> response = apiInstance.createEmailsWithHttpInfo(createEmailsSentRequest);
             System.out.println("Status code: " + response.getStatusCode());
@@ -280,7 +312,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **createEmailsSentRequest** | [**CreateEmailsSentRequest**](CreateEmailsSentRequest.md)| Email records to persist, with content. | [optional] |
+| **createEmailsSentRequest** | [**CreateEmailsSentRequest**](CreateEmailsSentRequest.md)|  | |
 
 ### Return type
 
@@ -289,7 +321,7 @@ ApiResponse<[**EmailsSentList**](EmailsSentList.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -300,9 +332,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## deleteEmail
@@ -320,16 +356,21 @@ Deletes a specific Email Record
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.EmailApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         EmailApi apiInstance = new EmailApi(defaultClient);
-        String id = "id_example"; // String | id
+        String id = "id_example"; // String | 
         try {
             apiInstance.deleteEmail(id);
         } catch (ApiException e) {
@@ -348,7 +389,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| id | |
+| **id** | **String**|  | |
 
 ### Return type
 
@@ -357,7 +398,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -368,10 +409,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## deleteEmailWithHttpInfo
 
@@ -389,16 +433,21 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.EmailApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         EmailApi apiInstance = new EmailApi(defaultClient);
-        String id = "id_example"; // String | id
+        String id = "id_example"; // String | 
         try {
             ApiResponse<Void> response = apiInstance.deleteEmailWithHttpInfo(id);
             System.out.println("Status code: " + response.getStatusCode());
@@ -419,7 +468,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| id | |
+| **id** | **String**|  | |
 
 ### Return type
 
@@ -428,7 +477,7 @@ ApiResponse<Void>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -439,10 +488,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## deleteEmails
@@ -460,16 +512,21 @@ Removes a set of Email Records
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.EmailApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         EmailApi apiInstance = new EmailApi(defaultClient);
-        DeleteEmailsRequest deleteEmailsRequest = new DeleteEmailsRequest(); // DeleteEmailsRequest | deleteEmailsRequest
+        DeleteEmailsRequest deleteEmailsRequest = new DeleteEmailsRequest(); // DeleteEmailsRequest | 
         try {
             DeleteEmailsResponse result = apiInstance.deleteEmails(deleteEmailsRequest);
             System.out.println(result);
@@ -489,7 +546,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **deleteEmailsRequest** | [**DeleteEmailsRequest**](DeleteEmailsRequest.md)| deleteEmailsRequest | |
+| **deleteEmailsRequest** | [**DeleteEmailsRequest**](DeleteEmailsRequest.md)|  | |
 
 ### Return type
 
@@ -498,7 +555,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -509,9 +566,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## deleteEmailsWithHttpInfo
 
@@ -529,16 +590,21 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.EmailApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         EmailApi apiInstance = new EmailApi(defaultClient);
-        DeleteEmailsRequest deleteEmailsRequest = new DeleteEmailsRequest(); // DeleteEmailsRequest | deleteEmailsRequest
+        DeleteEmailsRequest deleteEmailsRequest = new DeleteEmailsRequest(); // DeleteEmailsRequest | 
         try {
             ApiResponse<DeleteEmailsResponse> response = apiInstance.deleteEmailsWithHttpInfo(deleteEmailsRequest);
             System.out.println("Status code: " + response.getStatusCode());
@@ -560,7 +626,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **deleteEmailsRequest** | [**DeleteEmailsRequest**](DeleteEmailsRequest.md)| deleteEmailsRequest | |
+| **deleteEmailsRequest** | [**DeleteEmailsRequest**](DeleteEmailsRequest.md)|  | |
 
 ### Return type
 
@@ -569,7 +635,7 @@ ApiResponse<[**DeleteEmailsResponse**](DeleteEmailsResponse.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -580,9 +646,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## getEmail
@@ -600,16 +670,21 @@ Retrieves a single Email that has been sent
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.EmailApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         EmailApi apiInstance = new EmailApi(defaultClient);
-        String id = "id_example"; // String | id
+        String id = "id_example"; // String | 
         try {
             EmailSentWithContent result = apiInstance.getEmail(id);
             System.out.println(result);
@@ -629,7 +704,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| id | |
+| **id** | **String**|  | |
 
 ### Return type
 
@@ -638,7 +713,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -649,10 +724,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## getEmailWithHttpInfo
 
@@ -670,16 +748,21 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.EmailApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         EmailApi apiInstance = new EmailApi(defaultClient);
-        String id = "id_example"; // String | id
+        String id = "id_example"; // String | 
         try {
             ApiResponse<EmailSentWithContent> response = apiInstance.getEmailWithHttpInfo(id);
             System.out.println("Status code: " + response.getStatusCode());
@@ -701,7 +784,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| id | |
+| **id** | **String**|  | |
 
 ### Return type
 
@@ -710,7 +793,7 @@ ApiResponse<[**EmailSentWithContent**](EmailSentWithContent.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -721,10 +804,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## getEmailTemplate
@@ -742,16 +828,21 @@ Retrieve an email template
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.EmailApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         EmailApi apiInstance = new EmailApi(defaultClient);
-        String emailTemplateId = "emailTemplateId_example"; // String | email_template_id
+        String emailTemplateId = "emailTemplateId_example"; // String | 
         try {
             EmailTemplate result = apiInstance.getEmailTemplate(emailTemplateId);
             System.out.println(result);
@@ -771,7 +862,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **emailTemplateId** | **String**| email_template_id | |
+| **emailTemplateId** | **String**|  | |
 
 ### Return type
 
@@ -780,7 +871,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -791,10 +882,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## getEmailTemplateWithHttpInfo
 
@@ -812,16 +906,21 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.EmailApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         EmailApi apiInstance = new EmailApi(defaultClient);
-        String emailTemplateId = "emailTemplateId_example"; // String | email_template_id
+        String emailTemplateId = "emailTemplateId_example"; // String | 
         try {
             ApiResponse<EmailTemplate> response = apiInstance.getEmailTemplateWithHttpInfo(emailTemplateId);
             System.out.println("Status code: " + response.getStatusCode());
@@ -843,7 +942,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **emailTemplateId** | **String**| email_template_id | |
+| **emailTemplateId** | **String**|  | |
 
 ### Return type
 
@@ -852,7 +951,7 @@ ApiResponse<[**EmailTemplate**](EmailTemplate.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -863,10 +962,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## listEmails
@@ -884,13 +986,18 @@ Retrieves a list of emails that have been sent
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.EmailApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         EmailApi apiInstance = new EmailApi(defaultClient);
         String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) contact_id - (String) email - (String) start_created_time - (String) end_created_time 
@@ -928,7 +1035,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -939,10 +1046,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## listEmailsWithHttpInfo
 
@@ -960,13 +1070,18 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.EmailApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         EmailApi apiInstance = new EmailApi(defaultClient);
         String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) contact_id - (String) email - (String) start_created_time - (String) end_created_time 
@@ -1006,7 +1121,7 @@ ApiResponse<[**ListEmailsSentResponse**](ListEmailsSentResponse.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1017,10 +1132,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## sendEmail
@@ -1038,16 +1156,21 @@ Sends an Email to a list of Contacts
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.EmailApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         EmailApi apiInstance = new EmailApi(defaultClient);
-        EmailSendRequest emailSendRequest = new EmailSendRequest(); // EmailSendRequest | emailSendRequest
+        EmailSendRequest emailSendRequest = new EmailSendRequest(); // EmailSendRequest | 
         try {
             apiInstance.sendEmail(emailSendRequest);
         } catch (ApiException e) {
@@ -1066,7 +1189,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **emailSendRequest** | [**EmailSendRequest**](EmailSendRequest.md)| emailSendRequest | [optional] |
+| **emailSendRequest** | [**EmailSendRequest**](EmailSendRequest.md)|  | |
 
 ### Return type
 
@@ -1075,7 +1198,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1086,9 +1209,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **202** | Accepted |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## sendEmailWithHttpInfo
 
@@ -1106,16 +1233,21 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.EmailApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         EmailApi apiInstance = new EmailApi(defaultClient);
-        EmailSendRequest emailSendRequest = new EmailSendRequest(); // EmailSendRequest | emailSendRequest
+        EmailSendRequest emailSendRequest = new EmailSendRequest(); // EmailSendRequest | 
         try {
             ApiResponse<Void> response = apiInstance.sendEmailWithHttpInfo(emailSendRequest);
             System.out.println("Status code: " + response.getStatusCode());
@@ -1136,7 +1268,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **emailSendRequest** | [**EmailSendRequest**](EmailSendRequest.md)| emailSendRequest | [optional] |
+| **emailSendRequest** | [**EmailSendRequest**](EmailSendRequest.md)|  | |
 
 ### Return type
 
@@ -1145,7 +1277,7 @@ ApiResponse<Void>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1156,9 +1288,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **202** | Accepted |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## sendEmailTemplate
@@ -1176,16 +1312,21 @@ Send an email based on a template
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.EmailApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         EmailApi apiInstance = new EmailApi(defaultClient);
-        EmailSendTemplateRequest emailSendTemplateRequest = new EmailSendTemplateRequest(); // EmailSendTemplateRequest | Use a template to send an email to a list of contacts 
+        EmailSendTemplateRequest emailSendTemplateRequest = new EmailSendTemplateRequest(); // EmailSendTemplateRequest | 
         try {
             apiInstance.sendEmailTemplate(emailSendTemplateRequest);
         } catch (ApiException e) {
@@ -1204,7 +1345,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **emailSendTemplateRequest** | [**EmailSendTemplateRequest**](EmailSendTemplateRequest.md)| Use a template to send an email to a list of contacts  | [optional] |
+| **emailSendTemplateRequest** | [**EmailSendTemplateRequest**](EmailSendTemplateRequest.md)|  | |
 
 ### Return type
 
@@ -1213,7 +1354,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1224,9 +1365,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **202** | Accepted |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## sendEmailTemplateWithHttpInfo
 
@@ -1244,16 +1389,21 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.EmailApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         EmailApi apiInstance = new EmailApi(defaultClient);
-        EmailSendTemplateRequest emailSendTemplateRequest = new EmailSendTemplateRequest(); // EmailSendTemplateRequest | Use a template to send an email to a list of contacts 
+        EmailSendTemplateRequest emailSendTemplateRequest = new EmailSendTemplateRequest(); // EmailSendTemplateRequest | 
         try {
             ApiResponse<Void> response = apiInstance.sendEmailTemplateWithHttpInfo(emailSendTemplateRequest);
             System.out.println("Status code: " + response.getStatusCode());
@@ -1274,7 +1424,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **emailSendTemplateRequest** | [**EmailSendTemplateRequest**](EmailSendTemplateRequest.md)| Use a template to send an email to a list of contacts  | [optional] |
+| **emailSendTemplateRequest** | [**EmailSendTemplateRequest**](EmailSendTemplateRequest.md)|  | |
 
 ### Return type
 
@@ -1283,7 +1433,7 @@ ApiResponse<Void>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1294,7 +1444,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **202** | Accepted |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 

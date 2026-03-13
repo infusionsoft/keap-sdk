@@ -5,16 +5,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**amount** | **float** |  | [optional] 
-**id** | **str** |  | [optional] 
-**invoice_id** | **str** |  | [optional] 
-**last_updated_time** | **str** |  | [optional] 
-**note** | **str** |  | [optional] 
-**pay_status** | **str** |  | [optional] 
-**pay_time** | **str** |  | [optional] 
-**payment_id** | **str** |  | [optional] 
-**refund_invoice_payment_id** | **str** |  | [optional] 
-**skip_commission** | **bool** |  | [optional] 
+**id** | **str** | The invoice order payment ID. | [optional] 
+**amount** | **float** | The payment amount. | [optional] 
+**note** | **str** | A note about the payment. | [optional] 
+**invoice_id** | **str** | The invoice ID. | [optional] 
+**payment_id** | **str** | The payment ID. | [optional] 
+**pay_time** | **datetime** | The date and time of payment. | [optional] 
+**pay_status** | **str** | The payment status. | [optional] 
+**last_updated_time** | **datetime** | When this payment record was last updated. | [optional] 
+**skip_commission** | **bool** | Whether to skip commission for this payment. | [optional] 
+**refund_invoice_payment_id** | **str** | The refund invoice payment ID, if this is a refund. | [optional] 
 
 ## Example
 

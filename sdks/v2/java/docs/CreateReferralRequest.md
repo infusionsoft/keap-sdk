@@ -7,14 +7,14 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**contactId** | **String** |  |  [optional] |
-|**description** | **String** |  |  [optional] |
-|**expirationTime** | **String** |  |  [optional] |
-|**ipAddress** | **String** |  |  [optional] |
-|**referralPartnerId** | **String** |  |  [optional] |
-|**referralTime** | **String** |  |  [optional] |
-|**referralType** | [**ReferralTypeEnum**](#ReferralTypeEnum) |  |  [optional] |
-|**source** | **String** |  |  [optional] |
+|**description** | **String** | The referral description. |  [optional] |
+|**source** | **String** | The source for the referral. |  [optional] |
+|**contactId** | **String** | The referral&#39;s contact ID. |  |
+|**referralPartnerId** | **String** | The referring affiliate ID. |  [optional] |
+|**referralTime** | **ZonedDateTime** | The time of the referral. |  [optional] |
+|**expirationTime** | **ZonedDateTime** | When the referral expires. |  [optional] |
+|**ipAddress** | **String** | The IP address of the referral. |  [optional] |
+|**referralType** | [**ReferralTypeEnum**](#ReferralTypeEnum) | The referral type. |  [optional] |
 
 
 
@@ -23,8 +23,8 @@
 | Name | Value |
 |---- | -----|
 | COOKIE | &quot;COOKIE&quot; |
-| PERMANENT | &quot;PERMANENT&quot; |
 | MANUAL | &quot;MANUAL&quot; |
+| PERMANENT | &quot;PERMANENT&quot; |
 | UNKNOWN_COULD_NOT_DESERIALIZE | &quot;unknown_default_open_api&quot; |
 
 

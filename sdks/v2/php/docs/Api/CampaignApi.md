@@ -1,15 +1,15 @@
 # Keap\Core\V2\CampaignApi
 
-All URIs are relative to https://api.keap.com/crm/rest, except if the operation defines another base path.
+All URIs are relative to https://api.keap.com/crm, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**addContactsToCampaignSequence()**](CampaignApi.md#addContactsToCampaignSequence) | **POST** /v2/campaigns/{campaign_id}/sequences/{sequence_id}:addContacts | Add Contacts to Campaign Sequence |
-| [**getCampaign()**](CampaignApi.md#getCampaign) | **GET** /v2/campaigns/{campaign_id} | Retrieve a Campaign |
-| [**getCampaignGoals()**](CampaignApi.md#getCampaignGoals) | **GET** /v2/campaigns/{campaign_id}/goals | Retrieve a list of Goals for a Campaign |
-| [**getCampaignSequences()**](CampaignApi.md#getCampaignSequences) | **GET** /v2/campaigns/{campaign_id}/sequences | Retrieve a list of Sequences for a Campaign |
-| [**listCampaigns()**](CampaignApi.md#listCampaigns) | **GET** /v2/campaigns | List Campaigns |
-| [**removeContactsFromCampaignSequence()**](CampaignApi.md#removeContactsFromCampaignSequence) | **POST** /v2/campaigns/{campaign_id}/sequences/{sequence_id}:removeContacts | Remove Contacts from Campaign Sequence |
+| [**addContactsToCampaignSequence()**](CampaignApi.md#addContactsToCampaignSequence) | **POST** /rest/v2/campaigns/{campaign_id}/sequences/{sequence_id}:addContacts | Add Contacts to Campaign Sequence |
+| [**getCampaign()**](CampaignApi.md#getCampaign) | **GET** /rest/v2/campaigns/{campaign_id} | Retrieve a Campaign |
+| [**getCampaignGoals()**](CampaignApi.md#getCampaignGoals) | **GET** /rest/v2/campaigns/{campaign_id}/goals | Retrieve a list of Goals for a Campaign |
+| [**getCampaignSequences()**](CampaignApi.md#getCampaignSequences) | **GET** /rest/v2/campaigns/{campaign_id}/sequences | Retrieve a list of Sequences for a Campaign |
+| [**listCampaigns()**](CampaignApi.md#listCampaigns) | **GET** /rest/v2/campaigns | List Campaigns |
+| [**removeContactsFromCampaignSequence()**](CampaignApi.md#removeContactsFromCampaignSequence) | **POST** /rest/v2/campaigns/{campaign_id}/sequences/{sequence_id}:removeContacts | Remove Contacts from Campaign Sequence |
 
 
 ## `addContactsToCampaignSequence()`
@@ -29,14 +29,18 @@ Adds a list of contacts to a campaign sequence Response contains a map of the pr
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\CampaignApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$campaign_id = 'campaign_id_example'; // string | campaign_id
-$sequence_id = 'sequence_id_example'; // string | sequence_id
-$add_contacts_to_sequence_request = new \Keap\Core\V2\Model\AddContactsToSequenceRequest(); // \Keap\Core\V2\Model\AddContactsToSequenceRequest | addContactsToSequenceRequest
+$campaign_id = 'campaign_id_example'; // string
+$sequence_id = 'sequence_id_example'; // string
+$add_contacts_to_sequence_request = new \Keap\Core\V2\Model\AddContactsToSequenceRequest(); // \Keap\Core\V2\Model\AddContactsToSequenceRequest
 
 try {
     $result = $apiInstance->addContactsToCampaignSequence($campaign_id, $sequence_id, $add_contacts_to_sequence_request);
@@ -50,9 +54,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **campaign_id** | **string**| campaign_id | |
-| **sequence_id** | **string**| sequence_id | |
-| **add_contacts_to_sequence_request** | [**\Keap\Core\V2\Model\AddContactsToSequenceRequest**](../Model/AddContactsToSequenceRequest.md)| addContactsToSequenceRequest | |
+| **campaign_id** | **string**|  | |
+| **sequence_id** | **string**|  | |
+| **add_contacts_to_sequence_request** | [**\Keap\Core\V2\Model\AddContactsToSequenceRequest**](../Model/AddContactsToSequenceRequest.md)|  | |
 
 ### Return type
 
@@ -60,7 +64,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -88,12 +92,16 @@ Retrieves a single campaign
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\CampaignApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$campaign_id = 'campaign_id_example'; // string | campaign_id
+$campaign_id = 'campaign_id_example'; // string
 
 try {
     $result = $apiInstance->getCampaign($campaign_id);
@@ -107,7 +115,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **campaign_id** | **string**| campaign_id | |
+| **campaign_id** | **string**|  | |
 
 ### Return type
 
@@ -115,7 +123,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -143,12 +151,16 @@ Retrieves a list of Goals (published) for a Campaign
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\CampaignApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$campaign_id = 'campaign_id_example'; // string | campaign_id
+$campaign_id = 'campaign_id_example'; // string
 
 try {
     $result = $apiInstance->getCampaignGoals($campaign_id);
@@ -162,7 +174,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **campaign_id** | **string**| campaign_id | |
+| **campaign_id** | **string**|  | |
 
 ### Return type
 
@@ -170,7 +182,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -198,12 +210,16 @@ Retrieves a list of Sequences (published) for a Campaign
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\CampaignApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$campaign_id = 'campaign_id_example'; // string | campaign_id
+$campaign_id = 'campaign_id_example'; // string
 
 try {
     $result = $apiInstance->getCampaignSequences($campaign_id);
@@ -217,7 +233,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **campaign_id** | **string**| campaign_id | |
+| **campaign_id** | **string**|  | |
 
 ### Return type
 
@@ -225,7 +241,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -239,7 +255,7 @@ No authorization required
 ## `listCampaigns()`
 
 ```php
-listCampaigns($filter, $order_by, $page_size, $page_token, $stats): \Keap\Core\V2\Model\ListCampaignsResponse
+listCampaigns($filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListCampaignsResponse
 ```
 
 List Campaigns
@@ -253,19 +269,22 @@ Retrieves a list of campaigns for the authenticated user
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\CampaignApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $filter = 'filter_example'; // string | Filter to apply, allowed fields are: - (String) `name`  You will need to apply the `==` operator to check the equality of the filter with your searched text, in the encoded form `%3D%3D`. The search will look for the text anywhere in the campaign name. - `filter=name%3D%3DSpring Campaign` - `filter=name%3D%3DTag New Contacts`
 $order_by = 'order_by_example'; // string | Attribute and direction to order items. One of the following fields: - `name` - `publisheddate` - `id` - `completedContactCount` - `activeContacts` - `datecreated` - `lastupdated`  One of the following directions: - `asc` - `desc`
 $page_size = 0; // int | Total number of items to return per page
 $page_token = 'page_token_example'; // string | Page token
-$stats = True; // bool
 
 try {
-    $result = $apiInstance->listCampaigns($filter, $order_by, $page_size, $page_token, $stats);
+    $result = $apiInstance->listCampaigns($filter, $order_by, $page_size, $page_token);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignApi->listCampaigns: ', $e->getMessage(), PHP_EOL;
@@ -280,7 +299,6 @@ try {
 | **order_by** | **string**| Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;publisheddate&#x60; - &#x60;id&#x60; - &#x60;completedContactCount&#x60; - &#x60;activeContacts&#x60; - &#x60;datecreated&#x60; - &#x60;lastupdated&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **page_size** | **int**| Total number of items to return per page | [optional] |
 | **page_token** | **string**| Page token | [optional] |
-| **stats** | **bool**|  | [optional] |
 
 ### Return type
 
@@ -288,7 +306,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -316,14 +334,18 @@ Removes a list of contacts from a campaign sequence Response contains a map of t
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\CampaignApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$campaign_id = 'campaign_id_example'; // string | campaign_id
-$sequence_id = 'sequence_id_example'; // string | sequence_id
-$remove_contacts_from_sequence_request = new \Keap\Core\V2\Model\RemoveContactsFromSequenceRequest(); // \Keap\Core\V2\Model\RemoveContactsFromSequenceRequest | removeContactsFromSequenceRequest
+$campaign_id = 'campaign_id_example'; // string
+$sequence_id = 'sequence_id_example'; // string
+$remove_contacts_from_sequence_request = new \Keap\Core\V2\Model\RemoveContactsFromSequenceRequest(); // \Keap\Core\V2\Model\RemoveContactsFromSequenceRequest
 
 try {
     $result = $apiInstance->removeContactsFromCampaignSequence($campaign_id, $sequence_id, $remove_contacts_from_sequence_request);
@@ -337,9 +359,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **campaign_id** | **string**| campaign_id | |
-| **sequence_id** | **string**| sequence_id | |
-| **remove_contacts_from_sequence_request** | [**\Keap\Core\V2\Model\RemoveContactsFromSequenceRequest**](../Model/RemoveContactsFromSequenceRequest.md)| removeContactsFromSequenceRequest | |
+| **campaign_id** | **string**|  | |
+| **sequence_id** | **string**|  | |
+| **remove_contacts_from_sequence_request** | [**\Keap\Core\V2\Model\RemoveContactsFromSequenceRequest**](../Model/RemoveContactsFromSequenceRequest.md)|  | |
 
 ### Return type
 
@@ -347,7 +369,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 

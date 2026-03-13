@@ -1,18 +1,18 @@
 # Keap\Core\V2\SubscriptionsApi
 
-All URIs are relative to https://api.keap.com/crm/rest, except if the operation defines another base path.
+All URIs are relative to https://api.keap.com/crm, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**cancelSubscription()**](SubscriptionsApi.md#cancelSubscription) | **POST** /v2/subscriptions/{subscription_id}:deactivate | Cancel Subscription |
-| [**createSubscription()**](SubscriptionsApi.md#createSubscription) | **POST** /v2/subscriptions | Create Subscription |
-| [**createSubscriptionCustomField()**](SubscriptionsApi.md#createSubscriptionCustomField) | **POST** /v2/subscriptions/model/customFields | Create a Subscription Custom Field |
-| [**deleteSubscriptionCustomField()**](SubscriptionsApi.md#deleteSubscriptionCustomField) | **DELETE** /v2/subscriptions/model/customFields/{custom_field_id} | Delete a Subscription Custom Field |
-| [**getSubscription()**](SubscriptionsApi.md#getSubscription) | **GET** /v2/subscriptions/{subscription_id} | Retrieve a Subscription |
-| [**listSubscriptions()**](SubscriptionsApi.md#listSubscriptions) | **GET** /v2/subscriptions | List Subscriptions |
-| [**retrieveSubscriptionCustomFieldModel()**](SubscriptionsApi.md#retrieveSubscriptionCustomFieldModel) | **GET** /v2/subscriptions/model | Retrieve Subscription Custom Field Model |
-| [**updateSubscription()**](SubscriptionsApi.md#updateSubscription) | **PATCH** /v2/subscriptions/{subscription_id} | Update a Subscription |
-| [**updateSubscriptionCustomField()**](SubscriptionsApi.md#updateSubscriptionCustomField) | **PATCH** /v2/subscriptions/model/customFields/{custom_field_id} | Update a Subscription Custom Field |
+| [**cancelSubscription()**](SubscriptionsApi.md#cancelSubscription) | **POST** /rest/v2/subscriptions/{subscription_id}:deactivate | Cancel Subscription |
+| [**createSubscription()**](SubscriptionsApi.md#createSubscription) | **POST** /rest/v2/subscriptions | Create Subscription |
+| [**createSubscriptionCustomField()**](SubscriptionsApi.md#createSubscriptionCustomField) | **POST** /rest/v2/subscriptions/model/customFields | Create a Subscription Custom Field |
+| [**deleteSubscriptionCustomField()**](SubscriptionsApi.md#deleteSubscriptionCustomField) | **DELETE** /rest/v2/subscriptions/model/customFields/{custom_field_id} | Delete a Subscription Custom Field |
+| [**getSubscription()**](SubscriptionsApi.md#getSubscription) | **GET** /rest/v2/subscriptions/{subscription_id} | Retrieve a Subscription |
+| [**listSubscriptions()**](SubscriptionsApi.md#listSubscriptions) | **GET** /rest/v2/subscriptions | List Subscriptions |
+| [**retrieveSubscriptionCustomFieldModel()**](SubscriptionsApi.md#retrieveSubscriptionCustomFieldModel) | **GET** /rest/v2/subscriptions/model | Retrieve Subscription Custom Field Model |
+| [**updateSubscription()**](SubscriptionsApi.md#updateSubscription) | **PATCH** /rest/v2/subscriptions/{subscription_id} | Update a Subscription |
+| [**updateSubscriptionCustomField()**](SubscriptionsApi.md#updateSubscriptionCustomField) | **PATCH** /rest/v2/subscriptions/model/customFields/{custom_field_id} | Update a Subscription Custom Field |
 
 
 ## `cancelSubscription()`
@@ -32,13 +32,17 @@ Cancels the specified subscription
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\SubscriptionsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$subscription_id = 'subscription_id_example'; // string | subscription_id
-$cancel_subscription_request = new \Keap\Core\V2\Model\CancelSubscriptionRequest(); // \Keap\Core\V2\Model\CancelSubscriptionRequest | request
+$subscription_id = 'subscription_id_example'; // string
+$cancel_subscription_request = new \Keap\Core\V2\Model\CancelSubscriptionRequest(); // \Keap\Core\V2\Model\CancelSubscriptionRequest
 
 try {
     $apiInstance->cancelSubscription($subscription_id, $cancel_subscription_request);
@@ -51,8 +55,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **subscription_id** | **string**| subscription_id | |
-| **cancel_subscription_request** | [**\Keap\Core\V2\Model\CancelSubscriptionRequest**](../Model/CancelSubscriptionRequest.md)| request | |
+| **subscription_id** | **string**|  | |
+| **cancel_subscription_request** | [**\Keap\Core\V2\Model\CancelSubscriptionRequest**](../Model/CancelSubscriptionRequest.md)|  | |
 
 ### Return type
 
@@ -60,7 +64,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -74,7 +78,7 @@ No authorization required
 ## `createSubscription()`
 
 ```php
-createSubscription($create_subscription_request): \Keap\Core\V2\Model\Subscription
+createSubscription($create_subscription_request_detail): \Keap\Core\V2\Model\SubscriptionDetail
 ```
 
 Create Subscription
@@ -88,15 +92,19 @@ Creates a subscription with the specified product and product subscription id.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\SubscriptionsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$create_subscription_request = new \Keap\Core\V2\Model\CreateSubscriptionRequest(); // \Keap\Core\V2\Model\CreateSubscriptionRequest | request
+$create_subscription_request_detail = new \Keap\Core\V2\Model\CreateSubscriptionRequestDetail(); // \Keap\Core\V2\Model\CreateSubscriptionRequestDetail
 
 try {
-    $result = $apiInstance->createSubscription($create_subscription_request);
+    $result = $apiInstance->createSubscription($create_subscription_request_detail);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SubscriptionsApi->createSubscription: ', $e->getMessage(), PHP_EOL;
@@ -107,15 +115,15 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **create_subscription_request** | [**\Keap\Core\V2\Model\CreateSubscriptionRequest**](../Model/CreateSubscriptionRequest.md)| request | |
+| **create_subscription_request_detail** | [**\Keap\Core\V2\Model\CreateSubscriptionRequestDetail**](../Model/CreateSubscriptionRequestDetail.md)|  | |
 
 ### Return type
 
-[**\Keap\Core\V2\Model\Subscription**](../Model/Subscription.md)
+[**\Keap\Core\V2\Model\SubscriptionDetail**](../Model/SubscriptionDetail.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -143,12 +151,16 @@ Creates a custom field of the specified type and options to the Subscription obj
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\SubscriptionsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$create_custom_field_request = new \Keap\Core\V2\Model\CreateCustomFieldRequest(); // \Keap\Core\V2\Model\CreateCustomFieldRequest | customField
+$create_custom_field_request = new \Keap\Core\V2\Model\CreateCustomFieldRequest(); // \Keap\Core\V2\Model\CreateCustomFieldRequest
 
 try {
     $result = $apiInstance->createSubscriptionCustomField($create_custom_field_request);
@@ -162,7 +174,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **create_custom_field_request** | [**\Keap\Core\V2\Model\CreateCustomFieldRequest**](../Model/CreateCustomFieldRequest.md)| customField | |
+| **create_custom_field_request** | [**\Keap\Core\V2\Model\CreateCustomFieldRequest**](../Model/CreateCustomFieldRequest.md)|  | |
 
 ### Return type
 
@@ -170,7 +182,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -198,12 +210,16 @@ Deletes a custom field from the Subscription object
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\SubscriptionsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$custom_field_id = 'custom_field_id_example'; // string | custom_field_id
+$custom_field_id = 'custom_field_id_example'; // string
 
 try {
     $apiInstance->deleteSubscriptionCustomField($custom_field_id);
@@ -216,7 +232,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **custom_field_id** | **string**| custom_field_id | |
+| **custom_field_id** | **string**|  | |
 
 ### Return type
 
@@ -224,7 +240,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -238,7 +254,7 @@ No authorization required
 ## `getSubscription()`
 
 ```php
-getSubscription($subscription_id): \Keap\Core\V2\Model\Subscription
+getSubscription($subscription_id): \Keap\Core\V2\Model\SubscriptionDetail
 ```
 
 Retrieve a Subscription
@@ -252,12 +268,16 @@ Retrieves a single subscription
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\SubscriptionsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$subscription_id = 'subscription_id_example'; // string | subscription_id
+$subscription_id = 'subscription_id_example'; // string
 
 try {
     $result = $apiInstance->getSubscription($subscription_id);
@@ -271,15 +291,15 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **subscription_id** | **string**| subscription_id | |
+| **subscription_id** | **string**|  | |
 
 ### Return type
 
-[**\Keap\Core\V2\Model\Subscription**](../Model/Subscription.md)
+[**\Keap\Core\V2\Model\SubscriptionDetail**](../Model/SubscriptionDetail.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -293,7 +313,7 @@ No authorization required
 ## `listSubscriptions()`
 
 ```php
-listSubscriptions($filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListSubscriptionsResponse
+listSubscriptions($filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListSubscriptionsResponseList
 ```
 
 List Subscriptions
@@ -307,12 +327,16 @@ Retrieves a list of subscriptions using the specified search criteria.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\SubscriptionsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$filter = 'filter_example'; // string | Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id`
+$filter = 'filter_example'; // string | Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id` - (String) `status`
 $order_by = 'order_by_example'; // string | Attribute and direction to order items. One of the following fields: - `id` - `contact_id` - `subscription_plan_id`  One of the following directions: - `asc` - `desc`
 $page_size = 0; // int | Total number of items to return per page
 $page_token = 'page_token_example'; // string | Page token
@@ -329,18 +353,18 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **filter** | **string**| Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; | [optional] |
+| **filter** | **string**| Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; | [optional] |
 | **order_by** | **string**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **page_size** | **int**| Total number of items to return per page | [optional] |
 | **page_token** | **string**| Page token | [optional] |
 
 ### Return type
 
-[**\Keap\Core\V2\Model\ListSubscriptionsResponse**](../Model/ListSubscriptionsResponse.md)
+[**\Keap\Core\V2\Model\ListSubscriptionsResponseList**](../Model/ListSubscriptionsResponseList.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -368,10 +392,14 @@ Get the custom fields for the Subscription object
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\SubscriptionsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 
 try {
@@ -392,7 +420,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -406,7 +434,7 @@ No authorization required
 ## `updateSubscription()`
 
 ```php
-updateSubscription($subscription_id, $update_subscription_request, $update_mask): \Keap\Core\V2\Model\Subscription
+updateSubscription($subscription_id, $update_subscription_request_detail, $update_mask): \Keap\Core\V2\Model\SubscriptionDetail
 ```
 
 Update a Subscription
@@ -420,17 +448,21 @@ Updates a Subscription
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\SubscriptionsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$subscription_id = 'subscription_id_example'; // string | subscription_id
-$update_subscription_request = new \Keap\Core\V2\Model\UpdateSubscriptionRequest(); // \Keap\Core\V2\Model\UpdateSubscriptionRequest | request
-$update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+$subscription_id = 'subscription_id_example'; // string
+$update_subscription_request_detail = new \Keap\Core\V2\Model\UpdateSubscriptionRequestDetail(); // \Keap\Core\V2\Model\UpdateSubscriptionRequestDetail
+$update_mask = 'update_mask_example'; // string | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
-    $result = $apiInstance->updateSubscription($subscription_id, $update_subscription_request, $update_mask);
+    $result = $apiInstance->updateSubscription($subscription_id, $update_subscription_request_detail, $update_mask);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SubscriptionsApi->updateSubscription: ', $e->getMessage(), PHP_EOL;
@@ -441,17 +473,17 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **subscription_id** | **string**| subscription_id | |
-| **update_subscription_request** | [**\Keap\Core\V2\Model\UpdateSubscriptionRequest**](../Model/UpdateSubscriptionRequest.md)| request | |
-| **update_mask** | [**string[]**](../Model/string.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **subscription_id** | **string**|  | |
+| **update_subscription_request_detail** | [**\Keap\Core\V2\Model\UpdateSubscriptionRequestDetail**](../Model/UpdateSubscriptionRequestDetail.md)|  | |
+| **update_mask** | **string**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
-[**\Keap\Core\V2\Model\Subscription**](../Model/Subscription.md)
+[**\Keap\Core\V2\Model\SubscriptionDetail**](../Model/SubscriptionDetail.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -479,14 +511,18 @@ Updates a custom field of the specified type and options to the Subscription obj
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\SubscriptionsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$custom_field_id = 'custom_field_id_example'; // string | custom_field_id
-$update_custom_field_meta_data_request = new \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest(); // \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest | request
-$update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+$custom_field_id = 'custom_field_id_example'; // string
+$update_custom_field_meta_data_request = new \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest(); // \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest
+$update_mask = 'update_mask_example'; // string | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
     $result = $apiInstance->updateSubscriptionCustomField($custom_field_id, $update_custom_field_meta_data_request, $update_mask);
@@ -500,9 +536,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **custom_field_id** | **string**| custom_field_id | |
-| **update_custom_field_meta_data_request** | [**\Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest**](../Model/UpdateCustomFieldMetaDataRequest.md)| request | |
-| **update_mask** | [**string[]**](../Model/string.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **custom_field_id** | **string**|  | |
+| **update_custom_field_meta_data_request** | [**\Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest**](../Model/UpdateCustomFieldMetaDataRequest.md)|  | |
+| **update_mask** | **string**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -510,7 +546,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 

@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**email_address** | **str** |  | [optional] 
-**family_name** | **str** |  | [optional] 
-**given_name** | **str** |  | [optional] 
-**id** | **str** |  | [optional] 
+**id** | **str** | User ID | [optional] 
+**given_name** | **str** | First name | [optional] 
+**family_name** | **str** | Last name | [optional] 
+**email_address** | **str** | Email address | [optional] 
 
 ## Example
 

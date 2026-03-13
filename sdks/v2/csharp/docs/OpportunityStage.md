@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Details** | [**StageDetails**](StageDetails.md) |  | [optional] 
-**Id** | **string** |  | 
-**Name** | **string** |  | [optional] 
-**Reasons** | **List&lt;string&gt;** |  | [optional] 
+**Id** | **string** | Stage ID | 
+**Name** | **string** | Stage name | [optional] 
+**Details** | [**StageDetails**](StageDetails.md) | Stage details | [optional] 
+**Reasons** | **List&lt;string&gt;** | Stage change reasons | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

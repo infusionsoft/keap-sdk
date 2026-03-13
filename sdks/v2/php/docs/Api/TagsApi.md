@@ -1,23 +1,23 @@
 # Keap\Core\V2\TagsApi
 
-All URIs are relative to https://api.keap.com/crm/rest, except if the operation defines another base path.
+All URIs are relative to https://api.keap.com/crm, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**applyTags()**](TagsApi.md#applyTags) | **POST** /v2/tags/{tag_id}/contacts:applyTags | Apply Tag |
-| [**createTag()**](TagsApi.md#createTag) | **POST** /v2/tags | Create Tag |
-| [**createTagCategory()**](TagsApi.md#createTagCategory) | **POST** /v2/tags/categories | Create Tag Category |
-| [**deleteTag()**](TagsApi.md#deleteTag) | **DELETE** /v2/tags/{tag_id} | Delete Tag |
-| [**deleteTagCategory()**](TagsApi.md#deleteTagCategory) | **DELETE** /v2/tags/categories/{tag_category_id} | Delete Tag Category |
-| [**getCategory()**](TagsApi.md#getCategory) | **GET** /v2/tags/categories/{tag_category_id} | Retrieve a Tag Category |
-| [**getTag()**](TagsApi.md#getTag) | **GET** /v2/tags/{tag_id} | Retrieve a Tag |
-| [**listCompaniesForTagId()**](TagsApi.md#listCompaniesForTagId) | **GET** /v2/tags/{tag_id}/companies | List Tagged Companies |
-| [**listContactsWithTagId()**](TagsApi.md#listContactsWithTagId) | **GET** /v2/tags/{tag_id}/contacts | List Tagged Contacts |
-| [**listTagCategories()**](TagsApi.md#listTagCategories) | **GET** /v2/tags/categories | List Tag Categories |
-| [**listTags()**](TagsApi.md#listTags) | **GET** /v2/tags | List Tags |
-| [**removeTags()**](TagsApi.md#removeTags) | **POST** /v2/tags/{tag_id}/contacts:removeTags | Remove Tags |
-| [**updateTag()**](TagsApi.md#updateTag) | **PATCH** /v2/tags/{tag_id} | Update a Tag |
-| [**updateTagCategory()**](TagsApi.md#updateTagCategory) | **PATCH** /v2/tags/categories/{tag_category_id} | Update a Tag Category |
+| [**applyTags()**](TagsApi.md#applyTags) | **POST** /rest/v2/tags/{tag_id}/contacts:applyTags | Apply Tag |
+| [**createTag()**](TagsApi.md#createTag) | **POST** /rest/v2/tags | Create Tag |
+| [**createTagCategory()**](TagsApi.md#createTagCategory) | **POST** /rest/v2/tags/categories | Create Tag Category |
+| [**deleteTag()**](TagsApi.md#deleteTag) | **DELETE** /rest/v2/tags/{tag_id} | Delete Tag |
+| [**deleteTagCategory()**](TagsApi.md#deleteTagCategory) | **DELETE** /rest/v2/tags/categories/{tag_category_id} | Delete Tag Category |
+| [**getCategory()**](TagsApi.md#getCategory) | **GET** /rest/v2/tags/categories/{tag_category_id} | Retrieve a Tag Category |
+| [**getTag()**](TagsApi.md#getTag) | **GET** /rest/v2/tags/{tag_id} | Retrieve a Tag |
+| [**listCompaniesForTagId()**](TagsApi.md#listCompaniesForTagId) | **GET** /rest/v2/tags/{tag_id}/companies | List Tagged Companies |
+| [**listContactsWithTagId()**](TagsApi.md#listContactsWithTagId) | **GET** /rest/v2/tags/{tag_id}/contacts | List Tagged Contacts |
+| [**listTagCategories()**](TagsApi.md#listTagCategories) | **GET** /rest/v2/tags/categories | List Tag Categories |
+| [**listTags()**](TagsApi.md#listTags) | **GET** /rest/v2/tags | List Tags |
+| [**removeTags()**](TagsApi.md#removeTags) | **POST** /rest/v2/tags/{tag_id}/contacts:removeTags | Remove Tags |
+| [**updateTag()**](TagsApi.md#updateTag) | **PATCH** /rest/v2/tags/{tag_id} | Update a Tag |
+| [**updateTagCategory()**](TagsApi.md#updateTagCategory) | **PATCH** /rest/v2/tags/categories/{tag_category_id} | Update a Tag Category |
 
 
 ## `applyTags()`
@@ -37,13 +37,17 @@ Applies a Tag to a list of Contacts.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\TagsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$tag_id = 'tag_id_example'; // string | tag_id
-$apply_remove_tag_request = new \Keap\Core\V2\Model\ApplyRemoveTagRequest(); // \Keap\Core\V2\Model\ApplyRemoveTagRequest | applyRemoveTagRequest
+$tag_id = 'tag_id_example'; // string
+$apply_remove_tag_request = new \Keap\Core\V2\Model\ApplyRemoveTagRequest(); // \Keap\Core\V2\Model\ApplyRemoveTagRequest
 
 try {
     $result = $apiInstance->applyTags($tag_id, $apply_remove_tag_request);
@@ -57,8 +61,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **tag_id** | **string**| tag_id | |
-| **apply_remove_tag_request** | [**\Keap\Core\V2\Model\ApplyRemoveTagRequest**](../Model/ApplyRemoveTagRequest.md)| applyRemoveTagRequest | |
+| **tag_id** | **string**|  | |
+| **apply_remove_tag_request** | [**\Keap\Core\V2\Model\ApplyRemoveTagRequest**](../Model/ApplyRemoveTagRequest.md)|  | |
 
 ### Return type
 
@@ -66,7 +70,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -94,12 +98,16 @@ Creates a new Tag
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\TagsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$create_update_tag_request = new \Keap\Core\V2\Model\CreateUpdateTagRequest(); // \Keap\Core\V2\Model\CreateUpdateTagRequest | tag
+$create_update_tag_request = new \Keap\Core\V2\Model\CreateUpdateTagRequest(); // \Keap\Core\V2\Model\CreateUpdateTagRequest
 
 try {
     $result = $apiInstance->createTag($create_update_tag_request);
@@ -113,7 +121,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **create_update_tag_request** | [**\Keap\Core\V2\Model\CreateUpdateTagRequest**](../Model/CreateUpdateTagRequest.md)| tag | |
+| **create_update_tag_request** | [**\Keap\Core\V2\Model\CreateUpdateTagRequest**](../Model/CreateUpdateTagRequest.md)|  | |
 
 ### Return type
 
@@ -121,7 +129,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -149,12 +157,16 @@ Creates a new Tag Category.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\TagsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$create_update_tag_category_request = new \Keap\Core\V2\Model\CreateUpdateTagCategoryRequest(); // \Keap\Core\V2\Model\CreateUpdateTagCategoryRequest | request
+$create_update_tag_category_request = new \Keap\Core\V2\Model\CreateUpdateTagCategoryRequest(); // \Keap\Core\V2\Model\CreateUpdateTagCategoryRequest
 
 try {
     $result = $apiInstance->createTagCategory($create_update_tag_category_request);
@@ -168,7 +180,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **create_update_tag_category_request** | [**\Keap\Core\V2\Model\CreateUpdateTagCategoryRequest**](../Model/CreateUpdateTagCategoryRequest.md)| request | |
+| **create_update_tag_category_request** | [**\Keap\Core\V2\Model\CreateUpdateTagCategoryRequest**](../Model/CreateUpdateTagCategoryRequest.md)|  | |
 
 ### Return type
 
@@ -176,7 +188,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -204,12 +216,16 @@ Deletes a Tag.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\TagsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$tag_id = 'tag_id_example'; // string | tag_id
+$tag_id = 'tag_id_example'; // string
 
 try {
     $apiInstance->deleteTag($tag_id);
@@ -222,7 +238,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **tag_id** | **string**| tag_id | |
+| **tag_id** | **string**|  | |
 
 ### Return type
 
@@ -230,7 +246,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -258,12 +274,16 @@ Deletes the specified Tag Category
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\TagsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$tag_category_id = 'tag_category_id_example'; // string | tag_category_id
+$tag_category_id = 'tag_category_id_example'; // string
 
 try {
     $apiInstance->deleteTagCategory($tag_category_id);
@@ -276,7 +296,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **tag_category_id** | **string**| tag_category_id | |
+| **tag_category_id** | **string**|  | |
 
 ### Return type
 
@@ -284,7 +304,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -312,12 +332,16 @@ Returns information about the specified Tag Category
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\TagsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$tag_category_id = 'tag_category_id_example'; // string | tag_category_id
+$tag_category_id = 'tag_category_id_example'; // string
 
 try {
     $result = $apiInstance->getCategory($tag_category_id);
@@ -331,7 +355,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **tag_category_id** | **string**| tag_category_id | |
+| **tag_category_id** | **string**|  | |
 
 ### Return type
 
@@ -339,7 +363,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -367,12 +391,16 @@ Retrieves information about the specified Tag
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\TagsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$tag_id = 'tag_id_example'; // string | tag_id
+$tag_id = 'tag_id_example'; // string
 
 try {
     $result = $apiInstance->getTag($tag_id);
@@ -386,7 +414,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **tag_id** | **string**| tag_id | |
+| **tag_id** | **string**|  | |
 
 ### Return type
 
@@ -394,7 +422,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -422,13 +450,17 @@ Retrieves a list of Companies that have the given Tag applied. To search for `nu
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\TagsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$tag_id = 'tag_id_example'; // string | tag_id
-$filter = 'filter_example'; // string | Filter to apply, allowed fields are: - (String) `company_name` - (String) `email` - (String) `since_applied_time` - (String) `until_applied_time` You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. If NONE is passed in for `email`, it will check for the non-existence of that field. For the filters listed above, here are some examples: - `filter=company_name%3D%3DCompany` - `filter=email%3D%3Dtest@gmail.com` - `filter=since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;`
+$tag_id = 'tag_id_example'; // string
+$filter = 'filter_example'; // string | Filter to apply, allowed fields are: - (String) `company_name` - (String) `email` - (String) `since_applied_time` - (String) `until_applied_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. If NONE is passed in for `email`, it will check for the non-existence of that field. For the filters listed above, here are some examples: - `filter=company_name%3D%3DCompany` - `filter=email%3D%3Dtest@gmail.com` - `filter=since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;`
 $order_by = 'order_by_example'; // string | Attribute and direction to order items. One of the following fields: - `company_name` - `email` - `applied_time`  One of the following directions: - `asc` - `desc`
 $page_size = 0; // int | Total number of items to return per page
 $page_token = 'page_token_example'; // string | Page token
@@ -445,8 +477,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **tag_id** | **string**| tag_id | |
-| **filter** | **string**| Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_applied_time&#x60; - (String) &#x60;until_applied_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. If NONE is passed in for &#x60;email&#x60;, it will check for the non-existence of that field. For the filters listed above, here are some examples: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; | [optional] |
+| **tag_id** | **string**|  | |
+| **filter** | **string**| Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_applied_time&#x60; - (String) &#x60;until_applied_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. If NONE is passed in for &#x60;email&#x60;, it will check for the non-existence of that field. For the filters listed above, here are some examples: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; | [optional] |
 | **order_by** | **string**| Attribute and direction to order items. One of the following fields: - &#x60;company_name&#x60; - &#x60;email&#x60; - &#x60;applied_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **page_size** | **int**| Total number of items to return per page | [optional] |
 | **page_token** | **string**| Page token | [optional] |
@@ -457,7 +489,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -485,13 +517,17 @@ Retrieves a list of Contacts with the specified Tag To search for `null` or empt
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\TagsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$tag_id = 'tag_id_example'; // string | tag_id
-$filter = 'filter_example'; // string | Filter to apply, allowed fields are: - (String) `given_name` - (String) `family_name` - (String) `email` - (String) `since_applied_time` - (String) `until_applied_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. If NONE is passed in for `email`, `given_name`, or `family_name`, it will check for the non-existence of that field. For the filters listed above, here are some examples: - `filter=given_name%3D%3DJohn` - `filter=family_name%3D%3DSmith` - `filter=email%3D%3DNONE`
+$tag_id = 'tag_id_example'; // string
+$filter = 'filter_example'; // string | Filter to apply, allowed fields are: - (String) `given_name` - (String) `family_name` - (String) `email` - (String) `since_applied_time` - (String) `until_applied_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. If NONE is passed in for `email`, `given_name`, or `family_name`, it will check for the non-existence of that field. For the filters listed above, here are some examples: - `filter=given_name%3D%3DJohn` - `filter=family_name%3D%3DSmith` - `filter=email%3D%3DNONE` - `filter=since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;`
 $order_by = 'order_by_example'; // string | Attribute and direction to order items. One of the following fields: - `given_name` - `family_name` - `email` - `applied_time`  One of the following directions: - `asc` - `desc`
 $page_size = 0; // int | Total number of items to return per page
 $page_token = 'page_token_example'; // string | Page token
@@ -508,8 +544,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **tag_id** | **string**| tag_id | |
-| **filter** | **string**| Filter to apply, allowed fields are: - (String) &#x60;given_name&#x60; - (String) &#x60;family_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_applied_time&#x60; - (String) &#x60;until_applied_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. If NONE is passed in for &#x60;email&#x60;, &#x60;given_name&#x60;, or &#x60;family_name&#x60;, it will check for the non-existence of that field. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DJohn&#x60; - &#x60;filter&#x3D;family_name%3D%3DSmith&#x60; - &#x60;filter&#x3D;email%3D%3DNONE&#x60; | [optional] |
+| **tag_id** | **string**|  | |
+| **filter** | **string**| Filter to apply, allowed fields are: - (String) &#x60;given_name&#x60; - (String) &#x60;family_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_applied_time&#x60; - (String) &#x60;until_applied_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. If NONE is passed in for &#x60;email&#x60;, &#x60;given_name&#x60;, or &#x60;family_name&#x60;, it will check for the non-existence of that field. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DJohn&#x60; - &#x60;filter&#x3D;family_name%3D%3DSmith&#x60; - &#x60;filter&#x3D;email%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; | [optional] |
 | **order_by** | **string**| Attribute and direction to order items. One of the following fields: - &#x60;given_name&#x60; - &#x60;family_name&#x60; - &#x60;email&#x60; - &#x60;applied_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **page_size** | **int**| Total number of items to return per page | [optional] |
 | **page_token** | **string**| Page token | [optional] |
@@ -520,7 +556,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -548,13 +584,17 @@ Retrieves a list of defined Tag Categories To search for `null` or empty fields 
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\TagsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$filter = 'filter_example'; // string | Filter to apply, allowed fields are:  - (String) `name` - (String) `description` - (String) `since_create_time` - (String) `until_create_time` - (String) `since_update_time` - (String) `until_update_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. If NONE is passed in for `category_id` or `description`, it will check for the non-existence of that field. For the filters listed above, here are some examples:  - `filter=name%3D%3Dmy-tag` - `filter=description%3D%3DNONE` - `filter=since_create_time%3D%3D2024-12-22T01:00:00.000Z;until_create_time%3D%3D2025-01-01T00:00:00.000Z;`
-$order_by = 'order_by_example'; // string | Attribute and direction to order items. One of the following fields:  - `name` - `create_time` - `update_time`  One of the following directions: - `asc` - `desc`
+$filter = 'filter_example'; // string | Filter to apply, allowed fields are: - (String) `name` - (String) `description` - (String) `since_create_time` - (String) `until_create_time` - (String) `since_update_time` - (String) `until_update_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. If NONE is passed in for `name` or `description`, it will check for the non-existence of that field. For the filters listed above, here are some examples: - `filter=name%3D%3Dmy-tag-category` - `filter=description%3D%3DNONE` - `filter=since_create_time%3D%3D2024-12-22T01:00:00.000Z;until_create_time%3D%3D2025-01-01T00:00:00.000Z;`
+$order_by = 'order_by_example'; // string | Attribute and direction to order items. One of the following fields: - `name` - `create_time` - `update_time`  One of the following directions: - `asc` - `desc`
 $page_size = 0; // int | Total number of items to return per page
 $page_token = 'page_token_example'; // string | Page token
 
@@ -570,8 +610,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **filter** | **string**| Filter to apply, allowed fields are:  - (String) &#x60;name&#x60; - (String) &#x60;description&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. If NONE is passed in for &#x60;category_id&#x60; or &#x60;description&#x60;, it will check for the non-existence of that field. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;name%3D%3Dmy-tag&#x60; - &#x60;filter&#x3D;description%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_create_time%3D%3D2024-12-22T01:00:00.000Z;until_create_time%3D%3D2025-01-01T00:00:00.000Z;&#x60; | [optional] |
-| **order_by** | **string**| Attribute and direction to order items. One of the following fields:  - &#x60;name&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
+| **filter** | **string**| Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (String) &#x60;description&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. If NONE is passed in for &#x60;name&#x60; or &#x60;description&#x60;, it will check for the non-existence of that field. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3Dmy-tag-category&#x60; - &#x60;filter&#x3D;description%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_create_time%3D%3D2024-12-22T01:00:00.000Z;until_create_time%3D%3D2025-01-01T00:00:00.000Z;&#x60; | [optional] |
+| **order_by** | **string**| Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **page_size** | **int**| Total number of items to return per page | [optional] |
 | **page_token** | **string**| Page token | [optional] |
 
@@ -581,7 +621,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -609,10 +649,14 @@ Retrieves a list of Tags defined in the application To search for `null` or empt
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\TagsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $filter = 'filter_example'; // string | Filter to apply, allowed fields are:  - (String) `name` - (String) `description` - (String) `category_id` - (String) `since_create_time` - (String) `until_create_time` - (String) `since_update_time` - (String) `until_update_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. If NONE is passed in for `category_id` or `description`, it will check for the non-existence of that field. For the filters listed above, here are some examples:  - `filter=name%3D%3Dmy-tag` - `filter=category_id%3D%3DNONE` - `filter=description%3D%3DNONE` - `filter=since_create_time%3D%3D2024-12-22T01:00:00.000Z;until_create_time%3D%3D2025-01-01T00:00:00.000Z;`
 $order_by = 'order_by_example'; // string | Attribute and direction to order items. One of the following fields:  - `name` - `create_time` - `update_time`  One of the following directions: - `asc` - `desc`
@@ -642,7 +686,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -670,13 +714,17 @@ Removes a Tag from a list of Contacts.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\TagsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$tag_id = 'tag_id_example'; // string | tag_id
-$apply_remove_tag_request = new \Keap\Core\V2\Model\ApplyRemoveTagRequest(); // \Keap\Core\V2\Model\ApplyRemoveTagRequest | applyRemoveTagRequest
+$tag_id = 'tag_id_example'; // string
+$apply_remove_tag_request = new \Keap\Core\V2\Model\ApplyRemoveTagRequest(); // \Keap\Core\V2\Model\ApplyRemoveTagRequest
 
 try {
     $apiInstance->removeTags($tag_id, $apply_remove_tag_request);
@@ -689,8 +737,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **tag_id** | **string**| tag_id | |
-| **apply_remove_tag_request** | [**\Keap\Core\V2\Model\ApplyRemoveTagRequest**](../Model/ApplyRemoveTagRequest.md)| applyRemoveTagRequest | |
+| **tag_id** | **string**|  | |
+| **apply_remove_tag_request** | [**\Keap\Core\V2\Model\ApplyRemoveTagRequest**](../Model/ApplyRemoveTagRequest.md)|  | |
 
 ### Return type
 
@@ -698,7 +746,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -712,7 +760,7 @@ No authorization required
 ## `updateTag()`
 
 ```php
-updateTag($tag_id, $update_mask, $create_update_tag_request): \Keap\Core\V2\Model\UpdateTagResponse
+updateTag($tag_id, $create_update_tag_request, $update_mask): \Keap\Core\V2\Model\UpdateTagResponse
 ```
 
 Update a Tag
@@ -726,17 +774,21 @@ Updates a Tag with only the values provided in the request
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\TagsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$tag_id = 'tag_id_example'; // string | tag_id
-$update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-$create_update_tag_request = new \Keap\Core\V2\Model\CreateUpdateTagRequest(); // \Keap\Core\V2\Model\CreateUpdateTagRequest | tag
+$tag_id = 'tag_id_example'; // string
+$create_update_tag_request = new \Keap\Core\V2\Model\CreateUpdateTagRequest(); // \Keap\Core\V2\Model\CreateUpdateTagRequest
+$update_mask = 'update_mask_example'; // string | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
-    $result = $apiInstance->updateTag($tag_id, $update_mask, $create_update_tag_request);
+    $result = $apiInstance->updateTag($tag_id, $create_update_tag_request, $update_mask);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling TagsApi->updateTag: ', $e->getMessage(), PHP_EOL;
@@ -747,9 +799,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **tag_id** | **string**| tag_id | |
-| **update_mask** | [**string[]**](../Model/string.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
-| **create_update_tag_request** | [**\Keap\Core\V2\Model\CreateUpdateTagRequest**](../Model/CreateUpdateTagRequest.md)| tag | [optional] |
+| **tag_id** | **string**|  | |
+| **create_update_tag_request** | [**\Keap\Core\V2\Model\CreateUpdateTagRequest**](../Model/CreateUpdateTagRequest.md)|  | |
+| **update_mask** | **string**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -757,7 +809,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -771,7 +823,7 @@ No authorization required
 ## `updateTagCategory()`
 
 ```php
-updateTagCategory($tag_category_id, $update_mask, $create_update_tag_category_request): \Keap\Core\V2\Model\UpdateTagCategoryResponse
+updateTagCategory($tag_category_id, $create_update_tag_category_request, $update_mask): \Keap\Core\V2\Model\UpdateTagCategoryResponse
 ```
 
 Update a Tag Category
@@ -785,17 +837,21 @@ Updates a Tag Category with only the values provided in the request
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\TagsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$tag_category_id = 'tag_category_id_example'; // string | tag_category_id
-$update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-$create_update_tag_category_request = new \Keap\Core\V2\Model\CreateUpdateTagCategoryRequest(); // \Keap\Core\V2\Model\CreateUpdateTagCategoryRequest | tagCategory
+$tag_category_id = 'tag_category_id_example'; // string
+$create_update_tag_category_request = new \Keap\Core\V2\Model\CreateUpdateTagCategoryRequest(); // \Keap\Core\V2\Model\CreateUpdateTagCategoryRequest
+$update_mask = 'update_mask_example'; // string | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
-    $result = $apiInstance->updateTagCategory($tag_category_id, $update_mask, $create_update_tag_category_request);
+    $result = $apiInstance->updateTagCategory($tag_category_id, $create_update_tag_category_request, $update_mask);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling TagsApi->updateTagCategory: ', $e->getMessage(), PHP_EOL;
@@ -806,9 +862,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **tag_category_id** | **string**| tag_category_id | |
-| **update_mask** | [**string[]**](../Model/string.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
-| **create_update_tag_category_request** | [**\Keap\Core\V2\Model\CreateUpdateTagCategoryRequest**](../Model/CreateUpdateTagCategoryRequest.md)| tagCategory | [optional] |
+| **tag_category_id** | **string**|  | |
+| **create_update_tag_category_request** | [**\Keap\Core\V2\Model\CreateUpdateTagCategoryRequest**](../Model/CreateUpdateTagCategoryRequest.md)|  | |
+| **update_mask** | **string**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -816,7 +872,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 

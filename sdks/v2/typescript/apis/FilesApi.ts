@@ -20,23 +20,22 @@ export class FilesApiRequestFactory extends BaseAPIRequestFactory {
      * Creates a file and uploads it
      * Create a file
      * @param file File to upload. This is a file sent as multi-part (not a string)
-     * @param fileAssociation File association
      * @param fileName File name
      * @param isPublic Is public
+     * @param fileAssociation File association
+     * @param file2 File to upload
+     * @param fileName2 File name
+     * @param isPublic2 Is public
+     * @param fileAssociation2 File association
      * @param contactId Contact ID
+     * @param contactId2 Contact ID. Required if the &#x60;file_association&#x60; is CONTACT
      */
-    public async createFile(file: string, fileAssociation: string, fileName: string, isPublic: boolean, contactId?: string, _options?: Configuration): Promise<RequestContext> {
+    public async createFile(file: HttpFile, fileName: string, isPublic: boolean, fileAssociation: string, file2: HttpFile, fileName2: string, isPublic2: string, fileAssociation2: string, contactId?: string, contactId2?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'file' is not null or undefined
         if (file === null || file === undefined) {
             throw new RequiredError("FilesApi", "createFile", "file");
-        }
-
-
-        // verify required parameter 'fileAssociation' is not null or undefined
-        if (fileAssociation === null || fileAssociation === undefined) {
-            throw new RequiredError("FilesApi", "createFile", "fileAssociation");
         }
 
 
@@ -52,13 +51,69 @@ export class FilesApiRequestFactory extends BaseAPIRequestFactory {
         }
 
 
+        // verify required parameter 'fileAssociation' is not null or undefined
+        if (fileAssociation === null || fileAssociation === undefined) {
+            throw new RequiredError("FilesApi", "createFile", "fileAssociation");
+        }
+
+
+        // verify required parameter 'file2' is not null or undefined
+        if (file2 === null || file2 === undefined) {
+            throw new RequiredError("FilesApi", "createFile", "file2");
+        }
+
+
+        // verify required parameter 'fileName2' is not null or undefined
+        if (fileName2 === null || fileName2 === undefined) {
+            throw new RequiredError("FilesApi", "createFile", "fileName2");
+        }
+
+
+        // verify required parameter 'isPublic2' is not null or undefined
+        if (isPublic2 === null || isPublic2 === undefined) {
+            throw new RequiredError("FilesApi", "createFile", "isPublic2");
+        }
+
+
+        // verify required parameter 'fileAssociation2' is not null or undefined
+        if (fileAssociation2 === null || fileAssociation2 === undefined) {
+            throw new RequiredError("FilesApi", "createFile", "fileAssociation2");
+        }
+
+
+
 
         // Path Params
-        const localVarPath = '/v2/files';
+        const localVarPath = '/rest/v2/files';
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Query Params
+        if (file !== undefined) {
+            requestContext.setQueryParam("file", ObjectSerializer.serialize(file, "HttpFile", "binary"));
+        }
+
+        // Query Params
+        if (fileName !== undefined) {
+            requestContext.setQueryParam("file_name", ObjectSerializer.serialize(fileName, "string", ""));
+        }
+
+        // Query Params
+        if (contactId !== undefined) {
+            requestContext.setQueryParam("contact_id", ObjectSerializer.serialize(contactId, "string", ""));
+        }
+
+        // Query Params
+        if (isPublic !== undefined) {
+            requestContext.setQueryParam("is_public", ObjectSerializer.serialize(isPublic, "boolean", ""));
+        }
+
+        // Query Params
+        if (fileAssociation !== undefined) {
+            requestContext.setQueryParam("file_association", ObjectSerializer.serialize(fileAssociation, "string", ""));
+        }
 
         // Form Params
         const useForm = canConsumeForm([
@@ -72,25 +127,27 @@ export class FilesApiRequestFactory extends BaseAPIRequestFactory {
             localVarFormParams = new URLSearchParams();
         }
 
-        if (contactId !== undefined) {
+        if (file2 !== undefined) {
              // TODO: replace .append with .set
-             localVarFormParams.append('contact_id', contactId as any);
+             if (localVarFormParams instanceof FormData) {
+                 localVarFormParams.append('file', file2, file2.name);
+             }
         }
-        if (file !== undefined) {
+        if (fileName2 !== undefined) {
              // TODO: replace .append with .set
-             localVarFormParams.append('file', file as any);
+             localVarFormParams.append('file_name', fileName2 as any);
         }
-        if (fileAssociation !== undefined) {
+        if (contactId2 !== undefined) {
              // TODO: replace .append with .set
-             localVarFormParams.append('file_association', fileAssociation as any);
+             localVarFormParams.append('contact_id', contactId2 as any);
         }
-        if (fileName !== undefined) {
+        if (isPublic2 !== undefined) {
              // TODO: replace .append with .set
-             localVarFormParams.append('file_name', fileName as any);
+             localVarFormParams.append('is_public', isPublic2 as any);
         }
-        if (isPublic !== undefined) {
+        if (fileAssociation2 !== undefined) {
              // TODO: replace .append with .set
-             localVarFormParams.append('is_public', isPublic as any);
+             localVarFormParams.append('file_association', fileAssociation2 as any);
         }
 
         requestContext.setBody(localVarFormParams);
@@ -102,6 +159,12 @@ export class FilesApiRequestFactory extends BaseAPIRequestFactory {
             requestContext.setHeaderParam("Content-Type", contentType);
         }
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -114,7 +177,7 @@ export class FilesApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Deletes a specified file
      * Delete a file
-     * @param fileId file_id
+     * @param fileId 
      */
     public async deleteFile(fileId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
@@ -126,7 +189,7 @@ export class FilesApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/v2/files/{file_id}'
+        const localVarPath = '/rest/v2/files/{file_id}'
             .replace('{' + 'file_id' + '}', encodeURIComponent(String(fileId)));
 
         // Make Request Context
@@ -134,6 +197,12 @@ export class FilesApiRequestFactory extends BaseAPIRequestFactory {
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
 
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -146,7 +215,7 @@ export class FilesApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Retrieves a file
      * Retrieve a file
-     * @param fileId file_id
+     * @param fileId 
      */
     public async getFile(fileId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
@@ -158,7 +227,7 @@ export class FilesApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/v2/files/{file_id}'
+        const localVarPath = '/rest/v2/files/{file_id}'
             .replace('{' + 'file_id' + '}', encodeURIComponent(String(fileId)));
 
         // Make Request Context
@@ -166,6 +235,12 @@ export class FilesApiRequestFactory extends BaseAPIRequestFactory {
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
 
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -178,7 +253,7 @@ export class FilesApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Retrieves a file\'s data
      * Retrieve a file\'s data
-     * @param fileId file_id
+     * @param fileId 
      */
     public async getFileData(fileId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
@@ -190,7 +265,7 @@ export class FilesApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/v2/files/{file_id}:data'
+        const localVarPath = '/rest/v2/files/{file_id}:data'
             .replace('{' + 'file_id' + '}', encodeURIComponent(String(fileId)));
 
         // Make Request Context
@@ -198,6 +273,12 @@ export class FilesApiRequestFactory extends BaseAPIRequestFactory {
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
 
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -223,7 +304,7 @@ export class FilesApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/v2/files';
+        const localVarPath = '/rest/v2/files';
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
@@ -250,6 +331,12 @@ export class FilesApiRequestFactory extends BaseAPIRequestFactory {
         }
 
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -262,13 +349,16 @@ export class FilesApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Updates a file. Note that this endpoint is using a POST method instead of PATCH.
      * Update a file
-     * @param fileId file_id
+     * @param fileId 
+     * @param updateMask Update Mask
      * @param file File to upload. This is a file sent as multi-part (not a string)
      * @param fileName File name
      * @param isPublic Is public
-     * @param updateMask Update Mask
+     * @param file2 File to upload
+     * @param fileName2 File name
+     * @param isPublic2 Is public
      */
-    public async updateFile(fileId: string, file?: string, fileName?: string, isPublic?: boolean, updateMask?: string, _options?: Configuration): Promise<RequestContext> {
+    public async updateFile(fileId: string, updateMask?: string, file?: HttpFile, fileName?: string, isPublic?: boolean, file2?: HttpFile, fileName2?: string, isPublic2?: boolean, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'fileId' is not null or undefined
@@ -281,13 +371,36 @@ export class FilesApiRequestFactory extends BaseAPIRequestFactory {
 
 
 
+
+
+
         // Path Params
-        const localVarPath = '/v2/files/{file_id}'
+        const localVarPath = '/rest/v2/files/{file_id}'
             .replace('{' + 'file_id' + '}', encodeURIComponent(String(fileId)));
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Query Params
+        if (updateMask !== undefined) {
+            requestContext.setQueryParam("update_mask", ObjectSerializer.serialize(updateMask, "string", ""));
+        }
+
+        // Query Params
+        if (file !== undefined) {
+            requestContext.setQueryParam("file", ObjectSerializer.serialize(file, "HttpFile", "binary"));
+        }
+
+        // Query Params
+        if (fileName !== undefined) {
+            requestContext.setQueryParam("file_name", ObjectSerializer.serialize(fileName, "string", ""));
+        }
+
+        // Query Params
+        if (isPublic !== undefined) {
+            requestContext.setQueryParam("is_public", ObjectSerializer.serialize(isPublic, "boolean", ""));
+        }
 
         // Form Params
         const useForm = canConsumeForm([
@@ -301,21 +414,19 @@ export class FilesApiRequestFactory extends BaseAPIRequestFactory {
             localVarFormParams = new URLSearchParams();
         }
 
-        if (file !== undefined) {
+        if (file2 !== undefined) {
              // TODO: replace .append with .set
-             localVarFormParams.append('file', file as any);
+             if (localVarFormParams instanceof FormData) {
+                 localVarFormParams.append('file', file2, file2.name);
+             }
         }
-        if (fileName !== undefined) {
+        if (fileName2 !== undefined) {
              // TODO: replace .append with .set
-             localVarFormParams.append('file_name', fileName as any);
+             localVarFormParams.append('file_name', fileName2 as any);
         }
-        if (isPublic !== undefined) {
+        if (isPublic2 !== undefined) {
              // TODO: replace .append with .set
-             localVarFormParams.append('is_public', isPublic as any);
-        }
-        if (updateMask !== undefined) {
-             // TODO: replace .append with .set
-             localVarFormParams.append('update_mask', updateMask as any);
+             localVarFormParams.append('is_public', isPublic2 as any);
         }
 
         requestContext.setBody(localVarFormParams);
@@ -327,6 +438,12 @@ export class FilesApiRequestFactory extends BaseAPIRequestFactory {
             requestContext.setHeaderParam("Content-Type", contentType);
         }
 
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
         
         const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
         if (defaultAuth?.applySecurityAuthentication) {
@@ -356,6 +473,13 @@ export class FilesApiResponseProcessor {
             ) as FileMetadata;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -370,12 +494,33 @@ export class FilesApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Forbidden", body, response.headers);
         }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -402,6 +547,13 @@ export class FilesApiResponseProcessor {
         if (isCodeInRange("204", response.httpStatusCode)) {
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
         }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -423,12 +575,26 @@ export class FilesApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -459,6 +625,13 @@ export class FilesApiResponseProcessor {
             ) as FileMetadata;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -480,12 +653,26 @@ export class FilesApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -516,6 +703,13 @@ export class FilesApiResponseProcessor {
             ) as string;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", "byte"
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -537,12 +731,26 @@ export class FilesApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", "byte"
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "Error", "byte"
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", "byte"
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -573,6 +781,13 @@ export class FilesApiResponseProcessor {
             ) as ListFilesResponse;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -594,12 +809,26 @@ export class FilesApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
         }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -630,6 +859,13 @@ export class FilesApiResponseProcessor {
             ) as FileMetadata;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -644,12 +880,33 @@ export class FilesApiResponseProcessor {
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Forbidden", body, response.headers);
         }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
         if (isCodeInRange("500", response.httpStatusCode)) {
             const body: Error = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "Error", ""
             ) as Error;
             throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml

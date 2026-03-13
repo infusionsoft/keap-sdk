@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**next_page_token** | **str** |  | [optional] 
 **tagged_companies** | [**List[TaggedCompany]**](TaggedCompany.md) |  | [optional] 
+**next_page_token** | **str** |  | [optional] 
 
 ## Example
 

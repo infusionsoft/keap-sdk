@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**group_id** | **str** |  | 
 **label** | **str** |  | [optional] 
 **options** | [**List[CustomFieldOption]**](CustomFieldOption.md) |  | [optional] 
+**group_id** | **str** |  | 
 
 ## Example
 

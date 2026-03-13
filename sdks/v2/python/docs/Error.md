@@ -5,11 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**cause** | [**Throwable**](Throwable.md) |  | [optional] 
-**localized_message** | **str** |  | [optional] 
+**code** | **int** |  | [optional] 
 **message** | **str** |  | [optional] 
-**stack_trace** | [**List[StackTraceElement]**](StackTraceElement.md) |  | [optional] 
-**suppressed** | [**List[Throwable]**](Throwable.md) |  | [optional] 
+**status** | **str** |  | [optional] 
+**details** | [**List[ErrorDetails]**](ErrorDetails.md) |  | [optional] 
 
 ## Example
 

@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**dollarAmount** | **Number** |  | [optional] 
-**name** | **String** |  | [optional] 
-**percentage** | **Number** |  | [optional] 
-**planPrice** | **Number** |  | [optional] 
-**subscriptionId** | **String** |  | [optional] 
+**name** | **String** | Subscription name | [optional] 
+**percentage** | **Number** | Percentage commission | [optional] 
+**subscriptionId** | **String** | Subscription ID | [optional] 
+**planPrice** | **Number** | Plan price | [optional] 
+**dollarAmount** | **Number** | Fixed dollar commission | [optional] 
 
 

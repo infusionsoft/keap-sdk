@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**dateCreated** | **Date** |  | [optional] 
-**firstTouch** | **Boolean** |  | [optional] 
 **id** | **Number** |  | [optional] 
 **keapSourceId** | **String** |  | [optional] 
-**lastTouch** | **Boolean** |  | [optional] 
+**utmSource** | **String** |  | [optional] 
+**utmMedium** | **String** |  | [optional] 
+**utmTerm** | **String** |  | [optional] 
 **utmCampaign** | **String** |  | [optional] 
 **utmContent** | **String** |  | [optional] 
-**utmMedium** | **String** |  | [optional] 
-**utmSource** | **String** |  | [optional] 
-**utmTerm** | **String** |  | [optional] 
+**firstTouch** | **Boolean** |  | [optional] 
+**lastTouch** | **Boolean** |  | [optional] 
+**dateCreated** | **Date** |  | [optional] 
 
 

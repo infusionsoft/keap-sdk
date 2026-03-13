@@ -1,15 +1,119 @@
 # Keap.Core.V2.Api.AutomationApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**AddContactsToAutomationSequence**](AutomationApi.md#addcontactstoautomationsequence) | **POST** /v2/automations/{automation_id}/sequences/{sequence_id}:addContacts | Add Contacts to an Automation Sequence |
-| [**BulkAssignmentAutomationsCategories**](AutomationApi.md#bulkassignmentautomationscategories) | **POST** /v2/automations/categories/batchAssign | Bulk update for Automations Categories |
-| [**DeleteAutomation**](AutomationApi.md#deleteautomation) | **DELETE** /v2/automations | Delete an Automation |
-| [**GetAutomation**](AutomationApi.md#getautomation) | **GET** /v2/automations/{automation_id} | Retrieve an Automation |
-| [**ListAllAutomationIds**](AutomationApi.md#listallautomationids) | **GET** /v2/automations/ids | List Automations Ids |
-| [**ListAutomations**](AutomationApi.md#listautomations) | **GET** /v2/automations | List Automations |
+| [**AchieveGoal**](AutomationApi.md#achievegoal) | **POST** /rest/v2/automations/goals/achieve | Achieve an Automation Goal |
+| [**AddContactsToAutomationSequence**](AutomationApi.md#addcontactstoautomationsequence) | **POST** /rest/v2/automations/{automation_id}/sequences/{sequence_id}:addContacts | Add Contacts to an Automation Sequence |
+| [**BulkAssignmentAutomationsCategories**](AutomationApi.md#bulkassignmentautomationscategories) | **POST** /rest/v2/automations/categories/batchAssign | Bulk update for Automations Categories |
+| [**BulkUnpublishAutomations**](AutomationApi.md#bulkunpublishautomations) | **POST** /rest/v2/automations/batch-unpublish | Bulk unpublish Automations |
+| [**DeleteAutomation**](AutomationApi.md#deleteautomation) | **DELETE** /rest/v2/automations | Delete an Automation |
+| [**GetAutomation**](AutomationApi.md#getautomation) | **GET** /rest/v2/automations/{automation_id} | Retrieve an Automation |
+| [**ListAllAutomationIds**](AutomationApi.md#listallautomationids) | **GET** /rest/v2/automations/ids | List Automations Ids |
+| [**ListAutomations**](AutomationApi.md#listautomations) | **GET** /rest/v2/automations | List Automations |
+| [**UnpublishAutomation**](AutomationApi.md#unpublishautomation) | **PUT** /rest/v2/automations/{automation_id}/unpublish | Unpublish an Automation |
+
+<a id="achievegoal"></a>
+# **AchieveGoal**
+> AchieveGoalResponse AchieveGoal (AchieveGoalRequest achieveGoalRequest)
+
+Achieve an Automation Goal
+
+Achieves a goal in an automation for a contact
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class AchieveGoalExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new AutomationApi(config);
+            var achieveGoalRequest = new AchieveGoalRequest(); // AchieveGoalRequest | 
+
+            try
+            {
+                // Achieve an Automation Goal
+                AchieveGoalResponse result = apiInstance.AchieveGoal(achieveGoalRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling AutomationApi.AchieveGoal: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the AchieveGoalWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Achieve an Automation Goal
+    ApiResponse<AchieveGoalResponse> response = apiInstance.AchieveGoalWithHttpInfo(achieveGoalRequest);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling AutomationApi.AchieveGoalWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **achieveGoalRequest** | [**AchieveGoalRequest**](AchieveGoalRequest.md) |  |  |
+
+### Return type
+
+[**AchieveGoalResponse**](AchieveGoalResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="addcontactstoautomationsequence"></a>
 # **AddContactsToAutomationSequence**
@@ -34,11 +138,14 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AutomationApi(config);
-            var automationId = "automationId_example";  // string | automation_id
-            var sequenceId = "sequenceId_example";  // string | sequence_id
-            var addToAutomationSequenceRequest = new AddToAutomationSequenceRequest(); // AddToAutomationSequenceRequest | addToAutomationSequenceRequest
+            var automationId = "automationId_example";  // string | 
+            var sequenceId = "sequenceId_example";  // string | 
+            var addToAutomationSequenceRequest = new AddToAutomationSequenceRequest(); // AddToAutomationSequenceRequest | 
 
             try
             {
@@ -81,9 +188,9 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **automationId** | **string** | automation_id |  |
-| **sequenceId** | **string** | sequence_id |  |
-| **addToAutomationSequenceRequest** | [**AddToAutomationSequenceRequest**](AddToAutomationSequenceRequest.md) | addToAutomationSequenceRequest |  |
+| **automationId** | **string** |  |  |
+| **sequenceId** | **string** |  |  |
+| **addToAutomationSequenceRequest** | [**AddToAutomationSequenceRequest**](AddToAutomationSequenceRequest.md) |  |  |
 
 ### Return type
 
@@ -91,7 +198,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -103,9 +210,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -132,9 +243,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AutomationApi(config);
-            var assignAutomationCategoryRequest = new AssignAutomationCategoryRequest(); // AssignAutomationCategoryRequest | assignAutomationCategoryRequest
+            var assignAutomationCategoryRequest = new AssignAutomationCategoryRequest(); // AssignAutomationCategoryRequest | 
 
             try
             {
@@ -173,7 +287,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **assignAutomationCategoryRequest** | [**AssignAutomationCategoryRequest**](AssignAutomationCategoryRequest.md) | assignAutomationCategoryRequest |  |
+| **assignAutomationCategoryRequest** | [**AssignAutomationCategoryRequest**](AssignAutomationCategoryRequest.md) |  |  |
 
 ### Return type
 
@@ -181,7 +295,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -193,9 +307,110 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="bulkunpublishautomations"></a>
+# **BulkUnpublishAutomations**
+> void BulkUnpublishAutomations (BatchUnpublishAutomationRequest batchUnpublishAutomationRequest)
+
+Bulk unpublish Automations
+
+Bulk unpublish one or more automations
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class BulkUnpublishAutomationsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new AutomationApi(config);
+            var batchUnpublishAutomationRequest = new BatchUnpublishAutomationRequest(); // BatchUnpublishAutomationRequest | 
+
+            try
+            {
+                // Bulk unpublish Automations
+                apiInstance.BulkUnpublishAutomations(batchUnpublishAutomationRequest);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling AutomationApi.BulkUnpublishAutomations: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the BulkUnpublishAutomationsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Bulk unpublish Automations
+    apiInstance.BulkUnpublishAutomationsWithHttpInfo(batchUnpublishAutomationRequest);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling AutomationApi.BulkUnpublishAutomationsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **batchUnpublishAutomationRequest** | [**BatchUnpublishAutomationRequest**](BatchUnpublishAutomationRequest.md) |  |  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -222,9 +437,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AutomationApi(config);
-            var automationIds = new List<long>(); // List<long> | automation_ids
+            var automationIds = new List<long>(); // List<long> | 
 
             try
             {
@@ -263,7 +481,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **automationIds** | [**List&lt;long&gt;**](long.md) | automation_ids |  |
+| **automationIds** | [**List&lt;long&gt;**](long.md) |  |  |
 
 ### Return type
 
@@ -271,7 +489,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -283,10 +501,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -313,9 +534,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AutomationApi(config);
-            var automationId = "automationId_example";  // string | automation_id
+            var automationId = "automationId_example";  // string | 
 
             try
             {
@@ -358,7 +582,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **automationId** | **string** | automation_id |  |
+| **automationId** | **string** |  |  |
 
 ### Return type
 
@@ -366,7 +590,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -378,16 +602,19 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="listallautomationids"></a>
 # **ListAllAutomationIds**
-> ListAutomationIdsResponse ListAllAutomationIds (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null, bool? stats = null)
+> ListAutomationIdsResponse ListAllAutomationIds (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
 
 List Automations Ids
 
@@ -408,18 +635,20 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AutomationApi(config);
             var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (String) `name`  You will need to apply the `==` operator to check the equality of the filter with your searched text, in the encoded form `%3D%3D`. The search will look for the text anywhere in the automation name.  - `filter=name%3D%3DSpring Automation` - `filter=name%3D%3DTag New Contacts`  (optional) 
             var orderBy = "orderBy_example";  // string? | Attribute and direction to order items. One of the following fields: - `name` - `category` - `activeContacts` - `publishedDate`  One of the following directions: - `asc` - `desc` (optional) 
             var pageSize = 0;  // int? | Total number of items to return per page (optional) 
             var pageToken = "pageToken_example";  // string? | Page token (optional) 
-            var stats = true;  // bool? |  (optional) 
 
             try
             {
                 // List Automations Ids
-                ListAutomationIdsResponse result = apiInstance.ListAllAutomationIds(filter, orderBy, pageSize, pageToken, stats);
+                ListAutomationIdsResponse result = apiInstance.ListAllAutomationIds(filter, orderBy, pageSize, pageToken);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -440,7 +669,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // List Automations Ids
-    ApiResponse<ListAutomationIdsResponse> response = apiInstance.ListAllAutomationIdsWithHttpInfo(filter, orderBy, pageSize, pageToken, stats);
+    ApiResponse<ListAutomationIdsResponse> response = apiInstance.ListAllAutomationIdsWithHttpInfo(filter, orderBy, pageSize, pageToken);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -461,7 +690,6 @@ catch (ApiException e)
 | **orderBy** | **string?** | Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;category&#x60; - &#x60;activeContacts&#x60; - &#x60;publishedDate&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional]  |
 | **pageSize** | **int?** | Total number of items to return per page | [optional]  |
 | **pageToken** | **string?** | Page token | [optional]  |
-| **stats** | **bool?** |  | [optional]  |
 
 ### Return type
 
@@ -469,7 +697,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -481,16 +709,19 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="listautomations"></a>
 # **ListAutomations**
-> ListAutomationResponse ListAutomations (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null, bool? stats = null)
+> ListAutomationResponse ListAutomations (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
 
 List Automations
 
@@ -511,18 +742,20 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new AutomationApi(config);
             var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (String) `name`  You will need to apply the `==` operator to check the equality of the filter with your searched text, in the encoded form `%3D%3D`. The search will look for the text anywhere in the automation name.  - `filter=name%3D%3DSpring Automation` - `filter=name%3D%3DTag New Contacts`  (optional) 
             var orderBy = "orderBy_example";  // string? | Attribute and direction to order items. One of the following fields: - `name` - `category` - `activeContacts` - `publishedDate`  One of the following directions: - `asc` - `desc` (optional) 
             var pageSize = 0;  // int? | Total number of items to return per page (optional) 
             var pageToken = "pageToken_example";  // string? | Page token (optional) 
-            var stats = true;  // bool? |  (optional) 
 
             try
             {
                 // List Automations
-                ListAutomationResponse result = apiInstance.ListAutomations(filter, orderBy, pageSize, pageToken, stats);
+                ListAutomationResponse result = apiInstance.ListAutomations(filter, orderBy, pageSize, pageToken);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -543,7 +776,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // List Automations
-    ApiResponse<ListAutomationResponse> response = apiInstance.ListAutomationsWithHttpInfo(filter, orderBy, pageSize, pageToken, stats);
+    ApiResponse<ListAutomationResponse> response = apiInstance.ListAutomationsWithHttpInfo(filter, orderBy, pageSize, pageToken);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -564,7 +797,6 @@ catch (ApiException e)
 | **orderBy** | **string?** | Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;category&#x60; - &#x60;activeContacts&#x60; - &#x60;publishedDate&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional]  |
 | **pageSize** | **int?** | Total number of items to return per page | [optional]  |
 | **pageToken** | **string?** | Page token | [optional]  |
-| **stats** | **bool?** |  | [optional]  |
 
 ### Return type
 
@@ -572,7 +804,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -584,10 +816,112 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="unpublishautomation"></a>
+# **UnpublishAutomation**
+> void UnpublishAutomation (string automationId, UnpublishAutomationRequest unpublishAutomationRequest)
+
+Unpublish an Automation
+
+Unpublishes a single automation
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class UnpublishAutomationExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new AutomationApi(config);
+            var automationId = "automationId_example";  // string | 
+            var unpublishAutomationRequest = new UnpublishAutomationRequest(); // UnpublishAutomationRequest | 
+
+            try
+            {
+                // Unpublish an Automation
+                apiInstance.UnpublishAutomation(automationId, unpublishAutomationRequest);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling AutomationApi.UnpublishAutomation: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the UnpublishAutomationWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Unpublish an Automation
+    apiInstance.UnpublishAutomationWithHttpInfo(automationId, unpublishAutomationRequest);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling AutomationApi.UnpublishAutomationWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **automationId** | **string** |  |  |
+| **unpublishAutomationRequest** | [**UnpublishAutomationRequest**](UnpublishAutomationRequest.md) |  |  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

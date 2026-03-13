@@ -1,25 +1,25 @@
 # ProductCategoriesApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**assignProductsToCategory**](ProductCategoriesApi.md#assignProductsToCategory) | **POST** /v2/productCategories/{category_id}:assignProducts | Assign Products to a Product Category |
-| [**assignProductsToCategoryWithHttpInfo**](ProductCategoriesApi.md#assignProductsToCategoryWithHttpInfo) | **POST** /v2/productCategories/{category_id}:assignProducts | Assign Products to a Product Category |
-| [**createImageFile**](ProductCategoriesApi.md#createImageFile) | **POST** /v2/productCategories/{category_id}/images | Create the product category image file |
-| [**createImageFileWithHttpInfo**](ProductCategoriesApi.md#createImageFileWithHttpInfo) | **POST** /v2/productCategories/{category_id}/images | Create the product category image file |
-| [**createProductCategory**](ProductCategoriesApi.md#createProductCategory) | **POST** /v2/productCategories | Create a Product Category |
-| [**createProductCategoryWithHttpInfo**](ProductCategoriesApi.md#createProductCategoryWithHttpInfo) | **POST** /v2/productCategories | Create a Product Category |
-| [**deleteImageFile**](ProductCategoriesApi.md#deleteImageFile) | **DELETE** /v2/productCategories/{category_id}/images | Delete the image from a product category |
-| [**deleteImageFileWithHttpInfo**](ProductCategoriesApi.md#deleteImageFileWithHttpInfo) | **DELETE** /v2/productCategories/{category_id}/images | Delete the image from a product category |
-| [**deleteProductCategory**](ProductCategoriesApi.md#deleteProductCategory) | **DELETE** /v2/productCategories/{category_id} | Delete a Product Category |
-| [**deleteProductCategoryWithHttpInfo**](ProductCategoriesApi.md#deleteProductCategoryWithHttpInfo) | **DELETE** /v2/productCategories/{category_id} | Delete a Product Category |
-| [**getProductCategory**](ProductCategoriesApi.md#getProductCategory) | **GET** /v2/productCategories/{category_id} | Get a Product Category |
-| [**getProductCategoryWithHttpInfo**](ProductCategoriesApi.md#getProductCategoryWithHttpInfo) | **GET** /v2/productCategories/{category_id} | Get a Product Category |
-| [**listProductCategories**](ProductCategoriesApi.md#listProductCategories) | **GET** /v2/productCategories | List all Product Categories |
-| [**listProductCategoriesWithHttpInfo**](ProductCategoriesApi.md#listProductCategoriesWithHttpInfo) | **GET** /v2/productCategories | List all Product Categories |
-| [**updateProductCategory**](ProductCategoriesApi.md#updateProductCategory) | **PATCH** /v2/productCategories/{category_id} | Update a Product Category |
-| [**updateProductCategoryWithHttpInfo**](ProductCategoriesApi.md#updateProductCategoryWithHttpInfo) | **PATCH** /v2/productCategories/{category_id} | Update a Product Category |
+| [**assignProductsToCategory**](ProductCategoriesApi.md#assignProductsToCategory) | **POST** /rest/v2/productCategories/{category_id}:assignProducts | Assign Products to a Product Category |
+| [**assignProductsToCategoryWithHttpInfo**](ProductCategoriesApi.md#assignProductsToCategoryWithHttpInfo) | **POST** /rest/v2/productCategories/{category_id}:assignProducts | Assign Products to a Product Category |
+| [**createImageFile**](ProductCategoriesApi.md#createImageFile) | **POST** /rest/v2/productCategories/{category_id}/images | Create the product category image file |
+| [**createImageFileWithHttpInfo**](ProductCategoriesApi.md#createImageFileWithHttpInfo) | **POST** /rest/v2/productCategories/{category_id}/images | Create the product category image file |
+| [**createProductCategory**](ProductCategoriesApi.md#createProductCategory) | **POST** /rest/v2/productCategories | Create a Product Category |
+| [**createProductCategoryWithHttpInfo**](ProductCategoriesApi.md#createProductCategoryWithHttpInfo) | **POST** /rest/v2/productCategories | Create a Product Category |
+| [**deleteImageFile**](ProductCategoriesApi.md#deleteImageFile) | **DELETE** /rest/v2/productCategories/{category_id}/images | Delete the image from a product category |
+| [**deleteImageFileWithHttpInfo**](ProductCategoriesApi.md#deleteImageFileWithHttpInfo) | **DELETE** /rest/v2/productCategories/{category_id}/images | Delete the image from a product category |
+| [**deleteProductCategory**](ProductCategoriesApi.md#deleteProductCategory) | **DELETE** /rest/v2/productCategories/{category_id} | Delete a Product Category |
+| [**deleteProductCategoryWithHttpInfo**](ProductCategoriesApi.md#deleteProductCategoryWithHttpInfo) | **DELETE** /rest/v2/productCategories/{category_id} | Delete a Product Category |
+| [**getProductCategory**](ProductCategoriesApi.md#getProductCategory) | **GET** /rest/v2/productCategories/{category_id} | Get a Product Category |
+| [**getProductCategoryWithHttpInfo**](ProductCategoriesApi.md#getProductCategoryWithHttpInfo) | **GET** /rest/v2/productCategories/{category_id} | Get a Product Category |
+| [**listProductCategories**](ProductCategoriesApi.md#listProductCategories) | **GET** /rest/v2/productCategories | List all Product Categories |
+| [**listProductCategoriesWithHttpInfo**](ProductCategoriesApi.md#listProductCategoriesWithHttpInfo) | **GET** /rest/v2/productCategories | List all Product Categories |
+| [**updateProductCategory**](ProductCategoriesApi.md#updateProductCategory) | **PATCH** /rest/v2/productCategories/{category_id} | Update a Product Category |
+| [**updateProductCategoryWithHttpInfo**](ProductCategoriesApi.md#updateProductCategoryWithHttpInfo) | **PATCH** /rest/v2/productCategories/{category_id} | Update a Product Category |
 
 
 
@@ -38,17 +38,22 @@ Updates the list of products assigned to a Product Category. **Note:** The full 
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ProductCategoriesApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ProductCategoriesApi apiInstance = new ProductCategoriesApi(defaultClient);
-        String categoryId = "categoryId_example"; // String | category_id
-        AssignProductsRequest assignProductsRequest = new AssignProductsRequest(); // AssignProductsRequest | request
+        String categoryId = "categoryId_example"; // String | 
+        AssignProductsRequest assignProductsRequest = new AssignProductsRequest(); // AssignProductsRequest | 
         try {
             apiInstance.assignProductsToCategory(categoryId, assignProductsRequest);
         } catch (ApiException e) {
@@ -67,8 +72,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **categoryId** | **String**| category_id | |
-| **assignProductsRequest** | [**AssignProductsRequest**](AssignProductsRequest.md)| request | |
+| **categoryId** | **String**|  | |
+| **assignProductsRequest** | [**AssignProductsRequest**](AssignProductsRequest.md)|  | |
 
 ### Return type
 
@@ -77,7 +82,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -88,9 +93,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## assignProductsToCategoryWithHttpInfo
 
@@ -108,17 +117,22 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ProductCategoriesApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ProductCategoriesApi apiInstance = new ProductCategoriesApi(defaultClient);
-        String categoryId = "categoryId_example"; // String | category_id
-        AssignProductsRequest assignProductsRequest = new AssignProductsRequest(); // AssignProductsRequest | request
+        String categoryId = "categoryId_example"; // String | 
+        AssignProductsRequest assignProductsRequest = new AssignProductsRequest(); // AssignProductsRequest | 
         try {
             ApiResponse<Void> response = apiInstance.assignProductsToCategoryWithHttpInfo(categoryId, assignProductsRequest);
             System.out.println("Status code: " + response.getStatusCode());
@@ -139,8 +153,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **categoryId** | **String**| category_id | |
-| **assignProductsRequest** | [**AssignProductsRequest**](AssignProductsRequest.md)| request | |
+| **categoryId** | **String**|  | |
+| **assignProductsRequest** | [**AssignProductsRequest**](AssignProductsRequest.md)|  | |
 
 ### Return type
 
@@ -149,7 +163,7 @@ ApiResponse<Void>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -160,9 +174,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## createImageFile
@@ -180,16 +198,21 @@ Creates the product category image file and uploads it to the specified product 
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ProductCategoriesApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ProductCategoriesApi apiInstance = new ProductCategoriesApi(defaultClient);
-        String categoryId = "categoryId_example"; // String | category_id
+        String categoryId = "categoryId_example"; // String | 
         File _file = new File("/path/to/file"); // File | File to upload
         try {
             apiInstance.createImageFile(categoryId, _file);
@@ -209,7 +232,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **categoryId** | **String**| category_id | |
+| **categoryId** | **String**|  | |
 | **_file** | **File**| File to upload | |
 
 ### Return type
@@ -219,7 +242,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -230,9 +253,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## createImageFileWithHttpInfo
 
@@ -250,16 +277,21 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ProductCategoriesApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ProductCategoriesApi apiInstance = new ProductCategoriesApi(defaultClient);
-        String categoryId = "categoryId_example"; // String | category_id
+        String categoryId = "categoryId_example"; // String | 
         File _file = new File("/path/to/file"); // File | File to upload
         try {
             ApiResponse<Void> response = apiInstance.createImageFileWithHttpInfo(categoryId, _file);
@@ -281,7 +313,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **categoryId** | **String**| category_id | |
+| **categoryId** | **String**|  | |
 | **_file** | **File**| File to upload | |
 
 ### Return type
@@ -291,7 +323,7 @@ ApiResponse<Void>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -302,9 +334,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## createProductCategory
@@ -322,16 +358,21 @@ Creates a new Product Category
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ProductCategoriesApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ProductCategoriesApi apiInstance = new ProductCategoriesApi(defaultClient);
-        CreateProductCategoryRequest createProductCategoryRequest = new CreateProductCategoryRequest(); // CreateProductCategoryRequest | productCategory
+        CreateProductCategoryRequest createProductCategoryRequest = new CreateProductCategoryRequest(); // CreateProductCategoryRequest | 
         try {
             ProductCategory result = apiInstance.createProductCategory(createProductCategoryRequest);
             System.out.println(result);
@@ -351,7 +392,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **createProductCategoryRequest** | [**CreateProductCategoryRequest**](CreateProductCategoryRequest.md)| productCategory | [optional] |
+| **createProductCategoryRequest** | [**CreateProductCategoryRequest**](CreateProductCategoryRequest.md)|  | |
 
 ### Return type
 
@@ -360,7 +401,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -371,9 +412,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## createProductCategoryWithHttpInfo
 
@@ -391,16 +436,21 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ProductCategoriesApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ProductCategoriesApi apiInstance = new ProductCategoriesApi(defaultClient);
-        CreateProductCategoryRequest createProductCategoryRequest = new CreateProductCategoryRequest(); // CreateProductCategoryRequest | productCategory
+        CreateProductCategoryRequest createProductCategoryRequest = new CreateProductCategoryRequest(); // CreateProductCategoryRequest | 
         try {
             ApiResponse<ProductCategory> response = apiInstance.createProductCategoryWithHttpInfo(createProductCategoryRequest);
             System.out.println("Status code: " + response.getStatusCode());
@@ -422,7 +472,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **createProductCategoryRequest** | [**CreateProductCategoryRequest**](CreateProductCategoryRequest.md)| productCategory | [optional] |
+| **createProductCategoryRequest** | [**CreateProductCategoryRequest**](CreateProductCategoryRequest.md)|  | |
 
 ### Return type
 
@@ -431,7 +481,7 @@ ApiResponse<[**ProductCategory**](ProductCategory.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -442,9 +492,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## deleteImageFile
@@ -462,16 +516,21 @@ Deletes the image from the specified product category
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ProductCategoriesApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ProductCategoriesApi apiInstance = new ProductCategoriesApi(defaultClient);
-        String categoryId = "categoryId_example"; // String | category_id
+        String categoryId = "categoryId_example"; // String | 
         try {
             apiInstance.deleteImageFile(categoryId);
         } catch (ApiException e) {
@@ -490,7 +549,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **categoryId** | **String**| category_id | |
+| **categoryId** | **String**|  | |
 
 ### Return type
 
@@ -499,7 +558,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -510,10 +569,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## deleteImageFileWithHttpInfo
 
@@ -531,16 +593,21 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ProductCategoriesApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ProductCategoriesApi apiInstance = new ProductCategoriesApi(defaultClient);
-        String categoryId = "categoryId_example"; // String | category_id
+        String categoryId = "categoryId_example"; // String | 
         try {
             ApiResponse<Void> response = apiInstance.deleteImageFileWithHttpInfo(categoryId);
             System.out.println("Status code: " + response.getStatusCode());
@@ -561,7 +628,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **categoryId** | **String**| category_id | |
+| **categoryId** | **String**|  | |
 
 ### Return type
 
@@ -570,7 +637,7 @@ ApiResponse<Void>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -581,10 +648,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## deleteProductCategory
@@ -602,16 +672,21 @@ Deletes the specified Product Category, its sub-categories, and removes products
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ProductCategoriesApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ProductCategoriesApi apiInstance = new ProductCategoriesApi(defaultClient);
-        String categoryId = "categoryId_example"; // String | category_id
+        String categoryId = "categoryId_example"; // String | 
         try {
             apiInstance.deleteProductCategory(categoryId);
         } catch (ApiException e) {
@@ -630,7 +705,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **categoryId** | **String**| category_id | |
+| **categoryId** | **String**|  | |
 
 ### Return type
 
@@ -639,7 +714,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -650,10 +725,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## deleteProductCategoryWithHttpInfo
 
@@ -671,16 +749,21 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ProductCategoriesApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ProductCategoriesApi apiInstance = new ProductCategoriesApi(defaultClient);
-        String categoryId = "categoryId_example"; // String | category_id
+        String categoryId = "categoryId_example"; // String | 
         try {
             ApiResponse<Void> response = apiInstance.deleteProductCategoryWithHttpInfo(categoryId);
             System.out.println("Status code: " + response.getStatusCode());
@@ -701,7 +784,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **categoryId** | **String**| category_id | |
+| **categoryId** | **String**|  | |
 
 ### Return type
 
@@ -710,7 +793,7 @@ ApiResponse<Void>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -721,10 +804,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## getProductCategory
@@ -742,16 +828,21 @@ Gets a single Product Category
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ProductCategoriesApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ProductCategoriesApi apiInstance = new ProductCategoriesApi(defaultClient);
-        String categoryId = "categoryId_example"; // String | category_id
+        String categoryId = "categoryId_example"; // String | 
         try {
             ProductCategory result = apiInstance.getProductCategory(categoryId);
             System.out.println(result);
@@ -771,7 +862,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **categoryId** | **String**| category_id | |
+| **categoryId** | **String**|  | |
 
 ### Return type
 
@@ -780,7 +871,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -791,10 +882,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## getProductCategoryWithHttpInfo
 
@@ -812,16 +906,21 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ProductCategoriesApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ProductCategoriesApi apiInstance = new ProductCategoriesApi(defaultClient);
-        String categoryId = "categoryId_example"; // String | category_id
+        String categoryId = "categoryId_example"; // String | 
         try {
             ApiResponse<ProductCategory> response = apiInstance.getProductCategoryWithHttpInfo(categoryId);
             System.out.println("Status code: " + response.getStatusCode());
@@ -843,7 +942,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **categoryId** | **String**| category_id | |
+| **categoryId** | **String**|  | |
 
 ### Return type
 
@@ -852,7 +951,7 @@ ApiResponse<[**ProductCategory**](ProductCategory.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -863,10 +962,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## listProductCategories
@@ -884,13 +986,18 @@ Retrieves a list of Product Categories
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ProductCategoriesApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ProductCategoriesApi apiInstance = new ProductCategoriesApi(defaultClient);
         String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `product_id`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=product_id%3D%3D29` 
@@ -928,7 +1035,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -939,10 +1046,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## listProductCategoriesWithHttpInfo
 
@@ -960,13 +1070,18 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ProductCategoriesApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ProductCategoriesApi apiInstance = new ProductCategoriesApi(defaultClient);
         String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `product_id`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=product_id%3D%3D29` 
@@ -1006,7 +1121,7 @@ ApiResponse<[**ListProductCategoriesResponse**](ListProductCategoriesResponse.md
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1017,10 +1132,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## updateProductCategory
@@ -1038,18 +1156,23 @@ Updates a single Product Category
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ProductCategoriesApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ProductCategoriesApi apiInstance = new ProductCategoriesApi(defaultClient);
-        String categoryId = "categoryId_example"; // String | category_id
-        UpdateProductCategoryRequest updateProductCategoryRequest = new UpdateProductCategoryRequest(); // UpdateProductCategoryRequest | request
-        List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        String categoryId = "categoryId_example"; // String | 
+        UpdateProductCategoryRequest updateProductCategoryRequest = new UpdateProductCategoryRequest(); // UpdateProductCategoryRequest | 
+        String updateMask = "name,display_order_index,parent_category_id"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ProductCategory result = apiInstance.updateProductCategory(categoryId, updateProductCategoryRequest, updateMask);
             System.out.println(result);
@@ -1069,9 +1192,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **categoryId** | **String**| category_id | |
-| **updateProductCategoryRequest** | [**UpdateProductCategoryRequest**](UpdateProductCategoryRequest.md)| request | |
-| **updateMask** | [**List&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name, display_order_index, parent_category_id] |
+| **categoryId** | **String**|  | |
+| **updateProductCategoryRequest** | [**UpdateProductCategoryRequest**](UpdateProductCategoryRequest.md)|  | |
+| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name,display_order_index,parent_category_id] |
 
 ### Return type
 
@@ -1080,7 +1203,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1091,10 +1214,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## updateProductCategoryWithHttpInfo
 
@@ -1112,18 +1238,23 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ProductCategoriesApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ProductCategoriesApi apiInstance = new ProductCategoriesApi(defaultClient);
-        String categoryId = "categoryId_example"; // String | category_id
-        UpdateProductCategoryRequest updateProductCategoryRequest = new UpdateProductCategoryRequest(); // UpdateProductCategoryRequest | request
-        List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        String categoryId = "categoryId_example"; // String | 
+        UpdateProductCategoryRequest updateProductCategoryRequest = new UpdateProductCategoryRequest(); // UpdateProductCategoryRequest | 
+        String updateMask = "name,display_order_index,parent_category_id"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ApiResponse<ProductCategory> response = apiInstance.updateProductCategoryWithHttpInfo(categoryId, updateProductCategoryRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
@@ -1145,9 +1276,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **categoryId** | **String**| category_id | |
-| **updateProductCategoryRequest** | [**UpdateProductCategoryRequest**](UpdateProductCategoryRequest.md)| request | |
-| **updateMask** | [**List&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name, display_order_index, parent_category_id] |
+| **categoryId** | **String**|  | |
+| **updateProductCategoryRequest** | [**UpdateProductCategoryRequest**](UpdateProductCategoryRequest.md)|  | |
+| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name,display_order_index,parent_category_id] |
 
 ### Return type
 
@@ -1156,7 +1287,7 @@ ApiResponse<[**ProductCategory**](ProductCategory.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1167,8 +1298,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 

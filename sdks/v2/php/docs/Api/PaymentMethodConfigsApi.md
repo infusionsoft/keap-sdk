@@ -1,10 +1,10 @@
 # Keap\Core\V2\PaymentMethodConfigsApi
 
-All URIs are relative to https://api.keap.com/crm/rest, except if the operation defines another base path.
+All URIs are relative to https://api.keap.com/crm, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createPaymentMethodConfig()**](PaymentMethodConfigsApi.md#createPaymentMethodConfig) | **POST** /v2/paymentMethodConfigs | Create Payment Method Configuration |
+| [**createPaymentMethodConfig()**](PaymentMethodConfigsApi.md#createPaymentMethodConfig) | **POST** /rest/v2/paymentMethodConfigs | Create Payment Method Configuration |
 
 
 ## `createPaymentMethodConfig()`
@@ -24,12 +24,16 @@ Creates configuration details for rendering payment method components
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\PaymentMethodConfigsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$create_payment_method_config_request = new \Keap\Core\V2\Model\CreatePaymentMethodConfigRequest(); // \Keap\Core\V2\Model\CreatePaymentMethodConfigRequest | request
+$create_payment_method_config_request = new \Keap\Core\V2\Model\CreatePaymentMethodConfigRequest(); // \Keap\Core\V2\Model\CreatePaymentMethodConfigRequest
 
 try {
     $result = $apiInstance->createPaymentMethodConfig($create_payment_method_config_request);
@@ -43,7 +47,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **create_payment_method_config_request** | [**\Keap\Core\V2\Model\CreatePaymentMethodConfigRequest**](../Model/CreatePaymentMethodConfigRequest.md)| request | |
+| **create_payment_method_config_request** | [**\Keap\Core\V2\Model\CreatePaymentMethodConfigRequest**](../Model/CreatePaymentMethodConfigRequest.md)|  | |
 
 ### Return type
 
@@ -51,7 +55,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 

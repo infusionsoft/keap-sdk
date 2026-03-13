@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**EmailAddress** | **string** |  | [optional] 
-**FamilyName** | **string** |  | [optional] 
-**GivenName** | **string** |  | [optional] 
-**Id** | **string** |  | [optional] 
+**Id** | **string** | User ID | [optional] 
+**GivenName** | **string** | First name | [optional] 
+**FamilyName** | **string** | Last name | [optional] 
+**EmailAddress** | **string** | Email address | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

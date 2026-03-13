@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**next_page_token** | **str** |  | [optional] 
 **product_categories** | [**List[ProductCategory]**](ProductCategory.md) |  | [optional] 
+**next_page_token** | **str** |  | [optional] 
 
 ## Example
 

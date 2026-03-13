@@ -5,18 +5,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**create_time** | **str** | The time that this lead source was created | [optional] 
-**description** | **str** | The description of the lead source | [optional] 
-**end_time** | **str** | The time that this lead source will end | [optional] 
 **id** | **str** | The unique identifier for this lead source | [optional] 
-**lead_source_category_id** | **str** | The ID of the category that the lead source belongs to | [optional] 
+**name** | **str** | The name of the lead source | [optional] 
+**description** | **str** | The description of the lead source | [optional] 
+**vendor** | **str** | The vendor of the lead source | [optional] 
 **medium** | **str** | The medium of the lead source | [optional] 
 **message** | **str** | The message/content of the lead source | [optional] 
-**name** | **str** | The name of the lead source | [optional] 
-**start_time** | **str** | The time that this lead source started | [optional] 
 **status** | **str** | The status of the lead source | [optional] 
-**update_time** | **str** | The time that this lead source was last updated | [optional] 
-**vendor** | **str** | The vendor of the lead source | [optional] 
+**lead_source_category_id** | **str** | The ID of the category that the lead source belongs to | [optional] 
+**start_time** | **datetime** | The time that this lead source started | [optional] 
+**end_time** | **datetime** | The time that this lead source will end | [optional] 
+**create_time** | **datetime** | The time that this lead source was created | [optional] 
+**update_time** | **datetime** | The time that this lead source was last updated | [optional] 
 
 ## Example
 

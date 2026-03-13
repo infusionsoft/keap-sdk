@@ -1,14 +1,14 @@
 # KeapCoreServiceV2Sdk.LeadSourceExpensesApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createLeadSourceExpense**](LeadSourceExpensesApi.md#createLeadSourceExpense) | **POST** /v2/leadSources/{lead_source_id}/expenses | Create a Lead Source Expense
-[**deleteLeadSourceExpense**](LeadSourceExpensesApi.md#deleteLeadSourceExpense) | **DELETE** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Delete a lead source expense
-[**getLeadSourceExpense**](LeadSourceExpensesApi.md#getLeadSourceExpense) | **GET** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Retrieve a Lead Source Expense
-[**listLeadSourceExpenses**](LeadSourceExpensesApi.md#listLeadSourceExpenses) | **GET** /v2/leadSources/{lead_source_id}/expenses | List Lead Source Expenses
-[**updateLeadSourceExpense**](LeadSourceExpensesApi.md#updateLeadSourceExpense) | **PATCH** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Update a Lead Source Expense
+[**createLeadSourceExpense**](LeadSourceExpensesApi.md#createLeadSourceExpense) | **POST** /rest/v2/leadSources/{lead_source_id}/expenses | Create a Lead Source Expense
+[**deleteLeadSourceExpense**](LeadSourceExpensesApi.md#deleteLeadSourceExpense) | **DELETE** /rest/v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Delete a lead source expense
+[**getLeadSourceExpense**](LeadSourceExpensesApi.md#getLeadSourceExpense) | **GET** /rest/v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Retrieve a Lead Source Expense
+[**listLeadSourceExpenses**](LeadSourceExpensesApi.md#listLeadSourceExpenses) | **GET** /rest/v2/leadSources/{lead_source_id}/expenses | List Lead Source Expenses
+[**updateLeadSourceExpense**](LeadSourceExpensesApi.md#updateLeadSourceExpense) | **PATCH** /rest/v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Update a Lead Source Expense
 
 
 
@@ -24,10 +24,14 @@ Creates a new Lead Source Expense
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.LeadSourceExpensesApi();
 let leadSourceId = "leadSourceId_example"; // String | The ID of the lead source this expense belongs to
-let createLeadSourceExpenseRequest = new KeapCoreServiceV2Sdk.CreateLeadSourceExpenseRequest(); // CreateLeadSourceExpenseRequest | The request object to create a new lead source expense
+let createLeadSourceExpenseRequest = new KeapCoreServiceV2Sdk.CreateLeadSourceExpenseRequest(); // CreateLeadSourceExpenseRequest | 
 apiInstance.createLeadSourceExpense(leadSourceId, createLeadSourceExpenseRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -42,7 +46,7 @@ apiInstance.createLeadSourceExpense(leadSourceId, createLeadSourceExpenseRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **leadSourceId** | **String**| The ID of the lead source this expense belongs to | 
- **createLeadSourceExpenseRequest** | [**CreateLeadSourceExpenseRequest**](CreateLeadSourceExpenseRequest.md)| The request object to create a new lead source expense | 
+ **createLeadSourceExpenseRequest** | [**CreateLeadSourceExpenseRequest**](CreateLeadSourceExpenseRequest.md)|  | 
 
 ### Return type
 
@@ -50,7 +54,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -70,6 +74,10 @@ Deletes a lead source expense by ID
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.LeadSourceExpensesApi();
 let leadSourceExpenseId = "leadSourceExpenseId_example"; // String | The ID of a lead source expense
@@ -96,7 +104,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -116,6 +124,10 @@ Retrieves a single Lead Source Expense for a given ID
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.LeadSourceExpensesApi();
 let leadSourceExpenseId = "leadSourceExpenseId_example"; // String | The ID of a lead source expense
@@ -142,7 +154,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -162,6 +174,10 @@ Retrieves a list of lead source expenses
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.LeadSourceExpensesApi();
 let leadSourceId = "leadSourceId_example"; // String | The ID of the lead source this expense belongs to
@@ -196,7 +212,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -216,13 +232,17 @@ Updates a new Lead Source Expense
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.LeadSourceExpensesApi();
 let leadSourceExpenseId = "leadSourceExpenseId_example"; // String | The ID of a lead source expense
 let leadSourceId = "leadSourceId_example"; // String | The ID of the lead source this expense belongs to
-let updateLeadSourceExpenseRequest = new KeapCoreServiceV2Sdk.UpdateLeadSourceExpenseRequest(); // UpdateLeadSourceExpenseRequest | The request object to update a lead source expense
+let updateLeadSourceExpenseRequest = new KeapCoreServiceV2Sdk.UpdateLeadSourceExpenseRequest(); // UpdateLeadSourceExpenseRequest | 
 let opts = {
-  'updateMask': ["null"] // [String] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+  'updateMask': "updateMask_example" // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
 apiInstance.updateLeadSourceExpense(leadSourceExpenseId, leadSourceId, updateLeadSourceExpenseRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -239,8 +259,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **leadSourceExpenseId** | **String**| The ID of a lead source expense | 
  **leadSourceId** | **String**| The ID of the lead source this expense belongs to | 
- **updateLeadSourceExpenseRequest** | [**UpdateLeadSourceExpenseRequest**](UpdateLeadSourceExpenseRequest.md)| The request object to update a lead source expense | 
- **updateMask** | [**[String]**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **updateLeadSourceExpenseRequest** | [**UpdateLeadSourceExpenseRequest**](UpdateLeadSourceExpenseRequest.md)|  | 
+ **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 
@@ -248,7 +268,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 

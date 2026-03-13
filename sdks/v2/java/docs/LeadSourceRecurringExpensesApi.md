@@ -1,21 +1,21 @@
 # LeadSourceRecurringExpensesApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#createLeadSourceRecurringExpense) | **POST** /v2/leadSources/{lead_source_id}/recurringExpenses | Create a Lead Source Recurring Expense |
-| [**createLeadSourceRecurringExpenseWithHttpInfo**](LeadSourceRecurringExpensesApi.md#createLeadSourceRecurringExpenseWithHttpInfo) | **POST** /v2/leadSources/{lead_source_id}/recurringExpenses | Create a Lead Source Recurring Expense |
-| [**deleteLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#deleteLeadSourceRecurringExpense) | **DELETE** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Delete a Lead Source Recurring Expense |
-| [**deleteLeadSourceRecurringExpenseWithHttpInfo**](LeadSourceRecurringExpensesApi.md#deleteLeadSourceRecurringExpenseWithHttpInfo) | **DELETE** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Delete a Lead Source Recurring Expense |
-| [**getLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#getLeadSourceRecurringExpense) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Retrieve a Lead Source Recurring Expense |
-| [**getLeadSourceRecurringExpenseWithHttpInfo**](LeadSourceRecurringExpensesApi.md#getLeadSourceRecurringExpenseWithHttpInfo) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Retrieve a Lead Source Recurring Expense |
-| [**listExpensesIncurredFromLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#listExpensesIncurredFromLeadSourceRecurringExpense) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id}/expenses | Retrieves a list of expenses incurred from a recurring expense |
-| [**listExpensesIncurredFromLeadSourceRecurringExpenseWithHttpInfo**](LeadSourceRecurringExpensesApi.md#listExpensesIncurredFromLeadSourceRecurringExpenseWithHttpInfo) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id}/expenses | Retrieves a list of expenses incurred from a recurring expense |
-| [**listLeadSourceRecurringExpenses**](LeadSourceRecurringExpensesApi.md#listLeadSourceRecurringExpenses) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses | Retrieves a list of lead source recurring expenses |
-| [**listLeadSourceRecurringExpensesWithHttpInfo**](LeadSourceRecurringExpensesApi.md#listLeadSourceRecurringExpensesWithHttpInfo) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses | Retrieves a list of lead source recurring expenses |
-| [**updateLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#updateLeadSourceRecurringExpense) | **PATCH** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Update a Lead Source Recurring Expense |
-| [**updateLeadSourceRecurringExpenseWithHttpInfo**](LeadSourceRecurringExpensesApi.md#updateLeadSourceRecurringExpenseWithHttpInfo) | **PATCH** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Update a Lead Source Recurring Expense |
+| [**createLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#createLeadSourceRecurringExpense) | **POST** /rest/v2/leadSources/{lead_source_id}/recurringExpenses | Create a Lead Source Recurring Expense |
+| [**createLeadSourceRecurringExpenseWithHttpInfo**](LeadSourceRecurringExpensesApi.md#createLeadSourceRecurringExpenseWithHttpInfo) | **POST** /rest/v2/leadSources/{lead_source_id}/recurringExpenses | Create a Lead Source Recurring Expense |
+| [**deleteLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#deleteLeadSourceRecurringExpense) | **DELETE** /rest/v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Delete a Lead Source Recurring Expense |
+| [**deleteLeadSourceRecurringExpenseWithHttpInfo**](LeadSourceRecurringExpensesApi.md#deleteLeadSourceRecurringExpenseWithHttpInfo) | **DELETE** /rest/v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Delete a Lead Source Recurring Expense |
+| [**getLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#getLeadSourceRecurringExpense) | **GET** /rest/v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Retrieve a Lead Source Recurring Expense |
+| [**getLeadSourceRecurringExpenseWithHttpInfo**](LeadSourceRecurringExpensesApi.md#getLeadSourceRecurringExpenseWithHttpInfo) | **GET** /rest/v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Retrieve a Lead Source Recurring Expense |
+| [**listExpensesIncurredFromLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#listExpensesIncurredFromLeadSourceRecurringExpense) | **GET** /rest/v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id}/expenses | Retrieves a list of expenses incurred from a recurring expense |
+| [**listExpensesIncurredFromLeadSourceRecurringExpenseWithHttpInfo**](LeadSourceRecurringExpensesApi.md#listExpensesIncurredFromLeadSourceRecurringExpenseWithHttpInfo) | **GET** /rest/v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id}/expenses | Retrieves a list of expenses incurred from a recurring expense |
+| [**listLeadSourceRecurringExpenses**](LeadSourceRecurringExpensesApi.md#listLeadSourceRecurringExpenses) | **GET** /rest/v2/leadSources/{lead_source_id}/recurringExpenses | Retrieves a list of lead source recurring expenses |
+| [**listLeadSourceRecurringExpensesWithHttpInfo**](LeadSourceRecurringExpensesApi.md#listLeadSourceRecurringExpensesWithHttpInfo) | **GET** /rest/v2/leadSources/{lead_source_id}/recurringExpenses | Retrieves a list of lead source recurring expenses |
+| [**updateLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#updateLeadSourceRecurringExpense) | **PATCH** /rest/v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Update a Lead Source Recurring Expense |
+| [**updateLeadSourceRecurringExpenseWithHttpInfo**](LeadSourceRecurringExpensesApi.md#updateLeadSourceRecurringExpenseWithHttpInfo) | **PATCH** /rest/v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Update a Lead Source Recurring Expense |
 
 
 
@@ -34,17 +34,22 @@ Creates a new Lead Source Recurring Expense
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.LeadSourceRecurringExpensesApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         LeadSourceRecurringExpensesApi apiInstance = new LeadSourceRecurringExpensesApi(defaultClient);
         String leadSourceId = "leadSourceId_example"; // String | The ID of the lead source this recurring expense belongs to
-        CreateLeadSourceRecurringExpenseRequest createLeadSourceRecurringExpenseRequest = new CreateLeadSourceRecurringExpenseRequest(); // CreateLeadSourceRecurringExpenseRequest | The request object to create a new lead source recurring expense
+        CreateLeadSourceRecurringExpenseRequest createLeadSourceRecurringExpenseRequest = new CreateLeadSourceRecurringExpenseRequest(); // CreateLeadSourceRecurringExpenseRequest | 
         try {
             LeadSourceRecurringExpense result = apiInstance.createLeadSourceRecurringExpense(leadSourceId, createLeadSourceRecurringExpenseRequest);
             System.out.println(result);
@@ -65,7 +70,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **leadSourceId** | **String**| The ID of the lead source this recurring expense belongs to | |
-| **createLeadSourceRecurringExpenseRequest** | [**CreateLeadSourceRecurringExpenseRequest**](CreateLeadSourceRecurringExpenseRequest.md)| The request object to create a new lead source recurring expense | |
+| **createLeadSourceRecurringExpenseRequest** | [**CreateLeadSourceRecurringExpenseRequest**](CreateLeadSourceRecurringExpenseRequest.md)|  | |
 
 ### Return type
 
@@ -74,7 +79,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -88,7 +93,10 @@ No authorization required
 | **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## createLeadSourceRecurringExpenseWithHttpInfo
 
@@ -106,17 +114,22 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.LeadSourceRecurringExpensesApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         LeadSourceRecurringExpensesApi apiInstance = new LeadSourceRecurringExpensesApi(defaultClient);
         String leadSourceId = "leadSourceId_example"; // String | The ID of the lead source this recurring expense belongs to
-        CreateLeadSourceRecurringExpenseRequest createLeadSourceRecurringExpenseRequest = new CreateLeadSourceRecurringExpenseRequest(); // CreateLeadSourceRecurringExpenseRequest | The request object to create a new lead source recurring expense
+        CreateLeadSourceRecurringExpenseRequest createLeadSourceRecurringExpenseRequest = new CreateLeadSourceRecurringExpenseRequest(); // CreateLeadSourceRecurringExpenseRequest | 
         try {
             ApiResponse<LeadSourceRecurringExpense> response = apiInstance.createLeadSourceRecurringExpenseWithHttpInfo(leadSourceId, createLeadSourceRecurringExpenseRequest);
             System.out.println("Status code: " + response.getStatusCode());
@@ -139,7 +152,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **leadSourceId** | **String**| The ID of the lead source this recurring expense belongs to | |
-| **createLeadSourceRecurringExpenseRequest** | [**CreateLeadSourceRecurringExpenseRequest**](CreateLeadSourceRecurringExpenseRequest.md)| The request object to create a new lead source recurring expense | |
+| **createLeadSourceRecurringExpenseRequest** | [**CreateLeadSourceRecurringExpenseRequest**](CreateLeadSourceRecurringExpenseRequest.md)|  | |
 
 ### Return type
 
@@ -148,7 +161,7 @@ ApiResponse<[**LeadSourceRecurringExpense**](LeadSourceRecurringExpense.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -162,7 +175,10 @@ No authorization required
 | **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## deleteLeadSourceRecurringExpense
@@ -180,13 +196,18 @@ Deletes a new Lead Source Recurring Expense that belongs to a Lead Source
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.LeadSourceRecurringExpensesApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         LeadSourceRecurringExpensesApi apiInstance = new LeadSourceRecurringExpensesApi(defaultClient);
         String leadSourceId = "leadSourceId_example"; // String | The ID of the lead source this recurring expense belongs to
@@ -219,7 +240,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -230,10 +251,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## deleteLeadSourceRecurringExpenseWithHttpInfo
 
@@ -251,13 +275,18 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.LeadSourceRecurringExpensesApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         LeadSourceRecurringExpensesApi apiInstance = new LeadSourceRecurringExpensesApi(defaultClient);
         String leadSourceId = "leadSourceId_example"; // String | The ID of the lead source this recurring expense belongs to
@@ -292,7 +321,7 @@ ApiResponse<Void>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -303,10 +332,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## getLeadSourceRecurringExpense
@@ -324,13 +356,18 @@ Retrieves a Lead Source Recurring Expense using leadSourceId and leadSourceRecur
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.LeadSourceRecurringExpensesApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         LeadSourceRecurringExpensesApi apiInstance = new LeadSourceRecurringExpensesApi(defaultClient);
         String leadSourceId = "leadSourceId_example"; // String | The ID of the lead source this recurring expense belongs to
@@ -364,7 +401,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -375,10 +412,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## getLeadSourceRecurringExpenseWithHttpInfo
 
@@ -396,13 +436,18 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.LeadSourceRecurringExpensesApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         LeadSourceRecurringExpensesApi apiInstance = new LeadSourceRecurringExpensesApi(defaultClient);
         String leadSourceId = "leadSourceId_example"; // String | The ID of the lead source this recurring expense belongs to
@@ -438,7 +483,7 @@ ApiResponse<[**LeadSourceRecurringExpense**](LeadSourceRecurringExpense.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -449,10 +494,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## listExpensesIncurredFromLeadSourceRecurringExpense
@@ -470,13 +518,18 @@ Retrieves a list of expenses incurred from a recurring expense
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.LeadSourceRecurringExpensesApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         LeadSourceRecurringExpensesApi apiInstance = new LeadSourceRecurringExpensesApi(defaultClient);
         String leadSourceId = "leadSourceId_example"; // String | The ID of the lead source this recurring expense belongs to
@@ -518,7 +571,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -533,7 +586,9 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## listExpensesIncurredFromLeadSourceRecurringExpenseWithHttpInfo
 
@@ -551,13 +606,18 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.LeadSourceRecurringExpensesApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         LeadSourceRecurringExpensesApi apiInstance = new LeadSourceRecurringExpensesApi(defaultClient);
         String leadSourceId = "leadSourceId_example"; // String | The ID of the lead source this recurring expense belongs to
@@ -601,7 +661,7 @@ ApiResponse<[**ListLeadSourceExpensesResponse**](ListLeadSourceExpensesResponse.
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -616,7 +676,9 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## listLeadSourceRecurringExpenses
@@ -634,13 +696,18 @@ Retrieves a list of recurring expenses with lead_source_id and optional &#39;fil
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.LeadSourceRecurringExpensesApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         LeadSourceRecurringExpensesApi apiInstance = new LeadSourceRecurringExpensesApi(defaultClient);
         String leadSourceId = "leadSourceId_example"; // String | The ID of the lead source this recurring expense belongs to
@@ -680,7 +747,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -695,7 +762,9 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## listLeadSourceRecurringExpensesWithHttpInfo
 
@@ -713,13 +782,18 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.LeadSourceRecurringExpensesApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         LeadSourceRecurringExpensesApi apiInstance = new LeadSourceRecurringExpensesApi(defaultClient);
         String leadSourceId = "leadSourceId_example"; // String | The ID of the lead source this recurring expense belongs to
@@ -761,7 +835,7 @@ ApiResponse<[**ListLeadSourceRecurringExpensesResponse**](ListLeadSourceRecurrin
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -776,7 +850,9 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## updateLeadSourceRecurringExpense
@@ -794,19 +870,24 @@ Updates a Lead Source Recurring Expense
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.LeadSourceRecurringExpensesApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         LeadSourceRecurringExpensesApi apiInstance = new LeadSourceRecurringExpensesApi(defaultClient);
         String leadSourceId = "leadSourceId_example"; // String | The ID of the lead source this recurring expense belongs to
         String leadSourceRecurringExpenseId = "leadSourceRecurringExpenseId_example"; // String | The ID of a lead source recurring expense
-        LeadSourceRecurringExpenseUpdateRequest leadSourceRecurringExpenseUpdateRequest = new LeadSourceRecurringExpenseUpdateRequest(); // LeadSourceRecurringExpenseUpdateRequest | The request object to update a lead source recurring expense
-        List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        LeadSourceRecurringExpenseUpdateRequest leadSourceRecurringExpenseUpdateRequest = new LeadSourceRecurringExpenseUpdateRequest(); // LeadSourceRecurringExpenseUpdateRequest | 
+        String updateMask = "title,notes,amount,start_time,end_time"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             LeadSourceRecurringExpense result = apiInstance.updateLeadSourceRecurringExpense(leadSourceId, leadSourceRecurringExpenseId, leadSourceRecurringExpenseUpdateRequest, updateMask);
             System.out.println(result);
@@ -828,8 +909,8 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **leadSourceId** | **String**| The ID of the lead source this recurring expense belongs to | |
 | **leadSourceRecurringExpenseId** | **String**| The ID of a lead source recurring expense | |
-| **leadSourceRecurringExpenseUpdateRequest** | [**LeadSourceRecurringExpenseUpdateRequest**](LeadSourceRecurringExpenseUpdateRequest.md)| The request object to update a lead source recurring expense | |
-| **updateMask** | [**List&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: title, notes, amount, start_time, end_time] |
+| **leadSourceRecurringExpenseUpdateRequest** | [**LeadSourceRecurringExpenseUpdateRequest**](LeadSourceRecurringExpenseUpdateRequest.md)|  | |
+| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: title,notes,amount,start_time,end_time] |
 
 ### Return type
 
@@ -838,7 +919,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -853,7 +934,9 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## updateLeadSourceRecurringExpenseWithHttpInfo
 
@@ -871,19 +954,24 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.LeadSourceRecurringExpensesApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         LeadSourceRecurringExpensesApi apiInstance = new LeadSourceRecurringExpensesApi(defaultClient);
         String leadSourceId = "leadSourceId_example"; // String | The ID of the lead source this recurring expense belongs to
         String leadSourceRecurringExpenseId = "leadSourceRecurringExpenseId_example"; // String | The ID of a lead source recurring expense
-        LeadSourceRecurringExpenseUpdateRequest leadSourceRecurringExpenseUpdateRequest = new LeadSourceRecurringExpenseUpdateRequest(); // LeadSourceRecurringExpenseUpdateRequest | The request object to update a lead source recurring expense
-        List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        LeadSourceRecurringExpenseUpdateRequest leadSourceRecurringExpenseUpdateRequest = new LeadSourceRecurringExpenseUpdateRequest(); // LeadSourceRecurringExpenseUpdateRequest | 
+        String updateMask = "title,notes,amount,start_time,end_time"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ApiResponse<LeadSourceRecurringExpense> response = apiInstance.updateLeadSourceRecurringExpenseWithHttpInfo(leadSourceId, leadSourceRecurringExpenseId, leadSourceRecurringExpenseUpdateRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
@@ -907,8 +995,8 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **leadSourceId** | **String**| The ID of the lead source this recurring expense belongs to | |
 | **leadSourceRecurringExpenseId** | **String**| The ID of a lead source recurring expense | |
-| **leadSourceRecurringExpenseUpdateRequest** | [**LeadSourceRecurringExpenseUpdateRequest**](LeadSourceRecurringExpenseUpdateRequest.md)| The request object to update a lead source recurring expense | |
-| **updateMask** | [**List&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: title, notes, amount, start_time, end_time] |
+| **leadSourceRecurringExpenseUpdateRequest** | [**LeadSourceRecurringExpenseUpdateRequest**](LeadSourceRecurringExpenseUpdateRequest.md)|  | |
+| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: title,notes,amount,start_time,end_time] |
 
 ### Return type
 
@@ -917,7 +1005,7 @@ ApiResponse<[**LeadSourceRecurringExpense**](LeadSourceRecurringExpense.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -932,5 +1020,7 @@ No authorization required
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 

@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**productIds** | **List&lt;String&gt;** |  |  |
+|**productIds** | **Set&lt;String&gt;** |  |  |
 
 
 ## Implemented Interfaces

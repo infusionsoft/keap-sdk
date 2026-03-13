@@ -1,20 +1,21 @@
 # Keap.Core.V2.Model.UpdateOrderRequest
+order
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ContactId** | **string** |  | [optional] 
-**LeadAffiliateId** | **string** |  | [optional] 
-**Notes** | **string** |  | [optional] 
-**OrderTime** | **string** | The date and time of the order. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z) | [optional] 
-**OrderTitle** | **string** |  | [optional] 
-**OrderType** | **string** | The order type. Valid values are: ONLINE, OFFLINE. | [optional] 
-**PaymentPlan** | [**UpdatedPaymentPlan**](UpdatedPaymentPlan.md) |  | [optional] 
+**Notes** | **string** | Internal notes | [optional] 
+**Terms** | **string** | Order terms | [optional] 
+**ContactId** | **string** | ID of the contact for this order | [optional] 
+**OrderTitle** | **string** | Title for the order | [optional] 
+**OrderTime** | **DateTime** | The date and time of the order. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z) | [optional] 
+**OrderType** | **string** | The order type. | [optional] 
 **PromoCodes** | **List&lt;string&gt;** | Uses multiple strings as promo codes. The corresponding discount will be applied to the order. | [optional] 
-**SalesAffiliateId** | **string** |  | [optional] 
-**ShippingAddress** | [**AddressInformation**](AddressInformation.md) |  | [optional] 
-**Terms** | **string** |  | [optional] 
+**LeadAffiliateId** | **string** | Lead affiliate ID | [optional] 
+**SalesAffiliateId** | **string** | Sales affiliate ID | [optional] 
+**ShippingAddress** | [**AddressInformation**](AddressInformation.md) | Shipping address for the order | [optional] 
+**PaymentPlan** | [**UpdatedPaymentPlan**](UpdatedPaymentPlan.md) | Payment plan details | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

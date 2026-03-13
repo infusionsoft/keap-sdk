@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**amount** | **float** |  | [optional] 
-**discount_method** | **str** |  | [optional] 
-**special_item_id** | **str** |  | [optional] 
+**amount** | **float** | Discount amount | [optional] 
+**special_item_id** | **str** | Discount item ID | [optional] 
+**discount_method** | **str** | Discount method | [optional] 
 
 ## Example
 

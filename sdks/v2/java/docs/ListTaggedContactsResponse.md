@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**contacts** | [**List&lt;BasicContact&gt;**](BasicContact.md) |  |  [optional] |
+|**contacts** | [**List&lt;TaggedContact&gt;**](TaggedContact.md) |  |  [optional] |
 |**nextPageToken** | **String** |  |  [optional] |
 
 

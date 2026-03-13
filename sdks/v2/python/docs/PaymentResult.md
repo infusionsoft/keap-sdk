@@ -5,11 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [optional] 
-**invoice_id** | **str** |  | [optional] 
-**payment_amount** | **float** |  | [optional] 
-**payment_status_message** | **str** |  | [optional] 
-**transaction_id** | **str** |  | [optional] 
+**id** | **str** | Payment result ID | [optional] 
+**invoice_id** | **str** | Associated invoice ID | [optional] 
+**payment_amount** | **float** | Amount paid | [optional] 
+**payment_status_message** | **str** | Payment status | [optional] 
+**transaction_id** | **str** | Transaction ID from payment processor | [optional] 
 
 ## Example
 

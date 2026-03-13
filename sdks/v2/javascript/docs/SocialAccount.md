@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **String** |  | [optional] 
-**type** | **String** |  | 
+**name** | **String** | Social account username or handle | [optional] 
+**type** | **String** | Social account type | 
 
 
 

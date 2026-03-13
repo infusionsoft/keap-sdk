@@ -6,9 +6,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **affiliate_id** | **int** |  | [optional] 
-**amount_earned** | **float** |  | [optional] 
-**balance** | **float** |  | [optional] 
 **clawbacks** | **float** |  | [optional] 
+**balance** | **float** |  | [optional] 
+**amount_earned** | **float** |  | [optional] 
 
 ## Example
 

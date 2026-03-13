@@ -9,9 +9,9 @@
 |------------ | ------------- | ------------- | -------------|
 |**brand** | **String** |  |  [optional] |
 |**cardType** | [**CardTypeEnum**](#CardTypeEnum) | The card type. Valid values are: CREDIT, DEBIT, PREPAID. |  [optional] |
-|**expirationMonth** | **String** |  |  [optional] |
-|**expirationYear** | **String** |  |  [optional] |
 |**lastFour** | **String** |  |  [optional] |
+|**expirationYear** | **String** |  |  [optional] |
+|**expirationMonth** | **String** |  |  [optional] |
 
 
 

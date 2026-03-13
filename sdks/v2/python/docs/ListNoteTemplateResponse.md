@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**next_page_token** | **str** |  | [optional] 
 **note_templates** | [**List[NoteTemplate]**](NoteTemplate.md) |  | [optional] 
+**next_page_token** | **str** |  | [optional] 
 
 ## Example
 

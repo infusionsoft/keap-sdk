@@ -1,10 +1,10 @@
 # .ReferralApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createReferral**](ReferralApi.md#createReferral) | **POST** /v2/referrals | Create a Referral
+[**createReferral**](ReferralApi.md#createReferral) | **POST** /rest/v2/referrals | Create a Referral
 
 
 # **createReferral**
@@ -23,16 +23,16 @@ const configuration = createConfiguration();
 const apiInstance = new ReferralApi(configuration);
 
 const request: ReferralApiCreateReferralRequest = {
-    // request
+  
   createReferralRequest: {
-    contactId: "contactId_example",
-    description: "description_example",
-    expirationTime: "expirationTime_example",
-    ipAddress: "ipAddress_example",
-    referralPartnerId: "referralPartnerId_example",
-    referralTime: "referralTime_example",
+    description: "Referred via email campaign",
+    source: "Email Marketing",
+    contactId: "123",
+    referralPartnerId: "456",
+    referralTime: new Date('2024-05-21T14:30:00Z'),
+    expirationTime: new Date('2024-08-21T14:30:00Z'),
+    ipAddress: "192.168.1.100",
     referralType: "COOKIE",
-    source: "source_example",
   },
 };
 
@@ -45,7 +45,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createReferralRequest** | **CreateReferralRequest**| request |
+ **createReferralRequest** | **CreateReferralRequest**|  |
 
 
 ### Return type
@@ -54,7 +54,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -66,9 +66,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

@@ -1,11 +1,12 @@
 # ListEmailsSentResponse
 
+Response containing a list of sent emails
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**emails** | [**List[EmailSent]**](EmailSent.md) |  | [optional] 
+**emails** | [**List[EmailSent]**](EmailSent.md) | List of sent emails | [optional] 
 **next_page_token** | **str** |  | [optional] 
 
 ## Example

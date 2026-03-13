@@ -6,19 +6,19 @@ Profile information about the business that owns/uses this account
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**name** | **str** |  | [optional] 
+**email** | **str** |  | [optional] 
+**website** | **str** |  | [optional] 
+**phone** | **str** |  | [optional] 
 **address** | [**BusinessProfileAddressResponse**](BusinessProfileAddressResponse.md) |  | [optional] 
+**time_zone** | **str** |  | [optional] 
+**logo_url** | **str** |  | [optional] 
+**currency_code** | **str** | ISO 4217 Currency Code | [optional] 
+**language_tag** | **str** |  | [optional] 
+**business_type** | **str** | The type of business | [optional] 
 **business_goals** | **List[str]** | The goals of this business, ie. Grow Business, Convert more leads | [optional] 
 **business_primary_color** | **str** |  | [optional] 
 **business_secondary_color** | **str** |  | [optional] 
-**business_type** | **str** | The type of business | [optional] 
-**currency_code** | **str** | ISO 4217 Currency Code | [optional] 
-**email** | **str** |  | [optional] 
-**language_tag** | **str** |  | [optional] 
-**logo_url** | **str** |  | [optional] 
-**name** | **str** |  | [optional] 
-**phone** | **str** |  | [optional] 
-**time_zone** | **str** |  | [optional] 
-**website** | **str** |  | [optional] 
 
 ## Example
 

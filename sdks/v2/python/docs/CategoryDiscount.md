@@ -5,13 +5,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**apply_to_commissions** | **bool** |  | [optional] 
-**criteria** | [**List[DiscountCriteria]**](DiscountCriteria.md) |  | [optional] 
-**description** | **str** |  | [optional] 
-**discount_percent** | **float** |  | [optional] 
-**id** | **str** |  | [optional] 
-**name** | **str** |  | [optional] 
-**product_categories** | **List[str]** |  | [optional] 
+**id** | **str** | Unique identifier for this category discount | [optional] 
+**name** | **str** | Name of the discount | [optional] 
+**description** | **str** | Description of the discount | [optional] 
+**criteria** | [**List[CategoryDiscountCriteriaResponse]**](CategoryDiscountCriteriaResponse.md) | List of criteria that must be met for this discount to apply | [optional] 
+**discount_percent** | **float** | Percentage discount to apply (0-100) | [optional] 
+**apply_to_commissions** | **bool** | Whether to apply this discount to commission calculations | [optional] 
+**product_categories** | **List[str]** | List of product category IDs this discount applies to | [optional] 
 
 ## Example
 

@@ -4,18 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**callerIdNumber** | **String** |  | [optional] 
-**city** | **String** |  | [optional] 
+**name** | **String** |  | [optional] 
 **country** | **String** |  | [optional] 
 **email** | **String** |  | [optional] 
-**name** | **String** |  | [optional] 
-**phone** | **String** |  | [optional] 
-**phoneExt** | **String** |  | [optional] 
+**city** | **String** |  | [optional] 
 **state** | **String** |  | [optional] 
+**zip** | **String** |  | [optional] 
+**phone** | **String** |  | [optional] 
+**website** | **String** |  | [optional] 
 **streetAddress1** | **String** |  | [optional] 
 **streetAddress2** | **String** |  | [optional] 
+**phoneExt** | **String** |  | [optional] 
+**callerIdNumber** | **String** |  | [optional] 
 **webLogoUrl** | **String** |  | [optional] 
-**website** | **String** |  | [optional] 
-**zip** | **String** |  | [optional] 
 
 

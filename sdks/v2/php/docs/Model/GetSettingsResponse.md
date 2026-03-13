@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **affiliate** | [**\Keap\Core\V2\Model\ApplicationConfigurationModuleAffiliate**](ApplicationConfigurationModuleAffiliate.md) |  | [optional]
-**application** | [**\Keap\Core\V2\Model\ApplicationConfigurationModuleApplication**](ApplicationConfigurationModuleApplication.md) |  | [optional]
 **appointment** | [**\Keap\Core\V2\Model\ApplicationConfigurationModuleAppointment**](ApplicationConfigurationModuleAppointment.md) |  | [optional]
+**application** | [**\Keap\Core\V2\Model\ApplicationConfigurationModuleApplication**](ApplicationConfigurationModuleApplication.md) |  | [optional]
 **contact** | [**\Keap\Core\V2\Model\ApplicationConfigurationModuleContact**](ApplicationConfigurationModuleContact.md) |  | [optional]
 **ecommerce** | [**\Keap\Core\V2\Model\ApplicationConfigurationModuleEcommerce**](ApplicationConfigurationModuleEcommerce.md) |  | [optional]
 **email** | [**\Keap\Core\V2\Model\ApplicationConfigurationModuleEmail**](ApplicationConfigurationModuleEmail.md) |  | [optional]

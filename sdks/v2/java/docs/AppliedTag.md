@@ -1,0 +1,18 @@
+
+
+# AppliedTag
+
+Tag with application timestamp
+
+## Properties
+
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**tag** | [**Tag**](Tag.md) | The tag applied |  [optional] |
+|**appliedTime** | **String** | The time the tag was applied to the contact, in ISO 8601 format |  [optional] |
+
+
+## Implemented Interfaces
+
+* Serializable
+

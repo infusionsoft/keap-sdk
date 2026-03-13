@@ -1,11 +1,11 @@
 # ReferralApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createReferral**](ReferralApi.md#createReferral) | **POST** /v2/referrals | Create a Referral |
-| [**createReferralWithHttpInfo**](ReferralApi.md#createReferralWithHttpInfo) | **POST** /v2/referrals | Create a Referral |
+| [**createReferral**](ReferralApi.md#createReferral) | **POST** /rest/v2/referrals | Create a Referral |
+| [**createReferralWithHttpInfo**](ReferralApi.md#createReferralWithHttpInfo) | **POST** /rest/v2/referrals | Create a Referral |
 
 
 
@@ -24,16 +24,21 @@ Creates a new referral partner referral on the provided contact
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ReferralApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ReferralApi apiInstance = new ReferralApi(defaultClient);
-        CreateReferralRequest createReferralRequest = new CreateReferralRequest(); // CreateReferralRequest | request
+        CreateReferralRequest createReferralRequest = new CreateReferralRequest(); // CreateReferralRequest | 
         try {
             Referral result = apiInstance.createReferral(createReferralRequest);
             System.out.println(result);
@@ -53,7 +58,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **createReferralRequest** | [**CreateReferralRequest**](CreateReferralRequest.md)| request | |
+| **createReferralRequest** | [**CreateReferralRequest**](CreateReferralRequest.md)|  | |
 
 ### Return type
 
@@ -62,7 +67,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -73,9 +78,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## createReferralWithHttpInfo
 
@@ -93,16 +102,21 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ReferralApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ReferralApi apiInstance = new ReferralApi(defaultClient);
-        CreateReferralRequest createReferralRequest = new CreateReferralRequest(); // CreateReferralRequest | request
+        CreateReferralRequest createReferralRequest = new CreateReferralRequest(); // CreateReferralRequest | 
         try {
             ApiResponse<Referral> response = apiInstance.createReferralWithHttpInfo(createReferralRequest);
             System.out.println("Status code: " + response.getStatusCode());
@@ -124,7 +138,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **createReferralRequest** | [**CreateReferralRequest**](CreateReferralRequest.md)| request | |
+| **createReferralRequest** | [**CreateReferralRequest**](CreateReferralRequest.md)|  | |
 
 ### Return type
 
@@ -133,7 +147,7 @@ ApiResponse<[**Referral**](Referral.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -144,7 +158,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 

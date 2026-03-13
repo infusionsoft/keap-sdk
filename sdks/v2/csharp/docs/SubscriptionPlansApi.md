@@ -1,14 +1,14 @@
 # Keap.Core.V2.Api.SubscriptionPlansApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**CreateSubscriptionPlans**](SubscriptionPlansApi.md#createsubscriptionplans) | **POST** /v2/products/{product_id}/subscriptions | Create Subscription Plan |
-| [**DeleteSubscriptionPlan**](SubscriptionPlansApi.md#deletesubscriptionplan) | **DELETE** /v2/products/{product_id}/subscriptions/{subscription_plan_id} | Delete Subscription Plan |
-| [**FetchSubscriptionPlan**](SubscriptionPlansApi.md#fetchsubscriptionplan) | **GET** /v2/products/{product_id}/subscriptions/{subscription_plan_id} | Get Subscription Plan |
-| [**ListSubscriptionPlans**](SubscriptionPlansApi.md#listsubscriptionplans) | **GET** /v2/products/{product_id}/subscriptions | List Subscription Plans |
-| [**UpdateSubscriptionPlan**](SubscriptionPlansApi.md#updatesubscriptionplan) | **PATCH** /v2/products/{product_id}/subscriptions/{subscription_plan_id} | Update Subscription Plan |
+| [**CreateSubscriptionPlans**](SubscriptionPlansApi.md#createsubscriptionplans) | **POST** /rest/v2/products/{product_id}/subscriptions | Create Subscription Plan |
+| [**DeleteSubscriptionPlan**](SubscriptionPlansApi.md#deletesubscriptionplan) | **DELETE** /rest/v2/products/{product_id}/subscriptions/{subscription_plan_id} | Delete Subscription Plan |
+| [**FetchSubscriptionPlan**](SubscriptionPlansApi.md#fetchsubscriptionplan) | **GET** /rest/v2/products/{product_id}/subscriptions/{subscription_plan_id} | Get Subscription Plan |
+| [**ListSubscriptionPlans**](SubscriptionPlansApi.md#listsubscriptionplans) | **GET** /rest/v2/products/{product_id}/subscriptions | List Subscription Plans |
+| [**UpdateSubscriptionPlan**](SubscriptionPlansApi.md#updatesubscriptionplan) | **PATCH** /rest/v2/products/{product_id}/subscriptions/{subscription_plan_id} | Update Subscription Plan |
 
 <a id="createsubscriptionplans"></a>
 # **CreateSubscriptionPlans**
@@ -33,10 +33,13 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new SubscriptionPlansApi(config);
-            var productId = "productId_example";  // string | product_id
-            var createSubscriptionPlanRequest = new CreateSubscriptionPlanRequest(); // CreateSubscriptionPlanRequest | createSubscriptionPlanRequest
+            var productId = "productId_example";  // string | 
+            var createSubscriptionPlanRequest = new CreateSubscriptionPlanRequest(); // CreateSubscriptionPlanRequest | 
 
             try
             {
@@ -79,8 +82,8 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **productId** | **string** | product_id |  |
-| **createSubscriptionPlanRequest** | [**CreateSubscriptionPlanRequest**](CreateSubscriptionPlanRequest.md) | createSubscriptionPlanRequest |  |
+| **productId** | **string** |  |  |
+| **createSubscriptionPlanRequest** | [**CreateSubscriptionPlanRequest**](CreateSubscriptionPlanRequest.md) |  |  |
 
 ### Return type
 
@@ -88,7 +91,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -100,9 +103,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -129,7 +136,10 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new SubscriptionPlansApi(config);
             var productId = "productId_example";  // string | product_id
             var subscriptionPlanId = "subscriptionPlanId_example";  // string | subscription_plan_id
@@ -180,7 +190,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -192,10 +202,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -222,7 +235,10 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new SubscriptionPlansApi(config);
             var productId = "productId_example";  // string | product_id
             var subscriptionPlanId = "subscriptionPlanId_example";  // string | subscription_plan_id
@@ -277,7 +293,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -289,10 +305,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -319,10 +338,13 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new SubscriptionPlansApi(config);
             var productId = '-' can be used for a wildcard (/v2/products/-/subscriptions;  // string | product_id
-            var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (Boolean) `active`: true or false - (BillingCycle) `cycle_type`: DAILY, WEEKLY, MONTHLY, YEARLY You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=active%3D%3Dtrue` - `filter=cycle_type%3D%3DDAILY` - `filter=active%3D%3Dfalse%3Bcycle_type%3D%3DWEEKLY`  (optional) 
+            var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (Boolean) `active`: true or false - (BillingCycle) `cycle_type`: DAILY, WEEKLY, MONTHLY, YEARLY  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=active%3D%3Dtrue` - `filter=cycle_type%3D%3DDAILY` - `filter=active%3D%3Dfalse%3Bcycle_type%3D%3DWEEKLY`  (optional) 
             var orderBy = "orderBy_example";  // string? | Attribute and direction to order items. One of the following fields: - `id` - `product_id`  One of the following directions: - `asc` - `desc`  (optional) 
             var pageSize = 0;  // int? | Total number of items to return per page (optional) 
             var pageToken = "pageToken_example";  // string? | Page token (optional) 
@@ -369,7 +391,7 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **productId** | **string** | product_id |  |
-| **filter** | **string?** | Filter to apply, allowed fields are: - (Boolean) &#x60;active&#x60;: true or false - (BillingCycle) &#x60;cycle_type&#x60;: DAILY, WEEKLY, MONTHLY, YEARLY You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;active%3D%3Dtrue&#x60; - &#x60;filter&#x3D;cycle_type%3D%3DDAILY&#x60; - &#x60;filter&#x3D;active%3D%3Dfalse%3Bcycle_type%3D%3DWEEKLY&#x60;  | [optional]  |
+| **filter** | **string?** | Filter to apply, allowed fields are: - (Boolean) &#x60;active&#x60;: true or false - (BillingCycle) &#x60;cycle_type&#x60;: DAILY, WEEKLY, MONTHLY, YEARLY  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;active%3D%3Dtrue&#x60; - &#x60;filter&#x3D;cycle_type%3D%3DDAILY&#x60; - &#x60;filter&#x3D;active%3D%3Dfalse%3Bcycle_type%3D%3DWEEKLY&#x60;  | [optional]  |
 | **orderBy** | **string?** | Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;product_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  | [optional]  |
 | **pageSize** | **int?** | Total number of items to return per page | [optional]  |
 | **pageToken** | **string?** | Page token | [optional]  |
@@ -380,7 +402,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -392,16 +414,19 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="updatesubscriptionplan"></a>
 # **UpdateSubscriptionPlan**
-> SubscriptionPlan UpdateSubscriptionPlan (string productId, string subscriptionPlanId, UpdateSubscriptionPlanRequest updateSubscriptionPlanRequest, List<string>? updateMask = null)
+> SubscriptionPlan UpdateSubscriptionPlan (string productId, string subscriptionPlanId, UpdateSubscriptionPlanRequest updateSubscriptionPlanRequest, string? updateMask = null)
 
 Update Subscription Plan
 
@@ -422,12 +447,15 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new SubscriptionPlansApi(config);
             var productId = "productId_example";  // string | product_id
             var subscriptionPlanId = "subscriptionPlanId_example";  // string | subscription_plan_id
-            var updateSubscriptionPlanRequest = new UpdateSubscriptionPlanRequest(); // UpdateSubscriptionPlanRequest | updateSubscriptionPlanRequest
-            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var updateSubscriptionPlanRequest = new UpdateSubscriptionPlanRequest(); // UpdateSubscriptionPlanRequest | 
+            var updateMask = "active,allow_prorating,cycle_type,display_order_index,frequency,plan_price,total_cycles";  // string? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -472,8 +500,8 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **productId** | **string** | product_id |  |
 | **subscriptionPlanId** | **string** | subscription_plan_id |  |
-| **updateSubscriptionPlanRequest** | [**UpdateSubscriptionPlanRequest**](UpdateSubscriptionPlanRequest.md) | updateSubscriptionPlanRequest |  |
-| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **updateSubscriptionPlanRequest** | [**UpdateSubscriptionPlanRequest**](UpdateSubscriptionPlanRequest.md) |  |  |
+| **updateMask** | **string?** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 
@@ -481,7 +509,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -493,10 +521,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

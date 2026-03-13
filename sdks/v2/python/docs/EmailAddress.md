@@ -5,11 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**email** | **str** |  | [optional] 
-**email_opt_status** | **str** |  | [optional] 
-**var_field** | **str** |  | [optional] 
+**email** | **str** | Email address | [optional] 
+**var_field** | **str** | Email address slot | [optional] 
+**opt_in_reason** | **str** | Reason for opting in | [optional] 
 **is_opt_in** | **bool** |  | [optional] 
-**opt_in_reason** | **str** |  | [optional] 
+**email_opt_status** | **str** |  | [optional] 
 
 ## Example
 

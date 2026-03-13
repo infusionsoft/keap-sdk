@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**first_name** | **str** |  | [optional] 
-**id** | **str** |  | [optional] 
-**last_name** | **str** |  | [optional] 
+**id** | **str** | User ID | [optional] 
+**first_name** | **str** | First name | [optional] 
+**last_name** | **str** | Last name | [optional] 
 
 ## Example
 

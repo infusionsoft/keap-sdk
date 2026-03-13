@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**userGroups** | [**[UserGroup]**](UserGroup.md) | List of user groups | [optional] 
 **nextPageToken** | **String** |  | [optional] 
-**userGroups** | [**[UserGroup]**](UserGroup.md) |  | [optional] 
 
 

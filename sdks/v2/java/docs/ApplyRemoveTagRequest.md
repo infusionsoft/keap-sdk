@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**contactIds** | **List&lt;String&gt;** |  |  |
+|**contactIds** | **Set&lt;String&gt;** | The IDs of the contacts to apply/remove the tag to/from |  |
 
 
 ## Implemented Interfaces

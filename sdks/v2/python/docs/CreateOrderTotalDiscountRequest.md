@@ -5,13 +5,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**apply_to_commissions** | **bool** |  | [optional] 
-**criteria** | [**List[DiscountCriteria]**](DiscountCriteria.md) |  | [optional] 
-**description** | **str** |  | [optional] 
-**discount_strategy** | **str** |  | [optional] 
-**discount_type** | **str** |  | 
-**discount_value** | **float** |  | 
-**name** | **str** |  | 
+**name** | **str** | Name of the discount | 
+**description** | **str** | Description of the discount | [optional] 
+**criteria** | [**List[DiscountCriteria]**](DiscountCriteria.md) | List of criteria that must be met for this discount to apply | [optional] 
+**apply_to_commissions** | **bool** | Whether to apply this discount to commission calculations | [optional] 
+**discount_type** | **str** | Type of discount: AMOUNT (fixed amount) or PERCENT (percentage) | 
+**discount_value** | **float** | Value of the discount (amount or percentage depending on discount_type) | 
+**discount_strategy** | **str** | Strategy for applying discount: GROSS (before tax) or NET (after tax) | [optional] 
 
 ## Example
 

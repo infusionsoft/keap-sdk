@@ -1,19 +1,21 @@
 # GetUserInfoResponse
 
+User information response
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**email** | **str** |  | [optional] 
-**family_name** | **str** |  | [optional] 
-**given_name** | **str** |  | [optional] 
-**id** | **str** |  | [optional] 
-**is_admin** | **bool** |  | [optional] 
-**keap_id** | **str** |  | [optional] 
-**middle_name** | **str** |  | [optional] 
-**preferred_name** | **str** |  | [optional] 
-**sub** | **str** |  | [optional] 
+**email** | **str** | The user&#39;s email address | [optional] 
+**sub** | **str** | The subject identifier | [optional] 
+**id** | **str** | The global user identifier | [optional] 
+**keap_id** | **str** | The keap user identifier | [optional] 
+**family_name** | **str** | The user&#39;s last name | [optional] 
+**given_name** | **str** | The user&#39;s first name | [optional] 
+**middle_name** | **str** | The user&#39;s middle name | [optional] 
+**preferred_name** | **str** | The user&#39;s preferred name | [optional] 
+**is_admin** | **bool** | Whether the user is an admin | [optional] 
+**tenant_id** | **str** | The tenant ID the user belongs to | [optional] 
 
 ## Example
 

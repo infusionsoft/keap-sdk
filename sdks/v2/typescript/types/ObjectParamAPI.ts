@@ -2,19 +2,23 @@ import { ResponseContext, RequestContext, HttpFile, HttpInfo } from '../http/htt
 import { Configuration, ConfigurationOptions } from '../configuration'
 import type { Middleware } from '../middleware';
 
+import { AchieveGoalRequest } from '../models/AchieveGoalRequest';
+import { AchieveGoalResponse } from '../models/AchieveGoalResponse';
 import { AddContactsToSequenceRequest } from '../models/AddContactsToSequenceRequest';
 import { AddContactsToSequenceResponse } from '../models/AddContactsToSequenceResponse';
 import { AddProductInterestRequest } from '../models/AddProductInterestRequest';
 import { AddToAutomationSequenceRequest } from '../models/AddToAutomationSequenceRequest';
 import { AddToAutomationSequenceResponse } from '../models/AddToAutomationSequenceResponse';
 import { Address } from '../models/Address';
+import { AddressDetail } from '../models/AddressDetail';
 import { AddressInformation } from '../models/AddressInformation';
-import { AddressRequest } from '../models/AddressRequest';
+import { AddressRequestDetail } from '../models/AddressRequestDetail';
 import { AffiliateAddToProgramRequest } from '../models/AffiliateAddToProgramRequest';
 import { AffiliateCommission } from '../models/AffiliateCommission';
 import { AffiliateCommissionEarned } from '../models/AffiliateCommissionEarned';
 import { AffiliateCommissionProgramResponse } from '../models/AffiliateCommissionProgramResponse';
 import { AffiliateLink } from '../models/AffiliateLink';
+import { AffiliateProgramResource } from '../models/AffiliateProgramResource';
 import { AffiliateProgramV2 } from '../models/AffiliateProgramV2';
 import { AffiliateRemoveFromProgramRequest } from '../models/AffiliateRemoveFromProgramRequest';
 import { AffiliateSummaryRecord } from '../models/AffiliateSummaryRecord';
@@ -39,6 +43,8 @@ import { ApplicationConfigurationModuleOpportunityStatesWin } from '../models/Ap
 import { ApplicationConfigurationModuleTask } from '../models/ApplicationConfigurationModuleTask';
 import { ApplicationConfigurationModuleTemplate } from '../models/ApplicationConfigurationModuleTemplate';
 import { ApplicationFeaturesEnabled } from '../models/ApplicationFeaturesEnabled';
+import { AppliedTag } from '../models/AppliedTag';
+import { ApplyCommissionRequest } from '../models/ApplyCommissionRequest';
 import { ApplyRemoveTagRequest } from '../models/ApplyRemoveTagRequest';
 import { ApplyTagsResponse } from '../models/ApplyTagsResponse';
 import { AssignAutomationCategoryRequest } from '../models/AssignAutomationCategoryRequest';
@@ -49,12 +55,15 @@ import { AutomationLockStatus } from '../models/AutomationLockStatus';
 import { BasicCompany } from '../models/BasicCompany';
 import { BasicContact } from '../models/BasicContact';
 import { BasicUser } from '../models/BasicUser';
+import { BatchUnpublishAutomationRequest } from '../models/BatchUnpublishAutomationRequest';
 import { BusinessProfileAddressRequest } from '../models/BusinessProfileAddressRequest';
 import { BusinessProfileAddressResponse } from '../models/BusinessProfileAddressResponse';
 import { Campaign } from '../models/Campaign';
 import { CancelSubscriptionRequest } from '../models/CancelSubscriptionRequest';
 import { CardInfo } from '../models/CardInfo';
 import { CategoryDiscount } from '../models/CategoryDiscount';
+import { CategoryDiscountCriteriaRequest } from '../models/CategoryDiscountCriteriaRequest';
+import { CategoryDiscountCriteriaResponse } from '../models/CategoryDiscountCriteriaResponse';
 import { CategoryReference } from '../models/CategoryReference';
 import { CheckListItemDetails } from '../models/CheckListItemDetails';
 import { ChecklistItem } from '../models/ChecklistItem';
@@ -79,6 +88,7 @@ import { CreateDefaultCommissionProgramRequest } from '../models/CreateDefaultCo
 import { CreateEmailSentRequest } from '../models/CreateEmailSentRequest';
 import { CreateEmailsSentRequest } from '../models/CreateEmailsSentRequest';
 import { CreateFreeTrialDiscountRequest } from '../models/CreateFreeTrialDiscountRequest';
+import { CreateIntegrationsWordPressOptInOption } from '../models/CreateIntegrationsWordPressOptInOption';
 import { CreateLeadSourceExpenseRequest } from '../models/CreateLeadSourceExpenseRequest';
 import { CreateLeadSourceRecurringExpenseRequest } from '../models/CreateLeadSourceRecurringExpenseRequest';
 import { CreateLeadSourceRequest } from '../models/CreateLeadSourceRequest';
@@ -90,17 +100,19 @@ import { CreateOrUpdateAffiliateLinkRequest } from '../models/CreateOrUpdateAffi
 import { CreateOrderItemRequest } from '../models/CreateOrderItemRequest';
 import { CreateOrderTotalDiscountRequest } from '../models/CreateOrderTotalDiscountRequest';
 import { CreatePaymentMethodConfigRequest } from '../models/CreatePaymentMethodConfigRequest';
-import { CreatePaymentRequest } from '../models/CreatePaymentRequest';
 import { CreateProductCategoryRequest } from '../models/CreateProductCategoryRequest';
 import { CreateProductCommissionProgramRequest } from '../models/CreateProductCommissionProgramRequest';
 import { CreateProductDiscountRequest } from '../models/CreateProductDiscountRequest';
 import { CreateProductInterestBundleRequest } from '../models/CreateProductInterestBundleRequest';
-import { CreateProductRequest } from '../models/CreateProductRequest';
+import { CreateProductOptionListOption } from '../models/CreateProductOptionListOption';
+import { CreateProductOptionRequest } from '../models/CreateProductOptionRequest';
+import { CreateProductOptionTextOption } from '../models/CreateProductOptionTextOption';
+import { CreateProductRequestDetail } from '../models/CreateProductRequestDetail';
 import { CreateReferralRequest } from '../models/CreateReferralRequest';
 import { CreateShippingDiscountRequest } from '../models/CreateShippingDiscountRequest';
 import { CreateSubscriptionCommissionProgramRequest } from '../models/CreateSubscriptionCommissionProgramRequest';
 import { CreateSubscriptionPlanRequest } from '../models/CreateSubscriptionPlanRequest';
-import { CreateSubscriptionRequest } from '../models/CreateSubscriptionRequest';
+import { CreateSubscriptionRequestDetail } from '../models/CreateSubscriptionRequestDetail';
 import { CreateTaskRequest } from '../models/CreateTaskRequest';
 import { CreateUpdateContactRequest } from '../models/CreateUpdateContactRequest';
 import { CreateUpdateLeadSourceCategoryRequest } from '../models/CreateUpdateLeadSourceCategoryRequest';
@@ -108,6 +120,8 @@ import { CreateUpdateTagCategoryRequest } from '../models/CreateUpdateTagCategor
 import { CreateUpdateTagRequest } from '../models/CreateUpdateTagRequest';
 import { CreateUpdateTaskRequest } from '../models/CreateUpdateTaskRequest';
 import { CurrencyValue } from '../models/CurrencyValue';
+import { CurrencyValueDetail } from '../models/CurrencyValueDetail';
+import { CurrencyValueList } from '../models/CurrencyValueList';
 import { CustomField } from '../models/CustomField';
 import { CustomFieldMetaData } from '../models/CustomFieldMetaData';
 import { CustomFieldOption } from '../models/CustomFieldOption';
@@ -121,7 +135,6 @@ import { Discount } from '../models/Discount';
 import { DiscountCriteria } from '../models/DiscountCriteria';
 import { EmailAddress } from '../models/EmailAddress';
 import { EmailAddressRequest } from '../models/EmailAddressRequest';
-import { EmailAddressStatus } from '../models/EmailAddressStatus';
 import { EmailSendRequest } from '../models/EmailSendRequest';
 import { EmailSendRequestAttachment } from '../models/EmailSendRequestAttachment';
 import { EmailSendTemplateRequest } from '../models/EmailSendTemplateRequest';
@@ -134,15 +147,18 @@ import { ErrorDetails } from '../models/ErrorDetails';
 import { FaxNumber } from '../models/FaxNumber';
 import { FileMetadata } from '../models/FileMetadata';
 import { FileOperationRequest } from '../models/FileOperationRequest';
+import { FlowEventResultDTO } from '../models/FlowEventResultDTO';
 import { FreeTrialDiscount } from '../models/FreeTrialDiscount';
 import { GetApplicationEnabledStatusResponse } from '../models/GetApplicationEnabledStatusResponse';
 import { GetBusinessProfileResponse } from '../models/GetBusinessProfileResponse';
 import { GetContactOptionTypesResponse } from '../models/GetContactOptionTypesResponse';
 import { GetNoteResponse } from '../models/GetNoteResponse';
+import { GetRestCommissionProgram } from '../models/GetRestCommissionProgram';
 import { GetSettingsResponse } from '../models/GetSettingsResponse';
 import { GetTagCategoryResponse } from '../models/GetTagCategoryResponse';
 import { GetUserInfoResponse } from '../models/GetUserInfoResponse';
 import { Goal } from '../models/Goal';
+import { GoalEventResultDTO } from '../models/GoalEventResultDTO';
 import { HistoricalCounts } from '../models/HistoricalCounts';
 import { InvoiceFile } from '../models/InvoiceFile';
 import { InvoiceOrderPayment } from '../models/InvoiceOrderPayment';
@@ -159,6 +175,7 @@ import { ListAffiliateCommissionProgramsResponse } from '../models/ListAffiliate
 import { ListAffiliateCommissionsResponse } from '../models/ListAffiliateCommissionsResponse';
 import { ListAffiliateLinksResponse } from '../models/ListAffiliateLinksResponse';
 import { ListAffiliatePaymentsResponse } from '../models/ListAffiliatePaymentsResponse';
+import { ListAffiliateReferralsResponse } from '../models/ListAffiliateReferralsResponse';
 import { ListAffiliateSummariesResponse } from '../models/ListAffiliateSummariesResponse';
 import { ListAffiliatesResponse } from '../models/ListAffiliatesResponse';
 import { ListAutomationCategoryResponse } from '../models/ListAutomationCategoryResponse';
@@ -171,6 +188,7 @@ import { ListCategoryDiscountsResponse } from '../models/ListCategoryDiscountsRe
 import { ListCompaniesResponse } from '../models/ListCompaniesResponse';
 import { ListContactLinkTypesResponse } from '../models/ListContactLinkTypesResponse';
 import { ListContactLinksResponse } from '../models/ListContactLinksResponse';
+import { ListContactTagsResponse } from '../models/ListContactTagsResponse';
 import { ListContactsResponse } from '../models/ListContactsResponse';
 import { ListCountriesResponse } from '../models/ListCountriesResponse';
 import { ListEmailsSentResponse } from '../models/ListEmailsSentResponse';
@@ -186,6 +204,7 @@ import { ListNoteTemplateResponse } from '../models/ListNoteTemplateResponse';
 import { ListNotesResponse } from '../models/ListNotesResponse';
 import { ListOpportunitiesResponse } from '../models/ListOpportunitiesResponse';
 import { ListOpportunityStagesResponse } from '../models/ListOpportunityStagesResponse';
+import { ListOption } from '../models/ListOption';
 import { ListOrderPaymentsResponse } from '../models/ListOrderPaymentsResponse';
 import { ListOrderTotalDiscountsResponse } from '../models/ListOrderTotalDiscountsResponse';
 import { ListOrders } from '../models/ListOrders';
@@ -193,13 +212,15 @@ import { ListPaymentMethodsResponse } from '../models/ListPaymentMethodsResponse
 import { ListProductCategoriesResponse } from '../models/ListProductCategoriesResponse';
 import { ListProductDiscountsResponse } from '../models/ListProductDiscountsResponse';
 import { ListProductInterestBundleResponse } from '../models/ListProductInterestBundleResponse';
-import { ListProductsResponse } from '../models/ListProductsResponse';
+import { ListProductOptionsResponse } from '../models/ListProductOptionsResponse';
+import { ListProductsResponseList } from '../models/ListProductsResponseList';
+import { ListProgramResourcesResponse } from '../models/ListProgramResourcesResponse';
 import { ListProvincesResponse } from '../models/ListProvincesResponse';
 import { ListReportsResponse } from '../models/ListReportsResponse';
 import { ListRestShippingMethodsResponse } from '../models/ListRestShippingMethodsResponse';
 import { ListShippingDiscountsResponse } from '../models/ListShippingDiscountsResponse';
 import { ListSubscriptionPlansResponse } from '../models/ListSubscriptionPlansResponse';
-import { ListSubscriptionsResponse } from '../models/ListSubscriptionsResponse';
+import { ListSubscriptionsResponseList } from '../models/ListSubscriptionsResponseList';
 import { ListTagCategoriesResponse } from '../models/ListTagCategoriesResponse';
 import { ListTaggedCompaniesResponse } from '../models/ListTaggedCompaniesResponse';
 import { ListTaggedContactsResponse } from '../models/ListTaggedContactsResponse';
@@ -209,34 +230,39 @@ import { ListUserGroupsResponse } from '../models/ListUserGroupsResponse';
 import { ListUsersPaginatedResponse } from '../models/ListUsersPaginatedResponse';
 import { ListWebformsResponse } from '../models/ListWebformsResponse';
 import { ModelError } from '../models/ModelError';
-import { ModelFile } from '../models/ModelFile';
 import { Note } from '../models/Note';
 import { NoteTemplate } from '../models/NoteTemplate';
 import { ObjectModel } from '../models/ObjectModel';
 import { OpportunityContact } from '../models/OpportunityContact';
 import { OpportunityStage } from '../models/OpportunityStage';
-import { Order } from '../models/Order';
 import { OrderItem } from '../models/OrderItem';
 import { OrderItemProduct } from '../models/OrderItemProduct';
 import { OrderTotalDiscount } from '../models/OrderTotalDiscount';
+import { OrderV2 } from '../models/OrderV2';
 import { Origin } from '../models/Origin';
 import { OriginRequest } from '../models/OriginRequest';
 import { PatchAutomationCategoryRequest } from '../models/PatchAutomationCategoryRequest';
 import { PaymentMethod } from '../models/PaymentMethod';
 import { PaymentMethodConfig } from '../models/PaymentMethodConfig';
 import { PaymentPlan } from '../models/PaymentPlan';
+import { PaymentPlanItem } from '../models/PaymentPlanItem';
 import { PaymentResult } from '../models/PaymentResult';
 import { PhoneNumber } from '../models/PhoneNumber';
 import { ProductCategory } from '../models/ProductCategory';
 import { ProductCommission } from '../models/ProductCommission';
 import { ProductCommissionProgram } from '../models/ProductCommissionProgram';
 import { ProductDiscount } from '../models/ProductDiscount';
-import { ProductFixedOption } from '../models/ProductFixedOption';
+import { ProductFixedOptionDetail } from '../models/ProductFixedOptionDetail';
+import { ProductFixedOptionList } from '../models/ProductFixedOptionList';
 import { ProductInterest } from '../models/ProductInterest';
 import { ProductInterestBundle } from '../models/ProductInterestBundle';
-import { ProductInventory } from '../models/ProductInventory';
-import { ProductOptions } from '../models/ProductOptions';
-import { ProductVariableSetting } from '../models/ProductVariableSetting';
+import { ProductInventoryDetail } from '../models/ProductInventoryDetail';
+import { ProductInventoryList } from '../models/ProductInventoryList';
+import { ProductOption } from '../models/ProductOption';
+import { ProductOptionsDetail } from '../models/ProductOptionsDetail';
+import { ProductOptionsList } from '../models/ProductOptionsList';
+import { ProductVariableSettingDetail } from '../models/ProductVariableSettingDetail';
+import { ProductVariableSettingList } from '../models/ProductVariableSettingList';
 import { Province } from '../models/Province';
 import { Referral } from '../models/Referral';
 import { RemoveContactsFromSequenceRequest } from '../models/RemoveContactsFromSequenceRequest';
@@ -245,16 +271,18 @@ import { Report } from '../models/Report';
 import { ReportEntryRecord } from '../models/ReportEntryRecord';
 import { ReportEntryValue } from '../models/ReportEntryValue';
 import { ReportExecutionResult } from '../models/ReportExecutionResult';
-import { Resource } from '../models/Resource';
+import { ResourceCommissionProgram } from '../models/ResourceCommissionProgram';
 import { RestAffiliate } from '../models/RestAffiliate';
 import { RestAffiliatePayment } from '../models/RestAffiliatePayment';
-import { RestApplyCommissionRequest } from '../models/RestApplyCommissionRequest';
 import { RestCreateOrderRequest } from '../models/RestCreateOrderRequest';
-import { RestEmailAddress } from '../models/RestEmailAddress';
+import { RestCreatePaymentRequest } from '../models/RestCreatePaymentRequest';
+import { RestEmailAddressStatus } from '../models/RestEmailAddressStatus';
 import { RestOpportunityStage } from '../models/RestOpportunityStage';
 import { RestV2Opportunity } from '../models/RestV2Opportunity';
-import { RestV2Product } from '../models/RestV2Product';
+import { RestV2ProductDetail } from '../models/RestV2ProductDetail';
+import { RestV2ProductList } from '../models/RestV2ProductList';
 import { RestV2User } from '../models/RestV2User';
+import { RunReportRequest } from '../models/RunReportRequest';
 import { Sequence } from '../models/Sequence';
 import { SequencePath } from '../models/SequencePath';
 import { SetDefaultCommissionProgramResponse } from '../models/SetDefaultCommissionProgramResponse';
@@ -262,19 +290,21 @@ import { ShippingDiscount } from '../models/ShippingDiscount';
 import { ShippingInformation } from '../models/ShippingInformation';
 import { ShippingMethod } from '../models/ShippingMethod';
 import { SocialAccount } from '../models/SocialAccount';
-import { StackTraceElement } from '../models/StackTraceElement';
 import { StageDetails } from '../models/StageDetails';
-import { Subscription } from '../models/Subscription';
 import { SubscriptionCommission } from '../models/SubscriptionCommission';
 import { SubscriptionCommissionProgram } from '../models/SubscriptionCommissionProgram';
+import { SubscriptionDetail } from '../models/SubscriptionDetail';
+import { SubscriptionList } from '../models/SubscriptionList';
 import { SubscriptionPlan } from '../models/SubscriptionPlan';
+import { SubscriptionPlanDetail } from '../models/SubscriptionPlanDetail';
+import { SubscriptionPlanList } from '../models/SubscriptionPlanList';
 import { Tag } from '../models/Tag';
 import { TagCategory } from '../models/TagCategory';
 import { TaggedCompany } from '../models/TaggedCompany';
+import { TaggedContact } from '../models/TaggedContact';
 import { Task } from '../models/Task';
-import { Throwable } from '../models/Throwable';
-import { URI } from '../models/URI';
-import { URL } from '../models/URL';
+import { TextOption } from '../models/TextOption';
+import { UnpublishAutomationRequest } from '../models/UnpublishAutomationRequest';
 import { UpdateAffiliateRequest } from '../models/UpdateAffiliateRequest';
 import { UpdateBusinessProfileRequest } from '../models/UpdateBusinessProfileRequest';
 import { UpdateCategoryDiscountRequest } from '../models/UpdateCategoryDiscountRequest';
@@ -298,12 +328,14 @@ import { UpdateProductCommissionProgramRequest } from '../models/UpdateProductCo
 import { UpdateProductDiscountRequest } from '../models/UpdateProductDiscountRequest';
 import { UpdateProductInterestBundleRequest } from '../models/UpdateProductInterestBundleRequest';
 import { UpdateProductInterestRequest } from '../models/UpdateProductInterestRequest';
-import { UpdateProductInventoryRequest } from '../models/UpdateProductInventoryRequest';
-import { UpdateProductRequest } from '../models/UpdateProductRequest';
+import { UpdateProductInventoryRequestDetail } from '../models/UpdateProductInventoryRequestDetail';
+import { UpdateProductOptionListOption } from '../models/UpdateProductOptionListOption';
+import { UpdateProductOptionRequest } from '../models/UpdateProductOptionRequest';
+import { UpdateProductRequestDetail } from '../models/UpdateProductRequestDetail';
 import { UpdateShippingDiscountRequest } from '../models/UpdateShippingDiscountRequest';
 import { UpdateSubscriptionCommissionProgramRequest } from '../models/UpdateSubscriptionCommissionProgramRequest';
 import { UpdateSubscriptionPlanRequest } from '../models/UpdateSubscriptionPlanRequest';
-import { UpdateSubscriptionRequest } from '../models/UpdateSubscriptionRequest';
+import { UpdateSubscriptionRequestDetail } from '../models/UpdateSubscriptionRequestDetail';
 import { UpdateTagCategoryResponse } from '../models/UpdateTagCategoryResponse';
 import { UpdateTagResponse } from '../models/UpdateTagResponse';
 import { UpdateTaskResponse } from '../models/UpdateTaskResponse';
@@ -312,29 +344,30 @@ import { UpdatedPaymentPlan } from '../models/UpdatedPaymentPlan';
 import { User } from '../models/User';
 import { UserGroup } from '../models/UserGroup';
 import { Webform } from '../models/Webform';
+import { WordPressOptInOption } from '../models/WordPressOptInOption';
 
 import { ObservableAffiliateApi } from "./ObservableAPI";
 import { AffiliateApiRequestFactory, AffiliateApiResponseProcessor} from "../apis/AffiliateApi";
 
 export interface AffiliateApiAddAffiliateRequest {
     /**
-     * Affiliate request to insert
+     * 
      * @type CreateAffiliateRequest
      * @memberof AffiliateApiaddAffiliate
      */
-    createAffiliateRequest?: CreateAffiliateRequest
+    createAffiliateRequest: CreateAffiliateRequest
 }
 
 export interface AffiliateApiAddAffiliateToProgramRequest {
     /**
-     * id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof AffiliateApiaddAffiliateToProgram
      */
     id: string
     /**
-     * affiliateAddToProgramRequest
+     * 
      * @type AffiliateAddToProgramRequest
      * @memberof AffiliateApiaddAffiliateToProgram
      */
@@ -343,48 +376,48 @@ export interface AffiliateApiAddAffiliateToProgramRequest {
 
 export interface AffiliateApiAddCommissionProgramRequest {
     /**
-     * Commission Program to insert
+     * 
      * @type CreateCommissionProgramRequest
      * @memberof AffiliateApiaddCommissionProgram
      */
-    createCommissionProgramRequest?: CreateCommissionProgramRequest
+    createCommissionProgramRequest: CreateCommissionProgramRequest
 }
 
 export interface AffiliateApiAssignProductCommissionProgramRequest {
     /**
-     * commission_program_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof AffiliateApiassignProductCommissionProgram
      */
     commissionProgramId: string
     /**
-     * Product Commission Program
+     * 
      * @type CreateProductCommissionProgramRequest
      * @memberof AffiliateApiassignProductCommissionProgram
      */
-    createProductCommissionProgramRequest?: CreateProductCommissionProgramRequest
+    createProductCommissionProgramRequest: CreateProductCommissionProgramRequest
 }
 
 export interface AffiliateApiAssignSubscriptionCommissionProgramRequest {
     /**
-     * commission_program_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof AffiliateApiassignSubscriptionCommissionProgram
      */
     commissionProgramId: string
     /**
-     * Subscription Commission Program
+     * 
      * @type CreateSubscriptionCommissionProgramRequest
      * @memberof AffiliateApiassignSubscriptionCommissionProgram
      */
-    createSubscriptionCommissionProgramRequest?: CreateSubscriptionCommissionProgramRequest
+    createSubscriptionCommissionProgramRequest: CreateSubscriptionCommissionProgramRequest
 }
 
 export interface AffiliateApiCreateAffiliateCustomFieldRequest {
     /**
-     * customField
+     * 
      * @type CreateCustomFieldRequest
      * @memberof AffiliateApicreateAffiliateCustomField
      */
@@ -393,23 +426,23 @@ export interface AffiliateApiCreateAffiliateCustomFieldRequest {
 
 export interface AffiliateApiCreateDefaultCommissionProgramRequest {
     /**
-     * commission_program_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof AffiliateApicreateDefaultCommissionProgram
      */
     commissionProgramId: string
     /**
-     * Values of the Default Commission Program
+     * 
      * @type CreateDefaultCommissionProgramRequest
      * @memberof AffiliateApicreateDefaultCommissionProgram
      */
-    createDefaultCommissionProgramRequest?: CreateDefaultCommissionProgramRequest
+    createDefaultCommissionProgramRequest: CreateDefaultCommissionProgramRequest
 }
 
 export interface AffiliateApiCreateRedirectLinkRequest {
     /**
-     * request
+     * 
      * @type CreateOrUpdateAffiliateLinkRequest
      * @memberof AffiliateApicreateRedirectLink
      */
@@ -418,7 +451,7 @@ export interface AffiliateApiCreateRedirectLinkRequest {
 
 export interface AffiliateApiDeleteAffiliateRequest {
     /**
-     * id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof AffiliateApideleteAffiliate
@@ -428,7 +461,7 @@ export interface AffiliateApiDeleteAffiliateRequest {
 
 export interface AffiliateApiDeleteAffiliateCommissionProgramRequest {
     /**
-     * commission_program_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof AffiliateApideleteAffiliateCommissionProgram
@@ -438,7 +471,7 @@ export interface AffiliateApiDeleteAffiliateCommissionProgramRequest {
 
 export interface AffiliateApiDeleteAffiliateCustomFieldRequest {
     /**
-     * custom_field_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof AffiliateApideleteAffiliateCustomField
@@ -448,7 +481,7 @@ export interface AffiliateApiDeleteAffiliateCustomFieldRequest {
 
 export interface AffiliateApiDeleteRedirectLinkRequest {
     /**
-     * redirect_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof AffiliateApideleteRedirectLink
@@ -458,7 +491,7 @@ export interface AffiliateApiDeleteRedirectLinkRequest {
 
 export interface AffiliateApiGetAffiliateRequest {
     /**
-     * id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof AffiliateApigetAffiliate
@@ -468,7 +501,7 @@ export interface AffiliateApiGetAffiliateRequest {
 
 export interface AffiliateApiGetAffiliateCommissionTotalRequest {
     /**
-     * affiliate_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof AffiliateApigetAffiliateCommissionTotal
@@ -478,21 +511,21 @@ export interface AffiliateApiGetAffiliateCommissionTotalRequest {
 
 export interface AffiliateApiGetAffiliateCommissionsRequest {
     /**
-     * affiliate_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof AffiliateApigetAffiliateCommissions
      */
     affiliateId: string
     /**
-     * Filter to apply, allowed fields are: - (String) &#x60;affiliateId&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched  word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;since_time%3D%3D2024-09-17T-15:50+00&#x60;  - &#x60;filter&#x3D;until_time%3D%3D2024-09-17T-15:50+00&#x60;  - &#x60;filter&#x3D;affiliateId%3D%3D123&#x60; 
+     * Filter to apply, allowed fields are: - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;since_time%3D%3D2024-05-21T23:00:00Z%3Buntil_time%3D%3D2025-05-21T23:00:00Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-05-21T23:00:00Z&#x60; 
      * Defaults to: undefined
      * @type string
      * @memberof AffiliateApigetAffiliateCommissions
      */
     filter?: string
     /**
-     * Attribute and direction to order items. One of the following fields: - &#x60;invoice_id&#x60; - &#x60;affowed_id&#x60; - &#x60;date_earned&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * Attribute and direction to order items. One of the following fields: - &#x60;invoice_id&#x60; - &#x60;time_earned&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * Defaults to: undefined
      * @type string
      * @memberof AffiliateApigetAffiliateCommissions
@@ -500,7 +533,7 @@ export interface AffiliateApiGetAffiliateCommissionsRequest {
     orderBy?: string
     /**
      * Total number of items to return per page
-     * Minimum: 1
+     * Minimum: 0
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
@@ -521,7 +554,7 @@ export interface AffiliateApiGetAffiliateCustomFieldsRequest {
 
 export interface AffiliateApiGetCommissionProgramRequest {
     /**
-     * commission_program_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof AffiliateApigetCommissionProgram
@@ -531,7 +564,7 @@ export interface AffiliateApiGetCommissionProgramRequest {
 
 export interface AffiliateApiGetRedirectLinkRequest {
     /**
-     * redirect_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof AffiliateApigetRedirectLink
@@ -539,9 +572,19 @@ export interface AffiliateApiGetRedirectLinkRequest {
     redirectId: string
 }
 
+export interface AffiliateApiGetReferralsByAffiliateIdRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AffiliateApigetReferralsByAffiliateId
+     */
+    affiliateId: string
+}
+
 export interface AffiliateApiListAffiliateRequest {
     /**
-     * Filter to apply, allowed fields are: - (String) &#x60;affiliate_name&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;code&#x60; 
+     * Filter to apply, allowed fields are: - (String) &#x60;affiliate_name&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;referral_contact_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;code&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with the value you want to match, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;affiliate_name%3D%3DBob&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bcode%3D%3D567&#x60;
      * Defaults to: undefined
      * @type string
      * @memberof AffiliateApilistAffiliate
@@ -556,7 +599,7 @@ export interface AffiliateApiListAffiliateRequest {
     orderBy?: string
     /**
      * Total number of items to return per page
-     * Minimum: 1
+     * Minimum: 0
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
@@ -589,7 +632,7 @@ export interface AffiliateApiListAffiliateCommissionProgramsRequest {
     orderBy?: string
     /**
      * Total number of items to return per page
-     * Minimum: 1
+     * Minimum: 0
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
@@ -622,7 +665,7 @@ export interface AffiliateApiListAffiliateLinksRequest {
     orderBy?: string
     /**
      * Total number of items to return per page
-     * Minimum: 1
+     * Minimum: 0
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
@@ -640,14 +683,14 @@ export interface AffiliateApiListAffiliateLinksRequest {
 
 export interface AffiliateApiListAffiliatePaymentsRequest {
     /**
-     * affiliate_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof AffiliateApilistAffiliatePayments
      */
     affiliateId: string
     /**
-     * Filter to apply, allowed fields are: - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;since_time%3D%3D2024-09-17T-15:50+00&#x60; - &#x60;filter&#x3D;until_time%3D%3D2024-09-17T-15:50+00&#x60; 
+     * Filter to apply, allowed fields are: - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;since_time%3D%3D2024-09-17T-15:50+00&#x60; - &#x60;filter&#x3D;until_time%3D%3D2024-09-17T-15:50+00&#x60; 
      * Defaults to: undefined
      * @type string
      * @memberof AffiliateApilistAffiliatePayments
@@ -662,7 +705,7 @@ export interface AffiliateApiListAffiliatePaymentsRequest {
     orderBy?: string
     /**
      * Total number of items to return per page
-     * Minimum: 1
+     * Minimum: 0
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
@@ -678,9 +721,19 @@ export interface AffiliateApiListAffiliatePaymentsRequest {
     pageToken?: string
 }
 
+export interface AffiliateApiListCommissionProgramResourcesRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AffiliateApilistCommissionProgramResources
+     */
+    commissionProgramId: string
+}
+
 export interface AffiliateApiListSummariesRequest {
     /**
-     * Filter to apply, allowed fields are: - (List[String]) &#x60;affiliate_ids&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched  word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;since_time%3D%3D2024-09-17T-15:50+00&#x60;  - &#x60;filter&#x3D;until_time%3D%3D2024-09-17T-15:50+00&#x60;  - &#x60;filter&#x3D;affiliate_ids%3D%3D123,456,789&#x60; 
+     * Filter to apply, allowed fields are: - (List[String]) &#x60;affiliate_ids&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched  word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;since_time%3D%3D2024-09-17T-15:50+00&#x60;  - &#x60;filter&#x3D;until_time%3D%3D2024-09-17T-15:50+00&#x60;  - &#x60;filter&#x3D;affiliate_ids%3D%3D123,456,789&#x60; 
      * Defaults to: undefined
      * @type string
      * @memberof AffiliateApilistSummaries
@@ -695,7 +748,7 @@ export interface AffiliateApiListSummariesRequest {
     orderBy?: string
     /**
      * Total number of items to return per page
-     * Minimum: 1
+     * Minimum: 0
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
@@ -713,14 +766,14 @@ export interface AffiliateApiListSummariesRequest {
 
 export interface AffiliateApiRemoveAffiliateFromProgramRequest {
     /**
-     * id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof AffiliateApiremoveAffiliateFromProgram
      */
     id: string
     /**
-     * removeFromProgramRequest
+     * 
      * @type AffiliateRemoveFromProgramRequest
      * @memberof AffiliateApiremoveAffiliateFromProgram
      */
@@ -729,14 +782,14 @@ export interface AffiliateApiRemoveAffiliateFromProgramRequest {
 
 export interface AffiliateApiRemoveProductCommissionFromCommissionsRequest {
     /**
-     * commission_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof AffiliateApiremoveProductCommissionFromCommissions
      */
     commissionId: string
     /**
-     * deleteProgramCommissionRequest
+     * 
      * @type DeleteProgramCommissionRequest
      * @memberof AffiliateApiremoveProductCommissionFromCommissions
      */
@@ -745,14 +798,14 @@ export interface AffiliateApiRemoveProductCommissionFromCommissionsRequest {
 
 export interface AffiliateApiRemoveSubscriptionPlanCommissionFromCommissionsRequest {
     /**
-     * commission_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof AffiliateApiremoveSubscriptionPlanCommissionFromCommissions
      */
     commissionId: string
     /**
-     * deleteSubscriptionPlanCommissionRequest
+     * 
      * @type DeleteSubscriptionPlanCommissionRequest
      * @memberof AffiliateApiremoveSubscriptionPlanCommissionFromCommissions
      */
@@ -761,30 +814,30 @@ export interface AffiliateApiRemoveSubscriptionPlanCommissionFromCommissionsRequ
 
 export interface AffiliateApiUpdateAffiliateRequest {
     /**
-     * id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof AffiliateApiupdateAffiliate
      */
     id: string
     /**
-     * Request to update an affiliate
+     * 
      * @type UpdateAffiliateRequest
      * @memberof AffiliateApiupdateAffiliate
      */
-    updateAffiliateRequest?: UpdateAffiliateRequest
+    updateAffiliateRequest: UpdateAffiliateRequest
 }
 
 export interface AffiliateApiUpdateAffiliateCustomFieldRequest {
     /**
-     * custom_field_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof AffiliateApiupdateAffiliateCustomField
      */
     customFieldId: string
     /**
-     * request
+     * 
      * @type UpdateCustomFieldMetaDataRequest
      * @memberof AffiliateApiupdateAffiliateCustomField
      */
@@ -792,22 +845,22 @@ export interface AffiliateApiUpdateAffiliateCustomFieldRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type Array&lt;string&gt;
+     * @type &#39;group_id,label,options&#39;
      * @memberof AffiliateApiupdateAffiliateCustomField
      */
-    updateMask?: Array<string>
+    updateMask?: 'group_id,label,options'
 }
 
 export interface AffiliateApiUpdateCommissionProgramRequest {
     /**
-     * commission_program_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof AffiliateApiupdateCommissionProgram
      */
     commissionProgramId: string
     /**
-     * updateCommissionProgramRequest
+     * 
      * @type UpdateCommissionProgramRequest
      * @memberof AffiliateApiupdateCommissionProgram
      */
@@ -815,68 +868,68 @@ export interface AffiliateApiUpdateCommissionProgramRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type Array&lt;string&gt;
+     * @type &#39;name,notes,priority&#39;
      * @memberof AffiliateApiupdateCommissionProgram
      */
-    updateMask?: Array<string>
+    updateMask?: 'name,notes,priority'
 }
 
 export interface AffiliateApiUpdateDefaultCommissionProgramRequest {
     /**
-     * commission_program_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof AffiliateApiupdateDefaultCommissionProgram
      */
     commissionProgramId: string
     /**
-     * update_mask
-     * Defaults to: undefined
-     * @type Array&lt;string&gt;
-     * @memberof AffiliateApiupdateDefaultCommissionProgram
-     */
-    updateMask?: Array<string>
-    /**
-     * Values of the default Commission Program
+     * 
      * @type UpdateDefaultCommissionProgramRequest
      * @memberof AffiliateApiupdateDefaultCommissionProgram
      */
-    updateDefaultCommissionProgramRequest?: UpdateDefaultCommissionProgramRequest
+    updateDefaultCommissionProgramRequest: UpdateDefaultCommissionProgramRequest
+    /**
+     * 
+     * Defaults to: undefined
+     * @type Set&lt;string&gt;
+     * @memberof AffiliateApiupdateDefaultCommissionProgram
+     */
+    updateMask?: Set<string>
 }
 
 export interface AffiliateApiUpdateProductCommissionProgramRequest {
     /**
-     * commission_program_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof AffiliateApiupdateProductCommissionProgram
      */
     commissionProgramId: string
     /**
-     * update_mask
-     * Defaults to: undefined
-     * @type Array&lt;string&gt;
-     * @memberof AffiliateApiupdateProductCommissionProgram
-     */
-    updateMask?: Array<string>
-    /**
-     * Values of the product Commission Program
+     * 
      * @type UpdateProductCommissionProgramRequest
      * @memberof AffiliateApiupdateProductCommissionProgram
      */
-    updateProductCommissionProgramRequest?: UpdateProductCommissionProgramRequest
+    updateProductCommissionProgramRequest: UpdateProductCommissionProgramRequest
+    /**
+     * 
+     * Defaults to: undefined
+     * @type Set&lt;string&gt;
+     * @memberof AffiliateApiupdateProductCommissionProgram
+     */
+    updateMask?: Set<string>
 }
 
 export interface AffiliateApiUpdateRedirectLinkRequest {
     /**
-     * redirect_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof AffiliateApiupdateRedirectLink
      */
     redirectId: string
     /**
-     * request
+     * 
      * @type CreateOrUpdateAffiliateLinkRequest
      * @memberof AffiliateApiupdateRedirectLink
      */
@@ -885,25 +938,25 @@ export interface AffiliateApiUpdateRedirectLinkRequest {
 
 export interface AffiliateApiUpdateSubscriptionCommissionProgramRequest {
     /**
-     * commission_program_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof AffiliateApiupdateSubscriptionCommissionProgram
      */
     commissionProgramId: string
     /**
-     * update_mask
-     * Defaults to: undefined
-     * @type Array&lt;string&gt;
-     * @memberof AffiliateApiupdateSubscriptionCommissionProgram
-     */
-    updateMask?: Array<string>
-    /**
-     * Values of the subscription Commission Program
+     * 
      * @type UpdateSubscriptionCommissionProgramRequest
      * @memberof AffiliateApiupdateSubscriptionCommissionProgram
      */
-    updateSubscriptionCommissionProgramRequest?: UpdateSubscriptionCommissionProgramRequest
+    updateSubscriptionCommissionProgramRequest: UpdateSubscriptionCommissionProgramRequest
+    /**
+     * 
+     * Defaults to: undefined
+     * @type Set&lt;string&gt;
+     * @memberof AffiliateApiupdateSubscriptionCommissionProgram
+     */
+    updateMask?: Set<string>
 }
 
 export class ObjectAffiliateApi {
@@ -918,7 +971,7 @@ export class ObjectAffiliateApi {
      * Create an Affiliate
      * @param param the request object
      */
-    public addAffiliateWithHttpInfo(param: AffiliateApiAddAffiliateRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<RestAffiliate>> {
+    public addAffiliateWithHttpInfo(param: AffiliateApiAddAffiliateRequest, options?: ConfigurationOptions): Promise<HttpInfo<RestAffiliate>> {
         return this.api.addAffiliateWithHttpInfo(param.createAffiliateRequest,  options).toPromise();
     }
 
@@ -927,7 +980,7 @@ export class ObjectAffiliateApi {
      * Create an Affiliate
      * @param param the request object
      */
-    public addAffiliate(param: AffiliateApiAddAffiliateRequest = {}, options?: ConfigurationOptions): Promise<RestAffiliate> {
+    public addAffiliate(param: AffiliateApiAddAffiliateRequest, options?: ConfigurationOptions): Promise<RestAffiliate> {
         return this.api.addAffiliate(param.createAffiliateRequest,  options).toPromise();
     }
 
@@ -954,7 +1007,7 @@ export class ObjectAffiliateApi {
      * Create an Affiliate Commission Program
      * @param param the request object
      */
-    public addCommissionProgramWithHttpInfo(param: AffiliateApiAddCommissionProgramRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<AffiliateCommissionProgramResponse>> {
+    public addCommissionProgramWithHttpInfo(param: AffiliateApiAddCommissionProgramRequest, options?: ConfigurationOptions): Promise<HttpInfo<AffiliateCommissionProgramResponse>> {
         return this.api.addCommissionProgramWithHttpInfo(param.createCommissionProgramRequest,  options).toPromise();
     }
 
@@ -963,7 +1016,7 @@ export class ObjectAffiliateApi {
      * Create an Affiliate Commission Program
      * @param param the request object
      */
-    public addCommissionProgram(param: AffiliateApiAddCommissionProgramRequest = {}, options?: ConfigurationOptions): Promise<AffiliateCommissionProgramResponse> {
+    public addCommissionProgram(param: AffiliateApiAddCommissionProgramRequest, options?: ConfigurationOptions): Promise<AffiliateCommissionProgramResponse> {
         return this.api.addCommissionProgram(param.createCommissionProgramRequest,  options).toPromise();
     }
 
@@ -1166,8 +1219,8 @@ export class ObjectAffiliateApi {
     }
 
     /**
-     * Retrieve a list of Affiliate\'s Commissions and Clawbacks
-     * Retrieve Affiliate Commission and Clawbacks
+     * Retrieve a list of Affiliate\'s Commissions
+     * Retrieve Affiliate Commissions
      * @param param the request object
      */
     public getAffiliateCommissionsWithHttpInfo(param: AffiliateApiGetAffiliateCommissionsRequest, options?: ConfigurationOptions): Promise<HttpInfo<ListAffiliateCommissionsResponse>> {
@@ -1175,8 +1228,8 @@ export class ObjectAffiliateApi {
     }
 
     /**
-     * Retrieve a list of Affiliate\'s Commissions and Clawbacks
-     * Retrieve Affiliate Commission and Clawbacks
+     * Retrieve a list of Affiliate\'s Commissions
+     * Retrieve Affiliate Commissions
      * @param param the request object
      */
     public getAffiliateCommissions(param: AffiliateApiGetAffiliateCommissionsRequest, options?: ConfigurationOptions): Promise<ListAffiliateCommissionsResponse> {
@@ -1206,7 +1259,7 @@ export class ObjectAffiliateApi {
      * Retrieve a Commission Program
      * @param param the request object
      */
-    public getCommissionProgramWithHttpInfo(param: AffiliateApiGetCommissionProgramRequest, options?: ConfigurationOptions): Promise<HttpInfo<AffiliateProgramV2>> {
+    public getCommissionProgramWithHttpInfo(param: AffiliateApiGetCommissionProgramRequest, options?: ConfigurationOptions): Promise<HttpInfo<GetRestCommissionProgram>> {
         return this.api.getCommissionProgramWithHttpInfo(param.commissionProgramId,  options).toPromise();
     }
 
@@ -1215,7 +1268,7 @@ export class ObjectAffiliateApi {
      * Retrieve a Commission Program
      * @param param the request object
      */
-    public getCommissionProgram(param: AffiliateApiGetCommissionProgramRequest, options?: ConfigurationOptions): Promise<AffiliateProgramV2> {
+    public getCommissionProgram(param: AffiliateApiGetCommissionProgramRequest, options?: ConfigurationOptions): Promise<GetRestCommissionProgram> {
         return this.api.getCommissionProgram(param.commissionProgramId,  options).toPromise();
     }
 
@@ -1235,6 +1288,24 @@ export class ObjectAffiliateApi {
      */
     public getRedirectLink(param: AffiliateApiGetRedirectLinkRequest, options?: ConfigurationOptions): Promise<AffiliateLink> {
         return this.api.getRedirectLink(param.redirectId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves all referrals belonging to the given affiliate
+     * Retrieve Affiliate Referrals
+     * @param param the request object
+     */
+    public getReferralsByAffiliateIdWithHttpInfo(param: AffiliateApiGetReferralsByAffiliateIdRequest, options?: ConfigurationOptions): Promise<HttpInfo<ListAffiliateReferralsResponse>> {
+        return this.api.getReferralsByAffiliateIdWithHttpInfo(param.affiliateId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves all referrals belonging to the given affiliate
+     * Retrieve Affiliate Referrals
+     * @param param the request object
+     */
+    public getReferralsByAffiliateId(param: AffiliateApiGetReferralsByAffiliateIdRequest, options?: ConfigurationOptions): Promise<ListAffiliateReferralsResponse> {
+        return this.api.getReferralsByAffiliateId(param.affiliateId,  options).toPromise();
     }
 
     /**
@@ -1307,6 +1378,24 @@ export class ObjectAffiliateApi {
      */
     public listAffiliatePayments(param: AffiliateApiListAffiliatePaymentsRequest, options?: ConfigurationOptions): Promise<ListAffiliatePaymentsResponse> {
         return this.api.listAffiliatePayments(param.affiliateId, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    }
+
+    /**
+     * Retrieves resources for a commission program
+     * Retrieve Commission Program Resources
+     * @param param the request object
+     */
+    public listCommissionProgramResourcesWithHttpInfo(param: AffiliateApiListCommissionProgramResourcesRequest, options?: ConfigurationOptions): Promise<HttpInfo<ListProgramResourcesResponse>> {
+        return this.api.listCommissionProgramResourcesWithHttpInfo(param.commissionProgramId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves resources for a commission program
+     * Retrieve Commission Program Resources
+     * @param param the request object
+     */
+    public listCommissionProgramResources(param: AffiliateApiListCommissionProgramResourcesRequest, options?: ConfigurationOptions): Promise<ListProgramResourcesResponse> {
+        return this.api.listCommissionProgramResources(param.commissionProgramId,  options).toPromise();
     }
 
     /**
@@ -1441,7 +1530,7 @@ export class ObjectAffiliateApi {
      * @param param the request object
      */
     public updateDefaultCommissionProgramWithHttpInfo(param: AffiliateApiUpdateDefaultCommissionProgramRequest, options?: ConfigurationOptions): Promise<HttpInfo<SetDefaultCommissionProgramResponse>> {
-        return this.api.updateDefaultCommissionProgramWithHttpInfo(param.commissionProgramId, param.updateMask, param.updateDefaultCommissionProgramRequest,  options).toPromise();
+        return this.api.updateDefaultCommissionProgramWithHttpInfo(param.commissionProgramId, param.updateDefaultCommissionProgramRequest, param.updateMask,  options).toPromise();
     }
 
     /**
@@ -1450,7 +1539,7 @@ export class ObjectAffiliateApi {
      * @param param the request object
      */
     public updateDefaultCommissionProgram(param: AffiliateApiUpdateDefaultCommissionProgramRequest, options?: ConfigurationOptions): Promise<SetDefaultCommissionProgramResponse> {
-        return this.api.updateDefaultCommissionProgram(param.commissionProgramId, param.updateMask, param.updateDefaultCommissionProgramRequest,  options).toPromise();
+        return this.api.updateDefaultCommissionProgram(param.commissionProgramId, param.updateDefaultCommissionProgramRequest, param.updateMask,  options).toPromise();
     }
 
     /**
@@ -1459,7 +1548,7 @@ export class ObjectAffiliateApi {
      * @param param the request object
      */
     public updateProductCommissionProgramWithHttpInfo(param: AffiliateApiUpdateProductCommissionProgramRequest, options?: ConfigurationOptions): Promise<HttpInfo<ProductCommissionProgram>> {
-        return this.api.updateProductCommissionProgramWithHttpInfo(param.commissionProgramId, param.updateMask, param.updateProductCommissionProgramRequest,  options).toPromise();
+        return this.api.updateProductCommissionProgramWithHttpInfo(param.commissionProgramId, param.updateProductCommissionProgramRequest, param.updateMask,  options).toPromise();
     }
 
     /**
@@ -1468,7 +1557,7 @@ export class ObjectAffiliateApi {
      * @param param the request object
      */
     public updateProductCommissionProgram(param: AffiliateApiUpdateProductCommissionProgramRequest, options?: ConfigurationOptions): Promise<ProductCommissionProgram> {
-        return this.api.updateProductCommissionProgram(param.commissionProgramId, param.updateMask, param.updateProductCommissionProgramRequest,  options).toPromise();
+        return this.api.updateProductCommissionProgram(param.commissionProgramId, param.updateProductCommissionProgramRequest, param.updateMask,  options).toPromise();
     }
 
     /**
@@ -1495,7 +1584,7 @@ export class ObjectAffiliateApi {
      * @param param the request object
      */
     public updateSubscriptionCommissionProgramWithHttpInfo(param: AffiliateApiUpdateSubscriptionCommissionProgramRequest, options?: ConfigurationOptions): Promise<HttpInfo<SubscriptionCommissionProgram>> {
-        return this.api.updateSubscriptionCommissionProgramWithHttpInfo(param.commissionProgramId, param.updateMask, param.updateSubscriptionCommissionProgramRequest,  options).toPromise();
+        return this.api.updateSubscriptionCommissionProgramWithHttpInfo(param.commissionProgramId, param.updateSubscriptionCommissionProgramRequest, param.updateMask,  options).toPromise();
     }
 
     /**
@@ -1504,7 +1593,7 @@ export class ObjectAffiliateApi {
      * @param param the request object
      */
     public updateSubscriptionCommissionProgram(param: AffiliateApiUpdateSubscriptionCommissionProgramRequest, options?: ConfigurationOptions): Promise<SubscriptionCommissionProgram> {
-        return this.api.updateSubscriptionCommissionProgram(param.commissionProgramId, param.updateMask, param.updateSubscriptionCommissionProgramRequest,  options).toPromise();
+        return this.api.updateSubscriptionCommissionProgram(param.commissionProgramId, param.updateSubscriptionCommissionProgramRequest, param.updateMask,  options).toPromise();
     }
 
 }
@@ -1512,23 +1601,32 @@ export class ObjectAffiliateApi {
 import { ObservableAutomationApi } from "./ObservableAPI";
 import { AutomationApiRequestFactory, AutomationApiResponseProcessor} from "../apis/AutomationApi";
 
+export interface AutomationApiAchieveGoalRequest {
+    /**
+     * 
+     * @type AchieveGoalRequest
+     * @memberof AutomationApiachieveGoal
+     */
+    achieveGoalRequest: AchieveGoalRequest
+}
+
 export interface AutomationApiAddContactsToAutomationSequenceRequest {
     /**
-     * automation_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof AutomationApiaddContactsToAutomationSequence
      */
     automationId: string
     /**
-     * sequence_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof AutomationApiaddContactsToAutomationSequence
      */
     sequenceId: string
     /**
-     * addToAutomationSequenceRequest
+     * 
      * @type AddToAutomationSequenceRequest
      * @memberof AutomationApiaddContactsToAutomationSequence
      */
@@ -1537,16 +1635,25 @@ export interface AutomationApiAddContactsToAutomationSequenceRequest {
 
 export interface AutomationApiBulkAssignmentAutomationsCategoriesRequest {
     /**
-     * assignAutomationCategoryRequest
+     * 
      * @type AssignAutomationCategoryRequest
      * @memberof AutomationApibulkAssignmentAutomationsCategories
      */
     assignAutomationCategoryRequest: AssignAutomationCategoryRequest
 }
 
+export interface AutomationApiBulkUnpublishAutomationsRequest {
+    /**
+     * 
+     * @type BatchUnpublishAutomationRequest
+     * @memberof AutomationApibulkUnpublishAutomations
+     */
+    batchUnpublishAutomationRequest: BatchUnpublishAutomationRequest
+}
+
 export interface AutomationApiDeleteAutomationRequest {
     /**
-     * automation_ids
+     * 
      * Defaults to: undefined
      * @type Array&lt;number&gt;
      * @memberof AutomationApideleteAutomation
@@ -1556,7 +1663,7 @@ export interface AutomationApiDeleteAutomationRequest {
 
 export interface AutomationApiGetAutomationRequest {
     /**
-     * automation_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof AutomationApigetAutomation
@@ -1581,7 +1688,7 @@ export interface AutomationApiListAllAutomationIdsRequest {
     orderBy?: string
     /**
      * Total number of items to return per page
-     * Minimum: 1
+     * Minimum: 0
      * Maximum: 25
      * Defaults to: undefined
      * @type number
@@ -1595,13 +1702,6 @@ export interface AutomationApiListAllAutomationIdsRequest {
      * @memberof AutomationApilistAllAutomationIds
      */
     pageToken?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type boolean
-     * @memberof AutomationApilistAllAutomationIds
-     */
-    stats?: boolean
 }
 
 export interface AutomationApiListAutomationsRequest {
@@ -1621,7 +1721,7 @@ export interface AutomationApiListAutomationsRequest {
     orderBy?: string
     /**
      * Total number of items to return per page
-     * Minimum: 1
+     * Minimum: 0
      * Maximum: 25
      * Defaults to: undefined
      * @type number
@@ -1635,13 +1735,22 @@ export interface AutomationApiListAutomationsRequest {
      * @memberof AutomationApilistAutomations
      */
     pageToken?: string
+}
+
+export interface AutomationApiUnpublishAutomationRequest {
     /**
      * 
      * Defaults to: undefined
-     * @type boolean
-     * @memberof AutomationApilistAutomations
+     * @type string
+     * @memberof AutomationApiunpublishAutomation
      */
-    stats?: boolean
+    automationId: string
+    /**
+     * 
+     * @type UnpublishAutomationRequest
+     * @memberof AutomationApiunpublishAutomation
+     */
+    unpublishAutomationRequest: UnpublishAutomationRequest
 }
 
 export class ObjectAutomationApi {
@@ -1649,6 +1758,24 @@ export class ObjectAutomationApi {
 
     public constructor(configuration: Configuration, requestFactory?: AutomationApiRequestFactory, responseProcessor?: AutomationApiResponseProcessor) {
         this.api = new ObservableAutomationApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Achieves a goal in an automation for a contact
+     * Achieve an Automation Goal
+     * @param param the request object
+     */
+    public achieveGoalWithHttpInfo(param: AutomationApiAchieveGoalRequest, options?: ConfigurationOptions): Promise<HttpInfo<AchieveGoalResponse>> {
+        return this.api.achieveGoalWithHttpInfo(param.achieveGoalRequest,  options).toPromise();
+    }
+
+    /**
+     * Achieves a goal in an automation for a contact
+     * Achieve an Automation Goal
+     * @param param the request object
+     */
+    public achieveGoal(param: AutomationApiAchieveGoalRequest, options?: ConfigurationOptions): Promise<AchieveGoalResponse> {
+        return this.api.achieveGoal(param.achieveGoalRequest,  options).toPromise();
     }
 
     /**
@@ -1685,6 +1812,24 @@ export class ObjectAutomationApi {
      */
     public bulkAssignmentAutomationsCategories(param: AutomationApiBulkAssignmentAutomationsCategoriesRequest, options?: ConfigurationOptions): Promise<void> {
         return this.api.bulkAssignmentAutomationsCategories(param.assignAutomationCategoryRequest,  options).toPromise();
+    }
+
+    /**
+     * Bulk unpublish one or more automations
+     * Bulk unpublish Automations
+     * @param param the request object
+     */
+    public bulkUnpublishAutomationsWithHttpInfo(param: AutomationApiBulkUnpublishAutomationsRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.bulkUnpublishAutomationsWithHttpInfo(param.batchUnpublishAutomationRequest,  options).toPromise();
+    }
+
+    /**
+     * Bulk unpublish one or more automations
+     * Bulk unpublish Automations
+     * @param param the request object
+     */
+    public bulkUnpublishAutomations(param: AutomationApiBulkUnpublishAutomationsRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.bulkUnpublishAutomations(param.batchUnpublishAutomationRequest,  options).toPromise();
     }
 
     /**
@@ -1729,7 +1874,7 @@ export class ObjectAutomationApi {
      * @param param the request object
      */
     public listAllAutomationIdsWithHttpInfo(param: AutomationApiListAllAutomationIdsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListAutomationIdsResponse>> {
-        return this.api.listAllAutomationIdsWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken, param.stats,  options).toPromise();
+        return this.api.listAllAutomationIdsWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -1738,7 +1883,7 @@ export class ObjectAutomationApi {
      * @param param the request object
      */
     public listAllAutomationIds(param: AutomationApiListAllAutomationIdsRequest = {}, options?: ConfigurationOptions): Promise<ListAutomationIdsResponse> {
-        return this.api.listAllAutomationIds(param.filter, param.orderBy, param.pageSize, param.pageToken, param.stats,  options).toPromise();
+        return this.api.listAllAutomationIds(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -1747,7 +1892,7 @@ export class ObjectAutomationApi {
      * @param param the request object
      */
     public listAutomationsWithHttpInfo(param: AutomationApiListAutomationsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListAutomationResponse>> {
-        return this.api.listAutomationsWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken, param.stats,  options).toPromise();
+        return this.api.listAutomationsWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -1756,7 +1901,25 @@ export class ObjectAutomationApi {
      * @param param the request object
      */
     public listAutomations(param: AutomationApiListAutomationsRequest = {}, options?: ConfigurationOptions): Promise<ListAutomationResponse> {
-        return this.api.listAutomations(param.filter, param.orderBy, param.pageSize, param.pageToken, param.stats,  options).toPromise();
+        return this.api.listAutomations(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    }
+
+    /**
+     * Unpublishes a single automation
+     * Unpublish an Automation
+     * @param param the request object
+     */
+    public unpublishAutomationWithHttpInfo(param: AutomationApiUnpublishAutomationRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.unpublishAutomationWithHttpInfo(param.automationId, param.unpublishAutomationRequest,  options).toPromise();
+    }
+
+    /**
+     * Unpublishes a single automation
+     * Unpublish an Automation
+     * @param param the request object
+     */
+    public unpublishAutomation(param: AutomationApiUnpublishAutomationRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.unpublishAutomation(param.automationId, param.unpublishAutomationRequest,  options).toPromise();
     }
 
 }
@@ -1766,7 +1929,7 @@ import { AutomationCategoryApiRequestFactory, AutomationCategoryApiResponseProce
 
 export interface AutomationCategoryApiCreateCategoryRequest {
     /**
-     * createAutomationCategoryRequest
+     * 
      * @type CreateAutomationCategoryRequest
      * @memberof AutomationCategoryApicreateCategory
      */
@@ -1775,7 +1938,7 @@ export interface AutomationCategoryApiCreateCategoryRequest {
 
 export interface AutomationCategoryApiDeleteCategoriesRequest {
     /**
-     * ids
+     * 
      * Defaults to: undefined
      * @type Array&lt;number&gt;
      * @memberof AutomationCategoryApideleteCategories
@@ -1788,14 +1951,14 @@ export interface AutomationCategoryApiListCategoriesRequest {
 
 export interface AutomationCategoryApiPatchCategoryRequest {
     /**
-     * id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof AutomationCategoryApipatchCategory
      */
     id: string
     /**
-     * patchAutomationCategoryRequest
+     * 
      * @type PatchAutomationCategoryRequest
      * @memberof AutomationCategoryApipatchCategory
      */
@@ -1891,18 +2054,18 @@ export interface BusinessProfileApiGetBusinessProfileRequest {
 
 export interface BusinessProfileApiUpdateBusinessProfileRequest {
     /**
-     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-     * Defaults to: undefined
-     * @type Array&lt;string&gt;
-     * @memberof BusinessProfileApiupdateBusinessProfile
-     */
-    updateMask?: Array<string>
-    /**
-     * businessProfile
+     * 
      * @type UpdateBusinessProfileRequest
      * @memberof BusinessProfileApiupdateBusinessProfile
      */
-    updateBusinessProfileRequest?: UpdateBusinessProfileRequest
+    updateBusinessProfileRequest: UpdateBusinessProfileRequest
+    /**
+     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * Defaults to: undefined
+     * @type &#39;name,email,website,phone,address,currency_code,business_goals,business_primary_color, business_secondary_color&#39;
+     * @memberof BusinessProfileApiupdateBusinessProfile
+     */
+    updateMask?: 'name,email,website,phone,address,currency_code,business_goals,business_primary_color, business_secondary_color'
 }
 
 export class ObjectBusinessProfileApi {
@@ -1935,8 +2098,8 @@ export class ObjectBusinessProfileApi {
      * Update Business Profile
      * @param param the request object
      */
-    public updateBusinessProfileWithHttpInfo(param: BusinessProfileApiUpdateBusinessProfileRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<GetBusinessProfileResponse>> {
-        return this.api.updateBusinessProfileWithHttpInfo(param.updateMask, param.updateBusinessProfileRequest,  options).toPromise();
+    public updateBusinessProfileWithHttpInfo(param: BusinessProfileApiUpdateBusinessProfileRequest, options?: ConfigurationOptions): Promise<HttpInfo<GetBusinessProfileResponse>> {
+        return this.api.updateBusinessProfileWithHttpInfo(param.updateBusinessProfileRequest, param.updateMask,  options).toPromise();
     }
 
     /**
@@ -1944,8 +2107,8 @@ export class ObjectBusinessProfileApi {
      * Update Business Profile
      * @param param the request object
      */
-    public updateBusinessProfile(param: BusinessProfileApiUpdateBusinessProfileRequest = {}, options?: ConfigurationOptions): Promise<GetBusinessProfileResponse> {
-        return this.api.updateBusinessProfile(param.updateMask, param.updateBusinessProfileRequest,  options).toPromise();
+    public updateBusinessProfile(param: BusinessProfileApiUpdateBusinessProfileRequest, options?: ConfigurationOptions): Promise<GetBusinessProfileResponse> {
+        return this.api.updateBusinessProfile(param.updateBusinessProfileRequest, param.updateMask,  options).toPromise();
     }
 
 }
@@ -1955,21 +2118,21 @@ import { CampaignApiRequestFactory, CampaignApiResponseProcessor} from "../apis/
 
 export interface CampaignApiAddContactsToCampaignSequenceRequest {
     /**
-     * campaign_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof CampaignApiaddContactsToCampaignSequence
      */
     campaignId: string
     /**
-     * sequence_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof CampaignApiaddContactsToCampaignSequence
      */
     sequenceId: string
     /**
-     * addContactsToSequenceRequest
+     * 
      * @type AddContactsToSequenceRequest
      * @memberof CampaignApiaddContactsToCampaignSequence
      */
@@ -1978,7 +2141,7 @@ export interface CampaignApiAddContactsToCampaignSequenceRequest {
 
 export interface CampaignApiGetCampaignRequest {
     /**
-     * campaign_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof CampaignApigetCampaign
@@ -1988,7 +2151,7 @@ export interface CampaignApiGetCampaignRequest {
 
 export interface CampaignApiGetCampaignGoalsRequest {
     /**
-     * campaign_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof CampaignApigetCampaignGoals
@@ -1998,7 +2161,7 @@ export interface CampaignApiGetCampaignGoalsRequest {
 
 export interface CampaignApiGetCampaignSequencesRequest {
     /**
-     * campaign_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof CampaignApigetCampaignSequences
@@ -2023,7 +2186,7 @@ export interface CampaignApiListCampaignsRequest {
     orderBy?: string
     /**
      * Total number of items to return per page
-     * Minimum: 1
+     * Minimum: 0
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
@@ -2037,32 +2200,25 @@ export interface CampaignApiListCampaignsRequest {
      * @memberof CampaignApilistCampaigns
      */
     pageToken?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type boolean
-     * @memberof CampaignApilistCampaigns
-     */
-    stats?: boolean
 }
 
 export interface CampaignApiRemoveContactsFromCampaignSequenceRequest {
     /**
-     * campaign_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof CampaignApiremoveContactsFromCampaignSequence
      */
     campaignId: string
     /**
-     * sequence_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof CampaignApiremoveContactsFromCampaignSequence
      */
     sequenceId: string
     /**
-     * removeContactsFromSequenceRequest
+     * 
      * @type RemoveContactsFromSequenceRequest
      * @memberof CampaignApiremoveContactsFromCampaignSequence
      */
@@ -2154,7 +2310,7 @@ export class ObjectCampaignApi {
      * @param param the request object
      */
     public listCampaignsWithHttpInfo(param: CampaignApiListCampaignsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListCampaignsResponse>> {
-        return this.api.listCampaignsWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken, param.stats,  options).toPromise();
+        return this.api.listCampaignsWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -2163,7 +2319,7 @@ export class ObjectCampaignApi {
      * @param param the request object
      */
     public listCampaigns(param: CampaignApiListCampaignsRequest = {}, options?: ConfigurationOptions): Promise<ListCampaignsResponse> {
-        return this.api.listCampaigns(param.filter, param.orderBy, param.pageSize, param.pageToken, param.stats,  options).toPromise();
+        return this.api.listCampaigns(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
     /**
@@ -2191,7 +2347,7 @@ import { CategoryDiscountsApiRequestFactory, CategoryDiscountsApiResponseProcess
 
 export interface CategoryDiscountsApiCreateCategoryDiscountRequest {
     /**
-     * request
+     * 
      * @type CreateCategoryDiscountRequest
      * @memberof CategoryDiscountsApicreateCategoryDiscount
      */
@@ -2200,7 +2356,7 @@ export interface CategoryDiscountsApiCreateCategoryDiscountRequest {
 
 export interface CategoryDiscountsApiDeleteCategoryDiscountRequest {
     /**
-     * discount_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof CategoryDiscountsApideleteCategoryDiscount
@@ -2210,7 +2366,7 @@ export interface CategoryDiscountsApiDeleteCategoryDiscountRequest {
 
 export interface CategoryDiscountsApiGetCategoryDiscountRequest {
     /**
-     * discount_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof CategoryDiscountsApigetCategoryDiscount
@@ -2235,7 +2391,7 @@ export interface CategoryDiscountsApiListCategoryDiscountsRequest {
     orderBy?: string
     /**
      * Total number of items to return per page
-     * Minimum: 1
+     * Minimum: 0
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
@@ -2253,14 +2409,14 @@ export interface CategoryDiscountsApiListCategoryDiscountsRequest {
 
 export interface CategoryDiscountsApiUpdateCategoryDiscountRequest {
     /**
-     * discount_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof CategoryDiscountsApiupdateCategoryDiscount
      */
     discountId: string
     /**
-     * request
+     * 
      * @type UpdateCategoryDiscountRequest
      * @memberof CategoryDiscountsApiupdateCategoryDiscount
      */
@@ -2268,10 +2424,10 @@ export interface CategoryDiscountsApiUpdateCategoryDiscountRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type Array&lt;string&gt;
+     * @type &#39;name,description,discount_percent,apply_to_commissions,criteria,product_category_ids&#39;
      * @memberof CategoryDiscountsApiupdateCategoryDiscount
      */
-    updateMask?: Array<string>
+    updateMask?: 'name,description,discount_percent,apply_to_commissions,criteria,product_category_ids'
 }
 
 export class ObjectCategoryDiscountsApi {
@@ -2378,16 +2534,25 @@ import { CompanyApiRequestFactory, CompanyApiResponseProcessor} from "../apis/Co
 
 export interface CompanyApiCreateCompanyRequest {
     /**
-     * company
+     * 
      * @type CreateCompanyRequest
      * @memberof CompanyApicreateCompany
      */
-    createCompanyRequest?: CreateCompanyRequest
+    createCompanyRequest: CreateCompanyRequest
+}
+
+export interface CompanyApiCreateCompanyCustomFieldRequest {
+    /**
+     * 
+     * @type CreateCustomFieldRequest
+     * @memberof CompanyApicreateCompanyCustomField
+     */
+    createCustomFieldRequest: CreateCustomFieldRequest
 }
 
 export interface CompanyApiDeleteCompanyRequest {
     /**
-     * company_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof CompanyApideleteCompany
@@ -2397,14 +2562,14 @@ export interface CompanyApiDeleteCompanyRequest {
 
 export interface CompanyApiGetCompanyRequest {
     /**
-     * company_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof CompanyApigetCompany
      */
     companyId: string
     /**
-     * Comma-delimited list of Company properties to include in the response. (Available fields are: &#x60;company_name&#x60;, &#x60;address&#x60;, &#x60;custom_fields&#x60;, &#x60;email_address&#x60;, &#x60;fax_number&#x60;, &#x60;phone_number&#x60;, &#x60;website&#x60;, &#x60;notes&#x60;)
+     * Comma-delimited list of Company properties to include in the response. (Available fields are: &#x60;address&#x60;, &#x60;custom_fields&#x60;, &#x60;email_address&#x60;, &#x60;fax_number&#x60;, &#x60;phone_number&#x60;, &#x60;website&#x60;, &#x60;notes&#x60;)
      * Defaults to: undefined
      * @type Array&lt;string&gt;
      * @memberof CompanyApigetCompany
@@ -2414,14 +2579,14 @@ export interface CompanyApiGetCompanyRequest {
 
 export interface CompanyApiListCompaniesRequest {
     /**
-     * Comma-delimited list of Company properties to include in the response. (Fields such as &#x60;notes&#x60;, &#x60;fax_number&#x60;, &#x60;email_address&#x60;, &#x60;phone_number&#x60;, &#x60;update_time&#x60;, &#x60;create_time&#x60; and &#x60;custom_fields&#x60; aren\&#39;t included, by default.)
+     * Comma-delimited list of Company properties to include in the response. (Fields such as &#x60;notes&#x60;, &#x60;fax_number&#x60;, &#x60;address&#x60;, &#x60;email_address&#x60;, &#x60;phone_number&#x60;, &#x60;update_time&#x60;, &#x60;create_time&#x60; and &#x60;custom_fields&#x60; aren\&#39;t included, by default.)
      * Defaults to: undefined
      * @type Array&lt;string&gt;
      * @memberof CompanyApilistCompanies
      */
     fields?: Array<string>
     /**
-     * Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; 
+     * Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; 
      * Defaults to: undefined
      * @type string
      * @memberof CompanyApilistCompanies
@@ -2436,7 +2601,7 @@ export interface CompanyApiListCompaniesRequest {
     orderBy?: string
     /**
      * Total number of items to return per page
-     * Minimum: 1
+     * Minimum: 0
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
@@ -2452,27 +2617,53 @@ export interface CompanyApiListCompaniesRequest {
     pageToken?: string
 }
 
+export interface CompanyApiRetrieveCompanyCustomFieldModelRequest {
+}
+
 export interface CompanyApiUpdateCompanyRequest {
     /**
-     * company_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof CompanyApiupdateCompany
      */
     companyId: string
     /**
-     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-     * Defaults to: undefined
-     * @type Array&lt;string&gt;
-     * @memberof CompanyApiupdateCompany
-     */
-    updateMask?: Array<string>
-    /**
-     * company
+     * 
      * @type UpdateCompanyRequest
      * @memberof CompanyApiupdateCompany
      */
-    updateCompanyRequest?: UpdateCompanyRequest
+    updateCompanyRequest: UpdateCompanyRequest
+    /**
+     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * Defaults to: undefined
+     * @type &#39;id,company_name,address,phone_number,fax_number,email_address, notes,website,custom_fields,create_time,update_time&#39;
+     * @memberof CompanyApiupdateCompany
+     */
+    updateMask?: 'id,company_name,address,phone_number,fax_number,email_address, notes,website,custom_fields,create_time,update_time'
+}
+
+export interface CompanyApiUpdateCompanyCustomFieldRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof CompanyApiupdateCompanyCustomField
+     */
+    customFieldId: string
+    /**
+     * 
+     * @type UpdateCustomFieldMetaDataRequest
+     * @memberof CompanyApiupdateCompanyCustomField
+     */
+    updateCustomFieldMetaDataRequest: UpdateCustomFieldMetaDataRequest
+    /**
+     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * Defaults to: undefined
+     * @type &#39;group_id,label,options&#39;
+     * @memberof CompanyApiupdateCompanyCustomField
+     */
+    updateMask?: 'group_id,label,options'
 }
 
 export class ObjectCompanyApi {
@@ -2487,7 +2678,7 @@ export class ObjectCompanyApi {
      * Create a Company
      * @param param the request object
      */
-    public createCompanyWithHttpInfo(param: CompanyApiCreateCompanyRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<Company>> {
+    public createCompanyWithHttpInfo(param: CompanyApiCreateCompanyRequest, options?: ConfigurationOptions): Promise<HttpInfo<Company>> {
         return this.api.createCompanyWithHttpInfo(param.createCompanyRequest,  options).toPromise();
     }
 
@@ -2496,8 +2687,26 @@ export class ObjectCompanyApi {
      * Create a Company
      * @param param the request object
      */
-    public createCompany(param: CompanyApiCreateCompanyRequest = {}, options?: ConfigurationOptions): Promise<Company> {
+    public createCompany(param: CompanyApiCreateCompanyRequest, options?: ConfigurationOptions): Promise<Company> {
         return this.api.createCompany(param.createCompanyRequest,  options).toPromise();
+    }
+
+    /**
+     * Creates a custom field of the specified type and options to the Company object
+     * Create a Company Custom Field
+     * @param param the request object
+     */
+    public createCompanyCustomFieldWithHttpInfo(param: CompanyApiCreateCompanyCustomFieldRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
+        return this.api.createCompanyCustomFieldWithHttpInfo(param.createCustomFieldRequest,  options).toPromise();
+    }
+
+    /**
+     * Creates a custom field of the specified type and options to the Company object
+     * Create a Company Custom Field
+     * @param param the request object
+     */
+    public createCompanyCustomField(param: CompanyApiCreateCompanyCustomFieldRequest, options?: ConfigurationOptions): Promise<CustomFieldMetaData> {
+        return this.api.createCompanyCustomField(param.createCustomFieldRequest,  options).toPromise();
     }
 
     /**
@@ -2537,7 +2746,7 @@ export class ObjectCompanyApi {
     }
 
     /**
-     * Retrieves a list of all Companies.<br/><br/>If the feature flag is <b>enabled</b>, the endpoint returns the <span style=\'color:red\'>legacy</span> non-paginated list of all companies.<br/>If the flag is <b>disabled</b>, it returns a paginated list using the v2-compliant implementation.<br/><br/><span style=\'color:red\'>Deprecated as of v2</span>: The legacy behavior will be removed after the transition period.
+     * Retrieves a list of all Companies.<br/><br/>
      * List Companies
      * @param param the request object
      */
@@ -2546,7 +2755,7 @@ export class ObjectCompanyApi {
     }
 
     /**
-     * Retrieves a list of all Companies.<br/><br/>If the feature flag is <b>enabled</b>, the endpoint returns the <span style=\'color:red\'>legacy</span> non-paginated list of all companies.<br/>If the flag is <b>disabled</b>, it returns a paginated list using the v2-compliant implementation.<br/><br/><span style=\'color:red\'>Deprecated as of v2</span>: The legacy behavior will be removed after the transition period.
+     * Retrieves a list of all Companies.<br/><br/>
      * List Companies
      * @param param the request object
      */
@@ -2555,12 +2764,30 @@ export class ObjectCompanyApi {
     }
 
     /**
+     * Get the custom fields for the Company object
+     * Retrieve Company Custom Field Model
+     * @param param the request object
+     */
+    public retrieveCompanyCustomFieldModelWithHttpInfo(param: CompanyApiRetrieveCompanyCustomFieldModelRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ObjectModel>> {
+        return this.api.retrieveCompanyCustomFieldModelWithHttpInfo( options).toPromise();
+    }
+
+    /**
+     * Get the custom fields for the Company object
+     * Retrieve Company Custom Field Model
+     * @param param the request object
+     */
+    public retrieveCompanyCustomFieldModel(param: CompanyApiRetrieveCompanyCustomFieldModelRequest = {}, options?: ConfigurationOptions): Promise<ObjectModel> {
+        return this.api.retrieveCompanyCustomFieldModel( options).toPromise();
+    }
+
+    /**
      * Updates a Company with the values provided in the request
      * Update a Company
      * @param param the request object
      */
     public updateCompanyWithHttpInfo(param: CompanyApiUpdateCompanyRequest, options?: ConfigurationOptions): Promise<HttpInfo<Company>> {
-        return this.api.updateCompanyWithHttpInfo(param.companyId, param.updateMask, param.updateCompanyRequest,  options).toPromise();
+        return this.api.updateCompanyWithHttpInfo(param.companyId, param.updateCompanyRequest, param.updateMask,  options).toPromise();
     }
 
     /**
@@ -2569,7 +2796,25 @@ export class ObjectCompanyApi {
      * @param param the request object
      */
     public updateCompany(param: CompanyApiUpdateCompanyRequest, options?: ConfigurationOptions): Promise<Company> {
-        return this.api.updateCompany(param.companyId, param.updateMask, param.updateCompanyRequest,  options).toPromise();
+        return this.api.updateCompany(param.companyId, param.updateCompanyRequest, param.updateMask,  options).toPromise();
+    }
+
+    /**
+     * Updates a custom field of the specified type and options to the Company object
+     * Update a Company Custom Field
+     * @param param the request object
+     */
+    public updateCompanyCustomFieldWithHttpInfo(param: CompanyApiUpdateCompanyCustomFieldRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
+        return this.api.updateCompanyCustomFieldWithHttpInfo(param.customFieldId, param.updateCustomFieldMetaDataRequest, param.updateMask,  options).toPromise();
+    }
+
+    /**
+     * Updates a custom field of the specified type and options to the Company object
+     * Update a Company Custom Field
+     * @param param the request object
+     */
+    public updateCompanyCustomField(param: CompanyApiUpdateCompanyCustomFieldRequest, options?: ConfigurationOptions): Promise<CustomFieldMetaData> {
+        return this.api.updateCompanyCustomField(param.customFieldId, param.updateCustomFieldMetaDataRequest, param.updateMask,  options).toPromise();
     }
 
 }
@@ -2579,16 +2824,23 @@ import { ContactApiRequestFactory, ContactApiResponseProcessor} from "../apis/Co
 
 export interface ContactApiCreateContactRequest {
     /**
-     * contact
+     * 
      * @type CreateUpdateContactRequest
      * @memberof ContactApicreateContact
      */
-    createUpdateContactRequest?: CreateUpdateContactRequest
+    createUpdateContactRequest: CreateUpdateContactRequest
+    /**
+     * Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
+     * Defaults to: undefined
+     * @type Array&lt;string&gt;
+     * @memberof ContactApicreateContact
+     */
+    fields?: Array<string>
 }
 
 export interface ContactApiCreateContactLinkTypeRequest {
     /**
-     * request
+     * 
      * @type CreateContactLinkTypeRequest
      * @memberof ContactApicreateContactLinkType
      */
@@ -2597,7 +2849,7 @@ export interface ContactApiCreateContactLinkTypeRequest {
 
 export interface ContactApiDeleteContactRequest {
     /**
-     * contact_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof ContactApideleteContact
@@ -2607,7 +2859,7 @@ export interface ContactApiDeleteContactRequest {
 
 export interface ContactApiGetContactRequest {
     /**
-     * contact_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof ContactApigetContact
@@ -2624,7 +2876,7 @@ export interface ContactApiGetContactRequest {
 
 export interface ContactApiLinkContactsRequest {
     /**
-     * linkContactsRequest
+     * 
      * @type LinkContactsRequest
      * @memberof ContactApilinkContacts
      */
@@ -2633,7 +2885,7 @@ export interface ContactApiLinkContactsRequest {
 
 export interface ContactApiListContactLinkTypesRequest {
     /**
-     * Filter to apply, allowed fields are: - (String) &#x60;name&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3DexpectedValue&#x60; 
+     * Filter to apply, allowed fields are: - (String) &#x60;name&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3DexpectedValue&#x60; 
      * Defaults to: undefined
      * @type string
      * @memberof ContactApilistContactLinkTypes
@@ -2648,7 +2900,7 @@ export interface ContactApiListContactLinkTypesRequest {
     orderBy?: string
     /**
      * Total number of items to return per page
-     * Minimum: 1
+     * Minimum: 0
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
@@ -2666,7 +2918,7 @@ export interface ContactApiListContactLinkTypesRequest {
 
 export interface ContactApiListContactLinksRequest {
     /**
-     * contact_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof ContactApilistContactLinks
@@ -2698,7 +2950,7 @@ export interface ContactApiListContactsRequest {
     orderBy?: string
     /**
      * Total number of items to return per page
-     * Minimum: 1
+     * Minimum: 0
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
@@ -2714,12 +2966,52 @@ export interface ContactApiListContactsRequest {
     pageToken?: string
 }
 
+export interface ContactApiListTagsForContactRequest {
+    /**
+     * Contact identifier
+     * Defaults to: undefined
+     * @type string
+     * @memberof ContactApilistTagsForContact
+     */
+    contactId: string
+    /**
+     * Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (String) &#x60;description&#x60; - (String) &#x60;category_id&#x60; (use &#x60;category_id&#x3D;&#x3D;NONE&#x60; to filter tags not assigned to any category) - (String) &#x60;since_applied_time&#x60; - (String) &#x60;until_applied_time&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3DCustomer&#x60; - &#x60;filter&#x3D;category_id%3D%3D123&#x60; - &#x60;filter&#x3D;category_id%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; 
+     * Defaults to: undefined
+     * @type string
+     * @memberof ContactApilistTagsForContact
+     */
+    filter?: string
+    /**
+     * Page token
+     * Defaults to: undefined
+     * @type string
+     * @memberof ContactApilistTagsForContact
+     */
+    pageToken?: string
+    /**
+     * Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60; - &#x60;applied_time&#x60; - &#x60;category_id&#x60; One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * Defaults to: undefined
+     * @type string
+     * @memberof ContactApilistTagsForContact
+     */
+    orderBy?: string
+    /**
+     * Total number of items to return per page
+     * Minimum: 0
+     * Maximum: 1000
+     * Defaults to: undefined
+     * @type number
+     * @memberof ContactApilistTagsForContact
+     */
+    pageSize?: number
+}
+
 export interface ContactApiRetrieveContactModelRequest {
 }
 
 export interface ContactApiUnlinkContactsRequest {
     /**
-     * linkContactsRequest
+     * 
      * @type LinkContactsRequest
      * @memberof ContactApiunlinkContacts
      */
@@ -2728,25 +3020,32 @@ export interface ContactApiUnlinkContactsRequest {
 
 export interface ContactApiUpdateContactRequest {
     /**
-     * contact_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof ContactApiupdateContact
      */
     contactId: string
     /**
+     * 
+     * @type CreateUpdateContactRequest
+     * @memberof ContactApiupdateContact
+     */
+    createUpdateContactRequest: CreateUpdateContactRequest
+    /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * Defaults to: undefined
+     * @type &#39;addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website&#39;
+     * @memberof ContactApiupdateContact
+     */
+    updateMask?: 'addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website'
+    /**
+     * Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
      * Defaults to: undefined
      * @type Array&lt;string&gt;
      * @memberof ContactApiupdateContact
      */
-    updateMask?: Array<string>
-    /**
-     * contact
-     * @type CreateUpdateContactRequest
-     * @memberof ContactApiupdateContact
-     */
-    createUpdateContactRequest?: CreateUpdateContactRequest
+    fields?: Array<string>
 }
 
 export class ObjectContactApi {
@@ -2761,8 +3060,8 @@ export class ObjectContactApi {
      * Create a Contact
      * @param param the request object
      */
-    public createContactWithHttpInfo(param: ContactApiCreateContactRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<Contact>> {
-        return this.api.createContactWithHttpInfo(param.createUpdateContactRequest,  options).toPromise();
+    public createContactWithHttpInfo(param: ContactApiCreateContactRequest, options?: ConfigurationOptions): Promise<HttpInfo<Contact>> {
+        return this.api.createContactWithHttpInfo(param.createUpdateContactRequest, param.fields,  options).toPromise();
     }
 
     /**
@@ -2770,8 +3069,8 @@ export class ObjectContactApi {
      * Create a Contact
      * @param param the request object
      */
-    public createContact(param: ContactApiCreateContactRequest = {}, options?: ConfigurationOptions): Promise<Contact> {
-        return this.api.createContact(param.createUpdateContactRequest,  options).toPromise();
+    public createContact(param: ContactApiCreateContactRequest, options?: ConfigurationOptions): Promise<Contact> {
+        return this.api.createContact(param.createUpdateContactRequest, param.fields,  options).toPromise();
     }
 
     /**
@@ -2901,6 +3200,24 @@ export class ObjectContactApi {
     }
 
     /**
+     * Retrieves a list of tags applied to the specified Contact
+     * List Applied Tags
+     * @param param the request object
+     */
+    public listTagsForContactWithHttpInfo(param: ContactApiListTagsForContactRequest, options?: ConfigurationOptions): Promise<HttpInfo<ListContactTagsResponse>> {
+        return this.api.listTagsForContactWithHttpInfo(param.contactId, param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of tags applied to the specified Contact
+     * List Applied Tags
+     * @param param the request object
+     */
+    public listTagsForContact(param: ContactApiListTagsForContactRequest, options?: ConfigurationOptions): Promise<ListContactTagsResponse> {
+        return this.api.listTagsForContact(param.contactId, param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
+    }
+
+    /**
      * Get the custom fields and optional properties for the Contact object
      * Retrieve Contact Model
      * @param param the request object
@@ -2942,7 +3259,7 @@ export class ObjectContactApi {
      * @param param the request object
      */
     public updateContactWithHttpInfo(param: ContactApiUpdateContactRequest, options?: ConfigurationOptions): Promise<HttpInfo<Contact>> {
-        return this.api.updateContactWithHttpInfo(param.contactId, param.updateMask, param.createUpdateContactRequest,  options).toPromise();
+        return this.api.updateContactWithHttpInfo(param.contactId, param.createUpdateContactRequest, param.updateMask, param.fields,  options).toPromise();
     }
 
     /**
@@ -2951,7 +3268,7 @@ export class ObjectContactApi {
      * @param param the request object
      */
     public updateContact(param: ContactApiUpdateContactRequest, options?: ConfigurationOptions): Promise<Contact> {
-        return this.api.updateContact(param.contactId, param.updateMask, param.createUpdateContactRequest,  options).toPromise();
+        return this.api.updateContact(param.contactId, param.createUpdateContactRequest, param.updateMask, param.fields,  options).toPromise();
     }
 
 }
@@ -2961,7 +3278,7 @@ import { EmailApiRequestFactory, EmailApiResponseProcessor} from "../apis/EmailA
 
 export interface EmailApiCreateEmailRequest {
     /**
-     * emailWithContent
+     * 
      * @type CreateEmailSentRequest
      * @memberof EmailApicreateEmail
      */
@@ -2970,16 +3287,16 @@ export interface EmailApiCreateEmailRequest {
 
 export interface EmailApiCreateEmailsRequest {
     /**
-     * Email records to persist, with content.
+     * 
      * @type CreateEmailsSentRequest
      * @memberof EmailApicreateEmails
      */
-    createEmailsSentRequest?: CreateEmailsSentRequest
+    createEmailsSentRequest: CreateEmailsSentRequest
 }
 
 export interface EmailApiDeleteEmailRequest {
     /**
-     * id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof EmailApideleteEmail
@@ -2989,7 +3306,7 @@ export interface EmailApiDeleteEmailRequest {
 
 export interface EmailApiDeleteEmailsRequest {
     /**
-     * deleteEmailsRequest
+     * 
      * @type DeleteEmailsRequest
      * @memberof EmailApideleteEmails
      */
@@ -2998,7 +3315,7 @@ export interface EmailApiDeleteEmailsRequest {
 
 export interface EmailApiGetEmailRequest {
     /**
-     * id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof EmailApigetEmail
@@ -3008,7 +3325,7 @@ export interface EmailApiGetEmailRequest {
 
 export interface EmailApiGetEmailTemplateRequest {
     /**
-     * email_template_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof EmailApigetEmailTemplate
@@ -3033,7 +3350,7 @@ export interface EmailApiListEmailsRequest {
     orderBy?: string
     /**
      * Total number of items to return per page
-     * Minimum: 1
+     * Minimum: 0
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
@@ -3051,20 +3368,20 @@ export interface EmailApiListEmailsRequest {
 
 export interface EmailApiSendEmailRequest {
     /**
-     * emailSendRequest
+     * 
      * @type EmailSendRequest
      * @memberof EmailApisendEmail
      */
-    emailSendRequest?: EmailSendRequest
+    emailSendRequest: EmailSendRequest
 }
 
 export interface EmailApiSendEmailTemplateRequest {
     /**
-     * Use a template to send an email to a list of contacts 
+     * 
      * @type EmailSendTemplateRequest
      * @memberof EmailApisendEmailTemplate
      */
-    emailSendTemplateRequest?: EmailSendTemplateRequest
+    emailSendTemplateRequest: EmailSendTemplateRequest
 }
 
 export class ObjectEmailApi {
@@ -3097,7 +3414,7 @@ export class ObjectEmailApi {
      * Create a set of Email Records
      * @param param the request object
      */
-    public createEmailsWithHttpInfo(param: EmailApiCreateEmailsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<EmailsSentList>> {
+    public createEmailsWithHttpInfo(param: EmailApiCreateEmailsRequest, options?: ConfigurationOptions): Promise<HttpInfo<EmailsSentList>> {
         return this.api.createEmailsWithHttpInfo(param.createEmailsSentRequest,  options).toPromise();
     }
 
@@ -3106,7 +3423,7 @@ export class ObjectEmailApi {
      * Create a set of Email Records
      * @param param the request object
      */
-    public createEmails(param: EmailApiCreateEmailsRequest = {}, options?: ConfigurationOptions): Promise<EmailsSentList> {
+    public createEmails(param: EmailApiCreateEmailsRequest, options?: ConfigurationOptions): Promise<EmailsSentList> {
         return this.api.createEmails(param.createEmailsSentRequest,  options).toPromise();
     }
 
@@ -3205,7 +3522,7 @@ export class ObjectEmailApi {
      * Send an Email
      * @param param the request object
      */
-    public sendEmailWithHttpInfo(param: EmailApiSendEmailRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+    public sendEmailWithHttpInfo(param: EmailApiSendEmailRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
         return this.api.sendEmailWithHttpInfo(param.emailSendRequest,  options).toPromise();
     }
 
@@ -3214,7 +3531,7 @@ export class ObjectEmailApi {
      * Send an Email
      * @param param the request object
      */
-    public sendEmail(param: EmailApiSendEmailRequest = {}, options?: ConfigurationOptions): Promise<void> {
+    public sendEmail(param: EmailApiSendEmailRequest, options?: ConfigurationOptions): Promise<void> {
         return this.api.sendEmail(param.emailSendRequest,  options).toPromise();
     }
 
@@ -3223,7 +3540,7 @@ export class ObjectEmailApi {
      * Send an email based on a template
      * @param param the request object
      */
-    public sendEmailTemplateWithHttpInfo(param: EmailApiSendEmailTemplateRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+    public sendEmailTemplateWithHttpInfo(param: EmailApiSendEmailTemplateRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
         return this.api.sendEmailTemplateWithHttpInfo(param.emailSendTemplateRequest,  options).toPromise();
     }
 
@@ -3232,7 +3549,7 @@ export class ObjectEmailApi {
      * Send an email based on a template
      * @param param the request object
      */
-    public sendEmailTemplate(param: EmailApiSendEmailTemplateRequest = {}, options?: ConfigurationOptions): Promise<void> {
+    public sendEmailTemplate(param: EmailApiSendEmailTemplateRequest, options?: ConfigurationOptions): Promise<void> {
         return this.api.sendEmailTemplate(param.emailSendTemplateRequest,  options).toPromise();
     }
 
@@ -3243,7 +3560,7 @@ import { EmailAddressApiRequestFactory, EmailAddressApiResponseProcessor} from "
 
 export interface EmailAddressApiGetEmailAddressStatusRequest {
     /**
-     * email
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof EmailAddressApigetEmailAddressStatus
@@ -3253,14 +3570,14 @@ export interface EmailAddressApiGetEmailAddressStatusRequest {
 
 export interface EmailAddressApiUpdateEmailAddressOptStatusRequest {
     /**
-     * email
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof EmailAddressApiupdateEmailAddressOptStatus
      */
     email: string
     /**
-     * updateEmailAddress
+     * 
      * @type UpdateEmailAddress
      * @memberof EmailAddressApiupdateEmailAddressOptStatus
      */
@@ -3279,7 +3596,7 @@ export class ObjectEmailAddressApi {
      * Retrieve an Email Address status
      * @param param the request object
      */
-    public getEmailAddressStatusWithHttpInfo(param: EmailAddressApiGetEmailAddressStatusRequest, options?: ConfigurationOptions): Promise<HttpInfo<EmailAddressStatus>> {
+    public getEmailAddressStatusWithHttpInfo(param: EmailAddressApiGetEmailAddressStatusRequest, options?: ConfigurationOptions): Promise<HttpInfo<RestEmailAddressStatus>> {
         return this.api.getEmailAddressStatusWithHttpInfo(param.email,  options).toPromise();
     }
 
@@ -3288,7 +3605,7 @@ export class ObjectEmailAddressApi {
      * Retrieve an Email Address status
      * @param param the request object
      */
-    public getEmailAddressStatus(param: EmailAddressApiGetEmailAddressStatusRequest, options?: ConfigurationOptions): Promise<EmailAddressStatus> {
+    public getEmailAddressStatus(param: EmailAddressApiGetEmailAddressStatusRequest, options?: ConfigurationOptions): Promise<RestEmailAddressStatus> {
         return this.api.getEmailAddressStatus(param.email,  options).toPromise();
     }
 
@@ -3297,7 +3614,7 @@ export class ObjectEmailAddressApi {
      * Update an Email Address opt-in status
      * @param param the request object
      */
-    public updateEmailAddressOptStatusWithHttpInfo(param: EmailAddressApiUpdateEmailAddressOptStatusRequest, options?: ConfigurationOptions): Promise<HttpInfo<EmailAddressStatus>> {
+    public updateEmailAddressOptStatusWithHttpInfo(param: EmailAddressApiUpdateEmailAddressOptStatusRequest, options?: ConfigurationOptions): Promise<HttpInfo<RestEmailAddressStatus>> {
         return this.api.updateEmailAddressOptStatusWithHttpInfo(param.email, param.updateEmailAddress,  options).toPromise();
     }
 
@@ -3306,7 +3623,7 @@ export class ObjectEmailAddressApi {
      * Update an Email Address opt-in status
      * @param param the request object
      */
-    public updateEmailAddressOptStatus(param: EmailAddressApiUpdateEmailAddressOptStatusRequest, options?: ConfigurationOptions): Promise<EmailAddressStatus> {
+    public updateEmailAddressOptStatus(param: EmailAddressApiUpdateEmailAddressOptStatusRequest, options?: ConfigurationOptions): Promise<RestEmailAddressStatus> {
         return this.api.updateEmailAddressOptStatus(param.email, param.updateEmailAddress,  options).toPromise();
     }
 
@@ -3319,17 +3636,10 @@ export interface FilesApiCreateFileRequest {
     /**
      * File to upload. This is a file sent as multi-part (not a string)
      * Defaults to: undefined
-     * @type string
+     * @type HttpFile
      * @memberof FilesApicreateFile
      */
-    file: string
-    /**
-     * File association
-     * Defaults to: undefined
-     * @type string
-     * @memberof FilesApicreateFile
-     */
-    fileAssociation: string
+    file: HttpFile
     /**
      * File name
      * Defaults to: undefined
@@ -3345,17 +3655,59 @@ export interface FilesApiCreateFileRequest {
      */
     isPublic: boolean
     /**
+     * File association
+     * Defaults to: undefined
+     * @type string
+     * @memberof FilesApicreateFile
+     */
+    fileAssociation: string
+    /**
+     * File to upload
+     * Defaults to: undefined
+     * @type HttpFile
+     * @memberof FilesApicreateFile
+     */
+    file2: HttpFile
+    /**
+     * File name
+     * Defaults to: undefined
+     * @type string
+     * @memberof FilesApicreateFile
+     */
+    fileName2: string
+    /**
+     * Is public
+     * Defaults to: undefined
+     * @type string
+     * @memberof FilesApicreateFile
+     */
+    isPublic2: string
+    /**
+     * File association
+     * Defaults to: undefined
+     * @type string
+     * @memberof FilesApicreateFile
+     */
+    fileAssociation2: string
+    /**
      * Contact ID
      * Defaults to: undefined
      * @type string
      * @memberof FilesApicreateFile
      */
     contactId?: string
+    /**
+     * Contact ID. Required if the &#x60;file_association&#x60; is CONTACT
+     * Defaults to: undefined
+     * @type string
+     * @memberof FilesApicreateFile
+     */
+    contactId2?: string
 }
 
 export interface FilesApiDeleteFileRequest {
     /**
-     * file_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof FilesApideleteFile
@@ -3365,7 +3717,7 @@ export interface FilesApiDeleteFileRequest {
 
 export interface FilesApiGetFileRequest {
     /**
-     * file_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof FilesApigetFile
@@ -3375,7 +3727,7 @@ export interface FilesApiGetFileRequest {
 
 export interface FilesApiGetFileDataRequest {
     /**
-     * file_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof FilesApigetFileData
@@ -3400,7 +3752,7 @@ export interface FilesApiListFilesRequest {
     orderBy?: string
     /**
      * Total number of items to return per page
-     * Minimum: 1
+     * Minimum: 0
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
@@ -3418,19 +3770,26 @@ export interface FilesApiListFilesRequest {
 
 export interface FilesApiUpdateFileRequest {
     /**
-     * file_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof FilesApiupdateFile
      */
     fileId: string
     /**
-     * File to upload. This is a file sent as multi-part (not a string)
+     * Update Mask
      * Defaults to: undefined
      * @type string
      * @memberof FilesApiupdateFile
      */
-    file?: string
+    updateMask?: string
+    /**
+     * File to upload. This is a file sent as multi-part (not a string)
+     * Defaults to: undefined
+     * @type HttpFile
+     * @memberof FilesApiupdateFile
+     */
+    file?: HttpFile
     /**
      * File name
      * Defaults to: undefined
@@ -3446,12 +3805,26 @@ export interface FilesApiUpdateFileRequest {
      */
     isPublic?: boolean
     /**
-     * Update Mask
+     * File to upload
+     * Defaults to: undefined
+     * @type HttpFile
+     * @memberof FilesApiupdateFile
+     */
+    file2?: HttpFile
+    /**
+     * File name
      * Defaults to: undefined
      * @type string
      * @memberof FilesApiupdateFile
      */
-    updateMask?: string
+    fileName2?: string
+    /**
+     * Is public
+     * Defaults to: undefined
+     * @type boolean
+     * @memberof FilesApiupdateFile
+     */
+    isPublic2?: boolean
 }
 
 export class ObjectFilesApi {
@@ -3467,7 +3840,7 @@ export class ObjectFilesApi {
      * @param param the request object
      */
     public createFileWithHttpInfo(param: FilesApiCreateFileRequest, options?: ConfigurationOptions): Promise<HttpInfo<FileMetadata>> {
-        return this.api.createFileWithHttpInfo(param.file, param.fileAssociation, param.fileName, param.isPublic, param.contactId,  options).toPromise();
+        return this.api.createFileWithHttpInfo(param.file, param.fileName, param.isPublic, param.fileAssociation, param.file2, param.fileName2, param.isPublic2, param.fileAssociation2, param.contactId, param.contactId2,  options).toPromise();
     }
 
     /**
@@ -3476,7 +3849,7 @@ export class ObjectFilesApi {
      * @param param the request object
      */
     public createFile(param: FilesApiCreateFileRequest, options?: ConfigurationOptions): Promise<FileMetadata> {
-        return this.api.createFile(param.file, param.fileAssociation, param.fileName, param.isPublic, param.contactId,  options).toPromise();
+        return this.api.createFile(param.file, param.fileName, param.isPublic, param.fileAssociation, param.file2, param.fileName2, param.isPublic2, param.fileAssociation2, param.contactId, param.contactId2,  options).toPromise();
     }
 
     /**
@@ -3557,7 +3930,7 @@ export class ObjectFilesApi {
      * @param param the request object
      */
     public updateFileWithHttpInfo(param: FilesApiUpdateFileRequest, options?: ConfigurationOptions): Promise<HttpInfo<FileMetadata>> {
-        return this.api.updateFileWithHttpInfo(param.fileId, param.file, param.fileName, param.isPublic, param.updateMask,  options).toPromise();
+        return this.api.updateFileWithHttpInfo(param.fileId, param.updateMask, param.file, param.fileName, param.isPublic, param.file2, param.fileName2, param.isPublic2,  options).toPromise();
     }
 
     /**
@@ -3566,7 +3939,7 @@ export class ObjectFilesApi {
      * @param param the request object
      */
     public updateFile(param: FilesApiUpdateFileRequest, options?: ConfigurationOptions): Promise<FileMetadata> {
-        return this.api.updateFile(param.fileId, param.file, param.fileName, param.isPublic, param.updateMask,  options).toPromise();
+        return this.api.updateFile(param.fileId, param.updateMask, param.file, param.fileName, param.isPublic, param.file2, param.fileName2, param.isPublic2,  options).toPromise();
     }
 
 }
@@ -3576,7 +3949,7 @@ import { FreeTrialDiscountsApiRequestFactory, FreeTrialDiscountsApiResponseProce
 
 export interface FreeTrialDiscountsApiCreateFreeTrialDiscountRequest {
     /**
-     * createFreeTrialDiscountRequest
+     * 
      * @type CreateFreeTrialDiscountRequest
      * @memberof FreeTrialDiscountsApicreateFreeTrialDiscount
      */
@@ -3585,7 +3958,7 @@ export interface FreeTrialDiscountsApiCreateFreeTrialDiscountRequest {
 
 export interface FreeTrialDiscountsApiDeleteFreeTrialDiscountRequest {
     /**
-     * discount_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof FreeTrialDiscountsApideleteFreeTrialDiscount
@@ -3595,7 +3968,7 @@ export interface FreeTrialDiscountsApiDeleteFreeTrialDiscountRequest {
 
 export interface FreeTrialDiscountsApiGetFreeTrialDiscountRequest {
     /**
-     * discount_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof FreeTrialDiscountsApigetFreeTrialDiscount
@@ -3620,7 +3993,7 @@ export interface FreeTrialDiscountsApiListFreeTrialDiscountsRequest {
     orderBy?: string
     /**
      * Total number of items to return per page
-     * Minimum: 1
+     * Minimum: 0
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
@@ -3638,14 +4011,14 @@ export interface FreeTrialDiscountsApiListFreeTrialDiscountsRequest {
 
 export interface FreeTrialDiscountsApiUpdateFreeTrialDiscountRequest {
     /**
-     * discount_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof FreeTrialDiscountsApiupdateFreeTrialDiscount
      */
     discountId: string
     /**
-     * request
+     * 
      * @type UpdateFreeTrialDiscountRequest
      * @memberof FreeTrialDiscountsApiupdateFreeTrialDiscount
      */
@@ -3653,10 +4026,10 @@ export interface FreeTrialDiscountsApiUpdateFreeTrialDiscountRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type Array&lt;string&gt;
+     * @type &#39;name,description,free_trial_days,hide_price,subscription_plan_id,criteria&#39;
      * @memberof FreeTrialDiscountsApiupdateFreeTrialDiscount
      */
-    updateMask?: Array<string>
+    updateMask?: 'name,description,free_trial_days,hide_price,subscription_plan_id,criteria'
 }
 
 export class ObjectFreeTrialDiscountsApi {
@@ -3758,12 +4131,79 @@ export class ObjectFreeTrialDiscountsApi {
 
 }
 
+import { ObservableIntegrationsApi } from "./ObservableAPI";
+import { IntegrationsApiRequestFactory, IntegrationsApiResponseProcessor} from "../apis/IntegrationsApi";
+
+export interface IntegrationsApiAddIntegrationsWordPressOptInRequest {
+    /**
+     * 
+     * @type CreateIntegrationsWordPressOptInOption
+     * @memberof IntegrationsApiaddIntegrationsWordPressOptIn
+     */
+    createIntegrationsWordPressOptInOption: CreateIntegrationsWordPressOptInOption
+}
+
+export interface IntegrationsApiDeleteIntegrationsWordPressOptInRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof IntegrationsApideleteIntegrationsWordPressOptIn
+     */
+    optionKey: string
+}
+
+export class ObjectIntegrationsApi {
+    private api: ObservableIntegrationsApi
+
+    public constructor(configuration: Configuration, requestFactory?: IntegrationsApiRequestFactory, responseProcessor?: IntegrationsApiResponseProcessor) {
+        this.api = new ObservableIntegrationsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Adds a value to the list of WordPress Opt-In Options Available
+     * Add a WordPress Opt-In Option
+     * @param param the request object
+     */
+    public addIntegrationsWordPressOptInWithHttpInfo(param: IntegrationsApiAddIntegrationsWordPressOptInRequest, options?: ConfigurationOptions): Promise<HttpInfo<WordPressOptInOption>> {
+        return this.api.addIntegrationsWordPressOptInWithHttpInfo(param.createIntegrationsWordPressOptInOption,  options).toPromise();
+    }
+
+    /**
+     * Adds a value to the list of WordPress Opt-In Options Available
+     * Add a WordPress Opt-In Option
+     * @param param the request object
+     */
+    public addIntegrationsWordPressOptIn(param: IntegrationsApiAddIntegrationsWordPressOptInRequest, options?: ConfigurationOptions): Promise<WordPressOptInOption> {
+        return this.api.addIntegrationsWordPressOptIn(param.createIntegrationsWordPressOptInOption,  options).toPromise();
+    }
+
+    /**
+     * Deletes a value from the list of WordPress Opt-In Options Available
+     * Delete a WordPress Opt-In Option
+     * @param param the request object
+     */
+    public deleteIntegrationsWordPressOptInWithHttpInfo(param: IntegrationsApiDeleteIntegrationsWordPressOptInRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteIntegrationsWordPressOptInWithHttpInfo(param.optionKey,  options).toPromise();
+    }
+
+    /**
+     * Deletes a value from the list of WordPress Opt-In Options Available
+     * Delete a WordPress Opt-In Option
+     * @param param the request object
+     */
+    public deleteIntegrationsWordPressOptIn(param: IntegrationsApiDeleteIntegrationsWordPressOptInRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteIntegrationsWordPressOptIn(param.optionKey,  options).toPromise();
+    }
+
+}
+
 import { ObservableLeadScoreApi } from "./ObservableAPI";
 import { LeadScoreApiRequestFactory, LeadScoreApiResponseProcessor} from "../apis/LeadScoreApi";
 
 export interface LeadScoreApiGetLeadScoreDetailsRequest {
     /**
-     * contact_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof LeadScoreApigetLeadScoreDetails
@@ -3803,7 +4243,7 @@ import { LeadSourceCategoriesApiRequestFactory, LeadSourceCategoriesApiResponseP
 
 export interface LeadSourceCategoriesApiCreateLeadSourceCategoryRequest {
     /**
-     * The request object to create a new lead source category
+     * 
      * @type CreateUpdateLeadSourceCategoryRequest
      * @memberof LeadSourceCategoriesApicreateLeadSourceCategory
      */
@@ -3847,7 +4287,7 @@ export interface LeadSourceCategoriesApiListLeadSourceCategoriesRequest {
     orderBy?: string
     /**
      * Total number of items to return per page
-     * Minimum: 1
+     * Minimum: 0
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
@@ -3872,7 +4312,7 @@ export interface LeadSourceCategoriesApiUpdateLeadSourceCategoryRequest {
      */
     leadSourceCategoryId: string
     /**
-     * The request object to update a lead source category
+     * 
      * @type CreateUpdateLeadSourceCategoryRequest
      * @memberof LeadSourceCategoriesApiupdateLeadSourceCategory
      */
@@ -3880,10 +4320,10 @@ export interface LeadSourceCategoriesApiUpdateLeadSourceCategoryRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type Array&lt;string&gt;
+     * @type &#39;name,description&#39;
      * @memberof LeadSourceCategoriesApiupdateLeadSourceCategory
      */
-    updateMask?: Array<string>
+    updateMask?: 'name,description'
 }
 
 export class ObjectLeadSourceCategoriesApi {
@@ -3894,7 +4334,7 @@ export class ObjectLeadSourceCategoriesApi {
     }
 
     /**
-     * Creates a new Lead Source Category
+     * Creates a new Lead Source Category.
      * Create a Lead Source Category
      * @param param the request object
      */
@@ -3903,7 +4343,7 @@ export class ObjectLeadSourceCategoriesApi {
     }
 
     /**
-     * Creates a new Lead Source Category
+     * Creates a new Lead Source Category.
      * Create a Lead Source Category
      * @param param the request object
      */
@@ -3997,7 +4437,7 @@ export interface LeadSourceExpensesApiCreateLeadSourceExpenseRequest {
      */
     leadSourceId: string
     /**
-     * The request object to create a new lead source expense
+     * 
      * @type CreateLeadSourceExpenseRequest
      * @memberof LeadSourceExpensesApicreateLeadSourceExpense
      */
@@ -4062,7 +4502,7 @@ export interface LeadSourceExpensesApiListLeadSourceExpensesRequest {
     orderBy?: string
     /**
      * Total number of items to return per page
-     * Minimum: 1
+     * Minimum: 0
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
@@ -4094,7 +4534,7 @@ export interface LeadSourceExpensesApiUpdateLeadSourceExpenseRequest {
      */
     leadSourceId: string
     /**
-     * The request object to update a lead source expense
+     * 
      * @type UpdateLeadSourceExpenseRequest
      * @memberof LeadSourceExpensesApiupdateLeadSourceExpense
      */
@@ -4102,10 +4542,10 @@ export interface LeadSourceExpensesApiUpdateLeadSourceExpenseRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type Array&lt;string&gt;
+     * @type &#39;title,notes,amount,incurred_time&#39;
      * @memberof LeadSourceExpensesApiupdateLeadSourceExpense
      */
-    updateMask?: Array<string>
+    updateMask?: 'title,notes,amount,incurred_time'
 }
 
 export class ObjectLeadSourceExpensesApi {
@@ -4219,7 +4659,7 @@ export interface LeadSourceRecurringExpensesApiCreateLeadSourceRecurringExpenseR
      */
     leadSourceId: string
     /**
-     * The request object to create a new lead source recurring expense
+     * 
      * @type CreateLeadSourceRecurringExpenseRequest
      * @memberof LeadSourceRecurringExpensesApicreateLeadSourceRecurringExpense
      */
@@ -4291,7 +4731,7 @@ export interface LeadSourceRecurringExpensesApiListExpensesIncurredFromLeadSourc
     orderBy?: string
     /**
      * Total number of items to return per page
-     * Minimum: 1
+     * Minimum: 0
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
@@ -4331,7 +4771,7 @@ export interface LeadSourceRecurringExpensesApiListLeadSourceRecurringExpensesRe
     orderBy?: string
     /**
      * Total number of items to return per page
-     * Minimum: 1
+     * Minimum: 0
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
@@ -4363,7 +4803,7 @@ export interface LeadSourceRecurringExpensesApiUpdateLeadSourceRecurringExpenseR
      */
     leadSourceRecurringExpenseId: string
     /**
-     * The request object to update a lead source recurring expense
+     * 
      * @type LeadSourceRecurringExpenseUpdateRequest
      * @memberof LeadSourceRecurringExpensesApiupdateLeadSourceRecurringExpense
      */
@@ -4371,10 +4811,10 @@ export interface LeadSourceRecurringExpensesApiUpdateLeadSourceRecurringExpenseR
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type Array&lt;string&gt;
+     * @type &#39;title,notes,amount,start_time,end_time&#39;
      * @memberof LeadSourceRecurringExpensesApiupdateLeadSourceRecurringExpense
      */
-    updateMask?: Array<string>
+    updateMask?: 'title,notes,amount,start_time,end_time'
 }
 
 export class ObjectLeadSourceRecurringExpensesApi {
@@ -4499,7 +4939,7 @@ import { LeadSourcesApiRequestFactory, LeadSourcesApiResponseProcessor} from "..
 
 export interface LeadSourcesApiCreateLeadSourceRequest {
     /**
-     * The request object to create a new lead source
+     * 
      * @type CreateLeadSourceRequest
      * @memberof LeadSourcesApicreateLeadSource
      */
@@ -4543,7 +4983,7 @@ export interface LeadSourcesApiListLeadSourcesRequest {
     orderBy?: string
     /**
      * Total number of items to return per page
-     * Minimum: 1
+     * Minimum: 0
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
@@ -4568,7 +5008,7 @@ export interface LeadSourcesApiUpdateLeadSourceRequest {
      */
     leadSourceId: string
     /**
-     * The request object to update a lead source
+     * 
      * @type CreateLeadSourceRequest
      * @memberof LeadSourcesApiupdateLeadSource
      */
@@ -4576,10 +5016,10 @@ export interface LeadSourcesApiUpdateLeadSourceRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type Array&lt;string&gt;
+     * @type &#39;name,description,vendor,medium,message,start_time,end_time,status,lead_source_category_id&#39;
      * @memberof LeadSourcesApiupdateLeadSource
      */
-    updateMask?: Array<string>
+    updateMask?: 'name,description,vendor,medium,message,start_time,end_time,status,lead_source_category_id'
 }
 
 export class ObjectLeadSourcesApi {
@@ -4716,7 +5156,7 @@ export interface LocaleApiListCountriesRequest {
 
 export interface LocaleApiListProvincesForCountryRequest {
     /**
-     * country_code
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof LocaleApilistProvincesForCountry
@@ -4787,7 +5227,7 @@ export class ObjectLocaleApi {
 
     /**
      * Retrieves a list of provinces for a given country
-     * List a Country\'s Province
+     * List a Country\'s Provinces
      * @param param the request object
      */
     public listProvincesForCountryWithHttpInfo(param: LocaleApiListProvincesForCountryRequest, options?: ConfigurationOptions): Promise<HttpInfo<ListProvincesResponse>> {
@@ -4796,7 +5236,7 @@ export class ObjectLocaleApi {
 
     /**
      * Retrieves a list of provinces for a given country
-     * List a Country\'s Province
+     * List a Country\'s Provinces
      * @param param the request object
      */
     public listProvincesForCountry(param: LocaleApiListProvincesForCountryRequest, options?: ConfigurationOptions): Promise<ListProvincesResponse> {
@@ -4810,7 +5250,7 @@ import { MerchantsApiRequestFactory, MerchantsApiResponseProcessor} from "../api
 
 export interface MerchantsApiListMerchantsRequest {
     /**
-     * Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - (String) &#x60;name&#x60; - (String) &#x60;type&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;id%3D%3D123&#x60; - &#x60;filter&#x3D;name%3D%3Dabc&#x60; - &#x60;filter&#x3D;id%3D%3D123%3Bname%3D%3Dabc&#x60; 
+     * Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - (String) &#x60;name&#x60; - (String) &#x60;type&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;id%3D%3D123&#x60; - &#x60;filter&#x3D;name%3D%3Dabc&#x60; - &#x60;filter&#x3D;id%3D%3D123%3Bname%3D%3Dabc&#x60; 
      * Defaults to: undefined
      * @type string
      * @memberof MerchantsApilistMerchants
@@ -4825,7 +5265,7 @@ export interface MerchantsApiListMerchantsRequest {
     orderBy?: string
     /**
      * Total number of items to return per page
-     * Minimum: 1
+     * Minimum: 0
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
@@ -4873,14 +5313,14 @@ import { NoteApiRequestFactory, NoteApiResponseProcessor} from "../apis/NoteApi"
 
 export interface NoteApiCreateNoteRequest {
     /**
-     * contact_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof NoteApicreateNote
      */
     contactId: string
     /**
-     * request
+     * 
      * @type CreateNoteRequest
      * @memberof NoteApicreateNote
      */
@@ -4889,7 +5329,7 @@ export interface NoteApiCreateNoteRequest {
 
 export interface NoteApiCreateNoteCustomFieldRequest {
     /**
-     * customField
+     * 
      * @type CreateCustomFieldRequest
      * @memberof NoteApicreateNoteCustomField
      */
@@ -4898,14 +5338,14 @@ export interface NoteApiCreateNoteCustomFieldRequest {
 
 export interface NoteApiDeleteNoteRequest {
     /**
-     * contact_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof NoteApideleteNote
      */
     contactId: string
     /**
-     * note_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof NoteApideleteNote
@@ -4915,14 +5355,14 @@ export interface NoteApiDeleteNoteRequest {
 
 export interface NoteApiGetNoteRequest {
     /**
-     * contact_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof NoteApigetNote
      */
     contactId: string
     /**
-     * note_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof NoteApigetNote
@@ -4947,7 +5387,7 @@ export interface NoteApiListNoteTemplatesRequest {
     orderBy?: string
     /**
      * Total number of items to return per page
-     * Minimum: 1
+     * Minimum: 0
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
@@ -4965,14 +5405,14 @@ export interface NoteApiListNoteTemplatesRequest {
 
 export interface NoteApiListNotesRequest {
     /**
-     * contact_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof NoteApilistNotes
      */
     contactId: string
     /**
-     * Filter to apply, allowed fields are: - (String) &#x60;assigned_to_user_id&#x60; - (String) &#x60;title&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;assigned_to_user_id%3D%3DUserId&#x60; - &#x60;filter&#x3D;title%3D%3DexpectedTitle&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; 
+     * Filter to apply, allowed fields are: - (String) &#x60;assigned_to_user_id&#x60; - (String) &#x60;title&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;assigned_to_user_id%3D%3DUserId&#x60; - &#x60;filter&#x3D;title%3D%3DexpectedTitle&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; 
      * Defaults to: undefined
      * @type string
      * @memberof NoteApilistNotes
@@ -4987,7 +5427,7 @@ export interface NoteApiListNotesRequest {
     orderBy?: string
     /**
      * Total number of items to return per page
-     * Minimum: 1
+     * Minimum: 0
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
@@ -5008,21 +5448,21 @@ export interface NoteApiRetrieveNoteModelRequest {
 
 export interface NoteApiUpdateNoteRequest {
     /**
-     * contact_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof NoteApiupdateNote
      */
     contactId: string
     /**
-     * note_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof NoteApiupdateNote
      */
     noteId: string
     /**
-     * updateNoteRequest
+     * 
      * @type UpdateNoteRequest
      * @memberof NoteApiupdateNote
      */
@@ -5030,22 +5470,22 @@ export interface NoteApiUpdateNoteRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type Array&lt;string&gt;
+     * @type &#39;contact_id, text, title, type, user_id&#39;
      * @memberof NoteApiupdateNote
      */
-    updateMask?: Array<string>
+    updateMask?: 'contact_id, text, title, type, user_id'
 }
 
 export interface NoteApiUpdateNotesCustomFieldRequest {
     /**
-     * custom_field_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof NoteApiupdateNotesCustomField
      */
     customFieldId: string
     /**
-     * request
+     * 
      * @type UpdateCustomFieldMetaDataRequest
      * @memberof NoteApiupdateNotesCustomField
      */
@@ -5053,10 +5493,10 @@ export interface NoteApiUpdateNotesCustomFieldRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type Array&lt;string&gt;
+     * @type &#39;group_id,label,options&#39;
      * @memberof NoteApiupdateNotesCustomField
      */
-    updateMask?: Array<string>
+    updateMask?: 'group_id,label,options'
 }
 
 export class ObjectNoteApi {
@@ -5235,16 +5675,16 @@ import { OpportunityApiRequestFactory, OpportunityApiResponseProcessor} from "..
 
 export interface OpportunityApiCreateOpportunityRequest {
     /**
-     * opportunity
+     * 
      * @type CreateOpportunityRequest
      * @memberof OpportunityApicreateOpportunity
      */
-    createOpportunityRequest?: CreateOpportunityRequest
+    createOpportunityRequest: CreateOpportunityRequest
 }
 
 export interface OpportunityApiCreateOpportunityCustomFieldsRequest {
     /**
-     * customField
+     * 
      * @type CreateCustomFieldRequest
      * @memberof OpportunityApicreateOpportunityCustomFields
      */
@@ -5253,16 +5693,16 @@ export interface OpportunityApiCreateOpportunityCustomFieldsRequest {
 
 export interface OpportunityApiCreateOpportunityStageRequest {
     /**
-     * opportunity
+     * 
      * @type CreateOpportunityStageRequest
      * @memberof OpportunityApicreateOpportunityStage
      */
-    createOpportunityStageRequest?: CreateOpportunityStageRequest
+    createOpportunityStageRequest: CreateOpportunityStageRequest
 }
 
 export interface OpportunityApiDeleteOpportunityRequest {
     /**
-     * opportunity_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof OpportunityApideleteOpportunity
@@ -5272,7 +5712,7 @@ export interface OpportunityApiDeleteOpportunityRequest {
 
 export interface OpportunityApiDeleteOpportunityStageRequest {
     /**
-     * stage_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof OpportunityApideleteOpportunityStage
@@ -5282,7 +5722,7 @@ export interface OpportunityApiDeleteOpportunityStageRequest {
 
 export interface OpportunityApiGetOpportunityRequest {
     /**
-     * opportunity_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof OpportunityApigetOpportunity
@@ -5292,7 +5732,7 @@ export interface OpportunityApiGetOpportunityRequest {
 
 export interface OpportunityApiGetOpportunityStageRequest {
     /**
-     * stage_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof OpportunityApigetOpportunityStage
@@ -5302,12 +5742,12 @@ export interface OpportunityApiGetOpportunityStageRequest {
 
 export interface OpportunityApiListOpportunitiesRequest {
     /**
-     * fields
+     * 
      * Defaults to: undefined
-     * @type Array&lt;string&gt;
+     * @type Set&lt;string&gt;
      * @memberof OpportunityApilistOpportunities
      */
-    fields?: Array<string>
+    fields?: Set<string>
     /**
      * Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; 
      * Defaults to: undefined
@@ -5324,7 +5764,7 @@ export interface OpportunityApiListOpportunitiesRequest {
     orderBy?: string
     /**
      * Total number of items to return per page
-     * Minimum: 1
+     * Minimum: 0
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
@@ -5357,7 +5797,7 @@ export interface OpportunityApiListOpportunityStagesRequest {
     orderBy?: string
     /**
      * Total number of items to return per page
-     * Minimum: 1
+     * Minimum: 0
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
@@ -5375,14 +5815,14 @@ export interface OpportunityApiListOpportunityStagesRequest {
 
 export interface OpportunityApiUpdateOpportunityRequest {
     /**
-     * opportunity_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof OpportunityApiupdateOpportunity
      */
     opportunityId: string
     /**
-     * request
+     * 
      * @type UpdateOpportunityRequestV2
      * @memberof OpportunityApiupdateOpportunity
      */
@@ -5390,22 +5830,22 @@ export interface OpportunityApiUpdateOpportunityRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type Array&lt;string&gt;
+     * @type &#39;opportunity_title,next_action_time,next_action_notes,opportunity_notes, estimated_close_time,include_in_forecast,projected_revenue_low,projected_revenue_high, contact_id,stage_id,user_id,custom_fields,affiliate_id&#39;
      * @memberof OpportunityApiupdateOpportunity
      */
-    updateMask?: Array<string>
+    updateMask?: 'opportunity_title,next_action_time,next_action_notes,opportunity_notes, estimated_close_time,include_in_forecast,projected_revenue_low,projected_revenue_high, contact_id,stage_id,user_id,custom_fields,affiliate_id'
 }
 
 export interface OpportunityApiUpdateOpportunityCustomFieldRequest {
     /**
-     * custom_field_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof OpportunityApiupdateOpportunityCustomField
      */
     customFieldId: string
     /**
-     * request
+     * 
      * @type UpdateCustomFieldMetaDataRequest
      * @memberof OpportunityApiupdateOpportunityCustomField
      */
@@ -5413,22 +5853,22 @@ export interface OpportunityApiUpdateOpportunityCustomFieldRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type Array&lt;string&gt;
+     * @type &#39;group_id,label,options&#39;
      * @memberof OpportunityApiupdateOpportunityCustomField
      */
-    updateMask?: Array<string>
+    updateMask?: 'group_id,label,options'
 }
 
 export interface OpportunityApiUpdateOpportunityStageRequest {
     /**
-     * stage_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof OpportunityApiupdateOpportunityStage
      */
     stageId: string
     /**
-     * request
+     * 
      * @type UpdateOpportunityStageRequest
      * @memberof OpportunityApiupdateOpportunityStage
      */
@@ -5436,10 +5876,10 @@ export interface OpportunityApiUpdateOpportunityStageRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type Array&lt;string&gt;
+     * @type &#39;name,order,target_number_days,probability,checklist_items&#39;
      * @memberof OpportunityApiupdateOpportunityStage
      */
-    updateMask?: Array<string>
+    updateMask?: 'name,order,target_number_days,probability,checklist_items'
 }
 
 export class ObjectOpportunityApi {
@@ -5454,7 +5894,7 @@ export class ObjectOpportunityApi {
      * Create an Opportunity
      * @param param the request object
      */
-    public createOpportunityWithHttpInfo(param: OpportunityApiCreateOpportunityRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<RestV2Opportunity>> {
+    public createOpportunityWithHttpInfo(param: OpportunityApiCreateOpportunityRequest, options?: ConfigurationOptions): Promise<HttpInfo<RestV2Opportunity>> {
         return this.api.createOpportunityWithHttpInfo(param.createOpportunityRequest,  options).toPromise();
     }
 
@@ -5463,7 +5903,7 @@ export class ObjectOpportunityApi {
      * Create an Opportunity
      * @param param the request object
      */
-    public createOpportunity(param: OpportunityApiCreateOpportunityRequest = {}, options?: ConfigurationOptions): Promise<RestV2Opportunity> {
+    public createOpportunity(param: OpportunityApiCreateOpportunityRequest, options?: ConfigurationOptions): Promise<RestV2Opportunity> {
         return this.api.createOpportunity(param.createOpportunityRequest,  options).toPromise();
     }
 
@@ -5490,7 +5930,7 @@ export class ObjectOpportunityApi {
      * Create an Opportunity Stage
      * @param param the request object
      */
-    public createOpportunityStageWithHttpInfo(param: OpportunityApiCreateOpportunityStageRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<RestOpportunityStage>> {
+    public createOpportunityStageWithHttpInfo(param: OpportunityApiCreateOpportunityStageRequest, options?: ConfigurationOptions): Promise<HttpInfo<RestOpportunityStage>> {
         return this.api.createOpportunityStageWithHttpInfo(param.createOpportunityStageRequest,  options).toPromise();
     }
 
@@ -5499,7 +5939,7 @@ export class ObjectOpportunityApi {
      * Create an Opportunity Stage
      * @param param the request object
      */
-    public createOpportunityStage(param: OpportunityApiCreateOpportunityStageRequest = {}, options?: ConfigurationOptions): Promise<RestOpportunityStage> {
+    public createOpportunityStage(param: OpportunityApiCreateOpportunityStageRequest, options?: ConfigurationOptions): Promise<RestOpportunityStage> {
         return this.api.createOpportunityStage(param.createOpportunityStageRequest,  options).toPromise();
     }
 
@@ -5672,7 +6112,7 @@ import { OrderTotalDiscountsApiRequestFactory, OrderTotalDiscountsApiResponsePro
 
 export interface OrderTotalDiscountsApiCreateOrderTotalDiscountRequest {
     /**
-     * request
+     * 
      * @type CreateOrderTotalDiscountRequest
      * @memberof OrderTotalDiscountsApicreateOrderTotalDiscount
      */
@@ -5681,7 +6121,7 @@ export interface OrderTotalDiscountsApiCreateOrderTotalDiscountRequest {
 
 export interface OrderTotalDiscountsApiDeleteOrderTotalDiscountRequest {
     /**
-     * discount_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof OrderTotalDiscountsApideleteOrderTotalDiscount
@@ -5691,7 +6131,7 @@ export interface OrderTotalDiscountsApiDeleteOrderTotalDiscountRequest {
 
 export interface OrderTotalDiscountsApiGetOrderTotalDiscountRequest {
     /**
-     * discount_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof OrderTotalDiscountsApigetOrderTotalDiscount
@@ -5716,7 +6156,7 @@ export interface OrderTotalDiscountsApiListOrderTotalDiscountsRequest {
     orderBy?: string
     /**
      * Total number of items to return per page
-     * Minimum: 1
+     * Minimum: 0
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
@@ -5734,14 +6174,14 @@ export interface OrderTotalDiscountsApiListOrderTotalDiscountsRequest {
 
 export interface OrderTotalDiscountsApiUpdateOrderTotalDiscountRequest {
     /**
-     * discount_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof OrderTotalDiscountsApiupdateOrderTotalDiscount
      */
     discountId: string
     /**
-     * request
+     * 
      * @type UpdateOrderTotalDiscountRequest
      * @memberof OrderTotalDiscountsApiupdateOrderTotalDiscount
      */
@@ -5749,10 +6189,10 @@ export interface OrderTotalDiscountsApiUpdateOrderTotalDiscountRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type Array&lt;string&gt;
+     * @type &#39;name,description,apply_to_commissions,discount_type,discount_value,discount_strategy,criteria&#39;
      * @memberof OrderTotalDiscountsApiupdateOrderTotalDiscount
      */
-    updateMask?: Array<string>
+    updateMask?: 'name,description,apply_to_commissions,discount_type,discount_value,discount_strategy,criteria'
 }
 
 export class ObjectOrderTotalDiscountsApi {
@@ -5859,30 +6299,30 @@ import { OrdersApiRequestFactory, OrdersApiResponseProcessor} from "../apis/Orde
 
 export interface OrdersApiApplyCommissionOnOrderItemsRequest {
     /**
-     * order_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof OrdersApiapplyCommissionOnOrderItems
      */
     orderId: string
     /**
-     * order_item_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof OrdersApiapplyCommissionOnOrderItems
      */
     orderItemId: string
     /**
-     * request
-     * @type RestApplyCommissionRequest
+     * 
+     * @type ApplyCommissionRequest
      * @memberof OrdersApiapplyCommissionOnOrderItems
      */
-    restApplyCommissionRequest: RestApplyCommissionRequest
+    applyCommissionRequest: ApplyCommissionRequest
 }
 
 export interface OrdersApiApplyTaxRequest {
     /**
-     * order_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof OrdersApiapplyTax
@@ -5892,14 +6332,14 @@ export interface OrdersApiApplyTaxRequest {
 
 export interface OrdersApiAttachFileToOrderRequest {
     /**
-     * order_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof OrdersApiattachFileToOrder
      */
     orderId: string
     /**
-     * File name
+     * 
      * @type FileOperationRequest
      * @memberof OrdersApiattachFileToOrder
      */
@@ -5908,7 +6348,7 @@ export interface OrdersApiAttachFileToOrderRequest {
 
 export interface OrdersApiCreateOrderRequest {
     /**
-     * request
+     * 
      * @type RestCreateOrderRequest
      * @memberof OrdersApicreateOrder
      */
@@ -5917,7 +6357,7 @@ export interface OrdersApiCreateOrderRequest {
 
 export interface OrdersApiCreateOrderCustomFieldRequest {
     /**
-     * customField
+     * 
      * @type CreateCustomFieldRequest
      * @memberof OrdersApicreateOrderCustomField
      */
@@ -5926,14 +6366,14 @@ export interface OrdersApiCreateOrderCustomFieldRequest {
 
 export interface OrdersApiCreateOrderItemRequest {
     /**
-     * order_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof OrdersApicreateOrderItem
      */
     orderId: string
     /**
-     * request
+     * 
      * @type CreateOrderItemRequest
      * @memberof OrdersApicreateOrderItem
      */
@@ -5942,23 +6382,23 @@ export interface OrdersApiCreateOrderItemRequest {
 
 export interface OrdersApiCreatePaymentForAnOrderRequest {
     /**
-     * order_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof OrdersApicreatePaymentForAnOrder
      */
     orderId: string
     /**
-     * request
-     * @type CreatePaymentRequest
+     * 
+     * @type RestCreatePaymentRequest
      * @memberof OrdersApicreatePaymentForAnOrder
      */
-    createPaymentRequest: CreatePaymentRequest
+    restCreatePaymentRequest: RestCreatePaymentRequest
 }
 
 export interface OrdersApiDeleteOrderRequest {
     /**
-     * order_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof OrdersApideleteOrder
@@ -5968,7 +6408,7 @@ export interface OrdersApiDeleteOrderRequest {
 
 export interface OrdersApiDeleteOrderCustomFieldRequest {
     /**
-     * custom_field_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof OrdersApideleteOrderCustomField
@@ -5978,14 +6418,14 @@ export interface OrdersApiDeleteOrderCustomFieldRequest {
 
 export interface OrdersApiDeleteOrderItemRequest {
     /**
-     * order_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof OrdersApideleteOrderItem
      */
     orderId: string
     /**
-     * order_item_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof OrdersApideleteOrderItem
@@ -5995,14 +6435,14 @@ export interface OrdersApiDeleteOrderItemRequest {
 
 export interface OrdersApiDetachFileFromOrderRequest {
     /**
-     * order_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof OrdersApidetachFileFromOrder
      */
     orderId: string
     /**
-     * request
+     * 
      * @type FileOperationRequest
      * @memberof OrdersApidetachFileFromOrder
      */
@@ -6011,7 +6451,7 @@ export interface OrdersApiDetachFileFromOrderRequest {
 
 export interface OrdersApiGetOrderRequest {
     /**
-     * order_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof OrdersApigetOrder
@@ -6021,7 +6461,7 @@ export interface OrdersApiGetOrderRequest {
 
 export interface OrdersApiListOrderPaymentsRequest {
     /**
-     * order_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof OrdersApilistOrderPayments
@@ -6043,7 +6483,7 @@ export interface OrdersApiListOrderPaymentsRequest {
     orderBy?: string
     /**
      * Total number of items to return per page
-     * Minimum: 1
+     * Minimum: 0
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
@@ -6061,7 +6501,7 @@ export interface OrdersApiListOrderPaymentsRequest {
 
 export interface OrdersApiListOrdersRequest {
     /**
-     * Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60;
+     * Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60;
      * Defaults to: undefined
      * @type string
      * @memberof OrdersApilistOrders
@@ -6076,7 +6516,7 @@ export interface OrdersApiListOrdersRequest {
     orderBy?: string
     /**
      * Total number of items to return per page
-     * Minimum: 1
+     * Minimum: 0
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
@@ -6097,37 +6537,37 @@ export interface OrdersApiRetrieveOrderCustomFieldModelRequest {
 
 export interface OrdersApiUpdateOrderRequest {
     /**
-     * order_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof OrdersApiupdateOrder
      */
     orderId: string
     /**
-     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-     * Defaults to: undefined
-     * @type Array&lt;string&gt;
-     * @memberof OrdersApiupdateOrder
-     */
-    updateMask?: Array<string>
-    /**
-     * order
+     * 
      * @type UpdateOrderRequest
      * @memberof OrdersApiupdateOrder
      */
-    updateOrderRequest?: UpdateOrderRequest
+    updateOrderRequest: UpdateOrderRequest
+    /**
+     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * Defaults to: undefined
+     * @type &#39;contact_id,order_items,order_title,order_time,order_type,promo_codes, lead_affiliate_id,sales_affiliate_id,shipping_address,notes,terms,payment_plan&#39;
+     * @memberof OrdersApiupdateOrder
+     */
+    updateMask?: 'contact_id,order_items,order_title,order_time,order_type,promo_codes, lead_affiliate_id,sales_affiliate_id,shipping_address,notes,terms,payment_plan'
 }
 
 export interface OrdersApiUpdateOrderCustomFieldRequest {
     /**
-     * custom_field_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof OrdersApiupdateOrderCustomField
      */
     customFieldId: string
     /**
-     * request
+     * 
      * @type UpdateCustomFieldMetaDataRequest
      * @memberof OrdersApiupdateOrderCustomField
      */
@@ -6135,40 +6575,40 @@ export interface OrdersApiUpdateOrderCustomFieldRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type Array&lt;string&gt;
+     * @type &#39;group_id,label,options&#39;
      * @memberof OrdersApiupdateOrderCustomField
      */
-    updateMask?: Array<string>
+    updateMask?: 'group_id,label,options'
 }
 
 export interface OrdersApiUpdateOrderItemRequest {
     /**
-     * order_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof OrdersApiupdateOrderItem
      */
     orderId: string
     /**
-     * order_item_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof OrdersApiupdateOrderItem
      */
     orderItemId: string
     /**
-     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-     * Defaults to: undefined
-     * @type Array&lt;string&gt;
-     * @memberof OrdersApiupdateOrderItem
-     */
-    updateMask?: Array<string>
-    /**
-     * order
+     * 
      * @type UpdateOrderItemRequest
      * @memberof OrdersApiupdateOrderItem
      */
-    updateOrderItemRequest?: UpdateOrderItemRequest
+    updateOrderItemRequest: UpdateOrderItemRequest
+    /**
+     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * Defaults to: undefined
+     * @type &#39;name,description,notes,quantity,price_per_unit,cost_per_unit, product_id,subscription_plan_id,subscription_plan_description&#39;
+     * @memberof OrdersApiupdateOrderItem
+     */
+    updateMask?: 'name,description,notes,quantity,price_per_unit,cost_per_unit, product_id,subscription_plan_id,subscription_plan_description'
 }
 
 export class ObjectOrdersApi {
@@ -6184,7 +6624,7 @@ export class ObjectOrdersApi {
      * @param param the request object
      */
     public applyCommissionOnOrderItemsWithHttpInfo(param: OrdersApiApplyCommissionOnOrderItemsRequest, options?: ConfigurationOptions): Promise<HttpInfo<OrderItem>> {
-        return this.api.applyCommissionOnOrderItemsWithHttpInfo(param.orderId, param.orderItemId, param.restApplyCommissionRequest,  options).toPromise();
+        return this.api.applyCommissionOnOrderItemsWithHttpInfo(param.orderId, param.orderItemId, param.applyCommissionRequest,  options).toPromise();
     }
 
     /**
@@ -6193,7 +6633,7 @@ export class ObjectOrdersApi {
      * @param param the request object
      */
     public applyCommissionOnOrderItems(param: OrdersApiApplyCommissionOnOrderItemsRequest, options?: ConfigurationOptions): Promise<OrderItem> {
-        return this.api.applyCommissionOnOrderItems(param.orderId, param.orderItemId, param.restApplyCommissionRequest,  options).toPromise();
+        return this.api.applyCommissionOnOrderItems(param.orderId, param.orderItemId, param.applyCommissionRequest,  options).toPromise();
     }
 
     /**
@@ -6201,7 +6641,7 @@ export class ObjectOrdersApi {
      * Apply Taxes on an Order
      * @param param the request object
      */
-    public applyTaxWithHttpInfo(param: OrdersApiApplyTaxRequest, options?: ConfigurationOptions): Promise<HttpInfo<Order>> {
+    public applyTaxWithHttpInfo(param: OrdersApiApplyTaxRequest, options?: ConfigurationOptions): Promise<HttpInfo<OrderV2>> {
         return this.api.applyTaxWithHttpInfo(param.orderId,  options).toPromise();
     }
 
@@ -6210,7 +6650,7 @@ export class ObjectOrdersApi {
      * Apply Taxes on an Order
      * @param param the request object
      */
-    public applyTax(param: OrdersApiApplyTaxRequest, options?: ConfigurationOptions): Promise<Order> {
+    public applyTax(param: OrdersApiApplyTaxRequest, options?: ConfigurationOptions): Promise<OrderV2> {
         return this.api.applyTax(param.orderId,  options).toPromise();
     }
 
@@ -6219,7 +6659,7 @@ export class ObjectOrdersApi {
      * Attach a File to an Order Invoice
      * @param param the request object
      */
-    public attachFileToOrderWithHttpInfo(param: OrdersApiAttachFileToOrderRequest, options?: ConfigurationOptions): Promise<HttpInfo<Order>> {
+    public attachFileToOrderWithHttpInfo(param: OrdersApiAttachFileToOrderRequest, options?: ConfigurationOptions): Promise<HttpInfo<OrderV2>> {
         return this.api.attachFileToOrderWithHttpInfo(param.orderId, param.fileOperationRequest,  options).toPromise();
     }
 
@@ -6228,7 +6668,7 @@ export class ObjectOrdersApi {
      * Attach a File to an Order Invoice
      * @param param the request object
      */
-    public attachFileToOrder(param: OrdersApiAttachFileToOrderRequest, options?: ConfigurationOptions): Promise<Order> {
+    public attachFileToOrder(param: OrdersApiAttachFileToOrderRequest, options?: ConfigurationOptions): Promise<OrderV2> {
         return this.api.attachFileToOrder(param.orderId, param.fileOperationRequest,  options).toPromise();
     }
 
@@ -6237,7 +6677,7 @@ export class ObjectOrdersApi {
      * Create an Order
      * @param param the request object
      */
-    public createOrderWithHttpInfo(param: OrdersApiCreateOrderRequest, options?: ConfigurationOptions): Promise<HttpInfo<Order>> {
+    public createOrderWithHttpInfo(param: OrdersApiCreateOrderRequest, options?: ConfigurationOptions): Promise<HttpInfo<OrderV2>> {
         return this.api.createOrderWithHttpInfo(param.restCreateOrderRequest,  options).toPromise();
     }
 
@@ -6246,7 +6686,7 @@ export class ObjectOrdersApi {
      * Create an Order
      * @param param the request object
      */
-    public createOrder(param: OrdersApiCreateOrderRequest, options?: ConfigurationOptions): Promise<Order> {
+    public createOrder(param: OrdersApiCreateOrderRequest, options?: ConfigurationOptions): Promise<OrderV2> {
         return this.api.createOrder(param.restCreateOrderRequest,  options).toPromise();
     }
 
@@ -6292,7 +6732,7 @@ export class ObjectOrdersApi {
      * @param param the request object
      */
     public createPaymentForAnOrderWithHttpInfo(param: OrdersApiCreatePaymentForAnOrderRequest, options?: ConfigurationOptions): Promise<HttpInfo<PaymentResult>> {
-        return this.api.createPaymentForAnOrderWithHttpInfo(param.orderId, param.createPaymentRequest,  options).toPromise();
+        return this.api.createPaymentForAnOrderWithHttpInfo(param.orderId, param.restCreatePaymentRequest,  options).toPromise();
     }
 
     /**
@@ -6301,7 +6741,7 @@ export class ObjectOrdersApi {
      * @param param the request object
      */
     public createPaymentForAnOrder(param: OrdersApiCreatePaymentForAnOrderRequest, options?: ConfigurationOptions): Promise<PaymentResult> {
-        return this.api.createPaymentForAnOrder(param.orderId, param.createPaymentRequest,  options).toPromise();
+        return this.api.createPaymentForAnOrder(param.orderId, param.restCreatePaymentRequest,  options).toPromise();
     }
 
     /**
@@ -6363,7 +6803,7 @@ export class ObjectOrdersApi {
      * Detach a File from an Order Invoice
      * @param param the request object
      */
-    public detachFileFromOrderWithHttpInfo(param: OrdersApiDetachFileFromOrderRequest, options?: ConfigurationOptions): Promise<HttpInfo<Order>> {
+    public detachFileFromOrderWithHttpInfo(param: OrdersApiDetachFileFromOrderRequest, options?: ConfigurationOptions): Promise<HttpInfo<OrderV2>> {
         return this.api.detachFileFromOrderWithHttpInfo(param.orderId, param.fileOperationRequest,  options).toPromise();
     }
 
@@ -6372,7 +6812,7 @@ export class ObjectOrdersApi {
      * Detach a File from an Order Invoice
      * @param param the request object
      */
-    public detachFileFromOrder(param: OrdersApiDetachFileFromOrderRequest, options?: ConfigurationOptions): Promise<Order> {
+    public detachFileFromOrder(param: OrdersApiDetachFileFromOrderRequest, options?: ConfigurationOptions): Promise<OrderV2> {
         return this.api.detachFileFromOrder(param.orderId, param.fileOperationRequest,  options).toPromise();
     }
 
@@ -6381,7 +6821,7 @@ export class ObjectOrdersApi {
      * Retrieve an Order
      * @param param the request object
      */
-    public getOrderWithHttpInfo(param: OrdersApiGetOrderRequest, options?: ConfigurationOptions): Promise<HttpInfo<Order>> {
+    public getOrderWithHttpInfo(param: OrdersApiGetOrderRequest, options?: ConfigurationOptions): Promise<HttpInfo<OrderV2>> {
         return this.api.getOrderWithHttpInfo(param.orderId,  options).toPromise();
     }
 
@@ -6390,7 +6830,7 @@ export class ObjectOrdersApi {
      * Retrieve an Order
      * @param param the request object
      */
-    public getOrder(param: OrdersApiGetOrderRequest, options?: ConfigurationOptions): Promise<Order> {
+    public getOrder(param: OrdersApiGetOrderRequest, options?: ConfigurationOptions): Promise<OrderV2> {
         return this.api.getOrder(param.orderId,  options).toPromise();
     }
 
@@ -6453,8 +6893,8 @@ export class ObjectOrdersApi {
      * Update an Order
      * @param param the request object
      */
-    public updateOrderWithHttpInfo(param: OrdersApiUpdateOrderRequest, options?: ConfigurationOptions): Promise<HttpInfo<Order>> {
-        return this.api.updateOrderWithHttpInfo(param.orderId, param.updateMask, param.updateOrderRequest,  options).toPromise();
+    public updateOrderWithHttpInfo(param: OrdersApiUpdateOrderRequest, options?: ConfigurationOptions): Promise<HttpInfo<OrderV2>> {
+        return this.api.updateOrderWithHttpInfo(param.orderId, param.updateOrderRequest, param.updateMask,  options).toPromise();
     }
 
     /**
@@ -6462,8 +6902,8 @@ export class ObjectOrdersApi {
      * Update an Order
      * @param param the request object
      */
-    public updateOrder(param: OrdersApiUpdateOrderRequest, options?: ConfigurationOptions): Promise<Order> {
-        return this.api.updateOrder(param.orderId, param.updateMask, param.updateOrderRequest,  options).toPromise();
+    public updateOrder(param: OrdersApiUpdateOrderRequest, options?: ConfigurationOptions): Promise<OrderV2> {
+        return this.api.updateOrder(param.orderId, param.updateOrderRequest, param.updateMask,  options).toPromise();
     }
 
     /**
@@ -6490,7 +6930,7 @@ export class ObjectOrdersApi {
      * @param param the request object
      */
     public updateOrderItemWithHttpInfo(param: OrdersApiUpdateOrderItemRequest, options?: ConfigurationOptions): Promise<HttpInfo<OrderItem>> {
-        return this.api.updateOrderItemWithHttpInfo(param.orderId, param.orderItemId, param.updateMask, param.updateOrderItemRequest,  options).toPromise();
+        return this.api.updateOrderItemWithHttpInfo(param.orderId, param.orderItemId, param.updateOrderItemRequest, param.updateMask,  options).toPromise();
     }
 
     /**
@@ -6499,7 +6939,7 @@ export class ObjectOrdersApi {
      * @param param the request object
      */
     public updateOrderItem(param: OrdersApiUpdateOrderItemRequest, options?: ConfigurationOptions): Promise<OrderItem> {
-        return this.api.updateOrderItem(param.orderId, param.orderItemId, param.updateMask, param.updateOrderItemRequest,  options).toPromise();
+        return this.api.updateOrderItem(param.orderId, param.orderItemId, param.updateOrderItemRequest, param.updateMask,  options).toPromise();
     }
 
 }
@@ -6509,7 +6949,7 @@ import { PaymentMethodConfigsApiRequestFactory, PaymentMethodConfigsApiResponseP
 
 export interface PaymentMethodConfigsApiCreatePaymentMethodConfigRequest {
     /**
-     * request
+     * 
      * @type CreatePaymentMethodConfigRequest
      * @memberof PaymentMethodConfigsApicreatePaymentMethodConfig
      */
@@ -6604,7 +7044,7 @@ export interface PaymentMethodsApiListPaymentMethodsRequest {
     orderBy?: string
     /**
      * Total number of items to return per page
-     * Minimum: 1
+     * Minimum: 0
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
@@ -6688,14 +7128,14 @@ import { ProductCategoriesApiRequestFactory, ProductCategoriesApiResponseProcess
 
 export interface ProductCategoriesApiAssignProductsToCategoryRequest {
     /**
-     * category_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof ProductCategoriesApiassignProductsToCategory
      */
     categoryId: string
     /**
-     * request
+     * 
      * @type AssignProductsRequest
      * @memberof ProductCategoriesApiassignProductsToCategory
      */
@@ -6704,7 +7144,7 @@ export interface ProductCategoriesApiAssignProductsToCategoryRequest {
 
 export interface ProductCategoriesApiCreateImageFileRequest {
     /**
-     * category_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof ProductCategoriesApicreateImageFile
@@ -6721,16 +7161,16 @@ export interface ProductCategoriesApiCreateImageFileRequest {
 
 export interface ProductCategoriesApiCreateProductCategoryRequest {
     /**
-     * productCategory
+     * 
      * @type CreateProductCategoryRequest
      * @memberof ProductCategoriesApicreateProductCategory
      */
-    createProductCategoryRequest?: CreateProductCategoryRequest
+    createProductCategoryRequest: CreateProductCategoryRequest
 }
 
 export interface ProductCategoriesApiDeleteImageFileRequest {
     /**
-     * category_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof ProductCategoriesApideleteImageFile
@@ -6740,7 +7180,7 @@ export interface ProductCategoriesApiDeleteImageFileRequest {
 
 export interface ProductCategoriesApiDeleteProductCategoryRequest {
     /**
-     * category_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof ProductCategoriesApideleteProductCategory
@@ -6750,7 +7190,7 @@ export interface ProductCategoriesApiDeleteProductCategoryRequest {
 
 export interface ProductCategoriesApiGetProductCategoryRequest {
     /**
-     * category_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof ProductCategoriesApigetProductCategory
@@ -6775,7 +7215,7 @@ export interface ProductCategoriesApiListProductCategoriesRequest {
     orderBy?: string
     /**
      * Total number of items to return per page
-     * Minimum: 1
+     * Minimum: 0
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
@@ -6793,14 +7233,14 @@ export interface ProductCategoriesApiListProductCategoriesRequest {
 
 export interface ProductCategoriesApiUpdateProductCategoryRequest {
     /**
-     * category_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof ProductCategoriesApiupdateProductCategory
      */
     categoryId: string
     /**
-     * request
+     * 
      * @type UpdateProductCategoryRequest
      * @memberof ProductCategoriesApiupdateProductCategory
      */
@@ -6808,10 +7248,10 @@ export interface ProductCategoriesApiUpdateProductCategoryRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type Array&lt;string&gt;
+     * @type &#39;name,display_order_index,parent_category_id&#39;
      * @memberof ProductCategoriesApiupdateProductCategory
      */
-    updateMask?: Array<string>
+    updateMask?: 'name,display_order_index,parent_category_id'
 }
 
 export class ObjectProductCategoriesApi {
@@ -6862,7 +7302,7 @@ export class ObjectProductCategoriesApi {
      * Create a Product Category
      * @param param the request object
      */
-    public createProductCategoryWithHttpInfo(param: ProductCategoriesApiCreateProductCategoryRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ProductCategory>> {
+    public createProductCategoryWithHttpInfo(param: ProductCategoriesApiCreateProductCategoryRequest, options?: ConfigurationOptions): Promise<HttpInfo<ProductCategory>> {
         return this.api.createProductCategoryWithHttpInfo(param.createProductCategoryRequest,  options).toPromise();
     }
 
@@ -6871,7 +7311,7 @@ export class ObjectProductCategoriesApi {
      * Create a Product Category
      * @param param the request object
      */
-    public createProductCategory(param: ProductCategoriesApiCreateProductCategoryRequest = {}, options?: ConfigurationOptions): Promise<ProductCategory> {
+    public createProductCategory(param: ProductCategoriesApiCreateProductCategoryRequest, options?: ConfigurationOptions): Promise<ProductCategory> {
         return this.api.createProductCategory(param.createProductCategoryRequest,  options).toPromise();
     }
 
@@ -6972,7 +7412,7 @@ import { ProductDiscountsApiRequestFactory, ProductDiscountsApiResponseProcessor
 
 export interface ProductDiscountsApiCreateProductDiscountRequest {
     /**
-     * request
+     * 
      * @type CreateProductDiscountRequest
      * @memberof ProductDiscountsApicreateProductDiscount
      */
@@ -6981,7 +7421,7 @@ export interface ProductDiscountsApiCreateProductDiscountRequest {
 
 export interface ProductDiscountsApiDeleteProductDiscountRequest {
     /**
-     * discount_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof ProductDiscountsApideleteProductDiscount
@@ -6991,7 +7431,7 @@ export interface ProductDiscountsApiDeleteProductDiscountRequest {
 
 export interface ProductDiscountsApiGetProductDiscountRequest {
     /**
-     * discount_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof ProductDiscountsApigetProductDiscount
@@ -7016,7 +7456,7 @@ export interface ProductDiscountsApiListProductDiscountsRequest {
     orderBy?: string
     /**
      * Total number of items to return per page
-     * Minimum: 1
+     * Minimum: 0
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
@@ -7034,14 +7474,14 @@ export interface ProductDiscountsApiListProductDiscountsRequest {
 
 export interface ProductDiscountsApiUpdateProductDiscountRequest {
     /**
-     * discount_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof ProductDiscountsApiupdateProductDiscount
      */
     discountId: string
     /**
-     * request
+     * 
      * @type UpdateProductDiscountRequest
      * @memberof ProductDiscountsApiupdateProductDiscount
      */
@@ -7049,10 +7489,10 @@ export interface ProductDiscountsApiUpdateProductDiscountRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type Array&lt;string&gt;
+     * @type &#39;name,description,apply_to_commissions,discount_type,discount_value,product_id,criteria&#39;
      * @memberof ProductDiscountsApiupdateProductDiscount
      */
-    updateMask?: Array<string>
+    updateMask?: 'name,description,apply_to_commissions,discount_type,discount_value,product_id,criteria'
 }
 
 export class ObjectProductDiscountsApi {
@@ -7159,14 +7599,14 @@ import { ProductInterestBundlesApiRequestFactory, ProductInterestBundlesApiRespo
 
 export interface ProductInterestBundlesApiAddProductInterestRequest {
     /**
-     * id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof ProductInterestBundlesApiaddProductInterest
      */
     id: string
     /**
-     * request
+     * 
      * @type AddProductInterestRequest
      * @memberof ProductInterestBundlesApiaddProductInterest
      */
@@ -7175,7 +7615,7 @@ export interface ProductInterestBundlesApiAddProductInterestRequest {
 
 export interface ProductInterestBundlesApiCreateProductInterestBundleRequest {
     /**
-     * createProductInterestBundleRequest
+     * 
      * @type CreateProductInterestBundleRequest
      * @memberof ProductInterestBundlesApicreateProductInterestBundle
      */
@@ -7184,7 +7624,7 @@ export interface ProductInterestBundlesApiCreateProductInterestBundleRequest {
 
 export interface ProductInterestBundlesApiDeleteProductInterestBundleRequest {
     /**
-     * id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof ProductInterestBundlesApideleteProductInterestBundle
@@ -7194,7 +7634,7 @@ export interface ProductInterestBundlesApiDeleteProductInterestBundleRequest {
 
 export interface ProductInterestBundlesApiGetProductInterestBundleRequest {
     /**
-     * id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof ProductInterestBundlesApigetProductInterestBundle
@@ -7219,7 +7659,7 @@ export interface ProductInterestBundlesApiListProductInterestBundlesRequest {
     orderBy?: string
     /**
      * Total number of items to return per page
-     * Minimum: 1
+     * Minimum: 0
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
@@ -7237,14 +7677,14 @@ export interface ProductInterestBundlesApiListProductInterestBundlesRequest {
 
 export interface ProductInterestBundlesApiRemoveProductInterestRequest {
     /**
-     * id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof ProductInterestBundlesApiremoveProductInterest
      */
     id: string
     /**
-     * interest_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof ProductInterestBundlesApiremoveProductInterest
@@ -7254,21 +7694,21 @@ export interface ProductInterestBundlesApiRemoveProductInterestRequest {
 
 export interface ProductInterestBundlesApiUpdateProductInterestRequest {
     /**
-     * id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof ProductInterestBundlesApiupdateProductInterest
      */
     id: string
     /**
-     * interest_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof ProductInterestBundlesApiupdateProductInterest
      */
     interestId: string
     /**
-     * updateProductInterestRequest
+     * 
      * @type UpdateProductInterestRequest
      * @memberof ProductInterestBundlesApiupdateProductInterest
      */
@@ -7276,22 +7716,22 @@ export interface ProductInterestBundlesApiUpdateProductInterestRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type Array&lt;string&gt;
+     * @type &#39;quantity,price,discount_percent&#39;
      * @memberof ProductInterestBundlesApiupdateProductInterest
      */
-    updateMask?: Array<string>
+    updateMask?: 'quantity,price,discount_percent'
 }
 
 export interface ProductInterestBundlesApiUpdateProductInterestBundleRequest {
     /**
-     * id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof ProductInterestBundlesApiupdateProductInterestBundle
      */
     id: string
     /**
-     * updateProductInterestBundleRequest
+     * 
      * @type UpdateProductInterestBundleRequest
      * @memberof ProductInterestBundlesApiupdateProductInterestBundle
      */
@@ -7299,10 +7739,10 @@ export interface ProductInterestBundlesApiUpdateProductInterestBundleRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type Array&lt;string&gt;
+     * @type &#39;name,description&#39;
      * @memberof ProductInterestBundlesApiupdateProductInterestBundle
      */
-    updateMask?: Array<string>
+    updateMask?: 'name,description'
 }
 
 export class ObjectProductInterestBundlesApi {
@@ -7461,6 +7901,29 @@ export class ObjectProductInterestBundlesApi {
 import { ObservableProductsApi } from "./ObservableAPI";
 import { ProductsApiRequestFactory, ProductsApiResponseProcessor} from "../apis/ProductsApi";
 
+export interface ProductsApiAddProductOptionListOptionValueRequest {
+    /**
+     * product_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof ProductsApiaddProductOptionListOptionValue
+     */
+    productId: string
+    /**
+     * product_option_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof ProductsApiaddProductOptionListOptionValue
+     */
+    productOptionId: string
+    /**
+     * 
+     * @type Array&lt;CreateProductOptionListOption&gt;
+     * @memberof ProductsApiaddProductOptionListOptionValue
+     */
+    createProductOptionListOption: Array<CreateProductOptionListOption>
+}
+
 export interface ProductsApiAdjustInventoryRequest {
     /**
      * product_id
@@ -7470,20 +7933,20 @@ export interface ProductsApiAdjustInventoryRequest {
      */
     productId: string
     /**
-     * updateProductInventoryRequest
-     * @type UpdateProductInventoryRequest
+     * 
+     * @type UpdateProductInventoryRequestDetail
      * @memberof ProductsApiadjustInventory
      */
-    updateProductInventoryRequest: UpdateProductInventoryRequest
+    updateProductInventoryRequestDetail: UpdateProductInventoryRequestDetail
 }
 
 export interface ProductsApiCreateProductRequest {
     /**
-     * createProductRequest
-     * @type CreateProductRequest
+     * 
+     * @type CreateProductRequestDetail
      * @memberof ProductsApicreateProduct
      */
-    createProductRequest: CreateProductRequest
+    createProductRequestDetail: CreateProductRequestDetail
 }
 
 export interface ProductsApiCreateProductImageRequest {
@@ -7501,6 +7964,22 @@ export interface ProductsApiCreateProductImageRequest {
      * @memberof ProductsApicreateProductImage
      */
     file: HttpFile
+}
+
+export interface ProductsApiCreateProductOptionRequest {
+    /**
+     * product_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof ProductsApicreateProductOption
+     */
+    productId: string
+    /**
+     * 
+     * @type CreateProductOptionRequest
+     * @memberof ProductsApicreateProductOption
+     */
+    createProductOptionRequest: CreateProductOptionRequest
 }
 
 export interface ProductsApiDeleteProductRequest {
@@ -7523,6 +8002,47 @@ export interface ProductsApiDeleteProductImageRequest {
     productId: string
 }
 
+export interface ProductsApiDeleteProductOptionRequest {
+    /**
+     * product_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof ProductsApideleteProductOption
+     */
+    productId: string
+    /**
+     * product_option_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof ProductsApideleteProductOption
+     */
+    productOptionId: string
+}
+
+export interface ProductsApiDeleteProductOptionListOptionValueRequest {
+    /**
+     * product_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof ProductsApideleteProductOptionListOptionValue
+     */
+    productId: string
+    /**
+     * product_option_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof ProductsApideleteProductOptionListOptionValue
+     */
+    productOptionId: string
+    /**
+     * item_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof ProductsApideleteProductOptionListOptionValue
+     */
+    itemId: string
+}
+
 export interface ProductsApiGetProductRequest {
     /**
      * product_id
@@ -7533,9 +8053,36 @@ export interface ProductsApiGetProductRequest {
     productId: string
 }
 
+export interface ProductsApiGetProductOptionRequest {
+    /**
+     * product_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof ProductsApigetProductOption
+     */
+    productId: string
+    /**
+     * product_option_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof ProductsApigetProductOption
+     */
+    productOptionId: string
+}
+
+export interface ProductsApiListProductOptionsRequest {
+    /**
+     * product_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof ProductsApilistProductOptions
+     */
+    productId: string
+}
+
 export interface ProductsApiListProductsRequest {
     /**
-     * Filter to apply, allowed fields are: - (String) &#x60;name&#x60; 
+     * Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (String) &#x60;sku&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3Dtestsearch&#x60; - &#x60;filter&#x3D;sku%3D%3Dtestsearch&#x60; - &#x60;filter&#x3D;name%3D%3Dtestsearch%3Bsku%3D%3Dtestsearch&#x60; 
      * Defaults to: undefined
      * @type string
      * @memberof ProductsApilistProducts
@@ -7550,7 +8097,7 @@ export interface ProductsApiListProductsRequest {
     orderBy?: string
     /**
      * Total number of items to return per page
-     * Minimum: 1
+     * Minimum: 0
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
@@ -7575,18 +8122,85 @@ export interface ProductsApiUpdateProductRequest {
      */
     productId: string
     /**
-     * updateProductRequest
-     * @type UpdateProductRequest
+     * 
+     * @type UpdateProductRequestDetail
      * @memberof ProductsApiupdateProduct
      */
-    updateProductRequest: UpdateProductRequest
+    updateProductRequestDetail: UpdateProductRequestDetail
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type Array&lt;string&gt;
+     * @type &#39;active,name,description,price,sku,shippable,short_description,subscription_only, storefront_hidden,weight,taxable,country_taxable,city_taxable,state_taxable, inventory_limit,out_of_stock_enabled,email_for_inventory_notifications&#39;
      * @memberof ProductsApiupdateProduct
      */
-    updateMask?: Array<string>
+    updateMask?: 'active,name,description,price,sku,shippable,short_description,subscription_only, storefront_hidden,weight,taxable,country_taxable,city_taxable,state_taxable, inventory_limit,out_of_stock_enabled,email_for_inventory_notifications'
+}
+
+export interface ProductsApiUpdateProductOptionRequest {
+    /**
+     * product_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof ProductsApiupdateProductOption
+     */
+    productId: string
+    /**
+     * product_option_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof ProductsApiupdateProductOption
+     */
+    productOptionId: string
+    /**
+     * 
+     * @type UpdateProductOptionRequest
+     * @memberof ProductsApiupdateProductOption
+     */
+    updateProductOptionRequest: UpdateProductOptionRequest
+    /**
+     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * Defaults to: undefined
+     * @type &#39;option_label,display_order,required,minimum_characters,maximum_characters,allow_spaces, only_starts_with,only_ends_with,only_contains,error_message&#39;
+     * @memberof ProductsApiupdateProductOption
+     */
+    updateMask?: 'option_label,display_order,required,minimum_characters,maximum_characters,allow_spaces, only_starts_with,only_ends_with,only_contains,error_message'
+}
+
+export interface ProductsApiUpdateProductOptionListOptionValueRequest {
+    /**
+     * product_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof ProductsApiupdateProductOptionListOptionValue
+     */
+    productId: string
+    /**
+     * product_option_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof ProductsApiupdateProductOptionListOptionValue
+     */
+    productOptionId: string
+    /**
+     * item_id
+     * Defaults to: undefined
+     * @type string
+     * @memberof ProductsApiupdateProductOptionListOptionValue
+     */
+    itemId: string
+    /**
+     * 
+     * @type UpdateProductOptionListOption
+     * @memberof ProductsApiupdateProductOptionListOptionValue
+     */
+    updateProductOptionListOption: UpdateProductOptionListOption
+    /**
+     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * Defaults to: undefined
+     * @type &#39;item_label,item_code,item_display_order,price_adjustment &#39;
+     * @memberof ProductsApiupdateProductOptionListOptionValue
+     */
+    updateMask?: 'item_label,item_code,item_display_order,price_adjustment '
 }
 
 export class ObjectProductsApi {
@@ -7597,12 +8211,21 @@ export class ObjectProductsApi {
     }
 
     /**
-     * Increase or decrease the quantity of the Product
-     * Adjust Inventory of a Product
+     * Adds product option values to a product option of type LIST
+     * Add a Product Option List Option Value
      * @param param the request object
      */
-    public adjustInventoryWithHttpInfo(param: ProductsApiAdjustInventoryRequest, options?: ConfigurationOptions): Promise<HttpInfo<RestV2Product>> {
-        return this.api.adjustInventoryWithHttpInfo(param.productId, param.updateProductInventoryRequest,  options).toPromise();
+    public addProductOptionListOptionValueWithHttpInfo(param: ProductsApiAddProductOptionListOptionValueRequest, options?: ConfigurationOptions): Promise<HttpInfo<ProductOption>> {
+        return this.api.addProductOptionListOptionValueWithHttpInfo(param.productId, param.productOptionId, param.createProductOptionListOption,  options).toPromise();
+    }
+
+    /**
+     * Adds product option values to a product option of type LIST
+     * Add a Product Option List Option Value
+     * @param param the request object
+     */
+    public addProductOptionListOptionValue(param: ProductsApiAddProductOptionListOptionValueRequest, options?: ConfigurationOptions): Promise<ProductOption> {
+        return this.api.addProductOptionListOptionValue(param.productId, param.productOptionId, param.createProductOptionListOption,  options).toPromise();
     }
 
     /**
@@ -7610,8 +8233,17 @@ export class ObjectProductsApi {
      * Adjust Inventory of a Product
      * @param param the request object
      */
-    public adjustInventory(param: ProductsApiAdjustInventoryRequest, options?: ConfigurationOptions): Promise<RestV2Product> {
-        return this.api.adjustInventory(param.productId, param.updateProductInventoryRequest,  options).toPromise();
+    public adjustInventoryWithHttpInfo(param: ProductsApiAdjustInventoryRequest, options?: ConfigurationOptions): Promise<HttpInfo<RestV2ProductDetail>> {
+        return this.api.adjustInventoryWithHttpInfo(param.productId, param.updateProductInventoryRequestDetail,  options).toPromise();
+    }
+
+    /**
+     * Increase or decrease the quantity of the Product
+     * Adjust Inventory of a Product
+     * @param param the request object
+     */
+    public adjustInventory(param: ProductsApiAdjustInventoryRequest, options?: ConfigurationOptions): Promise<RestV2ProductDetail> {
+        return this.api.adjustInventory(param.productId, param.updateProductInventoryRequestDetail,  options).toPromise();
     }
 
     /**
@@ -7619,8 +8251,8 @@ export class ObjectProductsApi {
      * Create a Product
      * @param param the request object
      */
-    public createProductWithHttpInfo(param: ProductsApiCreateProductRequest, options?: ConfigurationOptions): Promise<HttpInfo<RestV2Product>> {
-        return this.api.createProductWithHttpInfo(param.createProductRequest,  options).toPromise();
+    public createProductWithHttpInfo(param: ProductsApiCreateProductRequest, options?: ConfigurationOptions): Promise<HttpInfo<RestV2ProductDetail>> {
+        return this.api.createProductWithHttpInfo(param.createProductRequestDetail,  options).toPromise();
     }
 
     /**
@@ -7628,8 +8260,8 @@ export class ObjectProductsApi {
      * Create a Product
      * @param param the request object
      */
-    public createProduct(param: ProductsApiCreateProductRequest, options?: ConfigurationOptions): Promise<RestV2Product> {
-        return this.api.createProduct(param.createProductRequest,  options).toPromise();
+    public createProduct(param: ProductsApiCreateProductRequest, options?: ConfigurationOptions): Promise<RestV2ProductDetail> {
+        return this.api.createProduct(param.createProductRequestDetail,  options).toPromise();
     }
 
     /**
@@ -7648,6 +8280,24 @@ export class ObjectProductsApi {
      */
     public createProductImage(param: ProductsApiCreateProductImageRequest, options?: ConfigurationOptions): Promise<void> {
         return this.api.createProductImage(param.productId, param.file,  options).toPromise();
+    }
+
+    /**
+     * Creates a new product option
+     * Create a Product Option
+     * @param param the request object
+     */
+    public createProductOptionWithHttpInfo(param: ProductsApiCreateProductOptionRequest, options?: ConfigurationOptions): Promise<HttpInfo<ProductOption>> {
+        return this.api.createProductOptionWithHttpInfo(param.productId, param.createProductOptionRequest,  options).toPromise();
+    }
+
+    /**
+     * Creates a new product option
+     * Create a Product Option
+     * @param param the request object
+     */
+    public createProductOption(param: ProductsApiCreateProductOptionRequest, options?: ConfigurationOptions): Promise<ProductOption> {
+        return this.api.createProductOption(param.productId, param.createProductOptionRequest,  options).toPromise();
     }
 
     /**
@@ -7687,11 +8337,47 @@ export class ObjectProductsApi {
     }
 
     /**
+     * Deletes a single product option
+     * Delete a Product Option
+     * @param param the request object
+     */
+    public deleteProductOptionWithHttpInfo(param: ProductsApiDeleteProductOptionRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteProductOptionWithHttpInfo(param.productId, param.productOptionId,  options).toPromise();
+    }
+
+    /**
+     * Deletes a single product option
+     * Delete a Product Option
+     * @param param the request object
+     */
+    public deleteProductOption(param: ProductsApiDeleteProductOptionRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteProductOption(param.productId, param.productOptionId,  options).toPromise();
+    }
+
+    /**
+     * Deletes a single option value in a Product Option of type LIST
+     * Delete a Product Option List Item
+     * @param param the request object
+     */
+    public deleteProductOptionListOptionValueWithHttpInfo(param: ProductsApiDeleteProductOptionListOptionValueRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.deleteProductOptionListOptionValueWithHttpInfo(param.productId, param.productOptionId, param.itemId,  options).toPromise();
+    }
+
+    /**
+     * Deletes a single option value in a Product Option of type LIST
+     * Delete a Product Option List Item
+     * @param param the request object
+     */
+    public deleteProductOptionListOptionValue(param: ProductsApiDeleteProductOptionListOptionValueRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.deleteProductOptionListOptionValue(param.productId, param.productOptionId, param.itemId,  options).toPromise();
+    }
+
+    /**
      * Gets a single Product
      * Get a Product
      * @param param the request object
      */
-    public getProductWithHttpInfo(param: ProductsApiGetProductRequest, options?: ConfigurationOptions): Promise<HttpInfo<RestV2Product>> {
+    public getProductWithHttpInfo(param: ProductsApiGetProductRequest, options?: ConfigurationOptions): Promise<HttpInfo<RestV2ProductDetail>> {
         return this.api.getProductWithHttpInfo(param.productId,  options).toPromise();
     }
 
@@ -7700,8 +8386,44 @@ export class ObjectProductsApi {
      * Get a Product
      * @param param the request object
      */
-    public getProduct(param: ProductsApiGetProductRequest, options?: ConfigurationOptions): Promise<RestV2Product> {
+    public getProduct(param: ProductsApiGetProductRequest, options?: ConfigurationOptions): Promise<RestV2ProductDetail> {
         return this.api.getProduct(param.productId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a Product Option
+     * Get Product Option
+     * @param param the request object
+     */
+    public getProductOptionWithHttpInfo(param: ProductsApiGetProductOptionRequest, options?: ConfigurationOptions): Promise<HttpInfo<ProductOption>> {
+        return this.api.getProductOptionWithHttpInfo(param.productId, param.productOptionId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a Product Option
+     * Get Product Option
+     * @param param the request object
+     */
+    public getProductOption(param: ProductsApiGetProductOptionRequest, options?: ConfigurationOptions): Promise<ProductOption> {
+        return this.api.getProductOption(param.productId, param.productOptionId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves all options of a Product
+     * List Product Options
+     * @param param the request object
+     */
+    public listProductOptionsWithHttpInfo(param: ProductsApiListProductOptionsRequest, options?: ConfigurationOptions): Promise<HttpInfo<ListProductOptionsResponse>> {
+        return this.api.listProductOptionsWithHttpInfo(param.productId,  options).toPromise();
+    }
+
+    /**
+     * Retrieves all options of a Product
+     * List Product Options
+     * @param param the request object
+     */
+    public listProductOptions(param: ProductsApiListProductOptionsRequest, options?: ConfigurationOptions): Promise<ListProductOptionsResponse> {
+        return this.api.listProductOptions(param.productId,  options).toPromise();
     }
 
     /**
@@ -7709,7 +8431,7 @@ export class ObjectProductsApi {
      * List Products
      * @param param the request object
      */
-    public listProductsWithHttpInfo(param: ProductsApiListProductsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListProductsResponse>> {
+    public listProductsWithHttpInfo(param: ProductsApiListProductsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListProductsResponseList>> {
         return this.api.listProductsWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
@@ -7718,7 +8440,7 @@ export class ObjectProductsApi {
      * List Products
      * @param param the request object
      */
-    public listProducts(param: ProductsApiListProductsRequest = {}, options?: ConfigurationOptions): Promise<ListProductsResponse> {
+    public listProducts(param: ProductsApiListProductsRequest = {}, options?: ConfigurationOptions): Promise<ListProductsResponseList> {
         return this.api.listProducts(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
@@ -7727,8 +8449,8 @@ export class ObjectProductsApi {
      * Update a Product
      * @param param the request object
      */
-    public updateProductWithHttpInfo(param: ProductsApiUpdateProductRequest, options?: ConfigurationOptions): Promise<HttpInfo<RestV2Product>> {
-        return this.api.updateProductWithHttpInfo(param.productId, param.updateProductRequest, param.updateMask,  options).toPromise();
+    public updateProductWithHttpInfo(param: ProductsApiUpdateProductRequest, options?: ConfigurationOptions): Promise<HttpInfo<RestV2ProductDetail>> {
+        return this.api.updateProductWithHttpInfo(param.productId, param.updateProductRequestDetail, param.updateMask,  options).toPromise();
     }
 
     /**
@@ -7736,8 +8458,44 @@ export class ObjectProductsApi {
      * Update a Product
      * @param param the request object
      */
-    public updateProduct(param: ProductsApiUpdateProductRequest, options?: ConfigurationOptions): Promise<RestV2Product> {
-        return this.api.updateProduct(param.productId, param.updateProductRequest, param.updateMask,  options).toPromise();
+    public updateProduct(param: ProductsApiUpdateProductRequest, options?: ConfigurationOptions): Promise<RestV2ProductDetail> {
+        return this.api.updateProduct(param.productId, param.updateProductRequestDetail, param.updateMask,  options).toPromise();
+    }
+
+    /**
+     * Updates a product option
+     * Updates a Product Option
+     * @param param the request object
+     */
+    public updateProductOptionWithHttpInfo(param: ProductsApiUpdateProductOptionRequest, options?: ConfigurationOptions): Promise<HttpInfo<ProductOption>> {
+        return this.api.updateProductOptionWithHttpInfo(param.productId, param.productOptionId, param.updateProductOptionRequest, param.updateMask,  options).toPromise();
+    }
+
+    /**
+     * Updates a product option
+     * Updates a Product Option
+     * @param param the request object
+     */
+    public updateProductOption(param: ProductsApiUpdateProductOptionRequest, options?: ConfigurationOptions): Promise<ProductOption> {
+        return this.api.updateProductOption(param.productId, param.productOptionId, param.updateProductOptionRequest, param.updateMask,  options).toPromise();
+    }
+
+    /**
+     * Updates a single product option value
+     * Updates a Product Option List Option Value
+     * @param param the request object
+     */
+    public updateProductOptionListOptionValueWithHttpInfo(param: ProductsApiUpdateProductOptionListOptionValueRequest, options?: ConfigurationOptions): Promise<HttpInfo<ProductOption>> {
+        return this.api.updateProductOptionListOptionValueWithHttpInfo(param.productId, param.productOptionId, param.itemId, param.updateProductOptionListOption, param.updateMask,  options).toPromise();
+    }
+
+    /**
+     * Updates a single product option value
+     * Updates a Product Option List Option Value
+     * @param param the request object
+     */
+    public updateProductOptionListOptionValue(param: ProductsApiUpdateProductOptionListOptionValueRequest, options?: ConfigurationOptions): Promise<ProductOption> {
+        return this.api.updateProductOptionListOptionValue(param.productId, param.productOptionId, param.itemId, param.updateProductOptionListOption, param.updateMask,  options).toPromise();
     }
 
 }
@@ -7747,7 +8505,7 @@ import { ReferralApiRequestFactory, ReferralApiResponseProcessor} from "../apis/
 
 export interface ReferralApiCreateReferralRequest {
     /**
-     * request
+     * 
      * @type CreateReferralRequest
      * @memberof ReferralApicreateReferral
      */
@@ -7786,7 +8544,7 @@ import { ReportingApiRequestFactory, ReportingApiResponseProcessor} from "../api
 
 export interface ReportingApiListReportsRequest {
     /**
-     * Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (DateTime) &#x60;since_created_time&#x60; - (DateTime) &#x60;until_created_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched  word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; 
+     * Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (DateTime) &#x60;since_created_time&#x60; - (DateTime) &#x60;until_created_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched  word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3DMonthly%20Sales&#x60; - &#x60;filter&#x3D;since_created_time%3D%3D2024-01-01&#x60; 
      * Defaults to: undefined
      * @type string
      * @memberof ReportingApilistReports
@@ -7801,7 +8559,7 @@ export interface ReportingApiListReportsRequest {
     orderBy?: string
     /**
      * Total number of items to return per page
-     * Minimum: 1
+     * Minimum: 0
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
@@ -7819,7 +8577,7 @@ export interface ReportingApiListReportsRequest {
 
 export interface ReportingApiRetrieveReportRequest {
     /**
-     * report_id
+     * The unique identifier of the report (Saved Search)
      * Defaults to: undefined
      * @type string
      * @memberof ReportingApiretrieveReport
@@ -7836,35 +8594,12 @@ export interface ReportingApiRunReportRequest {
      */
     reportId: string
     /**
-     * Comma-separated list of fields to return (or do not supply a value to return all)
+     * 
      * Defaults to: undefined
-     * @type string
+     * @type RunReportRequest
      * @memberof ReportingApirunReport
      */
-    fields?: string
-    /**
-     * Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60;
-     * Defaults to: undefined
-     * @type string
-     * @memberof ReportingApirunReport
-     */
-    orderBy?: string
-    /**
-     * Total number of items to return per page
-     * Minimum: 1
-     * Maximum: 1000
-     * Defaults to: 1000
-     * @type number
-     * @memberof ReportingApirunReport
-     */
-    pageSize?: number
-    /**
-     * Representation of the last row retrieved from the previous page. An empty value implies a request for the first page.
-     * Defaults to: undefined
-     * @type string
-     * @memberof ReportingApirunReport
-     */
-    pageToken?: string
+    runReportRequest: RunReportRequest
 }
 
 export class ObjectReportingApi {
@@ -7916,7 +8651,7 @@ export class ObjectReportingApi {
      * @param param the request object
      */
     public runReportWithHttpInfo(param: ReportingApiRunReportRequest, options?: ConfigurationOptions): Promise<HttpInfo<ReportExecutionResult>> {
-        return this.api.runReportWithHttpInfo(param.reportId, param.fields, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+        return this.api.runReportWithHttpInfo(param.reportId, param.runReportRequest,  options).toPromise();
     }
 
     /**
@@ -7925,7 +8660,7 @@ export class ObjectReportingApi {
      * @param param the request object
      */
     public runReport(param: ReportingApiRunReportRequest, options?: ConfigurationOptions): Promise<ReportExecutionResult> {
-        return this.api.runReport(param.reportId, param.fields, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+        return this.api.runReport(param.reportId, param.runReportRequest,  options).toPromise();
     }
 
 }
@@ -7935,7 +8670,7 @@ import { SalesApiRequestFactory, SalesApiResponseProcessor} from "../apis/SalesA
 
 export interface SalesApiSetMerchantGatewayAsDefaultRequest {
     /**
-     * id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof SalesApisetMerchantGatewayAsDefault
@@ -7977,10 +8712,10 @@ export interface SettingsApiGetApplicationConfigurationsRequest {
     /**
      * By default, only application data is returned. In addition to that, data is returned for the fields that are mentioned in the query.
      * Defaults to: undefined
-     * @type Array&lt;&#39;AFFILIATE&#39; | &#39;APPOINTMENT&#39; | &#39;CONTACT&#39; | &#39;ECOMMERCE&#39; | &#39;EMAIL&#39; | &#39;FORMS&#39; | &#39;FULFILLMENT&#39; | &#39;INVOICE&#39; | &#39;NOTE&#39; | &#39;OPPORTUNITY&#39; | &#39;TASK&#39; | &#39;TEMPLATE&#39;&gt;
+     * @type Array&lt;string&gt;
      * @memberof SettingsApigetApplicationConfigurations
      */
-    fields?: Array<'AFFILIATE' | 'APPOINTMENT' | 'CONTACT' | 'ECOMMERCE' | 'EMAIL' | 'FORMS' | 'FULFILLMENT' | 'INVOICE' | 'NOTE' | 'OPPORTUNITY' | 'TASK' | 'TEMPLATE'>
+    fields?: Array<string>
 }
 
 export interface SettingsApiGetContactOptionTypesRequest {
@@ -8090,7 +8825,7 @@ import { ShippingDiscountsApiRequestFactory, ShippingDiscountsApiResponseProcess
 
 export interface ShippingDiscountsApiCreateShippingDiscountRequest {
     /**
-     * request
+     * 
      * @type CreateShippingDiscountRequest
      * @memberof ShippingDiscountsApicreateShippingDiscount
      */
@@ -8099,7 +8834,7 @@ export interface ShippingDiscountsApiCreateShippingDiscountRequest {
 
 export interface ShippingDiscountsApiDeleteShippingDiscountRequest {
     /**
-     * discount_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof ShippingDiscountsApideleteShippingDiscount
@@ -8109,7 +8844,7 @@ export interface ShippingDiscountsApiDeleteShippingDiscountRequest {
 
 export interface ShippingDiscountsApiGetShippingDiscountRequest {
     /**
-     * discount_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof ShippingDiscountsApigetShippingDiscount
@@ -8134,7 +8869,7 @@ export interface ShippingDiscountsApiListShippingDiscountsRequest {
     orderBy?: string
     /**
      * Total number of items to return per page
-     * Minimum: 1
+     * Minimum: 0
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
@@ -8152,14 +8887,14 @@ export interface ShippingDiscountsApiListShippingDiscountsRequest {
 
 export interface ShippingDiscountsApiUpdateShippingDiscountRequest {
     /**
-     * discount_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof ShippingDiscountsApiupdateShippingDiscount
      */
     discountId: string
     /**
-     * request
+     * 
      * @type UpdateShippingDiscountRequest
      * @memberof ShippingDiscountsApiupdateShippingDiscount
      */
@@ -8167,10 +8902,10 @@ export interface ShippingDiscountsApiUpdateShippingDiscountRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type Array&lt;string&gt;
+     * @type &#39;name,description,discount_type,discount_value,criteria&#39;
      * @memberof ShippingDiscountsApiupdateShippingDiscount
      */
-    updateMask?: Array<string>
+    updateMask?: 'name,description,discount_type,discount_value,criteria'
 }
 
 export class ObjectShippingDiscountsApi {
@@ -8277,14 +9012,14 @@ import { SubscriptionPlansApiRequestFactory, SubscriptionPlansApiResponseProcess
 
 export interface SubscriptionPlansApiCreateSubscriptionPlansRequest {
     /**
-     * product_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof SubscriptionPlansApicreateSubscriptionPlans
      */
     productId: string
     /**
-     * createSubscriptionPlanRequest
+     * 
      * @type CreateSubscriptionPlanRequest
      * @memberof SubscriptionPlansApicreateSubscriptionPlans
      */
@@ -8334,7 +9069,7 @@ export interface SubscriptionPlansApiListSubscriptionPlansRequest {
      */
     productId: string
     /**
-     * Filter to apply, allowed fields are: - (Boolean) &#x60;active&#x60;: true or false - (BillingCycle) &#x60;cycle_type&#x60;: DAILY, WEEKLY, MONTHLY, YEARLY You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;active%3D%3Dtrue&#x60; - &#x60;filter&#x3D;cycle_type%3D%3DDAILY&#x60; - &#x60;filter&#x3D;active%3D%3Dfalse%3Bcycle_type%3D%3DWEEKLY&#x60; 
+     * Filter to apply, allowed fields are: - (Boolean) &#x60;active&#x60;: true or false - (BillingCycle) &#x60;cycle_type&#x60;: DAILY, WEEKLY, MONTHLY, YEARLY  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;active%3D%3Dtrue&#x60; - &#x60;filter&#x3D;cycle_type%3D%3DDAILY&#x60; - &#x60;filter&#x3D;active%3D%3Dfalse%3Bcycle_type%3D%3DWEEKLY&#x60; 
      * Defaults to: undefined
      * @type string
      * @memberof SubscriptionPlansApilistSubscriptionPlans
@@ -8349,7 +9084,7 @@ export interface SubscriptionPlansApiListSubscriptionPlansRequest {
     orderBy?: string
     /**
      * Total number of items to return per page
-     * Minimum: 1
+     * Minimum: 0
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
@@ -8381,7 +9116,7 @@ export interface SubscriptionPlansApiUpdateSubscriptionPlanRequest {
      */
     subscriptionPlanId: string
     /**
-     * updateSubscriptionPlanRequest
+     * 
      * @type UpdateSubscriptionPlanRequest
      * @memberof SubscriptionPlansApiupdateSubscriptionPlan
      */
@@ -8389,10 +9124,10 @@ export interface SubscriptionPlansApiUpdateSubscriptionPlanRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type Array&lt;string&gt;
+     * @type &#39;active,allow_prorating,cycle_type,display_order_index,frequency,plan_price,total_cycles&#39;
      * @memberof SubscriptionPlansApiupdateSubscriptionPlan
      */
-    updateMask?: Array<string>
+    updateMask?: 'active,allow_prorating,cycle_type,display_order_index,frequency,plan_price,total_cycles'
 }
 
 export class ObjectSubscriptionPlansApi {
@@ -8499,14 +9234,14 @@ import { SubscriptionsApiRequestFactory, SubscriptionsApiResponseProcessor} from
 
 export interface SubscriptionsApiCancelSubscriptionRequest {
     /**
-     * subscription_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof SubscriptionsApicancelSubscription
      */
     subscriptionId: string
     /**
-     * request
+     * 
      * @type CancelSubscriptionRequest
      * @memberof SubscriptionsApicancelSubscription
      */
@@ -8515,16 +9250,16 @@ export interface SubscriptionsApiCancelSubscriptionRequest {
 
 export interface SubscriptionsApiCreateSubscriptionRequest {
     /**
-     * request
-     * @type CreateSubscriptionRequest
+     * 
+     * @type CreateSubscriptionRequestDetail
      * @memberof SubscriptionsApicreateSubscription
      */
-    createSubscriptionRequest: CreateSubscriptionRequest
+    createSubscriptionRequestDetail: CreateSubscriptionRequestDetail
 }
 
 export interface SubscriptionsApiCreateSubscriptionCustomFieldRequest {
     /**
-     * customField
+     * 
      * @type CreateCustomFieldRequest
      * @memberof SubscriptionsApicreateSubscriptionCustomField
      */
@@ -8533,7 +9268,7 @@ export interface SubscriptionsApiCreateSubscriptionCustomFieldRequest {
 
 export interface SubscriptionsApiDeleteSubscriptionCustomFieldRequest {
     /**
-     * custom_field_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof SubscriptionsApideleteSubscriptionCustomField
@@ -8543,7 +9278,7 @@ export interface SubscriptionsApiDeleteSubscriptionCustomFieldRequest {
 
 export interface SubscriptionsApiGetSubscriptionRequest {
     /**
-     * subscription_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof SubscriptionsApigetSubscription
@@ -8553,7 +9288,7 @@ export interface SubscriptionsApiGetSubscriptionRequest {
 
 export interface SubscriptionsApiListSubscriptionsRequest {
     /**
-     * Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; 
+     * Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; 
      * Defaults to: undefined
      * @type string
      * @memberof SubscriptionsApilistSubscriptions
@@ -8568,7 +9303,7 @@ export interface SubscriptionsApiListSubscriptionsRequest {
     orderBy?: string
     /**
      * Total number of items to return per page
-     * Minimum: 1
+     * Minimum: 0
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
@@ -8589,37 +9324,37 @@ export interface SubscriptionsApiRetrieveSubscriptionCustomFieldModelRequest {
 
 export interface SubscriptionsApiUpdateSubscriptionRequest {
     /**
-     * subscription_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof SubscriptionsApiupdateSubscription
      */
     subscriptionId: string
     /**
-     * request
-     * @type UpdateSubscriptionRequest
+     * 
+     * @type UpdateSubscriptionRequestDetail
      * @memberof SubscriptionsApiupdateSubscription
      */
-    updateSubscriptionRequest: UpdateSubscriptionRequest
+    updateSubscriptionRequestDetail: UpdateSubscriptionRequestDetail
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type Array&lt;string&gt;
+     * @type &#39;contact_id,subscription_plan_id,quantity,billing_amount,auto_charge,max_charge_attempts,days_between_retries, active,billing_frequency,billing_cycle,next_bill_date,end_date,payment_method_id,allow_tax,lead_affiliate_id, sale_affiliate_id,promo_code,shipping_option_id,reason_stopped,shipping_address&#39;
      * @memberof SubscriptionsApiupdateSubscription
      */
-    updateMask?: Array<string>
+    updateMask?: 'contact_id,subscription_plan_id,quantity,billing_amount,auto_charge,max_charge_attempts,days_between_retries, active,billing_frequency,billing_cycle,next_bill_date,end_date,payment_method_id,allow_tax,lead_affiliate_id, sale_affiliate_id,promo_code,shipping_option_id,reason_stopped,shipping_address'
 }
 
 export interface SubscriptionsApiUpdateSubscriptionCustomFieldRequest {
     /**
-     * custom_field_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof SubscriptionsApiupdateSubscriptionCustomField
      */
     customFieldId: string
     /**
-     * request
+     * 
      * @type UpdateCustomFieldMetaDataRequest
      * @memberof SubscriptionsApiupdateSubscriptionCustomField
      */
@@ -8627,10 +9362,10 @@ export interface SubscriptionsApiUpdateSubscriptionCustomFieldRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type Array&lt;string&gt;
+     * @type &#39;group_id,label,options&#39;
      * @memberof SubscriptionsApiupdateSubscriptionCustomField
      */
-    updateMask?: Array<string>
+    updateMask?: 'group_id,label,options'
 }
 
 export class ObjectSubscriptionsApi {
@@ -8663,8 +9398,8 @@ export class ObjectSubscriptionsApi {
      * Create Subscription
      * @param param the request object
      */
-    public createSubscriptionWithHttpInfo(param: SubscriptionsApiCreateSubscriptionRequest, options?: ConfigurationOptions): Promise<HttpInfo<Subscription>> {
-        return this.api.createSubscriptionWithHttpInfo(param.createSubscriptionRequest,  options).toPromise();
+    public createSubscriptionWithHttpInfo(param: SubscriptionsApiCreateSubscriptionRequest, options?: ConfigurationOptions): Promise<HttpInfo<SubscriptionDetail>> {
+        return this.api.createSubscriptionWithHttpInfo(param.createSubscriptionRequestDetail,  options).toPromise();
     }
 
     /**
@@ -8672,8 +9407,8 @@ export class ObjectSubscriptionsApi {
      * Create Subscription
      * @param param the request object
      */
-    public createSubscription(param: SubscriptionsApiCreateSubscriptionRequest, options?: ConfigurationOptions): Promise<Subscription> {
-        return this.api.createSubscription(param.createSubscriptionRequest,  options).toPromise();
+    public createSubscription(param: SubscriptionsApiCreateSubscriptionRequest, options?: ConfigurationOptions): Promise<SubscriptionDetail> {
+        return this.api.createSubscription(param.createSubscriptionRequestDetail,  options).toPromise();
     }
 
     /**
@@ -8717,7 +9452,7 @@ export class ObjectSubscriptionsApi {
      * Retrieve a Subscription
      * @param param the request object
      */
-    public getSubscriptionWithHttpInfo(param: SubscriptionsApiGetSubscriptionRequest, options?: ConfigurationOptions): Promise<HttpInfo<Subscription>> {
+    public getSubscriptionWithHttpInfo(param: SubscriptionsApiGetSubscriptionRequest, options?: ConfigurationOptions): Promise<HttpInfo<SubscriptionDetail>> {
         return this.api.getSubscriptionWithHttpInfo(param.subscriptionId,  options).toPromise();
     }
 
@@ -8726,7 +9461,7 @@ export class ObjectSubscriptionsApi {
      * Retrieve a Subscription
      * @param param the request object
      */
-    public getSubscription(param: SubscriptionsApiGetSubscriptionRequest, options?: ConfigurationOptions): Promise<Subscription> {
+    public getSubscription(param: SubscriptionsApiGetSubscriptionRequest, options?: ConfigurationOptions): Promise<SubscriptionDetail> {
         return this.api.getSubscription(param.subscriptionId,  options).toPromise();
     }
 
@@ -8735,7 +9470,7 @@ export class ObjectSubscriptionsApi {
      * List Subscriptions
      * @param param the request object
      */
-    public listSubscriptionsWithHttpInfo(param: SubscriptionsApiListSubscriptionsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListSubscriptionsResponse>> {
+    public listSubscriptionsWithHttpInfo(param: SubscriptionsApiListSubscriptionsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListSubscriptionsResponseList>> {
         return this.api.listSubscriptionsWithHttpInfo(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
@@ -8744,7 +9479,7 @@ export class ObjectSubscriptionsApi {
      * List Subscriptions
      * @param param the request object
      */
-    public listSubscriptions(param: SubscriptionsApiListSubscriptionsRequest = {}, options?: ConfigurationOptions): Promise<ListSubscriptionsResponse> {
+    public listSubscriptions(param: SubscriptionsApiListSubscriptionsRequest = {}, options?: ConfigurationOptions): Promise<ListSubscriptionsResponseList> {
         return this.api.listSubscriptions(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
     }
 
@@ -8771,8 +9506,8 @@ export class ObjectSubscriptionsApi {
      * Update a Subscription
      * @param param the request object
      */
-    public updateSubscriptionWithHttpInfo(param: SubscriptionsApiUpdateSubscriptionRequest, options?: ConfigurationOptions): Promise<HttpInfo<Subscription>> {
-        return this.api.updateSubscriptionWithHttpInfo(param.subscriptionId, param.updateSubscriptionRequest, param.updateMask,  options).toPromise();
+    public updateSubscriptionWithHttpInfo(param: SubscriptionsApiUpdateSubscriptionRequest, options?: ConfigurationOptions): Promise<HttpInfo<SubscriptionDetail>> {
+        return this.api.updateSubscriptionWithHttpInfo(param.subscriptionId, param.updateSubscriptionRequestDetail, param.updateMask,  options).toPromise();
     }
 
     /**
@@ -8780,8 +9515,8 @@ export class ObjectSubscriptionsApi {
      * Update a Subscription
      * @param param the request object
      */
-    public updateSubscription(param: SubscriptionsApiUpdateSubscriptionRequest, options?: ConfigurationOptions): Promise<Subscription> {
-        return this.api.updateSubscription(param.subscriptionId, param.updateSubscriptionRequest, param.updateMask,  options).toPromise();
+    public updateSubscription(param: SubscriptionsApiUpdateSubscriptionRequest, options?: ConfigurationOptions): Promise<SubscriptionDetail> {
+        return this.api.updateSubscription(param.subscriptionId, param.updateSubscriptionRequestDetail, param.updateMask,  options).toPromise();
     }
 
     /**
@@ -8809,14 +9544,14 @@ import { TagsApiRequestFactory, TagsApiResponseProcessor} from "../apis/TagsApi"
 
 export interface TagsApiApplyTagsRequest {
     /**
-     * tag_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof TagsApiapplyTags
      */
     tagId: string
     /**
-     * applyRemoveTagRequest
+     * 
      * @type ApplyRemoveTagRequest
      * @memberof TagsApiapplyTags
      */
@@ -8825,7 +9560,7 @@ export interface TagsApiApplyTagsRequest {
 
 export interface TagsApiCreateTagRequest {
     /**
-     * tag
+     * 
      * @type CreateUpdateTagRequest
      * @memberof TagsApicreateTag
      */
@@ -8834,7 +9569,7 @@ export interface TagsApiCreateTagRequest {
 
 export interface TagsApiCreateTagCategoryRequest {
     /**
-     * request
+     * 
      * @type CreateUpdateTagCategoryRequest
      * @memberof TagsApicreateTagCategory
      */
@@ -8843,7 +9578,7 @@ export interface TagsApiCreateTagCategoryRequest {
 
 export interface TagsApiDeleteTagRequest {
     /**
-     * tag_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof TagsApideleteTag
@@ -8853,7 +9588,7 @@ export interface TagsApiDeleteTagRequest {
 
 export interface TagsApiDeleteTagCategoryRequest {
     /**
-     * tag_category_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof TagsApideleteTagCategory
@@ -8863,7 +9598,7 @@ export interface TagsApiDeleteTagCategoryRequest {
 
 export interface TagsApiGetCategoryRequest {
     /**
-     * tag_category_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof TagsApigetCategory
@@ -8873,7 +9608,7 @@ export interface TagsApiGetCategoryRequest {
 
 export interface TagsApiGetTagRequest {
     /**
-     * tag_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof TagsApigetTag
@@ -8883,14 +9618,14 @@ export interface TagsApiGetTagRequest {
 
 export interface TagsApiListCompaniesForTagIdRequest {
     /**
-     * tag_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof TagsApilistCompaniesForTagId
      */
     tagId: string
     /**
-     * Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_applied_time&#x60; - (String) &#x60;until_applied_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. If NONE is passed in for &#x60;email&#x60;, it will check for the non-existence of that field. For the filters listed above, here are some examples: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; 
+     * Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_applied_time&#x60; - (String) &#x60;until_applied_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. If NONE is passed in for &#x60;email&#x60;, it will check for the non-existence of that field. For the filters listed above, here are some examples: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; 
      * Defaults to: undefined
      * @type string
      * @memberof TagsApilistCompaniesForTagId
@@ -8905,7 +9640,7 @@ export interface TagsApiListCompaniesForTagIdRequest {
     orderBy?: string
     /**
      * Total number of items to return per page
-     * Minimum: 1
+     * Minimum: 0
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
@@ -8923,14 +9658,14 @@ export interface TagsApiListCompaniesForTagIdRequest {
 
 export interface TagsApiListContactsWithTagIdRequest {
     /**
-     * tag_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof TagsApilistContactsWithTagId
      */
     tagId: string
     /**
-     * Filter to apply, allowed fields are: - (String) &#x60;given_name&#x60; - (String) &#x60;family_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_applied_time&#x60; - (String) &#x60;until_applied_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. If NONE is passed in for &#x60;email&#x60;, &#x60;given_name&#x60;, or &#x60;family_name&#x60;, it will check for the non-existence of that field. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DJohn&#x60; - &#x60;filter&#x3D;family_name%3D%3DSmith&#x60; - &#x60;filter&#x3D;email%3D%3DNONE&#x60;
+     * Filter to apply, allowed fields are: - (String) &#x60;given_name&#x60; - (String) &#x60;family_name&#x60; - (String) &#x60;email&#x60; - (String) &#x60;since_applied_time&#x60; - (String) &#x60;until_applied_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. If NONE is passed in for &#x60;email&#x60;, &#x60;given_name&#x60;, or &#x60;family_name&#x60;, it will check for the non-existence of that field. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DJohn&#x60; - &#x60;filter&#x3D;family_name%3D%3DSmith&#x60; - &#x60;filter&#x3D;email%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; 
      * Defaults to: undefined
      * @type string
      * @memberof TagsApilistContactsWithTagId
@@ -8945,7 +9680,7 @@ export interface TagsApiListContactsWithTagIdRequest {
     orderBy?: string
     /**
      * Total number of items to return per page
-     * Minimum: 1
+     * Minimum: 0
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
@@ -8963,14 +9698,14 @@ export interface TagsApiListContactsWithTagIdRequest {
 
 export interface TagsApiListTagCategoriesRequest {
     /**
-     * Filter to apply, allowed fields are:  - (String) &#x60;name&#x60; - (String) &#x60;description&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. If NONE is passed in for &#x60;category_id&#x60; or &#x60;description&#x60;, it will check for the non-existence of that field. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;name%3D%3Dmy-tag&#x60; - &#x60;filter&#x3D;description%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_create_time%3D%3D2024-12-22T01:00:00.000Z;until_create_time%3D%3D2025-01-01T00:00:00.000Z;&#x60;
+     * Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (String) &#x60;description&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. If NONE is passed in for &#x60;name&#x60; or &#x60;description&#x60;, it will check for the non-existence of that field. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3Dmy-tag-category&#x60; - &#x60;filter&#x3D;description%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_create_time%3D%3D2024-12-22T01:00:00.000Z;until_create_time%3D%3D2025-01-01T00:00:00.000Z;&#x60;
      * Defaults to: undefined
      * @type string
      * @memberof TagsApilistTagCategories
      */
     filter?: string
     /**
-     * Attribute and direction to order items. One of the following fields:  - &#x60;name&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * Defaults to: undefined
      * @type string
      * @memberof TagsApilistTagCategories
@@ -8978,7 +9713,7 @@ export interface TagsApiListTagCategoriesRequest {
     orderBy?: string
     /**
      * Total number of items to return per page
-     * Minimum: 1
+     * Minimum: 0
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
@@ -9011,7 +9746,7 @@ export interface TagsApiListTagsRequest {
     orderBy?: string
     /**
      * Total number of items to return per page
-     * Minimum: 1
+     * Minimum: 0
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
@@ -9029,14 +9764,14 @@ export interface TagsApiListTagsRequest {
 
 export interface TagsApiRemoveTagsRequest {
     /**
-     * tag_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof TagsApiremoveTags
      */
     tagId: string
     /**
-     * applyRemoveTagRequest
+     * 
      * @type ApplyRemoveTagRequest
      * @memberof TagsApiremoveTags
      */
@@ -9045,48 +9780,48 @@ export interface TagsApiRemoveTagsRequest {
 
 export interface TagsApiUpdateTagRequest {
     /**
-     * tag_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof TagsApiupdateTag
      */
     tagId: string
     /**
-     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-     * Defaults to: undefined
-     * @type Array&lt;string&gt;
-     * @memberof TagsApiupdateTag
-     */
-    updateMask?: Array<string>
-    /**
-     * tag
+     * 
      * @type CreateUpdateTagRequest
      * @memberof TagsApiupdateTag
      */
-    createUpdateTagRequest?: CreateUpdateTagRequest
+    createUpdateTagRequest: CreateUpdateTagRequest
+    /**
+     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * Defaults to: undefined
+     * @type &#39;name,description,category&#39;
+     * @memberof TagsApiupdateTag
+     */
+    updateMask?: 'name,description,category'
 }
 
 export interface TagsApiUpdateTagCategoryRequest {
     /**
-     * tag_category_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof TagsApiupdateTagCategory
      */
     tagCategoryId: string
     /**
-     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-     * Defaults to: undefined
-     * @type Array&lt;string&gt;
-     * @memberof TagsApiupdateTagCategory
-     */
-    updateMask?: Array<string>
-    /**
-     * tagCategory
+     * 
      * @type CreateUpdateTagCategoryRequest
      * @memberof TagsApiupdateTagCategory
      */
-    createUpdateTagCategoryRequest?: CreateUpdateTagCategoryRequest
+    createUpdateTagCategoryRequest: CreateUpdateTagCategoryRequest
+    /**
+     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * Defaults to: undefined
+     * @type &#39;name,description&#39;
+     * @memberof TagsApiupdateTagCategory
+     */
+    updateMask?: 'name,description'
 }
 
 export class ObjectTagsApi {
@@ -9318,7 +10053,7 @@ export class ObjectTagsApi {
      * @param param the request object
      */
     public updateTagWithHttpInfo(param: TagsApiUpdateTagRequest, options?: ConfigurationOptions): Promise<HttpInfo<UpdateTagResponse>> {
-        return this.api.updateTagWithHttpInfo(param.tagId, param.updateMask, param.createUpdateTagRequest,  options).toPromise();
+        return this.api.updateTagWithHttpInfo(param.tagId, param.createUpdateTagRequest, param.updateMask,  options).toPromise();
     }
 
     /**
@@ -9327,7 +10062,7 @@ export class ObjectTagsApi {
      * @param param the request object
      */
     public updateTag(param: TagsApiUpdateTagRequest, options?: ConfigurationOptions): Promise<UpdateTagResponse> {
-        return this.api.updateTag(param.tagId, param.updateMask, param.createUpdateTagRequest,  options).toPromise();
+        return this.api.updateTag(param.tagId, param.createUpdateTagRequest, param.updateMask,  options).toPromise();
     }
 
     /**
@@ -9336,7 +10071,7 @@ export class ObjectTagsApi {
      * @param param the request object
      */
     public updateTagCategoryWithHttpInfo(param: TagsApiUpdateTagCategoryRequest, options?: ConfigurationOptions): Promise<HttpInfo<UpdateTagCategoryResponse>> {
-        return this.api.updateTagCategoryWithHttpInfo(param.tagCategoryId, param.updateMask, param.createUpdateTagCategoryRequest,  options).toPromise();
+        return this.api.updateTagCategoryWithHttpInfo(param.tagCategoryId, param.createUpdateTagCategoryRequest, param.updateMask,  options).toPromise();
     }
 
     /**
@@ -9345,7 +10080,7 @@ export class ObjectTagsApi {
      * @param param the request object
      */
     public updateTagCategory(param: TagsApiUpdateTagCategoryRequest, options?: ConfigurationOptions): Promise<UpdateTagCategoryResponse> {
-        return this.api.updateTagCategory(param.tagCategoryId, param.updateMask, param.createUpdateTagCategoryRequest,  options).toPromise();
+        return this.api.updateTagCategory(param.tagCategoryId, param.createUpdateTagCategoryRequest, param.updateMask,  options).toPromise();
     }
 
 }
@@ -9355,16 +10090,16 @@ import { TaskApiRequestFactory, TaskApiResponseProcessor} from "../apis/TaskApi"
 
 export interface TaskApiCreateTaskRequest {
     /**
-     * task
+     * 
      * @type CreateTaskRequest
      * @memberof TaskApicreateTask
      */
-    createTaskRequest?: CreateTaskRequest
+    createTaskRequest: CreateTaskRequest
 }
 
 export interface TaskApiCreateTaskCustomFieldRequest {
     /**
-     * customField
+     * 
      * @type CreateCustomFieldRequest
      * @memberof TaskApicreateTaskCustomField
      */
@@ -9373,7 +10108,7 @@ export interface TaskApiCreateTaskCustomFieldRequest {
 
 export interface TaskApiDeleteTaskRequest {
     /**
-     * task_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof TaskApideleteTask
@@ -9383,7 +10118,7 @@ export interface TaskApiDeleteTaskRequest {
 
 export interface TaskApiDeleteTaskCustomFieldRequest {
     /**
-     * custom_field_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof TaskApideleteTaskCustomField
@@ -9393,7 +10128,7 @@ export interface TaskApiDeleteTaskCustomFieldRequest {
 
 export interface TaskApiGetTaskRequest {
     /**
-     * task_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof TaskApigetTask
@@ -9403,7 +10138,7 @@ export interface TaskApiGetTaskRequest {
 
 export interface TaskApiListTasksRequest {
     /**
-     * Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;has_due_date&#x60; - (String) &#x60;is_completed&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;task_ids&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;has_due_date%3D%3Dtrue&#x60; - &#x60;filter&#x3D;is_completed%3D%3Dtrue&#x60; - &#x60;filter&#x3D;user_id%3D%3D321&#x60; - &#x60;filter&#x3D;task_ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; 
+     * Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;has_due_date&#x60; - (String) &#x60;is_completed&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;task_ids&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;has_due_date%3D%3Dtrue&#x60; - &#x60;filter&#x3D;is_completed%3D%3Dtrue&#x60; - &#x60;filter&#x3D;user_id%3D%3D321&#x60; - &#x60;filter&#x3D;task_ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; 
      * Defaults to: undefined
      * @type string
      * @memberof TaskApilistTasks
@@ -9418,7 +10153,7 @@ export interface TaskApiListTasksRequest {
     orderBy?: string
     /**
      * Total number of items to return per page
-     * Minimum: 1
+     * Minimum: 0
      * Maximum: 1000
      * Defaults to: undefined
      * @type number
@@ -9439,37 +10174,37 @@ export interface TaskApiRetrieveTaskModelRequest {
 
 export interface TaskApiUpdateTaskRequest {
     /**
-     * task_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof TaskApiupdateTask
      */
     taskId: string
     /**
-     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-     * Defaults to: undefined
-     * @type Array&lt;string&gt;
-     * @memberof TaskApiupdateTask
-     */
-    updateMask?: Array<string>
-    /**
-     * task
+     * 
      * @type CreateUpdateTaskRequest
      * @memberof TaskApiupdateTask
      */
-    createUpdateTaskRequest?: CreateUpdateTaskRequest
+    createUpdateTaskRequest: CreateUpdateTaskRequest
+    /**
+     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * Defaults to: undefined
+     * @type &#39;id,title,description,type,priority,completion_time, due_time,remind_time_mins,assigned_to_user_id,contact_id,completed&#39;
+     * @memberof TaskApiupdateTask
+     */
+    updateMask?: 'id,title,description,type,priority,completion_time, due_time,remind_time_mins,assigned_to_user_id,contact_id,completed'
 }
 
 export interface TaskApiUpdateTaskCustomFieldRequest {
     /**
-     * custom_field_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof TaskApiupdateTaskCustomField
      */
     customFieldId: string
     /**
-     * request
+     * 
      * @type UpdateCustomFieldMetaDataRequest
      * @memberof TaskApiupdateTaskCustomField
      */
@@ -9477,10 +10212,10 @@ export interface TaskApiUpdateTaskCustomFieldRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type Array&lt;string&gt;
+     * @type &#39;group_id,label,options&#39;
      * @memberof TaskApiupdateTaskCustomField
      */
-    updateMask?: Array<string>
+    updateMask?: 'group_id,label,options'
 }
 
 export class ObjectTaskApi {
@@ -9495,7 +10230,7 @@ export class ObjectTaskApi {
      * Create a Task
      * @param param the request object
      */
-    public createTaskWithHttpInfo(param: TaskApiCreateTaskRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<Task>> {
+    public createTaskWithHttpInfo(param: TaskApiCreateTaskRequest, options?: ConfigurationOptions): Promise<HttpInfo<Task>> {
         return this.api.createTaskWithHttpInfo(param.createTaskRequest,  options).toPromise();
     }
 
@@ -9504,7 +10239,7 @@ export class ObjectTaskApi {
      * Create a Task
      * @param param the request object
      */
-    public createTask(param: TaskApiCreateTaskRequest = {}, options?: ConfigurationOptions): Promise<Task> {
+    public createTask(param: TaskApiCreateTaskRequest, options?: ConfigurationOptions): Promise<Task> {
         return this.api.createTask(param.createTaskRequest,  options).toPromise();
     }
 
@@ -9622,7 +10357,7 @@ export class ObjectTaskApi {
      * @param param the request object
      */
     public updateTaskWithHttpInfo(param: TaskApiUpdateTaskRequest, options?: ConfigurationOptions): Promise<HttpInfo<UpdateTaskResponse>> {
-        return this.api.updateTaskWithHttpInfo(param.taskId, param.updateMask, param.createUpdateTaskRequest,  options).toPromise();
+        return this.api.updateTaskWithHttpInfo(param.taskId, param.createUpdateTaskRequest, param.updateMask,  options).toPromise();
     }
 
     /**
@@ -9631,7 +10366,7 @@ export class ObjectTaskApi {
      * @param param the request object
      */
     public updateTask(param: TaskApiUpdateTaskRequest, options?: ConfigurationOptions): Promise<UpdateTaskResponse> {
-        return this.api.updateTask(param.taskId, param.updateMask, param.createUpdateTaskRequest,  options).toPromise();
+        return this.api.updateTask(param.taskId, param.createUpdateTaskRequest, param.updateMask,  options).toPromise();
     }
 
     /**
@@ -9659,7 +10394,7 @@ import { UserGroupsApiRequestFactory, UserGroupsApiResponseProcessor} from "../a
 
 export interface UserGroupsApiGetUserGroupRequest {
     /**
-     * user_group_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof UserGroupsApigetUserGroup
@@ -9679,7 +10414,7 @@ export class ObjectUserGroupsApi {
 
     /**
      * Retrieves a single user group by its ID.
-     * Retrieve an User Group
+     * Retrieve a User Group
      * @param param the request object
      */
     public getUserGroupWithHttpInfo(param: UserGroupsApiGetUserGroupRequest, options?: ConfigurationOptions): Promise<HttpInfo<UserGroup>> {
@@ -9688,7 +10423,7 @@ export class ObjectUserGroupsApi {
 
     /**
      * Retrieves a single user group by its ID.
-     * Retrieve an User Group
+     * Retrieve a User Group
      * @param param the request object
      */
     public getUserGroup(param: UserGroupsApiGetUserGroupRequest, options?: ConfigurationOptions): Promise<UserGroup> {
@@ -9720,7 +10455,7 @@ import { UsersApiRequestFactory, UsersApiResponseProcessor} from "../apis/UsersA
 
 export interface UsersApiGetUserByIdRequest {
     /**
-     * user_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof UsersApigetUserById
@@ -9733,7 +10468,7 @@ export interface UsersApiGetUserInfoRequest {
 
 export interface UsersApiGetUserSignatureRequest {
     /**
-     * user_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof UsersApigetUserSignature
@@ -9750,7 +10485,7 @@ export interface UsersApiListPaginatedUsersRequest {
      */
     filter?: string
     /**
-     * Attribute and direction to order items. One of the following fields: - &#x60;date_created&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * Attribute and direction to order items. One of the following fields: - &#x60;create_time&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * Defaults to: undefined
      * @type string
      * @memberof UsersApilistPaginatedUsers
@@ -9776,25 +10511,25 @@ export interface UsersApiListPaginatedUsersRequest {
 
 export interface UsersApiUpdateUserRequest {
     /**
-     * user_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof UsersApiupdateUser
      */
     userId: string
     /**
-     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-     * Defaults to: undefined
-     * @type Array&lt;string&gt;
-     * @memberof UsersApiupdateUser
-     */
-    updateMask?: Array<string>
-    /**
-     * user
+     * 
      * @type UpdateUserRequest
      * @memberof UsersApiupdateUser
      */
-    updateUserRequest?: UpdateUserRequest
+    updateUserRequest: UpdateUserRequest
+    /**
+     * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * Defaults to: undefined
+     * @type &#39;address,company_name,email_address,family_name,fax_numbers,given_name,job_title,phone_numbers,time_zone,website&#39;
+     * @memberof UsersApiupdateUser
+     */
+    updateMask?: 'address,company_name,email_address,family_name,fax_numbers,given_name,job_title,phone_numbers,time_zone,website'
 }
 
 export class ObjectUsersApi {
@@ -9882,7 +10617,7 @@ export class ObjectUsersApi {
      * @param param the request object
      */
     public updateUserWithHttpInfo(param: UsersApiUpdateUserRequest, options?: ConfigurationOptions): Promise<HttpInfo<User>> {
-        return this.api.updateUserWithHttpInfo(param.userId, param.updateMask, param.updateUserRequest,  options).toPromise();
+        return this.api.updateUserWithHttpInfo(param.userId, param.updateUserRequest, param.updateMask,  options).toPromise();
     }
 
     /**
@@ -9891,7 +10626,7 @@ export class ObjectUsersApi {
      * @param param the request object
      */
     public updateUser(param: UsersApiUpdateUserRequest, options?: ConfigurationOptions): Promise<User> {
-        return this.api.updateUser(param.userId, param.updateMask, param.updateUserRequest,  options).toPromise();
+        return this.api.updateUser(param.userId, param.updateUserRequest, param.updateMask,  options).toPromise();
     }
 
 }
@@ -9901,7 +10636,7 @@ import { WebformsApiRequestFactory, WebformsApiResponseProcessor} from "../apis/
 
 export interface WebformsApiGetHtmlRequest {
     /**
-     * webform_id
+     * 
      * Defaults to: undefined
      * @type string
      * @memberof WebformsApigetHtml
@@ -9926,7 +10661,7 @@ export interface WebformsApiListWebformsRequest {
     orderBy?: string
     /**
      * Total number of items to return per page
-     * Minimum: 1
+     * Minimum: 0
      * Maximum: 1000
      * Defaults to: undefined
      * @type number

@@ -5,17 +5,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**assigned_to_user** | [**BasicUser**](BasicUser.md) |  | [optional] 
-**contact_id** | **str** |  | [optional] 
-**create_time** | **str** |  | [optional] 
-**created_by_user_id** | **str** |  | [optional] 
-**id** | **str** |  | [optional] 
-**last_updated_by_user_id** | **str** |  | [optional] 
-**pinned_at** | **str** |  | [optional] 
-**text** | **str** |  | [optional] 
-**title** | **str** |  | [optional] 
-**type** | **str** |  | [optional] 
-**update_time** | **str** |  | [optional] 
+**id** | **str** | Note ID | [optional] 
+**text** | **str** | Note content | [optional] 
+**title** | **str** | Note title | [optional] 
+**type** | **str** | Note type | [optional] 
+**contact_id** | **str** | Associated contact ID | [optional] 
+**assigned_to_user** | [**BasicUser**](BasicUser.md) | User assigned to this note | [optional] 
+**create_time** | **str** | Creation timestamp (ISO-8601) | [optional] 
+**update_time** | **str** | Last update timestamp (ISO-8601) | [optional] 
+**last_updated_by_user_id** | **str** | ID of user who last updated | [optional] 
+**pinned_at** | **str** | Pin timestamp (ISO-8601), null if not pinned | [optional] 
+**created_by_user_id** | **str** | ID of user who created | [optional] 
 
 ## Example
 

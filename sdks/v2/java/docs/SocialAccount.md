@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**name** | **String** |  |  [optional] |
-|**type** | [**TypeEnum**](#TypeEnum) |  |  |
+|**name** | **String** | Social account username or handle |  [optional] |
+|**type** | [**TypeEnum**](#TypeEnum) | Social account type |  |
 
 
 

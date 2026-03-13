@@ -7,12 +7,12 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**description** | **String** |  |  [optional] |
-|**id** | **String** |  |  [optional] |
-|**name** | **String** |  |  [optional] |
-|**shippable** | **Boolean** |  |  [optional] |
-|**sku** | **String** |  |  [optional] |
-|**taxable** | **Boolean** |  |  [optional] |
+|**id** | **String** | Product ID |  [optional] |
+|**name** | **String** | Product name |  [optional] |
+|**sku** | **String** | Stock keeping unit |  [optional] |
+|**description** | **String** | Product description |  [optional] |
+|**shippable** | **Boolean** | Whether product requires shipping |  [optional] |
+|**taxable** | **Boolean** | Whether product is taxable |  [optional] |
 
 
 ## Implemented Interfaces

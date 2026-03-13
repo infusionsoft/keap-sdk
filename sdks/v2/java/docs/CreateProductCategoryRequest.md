@@ -2,14 +2,15 @@
 
 # CreateProductCategoryRequest
 
+productCategory
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**displayOrderIndex** | **Integer** |  |  [optional] |
-|**name** | **String** |  |  |
-|**parentCategoryId** | **String** |  |  [optional] |
+|**name** | **String** | The category name |  |
+|**displayOrderIndex** | **Integer** | Display order of the category |  [optional] |
+|**parentCategoryId** | **String** | Parent category ID for subcategories |  [optional] |
 
 
 ## Implemented Interfaces

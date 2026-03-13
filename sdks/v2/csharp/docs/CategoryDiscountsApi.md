@@ -1,14 +1,14 @@
 # Keap.Core.V2.Api.CategoryDiscountsApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**CreateCategoryDiscount**](CategoryDiscountsApi.md#createcategorydiscount) | **POST** /v2/discounts/productCategories | Create a Category Discount |
-| [**DeleteCategoryDiscount**](CategoryDiscountsApi.md#deletecategorydiscount) | **DELETE** /v2/discounts/productCategories/{discount_id} | Delete a Category Discount |
-| [**GetCategoryDiscount**](CategoryDiscountsApi.md#getcategorydiscount) | **GET** /v2/discounts/productCategories/{discount_id} | Retrieve a Category Discount |
-| [**ListCategoryDiscounts**](CategoryDiscountsApi.md#listcategorydiscounts) | **GET** /v2/discounts/productCategories | List Category Discounts |
-| [**UpdateCategoryDiscount**](CategoryDiscountsApi.md#updatecategorydiscount) | **PATCH** /v2/discounts/productCategories/{discount_id} | Update a Category Discount |
+| [**CreateCategoryDiscount**](CategoryDiscountsApi.md#createcategorydiscount) | **POST** /rest/v2/discounts/productCategories | Create a Category Discount |
+| [**DeleteCategoryDiscount**](CategoryDiscountsApi.md#deletecategorydiscount) | **DELETE** /rest/v2/discounts/productCategories/{discount_id} | Delete a Category Discount |
+| [**GetCategoryDiscount**](CategoryDiscountsApi.md#getcategorydiscount) | **GET** /rest/v2/discounts/productCategories/{discount_id} | Retrieve a Category Discount |
+| [**ListCategoryDiscounts**](CategoryDiscountsApi.md#listcategorydiscounts) | **GET** /rest/v2/discounts/productCategories | List Category Discounts |
+| [**UpdateCategoryDiscount**](CategoryDiscountsApi.md#updatecategorydiscount) | **PATCH** /rest/v2/discounts/productCategories/{discount_id} | Update a Category Discount |
 
 <a id="createcategorydiscount"></a>
 # **CreateCategoryDiscount**
@@ -33,9 +33,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new CategoryDiscountsApi(config);
-            var createCategoryDiscountRequest = new CreateCategoryDiscountRequest(); // CreateCategoryDiscountRequest | request
+            var createCategoryDiscountRequest = new CreateCategoryDiscountRequest(); // CreateCategoryDiscountRequest | 
 
             try
             {
@@ -78,7 +81,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **createCategoryDiscountRequest** | [**CreateCategoryDiscountRequest**](CreateCategoryDiscountRequest.md) | request |  |
+| **createCategoryDiscountRequest** | [**CreateCategoryDiscountRequest**](CreateCategoryDiscountRequest.md) |  |  |
 
 ### Return type
 
@@ -86,7 +89,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -98,9 +101,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -127,9 +134,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new CategoryDiscountsApi(config);
-            var discountId = "discountId_example";  // string | discount_id
+            var discountId = "discountId_example";  // string | 
 
             try
             {
@@ -168,7 +178,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **discountId** | **string** | discount_id |  |
+| **discountId** | **string** |  |  |
 
 ### Return type
 
@@ -176,7 +186,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -188,10 +198,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -218,9 +231,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new CategoryDiscountsApi(config);
-            var discountId = "discountId_example";  // string | discount_id
+            var discountId = "discountId_example";  // string | 
 
             try
             {
@@ -263,7 +279,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **discountId** | **string** | discount_id |  |
+| **discountId** | **string** |  |  |
 
 ### Return type
 
@@ -271,7 +287,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -283,10 +299,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -313,7 +332,10 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new CategoryDiscountsApi(config);
             var filter = "filter_example";  // string? | Filter to apply, the allowed field is: - (String) `product_category_id`  You will need to apply the `==` operator to check the equality of the filter with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=product_category_id%3D%3D4`  (optional) 
             var orderBy = "orderBy_example";  // string? | Attribute and direction to order items. One of the following fields: - `id` - `name`  One of the following directions: - `asc` - `desc` (optional) 
@@ -372,7 +394,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -384,16 +406,19 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="updatecategorydiscount"></a>
 # **UpdateCategoryDiscount**
-> CategoryDiscount UpdateCategoryDiscount (string discountId, UpdateCategoryDiscountRequest updateCategoryDiscountRequest, List<string>? updateMask = null)
+> CategoryDiscount UpdateCategoryDiscount (string discountId, UpdateCategoryDiscountRequest updateCategoryDiscountRequest, string? updateMask = null)
 
 Update a Category Discount
 
@@ -414,11 +439,14 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new CategoryDiscountsApi(config);
-            var discountId = "discountId_example";  // string | discount_id
-            var updateCategoryDiscountRequest = new UpdateCategoryDiscountRequest(); // UpdateCategoryDiscountRequest | request
-            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var discountId = "discountId_example";  // string | 
+            var updateCategoryDiscountRequest = new UpdateCategoryDiscountRequest(); // UpdateCategoryDiscountRequest | 
+            var updateMask = "name,description,discount_percent,apply_to_commissions,criteria,product_category_ids";  // string? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -461,9 +489,9 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **discountId** | **string** | discount_id |  |
-| **updateCategoryDiscountRequest** | [**UpdateCategoryDiscountRequest**](UpdateCategoryDiscountRequest.md) | request |  |
-| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **discountId** | **string** |  |  |
+| **updateCategoryDiscountRequest** | [**UpdateCategoryDiscountRequest**](UpdateCategoryDiscountRequest.md) |  |  |
+| **updateMask** | **string?** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 
@@ -471,7 +499,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -483,10 +511,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

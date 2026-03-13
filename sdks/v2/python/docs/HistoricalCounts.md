@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**var_24_hours** | **int** |  | [optional] 
-**var_30_days** | **int** |  | [optional] 
+**var_24_hours** | **int** | Number of contacts in the last 24 hours | [optional] 
+**var_30_days** | **int** | Number of contacts in the last 30 days | [optional] 
 
 ## Example
 

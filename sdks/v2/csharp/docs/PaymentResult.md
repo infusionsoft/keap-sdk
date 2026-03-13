@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | [optional] 
-**InvoiceId** | **string** |  | [optional] 
-**PaymentAmount** | **double** |  | [optional] 
-**PaymentStatusMessage** | **string** |  | [optional] 
-**TransactionId** | **string** |  | [optional] 
+**Id** | **string** | Payment result ID | [optional] 
+**InvoiceId** | **string** | Associated invoice ID | [optional] 
+**PaymentAmount** | **double** | Amount paid | [optional] 
+**PaymentStatusMessage** | **string** | Payment status | [optional] 
+**TransactionId** | **string** | Transaction ID from payment processor | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

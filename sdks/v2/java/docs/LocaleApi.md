@@ -1,17 +1,17 @@
 # LocaleApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getCountryByCode**](LocaleApi.md#getCountryByCode) | **GET** /v2/locales/countries/{country_code} | Get Country |
-| [**getCountryByCodeWithHttpInfo**](LocaleApi.md#getCountryByCodeWithHttpInfo) | **GET** /v2/locales/countries/{country_code} | Get Country |
-| [**getProvinceByCode**](LocaleApi.md#getProvinceByCode) | **GET** /v2/locales/countries/{country_code}/provinces/{province_code} | Get Province |
-| [**getProvinceByCodeWithHttpInfo**](LocaleApi.md#getProvinceByCodeWithHttpInfo) | **GET** /v2/locales/countries/{country_code}/provinces/{province_code} | Get Province |
-| [**listCountries**](LocaleApi.md#listCountries) | **GET** /v2/locales/countries | List Countries |
-| [**listCountriesWithHttpInfo**](LocaleApi.md#listCountriesWithHttpInfo) | **GET** /v2/locales/countries | List Countries |
-| [**listProvincesForCountry**](LocaleApi.md#listProvincesForCountry) | **GET** /v2/locales/countries/{country_code}/provinces | List a Country&#39;s Province |
-| [**listProvincesForCountryWithHttpInfo**](LocaleApi.md#listProvincesForCountryWithHttpInfo) | **GET** /v2/locales/countries/{country_code}/provinces | List a Country&#39;s Province |
+| [**getCountryByCode**](LocaleApi.md#getCountryByCode) | **GET** /rest/v2/locales/countries/{country_code} | Get Country |
+| [**getCountryByCodeWithHttpInfo**](LocaleApi.md#getCountryByCodeWithHttpInfo) | **GET** /rest/v2/locales/countries/{country_code} | Get Country |
+| [**getProvinceByCode**](LocaleApi.md#getProvinceByCode) | **GET** /rest/v2/locales/countries/{country_code}/provinces/{province_code} | Get Province |
+| [**getProvinceByCodeWithHttpInfo**](LocaleApi.md#getProvinceByCodeWithHttpInfo) | **GET** /rest/v2/locales/countries/{country_code}/provinces/{province_code} | Get Province |
+| [**listCountries**](LocaleApi.md#listCountries) | **GET** /rest/v2/locales/countries | List Countries |
+| [**listCountriesWithHttpInfo**](LocaleApi.md#listCountriesWithHttpInfo) | **GET** /rest/v2/locales/countries | List Countries |
+| [**listProvincesForCountry**](LocaleApi.md#listProvincesForCountry) | **GET** /rest/v2/locales/countries/{country_code}/provinces | List a Country&#39;s Provinces |
+| [**listProvincesForCountryWithHttpInfo**](LocaleApi.md#listProvincesForCountryWithHttpInfo) | **GET** /rest/v2/locales/countries/{country_code}/provinces | List a Country&#39;s Provinces |
 
 
 
@@ -30,13 +30,18 @@ Gets a country by its code or name
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.LocaleApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         LocaleApi apiInstance = new LocaleApi(defaultClient);
         String countryCode = "countryCode_example"; // String | The ISO 3166-2 alpha-2 code, alpha-3 code, or name of the country to be retrieved
@@ -68,7 +73,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -79,10 +84,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## getCountryByCodeWithHttpInfo
 
@@ -100,13 +108,18 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.LocaleApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         LocaleApi apiInstance = new LocaleApi(defaultClient);
         String countryCode = "countryCode_example"; // String | The ISO 3166-2 alpha-2 code, alpha-3 code, or name of the country to be retrieved
@@ -140,7 +153,7 @@ ApiResponse<[**Country**](Country.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -151,10 +164,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## getProvinceByCode
@@ -172,13 +188,18 @@ Get a province by its code or name
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.LocaleApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         LocaleApi apiInstance = new LocaleApi(defaultClient);
         String countryCode = "countryCode_example"; // String | The ISO 3166-1 alpha-2 code, alpha-3 code, or name of the country to be retrieved
@@ -212,7 +233,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -223,10 +244,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## getProvinceByCodeWithHttpInfo
 
@@ -244,13 +268,18 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.LocaleApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         LocaleApi apiInstance = new LocaleApi(defaultClient);
         String countryCode = "countryCode_example"; // String | The ISO 3166-1 alpha-2 code, alpha-3 code, or name of the country to be retrieved
@@ -286,7 +315,7 @@ ApiResponse<[**Province**](Province.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -297,10 +326,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## listCountries
@@ -318,13 +350,18 @@ Retrieves a list of countries
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.LocaleApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         LocaleApi apiInstance = new LocaleApi(defaultClient);
         try {
@@ -352,7 +389,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -363,10 +400,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## listCountriesWithHttpInfo
 
@@ -384,13 +424,18 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.LocaleApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         LocaleApi apiInstance = new LocaleApi(defaultClient);
         try {
@@ -420,7 +465,7 @@ ApiResponse<[**ListCountriesResponse**](ListCountriesResponse.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -431,17 +476,20 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## listProvincesForCountry
 
 > ListProvincesResponse listProvincesForCountry(countryCode)
 
-List a Country&#39;s Province
+List a Country&#39;s Provinces
 
 Retrieves a list of provinces for a given country
 
@@ -452,16 +500,21 @@ Retrieves a list of provinces for a given country
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.LocaleApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         LocaleApi apiInstance = new LocaleApi(defaultClient);
-        String countryCode = "countryCode_example"; // String | country_code
+        String countryCode = "countryCode_example"; // String | 
         try {
             ListProvincesResponse result = apiInstance.listProvincesForCountry(countryCode);
             System.out.println(result);
@@ -481,7 +534,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **countryCode** | **String**| country_code | |
+| **countryCode** | **String**|  | |
 
 ### Return type
 
@@ -490,7 +543,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -501,16 +554,19 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## listProvincesForCountryWithHttpInfo
 
 > ApiResponse<ListProvincesResponse> listProvincesForCountry listProvincesForCountryWithHttpInfo(countryCode)
 
-List a Country&#39;s Province
+List a Country&#39;s Provinces
 
 Retrieves a list of provinces for a given country
 
@@ -522,16 +578,21 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.LocaleApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         LocaleApi apiInstance = new LocaleApi(defaultClient);
-        String countryCode = "countryCode_example"; // String | country_code
+        String countryCode = "countryCode_example"; // String | 
         try {
             ApiResponse<ListProvincesResponse> response = apiInstance.listProvincesForCountryWithHttpInfo(countryCode);
             System.out.println("Status code: " + response.getStatusCode());
@@ -553,7 +614,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **countryCode** | **String**| country_code | |
+| **countryCode** | **String**|  | |
 
 ### Return type
 
@@ -562,7 +623,7 @@ ApiResponse<[**ListProvincesResponse**](ListProvincesResponse.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -573,8 +634,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 

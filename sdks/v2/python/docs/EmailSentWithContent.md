@@ -1,28 +1,29 @@
 # EmailSentWithContent
 
+A sent email record with full content
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**clicked_time** | **str** |  | [optional] 
-**contact_id** | **str** |  | [optional] 
-**headers** | **str** |  | [optional] 
-**html_content** | **str** | Base64 encoded HTML | [optional] 
-**id** | **str** |  | [optional] 
-**opened_time** | **str** |  | [optional] 
-**original_provider** | **str** |  | [optional] 
-**original_provider_id** | **str** |  | [optional] 
-**plain_content** | **str** | Base64 encoded plain text | [optional] 
-**provider_source_id** | **str** |  | [optional] 
-**received_time** | **str** |  | [optional] 
-**sent_from_address** | **str** |  | [optional] 
-**sent_from_reply_address** | **str** |  | [optional] 
-**sent_time** | **str** |  | [optional] 
-**sent_to_address** | **str** |  | [optional] 
-**sent_to_bcc_address_list** | **List[str]** |  | [optional] 
-**sent_to_cc_address_list** | **List[str]** |  | [optional] 
-**subject** | **str** |  | [optional] 
+**id** | **str** | The unique identifier of the email | [optional] 
+**subject** | **str** | The subject of the email | [optional] 
+**headers** | **str** | Email headers | [optional] 
+**contact_id** | **str** | The contact ID who received the email | [optional] 
+**sent_to_address** | **str** | The email address the email was sent to | [optional] 
+**sent_to_cc_address_list** | **List[str]** | List of CC email addresses | [optional] 
+**sent_to_bcc_address_list** | **List[str]** | List of BCC email addresses | [optional] 
+**sent_from_address** | **str** | The sender&#39;s email address | [optional] 
+**sent_from_reply_address** | **str** | The reply-to email address | [optional] 
+**sent_time** | **datetime** | When the email was sent, in ISO-8601 format | [optional] 
+**received_time** | **datetime** | When the email was received, in ISO-8601 format | [optional] 
+**opened_time** | **datetime** | When the email was opened, in ISO-8601 format | [optional] 
+**clicked_time** | **datetime** | When a link in the email was clicked, in ISO-8601 format | [optional] 
+**original_provider_id** | **str** | The original provider&#39;s message ID | [optional] 
+**original_provider** | **str** | The email provider that sent the email | [optional] 
+**provider_source_id** | **str** | The synced email account that generated this message | [optional] 
+**plain_content** | **str** | Base64 encoded plain text content | [optional] 
+**html_content** | **str** | Base64 encoded HTML content | [optional] 
 
 ## Example
 

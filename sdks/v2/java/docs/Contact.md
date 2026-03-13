@@ -7,39 +7,39 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+|**id** | **String** | Unique identifier |  [optional] |
+|**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |
 |**addresses** | [**List&lt;Address&gt;**](Address.md) |  |  [optional] |
-|**anniversaryDate** | **String** |  |  [optional] |
-|**birthDate** | **String** |  |  [optional] |
-|**company** | [**BasicCompany**](BasicCompany.md) |  |  [optional] |
-|**contactType** | **String** |  |  [optional] |
-|**createTime** | **String** |  |  [optional] |
+|**company** | [**BasicCompany**](BasicCompany.md) | Associated company |  [optional] |
+|**origin** | [**Origin**](Origin.md) |  |  [optional] |
+|**prefix** | **String** | Name prefix |  [optional] |
+|**suffix** | **String** | Name suffix |  [optional] |
+|**website** | **String** | Personal website URL |  [optional] |
+|**updateTime** | **String** | Last update timestamp (ISO-8601) |  [optional] |
+|**createTime** | **String** | Creation timestamp (ISO-8601) |  [optional] |
+|**scoreValue** | **String** | Contact score value |  [optional] |
+|**tagIds** | **List&lt;String&gt;** |  |  [optional] |
+|**anniversaryDate** | **String** | The anniversary date |  [optional] |
+|**birthDate** | **String** | The birth date |  [optional] |
+|**contactType** | **String** | Type of contact |  [optional] |
 |**customFields** | [**List&lt;CustomFieldValue&gt;**](CustomFieldValue.md) |  |  [optional] |
 |**emailAddresses** | [**List&lt;EmailAddress&gt;**](EmailAddress.md) |  |  [optional] |
-|**familyName** | **String** |  |  [optional] |
+|**familyName** | **String** | Last name / surname |  [optional] |
 |**faxNumbers** | [**List&lt;FaxNumber&gt;**](FaxNumber.md) |  |  [optional] |
-|**givenName** | **String** |  |  [optional] |
-|**id** | **String** |  |  [optional] |
-|**jobTitle** | **String** |  |  [optional] |
-|**leadsourceId** | **String** |  |  [optional] |
-|**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |
-|**middleName** | **String** |  |  [optional] |
-|**origin** | [**Origin**](Origin.md) |  |  [optional] |
-|**ownerId** | **String** |  |  [optional] |
+|**givenName** | **String** | First name |  [optional] |
+|**jobTitle** | **String** | Job title |  [optional] |
+|**leadsourceId** | **String** | Lead source identifier |  [optional] |
+|**middleName** | **String** | Middle name |  [optional] |
+|**ownerId** | **String** | ID of the user who owns this contact |  [optional] |
 |**phoneNumbers** | [**List&lt;PhoneNumber&gt;**](PhoneNumber.md) |  |  [optional] |
-|**preferredLocale** | **String** |  |  [optional] |
-|**preferredName** | **String** |  |  [optional] |
-|**prefix** | **String** |  |  [optional] |
-|**referralCode** | **String** |  |  [optional] |
-|**scoreValue** | **String** |  |  [optional] |
+|**preferredLocale** | **String** | Preferred locale |  [optional] |
+|**preferredName** | **String** | Preferred name or nickname |  [optional] |
+|**referralCode** | **String** | Referral code |  [optional] |
 |**socialAccounts** | [**List&lt;SocialAccount&gt;**](SocialAccount.md) |  |  [optional] |
 |**sourceType** | [**SourceTypeEnum**](#SourceTypeEnum) |  |  [optional] |
-|**spouseName** | **String** |  |  [optional] |
-|**suffix** | **String** |  |  [optional] |
-|**tagIds** | **List&lt;String&gt;** |  |  [optional] |
-|**timeZone** | **String** |  |  [optional] |
-|**updateTime** | **String** |  |  [optional] |
+|**spouseName** | **String** | Spouse&#39;s name |  [optional] |
+|**timeZone** | **String** | Contact&#39;s timezone |  [optional] |
 |**utmParameters** | [**List&lt;ContactUtmResponse&gt;**](ContactUtmResponse.md) |  |  [optional] |
-|**website** | **String** |  |  [optional] |
 
 
 

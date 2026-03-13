@@ -1,18 +1,18 @@
 # .EmailApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createEmail**](EmailApi.md#createEmail) | **POST** /v2/emails | Create an Email Record
-[**createEmails**](EmailApi.md#createEmails) | **POST** /v2/emails:batchAdd | Create a set of Email Records
-[**deleteEmail**](EmailApi.md#deleteEmail) | **DELETE** /v2/emails/{id} | Delete an Email Record
-[**deleteEmails**](EmailApi.md#deleteEmails) | **POST** /v2/emails:batchRemove | Remove a set of Email Records
-[**getEmail**](EmailApi.md#getEmail) | **GET** /v2/emails/{id} | Retrieve an Email
-[**getEmailTemplate**](EmailApi.md#getEmailTemplate) | **GET** /v2/emails/templates/{email_template_id} | Retrieve an email template
-[**listEmails**](EmailApi.md#listEmails) | **GET** /v2/emails | List Emails
-[**sendEmail**](EmailApi.md#sendEmail) | **POST** /v2/emails:send | Send an Email
-[**sendEmailTemplate**](EmailApi.md#sendEmailTemplate) | **POST** /v2/emails/templates:send | Send an email based on a template
+[**createEmail**](EmailApi.md#createEmail) | **POST** /rest/v2/emails | Create an Email Record
+[**createEmails**](EmailApi.md#createEmails) | **POST** /rest/v2/emails:batchAdd | Create a set of Email Records
+[**deleteEmail**](EmailApi.md#deleteEmail) | **DELETE** /rest/v2/emails/{id} | Delete an Email Record
+[**deleteEmails**](EmailApi.md#deleteEmails) | **POST** /rest/v2/emails:batchRemove | Remove a set of Email Records
+[**getEmail**](EmailApi.md#getEmail) | **GET** /rest/v2/emails/{id} | Retrieve an Email
+[**getEmailTemplate**](EmailApi.md#getEmailTemplate) | **GET** /rest/v2/emails/templates/{email_template_id} | Retrieve an email template
+[**listEmails**](EmailApi.md#listEmails) | **GET** /rest/v2/emails | List Emails
+[**sendEmail**](EmailApi.md#sendEmail) | **POST** /rest/v2/emails:send | Send an Email
+[**sendEmailTemplate**](EmailApi.md#sendEmailTemplate) | **POST** /rest/v2/emails/templates:send | Send an email based on a template
 
 
 # **createEmail**
@@ -31,29 +31,25 @@ const configuration = createConfiguration();
 const apiInstance = new EmailApi(configuration);
 
 const request: EmailApiCreateEmailRequest = {
-    // emailWithContent
+  
   createEmailSentRequest: {
-    clickedTime: "clickedTime_example",
-    contactId: "contactId_example",
-    headers: "headers_example",
-    htmlContent: "htmlContent_example",
-    openedTime: "openedTime_example",
-    originalProvider: "UNKNOWN",
-    originalProviderId: "originalProviderId_example",
-    plainContent: "plainContent_example",
-    providerSourceId: "providerSourceId_example",
-    receivedTime: "receivedTime_example",
-    sentFromAddress: "sentFromAddress_example",
-    sentFromReplyAddress: "sentFromReplyAddress_example",
-    sentTime: "sentTime_example",
-    sentToAddress: "sentToAddress_example",
-    sentToBccAddressList: [
-      "sentToBccAddressList_example",
-    ],
-    sentToCcAddressList: [
-      "sentToCcAddressList_example",
-    ],
-    subject: "subject_example",
+    subject: "Welcome to our service",
+    headers: "X-Custom-Header: value",
+    contactId: "456",
+    sentToAddress: "john@example.com",
+    sentToCcAddressList: [cc1@example.com, cc2@example.com],
+    sentToBccAddressList: [bcc@example.com],
+    sentFromAddress: "sender@company.com",
+    sentFromReplyAddress: "reply@company.com",
+    sentTime: new Date('2024-05-21T14:30:00Z'),
+    receivedTime: new Date('2024-05-21T14:31:00Z'),
+    openedTime: new Date('2024-05-21T15:00:00Z'),
+    clickedTime: new Date('2024-05-21T15:05:00Z'),
+    plainContent: "V2VsY29tZSB0byBvdXIgc2VydmljZQ==",
+    htmlContent: "PGgxPldlbGNvbWU8L2gxPg==",
+    originalProvider: "INFUSIONSOFT",
+    originalProviderId: "msg_abc123",
+    providerSourceId: "sync@company.com",
   },
 };
 
@@ -66,7 +62,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createEmailSentRequest** | **CreateEmailSentRequest**| emailWithContent |
+ **createEmailSentRequest** | **CreateEmailSentRequest**|  |
 
 
 ### Return type
@@ -75,7 +71,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -87,14 +83,18 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **createEmails**
-> EmailsSentList createEmails()
+> EmailsSentList createEmails(createEmailsSentRequest)
 
 Creates a set of Records of Emails sent to Contacts, maximum 1000 per transaction.
 
@@ -109,31 +109,27 @@ const configuration = createConfiguration();
 const apiInstance = new EmailApi(configuration);
 
 const request: EmailApiCreateEmailsRequest = {
-    // Email records to persist, with content. (optional)
+  
   createEmailsSentRequest: {
     emails: [
       {
-        clickedTime: "clickedTime_example",
-        contactId: "contactId_example",
-        headers: "headers_example",
-        htmlContent: "htmlContent_example",
-        openedTime: "openedTime_example",
-        originalProvider: "UNKNOWN",
-        originalProviderId: "originalProviderId_example",
-        plainContent: "plainContent_example",
-        providerSourceId: "providerSourceId_example",
-        receivedTime: "receivedTime_example",
-        sentFromAddress: "sentFromAddress_example",
-        sentFromReplyAddress: "sentFromReplyAddress_example",
-        sentTime: "sentTime_example",
-        sentToAddress: "sentToAddress_example",
-        sentToBccAddressList: [
-          "sentToBccAddressList_example",
-        ],
-        sentToCcAddressList: [
-          "sentToCcAddressList_example",
-        ],
-        subject: "subject_example",
+        subject: "Welcome to our service",
+        headers: "X-Custom-Header: value",
+        contactId: "456",
+        sentToAddress: "john@example.com",
+        sentToCcAddressList: [cc1@example.com, cc2@example.com],
+        sentToBccAddressList: [bcc@example.com],
+        sentFromAddress: "sender@company.com",
+        sentFromReplyAddress: "reply@company.com",
+        sentTime: new Date('2024-05-21T14:30:00Z'),
+        receivedTime: new Date('2024-05-21T14:31:00Z'),
+        openedTime: new Date('2024-05-21T15:00:00Z'),
+        clickedTime: new Date('2024-05-21T15:05:00Z'),
+        plainContent: "V2VsY29tZSB0byBvdXIgc2VydmljZQ==",
+        htmlContent: "PGgxPldlbGNvbWU8L2gxPg==",
+        originalProvider: "INFUSIONSOFT",
+        originalProviderId: "msg_abc123",
+        providerSourceId: "sync@company.com",
       },
     ],
   },
@@ -148,7 +144,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createEmailsSentRequest** | **CreateEmailsSentRequest**| Email records to persist, with content. |
+ **createEmailsSentRequest** | **CreateEmailsSentRequest**|  |
 
 
 ### Return type
@@ -157,7 +153,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -169,9 +165,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -191,7 +191,7 @@ const configuration = createConfiguration();
 const apiInstance = new EmailApi(configuration);
 
 const request: EmailApiDeleteEmailRequest = {
-    // id
+  
   id: "id_example",
 };
 
@@ -204,7 +204,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | [**string**] | id | defaults to undefined
+ **id** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -213,7 +213,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -225,10 +225,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No Content |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -248,11 +251,9 @@ const configuration = createConfiguration();
 const apiInstance = new EmailApi(configuration);
 
 const request: EmailApiDeleteEmailsRequest = {
-    // deleteEmailsRequest
+  
   deleteEmailsRequest: {
-    emailIds: [
-      "emailIds_example",
-    ],
+    emailIds: [123, 456, 789],
   },
 };
 
@@ -265,7 +266,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **deleteEmailsRequest** | **DeleteEmailsRequest**| deleteEmailsRequest |
+ **deleteEmailsRequest** | **DeleteEmailsRequest**|  |
 
 
 ### Return type
@@ -274,7 +275,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -286,9 +287,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -308,7 +313,7 @@ const configuration = createConfiguration();
 const apiInstance = new EmailApi(configuration);
 
 const request: EmailApiGetEmailRequest = {
-    // id
+  
   id: "id_example",
 };
 
@@ -321,7 +326,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | [**string**] | id | defaults to undefined
+ **id** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -330,7 +335,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -342,10 +347,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -365,7 +373,7 @@ const configuration = createConfiguration();
 const apiInstance = new EmailApi(configuration);
 
 const request: EmailApiGetEmailTemplateRequest = {
-    // email_template_id
+  
   emailTemplateId: "email_template_id_example",
 };
 
@@ -378,7 +386,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **emailTemplateId** | [**string**] | email_template_id | defaults to undefined
+ **emailTemplateId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -387,7 +395,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -399,10 +407,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -453,7 +464,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -465,15 +476,18 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **sendEmail**
-> void sendEmail()
+> void sendEmail(emailSendRequest)
 
 Sends an Email to a list of Contacts
 
@@ -488,22 +502,20 @@ const configuration = createConfiguration();
 const apiInstance = new EmailApi(configuration);
 
 const request: EmailApiSendEmailRequest = {
-    // emailSendRequest (optional)
+  
   emailSendRequest: {
-    addressField: "addressField_example",
+    contacts: [1, 2, 3],
+    subject: "Welcome to our newsletter",
     attachments: [
       {
-        fileData: "fileData_example",
-        fileName: "fileName_example",
+        fileName: "document.pdf",
+        fileData: "JVBERi0xLjQKJeLjz9MK...",
       },
     ],
-    contacts: [
-      "contacts_example",
-    ],
-    htmlContent: "htmlContent_example",
-    plainContent: "plainContent_example",
-    subject: "subject_example",
-    userId: "userId_example",
+    userId: "1",
+    htmlContent: "PGgxPldlbGNvbWU8L2gxPg==",
+    plainContent: "V2VsY29tZSB0byBvdXIgbmV3c2xldHRlcg==",
+    addressField: "EMAIL1",
   },
 };
 
@@ -516,7 +528,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **emailSendRequest** | **EmailSendRequest**| emailSendRequest |
+ **emailSendRequest** | **EmailSendRequest**|  |
 
 
 ### Return type
@@ -525,7 +537,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -537,14 +549,18 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **202** | Accepted |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **sendEmailTemplate**
-> void sendEmailTemplate()
+> void sendEmailTemplate(emailSendTemplateRequest)
 
 Send an email based on a template
 
@@ -559,14 +575,12 @@ const configuration = createConfiguration();
 const apiInstance = new EmailApi(configuration);
 
 const request: EmailApiSendEmailTemplateRequest = {
-    // Use a template to send an email to a list of contacts  (optional)
+  
   emailSendTemplateRequest: {
-    addressField: "addressField_example",
-    contactIds: [
-      "contactIds_example",
-    ],
-    templateId: "templateId_example",
-    userId: "userId_example",
+    templateId: "123",
+    contactIds: [1, 2, 3],
+    userId: "1",
+    addressField: "EMAIL1",
   },
 };
 
@@ -579,7 +593,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **emailSendTemplateRequest** | **EmailSendTemplateRequest**| Use a template to send an email to a list of contacts  |
+ **emailSendTemplateRequest** | **EmailSendTemplateRequest**|  |
 
 
 ### Return type
@@ -588,7 +602,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -600,9 +614,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **202** | Accepted |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

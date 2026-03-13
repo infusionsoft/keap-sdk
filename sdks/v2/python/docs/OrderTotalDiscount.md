@@ -5,14 +5,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**apply_to_commissions** | **bool** |  | [optional] 
-**criteria** | [**List[DiscountCriteria]**](DiscountCriteria.md) |  | [optional] 
-**description** | **str** |  | [optional] 
-**discount_strategy** | **str** |  | [optional] 
-**discount_type** | **str** |  | [optional] 
-**discount_value** | **float** |  | [optional] 
-**id** | **str** |  | [optional] 
-**name** | **str** |  | [optional] 
+**id** | **str** | Unique identifier for this order total discount | [optional] 
+**name** | **str** | Name of the discount | [optional] 
+**description** | **str** | Description of the discount | [optional] 
+**criteria** | [**List[DiscountCriteria]**](DiscountCriteria.md) | List of criteria that must be met for this discount to apply | [optional] 
+**apply_to_commissions** | **bool** | Whether to apply this discount to commission calculations | [optional] 
+**discount_type** | **str** | Type of discount: AMOUNT (fixed amount) or PERCENT (percentage) | [optional] 
+**discount_value** | **float** | Value of the discount (amount or percentage depending on discount_type) | [optional] 
+**discount_strategy** | **str** | Strategy for applying discount: GROSS (before tax) or NET (after tax) | [optional] 
 
 ## Example
 

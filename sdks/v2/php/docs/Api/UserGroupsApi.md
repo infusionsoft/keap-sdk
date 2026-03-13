@@ -1,11 +1,11 @@
 # Keap\Core\V2\UserGroupsApi
 
-All URIs are relative to https://api.keap.com/crm/rest, except if the operation defines another base path.
+All URIs are relative to https://api.keap.com/crm, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**getUserGroup()**](UserGroupsApi.md#getUserGroup) | **GET** /v2/userGroups/{user_group_id} | Retrieve an User Group |
-| [**listUserGroups()**](UserGroupsApi.md#listUserGroups) | **GET** /v2/userGroups | List User Groups |
+| [**getUserGroup()**](UserGroupsApi.md#getUserGroup) | **GET** /rest/v2/userGroups/{user_group_id} | Retrieve a User Group |
+| [**listUserGroups()**](UserGroupsApi.md#listUserGroups) | **GET** /rest/v2/userGroups | List User Groups |
 
 
 ## `getUserGroup()`
@@ -14,7 +14,7 @@ All URIs are relative to https://api.keap.com/crm/rest, except if the operation 
 getUserGroup($user_group_id): \Keap\Core\V2\Model\UserGroup
 ```
 
-Retrieve an User Group
+Retrieve a User Group
 
 Retrieves a single user group by its ID.
 
@@ -25,12 +25,16 @@ Retrieves a single user group by its ID.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\UserGroupsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$user_group_id = 'user_group_id_example'; // string | user_group_id
+$user_group_id = 'user_group_id_example'; // string
 
 try {
     $result = $apiInstance->getUserGroup($user_group_id);
@@ -44,7 +48,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **user_group_id** | **string**| user_group_id | |
+| **user_group_id** | **string**|  | |
 
 ### Return type
 
@@ -52,7 +56,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -80,10 +84,14 @@ Retrieves a list of all user groups in the application.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\UserGroupsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 
 try {
@@ -104,7 +112,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 

@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**next_page_token** | **str** |  | [optional] 
 **subscriptions** | [**List[SubscriptionPlan]**](SubscriptionPlan.md) |  | [optional] 
+**next_page_token** | **str** |  | [optional] 
 
 ## Example
 

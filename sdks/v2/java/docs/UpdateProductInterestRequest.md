@@ -7,9 +7,9 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**discountPercent** | **Integer** |  |  [optional] |
-|**price** | **Double** |  |  [optional] |
-|**quantity** | **Integer** |  |  [optional] |
+|**price** | **Double** | The price per unit of the product. |  [optional] |
+|**quantity** | **Integer** | The quantity of product. |  [optional] |
+|**discountPercent** | **Integer** | The percent to discount the product. |  [optional] |
 
 
 ## Implemented Interfaces

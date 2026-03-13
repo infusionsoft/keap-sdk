@@ -1,12 +1,12 @@
 # Keap\Core\V2\PaymentMethodsApi
 
-All URIs are relative to https://api.keap.com/crm/rest, except if the operation defines another base path.
+All URIs are relative to https://api.keap.com/crm, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**deactivatePaymentMethod()**](PaymentMethodsApi.md#deactivatePaymentMethod) | **POST** /v2/contacts/{contact_id}/paymentMethods/{payment_method_id}:deactivate | Deactivate a Payment Method |
-| [**deletePaymentMethod()**](PaymentMethodsApi.md#deletePaymentMethod) | **DELETE** /v2/contacts/{contact_id}/paymentMethods/{payment_method_id} | Delete a Payment Method |
-| [**listPaymentMethods()**](PaymentMethodsApi.md#listPaymentMethods) | **GET** /v2/contacts/{contact_id}/paymentMethods | List of Payment Methods |
+| [**deactivatePaymentMethod()**](PaymentMethodsApi.md#deactivatePaymentMethod) | **POST** /rest/v2/contacts/{contact_id}/paymentMethods/{payment_method_id}:deactivate | Deactivate a Payment Method |
+| [**deletePaymentMethod()**](PaymentMethodsApi.md#deletePaymentMethod) | **DELETE** /rest/v2/contacts/{contact_id}/paymentMethods/{payment_method_id} | Delete a Payment Method |
+| [**listPaymentMethods()**](PaymentMethodsApi.md#listPaymentMethods) | **GET** /rest/v2/contacts/{contact_id}/paymentMethods | List of Payment Methods |
 
 
 ## `deactivatePaymentMethod()`
@@ -26,10 +26,14 @@ Deactivate the specified payment method
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\PaymentMethodsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $contact_id = 'contact_id_example'; // string | ID of the contact to which the payment method belongs.
 $payment_method_id = 'payment_method_id_example'; // string | ID of the payment method to be deactivated.
@@ -54,7 +58,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -82,10 +86,14 @@ Deletes the specified payment method
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\PaymentMethodsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $contact_id = 'contact_id_example'; // string | ID of the contact to which the payment method belongs.
 $payment_method_id = 'payment_method_id_example'; // string | ID of the payment method to be deleted.
@@ -110,7 +118,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -138,10 +146,14 @@ Retrieves a list of Payment Methods
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\PaymentMethodsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $contact_id = 'contact_id_example'; // string | ID of the contact to which the payment method belongs.
 $filter = 'filter_example'; // string | Filter to apply, allowed fields are: - (String) `merchant_account_id`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. - `filter=merchant_account_id%3D%3D123`  You can filter across all contacts by using the `-` for the `contact_id` field.
@@ -173,7 +185,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 

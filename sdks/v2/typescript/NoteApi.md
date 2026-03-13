@@ -1,18 +1,18 @@
 # .NoteApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createNote**](NoteApi.md#createNote) | **POST** /v2/contacts/{contact_id}/notes | Create a Note
-[**createNoteCustomField**](NoteApi.md#createNoteCustomField) | **POST** /v2/notes/model/customFields | Create a Custom Field
-[**deleteNote**](NoteApi.md#deleteNote) | **DELETE** /v2/contacts/{contact_id}/notes/{note_id} | Delete a Note
-[**getNote**](NoteApi.md#getNote) | **GET** /v2/contacts/{contact_id}/notes/{note_id} | Retrieve a Note
-[**listNoteTemplates**](NoteApi.md#listNoteTemplates) | **GET** /v2/notes/templates | Retrieve Note Templates
-[**listNotes**](NoteApi.md#listNotes) | **GET** /v2/contacts/{contact_id}/notes | List Notes
-[**retrieveNoteModel**](NoteApi.md#retrieveNoteModel) | **GET** /v2/notes/model | Retrieve Note Model
-[**updateNote**](NoteApi.md#updateNote) | **PATCH** /v2/contacts/{contact_id}/notes/{note_id} | Update a Note
-[**updateNotesCustomField**](NoteApi.md#updateNotesCustomField) | **PATCH** /v2/notes/model/customFields/{custom_field_id} | Update a Custom Field
+[**createNote**](NoteApi.md#createNote) | **POST** /rest/v2/contacts/{contact_id}/notes | Create a Note
+[**createNoteCustomField**](NoteApi.md#createNoteCustomField) | **POST** /rest/v2/notes/model/customFields | Create a Custom Field
+[**deleteNote**](NoteApi.md#deleteNote) | **DELETE** /rest/v2/contacts/{contact_id}/notes/{note_id} | Delete a Note
+[**getNote**](NoteApi.md#getNote) | **GET** /rest/v2/contacts/{contact_id}/notes/{note_id} | Retrieve a Note
+[**listNoteTemplates**](NoteApi.md#listNoteTemplates) | **GET** /rest/v2/notes/templates | Retrieve Note Templates
+[**listNotes**](NoteApi.md#listNotes) | **GET** /rest/v2/contacts/{contact_id}/notes | List Notes
+[**retrieveNoteModel**](NoteApi.md#retrieveNoteModel) | **GET** /rest/v2/notes/model | Retrieve Note Model
+[**updateNote**](NoteApi.md#updateNote) | **PATCH** /rest/v2/contacts/{contact_id}/notes/{note_id} | Update a Note
+[**updateNotesCustomField**](NoteApi.md#updateNotesCustomField) | **PATCH** /rest/v2/notes/model/customFields/{custom_field_id} | Update a Custom Field
 
 
 # **createNote**
@@ -31,15 +31,15 @@ const configuration = createConfiguration();
 const apiInstance = new NoteApi(configuration);
 
 const request: NoteApiCreateNoteRequest = {
-    // contact_id
+  
   contactId: "contact_id_example",
-    // request
+  
   createNoteRequest: {
-    isPinned: true,
-    text: "text_example",
-    title: "title_example",
-    type: "type_example",
-    userId: "userId_example",
+    title: "Follow-up Meeting",
+    text: "Discussed pricing for contract renewal",
+    type: "Call",
+    userId: "123",
+    isPinned: false,
   },
 };
 
@@ -52,8 +52,8 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createNoteRequest** | **CreateNoteRequest**| request |
- **contactId** | [**string**] | contact_id | defaults to undefined
+ **createNoteRequest** | **CreateNoteRequest**|  |
+ **contactId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -62,7 +62,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -74,9 +74,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -96,17 +100,16 @@ const configuration = createConfiguration();
 const apiInstance = new NoteApi(configuration);
 
 const request: NoteApiCreateNoteCustomFieldRequest = {
-    // customField
+  
   createCustomFieldRequest: {
-    fieldType: "CURRENCY",
-    groupId: "groupId_example",
     label: "label_example",
     options: [
       {
         label: "label_example",
-        options: [],
       },
     ],
+    fieldType: "CURRENCY",
+    groupId: "groupId_example",
     userGroupId: "userGroupId_example",
   },
 };
@@ -120,7 +123,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createCustomFieldRequest** | **CreateCustomFieldRequest**| customField |
+ **createCustomFieldRequest** | **CreateCustomFieldRequest**|  |
 
 
 ### Return type
@@ -129,7 +132,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -141,9 +144,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -163,9 +170,9 @@ const configuration = createConfiguration();
 const apiInstance = new NoteApi(configuration);
 
 const request: NoteApiDeleteNoteRequest = {
-    // contact_id
+  
   contactId: "contact_id_example",
-    // note_id
+  
   noteId: "note_id_example",
 };
 
@@ -178,8 +185,8 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **contactId** | [**string**] | contact_id | defaults to undefined
- **noteId** | [**string**] | note_id | defaults to undefined
+ **contactId** | [**string**] |  | defaults to undefined
+ **noteId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -188,7 +195,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -200,10 +207,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No Content |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -223,9 +233,9 @@ const configuration = createConfiguration();
 const apiInstance = new NoteApi(configuration);
 
 const request: NoteApiGetNoteRequest = {
-    // contact_id
+  
   contactId: "contact_id_example",
-    // note_id
+  
   noteId: "note_id_example",
 };
 
@@ -238,8 +248,8 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **contactId** | [**string**] | contact_id | defaults to undefined
- **noteId** | [**string**] | note_id | defaults to undefined
+ **contactId** | [**string**] |  | defaults to undefined
+ **noteId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -248,7 +258,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -260,10 +270,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -314,7 +327,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -326,10 +339,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -349,9 +365,9 @@ const configuration = createConfiguration();
 const apiInstance = new NoteApi(configuration);
 
 const request: NoteApiListNotesRequest = {
-    // contact_id
+  
   contactId: "contact_id_example",
-    // Filter to apply, allowed fields are: - (String) `assigned_to_user_id` - (String) `title` - (String) `since_time` - (String) `until_time` You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=assigned_to_user_id%3D%3DUserId` - `filter=title%3D%3DexpectedTitle` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;`  (optional)
+    // Filter to apply, allowed fields are: - (String) `assigned_to_user_id` - (String) `title` - (String) `since_time` - (String) `until_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=assigned_to_user_id%3D%3DUserId` - `filter=title%3D%3DexpectedTitle` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;`  (optional)
   filter: "filter_example",
     // Attribute and direction to order items. One of the following fields: - `id` - `create_time`  One of the following directions: - `asc` - `desc` (optional)
   orderBy: "order_by_example",
@@ -370,8 +386,8 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **contactId** | [**string**] | contact_id | defaults to undefined
- **filter** | [**string**] | Filter to apply, allowed fields are: - (String) &#x60;assigned_to_user_id&#x60; - (String) &#x60;title&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;assigned_to_user_id%3D%3DUserId&#x60; - &#x60;filter&#x3D;title%3D%3DexpectedTitle&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  | (optional) defaults to undefined
+ **contactId** | [**string**] |  | defaults to undefined
+ **filter** | [**string**] | Filter to apply, allowed fields are: - (String) &#x60;assigned_to_user_id&#x60; - (String) &#x60;title&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;assigned_to_user_id%3D%3DUserId&#x60; - &#x60;filter&#x3D;title%3D%3DexpectedTitle&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  | (optional) defaults to undefined
  **orderBy** | [**string**] | Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | (optional) defaults to undefined
  **pageSize** | [**number**] | Total number of items to return per page | (optional) defaults to undefined
  **pageToken** | [**string**] | Page token | (optional) defaults to undefined
@@ -383,7 +399,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -395,10 +411,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -433,7 +452,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -445,10 +464,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -468,23 +490,21 @@ const configuration = createConfiguration();
 const apiInstance = new NoteApi(configuration);
 
 const request: NoteApiUpdateNoteRequest = {
-    // contact_id
+  
   contactId: "contact_id_example",
-    // note_id
+  
   noteId: "note_id_example",
-    // updateNoteRequest
+  
   updateNoteRequest: {
-    contactId: "contactId_example",
-    isPinned: true,
-    text: "text_example",
-    title: "title_example",
-    type: "type_example",
-    userId: "userId_example",
+    title: "Follow-up Meeting",
+    text: "Discussed pricing for contract renewal",
+    type: "Call",
+    userId: "123",
+    isPinned: false,
+    contactId: "1001",
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: [
-    "contact_id",
-  ],
+  updateMask: "contact_id, text, title, type, user_id",
 };
 
 const data = await apiInstance.updateNote(request);
@@ -496,10 +516,10 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **updateNoteRequest** | **UpdateNoteRequest**| updateNoteRequest |
- **contactId** | [**string**] | contact_id | defaults to undefined
- **noteId** | [**string**] | note_id | defaults to undefined
- **updateMask** |  | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateNoteRequest** | **UpdateNoteRequest**|  |
+ **contactId** | [**string**] |  | defaults to undefined
+ **noteId** | [**string**] |  | defaults to undefined
+ **updateMask** | [**&#39;contact_id, text, title, type, user_id&#39;**]**Array<&#39;contact_id, text, title, type, user_id&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
@@ -508,7 +528,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -520,10 +540,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -543,24 +566,21 @@ const configuration = createConfiguration();
 const apiInstance = new NoteApi(configuration);
 
 const request: NoteApiUpdateNotesCustomFieldRequest = {
-    // custom_field_id
+  
   customFieldId: "custom_field_id_example",
-    // request
+  
   updateCustomFieldMetaDataRequest: {
-    groupId: "groupId_example",
     label: "label_example",
     options: [
       {
         id: "id_example",
         label: "label_example",
-        options: [],
       },
     ],
+    groupId: "groupId_example",
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: [
-    "group_id",
-  ],
+  updateMask: "group_id,label,options",
 };
 
 const data = await apiInstance.updateNotesCustomField(request);
@@ -572,9 +592,9 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **updateCustomFieldMetaDataRequest** | **UpdateCustomFieldMetaDataRequest**| request |
- **customFieldId** | [**string**] | custom_field_id | defaults to undefined
- **updateMask** |  | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateCustomFieldMetaDataRequest** | **UpdateCustomFieldMetaDataRequest**|  |
+ **customFieldId** | [**string**] |  | defaults to undefined
+ **updateMask** | [**&#39;group_id,label,options&#39;**]**Array<&#39;group_id,label,options&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
@@ -583,7 +603,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -595,10 +615,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

@@ -1,13 +1,14 @@
 # AutomationCategory
 
+An automation category
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**automation_count** | **int** |  | [optional] 
-**id** | **str** |  | [optional] 
-**name** | **str** |  | [optional] 
+**id** | **str** | The unique identifier of the category | [optional] 
+**name** | **str** | The name of the category | [optional] 
+**automation_count** | **int** | Number of automations in this category | [optional] 
 
 ## Example
 

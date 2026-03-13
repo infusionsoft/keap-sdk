@@ -1,13 +1,14 @@
 # AssignAutomationCategoryRequest
 
+Request to assign categories to automations
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**apply_category** | **bool** |  | [optional] 
-**automation_ids** | **List[str]** |  | [optional] 
-**category_ids** | **List[str]** |  | [optional] 
+**category_ids** | **List[str]** | List of category IDs to assign to the automations | [optional] 
+**automation_ids** | **List[str]** | List of automation IDs to update. Use &#39;0&#39; as a wildcard to select all automations. | [optional] 
+**apply_category** | **bool** | If true, the categories will be applied to the automations. If false, the categories will be removed from the automations. | [optional] 
 
 ## Example
 

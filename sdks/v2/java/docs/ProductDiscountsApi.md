@@ -1,19 +1,19 @@
 # ProductDiscountsApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createProductDiscount**](ProductDiscountsApi.md#createProductDiscount) | **POST** /v2/discounts/products | Create a Product Discount |
-| [**createProductDiscountWithHttpInfo**](ProductDiscountsApi.md#createProductDiscountWithHttpInfo) | **POST** /v2/discounts/products | Create a Product Discount |
-| [**deleteProductDiscount**](ProductDiscountsApi.md#deleteProductDiscount) | **DELETE** /v2/discounts/products/{discount_id} | Delete a Product Discount |
-| [**deleteProductDiscountWithHttpInfo**](ProductDiscountsApi.md#deleteProductDiscountWithHttpInfo) | **DELETE** /v2/discounts/products/{discount_id} | Delete a Product Discount |
-| [**getProductDiscount**](ProductDiscountsApi.md#getProductDiscount) | **GET** /v2/discounts/products/{discount_id} | Retrieve a Product Discount |
-| [**getProductDiscountWithHttpInfo**](ProductDiscountsApi.md#getProductDiscountWithHttpInfo) | **GET** /v2/discounts/products/{discount_id} | Retrieve a Product Discount |
-| [**listProductDiscounts**](ProductDiscountsApi.md#listProductDiscounts) | **GET** /v2/discounts/products | List all Product Discounts |
-| [**listProductDiscountsWithHttpInfo**](ProductDiscountsApi.md#listProductDiscountsWithHttpInfo) | **GET** /v2/discounts/products | List all Product Discounts |
-| [**updateProductDiscount**](ProductDiscountsApi.md#updateProductDiscount) | **PATCH** /v2/discounts/products/{discount_id} | Update a Product Discount |
-| [**updateProductDiscountWithHttpInfo**](ProductDiscountsApi.md#updateProductDiscountWithHttpInfo) | **PATCH** /v2/discounts/products/{discount_id} | Update a Product Discount |
+| [**createProductDiscount**](ProductDiscountsApi.md#createProductDiscount) | **POST** /rest/v2/discounts/products | Create a Product Discount |
+| [**createProductDiscountWithHttpInfo**](ProductDiscountsApi.md#createProductDiscountWithHttpInfo) | **POST** /rest/v2/discounts/products | Create a Product Discount |
+| [**deleteProductDiscount**](ProductDiscountsApi.md#deleteProductDiscount) | **DELETE** /rest/v2/discounts/products/{discount_id} | Delete a Product Discount |
+| [**deleteProductDiscountWithHttpInfo**](ProductDiscountsApi.md#deleteProductDiscountWithHttpInfo) | **DELETE** /rest/v2/discounts/products/{discount_id} | Delete a Product Discount |
+| [**getProductDiscount**](ProductDiscountsApi.md#getProductDiscount) | **GET** /rest/v2/discounts/products/{discount_id} | Retrieve a Product Discount |
+| [**getProductDiscountWithHttpInfo**](ProductDiscountsApi.md#getProductDiscountWithHttpInfo) | **GET** /rest/v2/discounts/products/{discount_id} | Retrieve a Product Discount |
+| [**listProductDiscounts**](ProductDiscountsApi.md#listProductDiscounts) | **GET** /rest/v2/discounts/products | List all Product Discounts |
+| [**listProductDiscountsWithHttpInfo**](ProductDiscountsApi.md#listProductDiscountsWithHttpInfo) | **GET** /rest/v2/discounts/products | List all Product Discounts |
+| [**updateProductDiscount**](ProductDiscountsApi.md#updateProductDiscount) | **PATCH** /rest/v2/discounts/products/{discount_id} | Update a Product Discount |
+| [**updateProductDiscountWithHttpInfo**](ProductDiscountsApi.md#updateProductDiscountWithHttpInfo) | **PATCH** /rest/v2/discounts/products/{discount_id} | Update a Product Discount |
 
 
 
@@ -32,16 +32,21 @@ Creates a Product Discount
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ProductDiscountsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ProductDiscountsApi apiInstance = new ProductDiscountsApi(defaultClient);
-        CreateProductDiscountRequest createProductDiscountRequest = new CreateProductDiscountRequest(); // CreateProductDiscountRequest | request
+        CreateProductDiscountRequest createProductDiscountRequest = new CreateProductDiscountRequest(); // CreateProductDiscountRequest | 
         try {
             ProductDiscount result = apiInstance.createProductDiscount(createProductDiscountRequest);
             System.out.println(result);
@@ -61,7 +66,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **createProductDiscountRequest** | [**CreateProductDiscountRequest**](CreateProductDiscountRequest.md)| request | |
+| **createProductDiscountRequest** | [**CreateProductDiscountRequest**](CreateProductDiscountRequest.md)|  | |
 
 ### Return type
 
@@ -70,7 +75,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -81,9 +86,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## createProductDiscountWithHttpInfo
 
@@ -101,16 +110,21 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ProductDiscountsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ProductDiscountsApi apiInstance = new ProductDiscountsApi(defaultClient);
-        CreateProductDiscountRequest createProductDiscountRequest = new CreateProductDiscountRequest(); // CreateProductDiscountRequest | request
+        CreateProductDiscountRequest createProductDiscountRequest = new CreateProductDiscountRequest(); // CreateProductDiscountRequest | 
         try {
             ApiResponse<ProductDiscount> response = apiInstance.createProductDiscountWithHttpInfo(createProductDiscountRequest);
             System.out.println("Status code: " + response.getStatusCode());
@@ -132,7 +146,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **createProductDiscountRequest** | [**CreateProductDiscountRequest**](CreateProductDiscountRequest.md)| request | |
+| **createProductDiscountRequest** | [**CreateProductDiscountRequest**](CreateProductDiscountRequest.md)|  | |
 
 ### Return type
 
@@ -141,7 +155,7 @@ ApiResponse<[**ProductDiscount**](ProductDiscount.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -152,9 +166,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## deleteProductDiscount
@@ -172,16 +190,21 @@ Deletes a specified Product Discount
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ProductDiscountsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ProductDiscountsApi apiInstance = new ProductDiscountsApi(defaultClient);
-        String discountId = "discountId_example"; // String | discount_id
+        String discountId = "discountId_example"; // String | 
         try {
             apiInstance.deleteProductDiscount(discountId);
         } catch (ApiException e) {
@@ -200,7 +223,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **discountId** | **String**| discount_id | |
+| **discountId** | **String**|  | |
 
 ### Return type
 
@@ -209,7 +232,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -220,10 +243,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## deleteProductDiscountWithHttpInfo
 
@@ -241,16 +267,21 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ProductDiscountsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ProductDiscountsApi apiInstance = new ProductDiscountsApi(defaultClient);
-        String discountId = "discountId_example"; // String | discount_id
+        String discountId = "discountId_example"; // String | 
         try {
             ApiResponse<Void> response = apiInstance.deleteProductDiscountWithHttpInfo(discountId);
             System.out.println("Status code: " + response.getStatusCode());
@@ -271,7 +302,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **discountId** | **String**| discount_id | |
+| **discountId** | **String**|  | |
 
 ### Return type
 
@@ -280,7 +311,7 @@ ApiResponse<Void>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -291,10 +322,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## getProductDiscount
@@ -312,16 +346,21 @@ Retrieves a Product Discount
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ProductDiscountsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ProductDiscountsApi apiInstance = new ProductDiscountsApi(defaultClient);
-        String discountId = "discountId_example"; // String | discount_id
+        String discountId = "discountId_example"; // String | 
         try {
             ProductDiscount result = apiInstance.getProductDiscount(discountId);
             System.out.println(result);
@@ -341,7 +380,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **discountId** | **String**| discount_id | |
+| **discountId** | **String**|  | |
 
 ### Return type
 
@@ -350,7 +389,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -361,10 +400,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## getProductDiscountWithHttpInfo
 
@@ -382,16 +424,21 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ProductDiscountsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ProductDiscountsApi apiInstance = new ProductDiscountsApi(defaultClient);
-        String discountId = "discountId_example"; // String | discount_id
+        String discountId = "discountId_example"; // String | 
         try {
             ApiResponse<ProductDiscount> response = apiInstance.getProductDiscountWithHttpInfo(discountId);
             System.out.println("Status code: " + response.getStatusCode());
@@ -413,7 +460,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **discountId** | **String**| discount_id | |
+| **discountId** | **String**|  | |
 
 ### Return type
 
@@ -422,7 +469,7 @@ ApiResponse<[**ProductDiscount**](ProductDiscount.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -433,10 +480,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## listProductDiscounts
@@ -454,13 +504,18 @@ Retrieves a list of Product Discounts
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ProductDiscountsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ProductDiscountsApi apiInstance = new ProductDiscountsApi(defaultClient);
         String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (Boolean) `apply_to_commissions` - (DiscountType) `discount_type`: AMOUNT or PERCENT - (Double) `discount_value` - (String) `product_id`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=apply_to_commissions%3D%3Dtrue` - `filter=discount_type%3D%3DAMOUNT` - `filter=discount_value%3D%3D10.0` - `filter=product_id%3D%3D2` - `filter=discount_type%3D%3DAMOUNT%3Bdiscount_value%3D%3D10.0` 
@@ -498,7 +553,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -509,10 +564,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## listProductDiscountsWithHttpInfo
 
@@ -530,13 +588,18 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ProductDiscountsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ProductDiscountsApi apiInstance = new ProductDiscountsApi(defaultClient);
         String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (Boolean) `apply_to_commissions` - (DiscountType) `discount_type`: AMOUNT or PERCENT - (Double) `discount_value` - (String) `product_id`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=apply_to_commissions%3D%3Dtrue` - `filter=discount_type%3D%3DAMOUNT` - `filter=discount_value%3D%3D10.0` - `filter=product_id%3D%3D2` - `filter=discount_type%3D%3DAMOUNT%3Bdiscount_value%3D%3D10.0` 
@@ -576,7 +639,7 @@ ApiResponse<[**ListProductDiscountsResponse**](ListProductDiscountsResponse.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -587,10 +650,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## updateProductDiscount
@@ -608,18 +674,23 @@ Updates a Product Discount
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ProductDiscountsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ProductDiscountsApi apiInstance = new ProductDiscountsApi(defaultClient);
-        String discountId = "discountId_example"; // String | discount_id
-        UpdateProductDiscountRequest updateProductDiscountRequest = new UpdateProductDiscountRequest(); // UpdateProductDiscountRequest | request
-        List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        String discountId = "discountId_example"; // String | 
+        UpdateProductDiscountRequest updateProductDiscountRequest = new UpdateProductDiscountRequest(); // UpdateProductDiscountRequest | 
+        String updateMask = "name,description,apply_to_commissions,discount_type,discount_value,product_id,criteria"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ProductDiscount result = apiInstance.updateProductDiscount(discountId, updateProductDiscountRequest, updateMask);
             System.out.println(result);
@@ -639,9 +710,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **discountId** | **String**| discount_id | |
-| **updateProductDiscountRequest** | [**UpdateProductDiscountRequest**](UpdateProductDiscountRequest.md)| request | |
-| **updateMask** | [**List&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name, description, apply_to_commissions, discount_type, discount_value, product_id, criteria] |
+| **discountId** | **String**|  | |
+| **updateProductDiscountRequest** | [**UpdateProductDiscountRequest**](UpdateProductDiscountRequest.md)|  | |
+| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name,description,apply_to_commissions,discount_type,discount_value,product_id,criteria] |
 
 ### Return type
 
@@ -650,7 +721,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -661,10 +732,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## updateProductDiscountWithHttpInfo
 
@@ -682,18 +756,23 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ProductDiscountsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ProductDiscountsApi apiInstance = new ProductDiscountsApi(defaultClient);
-        String discountId = "discountId_example"; // String | discount_id
-        UpdateProductDiscountRequest updateProductDiscountRequest = new UpdateProductDiscountRequest(); // UpdateProductDiscountRequest | request
-        List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        String discountId = "discountId_example"; // String | 
+        UpdateProductDiscountRequest updateProductDiscountRequest = new UpdateProductDiscountRequest(); // UpdateProductDiscountRequest | 
+        String updateMask = "name,description,apply_to_commissions,discount_type,discount_value,product_id,criteria"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ApiResponse<ProductDiscount> response = apiInstance.updateProductDiscountWithHttpInfo(discountId, updateProductDiscountRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
@@ -715,9 +794,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **discountId** | **String**| discount_id | |
-| **updateProductDiscountRequest** | [**UpdateProductDiscountRequest**](UpdateProductDiscountRequest.md)| request | |
-| **updateMask** | [**List&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name, description, apply_to_commissions, discount_type, discount_value, product_id, criteria] |
+| **discountId** | **String**|  | |
+| **updateProductDiscountRequest** | [**UpdateProductDiscountRequest**](UpdateProductDiscountRequest.md)|  | |
+| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name,description,apply_to_commissions,discount_type,discount_value,product_id,criteria] |
 
 ### Return type
 
@@ -726,7 +805,7 @@ ApiResponse<[**ProductDiscount**](ProductDiscount.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -737,8 +816,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 

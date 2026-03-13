@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**emailIds** | **[String]** |  | [optional] 
+**emailIds** | **[String]** | List of email IDs to delete | 
 
 

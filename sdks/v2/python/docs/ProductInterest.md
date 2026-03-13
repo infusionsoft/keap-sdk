@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**discount_percent** | **int** | The percent to discount the product. Percent represented in a whole number, for example 10 is 10% | [optional] 
 **id** | **str** | The product interest ID | [optional] 
-**interest_id** | **str** | The interest ID | [optional] 
-**price** | [**CurrencyValue**](CurrencyValue.md) |  | [optional] 
-**quantity** | **int** | The quantity of product. | [optional] 
 **type** | **str** | The product interest type | [optional] 
+**quantity** | **int** | The quantity of product. | [optional] 
+**price** | [**CurrencyValue**](CurrencyValue.md) | The price per unit of the product. | [optional] 
+**interest_id** | **str** | The interest ID | [optional] 
+**discount_percent** | **int** | The percent to discount the product. Percent represented in a whole number, for example 10 is 10% | [optional] 
 
 ## Example
 

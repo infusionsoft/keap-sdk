@@ -1,18 +1,18 @@
 # keap_core_v2_client.SubscriptionsApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**cancel_subscription**](SubscriptionsApi.md#cancel_subscription) | **POST** /v2/subscriptions/{subscription_id}:deactivate | Cancel Subscription
-[**create_subscription**](SubscriptionsApi.md#create_subscription) | **POST** /v2/subscriptions | Create Subscription
-[**create_subscription_custom_field**](SubscriptionsApi.md#create_subscription_custom_field) | **POST** /v2/subscriptions/model/customFields | Create a Subscription Custom Field
-[**delete_subscription_custom_field**](SubscriptionsApi.md#delete_subscription_custom_field) | **DELETE** /v2/subscriptions/model/customFields/{custom_field_id} | Delete a Subscription Custom Field
-[**get_subscription**](SubscriptionsApi.md#get_subscription) | **GET** /v2/subscriptions/{subscription_id} | Retrieve a Subscription
-[**list_subscriptions**](SubscriptionsApi.md#list_subscriptions) | **GET** /v2/subscriptions | List Subscriptions
-[**retrieve_subscription_custom_field_model**](SubscriptionsApi.md#retrieve_subscription_custom_field_model) | **GET** /v2/subscriptions/model | Retrieve Subscription Custom Field Model
-[**update_subscription**](SubscriptionsApi.md#update_subscription) | **PATCH** /v2/subscriptions/{subscription_id} | Update a Subscription
-[**update_subscription_custom_field**](SubscriptionsApi.md#update_subscription_custom_field) | **PATCH** /v2/subscriptions/model/customFields/{custom_field_id} | Update a Subscription Custom Field
+[**cancel_subscription**](SubscriptionsApi.md#cancel_subscription) | **POST** /rest/v2/subscriptions/{subscription_id}:deactivate | Cancel Subscription
+[**create_subscription**](SubscriptionsApi.md#create_subscription) | **POST** /rest/v2/subscriptions | Create Subscription
+[**create_subscription_custom_field**](SubscriptionsApi.md#create_subscription_custom_field) | **POST** /rest/v2/subscriptions/model/customFields | Create a Subscription Custom Field
+[**delete_subscription_custom_field**](SubscriptionsApi.md#delete_subscription_custom_field) | **DELETE** /rest/v2/subscriptions/model/customFields/{custom_field_id} | Delete a Subscription Custom Field
+[**get_subscription**](SubscriptionsApi.md#get_subscription) | **GET** /rest/v2/subscriptions/{subscription_id} | Retrieve a Subscription
+[**list_subscriptions**](SubscriptionsApi.md#list_subscriptions) | **GET** /rest/v2/subscriptions | List Subscriptions
+[**retrieve_subscription_custom_field_model**](SubscriptionsApi.md#retrieve_subscription_custom_field_model) | **GET** /rest/v2/subscriptions/model | Retrieve Subscription Custom Field Model
+[**update_subscription**](SubscriptionsApi.md#update_subscription) | **PATCH** /rest/v2/subscriptions/{subscription_id} | Update a Subscription
+[**update_subscription_custom_field**](SubscriptionsApi.md#update_subscription_custom_field) | **PATCH** /rest/v2/subscriptions/model/customFields/{custom_field_id} | Update a Subscription Custom Field
 
 
 # **cancel_subscription**
@@ -24,6 +24,7 @@ Cancels the specified subscription
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
@@ -31,18 +32,24 @@ from keap_core_v2_client.models.cancel_subscription_request import CancelSubscri
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.SubscriptionsApi(api_client)
-    subscription_id = 'subscription_id_example' # str | subscription_id
-    cancel_subscription_request = keap_core_v2_client.CancelSubscriptionRequest() # CancelSubscriptionRequest | request
+    subscription_id = 'subscription_id_example' # str | 
+    cancel_subscription_request = keap_core_v2_client.CancelSubscriptionRequest() # CancelSubscriptionRequest | 
 
     try:
         # Cancel Subscription
@@ -57,8 +64,8 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **subscription_id** | **str**| subscription_id | 
- **cancel_subscription_request** | [**CancelSubscriptionRequest**](CancelSubscriptionRequest.md)| request | 
+ **subscription_id** | **str**|  | 
+ **cancel_subscription_request** | [**CancelSubscriptionRequest**](CancelSubscriptionRequest.md)|  | 
 
 ### Return type
 
@@ -66,7 +73,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -78,14 +85,18 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_subscription**
-> Subscription create_subscription(create_subscription_request)
+> SubscriptionDetail create_subscription(create_subscription_request_detail)
 
 Create Subscription
 
@@ -93,29 +104,36 @@ Creates a subscription with the specified product and product subscription id.
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
-from keap_core_v2_client.models.create_subscription_request import CreateSubscriptionRequest
-from keap_core_v2_client.models.subscription import Subscription
+from keap_core_v2_client.models.create_subscription_request_detail import CreateSubscriptionRequestDetail
+from keap_core_v2_client.models.subscription_detail import SubscriptionDetail
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.SubscriptionsApi(api_client)
-    create_subscription_request = keap_core_v2_client.CreateSubscriptionRequest() # CreateSubscriptionRequest | request
+    create_subscription_request_detail = keap_core_v2_client.CreateSubscriptionRequestDetail() # CreateSubscriptionRequestDetail | 
 
     try:
         # Create Subscription
-        api_response = api_instance.create_subscription(create_subscription_request)
+        api_response = api_instance.create_subscription(create_subscription_request_detail)
         print("The response of SubscriptionsApi->create_subscription:\n")
         pprint(api_response)
     except Exception as e:
@@ -128,15 +146,15 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **create_subscription_request** | [**CreateSubscriptionRequest**](CreateSubscriptionRequest.md)| request | 
+ **create_subscription_request_detail** | [**CreateSubscriptionRequestDetail**](CreateSubscriptionRequestDetail.md)|  | 
 
 ### Return type
 
-[**Subscription**](Subscription.md)
+[**SubscriptionDetail**](SubscriptionDetail.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -148,9 +166,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -163,6 +185,7 @@ Creates a custom field of the specified type and options to the Subscription obj
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
@@ -171,17 +194,23 @@ from keap_core_v2_client.models.custom_field_meta_data import CustomFieldMetaDat
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.SubscriptionsApi(api_client)
-    create_custom_field_request = keap_core_v2_client.CreateCustomFieldRequest() # CreateCustomFieldRequest | customField
+    create_custom_field_request = keap_core_v2_client.CreateCustomFieldRequest() # CreateCustomFieldRequest | 
 
     try:
         # Create a Subscription Custom Field
@@ -198,7 +227,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **create_custom_field_request** | [**CreateCustomFieldRequest**](CreateCustomFieldRequest.md)| customField | 
+ **create_custom_field_request** | [**CreateCustomFieldRequest**](CreateCustomFieldRequest.md)|  | 
 
 ### Return type
 
@@ -206,7 +235,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -218,9 +247,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -233,23 +266,30 @@ Deletes a custom field from the Subscription object
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.SubscriptionsApi(api_client)
-    custom_field_id = 'custom_field_id_example' # str | custom_field_id
+    custom_field_id = 'custom_field_id_example' # str | 
 
     try:
         # Delete a Subscription Custom Field
@@ -264,7 +304,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **custom_field_id** | **str**| custom_field_id | 
+ **custom_field_id** | **str**|  | 
 
 ### Return type
 
@@ -272,7 +312,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -284,15 +324,18 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No Content |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_subscription**
-> Subscription get_subscription(subscription_id)
+> SubscriptionDetail get_subscription(subscription_id)
 
 Retrieve a Subscription
 
@@ -300,24 +343,31 @@ Retrieves a single subscription
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
-from keap_core_v2_client.models.subscription import Subscription
+from keap_core_v2_client.models.subscription_detail import SubscriptionDetail
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.SubscriptionsApi(api_client)
-    subscription_id = 'subscription_id_example' # str | subscription_id
+    subscription_id = 'subscription_id_example' # str | 
 
     try:
         # Retrieve a Subscription
@@ -334,15 +384,15 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **subscription_id** | **str**| subscription_id | 
+ **subscription_id** | **str**|  | 
 
 ### Return type
 
-[**Subscription**](Subscription.md)
+[**SubscriptionDetail**](SubscriptionDetail.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -354,15 +404,18 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_subscriptions**
-> ListSubscriptionsResponse list_subscriptions(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
+> ListSubscriptionsResponseList list_subscriptions(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
 
 List Subscriptions
 
@@ -370,24 +423,31 @@ Retrieves a list of subscriptions using the specified search criteria.
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
-from keap_core_v2_client.models.list_subscriptions_response import ListSubscriptionsResponse
+from keap_core_v2_client.models.list_subscriptions_response_list import ListSubscriptionsResponseList
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.SubscriptionsApi(api_client)
-    filter = 'filter_example' # str | Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id`  (optional)
+    filter = 'filter_example' # str | Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id` - (String) `status`  (optional)
     order_by = 'order_by_example' # str | Attribute and direction to order items. One of the following fields: - `id` - `contact_id` - `subscription_plan_id`  One of the following directions: - `asc` - `desc` (optional)
     page_size = 0 # int | Total number of items to return per page (optional)
     page_token = 'page_token_example' # str | Page token (optional)
@@ -407,18 +467,18 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filter** | **str**| Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60;  | [optional] 
+ **filter** | **str**| Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60;  | [optional] 
  **order_by** | **str**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] 
  **page_size** | **int**| Total number of items to return per page | [optional] 
  **page_token** | **str**| Page token | [optional] 
 
 ### Return type
 
-[**ListSubscriptionsResponse**](ListSubscriptionsResponse.md)
+[**ListSubscriptionsResponseList**](ListSubscriptionsResponseList.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -430,10 +490,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -446,6 +509,7 @@ Get the custom fields for the Subscription object
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
@@ -453,12 +517,18 @@ from keap_core_v2_client.models.object_model import ObjectModel
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -484,7 +554,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -496,15 +566,18 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_subscription**
-> Subscription update_subscription(subscription_id, update_subscription_request, update_mask=update_mask)
+> SubscriptionDetail update_subscription(subscription_id, update_subscription_request_detail, update_mask=update_mask)
 
 Update a Subscription
 
@@ -512,31 +585,38 @@ Updates a Subscription
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
-from keap_core_v2_client.models.subscription import Subscription
-from keap_core_v2_client.models.update_subscription_request import UpdateSubscriptionRequest
+from keap_core_v2_client.models.subscription_detail import SubscriptionDetail
+from keap_core_v2_client.models.update_subscription_request_detail import UpdateSubscriptionRequestDetail
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.SubscriptionsApi(api_client)
-    subscription_id = 'subscription_id_example' # str | subscription_id
-    update_subscription_request = keap_core_v2_client.UpdateSubscriptionRequest() # UpdateSubscriptionRequest | request
-    update_mask = ['update_mask_example'] # List[str] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+    subscription_id = 'subscription_id_example' # str | 
+    update_subscription_request_detail = keap_core_v2_client.UpdateSubscriptionRequestDetail() # UpdateSubscriptionRequestDetail | 
+    update_mask = 'update_mask_example' # str | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
 
     try:
         # Update a Subscription
-        api_response = api_instance.update_subscription(subscription_id, update_subscription_request, update_mask=update_mask)
+        api_response = api_instance.update_subscription(subscription_id, update_subscription_request_detail, update_mask=update_mask)
         print("The response of SubscriptionsApi->update_subscription:\n")
         pprint(api_response)
     except Exception as e:
@@ -549,17 +629,17 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **subscription_id** | **str**| subscription_id | 
- **update_subscription_request** | [**UpdateSubscriptionRequest**](UpdateSubscriptionRequest.md)| request | 
- **update_mask** | [**List[str]**](str.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **subscription_id** | **str**|  | 
+ **update_subscription_request_detail** | [**UpdateSubscriptionRequestDetail**](UpdateSubscriptionRequestDetail.md)|  | 
+ **update_mask** | **str**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 
-[**Subscription**](Subscription.md)
+[**SubscriptionDetail**](SubscriptionDetail.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -571,10 +651,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -587,6 +670,7 @@ Updates a custom field of the specified type and options to the Subscription obj
 
 ### Example
 
+* OAuth Authentication (oauth2):
 
 ```python
 import keap_core_v2_client
@@ -595,19 +679,25 @@ from keap_core_v2_client.models.update_custom_field_meta_data_request import Upd
 from keap_core_v2_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.keap.com/crm/rest
+# Defining the host is optional and defaults to https://api.keap.com/crm
 # See configuration.py for a list of all supported configuration parameters.
 configuration = keap_core_v2_client.Configuration(
-    host = "https://api.keap.com/crm/rest"
+    host = "https://api.keap.com/crm"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.SubscriptionsApi(api_client)
-    custom_field_id = 'custom_field_id_example' # str | custom_field_id
-    update_custom_field_meta_data_request = keap_core_v2_client.UpdateCustomFieldMetaDataRequest() # UpdateCustomFieldMetaDataRequest | request
-    update_mask = ['update_mask_example'] # List[str] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+    custom_field_id = 'custom_field_id_example' # str | 
+    update_custom_field_meta_data_request = keap_core_v2_client.UpdateCustomFieldMetaDataRequest() # UpdateCustomFieldMetaDataRequest | 
+    update_mask = 'update_mask_example' # str | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
 
     try:
         # Update a Subscription Custom Field
@@ -624,9 +714,9 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **custom_field_id** | **str**| custom_field_id | 
- **update_custom_field_meta_data_request** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md)| request | 
- **update_mask** | [**List[str]**](str.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **custom_field_id** | **str**|  | 
+ **update_custom_field_meta_data_request** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md)|  | 
+ **update_mask** | **str**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 
@@ -634,7 +724,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -646,10 +736,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

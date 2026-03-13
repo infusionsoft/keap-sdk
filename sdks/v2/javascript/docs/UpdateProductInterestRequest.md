@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**discountPercent** | **Number** |  | [optional] 
-**price** | **Number** |  | [optional] 
-**quantity** | **Number** |  | [optional] 
+**price** | **Number** | The price per unit of the product. | [optional] 
+**quantity** | **Number** | The quantity of product. | [optional] 
+**discountPercent** | **Number** | The percent to discount the product. | [optional] 
 
 

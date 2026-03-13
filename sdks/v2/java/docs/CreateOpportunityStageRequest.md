@@ -2,16 +2,17 @@
 
 # CreateOpportunityStageRequest
 
+opportunity
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**checklistItems** | [**List&lt;CreateOpportunityStageChecklistItem&gt;**](CreateOpportunityStageChecklistItem.md) |  |  [optional] |
 |**name** | **String** |  |  |
 |**order** | **Integer** |  |  |
-|**probability** | **Integer** |  |  |
 |**targetNumberDays** | **Integer** |  |  |
+|**probability** | **Integer** |  |  |
+|**checklistItems** | [**List&lt;CreateOpportunityStageChecklistItem&gt;**](CreateOpportunityStageChecklistItem.md) |  |  [optional] |
 
 
 ## Implemented Interfaces

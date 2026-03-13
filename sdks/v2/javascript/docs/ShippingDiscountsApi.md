@@ -1,14 +1,14 @@
 # KeapCoreServiceV2Sdk.ShippingDiscountsApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createShippingDiscount**](ShippingDiscountsApi.md#createShippingDiscount) | **POST** /v2/discounts/shipping | Create a Shipping Discount
-[**deleteShippingDiscount**](ShippingDiscountsApi.md#deleteShippingDiscount) | **DELETE** /v2/discounts/shipping/{discount_id} | Delete a Shipping Discount
-[**getShippingDiscount**](ShippingDiscountsApi.md#getShippingDiscount) | **GET** /v2/discounts/shipping/{discount_id} | Retrieve a Shipping Discount
-[**listShippingDiscounts**](ShippingDiscountsApi.md#listShippingDiscounts) | **GET** /v2/discounts/shipping | List all Shipping Discounts
-[**updateShippingDiscount**](ShippingDiscountsApi.md#updateShippingDiscount) | **PATCH** /v2/discounts/shipping/{discount_id} | Update a Shipping Discount
+[**createShippingDiscount**](ShippingDiscountsApi.md#createShippingDiscount) | **POST** /rest/v2/discounts/shipping | Create a Shipping Discount
+[**deleteShippingDiscount**](ShippingDiscountsApi.md#deleteShippingDiscount) | **DELETE** /rest/v2/discounts/shipping/{discount_id} | Delete a Shipping Discount
+[**getShippingDiscount**](ShippingDiscountsApi.md#getShippingDiscount) | **GET** /rest/v2/discounts/shipping/{discount_id} | Retrieve a Shipping Discount
+[**listShippingDiscounts**](ShippingDiscountsApi.md#listShippingDiscounts) | **GET** /rest/v2/discounts/shipping | List all Shipping Discounts
+[**updateShippingDiscount**](ShippingDiscountsApi.md#updateShippingDiscount) | **PATCH** /rest/v2/discounts/shipping/{discount_id} | Update a Shipping Discount
 
 
 
@@ -24,9 +24,13 @@ Creates a Shipping Discount
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.ShippingDiscountsApi();
-let createShippingDiscountRequest = new KeapCoreServiceV2Sdk.CreateShippingDiscountRequest(); // CreateShippingDiscountRequest | request
+let createShippingDiscountRequest = new KeapCoreServiceV2Sdk.CreateShippingDiscountRequest(); // CreateShippingDiscountRequest | 
 apiInstance.createShippingDiscount(createShippingDiscountRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -40,7 +44,7 @@ apiInstance.createShippingDiscount(createShippingDiscountRequest).then((data) =>
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createShippingDiscountRequest** | [**CreateShippingDiscountRequest**](CreateShippingDiscountRequest.md)| request | 
+ **createShippingDiscountRequest** | [**CreateShippingDiscountRequest**](CreateShippingDiscountRequest.md)|  | 
 
 ### Return type
 
@@ -48,7 +52,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -68,9 +72,13 @@ Deletes a specified Shipping Discount
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.ShippingDiscountsApi();
-let discountId = "discountId_example"; // String | discount_id
+let discountId = "discountId_example"; // String | 
 apiInstance.deleteShippingDiscount(discountId).then(() => {
   console.log('API called successfully.');
 }, (error) => {
@@ -84,7 +92,7 @@ apiInstance.deleteShippingDiscount(discountId).then(() => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **discountId** | **String**| discount_id | 
+ **discountId** | **String**|  | 
 
 ### Return type
 
@@ -92,7 +100,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -112,9 +120,13 @@ Retrieves a Shipping Discount
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.ShippingDiscountsApi();
-let discountId = "discountId_example"; // String | discount_id
+let discountId = "discountId_example"; // String | 
 apiInstance.getShippingDiscount(discountId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -128,7 +140,7 @@ apiInstance.getShippingDiscount(discountId).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **discountId** | **String**| discount_id | 
+ **discountId** | **String**|  | 
 
 ### Return type
 
@@ -136,7 +148,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -156,6 +168,10 @@ Retrieves a list of Shipping Discounts
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.ShippingDiscountsApi();
 let opts = {
@@ -188,7 +204,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -208,12 +224,16 @@ Updates a Shipping Discount
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.ShippingDiscountsApi();
-let discountId = "discountId_example"; // String | discount_id
-let updateShippingDiscountRequest = new KeapCoreServiceV2Sdk.UpdateShippingDiscountRequest(); // UpdateShippingDiscountRequest | request
+let discountId = "discountId_example"; // String | 
+let updateShippingDiscountRequest = new KeapCoreServiceV2Sdk.UpdateShippingDiscountRequest(); // UpdateShippingDiscountRequest | 
 let opts = {
-  'updateMask': ["null"] // [String] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+  'updateMask': "updateMask_example" // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
 apiInstance.updateShippingDiscount(discountId, updateShippingDiscountRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -228,9 +248,9 @@ apiInstance.updateShippingDiscount(discountId, updateShippingDiscountRequest, op
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **discountId** | **String**| discount_id | 
- **updateShippingDiscountRequest** | [**UpdateShippingDiscountRequest**](UpdateShippingDiscountRequest.md)| request | 
- **updateMask** | [**[String]**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **discountId** | **String**|  | 
+ **updateShippingDiscountRequest** | [**UpdateShippingDiscountRequest**](UpdateShippingDiscountRequest.md)|  | 
+ **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 
@@ -238,7 +258,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 

@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**last_updated** | **str** |  | [optional] 
-**score** | **str** |  | [optional] 
+**score** | **str** | Lead score value (flame count) | [optional] 
+**last_updated** | **str** | Last updated timestamp (ISO-8601) | [optional] 
 
 ## Example
 

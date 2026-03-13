@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**details** | [**StageDetails**](StageDetails.md) |  | [optional] 
-**id** | **String** |  | 
-**name** | **String** |  | [optional] 
-**reasons** | **[String]** |  | [optional] 
+**id** | **String** | Stage ID | 
+**name** | **String** | Stage name | [optional] 
+**details** | [**StageDetails**](StageDetails.md) | Stage details | [optional] 
+**reasons** | **[String]** | Stage change reasons | [optional] 
 
 

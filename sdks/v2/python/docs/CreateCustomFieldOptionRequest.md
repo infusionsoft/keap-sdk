@@ -6,7 +6,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **label** | **str** |  | [optional] 
-**options** | [**List[CreateCustomFieldOptionRequest]**](CreateCustomFieldOptionRequest.md) |  | [optional] 
 
 ## Example
 

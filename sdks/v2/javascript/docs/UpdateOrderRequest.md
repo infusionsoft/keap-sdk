@@ -4,26 +4,26 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**contactId** | **String** |  | [optional] 
-**leadAffiliateId** | **String** |  | [optional] 
-**notes** | **String** |  | [optional] 
-**orderTime** | **String** | The date and time of the order. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z) | [optional] 
-**orderTitle** | **String** |  | [optional] 
-**orderType** | **String** | The order type. Valid values are: ONLINE, OFFLINE. | [optional] 
-**paymentPlan** | [**UpdatedPaymentPlan**](UpdatedPaymentPlan.md) |  | [optional] 
+**notes** | **String** | Internal notes | [optional] 
+**terms** | **String** | Order terms | [optional] 
+**contactId** | **String** | ID of the contact for this order | [optional] 
+**orderTitle** | **String** | Title for the order | [optional] 
+**orderTime** | **Date** | The date and time of the order. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z) | [optional] 
+**orderType** | **String** | The order type. | [optional] 
 **promoCodes** | **[String]** | Uses multiple strings as promo codes. The corresponding discount will be applied to the order. | [optional] 
-**salesAffiliateId** | **String** |  | [optional] 
-**shippingAddress** | [**AddressInformation**](AddressInformation.md) |  | [optional] 
-**terms** | **String** |  | [optional] 
+**leadAffiliateId** | **String** | Lead affiliate ID | [optional] 
+**salesAffiliateId** | **String** | Sales affiliate ID | [optional] 
+**shippingAddress** | [**AddressInformation**](AddressInformation.md) | Shipping address for the order | [optional] 
+**paymentPlan** | [**UpdatedPaymentPlan**](UpdatedPaymentPlan.md) | Payment plan details | [optional] 
 
 
 
 ## Enum: OrderTypeEnum
 
 
-* `OFFLINE` (value: `"OFFLINE"`)
-
 * `ONLINE` (value: `"ONLINE"`)
+
+* `OFFLINE` (value: `"OFFLINE"`)
 
 * `unknown_default_open_api` (value: `"unknown_default_open_api"`)
 

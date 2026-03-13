@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**nextPageToken** | **String** |  | [optional] 
 **stages** | [**[RestOpportunityStage]**](RestOpportunityStage.md) |  | [optional] 
+**nextPageToken** | **String** |  | [optional] 
 
 

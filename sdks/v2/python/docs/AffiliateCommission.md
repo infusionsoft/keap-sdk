@@ -5,18 +5,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**aff_owed_id** | **int** |  | [optional] 
-**amount_earned** | **float** |  | [optional] 
-**contact_first_name** | **str** |  | [optional] 
-**contact_id** | **int** |  | [optional] 
-**contact_last_name** | **str** |  | [optional] 
-**date_earned** | **datetime** |  | [optional] 
-**description** | **str** |  | [optional] 
-**invoice_id** | **int** |  | [optional] 
-**product_name** | **str** |  | [optional] 
-**sales_affiliate_id** | **int** |  | [optional] 
-**sold_by_first_name** | **str** |  | [optional] 
-**sold_by_last_name** | **str** |  | [optional] 
+**description** | **str** | Description of the product or line item associated with this commission | [optional] 
+**amount_earned** | **float** | Amount earned for this commission | [optional] 
+**contact_first_name** | **str** | First name of the contact associated with this commission | [optional] 
+**contact_last_name** | **str** | Last name of the contact associated with this commission | [optional] 
+**invoice_id** | **str** | ID of the invoice associated with this commission | [optional] 
+**time_earned** | **str** | When the commission was earned. In ISO-8601 format | [optional] 
+**contact_id** | **str** | ID of the contact associated with this commission | [optional] 
+**sales_affiliate_id** | **str** | ID of the sales affiliate | [optional] 
+**sales_affiliate_name** | **str** | The name of the sales affiliate | [optional] 
+**product_name** | **str** | Name of the product or line item associated with this commission | [optional] 
 
 ## Example
 

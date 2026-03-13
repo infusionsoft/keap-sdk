@@ -1,17 +1,17 @@
 # KeapCoreServiceV2Sdk.EmailAddressApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getEmailAddressStatus**](EmailAddressApi.md#getEmailAddressStatus) | **GET** /v2/emailAddresses/{email}/status | Retrieve an Email Address status
-[**updateEmailAddressOptStatus**](EmailAddressApi.md#updateEmailAddressOptStatus) | **PATCH** /v2/emailAddresses/{email}/status | Update an Email Address opt-in status
+[**getEmailAddressStatus**](EmailAddressApi.md#getEmailAddressStatus) | **GET** /rest/v2/emailAddresses/{email}/status | Retrieve an Email Address status
+[**updateEmailAddressOptStatus**](EmailAddressApi.md#updateEmailAddressOptStatus) | **PATCH** /rest/v2/emailAddresses/{email}/status | Update an Email Address opt-in status
 
 
 
 ## getEmailAddressStatus
 
-> EmailAddressStatus getEmailAddressStatus(email)
+> RestEmailAddressStatus getEmailAddressStatus(email)
 
 Retrieve an Email Address status
 
@@ -21,9 +21,13 @@ Retrieves the opt-in status for a given Email Address
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.EmailAddressApi();
-let email = "email_example"; // String | email
+let email = "email_example"; // String | 
 apiInstance.getEmailAddressStatus(email).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -37,15 +41,15 @@ apiInstance.getEmailAddressStatus(email).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **email** | **String**| email | 
+ **email** | **String**|  | 
 
 ### Return type
 
-[**EmailAddressStatus**](EmailAddressStatus.md)
+[**RestEmailAddressStatus**](RestEmailAddressStatus.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -55,7 +59,7 @@ No authorization required
 
 ## updateEmailAddressOptStatus
 
-> EmailAddressStatus updateEmailAddressOptStatus(email, updateEmailAddress)
+> RestEmailAddressStatus updateEmailAddressOptStatus(email, updateEmailAddress)
 
 Update an Email Address opt-in status
 
@@ -65,10 +69,14 @@ Updates an Email Address opt-in status  You may opt-in or mark an email address 
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.EmailAddressApi();
-let email = "email_example"; // String | email
-let updateEmailAddress = new KeapCoreServiceV2Sdk.UpdateEmailAddress(); // UpdateEmailAddress | updateEmailAddress
+let email = "email_example"; // String | 
+let updateEmailAddress = new KeapCoreServiceV2Sdk.UpdateEmailAddress(); // UpdateEmailAddress | 
 apiInstance.updateEmailAddressOptStatus(email, updateEmailAddress).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -82,16 +90,16 @@ apiInstance.updateEmailAddressOptStatus(email, updateEmailAddress).then((data) =
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **email** | **String**| email | 
- **updateEmailAddress** | [**UpdateEmailAddress**](UpdateEmailAddress.md)| updateEmailAddress | 
+ **email** | **String**|  | 
+ **updateEmailAddress** | [**UpdateEmailAddress**](UpdateEmailAddress.md)|  | 
 
 ### Return type
 
-[**EmailAddressStatus**](EmailAddressStatus.md)
+[**RestEmailAddressStatus**](RestEmailAddressStatus.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 

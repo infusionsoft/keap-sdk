@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**contact_ids** | **List[str]** |  | 
+**contact_ids** | **List[str]** | The IDs of the contacts to apply/remove the tag to/from | 
 
 ## Example
 

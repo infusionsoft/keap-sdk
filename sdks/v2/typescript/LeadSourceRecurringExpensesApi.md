@@ -1,15 +1,15 @@
 # .LeadSourceRecurringExpensesApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#createLeadSourceRecurringExpense) | **POST** /v2/leadSources/{lead_source_id}/recurringExpenses | Create a Lead Source Recurring Expense
-[**deleteLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#deleteLeadSourceRecurringExpense) | **DELETE** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Delete a Lead Source Recurring Expense
-[**getLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#getLeadSourceRecurringExpense) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Retrieve a Lead Source Recurring Expense
-[**listExpensesIncurredFromLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#listExpensesIncurredFromLeadSourceRecurringExpense) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id}/expenses | Retrieves a list of expenses incurred from a recurring expense
-[**listLeadSourceRecurringExpenses**](LeadSourceRecurringExpensesApi.md#listLeadSourceRecurringExpenses) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses | Retrieves a list of lead source recurring expenses
-[**updateLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#updateLeadSourceRecurringExpense) | **PATCH** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Update a Lead Source Recurring Expense
+[**createLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#createLeadSourceRecurringExpense) | **POST** /rest/v2/leadSources/{lead_source_id}/recurringExpenses | Create a Lead Source Recurring Expense
+[**deleteLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#deleteLeadSourceRecurringExpense) | **DELETE** /rest/v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Delete a Lead Source Recurring Expense
+[**getLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#getLeadSourceRecurringExpense) | **GET** /rest/v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Retrieve a Lead Source Recurring Expense
+[**listExpensesIncurredFromLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#listExpensesIncurredFromLeadSourceRecurringExpense) | **GET** /rest/v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id}/expenses | Retrieves a list of expenses incurred from a recurring expense
+[**listLeadSourceRecurringExpenses**](LeadSourceRecurringExpensesApi.md#listLeadSourceRecurringExpenses) | **GET** /rest/v2/leadSources/{lead_source_id}/recurringExpenses | Retrieves a list of lead source recurring expenses
+[**updateLeadSourceRecurringExpense**](LeadSourceRecurringExpensesApi.md#updateLeadSourceRecurringExpense) | **PATCH** /rest/v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Update a Lead Source Recurring Expense
 
 
 # **createLeadSourceRecurringExpense**
@@ -30,13 +30,13 @@ const apiInstance = new LeadSourceRecurringExpensesApi(configuration);
 const request: LeadSourceRecurringExpensesApiCreateLeadSourceRecurringExpenseRequest = {
     // The ID of the lead source this recurring expense belongs to
   leadSourceId: "lead_source_id_example",
-    // The request object to create a new lead source recurring expense
+  
   createLeadSourceRecurringExpenseRequest: {
-    amount: 1,
-    endTime: "endTime_example",
-    notes: "notes_example",
-    startTime: "startTime_example",
-    title: "title_example",
+    title: "Monthly Google Ads subscription",
+    notes: "Automated monthly billing",
+    amount: 22550,
+    startTime: new Date('2024-01-01T00:00:00Z'),
+    endTime: new Date('2024-12-31T23:59:59Z'),
   },
 };
 
@@ -49,7 +49,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createLeadSourceRecurringExpenseRequest** | **CreateLeadSourceRecurringExpenseRequest**| The request object to create a new lead source recurring expense |
+ **createLeadSourceRecurringExpenseRequest** | **CreateLeadSourceRecurringExpenseRequest**|  |
  **leadSourceId** | [**string**] | The ID of the lead source this recurring expense belongs to | defaults to undefined
 
 
@@ -59,7 +59,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -74,7 +74,10 @@ No authorization required
 **400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -119,7 +122,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -131,10 +134,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No Content |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -179,7 +185,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -191,10 +197,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -251,7 +260,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -267,7 +276,9 @@ No authorization required
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -321,7 +332,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -337,7 +348,9 @@ No authorization required
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -361,18 +374,16 @@ const request: LeadSourceRecurringExpensesApiUpdateLeadSourceRecurringExpenseReq
   leadSourceId: "lead_source_id_example",
     // The ID of a lead source recurring expense
   leadSourceRecurringExpenseId: "lead_source_recurring_expense_id_example",
-    // The request object to update a lead source recurring expense
+  
   leadSourceRecurringExpenseUpdateRequest: {
-    amount: 1,
-    endTime: "endTime_example",
-    notes: "notes_example",
-    startTime: "startTime_example",
-    title: "title_example",
+    title: "Monthly Google Ads subscription",
+    notes: "Automated monthly billing",
+    amount: 22550,
+    startTime: new Date('2024-01-01T00:00:00Z'),
+    endTime: new Date('2024-12-31T23:59:59Z'),
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: [
-    "title",
-  ],
+  updateMask: "title,notes,amount,start_time,end_time",
 };
 
 const data = await apiInstance.updateLeadSourceRecurringExpense(request);
@@ -384,10 +395,10 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **leadSourceRecurringExpenseUpdateRequest** | **LeadSourceRecurringExpenseUpdateRequest**| The request object to update a lead source recurring expense |
+ **leadSourceRecurringExpenseUpdateRequest** | **LeadSourceRecurringExpenseUpdateRequest**|  |
  **leadSourceId** | [**string**] | The ID of the lead source this recurring expense belongs to | defaults to undefined
  **leadSourceRecurringExpenseId** | [**string**] | The ID of a lead source recurring expense | defaults to undefined
- **updateMask** |  | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | [**&#39;title,notes,amount,start_time,end_time&#39;**]**Array<&#39;title,notes,amount,start_time,end_time&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
@@ -396,7 +407,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -412,7 +423,9 @@ No authorization required
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

@@ -1,11 +1,12 @@
 # CreateAutomationCategoryRequest
 
+Request to create an automation category
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** |  | [optional] 
+**name** | **str** | The name of the category to create | 
 
 ## Example
 

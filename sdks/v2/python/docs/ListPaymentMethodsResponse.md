@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**next_page_token** | **str** |  | [optional] 
 **records** | [**List[PaymentMethod]**](PaymentMethod.md) |  | [optional] 
+**next_page_token** | **str** |  | [optional] 
 
 ## Example
 

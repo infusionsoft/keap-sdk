@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**defaultMessageFields** | **String** |  | [optional] 
 **defaultMessageTo** | **String** |  | [optional] 
+**defaultMessageFields** | **String** |  | [optional] 
 
 

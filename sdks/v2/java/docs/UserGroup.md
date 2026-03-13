@@ -2,6 +2,7 @@
 
 # UserGroup
 
+A user group in the application
 
 ## Properties
 

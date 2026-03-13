@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**optedIn** | **Boolean** |  | 
-**reason** | **String** |  | 
+**reason** | **String** | Reason for the opt-in status change | 
+**optedIn** | **Boolean** | Whether to opt-in the email address | 
 
 

@@ -1,10 +1,10 @@
 # Keap\Core\V2\ReferralApi
 
-All URIs are relative to https://api.keap.com/crm/rest, except if the operation defines another base path.
+All URIs are relative to https://api.keap.com/crm, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createReferral()**](ReferralApi.md#createReferral) | **POST** /v2/referrals | Create a Referral |
+| [**createReferral()**](ReferralApi.md#createReferral) | **POST** /rest/v2/referrals | Create a Referral |
 
 
 ## `createReferral()`
@@ -24,12 +24,16 @@ Creates a new referral partner referral on the provided contact
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\ReferralApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$create_referral_request = new \Keap\Core\V2\Model\CreateReferralRequest(); // \Keap\Core\V2\Model\CreateReferralRequest | request
+$create_referral_request = new \Keap\Core\V2\Model\CreateReferralRequest(); // \Keap\Core\V2\Model\CreateReferralRequest
 
 try {
     $result = $apiInstance->createReferral($create_referral_request);
@@ -43,7 +47,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **create_referral_request** | [**\Keap\Core\V2\Model\CreateReferralRequest**](../Model/CreateReferralRequest.md)| request | |
+| **create_referral_request** | [**\Keap\Core\V2\Model\CreateReferralRequest**](../Model/CreateReferralRequest.md)|  | |
 
 ### Return type
 
@@ -51,7 +55,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 

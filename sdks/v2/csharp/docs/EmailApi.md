@@ -1,18 +1,18 @@
 # Keap.Core.V2.Api.EmailApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**CreateEmail**](EmailApi.md#createemail) | **POST** /v2/emails | Create an Email Record |
-| [**CreateEmails**](EmailApi.md#createemails) | **POST** /v2/emails:batchAdd | Create a set of Email Records |
-| [**DeleteEmail**](EmailApi.md#deleteemail) | **DELETE** /v2/emails/{id} | Delete an Email Record |
-| [**DeleteEmails**](EmailApi.md#deleteemails) | **POST** /v2/emails:batchRemove | Remove a set of Email Records |
-| [**GetEmail**](EmailApi.md#getemail) | **GET** /v2/emails/{id} | Retrieve an Email |
-| [**GetEmailTemplate**](EmailApi.md#getemailtemplate) | **GET** /v2/emails/templates/{email_template_id} | Retrieve an email template |
-| [**ListEmails**](EmailApi.md#listemails) | **GET** /v2/emails | List Emails |
-| [**SendEmail**](EmailApi.md#sendemail) | **POST** /v2/emails:send | Send an Email |
-| [**SendEmailTemplate**](EmailApi.md#sendemailtemplate) | **POST** /v2/emails/templates:send | Send an email based on a template |
+| [**CreateEmail**](EmailApi.md#createemail) | **POST** /rest/v2/emails | Create an Email Record |
+| [**CreateEmails**](EmailApi.md#createemails) | **POST** /rest/v2/emails:batchAdd | Create a set of Email Records |
+| [**DeleteEmail**](EmailApi.md#deleteemail) | **DELETE** /rest/v2/emails/{id} | Delete an Email Record |
+| [**DeleteEmails**](EmailApi.md#deleteemails) | **POST** /rest/v2/emails:batchRemove | Remove a set of Email Records |
+| [**GetEmail**](EmailApi.md#getemail) | **GET** /rest/v2/emails/{id} | Retrieve an Email |
+| [**GetEmailTemplate**](EmailApi.md#getemailtemplate) | **GET** /rest/v2/emails/templates/{email_template_id} | Retrieve an email template |
+| [**ListEmails**](EmailApi.md#listemails) | **GET** /rest/v2/emails | List Emails |
+| [**SendEmail**](EmailApi.md#sendemail) | **POST** /rest/v2/emails:send | Send an Email |
+| [**SendEmailTemplate**](EmailApi.md#sendemailtemplate) | **POST** /rest/v2/emails/templates:send | Send an email based on a template |
 
 <a id="createemail"></a>
 # **CreateEmail**
@@ -37,9 +37,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new EmailApi(config);
-            var createEmailSentRequest = new CreateEmailSentRequest(); // CreateEmailSentRequest | emailWithContent
+            var createEmailSentRequest = new CreateEmailSentRequest(); // CreateEmailSentRequest | 
 
             try
             {
@@ -82,7 +85,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **createEmailSentRequest** | [**CreateEmailSentRequest**](CreateEmailSentRequest.md) | emailWithContent |  |
+| **createEmailSentRequest** | [**CreateEmailSentRequest**](CreateEmailSentRequest.md) |  |  |
 
 ### Return type
 
@@ -90,7 +93,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -102,15 +105,19 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="createemails"></a>
 # **CreateEmails**
-> EmailsSentList CreateEmails (CreateEmailsSentRequest? createEmailsSentRequest = null)
+> EmailsSentList CreateEmails (CreateEmailsSentRequest createEmailsSentRequest)
 
 Create a set of Email Records
 
@@ -131,9 +138,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new EmailApi(config);
-            var createEmailsSentRequest = new CreateEmailsSentRequest?(); // CreateEmailsSentRequest? | Email records to persist, with content. (optional) 
+            var createEmailsSentRequest = new CreateEmailsSentRequest(); // CreateEmailsSentRequest | 
 
             try
             {
@@ -176,7 +186,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **createEmailsSentRequest** | [**CreateEmailsSentRequest?**](CreateEmailsSentRequest?.md) | Email records to persist, with content. | [optional]  |
+| **createEmailsSentRequest** | [**CreateEmailsSentRequest**](CreateEmailsSentRequest.md) |  |  |
 
 ### Return type
 
@@ -184,7 +194,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -196,9 +206,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -225,9 +239,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new EmailApi(config);
-            var id = "id_example";  // string | id
+            var id = "id_example";  // string | 
 
             try
             {
@@ -266,7 +283,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **id** | **string** | id |  |
+| **id** | **string** |  |  |
 
 ### Return type
 
@@ -274,7 +291,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -286,10 +303,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -316,9 +336,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new EmailApi(config);
-            var deleteEmailsRequest = new DeleteEmailsRequest(); // DeleteEmailsRequest | deleteEmailsRequest
+            var deleteEmailsRequest = new DeleteEmailsRequest(); // DeleteEmailsRequest | 
 
             try
             {
@@ -361,7 +384,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **deleteEmailsRequest** | [**DeleteEmailsRequest**](DeleteEmailsRequest.md) | deleteEmailsRequest |  |
+| **deleteEmailsRequest** | [**DeleteEmailsRequest**](DeleteEmailsRequest.md) |  |  |
 
 ### Return type
 
@@ -369,7 +392,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -381,9 +404,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -410,9 +437,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new EmailApi(config);
-            var id = "id_example";  // string | id
+            var id = "id_example";  // string | 
 
             try
             {
@@ -455,7 +485,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **id** | **string** | id |  |
+| **id** | **string** |  |  |
 
 ### Return type
 
@@ -463,7 +493,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -475,10 +505,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -505,9 +538,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new EmailApi(config);
-            var emailTemplateId = "emailTemplateId_example";  // string | email_template_id
+            var emailTemplateId = "emailTemplateId_example";  // string | 
 
             try
             {
@@ -550,7 +586,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **emailTemplateId** | **string** | email_template_id |  |
+| **emailTemplateId** | **string** |  |  |
 
 ### Return type
 
@@ -558,7 +594,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -570,10 +606,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -600,7 +639,10 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new EmailApi(config);
             var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (String) contact_id - (String) email - (String) start_created_time - (String) end_created_time  (optional) 
             var orderBy = "orderBy_example";  // string? | Attribute and direction to order items. One of the following fields: - `created_time`  One of the following directions: - `asc` - `desc` (optional) 
@@ -659,7 +701,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -671,16 +713,19 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="sendemail"></a>
 # **SendEmail**
-> void SendEmail (EmailSendRequest? emailSendRequest = null)
+> void SendEmail (EmailSendRequest emailSendRequest)
 
 Send an Email
 
@@ -701,9 +746,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new EmailApi(config);
-            var emailSendRequest = new EmailSendRequest?(); // EmailSendRequest? | emailSendRequest (optional) 
+            var emailSendRequest = new EmailSendRequest(); // EmailSendRequest | 
 
             try
             {
@@ -742,7 +790,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **emailSendRequest** | [**EmailSendRequest?**](EmailSendRequest?.md) | emailSendRequest | [optional]  |
+| **emailSendRequest** | [**EmailSendRequest**](EmailSendRequest.md) |  |  |
 
 ### Return type
 
@@ -750,7 +798,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -762,15 +810,19 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **202** | Accepted |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="sendemailtemplate"></a>
 # **SendEmailTemplate**
-> void SendEmailTemplate (EmailSendTemplateRequest? emailSendTemplateRequest = null)
+> void SendEmailTemplate (EmailSendTemplateRequest emailSendTemplateRequest)
 
 Send an email based on a template
 
@@ -791,9 +843,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new EmailApi(config);
-            var emailSendTemplateRequest = new EmailSendTemplateRequest?(); // EmailSendTemplateRequest? | Use a template to send an email to a list of contacts  (optional) 
+            var emailSendTemplateRequest = new EmailSendTemplateRequest(); // EmailSendTemplateRequest | 
 
             try
             {
@@ -832,7 +887,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **emailSendTemplateRequest** | [**EmailSendTemplateRequest?**](EmailSendTemplateRequest?.md) | Use a template to send an email to a list of contacts  | [optional]  |
+| **emailSendTemplateRequest** | [**EmailSendTemplateRequest**](EmailSendTemplateRequest.md) |  |  |
 
 ### Return type
 
@@ -840,7 +895,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -852,9 +907,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **202** | Accepted |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -1,19 +1,19 @@
 # ShippingDiscountsApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createShippingDiscount**](ShippingDiscountsApi.md#createShippingDiscount) | **POST** /v2/discounts/shipping | Create a Shipping Discount |
-| [**createShippingDiscountWithHttpInfo**](ShippingDiscountsApi.md#createShippingDiscountWithHttpInfo) | **POST** /v2/discounts/shipping | Create a Shipping Discount |
-| [**deleteShippingDiscount**](ShippingDiscountsApi.md#deleteShippingDiscount) | **DELETE** /v2/discounts/shipping/{discount_id} | Delete a Shipping Discount |
-| [**deleteShippingDiscountWithHttpInfo**](ShippingDiscountsApi.md#deleteShippingDiscountWithHttpInfo) | **DELETE** /v2/discounts/shipping/{discount_id} | Delete a Shipping Discount |
-| [**getShippingDiscount**](ShippingDiscountsApi.md#getShippingDiscount) | **GET** /v2/discounts/shipping/{discount_id} | Retrieve a Shipping Discount |
-| [**getShippingDiscountWithHttpInfo**](ShippingDiscountsApi.md#getShippingDiscountWithHttpInfo) | **GET** /v2/discounts/shipping/{discount_id} | Retrieve a Shipping Discount |
-| [**listShippingDiscounts**](ShippingDiscountsApi.md#listShippingDiscounts) | **GET** /v2/discounts/shipping | List all Shipping Discounts |
-| [**listShippingDiscountsWithHttpInfo**](ShippingDiscountsApi.md#listShippingDiscountsWithHttpInfo) | **GET** /v2/discounts/shipping | List all Shipping Discounts |
-| [**updateShippingDiscount**](ShippingDiscountsApi.md#updateShippingDiscount) | **PATCH** /v2/discounts/shipping/{discount_id} | Update a Shipping Discount |
-| [**updateShippingDiscountWithHttpInfo**](ShippingDiscountsApi.md#updateShippingDiscountWithHttpInfo) | **PATCH** /v2/discounts/shipping/{discount_id} | Update a Shipping Discount |
+| [**createShippingDiscount**](ShippingDiscountsApi.md#createShippingDiscount) | **POST** /rest/v2/discounts/shipping | Create a Shipping Discount |
+| [**createShippingDiscountWithHttpInfo**](ShippingDiscountsApi.md#createShippingDiscountWithHttpInfo) | **POST** /rest/v2/discounts/shipping | Create a Shipping Discount |
+| [**deleteShippingDiscount**](ShippingDiscountsApi.md#deleteShippingDiscount) | **DELETE** /rest/v2/discounts/shipping/{discount_id} | Delete a Shipping Discount |
+| [**deleteShippingDiscountWithHttpInfo**](ShippingDiscountsApi.md#deleteShippingDiscountWithHttpInfo) | **DELETE** /rest/v2/discounts/shipping/{discount_id} | Delete a Shipping Discount |
+| [**getShippingDiscount**](ShippingDiscountsApi.md#getShippingDiscount) | **GET** /rest/v2/discounts/shipping/{discount_id} | Retrieve a Shipping Discount |
+| [**getShippingDiscountWithHttpInfo**](ShippingDiscountsApi.md#getShippingDiscountWithHttpInfo) | **GET** /rest/v2/discounts/shipping/{discount_id} | Retrieve a Shipping Discount |
+| [**listShippingDiscounts**](ShippingDiscountsApi.md#listShippingDiscounts) | **GET** /rest/v2/discounts/shipping | List all Shipping Discounts |
+| [**listShippingDiscountsWithHttpInfo**](ShippingDiscountsApi.md#listShippingDiscountsWithHttpInfo) | **GET** /rest/v2/discounts/shipping | List all Shipping Discounts |
+| [**updateShippingDiscount**](ShippingDiscountsApi.md#updateShippingDiscount) | **PATCH** /rest/v2/discounts/shipping/{discount_id} | Update a Shipping Discount |
+| [**updateShippingDiscountWithHttpInfo**](ShippingDiscountsApi.md#updateShippingDiscountWithHttpInfo) | **PATCH** /rest/v2/discounts/shipping/{discount_id} | Update a Shipping Discount |
 
 
 
@@ -32,16 +32,21 @@ Creates a Shipping Discount
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ShippingDiscountsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ShippingDiscountsApi apiInstance = new ShippingDiscountsApi(defaultClient);
-        CreateShippingDiscountRequest createShippingDiscountRequest = new CreateShippingDiscountRequest(); // CreateShippingDiscountRequest | request
+        CreateShippingDiscountRequest createShippingDiscountRequest = new CreateShippingDiscountRequest(); // CreateShippingDiscountRequest | 
         try {
             ShippingDiscount result = apiInstance.createShippingDiscount(createShippingDiscountRequest);
             System.out.println(result);
@@ -61,7 +66,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **createShippingDiscountRequest** | [**CreateShippingDiscountRequest**](CreateShippingDiscountRequest.md)| request | |
+| **createShippingDiscountRequest** | [**CreateShippingDiscountRequest**](CreateShippingDiscountRequest.md)|  | |
 
 ### Return type
 
@@ -70,7 +75,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -81,9 +86,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## createShippingDiscountWithHttpInfo
 
@@ -101,16 +110,21 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ShippingDiscountsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ShippingDiscountsApi apiInstance = new ShippingDiscountsApi(defaultClient);
-        CreateShippingDiscountRequest createShippingDiscountRequest = new CreateShippingDiscountRequest(); // CreateShippingDiscountRequest | request
+        CreateShippingDiscountRequest createShippingDiscountRequest = new CreateShippingDiscountRequest(); // CreateShippingDiscountRequest | 
         try {
             ApiResponse<ShippingDiscount> response = apiInstance.createShippingDiscountWithHttpInfo(createShippingDiscountRequest);
             System.out.println("Status code: " + response.getStatusCode());
@@ -132,7 +146,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **createShippingDiscountRequest** | [**CreateShippingDiscountRequest**](CreateShippingDiscountRequest.md)| request | |
+| **createShippingDiscountRequest** | [**CreateShippingDiscountRequest**](CreateShippingDiscountRequest.md)|  | |
 
 ### Return type
 
@@ -141,7 +155,7 @@ ApiResponse<[**ShippingDiscount**](ShippingDiscount.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -152,9 +166,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## deleteShippingDiscount
@@ -172,16 +190,21 @@ Deletes a specified Shipping Discount
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ShippingDiscountsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ShippingDiscountsApi apiInstance = new ShippingDiscountsApi(defaultClient);
-        String discountId = "discountId_example"; // String | discount_id
+        String discountId = "discountId_example"; // String | 
         try {
             apiInstance.deleteShippingDiscount(discountId);
         } catch (ApiException e) {
@@ -200,7 +223,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **discountId** | **String**| discount_id | |
+| **discountId** | **String**|  | |
 
 ### Return type
 
@@ -209,7 +232,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -220,10 +243,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## deleteShippingDiscountWithHttpInfo
 
@@ -241,16 +267,21 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ShippingDiscountsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ShippingDiscountsApi apiInstance = new ShippingDiscountsApi(defaultClient);
-        String discountId = "discountId_example"; // String | discount_id
+        String discountId = "discountId_example"; // String | 
         try {
             ApiResponse<Void> response = apiInstance.deleteShippingDiscountWithHttpInfo(discountId);
             System.out.println("Status code: " + response.getStatusCode());
@@ -271,7 +302,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **discountId** | **String**| discount_id | |
+| **discountId** | **String**|  | |
 
 ### Return type
 
@@ -280,7 +311,7 @@ ApiResponse<Void>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -291,10 +322,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## getShippingDiscount
@@ -312,16 +346,21 @@ Retrieves a Shipping Discount
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ShippingDiscountsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ShippingDiscountsApi apiInstance = new ShippingDiscountsApi(defaultClient);
-        String discountId = "discountId_example"; // String | discount_id
+        String discountId = "discountId_example"; // String | 
         try {
             ShippingDiscount result = apiInstance.getShippingDiscount(discountId);
             System.out.println(result);
@@ -341,7 +380,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **discountId** | **String**| discount_id | |
+| **discountId** | **String**|  | |
 
 ### Return type
 
@@ -350,7 +389,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -361,10 +400,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## getShippingDiscountWithHttpInfo
 
@@ -382,16 +424,21 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ShippingDiscountsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ShippingDiscountsApi apiInstance = new ShippingDiscountsApi(defaultClient);
-        String discountId = "discountId_example"; // String | discount_id
+        String discountId = "discountId_example"; // String | 
         try {
             ApiResponse<ShippingDiscount> response = apiInstance.getShippingDiscountWithHttpInfo(discountId);
             System.out.println("Status code: " + response.getStatusCode());
@@ -413,7 +460,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **discountId** | **String**| discount_id | |
+| **discountId** | **String**|  | |
 
 ### Return type
 
@@ -422,7 +469,7 @@ ApiResponse<[**ShippingDiscount**](ShippingDiscount.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -433,10 +480,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## listShippingDiscounts
@@ -454,13 +504,18 @@ Retrieves a list of Shipping Discounts
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ShippingDiscountsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ShippingDiscountsApi apiInstance = new ShippingDiscountsApi(defaultClient);
         String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (DiscountType) `discount_type`: AMOUNT or PERCENT - (Double) `discount_value`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=discount_type%3D%3DAMOUNT` - `filter=discount_value%3D%3D4.5` - `filter=discount_type%3D%3DAMOUNT%3Bdiscount_value%3D%3D4.5` 
@@ -498,7 +553,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -509,10 +564,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## listShippingDiscountsWithHttpInfo
 
@@ -530,13 +588,18 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ShippingDiscountsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ShippingDiscountsApi apiInstance = new ShippingDiscountsApi(defaultClient);
         String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (DiscountType) `discount_type`: AMOUNT or PERCENT - (Double) `discount_value`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=discount_type%3D%3DAMOUNT` - `filter=discount_value%3D%3D4.5` - `filter=discount_type%3D%3DAMOUNT%3Bdiscount_value%3D%3D4.5` 
@@ -576,7 +639,7 @@ ApiResponse<[**ListShippingDiscountsResponse**](ListShippingDiscountsResponse.md
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -587,10 +650,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## updateShippingDiscount
@@ -608,18 +674,23 @@ Updates a Shipping Discount
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ShippingDiscountsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ShippingDiscountsApi apiInstance = new ShippingDiscountsApi(defaultClient);
-        String discountId = "discountId_example"; // String | discount_id
-        UpdateShippingDiscountRequest updateShippingDiscountRequest = new UpdateShippingDiscountRequest(); // UpdateShippingDiscountRequest | request
-        List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        String discountId = "discountId_example"; // String | 
+        UpdateShippingDiscountRequest updateShippingDiscountRequest = new UpdateShippingDiscountRequest(); // UpdateShippingDiscountRequest | 
+        String updateMask = "name,description,discount_type,discount_value,criteria"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ShippingDiscount result = apiInstance.updateShippingDiscount(discountId, updateShippingDiscountRequest, updateMask);
             System.out.println(result);
@@ -639,9 +710,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **discountId** | **String**| discount_id | |
-| **updateShippingDiscountRequest** | [**UpdateShippingDiscountRequest**](UpdateShippingDiscountRequest.md)| request | |
-| **updateMask** | [**List&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name, description, discount_type, discount_value, criteria] |
+| **discountId** | **String**|  | |
+| **updateShippingDiscountRequest** | [**UpdateShippingDiscountRequest**](UpdateShippingDiscountRequest.md)|  | |
+| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name,description,discount_type,discount_value,criteria] |
 
 ### Return type
 
@@ -650,7 +721,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -661,10 +732,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## updateShippingDiscountWithHttpInfo
 
@@ -682,18 +756,23 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.ShippingDiscountsApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ShippingDiscountsApi apiInstance = new ShippingDiscountsApi(defaultClient);
-        String discountId = "discountId_example"; // String | discount_id
-        UpdateShippingDiscountRequest updateShippingDiscountRequest = new UpdateShippingDiscountRequest(); // UpdateShippingDiscountRequest | request
-        List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        String discountId = "discountId_example"; // String | 
+        UpdateShippingDiscountRequest updateShippingDiscountRequest = new UpdateShippingDiscountRequest(); // UpdateShippingDiscountRequest | 
+        String updateMask = "name,description,discount_type,discount_value,criteria"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
             ApiResponse<ShippingDiscount> response = apiInstance.updateShippingDiscountWithHttpInfo(discountId, updateShippingDiscountRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
@@ -715,9 +794,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **discountId** | **String**| discount_id | |
-| **updateShippingDiscountRequest** | [**UpdateShippingDiscountRequest**](UpdateShippingDiscountRequest.md)| request | |
-| **updateMask** | [**List&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name, description, discount_type, discount_value, criteria] |
+| **discountId** | **String**|  | |
+| **updateShippingDiscountRequest** | [**UpdateShippingDiscountRequest**](UpdateShippingDiscountRequest.md)|  | |
+| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name,description,discount_type,discount_value,criteria] |
 
 ### Return type
 
@@ -726,7 +805,7 @@ ApiResponse<[**ShippingDiscount**](ShippingDiscount.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -737,8 +816,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 

@@ -1,13 +1,14 @@
 # ListAutomationIdsResponse
 
+Response containing a list of automation IDs
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**automation_ids** | **List[str]** |  | [optional] 
-**locked_automation_ids** | **List[str]** |  | [optional] 
+**automation_ids** | **List[str]** | List of automation IDs | [optional] 
 **next_page_token** | **str** |  | [optional] 
+**locked_automation_ids** | **List[str]** | List of automation IDs that are currently locked for editing | [optional] 
 
 ## Example
 

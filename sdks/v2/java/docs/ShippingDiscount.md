@@ -7,12 +7,12 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**criteria** | [**List&lt;DiscountCriteria&gt;**](DiscountCriteria.md) |  |  [optional] |
-|**description** | **String** |  |  [optional] |
-|**discountType** | [**DiscountTypeEnum**](#DiscountTypeEnum) |  |  [optional] |
-|**discountValue** | **Double** |  |  [optional] |
-|**id** | **String** |  |  [optional] |
-|**name** | **String** |  |  [optional] |
+|**id** | **String** | Unique identifier for this shipping discount |  [optional] |
+|**name** | **String** | Name of the discount |  [optional] |
+|**description** | **String** | Description of the discount |  [optional] |
+|**criteria** | [**List&lt;DiscountCriteria&gt;**](DiscountCriteria.md) | List of criteria that must be met for this discount to apply |  [optional] |
+|**discountType** | [**DiscountTypeEnum**](#DiscountTypeEnum) | Type of discount: AMOUNT (fixed amount) or PERCENT (percentage) |  [optional] |
+|**discountValue** | **Double** | Value of the discount (amount or percentage depending on discount_type) |  [optional] |
 
 
 

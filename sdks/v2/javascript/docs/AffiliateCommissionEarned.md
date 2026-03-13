@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**affiliateCommissionTotal** | **Number** |  | [optional] 
-**viewLedgerUrl** | **String** |  | [optional] 
+**affiliateCommissionTotal** | **Number** | Total commission earned by affiliate | [optional] 
+**viewLedgerUrl** | **String** | URL to view affiliate ledger | [optional] 
 
 

@@ -1,42 +1,44 @@
 # Keap\Core\V2\AffiliateApi
 
-All URIs are relative to https://api.keap.com/crm/rest, except if the operation defines another base path.
+All URIs are relative to https://api.keap.com/crm, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**addAffiliate()**](AffiliateApi.md#addAffiliate) | **POST** /v2/affiliates | Create an Affiliate |
-| [**addAffiliateToProgram()**](AffiliateApi.md#addAffiliateToProgram) | **POST** /v2/affiliates/{id}:assignToProgram | Assign Affiliate to Commission program |
-| [**addCommissionProgram()**](AffiliateApi.md#addCommissionProgram) | **POST** /v2/affiliates/commissionPrograms | Create an Affiliate Commission Program |
-| [**assignProductCommissionProgram()**](AffiliateApi.md#assignProductCommissionProgram) | **POST** /v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Assign a Product Commission Program |
-| [**assignSubscriptionCommissionProgram()**](AffiliateApi.md#assignSubscriptionCommissionProgram) | **POST** /v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id} | Assign a Subscription Commission Program |
-| [**createAffiliateCustomField()**](AffiliateApi.md#createAffiliateCustomField) | **POST** /v2/affiliates/model/customFields | Create an Affiliate Custom Field |
-| [**createDefaultCommissionProgram()**](AffiliateApi.md#createDefaultCommissionProgram) | **POST** /v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Create a Default Commission Program |
-| [**createRedirectLink()**](AffiliateApi.md#createRedirectLink) | **POST** /v2/affiliates/redirects | Create an Affiliate Link |
-| [**deleteAffiliate()**](AffiliateApi.md#deleteAffiliate) | **DELETE** /v2/affiliates/{id} | Delete Affiliate |
-| [**deleteAffiliateCommissionProgram()**](AffiliateApi.md#deleteAffiliateCommissionProgram) | **DELETE** /v2/affiliates/commissionPrograms/{commission_program_id} | Delete a Commission Program |
-| [**deleteAffiliateCustomField()**](AffiliateApi.md#deleteAffiliateCustomField) | **DELETE** /v2/affiliates/model/customFields/{custom_field_id} | Delete a Custom Field |
-| [**deleteRedirectLink()**](AffiliateApi.md#deleteRedirectLink) | **DELETE** /v2/affiliates/redirects/{redirect_id} | Delete an Affiliate Link |
-| [**getAffiliate()**](AffiliateApi.md#getAffiliate) | **GET** /v2/affiliates/{id} | Retrieve an Affiliate |
-| [**getAffiliateCommissionTotal()**](AffiliateApi.md#getAffiliateCommissionTotal) | **GET** /v2/affiliates/{affiliate_id}/commissionTotal | Retrieve Affiliate Commission Earned and View LedgerURl for portal |
-| [**getAffiliateCommissions()**](AffiliateApi.md#getAffiliateCommissions) | **GET** /v2/affiliates/{affiliate_id}:commissions | Retrieve Affiliate Commission and Clawbacks |
-| [**getAffiliateCustomFields()**](AffiliateApi.md#getAffiliateCustomFields) | **GET** /v2/affiliates/model | Retrieve Affiliate Model |
-| [**getCommissionProgram()**](AffiliateApi.md#getCommissionProgram) | **GET** /v2/affiliates/commissionPrograms/{commission_program_id} | Retrieve a Commission Program |
-| [**getRedirectLink()**](AffiliateApi.md#getRedirectLink) | **GET** /v2/affiliates/redirects/{redirect_id} | Retrieve an Affiliate Link |
-| [**listAffiliate()**](AffiliateApi.md#listAffiliate) | **GET** /v2/affiliates | List Affiliates |
-| [**listAffiliateCommissionPrograms()**](AffiliateApi.md#listAffiliateCommissionPrograms) | **GET** /v2/affiliates/commissionPrograms | List Affiliate Commission Programs |
-| [**listAffiliateLinks()**](AffiliateApi.md#listAffiliateLinks) | **GET** /v2/affiliates/redirects | List Affiliate Links |
-| [**listAffiliatePayments()**](AffiliateApi.md#listAffiliatePayments) | **GET** /v2/affiliates/{affiliate_id}/payments | List Affiliate Payments |
-| [**listSummaries()**](AffiliateApi.md#listSummaries) | **GET** /v2/affiliates/summaries | List Affiliate Summaries |
-| [**removeAffiliateFromProgram()**](AffiliateApi.md#removeAffiliateFromProgram) | **POST** /v2/affiliates/{id}:removeFromProgram | Remove an Affiliate from a Commission Program |
-| [**removeProductCommissionFromCommissions()**](AffiliateApi.md#removeProductCommissionFromCommissions) | **POST** /v2/affiliates/commissionPrograms/{commission_id}:removeProductCommission | Remove a Product from a Commission Program |
-| [**removeSubscriptionPlanCommissionFromCommissions()**](AffiliateApi.md#removeSubscriptionPlanCommissionFromCommissions) | **POST** /v2/affiliates/commissionPrograms/{commission_id}:removeSubscriptionCommission | Remove a Subscription from a Commission Program |
-| [**updateAffiliate()**](AffiliateApi.md#updateAffiliate) | **PATCH** /v2/affiliates/{id} | Update an Affiliate |
-| [**updateAffiliateCustomField()**](AffiliateApi.md#updateAffiliateCustomField) | **PATCH** /v2/affiliates/model/customFields/{custom_field_id} | Update a Custom Field |
-| [**updateCommissionProgram()**](AffiliateApi.md#updateCommissionProgram) | **PATCH** /v2/affiliates/commissionPrograms/{commission_program_id} | Update an Affiliate Commission Program |
-| [**updateDefaultCommissionProgram()**](AffiliateApi.md#updateDefaultCommissionProgram) | **PATCH** /v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Update a Default Commission Program |
-| [**updateProductCommissionProgram()**](AffiliateApi.md#updateProductCommissionProgram) | **PATCH** /v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Update a Product Commission Program |
-| [**updateRedirectLink()**](AffiliateApi.md#updateRedirectLink) | **PATCH** /v2/affiliates/redirects/{redirect_id} | Update an Affiliate Link |
-| [**updateSubscriptionCommissionProgram()**](AffiliateApi.md#updateSubscriptionCommissionProgram) | **PATCH** /v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id} | Update a Subscription Commission Program |
+| [**addAffiliate()**](AffiliateApi.md#addAffiliate) | **POST** /rest/v2/affiliates | Create an Affiliate |
+| [**addAffiliateToProgram()**](AffiliateApi.md#addAffiliateToProgram) | **POST** /rest/v2/affiliates/{id}:assignToProgram | Assign Affiliate to Commission program |
+| [**addCommissionProgram()**](AffiliateApi.md#addCommissionProgram) | **POST** /rest/v2/affiliates/commissionPrograms | Create an Affiliate Commission Program |
+| [**assignProductCommissionProgram()**](AffiliateApi.md#assignProductCommissionProgram) | **POST** /rest/v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Assign a Product Commission Program |
+| [**assignSubscriptionCommissionProgram()**](AffiliateApi.md#assignSubscriptionCommissionProgram) | **POST** /rest/v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id} | Assign a Subscription Commission Program |
+| [**createAffiliateCustomField()**](AffiliateApi.md#createAffiliateCustomField) | **POST** /rest/v2/affiliates/model/customFields | Create an Affiliate Custom Field |
+| [**createDefaultCommissionProgram()**](AffiliateApi.md#createDefaultCommissionProgram) | **POST** /rest/v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Create a Default Commission Program |
+| [**createRedirectLink()**](AffiliateApi.md#createRedirectLink) | **POST** /rest/v2/affiliates/redirects | Create an Affiliate Link |
+| [**deleteAffiliate()**](AffiliateApi.md#deleteAffiliate) | **DELETE** /rest/v2/affiliates/{id} | Delete Affiliate |
+| [**deleteAffiliateCommissionProgram()**](AffiliateApi.md#deleteAffiliateCommissionProgram) | **DELETE** /rest/v2/affiliates/commissionPrograms/{commission_program_id} | Delete a Commission Program |
+| [**deleteAffiliateCustomField()**](AffiliateApi.md#deleteAffiliateCustomField) | **DELETE** /rest/v2/affiliates/model/customFields/{custom_field_id} | Delete a Custom Field |
+| [**deleteRedirectLink()**](AffiliateApi.md#deleteRedirectLink) | **DELETE** /rest/v2/affiliates/redirects/{redirect_id} | Delete an Affiliate Link |
+| [**getAffiliate()**](AffiliateApi.md#getAffiliate) | **GET** /rest/v2/affiliates/{id} | Retrieve an Affiliate |
+| [**getAffiliateCommissionTotal()**](AffiliateApi.md#getAffiliateCommissionTotal) | **GET** /rest/v2/affiliates/{affiliate_id}/commissionTotal | Retrieve Affiliate Commission Earned and View LedgerURl for portal |
+| [**getAffiliateCommissions()**](AffiliateApi.md#getAffiliateCommissions) | **GET** /rest/v2/affiliates/{affiliate_id}:commissions | Retrieve Affiliate Commissions |
+| [**getAffiliateCustomFields()**](AffiliateApi.md#getAffiliateCustomFields) | **GET** /rest/v2/affiliates/model | Retrieve Affiliate Model |
+| [**getCommissionProgram()**](AffiliateApi.md#getCommissionProgram) | **GET** /rest/v2/affiliates/commissionPrograms/{commission_program_id} | Retrieve a Commission Program |
+| [**getRedirectLink()**](AffiliateApi.md#getRedirectLink) | **GET** /rest/v2/affiliates/redirects/{redirect_id} | Retrieve an Affiliate Link |
+| [**getReferralsByAffiliateId()**](AffiliateApi.md#getReferralsByAffiliateId) | **GET** /rest/v2/affiliates/{affiliate_id}/referrals | Retrieve Affiliate Referrals |
+| [**listAffiliate()**](AffiliateApi.md#listAffiliate) | **GET** /rest/v2/affiliates | List Affiliates |
+| [**listAffiliateCommissionPrograms()**](AffiliateApi.md#listAffiliateCommissionPrograms) | **GET** /rest/v2/affiliates/commissionPrograms | List Affiliate Commission Programs |
+| [**listAffiliateLinks()**](AffiliateApi.md#listAffiliateLinks) | **GET** /rest/v2/affiliates/redirects | List Affiliate Links |
+| [**listAffiliatePayments()**](AffiliateApi.md#listAffiliatePayments) | **GET** /rest/v2/affiliates/{affiliate_id}/payments | List Affiliate Payments |
+| [**listCommissionProgramResources()**](AffiliateApi.md#listCommissionProgramResources) | **GET** /rest/v2/affiliates/commissionPrograms/{commission_program_id}/resources | Retrieve Commission Program Resources |
+| [**listSummaries()**](AffiliateApi.md#listSummaries) | **GET** /rest/v2/affiliates/summaries | List Affiliate Summaries |
+| [**removeAffiliateFromProgram()**](AffiliateApi.md#removeAffiliateFromProgram) | **POST** /rest/v2/affiliates/{id}:removeFromProgram | Remove an Affiliate from a Commission Program |
+| [**removeProductCommissionFromCommissions()**](AffiliateApi.md#removeProductCommissionFromCommissions) | **POST** /rest/v2/affiliates/commissionPrograms/{commission_id}:removeProductCommission | Remove a Product from a Commission Program |
+| [**removeSubscriptionPlanCommissionFromCommissions()**](AffiliateApi.md#removeSubscriptionPlanCommissionFromCommissions) | **POST** /rest/v2/affiliates/commissionPrograms/{commission_id}:removeSubscriptionCommission | Remove a Subscription from a Commission Program |
+| [**updateAffiliate()**](AffiliateApi.md#updateAffiliate) | **PATCH** /rest/v2/affiliates/{id} | Update an Affiliate |
+| [**updateAffiliateCustomField()**](AffiliateApi.md#updateAffiliateCustomField) | **PATCH** /rest/v2/affiliates/model/customFields/{custom_field_id} | Update a Custom Field |
+| [**updateCommissionProgram()**](AffiliateApi.md#updateCommissionProgram) | **PATCH** /rest/v2/affiliates/commissionPrograms/{commission_program_id} | Update an Affiliate Commission Program |
+| [**updateDefaultCommissionProgram()**](AffiliateApi.md#updateDefaultCommissionProgram) | **PATCH** /rest/v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Update a Default Commission Program |
+| [**updateProductCommissionProgram()**](AffiliateApi.md#updateProductCommissionProgram) | **PATCH** /rest/v2/affiliates/commissionPrograms/productCommissionPrograms/{commission_program_id} | Update a Product Commission Program |
+| [**updateRedirectLink()**](AffiliateApi.md#updateRedirectLink) | **PATCH** /rest/v2/affiliates/redirects/{redirect_id} | Update an Affiliate Link |
+| [**updateSubscriptionCommissionProgram()**](AffiliateApi.md#updateSubscriptionCommissionProgram) | **PATCH** /rest/v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id} | Update a Subscription Commission Program |
 
 
 ## `addAffiliate()`
@@ -56,12 +58,16 @@ Creates a single Affiliate
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\AffiliateApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$create_affiliate_request = new \Keap\Core\V2\Model\CreateAffiliateRequest(); // \Keap\Core\V2\Model\CreateAffiliateRequest | Affiliate request to insert
+$create_affiliate_request = new \Keap\Core\V2\Model\CreateAffiliateRequest(); // \Keap\Core\V2\Model\CreateAffiliateRequest
 
 try {
     $result = $apiInstance->addAffiliate($create_affiliate_request);
@@ -75,7 +81,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **create_affiliate_request** | [**\Keap\Core\V2\Model\CreateAffiliateRequest**](../Model/CreateAffiliateRequest.md)| Affiliate request to insert | [optional] |
+| **create_affiliate_request** | [**\Keap\Core\V2\Model\CreateAffiliateRequest**](../Model/CreateAffiliateRequest.md)|  | |
 
 ### Return type
 
@@ -83,7 +89,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -111,13 +117,17 @@ Assigns an Affiliate to Commission Program
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\AffiliateApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$id = 'id_example'; // string | id
-$affiliate_add_to_program_request = new \Keap\Core\V2\Model\AffiliateAddToProgramRequest(); // \Keap\Core\V2\Model\AffiliateAddToProgramRequest | affiliateAddToProgramRequest
+$id = 'id_example'; // string
+$affiliate_add_to_program_request = new \Keap\Core\V2\Model\AffiliateAddToProgramRequest(); // \Keap\Core\V2\Model\AffiliateAddToProgramRequest
 
 try {
     $apiInstance->addAffiliateToProgram($id, $affiliate_add_to_program_request);
@@ -130,8 +140,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **string**| id | |
-| **affiliate_add_to_program_request** | [**\Keap\Core\V2\Model\AffiliateAddToProgramRequest**](../Model/AffiliateAddToProgramRequest.md)| affiliateAddToProgramRequest | |
+| **id** | **string**|  | |
+| **affiliate_add_to_program_request** | [**\Keap\Core\V2\Model\AffiliateAddToProgramRequest**](../Model/AffiliateAddToProgramRequest.md)|  | |
 
 ### Return type
 
@@ -139,7 +149,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -167,12 +177,16 @@ Creates an Affiliate Commission Program
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\AffiliateApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$create_commission_program_request = new \Keap\Core\V2\Model\CreateCommissionProgramRequest(); // \Keap\Core\V2\Model\CreateCommissionProgramRequest | Commission Program to insert
+$create_commission_program_request = new \Keap\Core\V2\Model\CreateCommissionProgramRequest(); // \Keap\Core\V2\Model\CreateCommissionProgramRequest
 
 try {
     $result = $apiInstance->addCommissionProgram($create_commission_program_request);
@@ -186,7 +200,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **create_commission_program_request** | [**\Keap\Core\V2\Model\CreateCommissionProgramRequest**](../Model/CreateCommissionProgramRequest.md)| Commission Program to insert | [optional] |
+| **create_commission_program_request** | [**\Keap\Core\V2\Model\CreateCommissionProgramRequest**](../Model/CreateCommissionProgramRequest.md)|  | |
 
 ### Return type
 
@@ -194,7 +208,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -222,13 +236,17 @@ Assigns a Product Commission Program to a Product
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\AffiliateApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$commission_program_id = 'commission_program_id_example'; // string | commission_program_id
-$create_product_commission_program_request = new \Keap\Core\V2\Model\CreateProductCommissionProgramRequest(); // \Keap\Core\V2\Model\CreateProductCommissionProgramRequest | Product Commission Program
+$commission_program_id = 'commission_program_id_example'; // string
+$create_product_commission_program_request = new \Keap\Core\V2\Model\CreateProductCommissionProgramRequest(); // \Keap\Core\V2\Model\CreateProductCommissionProgramRequest
 
 try {
     $result = $apiInstance->assignProductCommissionProgram($commission_program_id, $create_product_commission_program_request);
@@ -242,8 +260,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **commission_program_id** | **string**| commission_program_id | |
-| **create_product_commission_program_request** | [**\Keap\Core\V2\Model\CreateProductCommissionProgramRequest**](../Model/CreateProductCommissionProgramRequest.md)| Product Commission Program | [optional] |
+| **commission_program_id** | **string**|  | |
+| **create_product_commission_program_request** | [**\Keap\Core\V2\Model\CreateProductCommissionProgramRequest**](../Model/CreateProductCommissionProgramRequest.md)|  | |
 
 ### Return type
 
@@ -251,7 +269,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -279,13 +297,17 @@ Assigns a Subscription Commission Program to a Subscription
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\AffiliateApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$commission_program_id = 'commission_program_id_example'; // string | commission_program_id
-$create_subscription_commission_program_request = new \Keap\Core\V2\Model\CreateSubscriptionCommissionProgramRequest(); // \Keap\Core\V2\Model\CreateSubscriptionCommissionProgramRequest | Subscription Commission Program
+$commission_program_id = 'commission_program_id_example'; // string
+$create_subscription_commission_program_request = new \Keap\Core\V2\Model\CreateSubscriptionCommissionProgramRequest(); // \Keap\Core\V2\Model\CreateSubscriptionCommissionProgramRequest
 
 try {
     $result = $apiInstance->assignSubscriptionCommissionProgram($commission_program_id, $create_subscription_commission_program_request);
@@ -299,8 +321,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **commission_program_id** | **string**| commission_program_id | |
-| **create_subscription_commission_program_request** | [**\Keap\Core\V2\Model\CreateSubscriptionCommissionProgramRequest**](../Model/CreateSubscriptionCommissionProgramRequest.md)| Subscription Commission Program | [optional] |
+| **commission_program_id** | **string**|  | |
+| **create_subscription_commission_program_request** | [**\Keap\Core\V2\Model\CreateSubscriptionCommissionProgramRequest**](../Model/CreateSubscriptionCommissionProgramRequest.md)|  | |
 
 ### Return type
 
@@ -308,7 +330,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -336,12 +358,16 @@ Creates a single Affiliate Custom Field
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\AffiliateApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$create_custom_field_request = new \Keap\Core\V2\Model\CreateCustomFieldRequest(); // \Keap\Core\V2\Model\CreateCustomFieldRequest | customField
+$create_custom_field_request = new \Keap\Core\V2\Model\CreateCustomFieldRequest(); // \Keap\Core\V2\Model\CreateCustomFieldRequest
 
 try {
     $result = $apiInstance->createAffiliateCustomField($create_custom_field_request);
@@ -355,7 +381,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **create_custom_field_request** | [**\Keap\Core\V2\Model\CreateCustomFieldRequest**](../Model/CreateCustomFieldRequest.md)| customField | |
+| **create_custom_field_request** | [**\Keap\Core\V2\Model\CreateCustomFieldRequest**](../Model/CreateCustomFieldRequest.md)|  | |
 
 ### Return type
 
@@ -363,7 +389,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -391,13 +417,17 @@ Creates a Default Commission Program
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\AffiliateApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$commission_program_id = 'commission_program_id_example'; // string | commission_program_id
-$create_default_commission_program_request = new \Keap\Core\V2\Model\CreateDefaultCommissionProgramRequest(); // \Keap\Core\V2\Model\CreateDefaultCommissionProgramRequest | Values of the Default Commission Program
+$commission_program_id = 'commission_program_id_example'; // string
+$create_default_commission_program_request = new \Keap\Core\V2\Model\CreateDefaultCommissionProgramRequest(); // \Keap\Core\V2\Model\CreateDefaultCommissionProgramRequest
 
 try {
     $result = $apiInstance->createDefaultCommissionProgram($commission_program_id, $create_default_commission_program_request);
@@ -411,8 +441,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **commission_program_id** | **string**| commission_program_id | |
-| **create_default_commission_program_request** | [**\Keap\Core\V2\Model\CreateDefaultCommissionProgramRequest**](../Model/CreateDefaultCommissionProgramRequest.md)| Values of the Default Commission Program | [optional] |
+| **commission_program_id** | **string**|  | |
+| **create_default_commission_program_request** | [**\Keap\Core\V2\Model\CreateDefaultCommissionProgramRequest**](../Model/CreateDefaultCommissionProgramRequest.md)|  | |
 
 ### Return type
 
@@ -420,7 +450,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -448,12 +478,16 @@ Creates a single Affiliate Link
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\AffiliateApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$create_or_update_affiliate_link_request = new \Keap\Core\V2\Model\CreateOrUpdateAffiliateLinkRequest(); // \Keap\Core\V2\Model\CreateOrUpdateAffiliateLinkRequest | request
+$create_or_update_affiliate_link_request = new \Keap\Core\V2\Model\CreateOrUpdateAffiliateLinkRequest(); // \Keap\Core\V2\Model\CreateOrUpdateAffiliateLinkRequest
 
 try {
     $result = $apiInstance->createRedirectLink($create_or_update_affiliate_link_request);
@@ -467,7 +501,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **create_or_update_affiliate_link_request** | [**\Keap\Core\V2\Model\CreateOrUpdateAffiliateLinkRequest**](../Model/CreateOrUpdateAffiliateLinkRequest.md)| request | |
+| **create_or_update_affiliate_link_request** | [**\Keap\Core\V2\Model\CreateOrUpdateAffiliateLinkRequest**](../Model/CreateOrUpdateAffiliateLinkRequest.md)|  | |
 
 ### Return type
 
@@ -475,7 +509,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -503,12 +537,16 @@ Deletes the specified Affiliate
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\AffiliateApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$id = 'id_example'; // string | id
+$id = 'id_example'; // string
 
 try {
     $apiInstance->deleteAffiliate($id);
@@ -521,7 +559,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **string**| id | |
+| **id** | **string**|  | |
 
 ### Return type
 
@@ -529,7 +567,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -557,12 +595,16 @@ Deletes a Commission Program
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\AffiliateApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$commission_program_id = 'commission_program_id_example'; // string | commission_program_id
+$commission_program_id = 'commission_program_id_example'; // string
 
 try {
     $apiInstance->deleteAffiliateCommissionProgram($commission_program_id);
@@ -575,7 +617,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **commission_program_id** | **string**| commission_program_id | |
+| **commission_program_id** | **string**|  | |
 
 ### Return type
 
@@ -583,7 +625,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -611,12 +653,16 @@ Deletes a Custom Field from Affiliate.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\AffiliateApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$custom_field_id = 'custom_field_id_example'; // string | custom_field_id
+$custom_field_id = 'custom_field_id_example'; // string
 
 try {
     $apiInstance->deleteAffiliateCustomField($custom_field_id);
@@ -629,7 +675,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **custom_field_id** | **string**| custom_field_id | |
+| **custom_field_id** | **string**|  | |
 
 ### Return type
 
@@ -637,7 +683,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -665,12 +711,16 @@ Deletes an Affiliate Link
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\AffiliateApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$redirect_id = 'redirect_id_example'; // string | redirect_id
+$redirect_id = 'redirect_id_example'; // string
 
 try {
     $apiInstance->deleteRedirectLink($redirect_id);
@@ -683,7 +733,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **redirect_id** | **string**| redirect_id | |
+| **redirect_id** | **string**|  | |
 
 ### Return type
 
@@ -691,7 +741,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -719,12 +769,16 @@ Retrieves a single Affiliate
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\AffiliateApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$id = 'id_example'; // string | id
+$id = 'id_example'; // string
 
 try {
     $result = $apiInstance->getAffiliate($id);
@@ -738,7 +792,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **string**| id | |
+| **id** | **string**|  | |
 
 ### Return type
 
@@ -746,7 +800,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -774,12 +828,16 @@ Get the Affiliate Commission Earned and View LedgerURl for portal
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\AffiliateApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$affiliate_id = 'affiliate_id_example'; // string | affiliate_id
+$affiliate_id = 'affiliate_id_example'; // string
 
 try {
     $result = $apiInstance->getAffiliateCommissionTotal($affiliate_id);
@@ -793,7 +851,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **affiliate_id** | **string**| affiliate_id | |
+| **affiliate_id** | **string**|  | |
 
 ### Return type
 
@@ -801,7 +859,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -818,9 +876,9 @@ No authorization required
 getAffiliateCommissions($affiliate_id, $filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListAffiliateCommissionsResponse
 ```
 
-Retrieve Affiliate Commission and Clawbacks
+Retrieve Affiliate Commissions
 
-Retrieve a list of Affiliate's Commissions and Clawbacks
+Retrieve a list of Affiliate's Commissions
 
 ### Example
 
@@ -829,14 +887,18 @@ Retrieve a list of Affiliate's Commissions and Clawbacks
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\AffiliateApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$affiliate_id = 'affiliate_id_example'; // string | affiliate_id
-$filter = 'filter_example'; // string | Filter to apply, allowed fields are: - (String) `affiliateId` - (String) `since_time` - (String) `until_time` You will need to apply the `==` operator to check the equality of one of the filters with your searched  word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:  - `filter=since_time%3D%3D2024-09-17T-15:50+00`  - `filter=until_time%3D%3D2024-09-17T-15:50+00`  - `filter=affiliateId%3D%3D123`
-$order_by = 'order_by_example'; // string | Attribute and direction to order items. One of the following fields: - `invoice_id` - `affowed_id` - `date_earned`  One of the following directions: - `asc` - `desc`
+$affiliate_id = 'affiliate_id_example'; // string
+$filter = 'filter_example'; // string | Filter to apply, allowed fields are: - (String) `since_time` - (String) `until_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=since_time%3D%3D2024-05-21T23:00:00Z%3Buntil_time%3D%3D2025-05-21T23:00:00Z` - `filter=until_time%3D%3D2025-05-21T23:00:00Z`
+$order_by = 'order_by_example'; // string | Attribute and direction to order items. One of the following fields: - `invoice_id` - `time_earned`  One of the following directions: - `asc` - `desc`
 $page_size = 0; // int | Total number of items to return per page
 $page_token = 'page_token_example'; // string | Page token
 
@@ -852,9 +914,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **affiliate_id** | **string**| affiliate_id | |
-| **filter** | **string**| Filter to apply, allowed fields are: - (String) &#x60;affiliateId&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched  word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;since_time%3D%3D2024-09-17T-15:50+00&#x60;  - &#x60;filter&#x3D;until_time%3D%3D2024-09-17T-15:50+00&#x60;  - &#x60;filter&#x3D;affiliateId%3D%3D123&#x60; | [optional] |
-| **order_by** | **string**| Attribute and direction to order items. One of the following fields: - &#x60;invoice_id&#x60; - &#x60;affowed_id&#x60; - &#x60;date_earned&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
+| **affiliate_id** | **string**|  | |
+| **filter** | **string**| Filter to apply, allowed fields are: - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;since_time%3D%3D2024-05-21T23:00:00Z%3Buntil_time%3D%3D2025-05-21T23:00:00Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-05-21T23:00:00Z&#x60; | [optional] |
+| **order_by** | **string**| Attribute and direction to order items. One of the following fields: - &#x60;invoice_id&#x60; - &#x60;time_earned&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **page_size** | **int**| Total number of items to return per page | [optional] |
 | **page_token** | **string**| Page token | [optional] |
 
@@ -864,7 +926,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -892,10 +954,14 @@ Get the custom fields and optional properties for the Affiliate object
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\AffiliateApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 
 try {
@@ -916,7 +982,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -930,7 +996,7 @@ No authorization required
 ## `getCommissionProgram()`
 
 ```php
-getCommissionProgram($commission_program_id): \Keap\Core\V2\Model\AffiliateProgramV2
+getCommissionProgram($commission_program_id): \Keap\Core\V2\Model\GetRestCommissionProgram
 ```
 
 Retrieve a Commission Program
@@ -944,12 +1010,16 @@ Retrieves a single Commission Program
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\AffiliateApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$commission_program_id = 'commission_program_id_example'; // string | commission_program_id
+$commission_program_id = 'commission_program_id_example'; // string
 
 try {
     $result = $apiInstance->getCommissionProgram($commission_program_id);
@@ -963,15 +1033,15 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **commission_program_id** | **string**| commission_program_id | |
+| **commission_program_id** | **string**|  | |
 
 ### Return type
 
-[**\Keap\Core\V2\Model\AffiliateProgramV2**](../Model/AffiliateProgramV2.md)
+[**\Keap\Core\V2\Model\GetRestCommissionProgram**](../Model/GetRestCommissionProgram.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -999,12 +1069,16 @@ Retrieves information about a single Affiliate Link
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\AffiliateApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$redirect_id = 'redirect_id_example'; // string | redirect_id
+$redirect_id = 'redirect_id_example'; // string
 
 try {
     $result = $apiInstance->getRedirectLink($redirect_id);
@@ -1018,7 +1092,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **redirect_id** | **string**| redirect_id | |
+| **redirect_id** | **string**|  | |
 
 ### Return type
 
@@ -1026,7 +1100,66 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getReferralsByAffiliateId()`
+
+```php
+getReferralsByAffiliateId($affiliate_id): \Keap\Core\V2\Model\ListAffiliateReferralsResponse
+```
+
+Retrieve Affiliate Referrals
+
+Retrieves all referrals belonging to the given affiliate
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Keap\Core\V2\Api\AffiliateApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$affiliate_id = 'affiliate_id_example'; // string
+
+try {
+    $result = $apiInstance->getReferralsByAffiliateId($affiliate_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AffiliateApi->getReferralsByAffiliateId: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **affiliate_id** | **string**|  | |
+
+### Return type
+
+[**\Keap\Core\V2\Model\ListAffiliateReferralsResponse**](../Model/ListAffiliateReferralsResponse.md)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1054,12 +1187,16 @@ Retrieves a list of Affiliates
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\AffiliateApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$filter = 'filter_example'; // string | Filter to apply, allowed fields are: - (String) `affiliate_name` - (String) `contact_id` - (String) `status` - (String) `code`
+$filter = 'filter_example'; // string | Filter to apply, allowed fields are: - (String) `affiliate_name` - (String) `contact_id` - (String) `referral_contact_id` - (String) `status` - (String) `code`  You will need to apply the `==` operator to check the equality of one of the filters with the value you want to match, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=affiliate_name%3D%3DBob` - `filter=contact_id%3D%3D567` - `filter=contact_id%3D%3D123%3Bcode%3D%3D567`
 $order_by = 'order_by_example'; // string | Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `name` - `status` - `code`  One of the following directions: - `asc` - `desc`
 $page_size = 0; // int | Total number of items to return per page
 $page_token = 'page_token_example'; // string | Page token
@@ -1076,7 +1213,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **filter** | **string**| Filter to apply, allowed fields are: - (String) &#x60;affiliate_name&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;code&#x60; | [optional] |
+| **filter** | **string**| Filter to apply, allowed fields are: - (String) &#x60;affiliate_name&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;referral_contact_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;code&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with the value you want to match, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;affiliate_name%3D%3DBob&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bcode%3D%3D567&#x60; | [optional] |
 | **order_by** | **string**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;name&#x60; - &#x60;status&#x60; - &#x60;code&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **page_size** | **int**| Total number of items to return per page | [optional] |
 | **page_token** | **string**| Page token | [optional] |
@@ -1087,7 +1224,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1115,10 +1252,14 @@ Retrieves a list of Affiliate Commission Programs
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\AffiliateApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $filter = 'filter_example'; // string | Filter to apply, allowed fields are: - (String) `name` - (String) `affiliate_id`
 $order_by = 'order_by_example'; // string | Attribute and direction to order items. One of the following fields: - `name` - `date_created`  One of the following directions: - `asc` - `desc`
@@ -1148,7 +1289,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1176,10 +1317,14 @@ Retrieves a list of Affiliate Links
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\AffiliateApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $filter = 'filter_example'; // string | Filter to apply, allowed fields are: - (String) `name` - (String) `affiliate_id`
 $order_by = 'order_by_example'; // string | Attribute and direction to order items. One of the following fields: - `name` - `date_created`  One of the following directions: - `asc` - `desc`
@@ -1209,7 +1354,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1237,13 +1382,17 @@ Retrieves a list of affiliate payments
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\AffiliateApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$affiliate_id = 'affiliate_id_example'; // string | affiliate_id
-$filter = 'filter_example'; // string | Filter to apply, allowed fields are: - (String) `since_time` - (String) `until_time` You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=since_time%3D%3D2024-09-17T-15:50+00` - `filter=until_time%3D%3D2024-09-17T-15:50+00`
+$affiliate_id = 'affiliate_id_example'; // string
+$filter = 'filter_example'; // string | Filter to apply, allowed fields are: - (String) `since_time` - (String) `until_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=since_time%3D%3D2024-09-17T-15:50+00` - `filter=until_time%3D%3D2024-09-17T-15:50+00`
 $order_by = 'order_by_example'; // string | Attribute and direction to order items. One of the following fields: - `create_time` - `pay_date` - `pay_amount`  One of the following directions: - `asc` - `desc`
 $page_size = 0; // int | Total number of items to return per page
 $page_token = 'page_token_example'; // string | Page token
@@ -1260,8 +1409,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **affiliate_id** | **string**| affiliate_id | |
-| **filter** | **string**| Filter to apply, allowed fields are: - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;since_time%3D%3D2024-09-17T-15:50+00&#x60; - &#x60;filter&#x3D;until_time%3D%3D2024-09-17T-15:50+00&#x60; | [optional] |
+| **affiliate_id** | **string**|  | |
+| **filter** | **string**| Filter to apply, allowed fields are: - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;since_time%3D%3D2024-09-17T-15:50+00&#x60; - &#x60;filter&#x3D;until_time%3D%3D2024-09-17T-15:50+00&#x60; | [optional] |
 | **order_by** | **string**| Attribute and direction to order items. One of the following fields: - &#x60;create_time&#x60; - &#x60;pay_date&#x60; - &#x60;pay_amount&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **page_size** | **int**| Total number of items to return per page | [optional] |
 | **page_token** | **string**| Page token | [optional] |
@@ -1272,7 +1421,66 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listCommissionProgramResources()`
+
+```php
+listCommissionProgramResources($commission_program_id): \Keap\Core\V2\Model\ListProgramResourcesResponse
+```
+
+Retrieve Commission Program Resources
+
+Retrieves resources for a commission program
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Keap\Core\V2\Api\AffiliateApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$commission_program_id = 'commission_program_id_example'; // string
+
+try {
+    $result = $apiInstance->listCommissionProgramResources($commission_program_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AffiliateApi->listCommissionProgramResources: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **commission_program_id** | **string**|  | |
+
+### Return type
+
+[**\Keap\Core\V2\Model\ListProgramResourcesResponse**](../Model/ListProgramResourcesResponse.md)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1300,12 +1508,16 @@ Retrieves a list of Affiliate Summaries
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\AffiliateApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$filter = 'filter_example'; // string | Filter to apply, allowed fields are: - (List[String]) `affiliate_ids` - (String) `since_time` - (String) `until_time` You will need to apply the `==` operator to check the equality of one of the filters with your searched  word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:  - `filter=since_time%3D%3D2024-09-17T-15:50+00`  - `filter=until_time%3D%3D2024-09-17T-15:50+00`  - `filter=affiliate_ids%3D%3D123,456,789`
+$filter = 'filter_example'; // string | Filter to apply, allowed fields are: - (List[String]) `affiliate_ids` - (String) `since_time` - (String) `until_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched  word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:  - `filter=since_time%3D%3D2024-09-17T-15:50+00`  - `filter=until_time%3D%3D2024-09-17T-15:50+00`  - `filter=affiliate_ids%3D%3D123,456,789`
 $order_by = 'order_by_example'; // string | Attribute and direction to order items. One of the following fields: - `affiliate_id` - `amount_earned` - `balance` - `clawbacks`  One of the following directions: - `asc` - `desc`
 $page_size = 0; // int | Total number of items to return per page
 $page_token = 'page_token_example'; // string | Page token
@@ -1322,7 +1534,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **filter** | **string**| Filter to apply, allowed fields are: - (List[String]) &#x60;affiliate_ids&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched  word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;since_time%3D%3D2024-09-17T-15:50+00&#x60;  - &#x60;filter&#x3D;until_time%3D%3D2024-09-17T-15:50+00&#x60;  - &#x60;filter&#x3D;affiliate_ids%3D%3D123,456,789&#x60; | [optional] |
+| **filter** | **string**| Filter to apply, allowed fields are: - (List[String]) &#x60;affiliate_ids&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched  word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;since_time%3D%3D2024-09-17T-15:50+00&#x60;  - &#x60;filter&#x3D;until_time%3D%3D2024-09-17T-15:50+00&#x60;  - &#x60;filter&#x3D;affiliate_ids%3D%3D123,456,789&#x60; | [optional] |
 | **order_by** | **string**| Attribute and direction to order items. One of the following fields: - &#x60;affiliate_id&#x60; - &#x60;amount_earned&#x60; - &#x60;balance&#x60; - &#x60;clawbacks&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **page_size** | **int**| Total number of items to return per page | [optional] |
 | **page_token** | **string**| Page token | [optional] |
@@ -1333,7 +1545,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1361,13 +1573,17 @@ Removes an Affiliate from a Commission Program
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\AffiliateApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$id = 'id_example'; // string | id
-$affiliate_remove_from_program_request = new \Keap\Core\V2\Model\AffiliateRemoveFromProgramRequest(); // \Keap\Core\V2\Model\AffiliateRemoveFromProgramRequest | removeFromProgramRequest
+$id = 'id_example'; // string
+$affiliate_remove_from_program_request = new \Keap\Core\V2\Model\AffiliateRemoveFromProgramRequest(); // \Keap\Core\V2\Model\AffiliateRemoveFromProgramRequest
 
 try {
     $apiInstance->removeAffiliateFromProgram($id, $affiliate_remove_from_program_request);
@@ -1380,8 +1596,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **string**| id | |
-| **affiliate_remove_from_program_request** | [**\Keap\Core\V2\Model\AffiliateRemoveFromProgramRequest**](../Model/AffiliateRemoveFromProgramRequest.md)| removeFromProgramRequest | |
+| **id** | **string**|  | |
+| **affiliate_remove_from_program_request** | [**\Keap\Core\V2\Model\AffiliateRemoveFromProgramRequest**](../Model/AffiliateRemoveFromProgramRequest.md)|  | |
 
 ### Return type
 
@@ -1389,7 +1605,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1417,13 +1633,17 @@ Removes a Product from a Commission Program
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\AffiliateApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$commission_id = 'commission_id_example'; // string | commission_id
-$delete_program_commission_request = new \Keap\Core\V2\Model\DeleteProgramCommissionRequest(); // \Keap\Core\V2\Model\DeleteProgramCommissionRequest | deleteProgramCommissionRequest
+$commission_id = 'commission_id_example'; // string
+$delete_program_commission_request = new \Keap\Core\V2\Model\DeleteProgramCommissionRequest(); // \Keap\Core\V2\Model\DeleteProgramCommissionRequest
 
 try {
     $apiInstance->removeProductCommissionFromCommissions($commission_id, $delete_program_commission_request);
@@ -1436,8 +1656,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **commission_id** | **string**| commission_id | |
-| **delete_program_commission_request** | [**\Keap\Core\V2\Model\DeleteProgramCommissionRequest**](../Model/DeleteProgramCommissionRequest.md)| deleteProgramCommissionRequest | |
+| **commission_id** | **string**|  | |
+| **delete_program_commission_request** | [**\Keap\Core\V2\Model\DeleteProgramCommissionRequest**](../Model/DeleteProgramCommissionRequest.md)|  | |
 
 ### Return type
 
@@ -1445,7 +1665,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1473,13 +1693,17 @@ Removes a Subscription from a Commission Program
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\AffiliateApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$commission_id = 'commission_id_example'; // string | commission_id
-$delete_subscription_plan_commission_request = new \Keap\Core\V2\Model\DeleteSubscriptionPlanCommissionRequest(); // \Keap\Core\V2\Model\DeleteSubscriptionPlanCommissionRequest | deleteSubscriptionPlanCommissionRequest
+$commission_id = 'commission_id_example'; // string
+$delete_subscription_plan_commission_request = new \Keap\Core\V2\Model\DeleteSubscriptionPlanCommissionRequest(); // \Keap\Core\V2\Model\DeleteSubscriptionPlanCommissionRequest
 
 try {
     $apiInstance->removeSubscriptionPlanCommissionFromCommissions($commission_id, $delete_subscription_plan_commission_request);
@@ -1492,8 +1716,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **commission_id** | **string**| commission_id | |
-| **delete_subscription_plan_commission_request** | [**\Keap\Core\V2\Model\DeleteSubscriptionPlanCommissionRequest**](../Model/DeleteSubscriptionPlanCommissionRequest.md)| deleteSubscriptionPlanCommissionRequest | |
+| **commission_id** | **string**|  | |
+| **delete_subscription_plan_commission_request** | [**\Keap\Core\V2\Model\DeleteSubscriptionPlanCommissionRequest**](../Model/DeleteSubscriptionPlanCommissionRequest.md)|  | |
 
 ### Return type
 
@@ -1501,7 +1725,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1529,13 +1753,17 @@ Updates a single Affiliate
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\AffiliateApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$id = 'id_example'; // string | id
-$update_affiliate_request = new \Keap\Core\V2\Model\UpdateAffiliateRequest(); // \Keap\Core\V2\Model\UpdateAffiliateRequest | Request to update an affiliate
+$id = 'id_example'; // string
+$update_affiliate_request = new \Keap\Core\V2\Model\UpdateAffiliateRequest(); // \Keap\Core\V2\Model\UpdateAffiliateRequest
 
 try {
     $result = $apiInstance->updateAffiliate($id, $update_affiliate_request);
@@ -1549,8 +1777,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **string**| id | |
-| **update_affiliate_request** | [**\Keap\Core\V2\Model\UpdateAffiliateRequest**](../Model/UpdateAffiliateRequest.md)| Request to update an affiliate | [optional] |
+| **id** | **string**|  | |
+| **update_affiliate_request** | [**\Keap\Core\V2\Model\UpdateAffiliateRequest**](../Model/UpdateAffiliateRequest.md)|  | |
 
 ### Return type
 
@@ -1558,7 +1786,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1586,14 +1814,18 @@ Updates a custom field of the specified type and options to the Affiliate object
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\AffiliateApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$custom_field_id = 'custom_field_id_example'; // string | custom_field_id
-$update_custom_field_meta_data_request = new \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest(); // \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest | request
-$update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+$custom_field_id = 'custom_field_id_example'; // string
+$update_custom_field_meta_data_request = new \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest(); // \Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest
+$update_mask = 'update_mask_example'; // string | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
     $result = $apiInstance->updateAffiliateCustomField($custom_field_id, $update_custom_field_meta_data_request, $update_mask);
@@ -1607,9 +1839,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **custom_field_id** | **string**| custom_field_id | |
-| **update_custom_field_meta_data_request** | [**\Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest**](../Model/UpdateCustomFieldMetaDataRequest.md)| request | |
-| **update_mask** | [**string[]**](../Model/string.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **custom_field_id** | **string**|  | |
+| **update_custom_field_meta_data_request** | [**\Keap\Core\V2\Model\UpdateCustomFieldMetaDataRequest**](../Model/UpdateCustomFieldMetaDataRequest.md)|  | |
+| **update_mask** | **string**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -1617,7 +1849,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1645,14 +1877,18 @@ Updates the properties of an Affiliate Commission Program
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\AffiliateApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$commission_program_id = 'commission_program_id_example'; // string | commission_program_id
-$update_commission_program_request = new \Keap\Core\V2\Model\UpdateCommissionProgramRequest(); // \Keap\Core\V2\Model\UpdateCommissionProgramRequest | updateCommissionProgramRequest
-$update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+$commission_program_id = 'commission_program_id_example'; // string
+$update_commission_program_request = new \Keap\Core\V2\Model\UpdateCommissionProgramRequest(); // \Keap\Core\V2\Model\UpdateCommissionProgramRequest
+$update_mask = 'update_mask_example'; // string | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
     $result = $apiInstance->updateCommissionProgram($commission_program_id, $update_commission_program_request, $update_mask);
@@ -1666,9 +1902,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **commission_program_id** | **string**| commission_program_id | |
-| **update_commission_program_request** | [**\Keap\Core\V2\Model\UpdateCommissionProgramRequest**](../Model/UpdateCommissionProgramRequest.md)| updateCommissionProgramRequest | |
-| **update_mask** | [**string[]**](../Model/string.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **commission_program_id** | **string**|  | |
+| **update_commission_program_request** | [**\Keap\Core\V2\Model\UpdateCommissionProgramRequest**](../Model/UpdateCommissionProgramRequest.md)|  | |
+| **update_mask** | **string**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -1676,7 +1912,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1690,7 +1926,7 @@ No authorization required
 ## `updateDefaultCommissionProgram()`
 
 ```php
-updateDefaultCommissionProgram($commission_program_id, $update_mask, $update_default_commission_program_request): \Keap\Core\V2\Model\SetDefaultCommissionProgramResponse
+updateDefaultCommissionProgram($commission_program_id, $update_default_commission_program_request, $update_mask): \Keap\Core\V2\Model\SetDefaultCommissionProgramResponse
 ```
 
 Update a Default Commission Program
@@ -1704,17 +1940,21 @@ Updates a Default Commission Program
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\AffiliateApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$commission_program_id = 'commission_program_id_example'; // string | commission_program_id
-$update_mask = array('update_mask_example'); // string[] | update_mask
-$update_default_commission_program_request = new \Keap\Core\V2\Model\UpdateDefaultCommissionProgramRequest(); // \Keap\Core\V2\Model\UpdateDefaultCommissionProgramRequest | Values of the default Commission Program
+$commission_program_id = 'commission_program_id_example'; // string
+$update_default_commission_program_request = new \Keap\Core\V2\Model\UpdateDefaultCommissionProgramRequest(); // \Keap\Core\V2\Model\UpdateDefaultCommissionProgramRequest
+$update_mask = array('update_mask_example'); // string[]
 
 try {
-    $result = $apiInstance->updateDefaultCommissionProgram($commission_program_id, $update_mask, $update_default_commission_program_request);
+    $result = $apiInstance->updateDefaultCommissionProgram($commission_program_id, $update_default_commission_program_request, $update_mask);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AffiliateApi->updateDefaultCommissionProgram: ', $e->getMessage(), PHP_EOL;
@@ -1725,9 +1965,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **commission_program_id** | **string**| commission_program_id | |
-| **update_mask** | [**string[]**](../Model/string.md)| update_mask | [optional] |
-| **update_default_commission_program_request** | [**\Keap\Core\V2\Model\UpdateDefaultCommissionProgramRequest**](../Model/UpdateDefaultCommissionProgramRequest.md)| Values of the default Commission Program | [optional] |
+| **commission_program_id** | **string**|  | |
+| **update_default_commission_program_request** | [**\Keap\Core\V2\Model\UpdateDefaultCommissionProgramRequest**](../Model/UpdateDefaultCommissionProgramRequest.md)|  | |
+| **update_mask** | [**string[]**](../Model/string.md)|  | [optional] |
 
 ### Return type
 
@@ -1735,7 +1975,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1749,7 +1989,7 @@ No authorization required
 ## `updateProductCommissionProgram()`
 
 ```php
-updateProductCommissionProgram($commission_program_id, $update_mask, $update_product_commission_program_request): \Keap\Core\V2\Model\ProductCommissionProgram
+updateProductCommissionProgram($commission_program_id, $update_product_commission_program_request, $update_mask): \Keap\Core\V2\Model\ProductCommissionProgram
 ```
 
 Update a Product Commission Program
@@ -1763,17 +2003,21 @@ Updates a Product Commission Program
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\AffiliateApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$commission_program_id = 'commission_program_id_example'; // string | commission_program_id
-$update_mask = array('update_mask_example'); // string[] | update_mask
-$update_product_commission_program_request = new \Keap\Core\V2\Model\UpdateProductCommissionProgramRequest(); // \Keap\Core\V2\Model\UpdateProductCommissionProgramRequest | Values of the product Commission Program
+$commission_program_id = 'commission_program_id_example'; // string
+$update_product_commission_program_request = new \Keap\Core\V2\Model\UpdateProductCommissionProgramRequest(); // \Keap\Core\V2\Model\UpdateProductCommissionProgramRequest
+$update_mask = array('update_mask_example'); // string[]
 
 try {
-    $result = $apiInstance->updateProductCommissionProgram($commission_program_id, $update_mask, $update_product_commission_program_request);
+    $result = $apiInstance->updateProductCommissionProgram($commission_program_id, $update_product_commission_program_request, $update_mask);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AffiliateApi->updateProductCommissionProgram: ', $e->getMessage(), PHP_EOL;
@@ -1784,9 +2028,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **commission_program_id** | **string**| commission_program_id | |
-| **update_mask** | [**string[]**](../Model/string.md)| update_mask | [optional] |
-| **update_product_commission_program_request** | [**\Keap\Core\V2\Model\UpdateProductCommissionProgramRequest**](../Model/UpdateProductCommissionProgramRequest.md)| Values of the product Commission Program | [optional] |
+| **commission_program_id** | **string**|  | |
+| **update_product_commission_program_request** | [**\Keap\Core\V2\Model\UpdateProductCommissionProgramRequest**](../Model/UpdateProductCommissionProgramRequest.md)|  | |
+| **update_mask** | [**string[]**](../Model/string.md)|  | [optional] |
 
 ### Return type
 
@@ -1794,7 +2038,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1822,13 +2066,17 @@ Updates an Affiliate Link
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\AffiliateApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$redirect_id = 'redirect_id_example'; // string | redirect_id
-$create_or_update_affiliate_link_request = new \Keap\Core\V2\Model\CreateOrUpdateAffiliateLinkRequest(); // \Keap\Core\V2\Model\CreateOrUpdateAffiliateLinkRequest | request
+$redirect_id = 'redirect_id_example'; // string
+$create_or_update_affiliate_link_request = new \Keap\Core\V2\Model\CreateOrUpdateAffiliateLinkRequest(); // \Keap\Core\V2\Model\CreateOrUpdateAffiliateLinkRequest
 
 try {
     $result = $apiInstance->updateRedirectLink($redirect_id, $create_or_update_affiliate_link_request);
@@ -1842,8 +2090,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **redirect_id** | **string**| redirect_id | |
-| **create_or_update_affiliate_link_request** | [**\Keap\Core\V2\Model\CreateOrUpdateAffiliateLinkRequest**](../Model/CreateOrUpdateAffiliateLinkRequest.md)| request | |
+| **redirect_id** | **string**|  | |
+| **create_or_update_affiliate_link_request** | [**\Keap\Core\V2\Model\CreateOrUpdateAffiliateLinkRequest**](../Model/CreateOrUpdateAffiliateLinkRequest.md)|  | |
 
 ### Return type
 
@@ -1851,7 +2099,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1865,7 +2113,7 @@ No authorization required
 ## `updateSubscriptionCommissionProgram()`
 
 ```php
-updateSubscriptionCommissionProgram($commission_program_id, $update_mask, $update_subscription_commission_program_request): \Keap\Core\V2\Model\SubscriptionCommissionProgram
+updateSubscriptionCommissionProgram($commission_program_id, $update_subscription_commission_program_request, $update_mask): \Keap\Core\V2\Model\SubscriptionCommissionProgram
 ```
 
 Update a Subscription Commission Program
@@ -1879,17 +2127,21 @@ Updates a Subscription Commission Program
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\AffiliateApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$commission_program_id = 'commission_program_id_example'; // string | commission_program_id
-$update_mask = array('update_mask_example'); // string[] | update_mask
-$update_subscription_commission_program_request = new \Keap\Core\V2\Model\UpdateSubscriptionCommissionProgramRequest(); // \Keap\Core\V2\Model\UpdateSubscriptionCommissionProgramRequest | Values of the subscription Commission Program
+$commission_program_id = 'commission_program_id_example'; // string
+$update_subscription_commission_program_request = new \Keap\Core\V2\Model\UpdateSubscriptionCommissionProgramRequest(); // \Keap\Core\V2\Model\UpdateSubscriptionCommissionProgramRequest
+$update_mask = array('update_mask_example'); // string[]
 
 try {
-    $result = $apiInstance->updateSubscriptionCommissionProgram($commission_program_id, $update_mask, $update_subscription_commission_program_request);
+    $result = $apiInstance->updateSubscriptionCommissionProgram($commission_program_id, $update_subscription_commission_program_request, $update_mask);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AffiliateApi->updateSubscriptionCommissionProgram: ', $e->getMessage(), PHP_EOL;
@@ -1900,9 +2152,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **commission_program_id** | **string**| commission_program_id | |
-| **update_mask** | [**string[]**](../Model/string.md)| update_mask | [optional] |
-| **update_subscription_commission_program_request** | [**\Keap\Core\V2\Model\UpdateSubscriptionCommissionProgramRequest**](../Model/UpdateSubscriptionCommissionProgramRequest.md)| Values of the subscription Commission Program | [optional] |
+| **commission_program_id** | **string**|  | |
+| **update_subscription_commission_program_request** | [**\Keap\Core\V2\Model\UpdateSubscriptionCommissionProgramRequest**](../Model/UpdateSubscriptionCommissionProgramRequest.md)|  | |
+| **update_mask** | [**string[]**](../Model/string.md)|  | [optional] |
 
 ### Return type
 
@@ -1910,7 +2162,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 

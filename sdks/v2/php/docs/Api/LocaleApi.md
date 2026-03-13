@@ -1,13 +1,13 @@
 # Keap\Core\V2\LocaleApi
 
-All URIs are relative to https://api.keap.com/crm/rest, except if the operation defines another base path.
+All URIs are relative to https://api.keap.com/crm, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**getCountryByCode()**](LocaleApi.md#getCountryByCode) | **GET** /v2/locales/countries/{country_code} | Get Country |
-| [**getProvinceByCode()**](LocaleApi.md#getProvinceByCode) | **GET** /v2/locales/countries/{country_code}/provinces/{province_code} | Get Province |
-| [**listCountries()**](LocaleApi.md#listCountries) | **GET** /v2/locales/countries | List Countries |
-| [**listProvincesForCountry()**](LocaleApi.md#listProvincesForCountry) | **GET** /v2/locales/countries/{country_code}/provinces | List a Country&#39;s Province |
+| [**getCountryByCode()**](LocaleApi.md#getCountryByCode) | **GET** /rest/v2/locales/countries/{country_code} | Get Country |
+| [**getProvinceByCode()**](LocaleApi.md#getProvinceByCode) | **GET** /rest/v2/locales/countries/{country_code}/provinces/{province_code} | Get Province |
+| [**listCountries()**](LocaleApi.md#listCountries) | **GET** /rest/v2/locales/countries | List Countries |
+| [**listProvincesForCountry()**](LocaleApi.md#listProvincesForCountry) | **GET** /rest/v2/locales/countries/{country_code}/provinces | List a Country&#39;s Provinces |
 
 
 ## `getCountryByCode()`
@@ -27,10 +27,14 @@ Gets a country by its code or name
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\LocaleApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $country_code = 'country_code_example'; // string | The ISO 3166-2 alpha-2 code, alpha-3 code, or name of the country to be retrieved
 
@@ -54,7 +58,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -82,10 +86,14 @@ Get a province by its code or name
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\LocaleApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $country_code = 'country_code_example'; // string | The ISO 3166-1 alpha-2 code, alpha-3 code, or name of the country to be retrieved
 $province_code = 'province_code_example'; // string | The ISO 3166-2 code or name of the province to be retrieved
@@ -111,7 +119,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -139,10 +147,14 @@ Retrieves a list of countries
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\LocaleApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 
 try {
@@ -163,7 +175,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -180,7 +192,7 @@ No authorization required
 listProvincesForCountry($country_code): \Keap\Core\V2\Model\ListProvincesResponse
 ```
 
-List a Country's Province
+List a Country's Provinces
 
 Retrieves a list of provinces for a given country
 
@@ -191,12 +203,16 @@ Retrieves a list of provinces for a given country
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\LocaleApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$country_code = 'country_code_example'; // string | country_code
+$country_code = 'country_code_example'; // string
 
 try {
     $result = $apiInstance->listProvincesForCountry($country_code);
@@ -210,7 +226,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **country_code** | **string**| country_code | |
+| **country_code** | **string**|  | |
 
 ### Return type
 
@@ -218,7 +234,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 

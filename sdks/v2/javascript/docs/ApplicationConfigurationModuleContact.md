@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**addressLabels** | [**ApplicationConfigurationModuleContactAddressLabels**](ApplicationConfigurationModuleContactAddressLabels.md) |  | [optional] 
-**contactTypes** | **String** |  | [optional] 
-**defaultNewContactForm** | **String** |  | [optional] 
-**disableContactEditInClientLogin** | **Boolean** |  | [optional] 
-**faxTypes** | **String** |  | [optional] 
-**phoneTypes** | **String** |  | [optional] 
-**suffixTypes** | **String** |  | [optional] 
 **titleTypes** | **String** |  | [optional] 
+**suffixTypes** | **String** |  | [optional] 
+**contactTypes** | **String** |  | [optional] 
+**phoneTypes** | **String** |  | [optional] 
+**faxTypes** | **String** |  | [optional] 
+**addressLabels** | [**ApplicationConfigurationModuleContactAddressLabels**](ApplicationConfigurationModuleContactAddressLabels.md) |  | [optional] 
+**disableContactEditInClientLogin** | **Boolean** |  | [optional] 
+**defaultNewContactForm** | **String** |  | [optional] 
 
 

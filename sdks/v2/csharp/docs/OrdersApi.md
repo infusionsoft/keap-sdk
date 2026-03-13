@@ -1,31 +1,31 @@
 # Keap.Core.V2.Api.OrdersApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**ApplyCommissionOnOrderItems**](OrdersApi.md#applycommissiononorderitems) | **POST** /v2/orders/{order_id}/items/{order_item_id}:applyCommission | Apply Commission to an Order Item |
-| [**ApplyTax**](OrdersApi.md#applytax) | **POST** /v2/orders/{order_id}:applyTax | Apply Taxes on an Order |
-| [**AttachFileToOrder**](OrdersApi.md#attachfiletoorder) | **POST** /v2/orders/{order_id}:attachFile | Attach a File to an Order Invoice |
-| [**CreateOrder**](OrdersApi.md#createorder) | **POST** /v2/orders | Create an Order |
-| [**CreateOrderCustomField**](OrdersApi.md#createordercustomfield) | **POST** /v2/orders/model/customFields | Create an Order Custom Field |
-| [**CreateOrderItem**](OrdersApi.md#createorderitem) | **POST** /v2/orders/{order_id}/items | Create an Order Item |
-| [**CreatePaymentForAnOrder**](OrdersApi.md#createpaymentforanorder) | **POST** /v2/orders/{order_id}/payments | Create a Payment |
-| [**DeleteOrder**](OrdersApi.md#deleteorder) | **DELETE** /v2/orders/{order_id} | Delete an Order |
-| [**DeleteOrderCustomField**](OrdersApi.md#deleteordercustomfield) | **DELETE** /v2/orders/model/customFields/{custom_field_id} | Delete an Order Custom Field |
-| [**DeleteOrderItem**](OrdersApi.md#deleteorderitem) | **DELETE** /v2/orders/{order_id}/items/{order_item_id} | Delete an Order Item |
-| [**DetachFileFromOrder**](OrdersApi.md#detachfilefromorder) | **POST** /v2/orders/{order_id}:detachFile | Detach a File from an Order Invoice |
-| [**GetOrder**](OrdersApi.md#getorder) | **GET** /v2/orders/{order_id} | Retrieve an Order |
-| [**ListOrderPayments**](OrdersApi.md#listorderpayments) | **GET** /v2/orders/{order_id}/payments | Retrieve Order Payments |
-| [**ListOrders**](OrdersApi.md#listorders) | **GET** /v2/orders | List orders |
-| [**RetrieveOrderCustomFieldModel**](OrdersApi.md#retrieveordercustomfieldmodel) | **GET** /v2/orders/model | Retrieve Order Custom Field Model |
-| [**UpdateOrder**](OrdersApi.md#updateorder) | **PATCH** /v2/orders/{order_id} | Update an Order |
-| [**UpdateOrderCustomField**](OrdersApi.md#updateordercustomfield) | **PATCH** /v2/orders/model/customFields/{custom_field_id} | Update an Order Custom Field |
-| [**UpdateOrderItem**](OrdersApi.md#updateorderitem) | **PATCH** /v2/orders/{order_id}/items/{order_item_id} | Update an Order Item |
+| [**ApplyCommissionOnOrderItems**](OrdersApi.md#applycommissiononorderitems) | **POST** /rest/v2/orders/{order_id}/items/{order_item_id}:applyCommission | Apply Commission to an Order Item |
+| [**ApplyTax**](OrdersApi.md#applytax) | **POST** /rest/v2/orders/{order_id}:applyTax | Apply Taxes on an Order |
+| [**AttachFileToOrder**](OrdersApi.md#attachfiletoorder) | **POST** /rest/v2/orders/{order_id}:attachFile | Attach a File to an Order Invoice |
+| [**CreateOrder**](OrdersApi.md#createorder) | **POST** /rest/v2/orders | Create an Order |
+| [**CreateOrderCustomField**](OrdersApi.md#createordercustomfield) | **POST** /rest/v2/orders/model/customFields | Create an Order Custom Field |
+| [**CreateOrderItem**](OrdersApi.md#createorderitem) | **POST** /rest/v2/orders/{order_id}/items | Create an Order Item |
+| [**CreatePaymentForAnOrder**](OrdersApi.md#createpaymentforanorder) | **POST** /rest/v2/orders/{order_id}/payments | Create a Payment |
+| [**DeleteOrder**](OrdersApi.md#deleteorder) | **DELETE** /rest/v2/orders/{order_id} | Delete an Order |
+| [**DeleteOrderCustomField**](OrdersApi.md#deleteordercustomfield) | **DELETE** /rest/v2/orders/model/customFields/{custom_field_id} | Delete an Order Custom Field |
+| [**DeleteOrderItem**](OrdersApi.md#deleteorderitem) | **DELETE** /rest/v2/orders/{order_id}/items/{order_item_id} | Delete an Order Item |
+| [**DetachFileFromOrder**](OrdersApi.md#detachfilefromorder) | **POST** /rest/v2/orders/{order_id}:detachFile | Detach a File from an Order Invoice |
+| [**GetOrder**](OrdersApi.md#getorder) | **GET** /rest/v2/orders/{order_id} | Retrieve an Order |
+| [**ListOrderPayments**](OrdersApi.md#listorderpayments) | **GET** /rest/v2/orders/{order_id}/payments | Retrieve Order Payments |
+| [**ListOrders**](OrdersApi.md#listorders) | **GET** /rest/v2/orders | List orders |
+| [**RetrieveOrderCustomFieldModel**](OrdersApi.md#retrieveordercustomfieldmodel) | **GET** /rest/v2/orders/model | Retrieve Order Custom Field Model |
+| [**UpdateOrder**](OrdersApi.md#updateorder) | **PATCH** /rest/v2/orders/{order_id} | Update an Order |
+| [**UpdateOrderCustomField**](OrdersApi.md#updateordercustomfield) | **PATCH** /rest/v2/orders/model/customFields/{custom_field_id} | Update an Order Custom Field |
+| [**UpdateOrderItem**](OrdersApi.md#updateorderitem) | **PATCH** /rest/v2/orders/{order_id}/items/{order_item_id} | Update an Order Item |
 
 <a id="applycommissiononorderitems"></a>
 # **ApplyCommissionOnOrderItems**
-> OrderItem ApplyCommissionOnOrderItems (string orderId, string orderItemId, RestApplyCommissionRequest restApplyCommissionRequest)
+> OrderItem ApplyCommissionOnOrderItems (string orderId, string orderItemId, ApplyCommissionRequest applyCommissionRequest)
 
 Apply Commission to an Order Item
 
@@ -46,16 +46,19 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new OrdersApi(config);
-            var orderId = "orderId_example";  // string | order_id
-            var orderItemId = "orderItemId_example";  // string | order_item_id
-            var restApplyCommissionRequest = new RestApplyCommissionRequest(); // RestApplyCommissionRequest | request
+            var orderId = "orderId_example";  // string | 
+            var orderItemId = "orderItemId_example";  // string | 
+            var applyCommissionRequest = new ApplyCommissionRequest(); // ApplyCommissionRequest | 
 
             try
             {
                 // Apply Commission to an Order Item
-                OrderItem result = apiInstance.ApplyCommissionOnOrderItems(orderId, orderItemId, restApplyCommissionRequest);
+                OrderItem result = apiInstance.ApplyCommissionOnOrderItems(orderId, orderItemId, applyCommissionRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -76,7 +79,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Apply Commission to an Order Item
-    ApiResponse<OrderItem> response = apiInstance.ApplyCommissionOnOrderItemsWithHttpInfo(orderId, orderItemId, restApplyCommissionRequest);
+    ApiResponse<OrderItem> response = apiInstance.ApplyCommissionOnOrderItemsWithHttpInfo(orderId, orderItemId, applyCommissionRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -93,9 +96,9 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **orderId** | **string** | order_id |  |
-| **orderItemId** | **string** | order_item_id |  |
-| **restApplyCommissionRequest** | [**RestApplyCommissionRequest**](RestApplyCommissionRequest.md) | request |  |
+| **orderId** | **string** |  |  |
+| **orderItemId** | **string** |  |  |
+| **applyCommissionRequest** | [**ApplyCommissionRequest**](ApplyCommissionRequest.md) |  |  |
 
 ### Return type
 
@@ -103,7 +106,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -115,15 +118,19 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="applytax"></a>
 # **ApplyTax**
-> Order ApplyTax (string orderId)
+> OrderV2 ApplyTax (string orderId)
 
 Apply Taxes on an Order
 
@@ -144,14 +151,17 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new OrdersApi(config);
-            var orderId = "orderId_example";  // string | order_id
+            var orderId = "orderId_example";  // string | 
 
             try
             {
                 // Apply Taxes on an Order
-                Order result = apiInstance.ApplyTax(orderId);
+                OrderV2 result = apiInstance.ApplyTax(orderId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -172,7 +182,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Apply Taxes on an Order
-    ApiResponse<Order> response = apiInstance.ApplyTaxWithHttpInfo(orderId);
+    ApiResponse<OrderV2> response = apiInstance.ApplyTaxWithHttpInfo(orderId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -189,15 +199,15 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **orderId** | **string** | order_id |  |
+| **orderId** | **string** |  |  |
 
 ### Return type
 
-[**Order**](Order.md)
+[**OrderV2**](OrderV2.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -209,15 +219,19 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="attachfiletoorder"></a>
 # **AttachFileToOrder**
-> Order AttachFileToOrder (string orderId, FileOperationRequest fileOperationRequest)
+> OrderV2 AttachFileToOrder (string orderId, FileOperationRequest fileOperationRequest)
 
 Attach a File to an Order Invoice
 
@@ -238,15 +252,18 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new OrdersApi(config);
-            var orderId = "orderId_example";  // string | order_id
-            var fileOperationRequest = new FileOperationRequest(); // FileOperationRequest | File name
+            var orderId = "orderId_example";  // string | 
+            var fileOperationRequest = new FileOperationRequest(); // FileOperationRequest | 
 
             try
             {
                 // Attach a File to an Order Invoice
-                Order result = apiInstance.AttachFileToOrder(orderId, fileOperationRequest);
+                OrderV2 result = apiInstance.AttachFileToOrder(orderId, fileOperationRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -267,7 +284,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Attach a File to an Order Invoice
-    ApiResponse<Order> response = apiInstance.AttachFileToOrderWithHttpInfo(orderId, fileOperationRequest);
+    ApiResponse<OrderV2> response = apiInstance.AttachFileToOrderWithHttpInfo(orderId, fileOperationRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -284,16 +301,16 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **orderId** | **string** | order_id |  |
-| **fileOperationRequest** | [**FileOperationRequest**](FileOperationRequest.md) | File name |  |
+| **orderId** | **string** |  |  |
+| **fileOperationRequest** | [**FileOperationRequest**](FileOperationRequest.md) |  |  |
 
 ### Return type
 
-[**Order**](Order.md)
+[**OrderV2**](OrderV2.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -305,15 +322,19 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="createorder"></a>
 # **CreateOrder**
-> Order CreateOrder (RestCreateOrderRequest restCreateOrderRequest)
+> OrderV2 CreateOrder (RestCreateOrderRequest restCreateOrderRequest)
 
 Create an Order
 
@@ -334,14 +355,17 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new OrdersApi(config);
-            var restCreateOrderRequest = new RestCreateOrderRequest(); // RestCreateOrderRequest | request
+            var restCreateOrderRequest = new RestCreateOrderRequest(); // RestCreateOrderRequest | 
 
             try
             {
                 // Create an Order
-                Order result = apiInstance.CreateOrder(restCreateOrderRequest);
+                OrderV2 result = apiInstance.CreateOrder(restCreateOrderRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -362,7 +386,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Create an Order
-    ApiResponse<Order> response = apiInstance.CreateOrderWithHttpInfo(restCreateOrderRequest);
+    ApiResponse<OrderV2> response = apiInstance.CreateOrderWithHttpInfo(restCreateOrderRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -379,15 +403,15 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **restCreateOrderRequest** | [**RestCreateOrderRequest**](RestCreateOrderRequest.md) | request |  |
+| **restCreateOrderRequest** | [**RestCreateOrderRequest**](RestCreateOrderRequest.md) |  |  |
 
 ### Return type
 
-[**Order**](Order.md)
+[**OrderV2**](OrderV2.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -399,9 +423,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -428,9 +456,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new OrdersApi(config);
-            var createCustomFieldRequest = new CreateCustomFieldRequest(); // CreateCustomFieldRequest | customField
+            var createCustomFieldRequest = new CreateCustomFieldRequest(); // CreateCustomFieldRequest | 
 
             try
             {
@@ -473,7 +504,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **createCustomFieldRequest** | [**CreateCustomFieldRequest**](CreateCustomFieldRequest.md) | customField |  |
+| **createCustomFieldRequest** | [**CreateCustomFieldRequest**](CreateCustomFieldRequest.md) |  |  |
 
 ### Return type
 
@@ -481,7 +512,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -493,9 +524,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -522,10 +557,13 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new OrdersApi(config);
-            var orderId = "orderId_example";  // string | order_id
-            var createOrderItemRequest = new CreateOrderItemRequest(); // CreateOrderItemRequest | request
+            var orderId = "orderId_example";  // string | 
+            var createOrderItemRequest = new CreateOrderItemRequest(); // CreateOrderItemRequest | 
 
             try
             {
@@ -568,8 +606,8 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **orderId** | **string** | order_id |  |
-| **createOrderItemRequest** | [**CreateOrderItemRequest**](CreateOrderItemRequest.md) | request |  |
+| **orderId** | **string** |  |  |
+| **createOrderItemRequest** | [**CreateOrderItemRequest**](CreateOrderItemRequest.md) |  |  |
 
 ### Return type
 
@@ -577,7 +615,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -589,15 +627,19 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="createpaymentforanorder"></a>
 # **CreatePaymentForAnOrder**
-> PaymentResult CreatePaymentForAnOrder (string orderId, CreatePaymentRequest createPaymentRequest)
+> PaymentResult CreatePaymentForAnOrder (string orderId, RestCreatePaymentRequest restCreatePaymentRequest)
 
 Create a Payment
 
@@ -618,15 +660,18 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new OrdersApi(config);
-            var orderId = "orderId_example";  // string | order_id
-            var createPaymentRequest = new CreatePaymentRequest(); // CreatePaymentRequest | request
+            var orderId = "orderId_example";  // string | 
+            var restCreatePaymentRequest = new RestCreatePaymentRequest(); // RestCreatePaymentRequest | 
 
             try
             {
                 // Create a Payment
-                PaymentResult result = apiInstance.CreatePaymentForAnOrder(orderId, createPaymentRequest);
+                PaymentResult result = apiInstance.CreatePaymentForAnOrder(orderId, restCreatePaymentRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -647,7 +692,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Create a Payment
-    ApiResponse<PaymentResult> response = apiInstance.CreatePaymentForAnOrderWithHttpInfo(orderId, createPaymentRequest);
+    ApiResponse<PaymentResult> response = apiInstance.CreatePaymentForAnOrderWithHttpInfo(orderId, restCreatePaymentRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -664,8 +709,8 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **orderId** | **string** | order_id |  |
-| **createPaymentRequest** | [**CreatePaymentRequest**](CreatePaymentRequest.md) | request |  |
+| **orderId** | **string** |  |  |
+| **restCreatePaymentRequest** | [**RestCreatePaymentRequest**](RestCreatePaymentRequest.md) |  |  |
 
 ### Return type
 
@@ -673,7 +718,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -685,9 +730,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -714,9 +763,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new OrdersApi(config);
-            var orderId = "orderId_example";  // string | order_id
+            var orderId = "orderId_example";  // string | 
 
             try
             {
@@ -755,7 +807,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **orderId** | **string** | order_id |  |
+| **orderId** | **string** |  |  |
 
 ### Return type
 
@@ -763,7 +815,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -775,10 +827,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -805,9 +860,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new OrdersApi(config);
-            var customFieldId = "customFieldId_example";  // string | custom_field_id
+            var customFieldId = "customFieldId_example";  // string | 
 
             try
             {
@@ -846,7 +904,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **customFieldId** | **string** | custom_field_id |  |
+| **customFieldId** | **string** |  |  |
 
 ### Return type
 
@@ -854,7 +912,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -866,10 +924,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -896,10 +957,13 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new OrdersApi(config);
-            var orderId = "orderId_example";  // string | order_id
-            var orderItemId = "orderItemId_example";  // string | order_item_id
+            var orderId = "orderId_example";  // string | 
+            var orderItemId = "orderItemId_example";  // string | 
 
             try
             {
@@ -938,8 +1002,8 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **orderId** | **string** | order_id |  |
-| **orderItemId** | **string** | order_item_id |  |
+| **orderId** | **string** |  |  |
+| **orderItemId** | **string** |  |  |
 
 ### Return type
 
@@ -947,7 +1011,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -959,16 +1023,19 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="detachfilefromorder"></a>
 # **DetachFileFromOrder**
-> Order DetachFileFromOrder (string orderId, FileOperationRequest fileOperationRequest)
+> OrderV2 DetachFileFromOrder (string orderId, FileOperationRequest fileOperationRequest)
 
 Detach a File from an Order Invoice
 
@@ -989,15 +1056,18 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new OrdersApi(config);
-            var orderId = "orderId_example";  // string | order_id
-            var fileOperationRequest = new FileOperationRequest(); // FileOperationRequest | request
+            var orderId = "orderId_example";  // string | 
+            var fileOperationRequest = new FileOperationRequest(); // FileOperationRequest | 
 
             try
             {
                 // Detach a File from an Order Invoice
-                Order result = apiInstance.DetachFileFromOrder(orderId, fileOperationRequest);
+                OrderV2 result = apiInstance.DetachFileFromOrder(orderId, fileOperationRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1018,7 +1088,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Detach a File from an Order Invoice
-    ApiResponse<Order> response = apiInstance.DetachFileFromOrderWithHttpInfo(orderId, fileOperationRequest);
+    ApiResponse<OrderV2> response = apiInstance.DetachFileFromOrderWithHttpInfo(orderId, fileOperationRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -1035,16 +1105,16 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **orderId** | **string** | order_id |  |
-| **fileOperationRequest** | [**FileOperationRequest**](FileOperationRequest.md) | request |  |
+| **orderId** | **string** |  |  |
+| **fileOperationRequest** | [**FileOperationRequest**](FileOperationRequest.md) |  |  |
 
 ### Return type
 
-[**Order**](Order.md)
+[**OrderV2**](OrderV2.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1056,15 +1126,19 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="getorder"></a>
 # **GetOrder**
-> Order GetOrder (string orderId)
+> OrderV2 GetOrder (string orderId)
 
 Retrieve an Order
 
@@ -1085,14 +1159,17 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new OrdersApi(config);
-            var orderId = "orderId_example";  // string | order_id
+            var orderId = "orderId_example";  // string | 
 
             try
             {
                 // Retrieve an Order
-                Order result = apiInstance.GetOrder(orderId);
+                OrderV2 result = apiInstance.GetOrder(orderId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1113,7 +1190,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Retrieve an Order
-    ApiResponse<Order> response = apiInstance.GetOrderWithHttpInfo(orderId);
+    ApiResponse<OrderV2> response = apiInstance.GetOrderWithHttpInfo(orderId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -1130,15 +1207,15 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **orderId** | **string** | order_id |  |
+| **orderId** | **string** |  |  |
 
 ### Return type
 
-[**Order**](Order.md)
+[**OrderV2**](OrderV2.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1150,10 +1227,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1180,9 +1260,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new OrdersApi(config);
-            var orderId = "orderId_example";  // string | order_id
+            var orderId = "orderId_example";  // string | 
             var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (String) `invoice_id` - (String) `payment_id` - (String) `amount` - (String) `pay_status` - (Boolean) `skip_commission`  You will need to apply the `==` operator to check the equality of one of the filters with your searched  word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=payment_id%3D%3D123` - `filter=pay_status%3D%3DAPPROVED` - `filter=invoice_id%3D%3D456%3Bskip_commission=true`  (optional) 
             var orderBy = "orderBy_example";  // string? | Attribute and direction to order items. One of the following fields: - `invoice_id` - `payment_id` - `amount` - `pay_time` - `pay_status` - `skip_commission` - `last_updated_time`  One of the following directions: - `asc` - `desc` (optional) 
             var pageSize = 0;  // int? | Total number of items to return per page (optional) 
@@ -1229,7 +1312,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **orderId** | **string** | order_id |  |
+| **orderId** | **string** |  |  |
 | **filter** | **string?** | Filter to apply, allowed fields are: - (String) &#x60;invoice_id&#x60; - (String) &#x60;payment_id&#x60; - (String) &#x60;amount&#x60; - (String) &#x60;pay_status&#x60; - (Boolean) &#x60;skip_commission&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched  word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;payment_id%3D%3D123&#x60; - &#x60;filter&#x3D;pay_status%3D%3DAPPROVED&#x60; - &#x60;filter&#x3D;invoice_id%3D%3D456%3Bskip_commission&#x3D;true&#x60;  | [optional]  |
 | **orderBy** | **string?** | Attribute and direction to order items. One of the following fields: - &#x60;invoice_id&#x60; - &#x60;payment_id&#x60; - &#x60;amount&#x60; - &#x60;pay_time&#x60; - &#x60;pay_status&#x60; - &#x60;skip_commission&#x60; - &#x60;last_updated_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional]  |
 | **pageSize** | **int?** | Total number of items to return per page | [optional]  |
@@ -1241,7 +1324,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1253,10 +1336,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1283,9 +1369,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new OrdersApi(config);
-            var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (String) `product_id` - (String) `contact_id` - (Boolean) `paid` - (String) `created_since_time` - (String) `created_until_time` You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=product_id%3D%3D123` - `filter=contact_id%3D%3D567` - `filter=product_id%3D%3D123%3Bcontact_id%3D%3D567` (optional) 
+            var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (String) `product_id` - (String) `contact_id` - (Boolean) `paid` - (String) `created_since_time` - (String) `created_until_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=product_id%3D%3D123` - `filter=contact_id%3D%3D567` - `filter=product_id%3D%3D123%3Bcontact_id%3D%3D567` (optional) 
             var orderBy = "orderBy_example";  // string? | Attribute and direction to order items. One of the following fields: - `id` - `order_time`  One of the following directions: - `asc` - `desc` (optional) 
             var pageSize = 0;  // int? | Total number of items to return per page (optional) 
             var pageToken = "pageToken_example";  // string? | Page token (optional) 
@@ -1331,7 +1420,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **filter** | **string?** | Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; | [optional]  |
+| **filter** | **string?** | Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; | [optional]  |
 | **orderBy** | **string?** | Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;order_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional]  |
 | **pageSize** | **int?** | Total number of items to return per page | [optional]  |
 | **pageToken** | **string?** | Page token | [optional]  |
@@ -1342,7 +1431,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1354,10 +1443,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1384,7 +1476,10 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new OrdersApi(config);
 
             try
@@ -1432,7 +1527,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1444,16 +1539,19 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="updateorder"></a>
 # **UpdateOrder**
-> Order UpdateOrder (string orderId, List<string>? updateMask = null, UpdateOrderRequest? updateOrderRequest = null)
+> OrderV2 UpdateOrder (string orderId, UpdateOrderRequest updateOrderRequest, string? updateMask = null)
 
 Update an Order
 
@@ -1474,16 +1572,19 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new OrdersApi(config);
-            var orderId = "orderId_example";  // string | order_id
-            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
-            var updateOrderRequest = new UpdateOrderRequest?(); // UpdateOrderRequest? | order (optional) 
+            var orderId = "orderId_example";  // string | 
+            var updateOrderRequest = new UpdateOrderRequest(); // UpdateOrderRequest | 
+            var updateMask = "contact_id,order_items,order_title,order_time,order_type,promo_codes, lead_affiliate_id,sales_affiliate_id,shipping_address,notes,terms,payment_plan";  // string? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
                 // Update an Order
-                Order result = apiInstance.UpdateOrder(orderId, updateMask, updateOrderRequest);
+                OrderV2 result = apiInstance.UpdateOrder(orderId, updateOrderRequest, updateMask);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1504,7 +1605,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Update an Order
-    ApiResponse<Order> response = apiInstance.UpdateOrderWithHttpInfo(orderId, updateMask, updateOrderRequest);
+    ApiResponse<OrderV2> response = apiInstance.UpdateOrderWithHttpInfo(orderId, updateOrderRequest, updateMask);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -1521,17 +1622,17 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **orderId** | **string** | order_id |  |
-| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
-| **updateOrderRequest** | [**UpdateOrderRequest?**](UpdateOrderRequest?.md) | order | [optional]  |
+| **orderId** | **string** |  |  |
+| **updateOrderRequest** | [**UpdateOrderRequest**](UpdateOrderRequest.md) |  |  |
+| **updateMask** | **string?** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 
-[**Order**](Order.md)
+[**OrderV2**](OrderV2.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1543,16 +1644,19 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="updateordercustomfield"></a>
 # **UpdateOrderCustomField**
-> CustomFieldMetaData UpdateOrderCustomField (string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, List<string>? updateMask = null)
+> CustomFieldMetaData UpdateOrderCustomField (string customFieldId, UpdateCustomFieldMetaDataRequest updateCustomFieldMetaDataRequest, string? updateMask = null)
 
 Update an Order Custom Field
 
@@ -1573,11 +1677,14 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new OrdersApi(config);
-            var customFieldId = "customFieldId_example";  // string | custom_field_id
-            var updateCustomFieldMetaDataRequest = new UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | request
-            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var customFieldId = "customFieldId_example";  // string | 
+            var updateCustomFieldMetaDataRequest = new UpdateCustomFieldMetaDataRequest(); // UpdateCustomFieldMetaDataRequest | 
+            var updateMask = "group_id,label,options";  // string? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -1620,9 +1727,9 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **customFieldId** | **string** | custom_field_id |  |
-| **updateCustomFieldMetaDataRequest** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md) | request |  |
-| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **customFieldId** | **string** |  |  |
+| **updateCustomFieldMetaDataRequest** | [**UpdateCustomFieldMetaDataRequest**](UpdateCustomFieldMetaDataRequest.md) |  |  |
+| **updateMask** | **string?** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 
@@ -1630,7 +1737,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1642,16 +1749,19 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="updateorderitem"></a>
 # **UpdateOrderItem**
-> OrderItem UpdateOrderItem (string orderId, string orderItemId, List<string>? updateMask = null, UpdateOrderItemRequest? updateOrderItemRequest = null)
+> OrderItem UpdateOrderItem (string orderId, string orderItemId, UpdateOrderItemRequest updateOrderItemRequest, string? updateMask = null)
 
 Update an Order Item
 
@@ -1672,17 +1782,20 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new OrdersApi(config);
-            var orderId = "orderId_example";  // string | order_id
-            var orderItemId = "orderItemId_example";  // string | order_item_id
-            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
-            var updateOrderItemRequest = new UpdateOrderItemRequest?(); // UpdateOrderItemRequest? | order (optional) 
+            var orderId = "orderId_example";  // string | 
+            var orderItemId = "orderItemId_example";  // string | 
+            var updateOrderItemRequest = new UpdateOrderItemRequest(); // UpdateOrderItemRequest | 
+            var updateMask = "name,description,notes,quantity,price_per_unit,cost_per_unit, product_id,subscription_plan_id,subscription_plan_description";  // string? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
                 // Update an Order Item
-                OrderItem result = apiInstance.UpdateOrderItem(orderId, orderItemId, updateMask, updateOrderItemRequest);
+                OrderItem result = apiInstance.UpdateOrderItem(orderId, orderItemId, updateOrderItemRequest, updateMask);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1703,7 +1816,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Update an Order Item
-    ApiResponse<OrderItem> response = apiInstance.UpdateOrderItemWithHttpInfo(orderId, orderItemId, updateMask, updateOrderItemRequest);
+    ApiResponse<OrderItem> response = apiInstance.UpdateOrderItemWithHttpInfo(orderId, orderItemId, updateOrderItemRequest, updateMask);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -1720,10 +1833,10 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **orderId** | **string** | order_id |  |
-| **orderItemId** | **string** | order_item_id |  |
-| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
-| **updateOrderItemRequest** | [**UpdateOrderItemRequest?**](UpdateOrderItemRequest?.md) | order | [optional]  |
+| **orderId** | **string** |  |  |
+| **orderItemId** | **string** |  |  |
+| **updateOrderItemRequest** | [**UpdateOrderItemRequest**](UpdateOrderItemRequest.md) |  |  |
+| **updateMask** | **string?** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 
@@ -1731,7 +1844,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1743,10 +1856,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

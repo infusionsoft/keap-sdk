@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** |  | [optional] 
-**items** | [**[Item]**](Item.md) |  | [optional] 
+**id** | **String** | The unique identifier of the sequence path | [optional] 
+**items** | [**[Item]**](Item.md) | List of items in this sequence path | [optional] 
 
 

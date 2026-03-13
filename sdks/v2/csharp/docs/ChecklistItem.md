@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Description** | **string** |  | [optional] 
-**Id** | **string** |  | [optional] 
-**Order** | **int** |  | [optional] 
-**Required** | **bool** |  | [optional] 
+**Id** | **string** | Checklist item ID | [optional] 
+**Description** | **string** | Item description | [optional] 
+**Required** | **bool** | Whether item is required | [optional] 
+**Order** | **int** | Display order | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

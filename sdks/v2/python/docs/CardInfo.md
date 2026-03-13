@@ -7,9 +7,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **brand** | **str** |  | [optional] 
 **card_type** | **str** | The card type. Valid values are: CREDIT, DEBIT, PREPAID. | [optional] 
-**expiration_month** | **str** |  | [optional] 
-**expiration_year** | **str** |  | [optional] 
 **last_four** | **str** |  | [optional] 
+**expiration_year** | **str** |  | [optional] 
+**expiration_month** | **str** |  | [optional] 
 
 ## Example
 

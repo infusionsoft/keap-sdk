@@ -1,15 +1,15 @@
 # Keap.Core.V2.Api.CampaignApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**AddContactsToCampaignSequence**](CampaignApi.md#addcontactstocampaignsequence) | **POST** /v2/campaigns/{campaign_id}/sequences/{sequence_id}:addContacts | Add Contacts to Campaign Sequence |
-| [**GetCampaign**](CampaignApi.md#getcampaign) | **GET** /v2/campaigns/{campaign_id} | Retrieve a Campaign |
-| [**GetCampaignGoals**](CampaignApi.md#getcampaigngoals) | **GET** /v2/campaigns/{campaign_id}/goals | Retrieve a list of Goals for a Campaign |
-| [**GetCampaignSequences**](CampaignApi.md#getcampaignsequences) | **GET** /v2/campaigns/{campaign_id}/sequences | Retrieve a list of Sequences for a Campaign |
-| [**ListCampaigns**](CampaignApi.md#listcampaigns) | **GET** /v2/campaigns | List Campaigns |
-| [**RemoveContactsFromCampaignSequence**](CampaignApi.md#removecontactsfromcampaignsequence) | **POST** /v2/campaigns/{campaign_id}/sequences/{sequence_id}:removeContacts | Remove Contacts from Campaign Sequence |
+| [**AddContactsToCampaignSequence**](CampaignApi.md#addcontactstocampaignsequence) | **POST** /rest/v2/campaigns/{campaign_id}/sequences/{sequence_id}:addContacts | Add Contacts to Campaign Sequence |
+| [**GetCampaign**](CampaignApi.md#getcampaign) | **GET** /rest/v2/campaigns/{campaign_id} | Retrieve a Campaign |
+| [**GetCampaignGoals**](CampaignApi.md#getcampaigngoals) | **GET** /rest/v2/campaigns/{campaign_id}/goals | Retrieve a list of Goals for a Campaign |
+| [**GetCampaignSequences**](CampaignApi.md#getcampaignsequences) | **GET** /rest/v2/campaigns/{campaign_id}/sequences | Retrieve a list of Sequences for a Campaign |
+| [**ListCampaigns**](CampaignApi.md#listcampaigns) | **GET** /rest/v2/campaigns | List Campaigns |
+| [**RemoveContactsFromCampaignSequence**](CampaignApi.md#removecontactsfromcampaignsequence) | **POST** /rest/v2/campaigns/{campaign_id}/sequences/{sequence_id}:removeContacts | Remove Contacts from Campaign Sequence |
 
 <a id="addcontactstocampaignsequence"></a>
 # **AddContactsToCampaignSequence**
@@ -34,11 +34,14 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new CampaignApi(config);
-            var campaignId = "campaignId_example";  // string | campaign_id
-            var sequenceId = "sequenceId_example";  // string | sequence_id
-            var addContactsToSequenceRequest = new AddContactsToSequenceRequest(); // AddContactsToSequenceRequest | addContactsToSequenceRequest
+            var campaignId = "campaignId_example";  // string | 
+            var sequenceId = "sequenceId_example";  // string | 
+            var addContactsToSequenceRequest = new AddContactsToSequenceRequest(); // AddContactsToSequenceRequest | 
 
             try
             {
@@ -81,9 +84,9 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **campaignId** | **string** | campaign_id |  |
-| **sequenceId** | **string** | sequence_id |  |
-| **addContactsToSequenceRequest** | [**AddContactsToSequenceRequest**](AddContactsToSequenceRequest.md) | addContactsToSequenceRequest |  |
+| **campaignId** | **string** |  |  |
+| **sequenceId** | **string** |  |  |
+| **addContactsToSequenceRequest** | [**AddContactsToSequenceRequest**](AddContactsToSequenceRequest.md) |  |  |
 
 ### Return type
 
@@ -91,7 +94,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -103,9 +106,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -132,9 +139,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new CampaignApi(config);
-            var campaignId = "campaignId_example";  // string | campaign_id
+            var campaignId = "campaignId_example";  // string | 
 
             try
             {
@@ -177,7 +187,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **campaignId** | **string** | campaign_id |  |
+| **campaignId** | **string** |  |  |
 
 ### Return type
 
@@ -185,7 +195,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -197,10 +207,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -227,9 +240,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new CampaignApi(config);
-            var campaignId = "campaignId_example";  // string | campaign_id
+            var campaignId = "campaignId_example";  // string | 
 
             try
             {
@@ -272,7 +288,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **campaignId** | **string** | campaign_id |  |
+| **campaignId** | **string** |  |  |
 
 ### Return type
 
@@ -280,7 +296,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -292,10 +308,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -322,9 +341,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new CampaignApi(config);
-            var campaignId = "campaignId_example";  // string | campaign_id
+            var campaignId = "campaignId_example";  // string | 
 
             try
             {
@@ -367,7 +389,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **campaignId** | **string** | campaign_id |  |
+| **campaignId** | **string** |  |  |
 
 ### Return type
 
@@ -375,7 +397,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -387,16 +409,19 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="listcampaigns"></a>
 # **ListCampaigns**
-> ListCampaignsResponse ListCampaigns (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null, bool? stats = null)
+> ListCampaignsResponse ListCampaigns (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
 
 List Campaigns
 
@@ -417,18 +442,20 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new CampaignApi(config);
             var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (String) `name`  You will need to apply the `==` operator to check the equality of the filter with your searched text, in the encoded form `%3D%3D`. The search will look for the text anywhere in the campaign name. - `filter=name%3D%3DSpring Campaign` - `filter=name%3D%3DTag New Contacts`  (optional) 
             var orderBy = "orderBy_example";  // string? | Attribute and direction to order items. One of the following fields: - `name` - `publisheddate` - `id` - `completedContactCount` - `activeContacts` - `datecreated` - `lastupdated`  One of the following directions: - `asc` - `desc` (optional) 
             var pageSize = 0;  // int? | Total number of items to return per page (optional) 
             var pageToken = "pageToken_example";  // string? | Page token (optional) 
-            var stats = true;  // bool? |  (optional) 
 
             try
             {
                 // List Campaigns
-                ListCampaignsResponse result = apiInstance.ListCampaigns(filter, orderBy, pageSize, pageToken, stats);
+                ListCampaignsResponse result = apiInstance.ListCampaigns(filter, orderBy, pageSize, pageToken);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -449,7 +476,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // List Campaigns
-    ApiResponse<ListCampaignsResponse> response = apiInstance.ListCampaignsWithHttpInfo(filter, orderBy, pageSize, pageToken, stats);
+    ApiResponse<ListCampaignsResponse> response = apiInstance.ListCampaignsWithHttpInfo(filter, orderBy, pageSize, pageToken);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -470,7 +497,6 @@ catch (ApiException e)
 | **orderBy** | **string?** | Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;publisheddate&#x60; - &#x60;id&#x60; - &#x60;completedContactCount&#x60; - &#x60;activeContacts&#x60; - &#x60;datecreated&#x60; - &#x60;lastupdated&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional]  |
 | **pageSize** | **int?** | Total number of items to return per page | [optional]  |
 | **pageToken** | **string?** | Page token | [optional]  |
-| **stats** | **bool?** |  | [optional]  |
 
 ### Return type
 
@@ -478,7 +504,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -490,10 +516,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -520,11 +549,14 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new CampaignApi(config);
-            var campaignId = "campaignId_example";  // string | campaign_id
-            var sequenceId = "sequenceId_example";  // string | sequence_id
-            var removeContactsFromSequenceRequest = new RemoveContactsFromSequenceRequest(); // RemoveContactsFromSequenceRequest | removeContactsFromSequenceRequest
+            var campaignId = "campaignId_example";  // string | 
+            var sequenceId = "sequenceId_example";  // string | 
+            var removeContactsFromSequenceRequest = new RemoveContactsFromSequenceRequest(); // RemoveContactsFromSequenceRequest | 
 
             try
             {
@@ -567,9 +599,9 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **campaignId** | **string** | campaign_id |  |
-| **sequenceId** | **string** | sequence_id |  |
-| **removeContactsFromSequenceRequest** | [**RemoveContactsFromSequenceRequest**](RemoveContactsFromSequenceRequest.md) | removeContactsFromSequenceRequest |  |
+| **campaignId** | **string** |  |  |
+| **sequenceId** | **string** |  |  |
+| **removeContactsFromSequenceRequest** | [**RemoveContactsFromSequenceRequest**](RemoveContactsFromSequenceRequest.md) |  |  |
 
 ### Return type
 
@@ -577,7 +609,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -589,9 +621,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

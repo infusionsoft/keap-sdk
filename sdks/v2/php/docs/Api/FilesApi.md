@@ -1,21 +1,21 @@
 # Keap\Core\V2\FilesApi
 
-All URIs are relative to https://api.keap.com/crm/rest, except if the operation defines another base path.
+All URIs are relative to https://api.keap.com/crm, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createFile()**](FilesApi.md#createFile) | **POST** /v2/files | Create a file |
-| [**deleteFile()**](FilesApi.md#deleteFile) | **DELETE** /v2/files/{file_id} | Delete a file |
-| [**getFile()**](FilesApi.md#getFile) | **GET** /v2/files/{file_id} | Retrieve a file |
-| [**getFileData()**](FilesApi.md#getFileData) | **GET** /v2/files/{file_id}:data | Retrieve a file&#39;s data |
-| [**listFiles()**](FilesApi.md#listFiles) | **GET** /v2/files | List all files |
-| [**updateFile()**](FilesApi.md#updateFile) | **POST** /v2/files/{file_id} | Update a file |
+| [**createFile()**](FilesApi.md#createFile) | **POST** /rest/v2/files | Create a file |
+| [**deleteFile()**](FilesApi.md#deleteFile) | **DELETE** /rest/v2/files/{file_id} | Delete a file |
+| [**getFile()**](FilesApi.md#getFile) | **GET** /rest/v2/files/{file_id} | Retrieve a file |
+| [**getFileData()**](FilesApi.md#getFileData) | **GET** /rest/v2/files/{file_id}:data | Retrieve a file&#39;s data |
+| [**listFiles()**](FilesApi.md#listFiles) | **GET** /rest/v2/files | List all files |
+| [**updateFile()**](FilesApi.md#updateFile) | **POST** /rest/v2/files/{file_id} | Update a file |
 
 
 ## `createFile()`
 
 ```php
-createFile($file, $file_association, $file_name, $is_public, $contact_id): \Keap\Core\V2\Model\FileMetadata
+createFile($file, $file_name, $is_public, $file_association, $file2, $file_name2, $is_public2, $file_association2, $contact_id, $contact_id2): \Keap\Core\V2\Model\FileMetadata
 ```
 
 Create a file
@@ -29,19 +29,28 @@ Creates a file and uploads it
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\FilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$file = 'file_example'; // string | File to upload. This is a file sent as multi-part (not a string)
-$file_association = 'file_association_example'; // string | File association
+$file = '/path/to/file.txt'; // \SplFileObject | File to upload. This is a file sent as multi-part (not a string)
 $file_name = 'file_name_example'; // string | File name
 $is_public = True; // bool | Is public
+$file_association = 'file_association_example'; // string | File association
+$file2 = '/path/to/file.txt'; // \SplFileObject | File to upload
+$file_name2 = 'file_name_example'; // string | File name
+$is_public2 = 'is_public_example'; // string | Is public
+$file_association2 = 'file_association_example'; // string | File association
 $contact_id = 'contact_id_example'; // string | Contact ID
+$contact_id2 = 'contact_id_example'; // string | Contact ID. Required if the `file_association` is CONTACT
 
 try {
-    $result = $apiInstance->createFile($file, $file_association, $file_name, $is_public, $contact_id);
+    $result = $apiInstance->createFile($file, $file_name, $is_public, $file_association, $file2, $file_name2, $is_public2, $file_association2, $contact_id, $contact_id2);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FilesApi->createFile: ', $e->getMessage(), PHP_EOL;
@@ -52,11 +61,16 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **file** | **string**| File to upload. This is a file sent as multi-part (not a string) | |
-| **file_association** | **string**| File association | |
+| **file** | **\SplFileObject****\SplFileObject**| File to upload. This is a file sent as multi-part (not a string) | |
 | **file_name** | **string**| File name | |
 | **is_public** | **bool**| Is public | |
+| **file_association** | **string**| File association | |
+| **file2** | **\SplFileObject****\SplFileObject**| File to upload | |
+| **file_name2** | **string**| File name | |
+| **is_public2** | **string**| Is public | |
+| **file_association2** | **string**| File association | |
 | **contact_id** | **string**| Contact ID | [optional] |
+| **contact_id2** | **string**| Contact ID. Required if the &#x60;file_association&#x60; is CONTACT | [optional] |
 
 ### Return type
 
@@ -64,7 +78,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -92,12 +106,16 @@ Deletes a specified file
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\FilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$file_id = 'file_id_example'; // string | file_id
+$file_id = 'file_id_example'; // string
 
 try {
     $apiInstance->deleteFile($file_id);
@@ -110,7 +128,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **file_id** | **string**| file_id | |
+| **file_id** | **string**|  | |
 
 ### Return type
 
@@ -118,7 +136,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -146,12 +164,16 @@ Retrieves a file
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\FilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$file_id = 'file_id_example'; // string | file_id
+$file_id = 'file_id_example'; // string
 
 try {
     $result = $apiInstance->getFile($file_id);
@@ -165,7 +187,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **file_id** | **string**| file_id | |
+| **file_id** | **string**|  | |
 
 ### Return type
 
@@ -173,7 +195,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -201,12 +223,16 @@ Retrieves a file's data
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\FilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$file_id = 'file_id_example'; // string | file_id
+$file_id = 'file_id_example'; // string
 
 try {
     $result = $apiInstance->getFileData($file_id);
@@ -220,7 +246,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **file_id** | **string**| file_id | |
+| **file_id** | **string**|  | |
 
 ### Return type
 
@@ -228,7 +254,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -256,10 +282,14 @@ Retrieves a list of files
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\FilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $filter = 'filter_example'; // string | Filter to apply, allowed fields are: - (Boolean) `is_public` - (String) `contact_id` - (String) `user_id` - (FileBoxCategory) `category` - (FileBoxType) `file_box_type`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=category%3D%3DATTACHMENTS` - `filter=file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS`
 $order_by = 'order_by_example'; // string | Attribute and direction to order items. One of the following fields: - `file_name` - `updated_time` - ...  One of the following directions: - `asc` - `desc`
@@ -289,7 +319,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -303,7 +333,7 @@ No authorization required
 ## `updateFile()`
 
 ```php
-updateFile($file_id, $file, $file_name, $is_public, $update_mask): \Keap\Core\V2\Model\FileMetadata
+updateFile($file_id, $update_mask, $file, $file_name, $is_public, $file2, $file_name2, $is_public2): \Keap\Core\V2\Model\FileMetadata
 ```
 
 Update a file
@@ -317,19 +347,26 @@ Updates a file. Note that this endpoint is using a POST method instead of PATCH.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\FilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$file_id = 'file_id_example'; // string | file_id
-$file = 'file_example'; // string | File to upload. This is a file sent as multi-part (not a string)
+$file_id = 'file_id_example'; // string
+$update_mask = 'update_mask_example'; // string | Update Mask
+$file = '/path/to/file.txt'; // \SplFileObject | File to upload. This is a file sent as multi-part (not a string)
 $file_name = 'file_name_example'; // string | File name
 $is_public = True; // bool | Is public
-$update_mask = 'update_mask_example'; // string | Update Mask
+$file2 = '/path/to/file.txt'; // \SplFileObject | File to upload
+$file_name2 = 'file_name_example'; // string | File name
+$is_public2 = True; // bool | Is public
 
 try {
-    $result = $apiInstance->updateFile($file_id, $file, $file_name, $is_public, $update_mask);
+    $result = $apiInstance->updateFile($file_id, $update_mask, $file, $file_name, $is_public, $file2, $file_name2, $is_public2);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FilesApi->updateFile: ', $e->getMessage(), PHP_EOL;
@@ -340,11 +377,14 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **file_id** | **string**| file_id | |
-| **file** | **string**| File to upload. This is a file sent as multi-part (not a string) | [optional] |
+| **file_id** | **string**|  | |
+| **update_mask** | **string**| Update Mask | [optional] |
+| **file** | **\SplFileObject****\SplFileObject**| File to upload. This is a file sent as multi-part (not a string) | [optional] |
 | **file_name** | **string**| File name | [optional] |
 | **is_public** | **bool**| Is public | [optional] |
-| **update_mask** | **string**| Update Mask | [optional] |
+| **file2** | **\SplFileObject****\SplFileObject**| File to upload | [optional] |
+| **file_name2** | **string**| File name | [optional] |
+| **is_public2** | **bool**| Is public | [optional] |
 
 ### Return type
 
@@ -352,7 +392,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 

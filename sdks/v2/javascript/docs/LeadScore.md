@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**lastUpdated** | **String** |  | [optional] 
-**score** | **String** |  | [optional] 
+**score** | **String** | Lead score value (flame count) | [optional] 
+**lastUpdated** | **String** | Last updated timestamp (ISO-8601) | [optional] 
 
 

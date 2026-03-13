@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**calculation_type** | **str** |  | [optional] 
 **levels** | **int** |  | [optional] 
+**calculation_type** | **str** |  | [optional] 
 **participant_types** | **str** |  | [optional] 
 
 ## Example

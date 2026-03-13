@@ -5,16 +5,16 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **country** | **String** | The long-name descriptive version of the Country Code | [optional] 
-**countryCode** | **String** | An ISO 3166-2 Country Code (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) | [optional] 
-**field** | **String** |  | [optional] 
-**line1** | **String** |  | [optional] 
-**line2** | **String** |  | [optional] 
+**line1** | **String** | Street address line 1 | [optional] 
+**line2** | **String** | Street address line 2 | [optional] 
 **locality** | **String** | The municipality to which the address belongs | [optional] 
-**postalCode** | **String** |  | [optional] 
 **region** | **String** | The long-name descriptive version of the Region Code | [optional] 
+**field** | **String** | Address type field | [optional] 
+**countryCode** | **String** | An ISO 3166-2 Country Code (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) | [optional] 
+**postalCode** | **String** | Postal or ZIP code | [optional] 
 **regionCode** | **String** | An ISO 3166-2 Province Code, such as one of the US States (https://en.wikipedia.org/wiki/ISO_3166-2:US) | [optional] 
-**zipCode** | **String** |  | [optional] 
-**zipFour** | **String** |  | [optional] 
+**zipCode** | **String** | ZIP code (US) | [optional] 
+**zipFour** | **String** | ZIP+4 extension | [optional] 
 
 
 

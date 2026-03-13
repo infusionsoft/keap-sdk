@@ -7,11 +7,11 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**id** | **String** |  |  [optional] |
-|**invoiceId** | **String** |  |  [optional] |
-|**paymentAmount** | **Double** |  |  [optional] |
-|**paymentStatusMessage** | **String** |  |  [optional] |
-|**transactionId** | **String** |  |  [optional] |
+|**id** | **String** | Payment result ID |  [optional] |
+|**invoiceId** | **String** | Associated invoice ID |  [optional] |
+|**paymentAmount** | **Double** | Amount paid |  [optional] |
+|**paymentStatusMessage** | **String** | Payment status |  [optional] |
+|**transactionId** | **String** | Transaction ID from payment processor |  [optional] |
 
 
 ## Implemented Interfaces

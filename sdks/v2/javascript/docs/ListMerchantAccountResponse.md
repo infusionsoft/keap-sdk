@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  | [optional] 
-**isTest** | **Boolean** |  | [optional] 
 **name** | **String** |  | [optional] 
 **type** | **String** |  | [optional] 
+**isTest** | **Boolean** |  | [optional] 
 
 
 

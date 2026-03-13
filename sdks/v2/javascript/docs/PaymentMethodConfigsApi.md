@@ -1,10 +1,10 @@
 # KeapCoreServiceV2Sdk.PaymentMethodConfigsApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createPaymentMethodConfig**](PaymentMethodConfigsApi.md#createPaymentMethodConfig) | **POST** /v2/paymentMethodConfigs | Create Payment Method Configuration
+[**createPaymentMethodConfig**](PaymentMethodConfigsApi.md#createPaymentMethodConfig) | **POST** /rest/v2/paymentMethodConfigs | Create Payment Method Configuration
 
 
 
@@ -20,9 +20,13 @@ Creates configuration details for rendering payment method components
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.PaymentMethodConfigsApi();
-let createPaymentMethodConfigRequest = new KeapCoreServiceV2Sdk.CreatePaymentMethodConfigRequest(); // CreatePaymentMethodConfigRequest | request
+let createPaymentMethodConfigRequest = new KeapCoreServiceV2Sdk.CreatePaymentMethodConfigRequest(); // CreatePaymentMethodConfigRequest | 
 apiInstance.createPaymentMethodConfig(createPaymentMethodConfigRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -36,7 +40,7 @@ apiInstance.createPaymentMethodConfig(createPaymentMethodConfigRequest).then((da
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createPaymentMethodConfigRequest** | [**CreatePaymentMethodConfigRequest**](CreatePaymentMethodConfigRequest.md)| request | 
+ **createPaymentMethodConfigRequest** | [**CreatePaymentMethodConfigRequest**](CreatePaymentMethodConfigRequest.md)|  | 
 
 ### Return type
 
@@ -44,7 +48,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 

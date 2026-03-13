@@ -5,13 +5,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**affiliate_id** | **str** |  | [optional] 
-**date_created** | **str** |  | [optional] 
-**id** | **str** |  | [optional] 
-**local_url_code** | **str** |  | [optional] 
-**name** | **str** |  | [optional] 
-**program_ids** | **List[str]** |  | [optional] 
-**redirect_url** | **str** |  | [optional] 
+**id** | **str** | Affiliate link ID | [optional] 
+**name** | **str** | Link name | [optional] 
+**affiliate_id** | **str** | Associated affiliate ID | [optional] 
+**local_url_code** | **str** | URL code for tracking | [optional] 
+**redirect_url** | **str** | Destination URL | [optional] 
+**program_ids** | **List[str]** | Associated program IDs | [optional] 
+**date_created** | **str** | Date link was created (ISO-8601) | [optional] 
 
 ## Example
 

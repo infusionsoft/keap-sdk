@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**campaignId** | **String** |  | [optional] 
 **goals** | [**[Goal]**](Goal.md) |  | [optional] 
 **nextPageToken** | **String** |  | [optional] 
+**campaignId** | **String** |  | [optional] 
 
 

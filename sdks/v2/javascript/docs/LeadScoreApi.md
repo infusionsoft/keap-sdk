@@ -1,10 +1,10 @@
 # KeapCoreServiceV2Sdk.LeadScoreApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getLeadScoreDetails**](LeadScoreApi.md#getLeadScoreDetails) | **GET** /v2/contacts/{contact_id}/leadScore | Retrieve Lead Score of a Contact
+[**getLeadScoreDetails**](LeadScoreApi.md#getLeadScoreDetails) | **GET** /rest/v2/contacts/{contact_id}/leadScore | Retrieve Lead Score of a Contact
 
 
 
@@ -20,9 +20,13 @@ Retrieves information about the Lead Score of a Contact
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.LeadScoreApi();
-let contactId = "contactId_example"; // String | contact_id
+let contactId = "contactId_example"; // String | 
 apiInstance.getLeadScoreDetails(contactId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -36,7 +40,7 @@ apiInstance.getLeadScoreDetails(contactId).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **contactId** | **String**| contact_id | 
+ **contactId** | **String**|  | 
 
 ### Return type
 
@@ -44,7 +48,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 

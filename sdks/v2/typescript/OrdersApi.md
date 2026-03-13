@@ -1,31 +1,31 @@
 # .OrdersApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**applyCommissionOnOrderItems**](OrdersApi.md#applyCommissionOnOrderItems) | **POST** /v2/orders/{order_id}/items/{order_item_id}:applyCommission | Apply Commission to an Order Item
-[**applyTax**](OrdersApi.md#applyTax) | **POST** /v2/orders/{order_id}:applyTax | Apply Taxes on an Order
-[**attachFileToOrder**](OrdersApi.md#attachFileToOrder) | **POST** /v2/orders/{order_id}:attachFile | Attach a File to an Order Invoice
-[**createOrder**](OrdersApi.md#createOrder) | **POST** /v2/orders | Create an Order
-[**createOrderCustomField**](OrdersApi.md#createOrderCustomField) | **POST** /v2/orders/model/customFields | Create an Order Custom Field
-[**createOrderItem**](OrdersApi.md#createOrderItem) | **POST** /v2/orders/{order_id}/items | Create an Order Item
-[**createPaymentForAnOrder**](OrdersApi.md#createPaymentForAnOrder) | **POST** /v2/orders/{order_id}/payments | Create a Payment
-[**deleteOrder**](OrdersApi.md#deleteOrder) | **DELETE** /v2/orders/{order_id} | Delete an Order
-[**deleteOrderCustomField**](OrdersApi.md#deleteOrderCustomField) | **DELETE** /v2/orders/model/customFields/{custom_field_id} | Delete an Order Custom Field
-[**deleteOrderItem**](OrdersApi.md#deleteOrderItem) | **DELETE** /v2/orders/{order_id}/items/{order_item_id} | Delete an Order Item
-[**detachFileFromOrder**](OrdersApi.md#detachFileFromOrder) | **POST** /v2/orders/{order_id}:detachFile | Detach a File from an Order Invoice
-[**getOrder**](OrdersApi.md#getOrder) | **GET** /v2/orders/{order_id} | Retrieve an Order
-[**listOrderPayments**](OrdersApi.md#listOrderPayments) | **GET** /v2/orders/{order_id}/payments | Retrieve Order Payments
-[**listOrders**](OrdersApi.md#listOrders) | **GET** /v2/orders | List orders
-[**retrieveOrderCustomFieldModel**](OrdersApi.md#retrieveOrderCustomFieldModel) | **GET** /v2/orders/model | Retrieve Order Custom Field Model
-[**updateOrder**](OrdersApi.md#updateOrder) | **PATCH** /v2/orders/{order_id} | Update an Order
-[**updateOrderCustomField**](OrdersApi.md#updateOrderCustomField) | **PATCH** /v2/orders/model/customFields/{custom_field_id} | Update an Order Custom Field
-[**updateOrderItem**](OrdersApi.md#updateOrderItem) | **PATCH** /v2/orders/{order_id}/items/{order_item_id} | Update an Order Item
+[**applyCommissionOnOrderItems**](OrdersApi.md#applyCommissionOnOrderItems) | **POST** /rest/v2/orders/{order_id}/items/{order_item_id}:applyCommission | Apply Commission to an Order Item
+[**applyTax**](OrdersApi.md#applyTax) | **POST** /rest/v2/orders/{order_id}:applyTax | Apply Taxes on an Order
+[**attachFileToOrder**](OrdersApi.md#attachFileToOrder) | **POST** /rest/v2/orders/{order_id}:attachFile | Attach a File to an Order Invoice
+[**createOrder**](OrdersApi.md#createOrder) | **POST** /rest/v2/orders | Create an Order
+[**createOrderCustomField**](OrdersApi.md#createOrderCustomField) | **POST** /rest/v2/orders/model/customFields | Create an Order Custom Field
+[**createOrderItem**](OrdersApi.md#createOrderItem) | **POST** /rest/v2/orders/{order_id}/items | Create an Order Item
+[**createPaymentForAnOrder**](OrdersApi.md#createPaymentForAnOrder) | **POST** /rest/v2/orders/{order_id}/payments | Create a Payment
+[**deleteOrder**](OrdersApi.md#deleteOrder) | **DELETE** /rest/v2/orders/{order_id} | Delete an Order
+[**deleteOrderCustomField**](OrdersApi.md#deleteOrderCustomField) | **DELETE** /rest/v2/orders/model/customFields/{custom_field_id} | Delete an Order Custom Field
+[**deleteOrderItem**](OrdersApi.md#deleteOrderItem) | **DELETE** /rest/v2/orders/{order_id}/items/{order_item_id} | Delete an Order Item
+[**detachFileFromOrder**](OrdersApi.md#detachFileFromOrder) | **POST** /rest/v2/orders/{order_id}:detachFile | Detach a File from an Order Invoice
+[**getOrder**](OrdersApi.md#getOrder) | **GET** /rest/v2/orders/{order_id} | Retrieve an Order
+[**listOrderPayments**](OrdersApi.md#listOrderPayments) | **GET** /rest/v2/orders/{order_id}/payments | Retrieve Order Payments
+[**listOrders**](OrdersApi.md#listOrders) | **GET** /rest/v2/orders | List orders
+[**retrieveOrderCustomFieldModel**](OrdersApi.md#retrieveOrderCustomFieldModel) | **GET** /rest/v2/orders/model | Retrieve Order Custom Field Model
+[**updateOrder**](OrdersApi.md#updateOrder) | **PATCH** /rest/v2/orders/{order_id} | Update an Order
+[**updateOrderCustomField**](OrdersApi.md#updateOrderCustomField) | **PATCH** /rest/v2/orders/model/customFields/{custom_field_id} | Update an Order Custom Field
+[**updateOrderItem**](OrdersApi.md#updateOrderItem) | **PATCH** /rest/v2/orders/{order_id}/items/{order_item_id} | Update an Order Item
 
 
 # **applyCommissionOnOrderItems**
-> OrderItem applyCommissionOnOrderItems(restApplyCommissionRequest)
+> OrderItem applyCommissionOnOrderItems(applyCommissionRequest)
 
 Applies commission to an order item on an existing order.
 
@@ -40,18 +40,18 @@ const configuration = createConfiguration();
 const apiInstance = new OrdersApi(configuration);
 
 const request: OrdersApiApplyCommissionOnOrderItemsRequest = {
-    // order_id
+  
   orderId: "order_id_example",
-    // order_item_id
+  
   orderItemId: "order_item_id_example",
-    // request
-  restApplyCommissionRequest: {
-    affiliateId: "affiliateId_example",
-    commissionAmount: 3.14,
-    commissionDate: "commissionDate_example",
-    description: "description_example",
-    payPercent: 3.14,
+  
+  applyCommissionRequest: {
+    affiliateId: "123",
+    payPercent: 10,
+    commissionAmount: 50,
     payoutType: "UPFRONT",
+    description: "Q1 Sales Commission",
+    commissionDate: new Date('2024-05-21').toISOString().split('T')[0];,
   },
 };
 
@@ -64,9 +64,9 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **restApplyCommissionRequest** | **RestApplyCommissionRequest**| request |
- **orderId** | [**string**] | order_id | defaults to undefined
- **orderItemId** | [**string**] | order_item_id | defaults to undefined
+ **applyCommissionRequest** | **ApplyCommissionRequest**|  |
+ **orderId** | [**string**] |  | defaults to undefined
+ **orderItemId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -75,7 +75,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -87,14 +87,18 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **applyTax**
-> Order applyTax()
+> OrderV2 applyTax()
 
 Calculate taxes for a single Order for a given order id
 
@@ -109,7 +113,7 @@ const configuration = createConfiguration();
 const apiInstance = new OrdersApi(configuration);
 
 const request: OrdersApiApplyTaxRequest = {
-    // order_id
+  
   orderId: "order_id_example",
 };
 
@@ -122,16 +126,16 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **orderId** | [**string**] | order_id | defaults to undefined
+ **orderId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
 
-**Order**
+**OrderV2**
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -143,14 +147,18 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **attachFileToOrder**
-> Order attachFileToOrder(fileOperationRequest)
+> OrderV2 attachFileToOrder(fileOperationRequest)
 
 Attaches an uploaded File to an Order Invoice
 
@@ -165,9 +173,9 @@ const configuration = createConfiguration();
 const apiInstance = new OrdersApi(configuration);
 
 const request: OrdersApiAttachFileToOrderRequest = {
-    // order_id
+  
   orderId: "order_id_example",
-    // File name
+  
   fileOperationRequest: {
     fileId: "fileId_example",
   },
@@ -182,17 +190,17 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **fileOperationRequest** | **FileOperationRequest**| File name |
- **orderId** | [**string**] | order_id | defaults to undefined
+ **fileOperationRequest** | **FileOperationRequest**|  |
+ **orderId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
 
-**Order**
+**OrderV2**
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -204,14 +212,18 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **createOrder**
-> Order createOrder(restCreateOrderRequest)
+> OrderV2 createOrder(restCreateOrderRequest)
 
 Creates a one time Order with Order items
 
@@ -226,46 +238,46 @@ const configuration = createConfiguration();
 const apiInstance = new OrdersApi(configuration);
 
 const request: OrdersApiCreateOrderRequest = {
-    // request
+  
   restCreateOrderRequest: {
-    contactId: "contactId_example",
-    leadAffiliateId: "leadAffiliateId_example",
-    notes: "notes_example",
+    notes: "Rush delivery requested",
+    terms: "Net 30",
+    contactId: "123",
     orderItems: [
       {
-        costPerUnit: 3.14,
-        description: "description_example",
-        itemType: "UNKNOWN",
-        name: "name_example",
-        notes: "notes_example",
-        pricePerUnit: 3.14,
-        productId: "productId_example",
-        quantity: 1,
+        name: "Premium Widget",
+        description: "High-quality widget",
+        quantity: 2,
+        notes: "Gift wrap",
+        productId: "123",
+        subscriptionPlanId: "456",
+        subscriptionPlanDescription: "Monthly subscription plan",
+        itemType: "PRODUCT",
+        pricePerUnit: 29.99,
+        costPerUnit: 15,
       },
     ],
-    orderTime: "orderTime_example",
-    orderTitle: "orderTitle_example",
-    orderType: "OFFLINE",
-    promoCodes: [
-      "promoCodes_example",
-    ],
-    salesAffiliateId: "salesAffiliateId_example",
+    orderTitle: "Online Purchase",
+    orderTime: new Date('2024-05-21T14:30:00Z'),
+    orderType: "ONLINE",
+    promoCodes: [SUMMER20, FREESHIP],
+    leadAffiliateId: "456",
+    salesAffiliateId: "789",
     shippingAddress: {
-      company: "company_example",
-      countryCode: "countryCode_example",
-      firstName: "firstName_example",
-      isInvoiceToCompany: true,
-      lastName: "lastName_example",
       line1: "line1_example",
       line2: "line2_example",
       locality: "locality_example",
-      middleName: "middleName_example",
-      phone: "phone_example",
       region: "region_example",
+      company: "company_example",
+      phone: "phone_example",
       zipCode: "zipCode_example",
       zipFour: "zipFour_example",
+      countryCode: "countryCode_example",
+      firstName: "firstName_example",
+      middleName: "middleName_example",
+      lastName: "lastName_example",
+      isInvoiceToCompany: true,
     },
-    terms: "terms_example",
   },
 };
 
@@ -278,16 +290,16 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **restCreateOrderRequest** | **RestCreateOrderRequest**| request |
+ **restCreateOrderRequest** | **RestCreateOrderRequest**|  |
 
 
 ### Return type
 
-**Order**
+**OrderV2**
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -299,9 +311,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -321,17 +337,16 @@ const configuration = createConfiguration();
 const apiInstance = new OrdersApi(configuration);
 
 const request: OrdersApiCreateOrderCustomFieldRequest = {
-    // customField
+  
   createCustomFieldRequest: {
-    fieldType: "CURRENCY",
-    groupId: "groupId_example",
     label: "label_example",
     options: [
       {
         label: "label_example",
-        options: [],
       },
     ],
+    fieldType: "CURRENCY",
+    groupId: "groupId_example",
     userGroupId: "userGroupId_example",
   },
 };
@@ -345,7 +360,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createCustomFieldRequest** | **CreateCustomFieldRequest**| customField |
+ **createCustomFieldRequest** | **CreateCustomFieldRequest**|  |
 
 
 ### Return type
@@ -354,7 +369,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -366,9 +381,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -388,18 +407,20 @@ const configuration = createConfiguration();
 const apiInstance = new OrdersApi(configuration);
 
 const request: OrdersApiCreateOrderItemRequest = {
-    // order_id
+  
   orderId: "order_id_example",
-    // request
+  
   createOrderItemRequest: {
-    costPerUnit: 3.14,
-    description: "description_example",
-    itemType: "UNKNOWN",
-    name: "name_example",
-    notes: "notes_example",
-    pricePerUnit: 3.14,
-    productId: "productId_example",
-    quantity: 1,
+    name: "Premium Widget",
+    description: "High-quality widget",
+    quantity: 2,
+    notes: "Gift wrap",
+    productId: "123",
+    subscriptionPlanId: "456",
+    subscriptionPlanDescription: "Monthly subscription plan",
+    itemType: "PRODUCT",
+    pricePerUnit: 29.99,
+    costPerUnit: 15,
   },
 };
 
@@ -412,8 +433,8 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createOrderItemRequest** | **CreateOrderItemRequest**| request |
- **orderId** | [**string**] | order_id | defaults to undefined
+ **createOrderItemRequest** | **CreateOrderItemRequest**|  |
+ **orderId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -422,7 +443,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -434,14 +455,18 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **createPaymentForAnOrder**
-> PaymentResult createPaymentForAnOrder(createPaymentRequest)
+> PaymentResult createPaymentForAnOrder(restCreatePaymentRequest)
 
 Creates a payment record. Alternatively, adds a record of historical or external payment of cash or credit card
 
@@ -456,16 +481,16 @@ const configuration = createConfiguration();
 const apiInstance = new OrdersApi(configuration);
 
 const request: OrdersApiCreatePaymentForAnOrderRequest = {
-    // order_id
+  
   orderId: "order_id_example",
-    // request
-  createPaymentRequest: {
-    applyToCommissions: true,
+  
+  restCreatePaymentRequest: {
     notes: "notes_example",
-    paymentAmount: 3.14,
     paymentMethodId: "paymentMethodId_example",
     paymentMethodType: "paymentMethodType_example",
-    paymentTime: "paymentTime_example",
+    paymentTime: new Date('2024-05-21T14:30:00Z'),
+    paymentAmount: 3.14,
+    applyToCommissions: true,
   },
 };
 
@@ -478,8 +503,8 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createPaymentRequest** | **CreatePaymentRequest**| request |
- **orderId** | [**string**] | order_id | defaults to undefined
+ **restCreatePaymentRequest** | **RestCreatePaymentRequest**|  |
+ **orderId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -488,7 +513,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -500,9 +525,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -522,7 +551,7 @@ const configuration = createConfiguration();
 const apiInstance = new OrdersApi(configuration);
 
 const request: OrdersApiDeleteOrderRequest = {
-    // order_id
+  
   orderId: "order_id_example",
 };
 
@@ -535,7 +564,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **orderId** | [**string**] | order_id | defaults to undefined
+ **orderId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -544,7 +573,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -556,10 +585,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No Content |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -579,7 +611,7 @@ const configuration = createConfiguration();
 const apiInstance = new OrdersApi(configuration);
 
 const request: OrdersApiDeleteOrderCustomFieldRequest = {
-    // custom_field_id
+  
   customFieldId: "custom_field_id_example",
 };
 
@@ -592,7 +624,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **customFieldId** | [**string**] | custom_field_id | defaults to undefined
+ **customFieldId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -601,7 +633,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -613,10 +645,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No Content |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -636,9 +671,9 @@ const configuration = createConfiguration();
 const apiInstance = new OrdersApi(configuration);
 
 const request: OrdersApiDeleteOrderItemRequest = {
-    // order_id
+  
   orderId: "order_id_example",
-    // order_item_id
+  
   orderItemId: "order_item_id_example",
 };
 
@@ -651,8 +686,8 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **orderId** | [**string**] | order_id | defaults to undefined
- **orderItemId** | [**string**] | order_item_id | defaults to undefined
+ **orderId** | [**string**] |  | defaults to undefined
+ **orderItemId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -661,7 +696,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -673,15 +708,18 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No Content |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **detachFileFromOrder**
-> Order detachFileFromOrder(fileOperationRequest)
+> OrderV2 detachFileFromOrder(fileOperationRequest)
 
 Detaches a File from an Order Invoice
 
@@ -696,9 +734,9 @@ const configuration = createConfiguration();
 const apiInstance = new OrdersApi(configuration);
 
 const request: OrdersApiDetachFileFromOrderRequest = {
-    // order_id
+  
   orderId: "order_id_example",
-    // request
+  
   fileOperationRequest: {
     fileId: "fileId_example",
   },
@@ -713,17 +751,17 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **fileOperationRequest** | **FileOperationRequest**| request |
- **orderId** | [**string**] | order_id | defaults to undefined
+ **fileOperationRequest** | **FileOperationRequest**|  |
+ **orderId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
 
-**Order**
+**OrderV2**
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -735,14 +773,18 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **getOrder**
-> Order getOrder()
+> OrderV2 getOrder()
 
 Retrieves a single Order for a given order id
 
@@ -757,7 +799,7 @@ const configuration = createConfiguration();
 const apiInstance = new OrdersApi(configuration);
 
 const request: OrdersApiGetOrderRequest = {
-    // order_id
+  
   orderId: "order_id_example",
 };
 
@@ -770,16 +812,16 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **orderId** | [**string**] | order_id | defaults to undefined
+ **orderId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
 
-**Order**
+**OrderV2**
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -791,10 +833,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -814,7 +859,7 @@ const configuration = createConfiguration();
 const apiInstance = new OrdersApi(configuration);
 
 const request: OrdersApiListOrderPaymentsRequest = {
-    // order_id
+  
   orderId: "order_id_example",
     // Filter to apply, allowed fields are: - (String) `invoice_id` - (String) `payment_id` - (String) `amount` - (String) `pay_status` - (Boolean) `skip_commission`  You will need to apply the `==` operator to check the equality of one of the filters with your searched  word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=payment_id%3D%3D123` - `filter=pay_status%3D%3DAPPROVED` - `filter=invoice_id%3D%3D456%3Bskip_commission=true`  (optional)
   filter: "filter_example",
@@ -835,7 +880,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **orderId** | [**string**] | order_id | defaults to undefined
+ **orderId** | [**string**] |  | defaults to undefined
  **filter** | [**string**] | Filter to apply, allowed fields are: - (String) &#x60;invoice_id&#x60; - (String) &#x60;payment_id&#x60; - (String) &#x60;amount&#x60; - (String) &#x60;pay_status&#x60; - (Boolean) &#x60;skip_commission&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched  word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;payment_id%3D%3D123&#x60; - &#x60;filter&#x3D;pay_status%3D%3DAPPROVED&#x60; - &#x60;filter&#x3D;invoice_id%3D%3D456%3Bskip_commission&#x3D;true&#x60;  | (optional) defaults to undefined
  **orderBy** | [**string**] | Attribute and direction to order items. One of the following fields: - &#x60;invoice_id&#x60; - &#x60;payment_id&#x60; - &#x60;amount&#x60; - &#x60;pay_time&#x60; - &#x60;pay_status&#x60; - &#x60;skip_commission&#x60; - &#x60;last_updated_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | (optional) defaults to undefined
  **pageSize** | [**number**] | Total number of items to return per page | (optional) defaults to undefined
@@ -848,7 +893,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -860,10 +905,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -883,7 +931,7 @@ const configuration = createConfiguration();
 const apiInstance = new OrdersApi(configuration);
 
 const request: OrdersApiListOrdersRequest = {
-    // Filter to apply, allowed fields are: - (String) `product_id` - (String) `contact_id` - (Boolean) `paid` - (String) `created_since_time` - (String) `created_until_time` You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=product_id%3D%3D123` - `filter=contact_id%3D%3D567` - `filter=product_id%3D%3D123%3Bcontact_id%3D%3D567` (optional)
+    // Filter to apply, allowed fields are: - (String) `product_id` - (String) `contact_id` - (Boolean) `paid` - (String) `created_since_time` - (String) `created_until_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=product_id%3D%3D123` - `filter=contact_id%3D%3D567` - `filter=product_id%3D%3D123%3Bcontact_id%3D%3D567` (optional)
   filter: "filter_example",
     // Attribute and direction to order items. One of the following fields: - `id` - `order_time`  One of the following directions: - `asc` - `desc` (optional)
   orderBy: "order_by_example",
@@ -902,7 +950,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filter** | [**string**] | Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; | (optional) defaults to undefined
+ **filter** | [**string**] | Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; | (optional) defaults to undefined
  **orderBy** | [**string**] | Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;order_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | (optional) defaults to undefined
  **pageSize** | [**number**] | Total number of items to return per page | (optional) defaults to undefined
  **pageToken** | [**string**] | Page token | (optional) defaults to undefined
@@ -914,7 +962,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -926,10 +974,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -964,7 +1015,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -976,15 +1027,18 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **updateOrder**
-> Order updateOrder()
+> OrderV2 updateOrder(updateOrderRequest)
 
 Updates an Order
 
@@ -999,52 +1053,49 @@ const configuration = createConfiguration();
 const apiInstance = new OrdersApi(configuration);
 
 const request: OrdersApiUpdateOrderRequest = {
-    // order_id
+  
   orderId: "order_id_example",
-    // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: [
-    "contact_id",
-  ],
-    // order (optional)
+  
   updateOrderRequest: {
-    contactId: "contactId_example",
-    leadAffiliateId: "leadAffiliateId_example",
-    notes: "notes_example",
-    orderTime: "orderTime_example",
-    orderTitle: "orderTitle_example",
-    orderType: "OFFLINE",
-    paymentPlan: {
-      autoCharge: true,
-      daysBetweenPayments: 1,
-      daysBetweenRetries: 1,
-      initialPaymentAmount: 3.14,
-      initialPaymentDate: "initialPaymentDate_example",
-      maxChargeAttempts: 1,
-      numberOfPayments: 1,
-      paymentMethodId: "paymentMethodId_example",
-      planStartDate: "planStartDate_example",
-    },
-    promoCodes: [
-      "promoCodes_example",
-    ],
-    salesAffiliateId: "salesAffiliateId_example",
+    notes: "Rush delivery",
+    terms: "Net 30",
+    contactId: "123",
+    orderTitle: "Online Purchase",
+    orderTime: new Date('2024-05-21T14:30:00Z'),
+    orderType: "ONLINE",
+    promoCodes: [SUMMER20],
+    leadAffiliateId: "456",
+    salesAffiliateId: "789",
     shippingAddress: {
-      company: "company_example",
-      countryCode: "countryCode_example",
-      firstName: "firstName_example",
-      isInvoiceToCompany: true,
-      lastName: "lastName_example",
       line1: "line1_example",
       line2: "line2_example",
       locality: "locality_example",
-      middleName: "middleName_example",
-      phone: "phone_example",
       region: "region_example",
+      company: "company_example",
+      phone: "phone_example",
       zipCode: "zipCode_example",
       zipFour: "zipFour_example",
+      countryCode: "countryCode_example",
+      firstName: "firstName_example",
+      middleName: "middleName_example",
+      lastName: "lastName_example",
+      isInvoiceToCompany: true,
     },
-    terms: "terms_example",
+    paymentPlan: {
+      autoCharge: true,
+      maxChargeAttempts: 3,
+      daysBetweenRetries: 7,
+      paymentMethodId: "123",
+      initialPaymentAmount: 50,
+      initialPaymentDate: new Date('2024-05-21').toISOString().split('T')[0];,
+      planStartDate: new Date('2024-05-21').toISOString().split('T')[0];,
+      numberOfPayments: 12,
+      daysBetweenPayments: 30,
+    },
   },
+    // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+  updateMask: `contact_id,order_items,order_title,order_time,order_type,promo_codes,
+lead_affiliate_id,sales_affiliate_id,shipping_address,notes,terms,payment_plan`,
 };
 
 const data = await apiInstance.updateOrder(request);
@@ -1056,18 +1107,18 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **updateOrderRequest** | **UpdateOrderRequest**| order |
- **orderId** | [**string**] | order_id | defaults to undefined
- **updateMask** |  | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateOrderRequest** | **UpdateOrderRequest**|  |
+ **orderId** | [**string**] |  | defaults to undefined
+ **updateMask** | [**&#39;contact_id,order_items,order_title,order_time,order_type,promo_codes, lead_affiliate_id,sales_affiliate_id,shipping_address,notes,terms,payment_plan&#39;**]**Array<&#39;contact_id,order_items,order_title,order_time,order_type,promo_codes, lead_affiliate_id,sales_affiliate_id,shipping_address,notes,terms,payment_plan&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
 
-**Order**
+**OrderV2**
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1079,10 +1130,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -1102,24 +1156,21 @@ const configuration = createConfiguration();
 const apiInstance = new OrdersApi(configuration);
 
 const request: OrdersApiUpdateOrderCustomFieldRequest = {
-    // custom_field_id
+  
   customFieldId: "custom_field_id_example",
-    // request
+  
   updateCustomFieldMetaDataRequest: {
-    groupId: "groupId_example",
     label: "label_example",
     options: [
       {
         id: "id_example",
         label: "label_example",
-        options: [],
       },
     ],
+    groupId: "groupId_example",
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: [
-    "group_id",
-  ],
+  updateMask: "group_id,label,options",
 };
 
 const data = await apiInstance.updateOrderCustomField(request);
@@ -1131,9 +1182,9 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **updateCustomFieldMetaDataRequest** | **UpdateCustomFieldMetaDataRequest**| request |
- **customFieldId** | [**string**] | custom_field_id | defaults to undefined
- **updateMask** |  | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateCustomFieldMetaDataRequest** | **UpdateCustomFieldMetaDataRequest**|  |
+ **customFieldId** | [**string**] |  | defaults to undefined
+ **updateMask** | [**&#39;group_id,label,options&#39;**]**Array<&#39;group_id,label,options&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
@@ -1142,7 +1193,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1154,15 +1205,18 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **updateOrderItem**
-> OrderItem updateOrderItem()
+> OrderItem updateOrderItem(updateOrderItemRequest)
 
 Updates an Order Item
 
@@ -1177,24 +1231,25 @@ const configuration = createConfiguration();
 const apiInstance = new OrdersApi(configuration);
 
 const request: OrdersApiUpdateOrderItemRequest = {
-    // order_id
+  
   orderId: "order_id_example",
-    // order_item_id
+  
   orderItemId: "order_item_id_example",
-    // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: [
-    "contact_id",
-  ],
-    // order (optional)
+  
   updateOrderItemRequest: {
-    costPerUnit: 3.14,
-    description: "description_example",
-    itemType: "UNKNOWN",
-    name: "name_example",
-    notes: "notes_example",
-    pricePerUnit: 3.14,
-    quantity: 1,
+    name: "Premium Widget",
+    description: "High-quality widget",
+    quantity: 2,
+    notes: "Gift wrap requested",
+    productId: "123",
+    subscriptionPlanId: "456",
+    subscriptionPlanDescription: "Monthly billing",
+    pricePerUnit: 29.99,
+    costPerUnit: 15,
   },
+    // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+  updateMask: `name,description,notes,quantity,price_per_unit,cost_per_unit,
+product_id,subscription_plan_id,subscription_plan_description`,
 };
 
 const data = await apiInstance.updateOrderItem(request);
@@ -1206,10 +1261,10 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **updateOrderItemRequest** | **UpdateOrderItemRequest**| order |
- **orderId** | [**string**] | order_id | defaults to undefined
- **orderItemId** | [**string**] | order_item_id | defaults to undefined
- **updateMask** |  | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateOrderItemRequest** | **UpdateOrderItemRequest**|  |
+ **orderId** | [**string**] |  | defaults to undefined
+ **orderItemId** | [**string**] |  | defaults to undefined
+ **updateMask** | [**&#39;name,description,notes,quantity,price_per_unit,cost_per_unit, product_id,subscription_plan_id,subscription_plan_description&#39;**]**Array<&#39;name,description,notes,quantity,price_per_unit,cost_per_unit, product_id,subscription_plan_id,subscription_plan_description&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
@@ -1218,7 +1273,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -1230,10 +1285,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

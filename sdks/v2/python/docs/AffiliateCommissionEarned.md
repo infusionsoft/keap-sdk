@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**affiliate_commission_total** | **float** |  | [optional] 
-**view_ledger_url** | **str** |  | [optional] 
+**affiliate_commission_total** | **float** | Total commission earned by affiliate | [optional] 
+**view_ledger_url** | **str** | URL to view affiliate ledger | [optional] 
 
 ## Example
 

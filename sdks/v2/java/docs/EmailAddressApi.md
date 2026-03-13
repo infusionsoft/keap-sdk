@@ -1,19 +1,19 @@
 # EmailAddressApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getEmailAddressStatus**](EmailAddressApi.md#getEmailAddressStatus) | **GET** /v2/emailAddresses/{email}/status | Retrieve an Email Address status |
-| [**getEmailAddressStatusWithHttpInfo**](EmailAddressApi.md#getEmailAddressStatusWithHttpInfo) | **GET** /v2/emailAddresses/{email}/status | Retrieve an Email Address status |
-| [**updateEmailAddressOptStatus**](EmailAddressApi.md#updateEmailAddressOptStatus) | **PATCH** /v2/emailAddresses/{email}/status | Update an Email Address opt-in status |
-| [**updateEmailAddressOptStatusWithHttpInfo**](EmailAddressApi.md#updateEmailAddressOptStatusWithHttpInfo) | **PATCH** /v2/emailAddresses/{email}/status | Update an Email Address opt-in status |
+| [**getEmailAddressStatus**](EmailAddressApi.md#getEmailAddressStatus) | **GET** /rest/v2/emailAddresses/{email}/status | Retrieve an Email Address status |
+| [**getEmailAddressStatusWithHttpInfo**](EmailAddressApi.md#getEmailAddressStatusWithHttpInfo) | **GET** /rest/v2/emailAddresses/{email}/status | Retrieve an Email Address status |
+| [**updateEmailAddressOptStatus**](EmailAddressApi.md#updateEmailAddressOptStatus) | **PATCH** /rest/v2/emailAddresses/{email}/status | Update an Email Address opt-in status |
+| [**updateEmailAddressOptStatusWithHttpInfo**](EmailAddressApi.md#updateEmailAddressOptStatusWithHttpInfo) | **PATCH** /rest/v2/emailAddresses/{email}/status | Update an Email Address opt-in status |
 
 
 
 ## getEmailAddressStatus
 
-> EmailAddressStatus getEmailAddressStatus(email)
+> RestEmailAddressStatus getEmailAddressStatus(email)
 
 Retrieve an Email Address status
 
@@ -26,18 +26,23 @@ Retrieves the opt-in status for a given Email Address
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.EmailAddressApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         EmailAddressApi apiInstance = new EmailAddressApi(defaultClient);
-        String email = "email_example"; // String | email
+        String email = "email_example"; // String | 
         try {
-            EmailAddressStatus result = apiInstance.getEmailAddressStatus(email);
+            RestEmailAddressStatus result = apiInstance.getEmailAddressStatus(email);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EmailAddressApi#getEmailAddressStatus");
@@ -55,16 +60,16 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **email** | **String**| email | |
+| **email** | **String**|  | |
 
 ### Return type
 
-[**EmailAddressStatus**](EmailAddressStatus.md)
+[**RestEmailAddressStatus**](RestEmailAddressStatus.md)
 
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -75,14 +80,17 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## getEmailAddressStatusWithHttpInfo
 
-> ApiResponse<EmailAddressStatus> getEmailAddressStatus getEmailAddressStatusWithHttpInfo(email)
+> ApiResponse<RestEmailAddressStatus> getEmailAddressStatus getEmailAddressStatusWithHttpInfo(email)
 
 Retrieve an Email Address status
 
@@ -96,18 +104,23 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.EmailAddressApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         EmailAddressApi apiInstance = new EmailAddressApi(defaultClient);
-        String email = "email_example"; // String | email
+        String email = "email_example"; // String | 
         try {
-            ApiResponse<EmailAddressStatus> response = apiInstance.getEmailAddressStatusWithHttpInfo(email);
+            ApiResponse<RestEmailAddressStatus> response = apiInstance.getEmailAddressStatusWithHttpInfo(email);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -127,16 +140,16 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **email** | **String**| email | |
+| **email** | **String**|  | |
 
 ### Return type
 
-ApiResponse<[**EmailAddressStatus**](EmailAddressStatus.md)>
+ApiResponse<[**RestEmailAddressStatus**](RestEmailAddressStatus.md)>
 
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -147,15 +160,18 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## updateEmailAddressOptStatus
 
-> EmailAddressStatus updateEmailAddressOptStatus(email, updateEmailAddress)
+> RestEmailAddressStatus updateEmailAddressOptStatus(email, updateEmailAddress)
 
 Update an Email Address opt-in status
 
@@ -168,19 +184,24 @@ Updates an Email Address opt-in status  You may opt-in or mark an email address 
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.EmailAddressApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         EmailAddressApi apiInstance = new EmailAddressApi(defaultClient);
-        String email = "email_example"; // String | email
-        UpdateEmailAddress updateEmailAddress = new UpdateEmailAddress(); // UpdateEmailAddress | updateEmailAddress
+        String email = "email_example"; // String | 
+        UpdateEmailAddress updateEmailAddress = new UpdateEmailAddress(); // UpdateEmailAddress | 
         try {
-            EmailAddressStatus result = apiInstance.updateEmailAddressOptStatus(email, updateEmailAddress);
+            RestEmailAddressStatus result = apiInstance.updateEmailAddressOptStatus(email, updateEmailAddress);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EmailAddressApi#updateEmailAddressOptStatus");
@@ -198,17 +219,17 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **email** | **String**| email | |
-| **updateEmailAddress** | [**UpdateEmailAddress**](UpdateEmailAddress.md)| updateEmailAddress | |
+| **email** | **String**|  | |
+| **updateEmailAddress** | [**UpdateEmailAddress**](UpdateEmailAddress.md)|  | |
 
 ### Return type
 
-[**EmailAddressStatus**](EmailAddressStatus.md)
+[**RestEmailAddressStatus**](RestEmailAddressStatus.md)
 
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -219,14 +240,17 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## updateEmailAddressOptStatusWithHttpInfo
 
-> ApiResponse<EmailAddressStatus> updateEmailAddressOptStatus updateEmailAddressOptStatusWithHttpInfo(email, updateEmailAddress)
+> ApiResponse<RestEmailAddressStatus> updateEmailAddressOptStatus updateEmailAddressOptStatusWithHttpInfo(email, updateEmailAddress)
 
 Update an Email Address opt-in status
 
@@ -240,19 +264,24 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.EmailAddressApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         EmailAddressApi apiInstance = new EmailAddressApi(defaultClient);
-        String email = "email_example"; // String | email
-        UpdateEmailAddress updateEmailAddress = new UpdateEmailAddress(); // UpdateEmailAddress | updateEmailAddress
+        String email = "email_example"; // String | 
+        UpdateEmailAddress updateEmailAddress = new UpdateEmailAddress(); // UpdateEmailAddress | 
         try {
-            ApiResponse<EmailAddressStatus> response = apiInstance.updateEmailAddressOptStatusWithHttpInfo(email, updateEmailAddress);
+            ApiResponse<RestEmailAddressStatus> response = apiInstance.updateEmailAddressOptStatusWithHttpInfo(email, updateEmailAddress);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -272,17 +301,17 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **email** | **String**| email | |
-| **updateEmailAddress** | [**UpdateEmailAddress**](UpdateEmailAddress.md)| updateEmailAddress | |
+| **email** | **String**|  | |
+| **updateEmailAddress** | [**UpdateEmailAddress**](UpdateEmailAddress.md)|  | |
 
 ### Return type
 
-ApiResponse<[**EmailAddressStatus**](EmailAddressStatus.md)>
+ApiResponse<[**RestEmailAddressStatus**](RestEmailAddressStatus.md)>
 
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -293,8 +322,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 

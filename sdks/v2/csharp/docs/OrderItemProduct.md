@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Description** | **string** |  | [optional] 
-**Id** | **string** |  | [optional] 
-**Name** | **string** |  | [optional] 
-**Shippable** | **bool** |  | [optional] 
-**Sku** | **string** |  | [optional] 
-**Taxable** | **bool** |  | [optional] 
+**Id** | **string** | Product ID | [optional] 
+**Name** | **string** | Product name | [optional] 
+**Sku** | **string** | Stock keeping unit | [optional] 
+**Description** | **string** | Product description | [optional] 
+**Shippable** | **bool** | Whether product requires shipping | [optional] 
+**Taxable** | **bool** | Whether product is taxable | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -8,9 +8,9 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**affiliateId** | **Long** |  |  [optional] |
-|**amountEarned** | **Double** |  |  [optional] |
-|**balance** | **Double** |  |  [optional] |
 |**clawbacks** | **Double** |  |  [optional] |
+|**balance** | **Double** |  |  [optional] |
+|**amountEarned** | **Double** |  |  [optional] |
 
 
 ## Implemented Interfaces

@@ -1,17 +1,17 @@
 # Keap\Core\V2\EmailAddressApi
 
-All URIs are relative to https://api.keap.com/crm/rest, except if the operation defines another base path.
+All URIs are relative to https://api.keap.com/crm, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**getEmailAddressStatus()**](EmailAddressApi.md#getEmailAddressStatus) | **GET** /v2/emailAddresses/{email}/status | Retrieve an Email Address status |
-| [**updateEmailAddressOptStatus()**](EmailAddressApi.md#updateEmailAddressOptStatus) | **PATCH** /v2/emailAddresses/{email}/status | Update an Email Address opt-in status |
+| [**getEmailAddressStatus()**](EmailAddressApi.md#getEmailAddressStatus) | **GET** /rest/v2/emailAddresses/{email}/status | Retrieve an Email Address status |
+| [**updateEmailAddressOptStatus()**](EmailAddressApi.md#updateEmailAddressOptStatus) | **PATCH** /rest/v2/emailAddresses/{email}/status | Update an Email Address opt-in status |
 
 
 ## `getEmailAddressStatus()`
 
 ```php
-getEmailAddressStatus($email): \Keap\Core\V2\Model\EmailAddressStatus
+getEmailAddressStatus($email): \Keap\Core\V2\Model\RestEmailAddressStatus
 ```
 
 Retrieve an Email Address status
@@ -25,12 +25,16 @@ Retrieves the opt-in status for a given Email Address
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\EmailAddressApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$email = 'email_example'; // string | email
+$email = 'email_example'; // string
 
 try {
     $result = $apiInstance->getEmailAddressStatus($email);
@@ -44,15 +48,15 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **email** | **string**| email | |
+| **email** | **string**|  | |
 
 ### Return type
 
-[**\Keap\Core\V2\Model\EmailAddressStatus**](../Model/EmailAddressStatus.md)
+[**\Keap\Core\V2\Model\RestEmailAddressStatus**](../Model/RestEmailAddressStatus.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -66,7 +70,7 @@ No authorization required
 ## `updateEmailAddressOptStatus()`
 
 ```php
-updateEmailAddressOptStatus($email, $update_email_address): \Keap\Core\V2\Model\EmailAddressStatus
+updateEmailAddressOptStatus($email, $update_email_address): \Keap\Core\V2\Model\RestEmailAddressStatus
 ```
 
 Update an Email Address opt-in status
@@ -80,13 +84,17 @@ Updates an Email Address opt-in status  You may opt-in or mark an email address 
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\EmailAddressApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$email = 'email_example'; // string | email
-$update_email_address = new \Keap\Core\V2\Model\UpdateEmailAddress(); // \Keap\Core\V2\Model\UpdateEmailAddress | updateEmailAddress
+$email = 'email_example'; // string
+$update_email_address = new \Keap\Core\V2\Model\UpdateEmailAddress(); // \Keap\Core\V2\Model\UpdateEmailAddress
 
 try {
     $result = $apiInstance->updateEmailAddressOptStatus($email, $update_email_address);
@@ -100,16 +108,16 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **email** | **string**| email | |
-| **update_email_address** | [**\Keap\Core\V2\Model\UpdateEmailAddress**](../Model/UpdateEmailAddress.md)| updateEmailAddress | |
+| **email** | **string**|  | |
+| **update_email_address** | [**\Keap\Core\V2\Model\UpdateEmailAddress**](../Model/UpdateEmailAddress.md)|  | |
 
 ### Return type
 
-[**\Keap\Core\V2\Model\EmailAddressStatus**](../Model/EmailAddressStatus.md)
+[**\Keap\Core\V2\Model\RestEmailAddressStatus**](../Model/RestEmailAddressStatus.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 

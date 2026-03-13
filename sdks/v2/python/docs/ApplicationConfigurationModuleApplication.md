@@ -6,9 +6,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **company** | [**ApplicationCompany**](ApplicationCompany.md) |  | [optional] 
+**time_zone** | **str** |  | [optional] 
 **default_view_locale** | **str** |  | [optional] 
 **features_enabled** | [**ApplicationFeaturesEnabled**](ApplicationFeaturesEnabled.md) |  | [optional] 
-**time_zone** | **str** |  | [optional] 
 
 ## Example
 

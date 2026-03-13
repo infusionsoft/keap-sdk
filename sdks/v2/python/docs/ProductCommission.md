@@ -5,11 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**dollar_amount** | **float** |  | [optional] 
-**percentage** | **float** |  | [optional] 
-**product_id** | **str** |  | [optional] 
-**product_name** | **str** |  | [optional] 
-**product_price** | **float** |  | [optional] 
+**percentage** | **float** | Percentage commission | [optional] 
+**product_id** | **str** | Product ID | [optional] 
+**product_name** | **str** | Product name | [optional] 
+**product_price** | **float** | Product price | [optional] 
+**dollar_amount** | **float** | Fixed dollar commission | [optional] 
 
 ## Example
 

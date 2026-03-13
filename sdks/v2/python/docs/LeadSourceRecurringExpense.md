@@ -5,16 +5,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**amount** | [**CurrencyValue**](CurrencyValue.md) |  | [optional] 
-**create_time** | **str** | The time this lead source recurring expense was created | [optional] 
-**end_time** | **str** | The time this lead source recurring expense end | [optional] 
 **id** | **str** | The ID of the lead source recurring expense | [optional] 
-**lead_source_id** | **str** | The ID of the lead source the recurring expense belongs to | [optional] 
-**next_expense_time** | **str** | The time this lead source recurring expense will incur a new expense | [optional] 
-**notes** | **str** | The notes for the lead source recurring expense | [optional] 
-**start_time** | **str** | The time this lead source recurring expense starts | [optional] 
 **title** | **str** | The title of the lead source recurring expense | [optional] 
-**update_time** | **str** | The time this lead source recurring expense was last updated | [optional] 
+**notes** | **str** | The notes for the lead source recurring expense | [optional] 
+**amount** | [**CurrencyValue**](CurrencyValue.md) | The amount of the lead source recurring expense | [optional] 
+**lead_source_id** | **str** | The ID of the lead source the recurring expense belongs to | [optional] 
+**start_time** | **datetime** | The time this lead source recurring expense starts | [optional] 
+**end_time** | **datetime** | The time this lead source recurring expense ends | [optional] 
+**next_expense_time** | **datetime** | The time this lead source recurring expense will incur a new expense | [optional] 
+**create_time** | **datetime** | The time this lead source recurring expense was created | [optional] 
+**update_time** | **datetime** | The time this lead source recurring expense was last updated | [optional] 
 
 ## Example
 

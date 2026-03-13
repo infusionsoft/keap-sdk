@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [optional] 
-**message** | **str** |  | [optional] 
+**id** | **str** | Commission program ID | [optional] 
+**message** | **str** | Response message | [optional] 
 
 ## Example
 

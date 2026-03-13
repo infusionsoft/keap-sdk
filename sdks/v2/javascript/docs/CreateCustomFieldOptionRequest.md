@@ -5,6 +5,5 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **label** | **String** |  | [optional] 
-**options** | [**[CreateCustomFieldOptionRequest]**](CreateCustomFieldOptionRequest.md) |  | [optional] 
 
 

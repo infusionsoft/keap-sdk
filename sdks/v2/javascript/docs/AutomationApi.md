@@ -1,16 +1,67 @@
 # KeapCoreServiceV2Sdk.AutomationApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**addContactsToAutomationSequence**](AutomationApi.md#addContactsToAutomationSequence) | **POST** /v2/automations/{automation_id}/sequences/{sequence_id}:addContacts | Add Contacts to an Automation Sequence
-[**bulkAssignmentAutomationsCategories**](AutomationApi.md#bulkAssignmentAutomationsCategories) | **POST** /v2/automations/categories/batchAssign | Bulk update for Automations Categories
-[**deleteAutomation**](AutomationApi.md#deleteAutomation) | **DELETE** /v2/automations | Delete an Automation
-[**getAutomation**](AutomationApi.md#getAutomation) | **GET** /v2/automations/{automation_id} | Retrieve an Automation
-[**listAllAutomationIds**](AutomationApi.md#listAllAutomationIds) | **GET** /v2/automations/ids | List Automations Ids
-[**listAutomations**](AutomationApi.md#listAutomations) | **GET** /v2/automations | List Automations
+[**achieveGoal**](AutomationApi.md#achieveGoal) | **POST** /rest/v2/automations/goals/achieve | Achieve an Automation Goal
+[**addContactsToAutomationSequence**](AutomationApi.md#addContactsToAutomationSequence) | **POST** /rest/v2/automations/{automation_id}/sequences/{sequence_id}:addContacts | Add Contacts to an Automation Sequence
+[**bulkAssignmentAutomationsCategories**](AutomationApi.md#bulkAssignmentAutomationsCategories) | **POST** /rest/v2/automations/categories/batchAssign | Bulk update for Automations Categories
+[**bulkUnpublishAutomations**](AutomationApi.md#bulkUnpublishAutomations) | **POST** /rest/v2/automations/batch-unpublish | Bulk unpublish Automations
+[**deleteAutomation**](AutomationApi.md#deleteAutomation) | **DELETE** /rest/v2/automations | Delete an Automation
+[**getAutomation**](AutomationApi.md#getAutomation) | **GET** /rest/v2/automations/{automation_id} | Retrieve an Automation
+[**listAllAutomationIds**](AutomationApi.md#listAllAutomationIds) | **GET** /rest/v2/automations/ids | List Automations Ids
+[**listAutomations**](AutomationApi.md#listAutomations) | **GET** /rest/v2/automations | List Automations
+[**unpublishAutomation**](AutomationApi.md#unpublishAutomation) | **PUT** /rest/v2/automations/{automation_id}/unpublish | Unpublish an Automation
 
+
+
+## achieveGoal
+
+> AchieveGoalResponse achieveGoal(achieveGoalRequest)
+
+Achieve an Automation Goal
+
+Achieves a goal in an automation for a contact
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new KeapCoreServiceV2Sdk.AutomationApi();
+let achieveGoalRequest = new KeapCoreServiceV2Sdk.AchieveGoalRequest(); // AchieveGoalRequest | 
+apiInstance.achieveGoal(achieveGoalRequest).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **achieveGoalRequest** | [**AchieveGoalRequest**](AchieveGoalRequest.md)|  | 
+
+### Return type
+
+[**AchieveGoalResponse**](AchieveGoalResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ## addContactsToAutomationSequence
@@ -25,11 +76,15 @@ Adds a list of contacts to an automation sequence Response contains a map of the
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AutomationApi();
-let automationId = "automationId_example"; // String | automation_id
-let sequenceId = "sequenceId_example"; // String | sequence_id
-let addToAutomationSequenceRequest = new KeapCoreServiceV2Sdk.AddToAutomationSequenceRequest(); // AddToAutomationSequenceRequest | addToAutomationSequenceRequest
+let automationId = "automationId_example"; // String | 
+let sequenceId = "sequenceId_example"; // String | 
+let addToAutomationSequenceRequest = new KeapCoreServiceV2Sdk.AddToAutomationSequenceRequest(); // AddToAutomationSequenceRequest | 
 apiInstance.addContactsToAutomationSequence(automationId, sequenceId, addToAutomationSequenceRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -43,9 +98,9 @@ apiInstance.addContactsToAutomationSequence(automationId, sequenceId, addToAutom
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **automationId** | **String**| automation_id | 
- **sequenceId** | **String**| sequence_id | 
- **addToAutomationSequenceRequest** | [**AddToAutomationSequenceRequest**](AddToAutomationSequenceRequest.md)| addToAutomationSequenceRequest | 
+ **automationId** | **String**|  | 
+ **sequenceId** | **String**|  | 
+ **addToAutomationSequenceRequest** | [**AddToAutomationSequenceRequest**](AddToAutomationSequenceRequest.md)|  | 
 
 ### Return type
 
@@ -53,7 +108,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -73,9 +128,13 @@ Bulk updates the categories of one or more automations
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AutomationApi();
-let assignAutomationCategoryRequest = new KeapCoreServiceV2Sdk.AssignAutomationCategoryRequest(); // AssignAutomationCategoryRequest | assignAutomationCategoryRequest
+let assignAutomationCategoryRequest = new KeapCoreServiceV2Sdk.AssignAutomationCategoryRequest(); // AssignAutomationCategoryRequest | 
 apiInstance.bulkAssignmentAutomationsCategories(assignAutomationCategoryRequest).then(() => {
   console.log('API called successfully.');
 }, (error) => {
@@ -89,7 +148,7 @@ apiInstance.bulkAssignmentAutomationsCategories(assignAutomationCategoryRequest)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **assignAutomationCategoryRequest** | [**AssignAutomationCategoryRequest**](AssignAutomationCategoryRequest.md)| assignAutomationCategoryRequest | 
+ **assignAutomationCategoryRequest** | [**AssignAutomationCategoryRequest**](AssignAutomationCategoryRequest.md)|  | 
 
 ### Return type
 
@@ -97,7 +156,55 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## bulkUnpublishAutomations
+
+> bulkUnpublishAutomations(batchUnpublishAutomationRequest)
+
+Bulk unpublish Automations
+
+Bulk unpublish one or more automations
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new KeapCoreServiceV2Sdk.AutomationApi();
+let batchUnpublishAutomationRequest = new KeapCoreServiceV2Sdk.BatchUnpublishAutomationRequest(); // BatchUnpublishAutomationRequest | 
+apiInstance.bulkUnpublishAutomations(batchUnpublishAutomationRequest).then(() => {
+  console.log('API called successfully.');
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **batchUnpublishAutomationRequest** | [**BatchUnpublishAutomationRequest**](BatchUnpublishAutomationRequest.md)|  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -117,9 +224,13 @@ Deletes a single automation
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AutomationApi();
-let automationIds = [null]; // [Number] | automation_ids
+let automationIds = [null]; // [Number] | 
 apiInstance.deleteAutomation(automationIds).then(() => {
   console.log('API called successfully.');
 }, (error) => {
@@ -133,7 +244,7 @@ apiInstance.deleteAutomation(automationIds).then(() => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **automationIds** | [**[Number]**](Number.md)| automation_ids | 
+ **automationIds** | [**[Number]**](Number.md)|  | 
 
 ### Return type
 
@@ -141,7 +252,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -161,9 +272,13 @@ Retrieves a single automation
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AutomationApi();
-let automationId = "automationId_example"; // String | automation_id
+let automationId = "automationId_example"; // String | 
 apiInstance.getAutomation(automationId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -177,7 +292,7 @@ apiInstance.getAutomation(automationId).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **automationId** | **String**| automation_id | 
+ **automationId** | **String**|  | 
 
 ### Return type
 
@@ -185,7 +300,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -205,14 +320,17 @@ Retrieves a list of automations IDs
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AutomationApi();
 let opts = {
   'filter': "filter_example", // String | Filter to apply, allowed fields are: - (String) `name`  You will need to apply the `==` operator to check the equality of the filter with your searched text, in the encoded form `%3D%3D`. The search will look for the text anywhere in the automation name.  - `filter=name%3D%3DSpring Automation` - `filter=name%3D%3DTag New Contacts` 
   'orderBy': "orderBy_example", // String | Attribute and direction to order items. One of the following fields: - `name` - `category` - `activeContacts` - `publishedDate`  One of the following directions: - `asc` - `desc`
   'pageSize': 0, // Number | Total number of items to return per page
-  'pageToken': "pageToken_example", // String | Page token
-  'stats': true // Boolean | 
+  'pageToken': "pageToken_example" // String | Page token
 };
 apiInstance.listAllAutomationIds(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -231,7 +349,6 @@ Name | Type | Description  | Notes
  **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;category&#x60; - &#x60;activeContacts&#x60; - &#x60;publishedDate&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] 
  **pageSize** | **Number**| Total number of items to return per page | [optional] 
  **pageToken** | **String**| Page token | [optional] 
- **stats** | **Boolean**|  | [optional] 
 
 ### Return type
 
@@ -239,7 +356,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -259,14 +376,17 @@ Retrieves a list of automations
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.AutomationApi();
 let opts = {
   'filter': "filter_example", // String | Filter to apply, allowed fields are: - (String) `name`  You will need to apply the `==` operator to check the equality of the filter with your searched text, in the encoded form `%3D%3D`. The search will look for the text anywhere in the automation name.  - `filter=name%3D%3DSpring Automation` - `filter=name%3D%3DTag New Contacts` 
   'orderBy': "orderBy_example", // String | Attribute and direction to order items. One of the following fields: - `name` - `category` - `activeContacts` - `publishedDate`  One of the following directions: - `asc` - `desc`
   'pageSize': 0, // Number | Total number of items to return per page
-  'pageToken': "pageToken_example", // String | Page token
-  'stats': true // Boolean | 
+  'pageToken': "pageToken_example" // String | Page token
 };
 apiInstance.listAutomations(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -285,7 +405,6 @@ Name | Type | Description  | Notes
  **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;category&#x60; - &#x60;activeContacts&#x60; - &#x60;publishedDate&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] 
  **pageSize** | **Number**| Total number of items to return per page | [optional] 
  **pageToken** | **String**| Page token | [optional] 
- **stats** | **Boolean**|  | [optional] 
 
 ### Return type
 
@@ -293,10 +412,60 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## unpublishAutomation
+
+> unpublishAutomation(automationId, unpublishAutomationRequest)
+
+Unpublish an Automation
+
+Unpublishes a single automation
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new KeapCoreServiceV2Sdk.AutomationApi();
+let automationId = "automationId_example"; // String | 
+let unpublishAutomationRequest = new KeapCoreServiceV2Sdk.UnpublishAutomationRequest(); // UnpublishAutomationRequest | 
+apiInstance.unpublishAutomation(automationId, unpublishAutomationRequest).then(() => {
+  console.log('API called successfully.');
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **automationId** | **String**|  | 
+ **unpublishAutomationRequest** | [**UnpublishAutomationRequest**](UnpublishAutomationRequest.md)|  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 

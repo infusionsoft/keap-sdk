@@ -1,13 +1,14 @@
 # CreateProductCategoryRequest
 
+productCategory
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**display_order_index** | **int** |  | [optional] 
-**name** | **str** |  | 
-**parent_category_id** | **str** |  | [optional] 
+**name** | **str** | The category name | 
+**display_order_index** | **int** | Display order of the category | [optional] 
+**parent_category_id** | **str** | Parent category ID for subcategories | [optional] 
 
 ## Example
 

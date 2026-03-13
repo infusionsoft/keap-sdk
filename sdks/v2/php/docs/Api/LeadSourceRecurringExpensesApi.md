@@ -1,15 +1,15 @@
 # Keap\Core\V2\LeadSourceRecurringExpensesApi
 
-All URIs are relative to https://api.keap.com/crm/rest, except if the operation defines another base path.
+All URIs are relative to https://api.keap.com/crm, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createLeadSourceRecurringExpense()**](LeadSourceRecurringExpensesApi.md#createLeadSourceRecurringExpense) | **POST** /v2/leadSources/{lead_source_id}/recurringExpenses | Create a Lead Source Recurring Expense |
-| [**deleteLeadSourceRecurringExpense()**](LeadSourceRecurringExpensesApi.md#deleteLeadSourceRecurringExpense) | **DELETE** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Delete a Lead Source Recurring Expense |
-| [**getLeadSourceRecurringExpense()**](LeadSourceRecurringExpensesApi.md#getLeadSourceRecurringExpense) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Retrieve a Lead Source Recurring Expense |
-| [**listExpensesIncurredFromLeadSourceRecurringExpense()**](LeadSourceRecurringExpensesApi.md#listExpensesIncurredFromLeadSourceRecurringExpense) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id}/expenses | Retrieves a list of expenses incurred from a recurring expense |
-| [**listLeadSourceRecurringExpenses()**](LeadSourceRecurringExpensesApi.md#listLeadSourceRecurringExpenses) | **GET** /v2/leadSources/{lead_source_id}/recurringExpenses | Retrieves a list of lead source recurring expenses |
-| [**updateLeadSourceRecurringExpense()**](LeadSourceRecurringExpensesApi.md#updateLeadSourceRecurringExpense) | **PATCH** /v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Update a Lead Source Recurring Expense |
+| [**createLeadSourceRecurringExpense()**](LeadSourceRecurringExpensesApi.md#createLeadSourceRecurringExpense) | **POST** /rest/v2/leadSources/{lead_source_id}/recurringExpenses | Create a Lead Source Recurring Expense |
+| [**deleteLeadSourceRecurringExpense()**](LeadSourceRecurringExpensesApi.md#deleteLeadSourceRecurringExpense) | **DELETE** /rest/v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Delete a Lead Source Recurring Expense |
+| [**getLeadSourceRecurringExpense()**](LeadSourceRecurringExpensesApi.md#getLeadSourceRecurringExpense) | **GET** /rest/v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Retrieve a Lead Source Recurring Expense |
+| [**listExpensesIncurredFromLeadSourceRecurringExpense()**](LeadSourceRecurringExpensesApi.md#listExpensesIncurredFromLeadSourceRecurringExpense) | **GET** /rest/v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id}/expenses | Retrieves a list of expenses incurred from a recurring expense |
+| [**listLeadSourceRecurringExpenses()**](LeadSourceRecurringExpensesApi.md#listLeadSourceRecurringExpenses) | **GET** /rest/v2/leadSources/{lead_source_id}/recurringExpenses | Retrieves a list of lead source recurring expenses |
+| [**updateLeadSourceRecurringExpense()**](LeadSourceRecurringExpensesApi.md#updateLeadSourceRecurringExpense) | **PATCH** /rest/v2/leadSources/{lead_source_id}/recurringExpenses/{lead_source_recurring_expense_id} | Update a Lead Source Recurring Expense |
 
 
 ## `createLeadSourceRecurringExpense()`
@@ -29,13 +29,17 @@ Creates a new Lead Source Recurring Expense
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\LeadSourceRecurringExpensesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $lead_source_id = 'lead_source_id_example'; // string | The ID of the lead source this recurring expense belongs to
-$create_lead_source_recurring_expense_request = new \Keap\Core\V2\Model\CreateLeadSourceRecurringExpenseRequest(); // \Keap\Core\V2\Model\CreateLeadSourceRecurringExpenseRequest | The request object to create a new lead source recurring expense
+$create_lead_source_recurring_expense_request = new \Keap\Core\V2\Model\CreateLeadSourceRecurringExpenseRequest(); // \Keap\Core\V2\Model\CreateLeadSourceRecurringExpenseRequest
 
 try {
     $result = $apiInstance->createLeadSourceRecurringExpense($lead_source_id, $create_lead_source_recurring_expense_request);
@@ -50,7 +54,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **lead_source_id** | **string**| The ID of the lead source this recurring expense belongs to | |
-| **create_lead_source_recurring_expense_request** | [**\Keap\Core\V2\Model\CreateLeadSourceRecurringExpenseRequest**](../Model/CreateLeadSourceRecurringExpenseRequest.md)| The request object to create a new lead source recurring expense | |
+| **create_lead_source_recurring_expense_request** | [**\Keap\Core\V2\Model\CreateLeadSourceRecurringExpenseRequest**](../Model/CreateLeadSourceRecurringExpenseRequest.md)|  | |
 
 ### Return type
 
@@ -58,7 +62,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -86,10 +90,14 @@ Deletes a new Lead Source Recurring Expense that belongs to a Lead Source
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\LeadSourceRecurringExpensesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $lead_source_id = 'lead_source_id_example'; // string | The ID of the lead source this recurring expense belongs to
 $lead_source_recurring_expense_id = 'lead_source_recurring_expense_id_example'; // string | The ID of a lead source recurring expense
@@ -114,7 +122,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -142,10 +150,14 @@ Retrieves a Lead Source Recurring Expense using leadSourceId and leadSourceRecur
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\LeadSourceRecurringExpensesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $lead_source_id = 'lead_source_id_example'; // string | The ID of the lead source this recurring expense belongs to
 $lead_source_recurring_expense_id = 'lead_source_recurring_expense_id_example'; // string | The ID of a lead source recurring expense
@@ -171,7 +183,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -199,10 +211,14 @@ Retrieves a list of expenses incurred from a recurring expense
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\LeadSourceRecurringExpensesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $lead_source_id = 'lead_source_id_example'; // string | The ID of the lead source this recurring expense belongs to
 $lead_source_recurring_expense_id = 'lead_source_recurring_expense_id_example'; // string | The ID of a lead source recurring expense
@@ -236,7 +252,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -264,10 +280,14 @@ Retrieves a list of recurring expenses with lead_source_id and optional 'filter'
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\LeadSourceRecurringExpensesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $lead_source_id = 'lead_source_id_example'; // string | The ID of the lead source this recurring expense belongs to
 $filter = 'filter_example'; // string | Filter to apply, allowed fields are:  - (String) `title` - (Long) `amount` - (String) `start_time` - (String) `end_time` - (String) `next_expense_time` - (String) `create_time` - (String) `update_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:  - `filter=amount%3D%3D2500` - `filter=next_expense_time%3D%3D2024-12-22T01:00:00.000Z`
@@ -299,7 +319,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -327,15 +347,19 @@ Updates a Lead Source Recurring Expense
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\LeadSourceRecurringExpensesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $lead_source_id = 'lead_source_id_example'; // string | The ID of the lead source this recurring expense belongs to
 $lead_source_recurring_expense_id = 'lead_source_recurring_expense_id_example'; // string | The ID of a lead source recurring expense
-$lead_source_recurring_expense_update_request = new \Keap\Core\V2\Model\LeadSourceRecurringExpenseUpdateRequest(); // \Keap\Core\V2\Model\LeadSourceRecurringExpenseUpdateRequest | The request object to update a lead source recurring expense
-$update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+$lead_source_recurring_expense_update_request = new \Keap\Core\V2\Model\LeadSourceRecurringExpenseUpdateRequest(); // \Keap\Core\V2\Model\LeadSourceRecurringExpenseUpdateRequest
+$update_mask = 'update_mask_example'; // string | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
     $result = $apiInstance->updateLeadSourceRecurringExpense($lead_source_id, $lead_source_recurring_expense_id, $lead_source_recurring_expense_update_request, $update_mask);
@@ -351,8 +375,8 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **lead_source_id** | **string**| The ID of the lead source this recurring expense belongs to | |
 | **lead_source_recurring_expense_id** | **string**| The ID of a lead source recurring expense | |
-| **lead_source_recurring_expense_update_request** | [**\Keap\Core\V2\Model\LeadSourceRecurringExpenseUpdateRequest**](../Model/LeadSourceRecurringExpenseUpdateRequest.md)| The request object to update a lead source recurring expense | |
-| **update_mask** | [**string[]**](../Model/string.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **lead_source_recurring_expense_update_request** | [**\Keap\Core\V2\Model\LeadSourceRecurringExpenseUpdateRequest**](../Model/LeadSourceRecurringExpenseUpdateRequest.md)|  | |
+| **update_mask** | **string**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -360,7 +384,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 

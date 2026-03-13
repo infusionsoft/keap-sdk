@@ -1,14 +1,14 @@
 # Keap\Core\V2\LeadSourceExpensesApi
 
-All URIs are relative to https://api.keap.com/crm/rest, except if the operation defines another base path.
+All URIs are relative to https://api.keap.com/crm, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createLeadSourceExpense()**](LeadSourceExpensesApi.md#createLeadSourceExpense) | **POST** /v2/leadSources/{lead_source_id}/expenses | Create a Lead Source Expense |
-| [**deleteLeadSourceExpense()**](LeadSourceExpensesApi.md#deleteLeadSourceExpense) | **DELETE** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Delete a lead source expense |
-| [**getLeadSourceExpense()**](LeadSourceExpensesApi.md#getLeadSourceExpense) | **GET** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Retrieve a Lead Source Expense |
-| [**listLeadSourceExpenses()**](LeadSourceExpensesApi.md#listLeadSourceExpenses) | **GET** /v2/leadSources/{lead_source_id}/expenses | List Lead Source Expenses |
-| [**updateLeadSourceExpense()**](LeadSourceExpensesApi.md#updateLeadSourceExpense) | **PATCH** /v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Update a Lead Source Expense |
+| [**createLeadSourceExpense()**](LeadSourceExpensesApi.md#createLeadSourceExpense) | **POST** /rest/v2/leadSources/{lead_source_id}/expenses | Create a Lead Source Expense |
+| [**deleteLeadSourceExpense()**](LeadSourceExpensesApi.md#deleteLeadSourceExpense) | **DELETE** /rest/v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Delete a lead source expense |
+| [**getLeadSourceExpense()**](LeadSourceExpensesApi.md#getLeadSourceExpense) | **GET** /rest/v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Retrieve a Lead Source Expense |
+| [**listLeadSourceExpenses()**](LeadSourceExpensesApi.md#listLeadSourceExpenses) | **GET** /rest/v2/leadSources/{lead_source_id}/expenses | List Lead Source Expenses |
+| [**updateLeadSourceExpense()**](LeadSourceExpensesApi.md#updateLeadSourceExpense) | **PATCH** /rest/v2/leadSources/{lead_source_id}/expenses/{lead_source_expense_id} | Update a Lead Source Expense |
 
 
 ## `createLeadSourceExpense()`
@@ -28,13 +28,17 @@ Creates a new Lead Source Expense
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\LeadSourceExpensesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $lead_source_id = 'lead_source_id_example'; // string | The ID of the lead source this expense belongs to
-$create_lead_source_expense_request = new \Keap\Core\V2\Model\CreateLeadSourceExpenseRequest(); // \Keap\Core\V2\Model\CreateLeadSourceExpenseRequest | The request object to create a new lead source expense
+$create_lead_source_expense_request = new \Keap\Core\V2\Model\CreateLeadSourceExpenseRequest(); // \Keap\Core\V2\Model\CreateLeadSourceExpenseRequest
 
 try {
     $result = $apiInstance->createLeadSourceExpense($lead_source_id, $create_lead_source_expense_request);
@@ -49,7 +53,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **lead_source_id** | **string**| The ID of the lead source this expense belongs to | |
-| **create_lead_source_expense_request** | [**\Keap\Core\V2\Model\CreateLeadSourceExpenseRequest**](../Model/CreateLeadSourceExpenseRequest.md)| The request object to create a new lead source expense | |
+| **create_lead_source_expense_request** | [**\Keap\Core\V2\Model\CreateLeadSourceExpenseRequest**](../Model/CreateLeadSourceExpenseRequest.md)|  | |
 
 ### Return type
 
@@ -57,7 +61,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -85,10 +89,14 @@ Deletes a lead source expense by ID
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\LeadSourceExpensesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $lead_source_expense_id = 'lead_source_expense_id_example'; // string | The ID of a lead source expense
 $lead_source_id = 'lead_source_id_example'; // string | The ID of the lead source this expense belongs to
@@ -113,7 +121,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -141,10 +149,14 @@ Retrieves a single Lead Source Expense for a given ID
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\LeadSourceExpensesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $lead_source_expense_id = 'lead_source_expense_id_example'; // string | The ID of a lead source expense
 $lead_source_id = 'lead_source_id_example'; // string | The ID of the lead source this expense belongs to
@@ -170,7 +182,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -198,10 +210,14 @@ Retrieves a list of lead source expenses
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\LeadSourceExpensesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $lead_source_id = 'lead_source_id_example'; // string | The ID of the lead source this expense belongs to
 $filter = 'filter_example'; // string | Filter to apply, allowed fields are:  - (String) `title` - (Long) `amount` - (String) `incurred_time` - (String) `create_time` - (String) `update_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:  - `filter=amount%3D%3D2500` - `filter=incurred_time%3D%3D2024-12-22T01:00:00.000Z`
@@ -233,7 +249,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -261,15 +277,19 @@ Updates a new Lead Source Expense
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\LeadSourceExpensesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $lead_source_expense_id = 'lead_source_expense_id_example'; // string | The ID of a lead source expense
 $lead_source_id = 'lead_source_id_example'; // string | The ID of the lead source this expense belongs to
-$update_lead_source_expense_request = new \Keap\Core\V2\Model\UpdateLeadSourceExpenseRequest(); // \Keap\Core\V2\Model\UpdateLeadSourceExpenseRequest | The request object to update a lead source expense
-$update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+$update_lead_source_expense_request = new \Keap\Core\V2\Model\UpdateLeadSourceExpenseRequest(); // \Keap\Core\V2\Model\UpdateLeadSourceExpenseRequest
+$update_mask = 'update_mask_example'; // string | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 
 try {
     $result = $apiInstance->updateLeadSourceExpense($lead_source_expense_id, $lead_source_id, $update_lead_source_expense_request, $update_mask);
@@ -285,8 +305,8 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **lead_source_expense_id** | **string**| The ID of a lead source expense | |
 | **lead_source_id** | **string**| The ID of the lead source this expense belongs to | |
-| **update_lead_source_expense_request** | [**\Keap\Core\V2\Model\UpdateLeadSourceExpenseRequest**](../Model/UpdateLeadSourceExpenseRequest.md)| The request object to update a lead source expense | |
-| **update_mask** | [**string[]**](../Model/string.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+| **update_lead_source_expense_request** | [**\Keap\Core\V2\Model\UpdateLeadSourceExpenseRequest**](../Model/UpdateLeadSourceExpenseRequest.md)|  | |
+| **update_mask** | **string**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
 
 ### Return type
 
@@ -294,7 +314,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 

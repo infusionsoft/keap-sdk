@@ -1,11 +1,12 @@
 # DeleteEmailsRequest
 
+Request to delete multiple email records
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**email_ids** | **List[str]** |  | [optional] 
+**email_ids** | **List[str]** | List of email IDs to delete | 
 
 ## Example
 

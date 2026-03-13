@@ -6,16 +6,16 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **country** | **str** | The long-name descriptive version of the Country Code | [optional] 
-**country_code** | **str** | An ISO 3166-2 Country Code (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) | [optional] 
-**var_field** | **str** |  | [optional] 
-**line1** | **str** |  | [optional] 
-**line2** | **str** |  | [optional] 
+**line1** | **str** | Street address line 1 | [optional] 
+**line2** | **str** | Street address line 2 | [optional] 
 **locality** | **str** | The municipality to which the address belongs | [optional] 
-**postal_code** | **str** |  | [optional] 
 **region** | **str** | The long-name descriptive version of the Region Code | [optional] 
+**var_field** | **str** | Address type field | [optional] 
+**country_code** | **str** | An ISO 3166-2 Country Code (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) | [optional] 
+**postal_code** | **str** | Postal or ZIP code | [optional] 
 **region_code** | **str** | An ISO 3166-2 Province Code, such as one of the US States (https://en.wikipedia.org/wiki/ISO_3166-2:US) | [optional] 
-**zip_code** | **str** |  | [optional] 
-**zip_four** | **str** |  | [optional] 
+**zip_code** | **str** | ZIP code (US) | [optional] 
+**zip_four** | **str** | ZIP+4 extension | [optional] 
 
 ## Example
 

@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**dollar_amount** | **str** |  | [optional] 
-**percentage** | **str** |  | [optional] 
+**percentage** | **str** | Commission percentage (0-100). Either percentage or dollar_amount is required | [optional] 
+**dollar_amount** | **str** | Fixed dollar amount. Either percentage or dollar_amount is required | [optional] 
 
 ## Example
 

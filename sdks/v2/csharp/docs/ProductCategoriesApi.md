@@ -1,17 +1,17 @@
 # Keap.Core.V2.Api.ProductCategoriesApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**AssignProductsToCategory**](ProductCategoriesApi.md#assignproductstocategory) | **POST** /v2/productCategories/{category_id}:assignProducts | Assign Products to a Product Category |
-| [**CreateImageFile**](ProductCategoriesApi.md#createimagefile) | **POST** /v2/productCategories/{category_id}/images | Create the product category image file |
-| [**CreateProductCategory**](ProductCategoriesApi.md#createproductcategory) | **POST** /v2/productCategories | Create a Product Category |
-| [**DeleteImageFile**](ProductCategoriesApi.md#deleteimagefile) | **DELETE** /v2/productCategories/{category_id}/images | Delete the image from a product category |
-| [**DeleteProductCategory**](ProductCategoriesApi.md#deleteproductcategory) | **DELETE** /v2/productCategories/{category_id} | Delete a Product Category |
-| [**GetProductCategory**](ProductCategoriesApi.md#getproductcategory) | **GET** /v2/productCategories/{category_id} | Get a Product Category |
-| [**ListProductCategories**](ProductCategoriesApi.md#listproductcategories) | **GET** /v2/productCategories | List all Product Categories |
-| [**UpdateProductCategory**](ProductCategoriesApi.md#updateproductcategory) | **PATCH** /v2/productCategories/{category_id} | Update a Product Category |
+| [**AssignProductsToCategory**](ProductCategoriesApi.md#assignproductstocategory) | **POST** /rest/v2/productCategories/{category_id}:assignProducts | Assign Products to a Product Category |
+| [**CreateImageFile**](ProductCategoriesApi.md#createimagefile) | **POST** /rest/v2/productCategories/{category_id}/images | Create the product category image file |
+| [**CreateProductCategory**](ProductCategoriesApi.md#createproductcategory) | **POST** /rest/v2/productCategories | Create a Product Category |
+| [**DeleteImageFile**](ProductCategoriesApi.md#deleteimagefile) | **DELETE** /rest/v2/productCategories/{category_id}/images | Delete the image from a product category |
+| [**DeleteProductCategory**](ProductCategoriesApi.md#deleteproductcategory) | **DELETE** /rest/v2/productCategories/{category_id} | Delete a Product Category |
+| [**GetProductCategory**](ProductCategoriesApi.md#getproductcategory) | **GET** /rest/v2/productCategories/{category_id} | Get a Product Category |
+| [**ListProductCategories**](ProductCategoriesApi.md#listproductcategories) | **GET** /rest/v2/productCategories | List all Product Categories |
+| [**UpdateProductCategory**](ProductCategoriesApi.md#updateproductcategory) | **PATCH** /rest/v2/productCategories/{category_id} | Update a Product Category |
 
 <a id="assignproductstocategory"></a>
 # **AssignProductsToCategory**
@@ -36,10 +36,13 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new ProductCategoriesApi(config);
-            var categoryId = "categoryId_example";  // string | category_id
-            var assignProductsRequest = new AssignProductsRequest(); // AssignProductsRequest | request
+            var categoryId = "categoryId_example";  // string | 
+            var assignProductsRequest = new AssignProductsRequest(); // AssignProductsRequest | 
 
             try
             {
@@ -78,8 +81,8 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **categoryId** | **string** | category_id |  |
-| **assignProductsRequest** | [**AssignProductsRequest**](AssignProductsRequest.md) | request |  |
+| **categoryId** | **string** |  |  |
+| **assignProductsRequest** | [**AssignProductsRequest**](AssignProductsRequest.md) |  |  |
 
 ### Return type
 
@@ -87,7 +90,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -99,9 +102,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -128,9 +135,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new ProductCategoriesApi(config);
-            var categoryId = "categoryId_example";  // string | category_id
+            var categoryId = "categoryId_example";  // string | 
             var file = new System.IO.MemoryStream(System.IO.File.ReadAllBytes("/path/to/file.txt"));  // System.IO.Stream | File to upload
 
             try
@@ -170,7 +180,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **categoryId** | **string** | category_id |  |
+| **categoryId** | **string** |  |  |
 | **file** | **System.IO.Stream****System.IO.Stream** | File to upload |  |
 
 ### Return type
@@ -179,7 +189,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -191,15 +201,19 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="createproductcategory"></a>
 # **CreateProductCategory**
-> ProductCategory CreateProductCategory (CreateProductCategoryRequest? createProductCategoryRequest = null)
+> ProductCategory CreateProductCategory (CreateProductCategoryRequest createProductCategoryRequest)
 
 Create a Product Category
 
@@ -220,9 +234,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new ProductCategoriesApi(config);
-            var createProductCategoryRequest = new CreateProductCategoryRequest?(); // CreateProductCategoryRequest? | productCategory (optional) 
+            var createProductCategoryRequest = new CreateProductCategoryRequest(); // CreateProductCategoryRequest | 
 
             try
             {
@@ -265,7 +282,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **createProductCategoryRequest** | [**CreateProductCategoryRequest?**](CreateProductCategoryRequest?.md) | productCategory | [optional]  |
+| **createProductCategoryRequest** | [**CreateProductCategoryRequest**](CreateProductCategoryRequest.md) |  |  |
 
 ### Return type
 
@@ -273,7 +290,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -285,9 +302,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -314,9 +335,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new ProductCategoriesApi(config);
-            var categoryId = "categoryId_example";  // string | category_id
+            var categoryId = "categoryId_example";  // string | 
 
             try
             {
@@ -355,7 +379,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **categoryId** | **string** | category_id |  |
+| **categoryId** | **string** |  |  |
 
 ### Return type
 
@@ -363,7 +387,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -375,10 +399,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -405,9 +432,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new ProductCategoriesApi(config);
-            var categoryId = "categoryId_example";  // string | category_id
+            var categoryId = "categoryId_example";  // string | 
 
             try
             {
@@ -446,7 +476,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **categoryId** | **string** | category_id |  |
+| **categoryId** | **string** |  |  |
 
 ### Return type
 
@@ -454,7 +484,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -466,10 +496,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -496,9 +529,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new ProductCategoriesApi(config);
-            var categoryId = "categoryId_example";  // string | category_id
+            var categoryId = "categoryId_example";  // string | 
 
             try
             {
@@ -541,7 +577,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **categoryId** | **string** | category_id |  |
+| **categoryId** | **string** |  |  |
 
 ### Return type
 
@@ -549,7 +585,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -561,10 +597,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -591,7 +630,10 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new ProductCategoriesApi(config);
             var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (String) `product_id`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=product_id%3D%3D29`  (optional) 
             var orderBy = "orderBy_example";  // string? | Attribute and direction to order items. One of the following fields: - `id`  One of the following directions: - `asc` - `desc` (optional) 
@@ -650,7 +692,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -662,16 +704,19 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="updateproductcategory"></a>
 # **UpdateProductCategory**
-> ProductCategory UpdateProductCategory (string categoryId, UpdateProductCategoryRequest updateProductCategoryRequest, List<string>? updateMask = null)
+> ProductCategory UpdateProductCategory (string categoryId, UpdateProductCategoryRequest updateProductCategoryRequest, string? updateMask = null)
 
 Update a Product Category
 
@@ -692,11 +737,14 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new ProductCategoriesApi(config);
-            var categoryId = "categoryId_example";  // string | category_id
-            var updateProductCategoryRequest = new UpdateProductCategoryRequest(); // UpdateProductCategoryRequest | request
-            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+            var categoryId = "categoryId_example";  // string | 
+            var updateProductCategoryRequest = new UpdateProductCategoryRequest(); // UpdateProductCategoryRequest | 
+            var updateMask = "name,display_order_index,parent_category_id";  // string? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
 
             try
             {
@@ -739,9 +787,9 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **categoryId** | **string** | category_id |  |
-| **updateProductCategoryRequest** | [**UpdateProductCategoryRequest**](UpdateProductCategoryRequest.md) | request |  |
-| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+| **categoryId** | **string** |  |  |
+| **updateProductCategoryRequest** | [**UpdateProductCategoryRequest**](UpdateProductCategoryRequest.md) |  |  |
+| **updateMask** | **string?** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
 
 ### Return type
 
@@ -749,7 +797,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -761,10 +809,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

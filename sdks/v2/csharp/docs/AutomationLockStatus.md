@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Locked** | **bool** |  | [optional] 
-**UserFirstname** | **string** |  | [optional] 
-**UserId** | **string** |  | [optional] 
-**UserName** | **string** |  | [optional] 
+**Locked** | **bool** | Whether the automation is currently locked | [optional] 
+**UserId** | **string** | The ID of the user who has the lock | [optional] 
+**UserName** | **string** | The username of the user who has the lock | [optional] 
+**UserFirstname** | **string** | The first name of the user who has the lock | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

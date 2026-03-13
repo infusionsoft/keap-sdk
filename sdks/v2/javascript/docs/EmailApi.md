@@ -1,18 +1,18 @@
 # KeapCoreServiceV2Sdk.EmailApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createEmail**](EmailApi.md#createEmail) | **POST** /v2/emails | Create an Email Record
-[**createEmails**](EmailApi.md#createEmails) | **POST** /v2/emails:batchAdd | Create a set of Email Records
-[**deleteEmail**](EmailApi.md#deleteEmail) | **DELETE** /v2/emails/{id} | Delete an Email Record
-[**deleteEmails**](EmailApi.md#deleteEmails) | **POST** /v2/emails:batchRemove | Remove a set of Email Records
-[**getEmail**](EmailApi.md#getEmail) | **GET** /v2/emails/{id} | Retrieve an Email
-[**getEmailTemplate**](EmailApi.md#getEmailTemplate) | **GET** /v2/emails/templates/{email_template_id} | Retrieve an email template
-[**listEmails**](EmailApi.md#listEmails) | **GET** /v2/emails | List Emails
-[**sendEmail**](EmailApi.md#sendEmail) | **POST** /v2/emails:send | Send an Email
-[**sendEmailTemplate**](EmailApi.md#sendEmailTemplate) | **POST** /v2/emails/templates:send | Send an email based on a template
+[**createEmail**](EmailApi.md#createEmail) | **POST** /rest/v2/emails | Create an Email Record
+[**createEmails**](EmailApi.md#createEmails) | **POST** /rest/v2/emails:batchAdd | Create a set of Email Records
+[**deleteEmail**](EmailApi.md#deleteEmail) | **DELETE** /rest/v2/emails/{id} | Delete an Email Record
+[**deleteEmails**](EmailApi.md#deleteEmails) | **POST** /rest/v2/emails:batchRemove | Remove a set of Email Records
+[**getEmail**](EmailApi.md#getEmail) | **GET** /rest/v2/emails/{id} | Retrieve an Email
+[**getEmailTemplate**](EmailApi.md#getEmailTemplate) | **GET** /rest/v2/emails/templates/{email_template_id} | Retrieve an email template
+[**listEmails**](EmailApi.md#listEmails) | **GET** /rest/v2/emails | List Emails
+[**sendEmail**](EmailApi.md#sendEmail) | **POST** /rest/v2/emails:send | Send an Email
+[**sendEmailTemplate**](EmailApi.md#sendEmailTemplate) | **POST** /rest/v2/emails/templates:send | Send an email based on a template
 
 
 
@@ -28,9 +28,13 @@ Creates a Record of an Email sent to a Contact
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.EmailApi();
-let createEmailSentRequest = new KeapCoreServiceV2Sdk.CreateEmailSentRequest(); // CreateEmailSentRequest | emailWithContent
+let createEmailSentRequest = new KeapCoreServiceV2Sdk.CreateEmailSentRequest(); // CreateEmailSentRequest | 
 apiInstance.createEmail(createEmailSentRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -44,7 +48,7 @@ apiInstance.createEmail(createEmailSentRequest).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createEmailSentRequest** | [**CreateEmailSentRequest**](CreateEmailSentRequest.md)| emailWithContent | 
+ **createEmailSentRequest** | [**CreateEmailSentRequest**](CreateEmailSentRequest.md)|  | 
 
 ### Return type
 
@@ -52,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -62,7 +66,7 @@ No authorization required
 
 ## createEmails
 
-> EmailsSentList createEmails(opts)
+> EmailsSentList createEmails(createEmailsSentRequest)
 
 Create a set of Email Records
 
@@ -72,12 +76,14 @@ Creates a set of Records of Emails sent to Contacts, maximum 1000 per transactio
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.EmailApi();
-let opts = {
-  'createEmailsSentRequest': new KeapCoreServiceV2Sdk.CreateEmailsSentRequest() // CreateEmailsSentRequest | Email records to persist, with content.
-};
-apiInstance.createEmails(opts).then((data) => {
+let createEmailsSentRequest = new KeapCoreServiceV2Sdk.CreateEmailsSentRequest(); // CreateEmailsSentRequest | 
+apiInstance.createEmails(createEmailsSentRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -90,7 +96,7 @@ apiInstance.createEmails(opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createEmailsSentRequest** | [**CreateEmailsSentRequest**](CreateEmailsSentRequest.md)| Email records to persist, with content. | [optional] 
+ **createEmailsSentRequest** | [**CreateEmailsSentRequest**](CreateEmailsSentRequest.md)|  | 
 
 ### Return type
 
@@ -98,7 +104,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -118,9 +124,13 @@ Deletes a specific Email Record
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.EmailApi();
-let id = "id_example"; // String | id
+let id = "id_example"; // String | 
 apiInstance.deleteEmail(id).then(() => {
   console.log('API called successfully.');
 }, (error) => {
@@ -134,7 +144,7 @@ apiInstance.deleteEmail(id).then(() => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| id | 
+ **id** | **String**|  | 
 
 ### Return type
 
@@ -142,7 +152,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -162,9 +172,13 @@ Removes a set of Email Records
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.EmailApi();
-let deleteEmailsRequest = new KeapCoreServiceV2Sdk.DeleteEmailsRequest(); // DeleteEmailsRequest | deleteEmailsRequest
+let deleteEmailsRequest = new KeapCoreServiceV2Sdk.DeleteEmailsRequest(); // DeleteEmailsRequest | 
 apiInstance.deleteEmails(deleteEmailsRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -178,7 +192,7 @@ apiInstance.deleteEmails(deleteEmailsRequest).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **deleteEmailsRequest** | [**DeleteEmailsRequest**](DeleteEmailsRequest.md)| deleteEmailsRequest | 
+ **deleteEmailsRequest** | [**DeleteEmailsRequest**](DeleteEmailsRequest.md)|  | 
 
 ### Return type
 
@@ -186,7 +200,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -206,9 +220,13 @@ Retrieves a single Email that has been sent
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.EmailApi();
-let id = "id_example"; // String | id
+let id = "id_example"; // String | 
 apiInstance.getEmail(id).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -222,7 +240,7 @@ apiInstance.getEmail(id).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| id | 
+ **id** | **String**|  | 
 
 ### Return type
 
@@ -230,7 +248,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -250,9 +268,13 @@ Retrieve an email template
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.EmailApi();
-let emailTemplateId = "emailTemplateId_example"; // String | email_template_id
+let emailTemplateId = "emailTemplateId_example"; // String | 
 apiInstance.getEmailTemplate(emailTemplateId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -266,7 +288,7 @@ apiInstance.getEmailTemplate(emailTemplateId).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **emailTemplateId** | **String**| email_template_id | 
+ **emailTemplateId** | **String**|  | 
 
 ### Return type
 
@@ -274,7 +296,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -294,6 +316,10 @@ Retrieves a list of emails that have been sent
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.EmailApi();
 let opts = {
@@ -326,7 +352,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -336,7 +362,7 @@ No authorization required
 
 ## sendEmail
 
-> sendEmail(opts)
+> sendEmail(emailSendRequest)
 
 Send an Email
 
@@ -346,12 +372,14 @@ Sends an Email to a list of Contacts
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.EmailApi();
-let opts = {
-  'emailSendRequest': new KeapCoreServiceV2Sdk.EmailSendRequest() // EmailSendRequest | emailSendRequest
-};
-apiInstance.sendEmail(opts).then(() => {
+let emailSendRequest = new KeapCoreServiceV2Sdk.EmailSendRequest(); // EmailSendRequest | 
+apiInstance.sendEmail(emailSendRequest).then(() => {
   console.log('API called successfully.');
 }, (error) => {
   console.error(error);
@@ -364,7 +392,7 @@ apiInstance.sendEmail(opts).then(() => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **emailSendRequest** | [**EmailSendRequest**](EmailSendRequest.md)| emailSendRequest | [optional] 
+ **emailSendRequest** | [**EmailSendRequest**](EmailSendRequest.md)|  | 
 
 ### Return type
 
@@ -372,7 +400,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -382,7 +410,7 @@ No authorization required
 
 ## sendEmailTemplate
 
-> sendEmailTemplate(opts)
+> sendEmailTemplate(emailSendTemplateRequest)
 
 Send an email based on a template
 
@@ -392,12 +420,14 @@ Send an email based on a template
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.EmailApi();
-let opts = {
-  'emailSendTemplateRequest': new KeapCoreServiceV2Sdk.EmailSendTemplateRequest() // EmailSendTemplateRequest | Use a template to send an email to a list of contacts 
-};
-apiInstance.sendEmailTemplate(opts).then(() => {
+let emailSendTemplateRequest = new KeapCoreServiceV2Sdk.EmailSendTemplateRequest(); // EmailSendTemplateRequest | 
+apiInstance.sendEmailTemplate(emailSendTemplateRequest).then(() => {
   console.log('API called successfully.');
 }, (error) => {
   console.error(error);
@@ -410,7 +440,7 @@ apiInstance.sendEmailTemplate(opts).then(() => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **emailSendTemplateRequest** | [**EmailSendTemplateRequest**](EmailSendTemplateRequest.md)| Use a template to send an email to a list of contacts  | [optional] 
+ **emailSendTemplateRequest** | [**EmailSendTemplateRequest**](EmailSendTemplateRequest.md)|  | 
 
 ### Return type
 
@@ -418,7 +448,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 

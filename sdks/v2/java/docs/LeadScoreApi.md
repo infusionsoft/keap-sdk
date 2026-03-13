@@ -1,11 +1,11 @@
 # LeadScoreApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getLeadScoreDetails**](LeadScoreApi.md#getLeadScoreDetails) | **GET** /v2/contacts/{contact_id}/leadScore | Retrieve Lead Score of a Contact |
-| [**getLeadScoreDetailsWithHttpInfo**](LeadScoreApi.md#getLeadScoreDetailsWithHttpInfo) | **GET** /v2/contacts/{contact_id}/leadScore | Retrieve Lead Score of a Contact |
+| [**getLeadScoreDetails**](LeadScoreApi.md#getLeadScoreDetails) | **GET** /rest/v2/contacts/{contact_id}/leadScore | Retrieve Lead Score of a Contact |
+| [**getLeadScoreDetailsWithHttpInfo**](LeadScoreApi.md#getLeadScoreDetailsWithHttpInfo) | **GET** /rest/v2/contacts/{contact_id}/leadScore | Retrieve Lead Score of a Contact |
 
 
 
@@ -24,16 +24,21 @@ Retrieves information about the Lead Score of a Contact
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.LeadScoreApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         LeadScoreApi apiInstance = new LeadScoreApi(defaultClient);
-        String contactId = "contactId_example"; // String | contact_id
+        String contactId = "contactId_example"; // String | 
         try {
             LeadScore result = apiInstance.getLeadScoreDetails(contactId);
             System.out.println(result);
@@ -53,7 +58,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **contactId** | **String**| contact_id | |
+| **contactId** | **String**|  | |
 
 ### Return type
 
@@ -62,7 +67,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -73,10 +78,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## getLeadScoreDetailsWithHttpInfo
 
@@ -94,16 +102,21 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.LeadScoreApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         LeadScoreApi apiInstance = new LeadScoreApi(defaultClient);
-        String contactId = "contactId_example"; // String | contact_id
+        String contactId = "contactId_example"; // String | 
         try {
             ApiResponse<LeadScore> response = apiInstance.getLeadScoreDetailsWithHttpInfo(contactId);
             System.out.println("Status code: " + response.getStatusCode());
@@ -125,7 +138,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **contactId** | **String**| contact_id | |
+| **contactId** | **String**|  | |
 
 ### Return type
 
@@ -134,7 +147,7 @@ ApiResponse<[**LeadScore**](LeadScore.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -145,8 +158,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 

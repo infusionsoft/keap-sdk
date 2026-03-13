@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**apply_to_commissions** | **bool** |  | [optional] 
-**criteria** | [**List[DiscountCriteria]**](DiscountCriteria.md) |  | [optional] 
-**description** | **str** |  | [optional] 
-**discount_percent** | **float** | The discount percent. Must be greater than or equal to 0. | [optional] 
-**name** | **str** |  | [optional] 
-**product_category_ids** | **List[str]** |  | [optional] 
+**name** | **str** | Name of the discount | [optional] 
+**description** | **str** | Description of the discount | [optional] 
+**criteria** | [**List[CategoryDiscountCriteriaRequest]**](CategoryDiscountCriteriaRequest.md) | List of criteria that must be met for this discount to apply | [optional] 
+**apply_to_commissions** | **bool** | Whether to apply this discount to commission calculations | [optional] 
+**discount_percent** | **float** | Percentage discount to apply. Must be greater than or equal to 0. | [optional] 
+**product_category_ids** | **List[str]** | List of product category IDs this discount applies to | [optional] 
 
 ## Example
 

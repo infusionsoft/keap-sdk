@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**description** | **str** |  | [optional] 
-**id** | **str** |  | [optional] 
-**order** | **int** |  | [optional] 
-**required** | **bool** |  | [optional] 
+**id** | **str** | Checklist item ID | [optional] 
+**description** | **str** | Item description | [optional] 
+**required** | **bool** | Whether item is required | [optional] 
+**order** | **int** | Display order | [optional] 
 
 ## Example
 

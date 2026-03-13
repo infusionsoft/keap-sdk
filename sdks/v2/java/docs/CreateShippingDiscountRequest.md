@@ -7,11 +7,11 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**criteria** | [**List&lt;DiscountCriteria&gt;**](DiscountCriteria.md) |  |  [optional] |
-|**description** | **String** |  |  [optional] |
-|**discountType** | [**DiscountTypeEnum**](#DiscountTypeEnum) |  |  |
-|**discountValue** | **Double** |  |  |
-|**name** | **String** |  |  |
+|**name** | **String** | Name of the discount |  |
+|**description** | **String** | Description of the discount |  [optional] |
+|**criteria** | [**List&lt;DiscountCriteria&gt;**](DiscountCriteria.md) | List of criteria that must be met for this discount to apply |  [optional] |
+|**discountType** | [**DiscountTypeEnum**](#DiscountTypeEnum) | Type of discount: AMOUNT (fixed amount) or PERCENT (percentage) |  |
+|**discountValue** | **Double** | Value of the discount (amount or percentage depending on discount_type) |  |
 
 
 

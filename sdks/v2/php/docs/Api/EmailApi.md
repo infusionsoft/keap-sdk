@@ -1,18 +1,18 @@
 # Keap\Core\V2\EmailApi
 
-All URIs are relative to https://api.keap.com/crm/rest, except if the operation defines another base path.
+All URIs are relative to https://api.keap.com/crm, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createEmail()**](EmailApi.md#createEmail) | **POST** /v2/emails | Create an Email Record |
-| [**createEmails()**](EmailApi.md#createEmails) | **POST** /v2/emails:batchAdd | Create a set of Email Records |
-| [**deleteEmail()**](EmailApi.md#deleteEmail) | **DELETE** /v2/emails/{id} | Delete an Email Record |
-| [**deleteEmails()**](EmailApi.md#deleteEmails) | **POST** /v2/emails:batchRemove | Remove a set of Email Records |
-| [**getEmail()**](EmailApi.md#getEmail) | **GET** /v2/emails/{id} | Retrieve an Email |
-| [**getEmailTemplate()**](EmailApi.md#getEmailTemplate) | **GET** /v2/emails/templates/{email_template_id} | Retrieve an email template |
-| [**listEmails()**](EmailApi.md#listEmails) | **GET** /v2/emails | List Emails |
-| [**sendEmail()**](EmailApi.md#sendEmail) | **POST** /v2/emails:send | Send an Email |
-| [**sendEmailTemplate()**](EmailApi.md#sendEmailTemplate) | **POST** /v2/emails/templates:send | Send an email based on a template |
+| [**createEmail()**](EmailApi.md#createEmail) | **POST** /rest/v2/emails | Create an Email Record |
+| [**createEmails()**](EmailApi.md#createEmails) | **POST** /rest/v2/emails:batchAdd | Create a set of Email Records |
+| [**deleteEmail()**](EmailApi.md#deleteEmail) | **DELETE** /rest/v2/emails/{id} | Delete an Email Record |
+| [**deleteEmails()**](EmailApi.md#deleteEmails) | **POST** /rest/v2/emails:batchRemove | Remove a set of Email Records |
+| [**getEmail()**](EmailApi.md#getEmail) | **GET** /rest/v2/emails/{id} | Retrieve an Email |
+| [**getEmailTemplate()**](EmailApi.md#getEmailTemplate) | **GET** /rest/v2/emails/templates/{email_template_id} | Retrieve an email template |
+| [**listEmails()**](EmailApi.md#listEmails) | **GET** /rest/v2/emails | List Emails |
+| [**sendEmail()**](EmailApi.md#sendEmail) | **POST** /rest/v2/emails:send | Send an Email |
+| [**sendEmailTemplate()**](EmailApi.md#sendEmailTemplate) | **POST** /rest/v2/emails/templates:send | Send an email based on a template |
 
 
 ## `createEmail()`
@@ -32,12 +32,16 @@ Creates a Record of an Email sent to a Contact
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\EmailApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$create_email_sent_request = new \Keap\Core\V2\Model\CreateEmailSentRequest(); // \Keap\Core\V2\Model\CreateEmailSentRequest | emailWithContent
+$create_email_sent_request = new \Keap\Core\V2\Model\CreateEmailSentRequest(); // \Keap\Core\V2\Model\CreateEmailSentRequest
 
 try {
     $result = $apiInstance->createEmail($create_email_sent_request);
@@ -51,7 +55,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **create_email_sent_request** | [**\Keap\Core\V2\Model\CreateEmailSentRequest**](../Model/CreateEmailSentRequest.md)| emailWithContent | |
+| **create_email_sent_request** | [**\Keap\Core\V2\Model\CreateEmailSentRequest**](../Model/CreateEmailSentRequest.md)|  | |
 
 ### Return type
 
@@ -59,7 +63,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -87,12 +91,16 @@ Creates a set of Records of Emails sent to Contacts, maximum 1000 per transactio
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\EmailApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$create_emails_sent_request = new \Keap\Core\V2\Model\CreateEmailsSentRequest(); // \Keap\Core\V2\Model\CreateEmailsSentRequest | Email records to persist, with content.
+$create_emails_sent_request = new \Keap\Core\V2\Model\CreateEmailsSentRequest(); // \Keap\Core\V2\Model\CreateEmailsSentRequest
 
 try {
     $result = $apiInstance->createEmails($create_emails_sent_request);
@@ -106,7 +114,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **create_emails_sent_request** | [**\Keap\Core\V2\Model\CreateEmailsSentRequest**](../Model/CreateEmailsSentRequest.md)| Email records to persist, with content. | [optional] |
+| **create_emails_sent_request** | [**\Keap\Core\V2\Model\CreateEmailsSentRequest**](../Model/CreateEmailsSentRequest.md)|  | |
 
 ### Return type
 
@@ -114,7 +122,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -142,12 +150,16 @@ Deletes a specific Email Record
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\EmailApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$id = 'id_example'; // string | id
+$id = 'id_example'; // string
 
 try {
     $apiInstance->deleteEmail($id);
@@ -160,7 +172,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **string**| id | |
+| **id** | **string**|  | |
 
 ### Return type
 
@@ -168,7 +180,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -196,12 +208,16 @@ Removes a set of Email Records
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\EmailApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$delete_emails_request = new \Keap\Core\V2\Model\DeleteEmailsRequest(); // \Keap\Core\V2\Model\DeleteEmailsRequest | deleteEmailsRequest
+$delete_emails_request = new \Keap\Core\V2\Model\DeleteEmailsRequest(); // \Keap\Core\V2\Model\DeleteEmailsRequest
 
 try {
     $result = $apiInstance->deleteEmails($delete_emails_request);
@@ -215,7 +231,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **delete_emails_request** | [**\Keap\Core\V2\Model\DeleteEmailsRequest**](../Model/DeleteEmailsRequest.md)| deleteEmailsRequest | |
+| **delete_emails_request** | [**\Keap\Core\V2\Model\DeleteEmailsRequest**](../Model/DeleteEmailsRequest.md)|  | |
 
 ### Return type
 
@@ -223,7 +239,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -251,12 +267,16 @@ Retrieves a single Email that has been sent
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\EmailApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$id = 'id_example'; // string | id
+$id = 'id_example'; // string
 
 try {
     $result = $apiInstance->getEmail($id);
@@ -270,7 +290,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **string**| id | |
+| **id** | **string**|  | |
 
 ### Return type
 
@@ -278,7 +298,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -306,12 +326,16 @@ Retrieve an email template
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\EmailApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$email_template_id = 'email_template_id_example'; // string | email_template_id
+$email_template_id = 'email_template_id_example'; // string
 
 try {
     $result = $apiInstance->getEmailTemplate($email_template_id);
@@ -325,7 +349,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **email_template_id** | **string**| email_template_id | |
+| **email_template_id** | **string**|  | |
 
 ### Return type
 
@@ -333,7 +357,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -361,10 +385,14 @@ Retrieves a list of emails that have been sent
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\EmailApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $filter = 'filter_example'; // string | Filter to apply, allowed fields are: - (String) contact_id - (String) email - (String) start_created_time - (String) end_created_time
 $order_by = 'order_by_example'; // string | Attribute and direction to order items. One of the following fields: - `created_time`  One of the following directions: - `asc` - `desc`
@@ -394,7 +422,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -422,12 +450,16 @@ Sends an Email to a list of Contacts
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\EmailApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$email_send_request = new \Keap\Core\V2\Model\EmailSendRequest(); // \Keap\Core\V2\Model\EmailSendRequest | emailSendRequest
+$email_send_request = new \Keap\Core\V2\Model\EmailSendRequest(); // \Keap\Core\V2\Model\EmailSendRequest
 
 try {
     $apiInstance->sendEmail($email_send_request);
@@ -440,7 +472,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **email_send_request** | [**\Keap\Core\V2\Model\EmailSendRequest**](../Model/EmailSendRequest.md)| emailSendRequest | [optional] |
+| **email_send_request** | [**\Keap\Core\V2\Model\EmailSendRequest**](../Model/EmailSendRequest.md)|  | |
 
 ### Return type
 
@@ -448,7 +480,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -476,12 +508,16 @@ Send an email based on a template
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\EmailApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$email_send_template_request = new \Keap\Core\V2\Model\EmailSendTemplateRequest(); // \Keap\Core\V2\Model\EmailSendTemplateRequest | Use a template to send an email to a list of contacts
+$email_send_template_request = new \Keap\Core\V2\Model\EmailSendTemplateRequest(); // \Keap\Core\V2\Model\EmailSendTemplateRequest
 
 try {
     $apiInstance->sendEmailTemplate($email_send_template_request);
@@ -494,7 +530,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **email_send_template_request** | [**\Keap\Core\V2\Model\EmailSendTemplateRequest**](../Model/EmailSendTemplateRequest.md)| Use a template to send an email to a list of contacts | [optional] |
+| **email_send_template_request** | [**\Keap\Core\V2\Model\EmailSendTemplateRequest**](../Model/EmailSendTemplateRequest.md)|  | |
 
 ### Return type
 
@@ -502,7 +538,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 

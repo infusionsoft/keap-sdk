@@ -1,25 +1,25 @@
 # .OpportunityApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createOpportunity**](OpportunityApi.md#createOpportunity) | **POST** /v2/opportunities | Create an Opportunity
-[**createOpportunityCustomFields**](OpportunityApi.md#createOpportunityCustomFields) | **POST** /v2/opportunities/model/customFields | Create an Opportunity Custom Field
-[**createOpportunityStage**](OpportunityApi.md#createOpportunityStage) | **POST** /v2/opportunities/stages | Create an Opportunity Stage
-[**deleteOpportunity**](OpportunityApi.md#deleteOpportunity) | **DELETE** /v2/opportunities/{opportunity_id} | Delete an Opportunity
-[**deleteOpportunityStage**](OpportunityApi.md#deleteOpportunityStage) | **DELETE** /v2/opportunities/stages/{stage_id} | Delete an Opportunity Stage
-[**getOpportunity**](OpportunityApi.md#getOpportunity) | **GET** /v2/opportunities/{opportunity_id} | Retrieve a Opportunity
-[**getOpportunityStage**](OpportunityApi.md#getOpportunityStage) | **GET** /v2/opportunities/stages/{stage_id} | Retrieve an Opportunity Stage
-[**listOpportunities**](OpportunityApi.md#listOpportunities) | **GET** /v2/opportunities | List Opportunities
-[**listOpportunityStages**](OpportunityApi.md#listOpportunityStages) | **GET** /v2/opportunities/stages | List of Opportunity Stages
-[**updateOpportunity**](OpportunityApi.md#updateOpportunity) | **PATCH** /v2/opportunities/{opportunity_id} | Update an opportunity
-[**updateOpportunityCustomField**](OpportunityApi.md#updateOpportunityCustomField) | **PATCH** /v2/opportunities/model/customFields/{custom_field_id} | Update a Opportunity\&#39;s Custom Field
-[**updateOpportunityStage**](OpportunityApi.md#updateOpportunityStage) | **PATCH** /v2/opportunities/stages/{stage_id} | Update an Opportunity Stage
+[**createOpportunity**](OpportunityApi.md#createOpportunity) | **POST** /rest/v2/opportunities | Create an Opportunity
+[**createOpportunityCustomFields**](OpportunityApi.md#createOpportunityCustomFields) | **POST** /rest/v2/opportunities/model/customFields | Create an Opportunity Custom Field
+[**createOpportunityStage**](OpportunityApi.md#createOpportunityStage) | **POST** /rest/v2/opportunities/stages | Create an Opportunity Stage
+[**deleteOpportunity**](OpportunityApi.md#deleteOpportunity) | **DELETE** /rest/v2/opportunities/{opportunity_id} | Delete an Opportunity
+[**deleteOpportunityStage**](OpportunityApi.md#deleteOpportunityStage) | **DELETE** /rest/v2/opportunities/stages/{stage_id} | Delete an Opportunity Stage
+[**getOpportunity**](OpportunityApi.md#getOpportunity) | **GET** /rest/v2/opportunities/{opportunity_id} | Retrieve a Opportunity
+[**getOpportunityStage**](OpportunityApi.md#getOpportunityStage) | **GET** /rest/v2/opportunities/stages/{stage_id} | Retrieve an Opportunity Stage
+[**listOpportunities**](OpportunityApi.md#listOpportunities) | **GET** /rest/v2/opportunities | List Opportunities
+[**listOpportunityStages**](OpportunityApi.md#listOpportunityStages) | **GET** /rest/v2/opportunities/stages | List of Opportunity Stages
+[**updateOpportunity**](OpportunityApi.md#updateOpportunity) | **PATCH** /rest/v2/opportunities/{opportunity_id} | Update an opportunity
+[**updateOpportunityCustomField**](OpportunityApi.md#updateOpportunityCustomField) | **PATCH** /rest/v2/opportunities/model/customFields/{custom_field_id} | Update a Opportunity\&#39;s Custom Field
+[**updateOpportunityStage**](OpportunityApi.md#updateOpportunityStage) | **PATCH** /rest/v2/opportunities/stages/{stage_id} | Update an Opportunity Stage
 
 
 # **createOpportunity**
-> RestV2Opportunity createOpportunity()
+> RestV2Opportunity createOpportunity(createOpportunityRequest)
 
 Creates a new opportunity as the authenticated user.
 
@@ -34,26 +34,26 @@ const configuration = createConfiguration();
 const apiInstance = new OpportunityApi(configuration);
 
 const request: OpportunityApiCreateOpportunityRequest = {
-    // opportunity (optional)
+  
   createOpportunityRequest: {
-    affiliateId: "affiliateId_example",
-    contactId: "contactId_example",
+    opportunityTitle: "New Business Deal",
+    nextActionTime: "2024-03-20T10:00:00Z",
+    nextActionNotes: "Schedule demo call",
+    opportunityNotes: "Prospect from website inquiry",
+    estimatedCloseTime: "2024-04-15T00:00:00Z",
+    includeInForecast: true,
+    projectedRevenueLow: 5000,
+    projectedRevenueHigh: 10000,
+    contactId: "1001",
+    stageId: "2",
+    userId: "456",
     customFields: [
       {
-        content: {},
+        content: null,
         id: "id_example",
       },
     ],
-    estimatedCloseTime: "estimatedCloseTime_example",
-    includeInForecast: true,
-    nextActionNotes: "nextActionNotes_example",
-    nextActionTime: "nextActionTime_example",
-    opportunityNotes: "opportunityNotes_example",
-    opportunityTitle: "opportunityTitle_example",
-    projectedRevenueHigh: 3.14,
-    projectedRevenueLow: 3.14,
-    stageId: "stageId_example",
-    userId: "userId_example",
+    affiliateId: "789",
   },
 };
 
@@ -66,7 +66,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createOpportunityRequest** | **CreateOpportunityRequest**| opportunity |
+ **createOpportunityRequest** | **CreateOpportunityRequest**|  |
 
 
 ### Return type
@@ -75,7 +75,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -87,9 +87,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -109,17 +113,16 @@ const configuration = createConfiguration();
 const apiInstance = new OpportunityApi(configuration);
 
 const request: OpportunityApiCreateOpportunityCustomFieldsRequest = {
-    // customField
+  
   createCustomFieldRequest: {
-    fieldType: "CURRENCY",
-    groupId: "groupId_example",
     label: "label_example",
     options: [
       {
         label: "label_example",
-        options: [],
       },
     ],
+    fieldType: "CURRENCY",
+    groupId: "groupId_example",
     userGroupId: "userGroupId_example",
   },
 };
@@ -133,7 +136,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createCustomFieldRequest** | **CreateCustomFieldRequest**| customField |
+ **createCustomFieldRequest** | **CreateCustomFieldRequest**|  |
 
 
 ### Return type
@@ -142,7 +145,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -154,14 +157,18 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **createOpportunityStage**
-> RestOpportunityStage createOpportunityStage()
+> RestOpportunityStage createOpportunityStage(createOpportunityStageRequest)
 
 Creates a new Opportunity Stage
 
@@ -176,19 +183,19 @@ const configuration = createConfiguration();
 const apiInstance = new OpportunityApi(configuration);
 
 const request: OpportunityApiCreateOpportunityStageRequest = {
-    // opportunity (optional)
+  
   createOpportunityStageRequest: {
+    name: "Won",
+    order: 5,
+    targetNumberDays: 10,
+    probability: 42,
     checklistItems: [
       {
         description: "description_example",
+        required: true,
         order: 1,
-        required: false,
       },
     ],
-    name: "Won",
-    order: 1,
-    probability: 1,
-    targetNumberDays: 1,
   },
 };
 
@@ -201,7 +208,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createOpportunityStageRequest** | **CreateOpportunityStageRequest**| opportunity |
+ **createOpportunityStageRequest** | **CreateOpportunityStageRequest**|  |
 
 
 ### Return type
@@ -210,7 +217,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -222,9 +229,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -244,7 +255,7 @@ const configuration = createConfiguration();
 const apiInstance = new OpportunityApi(configuration);
 
 const request: OpportunityApiDeleteOpportunityRequest = {
-    // opportunity_id
+  
   opportunityId: "opportunity_id_example",
 };
 
@@ -257,7 +268,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **opportunityId** | [**string**] | opportunity_id | defaults to undefined
+ **opportunityId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -266,7 +277,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -278,10 +289,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No Content |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -301,7 +315,7 @@ const configuration = createConfiguration();
 const apiInstance = new OpportunityApi(configuration);
 
 const request: OpportunityApiDeleteOpportunityStageRequest = {
-    // stage_id
+  
   stageId: "stage_id_example",
 };
 
@@ -314,7 +328,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **stageId** | [**string**] | stage_id | defaults to undefined
+ **stageId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -323,7 +337,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -335,10 +349,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No Content |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -358,7 +375,7 @@ const configuration = createConfiguration();
 const apiInstance = new OpportunityApi(configuration);
 
 const request: OpportunityApiGetOpportunityRequest = {
-    // opportunity_id
+  
   opportunityId: "opportunity_id_example",
 };
 
@@ -371,7 +388,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **opportunityId** | [**string**] | opportunity_id | defaults to undefined
+ **opportunityId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -380,7 +397,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -392,10 +409,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -415,7 +435,7 @@ const configuration = createConfiguration();
 const apiInstance = new OpportunityApi(configuration);
 
 const request: OpportunityApiGetOpportunityStageRequest = {
-    // stage_id
+  
   stageId: "stage_id_example",
 };
 
@@ -428,7 +448,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **stageId** | [**string**] | stage_id | defaults to undefined
+ **stageId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -437,7 +457,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -449,10 +469,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -472,7 +495,7 @@ const configuration = createConfiguration();
 const apiInstance = new OpportunityApi(configuration);
 
 const request: OpportunityApiListOpportunitiesRequest = {
-    // fields (optional)
+  
   fields: [
     "fields_example",
   ],
@@ -495,7 +518,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **fields** | **Array&lt;string&gt;** | fields | (optional) defaults to undefined
+ **fields** | **Set&lt;string&gt;** |  | (optional) defaults to undefined
  **filter** | [**string**] | Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60;  | (optional) defaults to undefined
  **orderBy** | [**string**] | Attribute and direction to opportunities items. One of the following fields: - &#x60;next_action_time&#x60; - &#x60;contact_name&#x60; - &#x60;opportunity_name&#x60; - &#x60;created_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | (optional) defaults to undefined
  **pageSize** | [**number**] | Total number of items to return per page | (optional) defaults to undefined
@@ -508,7 +531,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -520,10 +543,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -574,7 +600,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -586,10 +612,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -609,33 +638,33 @@ const configuration = createConfiguration();
 const apiInstance = new OpportunityApi(configuration);
 
 const request: OpportunityApiUpdateOpportunityRequest = {
-    // opportunity_id
+  
   opportunityId: "opportunity_id_example",
-    // request
+  
   updateOpportunityRequestV2: {
-    affiliateId: "affiliateId_example",
-    contactId: "contactId_example",
+    opportunityTitle: "New Business Deal",
+    nextActionTime: "2024-03-20T10:00:00Z",
+    nextActionNotes: "Schedule demo call",
+    opportunityNotes: "Prospect from website inquiry",
+    estimatedCloseTime: "2024-04-15T00:00:00Z",
+    includeInForecast: true,
+    projectedRevenueLow: 5000,
+    projectedRevenueHigh: 10000,
+    contactId: "1001",
+    stageId: "2",
+    userId: "456",
     customFields: [
       {
-        content: {},
+        content: null,
         id: "id_example",
       },
     ],
-    estimatedCloseTime: "estimatedCloseTime_example",
-    includeInForecast: true,
-    nextActionNotes: "nextActionNotes_example",
-    nextActionTime: "nextActionTime_example",
-    opportunityNotes: "opportunityNotes_example",
-    opportunityTitle: "opportunityTitle_example",
-    projectedRevenueHigh: 3.14,
-    projectedRevenueLow: 3.14,
-    stageId: "stageId_example",
-    userId: "userId_example",
+    affiliateId: "789",
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: [
-    "opportunity_title",
-  ],
+  updateMask: `opportunity_title,next_action_time,next_action_notes,opportunity_notes,
+estimated_close_time,include_in_forecast,projected_revenue_low,projected_revenue_high,
+contact_id,stage_id,user_id,custom_fields,affiliate_id`,
 };
 
 const data = await apiInstance.updateOpportunity(request);
@@ -647,9 +676,9 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **updateOpportunityRequestV2** | **UpdateOpportunityRequestV2**| request |
- **opportunityId** | [**string**] | opportunity_id | defaults to undefined
- **updateMask** |  | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateOpportunityRequestV2** | **UpdateOpportunityRequestV2**|  |
+ **opportunityId** | [**string**] |  | defaults to undefined
+ **updateMask** | [**&#39;opportunity_title,next_action_time,next_action_notes,opportunity_notes, estimated_close_time,include_in_forecast,projected_revenue_low,projected_revenue_high, contact_id,stage_id,user_id,custom_fields,affiliate_id&#39;**]**Array<&#39;opportunity_title,next_action_time,next_action_notes,opportunity_notes, estimated_close_time,include_in_forecast,projected_revenue_low,projected_revenue_high, contact_id,stage_id,user_id,custom_fields,affiliate_id&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
@@ -658,7 +687,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -670,10 +699,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -693,24 +725,21 @@ const configuration = createConfiguration();
 const apiInstance = new OpportunityApi(configuration);
 
 const request: OpportunityApiUpdateOpportunityCustomFieldRequest = {
-    // custom_field_id
+  
   customFieldId: "custom_field_id_example",
-    // request
+  
   updateCustomFieldMetaDataRequest: {
-    groupId: "groupId_example",
     label: "label_example",
     options: [
       {
         id: "id_example",
         label: "label_example",
-        options: [],
       },
     ],
+    groupId: "groupId_example",
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: [
-    "group_id",
-  ],
+  updateMask: "group_id,label,options",
 };
 
 const data = await apiInstance.updateOpportunityCustomField(request);
@@ -722,9 +751,9 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **updateCustomFieldMetaDataRequest** | **UpdateCustomFieldMetaDataRequest**| request |
- **customFieldId** | [**string**] | custom_field_id | defaults to undefined
- **updateMask** |  | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateCustomFieldMetaDataRequest** | **UpdateCustomFieldMetaDataRequest**|  |
+ **customFieldId** | [**string**] |  | defaults to undefined
+ **updateMask** | [**&#39;group_id,label,options&#39;**]**Array<&#39;group_id,label,options&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
@@ -733,7 +762,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -745,10 +774,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -768,27 +800,25 @@ const configuration = createConfiguration();
 const apiInstance = new OpportunityApi(configuration);
 
 const request: OpportunityApiUpdateOpportunityStageRequest = {
-    // stage_id
+  
   stageId: "stage_id_example",
-    // request
+  
   updateOpportunityStageRequest: {
-    checklistItems: [
-      {
-        description: "description_example",
-        id: "id_example",
-        order: 1,
-        required: true,
-      },
-    ],
     name: "Qualified",
     order: 1,
     probability: 2,
     targetNumberDays: 1,
+    checklistItems: [
+      {
+        id: "101",
+        description: "Review contract terms",
+        required: true,
+        order: 1,
+      },
+    ],
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: [
-    "name",
-  ],
+  updateMask: "name,order,target_number_days,probability,checklist_items",
 };
 
 const data = await apiInstance.updateOpportunityStage(request);
@@ -800,9 +830,9 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **updateOpportunityStageRequest** | **UpdateOpportunityStageRequest**| request |
- **stageId** | [**string**] | stage_id | defaults to undefined
- **updateMask** |  | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateOpportunityStageRequest** | **UpdateOpportunityStageRequest**|  |
+ **stageId** | [**string**] |  | defaults to undefined
+ **updateMask** | [**&#39;name,order,target_number_days,probability,checklist_items&#39;**]**Array<&#39;name,order,target_number_days,probability,checklist_items&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
@@ -811,7 +841,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -823,10 +853,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

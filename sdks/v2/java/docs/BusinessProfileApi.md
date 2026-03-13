@@ -1,13 +1,13 @@
 # BusinessProfileApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getBusinessProfile**](BusinessProfileApi.md#getBusinessProfile) | **GET** /v2/businessProfile | Retrieve Business Profile |
-| [**getBusinessProfileWithHttpInfo**](BusinessProfileApi.md#getBusinessProfileWithHttpInfo) | **GET** /v2/businessProfile | Retrieve Business Profile |
-| [**updateBusinessProfile**](BusinessProfileApi.md#updateBusinessProfile) | **PATCH** /v2/businessProfile | Update Business Profile |
-| [**updateBusinessProfileWithHttpInfo**](BusinessProfileApi.md#updateBusinessProfileWithHttpInfo) | **PATCH** /v2/businessProfile | Update Business Profile |
+| [**getBusinessProfile**](BusinessProfileApi.md#getBusinessProfile) | **GET** /rest/v2/businessProfile | Retrieve Business Profile |
+| [**getBusinessProfileWithHttpInfo**](BusinessProfileApi.md#getBusinessProfileWithHttpInfo) | **GET** /rest/v2/businessProfile | Retrieve Business Profile |
+| [**updateBusinessProfile**](BusinessProfileApi.md#updateBusinessProfile) | **PATCH** /rest/v2/businessProfile | Update Business Profile |
+| [**updateBusinessProfileWithHttpInfo**](BusinessProfileApi.md#updateBusinessProfileWithHttpInfo) | **PATCH** /rest/v2/businessProfile | Update Business Profile |
 
 
 
@@ -26,13 +26,18 @@ Retrieves Business Profile information.
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.BusinessProfileApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         BusinessProfileApi apiInstance = new BusinessProfileApi(defaultClient);
         try {
@@ -60,7 +65,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -71,10 +76,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## getBusinessProfileWithHttpInfo
 
@@ -92,13 +100,18 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.BusinessProfileApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         BusinessProfileApi apiInstance = new BusinessProfileApi(defaultClient);
         try {
@@ -128,7 +141,7 @@ ApiResponse<[**GetBusinessProfileResponse**](GetBusinessProfileResponse.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -139,15 +152,18 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 
 ## updateBusinessProfile
 
-> GetBusinessProfileResponse updateBusinessProfile(updateMask, updateBusinessProfileRequest)
+> GetBusinessProfileResponse updateBusinessProfile(updateBusinessProfileRequest, updateMask)
 
 Update Business Profile
 
@@ -160,19 +176,24 @@ Updates Business Profile information.
 import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.BusinessProfileApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         BusinessProfileApi apiInstance = new BusinessProfileApi(defaultClient);
-        List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        UpdateBusinessProfileRequest updateBusinessProfileRequest = new UpdateBusinessProfileRequest(); // UpdateBusinessProfileRequest | businessProfile
+        UpdateBusinessProfileRequest updateBusinessProfileRequest = new UpdateBusinessProfileRequest(); // UpdateBusinessProfileRequest | 
+        String updateMask = "name,email,website,phone,address,currency_code,business_goals,business_primary_color, business_secondary_color"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
-            GetBusinessProfileResponse result = apiInstance.updateBusinessProfile(updateMask, updateBusinessProfileRequest);
+            GetBusinessProfileResponse result = apiInstance.updateBusinessProfile(updateBusinessProfileRequest, updateMask);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling BusinessProfileApi#updateBusinessProfile");
@@ -190,8 +211,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **updateMask** | [**List&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name, email, website, phone, address, currency_code, business_goals, business_primary_color, business_secondary_color] |
-| **updateBusinessProfileRequest** | [**UpdateBusinessProfileRequest**](UpdateBusinessProfileRequest.md)| businessProfile | [optional] |
+| **updateBusinessProfileRequest** | [**UpdateBusinessProfileRequest**](UpdateBusinessProfileRequest.md)|  | |
+| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name,email,website,phone,address,currency_code,business_goals,business_primary_color,
+business_secondary_color] |
 
 ### Return type
 
@@ -200,7 +222,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -211,14 +233,17 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 ## updateBusinessProfileWithHttpInfo
 
-> ApiResponse<GetBusinessProfileResponse> updateBusinessProfile updateBusinessProfileWithHttpInfo(updateMask, updateBusinessProfileRequest)
+> ApiResponse<GetBusinessProfileResponse> updateBusinessProfile updateBusinessProfileWithHttpInfo(updateBusinessProfileRequest, updateMask)
 
 Update Business Profile
 
@@ -232,19 +257,24 @@ import com.keap.core.sdk.ApiClient;
 import com.keap.core.sdk.ApiException;
 import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
 import com.keap.core.sdk.models.*;
 import com.keap.core.sdk.client.BusinessProfileApi;
 
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm/rest");
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         BusinessProfileApi apiInstance = new BusinessProfileApi(defaultClient);
-        List<String> updateMask = Arrays.asList(); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
-        UpdateBusinessProfileRequest updateBusinessProfileRequest = new UpdateBusinessProfileRequest(); // UpdateBusinessProfileRequest | businessProfile
+        UpdateBusinessProfileRequest updateBusinessProfileRequest = new UpdateBusinessProfileRequest(); // UpdateBusinessProfileRequest | 
+        String updateMask = "name,email,website,phone,address,currency_code,business_goals,business_primary_color, business_secondary_color"; // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
         try {
-            ApiResponse<GetBusinessProfileResponse> response = apiInstance.updateBusinessProfileWithHttpInfo(updateMask, updateBusinessProfileRequest);
+            ApiResponse<GetBusinessProfileResponse> response = apiInstance.updateBusinessProfileWithHttpInfo(updateBusinessProfileRequest, updateMask);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -264,8 +294,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **updateMask** | [**List&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name, email, website, phone, address, currency_code, business_goals, business_primary_color, business_secondary_color] |
-| **updateBusinessProfileRequest** | [**UpdateBusinessProfileRequest**](UpdateBusinessProfileRequest.md)| businessProfile | [optional] |
+| **updateBusinessProfileRequest** | [**UpdateBusinessProfileRequest**](UpdateBusinessProfileRequest.md)|  | |
+| **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name,email,website,phone,address,currency_code,business_goals,business_primary_color,
+business_secondary_color] |
 
 ### Return type
 
@@ -274,7 +305,7 @@ ApiResponse<[**GetBusinessProfileResponse**](GetBusinessProfileResponse.md)>
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -285,8 +316,11 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 

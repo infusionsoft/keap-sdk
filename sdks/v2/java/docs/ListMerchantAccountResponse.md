@@ -8,9 +8,9 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**id** | **String** |  |  [optional] |
-|**isTest** | **Boolean** |  |  [optional] |
 |**name** | **String** |  |  [optional] |
 |**type** | [**TypeEnum**](#TypeEnum) |  |  [optional] |
+|**isTest** | **Boolean** |  |  [optional] |
 
 
 

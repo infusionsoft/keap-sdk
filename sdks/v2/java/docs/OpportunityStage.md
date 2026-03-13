@@ -7,10 +7,10 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**details** | [**StageDetails**](StageDetails.md) |  |  [optional] |
-|**id** | **String** |  |  |
-|**name** | **String** |  |  [optional] |
-|**reasons** | **List&lt;String&gt;** |  |  [optional] |
+|**id** | **String** | Stage ID |  |
+|**name** | **String** | Stage name |  [optional] |
+|**details** | [**StageDetails**](StageDetails.md) | Stage details |  [optional] |
+|**reasons** | **List&lt;String&gt;** | Stage change reasons |  [optional] |
 
 
 ## Implemented Interfaces

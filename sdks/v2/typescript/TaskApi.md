@@ -1,22 +1,22 @@
 # .TaskApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createTask**](TaskApi.md#createTask) | **POST** /v2/tasks | Create a Task
-[**createTaskCustomField**](TaskApi.md#createTaskCustomField) | **POST** /v2/tasks/model/customFields | Create a Custom Field
-[**deleteTask**](TaskApi.md#deleteTask) | **DELETE** /v2/tasks/{task_id} | Delete a Task
-[**deleteTaskCustomField**](TaskApi.md#deleteTaskCustomField) | **DELETE** /v2/tasks/model/customFields/{custom_field_id} | Delete a Custom Field
-[**getTask**](TaskApi.md#getTask) | **GET** /v2/tasks/{task_id} | Retrieve a Task
-[**listTasks**](TaskApi.md#listTasks) | **GET** /v2/tasks | List Tasks
-[**retrieveTaskModel**](TaskApi.md#retrieveTaskModel) | **GET** /v2/tasks/model | Retrieve Task Model
-[**updateTask**](TaskApi.md#updateTask) | **PATCH** /v2/tasks/{task_id} | Update a Task
-[**updateTaskCustomField**](TaskApi.md#updateTaskCustomField) | **PATCH** /v2/tasks/model/customFields/{custom_field_id} | Update a Task\&#39;s Custom Field
+[**createTask**](TaskApi.md#createTask) | **POST** /rest/v2/tasks | Create a Task
+[**createTaskCustomField**](TaskApi.md#createTaskCustomField) | **POST** /rest/v2/tasks/model/customFields | Create a Custom Field
+[**deleteTask**](TaskApi.md#deleteTask) | **DELETE** /rest/v2/tasks/{task_id} | Delete a Task
+[**deleteTaskCustomField**](TaskApi.md#deleteTaskCustomField) | **DELETE** /rest/v2/tasks/model/customFields/{custom_field_id} | Delete a Custom Field
+[**getTask**](TaskApi.md#getTask) | **GET** /rest/v2/tasks/{task_id} | Retrieve a Task
+[**listTasks**](TaskApi.md#listTasks) | **GET** /rest/v2/tasks | List Tasks
+[**retrieveTaskModel**](TaskApi.md#retrieveTaskModel) | **GET** /rest/v2/tasks/model | Retrieve Task Model
+[**updateTask**](TaskApi.md#updateTask) | **PATCH** /rest/v2/tasks/{task_id} | Update a Task
+[**updateTaskCustomField**](TaskApi.md#updateTaskCustomField) | **PATCH** /rest/v2/tasks/model/customFields/{custom_field_id} | Update a Task\&#39;s Custom Field
 
 
 # **createTask**
-> Task createTask()
+> Task createTask(createTaskRequest)
 
 Creates a new task as the authenticated user.   This endpoint does not currently support setting Custom Field values.
 
@@ -31,18 +31,18 @@ const configuration = createConfiguration();
 const apiInstance = new TaskApi(configuration);
 
 const request: TaskApiCreateTaskRequest = {
-    // task (optional)
+  
   createTaskRequest: {
-    assignedToUserId: "assignedToUserId_example",
-    completed: true,
-    completionTime: "completionTime_example",
-    contactId: "contactId_example",
-    description: "description_example",
-    dueTime: "dueTime_example",
-    priority: "CRITICAL",
-    remindTimeMins: 1,
-    title: "title_example",
-    type: "type_example",
+    title: "Follow up on proposal",
+    description: "Review client feedback",
+    type: "CALL",
+    priority: "ESSENTIAL",
+    completed: false,
+    completionTime: "2024-03-20T14:00:00Z",
+    dueTime: "2024-03-18T17:00:00Z",
+    remindTimeMins: 30,
+    assignedToUserId: "456",
+    contactId: "1001",
   },
 };
 
@@ -55,7 +55,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createTaskRequest** | **CreateTaskRequest**| task |
+ **createTaskRequest** | **CreateTaskRequest**|  |
 
 
 ### Return type
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -76,9 +76,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -98,17 +102,16 @@ const configuration = createConfiguration();
 const apiInstance = new TaskApi(configuration);
 
 const request: TaskApiCreateTaskCustomFieldRequest = {
-    // customField
+  
   createCustomFieldRequest: {
-    fieldType: "CURRENCY",
-    groupId: "groupId_example",
     label: "label_example",
     options: [
       {
         label: "label_example",
-        options: [],
       },
     ],
+    fieldType: "CURRENCY",
+    groupId: "groupId_example",
     userGroupId: "userGroupId_example",
   },
 };
@@ -122,7 +125,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createCustomFieldRequest** | **CreateCustomFieldRequest**| customField |
+ **createCustomFieldRequest** | **CreateCustomFieldRequest**|  |
 
 
 ### Return type
@@ -131,7 +134,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -143,9 +146,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -165,7 +172,7 @@ const configuration = createConfiguration();
 const apiInstance = new TaskApi(configuration);
 
 const request: TaskApiDeleteTaskRequest = {
-    // task_id
+  
   taskId: "task_id_example",
 };
 
@@ -178,7 +185,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **taskId** | [**string**] | task_id | defaults to undefined
+ **taskId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -187,7 +194,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -199,10 +206,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No Content |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -222,7 +232,7 @@ const configuration = createConfiguration();
 const apiInstance = new TaskApi(configuration);
 
 const request: TaskApiDeleteTaskCustomFieldRequest = {
-    // custom_field_id
+  
   customFieldId: "custom_field_id_example",
 };
 
@@ -235,7 +245,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **customFieldId** | [**string**] | custom_field_id | defaults to undefined
+ **customFieldId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -244,7 +254,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -256,10 +266,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No Content |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -279,7 +292,7 @@ const configuration = createConfiguration();
 const apiInstance = new TaskApi(configuration);
 
 const request: TaskApiGetTaskRequest = {
-    // task_id
+  
   taskId: "task_id_example",
 };
 
@@ -292,7 +305,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **taskId** | [**string**] | task_id | defaults to undefined
+ **taskId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -301,7 +314,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -313,10 +326,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -336,7 +352,7 @@ const configuration = createConfiguration();
 const apiInstance = new TaskApi(configuration);
 
 const request: TaskApiListTasksRequest = {
-    // Filter to apply, allowed fields are: - (String) `contact_id` - (String) `has_due_date` - (String) `is_completed` - (String) `user_id` - (String) `task_ids` - (String) `since_time` - (String) `until_time` You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=has_due_date%3D%3Dtrue` - `filter=is_completed%3D%3Dtrue` - `filter=user_id%3D%3D321` - `filter=task_ids%3D%3D1,2,3` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;`  (optional)
+    // Filter to apply, allowed fields are: - (String) `contact_id` - (String) `has_due_date` - (String) `is_completed` - (String) `user_id` - (String) `task_ids` - (String) `since_time` - (String) `until_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=has_due_date%3D%3Dtrue` - `filter=is_completed%3D%3Dtrue` - `filter=user_id%3D%3D321` - `filter=task_ids%3D%3D1,2,3` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;`  (optional)
   filter: "filter_example",
     // Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `due_time`  One of the following directions: - `asc` - `desc` (optional)
   orderBy: "order_by_example",
@@ -355,7 +371,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filter** | [**string**] | Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;has_due_date&#x60; - (String) &#x60;is_completed&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;task_ids&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;has_due_date%3D%3Dtrue&#x60; - &#x60;filter&#x3D;is_completed%3D%3Dtrue&#x60; - &#x60;filter&#x3D;user_id%3D%3D321&#x60; - &#x60;filter&#x3D;task_ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  | (optional) defaults to undefined
+ **filter** | [**string**] | Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;has_due_date&#x60; - (String) &#x60;is_completed&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;task_ids&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;has_due_date%3D%3Dtrue&#x60; - &#x60;filter&#x3D;is_completed%3D%3Dtrue&#x60; - &#x60;filter&#x3D;user_id%3D%3D321&#x60; - &#x60;filter&#x3D;task_ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60;  | (optional) defaults to undefined
  **orderBy** | [**string**] | Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;due_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | (optional) defaults to undefined
  **pageSize** | [**number**] | Total number of items to return per page | (optional) defaults to undefined
  **pageToken** | [**string**] | Page token | (optional) defaults to undefined
@@ -367,7 +383,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -379,10 +395,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -417,7 +436,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -429,15 +448,18 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **updateTask**
-> UpdateTaskResponse updateTask()
+> UpdateTaskResponse updateTask(createUpdateTaskRequest)
 
 Updates a task with only the values provided in the request.  This endpoint does not currently support updating Custom Field values.
 
@@ -452,25 +474,24 @@ const configuration = createConfiguration();
 const apiInstance = new TaskApi(configuration);
 
 const request: TaskApiUpdateTaskRequest = {
-    // task_id
+  
   taskId: "task_id_example",
-    // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: [
-    "id",
-  ],
-    // task (optional)
+  
   createUpdateTaskRequest: {
-    assignedToUserId: "assignedToUserId_example",
-    completed: true,
-    completionTime: "completionTime_example",
-    contactId: "contactId_example",
-    description: "description_example",
-    dueTime: "dueTime_example",
-    priority: "CRITICAL",
-    remindTimeMins: 1,
-    title: "title_example",
-    type: "type_example",
+    title: "Follow up on proposal",
+    description: "Review client feedback",
+    type: "CALL",
+    priority: "ESSENTIAL",
+    completed: false,
+    completionTime: "2024-03-20T14:00:00Z",
+    dueTime: "2024-03-18T17:00:00Z",
+    remindTimeMins: 30,
+    assignedToUserId: "456",
+    contactId: "1001",
   },
+    // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+  updateMask: `id,title,description,type,priority,completion_time,
+due_time,remind_time_mins,assigned_to_user_id,contact_id,completed`,
 };
 
 const data = await apiInstance.updateTask(request);
@@ -482,9 +503,9 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createUpdateTaskRequest** | **CreateUpdateTaskRequest**| task |
- **taskId** | [**string**] | task_id | defaults to undefined
- **updateMask** |  | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **createUpdateTaskRequest** | **CreateUpdateTaskRequest**|  |
+ **taskId** | [**string**] |  | defaults to undefined
+ **updateMask** | [**&#39;id,title,description,type,priority,completion_time, due_time,remind_time_mins,assigned_to_user_id,contact_id,completed&#39;**]**Array<&#39;id,title,description,type,priority,completion_time, due_time,remind_time_mins,assigned_to_user_id,contact_id,completed&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
@@ -493,7 +514,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -505,10 +526,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -528,24 +552,21 @@ const configuration = createConfiguration();
 const apiInstance = new TaskApi(configuration);
 
 const request: TaskApiUpdateTaskCustomFieldRequest = {
-    // custom_field_id
+  
   customFieldId: "custom_field_id_example",
-    // request
+  
   updateCustomFieldMetaDataRequest: {
-    groupId: "groupId_example",
     label: "label_example",
     options: [
       {
         id: "id_example",
         label: "label_example",
-        options: [],
       },
     ],
+    groupId: "groupId_example",
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
-  updateMask: [
-    "group_id",
-  ],
+  updateMask: "group_id,label,options",
 };
 
 const data = await apiInstance.updateTaskCustomField(request);
@@ -557,9 +578,9 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **updateCustomFieldMetaDataRequest** | **UpdateCustomFieldMetaDataRequest**| request |
- **customFieldId** | [**string**] | custom_field_id | defaults to undefined
- **updateMask** |  | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateCustomFieldMetaDataRequest** | **UpdateCustomFieldMetaDataRequest**|  |
+ **customFieldId** | [**string**] |  | defaults to undefined
+ **updateMask** | [**&#39;group_id,label,options&#39;**]**Array<&#39;group_id,label,options&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type
@@ -568,7 +589,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](README.md#oauth2)
 
 ### HTTP request headers
 
@@ -580,10 +601,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

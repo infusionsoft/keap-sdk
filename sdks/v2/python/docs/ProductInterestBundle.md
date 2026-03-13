@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**description** | **str** | Product interest bundle description | [optional] 
 **id** | **str** | The product interest bundle ID | [optional] 
 **name** | **str** | Product interest bundle name | [optional] 
+**description** | **str** | Product interest bundle description | [optional] 
 **product_interests** | [**List[ProductInterest]**](ProductInterest.md) | Product interests | [optional] 
 **subscription_plan_interests** | [**List[ProductInterest]**](ProductInterest.md) | Subscription plan interests | [optional] 
 

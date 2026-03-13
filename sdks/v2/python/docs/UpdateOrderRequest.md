@@ -1,21 +1,22 @@
 # UpdateOrderRequest
 
+order
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**contact_id** | **str** |  | [optional] 
-**lead_affiliate_id** | **str** |  | [optional] 
-**notes** | **str** |  | [optional] 
-**order_time** | **str** | The date and time of the order. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z) | [optional] 
-**order_title** | **str** |  | [optional] 
-**order_type** | **str** | The order type. Valid values are: ONLINE, OFFLINE. | [optional] 
-**payment_plan** | [**UpdatedPaymentPlan**](UpdatedPaymentPlan.md) |  | [optional] 
+**notes** | **str** | Internal notes | [optional] 
+**terms** | **str** | Order terms | [optional] 
+**contact_id** | **str** | ID of the contact for this order | [optional] 
+**order_title** | **str** | Title for the order | [optional] 
+**order_time** | **datetime** | The date and time of the order. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z) | [optional] 
+**order_type** | **str** | The order type. | [optional] 
 **promo_codes** | **List[str]** | Uses multiple strings as promo codes. The corresponding discount will be applied to the order. | [optional] 
-**sales_affiliate_id** | **str** |  | [optional] 
-**shipping_address** | [**AddressInformation**](AddressInformation.md) |  | [optional] 
-**terms** | **str** |  | [optional] 
+**lead_affiliate_id** | **str** | Lead affiliate ID | [optional] 
+**sales_affiliate_id** | **str** | Sales affiliate ID | [optional] 
+**shipping_address** | [**AddressInformation**](AddressInformation.md) | Shipping address for the order | [optional] 
+**payment_plan** | [**UpdatedPaymentPlan**](UpdatedPaymentPlan.md) | Payment plan details | [optional] 
 
 ## Example
 

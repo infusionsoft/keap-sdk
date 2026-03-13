@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**country_code** | **str** | An ISO 3166-1 Country Code (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) | 
 **line1** | **str** |  | 
 **line2** | **str** |  | 
 **locality** | **str** | The municipality to which the address belongs | 
-**postal_code** | **str** |  | 
 **region** | **str** | The long-name descriptive version of the Region Code | 
+**country_code** | **str** | An ISO 3166-1 Country Code (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) | 
+**postal_code** | **str** |  | 
 
 ## Example
 

@@ -7,9 +7,9 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**amount** | **Double** |  |  [optional] |
-|**discountMethod** | [**DiscountMethodEnum**](#DiscountMethodEnum) |  |  [optional] |
-|**specialItemId** | **String** |  |  [optional] |
+|**amount** | **Double** | Discount amount |  [optional] |
+|**specialItemId** | **String** | Discount item ID |  [optional] |
+|**discountMethod** | [**DiscountMethodEnum**](#DiscountMethodEnum) | Discount method |  [optional] |
 
 
 

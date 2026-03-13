@@ -1,12 +1,12 @@
 # Keap\Core\V2\ReportingApi
 
-All URIs are relative to https://api.keap.com/crm/rest, except if the operation defines another base path.
+All URIs are relative to https://api.keap.com/crm, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**listReports()**](ReportingApi.md#listReports) | **GET** /v2/reporting/reports | List Reports |
-| [**retrieveReport()**](ReportingApi.md#retrieveReport) | **GET** /v2/reporting/reports/{report_id} | Retrieve Report |
-| [**runReport()**](ReportingApi.md#runReport) | **POST** /v2/reporting/reports/{report_id}:run | Run a Report |
+| [**listReports()**](ReportingApi.md#listReports) | **GET** /rest/v2/reporting/reports | List Reports |
+| [**retrieveReport()**](ReportingApi.md#retrieveReport) | **GET** /rest/v2/reporting/reports/{report_id} | Retrieve Report |
+| [**runReport()**](ReportingApi.md#runReport) | **POST** /rest/v2/reporting/reports/{report_id}:run | Run a Report |
 
 
 ## `listReports()`
@@ -26,13 +26,17 @@ Retrieves a list of Reports as defined in the application (identified as Saved S
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\ReportingApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$filter = 'filter_example'; // string | Filter to apply, allowed fields are: - (String) `name` - (DateTime) `since_created_time` - (DateTime) `until_created_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched  word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=given_name%3D%3DMary` - `filter=company_id%3D%3D123` - `filter=company_id%3D%3D123%3Bfamily_name%3D%3DSmith`
-$order_by = 'order_by_example'; // string | Attribute and direction to order items. One of the following fields: - `name` - `created_time`  One of the following directions: - `asc` - `desc`
+$filter = name%3D%3DMonthly%20Sales; // string | Filter to apply, allowed fields are: - (String) `name` - (DateTime) `since_created_time` - (DateTime) `until_created_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched  word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=name%3D%3DMonthly%20Sales` - `filter=since_created_time%3D%3D2024-01-01`
+$order_by = name asc; // string | Attribute and direction to order items. One of the following fields: - `name` - `created_time`  One of the following directions: - `asc` - `desc`
 $page_size = 0; // int | Total number of items to return per page
 $page_token = 'page_token_example'; // string | Page token
 
@@ -48,7 +52,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **filter** | **string**| Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (DateTime) &#x60;since_created_time&#x60; - (DateTime) &#x60;until_created_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched  word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; | [optional] |
+| **filter** | **string**| Filter to apply, allowed fields are: - (String) &#x60;name&#x60; - (DateTime) &#x60;since_created_time&#x60; - (DateTime) &#x60;until_created_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched  word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;name%3D%3DMonthly%20Sales&#x60; - &#x60;filter&#x3D;since_created_time%3D%3D2024-01-01&#x60; | [optional] |
 | **order_by** | **string**| Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;created_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **page_size** | **int**| Total number of items to return per page | [optional] |
 | **page_token** | **string**| Page token | [optional] |
@@ -59,7 +63,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -87,12 +91,16 @@ Retrieves information about a Report as defined in the application (identified a
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\ReportingApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$report_id = 'report_id_example'; // string | report_id
+$report_id = 123; // string | The unique identifier of the report (Saved Search)
 
 try {
     $result = $apiInstance->retrieveReport($report_id);
@@ -106,7 +114,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **report_id** | **string**| report_id | |
+| **report_id** | **string**| The unique identifier of the report (Saved Search) | |
 
 ### Return type
 
@@ -114,7 +122,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -128,7 +136,7 @@ No authorization required
 ## `runReport()`
 
 ```php
-runReport($report_id, $fields, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ReportExecutionResult
+runReport($report_id, $run_report_request): \Keap\Core\V2\Model\ReportExecutionResult
 ```
 
 Run a Report
@@ -142,19 +150,20 @@ Runs a report as defined in the application (identified as Saved Search)<br/><sp
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new Keap\Core\V2\Api\ReportingApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$report_id = 'report_id_example'; // string | The unique identifier of the report (Saved Search) to execute
-$fields = 'fields_example'; // string | Comma-separated list of fields to return (or do not supply a value to return all)
-$order_by = 'order_by_example'; // string | Attribute and direction to order items by. E.g. `given_name desc`
-$page_size = 0; // int | Total number of items to return per page
-$page_token = 'page_token_example'; // string | Representation of the last row retrieved from the previous page. An empty value implies a request for the first page.
+$report_id = 123; // string | The unique identifier of the report (Saved Search) to execute
+$run_report_request = new \Keap\Core\V2\Model\\Keap\Core\V2\Model\RunReportRequest(); // \Keap\Core\V2\Model\RunReportRequest
 
 try {
-    $result = $apiInstance->runReport($report_id, $fields, $order_by, $page_size, $page_token);
+    $result = $apiInstance->runReport($report_id, $run_report_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ReportingApi->runReport: ', $e->getMessage(), PHP_EOL;
@@ -166,10 +175,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **report_id** | **string**| The unique identifier of the report (Saved Search) to execute | |
-| **fields** | **string**| Comma-separated list of fields to return (or do not supply a value to return all) | [optional] |
-| **order_by** | **string**| Attribute and direction to order items by. E.g. &#x60;given_name desc&#x60; | [optional] |
-| **page_size** | **int**| Total number of items to return per page | [optional] [default to 1000] |
-| **page_token** | **string**| Representation of the last row retrieved from the previous page. An empty value implies a request for the first page. | [optional] |
+| **run_report_request** | [**\Keap\Core\V2\Model\RunReportRequest**](../Model/.md)|  | |
 
 ### Return type
 
@@ -177,7 +183,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[oauth2](../../README.md#oauth2)
 
 ### HTTP request headers
 

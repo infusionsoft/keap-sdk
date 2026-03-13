@@ -1,19 +1,19 @@
 # Keap.Core.V2.Api.FilesApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**CreateFile**](FilesApi.md#createfile) | **POST** /v2/files | Create a file |
-| [**DeleteFile**](FilesApi.md#deletefile) | **DELETE** /v2/files/{file_id} | Delete a file |
-| [**GetFile**](FilesApi.md#getfile) | **GET** /v2/files/{file_id} | Retrieve a file |
-| [**GetFileData**](FilesApi.md#getfiledata) | **GET** /v2/files/{file_id}:data | Retrieve a file&#39;s data |
-| [**ListFiles**](FilesApi.md#listfiles) | **GET** /v2/files | List all files |
-| [**UpdateFile**](FilesApi.md#updatefile) | **POST** /v2/files/{file_id} | Update a file |
+| [**CreateFile**](FilesApi.md#createfile) | **POST** /rest/v2/files | Create a file |
+| [**DeleteFile**](FilesApi.md#deletefile) | **DELETE** /rest/v2/files/{file_id} | Delete a file |
+| [**GetFile**](FilesApi.md#getfile) | **GET** /rest/v2/files/{file_id} | Retrieve a file |
+| [**GetFileData**](FilesApi.md#getfiledata) | **GET** /rest/v2/files/{file_id}:data | Retrieve a file&#39;s data |
+| [**ListFiles**](FilesApi.md#listfiles) | **GET** /rest/v2/files | List all files |
+| [**UpdateFile**](FilesApi.md#updatefile) | **POST** /rest/v2/files/{file_id} | Update a file |
 
 <a id="createfile"></a>
 # **CreateFile**
-> FileMetadata CreateFile (string file, string fileAssociation, string fileName, bool isPublic, string? contactId = null)
+> FileMetadata CreateFile (System.IO.Stream file, string fileName, bool isPublic, string fileAssociation, System.IO.Stream file2, string fileName2, string isPublic2, string fileAssociation2, string? contactId = null, string? contactId2 = null)
 
 Create a file
 
@@ -34,18 +34,26 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new FilesApi(config);
-            var file = "file_example";  // string | File to upload. This is a file sent as multi-part (not a string)
-            var fileAssociation = "CONTACT";  // string | File association
+            var file = new System.IO.MemoryStream(System.IO.File.ReadAllBytes("/path/to/file.txt"));  // System.IO.Stream | File to upload. This is a file sent as multi-part (not a string)
             var fileName = "fileName_example";  // string | File name
             var isPublic = true;  // bool | Is public
+            var fileAssociation = "fileAssociation_example";  // string | File association
+            var file2 = new System.IO.MemoryStream(System.IO.File.ReadAllBytes("/path/to/file.txt"));  // System.IO.Stream | File to upload
+            var fileName2 = "fileName_example";  // string | File name
+            var isPublic2 = "isPublic_example";  // string | Is public
+            var fileAssociation2 = "fileAssociation_example";  // string | File association
             var contactId = "contactId_example";  // string? | Contact ID (optional) 
+            var contactId2 = "contactId_example";  // string? | Contact ID. Required if the `file_association` is CONTACT (optional) 
 
             try
             {
                 // Create a file
-                FileMetadata result = apiInstance.CreateFile(file, fileAssociation, fileName, isPublic, contactId);
+                FileMetadata result = apiInstance.CreateFile(file, fileName, isPublic, fileAssociation, file2, fileName2, isPublic2, fileAssociation2, contactId, contactId2);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -66,7 +74,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Create a file
-    ApiResponse<FileMetadata> response = apiInstance.CreateFileWithHttpInfo(file, fileAssociation, fileName, isPublic, contactId);
+    ApiResponse<FileMetadata> response = apiInstance.CreateFileWithHttpInfo(file, fileName, isPublic, fileAssociation, file2, fileName2, isPublic2, fileAssociation2, contactId, contactId2);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -83,11 +91,16 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **file** | **string** | File to upload. This is a file sent as multi-part (not a string) |  |
-| **fileAssociation** | **string** | File association |  |
+| **file** | **System.IO.Stream****System.IO.Stream** | File to upload. This is a file sent as multi-part (not a string) |  |
 | **fileName** | **string** | File name |  |
 | **isPublic** | **bool** | Is public |  |
+| **fileAssociation** | **string** | File association |  |
+| **file2** | **System.IO.Stream****System.IO.Stream** | File to upload |  |
+| **fileName2** | **string** | File name |  |
+| **isPublic2** | **string** | Is public |  |
+| **fileAssociation2** | **string** | File association |  |
 | **contactId** | **string?** | Contact ID | [optional]  |
+| **contactId2** | **string?** | Contact ID. Required if the &#x60;file_association&#x60; is CONTACT | [optional]  |
 
 ### Return type
 
@@ -95,7 +108,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -107,9 +120,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -136,9 +153,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new FilesApi(config);
-            var fileId = "fileId_example";  // string | file_id
+            var fileId = "fileId_example";  // string | 
 
             try
             {
@@ -177,7 +197,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **fileId** | **string** | file_id |  |
+| **fileId** | **string** |  |  |
 
 ### Return type
 
@@ -185,7 +205,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -197,10 +217,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -227,9 +250,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new FilesApi(config);
-            var fileId = "fileId_example";  // string | file_id
+            var fileId = "fileId_example";  // string | 
 
             try
             {
@@ -272,7 +298,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **fileId** | **string** | file_id |  |
+| **fileId** | **string** |  |  |
 
 ### Return type
 
@@ -280,7 +306,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -292,10 +318,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -322,9 +351,12 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new FilesApi(config);
-            var fileId = "fileId_example";  // string | file_id
+            var fileId = "fileId_example";  // string | 
 
             try
             {
@@ -367,7 +399,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **fileId** | **string** | file_id |  |
+| **fileId** | **string** |  |  |
 
 ### Return type
 
@@ -375,7 +407,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -387,10 +419,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -417,7 +452,10 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new FilesApi(config);
             var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (Boolean) `is_public` - (String) `contact_id` - (String) `user_id` - (FileBoxCategory) `category` - (FileBoxType) `file_box_type`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=category%3D%3DATTACHMENTS` - `filter=file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS`  (optional) 
             var orderBy = "orderBy_example";  // string? | Attribute and direction to order items. One of the following fields: - `file_name` - `updated_time` - ...  One of the following directions: - `asc` - `desc`  (optional) 
@@ -476,7 +514,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -488,16 +526,19 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="updatefile"></a>
 # **UpdateFile**
-> FileMetadata UpdateFile (string fileId, string? file = null, string? fileName = null, bool? isPublic = null, string? updateMask = null)
+> FileMetadata UpdateFile (string fileId, string? updateMask = null, System.IO.Stream? file = null, string? fileName = null, bool? isPublic = null, System.IO.Stream? file2 = null, string? fileName2 = null, bool? isPublic2 = null)
 
 Update a file
 
@@ -518,18 +559,24 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm/rest";
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new FilesApi(config);
-            var fileId = "fileId_example";  // string | file_id
-            var file = "file_example";  // string? | File to upload. This is a file sent as multi-part (not a string) (optional) 
+            var fileId = "fileId_example";  // string | 
+            var updateMask = "updateMask_example";  // string? | Update Mask (optional) 
+            var file = new System.IO.MemoryStream(System.IO.File.ReadAllBytes("/path/to/file.txt"));  // System.IO.Stream? | File to upload. This is a file sent as multi-part (not a string) (optional) 
             var fileName = "fileName_example";  // string? | File name (optional) 
             var isPublic = true;  // bool? | Is public (optional) 
-            var updateMask = "file";  // string? | Update Mask (optional) 
+            var file2 = new System.IO.MemoryStream(System.IO.File.ReadAllBytes("/path/to/file.txt"));  // System.IO.Stream? | File to upload (optional) 
+            var fileName2 = "fileName_example";  // string? | File name (optional) 
+            var isPublic2 = true;  // bool? | Is public (optional) 
 
             try
             {
                 // Update a file
-                FileMetadata result = apiInstance.UpdateFile(fileId, file, fileName, isPublic, updateMask);
+                FileMetadata result = apiInstance.UpdateFile(fileId, updateMask, file, fileName, isPublic, file2, fileName2, isPublic2);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -550,7 +597,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Update a file
-    ApiResponse<FileMetadata> response = apiInstance.UpdateFileWithHttpInfo(fileId, file, fileName, isPublic, updateMask);
+    ApiResponse<FileMetadata> response = apiInstance.UpdateFileWithHttpInfo(fileId, updateMask, file, fileName, isPublic, file2, fileName2, isPublic2);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -567,11 +614,14 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **fileId** | **string** | file_id |  |
-| **file** | **string?** | File to upload. This is a file sent as multi-part (not a string) | [optional]  |
+| **fileId** | **string** |  |  |
+| **updateMask** | **string?** | Update Mask | [optional]  |
+| **file** | **System.IO.Stream?****System.IO.Stream?** | File to upload. This is a file sent as multi-part (not a string) | [optional]  |
 | **fileName** | **string?** | File name | [optional]  |
 | **isPublic** | **bool?** | Is public | [optional]  |
-| **updateMask** | **string?** | Update Mask | [optional]  |
+| **file2** | **System.IO.Stream?****System.IO.Stream?** | File to upload | [optional]  |
+| **fileName2** | **string?** | File name | [optional]  |
+| **isPublic2** | **bool?** | Is public | [optional]  |
 
 ### Return type
 
@@ -579,7 +629,7 @@ catch (ApiException e)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -591,9 +641,13 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
 | **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

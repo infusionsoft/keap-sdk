@@ -5,19 +5,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**company** | **str** |  | [optional] 
-**country_code** | **str** |  | [optional] 
-**first_name** | **str** |  | [optional] 
-**is_invoice_to_company** | **bool** |  | [optional] 
-**last_name** | **str** |  | [optional] 
 **line1** | **str** |  | [optional] 
 **line2** | **str** |  | [optional] 
 **locality** | **str** |  | [optional] 
-**middle_name** | **str** |  | [optional] 
-**phone** | **str** |  | [optional] 
 **region** | **str** |  | [optional] 
+**company** | **str** |  | [optional] 
+**phone** | **str** |  | [optional] 
 **zip_code** | **str** |  | [optional] 
 **zip_four** | **str** |  | [optional] 
+**country_code** | **str** |  | [optional] 
+**first_name** | **str** |  | [optional] 
+**middle_name** | **str** |  | [optional] 
+**last_name** | **str** |  | [optional] 
+**is_invoice_to_company** | **bool** |  | [optional] 
 
 ## Example
 

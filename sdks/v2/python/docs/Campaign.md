@@ -5,18 +5,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**active_contact_count** | **int** |  | [optional] 
-**completed_contact_count** | **int** |  | [optional] 
-**created_by_global_id** | **str** |  | [optional] 
-**date_created** | **str** |  | [optional] 
-**error_message** | **str** |  | [optional] 
-**id** | **str** |  | [optional] 
-**locked** | **bool** |  | [optional] 
-**name** | **str** |  | [optional] 
-**published_date** | **str** |  | [optional] 
-**published_status** | **bool** |  | [optional] 
-**published_time_zone** | **str** |  | [optional] 
-**time_zone** | **str** |  | [optional] 
+**id** | **str** | The unique identifier of the campaign | [optional] 
+**name** | **str** | The name of the campaign | [optional] 
+**locked** | **bool** | Whether the campaign is locked for editing | [optional] 
+**date_created** | **datetime** | The date and time when the campaign was created. In ISO-8601 format | [optional] 
+**published_date** | **datetime** | The date and time when the campaign was published. In ISO-8601 format | [optional] 
+**published_status** | **bool** | Whether the campaign is published | [optional] 
+**error_message** | **str** | Error message if the campaign has issues | [optional] 
+**time_zone** | **str** | The timezone of the campaign | [optional] 
+**published_time_zone** | **str** | The timezone used when the campaign was published | [optional] 
+**created_by_global_id** | **str** | The global ID of the user who created the campaign | [optional] 
+**active_contact_count** | **int** | Number of contacts currently active in this campaign | [optional] 
+**completed_contact_count** | **int** | Number of contacts who have completed this campaign | [optional] 
 
 ## Example
 

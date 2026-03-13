@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**amount** | **Number** |  | [optional] 
-**id** | **String** |  | [optional] 
-**invoiceId** | **String** |  | [optional] 
-**lastUpdatedTime** | **String** |  | [optional] 
-**note** | **String** |  | [optional] 
-**payStatus** | **String** |  | [optional] 
-**payTime** | **String** |  | [optional] 
-**paymentId** | **String** |  | [optional] 
-**refundInvoicePaymentId** | **String** |  | [optional] 
-**skipCommission** | **Boolean** |  | [optional] 
+**id** | **String** | The invoice order payment ID. | [optional] 
+**amount** | **Number** | The payment amount. | [optional] 
+**note** | **String** | A note about the payment. | [optional] 
+**invoiceId** | **String** | The invoice ID. | [optional] 
+**paymentId** | **String** | The payment ID. | [optional] 
+**payTime** | **Date** | The date and time of payment. | [optional] 
+**payStatus** | **String** | The payment status. | [optional] 
+**lastUpdatedTime** | **Date** | When this payment record was last updated. | [optional] 
+**skipCommission** | **Boolean** | Whether to skip commission for this payment. | [optional] 
+**refundInvoicePaymentId** | **String** | The refund invoice payment ID, if this is a refund. | [optional] 
 
 
 

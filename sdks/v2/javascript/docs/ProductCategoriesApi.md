@@ -1,17 +1,17 @@
 # KeapCoreServiceV2Sdk.ProductCategoriesApi
 
-All URIs are relative to *https://api.keap.com/crm/rest*
+All URIs are relative to *https://api.keap.com/crm*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**assignProductsToCategory**](ProductCategoriesApi.md#assignProductsToCategory) | **POST** /v2/productCategories/{category_id}:assignProducts | Assign Products to a Product Category
-[**createImageFile**](ProductCategoriesApi.md#createImageFile) | **POST** /v2/productCategories/{category_id}/images | Create the product category image file
-[**createProductCategory**](ProductCategoriesApi.md#createProductCategory) | **POST** /v2/productCategories | Create a Product Category
-[**deleteImageFile**](ProductCategoriesApi.md#deleteImageFile) | **DELETE** /v2/productCategories/{category_id}/images | Delete the image from a product category
-[**deleteProductCategory**](ProductCategoriesApi.md#deleteProductCategory) | **DELETE** /v2/productCategories/{category_id} | Delete a Product Category
-[**getProductCategory**](ProductCategoriesApi.md#getProductCategory) | **GET** /v2/productCategories/{category_id} | Get a Product Category
-[**listProductCategories**](ProductCategoriesApi.md#listProductCategories) | **GET** /v2/productCategories | List all Product Categories
-[**updateProductCategory**](ProductCategoriesApi.md#updateProductCategory) | **PATCH** /v2/productCategories/{category_id} | Update a Product Category
+[**assignProductsToCategory**](ProductCategoriesApi.md#assignProductsToCategory) | **POST** /rest/v2/productCategories/{category_id}:assignProducts | Assign Products to a Product Category
+[**createImageFile**](ProductCategoriesApi.md#createImageFile) | **POST** /rest/v2/productCategories/{category_id}/images | Create the product category image file
+[**createProductCategory**](ProductCategoriesApi.md#createProductCategory) | **POST** /rest/v2/productCategories | Create a Product Category
+[**deleteImageFile**](ProductCategoriesApi.md#deleteImageFile) | **DELETE** /rest/v2/productCategories/{category_id}/images | Delete the image from a product category
+[**deleteProductCategory**](ProductCategoriesApi.md#deleteProductCategory) | **DELETE** /rest/v2/productCategories/{category_id} | Delete a Product Category
+[**getProductCategory**](ProductCategoriesApi.md#getProductCategory) | **GET** /rest/v2/productCategories/{category_id} | Get a Product Category
+[**listProductCategories**](ProductCategoriesApi.md#listProductCategories) | **GET** /rest/v2/productCategories | List all Product Categories
+[**updateProductCategory**](ProductCategoriesApi.md#updateProductCategory) | **PATCH** /rest/v2/productCategories/{category_id} | Update a Product Category
 
 
 
@@ -27,10 +27,14 @@ Updates the list of products assigned to a Product Category. **Note:** The full 
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.ProductCategoriesApi();
-let categoryId = "categoryId_example"; // String | category_id
-let assignProductsRequest = new KeapCoreServiceV2Sdk.AssignProductsRequest(); // AssignProductsRequest | request
+let categoryId = "categoryId_example"; // String | 
+let assignProductsRequest = new KeapCoreServiceV2Sdk.AssignProductsRequest(); // AssignProductsRequest | 
 apiInstance.assignProductsToCategory(categoryId, assignProductsRequest).then(() => {
   console.log('API called successfully.');
 }, (error) => {
@@ -44,8 +48,8 @@ apiInstance.assignProductsToCategory(categoryId, assignProductsRequest).then(() 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **categoryId** | **String**| category_id | 
- **assignProductsRequest** | [**AssignProductsRequest**](AssignProductsRequest.md)| request | 
+ **categoryId** | **String**|  | 
+ **assignProductsRequest** | [**AssignProductsRequest**](AssignProductsRequest.md)|  | 
 
 ### Return type
 
@@ -53,7 +57,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -73,9 +77,13 @@ Creates the product category image file and uploads it to the specified product 
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.ProductCategoriesApi();
-let categoryId = "categoryId_example"; // String | category_id
+let categoryId = "categoryId_example"; // String | 
 let file = "/path/to/file"; // File | File to upload
 apiInstance.createImageFile(categoryId, file).then(() => {
   console.log('API called successfully.');
@@ -90,7 +98,7 @@ apiInstance.createImageFile(categoryId, file).then(() => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **categoryId** | **String**| category_id | 
+ **categoryId** | **String**|  | 
  **file** | **File**| File to upload | 
 
 ### Return type
@@ -99,7 +107,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -109,7 +117,7 @@ No authorization required
 
 ## createProductCategory
 
-> ProductCategory createProductCategory(opts)
+> ProductCategory createProductCategory(createProductCategoryRequest)
 
 Create a Product Category
 
@@ -119,12 +127,14 @@ Creates a new Product Category
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.ProductCategoriesApi();
-let opts = {
-  'createProductCategoryRequest': new KeapCoreServiceV2Sdk.CreateProductCategoryRequest() // CreateProductCategoryRequest | productCategory
-};
-apiInstance.createProductCategory(opts).then((data) => {
+let createProductCategoryRequest = new KeapCoreServiceV2Sdk.CreateProductCategoryRequest(); // CreateProductCategoryRequest | 
+apiInstance.createProductCategory(createProductCategoryRequest).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -137,7 +147,7 @@ apiInstance.createProductCategory(opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createProductCategoryRequest** | [**CreateProductCategoryRequest**](CreateProductCategoryRequest.md)| productCategory | [optional] 
+ **createProductCategoryRequest** | [**CreateProductCategoryRequest**](CreateProductCategoryRequest.md)|  | 
 
 ### Return type
 
@@ -145,7 +155,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -165,9 +175,13 @@ Deletes the image from the specified product category
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.ProductCategoriesApi();
-let categoryId = "categoryId_example"; // String | category_id
+let categoryId = "categoryId_example"; // String | 
 apiInstance.deleteImageFile(categoryId).then(() => {
   console.log('API called successfully.');
 }, (error) => {
@@ -181,7 +195,7 @@ apiInstance.deleteImageFile(categoryId).then(() => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **categoryId** | **String**| category_id | 
+ **categoryId** | **String**|  | 
 
 ### Return type
 
@@ -189,7 +203,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -209,9 +223,13 @@ Deletes the specified Product Category, its sub-categories, and removes products
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.ProductCategoriesApi();
-let categoryId = "categoryId_example"; // String | category_id
+let categoryId = "categoryId_example"; // String | 
 apiInstance.deleteProductCategory(categoryId).then(() => {
   console.log('API called successfully.');
 }, (error) => {
@@ -225,7 +243,7 @@ apiInstance.deleteProductCategory(categoryId).then(() => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **categoryId** | **String**| category_id | 
+ **categoryId** | **String**|  | 
 
 ### Return type
 
@@ -233,7 +251,7 @@ null (empty response body)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -253,9 +271,13 @@ Gets a single Product Category
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.ProductCategoriesApi();
-let categoryId = "categoryId_example"; // String | category_id
+let categoryId = "categoryId_example"; // String | 
 apiInstance.getProductCategory(categoryId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -269,7 +291,7 @@ apiInstance.getProductCategory(categoryId).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **categoryId** | **String**| category_id | 
+ **categoryId** | **String**|  | 
 
 ### Return type
 
@@ -277,7 +299,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -297,6 +319,10 @@ Retrieves a list of Product Categories
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.ProductCategoriesApi();
 let opts = {
@@ -329,7 +355,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -349,12 +375,16 @@ Updates a single Product Category
 
 ```javascript
 import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.ProductCategoriesApi();
-let categoryId = "categoryId_example"; // String | category_id
-let updateProductCategoryRequest = new KeapCoreServiceV2Sdk.UpdateProductCategoryRequest(); // UpdateProductCategoryRequest | request
+let categoryId = "categoryId_example"; // String | 
+let updateProductCategoryRequest = new KeapCoreServiceV2Sdk.UpdateProductCategoryRequest(); // UpdateProductCategoryRequest | 
 let opts = {
-  'updateMask': ["null"] // [String] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+  'updateMask': "updateMask_example" // String | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 };
 apiInstance.updateProductCategory(categoryId, updateProductCategoryRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -369,9 +399,9 @@ apiInstance.updateProductCategory(categoryId, updateProductCategoryRequest, opts
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **categoryId** | **String**| category_id | 
- **updateProductCategoryRequest** | [**UpdateProductCategoryRequest**](UpdateProductCategoryRequest.md)| request | 
- **updateMask** | [**[String]**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+ **categoryId** | **String**|  | 
+ **updateProductCategoryRequest** | [**UpdateProductCategoryRequest**](UpdateProductCategoryRequest.md)|  | 
+ **updateMask** | **String**| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
 
 ### Return type
 
@@ -379,7 +409,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 

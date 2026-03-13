@@ -5,11 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**append_contact_key_to_links** | **bool** |  | [optional] 
 **default_opt_in_link** | **str** |  | [optional] 
 **default_opt_out_link** | **str** |  | [optional] 
-**hide_emails_to_and_from_domains** | **str** |  | [optional] 
 **whitelisted_domains** | **str** |  | [optional] 
+**hide_emails_to_and_from_domains** | **str** |  | [optional] 
+**append_contact_key_to_links** | **bool** |  | [optional] 
 
 ## Example
 

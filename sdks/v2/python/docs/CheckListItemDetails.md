@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**description** | **str** |  | [optional] 
-**done_date** | **datetime** |  | [optional] 
 **id** | **int** |  | [optional] 
+**description** | **str** |  | [optional] 
+**required** | **bool** |  | [optional] 
 **instance_id** | **int** |  | [optional] 
 **item_order** | **int** |  | [optional] 
-**required** | **bool** |  | [optional] 
+**done_date** | **datetime** |  | [optional] 
 
 ## Example
 

@@ -6,9 +6,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
-**is_test** | **bool** |  | [optional] 
 **name** | **str** |  | [optional] 
 **type** | **str** |  | [optional] 
+**is_test** | **bool** |  | [optional] 
 
 ## Example
 

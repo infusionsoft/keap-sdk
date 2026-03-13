@@ -5,14 +5,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**checklist_items** | [**List[ChecklistItem]**](ChecklistItem.md) |  | [optional] 
-**created_time** | **str** |  | [optional] 
-**id** | **str** |  | [optional] 
-**name** | **str** |  | [optional] 
-**order** | **int** |  | [optional] 
-**probability** | **int** |  | [optional] 
-**target_number_days** | **int** |  | [optional] 
-**updated_time** | **str** |  | [optional] 
+**id** | **str** | Stage ID | [optional] 
+**name** | **str** | Stage name | [optional] 
+**order** | **int** | Stage order in pipeline | [optional] 
+**target_number_days** | **int** | Target days in stage | [optional] 
+**probability** | **int** | Win probability (0-100) | [optional] 
+**created_time** | **str** | Creation timestamp (ISO-8601) | [optional] 
+**updated_time** | **str** | Last update timestamp (ISO-8601) | [optional] 
+**checklist_items** | [**List[ChecklistItem]**](ChecklistItem.md) | Stage checklist items | [optional] 
 
 ## Example
 

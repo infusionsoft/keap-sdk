@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**columns** | [**List[ReportEntryValue]**](ReportEntryValue.md) |  | [optional] 
+**columns** | [**List[ReportEntryValue]**](ReportEntryValue.md) | The set of column values for this record | [optional] 
 
 ## Example
 

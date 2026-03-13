@@ -5,13 +5,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**code** | **str** | The Affiliate Code | [optional] 
-**contact_id** | **str** | The ContactID | [optional] 
-**date_created** | **str** |  | [optional] 
 **id** | **str** | The AffiliateId | [optional] 
+**code** | **str** | The Affiliate Code | [optional] 
 **name** | **str** | The Affiliate Name | [optional] 
 **status** | **str** | The Affiliate Status | [optional] 
+**contact_id** | **str** | The ContactID | [optional] 
 **unique_site_id** | **str** | The Affiliate PortalSite Id | [optional] 
+**date_created** | **str** | Date affiliate was created (ISO-8601) | [optional] 
+**parent_affiliate_id** | **str** | The Parent Affiliate Id | [optional] 
+**notify_on_sale** | **bool** | Whether to notify on sale events | [optional] 
+**notify_on_lead** | **bool** | Whether to notify on lead events | [optional] 
+**track_leads_days** | **int** | Number of days to track leads | [optional] 
 
 ## Example
 

@@ -1,21 +1,22 @@
 # EmailTemplate
 
+An email template
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**bcc_address** | **str** | The bcc address of the email | [optional] 
+**piece_title** | **str** | The title of the template | [optional] 
 **categories** | **List[str]** | The categories associated with the email | [optional] 
-**cc_address** | **str** | The cc address of the email | [optional] 
-**content_type** | **str** | The content type of the email | [optional] 
 **from_address** | **str** | The from address of the email | [optional] 
-**html_body** | **str** | The HTML body of the email | [optional] 
-**merge_context** | **str** | The merge context of the email | [optional] 
-**piece_title** | **str** | The title of the piece | [optional] 
+**to_address** | **str** | The to address of the email | [optional] 
+**cc_address** | **str** | The cc address of the email | [optional] 
+**bcc_address** | **str** | The bcc address of the email | [optional] 
 **subject** | **str** | The subject of the email | [optional] 
 **text_body** | **str** | The text body of the email | [optional] 
-**to_address** | **str** | The to address of the email | [optional] 
+**html_body** | **str** | The HTML body of the email | [optional] 
+**content_type** | **str** | The content type of the email | [optional] 
+**merge_context** | **str** | The merge context of the email | [optional] 
 
 ## Example
 

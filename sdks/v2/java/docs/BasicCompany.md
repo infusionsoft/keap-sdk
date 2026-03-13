@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**companyName** | **String** |  |  [optional] |
-|**id** | **String** |  |  [optional] |
+|**id** | **String** | Company ID |  [optional] |
+|**companyName** | **String** | Company name |  [optional] |
 
 
 ## Implemented Interfaces

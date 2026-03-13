@@ -5,11 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**checklist_items** | [**List[UpdateOpportunityStageChecklistItem]**](UpdateOpportunityStageChecklistItem.md) |  | [optional] 
 **name** | **str** |  | [optional] 
 **order** | **int** |  | [optional] 
 **probability** | **int** | must be an integer between 0 and 100. | [optional] 
 **target_number_days** | **int** | Value should be &gt;&#x3D;0. | [optional] 
+**checklist_items** | [**List[UpdateOpportunityStageChecklistItem]**](UpdateOpportunityStageChecklistItem.md) |  | [optional] 
 
 ## Example
 

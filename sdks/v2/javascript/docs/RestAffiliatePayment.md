@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**createTime** | **String** |  | [optional] 
-**id** | **String** |  | [optional] 
-**payAmount** | **Number** |  | [optional] 
-**payDate** | **String** |  | [optional] 
-**payNotes** | **String** |  | [optional] 
-**payType** | **String** |  | [optional] 
+**id** | **String** | Payment ID | [optional] 
+**payDate** | **String** | Payment date (ISO-8601) | [optional] 
+**payNotes** | **String** | Payment notes | [optional] 
+**payAmount** | **Number** | Payment amount | [optional] 
+**payType** | **String** | Payment type | [optional] 
+**createTime** | **String** | Record creation time (ISO-8601) | [optional] 
 
 
 

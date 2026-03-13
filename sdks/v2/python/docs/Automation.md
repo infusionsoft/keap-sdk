@@ -5,17 +5,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**active_contacts** | **int** |  | [optional] 
-**categories** | **List[str]** |  | [optional] 
-**current_edit_lock_status** | [**AutomationLockStatus**](AutomationLockStatus.md) |  | [optional] 
-**error_message** | **str** |  | [optional] 
-**id** | **str** |  | [optional] 
-**locked** | **bool** |  | [optional] 
-**published_by** | **str** |  | [optional] 
-**published_date** | **str** |  | [optional] 
-**published_timezone** | **str** |  | [optional] 
-**status** | **str** |  | [optional] 
-**title** | **str** |  | [optional] 
+**id** | **str** | The unique identifier of the automation | [optional] 
+**title** | **str** | The title of the automation | [optional] 
+**categories** | **List[str]** | List of category IDs associated with this automation | [optional] 
+**status** | **str** | The publication status of the automation | [optional] 
+**locked** | **bool** | Whether the automation is locked for editing | [optional] 
+**active_contacts** | **int** | Number of contacts currently active in this automation | [optional] 
+**error_message** | **str** | Error message if the automation has issues | [optional] 
+**published_date** | **datetime** | The date and time when the automation was published. In ISO-8601 format | [optional] 
+**published_by** | **str** | The user ID who published the automation | [optional] 
+**published_timezone** | **str** | The timezone used when publishing | [optional] 
+**current_edit_lock_status** | [**AutomationLockStatus**](AutomationLockStatus.md) | Current edit lock status information | [optional] 
 
 ## Example
 

@@ -1,12 +1,13 @@
 # EmailsSentList
 
+Response containing created emails and any errors
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**emails** | [**List[EmailSentWithContent]**](EmailSentWithContent.md) |  | [optional] 
-**errors** | [**List[EmailSentCreateError]**](EmailSentCreateError.md) |  | [optional] 
+**emails** | [**List[EmailSentWithContent]**](EmailSentWithContent.md) | Successfully created email records | [optional] 
+**errors** | [**List[EmailSentCreateError]**](EmailSentCreateError.md) | Errors that occurred during creation | [optional] 
 
 ## Example
 

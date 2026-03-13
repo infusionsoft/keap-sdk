@@ -4,11 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Cause** | [**Throwable**](Throwable.md) |  | [optional] 
-**LocalizedMessage** | **string** |  | [optional] 
+**Code** | **int** |  | [optional] 
 **Message** | **string** |  | [optional] 
-**StackTrace** | [**List&lt;StackTraceElement&gt;**](StackTraceElement.md) |  | [optional] 
-**Suppressed** | [**List&lt;Throwable&gt;**](Throwable.md) |  | [optional] 
+**Status** | **string** |  | [optional] 
+**Details** | [**List&lt;ErrorDetails&gt;**](ErrorDetails.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

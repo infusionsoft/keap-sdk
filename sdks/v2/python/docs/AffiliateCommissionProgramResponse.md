@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [optional] 
-**name** | **str** |  | [optional] 
-**notes** | **str** |  | [optional] 
-**priority** | **int** |  | [optional] 
+**id** | **str** | Commission program ID | [optional] 
+**name** | **str** | Program name | [optional] 
+**notes** | **str** | Program notes | [optional] 
+**priority** | **int** | Program priority | [optional] 
 
 ## Example
 
