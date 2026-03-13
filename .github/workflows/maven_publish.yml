@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        
+
       ######################################################
       ### Java and Gradle
       ######################################################
@@ -40,11 +40,11 @@ jobs:
 
       - name: Build Java SDK
         working-directory: sdks/v2/java
-        run: ./gradlew build
+        run: ./gradlew build -Pversion=${{ github.event.release.tag_name }}
 
       - name: Publish Java SDK
         working-directory: sdks/v2/java
-        run: ./gradlew publishToMavenLocal
+        run: ./gradlew publishToMavenLocal -Pversion=${{ github.event.release.tag_name }}
 
       ######################################################
       ### GPG
@@ -166,7 +166,7 @@ jobs:
             curl --silent --request POST \
               --header "Authorization: Bearer $AUTH" \
               "https://central.sonatype.com/api/v1/publisher/deployment/$DEPLOY_ID"
-        
+          
             # Poll for deployment status
             for i in {1..30}; do
               STATUS=$(curl --silent --request POST \
@@ -174,7 +174,7 @@ jobs:
                 "https://central.sonatype.com/api/v1/publisher/status?id=$DEPLOY_ID")
               DEPLOYMENT_STATE=$(echo $STATUS | jq -r '.deploymentState')
               echo "Attempt $i: Deployment state = $DEPLOYMENT_STATE"
-        
+          
               if [[ "$DEPLOYMENT_STATE" == "PUBLISHED" ]]; then
                 echo "✅ Deployment successfully published!"
                 echo "   https://central.sonatype.com/artifact/com.keap.core/keap-sdk-core-v2/$VERSION"
@@ -186,7 +186,7 @@ jobs:
               sleep 30
             done
           fi
-      
+          
           echo "❌ Deployment did not reach PUBLISHED state in time."
           exit 1
 
