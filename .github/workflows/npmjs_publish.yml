@@ -45,7 +45,7 @@ jobs:
         run: npm version ${{ github.event.release.tag_name || github.event.inputs.version }} --no-git-tag-version
 
       - name: Publish Core Javascript package to npmjs
-        run: npm publish --access public --loglevel verbose ${{ github.event.inputs.dry_run == 'true' && '--dry-run' || '' }}
+        run: npm publish --access public --loglevel verbose --tag ${{ contains(github.event.release.tag_name || github.event.inputs.version, '-') && 'next' || 'latest' }} ${{ github.event.inputs.dry_run == 'true' && '--dry-run' || '' }}
         working-directory: sdks/v2/javascript
 
       # Typescript
@@ -58,5 +58,5 @@ jobs:
         run: npm version ${{ github.event.release.tag_name || github.event.inputs.version }} --no-git-tag-version
 
       - name: Publish Core Typescript package to npmjs
-        run: npm publish --access public --loglevel verbose ${{ github.event.inputs.dry_run == 'true' && '--dry-run' || '' }}
+        run: npm publish --access public --loglevel verbose --tag ${{ contains(github.event.release.tag_name || github.event.inputs.version, '-') && 'next' || 'latest' }} ${{ github.event.inputs.dry_run == 'true' && '--dry-run' || '' }}
         working-directory: sdks/v2/typescript
