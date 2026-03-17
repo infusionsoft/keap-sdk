@@ -3,13 +3,21 @@ name: Publish Node Package to npmjs
 on:
   release:
     types: [published]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to publish (e.g. 2.0.2). Use with --dry-run for testing.'
+        required: true
+      dry_run:
+        description: 'Dry run (do not actually publish)'
+        type: boolean
+        default: true
 
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
     environment:
-      name: ${{ github.event.release.tag_name }}
-      url: "https://www.npmjs.com/package/keap-core-service-v2-sdk-ts/v/${{ github.event.release.tag_name }}"
+      name: npm-publish
     permissions:
       contents: read
       id-token: write
@@ -20,6 +28,13 @@ jobs:
           node-version: '24.x'
           registry-url: 'https://registry.npmjs.org'
 
+      - name: Verify Node and npm versions
+        run: |
+          echo "Node version:"
+          node --version
+          echo "npm version:"
+          npm --version
+
       # Javascript
       - name: Install Javascript dependencies
         working-directory: sdks/v2/javascript
@@ -27,10 +42,10 @@ jobs:
 
       - name: Set Javascript package version
         working-directory: sdks/v2/javascript
-        run: npm version ${{ github.event.release.tag_name }} --no-git-tag-version
+        run: npm version ${{ github.event.release.tag_name || github.event.inputs.version }} --no-git-tag-version
 
       - name: Publish Core Javascript package to npmjs
-        run: npm publish --access public
+        run: npm publish --access public --loglevel verbose ${{ github.event.inputs.dry_run == 'true' && '--dry-run' || '' }}
         working-directory: sdks/v2/javascript
 
       # Typescript
@@ -40,9 +55,8 @@ jobs:
 
       - name: Set Typescript package version
         working-directory: sdks/v2/typescript
-        run: npm version ${{ github.event.release.tag_name }} --no-git-tag-version
+        run: npm version ${{ github.event.release.tag_name || github.event.inputs.version }} --no-git-tag-version
 
       - name: Publish Core Typescript package to npmjs
-        run: npm publish --access public
+        run: npm publish --access public --loglevel verbose ${{ github.event.inputs.dry_run == 'true' && '--dry-run' || '' }}
         working-directory: sdks/v2/typescript
-
