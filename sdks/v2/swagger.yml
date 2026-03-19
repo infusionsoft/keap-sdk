@@ -2674,6 +2674,7 @@ paths:
           Filter to apply, allowed fields are:
           - (String) `product_id`
           - (String) `contact_id`
+          - (String) `invoice_xid`
           - (Boolean) `paid`
           - (String) `created_since_time`
           - (String) `created_until_time`
@@ -2682,6 +2683,7 @@ paths:
           word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:
           - `filter=product_id%3D%3D123`
           - `filter=contact_id%3D%3D567`
+          - `filter=invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8`
           - `filter=product_id%3D%3D123%3Bcontact_id%3D%3D567`
         required: false
         schema:
@@ -6822,6 +6824,69 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Note'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /rest/v2/contacts/model/customFields:
+    post:
+      tags:
+      - Contact
+      summary: Create a Contact Custom Field
+      description: Creates a custom field of the specified type and options to the
+        Contact object
+      operationId: createContactCustomField
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCustomFieldRequest'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldMetaData'
         '400':
           description: Bad Request
           content:
@@ -11693,7 +11758,8 @@ paths:
           enum:
           - |-
             contact_id,order_items,order_title,order_time,order_type,promo_codes,
-            lead_affiliate_id,sales_affiliate_id,shipping_address,notes,terms,payment_plan
+            lead_affiliate_id,sales_affiliate_id,shipping_address,notes,terms,payment_plan,
+            custom_fields
       requestBody:
         content:
           application/json:
@@ -20572,7 +20638,6 @@ components:
           description: The first day the subscription will bill. Must not be in the
             past. Default is today.
           example: '2024-05-21'
-          pattern: ^\d{4}-\d{2}-\d{2}$
         payment_method_id:
           type: string
           description: Id associated with the payment method. Default is the contact's
@@ -20621,7 +20686,9 @@ components:
       properties:
         country:
           type: string
-          description: The long-name descriptive version of the Country Code
+          deprecated: true
+          description: Deprecated. The long-name descriptive version of the Country
+            Code. Please use 'country_code' for POST/PATCH operations.
           example: United States of America
         line1:
           type: string
@@ -20637,7 +20704,9 @@ components:
           example: Phoenix
         region:
           type: string
-          description: The long-name descriptive version of the Region Code
+          deprecated: true
+          description: The long-name descriptive version of the Region Code. Please
+            use 'region_code' for POST/PATCH operations.
           example: Arizona
         field:
           type: string
@@ -21827,6 +21896,13 @@ components:
           example: 15
       required:
       - quantity
+    CustomFieldValue:
+      type: object
+      properties:
+        id:
+          type: string
+        content: {
+          }
     RestCreateOrderRequest:
       type: object
       properties:
@@ -21883,6 +21959,16 @@ components:
         shipping_address:
           $ref: '#/components/schemas/AddressInformation'
           description: Shipping address for the order
+        custom_fields:
+          type: array
+          description: List of custom field values to apply to this order
+          example:
+          - id: '1'
+            content: VIP
+          - id: '2'
+            content: Preferred
+          items:
+            $ref: '#/components/schemas/CustomFieldValue'
       required:
       - contact_id
       - order_time
@@ -21893,7 +21979,9 @@ components:
       properties:
         country:
           type: string
-          description: The long-name descriptive version of the Country Code
+          deprecated: true
+          description: Deprecated. The long-name descriptive version of the Country
+            Code. Please use 'country_code' for POST/PATCH operations.
           example: United States of America
         line1:
           type: string
@@ -21909,7 +21997,9 @@ components:
           example: Phoenix
         region:
           type: string
-          description: The long-name descriptive version of the Region Code
+          deprecated: true
+          description: The long-name descriptive version of the Region Code. Please
+            use 'region_code' for POST/PATCH operations.
           example: Arizona
         field:
           type: string
@@ -22213,6 +22303,16 @@ components:
           type: string
           description: Associated invoice ID
           example: 456
+        custom_fields:
+          type: array
+          description: List of custom field values applied to this order
+          example:
+          - id: '1'
+            content: VIP
+          - id: '2'
+            content: Preferred
+          items:
+            $ref: '#/components/schemas/CustomFieldValue'
     PaymentPlan:
       type: object
       properties:
@@ -24168,13 +24268,6 @@ components:
           example: America/New_York
         utm_parameters:
           $ref: '#/components/schemas/CreateContactUtmPropertiesRequest'
-    CustomFieldValue:
-      type: object
-      properties:
-        id:
-          type: string
-        content: {
-          }
     EmailAddressRequest:
       type: object
       properties:
@@ -25697,13 +25790,11 @@ components:
           description: The next date the subscription will bill. Must not be in the
             past.
           example: '2024-06-21'
-          pattern: ^\d{4}-\d{2}-\d{2}$
         end_date:
           type: string
           format: date
           description: The date the subscription will end. Must not be in the past.
           example: '2025-05-21'
-          pattern: ^\d{4}-\d{2}-\d{2}$
         payment_method_id:
           type: string
           description: Id associated with the payment method.
@@ -26041,6 +26132,16 @@ components:
         payment_plan:
           $ref: '#/components/schemas/UpdatedPaymentPlan'
           description: Payment plan details
+        custom_fields:
+          type: array
+          description: List of custom field values to apply to this order
+          example:
+          - id: '1'
+            content: VIP
+          - id: '2'
+            content: Preferred
+          items:
+            $ref: '#/components/schemas/CustomFieldValue'
     UpdatedPaymentPlan:
       type: object
       properties:

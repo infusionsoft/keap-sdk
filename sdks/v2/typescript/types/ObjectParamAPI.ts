@@ -2838,6 +2838,15 @@ export interface ContactApiCreateContactRequest {
     fields?: Array<string>
 }
 
+export interface ContactApiCreateContactCustomFieldRequest {
+    /**
+     * 
+     * @type CreateCustomFieldRequest
+     * @memberof ContactApicreateContactCustomField
+     */
+    createCustomFieldRequest: CreateCustomFieldRequest
+}
+
 export interface ContactApiCreateContactLinkTypeRequest {
     /**
      * 
@@ -3071,6 +3080,24 @@ export class ObjectContactApi {
      */
     public createContact(param: ContactApiCreateContactRequest, options?: ConfigurationOptions): Promise<Contact> {
         return this.api.createContact(param.createUpdateContactRequest, param.fields,  options).toPromise();
+    }
+
+    /**
+     * Creates a custom field of the specified type and options to the Contact object
+     * Create a Contact Custom Field
+     * @param param the request object
+     */
+    public createContactCustomFieldWithHttpInfo(param: ContactApiCreateContactCustomFieldRequest, options?: ConfigurationOptions): Promise<HttpInfo<CustomFieldMetaData>> {
+        return this.api.createContactCustomFieldWithHttpInfo(param.createCustomFieldRequest,  options).toPromise();
+    }
+
+    /**
+     * Creates a custom field of the specified type and options to the Contact object
+     * Create a Contact Custom Field
+     * @param param the request object
+     */
+    public createContactCustomField(param: ContactApiCreateContactCustomFieldRequest, options?: ConfigurationOptions): Promise<CustomFieldMetaData> {
+        return this.api.createContactCustomField(param.createCustomFieldRequest,  options).toPromise();
     }
 
     /**
@@ -6501,7 +6528,7 @@ export interface OrdersApiListOrderPaymentsRequest {
 
 export interface OrdersApiListOrdersRequest {
     /**
-     * Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60;
+     * Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60;
      * Defaults to: undefined
      * @type string
      * @memberof OrdersApilistOrders
@@ -6552,10 +6579,10 @@ export interface OrdersApiUpdateOrderRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type &#39;contact_id,order_items,order_title,order_time,order_type,promo_codes, lead_affiliate_id,sales_affiliate_id,shipping_address,notes,terms,payment_plan&#39;
+     * @type &#39;contact_id,order_items,order_title,order_time,order_type,promo_codes, lead_affiliate_id,sales_affiliate_id,shipping_address,notes,terms,payment_plan, custom_fields&#39;
      * @memberof OrdersApiupdateOrder
      */
-    updateMask?: 'contact_id,order_items,order_title,order_time,order_type,promo_codes, lead_affiliate_id,sales_affiliate_id,shipping_address,notes,terms,payment_plan'
+    updateMask?: 'contact_id,order_items,order_title,order_time,order_type,promo_codes, lead_affiliate_id,sales_affiliate_id,shipping_address,notes,terms,payment_plan, custom_fields'
 }
 
 export interface OrdersApiUpdateOrderCustomFieldRequest {

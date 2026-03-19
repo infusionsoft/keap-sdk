@@ -11,6 +11,7 @@
  */
 
 import { AddressInformation } from '../models/AddressInformation';
+import { CustomFieldValue } from '../models/CustomFieldValue';
 import { UpdatedPaymentPlan } from '../models/UpdatedPaymentPlan';
 import { HttpFile } from '../http/http';
 
@@ -62,6 +63,10 @@ export class UpdateOrderRequest {
     * Payment plan details
     */
     'paymentPlan'?: UpdatedPaymentPlan;
+    /**
+    * List of custom field values to apply to this order
+    */
+    'customFields'?: Array<CustomFieldValue>;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -132,6 +137,12 @@ export class UpdateOrderRequest {
             "name": "paymentPlan",
             "baseName": "payment_plan",
             "type": "UpdatedPaymentPlan",
+            "format": ""
+        },
+        {
+            "name": "customFields",
+            "baseName": "custom_fields",
+            "type": "Array<CustomFieldValue>",
             "format": ""
         }    ];
 

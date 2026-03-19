@@ -34,6 +34,7 @@ Name | Type | Description | Notes
 **refund_status** | **str** | Refund status | [optional] 
 **synced** | **bool** | Whether order is synced with external systems | [optional] 
 **invoice_id** | **str** | Associated invoice ID | [optional] 
+**custom_fields** | [**List[CustomFieldValue]**](CustomFieldValue.md) | List of custom field values applied to this order | [optional] 
 
 ## Example
 

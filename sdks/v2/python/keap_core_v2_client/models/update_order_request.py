@@ -21,6 +21,7 @@ from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from keap_core_v2_client.models.address_information import AddressInformation
+from keap_core_v2_client.models.custom_field_value import CustomFieldValue
 from keap_core_v2_client.models.updated_payment_plan import UpdatedPaymentPlan
 from typing import Optional, Set
 from typing_extensions import Self
@@ -40,8 +41,9 @@ class UpdateOrderRequest(BaseModel):
     sales_affiliate_id: Optional[StrictStr] = Field(default=None, description="Sales affiliate ID")
     shipping_address: Optional[AddressInformation] = Field(default=None, description="Shipping address for the order")
     payment_plan: Optional[UpdatedPaymentPlan] = Field(default=None, description="Payment plan details")
+    custom_fields: Optional[List[CustomFieldValue]] = Field(default=None, description="List of custom field values to apply to this order")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["notes", "terms", "contact_id", "order_title", "order_time", "order_type", "promo_codes", "lead_affiliate_id", "sales_affiliate_id", "shipping_address", "payment_plan"]
+    __properties: ClassVar[List[str]] = ["notes", "terms", "contact_id", "order_title", "order_time", "order_type", "promo_codes", "lead_affiliate_id", "sales_affiliate_id", "shipping_address", "payment_plan", "custom_fields"]
 
     @field_validator('order_type')
     def order_type_validate_enum(cls, value):
@@ -100,6 +102,13 @@ class UpdateOrderRequest(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of payment_plan
         if self.payment_plan:
             _dict['payment_plan'] = self.payment_plan.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in custom_fields (list)
+        _items = []
+        if self.custom_fields:
+            for _item_custom_fields in self.custom_fields:
+                if _item_custom_fields:
+                    _items.append(_item_custom_fields.to_dict())
+            _dict['custom_fields'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -127,7 +136,8 @@ class UpdateOrderRequest(BaseModel):
             "lead_affiliate_id": obj.get("lead_affiliate_id"),
             "sales_affiliate_id": obj.get("sales_affiliate_id"),
             "shipping_address": AddressInformation.from_dict(obj["shipping_address"]) if obj.get("shipping_address") is not None else None,
-            "payment_plan": UpdatedPaymentPlan.from_dict(obj["payment_plan"]) if obj.get("payment_plan") is not None else None
+            "payment_plan": UpdatedPaymentPlan.from_dict(obj["payment_plan"]) if obj.get("payment_plan") is not None else None,
+            "custom_fields": [CustomFieldValue.from_dict(_item) for _item in obj["custom_fields"]] if obj.get("custom_fields") is not None else None
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

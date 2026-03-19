@@ -22,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.keap.core.sdk.model.AddressInformation;
+import com.keap.core.sdk.model.CustomFieldValue;
 import com.keap.core.sdk.model.UpdatedPaymentPlan;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.ZonedDateTime;
@@ -49,7 +50,8 @@ import jakarta.validation.Valid;
   UpdateOrderRequest.JSON_PROPERTY_LEAD_AFFILIATE_ID,
   UpdateOrderRequest.JSON_PROPERTY_SALES_AFFILIATE_ID,
   UpdateOrderRequest.JSON_PROPERTY_SHIPPING_ADDRESS,
-  UpdateOrderRequest.JSON_PROPERTY_PAYMENT_PLAN
+  UpdateOrderRequest.JSON_PROPERTY_PAYMENT_PLAN,
+  UpdateOrderRequest.JSON_PROPERTY_CUSTOM_FIELDS
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UpdateOrderRequest implements Serializable {
@@ -123,6 +125,9 @@ public class UpdateOrderRequest implements Serializable {
 
   public static final String JSON_PROPERTY_PAYMENT_PLAN = "payment_plan";
   @jakarta.annotation.Nullable  private UpdatedPaymentPlan paymentPlan;
+
+  public static final String JSON_PROPERTY_CUSTOM_FIELDS = "custom_fields";
+  @jakarta.annotation.Nullable  private List<@Valid CustomFieldValue> customFields = new ArrayList<>();
 
   public UpdateOrderRequest() { 
   }
@@ -401,6 +406,39 @@ public class UpdateOrderRequest implements Serializable {
     this.paymentPlan = paymentPlan;
   }
 
+
+  public UpdateOrderRequest customFields(@jakarta.annotation.Nullable List<@Valid CustomFieldValue> customFields) {
+    this.customFields = customFields;
+    return this;
+  }
+
+  public UpdateOrderRequest addCustomFieldsItem(CustomFieldValue customFieldsItem) {
+    if (this.customFields == null) {
+      this.customFields = new ArrayList<>();
+    }
+    this.customFields.add(customFieldsItem);
+    return this;
+  }
+
+  /**
+   * List of custom field values to apply to this order
+   * @return customFields
+   */
+  @jakarta.annotation.Nullable  @Valid
+  @Schema(example = "[{id=1, content=VIP}, {id=2, content=Preferred}]", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "List of custom field values to apply to this order")
+  @JsonProperty(JSON_PROPERTY_CUSTOM_FIELDS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public List<@Valid CustomFieldValue> getCustomFields() {
+    return customFields;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CUSTOM_FIELDS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCustomFields(@jakarta.annotation.Nullable List<@Valid CustomFieldValue> customFields) {
+    this.customFields = customFields;
+  }
+
   /**
    * Return true if this UpdateOrderRequest object is equal to o.
    */
@@ -423,12 +461,13 @@ public class UpdateOrderRequest implements Serializable {
         Objects.equals(this.leadAffiliateId, updateOrderRequest.leadAffiliateId) &&
         Objects.equals(this.salesAffiliateId, updateOrderRequest.salesAffiliateId) &&
         Objects.equals(this.shippingAddress, updateOrderRequest.shippingAddress) &&
-        Objects.equals(this.paymentPlan, updateOrderRequest.paymentPlan);
+        Objects.equals(this.paymentPlan, updateOrderRequest.paymentPlan) &&
+        Objects.equals(this.customFields, updateOrderRequest.customFields);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(notes, terms, contactId, orderTitle, orderTime, orderType, promoCodes, leadAffiliateId, salesAffiliateId, shippingAddress, paymentPlan);
+    return Objects.hash(notes, terms, contactId, orderTitle, orderTime, orderType, promoCodes, leadAffiliateId, salesAffiliateId, shippingAddress, paymentPlan, customFields);
   }
 
   @Override
@@ -446,6 +485,7 @@ public class UpdateOrderRequest implements Serializable {
     sb.append("    salesAffiliateId: ").append(toIndentedString(salesAffiliateId)).append("\n");
     sb.append("    shippingAddress: ").append(toIndentedString(shippingAddress)).append("\n");
     sb.append("    paymentPlan: ").append(toIndentedString(paymentPlan)).append("\n");
+    sb.append("    customFields: ").append(toIndentedString(customFields)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -517,6 +557,10 @@ public class UpdateOrderRequest implements Serializable {
               this.instance.paymentPlan = paymentPlan;
           return this;
         }
+            public UpdateOrderRequest.Builder customFields(List<CustomFieldValue> customFields) {
+              this.instance.customFields = customFields;
+          return this;
+        }
         
     
         /**
@@ -561,7 +605,8 @@ public class UpdateOrderRequest implements Serializable {
           .leadAffiliateId(getLeadAffiliateId())
           .salesAffiliateId(getSalesAffiliateId())
           .shippingAddress(getShippingAddress())
-          .paymentPlan(getPaymentPlan());
+          .paymentPlan(getPaymentPlan())
+          .customFields(getCustomFields());
       }
 }
 

@@ -33,5 +33,6 @@ Name | Type | Description | Notes
 **refund_status** | **string** | Refund status | [optional]
 **synced** | **bool** | Whether order is synced with external systems | [optional]
 **invoice_id** | **string** | Associated invoice ID | [optional]
+**custom_fields** | [**\Keap\Core\V2\Model\CustomFieldValue[]**](CustomFieldValue.md) | List of custom field values applied to this order | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.keap.core.sdk.model.BasicContact;
 import com.keap.core.sdk.model.CurrencyValue;
+import com.keap.core.sdk.model.CustomFieldValue;
 import com.keap.core.sdk.model.InvoiceFile;
 import com.keap.core.sdk.model.OrderItem;
 import com.keap.core.sdk.model.PaymentPlan;
@@ -70,7 +71,8 @@ import jakarta.validation.Valid;
   OrderV2.JSON_PROPERTY_PROMO_CODE,
   OrderV2.JSON_PROPERTY_REFUND_STATUS,
   OrderV2.JSON_PROPERTY_SYNCED,
-  OrderV2.JSON_PROPERTY_INVOICE_ID
+  OrderV2.JSON_PROPERTY_INVOICE_ID,
+  OrderV2.JSON_PROPERTY_CUSTOM_FIELDS
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class OrderV2 implements Serializable {
@@ -282,6 +284,9 @@ public class OrderV2 implements Serializable {
 
   public static final String JSON_PROPERTY_INVOICE_ID = "invoice_id";
   @jakarta.annotation.Nullable  private String invoiceId;
+
+  public static final String JSON_PROPERTY_CUSTOM_FIELDS = "custom_fields";
+  @jakarta.annotation.Nullable  private List<@Valid CustomFieldValue> customFields = new ArrayList<>();
 
   public OrderV2() { 
   }
@@ -1009,6 +1014,39 @@ public class OrderV2 implements Serializable {
     this.invoiceId = invoiceId;
   }
 
+
+  public OrderV2 customFields(@jakarta.annotation.Nullable List<@Valid CustomFieldValue> customFields) {
+    this.customFields = customFields;
+    return this;
+  }
+
+  public OrderV2 addCustomFieldsItem(CustomFieldValue customFieldsItem) {
+    if (this.customFields == null) {
+      this.customFields = new ArrayList<>();
+    }
+    this.customFields.add(customFieldsItem);
+    return this;
+  }
+
+  /**
+   * List of custom field values applied to this order
+   * @return customFields
+   */
+  @jakarta.annotation.Nullable  @Valid
+  @Schema(example = "[{id=1, content=VIP}, {id=2, content=Preferred}]", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "List of custom field values applied to this order")
+  @JsonProperty(JSON_PROPERTY_CUSTOM_FIELDS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public List<@Valid CustomFieldValue> getCustomFields() {
+    return customFields;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CUSTOM_FIELDS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCustomFields(@jakarta.annotation.Nullable List<@Valid CustomFieldValue> customFields) {
+    this.customFields = customFields;
+  }
+
   /**
    * Return true if this OrderV2 object is equal to o.
    */
@@ -1049,12 +1087,13 @@ public class OrderV2 implements Serializable {
         Objects.equals(this.promoCode, orderV2.promoCode) &&
         Objects.equals(this.refundStatus, orderV2.refundStatus) &&
         Objects.equals(this.synced, orderV2.synced) &&
-        Objects.equals(this.invoiceId, orderV2.invoiceId);
+        Objects.equals(this.invoiceId, orderV2.invoiceId) &&
+        Objects.equals(this.customFields, orderV2.customFields);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, title, status, total, contact, notes, terms, orderType, sourceType, creationTime, modificationTime, orderTime, leadAffiliateId, salesAffiliateId, totalPaid, totalDue, shippingInformation, refundTotal, allowPayment, allowPaypal, orderItems, paymentPlan, invoiceNumber, files, creditStatus, promoCode, refundStatus, synced, invoiceId);
+    return Objects.hash(id, title, status, total, contact, notes, terms, orderType, sourceType, creationTime, modificationTime, orderTime, leadAffiliateId, salesAffiliateId, totalPaid, totalDue, shippingInformation, refundTotal, allowPayment, allowPaypal, orderItems, paymentPlan, invoiceNumber, files, creditStatus, promoCode, refundStatus, synced, invoiceId, customFields);
   }
 
   @Override
@@ -1090,6 +1129,7 @@ public class OrderV2 implements Serializable {
     sb.append("    refundStatus: ").append(toIndentedString(refundStatus)).append("\n");
     sb.append("    synced: ").append(toIndentedString(synced)).append("\n");
     sb.append("    invoiceId: ").append(toIndentedString(invoiceId)).append("\n");
+    sb.append("    customFields: ").append(toIndentedString(customFields)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -1233,6 +1273,10 @@ public class OrderV2 implements Serializable {
               this.instance.invoiceId = invoiceId;
           return this;
         }
+            public OrderV2.Builder customFields(List<CustomFieldValue> customFields) {
+              this.instance.customFields = customFields;
+          return this;
+        }
         
     
         /**
@@ -1295,7 +1339,8 @@ public class OrderV2 implements Serializable {
           .promoCode(getPromoCode())
           .refundStatus(getRefundStatus())
           .synced(getSynced())
-          .invoiceId(getInvoiceId());
+          .invoiceId(getInvoiceId())
+          .customFields(getCustomFields());
       }
 }
 

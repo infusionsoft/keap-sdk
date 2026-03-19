@@ -33,45 +33,21 @@ import jakarta.validation.Valid;
  * CustomFieldValue
  */
 @JsonPropertyOrder({
-  CustomFieldValue.JSON_PROPERTY_CONTENT,
-  CustomFieldValue.JSON_PROPERTY_ID
+  CustomFieldValue.JSON_PROPERTY_ID,
+  CustomFieldValue.JSON_PROPERTY_CONTENT
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CustomFieldValue implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_CONTENT = "content";
-  @jakarta.annotation.Nullable  private Object content = null;
-
   public static final String JSON_PROPERTY_ID = "id";
   @jakarta.annotation.Nullable  private String id;
 
+  public static final String JSON_PROPERTY_CONTENT = "content";
+  @jakarta.annotation.Nullable  private Object content = null;
+
   public CustomFieldValue() { 
   }
-
-  public CustomFieldValue content(@jakarta.annotation.Nullable Object content) {
-    this.content = content;
-    return this;
-  }
-
-  /**
-   * Get content
-   * @return content
-   */
-  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
-  @JsonProperty(JSON_PROPERTY_CONTENT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Object getContent() {
-    return content;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_CONTENT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setContent(@jakarta.annotation.Nullable Object content) {
-    this.content = content;
-  }
-
 
   public CustomFieldValue id(@jakarta.annotation.Nullable String id) {
     this.id = id;
@@ -96,6 +72,30 @@ public class CustomFieldValue implements Serializable {
     this.id = id;
   }
 
+
+  public CustomFieldValue content(@jakarta.annotation.Nullable Object content) {
+    this.content = content;
+    return this;
+  }
+
+  /**
+   * Get content
+   * @return content
+   */
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @JsonProperty(JSON_PROPERTY_CONTENT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Object getContent() {
+    return content;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CONTENT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setContent(@jakarta.annotation.Nullable Object content) {
+    this.content = content;
+  }
+
   /**
    * Return true if this CustomFieldValue object is equal to o.
    */
@@ -108,21 +108,21 @@ public class CustomFieldValue implements Serializable {
       return false;
     }
     CustomFieldValue customFieldValue = (CustomFieldValue) o;
-    return Objects.equals(this.content, customFieldValue.content) &&
-        Objects.equals(this.id, customFieldValue.id);
+    return Objects.equals(this.id, customFieldValue.id) &&
+        Objects.equals(this.content, customFieldValue.content);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(content, id);
+    return Objects.hash(id, content);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CustomFieldValue {\n");
-    sb.append("    content: ").append(toIndentedString(content)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    content: ").append(toIndentedString(content)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -150,12 +150,12 @@ public class CustomFieldValue implements Serializable {
           this.instance = instance;
         }
     
-        public CustomFieldValue.Builder content(Object content) {
-              this.instance.content = content;
+        public CustomFieldValue.Builder id(String id) {
+              this.instance.id = id;
           return this;
         }
-            public CustomFieldValue.Builder id(String id) {
-              this.instance.id = id;
+            public CustomFieldValue.Builder content(Object content) {
+              this.instance.content = content;
           return this;
         }
         
@@ -192,8 +192,8 @@ public class CustomFieldValue implements Serializable {
       */
       public CustomFieldValue.Builder toBuilder() {
         return new CustomFieldValue.Builder()
-          .content(getContent())
-          .id(getId());
+          .id(getId())
+          .content(getContent());
       }
 }
 

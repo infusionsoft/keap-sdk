@@ -12,6 +12,7 @@
 
 import { BasicContact } from '../models/BasicContact';
 import { CurrencyValue } from '../models/CurrencyValue';
+import { CustomFieldValue } from '../models/CustomFieldValue';
 import { InvoiceFile } from '../models/InvoiceFile';
 import { OrderItem } from '../models/OrderItem';
 import { PaymentPlan } from '../models/PaymentPlan';
@@ -135,6 +136,10 @@ export class OrderV2 {
     * Associated invoice ID
     */
     'invoiceId'?: string;
+    /**
+    * List of custom field values applied to this order
+    */
+    'customFields'?: Array<CustomFieldValue>;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -313,6 +318,12 @@ export class OrderV2 {
             "name": "invoiceId",
             "baseName": "invoice_id",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "customFields",
+            "baseName": "custom_fields",
+            "type": "Array<CustomFieldValue>",
             "format": ""
         }    ];
 

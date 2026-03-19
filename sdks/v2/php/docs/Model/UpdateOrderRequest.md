@@ -15,5 +15,6 @@ Name | Type | Description | Notes
 **sales_affiliate_id** | **string** | Sales affiliate ID | [optional]
 **shipping_address** | [**\Keap\Core\V2\Model\AddressInformation**](AddressInformation.md) | Shipping address for the order | [optional]
 **payment_plan** | [**\Keap\Core\V2\Model\UpdatedPaymentPlan**](UpdatedPaymentPlan.md) | Payment plan details | [optional]
+**custom_fields** | [**\Keap\Core\V2\Model\CustomFieldValue[]**](CustomFieldValue.md) | List of custom field values to apply to this order | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

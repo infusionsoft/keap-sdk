@@ -67,7 +67,8 @@ class RestCreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerial
         'promo_codes' => 'string[]',
         'lead_affiliate_id' => 'string',
         'sales_affiliate_id' => 'string',
-        'shipping_address' => '\Keap\Core\V2\Model\AddressInformation'
+        'shipping_address' => '\Keap\Core\V2\Model\AddressInformation',
+        'custom_fields' => '\Keap\Core\V2\Model\CustomFieldValue[]'
     ];
 
     /**
@@ -88,7 +89,8 @@ class RestCreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerial
         'promo_codes' => null,
         'lead_affiliate_id' => null,
         'sales_affiliate_id' => null,
-        'shipping_address' => null
+        'shipping_address' => null,
+        'custom_fields' => null
     ];
 
     /**
@@ -107,7 +109,8 @@ class RestCreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerial
         'promo_codes' => false,
         'lead_affiliate_id' => false,
         'sales_affiliate_id' => false,
-        'shipping_address' => false
+        'shipping_address' => false,
+        'custom_fields' => false
     ];
 
     /**
@@ -206,7 +209,8 @@ class RestCreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerial
         'promo_codes' => 'promo_codes',
         'lead_affiliate_id' => 'lead_affiliate_id',
         'sales_affiliate_id' => 'sales_affiliate_id',
-        'shipping_address' => 'shipping_address'
+        'shipping_address' => 'shipping_address',
+        'custom_fields' => 'custom_fields'
     ];
 
     /**
@@ -225,7 +229,8 @@ class RestCreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerial
         'promo_codes' => 'setPromoCodes',
         'lead_affiliate_id' => 'setLeadAffiliateId',
         'sales_affiliate_id' => 'setSalesAffiliateId',
-        'shipping_address' => 'setShippingAddress'
+        'shipping_address' => 'setShippingAddress',
+        'custom_fields' => 'setCustomFields'
     ];
 
     /**
@@ -244,7 +249,8 @@ class RestCreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerial
         'promo_codes' => 'getPromoCodes',
         'lead_affiliate_id' => 'getLeadAffiliateId',
         'sales_affiliate_id' => 'getSalesAffiliateId',
-        'shipping_address' => 'getShippingAddress'
+        'shipping_address' => 'getShippingAddress',
+        'custom_fields' => 'getCustomFields'
     ];
 
     /**
@@ -330,6 +336,7 @@ class RestCreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerial
         $this->setIfExists('lead_affiliate_id', $data ?? [], null);
         $this->setIfExists('sales_affiliate_id', $data ?? [], null);
         $this->setIfExists('shipping_address', $data ?? [], null);
+        $this->setIfExists('custom_fields', $data ?? [], null);
     }
 
     /**
@@ -698,6 +705,33 @@ class RestCreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerial
             throw new \InvalidArgumentException('non-nullable shipping_address cannot be null');
         }
         $this->container['shipping_address'] = $shipping_address;
+
+        return $this;
+    }
+
+    /**
+     * Gets custom_fields
+     *
+     * @return \Keap\Core\V2\Model\CustomFieldValue[]|null
+     */
+    public function getCustomFields()
+    {
+        return $this->container['custom_fields'];
+    }
+
+    /**
+     * Sets custom_fields
+     *
+     * @param \Keap\Core\V2\Model\CustomFieldValue[]|null $custom_fields List of custom field values to apply to this order
+     *
+     * @return self
+     */
+    public function setCustomFields($custom_fields)
+    {
+        if (is_null($custom_fields)) {
+            throw new \InvalidArgumentException('non-nullable custom_fields cannot be null');
+        }
+        $this->container['custom_fields'] = $custom_fields;
 
         return $this;
     }

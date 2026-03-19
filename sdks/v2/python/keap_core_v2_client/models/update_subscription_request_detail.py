@@ -61,26 +61,6 @@ class UpdateSubscriptionRequestDetail(BaseModel):
             raise ValueError("must be one of enum values ('YEAR', 'MONTH', 'WEEK', 'DAY')")
         return value
 
-    @field_validator('next_bill_date')
-    def next_bill_date_validate_regular_expression(cls, value):
-        """Validates the regular expression"""
-        if value is None:
-            return value
-
-        if not re.match(r"^\d{4}-\d{2}-\d{2}$", value):
-            raise ValueError(r"must validate the regular expression /^\d{4}-\d{2}-\d{2}$/")
-        return value
-
-    @field_validator('end_date')
-    def end_date_validate_regular_expression(cls, value):
-        """Validates the regular expression"""
-        if value is None:
-            return value
-
-        if not re.match(r"^\d{4}-\d{2}-\d{2}$", value):
-            raise ValueError(r"must validate the regular expression /^\d{4}-\d{2}-\d{2}$/")
-        return value
-
     model_config = ConfigDict(
         populate_by_name=True,
         validate_assignment=True,

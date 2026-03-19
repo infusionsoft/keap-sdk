@@ -80,7 +80,8 @@ namespace Keap.Core.V2.Model
         /// <param name="leadAffiliateId">Lead affiliate ID.</param>
         /// <param name="salesAffiliateId">Sales affiliate ID.</param>
         /// <param name="shippingAddress">Shipping address for the order.</param>
-        public RestCreateOrderRequest(string notes = default, string terms = default, string contactId = default, List<CreateOrderItemRequest> orderItems = default, string orderTitle = default, DateTime orderTime = default, OrderTypeEnum orderType = default, List<string> promoCodes = default, string leadAffiliateId = default, string salesAffiliateId = default, AddressInformation shippingAddress = default)
+        /// <param name="customFields">List of custom field values to apply to this order.</param>
+        public RestCreateOrderRequest(string notes = default, string terms = default, string contactId = default, List<CreateOrderItemRequest> orderItems = default, string orderTitle = default, DateTime orderTime = default, OrderTypeEnum orderType = default, List<string> promoCodes = default, string leadAffiliateId = default, string salesAffiliateId = default, AddressInformation shippingAddress = default, List<CustomFieldValue> customFields = default)
         {
             // to ensure "contactId" is required (not null)
             if (contactId == null)
@@ -103,6 +104,7 @@ namespace Keap.Core.V2.Model
             this.LeadAffiliateId = leadAffiliateId;
             this.SalesAffiliateId = salesAffiliateId;
             this.ShippingAddress = shippingAddress;
+            this.CustomFields = customFields;
         }
 
         /// <summary>
@@ -200,6 +202,16 @@ namespace Keap.Core.V2.Model
         public AddressInformation ShippingAddress { get; set; }
 
         /// <summary>
+        /// List of custom field values to apply to this order
+        /// </summary>
+        /// <value>List of custom field values to apply to this order</value>
+        /*
+        <example>[{id&#x3D;1, content&#x3D;VIP}, {id&#x3D;2, content&#x3D;Preferred}]</example>
+        */
+        [DataMember(Name = "custom_fields", EmitDefaultValue = false)]
+        public List<CustomFieldValue> CustomFields { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -218,6 +230,7 @@ namespace Keap.Core.V2.Model
             sb.Append("  LeadAffiliateId: ").Append(LeadAffiliateId).Append("\n");
             sb.Append("  SalesAffiliateId: ").Append(SalesAffiliateId).Append("\n");
             sb.Append("  ShippingAddress: ").Append(ShippingAddress).Append("\n");
+            sb.Append("  CustomFields: ").Append(CustomFields).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

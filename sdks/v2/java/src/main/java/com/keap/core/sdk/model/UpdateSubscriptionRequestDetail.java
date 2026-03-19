@@ -414,7 +414,7 @@ public class UpdateSubscriptionRequestDetail implements Serializable {
    * @return nextBillDate
    */
   @jakarta.annotation.Nullable  @Valid
- @Pattern(regexp="^\\d{4}-\\d{2}-\\d{2}$")  @Schema(example = "2024-06-21", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The next date the subscription will bill. Must not be in the past.")
+  @Schema(example = "2024-06-21", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The next date the subscription will bill. Must not be in the past.")
   @JsonProperty(JSON_PROPERTY_NEXT_BILL_DATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public LocalDate getNextBillDate() {
@@ -439,7 +439,7 @@ public class UpdateSubscriptionRequestDetail implements Serializable {
    * @return endDate
    */
   @jakarta.annotation.Nullable  @Valid
- @Pattern(regexp="^\\d{4}-\\d{2}-\\d{2}$")  @Schema(example = "2025-05-21", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The date the subscription will end. Must not be in the past.")
+  @Schema(example = "2025-05-21", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The date the subscription will end. Must not be in the past.")
   @JsonProperty(JSON_PROPERTY_END_DATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public LocalDate getEndDate() {

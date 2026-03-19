@@ -12,6 +12,7 @@
 
 import { AddressInformation } from '../models/AddressInformation';
 import { CreateOrderItemRequest } from '../models/CreateOrderItemRequest';
+import { CustomFieldValue } from '../models/CustomFieldValue';
 import { HttpFile } from '../http/http';
 
 export class RestCreateOrderRequest {
@@ -59,6 +60,10 @@ export class RestCreateOrderRequest {
     * Shipping address for the order
     */
     'shippingAddress'?: AddressInformation;
+    /**
+    * List of custom field values to apply to this order
+    */
+    'customFields'?: Array<CustomFieldValue>;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -129,6 +134,12 @@ export class RestCreateOrderRequest {
             "name": "shippingAddress",
             "baseName": "shipping_address",
             "type": "AddressInformation",
+            "format": ""
+        },
+        {
+            "name": "customFields",
+            "baseName": "custom_fields",
+            "type": "Array<CustomFieldValue>",
             "format": ""
         }    ];
 

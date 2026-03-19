@@ -313,15 +313,6 @@ namespace Keap.Core.V2.Model
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            if (this.StartDate != null) {
-                // StartDate (DateOnly) pattern
-                                Regex regexStartDate = new Regex(@"^\d{4}-\d{2}-\d{2}$", RegexOptions.CultureInvariant);
-                                if (!regexStartDate.Match(this.StartDate).Success)
-                                {
-                                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for StartDate, must match a pattern of " + regexStartDate, new [] { "StartDate" });
-                                }
-            }
-
             yield break;
         }    }
 

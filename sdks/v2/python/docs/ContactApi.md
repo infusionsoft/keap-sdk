@@ -5,6 +5,7 @@ All URIs are relative to *https://api.keap.com/crm*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_contact**](ContactApi.md#create_contact) | **POST** /rest/v2/contacts | Create a Contact
+[**create_contact_custom_field**](ContactApi.md#create_contact_custom_field) | **POST** /rest/v2/contacts/model/customFields | Create a Contact Custom Field
 [**create_contact_link_type**](ContactApi.md#create_contact_link_type) | **POST** /rest/v2/contacts/links/types | Create a Contact Link type
 [**delete_contact**](ContactApi.md#delete_contact) | **DELETE** /rest/v2/contacts/{contact_id} | Delete a Contact
 [**get_contact**](ContactApi.md#get_contact) | **GET** /rest/v2/contacts/{contact_id} | Retrieve a Contact
@@ -77,6 +78,87 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Contact**](Contact.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_contact_custom_field**
+> CustomFieldMetaData create_contact_custom_field(create_custom_field_request)
+
+Create a Contact Custom Field
+
+Creates a custom field of the specified type and options to the Contact object
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.create_custom_field_request import CreateCustomFieldRequest
+from keap_core_v2_client.models.custom_field_meta_data import CustomFieldMetaData
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.ContactApi(api_client)
+    create_custom_field_request = keap_core_v2_client.CreateCustomFieldRequest() # CreateCustomFieldRequest | 
+
+    try:
+        # Create a Contact Custom Field
+        api_response = api_instance.create_contact_custom_field(create_custom_field_request)
+        print("The response of ContactApi->create_contact_custom_field:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ContactApi->create_contact_custom_field: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **create_custom_field_request** | [**CreateCustomFieldRequest**](CreateCustomFieldRequest.md)|  | 
+
+### Return type
+
+[**CustomFieldMetaData**](CustomFieldMetaData.md)
 
 ### Authorization
 

@@ -131,10 +131,12 @@ public class Address implements Serializable {
   }
 
   /**
-   * The long-name descriptive version of the Country Code
+   * Deprecated. The long-name descriptive version of the Country Code. Please use &#39;country_code&#39; for POST/PATCH operations.
    * @return country
+   * @deprecated
    */
-  @jakarta.annotation.Nullable  @Schema(example = "United States of America", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The long-name descriptive version of the Country Code")
+  @Deprecated
+  @jakarta.annotation.Nullable  @Schema(example = "United States of America", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Deprecated. The long-name descriptive version of the Country Code. Please use 'country_code' for POST/PATCH operations.")
   @JsonProperty(JSON_PROPERTY_COUNTRY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getCountry() {
@@ -227,10 +229,12 @@ public class Address implements Serializable {
   }
 
   /**
-   * The long-name descriptive version of the Region Code
+   * The long-name descriptive version of the Region Code. Please use &#39;region_code&#39; for POST/PATCH operations.
    * @return region
+   * @deprecated
    */
-  @jakarta.annotation.Nullable  @Schema(example = "Arizona", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The long-name descriptive version of the Region Code")
+  @Deprecated
+  @jakarta.annotation.Nullable  @Schema(example = "Arizona", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The long-name descriptive version of the Region Code. Please use 'region_code' for POST/PATCH operations.")
   @JsonProperty(JSON_PROPERTY_REGION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getRegion() {

@@ -5,6 +5,7 @@ All URIs are relative to *https://api.keap.com/crm*
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
 | [**CreateContact**](ContactApi.md#createcontact) | **POST** /rest/v2/contacts | Create a Contact |
+| [**CreateContactCustomField**](ContactApi.md#createcontactcustomfield) | **POST** /rest/v2/contacts/model/customFields | Create a Contact Custom Field |
 | [**CreateContactLinkType**](ContactApi.md#createcontactlinktype) | **POST** /rest/v2/contacts/links/types | Create a Contact Link type |
 | [**DeleteContact**](ContactApi.md#deletecontact) | **DELETE** /rest/v2/contacts/{contact_id} | Delete a Contact |
 | [**GetContact**](ContactApi.md#getcontact) | **GET** /rest/v2/contacts/{contact_id} | Retrieve a Contact |
@@ -95,6 +96,107 @@ catch (ApiException e)
 ### Return type
 
 [**Contact**](Contact.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="createcontactcustomfield"></a>
+# **CreateContactCustomField**
+> CustomFieldMetaData CreateContactCustomField (CreateCustomFieldRequest createCustomFieldRequest)
+
+Create a Contact Custom Field
+
+Creates a custom field of the specified type and options to the Contact object
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class CreateContactCustomFieldExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new ContactApi(config);
+            var createCustomFieldRequest = new CreateCustomFieldRequest(); // CreateCustomFieldRequest | 
+
+            try
+            {
+                // Create a Contact Custom Field
+                CustomFieldMetaData result = apiInstance.CreateContactCustomField(createCustomFieldRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ContactApi.CreateContactCustomField: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the CreateContactCustomFieldWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Create a Contact Custom Field
+    ApiResponse<CustomFieldMetaData> response = apiInstance.CreateContactCustomFieldWithHttpInfo(createCustomFieldRequest);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ContactApi.CreateContactCustomFieldWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **createCustomFieldRequest** | [**CreateCustomFieldRequest**](CreateCustomFieldRequest.md) |  |  |
+
+### Return type
+
+[**CustomFieldMetaData**](CustomFieldMetaData.md)
 
 ### Authorization
 

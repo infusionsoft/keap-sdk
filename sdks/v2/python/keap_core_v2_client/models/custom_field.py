@@ -26,10 +26,10 @@ class CustomField(BaseModel):
     """
     CustomField
     """ # noqa: E501
-    content: Optional[Any] = None
     id: Optional[StrictStr] = None
+    content: Optional[Any] = None
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["content", "id"]
+    __properties: ClassVar[List[str]] = ["id", "content"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -94,8 +94,8 @@ class CustomField(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "content": obj.get("content"),
-            "id": obj.get("id")
+            "id": obj.get("id"),
+            "content": obj.get("content")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

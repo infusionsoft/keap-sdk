@@ -46,11 +46,11 @@ class CustomField {
         if (data) {
             obj = obj || new CustomField();
 
-            if (data.hasOwnProperty('content')) {
-                obj['content'] = ApiClient.convertToType(data['content'], Object);
-            }
             if (data.hasOwnProperty('id')) {
                 obj['id'] = ApiClient.convertToType(data['id'], 'String');
+            }
+            if (data.hasOwnProperty('content')) {
+                obj['content'] = ApiClient.convertToType(data['content'], Object);
             }
         }
         return obj;
@@ -76,14 +76,14 @@ class CustomField {
 
 
 /**
- * @member {Object} content
- */
-CustomField.prototype['content'] = undefined;
-
-/**
  * @member {String} id
  */
 CustomField.prototype['id'] = undefined;
+
+/**
+ * @member {Object} content
+ */
+CustomField.prototype['content'] = undefined;
 
 
 

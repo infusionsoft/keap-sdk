@@ -76,11 +76,11 @@ namespace Keap.Core.V2.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Address" /> class.
         /// </summary>
-        /// <param name="country">The long-name descriptive version of the Country Code.</param>
+        /// <param name="country">Deprecated. The long-name descriptive version of the Country Code. Please use &#39;country_code&#39; for POST/PATCH operations..</param>
         /// <param name="line1">Street address line 1.</param>
         /// <param name="line2">Street address line 2.</param>
         /// <param name="locality">The municipality to which the address belongs.</param>
-        /// <param name="region">The long-name descriptive version of the Region Code.</param>
+        /// <param name="region">The long-name descriptive version of the Region Code. Please use &#39;region_code&#39; for POST/PATCH operations..</param>
         /// <param name="field">Address type field.</param>
         /// <param name="countryCode">An ISO 3166-2 Country Code (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3).</param>
         /// <param name="postalCode">Postal or ZIP code.</param>
@@ -103,13 +103,14 @@ namespace Keap.Core.V2.Model
         }
 
         /// <summary>
-        /// The long-name descriptive version of the Country Code
+        /// Deprecated. The long-name descriptive version of the Country Code. Please use &#39;country_code&#39; for POST/PATCH operations.
         /// </summary>
-        /// <value>The long-name descriptive version of the Country Code</value>
+        /// <value>Deprecated. The long-name descriptive version of the Country Code. Please use &#39;country_code&#39; for POST/PATCH operations.</value>
         /*
         <example>United States of America</example>
         */
         [DataMember(Name = "country", EmitDefaultValue = false)]
+        [Obsolete]
         public string Country { get; set; }
 
         /// <summary>
@@ -143,13 +144,14 @@ namespace Keap.Core.V2.Model
         public string Locality { get; set; }
 
         /// <summary>
-        /// The long-name descriptive version of the Region Code
+        /// The long-name descriptive version of the Region Code. Please use &#39;region_code&#39; for POST/PATCH operations.
         /// </summary>
-        /// <value>The long-name descriptive version of the Region Code</value>
+        /// <value>The long-name descriptive version of the Region Code. Please use &#39;region_code&#39; for POST/PATCH operations.</value>
         /*
         <example>Arizona</example>
         */
         [DataMember(Name = "region", EmitDefaultValue = false)]
+        [Obsolete]
         public string Region { get; set; }
 
         /// <summary>

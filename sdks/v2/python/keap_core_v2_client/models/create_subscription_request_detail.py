@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 
 from datetime import date
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from keap_core_v2_client.models.address_request_detail import AddressRequestDetail
 from typing import Optional, Set
@@ -48,16 +48,6 @@ class CreateSubscriptionRequestDetail(BaseModel):
     reason_stopped: Optional[StrictStr] = Field(default=None, description="The reason the subscription is no longer active.")
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["quantity", "active", "contact_id", "subscription_plan_id", "billing_amount", "auto_charge", "max_charge_attempts", "days_between_retries", "start_date", "payment_method_id", "allow_tax", "allow_duplicate", "lead_affiliate_id", "sale_affiliate_id", "shipping_address", "promo_code", "shipping_option_id", "reason_stopped"]
-
-    @field_validator('start_date')
-    def start_date_validate_regular_expression(cls, value):
-        """Validates the regular expression"""
-        if value is None:
-            return value
-
-        if not re.match(r"^\d{4}-\d{2}-\d{2}$", value):
-            raise ValueError(r"must validate the regular expression /^\d{4}-\d{2}-\d{2}$/")
-        return value
 
     model_config = ConfigDict(
         populate_by_name=True,

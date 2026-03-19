@@ -5,6 +5,7 @@ All URIs are relative to *https://api.keap.com/crm*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createContact**](ContactApi.md#createContact) | **POST** /rest/v2/contacts | Create a Contact
+[**createContactCustomField**](ContactApi.md#createContactCustomField) | **POST** /rest/v2/contacts/model/customFields | Create a Contact Custom Field
 [**createContactLinkType**](ContactApi.md#createContactLinkType) | **POST** /rest/v2/contacts/links/types | Create a Contact Link type
 [**deleteContact**](ContactApi.md#deleteContact) | **DELETE** /rest/v2/contacts/{contact_id} | Delete a Contact
 [**getContact**](ContactApi.md#getContact) | **GET** /rest/v2/contacts/{contact_id} | Retrieve a Contact
@@ -66,8 +67,8 @@ const request: ContactApiCreateContactRequest = {
     contactType: "Prospect",
     customFields: [
       {
-        content: null,
         id: "id_example",
+        content: null,
       },
     ],
     emailAddresses: [
@@ -142,6 +143,76 @@ Name | Type | Description  | Notes
 ### Return type
 
 **Contact**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **createContactCustomField**
+> CustomFieldMetaData createContactCustomField(createCustomFieldRequest)
+
+Creates a custom field of the specified type and options to the Contact object
+
+### Example
+
+
+```typescript
+import { createConfiguration, ContactApi } from '';
+import type { ContactApiCreateContactCustomFieldRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new ContactApi(configuration);
+
+const request: ContactApiCreateContactCustomFieldRequest = {
+  
+  createCustomFieldRequest: {
+    label: "label_example",
+    options: [
+      {
+        label: "label_example",
+      },
+    ],
+    fieldType: "CURRENCY",
+    groupId: "groupId_example",
+    userGroupId: "userGroupId_example",
+  },
+};
+
+const data = await apiInstance.createContactCustomField(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCustomFieldRequest** | **CreateCustomFieldRequest**|  |
+
+
+### Return type
+
+**CustomFieldMetaData**
 
 ### Authorization
 
@@ -861,8 +932,8 @@ const request: ContactApiUpdateContactRequest = {
     contactType: "Prospect",
     customFields: [
       {
-        content: null,
         id: "id_example",
+        content: null,
       },
     ],
     emailAddresses: [

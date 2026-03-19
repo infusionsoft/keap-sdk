@@ -22,6 +22,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_
 from typing import Any, ClassVar, Dict, List, Optional
 from keap_core_v2_client.models.basic_contact import BasicContact
 from keap_core_v2_client.models.currency_value import CurrencyValue
+from keap_core_v2_client.models.custom_field_value import CustomFieldValue
 from keap_core_v2_client.models.invoice_file import InvoiceFile
 from keap_core_v2_client.models.order_item import OrderItem
 from keap_core_v2_client.models.payment_plan import PaymentPlan
@@ -62,8 +63,9 @@ class OrderV2(BaseModel):
     refund_status: Optional[StrictStr] = Field(default=None, description="Refund status")
     synced: Optional[StrictBool] = Field(default=None, description="Whether order is synced with external systems")
     invoice_id: Optional[StrictStr] = Field(default=None, description="Associated invoice ID")
+    custom_fields: Optional[List[CustomFieldValue]] = Field(default=None, description="List of custom field values applied to this order")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["id", "title", "status", "total", "contact", "notes", "terms", "order_type", "source_type", "creation_time", "modification_time", "order_time", "lead_affiliate_id", "sales_affiliate_id", "total_paid", "total_due", "shipping_information", "refund_total", "allow_payment", "allow_paypal", "order_items", "payment_plan", "invoice_number", "files", "credit_status", "promo_code", "refund_status", "synced", "invoice_id"]
+    __properties: ClassVar[List[str]] = ["id", "title", "status", "total", "contact", "notes", "terms", "order_type", "source_type", "creation_time", "modification_time", "order_time", "lead_affiliate_id", "sales_affiliate_id", "total_paid", "total_due", "shipping_information", "refund_total", "allow_payment", "allow_paypal", "order_items", "payment_plan", "invoice_number", "files", "credit_status", "promo_code", "refund_status", "synced", "invoice_id", "custom_fields"]
 
     @field_validator('status')
     def status_validate_enum(cls, value):
@@ -171,6 +173,13 @@ class OrderV2(BaseModel):
                 if _item_files:
                     _items.append(_item_files.to_dict())
             _dict['files'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in custom_fields (list)
+        _items = []
+        if self.custom_fields:
+            for _item_custom_fields in self.custom_fields:
+                if _item_custom_fields:
+                    _items.append(_item_custom_fields.to_dict())
+            _dict['custom_fields'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -216,7 +225,8 @@ class OrderV2(BaseModel):
             "promo_code": obj.get("promo_code"),
             "refund_status": obj.get("refund_status"),
             "synced": obj.get("synced"),
-            "invoice_id": obj.get("invoice_id")
+            "invoice_id": obj.get("invoice_id"),
+            "custom_fields": [CustomFieldValue.from_dict(_item) for _item in obj["custom_fields"]] if obj.get("custom_fields") is not None else None
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

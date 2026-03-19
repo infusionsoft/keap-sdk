@@ -143,7 +143,7 @@ class Address {
 
 
 /**
- * The long-name descriptive version of the Country Code
+ * Deprecated. The long-name descriptive version of the Country Code. Please use 'country_code' for POST/PATCH operations.
  * @member {String} country
  */
 Address.prototype['country'] = undefined;
@@ -167,7 +167,7 @@ Address.prototype['line2'] = undefined;
 Address.prototype['locality'] = undefined;
 
 /**
- * The long-name descriptive version of the Region Code
+ * The long-name descriptive version of the Region Code. Please use 'region_code' for POST/PATCH operations.
  * @member {String} region
  */
 Address.prototype['region'] = undefined;

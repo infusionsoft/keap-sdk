@@ -365,24 +365,6 @@ namespace Keap.Core.V2.Model
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            if (this.NextBillDate != null) {
-                // NextBillDate (DateOnly) pattern
-                                Regex regexNextBillDate = new Regex(@"^\d{4}-\d{2}-\d{2}$", RegexOptions.CultureInvariant);
-                                if (!regexNextBillDate.Match(this.NextBillDate).Success)
-                                {
-                                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for NextBillDate, must match a pattern of " + regexNextBillDate, new [] { "NextBillDate" });
-                                }
-            }
-
-            if (this.EndDate != null) {
-                // EndDate (DateOnly) pattern
-                                Regex regexEndDate = new Regex(@"^\d{4}-\d{2}-\d{2}$", RegexOptions.CultureInvariant);
-                                if (!regexEndDate.Match(this.EndDate).Success)
-                                {
-                                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for EndDate, must match a pattern of " + regexEndDate, new [] { "EndDate" });
-                                }
-            }
-
             yield break;
         }    }
 

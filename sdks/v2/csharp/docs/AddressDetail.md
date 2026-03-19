@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Country** | **string** | The long-name descriptive version of the Country Code | [optional] 
+**Country** | **string** | Deprecated. The long-name descriptive version of the Country Code. Please use &#39;country_code&#39; for POST/PATCH operations. | [optional] 
 **Line1** | **string** | Street address line 1 | [optional] 
 **Line2** | **string** | Street address line 2 | [optional] 
 **Locality** | **string** | The municipality to which the address belongs | [optional] 
-**Region** | **string** | The long-name descriptive version of the Region Code | [optional] 
+**Region** | **string** | The long-name descriptive version of the Region Code. Please use &#39;region_code&#39; for POST/PATCH operations. | [optional] 
 **Field** | **string** | Address type field | [optional] 
 **CountryCode** | **string** | An ISO 3166-2 Country Code (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) | [optional] 
 **PostalCode** | **string** | Postal or ZIP code | [optional] 

@@ -46,11 +46,11 @@ class CustomFieldValue {
         if (data) {
             obj = obj || new CustomFieldValue();
 
-            if (data.hasOwnProperty('content')) {
-                obj['content'] = ApiClient.convertToType(data['content'], Object);
-            }
             if (data.hasOwnProperty('id')) {
                 obj['id'] = ApiClient.convertToType(data['id'], 'String');
+            }
+            if (data.hasOwnProperty('content')) {
+                obj['content'] = ApiClient.convertToType(data['content'], Object);
             }
         }
         return obj;
@@ -76,14 +76,14 @@ class CustomFieldValue {
 
 
 /**
- * @member {Object} content
- */
-CustomFieldValue.prototype['content'] = undefined;
-
-/**
  * @member {String} id
  */
 CustomFieldValue.prototype['id'] = undefined;
+
+/**
+ * @member {Object} content
+ */
+CustomFieldValue.prototype['content'] = undefined;
 
 
 

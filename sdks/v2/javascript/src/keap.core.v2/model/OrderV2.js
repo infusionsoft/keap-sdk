@@ -14,6 +14,7 @@
 import ApiClient from '../ApiClient';
 import BasicContact from './BasicContact';
 import CurrencyValue from './CurrencyValue';
+import CustomFieldValue from './CustomFieldValue';
 import InvoiceFile from './InvoiceFile';
 import OrderItem from './OrderItem';
 import PaymentPlan from './PaymentPlan';
@@ -139,6 +140,9 @@ class OrderV2 {
             if (data.hasOwnProperty('invoice_id')) {
                 obj['invoice_id'] = ApiClient.convertToType(data['invoice_id'], 'String');
             }
+            if (data.hasOwnProperty('custom_fields')) {
+                obj['custom_fields'] = ApiClient.convertToType(data['custom_fields'], [CustomFieldValue]);
+            }
         }
         return obj;
     }
@@ -252,6 +256,16 @@ class OrderV2 {
         // ensure the json data is a string
         if (data['invoice_id'] && !(typeof data['invoice_id'] === 'string' || data['invoice_id'] instanceof String)) {
             throw new Error("Expected the field `invoice_id` to be a primitive type in the JSON string but got " + data['invoice_id']);
+        }
+        if (data['custom_fields']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['custom_fields'])) {
+                throw new Error("Expected the field `custom_fields` to be an array in the JSON data but got " + data['custom_fields']);
+            }
+            // validate the optional field `custom_fields` (array)
+            for (const item of data['custom_fields']) {
+                CustomFieldValue.validateJSON(item);
+            };
         }
 
         return true;
@@ -435,6 +449,12 @@ OrderV2.prototype['synced'] = undefined;
  * @member {String} invoice_id
  */
 OrderV2.prototype['invoice_id'] = undefined;
+
+/**
+ * List of custom field values applied to this order
+ * @member {Array.<module:keap.core.v2/model/CustomFieldValue>} custom_fields
+ */
+OrderV2.prototype['custom_fields'] = undefined;
 
 
 

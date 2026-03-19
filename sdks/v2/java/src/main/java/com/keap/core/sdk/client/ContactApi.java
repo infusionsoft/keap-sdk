@@ -21,7 +21,9 @@ import com.keap.core.sdk.model.Contact;
 import com.keap.core.sdk.model.ContactLink;
 import com.keap.core.sdk.model.ContactLinkType;
 import com.keap.core.sdk.model.CreateContactLinkTypeRequest;
+import com.keap.core.sdk.model.CreateCustomFieldRequest;
 import com.keap.core.sdk.model.CreateUpdateContactRequest;
+import com.keap.core.sdk.model.CustomFieldMetaData;
 import com.keap.core.sdk.model.Error;
 import com.keap.core.sdk.model.LinkContactsRequest;
 import com.keap.core.sdk.model.ListContactLinkTypesResponse;
@@ -198,6 +200,97 @@ import io.github.resilience4j.retry.Retry;
 
     try {
       byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(createUpdateContactRequest);
+      localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Create a Contact Custom Field
+   * Creates a custom field of the specified type and options to the Contact object
+   * @param createCustomFieldRequest  (required)
+   * @return CustomFieldMetaData
+   * @throws ApiException if fails to make API call
+   */
+  public CustomFieldMetaData createContactCustomField(CreateCustomFieldRequest createCustomFieldRequest) throws ApiException {
+    ApiResponse<CustomFieldMetaData> localVarResponse = createContactCustomFieldWithHttpInfo(createCustomFieldRequest);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Create a Contact Custom Field
+   * Creates a custom field of the specified type and options to the Contact object
+   * @param createCustomFieldRequest  (required)
+   * @return ApiResponse&lt;CustomFieldMetaData&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<CustomFieldMetaData> createContactCustomFieldWithHttpInfo(CreateCustomFieldRequest createCustomFieldRequest) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = createContactCustomFieldRequestBuilder(createCustomFieldRequest);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("createContactCustomField", localVarResponse);
+        }
+        return new ApiResponse<CustomFieldMetaData>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<CustomFieldMetaData>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder createContactCustomFieldRequestBuilder(CreateCustomFieldRequest createCustomFieldRequest) throws ApiException {
+    // verify the required parameter 'createCustomFieldRequest' is set
+    if (createCustomFieldRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'createCustomFieldRequest' when calling createContactCustomField");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/contacts/model/customFields";
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(createCustomFieldRequest);
       localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
     } catch (IOException e) {
       throw new ApiException(e);

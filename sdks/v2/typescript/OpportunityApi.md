@@ -49,8 +49,8 @@ const request: OpportunityApiCreateOpportunityRequest = {
     userId: "456",
     customFields: [
       {
-        content: null,
         id: "id_example",
+        content: null,
       },
     ],
     affiliateId: "789",
@@ -655,8 +655,8 @@ const request: OpportunityApiUpdateOpportunityRequest = {
     userId: "456",
     customFields: [
       {
-        content: null,
         id: "id_example",
+        content: null,
       },
     ],
     affiliateId: "789",

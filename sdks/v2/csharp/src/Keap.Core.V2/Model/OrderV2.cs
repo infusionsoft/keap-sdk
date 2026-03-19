@@ -187,7 +187,8 @@ namespace Keap.Core.V2.Model
         /// <param name="refundStatus">Refund status.</param>
         /// <param name="synced">Whether order is synced with external systems.</param>
         /// <param name="invoiceId">Associated invoice ID.</param>
-        public OrderV2(string id = default, string title = default, StatusEnum? status = default, CurrencyValue total = default, BasicContact contact = default, string notes = default, string terms = default, OrderTypeEnum? orderType = default, SourceTypeEnum? sourceType = default, DateTime creationTime = default, DateTime modificationTime = default, DateTime orderTime = default, string leadAffiliateId = default, string salesAffiliateId = default, CurrencyValue totalPaid = default, CurrencyValue totalDue = default, ShippingInformation shippingInformation = default, CurrencyValue refundTotal = default, bool allowPayment = default, bool allowPaypal = default, List<OrderItem> orderItems = default, PaymentPlan paymentPlan = default, string invoiceNumber = default, List<InvoiceFile> files = default, string creditStatus = default, string promoCode = default, string refundStatus = default, bool synced = default, string invoiceId = default)
+        /// <param name="customFields">List of custom field values applied to this order.</param>
+        public OrderV2(string id = default, string title = default, StatusEnum? status = default, CurrencyValue total = default, BasicContact contact = default, string notes = default, string terms = default, OrderTypeEnum? orderType = default, SourceTypeEnum? sourceType = default, DateTime creationTime = default, DateTime modificationTime = default, DateTime orderTime = default, string leadAffiliateId = default, string salesAffiliateId = default, CurrencyValue totalPaid = default, CurrencyValue totalDue = default, ShippingInformation shippingInformation = default, CurrencyValue refundTotal = default, bool allowPayment = default, bool allowPaypal = default, List<OrderItem> orderItems = default, PaymentPlan paymentPlan = default, string invoiceNumber = default, List<InvoiceFile> files = default, string creditStatus = default, string promoCode = default, string refundStatus = default, bool synced = default, string invoiceId = default, List<CustomFieldValue> customFields = default)
         {
             this.Id = id;
             this.Title = title;
@@ -218,6 +219,7 @@ namespace Keap.Core.V2.Model
             this.RefundStatus = refundStatus;
             this.Synced = synced;
             this.InvoiceId = invoiceId;
+            this.CustomFields = customFields;
         }
 
         /// <summary>
@@ -454,6 +456,16 @@ namespace Keap.Core.V2.Model
         public string InvoiceId { get; set; }
 
         /// <summary>
+        /// List of custom field values applied to this order
+        /// </summary>
+        /// <value>List of custom field values applied to this order</value>
+        /*
+        <example>[{id&#x3D;1, content&#x3D;VIP}, {id&#x3D;2, content&#x3D;Preferred}]</example>
+        */
+        [DataMember(Name = "custom_fields", EmitDefaultValue = false)]
+        public List<CustomFieldValue> CustomFields { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -490,6 +502,7 @@ namespace Keap.Core.V2.Model
             sb.Append("  RefundStatus: ").Append(RefundStatus).Append("\n");
             sb.Append("  Synced: ").Append(Synced).Append("\n");
             sb.Append("  InvoiceId: ").Append(InvoiceId).Append("\n");
+            sb.Append("  CustomFields: ").Append(CustomFields).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

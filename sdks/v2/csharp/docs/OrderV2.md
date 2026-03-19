@@ -33,6 +33,7 @@ Name | Type | Description | Notes
 **RefundStatus** | **string** | Refund status | [optional] 
 **Synced** | **bool** | Whether order is synced with external systems | [optional] 
 **InvoiceId** | **string** | Associated invoice ID | [optional] 
+**CustomFields** | [**List&lt;CustomFieldValue&gt;**](CustomFieldValue.md) | List of custom field values applied to this order | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

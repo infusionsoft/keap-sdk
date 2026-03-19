@@ -319,7 +319,7 @@ public class CreateSubscriptionRequestDetail implements Serializable {
    * @return startDate
    */
   @jakarta.annotation.Nullable  @Valid
- @Pattern(regexp="^\\d{4}-\\d{2}-\\d{2}$")  @Schema(example = "2024-05-21", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The first day the subscription will bill. Must not be in the past. Default is today.")
+  @Schema(example = "2024-05-21", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The first day the subscription will bill. Must not be in the past. Default is today.")
   @JsonProperty(JSON_PROPERTY_START_DATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public LocalDate getStartDate() {

@@ -85,7 +85,8 @@ class OrderV2 implements ModelInterface, ArrayAccess, \JsonSerializable
         'promo_code' => 'string',
         'refund_status' => 'string',
         'synced' => 'bool',
-        'invoice_id' => 'string'
+        'invoice_id' => 'string',
+        'custom_fields' => '\Keap\Core\V2\Model\CustomFieldValue[]'
     ];
 
     /**
@@ -124,7 +125,8 @@ class OrderV2 implements ModelInterface, ArrayAccess, \JsonSerializable
         'promo_code' => null,
         'refund_status' => null,
         'synced' => null,
-        'invoice_id' => null
+        'invoice_id' => null,
+        'custom_fields' => null
     ];
 
     /**
@@ -161,7 +163,8 @@ class OrderV2 implements ModelInterface, ArrayAccess, \JsonSerializable
         'promo_code' => false,
         'refund_status' => false,
         'synced' => false,
-        'invoice_id' => false
+        'invoice_id' => false,
+        'custom_fields' => false
     ];
 
     /**
@@ -278,7 +281,8 @@ class OrderV2 implements ModelInterface, ArrayAccess, \JsonSerializable
         'promo_code' => 'promo_code',
         'refund_status' => 'refund_status',
         'synced' => 'synced',
-        'invoice_id' => 'invoice_id'
+        'invoice_id' => 'invoice_id',
+        'custom_fields' => 'custom_fields'
     ];
 
     /**
@@ -315,7 +319,8 @@ class OrderV2 implements ModelInterface, ArrayAccess, \JsonSerializable
         'promo_code' => 'setPromoCode',
         'refund_status' => 'setRefundStatus',
         'synced' => 'setSynced',
-        'invoice_id' => 'setInvoiceId'
+        'invoice_id' => 'setInvoiceId',
+        'custom_fields' => 'setCustomFields'
     ];
 
     /**
@@ -352,7 +357,8 @@ class OrderV2 implements ModelInterface, ArrayAccess, \JsonSerializable
         'promo_code' => 'getPromoCode',
         'refund_status' => 'getRefundStatus',
         'synced' => 'getSynced',
-        'invoice_id' => 'getInvoiceId'
+        'invoice_id' => 'getInvoiceId',
+        'custom_fields' => 'getCustomFields'
     ];
 
     /**
@@ -498,6 +504,7 @@ class OrderV2 implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('refund_status', $data ?? [], null);
         $this->setIfExists('synced', $data ?? [], null);
         $this->setIfExists('invoice_id', $data ?? [], null);
+        $this->setIfExists('custom_fields', $data ?? [], null);
     }
 
     /**
@@ -1378,6 +1385,33 @@ class OrderV2 implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable invoice_id cannot be null');
         }
         $this->container['invoice_id'] = $invoice_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets custom_fields
+     *
+     * @return \Keap\Core\V2\Model\CustomFieldValue[]|null
+     */
+    public function getCustomFields()
+    {
+        return $this->container['custom_fields'];
+    }
+
+    /**
+     * Sets custom_fields
+     *
+     * @param \Keap\Core\V2\Model\CustomFieldValue[]|null $custom_fields List of custom field values applied to this order
+     *
+     * @return self
+     */
+    public function setCustomFields($custom_fields)
+    {
+        if (is_null($custom_fields)) {
+            throw new \InvalidArgumentException('non-nullable custom_fields cannot be null');
+        }
+        $this->container['custom_fields'] = $custom_fields;
 
         return $this;
     }

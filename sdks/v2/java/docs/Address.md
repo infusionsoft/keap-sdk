@@ -7,11 +7,11 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**country** | **String** | The long-name descriptive version of the Country Code |  [optional] |
+|**country** | **String** | Deprecated. The long-name descriptive version of the Country Code. Please use &#39;country_code&#39; for POST/PATCH operations. |  [optional] |
 |**line1** | **String** | Street address line 1 |  [optional] |
 |**line2** | **String** | Street address line 2 |  [optional] |
 |**locality** | **String** | The municipality to which the address belongs |  [optional] |
-|**region** | **String** | The long-name descriptive version of the Region Code |  [optional] |
+|**region** | **String** | The long-name descriptive version of the Region Code. Please use &#39;region_code&#39; for POST/PATCH operations. |  [optional] |
 |**field** | [**FieldEnum**](#FieldEnum) | Address type field |  [optional] |
 |**countryCode** | **String** | An ISO 3166-2 Country Code (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) |  [optional] |
 |**postalCode** | **String** | Postal or ZIP code |  [optional] |

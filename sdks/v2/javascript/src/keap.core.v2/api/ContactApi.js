@@ -17,7 +17,9 @@ import Contact from '../model/Contact';
 import ContactLink from '../model/ContactLink';
 import ContactLinkType from '../model/ContactLinkType';
 import CreateContactLinkTypeRequest from '../model/CreateContactLinkTypeRequest';
+import CreateCustomFieldRequest from '../model/CreateCustomFieldRequest';
 import CreateUpdateContactRequest from '../model/CreateUpdateContactRequest';
+import CustomFieldMetaData from '../model/CustomFieldMetaData';
 import Error from '../model/Error';
 import LinkContactsRequest from '../model/LinkContactsRequest';
 import ListContactLinkTypesResponse from '../model/ListContactLinkTypesResponse';
@@ -92,6 +94,53 @@ export default class ContactApi {
      */
     createContact(createUpdateContactRequest, opts) {
       return this.createContactWithHttpInfo(createUpdateContactRequest, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Create a Contact Custom Field
+     * Creates a custom field of the specified type and options to the Contact object
+     * @param {module:keap.core.v2/model/CreateCustomFieldRequest} createCustomFieldRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/CustomFieldMetaData} and HTTP response
+     */
+    createContactCustomFieldWithHttpInfo(createCustomFieldRequest) {
+      let postBody = createCustomFieldRequest;
+      // verify the required parameter 'createCustomFieldRequest' is set
+      if (createCustomFieldRequest === undefined || createCustomFieldRequest === null) {
+        throw new Error("Missing the required parameter 'createCustomFieldRequest' when calling createContactCustomField");
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = CustomFieldMetaData;
+      return this.apiClient.callApi(
+        '/rest/v2/contacts/model/customFields', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Create a Contact Custom Field
+     * Creates a custom field of the specified type and options to the Contact object
+     * @param {module:keap.core.v2/model/CreateCustomFieldRequest} createCustomFieldRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/CustomFieldMetaData}
+     */
+    createContactCustomField(createCustomFieldRequest) {
+      return this.createContactCustomFieldWithHttpInfo(createCustomFieldRequest)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **sales_affiliate_id** | **str** | Sales affiliate ID | [optional] 
 **shipping_address** | [**AddressInformation**](AddressInformation.md) | Shipping address for the order | [optional] 
 **payment_plan** | [**UpdatedPaymentPlan**](UpdatedPaymentPlan.md) | Payment plan details | [optional] 
+**custom_fields** | [**List[CustomFieldValue]**](CustomFieldValue.md) | List of custom field values to apply to this order | [optional] 
 
 ## Example
 

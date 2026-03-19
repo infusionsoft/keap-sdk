@@ -14,7 +14,7 @@ import { HttpFile } from '../http/http';
 
 export class Address {
     /**
-    * The long-name descriptive version of the Country Code
+    * Deprecated. The long-name descriptive version of the Country Code. Please use \'country_code\' for POST/PATCH operations.
     */
     'country'?: string;
     /**
@@ -30,7 +30,7 @@ export class Address {
     */
     'locality'?: string;
     /**
-    * The long-name descriptive version of the Region Code
+    * The long-name descriptive version of the Region Code. Please use \'region_code\' for POST/PATCH operations.
     */
     'region'?: string;
     /**

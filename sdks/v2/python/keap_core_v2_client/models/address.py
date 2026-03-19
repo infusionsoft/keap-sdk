@@ -26,11 +26,11 @@ class Address(BaseModel):
     """
     Address
     """ # noqa: E501
-    country: Optional[StrictStr] = Field(default=None, description="The long-name descriptive version of the Country Code")
+    country: Optional[StrictStr] = Field(default=None, description="Deprecated. The long-name descriptive version of the Country Code. Please use 'country_code' for POST/PATCH operations.")
     line1: Optional[StrictStr] = Field(default=None, description="Street address line 1")
     line2: Optional[StrictStr] = Field(default=None, description="Street address line 2")
     locality: Optional[StrictStr] = Field(default=None, description="The municipality to which the address belongs")
-    region: Optional[StrictStr] = Field(default=None, description="The long-name descriptive version of the Region Code")
+    region: Optional[StrictStr] = Field(default=None, description="The long-name descriptive version of the Region Code. Please use 'region_code' for POST/PATCH operations.")
     var_field: Optional[StrictStr] = Field(default=None, description="Address type field", alias="field")
     country_code: Optional[StrictStr] = Field(default=None, description="An ISO 3166-2 Country Code (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3)")
     postal_code: Optional[StrictStr] = Field(default=None, description="Postal or ZIP code")

@@ -68,7 +68,8 @@ class UpdateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'lead_affiliate_id' => 'string',
         'sales_affiliate_id' => 'string',
         'shipping_address' => '\Keap\Core\V2\Model\AddressInformation',
-        'payment_plan' => '\Keap\Core\V2\Model\UpdatedPaymentPlan'
+        'payment_plan' => '\Keap\Core\V2\Model\UpdatedPaymentPlan',
+        'custom_fields' => '\Keap\Core\V2\Model\CustomFieldValue[]'
     ];
 
     /**
@@ -89,7 +90,8 @@ class UpdateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'lead_affiliate_id' => null,
         'sales_affiliate_id' => null,
         'shipping_address' => null,
-        'payment_plan' => null
+        'payment_plan' => null,
+        'custom_fields' => null
     ];
 
     /**
@@ -108,7 +110,8 @@ class UpdateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'lead_affiliate_id' => false,
         'sales_affiliate_id' => false,
         'shipping_address' => false,
-        'payment_plan' => false
+        'payment_plan' => false,
+        'custom_fields' => false
     ];
 
     /**
@@ -207,7 +210,8 @@ class UpdateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'lead_affiliate_id' => 'lead_affiliate_id',
         'sales_affiliate_id' => 'sales_affiliate_id',
         'shipping_address' => 'shipping_address',
-        'payment_plan' => 'payment_plan'
+        'payment_plan' => 'payment_plan',
+        'custom_fields' => 'custom_fields'
     ];
 
     /**
@@ -226,7 +230,8 @@ class UpdateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'lead_affiliate_id' => 'setLeadAffiliateId',
         'sales_affiliate_id' => 'setSalesAffiliateId',
         'shipping_address' => 'setShippingAddress',
-        'payment_plan' => 'setPaymentPlan'
+        'payment_plan' => 'setPaymentPlan',
+        'custom_fields' => 'setCustomFields'
     ];
 
     /**
@@ -245,7 +250,8 @@ class UpdateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'lead_affiliate_id' => 'getLeadAffiliateId',
         'sales_affiliate_id' => 'getSalesAffiliateId',
         'shipping_address' => 'getShippingAddress',
-        'payment_plan' => 'getPaymentPlan'
+        'payment_plan' => 'getPaymentPlan',
+        'custom_fields' => 'getCustomFields'
     ];
 
     /**
@@ -331,6 +337,7 @@ class UpdateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('sales_affiliate_id', $data ?? [], null);
         $this->setIfExists('shipping_address', $data ?? [], null);
         $this->setIfExists('payment_plan', $data ?? [], null);
+        $this->setIfExists('custom_fields', $data ?? [], null);
     }
 
     /**
@@ -687,6 +694,33 @@ class UpdateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('non-nullable payment_plan cannot be null');
         }
         $this->container['payment_plan'] = $payment_plan;
+
+        return $this;
+    }
+
+    /**
+     * Gets custom_fields
+     *
+     * @return \Keap\Core\V2\Model\CustomFieldValue[]|null
+     */
+    public function getCustomFields()
+    {
+        return $this->container['custom_fields'];
+    }
+
+    /**
+     * Sets custom_fields
+     *
+     * @param \Keap\Core\V2\Model\CustomFieldValue[]|null $custom_fields List of custom field values to apply to this order
+     *
+     * @return self
+     */
+    public function setCustomFields($custom_fields)
+    {
+        if (is_null($custom_fields)) {
+            throw new \InvalidArgumentException('non-nullable custom_fields cannot be null');
+        }
+        $this->container['custom_fields'] = $custom_fields;
 
         return $this;
     }

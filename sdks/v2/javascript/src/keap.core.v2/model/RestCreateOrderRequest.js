@@ -14,6 +14,7 @@
 import ApiClient from '../ApiClient';
 import AddressInformation from './AddressInformation';
 import CreateOrderItemRequest from './CreateOrderItemRequest';
+import CustomFieldValue from './CustomFieldValue';
 
 /**
  * The RestCreateOrderRequest model module.
@@ -89,6 +90,9 @@ class RestCreateOrderRequest {
             if (data.hasOwnProperty('shipping_address')) {
                 obj['shipping_address'] = AddressInformation.constructFromObject(data['shipping_address']);
             }
+            if (data.hasOwnProperty('custom_fields')) {
+                obj['custom_fields'] = ApiClient.convertToType(data['custom_fields'], [CustomFieldValue]);
+            }
         }
         return obj;
     }
@@ -150,6 +154,16 @@ class RestCreateOrderRequest {
         // validate the optional field `shipping_address`
         if (data['shipping_address']) { // data not null
           AddressInformation.validateJSON(data['shipping_address']);
+        }
+        if (data['custom_fields']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['custom_fields'])) {
+                throw new Error("Expected the field `custom_fields` to be an array in the JSON data but got " + data['custom_fields']);
+            }
+            // validate the optional field `custom_fields` (array)
+            for (const item of data['custom_fields']) {
+                CustomFieldValue.validateJSON(item);
+            };
         }
 
         return true;
@@ -225,6 +239,12 @@ RestCreateOrderRequest.prototype['sales_affiliate_id'] = undefined;
  * @member {module:keap.core.v2/model/AddressInformation} shipping_address
  */
 RestCreateOrderRequest.prototype['shipping_address'] = undefined;
+
+/**
+ * List of custom field values to apply to this order
+ * @member {Array.<module:keap.core.v2/model/CustomFieldValue>} custom_fields
+ */
+RestCreateOrderRequest.prototype['custom_fields'] = undefined;
 
 
 

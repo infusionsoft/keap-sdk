@@ -13,6 +13,7 @@
 
 import ApiClient from '../ApiClient';
 import AddressInformation from './AddressInformation';
+import CustomFieldValue from './CustomFieldValue';
 import UpdatedPaymentPlan from './UpdatedPaymentPlan';
 
 /**
@@ -82,6 +83,9 @@ class UpdateOrderRequest {
             if (data.hasOwnProperty('payment_plan')) {
                 obj['payment_plan'] = UpdatedPaymentPlan.constructFromObject(data['payment_plan']);
             }
+            if (data.hasOwnProperty('custom_fields')) {
+                obj['custom_fields'] = ApiClient.convertToType(data['custom_fields'], [CustomFieldValue]);
+            }
         }
         return obj;
     }
@@ -131,6 +135,16 @@ class UpdateOrderRequest {
         // validate the optional field `payment_plan`
         if (data['payment_plan']) { // data not null
           UpdatedPaymentPlan.validateJSON(data['payment_plan']);
+        }
+        if (data['custom_fields']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['custom_fields'])) {
+                throw new Error("Expected the field `custom_fields` to be an array in the JSON data but got " + data['custom_fields']);
+            }
+            // validate the optional field `custom_fields` (array)
+            for (const item of data['custom_fields']) {
+                CustomFieldValue.validateJSON(item);
+            };
         }
 
         return true;
@@ -206,6 +220,12 @@ UpdateOrderRequest.prototype['shipping_address'] = undefined;
  * @member {module:keap.core.v2/model/UpdatedPaymentPlan} payment_plan
  */
 UpdateOrderRequest.prototype['payment_plan'] = undefined;
+
+/**
+ * List of custom field values to apply to this order
+ * @member {Array.<module:keap.core.v2/model/CustomFieldValue>} custom_fields
+ */
+UpdateOrderRequest.prototype['custom_fields'] = undefined;
 
 
 

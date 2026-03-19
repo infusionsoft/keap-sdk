@@ -438,14 +438,6 @@ class UpdateSubscriptionRequestDetail implements ModelInterface, ArrayAccess, \J
             );
         }
 
-        if (!is_null($this->container['next_bill_date']) && !preg_match("/^\\d{4}-\\d{2}-\\d{2}$/", $this->container['next_bill_date'])) {
-            $invalidProperties[] = "invalid value for 'next_bill_date', must be conform to the pattern /^\\d{4}-\\d{2}-\\d{2}$/.";
-        }
-
-        if (!is_null($this->container['end_date']) && !preg_match("/^\\d{4}-\\d{2}-\\d{2}$/", $this->container['end_date'])) {
-            $invalidProperties[] = "invalid value for 'end_date', must be conform to the pattern /^\\d{4}-\\d{2}-\\d{2}$/.";
-        }
-
         return $invalidProperties;
     }
 
@@ -763,11 +755,6 @@ class UpdateSubscriptionRequestDetail implements ModelInterface, ArrayAccess, \J
         if (is_null($next_bill_date)) {
             throw new \InvalidArgumentException('non-nullable next_bill_date cannot be null');
         }
-
-        if ((!preg_match("/^\\d{4}-\\d{2}-\\d{2}$/", ObjectSerializer::toString($next_bill_date)))) {
-            throw new \InvalidArgumentException("invalid value for \$next_bill_date when calling UpdateSubscriptionRequestDetail., must conform to the pattern /^\\d{4}-\\d{2}-\\d{2}$/.");
-        }
-
         $this->container['next_bill_date'] = $next_bill_date;
 
         return $this;
@@ -795,11 +782,6 @@ class UpdateSubscriptionRequestDetail implements ModelInterface, ArrayAccess, \J
         if (is_null($end_date)) {
             throw new \InvalidArgumentException('non-nullable end_date cannot be null');
         }
-
-        if ((!preg_match("/^\\d{4}-\\d{2}-\\d{2}$/", ObjectSerializer::toString($end_date)))) {
-            throw new \InvalidArgumentException("invalid value for \$end_date when calling UpdateSubscriptionRequestDetail., must conform to the pattern /^\\d{4}-\\d{2}-\\d{2}$/.");
-        }
-
         $this->container['end_date'] = $end_date;
 
         return $this;

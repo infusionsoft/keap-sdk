@@ -50,8 +50,8 @@ const request: CompanyApiCreateCompanyRequest = {
     companyName: "Thryv",
     customFields: [
       {
-        content: null,
         id: "id_example",
+        content: null,
       },
     ],
     emailAddress: {
@@ -476,8 +476,8 @@ const request: CompanyApiUpdateCompanyRequest = {
     companyName: "Thryv",
     customFields: [
       {
-        content: null,
         id: "id_example",
+        content: null,
       },
     ],
     emailAddress: {

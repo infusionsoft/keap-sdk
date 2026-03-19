@@ -13,8 +13,8 @@
 import { HttpFile } from '../http/http';
 
 export class CustomFieldValue {
-    'content'?: any | null;
     'id'?: string;
+    'content'?: any | null;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -22,15 +22,15 @@ export class CustomFieldValue {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "content",
-            "baseName": "content",
-            "type": "any",
-            "format": ""
-        },
-        {
             "name": "id",
             "baseName": "id",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "content",
+            "baseName": "content",
+            "type": "any",
             "format": ""
         }    ];
 

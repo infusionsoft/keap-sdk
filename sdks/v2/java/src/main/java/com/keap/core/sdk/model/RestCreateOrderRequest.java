@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.keap.core.sdk.model.AddressInformation;
 import com.keap.core.sdk.model.CreateOrderItemRequest;
+import com.keap.core.sdk.model.CustomFieldValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
@@ -48,7 +49,8 @@ import jakarta.validation.Valid;
   RestCreateOrderRequest.JSON_PROPERTY_PROMO_CODES,
   RestCreateOrderRequest.JSON_PROPERTY_LEAD_AFFILIATE_ID,
   RestCreateOrderRequest.JSON_PROPERTY_SALES_AFFILIATE_ID,
-  RestCreateOrderRequest.JSON_PROPERTY_SHIPPING_ADDRESS
+  RestCreateOrderRequest.JSON_PROPERTY_SHIPPING_ADDRESS,
+  RestCreateOrderRequest.JSON_PROPERTY_CUSTOM_FIELDS
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class RestCreateOrderRequest implements Serializable {
@@ -122,6 +124,9 @@ public class RestCreateOrderRequest implements Serializable {
 
   public static final String JSON_PROPERTY_SHIPPING_ADDRESS = "shipping_address";
   @jakarta.annotation.Nullable  private AddressInformation shippingAddress;
+
+  public static final String JSON_PROPERTY_CUSTOM_FIELDS = "custom_fields";
+  @jakarta.annotation.Nullable  private List<@Valid CustomFieldValue> customFields = new ArrayList<>();
 
   public RestCreateOrderRequest() { 
   }
@@ -412,6 +417,39 @@ public class RestCreateOrderRequest implements Serializable {
     this.shippingAddress = shippingAddress;
   }
 
+
+  public RestCreateOrderRequest customFields(@jakarta.annotation.Nullable List<@Valid CustomFieldValue> customFields) {
+    this.customFields = customFields;
+    return this;
+  }
+
+  public RestCreateOrderRequest addCustomFieldsItem(CustomFieldValue customFieldsItem) {
+    if (this.customFields == null) {
+      this.customFields = new ArrayList<>();
+    }
+    this.customFields.add(customFieldsItem);
+    return this;
+  }
+
+  /**
+   * List of custom field values to apply to this order
+   * @return customFields
+   */
+  @jakarta.annotation.Nullable  @Valid
+  @Schema(example = "[{id=1, content=VIP}, {id=2, content=Preferred}]", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "List of custom field values to apply to this order")
+  @JsonProperty(JSON_PROPERTY_CUSTOM_FIELDS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public List<@Valid CustomFieldValue> getCustomFields() {
+    return customFields;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CUSTOM_FIELDS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCustomFields(@jakarta.annotation.Nullable List<@Valid CustomFieldValue> customFields) {
+    this.customFields = customFields;
+  }
+
   /**
    * Return true if this RestCreateOrderRequest object is equal to o.
    */
@@ -434,12 +472,13 @@ public class RestCreateOrderRequest implements Serializable {
         Objects.equals(this.promoCodes, restCreateOrderRequest.promoCodes) &&
         Objects.equals(this.leadAffiliateId, restCreateOrderRequest.leadAffiliateId) &&
         Objects.equals(this.salesAffiliateId, restCreateOrderRequest.salesAffiliateId) &&
-        Objects.equals(this.shippingAddress, restCreateOrderRequest.shippingAddress);
+        Objects.equals(this.shippingAddress, restCreateOrderRequest.shippingAddress) &&
+        Objects.equals(this.customFields, restCreateOrderRequest.customFields);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(notes, terms, contactId, orderItems, orderTitle, orderTime, orderType, promoCodes, leadAffiliateId, salesAffiliateId, shippingAddress);
+    return Objects.hash(notes, terms, contactId, orderItems, orderTitle, orderTime, orderType, promoCodes, leadAffiliateId, salesAffiliateId, shippingAddress, customFields);
   }
 
   @Override
@@ -457,6 +496,7 @@ public class RestCreateOrderRequest implements Serializable {
     sb.append("    leadAffiliateId: ").append(toIndentedString(leadAffiliateId)).append("\n");
     sb.append("    salesAffiliateId: ").append(toIndentedString(salesAffiliateId)).append("\n");
     sb.append("    shippingAddress: ").append(toIndentedString(shippingAddress)).append("\n");
+    sb.append("    customFields: ").append(toIndentedString(customFields)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -528,6 +568,10 @@ public class RestCreateOrderRequest implements Serializable {
               this.instance.shippingAddress = shippingAddress;
           return this;
         }
+            public RestCreateOrderRequest.Builder customFields(List<CustomFieldValue> customFields) {
+              this.instance.customFields = customFields;
+          return this;
+        }
         
     
         /**
@@ -572,7 +616,8 @@ public class RestCreateOrderRequest implements Serializable {
           .promoCodes(getPromoCodes())
           .leadAffiliateId(getLeadAffiliateId())
           .salesAffiliateId(getSalesAffiliateId())
-          .shippingAddress(getShippingAddress());
+          .shippingAddress(getShippingAddress())
+          .customFields(getCustomFields());
       }
 }
 

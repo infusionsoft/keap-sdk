@@ -399,10 +399,6 @@ class CreateSubscriptionRequestDetail implements ModelInterface, ArrayAccess, \J
         if ($this->container['subscription_plan_id'] === null) {
             $invalidProperties[] = "'subscription_plan_id' can't be null";
         }
-        if (!is_null($this->container['start_date']) && !preg_match("/^\\d{4}-\\d{2}-\\d{2}$/", $this->container['start_date'])) {
-            $invalidProperties[] = "invalid value for 'start_date', must be conform to the pattern /^\\d{4}-\\d{2}-\\d{2}$/.";
-        }
-
         return $invalidProperties;
     }
 
@@ -656,11 +652,6 @@ class CreateSubscriptionRequestDetail implements ModelInterface, ArrayAccess, \J
         if (is_null($start_date)) {
             throw new \InvalidArgumentException('non-nullable start_date cannot be null');
         }
-
-        if ((!preg_match("/^\\d{4}-\\d{2}-\\d{2}$/", ObjectSerializer::toString($start_date)))) {
-            throw new \InvalidArgumentException("invalid value for \$start_date when calling CreateSubscriptionRequestDetail., must conform to the pattern /^\\d{4}-\\d{2}-\\d{2}$/.");
-        }
-
         $this->container['start_date'] = $start_date;
 
         return $this;

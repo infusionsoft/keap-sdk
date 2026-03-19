@@ -391,6 +391,7 @@ class AddressDetail implements ModelInterface, ArrayAccess, \JsonSerializable
      * Gets country
      *
      * @return string|null
+     * @deprecated
      */
     public function getCountry()
     {
@@ -400,9 +401,10 @@ class AddressDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets country
      *
-     * @param string|null $country The long-name descriptive version of the Country Code
+     * @param string|null $country Deprecated. The long-name descriptive version of the Country Code. Please use 'country_code' for POST/PATCH operations.
      *
      * @return self
+     * @deprecated
      */
     public function setCountry($country)
     {
@@ -499,6 +501,7 @@ class AddressDetail implements ModelInterface, ArrayAccess, \JsonSerializable
      * Gets region
      *
      * @return string|null
+     * @deprecated
      */
     public function getRegion()
     {
@@ -508,9 +511,10 @@ class AddressDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets region
      *
-     * @param string|null $region The long-name descriptive version of the Region Code
+     * @param string|null $region The long-name descriptive version of the Region Code. Please use 'region_code' for POST/PATCH operations.
      *
      * @return self
+     * @deprecated
      */
     public function setRegion($region)
     {

@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **leadAffiliateId** | **String** | Lead affiliate ID | [optional] 
 **salesAffiliateId** | **String** | Sales affiliate ID | [optional] 
 **shippingAddress** | [**AddressInformation**](AddressInformation.md) | Shipping address for the order | [optional] 
+**customFields** | [**[CustomFieldValue]**](CustomFieldValue.md) | List of custom field values to apply to this order | [optional] 
 
 
 

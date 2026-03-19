@@ -43,7 +43,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.keap.core</groupId>
   <artifactId>core-service-v2-java-sdk</artifactId>
-  <version>2.0.1</version>
+  <version>2.0.2</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.keap.core:core-service-v2-java-sdk:2.0.1"
+compile "com.keap.core:core-service-v2-java-sdk:2.0.2"
 ```
 
 ### Others
@@ -66,7 +66,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/core-service-v2-java-sdk-2.0.1.jar`
+- `target/core-service-v2-java-sdk-2.0.2.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -248,6 +248,8 @@ Class | Method | HTTP request | Description
 *CompanyApi* | [**updateCompanyCustomFieldWithHttpInfo**](docs/CompanyApi.md#updateCompanyCustomFieldWithHttpInfo) | **PATCH** /rest/v2/companies/model/customFields/{custom_field_id} | Update a Company Custom Field
 *ContactApi* | [**createContact**](docs/ContactApi.md#createContact) | **POST** /rest/v2/contacts | Create a Contact
 *ContactApi* | [**createContactWithHttpInfo**](docs/ContactApi.md#createContactWithHttpInfo) | **POST** /rest/v2/contacts | Create a Contact
+*ContactApi* | [**createContactCustomField**](docs/ContactApi.md#createContactCustomField) | **POST** /rest/v2/contacts/model/customFields | Create a Contact Custom Field
+*ContactApi* | [**createContactCustomFieldWithHttpInfo**](docs/ContactApi.md#createContactCustomFieldWithHttpInfo) | **POST** /rest/v2/contacts/model/customFields | Create a Contact Custom Field
 *ContactApi* | [**createContactLinkType**](docs/ContactApi.md#createContactLinkType) | **POST** /rest/v2/contacts/links/types | Create a Contact Link type
 *ContactApi* | [**createContactLinkTypeWithHttpInfo**](docs/ContactApi.md#createContactLinkTypeWithHttpInfo) | **POST** /rest/v2/contacts/links/types | Create a Contact Link type
 *ContactApi* | [**deleteContact**](docs/ContactApi.md#deleteContact) | **DELETE** /rest/v2/contacts/{contact_id} | Delete a Contact

@@ -35,25 +35,25 @@ namespace Keap.Core.V2.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CustomField" /> class.
         /// </summary>
-        /// <param name="content">content.</param>
         /// <param name="id">id.</param>
-        public CustomField(Object content = default, string id = default)
+        /// <param name="content">content.</param>
+        public CustomField(string id = default, Object content = default)
         {
-            this.Content = content;
             this.Id = id;
+            this.Content = content;
         }
-
-        /// <summary>
-        /// Gets or Sets Content
-        /// </summary>
-        [DataMember(Name = "content", EmitDefaultValue = true)]
-        public Object Content { get; set; }
 
         /// <summary>
         /// Gets or Sets Id
         /// </summary>
         [DataMember(Name = "id", EmitDefaultValue = false)]
         public string Id { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Content
+        /// </summary>
+        [DataMember(Name = "content", EmitDefaultValue = true)]
+        public Object Content { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -63,8 +63,8 @@ namespace Keap.Core.V2.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CustomField {\n");
-            sb.Append("  Content: ").Append(Content).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  Content: ").Append(Content).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
