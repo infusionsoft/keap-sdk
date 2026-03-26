@@ -33,7 +33,7 @@ class CreateOrderItemRequest(BaseModel):
     product_id: Optional[StrictStr] = Field(default=None, description="The id of the product to be added to the order. Must be a valid product id. Required for item_type PRODUCT or SUBSCRIPTION.")
     subscription_plan_id: Optional[StrictStr] = Field(default=None, description="The id of the subscription plan to be added to the order. Must be a valid subscription plan id. Required only when the item_type is SUBSCRIPTION.")
     subscription_plan_description: Optional[StrictStr] = Field(default=None, description="A short description of the subscription's schedule. Used only for item_type SUBSCRIPTION. Must not be whitespace.")
-    item_type: Optional[StrictStr] = Field(default=None, description="The type of this order item. Will default to [PRODUCT] if omitted.")
+    item_type: Optional[StrictStr] = Field(default='PRODUCT', description="The type of this order item. Will default to [PRODUCT] if omitted.")
     price_per_unit: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The price per unit. For item_type PRODUCT or SUBSCRIPTION, if not specified, the product price will be used.")
     cost_per_unit: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The cost per unit. Used only for item_type PRODUCT or SUBSCRIPTION. If not specified, the product cost will be used.")
     additional_properties: Dict[str, Any] = {}
@@ -45,8 +45,8 @@ class CreateOrderItemRequest(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['PRODUCT,SHIPPING,TAX,FINANCE_CHARGE,SUBSCRIPTION,DISCOUNT,DISCOUNT_FREE_TRIAL,DISCOUNT_ORDER_TOTAL,DISCOUNT_PRODUCT,DISCOUNT_PRODUCT_CATEGORY,DISCOUNT_SHIPPING,OTHER']):
-            raise ValueError("must be one of enum values ('PRODUCT,SHIPPING,TAX,FINANCE_CHARGE,SUBSCRIPTION,DISCOUNT,DISCOUNT_FREE_TRIAL,DISCOUNT_ORDER_TOTAL,DISCOUNT_PRODUCT,DISCOUNT_PRODUCT_CATEGORY,DISCOUNT_SHIPPING,OTHER')")
+        if value not in set(['PRODUCT', 'SHIPPING', 'TAX', 'FINANCE_CHARGE', 'SUBSCRIPTION', 'DISCOUNT', 'DISCOUNT_FREE_TRIAL', 'DISCOUNT_ORDER_TOTAL', 'DISCOUNT_PRODUCT', 'DISCOUNT_PRODUCT_CATEGORY', 'DISCOUNT_SHIPPING', 'OTHER']):
+            raise ValueError("must be one of enum values ('PRODUCT', 'SHIPPING', 'TAX', 'FINANCE_CHARGE', 'SUBSCRIPTION', 'DISCOUNT', 'DISCOUNT_FREE_TRIAL', 'DISCOUNT_ORDER_TOTAL', 'DISCOUNT_PRODUCT', 'DISCOUNT_PRODUCT_CATEGORY', 'DISCOUNT_SHIPPING', 'OTHER')")
         return value
 
     model_config = ConfigDict(
@@ -114,7 +114,7 @@ class CreateOrderItemRequest(BaseModel):
             "product_id": obj.get("product_id"),
             "subscription_plan_id": obj.get("subscription_plan_id"),
             "subscription_plan_description": obj.get("subscription_plan_description"),
-            "item_type": obj.get("item_type"),
+            "item_type": obj.get("item_type") if obj.get("item_type") is not None else 'PRODUCT',
             "price_per_unit": obj.get("price_per_unit"),
             "cost_per_unit": obj.get("cost_per_unit")
         })

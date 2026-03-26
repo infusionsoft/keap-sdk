@@ -73,7 +73,29 @@ public class CreateOrderItemRequest implements Serializable {
    * The type of this order item. Will default to [PRODUCT] if omitted.
    */
   public enum ItemTypeEnum {
-    PRODUCT_SHIPPING_TAX_FINANCE_CHARGE_SUBSCRIPTION_DISCOUNT_DISCOUNT_FREE_TRIAL_DISCOUNT_ORDER_TOTAL_DISCOUNT_PRODUCT_DISCOUNT_PRODUCT_CATEGORY_DISCOUNT_SHIPPING_OTHER(String.valueOf("PRODUCT,SHIPPING,TAX,FINANCE_CHARGE,SUBSCRIPTION,DISCOUNT,DISCOUNT_FREE_TRIAL,DISCOUNT_ORDER_TOTAL,DISCOUNT_PRODUCT,DISCOUNT_PRODUCT_CATEGORY,DISCOUNT_SHIPPING,OTHER")),
+    PRODUCT(String.valueOf("PRODUCT")),
+    
+    SHIPPING(String.valueOf("SHIPPING")),
+    
+    TAX(String.valueOf("TAX")),
+    
+    FINANCE_CHARGE(String.valueOf("FINANCE_CHARGE")),
+    
+    SUBSCRIPTION(String.valueOf("SUBSCRIPTION")),
+    
+    DISCOUNT(String.valueOf("DISCOUNT")),
+    
+    DISCOUNT_FREE_TRIAL(String.valueOf("DISCOUNT_FREE_TRIAL")),
+    
+    DISCOUNT_ORDER_TOTAL(String.valueOf("DISCOUNT_ORDER_TOTAL")),
+    
+    DISCOUNT_PRODUCT(String.valueOf("DISCOUNT_PRODUCT")),
+    
+    DISCOUNT_PRODUCT_CATEGORY(String.valueOf("DISCOUNT_PRODUCT_CATEGORY")),
+    
+    DISCOUNT_SHIPPING(String.valueOf("DISCOUNT_SHIPPING")),
+    
+    OTHER(String.valueOf("OTHER")),
     
     UNKNOWN_COULD_NOT_DESERIALIZE(String.valueOf("unknown_default_open_api"));
 
@@ -104,7 +126,7 @@ public class CreateOrderItemRequest implements Serializable {
     }
   }
   public static final String JSON_PROPERTY_ITEM_TYPE = "item_type";
-  @jakarta.annotation.Nullable  private ItemTypeEnum itemType;
+  @jakarta.annotation.Nullable  private ItemTypeEnum itemType = ItemTypeEnum.PRODUCT;
 
   public static final String JSON_PROPERTY_PRICE_PER_UNIT = "price_per_unit";
   @jakarta.annotation.Nullable  private Double pricePerUnit;

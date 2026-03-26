@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **product_id** | **str** | The id of the product to be added to the order. Must be a valid product id. Required for item_type PRODUCT or SUBSCRIPTION. | [optional] 
 **subscription_plan_id** | **str** | The id of the subscription plan to be added to the order. Must be a valid subscription plan id. Required only when the item_type is SUBSCRIPTION. | [optional] 
 **subscription_plan_description** | **str** | A short description of the subscription&#39;s schedule. Used only for item_type SUBSCRIPTION. Must not be whitespace. | [optional] 
-**item_type** | **str** | The type of this order item. Will default to [PRODUCT] if omitted. | [optional] 
+**item_type** | **str** | The type of this order item. Will default to [PRODUCT] if omitted. | [optional] [default to 'PRODUCT']
 **price_per_unit** | **float** | The price per unit. For item_type PRODUCT or SUBSCRIPTION, if not specified, the product price will be used. | [optional] 
 **cost_per_unit** | **float** | The cost per unit. Used only for item_type PRODUCT or SUBSCRIPTION. If not specified, the product cost will be used. | [optional] 
 

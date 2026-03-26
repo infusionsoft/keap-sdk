@@ -21878,9 +21878,21 @@ components:
           example: Monthly subscription plan
         item_type:
           type: string
+          default: PRODUCT
           description: The type of this order item. Will default to [PRODUCT] if omitted.
           enum:
-          - PRODUCT,SHIPPING,TAX,FINANCE_CHARGE,SUBSCRIPTION,DISCOUNT,DISCOUNT_FREE_TRIAL,DISCOUNT_ORDER_TOTAL,DISCOUNT_PRODUCT,DISCOUNT_PRODUCT_CATEGORY,DISCOUNT_SHIPPING,OTHER
+          - PRODUCT
+          - SHIPPING
+          - TAX
+          - FINANCE_CHARGE
+          - SUBSCRIPTION
+          - DISCOUNT
+          - DISCOUNT_FREE_TRIAL
+          - DISCOUNT_ORDER_TOTAL
+          - DISCOUNT_PRODUCT
+          - DISCOUNT_PRODUCT_CATEGORY
+          - DISCOUNT_SHIPPING
+          - OTHER
           example: PRODUCT
         price_per_unit:
           type: number

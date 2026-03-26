@@ -35,6 +35,7 @@ class CreateOrderItemRequest {
      */
     static initialize(obj, quantity) { 
         obj['quantity'] = quantity;
+        obj['item_type'] = 'PRODUCT';
     }
 
     /**
@@ -176,8 +177,9 @@ CreateOrderItemRequest.prototype['subscription_plan_description'] = undefined;
 /**
  * The type of this order item. Will default to [PRODUCT] if omitted.
  * @member {module:keap.core.v2/model/CreateOrderItemRequest.ItemTypeEnum} item_type
+ * @default 'PRODUCT'
  */
-CreateOrderItemRequest.prototype['item_type'] = undefined;
+CreateOrderItemRequest.prototype['item_type'] = 'PRODUCT';
 
 /**
  * The price per unit. For item_type PRODUCT or SUBSCRIPTION, if not specified, the product price will be used.
@@ -203,10 +205,76 @@ CreateOrderItemRequest.prototype['cost_per_unit'] = undefined;
 CreateOrderItemRequest['ItemTypeEnum'] = {
 
     /**
-     * value: "PRODUCT,SHIPPING,TAX,FINANCE_CHARGE,SUBSCRIPTION,DISCOUNT,DISCOUNT_FREE_TRIAL,DISCOUNT_ORDER_TOTAL,DISCOUNT_PRODUCT,DISCOUNT_PRODUCT_CATEGORY,DISCOUNT_SHIPPING,OTHER"
+     * value: "PRODUCT"
      * @const
      */
-    "PRODUCT,SHIPPING,TAX,FINANCE_CHARGE,SUBSCRIPTION,DISCOUNT,DISCOUNT_FREE_TRIAL,DISCOUNT_ORDER_TOTAL,DISCOUNT_PRODUCT,DISCOUNT_PRODUCT_CATEGORY,DISCOUNT_SHIPPING,OTHER": "PRODUCT,SHIPPING,TAX,FINANCE_CHARGE,SUBSCRIPTION,DISCOUNT,DISCOUNT_FREE_TRIAL,DISCOUNT_ORDER_TOTAL,DISCOUNT_PRODUCT,DISCOUNT_PRODUCT_CATEGORY,DISCOUNT_SHIPPING,OTHER",
+    "PRODUCT": "PRODUCT",
+
+    /**
+     * value: "SHIPPING"
+     * @const
+     */
+    "SHIPPING": "SHIPPING",
+
+    /**
+     * value: "TAX"
+     * @const
+     */
+    "TAX": "TAX",
+
+    /**
+     * value: "FINANCE_CHARGE"
+     * @const
+     */
+    "FINANCE_CHARGE": "FINANCE_CHARGE",
+
+    /**
+     * value: "SUBSCRIPTION"
+     * @const
+     */
+    "SUBSCRIPTION": "SUBSCRIPTION",
+
+    /**
+     * value: "DISCOUNT"
+     * @const
+     */
+    "DISCOUNT": "DISCOUNT",
+
+    /**
+     * value: "DISCOUNT_FREE_TRIAL"
+     * @const
+     */
+    "DISCOUNT_FREE_TRIAL": "DISCOUNT_FREE_TRIAL",
+
+    /**
+     * value: "DISCOUNT_ORDER_TOTAL"
+     * @const
+     */
+    "DISCOUNT_ORDER_TOTAL": "DISCOUNT_ORDER_TOTAL",
+
+    /**
+     * value: "DISCOUNT_PRODUCT"
+     * @const
+     */
+    "DISCOUNT_PRODUCT": "DISCOUNT_PRODUCT",
+
+    /**
+     * value: "DISCOUNT_PRODUCT_CATEGORY"
+     * @const
+     */
+    "DISCOUNT_PRODUCT_CATEGORY": "DISCOUNT_PRODUCT_CATEGORY",
+
+    /**
+     * value: "DISCOUNT_SHIPPING"
+     * @const
+     */
+    "DISCOUNT_SHIPPING": "DISCOUNT_SHIPPING",
+
+    /**
+     * value: "OTHER"
+     * @const
+     */
+    "OTHER": "OTHER",
 
     /**
      * value: "unknown_default_open_api"

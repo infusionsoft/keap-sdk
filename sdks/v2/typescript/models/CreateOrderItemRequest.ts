@@ -129,6 +129,17 @@ export class CreateOrderItemRequest {
 }
 
 export enum CreateOrderItemRequestItemTypeEnum {
-    ProductshippingtaxfinanceChargesubscriptiondiscountdiscountFreeTrialdiscountOrderTotaldiscountProductdiscountProductCategorydiscountShippingother = 'PRODUCT,SHIPPING,TAX,FINANCE_CHARGE,SUBSCRIPTION,DISCOUNT,DISCOUNT_FREE_TRIAL,DISCOUNT_ORDER_TOTAL,DISCOUNT_PRODUCT,DISCOUNT_PRODUCT_CATEGORY,DISCOUNT_SHIPPING,OTHER'
+    Product = 'PRODUCT',
+    Shipping = 'SHIPPING',
+    Tax = 'TAX',
+    FinanceCharge = 'FINANCE_CHARGE',
+    Subscription = 'SUBSCRIPTION',
+    Discount = 'DISCOUNT',
+    DiscountFreeTrial = 'DISCOUNT_FREE_TRIAL',
+    DiscountOrderTotal = 'DISCOUNT_ORDER_TOTAL',
+    DiscountProduct = 'DISCOUNT_PRODUCT',
+    DiscountProductCategory = 'DISCOUNT_PRODUCT_CATEGORY',
+    DiscountShipping = 'DISCOUNT_SHIPPING',
+    Other = 'OTHER'
 }
 

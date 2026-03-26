@@ -40,10 +40,76 @@ namespace Keap.Core.V2.Model
         public enum ItemTypeEnum
         {
             /// <summary>
-            /// Enum PRODUCTSHIPPINGTAXFINANCECHARGESUBSCRIPTIONDISCOUNTDISCOUNTFREETRIALDISCOUNTORDERTOTALDISCOUNTPRODUCTDISCOUNTPRODUCTCATEGORYDISCOUNTSHIPPINGOTHER for value: PRODUCT,SHIPPING,TAX,FINANCE_CHARGE,SUBSCRIPTION,DISCOUNT,DISCOUNT_FREE_TRIAL,DISCOUNT_ORDER_TOTAL,DISCOUNT_PRODUCT,DISCOUNT_PRODUCT_CATEGORY,DISCOUNT_SHIPPING,OTHER
+            /// Enum PRODUCT for value: PRODUCT
             /// </summary>
-            [EnumMember(Value = "PRODUCT,SHIPPING,TAX,FINANCE_CHARGE,SUBSCRIPTION,DISCOUNT,DISCOUNT_FREE_TRIAL,DISCOUNT_ORDER_TOTAL,DISCOUNT_PRODUCT,DISCOUNT_PRODUCT_CATEGORY,DISCOUNT_SHIPPING,OTHER")]
-            PRODUCTSHIPPINGTAXFINANCECHARGESUBSCRIPTIONDISCOUNTDISCOUNTFREETRIALDISCOUNTORDERTOTALDISCOUNTPRODUCTDISCOUNTPRODUCTCATEGORYDISCOUNTSHIPPINGOTHER = 1
+            [EnumMember(Value = "PRODUCT")]
+            PRODUCT = 1,
+
+            /// <summary>
+            /// Enum SHIPPING for value: SHIPPING
+            /// </summary>
+            [EnumMember(Value = "SHIPPING")]
+            SHIPPING = 2,
+
+            /// <summary>
+            /// Enum TAX for value: TAX
+            /// </summary>
+            [EnumMember(Value = "TAX")]
+            TAX = 3,
+
+            /// <summary>
+            /// Enum FINANCECHARGE for value: FINANCE_CHARGE
+            /// </summary>
+            [EnumMember(Value = "FINANCE_CHARGE")]
+            FINANCECHARGE = 4,
+
+            /// <summary>
+            /// Enum SUBSCRIPTION for value: SUBSCRIPTION
+            /// </summary>
+            [EnumMember(Value = "SUBSCRIPTION")]
+            SUBSCRIPTION = 5,
+
+            /// <summary>
+            /// Enum DISCOUNT for value: DISCOUNT
+            /// </summary>
+            [EnumMember(Value = "DISCOUNT")]
+            DISCOUNT = 6,
+
+            /// <summary>
+            /// Enum DISCOUNTFREETRIAL for value: DISCOUNT_FREE_TRIAL
+            /// </summary>
+            [EnumMember(Value = "DISCOUNT_FREE_TRIAL")]
+            DISCOUNTFREETRIAL = 7,
+
+            /// <summary>
+            /// Enum DISCOUNTORDERTOTAL for value: DISCOUNT_ORDER_TOTAL
+            /// </summary>
+            [EnumMember(Value = "DISCOUNT_ORDER_TOTAL")]
+            DISCOUNTORDERTOTAL = 8,
+
+            /// <summary>
+            /// Enum DISCOUNTPRODUCT for value: DISCOUNT_PRODUCT
+            /// </summary>
+            [EnumMember(Value = "DISCOUNT_PRODUCT")]
+            DISCOUNTPRODUCT = 9,
+
+            /// <summary>
+            /// Enum DISCOUNTPRODUCTCATEGORY for value: DISCOUNT_PRODUCT_CATEGORY
+            /// </summary>
+            [EnumMember(Value = "DISCOUNT_PRODUCT_CATEGORY")]
+            DISCOUNTPRODUCTCATEGORY = 10,
+
+            /// <summary>
+            /// Enum DISCOUNTSHIPPING for value: DISCOUNT_SHIPPING
+            /// </summary>
+            [EnumMember(Value = "DISCOUNT_SHIPPING")]
+            DISCOUNTSHIPPING = 11,
+
+            /// <summary>
+            /// Enum OTHER for value: OTHER
+            /// </summary>
+            [EnumMember(Value = "OTHER")]
+            OTHER = 12
         }
 
         /// <summary>
@@ -70,10 +136,10 @@ namespace Keap.Core.V2.Model
         /// <param name="productId">The id of the product to be added to the order. Must be a valid product id. Required for item_type PRODUCT or SUBSCRIPTION..</param>
         /// <param name="subscriptionPlanId">The id of the subscription plan to be added to the order. Must be a valid subscription plan id. Required only when the item_type is SUBSCRIPTION..</param>
         /// <param name="subscriptionPlanDescription">A short description of the subscription&#39;s schedule. Used only for item_type SUBSCRIPTION. Must not be whitespace..</param>
-        /// <param name="itemType">The type of this order item. Will default to [PRODUCT] if omitted..</param>
+        /// <param name="itemType">The type of this order item. Will default to [PRODUCT] if omitted. (default to ItemTypeEnum.PRODUCT).</param>
         /// <param name="pricePerUnit">The price per unit. For item_type PRODUCT or SUBSCRIPTION, if not specified, the product price will be used..</param>
         /// <param name="costPerUnit">The cost per unit. Used only for item_type PRODUCT or SUBSCRIPTION. If not specified, the product cost will be used..</param>
-        public CreateOrderItemRequest(string name = default, string description = default, int quantity = default, string notes = default, string productId = default, string subscriptionPlanId = default, string subscriptionPlanDescription = default, ItemTypeEnum? itemType = default, double pricePerUnit = default, double costPerUnit = default)
+        public CreateOrderItemRequest(string name = default, string description = default, int quantity = default, string notes = default, string productId = default, string subscriptionPlanId = default, string subscriptionPlanDescription = default, ItemTypeEnum? itemType = ItemTypeEnum.PRODUCT, double pricePerUnit = default, double costPerUnit = default)
         {
             this.Quantity = quantity;
             this.Name = name;

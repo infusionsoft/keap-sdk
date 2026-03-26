@@ -282,7 +282,18 @@ class CreateOrderItemRequest implements ModelInterface, ArrayAccess, \JsonSerial
         return self::$openAPIModelName;
     }
 
-    public const ITEM_TYPE_PRODUCTSHIPPINGTAXFINANCE_CHARGESUBSCRIPTIONDISCOUNTDISCOUNT_FREE_TRIALDISCOUNT_ORDER_TOTALDISCOUNT_PRODUCTDISCOUNT_PRODUCT_CATEGORYDISCOUNT_SHIPPINGOTHER = 'PRODUCT,SHIPPING,TAX,FINANCE_CHARGE,SUBSCRIPTION,DISCOUNT,DISCOUNT_FREE_TRIAL,DISCOUNT_ORDER_TOTAL,DISCOUNT_PRODUCT,DISCOUNT_PRODUCT_CATEGORY,DISCOUNT_SHIPPING,OTHER';
+    public const ITEM_TYPE_PRODUCT = 'PRODUCT';
+    public const ITEM_TYPE_SHIPPING = 'SHIPPING';
+    public const ITEM_TYPE_TAX = 'TAX';
+    public const ITEM_TYPE_FINANCE_CHARGE = 'FINANCE_CHARGE';
+    public const ITEM_TYPE_SUBSCRIPTION = 'SUBSCRIPTION';
+    public const ITEM_TYPE_DISCOUNT = 'DISCOUNT';
+    public const ITEM_TYPE_DISCOUNT_FREE_TRIAL = 'DISCOUNT_FREE_TRIAL';
+    public const ITEM_TYPE_DISCOUNT_ORDER_TOTAL = 'DISCOUNT_ORDER_TOTAL';
+    public const ITEM_TYPE_DISCOUNT_PRODUCT = 'DISCOUNT_PRODUCT';
+    public const ITEM_TYPE_DISCOUNT_PRODUCT_CATEGORY = 'DISCOUNT_PRODUCT_CATEGORY';
+    public const ITEM_TYPE_DISCOUNT_SHIPPING = 'DISCOUNT_SHIPPING';
+    public const ITEM_TYPE_OTHER = 'OTHER';
 
     /**
      * Gets allowable values of the enum
@@ -292,7 +303,18 @@ class CreateOrderItemRequest implements ModelInterface, ArrayAccess, \JsonSerial
     public function getItemTypeAllowableValues()
     {
         return [
-            self::ITEM_TYPE_PRODUCTSHIPPINGTAXFINANCE_CHARGESUBSCRIPTIONDISCOUNTDISCOUNT_FREE_TRIALDISCOUNT_ORDER_TOTALDISCOUNT_PRODUCTDISCOUNT_PRODUCT_CATEGORYDISCOUNT_SHIPPINGOTHER,
+            self::ITEM_TYPE_PRODUCT,
+            self::ITEM_TYPE_SHIPPING,
+            self::ITEM_TYPE_TAX,
+            self::ITEM_TYPE_FINANCE_CHARGE,
+            self::ITEM_TYPE_SUBSCRIPTION,
+            self::ITEM_TYPE_DISCOUNT,
+            self::ITEM_TYPE_DISCOUNT_FREE_TRIAL,
+            self::ITEM_TYPE_DISCOUNT_ORDER_TOTAL,
+            self::ITEM_TYPE_DISCOUNT_PRODUCT,
+            self::ITEM_TYPE_DISCOUNT_PRODUCT_CATEGORY,
+            self::ITEM_TYPE_DISCOUNT_SHIPPING,
+            self::ITEM_TYPE_OTHER,
         ];
     }
 
@@ -318,7 +340,7 @@ class CreateOrderItemRequest implements ModelInterface, ArrayAccess, \JsonSerial
         $this->setIfExists('product_id', $data ?? [], null);
         $this->setIfExists('subscription_plan_id', $data ?? [], null);
         $this->setIfExists('subscription_plan_description', $data ?? [], null);
-        $this->setIfExists('item_type', $data ?? [], null);
+        $this->setIfExists('item_type', $data ?? [], 'PRODUCT');
         $this->setIfExists('price_per_unit', $data ?? [], null);
         $this->setIfExists('cost_per_unit', $data ?? [], null);
     }

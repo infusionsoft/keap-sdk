@@ -1,6 +1,6 @@
 {
     "name": "keap/keap-sdk",
-    "version": "2.0.2",
+    "version": "2.0.3",
     "description": "Keap Public API Documentation",
     "keywords": [
         "openapitools",
