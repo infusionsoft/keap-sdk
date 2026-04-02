@@ -22,12 +22,12 @@ All URIs are relative to https://api.keap.com/crm, except if the operation defin
 ## `createContact()`
 
 ```php
-createContact($create_update_contact_request, $fields): \Keap\Core\V2\Model\Contact
+createContact($create_update_contact_request, $fields, $duplicate_option): \Keap\Core\V2\Model\Contact
 ```
 
 Create a Contact
 
-Creates a new Contact. *Note:* Contact must contain at least one item in `email_addresses` or `phone_numbers` and `country_code` is required if `region` is specified.
+Creates a new Contact. *Note:* Contact must contain at least one item in `email_addresses` or `phone_numbers` and `country_code` is required if `region` is specified. Optionally accepts a `duplicate_option` query parameter which performs duplicate checking by one of the following options: `Email`, `EmailAndName`, `EmailAndNameAndCompany`. If a match is found using the option provided, the existing contact will be updated. If an existing contact was not found using the `duplicate_option` provided, a new contact record will be created. When `duplicate_option` is not specified, a new contact is always created.
 
 ### Example
 
@@ -47,9 +47,10 @@ $apiInstance = new Keap\Core\V2\Api\ContactApi(
 );
 $create_update_contact_request = new \Keap\Core\V2\Model\CreateUpdateContactRequest(); // \Keap\Core\V2\Model\CreateUpdateContactRequest
 $fields = array('fields_example'); // string[] | Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
+$duplicate_option = 'duplicate_option_example'; // string | Duplicate check strategy. If provided, performs duplicate checking and updates the existing contact if a match is found.
 
 try {
-    $result = $apiInstance->createContact($create_update_contact_request, $fields);
+    $result = $apiInstance->createContact($create_update_contact_request, $fields, $duplicate_option);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContactApi->createContact: ', $e->getMessage(), PHP_EOL;
@@ -62,6 +63,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **create_update_contact_request** | [**\Keap\Core\V2\Model\CreateUpdateContactRequest**](../Model/CreateUpdateContactRequest.md)|  | |
 | **fields** | [**string[]**](../Model/string.md)| Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website) | [optional] |
+| **duplicate_option** | **string**| Duplicate check strategy. If provided, performs duplicate checking and updates the existing contact if a match is found. | [optional] |
 
 ### Return type
 

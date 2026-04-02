@@ -20,11 +20,11 @@ All URIs are relative to *https://api.keap.com/crm*
 
 <a id="createcontact"></a>
 # **CreateContact**
-> Contact CreateContact (CreateUpdateContactRequest createUpdateContactRequest, List<string>? fields = null)
+> Contact CreateContact (CreateUpdateContactRequest createUpdateContactRequest, List<string>? fields = null, string? duplicateOption = null)
 
 Create a Contact
 
-Creates a new Contact. *Note:* Contact must contain at least one item in `email_addresses` or `phone_numbers` and `country_code` is required if `region` is specified.
+Creates a new Contact. *Note:* Contact must contain at least one item in `email_addresses` or `phone_numbers` and `country_code` is required if `region` is specified. Optionally accepts a `duplicate_option` query parameter which performs duplicate checking by one of the following options: `Email`, `EmailAndName`, `EmailAndNameAndCompany`. If a match is found using the option provided, the existing contact will be updated. If an existing contact was not found using the `duplicate_option` provided, a new contact record will be created. When `duplicate_option` is not specified, a new contact is always created.
 
 ### Example
 ```csharp
@@ -48,11 +48,12 @@ namespace Example
             var apiInstance = new ContactApi(config);
             var createUpdateContactRequest = new CreateUpdateContactRequest(); // CreateUpdateContactRequest | 
             var fields = new List<string>?(); // List<string>? | Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website) (optional) 
+            var duplicateOption = "Email";  // string? | Duplicate check strategy. If provided, performs duplicate checking and updates the existing contact if a match is found. (optional) 
 
             try
             {
                 // Create a Contact
-                Contact result = apiInstance.CreateContact(createUpdateContactRequest, fields);
+                Contact result = apiInstance.CreateContact(createUpdateContactRequest, fields, duplicateOption);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -73,7 +74,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Create a Contact
-    ApiResponse<Contact> response = apiInstance.CreateContactWithHttpInfo(createUpdateContactRequest, fields);
+    ApiResponse<Contact> response = apiInstance.CreateContactWithHttpInfo(createUpdateContactRequest, fields, duplicateOption);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -92,6 +93,7 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **createUpdateContactRequest** | [**CreateUpdateContactRequest**](CreateUpdateContactRequest.md) |  |  |
 | **fields** | [**List&lt;string&gt;?**](string.md) | Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website) | [optional]  |
+| **duplicateOption** | **string?** | Duplicate check strategy. If provided, performs duplicate checking and updates the existing contact if a match is found. | [optional]  |
 
 ### Return type
 
@@ -110,7 +112,7 @@ catch (ApiException e)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **201** | Created |  -  |
+| **200** | OK |  -  |
 | **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |

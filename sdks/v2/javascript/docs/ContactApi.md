@@ -26,7 +26,7 @@ Method | HTTP request | Description
 
 Create a Contact
 
-Creates a new Contact. *Note:* Contact must contain at least one item in &#x60;email_addresses&#x60; or &#x60;phone_numbers&#x60; and &#x60;country_code&#x60; is required if &#x60;region&#x60; is specified.
+Creates a new Contact. *Note:* Contact must contain at least one item in &#x60;email_addresses&#x60; or &#x60;phone_numbers&#x60; and &#x60;country_code&#x60; is required if &#x60;region&#x60; is specified. Optionally accepts a &#x60;duplicate_option&#x60; query parameter which performs duplicate checking by one of the following options: &#x60;Email&#x60;, &#x60;EmailAndName&#x60;, &#x60;EmailAndNameAndCompany&#x60;. If a match is found using the option provided, the existing contact will be updated. If an existing contact was not found using the &#x60;duplicate_option&#x60; provided, a new contact record will be created. When &#x60;duplicate_option&#x60; is not specified, a new contact is always created.
 
 ### Example
 
@@ -40,7 +40,8 @@ oauth2.accessToken = 'YOUR ACCESS TOKEN';
 let apiInstance = new KeapCoreServiceV2Sdk.ContactApi();
 let createUpdateContactRequest = new KeapCoreServiceV2Sdk.CreateUpdateContactRequest(); // CreateUpdateContactRequest | 
 let opts = {
-  'fields': ["null"] // [String] | Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
+  'fields': ["null"], // [String] | Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
+  'duplicateOption': "duplicateOption_example" // String | Duplicate check strategy. If provided, performs duplicate checking and updates the existing contact if a match is found.
 };
 apiInstance.createContact(createUpdateContactRequest, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -57,6 +58,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **createUpdateContactRequest** | [**CreateUpdateContactRequest**](CreateUpdateContactRequest.md)|  | 
  **fields** | [**[String]**](String.md)| Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website) | [optional] 
+ **duplicateOption** | **String**| Duplicate check strategy. If provided, performs duplicate checking and updates the existing contact if a match is found. | [optional] 
 
 ### Return type
 

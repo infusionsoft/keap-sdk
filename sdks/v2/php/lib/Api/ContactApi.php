@@ -168,15 +168,16 @@ class ContactApi
      *
      * @param  \Keap\Core\V2\Model\CreateUpdateContactRequest $create_update_contact_request create_update_contact_request (required)
      * @param  string[]|null $fields Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website) (optional)
+     * @param  string|null $duplicate_option Duplicate check strategy. If provided, performs duplicate checking and updates the existing contact if a match is found. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createContact'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Keap\Core\V2\Model\Contact|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
      */
-    public function createContact($create_update_contact_request, $fields = null, string $contentType = self::contentTypes['createContact'][0])
+    public function createContact($create_update_contact_request, $fields = null, $duplicate_option = null, string $contentType = self::contentTypes['createContact'][0])
     {
-        list($response) = $this->createContactWithHttpInfo($create_update_contact_request, $fields, $contentType);
+        list($response) = $this->createContactWithHttpInfo($create_update_contact_request, $fields, $duplicate_option, $contentType);
         return $response;
     }
 
@@ -187,15 +188,16 @@ class ContactApi
      *
      * @param  \Keap\Core\V2\Model\CreateUpdateContactRequest $create_update_contact_request (required)
      * @param  string[]|null $fields Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website) (optional)
+     * @param  string|null $duplicate_option Duplicate check strategy. If provided, performs duplicate checking and updates the existing contact if a match is found. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createContact'] to see the possible values for this operation
      *
      * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Keap\Core\V2\Model\Contact|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createContactWithHttpInfo($create_update_contact_request, $fields = null, string $contentType = self::contentTypes['createContact'][0])
+    public function createContactWithHttpInfo($create_update_contact_request, $fields = null, $duplicate_option = null, string $contentType = self::contentTypes['createContact'][0])
     {
-        $request = $this->createContactRequest($create_update_contact_request, $fields, $contentType);
+        $request = $this->createContactRequest($create_update_contact_request, $fields, $duplicate_option, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -221,7 +223,7 @@ class ContactApi
 
 
             switch($statusCode) {
-                case 201:
+                case 200:
                     return $this->handleResponseWithDataType(
                         '\Keap\Core\V2\Model\Contact',
                         $request,
@@ -293,7 +295,7 @@ class ContactApi
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 201:
+                case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Keap\Core\V2\Model\Contact',
@@ -371,14 +373,15 @@ class ContactApi
      *
      * @param  \Keap\Core\V2\Model\CreateUpdateContactRequest $create_update_contact_request (required)
      * @param  string[]|null $fields Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website) (optional)
+     * @param  string|null $duplicate_option Duplicate check strategy. If provided, performs duplicate checking and updates the existing contact if a match is found. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createContact'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createContactAsync($create_update_contact_request, $fields = null, string $contentType = self::contentTypes['createContact'][0])
+    public function createContactAsync($create_update_contact_request, $fields = null, $duplicate_option = null, string $contentType = self::contentTypes['createContact'][0])
     {
-        return $this->createContactAsyncWithHttpInfo($create_update_contact_request, $fields, $contentType)
+        return $this->createContactAsyncWithHttpInfo($create_update_contact_request, $fields, $duplicate_option, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -393,15 +396,16 @@ class ContactApi
      *
      * @param  \Keap\Core\V2\Model\CreateUpdateContactRequest $create_update_contact_request (required)
      * @param  string[]|null $fields Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website) (optional)
+     * @param  string|null $duplicate_option Duplicate check strategy. If provided, performs duplicate checking and updates the existing contact if a match is found. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createContact'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createContactAsyncWithHttpInfo($create_update_contact_request, $fields = null, string $contentType = self::contentTypes['createContact'][0])
+    public function createContactAsyncWithHttpInfo($create_update_contact_request, $fields = null, $duplicate_option = null, string $contentType = self::contentTypes['createContact'][0])
     {
         $returnType = '\Keap\Core\V2\Model\Contact';
-        $request = $this->createContactRequest($create_update_contact_request, $fields, $contentType);
+        $request = $this->createContactRequest($create_update_contact_request, $fields, $duplicate_option, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -444,12 +448,13 @@ class ContactApi
      *
      * @param  \Keap\Core\V2\Model\CreateUpdateContactRequest $create_update_contact_request (required)
      * @param  string[]|null $fields Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website) (optional)
+     * @param  string|null $duplicate_option Duplicate check strategy. If provided, performs duplicate checking and updates the existing contact if a match is found. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createContact'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createContactRequest($create_update_contact_request, $fields = null, string $contentType = self::contentTypes['createContact'][0])
+    public function createContactRequest($create_update_contact_request, $fields = null, $duplicate_option = null, string $contentType = self::contentTypes['createContact'][0])
     {
 
         // verify the required parameter 'create_update_contact_request' is set
@@ -458,6 +463,7 @@ class ContactApi
                 'Missing the required parameter $create_update_contact_request when calling createContact'
             );
         }
+
 
 
 
@@ -475,6 +481,15 @@ class ContactApi
             'array', // openApiType
             'form', // style
             false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $duplicate_option,
+            'duplicate_option', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
             false // required
         ) ?? []);
 

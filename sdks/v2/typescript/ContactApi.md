@@ -22,7 +22,7 @@ Method | HTTP request | Description
 # **createContact**
 > Contact createContact(createUpdateContactRequest)
 
-Creates a new Contact. *Note:* Contact must contain at least one item in `email_addresses` or `phone_numbers` and `country_code` is required if `region` is specified.
+Creates a new Contact. *Note:* Contact must contain at least one item in `email_addresses` or `phone_numbers` and `country_code` is required if `region` is specified. Optionally accepts a `duplicate_option` query parameter which performs duplicate checking by one of the following options: `Email`, `EmailAndName`, `EmailAndNameAndCompany`. If a match is found using the option provided, the existing contact will be updated. If an existing contact was not found using the `duplicate_option` provided, a new contact record will be created. When `duplicate_option` is not specified, a new contact is always created.
 
 ### Example
 
@@ -125,6 +125,8 @@ const request: ContactApiCreateContactRequest = {
   fields: [
     "fields_example",
   ],
+    // Duplicate check strategy. If provided, performs duplicate checking and updates the existing contact if a match is found. (optional)
+  duplicateOption: "Email",
 };
 
 const data = await apiInstance.createContact(request);
@@ -138,6 +140,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **createUpdateContactRequest** | **CreateUpdateContactRequest**|  |
  **fields** | **Array&lt;string&gt;** | Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website) | (optional) defaults to undefined
+ **duplicateOption** | [**&#39;Email&#39; | &#39;EmailAndName&#39; | &#39;EmailAndNameAndCompany&#39;**]**Array<&#39;Email&#39; &#124; &#39;EmailAndName&#39; &#124; &#39;EmailAndNameAndCompany&#39;>** | Duplicate check strategy. If provided, performs duplicate checking and updates the existing contact if a match is found. | (optional) defaults to undefined
 
 
 ### Return type
@@ -157,7 +160,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | Created |  -  |
+**200** | OK |  -  |
 **400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |

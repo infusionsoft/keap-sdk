@@ -107,27 +107,29 @@ import io.github.resilience4j.retry.Retry;
 
   /**
    * Create a Contact
-   * Creates a new Contact. *Note:* Contact must contain at least one item in &#x60;email_addresses&#x60; or &#x60;phone_numbers&#x60; and &#x60;country_code&#x60; is required if &#x60;region&#x60; is specified.
+   * Creates a new Contact. *Note:* Contact must contain at least one item in &#x60;email_addresses&#x60; or &#x60;phone_numbers&#x60; and &#x60;country_code&#x60; is required if &#x60;region&#x60; is specified. Optionally accepts a &#x60;duplicate_option&#x60; query parameter which performs duplicate checking by one of the following options: &#x60;Email&#x60;, &#x60;EmailAndName&#x60;, &#x60;EmailAndNameAndCompany&#x60;. If a match is found using the option provided, the existing contact will be updated. If an existing contact was not found using the &#x60;duplicate_option&#x60; provided, a new contact record will be created. When &#x60;duplicate_option&#x60; is not specified, a new contact is always created.
    * @param createUpdateContactRequest  (required)
    * @param fields Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website) (optional)
+   * @param duplicateOption Duplicate check strategy. If provided, performs duplicate checking and updates the existing contact if a match is found. (optional)
    * @return Contact
    * @throws ApiException if fails to make API call
    */
-  public Contact createContact(CreateUpdateContactRequest createUpdateContactRequest, List<String> fields) throws ApiException {
-    ApiResponse<Contact> localVarResponse = createContactWithHttpInfo(createUpdateContactRequest, fields);
+  public Contact createContact(CreateUpdateContactRequest createUpdateContactRequest, List<String> fields, String duplicateOption) throws ApiException {
+    ApiResponse<Contact> localVarResponse = createContactWithHttpInfo(createUpdateContactRequest, fields, duplicateOption);
     return localVarResponse.getData();
   }
 
   /**
    * Create a Contact
-   * Creates a new Contact. *Note:* Contact must contain at least one item in &#x60;email_addresses&#x60; or &#x60;phone_numbers&#x60; and &#x60;country_code&#x60; is required if &#x60;region&#x60; is specified.
+   * Creates a new Contact. *Note:* Contact must contain at least one item in &#x60;email_addresses&#x60; or &#x60;phone_numbers&#x60; and &#x60;country_code&#x60; is required if &#x60;region&#x60; is specified. Optionally accepts a &#x60;duplicate_option&#x60; query parameter which performs duplicate checking by one of the following options: &#x60;Email&#x60;, &#x60;EmailAndName&#x60;, &#x60;EmailAndNameAndCompany&#x60;. If a match is found using the option provided, the existing contact will be updated. If an existing contact was not found using the &#x60;duplicate_option&#x60; provided, a new contact record will be created. When &#x60;duplicate_option&#x60; is not specified, a new contact is always created.
    * @param createUpdateContactRequest  (required)
    * @param fields Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website) (optional)
+   * @param duplicateOption Duplicate check strategy. If provided, performs duplicate checking and updates the existing contact if a match is found. (optional)
    * @return ApiResponse&lt;Contact&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Contact> createContactWithHttpInfo(CreateUpdateContactRequest createUpdateContactRequest, List<String> fields) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = createContactRequestBuilder(createUpdateContactRequest, fields);
+  public ApiResponse<Contact> createContactWithHttpInfo(CreateUpdateContactRequest createUpdateContactRequest, List<String> fields, String duplicateOption) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = createContactRequestBuilder(createUpdateContactRequest, fields, duplicateOption);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
       memberVarHttpClient.send(
@@ -167,7 +169,7 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder createContactRequestBuilder(CreateUpdateContactRequest createUpdateContactRequest, List<String> fields) throws ApiException {
+  private HttpRequest.Builder createContactRequestBuilder(CreateUpdateContactRequest createUpdateContactRequest, List<String> fields, String duplicateOption) throws ApiException {
     // verify the required parameter 'createUpdateContactRequest' is set
     if (createUpdateContactRequest == null) {
       throw new ApiException(400, "Missing the required parameter 'createUpdateContactRequest' when calling createContact");
@@ -182,6 +184,8 @@ import io.github.resilience4j.retry.Retry;
     String localVarQueryParameterBaseName;
     localVarQueryParameterBaseName = "fields";
     localVarQueryParams.addAll(ApiClient.parameterToPairs("csv", "fields", fields));
+    localVarQueryParameterBaseName = "duplicate_option";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("duplicate_option", duplicateOption));
 
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");

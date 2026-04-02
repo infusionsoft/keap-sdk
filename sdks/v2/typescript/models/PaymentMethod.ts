@@ -16,6 +16,7 @@ import { HttpFile } from '../http/http';
 export class PaymentMethod {
     'contactId'?: string;
     'paymentMethodId'?: string;
+    'creditCardId'?: string;
     /**
     * The merchant type this payment method was authorized with. Valid values are: PAYPAL, AUTHORIZE, EWAY, WEPAY, STRIPE, KEAP_PAY, UNSUPPORTED
     */
@@ -49,6 +50,12 @@ export class PaymentMethod {
         {
             "name": "paymentMethodId",
             "baseName": "payment_method_id",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "creditCardId",
+            "baseName": "credit_card_id",
             "type": "string",
             "format": ""
         },

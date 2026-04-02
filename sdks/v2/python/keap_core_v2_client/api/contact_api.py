@@ -56,6 +56,7 @@ class ContactApi:
         self,
         create_update_contact_request: CreateUpdateContactRequest,
         fields: Annotated[Optional[List[StrictStr]], Field(description="Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)")] = None,
+        duplicate_option: Annotated[Optional[StrictStr], Field(description="Duplicate check strategy. If provided, performs duplicate checking and updates the existing contact if a match is found.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -71,12 +72,14 @@ class ContactApi:
     ) -> Contact:
         """Create a Contact
 
-        Creates a new Contact. *Note:* Contact must contain at least one item in `email_addresses` or `phone_numbers` and `country_code` is required if `region` is specified.
+        Creates a new Contact. *Note:* Contact must contain at least one item in `email_addresses` or `phone_numbers` and `country_code` is required if `region` is specified. Optionally accepts a `duplicate_option` query parameter which performs duplicate checking by one of the following options: `Email`, `EmailAndName`, `EmailAndNameAndCompany`. If a match is found using the option provided, the existing contact will be updated. If an existing contact was not found using the `duplicate_option` provided, a new contact record will be created. When `duplicate_option` is not specified, a new contact is always created.
 
         :param create_update_contact_request: (required)
         :type create_update_contact_request: CreateUpdateContactRequest
         :param fields: Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
         :type fields: List[str]
+        :param duplicate_option: Duplicate check strategy. If provided, performs duplicate checking and updates the existing contact if a match is found.
+        :type duplicate_option: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -102,6 +105,7 @@ class ContactApi:
         _param = self._create_contact_serialize(
             create_update_contact_request=create_update_contact_request,
             fields=fields,
+            duplicate_option=duplicate_option,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -109,7 +113,7 @@ class ContactApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Contact",
+            '200': "Contact",
             '400': "Error",
             '401': "Error",
             '403': "Error",
@@ -134,6 +138,7 @@ class ContactApi:
         self,
         create_update_contact_request: CreateUpdateContactRequest,
         fields: Annotated[Optional[List[StrictStr]], Field(description="Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)")] = None,
+        duplicate_option: Annotated[Optional[StrictStr], Field(description="Duplicate check strategy. If provided, performs duplicate checking and updates the existing contact if a match is found.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -149,12 +154,14 @@ class ContactApi:
     ) -> ApiResponse[Contact]:
         """Create a Contact
 
-        Creates a new Contact. *Note:* Contact must contain at least one item in `email_addresses` or `phone_numbers` and `country_code` is required if `region` is specified.
+        Creates a new Contact. *Note:* Contact must contain at least one item in `email_addresses` or `phone_numbers` and `country_code` is required if `region` is specified. Optionally accepts a `duplicate_option` query parameter which performs duplicate checking by one of the following options: `Email`, `EmailAndName`, `EmailAndNameAndCompany`. If a match is found using the option provided, the existing contact will be updated. If an existing contact was not found using the `duplicate_option` provided, a new contact record will be created. When `duplicate_option` is not specified, a new contact is always created.
 
         :param create_update_contact_request: (required)
         :type create_update_contact_request: CreateUpdateContactRequest
         :param fields: Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
         :type fields: List[str]
+        :param duplicate_option: Duplicate check strategy. If provided, performs duplicate checking and updates the existing contact if a match is found.
+        :type duplicate_option: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -180,6 +187,7 @@ class ContactApi:
         _param = self._create_contact_serialize(
             create_update_contact_request=create_update_contact_request,
             fields=fields,
+            duplicate_option=duplicate_option,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -187,7 +195,7 @@ class ContactApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Contact",
+            '200': "Contact",
             '400': "Error",
             '401': "Error",
             '403': "Error",
@@ -212,6 +220,7 @@ class ContactApi:
         self,
         create_update_contact_request: CreateUpdateContactRequest,
         fields: Annotated[Optional[List[StrictStr]], Field(description="Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)")] = None,
+        duplicate_option: Annotated[Optional[StrictStr], Field(description="Duplicate check strategy. If provided, performs duplicate checking and updates the existing contact if a match is found.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -227,12 +236,14 @@ class ContactApi:
     ) -> RESTResponseType:
         """Create a Contact
 
-        Creates a new Contact. *Note:* Contact must contain at least one item in `email_addresses` or `phone_numbers` and `country_code` is required if `region` is specified.
+        Creates a new Contact. *Note:* Contact must contain at least one item in `email_addresses` or `phone_numbers` and `country_code` is required if `region` is specified. Optionally accepts a `duplicate_option` query parameter which performs duplicate checking by one of the following options: `Email`, `EmailAndName`, `EmailAndNameAndCompany`. If a match is found using the option provided, the existing contact will be updated. If an existing contact was not found using the `duplicate_option` provided, a new contact record will be created. When `duplicate_option` is not specified, a new contact is always created.
 
         :param create_update_contact_request: (required)
         :type create_update_contact_request: CreateUpdateContactRequest
         :param fields: Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
         :type fields: List[str]
+        :param duplicate_option: Duplicate check strategy. If provided, performs duplicate checking and updates the existing contact if a match is found.
+        :type duplicate_option: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -258,6 +269,7 @@ class ContactApi:
         _param = self._create_contact_serialize(
             create_update_contact_request=create_update_contact_request,
             fields=fields,
+            duplicate_option=duplicate_option,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -265,7 +277,7 @@ class ContactApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "Contact",
+            '200': "Contact",
             '400': "Error",
             '401': "Error",
             '403': "Error",
@@ -285,6 +297,7 @@ class ContactApi:
         self,
         create_update_contact_request,
         fields,
+        duplicate_option,
         _request_auth,
         _content_type,
         _headers,
@@ -311,6 +324,10 @@ class ContactApi:
         if fields is not None:
             
             _query_params.append(('fields', fields))
+            
+        if duplicate_option is not None:
+            
+            _query_params.append(('duplicate_option', duplicate_option))
             
         # process the header parameters
         # process the form parameters

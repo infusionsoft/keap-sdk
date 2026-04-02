@@ -32,27 +32,29 @@ namespace Keap.Core.V2.Api
         /// Create a Contact
         /// </summary>
         /// <remarks>
-        /// Creates a new Contact. *Note:* Contact must contain at least one item in &#x60;email_addresses&#x60; or &#x60;phone_numbers&#x60; and &#x60;country_code&#x60; is required if &#x60;region&#x60; is specified.
+        /// Creates a new Contact. *Note:* Contact must contain at least one item in &#x60;email_addresses&#x60; or &#x60;phone_numbers&#x60; and &#x60;country_code&#x60; is required if &#x60;region&#x60; is specified. Optionally accepts a &#x60;duplicate_option&#x60; query parameter which performs duplicate checking by one of the following options: &#x60;Email&#x60;, &#x60;EmailAndName&#x60;, &#x60;EmailAndNameAndCompany&#x60;. If a match is found using the option provided, the existing contact will be updated. If an existing contact was not found using the &#x60;duplicate_option&#x60; provided, a new contact record will be created. When &#x60;duplicate_option&#x60; is not specified, a new contact is always created.
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createUpdateContactRequest"></param>
         /// <param name="fields">Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website) (optional)</param>
+        /// <param name="duplicateOption">Duplicate check strategy. If provided, performs duplicate checking and updates the existing contact if a match is found. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Contact</returns>
-        Contact CreateContact(CreateUpdateContactRequest createUpdateContactRequest, List<string>? fields = default, int operationIndex = 0);
+        Contact CreateContact(CreateUpdateContactRequest createUpdateContactRequest, List<string>? fields = default, string? duplicateOption = default, int operationIndex = 0);
 
         /// <summary>
         /// Create a Contact
         /// </summary>
         /// <remarks>
-        /// Creates a new Contact. *Note:* Contact must contain at least one item in &#x60;email_addresses&#x60; or &#x60;phone_numbers&#x60; and &#x60;country_code&#x60; is required if &#x60;region&#x60; is specified.
+        /// Creates a new Contact. *Note:* Contact must contain at least one item in &#x60;email_addresses&#x60; or &#x60;phone_numbers&#x60; and &#x60;country_code&#x60; is required if &#x60;region&#x60; is specified. Optionally accepts a &#x60;duplicate_option&#x60; query parameter which performs duplicate checking by one of the following options: &#x60;Email&#x60;, &#x60;EmailAndName&#x60;, &#x60;EmailAndNameAndCompany&#x60;. If a match is found using the option provided, the existing contact will be updated. If an existing contact was not found using the &#x60;duplicate_option&#x60; provided, a new contact record will be created. When &#x60;duplicate_option&#x60; is not specified, a new contact is always created.
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createUpdateContactRequest"></param>
         /// <param name="fields">Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website) (optional)</param>
+        /// <param name="duplicateOption">Duplicate check strategy. If provided, performs duplicate checking and updates the existing contact if a match is found. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Contact</returns>
-        ApiResponse<Contact> CreateContactWithHttpInfo(CreateUpdateContactRequest createUpdateContactRequest, List<string>? fields = default, int operationIndex = 0);
+        ApiResponse<Contact> CreateContactWithHttpInfo(CreateUpdateContactRequest createUpdateContactRequest, List<string>? fields = default, string? duplicateOption = default, int operationIndex = 0);
         /// <summary>
         /// Create a Contact Custom Field
         /// </summary>
@@ -370,29 +372,31 @@ namespace Keap.Core.V2.Api
         /// Create a Contact
         /// </summary>
         /// <remarks>
-        /// Creates a new Contact. *Note:* Contact must contain at least one item in &#x60;email_addresses&#x60; or &#x60;phone_numbers&#x60; and &#x60;country_code&#x60; is required if &#x60;region&#x60; is specified.
+        /// Creates a new Contact. *Note:* Contact must contain at least one item in &#x60;email_addresses&#x60; or &#x60;phone_numbers&#x60; and &#x60;country_code&#x60; is required if &#x60;region&#x60; is specified. Optionally accepts a &#x60;duplicate_option&#x60; query parameter which performs duplicate checking by one of the following options: &#x60;Email&#x60;, &#x60;EmailAndName&#x60;, &#x60;EmailAndNameAndCompany&#x60;. If a match is found using the option provided, the existing contact will be updated. If an existing contact was not found using the &#x60;duplicate_option&#x60; provided, a new contact record will be created. When &#x60;duplicate_option&#x60; is not specified, a new contact is always created.
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createUpdateContactRequest"></param>
         /// <param name="fields">Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website) (optional)</param>
+        /// <param name="duplicateOption">Duplicate check strategy. If provided, performs duplicate checking and updates the existing contact if a match is found. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Contact</returns>
-        System.Threading.Tasks.Task<Contact> CreateContactAsync(CreateUpdateContactRequest createUpdateContactRequest, List<string>? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<Contact> CreateContactAsync(CreateUpdateContactRequest createUpdateContactRequest, List<string>? fields = default, string? duplicateOption = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Create a Contact
         /// </summary>
         /// <remarks>
-        /// Creates a new Contact. *Note:* Contact must contain at least one item in &#x60;email_addresses&#x60; or &#x60;phone_numbers&#x60; and &#x60;country_code&#x60; is required if &#x60;region&#x60; is specified.
+        /// Creates a new Contact. *Note:* Contact must contain at least one item in &#x60;email_addresses&#x60; or &#x60;phone_numbers&#x60; and &#x60;country_code&#x60; is required if &#x60;region&#x60; is specified. Optionally accepts a &#x60;duplicate_option&#x60; query parameter which performs duplicate checking by one of the following options: &#x60;Email&#x60;, &#x60;EmailAndName&#x60;, &#x60;EmailAndNameAndCompany&#x60;. If a match is found using the option provided, the existing contact will be updated. If an existing contact was not found using the &#x60;duplicate_option&#x60; provided, a new contact record will be created. When &#x60;duplicate_option&#x60; is not specified, a new contact is always created.
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createUpdateContactRequest"></param>
         /// <param name="fields">Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website) (optional)</param>
+        /// <param name="duplicateOption">Duplicate check strategy. If provided, performs duplicate checking and updates the existing contact if a match is found. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Contact)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Contact>> CreateContactWithHttpInfoAsync(CreateUpdateContactRequest createUpdateContactRequest, List<string>? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Contact>> CreateContactWithHttpInfoAsync(CreateUpdateContactRequest createUpdateContactRequest, List<string>? fields = default, string? duplicateOption = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Create a Contact Custom Field
         /// </summary>
@@ -842,28 +846,30 @@ namespace Keap.Core.V2.Api
         }
 
         /// <summary>
-        /// Create a Contact Creates a new Contact. *Note:* Contact must contain at least one item in &#x60;email_addresses&#x60; or &#x60;phone_numbers&#x60; and &#x60;country_code&#x60; is required if &#x60;region&#x60; is specified.
+        /// Create a Contact Creates a new Contact. *Note:* Contact must contain at least one item in &#x60;email_addresses&#x60; or &#x60;phone_numbers&#x60; and &#x60;country_code&#x60; is required if &#x60;region&#x60; is specified. Optionally accepts a &#x60;duplicate_option&#x60; query parameter which performs duplicate checking by one of the following options: &#x60;Email&#x60;, &#x60;EmailAndName&#x60;, &#x60;EmailAndNameAndCompany&#x60;. If a match is found using the option provided, the existing contact will be updated. If an existing contact was not found using the &#x60;duplicate_option&#x60; provided, a new contact record will be created. When &#x60;duplicate_option&#x60; is not specified, a new contact is always created.
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createUpdateContactRequest"></param>
         /// <param name="fields">Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website) (optional)</param>
+        /// <param name="duplicateOption">Duplicate check strategy. If provided, performs duplicate checking and updates the existing contact if a match is found. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Contact</returns>
-        public Contact CreateContact(CreateUpdateContactRequest createUpdateContactRequest, List<string>? fields = default, int operationIndex = 0)
+        public Contact CreateContact(CreateUpdateContactRequest createUpdateContactRequest, List<string>? fields = default, string? duplicateOption = default, int operationIndex = 0)
         {
-            Keap.Core.V2.Client.ApiResponse<Contact> localVarResponse = CreateContactWithHttpInfo(createUpdateContactRequest, fields);
+            Keap.Core.V2.Client.ApiResponse<Contact> localVarResponse = CreateContactWithHttpInfo(createUpdateContactRequest, fields, duplicateOption);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Create a Contact Creates a new Contact. *Note:* Contact must contain at least one item in &#x60;email_addresses&#x60; or &#x60;phone_numbers&#x60; and &#x60;country_code&#x60; is required if &#x60;region&#x60; is specified.
+        /// Create a Contact Creates a new Contact. *Note:* Contact must contain at least one item in &#x60;email_addresses&#x60; or &#x60;phone_numbers&#x60; and &#x60;country_code&#x60; is required if &#x60;region&#x60; is specified. Optionally accepts a &#x60;duplicate_option&#x60; query parameter which performs duplicate checking by one of the following options: &#x60;Email&#x60;, &#x60;EmailAndName&#x60;, &#x60;EmailAndNameAndCompany&#x60;. If a match is found using the option provided, the existing contact will be updated. If an existing contact was not found using the &#x60;duplicate_option&#x60; provided, a new contact record will be created. When &#x60;duplicate_option&#x60; is not specified, a new contact is always created.
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createUpdateContactRequest"></param>
         /// <param name="fields">Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website) (optional)</param>
+        /// <param name="duplicateOption">Duplicate check strategy. If provided, performs duplicate checking and updates the existing contact if a match is found. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Contact</returns>
-        public Keap.Core.V2.Client.ApiResponse<Contact> CreateContactWithHttpInfo(CreateUpdateContactRequest createUpdateContactRequest, List<string>? fields = default, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<Contact> CreateContactWithHttpInfo(CreateUpdateContactRequest createUpdateContactRequest, List<string>? fields = default, string? duplicateOption = default, int operationIndex = 0)
         {
             // verify the required parameter 'createUpdateContactRequest' is set
             if (createUpdateContactRequest == null)
@@ -898,6 +904,10 @@ namespace Keap.Core.V2.Api
             if (fields != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("csv", "fields", fields));
+            }
+            if (duplicateOption != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "duplicate_option", duplicateOption));
             }
             localVarRequestOptions.Data = createUpdateContactRequest;
 
@@ -936,30 +946,32 @@ namespace Keap.Core.V2.Api
         }
 
         /// <summary>
-        /// Create a Contact Creates a new Contact. *Note:* Contact must contain at least one item in &#x60;email_addresses&#x60; or &#x60;phone_numbers&#x60; and &#x60;country_code&#x60; is required if &#x60;region&#x60; is specified.
+        /// Create a Contact Creates a new Contact. *Note:* Contact must contain at least one item in &#x60;email_addresses&#x60; or &#x60;phone_numbers&#x60; and &#x60;country_code&#x60; is required if &#x60;region&#x60; is specified. Optionally accepts a &#x60;duplicate_option&#x60; query parameter which performs duplicate checking by one of the following options: &#x60;Email&#x60;, &#x60;EmailAndName&#x60;, &#x60;EmailAndNameAndCompany&#x60;. If a match is found using the option provided, the existing contact will be updated. If an existing contact was not found using the &#x60;duplicate_option&#x60; provided, a new contact record will be created. When &#x60;duplicate_option&#x60; is not specified, a new contact is always created.
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createUpdateContactRequest"></param>
         /// <param name="fields">Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website) (optional)</param>
+        /// <param name="duplicateOption">Duplicate check strategy. If provided, performs duplicate checking and updates the existing contact if a match is found. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Contact</returns>
-        public async System.Threading.Tasks.Task<Contact> CreateContactAsync(CreateUpdateContactRequest createUpdateContactRequest, List<string>? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Contact> CreateContactAsync(CreateUpdateContactRequest createUpdateContactRequest, List<string>? fields = default, string? duplicateOption = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            Keap.Core.V2.Client.ApiResponse<Contact> localVarResponse = await CreateContactWithHttpInfoAsync(createUpdateContactRequest, fields, operationIndex, cancellationToken).ConfigureAwait(false);
+            Keap.Core.V2.Client.ApiResponse<Contact> localVarResponse = await CreateContactWithHttpInfoAsync(createUpdateContactRequest, fields, duplicateOption, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Create a Contact Creates a new Contact. *Note:* Contact must contain at least one item in &#x60;email_addresses&#x60; or &#x60;phone_numbers&#x60; and &#x60;country_code&#x60; is required if &#x60;region&#x60; is specified.
+        /// Create a Contact Creates a new Contact. *Note:* Contact must contain at least one item in &#x60;email_addresses&#x60; or &#x60;phone_numbers&#x60; and &#x60;country_code&#x60; is required if &#x60;region&#x60; is specified. Optionally accepts a &#x60;duplicate_option&#x60; query parameter which performs duplicate checking by one of the following options: &#x60;Email&#x60;, &#x60;EmailAndName&#x60;, &#x60;EmailAndNameAndCompany&#x60;. If a match is found using the option provided, the existing contact will be updated. If an existing contact was not found using the &#x60;duplicate_option&#x60; provided, a new contact record will be created. When &#x60;duplicate_option&#x60; is not specified, a new contact is always created.
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createUpdateContactRequest"></param>
         /// <param name="fields">Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website) (optional)</param>
+        /// <param name="duplicateOption">Duplicate check strategy. If provided, performs duplicate checking and updates the existing contact if a match is found. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Contact)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<Contact>> CreateContactWithHttpInfoAsync(CreateUpdateContactRequest createUpdateContactRequest, List<string>? fields = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<Contact>> CreateContactWithHttpInfoAsync(CreateUpdateContactRequest createUpdateContactRequest, List<string>? fields = default, string? duplicateOption = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'createUpdateContactRequest' is set
             if (createUpdateContactRequest == null)
@@ -994,6 +1006,10 @@ namespace Keap.Core.V2.Api
             if (fields != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("csv", "fields", fields));
+            }
+            if (duplicateOption != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "duplicate_option", duplicateOption));
             }
             localVarRequestOptions.Data = createUpdateContactRequest;
 

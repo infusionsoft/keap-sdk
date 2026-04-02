@@ -222,6 +222,7 @@ from keap_core_v2_client.models.list_order_payments_response import ListOrderPay
 from keap_core_v2_client.models.list_order_total_discounts_response import ListOrderTotalDiscountsResponse
 from keap_core_v2_client.models.list_orders import ListOrders
 from keap_core_v2_client.models.list_payment_methods_response import ListPaymentMethodsResponse
+from keap_core_v2_client.models.list_payments import ListPayments
 from keap_core_v2_client.models.list_product_categories_response import ListProductCategoriesResponse
 from keap_core_v2_client.models.list_product_discounts_response import ListProductDiscountsResponse
 from keap_core_v2_client.models.list_product_interest_bundle_response import ListProductInterestBundleResponse
@@ -239,6 +240,7 @@ from keap_core_v2_client.models.list_tagged_companies_response import ListTagged
 from keap_core_v2_client.models.list_tagged_contacts_response import ListTaggedContactsResponse
 from keap_core_v2_client.models.list_tags_response import ListTagsResponse
 from keap_core_v2_client.models.list_tasks_response import ListTasksResponse
+from keap_core_v2_client.models.list_transactions import ListTransactions
 from keap_core_v2_client.models.list_user_groups_response import ListUserGroupsResponse
 from keap_core_v2_client.models.list_users_paginated_response import ListUsersPaginatedResponse
 from keap_core_v2_client.models.list_webforms_response import ListWebformsResponse
@@ -254,6 +256,7 @@ from keap_core_v2_client.models.order_v2 import OrderV2
 from keap_core_v2_client.models.origin import Origin
 from keap_core_v2_client.models.origin_request import OriginRequest
 from keap_core_v2_client.models.patch_automation_category_request import PatchAutomationCategoryRequest
+from keap_core_v2_client.models.payment import Payment
 from keap_core_v2_client.models.payment_method import PaymentMethod
 from keap_core_v2_client.models.payment_method_config import PaymentMethodConfig
 from keap_core_v2_client.models.payment_plan import PaymentPlan
@@ -316,6 +319,7 @@ from keap_core_v2_client.models.tagged_company import TaggedCompany
 from keap_core_v2_client.models.tagged_contact import TaggedContact
 from keap_core_v2_client.models.task import Task
 from keap_core_v2_client.models.text_option import TextOption
+from keap_core_v2_client.models.transaction_v2 import TransactionV2
 from keap_core_v2_client.models.unpublish_automation_request import UnpublishAutomationRequest
 from keap_core_v2_client.models.update_affiliate_request import UpdateAffiliateRequest
 from keap_core_v2_client.models.update_business_profile_request import UpdateBusinessProfileRequest

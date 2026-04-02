@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **contactId** | **String** |  | [optional] 
 **paymentMethodId** | **String** |  | [optional] 
+**creditCardId** | **String** |  | [optional] 
 **merchantAccountType** | **String** | The merchant type this payment method was authorized with. Valid values are: PAYPAL, AUTHORIZE, EWAY, WEPAY, STRIPE, KEAP_PAY, UNSUPPORTED | [optional] 
 **merchantAccountId** | **String** |  | [optional] 
 **paymentMethodType** | **String** | The type of payment method. For now, only CARD is supported. | [optional] 

@@ -205,6 +205,7 @@ export * from '../models/ListOrderPaymentsResponse';
 export * from '../models/ListOrderTotalDiscountsResponse';
 export * from '../models/ListOrders';
 export * from '../models/ListPaymentMethodsResponse';
+export * from '../models/ListPayments';
 export * from '../models/ListProductCategoriesResponse';
 export * from '../models/ListProductDiscountsResponse';
 export * from '../models/ListProductInterestBundleResponse';
@@ -222,6 +223,7 @@ export * from '../models/ListTaggedCompaniesResponse';
 export * from '../models/ListTaggedContactsResponse';
 export * from '../models/ListTagsResponse';
 export * from '../models/ListTasksResponse';
+export * from '../models/ListTransactions';
 export * from '../models/ListUserGroupsResponse';
 export * from '../models/ListUsersPaginatedResponse';
 export * from '../models/ListWebformsResponse';
@@ -238,6 +240,7 @@ export * from '../models/OrderV2';
 export * from '../models/Origin';
 export * from '../models/OriginRequest';
 export * from '../models/PatchAutomationCategoryRequest';
+export * from '../models/Payment';
 export * from '../models/PaymentMethod';
 export * from '../models/PaymentMethodConfig';
 export * from '../models/PaymentPlan';
@@ -300,6 +303,7 @@ export * from '../models/TaggedCompany';
 export * from '../models/TaggedContact';
 export * from '../models/Task';
 export * from '../models/TextOption';
+export * from '../models/TransactionV2';
 export * from '../models/UnpublishAutomationRequest';
 export * from '../models/UpdateAffiliateRequest';
 export * from '../models/UpdateBusinessProfileRequest';
@@ -549,6 +553,7 @@ import { ListOrderPaymentsResponse } from '../models/ListOrderPaymentsResponse';
 import { ListOrderTotalDiscountsResponse } from '../models/ListOrderTotalDiscountsResponse';
 import { ListOrders } from '../models/ListOrders';
 import { ListPaymentMethodsResponse } from '../models/ListPaymentMethodsResponse';
+import { ListPayments } from '../models/ListPayments';
 import { ListProductCategoriesResponse } from '../models/ListProductCategoriesResponse';
 import { ListProductDiscountsResponse } from '../models/ListProductDiscountsResponse';
 import { ListProductInterestBundleResponse } from '../models/ListProductInterestBundleResponse';
@@ -566,6 +571,7 @@ import { ListTaggedCompaniesResponse } from '../models/ListTaggedCompaniesRespon
 import { ListTaggedContactsResponse } from '../models/ListTaggedContactsResponse';
 import { ListTagsResponse } from '../models/ListTagsResponse';
 import { ListTasksResponse } from '../models/ListTasksResponse';
+import { ListTransactions } from '../models/ListTransactions';
 import { ListUserGroupsResponse } from '../models/ListUserGroupsResponse';
 import { ListUsersPaginatedResponse } from '../models/ListUsersPaginatedResponse';
 import { ListWebformsResponse } from '../models/ListWebformsResponse';
@@ -582,7 +588,8 @@ import { OrderV2  , OrderV2StatusEnum      , OrderV2OrderTypeEnum  , OrderV2Sour
 import { Origin } from '../models/Origin';
 import { OriginRequest } from '../models/OriginRequest';
 import { PatchAutomationCategoryRequest } from '../models/PatchAutomationCategoryRequest';
-import { PaymentMethod  , PaymentMethodMerchantAccountTypeEnum   , PaymentMethodPaymentMethodTypeEnum    , PaymentMethodStatusEnum   } from '../models/PaymentMethod';
+import { Payment    , PaymentStatusEnum           , PaymentMerchantAccountTypeEnum    } from '../models/Payment';
+import { PaymentMethod   , PaymentMethodMerchantAccountTypeEnum   , PaymentMethodPaymentMethodTypeEnum    , PaymentMethodStatusEnum   } from '../models/PaymentMethod';
 import { PaymentMethodConfig } from '../models/PaymentMethodConfig';
 import { PaymentPlan } from '../models/PaymentPlan';
 import { PaymentPlanItem, PaymentPlanItemStatusEnum      } from '../models/PaymentPlanItem';
@@ -644,6 +651,7 @@ import { TaggedCompany } from '../models/TaggedCompany';
 import { TaggedContact } from '../models/TaggedContact';
 import { Task    , TaskPriorityEnum       , TaskRemindTimeMinsEnum      } from '../models/Task';
 import { TextOption   , TextOptionOnlyStartsWithEnum  , TextOptionOnlyEndsWithEnum  , TextOptionOnlyContainsEnum    } from '../models/TextOption';
+import { TransactionV2 , TransactionV2StatusEnum      , TransactionV2TransactionMethodEnum         , TransactionV2MerchantAccountTypeEnum    } from '../models/TransactionV2';
 import { UnpublishAutomationRequest } from '../models/UnpublishAutomationRequest';
 import { UpdateAffiliateRequest  , UpdateAffiliateRequestStatusEnum         } from '../models/UpdateAffiliateRequest';
 import { UpdateBusinessProfileRequest } from '../models/UpdateBusinessProfileRequest';
@@ -758,6 +766,8 @@ let enumsMap: Set<string> = new Set<string>([
     "OrderV2StatusEnum",
     "OrderV2OrderTypeEnum",
     "OrderV2SourceTypeEnum",
+    "PaymentStatusEnum",
+    "PaymentMerchantAccountTypeEnum",
     "PaymentMethodMerchantAccountTypeEnum",
     "PaymentMethodPaymentMethodTypeEnum",
     "PaymentMethodStatusEnum",
@@ -792,6 +802,9 @@ let enumsMap: Set<string> = new Set<string>([
     "TextOptionOnlyStartsWithEnum",
     "TextOptionOnlyEndsWithEnum",
     "TextOptionOnlyContainsEnum",
+    "TransactionV2StatusEnum",
+    "TransactionV2TransactionMethodEnum",
+    "TransactionV2MerchantAccountTypeEnum",
     "UpdateAffiliateRequestStatusEnum",
     "UpdateOrderRequestOrderTypeEnum",
     "UpdateOrderTotalDiscountRequestDiscountTypeEnum",
@@ -1020,6 +1033,7 @@ let typeMap: {[index: string]: any} = {
     "ListOrderTotalDiscountsResponse": ListOrderTotalDiscountsResponse,
     "ListOrders": ListOrders,
     "ListPaymentMethodsResponse": ListPaymentMethodsResponse,
+    "ListPayments": ListPayments,
     "ListProductCategoriesResponse": ListProductCategoriesResponse,
     "ListProductDiscountsResponse": ListProductDiscountsResponse,
     "ListProductInterestBundleResponse": ListProductInterestBundleResponse,
@@ -1037,6 +1051,7 @@ let typeMap: {[index: string]: any} = {
     "ListTaggedContactsResponse": ListTaggedContactsResponse,
     "ListTagsResponse": ListTagsResponse,
     "ListTasksResponse": ListTasksResponse,
+    "ListTransactions": ListTransactions,
     "ListUserGroupsResponse": ListUserGroupsResponse,
     "ListUsersPaginatedResponse": ListUsersPaginatedResponse,
     "ListWebformsResponse": ListWebformsResponse,
@@ -1053,6 +1068,7 @@ let typeMap: {[index: string]: any} = {
     "Origin": Origin,
     "OriginRequest": OriginRequest,
     "PatchAutomationCategoryRequest": PatchAutomationCategoryRequest,
+    "Payment": Payment,
     "PaymentMethod": PaymentMethod,
     "PaymentMethodConfig": PaymentMethodConfig,
     "PaymentPlan": PaymentPlan,
@@ -1115,6 +1131,7 @@ let typeMap: {[index: string]: any} = {
     "TaggedContact": TaggedContact,
     "Task": Task,
     "TextOption": TextOption,
+    "TransactionV2": TransactionV2,
     "UnpublishAutomationRequest": UnpublishAutomationRequest,
     "UpdateAffiliateRequest": UpdateAffiliateRequest,
     "UpdateBusinessProfileRequest": UpdateBusinessProfileRequest,

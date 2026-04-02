@@ -9,10 +9,10 @@ repositories {
 
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.7.1'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.7.1'
 
-    implementation 'com.keap.core:keap-sdk-core-v2:0.0.0' // Add your version here
-    testImplementation 'com.keap.core:keap-sdk-core-v2:0.0.0' // Add your version here
+    implementation 'com.keap.core:keap-sdk-core-v2:2.0.1'
+    testImplementation 'com.keap.core:keap-sdk-core-v2:2.0.1'
 }
 
 tasks.named('test', Test) {

@@ -59,6 +59,7 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'contact_id' => 'string',
         'payment_method_id' => 'string',
+        'credit_card_id' => 'string',
         'merchant_account_type' => 'string',
         'merchant_account_id' => 'string',
         'payment_method_type' => 'string',
@@ -77,6 +78,7 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'contact_id' => null,
         'payment_method_id' => null,
+        'credit_card_id' => null,
         'merchant_account_type' => null,
         'merchant_account_id' => null,
         'payment_method_type' => null,
@@ -93,6 +95,7 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'contact_id' => false,
         'payment_method_id' => false,
+        'credit_card_id' => false,
         'merchant_account_type' => false,
         'merchant_account_id' => false,
         'payment_method_type' => false,
@@ -189,6 +192,7 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'contact_id' => 'contact_id',
         'payment_method_id' => 'payment_method_id',
+        'credit_card_id' => 'credit_card_id',
         'merchant_account_type' => 'merchant_account_type',
         'merchant_account_id' => 'merchant_account_id',
         'payment_method_type' => 'payment_method_type',
@@ -205,6 +209,7 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'contact_id' => 'setContactId',
         'payment_method_id' => 'setPaymentMethodId',
+        'credit_card_id' => 'setCreditCardId',
         'merchant_account_type' => 'setMerchantAccountType',
         'merchant_account_id' => 'setMerchantAccountId',
         'payment_method_type' => 'setPaymentMethodType',
@@ -221,6 +226,7 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'contact_id' => 'getContactId',
         'payment_method_id' => 'getPaymentMethodId',
+        'credit_card_id' => 'getCreditCardId',
         'merchant_account_type' => 'getMerchantAccountType',
         'merchant_account_id' => 'getMerchantAccountId',
         'payment_method_type' => 'getPaymentMethodType',
@@ -339,6 +345,7 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->setIfExists('contact_id', $data ?? [], null);
         $this->setIfExists('payment_method_id', $data ?? [], null);
+        $this->setIfExists('credit_card_id', $data ?? [], null);
         $this->setIfExists('merchant_account_type', $data ?? [], null);
         $this->setIfExists('merchant_account_id', $data ?? [], null);
         $this->setIfExists('payment_method_type', $data ?? [], null);
@@ -466,6 +473,33 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable payment_method_id cannot be null');
         }
         $this->container['payment_method_id'] = $payment_method_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets credit_card_id
+     *
+     * @return string|null
+     */
+    public function getCreditCardId()
+    {
+        return $this->container['credit_card_id'];
+    }
+
+    /**
+     * Sets credit_card_id
+     *
+     * @param string|null $credit_card_id credit_card_id
+     *
+     * @return self
+     */
+    public function setCreditCardId($credit_card_id)
+    {
+        if (is_null($credit_card_id)) {
+            throw new \InvalidArgumentException('non-nullable credit_card_id cannot be null');
+        }
+        $this->container['credit_card_id'] = $credit_card_id;
 
         return $this;
     }

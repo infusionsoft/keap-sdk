@@ -4,9 +4,9 @@
             "type": "package",
             "package": {
                 "name": "keap/sdk-v2",
-                "version": "Add your version here",
+                "version": "2.0.1",
                 "dist": {
-                    "url": "Add your version here",
+                    "url": "/Users/almonm02/Library/CloudStorage/OneDrive-thryv/Documents/GitHub/keap-sdk-infrastructure/build/packages/php/keap-core-v2-2.0.1.phar",
                     "type": "phar"
                 },
                 "autoload": {
@@ -18,10 +18,10 @@
         }
     ],
     "require": {
-        "guzzlehttp/guzzle": "^7",        
+        "guzzlehttp/guzzle": "^7"
     },
     "require-dev": {
         "phpunit/phpunit": "^10.5",
-        "keap/sdk-v2": "Add your version here"
+        "keap/sdk-v2": "2.0.1"
     }
 }

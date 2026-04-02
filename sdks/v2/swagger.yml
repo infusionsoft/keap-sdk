@@ -338,6 +338,7 @@ paths:
           - (String) `name`
           - (String) `description`
           - (String) `category_id`
+          - (String) `tag_ids`
           - (String) `since_create_time`
           - (String) `until_create_time`
           - (String) `since_update_time`
@@ -350,6 +351,7 @@ paths:
           - `filter=name%3D%3Dmy-tag`
           - `filter=category_id%3D%3DNONE`
           - `filter=description%3D%3DNONE`
+          - `filter=tag_ids%3D%3D1,2,3`
           - `filter=since_create_time%3D%3D2024-12-22T01:00:00.000Z;until_create_time%3D%3D2025-01-01T00:00:00.000Z;`
         required: false
         schema:
@@ -2678,6 +2680,12 @@ paths:
           - (Boolean) `paid`
           - (String) `created_since_time`
           - (String) `created_until_time`
+          - (String) `title`
+          - (String) `order_type` (Allowed values: `ONLINE`, `OFFLINE`)
+          - (String) `shipping_city`
+          - (String) `shipping_region`
+          - (String) `shipping_postal_code`
+          - (String) `shipping_country_code`
 
           You will need to apply the `==` operator to check the equality of one of the filters with your searched
           word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:
@@ -2685,6 +2693,12 @@ paths:
           - `filter=contact_id%3D%3D567`
           - `filter=invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8`
           - `filter=product_id%3D%3D123%3Bcontact_id%3D%3D567`
+          - `filter=title%3D%3DOrder`
+          - `filter=order_type%3D%3DONLINE`
+          - `filter=shipping_city%3D%3DPhoenix`
+          - `filter=shipping_region%3D%3DAZ`
+          - `filter=shipping_postal_code%3D%3D85001`
+          - `filter=shipping_country_code%3D%3DUS`
         required: false
         schema:
           type: string
@@ -6434,6 +6448,7 @@ paths:
       description: |-
         Creates a new Contact.
         *Note:* Contact must contain at least one item in `email_addresses` or `phone_numbers` and `country_code` is required if `region` is specified.
+        Optionally accepts a `duplicate_option` query parameter which performs duplicate checking by one of the following options: `Email`, `EmailAndName`, `EmailAndNameAndCompany`. If a match is found using the option provided, the existing contact will be updated. If an existing contact was not found using the `duplicate_option` provided, a new contact record will be created. When `duplicate_option` is not specified, a new contact is always created.
       operationId: createContact
       parameters:
       - name: fields
@@ -6449,6 +6464,17 @@ paths:
           items:
             type: string
         explode: false
+      - name: duplicate_option
+        in: query
+        description: Duplicate check strategy. If provided, performs duplicate checking
+          and updates the existing contact if a match is found.
+        required: false
+        schema:
+          type: string
+          enum:
+          - Email
+          - EmailAndName
+          - EmailAndNameAndCompany
       requestBody:
         content:
           application/json:
@@ -6456,8 +6482,8 @@ paths:
               $ref: '#/components/schemas/CreateUpdateContactRequest'
         required: true
       responses:
-        '201':
-          description: Created
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -17250,6 +17276,225 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /rest/v2/sales/transactions:
+    get:
+      tags:
+      - Sales
+      summary: List Transactions
+      description: Retrieves a list of sales transactions
+      operationId: listTransactions
+      parameters:
+      - name: filter
+        in: query
+        description: |-
+          Filter to apply, allowed fields are:
+          - (String) `amount` - Allowable operators: "==","<=", "<", ">=", ">", "!="
+          - (String) `order_id`
+          - (String) `contact_id`
+          - (String) `since_time`
+          - (String) `until_time`
+          - (String) `merchant_account_id`
+          - (String) `merchant_account_type`
+          - (String) `status`
+          - (String) `transaction_method`
+          - (String) `is_successful`
+
+          You will need to apply the `==` operator to check the equality of one of the filters with your searched
+          word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:
+          - `filter=order_id%3D%3D123`
+          - `filter=order_id%3D%3D123%3Bcontact_id%3D%3D567`
+        required: false
+        schema:
+          type: string
+      - name: page_token
+        in: query
+        description: Page token
+        required: false
+        schema:
+          type: string
+      - name: order_by
+        in: query
+        description: |-
+          Attribute and direction to order items.
+          One of the following fields:
+          - `amount`
+          - `transaction_time`
+          - `contact_id`
+
+          One of the following directions:
+          - `asc`
+          - `desc`
+        required: false
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: Total number of items to return per page
+        required: false
+        schema:
+          type: integer
+          format: int32
+          maximum: 1000
+          minimum: 0
+        example: 0
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListTransactions'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /rest/v2/sales/payments:
+    get:
+      tags:
+      - Sales
+      summary: List Payments
+      description: Retrieves a list of payments
+      operationId: listPayments
+      parameters:
+      - name: filter
+        in: query
+        description: |-
+          Filter to apply, allowed fields are:
+          - (String) `id`
+          - (String) `amount` - Allowable operators: "==","<=", "<", ">=", ">", "!="
+          - (String) `order_id`
+          - (String) `contact_id`
+          - (String) `since_time`
+          - (String) `until_time`
+          - (String) `merchant_account_id`
+          - (String) `merchant_account_type`
+
+          You will need to apply the `==` operator to check the equality of one of the filters with your searched
+          word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:
+          - `filter=id%3D%3D123`
+          - `filter=order_id%3D%3D123%3Bcontact_id%3D%3D567`
+        required: false
+        schema:
+          type: string
+      - name: page_token
+        in: query
+        description: Page token
+        required: false
+        schema:
+          type: string
+      - name: order_by
+        in: query
+        description: |-
+          Attribute and direction to order items.
+          One of the following fields:
+          - `id`
+          - `amount`
+          - `payment_time`
+          - `contact_id`
+
+          One of the following directions:
+          - `asc`
+          - `desc`
+        required: false
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: Total number of items to return per page
+        required: false
+        schema:
+          type: integer
+          format: int32
+          maximum: 1000
+          minimum: 0
+        example: 0
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListPayments'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /rest/v2/reporting/reports:
     get:
       tags:
@@ -27662,6 +27907,253 @@ components:
           $ref: '#/components/schemas/ApplicationConfigurationModuleTask'
         template:
           $ref: '#/components/schemas/ApplicationConfigurationModuleTemplate'
+    CardInfo:
+      type: object
+      properties:
+        brand:
+          type: string
+        card_type:
+          type: string
+          description: 'The card type. Valid values are: CREDIT, DEBIT, PREPAID.'
+          enum:
+          - CREDIT
+          - DEBIT
+          - PREPAID
+          - ACH
+        last_four:
+          type: string
+        expiration_year:
+          type: string
+        expiration_month:
+          type: string
+    ListTransactions:
+      type: object
+      properties:
+        transactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionV2'
+        next_page_token:
+          type: string
+    PaymentMethod:
+      type: object
+      properties:
+        contact_id:
+          type: string
+        payment_method_id:
+          type: string
+        credit_card_id:
+          type: string
+        merchant_account_type:
+          type: string
+          description: 'The merchant type this payment method was authorized with.
+            Valid values are: PAYPAL, AUTHORIZE, EWAY, WEPAY, STRIPE, KEAP_PAY, UNSUPPORTED'
+          enum:
+          - PAYPAL
+          - UNSUPPORTED
+          - AUTHORIZE
+          - EWAY
+          - WEPAY
+          - STRIPE
+          - KEAP_PAY
+        merchant_account_id:
+          type: string
+        payment_method_type:
+          type: string
+          description: The type of payment method. For now, only CARD is supported.
+          enum:
+          - CARD
+        created_time:
+          type: string
+        card_info:
+          $ref: '#/components/schemas/CardInfo'
+          description: Additional info for payment methods of payment_method_type
+            CARD.
+        status:
+          type: string
+          description: Status of the payment method. Fow now, only EXPIRED is supported.
+          enum:
+          - EXPIRED
+    TransactionV2:
+      type: object
+      properties:
+        amount:
+          type: number
+          format: double
+          description: The amount of the transaction.
+          example: 123.34
+        status:
+          type: string
+          description: The resulting status of the transaction.
+          enum:
+          - APPROVED
+          - PENDING
+          - ERROR
+          - FAILED
+          - NONE
+          example: APPROVED
+        description:
+          type: string
+          description: A description of the transaction.
+        contact:
+          $ref: '#/components/schemas/BasicContact'
+          description: Contact associated with this order
+        order_ids:
+          type: array
+          description: List of order ids transaction was against.
+          example:
+          - '123'
+          - '456'
+          items:
+            type: string
+        contact_id:
+          type: string
+          description: The id of the contact the transaction was for.
+          example: 123
+        transaction_method:
+          type: string
+          description: The method of transaction.
+          enum:
+          - CAPTURE
+          - REFUND
+          - VOID
+          - MANUAL
+          example: ONLINE
+        transaction_time:
+          type: string
+          format: date-time
+          description: When this transaction was made. In ISO-8601 format.
+          example: '2024-05-21T14:30:00Z'
+        external_reference_id:
+          type: string
+          description: An external reference id - typically from a payment processor
+            - that references this transaction.
+          example: txn_123
+        external_response_code:
+          type: string
+          description: An external response code generated by payment processor
+          example: abc123
+        error_details:
+          type: string
+          description: Any details if the transaction failed.
+        payment_id:
+          type: string
+          description: Identifier of an order/invoice payment created by the transaction.
+        is_successful:
+          type: boolean
+          description: If the transaction completed in a successful state. PENDING
+            transactions are treated `false`.
+        merchant_account_id:
+          type: string
+          description: The merchant account id through which the transaction was made.
+        merchant_account_type:
+          type: string
+          description: The merchant account id through which the transaction was made.
+          enum:
+          - PAYPAL
+          - UNSUPPORTED
+          - AUTHORIZE
+          - EWAY
+          - WEPAY
+          - STRIPE
+          - KEAP_PAY
+          example: PAYPAL
+        payment_method:
+          $ref: '#/components/schemas/PaymentMethod'
+          description: Details of the payment method used for this transaction.
+    ListPayments:
+      type: object
+      properties:
+        payments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Payment'
+        next_page_token:
+          type: string
+    Payment:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the payment.
+          example: 123
+        type:
+          type: string
+          description: A label describing the type of payment made.
+          example: Credit Card
+        amount:
+          type: number
+          format: double
+          description: The payment amount.
+          example: 123.34
+        note:
+          type: string
+          description: A note about the payment.
+        status:
+          type: string
+          description: Provides the current status of the payment, if available.
+          enum:
+          - PENDING
+          - APPROVED
+          - COMPLETED
+          - NONE
+          example: COMPLETED
+        commissioned:
+          type: boolean
+          description: Whether this payment had a commission.
+        synced:
+          type: boolean
+          description: Whether or not the data is synced externally.
+        payment_time:
+          type: string
+          format: date-time
+          description: When this payment was made. In ISO-8601 format.
+          example: '2024-05-21T14:30:00Z'
+        refund_payment_id:
+          type: string
+          description: If this payment had a refund, this refers to the id of the
+            refund payment.
+          example: 123
+        contact_id:
+          type: string
+          description: The id of the contact the payment is associated with.
+          example: 123
+        order_ids:
+          type: array
+          description: List of order ids the payment was made was against.
+          example:
+          - '123'
+          - '456'
+          items:
+            type: string
+        update_time:
+          type: string
+          format: date-time
+          description: When this payment was updated. In ISO-8601 format.
+          example: '2024-05-21T14:30:00Z'
+        external_transaction_id:
+          type: string
+          description: An external id - typically from a payment processor - that
+            references this transaction.
+          example: txn_123
+        merchant_account_id:
+          type: string
+          description: The merchant account id through which the transaction was made.
+        merchant_account_type:
+          type: string
+          description: The merchant account id through which the transaction was made.
+          enum:
+          - PAYPAL
+          - UNSUPPORTED
+          - AUTHORIZE
+          - EWAY
+          - WEPAY
+          - STRIPE
+          - KEAP_PAY
+          example: PAYPAL
+        payment_method:
+          $ref: '#/components/schemas/PaymentMethod'
+          description: Details of the payment method used for this transaction.
     ListReportsResponse:
       type: object
       properties:
@@ -28525,25 +29017,6 @@ components:
             $ref: '#/components/schemas/AppliedTag'
         next_page_token:
           type: string
-    CardInfo:
-      type: object
-      properties:
-        brand:
-          type: string
-        card_type:
-          type: string
-          description: 'The card type. Valid values are: CREDIT, DEBIT, PREPAID.'
-          enum:
-          - CREDIT
-          - DEBIT
-          - PREPAID
-          - ACH
-        last_four:
-          type: string
-        expiration_year:
-          type: string
-        expiration_month:
-          type: string
     ListPaymentMethodsResponse:
       type: object
       properties:
@@ -28553,43 +29026,6 @@ components:
             $ref: '#/components/schemas/PaymentMethod'
         next_page_token:
           type: string
-    PaymentMethod:
-      type: object
-      properties:
-        contact_id:
-          type: string
-        payment_method_id:
-          type: string
-        merchant_account_type:
-          type: string
-          description: 'The merchant type this payment method was authorized with.
-            Valid values are: PAYPAL, AUTHORIZE, EWAY, WEPAY, STRIPE, KEAP_PAY, UNSUPPORTED'
-          enum:
-          - PAYPAL
-          - UNSUPPORTED
-          - AUTHORIZE
-          - EWAY
-          - WEPAY
-          - STRIPE
-          - KEAP_PAY
-        merchant_account_id:
-          type: string
-        payment_method_type:
-          type: string
-          description: The type of payment method. For now, only CARD is supported.
-          enum:
-          - CARD
-        created_time:
-          type: string
-        card_info:
-          $ref: '#/components/schemas/CardInfo'
-          description: Additional info for payment methods of payment_method_type
-            CARD.
-        status:
-          type: string
-          description: Status of the payment method. Fow now, only EXPIRED is supported.
-          enum:
-          - EXPIRED
     ListNotesResponse:
       type: object
       properties:

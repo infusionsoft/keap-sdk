@@ -35,11 +35,11 @@ All URIs are relative to *https://api.keap.com/crm*
 
 ## createContact
 
-> Contact createContact(createUpdateContactRequest, fields)
+> Contact createContact(createUpdateContactRequest, fields, duplicateOption)
 
 Create a Contact
 
-Creates a new Contact. *Note:* Contact must contain at least one item in &#x60;email_addresses&#x60; or &#x60;phone_numbers&#x60; and &#x60;country_code&#x60; is required if &#x60;region&#x60; is specified.
+Creates a new Contact. *Note:* Contact must contain at least one item in &#x60;email_addresses&#x60; or &#x60;phone_numbers&#x60; and &#x60;country_code&#x60; is required if &#x60;region&#x60; is specified. Optionally accepts a &#x60;duplicate_option&#x60; query parameter which performs duplicate checking by one of the following options: &#x60;Email&#x60;, &#x60;EmailAndName&#x60;, &#x60;EmailAndNameAndCompany&#x60;. If a match is found using the option provided, the existing contact will be updated. If an existing contact was not found using the &#x60;duplicate_option&#x60; provided, a new contact record will be created. When &#x60;duplicate_option&#x60; is not specified, a new contact is always created.
 
 ### Example
 
@@ -64,8 +64,9 @@ public class Example {
         ContactApi apiInstance = new ContactApi(defaultClient);
         CreateUpdateContactRequest createUpdateContactRequest = new CreateUpdateContactRequest(); // CreateUpdateContactRequest | 
         List<String> fields = Arrays.asList(); // List<String> | Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
+        String duplicateOption = "Email"; // String | Duplicate check strategy. If provided, performs duplicate checking and updates the existing contact if a match is found.
         try {
-            Contact result = apiInstance.createContact(createUpdateContactRequest, fields);
+            Contact result = apiInstance.createContact(createUpdateContactRequest, fields, duplicateOption);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ContactApi#createContact");
@@ -85,6 +86,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **createUpdateContactRequest** | [**CreateUpdateContactRequest**](CreateUpdateContactRequest.md)|  | |
 | **fields** | [**List&lt;String&gt;**](String.md)| Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website) | [optional] |
+| **duplicateOption** | **String**| Duplicate check strategy. If provided, performs duplicate checking and updates the existing contact if a match is found. | [optional] [enum: Email, EmailAndName, EmailAndNameAndCompany] |
 
 ### Return type
 
@@ -103,7 +105,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **201** | Created |  -  |
+| **200** | OK |  -  |
 | **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
@@ -114,11 +116,11 @@ public class Example {
 
 ## createContactWithHttpInfo
 
-> ApiResponse<Contact> createContact createContactWithHttpInfo(createUpdateContactRequest, fields)
+> ApiResponse<Contact> createContact createContactWithHttpInfo(createUpdateContactRequest, fields, duplicateOption)
 
 Create a Contact
 
-Creates a new Contact. *Note:* Contact must contain at least one item in &#x60;email_addresses&#x60; or &#x60;phone_numbers&#x60; and &#x60;country_code&#x60; is required if &#x60;region&#x60; is specified.
+Creates a new Contact. *Note:* Contact must contain at least one item in &#x60;email_addresses&#x60; or &#x60;phone_numbers&#x60; and &#x60;country_code&#x60; is required if &#x60;region&#x60; is specified. Optionally accepts a &#x60;duplicate_option&#x60; query parameter which performs duplicate checking by one of the following options: &#x60;Email&#x60;, &#x60;EmailAndName&#x60;, &#x60;EmailAndNameAndCompany&#x60;. If a match is found using the option provided, the existing contact will be updated. If an existing contact was not found using the &#x60;duplicate_option&#x60; provided, a new contact record will be created. When &#x60;duplicate_option&#x60; is not specified, a new contact is always created.
 
 ### Example
 
@@ -144,8 +146,9 @@ public class Example {
         ContactApi apiInstance = new ContactApi(defaultClient);
         CreateUpdateContactRequest createUpdateContactRequest = new CreateUpdateContactRequest(); // CreateUpdateContactRequest | 
         List<String> fields = Arrays.asList(); // List<String> | Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
+        String duplicateOption = "Email"; // String | Duplicate check strategy. If provided, performs duplicate checking and updates the existing contact if a match is found.
         try {
-            ApiResponse<Contact> response = apiInstance.createContactWithHttpInfo(createUpdateContactRequest, fields);
+            ApiResponse<Contact> response = apiInstance.createContactWithHttpInfo(createUpdateContactRequest, fields, duplicateOption);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -167,6 +170,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **createUpdateContactRequest** | [**CreateUpdateContactRequest**](CreateUpdateContactRequest.md)|  | |
 | **fields** | [**List&lt;String&gt;**](String.md)| Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website) | [optional] |
+| **duplicateOption** | **String**| Duplicate check strategy. If provided, performs duplicate checking and updates the existing contact if a match is found. | [optional] [enum: Email, EmailAndName, EmailAndNameAndCompany] |
 
 ### Return type
 
@@ -185,7 +189,7 @@ ApiResponse<[**Contact**](Contact.md)>
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **201** | Created |  -  |
+| **200** | OK |  -  |
 | **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |

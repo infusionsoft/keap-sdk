@@ -221,6 +221,7 @@ import ListOrderPaymentsResponse from './model/ListOrderPaymentsResponse';
 import ListOrderTotalDiscountsResponse from './model/ListOrderTotalDiscountsResponse';
 import ListOrders from './model/ListOrders';
 import ListPaymentMethodsResponse from './model/ListPaymentMethodsResponse';
+import ListPayments from './model/ListPayments';
 import ListProductCategoriesResponse from './model/ListProductCategoriesResponse';
 import ListProductDiscountsResponse from './model/ListProductDiscountsResponse';
 import ListProductInterestBundleResponse from './model/ListProductInterestBundleResponse';
@@ -238,6 +239,7 @@ import ListTaggedCompaniesResponse from './model/ListTaggedCompaniesResponse';
 import ListTaggedContactsResponse from './model/ListTaggedContactsResponse';
 import ListTagsResponse from './model/ListTagsResponse';
 import ListTasksResponse from './model/ListTasksResponse';
+import ListTransactions from './model/ListTransactions';
 import ListUserGroupsResponse from './model/ListUserGroupsResponse';
 import ListUsersPaginatedResponse from './model/ListUsersPaginatedResponse';
 import ListWebformsResponse from './model/ListWebformsResponse';
@@ -253,6 +255,7 @@ import OrderV2 from './model/OrderV2';
 import Origin from './model/Origin';
 import OriginRequest from './model/OriginRequest';
 import PatchAutomationCategoryRequest from './model/PatchAutomationCategoryRequest';
+import Payment from './model/Payment';
 import PaymentMethod from './model/PaymentMethod';
 import PaymentMethodConfig from './model/PaymentMethodConfig';
 import PaymentPlan from './model/PaymentPlan';
@@ -315,6 +318,7 @@ import TaggedCompany from './model/TaggedCompany';
 import TaggedContact from './model/TaggedContact';
 import Task from './model/Task';
 import TextOption from './model/TextOption';
+import TransactionV2 from './model/TransactionV2';
 import UnpublishAutomationRequest from './model/UnpublishAutomationRequest';
 import UpdateAffiliateRequest from './model/UpdateAffiliateRequest';
 import UpdateBusinessProfileRequest from './model/UpdateBusinessProfileRequest';
@@ -430,7 +434,7 @@ import WebformsApi from './api/WebformsApi';
 * </pre>
 * </p>
 * @module keap.core.v2/index
-* @version 2.0.3
+* @version 2.0.4
 */
 export {
     /**
@@ -1688,6 +1692,12 @@ export {
     ListPaymentMethodsResponse,
 
     /**
+     * The ListPayments model constructor.
+     * @property {module:keap.core.v2/model/ListPayments}
+     */
+    ListPayments,
+
+    /**
      * The ListProductCategoriesResponse model constructor.
      * @property {module:keap.core.v2/model/ListProductCategoriesResponse}
      */
@@ -1790,6 +1800,12 @@ export {
     ListTasksResponse,
 
     /**
+     * The ListTransactions model constructor.
+     * @property {module:keap.core.v2/model/ListTransactions}
+     */
+    ListTransactions,
+
+    /**
      * The ListUserGroupsResponse model constructor.
      * @property {module:keap.core.v2/model/ListUserGroupsResponse}
      */
@@ -1878,6 +1894,12 @@ export {
      * @property {module:keap.core.v2/model/PatchAutomationCategoryRequest}
      */
     PatchAutomationCategoryRequest,
+
+    /**
+     * The Payment model constructor.
+     * @property {module:keap.core.v2/model/Payment}
+     */
+    Payment,
 
     /**
      * The PaymentMethod model constructor.
@@ -2250,6 +2272,12 @@ export {
      * @property {module:keap.core.v2/model/TextOption}
      */
     TextOption,
+
+    /**
+     * The TransactionV2 model constructor.
+     * @property {module:keap.core.v2/model/TransactionV2}
+     */
+    TransactionV2,
 
     /**
      * The UnpublishAutomationRequest model constructor.

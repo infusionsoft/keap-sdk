@@ -36,6 +36,7 @@ import jakarta.validation.Valid;
 @JsonPropertyOrder({
   PaymentMethod.JSON_PROPERTY_CONTACT_ID,
   PaymentMethod.JSON_PROPERTY_PAYMENT_METHOD_ID,
+  PaymentMethod.JSON_PROPERTY_CREDIT_CARD_ID,
   PaymentMethod.JSON_PROPERTY_MERCHANT_ACCOUNT_TYPE,
   PaymentMethod.JSON_PROPERTY_MERCHANT_ACCOUNT_ID,
   PaymentMethod.JSON_PROPERTY_PAYMENT_METHOD_TYPE,
@@ -52,6 +53,9 @@ public class PaymentMethod implements Serializable {
 
   public static final String JSON_PROPERTY_PAYMENT_METHOD_ID = "payment_method_id";
   @jakarta.annotation.Nullable  private String paymentMethodId;
+
+  public static final String JSON_PROPERTY_CREDIT_CARD_ID = "credit_card_id";
+  @jakarta.annotation.Nullable  private String creditCardId;
 
   /**
    * The merchant type this payment method was authorized with. Valid values are: PAYPAL, AUTHORIZE, EWAY, WEPAY, STRIPE, KEAP_PAY, UNSUPPORTED
@@ -236,6 +240,30 @@ public class PaymentMethod implements Serializable {
   }
 
 
+  public PaymentMethod creditCardId(@jakarta.annotation.Nullable String creditCardId) {
+    this.creditCardId = creditCardId;
+    return this;
+  }
+
+  /**
+   * Get creditCardId
+   * @return creditCardId
+   */
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @JsonProperty(JSON_PROPERTY_CREDIT_CARD_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getCreditCardId() {
+    return creditCardId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CREDIT_CARD_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCreditCardId(@jakarta.annotation.Nullable String creditCardId) {
+    this.creditCardId = creditCardId;
+  }
+
+
   public PaymentMethod merchantAccountType(@jakarta.annotation.Nullable MerchantAccountTypeEnum merchantAccountType) {
     this.merchantAccountType = merchantAccountType;
     return this;
@@ -394,6 +422,7 @@ public class PaymentMethod implements Serializable {
     PaymentMethod paymentMethod = (PaymentMethod) o;
     return Objects.equals(this.contactId, paymentMethod.contactId) &&
         Objects.equals(this.paymentMethodId, paymentMethod.paymentMethodId) &&
+        Objects.equals(this.creditCardId, paymentMethod.creditCardId) &&
         Objects.equals(this.merchantAccountType, paymentMethod.merchantAccountType) &&
         Objects.equals(this.merchantAccountId, paymentMethod.merchantAccountId) &&
         Objects.equals(this.paymentMethodType, paymentMethod.paymentMethodType) &&
@@ -404,7 +433,7 @@ public class PaymentMethod implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(contactId, paymentMethodId, merchantAccountType, merchantAccountId, paymentMethodType, createdTime, cardInfo, status);
+    return Objects.hash(contactId, paymentMethodId, creditCardId, merchantAccountType, merchantAccountId, paymentMethodType, createdTime, cardInfo, status);
   }
 
   @Override
@@ -413,6 +442,7 @@ public class PaymentMethod implements Serializable {
     sb.append("class PaymentMethod {\n");
     sb.append("    contactId: ").append(toIndentedString(contactId)).append("\n");
     sb.append("    paymentMethodId: ").append(toIndentedString(paymentMethodId)).append("\n");
+    sb.append("    creditCardId: ").append(toIndentedString(creditCardId)).append("\n");
     sb.append("    merchantAccountType: ").append(toIndentedString(merchantAccountType)).append("\n");
     sb.append("    merchantAccountId: ").append(toIndentedString(merchantAccountId)).append("\n");
     sb.append("    paymentMethodType: ").append(toIndentedString(paymentMethodType)).append("\n");
@@ -452,6 +482,10 @@ public class PaymentMethod implements Serializable {
         }
             public PaymentMethod.Builder paymentMethodId(String paymentMethodId) {
               this.instance.paymentMethodId = paymentMethodId;
+          return this;
+        }
+            public PaymentMethod.Builder creditCardId(String creditCardId) {
+              this.instance.creditCardId = creditCardId;
           return this;
         }
             public PaymentMethod.Builder merchantAccountType(MerchantAccountTypeEnum merchantAccountType) {
@@ -514,6 +548,7 @@ public class PaymentMethod implements Serializable {
         return new PaymentMethod.Builder()
           .contactId(getContactId())
           .paymentMethodId(getPaymentMethodId())
+          .creditCardId(getCreditCardId())
           .merchantAccountType(getMerchantAccountType())
           .merchantAccountId(getMerchantAccountId())
           .paymentMethodType(getPaymentMethodType())

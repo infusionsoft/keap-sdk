@@ -53,6 +53,9 @@ class PaymentMethod {
             if (data.hasOwnProperty('payment_method_id')) {
                 obj['payment_method_id'] = ApiClient.convertToType(data['payment_method_id'], 'String');
             }
+            if (data.hasOwnProperty('credit_card_id')) {
+                obj['credit_card_id'] = ApiClient.convertToType(data['credit_card_id'], 'String');
+            }
             if (data.hasOwnProperty('merchant_account_type')) {
                 obj['merchant_account_type'] = ApiClient.convertToType(data['merchant_account_type'], 'String');
             }
@@ -88,6 +91,10 @@ class PaymentMethod {
         // ensure the json data is a string
         if (data['payment_method_id'] && !(typeof data['payment_method_id'] === 'string' || data['payment_method_id'] instanceof String)) {
             throw new Error("Expected the field `payment_method_id` to be a primitive type in the JSON string but got " + data['payment_method_id']);
+        }
+        // ensure the json data is a string
+        if (data['credit_card_id'] && !(typeof data['credit_card_id'] === 'string' || data['credit_card_id'] instanceof String)) {
+            throw new Error("Expected the field `credit_card_id` to be a primitive type in the JSON string but got " + data['credit_card_id']);
         }
         // ensure the json data is a string
         if (data['merchant_account_type'] && !(typeof data['merchant_account_type'] === 'string' || data['merchant_account_type'] instanceof String)) {
@@ -131,6 +138,11 @@ PaymentMethod.prototype['contact_id'] = undefined;
  * @member {String} payment_method_id
  */
 PaymentMethod.prototype['payment_method_id'] = undefined;
+
+/**
+ * @member {String} credit_card_id
+ */
+PaymentMethod.prototype['credit_card_id'] = undefined;
 
 /**
  * The merchant type this payment method was authorized with. Valid values are: PAYPAL, AUTHORIZE, EWAY, WEPAY, STRIPE, KEAP_PAY, UNSUPPORTED

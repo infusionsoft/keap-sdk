@@ -20,12 +20,13 @@ Method | HTTP request | Description
 
 
 # **create_contact**
-> Contact create_contact(create_update_contact_request, fields=fields)
+> Contact create_contact(create_update_contact_request, fields=fields, duplicate_option=duplicate_option)
 
 Create a Contact
 
 Creates a new Contact.
 *Note:* Contact must contain at least one item in `email_addresses` or `phone_numbers` and `country_code` is required if `region` is specified.
+Optionally accepts a `duplicate_option` query parameter which performs duplicate checking by one of the following options: `Email`, `EmailAndName`, `EmailAndNameAndCompany`. If a match is found using the option provided, the existing contact will be updated. If an existing contact was not found using the `duplicate_option` provided, a new contact record will be created. When `duplicate_option` is not specified, a new contact is always created.
 
 ### Example
 
@@ -56,10 +57,11 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
     api_instance = keap_core_v2_client.ContactApi(api_client)
     create_update_contact_request = keap_core_v2_client.CreateUpdateContactRequest() # CreateUpdateContactRequest | 
     fields = ['fields_example'] # List[str] | Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website) (optional)
+    duplicate_option = 'duplicate_option_example' # str | Duplicate check strategy. If provided, performs duplicate checking and updates the existing contact if a match is found. (optional)
 
     try:
         # Create a Contact
-        api_response = api_instance.create_contact(create_update_contact_request, fields=fields)
+        api_response = api_instance.create_contact(create_update_contact_request, fields=fields, duplicate_option=duplicate_option)
         print("The response of ContactApi->create_contact:\n")
         pprint(api_response)
     except Exception as e:
@@ -74,6 +76,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **create_update_contact_request** | [**CreateUpdateContactRequest**](CreateUpdateContactRequest.md)|  | 
  **fields** | [**List[str]**](str.md)| Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website) | [optional] 
+ **duplicate_option** | **str**| Duplicate check strategy. If provided, performs duplicate checking and updates the existing contact if a match is found. | [optional] 
 
 ### Return type
 
@@ -92,7 +95,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | Created |  -  |
+**200** | OK |  -  |
 **400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |

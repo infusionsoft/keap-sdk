@@ -209,6 +209,7 @@ import { ListOrderPaymentsResponse } from '../models/ListOrderPaymentsResponse';
 import { ListOrderTotalDiscountsResponse } from '../models/ListOrderTotalDiscountsResponse';
 import { ListOrders } from '../models/ListOrders';
 import { ListPaymentMethodsResponse } from '../models/ListPaymentMethodsResponse';
+import { ListPayments } from '../models/ListPayments';
 import { ListProductCategoriesResponse } from '../models/ListProductCategoriesResponse';
 import { ListProductDiscountsResponse } from '../models/ListProductDiscountsResponse';
 import { ListProductInterestBundleResponse } from '../models/ListProductInterestBundleResponse';
@@ -226,6 +227,7 @@ import { ListTaggedCompaniesResponse } from '../models/ListTaggedCompaniesRespon
 import { ListTaggedContactsResponse } from '../models/ListTaggedContactsResponse';
 import { ListTagsResponse } from '../models/ListTagsResponse';
 import { ListTasksResponse } from '../models/ListTasksResponse';
+import { ListTransactions } from '../models/ListTransactions';
 import { ListUserGroupsResponse } from '../models/ListUserGroupsResponse';
 import { ListUsersPaginatedResponse } from '../models/ListUsersPaginatedResponse';
 import { ListWebformsResponse } from '../models/ListWebformsResponse';
@@ -242,6 +244,7 @@ import { OrderV2 } from '../models/OrderV2';
 import { Origin } from '../models/Origin';
 import { OriginRequest } from '../models/OriginRequest';
 import { PatchAutomationCategoryRequest } from '../models/PatchAutomationCategoryRequest';
+import { Payment } from '../models/Payment';
 import { PaymentMethod } from '../models/PaymentMethod';
 import { PaymentMethodConfig } from '../models/PaymentMethodConfig';
 import { PaymentPlan } from '../models/PaymentPlan';
@@ -304,6 +307,7 @@ import { TaggedCompany } from '../models/TaggedCompany';
 import { TaggedContact } from '../models/TaggedContact';
 import { Task } from '../models/Task';
 import { TextOption } from '../models/TextOption';
+import { TransactionV2 } from '../models/TransactionV2';
 import { UnpublishAutomationRequest } from '../models/UnpublishAutomationRequest';
 import { UpdateAffiliateRequest } from '../models/UpdateAffiliateRequest';
 import { UpdateBusinessProfileRequest } from '../models/UpdateBusinessProfileRequest';
@@ -2836,6 +2840,13 @@ export interface ContactApiCreateContactRequest {
      * @memberof ContactApicreateContact
      */
     fields?: Array<string>
+    /**
+     * Duplicate check strategy. If provided, performs duplicate checking and updates the existing contact if a match is found.
+     * Defaults to: undefined
+     * @type &#39;Email&#39; | &#39;EmailAndName&#39; | &#39;EmailAndNameAndCompany&#39;
+     * @memberof ContactApicreateContact
+     */
+    duplicateOption?: 'Email' | 'EmailAndName' | 'EmailAndNameAndCompany'
 }
 
 export interface ContactApiCreateContactCustomFieldRequest {
@@ -3065,21 +3076,21 @@ export class ObjectContactApi {
     }
 
     /**
-     * Creates a new Contact. *Note:* Contact must contain at least one item in `email_addresses` or `phone_numbers` and `country_code` is required if `region` is specified.
+     * Creates a new Contact. *Note:* Contact must contain at least one item in `email_addresses` or `phone_numbers` and `country_code` is required if `region` is specified. Optionally accepts a `duplicate_option` query parameter which performs duplicate checking by one of the following options: `Email`, `EmailAndName`, `EmailAndNameAndCompany`. If a match is found using the option provided, the existing contact will be updated. If an existing contact was not found using the `duplicate_option` provided, a new contact record will be created. When `duplicate_option` is not specified, a new contact is always created.
      * Create a Contact
      * @param param the request object
      */
     public createContactWithHttpInfo(param: ContactApiCreateContactRequest, options?: ConfigurationOptions): Promise<HttpInfo<Contact>> {
-        return this.api.createContactWithHttpInfo(param.createUpdateContactRequest, param.fields,  options).toPromise();
+        return this.api.createContactWithHttpInfo(param.createUpdateContactRequest, param.fields, param.duplicateOption,  options).toPromise();
     }
 
     /**
-     * Creates a new Contact. *Note:* Contact must contain at least one item in `email_addresses` or `phone_numbers` and `country_code` is required if `region` is specified.
+     * Creates a new Contact. *Note:* Contact must contain at least one item in `email_addresses` or `phone_numbers` and `country_code` is required if `region` is specified. Optionally accepts a `duplicate_option` query parameter which performs duplicate checking by one of the following options: `Email`, `EmailAndName`, `EmailAndNameAndCompany`. If a match is found using the option provided, the existing contact will be updated. If an existing contact was not found using the `duplicate_option` provided, a new contact record will be created. When `duplicate_option` is not specified, a new contact is always created.
      * Create a Contact
      * @param param the request object
      */
     public createContact(param: ContactApiCreateContactRequest, options?: ConfigurationOptions): Promise<Contact> {
-        return this.api.createContact(param.createUpdateContactRequest, param.fields,  options).toPromise();
+        return this.api.createContact(param.createUpdateContactRequest, param.fields, param.duplicateOption,  options).toPromise();
     }
 
     /**
@@ -6528,7 +6539,7 @@ export interface OrdersApiListOrderPaymentsRequest {
 
 export interface OrdersApiListOrdersRequest {
     /**
-     * Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60;
+     * Filter to apply, allowed fields are: - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;title&#x60; - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_city&#x60; - (String) &#x60;shipping_region&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;title%3D%3DOrder&#x60; - &#x60;filter&#x3D;order_type%3D%3DONLINE&#x60; - &#x60;filter&#x3D;shipping_city%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region%3D%3DAZ&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DUS&#x60;
      * Defaults to: undefined
      * @type string
      * @memberof OrdersApilistOrders
@@ -8695,6 +8706,72 @@ export class ObjectReportingApi {
 import { ObservableSalesApi } from "./ObservableAPI";
 import { SalesApiRequestFactory, SalesApiResponseProcessor} from "../apis/SalesApi";
 
+export interface SalesApiListPaymentsRequest {
+    /**
+     * Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - (String) &#x60;amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;order_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; - (String) &#x60;merchant_account_id&#x60; - (String) &#x60;merchant_account_type&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;id%3D%3D123&#x60; - &#x60;filter&#x3D;order_id%3D%3D123%3Bcontact_id%3D%3D567&#x60;
+     * Defaults to: undefined
+     * @type string
+     * @memberof SalesApilistPayments
+     */
+    filter?: string
+    /**
+     * Page token
+     * Defaults to: undefined
+     * @type string
+     * @memberof SalesApilistPayments
+     */
+    pageToken?: string
+    /**
+     * Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;amount&#x60; - &#x60;payment_time&#x60; - &#x60;contact_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * Defaults to: undefined
+     * @type string
+     * @memberof SalesApilistPayments
+     */
+    orderBy?: string
+    /**
+     * Total number of items to return per page
+     * Minimum: 0
+     * Maximum: 1000
+     * Defaults to: undefined
+     * @type number
+     * @memberof SalesApilistPayments
+     */
+    pageSize?: number
+}
+
+export interface SalesApiListTransactionsRequest {
+    /**
+     * Filter to apply, allowed fields are: - (String) &#x60;amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;order_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; - (String) &#x60;merchant_account_id&#x60; - (String) &#x60;merchant_account_type&#x60; - (String) &#x60;status&#x60; - (String) &#x60;transaction_method&#x60; - (String) &#x60;is_successful&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;order_id%3D%3D123&#x60; - &#x60;filter&#x3D;order_id%3D%3D123%3Bcontact_id%3D%3D567&#x60;
+     * Defaults to: undefined
+     * @type string
+     * @memberof SalesApilistTransactions
+     */
+    filter?: string
+    /**
+     * Page token
+     * Defaults to: undefined
+     * @type string
+     * @memberof SalesApilistTransactions
+     */
+    pageToken?: string
+    /**
+     * Attribute and direction to order items. One of the following fields: - &#x60;amount&#x60; - &#x60;transaction_time&#x60; - &#x60;contact_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * Defaults to: undefined
+     * @type string
+     * @memberof SalesApilistTransactions
+     */
+    orderBy?: string
+    /**
+     * Total number of items to return per page
+     * Minimum: 0
+     * Maximum: 1000
+     * Defaults to: undefined
+     * @type number
+     * @memberof SalesApilistTransactions
+     */
+    pageSize?: number
+}
+
 export interface SalesApiSetMerchantGatewayAsDefaultRequest {
     /**
      * 
@@ -8710,6 +8787,42 @@ export class ObjectSalesApi {
 
     public constructor(configuration: Configuration, requestFactory?: SalesApiRequestFactory, responseProcessor?: SalesApiResponseProcessor) {
         this.api = new ObservableSalesApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Retrieves a list of payments
+     * List Payments
+     * @param param the request object
+     */
+    public listPaymentsWithHttpInfo(param: SalesApiListPaymentsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListPayments>> {
+        return this.api.listPaymentsWithHttpInfo(param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of payments
+     * List Payments
+     * @param param the request object
+     */
+    public listPayments(param: SalesApiListPaymentsRequest = {}, options?: ConfigurationOptions): Promise<ListPayments> {
+        return this.api.listPayments(param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of sales transactions
+     * List Transactions
+     * @param param the request object
+     */
+    public listTransactionsWithHttpInfo(param: SalesApiListTransactionsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListTransactions>> {
+        return this.api.listTransactionsWithHttpInfo(param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
+    }
+
+    /**
+     * Retrieves a list of sales transactions
+     * List Transactions
+     * @param param the request object
+     */
+    public listTransactions(param: SalesApiListTransactionsRequest = {}, options?: ConfigurationOptions): Promise<ListTransactions> {
+        return this.api.listTransactions(param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
     }
 
     /**
@@ -9758,7 +9871,7 @@ export interface TagsApiListTagCategoriesRequest {
 
 export interface TagsApiListTagsRequest {
     /**
-     * Filter to apply, allowed fields are:  - (String) &#x60;name&#x60; - (String) &#x60;description&#x60; - (String) &#x60;category_id&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. If NONE is passed in for &#x60;category_id&#x60; or &#x60;description&#x60;, it will check for the non-existence of that field. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;name%3D%3Dmy-tag&#x60; - &#x60;filter&#x3D;category_id%3D%3DNONE&#x60; - &#x60;filter&#x3D;description%3D%3DNONE&#x60; - &#x60;filter&#x3D;since_create_time%3D%3D2024-12-22T01:00:00.000Z;until_create_time%3D%3D2025-01-01T00:00:00.000Z;&#x60;
+     * Filter to apply, allowed fields are:  - (String) &#x60;name&#x60; - (String) &#x60;description&#x60; - (String) &#x60;category_id&#x60; - (String) &#x60;tag_ids&#x60; - (String) &#x60;since_create_time&#x60; - (String) &#x60;until_create_time&#x60; - (String) &#x60;since_update_time&#x60; - (String) &#x60;until_update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. If NONE is passed in for &#x60;category_id&#x60; or &#x60;description&#x60;, it will check for the non-existence of that field. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;name%3D%3Dmy-tag&#x60; - &#x60;filter&#x3D;category_id%3D%3DNONE&#x60; - &#x60;filter&#x3D;description%3D%3DNONE&#x60; - &#x60;filter&#x3D;tag_ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;since_create_time%3D%3D2024-12-22T01:00:00.000Z;until_create_time%3D%3D2025-01-01T00:00:00.000Z;&#x60;
      * Defaults to: undefined
      * @type string
      * @memberof TagsApilistTags

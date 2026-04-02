@@ -49,10 +49,11 @@ export default class ContactApi {
 
     /**
      * Create a Contact
-     * Creates a new Contact. *Note:* Contact must contain at least one item in `email_addresses` or `phone_numbers` and `country_code` is required if `region` is specified.
+     * Creates a new Contact. *Note:* Contact must contain at least one item in `email_addresses` or `phone_numbers` and `country_code` is required if `region` is specified. Optionally accepts a `duplicate_option` query parameter which performs duplicate checking by one of the following options: `Email`, `EmailAndName`, `EmailAndNameAndCompany`. If a match is found using the option provided, the existing contact will be updated. If an existing contact was not found using the `duplicate_option` provided, a new contact record will be created. When `duplicate_option` is not specified, a new contact is always created.
      * @param {module:keap.core.v2/model/CreateUpdateContactRequest} createUpdateContactRequest 
      * @param {Object} opts Optional parameters
      * @param {Array.<String>} [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
+     * @param {module:keap.core.v2/model/String} [duplicateOption] Duplicate check strategy. If provided, performs duplicate checking and updates the existing contact if a match is found.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/Contact} and HTTP response
      */
     createContactWithHttpInfo(createUpdateContactRequest, opts) {
@@ -66,7 +67,8 @@ export default class ContactApi {
       let pathParams = {
       };
       let queryParams = {
-        'fields': this.apiClient.buildCollectionParam(opts['fields'], 'csv')
+        'fields': this.apiClient.buildCollectionParam(opts['fields'], 'csv'),
+        'duplicate_option': opts['duplicateOption']
       };
       let headerParams = {
       };
@@ -86,10 +88,11 @@ export default class ContactApi {
 
     /**
      * Create a Contact
-     * Creates a new Contact. *Note:* Contact must contain at least one item in `email_addresses` or `phone_numbers` and `country_code` is required if `region` is specified.
+     * Creates a new Contact. *Note:* Contact must contain at least one item in `email_addresses` or `phone_numbers` and `country_code` is required if `region` is specified. Optionally accepts a `duplicate_option` query parameter which performs duplicate checking by one of the following options: `Email`, `EmailAndName`, `EmailAndNameAndCompany`. If a match is found using the option provided, the existing contact will be updated. If an existing contact was not found using the `duplicate_option` provided, a new contact record will be created. When `duplicate_option` is not specified, a new contact is always created.
      * @param {module:keap.core.v2/model/CreateUpdateContactRequest} createUpdateContactRequest 
      * @param {Object} opts Optional parameters
      * @param {Array.<String>} opts.fields Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
+     * @param {module:keap.core.v2/model/String} opts.duplicateOption Duplicate check strategy. If provided, performs duplicate checking and updates the existing contact if a match is found.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/Contact}
      */
     createContact(createUpdateContactRequest, opts) {

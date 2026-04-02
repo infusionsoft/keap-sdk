@@ -133,16 +133,18 @@ namespace Keap.Core.V2.Model
         /// </summary>
         /// <param name="contactId">contactId.</param>
         /// <param name="paymentMethodId">paymentMethodId.</param>
+        /// <param name="creditCardId">creditCardId.</param>
         /// <param name="merchantAccountType">The merchant type this payment method was authorized with. Valid values are: PAYPAL, AUTHORIZE, EWAY, WEPAY, STRIPE, KEAP_PAY, UNSUPPORTED.</param>
         /// <param name="merchantAccountId">merchantAccountId.</param>
         /// <param name="paymentMethodType">The type of payment method. For now, only CARD is supported..</param>
         /// <param name="createdTime">createdTime.</param>
         /// <param name="cardInfo">Additional info for payment methods of payment_method_type CARD..</param>
         /// <param name="status">Status of the payment method. Fow now, only EXPIRED is supported..</param>
-        public PaymentMethod(string contactId = default, string paymentMethodId = default, MerchantAccountTypeEnum? merchantAccountType = default, string merchantAccountId = default, PaymentMethodTypeEnum? paymentMethodType = default, string createdTime = default, CardInfo cardInfo = default, StatusEnum? status = default)
+        public PaymentMethod(string contactId = default, string paymentMethodId = default, string creditCardId = default, MerchantAccountTypeEnum? merchantAccountType = default, string merchantAccountId = default, PaymentMethodTypeEnum? paymentMethodType = default, string createdTime = default, CardInfo cardInfo = default, StatusEnum? status = default)
         {
             this.ContactId = contactId;
             this.PaymentMethodId = paymentMethodId;
+            this.CreditCardId = creditCardId;
             this.MerchantAccountType = merchantAccountType;
             this.MerchantAccountId = merchantAccountId;
             this.PaymentMethodType = paymentMethodType;
@@ -162,6 +164,12 @@ namespace Keap.Core.V2.Model
         /// </summary>
         [DataMember(Name = "payment_method_id", EmitDefaultValue = false)]
         public string PaymentMethodId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CreditCardId
+        /// </summary>
+        [DataMember(Name = "credit_card_id", EmitDefaultValue = false)]
+        public string CreditCardId { get; set; }
 
         /// <summary>
         /// Gets or Sets MerchantAccountId
@@ -192,6 +200,7 @@ namespace Keap.Core.V2.Model
             sb.Append("class PaymentMethod {\n");
             sb.Append("  ContactId: ").Append(ContactId).Append("\n");
             sb.Append("  PaymentMethodId: ").Append(PaymentMethodId).Append("\n");
+            sb.Append("  CreditCardId: ").Append(CreditCardId).Append("\n");
             sb.Append("  MerchantAccountType: ").Append(MerchantAccountType).Append("\n");
             sb.Append("  MerchantAccountId: ").Append(MerchantAccountId).Append("\n");
             sb.Append("  PaymentMethodType: ").Append(PaymentMethodType).Append("\n");

@@ -29,6 +29,7 @@ class PaymentMethod(BaseModel):
     """ # noqa: E501
     contact_id: Optional[StrictStr] = None
     payment_method_id: Optional[StrictStr] = None
+    credit_card_id: Optional[StrictStr] = None
     merchant_account_type: Optional[StrictStr] = Field(default=None, description="The merchant type this payment method was authorized with. Valid values are: PAYPAL, AUTHORIZE, EWAY, WEPAY, STRIPE, KEAP_PAY, UNSUPPORTED")
     merchant_account_id: Optional[StrictStr] = None
     payment_method_type: Optional[StrictStr] = Field(default=None, description="The type of payment method. For now, only CARD is supported.")
@@ -36,7 +37,7 @@ class PaymentMethod(BaseModel):
     card_info: Optional[CardInfo] = Field(default=None, description="Additional info for payment methods of payment_method_type CARD.")
     status: Optional[StrictStr] = Field(default=None, description="Status of the payment method. Fow now, only EXPIRED is supported.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["contact_id", "payment_method_id", "merchant_account_type", "merchant_account_id", "payment_method_type", "created_time", "card_info", "status"]
+    __properties: ClassVar[List[str]] = ["contact_id", "payment_method_id", "credit_card_id", "merchant_account_type", "merchant_account_id", "payment_method_type", "created_time", "card_info", "status"]
 
     @field_validator('merchant_account_type')
     def merchant_account_type_validate_enum(cls, value):
@@ -131,6 +132,7 @@ class PaymentMethod(BaseModel):
         _obj = cls.model_validate({
             "contact_id": obj.get("contact_id"),
             "payment_method_id": obj.get("payment_method_id"),
+            "credit_card_id": obj.get("credit_card_id"),
             "merchant_account_type": obj.get("merchant_account_type"),
             "merchant_account_id": obj.get("merchant_account_id"),
             "payment_method_type": obj.get("payment_method_type"),

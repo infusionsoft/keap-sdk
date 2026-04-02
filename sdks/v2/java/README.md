@@ -43,7 +43,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.keap.core</groupId>
   <artifactId>core-service-v2-java-sdk</artifactId>
-  <version>2.0.3</version>
+  <version>2.0.4</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.keap.core:core-service-v2-java-sdk:2.0.3"
+compile "com.keap.core:core-service-v2-java-sdk:2.0.4"
 ```
 
 ### Others
@@ -66,7 +66,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/core-service-v2-java-sdk-2.0.3.jar`
+- `target/core-service-v2-java-sdk-2.0.4.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -552,6 +552,10 @@ Class | Method | HTTP request | Description
 *ReportingApi* | [**retrieveReportWithHttpInfo**](docs/ReportingApi.md#retrieveReportWithHttpInfo) | **GET** /rest/v2/reporting/reports/{report_id} | Retrieve Report
 *ReportingApi* | [**runReport**](docs/ReportingApi.md#runReport) | **POST** /rest/v2/reporting/reports/{report_id}:run | Run a Report
 *ReportingApi* | [**runReportWithHttpInfo**](docs/ReportingApi.md#runReportWithHttpInfo) | **POST** /rest/v2/reporting/reports/{report_id}:run | Run a Report
+*SalesApi* | [**listPayments**](docs/SalesApi.md#listPayments) | **GET** /rest/v2/sales/payments | List Payments
+*SalesApi* | [**listPaymentsWithHttpInfo**](docs/SalesApi.md#listPaymentsWithHttpInfo) | **GET** /rest/v2/sales/payments | List Payments
+*SalesApi* | [**listTransactions**](docs/SalesApi.md#listTransactions) | **GET** /rest/v2/sales/transactions | List Transactions
+*SalesApi* | [**listTransactionsWithHttpInfo**](docs/SalesApi.md#listTransactionsWithHttpInfo) | **GET** /rest/v2/sales/transactions | List Transactions
 *SalesApi* | [**setMerchantGatewayAsDefault**](docs/SalesApi.md#setMerchantGatewayAsDefault) | **POST** /rest/v2/sales/merchants/{id}:setDefault | Set default Merchant Account
 *SalesApi* | [**setMerchantGatewayAsDefaultWithHttpInfo**](docs/SalesApi.md#setMerchantGatewayAsDefaultWithHttpInfo) | **POST** /rest/v2/sales/merchants/{id}:setDefault | Set default Merchant Account
 *SettingsApi* | [**getApplicationConfigurations**](docs/SettingsApi.md#getApplicationConfigurations) | **GET** /rest/v2/settings/applications:getConfiguration | Get Application Configuration
@@ -876,6 +880,7 @@ Class | Method | HTTP request | Description
  - [ListOrderTotalDiscountsResponse](docs/ListOrderTotalDiscountsResponse.md)
  - [ListOrders](docs/ListOrders.md)
  - [ListPaymentMethodsResponse](docs/ListPaymentMethodsResponse.md)
+ - [ListPayments](docs/ListPayments.md)
  - [ListProductCategoriesResponse](docs/ListProductCategoriesResponse.md)
  - [ListProductDiscountsResponse](docs/ListProductDiscountsResponse.md)
  - [ListProductInterestBundleResponse](docs/ListProductInterestBundleResponse.md)
@@ -893,6 +898,7 @@ Class | Method | HTTP request | Description
  - [ListTaggedContactsResponse](docs/ListTaggedContactsResponse.md)
  - [ListTagsResponse](docs/ListTagsResponse.md)
  - [ListTasksResponse](docs/ListTasksResponse.md)
+ - [ListTransactions](docs/ListTransactions.md)
  - [ListUserGroupsResponse](docs/ListUserGroupsResponse.md)
  - [ListUsersPaginatedResponse](docs/ListUsersPaginatedResponse.md)
  - [ListWebformsResponse](docs/ListWebformsResponse.md)
@@ -908,6 +914,7 @@ Class | Method | HTTP request | Description
  - [Origin](docs/Origin.md)
  - [OriginRequest](docs/OriginRequest.md)
  - [PatchAutomationCategoryRequest](docs/PatchAutomationCategoryRequest.md)
+ - [Payment](docs/Payment.md)
  - [PaymentMethod](docs/PaymentMethod.md)
  - [PaymentMethodConfig](docs/PaymentMethodConfig.md)
  - [PaymentPlan](docs/PaymentPlan.md)
@@ -970,6 +977,7 @@ Class | Method | HTTP request | Description
  - [TaggedContact](docs/TaggedContact.md)
  - [Task](docs/Task.md)
  - [TextOption](docs/TextOption.md)
+ - [TransactionV2](docs/TransactionV2.md)
  - [UnpublishAutomationRequest](docs/UnpublishAutomationRequest.md)
  - [UpdateAffiliateRequest](docs/UpdateAffiliateRequest.md)
  - [UpdateBusinessProfileRequest](docs/UpdateBusinessProfileRequest.md)

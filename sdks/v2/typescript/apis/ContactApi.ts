@@ -28,18 +28,20 @@ import { ObjectModel } from '../models/ObjectModel';
 export class ContactApiRequestFactory extends BaseAPIRequestFactory {
 
     /**
-     * Creates a new Contact. *Note:* Contact must contain at least one item in `email_addresses` or `phone_numbers` and `country_code` is required if `region` is specified.
+     * Creates a new Contact. *Note:* Contact must contain at least one item in `email_addresses` or `phone_numbers` and `country_code` is required if `region` is specified. Optionally accepts a `duplicate_option` query parameter which performs duplicate checking by one of the following options: `Email`, `EmailAndName`, `EmailAndNameAndCompany`. If a match is found using the option provided, the existing contact will be updated. If an existing contact was not found using the `duplicate_option` provided, a new contact record will be created. When `duplicate_option` is not specified, a new contact is always created.
      * Create a Contact
      * @param createUpdateContactRequest 
      * @param fields Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website)
+     * @param duplicateOption Duplicate check strategy. If provided, performs duplicate checking and updates the existing contact if a match is found.
      */
-    public async createContact(createUpdateContactRequest: CreateUpdateContactRequest, fields?: Array<string>, _options?: Configuration): Promise<RequestContext> {
+    public async createContact(createUpdateContactRequest: CreateUpdateContactRequest, fields?: Array<string>, duplicateOption?: 'Email' | 'EmailAndName' | 'EmailAndNameAndCompany', _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'createUpdateContactRequest' is not null or undefined
         if (createUpdateContactRequest === null || createUpdateContactRequest === undefined) {
             throw new RequiredError("ContactApi", "createContact", "createUpdateContactRequest");
         }
+
 
 
 
@@ -53,6 +55,11 @@ export class ContactApiRequestFactory extends BaseAPIRequestFactory {
         // Query Params
         if (fields !== undefined) {
             requestContext.setQueryParam("fields", ObjectSerializer.serialize(fields, "Array<string>", ""));
+        }
+
+        // Query Params
+        if (duplicateOption !== undefined) {
+            requestContext.setQueryParam("duplicate_option", ObjectSerializer.serialize(duplicateOption, "'Email' | 'EmailAndName' | 'EmailAndNameAndCompany'", ""));
         }
 
 
@@ -697,7 +704,7 @@ export class ContactApiResponseProcessor {
      */
      public async createContactWithHttpInfo(response: ResponseContext): Promise<HttpInfo<Contact >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("201", response.httpStatusCode)) {
+        if (isCodeInRange("200", response.httpStatusCode)) {
             const body: Contact = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "Contact", ""
